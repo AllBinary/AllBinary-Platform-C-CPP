@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -48,9 +54,9 @@ class GDResources
             : public Object
          {
 
-    private: static GDResources instance() { return GDResources(); }
+    private: static GDResources* instance() { static std::unique_ptr<GDResources> value(new GDResources()); return value.get(); }
 
-    public: static GDResources getInstance();
+    public: static GDResources* getInstance();
 
     public: const std::vector<std::string> resourceStringArray = 
                                                         {

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class FontFamilyData
             : public Object
          {
 
-    private: static FontFamilyData instance() { return FontFamilyData(); }
+    private: static FontFamilyData* instance() { static std::unique_ptr<FontFamilyData> value(new FontFamilyData()); return value.get(); }
 
-    public: static FontFamilyData getInstance(){
+    public: static FontFamilyData* getInstance(){
 
 
 

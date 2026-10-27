@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -61,21 +67,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PreResourceImageUtil.h"
+        #include "org/allbinary/image/PreResourceImageUtil.h"
 
 class ChoiceGroupImageUtil
             : public Object
          {
 
-    private: static ChoiceGroupImageUtil instance() { return ChoiceGroupImageUtil(); }
+    private: static ChoiceGroupImageUtil* instance() { static std::unique_ptr<ChoiceGroupImageUtil> value(new ChoiceGroupImageUtil()); return value.get(); }
 
-    public: static ChoiceGroupImageUtil getInstance();
+    public: static ChoiceGroupImageUtil* getInstance();
 
     public: void init();
 
-    public: void update(GL gl);
+    public: void update(GL* gl);
 
-    public: void update(Graphics graphics);
+    public: void update(Graphics* graphics);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_CONFIGURATION_ADMINCONFIGURATION_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_CONFIGURATION_ADMINCONFIGURATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -79,37 +85,37 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdminConfigurationInterface.h"
-#include "AdminConfigurationData.h"
+        #include "org/allbinary/business/user/modules/admin/configuration/AdminConfigurationInterface.h"
+#include "org/allbinary/business/user/modules/admin/configuration/AdminConfigurationData.h"
 
 class AdminConfiguration
             : public Object
-        : public AdminConfigurationInterface {
+        , public AdminConfigurationInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: ContextConfigurationInterface contextConfigurationInterface;
+    private: ContextConfigurationInterface* contextConfigurationInterface;
 
 public: AdminConfiguration();
 
-public: AdminConfiguration(HttpServletRequest request);
+public: AdminConfiguration(HttpServletRequest* request);
 
-public: AdminConfiguration(HashMap<Object*, Object*> storeHashMap);
+public: AdminConfiguration(HashMap<Object*, Object*>* storeHashMap);
 
                 //@Throws(Exception.constructor)
             
-    private: void getFormData(HashMap<Object*, Object*> storeHashMap);
+    private: void getFormData(HashMap<Object*, Object*>* storeHashMap);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void write();
 
-    public: ContextConfigurationInterface getContextConfigurationInterface();
+    public: ContextConfigurationInterface* getContextConfigurationInterface();
 
-    public: void setContextConfigurationInterface(ContextConfigurationInterface contextConfigurationInterface);
+    public: void setContextConfigurationInterface(ContextConfigurationInterface* contextConfigurationInterface);
 
 };
 

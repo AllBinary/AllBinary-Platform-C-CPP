@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,16 +58,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ThemeInterface.h"
-#include "ThemeData.h"
+        #include "org/allbinary/logic/visual/theme/ThemeInterface.h"
+#include "org/allbinary/logic/visual/theme/ThemeData.h"
 
 class ThemePropertiesView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: ThemeInterface themeInterface;
+    private: ThemeInterface* themeInterface;
 
-public: ThemePropertiesView(ThemeInterface themeInterface){
+public: ThemePropertiesView(ThemeInterface* themeInterface){
 this->themeInterface= themeInterface;
     
 }
@@ -69,9 +75,9 @@ this->themeInterface= themeInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = ModDomHelper::createNameValueNodes(document, ThemeData::getInstance().NAME, this->themeInterface.toHashMap());;
+    Node* node = ModDomHelper::createNameValueNodes(document, ThemeData::getInstance()->NAME, this->themeInterface->toHashMap());;
     
 
 

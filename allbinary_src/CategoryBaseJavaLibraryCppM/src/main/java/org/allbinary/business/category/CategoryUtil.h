@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYUTIL_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeHelper.h>
@@ -68,17 +74,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryData.h"
+        #include "org/allbinary/business/category/CategoryData.h"
 
 class CategoryUtil
             : public Object
          {
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static int32_t getPathLevel(AbPath categoryPath);
+    public: static int32_t getPathLevel(AbPath* categoryPath);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static std::string getNameFromNode(Node node);
+    public: static std::string getNameFromNode(Node* node);
 
 private: CategoryUtil();
 

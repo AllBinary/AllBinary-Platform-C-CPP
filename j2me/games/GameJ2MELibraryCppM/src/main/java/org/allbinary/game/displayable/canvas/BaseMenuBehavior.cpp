@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,15 +52,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryGameCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
 class BaseMenuBehavior
             : public Object
          {
 
-    private: static BaseMenuBehavior instance() { return BaseMenuBehavior(); }
+    private: static BaseMenuBehavior* instance() { static std::unique_ptr<BaseMenuBehavior> value(new BaseMenuBehavior()); return value.get(); }
 
-    public: static BaseMenuBehavior getInstance(){
+    public: static BaseMenuBehavior* getInstance(){
 
 
 
@@ -66,35 +72,35 @@ class BaseMenuBehavior
 
                 //@Throws(Exception.constructor)
             
-    public: void onDisplayChangeEvent(AllBinaryGameCanvas allBinaryGameCanvas, DisplayChangeEvent displayChangeEvent){
+    public: void onDisplayChangeEvent(AllBinaryGameCanvas* allBinaryGameCanvas, DisplayChangeEvent* displayChangeEvent){
 }
 
 
-    public: void initSpecialPaint(AllBinaryGameCanvas allBinaryGameCanvas){
-allBinaryGameCanvas.setNonBotPaintableP(NullPaintable::getInstance());
+    public: void initSpecialPaint(AllBinaryGameCanvas* allBinaryGameCanvas){
+allBinaryGameCanvas->setNonBotPaintableP(NullPaintable::getInstance());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void initMenu(AllBinaryGameCanvas allBinaryGameCanvas){
+    public: void initMenu(AllBinaryGameCanvas* allBinaryGameCanvas){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void updateMenu(AllBinaryGameCanvas allBinaryGameCanvas){
+    public: void updateMenu(AllBinaryGameCanvas* allBinaryGameCanvas){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void popupMenu(AllBinaryGameCanvas allBinaryGameCanvas){
+    public: void popupMenu(AllBinaryGameCanvas* allBinaryGameCanvas){
 }
 
 
-    public: void closeMenu(AllBinaryGameCanvas allBinaryGameCanvas){
+    public: void closeMenu(AllBinaryGameCanvas* allBinaryGameCanvas){
 }
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -50,7 +56,7 @@ public: Tracking(){
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 }
 
 

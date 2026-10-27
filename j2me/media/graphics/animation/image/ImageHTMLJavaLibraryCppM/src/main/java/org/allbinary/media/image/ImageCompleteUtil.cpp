@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,15 +66,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Hashtable.h"
+        #include "org/allbinary/media/image/Hashtable.h"
 
 class ImageCompleteUtil
             : public Object
          {
 
-    private: static ImageCompleteUtil instance() { return ImageCompleteUtil(); }
+    private: static ImageCompleteUtil* instance() { static std::unique_ptr<ImageCompleteUtil> value(new ImageCompleteUtil()); return value.get(); }
 
-    public: static ImageCompleteUtil getInstance(){
+    public: static ImageCompleteUtil* getInstance(){
 
 
 
@@ -78,14 +84,14 @@ class ImageCompleteUtil
 }
 
 
-    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(18000);
+    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(18000);
 
-    private: const TimeDelayHelper allTimeDelayHelper = TimeDelayHelper(120000);
+    private: TimeDelayHelper* allTimeDelayHelper = new TimeDelayHelper(120000);
 
                 //@Throws(Exception.constructor)
             
-    public: void waitForImage(Image image, std::string name){
-this->timeDelayHelper.setStartTime();
+    public: void waitForImage(Image* image, std::string name){
+this->timeDelayHelper->setStartTime();
     
 this->waitForATime(image, name, this->timeDelayHelper);
     
@@ -94,22 +100,22 @@ this->waitForATime(image, name, this->timeDelayHelper);
 
                 //@Throws(Exception.constructor)
             
-    public: bool isReady(Image image, std::string name, TimeDelayHelper timeDelayHelper){
+    public: bool isReady(Image* image, std::string name, TimeDelayHelper* timeDelayHelper){
 
-    PlaynImage playnImage = image;;
+    PlaynImage* playnImage = dynamic_cast<PlaynImage*>(image);;
     
 
-                        if(!playnImage.getImage().isReady() && playnImage.getImage().width() +playnImage.getImage().height() == 0)
+                        if(!playnImage->getImage()->isReady() && playnImage->getImage()->width() +playnImage->getImage()->height() == 0)
                         
                                     {
                                     
-                        if(timeDelayHelper.isTime())
+                        if(timeDelayHelper->isTime())
                         
                                     {
                                     
 
 
-                            throw Exception("isReady: Timeout Waiting or GameHtmlHasLoadedResourcesProcessor does not have this Image: " +name);
+                            throw new Exception("isReady: Timeout Waiting or GameHtmlHasLoadedResourcesProcessor does not have this Image: " +name);
                     
 
                                     }
@@ -134,21 +140,21 @@ this->waitForATime(image, name, this->timeDelayHelper);
 
                 //@Throws(Exception.constructor)
             
-    private: void waitForATime(Image image, std::string name, TimeDelayHelper timeDelayHelper){
+    private: void waitForATime(Image* image, std::string name, TimeDelayHelper* timeDelayHelper){
 
-    PlaynImage playnImage = image;;
+    PlaynImage* playnImage = dynamic_cast<PlaynImage*>(image);;
     
 
-        while(!playnImage.getImage().isReady() && playnImage.getImage().width() +playnImage.getImage().height() == 0)
+        while(!playnImage->getImage()->isReady() && playnImage->getImage()->width() +playnImage->getImage()->height() == 0)
         {
 
-                        if(timeDelayHelper.isTime())
+                        if(timeDelayHelper->isTime())
                         
                                     {
                                     
 
 
-                            throw Exception("waitFor: Timeout Waiting or GameHtmlHasLoadedResourcesProcessor does not have this Image: " +name);
+                            throw new Exception("waitFor: Timeout Waiting or GameHtmlHasLoadedResourcesProcessor does not have this Image: " +name);
                     
 
                                     }
@@ -161,13 +167,13 @@ this->waitForATime(image, name, this->timeDelayHelper);
                 //@Throws(Exception.constructor)
             
     public: void waitForAll(){
-this->allTimeDelayHelper.setStartTime();
+this->allTimeDelayHelper->setStartTime();
     
 
-    Hashtable<Object*, Object*> hashtable = GameFeatureImageCacheFactory::getInstance().getHashtable();;
+    Hashtable<Object*, Object*>* hashtable = GameFeatureImageCacheFactory::getInstance()->getHashtable();;
     
 
-    std::vector<Object*> objectArray = HashtableUtil::getInstance().getKeysAsArray(hashtable);;
+    std::vector<Object*> objectArray = HashtableUtil::getInstance()->getKeysAsArray(hashtable);;
     
 
     int32_t size = objectArray.size();;
@@ -181,7 +187,7 @@ PreLogUtil::put("Total: " +size, this, "waitForAll");
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->waitForATime(hashtable.get(objectArray[index]), objectArray[index], this->allTimeDelayHelper);
+this->waitForATime(dynamic_cast<Image*>(hashtable->get(objectArray[index])), objectArray[index], this->allTimeDelayHelper);
     
 }
 

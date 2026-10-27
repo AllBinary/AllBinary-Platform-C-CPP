@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_MONEY_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_MONEY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Long.h"
@@ -65,11 +71,11 @@ class Money
             : public Object
          {
 
-    private: Long units;
+    private: int64_t units;
 
     private: const std::string DEFAULT_CURRENCY = "USD";
 
-public: Money(Money money);
+public: Money(Money* money);
 
 public: Money();
 
@@ -79,13 +85,13 @@ public: Money(int64_t units);
 
     public: bool isValid();
 
-    public: void add(Money moreMoney);
+    public: void add(Money* moreMoney);
 
     public: void add(std::string usDollarStr);
 
     public: void subtract(std::string usDollarStr);
 
-    public: void multiply(number multiplier);
+    public: void multiply(float multiplier);
 
     public: void multiply(int32_t multiplier);
 
@@ -95,7 +101,7 @@ public: Money(int64_t units);
 
     public: int64_t getUnits();
 
-    public: Long getUnitsLong();
+    public: int64_t getUnitsLong();
 
     public: std::string toString();
 

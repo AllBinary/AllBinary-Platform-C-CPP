@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,17 +67,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageCreationUtil.h"
+        #include "org/allbinary/media/image/ImageCreationUtil.h"
 
 class ImageRotationUtil
             : public Object
          {
 
-    private: static ImageRotationUtil instance() { return ImageRotationUtil(); }
+    private: static ImageRotationUtil* instance() { static std::unique_ptr<ImageRotationUtil> value(new ImageRotationUtil()); return value.get(); }
 
-    public: static ImageRotationUtil getInstance();
+    public: static ImageRotationUtil* getInstance();
 
-    private: const Matrix matrix = Matrix();
+    private: Matrix* matrix = new Matrix();
 
 private: ImageRotationUtil();
 
@@ -79,7 +85,7 @@ private: ImageRotationUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: Image createRotatedImage(Image originalImage, int32_t rotationInDegrees);
+    public: Image* createRotatedImage(Image* originalImage, int32_t rotationInDegrees);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/math/Angle.h>
 
       
@@ -39,17 +45,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Direction.h"
+        #include "org/allbinary/direction/Direction.h"
 
 class DirectionalInterface {
 
-    void setFrameByDirection(Direction direction)
+    public: virtual void setFrameByDirection(Direction* direction) = 0;
 
-    void setFrameToAngle(Angle angle)
+    public: virtual void setFrameToAngle(Angle* angle) = 0;
 
-    void adjustFrameToAngle(Angle newAngle)
+    public: virtual void adjustFrameToAngle(Angle* newAngle) = 0;
 
-    void adjustFrame(int16_t angle)
+    public: virtual void adjustFrame(int16_t angle) = 0;
 
 };
 

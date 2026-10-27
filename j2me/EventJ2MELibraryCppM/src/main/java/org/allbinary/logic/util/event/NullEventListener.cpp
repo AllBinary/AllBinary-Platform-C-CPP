@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,16 +44,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "EventListenerInterface.h"
-#include "AllBinaryEventObject.h"
+        #include "org/allbinary/logic/util/event/EventListenerInterface.h"
+#include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
 
 class NullEventListener
             : public Object
-        : public EventListenerInterface {
+        , public EventListenerInterface {
 
-    public: static const NullEventListener NULL_EVENT_LISTENER = NullEventListener();
+    public: static NullEventListener* NULL_EVENT_LISTENER() { static std::unique_ptr<NullEventListener> value(new NullEventListener()); return value.get(); }
 
-    public: void onEvent(AllBinaryEventObject eventObject){
+    public: void onEvent(AllBinaryEventObject* eventObject){
 }
 
 

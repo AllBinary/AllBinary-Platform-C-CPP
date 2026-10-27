@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMDOCUMENTFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMDOCUMENTFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -43,8 +49,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformDocument.h"
-#include "TransformDocumentInterface.h"
+        #include "org/allbinary/logic/visual/transform/data/TransformDocument.h"
+#include "org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h"
 
 class TransformDocumentFactory
             : public Object
@@ -52,7 +58,7 @@ class TransformDocumentFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static TransformDocumentInterface getInstance();
+    public: static TransformDocumentInterface* getInstance();
 
 private: TransformDocumentFactory();
 

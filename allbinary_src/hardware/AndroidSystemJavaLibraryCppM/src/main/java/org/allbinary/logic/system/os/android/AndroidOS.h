@@ -23,6 +23,12 @@
 
             #include <hilog/log.h>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/android/AndroidInfoFactory.h>
@@ -55,11 +61,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AndroidSystemProperties.h"
+        #include "org/allbinary/logic/system/os/android/AndroidSystemProperties.h"
 
 class AndroidOS: public GenericOperatingSystem {
 
-    private: StringMaker stringBuffer = StringMaker();
+    private: StringMaker* stringBuffer = new StringMaker();
 
     private: const std::string DEVICE_ID = "DeviceId";
 

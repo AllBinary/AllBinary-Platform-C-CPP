@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Long.h"
@@ -74,11 +80,11 @@ class ImageComparisonResult
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const std::vector<BufferedImage> bufferedImages = std::vector<BufferedImage>(2);
+    private: const std::vector<BufferedImage*> bufferedImages = std::vector<BufferedImage*>(2);
 
     public: std::string name;
 
@@ -90,11 +96,11 @@ class ImageComparisonResult
 
     public: int32_t imageWidth;
 
-    private: BasicArrayList nonMatchingPixelVector;
+    private: BasicArrayList* nonMatchingPixelVector;
 
-    private: Long frameOne;
+    private: int64_t frameOne;
 
-    private: Long frameTwo;
+    private: int64_t frameTwo;
 
     public: int32_t pixelsThatMatch= 0;
 
@@ -104,10 +110,10 @@ class ImageComparisonResult
 
     private: float matchingPercent =  -1;
 
-public: ImageComparisonResult(std::string name, BufferedImage bufferedImage, BufferedImage bufferedImage2, Long frameOne, Long frameTwo, int32_t tolerance){
+public: ImageComparisonResult(std::string name, BufferedImage* bufferedImage, BufferedImage* bufferedImage2, int64_t frameOne, int64_t frameTwo, int32_t tolerance){
 this->name= name;
     
-this->nonMatchingPixelVector= BasicArrayListD();
+this->nonMatchingPixelVector= new BasicArrayListD();
     
 this->bufferedImages[0]= bufferedImage;
     
@@ -120,22 +126,22 @@ this->frameTwo= frameTwo;
 this->setTolerance(0);
     
 
-    int32_t imageHeight = bufferedImage.getHeight();;
+    int32_t imageHeight = bufferedImage->getHeight();;
     
 
-    int32_t imageWidth = bufferedImage.getWidth();;
+    int32_t imageWidth = bufferedImage->getWidth();;
     
 
-                        if(bufferedImage.getHeight() != bufferedImage2.getHeight())
+                        if(bufferedImage->getHeight() != bufferedImage2->getHeight())
                         
                                     {
                                     this->isSameHeight= false;
     
 
-                        if(imageHeight > bufferedImage2.getHeight())
+                        if(imageHeight > bufferedImage2->getHeight())
                         
                                     {
-                                    imageHeight= bufferedImage2.getHeight();
+                                    imageHeight= bufferedImage2->getHeight();
     
 
                                     }
@@ -150,16 +156,16 @@ this->setTolerance(0);
                         }
                             
 
-                        if(bufferedImage.getWidth() != bufferedImage2.getWidth())
+                        if(bufferedImage->getWidth() != bufferedImage2->getWidth())
                         
                                     {
                                     this->isSameWidth= false;
     
 
-                        if(imageWidth > bufferedImage2.getWidth())
+                        if(imageWidth > bufferedImage2->getWidth())
                         
                                     {
-                                    imageWidth= bufferedImage2.getWidth();
+                                    imageWidth= bufferedImage2->getWidth();
     
 
                                     }
@@ -182,13 +188,13 @@ this->imageHeight= imageHeight;
                         
                                     {
                                     
-    ImageUtil imageUtil = ImageUtil::getInstance();;
+    ImageUtil* imageUtil = ImageUtil::getInstance();;
     
-this->logUtil.putF("Images were not the same size? Most likely a resolution change.", this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF("Images were not the same size? Most likely a resolution change.", this, this->commonStrings->CONSTRUCTOR);
     
-this->logUtil.putF("1: " +imageUtil.toString(bufferedImage), this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF("1: " +imageUtil->toString(bufferedImage), this, this->commonStrings->CONSTRUCTOR);
     
-this->logUtil.putF("2: " +imageUtil.toString(bufferedImage2), this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF("2: " +imageUtil->toString(bufferedImage2), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -215,13 +221,13 @@ this->logUtil.putF("2: " +imageUtil.toString(bufferedImage2), this, this->common
 }
 
 
-    public: void add(PixelDelta pixel){
-this->nonMatchingPixelVector.add(pixel);
+    public: void add(PixelDelta* pixel){
+this->nonMatchingPixelVector->add(pixel);
     
 }
 
 
-    public: BasicArrayList getNonMatchingPixelVector(){
+    public: BasicArrayList* getNonMatchingPixelVector(){
 
 
 
@@ -236,12 +242,12 @@ this->nonMatchingPixelVector.add(pixel);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().append("ImageComparisonInfo: ").append(this->name).append(" Number Of Matching Pixels: ").appendint(this->pixelsThatMatch).append("\nNumber Of Non-Matching Pixels: ").appendint(this->getNonMatchingPixelVector().size()).append("\nNumber Of Pixels Ignored: ").appendint(this->pixelsIgnored).append("\nMatching Percentage: ").appendfloat(this->getMatchingPercent()).toString();;
+                        return (new StringMaker())->append("ImageComparisonInfo: ")->append(this->name)->append(" Number Of Matching Pixels: ")->appendint(this->pixelsThatMatch)->append("\nNumber Of Non-Matching Pixels: ")->appendint(this->getNonMatchingPixelVector()->size())->append("\nNumber Of Pixels Ignored: ")->appendint(this->pixelsIgnored)->append("\nMatching Percentage: ")->appendfloat(this->getMatchingPercent())->toString();;
     
 }
 
 
-    public: std::vector<BufferedImage> getBufferedImages(){
+    public: std::vector<BufferedImage*> getBufferedImages(){
 
 
 
@@ -267,7 +273,7 @@ this->tolerance= tolerance;
 }
 
 
-    public: Long getFrameOne(){
+    public: int64_t getFrameOne(){
 
 
 
@@ -277,7 +283,7 @@ this->tolerance= tolerance;
 }
 
 
-    public: Long getFrameTwo(){
+    public: int64_t getFrameTwo(){
 
 
 

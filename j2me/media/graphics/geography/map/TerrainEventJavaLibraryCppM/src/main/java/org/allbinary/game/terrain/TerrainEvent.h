@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENT_H
         #define ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/logic/NullUtil.h>
 
       
@@ -48,21 +56,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicTerrainInfo.h"
+        #include "org/allbinary/game/terrain/BasicTerrainInfo.h"
 
 class TerrainEvent: public AllBinaryEventObject {
 
-    private: BasicTerrainInfo basicTerrainInfo = BasicTerrainInfo::NULL_BASIC_TERRAIN_INFO;
+    private: BasicTerrainInfo* basicTerrainInfo = BasicTerrainInfo::NULL_BASIC_TERRAIN_INFO;
 
 public: TerrainEvent(Object* basicTerrainInfo);
 
     public: std::string toString();
 
-    public: BasicTerrainInfo getBasicTerrainInfo();
+    public: BasicTerrainInfo* getBasicTerrainInfo();
 
-    public: void setBasicTerrainInfo(BasicTerrainInfo basicTerrainInfo);
+    public: void setBasicTerrainInfo(BasicTerrainInfo* basicTerrainInfo);
 
-    public: void setBasicTerrainInfoForCircularStaticPool(BasicTerrainInfo basicTerrainInfo);
+    public: void setBasicTerrainInfoForCircularStaticPool(BasicTerrainInfo* basicTerrainInfo);
 
 };
 

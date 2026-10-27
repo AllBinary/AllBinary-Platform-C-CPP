@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,13 +42,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ABRunnable.h"
+        #include "org/allbinary/thread/ABRunnable.h"
 
 class NullABRunnable: public ABRunnable {
 
-    private: static NullABRunnable instance() { return NullABRunnable(); }
+    private: static NullABRunnable* instance() { static std::unique_ptr<NullABRunnable> value(new NullABRunnable()); return value.get(); }
 
-    public: static NullABRunnable getInstance(){
+    public: static NullABRunnable* getInstance(){
 
 
 

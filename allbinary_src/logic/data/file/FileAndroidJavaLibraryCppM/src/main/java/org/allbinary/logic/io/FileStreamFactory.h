@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILESTREAMFACTORY_H
         #define ORG_ALLBINARY_LOGIC_IO_FILESTREAMFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,34 +58,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFileInputStream.h"
-#include "AbFileOutputStream.h"
+        #include "org/allbinary/logic/io/AbFileInputStream.h"
+#include "org/allbinary/logic/io/AbFileOutputStream.h"
 
 class FileStreamFactory
             : public Object
          {
 
-    private: static Object* SINGLETON = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* SINGLETON = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static FileStreamFactory getInstance();
+    public: static FileStreamFactory* getInstance();
 
     private: Object* context;
 
-private: FileStreamFactory(Context context);
+private: FileStreamFactory(Context* context);
 
                 //@Throws(Exception.constructor)
             
-    public: AbFileInputStream getFileInputStreamInstance(std::string path, std::string fileName);
+    public: AbFileInputStream* getFileInputStreamInstance(std::string path, std::string fileName);
 
                 //@Throws(Exception.constructor)
             
-    public: AbFileOutputStream getFileOutputStreamInstance(std::string path, std::string fileName);
+    public: AbFileOutputStream* getFileOutputStreamInstance(std::string path, std::string fileName);
 
                 //@Throws(Exception.constructor)
             
     public: void delete_(std::string path, std::string fileName);
 
-    private: Context getContext();
+    private: Context* getContext();
 
 };
 

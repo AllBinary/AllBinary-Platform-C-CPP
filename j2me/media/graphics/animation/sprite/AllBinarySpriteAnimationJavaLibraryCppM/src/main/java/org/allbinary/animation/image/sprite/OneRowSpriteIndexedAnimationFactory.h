@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -67,30 +73,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SpriteIndexedAnimation.h"
-#include "AdjustedSpriteIndexedAnimation.h"
+        #include "org/allbinary/animation/image/sprite/SpriteIndexedAnimation.h"
+#include "org/allbinary/animation/image/sprite/AdjustedSpriteIndexedAnimation.h"
 
 class OneRowSpriteIndexedAnimationFactory: public BaseImageAnimationFactory {
 
                 //@Throws(Exception.constructor)
             
-    public: static OneRowSpriteIndexedAnimationFactory createFactoryDX(Image image, int32_t dx, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static OneRowSpriteIndexedAnimationFactory* createFactoryDX(Image* image, int32_t dx, AnimationBehaviorFactory* animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public: static OneRowSpriteIndexedAnimationFactory createFactoryDXY(Image image, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static OneRowSpriteIndexedAnimationFactory* createFactoryDXY(Image* image, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public: static OneRowSpriteIndexedAnimationFactory createFactoryWH(Image image, int32_t width, int32_t height, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static OneRowSpriteIndexedAnimationFactory* createFactoryWH(Image* image, int32_t width, int32_t height, AnimationBehaviorFactory* animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public: static OneRowSpriteIndexedAnimationFactory createFactory(Image image, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static OneRowSpriteIndexedAnimationFactory* createFactory(Image* image, AnimationBehaviorFactory* animationBehaviorFactory);
 
-    private: const AnimationFactorySpriteScaleUtil animationFactorySpriteScaleUtil = AnimationFactorySpriteScaleUtil::getInstance();
+    private: AnimationFactorySpriteScaleUtil* animationFactorySpriteScaleUtil = AnimationFactorySpriteScaleUtil::getInstance();
 
-public: OneRowSpriteIndexedAnimationFactory(Image image, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
+public: OneRowSpriteIndexedAnimationFactory(Image* image, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory);
 
     public: void init(int32_t dx, int32_t dy);
 
@@ -98,7 +104,7 @@ public: OneRowSpriteIndexedAnimationFactory(Image image, std::vector<int32_t> se
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId);
+    public: Animation* getInstance(int32_t instanceId);
 
 };
 

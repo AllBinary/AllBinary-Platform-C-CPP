@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_INPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_INPUT_INPUTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -44,17 +50,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameInputStrings.h"
+        #include "org/allbinary/game/input/GameInputStrings.h"
 
 class InputProcessor
             : public Object
          {
 
-    protected: const GameInputStrings gameInputStrings = GameInputStrings::getInstance();
+    protected: GameInputStrings* gameInputStrings = GameInputStrings::getInstance();
 
     public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId);
 
-    public: void keyReleasedByDevice(Canvas canvas, int32_t keyCode, int32_t deviceId);
+    public: void keyReleasedByDevice(Canvas* canvas, int32_t keyCode, int32_t deviceId);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_PLATFORMASSETMANAGER_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_PLATFORMASSETMANAGER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,13 +60,13 @@ class PlatformAssetManager
             : public Object
          {
 
-    private: static PlatformAssetManager instance() { return PlatformAssetManager(); }
+    private: static PlatformAssetManager* instance() { static std::unique_ptr<PlatformAssetManager> value(new PlatformAssetManager()); return value.get(); }
 
-    public: static PlatformAssetManager getInstance();
+    public: static PlatformAssetManager* getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream getResourceAsStream(std::string resource);
+    public: InputStream* getResourceAsStream(std::string resource);
 
 };
 

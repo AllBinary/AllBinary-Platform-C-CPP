@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,20 +67,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicPaymentType.h"
-#include "PaymentTypeUtil.h"
+        #include "org/allbinary/business/user/commerce/money/payment/types/BasicPaymentType.h"
+#include "org/allbinary/business/user/commerce/money/payment/types/PaymentTypeUtil.h"
 
 class PaymentType
             : public Object
          {
 
-    private: BasicPaymentType basicPaymentType;
+    private: BasicPaymentType* basicPaymentType;
 
-    private: PaymentTransactionInterfaceFactoryInterface paymentTransactionInterfaceFactoryInterface;
+    private: PaymentTransactionInterfaceFactoryInterface* paymentTransactionInterfaceFactoryInterface;
 
-    private: PaymentProcessorInterfaceFactoryInterface paymentProcessorInterfaceFactoryInterface;
+    private: PaymentProcessorInterfaceFactoryInterface* paymentProcessorInterfaceFactoryInterface;
 
-protected: PaymentType(BasicPaymentType basicPaymentType){
+protected: PaymentType(BasicPaymentType* basicPaymentType){
 this->basicPaymentType= basicPaymentType;
     
 this->paymentTransactionInterfaceFactoryInterface= 
@@ -85,26 +91,26 @@ this->paymentProcessorInterfaceFactoryInterface=
                                         nullptr
                                     ;
     
-PaymentTypeUtil::getInstance().add(this);
+PaymentTypeUtil::getInstance()->add(this);
     
 }
 
 
-protected: PaymentType(BasicPaymentType basicPaymentType, PaymentTransactionInterfaceFactoryInterface paymentTransactionInterfaceFactoryInterface, PaymentProcessorInterfaceFactoryInterface paymentProcessorInterfaceFactoryInterface){
+protected: PaymentType(BasicPaymentType* basicPaymentType, PaymentTransactionInterfaceFactoryInterface* paymentTransactionInterfaceFactoryInterface, PaymentProcessorInterfaceFactoryInterface* paymentProcessorInterfaceFactoryInterface){
 this->basicPaymentType= basicPaymentType;
     
 this->paymentTransactionInterfaceFactoryInterface= paymentTransactionInterfaceFactoryInterface;
     
 this->paymentProcessorInterfaceFactoryInterface= paymentProcessorInterfaceFactoryInterface;
     
-PaymentTypeUtil::getInstance().add(this);
+PaymentTypeUtil::getInstance()->add(this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentTransactionInterfaceFactoryInterface getPaymentTransactionInterfaceFactoryInterface(){
+    public: PaymentTransactionInterfaceFactoryInterface* getPaymentTransactionInterfaceFactoryInterface(){
 
                         if(this->paymentTransactionInterfaceFactoryInterface == 
                                     nullptr
@@ -114,7 +120,7 @@ PaymentTypeUtil::getInstance().add(this);
                                     
 
 
-                            throw Exception("PaymentTransactionInterfaceFactoryInterface is Null");
+                            throw new Exception("PaymentTransactionInterfaceFactoryInterface is Null");
                     
 
                                     }
@@ -130,7 +136,7 @@ PaymentTypeUtil::getInstance().add(this);
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentProcessorInterfaceFactoryInterface getPaymentProcessorInterfaceFactoryInterface(){
+    public: PaymentProcessorInterfaceFactoryInterface* getPaymentProcessorInterfaceFactoryInterface(){
 
                         if(this->paymentProcessorInterfaceFactoryInterface == 
                                     nullptr
@@ -140,7 +146,7 @@ PaymentTypeUtil::getInstance().add(this);
                                     
 
 
-                            throw Exception("PaymentProcessorInterfaceFactoryInterface is Null");
+                            throw new Exception("PaymentProcessorInterfaceFactoryInterface is Null");
                     
 
                                     }
@@ -154,11 +160,11 @@ PaymentTypeUtil::getInstance().add(this);
 }
 
 
-    public: BasicArrayList toVector(){
+    public: BasicArrayList* toVector(){
 
-    BasicArrayList vector = BasicArrayListD();;
+    BasicArrayList* vector = new BasicArrayListD();;
     
-vector.addAllList(this->getBasicPaymentType().toVector());
+vector->addAllList(this->getBasicPaymentType()->toVector());
     
 
                         if(this->paymentTransactionInterfaceFactoryInterface != 
@@ -166,7 +172,7 @@ vector.addAllList(this->getBasicPaymentType().toVector());
                                 )
                         
                                     {
-                                    vector.add(this->paymentTransactionInterfaceFactoryInterface.constructor.name.toString());
+                                    vector->add(this->paymentTransactionInterfaceFactoryInterface->getClass()->getName());
     
 
                                     }
@@ -177,7 +183,7 @@ vector.addAllList(this->getBasicPaymentType().toVector());
                                 )
                         
                                     {
-                                    vector.add(this->paymentProcessorInterfaceFactoryInterface.constructor.name.toString());
+                                    vector->add(this->paymentProcessorInterfaceFactoryInterface->getClass()->getName());
     
 
                                     }
@@ -191,11 +197,11 @@ vector.addAllList(this->getBasicPaymentType().toVector());
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.putAll(this->getBasicPaymentType().toHashMap());
+hashMap->putAll(this->getBasicPaymentType()->toHashMap());
     
 
                         if(this->paymentTransactionInterfaceFactoryInterface != 
@@ -203,7 +209,7 @@ hashMap.putAll(this->getBasicPaymentType().toHashMap());
                                 )
                         
                                     {
-                                    hashMap.put(PaymentGatewayData::PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE.toString(), this->paymentTransactionInterfaceFactoryInterface.constructor.name.toString());
+                                    hashMap->put(PaymentGatewayData::PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE.toString(), this->paymentTransactionInterfaceFactoryInterface->getClass()->getName());
     
 
                                     }
@@ -214,7 +220,7 @@ hashMap.putAll(this->getBasicPaymentType().toHashMap());
                                 )
                         
                                     {
-                                    hashMap.put(PaymentGatewayData::PAYMENTPROCESSORINTERFACEFACTORYINTERFACE.toString(), this->paymentProcessorInterfaceFactoryInterface.constructor.name.toString());
+                                    hashMap->put(PaymentGatewayData::PAYMENTPROCESSORINTERFACEFACTORYINTERFACE.toString(), this->paymentProcessorInterfaceFactoryInterface->getClass()->getName());
     
 
                                     }
@@ -228,7 +234,7 @@ hashMap.putAll(this->getBasicPaymentType().toHashMap());
 }
 
 
-    public: BasicPaymentType getBasicPaymentType(){
+    public: BasicPaymentType* getBasicPaymentType(){
 
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,40 +70,40 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserEmailEventConfigurationInterface.h"
-#include "UserEmailEventConfigurationData.h"
-#include "UserEmailEventConfiguration.h"
-#include "UserEmailEventConfigurationMapping.h"
+        #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationInterface.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationData.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfiguration.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationMapping.h"
 
 class UserEmailEventConfigurationView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: UserEmailEventConfigurationInterface userEmailEventConfigurationInterface;
+    private: UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface;
 
-public: UserEmailEventConfigurationView(Node node){
+public: UserEmailEventConfigurationView(Node* node){
 
-    NodeList childNodeList = node.getChildNodes();;
+    NodeList* childNodeList = node->getChildNodes();;
     
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
 
     std::string name = DomNodeHelper::getTextNodeValue(UserEmailEventConfigurationData::NAME, childNodeList);;
     
-hashMap.put(UserEmailEventConfigurationData::NAME, name);
+hashMap->put(UserEmailEventConfigurationData::NAME, name);
     
 
     std::string eventListenerClassPath = DomNodeHelper::getTextNodeValue(UserEmailEventConfigurationData::LISTENER_CLASSPATH, childNodeList);;
     
-hashMap.put(UserEmailEventConfigurationData::LISTENER_CLASSPATH, eventListenerClassPath);
+hashMap->put(UserEmailEventConfigurationData::LISTENER_CLASSPATH, eventListenerClassPath);
     
-this->setUserEmailEventConfigurationInterface(UserEmailEventConfiguration(hashMap));
+this->setUserEmailEventConfigurationInterface(dynamic_cast<UserEmailEventConfigurationInterface*>(new UserEmailEventConfiguration(hashMap)));
     
 }
 
 
-public: UserEmailEventConfigurationView(UserEmailEventConfigurationInterface userEmailEventConfigurationInterface){
+public: UserEmailEventConfigurationView(UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface){
 this->setUserEmailEventConfigurationInterface(userEmailEventConfigurationInterface);
     
 }
@@ -105,15 +111,15 @@ this->setUserEmailEventConfigurationInterface(userEmailEventConfigurationInterfa
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    UserEmailEventConfigurationMapping userEmailEventConfigurationMapping = UserEmailEventConfigurationMapping(this->getUserEmailEventConfigurationInterface());;
+    UserEmailEventConfigurationMapping* userEmailEventConfigurationMapping = new UserEmailEventConfigurationMapping(this->getUserEmailEventConfigurationInterface());;
     
 
-    HashMap<Object*, Object*> hashMap = userEmailEventConfigurationMapping.toHashMap();;
+    HashMap<Object*, Object*>* hashMap = userEmailEventConfigurationMapping->toHashMap();;
     
 
-    Node node = ModDomHelper::createNameValueNodes(document, UserEmailEventConfigurationData::NAME, hashMap);;
+    Node* node = ModDomHelper::createNameValueNodes(document, UserEmailEventConfigurationData::NAME, hashMap);;
     
 
 
@@ -124,7 +130,7 @@ this->setUserEmailEventConfigurationInterface(userEmailEventConfigurationInterfa
 }
 
 
-    public: UserEmailEventConfigurationInterface getUserEmailEventConfigurationInterface(){
+    public: UserEmailEventConfigurationInterface* getUserEmailEventConfigurationInterface(){
 
 
 
@@ -134,7 +140,7 @@ this->setUserEmailEventConfigurationInterface(userEmailEventConfigurationInterfa
 }
 
 
-    public: void setUserEmailEventConfigurationInterface(UserEmailEventConfigurationInterface userEmailEventConfigurationInterface){
+    public: void setUserEmailEventConfigurationInterface(UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface){
 this->userEmailEventConfigurationInterface= userEmailEventConfigurationInterface;
     
 }

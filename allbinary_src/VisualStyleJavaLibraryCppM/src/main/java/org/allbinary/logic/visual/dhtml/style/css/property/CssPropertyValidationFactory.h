@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTYVALIDATIONFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTYVALIDATIONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -59,7 +65,7 @@ class CssPropertyValidationFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static ValidationInterface getInstance(Node node);
+    public: static ValidationInterface* getInstance(Node* node);
 
 private: CssPropertyValidationFactory();
 

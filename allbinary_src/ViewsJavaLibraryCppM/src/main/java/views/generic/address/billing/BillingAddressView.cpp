@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -71,25 +77,25 @@
         
 class BillingAddressView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
-    protected: StreetAddress streetAddress;
+    protected: StreetAddress* streetAddress;
 
-public: BillingAddressView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+public: BillingAddressView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->request= this->getPageContext().getRequest();
+this->request= dynamic_cast<HttpServletRequest*>(this->getPageContext()->getRequest());
     
 }
 
 
-    protected: HttpServletRequest getRequest(){
+    protected: HttpServletRequest* getRequest(){
 
 
 
@@ -101,13 +107,13 @@ this->request= this->getPageContext().getRequest();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
         try {
             
-    Node formNode = document.createElement(StreetAddressData::FORM);;
+    Node* formNode = document->createElement(StreetAddressData::FORM);;
     
-formNode.appendChild(this->streetAddress.toXmlNode(document));
+formNode->appendChild(this->streetAddress->toXmlNode(document));
     
 
 
@@ -117,13 +123,13 @@ formNode.appendChild(this->streetAddress.toXmlNode(document));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XSLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XSLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, "toXmlNode", &e);
     
 
                                     }
@@ -139,9 +145,9 @@ formNode.appendChild(this->streetAddress.toXmlNode(document));
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this);
+this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     
-this->addDomNodeInterface(StatesView());
+this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(new StatesView()));
     
 }
 
@@ -161,13 +167,13 @@ this->addDomNodeInterface(StatesView());
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_NOOPERATINGSYSTEM_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_NOOPERATINGSYSTEM_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,11 +45,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GenericOperatingSystem.h"
+        #include "org/allbinary/logic/system/os/GenericOperatingSystem.h"
 
 class NoOperatingSystem: public GenericOperatingSystem {
 
-    public: static const GenericOperatingSystem NO_OPERATING_SYSTEM = GenericOperatingSystem();
+    public: static GenericOperatingSystem* NO_OPERATING_SYSTEM() { static std::unique_ptr<GenericOperatingSystem> value(new GenericOperatingSystem()); return value.get(); }
 
 public: NoOperatingSystem();
 

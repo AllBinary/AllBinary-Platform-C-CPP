@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENT_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/graphics/CellPosition.h>
 
       
@@ -60,15 +68,15 @@
         
 class GeographicMapCellPositionEvent: public AllBinaryEventObject {
 
-    private: CellPosition geographicMapCellPosition = CellPositionFactory::getInstance().NONE;
+    private: CellPosition* geographicMapCellPosition = CellPositionFactory::getInstance()->NONE;
 
-public: GeographicMapCellPositionEvent(Object* anyType, CellPosition geographicMapCellPosition);
+public: GeographicMapCellPositionEvent(Object* anyType, CellPosition* geographicMapCellPosition);
 
     public: void init(Object* anyType);
 
-    public: void setGeographicMapCellPosition(GeographicMapCellPosition geographicMapCellPosition);
+    public: void setGeographicMapCellPosition(GeographicMapCellPosition* geographicMapCellPosition);
 
-    public: GeographicMapCellPosition getGeographicMapCellPosition();
+    public: GeographicMapCellPosition* getGeographicMapCellPosition();
 
     public: std::string toString();
 

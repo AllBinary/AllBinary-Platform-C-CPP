@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LAYER_LAYERMANAGERLOGGING_H
         #define ORG_ALLBINARY_LAYER_LAYERMANAGERLOGGING_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -58,21 +64,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LayerManagerLoggingBase.h"
-#include "AllBinaryLayer.h"
-#include "LayerManager.h"
+        #include "org/allbinary/layer/LayerManagerLoggingBase.h"
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#include "org/allbinary/layer/LayerManager.h"
 
 class LayerManagerLogging: public LayerManagerLoggingBase {
 
-    private: static LayerManagerLogging instance() { return LayerManagerLogging(); }
+    private: static LayerManagerLogging* instance() { static std::unique_ptr<LayerManagerLogging> value(new LayerManagerLogging()); return value.get(); }
 
-    public: static LayerManagerLogging getInstance();
+    public: static LayerManagerLogging* getInstance();
 
-    private: static bool removeFailed = false;
+    private: static inline bool removeFailed = false;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const StringMaker stringBuilder = StringMaker();
+    private: StringMaker* stringBuilder = new StringMaker();
 
     private: const std::string APPEND = "append";
 
@@ -92,15 +98,15 @@ class LayerManagerLogging: public LayerManagerLoggingBase {
 
                 //@Throws(Exception.constructor)
             
-    public: void append(AllBinaryLayer layerInterface);
+    public: void append(AllBinaryLayer* layerInterface);
 
-    public: void appendAt(AllBinaryLayer layerInterface, int32_t index);
+    public: void appendAt(AllBinaryLayer* layerInterface, int32_t index);
 
-    public: void remove(AllBinaryLayer layerInterface);
+    public: void remove(AllBinaryLayer* layerInterface);
 
-    public: void removeResult(LayerManager layerManager, AllBinaryLayer layerInterface, bool result);
+    public: void removeResult(LayerManager* layerManager, AllBinaryLayer* layerInterface, bool result);
 
-    private: void log(LayerManager layerManager);
+    private: void log(LayerManager* layerManager);
 
     public: void clear();
 

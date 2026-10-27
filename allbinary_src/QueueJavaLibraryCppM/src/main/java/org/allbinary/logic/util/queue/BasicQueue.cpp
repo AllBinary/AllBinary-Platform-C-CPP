@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -51,7 +57,7 @@ class BasicQueue
             : public Object
          {
 
-    protected: const BasicArrayList queueVector = BasicArrayListD();
+    protected: BasicArrayList* queueVector = new BasicArrayListD();
 
 protected: BasicQueue(){
 }
@@ -61,7 +67,7 @@ protected: BasicQueue(){
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     protected: bool offer(Object* anyType){
-this->queueVector.add(anyType);
+this->queueVector->add(anyType);
     
 
 
@@ -74,7 +80,7 @@ this->queueVector.add(anyType);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     protected: void remove(Object* anyType){
-this->queueVector.remove(anyType);
+this->queueVector->remove(anyType);
     
 }
 
@@ -82,9 +88,9 @@ this->queueVector.remove(anyType);
 
     protected: Object* removeLast(){
 
-    Object* anyType = this->queueVector.get(this->queueVector.size() -1);;
+    Object* anyType = this->queueVector->get(this->queueVector->size() -1);;
     
-this->queueVector.remove(anyType);
+this->queueVector->remove(anyType);
     
 
 

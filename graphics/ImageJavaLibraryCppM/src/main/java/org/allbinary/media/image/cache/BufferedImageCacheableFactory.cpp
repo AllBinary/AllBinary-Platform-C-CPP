@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/util/cache/CacheableInterface.h>
@@ -44,23 +50,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BufferedImageCacheable.h"
-#include "BufferedImageInfo.h"
+        #include "org/allbinary/media/image/cache/BufferedImageCacheable.h"
+#include "org/allbinary/media/image/cache/BufferedImageInfo.h"
 
 class BufferedImageCacheableFactory
             : public Object
-        : public CacheableInterfaceFactoryInterface {
+        , public CacheableInterfaceFactoryInterface {
 
 public: BufferedImageCacheableFactory(){
 }
 
 
-    public: CacheableInterface getInstance(Object* key){
+    public: CacheableInterface* getInstance(Object* key){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BufferedImageCacheable(*dynamic_cast<BufferedImageInfo*>(key));
+                        return new BufferedImageCacheable(dynamic_cast<BufferedImageInfo*>(key));
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_RESOURCE_FEATUREDRESOURCERELATIVERELATIONSHIPFACTORY_H
         #define ORG_ALLBINARY_GAME_RESOURCE_FEATUREDRESOURCERELATIVERELATIONSHIPFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/PointFactory.h>
@@ -65,26 +71,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "FeaturedResourceFactory.h"
-#include "ResourceRelativeRelationshipFactoryInterface.h"
+        #include "org/allbinary/game/resource/FeaturedResourceFactory.h"
+#include "org/allbinary/game/resource/ResourceRelativeRelationshipFactoryInterface.h"
 
 class FeaturedResourceRelativeRelationshipFactory: public FeaturedResourceFactory {
 
-    private: static FeaturedResourceRelativeRelationshipFactory INSTANCE = FeaturedResourceRelativeRelationshipFactory();
+    private: static FeaturedResourceRelativeRelationshipFactory* INSTANCE() { static std::unique_ptr<FeaturedResourceRelativeRelationshipFactory> value(new FeaturedResourceRelativeRelationshipFactory()); return value.get(); }
 
-    public: static FeaturedResourceRelativeRelationshipFactory getInstance();
+    public: static FeaturedResourceRelativeRelationshipFactory* getInstance();
 
 private: FeaturedResourceRelativeRelationshipFactory();
 
-    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
+    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getRelativeRelationshipList(std::string resource, AllBinaryLayer layer);
+    public: BasicArrayList* getRelativeRelationshipList(std::string resource, AllBinaryLayer* layer);
 
                 //@Throws(Exception.constructor)
             
-    private: BasicArrayList duplicate(BasicArrayList list, AllBinaryLayer layer);
+    private: BasicArrayList* duplicate(BasicArrayList* list, AllBinaryLayer* layer);
 
 };
 

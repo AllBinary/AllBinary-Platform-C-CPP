@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -49,7 +55,7 @@ public: GameFeatureCanvas(){
 }
 
 
-    protected: void paint(Graphics graphics){
+    protected: void paint(Graphics* graphics){
 }
 
 

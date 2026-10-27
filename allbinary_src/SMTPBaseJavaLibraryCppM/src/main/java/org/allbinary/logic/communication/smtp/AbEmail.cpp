@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,27 +58,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "EmailInterface.h"
-#include "Email.h"
+        #include "org/allbinary/logic/communication/smtp/EmailInterface.h"
+#include "org/allbinary/logic/communication/smtp/Email.h"
 
 class AbEmail
             : public Object
-        : public EmailInterface {
+        , public EmailInterface {
 
-    private: Email email;
+    private: Email* email;
 
 public: AbEmail(std::string server, std::string from, std::string to, std::string subject, std::string textBody, std::string htmlAttachment, std::string contentBase){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGINGERROR))
                         
                                     {
-                                    this->email= Email(from, to, subject, server, textBody, htmlAttachment, contentBase, true);
+                                    this->email= new Email(from, to, subject, server, textBody, htmlAttachment, contentBase, true);
     
 
                                     }
                                 
                         else {
-                            this->email= Email(from, to, subject, server, textBody, htmlAttachment, contentBase);
+                            this->email= new Email(from, to, subject, server, textBody, htmlAttachment, contentBase);
     
 
                         }
@@ -80,12 +86,12 @@ public: AbEmail(std::string server, std::string from, std::string to, std::strin
 }
 
 
-    public: MimeMessage getMimeMessage(){
+    public: MimeMessage* getMimeMessage(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->email.getMimeMessage();;
+                        return this->email->getMimeMessage();;
     
 }
 
@@ -95,7 +101,7 @@ public: AbEmail(std::string server, std::string from, std::string to, std::strin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->email.getDebugInfo();;
+                        return this->email->getDebugInfo();;
     
 }
 
@@ -107,53 +113,53 @@ public: AbEmail(std::string server, std::string from, std::string to, std::strin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->email.log();;
+                        return this->email->log();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->email.toHashMap();;
+                        return this->email->toHashMap();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->email.toXmlNode(document);;
+                        return this->email->toXmlNode(document);;
     
 }
 
 
-    public: Email getEmail(){
+    public: Email* getEmail(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->email;
+                        return dynamic_cast<Email*>(this->email);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Document toXmlDoc(){
+    public: Document* toXmlDoc(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->email.toXmlDoc();;
+                        return this->email->toXmlDoc();;
     
 }
 

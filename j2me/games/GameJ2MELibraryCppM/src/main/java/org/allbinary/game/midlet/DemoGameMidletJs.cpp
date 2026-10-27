@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/displayable/canvas/GameCanvasRunnableInterface.h>
@@ -46,7 +52,7 @@ class DemoGameMidletJs {
 
                 //@Throws(Exception.constructor)
             
-    public: GameCanvasRunnableInterface createDemoGameCanvasRunnableInterface()
+    public: virtual GameCanvasRunnableInterface* createDemoGameCanvasRunnableInterface() = 0;
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -47,7 +53,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RightToLeftImageAnimation.h"
+        #include "org/allbinary/animation/image/RightToLeftImageAnimation.h"
 
 class AdjustedRightToLeftImageAnimation: public RightToLeftImageAnimation {
 
@@ -55,7 +61,7 @@ class AdjustedRightToLeftImageAnimation: public RightToLeftImageAnimation {
 
     private: int32_t dy= 0;
 
-public: AdjustedRightToLeftImageAnimation(Image image, int32_t dx, int32_t dy, AnimationBehavior animationBehavior) : RightToLeftImageAnimation(image, animationBehavior){
+public: AdjustedRightToLeftImageAnimation(Image* image, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) : RightToLeftImageAnimation(image, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -77,7 +83,7 @@ this->dy= dy;
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 super.paintXY(graphics, x +this->dx, y +this->dy);
     
 }

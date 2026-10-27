@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_ORDERHISTORYHELPER_H
         #define ADMIN_TAGHELPERS_ORDERHISTORYHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -59,15 +65,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicTable.h"
+        #include "admin/taghelpers/BasicTable.h"
 
 class OrderHistoryHelper: public BasicTable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: Portion portion;
+    private: Portion* portion;
 
-public: OrderHistoryHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: OrderHistoryHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
     public: std::string drop();
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOPROPERTIESFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOPROPERTIESFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,24 +73,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoData.h"
-#include "TransformInfoProperties.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoData.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfoProperties.h"
 
 class TransformInfoPropertiesFactory
             : public Object
          {
 
-    private: static TransformInfoPropertiesFactory instance() { return TransformInfoPropertiesFactory(); }
+    private: static TransformInfoPropertiesFactory* instance() { static std::unique_ptr<TransformInfoPropertiesFactory> value(new TransformInfoPropertiesFactory()); return value.get(); }
 
-    public: static TransformInfoPropertiesFactory getInstance();
+    public: static TransformInfoPropertiesFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: TransformInfoPropertiesFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoProperties getInstance(Node node);
+    public: TransformInfoProperties* getInstance(Node* node);
 
 };
 

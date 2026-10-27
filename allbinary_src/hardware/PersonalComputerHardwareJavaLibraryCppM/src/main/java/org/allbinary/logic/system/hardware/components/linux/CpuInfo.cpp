@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,41 +49,41 @@ class CpuInfo
             : public Object
          {
 
-    public: static const CpuInfo PROCESSOR = CpuInfo("processor");
+    public: static CpuInfo* PROCESSOR() { static std::unique_ptr<CpuInfo> value(new CpuInfo("processor")); return value.get(); }
 
-    public: static const CpuInfo VENDORID = CpuInfo("vendor_id");
+    public: static CpuInfo* VENDORID() { static std::unique_ptr<CpuInfo> value(new CpuInfo("vendor_id")); return value.get(); }
 
-    public: static const CpuInfo CPUFAMILY = CpuInfo("cpu family");
+    public: static CpuInfo* CPUFAMILY() { static std::unique_ptr<CpuInfo> value(new CpuInfo("cpu family")); return value.get(); }
 
-    public: static const CpuInfo MODEL = CpuInfo("model");
+    public: static CpuInfo* MODEL() { static std::unique_ptr<CpuInfo> value(new CpuInfo("model")); return value.get(); }
 
-    public: static const CpuInfo MODELNAME = CpuInfo("model name");
+    public: static CpuInfo* MODELNAME() { static std::unique_ptr<CpuInfo> value(new CpuInfo("model name")); return value.get(); }
 
-    public: static const CpuInfo STEPPING = CpuInfo("stepping");
+    public: static CpuInfo* STEPPING() { static std::unique_ptr<CpuInfo> value(new CpuInfo("stepping")); return value.get(); }
 
-    public: static const CpuInfo CPUMHZ = CpuInfo("cpu MHz");
+    public: static CpuInfo* CPUMHZ() { static std::unique_ptr<CpuInfo> value(new CpuInfo("cpu MHz")); return value.get(); }
 
-    public: static const CpuInfo CACHESIZE = CpuInfo("cache size");
+    public: static CpuInfo* CACHESIZE() { static std::unique_ptr<CpuInfo> value(new CpuInfo("cache size")); return value.get(); }
 
-    public: static const CpuInfo FDIVBUG = CpuInfo("fdiv_bug");
+    public: static CpuInfo* FDIVBUG() { static std::unique_ptr<CpuInfo> value(new CpuInfo("fdiv_bug")); return value.get(); }
 
-    public: static const CpuInfo HLTBUG = CpuInfo("hlt_bug");
+    public: static CpuInfo* HLTBUG() { static std::unique_ptr<CpuInfo> value(new CpuInfo("hlt_bug")); return value.get(); }
 
-    public: static const CpuInfo F00FBUG = CpuInfo("f00f_bug");
+    public: static CpuInfo* F00FBUG() { static std::unique_ptr<CpuInfo> value(new CpuInfo("f00f_bug")); return value.get(); }
 
-    public: static const CpuInfo COMABUG = CpuInfo("coma_bug");
+    public: static CpuInfo* COMABUG() { static std::unique_ptr<CpuInfo> value(new CpuInfo("coma_bug")); return value.get(); }
 
-    public: static const CpuInfo FPU = CpuInfo("fpu");
+    public: static CpuInfo* FPU() { static std::unique_ptr<CpuInfo> value(new CpuInfo("fpu")); return value.get(); }
 
-    public: static const CpuInfo FPUEXCEPTION = CpuInfo("fpu_exception");
+    public: static CpuInfo* FPUEXCEPTION() { static std::unique_ptr<CpuInfo> value(new CpuInfo("fpu_exception")); return value.get(); }
 
-    public: static const CpuInfo CPUIDLEVEL = CpuInfo("cache size");
+    public: static CpuInfo* CPUIDLEVEL() { static std::unique_ptr<CpuInfo> value(new CpuInfo("cache size")); return value.get(); }
 
-    public: static const CpuInfo WP = CpuInfo("yes");
+    public: static CpuInfo* WP() { static std::unique_ptr<CpuInfo> value(new CpuInfo("yes")); return value.get(); }
 
-    public: static const CpuInfo FLAGS = CpuInfo("flags");
+    public: static CpuInfo* FLAGS() { static std::unique_ptr<CpuInfo> value(new CpuInfo("flags")); return value.get(); }
 
-    public: static const CpuInfo BOGOMIPS = CpuInfo("bogomips");
+    public: static CpuInfo* BOGOMIPS() { static std::unique_ptr<CpuInfo> value(new CpuInfo("bogomips")); return value.get(); }
 
     private: std::string name;
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_GYRO_ACCELEROMETERSENSORUPDATEPROCESSOR_H
         #define ORG_ALLBINARY_INPUT_GYRO_ACCELEROMETERSENSORUPDATEPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/canvas/Processor.h>

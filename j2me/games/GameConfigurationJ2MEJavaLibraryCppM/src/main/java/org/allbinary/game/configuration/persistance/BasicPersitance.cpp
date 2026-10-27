@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -69,26 +75,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PersistanceStrings.h"
-#include "NullRecordStore.h"
+        #include "org/allbinary/game/configuration/persistance/PersistanceStrings.h"
+#include "org/allbinary/game/configuration/persistance/NullRecordStore.h"
 
 class BasicPersitance
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const PersistanceStrings persistanceStrings = PersistanceStrings::getInstance();
+    protected: PersistanceStrings* persistanceStrings = PersistanceStrings::getInstance();
 
-    private: const PlatformRecordIdUtil platformRecordIdUtil = PlatformRecordIdUtil::getInstance();
+    private: PlatformRecordIdUtil* platformRecordIdUtil = PlatformRecordIdUtil::getInstance();
 
     private: std::string recordId;
 
-    protected: const BasicArrayList valueList = BasicArrayListD();
+    protected: BasicArrayList* valueList = new BasicArrayListD();
 
-    protected: const BasicArrayList idList = BasicArrayListD();
+    protected: BasicArrayList* idList = new BasicArrayListD();
 
 protected: BasicPersitance(std::string recordId){
 this->recordId= recordId;
@@ -98,7 +104,7 @@ this->recordId= recordId;
 
                 //@Throws(Exception.constructor)
             
-    public: void deleteRecoreStore(AbeClientInformationInterface abeClientInformation){
+    public: void deleteRecoreStore(AbeClientInformationInterface* abeClientInformation){
 RecordStore::deleteRecordStore(this->getRecordId(abeClientInformation));
     
 }
@@ -106,9 +112,9 @@ RecordStore::deleteRecordStore(this->getRecordId(abeClientInformation));
 
                 //@Throws(Exception.constructor)
             
-    public: void deleteAll(AbeClientInformationInterface abeClientInformation){
+    public: void deleteAll(AbeClientInformationInterface* abeClientInformation){
 
-    int32_t size = this->idList.size();;
+    int32_t size = this->idList->size();;
     
 
 
@@ -118,7 +124,7 @@ RecordStore::deleteRecordStore(this->getRecordId(abeClientInformation));
     int32_t index = 0;index < size; index++)
         {
 
-    Integer integer = this->idList.objectArray[index];;
+    int32_t integer = this->idList->objectArray[index];;
     
 this->delete(abeClientInformation, integer.intValue());
     
@@ -131,21 +137,21 @@ this->clear();
 
                 //@Throws(Exception.constructor)
             
-    public: void delete_(AbeClientInformationInterface abeClientInformation, int32_t deleteId){
+    public: void delete_(AbeClientInformationInterface* abeClientInformation, int32_t deleteId){
 
-    RecordStore recordStore = NullRecordStore::NULL_RECORD_STORE;;
+    RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
 
         try {
-            this->logUtil.putF(StringMaker().append(this->persistanceStrings.DELETING_WITH_ID).appendint(deleteId).toString(), this, this->commonStrings.delete_);
+            this->logUtil->putF((new StringMaker())->append(this->persistanceStrings->DELETING_WITH_ID)->appendint(deleteId)->toString(), this, this->commonStrings->delete_);
     
 recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);
     
-recordStore.deleteRecord(deleteId);
+recordStore->deleteRecord(deleteId);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -161,9 +167,9 @@ recordStore.deleteRecord(deleteId);
                                 )
                         
                                     {
-                                    PreLogUtil::put(this->persistanceStrings.CLOSING_RECORDSTORE, this, this->commonStrings.delete_);
+                                    PreLogUtil::put(this->persistanceStrings->CLOSING_RECORDSTORE, this, this->commonStrings->delete_);
     
-recordStore.closeRecordStore();
+recordStore->closeRecordStore();
     
 
                                     }
@@ -174,17 +180,17 @@ recordStore.closeRecordStore();
 }
 
 
-    public: std::string getRecordId(AbeClientInformationInterface abeClientInformation){
+    public: std::string getRecordId(AbeClientInformationInterface* abeClientInformation){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->platformRecordIdUtil.getRecordId(abeClientInformation, this->recordId);;
+                        return this->platformRecordIdUtil->getRecordId(abeClientInformation, this->recordId);;
     
 }
 
 
-    public: BasicArrayList getList(){
+    public: BasicArrayList* getList(){
 
 
 
@@ -194,7 +200,7 @@ recordStore.closeRecordStore();
 }
 
 
-    public: BasicArrayList getIds(){
+    public: BasicArrayList* getIds(){
 
 
 
@@ -205,9 +211,9 @@ recordStore.closeRecordStore();
 
 
     public: void clear(){
-this->valueList.clear();
+this->valueList->clear();
     
-this->idList.clear();
+this->idList->clear();
     
 }
 

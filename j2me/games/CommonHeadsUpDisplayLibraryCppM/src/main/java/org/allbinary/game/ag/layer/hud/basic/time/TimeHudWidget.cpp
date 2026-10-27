@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -58,18 +64,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Timer.h"
+        #include "org/allbinary/game/ag/layer/hud/basic/time/Timer.h"
 
 class TimeHudWidget: public BasicHud {
 
                 //@Throws(Exception.constructor)
             
-    public: static TimeHudWidget getInstance(int32_t location, int32_t direction, BasicColor basicColor, Timer timer){
+    public: static TimeHudWidget* getInstance(int32_t location, int32_t direction, BasicColor* basicColor, Timer* timer){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TimeHudWidget(location, direction, 2, basicColor, timer);
+                        return new TimeHudWidget(location, direction, 2, basicColor, timer);
     
 }
 
@@ -80,13 +86,13 @@ class TimeHudWidget: public BasicHud {
 
     private: int32_t offset= 0;
 
-    private: std::vector<char> string = PrimitiveLongSingleton::getInstance().ZERO;
+    private: std::vector<char> string = PrimitiveLongSingleton::getInstance()->ZERO;
 
     private: int32_t totalDigits = 1;
 
-    private: Timer timer;
+    private: Timer* timer;
 
-public: TimeHudWidget(int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor, Timer timer) : BasicHud(location, direction, bufferZone, basicColor){
+public: TimeHudWidget(int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor, Timer* timer) : BasicHud(location, direction, bufferZone, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -102,13 +108,13 @@ this->updateMaxHeight= 14;
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->updateMaxWidth= font.getSize() *5;
+this->updateMaxWidth= font->getSize() *5;
     
-this->offset= font.stringWidth(this->TIME_STRING) +MyFontProcessor::defaultStringWidth(font, 3);
+this->offset= font->stringWidth(this->TIME_STRING) +MyFontProcessor::defaultStringWidth(font, 3);
     
 super.updateMeasurement(graphics);
     
@@ -116,7 +122,7 @@ super.updateMeasurement(graphics);
 
 
     public: void update(){
-this->timer.update();
+this->timer->update();
     
 this->set();
     
@@ -124,14 +130,14 @@ this->set();
 
 
     private: void set(){
-this->string= this->timer.getTimeChars();
+this->string= this->timer->getTimeChars();
     
-this->totalDigits= this->timer.getCurrentTotalDigits();
+this->totalDigits= this->timer->getCurrentTotalDigits();
     
 }
 
 
-    public: Timer getTimer(){
+    public: Timer* getTimer(){
 
 
 
@@ -141,7 +147,7 @@ this->totalDigits= this->timer.getCurrentTotalDigits();
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 super.paintDX(graphics, this->TIME_CHAR_ARRAY, 0, this->TIME_CHAR_ARRAY.size(), this->string, 0, this->totalDigits, this->offset);
     
 }

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_CONTENT_NOTIFICATIONBUILDERAPI23_H
         #define ORG_ALLBINARY_CONTENT_NOTIFICATIONBUILDERAPI23_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/System.h"
         
             #include "java/lang/Integer.h"
@@ -61,11 +67,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NotificationBuilder.h"
+        #include "org/allbinary/content/NotificationBuilder.h"
 
 class NotificationBuilderAPI23: public NotificationBuilder {
 
-    public: Parcelable build(Context context, Command command, std::string message, Integer integer, PendingIntent pendingIntent);
+    public: Parcelable* build(Context* context, Command* command, std::string message, int32_t integer, PendingIntent* pendingIntent);
 
 };
 

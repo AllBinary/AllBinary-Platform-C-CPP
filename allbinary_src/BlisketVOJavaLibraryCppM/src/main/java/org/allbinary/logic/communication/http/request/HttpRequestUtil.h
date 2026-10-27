@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_HTTPREQUESTUTIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_HTTPREQUESTUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -51,9 +57,9 @@ class HttpRequestUtil
             : public Object
          {
 
-    private: static HttpRequestUtil instance() { return HttpRequestUtil(); }
+    private: static HttpRequestUtil* instance() { static std::unique_ptr<HttpRequestUtil> value(new HttpRequestUtil()); return value.get(); }
 
-    public: static HttpRequestUtil getInstance();
+    public: static HttpRequestUtil* getInstance();
 
 private: HttpRequestUtil();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -83,7 +89,7 @@
         
 class RootStoreThemeCategoryProperties: public RootStoreCategoryProperties {
 
-public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface) : RootStoreCategoryProperties(transformInfoInterface){
+public: RootStoreThemeCategoryProperties(TransformInfoInterface* transformInfoInterface) : RootStoreCategoryProperties(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -93,7 +99,7 @@ public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInt
 }
 
 
-public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface, AbPath abPath) : RootStoreCategoryProperties(transformInfoInterface, abPath){
+public: RootStoreThemeCategoryProperties(TransformInfoInterface* transformInfoInterface, AbPath* abPath) : RootStoreCategoryProperties(transformInfoInterface, abPath){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -103,7 +109,7 @@ public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInt
 }
 
 
-public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface, Node node) : RootStoreCategoryProperties(transformInfoInterface, node){
+public: RootStoreThemeCategoryProperties(TransformInfoInterface* transformInfoInterface, Node* node) : RootStoreCategoryProperties(transformInfoInterface, node){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -113,7 +119,7 @@ public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInt
 }
 
 
-public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface, HashMap<Object*, Object*> categoryPropertiesHashMap) : RootStoreCategoryProperties(transformInfoInterface, categoryPropertiesHashMap){
+public: RootStoreThemeCategoryProperties(TransformInfoInterface* transformInfoInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap) : RootStoreCategoryProperties(transformInfoInterface, categoryPropertiesHashMap){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -127,33 +133,33 @@ public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInt
             
     public: void initPath(){
 
-    TransformInfoHttpStoreInterface transformInfoHttpStoreInterface = this->transformInfoInterface;;
+    TransformInfoHttpStoreInterface* transformInfoHttpStoreInterface = dynamic_cast<TransformInfoHttpStoreInterface*>(this->transformInfoInterface);;
     
 
-    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(transformInfoHttpStoreInterface.getStoreName());;
+    StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(transformInfoHttpStoreInterface->getStoreName());;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(AbPathData::getInstance().SEPARATOR);
+stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
-stringBuffer.append(FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH);
+stringBuffer->append(FREEBLISKET_PATH_GLOBALS::getInstance()->XSLPATH);
     
-stringBuffer.append(storeFrontInterface.getName());
+stringBuffer->append(storeFrontInterface->getName());
     
-stringBuffer.append(AbPathData::getInstance().SEPARATOR);
+stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
-stringBuffer.append(FREEBLISKET_PATH_GLOBALS::getInstance().THEMEPATH);
-    
-
-    AbPath abPath = AbPath(stringBuffer.toString(), StringUtil::getInstance().EMPTY_STRING);;
+stringBuffer->append(FREEBLISKET_PATH_GLOBALS::getInstance()->THEMEPATH);
     
 
-    HttpServletRequest httpServletRequest = transformInfoHttpStoreInterface.getPageContext().getRequest();;
+    AbPath* abPath = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
     
-this->webAppAbPath= AbPath(httpServletRequest.getContextPath() +abPath.toString(), StringUtil::getInstance().EMPTY_STRING);
+
+    HttpServletRequest* httpServletRequest = dynamic_cast<HttpServletRequest*>(transformInfoHttpStoreInterface->getPageContext()->getRequest());;
     
-this->setRootFilePath(AbPath(URLGLOBALS::getMainPath() +abPath.toString(), StringUtil::getInstance().EMPTY_STRING));
+this->webAppAbPath= new AbPath(httpServletRequest->getContextPath() +abPath->toString(), StringUtil::getInstance()->EMPTY_STRING);
+    
+this->setRootFilePath(new AbPath(URLGLOBALS::getMainPath() +abPath->toString(), StringUtil::getInstance()->EMPTY_STRING));
     
 }
 

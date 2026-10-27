@@ -21,6 +21,12 @@
         #ifndef VIEWS_VALIDATIONONLYTEMPUTIL_H
         #define VIEWS_VALIDATIONONLYTEMPUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,17 +66,17 @@ class ValidationOnlyTempUtil
             : public Object
          {
 
-    private: static ValidationOnlyTempUtil instance() { return ValidationOnlyTempUtil(); }
+    private: static ValidationOnlyTempUtil* instance() { static std::unique_ptr<ValidationOnlyTempUtil> value(new ValidationOnlyTempUtil()); return value.get(); }
 
-    public: static ValidationOnlyTempUtil getInstance();
+    public: static ValidationOnlyTempUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: ValidationOnlyTempUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(ValidationComponentInterface validationComponentInterface);
+    public: std::string view(ValidationComponentInterface* validationComponentInterface);
 
 };
 

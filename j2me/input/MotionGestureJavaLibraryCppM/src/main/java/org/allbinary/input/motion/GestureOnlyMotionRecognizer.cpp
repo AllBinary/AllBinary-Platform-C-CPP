@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/CustomGPoint.h>
@@ -47,22 +53,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionRecognizer.h"
+        #include "org/allbinary/input/motion/MotionRecognizer.h"
 
 class GestureOnlyMotionRecognizer: public MotionRecognizer {
 
-    private: static int32_t index = 0;
+    private: static inline int32_t index = 0;
 
-    private: static const GPointCircularPool pointCircularPool = GPointCircularPool(40);
+    private: static GPointCircularPool* pointCircularPool() { static std::unique_ptr<GPointCircularPool> value(new GPointCircularPool(40)); return value.get(); }
 
-    private: MotionGestureRecognizer motionGestureRecognizer;
+    private: MotionGestureRecognizer* motionGestureRecognizer;
 
     private: int32_t id;
 
 public: GestureOnlyMotionRecognizer(){
 this->id= GestureOnlyMotionRecognizer::index++;
     
-this->motionGestureRecognizer= MotionGestureRecognizer(this->id);
+this->motionGestureRecognizer= new MotionGestureRecognizer(this->id);
     
 }
 
@@ -71,13 +77,13 @@ this->motionGestureRecognizer= MotionGestureRecognizer(this->id);
             
     public: void processStartMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
 
-    CustomGPoint point = GestureOnlyMotionRecognizer::pointCircularPool.getNextInstance();;
+    CustomGPoint* point = dynamic_cast<CustomGPoint*>(GestureOnlyMotionRecognizer::pointCircularPool()->getNextInstance());;
     
-point.setX(x);
+point->setX(x);
     
-point.setY(y);
+point->setY(y);
     
-this->motionGestureRecognizer.processPressedMotionEvent(point, deviceId, modifiers);
+this->motionGestureRecognizer->processPressedMotionEvent(point, deviceId, modifiers);
     
 }
 
@@ -86,13 +92,13 @@ this->motionGestureRecognizer.processPressedMotionEvent(point, deviceId, modifie
             
     public: void processEndMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
 
-    CustomGPoint point = GestureOnlyMotionRecognizer::pointCircularPool.getNextInstance();;
+    CustomGPoint* point = dynamic_cast<CustomGPoint*>(GestureOnlyMotionRecognizer::pointCircularPool()->getNextInstance());;
     
-point.setX(x);
+point->setX(x);
     
-point.setY(y);
+point->setY(y);
     
-this->motionGestureRecognizer.processReleasedMotionEvent(point, deviceId, modifiers);
+this->motionGestureRecognizer->processReleasedMotionEvent(point, deviceId, modifiers);
     
 }
 
@@ -101,13 +107,13 @@ this->motionGestureRecognizer.processReleasedMotionEvent(point, deviceId, modifi
             
     public: void processDraggedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
 
-    CustomGPoint point = GestureOnlyMotionRecognizer::pointCircularPool.getNextInstance();;
+    CustomGPoint* point = dynamic_cast<CustomGPoint*>(GestureOnlyMotionRecognizer::pointCircularPool()->getNextInstance());;
     
-point.setX(x);
+point->setX(x);
     
-point.setY(y);
+point->setY(y);
     
-this->motionGestureRecognizer.processDraggedMotionEvent(point, deviceId, modifiers);
+this->motionGestureRecognizer->processDraggedMotionEvent(point, deviceId, modifiers);
     
 }
 

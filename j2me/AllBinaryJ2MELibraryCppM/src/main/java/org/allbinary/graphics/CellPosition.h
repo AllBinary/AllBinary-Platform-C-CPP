@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_CELLPOSITION_H
         #define ORG_ALLBINARY_GRAPHICS_CELLPOSITION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graph/V.h>
 
       
@@ -51,7 +57,7 @@
         
 class CellPosition: public V {
 
-    public: static std::string toStringCellPosition(CellPosition basicGeographicMapCellPosition);
+    public: static std::string toStringCellPosition(CellPosition* basicGeographicMapCellPosition);
 
     public: static std::string toStringColRow(int32_t i_column, int32_t i_row);
 

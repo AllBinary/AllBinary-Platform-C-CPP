@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/event/GameKeyEvent.h>
@@ -44,12 +50,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SpecialGameInputProcessor.h"
-#include "CollidableDestroyableDamageableLayer.h"
+        #include "org/allbinary/game/layer/special/SpecialGameInputProcessor.h"
+#include "org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h"
 
 class Special5GameInputProcessor: public SpecialGameInputProcessor {
 
-public: Special5GameInputProcessor(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer) : SpecialGameInputProcessor(collidableDestroyableDamageableLayer){
+public: Special5GameInputProcessor(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer) : SpecialGameInputProcessor(collidableDestroyableDamageableLayer){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -61,7 +67,7 @@ public: Special5GameInputProcessor(CollidableDestroyableDamageableLayer collidab
 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
+    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
 this->collidableDestroyableDamageableLayer.special5(allbinaryLayerManager, gameKeyEvent);
     
 }

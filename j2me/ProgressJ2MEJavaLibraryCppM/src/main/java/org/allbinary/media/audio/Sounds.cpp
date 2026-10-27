@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -68,23 +74,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SoundStrings.h"
-#include "SoundsFactoryInterface.h"
-#include "Sound.h"
+        #include "org/allbinary/media/audio/SoundStrings.h"
+#include "org/allbinary/media/audio/SoundsFactoryInterface.h"
+#include "org/allbinary/media/audio/Sound.h"
 
 class Sounds
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const SoundStrings soundStrings = SoundStrings::getInstance();
+    private: SoundStrings* soundStrings = SoundStrings::getInstance();
 
-    private: SoundsFactoryInterface soundsFactoryInterface;
+    private: SoundsFactoryInterface* soundsFactoryInterface;
 
-public: Sounds(SoundsFactoryInterface soundsFactoryInterface){
+public: Sounds(SoundsFactoryInterface* soundsFactoryInterface){
 this->soundsFactoryInterface= soundsFactoryInterface;
     
 }
@@ -93,30 +99,30 @@ this->soundsFactoryInterface= soundsFactoryInterface;
                 //@Throws(Exception.constructor)
             
     public: void init(){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.INIT);
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->INIT);
     
 
-    CommonLabels commonLabels = CommonLabels::getInstance();;
+    CommonLabels* commonLabels = CommonLabels::getInstance();;
     
 
-    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
+    ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
     
-this->soundsFactoryInterface.init();
-    
-
-    std::vector<Sound> soundInterfaceArray = this->soundsFactoryInterface.getSoundInterfaceArray();;
+this->soundsFactoryInterface->init();
     
 
-    SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
+    std::vector<Sound*> soundInterfaceArray = this->soundsFactoryInterface->getSoundInterfaceArray();;
     
 
-    Integer indexInteger;;
+    SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
+    
+
+    int32_t indexInteger;;
     
 
     std::string indexString;;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
 
@@ -126,7 +132,7 @@ this->soundsFactoryInterface.init();
     int32_t i = 0;i < soundInterfaceArray.size(); i++)
         {
 
-    Sound soundInterface = soundInterfaceArray[i];;
+    Sound* soundInterface = soundInterfaceArray[i];;
     
 
                         if(soundInterface != 
@@ -134,34 +140,34 @@ this->soundsFactoryInterface.init();
                                 )
                         
                                     {
-                                    indexInteger= smallIntegerSingletonFactory.getAt(i);
+                                    indexInteger= smallIntegerSingletonFactory->getAt(i);
     
 indexString= indexInteger.toString();
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(commonLabels.INDEX_LABEL);
+stringBuffer->append(commonLabels->INDEX_LABEL);
     
-stringBuffer.append(indexString);
+stringBuffer->append(indexString);
     
-stringBuffer.append(this->soundStrings.SOUND);
+stringBuffer->append(this->soundStrings->SOUND);
     
-stringBuffer.append(soundInterface.constructor.name.toString());
+stringBuffer->append(soundInterface->getClass()->getName());
     
-this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.INIT);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->INIT);
     
-soundInterface.init();
+soundInterface->init();
     
-progressCanvas.addNormalPortion(100, StringMaker().append(this->soundStrings.INIT_SOUND).append(indexString).toString());
+progressCanvas->addNormalPortion(100, (new StringMaker())->append(this->soundStrings->INIT_SOUND)->append(indexString)->toString());
     
 
                                     }
                                 
 }
 
-this->soundsFactoryInterface.setInitialized(true);
+this->soundsFactoryInterface->setInitialized(true);
     
-this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.INIT);
+this->logUtil->putF(this->commonStrings->END, this, this->commonStrings->INIT);
     
 }
 
@@ -169,16 +175,16 @@ this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.INIT);
                 //@Throws(Exception.constructor)
             
     public: void stopAll(){
-this->logUtil.putF(this->commonStrings.START, this, this->soundStrings.STOP_ALL);
+this->logUtil->putF(this->commonStrings->START, this, this->soundStrings->STOP_ALL);
     
 
-    std::vector<Sound> soundInterfaceArray = this->soundsFactoryInterface.getSoundInterfaceArray();;
+    std::vector<Sound*> soundInterfaceArray = this->soundsFactoryInterface->getSoundInterfaceArray();;
     
 
-    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
+    ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
     
 
-    Player player;;
+    Player* player;;
     
 
 
@@ -201,9 +207,9 @@ this->logUtil.putF(this->commonStrings.START, this, this->soundStrings.STOP_ALL)
                                 )
                         
                                     {
-                                    player.stop();
+                                    player->stop();
     
-progressCanvas.addPortion(100, this->soundStrings.STOPPING_SOUND, index);
+progressCanvas->addPortion(100, this->soundStrings->STOPPING_SOUND, index);
     
 
                                     }
@@ -219,16 +225,16 @@ progressCanvas.addPortion(100, this->soundStrings.STOPPING_SOUND, index);
                 //@Throws(Exception.constructor)
             
     public: void closeAll(){
-this->logUtil.putF(this->commonStrings.START, this, this->soundStrings.CLOSE_ALL);
+this->logUtil->putF(this->commonStrings->START, this, this->soundStrings->CLOSE_ALL);
     
 
-    std::vector<Sound> soundInterfaceArray = this->soundsFactoryInterface.getSoundInterfaceArray();;
+    std::vector<Sound*> soundInterfaceArray = this->soundsFactoryInterface->getSoundInterfaceArray();;
     
 
-    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
+    ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
     
 
-    Player player;;
+    Player* player;;
     
 
 
@@ -251,9 +257,9 @@ this->logUtil.putF(this->commonStrings.START, this, this->soundStrings.CLOSE_ALL
                                 )
                         
                                     {
-                                    player.close();
+                                    player->close();
     
-progressCanvas.addPortion(100, this->soundStrings.CLOSING_SOUND, index);
+progressCanvas->addPortion(100, this->soundStrings->CLOSING_SOUND, index);
     
 
                                     }

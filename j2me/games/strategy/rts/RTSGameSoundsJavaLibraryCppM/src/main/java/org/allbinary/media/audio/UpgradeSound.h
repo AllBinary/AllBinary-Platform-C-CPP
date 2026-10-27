@@ -20,6 +20,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_UPGRADESOUND_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_UPGRADESOUND_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/media/audio/CompositeSound.h>
 
       
@@ -47,9 +53,9 @@
         
 class UpgradeSound: public CompositeSound {
 
-    private: static Sound soundInterface = UpgradeSound();
+    private: static inline Sound* soundInterface = new UpgradeSound();
 
-    public: static Sound getInstance();
+    public: static Sound* getInstance();
 
 private: UpgradeSound();
 

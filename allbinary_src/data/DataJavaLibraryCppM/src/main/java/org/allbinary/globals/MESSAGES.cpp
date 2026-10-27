@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,7 +49,7 @@ class MESSAGES
             : public Object
          {
 
-    public: static std::string CONTACTADMIN = "Please contact the administrator.";
+    public: static inline std::string CONTACTADMIN = "Please contact the administrator.";
 
 private: MESSAGES(){
 }

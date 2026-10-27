@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class FileExtensionData
             : public Object
          {
 
-    private: static FileExtensionData instance() { return FileExtensionData(); }
+    private: static FileExtensionData* instance() { static std::unique_ptr<FileExtensionData> value(new FileExtensionData()); return value.get(); }
 
-    public: static FileExtensionData getInstance(){
+    public: static FileExtensionData* getInstance(){
 
 
 

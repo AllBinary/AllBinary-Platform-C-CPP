@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_ACTIVITYFRACTUREINPUTUTILFACTORY_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_ACTIVITYFRACTUREINPUTUTILFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/android/ActivityFractureUtil.h>
@@ -64,7 +70,7 @@ class ActivityFractureInputUtilFactory
             : public Object
          {
 
-    public: static ActivityFractureUtil getInstance();
+    public: static ActivityFractureUtil* getInstance();
 
 };
 

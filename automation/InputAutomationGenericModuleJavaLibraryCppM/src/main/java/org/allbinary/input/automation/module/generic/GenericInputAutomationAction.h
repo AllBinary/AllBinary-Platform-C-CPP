@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,7 +60,7 @@
         
 class GenericInputAutomationAction
             : public Object
-        : public InputAutomationActionInterface {
+        , public InputAutomationActionInterface {
 
 public: GenericInputAutomationAction();
 
@@ -62,7 +68,7 @@ public: GenericInputAutomationAction();
             
     public: void test();
 
-    public: std::vector<InputRobotInterface> getInputRobotInterfaceArray();
+    public: std::vector<InputRobotInterface*> getInputRobotInterfaceArray();
 
 };
 

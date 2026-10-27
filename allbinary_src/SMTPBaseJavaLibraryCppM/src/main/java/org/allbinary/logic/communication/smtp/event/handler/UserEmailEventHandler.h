@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_USEREMAILEVENTHANDLER_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_USEREMAILEVENTHANDLER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -69,27 +75,27 @@ class UserEmailEventHandler
             : public Object
          {
 
-    private: BasicArrayList emailVector;
+    private: BasicArrayList* emailVector;
 
-    private: EmailInfo emailInfo;
+    private: EmailInfo* emailInfo;
 
-    private: UserEmailEventNameData userEmailEventNameData;
+    private: UserEmailEventNameData* userEmailEventNameData;
 
 public: UserEmailEventHandler();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void receiveEmailInfo(UserEmailEventNameData userEmailEventNameData, EmailInfo emailInfo);
+    public: void receiveEmailInfo(UserEmailEventNameData* userEmailEventNameData, EmailInfo* emailInfo);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void addListener(BasicArrayList vector);
+    public: void addListener(BasicArrayList* vector);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void addListener(UserEmailEventListenerInterface emailEventListenerInterface);
+    public: void addListener(UserEmailEventListenerInterface* emailEventListenerInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void removeListener(UserEmailEventListenerInterface emailEventListenerInterface);
+    public: void removeListener(UserEmailEventListenerInterface* emailEventListenerInterface);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.

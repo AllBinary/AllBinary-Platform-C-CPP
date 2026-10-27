@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,15 +49,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Image.h"
+        #include "javax/microedition/lcdui/Image.h"
 
 class NullImage
             : public Object
          {
 
-    public: static const std::vector<Image> NULL_IMAGE_ARRAY = {};
+    public: static inline const std::vector<Image*> NULL_IMAGE_ARRAY = {};
 
-    public: static const Image NULL_IMAGE = Image();
+    public: static Image* NULL_IMAGE() { static std::unique_ptr<Image> value(new Image()); return value.get(); }
 
 };
 

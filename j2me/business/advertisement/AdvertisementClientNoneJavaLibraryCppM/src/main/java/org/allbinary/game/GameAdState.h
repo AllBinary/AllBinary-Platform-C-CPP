@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_GAMEADSTATE_H
         #define ORG_ALLBINARY_GAME_GAMEADSTATE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/advertisement/GameAdStateBase.h>
@@ -59,11 +65,11 @@
         
 class GameAdState: public GameAdStateBase, public VirtualKeyboardEventListenerInterface {
 
-public: GameAdState(AdConfiguration adConfiguration);
+public: GameAdState(AdConfiguration* adConfiguration);
 
                 //@Throws(Exception.constructor)
             
-    public: void onVirtualKeyboardEvent(VirtualKeyboardEvent virtualKeyboardEvent);
+    public: void onVirtualKeyboardEvent(VirtualKeyboardEvent* virtualKeyboardEvent);
 
 };
 

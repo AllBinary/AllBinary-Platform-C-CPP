@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -50,17 +56,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapCellTypeFactory.h"
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellTypeFactory.h"
 
 class GeographicMapCellType
             : public Object
          {
 
-    public: static const std::vector<GeographicMapCellType> NULL_GEOGRAPHIC_MAP_CELL_TYPE_ARRAY = {};
+    public: static inline const std::vector<GeographicMapCellType*> NULL_GEOGRAPHIC_MAP_CELL_TYPE_ARRAY = {};
 
-    public: static const GeographicMapCellType NULL_GEOGRAPHIC_MAP_CELL_TYPE = GeographicMapCellType(Integer::MIN_VALUE, 0);
+    public: static GeographicMapCellType* NULL_GEOGRAPHIC_MAP_CELL_TYPE() { static std::unique_ptr<GeographicMapCellType> value(new GeographicMapCellType(Integer.MIN_VALUE, 0)); return value.get(); }
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: int32_t type;
 
@@ -68,14 +74,14 @@ public: GeographicMapCellType(int32_t type, int32_t reset){
 this->type= type;
     
 
-                        if(type != Integer::MIN_VALUE)
+                        if(type != Integer.MIN_VALUE)
                         
                                     {
                                     
-    GeographicMapCellTypeFactory geographicMapCellTypeFactory = GeographicMapCellTypeFactory::getInstance();;
+    GeographicMapCellTypeFactory* geographicMapCellTypeFactory = GeographicMapCellTypeFactory::getInstance();;
     
 
-    std::vector<GeographicMapCellType> geographicMapCellTypeArray = geographicMapCellTypeFactory.getGeographicMapCellTypeArray();;
+    std::vector<GeographicMapCellType*> geographicMapCellTypeArray = geographicMapCellTypeFactory->getGeographicMapCellTypeArray();;
     
 
                         if(geographicMapCellTypeArray[type] == 
@@ -96,7 +102,7 @@ this->type= type;
                                     
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 
                                     }
@@ -125,7 +131,7 @@ this->type= type;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SmallIntegerSingletonFactory::getInstance().getAt(this->type).toString();;
+                        return SmallIntegerSingletonFactory::getInstance()->getAt(this->type)->toString();;
     
 }
 

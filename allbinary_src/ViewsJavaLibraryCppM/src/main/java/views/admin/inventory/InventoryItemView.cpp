@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -118,50 +126,50 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InventoryUploadMediaUtil.h"
+        #include "views/admin/inventory/InventoryUploadMediaUtil.h"
 
 class InventoryItemView: public HttpStoreComponentView, public RequestMapInterface {
 
-    public: static int32_t TYPE_ID = 10;
+    public: static inline int32_t TYPE_ID = 10;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
-    protected: HttpServletRequest request;
+    protected: HttpServletRequest* request;
 
     private: std::string imageFileName;
 
-    private: MediaData mediaData;
+    private: MediaData* mediaData;
 
-    protected: ItemInterface itemInterface;
+    protected: ItemInterface* itemInterface;
 
-    protected: BasicArrayList downloadableItemVector;
+    protected: BasicArrayList* downloadableItemVector;
 
-    private: HashMap<Object*, Object*> requestHashMap;
+    private: HashMap<Object*, Object*>* requestHashMap;
 
-public: InventoryItemView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+public: InventoryItemView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->request= this->getPageContext().getRequest();
+this->request= dynamic_cast<HttpServletRequest*>(this->getPageContext()->getRequest());
     
 this->getFormData();
     
 }
 
 
-public: InventoryItemView(TransformInfoInterface transformInfoInterface, std::string empty) : HttpStoreComponentView(transformInfoInterface){
+public: InventoryItemView(TransformInfoInterface* transformInfoInterface, std::string empty) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->request= this->getPageContext().getRequest();
+this->request= dynamic_cast<HttpServletRequest*>(this->getPageContext()->getRequest());
     
 }
 
@@ -179,52 +187,52 @@ this->request= this->getPageContext().getRequest();
                 //@Throws(Exception.constructor)
             
     private: void getFormData(){
-this->setRequestHashMap(MultipartRequestParams(this->request).toHashMap());
+this->setRequestHashMap((new MultipartRequestParams(this->request))->toHashMap());
     
 
-    Object* imageFileItemObject = this->getRequestHashMap().get(basicItemData.IMAGE);;
+    Object* imageFileItemObject = this->getRequestHashMap()->get(basicItemData->IMAGE);;
     
 
-                        if(HttpFileUploadUtil::getInstance().isValid(imageFileItemObject))
+                        if(HttpFileUploadUtil::getInstance()->isValid(imageFileItemObject))
                         
                                     {
                                     
-    FileItem fileItem = *dynamic_cast<FileItem*>(imageFileItemObject);;
+    FileItem* fileItem = dynamic_cast<FileItem*>(imageFileItemObject);;
     
 
                         if(fileItem != 
                                     nullptr
-                                 && fileItem.getSize() > 1)
+                                 && fileItem->getSize() > 1)
                         
                                     {
-                                    this->imageFileName= HttpRequestUtil::getInstance().generateFileName(fileItem.getName());
+                                    this->imageFileName= HttpRequestUtil::getInstance()->generateFileName(fileItem->getName());
     
 
-    AbPathData pathData = AbPathData::getInstance();;
+    AbPathData* pathData = AbPathData::getInstance();;
     
 
-    PathUtil pathUtil = PathUtil::getInstance();;
+    PathUtil* pathUtil = PathUtil::getInstance();;
     
-this->mediaData= MediaData::get(pathData.getExtension(this->imageFileName));
+this->mediaData= MediaData::get(pathData->getExtension(this->imageFileName));
     
-this->imageFileName= pathUtil.getWithoutExtension(this->imageFileName);
+this->imageFileName= pathUtil->getWithoutExtension(this->imageFileName);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Uploaded File Data: ");
+stringBuffer->append("Uploaded File Data: ");
     
-stringBuffer.append(this->imageFileName);
+stringBuffer->append(this->imageFileName);
     
-stringBuffer.append(" Extension: ");
+stringBuffer->append(" Extension: ");
     
-stringBuffer.append(this->mediaData.getName());
+stringBuffer->append(this->mediaData->getName());
     
-this->logUtil.putF(stringBuffer.toString(), this, "getFormData()");
+this->logUtil->putF(stringBuffer->toString(), this, "getFormData()");
     
 
                                     }
@@ -235,20 +243,20 @@ this->logUtil.putF(stringBuffer.toString(), this, "getFormData()");
 
                                     }
                                 
-this->itemInterface= BasicItem(this->getRequestHashMap());
+this->itemInterface= dynamic_cast<ItemInterface*>(new BasicItem(this->getRequestHashMap()));
     
 }
 
 
     public: void addDomNodeInterfaces(){
 
-    BasicArrayList vector = BasicArrayListD();;
+    BasicArrayList* vector = new BasicArrayListD();;
     
 
-    DownloadableItem downloadableItem;;
+    DownloadableItem* downloadableItem;;
     
 
-    int32_t size = this->downloadableItemVector.size();;
+    int32_t size = this->downloadableItemVector->size();;
     
 
 
@@ -257,18 +265,18 @@ this->itemInterface= BasicItem(this->getRequestHashMap());
                         for (
     int32_t index = 0;index < size; index++)
         {
-downloadableItem= this->downloadableItemVector.get(index);
+downloadableItem= dynamic_cast<DownloadableItem*>(this->downloadableItemVector->get(index));
     
-vector.add(DownloadableItemView(downloadableItem));
-    
-}
-
-this->addDomNodeInterface(BasicItemView(this->itemInterface, vector));
+vector->add(new DownloadableItemView(downloadableItem));
     
 }
 
+this->addDomNodeInterface(new BasicItemView(this->itemInterface, vector));
+    
+}
 
-    public: ItemInterface getItemInterface(){
+
+    public: ItemInterface* getItemInterface(){
 
 
 
@@ -293,13 +301,13 @@ this->addDomNodeInterface(BasicItemView(this->itemInterface, vector));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -318,10 +326,10 @@ this->addDomNodeInterface(BasicItemView(this->itemInterface, vector));
             
     protected: void processImageFiles(){
 
-    Set set = this->getRequestHashMap().keys();;
+    Set* set = this->getRequestHashMap()->keys();;
     
 
-    std::vector<Object*> fieldNameArray = set.toArray();;
+    std::vector<Object*> fieldNameArray = set->toArray();;
     
 
     int32_t size = fieldNameArray.size();;
@@ -337,19 +345,19 @@ this->addDomNodeInterface(BasicItemView(this->itemInterface, vector));
     std::string fieldName = fieldNameArray[index];;
     
 
-                        if(fieldName.compare(basicItemData.IMAGE) == 0)
+                        if(fieldName.compare(basicItemData->IMAGE) == 0)
                         
                                     {
                                     
-    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession().getStoreName());;
+    StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession()->getStoreName());;
     
 
-    InventoryUploadMediaUtil inventoryUploadMediaUtil = InventoryUploadMediaUtil(storeFrontInterface, this->itemInterface);;
+    InventoryUploadMediaUtil* inventoryUploadMediaUtil = new InventoryUploadMediaUtil(storeFrontInterface, this->itemInterface);;
     
 
-    FileItem fileItem = this->getRequestHashMap().get(basicItemData.IMAGE);;
+    FileItem* fileItem = dynamic_cast<FileItem*>(this->getRequestHashMap()->get(basicItemData->IMAGE));;
     
-this->itemInterface= inventoryUploadMediaUtil.saveFiles(fileItem.get(), this->imageFileName, this->mediaData);
+this->itemInterface= inventoryUploadMediaUtil->saveFiles(fileItem->get(), this->imageFileName, this->mediaData);
     
 
                                     }
@@ -359,13 +367,13 @@ this->itemInterface= inventoryUploadMediaUtil.saveFiles(fileItem.get(), this->im
 }
 
 
-    private: void setRequestHashMap(HashMap<Object*, Object*> requestHashMap){
+    private: void setRequestHashMap(HashMap<Object*, Object*>* requestHashMap){
 this->requestHashMap= requestHashMap;
     
 }
 
 
-    public: HashMap<Object*, Object*> getRequestHashMap(){
+    public: HashMap<Object*, Object*>* getRequestHashMap(){
 
 
 

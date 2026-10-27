@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/rms/RecordComparator.h>
@@ -46,9 +52,9 @@
         
 class NullRecordComparator
             : public Object
-        : public RecordComparator {
+        , public RecordComparator {
 
-    public: static const NullRecordComparator NULL_RECORD_COMPARATOR = NullRecordComparator();
+    public: static NullRecordComparator* NULL_RECORD_COMPARATOR() { static std::unique_ptr<NullRecordComparator> value(new NullRecordComparator()); return value.get(); }
 
     public: int32_t compare(std::vector<int8_t> rec1, std::vector<int8_t> rec2){
 

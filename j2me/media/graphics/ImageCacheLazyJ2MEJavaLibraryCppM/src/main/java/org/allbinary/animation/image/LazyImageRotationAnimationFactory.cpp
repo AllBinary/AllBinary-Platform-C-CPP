@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,28 +64,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseImageAnimationFactory.h"
-#include "LazyImageRotationAnimation.h"
+        #include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
+#include "org/allbinary/animation/image/LazyImageRotationAnimation.h"
 
 class LazyImageRotationAnimationFactory
             : public Object
-        : public AnimationInterfaceFactoryInterface {
+        , public AnimationInterfaceFactoryInterface {
 
     private: int32_t layoutIndex;
 
-    private: BaseImageAnimationFactory animationInterfaceFactoryInterface;
+    private: BaseImageAnimationFactory* animationInterfaceFactoryInterface;
 
-    public: ScaleProperties scaleProperties = ScaleProperties::instance();
+    public: ScaleProperties* scaleProperties = ScaleProperties::instance;
 
-public: LazyImageRotationAnimationFactory(int32_t layoutIndex, int32_t associatedLazyAnimationId, BaseImageAnimationFactory animationInterfaceFactoryInterface){
+public: LazyImageRotationAnimationFactory(int32_t layoutIndex, int32_t associatedLazyAnimationId, BaseImageAnimationFactory* animationInterfaceFactoryInterface){
 this->layoutIndex= layoutIndex;
     
 this->animationInterfaceFactoryInterface= animationInterfaceFactoryInterface;
     
-ImageCacheFactory::getInstance().hasAnyLazyAnimationFactories= true;
+ImageCacheFactory::getInstance()->hasAnyLazyAnimationFactories= true;
     
 
-                        if(this->animationInterfaceFactoryInterface.animationBehaviorFactory == AnimationBehaviorFactory::getInstance())
+                        if(this->animationInterfaceFactoryInterface->animationBehaviorFactory == AnimationBehaviorFactory::getInstance())
                         
                                     {
                                     ForcedLogUtil::log("Using default AnimationBehaviorFactory with IndexedAnimationFactory", this);
@@ -92,18 +98,18 @@ ImageCacheFactory::getInstance().hasAnyLazyAnimationFactories= true;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId){
+    public: Animation* getInstance(int32_t instanceId){
 
-                        if(this->animationInterfaceFactoryInterface.getImage().isReady())
+                        if(this->animationInterfaceFactoryInterface->getImage()->isReady())
                         
                                     {
-                                    this->animationInterfaceFactoryInterface.setInitialScale(this->scaleProperties);
+                                    this->animationInterfaceFactoryInterface->setInitialScale(this->scaleProperties);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animationInterfaceFactoryInterface.getInstance(instanceId);;
+                        return this->animationInterfaceFactoryInterface->getInstance(instanceId);;
     
 
                                     }
@@ -113,7 +119,7 @@ ImageCacheFactory::getInstance().hasAnyLazyAnimationFactories= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LazyImageRotationAnimation(this->layoutIndex, instanceId, this->scaleProperties, this->animationInterfaceFactoryInterface, this->animationInterfaceFactoryInterface.animationBehaviorFactory.getOrCreateInstance());
+                        return new LazyImageRotationAnimation(this->layoutIndex, instanceId, this->scaleProperties, this->animationInterfaceFactoryInterface, this->animationInterfaceFactoryInterface->animationBehaviorFactory.getOrCreateInstance());
     
 
                         }
@@ -121,7 +127,7 @@ ImageCacheFactory::getInstance().hasAnyLazyAnimationFactories= true;
 }
 
 
-    public: void setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties* scaleProperties){
 this->scaleProperties= scaleProperties;
     
 }

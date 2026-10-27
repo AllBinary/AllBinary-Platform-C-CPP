@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -72,9 +78,9 @@ class MyRandomFactory
             : public Object
          {
 
-    private: static MyRandomFactory instance() { return MyRandomFactory(); }
+    private: static MyRandomFactory* instance() { static std::unique_ptr<MyRandomFactory> value(new MyRandomFactory()); return value.get(); }
 
-    public: static MyRandomFactory getInstance(){
+    public: static MyRandomFactory* getInstance(){
 
 
 
@@ -86,13 +92,13 @@ class MyRandomFactory
 
     public: static void main(std::vector<std::string> args){
 
-    MyRandomFactory randomFactory = MyRandomFactory::getInstance();;
+    MyRandomFactory* randomFactory = MyRandomFactory::getInstance();;
     
 
-    StringMaker stringBuilder = StringMaker();;
+    StringMaker* stringBuilder = new StringMaker();;
     
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
     int32_t size2 = 100;;
@@ -104,13 +110,13 @@ class MyRandomFactory
                         for (
     int32_t index = 0;index < size2; index++)
         {
-stringBuilder.appendint(randomFactory.getAbsoluteNextInt(3)).append(commonSeps.COMMA);
+stringBuilder->appendint(randomFactory->getAbsoluteNextInt(3))->append(commonSeps->COMMA);
     
 }
 
-console.log(stringBuilder.toString());
+System.out.println(stringBuilder->toString());
     
-stringBuilder.delete(0, stringBuilder.length());
+stringBuilder->delete(0, stringBuilder->length());
     
 
     std::vector<int32_t> intArray = std::vector<int32_t>(52);;
@@ -134,7 +140,7 @@ intArray2[index]= index;
     
 }
 
-randomFactory.shuffle2(intArray, intArray2);
+randomFactory->shuffle2(intArray, intArray2);
     
 
 
@@ -143,13 +149,13 @@ randomFactory.shuffle2(intArray, intArray2);
                         for (
     int32_t index = 0;index < size; index++)
         {
-stringBuilder.appendint(intArray[index]).append(commonSeps.COMMA);
+stringBuilder->appendint(intArray[index])->append(commonSeps->COMMA);
     
 }
 
-console.log(stringBuilder.toString());
+System.out.println(stringBuilder->toString());
     
-stringBuilder.delete(0, stringBuilder.length());
+stringBuilder->delete(0, stringBuilder->length());
     
 
 
@@ -158,11 +164,11 @@ stringBuilder.delete(0, stringBuilder.length());
                         for (
     int32_t index = 0;index < size; index++)
         {
-stringBuilder.appendint(intArray2[index]).append(commonSeps.COMMA);
+stringBuilder->appendint(intArray2[index])->append(commonSeps->COMMA);
     
 }
 
-console.log(stringBuilder.toString());
+System.out.println(stringBuilder->toString());
     
 
     bool found= false;;
@@ -197,38 +203,38 @@ found= false;
 
                         if(!found)
                         
-                                    throw RuntimeException();
+                                    throw new RuntimeException();
                                 
 }
 
 }
 
 
-    private: const MathUtil mathUtil = MathUtil::getInstance();
+    private: MathUtil* mathUtil = MathUtil::getInstance();
 
-    private: Random rand;
+    private: Random* rand;
 
 private: MyRandomFactory(){
-this->rand= Random(System.currentTimeMillis());
+this->rand= new Random(System.currentTimeMillis());
     
 }
 
 
     public: void setSeed(int64_t seed){
-this->rand= Random(seed);
+this->rand= new Random(seed);
     
 }
 
 
     public: int32_t getNextInt(int32_t range){
 
-    int32_t div = (Integer::MAX_VALUE /range) +1;;
+    int32_t div = (Integer.MAX_VALUE /range) +1;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return static_cast<int32_t>((this->rand.nextInt() /div));
+                        return static_cast<int32_t>((this->rand->nextInt() /div));
     
 }
 
@@ -238,7 +244,7 @@ this->rand= Random(seed);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->mathUtil.abs(this->getNextInt(range));;
+                        return this->mathUtil->abs(this->getNextInt(range));;
     
 }
 
@@ -262,7 +268,7 @@ this->rand= Random(seed);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->mathUtil.abs(this->getNextInt(range));;
+                        return this->mathUtil->abs(this->getNextInt(range));;
     
 
                         }

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NOTIFICATION_NOGAMENOTIFICATIONHUDSINGLETON_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NOTIFICATION_NOGAMENOTIFICATIONHUDSINGLETON_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,23 +61,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameNotificationHud.h"
+        #include "org/allbinary/game/ag/layer/hud/basic/notification/GameNotificationHud.h"
 
 class NoGameNotificationHudSingleton
             : public Object
          {
 
-    private: static NoGameNotificationHudSingleton instance() { return NoGameNotificationHudSingleton(); }
+    private: static NoGameNotificationHudSingleton* instance() { static std::unique_ptr<NoGameNotificationHudSingleton> value(new NoGameNotificationHudSingleton()); return value.get(); }
 
-    public: static NoGameNotificationHudSingleton getInstance();
+    public: static NoGameNotificationHudSingleton* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: GameNotificationHud gameNotificationHud = GameNotificationHud::NULL_GAME_NOTIFICATION;
+    private: GameNotificationHud* gameNotificationHud = GameNotificationHud::NULL_GAME_NOTIFICATION;
 
 private: NoGameNotificationHudSingleton();
 
-    public: GameNotificationHud getGameNotificationHud();
+    public: GameNotificationHud* getGameNotificationHud();
 
 };
 

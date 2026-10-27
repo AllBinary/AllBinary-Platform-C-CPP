@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_SAVECAPTUREDIMAGEWORKER_H
         #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_SAVECAPTUREDIMAGEWORKER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/awt/image/BufferedImage.h>
@@ -71,19 +77,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CapturedImageWorkerResultsListener.h"
-#include "CapturedImageWorkerResultsEvent.h"
-#include "CapturedImageInputOutput.h"
+        #include "org/allbinary/input/media/image/capture/CapturedImageWorkerResultsListener.h"
+#include "org/allbinary/input/media/image/capture/CapturedImageWorkerResultsEvent.h"
+#include "org/allbinary/input/media/image/capture/CapturedImageInputOutput.h"
 
 class SaveCapturedImageWorker: public BasicEventHandler, public CapturedImageWorkerResultsListener {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: bool running= false;
 
-    private: BasicArrayList capturedImageWorkerResultsEventVector = BasicArrayListD();
+    private: BasicArrayList* capturedImageWorkerResultsEventVector = new BasicArrayListD();
 
 public: SaveCapturedImageWorker();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -93,9 +99,9 @@ public: SaveCapturedImageWorker();
 
     public: void setRunning(bool running);
 
-    public: void onCaptureEvent(CapturedImageWorkerResultsEvent capturedImageEvent);
+    public: void onCaptureEvent(CapturedImageWorkerResultsEvent* capturedImageEvent);
 
-    public: void onEvent(AllBinaryEventObject allBinaryEventObject);
+    public: void onEvent(AllBinaryEventObject* allBinaryEventObject);
 
     public: void run();
 

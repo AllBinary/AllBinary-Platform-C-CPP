@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -63,43 +69,43 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProfileActionScriptItemInterface.h"
-#include "JPopupMenu.h"
-#include "JMenuItem.h"
+        #include "org/allbinary/input/automation/actions/script/ProfileActionScriptItemInterface.h"
+#include "org/allbinary/input/automation/actions/script/JPopupMenu.h"
+#include "org/allbinary/input/automation/actions/script/JMenuItem.h"
 
 class ProfileActionScriptItem: public DefaultMutableTreeNode, public ProfileActionScriptItemInterface, public ActionListener {
 
-    private: static const std::string EDIT = "Edit";
+    private: static inline const std::string EDIT = "Edit";
 
-    protected: static const std::string DELETE = "Delete";
+    protected: static inline const std::string DELETE = "Delete";
 
-    protected: static const std::string NEW_CONDITION = "New Condition";
+    protected: static inline const std::string NEW_CONDITION = "New Condition";
 
-    protected: static const std::string NEW_INPUT = "New Input";
+    protected: static inline const std::string NEW_INPUT = "New Input";
 
-    protected: static const std::string NEW_OUTPUT = "New Output";
+    protected: static inline const std::string NEW_OUTPUT = "New Output";
 
-    protected: static const std::string NEW_COLOR_AT = "Color At";
+    protected: static inline const std::string NEW_COLOR_AT = "Color At";
 
-    protected: static const std::string NEW_TIME_INTERVAL = "Time Interval";
+    protected: static inline const std::string NEW_TIME_INTERVAL = "Time Interval";
 
-    protected: static const std::string NEW_ALWAYS = "Always On/Off";
+    protected: static inline const std::string NEW_ALWAYS = "Always On/Off";
 
-    protected: static const std::string NEW_KEY_INPUT = "Key";
+    protected: static inline const std::string NEW_KEY_INPUT = "Key";
 
-    protected: static const std::string NEW_MOUSE_INPUT = "Mouse";
+    protected: static inline const std::string NEW_MOUSE_INPUT = "Mouse";
 
-    protected: static const std::string NEW_JOYSTICK_INPUT = "Joystick";
+    protected: static inline const std::string NEW_JOYSTICK_INPUT = "Joystick";
 
-    protected: static const std::string NEW_IMAGE_OUTPUT = "Image";
+    protected: static inline const std::string NEW_IMAGE_OUTPUT = "Image";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: JPopupMenu jPopupMenu;
+    private: JPopupMenu* jPopupMenu;
 
-public: ProfileActionScriptItem(std::string label, Node node) : DefaultMutableTreeNode(label){
+public: ProfileActionScriptItem(std::string label, Node* node) : DefaultMutableTreeNode(label){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -108,7 +114,7 @@ public: ProfileActionScriptItem(std::string label, Node node) : DefaultMutableTr
                     
 this->init();
     
-this->logUtil.putF("Label: " +label, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF("Label: " +label, this, this->commonStrings->CONSTRUCTOR);
     
 }
 
@@ -122,43 +128,43 @@ public: ProfileActionScriptItem(std::string label) : DefaultMutableTreeNode(labe
                     
 this->init();
     
-this->logUtil.putF("Label: " +label, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF("Label: " +label, this, this->commonStrings->CONSTRUCTOR);
     
 }
 
 
     private: void init(){
-this->setJPopupMenu(JPopupMenu());
+this->setJPopupMenu(new JPopupMenu());
     
 
-    JMenuItem jMenuItemEdit = JMenuItem(EDIT);;
+    JMenuItem* jMenuItemEdit = new JMenuItem(EDIT);;
     
 
-    JMenuItem jMenuItemDelete = JMenuItem(DELETE);;
+    JMenuItem* jMenuItemDelete = new JMenuItem(DELETE);;
     
-jMenuItemEdit.addActionListener(this);
+jMenuItemEdit->addActionListener(this);
     
-jMenuItemDelete.addActionListener(this);
+jMenuItemDelete->addActionListener(this);
     
-this->getJPopupMenu().add(jMenuItemEdit);
+this->getJPopupMenu()->add(jMenuItemEdit);
     
-this->getJPopupMenu().add(jMenuItemDelete);
+this->getJPopupMenu()->add(jMenuItemDelete);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void process(Long frame){
+    public: void process(int64_t frame){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: JPopupMenu getJPopupMenu(){
+    public: JPopupMenu* getJPopupMenu(){
 
 
 
@@ -172,14 +178,14 @@ this->getJPopupMenu().add(jMenuItemDelete);
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: void actionPerformed(ActionEvent actionEvent){
+    public: void actionPerformed(ActionEvent* actionEvent){
 
-                        if(actionEvent.getActionCommand().compareTo(ProfileActionScriptItem::EDIT) == 0)
+                        if(actionEvent->getActionCommand()->compareTo(ProfileActionScriptItem::EDIT) == 0)
                         
                                     {
                                     this->showDialog();
@@ -190,7 +196,7 @@ this->getJPopupMenu().add(jMenuItemDelete);
 }
 
 
-    public: void setJPopupMenu(JPopupMenu jPopupMenu){
+    public: void setJPopupMenu(JPopupMenu* jPopupMenu){
 this->jPopupMenu= jPopupMenu;
     
 }

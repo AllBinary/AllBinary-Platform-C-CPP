@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_ANDROIDMEDIAPLAYERWRAPPER_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_ANDROIDMEDIAPLAYERWRAPPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -73,26 +79,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicPlayer.h"
+        #include "org/allbinary/media/audio/BasicPlayer.h"
 
 class AndroidMediaPlayerWrapper: public BasicPlayer {
 
-    public: static AndroidMediaPlayerWrapper createPlayerWrapper();
+    public: static AndroidMediaPlayerWrapper* createPlayerWrapper();
 
-    public: static const AndroidMediaPlayerWrapper NULL_ANDROID_MEDIA_PLAYER_WRAPPER = AndroidMediaPlayerWrapper::createPlayerWrapper();
+    public: static inline AndroidMediaPlayerWrapper* NULL_ANDROID_MEDIA_PLAYER_WRAPPER = AndroidMediaPlayerWrapper::createPlayerWrapper();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: MediaPlayer mediaPlayer = NullAndroidCanvas::NULL_MEDIA_PLAYER;
+    private: MediaPlayer* mediaPlayer = NullAndroidCanvas::NULL_MEDIA_PLAYER;
 
 public: AndroidMediaPlayerWrapper(std::string resource);
 
     public: void setLoopCount(int32_t count);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void addPlayerListener(PlayerListener playerListener);
+    public: void addPlayerListener(PlayerListener* playerListener);
 
-    public: void removePlayerListener(PlayerListener playerListener);
+    public: void removePlayerListener(PlayerListener* playerListener);
 
     public: int32_t getState();
 
@@ -114,9 +120,9 @@ public: AndroidMediaPlayerWrapper(std::string resource);
 
     public: int64_t getDuration();
 
-    public: void setMediaPlayer(MediaPlayer mediaPlayer);
+    public: void setMediaPlayer(MediaPlayer* mediaPlayer);
 
-    public: MediaPlayer getMediaPlayer();
+    public: MediaPlayer* getMediaPlayer();
 
 };
 

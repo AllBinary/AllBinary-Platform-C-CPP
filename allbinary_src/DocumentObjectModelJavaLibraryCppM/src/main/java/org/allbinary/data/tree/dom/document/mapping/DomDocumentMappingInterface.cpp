@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/w3c/dom/Document.h>
@@ -46,7 +52,7 @@ class DomDocumentMappingInterface {
 
                 //@Throws(Exception.constructor)
             
-    Document toXmlDoc()
+    public: virtual Document* toXmlDoc() = 0;
 
 };
 

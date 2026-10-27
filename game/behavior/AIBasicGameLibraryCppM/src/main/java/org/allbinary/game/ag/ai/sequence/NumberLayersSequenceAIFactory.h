@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
@@ -52,13 +58,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NumberLayersSequenceAI.h"
+        #include "org/allbinary/game/ag/ai/sequence/NumberLayersSequenceAI.h"
 
 class NumberLayersSequenceAIFactory
             : public Object
          {
 
-    public: ArtificialIntelligenceInterface getInstance(int32_t numberOfEnemiesLeft, std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+    public: ArtificialIntelligenceInterface* getInstance(int32_t numberOfEnemiesLeft, std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterface, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
 };
 

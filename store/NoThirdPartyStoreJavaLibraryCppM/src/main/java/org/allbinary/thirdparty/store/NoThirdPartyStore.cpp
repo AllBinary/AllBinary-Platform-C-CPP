@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/string/StringUtil.h>
 
       
@@ -42,11 +48,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ThirdPartyStore.h"
+        #include "org/allbinary/thirdparty/store/ThirdPartyStore.h"
 
 class NoThirdPartyStore: public ThirdPartyStore {
 
-: NoThirdPartyStore() : ThirdPartyStore(StringUtil::getInstance().EMPTY_STRING){
+: NoThirdPartyStore() : ThirdPartyStore(StringUtil::getInstance()->EMPTY_STRING){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -56,7 +62,7 @@ class NoThirdPartyStore: public ThirdPartyStore {
 }
 
 
-    public: void authorize(AbeClientInformationInterface clientInformationInterface){
+    public: void authorize(AbeClientInformationInterface* clientInformationInterface){
 this->setAuthorized(true);
     
 }

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_GYRO_ORIENTATIONMOTIONGESTUREFACTORY_H
         #define ORG_ALLBINARY_INPUT_GYRO_ORIENTATIONMOTIONGESTUREFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/InputFactory.h>
@@ -55,21 +61,21 @@ class OrientationMotionGestureFactory
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static OrientationMotionGestureFactory getInstance();
+    public: static OrientationMotionGestureFactory* getInstance();
 
-    public: MotionGestureInput LEFT;
+    public: MotionGestureInput* LEFT;
 
-    public: MotionGestureInput RIGHT;
+    public: MotionGestureInput* RIGHT;
 
-    public: MotionGestureInput UP;
+    public: MotionGestureInput* UP;
 
-    public: MotionGestureInput DOWN;
+    public: MotionGestureInput* DOWN;
 
-    public: MotionGestureInput ROLL_LEFT;
+    public: MotionGestureInput* ROLL_LEFT;
 
-    public: MotionGestureInput ROLL_RIGHT;
+    public: MotionGestureInput* ROLL_RIGHT;
 
 private: OrientationMotionGestureFactory();
 

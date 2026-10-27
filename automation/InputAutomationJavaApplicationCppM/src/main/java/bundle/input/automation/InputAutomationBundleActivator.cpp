@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -78,17 +84,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputAutomationBundleActivatorListenerInterface.h"
+        #include "bundle/input/automation/InputAutomationBundleActivatorListenerInterface.h"
 
 class InputAutomationBundleActivator
             : public Object
-        : public BundleActivator, public InputAutomationBundleActivatorListenerInterface {
+        , public BundleActivator, public InputAutomationBundleActivatorListenerInterface {
 
-    private: static Thread moduleManagementThread;
+    private: static inline Thread* moduleManagementThread;
 
-    private: static BundleContext bundleContext;
+    private: static inline BundleContext* bundleContext;
 
-    public: static BundleContext getBundleContext(){
+    public: static BundleContext* getBundleContext(){
 
 
 
@@ -98,30 +104,30 @@ class InputAutomationBundleActivator
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void start(BundleContext bundleContext){
+    public: void start(BundleContext* bundleContext){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.START);
+            this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->START);
     
 this->bundleContext= bundleContext;
     
-InputAutomationBundleActivator::moduleManagementThread= Thread(InputAutomationNewBundleRunnable(this));
+InputAutomationBundleActivator::moduleManagementThread= new Thread(new InputAutomationNewBundleRunnable(this));
     
-InputAutomationBundleActivator::moduleManagementThread.start();
+InputAutomationBundleActivator::moduleManagementThread->start();
     
 InputAutomationJFrame::create(this);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.START, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->START, &e);
     
 
 
@@ -136,9 +142,9 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.START
                 //@Throws(Exception.constructor)
             
     public: void registerAsService(){
-OSGIActivatorUtil::registerAsService(this->getBundleContext(), InputAutomationServiceFactory::getInstance(), InputAutomationConfigurationModuleChangeListener.constructor.toString());
+OSGIActivatorUtil::registerAsService(this->getBundleContext(), InputAutomationServiceFactory::getInstance(), InputAutomationConfigurationModuleChangeListener.constructor.getName());
     
-OSGIActivatorUtil::registerAsService(this->getBundleContext(), InputAutomationServiceFactory::getInstance(), InputAutomationRobotChangeListener.constructor.toString());
+OSGIActivatorUtil::registerAsService(this->getBundleContext(), InputAutomationServiceFactory::getInstance(), InputAutomationRobotChangeListener.constructor.getName());
     
 }
 
@@ -146,17 +152,17 @@ OSGIActivatorUtil::registerAsService(this->getBundleContext(), InputAutomationSe
                 //@Throws(Exception.constructor)
             
     public: void useServices(){
-InputAutomationRobotServiceConsumer(this->getBundleContext()).process();
+(new InputAutomationRobotServiceConsumer(this->getBundleContext()))->process();
     
-InputAutomationModuleServiceConsumer(this->getBundleContext()).process();
+(new InputAutomationModuleServiceConsumer(this->getBundleContext()))->process();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void stop(BundleContext context){
-this->logUtil.putF(this->commonStrings.START, this, "stop");
+    public: void stop(BundleContext* context){
+this->logUtil->putF(this->commonStrings->START, this, "stop");
     
 
                         if(InputAutomationJFrame::getInstance() != 
@@ -170,7 +176,7 @@ this->logUtil.putF(this->commonStrings.START, this, "stop");
                                     }
                                 
                         else {
-                            this->logUtil.putF("Nothing to stop", this, "stop");
+                            this->logUtil->putF("Nothing to stop", this, "stop");
     
 
                         }

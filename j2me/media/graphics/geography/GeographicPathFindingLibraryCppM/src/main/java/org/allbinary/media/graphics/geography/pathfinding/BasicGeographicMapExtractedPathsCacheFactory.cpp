@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -31,13 +37,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicGeographicMapExtractedPathCacheFactory.h"
+        #include "org/allbinary/media/graphics/geography/pathfinding/BasicGeographicMapExtractedPathCacheFactory.h"
 
 class BasicGeographicMapExtractedPathsCacheFactory: public BaseBasicArrayListCache {
 
-    private: static BasicGeographicMapExtractedPathsCacheFactory instance() { return BasicGeographicMapExtractedPathsCacheFactory(); }
+    private: static BasicGeographicMapExtractedPathsCacheFactory* instance() { static std::unique_ptr<BasicGeographicMapExtractedPathsCacheFactory> value(new BasicGeographicMapExtractedPathsCacheFactory()); return value.get(); }
 
-    public: static BasicGeographicMapExtractedPathsCacheFactory getInstance(){
+    public: static BasicGeographicMapExtractedPathsCacheFactory* getInstance(){
 
 
 
@@ -67,7 +73,7 @@ private: BasicGeographicMapExtractedPathsCacheFactory(){
                         for (
     int32_t index = maxConcurrentPaths;index >= this->maxConcurrentPaths; index--)
         {
-this->list.add(BasicArrayListS(maxPaths));
+this->list.add(new BasicArrayListS(maxPaths));
     
 }
 
@@ -81,7 +87,7 @@ this->maxPaths= maxPaths;
 }
 
 
-    public: BasicArrayList getPaths(){
+    public: BasicArrayList* getPaths(){
 
                         if(this->list.size() > 0)
                         
@@ -90,7 +96,7 @@ this->maxPaths= maxPaths;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->list.removeAt(0);
+                        return dynamic_cast<BasicArrayList*>(this->list.removeAt(0));
     
 
                                     }
@@ -100,7 +106,7 @@ this->maxPaths= maxPaths;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicArrayListS(this->maxPaths);
+                        return new BasicArrayListS(this->maxPaths);
     
 
                         }
@@ -108,19 +114,19 @@ this->maxPaths= maxPaths;
 }
 
 
-    public: void release(BasicArrayList list){
+    public: void release(BasicArrayList* list){
 
 
 
 
                         for (
-    int32_t index = list.size() -1;index >= 0; index--)
+    int32_t index = list->size() -1;index >= 0; index--)
         {
-BasicGeographicMapExtractedPathCacheFactory::getInstance().release(list.get(index));
+BasicGeographicMapExtractedPathCacheFactory::getInstance()->release(dynamic_cast<BasicArrayList*>(list->get(index)));
     
 }
 
-list.clear();
+list->clear();
     
 this->list.add(list);
     

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/identification/Group.h>
 
       
@@ -53,15 +59,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MultiPlayerGameLayerInterface.h"
-#include "RemoteInfo.h"
-#include "MultiplayerBehavior.h"
+        #include "org/allbinary/game/multiplayer/layer/MultiPlayerGameLayerInterface.h"
+#include "org/allbinary/game/multiplayer/layer/RemoteInfo.h"
+#include "org/allbinary/game/multiplayer/layer/MultiplayerBehavior.h"
 
 class MultiPlayerGameLayer: public CollidableDestroyableDamageableLayer, public MultiPlayerGameLayerInterface {
 
-public: MultiPlayerGameLayer(RemoteInfo remoteInfo, std::vector<Group> groupInterface, std::string name, Rectangle layerInfo, ViewPositionBase viewPosition);
+public: MultiPlayerGameLayer(RemoteInfo* remoteInfo, std::vector<Group*> groupInterface, std::string name, Rectangle* layerInfo, ViewPositionBase* viewPosition);
 
-    public: MultiplayerBehavior getMultiplayerBehavior();
+    public: MultiplayerBehavior* getMultiplayerBehavior();
 
     public: void setPingInfo(bool show);
 

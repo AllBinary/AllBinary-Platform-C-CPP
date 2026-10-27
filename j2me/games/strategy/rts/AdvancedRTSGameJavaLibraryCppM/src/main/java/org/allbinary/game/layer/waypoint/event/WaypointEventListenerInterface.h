@@ -20,6 +20,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTLISTENERINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTLISTENERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/RTSLayerEvent.h>
@@ -51,7 +57,7 @@ class WaypointEventListenerInterface: public EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    void onWaypointEvent(RTSLayerEvent event);
+    public: virtual void onWaypointEvent(RTSLayerEvent* event) = 0;
 
 };
 

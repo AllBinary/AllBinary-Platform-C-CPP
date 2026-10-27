@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AI_ARTIFICIALINTELLIGENCEINTERFACEFACTORYINTERFACEFACTORY_H
         #define ORG_ALLBINARY_GAME_AI_ARTIFICIALINTELLIGENCEINTERFACEFACTORYINTERFACEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -55,24 +61,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicAI.h"
-#include "ArtificialIntelligenceInterfaceFactoryInterface.h"
+        #include "org/allbinary/game/ai/BasicAI.h"
+#include "org/allbinary/game/ai/ArtificialIntelligenceInterfaceFactoryInterface.h"
 
 class ArtificialIntelligenceInterfaceFactoryInterfaceFactory
             : public Object
          {
 
-    private: static ArtificialIntelligenceInterfaceFactoryInterfaceFactory SINGLETON = ArtificialIntelligenceInterfaceFactoryInterfaceFactory();
+    private: static ArtificialIntelligenceInterfaceFactoryInterfaceFactory* SINGLETON() { static std::unique_ptr<ArtificialIntelligenceInterfaceFactoryInterfaceFactory> value(new ArtificialIntelligenceInterfaceFactoryInterfaceFactory()); return value.get(); }
 
-    public: static ArtificialIntelligenceInterfaceFactoryInterfaceFactory getInstance();
+    public: static ArtificialIntelligenceInterfaceFactoryInterfaceFactory* getInstance();
 
-    private: BasicArrayList list = BasicArrayListUtil::getInstance().getImmutableInstance();
+    private: BasicArrayList* list = BasicArrayListUtil::getInstance()->getImmutableInstance();
 
     public: void clear();
 
-    public: ArtificialIntelligenceInterfaceFactoryInterface getInstanceFromCollection(ABHashtable<Object*, Object*> hashtable);
+    public: ArtificialIntelligenceInterfaceFactoryInterface* getInstanceFromCollection(ABHashtable<Object*, Object*>* hashtable);
 
-    public: void add(ArtificialIntelligenceInterfaceFactoryInterface artificialIntelligenceInterfaceFactoryInterface);
+    public: void add(ArtificialIntelligenceInterfaceFactoryInterface* artificialIntelligenceInterfaceFactoryInterface);
 
 };
 

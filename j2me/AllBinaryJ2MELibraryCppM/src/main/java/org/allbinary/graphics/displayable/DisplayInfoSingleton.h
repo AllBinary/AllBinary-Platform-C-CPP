@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -99,24 +105,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseScalable.h"
-#include "ScalableListener.h"
+        #include "org/allbinary/graphics/displayable/BaseScalable.h"
+#include "org/allbinary/graphics/displayable/ScalableListener.h"
 
 class DisplayInfoSingleton
             : public Object
          {
 
-    private: static const DisplayInfoSingleton SINGLETON = DisplayInfoSingleton();
+    private: static DisplayInfoSingleton* SINGLETON() { static std::unique_ptr<DisplayInfoSingleton> value(new DisplayInfoSingleton()); return value.get(); }
 
-    public: static DisplayInfoSingleton getInstance();
+    public: static DisplayInfoSingleton* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonLabels commonLabels = CommonLabels::getInstance();
+    private: CommonLabels* commonLabels = CommonLabels::getInstance();
 
-    private: const CommonSeps commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps = CommonSeps::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     public: const std::string ORIENTATION = "ORIENTATION";
 
@@ -148,7 +154,7 @@ class DisplayInfoSingleton
 
     public: const int32_t CUSTOM_HEIGHT = 3;
 
-    private: BaseScalable scalableListener = BaseScalable();
+    private: BaseScalable* scalableListener = new BaseScalable();
 
     private: float displayRatio= 0.0;
 
@@ -188,7 +194,7 @@ private: DisplayInfoSingleton();
 
     public: bool isPortrait();
 
-    public: const DisplayChangeEvent displayChangeEvent = DisplayChangeEvent(this);
+    public: DisplayChangeEvent* displayChangeEvent = new DisplayChangeEvent(this);
 
     private: const std::string FIRE_METHOD_NAME = "fire";
 
@@ -196,7 +202,7 @@ private: DisplayInfoSingleton();
 
     private: const std::string UPDATE_FROM_ORIENTATION_CHANGE = "Updating from Orientation Change ";
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
     public: void add(std::string reason);
 
@@ -204,7 +210,7 @@ private: DisplayInfoSingleton();
 
     public: void processForced();
 
-    public: void update(Displayable displayable, std::string reason);
+    public: void update(Displayable* displayable, std::string reason);
 
     private: const std::string DISPLAY_INFO = "Display Info: ";
 
@@ -216,7 +222,7 @@ private: DisplayInfoSingleton();
 
     public: std::string toString();
 
-    public: std::string toStringAppend(StringMaker stringBuffer);
+    public: std::string toStringAppend(StringMaker* stringBuffer);
 
     public: int32_t getTop();
 
@@ -240,9 +246,9 @@ private: DisplayInfoSingleton();
 
     public: void setCustom(int32_t width, int32_t height);
 
-    public: void setScalableListener(BaseScalable scalableListener);
+    public: void setScalableListener(BaseScalable* scalableListener);
 
-    public: ScalableListener getScalableListener();
+    public: ScalableListener* getScalableListener();
 
     public: float getRatio();
 

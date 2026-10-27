@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINTBEHAVIORBASE_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINTBEHAVIORBASE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -72,17 +78,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PathFindingLayerInterface.h"
+        #include "org/allbinary/game/layer/PathFindingLayerInterface.h"
 
 class WaypointBehaviorBase
             : public Object
-        : public TickableInterface {
+        , public TickableInterface {
 
-    private: BasicArrayList ownedWaypointList;
+    private: BasicArrayList* ownedWaypointList;
 
     protected: bool waypointOverridesAttacking = true;
 
-    private: WaypointBase waypoint = WaypointBase::NULL_WAYPOINT_BASE;
+    private: WaypointBase* waypoint = WaypointBase::NULL_WAYPOINT_BASE;
 
 public: WaypointBehaviorBase();
 
@@ -92,49 +98,49 @@ public: WaypointBehaviorBase();
 
                 //@Throws(Exception.constructor)
             
-    public: void processTick(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager);
 
-    public: BasicArrayList getOwnedWaypointList();
+    public: BasicArrayList* getOwnedWaypointList();
 
-    public: WaypointBase getWaypoint();
+    public: WaypointBase* getWaypoint();
 
-    public: void setWaypoint(WaypointBase waypoint);
+    public: void setWaypoint(WaypointBase* waypoint);
 
-    public: BasicArrayList getSteeringVisitorList();
+    public: BasicArrayList* getSteeringVisitorList();
 
     public: std::string getMovementLogicAsString();
 
     public: bool isWaypointListEmptyOrOnlyTargets();
 
-    public: bool isInSensorRange(CollidableDestroyableDamageableLayer layerInterface, int32_t targetDistance);
+    public: bool isInSensorRange(CollidableDestroyableDamageableLayer* layerInterface, int32_t targetDistance);
 
-    public: CollidableDestroyableDamageableLayer getCurrentTargetLayerInterface();
+    public: CollidableDestroyableDamageableLayer* getCurrentTargetLayerInterface();
 
     public: std::string getCurrentTargetingStateString();
 
     public: bool isTrackingWaypoint();
 
-    public: GeographicMapCellPosition getCurrentPathGeographicMapCellPosition();
+    public: GeographicMapCellPosition* getCurrentPathGeographicMapCellPosition();
 
-    public: GeographicMapCellHistory getCurrentGeographicMapCellHistory();
+    public: GeographicMapCellHistory* getCurrentGeographicMapCellHistory();
 
     public: bool isWaypointOverridesAttacking();
 
-    public: GeographicMapCellPosition getNextUnvisitedPathGeographicMapCellPosition();
+    public: GeographicMapCellPosition* getNextUnvisitedPathGeographicMapCellPosition();
 
     public: bool needToMove();
 
-    public: void setWaypointPathsList(BasicArrayList waypointPathsList);
+    public: void setWaypointPathsList(BasicArrayList* waypointPathsList);
 
-    public: BasicArrayList getWaypointPathsList();
-
-                //@Throws(Exception.constructor)
-            
-    public: void setTarget(PathFindingLayerInterface layerInterface);
+    public: BasicArrayList* getWaypointPathsList();
 
                 //@Throws(Exception.constructor)
             
-    public: void setTargetWithDistance(PathFindingLayerInterface layerInterface, int32_t anotherTargetDistance);
+    public: void setTarget(PathFindingLayerInterface* layerInterface);
+
+                //@Throws(Exception.constructor)
+            
+    public: void setTargetWithDistance(PathFindingLayerInterface* layerInterface, int32_t anotherTargetDistance);
 
                 //@Throws(Exception.constructor)
             
@@ -144,7 +150,7 @@ public: WaypointBehaviorBase();
             
     public: void updatePathOnTargetMove(std::string reason);
 
-    private: const BasicArrayList steeringVisitorList = BasicArrayListD();
+    private: BasicArrayList* steeringVisitorList = new BasicArrayListD();
 
 };
 

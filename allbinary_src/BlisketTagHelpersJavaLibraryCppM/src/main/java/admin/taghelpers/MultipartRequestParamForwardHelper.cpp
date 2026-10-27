@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -76,25 +82,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InventoryItemViewParentTagHelper.h"
+        #include "admin/taghelpers/InventoryItemViewParentTagHelper.h"
 
 class MultipartRequestParamForwardHelper
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: PageContext pageContext;
+    private: PageContext* pageContext;
 
-    private: RequestMapInterface requestMapInterface;
+    private: RequestMapInterface* requestMapInterface;
 
     private: std::string page;
 
     private: std::string command;
 
-    private: BasicArrayList paramVector;
+    private: BasicArrayList* paramVector;
 
-public: MultipartRequestParamForwardHelper(HelperTag parentHelperTag, std::string page, std::string command, BasicArrayList paramVector, PageContext pageContext){
+public: MultipartRequestParamForwardHelper(HelperTag* parentHelperTag, std::string page, std::string command, BasicArrayList* paramVector, PageContext* pageContext){
 this->pageContext= pageContext;
     
 this->page= page;
@@ -103,7 +109,7 @@ this->command= command;
     
 this->paramVector= paramVector;
     
-this->requestMapInterface= InventoryItemViewParentTagHelper::getInstance().getRequestMapInterface(parentHelperTag);
+this->requestMapInterface= InventoryItemViewParentTagHelper::getInstance()->getRequestMapInterface(parentHelperTag);
     
 }
 
@@ -121,29 +127,29 @@ this->requestMapInterface= InventoryItemViewParentTagHelper::getInstance().getRe
     std::string params = this->getParams();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->page);
+stringBuffer->append(this->page);
     
-stringBuffer.append(params);
+stringBuffer->append(params);
     
-this->pageContext.forward(stringBuffer.toString());
+this->pageContext->forward(stringBuffer->toString());
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(commonStrings.EXCEPTION, this, "forward()", e);
+                                    this->logUtil->put(commonStrings->EXCEPTION, this, "forward()", &e);
     
 
                                     }
@@ -155,25 +161,25 @@ this->pageContext.forward(stringBuffer.toString());
 
     private: std::string getParams(){
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
-    std::string AMP = commonSeps.AMPERSAND;;
+    std::string AMP = commonSeps->AMPERSAND;;
     
 
-    std::string QUESTION = commonSeps.QUESTION;;
+    std::string QUESTION = commonSeps->QUESTION;;
     
 
-    std::string EQUALS = commonSeps.EQUALS;;
+    std::string EQUALS = commonSeps->EQUALS;;
     
 
-    HashMap<Object*, Object*> hashMap = this->requestMapInterface.getRequestHashMap();;
+    HashMap<Object*, Object*>* hashMap = this->requestMapInterface->getRequestHashMap();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    int32_t size = this->paramVector.size();;
+    int32_t size = this->paramVector->size();;
     
 
 
@@ -183,31 +189,31 @@ this->pageContext.forward(stringBuffer.toString());
     int32_t index = 0;index < size; index++)
         {
 
-    std::string key = this->paramVector.get(index);;
+    std::string key = this->paramVector->get(index);;
     
 
-    std::string value = hashMap.get(key);;
+    std::string value = hashMap->get(key);;
     
 
                         if(index != 0)
                         
                                     {
-                                    stringBuffer.append(AMP);
+                                    stringBuffer->append(AMP);
     
 
                                     }
                                 
                         else {
-                            stringBuffer.append(QUESTION);
+                            stringBuffer->append(QUESTION);
     
 
                         }
                             
-stringBuffer.append(key);
+stringBuffer->append(key);
     
-stringBuffer.append(EQUALS);
+stringBuffer->append(EQUALS);
     
-stringBuffer.append(value);
+stringBuffer->append(value);
     
 }
 
@@ -215,20 +221,20 @@ stringBuffer.append(value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
     private: bool shouldForward(){
 
-    HashMap<Object*, Object*> hashMap = this->requestMapInterface.getRequestHashMap();;
+    HashMap<Object*, Object*>* hashMap = this->requestMapInterface->getRequestHashMap();;
     
 
-    std::string requestCommand = hashMap.get(GLOBALS2::ADMINCOMMAND);;
+    std::string requestCommand = hashMap->get(GLOBALS2::ADMINCOMMAND);;
     
 
-                        if(StringValidationUtil::getInstance().isEmpty(this->command) || (!StringValidationUtil::getInstance().isEmpty(requestCommand) && this->command.compare(requestCommand) == 0))
+                        if(StringValidationUtil::getInstance()->isEmpty(this->command) || (!StringValidationUtil::getInstance()->isEmpty(requestCommand) && this->command.compare(requestCommand) == 0))
                         
                                     {
                                     

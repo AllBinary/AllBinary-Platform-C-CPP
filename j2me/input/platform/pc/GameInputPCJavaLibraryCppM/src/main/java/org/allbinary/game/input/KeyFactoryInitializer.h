@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_KEYFACTORYINITIALIZER_H
         #define ORG_ALLBINARY_GAME_INPUT_KEYFACTORYINITIALIZER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/init/Init.h>
 
       
@@ -51,7 +57,7 @@
         
 class KeyFactoryInitializer: public Init {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     public: void init();
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLOPTIONS_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLOPTIONS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/configuration/feature/Features.h>
@@ -53,7 +59,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLFeatureFactory.h"
+        #include "org/allbinary/graphics/opengles/OpenGLFeatureFactory.h"
 
 class OpenGLOptions
             : public Object

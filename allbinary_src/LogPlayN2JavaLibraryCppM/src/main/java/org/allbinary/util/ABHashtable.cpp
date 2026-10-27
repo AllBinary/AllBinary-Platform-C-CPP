@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <java/util/Enumeration.h>
 
       
@@ -85,7 +93,7 @@ public: ABHashtable() : Hashtable<K, V>(){
 }
 
 
-    public: Enumeration<V> elements(){
+    public: Enumeration<V>* elements(){
 
 
 

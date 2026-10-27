@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
@@ -62,13 +68,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MetaView.h"
+        #include "views/business/context/modules/storefront/customizer/includes/meta/MetaView.h"
 
 class InsertMetaValidationView: public MetaView, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: InsertMetaValidationView(TransformInfoInterface transformInfoInterface) : MetaView(transformInfoInterface){
+public: InsertMetaValidationView(TransformInfoInterface* transformInfoInterface) : MetaView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -80,7 +86,7 @@ public: InsertMetaValidationView(TransformInfoInterface transformInfoInterface) 
 
                 //@Throws(Exception.constructor)
             
-    public: Document toXmlDoc(){
+    public: Document* toXmlDoc(){
 
 
 
@@ -90,13 +96,13 @@ public: InsertMetaValidationView(TransformInfoInterface transformInfoInterface) 
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-    Boolean isValid = Boolean::TRUE;;
+    bool isValid = Boolean::TRUE;;
     
-CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this);
+CustomizerUtil::getInstance()->insert(this->getTransformInfoInterface(), dynamic_cast<DomNodeInterface*>(this));
     
 
 
@@ -106,13 +112,13 @@ CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -132,23 +138,23 @@ CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this);
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -164,7 +170,7 @@ CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this);
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -174,7 +180,7 @@ CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this);
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

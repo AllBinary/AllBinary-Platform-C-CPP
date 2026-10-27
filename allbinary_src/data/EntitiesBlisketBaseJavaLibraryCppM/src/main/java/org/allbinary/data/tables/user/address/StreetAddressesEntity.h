@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_STREETADDRESSESENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_STREETADDRESSESENTITY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -90,11 +96,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StreetAddressesEntityInterface.h"
+        #include "org/allbinary/data/tables/user/address/StreetAddressesEntityInterface.h"
 
 class StreetAddressesEntity: public AbSqlBean, public StreetAddressesEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string userName;
 
@@ -102,21 +108,21 @@ public: StreetAddressesEntity();
 
 public: StreetAddressesEntity(std::string userName);
 
-    public: void remove(Integer index);
+    public: void remove(int32_t index);
 
-    public: void add(StreetAddress address);
+    public: void add(StreetAddress* address);
 
-    private: void add(StreetAddress address, std::string index);
+    private: void add(StreetAddress* address, std::string index);
 
-    public: void update(StreetAddress address);
+    public: void update(StreetAddress* address);
 
     public: std::string getLastId();
 
-    public: BasicArrayList get();
+    public: BasicArrayList* get();
 
-    public: StreetAddress get(Integer index);
+    public: StreetAddress* get(int32_t index);
 
-    public: StreetAddress getDefault();
+    public: StreetAddress* getDefault();
 
     public: void setDefault(std::string value);
 

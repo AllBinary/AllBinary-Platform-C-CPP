@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLET_H
         #define ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLET_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/displayable/canvas/GameCanvasRunnableInterface.h>
@@ -68,13 +76,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameMidlet.h"
-#include "DemoRunnable.h"
-#include "CreateGameRunnable.h"
+        #include "org/allbinary/game/midlet/GameMidlet.h"
+#include "org/allbinary/game/midlet/DemoRunnable.h"
+#include "org/allbinary/game/midlet/CreateGameRunnable.h"
 
 class DemoGameMidlet: public GameMidlet {
 
-public: DemoGameMidlet(ClientInformationFactory clientInformationFactory);
+public: DemoGameMidlet(ClientInformationFactory* clientInformationFactory);
 
                 //@Throws(Exception.constructor)
             
@@ -84,15 +92,15 @@ public: DemoGameMidlet(ClientInformationFactory clientInformationFactory);
 
                 //@Throws(Exception.constructor)
             
-    public: GameCanvasRunnableInterface createDemoGameCanvasRunnableInterface();
+    public: GameCanvasRunnableInterface* createDemoGameCanvasRunnableInterface();
 
                 //@Throws(Exception.constructor)
             
-    protected: GameCanvasRunnableInterface createGameCanvasRunnable(AllBinaryGameLayerManager allBinaryGameLayerManager);
+    protected: GameCanvasRunnableInterface* createGameCanvasRunnable(AllBinaryGameLayerManager* allBinaryGameLayerManager);
 
                 //@Throws(Exception.constructor)
             
-    protected: GameCanvasRunnableInterface createGameCanvasRunnableInterface();
+    protected: GameCanvasRunnableInterface* createGameCanvasRunnableInterface();
 
     public: void demoSetup();
 

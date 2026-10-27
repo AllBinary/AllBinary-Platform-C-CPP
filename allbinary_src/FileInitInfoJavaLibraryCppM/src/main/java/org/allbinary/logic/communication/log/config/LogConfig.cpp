@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -97,7 +103,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogConfigData.h"
+        #include "org/allbinary/logic/communication/log/config/LogConfigData.h"
 
 class LogConfig
             : public Object
@@ -127,30 +133,30 @@ this->fileName= aFileName;
 }
 
 
-public: LogConfig(Node node){
+public: LogConfig(Node* node){
 
-    Node enabledValueNode = DomSearchHelper::getNode(EntryData::getInstance().ENABLE, node.getChildNodes());;
+    Node* enabledValueNode = DomSearchHelper::getNode(EntryData::getInstance()->ENABLE, node->getChildNodes());;
     
 
     std::string isEnabledString = DomNodeHelper::getTextNodeValue(enabledValueNode);;
     
-this->isEnabled= BooleanUtil::getInstance().getFromString(isEnabledString);
+this->isEnabled= BooleanUtil::getInstance()->getFromString(isEnabledString);
     
 
-    LogConfigData logConfigData = LogConfigData::getInstance();;
+    LogConfigData* logConfigData = LogConfigData::getInstance();;
     
 
-    Node nameValueNode = DomSearchHelper::getNode(logConfigData.NAME, node.getChildNodes());;
+    Node* nameValueNode = DomSearchHelper::getNode(logConfigData->NAME, node->getChildNodes());;
     
 this->name= DomNodeHelper::getTextNodeValue(nameValueNode);
     
 
-    Node descriptionValueNode = DomSearchHelper::getNode(logConfigData.DESCRIPTION, node.getChildNodes());;
+    Node* descriptionValueNode = DomSearchHelper::getNode(logConfigData->DESCRIPTION, node->getChildNodes());;
     
 this->description= DomNodeHelper::getTextNodeValue(descriptionValueNode);
     
 
-    Node fileValueNode = DomSearchHelper::getNode(logConfigData.FILE, node.getChildNodes());;
+    Node* fileValueNode = DomSearchHelper::getNode(logConfigData->FILE, node->getChildNodes());;
     
 this->fileName= DomNodeHelper::getTextNodeValue(fileValueNode);
     
@@ -235,21 +241,21 @@ this->fileName= value;
 
                 //@Throws(Exception.constructor)
             
-    private: Document getDoc(){
+    private: Document* getDoc(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(URLGLOBALS::getWebappPath());
+stringBuffer->append(URLGLOBALS::getWebappPath());
     
-stringBuffer.append(PATH_GLOBALS::getInstance().INIT_PATH);
+stringBuffer->append(PATH_GLOBALS::getInstance()->INIT_PATH);
     
-stringBuffer.append(this->getFileName());
-    
-
-    AbFile file = AbFile::createAbFile(stringBuffer.toString());;
+stringBuffer->append(this->getFileName());
     
 
-    Document document = DomDocumentHelper::create(AbFileLocalInputStream(file));;
+    AbFile* file = AbFile::createAbFile(stringBuffer->toString());;
+    
+
+    Document* document = DomDocumentHelper::create(new AbFileLocalInputStream(file));;
     
 
 
@@ -262,24 +268,24 @@ stringBuffer.append(this->getFileName());
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getTypeVector(){
+    public: BasicArrayList* getTypeVector(){
 
-    BasicArrayList logKeyVector = BasicArrayListD();;
+    BasicArrayList* logKeyVector = new BasicArrayListD();;
     
 
-    Document document = this->getDoc();;
+    Document* document = this->getDoc();;
     
 
-    NodeList logConfigTypesNodeList = document.getElementsByTagName(LogConfigTypesData::getInstance().NAME);;
+    NodeList* logConfigTypesNodeList = document->getElementsByTagName(LogConfigTypesData::getInstance()->NAME);;
     
 
-    Node logConfigTypesNode = logConfigTypesNodeList.item(0);;
+    Node* logConfigTypesNode = logConfigTypesNodeList->item(0);;
     
 
-    BasicArrayList logConfigTypeNodeVector = DomSearchHelper::getAllNodes(LogConfigTypeData::getInstance().NAME, logConfigTypesNode.getChildNodes());;
+    BasicArrayList* logConfigTypeNodeVector = DomSearchHelper::getAllNodes(LogConfigTypeData::getInstance()->NAME, logConfigTypesNode->getChildNodes());;
     
 
-    int32_t size = logConfigTypeNodeVector.size();;
+    int32_t size = logConfigTypeNodeVector->size();;
     
 
 
@@ -289,12 +295,12 @@ stringBuffer.append(this->getFileName());
     int32_t i = 0;i < size; i++)
         {
 
-    Node node = logConfigTypeNodeVector.get(i);;
+    Node* node = dynamic_cast<Node*>(logConfigTypeNodeVector->get(i));;
     
 
-    LogConfigType logType = LogConfigTypes::getInstance(node);;
+    LogConfigType* logType = LogConfigTypes::getInstance(node);;
     
-logKeyVector.add(logType);
+logKeyVector->add(logType);
     
 }
 

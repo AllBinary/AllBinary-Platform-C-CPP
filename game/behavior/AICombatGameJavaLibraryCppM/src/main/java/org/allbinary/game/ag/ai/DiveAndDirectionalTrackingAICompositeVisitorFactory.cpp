@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/util/visitor/Visitor.h>
@@ -41,13 +47,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DiveAndDirectionalTrackingAI.h"
+        #include "org/allbinary/game/ag/ai/DiveAndDirectionalTrackingAI.h"
 
 class DiveAndDirectionalTrackingAICompositeVisitorFactory
             : public Object
          {
 
-    public: Visitor getInstance(DiveAndDirectionalTrackingAI diveBombAI){
+    public: Visitor* getInstance(DiveAndDirectionalTrackingAI* diveBombAI){
 
 
 

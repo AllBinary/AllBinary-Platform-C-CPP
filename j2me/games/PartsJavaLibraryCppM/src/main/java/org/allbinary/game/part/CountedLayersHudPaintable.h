@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -70,18 +76,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PartInterface.h"
-#include "CountedLayerInterfaceFactoryPart.h"
+        #include "org/allbinary/game/part/PartInterface.h"
+#include "org/allbinary/game/part/CountedLayerInterfaceFactoryPart.h"
 
 class CountedLayersHudPaintable
             : public Object
-        : public PaintableInterface, public UpdateMyFontInterface {
+        , public PaintableInterface, public UpdateMyFontInterface {
 
-    private: static int32_t XXStringWidth = 0;
+    private: static inline int32_t XXStringWidth = 0;
 
-    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-    private: std::vector<PartInterface> partInterfaceArray;
+    private: std::vector<PartInterface*> partInterfaceArray;
 
     private: int32_t countedTotalStringColor;
 
@@ -91,17 +97,17 @@ class CountedLayersHudPaintable
 
     private: int32_t dropSize;
 
-    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
 
     private: int32_t height= 0;
 
-public: CountedLayersHudPaintable(std::vector<PartInterface> partInterfaceArray, int32_t dropSize, int32_t startIndex, int32_t countedTotalStringColor, int32_t countedPartsBorder);
+public: CountedLayersHudPaintable(std::vector<PartInterface*> partInterfaceArray, int32_t dropSize, int32_t startIndex, int32_t countedTotalStringColor, int32_t countedPartsBorder);
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: void paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics* graphics);
 
 };
 

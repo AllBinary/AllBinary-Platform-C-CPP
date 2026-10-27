@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>
 
       
@@ -45,13 +53,13 @@
         
 class HardwareInterface {
 
-    HardwareComponentInterface getComponent(int32_t index)
+    public: virtual HardwareComponentInterface* getComponent(int32_t index) = 0;
 
-    std::string toString()
+    public: virtual std::string toString() = 0;
 
-    bool compareTo(HardwareInterface hardwareInterface)
+    public: virtual bool compareTo(HardwareInterface* hardwareInterface) = 0;
 
-    ABHashtable<Object*, Object*> difference(HardwareInterface hardwareInterface)
+    public: virtual ABHashtable<Object*, Object*>* difference(HardwareInterface* hardwareInterface) = 0;
 
 };
 

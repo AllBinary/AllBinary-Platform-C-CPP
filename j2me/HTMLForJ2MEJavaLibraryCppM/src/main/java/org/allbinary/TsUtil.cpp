@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -74,9 +80,9 @@ class TsUtil
             : public Object
          {
 
-    private: static TsUtil instance() { return TsUtil(); }
+    private: static TsUtil* instance() { static std::unique_ptr<TsUtil> value(new TsUtil()); return value.get(); }
 
-    public: static TsUtil getInstance(){
+    public: static TsUtil* getInstance(){
 
 
 
@@ -122,7 +128,7 @@ class TsUtil
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -131,7 +137,7 @@ class TsUtil
             
     public: std::vector<int8_t> getRecord(Object* anyType, int32_t recordId){
 
-    RecordStore recordStore = *dynamic_cast<RecordStore*>(anyType);;
+    RecordStore* recordStore = dynamic_cast<RecordStore*>(anyType);;
     
 
     std::vector<int8_t> data;;
@@ -143,9 +149,9 @@ class TsUtil
 
         //mutex.withLock
         
-data= std::vector<int8_t>(recordStore.getRecordSize(recordId));
+data= std::vector<int8_t>(recordStore->getRecordSize(recordId));
     
-recordStore.getRecord(recordId, data, 0);
+recordStore->getRecord(recordId, data, 0);
     
 
 
@@ -155,7 +161,7 @@ recordStore.getRecord(recordId, data, 0);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         return data.size() < 1
                         ?       
-                                NullUtil::getInstance().NULL_BYTE_ARRAY
+                                NullUtil::getInstance()->NULL_BYTE_ARRAY
                                 :
 
                             data;
@@ -180,7 +186,7 @@ recordStore.getRecord(recordId, data, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return a.equalsIgnoreCase(b);;
+                        return JavaString::equalsIgnoreCase(a, b);;
     
 }
 
@@ -220,14 +226,16 @@ recordStore.getRecord(recordId, data, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return string.getBytes();;
+                        return JavaString::getBytes(string);;
     
 }
 
 
-    public: bool isItemListener(Displayable owner){
+    public: bool isItemListener(Displayable* owner){
 
-                        if(owner instanceof Form)
+                        if(
+                                        (dynamic_cast<const Form*>(owner) != nullptr)
+                                    )
                         
                                     {
                                     

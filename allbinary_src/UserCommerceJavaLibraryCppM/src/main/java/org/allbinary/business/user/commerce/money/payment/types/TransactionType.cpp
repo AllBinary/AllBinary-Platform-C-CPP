@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -51,9 +57,9 @@ this->name= name;
 }
 
 
-    public: bool isEqual(TransactionType transactionType){
+    public: bool isEqual(TransactionType* transactionType){
 
-                        if(this->toString().compareTo(transactionType.toString()) == 0)
+                        if(this->toString().compareTo(transactionType->toString()) == 0)
                         
 
 

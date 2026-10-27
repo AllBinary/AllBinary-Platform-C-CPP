@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -68,37 +74,37 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputAutomationActionInterface.h"
+        #include "org/allbinary/input/automation/module/InputAutomationActionInterface.h"
 
 class AbstractInputAutomationWorker
             : public Object
-        : public RunnableInterface {
+        , public RunnableInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: int64_t index= 0;
 
     private: bool running= false;
 
-    private: InputAutomationActionInterface inputAutomationActionInterface;
+    private: InputAutomationActionInterface* inputAutomationActionInterface;
 
-    private: CaptureWorkerInterface captureWorkerInterface;
+    private: CaptureWorkerInterface* captureWorkerInterface;
 
-    private: ImageComparisonWorker imageComparisonWorker;
+    private: ImageComparisonWorker* imageComparisonWorker;
 
-    private: MotionRectanglesWorker motionRectanglesWorker;
+    private: MotionRectanglesWorker* motionRectanglesWorker;
 
-    private: Thread captureThread;
+    private: Thread* captureThread;
 
-public: AbstractInputAutomationWorker(InputAutomationActionInterface inputAutomationActionInterface){
+public: AbstractInputAutomationWorker(InputAutomationActionInterface* inputAutomationActionInterface){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void setThread(Thread thread){
+    public: void setThread(Thread* thread){
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -125,7 +131,7 @@ this->running= running;
 
                         if(this->captureThread != 
                                     nullptr
-                                 && (this->captureThread.isAlive() || this->getCaptureWorker().isRunning() || this->getMotionRectanglesWorker().isRunning() || this->getImageComparisonWorker().isRunning()))
+                                 && (this->captureThread->isAlive() || this->getCaptureWorker()->isRunning() || this->getMotionRectanglesWorker()->isRunning() || this->getImageComparisonWorker()->isRunning()))
                         
                                     {
                                     
@@ -154,11 +160,11 @@ this->running= running;
                         if(!isAnyDataWorkerRunning())
                         
                                     {
-                                    this->captureThread= Thread(this->getCaptureWorker());
+                                    this->captureThread= new Thread(this->getCaptureWorker());
     
-this->logUtil.putF("Starting CaptureWorkers - Need more images - Thread State: " +this->captureThread.getState().toString(), this, "startCaptureWorkers");
+this->logUtil->putF("Starting CaptureWorkers - Need more images - Thread State: " +this->captureThread->getState()->toString(), this, "startCaptureWorkers");
     
-this->captureThread.start();
+this->captureThread->start();
     
 
                                     }
@@ -173,7 +179,7 @@ this->captureThread.start();
 
         while(isAnyDataWorkerRunning())
         {
-this->logUtil.putF("Waiting", this, this->commonStrings.RUN);
+this->logUtil->putF("Waiting", this, this->commonStrings->RUN);
     
 Thread::sleep(250);
     
@@ -185,7 +191,7 @@ Thread::sleep(250);
                 //@Throws(Exception.constructor)
             
     protected: void stopDataWorkers(){
-this->getCaptureWorker().setRunning(false);
+this->getCaptureWorker()->setRunning(false);
     
 }
 
@@ -196,7 +202,7 @@ this->getCaptureWorker().setRunning(false);
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -204,23 +210,23 @@ this->getCaptureWorker().setRunning(false);
     public: void run(){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.RUN);
+            this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->RUN);
     
 this->setRunning(true);
     
 
-    TimeDelayHelper timeHelper = TimeDelayHelper(1000);;
+    TimeDelayHelper* timeHelper = new TimeDelayHelper(1000);;
     
 
         while(this->isRunning())
         {
-timeHelper.setStartTimeTNT();
+timeHelper->setStartTimeTNT();
     
 this->process();
     
 this->index++;
     
-this->logUtil.putF(CommonLabels::getInstance().ELAPSED +timeHelper.getElapsedTNT() +" Index: " +this->index, this, this->commonStrings.RUN);
+this->logUtil->putF(CommonLabels::getInstance()->ELAPSED +timeHelper->getElapsedTNT() +" Index: " +this->index, this, this->commonStrings->RUN);
     
 }
 
@@ -228,20 +234,20 @@ this->stopDataWorkers();
     
 this->waitForDataWorkers();
     
-this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.RUN);
+this->logUtil->putF(this->commonStrings->END, this, this->commonStrings->RUN);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RUN, &e);
     
 }
 
 }
 
 
-    public: InputAutomationActionInterface getInputAutomationActionInterface(){
+    public: InputAutomationActionInterface* getInputAutomationActionInterface(){
 
 
 
@@ -251,13 +257,13 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, 
 }
 
 
-    public: void setInputAutomationActionInterface(InputAutomationActionInterface inputAutomationActionInterface){
+    public: void setInputAutomationActionInterface(InputAutomationActionInterface* inputAutomationActionInterface){
 this->inputAutomationActionInterface= inputAutomationActionInterface;
     
 }
 
 
-    protected: CaptureWorkerInterface getCaptureWorker(){
+    protected: CaptureWorkerInterface* getCaptureWorker(){
 
 
 
@@ -267,13 +273,13 @@ this->inputAutomationActionInterface= inputAutomationActionInterface;
 }
 
 
-    protected: void setCaptureWorker(CaptureWorkerInterface captureWorkerInterface){
+    protected: void setCaptureWorker(CaptureWorkerInterface* captureWorkerInterface){
 this->captureWorkerInterface= captureWorkerInterface;
     
 }
 
 
-    protected: ImageComparisonWorker getImageComparisonWorker(){
+    protected: ImageComparisonWorker* getImageComparisonWorker(){
 
 
 
@@ -283,13 +289,13 @@ this->captureWorkerInterface= captureWorkerInterface;
 }
 
 
-    protected: void setImageComparisonWorker(ImageComparisonWorker imageComparisonWorker){
+    protected: void setImageComparisonWorker(ImageComparisonWorker* imageComparisonWorker){
 this->imageComparisonWorker= imageComparisonWorker;
     
 }
 
 
-    protected: MotionRectanglesWorker getMotionRectanglesWorker(){
+    protected: MotionRectanglesWorker* getMotionRectanglesWorker(){
 
 
 
@@ -299,7 +305,7 @@ this->imageComparisonWorker= imageComparisonWorker;
 }
 
 
-    protected: void setMotionRectanglesWorker(MotionRectanglesWorker motionRectanglesWorker){
+    protected: void setMotionRectanglesWorker(MotionRectanglesWorker* motionRectanglesWorker){
 this->motionRectanglesWorker= motionRectanglesWorker;
     
 }

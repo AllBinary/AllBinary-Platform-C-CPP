@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/awt.h>
@@ -58,26 +64,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageUtil.h"
-#include "Graphics2D.h"
+        #include "org/allbinary/media/image/ImageUtil.h"
+#include "org/allbinary/media/image/Graphics2D.h"
 
 class MirrorImageUtil
             : public Object
          {
 
-    private: static MirrorImageUtil instance() { return MirrorImageUtil(); }
+    private: static MirrorImageUtil* instance() { static std::unique_ptr<MirrorImageUtil> value(new MirrorImageUtil()); return value.get(); }
 
-    public: static MirrorImageUtil getInstance();
+    public: static MirrorImageUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const ImageUtil imageUtil = ImageUtil::getInstance();
+    private: ImageUtil* imageUtil = ImageUtil::getInstance();
 
 private: MirrorImageUtil();
 
-    public: BufferedImage getImage(BufferedImage bufferedImage, bool verticle, bool horizontal);
+    public: BufferedImage* getImage(BufferedImage* bufferedImage, bool verticle, bool horizontal);
 
-    public: std::vector<BufferedImage> getImages(BufferedImage bufferedImage, bool verticle, bool horizontal);
+    public: std::vector<BufferedImage*> getImages(BufferedImage* bufferedImage, bool verticle, bool horizontal);
 
 };
 

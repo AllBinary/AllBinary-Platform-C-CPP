@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -55,9 +61,9 @@ this->id= id;
 }
 
 
-    public: bool equals(HtmlMetaAttributeData htmlMetaAttributeData){
+    public: bool equals(HtmlMetaAttributeData* htmlMetaAttributeData){
 
-                        if(htmlMetaAttributeData.id == this->id)
+                        if(htmlMetaAttributeData->id == this->id)
                         
                                     {
                                     

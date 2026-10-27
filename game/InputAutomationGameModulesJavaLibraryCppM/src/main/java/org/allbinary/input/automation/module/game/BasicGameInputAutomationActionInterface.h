@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_BASICGAMEINPUTAUTOMATIONACTIONINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_BASICGAMEINPUTAUTOMATIONACTIONINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/awt.h>
@@ -47,17 +53,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Rectangle.h"
+        #include "org/allbinary/input/automation/module/game/Rectangle.h"
 
 class BasicGameInputAutomationActionInterface: public InputAutomationActionInterface {
 
                 //@Throws(Exception.constructor)
             
-    void attack(Rectangle rectangle);
+    public: virtual void attack(Rectangle* rectangle) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void target(Rectangle rectangle);
+    public: virtual void target(Rectangle* rectangle) = 0;
 
 };
 

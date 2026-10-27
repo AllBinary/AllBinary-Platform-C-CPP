@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_COLLIDABLEWAYPOINTBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_COLLIDABLEWAYPOINTBEHAVIOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/CollidableCompositeLayer.h>
@@ -55,17 +61,17 @@ class CollidableWaypointBehavior: public CollidableRTSBehavior {
 
 public: CollidableWaypointBehavior(bool collidable);
 
-    public: bool isCollision(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer);
+    public: bool isCollision(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collisionLayer);
 
                 //@Throws(Exception.constructor)
             
-    public: void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer);
+    public: void collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collisionLayer);
 
-    public: bool isCollisionInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterface);
+    public: bool isCollisionInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterface);
+    public: void collideInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterface);
 
 };
 

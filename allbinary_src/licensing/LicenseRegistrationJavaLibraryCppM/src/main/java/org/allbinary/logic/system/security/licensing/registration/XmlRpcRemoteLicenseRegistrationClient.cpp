@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/io/IOException.h>
@@ -80,11 +88,11 @@
         
 class XmlRpcRemoteLicenseRegistrationClient: public XmlRpcAbeClient {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const std::string PAGE = "licenseregistrationserverssl.php";
 
-public: XmlRpcRemoteLicenseRegistrationClient(AbeClientInformationInterface clientInfo) : XmlRpcAbeClient(clientInfo, "LicenseRegistrationServer.process"){
+public: XmlRpcRemoteLicenseRegistrationClient(AbeClientInformationInterface* clientInfo) : XmlRpcAbeClient(clientInfo, "LicenseRegistrationServer.process"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -98,56 +106,56 @@ this->setServer(0);
 
                 //@Throws(Exception.constructor)
             
-    public: Object* get(Object* anyType, CryptInterface cryptInterface){
+    public: Object* get(Object* anyType, CryptInterface* cryptInterface){
 
         try {
             
-    std::string server = getClientInfo().getLicenseServer(this->getServer());;
+    std::string server = getClientInfo()->getLicenseServer(this->getServer());;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(TRYING);
+stringBuffer->append(TRYING);
     
-stringBuffer.appendint(this->getServer());
+stringBuffer->appendint(this->getServer());
     
-stringBuffer.append(SEP);
+stringBuffer->append(SEP);
     
-stringBuffer.append(server);
+stringBuffer->append(server);
     
-this->logUtil.putF(CommonLabels::getInstance().START_LABEL +stringBuffer.toString(), this, this->commonStrings.GET);
-    
-
-    BasicArrayList param = BasicArrayListD();;
+this->logUtil->putF(CommonLabels::getInstance()->START_LABEL +stringBuffer->toString(), this, this->commonStrings.GET);
     
 
-    std::string serverUrl = getClientInfo().getLicenseServer(this->getServer());;
+    BasicArrayList* param = new BasicArrayListD();;
     
 
-    int32_t index = serverUrl.lastIndexOf("/");;
-    
-serverUrl= serverUrl.substring(0, index +1) +this->PAGE;
+    std::string serverUrl = getClientInfo()->getLicenseServer(this->getServer());;
     
 
-    XmlRpcClient xmlRpcClient = XmlRpcClient(serverUrl);;
+    int32_t index = JavaString::lastIndexOf(serverUrl, "/");;
+    
+serverUrl= JavaString::substring(serverUrl, 0, index +1) +this->PAGE;
+    
+
+    XmlRpcClient* xmlRpcClient = new XmlRpcClient(serverUrl);;
     
 this->setClient(xmlRpcClient);
     
-xmlRpcClient.setBasicAuthentication(
+xmlRpcClient->setBasicAuthentication(
                             nullptr, 
                             nullptr);
     
 
-    ABHashtable<Object*, Object*> hashtable = *dynamic_cast<ABHashtable<Object*, Object*>*>(anyType);;
+    ABHashtable<Object*, Object*>* hashtable = dynamic_cast<ABHashtable<Object*, Object*>*>(anyType);;
     
-this->logUtil.putF(CLIENT_INFO +hashtable.toString(), this, this->commonStrings.GET);
+this->logUtil->putF(CLIENT_INFO +hashtable->toString(), this, this->commonStrings.GET);
     
-param.add(hashtable);
+param->add(hashtable);
     
 
-    Object* result = xmlRpcClient.execute(this->getRemoteMethod(), param, cryptInterface);;
+    Object* result = xmlRpcClient->execute(this->getRemoteMethod(), param, cryptInterface);;
     
-this->logUtil.putF(RESULT +result->toString(), this, this->commonStrings.GET);
+this->logUtil->putF(RESULT +result->toString(), this, this->commonStrings.GET);
     
 isOnline= true;
     
@@ -159,9 +167,9 @@ isOnline= true;
     
 
                 //: 
-} catch(e) 
+} catch(IOException& e) 
             {
-this->logUtil.putF(TRYING_OTHER_SERVERS +ExceptionUtil::getInstance().getStackTrace(e), this, this->commonStrings.GET);
+this->logUtil->putF(TRYING_OTHER_SERVERS +ExceptionUtil::getInstance()->getStackTrace(&e), this, this->commonStrings.GET);
     
 
                         if(!e.getMessage().startsWith(HOST_NOT_RESOLVED))
@@ -180,7 +188,7 @@ this->logUtil.putF(TRYING_OTHER_SERVERS +ExceptionUtil::getInstance().getStackTr
                             
 
 
-                            throw Exception(HOST_NOT_RESOLVED_MSG);
+                            throw new Exception(HOST_NOT_RESOLVED_MSG);
                     
 
                         }
@@ -188,9 +196,9 @@ this->logUtil.putF(TRYING_OTHER_SERVERS +ExceptionUtil::getInstance().getStackTr
 }
 
                 //: 
-/* catch(e) 
+ catch(XmlRpcException& e) 
             {
-this->logUtil.put(SERVER_REPORTED_ERROR, this, this->commonStrings.GET, e);
+this->logUtil->put(SERVER_REPORTED_ERROR, this, this->commonStrings.GET, &e);
     
 
 
@@ -199,11 +207,11 @@ this->logUtil.put(SERVER_REPORTED_ERROR, this, this->commonStrings.GET, e);
                         return this->tryAnother(anyType);;
     
 }
-*/
+
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-this->logUtil.put(UNKNOWN_ERROR, this, this->commonStrings.GET, e);
+this->logUtil->put(UNKNOWN_ERROR, this, this->commonStrings.GET, &e);
     
 
 
@@ -212,7 +220,7 @@ this->logUtil.put(UNKNOWN_ERROR, this, this->commonStrings.GET, e);
                         return this->tryAnother(anyType);;
     
 }
-*/
+
 }
 
 

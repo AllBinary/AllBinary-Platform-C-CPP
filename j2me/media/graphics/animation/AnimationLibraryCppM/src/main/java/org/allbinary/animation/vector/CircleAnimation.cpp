@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -54,13 +60,13 @@
         
 class CircleAnimation: public Animation, public ColorCompositeInterface {
 
-    protected: const int32_t TOTAL_ANGLE = static_cast<int32_t>(AngleFactory::getInstance().TOTAL_ANGLE);
+    protected: const int32_t TOTAL_ANGLE = static_cast<int32_t>(AngleFactory::getInstance()->TOTAL_ANGLE);
 
     protected: int32_t width;
 
     protected: int32_t height;
 
-public: CircleAnimation(int32_t width, int32_t height, BasicColor basicColor){
+public: CircleAnimation(int32_t width, int32_t height, BasicColor* basicColor){
 this->width= width;
     
 this->height= height;
@@ -74,10 +80,10 @@ this->setBasicColorP(basicColor);
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
-graphics.drawArc(x, y, this->width, this->height, 0, this->TOTAL_ANGLE);
+graphics->drawArc(x, y, this->width, this->height, 0, this->TOTAL_ANGLE);
     
 }
 

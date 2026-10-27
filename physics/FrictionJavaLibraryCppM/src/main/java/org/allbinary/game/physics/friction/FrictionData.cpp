@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,7 +49,7 @@ class FrictionData
             : public Object
          {
 
-    private: static const int32_t FRICTION_DENOMINATOR = 100;
+    private: static inline const int32_t FRICTION_DENOMINATOR = 100;
 
     public: static int32_t getFrictionDenominator(){
 

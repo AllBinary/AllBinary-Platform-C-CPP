@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_STOREFRONT_ADDVALIDATIONSTOREFRONTVIEW_H
         #define VIEWS_ADMIN_STOREFRONT_ADDVALIDATIONSTOREFRONTVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -92,13 +98,13 @@
         
 class AddValidationStoreFrontView: public HttpContextView, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: StoreFrontInterface newStoreFrontInterface;
+    protected: StoreFrontInterface* newStoreFrontInterface;
 
-public: AddValidationStoreFrontView(TransformInfoInterface transformInfoInterface);
+public: AddValidationStoreFrontView(TransformInfoInterface* transformInfoInterface);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
                 //@Throws(Exception.constructor)
             
@@ -106,9 +112,9 @@ public: AddValidationStoreFrontView(TransformInfoInterface transformInfoInterfac
 
     public: std::string validationInfo();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
                 //@Throws(Exception.constructor)
             

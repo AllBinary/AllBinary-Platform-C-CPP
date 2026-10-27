@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONSTRAINTS_NOMOTIONRECTANGLECONSTRAINTS_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONSTRAINTS_NOMOTIONRECTANGLECONSTRAINTS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Integer.h"
         
             #include "java/lang/Long.h"
@@ -52,14 +58,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Dimension.h"
-#include "Rectangle.h"
+        #include "org/allbinary/input/automation/module/generic/constraints/Dimension.h"
+#include "org/allbinary/input/automation/module/generic/constraints/Rectangle.h"
 
 class NoMotionRectangleConstraints: public MotionRectangleConstraints {
 
 public: NoMotionRectangleConstraints();
 
-    public: bool isValid(Long frame, BufferedImage bufferedImage, Rectangle rectangle);
+    public: bool isValid(int64_t frame, BufferedImage* bufferedImage, Rectangle* rectangle);
 
 };
 

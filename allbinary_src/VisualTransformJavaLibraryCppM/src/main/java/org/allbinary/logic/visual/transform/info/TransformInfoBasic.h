@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOBASIC_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOBASIC_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -68,19 +76,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoHttpInterface.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpInterface.h"
 //Hack class should not exist
 class TransformInfoBasic: public AbContext, public TransformInfoHttpInterface {
 
-    private: StoreFrontInterface storeFrontInterface;
+    private: StoreFrontInterface* storeFrontInterface;
 
-public: TransformInfoBasic(StoreFrontInterface storeFrontInterface, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
+public: TransformInfoBasic(StoreFrontInterface* storeFrontInterface, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext);
 
     public: std::string getStoreName();
 
     public: std::string log();
 
-    public: void override(HashMap<Object*, Object*> hashMap);
+    public: void override(HashMap<Object*, Object*>* hashMap);
 
     public: std::string getName();
 
@@ -88,23 +96,23 @@ public: TransformInfoBasic(StoreFrontInterface storeFrontInterface, HashMap<Obje
 
     public: Object* getObject();
 
-    public: TransformInfoObjectConfigInterface getObjectConfigInterface();
+    public: TransformInfoObjectConfigInterface* getObjectConfigInterface();
 
-    public: void setObjectConfigInterface(Object transformInfoObjectConfigInterface);
+    public: void setObjectConfigInterface(Object* transformInfoObjectConfigInterface);
 
-    public: AbPath getTemplateFilePath();
+    public: AbPath* getTemplateFilePath();
 
     public: std::string getTemplateFile();
 
     public: std::string getTemplate();
 
-    public: AbPath getDataFilePath();
+    public: AbPath* getDataFilePath();
 
     public: std::string getDataFile();
 
                 //@Throws(Exception.constructor)
             
-    public: Document getDataDocument();
+    public: Document* getDataDocument();
 
     public: void setName(std::string value);
 
@@ -138,11 +146,11 @@ public: TransformInfoBasic(StoreFrontInterface storeFrontInterface, HashMap<Obje
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList toVector();
+    public: BasicArrayList* toVector();
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
 };
 

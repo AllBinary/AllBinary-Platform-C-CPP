@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_TIME_TIMETYPETEST_H
         #define ORG_ALLBINARY_TIME_TIMETYPETEST_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/Calendar.h>
@@ -39,8 +45,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TimeTypeUtil.h"
-//#include "TestableTimeTypeUtil.h"
+        #include "org/allbinary/time/TimeTypeUtil.h"
+//#include "org/allbinary/time/TestableTimeTypeUtil.h"
 
 class TimeTypeTest
             : public Object

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -51,9 +57,9 @@ class AndroidUtil
             : public Object
          {
 
-    public: static const Activity NULL_ACTIVITY = Activity();
+    public: static Activity* NULL_ACTIVITY() { static std::unique_ptr<Activity> value(new Activity()); return value.get(); }
 
-    private: static const int32_t version = Integer::parseInt(Build::VERSION.SDK);
+    private: static inline const int32_t version = Integer.parseInt(Build::VERSION.SDK);
 
     public: static bool isMemoryRestrictive(){
 

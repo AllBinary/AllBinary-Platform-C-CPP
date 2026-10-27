@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,16 +44,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbeNoLicense.h"
-#include "AbeLicenseInterface.h"
+        #include "org/allbinary/logic/system/security/licensing/AbeNoLicense.h"
+#include "org/allbinary/logic/system/security/licensing/AbeLicenseInterface.h"
 
 class LicenseInterfaceSingleton
             : public Object
          {
 
-    private: static AbeLicenseInterface licenseInterface = AbeNoLicense::getInstance();
+    private: static inline AbeLicenseInterface* licenseInterface = AbeNoLicense::getInstance();
 
-    public: static AbeLicenseInterface getInstance(){
+    public: static AbeLicenseInterface* getInstance(){
 
 
 
@@ -57,7 +63,7 @@ class LicenseInterfaceSingleton
 }
 
 
-    public: static void init(AbeLicenseInterface licenseInterface){
+    public: static void init(AbeLicenseInterface* licenseInterface){
 
                         if(licenseInterface != 
                                     nullptr

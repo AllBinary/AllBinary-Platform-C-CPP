@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/control/search/SearchRequest.h>
 
       
@@ -45,11 +51,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InventorySearch.h"
+        #include "views/generic/inventory/InventorySearch.h"
 
 class AutoSearchValidationInventoryView: public InventorySearch {
 
-public: AutoSearchValidationInventoryView(SearchRequest searchRequest) : InventorySearch(searchRequest){
+public: AutoSearchValidationInventoryView(SearchRequest* searchRequest) : InventorySearch(searchRequest){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -59,7 +65,7 @@ public: AutoSearchValidationInventoryView(SearchRequest searchRequest) : Invento
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
 
 
@@ -69,7 +75,7 @@ public: AutoSearchValidationInventoryView(SearchRequest searchRequest) : Invento
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -79,7 +85,7 @@ public: AutoSearchValidationInventoryView(SearchRequest searchRequest) : Invento
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

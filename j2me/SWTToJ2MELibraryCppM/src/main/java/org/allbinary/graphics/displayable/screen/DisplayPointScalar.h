@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_DISPLAYPOINTSCALAR_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_DISPLAYPOINTSCALAR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/GPoint.h>
@@ -58,9 +64,9 @@ class DisplayPointScalar
             : public Object
          {
 
-    private: static DisplayPointScalar instance() { return DisplayPointScalar(); }
+    private: static DisplayPointScalar* instance() { static std::unique_ptr<DisplayPointScalar> value(new DisplayPointScalar()); return value.get(); }
 
-    public: static DisplayPointScalar getInstance();
+    public: static DisplayPointScalar* getInstance();
 
 public: DisplayPointScalar();
 
@@ -68,7 +74,7 @@ public: DisplayPointScalar();
 
     public: int32_t processY(int32_t value);
 
-    public: GPoint process(GPoint point);
+    public: GPoint* process(GPoint* point);
 
 };
 

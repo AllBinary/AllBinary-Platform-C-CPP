@@ -21,6 +21,12 @@
         #ifndef VIEWS_BUSINESS_CONTEXT_OVERRIDEOBJECTCONFIGROOTCONTEXTVIEW_H
         #define VIEWS_BUSINESS_CONTEXT_OVERRIDEOBJECTCONFIGROOTCONTEXTVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
@@ -89,9 +95,9 @@
         
 class OverrideObjectConfigRootContextView: public HttpStoreComponentView {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: OverrideObjectConfigRootContextView(Object transformInfoInterface);
+public: OverrideObjectConfigRootContextView(Object* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             

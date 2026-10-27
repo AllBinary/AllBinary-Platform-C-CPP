@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -103,47 +111,47 @@
         
 class BasketView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
-public: BasketView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+public: BasketView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->request= this->getPageContext().getRequest();
+this->request= dynamic_cast<HttpServletRequest*>(this->getPageContext()->getRequest());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
         try {
             
-    InventoryEntity inventoryEntity = InventoryEntityFactory::getInstance().getInventoryEntityInstance();;
+    InventoryEntity* inventoryEntity = InventoryEntityFactory::getInstance()->getInventoryEntityInstance();;
     
 
-    BasketInterface basketInterface = this->getWeblisketSession().getOrder().getBasket();;
+    BasketInterface* basketInterface = this->getWeblisketSession()->getOrder()->getBasket();;
     
 
-    Node basketNode = document.createElement(BasketData::BASKET);;
+    Node* basketNode = document->createElement(BasketData::BASKET);;
     
 
-    HashMap<Object*, Object*> itemsAndNumberInBasket = basketInterface.getItems();;
+    HashMap<Object*, Object*>* itemsAndNumberInBasket = basketInterface->getItems();;
     
 
     int32_t numberOfResults = 1;;
     
 
-    Set items = itemsAndNumberInBasket.keySet();;
+    Set* items = itemsAndNumberInBasket->keySet();;
     
 
-    std::vector<Object*> productArray = items.toArray();;
+    std::vector<Object*> productArray = items->toArray();;
     
 
     int32_t size = productArray.size();;
@@ -159,7 +167,7 @@ this->request= this->getPageContext().getRequest();
     std::string product = .toCharArray();;
     
 
-    ItemInterface itemInterface = inventoryEntity.getItem(product);;
+    ItemInterface* itemInterface = inventoryEntity->getItem(product);;
     
 
                         if(itemInterface != 
@@ -168,33 +176,33 @@ this->request= this->getPageContext().getRequest();
                         
                                     {
                                     
-    BasicItemView basicItemView = BasicItemView(itemInterface, BasicArrayListD());;
+    BasicItemView* basicItemView = new BasicItemView(itemInterface, new BasicArrayListD());;
     
 
-    Node node = basicItemView.toXmlNode(document);;
+    Node* node = basicItemView->toXmlNode(document);;
     
 
-    std::string numberInBasket = basketInterface.getNumberOf(product).toString();;
+    std::string numberInBasket = basketInterface->getNumberOf(product)->toString();;
     
-node.appendChild(ModDomHelper::createNameValueNodes(document, BasketData::ITEMTOTALINBASKET, numberInBasket));
-    
-
-    Money itemPrice = itemInterface.getPrice();;
+node->appendChild(ModDomHelper::createNameValueNodes(document, BasketData::ITEMTOTALINBASKET, numberInBasket));
     
 
-    Money itemTotal = Money(itemPrice);;
+    Money* itemPrice = itemInterface->getPrice();;
     
-itemTotal.multiply(basketInterface.getNumberOf(product).intValue());
+
+    Money* itemTotal = new Money(itemPrice);;
     
-node.appendChild(ModDomHelper::createNameValueNodes(document, BasketData::ITEMTOTAL, itemTotal.toString()));
+itemTotal->multiply(basketInterface->getNumberOf(product)->intValue());
     
-basketNode.appendChild(node);
+node->appendChild(ModDomHelper::createNameValueNodes(document, BasketData::ITEMTOTAL, itemTotal->toString()));
+    
+basketNode->appendChild(node);
     
 
                                     }
                                 
                         else {
-                            this->logUtil.putF("Product Failed: " +product, this, "toXmlNode");
+                            this->logUtil->putF("Product Failed: " +product, this, "toXmlNode");
     
 
                         }
@@ -204,34 +212,34 @@ numberOfResults++;
 }
 
 
-    Node totalNumberNode = document.createElement(SearchData::TOTAL_NUMBER_ITEMS);;
+    Node* totalNumberNode = document->createElement(SearchData::TOTAL_NUMBER_ITEMS);;
     
 
-    Node totalNumberTextNode = document.createTextNode(basketInterface.getNumberOfItems().toString());;
+    Node* totalNumberTextNode = document->createTextNode(basketInterface->getNumberOfItems()->toString());;
     
-totalNumberNode.appendChild(totalNumberTextNode);
-    
-
-    Node totalWeightNode = document.createElement(BasketData::TOTALWEIGHT);;
+totalNumberNode->appendChild(totalNumberTextNode);
     
 
-    Node totalWeightTextNode = document.createTextNode(basketInterface.getTotalWeight().toString());;
-    
-totalWeightNode.appendChild(totalWeightTextNode);
+    Node* totalWeightNode = document->createElement(BasketData::TOTALWEIGHT);;
     
 
-    Node subTotalNode = document.createElement(BasketData::SUBTOTAL);;
+    Node* totalWeightTextNode = document->createTextNode(basketInterface->getTotalWeight()->toString());;
+    
+totalWeightNode->appendChild(totalWeightTextNode);
     
 
-    Node subTotalTextNode = document.createTextNode(basketInterface.getSubTotal().toString());;
+    Node* subTotalNode = document->createElement(BasketData::SUBTOTAL);;
     
-subTotalNode.appendChild(subTotalTextNode);
+
+    Node* subTotalTextNode = document->createTextNode(basketInterface->getSubTotal()->toString());;
     
-basketNode.appendChild(totalNumberNode);
+subTotalNode->appendChild(subTotalTextNode);
     
-basketNode.appendChild(totalWeightNode);
+basketNode->appendChild(totalNumberNode);
     
-basketNode.appendChild(subTotalNode);
+basketNode->appendChild(totalWeightNode);
+    
+basketNode->appendChild(subTotalNode);
     
 
 
@@ -241,13 +249,13 @@ basketNode.appendChild(subTotalNode);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XSLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XSLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, "toXmlNode", &e);
     
 
                                     }
@@ -263,7 +271,7 @@ basketNode.appendChild(subTotalNode);
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this);
+this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     
 }
 
@@ -283,13 +291,13 @@ this->addDomNodeInterface(this);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }

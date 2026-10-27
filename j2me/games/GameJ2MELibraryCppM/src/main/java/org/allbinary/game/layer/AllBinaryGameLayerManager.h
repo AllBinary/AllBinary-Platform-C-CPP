@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Integer.h"
         
 #include <org/allbinary/game/GameInfo.h>
@@ -79,43 +87,43 @@
         
 class AllBinaryGameLayerManager: public AllBinaryLayerManager {
 
-    private: static Object* NULL_ALLBINARY_LAYER_MANAGER = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* NULL_ALLBINARY_LAYER_MANAGER = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static AllBinaryGameLayerManager getNullInstance();
+    public: static AllBinaryGameLayerManager* getNullInstance();
 
-    public: static const Integer ID = SmallIntegerSingletonFactory::getInstance().getAt(22);
+    public: static inline int32_t ID = SmallIntegerSingletonFactory::getInstance()->getAt(22);
 
-    private: BasicColor backgroundBasicColor;
+    private: BasicColor* backgroundBasicColor;
 
-    private: BasicColor foregroundBasicColor;
+    private: BasicColor* foregroundBasicColor;
 
-    private: GameInfo gameInfo;
+    private: GameInfo* gameInfo;
 
-    private: PlayerGameInputCompositeInterface playerGameInputCompositeInterface = NullPlayerGameInputComposite::NULL_PLAYER_GAME_INPUT_COMPOSITE;
+    private: PlayerGameInputCompositeInterface* playerGameInputCompositeInterface = NullPlayerGameInputComposite::NULL_PLAYER_GAME_INPUT_COMPOSITE;
 
-public: AllBinaryGameLayerManager(BasicColor backgroundBasicColor, BasicColor foregroundBasicColor, GameInfo gameInfo);
+public: AllBinaryGameLayerManager(BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor, GameInfo* gameInfo);
 
-    public: AllBinaryLayerManager getLayerManager();
+    public: AllBinaryLayerManager* getLayerManager();
 
     public: void init();
 
-    public: BasicColor getBackgroundBasicColor();
+    public: BasicColor* getBackgroundBasicColor();
 
-    public: void setBackgroundBasicColor(BasicColor backgroundBasicColor);
+    public: void setBackgroundBasicColor(BasicColor* backgroundBasicColor);
 
-    public: BasicColor getForegroundBasicColor();
+    public: BasicColor* getForegroundBasicColor();
 
-    public: void setForegroundBasicColor(BasicColor foregroundBasicColor);
+    public: void setForegroundBasicColor(BasicColor* foregroundBasicColor);
 
-    public: GameInfo getGameInfo();
+    public: GameInfo* getGameInfo();
 
-    public: void setGameInfo(GameInfo gameInfo);
+    public: void setGameInfo(GameInfo* gameInfo);
 
-    public: void setLayerProcessorList(BasicArrayList list);
+    public: void setLayerProcessorList(BasicArrayList* list);
 
-    public: void setPlayerGameInputCompositeInterface(PlayerGameInputCompositeInterface playerGameInputCompositeInterface);
+    public: void setPlayerGameInputCompositeInterface(PlayerGameInputCompositeInterface* playerGameInputCompositeInterface);
 
-    public: PlayerGameInputCompositeInterface getPlayerGameInputCompositeInterface();
+    public: PlayerGameInputCompositeInterface* getPlayerGameInputCompositeInterface();
 
 };
 

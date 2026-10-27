@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_COLOR_COLORDELTAFACTORY_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_COLOR_COLORDELTAFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,13 +67,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ColorDelta.h"
+        #include "org/allbinary/media/image/comparison/color/ColorDelta.h"
 
 class ColorDeltaFactory
             : public Object
          {
 
-    private: static AutomaticCacheInterface cacheInterface = 
+    private: static inline AutomaticCacheInterface* cacheInterface = 
                 nullptr
             ;
 
@@ -76,9 +82,9 @@ class ColorDeltaFactory
             
                 //@Throws(Exception.constructor)
             
-    public: static ColorDelta getInstance(int32_t rgb1, int32_t rgb2);
+    public: static ColorDelta* getInstance(int32_t rgb1, int32_t rgb2);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: ColorDeltaFactory();
 

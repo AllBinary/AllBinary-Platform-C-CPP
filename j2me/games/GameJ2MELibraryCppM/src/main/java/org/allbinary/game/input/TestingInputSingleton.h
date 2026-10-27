@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -76,39 +82,39 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameInputInterface.h"
-#include "InputFactory.h"
-#include "GameInputProcessor.h"
-#include "GameInputProcessorUtil.h"
-#include "TestInputInterface.h"
+        #include "org/allbinary/game/input/GameInputInterface.h"
+#include "org/allbinary/game/input/InputFactory.h"
+#include "org/allbinary/game/input/GameInputProcessor.h"
+#include "org/allbinary/game/input/GameInputProcessorUtil.h"
+#include "org/allbinary/game/input/TestInputInterface.h"
 
 class TestingInputSingleton: public AllBinaryGameLayer, public GameInputInterface {
 
-    private: static TestingInputSingleton instance() { return TestingInputSingleton(); }
+    private: static TestingInputSingleton* instance() { static std::unique_ptr<TestingInputSingleton> value(new TestingInputSingleton()); return value.get(); }
 
-    public: static TestingInputSingleton getInstance();
+    public: static TestingInputSingleton* getInstance();
 
-    protected: const std::vector<GameInputProcessor> inputProcessorArray = std::vector<GameInputProcessor>(InputFactory::getInstance().MAX);
+    protected: const std::vector<GameInputProcessor*> inputProcessorArray = std::vector<GameInputProcessor*>(InputFactory::getInstance()->MAX);
 
 private: TestingInputSingleton();
 
-    private: PaintableInterface paintable = NullPaintable::getInstance();
+    private: PaintableInterface* paintable = NullPaintable::getInstance();
 
     public: void initInputProcessors();
 
-    public: void initInputProcessorsForTestInput(TestInputInterface aTestInputInterface);
+    public: void initInputProcessorsForTestInput(TestInputInterface* aTestInputInterface);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void processInputList(AllBinaryLayerManager allbinaryLayerManager, BasicArrayList list);
+    public: void processInputList(AllBinaryLayerManager* allbinaryLayerManager, BasicArrayList* list);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void processInput(AllBinaryLayerManager allbinaryLayerManager);
+    public: void processInput(AllBinaryLayerManager* allbinaryLayerManager);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
     public: bool implmentsGameInputInterface();
 

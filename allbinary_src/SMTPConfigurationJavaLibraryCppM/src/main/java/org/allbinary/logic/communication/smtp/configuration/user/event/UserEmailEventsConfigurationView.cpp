@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -75,35 +81,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserEmailEventsConfigurationInterface.h"
-#include "UserEmailEventsConfiguration.h"
-#include "UserEmailEventConfigurationData.h"
-#include "UserEmailEventConfigurationView.h"
-#include "UserEmailEventsConfigurationMapping.h"
-#include "UserEmailEventsConfigurationData.h"
-#include "UserEmailEventConfigurationInterface.h"
+        #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventsConfigurationInterface.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventsConfiguration.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationData.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationView.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventsConfigurationMapping.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventsConfigurationData.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationInterface.h"
 
 class UserEmailEventsConfigurationView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface;
+    private: UserEmailEventsConfigurationInterface* userEmailEventsConfigurationInterface;
 
-public: UserEmailEventsConfigurationView(Node node){
-this->userEmailEventsConfigurationInterface= UserEmailEventsConfiguration();
+public: UserEmailEventsConfigurationView(Node* node){
+this->userEmailEventsConfigurationInterface= dynamic_cast<UserEmailEventsConfigurationInterface*>(new UserEmailEventsConfiguration());
     
 
-    NodeList childNodeList = node.getChildNodes();;
+    NodeList* childNodeList = node->getChildNodes();;
     
 
-    BasicArrayList emailEventConfigurationNodeVector = DomSearchHelper::getAllNodesNoThrow(UserEmailEventConfigurationData::NAME, childNodeList);;
+    BasicArrayList* emailEventConfigurationNodeVector = DomSearchHelper::getAllNodesNoThrow(UserEmailEventConfigurationData::NAME, childNodeList);;
     
 
-    int32_t size = emailEventConfigurationNodeVector.size();;
+    int32_t size = emailEventConfigurationNodeVector->size();;
     
 
 
@@ -113,25 +119,25 @@ this->userEmailEventsConfigurationInterface= UserEmailEventsConfiguration();
     int32_t index = 0;index < size; index++)
         {
 
-    Node userEmailConfigurationNode = emailEventConfigurationNodeVector.get(index);;
+    Node* userEmailConfigurationNode = dynamic_cast<Node*>(emailEventConfigurationNodeVector->get(index));;
     
 
-    UserEmailEventConfigurationView userEmailEventConfigurationView = UserEmailEventConfigurationView(userEmailConfigurationNode);;
+    UserEmailEventConfigurationView* userEmailEventConfigurationView = new UserEmailEventConfigurationView(userEmailConfigurationNode);;
     
-this->userEmailEventsConfigurationInterface.addUserEmailEventConfiguration(userEmailEventConfigurationView.getUserEmailEventConfigurationInterface());
+this->userEmailEventsConfigurationInterface->addUserEmailEventConfiguration(userEmailEventConfigurationView->getUserEmailEventConfigurationInterface());
     
 }
 
 }
 
 
-public: UserEmailEventsConfigurationView(UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface){
+public: UserEmailEventsConfigurationView(UserEmailEventsConfigurationInterface* userEmailEventsConfigurationInterface){
 this->userEmailEventsConfigurationInterface= userEmailEventsConfigurationInterface;
     
 }
 
 
-    public: UserEmailEventsConfigurationInterface getUserEmailEventsConfigurationInterface(){
+    public: UserEmailEventsConfigurationInterface* getUserEmailEventsConfigurationInterface(){
 
 
 
@@ -143,30 +149,30 @@ this->userEmailEventsConfigurationInterface= userEmailEventsConfigurationInterfa
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    UserEmailEventsConfigurationMapping userEmailConfigurationMapping = UserEmailEventsConfigurationMapping(this->userEmailEventsConfigurationInterface);;
+    UserEmailEventsConfigurationMapping* userEmailConfigurationMapping = new UserEmailEventsConfigurationMapping(this->userEmailEventsConfigurationInterface);;
     
 
-    Node node = document.createElement(UserEmailEventsConfigurationData::NAME);;
+    Node* node = document->createElement(UserEmailEventsConfigurationData::NAME);;
     
 
-    HashMap<Object*, Object*> emailEventHashMap = this->getUserEmailEventsConfigurationInterface().getEventConfigurationHashMap();;
+    HashMap<Object*, Object*>* emailEventHashMap = this->getUserEmailEventsConfigurationInterface()->getEventConfigurationHashMap();;
     
 
-    Set set = emailEventHashMap.keys();;
+    Set* set = emailEventHashMap->keys();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
                         
                                     {
-                                    this->logUtil.putF("Number Of Email Events Specified in file: " +set.size(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("Number Of Email Events Specified in file: " +set->size(), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
                                 
 
-    std::vector<Object*> eventNameArray = set.toArray();;
+    std::vector<Object*> eventNameArray = set->toArray();;
     
 
     int32_t size = eventNameArray.size();;
@@ -182,12 +188,12 @@ this->userEmailEventsConfigurationInterface= userEmailEventsConfigurationInterfa
     std::string eventName = eventNameArray[index];;
     
 
-    UserEmailEventConfigurationInterface userEmailEventsConfigurationInterface = emailEventHashMap.get(eventName);;
+    UserEmailEventConfigurationInterface* userEmailEventsConfigurationInterface = dynamic_cast<UserEmailEventConfigurationInterface*>(emailEventHashMap->get(eventName));;
     
 
-    UserEmailEventConfigurationView userEmailEventConfigurationView = UserEmailEventConfigurationView(userEmailEventsConfigurationInterface);;
+    UserEmailEventConfigurationView* userEmailEventConfigurationView = new UserEmailEventConfigurationView(userEmailEventsConfigurationInterface);;
     
-node.appendChild(userEmailEventConfigurationView.toXmlNode(document));
+node->appendChild(userEmailEventConfigurationView->toXmlNode(document));
     
 }
 

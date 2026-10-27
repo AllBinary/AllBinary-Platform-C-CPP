@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_COUNTEDPICKEDUPLAYERINTERFACEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_PICKUP_COUNTEDPICKEDUPLAYERINTERFACEFACTORYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/layer/LayerInterfaceFactoryInterface.h>
 
       
@@ -42,13 +48,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PickedUpLayerInterfaceFactoryInterface.h"
+        #include "org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h"
 
 class CountedPickedUpLayerInterfaceFactoryInterface: public PickedUpLayerInterfaceFactoryInterface, public LayerInterfaceFactoryInterface {
 
-    int32_t getId();
+    public: virtual int32_t getId() = 0;
 
-    int32_t getTotal();
+    public: virtual int32_t getTotal() = 0;
 
 };
 

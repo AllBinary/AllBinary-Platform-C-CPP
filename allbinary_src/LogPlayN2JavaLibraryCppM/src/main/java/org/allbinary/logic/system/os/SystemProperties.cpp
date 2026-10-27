@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -48,9 +54,9 @@ class SystemProperties
             : public Object
          {
 
-    private: static SystemProperties instance() { return SystemProperties(); }
+    private: static SystemProperties* instance() { static std::unique_ptr<SystemProperties> value(new SystemProperties()); return value.get(); }
 
-    /*actual*/ public: static SystemProperties getInstance(){
+    /*actual*/ public: static SystemProperties* getInstance(){
 
 
 
@@ -104,7 +110,7 @@ private: SystemProperties(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

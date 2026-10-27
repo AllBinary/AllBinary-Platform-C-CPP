@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_MODULES_EVENT_USER_USEREMAILEVENTLISTENERMODULE_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_MODULES_EVENT_USER_USEREMAILEVENTLISTENERMODULE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,21 +73,21 @@
         
 class UserEmailEventListenerModule
             : public Object
-        : public UserEmailEventListenerInterface {
+        , public UserEmailEventListenerInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: UserInterface userInterface;
+    private: UserInterface* userInterface;
 
-public: UserEmailEventListenerModule(UserInterface userInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public: void onEmailSendFailure(EmailEvent emailEvent);
+public: UserEmailEventListenerModule(UserInterface* userInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void onEmailSendRequest(EmailEvent emailEvent);
+    public: void onEmailSendFailure(EmailEvent* emailEvent);
+
+                //@Throws(Exception.constructor)
+            
+    public: void onEmailSendRequest(EmailEvent* emailEvent);
 
 };
 

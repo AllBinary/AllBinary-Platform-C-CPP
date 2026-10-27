@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLCONFIGURATION_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLCONFIGURATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -103,34 +109,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLFeatureFactory.h"
-#include "OpenGLFeature.h"
+        #include "org/allbinary/graphics/opengles/OpenGLFeatureFactory.h"
+#include "org/allbinary/graphics/opengles/OpenGLFeature.h"
 
 class OpenGLConfiguration
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static OpenGLConfiguration getInstance();
+    public: static OpenGLConfiguration* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const std::string FILE = "OpenGLConfiguration.dat";
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const TsUtil tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil = TsUtil::getInstance();
 
     private: bool opengl = false;
 
-    private: OpenGLFeature type = OpenGLFeatureFactory::getInstance().OPENGL_AS_GAME_THREAD;
+    private: OpenGLFeature* type = OpenGLFeatureFactory::getInstance()->OPENGL_AS_GAME_THREAD;
 
-    private: OpenGLFeature imageColor = OpenGLFeatureFactory::getInstance().IMAGE_COLOR_DEPTH_4444;
+    private: OpenGLFeature* imageColor = OpenGLFeatureFactory::getInstance()->IMAGE_COLOR_DEPTH_4444;
 
-    private: OpenGLFeature color = OpenGLFeatureFactory::getInstance().IMAGE_COLOR_DEPTH_4444;
+    private: OpenGLFeature* color = OpenGLFeatureFactory::getInstance()->IMAGE_COLOR_DEPTH_4444;
 
-    private: OpenGLFeature versionSelector = OpenGLFeatureFactory::getInstance().OPENGL_AUTO_SELECT;
+    private: OpenGLFeature* versionSelector = OpenGLFeatureFactory::getInstance()->OPENGL_AUTO_SELECT;
 
 private: OpenGLConfiguration();
 
@@ -148,27 +154,27 @@ private: OpenGLConfiguration();
 
                 //@Throws(Exception.constructor)
             
-    public: void update(Feature gameFeature, bool colorLocked);
+    public: void update(Feature* gameFeature, bool colorLocked);
 
     public: void setOpenGL(bool opengl);
 
     public: bool isOpenGL();
 
-    public: void setImageColor(OpenGLFeature imageColor);
+    public: void setImageColor(OpenGLFeature* imageColor);
 
-    public: OpenGLFeature getImageColor();
+    public: OpenGLFeature* getImageColor();
 
-    public: void setColor(OpenGLFeature color);
+    public: void setColor(OpenGLFeature* color);
 
-    public: OpenGLFeature getColor();
+    public: OpenGLFeature* getColor();
 
-    public: void setVersionSelector(OpenGLFeature versionSelector);
+    public: void setVersionSelector(OpenGLFeature* versionSelector);
 
-    public: OpenGLFeature getVersionSelector();
+    public: OpenGLFeature* getVersionSelector();
 
-    public: void setType(OpenGLFeature type);
+    public: void setType(OpenGLFeature* type);
 
-    public: OpenGLFeature getType();
+    public: OpenGLFeature* getType();
 
     public: std::string toString();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,16 +44,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameConfigurationCentral.h"
-#include "GameConfiguration.h"
+        #include "org/allbinary/game/configuration/GameConfigurationCentral.h"
+#include "org/allbinary/game/configuration/GameConfiguration.h"
 
 class GameSpeed
             : public Object
          {
 
-    private: static GameSpeed instance() { return GameSpeed(); }
+    private: static GameSpeed* instance() { static std::unique_ptr<GameSpeed> value(new GameSpeed()); return value.get(); }
 
-    public: static GameSpeed getInstance(){
+    public: static GameSpeed* getInstance(){
 
 
 
@@ -59,26 +65,26 @@ class GameSpeed
 
     public: int32_t getSpeed(){
 
-    GameConfiguration speedGameConfiguration = GameConfigurationCentral::getInstance().SPEED;;
+    GameConfiguration* speedGameConfiguration = GameConfigurationCentral::getInstance()->SPEED;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return (speedGameConfiguration.getMaxValue().intValue() -speedGameConfiguration.getValue().intValue() +1);
+                        return (speedGameConfiguration->getMaxValue()->intValue() -speedGameConfiguration->getValue()->intValue() +1);
     
 }
 
 
     public: int32_t getDelay(){
 
-    GameConfiguration speedGameConfiguration = GameConfigurationCentral::getInstance().SPEED;;
+    GameConfiguration* speedGameConfiguration = GameConfigurationCentral::getInstance()->SPEED;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return 19 *(speedGameConfiguration.getMaxValue().intValue() -speedGameConfiguration.getValue().intValue());
+                        return 19 *(speedGameConfiguration->getMaxValue()->intValue() -speedGameConfiguration->getValue()->intValue());
     
 }
 

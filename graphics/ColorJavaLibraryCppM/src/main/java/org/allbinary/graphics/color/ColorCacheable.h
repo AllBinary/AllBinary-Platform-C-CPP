@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEABLE_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -49,23 +55,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Color.h"
+        #include "org/allbinary/graphics/color/Color.h"
 
 class ColorCacheable
             : public Object
-        : public CacheableInterface {
+        , public CacheableInterface {
 
     private: Object* key;
 
-    private: Color color;
+    private: Color* color;
 
 public: ColorCacheable(Object* key);
 
     public: Object* getKey();
 
-    public: Color getColor();
+    public: Color* getColor();
 
-    public: void setColor(Color color);
+    public: void setColor(Color* color);
 
 };
 

@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -178,26 +186,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SimulatedBuildingPropertiesFactory.h"
-#include "BuildingPropertiesFactory.h"
-#include "BuildingInfoHudPaintable.h"
+        #include "org/allbinary/game/layer/building/SimulatedBuildingPropertiesFactory.h"
+#include "org/allbinary/game/layer/building/BuildingPropertiesFactory.h"
+#include "org/allbinary/game/layer/building/BuildingInfoHudPaintable.h"
 
 class BuildingLayer: public AdvancedRTSGameLayer, public RotationAnimationInterfaceCompositeInterface, public TrackingEventListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: static BuildingLayer createSimulated(){
+    public: static BuildingLayer* createSimulated(){
 
-    AnimationInterfaceFactoryInterface nullAnimationInterfaceFactoryInterface = NullAnimationFactory::getFactoryInstance();;
+    AnimationInterfaceFactoryInterface* nullAnimationInterfaceFactoryInterface = NullAnimationFactory::getFactoryInstance();;
     
 
-    AnimationInterfaceFactoryInterface nullIndexedAnimationInterfaceFactoryInterface = NullIndexedAnimationFactory::getFactoryInstance();;
+    AnimationInterfaceFactoryInterface* nullIndexedAnimationInterfaceFactoryInterface = NullIndexedAnimationFactory::getFactoryInstance();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BuildingLayer(RemoteInfo::REMOTE_INFO, SimulatedBuildingPropertiesFactory::getInstance(), AdvancedRTSProperties::createPropertiesSimulated(), GroupFactory::getInstance().NULL_GROUP_ARRAY, StringUtil::getInstance().EMPTY_STRING, StringUtil::getInstance().EMPTY_STRING, Health::NULL_HEALTH, NullRTSFormInputFactory::getInstance(), nullAnimationInterfaceFactoryInterface, nullIndexedAnimationInterfaceFactoryInterface, nullAnimationInterfaceFactoryInterface, nullAnimationInterfaceFactoryInterface, nullIndexedAnimationInterfaceFactoryInterface, NullIndexedAnimationFactory::getFactoryInstance(), RectangleFactory::SINGLETON, 0, 0);
+                        return new BuildingLayer(RemoteInfo::REMOTE_INFO, SimulatedBuildingPropertiesFactory::getInstance(), AdvancedRTSProperties::createPropertiesSimulated(), GroupFactory::getInstance()->NULL_GROUP_ARRAY, StringUtil::getInstance()->EMPTY_STRING, StringUtil::getInstance()->EMPTY_STRING, Health::NULL_HEALTH, NullRTSFormInputFactory::getInstance(), nullAnimationInterfaceFactoryInterface, nullIndexedAnimationInterfaceFactoryInterface, nullAnimationInterfaceFactoryInterface, nullAnimationInterfaceFactoryInterface, nullIndexedAnimationInterfaceFactoryInterface, NullIndexedAnimationFactory::getFactoryInstance(), RectangleFactory::SINGLETON, 0, 0);
     
 }
 
@@ -220,34 +228,34 @@ class BuildingLayer: public AdvancedRTSGameLayer, public RotationAnimationInterf
 
     private: int32_t efficiencyPerLevel;
 
-    private: TrackingEvent trackingEvent;
+    private: TrackingEvent* trackingEvent;
 
-    private: DamageFloaters damageFloaters;
+    private: DamageFloaters* damageFloaters;
 
-    private: Paintable damageFloatersPaintableInterface;
+    private: Paintable* damageFloatersPaintableInterface;
 
-    private: Paintable healthBar;
+    private: Paintable* healthBar;
 
-    private: ABHashtable<Object*, Object*> pathsHashtable;
+    private: ABHashtable<Object*, Object*>* pathsHashtable;
 
-public: BuildingLayer(RemoteInfo remoteInfo, BuildingPropertiesFactory buildingPropertiesFactory, AdvancedRTSProperties advancedRTSProperties, std::vector<Group> groupInterface, std::string rootName, std::string name, Health healthInterface, RTSFormInput rtsFormInput, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y) : AdvancedRTSGameLayer(remoteInfo, NullPathFindingLayer::NULL_PATH_FINDING_LAYER, advancedRTSProperties, groupInterface, rootName, name, healthInterface, rtsFormInput, animationInterfaceFactoryInterface, emptyAnimationInterfaceFactoryInterface, baseAnimationInterfaceFactoryInterface, buildAnimationInterfaceFactoryInterface, verticleBuildAnimationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y, TileLayerPositionIntoViewPosition()){
+public: BuildingLayer(RemoteInfo* remoteInfo, BuildingPropertiesFactory* buildingPropertiesFactory, AdvancedRTSProperties* advancedRTSProperties, std::vector<Group*> groupInterface, std::string rootName, std::string name, Health* healthInterface, RTSFormInput* rtsFormInput, AnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface* proceduralAnimationInterfaceFactoryInterface, Rectangle* rectangle, int32_t x, int32_t y) : AdvancedRTSGameLayer(remoteInfo, NullPathFindingLayer::NULL_PATH_FINDING_LAYER, advancedRTSProperties, groupInterface, rootName, name, healthInterface, rtsFormInput, animationInterfaceFactoryInterface, emptyAnimationInterfaceFactoryInterface, baseAnimationInterfaceFactoryInterface, buildAnimationInterfaceFactoryInterface, verticleBuildAnimationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y, new TileLayerPositionIntoViewPosition()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->setCollidableInferface(CollidableRTSBehavior(true));
+this->setCollidableInferface(new CollidableRTSBehavior(true));
     
-this->getWaypointBehavior().setWaypoint(Waypoint(this, SelectSound::getInstance()));
+this->getWaypointBehavior()->setWaypoint(new Waypoint(this, SelectSound::getInstance()));
     
-this->damageFloaters= buildingPropertiesFactory.getDamageFloaters(this);
+this->damageFloaters= buildingPropertiesFactory->getDamageFloaters(this);
     
-this->damageFloatersPaintableInterface= buildingPropertiesFactory.damageFloatersPaintableInterface;
+this->damageFloatersPaintableInterface= buildingPropertiesFactory->damageFloatersPaintableInterface;
     
-this->healthBar= buildingPropertiesFactory.getHealthBar(this);
+this->healthBar= buildingPropertiesFactory->getHealthBar(this);
     
-this->pathsHashtable= buildingPropertiesFactory.getHashtable();
+this->pathsHashtable= buildingPropertiesFactory->getHashtable();
     
 this->setMaxLevel(30);
     
@@ -255,25 +263,25 @@ this->setProductivity(1);
     
 this->setEfficiency(this->calculateEfficiency());
     
-this->efficiencyPerLevel= buildingPropertiesFactory.getEfficiencyPerLevel(this);
+this->efficiencyPerLevel= buildingPropertiesFactory->getEfficiencyPerLevel(this);
     
 this->efficiency= this->efficiencyPerLevel;
     
 this->generateMoveOutOfBuildAreaPaths();
     
-this->trackingEvent= buildingPropertiesFactory.getTrackingEvent(this);
+this->trackingEvent= buildingPropertiesFactory->getTrackingEvent(this);
     
 }
 
 
     protected: bool local= false;
 
-    protected: void initVisibility(RTSPlayerLayerInterface rtsPlayerLayerInterface){
+    protected: void initVisibility(RTSPlayerLayerInterface* rtsPlayerLayerInterface){
 
-    AdvancedRTSPlayerLayerInterface advancedRTSPlayerLayerInterface = rtsPlayerLayerInterface;;
+    AdvancedRTSPlayerLayerInterface* advancedRTSPlayerLayerInterface = dynamic_cast<AdvancedRTSPlayerLayerInterface*>(rtsPlayerLayerInterface);;
     
 
-                        if(advancedRTSPlayerLayerInterface.isLocalPlayer())
+                        if(advancedRTSPlayerLayerInterface->isLocalPlayer())
                         
                                     {
                                     this->local= true;
@@ -296,47 +304,47 @@ super.initVisibility(rtsPlayerLayerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void construct(RTSPlayerLayerInterface rtsPlayerLayerInterface){
+    public: void construct(RTSPlayerLayerInterface* rtsPlayerLayerInterface){
 super.construct(rtsPlayerLayerInterface);
     
-TrackingEventHandler::getInstance().addListenerInterface(this);
+TrackingEventHandler::getInstance()->addListenerInterface(this);
     
 }
 
 
-    public: void onMovement(TrackingEvent trackingEvent){
+    public: void onMovement(TrackingEvent* trackingEvent){
 
         try {
             
-    AdvancedRTSGameLayer layerInterface = trackingEvent.getLayerInterface();;
+    AdvancedRTSGameLayer* layerInterface = dynamic_cast<AdvancedRTSGameLayer*>(trackingEvent->getLayerInterface());;
     
 
-                        if(layerInterface.getGroupInterface()[0] != this->getGroupInterface()[0])
+                        if(layerInterface->getGroupInterface()[0] != this->getGroupInterface()[0])
                         
                                     {
-                                    layerInterface.onMovementFound(this->trackingEvent);
+                                    layerInterface->onMovementFound(this->trackingEvent);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "onMovement", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "onMovement", &e);
     
 }
 
 }
 
 
-    protected: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(3000);
+    protected: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(3000);
 
                 //@Throws(Exception.constructor)
             
-    public: void processBuiltTick(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processBuiltTick(AllBinaryLayerManager* allBinaryLayerManager){
 
-                        if(this->getHealthInterface().isDamaged())
+                        if(this->getHealthInterface()->isDamaged())
                         
                                     {
                                     this->setAnimationInterface(this->destroyAnimationInterface);
@@ -345,7 +353,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "onMovement", e);
                                     }
                                 
 
-                        if(!this->getHealthInterface().isAlive())
+                        if(!this->getHealthInterface()->isAlive())
                         
                                     {
                                     
@@ -359,11 +367,11 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "onMovement", e);
     int32_t size = this->destroyAnimationInterface.getSize() -1;;
     
 
-                        if(currentFrame == size && !this->timeDelayHelper.isTimeTNT())
+                        if(currentFrame == size && !this->timeDelayHelper->isTimeTNT())
                         
                                     {
                                     
-                        if(!this->getHealthInterface().isAlive())
+                        if(!this->getHealthInterface()->isAlive())
                         
                                     {
                                     this->setDestroyed(true);
@@ -386,13 +394,13 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "onMovement", e);
                         else {
                             this->setAnimationInterface(this->destroyAnimationInterface);
     
-SecondaryPlayerQueueFactory::getInstance().add(ExplosionBasicSound::getInstance());
+SecondaryPlayerQueueFactory::getInstance()->add(ExplosionBasicSound::getInstance());
     
 this->shakeListener.onSmallShakeEvent();
     
 this->vibration.vibrate(this->duration, 0, 0);
     
-this->timeDelayHelper.setStartTimeTNT();
+this->timeDelayHelper->setStartTimeTNT();
     
 this->setReadyForExplosion(true);
     
@@ -425,7 +433,7 @@ this->indexedButShouldBeRotationAnimationInterface.nextFrame();
 
     public: int32_t getCost(){
 
-    int64_t total = RTSLayerUtil::getInstance().getCostExponential((this->getLevel() *this->getBuildingLevelCost()));;
+    int64_t total = RTSLayerUtil::getInstance()->getCostExponential((this->getLevel() *this->getBuildingLevelCost()));;
     
 
 
@@ -438,7 +446,7 @@ this->indexedButShouldBeRotationAnimationInterface.nextFrame();
 
     public: int32_t getDowngradeCost(){
 
-    int64_t downgradeCost = RTSLayerUtil::getInstance().getCostExponential(((this->getLevel() -1) *this->getBuildingLevelCost()));;
+    int64_t downgradeCost = RTSLayerUtil::getInstance()->getCostExponential(((this->getLevel() -1) *this->getBuildingLevelCost()));;
     
 this->logUtil.putF("Cost: " +downgradeCost, this, "getDowngradeCost");
     
@@ -453,7 +461,7 @@ this->logUtil.putF("Cost: " +downgradeCost, this, "getDowngradeCost");
 
     public: int32_t getUpgradeCost(){
 
-    int64_t upgradeCost = RTSLayerUtil::getInstance().getCostExponential(((this->getLevel() +1) *this->getBuildingLevelCost()));;
+    int64_t upgradeCost = RTSLayerUtil::getInstance()->getCostExponential(((this->getLevel() +1) *this->getBuildingLevelCost()));;
     
 
 
@@ -471,7 +479,7 @@ this->setProductivity(this->getProductivity() -1);
     
 this->setEfficiency(this->getEfficiency() -this->calculateEfficiency());
     
-this->getHealthInterface().setMaxHealth(this->getHealthInterface().getMaxHealth() -((this->getLevel() +1) *100));
+this->getHealthInterface()->setMaxHealth(this->getHealthInterface()->getMaxHealth() -((this->getLevel() +1) *100));
     
 }
 
@@ -483,7 +491,7 @@ this->setProductivity(this->getProductivity() +1);
     
 this->setEfficiency(this->getEfficiency() +this->calculateEfficiency());
     
-this->getHealthInterface().setMaxHealth(this->getHealthInterface().getMaxHealth() +(this->getLevel() *100));
+this->getHealthInterface()->setMaxHealth(this->getHealthInterface()->getMaxHealth() +(this->getLevel() *100));
     
 }
 
@@ -540,74 +548,74 @@ this->efficiency= efficiency;
             
     private: void generateMoveOutOfBuildAreaPaths(){
 
-    BasicArrayList occupyList = this->geographicMapCellPositionAreaBase.getOccupyingGeographicMapCellPositionList();;
+    BasicArrayList* occupyList = this->geographicMapCellPositionAreaBase.getOccupyingGeographicMapCellPositionList();;
     
 
-    BasicArrayList surroundList = this->geographicMapCellPositionAreaBase.getSurroundingGeographicMapCellPositionList();;
+    BasicArrayList* surroundList = this->geographicMapCellPositionAreaBase.getSurroundingGeographicMapCellPositionList();;
     
 
-    Direction NO_DIRECTION = DirectionFactory::getInstance().NO_DIRECTION;;
+    Direction* NO_DIRECTION = DirectionFactory::getInstance()->NO_DIRECTION;;
     
 
-    GeographicMapDirectionUtil geographicMapDirectionUtil = GeographicMapDirectionUtil::getInstance();;
+    GeographicMapDirectionUtil* geographicMapDirectionUtil = GeographicMapDirectionUtil::getInstance();;
     
 
-    BasicArrayList pathsList;;
+    BasicArrayList* pathsList;;
     
 
-    GeographicMapCellPosition occupyGeographicMapCellPosition;;
+    GeographicMapCellPosition* occupyGeographicMapCellPosition;;
     
 
-    GeographicMapCellPosition surroundGeographicMapCellPosition;;
+    GeographicMapCellPosition* surroundGeographicMapCellPosition;;
     
 
-    BasicArrayList list;;
-    
-
-
-
-
-                        for (
-    int32_t index2 = occupyList.size() -1;index2 >= 0; index2--)
-        {
-pathsList= BasicArrayListD();
-    
-occupyGeographicMapCellPosition= occupyList.get(index2);
+    BasicArrayList* list;;
     
 
 
 
 
                         for (
-    int32_t index = surroundList.size() -1;index >= 0; index--)
+    int32_t index2 = occupyList->size() -1;index2 >= 0; index2--)
         {
-surroundGeographicMapCellPosition= surroundList.get(index);
+pathsList= new BasicArrayListD();
+    
+occupyGeographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(occupyList->get(index2));
     
 
-                        if(geographicMapDirectionUtil.getEightDirectionFromCellPositionToAdjacentCellPosition(surroundGeographicMapCellPosition, occupyGeographicMapCellPosition) != NO_DIRECTION)
+
+
+
+                        for (
+    int32_t index = surroundList->size() -1;index >= 0; index--)
+        {
+surroundGeographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(surroundList->get(index));
+    
+
+                        if(geographicMapDirectionUtil->getEightDirectionFromCellPositionToAdjacentCellPosition(surroundGeographicMapCellPosition, occupyGeographicMapCellPosition) != NO_DIRECTION)
                         
                                     {
-                                    list= BasicArrayListS(1);
+                                    list= new BasicArrayListS(1);
     
-list.add(surroundGeographicMapCellPosition);
+list->add(surroundGeographicMapCellPosition);
     
-pathsList.add(list);
+pathsList->add(list);
     
 
                                     }
                                 
 }
 
-this->pathsHashtable.put(occupyGeographicMapCellPosition, pathsList);
+this->pathsHashtable->put(occupyGeographicMapCellPosition, pathsList);
     
 }
 
 }
 
 
-    public: BasicArrayList getMoveOutOfBuildAreaPath(GeographicMapCellPosition geographicMapCellPosition){
+    public: BasicArrayList* getMoveOutOfBuildAreaPath(GeographicMapCellPosition* geographicMapCellPosition){
 
-    BasicArrayList pathsList = this->pathsHashtable.get(geographicMapCellPosition);;
+    BasicArrayList* pathsList = dynamic_cast<BasicArrayList*>(this->pathsHashtable->get(geographicMapCellPosition));;
     
 
 
@@ -618,7 +626,7 @@ this->pathsHashtable.put(occupyGeographicMapCellPosition, pathsList);
 }
 
 
-    public: BasicArrayList getEndGeographicMapCellPositionList(){
+    public: BasicArrayList* getEndGeographicMapCellPositionList(){
 
 
 
@@ -638,16 +646,16 @@ this->pathsHashtable.put(occupyGeographicMapCellPosition, pathsList);
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 
                         if(this->isVisible())
                         
                                     {
                                     super.paint(graphics);
     
-this->damageFloatersPaintableInterface.paint(graphics);
+this->damageFloatersPaintableInterface->paint(graphics);
     
-this->healthBar.paint(graphics);
+this->healthBar->paint(graphics);
     
 
                                     }
@@ -660,11 +668,11 @@ this->healthBar.paint(graphics);
     public: void damage(int32_t damage, int32_t damageType){
 super.damage(damage, damageType);
     
-this->damageFloaters.add(damage);
+this->damageFloaters->add(damage);
     
 
                         if(damage > 0)
-                        this->getHealthInterface().damage(damage);
+                        this->getHealthInterface()->damage(damage);
                                 
 }
 
@@ -683,31 +691,31 @@ this->damageFloaters.add(damage);
 
     public: void addVisibility(){
 
-    GeographicMapCellPositionAreaBase geographicMapCellPositionArea = this->geographicMapCellPositionAreaBase;;
+    GeographicMapCellPositionAreaBase* geographicMapCellPositionArea = this->geographicMapCellPositionAreaBase;;
     
 
-    BasicArrayList occupyList = geographicMapCellPositionArea.getOccupyingGeographicMapCellPositionList();;
+    BasicArrayList* occupyList = geographicMapCellPositionArea->getOccupyingGeographicMapCellPositionList();;
     
-VisibleCellPositionsSingleton::getInstance().addStationaryCellPositions(occupyList);
+VisibleCellPositionsSingleton::getInstance()->addStationaryCellPositions(occupyList);
     
 
-    BasicArrayList surroundList = geographicMapCellPositionArea.getSurroundingGeographicMapCellPositionList();;
+    BasicArrayList* surroundList = geographicMapCellPositionArea->getSurroundingGeographicMapCellPositionList();;
     
-VisibleCellPositionsSingleton::getInstance().addStationaryCellPositions(surroundList);
+VisibleCellPositionsSingleton::getInstance()->addStationaryCellPositions(surroundList);
     
 }
 
 
     public: void removeVisibility(){
 
-    BasicArrayList occupyList = this->geographicMapCellPositionAreaBase.getOccupyingGeographicMapCellPositionList();;
+    BasicArrayList* occupyList = this->geographicMapCellPositionAreaBase.getOccupyingGeographicMapCellPositionList();;
     
-VisibleCellPositionsSingleton::getInstance().removeStationaryCellPositions(occupyList);
+VisibleCellPositionsSingleton::getInstance()->removeStationaryCellPositions(occupyList);
     
 
-    BasicArrayList surroundList = this->geographicMapCellPositionAreaBase.getSurroundingGeographicMapCellPositionList();;
+    BasicArrayList* surroundList = this->geographicMapCellPositionAreaBase.getSurroundingGeographicMapCellPositionList();;
     
-VisibleCellPositionsSingleton::getInstance().removeStationaryCellPositions(surroundList);
+VisibleCellPositionsSingleton::getInstance()->removeStationaryCellPositions(surroundList);
     
 }
 
@@ -721,9 +729,9 @@ super.setDestroyed(destroyed);
                         if(this->isDestroyed())
                         
                                     {
-                                    DropCellPositionHistory::getInstance().removeAll(this);
+                                    DropCellPositionHistory::getInstance()->removeAll(this);
     
-TrackingEventHandler::getInstance().removeListener(this);
+TrackingEventHandler::getInstance()->removeListener(this);
     
 
                         if(this->local)
@@ -735,17 +743,17 @@ TrackingEventHandler::getInstance().removeListener(this);
                                     }
                                 
 
-                        if(!this->getHealthInterface().isAlive())
+                        if(!this->getHealthInterface()->isAlive())
                         
                                     {
                                     
-    int32_t damage = this->getHealthInterface().getMaxHealth();;
+    int32_t damage = this->getHealthInterface()->getMaxHealth();;
     
 
                         if(damage > 10)
                         
                                     {
-                                    SecondaryPlayerQueueFactory::getInstance().add(ExplosionBasicSound::getInstance());
+                                    SecondaryPlayerQueueFactory::getInstance()->add(ExplosionBasicSound::getInstance());
     
 
                         if(damage < 100)
@@ -792,13 +800,13 @@ this->vibration.vibrate(this->duration *4, 0, 0);
 }
 
 
-    public: SelectionHudPaintable createHudPaintable(){
+    public: SelectionHudPaintable* createHudPaintable(){
 
-    BuildingInfoHudPaintable buildingInfoHudPaintable = BuildingInfoHudPaintable::getInstance();;
+    BuildingInfoHudPaintable* buildingInfoHudPaintable = BuildingInfoHudPaintable::getInstance();;
     
-buildingInfoHudPaintable.setBasicColorP(this->allBinaryGameLayerManagerP.getForegroundBasicColor());
+buildingInfoHudPaintable->setBasicColorP(this->allBinaryGameLayerManagerP.getForegroundBasicColor());
     
-buildingInfoHudPaintable.setRtsLayer(this);
+buildingInfoHudPaintable->setRtsLayer(this);
     
 
 
@@ -809,9 +817,9 @@ buildingInfoHudPaintable.setRtsLayer(this);
 }
 
 
-    public: SelectionHudPaintable getHudPaintable(){
+    public: SelectionHudPaintable* getHudPaintable(){
 
-    BuildingInfoHudPaintable buildingInfoHudPaintable = BuildingInfoHudPaintable::getInstance();;
+    BuildingInfoHudPaintable* buildingInfoHudPaintable = BuildingInfoHudPaintable::getInstance();;
     
 
 

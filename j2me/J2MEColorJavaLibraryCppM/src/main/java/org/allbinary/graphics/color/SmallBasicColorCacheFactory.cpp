@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -43,16 +49,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicColor.h"
-#include "BasicColorFactory.h"
+        #include "org/allbinary/graphics/color/BasicColor.h"
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
 
 class SmallBasicColorCacheFactory
             : public Object
          {
 
-    private: static SmallBasicColorCacheFactory instance() { return SmallBasicColorCacheFactory(); }
+    private: static SmallBasicColorCacheFactory* instance() { static std::unique_ptr<SmallBasicColorCacheFactory> value(new SmallBasicColorCacheFactory()); return value.get(); }
 
-    public: static SmallBasicColorCacheFactory getInstance(){
+    public: static SmallBasicColorCacheFactory* getInstance(){
 
 
 
@@ -66,7 +72,7 @@ class SmallBasicColorCacheFactory
 
     private: const std::vector<int32_t> INDEX_TO_COLOR = std::vector<int32_t>(this->SIZE);
 
-    private: const std::vector<BasicColor> BASIC_COLOR_ARRAY = std::vector<BasicColor>(this->SIZE);
+    private: const std::vector<BasicColor*> BASIC_COLOR_ARRAY = std::vector<BasicColor*>(this->SIZE);
 
     private: int32_t colorIndex = 0;
 
@@ -74,19 +80,19 @@ private: SmallBasicColorCacheFactory(){
 }
 
 
-    public: void add(BasicColor basicDefaultColor){
+    public: void add(BasicColor* basicDefaultColor){
 this->BASIC_COLOR_ARRAY[this->colorIndex]= basicDefaultColor;
     
-this->INDEX_TO_COLOR[this->colorIndex]= basicDefaultColor.intValue();
+this->INDEX_TO_COLOR[this->colorIndex]= basicDefaultColor->intValue();
     
 this->colorIndex++;
     
 }
 
 
-    public: BasicColor getAndOrCreate(int32_t colorAsInt){
+    public: BasicColor* getAndOrCreate(int32_t colorAsInt){
 
-    BasicColor basicColor;;
+    BasicColor* basicColor;;
     
 
 
@@ -113,7 +119,7 @@ this->colorIndex++;
 
     int32_t ALPHA_MASK = static_cast<int32_t>(0xFF000000);;
     
-basicColor= BasicColorFactory::getInstance().createInstanceAN(colorAsInt&ALPHA_MASK, colorAsInt&0x00FFFFFF, StringUtil::getInstance().EMPTY_STRING);
+basicColor= BasicColorFactory::getInstance()->createInstanceAN(colorAsInt&ALPHA_MASK, colorAsInt&0x00FFFFFF, StringUtil::getInstance()->EMPTY_STRING);
     
 this->add(basicColor);
     

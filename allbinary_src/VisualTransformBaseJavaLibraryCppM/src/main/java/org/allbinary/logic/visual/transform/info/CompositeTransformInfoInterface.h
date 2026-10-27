@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_COMPOSITETRANSFORMINFOINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_COMPOSITETRANSFORMINFOINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -41,13 +47,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoInterface.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
 
 class CompositeTransformInfoInterface {
 
                 //@Throws(Exception.constructor)
             
-    TransformInfoInterface getTransformInfoInterface();
+    public: virtual TransformInfoInterface* getTransformInfoInterface() = 0;
 
 };
 

@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -82,14 +88,14 @@ class ApplicationConfiguration
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static ApplicationConfiguration getInstance(){
+    public: static ApplicationConfiguration* getInstance(){
 
-                        if(ApplicationConfiguration::instance() == NullUtil::getInstance().NULL_OBJECT)
+                        if(ApplicationConfiguration::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    ApplicationConfiguration::instance= ApplicationConfiguration();
+                                    ApplicationConfiguration::instance= new ApplicationConfiguration();
     
 
                                     }
@@ -98,12 +104,12 @@ class ApplicationConfiguration
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ApplicationConfiguration::instance();
+                        return dynamic_cast<ApplicationConfiguration*>(ApplicationConfiguration::instance);
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: bool fullscreen = true;
 
@@ -117,7 +123,7 @@ private: ApplicationConfiguration(){
 
         try {
             
-                        if(FileFactory::getInstance().isFile(this->FILE))
+                        if(FileFactory::getInstance()->isFile(this->FILE))
                         
                                     {
                                     this->read();
@@ -133,12 +139,12 @@ private: ApplicationConfiguration(){
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &e);
     
 }
 
@@ -149,16 +155,16 @@ this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
             
     private: void read(){
 
-    FileStreamFactory fileInputStreamFactory = FileStreamFactory::getInstance();;
+    FileStreamFactory* fileInputStreamFactory = FileStreamFactory::getInstance();;
     
 
-    InputStream fileInputStream = fileInputStreamFactory.getFileInputStreamInstance(StringUtil::getInstance().EMPTY_STRING, this->FILE);;
+    InputStream* fileInputStream = fileInputStreamFactory->getFileInputStreamInstance(StringUtil::getInstance()->EMPTY_STRING, this->FILE);;
     
 
-    AbDataInputStream dataInputStream = AbDataInputStream(fileInputStream);;
+    AbDataInputStream* dataInputStream = new AbDataInputStream(fileInputStream);;
     
 
-    int32_t fullScreen = dataInputStream.readInt();;
+    int32_t fullScreen = dataInputStream->readInt();;
     
 
                         if(fullScreen == 0)
@@ -182,13 +188,13 @@ this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
                             
 
 
-                            throw Exception("Invalid FullScreen ActivityConfiguration");
+                            throw new Exception("Invalid FullScreen ActivityConfiguration");
                     
 
                         }
                             
 
-    int32_t progressBarView = dataInputStream.readInt();;
+    int32_t progressBarView = dataInputStream->readInt();;
     
 
                         if(progressBarView == 0)
@@ -212,13 +218,13 @@ this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
                             
 
 
-                            throw Exception("Invalid ProgressBarView ActivityConfiguration");
+                            throw new Exception("Invalid ProgressBarView ActivityConfiguration");
                     
 
                         }
                             
 
-    int32_t showTitleBar = dataInputStream.readInt();;
+    int32_t showTitleBar = dataInputStream->readInt();;
     
 
                         if(showTitleBar == 0)
@@ -242,12 +248,12 @@ this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
                             
 
 
-                            throw Exception("Invalid ShowTitleBar ActivityConfiguration");
+                            throw new Exception("Invalid ShowTitleBar ActivityConfiguration");
                     
 
                         }
                             
-this->logUtil.putF("Read Configuration: " +this->toString(), this, "read");
+this->logUtil->putF("Read Configuration: " +this->toString(), this, "read");
     
 }
 
@@ -256,20 +262,20 @@ this->logUtil.putF("Read Configuration: " +this->toString(), this, "read");
             
     public: void write(){
 
-    Closeable closeable = NullCloseable::NULL_CLOSEABLE;;
+    Closeable* closeable = NullCloseable::NULL_CLOSEABLE;;
     
 
         try {
-            this->logUtil.putF("Write Configuration: " +this->toString(), this, "write");
+            this->logUtil->putF("Write Configuration: " +this->toString(), this, "write");
     
 
-    FileStreamFactory fileInputStreamFactory = FileStreamFactory::getInstance();;
+    FileStreamFactory* fileInputStreamFactory = FileStreamFactory::getInstance();;
     
 
-    OutputStream fileOutputStream = fileInputStreamFactory.getFileOutputStreamInstance(StringUtil::getInstance().EMPTY_STRING, this->FILE);;
+    OutputStream* fileOutputStream = fileInputStreamFactory->getFileOutputStreamInstance(StringUtil::getInstance()->EMPTY_STRING, this->FILE);;
     
 
-    AbDataOutputStream dataOutputStream = AbDataOutputStream(fileOutputStream);;
+    AbDataOutputStream* dataOutputStream = new AbDataOutputStream(fileOutputStream);;
     
 closeable= dataOutputStream;
     
@@ -277,13 +283,13 @@ closeable= dataOutputStream;
                         if(this->isFullscreen())
                         
                                     {
-                                    dataOutputStream.writeInt(1);
+                                    dataOutputStream->writeInt(1);
     
 
                                     }
                                 
                         else {
-                            dataOutputStream.writeInt(0);
+                            dataOutputStream->writeInt(0);
     
 
                         }
@@ -292,13 +298,13 @@ closeable= dataOutputStream;
                         if(this->isProgressBarView())
                         
                                     {
-                                    dataOutputStream.writeInt(1);
+                                    dataOutputStream->writeInt(1);
     
 
                                     }
                                 
                         else {
-                            dataOutputStream.writeInt(0);
+                            dataOutputStream->writeInt(0);
     
 
                         }
@@ -307,22 +313,22 @@ closeable= dataOutputStream;
                         if(this->isShowTitleBar())
                         
                                     {
-                                    dataOutputStream.writeInt(1);
+                                    dataOutputStream->writeInt(1);
     
 
                                     }
                                 
                         else {
-                            dataOutputStream.writeInt(0);
+                            dataOutputStream->writeInt(0);
     
 
                         }
                             
-dataOutputStream.flush();
+dataOutputStream->flush();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -332,7 +338,7 @@ dataOutputStream.flush();
 }
 
          finally {
-            StreamUtil::getInstance().close(closeable);
+            StreamUtil::getInstance()->close(closeable);
     
 
          }
@@ -342,16 +348,16 @@ dataOutputStream.flush();
 
                 //@Throws(Exception.constructor)
             
-    public: void update(Feature gameFeature){
+    public: void update(Feature* gameFeature){
 
-                        if(gameFeature == MainFeatureFactory::getInstance().FULL_SCREEN)
+                        if(gameFeature == MainFeatureFactory::getInstance()->FULL_SCREEN)
                         
                                     {
                                     
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-                        if(features.isFeature(gameFeature))
+                        if(features->isFeature(gameFeature))
                         
                                     {
                                     
@@ -439,25 +445,25 @@ this->progressBarView= progressBarView;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("isFullscreen: ");
+stringBuffer->append("isFullscreen: ");
     
-stringBuffer.appendboolean(this->isFullscreen());
+stringBuffer->appendboolean(this->isFullscreen());
     
-stringBuffer.append(" isProgressBarView: ");
+stringBuffer->append(" isProgressBarView: ");
     
-stringBuffer.appendboolean(this->isProgressBarView());
+stringBuffer->appendboolean(this->isProgressBarView());
     
-stringBuffer.append(" isShowTitleBar: ");
+stringBuffer->append(" isShowTitleBar: ");
     
-stringBuffer.appendboolean(this->isShowTitleBar());
+stringBuffer->appendboolean(this->isShowTitleBar());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

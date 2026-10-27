@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -129,9 +135,9 @@
         
 class User
             : public Object
-        : public UserInterface {
+        , public UserInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string userName;
 
@@ -165,37 +171,37 @@ class User
 
     private: std::string fax;
 
-    private: UserRole role;
+    private: UserRole* role;
 
     private: std::string encryption;
 
     private: std::string secret;
 
-    private: Password password;
+    private: Password* password;
 
     private: std::string enable;
 
     private: std::string permissions;
 
-    private: UserConfigurationInterface userConfigurationInterface;
+    private: UserConfigurationInterface* userConfigurationInterface;
 
 public: User(){
 this->userConfigurationInterface= UserConfigurationInterfaceFactory::getInstance();
     
-this->password= Password(StringUtil::getInstance().EMPTY_STRING);
+this->password= new Password(StringUtil::getInstance()->EMPTY_STRING);
     
 }
 
 
-public: User(HttpServletRequest request){
-this->getFormData(RequestParams(request).toHashMap());
+public: User(HttpServletRequest* request){
+this->getFormData((new RequestParams(request))->toHashMap());
     
 this->userConfigurationInterface= UserConfigurationInterfaceFactory::getInstance(this->getRole());
     
 }
 
 
-public: User(HashMap<Object*, Object*> userHashMap){
+public: User(HashMap<Object*, Object*>* userHashMap){
 this->getFormData(userHashMap);
     
 this->userConfigurationInterface= UserConfigurationInterfaceFactory::getInstance(this->getRole());
@@ -205,74 +211,74 @@ this->userConfigurationInterface= UserConfigurationInterfaceFactory::getInstance
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<Object*, Object*> userHashMap){
-this->userName= UserName(userHashMap).get();
+    public: void getFormData(HashMap<Object*, Object*>* userHashMap){
+this->userName= (new UserName(userHashMap))->get();
     
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
 
-    std::string passwordString = stringUtil.getNonNull(userHashMap.get(UserData::PASSWORD));;
+    std::string passwordString = stringUtil->getNonNull(userHashMap->get(UserData::PASSWORD));;
     
 
-    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
+    StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-                        if(stringValidationUtil.isEmpty(this->userName) && stringValidationUtil.isEmpty(passwordString))
+                        if(stringValidationUtil->isEmpty(this->userName) && stringValidationUtil->isEmpty(passwordString))
                         
                                     {
-                                    this->userName= stringUtil.getNonNull(userHashMap.get(WeblisketSessionData::REMOVABLEUSERNAME));
+                                    this->userName= stringUtil->getNonNull(userHashMap->get(WeblisketSessionData::REMOVABLEUSERNAME));
     
-passwordString= stringUtil.getNonNull(userHashMap.get(WeblisketSessionData::REMOVABLEPASSWORD));
+passwordString= stringUtil->getNonNull(userHashMap->get(WeblisketSessionData::REMOVABLEPASSWORD));
     
 
                                     }
                                 
 
-    std::string encryption = stringUtil.getNonNull(userHashMap.get(EntryData::getInstance().ENCRYPTION));;
+    std::string encryption = stringUtil->getNonNull(userHashMap->get(EntryData::getInstance()->ENCRYPTION));;
     
 
-    std::string secret = stringUtil.getNonNull(userHashMap.get(UserData::SECRET));;
+    std::string secret = stringUtil->getNonNull(userHashMap->get(UserData::SECRET));;
     
-this->password= Password(passwordString);
+this->password= new Password(passwordString);
     
-this->prefixName= stringUtil.getNonNull(userHashMap.get(UserData::PREFIXNAME));
+this->prefixName= stringUtil->getNonNull(userHashMap->get(UserData::PREFIXNAME));
     
-this->firstName= stringUtil.getNonNull(userHashMap.get(UserData::FIRSTNAME));
+this->firstName= stringUtil->getNonNull(userHashMap->get(UserData::FIRSTNAME));
     
-this->lastName= stringUtil.getNonNull(userHashMap.get(UserData::LASTNAME));
+this->lastName= stringUtil->getNonNull(userHashMap->get(UserData::LASTNAME));
     
-this->middleName= stringUtil.getNonNull(userHashMap.get(UserData::MIDDLENAME));
+this->middleName= stringUtil->getNonNull(userHashMap->get(UserData::MIDDLENAME));
     
-this->suffixName= stringUtil.getNonNull(userHashMap.get(UserData::SUFFIXNAME));
+this->suffixName= stringUtil->getNonNull(userHashMap->get(UserData::SUFFIXNAME));
     
-this->company= stringUtil.getNonNull(userHashMap.get(UserData::COMPANY));
+this->company= stringUtil->getNonNull(userHashMap->get(UserData::COMPANY));
     
-this->positionAtCompany= stringUtil.getNonNull(userHashMap.get(UserData::POSITIONATCOMPANY));
+this->positionAtCompany= stringUtil->getNonNull(userHashMap->get(UserData::POSITIONATCOMPANY));
     
-this->mainEmail= stringUtil.getNonNull(userHashMap.get(UserData::MAINEMAIL));
+this->mainEmail= stringUtil->getNonNull(userHashMap->get(UserData::MAINEMAIL));
     
-this->secondaryEmail= stringUtil.getNonNull(userHashMap.get(UserData::SECONDARYEMAIL));
+this->secondaryEmail= stringUtil->getNonNull(userHashMap->get(UserData::SECONDARYEMAIL));
     
-this->homePhone= stringUtil.getNonNull(userHashMap.get(UserData::HOMEPHONE));
+this->homePhone= stringUtil->getNonNull(userHashMap->get(UserData::HOMEPHONE));
     
-this->cellPhone= stringUtil.getNonNull(userHashMap.get(UserData::CELLPHONE));
+this->cellPhone= stringUtil->getNonNull(userHashMap->get(UserData::CELLPHONE));
     
-this->workPhone= stringUtil.getNonNull(userHashMap.get(UserData::WORKPHONE));
+this->workPhone= stringUtil->getNonNull(userHashMap->get(UserData::WORKPHONE));
     
-this->otherContact= stringUtil.getNonNull(userHashMap.get(UserData::OTHERCONTACT));
+this->otherContact= stringUtil->getNonNull(userHashMap->get(UserData::OTHERCONTACT));
     
-this->electronicDevice= stringUtil.getNonNull(userHashMap.get(UserData::ELECTRONICDEVICE));
+this->electronicDevice= stringUtil->getNonNull(userHashMap->get(UserData::ELECTRONICDEVICE));
     
-this->fax= stringUtil.getNonNull(userHashMap.get(UserData::FAX));
+this->fax= stringUtil->getNonNull(userHashMap->get(UserData::FAX));
     
-this->role= UserRoleB::getRole(userHashMap.get(UserRoleData::NAME.toString()));
+this->role= UserRoleB::getRole(userHashMap->get(UserRoleData::NAME.toString()));
     
-this->permissions= stringUtil.getNonNull(userHashMap.get(UserData::PERMISSIONS));
+this->permissions= stringUtil->getNonNull(userHashMap->get(UserData::PERMISSIONS));
     
 
-                        if(!stringValidationUtil.isEmpty(this->permissions) && this->permissions.compare(StoreFrontData::getInstance().NAME) == 0)
-                        this->permissions= stringUtil.getNonNull(userHashMap.get(StoreFrontData::getInstance().NAME));
+                        if(!stringValidationUtil->isEmpty(this->permissions) && this->permissions.compare(StoreFrontData::getInstance()->NAME) == 0)
+                        this->permissions= stringUtil->getNonNull(userHashMap->get(StoreFrontData::getInstance()->NAME));
                                 
                              else 
                         if(false)
@@ -283,19 +289,19 @@ this->permissions= stringUtil.getNonNull(userHashMap.get(UserData::PERMISSIONS))
 
                                     }
                                 
-this->enable= stringUtil.getNonNull(userHashMap.get(EntryData::getInstance().ENABLE));
+this->enable= stringUtil->getNonNull(userHashMap->get(EntryData::getInstance()->ENABLE));
     
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-    Boolean valid = Boolean::TRUE;;
+    bool valid = Boolean::TRUE;;
     
 
-                        if(!UserName::getInstance().isValid(this->userName).valueOf())
+                        if(!UserName::getInstance()->isValid(this->userName).valueOf())
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -304,7 +310,7 @@ this->enable= stringUtil.getNonNull(userHashMap.get(EntryData::getInstance().ENA
                                     }
                                 
 
-                        if(!this->password.isValid().valueOf())
+                        if(!this->password->isValid().valueOf())
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -313,10 +319,10 @@ this->enable= stringUtil.getNonNull(userHashMap.get(EntryData::getInstance().ENA
                                     }
                                 
 
-    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
+    StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-                        if(!stringValidationUtil.isValidRequired(this->firstName, 1, UserData::MAXLEN))
+                        if(!stringValidationUtil->isValidRequired(this->firstName, 1, UserData::MAXLEN))
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -325,7 +331,7 @@ this->enable= stringUtil.getNonNull(userHashMap.get(EntryData::getInstance().ENA
                                     }
                                 
 
-                        if(!stringValidationUtil.isValidRequired(this->lastName, 1, UserData::MAXLEN))
+                        if(!stringValidationUtil->isValidRequired(this->lastName, 1, UserData::MAXLEN))
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -334,7 +340,7 @@ this->enable= stringUtil.getNonNull(userHashMap.get(EntryData::getInstance().ENA
                                     }
                                 
 
-                        if(!stringValidationUtil.isValidRequired(this->mainEmail, 1, UserData::MAXLEN) || this->mainEmail.indexOf("@") ==  -1)
+                        if(!stringValidationUtil->isValidRequired(this->mainEmail, 1, UserData::MAXLEN) || this->mainEmail.indexOf("@") ==  -1)
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -350,16 +356,16 @@ this->enable= stringUtil.getNonNull(userHashMap.get(EntryData::getInstance().ENA
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VALIDATIONERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VALIDATIONERROR))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put("Failed to validate form", this, commonStrings.IS_VALID, e);
+this->logUtil->put("Failed to validate form", this, commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -379,38 +385,38 @@ this->logUtil.put("Failed to validate form", this, commonStrings.IS_VALID, e);
 
         try {
             
-    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
+    StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(UserName::getValidationInfo(this->userName));
+stringBuffer->append(UserName::getValidationInfo(this->userName));
     
-stringBuffer.append(this->password.getValidationInfo());
+stringBuffer->append(this->password->getValidationInfo());
     
 
-                        if(!stringValidationUtil.isValidRequired(this->firstName, 1, UserData::MAXLEN))
+                        if(!stringValidationUtil->isValidRequired(this->firstName, 1, UserData::MAXLEN))
                         
                                     {
-                                    stringBuffer.append("Please enter a valid First Name.<br />");
+                                    stringBuffer->append("Please enter a valid First Name.<br />");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil.isValidRequired(this->lastName, 1, UserData::MAXLEN))
+                        if(!stringValidationUtil->isValidRequired(this->lastName, 1, UserData::MAXLEN))
                         
                                     {
-                                    stringBuffer.append("Please enter a valid Last Name.<br />");
+                                    stringBuffer->append("Please enter a valid Last Name.<br />");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil.isValidRequired(this->mainEmail, 1, UserData::MAXLEN) || this->mainEmail.indexOf("@") ==  -1)
+                        if(!stringValidationUtil->isValidRequired(this->mainEmail, 1, UserData::MAXLEN) || this->mainEmail.indexOf("@") ==  -1)
                         
                                     {
-                                    stringBuffer.append("Please enter a valid email address.<br />");
+                                    stringBuffer->append("Please enter a valid email address.<br />");
     
 
                                     }
@@ -419,17 +425,17 @@ stringBuffer.append(this->password.getValidationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -541,7 +547,7 @@ this->fax= value;
 }
 
 
-    public: void setRole(UserRole role){
+    public: void setRole(UserRole* role){
 this->role= role;
     
 }
@@ -566,7 +572,7 @@ this->secret= value;
 
 
     public: void setPassword(std::string value){
-this->password.set(value);
+this->password->set(value);
     
 }
 
@@ -749,7 +755,7 @@ this->enable= enable;
 }
 
 
-    public: UserRole getRole(){
+    public: UserRole* getRole(){
 
 
 
@@ -794,71 +800,71 @@ this->enable= enable;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->password.get();;
+                        return this->password->get();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList toVector(){
+    public: BasicArrayList* toVector(){
 
-    BasicArrayList values = BasicArrayListD();;
+    BasicArrayList* values = new BasicArrayListD();;
     
-values.add(this->userName);
+values->add(this->userName);
     
-values.add(this->prefixName);
+values->add(this->prefixName);
     
-values.add(this->firstName);
+values->add(this->firstName);
     
-values.add(this->lastName);
+values->add(this->lastName);
     
-values.add(this->middleName);
+values->add(this->middleName);
     
-values.add(this->suffixName);
+values->add(this->suffixName);
     
-values.add(this->company);
+values->add(this->company);
     
-values.add(this->positionAtCompany);
+values->add(this->positionAtCompany);
     
-values.add(this->mainEmail);
+values->add(this->mainEmail);
     
-values.add(this->secondaryEmail);
+values->add(this->secondaryEmail);
     
-values.add(this->homePhone);
+values->add(this->homePhone);
     
-values.add(this->cellPhone);
+values->add(this->cellPhone);
     
-values.add(this->workPhone);
+values->add(this->workPhone);
     
-values.add(this->otherContact);
+values->add(this->otherContact);
     
-values.add(this->electronicDevice);
+values->add(this->electronicDevice);
     
-values.add(this->fax);
+values->add(this->fax);
     
-values.add(this->getRole().toString());
-    
-
-    UserConfigurationDomDocumentMapping userConfigurationDomDocumentMapping = UserConfigurationDomDocumentMapping(this->getUserConfigurationInterface());;
-    
-values.add(userConfigurationDomDocumentMapping.toDomDocumentString());
-    
-values.add(this->permissions);
-    
-values.addAllList(this->password.toVector(this->secret));
-    
-values.add(this->enable);
+values->add(this->getRole()->toString());
     
 
-    Calendar calendar = Calendar::getInstance();;
+    UserConfigurationDomDocumentMapping* userConfigurationDomDocumentMapping = new UserConfigurationDomDocumentMapping(this->getUserConfigurationInterface());;
+    
+values->add(userConfigurationDomDocumentMapping->toDomDocumentString());
+    
+values->add(this->permissions);
+    
+values->addAllList(this->password->toVector(this->secret));
+    
+values->add(this->enable);
     
 
-    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    Calendar* calendar = Calendar::getInstance();;
     
-values.add(time);
+
+    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
     
-values.add(time);
+values->add(time);
+    
+values->add(time);
     
 
 
@@ -871,41 +877,41 @@ values.add(time);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> values = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* values = StdUtil::getInstance()->createHashMap();;
     
-values.put(UserData::USERNAME, userName);
+values->put(UserData::USERNAME, userName);
     
-values.put(UserData::PREFIXNAME, prefixName);
+values->put(UserData::PREFIXNAME, prefixName);
     
-values.put(UserData::FIRSTNAME, firstName);
+values->put(UserData::FIRSTNAME, firstName);
     
-values.put(UserData::LASTNAME, lastName);
+values->put(UserData::LASTNAME, lastName);
     
-values.put(UserData::MIDDLENAME, middleName);
+values->put(UserData::MIDDLENAME, middleName);
     
-values.put(UserData::SUFFIXNAME, suffixName);
+values->put(UserData::SUFFIXNAME, suffixName);
     
-values.put(UserData::COMPANY, company);
+values->put(UserData::COMPANY, company);
     
-values.put(UserData::POSITIONATCOMPANY, positionAtCompany);
+values->put(UserData::POSITIONATCOMPANY, positionAtCompany);
     
-values.put(UserData::MAINEMAIL, mainEmail);
+values->put(UserData::MAINEMAIL, mainEmail);
     
-values.put(UserData::SECONDARYEMAIL, secondaryEmail);
+values->put(UserData::SECONDARYEMAIL, secondaryEmail);
     
-values.put(UserData::HOMEPHONE, homePhone);
+values->put(UserData::HOMEPHONE, homePhone);
     
-values.put(UserData::CELLPHONE, cellPhone);
+values->put(UserData::CELLPHONE, cellPhone);
     
-values.put(UserData::WORKPHONE, workPhone);
+values->put(UserData::WORKPHONE, workPhone);
     
-values.put(UserData::OTHERCONTACT, otherContact);
+values->put(UserData::OTHERCONTACT, otherContact);
     
-values.put(UserData::ELECTRONICDEVICE, electronicDevice);
+values->put(UserData::ELECTRONICDEVICE, electronicDevice);
     
-values.put(UserData::FAX, fax);
+values->put(UserData::FAX, fax);
     
 
                         if(this->getRole() != 
@@ -913,29 +919,29 @@ values.put(UserData::FAX, fax);
                                 )
                         
                                     {
-                                    values.put(UserRoleData::NAME.toString(), this->getRole().toString());
+                                    values->put(UserRoleData::NAME.toString(), this->getRole()->toString());
     
 
                                     }
                                 
 
-    UserConfigurationDomDocumentMapping userConfigurationDomDocumentMapping = UserConfigurationDomDocumentMapping(this->getUserConfigurationInterface());;
+    UserConfigurationDomDocumentMapping* userConfigurationDomDocumentMapping = new UserConfigurationDomDocumentMapping(this->getUserConfigurationInterface());;
     
-values.put(UserData::CONFIGURATION, userConfigurationDomDocumentMapping.toDomDocumentString());
+values->put(UserData::CONFIGURATION, userConfigurationDomDocumentMapping->toDomDocumentString());
     
-values.put(UserData::PERMISSIONS, this->permissions);
+values->put(UserData::PERMISSIONS, this->permissions);
     
-values.putAll(this->password.toHashMap(this->secret));
+values->putAll(this->password->toHashMap(this->secret));
     
-values.put(EntryData::getInstance().ENABLE, this->enable);
-    
-
-    Calendar calendar = Calendar::getInstance();;
+values->put(EntryData::getInstance()->ENABLE, this->enable);
     
 
-    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    Calendar* calendar = Calendar::getInstance();;
     
-values.put(EntryData::getInstance().LASTMODIFIED, time);
+
+    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
+    
+values->put(EntryData::getInstance()->LASTMODIFIED, time);
     
 
 
@@ -946,31 +952,31 @@ values.put(EntryData::getInstance().LASTMODIFIED, time);
 }
 
 
-    public: HashMap<Object*, Object*> toPasswordHashMap(){
+    public: HashMap<Object*, Object*>* toPasswordHashMap(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->password.toHashMap(this->secret);;
+                        return this->password->toHashMap(this->secret);;
     
 }
 
 
-    public: void validateSession(WeblisketSessionInterface weblisketSession){
-weblisketSession.setAuthenticated();
+    public: void validateSession(WeblisketSessionInterface* weblisketSession){
+weblisketSession->setAuthenticated();
     
-weblisketSession.setRole(this->getRole());
+weblisketSession->setRole(this->getRole());
     
-weblisketSession.setUserName(this->getUserName());
+weblisketSession->setUserName(this->getUserName());
     
 }
 
 
-    public: void updateSession(WeblisketSessionInterface weblisketSession){
+    public: void updateSession(WeblisketSessionInterface* weblisketSession){
 }
 
 
-    public: Boolean isSessionValid(){
+    public: bool isSessionValid(){
 
 
 
@@ -992,7 +998,7 @@ weblisketSession.setUserName(this->getUserName());
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -1002,7 +1008,7 @@ weblisketSession.setUserName(this->getUserName());
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -1012,7 +1018,7 @@ weblisketSession.setUserName(this->getUserName());
 }
 
 
-    public: UserConfigurationInterface getUserConfigurationInterface(){
+    public: UserConfigurationInterface* getUserConfigurationInterface(){
 
 
 
@@ -1022,7 +1028,7 @@ weblisketSession.setUserName(this->getUserName());
 }
 
 
-    public: void setUserConfigurationInterface(UserConfigurationInterface userConfigurationInterface){
+    public: void setUserConfigurationInterface(UserConfigurationInterface* userConfigurationInterface){
 this->userConfigurationInterface= userConfigurationInterface;
     
 }

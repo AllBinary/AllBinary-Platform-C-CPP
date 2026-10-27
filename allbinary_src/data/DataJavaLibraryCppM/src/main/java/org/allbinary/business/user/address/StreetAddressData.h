@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_ADDRESS_STREETADDRESSDATA_H
         #define ORG_ALLBINARY_BUSINESS_USER_ADDRESS_STREETADDRESSDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,33 +52,33 @@ class StreetAddressData
             : public Object
          {
 
-    public: static const int32_t MAX = 255;
+    public: static inline const int32_t MAX = 255;
 
-    public: static const int32_t MIN = 0;
+    public: static inline const int32_t MIN = 0;
 
-    public: static const std::string FORM = "FORM";
+    public: static inline const std::string FORM = "FORM";
 
-    public: static const std::string STATES = "STATES";
+    public: static inline const std::string STATES = "STATES";
 
-    public: static const std::string NUMBEROFADDRESSES = "STREETADDRESS_NUMBEROFADDRESSES";
+    public: static inline const std::string NUMBEROFADDRESSES = "STREETADDRESS_NUMBEROFADDRESSES";
 
-    public: static const std::string ID = "STREETADDRESS_ID";
+    public: static inline const std::string ID = "STREETADDRESS_ID";
 
-    public: static const std::string DEFAULT = "STREETADDRESS_DEFAULT_ADDRESS";
+    public: static inline const std::string DEFAULT = "STREETADDRESS_DEFAULT_ADDRESS";
 
-    public: static const std::string ADDRESS = "STREETADDRESS_ADDRESS";
+    public: static inline const std::string ADDRESS = "STREETADDRESS_ADDRESS";
 
-    public: static const std::string NAME = "STREETADDRESS_NAME";
+    public: static inline const std::string NAME = "STREETADDRESS_NAME";
 
-    public: static const std::string STREET = "STREETADDRESS_STREET";
+    public: static inline const std::string STREET = "STREETADDRESS_STREET";
 
-    public: static const std::string CITY = "STREETADDRESS_CITY";
+    public: static inline const std::string CITY = "STREETADDRESS_CITY";
 
-    public: static const std::string STATE = "STREETADDRESS_STATE";
+    public: static inline const std::string STATE = "STREETADDRESS_STATE";
 
-    public: static const std::string CODE = "STREETADDRESS_CODE";
+    public: static inline const std::string CODE = "STREETADDRESS_CODE";
 
-    public: static const std::string COUNTRY = "STREETADDRESS_COUNTRY";
+    public: static inline const std::string COUNTRY = "STREETADDRESS_COUNTRY";
 
 private: StreetAddressData();
 

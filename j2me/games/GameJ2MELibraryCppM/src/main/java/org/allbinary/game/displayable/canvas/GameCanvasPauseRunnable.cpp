@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/AndroidUtil.h>
@@ -53,16 +59,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameRunnable.h"
-#include "AllBinaryGameCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/GameRunnable.h"
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
 class GameCanvasPauseRunnable: public GameRunnable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: AllBinaryGameCanvas allBinaryGameCanvas;
+    private: AllBinaryGameCanvas* allBinaryGameCanvas;
 
-public: GameCanvasPauseRunnable(AllBinaryGameCanvas allBinaryGameCanvas){
+public: GameCanvasPauseRunnable(AllBinaryGameCanvas* allBinaryGameCanvas){
 this->allBinaryGameCanvas= allBinaryGameCanvas;
     
 }
@@ -78,28 +84,28 @@ this->allBinaryGameCanvas= allBinaryGameCanvas;
 
         try {
             
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-    bool isOpenGL = features.isDefault(OpenGLFeatureFactory::getInstance().OPENGL);;
+    bool isOpenGL = features->isDefault(OpenGLFeatureFactory::getInstance()->OPENGL);;
     
 
                         if(isOpenGL)
                         
                                     {
-                                    this->allBinaryGameCanvas.processSleep();
+                                    this->allBinaryGameCanvas->processSleep();
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
     
 }
 

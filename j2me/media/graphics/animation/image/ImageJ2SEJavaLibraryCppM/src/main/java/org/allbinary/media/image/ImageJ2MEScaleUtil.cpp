@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -50,9 +56,9 @@ class ImageJ2MEScaleUtil
             : public Object
          {
 
-    private: static ImageJ2MEScaleUtil instance() { return ImageJ2MEScaleUtil(); }
+    private: static ImageJ2MEScaleUtil* instance() { static std::unique_ptr<ImageJ2MEScaleUtil> value(new ImageJ2MEScaleUtil()); return value.get(); }
 
-    public: static ImageJ2MEScaleUtil getInstance(){
+    public: static ImageJ2MEScaleUtil* getInstance(){
 
 
 
@@ -68,9 +74,9 @@ private: ImageJ2MEScaleUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<Image> scaleArray(std::vector<Image> images, int32_t width, int32_t height){
+    public: std::vector<Image*> scaleArray(std::vector<Image*> images, int32_t width, int32_t height){
 
-    std::vector<Image> scaledImages = std::vector<Image>(images.length);;
+    std::vector<Image*> scaledImages = std::vector<Image*>(images.length);;
     
 
 
@@ -94,17 +100,17 @@ scaledImages[index]= this->scale(images[index], width, height);
 
                 //@Throws(Exception.constructor)
             
-    public: Image scale(Image image, int32_t width, int32_t height){
+    public: Image* scale(Image* image, int32_t width, int32_t height){
 
-    int32_t sourceWidth = image.getWidth();;
+    int32_t sourceWidth = image->getWidth();;
     
 
-    int32_t sourceHeight = image.getHeight();;
+    int32_t sourceHeight = image->getHeight();;
     
 
-    std::vector<int32_t> originalData = std::vector<int32_t>(image.getWidth() *image.getHeight());;
+    std::vector<int32_t> originalData = std::vector<int32_t>(image->getWidth() *image->getHeight());;
     
-image.getRGB(originalData, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());
+image->getRGB(originalData, 0, image->getWidth(), 0, 0, image->getWidth(), image->getHeight());
     
 
     std::vector<int32_t> scaledData = std::vector<int32_t>(width *height);;
@@ -149,7 +155,7 @@ scaledData[scaledIndex--]= originalData[(sourceWidth *dy) +dx];
 }
 
 
-    Image scaledImage = Image::createRGBImage(scaledData, width, height, true);;
+    Image* scaledImage = Image::createRGBImage(scaledData, width, height, true);;
     
 
 

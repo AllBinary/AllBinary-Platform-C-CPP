@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -61,7 +67,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SpriteIndexedAnimation.h"
+        #include "org/allbinary/animation/image/sprite/SpriteIndexedAnimation.h"
 
 class AdjustedSpriteIndexedAnimation: public SpriteIndexedAnimation {
 
@@ -69,13 +75,13 @@ class AdjustedSpriteIndexedAnimation: public SpriteIndexedAnimation {
 
     private: int32_t dy;
 
-public: AdjustedSpriteIndexedAnimation(Sprite sprite, Image image, std::vector<BasicColor> basicColorArray, int32_t dx, int32_t dy, AnimationBehavior animationBehavior);
+public: AdjustedSpriteIndexedAnimation(Sprite* sprite, Image* image, std::vector<BasicColor*> basicColorArray, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior);
 
-    public: void paintFrame(Graphics graphics, int32_t frame, int32_t x, int32_t y);
+    public: void paintFrame(Graphics* graphics, int32_t frame, int32_t x, int32_t y);
 
-    public: void paintXY(Graphics g, int32_t x, int32_t y);
+    public: void paintXY(Graphics* g, int32_t x, int32_t y);
 
-    public: void paint(Graphics g);
+    public: void paint(Graphics* g);
 
 };
 

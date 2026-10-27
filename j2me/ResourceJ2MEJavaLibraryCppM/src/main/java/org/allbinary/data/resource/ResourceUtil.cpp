@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -62,9 +68,9 @@ class ResourceUtil
             : public Object
          {
 
-    private: static ResourceUtil instance = ResourceUtil();
+    private: static ResourceUtil* instance() { static std::unique_ptr<ResourceUtil> value(new ResourceUtil()); return value.get(); }
 
-    public: static ResourceUtil getInstance(){
+    public: static ResourceUtil* getInstance(){
 
 
 
@@ -74,23 +80,23 @@ class ResourceUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: ResourceUtil(){
 }
 
 
     public: void setLoadingPaths(std::string path, std::string ext){
-this->logUtil.putF(CommonStrings::getInstance().NOT_IMPLEMENTED, this, "setLoadingPaths");
+this->logUtil->putF(CommonStrings::getInstance()->NOT_IMPLEMENTED, this, "setLoadingPaths");
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream getResourceAsStream(std::string resource){
+    public: InputStream* getResourceAsStream(std::string resource){
 
-    InputStream inputStream = resource..javaClass.getResourceAsStream(resource);;
+    InputStream* inputStream = resource.getClass()->getResourceAsStream(resource);;
     
 
                         if(inputStream == 
@@ -115,15 +121,15 @@ this->logUtil.putF(CommonStrings::getInstance().NOT_IMPLEMENTED, this, "setLoadi
                         
                                     {
                                     
-    StringMaker stringMaker = StringMaker();;
+    StringMaker* stringMaker = new StringMaker();;
     
 
-    int32_t index = resource.lastIndexOf('/');;
+    int32_t index = JavaString::lastIndexOf(resource, '/');;
     
 
-    std::string resourcePath = resource.substring(index +1);;
+    std::string resourcePath = JavaString::substring(resource, index +1);;
     
-inputStream= resource..javaClass.getResourceAsStream(resourcePath);
+inputStream= resource.getClass()->getResourceAsStream(resourcePath);
     
 
                         if(inputStream == 
@@ -131,9 +137,9 @@ inputStream= resource..javaClass.getResourceAsStream(resourcePath);
                                 )
                         
                                     {
-                                    resourcePath= resource.substring(index);
+                                    resourcePath= JavaString::substring(resource, index);
     
-inputStream= resource..javaClass.getResourceAsStream(resourcePath);
+inputStream= resource.getClass()->getResourceAsStream(resourcePath);
     
 
                         if(inputStream == 
@@ -144,24 +150,9 @@ inputStream= resource..javaClass.getResourceAsStream(resourcePath);
                                     
     std::string RES = "res";;
     
-resourcePath= stringMaker.append(RES).append(resource.substring(index)).toString();
+resourcePath= stringMaker->append(RES)->append(JavaString::substring(resource, index))->toString();
     
-inputStream= resource..javaClass.getResourceAsStream(resourcePath);
-    
-
-                        if(inputStream == 
-                                    nullptr
-                                )
-                        
-                                    {
-                                    stringMaker.delete(0, stringMaker.length());
-    
-resourcePath= stringMaker.append("/").append(RES).append(resource.substring(index)).toString();
-    
-inputStream= resource..javaClass.getResourceAsStream(resourcePath);
-    
-
-    std::string COLON = CommonSeps::getInstance().COLON;;
+inputStream= resource.getClass()->getResourceAsStream(resourcePath);
     
 
                         if(inputStream == 
@@ -169,11 +160,14 @@ inputStream= resource..javaClass.getResourceAsStream(resourcePath);
                                 )
                         
                                     {
-                                    stringMaker.delete(0, stringMaker.length());
+                                    stringMaker->delete(0, stringMaker->length());
     
-resourcePath= stringMaker.append(RES).append(COLON).append(resource.substring(index)).toString();
+resourcePath= stringMaker->append("/")->append(RES)->append(JavaString::substring(resource, index))->toString();
     
-inputStream= resource..javaClass.getResourceAsStream(resourcePath);
+inputStream= resource.getClass()->getResourceAsStream(resourcePath);
+    
+
+    std::string COLON = CommonSeps::getInstance()->COLON;;
     
 
                         if(inputStream == 
@@ -181,11 +175,23 @@ inputStream= resource..javaClass.getResourceAsStream(resourcePath);
                                 )
                         
                                     {
-                                    stringMaker.delete(0, stringMaker.length());
+                                    stringMaker->delete(0, stringMaker->length());
     
-resourcePath= stringMaker.append(RES).append(COLON).append(resource.substring(index +1)).toString();
+resourcePath= stringMaker->append(RES)->append(COLON)->append(JavaString::substring(resource, index))->toString();
     
-inputStream= resource..javaClass.getResourceAsStream(resourcePath);
+inputStream= resource.getClass()->getResourceAsStream(resourcePath);
+    
+
+                        if(inputStream == 
+                                    nullptr
+                                )
+                        
+                                    {
+                                    stringMaker->delete(0, stringMaker->length());
+    
+resourcePath= stringMaker->append(RES)->append(COLON)->append(JavaString::substring(resource, index +1))->toString();
+    
+inputStream= resource.getClass()->getResourceAsStream(resourcePath);
     
 
                         if(inputStream == 
@@ -196,23 +202,11 @@ inputStream= resource..javaClass.getResourceAsStream(resourcePath);
                                     
     std::string RESOURCE_STRING = "resource";;
     
-stringMaker.delete(0, stringMaker.length());
+stringMaker->delete(0, stringMaker->length());
     
-resourcePath= stringMaker.append(RESOURCE_STRING).append(COLON).append(resource.substring(index)).toString();
+resourcePath= stringMaker->append(RESOURCE_STRING)->append(COLON)->append(JavaString::substring(resource, index))->toString();
     
-inputStream= resource..javaClass.getResourceAsStream(resourcePath);
-    
-
-                        if(inputStream == 
-                                    nullptr
-                                )
-                        
-                                    {
-                                    stringMaker.delete(0, stringMaker.length());
-    
-resourcePath= stringMaker.append(RESOURCE_STRING).append(COLON).append(resource.substring(index +1)).toString();
-    
-inputStream= resource..javaClass.getResourceAsStream(resourcePath);
+inputStream= resource.getClass()->getResourceAsStream(resourcePath);
     
 
                         if(inputStream == 
@@ -220,12 +214,24 @@ inputStream= resource..javaClass.getResourceAsStream(resourcePath);
                                 )
                         
                                     {
-                                    stringMaker.delete(0, stringMaker.length());
+                                    stringMaker->delete(0, stringMaker->length());
+    
+resourcePath= stringMaker->append(RESOURCE_STRING)->append(COLON)->append(JavaString::substring(resource, index +1))->toString();
+    
+inputStream= resource.getClass()->getResourceAsStream(resourcePath);
+    
+
+                        if(inputStream == 
+                                    nullptr
+                                )
+                        
+                                    {
+                                    stringMaker->delete(0, stringMaker->length());
     
 
 
 
-                            throw Exception(stringMaker.append("Unable to obtain: ").append(resource).toString());
+                            throw new Exception(stringMaker->append("Unable to obtain: ")->append(resource)->toString());
                     
 
                                     }
@@ -271,18 +277,18 @@ inputStream= resource..javaClass.getResourceAsStream(resourcePath);
 
                 //@Throws(Exception.constructor)
             
-    private: InputStream getResourceAsStreamAtStart(std::string resource, int32_t startIndex){
+    private: InputStream* getResourceAsStreamAtStart(std::string resource, int32_t startIndex){
 
-    StringMaker stringMaker = StringMaker();;
+    StringMaker* stringMaker = new StringMaker();;
     
 
-    int32_t index = resource.indexOf(CommonSeps::getInstance().COLON);;
+    int32_t index = JavaString::indexOf(resource, CommonSeps::getInstance()->COLON);;
     
 
-    std::string resourcePath = resource.substring(index +startIndex);;
+    std::string resourcePath = JavaString::substring(resource, index +startIndex);;
     
 
-    InputStream inputStream = resource..javaClass.getResourceAsStream(resourcePath);;
+    InputStream* inputStream = resource.getClass()->getResourceAsStream(resourcePath);;
     
 
                         if(inputStream != 
@@ -308,7 +314,7 @@ inputStream= resource..javaClass.getResourceAsStream(resourcePath);
 }
 
 
-    public: void addResource(std::string resource, Integer value){
+    public: void addResource(std::string resource, int32_t value){
 }
 
 

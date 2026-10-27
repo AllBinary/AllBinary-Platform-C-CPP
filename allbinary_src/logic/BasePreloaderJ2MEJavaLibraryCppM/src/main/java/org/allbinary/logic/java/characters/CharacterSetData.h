@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_CHARACTERS_CHARACTERSETDATA_H
         #define ORG_ALLBINARY_LOGIC_JAVA_CHARACTERS_CHARACTERSETDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class CharacterSetData
             : public Object
          {
 
-    private: static CharacterSetData instance() { return CharacterSetData(); }
+    private: static CharacterSetData* instance() { static std::unique_ptr<CharacterSetData> value(new CharacterSetData()); return value.get(); }
 
-    public: static CharacterSetData getInstance();
+    public: static CharacterSetData* getInstance();
 
 private: CharacterSetData();
 

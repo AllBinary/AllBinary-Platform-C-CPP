@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/io/IOException.h>
@@ -115,33 +121,33 @@
         
 class UploadFileServlet: public HttpServlet {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: HashMap<Object*, Object*> requestHashMap;
+    protected: HashMap<Object*, Object*>* requestHashMap;
 
     private: std::string fileName;
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void processRequest(HttpServletRequest request, HttpServletResponse response){
+    protected: void processRequest(HttpServletRequest* request, HttpServletResponse* response){
 
     bool isError = false;;
     
 
-    InputStream inputStream = 
+    InputStream* inputStream = 
                 null
             ;;
     
 
         try {
-            BlisketServletUtil::getInstance().init(request);
+            BlisketServletUtil::getInstance()->init(request);
     
-this->requestHashMap= MultipartRequestParams(request).toHashMap();
+this->requestHashMap= (new MultipartRequestParams(request))->toHashMap();
     
 
-    std::string filePath = this->requestHashMap.get(FileUploadData::getInstance().UPLOAD_TO_FILE_PATH);;
+    std::string filePath = this->requestHashMap->get(FileUploadData::getInstance()->UPLOAD_TO_FILE_PATH);;
     
 
                         if(false)
@@ -149,7 +155,7 @@ this->requestHashMap= MultipartRequestParams(request).toHashMap();
                                     {
                                     isError= true;
     
-response.sendError(HttpServletResponse::SC_NOT_FOUND);
+response->sendError(HttpServletResponse::SC_NOT_FOUND);
     
 
 
@@ -161,24 +167,24 @@ response.sendError(HttpServletResponse::SC_NOT_FOUND);
                                     }
                                 
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
 
-    AuthenticationHelper authenticationHelper = AuthenticationHelperFactory().getInstance(hashMap, request);;
+    AuthenticationHelper* authenticationHelper = dynamic_cast<AuthenticationHelper*>((new AuthenticationHelperFactory())->getInstance(hashMap, request));;
     
 
-                        if(authenticationHelper.isAuthenticated())
+                        if(authenticationHelper->isAuthenticated())
                         
                                     {
                                     
-                        if(AuthenticationHelperUtil::getInstance().isAuthorized(authenticationHelper, filePath))
+                        if(AuthenticationHelperUtil::getInstance()->isAuthorized(authenticationHelper, filePath))
                         
                                     {
                                     this->saveFile(filePath);
     
-response.setContentType("text/plain");
+response->setContentType("text/plain");
     
-response.getOutputStream().write("OK!".getBytes());
+response->getOutputStream()->write("OK!".getBytes());
     
 
                                     }
@@ -186,7 +192,7 @@ response.getOutputStream().write("OK!".getBytes());
                         else {
                             isError= true;
     
-response.sendError(HttpServletResponse::SC_UNAUTHORIZED, "You are not Authorized");
+response->sendError(HttpServletResponse::SC_UNAUTHORIZED, "You are not Authorized");
     
 
                         }
@@ -197,27 +203,27 @@ response.sendError(HttpServletResponse::SC_UNAUTHORIZED, "You are not Authorized
                         else {
                             isError= true;
     
-response.sendError(HttpServletResponse::SC_UNAUTHORIZED, "Please Login");
+response->sendError(HttpServletResponse::SC_UNAUTHORIZED, "Please Login");
     
 
                         }
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "processRequest()", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "processRequest()", &e);
     
 
                                     }
                                 
 isError= true;
     
-response.sendError(HttpServletResponse::SC_NOT_FOUND);
+response->sendError(HttpServletResponse::SC_NOT_FOUND);
     
 }
 
@@ -226,13 +232,13 @@ response.sendError(HttpServletResponse::SC_NOT_FOUND);
                         if(!isError)
                         
                                     {
-                                    StreamUtil::getInstance().close(response.getOutputStream());
+                                    StreamUtil::getInstance()->close(response->getOutputStream());
     
 
                                     }
                                 
 
-                        if(!StreamUtil::getInstance().close(inputStream))
+                        if(!StreamUtil::getInstance()->close(inputStream))
                         
                                     {
                                     
@@ -248,25 +254,25 @@ response.sendError(HttpServletResponse::SC_NOT_FOUND);
             
     private: void saveFile(std::string filePath){
 
-    AbFileOutputStream fileOutputStream = 
+    AbFileOutputStream* fileOutputStream = 
                 null
             ;;
     
 
         try {
             
-    FileItem fileItem = this->requestHashMap.get(FileUploadData::getInstance().FILE_DATA);;
+    FileItem* fileItem = dynamic_cast<FileItem*>(this->requestHashMap->get(FileUploadData::getInstance()->FILE_DATA));;
     
 
                         if(fileItem != 
                                     nullptr
-                                 && fileItem.getSize() > 1)
+                                 && fileItem->getSize() > 1)
                         
                                     {
-                                    this->fileName= HttpRequestUtil::getInstance().generateFileName(fileItem.getName());
+                                    this->fileName= HttpRequestUtil::getInstance()->generateFileName(fileItem->getName());
     
 
-                        if(filePath.endsWith("/") || filePath.endsWith("\\"))
+                        if(JavaString::endsWith(filePath, "/") || JavaString::endsWith(filePath, "\\"))
                         
                                     {
                                     filePath= filePath +this->fileName;
@@ -275,24 +281,24 @@ response.sendError(HttpServletResponse::SC_NOT_FOUND);
                                     }
                                 
 
-    AbFile file = AbFile::createAbFile(URLGLOBALS::getWebappPath() +filePath);;
+    AbFile* file = AbFile::createAbFile(URLGLOBALS::getWebappPath() +filePath);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Uploaded File: ");
+stringBuffer->append("Uploaded File: ");
     
-stringBuffer.append(this->fileName);
+stringBuffer->append(this->fileName);
     
-stringBuffer.append(" New File: ");
+stringBuffer->append(" New File: ");
     
-stringBuffer.append(file.getPath());
+stringBuffer->append(file->getPath());
     
-this->logUtil.putF(stringBuffer.toString(), this, "saveFile()");
+this->logUtil->putF(stringBuffer->toString(), this, "saveFile()");
     
 
                                     }
@@ -300,22 +306,22 @@ this->logUtil.putF(stringBuffer.toString(), this, "saveFile()");
 HttpFileUploadUtil::log(fileItem);
     
 
-    std::vector<int8_t> byteArray = fileItem.get();;
+    std::vector<int8_t> byteArray = fileItem->get();;
     
 
-                        if(file.isFile())
+                        if(file->isFile())
                         
                                     {
-                                    file.delete();
+                                    file->delete();
     
-file.createNewFile();
+file->createNewFile();
     
 
                                     }
                                 
 fileOutputStream= AbFileOutputStream::createFromAbFile(file);
     
-fileOutputStream.write(byteArray);
+fileOutputStream->write(byteArray);
     
 
                                     }
@@ -328,7 +334,7 @@ fileOutputStream.write(byteArray);
                                 )
                         
                                     {
-                                    fileOutputStream.close();
+                                    fileOutputStream->close();
     
 
                                     }
@@ -341,7 +347,7 @@ fileOutputStream.write(byteArray);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void doGet(HttpServletRequest request, HttpServletResponse response){
+    protected: void doGet(HttpServletRequest* request, HttpServletResponse* response){
 this->processRequest(request, response);
     
 }
@@ -349,7 +355,7 @@ this->processRequest(request, response);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void doPost(HttpServletRequest request, HttpServletResponse response){
+    protected: void doPost(HttpServletRequest* request, HttpServletResponse* response){
 this->processRequest(request, response);
     
 }

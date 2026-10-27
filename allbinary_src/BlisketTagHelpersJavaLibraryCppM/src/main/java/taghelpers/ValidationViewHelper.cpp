@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -56,28 +62,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ViewHelper.h"
+        #include "taghelpers/ViewHelper.h"
 
 class ValidationViewHelper: public ViewHelper, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: ValidationComponentInterface viewInterface;
+    private: ValidationComponentInterface* viewInterface;
 
-public: ValidationViewHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext) : ViewHelper(hashMap, pageContext){
+public: ValidationViewHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : ViewHelper(hashMap, pageContext){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->viewInterface= this->getViewObject();
+this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewObject());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -85,14 +91,14 @@ this->viewInterface= this->getViewObject();
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil.putF("Started", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("Started", this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -101,17 +107,17 @@ this->viewInterface= this->getViewObject();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->viewInterface.isValid();;
+                        return this->viewInterface->isValid();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -134,17 +140,17 @@ this->viewInterface= this->getViewObject();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->viewInterface.validationInfo();;
+                        return this->viewInterface->validationInfo();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "validationInfo()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "validationInfo()", &e);
     
 
                                     }
@@ -160,24 +166,24 @@ this->viewInterface= this->getViewObject();
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->viewInterface.toValidationInfoDoc();;
+                        return this->viewInterface->toValidationInfoDoc();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "toValidationInfoDoc()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "toValidationInfoDoc()", &e);
     
 
                                     }
@@ -193,24 +199,24 @@ this->viewInterface= this->getViewObject();
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->viewInterface.toValidationInfoNode(document);;
+                        return this->viewInterface->toValidationInfoNode(document);;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "toValidationInfoNode()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "toValidationInfoNode()", &e);
     
 
                                     }

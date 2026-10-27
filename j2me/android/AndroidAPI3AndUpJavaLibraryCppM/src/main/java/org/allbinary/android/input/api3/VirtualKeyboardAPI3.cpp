@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Integer.h"
         
             #include "java/lang/Runnable.h"
@@ -64,24 +70,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShowVirtualKeyboardRunnable.h"
-#include "HideVirtualKeyboardRunnable.h"
+        #include "org/allbinary/android/input/api3/ShowVirtualKeyboardRunnable.h"
+#include "org/allbinary/android/input/api3/HideVirtualKeyboardRunnable.h"
 
 class VirtualKeyboardAPI3: public VirtualKeyboard, public VirtualKeyboardEventListenerInterface {
 
-    public: static int32_t MAX_API = Integer::MAX_VALUE;
+    public: static inline int32_t MAX_API = Integer.MAX_VALUE;
 
-    public: static int32_t MIN_API = 3;
+    public: static inline int32_t MIN_API = 3;
 
     private: bool virtualKeyboard= false;
 
-    private: Activity activity;
+    private: Activity* activity;
 
-    private: Runnable showVirtualKeyboardRunnable;
+    private: Runnable* showVirtualKeyboardRunnable;
 
-    private: Runnable hideVirtualKeyboardRunnable;
+    private: Runnable* hideVirtualKeyboardRunnable;
 
-public: VirtualKeyboardAPI3(Activity activity) : VirtualKeyboard(){
+public: VirtualKeyboardAPI3(Activity* activity) : VirtualKeyboard(){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,29 +96,29 @@ public: VirtualKeyboardAPI3(Activity activity) : VirtualKeyboard(){
                     
 this->activity= activity;
     
-this->showVirtualKeyboardRunnable= ShowVirtualKeyboardRunnable(this->activity);
+this->showVirtualKeyboardRunnable= new ShowVirtualKeyboardRunnable(this->activity);
     
-this->hideVirtualKeyboardRunnable= HideVirtualKeyboardRunnable(this->activity);
+this->hideVirtualKeyboardRunnable= new HideVirtualKeyboardRunnable(this->activity);
     
 
-    VirtualKeyboardEventHandler virtualKeyboardEventHandler = VirtualKeyboardEventHandler::getInstance();;
+    VirtualKeyboardEventHandler* virtualKeyboardEventHandler = VirtualKeyboardEventHandler::getInstance();;
     
-virtualKeyboardEventHandler.removeAllListeners();
+virtualKeyboardEventHandler->removeAllListeners();
     
-virtualKeyboardEventHandler.addListenerInterface(this);
-    
-}
-
-
-    public: void onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
+virtualKeyboardEventHandler->addListenerInterface(this);
     
 }
 
 
-    public: void onVirtualKeyboardEvent(VirtualKeyboardEvent virtualKeyboardEvent){
+    public: void onEvent(AllBinaryEventObject* eventObject){
+ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
+    
+}
 
-    Boolean isShow = virtualKeyboardEvent.getSource();;
+
+    public: void onVirtualKeyboardEvent(VirtualKeyboardEvent* virtualKeyboardEvent){
+
+    bool isShow = virtualKeyboardEvent->getSource();;
     
 
                         if(isShow.valueOf())
@@ -152,7 +158,7 @@ this->hideVirtualKeyboard();
 
 
     private: void showVirtualKeyboard(){
-this->activity.runOnUiThread(this->showVirtualKeyboardRunnable);
+this->activity->runOnUiThread(this->showVirtualKeyboardRunnable);
     
 this->virtualKeyboard= true;
     
@@ -160,7 +166,7 @@ this->virtualKeyboard= true;
 
 
     private: void hideVirtualKeyboard(){
-this->activity.runOnUiThread(this->hideVirtualKeyboardRunnable);
+this->activity->runOnUiThread(this->hideVirtualKeyboardRunnable);
     
 this->virtualKeyboard= false;
     

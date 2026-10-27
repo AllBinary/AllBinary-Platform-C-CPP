@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
@@ -68,7 +74,7 @@
         
 class TransformInfoTag: public ModifyTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string name;
 
@@ -84,7 +90,7 @@ class TransformInfoTag: public ModifyTag {
 
     private: std::string templateFile;
 
-    private: std::string template;
+    private: std::string template_;
 
     private: std::string dataFile;
 
@@ -92,7 +98,7 @@ class TransformInfoTag: public ModifyTag {
 
     private: std::string type;
 
-public: TransformInfoTag() : ModifyTag(TransformInfoRequestHelperFactory()){
+public: TransformInfoTag() : ModifyTag(new TransformInfoRequestHelperFactory()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -102,7 +108,7 @@ public: TransformInfoTag() : ModifyTag(TransformInfoRequestHelperFactory()){
 }
 
 
-public: TransformInfoTag(TagHelperFactoryInterface tagHelperFactoryInterface) : ModifyTag(tagHelperFactoryInterface){
+public: TransformInfoTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : ModifyTag(tagHelperFactoryInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -115,7 +121,7 @@ public: TransformInfoTag(TagHelperFactoryInterface tagHelperFactoryInterface) : 
     public: void setName(std::string value){
 this->name= value;
     
-this->getPropertiesHashMap().put(TransformInfoData::getInstance().NAME, this->name);
+this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->NAME, this->name);
     
 }
 
@@ -123,7 +129,7 @@ this->getPropertiesHashMap().put(TransformInfoData::getInstance().NAME, this->na
     public: void setStoreName(std::string value){
 this->storeName= value;
     
-this->getPropertiesHashMap().put(StoreFrontData::getInstance().NAME, this->storeName);
+this->getPropertiesHashMap()->put(StoreFrontData::getInstance()->NAME, this->storeName);
     
 }
 
@@ -131,7 +137,7 @@ this->getPropertiesHashMap().put(StoreFrontData::getInstance().NAME, this->store
     public: void setObjectFile(std::string value){
 this->objectFile= value;
     
-this->getPropertiesHashMap().put(TransformInfoData::getInstance().OBJECTFILENAME, this->objectFile);
+this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->OBJECTFILENAME, this->objectFile);
     
 }
 
@@ -139,7 +145,7 @@ this->getPropertiesHashMap().put(TransformInfoData::getInstance().OBJECTFILENAME
     public: void setObject(std::string value){
 this->anyType= value;
     
-this->getPropertiesHashMap().put(TransformInfoData::getInstance().OBJECT, this->anyType);
+this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->OBJECT, this->anyType);
     
 }
 
@@ -147,15 +153,15 @@ this->getPropertiesHashMap().put(TransformInfoData::getInstance().OBJECT, this->
     public: void setTemplateFile(std::string value){
 this->templateFile= value;
     
-this->getPropertiesHashMap().put(TransformInfoData::getInstance().TEMPLATEFILENAME, this->templateFile);
+this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->TEMPLATEFILENAME, this->templateFile);
     
 }
 
 
     public: void setTemplate(std::string value){
-this->template= value;
+this->template_= value;
     
-this->getPropertiesHashMap().put(TransformInfoData::getInstance().TEMPLATE, this->template);
+this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->TEMPLATE, this->template_);
     
 }
 
@@ -163,7 +169,7 @@ this->getPropertiesHashMap().put(TransformInfoData::getInstance().TEMPLATE, this
     public: void setDataFile(std::string value){
 this->dataFile= value;
     
-this->getPropertiesHashMap().put(TransformInfoData::getInstance().DATAFILENAME, this->dataFile);
+this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->DATAFILENAME, this->dataFile);
     
 }
 
@@ -171,7 +177,7 @@ this->getPropertiesHashMap().put(TransformInfoData::getInstance().DATAFILENAME, 
     public: void setData(std::string value){
 this->data= value;
     
-this->getPropertiesHashMap().put(TransformInfoData::getInstance().DATA, this->data);
+this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->DATA, this->data);
     
 }
 
@@ -179,7 +185,7 @@ this->getPropertiesHashMap().put(TransformInfoData::getInstance().DATA, this->da
     public: void setObjectConfigFile(std::string value){
 this->objectConfigFile= value;
     
-this->getPropertiesHashMap().put(TransformInfoData::getInstance().OBJECTCONFIGFILENAME, this->objectConfigFile);
+this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->OBJECTCONFIGFILENAME, this->objectConfigFile);
     
 }
 
@@ -187,7 +193,7 @@ this->getPropertiesHashMap().put(TransformInfoData::getInstance().OBJECTCONFIGFI
     public: void setObjectConfig(std::string value){
 this->objectConfig= value;
     
-this->getPropertiesHashMap().put(TransformInfoData::getInstance().OBJECTCONFIG, this->objectConfig);
+this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->OBJECTCONFIG, this->objectConfig);
     
 }
 
@@ -195,13 +201,13 @@ this->getPropertiesHashMap().put(TransformInfoData::getInstance().OBJECTCONFIG, 
     public: void setType(std::string value){
 this->type= value;
     
-this->getPropertiesHashMap().put(OutputTypeData::getInstance().NAME, this->type);
+this->getPropertiesHashMap()->put(OutputTypeData::getInstance()->NAME, this->type);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF("TransformInfoTag type set: " +this->type, this, "setType");
+                                    this->logUtil->putF("TransformInfoTag type set: " +this->type, this, "setType");
     
 
                                     }
@@ -242,9 +248,9 @@ this->getPropertiesHashMap().put(OutputTypeData::getInstance().NAME, this->type)
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 

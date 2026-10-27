@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LAYER_SINGLELAYERLAYERPROCESSOR_H
         #define ORG_ALLBINARY_LAYER_SINGLELAYERLAYERPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -41,11 +47,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LayerProcessor.h"
-#include "SingleLayerLayerManager.h"
-#include "LayerManager.h"
-#include "AllBinaryLayer.h"
-#include "AllBinaryLayerManager.h"
+        #include "org/allbinary/layer/LayerProcessor.h"
+#include "org/allbinary/layer/SingleLayerLayerManager.h"
+#include "org/allbinary/layer/LayerManager.h"
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#include "org/allbinary/layer/AllBinaryLayerManager.h"
 
 class SingleLayerLayerProcessor: public LayerProcessor {
 
@@ -53,7 +59,7 @@ public: SingleLayerLayerProcessor();
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayerManager allBinaryLayerManager);
+    public: void process(AllBinaryLayerManager* allBinaryLayerManager);
 
 };
 

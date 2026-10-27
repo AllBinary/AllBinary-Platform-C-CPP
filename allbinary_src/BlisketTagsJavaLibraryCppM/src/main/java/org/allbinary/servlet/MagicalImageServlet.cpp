@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayOutputStream.h>
@@ -79,53 +85,53 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BlisketServletUtil.h"
+        #include "org/allbinary/servlet/BlisketServletUtil.h"
 
 class MagicalImageServlet: public HttpServlet {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void processRequest(HttpServletRequest request, HttpServletResponse response){
+    protected: void processRequest(HttpServletRequest* request, HttpServletResponse* response){
 
-    InputStream inputStream = 
+    InputStream* inputStream = 
                 null
             ;;
     
 
         try {
-            BlisketServletUtil::getInstance().init(request);
+            BlisketServletUtil::getInstance()->init(request);
     
 
-    std::string requestURI = request.getRequestURI();;
+    std::string requestURI = request->getRequestURI();;
     
 
-    AbFile file = AbFile::createAbFile(URLGLOBALS::getWebappPath() +requestURI);;
+    AbFile* file = AbFile::createAbFile(URLGLOBALS::getWebappPath() +requestURI);;
     
-inputStream= CloudStreamUtil::getInstance().getFileAnyWhere(file);
-    
-
-    ByteArrayOutputStream outputStream = ByteArrayOutputStream(8000);;
+inputStream= CloudStreamUtil::getInstance()->getFileAnyWhere(file);
     
 
-    std::vector<int8_t> byteArray = StreamUtil::getInstance().getByteArray(inputStream, outputStream, std::vector<int8_t>(16384));;
+    ByteArrayOutputStream* outputStream = new ByteArrayOutputStream(8000);;
     
-response.setContentType("image/jpeg;charset=utf-8");
+
+    std::vector<int8_t> byteArray = StreamUtil::getInstance()->getByteArray(inputStream, outputStream, std::vector<int8_t>(16384));;
     
-response.getOutputStream().write(byteArray);
+response->setContentType("image/jpeg;charset=utf-8");
+    
+response->getOutputStream()->write(byteArray);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "processRequest()", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "processRequest()", &e);
     
 
                                     }
@@ -133,13 +139,13 @@ response.getOutputStream().write(byteArray);
 }
 
          finally {
-            StreamUtil::getInstance().close(response.getOutputStream());
+            StreamUtil::getInstance()->close(response->getOutputStream());
     
 
-                        if(!StreamUtil::getInstance().close(inputStream))
+                        if(!StreamUtil::getInstance()->close(inputStream))
                         
                                     {
-                                    response.sendError(HttpServletResponse::SC_NOT_FOUND);
+                                    response->sendError(HttpServletResponse::SC_NOT_FOUND);
     
 
                                     }
@@ -152,7 +158,7 @@ response.getOutputStream().write(byteArray);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void doGet(HttpServletRequest request, HttpServletResponse response){
+    protected: void doGet(HttpServletRequest* request, HttpServletResponse* response){
 this->processRequest(request, response);
     
 }
@@ -160,7 +166,7 @@ this->processRequest(request, response);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void doPost(HttpServletRequest request, HttpServletResponse response){
+    protected: void doPost(HttpServletRequest* request, HttpServletResponse* response){
 this->processRequest(request, response);
     
 }

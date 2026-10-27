@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -62,13 +68,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NoTemplateTransformInfoObjectConfig.h"
+        #include "views/business/context/modules/storefront/customizer/template/objectConfig/NoTemplateTransformInfoObjectConfig.h"
 
 class InsertTemplateCustomizerTransformInfoObjectConfig: public NoTemplateTransformInfoObjectConfig {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: InsertTemplateCustomizerTransformInfoObjectConfig(Object transformInfoInterface) : NoTemplateTransformInfoObjectConfig(transformInfoInterface){
+public: InsertTemplateCustomizerTransformInfoObjectConfig(Object* transformInfoInterface) : NoTemplateTransformInfoObjectConfig(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -78,7 +84,7 @@ public: InsertTemplateCustomizerTransformInfoObjectConfig(Object transformInfoIn
 }
 
 
-public: InsertTemplateCustomizerTransformInfoObjectConfig(Object transformInfoInterface, Object document) : NoTemplateTransformInfoObjectConfig(transformInfoInterface, document){
+public: InsertTemplateCustomizerTransformInfoObjectConfig(Object* transformInfoInterface, Object* document) : NoTemplateTransformInfoObjectConfig(transformInfoInterface, document){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,7 +96,7 @@ this->setDocument(this->generate(this->toXmlDoc()));
 }
 
 
-public: InsertTemplateCustomizerTransformInfoObjectConfig(Object transformInfoInterface, std::string name, std::string type) : NoTemplateTransformInfoObjectConfig(transformInfoInterface, name, type){
+public: InsertTemplateCustomizerTransformInfoObjectConfig(Object* transformInfoInterface, std::string name, std::string type) : NoTemplateTransformInfoObjectConfig(transformInfoInterface, name, type){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -106,37 +112,37 @@ this->setDocument(this->generate(this->toXmlDoc()));
             
     public: void set(std::string aParentViewName){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Setting: " +aParentViewName, this, "set()");
+                                    this->logUtil->putF("Setting: " +aParentViewName, this, "set()");
     
 
                                     }
                                 
 
-    Document document = this->toXmlDoc();;
+    Document* document = this->toXmlDoc();;
     
 
-    NodeList parentComponentsNodeList = document.getElementsByTagName(TransformInfosData::getInstance().NAME);;
+    NodeList* parentComponentsNodeList = document->getElementsByTagName(TransformInfosData::getInstance()->NAME);;
     
 
                         if(parentComponentsNodeList != 
                                     nullptr
-                                 && parentComponentsNodeList.getLength() > 0)
+                                 && parentComponentsNodeList->getLength() > 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Replacing", this, "set()");
+                                    this->logUtil->putF("Replacing", this, "set()");
     
 
                                     }
                                 
 
-    Node componentNode = parentComponentsNodeList.item(0).getChildNodes().item(0);;
+    Node* componentNode = parentComponentsNodeList->item(0)->getChildNodes()->item(0);;
     
 
                         if(componentNode != 
@@ -144,38 +150,38 @@ this->setDocument(this->generate(this->toXmlDoc()));
                                 )
                         
                                     {
-                                    document.removeChild(componentNode);
+                                    document->removeChild(componentNode);
     
 
                                     }
                                 
-parentComponentsNodeList.item(0).appendChild(TransformInfoDomNodeView(aParentViewName).toXmlNode(document));
+parentComponentsNodeList->item(0)->appendChild((new TransformInfoDomNodeView(aParentViewName))->toXmlNode(document));
     
 
                                     }
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Setting", this, "set()");
+                                    this->logUtil->putF("Setting", this, "set()");
     
 
                                     }
                                 
 
-    Node objectConfigNode = document.getElementsByTagName(TransformInfoObjectConfigData::getInstance().NAME).item(0);;
+    Node* objectConfigNode = document->getElementsByTagName(TransformInfoObjectConfigData::getInstance()->NAME)->item(0);;
     
 
-    Node parentComponentsNode = document.createElement(TransformInfosData::getInstance().NAME);;
+    Node* parentComponentsNode = document->createElement(TransformInfosData::getInstance()->NAME);;
     
-objectConfigNode.appendChild(parentComponentsNode);
+objectConfigNode->appendChild(parentComponentsNode);
     
 
-    TransformInfoDomNodeView transformInfoDomNodeView = TransformInfoDomNodeView(aParentViewName);;
+    TransformInfoDomNodeView* transformInfoDomNodeView = new TransformInfoDomNodeView(aParentViewName);;
     
-parentComponentsNode.appendChild(transformInfoDomNodeView.toXmlNode(document));
+parentComponentsNode->appendChild(transformInfoDomNodeView->toXmlNode(document));
     
 
                         }

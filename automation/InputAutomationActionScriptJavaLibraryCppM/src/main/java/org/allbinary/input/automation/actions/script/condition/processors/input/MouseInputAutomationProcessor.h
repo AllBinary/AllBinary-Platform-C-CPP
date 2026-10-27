@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEINPUTAUTOMATIONPROCESSOR_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEINPUTAUTOMATIONPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -57,7 +63,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MouseActionScriptInputInterface.h"
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/MouseActionScriptInputInterface.h"
 
 class MouseInputAutomationProcessor
             : public Object
@@ -65,7 +71,7 @@ class MouseInputAutomationProcessor
 
                 //@Throws(Exception.constructor)
             
-    public: static void process(MouseActionScriptInputInterface mouseActionScriptInputInterface);
+    public: static void process(MouseActionScriptInputInterface* mouseActionScriptInputInterface);
 
 private: MouseInputAutomationProcessor();
 

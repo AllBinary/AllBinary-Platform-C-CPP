@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,7 +45,7 @@
         
 class IdentifierInterface {
 
-    int32_t getId()
+    public: virtual int32_t getId() = 0;
 
 };
 

@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/collision/CollidableHelperFactory.h>
@@ -71,14 +79,14 @@
         
 class CollidableWeaponBehavior: public CollidableDestroyableDamageableBehavior {
 
-    private: static Object* NULL_COLLIDABLE_WEAPON_BEHAVIOR = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* NULL_COLLIDABLE_WEAPON_BEHAVIOR = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static CollidableWeaponBehavior getNullInstance(){
+    public: static CollidableWeaponBehavior* getNullInstance(){
 
-                        if(CollidableWeaponBehavior::NULL_COLLIDABLE_WEAPON_BEHAVIOR == NullUtil::getInstance().NULL_OBJECT)
+                        if(CollidableWeaponBehavior::NULL_COLLIDABLE_WEAPON_BEHAVIOR == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    CollidableWeaponBehavior::NULL_COLLIDABLE_WEAPON_BEHAVIOR= CollidableWeaponBehavior(false);
+                                    CollidableWeaponBehavior::NULL_COLLIDABLE_WEAPON_BEHAVIOR= new CollidableWeaponBehavior(false);
     
 
                                     }
@@ -87,14 +95,14 @@ class CollidableWeaponBehavior: public CollidableDestroyableDamageableBehavior {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CollidableWeaponBehavior::NULL_COLLIDABLE_WEAPON_BEHAVIOR;
+                        return dynamic_cast<CollidableWeaponBehavior*>(CollidableWeaponBehavior::NULL_COLLIDABLE_WEAPON_BEHAVIOR);
     
 }
 
 
     private: bool collided= false;
 
-    protected: CollisionHelper collisionHelper;
+    protected: CollisionHelper* collisionHelper;
 
 public: CollidableWeaponBehavior(bool collidable) : CollidableDestroyableDamageableBehavior(collidable){
 
@@ -112,21 +120,21 @@ this->collisionHelper= CollidableHelperFactory::getInstance();
 }
 
 
-    public: void init(AllBinaryLayer sourceLayerInterface){
+    public: void init(AllBinaryLayer* sourceLayerInterface){
 this->setCollided(false);
     
-this->collisionHelper.setOwnerLayerInterface(sourceLayerInterface);
+this->collisionHelper->setOwnerLayerInterface(sourceLayerInterface);
     
 }
 
 
-    public: bool isCollision(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer){
+    public: bool isCollision(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collisionLayer){
 
-                        if(this->collisionHelper.isCollidable(collisionLayer))
+                        if(this->collisionHelper->isCollidable(collisionLayer))
                         
                                     {
                                     
-                        if(ownerLayer.getGroupInterface()[0] != collisionLayer.getGroupInterface()[0])
+                        if(ownerLayer->getGroupInterface()[0] != collisionLayer->getGroupInterface()[0])
                         
                                     {
                                     
@@ -152,7 +160,7 @@ this->collisionHelper.setOwnerLayerInterface(sourceLayerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer){
+    public: void collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collisionLayer){
 super.collide(ownerLayer, collisionLayer);
     
 this->collided= true;
@@ -160,16 +168,16 @@ this->collided= true;
 }
 
 
-    public: bool isCollisionInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface){
+    public: bool isCollisionInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface){
 
-                        if(this->collisionHelper.isCollidable(collidableInterfaceCompositeInterface))
+                        if(this->collisionHelper->isCollidable(dynamic_cast<CollidableCompositeLayer*>(collidableInterfaceCompositeInterface)))
                         
                                     {
                                     
-    AllBinaryLayer layerInterface = collidableInterfaceCompositeInterface as unknown;;
+    AllBinaryLayer* layerInterface = dynamic_cast<AllBinaryLayer*>(collidableInterfaceCompositeInterface as unknown);;
     
 
-                        if(ownerLayer.getGroupInterface()[0] != layerInterface.getGroupInterface()[0])
+                        if(ownerLayer->getGroupInterface()[0] != layerInterface->getGroupInterface()[0])
                         
                                     {
                                     
@@ -202,12 +210,12 @@ this->collided= true;
 
                 //@Throws(Exception.constructor)
             
-    public: void collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface){
+    public: void collideInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface){
 
-    DamageableInterface ownerDamageableInterface = ownerLayer as unknown;;
+    DamageableInterface* ownerDamageableInterface = dynamic_cast<DamageableInterface*>(ownerLayer as unknown);;
     
 
-    DamageableInterface damageableInterface = collidableInterfaceCompositeInterface as unknown;;
+    DamageableInterface* damageableInterface = dynamic_cast<DamageableInterface*>(collidableInterfaceCompositeInterface as unknown);;
     
 this->damageUtil.process(ownerDamageableInterface, damageableInterface);
     
@@ -216,12 +224,12 @@ this->collided= true;
 }
 
 
-    public: CollisionType getCollisionTypeWith(AllBinaryLayer layerInterface){
+    public: CollisionType* getCollisionTypeWith(AllBinaryLayer* layerInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CollisionTypeFactory::getInstance().COLLISION;
+                        return CollisionTypeFactory::getInstance()->COLLISION;
     
 }
 

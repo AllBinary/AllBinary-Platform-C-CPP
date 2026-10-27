@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/System.h"
         
 #include <org/allbinary/java/runtime/process/git/GitProcessHelper.h>
@@ -61,25 +67,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TrackedStrings.h"
+        #include "org/allbinary/logic/io/file/directory/TrackedStrings.h"
 
 class DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor: public IncludeFileExtensionsBooleanFileVisitor {
 
     public: static void main(std::vector<std::string> args);
 
-    private: const TrackedStrings trackedStrings = TrackedStrings::getInstance();
+    private: TrackedStrings* trackedStrings = TrackedStrings::getInstance();
 
-    private: const GitProcessHelper gitProcessHelper = GitProcessHelper::getInstance();
+    private: GitProcessHelper* gitProcessHelper = GitProcessHelper::getInstance();
 
     private: std::string includesString;
 
-public: DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(BasicArrayList filterStringBasicArrayList);
+public: DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(BasicArrayList* filterStringBasicArrayList);
 
-public: DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(BasicArrayList filterStringBasicArrayList, std::string includesString);
+public: DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(BasicArrayList* filterStringBasicArrayList, std::string includesString);
 
-    public: Boolean visit(AbFile file);
+    public: bool visit(AbFile* file);
 
-    public: Boolean visit(AbFile file, std::string fileNameString);
+    public: bool visit(AbFile* file, std::string fileNameString);
 
 };
 

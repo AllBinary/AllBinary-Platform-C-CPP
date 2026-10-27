@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -52,7 +58,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageAnimation.h"
+        #include "org/allbinary/animation/image/ImageAnimation.h"
 
 class ImageSegmentAnimation: public ImageAnimation {
 
@@ -64,11 +70,11 @@ class ImageSegmentAnimation: public ImageAnimation {
 
     private: int32_t drawHeight;
 
-    private: CircularIndexUtil circularIndexUtil;
+    private: CircularIndexUtil* circularIndexUtil;
 
     private: std::vector<int32_t> sequenceArray;
 
-protected: ImageSegmentAnimation(Image image, std::vector<int32_t> sequenceArray, AnimationBehavior animationBehavior) : ImageAnimation(image, animationBehavior){
+protected: ImageSegmentAnimation(Image* image, std::vector<int32_t> sequenceArray, AnimationBehavior* animationBehavior) : ImageAnimation(image, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -79,9 +85,9 @@ this->startX= 0;
     
 this->startY= 0;
     
-this->drawWidth= this->getImage().getWidth();
+this->drawWidth= this->getImage()->getWidth();
     
-this->drawHeight= this->getImage().getHeight();
+this->drawHeight= this->getImage()->getHeight();
     
 this->circularIndexUtil= CircularIndexUtil::createInstance(this->drawHeight);
     
@@ -91,19 +97,19 @@ this->sequenceArray= sequenceArray;
 
 
     public: void nextFrame(){
-this->circularIndexUtil.next();
+this->circularIndexUtil->next();
     
 }
 
 
     public: void previousFrame(){
-this->circularIndexUtil.previous();
+this->circularIndexUtil->previous();
     
 }
 
 
     public: void setFrame(int32_t index){
-this->circularIndexUtil.setIndex(index);
+this->circularIndexUtil->setIndex(index);
     
 }
 
@@ -113,7 +119,7 @@ this->circularIndexUtil.setIndex(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->circularIndexUtil.getIndex();;
+                        return this->circularIndexUtil->getIndex();;
     
 }
 
@@ -123,7 +129,7 @@ this->circularIndexUtil.setIndex(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->circularIndexUtil.getSize();;
+                        return this->circularIndexUtil->getSize();;
     
 }
 
@@ -144,7 +150,7 @@ this->sequenceArray= sequenceArray;
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 }
 
 

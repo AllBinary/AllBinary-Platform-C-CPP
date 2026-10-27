@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,12 +42,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicVelocityProperties.h"
-#include "VelocityInterface.h"
+        #include "org/allbinary/game/physics/velocity/BasicVelocityProperties.h"
+#include "org/allbinary/game/physics/velocity/VelocityInterface.h"
 
 class VelocityProperties: public BasicVelocityProperties, public VelocityInterface {
 
-    public: static const VelocityProperties NULL_VELOCITY_PROPERTIES = VelocityProperties(0, 0);
+    public: static VelocityProperties* NULL_VELOCITY_PROPERTIES() { static std::unique_ptr<VelocityProperties> value(new VelocityProperties(0, 0)); return value.get(); }
 
     private: int32_t maxForwardVelocity= 0;
 

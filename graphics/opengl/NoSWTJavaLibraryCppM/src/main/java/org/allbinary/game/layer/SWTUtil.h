@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_SWTUTIL_H
         #define ORG_ALLBINARY_GAME_LAYER_SWTUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class SWTUtil
             : public Object
          {
 
-    public: static bool isSWT = false;
+    public: static inline bool isSWT = false;
 
-    public: static std::string SWT = "SWT";
+    public: static inline std::string SWT = "SWT";
 
 };
 

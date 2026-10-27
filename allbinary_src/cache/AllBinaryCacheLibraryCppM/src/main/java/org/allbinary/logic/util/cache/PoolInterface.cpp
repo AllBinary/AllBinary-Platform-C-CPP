@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 
@@ -38,14 +46,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CacheInterface.h"
-#include "CacheableInterface.h"
+        #include "org/allbinary/logic/util/cache/CacheInterface.h"
+#include "org/allbinary/logic/util/cache/CacheableInterface.h"
 
 class PoolInterface: public CacheInterface {
 
                 //@Throws(Exception.constructor)
             
-    CacheableInterface remove(Object* key)
+    public: virtual CacheableInterface* remove(Object* key) = 0;
 
 };
 

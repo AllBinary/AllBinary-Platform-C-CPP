@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGS_PERMISSIONITEMSTAG_H
         #define ADMIN_TAGS_PERMISSIONITEMSTAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <admin/taghelpers/PermissionItemsHelperFactory.h>
 
       
@@ -45,7 +51,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TableTag.h"
+        #include "admin/tags/TableTag.h"
 
 class PermissionItemsTag: public TableTag {
 

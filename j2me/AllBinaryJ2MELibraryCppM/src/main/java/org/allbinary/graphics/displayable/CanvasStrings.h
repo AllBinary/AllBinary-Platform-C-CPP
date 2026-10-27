@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_CANVASSTRINGS_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_CANVASSTRINGS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -52,9 +58,9 @@ class CanvasStrings
             : public Object
          {
 
-    private: static CanvasStrings instance() { return CanvasStrings(); }
+    private: static CanvasStrings* instance() { static std::unique_ptr<CanvasStrings> value(new CanvasStrings()); return value.get(); }
 
-    public: static CanvasStrings getInstance();
+    public: static CanvasStrings* getInstance();
 
     public: const std::string CONSTRUCTOR = "MyCanvas::MyCanvas";
 
@@ -78,7 +84,7 @@ class CanvasStrings
 
     public: const std::string FD_HEIGHT = " font/display height: ";
 
-    public: const BasicArrayList EMPTY_CHILD_NAME_LIST = BasicArrayListUtil::getInstance().getImmutableInstance();
+    public: BasicArrayList* EMPTY_CHILD_NAME_LIST = BasicArrayListUtil::getInstance()->getImmutableInstance();
 
     public: const std::string ABOUT = "About";
 

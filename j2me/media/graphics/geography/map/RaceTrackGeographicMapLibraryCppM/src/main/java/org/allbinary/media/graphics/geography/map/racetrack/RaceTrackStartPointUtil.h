@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKSTARTPOINTUTIL_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKSTARTPOINTUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -71,7 +77,7 @@ class RaceTrackStartPointUtil
 
                 //@Throws(Exception.constructor)
             
-    public: static GPoint get(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, int32_t index);
+    public: static GPoint* get(BasicGeographicMap* geographicMapInterface, PathFindingInfo* pathFindingInfo, int32_t index);
 
 };
 

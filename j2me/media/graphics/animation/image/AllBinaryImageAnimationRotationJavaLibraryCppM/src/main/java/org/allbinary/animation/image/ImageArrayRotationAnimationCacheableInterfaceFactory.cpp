@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,20 +55,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageArrayRotationAnimationCacheable.h"
+        #include "org/allbinary/animation/image/ImageArrayRotationAnimationCacheable.h"
 
 class ImageArrayRotationAnimationCacheableInterfaceFactory
             : public Object
-        : public CacheableInterfaceFactoryInterface {
+        , public CacheableInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: CacheableInterface getInstance(Object* key){
+    public: CacheableInterface* getInstance(Object* key){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageArrayRotationAnimationCacheable(key, AnimationBehavior::getInstance());
+                        return new ImageArrayRotationAnimationCacheable(key, AnimationBehavior::getInstance());
     
 }
 

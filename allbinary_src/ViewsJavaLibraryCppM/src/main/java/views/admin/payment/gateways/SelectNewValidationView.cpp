@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
@@ -53,11 +59,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SelectNewView.h"
+        #include "views/admin/payment/gateways/SelectNewView.h"
 
 class SelectNewValidationView: public HttpStoreComponentView, public ValidationComponentInterface {
 
-public: SelectNewValidationView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+public: SelectNewValidationView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -67,7 +73,7 @@ public: SelectNewValidationView(TransformInfoInterface transformInfoInterface) :
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
 
 
@@ -77,7 +83,7 @@ public: SelectNewValidationView(TransformInfoInterface transformInfoInterface) :
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -87,7 +93,7 @@ public: SelectNewValidationView(TransformInfoInterface transformInfoInterface) :
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -103,12 +109,12 @@ public: SelectNewValidationView(TransformInfoInterface transformInfoInterface) :
 
 
 
-                            throw Exception("validationInfo");
+                            throw new Exception("validationInfo");
                     
 }
 
 
-    public: Document toXmlDoc(){
+    public: Document* toXmlDoc(){
 
 
 
@@ -118,7 +124,7 @@ public: SelectNewValidationView(TransformInfoInterface transformInfoInterface) :
 }
 
 
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
 
 
@@ -135,7 +141,7 @@ public: SelectNewValidationView(TransformInfoInterface transformInfoInterface) :
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SelectNewView(this->getTransformInfoInterface()).view();;
+                        return (new SelectNewView(this->getTransformInfoInterface()))->view();;
     
 }
 

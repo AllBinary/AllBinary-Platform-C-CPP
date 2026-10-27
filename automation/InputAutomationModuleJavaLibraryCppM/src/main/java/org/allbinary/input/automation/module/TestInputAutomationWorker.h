@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_TESTINPUTAUTOMATIONWORKER_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_TESTINPUTAUTOMATIONWORKER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,17 +72,17 @@ class TestInputAutomationWorker
             : public Object
          {
 
-    private: ScreenCaptureImagesWorker captureWorker;
+    private: ScreenCaptureImagesWorker* captureWorker;
 
-    private: ImageComparisonWorker imageComparisonWorker;
+    private: ImageComparisonWorker* imageComparisonWorker;
 
-    private: MotionRectanglesWorker motionRectanglesWorker;
+    private: MotionRectanglesWorker* motionRectanglesWorker;
 
-    private: SaveImageComparisonWorker changedPixelsImageComparisonResultsWorker;
+    private: SaveImageComparisonWorker* changedPixelsImageComparisonResultsWorker;
 
-    private: SaveMotionRectanglesResultsWorker saveMotionRectanglesAsImagesWorker;
+    private: SaveMotionRectanglesResultsWorker* saveMotionRectanglesAsImagesWorker;
 
-    private: TestInputForMotionRectanglesResultsWorker moveMouseToFirstMotionRectanglesResultsWorker;
+    private: TestInputForMotionRectanglesResultsWorker* moveMouseToFirstMotionRectanglesResultsWorker;
 
 public: TestInputAutomationWorker();
 

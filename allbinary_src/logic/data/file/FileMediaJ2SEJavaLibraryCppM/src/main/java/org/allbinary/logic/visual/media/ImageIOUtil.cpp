@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -48,7 +54,7 @@ class ImageIOUtil
 
                 //@Throws(Exception.constructor)
             
-    public: static BufferedImage read(AbFile file){
+    public: static BufferedImage* read(AbFile* file){
 
 
 
@@ -60,7 +66,7 @@ class ImageIOUtil
 
                 //@Throws(Exception.constructor)
             
-    public: static bool write(RenderedImage renderedImage, std::string name, AbFile file){
+    public: static bool write(RenderedImage* renderedImage, std::string name, AbFile* file){
 
 
 

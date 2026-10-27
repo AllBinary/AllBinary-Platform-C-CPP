@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/logic/util/cache/BaseCircularPool.h>
 
       
@@ -42,7 +50,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CustomGPoint.h"
+        #include "org/allbinary/graphics/CustomGPoint.h"
 
 class GPointCircularPool: public BaseCircularPool {
 

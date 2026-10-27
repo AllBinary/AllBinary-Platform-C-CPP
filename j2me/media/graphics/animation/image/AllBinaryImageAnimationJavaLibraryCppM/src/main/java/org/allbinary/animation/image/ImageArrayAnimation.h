@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -70,13 +76,13 @@
         
 class ImageArrayAnimation: public IndexedAnimation {
 
-    private: std::vector<Image> imageArray = NullImage::NULL_IMAGE_ARRAY;
+    private: std::vector<Image*> imageArray = NullImage::NULL_IMAGE_ARRAY;
 
     private: int32_t totalFrames= 0;
 
-    protected: CircularIndexUtil circularIndexUtil = CircularIndexUtil::NULL_CIRCULAR_INDEX_UTIL;
+    protected: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::NULL_CIRCULAR_INDEX_UTIL;
 
-public: ImageArrayAnimation(std::vector<Image> imageArray, AnimationBehavior animationBehavior);
+public: ImageArrayAnimation(std::vector<Image*> imageArray, AnimationBehavior* animationBehavior);
 
                 //@Throws(Exception.constructor)
             
@@ -96,15 +102,15 @@ public: ImageArrayAnimation(std::vector<Image> imageArray, AnimationBehavior ani
 
     public: std::vector<int32_t> getSequence();
 
-    public: Image getImage(int32_t index);
+    public: Image* getImage(int32_t index);
 
-    public: std::vector<Image> getImageArray();
+    public: std::vector<Image*> getImageArray();
 
-    protected: void setImageArray(std::vector<Image> imageArray);
+    protected: void setImageArray(std::vector<Image*> imageArray);
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
 };
 

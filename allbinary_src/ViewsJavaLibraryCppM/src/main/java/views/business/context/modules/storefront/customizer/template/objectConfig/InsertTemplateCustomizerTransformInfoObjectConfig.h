@@ -21,6 +21,12 @@
         #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_TEMPLATE_OBJECTCONFIG_INSERTTEMPLATECUSTOMIZERTRANSFORMINFOOBJECTCONFIG_H
         #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_TEMPLATE_OBJECTCONFIG_INSERTTEMPLATECUSTOMIZERTRANSFORMINFOOBJECTCONFIG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -65,17 +71,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NoTemplateTransformInfoObjectConfig.h"
+        #include "views/business/context/modules/storefront/customizer/template/objectConfig/NoTemplateTransformInfoObjectConfig.h"
 
 class InsertTemplateCustomizerTransformInfoObjectConfig: public NoTemplateTransformInfoObjectConfig {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: InsertTemplateCustomizerTransformInfoObjectConfig(Object transformInfoInterface);
+public: InsertTemplateCustomizerTransformInfoObjectConfig(Object* transformInfoInterface);
 
-public: InsertTemplateCustomizerTransformInfoObjectConfig(Object transformInfoInterface, Object document);
+public: InsertTemplateCustomizerTransformInfoObjectConfig(Object* transformInfoInterface, Object* document);
 
-public: InsertTemplateCustomizerTransformInfoObjectConfig(Object transformInfoInterface, std::string name, std::string type);
+public: InsertTemplateCustomizerTransformInfoObjectConfig(Object* transformInfoInterface, std::string name, std::string type);
 
                 //@Throws(Exception.constructor)
             

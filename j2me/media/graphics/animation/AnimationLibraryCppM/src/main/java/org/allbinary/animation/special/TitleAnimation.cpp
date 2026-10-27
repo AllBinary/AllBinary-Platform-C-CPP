@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -67,21 +73,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SpecialAnimation.h"
+        #include "org/allbinary/animation/special/SpecialAnimation.h"
 
 class TitleAnimation: public SpecialAnimation {
 
-    public: static TitleAnimation createAnimation(std::vector<IndexedAnimation> animationInterfaceArray, std::vector<BasicColor> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width){
+    public: static TitleAnimation* createAnimation(std::vector<IndexedAnimation*> animationInterfaceArray, std::vector<BasicColor*> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TitleAnimation(animationInterfaceArray, basicColorArray, dxArray, dyArray, y, width, IndexedAnimationBehavior(1, 250));
+                        return new TitleAnimation(animationInterfaceArray, basicColorArray, dxArray, dyArray, y, width, new IndexedAnimationBehavior(1, 250));
     
 }
 
 
-    protected: const ABSystemWrapper systemWrapper = ABSystemWrapper::getInstance();
+    protected: ABSystemWrapper* systemWrapper = ABSystemWrapper::getInstance();
 
     public: float deltaX= 0.0;
 
@@ -89,7 +95,7 @@ class TitleAnimation: public SpecialAnimation {
 
     public: float deltaZ= 0.0;
 
-    protected: std::vector<BasicColor> basicColorArray;
+    protected: std::vector<BasicColor*> basicColorArray;
 
     protected: std::vector<int32_t> dxArray;
 
@@ -97,7 +103,7 @@ class TitleAnimation: public SpecialAnimation {
 
     protected: int32_t widthP;
 
-    protected: std::vector<IndexedAnimation> animationInterfaceArray;
+    protected: std::vector<IndexedAnimation*> animationInterfaceArray;
 
     protected: int32_t sizeP;
 
@@ -105,16 +111,16 @@ class TitleAnimation: public SpecialAnimation {
 
     private: int64_t lastFrameStartTime;
 
-    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-public: TitleAnimation(std::vector<IndexedAnimation> animationInterfaceArray, std::vector<BasicColor> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width, AnimationBehavior animationBehavior) : SpecialAnimation(animationBehavior){
+public: TitleAnimation(std::vector<IndexedAnimation*> animationInterfaceArray, std::vector<BasicColor*> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width, AnimationBehavior* animationBehavior) : SpecialAnimation(animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->lastFrameStartTime= this->systemWrapper.currentTimeMillis();
+this->lastFrameStartTime= this->systemWrapper->currentTimeMillis();
     
 this->animationInterfaceArray= animationInterfaceArray;
     
@@ -137,16 +143,16 @@ this->reset();
 
     public: void nextFrame(){
 
-    int64_t currentTime = this->systemWrapper.currentTimeMillis();;
+    int64_t currentTime = this->systemWrapper->currentTimeMillis();;
     
 
     int64_t totalTimeElapsed = currentTime -this->lastFrameStartTime;;
     
 
-    IndexedAnimationBehavior indexedAnimationBehavior = this->getAnimationBehavior();;
+    IndexedAnimationBehavior* indexedAnimationBehavior = dynamic_cast<IndexedAnimationBehavior*>(this->getAnimationBehavior());;
     
 
-                        if(totalTimeElapsed > indexedAnimationBehavior.frameDelayTime)
+                        if(totalTimeElapsed > indexedAnimationBehavior->frameDelayTime)
                         
                                     {
                                     this->previousFrame();
@@ -160,7 +166,7 @@ this->lastFrameStartTime= currentTime;
                         if(this->animationInterfaceArray[0].getFrame() == 0)
                         
                                     {
-                                    indexedAnimationBehavior.loopIndex++;
+                                    indexedAnimationBehavior->loopIndex++;
     
 
                                     }
@@ -170,10 +176,10 @@ this->lastFrameStartTime= currentTime;
 
     public: bool isComplete(){
 
-    IndexedAnimationBehavior indexedAnimationBehavior = this->getAnimationBehavior();;
+    IndexedAnimationBehavior* indexedAnimationBehavior = dynamic_cast<IndexedAnimationBehavior*>(this->getAnimationBehavior());;
     
 
-                        if(indexedAnimationBehavior.loopTotal ==  -1 || indexedAnimationBehavior.loopIndex < indexedAnimationBehavior.loopTotal || this->getFrame() != 0)
+                        if(indexedAnimationBehavior->loopTotal ==  -1 || indexedAnimationBehavior->loopIndex < indexedAnimationBehavior->loopTotal || this->getFrame() != 0)
                         
                                     {
                                     
@@ -257,9 +263,9 @@ this->setFrame(this->getSize() -1);
 this->setLastFrame();
     
 
-    IndexedAnimationBehavior indexedAnimationBehavior = (this->getAnimationBehavior());;
+    IndexedAnimationBehavior* indexedAnimationBehavior = (dynamic_cast<IndexedAnimationBehavior*>(this->getAnimationBehavior()));;
     
-indexedAnimationBehavior.reset();
+indexedAnimationBehavior->reset();
     
 }
 
@@ -279,7 +285,7 @@ this->animationInterfaceArray[index].previousFrame();
 }
 
 
-    public: void paintFrameXY(Graphics graphics, int32_t frame, int32_t x, int32_t y){
+    public: void paintFrameXY(Graphics* graphics, int32_t frame, int32_t x, int32_t y){
 this->setFrame(frame);
     
 this->paintXY(graphics, x, y);
@@ -287,17 +293,17 @@ this->paintXY(graphics, x, y);
 }
 
 
-    protected: const BasicColor CLEAR_COLOR = BasicColorFactory::getInstance().CLEAR_COLOR;
+    protected: BasicColor* CLEAR_COLOR = BasicColorFactory::getInstance()->CLEAR_COLOR;
 
-    public: void paintXY(Graphics graphics, int32_t ax, int32_t ay){
+    public: void paintXY(Graphics* graphics, int32_t ax, int32_t ay){
 
     int32_t x = 0;;
     
 
-                        if(this->widthP != Integer::MIN_VALUE)
+                        if(this->widthP != Integer.MIN_VALUE)
                         
                                     {
-                                    x= ((this->displayInfoSingleton.getLastWidth() -this->widthP) /2);
+                                    x= ((this->displayInfoSingleton->getLastWidth() -this->widthP) /2);
     
 
                                     }

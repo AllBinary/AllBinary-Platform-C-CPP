@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_TIMEBASEINTERFACE_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_TIMEBASEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/media/MediaException.h>
 
       
@@ -48,11 +54,11 @@
         
 class TimeBaseInterface {
 
-    TimeBase getTimeBase();
+    public: virtual TimeBase* getTimeBase() = 0;
 
                 //@Throws(MediaException.constructor)
             
-    void setTimeBase(TimeBase timeBase);
+    public: virtual void setTimeBase(TimeBase* timeBase) = 0;
 
 };
 

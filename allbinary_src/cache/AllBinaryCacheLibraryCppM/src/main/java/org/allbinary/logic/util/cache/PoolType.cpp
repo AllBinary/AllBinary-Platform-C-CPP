@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,21 +44,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CacheType.h"
+        #include "org/allbinary/logic/util/cache/CacheType.h"
 
 class PoolType
             : public Object
          {
 
-    private: CacheType cacheType;
+    private: CacheType* cacheType;
 
-public: PoolType(CacheType cacheType){
+public: PoolType(CacheType* cacheType){
 this->cacheType= cacheType;
     
 }
 
 
-    public: CacheType getCacheType(){
+    public: CacheType* getCacheType(){
 
 
 
@@ -70,7 +76,7 @@ this->cacheType= cacheType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return POOL_TYPE +this->getCacheType().toString();
+                        return POOL_TYPE +this->getCacheType()->toString();
     
 }
 

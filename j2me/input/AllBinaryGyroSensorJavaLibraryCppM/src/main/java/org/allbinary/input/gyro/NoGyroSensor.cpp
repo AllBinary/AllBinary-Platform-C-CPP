@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/input/AllBinarySensorListener.h>
@@ -44,7 +50,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryOrientationSensor.h"
+        #include "org/allbinary/input/gyro/AllBinaryOrientationSensor.h"
 
 class NoGyroSensor: public AllBinaryOrientationSensor, public AllBinarySensorListener {
 
@@ -56,7 +62,7 @@ this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUC
 
                 //@Throws(Exception.constructor)
             
-    public: Orientation getOrientation(){
+    public: Orientation* getOrientation(){
 
 
 

@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -105,27 +113,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TagHelper.h"
+        #include "admin/taghelpers/TagHelper.h"
 
 class AuthenticationHelper: public TagHelper {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: WeblisketSession weblisketSession;
+    private: WeblisketSession* weblisketSession;
 
     private: std::string authenticated;
 
     private: std::string sessionUserName;
 
-    private: UserRole role;
+    private: UserRole* role;
 
     private: std::string timeout;
 
-    private: Integer attemptsInteger;
+    private: int32_t attemptsInteger;
 
-public: AuthenticationHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: AuthenticationHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
-public: AuthenticationHelper(HashMap<Object*, Object*> hashMap, HttpServletRequest httpServletRequest);
+public: AuthenticationHelper(HashMap<Object*, Object*>* hashMap, HttpServletRequest* httpServletRequest);
 
                 //@Throws(Exception.constructor)
             
@@ -133,11 +141,11 @@ public: AuthenticationHelper(HashMap<Object*, Object*> hashMap, HttpServletReque
 
                 //@Throws(Exception.constructor)
             
-    public: Integer invalidateSession();
+    public: int32_t invalidateSession();
 
-    public: Boolean isSessionOld();
+    public: bool isSessionOld();
 
-    private: Boolean isRarelyUsedSession();
+    private: bool isRarelyUsedSession();
 
     public: std::string validRole();
 
@@ -147,17 +155,17 @@ public: AuthenticationHelper(HashMap<Object*, Object*> hashMap, HttpServletReque
             
     public: bool isAuthenticated();
 
-    public: Boolean isAuthenticationSessionValid(BasicArrayList roles);
+    public: bool isAuthenticationSessionValid(BasicArrayList* roles);
 
     public: void nextAttempt();
 
-    public: Boolean processIfNewLogin(std::string userName, std::string password);
+    public: bool processIfNewLogin(std::string userName, std::string password);
 
-    public: Boolean processInvalidation();
+    public: bool processInvalidation();
 
     public: std::string outputSessionInfo();
 
-    public: UserRole getRole();
+    public: UserRole* getRole();
 
 };
 

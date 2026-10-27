@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTIESVALIDATIONFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTIESVALIDATIONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,8 +70,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CssPropertyData.h"
-#include "CssPropertyValidationFactory.h"
+        #include "org/allbinary/logic/visual/dhtml/style/css/property/CssPropertyData.h"
+#include "org/allbinary/logic/visual/dhtml/style/css/property/CssPropertyValidationFactory.h"
 
 class CssPropertiesValidationFactory
             : public Object
@@ -73,9 +79,9 @@ class CssPropertiesValidationFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList getInstance(NodeList nodeList);
+    public: static BasicArrayList* getInstance(NodeList* nodeList);
 
-    public: static BasicArrayList getInstance(HashMap<Object*, Object*> hashMap);
+    public: static BasicArrayList* getInstance(HashMap<Object*, Object*>* hashMap);
 
 private: CssPropertiesValidationFactory();
 

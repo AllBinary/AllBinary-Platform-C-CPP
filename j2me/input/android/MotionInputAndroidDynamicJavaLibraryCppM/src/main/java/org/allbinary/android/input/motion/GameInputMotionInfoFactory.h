@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_GAMEINPUTMOTIONINFOFACTORY_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_GAMEINPUTMOTIONINFOFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/android/AndroidInfoFactory.h>
@@ -50,13 +56,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameInputMotionInfo.h"
+        #include "org/allbinary/android/input/motion/GameInputMotionInfo.h"
 
 class GameInputMotionInfoFactory
             : public Object
          {
 
-    public: static GameInputMotionInfo getInstance();
+    public: static GameInputMotionInfo* getInstance();
 
 };
 

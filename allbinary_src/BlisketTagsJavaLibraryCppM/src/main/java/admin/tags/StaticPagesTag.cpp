@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Class.h"
         
             #include "java/lang/Exception.h"
@@ -67,18 +75,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TableTag.h"
+        #include "admin/tags/TableTag.h"
 
 class StaticPagesTag: public TableTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string xslFile;
 
 public: StaticPagesTag(){
-this->setTagHelperFactory(StaticPagesHelperFactory());
+this->setTagHelperFactory(new StaticPagesHelperFactory());
     
-this->setTagRequestHelperFactory(StaticPagesRequestHelperFactory());
+this->setTagRequestHelperFactory(new StaticPagesRequestHelperFactory());
     
 }
 
@@ -95,17 +103,17 @@ this->xslFile= value;
 
         try {
             
-    Object* anyType = StaticPagesRequestHelperFactory().getInstance(this->getPropertiesHashMap(), this->pageContext);;
+    Object* anyType = (new StaticPagesRequestHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext);;
     
 
     Class* helperClass = anyType->getClass();;
     
 
-    Method method = helperClass.getMethod("generateStaticPages", 
+    Method* method = helperClass->getMethod("generateStaticPages", 
                             nullptr);;
     
 
-    std::string result = method.invoke(anyType, 
+    std::string result = method->invoke(anyType, 
                             nullptr);;
     
 
@@ -116,7 +124,7 @@ this->xslFile= value;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -126,16 +134,16 @@ this->xslFile= value;
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
     std::string error = "Failed to generate staticpages table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "generateStaticPages()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "generateStaticPages()", &e);
     
 
                                     }
@@ -147,7 +155,7 @@ this->xslFile= value;
                         return error;
     
 }
-*/
+
 }
 
 
@@ -157,17 +165,17 @@ this->xslFile= value;
 
         try {
             
-    Object* anyType = StaticPagesRequestHelperFactory().getInstance(this->getPropertiesHashMap(), this->pageContext);;
+    Object* anyType = (new StaticPagesRequestHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext);;
     
 
     Class* helperClass = anyType->getClass();;
     
 
-    Method method = helperClass.getMethod("makePublic", 
+    Method* method = helperClass->getMethod("makePublic", 
                             nullptr);;
     
 
-    std::string result = method.invoke(anyType, 
+    std::string result = method->invoke(anyType, 
                             nullptr);;
     
 
@@ -178,7 +186,7 @@ this->xslFile= value;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -188,16 +196,16 @@ this->xslFile= value;
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
     std::string error = "Failed to makePublic";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "makePublic()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "makePublic()", &e);
     
 
                                     }
@@ -209,7 +217,7 @@ this->xslFile= value;
                         return error;
     
 }
-*/
+
 }
 
 
@@ -229,19 +237,19 @@ this->xslFile= value;
                         
                                     {
                                     
-                        if(this->getCommand().compareTo(SearchData::GENERATESTATICPAGES) == 0)
+                        if(this->getCommand()->compareTo(SearchData::GENERATESTATICPAGES) == 0)
                         
                                     {
-                                    this->getPropertiesHashMap().put(TransformInfoData::getInstance().TEMPLATEFILENAME, this->xslFile);
+                                    this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->TEMPLATEFILENAME, this->xslFile);
     
 
     std::string output = this->generateStaticPages();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this->pageContext.getOut().print(output);
+                                    this->pageContext.getOut()->print(output);
     
 
                                     }
@@ -250,17 +258,17 @@ this->xslFile= value;
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(SearchData::MAKEPUBLIC) == 0)
+                        if(this->getCommand()->compareTo(SearchData::MAKEPUBLIC) == 0)
                         
                                     {
                                     
     std::string output = this->makePublic();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this->pageContext.getOut().print(output);
+                                    this->pageContext.getOut()->print(output);
     
 
                                     }
@@ -292,9 +300,9 @@ this->xslFile= value;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
-AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
     
 
 
@@ -305,9 +313,9 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 
@@ -316,7 +324,7 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
                         return SKIP_BODY;
     
 }
-*/
+
 }
 
 

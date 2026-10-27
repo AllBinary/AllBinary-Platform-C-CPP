@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPES_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -52,7 +58,7 @@ class LogConfigTypes
             : public Object
          {
 
-    public: static BasicArrayList LOGGING = BasicArrayListD();
+    public: static inline BasicArrayList* LOGGING = new BasicArrayListD();
 
 private: LogConfigTypes();
 

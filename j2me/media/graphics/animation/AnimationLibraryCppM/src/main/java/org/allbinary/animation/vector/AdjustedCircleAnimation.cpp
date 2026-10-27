@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -45,15 +51,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CircleAnimation.h"
+        #include "org/allbinary/animation/vector/CircleAnimation.h"
 
 class AdjustedCircleAnimation: public CircleAnimation {
 
-    public: static AdjustedCircleAnimation createAnimation(int32_t width, int32_t height, int32_t xAdjustment, int32_t yAdjustment, BasicColor basicColor){
+    public: static AdjustedCircleAnimation* createAnimation(int32_t width, int32_t height, int32_t xAdjustment, int32_t yAdjustment, BasicColor* basicColor){
 
-    AdjustedCircleAnimation adjustedCircleAnimation = AdjustedCircleAnimation(width, height, basicColor);;
+    AdjustedCircleAnimation* adjustedCircleAnimation = new AdjustedCircleAnimation(width, height, basicColor);;
     
-adjustedCircleAnimation.initXY(xAdjustment, yAdjustment);
+adjustedCircleAnimation->initXY(xAdjustment, yAdjustment);
     
 
 
@@ -64,11 +70,11 @@ adjustedCircleAnimation.initXY(xAdjustment, yAdjustment);
 }
 
 
-    public: static AdjustedCircleAnimation createW(int32_t width, int32_t height, int32_t innerWidth, BasicColor basicColor){
+    public: static AdjustedCircleAnimation* createW(int32_t width, int32_t height, int32_t innerWidth, BasicColor* basicColor){
 
-    AdjustedCircleAnimation adjustedCircleAnimation = AdjustedCircleAnimation(width, height, basicColor);;
+    AdjustedCircleAnimation* adjustedCircleAnimation = new AdjustedCircleAnimation(width, height, basicColor);;
     
-adjustedCircleAnimation.init(innerWidth);
+adjustedCircleAnimation->init(innerWidth);
     
 
 
@@ -83,7 +89,7 @@ adjustedCircleAnimation.init(innerWidth);
 
     private: int32_t yAdjustment= 0;
 
-public: AdjustedCircleAnimation(int32_t width, int32_t height, BasicColor basicColor) : CircleAnimation(width, height, basicColor){
+public: AdjustedCircleAnimation(int32_t width, int32_t height, BasicColor* basicColor) : CircleAnimation(width, height, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -127,10 +133,10 @@ this->yAdjustment= this->xAdjustment;
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
-graphics.drawArc(x +this->xAdjustment, y +this->yAdjustment, this->width, this->height, 0, this->TOTAL_ANGLE);
+graphics->drawArc(x +this->xAdjustment, y +this->yAdjustment, this->width, this->height, 0, this->TOTAL_ANGLE);
     
 }
 

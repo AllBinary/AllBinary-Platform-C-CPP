@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -124,46 +130,46 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PlayerGameInput.h"
-#include "InputFactory.h"
-#include "GameInputProcessor.h"
-#include "SelectRTSLayerVisitorFactoryInterface.h"
-#include "RTSPlayerGameInput.h"
-#include "SelectedRTSLayersPlayerUpgradeGameInputProcessor.h"
-#include "SelectedRTSLayersPlayerDowngradeGameInputProcessor.h"
-#include "GameInputProcessorUtil.h"
+        #include "org/allbinary/game/input/PlayerGameInput.h"
+#include "org/allbinary/game/input/InputFactory.h"
+#include "org/allbinary/game/input/GameInputProcessor.h"
+#include "org/allbinary/game/input/SelectRTSLayerVisitorFactoryInterface.h"
+#include "org/allbinary/game/input/RTSPlayerGameInput.h"
+#include "org/allbinary/game/input/SelectedRTSLayersPlayerUpgradeGameInputProcessor.h"
+#include "org/allbinary/game/input/SelectedRTSLayersPlayerDowngradeGameInputProcessor.h"
+#include "org/allbinary/game/input/GameInputProcessorUtil.h"
 
 class SelectedRTSLayersPlayerGameInput: public PlayerGameInput {
 
-    protected: const std::vector<GameInputProcessor> inputProcessorArray = std::vector<GameInputProcessor>(InputFactory::getInstance().MAX);
+    protected: const std::vector<GameInputProcessor*> inputProcessorArray = std::vector<GameInputProcessor*>(InputFactory::getInstance()->MAX);
 
-    private: BasicArrayList list;
+    private: BasicArrayList* list;
 
-    protected: const bool isSingleKeyProcessing = Features::getInstance().isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_REPEAT_PRESS) || Features::getInstance().isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_PRESS);
+    protected: const bool isSingleKeyProcessing = Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_REPEAT_PRESS) || Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_PRESS);
 
-    private: BasicArrayList selectedRTSLayersList = BasicArrayListD();
+    private: BasicArrayList* selectedRTSLayersList = new BasicArrayListD();
 
-    private: BasicArrayList preSelectedRTSLayersList = BasicArrayListD();
+    private: BasicArrayList* preSelectedRTSLayersList = new BasicArrayListD();
 
-    private: BasicArrayList paintSelectedRTSLayersList = BasicArrayListUtil::getInstance().getImmutableInstance();
+    private: BasicArrayList* paintSelectedRTSLayersList = BasicArrayListUtil::getInstance()->getImmutableInstance();
 
-    private: RTSPlayerLayerInterface rtsPlayerLayerInterface;
+    private: RTSPlayerLayerInterface* rtsPlayerLayerInterface;
 
-    private: Visitor selectRTSLayerVisitorInterface;
+    private: Visitor* selectRTSLayerVisitorInterface;
 
-    private: GameNotificationEvent upgradeGameNotificationEvent;
+    private: GameNotificationEvent* upgradeGameNotificationEvent;
 
-    private: GameNotificationEvent noMoneyGameNotificationEvent;
+    private: GameNotificationEvent* noMoneyGameNotificationEvent;
 
-    private: GameNotificationEvent downgradeGameNotificationEvent;
+    private: GameNotificationEvent* downgradeGameNotificationEvent;
 
-public: SelectedRTSLayersPlayerGameInput(RTSLayerInfoPaintable towerInfoPaintable, RTSPlayerLayerInterface rtsPlayerLayerInterface, BasicArrayList list, int32_t playerInputId, SelectRTSLayerVisitorFactoryInterface selectRTSLayerVisitorFactoryInterface);
+public: SelectedRTSLayersPlayerGameInput(RTSLayerInfoPaintable* towerInfoPaintable, RTSPlayerLayerInterface* rtsPlayerLayerInterface, BasicArrayList* list, int32_t playerInputId, SelectRTSLayerVisitorFactoryInterface* selectRTSLayerVisitorFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager);
 
-    public: bool isSelected(RTSLayer rtsLayer);
+    public: bool isSelected(RTSLayer* rtsLayer);
 
                 //@Throws(Exception.constructor)
             
@@ -181,15 +187,15 @@ public: SelectedRTSLayersPlayerGameInput(RTSLayerInfoPaintable towerInfoPaintabl
 
                 //@Throws(Exception.constructor)
             
-    public: void processInput(AllBinaryLayerManager layerManager);
+    public: void processInput(AllBinaryLayerManager* layerManager);
 
-    public: BasicArrayList getSelectedBasicArrayList();
+    public: BasicArrayList* getSelectedBasicArrayList();
 
-    public: void addSelectedRTSLayer(RTSLayer selectedLayer);
+    public: void addSelectedRTSLayer(RTSLayer* selectedLayer);
 
-    public: void setSelectedRTSLayer(CollidableDestroyableDamageableLayer selectedLayer);
+    public: void setSelectedRTSLayer(CollidableDestroyableDamageableLayer* selectedLayer);
 
-    public: CollidableDestroyableDamageableLayer getLastSelectedRtsLayer();
+    public: CollidableDestroyableDamageableLayer* getLastSelectedRtsLayer();
 
     public: void selectAllPreselected();
 
@@ -199,9 +205,9 @@ public: SelectedRTSLayersPlayerGameInput(RTSLayerInfoPaintable towerInfoPaintabl
 
     public: bool isAnyRTSLayerSelected();
 
-    public: BasicArrayList getPaintSelectedRTSLayersList();
+    public: BasicArrayList* getPaintSelectedRTSLayersList();
 
-    public: BasicArrayList getPreSelectedRTSLayersList();
+    public: BasicArrayList* getPreSelectedRTSLayersList();
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,17 +70,17 @@ class CaptureWorkerUtil
 
                 //@Throws(Exception.constructor)
             
-    public: static void processProfileActionConditions(BasicArrayList vector, Long frame){
+    public: static void processProfileActionConditions(BasicArrayList* vector, int64_t frame){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil.putF(commonStrings.START, "CaptureWorkerUtil", "processProfileActionConditions");
+logUtil->putF(commonStrings->START, "CaptureWorkerUtil", "processProfileActionConditions");
     
 
-    int32_t size = vector.size();;
+    int32_t size = vector->size();;
     
 
 
@@ -84,13 +90,13 @@ logUtil.putF(commonStrings.START, "CaptureWorkerUtil", "processProfileActionCond
     int32_t index = 0;index < size; index++)
         {
 
-    ProfileActionScriptConditionInterface profileActionConditionInterface = vector.get(index);;
+    ProfileActionScriptConditionInterface* profileActionConditionInterface = dynamic_cast<ProfileActionScriptConditionInterface*>(vector->get(index));;
     
 
-                        if(profileActionConditionInterface.shouldProcess(frame))
+                        if(profileActionConditionInterface->shouldProcess(frame))
                         
                                     {
-                                    profileActionConditionInterface.process(frame);
+                                    profileActionConditionInterface->process(frame);
     
 
                                     }
@@ -104,7 +110,7 @@ logUtil.putF(commonStrings.START, "CaptureWorkerUtil", "processProfileActionCond
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: CaptureWorkerUtil(){
 }

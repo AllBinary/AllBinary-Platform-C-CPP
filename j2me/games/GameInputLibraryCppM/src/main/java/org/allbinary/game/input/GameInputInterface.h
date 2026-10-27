@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEINPUTINTERFACE_H
         #define ORG_ALLBINARY_GAME_INPUT_GAMEINPUTINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/AllBinaryLayerManager.h>
@@ -52,9 +58,9 @@ class GameInputInterface: public NamedInterface {
 
                 //@Throws(Exception.constructor)
             
-    void processInput(AllBinaryLayerManager layerManager);
+    public: virtual void processInput(AllBinaryLayerManager* layerManager) = 0;
 
-    void initInputProcessors();
+    public: virtual void initInputProcessors() = 0;
 
 };
 

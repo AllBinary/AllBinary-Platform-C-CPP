@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -46,9 +52,9 @@ class OpenGLESImageProcessor
             : public Object
          {
 
-    private: static OpenGLESImageProcessor instance() { return OpenGLESImageProcessor(); }
+    private: static OpenGLESImageProcessor* instance() { static std::unique_ptr<OpenGLESImageProcessor> value(new OpenGLESImageProcessor()); return value.get(); }
 
-    public: static OpenGLESImageProcessor getInstance(){
+    public: static OpenGLESImageProcessor* getInstance(){
 
 
 
@@ -58,25 +64,25 @@ class OpenGLESImageProcessor
 }
 
 
-    public: void translate(GL10 gl, float translateX, float translateY){
-gl.glTranslatef(translateX, translateY, 0);
+    public: void translate(GL10* gl, float translateX, float translateY){
+gl->glTranslatef(translateX, translateY, 0);
     
 }
 
 
-    public: void rotate(GL10 gl, float angle){
-gl.glRotatef( -angle, 0, 0, 1);
+    public: void rotate(GL10* gl, float angle){
+gl->glRotatef( -angle, 0, 0, 1);
     
 }
 
 
-    public: void scale(GL10 gl, float scaleX, float scaleY){
-gl.glScalef(scaleX, scaleY, 1);
+    public: void scale(GL10* gl, float scaleX, float scaleY){
+gl->glScalef(scaleX, scaleY, 1);
     
 }
 
 
-    public: void colorMask(GL10 gl, float red, float green, float blue, float alpha){
+    public: void colorMask(GL10* gl, float red, float green, float blue, float alpha){
 }
 
 

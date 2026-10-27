@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/identification/Group.h>
@@ -46,18 +52,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WaypointEventHandler.h"
+        #include "org/allbinary/game/layer/waypoint/event/WaypointEventHandler.h"
 
 class WaypointEventHandlerFactory
             : public Object
          {
 
-    private: static const std::vector<WaypointEventHandler> eventHandlerArray = 
+    private: static inline const std::vector<WaypointEventHandler*> eventHandlerArray = 
                                                         {
-                                                            WaypointEventHandler(),WaypointEventHandler(),WaypointEventHandler(),WaypointEventHandler(),WaypointEventHandler(),WaypointEventHandler(),WaypointEventHandler(),WaypointEventHandler(),WaypointEventHandler(),WaypointEventHandler()
+                                                            new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler()
                                                         };
 
-    public: static WaypointEventHandler getInstance(Group groupInterface);
+    public: static WaypointEventHandler* getInstance(Group* groupInterface);
 
     public: static void removeAll();
 

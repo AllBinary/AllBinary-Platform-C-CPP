@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_COMMONDATAFILESTRINGS_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_COMMONDATAFILESTRINGS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class CommonDataFileStrings
             : public Object
          {
 
-    private: static CommonDataFileStrings instance() { return CommonDataFileStrings(); }
+    private: static CommonDataFileStrings* instance() { static std::unique_ptr<CommonDataFileStrings> value(new CommonDataFileStrings()); return value.get(); }
 
-    public: static CommonDataFileStrings getInstance();
+    public: static CommonDataFileStrings* getInstance();
 
     public: const std::string XML = "xml";
 

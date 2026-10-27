@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -76,45 +82,45 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BoundBounceAI.h"
-#include "ReverseVelocityBoundsVisitor.h"
+        #include "org/allbinary/game/ag/ai/BoundBounceAI.h"
+#include "org/allbinary/game/ag/ai/ReverseVelocityBoundsVisitor.h"
 
 class TopUBoundBounceAIFactory
             : public Object
-        : public ArtificialIntelligenceInterfaceFactoryInterface {
+        , public ArtificialIntelligenceInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: ArtificialIntelligenceInterface getInstance(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+    public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput){
 
-    VelocityInterfaceCompositeInterface velocityInterfaceCompositeInterface = ownerLayerInterface;;
+    VelocityInterfaceCompositeInterface* velocityInterfaceCompositeInterface = dynamic_cast<VelocityInterfaceCompositeInterface*>(ownerLayerInterface);;
     
 
-    VelocityInterface velocityInterface = velocityInterfaceCompositeInterface.getVelocityProperties();;
+    VelocityInterface* velocityInterface = dynamic_cast<VelocityInterface*>(velocityInterfaceCompositeInterface->getVelocityProperties());;
     
 
-    int32_t maxDistancePerTick = (velocityInterface.getMaxForwardVelocity()>>velocityInterface.getVelocityXBasicDecimalP().getScaledFactor());;
+    int32_t maxDistancePerTick = (velocityInterface->getMaxForwardVelocity()>>velocityInterface->getVelocityXBasicDecimalP()->getScaledFactor());;
     
 
-    int32_t halfWidth = ownerLayerInterface.getWidth() *2 +maxDistancePerTick +1;;
+    int32_t halfWidth = ownerLayerInterface->getWidth() *2 +maxDistancePerTick +1;;
     
 
-    int32_t halfHeight = ownerLayerInterface.getHeight() *2 +maxDistancePerTick +1;;
+    int32_t halfHeight = ownerLayerInterface->getHeight() *2 +maxDistancePerTick +1;;
     
 
-    GPoint point = PointFactory::getInstance().createXY(halfWidth, halfHeight +60);;
+    GPoint* point = PointFactory::getInstance()->createXY(halfWidth, halfHeight +60);;
     
 
-    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
+    DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-    Rectangle rectangle = Rectangle(point, (displayInfo.getLastWidth() -halfWidth -point.getX()), (displayInfo.getLastHeight() -halfHeight -point.getY()));;
+    Rectangle* rectangle = new Rectangle(point, (displayInfo->getLastWidth() -halfWidth -point->getX()), (displayInfo->getLastHeight() -halfHeight -point->getY()));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BoundBounceAI(ownerLayerInterface, gameInput, TopULayerBounds(rectangle), ReverseVelocityBoundsVisitor(ownerLayerInterface));
+                        return new BoundBounceAI(ownerLayerInterface, gameInput, new TopULayerBounds(rectangle), new ReverseVelocityBoundsVisitor(ownerLayerInterface));
     
 }
 

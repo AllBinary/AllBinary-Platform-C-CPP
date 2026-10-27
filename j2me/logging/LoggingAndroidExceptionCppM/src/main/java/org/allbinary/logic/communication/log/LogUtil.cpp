@@ -20,6 +20,12 @@
 
             #include <hilog/log.h>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -40,8 +46,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogFormatUtil.h"
-#include "Log.h"
+        #include "org/allbinary/logic/communication/log/LogFormatUtil.h"
+#include "org/allbinary/logic/communication/log/Log.h"
 //ActualPlatform
 /*actual*/ class LogUtil
             : public Object
@@ -50,9 +56,9 @@
             static const char* PUBLIC = "%{public}s";
             
 
-    private: static LogUtil instance() { return LogUtil(); }
+    private: static LogUtil* instance() { static std::unique_ptr<LogUtil> value(new LogUtil()); return value.get(); }
 
-    /*actual*/ public: static LogUtil getInstance(){
+    /*actual*/ public: static LogUtil* getInstance(){
 
 
 
@@ -62,7 +68,7 @@
 }
 
 
-    private: const LogFormatUtil logFormatUtil = LogFormatUtil::getInstance();
+    private: LogFormatUtil* logFormatUtil = LogFormatUtil::getInstance();
 
     private: const std::string LABEL = "org.allbinary";
 
@@ -72,18 +78,18 @@ private: LogUtil(){
 }
 
 
-    /*actual*/ public: void putL(Log log){
+    /*actual*/ public: void putL(Log* log){
 
-    std::string specialMessage = log.getSpecialMessage();;
+    std::string specialMessage = log->getSpecialMessage();;
     
 
-    Object* anyType = log.getObject();;
+    Object* anyType = log->getObject();;
     
 
-    std::string functionName = log.getFunctionName();;
+    std::string functionName = log->getFunctionName();;
     
 
-    Object* exception = log.getThrowable();;
+    Object* exception = log->getThrowable();;
     
 
                         if(log != 
@@ -111,10 +117,10 @@ private: LogUtil(){
 
     std::string className = this->LABEL;;
     
-className= anyType->constructor.name.toString();
+className= anyType->getClass()->getName();
     
 
-    std::string message = this->logFormatUtil.get(className, functionName, specialMessage, exception);;
+    std::string message = this->logFormatUtil->get(className, functionName, specialMessage, exception);;
     
 android.util.Log.i(this->LABEL, this->LOG_SUCCESS +message);
     

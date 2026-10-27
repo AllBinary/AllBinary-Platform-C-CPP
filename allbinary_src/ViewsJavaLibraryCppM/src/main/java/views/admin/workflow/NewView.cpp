@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/DynamicObjectData.h>
@@ -71,15 +77,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WorkFlowView.h"
+        #include "views/admin/workflow/WorkFlowView.h"
 
 class NewView: public WorkFlowView, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-public: NewView(TransformInfoInterface transformInfoInterface) : WorkFlowView(transformInfoInterface){
+public: NewView(TransformInfoInterface* transformInfoInterface) : WorkFlowView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -87,14 +93,14 @@ public: NewView(TransformInfoInterface transformInfoInterface) : WorkFlowView(tr
                             //For kotlin this is before the body of the constructor.
                     
 
-    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface();;
+    TransformInfoHttpInterface* httpTransformInfoInterface = dynamic_cast<TransformInfoHttpInterface*>(this->getTransformInfoInterface());;
     
-this->workFlowInterface= NewWorkFlowFactory::getInstance().getInstance(this->abeClientInformation, httpTransformInfoInterface.getPropertiesHashMap().get(DynamicObjectData::NAME));
+this->workFlowInterface= NewWorkFlowFactory::getInstance()->getInstance(this->abeClientInformation, httpTransformInfoInterface->getPropertiesHashMap()->get(DynamicObjectData::NAME));
     
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
@@ -105,13 +111,13 @@ this->workFlowInterface= NewWorkFlowFactory::getInstance().getInstance(this->abe
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -131,25 +137,25 @@ this->workFlowInterface= NewWorkFlowFactory::getInstance().getInstance(this->abe
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Please Contact Administrator");
+stringBuffer->append("Please Contact Administrator");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -165,7 +171,7 @@ stringBuffer.append("Please Contact Administrator");
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -175,7 +181,7 @@ stringBuffer.append("Please Contact Administrator");
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

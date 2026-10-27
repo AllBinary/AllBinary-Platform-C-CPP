@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_STATUSFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_STATUSFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -44,17 +50,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MyFrame.h"
+        #include "org/allbinary/graphics/j2me/MyFrame.h"
 
 class StatusFactory
             : public Object
          {
 
-    private: static StatusFactory instance() { return StatusFactory(); }
+    private: static StatusFactory* instance() { static std::unique_ptr<StatusFactory> value(new StatusFactory()); return value.get(); }
 
-    public: static StatusFactory getInstance();
+    public: static StatusFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const std::string SETSTATUS = "setStatus";
 

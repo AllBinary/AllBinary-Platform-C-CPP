@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -47,19 +53,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseMotionGestureEventListener.h"
-#include "MotionGestureEvent.h"
+        #include "org/allbinary/input/motion/gesture/observer/BaseMotionGestureEventListener.h"
+#include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
 
 class BasicMotionGesturesHandler: public BasicEventHandler {
 
-    private: static const BasicMotionGesturesHandler SINGLETON = BasicMotionGesturesHandler();
+    private: static BasicMotionGesturesHandler* SINGLETON() { static std::unique_ptr<BasicMotionGesturesHandler> value(new BasicMotionGesturesHandler()); return value.get(); }
 
-    public: static BasicMotionGesturesHandler getInstance(){
+    public: static BasicMotionGesturesHandler* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicMotionGesturesHandler::SINGLETON;
+                        return BasicMotionGesturesHandler::SINGLETON();
     
 }
 
@@ -70,11 +76,11 @@ protected: BasicMotionGesturesHandler(){
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
 
-    BaseMotionGestureEventListener baseMotionGestureEventListener = eventListenerInterface;;
+    BaseMotionGestureEventListener* baseMotionGestureEventListener = dynamic_cast<BaseMotionGestureEventListener*>(eventListenerInterface);;
     
-baseMotionGestureEventListener.onMotionGestureEvent(eventObject);
+baseMotionGestureEventListener->onMotionGestureEvent(dynamic_cast<MotionGestureEvent*>(eventObject));
     
 }
 

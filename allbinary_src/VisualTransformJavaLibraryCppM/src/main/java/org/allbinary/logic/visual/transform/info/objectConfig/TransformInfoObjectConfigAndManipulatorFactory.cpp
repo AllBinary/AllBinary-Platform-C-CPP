@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
@@ -62,17 +68,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoObjectConfigAndManipulatorFactoryBase.h"
-#include "TransformInfoObjectConfigData.h"
-#include "TransformInfoObjectConfigInterface.h"
-#include "TransformInfoObjectConfig.h"
-#include "GenericStoreTransformInfoObjectConfig.h"
+        #include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigAndManipulatorFactoryBase.h"
+#include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigData.h"
+#include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigInterface.h"
+#include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfig.h"
+#include "org/allbinary/logic/visual/transform/info/objectConfig/GenericStoreTransformInfoObjectConfig.h"
 
 class TransformInfoObjectConfigAndManipulatorFactory: public TransformInfoObjectConfigAndManipulatorFactoryBase {
 
-    private: static TransformInfoObjectConfigAndManipulatorFactory instance() { return TransformInfoObjectConfigAndManipulatorFactory(); }
+    private: static TransformInfoObjectConfigAndManipulatorFactory* instance() { static std::unique_ptr<TransformInfoObjectConfigAndManipulatorFactory> value(new TransformInfoObjectConfigAndManipulatorFactory()); return value.get(); }
 
-    public: static TransformInfoObjectConfigAndManipulatorFactory getInstance(){
+    public: static TransformInfoObjectConfigAndManipulatorFactory* getInstance(){
 
 
 
@@ -82,7 +88,7 @@ class TransformInfoObjectConfigAndManipulatorFactory: public TransformInfoObject
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: TransformInfoObjectConfigAndManipulatorFactory(){
 }
@@ -90,11 +96,11 @@ private: TransformInfoObjectConfigAndManipulatorFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoObjectConfigInterface getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, AbPath objectConfigFileAbPath){
+    public: TransformInfoObjectConfigInterface* getInstance(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface, AbPath* objectConfigFileAbPath){
 
         try {
             
-    std::string data = CryptFileReader(TransformInfoObjectConfigData::getInstance().UNCRYPTED_EXTENSION, TransformInfoObjectConfigData::getInstance().ENCRYPTED_EXTENSION).get(objectConfigFileAbPath);;
+    std::string data = (new CryptFileReader(TransformInfoObjectConfigData::getInstance()->UNCRYPTED_EXTENSION, TransformInfoObjectConfigData::getInstance()->ENCRYPTED_EXTENSION))->get(objectConfigFileAbPath);;
     
 
 
@@ -104,13 +110,13 @@ private: TransformInfoObjectConfigAndManipulatorFactory(){
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Could Not Load Object Config", getInstance(), this->commonStrings.GET_INSTANCE, e);
+                                    this->logUtil->put("Could Not Load Object Config", getInstance(), this->commonStrings.GET_INSTANCE, &e);
     
 
                                     }
@@ -127,23 +133,23 @@ private: TransformInfoObjectConfigAndManipulatorFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoObjectConfigInterface getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface){
+    public: TransformInfoObjectConfigInterface* getInstance(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface){
 
         try {
             
-    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
+    StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
     
 
                         if(transformInfoInterface != 
                                     nullptr
-                                 && !stringValidationUtil.isEmpty(transformInfoInterface.getStoreName()))
+                                 && !stringValidationUtil->isEmpty(transformInfoInterface->getStoreName()))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface);
+                        return dynamic_cast<TransformInfoObjectConfigInterface*>(new GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface));
     
 
                                     }
@@ -153,14 +159,14 @@ private: TransformInfoObjectConfigAndManipulatorFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoObjectConfig(transformInfoInterface);
+                        return dynamic_cast<TransformInfoObjectConfigInterface*>(new TransformInfoObjectConfig(transformInfoInterface));
     
 
                         }
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed To Get Instance: ";;
@@ -171,16 +177,16 @@ private: TransformInfoObjectConfigAndManipulatorFactory(){
                                 )
                         
                                     {
-                                    error= error +transformInfoInterface.getName();
+                                    error= error +transformInfoInterface->getName();
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put(commonStrings.EXCEPTION, getInstance(), commonStrings.GET_INSTANCE, e);
+                                    this->logUtil->put(commonStrings.EXCEPTION, getInstance(), commonStrings.GET_INSTANCE, &e);
     
 
                                     }
@@ -197,23 +203,23 @@ private: TransformInfoObjectConfigAndManipulatorFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoObjectConfigInterface getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, Document document){
+    public: TransformInfoObjectConfigInterface* getInstance(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface, Document* document){
 
         try {
             
-    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
+    StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
     
 
                         if(transformInfoInterface != 
                                     nullptr
-                                 && !stringValidationUtil.isEmpty(transformInfoInterface.getStoreName()))
+                                 && !stringValidationUtil->isEmpty(transformInfoInterface->getStoreName()))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface, document);
+                        return dynamic_cast<TransformInfoObjectConfigInterface*>(new GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface, document));
     
 
                                     }
@@ -223,14 +229,14 @@ private: TransformInfoObjectConfigAndManipulatorFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoObjectConfig(transformInfoInterface, document);
+                        return dynamic_cast<TransformInfoObjectConfigInterface*>(new TransformInfoObjectConfig(transformInfoInterface, document));
     
 
                         }
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed To Get Instance: ";;
@@ -241,16 +247,16 @@ private: TransformInfoObjectConfigAndManipulatorFactory(){
                                 )
                         
                                     {
-                                    error= error +transformInfoInterface.getName();
+                                    error= error +transformInfoInterface->getName();
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put(commonStrings.EXCEPTION, getInstance(), "getInstance(document)", e);
+                                    this->logUtil->put(commonStrings.EXCEPTION, getInstance(), "getInstance(document)", &e);
     
 
                                     }

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_PREGAMESELECTORPAINTABLE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_PREGAMESELECTORPAINTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -54,23 +60,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PreGameScrollSelectionForm.h"
+        #include "org/allbinary/game/displayable/canvas/PreGameScrollSelectionForm.h"
 
 class PreGameSelectorPaintable: public InitUpdatePaintable {
 
     private: std::string title;
 
-    private: CanvasDrawLineString canvasDrawLineString;
+    private: CanvasDrawLineString* canvasDrawLineString;
 
-    private: PreGameScrollSelectionForm preGameScrollSelectionForm;
+    private: PreGameScrollSelectionForm* preGameScrollSelectionForm;
 
-public: PreGameSelectorPaintable(std::string title, PreGameScrollSelectionForm preGameScrollSelectionForm);
+public: PreGameSelectorPaintable(std::string title, PreGameScrollSelectionForm* preGameScrollSelectionForm);
 
     public: void update();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: PreGameScrollSelectionForm getPreGameSelectionForm();
+    public: PreGameScrollSelectionForm* getPreGameSelectionForm();
 
 };
 

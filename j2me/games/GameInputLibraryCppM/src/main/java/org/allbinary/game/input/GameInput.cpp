@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/configuration/feature/Features.h>
@@ -61,30 +67,30 @@ class GameInput
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: BasicArrayList gameKeyEventList;
+    private: BasicArrayList* gameKeyEventList;
 
-    private: BasicArrayList removalGameKeyEventList;
+    private: BasicArrayList* removalGameKeyEventList;
 
     protected: bool isRemoveDuplicateKeyPresses;
 
-public: GameInput(BasicArrayList gameKeyEventList, BasicArrayList removalGameKeyEventList){
+public: GameInput(BasicArrayList* gameKeyEventList, BasicArrayList* removalGameKeyEventList){
 this->gameKeyEventList= gameKeyEventList;
     
 this->removalGameKeyEventList= removalGameKeyEventList;
     
-this->isRemoveDuplicateKeyPresses= Features::getInstance().isFeature(InputFeatureFactory::getInstance().REMOVE_DUPLICATE_KEY_PRESSES);
+this->isRemoveDuplicateKeyPresses= Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->REMOVE_DUPLICATE_KEY_PRESSES);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void add(GameKeyEvent gameKeyEvent){
+    public: void add(GameKeyEvent* gameKeyEvent){
 
-                        if(this->isRemoveDuplicateKeyPresses && this->gameKeyEventList.contains(gameKeyEvent))
+                        if(this->isRemoveDuplicateKeyPresses && this->gameKeyEventList->contains(gameKeyEvent))
                         
                                     {
                                     
@@ -102,13 +108,13 @@ this->isRemoveDuplicateKeyPresses= Features::getInstance().isFeature(InputFeatur
                                 )
                         
                                     {
-                                    this->gameKeyEventList.add(gameKeyEvent);
+                                    this->gameKeyEventList->add(gameKeyEvent);
     
 
                                     }
                                 
                         else {
-                            this->logUtil.putF("Danger Passed Null GameKeyEvent", this, this->commonStrings.ADD);
+                            this->logUtil->putF("Danger Passed Null GameKeyEvent", this, this->commonStrings->ADD);
     
 
                         }
@@ -117,26 +123,26 @@ this->isRemoveDuplicateKeyPresses= Features::getInstance().isFeature(InputFeatur
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void addForRemoval(GameKeyEvent gameKeyEvent){
-this->removalGameKeyEventList.add(gameKeyEvent);
+    public: void addForRemoval(GameKeyEvent* gameKeyEvent){
+this->removalGameKeyEventList->add(gameKeyEvent);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isForRemoval(GameKeyEvent gameKeyEvent){
+    public: bool isForRemoval(GameKeyEvent* gameKeyEvent){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->removalGameKeyEventList.contains(gameKeyEvent);;
+                        return this->removalGameKeyEventList->contains(gameKeyEvent);;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void clear(){
-this->gameKeyEventList.clear();
+this->gameKeyEventList->clear();
     
 }
 
@@ -144,25 +150,25 @@ this->gameKeyEventList.clear();
 
     public: void removeNonAIInputGameKeyEvents(){
 
-    BasicArrayList list = this->gameKeyEventList;;
+    BasicArrayList* list = this->gameKeyEventList;;
     
 
-    GameKeyEvent gameKeyEvent;;
+    GameKeyEvent* gameKeyEvent;;
     
 
 
 
 
                         for (
-    int32_t index = list.size();--index >= 0; )
+    int32_t index = list->size();--index >= 0; )
         {
-gameKeyEvent= list.objectArray[index];
+gameKeyEvent= dynamic_cast<GameKeyEvent*>(list->objectArray[index]);
     
 
-                        if(gameKeyEvent.getSourceId() != 1)
+                        if(gameKeyEvent->getSourceId() != 1)
                         
                                     {
-                                    list.removeAt(index);
+                                    list->removeAt(index);
     
 
                                     }
@@ -175,13 +181,13 @@ gameKeyEvent= list.objectArray[index];
 
     public: void update(){
 
-    BasicArrayList removeList = this->removalGameKeyEventList;;
+    BasicArrayList* removeList = this->removalGameKeyEventList;;
     
 
-    BasicArrayList list = this->gameKeyEventList;;
+    BasicArrayList* list = this->gameKeyEventList;;
     
 
-    int32_t size = removeList.size();;
+    int32_t size = removeList->size();;
     
 
 
@@ -191,20 +197,20 @@ gameKeyEvent= list.objectArray[index];
     int32_t index = 0;index < size; index++)
         {
 
-    Object* anyType = removeList.objectArray[index];;
+    Object* anyType = removeList->objectArray[index];;
     
 
 
 
 
                         for (
-    int32_t index2 = list.size();--index2 >= 0; )
+    int32_t index2 = list->size();--index2 >= 0; )
         {
 
-                        if(list.objectArray[index2] == anyType)
+                        if(list->objectArray[index2] == anyType)
                         
                                     {
-                                    list.removeAt(index2);
+                                    list->removeAt(index2);
     
 
                                     }
@@ -213,12 +219,12 @@ gameKeyEvent= list.objectArray[index];
 
 }
 
-removeList.clear();
+removeList->clear();
     
 }
 
 
-    protected: BasicArrayList getRemovalGameKeyEventList(){
+    protected: BasicArrayList* getRemovalGameKeyEventList(){
 
 
 
@@ -228,7 +234,7 @@ removeList.clear();
 }
 
 
-    protected: BasicArrayList getGameKeyEventList(){
+    protected: BasicArrayList* getGameKeyEventList(){
 
 
 

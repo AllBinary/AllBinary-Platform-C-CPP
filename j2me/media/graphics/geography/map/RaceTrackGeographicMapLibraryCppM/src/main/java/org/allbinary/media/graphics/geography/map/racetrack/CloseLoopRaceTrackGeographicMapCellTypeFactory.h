@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_CLOSELOOPRACETRACKGEOGRAPHICMAPCELLTYPEFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_CLOSELOOPRACETRACKGEOGRAPHICMAPCELLTYPEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,14 +45,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RaceTrackGeographicMapCellTypeFactory.h"
-#include "EmptyRaceRaceTrackGeographicMapCellTypeFactory.h"
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellTypeFactory.h"
+#include "org/allbinary/media/graphics/geography/map/racetrack/EmptyRaceRaceTrackGeographicMapCellTypeFactory.h"
 
 class CloseLoopRaceTrackGeographicMapCellTypeFactory: public RaceTrackGeographicMapCellTypeFactory {
 
-    private: static const CloseLoopRaceTrackGeographicMapCellTypeFactory instanceC = CloseLoopRaceTrackGeographicMapCellTypeFactory();
+    private: static CloseLoopRaceTrackGeographicMapCellTypeFactory* instanceC() { static std::unique_ptr<CloseLoopRaceTrackGeographicMapCellTypeFactory> value(new CloseLoopRaceTrackGeographicMapCellTypeFactory()); return value.get(); }
 
-    public: static CloseLoopRaceTrackGeographicMapCellTypeFactory getInstance();
+    public: static CloseLoopRaceTrackGeographicMapCellTypeFactory* getInstance();
 
 private: CloseLoopRaceTrackGeographicMapCellTypeFactory();
 

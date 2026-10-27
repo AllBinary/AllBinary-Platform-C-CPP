@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,18 +52,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdvertisementCampaignInternalEntity.h"
-#include "AdvertisementCampaignInternalEntityInterface.h"
+        #include "org/allbinary/data/tables/advertisement/campaign/internal/AdvertisementCampaignInternalEntity.h"
+#include "org/allbinary/data/tables/advertisement/campaign/internal/AdvertisementCampaignInternalEntityInterface.h"
 
 class AdvertisementCampaignInternalEntityFactory
             : public Object
          {
 
-    private: static const std::string CLASSNAME = "org.allbinary.data.tables.AdvertisementCampaignEntity";
+    private: static inline const std::string CLASSNAME = "org.allbinary.data.tables.AdvertisementCampaignEntity";
 
-    public: static AdvertisementCampaignInternalEntityInterface getInstance(){
+    public: static AdvertisementCampaignInternalEntityInterface* getInstance(){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
         try {
@@ -65,20 +71,20 @@ class AdvertisementCampaignInternalEntityFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdvertisementCampaignInternalEntity();
+                        return dynamic_cast<AdvertisementCampaignInternalEntityInterface*>(new AdvertisementCampaignInternalEntity());
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil.put(commonStrings.EXCEPTION, "AdvertisementCampaignEntityFactory", commonStrings.GET_INSTANCE, e);
+logUtil->put(commonStrings->EXCEPTION, "AdvertisementCampaignEntityFactory", commonStrings->GET_INSTANCE, &e);
     
 
                                     }

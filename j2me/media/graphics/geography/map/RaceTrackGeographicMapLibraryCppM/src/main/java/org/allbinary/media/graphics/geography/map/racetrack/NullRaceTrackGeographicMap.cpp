@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,21 +73,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RaceTrackGeographicMapInterface.h"
-#include "RaceTrackInfo.h"
-#include "RaceTrackData.h"
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapInterface.h"
+#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackInfo.h"
+#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackData.h"
 
 class NullRaceTrackGeographicMap
             : public Object
-        : public RaceTrackGeographicMapInterface {
+        , public RaceTrackGeographicMapInterface {
 
-    public: static const NullRaceTrackGeographicMap NULL_RACE_TRACK_GEOGRAPHIC_MAP = NullRaceTrackGeographicMap();
+    public: static NullRaceTrackGeographicMap* NULL_RACE_TRACK_GEOGRAPHIC_MAP() { static std::unique_ptr<NullRaceTrackGeographicMap> value(new NullRaceTrackGeographicMap()); return value.get(); }
 
-    public: Integer getId(){
+    public: int32_t getId(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -90,7 +96,7 @@ class NullRaceTrackGeographicMap
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -99,49 +105,49 @@ class NullRaceTrackGeographicMap
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: AllBinaryTiledLayer getAllBinaryTiledLayer(){
+    public: AllBinaryTiledLayer* getAllBinaryTiledLayer(){
 
 
 
-                            throw RuntimeException();
-                    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: bool getCellPositionsAt(Layer layer, std::vector<std::vector<GeographicMapCellPosition>> currentCellPositionArray, std::vector<std::vector<GeographicMapCellPosition>> cellPositionArray){
-
-
-
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition getCellPositionAtXY(int32_t x, int32_t y){
+    public: bool getCellPositionsAt(Layer* layer, std::vector<std::vector<GeographicMapCellPosition*>> currentCellPositionArray, std::vector<std::vector<GeographicMapCellPosition*>> cellPositionArray){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition getCellPositionAtXYNoThrow(int32_t x, int32_t y){
+    public: GeographicMapCellPosition* getCellPositionAtXY(int32_t x, int32_t y){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
+                    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: GeographicMapCellPosition* getCellPositionAtXYNoThrow(int32_t x, int32_t y){
+
+
+
+                            throw new RuntimeException();
                     
 }
 
@@ -150,101 +156,101 @@ class NullRaceTrackGeographicMap
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellType getCellTypeAtXY(int32_t x, int32_t y){
+    public: GeographicMapCellType* getCellTypeAtXY(int32_t x, int32_t y){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellType getCellTypeAt(GeographicMapCellPosition geographicMapCellPosition){
+    public: GeographicMapCellType* getCellTypeAt(GeographicMapCellPosition* geographicMapCellPosition){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: BasicGeographicMapCellPositionFactory getGeographicMapCellPositionFactory(){
+    public: BasicGeographicMapCellPositionFactory* getGeographicMapCellPositionFactory(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: GeographicMapCellPositionFactoryInterface getGeographicMapCellPositionFactoryInterface(){
+    public: GeographicMapCellPositionFactoryInterface* getGeographicMapCellPositionFactoryInterface(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: BasicColor getForegroundBasicColor(){
+    public: BasicColor* getForegroundBasicColor(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: BasicColor getBackgroundBasicColor(){
+    public: BasicColor* getBackgroundBasicColor(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: RaceTrackInfo getRaceTrackInfo(){
+    public: RaceTrackInfo* getRaceTrackInfo(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: void setRaceTrackInfo(RaceTrackInfo aRaceTrackInfo){
+    public: void setRaceTrackInfo(RaceTrackInfo* aRaceTrackInfo){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: RaceTrackData getRaceTrackData(){
+    public: RaceTrackData* getRaceTrackData(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: void setRaceTrackData(RaceTrackData raceTrackData){
+    public: void setRaceTrackData(RaceTrackData* raceTrackData){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

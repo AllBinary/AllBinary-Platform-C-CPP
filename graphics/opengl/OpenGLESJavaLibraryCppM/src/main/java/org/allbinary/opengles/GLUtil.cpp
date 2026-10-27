@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Math.h"
@@ -59,9 +65,9 @@ class GLUtil
             : public Object
          {
 
-    private: static GLUtil instance() { return GLUtil(); }
+    private: static GLUtil* instance() { static std::unique_ptr<GLUtil> value(new GLUtil()); return value.get(); }
 
-    public: static GLUtil getInstance(){
+    public: static GLUtil* getInstance(){
 
 
 
@@ -73,22 +79,22 @@ class GLUtil
 
     private: const int32_t BYTES_PER_FLOAT = 4;
 
-    public: const FloatBuffer NULL_FLOAT_BUFFER = ByteBuffer::allocateDirect(0).asFloatBuffer();
+    public: FloatBuffer* NULL_FLOAT_BUFFER = ByteBuffer::allocateDirect(0)->asFloatBuffer();
 
-    public: FloatBuffer makeFloatBuffer3(float p_a, float p_b, float p_c){
+    public: FloatBuffer* makeFloatBuffer3(float p_a, float p_b, float p_c){
 
-    ByteBuffer b = ByteBuffer::allocateDirect(3 *this->BYTES_PER_FLOAT);;
+    ByteBuffer* b = ByteBuffer::allocateDirect(3 *this->BYTES_PER_FLOAT);;
     
-b.order(ByteOrder::nativeOrder());
+b->order(ByteOrder::nativeOrder());
     
 
-    FloatBuffer buffer = b.asFloatBuffer();;
+    FloatBuffer* buffer = b->asFloatBuffer();;
     
-buffer.put(p_a);
+buffer->put(p_a);
     
-buffer.put(p_b);
+buffer->put(p_b);
     
-buffer.put(p_c);
+buffer->put(p_c);
     
 this->position(buffer, 0);
     
@@ -101,22 +107,22 @@ this->position(buffer, 0);
 }
 
 
-    public: FloatBuffer makeFloatBuffer4(float p_a, float p_b, float p_c, float p_d){
+    public: FloatBuffer* makeFloatBuffer4(float p_a, float p_b, float p_c, float p_d){
 
-    ByteBuffer b = ByteBuffer::allocateDirect(4 *this->BYTES_PER_FLOAT);;
+    ByteBuffer* b = ByteBuffer::allocateDirect(4 *this->BYTES_PER_FLOAT);;
     
-b.order(ByteOrder::nativeOrder());
+b->order(ByteOrder::nativeOrder());
     
 
-    FloatBuffer buffer = b.asFloatBuffer();;
+    FloatBuffer* buffer = b->asFloatBuffer();;
     
-buffer.put(p_a);
+buffer->put(p_a);
     
-buffer.put(p_b);
+buffer->put(p_b);
     
-buffer.put(p_c);
+buffer->put(p_c);
     
-buffer.put(p_d);
+buffer->put(p_d);
     
 this->position(buffer, 0);
     
@@ -129,29 +135,29 @@ this->position(buffer, 0);
 }
 
 
-    public: FloatBuffer makeFloatBuffer(ByteBuffer byteBuffer){
+    public: FloatBuffer* makeFloatBuffer(ByteBuffer* byteBuffer){
 
-    ByteBuffer b = ByteBuffer::allocateDirect(byteBuffer.limit() *this->BYTES_PER_FLOAT);;
+    ByteBuffer* b = ByteBuffer::allocateDirect(byteBuffer->limit() *this->BYTES_PER_FLOAT);;
     
-b.order(ByteOrder::nativeOrder());
-    
-
-    FloatBuffer buffer = b.asFloatBuffer();;
+b->order(ByteOrder::nativeOrder());
     
 
-    int32_t unsigned= 0;;
+    FloatBuffer* buffer = b->asFloatBuffer();;
+    
+
+    int32_t unsigned_= 0;;
     
 
     float v= 0.0;;
     
 
-        while(byteBuffer.hasRemaining())
+        while(byteBuffer->hasRemaining())
         {
-unsigned= (static_cast<int32_t>(byteBuffer.get()))&0xFF;
+unsigned_= (static_cast<int32_t>(byteBuffer->get()))&0xFF;
     
-v= (unsigned) /255;
+v= (unsigned_) /255;
     
-buffer.put(v);
+buffer->put(v);
     
 }
 
@@ -166,12 +172,12 @@ this->position(buffer, 0);
 }
 
 
-    public: Buffer position(Buffer buffer, int32_t newPosition){
+    public: Buffer* position(Buffer* buffer, int32_t newPosition){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return buffer.position(newPosition);;
+                        return buffer->position(newPosition);;
     
 }
 

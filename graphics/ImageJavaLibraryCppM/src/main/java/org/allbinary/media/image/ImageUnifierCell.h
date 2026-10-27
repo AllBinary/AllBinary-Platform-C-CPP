@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUNIFIERCELL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUNIFIERCELL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -48,19 +54,19 @@ class ImageUnifierCell
             : public Object
          {
 
-    private: Integer width;
+    private: int32_t width;
 
-    private: Integer height;
+    private: int32_t height;
 
-public: ImageUnifierCell(Integer width, Integer height);
+public: ImageUnifierCell(int32_t width, int32_t height);
 
-    public: Integer getWidth();
+    public: int32_t getWidth();
 
-    public: void setWidth(Integer width);
+    public: void setWidth(int32_t width);
 
-    public: Integer getHeight();
+    public: int32_t getHeight();
 
-    public: void setHeight(Integer height);
+    public: void setHeight(int32_t height);
 
 };
 

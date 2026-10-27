@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -59,14 +65,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentGatewayViewAbstract.h"
-#include "PaymentGatewayComponent.h"
+        #include "views/admin/payment/gateway/PaymentGatewayViewAbstract.h"
+#include "views/admin/payment/gateway/PaymentGatewayComponent.h"
 
 class GatewayView: public PaymentGatewayViewAbstract {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: GatewayView(TransformInfoInterface transformInfoInterface) : PaymentGatewayViewAbstract(transformInfoInterface){
+public: GatewayView(TransformInfoInterface* transformInfoInterface) : PaymentGatewayViewAbstract(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -76,14 +82,14 @@ public: GatewayView(TransformInfoInterface transformInfoInterface) : PaymentGate
 }
 
 
-    public: void getFormData(HttpServletRequest request){
+    public: void getFormData(HttpServletRequest* request){
 super.getFormData(request);
     
 
-                        if(StringValidationUtil::getInstance().isEmpty(this->getPaymentGatewayPrimaryKey().getName()))
+                        if(StringValidationUtil::getInstance()->isEmpty(this->getPaymentGatewayPrimaryKey()->getName()))
                         
                                     {
-                                    this->getPaymentGatewayPrimaryKey().setName(this->getWeblisketSession().getPaymentMethod());
+                                    this->getPaymentGatewayPrimaryKey()->setName(this->getWeblisketSession()->getPaymentMethod());
     
 
                                     }
@@ -97,23 +103,23 @@ super.getFormData(request);
 
         try {
             
-    PaymentGatewayInterface paymentGatewayInterface = PaymentGatewayEntityFactory::getInstance().getPaymentGatewayInterface(this->getPaymentGatewayPrimaryKey().getStoreName(), BasicPaymentTypeUtil::getInstance().get(this->getPaymentGatewayPrimaryKey().getName()));;
+    PaymentGatewayInterface* paymentGatewayInterface = PaymentGatewayEntityFactory::getInstance()->getPaymentGatewayInterface(this->getPaymentGatewayPrimaryKey()->getStoreName(), BasicPaymentTypeUtil::getInstance()->get(this->getPaymentGatewayPrimaryKey()->getName()));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PaymentGatewayComponent(this->getTransformInfoInterface(), paymentGatewayInterface).view();;
+                        return (new PaymentGatewayComponent(this->getTransformInfoInterface(), paymentGatewayInterface))->view();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "edit()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "edit()", &e);
     
 
                                     }

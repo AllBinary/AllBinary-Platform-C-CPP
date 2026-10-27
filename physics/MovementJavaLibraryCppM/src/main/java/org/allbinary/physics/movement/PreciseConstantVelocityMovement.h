@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_PRECISECONSTANTVELOCITYMOVEMENT_H
         #define ORG_ALLBINARY_PHYSICS_MOVEMENT_PRECISECONSTANTVELOCITYMOVEMENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
@@ -42,7 +48,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicConstantVelocityMovement.h"
+        #include "org/allbinary/physics/movement/BasicConstantVelocityMovement.h"
 
 class PreciseConstantVelocityMovement: public BasicConstantVelocityMovement {
 
@@ -52,15 +58,15 @@ class PreciseConstantVelocityMovement: public BasicConstantVelocityMovement {
 
     private: int32_t accumulatedZ= 0;
 
-public: PreciseConstantVelocityMovement(BasicDecimal basicDecimal, BasicVelocityProperties velocityProperties);
+public: PreciseConstantVelocityMovement(BasicDecimal* basicDecimal, BasicVelocityProperties* velocityProperties);
 
-    public: void init(BasicDecimal speedBasicDecimal, int32_t angle, int32_t otherAngle);
+    public: void init(BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle);
 
-    private: const int32_t factorValue = ScaleFactorFactory::getInstance().DEFAULT_SCALE_VALUE;
+    private: const int32_t factorValue = ScaleFactorFactory::getInstance()->DEFAULT_SCALE_VALUE;
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryGameLayer layer);
+    public: void process(AllBinaryGameLayer* layer);
 
 };
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -48,17 +54,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFile.h"
+        #include "org/allbinary/logic/io/file/AbFile.h"
 
 class FileWrapperUtil
             : public Object
          {
 
-    public: static std::vector<AbFile> wrapFiles(std::vector<Object*> files){
+    public: static std::vector<AbFile*> wrapFiles(std::vector<Object*> files){
 
         try {
             
-    std::vector<AbFile> abFileArray = std::vector<AbFile>(files.length);;
+    std::vector<AbFile*> abFileArray = std::vector<AbFile*>(files.length);;
     
 
 
@@ -67,7 +73,7 @@ class FileWrapperUtil
                         for (
     int32_t index = files.size() -1;index >= 0; index--)
         {
-abFileArray[index]= AbFile(files[index]);
+abFileArray[index]= new AbFile(dynamic_cast<File*>(files[index]));
     
 }
 
@@ -79,9 +85,9 @@ abFileArray[index]= AbFile(files[index]);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-PreLogUtil::putSE("Exception Wrapping Files", "FileWrapperUtil", "wrapFiles", e);
+PreLogUtil::putSE("Exception Wrapping Files", "FileWrapperUtil", "wrapFiles", &e);
     
 
 
@@ -94,20 +100,20 @@ PreLogUtil::putSE("Exception Wrapping Files", "FileWrapperUtil", "wrapFiles", e)
 }
 
 
-    public: static AbFile wrapFile(File file){
+    public: static AbFile* wrapFile(File* file){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFile(file);
+                        return new AbFile(file);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-PreLogUtil::putSE("Exception Wrapping File", "FileWrapperUtil", "wrapFile", e);
+PreLogUtil::putSE("Exception Wrapping File", "FileWrapperUtil", "wrapFile", &e);
     
 
 

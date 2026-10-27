@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -77,22 +83,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RaceTrackRoadsGeographicMapCellHistoryFactory.h"
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackRoadsGeographicMapCellHistoryFactory.h"
 
 class BasePathFindingInfoFactory
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void init(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, std::vector<std::vector<int32_t>> mapArray){
+    public: void init(BasicGeographicMap* geographicMapInterface, PathFindingInfo* pathFindingInfo, std::vector<std::vector<int32_t>> mapArray){
 
 //inner=true member= isStatic=
 class RaceTrackGeographicMapCellPositionFactoryInitVisitor
             : public Object
-        : public GeographicMapCellPositionFactoryInitVisitorInterface {
+        , public GeographicMapCellPositionFactoryInitVisitorInterface {
 
     private: int32_t startLineId;
 
@@ -100,23 +106,23 @@ class RaceTrackGeographicMapCellPositionFactoryInitVisitor
 
 public: RaceTrackGeographicMapCellPositionFactoryInitVisitor(){
 
-    GeographicMapCellTypeFactory raceTrackGeographicMapCellTypeFactory = geographicMapInterface.getGeographicMapCellTypeFactory();;
+    GeographicMapCellTypeFactory* raceTrackGeographicMapCellTypeFactory = geographicMapInterface->getGeographicMapCellTypeFactory();;
     
-this->startLineId= raceTrackGeographicMapCellTypeFactory.getStartType();
+this->startLineId= raceTrackGeographicMapCellTypeFactory->getStartType();
     
-this->finishLineId= raceTrackGeographicMapCellTypeFactory.getEndType();
+this->finishLineId= raceTrackGeographicMapCellTypeFactory->getEndType();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(AllBinaryTiledLayer tiledLayer, GeographicMapCellPosition cellPosition){
+    public: void visit(AllBinaryTiledLayer* tiledLayer, GeographicMapCellPosition* cellPosition){
 
-    int32_t row = cellPosition.getRow();;
+    int32_t row = cellPosition->getRow();;
     
 
-    int32_t column = cellPosition.getColumn();;
+    int32_t column = cellPosition->getColumn();;
     
 
         try {
@@ -124,7 +130,7 @@ this->finishLineId= raceTrackGeographicMapCellTypeFactory.getEndType();
     int32_t cellTypeId = mapArray[row][column];;
     
 
-    int32_t geographicCellType = geographicMapInterface.getCellTypeFromMapCellTypeInt(cellTypeId);;
+    int32_t geographicCellType = geographicMapInterface->getCellTypeFromMapCellTypeInt(cellTypeId);;
     
 
                         if(geographicCellType == this->startLineId)
@@ -143,7 +149,7 @@ this->finishLineId= raceTrackGeographicMapCellTypeFactory.getEndType();
                         if(geographicCellType == this->startLineId)
                         
                                     {
-                                    this->addEndPathFindingNode(pathFindingInfo, geographicMapInterface.getGeographicMapCellPositionFactoryInterface().getInstance(geographicMapInterface, cellPosition.getColumn(), cellPosition.getRow(), tiledLayer.getColumns(), tiledLayer.getRows(), tiledLayer.getCellWidth(), tiledLayer.getCellHeight()));
+                                    this->addEndPathFindingNode(pathFindingInfo, geographicMapInterface->getGeographicMapCellPositionFactoryInterface()->getInstance(geographicMapInterface, cellPosition->getColumn(), cellPosition->getRow(), tiledLayer->getColumns(), tiledLayer->getRows(), tiledLayer->getCellWidth(), tiledLayer->getCellHeight()));
     
 
                                     }
@@ -158,16 +164,16 @@ this->finishLineId= raceTrackGeographicMapCellTypeFactory.getEndType();
                                     }
                                 
 
-    GeographicMapCellTypeFactory raceTrackGeographicMapCellTypeFactory = geographicMapInterface.getGeographicMapCellTypeFactory();;
+    GeographicMapCellTypeFactory* raceTrackGeographicMapCellTypeFactory = geographicMapInterface->getGeographicMapCellTypeFactory();;
     
 
-    GeographicMapCellTypeFactory geographicMapCellTypeFactory = GeographicMapCellTypeFactory::getInstance();;
+    GeographicMapCellTypeFactory* geographicMapCellTypeFactory = GeographicMapCellTypeFactory::getInstance();;
     
 
-                        if(raceTrackGeographicMapCellTypeFactory.isPath(geographicMapCellTypeFactory.get(geographicCellType)))
+                        if(raceTrackGeographicMapCellTypeFactory->isPath(geographicMapCellTypeFactory->get(geographicCellType)))
                         
                                     {
-                                    RaceTrackRoadsGeographicMapCellHistoryFactory::getInstance().track(cellPosition);
+                                    RaceTrackRoadsGeographicMapCellHistoryFactory::getInstance()->track(cellPosition);
     
 
                                     }
@@ -178,12 +184,12 @@ this->finishLineId= raceTrackGeographicMapCellTypeFactory.getEndType();
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
-logUtil.put(StringMaker().append(commonSeps.BRACKET_OPEN).appendint(row).append(commonSeps.BRACKET_CLOSE).append(commonSeps.BRACKET_OPEN).appendint(column).append("] in [").appendint(mapArray.size()).append(commonSeps.BRACKET_CLOSE).append(commonSeps.BRACKET_OPEN).appendint(mapArray[0].size()).append(commonSeps.BRACKET_CLOSE).toString(), this, "visit", e);
+logUtil->put((new StringMaker())->append(commonSeps->BRACKET_OPEN)->appendint(row)->append(commonSeps->BRACKET_CLOSE)->append(commonSeps->BRACKET_OPEN)->appendint(column)->append("] in [")->appendint(mapArray.size())->append(commonSeps->BRACKET_CLOSE)->append(commonSeps->BRACKET_OPEN)->appendint(mapArray[0].size())->append(commonSeps->BRACKET_CLOSE)->toString(), this, "visit", &e);
     
 
 
@@ -198,34 +204,34 @@ logUtil.put(StringMaker().append(commonSeps.BRACKET_OPEN).appendint(row).append(
 };
 
             
-geographicMapInterface.getGeographicMapCellPositionFactory().visit(RaceTrackGeographicMapCellPositionFactoryInitVisitor());
+geographicMapInterface->getGeographicMapCellPositionFactory()->visit(new RaceTrackGeographicMapCellPositionFactoryInitVisitor());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: void addStartPathFindingNode(PathFindingInfo pathFindingInfo, GeographicMapCellPosition startGeographicMapCellPosition){
-pathFindingInfo.addStartPathFindingNode(PathFindingNode(NullUtil::getInstance().NULL_OBJECT, startGeographicMapCellPosition));
+    private: void addStartPathFindingNode(PathFindingInfo* pathFindingInfo, GeographicMapCellPosition* startGeographicMapCellPosition){
+pathFindingInfo->addStartPathFindingNode(new PathFindingNode(NullUtil::getInstance()->NULL_OBJECT, startGeographicMapCellPosition));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: void addEndPathFindingNode(PathFindingInfo pathFindingInfo, GeographicMapCellPosition endGeographicMapCellPosition){
-pathFindingInfo.addEndPathFindingNode(PathFindingNode(NullUtil::getInstance().NULL_OBJECT, endGeographicMapCellPosition));
+    private: void addEndPathFindingNode(PathFindingInfo* pathFindingInfo, GeographicMapCellPosition* endGeographicMapCellPosition){
+pathFindingInfo->addEndPathFindingNode(new PathFindingNode(NullUtil::getInstance()->NULL_OBJECT, endGeographicMapCellPosition));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: PathFindingInfo getInstancePathFindingInfo(BasicGeographicMap geographicMapInterface, std::vector<std::vector<int32_t>> graphArray){
+    public: PathFindingInfo* getInstancePathFindingInfo(BasicGeographicMap* geographicMapInterface, std::vector<std::vector<int32_t>> graphArray){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -56,12 +62,12 @@ class CssPropertyValidationFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static ValidationInterface getInstance(Node node){
+    public: static ValidationInterface* getInstance(Node* node){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FontFamilyValidation(node);
+                        return dynamic_cast<ValidationInterface*>(new FontFamilyValidation(node));
     
 }
 

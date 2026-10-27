@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/io/FileNotFoundException.h>
 
       
@@ -67,27 +73,27 @@ class AbFileOutputStream: public OutputStream {
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public: static AbFileOutputStream createFromAbFile(AbFile file);
+    public: static AbFileOutputStream* createFromAbFile(AbFile* file);
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public: static AbFileOutputStream createFromAbFileAppend(AbFile file, bool append);
+    public: static AbFileOutputStream* createFromAbFileAppend(AbFile* file, bool append);
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public: static AbFileOutputStream createFromFilePath(std::string name);
+    public: static AbFileOutputStream* createFromFilePath(std::string name);
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public: static AbFileOutputStream createFromFilePathAppend(std::string name, bool append);
+    public: static AbFileOutputStream* createFromFilePathAppend(std::string name, bool append);
 
-    private: FileOutputStream fileOutputStream;
+    private: FileOutputStream* fileOutputStream;
 
-public: AbFileOutputStream(FileOutputStream fileOutputStream);
+public: AbFileOutputStream(FileOutputStream* fileOutputStream);
 
     public: void close();
 
-    public: FileChannel getChannel();
+    public: FileChannel* getChannel();
 
                 //@Throws(IOException.constructor)
             

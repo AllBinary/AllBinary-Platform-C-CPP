@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -74,18 +80,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DamageFloaters.h"
+        #include "org/allbinary/game/combat/damage/DamageFloaters.h"
 
 class PtsDamageFloaters: public DamageFloaters {
 
-    private: static const BasicColorArrayIndexer basicColorArrayIndexer = BasicColorArrayIndexer(
+    private: static BasicColorArrayIndexer* basicColorArrayIndexer() { static std::unique_ptr<BasicColorArrayIndexer> value(new BasicColorArrayIndexer(
                                                 {
-                                                    BasicColorFactory::getInstance().WHITE,BasicColorFactory::getInstance().RED,BasicColorFactory::getInstance().YELLOW,BasicColorFactory::getInstance().BLUE
-                                                });
+                                                    BasicColorFactory::getInstance()->WHITE,BasicColorFactory::getInstance()->RED,BasicColorFactory::getInstance()->YELLOW,BasicColorFactory::getInstance()->BLUE
+                                                })); return value.get(); }
 
-    protected: const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
+    protected: BasicColorSetUtil* basicSetColorUtil = BasicColorSetUtil::getInstance();
 
-    private: AllBinaryLayer layerInterface;
+    private: AllBinaryLayer* layerInterface;
 
     private: std::vector<int32_t> lastDamage = std::vector<int32_t>(5);
 
@@ -93,17 +99,17 @@ class PtsDamageFloaters: public DamageFloaters {
 
     private: std::vector<int32_t> lastDamageStringSizeArray = std::vector<int32_t>(5);
 
-    private: CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstance(5);
+    private: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::createInstance(5);
 
-    private: PrimitiveLongUtil primitiveLongUtil;
+    private: PrimitiveLongUtil* primitiveLongUtil;
 
-public: PtsDamageFloaters(AllBinaryLayer layerInterface){
+public: PtsDamageFloaters(AllBinaryLayer* layerInterface){
 this->primitiveLongUtil= PrimitiveLongUtil::createPowerOfTen(100000);
     
 this->layerInterface= layerInterface;
     
 
-    std::vector<char> CHAR_ARRAY = CharArrayFactory::getInstance().getZeroCharArray();;
+    std::vector<char> CHAR_ARRAY = CharArrayFactory::getInstance()->getZeroCharArray();;
     
 
 
@@ -121,30 +127,30 @@ this->lastDamageString[index]= CHAR_ARRAY;
 
     public: void add(int32_t damage){
 
-    int32_t index = this->circularIndexUtil.getIndex();;
+    int32_t index = this->circularIndexUtil->getIndex();;
     
 this->lastDamage[index]= damage;
     
-this->lastDamageString[index]= this->primitiveLongUtil.getCharArray(this->lastDamage[index]);
+this->lastDamageString[index]= this->primitiveLongUtil->getCharArray(this->lastDamage[index]);
     
-this->lastDamageStringSizeArray[index]= this->primitiveLongUtil.getCurrentTotalDigits();
+this->lastDamageStringSizeArray[index]= this->primitiveLongUtil->getCurrentTotalDigits();
     
-this->circularIndexUtil.next();
+this->circularIndexUtil->next();
     
 }
 
 
-    private: const MyRandomFactory myRandomFactory = MyRandomFactory::getInstance();
+    private: MyRandomFactory* myRandomFactory = MyRandomFactory::getInstance();
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 
-    ViewPositionBase viewPosition = this->layerInterface.getViewPosition();;
+    ViewPositionBase* viewPosition = this->layerInterface->getViewPosition();;
     
 
-    int32_t x = viewPosition.getX();;
+    int32_t x = viewPosition->getX();;
     
 
-    int32_t y = viewPosition.getY();;
+    int32_t y = viewPosition->getY();;
     
 
 
@@ -160,11 +166,11 @@ this->circularIndexUtil.next();
                                     
     int32_t delta = 10 *(index +2);;
     
-this->basicSetColorUtil.setBasicColorP(graphics, PtsDamageFloaters::basicColorArrayIndexer.get());
+this->basicSetColorUtil->setBasicColorP(graphics, PtsDamageFloaters::basicColorArrayIndexer()->get());
     
-graphics.drawChars(this->lastDamageString[index], 0, this->lastDamageStringSizeArray[index], x -this->myRandomFactory.getNextInt(delta), y -delta, 0);
+graphics->drawChars(this->lastDamageString[index], 0, this->lastDamageStringSizeArray[index], x -this->myRandomFactory->getNextInt(delta), y -delta, 0);
     
-PtsDamageFloaters::basicColorArrayIndexer.next();
+PtsDamageFloaters::basicColorArrayIndexer()->next();
     
 
                                     }

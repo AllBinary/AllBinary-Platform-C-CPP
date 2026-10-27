@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -82,30 +88,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProcessBuilder.h"
-#include "Process.h"
+        #include "org/allbinary/java/runtime/process/git/ProcessBuilder.h"
+#include "org/allbinary/java/runtime/process/git/Process.h"
 //Do not use this instead just skip target, build, Application paths.
 class GitProcessHelper
             : public Object
          {
 
-    private: static GitProcessHelper instance() { return GitProcessHelper(); }
+    private: static GitProcessHelper* instance() { static std::unique_ptr<GitProcessHelper> value(new GitProcessHelper()); return value.get(); }
 
-    public: static GitProcessHelper getInstance();
+    public: static GitProcessHelper* getInstance();
 
-    private: const TrackedStrings trackedStrings = TrackedStrings::getInstance();
+    private: TrackedStrings* trackedStrings = TrackedStrings::getInstance();
 
 private: GitProcessHelper();
 
                 //@Throws(IOException.constructor, InterruptedException.constructor)
             
-    public: List<std::string> trackedFiles(std::string rootAsString, std::string pathspec);
+    public: List<std::string>* trackedFiles(std::string rootAsString, std::string pathspec);
 
                 //@Throws(IOException.constructor, InterruptedException.constructor)
             
-    public: List<std::string> trackedFiles(std::string rootAsString, std::string pathspec, std::string suffix);
+    public: List<std::string>* trackedFiles(std::string rootAsString, std::string pathspec, std::string suffix);
 
-    public: bool isTracked(AbFile file);
+    public: bool isTracked(AbFile* file);
 
 };
 

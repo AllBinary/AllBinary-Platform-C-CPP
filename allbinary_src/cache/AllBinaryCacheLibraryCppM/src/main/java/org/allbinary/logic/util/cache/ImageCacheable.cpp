@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -46,7 +52,7 @@ class ImageCacheable
             : public Object
          {
 
-    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
 
 public: ImageCacheable(std::string name, Object* anyType){
 }

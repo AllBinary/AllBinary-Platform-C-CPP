@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,11 +42,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CollidableBaseBehavior.h"
+        #include "org/allbinary/game/collision/CollidableBaseBehavior.h"
 
 class CollidableInterfaceCompositeInterface {
 
-    CollidableBaseBehavior getCollidableInferface()
+    public: virtual CollidableBaseBehavior* getCollidableInferface() = 0;
 
 };
 

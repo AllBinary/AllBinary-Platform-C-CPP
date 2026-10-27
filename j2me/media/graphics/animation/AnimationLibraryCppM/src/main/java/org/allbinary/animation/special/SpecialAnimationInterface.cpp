@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/animation/IndexedAnimationInterface.h>
 
       
@@ -42,9 +48,9 @@
         
 class SpecialAnimationInterface: public IndexedAnimationInterface {
 
-    void setLastFrame()
+    public: virtual void setLastFrame() = 0;
 
-    bool isComplete()
+    public: virtual bool isComplete() = 0;
 
 };
 

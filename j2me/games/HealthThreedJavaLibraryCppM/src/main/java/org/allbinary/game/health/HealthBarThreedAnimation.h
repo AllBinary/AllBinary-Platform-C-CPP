@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHBARTHREEDANIMATION_H
         #define ORG_ALLBINARY_GAME_HEALTH_HEALTHBARTHREEDANIMATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -77,15 +83,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HealthBarAnimation.h"
+        #include "org/allbinary/game/health/HealthBarAnimation.h"
 
 class HealthBarThreedAnimation: public HealthBarAnimation {
 
-    private: Rectangle rectangle;
+    private: Rectangle* rectangle;
 
-    private: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
+    private: BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();
 
-public: HealthBarThreedAnimation(AllBinaryLayer layerInterface, int32_t location);
+public: HealthBarThreedAnimation(AllBinaryLayer* layerInterface, int32_t location);
 
     private: void updateColor();
 
@@ -93,9 +99,9 @@ public: HealthBarThreedAnimation(AllBinaryLayer layerInterface, int32_t location
 
     public: void onHealthChange(int32_t newX2);
 
-    private: const Object3dProcessor object3dProcessor = Object3dProcessorUtil::getInstance().getInstanceObject3dProcessor();
+    private: Object3dProcessor* object3dProcessor = Object3dProcessorUtil::getInstance()->getInstanceObject3dProcessor();
 
-    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
+    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z);
 
 };
 

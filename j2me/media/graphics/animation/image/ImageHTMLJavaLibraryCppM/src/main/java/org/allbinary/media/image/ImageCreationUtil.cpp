@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -51,9 +57,9 @@ class ImageCreationUtil
             : public Object
          {
 
-    private: static ImageCreationUtil instance() { return ImageCreationUtil(); }
+    private: static ImageCreationUtil* instance() { static std::unique_ptr<ImageCreationUtil> value(new ImageCreationUtil()); return value.get(); }
 
-    public: static ImageCreationUtil getInstance(){
+    public: static ImageCreationUtil* getInstance(){
 
 
 
@@ -69,9 +75,9 @@ private: ImageCreationUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImageWH(int32_t width, int32_t height){
+    public: Image* createImageWH(int32_t width, int32_t height){
 
-    Image image = GameFeatureImageCacheFactory::getInstance().get(this->constructor.name.toString(), width, height);;
+    Image* image = GameFeatureImageCacheFactory::getInstance()->get(this->getClass()->getName(), width, height);;
     
 
 
@@ -84,9 +90,9 @@ private: ImageCreationUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImage(int32_t width, int32_t height, float maxScaleX, float maxScaleY){
+    public: Image* createImage(int32_t width, int32_t height, float maxScaleX, float maxScaleY){
 
-    Image image = GameFeatureImageCacheFactory::getInstance().get(this->constructor.name.toString(), static_cast<int32_t>((width *maxScaleX)) +1, static_cast<int32_t>((height *maxScaleY)) +1);;
+    Image* image = GameFeatureImageCacheFactory::getInstance()->get(this->getClass()->getName(), static_cast<int32_t>((width *maxScaleX)) +1, static_cast<int32_t>((height *maxScaleY)) +1);;
     
 
 

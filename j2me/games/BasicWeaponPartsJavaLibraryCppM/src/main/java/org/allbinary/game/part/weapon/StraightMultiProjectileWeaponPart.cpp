@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/Animation.h>
@@ -68,25 +74,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicWeaponPart.h"
+        #include "org/allbinary/game/part/weapon/BasicWeaponPart.h"
 
 class StraightMultiProjectileWeaponPart: public BasicWeaponPart {
 
-    public: static StraightMultiProjectileWeaponPart createStraightMultiProjectileWeaponPart(Animation animationInterface, WeaponLayerCircularPool weaponLayerCircularStaticPool){
+    public: static StraightMultiProjectileWeaponPart* createStraightMultiProjectileWeaponPart(Animation* animationInterface, WeaponLayerCircularPool* weaponLayerCircularStaticPool){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StraightMultiProjectileWeaponPart(animationInterface, AllBinaryLayer::NULL_ALLBINARY_LAYER, weaponLayerCircularStaticPool, 2, WeaponProperties::NULL_WEAPON_PROPERTIES, NoScoreable::getInstance(), RelativeRelationship::NULL_RELATIVE_RELATIONSHIP);
+                        return new StraightMultiProjectileWeaponPart(animationInterface, AllBinaryLayer::NULL_ALLBINARY_LAYER, weaponLayerCircularStaticPool, 2, WeaponProperties::NULL_WEAPON_PROPERTIES, NoScoreable::getInstance(), RelativeRelationship::NULL_RELATIVE_RELATIONSHIP);
     
 }
 
 
-    private: WeaponLayerCircularPool weaponLayerCircularStaticPool;
+    private: WeaponLayerCircularPool* weaponLayerCircularStaticPool;
 
     private: int32_t total;
 
-public: StraightMultiProjectileWeaponPart(Animation animationInterface, AllBinaryLayer sourceLayerInterface, WeaponLayerCircularPool weaponLayerCircularStaticPool, int32_t total, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface, RelativeRelationship relativeRelationship) : BasicWeaponPart(animationInterface, sourceLayerInterface, weaponProperties, scoreableInterface, relativeRelationship){
+public: StraightMultiProjectileWeaponPart(Animation* animationInterface, AllBinaryLayer* sourceLayerInterface, WeaponLayerCircularPool* weaponLayerCircularStaticPool, int32_t total, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship) : BasicWeaponPart(animationInterface, sourceLayerInterface, weaponProperties, scoreableInterface, relativeRelationship){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -100,16 +106,16 @@ this->weaponLayerCircularStaticPool= weaponLayerCircularStaticPool;
 }
 
 
-    private: const NoDecimalTrigTable noDecimalTrigTable = NoDecimalTrigTable::getInstance();
+    private: NoDecimalTrigTable* noDecimalTrigTable = NoDecimalTrigTable::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void processScore(AllBinaryLayerManager allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface){
+    public: void processScore(AllBinaryLayerManager* allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface){
 
-    AllBinaryLayer sourceLayerInterface = this->getOwnerLayerInterface();;
+    AllBinaryLayer* sourceLayerInterface = this->getOwnerLayerInterface();;
     
 
-    int32_t reducedWidth = (sourceLayerInterface.getWidth() *8 /10);;
+    int32_t reducedWidth = (sourceLayerInterface->getWidth() *8 /10);;
     
 
     int32_t halfWidth = (reducedWidth>>1);;
@@ -133,7 +139,7 @@ this->weaponLayerCircularStaticPool= weaponLayerCircularStaticPool;
     int32_t beamY= 0;;
     
 
-    WeaponLayer weaponLayer;;
+    WeaponLayer* weaponLayer;;
     
 
     int32_t increment = reducedWidth /(this->total -1);;
@@ -148,17 +154,17 @@ this->weaponLayerCircularStaticPool= weaponLayerCircularStaticPool;
                         for (
     int32_t index = 0;index < this->total; index++)
         {
-sine= (next *this->noDecimalTrigTable.sin(static_cast<int32_t>(angle)));
+sine= (next *this->noDecimalTrigTable->sin(static_cast<int32_t>(angle)));
     
-beamX= static_cast<int32_t>((sine /this->noDecimalTrigTable.SCALE));
+beamX= static_cast<int32_t>((sine /this->noDecimalTrigTable->SCALE));
     
-cosine= (next *this->noDecimalTrigTable.cos(static_cast<int32_t>(angle)));
+cosine= (next *this->noDecimalTrigTable->cos(static_cast<int32_t>(angle)));
     
-beamY=  -static_cast<int32_t>((cosine /this->noDecimalTrigTable.SCALE));
+beamY=  -static_cast<int32_t>((cosine /this->noDecimalTrigTable->SCALE));
     
-weaponLayer= this->weaponLayerCircularStaticPool.getInstanceWeaponLayer(sourceLayerInterface, x +beamX, y +beamY, 0, static_cast<int32_t>(angle), static_cast<int32_t>(otherAngle), weaponProperties, scoreableInterface);
+weaponLayer= this->weaponLayerCircularStaticPool->getInstanceWeaponLayer(sourceLayerInterface, x +beamX, y +beamY, 0, static_cast<int32_t>(angle), static_cast<int32_t>(otherAngle), weaponProperties, scoreableInterface);
     
-allbinaryLayerManager.append(weaponLayer);
+allbinaryLayerManager->append(weaponLayer);
     
 next += increment;
     

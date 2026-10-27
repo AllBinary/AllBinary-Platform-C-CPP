@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -47,17 +53,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DemoCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/DemoCanvas.h"
 
 class DemoGameStartupRunnable: public ABRunnable {
 
-    public: static const int32_t TYPE = 4;
+    public: static inline const int32_t TYPE = 4;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: DemoCanvas demoCanvas;
+    private: DemoCanvas* demoCanvas;
 
-public: DemoGameStartupRunnable(DemoCanvas demoCanvas){
+public: DemoGameStartupRunnable(DemoCanvas* demoCanvas){
 this->demoCanvas= demoCanvas;
     
 }
@@ -68,24 +74,24 @@ this->demoCanvas= demoCanvas;
         try {
             this->setRunning(true);
     
-this->demoCanvas.stopGameDemo();
+this->demoCanvas->stopGameDemo();
     
-this->demoCanvas.create();
+this->demoCanvas->create();
     
-this->demoCanvas.start();
+this->demoCanvas->start();
     
 this->setRunning(false);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 this->setRunning(false);
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
     
 }
 

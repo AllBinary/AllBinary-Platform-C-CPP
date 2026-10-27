@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/analog/AnalogLocationInputFactory.h>
@@ -54,9 +60,9 @@ class LocalPlayerInputIdFactory
             : public Object
          {
 
-    private: static LocalPlayerInputIdFactory instance() { return LocalPlayerInputIdFactory(); }
+    private: static LocalPlayerInputIdFactory* instance() { static std::unique_ptr<LocalPlayerInputIdFactory> value(new LocalPlayerInputIdFactory()); return value.get(); }
 
-    public: static LocalPlayerInputIdFactory getInstance(){
+    public: static LocalPlayerInputIdFactory* getInstance(){
 
 
 
@@ -66,7 +72,7 @@ class LocalPlayerInputIdFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     public: const int32_t MAX_NUMBER_OF_PLAYERS = 6;
 
@@ -170,18 +176,18 @@ index= this->totalDevicesMapped;
                                     }
                                 
                         else {
-                            this->logUtil.putF(StringMaker().append("Added DeviceId: ").appendint(deviceId).append(" beyond fast Id list").toString(), this, "getPlayerForDevice");
+                            this->logUtil->putF((new StringMaker())->append("Added DeviceId: ")->appendint(deviceId)->append(" beyond fast Id list")->toString(), this, "getPlayerForDevice");
     
 
                         }
                             
 this->playerIdToDeviceId[index]= deviceId;
     
-AnalogLocationInputFactory::getInstance().addPlayer(this->totalDevicesMapped);
+AnalogLocationInputFactory::getInstance()->addPlayer(this->totalDevicesMapped);
     
 this->totalDevicesMapped++;
     
-this->logUtil.putF(StringMaker().append("Added DeviceId: ").appendint(deviceId).append(" at: ").appendint(index).append(" Total: ").appendint(this->totalDevicesMapped).toString(), this, "getPlayerForDevice");
+this->logUtil->putF((new StringMaker())->append("Added DeviceId: ")->appendint(deviceId)->append(" at: ")->appendint(index)->append(" Total: ")->appendint(this->totalDevicesMapped)->toString(), this, "getPlayerForDevice");
     
 
 
@@ -234,7 +240,7 @@ this->logUtil.putF(StringMaker().append("Added DeviceId: ").appendint(deviceId).
 
 
     public: void setPlayerInPlay(int32_t playerInputId){
-this->logUtil.putF(StringMaker().append("Setting PlayerInPlay with playerInputId: ").appendint(playerInputId).toString(), this, "setPlayerInPlay");
+this->logUtil->putF((new StringMaker())->append("Setting PlayerInPlay with playerInputId: ")->appendint(playerInputId)->toString(), this, "setPlayerInPlay");
     
 this->playersInPlay[playerInputId]= true;
     
@@ -242,7 +248,7 @@ this->playersInPlay[playerInputId]= true;
 
 
     public: void setPlayerOutOfPlay(int32_t playerInputId){
-this->logUtil.putF(StringMaker().append("Setting PlayerOutOfPlay with playerInputId: ").appendint(playerInputId).toString(), this, "setPlayerOutOfPlay");
+this->logUtil->putF((new StringMaker())->append("Setting PlayerOutOfPlay with playerInputId: ")->appendint(playerInputId)->toString(), this, "setPlayerOutOfPlay");
     
 this->playersInPlay[playerInputId]= false;
     

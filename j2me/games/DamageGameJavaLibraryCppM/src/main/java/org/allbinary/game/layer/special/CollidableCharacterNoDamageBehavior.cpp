@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/collision/CollidableInterfaceCompositeInterface.h>
@@ -56,8 +62,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CollidableDestroyableDamageableBehavior.h"
-#include "CollidableDestroyableDamageableLayer.h"
+        #include "org/allbinary/game/layer/special/CollidableDestroyableDamageableBehavior.h"
+#include "org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h"
 
 class CollidableCharacterNoDamageBehavior: public CollidableDestroyableDamageableBehavior {
 
@@ -73,21 +79,21 @@ public: CollidableCharacterNoDamageBehavior(bool collidable) : CollidableDestroy
 
                 //@Throws(Exception.constructor)
             
-    public: void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface){
+    public: void collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface){
 
-    CollisionTypeFactory collisionTypeFactory = CollisionTypeFactory::getInstance();;
+    CollisionTypeFactory* collisionTypeFactory = CollisionTypeFactory::getInstance();;
     
 
-    CollisionType collisionType = collidableInterfaceCompositeInterface.getCollidableInferface().getCollisionTypeWith(ownerLayer);;
+    CollisionType* collisionType = collidableInterfaceCompositeInterface->getCollidableInferface()->getCollisionTypeWith(ownerLayer);;
     
 
-                        if(collisionType == collisionTypeFactory.PICKUP)
+                        if(collisionType == collisionTypeFactory->PICKUP)
                         
                                     {
                                     
-    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = ownerLayer;;
+    CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer = dynamic_cast<CollidableDestroyableDamageableLayer*>(ownerLayer);;
     
-collidableDestroyableDamageableLayer.getPickupBehavior().doPickupLayer(collidableInterfaceCompositeInterface);
+collidableDestroyableDamageableLayer->getPickupBehavior()->doPickupLayer(dynamic_cast<PickedUpLayerInterface*>(collidableInterfaceCompositeInterface));
     
 
                                     }
@@ -101,7 +107,7 @@ collidableDestroyableDamageableLayer.getPickupBehavior().doPickupLayer(collidabl
 
                 //@Throws(Exception.constructor)
             
-    public: void collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface){
+    public: void collideInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface){
 ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
     
 }

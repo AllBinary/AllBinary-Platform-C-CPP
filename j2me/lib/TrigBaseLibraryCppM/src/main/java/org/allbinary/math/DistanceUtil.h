@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MATH_DISTANCEUTIL_H
         #define ORG_ALLBINARY_MATH_DISTANCEUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/math/MathUtil.h>
@@ -49,11 +55,11 @@ class DistanceUtil
             : public Object
          {
 
-    private: static DistanceUtil instance() { return DistanceUtil(); }
+    private: static DistanceUtil* instance() { static std::unique_ptr<DistanceUtil> value(new DistanceUtil()); return value.get(); }
 
-    public: static DistanceUtil getInstance();
+    public: static DistanceUtil* getInstance();
 
-    private: const MathUtil mathUtil = MathUtil::getInstance();
+    private: MathUtil* mathUtil = MathUtil::getInstance();
 
     public: int32_t getDistance(int32_t x1, int32_t y1, int32_t x2, int32_t y2);
 

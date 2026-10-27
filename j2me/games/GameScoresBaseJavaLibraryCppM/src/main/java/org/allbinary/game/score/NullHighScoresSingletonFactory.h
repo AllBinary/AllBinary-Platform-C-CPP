@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_NULLHIGHSCORESSINGLETONFACTORY_H
         #define ORG_ALLBINARY_GAME_SCORE_NULLHIGHSCORESSINGLETONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/string/CommonStrings.h>
@@ -44,15 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HighScores.h"
+        #include "org/allbinary/game/score/HighScores.h"
 
 class NullHighScoresSingletonFactory
             : public Object
          {
 
-    private: static const HighScores SINGLETON = HighScores(CommonStrings::getInstance().LOADING, "High Scores Not Loaded", CommonStrings::getInstance().PERIODS);
+    private: static HighScores* SINGLETON() { static std::unique_ptr<HighScores> value(new HighScores(CommonStrings::getInstance()->LOADING, "High Scores Not Loaded", CommonStrings::getInstance()->PERIODS)); return value.get(); }
 
-    public: static HighScores getInstance();
+    public: static HighScores* getInstance();
 
 };
 

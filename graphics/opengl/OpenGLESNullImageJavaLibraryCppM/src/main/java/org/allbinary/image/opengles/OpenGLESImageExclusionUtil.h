@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEEXCLUSIONUTIL_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEEXCLUSIONUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -55,13 +61,13 @@ class OpenGLESImageExclusionUtil
             : public Object
          {
 
-    private: static OpenGLESImageExclusionUtil instance() { return OpenGLESImageExclusionUtil(); }
+    private: static OpenGLESImageExclusionUtil* instance() { static std::unique_ptr<OpenGLESImageExclusionUtil> value(new OpenGLESImageExclusionUtil()); return value.get(); }
 
-    public: static OpenGLESImageExclusionUtil getInstance();
+    public: static OpenGLESImageExclusionUtil* getInstance();
 
-    public: const BasicArrayList list = BasicArrayListD();
+    public: BasicArrayList* list = new BasicArrayListD();
 
-    public: bool isCustomScaling(Image image);
+    public: bool isCustomScaling(Image* image);
 
 };
 

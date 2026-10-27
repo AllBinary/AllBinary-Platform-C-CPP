@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_STOREFRONT_STATISTICS_STOREFRONTSTATISTICSCOMPONENT_H
         #define VIEWS_ADMIN_STOREFRONT_STATISTICS_STOREFRONTSTATISTICSCOMPONENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>
@@ -68,13 +74,13 @@
         
 class StoreFrontStatisticsComponent: public HttpStoreComponentView {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: StoreFrontInterface newStoreFrontInterface;
+    protected: StoreFrontInterface* newStoreFrontInterface;
 
-    private: DomNodeInterface domNodeInterface;
+    private: DomNodeInterface* domNodeInterface;
 
-public: StoreFrontStatisticsComponent(TransformInfoInterface transformInfoInterface);
+public: StoreFrontStatisticsComponent(TransformInfoInterface* transformInfoInterface);
 
     public: void addDomNodeInterfaces();
 

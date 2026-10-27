@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -72,9 +78,9 @@ class TransformGeneratorUtil
             : public Object
          {
 
-    private: static TransformGeneratorUtil instance() { return TransformGeneratorUtil(); }
+    private: static TransformGeneratorUtil* instance() { static std::unique_ptr<TransformGeneratorUtil> value(new TransformGeneratorUtil()); return value.get(); }
 
-    public: static TransformGeneratorUtil getInstance(){
+    public: static TransformGeneratorUtil* getInstance(){
 
 
 
@@ -84,7 +90,7 @@ class TransformGeneratorUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: TransformGeneratorUtil(){
 }
@@ -92,56 +98,56 @@ private: TransformGeneratorUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: void generate(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, TransformInfoInterface ownerTransformInfoInterface){
+    public: void generate(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface, TransformInfoInterface* ownerTransformInfoInterface){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Generating View: " +transformInfoInterface.getName(), this, "generate()");
+                                    this->logUtil->putF("Generating View: " +transformInfoInterface->getName(), this, "generate()");
     
 
                                     }
                                 
 
-    TransformInterface componentInterface = TransformFactory::getInstance().getInstance(abeClientInformation, transformInfoInterface.getName(), ownerTransformInfoInterface);;
+    TransformInterface* componentInterface = TransformFactory::getInstance()->getInstance(abeClientInformation, transformInfoInterface->getName(), ownerTransformInfoInterface);;
     
 
-    std::string result = componentInterface.view();;
+    std::string result = componentInterface->view();;
     
 
-    TransformInfoHttpInterface httpTransformInfoInterface = componentInterface.getTransformInfoInterface();;
+    TransformInfoHttpInterface* httpTransformInfoInterface = dynamic_cast<TransformInfoHttpInterface*>(componentInterface->getTransformInfoInterface());;
     
 
-    InputOutputTypeData inputOutputTypeData = InputOutputTypeData::getInstance();;
+    InputOutputTypeData* inputOutputTypeData = InputOutputTypeData::getInstance();;
     
 
-                        if(result.indexOf("<HTML>") >= 0)
+                        if(JavaString::indexOf(result, "<HTML>") >= 0)
                         
                                     {
-                                    httpTransformInfoInterface.getPropertiesHashMap().put(inputOutputTypeData.NAME, inputOutputTypeData.DEFAULT);
+                                    httpTransformInfoInterface->getPropertiesHashMap()->put(inputOutputTypeData->NAME, inputOutputTypeData->DEFAULT);
     
 
                                     }
                                 
                         else {
-                            httpTransformInfoInterface.getPropertiesHashMap().put(inputOutputTypeData.NAME, inputOutputTypeData.DEFAULT_FRAGMENT);
+                            httpTransformInfoInterface->getPropertiesHashMap()->put(inputOutputTypeData->NAME, inputOutputTypeData->DEFAULT_FRAGMENT);
     
 
                         }
                             
-StoreFileGenerator(componentInterface.getTransformInfoInterface()).process(result);
+(new StoreFileGenerator(componentInterface->getTransformInfoInterface()))->process(result);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate a view", this, "generate()", e);
+                                    this->logUtil->put("Failed to generate a view", this, "generate()", &e);
     
 
                                     }
@@ -158,8 +164,8 @@ StoreFileGenerator(componentInterface.getTransformInfoInterface()).process(resul
 
                 //@Throws(Exception.constructor)
             
-    public: void generate(AbeClientInformationInterface abeClientInformation, TransformInfoDomNode transformInfoDomNode, TransformInfoInterface ownerTransformInfoInterface){
-this->generate(abeClientInformation, transformInfoDomNode.getTransformInfoInterface(), ownerTransformInfoInterface);
+    public: void generate(AbeClientInformationInterface* abeClientInformation, TransformInfoDomNode* transformInfoDomNode, TransformInfoInterface* ownerTransformInfoInterface){
+this->generate(abeClientInformation, transformInfoDomNode->getTransformInfoInterface(), ownerTransformInfoInterface);
     
 }
 

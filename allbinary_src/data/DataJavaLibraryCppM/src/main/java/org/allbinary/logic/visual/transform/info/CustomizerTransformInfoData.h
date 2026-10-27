@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_CUSTOMIZERTRANSFORMINFODATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_CUSTOMIZERTRANSFORMINFODATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,7 +52,7 @@ class CustomizerTransformInfoData
             : public Object
          {
 
-    public: static const std::string NAME = "CUSTOMIZER_TRANSFORM_INFO_NAME";
+    public: static inline const std::string NAME = "CUSTOMIZER_TRANSFORM_INFO_NAME";
 
 private: CustomizerTransformInfoData();
 

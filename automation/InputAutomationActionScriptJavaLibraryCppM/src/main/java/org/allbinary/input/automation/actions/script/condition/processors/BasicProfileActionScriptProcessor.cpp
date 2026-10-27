@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/awt/event/ActionEvent.h>
@@ -56,12 +62,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProfileActionScriptProcessorInterface.h"
-#include "GenericProfileActionScriptProcessorData.h"
+        #include "org/allbinary/input/automation/actions/script/condition/processors/ProfileActionScriptProcessorInterface.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/GenericProfileActionScriptProcessorData.h"
 
 class BasicProfileActionScriptProcessor: public ProfileActionScriptItem, public ProfileActionScriptProcessorInterface {
 
-public: BasicProfileActionScriptProcessor(std::string label, Node node) : ProfileActionScriptItem(label, node){
+public: BasicProfileActionScriptProcessor(std::string label, Node* node) : ProfileActionScriptItem(label, node){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -81,23 +87,25 @@ public: BasicProfileActionScriptProcessor(std::string label) : ProfileActionScri
 }
 
 
-    public: void actionPerformed(ActionEvent actionEvent){
+    public: void actionPerformed(ActionEvent* actionEvent){
 super.actionPerformed(actionEvent);
     
 
-                        if(actionEvent.getActionCommand().compareTo(DELETE) == 0)
+                        if(actionEvent->getActionCommand()->compareTo(DELETE) == 0)
                         
                                     {
                                     
-                        if(this->getParent() instanceof ProfileActionScriptConditionInterface)
+                        if(
+                                        (dynamic_cast<const ProfileActionScriptConditionInterface*>(this->getParent()) != nullptr)
+                                    )
                         
                                     {
                                     
-    ProfileActionScriptConditionInterface profileActionScriptConditionInterface = this->getParent();;
+    ProfileActionScriptConditionInterface* profileActionScriptConditionInterface = dynamic_cast<ProfileActionScriptConditionInterface*>(this->getParent());;
     
-profileActionScriptConditionInterface.removeProcessor(this);
+profileActionScriptConditionInterface->removeProcessor(dynamic_cast<ProfileActionScriptProcessorInterface*>(this));
     
-JTreeInterfaceFactory::getInstance().getJTreeInterface().updateJTree();
+JTreeInterfaceFactory::getInstance()->getJTreeInterface()->updateJTree();
     
 
                                     }
@@ -110,9 +118,9 @@ JTreeInterfaceFactory::getInstance().getJTreeInterface().updateJTree();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = document.createElement(GenericProfileActionScriptProcessorData::NAME);;
+    Node* node = document->createElement(GenericProfileActionScriptProcessorData::NAME);;
     
 
 

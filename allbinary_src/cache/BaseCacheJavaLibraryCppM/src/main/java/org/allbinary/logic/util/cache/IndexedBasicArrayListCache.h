@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -58,17 +66,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseBasicArrayListCache.h"
-#include "CacheInterface.h"
-#include "CacheableInterface.h"
+        #include "org/allbinary/logic/util/cache/BaseBasicArrayListCache.h"
+#include "org/allbinary/logic/util/cache/CacheInterface.h"
+#include "org/allbinary/logic/util/cache/CacheableInterface.h"
 
 class IndexedBasicArrayListCache: public BaseBasicArrayListCache, public CacheInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: static IndexedBasicArrayListCache createCache(int32_t size);
+    public: static IndexedBasicArrayListCache* createCache(int32_t size);
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: int32_t size = 0;
 
@@ -92,11 +100,11 @@ public: IndexedBasicArrayListCache();
 
                 //@Throws(Exception.constructor)
             
-    public: void add(CacheableInterface cacheableInterface);
+    public: void add(CacheableInterface* cacheableInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void addArray(std::vector<CacheableInterface> cacheableInterfaces);
+    public: void addArray(std::vector<CacheableInterface*> cacheableInterfaces);
 
     public: void clear();
 

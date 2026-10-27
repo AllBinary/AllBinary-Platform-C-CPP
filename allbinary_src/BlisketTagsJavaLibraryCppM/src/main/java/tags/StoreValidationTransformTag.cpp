@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
@@ -50,11 +56,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ValidationTransformTag.h"
+        #include "tags/ValidationTransformTag.h"
 
 class StoreValidationTransformTag: public ValidationTransformTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string storeName;
 
@@ -71,7 +77,7 @@ public: StoreValidationTransformTag() : ValidationTransformTag(){
     public: void setStoreName(std::string value){
 this->storeName= value;
     
-this->getPropertiesHashMap().put(StoreFrontData::getInstance().NAME, this->storeName);
+this->getPropertiesHashMap()->put(StoreFrontData::getInstance()->NAME, this->storeName);
     
 }
 
@@ -82,10 +88,10 @@ this->getPropertiesHashMap().put(StoreFrontData::getInstance().NAME, this->store
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF("Tag Start", this, tagStrings.DO_START_TAG);
+                                    this->logUtil->putF("Tag Start", this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -98,9 +104,9 @@ this->getPropertiesHashMap().put(StoreFrontData::getInstance().NAME, this->store
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEABLEFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEABLEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/util/cache/CacheableInterface.h>
@@ -47,15 +53,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ColorCacheable.h"
+        #include "org/allbinary/graphics/color/ColorCacheable.h"
 
 class ColorCacheableFactory
             : public Object
-        : public CacheableInterfaceFactoryInterface {
+        , public CacheableInterfaceFactoryInterface {
 
 public: ColorCacheableFactory();
 
-    public: CacheableInterface getInstance(Object* key);
+    public: CacheableInterface* getInstance(Object* key);
 
 };
 

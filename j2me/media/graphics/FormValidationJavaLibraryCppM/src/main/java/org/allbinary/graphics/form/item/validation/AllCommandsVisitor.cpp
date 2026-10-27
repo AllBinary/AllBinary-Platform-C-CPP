@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/logic/java/bool/BooleanFactory.h>
 
       
@@ -54,7 +62,7 @@ public: AllCommandsVisitor(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory::getInstance().TRUE;
+                        return BooleanFactory::getInstance()->TRUE;
     
 }
 

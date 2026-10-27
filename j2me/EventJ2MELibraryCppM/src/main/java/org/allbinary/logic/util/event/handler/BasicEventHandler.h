@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_EVENT_HANDLER_BASICEVENTHANDLER_H
         #define ORG_ALLBINARY_LOGIC_UTIL_EVENT_HANDLER_BASICEVENTHANDLER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -79,45 +85,45 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicEventHandlerInterface.h"
+        #include "org/allbinary/logic/util/event/handler/BasicEventHandlerInterface.h"
 
 class BasicEventHandler
             : public Object
-        : public BasicEventHandlerInterface {
+        , public BasicEventHandlerInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const EventStrings eventStrings = EventStrings::getInstance();
+    private: EventStrings* eventStrings = EventStrings::getInstance();
 
-    protected: BasicArrayList eventListenerInterfaceList;
+    protected: BasicArrayList* eventListenerInterfaceList;
 
 public: BasicEventHandler();
 
     public: void removeAllListeners();
 
-    public: void addListeners(BasicArrayList vector);
+    public: void addListeners(BasicArrayList* vector);
 
-    public: void removeListeners(BasicArrayList vector);
+    public: void removeListeners(BasicArrayList* vector);
 
-    public: void addListenerSingleThreaded(EventListenerInterface eventListenerInterface);
+    public: void addListenerSingleThreaded(EventListenerInterface* eventListenerInterface);
 
-    public: void addListenerInterface(EventListenerInterface eventListenerInterface);
+    public: void addListenerInterface(EventListenerInterface* eventListenerInterface);
 
-    public: void removeListenerSingleThreaded(EventListenerInterface eventListenerInterface);
+    public: void removeListenerSingleThreaded(EventListenerInterface* eventListenerInterface);
 
-    public: void removeListener(EventListenerInterface eventListenerInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public: void fireEvent(AllBinaryEventObject eventObject);
+    public: void removeListener(EventListenerInterface* eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    public: void fireEvent(AllBinaryEventObject* eventObject);
 
-    public: BasicArrayList getEventListenerInterfaceListP();
+                //@Throws(Exception.constructor)
+            
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
+
+    public: BasicArrayList* getEventListenerInterfaceListP();
 
     public: std::string toString();
 

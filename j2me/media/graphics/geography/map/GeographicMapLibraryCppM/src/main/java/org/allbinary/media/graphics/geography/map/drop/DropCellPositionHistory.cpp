@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -58,58 +64,58 @@ class DropCellPositionHistory
             : public Object
          {
 
-    private: static const DropCellPositionHistory SINGLETON = DropCellPositionHistory();
+    private: static DropCellPositionHistory* SINGLETON() { static std::unique_ptr<DropCellPositionHistory> value(new DropCellPositionHistory()); return value.get(); }
 
-    public: static DropCellPositionHistory getInstance(){
+    public: static DropCellPositionHistory* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DropCellPositionHistory::SINGLETON;
+                        return DropCellPositionHistory::SINGLETON();
     
 }
 
 
-    private: const CellPositionFactory cellPositionFactory = CellPositionFactory::getInstance();
+    private: CellPositionFactory* cellPositionFactory = CellPositionFactory::getInstance();
 
-    private: BasicArrayList positionList = BasicArrayListD();
+    private: BasicArrayList* positionList = new BasicArrayListD();
 
-    private: BasicArrayList layerList = BasicArrayListD();
+    private: BasicArrayList* layerList = new BasicArrayListD();
 
-    public: void add(CellPosition cellPosition, AllBinaryLayer layerInterface){
-this->positionList.add(cellPosition);
+    public: void add(CellPosition* cellPosition, AllBinaryLayer* layerInterface){
+this->positionList->add(cellPosition);
     
-this->layerList.add(layerInterface);
+this->layerList->add(layerInterface);
     
 }
 
 
-    public: void addAll(BasicArrayList list, AllBinaryLayer layerInterface){
+    public: void addAll(BasicArrayList* list, AllBinaryLayer* layerInterface){
 
 
 
 
                         for (
-    int32_t index = list.size() -1;index >= 0; index--)
+    int32_t index = list->size() -1;index >= 0; index--)
         {
-this->add(list.get(index), layerInterface);
+this->add(dynamic_cast<CellPosition*>(list->get(index)), layerInterface);
     
 }
 
 }
 
 
-    public: void remove(CellPosition cellPosition){
+    public: void remove(CellPosition* cellPosition){
 
-    int32_t index = this->positionList.indexOf(cellPosition);;
+    int32_t index = this->positionList->indexOf(cellPosition);;
     
 
                         if(index >= 0)
                         
                                     {
-                                    this->positionList.removeAt(index);
+                                    this->positionList->removeAt(index);
     
-this->layerList.removeAt(index);
+this->layerList->removeAt(index);
     
 
                                     }
@@ -117,22 +123,22 @@ this->layerList.removeAt(index);
 }
 
 
-    public: void removeAll(AllBinaryLayer layerInterface){
+    public: void removeAll(AllBinaryLayer* layerInterface){
 
     int32_t index = 0;;
     
 
         while(index !=  -1)
         {
-index= this->layerList.indexOf(layerInterface);
+index= this->layerList->indexOf(layerInterface);
     
 
                         if(index >= 0)
                         
                                     {
-                                    this->positionList.removeAt(index);
+                                    this->positionList->removeAt(index);
     
-this->layerList.removeAt(index);
+this->layerList->removeAt(index);
     
 
                                     }
@@ -143,33 +149,33 @@ this->layerList.removeAt(index);
 
 
     public: void clear(){
-this->positionList.clear();
+this->positionList->clear();
     
-this->layerList.clear();
+this->layerList->clear();
     
 }
 
 
-    public: bool isCellPositionWithDrop(CellPosition cellPosition){
+    public: bool isCellPositionWithDrop(CellPosition* cellPosition){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->positionList.contains(cellPosition);;
+                        return this->positionList->contains(cellPosition);;
     
 }
 
 
-    public: bool anyCellPositionWithDrop(BasicArrayList list){
+    public: bool anyCellPositionWithDrop(BasicArrayList* list){
 
 
 
 
                         for (
-    int32_t index = list.size() -1;index >= 0; index--)
+    int32_t index = list->size() -1;index >= 0; index--)
         {
 
-                        if(this->isCellPositionWithDrop(list.get(index)))
+                        if(this->isCellPositionWithDrop(dynamic_cast<CellPosition*>(list->get(index))))
                         
                                     {
                                     
@@ -192,18 +198,18 @@ this->layerList.clear();
 }
 
 
-    public: CellPosition getCellPositionWithDrop(BasicArrayList list){
+    public: CellPosition* getCellPositionWithDrop(BasicArrayList* list){
 
-    CellPosition cellPosition;;
+    CellPosition* cellPosition;;
     
 
 
 
 
                         for (
-    int32_t index = list.size() -1;index >= 0; index--)
+    int32_t index = list->size() -1;index >= 0; index--)
         {
-cellPosition= list.get(index);
+cellPosition= dynamic_cast<CellPosition*>(list->get(index));
     
 
                         if(this->isCellPositionWithDrop(cellPosition))
@@ -224,14 +230,14 @@ cellPosition= list.get(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cellPositionFactory.NONE;
+                        return this->cellPositionFactory->NONE;
     
 }
 
 
-    public: AllBinaryLayer getLayerInterface(CellPosition cellPosition){
+    public: AllBinaryLayer* getLayerInterface(CellPosition* cellPosition){
 
-    int32_t index = this->positionList.indexOf(cellPosition);;
+    int32_t index = this->positionList->indexOf(cellPosition);;
     
 
                         if(index >= 0)
@@ -241,7 +247,7 @@ cellPosition= list.get(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->layerList.get(index);
+                        return dynamic_cast<AllBinaryLayer*>(this->layerList->get(index));
     
 
                                     }

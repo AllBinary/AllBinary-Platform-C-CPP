@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GLOBALS_APPURLGLOBALS_H
         #define ORG_ALLBINARY_GLOBALS_APPURLGLOBALS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -44,13 +50,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UrlGlobalsInterface.h"
+        #include "org/allbinary/globals/UrlGlobalsInterface.h"
 //implements
 class AppUrlGlobals: public UrlGlobalsInterface {
 
-    public: static const AppUrlGlobals NULL_APP_URL_GLOBALS = AppUrlGlobals();
+    public: static AppUrlGlobals* NULL_APP_URL_GLOBALS() { static std::unique_ptr<AppUrlGlobals> value(new AppUrlGlobals()); return value.get(); }
 
-    private: std::string path = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string path = StringUtil::getInstance()->EMPTY_STRING;
 
     public: bool isTestingMode();
 

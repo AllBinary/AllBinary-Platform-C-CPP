@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/system/SoftwareInformation.h>
@@ -41,13 +47,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameAdStateBase.h"
+        #include "org/allbinary/business/advertisement/GameAdStateBase.h"
 
 class GameAdStateFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    GameAdStateBase getInstanceForApp(SoftwareInformation softwareInformation)
+    public: virtual GameAdStateBase* getInstanceForApp(SoftwareInformation* softwareInformation) = 0;
 
 };
 

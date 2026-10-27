@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -85,9 +93,9 @@
         
 class TestInputAutomationCaptureWorker: public AbstractInputAutomationWorker {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: GenericProfileActions genericProfileActions;
+    private: GenericProfileActions* genericProfileActions;
 
     private: const std::string MESSAGE = "GenericInputAutomationCaptureWorker";
 
@@ -97,14 +105,14 @@ class TestInputAutomationCaptureWorker: public AbstractInputAutomationWorker {
 
     private: const std::string IMAGE_NOT_AVAILABLE = "Image Not Available";
 
-public: TestInputAutomationCaptureWorker(InputAutomationActionInterface inputAutomationActionInterface, GenericProfileActions genericProfileActions, ImageComparatorConstraintsInterface imageComparatorConstraintsInterface, MotionRectangleConstraintsInterface motionRectangleConstraintsInterface) : AbstractInputAutomationWorker(inputAutomationActionInterface){
+public: TestInputAutomationCaptureWorker(InputAutomationActionInterface* inputAutomationActionInterface, GenericProfileActions* genericProfileActions, ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface, MotionRectangleConstraintsInterface* motionRectangleConstraintsInterface) : AbstractInputAutomationWorker(inputAutomationActionInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil.putF(this->MESSAGE, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(this->MESSAGE, this, this->commonStrings.CONSTRUCTOR);
     
 this->setGenericProfileActions(genericProfileActions);
     
@@ -115,25 +123,25 @@ this->setGenericProfileActions(genericProfileActions);
             
     public: void processDataWorkerResults(){
 
-    J2SECacheInterface cacheInterface = CapturedBufferedImagesCacheSingleton::getInstance();;
+    J2SECacheInterface* cacheInterface = dynamic_cast<J2SECacheInterface*>(CapturedBufferedImagesCacheSingleton::getInstance());;
     
 
-                        if(cacheInterface.keySet().size() > 0)
+                        if(cacheInterface->keySet()->size() > 0)
                         
                                     {
-                                    this->logUtil.putF(this->IMAGE_AVAILABLE_SO_PROCESSING, this, this->PROCESS_DATA_WORKER_RESULTS);
+                                    this->logUtil->putF(this->IMAGE_AVAILABLE_SO_PROCESSING, this, this->PROCESS_DATA_WORKER_RESULTS);
     
 
-    Object* anyType = cacheInterface.keySet().()[0];;
+    Object* anyType = cacheInterface->keySet()->()[0];;
     
 
-    HashMap<Object*, Object*> hashMap = this->getGenericProfileActions().getHashMap();;
+    HashMap<Object*, Object*>* hashMap = this->getGenericProfileActions()->getHashMap();;
     
 
-    Set set = hashMap.keys();;
+    Set* set = hashMap->keys();;
     
 
-    std::vector<Object*> actionNameArray = set.toArray();;
+    std::vector<Object*> actionNameArray = set->toArray();;
     
 
     int32_t size = actionNameArray.size();;
@@ -149,23 +157,23 @@ this->setGenericProfileActions(genericProfileActions);
     std::string actionNameString = actionNameArray[index];;
     
 
-    GenericProfileAction genericProfileAction = hashMap.get(actionNameString);;
+    GenericProfileAction* genericProfileAction = dynamic_cast<GenericProfileAction*>(hashMap->get(actionNameString));;
     
 
-    GenericProfileActionScript genericProfileActionScript = genericProfileAction.getGenericProfileActionScript();;
+    GenericProfileActionScript* genericProfileActionScript = genericProfileAction->getGenericProfileActionScript();;
     
 
-    BasicArrayList vector = genericProfileActionScript.getProfileActionConditionInterfaceVector();;
+    BasicArrayList* vector = genericProfileActionScript->getProfileActionConditionInterfaceVector();;
     
 }
 
-cacheInterface.get(anyType);
+cacheInterface->get(anyType);
     
 
                                     }
                                 
                         else {
-                            this->logUtil.putF(this->IMAGE_NOT_AVAILABLE, this, this->PROCESS_DATA_WORKER_RESULTS);
+                            this->logUtil->putF(this->IMAGE_NOT_AVAILABLE, this, this->PROCESS_DATA_WORKER_RESULTS);
     
 
                         }
@@ -176,7 +184,7 @@ cacheInterface.get(anyType);
                 //@Throws(Exception.constructor)
             
     public: void process(){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.PROCESS);
+this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.PROCESS);
     
 this->startDataWorkers();
     
@@ -185,7 +193,7 @@ this->processDataWorkerResults();
 }
 
 
-    public: GenericProfileActions getGenericProfileActions(){
+    public: GenericProfileActions* getGenericProfileActions(){
 
 
 
@@ -195,7 +203,7 @@ this->processDataWorkerResults();
 }
 
 
-    public: void setGenericProfileActions(GenericProfileActions genericProfileActions){
+    public: void setGenericProfileActions(GenericProfileActions* genericProfileActions){
 this->genericProfileActions= genericProfileActions;
     
 }

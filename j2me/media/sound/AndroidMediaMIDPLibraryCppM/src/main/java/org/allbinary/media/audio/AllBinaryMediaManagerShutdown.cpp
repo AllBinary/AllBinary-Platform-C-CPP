@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -43,21 +49,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SoundsFactoryInterface.h"
+        #include "org/allbinary/media/audio/SoundsFactoryInterface.h"
 
 class AllBinaryMediaManagerShutdown
             : public Object
          {
 
-    private: static AllBinaryMediaManagerShutdown instance() { return AllBinaryMediaManagerShutdown(); }
+    private: static AllBinaryMediaManagerShutdown* instance() { static std::unique_ptr<AllBinaryMediaManagerShutdown> value(new AllBinaryMediaManagerShutdown()); return value.get(); }
 
                 //@Throws(Exception.constructor)
             
-    public: static void shutdown(SoundsFactoryInterface soundsFactoryInterface){
+    public: static void shutdown(SoundsFactoryInterface* soundsFactoryInterface){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
-logUtil.putF("No Media Shutdown for Android Process", AllBinaryMediaManagerShutdown::instance(), "shutdown");
+logUtil->putF("No Media Shutdown for Android Process", AllBinaryMediaManagerShutdown::instance(), "shutdown");
     
 }
 

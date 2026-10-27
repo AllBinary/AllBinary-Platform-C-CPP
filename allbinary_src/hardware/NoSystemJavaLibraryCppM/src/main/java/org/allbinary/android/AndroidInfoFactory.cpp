@@ -20,6 +20,12 @@
 
             #include <hilog/log.h>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -45,9 +51,9 @@ class AndroidInfoFactory
             : public Object
          {
 
-    private: static AndroidInfoFactory instance() { return AndroidInfoFactory(); }
+    private: static AndroidInfoFactory* instance() { static std::unique_ptr<AndroidInfoFactory> value(new AndroidInfoFactory()); return value.get(); }
 
-    public: static AndroidInfoFactory getInstance(){
+    public: static AndroidInfoFactory* getInstance(){
 
 
 

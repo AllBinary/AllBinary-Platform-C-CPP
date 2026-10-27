@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_CLIENT_ABELICENSECLIENT_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_CLIENT_ABELICENSECLIENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -70,15 +76,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "XmlRpcAbeLicenseRetrievalClient.h"
+        #include "org/allbinary/logic/system/security/licensing/client/XmlRpcAbeLicenseRetrievalClient.h"
 
 class AbeLicenseClient
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: const int32_t MINSERVERS = 3;
 
@@ -87,7 +93,7 @@ public: AbeLicenseClient();
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: AbeLicenseInterface get(AbeClientInformationInterface abeClientInformation);
+    public: AbeLicenseInterface* get(AbeClientInformationInterface* abeClientInformation);
 
 };
 

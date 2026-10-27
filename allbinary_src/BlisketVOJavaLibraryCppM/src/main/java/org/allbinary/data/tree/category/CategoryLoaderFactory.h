@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYLOADERFACTORY_H
         #define ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYLOADERFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,14 +58,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryLoader.h"
-#include "CategoryLoaderInterface.h"
+        #include "org/allbinary/data/tree/category/CategoryLoader.h"
+#include "org/allbinary/data/tree/category/CategoryLoaderInterface.h"
 
 class CategoryLoaderFactory
             : public Object
          {
 
-    public: static CategoryLoaderInterface getInstance(CategoryFactoryInterface categoryFactoryInterface);
+    public: static CategoryLoaderInterface* getInstance(CategoryFactoryInterface* categoryFactoryInterface);
 
 private: CategoryLoaderFactory();
 

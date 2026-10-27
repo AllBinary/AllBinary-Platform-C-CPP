@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Throwable.h"
         
             #include "java/lang/Exception.h"
@@ -69,9 +75,9 @@
         
 class ImageAnimation: public IndexedAnimation {
 
-    private: Image image;
+    private: Image* image;
 
-public: ImageAnimation(Image image, AnimationBehavior animationBehavior);
+public: ImageAnimation(Image* image, AnimationBehavior* animationBehavior);
 
                 //@Throws(Exception.constructor)
             
@@ -93,9 +99,9 @@ public: ImageAnimation(Image image, AnimationBehavior animationBehavior);
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
-    protected: Image getImage();
+    protected: Image* getImage();
 
     public: void close();
 

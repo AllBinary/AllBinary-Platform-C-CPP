@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/NamedInterface.h>
@@ -46,11 +52,11 @@ class DamageableInterface: public NamedInterface {
 
                 //@Throws(Exception.constructor)
             
-    void damage(int32_t damage, int32_t damageType)
+    public: virtual void damage(int32_t damage, int32_t damageType) = 0;
 
                 //@Throws(Exception.constructor)
             
-    int32_t getDamage(int32_t damageType)
+    public: virtual int32_t getDamage(int32_t damageType) = 0;
 
 };
 

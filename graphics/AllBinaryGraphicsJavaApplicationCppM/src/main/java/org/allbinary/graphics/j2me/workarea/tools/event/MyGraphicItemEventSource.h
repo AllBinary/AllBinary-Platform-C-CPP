@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENTSOURCE_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENTSOURCE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/swing/tree/MutableTreeNode.h>
@@ -51,17 +57,17 @@ class MyGraphicItemEventSource
 
     private: std::string command;
 
-    private: MutableTreeNode treeNode;
+    private: MutableTreeNode* treeNode;
 
     private: double angle = 0;
 
-public: MyGraphicItemEventSource(std::string command, MutableTreeNode treeNode);
+public: MyGraphicItemEventSource(std::string command, MutableTreeNode* treeNode);
 
-public: MyGraphicItemEventSource(std::string command, double angle, MutableTreeNode treeNode);
+public: MyGraphicItemEventSource(std::string command, double angle, MutableTreeNode* treeNode);
 
     public: std::string getCommand();
 
-    public: MutableTreeNode getTreeNode();
+    public: MutableTreeNode* getTreeNode();
 
     public: double getAngle();
 

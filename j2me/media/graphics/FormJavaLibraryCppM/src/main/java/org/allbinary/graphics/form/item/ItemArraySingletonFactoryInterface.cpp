@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -40,13 +46,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ABCustomItem.h"
+        #include "org/allbinary/graphics/form/item/ABCustomItem.h"
 
 class ItemArraySingletonFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    std::vector<ABCustomItem> getItems()
+    public: virtual std::vector<ABCustomItem*> getItems() = 0;
 
 };
 

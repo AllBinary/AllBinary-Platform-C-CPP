@@ -21,6 +21,14 @@
         #ifndef ADMIN_TAGHELPERS_CATEGORYREQUESTHELPERFACTORY_H
         #define ADMIN_TAGHELPERS_CATEGORYREQUESTHELPERFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -53,18 +61,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TagHelperFactory.h"
-#include "CategoryRequestHelper.h"
+        #include "admin/taghelpers/TagHelperFactory.h"
+#include "admin/taghelpers/CategoryRequestHelper.h"
 
 class CategoryRequestHelperFactory: public TagHelperFactory {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: CategoryRequestHelperFactory();
 
                 //@Throws(LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+    public: Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_ABEHTTPREQUESTINFO_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_ABEHTTPREQUESTINFO_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -70,7 +76,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbeHttpRequestInfoData.h"
+        #include "org/allbinary/logic/communication/http/request/AbeHttpRequestInfoData.h"
 
 class AbeHttpRequestInfo
             : public Object
@@ -78,9 +84,9 @@ class AbeHttpRequestInfo
 
     private: const std::string NAME = "AbeHttpRequestInfo";
 
-    private: const AbeHttpRequestInfoData abeHttpRequestInfoData = AbeHttpRequestInfoData::getInstance();
+    private: AbeHttpRequestInfoData* abeHttpRequestInfoData = AbeHttpRequestInfoData::getInstance();
 
-    private: const CommonSeps commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps = CommonSeps::getInstance();
 
     private: std::string httpUserAgent;
 
@@ -94,13 +100,13 @@ class AbeHttpRequestInfo
 
     private: std::string requestedFilePath;
 
-public: AbeHttpRequestInfo(HashMap<Object*, Object*> hashMap);
+public: AbeHttpRequestInfo(HashMap<Object*, Object*>* hashMap);
 
-public: AbeHttpRequestInfo(HttpServletRequest httpServletRequest);
+public: AbeHttpRequestInfo(HttpServletRequest* httpServletRequest);
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
-    public: BasicArrayList toVector();
+    public: BasicArrayList* toVector();
 
     public: std::string toString();
 

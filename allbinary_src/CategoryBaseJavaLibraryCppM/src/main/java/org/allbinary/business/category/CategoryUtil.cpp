@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeHelper.h>
@@ -65,16 +71,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryData.h"
+        #include "org/allbinary/business/category/CategoryData.h"
 
 class CategoryUtil
             : public Object
          {
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static int32_t getPathLevel(AbPath categoryPath){
+    public: static int32_t getPathLevel(AbPath* categoryPath){
 
-    int32_t count = StringUtils::countMatches(categoryPath.toString(), AbPathData::getInstance().SEPARATOR);;
+    int32_t count = StringUtils::countMatches(categoryPath->toString(), AbPathData::getInstance()->SEPARATOR);;
     
 
 
@@ -86,12 +92,12 @@ class CategoryUtil
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static std::string getNameFromNode(Node node){
+    public: static std::string getNameFromNode(Node* node){
 
-    NamedNodeMap attributes = node.getAttributes();;
+    NamedNodeMap* attributes = node->getAttributes();;
     
 
-    Attr attrNode = attributes.getNamedItem(CategoryData::getInstance().LABEL);;
+    Attr* attrNode = dynamic_cast<Attr*>(attributes->getNamedItem(CategoryData::getInstance()->LABEL));;
     
 
                         if(attrNode != 
@@ -103,14 +109,14 @@ class CategoryUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return attrNode.getValue();;
+                        return attrNode->getValue();;
     
 
                                     }
                                 
                         else {
                             
-    Node labelNode = DomSearchHelper::getNodeNoThrow(CategoryData::getInstance().LABEL, node.getChildNodes());;
+    Node* labelNode = DomSearchHelper::getNodeNoThrow(CategoryData::getInstance()->LABEL, node->getChildNodes());;
     
 
                         if(labelNode != 
@@ -134,7 +140,7 @@ class CategoryUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 }
 

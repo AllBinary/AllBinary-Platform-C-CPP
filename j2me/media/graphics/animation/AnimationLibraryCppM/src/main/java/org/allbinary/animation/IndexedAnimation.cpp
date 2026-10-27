@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -49,25 +55,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Animation.h"
-#include "IndexedAnimationInterface.h"
-#include "AnimationBehavior.h"
+        #include "org/allbinary/animation/Animation.h"
+#include "org/allbinary/animation/IndexedAnimationInterface.h"
+#include "org/allbinary/animation/AnimationBehavior.h"
 
 class IndexedAnimation: public Animation, public IndexedAnimationInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: AnimationBehavior animationBehaviorP;
+    protected: AnimationBehavior* animationBehaviorP;
 
-protected: IndexedAnimation(AnimationBehavior animationBehavior){
+protected: IndexedAnimation(AnimationBehavior* animationBehavior){
 this->animationBehaviorP= animationBehavior;
     
 }
 
 
-    public: AnimationBehavior getAnimationBehavior(){
+    public: AnimationBehavior* getAnimationBehavior(){
 
 
 
@@ -78,7 +84,7 @@ this->animationBehaviorP= animationBehavior;
 
 
     public: void reset(){
-this->animationBehaviorP.reset();
+this->animationBehaviorP->reset();
     
 this->setFrame(0);
     
@@ -105,7 +111,7 @@ this->setFrame(0);
 
 
 
-                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
@@ -165,12 +171,12 @@ this->setFrame(0);
 }
 
 
-    public: void setState(IndexedAnimation indexedAnimation){
-this->setFrame(indexedAnimation.getFrame());
+    public: void setState(IndexedAnimation* indexedAnimation){
+this->setFrame(indexedAnimation->getFrame());
     
-this->setDx(indexedAnimation.getDx());
+this->setDx(indexedAnimation->getDx());
     
-this->setDy(indexedAnimation.getDy());
+this->setDy(indexedAnimation->getDy());
     
 }
 

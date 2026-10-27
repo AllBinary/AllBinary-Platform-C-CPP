@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,9 +67,9 @@ class SmallIntegerSingletonFactory
             : public Object
          {
 
-    private: static SmallIntegerSingletonFactory instance() { return SmallIntegerSingletonFactory(); }
+    private: static SmallIntegerSingletonFactory* instance() { static std::unique_ptr<SmallIntegerSingletonFactory> value(new SmallIntegerSingletonFactory()); return value.get(); }
 
-    public: static SmallIntegerSingletonFactory getInstance(){
+    public: static SmallIntegerSingletonFactory* getInstance(){
 
 
 
@@ -77,7 +83,7 @@ class SmallIntegerSingletonFactory
 
     public: const int32_t POSITIVE_MAX = 0x2D1;
 
-    private: const std::vector<Integer> INTEGER_ARRAY = std::vector<Integer>(this->NEGATIVE_MAX +this->POSITIVE_MAX);
+    private: const std::vector<int32_t> INTEGER_ARRAY = std::vector<int32_t>(this->NEGATIVE_MAX +this->POSITIVE_MAX);
 
     private: const std::vector<std::string> STRING_ARRAY = std::vector<std::string>(this->NEGATIVE_MAX +this->POSITIVE_MAX);
 
@@ -107,9 +113,9 @@ class SmallIntegerSingletonFactory
                         
                                     {
                                     
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
-logUtil.putF(StringMaker().append("Android InputFactory was initialized before GameMidlet: ").appendint(this->MIN).toString(), this, "getMin");
+logUtil->putF((new StringMaker())->append("Android InputFactory was initialized before GameMidlet: ")->appendint(this->MIN)->toString(), this, "getMin");
     
 this->initWithRange(0x291, 6);
     
@@ -118,9 +124,9 @@ this->initWithRange(0x291, 6);
                                 
                         else {
                             
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
-logUtil.putF(StringMaker().append("InputFactory was initialized before GameMidlet or KeyFactoryInitializer - Currently this is occurs on JS build by TouchMotionGestureFactory constructor: ").appendint(this->MIN).toString(), this, "getMin");
+logUtil->putF((new StringMaker())->append("InputFactory was initialized before GameMidlet or KeyFactoryInitializer - Currently this is occurs on JS build by TouchMotionGestureFactory constructor: ")->appendint(this->MIN)->toString(), this, "getMin");
     
 this->initWithRange(0x2D0, 6);
     
@@ -135,9 +141,9 @@ this->initWithRange(0x2D0, 6);
                         
                                     {
                                     
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
-logUtil.put("This means you loaded the InputFactory before determining the platform input size requirements.", this, "getMin", Exception());
+logUtil->put("This means you loaded the InputFactory before determining the platform input size requirements.", this, "getMin", new Exception());
     
 
                                     }
@@ -203,7 +209,7 @@ logUtil.put("This means you loaded the InputFactory before determining the platf
                         for (
     int32_t index = value -1;index >= this->lastMin; index--)
         {
-this->INTEGER_ARRAY[index +this->NEGATIVE_MAX]= Integer(index);
+this->INTEGER_ARRAY[index +this->NEGATIVE_MAX]= int32_t(index);
     
 }
 
@@ -214,7 +220,7 @@ this->INTEGER_ARRAY[index +this->NEGATIVE_MAX]= Integer(index);
                         for (
     int32_t index = negativeValue -1;index >= this->lastNegativeMin; index--)
         {
-this->INTEGER_ARRAY[index]= Integer( -index);
+this->INTEGER_ARRAY[index]= int32_t( -index);
     
 }
 
@@ -253,7 +259,7 @@ this->MIN= value;
                         for (
     int32_t index = this->POSITIVE_MAX -1;index >= this->lastMin; index--)
         {
-this->INTEGER_ARRAY[index +this->NEGATIVE_MAX]= Integer(index);
+this->INTEGER_ARRAY[index +this->NEGATIVE_MAX]= int32_t(index);
     
 }
 
@@ -264,7 +270,7 @@ this->INTEGER_ARRAY[index +this->NEGATIVE_MAX]= Integer(index);
                         for (
     int32_t index = this->NEGATIVE_MAX -1;index >= this->lastNegativeMin; index--)
         {
-this->INTEGER_ARRAY[index]= Integer( -index);
+this->INTEGER_ARRAY[index]= int32_t( -index);
     
 }
 
@@ -286,7 +292,7 @@ this->initWithRange(23, 0);
 }
 
 
-    public: Integer getAt(int32_t index){
+    public: int32_t getAt(int32_t index){
 
 
 
@@ -296,7 +302,7 @@ this->initWithRange(23, 0);
 }
 
 
-    public: Integer getAtNoThrow(int32_t index){
+    public: int32_t getAtNoThrow(int32_t index){
 
                         if(index +this->NEGATIVE_MAX > this->INTEGER_ARRAY.size() -1)
                         
@@ -319,9 +325,9 @@ this->initWithRange(23, 0);
 }
 
 
-    public: Integer createInstance(int32_t index){
+    public: int32_t createInstance(int32_t index){
 
-    Integer integer = this->getAt(index);;
+    int32_t integer = this->getAt(index);;
     
 
                         if(integer == 
@@ -329,7 +335,7 @@ this->initWithRange(23, 0);
                                 )
                         
                                     {
-                                    integer= Integer(index);
+                                    integer= int32_t(index);
     
 
                                     }

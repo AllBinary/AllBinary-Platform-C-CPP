@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_CLOUDSTREAMUTIL_H
         #define ORG_ALLBINARY_LOGIC_IO_CLOUDSTREAMUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,30 +58,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFileInputStream.h"
-#include "AbFileLocalInputStream.h"
+        #include "org/allbinary/logic/io/AbFileInputStream.h"
+#include "org/allbinary/logic/io/AbFileLocalInputStream.h"
 
 class CloudStreamUtil
             : public Object
          {
 
-    private: static CloudStreamUtil instance() { return CloudStreamUtil(); }
+    private: static CloudStreamUtil* instance() { static std::unique_ptr<CloudStreamUtil> value(new CloudStreamUtil()); return value.get(); }
 
-    public: static CloudStreamUtil getInstance();
+    public: static CloudStreamUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public: InputStream getFile(AbFile file);
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream getFileAnyWhere(AbFile file);
+    public: InputStream* getFile(AbFile* file);
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream getFileLocal(AbFile file);
+    public: InputStream* getFileAnyWhere(AbFile* file);
+
+                //@Throws(Exception.constructor)
+            
+    public: InputStream* getFileLocal(AbFile* file);
 
 };
 

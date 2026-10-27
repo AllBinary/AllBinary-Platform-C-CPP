@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -68,11 +74,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShippingAddressView.h"
+        #include "views/generic/address/shipping/ShippingAddressView.h"
 
 class TaxValidationView: public ShippingAddressView, public ValidationComponentInterface {
 
-public: TaxValidationView(TransformInfoInterface transformInfoInterface) : ShippingAddressView(transformInfoInterface){
+public: TaxValidationView(TransformInfoInterface* transformInfoInterface) : ShippingAddressView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -82,12 +88,12 @@ public: TaxValidationView(TransformInfoInterface transformInfoInterface) : Shipp
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
-    ShippingAddressesEntity billingAddressesEntity = ShippingAddressesEntity(this->getWeblisketSession().getUserName());;
+    ShippingAddressesEntity* billingAddressesEntity = new ShippingAddressesEntity(this->getWeblisketSession()->getUserName());;
     
 
-    BasicArrayList streetAddressList = billingAddressesEntity.get();;
+    BasicArrayList* streetAddressList = billingAddressesEntity->get();;
     
 
                         if(streetAddressList == 
@@ -105,7 +111,7 @@ public: TaxValidationView(TransformInfoInterface transformInfoInterface) : Shipp
                                     }
                                 
 
-    int32_t size = streetAddressList.size();;
+    int32_t size = streetAddressList->size();;
     
 
 
@@ -115,10 +121,10 @@ public: TaxValidationView(TransformInfoInterface transformInfoInterface) : Shipp
     int32_t index = 0;index < size; index++)
         {
 
-    StreetAddress aStreetAddress = streetAddressList.get(index);;
+    StreetAddress* aStreetAddress = dynamic_cast<StreetAddress*>(streetAddressList->get(index));;
     
 
-                        if(aStreetAddress.getName().compareTo(ShippingAddressData::TAX) == 0)
+                        if(aStreetAddress->getName().compareTo(ShippingAddressData::TAX) == 0)
                         
                                     {
                                     this->streetAddress= aStreetAddress;
@@ -148,12 +154,12 @@ public: TaxValidationView(TransformInfoInterface transformInfoInterface) : Shipp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -163,7 +169,7 @@ public: TaxValidationView(TransformInfoInterface transformInfoInterface) : Shipp
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_THRUSTAIVISITORFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_AI_THRUSTAIVISITORFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,15 +47,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ThrustAIVisitor.h"
+        #include "org/allbinary/game/ag/ai/ThrustAIVisitor.h"
 
 class ThrustAIVisitorFactory
             : public Object
          {
 
-    private: static ThrustAIVisitor instance() { return ThrustAIVisitor(); }
+    private: static ThrustAIVisitor* instance() { static std::unique_ptr<ThrustAIVisitor> value(new ThrustAIVisitor()); return value.get(); }
 
-    public: static ThrustAIVisitor getInstance();
+    public: static ThrustAIVisitor* getInstance();
 
 };
 

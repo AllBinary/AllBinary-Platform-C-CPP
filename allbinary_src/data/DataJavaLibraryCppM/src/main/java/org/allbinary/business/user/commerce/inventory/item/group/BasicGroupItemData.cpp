@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,25 +49,25 @@ class BasicGroupItemData
             : public Object
          {
 
-    public: static const std::string ITEM_ONE = "BASICGROUPITEM_ONE";
+    public: static inline const std::string ITEM_ONE = "BASICGROUPITEM_ONE";
 
-    public: static const std::string ITEM_TWO = "BASICGROUPITEM_TWO";
+    public: static inline const std::string ITEM_TWO = "BASICGROUPITEM_TWO";
 
-    public: static const std::string ITEM_THREE = "BASICGROUPITEM_THREE";
+    public: static inline const std::string ITEM_THREE = "BASICGROUPITEM_THREE";
 
-    public: static const std::string ITEM_FOUR = "BASICGROUPITEM_FOUR";
+    public: static inline const std::string ITEM_FOUR = "BASICGROUPITEM_FOUR";
 
-    public: static const std::string ITEM_FIVE = "BASICGROUPITEM_FIVE";
+    public: static inline const std::string ITEM_FIVE = "BASICGROUPITEM_FIVE";
 
-    public: static const std::string ITEM_SIX = "BASICGROUPITEM_SIX";
+    public: static inline const std::string ITEM_SIX = "BASICGROUPITEM_SIX";
 
-    public: static const std::string ITEM_SEVEN = "BASICGROUPITEM_SEVEN";
+    public: static inline const std::string ITEM_SEVEN = "BASICGROUPITEM_SEVEN";
 
-    public: static const std::string ITEM_EIGHT = "BASICGROUPITEM_EIGHT";
+    public: static inline const std::string ITEM_EIGHT = "BASICGROUPITEM_EIGHT";
 
-    public: static const std::string ITEM_NINE = "BASICGROUPITEM_NINE";
+    public: static inline const std::string ITEM_NINE = "BASICGROUPITEM_NINE";
 
-    public: static const std::string ITEM_TEN = "BASICGROUPITEM_TEN";
+    public: static inline const std::string ITEM_TEN = "BASICGROUPITEM_TEN";
 
 };
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Throwable.h"
@@ -48,18 +54,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InvocationHandler.h"
+        #include "org/allbinary/logic/java/proxy/InvocationHandler.h"
 
 class InterfaceCastProxy
             : public Object
-        : public java::lang::reflect::InvocationHandler {
+        , public java::lang::reflect::InvocationHandler {
 
     public: static Object* newInstance(Object* anyType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Proxy::newProxyInstance(anyType->constructor.namegetClassLoader(), anyType->constructor.name.getInterfaces(), InterfaceCastProxy(anyType));;
+                        return Proxy::newProxyInstance(anyType->getClass()getClassLoader(), anyType->getClass()->getInterfaces(), new InterfaceCastProxy(anyType));;
     
 }
 
@@ -74,22 +80,22 @@ this->anyType= anyType;
 
                 //@Throws(Throwable.constructor)
             
-    public: Object* invoke(Object* proxyObject, Method proxyMethod, std::vector<Object*> proxyArgs){
+    public: Object* invoke(Object* proxyObject, Method* proxyMethod, std::vector<Object*> proxyArgs){
 
-    std::string methodName = proxyMethod.getName();;
+    std::string methodName = proxyMethod->getName();;
     
 
-    Method realMethod = this->anyType->constructor.name.getMethod(methodName, proxyMethod.getParameterTypes());;
+    Method* realMethod = this->anyType->getClass()->getMethod(methodName, proxyMethod->getParameterTypes());;
     
 
-                        if(!realMethod.isAccessible())
-                        realMethod.setAccessible(true);
+                        if(!realMethod->isAccessible())
+                        realMethod->setAccessible(true);
                                 
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return proxyMethod.invoke(this->anyType, proxyArgs);;
+                        return proxyMethod->invoke(this->anyType, proxyArgs);;
     
 }
 

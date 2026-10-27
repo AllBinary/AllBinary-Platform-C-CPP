@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/init/InitInterface.h>
 
       
@@ -42,7 +48,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaintableInterface.h"
+        #include "org/allbinary/graphics/paint/PaintableInterface.h"
 
 class InitUpdatePaintableInterface: public InitInterface, public UpdateInterface, public PaintableInterface {
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,7 +69,7 @@ class ImageComparisonResultCacheSingleton
             : public Object
          {
 
-    private: static CacheInterface cacheInterface = 
+    private: static inline CacheInterface* cacheInterface = 
                 null
             ;
 
@@ -71,10 +77,10 @@ class ImageComparisonResultCacheSingleton
                 static int32_t init() { 
                     
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
     std::string STATIC_BLOCK = "Static Block";;
@@ -84,17 +90,17 @@ class ImageComparisonResultCacheSingleton
     
 
         try {
-            logUtil.putF(commonStrings.START, instance, STATIC_BLOCK);
+            logUtil->putF(commonStrings->START, instance, STATIC_BLOCK);
     
-ImageComparisonResultCacheSingleton::cacheInterface= CacheInterfaceFactory::getInstance(CacheTypeFactory::getInstance().CACHE, CachePolicyFactory::getInstance().ONE_MINUTE_FIVE_MAX);
+ImageComparisonResultCacheSingleton::cacheInterface= CacheInterfaceFactory::getInstance(CacheTypeFactory::getInstance()->CACHE, CachePolicyFactory::getInstance()->ONE_MINUTE_FIVE_MAX);
     
-logUtil.putF(commonStrings.END, instance, STATIC_BLOCK);
+logUtil->putF(commonStrings->END, instance, STATIC_BLOCK);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-logUtil.put(commonStrings.EXCEPTION, instance, STATIC_BLOCK, e);
+logUtil->put(commonStrings->EXCEPTION, instance, STATIC_BLOCK, &e);
     
 }
 
@@ -103,7 +109,7 @@ logUtil.put(commonStrings.EXCEPTION, instance, STATIC_BLOCK, e);
                     return 0;
                 }
             
-    public: static CacheInterface getInstance(){
+    public: static CacheInterface* getInstance(){
 
 
 
@@ -113,7 +119,7 @@ logUtil.put(commonStrings.EXCEPTION, instance, STATIC_BLOCK, e);
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: ImageComparisonResultCacheSingleton(){
 }

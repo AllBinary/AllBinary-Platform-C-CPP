@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -82,32 +88,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PlayerGameInput.h"
-#include "InputFactory.h"
-#include "GameInputProcessor.h"
-#include "ScrollMapUpGameInputProcessor.h"
-#include "ScrollMapDownGameInputProcessor.h"
-#include "ScrollMapRightGameInputProcessor.h"
-#include "ScrollMapLeftGameInputProcessor.h"
-#include "GameInputProcessorUtil.h"
+        #include "org/allbinary/game/input/PlayerGameInput.h"
+#include "org/allbinary/game/input/InputFactory.h"
+#include "org/allbinary/game/input/GameInputProcessor.h"
+#include "org/allbinary/game/input/ScrollMapUpGameInputProcessor.h"
+#include "org/allbinary/game/input/ScrollMapDownGameInputProcessor.h"
+#include "org/allbinary/game/input/ScrollMapRightGameInputProcessor.h"
+#include "org/allbinary/game/input/ScrollMapLeftGameInputProcessor.h"
+#include "org/allbinary/game/input/GameInputProcessorUtil.h"
 
 class ScrollMapPlayerGameInput: public PlayerGameInput {
 
-    protected: const std::vector<GameInputProcessor> inputProcessorArray = std::vector<GameInputProcessor>(InputFactory::getInstance().MAX);
+    protected: const std::vector<GameInputProcessor*> inputProcessorArray = std::vector<GameInputProcessor*>(InputFactory::getInstance()->MAX);
 
     private: const int32_t border = 150;
 
-    private: BasicArrayList inputList;
+    private: BasicArrayList* inputList;
 
-    protected: const bool isSingleKeyProcessing = Features::getInstance().isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_REPEAT_PRESS) || Features::getInstance().isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_PRESS);
+    protected: const bool isSingleKeyProcessing = Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_REPEAT_PRESS) || Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_PRESS);
 
-    private: BasicGeographicMap geographicMapInterface;
+    private: BasicGeographicMap* geographicMapInterface;
 
     private: int32_t maxBottom= 0;
 
     private: int32_t maxRight= 0;
 
-public: ScrollMapPlayerGameInput(BasicGeographicMap geographicMapInterface, BasicArrayList list, int32_t playerInputId) : PlayerGameInput(list, BasicArrayListD(), playerInputId){
+public: ScrollMapPlayerGameInput(BasicGeographicMap* geographicMapInterface, BasicArrayList* list, int32_t playerInputId) : PlayerGameInput(list, new BasicArrayListD(), playerInputId){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -125,19 +131,19 @@ this->init();
 }
 
 
-    private: const ScrollMapEvent scrollMapEvent = ScrollMapEvent(this);
+    private: ScrollMapEvent* scrollMapEvent = new ScrollMapEvent(this);
 
                 //@Throws(Exception.constructor)
             
     private: void move(int32_t dx, int32_t dy){
 
-    AllBinaryTiledLayer terrainTiledLayer = this->geographicMapInterface.getAllBinaryTiledLayer();;
+    AllBinaryTiledLayer* terrainTiledLayer = this->geographicMapInterface->getAllBinaryTiledLayer();;
     
-terrainTiledLayer.moveDXY( -dx,  -dy);
+terrainTiledLayer->moveDXY( -dx,  -dy);
     
-this->scrollMapEvent.setDxDy( -dx,  -dy);
+this->scrollMapEvent->setDxDy( -dx,  -dy);
     
-ScrollMapEventHandler::getInstance().fireEvent(this->scrollMapEvent);
+ScrollMapEventHandler::getInstance()->fireEvent(this->scrollMapEvent);
     
 }
 
@@ -154,19 +160,19 @@ this->maxRight= this->getSpecialWidth();
             
     public: void scrollMiddleX(){
 
-    AllBinaryTiledLayer terrainTiledLayer = this->geographicMapInterface.getAllBinaryTiledLayer();;
+    AllBinaryTiledLayer* terrainTiledLayer = this->geographicMapInterface->getAllBinaryTiledLayer();;
     
 
-    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
+    DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
-this->move( -terrainTiledLayer.getXP(), 0);
+this->move( -terrainTiledLayer->getXP(), 0);
     
 
-                        if(terrainTiledLayer.getWidth() < displayInfo.getLastWidth())
+                        if(terrainTiledLayer->getWidth() < displayInfo->getLastWidth())
                         
                                     {
                                     
-    int32_t diffX = ((displayInfo.getLastWidth() -terrainTiledLayer.getWidth())>>1);;
+    int32_t diffX = ((displayInfo->getLastWidth() -terrainTiledLayer->getWidth())>>1);;
     
 this->move( -diffX, 0);
     
@@ -175,7 +181,7 @@ this->move( -diffX, 0);
                                 
                         else {
                             
-    int32_t diffX = ((terrainTiledLayer.getWidth() -displayInfo.getLastWidth())>>1);;
+    int32_t diffX = ((terrainTiledLayer->getWidth() -displayInfo->getLastWidth())>>1);;
     
 this->move(diffX, 0);
     
@@ -189,10 +195,10 @@ this->move(diffX, 0);
             
     public: void scrollY(int32_t anchor){
 
-    AllBinaryTiledLayer terrainTiledLayer = this->geographicMapInterface.getAllBinaryTiledLayer();;
+    AllBinaryTiledLayer* terrainTiledLayer = this->geographicMapInterface->getAllBinaryTiledLayer();;
     
 
-    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
+    DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
 
                         if(anchor == Graphics::TOP)
@@ -210,7 +216,7 @@ this->move(diffX, 0);
                                     this->logUtil.putF("Bottom", this, "scrollY");
     
 
-    int32_t diffY = (terrainTiledLayer.getHeight() -displayInfo.getLastHeight());;
+    int32_t diffY = (terrainTiledLayer->getHeight() -displayInfo->getLastHeight());;
     
 this->move(0, diffY);
     
@@ -224,7 +230,7 @@ this->move(0, diffY);
                                     this->logUtil.putF("Center", this, "scrollY");
     
 
-    int32_t diffY = (terrainTiledLayer.getHeight() -displayInfo.getLastHeight()) /2;;
+    int32_t diffY = (terrainTiledLayer->getHeight() -displayInfo->getLastHeight()) /2;;
     
 this->move(0, diffY);
     
@@ -235,7 +241,7 @@ this->move(0, diffY);
                             
 
 
-                            throw Exception("No Such Anchor Supported");
+                            throw new Exception("No Such Anchor Supported");
                     
 
                         }
@@ -247,7 +253,7 @@ this->move(0, diffY);
             
     protected: void up(){
 
-    int32_t y = this->geographicMapInterface.getAllBinaryTiledLayer().getYP() -10;;
+    int32_t y = this->geographicMapInterface->getAllBinaryTiledLayer()->getYP() -10;;
     
 
                         if(this->keepOnMapMinY(y))
@@ -265,7 +271,7 @@ this->move(0, diffY);
             
     protected: void down(){
 
-    int32_t y =  -this->geographicMapInterface.getAllBinaryTiledLayer().getYP() +10;;
+    int32_t y =  -this->geographicMapInterface->getAllBinaryTiledLayer()->getYP() +10;;
     
 
                         if(this->keepOnMapMaxY(y))
@@ -283,7 +289,7 @@ this->move(0, diffY);
             
     protected: void right(){
 
-    int32_t x = this->geographicMapInterface.getAllBinaryTiledLayer().getYP() +10;;
+    int32_t x = this->geographicMapInterface->getAllBinaryTiledLayer()->getYP() +10;;
     
 
                         if(this->keepOnMapMinX(x))
@@ -301,7 +307,7 @@ this->move(0, diffY);
             
     protected: void left(){
 
-    int32_t x =  -this->geographicMapInterface.getAllBinaryTiledLayer().getYP() -10;;
+    int32_t x =  -this->geographicMapInterface->getAllBinaryTiledLayer()->getYP() -10;;
     
 
                         if(this->keepOnMapMaxX(x))
@@ -316,13 +322,13 @@ this->move(0, diffY);
 
 
     public: void initInputProcessors(){
-this->inputProcessorArray[Canvas::UP]= ScrollMapUpGameInputProcessor(this);
+this->inputProcessorArray[Canvas::UP]= new ScrollMapUpGameInputProcessor(this);
     
-this->inputProcessorArray[Canvas::DOWN]= ScrollMapDownGameInputProcessor(this);
+this->inputProcessorArray[Canvas::DOWN]= new ScrollMapDownGameInputProcessor(this);
     
-this->inputProcessorArray[Canvas::KEY_NUM9]= ScrollMapRightGameInputProcessor(this);
+this->inputProcessorArray[Canvas::KEY_NUM9]= new ScrollMapRightGameInputProcessor(this);
     
-this->inputProcessorArray[Canvas::KEY_NUM7]= ScrollMapLeftGameInputProcessor(this);
+this->inputProcessorArray[Canvas::KEY_NUM7]= new ScrollMapLeftGameInputProcessor(this);
     
 GameInputProcessorUtil::init(this->inputProcessorArray);
     
@@ -339,11 +345,11 @@ this->inputProcessorArray[key].processEvent(AllBinaryGameLayerManager::getNullIn
 
                 //@Throws(Exception.constructor)
             
-    public: void processInput(AllBinaryLayerManager layerManager){
+    public: void processInput(AllBinaryLayerManager* layerManager){
 
         try {
             
-    int32_t size = this->inputList.size();;
+    int32_t size = this->inputList->size();;
     
 
     int32_t key = 0;;
@@ -356,9 +362,9 @@ this->inputProcessorArray[key].processEvent(AllBinaryGameLayerManager::getNullIn
     int32_t index = 0;index < size; index++)
         {
 
-    GameKeyEvent gameKeyEvent = this->inputList.get(index);;
+    GameKeyEvent* gameKeyEvent = dynamic_cast<GameKeyEvent*>(this->inputList->get(index));;
     
-key= gameKeyEvent.getKey();
+key= gameKeyEvent->getKey();
     
 this->processInputKey(key);
     
@@ -381,9 +387,9 @@ this->processInputKey(key);
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PROCESS_INPUT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PROCESS_INPUT, &e);
     
 }
 
@@ -392,20 +398,20 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PR
 
     private: int32_t getSpecialHeight(){
 
-    AllBinaryTiledLayer terrainTiledLayer = this->geographicMapInterface.getAllBinaryTiledLayer();;
+    AllBinaryTiledLayer* terrainTiledLayer = this->geographicMapInterface->getAllBinaryTiledLayer();;
     
 
-    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
+    DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-                        if(terrainTiledLayer.getHeight() > displayInfo.getLastHeight())
+                        if(terrainTiledLayer->getHeight() > displayInfo->getLastHeight())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return terrainTiledLayer.getHeight() -displayInfo.getLastHeight();
+                        return terrainTiledLayer->getHeight() -displayInfo->getLastHeight();
     
 
                                     }
@@ -415,7 +421,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PR
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return displayInfo.getLastHeight() -terrainTiledLayer.getHeight() +terrainTiledLayer.getCellHeight();
+                        return displayInfo->getLastHeight() -terrainTiledLayer->getHeight() +terrainTiledLayer->getCellHeight();
     
 
                         }
@@ -425,20 +431,20 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PR
 
     private: int32_t getSpecialWidth(){
 
-    AllBinaryTiledLayer terrainTiledLayer = this->geographicMapInterface.getAllBinaryTiledLayer();;
+    AllBinaryTiledLayer* terrainTiledLayer = this->geographicMapInterface->getAllBinaryTiledLayer();;
     
 
-    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
+    DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-                        if(terrainTiledLayer.getWidth() > displayInfo.getLastWidth())
+                        if(terrainTiledLayer->getWidth() > displayInfo->getLastWidth())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return terrainTiledLayer.getWidth() -displayInfo.getLastWidth();
+                        return terrainTiledLayer->getWidth() -displayInfo->getLastWidth();
     
 
                                     }
@@ -448,7 +454,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PR
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return displayInfo.getLastWidth() -terrainTiledLayer.getWidth() +terrainTiledLayer.getCellWidth();
+                        return displayInfo->getLastWidth() -terrainTiledLayer->getWidth() +terrainTiledLayer->getCellWidth();
     
 
                         }
@@ -458,7 +464,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PR
 
     public: bool keepOnMapMaxY(int32_t newY){
 
-    int32_t y = this->geographicMapInterface.getAllBinaryTiledLayer().getYP();;
+    int32_t y = this->geographicMapInterface->getAllBinaryTiledLayer()->getYP();;
     
 
                         if(y > this->maxBottom +this->border)
@@ -488,7 +494,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PR
 
     public: bool keepOnMapMinY(int32_t newY){
 
-    int32_t y = this->geographicMapInterface.getAllBinaryTiledLayer().getYP();;
+    int32_t y = this->geographicMapInterface->getAllBinaryTiledLayer()->getYP();;
     
 
                         if(y <  -this->border)
@@ -518,7 +524,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PR
 
     public: bool keepOnMapMaxX(int32_t newX){
 
-    int32_t x = this->geographicMapInterface.getAllBinaryTiledLayer().getXP();;
+    int32_t x = this->geographicMapInterface->getAllBinaryTiledLayer()->getXP();;
     
 
                         if(x <  -this->maxRight -this->border)
@@ -548,7 +554,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PR
 
     public: bool keepOnMapMinX(int32_t newX){
 
-    int32_t x = this->geographicMapInterface.getAllBinaryTiledLayer().getXP();;
+    int32_t x = this->geographicMapInterface->getAllBinaryTiledLayer()->getXP();;
     
 
                         if(x > this->border)

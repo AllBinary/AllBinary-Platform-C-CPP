@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -77,36 +83,36 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchButtonInput.h"
+        #include "org/allbinary/input/motion/button/TouchButtonInput.h"
 
 class TouchButton: public Paintable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: TouchButtonInput touchButtonInput;
+    private: TouchButtonInput* touchButtonInput;
 
-    private: Animation animationInterface;
+    private: Animation* animationInterface;
 
-    protected: Rectangle rawRectangle;
+    protected: Rectangle* rawRectangle;
 
     protected: int32_t xBorder;
 
     protected: int32_t yBorder;
 
-    protected: Rectangle rectangle = RectangleFactory::SINGLETON;
+    protected: Rectangle* rectangle = RectangleFactory::SINGLETON;
 
-    protected: CellPosition cellPosition;
+    protected: CellPosition* cellPosition;
 
     protected: int32_t animationX= 0;
 
     protected: int32_t animationY= 0;
 
-public: TouchButton(TouchButtonInput touchButtonInput, AnimationInterface animationInterface, Rectangle rawRectangle, CellPosition cellPosition, int32_t xBorder, int32_t yBorder){
+public: TouchButton(TouchButtonInput* touchButtonInput, AnimationInterface* animationInterface, Rectangle* rawRectangle, CellPosition* cellPosition, int32_t xBorder, int32_t yBorder){
 this->touchButtonInput= touchButtonInput;
     
-this->animationInterface= animationInterface;
+this->animationInterface= dynamic_cast<Animation*>(animationInterface);
     
 this->rawRectangle= rawRectangle;
     
@@ -118,13 +124,13 @@ this->yBorder= yBorder;
     
 this->updateRectangle();
     
-this->logUtil.putF(StringMaker().append("Created: ").append(this->toString()).toString(), this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF((new StringMaker())->append("Created: ")->append(this->toString())->toString(), this, this->commonStrings->CONSTRUCTOR);
     
 }
 
 
-    public: void paint(Graphics graphics){
-this->animationInterface.paintXY(graphics, animationX, this->animationY);
+    public: void paint(Graphics* graphics){
+this->animationInterface->paintXY(graphics, animationX, this->animationY);
     
 }
 
@@ -133,35 +139,35 @@ this->animationInterface.paintXY(graphics, animationX, this->animationY);
 
         try {
             
-    int32_t x = this->rawRectangle.getWidth() *this->cellPosition.getColumn();;
+    int32_t x = this->rawRectangle->getWidth() *this->cellPosition->getColumn();;
     
 
-    int32_t y = this->rawRectangle.getHeight() *this->cellPosition.getRow();;
+    int32_t y = this->rawRectangle->getHeight() *this->cellPosition->getRow();;
     
 
-    PointFactory pointFactory = PointFactory::getInstance();;
+    PointFactory* pointFactory = PointFactory::getInstance();;
     
-this->rectangle= Rectangle(pointFactory.createXY(x +this->xBorder, y +this->yBorder), this->rawRectangle.getWidth(), this->rawRectangle.getHeight());
+this->rectangle= new Rectangle(pointFactory->createXY(x +this->xBorder, y +this->yBorder), this->rawRectangle->getWidth(), this->rawRectangle->getHeight());
     
 
-    GPoint point = this->rectangle.getPoint();;
+    GPoint* point = this->rectangle->getPoint();;
     
-this->animationX= point.getX();
+this->animationX= point->getX();
     
-this->animationY= point.getY();
+this->animationY= point->getY();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "updateRectangle", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "updateRectangle", &e);
     
 }
 
 }
 
 
-    public: CellPosition getCellPositionP(){
+    public: CellPosition* getCellPositionP(){
 
 
 
@@ -171,7 +177,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "updateRectangle", e);
 }
 
 
-    public: Rectangle getRectangleP(){
+    public: Rectangle* getRectangleP(){
 
 
 
@@ -181,7 +187,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "updateRectangle", e);
 }
 
 
-    public: TouchButtonInput getTouchButtonInput(){
+    public: TouchButtonInput* getTouchButtonInput(){
 
 
 
@@ -193,32 +199,32 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "updateRectangle", e);
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
-stringBuffer.append("TouchButton: ");
+stringBuffer->append("TouchButton: ");
     
-stringBuffer.append(stringUtil.toString(this->rectangle));
+stringBuffer->append(stringUtil->toString(this->rectangle));
     
-stringBuffer.append(" CellPosition: ");
+stringBuffer->append(" CellPosition: ");
     
-stringBuffer.append(stringUtil.toString(this->cellPosition));
+stringBuffer->append(stringUtil->toString(this->cellPosition));
     
-stringBuffer.append(" xBorder: ");
+stringBuffer->append(" xBorder: ");
     
-stringBuffer.appendint(this->xBorder);
+stringBuffer->appendint(this->xBorder);
     
-stringBuffer.append(" yBorder: ");
+stringBuffer->append(" yBorder: ");
     
-stringBuffer.appendint(this->yBorder);
+stringBuffer->appendint(this->yBorder);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

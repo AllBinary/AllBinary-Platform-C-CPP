@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INIT_UPDATEINTERFACE_H
         #define ORG_ALLBINARY_INIT_UPDATEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -46,7 +52,7 @@ class UpdateInterface {
 
                 //@Throws(Exception.constructor)
             
-    void update();
+    public: virtual void update() = 0;
 
 };
 

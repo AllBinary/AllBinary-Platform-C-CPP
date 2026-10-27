@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,8 +67,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CssPropertyData.h"
-#include "CssPropertyValidationFactory.h"
+        #include "org/allbinary/logic/visual/dhtml/style/css/property/CssPropertyData.h"
+#include "org/allbinary/logic/visual/dhtml/style/css/property/CssPropertyValidationFactory.h"
 
 class CssPropertiesValidationFactory
             : public Object
@@ -70,28 +76,28 @@ class CssPropertiesValidationFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList getInstance(NodeList nodeList){
+    public: static BasicArrayList* getInstance(NodeList* nodeList){
 
-    BasicArrayList propertiesVector = BasicArrayListD();;
+    BasicArrayList* propertiesVector = new BasicArrayListD();;
     
 
 
 
 
                         for (
-    int32_t index = 0;index < nodeList.getLength(); index++)
+    int32_t index = 0;index < nodeList->getLength(); index++)
         {
 
-    Node node = nodeList.item(index);;
+    Node* node = nodeList->item(index);;
     
 
-                        if(node.getNodeName().compareTo(CssPropertyData::getInstance().NAME) == 0)
+                        if(node->getNodeName()->compareTo(CssPropertyData::getInstance()->NAME) == 0)
                         
                                     {
                                     
-    ValidationInterface cssPropertyValidationInterface = CssPropertyValidationFactory::getInstance(node);;
+    ValidationInterface* cssPropertyValidationInterface = dynamic_cast<ValidationInterface*>(CssPropertyValidationFactory::getInstance(node));;
     
-propertiesVector.add(cssPropertyValidationInterface);
+propertiesVector->add(cssPropertyValidationInterface);
     
 
                                     }
@@ -107,9 +113,9 @@ propertiesVector.add(cssPropertyValidationInterface);
 }
 
 
-    public: static BasicArrayList getInstance(HashMap<Object*, Object*> hashMap){
+    public: static BasicArrayList* getInstance(HashMap<Object*, Object*>* hashMap){
 
-    BasicArrayList styles = BasicArrayListD();;
+    BasicArrayList* styles = new BasicArrayListD();;
     
 
 

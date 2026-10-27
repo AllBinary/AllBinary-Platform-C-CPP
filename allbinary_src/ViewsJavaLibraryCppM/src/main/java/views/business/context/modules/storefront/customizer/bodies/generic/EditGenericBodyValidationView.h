@@ -21,6 +21,12 @@
         #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_BODIES_GENERIC_EDITGENERICBODYVALIDATIONVIEW_H
         #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_BODIES_GENERIC_EDITGENERICBODYVALIDATIONVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -65,21 +71,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GenericBodyCustomizerView.h"
+        #include "views/business/context/modules/storefront/customizer/bodies/generic/GenericBodyCustomizerView.h"
 
 class EditGenericBodyValidationView: public GenericBodyCustomizerView, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: EditGenericBodyValidationView(TransformInfoInterface transformInfoInterface);
+public: EditGenericBodyValidationView(TransformInfoInterface* transformInfoInterface);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string validationInfo();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
 };
 

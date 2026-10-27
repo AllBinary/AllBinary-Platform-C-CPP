@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FONT_FONTDEBUGFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_FONT_FONTDEBUGFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -52,11 +58,11 @@ class FontDebugFactory
             : public Object
          {
 
-    private: static FontDebugFactory instance() { return FontDebugFactory(); }
+    private: static FontDebugFactory* instance() { static std::unique_ptr<FontDebugFactory> value(new FontDebugFactory()); return value.get(); }
 
-    public: static FontDebugFactory getInstance();
+    public: static FontDebugFactory* getInstance();
 
-    public: void setFont(Font font, Graphics graphics);
+    public: void setFont(Font* font, Graphics* graphics);
 
 };
 

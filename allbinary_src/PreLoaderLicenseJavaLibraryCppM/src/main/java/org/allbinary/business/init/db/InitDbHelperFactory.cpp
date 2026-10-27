@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -51,22 +57,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DatabaseConnectionInfoInterface.h"
+        #include "org/allbinary/business/init/db/DatabaseConnectionInfoInterface.h"
 
 class InitDbHelperFactory
             : public Object
          {
 
-    private: static const std::string CLASSNAME = "org.allbinary.business.installer.InitDbCrypted";
+    private: static inline const std::string CLASSNAME = "org.allbinary.business.installer.InitDbCrypted";
 
                 //@Throws(LicensingException.constructor)
             
-    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, DatabaseConnectionInfoInterface databaseConnectionInfoInterface){
+    public: static Object* getInstance(AbeClientInformationInterface* abeClientInformation, DatabaseConnectionInfoInterface* databaseConnectionInfoInterface){
 
     std::vector<Object*> params = std::vector<Object*>(1);;
     
 
-    std::vector<Class*> classes = std::vector<Class>(1);;
+    std::vector<Class*> classes = std::vector<Class*>(1);;
     
 classes[0]= 
                                     //Otherwise - expression - AssignExpr - value - ClassExpr
@@ -75,7 +81,7 @@ classes[0]=
 params[0]= databaseConnectionInfoInterface;
     
 
-    Object* anyType = AbeFactory::getInstance().getInstance(abeClientInformation, CLASSNAME, classes, params);;
+    Object* anyType = AbeFactory::getInstance()->getInstance(abeClientInformation, CLASSNAME, classes, params);;
     
 
 
@@ -88,9 +94,9 @@ params[0]= databaseConnectionInfoInterface;
 
                 //@Throws(LicensingException.constructor)
             
-    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation){
+    public: static Object* getInstance(AbeClientInformationInterface* abeClientInformation){
 
-    Object* anyType = AbeFactory::getInstance().getInstance(abeClientInformation, CLASSNAME, 
+    Object* anyType = AbeFactory::getInstance()->getInstance(abeClientInformation, CLASSNAME, 
                             nullptr, 
                             nullptr);;
     

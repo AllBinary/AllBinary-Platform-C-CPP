@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -57,13 +63,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputProbability.h"
+        #include "org/allbinary/game/ag/ai/InputProbability.h"
 
 class BasicProbabilityAIDataFactory
             : public Object
          {
 
-    public: ABHashtable<Object*, Object*> getInstance();
+    public: ABHashtable<Object*, Object*>* getInstance();
 
 };
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
@@ -46,18 +52,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NoHighScoresFactory.h"
-#include "HighScores.h"
+        #include "org/allbinary/game/score/NoHighScoresFactory.h"
+#include "org/allbinary/game/score/HighScores.h"
 
 class LastFetchHighScoresFactory
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static LastFetchHighScoresFactory getInstance();
+    public: static LastFetchHighScoresFactory* getInstance();
 
-    public: std::vector<HighScores> highScoresArray = NoHighScoresFactory::getInstance().NO_HIGH_SCORES;
+    public: std::vector<HighScores*> highScoresArray = NoHighScoresFactory::getInstance()->NO_HIGH_SCORES;
 
 };
 

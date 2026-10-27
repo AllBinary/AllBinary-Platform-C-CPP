@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/awt/image/BufferedImage.h>
@@ -55,24 +61,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageProcessorInput.h"
-#include "ImageProcessedVisitor.h"
+        #include "org/allbinary/media/image/ImageProcessorInput.h"
+#include "org/allbinary/media/image/ImageProcessedVisitor.h"
 
 class CanvasTrimUtil
             : public Object
          {
 
-    private: static CanvasTrimUtil instance() { return CanvasTrimUtil(); }
+    private: static CanvasTrimUtil* instance() { static std::unique_ptr<CanvasTrimUtil> value(new CanvasTrimUtil()); return value.get(); }
 
-    public: static CanvasTrimUtil getInstance();
+    public: static CanvasTrimUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const StringUtil stringUtil = StringUtil::getInstance();
+    private: StringUtil* stringUtil = StringUtil::getInstance();
 
                 //@Throws(IOException.constructor)
             
-    public: void process(ImageProcessorInput imageProcessorInput, int32_t cutCanvasFromLeftReduction, int32_t cutCanvasFromTopReduction, int32_t cutCanvasFromRightReduction, int32_t cutCanvasFromBottomReduction, ImageProcessedVisitor visitor);
+    public: void process(ImageProcessorInput* imageProcessorInput, int32_t cutCanvasFromLeftReduction, int32_t cutCanvasFromTopReduction, int32_t cutCanvasFromRightReduction, int32_t cutCanvasFromBottomReduction, ImageProcessedVisitor* visitor);
 
 };
 

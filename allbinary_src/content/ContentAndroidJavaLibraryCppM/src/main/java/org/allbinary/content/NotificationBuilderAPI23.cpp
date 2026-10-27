@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/System.h"
         
             #include "java/lang/Integer.h"
@@ -58,13 +64,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NotificationBuilder.h"
+        #include "org/allbinary/content/NotificationBuilder.h"
 
 class NotificationBuilderAPI23: public NotificationBuilder {
 
-    public: Parcelable build(Context context, Command command, std::string message, Integer integer, PendingIntent pendingIntent){
+    public: Parcelable* build(Context* context, Command* command, std::string message, int32_t integer, PendingIntent* pendingIntent){
 
-    Notification notification = Builder(context).setSmallIcon(integer.intValue()).setTicker(message).setWhen(System.currentTimeMillis()).setContentTitle(command.getLabel()).setContentText(message).setContentIntent(pendingIntent).build();;
+    Notification* notification = (new Builder(context))->setSmallIcon(integer.intValue())->setTicker(message)->setWhen(System.currentTimeMillis())->setContentTitle(command->getLabel())->setContentText(message)->setContentIntent(pendingIntent)->build();;
     
 
 

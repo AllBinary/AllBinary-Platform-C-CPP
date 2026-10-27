@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYVIEW_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,31 +73,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentGatewayInterface.h"
-#include "PaymentGatewayMapping.h"
-#include "PaymentGatewayData.h"
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h"
+#include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayMapping.h"
+#include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayData.h"
 
 class PaymentGatewayView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: PaymentGatewayInterface paymentGatewayInterface;
+    private: PaymentGatewayInterface* paymentGatewayInterface;
 
-public: PaymentGatewayView(PaymentGatewayInterface paymentGatewayInterface);
+public: PaymentGatewayView(PaymentGatewayInterface* paymentGatewayInterface);
 
-    public: PaymentGatewayInterface getPaymentGatewayInterface();
-
-                //@Throws(Exception.constructor)
-            
-    public: HashMap<Object*, Object*> toHashMap();
+    public: PaymentGatewayInterface* getPaymentGatewayInterface();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: HashMap<Object*, Object*>* toHashMap();
+
+                //@Throws(Exception.constructor)
+            
+    public: Node* toXmlNode(Document* document);
 
 };
 

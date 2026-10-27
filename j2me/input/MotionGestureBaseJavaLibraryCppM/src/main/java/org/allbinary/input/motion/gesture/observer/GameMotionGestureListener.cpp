@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -70,131 +76,131 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionGestureEventListener.h"
-#include "CompleteMotionGestureListenerInterface.h"
-#include "MotionGestureEvent.h"
+        #include "org/allbinary/input/motion/gesture/observer/MotionGestureEventListener.h"
+#include "org/allbinary/input/motion/gesture/observer/CompleteMotionGestureListenerInterface.h"
+#include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
 
 class GameMotionGestureListener
             : public Object
-        : public MotionGestureEventListener {
+        , public MotionGestureEventListener {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: BasicArrayList motionGestureCollection = BasicArrayListD();
+    private: BasicArrayList* motionGestureCollection = new BasicArrayListD();
 
-    private: BasicArrayList touchGestureCollection = BasicArrayListD();
+    private: BasicArrayList* touchGestureCollection = new BasicArrayListD();
 
-    private: CompleteMotionGestureListenerInterface signed;
+    private: CompleteMotionGestureListenerInterface* signed_;
 
-public: GameMotionGestureListener(CompleteMotionGestureListenerInterface signed){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+public: GameMotionGestureListener(CompleteMotionGestureListenerInterface* signed_){
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
-this->signed= signed;
-    
-}
-
-
-    public: void onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
+this->signed_= signed_;
     
 }
 
 
-    public: void onUpMotionGestureEvent(MotionGestureEvent ev){
+    public: void onEvent(AllBinaryEventObject* eventObject){
+ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, this);
+    
+}
+
+
+    public: void onUpMotionGestureEvent(MotionGestureEvent* ev){
 this->onMotionGestureEvent(ev);
     
 }
 
 
-    public: void onDownMotionGestureEvent(MotionGestureEvent ev){
+    public: void onDownMotionGestureEvent(MotionGestureEvent* ev){
 this->onMotionGestureEvent(ev);
     
 }
 
 
-    public: void onLeftMotionGestureEvent(MotionGestureEvent ev){
+    public: void onLeftMotionGestureEvent(MotionGestureEvent* ev){
 this->onMotionGestureEvent(ev);
     
 }
 
 
-    public: void onRightMotionGestureEvent(MotionGestureEvent ev){
+    public: void onRightMotionGestureEvent(MotionGestureEvent* ev){
 this->onMotionGestureEvent(ev);
     
 }
 
 
-    public: void onDiagonalDownRightMotionGestureEvent(MotionGestureEvent ev){
+    public: void onDiagonalDownRightMotionGestureEvent(MotionGestureEvent* ev){
 this->onMotionGestureEvent(ev);
     
 }
 
 
-    public: void onDiagonalDownLeftMotionGestureEvent(MotionGestureEvent ev){
+    public: void onDiagonalDownLeftMotionGestureEvent(MotionGestureEvent* ev){
 this->onMotionGestureEvent(ev);
     
 }
 
 
-    public: void onDiagonalUpRightMotionGestureEvent(MotionGestureEvent ev){
+    public: void onDiagonalUpRightMotionGestureEvent(MotionGestureEvent* ev){
 this->onMotionGestureEvent(ev);
     
 }
 
 
-    public: void onDiagonalUpLeftMotionGestureEvent(MotionGestureEvent ev){
+    public: void onDiagonalUpLeftMotionGestureEvent(MotionGestureEvent* ev){
 this->onMotionGestureEvent(ev);
     
 }
 
 
-    public: void onPressedMotionGestureEvent(MotionGestureEvent ev){
-this->touchGestureCollection.add(ev.getMotionGesture());
+    public: void onPressedMotionGestureEvent(MotionGestureEvent* ev){
+this->touchGestureCollection->add(ev->getMotionGesture());
     
 }
 
 
-    public: void released(MotionGestureEvent ev){
+    public: void released(MotionGestureEvent* ev){
 
         try {
-            this->touchGestureCollection.add(ev.getMotionGesture());
+            this->touchGestureCollection->add(ev->getMotionGesture());
     
-this->signed.onMotionGestureCompleted(this->touchGestureCollection);
+this->signed_->onMotionGestureCompleted(this->touchGestureCollection);
     
-this->touchGestureCollection.clear();
+this->touchGestureCollection->clear();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->commonStrings.EXCEPTION_LABEL);
+stringBuffer->append(this->commonStrings->EXCEPTION_LABEL);
     
-stringBuffer.append(StringUtil::getInstance().toString(ev.getMotionGesture()));
+stringBuffer->append(StringUtil::getInstance()->toString(ev->getMotionGesture()));
     
-this->logUtil.put(stringBuffer.toString(), this, "release", e);
+this->logUtil->put(stringBuffer->toString(), this, "release", &e);
     
 }
 
 }
 
 
-    public: void onScrolledMotionGestureEvent(MotionGestureEvent motionGestureEvent){
+    public: void onScrolledMotionGestureEvent(MotionGestureEvent* motionGestureEvent){
 }
 
 
-    public: void onMotionGestureEvent(MotionGestureEvent ev){
+    public: void onMotionGestureEvent(MotionGestureEvent* ev){
 
         try {
             
-    MotionGestureInput motionGestureInput = ev.getMotionGesture();;
+    MotionGestureInput* motionGestureInput = ev->getMotionGesture();;
     
 
-                        if(motionGestureInput == TouchMotionGestureFactory::getInstance().PRESSED)
+                        if(motionGestureInput == TouchMotionGestureFactory::getInstance()->PRESSED)
                         
                                     {
                                     this->onPressedMotionGestureEvent(ev);
@@ -203,7 +209,7 @@ this->logUtil.put(stringBuffer.toString(), this, "release", e);
                                     }
                                 
                              else 
-                        if(motionGestureInput == TouchMotionGestureFactory::getInstance().RELEASED)
+                        if(motionGestureInput == TouchMotionGestureFactory::getInstance()->RELEASED)
                         
                                     {
                                     this->released(ev);
@@ -212,29 +218,29 @@ this->logUtil.put(stringBuffer.toString(), this, "release", e);
                                     }
                                 
                         else {
-                            this->motionGestureCollection.add(motionGestureInput);
+                            this->motionGestureCollection->add(motionGestureInput);
     
-this->signed.onMotionGestureCompleted(this->motionGestureCollection);
+this->signed_->onMotionGestureCompleted(this->motionGestureCollection);
     
-this->motionGestureCollection.clear();
+this->motionGestureCollection->clear();
     
-this->touchGestureCollection.clear();
+this->touchGestureCollection->clear();
     
 
                         }
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->commonStrings.EXCEPTION_LABEL);
+stringBuffer->append(this->commonStrings->EXCEPTION_LABEL);
     
-stringBuffer.append(StringUtil::getInstance().toString(ev.getMotionGesture()));
+stringBuffer->append(StringUtil::getInstance()->toString(ev->getMotionGesture()));
     
-this->logUtil.put(stringBuffer.toString(), this, "onMotionGestureEvent", e);
+this->logUtil->put(stringBuffer->toString(), this, "onMotionGestureEvent", &e);
     
 }
 

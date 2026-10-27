@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_SERVER_EMAILSERVERCONFIGURATIONVIEW_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_SERVER_EMAILSERVERCONFIGURATIONVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,26 +70,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "EmailServerConfigurationInterface.h"
-#include "EmailServerConfigurationData.h"
-#include "EmailServerConfiguration.h"
-#include "EmailServerConfigurationMapping.h"
+        #include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationInterface.h"
+#include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationData.h"
+#include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfiguration.h"
+#include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationMapping.h"
 
 class EmailServerConfigurationView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: EmailServerConfigurationInterface emailServerConfigurationInterface;
+    private: EmailServerConfigurationInterface* emailServerConfigurationInterface;
 
-public: EmailServerConfigurationView(Node node);
+public: EmailServerConfigurationView(Node* node);
 
-public: EmailServerConfigurationView(EmailServerConfigurationInterface emailServerConfigurationInterface);
+public: EmailServerConfigurationView(EmailServerConfigurationInterface* emailServerConfigurationInterface);
 
-    public: EmailServerConfigurationInterface getEmailConfigurationInterface();
+    public: EmailServerConfigurationInterface* getEmailConfigurationInterface();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

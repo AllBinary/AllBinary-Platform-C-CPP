@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_EMULATOR_INITEMULATORFACTORY_H
         #define ORG_ALLBINARY_EMULATOR_INITEMULATORFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class InitEmulatorFactory
             : public Object
          {
 
-    private: static InitEmulatorFactory instance() { return InitEmulatorFactory(); }
+    private: static InitEmulatorFactory* instance() { static std::unique_ptr<InitEmulatorFactory> value(new InitEmulatorFactory()); return value.get(); }
 
-    public: static InitEmulatorFactory getInstance();
+    public: static InitEmulatorFactory* getInstance();
 
     public: void setInitEmulator(bool initEmulator);
 

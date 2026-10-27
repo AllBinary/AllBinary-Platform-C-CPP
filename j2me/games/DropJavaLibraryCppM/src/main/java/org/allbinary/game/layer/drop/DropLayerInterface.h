@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_DROP_DROPLAYERINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_DROP_DROPLAYERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/pickup/PickedUpLayerInterface.h>
@@ -52,7 +58,7 @@ class DropLayerInterface: public LayerInterface {
 
                 //@Throws(Exception.constructor)
             
-    PickedUpLayerInterface getDroppedLayer();
+    public: virtual PickedUpLayerInterface* getDroppedLayer() = 0;
 
 };
 

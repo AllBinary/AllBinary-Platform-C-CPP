@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class XslData
             : public Object
          {
 
-    private: static XslData instance() { return XslData(); }
+    private: static XslData* instance() { static std::unique_ptr<XslData> value(new XslData()); return value.get(); }
 
-    public: static XslData getInstance(){
+    public: static XslData* getInstance(){
 
 
 

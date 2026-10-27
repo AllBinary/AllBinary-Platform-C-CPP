@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,28 +61,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserEmailEventConfigurationInterface.h"
-#include "UserEmailEventConfigurationData.h"
+        #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationInterface.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationData.h"
 
 class UserEmailEventConfigurationMapping
             : public Object
-        : public TableMappingInterface {
+        , public TableMappingInterface {
 
-    private: UserEmailEventConfigurationInterface userEmailEventConfigurationInterface;
+    private: UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface;
 
-public: UserEmailEventConfigurationMapping(UserEmailEventConfigurationInterface userEmailEventConfigurationInterface){
+public: UserEmailEventConfigurationMapping(UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface){
 this->userEmailEventConfigurationInterface= userEmailEventConfigurationInterface;
     
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(UserEmailEventConfigurationData::NAME, this->userEmailEventConfigurationInterface.getName());
+hashMap->put(UserEmailEventConfigurationData::NAME, this->userEmailEventConfigurationInterface->getName());
     
-hashMap.put(UserEmailEventConfigurationData::LISTENER_CLASSPATH, this->userEmailEventConfigurationInterface.getEventListenerClassPath());
+hashMap->put(UserEmailEventConfigurationData::LISTENER_CLASSPATH, this->userEmailEventConfigurationInterface->getEventListenerClassPath());
     
 
 
@@ -101,13 +107,13 @@ hashMap.put(UserEmailEventConfigurationData::LISTENER_CLASSPATH, this->userEmail
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList toVector(){
+    public: BasicArrayList* toVector(){
 
-    BasicArrayList vector = BasicArrayListD();;
+    BasicArrayList* vector = new BasicArrayListD();;
     
-vector.add(this->userEmailEventConfigurationInterface.getName());
+vector->add(this->userEmailEventConfigurationInterface->getName());
     
-vector.add(this->userEmailEventConfigurationInterface.getEventListenerClassPath());
+vector->add(this->userEmailEventConfigurationInterface->getEventListenerClassPath());
     
 
 

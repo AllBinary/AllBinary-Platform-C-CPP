@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -56,39 +62,39 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserConfigurationInterface.h"
+        #include "org/allbinary/business/user/modules/configuration/UserConfigurationInterface.h"
 
 class UserConfiguration
             : public Object
-        : public UserConfigurationInterface {
+        , public UserConfigurationInterface {
 
-    private: UserEmailConfigurationInterface userEmailConfigurationInterface;
+    private: UserEmailConfigurationInterface* userEmailConfigurationInterface;
 
-    private: TimeCreated timeCreated;
+    private: TimeCreated* timeCreated;
 
-    private: TimeLastModified timeLastModified;
+    private: TimeLastModified* timeLastModified;
 
 public: UserConfiguration(){
-this->userEmailConfigurationInterface= UserEmailConfiguration();
+this->userEmailConfigurationInterface= dynamic_cast<UserEmailConfigurationInterface*>(new UserEmailConfiguration());
     
-this->timeCreated= TimeCreated(0);
+this->timeCreated= new TimeCreated(0);
     
-this->timeLastModified= TimeLastModified(0);
-    
-}
-
-
-public: UserConfiguration(HashMap<Object*, Object*> hashMap){
-this->userEmailConfigurationInterface= UserEmailConfiguration(hashMap);
-    
-this->timeCreated= TimeCreated(hashMap.get(EntryData::getInstance().TIMECREATED));
-    
-this->timeLastModified= TimeLastModified(hashMap.get(EntryData::getInstance().LASTMODIFIED));
+this->timeLastModified= new TimeLastModified(0);
     
 }
 
 
-    public: UserEmailConfigurationInterface getUserEmailConfigurationInterface(){
+public: UserConfiguration(HashMap<Object*, Object*>* hashMap){
+this->userEmailConfigurationInterface= dynamic_cast<UserEmailConfigurationInterface*>(new UserEmailConfiguration(hashMap));
+    
+this->timeCreated= new TimeCreated(hashMap->get(EntryData::getInstance()->TIMECREATED));
+    
+this->timeLastModified= new TimeLastModified(hashMap->get(EntryData::getInstance()->LASTMODIFIED));
+    
+}
+
+
+    public: UserEmailConfigurationInterface* getUserEmailConfigurationInterface(){
 
 
 
@@ -98,13 +104,13 @@ this->timeLastModified= TimeLastModified(hashMap.get(EntryData::getInstance().LA
 }
 
 
-    public: void setUserEmailConfigurationInterface(UserEmailConfigurationInterface userEmailConfigurationInterface){
+    public: void setUserEmailConfigurationInterface(UserEmailConfigurationInterface* userEmailConfigurationInterface){
 this->userEmailConfigurationInterface= userEmailConfigurationInterface;
     
 }
 
 
-    public: TimeCreated getTimeCreated(){
+    public: TimeCreated* getTimeCreated(){
 
 
 
@@ -114,7 +120,7 @@ this->userEmailConfigurationInterface= userEmailConfigurationInterface;
 }
 
 
-    public: TimeLastModified getTimeLastModified(){
+    public: TimeLastModified* getTimeLastModified(){
 
 
 
@@ -124,13 +130,13 @@ this->userEmailConfigurationInterface= userEmailConfigurationInterface;
 }
 
 
-    public: void setTimeCreated(TimeCreated timeCreated){
+    public: void setTimeCreated(TimeCreated* timeCreated){
 this->timeCreated= timeCreated;
     
 }
 
 
-    public: void setTimeLastModified(TimeLastModified timeLastModified){
+    public: void setTimeLastModified(TimeLastModified* timeLastModified){
 this->timeLastModified= timeLastModified;
     
 }

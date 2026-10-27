@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h>
@@ -46,19 +52,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputAutomationModuleServiceInterface.h"
+        #include "bundle/input/automation/module/InputAutomationModuleServiceInterface.h"
 
 class InputAutomationModuleService
             : public Object
-        : public InputAutomationModuleServiceInterface {
+        , public InputAutomationModuleServiceInterface {
 
-    private: std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray;
+    private: std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterfaceArray;
 
-public: InputAutomationModuleService(std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray);
+public: InputAutomationModuleService(std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterfaceArray);
 
-    public: std::vector<InputAutomationModuleFactoryInterface> getInputAutomationModuleInterfaceArray();
+    public: std::vector<InputAutomationModuleFactoryInterface*> getInputAutomationModuleInterfaceArray();
 
-    public: void setInputAutomationModuleInterfaceArray(std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray);
+    public: void setInputAutomationModuleInterfaceArray(std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterfaceArray);
 
 };
 

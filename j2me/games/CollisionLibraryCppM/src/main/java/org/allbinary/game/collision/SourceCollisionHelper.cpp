@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/layer/CollidableCompositeLayer.h>
 
       
@@ -42,11 +48,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CollisionHelper.h"
+        #include "org/allbinary/game/collision/CollisionHelper.h"
 
 class SourceCollisionHelper: public CollisionHelper {
 
-public: SourceCollisionHelper(AllBinaryLayer layerInterface) : CollisionHelper(layerInterface){
+public: SourceCollisionHelper(AllBinaryLayer* layerInterface) : CollisionHelper(layerInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -56,7 +62,7 @@ public: SourceCollisionHelper(AllBinaryLayer layerInterface) : CollisionHelper(l
 }
 
 
-    public: bool isCollidable(CollidableCompositeLayer layerInterface){
+    public: bool isCollidable(CollidableCompositeLayer* layerInterface){
 
                         if(this->sourceLayerInterface != layerInterface)
                         

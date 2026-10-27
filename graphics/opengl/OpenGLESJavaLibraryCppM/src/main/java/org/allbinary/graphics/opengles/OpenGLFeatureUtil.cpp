@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/configuration/feature/Features.h>
@@ -41,16 +47,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLConfiguration.h"
-#include "OpenGLFeatureFactory.h"
+        #include "org/allbinary/graphics/opengles/OpenGLConfiguration.h"
+#include "org/allbinary/graphics/opengles/OpenGLFeatureFactory.h"
 
 class OpenGLFeatureUtil
             : public Object
          {
 
-    private: static OpenGLFeatureUtil instance() { return OpenGLFeatureUtil(); }
+    private: static OpenGLFeatureUtil* instance() { static std::unique_ptr<OpenGLFeatureUtil> value(new OpenGLFeatureUtil()); return value.get(); }
 
-    public: static OpenGLFeatureUtil getInstance(){
+    public: static OpenGLFeatureUtil* getInstance(){
 
 
 
@@ -64,15 +70,15 @@ class OpenGLFeatureUtil
 
 public: OpenGLFeatureUtil(){
 
-    OpenGLConfiguration openGLConfiguration = OpenGLConfiguration::getInstance();;
+    OpenGLConfiguration* openGLConfiguration = OpenGLConfiguration::getInstance();;
     
 
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-    OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
+    OpenGLFeatureFactory* openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
     
-this->anyThreed= openGLConfiguration.isOpenGL() && (features.isFeature(openGLFeatureFactory.OPENGL_2D_AND_3D) || features.isFeature(openGLFeatureFactory.OPENGL_3D));
+this->anyThreed= openGLConfiguration->isOpenGL() && (features->isFeature(openGLFeatureFactory->OPENGL_2D_AND_3D) || features->isFeature(openGLFeatureFactory->OPENGL_3D));
     
 }
 

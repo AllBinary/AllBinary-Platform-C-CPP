@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_NULLAUDIOFORMAT_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_NULLAUDIOFORMAT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/sound/sampled/AudioFormat.h>
@@ -49,7 +55,7 @@ class NullAudioFormat
             : public Object
          {
 
-    public: static const AudioFormat NULL_AUDIO_FORMAT = AudioFormat(AudioFormat::Encoding.PCM_UNSIGNED, 0.0, 0, 0, 0, 0.0, false);
+    public: static AudioFormat* NULL_AUDIO_FORMAT() { static std::unique_ptr<AudioFormat> value(new AudioFormat(AudioFormat::Encoding.PCM_UNSIGNED, 0.0, 0, 0, 0, 0.0, false)); return value.get(); }
 
 };
 

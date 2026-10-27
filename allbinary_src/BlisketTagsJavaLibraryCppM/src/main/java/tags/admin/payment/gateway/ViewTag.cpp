@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
@@ -66,7 +72,7 @@ public: ViewTag(){
                         
                                     {
                                     
-                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
                         
                                     {
                                     this->setName("Validation Gateway View");
@@ -80,7 +86,7 @@ this->setObjectFile("views.admin.payment.gateway.GatewayValidationView");
                             
 
 
-                            throw Exception("No Such View Command: " +this->getCommand());
+                            throw new Exception("No Such View Command: " +this->getCommand());
                     
 
                         }
@@ -97,13 +103,13 @@ this->setObjectFile("views.admin.payment.gateway.GatewayValidationView");
 
 
 
-                            throw Exception("Command Null");
+                            throw new Exception("Command Null");
                     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/PreLogUtil.h>
@@ -56,16 +62,16 @@
         
 class BooleanFileVisitor
             : public Object
-        : public VisitorInterface {
+        , public VisitorInterface {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: BasicArrayList filterStringBasicArrayList;
+    private: BasicArrayList* filterStringBasicArrayList;
 
-public: BooleanFileVisitor(BasicArrayList filterStringBasicArrayList){
+public: BooleanFileVisitor(BasicArrayList* filterStringBasicArrayList){
 this->setFilterStringBasicArrayList(filterStringBasicArrayList);
     
-PreLogUtil::put("Filter BasicArrayList: " +this->getFilterStringBasicArrayList().toString(), this, this->commonStrings.CONSTRUCTOR);
+PreLogUtil::put("Filter BasicArrayList: " +this->getFilterStringBasicArrayList()->toString(), this, this->commonStrings->CONSTRUCTOR);
     
 }
 
@@ -75,17 +81,17 @@ PreLogUtil::put("Filter BasicArrayList: " +this->getFilterStringBasicArrayList()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->visit(*dynamic_cast<AbFile*>(anyType));
+                        return this->visit(dynamic_cast<AbFile*>(anyType));
     
 }
 
 
-    public: Boolean visit(AbFile file){
+    public: bool visit(AbFile* file){
 
-    BasicArrayList list = this->getFilterStringBasicArrayList();;
+    BasicArrayList* list = this->getFilterStringBasicArrayList();;
     
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
     std::string nextFileFilterString;;
@@ -97,7 +103,7 @@ PreLogUtil::put("Filter BasicArrayList: " +this->getFilterStringBasicArrayList()
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextFileFilterString= list.get(index);
+nextFileFilterString= list->get(index);
     
 
                         if(this->visit(file, nextFileFilterString).valueOf())
@@ -123,7 +129,7 @@ nextFileFilterString= list.get(index);
 }
 
 
-    public: BasicArrayList getFilterStringBasicArrayList(){
+    public: BasicArrayList* getFilterStringBasicArrayList(){
 
 
 
@@ -133,13 +139,13 @@ nextFileFilterString= list.get(index);
 }
 
 
-    public: void setFilterStringBasicArrayList(BasicArrayList filterStringBasicArrayList){
+    public: void setFilterStringBasicArrayList(BasicArrayList* filterStringBasicArrayList){
 this->filterStringBasicArrayList= filterStringBasicArrayList;
     
 }
 
 
-    public: Boolean visit(AbFile file, std::string fileNameString){
+    public: bool visit(AbFile* file, std::string fileNameString){
 
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -47,29 +53,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BufferedImageInfo.h"
+        #include "org/allbinary/media/image/cache/BufferedImageInfo.h"
 
 class BufferedImageInfoFactory
             : public Object
          {
 
-    private: static HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();
+    private: static inline HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();
 
-    public: static BufferedImageInfo getInstance(int32_t width, int32_t height, int32_t type){
+    public: static BufferedImageInfo* getInstance(int32_t width, int32_t height, int32_t type){
 
-    StringMaker stringbuffer = StringMaker();;
+    StringMaker* stringbuffer = new StringMaker();;
     
-stringbuffer.appendint(width);
+stringbuffer->appendint(width);
     
-stringbuffer.appendint(height);
+stringbuffer->appendint(height);
     
-stringbuffer.appendint(type);
-    
-
-    std::string key = stringbuffer.toString();;
+stringbuffer->appendint(type);
     
 
-    BufferedImageInfo bufferedImageInfo = BufferedImageInfoFactory::hashMap.get(key);;
+    std::string key = stringbuffer->toString();;
+    
+
+    BufferedImageInfo* bufferedImageInfo = dynamic_cast<BufferedImageInfo*>(BufferedImageInfoFactory::hashMap->get(key));;
     
 
                         if(bufferedImageInfo == 
@@ -77,9 +83,9 @@ stringbuffer.appendint(type);
                                 )
                         
                                     {
-                                    bufferedImageInfo= BufferedImageInfo(width, height, type);
+                                    bufferedImageInfo= new BufferedImageInfo(width, height, type);
     
-BufferedImageInfoFactory::hashMap.put(key, bufferedImageInfo);
+BufferedImageInfoFactory::hashMap->put(key, bufferedImageInfo);
     
 
                                     }

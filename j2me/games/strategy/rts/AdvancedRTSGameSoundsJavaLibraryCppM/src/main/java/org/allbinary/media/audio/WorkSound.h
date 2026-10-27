@@ -20,6 +20,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_WORKSOUND_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_WORKSOUND_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -38,14 +44,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CompositeSound.h"
-#include "Sound.h"
+        #include "org/allbinary/media/audio/CompositeSound.h"
+#include "org/allbinary/media/audio/Sound.h"
 
 class WorkSound: public CompositeSound {
 
-    private: static Sound soundInterface = WorkSound();
+    private: static inline Sound* soundInterface = new WorkSound();
 
-    public: static Sound getInstance();
+    public: static Sound* getInstance();
 
 private: WorkSound();
 

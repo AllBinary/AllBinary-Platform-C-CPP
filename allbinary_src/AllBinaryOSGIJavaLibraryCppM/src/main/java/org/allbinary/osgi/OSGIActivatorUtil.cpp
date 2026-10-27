@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -65,31 +71,31 @@ class OSGIActivatorUtil
 
                 //@Throws(Exception.constructor)
             
-    public: static void registerAsService(BundleContext bundleContext, Object* anyType, std::string serviceName){
-OSGIActivatorUtil::registerAsService(bundleContext, anyType, serviceName, StdUtil::getInstance().createHashtable());
+    public: static void registerAsService(BundleContext* bundleContext, Object* anyType, std::string serviceName){
+OSGIActivatorUtil::registerAsService(bundleContext, anyType, serviceName, StdUtil::getInstance()->createHashtable());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: static void registerAsService(BundleContext bundleContext, Object* anyType, std::string serviceName, ABHashtable<Object*, Object*> properties){
+    public: static void registerAsService(BundleContext* bundleContext, Object* anyType, std::string serviceName, ABHashtable<Object*, Object*>* properties){
 
-    ServiceRegistration serviceRegistration = bundleContext.registerService(serviceName, anyType, properties);;
+    ServiceRegistration* serviceRegistration = bundleContext->registerService(serviceName, anyType, properties);;
     
 
-    ServiceReference serviceReference = serviceRegistration.getReference();;
+    ServiceReference* serviceReference = serviceRegistration->getReference();;
     
-serviceReference= bundleContext.getServiceReference(serviceName);
+serviceReference= bundleContext->getServiceReference(serviceName);
     
 
-                        if(serviceReference == NullServiceReferenceFactory::getInstance().NULL_SERVICE_REFERENCE)
+                        if(serviceReference == NullServiceReferenceFactory::getInstance()->NULL_SERVICE_REFERENCE)
                         
                                     {
                                     
 
 
-                            throw Exception("No Such Service Reference");
+                            throw new Exception("No Such Service Reference");
                     
 
                                     }

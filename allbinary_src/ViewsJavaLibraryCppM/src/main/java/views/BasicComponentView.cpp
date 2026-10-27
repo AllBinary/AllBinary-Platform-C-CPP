@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -79,24 +85,24 @@
         
 class BasicComponentView
             : public Object
-        : public TransformInterface {
+        , public TransformInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    protected: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: TransformDocumentInterface transformDocumentInterface;
+    private: TransformDocumentInterface* transformDocumentInterface;
 
-    private: TransformInfoInterface transformInfoInterface;
+    private: TransformInfoInterface* transformInfoInterface;
 
-public: BasicComponentView(TransformInfoInterface transformInfoInterface){
+public: BasicComponentView(TransformInfoInterface* transformInfoInterface){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("View Name: " +transformInfoInterface.getName(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("View Name: " +transformInfoInterface->getName(), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -120,7 +126,7 @@ this->setTransformDocumentInterface(TransformDocumentFactory::getInstance());
 }
 
 
-    public: TransformDocumentInterface getTransformDocumentInterface(){
+    public: TransformDocumentInterface* getTransformDocumentInterface(){
 
 
 
@@ -130,13 +136,13 @@ this->setTransformDocumentInterface(TransformDocumentFactory::getInstance());
 }
 
 
-    public: void setTransformDocumentInterface(TransformDocumentInterface transformDocumentInterface){
+    public: void setTransformDocumentInterface(TransformDocumentInterface* transformDocumentInterface){
 this->transformDocumentInterface= transformDocumentInterface;
     
 }
 
 
-    public: TransformInfoInterface getTransformInfoInterface(){
+    public: TransformInfoInterface* getTransformInfoInterface(){
 
 
 
@@ -146,30 +152,30 @@ this->transformDocumentInterface= transformDocumentInterface;
 }
 
 
-    public: void setTransformInfoInterface(TransformInfoInterface transformInfoInterface){
+    public: void setTransformInfoInterface(TransformInfoInterface* transformInfoInterface){
 this->transformInfoInterface= transformInfoInterface;
     
 }
 
 
-    public: Document toXmlDoc(){
+    public: Document* toXmlDoc(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->transformDocumentInterface.getDoc();;
+                        return this->transformDocumentInterface->getDoc();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Document getDoc(){
+    public: Document* getDoc(){
 
-    Document document = this->getTransformInfoInterface().getDataDocument();;
+    Document* document = this->getTransformInfoInterface()->getDataDocument();;
     
 
-    Node dataNode = this->getTransformDocumentInterface().getDoc().importNode(document.getFirstChild(), true);;
+    Node* dataNode = this->getTransformDocumentInterface()->getDoc()->importNode(document->getFirstChild(), true);;
     
 
                         if(dataNode != 
@@ -177,7 +183,7 @@ this->transformInfoInterface= transformInfoInterface;
                                 )
                         
                                     {
-                                    this->getTransformDocumentInterface().getBaseNode().appendChild(dataNode);
+                                    this->getTransformDocumentInterface()->getBaseNode()->appendChild(dataNode);
     
 
                                     }
@@ -186,7 +192,7 @@ this->transformInfoInterface= transformInfoInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getTransformDocumentInterface().getDoc();;
+                        return this->getTransformDocumentInterface()->getDoc();;
     
 }
 
@@ -200,7 +206,7 @@ this->transformInfoInterface= transformInfoInterface;
     std::string success = XmlDocumentHelper::toString(this->getDoc());;
     
 
-    std::string result = BasicTransformer(this->abeClientInformation, this->getTransformInfoInterface()).translate(success);;
+    std::string result = (new BasicTransformer(this->abeClientInformation, this->getTransformInfoInterface()))->translate(success);;
     
 
 
@@ -210,13 +216,13 @@ this->transformInfoInterface= transformInfoInterface;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }

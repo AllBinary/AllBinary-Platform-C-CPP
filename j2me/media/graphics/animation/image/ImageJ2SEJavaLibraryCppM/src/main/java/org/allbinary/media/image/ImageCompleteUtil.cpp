@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -48,9 +54,9 @@ class ImageCompleteUtil
             : public Object
          {
 
-    private: static ImageCompleteUtil instance() { return ImageCompleteUtil(); }
+    private: static ImageCompleteUtil* instance() { static std::unique_ptr<ImageCompleteUtil> value(new ImageCompleteUtil()); return value.get(); }
 
-    public: static ImageCompleteUtil getInstance(){
+    public: static ImageCompleteUtil* getInstance(){
 
 
 
@@ -62,7 +68,7 @@ class ImageCompleteUtil
 
                 //@Throws(Exception.constructor)
             
-    public: void waitForImage(Image image, std::string name){
+    public: void waitForImage(Image* image, std::string name){
 }
 
 

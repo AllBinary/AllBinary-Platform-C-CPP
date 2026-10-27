@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_FLOCKINGAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_FLOCKINGAI_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -76,19 +84,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasePatrolAI.h"
+        #include "org/allbinary/game/ag/ai/scroller/BasePatrolAI.h"
 
 class FlockingAI: public BasicAI {
 
     private: int32_t allowedDistance;
 
-public: FlockingAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: FlockingAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager);
 
-    private: int32_t getXYDistance(AllBinaryLayer allBinaryLayer);
+    private: int32_t getXYDistance(AllBinaryLayer* allBinaryLayer);
 
 };
 

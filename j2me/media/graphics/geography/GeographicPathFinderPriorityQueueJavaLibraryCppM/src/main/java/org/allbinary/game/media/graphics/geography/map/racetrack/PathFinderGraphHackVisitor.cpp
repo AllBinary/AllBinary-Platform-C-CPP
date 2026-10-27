@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -44,11 +52,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasePathFinderGraphVisitor.h"
+        #include "org/allbinary/game/media/graphics/geography/map/racetrack/BasePathFinderGraphVisitor.h"
 //1.4.2
 class PathFinderGraphHackVisitor: public BasePathFinderGraphVisitor {
 
-public: PathFinderGraphHackVisitor(BasicGeographicMap geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight) : BasePathFinderGraphVisitor(geographicMapInterface, edgeMinimum, minPathWeight, maxPathWeight){
+public: PathFinderGraphHackVisitor(BasicGeographicMap* geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight) : BasePathFinderGraphVisitor(geographicMapInterface, edgeMinimum, minPathWeight, maxPathWeight){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -60,7 +68,7 @@ public: PathFinderGraphHackVisitor(BasicGeographicMap geographicMapInterface, in
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(Object* graph, BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList){
+    public: void visit(Object* graph, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList){
 this->fixStart(graph, startPathFindingNodeList);
     
 this->fixEnd(graph, endPathFindingNodeList);
@@ -72,13 +80,13 @@ this->fixOverPassEdges(graph);
 
                 //@Throws(Exception.constructor)
             
-    private: void fixStart(Object* graph, BasicArrayList startPathFindingNodeList){
+    private: void fixStart(Object* graph, BasicArrayList* startPathFindingNodeList){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: void fixEnd(Object* graph, BasicArrayList endPathFindingNodeList){
+    private: void fixEnd(Object* graph, BasicArrayList* endPathFindingNodeList){
 }
 
 
@@ -90,13 +98,13 @@ this->fixOverPassEdges(graph);
 
                 //@Throws(Exception.constructor)
             
-    public: void fixPath(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, BasicArrayList pathList){
+    public: void fixPath(BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList, BasicArrayList* pathList){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: void removeOverPassEdges(BasicArrayList pathList){
+    private: void removeOverPassEdges(BasicArrayList* pathList){
 }
 
 

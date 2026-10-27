@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -83,33 +89,33 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryGameCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
 class StartIntermissionPaintable: public InitUpdatePaintable, public UpdateMyFontInterface {
 
-    protected: const FontDebugFactory fontDebugFactory = FontDebugFactory::getInstance();
+    protected: FontDebugFactory* fontDebugFactory = FontDebugFactory::getInstance();
 
-    protected: const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
+    protected: BasicColorSetUtil* basicSetColorUtil = BasicColorSetUtil::getInstance();
 
-    protected: AllBinaryGameCanvas gameCanvas;
+    protected: AllBinaryGameCanvas* gameCanvas;
 
     protected: std::vector<std::string> stringArray;
 
     protected: int32_t fontSize;
 
-    protected: Font font;
+    protected: Font* font;
 
     public: std::vector<int32_t> lastWidth;
 
-    private: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
 
-    private: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
+    private: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
 
-    private: BasicColor basicColor = BasicColorFactory::getInstance().BLACK;
+    private: BasicColor* basicColor = BasicColorFactory::getInstance()->BLACK;
 
     private: int32_t color;
 
-    protected: std::vector<int32_t> lineYOffsetArray = NullUtil::getInstance().NULL_INT_ARRAY;
+    protected: std::vector<int32_t> lineYOffsetArray = NullUtil::getInstance()->NULL_INT_ARRAY;
 
     private: bool hasChanged = true;
 
@@ -117,7 +123,7 @@ class StartIntermissionPaintable: public InitUpdatePaintable, public UpdateMyFon
 
     protected: int32_t fontHeightP= 0;
 
-public: StartIntermissionPaintable(AllBinaryGameCanvas gameCanvas, std::vector<std::string> stringArray, BasicColor basicColor, Font font){
+public: StartIntermissionPaintable(AllBinaryGameCanvas* gameCanvas, std::vector<std::string> stringArray, BasicColor* basicColor, Font* font){
 this->gameCanvas= gameCanvas;
     
 this->stringArray= stringArray;
@@ -126,38 +132,38 @@ this->lastWidth= std::vector<int32_t>(this->stringArray.length);
     
 this->setBasicColorP(basicColor);
     
-this->color= basicColor.intValue();
+this->color= basicColor->intValue();
     
-this->fontSize= font.getSize();
+this->fontSize= font->getSize();
     
 this->font= font;
     
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->fontHeightP= font.getHeight();
+this->fontHeightP= font->getHeight();
     
 this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    public: void paint(Graphics graphics){
-this->myFontProcessor.process(graphics);
+    public: void paint(Graphics* graphics){
+this->myFontProcessor->process(graphics);
     
 
-    Font existingFont = graphics.getFont();;
+    Font* existingFont = graphics->getFont();;
     
-this->fontDebugFactory.setFont(this->font, graphics);
+this->fontDebugFactory->setFont(this->font, graphics);
     
 
-    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
+    DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
-this->basicSetColorUtil.setBasicColorP3(graphics, this->basicColor, this->color);
+this->basicSetColorUtil->setBasicColorP3(graphics, this->basicColor, this->color);
     
 
     int32_t beginWidth= 0;;
@@ -173,33 +179,33 @@ this->basicSetColorUtil.setBasicColorP3(graphics, this->basicColor, this->color)
                         if(this->hasChanged)
                         
                                     {
-                                    this->lastWidth[index]= (graphics.getFont().stringWidth(this->stringArray[index])>>1);
+                                    this->lastWidth[index]= (graphics->getFont()->stringWidth(this->stringArray[index])>>1);
     
 
                                     }
                                 
 beginWidth= this->lastWidth[index];
     
-graphics.drawString(this->stringArray[index], displayInfo.getLastHalfWidth() -beginWidth, displayInfo.getLastHalfHeight() -this->lineYOffsetArray[index], this->anchor);
+graphics->drawString(this->stringArray[index], displayInfo->getLastHalfWidth() -beginWidth, displayInfo->getLastHalfHeight() -this->lineYOffsetArray[index], this->anchor);
     
 }
 
 this->hasChanged= false;
     
-this->fontDebugFactory.setFont(existingFont, graphics);
+this->fontDebugFactory->setFont(existingFont, graphics);
     
 }
 
 
     private: const std::string BEGIN_LEVEL = "Begin Level ";
 
-    private: const std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;
+    private: const std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;
 
     public: void update(){
 
-    int32_t level = this->gameCanvas.getLayerManager().getGameInfo().getCurrentLevel();;
+    int32_t level = this->gameCanvas->getLayerManager()->getGameInfo()->getCurrentLevel();;
     
-this->stringArray[0]= StringMaker().append(this->BEGIN_LEVEL).appendint(level).toString();
+this->stringArray[0]= (new StringMaker())->append(this->BEGIN_LEVEL)->appendint(level)->toString();
     
 
 
@@ -215,13 +221,13 @@ this->stringArray[index]= this->EMPTY_STRING;
 }
 
 
-    public: void setBasicColorP(BasicColor basicColor){
+    public: void setBasicColorP(BasicColor* basicColor){
 this->basicColor= basicColor;
     
 }
 
 
-    public: BasicColor getBasicColorP(){
+    public: BasicColor* getBasicColorP(){
 
 
 

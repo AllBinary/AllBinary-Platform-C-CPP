@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/UserDomNode.h>
@@ -59,11 +65,11 @@
         
 class UserView: public HttpContextView {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: UserInterface user;
+    protected: UserInterface* user;
 
-public: UserView(TransformInfoInterface transformInfoInterface) : HttpContextView(transformInfoInterface){
+public: UserView(TransformInfoInterface* transformInfoInterface) : HttpContextView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -74,7 +80,7 @@ public: UserView(TransformInfoInterface transformInfoInterface) : HttpContextVie
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(UserDomNode(this->user));
+this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(new UserDomNode(this->user)));
     
 }
 
@@ -94,13 +100,13 @@ this->addDomNodeInterface(UserDomNode(this->user));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/io/Serializable.h>
@@ -44,13 +50,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserInterface.h"
+        #include "org/allbinary/business/user/UserInterface.h"
 
 class UserFactoryInterface: public Serializable {
 
                 //@Throws(Exception.constructor)
             
-    UserInterface getInstance(HashMap<Object*, Object*> hashMap)
+    public: virtual UserInterface* getInstance(HashMap<Object*, Object*>* hashMap) = 0;
 
 };
 

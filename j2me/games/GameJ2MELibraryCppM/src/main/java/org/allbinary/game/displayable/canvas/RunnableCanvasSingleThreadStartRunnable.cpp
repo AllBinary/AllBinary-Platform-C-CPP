@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/canvas/RunnableCanvas.h>
@@ -47,15 +53,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameRunnable.h"
+        #include "org/allbinary/game/displayable/canvas/GameRunnable.h"
 
 class RunnableCanvasSingleThreadStartRunnable: public GameRunnable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: RunnableCanvas runnableCanvas;
+    private: RunnableCanvas* runnableCanvas;
 
-public: RunnableCanvasSingleThreadStartRunnable(RunnableCanvas demoCanvas){
+public: RunnableCanvasSingleThreadStartRunnable(RunnableCanvas* demoCanvas){
 this->runnableCanvas= demoCanvas;
     
 }
@@ -64,16 +70,16 @@ this->runnableCanvas= demoCanvas;
     public: void run(){
 
         try {
-            this->runnableCanvas.run();
+            this->runnableCanvas->run();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
     
 }
 
@@ -83,7 +89,7 @@ this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
                 //@Throws(Exception.constructor)
             
     public: void processLoopSleep(){
-this->runnableCanvas.processLoopSleep();
+this->runnableCanvas->processLoopSleep();
     
 }
 

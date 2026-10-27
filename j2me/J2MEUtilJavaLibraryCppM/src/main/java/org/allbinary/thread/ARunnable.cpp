@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Runnable.h"
@@ -49,7 +55,7 @@
         
 class ARunnable
             : public Object
-        : public Runnable {
+        , public Runnable {
 
     public: void run(){
 }

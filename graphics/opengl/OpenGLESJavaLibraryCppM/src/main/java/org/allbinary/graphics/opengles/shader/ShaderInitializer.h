@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -49,19 +55,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Shader.h"
+        #include "org/allbinary/graphics/opengles/shader/Shader.h"
 
 class ShaderInitializer
             : public Object
          {
 
-    private: static ShaderInitializer instance() { return ShaderInitializer(); }
+    private: static ShaderInitializer* instance() { static std::unique_ptr<ShaderInitializer> value(new ShaderInitializer()); return value.get(); }
 
-    public: static ShaderInitializer getInstance();
+    public: static ShaderInitializer* getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    public: int32_t init(GL10 gl, std::vector<Shader> shader, std::vector<std::string> attributeArray);
+    public: int32_t init(GL10* gl, std::vector<Shader*> shader, std::vector<std::string> attributeArray);
 
 };
 

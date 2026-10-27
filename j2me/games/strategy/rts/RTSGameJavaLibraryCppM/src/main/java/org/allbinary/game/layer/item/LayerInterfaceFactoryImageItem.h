@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -64,15 +70,15 @@
         
 class LayerInterfaceFactoryImageItem: public ABCustomImageItem {
 
-    private: std::vector<Animation> animationArray;
+    private: std::vector<Animation*> animationArray;
 
-    private: LayerInterfaceFactoryInterface layerInterfaceFactoryInterface;
+    private: LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface;
 
-public: LayerInterfaceFactoryImageItem(std::string label, Image img, int32_t layout, std::string altText, BasicColor basicColor, std::vector<Animation> animationArray, LayerInterfaceFactoryInterface layerInterfaceFactoryInterface);
+public: LayerInterfaceFactoryImageItem(std::string label, Image* img, int32_t layout, std::string altText, BasicColor* basicColor, std::vector<Animation*> animationArray, LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface);
 
-    public: LayerInterfaceFactoryInterface getLayerInterfaceFactoryInterface();
+    public: LayerInterfaceFactoryInterface* getLayerInterfaceFactoryInterface();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
 };
 

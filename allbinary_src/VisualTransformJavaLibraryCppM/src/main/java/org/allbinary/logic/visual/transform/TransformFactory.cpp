@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -79,15 +85,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInterface.h"
+        #include "org/allbinary/logic/visual/transform/TransformInterface.h"
 
 class TransformFactory
             : public Object
          {
 
-    private: static TransformFactory instance() { return TransformFactory(); }
+    private: static TransformFactory* instance() { static std::unique_ptr<TransformFactory> value(new TransformFactory()); return value.get(); }
 
-    public: static TransformFactory getInstance(){
+    public: static TransformFactory* getInstance(){
 
 
 
@@ -97,36 +103,36 @@ class TransformFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: TransformFactory(){
 }
 
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInterface getInstance(AbeClientInformationInterface abeClientInformation, std::string viewName, TransformInfoInterface ownerTransformInfoInterface){
+    public: TransformInterface* getInstance(AbeClientInformationInterface* abeClientInformation, std::string viewName, TransformInfoInterface* ownerTransformInfoInterface){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
                         
                                     {
-                                    this->logUtil.putF("Creating Transform: " +viewName, this, this->commonStrings.GET_INSTANCE);
+                                    this->logUtil->putF("Creating Transform: " +viewName, this, this->commonStrings->GET_INSTANCE);
     
 
                                     }
                                 
 
-    TransformInfoHttpInterface ownerTransformInfoHttpInterface = ownerTransformInfoInterface;;
+    TransformInfoHttpInterface* ownerTransformInfoHttpInterface = dynamic_cast<TransformInfoHttpInterface*>(ownerTransformInfoInterface);;
     
 
-    TransformInfoEntity transformInfoEntity = TransformInfoEntityBuilder::getInstance();;
+    TransformInfoEntity* transformInfoEntity = TransformInfoEntityBuilder::getInstance();;
     
 
-    TransformInfoInterface transformInfoInterface = transformInfoEntity.get(viewName, ownerTransformInfoHttpInterface.getPropertiesHashMap(), ownerTransformInfoHttpInterface.getPageContext());;
+    TransformInfoInterface* transformInfoInterface = transformInfoEntity->get(viewName, ownerTransformInfoHttpInterface->getPropertiesHashMap(), ownerTransformInfoHttpInterface->getPageContext());;
     
 
                         if(transformInfoInterface == 
@@ -137,21 +143,21 @@ private: TransformFactory(){
                                     
 
 
-                            throw Exception("No Such View In DB: " +viewName);
+                            throw new Exception("No Such View In DB: " +viewName);
                     
 
                                     }
                                 
-transformInfoInterface.setChild();
+transformInfoInterface->setChild();
     
 
-    Object* anyType = TransformInfoObjectFactory::getInstance().getInstance(abeClientInformation, transformInfoInterface);;
+    Object* anyType = TransformInfoObjectFactory::getInstance()->getInstance(abeClientInformation, transformInfoInterface);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
                         
                                     {
-                                    this->logUtil.putF("Created Transform: " +viewName, this, this->commonStrings.GET_INSTANCE);
+                                    this->logUtil->putF("Created Transform: " +viewName, this, this->commonStrings->GET_INSTANCE);
     
 
                                     }
@@ -160,17 +166,17 @@ transformInfoInterface.setChild();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *dynamic_cast<TransformInterface*>(anyType);
+                        return dynamic_cast<TransformInterface*>(anyType);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put(commonStrings.EXCEPTION, this, this->commonStrings.GET_INSTANCE, e);
+                                    this->logUtil->put(commonStrings->EXCEPTION, this, this->commonStrings->GET_INSTANCE, &e);
     
 
                                     }
@@ -187,26 +193,26 @@ transformInfoInterface.setChild();
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
+    public: TransformInterface* getInstance(AbeClientInformationInterface* abeClientInformation, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
 
         try {
             
-    TransformInfoData transformInfoData = TransformInfoData::getInstance();;
+    TransformInfoData* transformInfoData = TransformInfoData::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
                         
                                     {
-                                    this->logUtil.putF("Creating Transform: " +propertiesHashMap.get(transformInfoData.NAME), this, this->commonStrings.GET_INSTANCE);
+                                    this->logUtil->putF("Creating Transform: " +propertiesHashMap->get(transformInfoData->NAME), this, this->commonStrings->GET_INSTANCE);
     
 
                                     }
                                 
 
-    TransformInfoEntity transformInfoEntity = TransformInfoEntityBuilder::getInstance();;
+    TransformInfoEntity* transformInfoEntity = TransformInfoEntityBuilder::getInstance();;
     
 
-    TransformInfoInterface transformInfoInterface = transformInfoEntity.get(propertiesHashMap.get(transformInfoData.NAME), propertiesHashMap, pageContext);;
+    TransformInfoInterface* transformInfoInterface = transformInfoEntity->get(propertiesHashMap->get(transformInfoData->NAME), propertiesHashMap, pageContext);;
     
 
                         if(transformInfoInterface != 
@@ -214,25 +220,25 @@ transformInfoInterface.setChild();
                                 )
                         
                                     {
-                                    transformInfoInterface.override(propertiesHashMap);
+                                    transformInfoInterface->override(propertiesHashMap);
     
 
                                     }
                                 
                         else {
-                            transformInfoInterface= TransformInfoHttpFactory::getInstance(propertiesHashMap, pageContext);
+                            transformInfoInterface= dynamic_cast<TransformInfoInterface*>(TransformInfoHttpFactory::getInstance(propertiesHashMap, pageContext));
     
 
                         }
                             
 
-    Object* anyType = TransformInfoObjectFactory::getInstance().getInstance(abeClientInformation, transformInfoInterface);;
+    Object* anyType = TransformInfoObjectFactory::getInstance()->getInstance(abeClientInformation, transformInfoInterface);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
                         
                                     {
-                                    this->logUtil.putF("Created Transform: " +propertiesHashMap.get(transformInfoData.NAME), this, this->commonStrings.GET_INSTANCE);
+                                    this->logUtil->putF("Created Transform: " +propertiesHashMap->get(transformInfoData->NAME), this, this->commonStrings->GET_INSTANCE);
     
 
                                     }
@@ -241,26 +247,26 @@ transformInfoInterface.setChild();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *dynamic_cast<TransformInterface*>(anyType);
+                        return dynamic_cast<TransformInterface*>(anyType);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Failed To Get Instance: ");
+stringBuffer->append("Failed To Get Instance: ");
     
-stringBuffer.append(propertiesHashMap.get(TransformInfoData::getInstance().NAME));
+stringBuffer->append(propertiesHashMap->get(TransformInfoData::getInstance()->NAME));
     
-stringBuffer.append("->TransformFactory");
+stringBuffer->append("->TransformFactory");
     
-this->logUtil.put(stringBuffer.toString(), this, this->commonStrings.GET_INSTANCE, e);
+this->logUtil->put(stringBuffer->toString(), this, this->commonStrings->GET_INSTANCE, &e);
     
 
                                     }
@@ -277,26 +283,26 @@ this->logUtil.put(stringBuffer.toString(), this, this->commonStrings.GET_INSTANC
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInterface getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface){
+    public: TransformInterface* getInstance(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
                         
                                     {
-                                    this->logUtil.putF("Creating Transform: " +transformInfoInterface.getName(), this, "getInstance(TransformInfoInterface)");
+                                    this->logUtil->putF("Creating Transform: " +transformInfoInterface->getName(), this, "getInstance(TransformInfoInterface)");
     
 
                                     }
                                 
 
-    Object* anyType = TransformInfoObjectFactory::getInstance().getInstance(abeClientInformation, transformInfoInterface);;
+    Object* anyType = TransformInfoObjectFactory::getInstance()->getInstance(abeClientInformation, transformInfoInterface);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
                         
                                     {
-                                    this->logUtil.putF("Created Transform: " +transformInfoInterface.getName(), this, "getInstance(TransformInfoInterface)");
+                                    this->logUtil->putF("Created Transform: " +transformInfoInterface->getName(), this, "getInstance(TransformInfoInterface)");
     
 
                                     }
@@ -305,17 +311,17 @@ this->logUtil.put(stringBuffer.toString(), this, this->commonStrings.GET_INSTANC
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *dynamic_cast<TransformInterface*>(anyType);
+                        return dynamic_cast<TransformInterface*>(anyType);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put(commonStrings.EXCEPTION, this, "getInstance(TransformInfoInterface)", e);
+                                    this->logUtil->put(commonStrings->EXCEPTION, this, "getInstance(TransformInfoInterface)", &e);
     
 
                                     }

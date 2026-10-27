@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/globals/FREEBLISKET_PATH_GLOBALS.h>
@@ -97,19 +103,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DbConnectionInfo.h"
+        #include "org/allbinary/business/init/db/DbConnectionInfo.h"
 
 class DbInitInfo: public DbConnectionInfo {
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const Directory directory = Directory::getInstance();
+    private: Directory* directory = Directory::getInstance();
 
-    private: const HttpData httpData = HttpData::getInstance();
+    private: HttpData* httpData = HttpData::getInstance();
 
     private: const std::string GET_URL = "getUrl";
 
-    private: const std::string PACKAGE = FREEBLISKET_PATH_GLOBALS::getInstance().DBINITPATH;
+    private: const std::string PACKAGE = FREEBLISKET_PATH_GLOBALS::getInstance()->DBINITPATH;
 
     private: std::string initFileName;
 

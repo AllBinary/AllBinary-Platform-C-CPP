@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIGNOMANIPULATIONFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIGNOMANIPULATIONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,25 +67,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoObjectConfigData.h"
-#include "TransformInfoObjectConfig.h"
-#include "TransformInfoObjectConfigInterface.h"
+        #include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigData.h"
+#include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfig.h"
+#include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigInterface.h"
 
 class TransformInfoObjectConfigNoManipulationFactory
             : public Object
          {
 
-    private: static TransformInfoObjectConfigNoManipulationFactory instance() { return TransformInfoObjectConfigNoManipulationFactory(); }
+    private: static TransformInfoObjectConfigNoManipulationFactory* instance() { static std::unique_ptr<TransformInfoObjectConfigNoManipulationFactory> value(new TransformInfoObjectConfigNoManipulationFactory()); return value.get(); }
 
-    public: static TransformInfoObjectConfigNoManipulationFactory getInstance();
+    public: static TransformInfoObjectConfigNoManipulationFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: TransformInfoObjectConfigNoManipulationFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoObjectConfigInterface getInstance(TransformInfoInterface transformInfoInterface, AbPath objectConfigFileAbPath);
+    public: TransformInfoObjectConfigInterface* getInstance(TransformInfoInterface* transformInfoInterface, AbPath* objectConfigFileAbPath);
 
 };
 

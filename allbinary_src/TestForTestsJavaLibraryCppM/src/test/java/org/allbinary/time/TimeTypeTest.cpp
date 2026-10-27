@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/Calendar.h>
@@ -36,8 +42,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TimeTypeUtil.h"
-//#include "TestableTimeTypeUtil.h"
+        #include "org/allbinary/time/TimeTypeUtil.h"
+//#include "org/allbinary/time/TestableTimeTypeUtil.h"
 
 class TimeTypeTest
             : public Object
@@ -45,21 +51,21 @@ class TimeTypeTest
 
     private: static int64_t millisForHourLocal(int32_t hour){
 
-    Calendar cal = Calendar::getInstance();;
+    Calendar* cal = Calendar::getInstance();;
     
-cal.set(Calendar::HOUR_OF_DAY, hour);
+cal->set(Calendar::HOUR_OF_DAY, hour);
     
-cal.set(Calendar::MINUTE, 0);
+cal->set(Calendar::MINUTE, 0);
     
-cal.set(Calendar::SECOND, 0);
+cal->set(Calendar::SECOND, 0);
     
-cal.set(Calendar::MILLISECOND, 0);
+cal->set(Calendar::MILLISECOND, 0);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return cal.getTimeInMillis();;
+                        return cal->getTimeInMillis();;
     
 }
 
@@ -113,21 +119,21 @@ this->hour= hour;
 
     void getNightOrDay_returns_expected_label(){
 
-    TimeTypeUtil nightUtil = TestableTimeTypeUtil(0);;
+    TimeTypeUtil* nightUtil = new TestableTimeTypeUtil(0);;
     
-Assertions::assertEquals(nightUtil.NIGHT, nightUtil.getNightOrDay());
+Assertions::assertEquals(nightUtil->NIGHT, nightUtil->getNightOrDay());
     
 
-    TimeTypeUtil dayUtil = TestableTimeTypeUtil(12);;
+    TimeTypeUtil* dayUtil = new TestableTimeTypeUtil(12);;
     
-Assertions::assertEquals(dayUtil.DAY, dayUtil.getNightOrDay());
+Assertions::assertEquals(dayUtil->DAY, dayUtil->getNightOrDay());
     
 }
 
 
     void getHourOfDay_long_converts_epoch_to_local_hour(){
 
-    TimeTypeUtil util = TimeTypeUtil();;
+    TimeTypeUtil* util = new TimeTypeUtil();;
     
 
                     //Otherwise - statement - ForEachStmt
@@ -137,7 +143,7 @@ Assertions::assertEquals(dayUtil.DAY, dayUtil.getNightOrDay());
 
     void isNight_long_expected_ranges(){
 
-    TimeTypeUtil util = TimeTypeUtil();;
+    TimeTypeUtil* util = new TimeTypeUtil();;
     
 
                     //Otherwise - statement - ForEachStmt
@@ -150,7 +156,7 @@ Assertions::assertEquals(dayUtil.DAY, dayUtil.getNightOrDay());
 
     void getNightOrDay_long_consistency(){
 
-    TimeTypeUtil util = TimeTypeUtil();;
+    TimeTypeUtil* util = new TimeTypeUtil();;
     
 
     int64_t nightMillis = TimeTypeTest::millisForHourLocal(0);;
@@ -158,16 +164,16 @@ Assertions::assertEquals(dayUtil.DAY, dayUtil.getNightOrDay());
 
     int64_t dayMillis = TimeTypeTest::millisForHourLocal(12);;
     
-Assertions::assertEquals(util.NIGHT, util.getNightOrDay(nightMillis));
+Assertions::assertEquals(util->NIGHT, util->getNightOrDay(nightMillis));
     
-Assertions::assertEquals(util.DAY, util.getNightOrDay(dayMillis));
+Assertions::assertEquals(util->DAY, util->getNightOrDay(dayMillis));
     
 }
 
 
     void boundaries_day_for_long_based_api(){
 
-    TimeTypeUtil util = TimeTypeUtil();;
+    TimeTypeUtil* util = new TimeTypeUtil();;
     
 
                     //Otherwise - statement - ForEachStmt
@@ -177,21 +183,21 @@ Assertions::assertEquals(util.DAY, util.getNightOrDay(dayMillis));
 
     void constants_accessible_and_stable(){
 
-    TimeTypeUtil util = TimeTypeUtil();;
+    TimeTypeUtil* util = new TimeTypeUtil();;
     
-Assertions::assertEquals("Night", util.NIGHT);
+Assertions::assertEquals("Night", util->NIGHT);
     
-Assertions::assertEquals("Day", util.DAY);
+Assertions::assertEquals("Day", util->DAY);
     
 }
 
 
     void getInstance_returns_same_singleton(){
 
-    TimeTypeUtil a = TimeTypeUtil::getInstance();;
+    TimeTypeUtil* a = TimeTypeUtil::getInstance();;
     
 
-    TimeTypeUtil b = TimeTypeUtil::getInstance();;
+    TimeTypeUtil* b = TimeTypeUtil::getInstance();;
     
 Assertions::assertSame(a, b);
     

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,21 +55,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogTableEntity.h"
+        #include "org/allbinary/data/tables/log/LogTableEntity.h"
 
 class LogTableEntityFactory
             : public Object
          {
 
-    private: static LogTableEntityFactory instance() { return LogTableEntityFactory(); }
+    private: static LogTableEntityFactory* instance() { static std::unique_ptr<LogTableEntityFactory> value(new LogTableEntityFactory()); return value.get(); }
 
-    public: static LogTableEntityFactory getInstance();
+    public: static LogTableEntityFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: LogTableEntityFactory();
 
-    public: LogTableEntity getLogTableEntityInstance();
+    public: LogTableEntity* getLogTableEntityInstance();
 
 };
 

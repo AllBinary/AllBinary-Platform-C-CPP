@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -58,9 +64,9 @@
         
 class SimultaneousCompoundIndexedAnimation: public IndexedAnimation {
 
-    private: std::vector<Animation> animationInterfaceArray;
+    private: std::vector<Animation*> animationInterfaceArray;
 
-public: SimultaneousCompoundIndexedAnimation(std::vector<Animation> animationInterfaceArray, AnimationBehavior animationBehavior) : IndexedAnimation(animationBehavior){
+public: SimultaneousCompoundIndexedAnimation(std::vector<Animation*> animationInterfaceArray, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -74,7 +80,7 @@ this->animationInterfaceArray= animationInterfaceArray;
 
     public: void setFrame(int32_t frameIndex){
 
-    IndexedAnimation indexedAnimation;;
+    IndexedAnimation* indexedAnimation;;
     
 
 
@@ -83,9 +89,9 @@ this->animationInterfaceArray= animationInterfaceArray;
                         for (
     int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-indexedAnimation= this->animationInterfaceArray[index];
+indexedAnimation= dynamic_cast<IndexedAnimation*>(this->animationInterfaceArray[index]);
     
-indexedAnimation.setFrame(frameIndex);
+indexedAnimation->setFrame(frameIndex);
     
 }
 
@@ -94,33 +100,33 @@ indexedAnimation.setFrame(frameIndex);
 
     public: int32_t getFrame(){
 
-    IndexedAnimation indexedAnimation = this->animationInterfaceArray[0];;
+    IndexedAnimation* indexedAnimation = dynamic_cast<IndexedAnimation*>(this->animationInterfaceArray[0]);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return indexedAnimation.getFrame();;
+                        return indexedAnimation->getFrame();;
     
 }
 
 
     public: int32_t getSize(){
 
-    IndexedAnimation indexedAnimation = this->animationInterfaceArray[0];;
+    IndexedAnimation* indexedAnimation = dynamic_cast<IndexedAnimation*>(this->animationInterfaceArray[0]);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return indexedAnimation.getSize();;
+                        return indexedAnimation->getSize();;
     
 }
 
 
     public: void previousFrame(){
 
-    IndexedAnimation indexedAnimation;;
+    IndexedAnimation* indexedAnimation;;
     
 
 
@@ -129,9 +135,9 @@ indexedAnimation.setFrame(frameIndex);
                         for (
     int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-indexedAnimation= this->animationInterfaceArray[index];
+indexedAnimation= dynamic_cast<IndexedAnimation*>(this->animationInterfaceArray[index]);
     
-indexedAnimation.previousFrame();
+indexedAnimation->previousFrame();
     
 }
 
@@ -169,7 +175,7 @@ this->animationInterfaceArray[index].nextFrame();
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 
     int32_t size = this->animationInterfaceArray.size();;
     
@@ -187,7 +193,7 @@ this->animationInterfaceArray[index].paintXY(graphics, x, y);
 }
 
 
-    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
+    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z){
 
     int32_t size = this->animationInterfaceArray.size();;
     
@@ -205,7 +211,7 @@ this->animationInterfaceArray[index].paintThreedXYZ(graphics, x, y, z);
 }
 
 
-    public: std::vector<Animation> getAnimationInterfaceArray(){
+    public: std::vector<Animation*> getAnimationInterfaceArray(){
 
 
 
@@ -215,7 +221,7 @@ this->animationInterfaceArray[index].paintThreedXYZ(graphics, x, y, z);
 }
 
 
-    public: void setAnimationInterfaceArray(std::vector<Animation> animationInterfaceArray){
+    public: void setAnimationInterfaceArray(std::vector<Animation*> animationInterfaceArray){
 this->animationInterfaceArray= animationInterfaceArray;
     
 }

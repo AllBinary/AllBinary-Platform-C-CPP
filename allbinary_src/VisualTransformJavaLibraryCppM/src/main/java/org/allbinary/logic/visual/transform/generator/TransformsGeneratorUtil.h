@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_GENERATOR_TRANSFORMSGENERATORUTIL_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_GENERATOR_TRANSFORMSGENERATORUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,27 +73,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformGeneratorUtil.h"
+        #include "org/allbinary/logic/visual/transform/generator/TransformGeneratorUtil.h"
 
 class TransformsGeneratorUtil
             : public Object
          {
 
-    private: static TransformsGeneratorUtil instance() { return TransformsGeneratorUtil(); }
+    private: static TransformsGeneratorUtil* instance() { static std::unique_ptr<TransformsGeneratorUtil> value(new TransformsGeneratorUtil()); return value.get(); }
 
-    public: static TransformsGeneratorUtil getInstance();
+    public: static TransformsGeneratorUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: TransformsGeneratorUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: std::string generateComponentsFromObjectConfig(Object abeClientInformation, Object transformInfoInterface, std::string group);
+    public: std::string generateComponentsFromObjectConfig(Object* abeClientInformation, Object* transformInfoInterface, std::string group);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string generateComponentsFromObjectConfig(Object abeClientInformation, Object transformInfoObjectConfigInterface, Object transformInfoInterface, std::string group);
+    public: std::string generateComponentsFromObjectConfig(Object* abeClientInformation, Object* transformInfoObjectConfigInterface, Object* transformInfoInterface, std::string group);
 
 };
 

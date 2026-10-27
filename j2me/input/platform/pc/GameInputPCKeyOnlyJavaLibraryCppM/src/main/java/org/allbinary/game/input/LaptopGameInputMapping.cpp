@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/input/mapping/InputToGameKeyMapping.h>
 
       
@@ -39,17 +45,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PCGameInputMapping.h"
-#include "LaptopDefaultGameInputMapping.h"
+        #include "org/allbinary/game/input/PCGameInputMapping.h"
+#include "org/allbinary/game/input/LaptopDefaultGameInputMapping.h"
 
 class LaptopGameInputMapping: public PCGameInputMapping {
 
-    protected: InputToGameKeyMapping getDefault(){
+    protected: InputToGameKeyMapping* getDefault(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LaptopDefaultGameInputMapping().getInputMapping();;
+                        return (new LaptopDefaultGameInputMapping())->getInputMapping();;
     
 }
 

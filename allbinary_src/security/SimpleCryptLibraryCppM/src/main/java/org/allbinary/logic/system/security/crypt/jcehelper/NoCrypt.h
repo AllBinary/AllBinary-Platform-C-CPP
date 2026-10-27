@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/init/crypt/jcehelper/CryptInterface.h>
@@ -49,7 +55,7 @@
         
 class NoCrypt
             : public Object
-        : public CryptInterface {
+        , public CryptInterface {
 
     public: std::vector<int8_t> encrypt(std::vector<int8_t> array);
 

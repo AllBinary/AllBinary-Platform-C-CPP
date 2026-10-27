@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/color/BasicColor.h>
@@ -43,21 +49,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "VectorAnimationFactoryInterface.h"
-#include "TimedVectorAnimation.h"
-#include "AnimationBehavior.h"
-#include "VectorAnimation.h"
+        #include "org/allbinary/animation/VectorAnimationFactoryInterface.h"
+#include "org/allbinary/animation/TimedVectorAnimation.h"
+#include "org/allbinary/animation/AnimationBehavior.h"
+#include "org/allbinary/animation/VectorAnimation.h"
 
 class TimedVectorAnimationFactory
             : public Object
-        : public VectorAnimationFactoryInterface {
+        , public VectorAnimationFactoryInterface {
 
-    public: VectorAnimation getInstance(std::vector<std::vector<std::vector<int32_t>>> points, BasicColor basicColor){
+    public: VectorAnimation* getInstance(std::vector<std::vector<std::vector<int32_t>>> points, BasicColor* basicColor){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TimedVectorAnimation(points, basicColor, AnimationBehavior::getInstance());
+                        return new TimedVectorAnimation(points, basicColor, AnimationBehavior::getInstance());
     
 }
 

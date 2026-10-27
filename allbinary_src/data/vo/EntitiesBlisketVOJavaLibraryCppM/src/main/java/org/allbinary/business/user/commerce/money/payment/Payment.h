@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENT_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -75,13 +81,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentInterface.h"
-#include "PaymentData.h"
-#include "CreditCardType.h"
+        #include "org/allbinary/business/user/commerce/money/payment/PaymentInterface.h"
+#include "org/allbinary/business/user/commerce/money/payment/PaymentData.h"
+#include "org/allbinary/business/user/commerce/money/payment/CreditCardType.h"
 
 class Payment
             : public Object
-        : public PaymentInterface, public DomNodeInterface {
+        , public PaymentInterface, public DomNodeInterface {
 
     private: std::string name;
 
@@ -117,13 +123,13 @@ class Payment
 
     private: bool isDefault = false;
 
-public: Payment(HashMap<Object*, Object*> payment);
+public: Payment(HashMap<Object*, Object*>* payment);
 
-public: Payment(ServletRequest request);
+public: Payment(ServletRequest* request);
 
 public: Payment();
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: void setTenderType(std::string value);
 
@@ -187,19 +193,19 @@ public: Payment();
 
     public: bool isDefault();
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
-    public: Document toXmlDoc();
+    public: Document* toXmlDoc();
 
     public: std::string view();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
     public: std::string validationInfo();
 

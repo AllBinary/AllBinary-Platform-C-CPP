@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/StdUtil.h>
@@ -50,25 +56,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HardwareInterface.h"
+        #include "org/allbinary/logic/system/hardware/HardwareInterface.h"
 
 class NoHardware
             : public Object
-        : public HardwareInterface {
+        , public HardwareInterface {
 
-    private: static const HardwareInterface instance = NoHardware();
+    private: static inline HardwareInterface* instance = new NoHardware();
 
-    public: static HardwareInterface getInstance(){
+    public: static HardwareInterface* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoHardware::instance();
+                        return NoHardware::instance;
     
 }
 
 
-    public: HardwareComponentInterface getComponent(int32_t index){
+    public: HardwareComponentInterface* getComponent(int32_t index){
 
 
 
@@ -88,7 +94,7 @@ class NoHardware
 }
 
 
-    public: bool compareTo(HardwareInterface hardwareInterface){
+    public: bool compareTo(HardwareInterface* hardwareInterface){
 
 
 
@@ -98,12 +104,12 @@ class NoHardware
 }
 
 
-    public: ABHashtable<Object*, Object*> difference(HardwareInterface hardwareInterface){
+    public: ABHashtable<Object*, Object*>* difference(HardwareInterface* hardwareInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StdUtil::getInstance().NULL_TABLE;
+                        return StdUtil::getInstance()->NULL_TABLE;
     
 }
 

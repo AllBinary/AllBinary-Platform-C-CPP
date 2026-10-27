@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_LASTKEYAIVISITOR_H
         #define ORG_ALLBINARY_GAME_AG_AI_LASTKEYAIVISITOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/ai/BasicAI.h>
@@ -59,9 +67,9 @@
         
 class LastKeyAIVisitor: public Visitor {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const Boolean TRUE = BooleanFactory::getInstance().TRUE;
+    private: bool TRUE = BooleanFactory::getInstance()->TRUE;
 
 public: LastKeyAIVisitor();
 

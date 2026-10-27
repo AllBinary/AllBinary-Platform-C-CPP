@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tables/user/UserEntityFactory.h>
@@ -56,25 +62,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UsersView.h"
+        #include "views/generic/user/UsersView.h"
 
 class UsersValidationView: public UsersView, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: UsersValidationView(TransformInfoInterface transformInfoInterface) : UsersView(transformInfoInterface){
+public: UsersValidationView(TransformInfoInterface* transformInfoInterface) : UsersView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->userVector= UserEntityFactory::getInstance().getCustomers();
+this->userVector= UserEntityFactory::getInstance()->getCustomers();
     
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
@@ -102,13 +108,13 @@ this->userVector= UserEntityFactory::getInstance().getCustomers();
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -135,13 +141,13 @@ this->userVector= UserEntityFactory::getInstance().getCustomers();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -157,7 +163,7 @@ this->userVector= UserEntityFactory::getInstance().getCustomers();
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -167,7 +173,7 @@ this->userVector= UserEntityFactory::getInstance().getCustomers();
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

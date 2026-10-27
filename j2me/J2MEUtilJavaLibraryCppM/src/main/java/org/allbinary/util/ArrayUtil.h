@@ -9,6 +9,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -56,11 +62,11 @@ class ArrayUtil
             : public Object
          {
 
-    private: static ArrayUtil instance() { return ArrayUtil(); }
+    private: static ArrayUtil* instance() { static std::unique_ptr<ArrayUtil> value(new ArrayUtil()); return value.get(); }
 
-    public: static ArrayUtil getInstance();
+    public: static ArrayUtil* getInstance();
 
-    private: const MathUtil mathUtil = MathUtil::getInstance();
+    private: MathUtil* mathUtil = MathUtil::getInstance();
 
     public: std::vector<Object*> copyOf(std::vector<Object*> original, int32_t newLength);
 

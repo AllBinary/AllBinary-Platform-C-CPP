@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -46,20 +52,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Color.h"
+        #include "org/allbinary/graphics/color/Color.h"
 
 class ColorCacheable
             : public Object
-        : public CacheableInterface {
+        , public CacheableInterface {
 
     private: Object* key;
 
-    private: Color color;
+    private: Color* color;
 
 public: ColorCacheable(Object* key){
 this->key= key;
     
-this->color= Color((key).intValue());
+this->color= new Color((key).intValue());
     
 }
 
@@ -74,7 +80,7 @@ this->color= Color((key).intValue());
 }
 
 
-    public: Color getColor(){
+    public: Color* getColor(){
 
 
 
@@ -84,7 +90,7 @@ this->color= Color((key).intValue());
 }
 
 
-    public: void setColor(Color color){
+    public: void setColor(Color* color){
 this->color= color;
     
 }

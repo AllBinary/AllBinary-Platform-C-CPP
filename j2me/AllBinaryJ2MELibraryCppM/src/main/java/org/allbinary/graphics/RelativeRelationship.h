@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_RELATIVERELATIONSHIP_H
         #define ORG_ALLBINARY_GRAPHICS_RELATIVERELATIONSHIP_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -47,16 +53,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PointFactory.h"
-#include "GPoint.h"
+        #include "org/allbinary/graphics/PointFactory.h"
+#include "org/allbinary/graphics/GPoint.h"
 
 class RelativeRelationship
             : public Object
          {
 
-    public: static const RelativeRelationship NULL_RELATIVE_RELATIONSHIP = RelativeRelationship(PointFactory::getInstance().ZERO_ZERO, BasicArrayListUtil::getInstance().getImmutableInstance());
+    public: static RelativeRelationship* NULL_RELATIVE_RELATIONSHIP() { static std::unique_ptr<RelativeRelationship> value(new RelativeRelationship(PointFactory::getInstance()->ZERO_ZERO, BasicArrayListUtil::getInstance()->getImmutableInstance())); return value.get(); }
 
-    private: BasicArrayList typesAllowedList;
+    private: BasicArrayList* typesAllowedList;
 
     private: int32_t x;
 
@@ -64,7 +70,7 @@ class RelativeRelationship
 
     private: int32_t z;
 
-public: RelativeRelationship(GPoint point, BasicArrayList typesAllowedList);
+public: RelativeRelationship(GPoint* point, BasicArrayList* typesAllowedList);
 
     public: int32_t getX();
 
@@ -72,9 +78,9 @@ public: RelativeRelationship(GPoint point, BasicArrayList typesAllowedList);
 
     public: int32_t getZ();
 
-    public: BasicArrayList getTypesAllowedList();
+    public: BasicArrayList* getTypesAllowedList();
 
-    public: void setTypesAllowedList(BasicArrayList typesAllowedList);
+    public: void setTypesAllowedList(BasicArrayList* typesAllowedList);
 
 };
 

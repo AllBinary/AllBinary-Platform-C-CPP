@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/NullCanvas.h>
 
       
@@ -48,23 +54,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicMenuInputProcessor.h"
+        #include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
 
 class NoMenuInputProcessor: public BasicMenuInputProcessor {
 
-    private: static const NoMenuInputProcessor SINGLETON = NoMenuInputProcessor();
+    private: static NoMenuInputProcessor* SINGLETON() { static std::unique_ptr<NoMenuInputProcessor> value(new NoMenuInputProcessor()); return value.get(); }
 
-    public: static NoMenuInputProcessor getInstance(){
+    public: static NoMenuInputProcessor* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoMenuInputProcessor::SINGLETON;
+                        return NoMenuInputProcessor::SINGLETON();
     
 }
 
 
-private: NoMenuInputProcessor() : BasicMenuInputProcessor(BasicArrayListUtil::getInstance().getImmutableInstance(),  -1, NullCanvas::NULL_CANVAS){
+private: NoMenuInputProcessor() : BasicMenuInputProcessor(BasicArrayListUtil::getInstance()->getImmutableInstance(),  -1, NullCanvas::NULL_CANVAS){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,16 +81,16 @@ private: NoMenuInputProcessor() : BasicMenuInputProcessor(BasicArrayListUtil::ge
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onDownGameKeyEvent(GameKeyEvent gameKeyEvent){
+    public: void onDownGameKeyEvent(GameKeyEvent* gameKeyEvent){
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onUpGameKeyEvent(GameKeyEvent gameKeyEvent){
+    public: void onUpGameKeyEvent(GameKeyEvent* gameKeyEvent){
 }
 
 
-    public: void onMotionGestureEvent(MotionGestureEvent motionGestureEvent){
+    public: void onMotionGestureEvent(MotionGestureEvent* motionGestureEvent){
 }
 
 

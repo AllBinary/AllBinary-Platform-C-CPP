@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -82,34 +88,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SqlTypeStrings.h"
-#include "SqlStrings.h"
+        #include "org/allbinary/logic/communication/sql/SqlTypeStrings.h"
+#include "org/allbinary/logic/communication/sql/SqlStrings.h"
 
 class AbSqlBasic
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const SqlConnectionPool sqlConnectionPool = SqlConnectionPool::getInstance();
+    private: SqlConnectionPool* sqlConnectionPool = SqlConnectionPool::getInstance();
 
-    private: DbConnectionInfo databaseConnectionInfoInterface;
+    private: DbConnectionInfo* databaseConnectionInfoInterface;
 
     private: int32_t connectAttemptCounter;
 
-    protected: Connection conn;
+    protected: Connection* conn;
 
-    protected: const StringUtil stringUtil = StringUtil::getInstance();
+    protected: StringUtil* stringUtil = StringUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const CommonSeps commonSeps = CommonSeps::getInstance();
+    protected: CommonSeps* commonSeps = CommonSeps::getInstance();
 
-    protected: const StdUtil stdUtil = StdUtil::getInstance();
+    protected: StdUtil* stdUtil = StdUtil::getInstance();
 
-    protected: const SqlTypeStrings sqlTypeStrings = SqlTypeStrings::getInstance();
+    protected: SqlTypeStrings* sqlTypeStrings = SqlTypeStrings::getInstance();
 
-    protected: const SqlStrings sqlStrings = SqlStrings::getInstance();
+    protected: SqlStrings* sqlStrings = SqlStrings::getInstance();
 
     protected: const std::string INSERT = "insert";
 
@@ -139,7 +145,7 @@ class AbSqlBasic
 
     private: const std::string LOAD_JDBC_DRIVER_FAILED_LABEL = "Load JDBC Driver Failed: ";
 
-public: AbSqlBasic(DbConnectionInfo databaseConnectionInfoInterface){
+public: AbSqlBasic(DbConnectionInfo* databaseConnectionInfoInterface){
 this->databaseConnectionInfoInterface= databaseConnectionInfoInterface;
     
 this->connectAttemptCounter= 0;
@@ -153,29 +159,29 @@ this->conn=
 
                 //@Throws(SQLException.constructor)
             
-    public: ResultSet executeSQLStatement(std::string statement){
+    public: ResultSet* executeSQLStatement(std::string statement){
 
         try {
             this->initialize();
     
 
-    Statement stmt = this->conn.createStatement();;
+    Statement* stmt = this->conn->createStatement();;
     
-stmt.execute(statement);
-    
-
-    ResultSet rset = stmt.getResultSet();;
-    
-stmt.close();
+stmt->execute(statement);
     
 
-    Connection tempConnection = this->conn;;
+    ResultSet* rset = stmt->getResultSet();;
+    
+stmt->close();
+    
+
+    Connection* tempConnection = this->conn;;
     
 this->conn= 
                                         nullptr
                                     ;
     
-this->sqlConnectionPool.add(this->getDatabaseConnectionInfoInterface().getUrl(), tempConnection);
+this->sqlConnectionPool->add(this->getDatabaseConnectionInfoInterface()->getUrl(), tempConnection);
     
 
 
@@ -185,18 +191,18 @@ this->sqlConnectionPool.add(this->getDatabaseConnectionInfoInterface().getUrl(),
     
 
                 //: 
-} catch(e) 
+} catch(SQLException& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put(this->FAILED_SQL_STATEMENT +statement, this, METHOD_EXECUTED_SQL_STATEMENT, e);
+                                    this->logUtil->put(this->FAILED_SQL_STATEMENT +statement, this, METHOD_EXECUTED_SQL_STATEMENT, &e);
     
 
                                     }
                                 
-this->conn.close();
+this->conn->close();
     
 this->conn= 
                                         nullptr
@@ -215,13 +221,13 @@ this->conn=
     public: std::string create(std::string databaseName){
 
         try {
-            this->executeSQLStatement(this->sqlStrings.CREATE_DATABASE +databaseName);
+            this->executeSQLStatement(this->sqlStrings->CREATE_DATABASE +databaseName);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->DATABASE_CREATED_LABEL +databaseName, this, this->METHOD_CREATE);
+                                    this->logUtil->putF(this->DATABASE_CREATED_LABEL +databaseName, this, this->METHOD_CREATE);
     
 
                                     }
@@ -230,17 +236,17 @@ this->conn=
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return databaseName +this->sqlStrings.CREATE_RETURN;
+                        return databaseName +this->sqlStrings->CREATE_RETURN;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put(this->DATABASE_CREATION_FAILED_LABEL +databaseName, this, this->METHOD_CREATE, e);
+                                    this->logUtil->put(this->DATABASE_CREATION_FAILED_LABEL +databaseName, this, this->METHOD_CREATE, &e);
     
 
                                     }
@@ -259,24 +265,24 @@ this->conn=
     private: void createConnection(){
 
         try {
-            this->conn= this->sqlConnectionPool.get(this->getDatabaseConnectionInfoInterface().getUrl());
+            this->conn= this->sqlConnectionPool->get(this->getDatabaseConnectionInfoInterface()->getUrl());
     
 
                 //: 
-} catch(se) 
+} catch(SQLException& se) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put(this->SQL_CONNECTION_RETRYING, this, METHOD_CREATE_CONNECTION, se);
+                                    this->logUtil->put(this->SQL_CONNECTION_RETRYING, this, METHOD_CREATE_CONNECTION, &se);
     
 
                                     }
                                 
 
         try {
-            Thread::currentThread().sleep(2000);
+            Thread::currentThread()->sleep(2000);
     
 
                         if(this->connectAttemptCounter < 10)
@@ -291,13 +297,13 @@ this->initialize();
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put(this->SQL_CONNECTION_RETRY +se.message, this, this->METHOD_CREATE_CONNECTION, e);
+                                    this->logUtil->put(this->SQL_CONNECTION_RETRY +se.message, this, this->METHOD_CREATE_CONNECTION, &e);
     
 
                                     }
@@ -318,22 +324,22 @@ this->initialize();
                             
         try {
             
-    ClassLoader loader = Thread::currentThread().getContextClassLoader();;
+    ClassLoader* loader = Thread::currentThread()->getContextClassLoader();;
     
 
-    Class* jdbcDriverClass = loader.loadClass(this->getDatabaseConnectionInfoInterface().getJdbcDriver());;
+    Class* jdbcDriverClass = loader->loadClass(this->getDatabaseConnectionInfoInterface()->getJdbcDriver());;
     
-jdbcDriverClass.newInstance();
+jdbcDriverClass->newInstance();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put(this->LOAD_JDBC_DRIVER_FAILED_LABEL +this->getDatabaseConnectionInfoInterface().getJdbcDriver(), this, METHOD_INITIALIZE, e);
+                                    this->logUtil->put(this->LOAD_JDBC_DRIVER_FAILED_LABEL +this->getDatabaseConnectionInfoInterface()->getJdbcDriver(), this, METHOD_INITIALIZE, &e);
     
 
                                     }
@@ -347,13 +353,13 @@ this->createConnection();
     
 
                 //: 
-} catch(se) 
+} catch(Exception& se) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put(this->SQL_CONNECTION_FAILED, this, this->METHOD_INITIALIZE, se);
+                                    this->logUtil->put(this->SQL_CONNECTION_FAILED, this, this->METHOD_INITIALIZE, &se);
     
 
                                     }
@@ -363,7 +369,7 @@ this->createConnection();
 }
 
 
-    public: DatabaseConnectionInfoInterface getDatabaseConnectionInfoInterface(){
+    public: DatabaseConnectionInfoInterface* getDatabaseConnectionInfoInterface(){
 
 
 
@@ -373,7 +379,7 @@ this->createConnection();
 }
 
 
-    public: void setDatabaseConnectionInfoInterface(DbConnectionInfo databaseConnectionInfoInterface){
+    public: void setDatabaseConnectionInfoInterface(DbConnectionInfo* databaseConnectionInfoInterface){
 this->databaseConnectionInfoInterface= databaseConnectionInfoInterface;
     
 }

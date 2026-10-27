@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_SCREENINFO_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_SCREENINFO_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -32,9 +38,9 @@ class ScreenInfo
             : public Object
          {
 
-    private: static ScreenInfo instance() { return ScreenInfo(); }
+    private: static ScreenInfo* instance() { static std::unique_ptr<ScreenInfo> value(new ScreenInfo()); return value.get(); }
 
-    public: static ScreenInfo getInstance();
+    public: static ScreenInfo* getInstance();
 
     public: const int32_t SMALL_WIDTH = 320;
 

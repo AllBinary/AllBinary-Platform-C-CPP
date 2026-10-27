@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/layer/RTSLayer.h>
 
       
@@ -45,7 +51,7 @@
         
 class RTSLayerFormFactoryInterface {
 
-    ScrollSelectionForm getInstance(RTSLayer rtsLayer)
+    public: virtual ScrollSelectionForm* getInstance(RTSLayer* rtsLayer) = 0;
 
 };
 

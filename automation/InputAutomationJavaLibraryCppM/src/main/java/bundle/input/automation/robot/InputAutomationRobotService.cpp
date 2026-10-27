@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/input/automation/robot/InputRobotInterface.h>
@@ -43,21 +49,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputAutomationRobotServiceInterface.h"
+        #include "bundle/input/automation/robot/InputAutomationRobotServiceInterface.h"
 
 class InputAutomationRobotService
             : public Object
-        : public InputAutomationRobotServiceInterface {
+        , public InputAutomationRobotServiceInterface {
 
-    private: std::vector<InputRobotInterface> inputRobotInterfaceArray;
+    private: std::vector<InputRobotInterface*> inputRobotInterfaceArray;
 
-public: InputAutomationRobotService(std::vector<InputRobotInterface> inputRobotInterfaceArray){
+public: InputAutomationRobotService(std::vector<InputRobotInterface*> inputRobotInterfaceArray){
 this->setInputRobotInterfaceArray(inputRobotInterfaceArray);
     
 }
 
 
-    public: std::vector<InputRobotInterface> getInputRobotInterfaceArray(){
+    public: std::vector<InputRobotInterface*> getInputRobotInterfaceArray(){
 
 
 
@@ -67,7 +73,7 @@ this->setInputRobotInterfaceArray(inputRobotInterfaceArray);
 }
 
 
-    public: void setInputRobotInterfaceArray(std::vector<InputRobotInterface> inputRobotInterfaceArray){
+    public: void setInputRobotInterfaceArray(std::vector<InputRobotInterface*> inputRobotInterfaceArray){
 this->inputRobotInterfaceArray= inputRobotInterfaceArray;
     
 }

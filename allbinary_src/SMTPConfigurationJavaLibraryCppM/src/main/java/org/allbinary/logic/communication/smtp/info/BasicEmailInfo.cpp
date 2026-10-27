@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -62,23 +68,23 @@ class BasicEmailInfo
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string subject;
 
     private: std::string textBody;
 
-    protected: EmailServerConfigurationInterface emailServerConfigurationInterface;
+    protected: EmailServerConfigurationInterface* emailServerConfigurationInterface;
 
 public: BasicEmailInfo(std::string subject, std::string textBody){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF(commonStrings.START, this, commonStrings.CONSTRUCTOR);
+this->logUtil->putF(commonStrings->START, this, commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -110,7 +116,7 @@ this->textBody= textBody;
 }
 
 
-    public: EmailServerConfigurationInterface getEmailServerConfigurationInterface(){
+    public: EmailServerConfigurationInterface* getEmailServerConfigurationInterface(){
 
 
 
@@ -120,7 +126,7 @@ this->textBody= textBody;
 }
 
 
-    public: void setEmailServerConfigurationInterface(EmailServerConfigurationInterface emailServerConfigurationInterface){
+    public: void setEmailServerConfigurationInterface(EmailServerConfigurationInterface* emailServerConfigurationInterface){
 this->emailServerConfigurationInterface= emailServerConfigurationInterface;
     
 }
@@ -128,25 +134,25 @@ this->emailServerConfigurationInterface= emailServerConfigurationInterface;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->getEmailServerConfigurationInterface().toString());
+stringBuffer->append(this->getEmailServerConfigurationInterface()->toString());
     
-stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
+stringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
     
-stringBuffer.append("Subject: \n");
+stringBuffer->append("Subject: \n");
     
-stringBuffer.append(this->getSubject());
+stringBuffer->append(this->getSubject());
     
-stringBuffer.append("\nText Body: \n");
+stringBuffer->append("\nText Body: \n");
     
-stringBuffer.append(this->getTextBody());
+stringBuffer->append(this->getTextBody());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
@@ -157,7 +163,7 @@ stringBuffer.append(this->getTextBody());
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

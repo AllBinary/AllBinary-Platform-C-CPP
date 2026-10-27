@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,14 +44,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NullPaintable.h"
-#include "Paintable.h"
+        #include "org/allbinary/graphics/paint/NullPaintable.h"
+#include "org/allbinary/graphics/paint/Paintable.h"
 
 class PaintableFactory
             : public Object
          {
 
-    public: Paintable getInstance(){
+    public: Paintable* getInstance(){
 
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -79,9 +85,9 @@ class MyFormUtil
             : public Object
          {
 
-    private: static MyFormUtil instance() { return MyFormUtil(); }
+    private: static MyFormUtil* instance() { static std::unique_ptr<MyFormUtil> value(new MyFormUtil()); return value.get(); }
 
-    public: static MyFormUtil getInstance(){
+    public: static MyFormUtil* getInstance(){
 
 
 
@@ -91,27 +97,27 @@ class MyFormUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: Rectangle popupMenuRectangle = RectangleFactory::SINGLETON;
+    private: Rectangle* popupMenuRectangle = RectangleFactory::SINGLETON;
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
 
-    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
+    DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-    bool isOpenGL = features.isDefault(OpenGLFeatureFactory::getInstance().OPENGL);;
+    bool isOpenGL = features->isDefault(OpenGLFeatureFactory::getInstance()->OPENGL);;
     
 
-    int32_t TOTAL_CHAR_WIDTH = SWTJOGLProcessor::getInstance().isJOGL() && isOpenGL
+    int32_t TOTAL_CHAR_WIDTH = SWTJOGLProcessor::getInstance()->isJOGL() && isOpenGL
                         ?       
                                 2
                                 :
@@ -124,19 +130,19 @@ class MyFormUtil
     int32_t width = MyFontProcessor::defaultStringWidth(font, TOTAL_CHAR_WIDTH);;
     
 
-    PointFactory pointFactory = PointFactory::getInstance();;
+    PointFactory* pointFactory = PointFactory::getInstance();;
     
 
-                        if(displayInfo.getLastHeight() < 320)
+                        if(displayInfo->getLastHeight() < 320)
                         
                                     {
-                                    this->popupMenuRectangle= Rectangle(pointFactory.createXY(0, 25), width, (font.getHeight() *4) +2);
+                                    this->popupMenuRectangle= new Rectangle(pointFactory->createXY(0, 25), width, (font->getHeight() *4) +2);
     
 
                                     }
                                 
                         else {
-                            this->popupMenuRectangle= Rectangle(pointFactory.createXY(0, displayInfo.getLastHalfHeight() -70), width, (font.getHeight() *5));
+                            this->popupMenuRectangle= new Rectangle(pointFactory->createXY(0, displayInfo->getLastHalfHeight() -70), width, (font->getHeight() *5));
     
 
                         }
@@ -144,7 +150,7 @@ class MyFormUtil
 }
 
 
-    public: Rectangle getPopupMenuRectangle(){
+    public: Rectangle* getPopupMenuRectangle(){
 
 
 

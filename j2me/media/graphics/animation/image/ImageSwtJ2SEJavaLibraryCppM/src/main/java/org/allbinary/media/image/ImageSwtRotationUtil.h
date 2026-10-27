@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/configuration/feature/Features.h>
@@ -64,42 +70,42 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageUtil.h"
-#include "Image.h"
+        #include "org/allbinary/media/image/ImageUtil.h"
+#include "org/allbinary/media/image/Image.h"
 
 class ImageSwtRotationUtil
             : public Object
          {
 
-    private: static ImageSwtRotationUtil instance() { return ImageSwtRotationUtil(); }
+    private: static ImageSwtRotationUtil* instance() { static std::unique_ptr<ImageSwtRotationUtil> value(new ImageSwtRotationUtil()); return value.get(); }
 
-    public: static ImageSwtRotationUtil getInstance();
+    public: static ImageSwtRotationUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const ImageUtil imageUtil = ImageUtil::getInstance();
+    private: ImageUtil* imageUtil = ImageUtil::getInstance();
 
-    private: const GameFeatureFactory gameFeatureFactory = GameFeatureFactory::getInstance();
+    private: GameFeatureFactory* gameFeatureFactory = GameFeatureFactory::getInstance();
 
-    private: const Features features = Features::getInstance();
+    private: Features* features = Features::getInstance();
 
     private: const std::string NO_COPY = "SWT should not copy images after initial loading as the alpha is not honored";
 
 private: ImageSwtRotationUtil();
 
-    public: org::eclipse::swt::graphics::Image getRotatedImage(org::eclipse::swt::graphics::Image bufferedImage, int32_t totalAngle);
+    public: org::eclipse::swt::graphics::Image* getRotatedImage(org::eclipse::swt::graphics::Image* bufferedImage, int32_t totalAngle);
 
-    private: org::eclipse::swt::graphics::Image getRotatedImage2(org::eclipse::swt::graphics::Image bufferedImage, org::eclipse::swt::graphics::Image newBufferedImage, GC gc, float angle);
+    private: org::eclipse::swt::graphics::Image* getRotatedImage2(org::eclipse::swt::graphics::Image* bufferedImage, org::eclipse::swt::graphics::Image* newBufferedImage, GC* gc, float angle);
 
-    public: org::eclipse::swt::graphics::Image rotateImage(org::eclipse::swt::graphics::Image originalSwtImage, org::eclipse::swt::graphics::Image newSwtImage, GC gc, int32_t totalAngle);
+    public: org::eclipse::swt::graphics::Image* rotateImage(org::eclipse::swt::graphics::Image* originalSwtImage, org::eclipse::swt::graphics::Image* newSwtImage, GC* gc, int32_t totalAngle);
 
-    public: org::eclipse::swt::graphics::Image getRotatedImageSWT(org::eclipse::swt::graphics::Image bufferedImage, org::eclipse::swt::graphics::Image newSwtImage, GC gc, int32_t totalAngle);
+    public: org::eclipse::swt::graphics::Image* getRotatedImageSWT(org::eclipse::swt::graphics::Image* bufferedImage, org::eclipse::swt::graphics::Image* newSwtImage, GC* gc, int32_t totalAngle);
 
-    public: std::vector<org::eclipse::swt::graphics::Image> getRotatedImages(org::eclipse::swt::graphics::Image bufferedImage, int32_t numberOfFrames, int32_t totalAngle);
+    public: std::vector<org::eclipse::swt::graphics::Image*> getRotatedImages(org::eclipse::swt::graphics::Image* bufferedImage, int32_t numberOfFrames, int32_t totalAngle);
 
-    public: org::eclipse::swt::graphics::Image createSpriteImage(std::vector<org::eclipse::swt::graphics::Image> bufferedImageArray);
+    public: org::eclipse::swt::graphics::Image* createSpriteImage(std::vector<org::eclipse::swt::graphics::Image*> bufferedImageArray);
 
 };
 

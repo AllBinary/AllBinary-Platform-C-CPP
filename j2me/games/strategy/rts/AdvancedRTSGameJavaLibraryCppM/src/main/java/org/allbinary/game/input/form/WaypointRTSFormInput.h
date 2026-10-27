@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -157,54 +163,54 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RTSFormInput.h"
-#include "PrimaryWaypointHelper.h"
+        #include "org/allbinary/game/input/form/RTSFormInput.h"
+#include "org/allbinary/game/input/form/PrimaryWaypointHelper.h"
 
 class WaypointRTSFormInput: public RTSFormInput {
 
-    private: const RTSLayerEvent WAYPOINT_EVENT = RTSLayerEvent(NullRTSLayer::NULL_RTS_LAYER);
+    private: RTSLayerEvent* WAYPOINT_EVENT = new RTSLayerEvent(NullRTSLayer::NULL_RTS_LAYER);
 
-    protected: GameNotificationEvent dragToSpotGameNotificationEvent;
+    protected: GameNotificationEvent* dragToSpotGameNotificationEvent;
 
-    protected: GameNotificationEvent spotTakenGameNotificationEvent;
+    protected: GameNotificationEvent* spotTakenGameNotificationEvent;
 
-    protected: GameNotificationEvent buildingCollisionGameNotificationEvent;
+    protected: GameNotificationEvent* buildingCollisionGameNotificationEvent;
 
-    protected: GameNotificationEvent roadCollisionGameNotificationEvent;
+    protected: GameNotificationEvent* roadCollisionGameNotificationEvent;
 
-    protected: GameNotificationEvent newWaypointGameNotificationEvent;
+    protected: GameNotificationEvent* newWaypointGameNotificationEvent;
 
-    protected: GameNotificationEvent noMoneyGameNotificationEvent;
+    protected: GameNotificationEvent* noMoneyGameNotificationEvent;
 
     private: bool isPrimaryWaypointCreator;
 
-    private: PathFindingLayerInterface stickyAssociatedRtsLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
+    private: PathFindingLayerInterface* stickyAssociatedRtsLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
-public: WaypointRTSFormInput(std::vector<Group> groupInterface, bool isPrimaryWaypointCreator);
-
-                //@Throws(Exception.constructor)
-            
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+public: WaypointRTSFormInput(std::vector<Group*> groupInterface, bool isPrimaryWaypointCreator);
 
                 //@Throws(Exception.constructor)
             
-    public: void processAtPoint(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, GPoint point);
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager);
 
                 //@Throws(Exception.constructor)
             
-    private: void processCellPosition(RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, GeographicMapCellPosition geographicMapCellPosition);
+    public: void processAtPoint(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, GPoint* point);
 
                 //@Throws(Exception.constructor)
             
-    public: void processStickyGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t index);
+    private: void processCellPosition(RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, GeographicMapCellPosition* geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    protected: bool attemptBuild(RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, RTSLayer layerInterface, int32_t itemIndex);
+    public: void processStickyGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t index);
 
                 //@Throws(Exception.constructor)
             
-    private: void addWayPoint(WaypointLayer layerInterface);
+    protected: bool attemptBuild(RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, RTSLayer* layerInterface, int32_t itemIndex);
+
+                //@Throws(Exception.constructor)
+            
+    private: void addWayPoint(WaypointLayer* layerInterface);
 
 };
 

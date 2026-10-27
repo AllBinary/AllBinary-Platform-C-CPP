@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -69,17 +75,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Angle.h"
-#include "NamedAngle.h"
-#include "FrameUtil.h"
+        #include "org/allbinary/math/Angle.h"
+#include "org/allbinary/math/NamedAngle.h"
+#include "org/allbinary/math/FrameUtil.h"
 
 class AngleFactory
             : public Object
          {
 
-    private: static AngleFactory instance() { return AngleFactory(); }
+    private: static AngleFactory* instance() { static std::unique_ptr<AngleFactory> value(new AngleFactory()); return value.get(); }
 
-    public: static AngleFactory getInstance(){
+    public: static AngleFactory* getInstance(){
 
 
 
@@ -91,10 +97,10 @@ class AngleFactory
 
     public: static void main(std::vector<std::string> args){
 
-    StringMaker stringMaker = StringMaker();;
+    StringMaker* stringMaker = new StringMaker();;
     
 
-    AngleFactory angleFactory = AngleFactory::getInstance();;
+    AngleFactory* angleFactory = AngleFactory::getInstance();;
     
 
 
@@ -103,43 +109,43 @@ class AngleFactory
                         for (
     int32_t index = 0;index < 360; index++)
         {
-stringMaker.appendint(index).append(CommonSeps::getInstance().FORWARD_SLASH).appendshort(angleFactory.getClosestDirection(index).getValue()).append(CommonSeps::getInstance().NEW_LINE);
+stringMaker->appendint(index)->append(CommonSeps::getInstance()->FORWARD_SLASH)->appendshort(angleFactory->getClosestDirection(index)->getValue())->append(CommonSeps::getInstance()->NEW_LINE);
     
 }
 
-LogUtil::getInstance().putF(stringMaker.toString(), "main", "main");
+LogUtil::getInstance()->putF(stringMaker->toString(), "main", "main");
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     public: const int16_t TOTAL_ANGLE = 360;
 
     public: const int16_t QUARTER_TOTAL_ANGLE = 90;
 
-    private: const std::vector<Angle> angleArray = std::vector<Angle>(static_cast<int32_t>(this->TOTAL_ANGLE));
+    private: const std::vector<Angle*> angleArray = std::vector<Angle*>(static_cast<int32_t>(this->TOTAL_ANGLE));
 
     private: const int16_t NEGATIVE_ONE =  -1;
 
-    public: const NamedAngle NOT_ANGLE = NamedAngle(this->NEGATIVE_ONE, CommonStrings::getInstance().EMPTY);
+    public: NamedAngle* NOT_ANGLE = new NamedAngle(this->NEGATIVE_ONE, CommonStrings::getInstance()->EMPTY);
 
-    public: NamedAngle DOWN;
+    public: NamedAngle* DOWN;
 
-    public: NamedAngle UP;
+    public: NamedAngle* UP;
 
-    public: NamedAngle LEFT;
+    public: NamedAngle* LEFT;
 
-    public: NamedAngle RIGHT;
+    public: NamedAngle* RIGHT;
 
 public: AngleFactory(){
 
-    CommonPhoneStrings commonPhoneStrings = CommonPhoneStrings::getInstance();;
+    CommonPhoneStrings* commonPhoneStrings = CommonPhoneStrings::getInstance();;
     
 
     int16_t total = this->angleArray.size();;
     
-this->UP= NamedAngle(0, commonPhoneStrings.UP);
+this->UP= new NamedAngle(0, commonPhoneStrings->UP);
     
 this->angleArray[0]= this->UP;
     
@@ -150,11 +156,11 @@ this->angleArray[0]= this->UP;
                         for (
     int32_t index = 1;index < 90; index++)
         {
-this->angleArray[index]= Angle(index);
+this->angleArray[index]= new Angle(index);
     
 }
 
-this->RIGHT= NamedAngle(90, commonPhoneStrings.RIGHT);
+this->RIGHT= new NamedAngle(90, commonPhoneStrings->RIGHT);
     
 this->angleArray[90]= this->RIGHT;
     
@@ -165,11 +171,11 @@ this->angleArray[90]= this->RIGHT;
                         for (
     int32_t index = 91;index < 180; index++)
         {
-this->angleArray[index]= Angle(index);
+this->angleArray[index]= new Angle(index);
     
 }
 
-this->DOWN= NamedAngle(180, commonPhoneStrings.DOWN);
+this->DOWN= new NamedAngle(180, commonPhoneStrings->DOWN);
     
 this->angleArray[180]= this->DOWN;
     
@@ -180,11 +186,11 @@ this->angleArray[180]= this->DOWN;
                         for (
     int32_t index = 181;index < 270; index++)
         {
-this->angleArray[index]= Angle(index);
+this->angleArray[index]= new Angle(index);
     
 }
 
-this->LEFT= NamedAngle(270, commonPhoneStrings.LEFT);
+this->LEFT= new NamedAngle(270, commonPhoneStrings->LEFT);
     
 this->angleArray[270]= this->LEFT;
     
@@ -195,18 +201,18 @@ this->angleArray[270]= this->LEFT;
                         for (
     int32_t index = 271;index < total; index++)
         {
-this->angleArray[index]= Angle(index);
+this->angleArray[index]= new Angle(index);
     
 }
 
 }
 
 
-    private: const FrameUtil frameUtil = FrameUtil::getInstance();
+    private: FrameUtil* frameUtil = FrameUtil::getInstance();
 
-    public: Angle getAt(int32_t index){
+    public: Angle* getAt(int32_t index){
 
-    int32_t adjustedIndex = static_cast<int32_t>(this->frameUtil.adjustAngleToFrameAngle(index));;
+    int32_t adjustedIndex = static_cast<int32_t>(this->frameUtil->adjustAngleToFrameAngle(index));;
     
 
 
@@ -217,7 +223,7 @@ this->angleArray[index]= Angle(index);
 }
 
 
-    public: Angle getClosestDirection(int32_t angle){
+    public: Angle* getClosestDirection(int32_t angle){
 
                         if((angle >= 315 && angle < 360) || (angle >= 0 && angle < 45))
                         
@@ -273,12 +279,12 @@ this->angleArray[index]= Angle(index);
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: Angle getGeneralDirection(){
+    public: Angle* getGeneralDirection(){
 
 
 

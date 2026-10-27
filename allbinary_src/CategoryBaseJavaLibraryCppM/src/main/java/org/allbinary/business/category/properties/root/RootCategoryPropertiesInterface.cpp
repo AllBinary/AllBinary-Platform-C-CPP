@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/io/path/AbPath.h>
@@ -46,11 +52,11 @@ class RootCategoryPropertiesInterface {
 
                 //@Throws(Exception.constructor)
             
-    void setRootFilePath(AbPath value)
+    public: virtual void setRootFilePath(AbPath* value) = 0;
 
                 //@Throws(Exception.constructor)
             
-    AbPath getRootFilePath()
+    public: virtual AbPath* getRootFilePath() = 0;
 
 };
 

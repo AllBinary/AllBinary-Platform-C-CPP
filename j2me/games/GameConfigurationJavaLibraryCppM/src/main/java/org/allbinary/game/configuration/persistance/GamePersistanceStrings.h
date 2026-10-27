@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_GAMEPERSISTANCESTRINGS_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_GAMEPERSISTANCESTRINGS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class GamePersistanceStrings
             : public Object
          {
 
-    private: static GamePersistanceStrings instance() { return GamePersistanceStrings(); }
+    private: static GamePersistanceStrings* instance() { static std::unique_ptr<GamePersistanceStrings> value(new GamePersistanceStrings()); return value.get(); }
 
-    public: static GamePersistanceStrings getInstance();
+    public: static GamePersistanceStrings* getInstance();
 
     public: const std::string SAVED_GAME_RECORD_ID = "_SG";
 

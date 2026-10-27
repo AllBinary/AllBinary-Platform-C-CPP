@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayInputStream.h>
@@ -121,25 +127,25 @@
         
 class DownloadableInventoryItemView: public HttpStoreComponentView, public RequestMapInterface {
 
-    public: static int32_t TYPE_ID = 11;
+    public: static inline int32_t TYPE_ID = 11;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
-    protected: HttpServletRequest request;
+    protected: HttpServletRequest* request;
 
     protected: std::string id;
 
-    protected: ItemInterface itemInterface;
+    protected: ItemInterface* itemInterface;
 
-    protected: DownloadableItem downloadableItem;
+    protected: DownloadableItem* downloadableItem;
 
-    private: HashMap<Object*, Object*> requestHashMap;
+    private: HashMap<Object*, Object*>* requestHashMap;
 
-public: DownloadableInventoryItemView(TransformInfoInterface transformInfoInterface);
+public: DownloadableInventoryItemView(TransformInfoInterface* transformInfoInterface);
 
-public: DownloadableInventoryItemView(TransformInfoInterface transformInfoInterface, std::string empty);
+public: DownloadableInventoryItemView(TransformInfoInterface* transformInfoInterface, std::string empty);
 
     public: int32_t getTypeId();
 
@@ -155,19 +161,19 @@ public: DownloadableInventoryItemView(TransformInfoInterface transformInfoInterf
 
                 //@Throws(Exception.constructor)
             
-    protected: void processFile(FileItem fileItem);
+    protected: void processFile(FileItem* fileItem);
 
                 //@Throws(Exception.constructor)
             
-    protected: void unzip(FileItem fileItem);
+    protected: void unzip(FileItem* fileItem);
 
     private: std::string getItemFilePath();
 
-    private: void setRequestHashMap(HashMap<Object*, Object*> requestHashMap);
+    private: void setRequestHashMap(HashMap<Object*, Object*>* requestHashMap);
 
-    public: HashMap<Object*, Object*> getRequestHashMap();
+    public: HashMap<Object*, Object*>* getRequestHashMap();
 
-    public: DownloadableItem getDownloadableItem();
+    public: DownloadableItem* getDownloadableItem();
 
 };
 

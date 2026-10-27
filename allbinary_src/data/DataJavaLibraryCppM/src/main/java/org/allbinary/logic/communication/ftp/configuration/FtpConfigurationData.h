@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATIONDATA_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATIONDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,15 +52,15 @@ class FtpConfigurationData
             : public Object
          {
 
-    public: static const std::string NAME = "FTP_NAME";
+    public: static inline const std::string NAME = "FTP_NAME";
 
-    public: static const std::string SERVER = "FTP_SERVER";
+    public: static inline const std::string SERVER = "FTP_SERVER";
 
-    public: static const std::string PATH = "FTP_PATH";
+    public: static inline const std::string PATH = "FTP_PATH";
 
-    public: static const std::string USERNAME = "FTP_USERNAME";
+    public: static inline const std::string USERNAME = "FTP_USERNAME";
 
-    public: static const std::string PASSWORD = "FTP_PASSWORD";
+    public: static inline const std::string PASSWORD = "FTP_PASSWORD";
 
 private: FtpConfigurationData();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,20 +61,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SelectionToolFactory.h"
-#include "GraphicsItemInterfaceFactoryInterface.h"
-#include "LinesGraphicItem.h"
-#include "LinesGraphicItemFactory.h"
-#include "GraphicItemBuilder.h"
-#include "GraphicItemInterface.h"
+        #include "org/allbinary/graphics/j2me/workarea/tools/SelectionToolFactory.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/GraphicsItemInterfaceFactoryInterface.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItemFactory.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemBuilder.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h"
 
 class GraphicItemFactory
             : public Object
          {
 
-    private: static GraphicItemFactory instance() { return GraphicItemFactory(); }
+    private: static GraphicItemFactory* instance() { static std::unique_ptr<GraphicItemFactory> value(new GraphicItemFactory()); return value.get(); }
 
-    public: static GraphicItemFactory getInstance(){
+    public: static GraphicItemFactory* getInstance(){
 
 
 
@@ -78,21 +84,21 @@ class GraphicItemFactory
 }
 
 
-    private: HashMap<Object*, Object*> graphicItems;
+    private: HashMap<Object*, Object*>* graphicItems;
 
-    private: const GraphicsItemInterfaceFactoryInterface DEFAULT = SelectionToolFactory();
+    private: GraphicsItemInterfaceFactoryInterface* DEFAULT = new SelectionToolFactory();
 
 private: GraphicItemFactory(){
-this->graphicItems= StdUtil::getInstance().createHashMap();
+this->graphicItems= StdUtil::getInstance()->createHashMap();
     
-this->graphicItems.put(LinesGraphicItem::getStaticName(), LinesGraphicItemFactory());
+this->graphicItems->put(LinesGraphicItem::getStaticName(), new LinesGraphicItemFactory());
     
 }
 
 
-    public: GraphicsItemInterfaceFactoryInterface getInstance(std::string itemName){
+    public: GraphicsItemInterfaceFactoryInterface* getInstance(std::string itemName){
 
-    GraphicsItemInterfaceFactoryInterface graphicsItemInterfaceFactoryInterface = this->graphicItems.get(itemName);;
+    GraphicsItemInterfaceFactoryInterface* graphicsItemInterfaceFactoryInterface = dynamic_cast<GraphicsItemInterfaceFactoryInterface*>(this->graphicItems->get(itemName));;
     
 
                         if(graphicsItemInterfaceFactoryInterface == 
@@ -116,12 +122,12 @@ this->graphicItems.put(LinesGraphicItem::getStaticName(), LinesGraphicItemFactor
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> getInstance(BasicArrayList graphicItemNodeList){
+    public: HashMap<Object*, Object*>* getInstance(BasicArrayList* graphicItemNodeList){
 
-    int32_t numberOfItems = graphicItemNodeList.size();;
+    int32_t numberOfItems = graphicItemNodeList->size();;
     
 
-    HashMap<Object*, Object*> graphicItemHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* graphicItemHashMap = StdUtil::getInstance()->createHashMap();;
     
 
                         if(LOGGING::contains(LOGGING::MENUEVENT))
@@ -138,9 +144,9 @@ this->graphicItems.put(LinesGraphicItem::getStaticName(), LinesGraphicItemFactor
     int32_t index = 0;index < numberOfItems; index++)
         {
 
-    GraphicItemInterface graphicItem = GraphicItemBuilder::getInstance(graphicItemNodeList.get(index));;
+    GraphicItemInterface* graphicItem = GraphicItemBuilder::getInstance(dynamic_cast<Node*>(graphicItemNodeList->get(index)));;
     
-graphicItemHashMap.put(graphicItem.getTreeNode(), graphicItem);
+graphicItemHashMap->put(graphicItem->getTreeNode(), graphicItem);
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_STRING_SPECIALCHARACTERUTIL_H
         #define ORG_ALLBINARY_LOGIC_STRING_SPECIALCHARACTERUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -59,13 +65,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StringUtil.h"
+        #include "org/allbinary/logic/string/StringUtil.h"
 
 class SpecialCharacterUtil
             : public Object
          {
 
-    public: static HashMap<Object*, Object*> getHashMap();
+    public: static HashMap<Object*, Object*>* getHashMap();
 
 };
 

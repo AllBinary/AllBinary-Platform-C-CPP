@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
@@ -47,11 +53,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicConstantVelocityMovement.h"
+        #include "org/allbinary/physics/movement/BasicConstantVelocityMovement.h"
 
 class NoBasicConstantVelocityMovement: public BasicConstantVelocityMovement {
 
-public: NoBasicConstantVelocityMovement() : BasicConstantVelocityMovement(BasicDecimal::ZERO_BIGDECIMAL, BasicVelocityProperties()){
+public: NoBasicConstantVelocityMovement() : BasicConstantVelocityMovement(BasicDecimal::ZERO_BIGDECIMAL, new BasicVelocityProperties()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -63,7 +69,7 @@ public: NoBasicConstantVelocityMovement() : BasicConstantVelocityMovement(BasicD
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryGameLayer layer){
+    public: void process(AllBinaryGameLayer* layer){
 }
 
 

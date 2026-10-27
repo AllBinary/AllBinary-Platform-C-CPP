@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVUTILBASE_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVUTILBASE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -49,11 +55,11 @@ class OpenGLVUtilBase
             : public Object
          {
 
-    public: void glTexEnvix(GL10 gl, int32_t target, int32_t pname, int32_t param);
+    public: void glTexEnvix(GL10* gl, int32_t target, int32_t pname, int32_t param);
 
-    public: void glTexParameterix(GL10 gl, int32_t target, int32_t pname, int32_t param);
+    public: void glTexParameterix(GL10* gl, int32_t target, int32_t pname, int32_t param);
 
-    public: void glGenerateMipmap(GL10 gl, int32_t textureId, int32_t target, bool generateMipMap);
+    public: void glGenerateMipmap(GL10* gl, int32_t textureId, int32_t target, bool generateMipMap);
 
 };
 

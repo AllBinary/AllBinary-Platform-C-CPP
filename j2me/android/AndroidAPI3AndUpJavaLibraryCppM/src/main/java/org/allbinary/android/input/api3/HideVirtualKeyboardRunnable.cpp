@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -72,13 +78,13 @@
         
 class HideVirtualKeyboardRunnable
             : public Object
-        : public Runnable {
+        , public Runnable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: Activity activity;
+    private: Activity* activity;
 
-public: HideVirtualKeyboardRunnable(Activity activity){
+public: HideVirtualKeyboardRunnable(Activity* activity){
 this->activity= activity;
     
 }
@@ -86,15 +92,15 @@ this->activity= activity;
 
     public: void run(){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
-    InputMethodManager inputMethodManager = this->activity.getSystemService(Context::INPUT_METHOD_SERVICE) as unknown;;
+    InputMethodManager* inputMethodManager = dynamic_cast<InputMethodManager*>(this->activity->getSystemService(Context::INPUT_METHOD_SERVICE) as unknown);;
     
 
-    ViewCompositeInterface viewCompositeInterface = this->activity as unknown;;
+    ViewCompositeInterface* viewCompositeInterface = dynamic_cast<ViewCompositeInterface*>(this->activity as unknown);;
     
 
                         if(viewCompositeInterface == 
@@ -108,15 +114,15 @@ this->activity= activity;
                                     }
                                 
 
-    View view = viewCompositeInterface.getView();;
+    View* view = viewCompositeInterface->getView();;
     
 
-                        if(view.getWindowToken() == 
+                        if(view->getWindowToken() == 
                                     nullptr
                                 )
                         
                                     {
-                                    this->logUtil.putF("Unable to hide virtual keyboard as window token is null - This usually happens during loading when the view is not attached to a window", this, commonStrings.RUN);
+                                    this->logUtil->putF("Unable to hide virtual keyboard as window token is null - This usually happens during loading when the view is not attached to a window", this, commonStrings->RUN);
     
 
 
@@ -128,15 +134,15 @@ this->activity= activity;
                                     }
                                 
 
-    IBinder token = view.getWindowToken();;
+    IBinder* token = view->getWindowToken();;
     
-inputMethodManager.hideSoftInputFromWindow(token, 0);
+inputMethodManager->hideSoftInputFromWindow(token, 0);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
     
 }
 

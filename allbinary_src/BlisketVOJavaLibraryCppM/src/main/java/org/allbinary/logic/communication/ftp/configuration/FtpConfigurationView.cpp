@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,47 +67,47 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "FtpConfigurationInterface.h"
-#include "FtpConfiguration.h"
-#include "FtpConfigurationData.h"
-#include "FtpConfigurationMapping.h"
+        #include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationInterface.h"
+#include "org/allbinary/logic/communication/ftp/configuration/FtpConfiguration.h"
+#include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationData.h"
+#include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationMapping.h"
 
 class FtpConfigurationView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: FtpConfigurationInterface ftpConfigurationInterface;
+    private: FtpConfigurationInterface* ftpConfigurationInterface;
 
-public: FtpConfigurationView(Node node){
-this->setFtpConfigurationInterface(FtpConfiguration());
+public: FtpConfigurationView(Node* node){
+this->setFtpConfigurationInterface(dynamic_cast<FtpConfigurationInterface*>(new FtpConfiguration()));
     
 
-    NodeList chileNodeList = node.getChildNodes();;
+    NodeList* chileNodeList = node->getChildNodes();;
     
 
     std::string server = DomNodeHelper::getTextNodeValue(FtpConfigurationData::SERVER, chileNodeList);;
     
-this->getFtpConfigurationInterface().setServer(server);
+this->getFtpConfigurationInterface()->setServer(server);
     
 
     std::string userName = DomNodeHelper::getTextNodeValue(FtpConfigurationData::USERNAME, chileNodeList);;
     
-this->getFtpConfigurationInterface().setUserName(userName);
+this->getFtpConfigurationInterface()->setUserName(userName);
     
 
     std::string password = DomNodeHelper::getTextNodeValue(FtpConfigurationData::PASSWORD, chileNodeList);;
     
-this->getFtpConfigurationInterface().setPassword(password);
+this->getFtpConfigurationInterface()->setPassword(password);
     
 
     std::string path = DomNodeHelper::getTextNodeValue(FtpConfigurationData::PATH, chileNodeList);;
     
-this->getFtpConfigurationInterface().setPath(path);
+this->getFtpConfigurationInterface()->setPath(path);
     
 }
 
 
-public: FtpConfigurationView(FtpConfigurationInterface ftpConfigurationInterface){
+public: FtpConfigurationView(FtpConfigurationInterface* ftpConfigurationInterface){
 this->setFtpConfigurationInterface(ftpConfigurationInterface);
     
 }
@@ -109,15 +115,15 @@ this->setFtpConfigurationInterface(ftpConfigurationInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    FtpConfigurationMapping ftpConfigurationMapping = FtpConfigurationMapping(this->getFtpConfigurationInterface());;
+    FtpConfigurationMapping* ftpConfigurationMapping = new FtpConfigurationMapping(this->getFtpConfigurationInterface());;
     
 
-    HashMap<Object*, Object*> hashMap = ftpConfigurationMapping.toHashMap();;
+    HashMap<Object*, Object*>* hashMap = ftpConfigurationMapping->toHashMap();;
     
 
-    Node node = ModDomHelper::createNameValueNodes(document, FtpConfigurationData::NAME, hashMap);;
+    Node* node = ModDomHelper::createNameValueNodes(document, FtpConfigurationData::NAME, hashMap);;
     
 
 
@@ -128,7 +134,7 @@ this->setFtpConfigurationInterface(ftpConfigurationInterface);
 }
 
 
-    public: FtpConfigurationInterface getFtpConfigurationInterface(){
+    public: FtpConfigurationInterface* getFtpConfigurationInterface(){
 
 
 
@@ -138,7 +144,7 @@ this->setFtpConfigurationInterface(ftpConfigurationInterface);
 }
 
 
-    public: void setFtpConfigurationInterface(FtpConfigurationInterface ftpConfigurationInterface){
+    public: void setFtpConfigurationInterface(FtpConfigurationInterface* ftpConfigurationInterface){
 this->ftpConfigurationInterface= ftpConfigurationInterface;
     
 }

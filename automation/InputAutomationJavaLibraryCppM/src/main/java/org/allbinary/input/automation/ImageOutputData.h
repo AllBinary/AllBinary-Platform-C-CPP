@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_IMAGEOUTPUTDATA_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_IMAGEOUTPUTDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/System.h"
@@ -54,7 +60,7 @@ class ImageOutputData
             : public Object
          {
 
-    public: static const std::string SAVE_PATH = StringMaker().append(System::getProperty("user.dir")).appendchar(FilePathData::getInstance().SEPARATORCHAR).append("saves").appendchar(FilePathData::getInstance().SEPARATORCHAR).toString();
+    public: static inline const std::string SAVE_PATH = (new StringMaker())->append(System.getProperty("user.dir"))->appendchar(FilePathData::getInstance()->SEPARATORCHAR)->append("saves")->appendchar(FilePathData::getInstance()->SEPARATORCHAR)->toString();
 
 private: ImageOutputData();
 

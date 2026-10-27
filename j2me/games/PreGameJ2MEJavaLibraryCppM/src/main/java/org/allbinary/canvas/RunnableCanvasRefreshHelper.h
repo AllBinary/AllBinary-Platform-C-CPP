@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_CANVAS_RUNNABLECANVASREFRESHHELPER_H
         #define ORG_ALLBINARY_CANVAS_RUNNABLECANVASREFRESHHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graphics/displayable/MyCanvas.h>
 
       
@@ -42,13 +48,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Processor.h"
+        #include "org/allbinary/canvas/Processor.h"
 
 class RunnableCanvasRefreshHelper: public Processor {
 
-    private: MyCanvas runnableCanvas;
+    private: MyCanvas* runnableCanvas;
 
-public: RunnableCanvasRefreshHelper(MyCanvas runnableCanvas);
+public: RunnableCanvasRefreshHelper(MyCanvas* runnableCanvas);
 
     public: void process();
 

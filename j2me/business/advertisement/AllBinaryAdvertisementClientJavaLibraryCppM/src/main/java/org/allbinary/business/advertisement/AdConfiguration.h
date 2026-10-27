@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/direction/Direction.h>
@@ -62,9 +68,9 @@ class AdConfiguration
 
 public: AdConfiguration(std::vector<Object*> advertIdArray);
 
-    public: std::vector<Direction> getValidAdSpots();
+    public: std::vector<Direction*> getValidAdSpots();
 
-    public: void process(GameState gameState);
+    public: void process(GameState* gameState);
 
     public: void processDemo(int32_t state);
 

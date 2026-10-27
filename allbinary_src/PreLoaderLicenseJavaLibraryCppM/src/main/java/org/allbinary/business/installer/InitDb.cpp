@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -74,7 +80,7 @@ public: InitDb(){
 }
 
 
-public: InitDb(DbConnectionInfo dbConnectionInfo){
+public: InitDb(DbConnectionInfo* dbConnectionInfo){
 }
 
 
@@ -101,11 +107,11 @@ this->anyType= anyType;
     Class* dynamicClass = this->anyType->getClass();;
     
 
-    Method method = dynamicClass.getMethod(this->METHOD_CALL_GET_HOST_NAME, 
+    Method* method = dynamicClass->getMethod(this->METHOD_CALL_GET_HOST_NAME, 
                             nullptr);;
     
 
-    std::string result = method.invoke(this->anyType, 
+    std::string result = method->invoke(this->anyType, 
                             nullptr);;
     
 
@@ -116,7 +122,7 @@ this->anyType= anyType;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -136,11 +142,11 @@ this->anyType= anyType;
     Class* dynamicClass = this->anyType->getClass();;
     
 
-    Method method = dynamicClass.getMethod(this->METHOD_CALL_ADD_USERS, 
+    Method* method = dynamicClass->getMethod(this->METHOD_CALL_ADD_USERS, 
                             nullptr);;
     
 
-    Boolean result = method.invoke(this->anyType, 
+    bool result = method->invoke(this->anyType, 
                             nullptr);;
     
 
@@ -151,7 +157,7 @@ this->anyType= anyType;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -171,11 +177,11 @@ this->anyType= anyType;
     Class* dynamicClass = this->anyType->getClass();;
     
 
-    Method method = dynamicClass.getMethod(this->METHOD_CALL_ADD_DATABASES, 
+    Method* method = dynamicClass->getMethod(this->METHOD_CALL_ADD_DATABASES, 
                             nullptr);;
     
 
-    Boolean result = method.invoke(this->anyType, 
+    bool result = method->invoke(this->anyType, 
                             nullptr);;
     
 
@@ -186,7 +192,7 @@ this->anyType= anyType;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -206,11 +212,11 @@ this->anyType= anyType;
     Class* dynamicClass = this->anyType->getClass();;
     
 
-    Method method = dynamicClass.getMethod(this->METHOD_CALL_ADD_TABLES, 
+    Method* method = dynamicClass->getMethod(this->METHOD_CALL_ADD_TABLES, 
                             nullptr);;
     
 
-    Boolean result = method.invoke(this->anyType, 
+    bool result = method->invoke(this->anyType, 
                             nullptr);;
     
 
@@ -221,7 +227,7 @@ this->anyType= anyType;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -241,11 +247,11 @@ this->anyType= anyType;
     Class* dynamicClass = this->anyType->getClass();;
     
 
-    Method method = dynamicClass.getMethod(this->METHOD_CALL_TEMP_MAIN_PATH, 
+    Method* method = dynamicClass->getMethod(this->METHOD_CALL_TEMP_MAIN_PATH, 
                             nullptr);;
     
 
-    Boolean result = method.invoke(this->anyType, 
+    bool result = method->invoke(this->anyType, 
                             nullptr);;
     
 
@@ -256,7 +262,7 @@ this->anyType= anyType;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -276,11 +282,11 @@ this->anyType= anyType;
     Class* dynamicClass = this->anyType->getClass();;
     
 
-    Method method = dynamicClass.getMethod(this->METHOD_CALL_MAIN_PATH, 
+    Method* method = dynamicClass->getMethod(this->METHOD_CALL_MAIN_PATH, 
                             nullptr);;
     
 
-    Boolean result = method.invoke(this->anyType, 
+    bool result = method->invoke(this->anyType, 
                             nullptr);;
     
 
@@ -291,7 +297,7 @@ this->anyType= anyType;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 

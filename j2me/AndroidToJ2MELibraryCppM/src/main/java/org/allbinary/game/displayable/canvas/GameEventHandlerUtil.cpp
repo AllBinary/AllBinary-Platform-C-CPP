@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/android/input/motion/GameInputMotionEventProcessorFactory.h>
@@ -53,11 +59,11 @@ class GameEventHandlerUtil
          {
 
     public: static void removeAllListeners(){
-BasicMotionGesturesHandler::getInstance().removeAllListeners();
+BasicMotionGesturesHandler::getInstance()->removeAllListeners();
     
-GameKeyEventHandler::getInstance().removeAllListeners();
+GameKeyEventHandler::getInstance()->removeAllListeners();
     
-GameInputMotionEventProcessorFactory::getInstance().addListener();
+GameInputMotionEventProcessorFactory::getInstance()->addListener();
     
 }
 

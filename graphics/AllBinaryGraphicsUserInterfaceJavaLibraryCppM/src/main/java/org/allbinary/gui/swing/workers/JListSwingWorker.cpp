@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <javax/swing.h>
 
       
@@ -39,17 +47,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SwingWorker.h"
-#include "JList.h"
-#include "ListModel.h"
+        #include "org/allbinary/gui/swing/workers/SwingWorker.h"
+#include "org/allbinary/gui/swing/workers/JList.h"
+#include "org/allbinary/gui/swing/workers/ListModel.h"
 
 class JListSwingWorker: public SwingWorker {
 
-    private: JList jList;
+    private: JList* jList;
 
-    private: ListModel listModel;
+    private: ListModel* listModel;
 
-public: JListSwingWorker(JList jList, ListModel listModel){
+public: JListSwingWorker(JList* jList, ListModel* listModel){
 this->setJList(jList);
     
 this->setListModel(listModel);
@@ -68,12 +76,12 @@ this->setListModel(listModel);
 
 
     protected: void done(){
-this->getJList().setModel(this->getListModel());
+this->getJList()->setModel(this->getListModel());
     
 }
 
 
-    private: JList getJList(){
+    private: JList* getJList(){
 
 
 
@@ -83,13 +91,13 @@ this->getJList().setModel(this->getListModel());
 }
 
 
-    private: void setJList(JList jList){
+    private: void setJList(JList* jList){
 this->jList= jList;
     
 }
 
 
-    private: ListModel getListModel(){
+    private: ListModel* getListModel(){
 
 
 
@@ -99,7 +107,7 @@ this->jList= jList;
 }
 
 
-    private: void setListModel(ListModel listModel){
+    private: void setListModel(ListModel* listModel){
 this->listModel= listModel;
     
 }

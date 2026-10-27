@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_MYFORMUTIL_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_MYFORMUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -82,19 +88,19 @@ class MyFormUtil
             : public Object
          {
 
-    private: static MyFormUtil instance() { return MyFormUtil(); }
+    private: static MyFormUtil* instance() { static std::unique_ptr<MyFormUtil> value(new MyFormUtil()); return value.get(); }
 
-    public: static MyFormUtil getInstance();
+    public: static MyFormUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: Rectangle popupMenuRectangle = RectangleFactory::SINGLETON;
+    private: Rectangle* popupMenuRectangle = RectangleFactory::SINGLETON;
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
-    public: Rectangle getPopupMenuRectangle();
+    public: Rectangle* getPopupMenuRectangle();
 
 };
 

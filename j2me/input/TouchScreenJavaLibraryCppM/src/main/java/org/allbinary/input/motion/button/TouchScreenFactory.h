@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,18 +61,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchScreenTypesFactory.h"
-#include "TouchScreenType.h"
+        #include "org/allbinary/input/motion/button/TouchScreenTypesFactory.h"
+#include "org/allbinary/input/motion/button/TouchScreenType.h"
 
 class TouchScreenFactory
             : public Object
          {
 
-    private: static const TouchScreenFactory SINGLETON = TouchScreenFactory();
+    private: static TouchScreenFactory* SINGLETON() { static std::unique_ptr<TouchScreenFactory> value(new TouchScreenFactory()); return value.get(); }
 
-    public: static TouchScreenFactory getInstance();
+    public: static TouchScreenFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: bool touch= false;
 
@@ -74,7 +80,7 @@ class TouchScreenFactory
 
     private: bool multiTouchDistinct= false;
 
-    private: TouchScreenType touchScreenType = TouchScreenTypesFactory::getInstance().NOTOUCH;
+    private: TouchScreenType* touchScreenType = TouchScreenTypesFactory::getInstance()->NOTOUCH;
 
 private: TouchScreenFactory();
 
@@ -90,9 +96,9 @@ private: TouchScreenFactory();
 
     public: bool isMultiTouchDistinct();
 
-    public: void setTouchScreenType(TouchScreenType touchScreenType);
+    public: void setTouchScreenType(TouchScreenType* touchScreenType);
 
-    public: TouchScreenType getTouchScreenType();
+    public: TouchScreenType* getTouchScreenType();
 
     public: std::string toString();
 

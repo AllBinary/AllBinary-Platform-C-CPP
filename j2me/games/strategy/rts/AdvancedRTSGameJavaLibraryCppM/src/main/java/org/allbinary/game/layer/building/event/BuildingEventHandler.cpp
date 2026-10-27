@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/RTSLayerEvent.h>
@@ -50,18 +56,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BuildingEventListenerInterface.h"
+        #include "org/allbinary/game/layer/building/event/BuildingEventListenerInterface.h"
 
 class BuildingEventHandler: public BasicEventHandler {
 
-    private: static BuildingEventHandler eventHandler = BuildingEventHandler();
+    private: static BuildingEventHandler* eventHandler() { static std::unique_ptr<BuildingEventHandler> value(new BuildingEventHandler()); return value.get(); }
 
-    public: static BuildingEventHandler getInstance(){
+    public: static BuildingEventHandler* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BuildingEventHandler::eventHandler;
+                        return BuildingEventHandler::eventHandler();
     
 }
 
@@ -72,11 +78,11 @@ private: BuildingEventHandler(){
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
 
-    BuildingEventListenerInterface buildingEventListenerInterface = (eventListenerInterface);;
+    BuildingEventListenerInterface* buildingEventListenerInterface = (dynamic_cast<BuildingEventListenerInterface*>(eventListenerInterface));;
     
-buildingEventListenerInterface.onBuildingEvent(eventObject);
+buildingEventListenerInterface->onBuildingEvent(dynamic_cast<RTSLayerEvent*>(eventObject));
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -56,25 +62,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ModifyTable.h"
+        #include "admin/taghelpers/ModifyTable.h"
 
 class AdminConfigurationRequestHelper: public ModifyTable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
-public: AdminConfigurationRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
+public: AdminConfigurationRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.CONSTRUCTOR, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->commonStrings.CONSTRUCTOR, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
-this->request= pageContext.getRequest();
+this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
     
 }
 
@@ -83,10 +89,10 @@ this->request= pageContext.getRequest();
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, "insert()");
+                                    this->logUtil->putF(this->commonStrings.START, this, "insert()");
     
 
                                     }
@@ -95,15 +101,15 @@ this->request= pageContext.getRequest();
     std::string success = "Successfully inserted AdminConfiguration";;
     
 
-    AdminConfigurationInterface adminConfigurationInterface = AdminConfiguration(this->request);;
+    AdminConfigurationInterface* adminConfigurationInterface = dynamic_cast<AdminConfigurationInterface*>(new AdminConfiguration(this->request));;
     
-adminConfigurationInterface.write();
+adminConfigurationInterface->write();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "insert()");
+                                    this->logUtil->putF(success, this, "insert()");
     
 
                                     }
@@ -116,16 +122,16 @@ adminConfigurationInterface.write();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to created AdminConfiguration";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "insert()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "insert()", &e);
     
 
                                     }
@@ -148,10 +154,10 @@ adminConfigurationInterface.write();
     std::string success = "Successfully deleted AdminConfiguration";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "delete()");
+                                    this->logUtil->putF(success, this, "delete()");
     
 
                                     }
@@ -164,16 +170,16 @@ adminConfigurationInterface.write();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to delete";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "delete()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "delete()", &e);
     
 
                                     }
@@ -196,13 +202,13 @@ adminConfigurationInterface.write();
     std::string success = "Updated AdminConfiguration Successful";;
     
 
-    AdminConfigurationInterface adminConfigurationInterface = AdminConfiguration(this->request);;
+    AdminConfigurationInterface* adminConfigurationInterface = dynamic_cast<AdminConfigurationInterface*>(new AdminConfiguration(this->request));;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "update()");
+                                    this->logUtil->putF(success, this, "update()");
     
 
                                     }
@@ -215,16 +221,16 @@ adminConfigurationInterface.write();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to update";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "update()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "update()", &e);
     
 
                                     }

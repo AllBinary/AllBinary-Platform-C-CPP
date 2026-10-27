@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -70,43 +76,43 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserConfigurationData.h"
-#include "UserConfigurationView.h"
-#include "UserConfigurationInterface.h"
-#include "UserConfiguration.h"
+        #include "org/allbinary/business/user/modules/configuration/UserConfigurationData.h"
+#include "org/allbinary/business/user/modules/configuration/UserConfigurationView.h"
+#include "org/allbinary/business/user/modules/configuration/UserConfigurationInterface.h"
+#include "org/allbinary/business/user/modules/configuration/UserConfiguration.h"
 
 class UserConfigurationInterfaceFactory
             : public Object
          {
 
-    private: static const std::string configurationName = "DefaultUserConfiguration";
+    private: static inline const std::string configurationName = "DefaultUserConfiguration";
 
                 //@Throws(Exception.constructor)
             
-    public: static UserConfigurationInterface getInstance(Document document){
+    public: static UserConfigurationInterface* getInstance(Document* document){
 
-    Node configurationNode = DomSearchHelper::getNode(UserConfigurationData::NAME, document.getChildNodes());;
+    Node* configurationNode = DomSearchHelper::getNode(UserConfigurationData::NAME, document->getChildNodes());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UserConfigurationView(configurationNode).getUserConfigurationInterface();
+                        return dynamic_cast<UserConfigurationInterface*>((new UserConfigurationView(configurationNode))->getUserConfigurationInterface());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: static UserConfigurationInterface getInstance(UserRole userRole){
+    public: static UserConfigurationInterface* getInstance(UserRole* userRole){
 
-    AbPath abPath = AbPath(URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance().USERCONFIGURATIONPATH, UserConfigurationInterfaceFactory::configurationName +userRole.toString() +AbPathData::getInstance().EXTENSION_SEP +UserConfigurationData::UNCRYPTED_EXTENSION);;
+    AbPath* abPath = new AbPath(URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance()->USERCONFIGURATIONPATH, UserConfigurationInterfaceFactory::configurationName +userRole->toString() +AbPathData::getInstance()->EXTENSION_SEP +UserConfigurationData::UNCRYPTED_EXTENSION);;
     
 
-    std::string documentString = CryptFileReader(UserConfigurationData::UNCRYPTED_EXTENSION, UserConfigurationData::ENCRYPTED_EXTENSION).get(abPath);;
+    std::string documentString = (new CryptFileReader(UserConfigurationData::UNCRYPTED_EXTENSION, UserConfigurationData::ENCRYPTED_EXTENSION))->get(abPath);;
     
 
-    Document document = DomDocumentHelper::create(documentString);;
+    Document* document = DomDocumentHelper::create(documentString);;
     
 
 
@@ -119,12 +125,12 @@ class UserConfigurationInterfaceFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static UserConfigurationInterface getInstance(){
+    public: static UserConfigurationInterface* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UserConfiguration();
+                        return new UserConfiguration();
     
 }
 

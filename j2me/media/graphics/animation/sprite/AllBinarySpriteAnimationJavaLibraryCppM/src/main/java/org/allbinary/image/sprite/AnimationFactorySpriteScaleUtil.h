@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_IMAGE_SPRITE_ANIMATIONFACTORYSPRITESCALEUTIL_H
         #define ORG_ALLBINARY_IMAGE_SPRITE_ANIMATIONFACTORYSPRITESCALEUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -87,23 +93,23 @@ class AnimationFactorySpriteScaleUtil
             : public Object
          {
 
-    private: static AnimationFactorySpriteScaleUtil instance() { return AnimationFactorySpriteScaleUtil(); }
+    private: static AnimationFactorySpriteScaleUtil* instance() { static std::unique_ptr<AnimationFactorySpriteScaleUtil> value(new AnimationFactorySpriteScaleUtil()); return value.get(); }
 
-    public: static AnimationFactorySpriteScaleUtil getInstance();
+    public: static AnimationFactorySpriteScaleUtil* getInstance();
 
-    private: const ImageCache imageCache = ImageCacheFactory::getInstance();
+    private: ImageCache* imageCache = ImageCacheFactory::getInstance();
 
-    private: const ImageScaleUtil imageScaleUtil = ImageScaleUtil::getInstance();
+    private: ImageScaleUtil* imageScaleUtil = ImageScaleUtil::getInstance();
 
-    private: const OpenGLUtil openGLUtil = OpenGLUtil::getInstance();
+    private: OpenGLUtil* openGLUtil = OpenGLUtil::getInstance();
 
-    private: const J2SEMath j2seMath = J2SEMath::getInstance();
+    private: J2SEMath* j2seMath = J2SEMath::getInstance();
 
-    private: const OpenGLESImageExclusionUtil openGLESImageExclusionUtil = OpenGLESImageExclusionUtil::getInstance();
+    private: OpenGLESImageExclusionUtil* openGLESImageExclusionUtil = OpenGLESImageExclusionUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: Sprite createImage(Image image, int32_t width, int32_t height, int32_t scaleWidth, int32_t scaleHeight);
+    public: Sprite* createImage(Image* image, int32_t width, int32_t height, int32_t scaleWidth, int32_t scaleHeight);
 
 };
 

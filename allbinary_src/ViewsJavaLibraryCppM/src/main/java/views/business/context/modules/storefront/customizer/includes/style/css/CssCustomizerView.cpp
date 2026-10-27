@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
@@ -56,11 +62,11 @@
         
 class CssCustomizerView: public HttpStoreComponentView {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: ValidationInterface styleValidationInterface;
+    protected: ValidationInterface* styleValidationInterface;
 
-public: CssCustomizerView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+public: CssCustomizerView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,7 +79,7 @@ public: CssCustomizerView(TransformInfoInterface transformInfoInterface) : HttpS
                 //@Throws(Exception.constructor)
             
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this->styleValidationInterface);
+this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this->styleValidationInterface));
     
 }
 
@@ -93,13 +99,13 @@ this->addDomNodeInterface(this->styleValidationInterface);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }

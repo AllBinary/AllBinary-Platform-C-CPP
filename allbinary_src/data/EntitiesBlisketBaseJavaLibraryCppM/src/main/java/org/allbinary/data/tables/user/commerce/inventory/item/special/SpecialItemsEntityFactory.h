@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_SPECIAL_SPECIALITEMSENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_SPECIAL_SPECIALITEMSENTITYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,21 +55,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SpecialItemsEntity.h"
+        #include "org/allbinary/data/tables/user/commerce/inventory/item/special/SpecialItemsEntity.h"
 
 class SpecialItemsEntityFactory
             : public Object
          {
 
-    private: static SpecialItemsEntityFactory instance() { return SpecialItemsEntityFactory(); }
+    private: static SpecialItemsEntityFactory* instance() { static std::unique_ptr<SpecialItemsEntityFactory> value(new SpecialItemsEntityFactory()); return value.get(); }
 
-    public: static SpecialItemsEntityFactory getInstance();
+    public: static SpecialItemsEntityFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: SpecialItemsEntityFactory();
 
-    public: SpecialItemsEntity getSpecialItemsEntityInstance();
+    public: SpecialItemsEntity* getSpecialItemsEntityInstance();
 
 };
 

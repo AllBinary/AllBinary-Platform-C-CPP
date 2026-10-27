@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -77,26 +83,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DownloadableItem.h"
-#include "DownloadItemData.h"
+        #include "org/allbinary/business/user/commerce/inventory/item/download/DownloadableItem.h"
+#include "org/allbinary/business/user/commerce/inventory/item/download/DownloadItemData.h"
 
 class DownloadableItemView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: DownloadableItem downloadableItem;
+    private: DownloadableItem* downloadableItem;
 
-public: DownloadableItemView(DownloadableItem downloadableItem);
+public: DownloadableItemView(DownloadableItem* downloadableItem);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
-    public: Document toXmlDoc();
+    public: Document* toXmlDoc();
 
     public: std::string view();
 

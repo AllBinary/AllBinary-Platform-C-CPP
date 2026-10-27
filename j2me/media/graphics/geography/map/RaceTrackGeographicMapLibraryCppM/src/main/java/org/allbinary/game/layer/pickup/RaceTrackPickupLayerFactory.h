@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_RACETRACKPICKUPLAYERFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_PICKUP_RACETRACKPICKUPLAYERFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,15 +55,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RaceTrackPickupLayer.h"
+        #include "org/allbinary/game/layer/pickup/RaceTrackPickupLayer.h"
 
 class RaceTrackPickupLayerFactory
             : public Object
-        : public AllBinaryLayerFactoryInterface {
+        , public AllBinaryLayerFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer getInstance();
+    public: AllBinaryLayer* getInstance();
 
 };
 

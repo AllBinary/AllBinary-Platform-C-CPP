@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -50,7 +56,7 @@ class BaseSecretComposite
             : public Object
          {
 
-    public: static const BaseSecretComposite NULL_SECRET_COMPOSITE = BaseSecretComposite();
+    public: static BaseSecretComposite* NULL_SECRET_COMPOSITE() { static std::unique_ptr<BaseSecretComposite> value(new BaseSecretComposite()); return value.get(); }
 
                 //@Throws(Exception.constructor)
             
@@ -59,7 +65,7 @@ class BaseSecretComposite
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance().NULL_BYTE_ARRAY;
+                        return NullUtil::getInstance()->NULL_BYTE_ARRAY;
     
 }
 
@@ -71,7 +77,7 @@ class BaseSecretComposite
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance().NULL_BYTE_ARRAY;
+                        return NullUtil::getInstance()->NULL_BYTE_ARRAY;
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
@@ -71,9 +77,9 @@ this->setObjectFile("views.admin.customizers.CustomizersValidationView");
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 

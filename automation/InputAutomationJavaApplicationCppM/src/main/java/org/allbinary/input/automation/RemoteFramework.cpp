@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/util/Map.h>
 
       
@@ -45,11 +51,11 @@
         
 class RemoteFramework {
 
-    BundleContext connect(std::string host)
+    public: virtual BundleContext* connect(std::string host) = 0;
 
-    void disconnect(BundleContext bc)
+    public: virtual void disconnect(BundleContext* bc) = 0;
 
-    Map getSystemProperties(BundleContext bc)
+    public: virtual Map* getSystemProperties(BundleContext* bc) = 0;
 
 };
 

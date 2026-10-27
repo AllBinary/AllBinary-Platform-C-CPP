@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,14 +49,14 @@ class LifeResources
             : public Object
          {
 
-    private: static const LifeResources SINGLETON = LifeResources();
+    private: static LifeResources* SINGLETON() { static std::unique_ptr<LifeResources> value(new LifeResources()); return value.get(); }
 
-    public: static LifeResources getInstance(){
+    public: static LifeResources* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LifeResources::SINGLETON;
+                        return LifeResources::SINGLETON();
     
 }
 

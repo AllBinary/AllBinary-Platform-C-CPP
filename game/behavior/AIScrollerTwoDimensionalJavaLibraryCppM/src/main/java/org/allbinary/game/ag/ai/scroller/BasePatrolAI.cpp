@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -70,15 +78,15 @@
         
 class BasePatrolAI: public BasicAI {
 
-    public: static const Integer MAX_DISTANCE = SmallIntegerSingletonFactory::getInstance().getAt(2);
+    public: static inline int32_t MAX_DISTANCE = SmallIntegerSingletonFactory::getInstance()->getAt(2);
 
-    public: static const Integer DIRECTION_ARRAY = SmallIntegerSingletonFactory::getInstance().getAt(3);
+    public: static inline int32_t DIRECTION_ARRAY = SmallIntegerSingletonFactory::getInstance()->getAt(3);
 
-    public: static const Integer FIRING_DISTANCE = SmallIntegerSingletonFactory::getInstance().getAt(4);
+    public: static inline int32_t FIRING_DISTANCE = SmallIntegerSingletonFactory::getInstance()->getAt(4);
 
-    public: static Integer SPEED = SmallIntegerSingletonFactory::getInstance().getAt(5);
+    public: static inline int32_t SPEED = SmallIntegerSingletonFactory::getInstance()->getAt(5);
 
-    protected: Integer maxDistance;
+    protected: int32_t maxDistance;
 
     protected: int32_t currentDistance;
 
@@ -88,14 +96,14 @@ class BasePatrolAI: public BasicAI {
 
     protected: int32_t keyDirection = Canvas::RIGHT;
 
-public: BasePatrolAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput) : BasicAI(ownerLayerInterface, gameInput){
+public: BasePatrolAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->maxDistance= hashtable.get(BasePatrolAI::MAX_DISTANCE);
+this->maxDistance= hashtable->get(BasePatrolAI::MAX_DISTANCE);
     
 this->currentDistance= this->maxDistance.intValue();
     
@@ -112,22 +120,22 @@ this->changeDirectionIfReachedPacingAreaMax();
 
     private: void updateTotalDistance(){
 
-    VelocityInterfaceCompositeInterface velocityInterfaceCompositeInterface = this->getOwnerLayerInterface();;
+    VelocityInterfaceCompositeInterface* velocityInterfaceCompositeInterface = dynamic_cast<VelocityInterfaceCompositeInterface*>(this->getOwnerLayerInterface());;
     
 
-    BasicVelocityProperties velocityProperties = velocityInterfaceCompositeInterface.getVelocityProperties();;
+    BasicVelocityProperties* velocityProperties = velocityInterfaceCompositeInterface->getVelocityProperties();;
     
-this->xTotalDistance += velocityProperties.getVelocityXBasicDecimalP().getScaled();
+this->xTotalDistance += velocityProperties->getVelocityXBasicDecimalP()->getScaled();
     
 }
 
 
     private: void changeDirectionIfReachedPacingAreaMax(){
 
-    MathUtil mathUtil = MathUtil::getInstance();;
+    MathUtil* mathUtil = MathUtil::getInstance();;
     
 
-    int32_t totalDistance = mathUtil.abs(this->xTotalDistance);;
+    int32_t totalDistance = mathUtil->abs(this->xTotalDistance);;
     
 
                         if(totalDistance > this->currentDistance)

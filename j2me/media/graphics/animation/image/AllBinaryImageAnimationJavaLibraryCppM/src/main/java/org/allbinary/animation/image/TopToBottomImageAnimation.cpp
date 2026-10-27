@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -55,13 +61,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageSegmentAnimation.h"
+        #include "org/allbinary/animation/image/ImageSegmentAnimation.h"
 
 class TopToBottomImageAnimation: public ImageSegmentAnimation {
 
     private: int32_t currentHeight;
 
-public: TopToBottomImageAnimation(Image image, std::vector<int32_t> sequenceArray, AnimationBehavior animationBehavior) : ImageSegmentAnimation(image, sequenceArray, animationBehavior){
+public: TopToBottomImageAnimation(Image* image, std::vector<int32_t> sequenceArray, AnimationBehavior* animationBehavior) : ImageSegmentAnimation(image, sequenceArray, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -140,8 +146,8 @@ this->currentHeight= this->getDrawHeight() *this->getFrame() /this->getSize();
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
-graphics.drawRegion(this->getImage(), this->getStartX(), this->getStartY(), this->getDrawWidth(), this->currentHeight, Sprite::TRANS_NONE, x, y, this->anchor);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+graphics->drawRegion(this->getImage(), this->getStartX(), this->getStartY(), this->getDrawWidth(), this->currentHeight, Sprite::TRANS_NONE, x, y, this->anchor);
     
 }
 

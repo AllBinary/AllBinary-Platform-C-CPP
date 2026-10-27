@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_IMAGECOMPARISONSEARCHRESULTSLISTENER_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_IMAGECOMPARISONSEARCHRESULTSLISTENER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/util/event/BasicEventListenerInterface.h>
 
       
@@ -42,11 +48,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageComparisonSearchResultsEvent.h"
+        #include "org/allbinary/media/image/search/ImageComparisonSearchResultsEvent.h"
 
 class ImageComparisonSearchResultsListener: public BasicEventListenerInterface {
 
-    void onImageComparisonResultsEvent(ImageComparisonSearchResultsEvent imageComparisonSearchResultsEvent);
+    public: virtual void onImageComparisonResultsEvent(ImageComparisonSearchResultsEvent* imageComparisonSearchResultsEvent) = 0;
 
 };
 

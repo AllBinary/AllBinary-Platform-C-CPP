@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -136,45 +142,45 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PlayerGameInput.h"
-#include "InputFactory.h"
-#include "GameInputProcessor.h"
-#include "ScrollMapPlayerGameInput.h"
-#include "SelectedRTSLayersPlayerGameInput.h"
-#include "LayerPositionFinderInterface.h"
-#include "SelectRTSLayerVisitorFactoryInterface.h"
-#include "RTSPlayerLeftGameInputProcessor.h"
-#include "RTSPlayerRightGameInputProcessor.h"
-#include "RTSPlayerFireGameInputProcessor.h"
-#include "GameInputProcessorUtil.h"
+        #include "org/allbinary/game/input/PlayerGameInput.h"
+#include "org/allbinary/game/input/InputFactory.h"
+#include "org/allbinary/game/input/GameInputProcessor.h"
+#include "org/allbinary/game/input/ScrollMapPlayerGameInput.h"
+#include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h"
+#include "org/allbinary/game/input/LayerPositionFinderInterface.h"
+#include "org/allbinary/game/input/SelectRTSLayerVisitorFactoryInterface.h"
+#include "org/allbinary/game/input/RTSPlayerLeftGameInputProcessor.h"
+#include "org/allbinary/game/input/RTSPlayerRightGameInputProcessor.h"
+#include "org/allbinary/game/input/RTSPlayerFireGameInputProcessor.h"
+#include "org/allbinary/game/input/GameInputProcessorUtil.h"
 
 class RTSPlayerGameInput: public PlayerGameInput {
 
-    protected: const std::vector<GameInputProcessor> inputProcessorArray = std::vector<GameInputProcessor>(InputFactory::getInstance().MAX);
+    protected: const std::vector<GameInputProcessor*> inputProcessorArray = std::vector<GameInputProcessor*>(InputFactory::getInstance()->MAX);
 
-    protected: const std::vector<GameInputProcessor> removeInputProcessorArray = std::vector<GameInputProcessor>(InputFactory::getInstance().MAX);
+    protected: const std::vector<GameInputProcessor*> removeInputProcessorArray = std::vector<GameInputProcessor*>(InputFactory::getInstance()->MAX);
 
-    private: BasicArrayList inputList;
+    private: BasicArrayList* inputList;
 
-    private: const bool isSingleKeyProcessing = Features::getInstance().isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_REPEAT_PRESS) || Features::getInstance().isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_PRESS);
+    private: const bool isSingleKeyProcessing = Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_REPEAT_PRESS) || Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_PRESS);
 
-    private: AllBinaryGameCanvas gameCanvas;
+    private: AllBinaryGameCanvas* gameCanvas;
 
-    private: const BasicArrayList motionGestureInputList = BasicArrayListD();
+    private: BasicArrayList* motionGestureInputList = new BasicArrayListD();
 
-    private: ScrollMapPlayerGameInput scrollPlayerGameInput;
+    private: ScrollMapPlayerGameInput* scrollPlayerGameInput;
 
-    private: SelectedRTSLayersPlayerGameInput selectedRTSLayerPlayerGameInput;
+    private: SelectedRTSLayersPlayerGameInput* selectedRTSLayerPlayerGameInput;
 
-    private: RTSLayerInfoPaintable towerInfoPaintable;
+    private: RTSLayerInfoPaintable* towerInfoPaintable;
 
-    private: RTSPlayerLayerInterface rtsPlayerLayerInterface;
+    private: RTSPlayerLayerInterface* rtsPlayerLayerInterface;
 
-    private: LayerPositionFinderInterface layerPositionFinderInterface;
+    private: LayerPositionFinderInterface* layerPositionFinderInterface;
 
-    private: RTSFormInput selectedRtsFormInput = NullRTSFormInputFactory::getInstance();
+    private: RTSFormInput* selectedRtsFormInput = NullRTSFormInputFactory::getInstance();
 
-public: RTSPlayerGameInput(AllBinaryGameCanvas gameCanvas, BasicArrayList inputList, int32_t playerInputId, RTSLayerInfoPaintable towerInfoPaintable, RTSPlayerLayerInterface rtsPlayerLayerInterface, LayerPositionFinderInterface layerPositionFinderInterface, SelectRTSLayerVisitorFactoryInterface selectRTSLayerVisitorFactoryInterface) : PlayerGameInput(inputList, BasicArrayListD(), playerInputId){
+public: RTSPlayerGameInput(AllBinaryGameCanvas* gameCanvas, BasicArrayList* inputList, int32_t playerInputId, RTSLayerInfoPaintable* towerInfoPaintable, RTSPlayerLayerInterface* rtsPlayerLayerInterface, LayerPositionFinderInterface* layerPositionFinderInterface, SelectRTSLayerVisitorFactoryInterface* selectRTSLayerVisitorFactoryInterface) : PlayerGameInput(inputList, new BasicArrayListD(), playerInputId){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -191,24 +197,24 @@ this->towerInfoPaintable= towerInfoPaintable;
     
 this->rtsPlayerLayerInterface= rtsPlayerLayerInterface;
     
-this->selectedRTSLayerPlayerGameInput= SelectedRTSLayersPlayerGameInput(this->getRTSLayerInfoPaintable(), this->getRtsPlayerLayerInterface(), this->inputList, playerInputId, selectRTSLayerVisitorFactoryInterface);
+this->selectedRTSLayerPlayerGameInput= new SelectedRTSLayersPlayerGameInput(this->getRTSLayerInfoPaintable(), this->getRtsPlayerLayerInterface(), this->inputList, playerInputId, selectRTSLayerVisitorFactoryInterface);
     
 
                         if(this->rtsPlayerLayerInterface != NullRTSLayer::NULL_RTS_LAYER)
                         
                                     {
-                                    this->setSelectedRtsFormInput(this->rtsPlayerLayerInterface.getRTSFormInput());
+                                    this->setSelectedRtsFormInput(this->rtsPlayerLayerInterface->getRTSFormInput());
     
 
                                     }
                                 
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = this->gameCanvas.getLayerManager();;
+    GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(this->gameCanvas->getLayerManager());;
     
 
-    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
+    BasicGeographicMap* geographicMapInterface = geographicMapCompositeInterface->getGeographicMapInterface()[0];;
     
-this->scrollPlayerGameInput= ScrollMapPlayerGameInput(geographicMapInterface, this->inputList, playerInputId);
+this->scrollPlayerGameInput= new ScrollMapPlayerGameInput(geographicMapInterface, this->inputList, playerInputId);
     
 this->layerPositionFinderInterface= layerPositionFinderInterface;
     
@@ -217,14 +223,14 @@ this->layerPositionFinderInterface= layerPositionFinderInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
-this->selectedRTSLayerPlayerGameInput.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager){
+this->selectedRTSLayerPlayerGameInput->setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 
                         if(this->selectedRtsFormInput != NullRTSFormInputFactory::getInstance())
                         
                                     {
-                                    this->selectedRtsFormInput.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
+                                    this->selectedRtsFormInput->setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 
                                     }
@@ -232,18 +238,18 @@ this->selectedRTSLayerPlayerGameInput.setAllBinaryGameLayerManager(allBinaryGame
 }
 
 
-    public: void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent){
+    public: void onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent){
 
         try {
             this->logUtil.putF(this->commonStrings.START, this, "onDisplayChangeEvent");
     
-this->getRTSLayerInfoPaintable().update();
+this->getRTSLayerInfoPaintable()->update();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "onDisplayChangeEvent", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "onDisplayChangeEvent", &e);
     
 }
 
@@ -253,7 +259,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "onDisplayChangeEvent", e
                 //@Throws(Exception.constructor)
             
     protected: void left(){
-this->rtsPlayerLayerInterface.getCurrentScrollSelectionForm().processInputKey(Canvas::LEFT);
+this->rtsPlayerLayerInterface->getCurrentScrollSelectionForm()->processInputKey(Canvas::LEFT);
     
 }
 
@@ -261,21 +267,21 @@ this->rtsPlayerLayerInterface.getCurrentScrollSelectionForm().processInputKey(Ca
                 //@Throws(Exception.constructor)
             
     protected: void right(){
-this->rtsPlayerLayerInterface.getCurrentScrollSelectionForm().processInputKey(Canvas::RIGHT);
+this->rtsPlayerLayerInterface->getCurrentScrollSelectionForm()->processInputKey(Canvas::RIGHT);
     
 }
 
 
     public: void initInputProcessors(){
-this->inputProcessorArray[Canvas::LEFT]= RTSPlayerLeftGameInputProcessor(this);
+this->inputProcessorArray[Canvas::LEFT]= new RTSPlayerLeftGameInputProcessor(this);
     
 this->inputProcessorArray[Canvas::KEY_NUM0]= this->inputProcessorArray[Canvas::LEFT];
     
-this->inputProcessorArray[Canvas::RIGHT]= RTSPlayerRightGameInputProcessor(this);
+this->inputProcessorArray[Canvas::RIGHT]= new RTSPlayerRightGameInputProcessor(this);
     
 this->inputProcessorArray[Canvas::KEY_POUND]= this->inputProcessorArray[Canvas::RIGHT];
     
-this->removeInputProcessorArray[Canvas::KEY_NUM1]= RTSPlayerFireGameInputProcessor(this);
+this->removeInputProcessorArray[Canvas::KEY_NUM1]= new RTSPlayerFireGameInputProcessor(this);
     
 this->removeInputProcessorArray[Canvas::KEY_NUM3]= this->removeInputProcessorArray[Canvas::KEY_NUM1];
     
@@ -298,13 +304,13 @@ GameInputProcessorUtil::init(this->removeInputProcessorArray);
 
                 //@Throws(Exception.constructor)
             
-    public: void processInput(AllBinaryLayerManager layerManager){
+    public: void processInput(AllBinaryLayerManager* layerManager){
 
         try {
             this->processMotionInput(layerManager);
     
 
-    int32_t size = this->inputList.size();;
+    int32_t size = this->inputList->size();;
     
 
     int32_t key = 0;;
@@ -317,13 +323,13 @@ GameInputProcessorUtil::init(this->removeInputProcessorArray);
     int32_t index = 0;index < size; index++)
         {
 
-    GameKeyEvent gameKeyEvent = this->inputList.get(index);;
+    GameKeyEvent* gameKeyEvent = dynamic_cast<GameKeyEvent*>(this->inputList->get(index));;
     
-key= gameKeyEvent.getKey();
+key= gameKeyEvent->getKey();
     
-this->getScrollPlayerGameInput().processInputKey(key);
+this->getScrollPlayerGameInput()->processInputKey(key);
     
-this->getSelectedBuildingPlayerGameInput().processInputKey(key);
+this->getSelectedBuildingPlayerGameInput()->processInputKey(key);
     
 this->inputProcessorArray[key].processEvent(layerManager, gameKeyEvent);
     
@@ -348,9 +354,9 @@ this->removeInputProcessorArray[key].processEvent(layerManager, gameKeyEvent);
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PROCESS_INPUT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PROCESS_INPUT, &e);
     
 }
 
@@ -359,42 +365,42 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PR
 
                 //@Throws(Exception.constructor)
             
-    public: void processMotionInput(AllBinaryLayerManager layerManager){
+    public: void processMotionInput(AllBinaryLayerManager* layerManager){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void select(MotionGestureEvent motionGestureEvent){
+    protected: void select(MotionGestureEvent* motionGestureEvent){
 
-    GPoint point = motionGestureEvent.getCurrentPoint();;
+    GPoint* point = motionGestureEvent->getCurrentPoint();;
     
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = this->gameCanvas.getLayerManager();;
+    GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(this->gameCanvas->getLayerManager());;
     
 
-    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
+    BasicGeographicMap* geographicMapInterface = geographicMapCompositeInterface->getGeographicMapInterface()[0];;
     
 
-    AllBinaryTiledLayer allBinaryTiledLayer = geographicMapInterface.getAllBinaryTiledLayer();;
+    AllBinaryTiledLayer* allBinaryTiledLayer = geographicMapInterface->getAllBinaryTiledLayer();;
     
 
-    int32_t x = point.getX() +allBinaryTiledLayer.getXP();;
+    int32_t x = point->getX() +allBinaryTiledLayer->getXP();;
     
 
-    int32_t y = point.getY() +allBinaryTiledLayer.getYP();;
+    int32_t y = point->getY() +allBinaryTiledLayer->getYP();;
     
 
-    GeographicMapCellPosition geographicMapCellPosition = geographicMapInterface.getCellPositionAtXYNoThrow(x, y);;
+    GeographicMapCellPosition* geographicMapCellPosition = geographicMapInterface->getCellPositionAtXYNoThrow(x, y);;
     
 
                         if(geographicMapCellPosition != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION)
                         
                                     {
-                                    SecondaryPlayerQueueFactory::getInstance().add(SelectSound::getInstance());
+                                    SecondaryPlayerQueueFactory::getInstance()->add(SelectSound::getInstance());
     
 
-    AllBinaryLayer layer = this->layerPositionFinderInterface.getLayerInterface(geographicMapCellPosition);;
+    AllBinaryLayer* layer = this->layerPositionFinderInterface->getLayerInterface(geographicMapCellPosition);;
     
 
                         if(layer == AllBinaryLayer::NULL_ALLBINARY_LAYER)
@@ -406,13 +412,13 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PR
                                     }
                                 
                         else {
-                            geographicMapCellPosition= geographicMapInterface.getCellPositionAtXY(layer.getXP(), layer.getYP());
+                            geographicMapCellPosition= geographicMapInterface->getCellPositionAtXY(layer->getXP(), layer->getYP());
     
 
                         }
                             
 
-    CollidableDestroyableDamageableLayer foundRTSLayer = layer;;
+    CollidableDestroyableDamageableLayer* foundRTSLayer = dynamic_cast<CollidableDestroyableDamageableLayer*>(layer);;
     
 this->setSelectedRTSLayer(foundRTSLayer, geographicMapCellPosition);
     
@@ -421,9 +427,9 @@ this->setSelectedRTSLayer(foundRTSLayer, geographicMapCellPosition);
                                 
                         else {
                             
-    CommonLabels commonLabels = CommonLabels::getInstance();;
+    CommonLabels* commonLabels = CommonLabels::getInstance();;
     
-this->logUtil.putF(StringMaker().append("Off Of Map -").append(commonLabels.WIDTH_LABEL).appendint(allBinaryTiledLayer.getWidth()).append(commonLabels.HEIGHT_LABEL).appendint(allBinaryTiledLayer.getHeight()).toString(), this, "select");
+this->logUtil.putF((new StringMaker())->append("Off Of Map -")->append(commonLabels->WIDTH_LABEL)->appendint(allBinaryTiledLayer->getWidth())->append(commonLabels->HEIGHT_LABEL)->appendint(allBinaryTiledLayer->getHeight())->toString(), this, "select");
     
 
                         }
@@ -433,29 +439,29 @@ this->logUtil.putF(StringMaker().append("Off Of Map -").append(commonLabels.WIDT
 
                 //@Throws(Exception.constructor)
             
-    public: void setSelectedRTSLayer(CollidableDestroyableDamageableLayer rtsLayer, GeographicMapCellPosition geographicMapCellPosition){
-this->getSelectedBuildingPlayerGameInput().setSelectedRTSLayer(rtsLayer);
+    public: void setSelectedRTSLayer(CollidableDestroyableDamageableLayer* rtsLayer, GeographicMapCellPosition* geographicMapCellPosition){
+this->getSelectedBuildingPlayerGameInput()->setSelectedRTSLayer(rtsLayer);
     
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 
-    GeographicMapCellPosition geographicMapCellPosition = this->getSelectedRtsFormInput().getSelectedGeographicCellPosition();;
+    GeographicMapCellPosition* geographicMapCellPosition = this->getSelectedRtsFormInput()->getSelectedGeographicCellPosition();;
     
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = this->gameCanvas.getLayerManager();;
+    GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(this->gameCanvas->getLayerManager());;
     
 
-    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
+    BasicGeographicMap* geographicMapInterface = geographicMapCompositeInterface->getGeographicMapInterface()[0];;
     
 
-    AllBinaryTiledLayer allBinaryTiledLayer = geographicMapInterface.getAllBinaryTiledLayer();;
+    AllBinaryTiledLayer* allBinaryTiledLayer = geographicMapInterface->getAllBinaryTiledLayer();;
     
-graphics.setColor(BasicColorFactory::getInstance().GREEN.intValue());
+graphics->setColor(BasicColorFactory::getInstance()->GREEN.intValue());
     
 
-    BasicArrayList list = this->getSelectedBuildingPlayerGameInput().getPaintSelectedRTSLayersList();;
+    BasicArrayList* list = this->getSelectedBuildingPlayerGameInput()->getPaintSelectedRTSLayersList();;
     
 
     int32_t width = 0;;
@@ -464,7 +470,7 @@ graphics.setColor(BasicColorFactory::getInstance().GREEN.intValue());
     int32_t height = 0;;
     
 
-                        if(list.size() > 0)
+                        if(list->size() > 0)
                         
                                     {
                                     
@@ -472,16 +478,16 @@ graphics.setColor(BasicColorFactory::getInstance().GREEN.intValue());
 
 
                         for (
-    int32_t index = list.size() -1;index >= 0; index--)
+    int32_t index = list->size() -1;index >= 0; index--)
         {
 
-    RTSLayer rtsLayer = list.get(index);;
+    RTSLayer* rtsLayer = dynamic_cast<RTSLayer*>(list->get(index));;
     
-width= rtsLayer.getWidth();
+width= rtsLayer->getWidth();
     
-height= rtsLayer.getHeight();
+height= rtsLayer->getHeight();
     
-graphics.drawRect(rtsLayer.getXP() -allBinaryTiledLayer.getXP(), rtsLayer.getYP() -allBinaryTiledLayer.getYP(), width, height);
+graphics->drawRect(rtsLayer->getXP() -allBinaryTiledLayer->getXP(), rtsLayer->getYP() -allBinaryTiledLayer->getYP(), width, height);
     
 }
 
@@ -493,13 +499,13 @@ graphics.drawRect(rtsLayer.getXP() -allBinaryTiledLayer.getXP(), rtsLayer.getYP(
                         
                                     {
                                     
-    GPoint point = geographicMapCellPosition.getPoint();;
+    GPoint* point = geographicMapCellPosition->getPoint();;
     
-width= allBinaryTiledLayer.getCellWidth();
+width= allBinaryTiledLayer->getCellWidth();
     
-height= allBinaryTiledLayer.getCellHeight();
+height= allBinaryTiledLayer->getCellHeight();
     
-graphics.drawRect(point.getX() -allBinaryTiledLayer.getXP(), point.getY() -allBinaryTiledLayer.getYP(), width, height);
+graphics->drawRect(point->getX() -allBinaryTiledLayer->getXP(), point->getY() -allBinaryTiledLayer->getYP(), width, height);
     
 
                                     }
@@ -511,7 +517,7 @@ graphics.drawRect(point.getX() -allBinaryTiledLayer.getXP(), point.getY() -allBi
 }
 
 
-    public: SelectedRTSLayersPlayerGameInput getSelectedBuildingPlayerGameInput(){
+    public: SelectedRTSLayersPlayerGameInput* getSelectedBuildingPlayerGameInput(){
 
 
 
@@ -521,7 +527,7 @@ graphics.drawRect(point.getX() -allBinaryTiledLayer.getXP(), point.getY() -allBi
 }
 
 
-    public: RTSFormInput getSelectedRtsFormInput(){
+    public: RTSFormInput* getSelectedRtsFormInput(){
 
 
 
@@ -531,15 +537,15 @@ graphics.drawRect(point.getX() -allBinaryTiledLayer.getXP(), point.getY() -allBi
 }
 
 
-    public: void setSelectedRtsFormInput(RTSFormInput selectedRtsFormInput){
-this->logUtil.putF(StringMaker().append("RTSFormInput: ").append(StringUtil::getInstance().toString(selectedRtsFormInput)).toString(), this, "setSelectedRtsFormInput");
+    public: void setSelectedRtsFormInput(RTSFormInput* selectedRtsFormInput){
+this->logUtil.putF((new StringMaker())->append("RTSFormInput: ")->append(StringUtil::getInstance()->toString(selectedRtsFormInput))->toString(), this, "setSelectedRtsFormInput");
     
 this->selectedRtsFormInput= selectedRtsFormInput;
     
 }
 
 
-    public: RTSPlayerLayerInterface getRtsPlayerLayerInterface(){
+    public: RTSPlayerLayerInterface* getRtsPlayerLayerInterface(){
 
 
 
@@ -549,7 +555,7 @@ this->selectedRtsFormInput= selectedRtsFormInput;
 }
 
 
-    public: RTSLayerInfoPaintable getRTSLayerInfoPaintable(){
+    public: RTSLayerInfoPaintable* getRTSLayerInfoPaintable(){
 
 
 
@@ -559,7 +565,7 @@ this->selectedRtsFormInput= selectedRtsFormInput;
 }
 
 
-    public: BasicArrayList getMotionGestureInputList(){
+    public: BasicArrayList* getMotionGestureInputList(){
 
 
 
@@ -569,7 +575,7 @@ this->selectedRtsFormInput= selectedRtsFormInput;
 }
 
 
-    protected: AllBinaryGameCanvas getGameCanvas(){
+    protected: AllBinaryGameCanvas* getGameCanvas(){
 
 
 
@@ -589,7 +595,7 @@ this->selectedRtsFormInput= selectedRtsFormInput;
 }
 
 
-    public: ScrollMapPlayerGameInput getScrollPlayerGameInput(){
+    public: ScrollMapPlayerGameInput* getScrollPlayerGameInput(){
 
 
 

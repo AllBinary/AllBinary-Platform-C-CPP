@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTLISTENERINTERFACE_H
         #define ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTLISTENERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
@@ -44,13 +50,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TerrainEvent.h"
+        #include "org/allbinary/game/terrain/TerrainEvent.h"
 
 class TerrainEventListenerInterface: public EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    void onTerrainEvent(TerrainEvent trackingEvent);
+    public: virtual void onTerrainEvent(TerrainEvent* trackingEvent) = 0;
 
 };
 

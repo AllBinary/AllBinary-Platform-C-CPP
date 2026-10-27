@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -93,163 +99,163 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JFrame.h"
-#include "JDialog.h"
-#include "JLabel.h"
-#include "JTextField.h"
-#include "JButton.h"
-#include "JPanel.h"
-#include "JMenuBar.h"
-#include "JMenu.h"
-#include "JMenuItem.h"
-#include "Dimension.h"
-#include "ActionListener.h"
-#include "ActionEvent.h"
-#include "GroupLayout.h"
-#include "Short.h"
-#include "GridLayout.h"
-#include "ImageUnifierJPanel.h"
-#include "ImageAnalysisResultsJPanel.h"
-#include "RotationSpriteImageJPanel.h"
-#include "SpriteSplitterImageJPanel.h"
-#include "RotationImageJPanel.h"
-#include "ResizeImageJPanel.h"
-#include "CreateIconImagesJPanel.h"
-#include "CanvasImageJPanel.h"
-#include "MirrorSpriteImageJPanel.h"
-#include "MirrorImageJPanel.h"
+        #include "org/allbinary/image/gui/JFrame.h"
+#include "org/allbinary/image/gui/JDialog.h"
+#include "org/allbinary/image/gui/JLabel.h"
+#include "org/allbinary/image/gui/JTextField.h"
+#include "org/allbinary/image/gui/JButton.h"
+#include "org/allbinary/image/gui/JPanel.h"
+#include "org/allbinary/image/gui/JMenuBar.h"
+#include "org/allbinary/image/gui/JMenu.h"
+#include "org/allbinary/image/gui/JMenuItem.h"
+#include "org/allbinary/image/gui/Dimension.h"
+#include "org/allbinary/image/gui/ActionListener.h"
+#include "org/allbinary/image/gui/ActionEvent.h"
+#include "org/allbinary/image/gui/GroupLayout.h"
+#include "org/allbinary/image/gui/Short.h"
+#include "org/allbinary/image/gui/GridLayout.h"
+#include "org/allbinary/image/gui/ImageUnifierJPanel.h"
+#include "org/allbinary/image/gui/ImageAnalysisResultsJPanel.h"
+#include "org/allbinary/image/gui/RotationSpriteImageJPanel.h"
+#include "org/allbinary/image/gui/SpriteSplitterImageJPanel.h"
+#include "org/allbinary/image/gui/RotationImageJPanel.h"
+#include "org/allbinary/image/gui/ResizeImageJPanel.h"
+#include "org/allbinary/image/gui/CreateIconImagesJPanel.h"
+#include "org/allbinary/image/gui/CanvasImageJPanel.h"
+#include "org/allbinary/image/gui/MirrorSpriteImageJPanel.h"
+#include "org/allbinary/image/gui/MirrorImageJPanel.h"
 
 class ImageToolJFrame: public javax::swing::JFrame, public FileJDialogListenerInterface {
 
-    private: static ImageProcessorInputCompositeInterface imageProcessorInputCompositeInterface;
+    private: static inline ImageProcessorInputCompositeInterface* imageProcessorInputCompositeInterface;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: FileJDialog fileJDialog;
+    private: FileJDialog* fileJDialog;
 
-    private: ImageProcessorInput imageProcessorInput;
+    private: ImageProcessorInput* imageProcessorInput;
 
 public: ImageToolJFrame();
 
     private: void initComponents();
 
-    private: void createStripImageJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
+    private: void createStripImageJMenuItemActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void okJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void okJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void processingJMenuActionPerformed(java::awt::event::ActionEvent evt);
+    private: void processingJMenuActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void openImageJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
+    private: void openImageJMenuItemActionPerformed(java::awt::event::ActionEvent* evt);
 
-    public: void onFiles(std::vector<File> files);
+    public: void onFiles(std::vector<File*> files);
 
-    private: void fileJMenuActionPerformed(java::awt::event::ActionEvent evt);
+    private: void fileJMenuActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void analyzeJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
+    private: void analyzeJMenuItemActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void generateRotationSpriteJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
+    private: void generateRotationSpriteJMenuItemActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void generateSpriteSplitterMenuItemActionPerformed(java::awt::event::ActionEvent evt);
+    private: void generateSpriteSplitterMenuItemActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void generateRotationMenuItemActionPerformed(java::awt::event::ActionEvent evt);
+    private: void generateRotationMenuItemActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void scaleImagesJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
+    private: void scaleImagesJMenuItemActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void createIconsJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
+    private: void createIconsJMenuItemActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void canvasImagesJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
+    private: void canvasImagesJMenuItemActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void generateMirrorSpriteMenuItemActionPerformed(java::awt::event::ActionEvent evt);
+    private: void generateMirrorSpriteMenuItemActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void mirrorJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
+    private: void mirrorJMenuItemActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: ColorRangeInterface getColorRangeInterface();
+    private: ColorRangeInterface* getColorRangeInterface();
 
-    public: javax::swing::JTextField getMaxBlueJTextField();
+    public: javax::swing::JTextField* getMaxBlueJTextField();
 
-    public: void setMaxBlueJTextField(javax::swing::JTextField maxBlueJTextField);
+    public: void setMaxBlueJTextField(javax::swing::JTextField* maxBlueJTextField);
 
-    public: javax::swing::JTextField getMaxGreenJTextField();
+    public: javax::swing::JTextField* getMaxGreenJTextField();
 
-    public: void setMaxGreenJTextField(javax::swing::JTextField maxGreenJTextField);
+    public: void setMaxGreenJTextField(javax::swing::JTextField* maxGreenJTextField);
 
-    public: javax::swing::JTextField getMaxRedJTextField();
+    public: javax::swing::JTextField* getMaxRedJTextField();
 
-    public: void setMaxRedJTextField(javax::swing::JTextField maxRedJTextField);
+    public: void setMaxRedJTextField(javax::swing::JTextField* maxRedJTextField);
 
-    public: javax::swing::JTextField getMinBlueJTextField();
+    public: javax::swing::JTextField* getMinBlueJTextField();
 
-    public: void setMinBlueJTextField(javax::swing::JTextField minBlueJTextField);
+    public: void setMinBlueJTextField(javax::swing::JTextField* minBlueJTextField);
 
-    public: javax::swing::JTextField getMinGreenJTextField();
+    public: javax::swing::JTextField* getMinGreenJTextField();
 
-    public: void setMinGreenJTextField(javax::swing::JTextField minGreenJTextField);
+    public: void setMinGreenJTextField(javax::swing::JTextField* minGreenJTextField);
 
-    public: javax::swing::JTextField getMinRedJTextField();
+    public: javax::swing::JTextField* getMinRedJTextField();
 
-    public: void setMinRedJTextField(javax::swing::JTextField minRedJTextField);
+    public: void setMinRedJTextField(javax::swing::JTextField* minRedJTextField);
 
-    private: javax::swing::JDialog analysisActionJDialog;
+    private: javax::swing::JDialog* analysisActionJDialog;
 
-    private: javax::swing::JMenuItem analyzeJMenuItem;
+    private: javax::swing::JMenuItem* analyzeJMenuItem;
 
-    private: javax::swing::JLabel blueJLabel;
+    private: javax::swing::JLabel* blueJLabel;
 
-    private: javax::swing::JLabel colorRangeJLabel;
+    private: javax::swing::JLabel* colorRangeJLabel;
 
-    private: javax::swing::JMenuItem createStripImageJMenuItem;
+    private: javax::swing::JMenuItem* createStripImageJMenuItem;
 
-    private: javax::swing::JMenu fileJMenu;
+    private: javax::swing::JMenu* fileJMenu;
 
-    private: javax::swing::JMenuItem generateSpriteSplitterMenuItem;
+    private: javax::swing::JMenuItem* generateSpriteSplitterMenuItem;
 
-    private: javax::swing::JMenuItem generateRotationMenuItem;
+    private: javax::swing::JMenuItem* generateRotationMenuItem;
 
-    private: javax::swing::JMenuItem generateMirrorSpriteMenuItem;
+    private: javax::swing::JMenuItem* generateMirrorSpriteMenuItem;
 
-    private: javax::swing::JMenuItem generateRotationSpriteJMenuItem;
+    private: javax::swing::JMenuItem* generateRotationSpriteJMenuItem;
 
-    private: javax::swing::JLabel greenJLabel;
+    private: javax::swing::JLabel* greenJLabel;
 
-    private: javax::swing::JPanel jPanel1;
+    private: javax::swing::JPanel* jPanel1;
 
-    private: javax::swing::JMenuBar mainJMenuBar;
+    private: javax::swing::JMenuBar* mainJMenuBar;
 
-    private: javax::swing::JTextField maxBlueJTextField;
+    private: javax::swing::JTextField* maxBlueJTextField;
 
-    private: javax::swing::JTextField maxGreenJTextField;
+    private: javax::swing::JTextField* maxGreenJTextField;
 
-    private: javax::swing::JLabel maxJLabel;
+    private: javax::swing::JLabel* maxJLabel;
 
-    private: javax::swing::JTextField maxRedJTextField;
+    private: javax::swing::JTextField* maxRedJTextField;
 
-    private: javax::swing::JTextField minBlueJTextField;
+    private: javax::swing::JTextField* minBlueJTextField;
 
-    private: javax::swing::JTextField minGreenJTextField;
+    private: javax::swing::JTextField* minGreenJTextField;
 
-    private: javax::swing::JLabel minJLabel;
+    private: javax::swing::JLabel* minJLabel;
 
-    private: javax::swing::JTextField minRedJTextField;
+    private: javax::swing::JTextField* minRedJTextField;
 
-    private: javax::swing::JMenuItem mirrorJMenuItem;
+    private: javax::swing::JMenuItem* mirrorJMenuItem;
 
-    private: javax::swing::JButton okJButton;
+    private: javax::swing::JButton* okJButton;
 
-    private: javax::swing::JMenuItem openImageJMenuItem;
+    private: javax::swing::JMenuItem* openImageJMenuItem;
 
-    private: javax::swing::JMenu processingJMenu;
+    private: javax::swing::JMenu* processingJMenu;
 
-    private: javax::swing::JLabel redJLabel;
+    private: javax::swing::JLabel* redJLabel;
 
-    private: javax::swing::JMenuItem scaleImagesJMenuItem;
+    private: javax::swing::JMenuItem* scaleImagesJMenuItem;
 
-    private: javax::swing::JMenuItem canvasImagesJMenuItem;
+    private: javax::swing::JMenuItem* canvasImagesJMenuItem;
 
-    private: javax::swing::JMenuItem createIconImagesJMenuItem;
+    private: javax::swing::JMenuItem* createIconImagesJMenuItem;
 
-    private: javax::swing::JLabel titleJLabel;
+    private: javax::swing::JLabel* titleJLabel;
 
 };
 

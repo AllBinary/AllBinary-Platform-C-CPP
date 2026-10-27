@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/direction/DirectionalInterface.h>
 
       
@@ -42,15 +48,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "IndexedAnimationInterface.h"
+        #include "org/allbinary/animation/IndexedAnimationInterface.h"
 
 class RotationAnimationInterface: public IndexedAnimationInterface, public DirectionalInterface {
 
-    AngleInfo getAngleInfoP()
+    public: virtual AngleInfo* getAngleInfoP() = 0;
 
-    void nextRotation()
+    public: virtual void nextRotation() = 0;
 
-    void previousRotation()
+    public: virtual void previousRotation() = 0;
 
 };
 

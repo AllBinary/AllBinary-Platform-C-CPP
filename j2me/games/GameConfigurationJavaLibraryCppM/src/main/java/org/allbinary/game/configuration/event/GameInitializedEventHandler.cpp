@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -47,19 +53,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameInitializedListenerInterface.h"
-#include "GameInitializedEvent.h"
+        #include "org/allbinary/game/configuration/event/GameInitializedListenerInterface.h"
+#include "org/allbinary/game/configuration/event/GameInitializedEvent.h"
 
 class GameInitializedEventHandler: public BasicEventHandler {
 
-    private: static const GameInitializedEventHandler gameKeyEventHandler = GameInitializedEventHandler();
+    private: static GameInitializedEventHandler* gameKeyEventHandler() { static std::unique_ptr<GameInitializedEventHandler> value(new GameInitializedEventHandler()); return value.get(); }
 
-    public: static GameInitializedEventHandler getInstance(){
+    public: static GameInitializedEventHandler* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameInitializedEventHandler::gameKeyEventHandler;
+                        return GameInitializedEventHandler::gameKeyEventHandler();
     
 }
 
@@ -70,11 +76,11 @@ private: GameInitializedEventHandler(){
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
 
-    GameInitializedListenerInterface gameInitializedListenerInterface = (eventListenerInterface);;
+    GameInitializedListenerInterface* gameInitializedListenerInterface = (dynamic_cast<GameInitializedListenerInterface*>(eventListenerInterface));;
     
-gameInitializedListenerInterface.onGameInitialized(eventObject);
+gameInitializedListenerInterface->onGameInitialized(dynamic_cast<GameInitializedEvent*>(eventObject));
     
 }
 

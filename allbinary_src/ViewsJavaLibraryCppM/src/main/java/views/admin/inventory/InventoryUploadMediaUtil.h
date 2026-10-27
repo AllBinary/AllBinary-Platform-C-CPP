@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -95,9 +101,9 @@ class InventoryUploadMediaUtil
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const MediaUtil mediaUtil = MediaUtil::getInstance();
+    private: MediaUtil* mediaUtil = MediaUtil::getInstance();
 
     private: const int32_t LARGEWIDTH = 1024;
 
@@ -117,15 +123,15 @@ class InventoryUploadMediaUtil
 
     private: const std::string LARGE = "Large";
 
-    private: StoreFrontInterface storeFrontInterface;
+    private: StoreFrontInterface* storeFrontInterface;
 
-    private: ItemInterface itemInterface;
+    private: ItemInterface* itemInterface;
 
-public: InventoryUploadMediaUtil(StoreFrontInterface storeFrontInterface, ItemInterface itemInterface);
+public: InventoryUploadMediaUtil(StoreFrontInterface* storeFrontInterface, ItemInterface* itemInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: ItemInterface saveFiles(std::vector<int8_t> byteArray, std::string fileName, MediaData mediaData);
+    public: ItemInterface* saveFiles(std::vector<int8_t> byteArray, std::string fileName, MediaData* mediaData);
 
     private: void setFileNames(std::string fileName);
 

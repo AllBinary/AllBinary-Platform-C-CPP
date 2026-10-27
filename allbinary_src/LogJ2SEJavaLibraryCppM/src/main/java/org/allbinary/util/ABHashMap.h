@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_UTIL_ABHASHMAP_H
         #define ORG_ALLBINARY_UTIL_ABHASHMAP_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/util/HashMap.h>
 
       

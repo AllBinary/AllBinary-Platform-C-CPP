@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/string/CommonStrings.h>
@@ -47,14 +53,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProgressRunnable.h"
-#include "ProgressCanvas.h"
+        #include "org/allbinary/graphics/canvas/transition/progress/ProgressRunnable.h"
+#include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
 
 class TitleProgressBarSetProgressRunnable: public ProgressRunnable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: TitleProgressBarSetProgressRunnable(Activity midletActivity, ProgressCanvas progressCanvas) : ProgressRunnable(midletActivity, progressCanvas){
+public: TitleProgressBarSetProgressRunnable(Activity* midletActivity, ProgressCanvas* progressCanvas) : ProgressRunnable(midletActivity, progressCanvas){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -71,12 +77,12 @@ public: TitleProgressBarSetProgressRunnable(Activity midletActivity, ProgressCan
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
     
 }
 

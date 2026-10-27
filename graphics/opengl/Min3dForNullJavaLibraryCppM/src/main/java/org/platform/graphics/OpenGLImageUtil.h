@@ -7,6 +7,12 @@
         #ifndef ORG_PLATFORM_GRAPHICS_OPENGLIMAGEUTIL_H
         #define ORG_PLATFORM_GRAPHICS_OPENGLIMAGEUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/image/opengles/OpenGLImageUtilBase.h>
 
       
@@ -31,9 +37,9 @@
         
 class OpenGLImageUtil: public OpenGLImageUtilBase {
 
-    private: static OpenGLImageUtil instance() { return OpenGLImageUtil(); }
+    private: static OpenGLImageUtil* instance() { static std::unique_ptr<OpenGLImageUtil> value(new OpenGLImageUtil()); return value.get(); }
 
-    public: static OpenGLImageUtil getInstance();
+    public: static OpenGLImageUtil* getInstance();
 
 };
 

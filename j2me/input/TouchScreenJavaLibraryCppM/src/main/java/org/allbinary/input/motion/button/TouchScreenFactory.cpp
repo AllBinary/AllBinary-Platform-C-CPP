@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,26 +58,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchScreenTypesFactory.h"
-#include "TouchScreenType.h"
+        #include "org/allbinary/input/motion/button/TouchScreenTypesFactory.h"
+#include "org/allbinary/input/motion/button/TouchScreenType.h"
 
 class TouchScreenFactory
             : public Object
          {
 
-    private: static const TouchScreenFactory SINGLETON = TouchScreenFactory();
+    private: static TouchScreenFactory* SINGLETON() { static std::unique_ptr<TouchScreenFactory> value(new TouchScreenFactory()); return value.get(); }
 
-    public: static TouchScreenFactory getInstance(){
+    public: static TouchScreenFactory* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TouchScreenFactory::SINGLETON;
+                        return TouchScreenFactory::SINGLETON();
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: bool touch= false;
 
@@ -79,7 +85,7 @@ class TouchScreenFactory
 
     private: bool multiTouchDistinct= false;
 
-    private: TouchScreenType touchScreenType = TouchScreenTypesFactory::getInstance().NOTOUCH;
+    private: TouchScreenType* touchScreenType = TouchScreenTypesFactory::getInstance()->NOTOUCH;
 
 private: TouchScreenFactory(){
 
@@ -90,12 +96,12 @@ this->setMultiTouch(false);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, TouchScreenFactory::SINGLETON, commonStrings.GET_INSTANCE, e);
+this->logUtil->put(commonStrings->EXCEPTION, TouchScreenFactory::SINGLETON(), commonStrings->GET_INSTANCE, &e);
     
 }
 
@@ -150,13 +156,13 @@ this->multiTouchDistinct= multiTouchDistinct;
 }
 
 
-    public: void setTouchScreenType(TouchScreenType touchScreenType){
+    public: void setTouchScreenType(TouchScreenType* touchScreenType){
 this->touchScreenType= touchScreenType;
     
 }
 
 
-    public: TouchScreenType getTouchScreenType(){
+    public: TouchScreenType* getTouchScreenType(){
 
 
 
@@ -168,29 +174,29 @@ this->touchScreenType= touchScreenType;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("TouchScreen: ");
+stringBuffer->append("TouchScreen: ");
     
-stringBuffer.appendboolean(this->isTouch());
+stringBuffer->appendboolean(this->isTouch());
     
-stringBuffer.append(" MultiTouch: ");
+stringBuffer->append(" MultiTouch: ");
     
-stringBuffer.appendboolean(this->isMultiTouch());
+stringBuffer->appendboolean(this->isMultiTouch());
     
-stringBuffer.append(" Distinct MultiTouch: ");
+stringBuffer->append(" Distinct MultiTouch: ");
     
-stringBuffer.appendboolean(this->isMultiTouchDistinct());
+stringBuffer->appendboolean(this->isMultiTouchDistinct());
     
-stringBuffer.append(" TouchScreenType: ");
+stringBuffer->append(" TouchScreenType: ");
     
-stringBuffer.append(StringUtil::getInstance().toString(this->getTouchScreenType()));
+stringBuffer->append(StringUtil::getInstance()->toString(this->getTouchScreenType()));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

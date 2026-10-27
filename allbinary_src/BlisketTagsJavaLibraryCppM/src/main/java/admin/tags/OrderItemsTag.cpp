@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Class.h"
         
             #include "java/lang/Exception.h"
@@ -66,18 +74,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TableTag.h"
+        #include "admin/tags/TableTag.h"
 
 class OrderItemsTag: public TableTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string status;
 
 public: OrderItemsTag(){
-this->setTagHelperFactory(OrderItemsHelperFactory());
+this->setTagHelperFactory(new OrderItemsHelperFactory());
     
-this->setTagRequestHelperFactory(OrderItemsRequestHelperFactory());
+this->setTagRequestHelperFactory(new OrderItemsRequestHelperFactory());
     
 }
 
@@ -94,7 +102,7 @@ this->status= value;
 
         try {
             
-    Object* anyType = OrderItemsRequestHelperFactory().getInstance(this->getPropertiesHashMap(), this->pageContext);;
+    Object* anyType = (new OrderItemsRequestHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext);;
     
 
                         if(false)
@@ -104,11 +112,11 @@ this->status= value;
     Class* helperClass = anyType->getClass();;
     
 
-    Method method = helperClass.getMethod("setOrderStatus", 
+    Method* method = helperClass->getMethod("setOrderStatus", 
                             nullptr);;
     
 
-    std::string result = method.invoke(anyType, 
+    std::string result = method->invoke(anyType, 
                             nullptr);;
     
 
@@ -131,7 +139,7 @@ this->status= value;
                                                         };;
     
 
-    Method method = helperClass.getMethod("setOrderStatus", methodParams);;
+    Method* method = helperClass->getMethod("setOrderStatus", methodParams);;
     
 
     std::vector<Object*> methodArgs = 
@@ -140,7 +148,7 @@ this->status= value;
                                                         };;
     
 
-    std::string result = method.invoke(anyType, methodArgs);;
+    std::string result = method->invoke(anyType, methodArgs);;
     
 
 
@@ -153,7 +161,7 @@ this->status= value;
                             
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -163,16 +171,16 @@ this->status= value;
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
     std::string error = "Failed to set Order status to: " +this->status;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setOrderStatus()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "setOrderStatus()", &e);
     
 
                                     }
@@ -184,7 +192,7 @@ this->status= value;
                         return error;
     
 }
-*/
+
 }
 
 
@@ -203,13 +211,13 @@ this->status= value;
                                 )
                         
                                     {
-                                    this->getPropertiesHashMap().put(OrderHistoryData::STATUS, this->status);
+                                    this->getPropertiesHashMap()->put(OrderHistoryData::STATUS, this->status);
     
 
-                        if(this->getCommand().compareTo(OrderHistoryData::SETSTATUS) == 0)
+                        if(this->getCommand()->compareTo(OrderHistoryData::SETSTATUS) == 0)
                         
                                     {
-                                    this->pageContext.getOut().print(this->setOrderStatus());
+                                    this->pageContext.getOut()->print(this->setOrderStatus());
     
 
                                     }
@@ -238,9 +246,9 @@ this->status= value;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
-AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
     
 
 
@@ -251,9 +259,9 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 
@@ -262,7 +270,7 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
                         return SKIP_BODY;
     
 }
-*/
+
 }
 
 

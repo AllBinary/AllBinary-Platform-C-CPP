@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -77,53 +83,53 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PathFindingLayerInterface.h"
-#include "GeographicMapCellPositionAreaBase.h"
-#include "SelectionHudPaintable.h"
-#include "RTSLayer2LogHelper.h"
-#include "WaypointBehaviorBase.h"
+        #include "org/allbinary/game/layer/PathFindingLayerInterface.h"
+#include "org/allbinary/game/layer/GeographicMapCellPositionAreaBase.h"
+#include "org/allbinary/game/layer/SelectionHudPaintable.h"
+#include "org/allbinary/game/layer/RTSLayer2LogHelper.h"
+#include "org/allbinary/game/layer/WaypointBehaviorBase.h"
 
 class NullPathFindingLayer
             : public Object
-        : public PathFindingLayerInterface {
+        , public PathFindingLayerInterface {
 
-    public: static const NullPathFindingLayer NULL_PATH_FINDING_LAYER = NullPathFindingLayer();
+    public: static NullPathFindingLayer* NULL_PATH_FINDING_LAYER() { static std::unique_ptr<NullPathFindingLayer> value(new NullPathFindingLayer()); return value.get(); }
 
     public: std::string getName();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getEndGeographicMapCellPositionList();
+    public: BasicArrayList* getEndGeographicMapCellPositionList();
 
     public: bool shouldHandleStartSameAsEnd();
 
-    public: GeographicMapCellPositionAreaBase getGeographicMapCellPositionArea();
+    public: GeographicMapCellPositionAreaBase* getGeographicMapCellPositionArea();
 
-    public: SelectionHudPaintable getHudPaintable();
-
-                //@Throws(Exception.constructor)
-            
-    public: void handleCost(PathFindingLayerInterface ownerLayer);
-
-    public: PathFindingLayerInterface getParentLayer();
-
-    public: RTSLayer2LogHelper getRTSLayer2LogHelper();
+    public: SelectionHudPaintable* getHudPaintable();
 
                 //@Throws(Exception.constructor)
             
-    public: void setTarget(PathFindingLayerInterface targetGameLayer);
+    public: void handleCost(PathFindingLayerInterface* ownerLayer);
+
+    public: PathFindingLayerInterface* getParentLayer();
+
+    public: RTSLayer2LogHelper* getRTSLayer2LogHelper();
 
                 //@Throws(Exception.constructor)
             
-    public: void init(GeographicMapCellHistory geographicMapCellHistory, BasicArrayList geographicMapCellPositionBasicArrayList);
-
-    public: BasicArrayList getMoveOutOfBuildAreaPath(GeographicMapCellPosition geographicMapCellPosition);
+    public: void setTarget(PathFindingLayerInterface* targetGameLayer);
 
                 //@Throws(Exception.constructor)
             
-    public: void setClosestGeographicMapCellHistory(BasicArrayList pathsList);
+    public: void init(GeographicMapCellHistory* geographicMapCellHistory, BasicArrayList* geographicMapCellPositionBasicArrayList);
 
-    public: void teleportTo(GeographicMapCellPosition geographicMapCellPosition);
+    public: BasicArrayList* getMoveOutOfBuildAreaPath(GeographicMapCellPosition* geographicMapCellPosition);
+
+                //@Throws(Exception.constructor)
+            
+    public: void setClosestGeographicMapCellHistory(BasicArrayList* pathsList);
+
+    public: void teleportTo(GeographicMapCellPosition* geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
@@ -131,7 +137,7 @@ class NullPathFindingLayer
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getSurroundingGeographicMapCellPositionList();
+    public: BasicArrayList* getSurroundingGeographicMapCellPositionList();
 
     public: bool isSelected();
 
@@ -149,9 +155,9 @@ class NullPathFindingLayer
 
                 //@Throws(Exception.constructor)
             
-    public: bool buildingChase(AllBinaryLayer allbinaryLayer, GeographicMapCellPosition cellPosition);
+    public: bool buildingChase(AllBinaryLayer* allbinaryLayer, GeographicMapCellPosition* cellPosition);
 
-    public: TrackingEvent getTrackingEvent();
+    public: TrackingEvent* getTrackingEvent();
 
     public: void allStop();
 
@@ -159,23 +165,23 @@ class NullPathFindingLayer
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition getCurrentGeographicMapCellPosition();
+    public: GeographicMapCellPosition* getCurrentGeographicMapCellPosition();
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition getTopLeftGeographicMapCellPosition();
+    public: GeographicMapCellPosition* getTopLeftGeographicMapCellPosition();
 
-    public: CaptionAnimationHelperBase getCaptionAnimationHelper();
+    public: CaptionAnimationHelperBase* getCaptionAnimationHelper();
 
-    public: WaypointBehaviorBase getWaypointBehavior();
+    public: WaypointBehaviorBase* getWaypointBehavior();
 
-    public: WaypointLogHelper getWaypointLogHelper();
+    public: WaypointLogHelper* getWaypointLogHelper();
 
-    public: Waypoint2LogHelper getWaypoint2LogHelper();
+    public: Waypoint2LogHelper* getWaypoint2LogHelper();
 
-    public: WaypointRunnableLogHelper getWaypointRunnableLogHelper();
+    public: WaypointRunnableLogHelper* getWaypointRunnableLogHelper();
 
-    public: std::vector<Group> getGroupInterface();
+    public: std::vector<Group*> getGroupInterface();
 
                 //@Throws(Exception.constructor)
             

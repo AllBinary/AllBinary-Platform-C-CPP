@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GLOBALS_URLGLOBALS_H
         #define ORG_ALLBINARY_GLOBALS_URLGLOBALS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -43,16 +49,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AppUrlGlobals.h"
-#include "UrlGlobalsInterface.h"
+        #include "org/allbinary/globals/AppUrlGlobals.h"
+#include "org/allbinary/globals/UrlGlobalsInterface.h"
 
 class URLGLOBALS
             : public Object
          {
 
-    private: static UrlGlobalsInterface urlGlobalsInterface = AppUrlGlobals::NULL_APP_URL_GLOBALS;
+    private: static inline UrlGlobalsInterface* urlGlobalsInterface = AppUrlGlobals::NULL_APP_URL_GLOBALS;
 
-    public: static void init(UrlGlobalsInterface urlGlobalsInterface);
+    public: static void init(UrlGlobalsInterface* urlGlobalsInterface);
 
     public: static bool isTestingMode();
 

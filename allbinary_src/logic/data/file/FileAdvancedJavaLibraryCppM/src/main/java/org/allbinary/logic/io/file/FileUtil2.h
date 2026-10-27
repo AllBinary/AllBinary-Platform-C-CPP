@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,26 +66,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SimpleFileUtil.h"
-#include "AbFile.h"
+        #include "org/allbinary/logic/io/file/SimpleFileUtil.h"
+#include "org/allbinary/logic/io/file/AbFile.h"
 
 class FileUtil2
             : public Object
          {
 
-    private: static FileUtil2 instance() { return FileUtil2(); }
+    private: static FileUtil2* instance() { static std::unique_ptr<FileUtil2> value(new FileUtil2()); return value.get(); }
 
-    public: static FileUtil2 getInstance();
+    public: static FileUtil2* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const StreamUtil streamUtil = StreamUtil::getInstance();
+    private: StreamUtil* streamUtil = StreamUtil::getInstance();
 
 private: FileUtil2();
 
-    public: BasicArrayList loadFileAsList(AbFile file, int32_t max, std::vector<int8_t> byteArray1);
+    public: BasicArrayList* loadFileAsList(AbFile* file, int32_t max, std::vector<int8_t> byteArray1);
 
 };
 

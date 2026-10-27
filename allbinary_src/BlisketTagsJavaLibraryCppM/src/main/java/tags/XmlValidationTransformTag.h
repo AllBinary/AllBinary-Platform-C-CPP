@@ -21,6 +21,12 @@
         #ifndef TAGS_XMLVALIDATIONTRANSFORMTAG_H
         #define TAGS_XMLVALIDATIONTRANSFORMTAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Class.h"
         
             #include "java/lang/Exception.h"
@@ -58,11 +64,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformTag.h"
+        #include "tags/TransformTag.h"
 
 class XmlValidationTransformTag: public TransformTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: XmlValidationTransformTag();
 

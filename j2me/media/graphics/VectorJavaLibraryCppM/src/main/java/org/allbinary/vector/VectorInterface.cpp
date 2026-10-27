@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -41,9 +47,9 @@
         
 class VectorInterface {
 
-    std::vector<std::vector<int32_t>> getPoints(int32_t frame)
+    public: virtual std::vector<std::vector<int32_t>> getPoints(int32_t frame) = 0;
 
-    void setPoints(std::vector<std::vector<std::vector<int32_t>>> currentPoints)
+    public: virtual void setPoints(std::vector<std::vector<std::vector<int32_t>>> currentPoints) = 0;
 
 };
 

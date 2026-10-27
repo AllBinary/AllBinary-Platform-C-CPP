@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,7 +44,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShakeEvent.h"
+        #include "org/allbinary/animation/transition/shake/ShakeEvent.h"
 
 class ShakeAnimationListener
             : public Object
@@ -56,7 +62,7 @@ class ShakeAnimationListener
 }
 
 
-    public: void onShakeEvent(ShakeEvent shakeEvent){
+    public: void onShakeEvent(ShakeEvent* shakeEvent){
 }
 
 

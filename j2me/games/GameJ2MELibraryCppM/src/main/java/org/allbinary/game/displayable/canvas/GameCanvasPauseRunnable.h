@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASPAUSERUNNABLE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASPAUSERUNNABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/AndroidUtil.h>
@@ -56,16 +62,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameRunnable.h"
-#include "AllBinaryGameCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/GameRunnable.h"
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
 class GameCanvasPauseRunnable: public GameRunnable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: AllBinaryGameCanvas allBinaryGameCanvas;
+    private: AllBinaryGameCanvas* allBinaryGameCanvas;
 
-public: GameCanvasPauseRunnable(AllBinaryGameCanvas allBinaryGameCanvas);
+public: GameCanvasPauseRunnable(AllBinaryGameCanvas* allBinaryGameCanvas);
 
     public: void run();
 

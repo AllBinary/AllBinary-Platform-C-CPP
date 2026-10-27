@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_PAYMENT_GATEWAY_PAYMENTGATEWAYVIEWABSTRACT_H
         #define VIEWS_ADMIN_PAYMENT_GATEWAY_PAYMENTGATEWAYVIEWABSTRACT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/servlet/http/HttpServletRequest.h>
 
       
@@ -57,15 +63,15 @@
         
 class PaymentGatewayViewAbstract: public TransformInfoHttpComposite {
 
-    private: PaymentGatewayPrimaryKey paymentGatewayPrimaryKey;
+    private: PaymentGatewayPrimaryKey* paymentGatewayPrimaryKey;
 
-public: PaymentGatewayViewAbstract(TransformInfoInterface transformInfoInterface);
+public: PaymentGatewayViewAbstract(TransformInfoInterface* transformInfoInterface);
 
-    public: void getFormData(HttpServletRequest request);
+    public: void getFormData(HttpServletRequest* request);
 
-    public: PaymentGatewayPrimaryKey getPaymentGatewayPrimaryKey();
+    public: PaymentGatewayPrimaryKey* getPaymentGatewayPrimaryKey();
 
-    public: void setPaymentGatewayPrimaryKey(PaymentGatewayPrimaryKey paymentGatewayPrimaryKey);
+    public: void setPaymentGatewayPrimaryKey(PaymentGatewayPrimaryKey* paymentGatewayPrimaryKey);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_BUILDING_BUILDINGINFOHUDPAINTABLE_H
         #define ORG_ALLBINARY_GAME_LAYER_BUILDING_BUILDINGINFOHUDPAINTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -80,41 +86,41 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BuildingLayer.h"
+        #include "org/allbinary/game/layer/building/BuildingLayer.h"
 
 class BuildingInfoHudPaintable: public SelectionHudPaintable {
 
-    private: static BuildingInfoHudPaintable instance() { return BuildingInfoHudPaintable(); }
+    private: static BuildingInfoHudPaintable* instance() { static std::unique_ptr<BuildingInfoHudPaintable> value(new BuildingInfoHudPaintable()); return value.get(); }
 
-    public: static BuildingInfoHudPaintable getInstance();
+    public: static BuildingInfoHudPaintable* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const std::string HEALTH = "Health:";
 
-    private: NumberStringHud productivityHud;
+    private: NumberStringHud* productivityHud;
 
-    private: NumberStringHud efficiencyHud;
+    private: NumberStringHud* efficiencyHud;
 
-    private: NumberStringHud healthHud;
+    private: NumberStringHud* healthHud;
 
-    private: NumberStringHud maxHealthHud;
+    private: NumberStringHud* maxHealthHud;
 
-    private: PathFindingLayerInterface rtsLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
+    private: PathFindingLayerInterface* rtsLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
     private: int32_t currentHealth = 0;
 
 private: BuildingInfoHudPaintable();
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
-    public: void setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor* basicColor);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
     public: void updateSelectionInfo();
 
-    public: void setRtsLayer(PathFindingLayerInterface rtsLayer);
+    public: void setRtsLayer(PathFindingLayerInterface* rtsLayer);
 
 };
 

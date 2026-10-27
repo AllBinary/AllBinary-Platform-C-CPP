@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/StdUtil.h>
@@ -52,37 +58,37 @@ class InGameFeatureChoiceGroups
             : public Object
          {
 
-    private: static InGameFeatureChoiceGroups gameFeatureChoiceGroupsExclusive = InGameFeatureChoiceGroups();
+    private: static InGameFeatureChoiceGroups* gameFeatureChoiceGroupsExclusive() { static std::unique_ptr<InGameFeatureChoiceGroups> value(new InGameFeatureChoiceGroups()); return value.get(); }
 
-    private: static InGameFeatureChoiceGroups gameFeatureChoiceGroupsMultiple = InGameFeatureChoiceGroups();
+    private: static InGameFeatureChoiceGroups* gameFeatureChoiceGroupsMultiple() { static std::unique_ptr<InGameFeatureChoiceGroups> value(new InGameFeatureChoiceGroups()); return value.get(); }
 
-    public: static InGameFeatureChoiceGroups getExclusiveInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return InGameFeatureChoiceGroups::gameFeatureChoiceGroupsExclusive;
-    
-}
-
-
-    public: static InGameFeatureChoiceGroups getMultipleInstance(){
+    public: static InGameFeatureChoiceGroups* getExclusiveInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InGameFeatureChoiceGroups::gameFeatureChoiceGroupsMultiple;
+                        return InGameFeatureChoiceGroups::gameFeatureChoiceGroupsExclusive();
     
 }
 
 
-    private: ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
+    public: static InGameFeatureChoiceGroups* getMultipleInstance(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return InGameFeatureChoiceGroups::gameFeatureChoiceGroupsMultiple();
+    
+}
+
+
+    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
 
 private: InGameFeatureChoiceGroups(){
 }
 
 
-    public: ABHashtable<Object*, Object*> get(){
+    public: ABHashtable<Object*, Object*>* get(){
 
 
 
@@ -92,8 +98,8 @@ private: InGameFeatureChoiceGroups(){
 }
 
 
-    public: void add(std::string name, BasicArrayList list){
-this->hashtable.put(name, list);
+    public: void add(std::string name, BasicArrayList* list){
+this->hashtable->put(name, list);
     
 }
 

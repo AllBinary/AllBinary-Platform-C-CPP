@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_CONTEXTTRANSFORMER_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_CONTEXTTRANSFORMER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/xml/transform/URIResolver.h>
@@ -56,11 +62,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicTransformer.h"
+        #include "org/allbinary/logic/visual/transform/BasicTransformer.h"
 
 class ContextTransformer: public BasicTransformer {
 
-public: ContextTransformer(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface);
+public: ContextTransformer(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface);
 
 };
 

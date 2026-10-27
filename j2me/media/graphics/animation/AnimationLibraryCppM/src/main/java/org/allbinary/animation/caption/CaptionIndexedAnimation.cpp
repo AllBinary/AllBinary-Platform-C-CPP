@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -73,9 +79,9 @@
         
 class CaptionIndexedAnimation: public IndexedAnimation {
 
-    private: Animation animationInterface;
+    private: Animation* animationInterface;
 
-    private: IndexedAnimation movieIndexedAnimationInterface;
+    private: IndexedAnimation* movieIndexedAnimationInterface;
 
     private: int32_t captionDx;
 
@@ -87,13 +93,13 @@ class CaptionIndexedAnimation: public IndexedAnimation {
 
     private: int32_t time;
 
-    private: AllBinaryEventObject END_EVENT;
+    private: AllBinaryEventObject* END_EVENT;
 
-    private: TimeDelayHelper timeDelayHelper;
+    private: TimeDelayHelper* timeDelayHelper;
 
-    private: Player player;
+    private: Player* player;
 
-public: CaptionIndexedAnimation(Animation animationInterface, IndexedAnimation movieIndexedAnimationInterface, Player player, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy, int32_t time, AnimationBehavior animationBehavior) : IndexedAnimation(animationBehavior){
+public: CaptionIndexedAnimation(Animation* animationInterface, IndexedAnimation* movieIndexedAnimationInterface, Player* player, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy, int32_t time, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -114,16 +120,16 @@ this->dy= dy;
     
 this->time= time;
     
-this->END_EVENT= AllBinaryEventObject(this);
+this->END_EVENT= new AllBinaryEventObject(this);
     
 
     int32_t timePerFrame = this->time /this->getSize();;
     
-this->timeDelayHelper= TimeDelayHelper(timePerFrame);
+this->timeDelayHelper= new TimeDelayHelper(timePerFrame);
     
 this->player= player;
     
-this->player.start();
+this->player->start();
     
 }
 
@@ -132,10 +138,10 @@ this->player.start();
             
     public: void nextFrame(){
 
-                        if(this->timeDelayHelper.isTime(GameTickTimeDelayHelperFactory::getInstance().startTime))
+                        if(this->timeDelayHelper->isTime(GameTickTimeDelayHelperFactory::getInstance()->startTime))
                         
                                     {
-                                    this->movieIndexedAnimationInterface.nextFrame();
+                                    this->movieIndexedAnimationInterface->nextFrame();
     
 
                                     }
@@ -144,7 +150,7 @@ this->player.start();
                         if(this->isLastFrame())
                         
                                     {
-                                    AnimationEventHandler::getInstance().fireEvent(this->END_EVENT);
+                                    AnimationEventHandler::getInstance()->fireEvent(this->END_EVENT);
     
 
                                     }
@@ -154,7 +160,7 @@ this->player.start();
 
     public: bool isLastFrame(){
 
-                        if(this->movieIndexedAnimationInterface.getFrame() == this->getSize() -1)
+                        if(this->movieIndexedAnimationInterface->getFrame() == this->getSize() -1)
                         
                                     {
                                     
@@ -180,13 +186,13 @@ this->player.start();
 
 
     public: void previousFrame(){
-this->movieIndexedAnimationInterface.previousFrame();
+this->movieIndexedAnimationInterface->previousFrame();
     
 }
 
 
     public: void setFrame(int32_t index){
-this->movieIndexedAnimationInterface.setFrame(index);
+this->movieIndexedAnimationInterface->setFrame(index);
     
 }
 
@@ -196,7 +202,7 @@ this->movieIndexedAnimationInterface.setFrame(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->movieIndexedAnimationInterface.getFrame();;
+                        return this->movieIndexedAnimationInterface->getFrame();;
     
 }
 
@@ -206,7 +212,7 @@ this->movieIndexedAnimationInterface.setFrame(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->movieIndexedAnimationInterface.getSize();;
+                        return this->movieIndexedAnimationInterface->getSize();;
     
 }
 
@@ -225,18 +231,18 @@ this->movieIndexedAnimationInterface.setFrame(index);
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
-this->animationInterface.paintXY(graphics, x +this->captionDx, y +this->captionDy);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+this->animationInterface->paintXY(graphics, x +this->captionDx, y +this->captionDy);
     
-this->movieIndexedAnimationInterface.paintXY(graphics, x +this->captionDx +this->dx, y +this->captionDy +this->dy);
+this->movieIndexedAnimationInterface->paintXY(graphics, x +this->captionDx +this->dx, y +this->captionDy +this->dy);
     
 }
 
 
-    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
-this->animationInterface.paintThreedXYZ(graphics, x +this->captionDx, y +this->captionDy, z);
+    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z){
+this->animationInterface->paintThreedXYZ(graphics, x +this->captionDx, y +this->captionDy, z);
     
-this->movieIndexedAnimationInterface.paintThreedXYZ(graphics, x +this->captionDx +this->dx, y +this->captionDy +this->dy, z);
+this->movieIndexedAnimationInterface->paintThreedXYZ(graphics, x +this->captionDx +this->dx, y +this->captionDy +this->dy, z);
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_HEALTH_HEALTHRESOURCES_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_HEALTH_HEALTHRESOURCES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class HealthResources
             : public Object
          {
 
-    private: static const HealthResources SINGLETON = HealthResources();
+    private: static HealthResources* SINGLETON() { static std::unique_ptr<HealthResources> value(new HealthResources()); return value.get(); }
 
-    public: static HealthResources getInstance();
+    public: static HealthResources* getInstance();
 
     public: std::string RESOURCE = "health_drop_20_by_20.png";
 

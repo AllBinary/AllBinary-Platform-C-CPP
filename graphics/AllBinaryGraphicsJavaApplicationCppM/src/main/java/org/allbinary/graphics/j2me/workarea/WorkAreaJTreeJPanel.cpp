@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/swing.h>
@@ -85,56 +93,56 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "JTree.h"
-#include "MouseAdapter.h"
-#include "MouseEvent.h"
-#include "JPopupMenu.h"
-#include "JMenuItem.h"
-#include "JScrollPane.h"
-#include "PopupMenuListener.h"
-#include "PopupMenuEvent.h"
-#include "GridLayout.h"
+        #include "org/allbinary/graphics/j2me/workarea/JPanel.h"
+#include "org/allbinary/graphics/j2me/workarea/JTree.h"
+#include "org/allbinary/graphics/j2me/workarea/MouseAdapter.h"
+#include "org/allbinary/graphics/j2me/workarea/MouseEvent.h"
+#include "org/allbinary/graphics/j2me/workarea/JPopupMenu.h"
+#include "org/allbinary/graphics/j2me/workarea/JMenuItem.h"
+#include "org/allbinary/graphics/j2me/workarea/JScrollPane.h"
+#include "org/allbinary/graphics/j2me/workarea/PopupMenuListener.h"
+#include "org/allbinary/graphics/j2me/workarea/PopupMenuEvent.h"
+#include "org/allbinary/graphics/j2me/workarea/GridLayout.h"
 
 class WorkAreaJTreeJPanel: public javax::swing::JPanel {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: DefaultMutableTreeNode rootTreeNode;
+    private: DefaultMutableTreeNode* rootTreeNode;
 
-    private: JTree workAreaJTree;
+    private: JTree* workAreaJTree;
 
-    private: BasicArrayList highlightedBasicArrayList;
+    private: BasicArrayList* highlightedBasicArrayList;
 
 public: WorkAreaJTreeJPanel(std::string workAreaName){
 this->initComponents();
     
-this->rootTreeNode= DefaultMutableTreeNode(workAreaName);
+this->rootTreeNode= new DefaultMutableTreeNode(workAreaName);
     
-this->workAreaPropertiesJPanel.removeAll();
+this->workAreaPropertiesJPanel->removeAll();
     
 this->updateTree();
     
-this->highlightedBasicArrayList= BasicArrayListD();
+this->highlightedBasicArrayList= new BasicArrayListD();
     
 }
 
 
-    public: void add(MutableTreeNode treeNode){
-this->rootTreeNode.add(treeNode);
+    public: void add(MutableTreeNode* treeNode){
+this->rootTreeNode->add(treeNode);
     
 }
 
 
     public: void updateTree(){
-this->workAreaJTree= JTree(this->rootTreeNode);
+this->workAreaJTree= new JTree(this->rootTreeNode);
     
-this->workAreaJTree.addMouseListener(class extends java::awt::event::MouseAdapter
+this->workAreaJTree->addMouseListener(class extends java::awt::event::MouseAdapter
                                 {
                                 
-    public: void mousePressed(java::awt::event::MouseEvent evt){
+    public: void mousePressed(java::awt::event::MouseEvent* evt){
 workAreaJTreeMousePressed(evt);
     
 }
@@ -142,16 +150,16 @@ workAreaJTreeMousePressed(evt);
                                 }
                             );
     
-this->workAreaPropertiesJPanel.removeAll();
+this->workAreaPropertiesJPanel->removeAll();
     
-this->workAreaPropertiesJPanel.add(this->workAreaJTree);
+this->workAreaPropertiesJPanel->add(this->workAreaJTree);
     
 }
 
 
-    public: BasicArrayList getNode(std::vector<TreePath> treePathArray){
+    public: BasicArrayList* getNode(std::vector<TreePath*> treePathArray){
 
-    BasicArrayList basicArrayList = BasicArrayListD();;
+    BasicArrayList* basicArrayList = new BasicArrayListD();;
     
 
                         if(treePathArray != 
@@ -166,7 +174,7 @@ this->workAreaPropertiesJPanel.add(this->workAreaJTree);
                         for (
     int32_t index = 0;index < treePathArray.size(); index++)
         {
-basicArrayList.add(this->getNode(treePathArray[index]));
+basicArrayList->add(this->getNode(treePathArray[index]));
     
 }
 
@@ -182,7 +190,7 @@ basicArrayList.add(this->getNode(treePathArray[index]));
 }
 
 
-    public: DefaultMutableTreeNode getNode(TreePath treePath){
+    public: DefaultMutableTreeNode* getNode(TreePath* treePath){
 
                         if(treePath != 
                                     nullptr
@@ -190,7 +198,7 @@ basicArrayList.add(this->getNode(treePathArray[index]));
                         
                                     {
                                     
-    std::vector<Object*> obj = treePath.getPath();;
+    std::vector<Object*> obj = treePath->getPath();;
     
 
                         if(obj != 
@@ -199,7 +207,7 @@ basicArrayList.add(this->getNode(treePathArray[index]));
                         
                                     {
                                     
-    DefaultMutableTreeNode node = obj[obj.size() -1];;
+    DefaultMutableTreeNode* node = dynamic_cast<DefaultMutableTreeNode*>(obj[obj.size() -1]);;
     
 
 
@@ -226,9 +234,9 @@ basicArrayList.add(this->getNode(treePathArray[index]));
             
     public: void deselectAll(){
 
-    int32_t size = this->highlightedBasicArrayList.size();;
+    int32_t size = this->highlightedBasicArrayList->size();;
     
-this->logUtil.putF("size: " +size, this, "deselectAll");
+this->logUtil->putF("size: " +size, this, "deselectAll");
     
 
 
@@ -238,48 +246,48 @@ this->logUtil.putF("size: " +size, this, "deselectAll");
     int32_t index = 0;index < size; index++)
         {
 
-    DefaultMutableTreeNode node = this->highlightedBasicArrayList.get(index);;
+    DefaultMutableTreeNode* node = dynamic_cast<DefaultMutableTreeNode*>(this->highlightedBasicArrayList->get(index));;
     
-MyGraphicItemEventService::fire(MyGraphicItemEvent(MyGraphicItemEventSource(MyGraphicItemEventService::DESELECT, node)));
-    
-}
-
-this->highlightedBasicArrayList.clear();
+MyGraphicItemEventService::fire(new MyGraphicItemEvent(new MyGraphicItemEventSource(MyGraphicItemEventService::DESELECT, node)));
     
 }
 
-
-                //@Throws(Exception.constructor)
-            
-    public: void selectGraphicItem(DefaultMutableTreeNode node){
-this->highlightedBasicArrayList.add(node);
-    
-MyGraphicItemEventService::fire(MyGraphicItemEvent(MyGraphicItemEventSource(MyGraphicItemEventService::SELECT, node)));
+this->highlightedBasicArrayList->clear();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void removeGraphicItem(DefaultMutableTreeNode node){
-MyGraphicItemEventService::fire(MyGraphicItemEvent(MyGraphicItemEventSource(MyGraphicItemEventService::DELETE, node)));
+    public: void selectGraphicItem(DefaultMutableTreeNode* node){
+this->highlightedBasicArrayList->add(node);
+    
+MyGraphicItemEventService::fire(new MyGraphicItemEvent(new MyGraphicItemEventSource(MyGraphicItemEventService::SELECT, node)));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void removeCanvas(DefaultMutableTreeNode node){
-MyCanvasEventService::fire(MyCanvasEvent(MyCanvasEventSource(MyCanvasEventService::DELETE, node)));
+    public: void removeGraphicItem(DefaultMutableTreeNode* node){
+MyGraphicItemEventService::fire(new MyGraphicItemEvent(new MyGraphicItemEventSource(MyGraphicItemEventService::DELETE, node)));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void remove(TreePath treePath){
+    public: void removeCanvas(DefaultMutableTreeNode* node){
+MyCanvasEventService::fire(new MyCanvasEvent(new MyCanvasEventSource(MyCanvasEventService::DELETE, node)));
+    
+}
 
-    DefaultMutableTreeNode node = this->getNode(treePath);;
+
+                //@Throws(Exception.constructor)
+            
+    public: void remove(TreePath* treePath){
+
+    DefaultMutableTreeNode* node = this->getNode(treePath);;
     
 
                         if(node != 
@@ -288,7 +296,9 @@ MyCanvasEventService::fire(MyCanvasEvent(MyCanvasEventSource(MyCanvasEventServic
                         
                                     {
                                     
-                        if(node.getUserObject() instanceof CanvasTreeLabel)
+                        if(
+                                        (dynamic_cast<const CanvasTreeLabel*>(node->getUserObject()) != nullptr)
+                                    )
                         
                                     {
                                     this->removeCanvas(node);
@@ -306,9 +316,9 @@ MyCanvasEventService::fire(MyCanvasEvent(MyCanvasEventSource(MyCanvasEventServic
                                     }
                                 
 
-    DefaultMutableTreeNode parent = node.getParent();;
+    DefaultMutableTreeNode* parent = dynamic_cast<DefaultMutableTreeNode*>(node->getParent());;
     
-parent.remove(node);
+parent->remove(node);
     
 }
 
@@ -317,7 +327,7 @@ parent.remove(node);
             
     private: void copy(){
 
-    TreePath treePath = this->workAreaJTree.getSelectionPath();;
+    TreePath* treePath = this->workAreaJTree->getSelectionPath();;
     
 this->copy(treePath);
     
@@ -332,9 +342,9 @@ this->repaint();
 
                 //@Throws(Exception.constructor)
             
-    private: void copy(TreePath treePath){
+    private: void copy(TreePath* treePath){
 
-    DefaultMutableTreeNode node = this->getNode(treePath);;
+    DefaultMutableTreeNode* node = this->getNode(treePath);;
     
 
                         if(node != 
@@ -343,16 +353,18 @@ this->repaint();
                         
                                     {
                                     
-                        if(node.getUserObject() instanceof CanvasTreeLabel)
+                        if(
+                                        (dynamic_cast<const CanvasTreeLabel*>(node->getUserObject()) != nullptr)
+                                    )
                         
                                     {
-                                    MyCanvasEventService::fire(MyCanvasEvent(MyCanvasEventSource(MyCanvasEventService::DUPLICATE, node)));
+                                    MyCanvasEventService::fire(new MyCanvasEvent(new MyCanvasEventSource(MyCanvasEventService::DUPLICATE, node)));
     
 
                                     }
                                 
                         else {
-                            MyGraphicItemEventService::fire(MyGraphicItemEvent(MyGraphicItemEventSource(MyGraphicItemEventService::DUPLICATE, node)));
+                            MyGraphicItemEventService::fire(new MyGraphicItemEvent(new MyGraphicItemEventSource(MyGraphicItemEventService::DUPLICATE, node)));
     
 
                         }
@@ -365,9 +377,9 @@ this->repaint();
 
                 //@Throws(Exception.constructor)
             
-    public: void rotate(TreePath treePath, double angle){
+    public: void rotate(TreePath* treePath, double angle){
 
-    DefaultMutableTreeNode node = this->getNode(treePath);;
+    DefaultMutableTreeNode* node = this->getNode(treePath);;
     
 
                         if(node != 
@@ -376,16 +388,18 @@ this->repaint();
                         
                                     {
                                     
-                        if(node.getUserObject() instanceof CanvasTreeLabel)
+                        if(
+                                        (dynamic_cast<const CanvasTreeLabel*>(node->getUserObject()) != nullptr)
+                                    )
                         
                                     {
-                                    MyCanvasEventService::fire(MyCanvasEvent(MyCanvasEventSource(MyCanvasEventService::ROTATE, angle, node)));
+                                    MyCanvasEventService::fire(new MyCanvasEvent(new MyCanvasEventSource(MyCanvasEventService::ROTATE, angle, node)));
     
 
                                     }
                                 
                         else {
-                            MyGraphicItemEventService::fire(MyGraphicItemEvent(MyGraphicItemEventSource(MyGraphicItemEventService::ROTATE, angle, node)));
+                            MyGraphicItemEventService::fire(new MyGraphicItemEvent(new MyGraphicItemEventSource(MyGraphicItemEventService::ROTATE, angle, node)));
     
 
                         }
@@ -396,7 +410,7 @@ this->repaint();
 }
 
 
-    public: MutableTreeNode getRootTreeNode(){
+    public: MutableTreeNode* getRootTreeNode(){
 
 
 
@@ -407,44 +421,44 @@ this->repaint();
 
 
     public: void expand(){
-this->workAreaJTree.expandRow(0);
+this->workAreaJTree->expandRow(0);
     
-this->workAreaJTree.expandRow(1);
+this->workAreaJTree->expandRow(1);
     
 }
 
 
-    public: void expand(TreePath treePath){
-this->workAreaJTree.expandPath(treePath);
+    public: void expand(TreePath* treePath){
+this->workAreaJTree->expandPath(treePath);
     
 }
 
 
     private: void initComponents(){
-itemJPopupMenu= javax::swing::JPopupMenu();
+itemJPopupMenu= new javax::swing::JPopupMenu();
     
-this->deleteJMenuItem= javax::swing::JMenuItem();
+this->deleteJMenuItem= new javax::swing::JMenuItem();
     
-this->copyJMenuItem= javax::swing::JMenuItem();
+this->copyJMenuItem= new javax::swing::JMenuItem();
     
-this->rotateJMenuItem= javax::swing::JMenuItem();
+this->rotateJMenuItem= new javax::swing::JMenuItem();
     
-this->itemJScrollPane1= javax::swing::JScrollPane();
+this->itemJScrollPane1= new javax::swing::JScrollPane();
     
-this->workAreaPropertiesJPanel= javax::swing::JPanel();
+this->workAreaPropertiesJPanel= new javax::swing::JPanel();
     
-itemJPopupMenu.addPopupMenuListener(class extends javax::swing::event::PopupMenuListener
+itemJPopupMenu->addPopupMenuListener(class extends javax::swing::event::PopupMenuListener
                                 {
                                 
-    public: void popupMenuCanceled(javax::swing::event::PopupMenuEvent evt){
+    public: void popupMenuCanceled(javax::swing::event::PopupMenuEvent* evt){
 }
 
-    public: void popupMenuWillBecomeInvisible(javax::swing::event::PopupMenuEvent evt){
+    public: void popupMenuWillBecomeInvisible(javax::swing::event::PopupMenuEvent* evt){
 itemJPopupMenuPopupMenuWillBecomeInvisible(evt);
     
 }
 
-    public: void popupMenuWillBecomeVisible(javax::swing::event::PopupMenuEvent evt){
+    public: void popupMenuWillBecomeVisible(javax::swing::event::PopupMenuEvent* evt){
 itemJPopupMenuPopupMenuWillBecomeVisible(evt);
     
 }
@@ -452,12 +466,12 @@ itemJPopupMenuPopupMenuWillBecomeVisible(evt);
                                 }
                             );
     
-this->deleteJMenuItem.setText("Delete");
+this->deleteJMenuItem->setText("Delete");
     
-this->deleteJMenuItem.addMouseListener(class extends java::awt::event::MouseAdapter
+this->deleteJMenuItem->addMouseListener(class extends java::awt::event::MouseAdapter
                                 {
                                 
-    public: void mousePressed(java::awt::event::MouseEvent evt){
+    public: void mousePressed(java::awt::event::MouseEvent* evt){
 deleteJMenuItemMousePressed(evt);
     
 }
@@ -465,14 +479,14 @@ deleteJMenuItemMousePressed(evt);
                                 }
                             );
     
-this->itemJPopupMenu.add(this->deleteJMenuItem);
+this->itemJPopupMenu->add(this->deleteJMenuItem);
     
-this->copyJMenuItem.setText("Copy");
+this->copyJMenuItem->setText("Copy");
     
-this->copyJMenuItem.addMouseListener(class extends java::awt::event::MouseAdapter
+this->copyJMenuItem->addMouseListener(class extends java::awt::event::MouseAdapter
                                 {
                                 
-    public: void mousePressed(java::awt::event::MouseEvent evt){
+    public: void mousePressed(java::awt::event::MouseEvent* evt){
 copyJMenuItemMousePressed(evt);
     
 }
@@ -480,14 +494,14 @@ copyJMenuItemMousePressed(evt);
                                 }
                             );
     
-this->itemJPopupMenu.add(this->copyJMenuItem);
+this->itemJPopupMenu->add(this->copyJMenuItem);
     
-this->rotateJMenuItem.setText("Rotate 45*");
+this->rotateJMenuItem->setText("Rotate 45*");
     
-this->rotateJMenuItem.addMouseListener(class extends java::awt::event::MouseAdapter
+this->rotateJMenuItem->addMouseListener(class extends java::awt::event::MouseAdapter
                                 {
                                 
-    public: void mousePressed(java::awt::event::MouseEvent evt){
+    public: void mousePressed(java::awt::event::MouseEvent* evt){
 rotateJMenuItemMousePressed(evt);
     
 }
@@ -495,14 +509,14 @@ rotateJMenuItemMousePressed(evt);
                                 }
                             );
     
-this->itemJPopupMenu.add(this->rotateJMenuItem);
+this->itemJPopupMenu->add(this->rotateJMenuItem);
     
-setLayout(java::awt::GridLayout(1, 1));
+setLayout(new java::awt::GridLayout(1, 1));
     
-this->workAreaPropertiesJPanel.addMouseListener(class extends java::awt::event::MouseAdapter
+this->workAreaPropertiesJPanel->addMouseListener(class extends java::awt::event::MouseAdapter
                                 {
                                 
-    public: void mousePressed(java::awt::event::MouseEvent evt){
+    public: void mousePressed(java::awt::event::MouseEvent* evt){
 workAreaPropertiesJPanelMousePressed(evt);
     
 }
@@ -510,20 +524,20 @@ workAreaPropertiesJPanelMousePressed(evt);
                                 }
                             );
     
-this->workAreaPropertiesJPanel.setLayout(java::awt::GridLayout(1, 0));
+this->workAreaPropertiesJPanel->setLayout(new java::awt::GridLayout(1, 0));
     
-this->itemJScrollPane1.setViewportView(this->workAreaPropertiesJPanel);
+this->itemJScrollPane1->setViewportView(this->workAreaPropertiesJPanel);
     
 add(this->itemJScrollPane1);
     
 }
 
 
-    private: void rotateJMenuItemMousePressed(java::awt::event::MouseEvent evt){
+    private: void rotateJMenuItemMousePressed(java::awt::event::MouseEvent* evt){
 
         try {
             
-    TreePath treePath = this->workAreaJTree.getSelectionPath();;
+    TreePath* treePath = this->workAreaJTree->getSelectionPath();;
     
 this->rotate(treePath, 45);
     
@@ -535,30 +549,30 @@ this->repaint();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "rotateJMenuItemMousePressed", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "rotateJMenuItemMousePressed", &e);
     
 }
 
 }
 
 
-    private: void workAreaJTreeMousePressed(java::awt::event::MouseEvent evt){
+    private: void workAreaJTreeMousePressed(java::awt::event::MouseEvent* evt){
 
         try {
             
-    std::vector<TreePath> selectedTreePathArray = this->workAreaJTree.getSelectionPaths();;
+    std::vector<TreePath*> selectedTreePathArray = this->workAreaJTree->getSelectionPaths();;
     
 
-    BasicArrayList list = this->getNode(selectedTreePathArray);;
+    BasicArrayList* list = this->getNode(selectedTreePathArray);;
     
 
-                        if(list.size() > 0)
+                        if(list->size() > 0)
                         
                                     {
                                     
-                        if((evt.getModifiers()&evt.BUTTON3_MASK) == evt.BUTTON3_MASK)
+                        if((evt->getModifiers()&evt->BUTTON3_MASK) == evt->BUTTON3_MASK)
                         
                                     {
                                     
@@ -569,19 +583,21 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "rotateJMenuItemMousePres
     int32_t index = 0;index < selectedTreePathArray.size(); index++)
         {
 
-    DefaultMutableTreeNode defaultMutableTreeNode = list.get(index);;
+    DefaultMutableTreeNode* defaultMutableTreeNode = dynamic_cast<DefaultMutableTreeNode*>(list->get(index));;
     
 
-                        if(defaultMutableTreeNode.getUserObject() instanceof CanvasTreeLabel)
+                        if(
+                                        (dynamic_cast<const CanvasTreeLabel*>(defaultMutableTreeNode->getUserObject()) != nullptr)
+                                    )
                         
                                     {
-                                    this->itemJPopupMenu.show(this, evt.getX(), evt.getY());
+                                    this->itemJPopupMenu->show(this, evt->getX(), evt->getY());
     
 
                                     }
                                 
                         else {
-                            this->itemJPopupMenu.show(this, evt.getX(), evt.getY());
+                            this->itemJPopupMenu->show(this, evt->getX(), evt->getY());
     
 
                         }
@@ -592,7 +608,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "rotateJMenuItemMousePres
                                     }
                                 
 
-                        if((evt.getModifiers()&evt.BUTTON1_MASK) == evt.BUTTON1_MASK)
+                        if((evt->getModifiers()&evt->BUTTON1_MASK) == evt->BUTTON1_MASK)
                         
                                     {
                                     this->deselectAll();
@@ -605,13 +621,15 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "rotateJMenuItemMousePres
     int32_t index = 0;index < selectedTreePathArray.size(); index++)
         {
 
-    DefaultMutableTreeNode defaultMutableTreeNode = list.get(index);;
+    DefaultMutableTreeNode* defaultMutableTreeNode = dynamic_cast<DefaultMutableTreeNode*>(list->get(index));;
     
 
-                        if(defaultMutableTreeNode.getUserObject() instanceof CanvasTreeLabel)
+                        if(
+                                        (dynamic_cast<const CanvasTreeLabel*>(defaultMutableTreeNode->getUserObject()) != nullptr)
+                                    )
                         
                                     {
-                                    MyCanvasEventService::fire(MyCanvasEvent(MyCanvasEventSource(MyCanvasEventService::SELECT, defaultMutableTreeNode)));
+                                    MyCanvasEventService::fire(new MyCanvasEvent(new MyCanvasEventSource(MyCanvasEventService::SELECT, defaultMutableTreeNode)));
     
 
                                     }
@@ -632,44 +650,44 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "rotateJMenuItemMousePres
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "workAreaJTreeMousePressed", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "workAreaJTreeMousePressed", &e);
     
 }
 
 }
 
 
-    private: void itemJPopupMenuPopupMenuWillBecomeInvisible(javax::swing::event::PopupMenuEvent evt){
+    private: void itemJPopupMenuPopupMenuWillBecomeInvisible(javax::swing::event::PopupMenuEvent* evt){
 }
 
 
-    private: void itemJPopupMenuPopupMenuWillBecomeVisible(javax::swing::event::PopupMenuEvent evt){
+    private: void itemJPopupMenuPopupMenuWillBecomeVisible(javax::swing::event::PopupMenuEvent* evt){
 }
 
 
-    private: void copyJMenuItemMousePressed(java::awt::event::MouseEvent evt){
+    private: void copyJMenuItemMousePressed(java::awt::event::MouseEvent* evt){
 
         try {
             this->copy();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "copyJMenuItemMousePressed", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "copyJMenuItemMousePressed", &e);
     
 }
 
 }
 
 
-    private: void deleteJMenuItemMousePressed(java::awt::event::MouseEvent evt){
+    private: void deleteJMenuItemMousePressed(java::awt::event::MouseEvent* evt){
 
         try {
             
-    std::vector<TreePath> selectedTreePathArray = this->workAreaJTree.getSelectionPaths();;
+    std::vector<TreePath*> selectedTreePathArray = this->workAreaJTree->getSelectionPaths();;
     
 
 
@@ -679,7 +697,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "copyJMenuItemMousePresse
     int32_t index = 0;index < selectedTreePathArray.size(); index++)
         {
 
-    TreePath treePath = selectedTreePathArray[index];;
+    TreePath* treePath = selectedTreePathArray[index];;
     
 this->remove(treePath);
     
@@ -693,30 +711,30 @@ this->repaint();
 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "deleteJMenuItemMousePressed", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "deleteJMenuItemMousePressed", &e);
     
 }
 
 }
 
 
-    private: void workAreaPropertiesJPanelMousePressed(java::awt::event::MouseEvent evt){
+    private: void workAreaPropertiesJPanelMousePressed(java::awt::event::MouseEvent* evt){
 }
 
 
-    private: javax::swing::JMenuItem copyJMenuItem;
+    private: javax::swing::JMenuItem* copyJMenuItem;
 
-    private: javax::swing::JMenuItem deleteJMenuItem;
+    private: javax::swing::JMenuItem* deleteJMenuItem;
 
-    private: javax::swing::JPopupMenu itemJPopupMenu;
+    private: javax::swing::JPopupMenu* itemJPopupMenu;
 
-    private: javax::swing::JScrollPane itemJScrollPane1;
+    private: javax::swing::JScrollPane* itemJScrollPane1;
 
-    private: javax::swing::JMenuItem rotateJMenuItem;
+    private: javax::swing::JMenuItem* rotateJMenuItem;
 
-    private: javax::swing::JPanel workAreaPropertiesJPanel;
+    private: javax::swing::JPanel* workAreaPropertiesJPanel;
 
 };
 

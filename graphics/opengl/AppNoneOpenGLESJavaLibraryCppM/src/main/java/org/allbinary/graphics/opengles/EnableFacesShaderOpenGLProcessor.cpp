@@ -4,6 +4,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <javax/microedition/khronos/opengles/GL10.h>
 
       
@@ -31,9 +39,9 @@
         
 class EnableFacesShaderOpenGLProcessor: public ObjectThreedOpenGLProcessor {
 
-    private: static EnableFacesShaderOpenGLProcessor instance() { return EnableFacesShaderOpenGLProcessor(); }
+    private: static EnableFacesShaderOpenGLProcessor* instance() { static std::unique_ptr<EnableFacesShaderOpenGLProcessor> value(new EnableFacesShaderOpenGLProcessor()); return value.get(); }
 
-    public: static EnableFacesShaderOpenGLProcessor getInstance(){
+    public: static EnableFacesShaderOpenGLProcessor* getInstance(){
 
 
 
@@ -47,7 +55,7 @@ public: EnableFacesShaderOpenGLProcessor(){
 }
 
 
-    public: void process(GL10 gl, Object* anyType){
+    public: void process(GL10* gl, Object* anyType){
 }
 
 

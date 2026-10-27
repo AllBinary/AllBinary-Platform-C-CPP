@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INSTALLER_INITDBCRYPTED_H
         #define ORG_ALLBINARY_BUSINESS_INSTALLER_INITDBCRYPTED_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/init/InitInfoEntity.h>
@@ -134,27 +140,27 @@
         //Warning you must have sql root access
 class InitDbCrypted: public AbDatabaseManagement {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: UserDbInitInfo userDbInitInfo;
+    private: UserDbInitInfo* userDbInitInfo;
 
-    private: InventoryDbInitInfo inventoryDbInitInfo;
+    private: InventoryDbInitInfo* inventoryDbInitInfo;
 
-    private: HistoryDbInitInfo historyDbInitInfo;
+    private: HistoryDbInitInfo* historyDbInitInfo;
 
-    private: StaticPagesDbInitInfo staticpagesDbInitInfo;
+    private: StaticPagesDbInitInfo* staticpagesDbInitInfo;
 
-    private: LogDbInitInfo logDbInitInfo;
+    private: LogDbInitInfo* logDbInitInfo;
 
     private: const std::string SQL_FILE = "initWeblisket.sql";
 
-public: InitDbCrypted(DatabaseConnectionInfoInterface databaseConnectionInfoInterface);
+public: InitDbCrypted(DatabaseConnectionInfoInterface* databaseConnectionInfoInterface);
 
-    public: Boolean addUsers();
+    public: bool addUsers();
 
-    public: Boolean addDatabases();
+    public: bool addDatabases();
 
-    public: Boolean addTables();
+    public: bool addTables();
 
 };
 

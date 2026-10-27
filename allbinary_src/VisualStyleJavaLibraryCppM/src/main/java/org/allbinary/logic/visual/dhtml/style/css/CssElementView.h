@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTVIEW_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -94,16 +100,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CssElementData.h"
-#include "CssElementsValidationFactory.h"
+        #include "org/allbinary/logic/visual/dhtml/style/css/CssElementData.h"
+#include "org/allbinary/logic/visual/dhtml/style/css/CssElementsValidationFactory.h"
 
 class CssElementView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: const std::string TITLE = "title";
 
@@ -115,21 +121,21 @@ class CssElementView
 
     private: std::string description;
 
-    protected: BasicArrayList cssElementVector;
+    protected: BasicArrayList* cssElementVector;
 
-    protected: BasicArrayList cssPropertyVector;
+    protected: BasicArrayList* cssPropertyVector;
 
 public: CssElementView();
 
-public: CssElementView(Node node);
+public: CssElementView(Node* node);
 
     public: std::string getValue();
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

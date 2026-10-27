@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -68,17 +74,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "XmlOptionItemsEntityInterface.h"
+        #include "org/allbinary/data/tables/user/commerce/inventory/item/options/XmlOptionItemsEntityInterface.h"
 
 class XmlOptionItemsEntity: public AbSqlBean, public XmlOptionItemsEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
     protected: const std::string tableName = "xmloptionitems";
 
-public: XmlOptionItemsEntity() : AbSqlBean(InventoryDbInitInfo()){
+public: XmlOptionItemsEntity() : AbSqlBean(new InventoryDbInitInfo()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,29 +96,29 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void insert(BasicArrayList values){
+    public: void insert(BasicArrayList* values){
 
         try {
             super.insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, INSERT);
+                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, INSERT);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, INSERT, e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, INSERT, &e);
     
 
                                     }
@@ -125,26 +131,26 @@ this->setTableName(this->tableName);
     public: void delete_(std::string value){
 
         try {
-            super.deleteWhere(basicItemData.ID, value);
+            super.deleteWhere(basicItemData->ID, value);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
+                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, &e);
     
 
                                     }
@@ -156,17 +162,17 @@ this->setTableName(this->tableName);
 
     public: std::string createTableStatement(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->sqlStrings.CREATE_TABLE).append(tableName).append(this->sqlStrings.START).append(basicItemData.ID).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlStrings.CREATE_TABLE)->append(tableName)->append(this->sqlStrings.START)->append(basicItemData->ID)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(XmlOptionItemData::XML_FILE_STATUS).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(XmlOptionItemData::OPTION_XML_FILE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(EntryData::getInstance().TIMECREATED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(EntryData::getInstance().LASTMODIFIED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(this->sqlStrings.PRIMARY_KEY).append(basicItemData.ID).append(this->sqlStrings.END);
+stringBuffer->append(XmlOptionItemData::XML_FILE_STATUS)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(XmlOptionItemData::OPTION_XML_FILE)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(EntryData::getInstance()->TIMECREATED)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(EntryData::getInstance()->LASTMODIFIED)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(this->sqlStrings.PRIMARY_KEY)->append(basicItemData->ID)->append(this->sqlStrings.END);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
@@ -181,8 +187,8 @@ stringBuffer.append(XmlOptionItemData::XML_FILE_STATUS).append(this->sqlTypeStri
 }
 
 
-    public: void update(HashMap<Object*, Object*> updatedValues){
-super.updateWhere(basicItemData.ID, updatedValues.get(basicItemData.ID), updatedValues);
+    public: void update(HashMap<Object*, Object*>* updatedValues){
+super.updateWhere(basicItemData->ID, updatedValues->get(basicItemData->ID), updatedValues);
     
 }
 

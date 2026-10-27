@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/CommandListener.h>
@@ -70,13 +76,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseGameInitialization.h"
+        #include "org/allbinary/game/init/BaseGameInitialization.h"
 
 class CommonGameInitialization: public BaseGameInitialization {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-protected: CommonGameInitialization(std::vector<ResourceInitialization> resourceInitializationArray, int32_t portion) : BaseGameInitialization(resourceInitializationArray, portion){
+protected: CommonGameInitialization(std::vector<ResourceInitialization*> resourceInitializationArray, int32_t portion) : BaseGameInitialization(resourceInitializationArray, portion){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -88,32 +94,32 @@ protected: CommonGameInitialization(std::vector<ResourceInitialization> resource
 
                 //@Throws(Exception.constructor)
             
-    public: void init(AbeClientInformationInterface abeClientInformation, CommandListener commandListener, int32_t level){
+    public: void init(AbeClientInformationInterface* abeClientInformation, CommandListener* commandListener, int32_t level){
 super.init(abeClientInformation, commandListener, level);
     
 
-    ResourceLoadingLevelFactory resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
+    ResourceLoadingLevelFactory* resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
     
 
-                        if(!this->isGameInitialized() && level == resourceLoadingLevelFactory.LOAD_ALL.getLevel())
+                        if(!this->isGameInitialized() && level == resourceLoadingLevelFactory->LOAD_ALL.getLevel())
                         
                                     {
                                     this->setGameInitialized(true);
     
 
-    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
+    ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
     
-SmallIntegerSingletonFactory::getInstance().init();
+SmallIntegerSingletonFactory::getInstance()->init();
     
-progressCanvas.addNormalPortion(50, "Integers");
+progressCanvas->addNormalPortion(50, "Integers");
     
-PointFactory::getInstance().init();
+PointFactory::getInstance()->init();
     
-progressCanvas.addNormalPortion(50, "Points");
+progressCanvas->addNormalPortion(50, "Points");
     
 AngleFactory::getInstance();
     
-progressCanvas.addNormalPortion(50, "Angles");
+progressCanvas->addNormalPortion(50, "Angles");
     
 this->initGame();
     
@@ -133,7 +139,7 @@ super.resourceInitialization(level);
 
 
 
-                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 

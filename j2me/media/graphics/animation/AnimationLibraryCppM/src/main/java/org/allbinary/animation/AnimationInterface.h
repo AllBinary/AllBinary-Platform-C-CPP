@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_ANIMATIONINTERFACE_H
         #define ORG_ALLBINARY_ANIMATION_ANIMATIONINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -52,9 +58,9 @@ class AnimationInterface: public LocationPaintableInterface {
 
                 //@Throws(Exception.constructor)
             
-    void nextFrame();
+    public: virtual void nextFrame() = 0;
 
-    void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
+    public: virtual void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z) = 0;
 
 };
 

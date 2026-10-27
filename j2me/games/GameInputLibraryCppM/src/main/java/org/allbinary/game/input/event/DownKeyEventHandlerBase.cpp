@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -61,27 +67,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameKeyEvent.h"
-#include "DownKeyEventListenerInterface.h"
+        #include "org/allbinary/game/input/event/GameKeyEvent.h"
+#include "org/allbinary/game/input/event/DownKeyEventListenerInterface.h"
 
 class DownKeyEventHandlerBase: public BasicEventHandler {
 
-    private: static const std::string TOTAL_LISTENERS = " Total PlayerGameInput Listeners: ";
+    private: static inline const std::string TOTAL_LISTENERS = " Total PlayerGameInput Listeners: ";
 
-    private: static const std::string LISTENER_LABEL = " PlayerGameInput Listener: ";
+    private: static inline const std::string LISTENER_LABEL = " PlayerGameInput Listener: ";
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 : DownKeyEventHandlerBase(){
 }
 
 
-    public: void addListener(PlayerGameInput playerGameInput){
+    public: void addListener(PlayerGameInput* playerGameInput){
 
-                        if(!this->list.contains(playerGameInput))
+                        if(!this->list->contains(playerGameInput))
                         
                                     {
-                                    this->list.add(playerGameInput);
+                                    this->list->add(playerGameInput);
     
 
                                     }
@@ -90,15 +96,15 @@ class DownKeyEventHandlerBase: public BasicEventHandler {
 
 
     public: void removeAllListeners(){
-this->list.clear();
+this->list->clear();
     
 super.removeAllListeners();
     
 }
 
 
-    public: void removeListenerSingleThreaded(EventListenerInterface eventListenerInterface){
-this->list.remove(eventListenerInterface);
+    public: void removeListenerSingleThreaded(EventListenerInterface* eventListenerInterface){
+this->list->remove(eventListenerInterface);
     
 super.removeListenerSingleThreaded(eventListenerInterface);
     
@@ -106,8 +112,8 @@ super.removeListenerSingleThreaded(eventListenerInterface);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void removeListener(EventListenerInterface eventListenerInterface){
-this->list.remove(eventListenerInterface);
+    public: void removeListener(EventListenerInterface* eventListenerInterface){
+this->list->remove(eventListenerInterface);
     
 super.removeListener(eventListenerInterface);
     
@@ -116,26 +122,26 @@ super.removeListener(eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEventI(Integer eventObject){
+    public: void fireEventI(int32_t eventObject){
 
 
 
 
                         for (
-    int32_t index = this->list.size();--index >= 0; )
+    int32_t index = this->list->size();--index >= 0; )
         {
 
         try {
             
-    PlayerGameInput playerGameInput = this->list.objectArray[index];;
+    PlayerGameInput* playerGameInput = dynamic_cast<PlayerGameInput*>(this->list->objectArray[index]);;
     
-playerGameInput.onDownKey(eventObject);
+playerGameInput->onDownKey(eventObject);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
@@ -145,22 +151,22 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance
     int32_t index = 0;;
     
 
-    EventListenerInterface eventListenerInterface;;
+    EventListenerInterface* eventListenerInterface;;
     
 
         while(index < this->eventListenerInterfaceList.size())
         {
 
         try {
-            eventListenerInterface= this->eventListenerInterfaceList.get(index);
+            eventListenerInterface= dynamic_cast<EventListenerInterface*>(this->eventListenerInterfaceList.get(index));
     
 this->processI(eventObject, eventListenerInterface);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
@@ -173,9 +179,9 @@ index++;
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEventForGameKeyEvent(GameKeyEvent eventObject){
+    public: void fireEventForGameKeyEvent(GameKeyEvent* eventObject){
 
-    int32_t size = this->list.size();;
+    int32_t size = this->list->size();;
     
 
 
@@ -187,15 +193,15 @@ index++;
 
         try {
             
-    PlayerGameInput playerGameInput = this->list.objectArray[index];;
+    PlayerGameInput* playerGameInput = dynamic_cast<PlayerGameInput*>(this->list->objectArray[index]);;
     
-playerGameInput.onDownKeyEvent(eventObject);
+playerGameInput->onDownKeyEvent(eventObject);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
@@ -205,22 +211,22 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance
     int32_t index = 0;;
     
 
-    EventListenerInterface eventListenerInterface;;
+    EventListenerInterface* eventListenerInterface;;
     
 
         while(index < this->eventListenerInterfaceList.size())
         {
 
         try {
-            eventListenerInterface= this->eventListenerInterfaceList.get(index);
+            eventListenerInterface= dynamic_cast<EventListenerInterface*>(this->eventListenerInterfaceList.get(index));
     
 this->processEvent(eventObject, eventListenerInterface);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
@@ -233,59 +239,59 @@ index++;
 
                 //@Throws(Exception.constructor)
             
-    protected: void processI(Integer eventObject, EventListenerInterface eventListenerInterface){
+    protected: void processI(int32_t eventObject, EventListenerInterface* eventListenerInterface){
 
-    DownKeyEventListenerInterface downKeyEventListenerInterface = eventListenerInterface;;
+    DownKeyEventListenerInterface* downKeyEventListenerInterface = dynamic_cast<DownKeyEventListenerInterface*>(eventListenerInterface);;
     
-downKeyEventListenerInterface.onDownKey(eventObject);
+downKeyEventListenerInterface->onDownKey(eventObject);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void processEvent(GameKeyEvent eventObject, EventListenerInterface eventListenerInterface){
+    protected: void processEvent(GameKeyEvent* eventObject, EventListenerInterface* eventListenerInterface){
 
-    DownKeyEventListenerInterface downKeyEventListenerInterface = eventListenerInterface;;
+    DownKeyEventListenerInterface* downKeyEventListenerInterface = dynamic_cast<DownKeyEventListenerInterface*>(eventListenerInterface);;
     
-downKeyEventListenerInterface.onDownKeyEvent(eventObject);
+downKeyEventListenerInterface->onDownKeyEvent(eventObject);
     
 }
 
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(super.toString());
+stringBuffer->append(super.toString());
     
-stringBuffer.append(DownKeyEventHandlerBase::TOTAL_LISTENERS);
+stringBuffer->append(DownKeyEventHandlerBase::TOTAL_LISTENERS);
     
-stringBuffer.appendint(this->list.size());
+stringBuffer->appendint(this->list->size());
     
 
-    EventListenerInterface eventListenerInterface;;
+    EventListenerInterface* eventListenerInterface;;
     
 
 
 
 
                         for (
-    int32_t index = 0;index < this->list.size(); index++)
+    int32_t index = 0;index < this->list->size(); index++)
         {
 
         try {
-            eventListenerInterface= this->list.get(index);
+            eventListenerInterface= dynamic_cast<EventListenerInterface*>(this->list->get(index));
     
-stringBuffer.append(DownKeyEventHandlerBase::LISTENER_LABEL);
+stringBuffer->append(DownKeyEventHandlerBase::LISTENER_LABEL);
     
-stringBuffer.append(eventListenerInterface.toString());
+stringBuffer->append(eventListenerInterface->toString());
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.TOSTRING, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.TOSTRING, &e);
     
 }
 
@@ -295,7 +301,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.TOSTR
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

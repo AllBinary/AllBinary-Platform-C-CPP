@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_VIEW_VIEWPOSITION_H
         #define ORG_ALLBINARY_VIEW_VIEWPOSITION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/layer/AllBinaryLayer.h>
 
       
@@ -42,13 +50,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ViewPositionBase.h"
+        #include "org/allbinary/view/ViewPositionBase.h"
 
 class ViewPosition: public ViewPositionBase {
 
-    public: static ViewPosition getInstanceD();
+    public: static ViewPosition* getInstanceD();
 
-    private: AllBinaryLayer allbinaryLayer = AllBinaryLayer::NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer* allbinaryLayer = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
 protected: ViewPosition(int32_t x, int32_t y, int32_t z);
 

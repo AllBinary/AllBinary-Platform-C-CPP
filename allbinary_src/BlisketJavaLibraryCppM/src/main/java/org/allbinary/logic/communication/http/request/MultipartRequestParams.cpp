@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -70,15 +78,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RequestParams.h"
+        #include "org/allbinary/logic/communication/http/request/RequestParams.h"
 
 class MultipartRequestParams: public RequestParams {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: bool special = false;
 
-public: MultipartRequestParams(HttpServletRequest request) : RequestParams(){
+public: MultipartRequestParams(HttpServletRequest* request) : RequestParams(){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,14 +98,14 @@ this->processMultipartRequest(request);
 }
 
 
-public: MultipartRequestParams(PageContext pageContext) : RequestParams(){
+public: MultipartRequestParams(PageContext* pageContext) : RequestParams(){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->processMultipartRequest(pageContext.getRequest());
+this->processMultipartRequest(dynamic_cast<HttpServletRequest*>(pageContext->getRequest()));
     
 }
 
@@ -108,14 +116,14 @@ this->special= true;
 }
 
 
-    private: void processMultipartRequest(HttpServletRequest request){
+    private: void processMultipartRequest(HttpServletRequest* request){
 
         try {
             
-    HashMap<Object*, Object*> specialRequest = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* specialRequest = StdUtil::getInstance()->createHashMap();;
     
 
-    List multipartRequestList = AbFileUploadFactory::getInstance().getFileItemStreamList(request);;
+    List* multipartRequestList = AbFileUploadFactory::getInstance()->getFileItemStreamList(request);;
     
 
                         if(multipartRequestList != 
@@ -124,16 +132,16 @@ this->special= true;
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil.putF("FileItem List Size: " +multipartRequestList.size, this, "processMultipartRequest()");
+                                    this->logUtil->putF("FileItem List Size: " +multipartRequestList->size, this, "processMultipartRequest()");
     
 
                                     }
                                 
 
-    std::vector<Object*> fileItemArray = multipartRequestList.toArray();;
+    std::vector<Object*> fileItemArray = multipartRequestList->toArray();;
     
 
     int32_t size = fileItemArray.size();;
@@ -146,22 +154,22 @@ this->special= true;
     int32_t index = 0;index < size; index++)
         {
 
-    FileItem fileItem = fileItemArray[index];;
+    FileItem* fileItem = dynamic_cast<FileItem*>(fileItemArray[index]);;
     
 
-    std::string name = fileItem.getName();;
+    std::string name = fileItem->getName();;
     
 
-                        if(StringValidationUtil::getInstance().isEmpty(name))
+                        if(StringValidationUtil::getInstance()->isEmpty(name))
                         
                                     {
-                                    specialRequest.put(fileItem.getFieldName(), fileItem.getString());
+                                    specialRequest->put(fileItem->getFieldName(), fileItem->getString());
     
 
                                     }
                                 
                         else {
-                            specialRequest.put(fileItem.getFieldName(), fileItem);
+                            specialRequest->put(fileItem->getFieldName(), fileItem);
     
 
                         }
@@ -169,10 +177,10 @@ this->special= true;
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil.putF("Special Request Data: " +specialRequest.toString(), this, "processMultipartRequest()");
+                                    this->logUtil->putF("Special Request Data: " +specialRequest->toString(), this, "processMultipartRequest()");
     
 
                                     }
@@ -186,43 +194,43 @@ this->setMap(specialRequest);
                                 
 
                 //: 
-} catch(e) 
+} catch(InvalidContentTypeException& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil.putF("Using Normal RequestParams", this, "processMultipartRequest()");
+                                    this->logUtil->putF("Using Normal RequestParams", this, "processMultipartRequest()");
     
 
                                     }
                                 
-super.setMap(request.getParameterMap());
+super.setMap(request->getParameterMap());
     
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUESTERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUESTERROR))
                         
                                     {
-                                    this->logUtil.putF("Should Not Occur", this, "processMultipartRequest()");
+                                    this->logUtil->putF("Should Not Occur", this, "processMultipartRequest()");
     
 
                                     }
                                 
-super.setMap(request.getParameterMap());
+super.setMap(request->getParameterMap());
     
 }
-*/
+
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
                         if(this->special)
                         
@@ -231,7 +239,7 @@ super.setMap(request.getParameterMap());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getMap();
+                        return dynamic_cast<HashMap*>(this->getMap());
     
 
                                     }

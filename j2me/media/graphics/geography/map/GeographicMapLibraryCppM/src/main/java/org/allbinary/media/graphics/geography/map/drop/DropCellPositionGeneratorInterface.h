@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_DROPCELLPOSITIONGENERATORINTERFACE_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_DROPCELLPOSITIONGENERATORINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
@@ -56,19 +62,19 @@
         
 class DropCellPositionGeneratorInterface {
 
-    std::string getName();
+    public: virtual std::string getName() = 0;
 
                 //@Throws(Exception.constructor)
             
-    void update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface);
+    public: virtual void update(AllBinaryGameLayerManager* allBinaryGameLayerManager, BasicGeographicMap* geographicMapInterface) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void processTick(AllBinaryLayerManager allBinaryLayerManager);
+    public: virtual void processTick(AllBinaryLayerManager* allBinaryLayerManager) = 0;
 
                 //@Throws(Exception.constructor)
             
-    bool isDropAllowedAt(GeographicMapCellPosition geographicMapCellPosition);
+    public: virtual bool isDropAllowedAt(GeographicMapCellPosition* geographicMapCellPosition) = 0;
 
 };
 

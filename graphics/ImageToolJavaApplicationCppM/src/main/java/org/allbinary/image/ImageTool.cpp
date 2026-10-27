@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,7 +60,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "EventQueue.h"
+        #include "org/allbinary/image/EventQueue.h"
 
 class ImageTool
             : public Object
@@ -66,22 +72,22 @@ java.awt.EventQueue.invokeLater(class extends ARunnable
                                 
     public: void run(){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
         try {
-            logUtil.putF(commonStrings.START, this, commonStrings.RUN);
+            logUtil->putF(commonStrings->START, this, commonStrings->RUN);
     
-ImageToolJFrame().setVisible(true);
+(new ImageToolJFrame())->setVisible(true);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
+logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
     
 }
 
@@ -93,7 +99,7 @@ logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: ImageTool(){
 }

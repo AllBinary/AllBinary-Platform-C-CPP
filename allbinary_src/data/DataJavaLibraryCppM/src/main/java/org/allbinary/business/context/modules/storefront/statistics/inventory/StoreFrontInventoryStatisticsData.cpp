@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class StoreFrontInventoryStatisticsData
             : public Object
          {
 
-    private: static StoreFrontInventoryStatisticsData instance() { return StoreFrontInventoryStatisticsData(); }
+    private: static StoreFrontInventoryStatisticsData* instance() { static std::unique_ptr<StoreFrontInventoryStatisticsData> value(new StoreFrontInventoryStatisticsData()); return value.get(); }
 
-    public: static StoreFrontInventoryStatisticsData getInstance(){
+    public: static StoreFrontInventoryStatisticsData* getInstance(){
 
 
 

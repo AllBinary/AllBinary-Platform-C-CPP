@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_CANVAS_SPECIALMESSAGEUTIL_H
         #define ORG_ALLBINARY_CANVAS_SPECIALMESSAGEUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/configuration/feature/Features.h>
@@ -56,15 +62,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameStatisticsFactory.h"
+        #include "org/allbinary/canvas/GameStatisticsFactory.h"
 
 class SpecialMessageUtil
             : public Object
          {
 
-    private: static const SpecialMessageUtil SINGLETON = SpecialMessageUtil();
+    private: static SpecialMessageUtil* SINGLETON() { static std::unique_ptr<SpecialMessageUtil> value(new SpecialMessageUtil()); return value.get(); }
 
-    public: static SpecialMessageUtil getInstance();
+    public: static SpecialMessageUtil* getInstance();
 
     public: std::string get();
 

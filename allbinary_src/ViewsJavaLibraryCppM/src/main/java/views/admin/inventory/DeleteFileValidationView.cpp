@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -71,13 +77,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InventoryItemView.h"
+        #include "views/admin/inventory/InventoryItemView.h"
 
 class DeleteFileValidationView: public InventoryItemView, public ValidationComponentInterface {
 
     private: std::string id;
 
-public: DeleteFileValidationView(TransformInfoInterface transformInfoInterface) : InventoryItemView(transformInfoInterface, StringUtil::getInstance().EMPTY_STRING){
+public: DeleteFileValidationView(TransformInfoInterface* transformInfoInterface) : InventoryItemView(transformInfoInterface, StringUtil::getInstance()->EMPTY_STRING){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -93,25 +99,25 @@ this->getFormData();
             
     public: void getFormData(){
 
-    HashMap<Object*, Object*> hashMap = RequestParams(request).toHashMap();;
+    HashMap<Object*, Object*>* hashMap = (new RequestParams(request))->toHashMap();;
     
 
                         if(hashMap == 
                                     nullptr
                                 )
                         
-                                    throw Exception("No Request Params Found");
+                                    throw new Exception("No Request Params Found");
                                 
-this->id= hashMap.get(basicItemData.ID);
+this->id= hashMap->get(basicItemData.ID);
     
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-                        if(false || !StringValidationUtil::getInstance().isNumber(this->id))
+                        if(false || !StringValidationUtil::getInstance()->isNumber(this->id))
                         
                                     {
                                     
@@ -123,7 +129,7 @@ this->id= hashMap.get(basicItemData.ID);
 
                                     }
                                 
-this->itemInterface= InventoryEntityFactory::getInstance().getInventoryEntityInstance().getItem(this->id);
+this->itemInterface= InventoryEntityFactory::getInstance()->getInventoryEntityInstance()->getItem(this->id);
     
 
                         if(this->itemInterface == 
@@ -143,7 +149,7 @@ this->itemInterface= InventoryEntityFactory::getInstance().getInventoryEntityIns
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -156,7 +162,7 @@ this->itemInterface= InventoryEntityFactory::getInstance().getInventoryEntityIns
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -166,7 +172,7 @@ this->itemInterface= InventoryEntityFactory::getInstance().getInventoryEntityIns
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -180,24 +186,24 @@ this->itemInterface= InventoryEntityFactory::getInstance().getInventoryEntityIns
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-                        if(false || !StringValidationUtil::getInstance().isNumber(this->id))
+                        if(false || !StringValidationUtil::getInstance()->isNumber(this->id))
                         
                                     {
-                                    stringBuffer.append("Id is not valid.<br />");
+                                    stringBuffer->append("Id is not valid.<br />");
     
 
                                     }
                                 
 
-                        if(InventoryEntityFactory::getInstance().getInventoryEntityInstance().getItem(this->id) == 
+                        if(InventoryEntityFactory::getInstance()->getInventoryEntityInstance()->getItem(this->id) == 
                                     nullptr
                                 )
                         
                                     {
-                                    stringBuffer.append("Item does not exist.<br />");
+                                    stringBuffer->append("Item does not exist.<br />");
     
 
                                     }
@@ -206,11 +212,11 @@ this->itemInterface= InventoryEntityFactory::getInstance().getInventoryEntityIns
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/GameInfo.h>
 
       
@@ -44,17 +50,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HighScoresBase.h"
-#include "HighScores.h"
-#include "HighScoresResultsListener.h"
-#include "HighScoresHelperBase.h"
-#include "HighScoresHelperBaseInterface.h"
+        #include "org/allbinary/game/score/HighScoresBase.h"
+#include "org/allbinary/game/score/HighScores.h"
+#include "org/allbinary/game/score/HighScoresResultsListener.h"
+#include "org/allbinary/game/score/HighScoresHelperBase.h"
+#include "org/allbinary/game/score/HighScoresHelperBaseInterface.h"
 
 class NoHighScoresFactory: public HighScoresBase {
 
-    private: static NoHighScoresFactory instance() { return NoHighScoresFactory(); }
+    private: static NoHighScoresFactory* instance() { static std::unique_ptr<NoHighScoresFactory> value(new NoHighScoresFactory()); return value.get(); }
 
-    public: static NoHighScoresFactory getInstance(){
+    public: static NoHighScoresFactory* getInstance(){
 
 
 
@@ -64,28 +70,28 @@ class NoHighScoresFactory: public HighScoresBase {
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: const std::vector<HighScores> NO_HIGH_SCORES = {};
+    public: const std::vector<HighScores*> NO_HIGH_SCORES = {};
 
 private: NoHighScoresFactory(){
 }
 
 
-    public: void fetchHighScores(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener){
-this->logUtil.putF("Getting No HighScores", this, "fetchHighScores");
+    public: void fetchHighScores(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener){
+this->logUtil->putF("Getting No HighScores", this, "fetchHighScores");
     
-highScoresResultsListener.setHighScoresArray(this->NO_HIGH_SCORES);
+highScoresResultsListener->setHighScoresArray(this->NO_HIGH_SCORES);
     
 }
 
 
-    public: HighScoresHelperBaseInterface createHighScoresHelper(){
+    public: HighScoresHelperBaseInterface* createHighScoresHelper(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HighScoresHelperBase();
+                        return new HighScoresHelperBase();
     
 }
 

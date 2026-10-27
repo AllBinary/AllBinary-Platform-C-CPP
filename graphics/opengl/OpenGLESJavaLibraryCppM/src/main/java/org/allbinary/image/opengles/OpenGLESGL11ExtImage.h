@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -76,23 +82,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLESImage.h"
+        #include "org/allbinary/image/opengles/OpenGLESImage.h"
 //Many devices don't support this even though it is supposed to
 class OpenGLESGL11ExtImage: public OpenGLESImage {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: int32_t a= 0;
 
     private: std::vector<int32_t> rectangle;
 
-public: OpenGLESGL11ExtImage(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory);
+public: OpenGLESGL11ExtImage(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory);
 
-    public: void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent);
+    public: void onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent);
 
-    public: void set(GL gl);
+    public: void set(GL* gl);
 
-    public: void draw(GL10 gl, int32_t x, int32_t y, int32_t z);
+    public: void draw(GL10* gl, int32_t x, int32_t y, int32_t z);
 
 };
 

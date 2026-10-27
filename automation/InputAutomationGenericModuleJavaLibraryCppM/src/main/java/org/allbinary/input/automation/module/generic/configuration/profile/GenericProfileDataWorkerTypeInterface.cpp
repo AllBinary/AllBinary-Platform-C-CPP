@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/w3c/dom/Document.h>
@@ -47,15 +53,15 @@
         
 class GenericProfileDataWorkerTypeInterface {
 
-    std::string getName()
+    public: virtual std::string getName() = 0;
 
-    void setName(std::string name)
+    public: virtual void setName(std::string name) = 0;
 
-    std::string toString()
+    public: virtual std::string toString() = 0;
 
                 //@Throws(Exception.constructor)
             
-    Node toXmlNode(Document document)
+    public: virtual Node* toXmlNode(Document* document) = 0;
 
 };
 

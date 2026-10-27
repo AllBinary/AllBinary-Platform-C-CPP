@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -53,8 +59,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JvmStatisticsMapping.h"
-#include "JvmStatisticsData.h"
+        #include "org/allbinary/logic/communication/java/vm/stats/JvmStatisticsMapping.h"
+#include "org/allbinary/logic/communication/java/vm/stats/JvmStatisticsData.h"
 
 class JvmStatisticsView: public JvmStatisticsMapping, public DomNodeInterface {
 
@@ -70,12 +76,12 @@ public: JvmStatisticsView() : JvmStatisticsMapping(){
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    HashMap<Object*, Object*> hashMap = this->toHashMap();;
+    HashMap<Object*, Object*>* hashMap = this->toHashMap();;
     
 
-    Node node = ModDomHelper::createNameValueNodes(document, JvmStatisticsData::NAME, hashMap);;
+    Node* node = ModDomHelper::createNameValueNodes(document, JvmStatisticsData::NAME, hashMap);;
     
 
 

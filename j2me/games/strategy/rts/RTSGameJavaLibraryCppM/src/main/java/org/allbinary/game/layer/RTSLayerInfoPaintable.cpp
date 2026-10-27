@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -47,36 +53,36 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SelectionHudPaintable.h"
+        #include "org/allbinary/game/layer/SelectionHudPaintable.h"
 
 class RTSLayerInfoPaintable: public InitUpdatePaintable {
 
-    private: InitUpdatePaintable initUpdatePaintable = NullInitUpdatePaintable::getInstance();
+    private: InitUpdatePaintable* initUpdatePaintable = NullInitUpdatePaintable::getInstance();
 
 public: RTSLayerInfoPaintable(){
 }
 
 
     public: void update(){
-this->initUpdatePaintable.update();
+this->initUpdatePaintable->update();
     
 }
 
 
-    public: void paint(Graphics graphics){
-this->initUpdatePaintable.paint(graphics);
+    public: void paint(Graphics* graphics){
+this->initUpdatePaintable->paint(graphics);
     
 }
 
 
-    public: void updateRTSLayerInfoInit(InitUpdatePaintable hudPaintable){
+    public: void updateRTSLayerInfoInit(InitUpdatePaintable* hudPaintable){
 this->initUpdatePaintable= hudPaintable;
     
 }
 
 
-    public: void updateRTSLayerInfoSelection(SelectionHudPaintable hudPaintable){
-hudPaintable.updateSelectionInfo();
+    public: void updateRTSLayerInfoSelection(SelectionHudPaintable* hudPaintable){
+hudPaintable->updateSelectionInfo();
     
 this->initUpdatePaintable= hudPaintable;
     

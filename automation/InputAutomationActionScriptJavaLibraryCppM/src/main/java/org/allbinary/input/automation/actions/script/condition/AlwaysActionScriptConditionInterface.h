@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_ALWAYSACTIONSCRIPTCONDITIONINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_ALWAYSACTIONSCRIPTCONDITIONINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,11 +48,11 @@
         
 class AlwaysActionScriptConditionInterface {
 
-    void setIsOn(bool isOn);
+    public: virtual void setIsOn(bool isOn) = 0;
 
-    bool isIsOn();
+    public: virtual bool isIsOn() = 0;
 
-    void log();
+    public: virtual void log() = 0;
 
 };
 

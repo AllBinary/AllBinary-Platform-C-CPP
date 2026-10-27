@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -80,29 +86,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RaceTrackRoadsGeographicMapCellHistoryFactory.h"
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackRoadsGeographicMapCellHistoryFactory.h"
 
 class BasePathFindingInfoFactory
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void init(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, std::vector<std::vector<int32_t>> mapArray);
+    public: void init(BasicGeographicMap* geographicMapInterface, PathFindingInfo* pathFindingInfo, std::vector<std::vector<int32_t>> mapArray);
 
                 //@Throws(Exception.constructor)
             
-    private: void addStartPathFindingNode(PathFindingInfo pathFindingInfo, GeographicMapCellPosition startGeographicMapCellPosition);
+    private: void addStartPathFindingNode(PathFindingInfo* pathFindingInfo, GeographicMapCellPosition* startGeographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    private: void addEndPathFindingNode(PathFindingInfo pathFindingInfo, GeographicMapCellPosition endGeographicMapCellPosition);
+    private: void addEndPathFindingNode(PathFindingInfo* pathFindingInfo, GeographicMapCellPosition* endGeographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: PathFindingInfo getInstancePathFindingInfo(BasicGeographicMap geographicMapInterface, std::vector<std::vector<int32_t>> graphArray);
+    public: PathFindingInfo* getInstancePathFindingInfo(BasicGeographicMap* geographicMapInterface, std::vector<std::vector<int32_t>> graphArray);
 
 };
 

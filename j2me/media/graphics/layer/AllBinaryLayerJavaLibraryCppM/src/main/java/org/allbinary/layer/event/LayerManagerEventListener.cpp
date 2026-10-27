@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -43,26 +49,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LayerManagerEventListenerInterface.h"
-#include "LayerManagerEvent.h"
+        #include "org/allbinary/layer/event/LayerManagerEventListenerInterface.h"
+#include "org/allbinary/layer/event/LayerManagerEvent.h"
 
 class LayerManagerEventListener
             : public Object
-        : public LayerManagerEventListenerInterface {
+        , public LayerManagerEventListenerInterface {
 
-    public: void onEvent(AllBinaryEventObject eventObject){
+    public: void onEvent(AllBinaryEventObject* eventObject){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void onCreateLayerManagerEvent(LayerManagerEvent layerManagerEvent){
+    public: void onCreateLayerManagerEvent(LayerManagerEvent* layerManagerEvent){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void onDeleteLayerManagerEvent(LayerManagerEvent layerManagerEvent){
+    public: void onDeleteLayerManagerEvent(LayerManagerEvent* layerManagerEvent){
 }
 
 

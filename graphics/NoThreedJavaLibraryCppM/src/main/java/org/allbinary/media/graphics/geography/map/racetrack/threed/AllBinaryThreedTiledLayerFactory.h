@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_THREED_ALLBINARYTHREEDTILEDLAYERFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_THREED_ALLBINARYTHREEDTILEDLAYERFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -57,13 +63,13 @@ class AllBinaryThreedTiledLayerFactory
             : public Object
          {
 
-    private: static AllBinaryThreedTiledLayerFactory instance() { return AllBinaryThreedTiledLayerFactory(); }
+    private: static AllBinaryThreedTiledLayerFactory* instance() { static std::unique_ptr<AllBinaryThreedTiledLayerFactory> value(new AllBinaryThreedTiledLayerFactory()); return value.get(); }
 
-    public: static AllBinaryThreedTiledLayerFactory getInstance();
+    public: static AllBinaryThreedTiledLayerFactory* getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryTiledLayer getInstance(RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData);
+    public: AllBinaryTiledLayer* getInstance(RaceTrackInfo* raceTrackInfo, RaceTrackData* raceTrackData);
 
 };
 

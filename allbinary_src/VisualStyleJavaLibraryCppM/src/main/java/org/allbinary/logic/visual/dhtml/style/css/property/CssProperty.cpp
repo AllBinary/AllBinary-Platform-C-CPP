@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -70,46 +76,46 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CssPropertyValues.h"
-#include "CssPropertyData.h"
+        #include "org/allbinary/logic/visual/dhtml/style/css/property/CssPropertyValues.h"
+#include "org/allbinary/logic/visual/dhtml/style/css/property/CssPropertyData.h"
 
 class CssProperty
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string propertyName;
 
-    private: CssPropertyValues cssPropertyValues;
+    private: CssPropertyValues* cssPropertyValues;
 
 public: CssProperty(std::string name){
 this->propertyName= name;
     
-this->cssPropertyValues= CssPropertyValues();
+this->cssPropertyValues= new CssPropertyValues();
     
 }
 
 
-public: CssProperty(Node node){
+public: CssProperty(Node* node){
 
-    Node propertyNode = DomSearchHelper::getNode(DomData::VALUE, node.getChildNodes());;
+    Node* propertyNode = DomSearchHelper::getNode(DomData::VALUE, node->getChildNodes());;
     
 this->propertyName= DomNodeHelper::getTextNodeValue(propertyNode);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().STYLE))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->STYLE))
                         
                                     {
-                                    this->logUtil.putF("Name: " +this->getName(), this, "CssProperty()");
+                                    this->logUtil->putF("Name: " +this->getName(), this, "CssProperty()");
     
 
                                     }
                                 
 
-    Node propertyValuesNode = DomSearchHelper::getNode(CssPropertyData::getInstance().VALUES, node.getChildNodes());;
+    Node* propertyValuesNode = DomSearchHelper::getNode(CssPropertyData::getInstance()->VALUES, node->getChildNodes());;
     
-this->cssPropertyValues= CssPropertyValues(propertyValuesNode);
+this->cssPropertyValues= new CssPropertyValues(propertyValuesNode);
     
 }
 
@@ -124,11 +130,11 @@ this->cssPropertyValues= CssPropertyValues(propertyValuesNode);
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(CssPropertyData::getInstance().NAME, this->propertyName);
+hashMap->put(CssPropertyData::getInstance()->NAME, this->propertyName);
     
 
 
@@ -141,23 +147,23 @@ hashMap.put(CssPropertyData::getInstance().NAME, this->propertyName);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    HashMap<Object*, Object*> hashMap = this->toHashMap();;
+    HashMap<Object*, Object*>* hashMap = this->toHashMap();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("CssView HashMap: " +hashMap.toString(), this, "toXmlNode()");
+                                    this->logUtil->putF("CssView HashMap: " +hashMap->toString(), this, "toXmlNode()");
     
 
                                     }
                                 
 
-    Node node = ModDomHelper::createNameValueNodes(document, CssPropertyData::getInstance().NAME, this->propertyName);;
+    Node* node = ModDomHelper::createNameValueNodes(document, CssPropertyData::getInstance()->NAME, this->propertyName);;
     
-node.appendChild(this->cssPropertyValues.toXmlNode(document));
+node->appendChild(this->cssPropertyValues->toXmlNode(document));
     
 
 

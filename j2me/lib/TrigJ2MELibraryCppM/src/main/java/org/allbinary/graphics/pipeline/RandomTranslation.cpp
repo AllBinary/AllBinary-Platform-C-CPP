@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,7 +52,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicGraphicsPipeline.h"
+        #include "org/allbinary/graphics/pipeline/BasicGraphicsPipeline.h"
 
 class RandomTranslation
             : public Object
@@ -54,28 +60,28 @@ class RandomTranslation
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList getInstance(BasicArrayList vector, int32_t howMuch){
+    public: static BasicArrayList* getInstance(BasicArrayList* vector, int32_t howMuch){
 
-    MyRandomFactory myRandomFactory = MyRandomFactory::getInstance();;
-    
-
-    int32_t x =  -myRandomFactory.getNextInt(howMuch);;;
+    MyRandomFactory* myRandomFactory = MyRandomFactory::getInstance();;
     
 
-    int32_t y = myRandomFactory.getNextInt(howMuch);;
+    int32_t x =  -myRandomFactory->getNextInt(howMuch);;;
     
 
-    BasicGraphicsPipeline graphicsPipe = BasicGraphicsPipeline(vector);;
+    int32_t y = myRandomFactory->getNextInt(howMuch);;
     
-graphicsPipe.createMatrix();
+
+    BasicGraphicsPipeline* graphicsPipe = new BasicGraphicsPipeline(vector);;
     
-graphicsPipe.translate(x, y);
+graphicsPipe->createMatrix();
+    
+graphicsPipe->translate(x, y);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return graphicsPipe.getMatrix();;
+                        return graphicsPipe->getMatrix();;
     
 }
 

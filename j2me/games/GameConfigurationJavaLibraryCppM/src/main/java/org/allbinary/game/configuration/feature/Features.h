@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_FEATURES_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_FEATURES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -79,56 +85,56 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Feature.h"
-#include "GameFeatureFactory.h"
-#include "InputFeatureFactory.h"
-#include "SensorFeatureFactory.h"
-#include "TouchFeatureFactory.h"
-#include "MainFeatureFactory.h"
+        #include "org/allbinary/game/configuration/feature/Feature.h"
+#include "org/allbinary/game/configuration/feature/GameFeatureFactory.h"
+#include "org/allbinary/game/configuration/feature/InputFeatureFactory.h"
+#include "org/allbinary/game/configuration/feature/SensorFeatureFactory.h"
+#include "org/allbinary/game/configuration/feature/TouchFeatureFactory.h"
+#include "org/allbinary/game/configuration/feature/MainFeatureFactory.h"
 
 class Features
             : public Object
          {
 
-    private: static Object* SINGLETON = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* SINGLETON = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static Features getInstance();
+    public: static Features* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: BasicArrayList list;
+    private: BasicArrayList* list;
 
-    private: BasicArrayList defaultList;
+    private: BasicArrayList* defaultList;
 
 private: Features();
 
                 //@Throws(Exception.constructor)
             
-    public: void addDefault(Feature gameFeature);
+    public: void addDefault(Feature* gameFeature);
 
                 //@Throws(Exception.constructor)
             
-    public: void add(Feature gameFeature);
+    public: void add(Feature* gameFeature);
 
                 //@Throws(Exception.constructor)
             
-    public: void removeDefault(Feature gameFeature);
+    public: void removeDefault(Feature* gameFeature);
 
                 //@Throws(Exception.constructor)
             
-    public: void remove(Feature gameFeature);
+    public: void remove(Feature* gameFeature);
 
     private: void init();
 
-    public: bool isDefault(Feature gameFeature);
+    public: bool isDefault(Feature* gameFeature);
 
-    public: bool isFeature(Feature gameFeature);
+    public: bool isFeature(Feature* gameFeature);
 
                 //@Throws(Exception.constructor)
             
-    public: void toggle(Feature gameFeature);
+    public: void toggle(Feature* gameFeature);
 
 };
 

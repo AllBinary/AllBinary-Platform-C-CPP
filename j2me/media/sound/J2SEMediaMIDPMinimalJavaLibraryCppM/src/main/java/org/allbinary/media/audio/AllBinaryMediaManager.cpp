@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -88,16 +94,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Sounds.h"
-#include "SoundsFactoryInterface.h"
-#include "NoPlayer.h"
-#include "PCClipWavPlayer.h"
+        #include "org/allbinary/media/audio/Sounds.h"
+#include "org/allbinary/media/audio/SoundsFactoryInterface.h"
+#include "org/allbinary/media/audio/NoPlayer.h"
+#include "org/allbinary/media/audio/PCClipWavPlayer.h"
 //J2SEMediaMIDPMinimalJavaLibrary
 class AllBinaryMediaManager
             : public Object
          {
 
-    private: static const std::string THIS = "AllBinaryMediaManagerPC";
+    private: static inline const std::string THIS = "AllBinaryMediaManagerPC";
 
     public: static bool isMuted(){
 
@@ -125,81 +131,81 @@ class AllBinaryMediaManager
 
                 //@Throws(Exception.constructor)
             
-    public: static void init(SoundsFactoryInterface soundsFactoryInterface){
+    public: static void init(SoundsFactoryInterface* soundsFactoryInterface){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonString = CommonStrings::getInstance();;
+    CommonStrings* commonString = CommonStrings::getInstance();;
     
-logUtil.putF(commonString.START, AllBinaryMediaManager::THIS, commonString.INIT);
+logUtil->putF(commonString->START, AllBinaryMediaManager::THIS, commonString->INIT);
     
-ProgressCanvasFactory::getInstance().addNormalPortion(50, "Media Manager");
+ProgressCanvasFactory::getInstance()->addNormalPortion(50, "Media Manager");
     
-Sounds(soundsFactoryInterface).init();
+(new Sounds(soundsFactoryInterface))->init();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: static void shutdown(SoundsFactoryInterface soundsFactoryInterface){
-Sounds(soundsFactoryInterface).stopAll();
+    public: static void shutdown(SoundsFactoryInterface* soundsFactoryInterface){
+(new Sounds(soundsFactoryInterface))->stopAll();
     
-Sounds(soundsFactoryInterface).closeAll();
+(new Sounds(soundsFactoryInterface))->closeAll();
     
-TsUtil::getInstance().gc();
+TsUtil::getInstance()->gc();
     
 }
 
 
-    private: static const std::string CREATE_PLAYER = "createPlayer";
+    private: static inline const std::string CREATE_PLAYER = "createPlayer";
 
                 //@Throws(Exception.constructor)
             
-    public: static Player createPlayer(std::string resource){
+    public: static Player* createPlayer(std::string resource){
 
-                        if(resource.startsWith(Manager::TONE_DEVICE_LOCATOR))
+                        if(JavaString::startsWith(resource, Manager::TONE_DEVICE_LOCATOR))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryMediaManager::createPlayerFromInputStream(ByteArrayInputStream(NullUtil::getInstance().NULL_BYTE_ARRAY), AudioContentTypeDataFactory::getInstance().MIME_AUDIO_TONE.getName());;
+                        return AllBinaryMediaManager::createPlayerFromInputStream(new ByteArrayInputStream(NullUtil::getInstance()->NULL_BYTE_ARRAY), AudioContentTypeDataFactory::getInstance()->MIME_AUDIO_TONE.getName());;
     
 
                                     }
                                 
                              else 
-                        if(Features::getInstance().isFeature(GameFeatureFactory::getInstance().SOUND))
+                        if(Features::getInstance()->isFeature(GameFeatureFactory::getInstance()->SOUND))
                         
                                     {
                                     
         try {
             
-    InputStream inputStream = ResourceUtil::getInstance().getResourceAsStream(resource);;
+    InputStream* inputStream = ResourceUtil::getInstance()->getResourceAsStream(resource);;
     
 
-    BufferedInputStream bufferedInputStream = BufferedInputStream(inputStream);;
+    BufferedInputStream* bufferedInputStream = new BufferedInputStream(inputStream);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PCClipWavPlayer(bufferedInputStream);
+                        return new PCClipWavPlayer(bufferedInputStream);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonString = CommonStrings::getInstance();;
+    CommonStrings* commonString = CommonStrings::getInstance();;
     
-logUtil.put(commonString.EXCEPTION, AllBinaryMediaManager::THIS, CREATE_PLAYER, e);
+logUtil->put(commonString->EXCEPTION, AllBinaryMediaManager::THIS, CREATE_PLAYER, &e);
     
 
 
@@ -227,11 +233,11 @@ logUtil.put(commonString.EXCEPTION, AllBinaryMediaManager::THIS, CREATE_PLAYER, 
 
                 //@Throws(IOException.constructor, MediaException.constructor)
             
-    public: static Player createPlayerFromInputStream(InputStream stream, std::string type){
+    public: static Player* createPlayerFromInputStream(InputStream* stream, std::string type){
 
 
 
-                            throw MediaException("No Impl");
+                            throw new MediaException("No Impl");
                     
 }
 
@@ -243,7 +249,7 @@ logUtil.put(commonString.EXCEPTION, AllBinaryMediaManager::THIS, CREATE_PLAYER, 
 
 
 
-                            throw MediaException("No Impl");
+                            throw new MediaException("No Impl");
                     
 }
 

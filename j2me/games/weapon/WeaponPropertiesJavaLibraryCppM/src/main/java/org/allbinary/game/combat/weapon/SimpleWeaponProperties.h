@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_WEAPON_SIMPLEWEAPONPROPERTIES_H
         #define ORG_ALLBINARY_GAME_COMBAT_WEAPON_SIMPLEWEAPONPROPERTIES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -52,7 +58,7 @@ class SimpleWeaponProperties
 
     private: int32_t range= 0;
 
-    public: void set(SimpleWeaponProperties simpleWeaponProperties);
+    public: void set(SimpleWeaponProperties* simpleWeaponProperties);
 
     public: void setDamage(int32_t damage);
 

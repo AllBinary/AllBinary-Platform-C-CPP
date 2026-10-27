@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONANIMATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -50,9 +56,9 @@
         
 class CaptionAnimation: public Animation {
 
-    private: Animation animationInterface;
+    private: Animation* animationInterface;
 
-    private: Animation overlayAnimationInterface;
+    private: Animation* overlayAnimationInterface;
 
     private: int32_t captionDx;
 
@@ -62,15 +68,15 @@ class CaptionAnimation: public Animation {
 
     private: int32_t dy;
 
-public: CaptionAnimation(Animation animationInterface, Animation overlayAnimationInterface, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy);
+public: CaptionAnimation(Animation* animationInterface, Animation* overlayAnimationInterface, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy);
 
                 //@Throws(Exception.constructor)
             
     public: void nextFrame();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
-    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
+    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z);
 
 };
 

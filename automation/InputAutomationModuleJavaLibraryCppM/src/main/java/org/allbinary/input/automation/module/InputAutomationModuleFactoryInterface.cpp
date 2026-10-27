@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,7 +55,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
+        #include "org/allbinary/input/automation/module/JPanel.h"
 
 class InputAutomationModuleFactoryInterface
             : public Object
@@ -65,7 +71,7 @@ class InputAutomationModuleFactoryInterface
 }
 
 
-    public: JPanel getConfigurationJPanel(){
+    public: JPanel* getConfigurationJPanel(){
 
 
 
@@ -75,7 +81,7 @@ class InputAutomationModuleFactoryInterface
 }
 
 
-    public: HelpSet getHelpSet(){
+    public: HelpSet* getHelpSet(){
 
 
 
@@ -87,7 +93,7 @@ class InputAutomationModuleFactoryInterface
 
                 //@Throws(Exception.constructor)
             
-    public: RunnableInterface getInstance(){
+    public: RunnableInterface* getInstance(){
 
 
 

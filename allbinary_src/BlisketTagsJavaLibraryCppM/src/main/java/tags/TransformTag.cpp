@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
@@ -65,9 +71,9 @@
         
 class TransformTag: public TransformInfoTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: TransformTag() : TransformInfoTag(ViewHelperFactory()){
+public: TransformTag() : TransformInfoTag(new ViewHelperFactory()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,10 +81,10 @@ public: TransformTag() : TransformInfoTag(ViewHelperFactory()){
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -86,7 +92,7 @@ public: TransformTag() : TransformInfoTag(ViewHelperFactory()){
 }
 
 
-public: TransformTag(TagHelperFactoryInterface tagHelperFactoryInterface) : TransformInfoTag(tagHelperFactoryInterface){
+public: TransformTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : TransformInfoTag(tagHelperFactoryInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -94,10 +100,10 @@ public: TransformTag(TagHelperFactoryInterface tagHelperFactoryInterface) : Tran
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -111,8 +117,8 @@ public: TransformTag(TagHelperFactoryInterface tagHelperFactoryInterface) : Tran
 
         try {
             
-    std::string result = this->getHelper().constructor.name.getMethod("view", 
-                            nullptr).invoke(this->getHelper(), 
+    std::string result = this->getHelper()->getClass()->getMethod("view", 
+                            nullptr)->invoke(this->getHelper(), 
                             nullptr);;
     
 
@@ -123,13 +129,13 @@ public: TransformTag(TagHelperFactoryInterface tagHelperFactoryInterface) : Tran
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -150,43 +156,43 @@ public: TransformTag(TagHelperFactoryInterface tagHelperFactoryInterface) : Tran
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF("Creating with: \n" +this->getPropertiesHashMap().toString(), this, tagStrings.DO_START_TAG);
+                                    this->logUtil->putF("Creating with: \n" +this->getPropertiesHashMap()->toString(), this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("ViewTag Start For: ");
+stringBuffer->append("ViewTag Start For: ");
     
-stringBuffer.append(this->getName());
+stringBuffer->append(this->getName());
     
-stringBuffer.append("\nViewFile: ");
+stringBuffer->append("\nViewFile: ");
     
-stringBuffer.append(this->getObjectFile());
+stringBuffer->append(this->getObjectFile());
     
-this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
+this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
 this->setHelper();
     
-pageContext.getOut().print(this->view());
+pageContext.getOut()->print(this->view());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF("Tag End", this, tagStrings.DO_START_TAG);
+                                    this->logUtil->putF("Tag End", this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -199,9 +205,9 @@ pageContext.getOut().print(this->view());
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
-AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
     
 
 
@@ -212,9 +218,9 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 
@@ -223,7 +229,7 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
                         return SKIP_BODY;
     
 }
-*/
+
 }
 
 

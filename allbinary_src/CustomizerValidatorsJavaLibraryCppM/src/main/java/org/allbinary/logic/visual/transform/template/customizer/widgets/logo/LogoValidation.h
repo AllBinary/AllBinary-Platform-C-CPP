@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_LOGO_LOGOVALIDATION_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_LOGO_LOGOVALIDATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -89,16 +95,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogoData.h"
-#include "LogoImageFileUtil.h"
+        #include "org/allbinary/logic/visual/transform/template/customizer/widgets/logo/LogoData.h"
+#include "org/allbinary/logic/visual/transform/template/customizer/widgets/logo/LogoImageFileUtil.h"
 
 class LogoValidation: public Validation, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: FileItem logoFileItem;
+    private: FileItem* logoFileItem;
 
-    private: AbPath logoAbPath;
+    private: AbPath* logoAbPath;
 
     private: std::string logoFile;
 
@@ -106,27 +112,27 @@ class LogoValidation: public Validation, public DomNodeInterface {
 
 public: LogoValidation();
 
-public: LogoValidation(Node node);
+public: LogoValidation(Node* node);
 
-public: LogoValidation(HashMap<Object*, Object*> hashMap);
+public: LogoValidation(HashMap<Object*, Object*>* hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<Object*, Object*> hashMap);
+    public: void getFormData(HashMap<Object*, Object*>* hashMap);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string validationInfo();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
                 //@Throws(Exception.constructor)
             

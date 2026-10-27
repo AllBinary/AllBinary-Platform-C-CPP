@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/communication/log/PreLogUtil.h>
 
       
@@ -56,25 +62,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SimpleWeaponProperties.h"
+        #include "org/allbinary/game/combat/weapon/SimpleWeaponProperties.h"
 
 class WeaponProperties: public SimpleWeaponProperties {
 
-    public: static const WeaponProperties NULL_WEAPON_PROPERTIES = WeaponProperties(0, 0, 0, 0, 0);
+    public: static WeaponProperties* NULL_WEAPON_PROPERTIES() { static std::unique_ptr<WeaponProperties> value(new WeaponProperties(0, 0, 0, 0, 0)); return value.get(); }
 
-    private: static bool messageSent = false;
+    private: static inline bool messageSent = false;
 
-    private: static const std::string DAMAGE = "Damage: ";
+    private: static inline const std::string DAMAGE = "Damage: ";
 
-    private: static const std::string RANGE = "Range: ";
+    private: static inline const std::string RANGE = "Range: ";
 
-    private: static const std::string RELOAD = "Reload: ";
+    private: static inline const std::string RELOAD = "Reload: ";
 
     private: int64_t reloadTime= 0;
 
     private: int64_t targetingTime= 0;
 
-    private: BasicDecimal speed = BasicDecimal::ZERO_BIGDECIMAL;
+    private: BasicDecimal* speed = BasicDecimal::ZERO_BIGDECIMAL;
 
     private: const int64_t MAX = 10240;
 
@@ -90,9 +96,9 @@ public: WeaponProperties(int64_t reloadTime, int64_t targetingTime, int64_t spee
 
     public: int64_t getTargetingTime();
 
-    public: BasicDecimal getSpeed();
+    public: BasicDecimal* getSpeed();
 
-    public: void setSpeed(BasicDecimal speed);
+    public: void setSpeed(BasicDecimal* speed);
 
     public: int32_t getDamageI(int32_t range);
 

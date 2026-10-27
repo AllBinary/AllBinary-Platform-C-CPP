@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_WEB_WORKFLOW_EDITOR_WORKFLOWEDITORWEBSTOREADMINUSER_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_WEB_WORKFLOW_EDITOR_WORKFLOWEDITORWEBSTOREADMINUSER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -55,11 +61,11 @@ class WorkflowEditorWebStoreAdminUser: public User {
 
 public: WorkflowEditorWebStoreAdminUser();
 
-public: WorkflowEditorWebStoreAdminUser(HashMap<Object*, Object*> userHashMap);
+public: WorkflowEditorWebStoreAdminUser(HashMap<Object*, Object*>* userHashMap);
 
-    public: void validateSession(WeblisketSessionInterface weblisketSession);
+    public: void validateSession(WeblisketSessionInterface* weblisketSession);
 
-    public: void updateSession(WeblisketSessionInterface weblisketSession);
+    public: void updateSession(WeblisketSessionInterface* weblisketSession);
 
 };
 

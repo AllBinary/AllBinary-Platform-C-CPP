@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYLOADERINTERFACE_H
         #define ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYLOADERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/business/category/CategoryInterface.h>
 
       
@@ -45,15 +51,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryModifierTreeInterface.h"
+        #include "org/allbinary/data/tree/category/CategoryModifierTreeInterface.h"
 
 class CategoryLoaderInterface: public CategoryModifierTreeInterface {
 
-    Document getDoc(CategoryInterface categoryInterface);
+    public: virtual Document* getDoc(CategoryInterface* categoryInterface) = 0;
 
-    CategoryInterface get(CategoryInterface categoryInterface);
+    public: virtual CategoryInterface* get(CategoryInterface* categoryInterface) = 0;
 
-    CategoryInterface getAll(CategoryInterface categoryInterface);
+    public: virtual CategoryInterface* getAll(CategoryInterface* categoryInterface) = 0;
 
 };
 

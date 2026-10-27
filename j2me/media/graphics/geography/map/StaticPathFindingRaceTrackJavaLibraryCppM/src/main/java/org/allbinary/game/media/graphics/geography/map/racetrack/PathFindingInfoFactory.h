@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/string/CommonStrings.h>
@@ -70,15 +76,15 @@
         
 class PathFindingInfoFactory: public BasePathFindingInfoFactory {
 
-    private: static PathFindingInfoFactory instance() { return PathFindingInfoFactory(); }
+    private: static PathFindingInfoFactory* instance() { static std::unique_ptr<PathFindingInfoFactory> value(new PathFindingInfoFactory()); return value.get(); }
 
-    public: static PathFindingInfoFactory getInstance();
+    public: static PathFindingInfoFactory* getInstance();
 
 private: PathFindingInfoFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: PathFindingInfo getInstancePathFindingInfo(BasicGeographicMap geographicMapInterface, std::vector<std::vector<int32_t>> graphArray);
+    public: PathFindingInfo* getInstancePathFindingInfo(BasicGeographicMap* geographicMapInterface, std::vector<std::vector<int32_t>> graphArray);
 
 };
 

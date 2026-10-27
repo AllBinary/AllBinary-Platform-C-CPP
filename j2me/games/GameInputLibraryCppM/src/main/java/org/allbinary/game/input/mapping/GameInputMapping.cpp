@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/GameKey.h>
@@ -49,11 +55,11 @@ class GameInputMapping
             : public Object
          {
 
-    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: GameKey gameKey = GameKey::NULL_GAME_KEY;
+    private: GameKey* gameKey = GameKey::NULL_GAME_KEY;
 
-public: GameInputMapping(std::string name, GameKey gameKey){
+public: GameInputMapping(std::string name, GameKey* gameKey){
 this->setName(name);
     
 this->setGameKey(gameKey);
@@ -61,13 +67,13 @@ this->setGameKey(gameKey);
 }
 
 
-    private: void setGameKey(GameKey gameKey){
+    private: void setGameKey(GameKey* gameKey){
 this->gameKey= gameKey;
     
 }
 
 
-    public: GameKey getGameKey(){
+    public: GameKey* getGameKey(){
 
 
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -85,56 +91,56 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MetaValidation.h"
+        #include "org/allbinary/logic/visual/transform/template/customizer/includes/meta/MetaValidation.h"
 
 class MetasValidation: public Validation, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: StoreFrontInterface storeFrontInterface;
+    private: StoreFrontInterface* storeFrontInterface;
 
-    private: BasicArrayList metaValidationVector;
+    private: BasicArrayList* metaValidationVector;
 
 public: MetasValidation(std::string storeName){
 this->storeFrontInterface= StoreFrontFactory::getInstance(storeName);
     
-this->metaValidationVector= BasicArrayListD();
+this->metaValidationVector= new BasicArrayListD();
     
 
-    std::string contentValue = this->storeFrontInterface.getName() +" E-Commerce Site";;
+    std::string contentValue = this->storeFrontInterface->getName() +" E-Commerce Site";;
     
 
-    MetaValidation keywordsMetaValidation = MetaValidation(HtmlMetaAttributeDataFactory::getInstance().NAME, "Keywords", HtmlMetaAttributeValuesData::getInstance().KEYWORDS, contentValue);;
+    MetaValidation* keywordsMetaValidation = new MetaValidation(HtmlMetaAttributeDataFactory::getInstance()->NAME, "Keywords", HtmlMetaAttributeValuesData::getInstance()->KEYWORDS, contentValue);;
     
 
-    MetaValidation abstractMetaValidation = MetaValidation(HtmlMetaAttributeDataFactory::getInstance().NAME, "Abstract", HtmlMetaAttributeValuesData::getInstance().ABSTRACT, contentValue);;
+    MetaValidation* abstractMetaValidation = new MetaValidation(HtmlMetaAttributeDataFactory::getInstance()->NAME, "Abstract", HtmlMetaAttributeValuesData::getInstance()->ABSTRACT, contentValue);;
     
 
-    MetaValidation descriptionMetaValidation = MetaValidation(HtmlMetaAttributeDataFactory::getInstance().NAME, "Description", HtmlMetaAttributeValuesData::getInstance().DESCRIPTION, contentValue);;
+    MetaValidation* descriptionMetaValidation = new MetaValidation(HtmlMetaAttributeDataFactory::getInstance()->NAME, "Description", HtmlMetaAttributeValuesData::getInstance()->DESCRIPTION, contentValue);;
     
-this->metaValidationVector.add(keywordsMetaValidation);
+this->metaValidationVector->add(keywordsMetaValidation);
     
-this->metaValidationVector.add(abstractMetaValidation);
+this->metaValidationVector->add(abstractMetaValidation);
     
-this->metaValidationVector.add(descriptionMetaValidation);
+this->metaValidationVector->add(descriptionMetaValidation);
     
 }
 
 
-public: MetasValidation(Document document){
+public: MetasValidation(Document* document){
 
 
 
-                            throw Exception(CommonStrings::getInstance().NOT_IMPLEMENTED);
+                            throw new Exception(CommonStrings::getInstance()->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-    Boolean valid = Boolean::TRUE;;
+    bool valid = Boolean::TRUE;;
     
 
 
@@ -144,13 +150,13 @@ public: MetasValidation(Document document){
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -170,23 +176,23 @@ public: MetasValidation(Document document){
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -202,7 +208,7 @@ public: MetasValidation(Document document){
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -212,7 +218,7 @@ public: MetasValidation(Document document){
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -224,12 +230,12 @@ public: MetasValidation(Document document){
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = document.createElement(HtmlMetasData::getInstance().NAME);;
+    Node* node = document->createElement(HtmlMetasData::getInstance()->NAME);;
     
 
-    std::vector<MetaValidation> metaArray = this->metaValidationVector.toArrayType(std::vector<MetaValidation>(this->metaValidationVector.size())) as MetaValidation[];;
+    std::vector<MetaValidation*> metaArray = this->metaValidationVector->toArrayType(std::vector<MetaValidation*>(this->metaValidationVector->size())) as MetaValidation[];;
     
 
     int32_t size = metaArray.size();;
@@ -242,9 +248,9 @@ public: MetasValidation(Document document){
     int32_t i = 0;i < size; i++)
         {
 
-    MetaValidation metaValidation = metaArray[i];;
+    MetaValidation* metaValidation = metaArray[i];;
     
-node.appendChild(metaValidation.toXmlNode(document));
+node->appendChild(metaValidation->toXmlNode(document));
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_LINESGRAPHICITEMFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_LINESGRAPHICITEMFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/j2me/workarea/canvas/CanvasJPanel.h>
@@ -44,15 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GraphicsItemInterfaceFactoryInterface.h"
-#include "LinesGraphicItem.h"
-#include "GraphicItemInterface.h"
+        #include "org/allbinary/graphics/j2me/workarea/tools/GraphicsItemInterfaceFactoryInterface.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h"
 
 class LinesGraphicItemFactory
             : public Object
-        : public GraphicsItemInterfaceFactoryInterface {
+        , public GraphicsItemInterfaceFactoryInterface {
 
-    public: GraphicItemInterface getInstance(CanvasJPanel canvasJPanel);
+    public: GraphicItemInterface* getInstance(CanvasJPanel* canvasJPanel);
 
 };
 

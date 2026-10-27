@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_LOCKABLEFORMPAINTABLEFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_LOCKABLEFORMPAINTABLEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -41,10 +47,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ItemPaintableFactory.h"
-#include "LockablePaintable.h"
-#include "ItemPaintable.h"
-#include "PaintableForm.h"
+        #include "org/allbinary/graphics/form/ItemPaintableFactory.h"
+#include "org/allbinary/graphics/form/LockablePaintable.h"
+#include "org/allbinary/graphics/form/ItemPaintable.h"
+#include "org/allbinary/graphics/form/PaintableForm.h"
 
 class LockableFormPaintableFactory: public ItemPaintableFactory {
 
@@ -54,7 +60,7 @@ public: LockableFormPaintableFactory(int32_t lockedIndex);
 
                 //@Throws(Exception.constructor)
             
-    public: ItemPaintable getInstanceItemPaintable(PaintableForm paintableForm);
+    public: ItemPaintable* getInstanceItemPaintable(PaintableForm* paintableForm);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLPASSWORDINPUT_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLPASSWORDINPUT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Integer.h"
         
 
@@ -41,8 +47,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HtmlLengthInput.h"
-#include "HtmlInputData.h"
+        #include "org/allbinary/logic/visual/dhtml/html/input/HtmlLengthInput.h"
+#include "org/allbinary/logic/visual/dhtml/html/input/HtmlInputData.h"
 
 class HtmlPasswordInput: public HtmlLengthInput {
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -109,108 +115,108 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShippingMethodsData.h"
-#include "ShippingMethodData.h"
+        #include "org/allbinary/business/user/commerce/shipping/ShippingMethodsData.h"
+#include "org/allbinary/business/user/commerce/shipping/ShippingMethodData.h"
 
 class ShippingMethodsFactory
             : public Object
          {
 
-    private: static const std::string SHIPPINGMETHODSFILEPATHSTRING;
+    private: static inline const std::string SHIPPINGMETHODSFILEPATHSTRING;
 
                     static int32_t initResult = ShippingMethodsFactory::init();
                 static int32_t init() { 
                     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    std::string sep = AbPathData::getInstance().SEPARATOR;;
+    std::string sep = AbPathData::getInstance()->SEPARATOR;;
     
-stringBuffer.append(sep);
+stringBuffer->append(sep);
     
-stringBuffer.append("generic");
+stringBuffer->append("generic");
     
-stringBuffer.append(sep);
+stringBuffer->append(sep);
     
-stringBuffer.append("shipping");
+stringBuffer->append("shipping");
     
-stringBuffer.append(sep);
+stringBuffer->append(sep);
     
-SHIPPINGMETHODSFILEPATHSTRING= stringBuffer.toString();
+SHIPPINGMETHODSFILEPATHSTRING= stringBuffer->toString();
     
 
 
                     return 0;
                 }
             
-    private: static const std::string SHIPPINGMETHODSFILENAME = "shippingMethods.xml";
+    private: static inline const std::string SHIPPINGMETHODSFILENAME = "shippingMethods.xml";
 
-    private: ShippingInterface defaultShippingMethodInterface;
+    private: ShippingInterface* defaultShippingMethodInterface;
 
-    private: Document document;
+    private: Document* document;
 
-    private: BasicArrayList shippingVector;
+    private: BasicArrayList* shippingVector;
 
-public: ShippingMethodsFactory(AbeClientInformationInterface abeClientInformation, StoreFrontInterface storeFrontInterface){
+public: ShippingMethodsFactory(AbeClientInformationInterface* abeClientInformation, StoreFrontInterface* storeFrontInterface){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    std::string sep = AbPathData::getInstance().SEPARATOR;;
+    std::string sep = AbPathData::getInstance()->SEPARATOR;;
     
-stringBuffer.append(URLGLOBALS::getMainPath());
+stringBuffer->append(URLGLOBALS::getMainPath());
     
-stringBuffer.append(FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH);
+stringBuffer->append(FREEBLISKET_PATH_GLOBALS::getInstance()->XSLPATH);
     
-stringBuffer.append(storeFrontInterface.getName());
+stringBuffer->append(storeFrontInterface->getName());
     
-stringBuffer.append(sep);
+stringBuffer->append(sep);
     
-stringBuffer.append(ShippingMethodsFactory::SHIPPINGMETHODSFILEPATHSTRING);
-    
-
-    AbPath abPath = AbPath(stringBuffer.toString(), this->SHIPPINGMETHODSFILENAME);;
+stringBuffer->append(ShippingMethodsFactory::SHIPPINGMETHODSFILEPATHSTRING);
     
 
-    std::string data = CryptFileReader(TransformInfoObjectConfigData::getInstance().UNCRYPTED_EXTENSION, TransformInfoObjectConfigData::getInstance().ENCRYPTED_EXTENSION).get(abPath);;
+    AbPath* abPath = dynamic_cast<AbPath*>(new AbPath(stringBuffer->toString(), this->SHIPPINGMETHODSFILENAME));;
+    
+
+    std::string data = (new CryptFileReader(TransformInfoObjectConfigData::getInstance()->UNCRYPTED_EXTENSION, TransformInfoObjectConfigData::getInstance()->ENCRYPTED_EXTENSION))->get(abPath);;
     
 this->document= DomDocumentHelper::create(data);
     
-this->shippingVector= BasicArrayListD();
+this->shippingVector= new BasicArrayListD();
     
 
-    NodeList nodeList = this->document.getElementsByTagName(ShippingMethodsData::NAME);;
+    NodeList* nodeList = this->document->getElementsByTagName(ShippingMethodsData::NAME);;
     
 
 
 
 
                         for (
-    int32_t index = 0;index < nodeList.getLength(); index++)
+    int32_t index = 0;index < nodeList->getLength(); index++)
         {
 
-    Node node = nodeList.item(index);;
+    Node* node = nodeList->item(index);;
     
 
-    NodeList shippingMethodNodeChildren = node.getChildNodes();;
+    NodeList* shippingMethodNodeChildren = node->getChildNodes();;
     
 
-    Node shippingMethodNameNode = DomSearchHelper::getNode(ShippingMethodData::NAME, shippingMethodNodeChildren);;
+    Node* shippingMethodNameNode = DomSearchHelper::getNode(ShippingMethodData::NAME, shippingMethodNodeChildren);;
     
 
-    Node classNameNode = DomSearchHelper::getNode(DynamicObjectData::NAME, shippingMethodNameNode.getChildNodes());;
+    Node* classNameNode = DomSearchHelper::getNode(DynamicObjectData::NAME, shippingMethodNameNode->getChildNodes());;
     
 
     std::string shippingMethodClassName = DomNodeHelper::getTextNodeValue(classNameNode);;
     
 
-    ShippingInterface shippingMethodInterface = AbeFactory::getInstance().getInstance(abeClientInformation, shippingMethodClassName);;
+    ShippingInterface* shippingMethodInterface = dynamic_cast<ShippingInterface*>(AbeFactory::getInstance()->getInstance(abeClientInformation, shippingMethodClassName));;
     
-this->shippingVector.add(shippingMethodInterface);
+this->shippingVector->add(shippingMethodInterface);
     
 
-    Node defaultShippingMethodNameNode = DomSearchHelper::getNode(ShippingMethodData::DEFAULT, shippingMethodNameNode.getChildNodes());;
+    Node* defaultShippingMethodNameNode = DomSearchHelper::getNode(ShippingMethodData::DEFAULT, shippingMethodNameNode->getChildNodes());;
     
 
     std::string defaultShippingMethodNameNodeValue = DomNodeHelper::getTextNodeValue(defaultShippingMethodNameNode);;
@@ -222,14 +228,14 @@ this->shippingVector.add(shippingMethodInterface);
 }
 
 
-                        if(this->shippingVector.size() < 1)
+                        if(this->shippingVector->size() < 1)
                         
                                     {
-                                    this->defaultShippingMethodInterface= BasicWeightShippingModuleView();
+                                    this->defaultShippingMethodInterface= new BasicWeightShippingModuleView();
     
-this->shippingVector.add(this->defaultShippingMethodInterface);
+this->shippingVector->add(this->defaultShippingMethodInterface);
     
-this->shippingVector.add(NoShippingModuleView());
+this->shippingVector->add(new NoShippingModuleView());
     
 
                                     }
@@ -239,7 +245,7 @@ this->shippingVector.add(NoShippingModuleView());
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getInstance(){
+    public: BasicArrayList* getInstance(){
 
 
 
@@ -249,7 +255,7 @@ this->shippingVector.add(NoShippingModuleView());
 }
 
 
-    public: ShippingInterface getDefaultInstance(){
+    public: ShippingInterface* getDefaultInstance(){
 
 
 

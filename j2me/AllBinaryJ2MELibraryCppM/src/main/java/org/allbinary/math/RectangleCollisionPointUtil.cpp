@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/GPoint.h>
@@ -44,30 +50,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RectangleCollisionUtil.h"
+        #include "org/allbinary/math/RectangleCollisionUtil.h"
 
 class RectangleCollisionPointUtil
             : public Object
          {
 
-    public: static bool allPointsInside(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, BasicArrayList list){
+    public: static bool allPointsInside(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, BasicArrayList* list){
 
-    RectangleCollisionUtil rectangleCollisionUtil = RectangleCollisionUtil::getInstance();;
+    RectangleCollisionUtil* rectangleCollisionUtil = RectangleCollisionUtil::getInstance();;
     
 
-    GPoint point;;
+    GPoint* point;;
     
 
 
 
 
                         for (
-    int32_t index = list.size();--index >= 0; )
+    int32_t index = list->size();--index >= 0; )
         {
-point= list.objectArray[index];
+point= dynamic_cast<GPoint*>(list->objectArray[index]);
     
 
-                        if(!rectangleCollisionUtil.isInside(rectX1, rectY1, rectX2, rectY2, point.getX(), point.getY()))
+                        if(!rectangleCollisionUtil->isInside(rectX1, rectY1, rectX2, rectY2, point->getX(), point->getY()))
                         
                                     {
                                     
@@ -90,24 +96,24 @@ point= list.objectArray[index];
 }
 
 
-    public: static bool allPointsInsideCell(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, BasicArrayList list, int32_t xCellSize, int32_t yCellSize){
+    public: static bool allPointsInsideCell(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, BasicArrayList* list, int32_t xCellSize, int32_t yCellSize){
 
-    RectangleCollisionUtil rectangleCollisionUtil = RectangleCollisionUtil::getInstance();;
+    RectangleCollisionUtil* rectangleCollisionUtil = RectangleCollisionUtil::getInstance();;
     
 
-    GPoint point;;
+    GPoint* point;;
     
 
 
 
 
                         for (
-    int32_t index = list.size();--index >= 0; )
+    int32_t index = list->size();--index >= 0; )
         {
-point= list.objectArray[index];
+point= dynamic_cast<GPoint*>(list->objectArray[index]);
     
 
-                        if(!rectangleCollisionUtil.isInside(rectX1, rectY1, rectX2, rectY2, point.getX() *xCellSize, point.getY() *yCellSize))
+                        if(!rectangleCollisionUtil->isInside(rectX1, rectY1, rectX2, rectY2, point->getX() *xCellSize, point->getY() *yCellSize))
                         
                                     {
                                     

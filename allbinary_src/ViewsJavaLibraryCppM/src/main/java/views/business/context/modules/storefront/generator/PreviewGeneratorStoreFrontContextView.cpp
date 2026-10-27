@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -56,13 +62,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeneratorStoreFrontContextView.h"
+        #include "views/business/context/modules/storefront/generator/GeneratorStoreFrontContextView.h"
 
 class PreviewGeneratorStoreFrontContextView: public GeneratorStoreFrontContextView {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: PreviewGeneratorStoreFrontContextView(TransformInfoInterface transformInfoInterface) : GeneratorStoreFrontContextView(transformInfoInterface){
+public: PreviewGeneratorStoreFrontContextView(TransformInfoInterface* transformInfoInterface) : GeneratorStoreFrontContextView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -78,25 +84,25 @@ public: PreviewGeneratorStoreFrontContextView(TransformInfoInterface transformIn
 
         try {
             
-    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface();;
+    TransformInfoHttpInterface* httpTransformInfoInterface = dynamic_cast<TransformInfoHttpInterface*>(this->getTransformInfoInterface());;
     
-httpTransformInfoInterface.getPropertiesHashMap().put(TransformInfoData::getInstance().PARTIAL, CommonSeps::getInstance().SPACE +TransformInfosData::getInstance().PREVIEW);
+httpTransformInfoInterface->getPropertiesHashMap()->put(TransformInfoData::getInstance()->PARTIAL, CommonSeps::getInstance()->SPACE +TransformInfosData::getInstance()->PREVIEW);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->view(TransformInfosData::getInstance().PREVIEW);;
+                        return this->view(TransformInfosData::getInstance()->PREVIEW);;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }

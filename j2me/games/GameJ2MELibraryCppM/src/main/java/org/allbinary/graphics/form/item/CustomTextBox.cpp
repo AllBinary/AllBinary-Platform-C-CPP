@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/CommandListener.h>
@@ -80,13 +86,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ABTextFieldItem.h"
+        #include "org/allbinary/graphics/form/item/ABTextFieldItem.h"
 
 class CustomTextBox: public GameCommandCanvas, public RawKeyEventListener {
 
-    private: ABTextFieldItem textFieldItem;
+    private: ABTextFieldItem* textFieldItem;
 
-public: CustomTextBox(CommandListener cmdListener, std::string label, std::string text, int32_t maxSize, int32_t constraints, Font font, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : GameCommandCanvas(cmdListener, label, backgroundBasicColor, foregroundBasicColor){
+public: CustomTextBox(CommandListener* cmdListener, std::string label, std::string text, int32_t maxSize, int32_t constraints, Font* font, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : GameCommandCanvas(cmdListener, label, backgroundBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -94,12 +100,12 @@ public: CustomTextBox(CommandListener cmdListener, std::string label, std::strin
                             //For kotlin this is before the body of the constructor.
                     
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
 
-    ABTextFieldItem textFieldItem = ABTextFieldItem(this, TextItemVisitor(), stringUtil.EMPTY_STRING, stringUtil.EMPTY_STRING, maxSize, 0, stringUtil.EMPTY_STRING, font, backgroundBasicColor, foregroundBasicColor);;
+    ABTextFieldItem* textFieldItem = new ABTextFieldItem(this, new TextItemVisitor(), stringUtil->EMPTY_STRING, stringUtil->EMPTY_STRING, maxSize, 0, stringUtil->EMPTY_STRING, font, backgroundBasicColor, foregroundBasicColor);;
     
-textFieldItem.setString(text);
+textFieldItem->setString(text);
     
 this->textFieldItem= textFieldItem;
     
@@ -112,10 +118,10 @@ this->setTitle(label);
 }
 
 
-    private: const InputFactory inputFactory = InputFactory::getInstance();
+    private: InputFactory* inputFactory = InputFactory::getInstance();
 
     public: void onEventRaw(int32_t keyCode, int32_t deviceId, bool repeated){
-this->logUtil.putF(StringMaker().append(this->commonStrings.START).appendint(keyCode).toString(), this, "onEvent");
+this->logUtil.putF((new StringMaker())->append(this->commonStrings.START)->appendint(keyCode)->toString(), this, "onEvent");
     
 this->keyPressedByDevice(keyCode, deviceId);
     
@@ -143,16 +149,16 @@ this->keyRepeatedByDevice(keyCode, 0);
     public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId){
 
         try {
-            this->logUtil.putF(StringMaker().append(CommonSeps::getInstance().SPACE).appendint(keyCode).toString(), this, this->gameInputStrings.KEY_PRESSED);
+            this->logUtil.putF((new StringMaker())->append(CommonSeps::getInstance()->SPACE)->appendint(keyCode)->toString(), this, this->gameInputStrings.KEY_PRESSED);
     
 
-    PlatformKeyFactory platformKeyFactory = PlatformKeyFactory::getInstance();;
+    PlatformKeyFactory* platformKeyFactory = PlatformKeyFactory::getInstance();;
     
 
-    Input input = this->inputFactory.getInstanceById(keyCode);;
+    Input* input = this->inputFactory->getInstanceById(keyCode);;
     
 
-                        if(platformKeyFactory.isSubmission(input))
+                        if(platformKeyFactory->isSubmission(input))
                         
                                     {
                                     this->submit();
@@ -161,16 +167,16 @@ this->keyRepeatedByDevice(keyCode, 0);
                                     }
                                 
                         else {
-                            this->textFieldItem.keyPressed(keyCode);
+                            this->textFieldItem->keyPressed(keyCode);
     
 
                         }
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.KEY_PRESSED, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.KEY_PRESSED, &e);
     
 }
 
@@ -181,36 +187,36 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.KE
 }
 
 
-    public: void paint(Graphics graphics){
-graphics.setColor(this->backgroundColor);
+    public: void paint(Graphics* graphics){
+graphics->setColor(this->backgroundColor);
     
-graphics.fillRect(0, 0, this->displayInfo.getLastWidth(), this->displayInfo.getLastHeight());
+graphics->fillRect(0, 0, this->displayInfo.getLastWidth(), this->displayInfo.getLastHeight());
     
-graphics.setColor(this->foregroundColor);
+graphics->setColor(this->foregroundColor);
     
 
                         if(!J2MEUtil::isJ2ME())
                         
                                     {
-                                    graphics.drawString(this->getTitle(), 8, 1, 0);
+                                    graphics->drawString(this->getTitle(), 8, 1, 0);
     
 
                                     }
                                 
-this->paintXY(graphics, 8, graphics.getFont().getHeight() +2);
+this->paintXY(graphics, 8, graphics->getFont()->getHeight() +2);
     
 super.paint(graphics);
     
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
-this->textFieldItem.paintXY(graphics, x, y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+this->textFieldItem->paintXY(graphics, x, y);
     
 }
 
 
-    public: ABTextFieldItem getTextFieldItem(){
+    public: ABTextFieldItem* getTextFieldItem(){
 
 
 

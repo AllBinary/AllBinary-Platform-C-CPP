@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -41,15 +47,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PickedUpLayerType.h"
+        #include "org/allbinary/game/layer/pickup/PickedUpLayerType.h"
 
 class PickedUpLayerTypeFactory
             : public Object
          {
 
-    private: static PickedUpLayerTypeFactory instance() { return PickedUpLayerTypeFactory(); }
+    private: static PickedUpLayerTypeFactory* instance() { static std::unique_ptr<PickedUpLayerTypeFactory> value(new PickedUpLayerTypeFactory()); return value.get(); }
 
-    public: static PickedUpLayerTypeFactory getInstance(){
+    public: static PickedUpLayerTypeFactory* getInstance(){
 
 
 
@@ -59,25 +65,25 @@ class PickedUpLayerTypeFactory
 }
 
 
-    public: PickedUpLayerType NONE = PickedUpLayerType(StringUtil::getInstance().NULL_STRING);
+    public: PickedUpLayerType* NONE = new PickedUpLayerType(StringUtil::getInstance()->NULL_STRING);
 
-    public: PickedUpLayerType BEAM = PickedUpLayerType("BEAM");
+    public: PickedUpLayerType* BEAM = new PickedUpLayerType("BEAM");
 
-    public: PickedUpLayerType MINE = PickedUpLayerType("MINE");
+    public: PickedUpLayerType* MINE = new PickedUpLayerType("MINE");
 
-    public: PickedUpLayerType PROJECTILE = PickedUpLayerType("PROJECTILE");
+    public: PickedUpLayerType* PROJECTILE = new PickedUpLayerType("PROJECTILE");
 
-    public: PickedUpLayerType ENHANCEMENT = PickedUpLayerType("Enhancement");
+    public: PickedUpLayerType* ENHANCEMENT = new PickedUpLayerType("Enhancement");
 
-    public: PickedUpLayerType MORPH = PickedUpLayerType("Morph");
+    public: PickedUpLayerType* MORPH = new PickedUpLayerType("Morph");
 
-    public: PickedUpLayerType PART = PickedUpLayerType("Part");
+    public: PickedUpLayerType* PART = new PickedUpLayerType("Part");
 
-    public: PickedUpLayerType HEAL = PickedUpLayerType("Heal");
+    public: PickedUpLayerType* HEAL = new PickedUpLayerType("Heal");
 
-    public: PickedUpLayerType LIFE = PickedUpLayerType("Life");
+    public: PickedUpLayerType* LIFE = new PickedUpLayerType("Life");
 
-    public: PickedUpLayerType POINTS = PickedUpLayerType("Points");
+    public: PickedUpLayerType* POINTS = new PickedUpLayerType("Points");
 
 };
 

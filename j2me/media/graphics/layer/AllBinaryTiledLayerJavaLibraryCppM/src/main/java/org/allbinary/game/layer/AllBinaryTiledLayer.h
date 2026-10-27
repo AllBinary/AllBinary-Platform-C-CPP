@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -79,9 +85,9 @@ class AllBinaryTiledLayer: public Layer, public NamedInterface, public Paintable
 
     private: int32_t halfCellHeight;
 
-    private: Integer dataId;
+    private: int32_t dataId;
 
-public: AllBinaryTiledLayer(Integer dataId, int32_t width, int32_t height, int32_t cellWidth, int32_t cellHeight);
+public: AllBinaryTiledLayer(int32_t dataId, int32_t width, int32_t height, int32_t cellWidth, int32_t cellHeight);
 
     public: void setCells(std::vector<std::vector<int32_t>> mapTwoDArray);
 
@@ -89,9 +95,9 @@ public: AllBinaryTiledLayer(Integer dataId, int32_t width, int32_t height, int32
 
     public: std::string getName();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: void paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics* graphics);
 
     public: int32_t getX2();
 
@@ -115,7 +121,7 @@ public: AllBinaryTiledLayer(Integer dataId, int32_t width, int32_t height, int32
 
     public: int32_t getHalfHeight();
 
-    public: Integer getDataId();
+    public: int32_t getDataId();
 
     public: int32_t getHalfCellWidth();
 

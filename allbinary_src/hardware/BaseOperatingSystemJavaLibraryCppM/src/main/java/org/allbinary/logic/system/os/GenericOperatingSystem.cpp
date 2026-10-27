@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/java/character/CharacterSet.h>
@@ -53,12 +59,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OperatingSystemInterface.h"
-#include "SystemProperties.h"
+        #include "org/allbinary/logic/system/os/OperatingSystemInterface.h"
+#include "org/allbinary/logic/system/os/SystemProperties.h"
 
 class GenericOperatingSystem
             : public Object
-        : public OperatingSystemInterface {
+        , public OperatingSystemInterface {
 
     private: const std::string osName;
 
@@ -66,22 +72,22 @@ class GenericOperatingSystem
 
     private: const std::string osVersion;
 
-    private: const CharacterSet characterSet = CharacterSet();
+    private: CharacterSet* characterSet = new CharacterSet();
 
     protected: bool scalable = false;
 
 public: GenericOperatingSystem(){
 
-    SystemProperties systemProperties = SystemProperties::getInstance();;
+    SystemProperties* systemProperties = SystemProperties::getInstance();;
     
 
-    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
+    StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-    std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;;
+    std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;;
     
 
-                        if(stringValidationUtil.isEmpty(systemProperties.getName()))
+                        if(stringValidationUtil->isEmpty(systemProperties->getName()))
                         
                                     {
                                     this->osName= EMPTY_STRING;
@@ -90,13 +96,13 @@ public: GenericOperatingSystem(){
                                     }
                                 
                         else {
-                            this->osName= systemProperties.getName();
+                            this->osName= systemProperties->getName();
     
 
                         }
                             
 
-                        if(stringValidationUtil.isEmpty(systemProperties.getArch()))
+                        if(stringValidationUtil->isEmpty(systemProperties->getArch()))
                         
                                     {
                                     this->osArch= EMPTY_STRING;
@@ -105,13 +111,13 @@ public: GenericOperatingSystem(){
                                     }
                                 
                         else {
-                            this->osArch= systemProperties.getArch();
+                            this->osArch= systemProperties->getArch();
     
 
                         }
                             
 
-                        if(stringValidationUtil.isEmpty(systemProperties.getVersion()))
+                        if(stringValidationUtil->isEmpty(systemProperties->getVersion()))
                         
                                     {
                                     this->osVersion= EMPTY_STRING;
@@ -120,7 +126,7 @@ public: GenericOperatingSystem(){
                                     }
                                 
                         else {
-                            this->osVersion= systemProperties.getVersion();
+                            this->osVersion= systemProperties->getVersion();
     
 
                         }
@@ -158,7 +164,7 @@ public: GenericOperatingSystem(){
 }
 
 
-    public: CharacterSet getCharacterSet(){
+    public: CharacterSet* getCharacterSet(){
 
 
 
@@ -220,34 +226,34 @@ public: GenericOperatingSystem(){
 
     public: std::string toString(){
 
-    std::string NEW_LINE = CommonSeps::getInstance().NEW_LINE;;
+    std::string NEW_LINE = CommonSeps::getInstance()->NEW_LINE;;
     
 
-    StringMaker osBuffer = StringMaker();;
+    StringMaker* osBuffer = new StringMaker();;
     
-osBuffer.append("Operating System Info: \n");
+osBuffer->append("Operating System Info: \n");
     
-osBuffer.append(this->getName());
+osBuffer->append(this->getName());
     
-osBuffer.append(NEW_LINE);
+osBuffer->append(NEW_LINE);
     
-osBuffer.append(this->getArch());
+osBuffer->append(this->getArch());
     
-osBuffer.append(NEW_LINE);
+osBuffer->append(NEW_LINE);
     
-osBuffer.append(this->getVersion());
+osBuffer->append(this->getVersion());
     
-osBuffer.append(NEW_LINE);
+osBuffer->append(NEW_LINE);
     
-osBuffer.append(StringUtil::getInstance().toString(this->getCharacterSet()));
+osBuffer->append(StringUtil::getInstance()->toString(this->getCharacterSet()));
     
-osBuffer.append(NEW_LINE);
+osBuffer->append(NEW_LINE);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return osBuffer.toString();;
+                        return osBuffer->toString();;
     
 }
 

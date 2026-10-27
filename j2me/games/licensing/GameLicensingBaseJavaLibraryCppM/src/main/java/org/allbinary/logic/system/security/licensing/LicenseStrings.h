@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSESTRINGS_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSESTRINGS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class LicenseStrings
             : public Object
          {
 
-    private: static LicenseStrings instance() { return LicenseStrings(); }
+    private: static LicenseStrings* instance() { static std::unique_ptr<LicenseStrings> value(new LicenseStrings()); return value.get(); }
 
-    public: static LicenseStrings getInstance();
+    public: static LicenseStrings* getInstance();
 
     public: const std::string LOCKED = "Demo Locked Feature";
 

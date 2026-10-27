@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <android/view/View.h>
 
       
@@ -39,26 +45,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseViewWrapper.h"
+        #include "org/allbinary/android/view/BaseViewWrapper.h"
 
 class ViewWrapper: public BaseViewWrapper {
 
-    private: View view;
+    private: View* view;
 
-public: ViewWrapper(View view){
+public: ViewWrapper(View* view){
 this->view= view;
     
 }
 
 
     public: void invalidate(){
-this->view.invalidate();
+this->view->invalidate();
     
 }
 
 
     public: void postInvalidate(){
-this->view.postInvalidate();
+this->view->postInvalidate();
     
 }
 

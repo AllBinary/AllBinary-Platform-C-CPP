@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -51,38 +57,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapCellPosition.h"
-#include "BasicGeographicMap.h"
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
+#include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
 
 class BasicGeographicMapUtil
             : public Object
          {
 
-    private: static BasicGeographicMapUtil instance() { return BasicGeographicMapUtil(); }
+    private: static BasicGeographicMapUtil* instance() { static std::unique_ptr<BasicGeographicMapUtil> value(new BasicGeographicMapUtil()); return value.get(); }
 
-    public: static BasicGeographicMapUtil getInstance();
+    public: static BasicGeographicMapUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public: int32_t getBorderingRow(int32_t direction, GeographicMapCellPosition oldGeographicMapCellPosition);
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getBorderingColumn(int32_t direction, GeographicMapCellPosition oldGeographicMapCellPosition);
+    public: int32_t getBorderingRow(int32_t direction, GeographicMapCellPosition* oldGeographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: bool isSameCellPosition(GeographicMapCellPosition fromGeographicMapCellPosition, GeographicMapCellPosition toGeographicMapCellPosition);
+    public: int32_t getBorderingColumn(int32_t direction, GeographicMapCellPosition* oldGeographicMapCellPosition);
 
-    public: std::vector<Layer> createAllBinaryTiledLayerArray(std::vector<BasicGeographicMap> geographicMapInterfaceArray);
+                //@Throws(Exception.constructor)
+            
+    public: bool isSameCellPosition(GeographicMapCellPosition* fromGeographicMapCellPosition, GeographicMapCellPosition* toGeographicMapCellPosition);
 
-    public: std::vector<Layer> getAllBinaryTiledLayerArray(std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<Layer> tiledLayerArray, int32_t startIndex);
+    public: std::vector<Layer*> createAllBinaryTiledLayerArray(std::vector<BasicGeographicMap*> geographicMapInterfaceArray);
 
-    public: void move(std::vector<BasicGeographicMap> geographicMapInterfaceArray, int32_t dx, int32_t dy);
+    public: std::vector<Layer*> getAllBinaryTiledLayerArray(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<Layer*> tiledLayerArray, int32_t startIndex);
 
-    public: void setPosition(std::vector<BasicGeographicMap> geographicMapInterfaceArray, int32_t x, int32_t y);
+    public: void move(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, int32_t dx, int32_t dy);
+
+    public: void setPosition(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, int32_t x, int32_t y);
 
 };
 

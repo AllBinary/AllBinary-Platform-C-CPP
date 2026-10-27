@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_CREATEGAMERUNNABLE_H
         #define ORG_ALLBINARY_GAME_MIDLET_CREATEGAMERUNNABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,26 +69,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DemoGameMidlet.h"
-#include "DemoGameMidletEvent.h"
-#include "DemoGameMidletStateFactory.h"
-#include "DemoGameMidletEventHandler.h"
+        #include "org/allbinary/game/midlet/DemoGameMidlet.h"
+#include "org/allbinary/game/midlet/DemoGameMidletEvent.h"
+#include "org/allbinary/game/midlet/DemoGameMidletStateFactory.h"
+#include "org/allbinary/game/midlet/DemoGameMidletEventHandler.h"
 
 class CreateGameRunnable
             : public Object
-        : public Runnable {
+        , public Runnable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: DemoGameMidlet demoGameMidlet;
+    private: DemoGameMidlet* demoGameMidlet;
 
-    private: ABHashtable<Object*, Object*> hashtable;
+    private: ABHashtable<Object*, Object*>* hashtable;
 
-    private: DemoGameMidletEvent startGameMidletEvent;
+    private: DemoGameMidletEvent* startGameMidletEvent;
 
-public: CreateGameRunnable(DemoGameMidlet demoGameMidlet, ABHashtable<Object*, Object*> hashtable);
+public: CreateGameRunnable(DemoGameMidlet* demoGameMidlet, ABHashtable<Object*, Object*>* hashtable);
 
     public: void run();
 

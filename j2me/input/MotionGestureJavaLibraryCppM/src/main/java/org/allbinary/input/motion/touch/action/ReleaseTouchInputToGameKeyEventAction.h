@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_RELEASETOUCHINPUTTOGAMEKEYEVENTACTION_H
         #define ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_RELEASETOUCHINPUTTOGAMEKEYEVENTACTION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/GameKey.h>
@@ -68,11 +76,11 @@
         
 class ReleaseTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static GameKeyCompleteMotionGestureInputEvent getInstance();
+    public: static GameKeyCompleteMotionGestureInputEvent* getInstance();
 
-    private: const GameKey NONE = GameKeyFactory::getInstance().NONE;
+    private: GameKey* NONE = GameKeyFactory::getInstance()->NONE;
 
 private: ReleaseTouchInputToGameKeyEventAction();
 

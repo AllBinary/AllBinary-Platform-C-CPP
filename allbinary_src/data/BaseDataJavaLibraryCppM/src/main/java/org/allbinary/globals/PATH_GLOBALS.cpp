@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/io/path/AbPathData.h>
@@ -52,9 +58,9 @@ class PATH_GLOBALS
             : public Object
          {
 
-    private: static PATH_GLOBALS instance() { return PATH_GLOBALS(); }
+    private: static PATH_GLOBALS* instance() { static std::unique_ptr<PATH_GLOBALS> value(new PATH_GLOBALS()); return value.get(); }
 
-    public: static PATH_GLOBALS getInstance(){
+    public: static PATH_GLOBALS* getInstance(){
 
 
 
@@ -66,56 +72,56 @@ class PATH_GLOBALS
 
 private: PATH_GLOBALS(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    AbPathData abPathData = AbPathData::getInstance();;
+    AbPathData* abPathData = AbPathData::getInstance();;
     
-stringBuffer.append("data");
+stringBuffer->append("data");
     
-stringBuffer.append(abPathData.SEPARATOR);
+stringBuffer->append(abPathData->SEPARATOR);
     
-this->DATA_PATH= stringBuffer.toString();
+this->DATA_PATH= stringBuffer->toString();
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(this->DATA_PATH);
+stringBuffer->append(this->DATA_PATH);
     
-stringBuffer.append(CommonStrings::getInstance().INIT);
+stringBuffer->append(CommonStrings::getInstance()->INIT);
     
-stringBuffer.append(abPathData.SEPARATOR);
+stringBuffer->append(abPathData->SEPARATOR);
     
-this->INIT_PATH= stringBuffer.toString();
+this->INIT_PATH= stringBuffer->toString();
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(this->DATA_PATH);
+stringBuffer->append(this->DATA_PATH);
     
-stringBuffer.append("log");
+stringBuffer->append("log");
     
-stringBuffer.append(abPathData.SEPARATOR);
+stringBuffer->append(abPathData->SEPARATOR);
     
-this->LOG_PATH= stringBuffer.toString();
+this->LOG_PATH= stringBuffer->toString();
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(this->DATA_PATH);
+stringBuffer->append(this->DATA_PATH);
     
-stringBuffer.append("backup");
+stringBuffer->append("backup");
     
-stringBuffer.append(abPathData.SEPARATOR);
+stringBuffer->append(abPathData->SEPARATOR);
     
-this->BACKUP_PATH= stringBuffer.toString();
+this->BACKUP_PATH= stringBuffer->toString();
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(this->INIT_PATH);
+stringBuffer->append(this->INIT_PATH);
     
-stringBuffer.append("views");
+stringBuffer->append("views");
     
-stringBuffer.append(abPathData.SEPARATOR);
+stringBuffer->append(abPathData->SEPARATOR);
     
-this->VIEWS_PATH= stringBuffer.toString();
+this->VIEWS_PATH= stringBuffer->toString();
     
 }
 

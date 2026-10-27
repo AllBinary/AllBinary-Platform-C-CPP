@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENT_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <javax/swing/tree/MutableTreeNode.h>
 
       
@@ -42,8 +50,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "EventObject.h"
-#include "MyGraphicItemEventSource.h"
+        #include "org/allbinary/graphics/j2me/workarea/tools/event/EventObject.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/event/MyGraphicItemEventSource.h"
 
 class MyGraphicItemEvent: public java::util::EventObject {
 
@@ -55,7 +63,7 @@ public: MyGraphicItemEvent(Object* source);
 
     public: std::string getCommand();
 
-    public: MutableTreeNode getTreeNode();
+    public: MutableTreeNode* getTreeNode();
 
     public: double getAngle();
 

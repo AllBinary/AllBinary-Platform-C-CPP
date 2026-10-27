@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/event/GameKeyEvent.h>
@@ -44,12 +50,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RTSPlayerGameInputProcessor.h"
-#include "RTSPlayerGameInput.h"
+        #include "org/allbinary/game/input/RTSPlayerGameInputProcessor.h"
+#include "org/allbinary/game/input/RTSPlayerGameInput.h"
 
 class RTSPlayerLeftGameInputProcessor: public RTSPlayerGameInputProcessor {
 
-public: RTSPlayerLeftGameInputProcessor(RTSPlayerGameInput rtsPlayerGameInput) : RTSPlayerGameInputProcessor(rtsPlayerGameInput){
+public: RTSPlayerLeftGameInputProcessor(RTSPlayerGameInput* rtsPlayerGameInput) : RTSPlayerGameInputProcessor(rtsPlayerGameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -61,7 +67,7 @@ public: RTSPlayerLeftGameInputProcessor(RTSPlayerGameInput rtsPlayerGameInput) :
 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
+    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
 this->rtsPlayerGameInput.left();
     
 }

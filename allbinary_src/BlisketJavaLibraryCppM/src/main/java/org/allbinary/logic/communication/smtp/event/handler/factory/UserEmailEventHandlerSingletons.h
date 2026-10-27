@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_FACTORY_USEREMAILEVENTHANDLERSINGLETONS_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_FACTORY_USEREMAILEVENTHANDLERSINGLETONS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -84,21 +90,21 @@ class UserEmailEventHandlerSingletons
             : public Object
          {
 
-    private: static UserEmailEventHandlerSingletons instance() { return UserEmailEventHandlerSingletons(); }
+    private: static UserEmailEventHandlerSingletons* instance() { static std::unique_ptr<UserEmailEventHandlerSingletons> value(new UserEmailEventHandlerSingletons()); return value.get(); }
 
-    public: static UserEmailEventHandlerSingletons getInstance();
+    public: static UserEmailEventHandlerSingletons* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const HashMap<Object*, Object*> userEmailEventHandlerHashMap = StdUtil::getInstance().createHashMap();
+    private: HashMap<Object*, Object*>* userEmailEventHandlerHashMap = StdUtil::getInstance()->createHashMap();
 
 private: UserEmailEventHandlerSingletons();
 
                 //@Throws(Exception.constructor)
             
-    public: UserEmailEventHandler getInstance(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, UserInterface userInterface);
+    public: UserEmailEventHandler* getInstance(AbeClientInformationInterface* abeClientInformation, UserEmailEventNameData* userEmailEventNameData, UserInterface* userInterface);
 
 };
 

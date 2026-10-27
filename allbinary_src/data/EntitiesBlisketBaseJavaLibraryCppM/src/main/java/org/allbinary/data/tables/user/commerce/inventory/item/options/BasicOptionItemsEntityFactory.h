@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_OPTIONS_BASICOPTIONITEMSENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_OPTIONS_BASICOPTIONITEMSENTITYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,21 +55,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicOptionItemsEntity.h"
+        #include "org/allbinary/data/tables/user/commerce/inventory/item/options/BasicOptionItemsEntity.h"
 
 class BasicOptionItemsEntityFactory
             : public Object
          {
 
-    private: static BasicOptionItemsEntityFactory instance() { return BasicOptionItemsEntityFactory(); }
+    private: static BasicOptionItemsEntityFactory* instance() { static std::unique_ptr<BasicOptionItemsEntityFactory> value(new BasicOptionItemsEntityFactory()); return value.get(); }
 
-    public: static BasicOptionItemsEntityFactory getInstance();
+    public: static BasicOptionItemsEntityFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: BasicOptionItemsEntityFactory();
 
-    public: BasicOptionItemsEntity getBasicOptionItemsEntityInstance();
+    public: BasicOptionItemsEntity* getBasicOptionItemsEntityInstance();
 
 };
 

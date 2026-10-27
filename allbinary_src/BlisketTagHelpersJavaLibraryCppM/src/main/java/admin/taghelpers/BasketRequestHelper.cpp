@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -77,23 +83,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TagHelper.h"
+        #include "admin/taghelpers/TagHelper.h"
 
 class BasketRequestHelper: public TagHelper {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
-    private: WeblisketSession weblisketSession;
+    private: WeblisketSession* weblisketSession;
 
-    private: const StoreFrontInterface storeFrontInterface;
+    private: StoreFrontInterface* storeFrontInterface;
 
-    private: HashMap<Object*, Object*> propertiesHashMap;
+    private: HashMap<Object*, Object*>* propertiesHashMap;
 
-    private: PageContext pageContext;
+    private: PageContext* pageContext;
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
     private: std::string id;
 
@@ -101,15 +107,15 @@ class BasketRequestHelper: public TagHelper {
 
     private: const int32_t MAX = 200;
 
-public: BasketRequestHelper(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
+public: BasketRequestHelper(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
 this->propertiesHashMap= propertiesHashMap;
     
 this->pageContext= pageContext;
     
-this->request= pageContext.getRequest();
+this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
     
 
-    std::string storeName = propertiesHashMap.get(StoreFrontData::getInstance().NAME);;
+    std::string storeName = propertiesHashMap->get(StoreFrontData::getInstance()->NAME);;
     
 
                         if(true)
@@ -121,12 +127,12 @@ this->request= pageContext.getRequest();
                                     }
                                 
                         else {
-                            this->storeFrontInterface= StoreFront();
+                            this->storeFrontInterface= new StoreFront();
     
 
                         }
                             
-this->weblisketSession= WeblisketSession(propertiesHashMap, pageContext);
+this->weblisketSession= new WeblisketSession(propertiesHashMap, pageContext);
     
 this->getFormData();
     
@@ -134,14 +140,14 @@ this->getFormData();
 
 
     private: void getFormData(){
-this->id= this->request.getParameter(basicItemData.ID);
+this->id= this->request->getParameter(basicItemData->ID);
     
-this->num= this->request.getParameter(BasketData::ITEMTOTALINBASKET);
+this->num= this->request->getParameter(BasketData::ITEMTOTALINBASKET);
     
 }
 
 
-    public: Boolean addItemToBasket(){
+    public: bool addItemToBasket(){
 
         try {
             
@@ -149,10 +155,10 @@ this->num= this->request.getParameter(BasketData::ITEMTOTALINBASKET);
                         
                                     {
                                     
-    BasketInterface basket = this->weblisketSession.getOrder().getBasket();;
+    BasketInterface* basket = this->weblisketSession->getOrder()->getBasket();;
     
 
-                        if(InventoryEntityFactory::getInstance().getInventoryEntityInstance().getItem(this->id) == 
+                        if(InventoryEntityFactory::getInstance()->getInventoryEntityInstance()->getItem(this->id) == 
                                     nullptr
                                 )
                         
@@ -166,16 +172,16 @@ this->num= this->request.getParameter(BasketData::ITEMTOTALINBASKET);
 
                                     }
                                 
-basket.addItem(this->id, num);
+basket->addItem(this->id, num);
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF("Successfully added item to Basket", this, "addItemToBasket()");
+                                    this->logUtil->putF("Successfully added item to Basket", this, "addItemToBasket()");
     
 
                                     }
@@ -188,13 +194,13 @@ basket.addItem(this->id, num);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "addItemToBasket()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "addItemToBasket()", &e);
     
 
                                     }
@@ -210,7 +216,7 @@ basket.addItem(this->id, num);
 }
 
 
-    public: Boolean removeItemFromBasket(){
+    public: bool removeItemFromBasket(){
 
         try {
             
@@ -218,18 +224,18 @@ basket.addItem(this->id, num);
                         
                                     {
                                     
-    BasketInterface basket = this->weblisketSession.getOrder().getBasket();;
+    BasketInterface* basket = this->weblisketSession->getOrder()->getBasket();;
     
-basket.removeItem(this->id);
+basket->removeItem(this->id);
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF("Successfully removed item from Basket", this, "removeItemFromBasket()");
+                                    this->logUtil->putF("Successfully removed item from Basket", this, "removeItemFromBasket()");
     
 
                                     }
@@ -242,13 +248,13 @@ basket.removeItem(this->id);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "removeItemFromBasket()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "removeItemFromBasket()", &e);
     
 
                                     }
@@ -264,21 +270,21 @@ basket.removeItem(this->id);
 }
 
 
-    public: Boolean adjustBasket(){
+    public: bool adjustBasket(){
 
         try {
             
-    BasketInterface basket = this->weblisketSession.getOrder().getBasket();;
+    BasketInterface* basket = this->weblisketSession->getOrder()->getBasket();;
     
 
                         if(true && true)
-                        basket.adjustItem(this->id, this->num);
+                        basket->adjustItem(this->id, this->num);
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF("Successfull Adjusted Basket", this, "adjustBasket()");
+                                    this->logUtil->putF("Successfull Adjusted Basket", this, "adjustBasket()");
     
 
                                     }
@@ -291,13 +297,13 @@ basket.removeItem(this->id);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "adjustBasket()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "adjustBasket()", &e);
     
 
                                     }

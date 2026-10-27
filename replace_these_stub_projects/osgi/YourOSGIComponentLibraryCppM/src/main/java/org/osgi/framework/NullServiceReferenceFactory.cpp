@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,15 +44,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NullServiceReference.h"
+        #include "org/osgi/framework/NullServiceReference.h"
 
 class NullServiceReferenceFactory
             : public Object
          {
 
-    private: static NullServiceReferenceFactory instance() { return NullServiceReferenceFactory(); }
+    private: static NullServiceReferenceFactory* instance() { static std::unique_ptr<NullServiceReferenceFactory> value(new NullServiceReferenceFactory()); return value.get(); }
 
-    public: static NullServiceReferenceFactory getInstance(){
+    public: static NullServiceReferenceFactory* getInstance(){
 
 
 
@@ -56,7 +62,7 @@ class NullServiceReferenceFactory
 }
 
 
-    public: NullServiceReference NULL_SERVICE_REFERENCE = NullServiceReference();
+    public: NullServiceReference* NULL_SERVICE_REFERENCE = new NullServiceReference();
 
 };
 

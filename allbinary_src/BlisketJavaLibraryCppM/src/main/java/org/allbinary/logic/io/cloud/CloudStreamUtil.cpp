@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,16 +55,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFileInputStream.h"
-#include "AbFileLocalInputStream.h"
+        #include "org/allbinary/logic/io/AbFileInputStream.h"
+#include "org/allbinary/logic/io/AbFileLocalInputStream.h"
 
 class CloudStreamUtil
             : public Object
          {
 
-    private: static CloudStreamUtil instance() { return CloudStreamUtil(); }
+    private: static CloudStreamUtil* instance() { static std::unique_ptr<CloudStreamUtil> value(new CloudStreamUtil()); return value.get(); }
 
-    public: static CloudStreamUtil getInstance(){
+    public: static CloudStreamUtil* getInstance(){
 
 
 
@@ -68,26 +74,26 @@ class CloudStreamUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream getFile(AbFile file){
+    public: InputStream* getFile(AbFile* file){
 
-    InputStream inputStream = AbFileInputStream(file);;
+    InputStream* inputStream = new AbFileInputStream(file);;
     
 
-    int32_t available = inputStream.available();;
+    int32_t available = inputStream->available();;
     
 
                         if(available > 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Cloud File Bytes: " +available, this, "processRequest()");
+                                    this->logUtil->putF("Cloud File Bytes: " +available, this, "processRequest()");
     
 
                                     }
@@ -106,22 +112,22 @@ class CloudStreamUtil
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream getFileAnyWhere(AbFile file){
+    public: InputStream* getFileAnyWhere(AbFile* file){
 
-    InputStream inputStream = AbFileLocalInputStream(file);;
+    InputStream* inputStream = new AbFileLocalInputStream(file);;
     
 
-    int32_t available = inputStream.available();;
+    int32_t available = inputStream->available();;
     
 
                         if(available > 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Local File Bytes: " +available, this, "processRequest()");
+                                    this->logUtil->putF("Local File Bytes: " +available, this, "processRequest()");
     
 
                                     }
@@ -130,19 +136,19 @@ class CloudStreamUtil
                                     }
                                 
                         else {
-                            inputStream= AbFileInputStream(file);
+                            inputStream= new AbFileInputStream(file);
     
-available= inputStream.available();
+available= inputStream->available();
     
 
                         if(available > 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.putF("Cloud File Bytes: " +available, this, "processRequest()");
+                                    this->logUtil->putF("Cloud File Bytes: " +available, this, "processRequest()");
     
 
                                     }
@@ -164,22 +170,22 @@ available= inputStream.available();
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream getFileLocal(AbFile file){
+    public: InputStream* getFileLocal(AbFile* file){
 
-    InputStream inputStream = AbFileLocalInputStream(file);;
+    InputStream* inputStream = new AbFileLocalInputStream(file);;
     
 
-    int32_t available = inputStream.available();;
+    int32_t available = inputStream->available();;
     
 
                         if(available > 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Local File Bytes: " +available, this, "processRequest()");
+                                    this->logUtil->putF("Local File Bytes: " +available, this, "processRequest()");
     
 
                                     }

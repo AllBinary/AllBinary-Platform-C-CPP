@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_HEALTH_HEALLAYERCIRCULARSTATICPOOL_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_HEALTH_HEALLAYERCIRCULARSTATICPOOL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/health/HealthInterface.h>
@@ -56,15 +62,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HealLayer.h"
+        #include "org/allbinary/game/ag/layer/pickup/health/HealLayer.h"
 
 class HealLayerCircularStaticPool: public AllBinaryLayerCircularPool {
 
-public: HealLayerCircularStaticPool(AllBinaryLayerFactoryInterface allbinaryLayerFactoryInterface, int32_t total);
+public: HealLayerCircularStaticPool(AllBinaryLayerFactoryInterface* allbinaryLayerFactoryInterface, int32_t total);
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(AllBinaryLayer sourceLayerInterface);
+    public: void visit(AllBinaryLayer* sourceLayerInterface);
 
 };
 

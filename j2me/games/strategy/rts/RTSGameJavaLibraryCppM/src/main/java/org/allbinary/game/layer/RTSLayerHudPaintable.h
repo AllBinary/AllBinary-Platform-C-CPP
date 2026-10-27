@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -62,18 +68,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SelectionHudPaintable.h"
-#include "RTSLayer.h"
+        #include "org/allbinary/game/layer/SelectionHudPaintable.h"
+#include "org/allbinary/game/layer/RTSLayer.h"
 
 class RTSLayerHudPaintable: public SelectionHudPaintable, public UpdateMyFontInterface {
 
-    private: static RTSLayerHudPaintable instance() { return RTSLayerHudPaintable(); }
+    private: static RTSLayerHudPaintable* instance() { static std::unique_ptr<RTSLayerHudPaintable> value(new RTSLayerHudPaintable()); return value.get(); }
 
-    public: static RTSLayerHudPaintable getInstance();
+    public: static RTSLayerHudPaintable* getInstance();
 
-    private: std::vector<std::string> weaponProperties = StringUtil::getInstance().getArrayInstance();
+    private: std::vector<std::string> weaponProperties = StringUtil::getInstance()->getArrayInstance();
 
-    private: CollidableDestroyableDamageableLayer rtsLayer = CollidableDestroyableDamageableLayer::getNullInstance();
+    private: CollidableDestroyableDamageableLayer* rtsLayer = CollidableDestroyableDamageableLayer::getNullInstance();
 
     protected: int32_t costY= 0;
 
@@ -83,15 +89,15 @@ class RTSLayerHudPaintable: public SelectionHudPaintable, public UpdateMyFontInt
 
 private: RTSLayerHudPaintable();
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
     public: void updateSelectionInfo();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: void setRtsLayer(RTSLayer rtsLayer);
+    public: void setRtsLayer(RTSLayer* rtsLayer);
 
-    private: CollidableDestroyableDamageableLayer getRtsLayer();
+    private: CollidableDestroyableDamageableLayer* getRtsLayer();
 
 };
 

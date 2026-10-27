@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -53,16 +59,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TagHelperFactoryInterface.h"
-#include "HelperFactory.h"
+        #include "admin/taghelpers/TagHelperFactoryInterface.h"
+#include "admin/taghelpers/HelperFactory.h"
 
 class CustomLoaderHelperFactory
             : public Object
-        : public TagHelperFactoryInterface {
+        , public TagHelperFactoryInterface {
 
-    private: static const std::string CLASSNAME = "admin.taghelpers.CustomLoaderHelper";
+    private: static inline const std::string CLASSNAME = "admin.taghelpers.CustomLoaderHelper";
 
-    private: static const std::string FACTORYNAME = "CustomLoaderHelperFactory";
+    private: static inline const std::string FACTORYNAME = "CustomLoaderHelperFactory";
 
 public: CustomLoaderHelperFactory(){
 }
@@ -70,9 +76,9 @@ public: CustomLoaderHelperFactory(){
 
                 //@Throws(LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*> hashMap, PageContext pageContext){
+    public: Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
 
-    AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();;
+    AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();;
     
 
 
@@ -85,7 +91,7 @@ public: CustomLoaderHelperFactory(){
 
                 //@Throws(LicensingException.constructor)
             
-    public: Object* getInstance(AbeClientInformationInterface abeClientInformation){
+    public: Object* getInstance(AbeClientInformationInterface* abeClientInformation){
 
 
 

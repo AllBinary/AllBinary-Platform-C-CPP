@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -51,9 +57,9 @@ class Direction
             : public Object
          {
 
-    private: static std::vector<Direction> directionArray = std::vector<Direction>(13);
+    private: static inline std::vector<Direction*> directionArray = std::vector<Direction*>(13);
 
-    public: static Direction getInstance(int32_t direction);
+    public: static Direction* getInstance(int32_t direction);
 
     private: std::string name;
 

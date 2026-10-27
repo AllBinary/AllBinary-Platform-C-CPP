@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_DISPLAYABLE_HIGHSCORETEXTBOX_H
         #define ORG_ALLBINARY_GAME_SCORE_DISPLAYABLE_HIGHSCORETEXTBOX_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/CommandListener.h>
@@ -101,23 +107,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HighScoreUtil.h"
+        #include "org/allbinary/game/score/displayable/HighScoreUtil.h"
 
 class HighScoreTextBox: public CustomTextBox {
 
-    private: const VirtualKeyboardEventHandler virtualKeyboardEventHandler = VirtualKeyboardEventHandler::getInstance();
+    private: VirtualKeyboardEventHandler* virtualKeyboardEventHandler = VirtualKeyboardEventHandler::getInstance();
 
-    private: HighScoreUtil highScoreUtil;
+    private: HighScoreUtil* highScoreUtil;
 
-    private: const Paintable pleaseWait = SimpleTextPaintable(this->commonStrings.PLEASE_WAIT, BasicColorFactory::getInstance().WHITE);
+    private: Paintable* pleaseWait = new SimpleTextPaintable(this->commonStrings.PLEASE_WAIT, BasicColorFactory::getInstance()->WHITE);
 
-    private: Paintable paintable = NullPaintable::getInstance();
+    private: Paintable* paintable = NullPaintable::getInstance();
 
     public: bool submitted = false;
 
-public: HighScoreTextBox(HighScoresFactoryInterface highScoresFactoryInterface, HighScoresHelperBaseInterface highScoresHelper, AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, CommandListener cmdListener, std::string name, HighScore highScore, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
+public: HighScoreTextBox(HighScoresFactoryInterface* highScoresFactoryInterface, HighScoresHelperBaseInterface* highScoresHelper, AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo, CommandListener* cmdListener, std::string name, HighScore* highScore, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor);
 
-    public: void initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener* cmdListener);
 
     public: void open();
 
@@ -127,7 +133,7 @@ public: HighScoreTextBox(HighScoresFactoryInterface highScoresFactoryInterface, 
             
     public: void update();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
     public: void saveHighScore();
 

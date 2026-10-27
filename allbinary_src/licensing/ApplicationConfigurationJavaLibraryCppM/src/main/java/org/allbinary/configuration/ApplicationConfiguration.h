@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_CONFIGURATION_APPLICATIONCONFIGURATION_H
         #define ORG_ALLBINARY_CONFIGURATION_APPLICATIONCONFIGURATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -85,11 +91,11 @@ class ApplicationConfiguration
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static ApplicationConfiguration getInstance();
+    public: static ApplicationConfiguration* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: bool fullscreen = true;
 
@@ -111,7 +117,7 @@ private: ApplicationConfiguration();
 
                 //@Throws(Exception.constructor)
             
-    public: void update(Feature gameFeature);
+    public: void update(Feature* gameFeature);
 
     public: void setFullscreen(bool fullscreen);
 

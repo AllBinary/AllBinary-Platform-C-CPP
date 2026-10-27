@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/string/CommonStrings.h>
@@ -51,13 +57,13 @@ class HtmlTableData
             : public Object
          {
 
-    private: static HtmlTableData instance() { return HtmlTableData(); }
+    private: static HtmlTableData* instance() { static std::unique_ptr<HtmlTableData> value(new HtmlTableData()); return value.get(); }
 
-    public: static HtmlTableData getInstance();
+    public: static HtmlTableData* getInstance();
 
-    public: const std::string LEFT = CommonStrings::getInstance().LEFT;
+    public: const std::string LEFT = CommonStrings::getInstance()->LEFT;
 
-    public: const std::string RIGHT = CommonStrings::getInstance().RIGHT;
+    public: const std::string RIGHT = CommonStrings::getInstance()->RIGHT;
 
     public: const std::string NONE = "none";
 

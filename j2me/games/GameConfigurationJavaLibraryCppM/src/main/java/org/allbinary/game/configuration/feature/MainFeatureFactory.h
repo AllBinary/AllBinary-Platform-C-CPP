@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_MAINFEATUREFACTORY_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_MAINFEATUREFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,25 +47,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Feature.h"
+        #include "org/allbinary/game/configuration/feature/Feature.h"
 
 class MainFeatureFactory
             : public Object
          {
 
-    private: static MainFeatureFactory instance() { return MainFeatureFactory(); }
+    private: static MainFeatureFactory* instance() { static std::unique_ptr<MainFeatureFactory> value(new MainFeatureFactory()); return value.get(); }
 
-    public: static MainFeatureFactory getInstance();
+    public: static MainFeatureFactory* getInstance();
 
-    public: const Feature FULL_SCREEN = Feature("Full Screen");
+    public: Feature* FULL_SCREEN = new Feature("Full Screen");
 
-    public: const Feature TITLE_BAR = Feature("Title Bar");
+    public: Feature* TITLE_BAR = new Feature("Title Bar");
 
-    public: const Feature STATIC = Feature("Static Dependent Feature");
+    public: Feature* STATIC = new Feature("Static Dependent Feature");
 
-    public: const Feature LOAD_ONDEMAND = Feature("Load OnDemand");
+    public: Feature* LOAD_ONDEMAND = new Feature("Load OnDemand");
 
-    public: const Feature LOAD_ALL = Feature("Load All");
+    public: Feature* LOAD_ALL = new Feature("Load All");
 
 };
 

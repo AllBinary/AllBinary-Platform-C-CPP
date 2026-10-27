@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/configuration/persistance/GamePersistanceStrings.h>
 
       
@@ -45,12 +51,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PCKeyFactory.h"
-#include "GameKeyFactory.h"
+        #include "org/allbinary/game/input/PCKeyFactory.h"
+#include "org/allbinary/game/input/GameKeyFactory.h"
 
 class DesktopDefaultGameInputMapping: public PersistentInputMapping {
 
-public: DesktopDefaultGameInputMapping() : PersistentInputMapping(GamePersistanceStrings::getInstance().DEFAULT_INPUT_MAPPING_RECORD_ID){
+public: DesktopDefaultGameInputMapping() : PersistentInputMapping(GamePersistanceStrings::getInstance()->DEFAULT_INPUT_MAPPING_RECORD_ID){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -58,107 +64,107 @@ public: DesktopDefaultGameInputMapping() : PersistentInputMapping(GamePersistanc
                             //For kotlin this is before the body of the constructor.
                     
 
-    InputToGameKeyMapping inputToGameKeyMapping = this->getInputMapping();;
+    InputToGameKeyMapping* inputToGameKeyMapping = this->getInputMapping();;
     
 
-    PCKeyFactory pcKeyFactory = PCKeyFactory::getInstance();;
+    PCKeyFactory* pcKeyFactory = PCKeyFactory::getInstance();;
     
 
-    GameKeyFactory gameKeyFactory = GameKeyFactory::getInstance();;
+    GameKeyFactory* gameKeyFactory = GameKeyFactory::getInstance();;
     
-inputToGameKeyMapping.add(gameKeyFactory.FIRE, pcKeyFactory.ENTER);
+inputToGameKeyMapping->add(gameKeyFactory->FIRE, pcKeyFactory->ENTER);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_NUM1, pcKeyFactory.FOUR);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_NUM1, pcKeyFactory->FOUR);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_NUM1, pcKeyFactory._P);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_NUM1, pcKeyFactory->_P);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_NUM1, pcKeyFactory.p);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_NUM1, pcKeyFactory->p);
     
-inputToGameKeyMapping.add(gameKeyFactory.UP, pcKeyFactory.DPAD_UP);
+inputToGameKeyMapping->add(gameKeyFactory->UP, pcKeyFactory->DPAD_UP);
     
-inputToGameKeyMapping.add(gameKeyFactory.DOWN, pcKeyFactory.DPAD_DOWN);
+inputToGameKeyMapping->add(gameKeyFactory->DOWN, pcKeyFactory->DPAD_DOWN);
     
-inputToGameKeyMapping.add(gameKeyFactory.LEFT, pcKeyFactory.DPAD_LEFT);
+inputToGameKeyMapping->add(gameKeyFactory->LEFT, pcKeyFactory->DPAD_LEFT);
     
-inputToGameKeyMapping.add(gameKeyFactory.RIGHT, pcKeyFactory.DPAD_RIGHT);
+inputToGameKeyMapping->add(gameKeyFactory->RIGHT, pcKeyFactory->DPAD_RIGHT);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_NUM1, pcKeyFactory.FIVE);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_NUM1, pcKeyFactory->FIVE);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_NUM7, pcKeyFactory._Y);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_NUM7, pcKeyFactory->_Y);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_NUM9, pcKeyFactory._I);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_NUM9, pcKeyFactory->_I);
     
-inputToGameKeyMapping.add(gameKeyFactory.UP, pcKeyFactory._U);
+inputToGameKeyMapping->add(gameKeyFactory->UP, pcKeyFactory->_U);
     
-inputToGameKeyMapping.add(gameKeyFactory.LEFT, pcKeyFactory._H);
+inputToGameKeyMapping->add(gameKeyFactory->LEFT, pcKeyFactory->_H);
     
-inputToGameKeyMapping.add(gameKeyFactory.RIGHT, pcKeyFactory._J);
+inputToGameKeyMapping->add(gameKeyFactory->RIGHT, pcKeyFactory->_J);
     
-inputToGameKeyMapping.add(gameKeyFactory.DOWN, pcKeyFactory._N);
+inputToGameKeyMapping->add(gameKeyFactory->DOWN, pcKeyFactory->_N);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_NUM5, pcKeyFactory._M);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_NUM5, pcKeyFactory->_M);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_NUM7, pcKeyFactory.y);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_NUM7, pcKeyFactory->y);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_NUM9, pcKeyFactory.i);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_NUM9, pcKeyFactory->i);
     
-inputToGameKeyMapping.add(gameKeyFactory.UP, pcKeyFactory.u);
+inputToGameKeyMapping->add(gameKeyFactory->UP, pcKeyFactory->u);
     
-inputToGameKeyMapping.add(gameKeyFactory.LEFT, pcKeyFactory.h);
+inputToGameKeyMapping->add(gameKeyFactory->LEFT, pcKeyFactory->h);
     
-inputToGameKeyMapping.add(gameKeyFactory.RIGHT, pcKeyFactory.j);
+inputToGameKeyMapping->add(gameKeyFactory->RIGHT, pcKeyFactory->j);
     
-inputToGameKeyMapping.add(gameKeyFactory.DOWN, pcKeyFactory.n);
+inputToGameKeyMapping->add(gameKeyFactory->DOWN, pcKeyFactory->n);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_NUM5, pcKeyFactory.m);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_NUM5, pcKeyFactory->m);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_NUM7, pcKeyFactory._Q);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_NUM7, pcKeyFactory->_Q);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_NUM9, pcKeyFactory._E);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_NUM9, pcKeyFactory->_E);
     
-inputToGameKeyMapping.add(gameKeyFactory.UP, pcKeyFactory._W);
+inputToGameKeyMapping->add(gameKeyFactory->UP, pcKeyFactory->_W);
     
-inputToGameKeyMapping.add(gameKeyFactory.LEFT, pcKeyFactory._A);
+inputToGameKeyMapping->add(gameKeyFactory->LEFT, pcKeyFactory->_A);
     
-inputToGameKeyMapping.add(gameKeyFactory.RIGHT, pcKeyFactory._D);
+inputToGameKeyMapping->add(gameKeyFactory->RIGHT, pcKeyFactory->_D);
     
-inputToGameKeyMapping.add(gameKeyFactory.DOWN, pcKeyFactory._S);
+inputToGameKeyMapping->add(gameKeyFactory->DOWN, pcKeyFactory->_S);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_NUM5, pcKeyFactory._X);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_NUM5, pcKeyFactory->_X);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_NUM7, pcKeyFactory.q);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_NUM7, pcKeyFactory->q);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_NUM9, pcKeyFactory.e);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_NUM9, pcKeyFactory->e);
     
-inputToGameKeyMapping.add(gameKeyFactory.UP, pcKeyFactory.w);
+inputToGameKeyMapping->add(gameKeyFactory->UP, pcKeyFactory->w);
     
-inputToGameKeyMapping.add(gameKeyFactory.LEFT, pcKeyFactory.a);
+inputToGameKeyMapping->add(gameKeyFactory->LEFT, pcKeyFactory->a);
     
-inputToGameKeyMapping.add(gameKeyFactory.RIGHT, pcKeyFactory.d);
+inputToGameKeyMapping->add(gameKeyFactory->RIGHT, pcKeyFactory->d);
     
-inputToGameKeyMapping.add(gameKeyFactory.DOWN, pcKeyFactory.s);
+inputToGameKeyMapping->add(gameKeyFactory->DOWN, pcKeyFactory->s);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_NUM5, pcKeyFactory.x);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_NUM5, pcKeyFactory->x);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_NUM3, pcKeyFactory.THREE);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_NUM3, pcKeyFactory->THREE);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_NUM0, pcKeyFactory.ZERO);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_NUM0, pcKeyFactory->ZERO);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_NUM0, pcKeyFactory.ONE);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_NUM0, pcKeyFactory->ONE);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_NUM0, pcKeyFactory.SPACE);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_NUM0, pcKeyFactory->SPACE);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_POUND, pcKeyFactory.DEL);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_POUND, pcKeyFactory->DEL);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_POUND, pcKeyFactory.TWO);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_POUND, pcKeyFactory->TWO);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_STAR, pcKeyFactory.ESCAPE);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_STAR, pcKeyFactory->ESCAPE);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_STAR, pcKeyFactory.STAR);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_STAR, pcKeyFactory->STAR);
     
-inputToGameKeyMapping.add(gameKeyFactory.LEVEL_DOWN, pcKeyFactory.COMMA);
+inputToGameKeyMapping->add(gameKeyFactory->LEVEL_DOWN, pcKeyFactory->COMMA);
     
-inputToGameKeyMapping.add(gameKeyFactory.LEVEL_UP, pcKeyFactory.PERIOD);
+inputToGameKeyMapping->add(gameKeyFactory->LEVEL_UP, pcKeyFactory->PERIOD);
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -71,15 +77,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreFrontsEntityInterface.h"
+        #include "org/allbinary/data/tables/context/module/storefronts/StoreFrontsEntityInterface.h"
 
 class StoreFrontsEntity: public AbSqlBean, public StoreFrontsEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     protected: const std::string tableName = "storefronts";
 
-public: StoreFrontsEntity() : AbSqlBean(UserDbInitInfo()){
+public: StoreFrontsEntity() : AbSqlBean(new UserDbInitInfo()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -91,29 +97,29 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void insert(BasicArrayList values){
+    public: void insert(BasicArrayList* values){
 
         try {
             super.insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, INSERT);
+                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, INSERT);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, INSERT, e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, INSERT, &e);
     
 
                                     }
@@ -126,26 +132,26 @@ this->setTableName(this->tableName);
     public: void delete_(std::string value){
 
         try {
-            super.deleteWhere(StoreFrontData::getInstance().NAME, value);
+            super.deleteWhere(StoreFrontData::getInstance()->NAME, value);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
+                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, &e);
     
 
                                     }
@@ -157,14 +163,14 @@ this->setTableName(this->tableName);
 
                 //@Throws(Exception.constructor)
             
-    public: StoreFront getStoreFrontInterface(std::string name){
+    public: StoreFront* getStoreFrontInterface(std::string name){
 
-    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* keysAndValues = StdUtil::getInstance()->createHashMap();;
     
-keysAndValues.put(StoreFrontData::getInstance().NAME, name);
+keysAndValues->put(StoreFrontData::getInstance()->NAME, name);
     
 
-    HashMap<Object*, Object*> storeHashMap = super.getRow(keysAndValues);;
+    HashMap<Object*, Object*>* storeHashMap = super.getRow(keysAndValues);;
     
 
                         if(storeHashMap != 
@@ -176,7 +182,7 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, name);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreFront(storeHashMap);
+                        return new StoreFront(storeHashMap);
     
 
                                     }
@@ -186,7 +192,7 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, name);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreFront();
+                        return new StoreFront();
     
 
                         }
@@ -194,9 +200,9 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, name);
 }
 
 
-    public: BasicArrayList getStoreFrontNames(){
+    public: BasicArrayList* getStoreFrontNames(){
 
-    BasicArrayList storeFrontNames = super.getColumn(StoreFrontData::getInstance().NAME);;
+    BasicArrayList* storeFrontNames = super.getColumn(StoreFrontData::getInstance()->NAME);;
     
 
 
@@ -207,144 +213,144 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, name);
 }
 
 
-    public: void update(HashMap<Object*, Object*> updatedValues){
-super.updateWhere(StoreFrontData::getInstance().NAME, updatedValues.get(StoreFrontData::getInstance().NAME), updatedValues);
+    public: void update(HashMap<Object*, Object*>* updatedValues){
+super.updateWhere(StoreFrontData::getInstance()->NAME, updatedValues->get(StoreFrontData::getInstance()->NAME), updatedValues);
     
 }
 
 
     public: std::string createTableStatement(){
 
-    StoreFrontData storeFrontData = StoreFrontData::getInstance();;
+    StoreFrontData* storeFrontData = StoreFrontData::getInstance();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->sqlStrings.CREATE_TABLE);
+stringBuffer->append(this->sqlStrings.CREATE_TABLE);
     
-stringBuffer.append(this->tableName);
+stringBuffer->append(this->tableName);
     
-stringBuffer.append(this->sqlStrings.START);
+stringBuffer->append(this->sqlStrings.START);
     
-stringBuffer.append(storeFrontData.NAME);
+stringBuffer->append(storeFrontData->NAME);
     
-stringBuffer.append(this->sqlTypeStrings.SIXTY_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.SIXTY_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(storeFrontData.HOMEHOSTNAME);
+stringBuffer->append(storeFrontData->HOMEHOSTNAME);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(storeFrontData.HOMEHOSTNAMEPATH);
+stringBuffer->append(storeFrontData->HOMEHOSTNAMEPATH);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(storeFrontData.HOSTNAME);
+stringBuffer->append(storeFrontData->HOSTNAME);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(storeFrontData.HOSTNAMEPATH);
+stringBuffer->append(storeFrontData->HOSTNAMEPATH);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(storeFrontData.TESTHOMEHOSTNAME);
+stringBuffer->append(storeFrontData->TESTHOMEHOSTNAME);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(storeFrontData.TESTHOMEHOSTNAMEPATH);
+stringBuffer->append(storeFrontData->TESTHOMEHOSTNAMEPATH);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(storeFrontData.TESTHOSTNAME);
+stringBuffer->append(storeFrontData->TESTHOSTNAME);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(storeFrontData.TESTHOSTNAMEPATH);
+stringBuffer->append(storeFrontData->TESTHOSTNAMEPATH);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(storeFrontData.IMAGEPATH);
+stringBuffer->append(storeFrontData->IMAGEPATH);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(storeFrontData.STATICPATH);
+stringBuffer->append(storeFrontData->STATICPATH);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(storeFrontData.CATEGORYPATH);
+stringBuffer->append(storeFrontData->CATEGORYPATH);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(storeFrontData.INVENTORYCONTROL);
+stringBuffer->append(storeFrontData->INVENTORYCONTROL);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(storeFrontData.CONFIGURATION);
+stringBuffer->append(storeFrontData->CONFIGURATION);
     
-stringBuffer.append(this->sqlTypeStrings.BLOB_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.BLOB_NOT_NULL);
     
-stringBuffer.append(storeFrontData.SUBSTORES);
+stringBuffer->append(storeFrontData->SUBSTORES);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(storeFrontData.TAGLOCATION);
+stringBuffer->append(storeFrontData->TAGLOCATION);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(storeFrontData.PACKAGELOCATION);
+stringBuffer->append(storeFrontData->PACKAGELOCATION);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(storeFrontData.FTP);
+stringBuffer->append(storeFrontData->FTP);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(storeFrontData.FTPPATH);
+stringBuffer->append(storeFrontData->FTPPATH);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(storeFrontData.FTPUSERNAME);
+stringBuffer->append(storeFrontData->FTPUSERNAME);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(storeFrontData.FTPPASSWORD);
+stringBuffer->append(storeFrontData->FTPPASSWORD);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(storeFrontData.TESTFTP);
+stringBuffer->append(storeFrontData->TESTFTP);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(storeFrontData.TESTFTPPATH);
+stringBuffer->append(storeFrontData->TESTFTPPATH);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(storeFrontData.TESTFTPUSERNAME);
+stringBuffer->append(storeFrontData->TESTFTPUSERNAME);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(storeFrontData.TESTFTPPASSWORD);
+stringBuffer->append(storeFrontData->TESTFTPPASSWORD);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(EntryData::getInstance().TIMECREATED);
+stringBuffer->append(EntryData::getInstance()->TIMECREATED);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(EntryData::getInstance().getInstance().LASTMODIFIED);
+stringBuffer->append(EntryData::getInstance()->getInstance()->LASTMODIFIED);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(this->sqlStrings.PRIMARY_KEY);
+stringBuffer->append(this->sqlStrings.PRIMARY_KEY);
     
-stringBuffer.append(storeFrontData.NAME);
+stringBuffer->append(storeFrontData->NAME);
     
-stringBuffer.append(this->sqlStrings.END);
+stringBuffer->append(this->sqlStrings.END);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Command.h>
@@ -46,19 +52,19 @@ class NotificationUtil
             : public Object
          {
 
-    private: static const NotificationUtil SINGLETON = NotificationUtil();
+    private: static NotificationUtil* SINGLETON() { static std::unique_ptr<NotificationUtil> value(new NotificationUtil()); return value.get(); }
 
-    public: static NotificationUtil getInstance(){
+    public: static NotificationUtil* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NotificationUtil::SINGLETON;
+                        return NotificationUtil::SINGLETON();
     
 }
 
 
-    public: void notify(Command command, std::string resource, std::string message){
+    public: void notify(Command* command, std::string resource, std::string message){
 }
 
 

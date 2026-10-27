@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREFACTORYINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREFACTORYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 

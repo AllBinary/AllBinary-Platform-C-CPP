@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_GENERICOPERATINGSYSTEM_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_GENERICOPERATINGSYSTEM_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/java/character/CharacterSet.h>
@@ -56,12 +62,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OperatingSystemInterface.h"
-#include "SystemProperties.h"
+        #include "org/allbinary/logic/system/os/OperatingSystemInterface.h"
+#include "org/allbinary/logic/system/os/SystemProperties.h"
 
 class GenericOperatingSystem
             : public Object
-        : public OperatingSystemInterface {
+        , public OperatingSystemInterface {
 
     private: const std::string osName;
 
@@ -69,7 +75,7 @@ class GenericOperatingSystem
 
     private: const std::string osVersion;
 
-    private: const CharacterSet characterSet = CharacterSet();
+    private: CharacterSet* characterSet = new CharacterSet();
 
     protected: bool scalable = false;
 
@@ -81,7 +87,7 @@ public: GenericOperatingSystem();
 
     public: std::string getArch();
 
-    public: CharacterSet getCharacterSet();
+    public: CharacterSet* getCharacterSet();
 
     public: bool isOverScan();
 

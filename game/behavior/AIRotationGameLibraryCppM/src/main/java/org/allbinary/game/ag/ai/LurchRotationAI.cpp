@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/animation/IndexedAnimation.h>
 
       
@@ -60,9 +66,9 @@
         
 class LurchRotationAI: public LurchAI {
 
-    private: IndexedAnimation rotationAnimationInterface;
+    private: IndexedAnimation* rotationAnimationInterface;
 
-public: LurchRotationAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput) : LurchAI(ownerLayerInterface, gameInput){
+public: LurchRotationAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : LurchAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -70,9 +76,9 @@ public: LurchRotationAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput)
                             //For kotlin this is before the body of the constructor.
                     
 
-    RotationAnimationInterfaceCompositeInterface rotationAnimationInterfaceCompositeInterface = this->getOwnerLayerInterface();;
+    RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface());;
     
-this->rotationAnimationInterface= rotationAnimationInterfaceCompositeInterface.getRotationAnimationInterface();
+this->rotationAnimationInterface= rotationAnimationInterfaceCompositeInterface->getRotationAnimationInterface();
     
 this->update();
     
@@ -93,15 +99,15 @@ this->update();
                         
                                     {
                                     
-    RotationAnimationInterface rotationAnimationInterface = this->rotationAnimationInterface;;
+    RotationAnimationInterface* rotationAnimationInterface = dynamic_cast<RotationAnimationInterface*>(this->rotationAnimationInterface);;
     
 
-    AngleIncrementInfo angleIncrementInfo = rotationAnimationInterface.getAngleInfoP().getAngleIncrementInfo();;
+    AngleIncrementInfo* angleIncrementInfo = rotationAnimationInterface->getAngleInfoP()->getAngleIncrementInfo();;
     
 
-    RotationAnimationInterfaceCompositeInterface rotationAnimationInterfaceCompositeInterface = this->getOwnerLayerInterface();;
+    RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface());;
     
-rotationAnimationInterfaceCompositeInterface.setFrame(angleIncrementInfo.RIGHT_FRAME.intValue());
+rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->RIGHT_FRAME.intValue());
     
 
                                     }
@@ -111,15 +117,15 @@ rotationAnimationInterfaceCompositeInterface.setFrame(angleIncrementInfo.RIGHT_F
                         
                                     {
                                     
-    RotationAnimationInterface rotationAnimationInterface = this->rotationAnimationInterface;;
+    RotationAnimationInterface* rotationAnimationInterface = dynamic_cast<RotationAnimationInterface*>(this->rotationAnimationInterface);;
     
 
-    AngleIncrementInfo angleIncrementInfo = rotationAnimationInterface.getAngleInfoP().getAngleIncrementInfo();;
+    AngleIncrementInfo* angleIncrementInfo = rotationAnimationInterface->getAngleInfoP()->getAngleIncrementInfo();;
     
 
-    RotationAnimationInterfaceCompositeInterface rotationAnimationInterfaceCompositeInterface = this->getOwnerLayerInterface();;
+    RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface());;
     
-rotationAnimationInterfaceCompositeInterface.setFrame(angleIncrementInfo.LEFT_FRAME.intValue());
+rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->LEFT_FRAME.intValue());
     
 
                                     }

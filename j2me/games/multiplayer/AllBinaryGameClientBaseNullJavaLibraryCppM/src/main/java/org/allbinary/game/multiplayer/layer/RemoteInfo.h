@@ -13,6 +13,12 @@
         #ifndef ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_REMOTEINFO_H
         #define ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_REMOTEINFO_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -41,9 +47,9 @@ class RemoteInfo
             : public Object
          {
 
-    public: static const int32_t NEW_PLAYER_ID = 0;
+    public: static inline const int32_t NEW_PLAYER_ID = 0;
 
-    public: static const RemoteInfo REMOTE_INFO = RemoteInfo(StringUtil::getInstance().EMPTY_STRING,  -1,  -1, RemoteInfo::NEW_PLAYER_ID);
+    public: static RemoteInfo* REMOTE_INFO() { static std::unique_ptr<RemoteInfo> value(new RemoteInfo(StringUtil::getInstance()->EMPTY_STRING,  -1,  -1, RemoteInfo::NEW_PLAYER_ID)); return value.get(); }
 
 public: RemoteInfo(std::string username, int32_t actorSessionId, int32_t playerInputId, int32_t id);
 

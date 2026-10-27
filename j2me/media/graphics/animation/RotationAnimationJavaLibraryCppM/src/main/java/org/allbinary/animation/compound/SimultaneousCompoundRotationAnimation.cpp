@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -73,9 +79,9 @@
         
 class SimultaneousCompoundRotationAnimation: public RotationAnimation {
 
-    private: std::vector<RotationAnimation> animationInterfaceArray;
+    private: std::vector<RotationAnimation*> animationInterfaceArray;
 
-public: SimultaneousCompoundRotationAnimation(std::vector<RotationAnimation> animationInterfaceArray, AnimationBehavior animationBehavior) : RotationAnimation(AngleInfo::getInstance(AngleFactory::getInstance().QUARTER_TOTAL_ANGLE), CircularIndexUtil::createInstance(4), animationBehavior){
+public: SimultaneousCompoundRotationAnimation(std::vector<RotationAnimation*> animationInterfaceArray, AnimationBehavior* animationBehavior) : RotationAnimation(AngleInfo::getInstance(AngleFactory::getInstance()->QUARTER_TOTAL_ANGLE), CircularIndexUtil::createInstance(4), animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -210,7 +216,7 @@ this->animationInterfaceArray[index].nextRotation();
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 
 
 
@@ -225,7 +231,7 @@ this->animationInterfaceArray[index].paintXY(graphics, x, y);
 }
 
 
-    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
+    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z){
 
 
 
@@ -240,7 +246,7 @@ this->animationInterfaceArray[index].paintThreedXYZ(graphics, x, y, z);
 }
 
 
-    public: void setFrameByDirection(Direction direction){
+    public: void setFrameByDirection(Direction* direction){
 
 
 
@@ -255,7 +261,7 @@ this->animationInterfaceArray[index].setFrameByDirection(direction);
 }
 
 
-    public: void setFrameToAngle(Angle angle){
+    public: void setFrameToAngle(Angle* angle){
 
 
 
@@ -270,8 +276,8 @@ this->animationInterfaceArray[index].setFrameToAngle(angle);
 }
 
 
-    public: void adjustFrameToAngle(Angle newAngle){
-this->adjustFrame(newAngle.getValue());
+    public: void adjustFrameToAngle(Angle* newAngle){
+this->adjustFrame(newAngle->getValue());
     
 }
 
@@ -291,7 +297,7 @@ this->animationInterfaceArray[index].adjustFrame(angle);
 }
 
 
-    public: AngleInfo getAngleInfoP(){
+    public: AngleInfo* getAngleInfoP(){
 
 
 
@@ -301,7 +307,7 @@ this->animationInterfaceArray[index].adjustFrame(angle);
 }
 
 
-    public: std::vector<RotationAnimation> getAnimationInterfaceArray(){
+    public: std::vector<RotationAnimation*> getAnimationInterfaceArray(){
 
 
 
@@ -311,7 +317,7 @@ this->animationInterfaceArray[index].adjustFrame(angle);
 }
 
 
-    public: void setAnimationInterfaceArray(std::vector<RotationAnimation> animationInterfaceArray){
+    public: void setAnimationInterfaceArray(std::vector<RotationAnimation*> animationInterfaceArray){
 this->animationInterfaceArray= animationInterfaceArray;
     
 }
@@ -319,7 +325,7 @@ this->animationInterfaceArray= animationInterfaceArray;
 
                 //@Throws(Exception.constructor)
             
-    public: void set(GL gl){
+    public: void set(GL* gl){
 
 
 

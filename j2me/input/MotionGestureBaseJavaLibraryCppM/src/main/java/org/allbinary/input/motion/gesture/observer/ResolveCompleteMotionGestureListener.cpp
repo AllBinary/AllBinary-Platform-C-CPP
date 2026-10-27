@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,36 +73,36 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CompleteMotionGestureListenerInterface.h"
+        #include "org/allbinary/input/motion/gesture/observer/CompleteMotionGestureListenerInterface.h"
 
 class ResolveCompleteMotionGestureListener
             : public Object
-        : public CompleteMotionGestureListenerInterface {
+        , public CompleteMotionGestureListenerInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: ResolveCompleteMotionGestureListener(){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF("MotionGesture to CompleteMotionGesture Reciever", this, commonStrings.CONSTRUCTOR);
+this->logUtil->putF("MotionGesture to CompleteMotionGesture Reciever", this, commonStrings->CONSTRUCTOR);
     
-CompleteMotionGestureInputEventHandler::getInstance().addListener(GameKeyFromMotionGestureEventListener());
+CompleteMotionGestureInputEventHandler::getInstance()->addListener(new GameKeyFromMotionGestureEventListener());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void onMotionGestureCompleted(BasicArrayList list){
+    public: void onMotionGestureCompleted(BasicArrayList* list){
 
-    MotionGestureConfiguration configuration = MotionGestureConfigurationFactory::getInstance();;
+    MotionGestureConfiguration* configuration = MotionGestureConfigurationFactory::getInstance();;
     
 
-    BasicArrayList commandActionsList = configuration.getAssociateCommandActionsList();;
+    BasicArrayList* commandActionsList = configuration->getAssociateCommandActionsList();;
     
 
-    int32_t size = commandActionsList.size();;
+    int32_t size = commandActionsList->size();;
     
 
 
@@ -106,16 +112,16 @@ CompleteMotionGestureInputEventHandler::getInstance().addListener(GameKeyFromMot
     int32_t index = size -1;index >= 0; index--)
         {
 
-    MotionGestureToMotionGestureActionAssociation association = commandActionsList.objectArray[index];;
+    MotionGestureToMotionGestureActionAssociation* association = dynamic_cast<MotionGestureToMotionGestureActionAssociation*>(commandActionsList->objectArray[index]);;
     
 
-                        if(association.isMotionGestureArrayEquals(list) == true)
+                        if(association->isMotionGestureArrayEquals(list) == true)
                         
                                     {
                                     
-    GameKeyCompleteMotionGestureInputEvent completeMotionGestureInputEvent = association.getCommandAction();;
+    GameKeyCompleteMotionGestureInputEvent* completeMotionGestureInputEvent = dynamic_cast<GameKeyCompleteMotionGestureInputEvent*>(association->getCommandAction());;
     
-CompleteMotionGestureInputEventHandler::getInstance().fireEvent(completeMotionGestureInputEvent);
+CompleteMotionGestureInputEventHandler::getInstance()->fireEvent(completeMotionGestureInputEvent);
     
 break;
 

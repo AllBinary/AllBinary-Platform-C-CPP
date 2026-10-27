@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/identification/GroupCommonFactory.h>
@@ -115,38 +123,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RaceTrackDropCellPositionGenerator.h"
-#include "RaceTrackAdjacentDropLayerFactory.h"
+        #include "org/allbinary/media/graphics/geography/map/racetrack/drop/RaceTrackDropCellPositionGenerator.h"
+#include "org/allbinary/media/graphics/geography/map/racetrack/drop/RaceTrackAdjacentDropLayerFactory.h"
 
 class RaceTrackAdjacentDropCellPositionGenerator: public RaceTrackDropCellPositionGenerator {
 
-    private: static RaceTrackAdjacentDropCellPositionGenerator SINGLETON = RaceTrackAdjacentDropCellPositionGenerator();
+    private: static RaceTrackAdjacentDropCellPositionGenerator* SINGLETON() { static std::unique_ptr<RaceTrackAdjacentDropCellPositionGenerator> value(new RaceTrackAdjacentDropCellPositionGenerator()); return value.get(); }
 
-    public: static DropCellPositionGeneratorInterface getInstance();
+    public: static DropCellPositionGeneratorInterface* getInstance();
 
-    private: const LayerCoveringCellPositionsUtil layerCoveringCellPositionsUtil = LayerCoveringCellPositionsUtil::getInstance();
+    private: LayerCoveringCellPositionsUtil* layerCoveringCellPositionsUtil = LayerCoveringCellPositionsUtil::getInstance();
 
-    private: const GroupCommonFactory groupCommonFactory = GroupCommonFactory::getInstance();
+    private: GroupCommonFactory* groupCommonFactory = GroupCommonFactory::getInstance();
 
-    private: std::vector<GeographicMapCellPosition> surroundingCellPositions = std::vector<GeographicMapCellPosition>(4);
+    private: std::vector<GeographicMapCellPosition*> surroundingCellPositions = std::vector<GeographicMapCellPosition*>(4);
 
 private: RaceTrackAdjacentDropCellPositionGenerator();
 
                 //@Throws(Exception.constructor)
             
-    private: GeographicMapCellPosition getFirstNonRoadAdjacentCellPosition(int32_t column, int32_t row);
+    private: GeographicMapCellPosition* getFirstNonRoadAdjacentCellPosition(int32_t column, int32_t row);
 
-    private: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
-
-                //@Throws(Exception.constructor)
-            
-    public: void update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface);
-
-    private: const GeographicMapDirectionUtil geographicMapDirectionUtil = GeographicMapDirectionUtil::getInstance();
+    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
 
                 //@Throws(Exception.constructor)
             
-    protected: void drop(AllBinaryLayerManager allBinaryLayerManager, int32_t index);
+    public: void update(AllBinaryGameLayerManager* allBinaryGameLayerManager, BasicGeographicMap* geographicMapInterface);
+
+    private: GeographicMapDirectionUtil* geographicMapDirectionUtil = GeographicMapDirectionUtil::getInstance();
+
+                //@Throws(Exception.constructor)
+            
+    protected: void drop(AllBinaryLayerManager* allBinaryLayerManager, int32_t index);
 
 };
 

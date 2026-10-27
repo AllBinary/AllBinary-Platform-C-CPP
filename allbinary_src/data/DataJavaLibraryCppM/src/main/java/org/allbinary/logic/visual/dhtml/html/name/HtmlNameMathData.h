@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_NAME_HTMLNAMEMATHDATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_NAME_HTMLNAMEMATHDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class HtmlNameMathData
             : public Object
          {
 
-    private: static HtmlNameMathData instance() { return HtmlNameMathData(); }
+    private: static HtmlNameMathData* instance() { static std::unique_ptr<HtmlNameMathData> value(new HtmlNameMathData()); return value.get(); }
 
-    public: static HtmlNameMathData getInstance();
+    public: static HtmlNameMathData* getInstance();
 
 private: HtmlNameMathData();
 

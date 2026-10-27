@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -29,9 +35,9 @@ class FixedPoint
             : public Object
          {
 
-    private: static FixedPoint instance() { return FixedPoint(); }
+    private: static FixedPoint* instance() { static std::unique_ptr<FixedPoint> value(new FixedPoint()); return value.get(); }
 
-    public: static FixedPoint getInstance(){
+    public: static FixedPoint* getInstance(){
 
 
 

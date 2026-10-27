@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,15 +61,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameOptionsForm.h"
+        #include "org/allbinary/game/configuration/GameOptionsForm.h"
 
 class GameOptionsFormFactory
             : public Object
          {
 
-    private: static GameOptionsFormFactory instance() { return GameOptionsFormFactory(); }
+    private: static GameOptionsFormFactory* instance() { static std::unique_ptr<GameOptionsFormFactory> value(new GameOptionsFormFactory()); return value.get(); }
 
-    public: static GameOptionsFormFactory getInstance(){
+    public: static GameOptionsFormFactory* getInstance(){
 
 
 
@@ -73,29 +79,29 @@ class GameOptionsFormFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: GameOptionsFormFactory(){
 }
 
 
-    public: CommandForm init(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
+    public: CommandForm* init(CommandListener* commandListener, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameOptionsForm(commandListener, title, backgrounBasicColor, foregroundBasicColor);
+                        return new GameOptionsForm(commandListener, title, backgrounBasicColor, foregroundBasicColor);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.INIT, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->INIT, &e);
     
 
 

@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -181,15 +189,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SimulatedBuildingPropertiesFactory.h"
-#include "BuildingPropertiesFactory.h"
-#include "BuildingInfoHudPaintable.h"
+        #include "org/allbinary/game/layer/building/SimulatedBuildingPropertiesFactory.h"
+#include "org/allbinary/game/layer/building/BuildingPropertiesFactory.h"
+#include "org/allbinary/game/layer/building/BuildingInfoHudPaintable.h"
 
 class BuildingLayer: public AdvancedRTSGameLayer, public RotationAnimationInterfaceCompositeInterface, public TrackingEventListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: static BuildingLayer createSimulated();
+    public: static BuildingLayer* createSimulated();
 
     public: static int32_t getStaticType();
 
@@ -201,33 +209,33 @@ class BuildingLayer: public AdvancedRTSGameLayer, public RotationAnimationInterf
 
     private: int32_t efficiencyPerLevel;
 
-    private: TrackingEvent trackingEvent;
+    private: TrackingEvent* trackingEvent;
 
-    private: DamageFloaters damageFloaters;
+    private: DamageFloaters* damageFloaters;
 
-    private: Paintable damageFloatersPaintableInterface;
+    private: Paintable* damageFloatersPaintableInterface;
 
-    private: Paintable healthBar;
+    private: Paintable* healthBar;
 
-    private: ABHashtable<Object*, Object*> pathsHashtable;
+    private: ABHashtable<Object*, Object*>* pathsHashtable;
 
-public: BuildingLayer(RemoteInfo remoteInfo, BuildingPropertiesFactory buildingPropertiesFactory, AdvancedRTSProperties advancedRTSProperties, std::vector<Group> groupInterface, std::string rootName, std::string name, Health healthInterface, RTSFormInput rtsFormInput, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y);
+public: BuildingLayer(RemoteInfo* remoteInfo, BuildingPropertiesFactory* buildingPropertiesFactory, AdvancedRTSProperties* advancedRTSProperties, std::vector<Group*> groupInterface, std::string rootName, std::string name, Health* healthInterface, RTSFormInput* rtsFormInput, AnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface* proceduralAnimationInterfaceFactoryInterface, Rectangle* rectangle, int32_t x, int32_t y);
 
     protected: bool local= false;
 
-    protected: void initVisibility(RTSPlayerLayerInterface rtsPlayerLayerInterface);
+    protected: void initVisibility(RTSPlayerLayerInterface* rtsPlayerLayerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void construct(RTSPlayerLayerInterface rtsPlayerLayerInterface);
+    public: void construct(RTSPlayerLayerInterface* rtsPlayerLayerInterface);
 
-    public: void onMovement(TrackingEvent trackingEvent);
+    public: void onMovement(TrackingEvent* trackingEvent);
 
-    protected: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(3000);
+    protected: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(3000);
 
                 //@Throws(Exception.constructor)
             
-    public: void processBuiltTick(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processBuiltTick(AllBinaryLayerManager* allBinaryLayerManager);
 
     private: int32_t calculateEfficiency();
 
@@ -257,13 +265,13 @@ public: BuildingLayer(RemoteInfo remoteInfo, BuildingPropertiesFactory buildingP
             
     private: void generateMoveOutOfBuildAreaPaths();
 
-    public: BasicArrayList getMoveOutOfBuildAreaPath(GeographicMapCellPosition geographicMapCellPosition);
+    public: BasicArrayList* getMoveOutOfBuildAreaPath(GeographicMapCellPosition* geographicMapCellPosition);
 
-    public: BasicArrayList getEndGeographicMapCellPositionList();
+    public: BasicArrayList* getEndGeographicMapCellPositionList();
 
     public: bool shouldHandleStartSameAsEnd();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
                 //@Throws(Exception.constructor)
             
@@ -281,9 +289,9 @@ public: BuildingLayer(RemoteInfo remoteInfo, BuildingPropertiesFactory buildingP
             
     public: void setDestroyed(bool destroyed);
 
-    public: SelectionHudPaintable createHudPaintable();
+    public: SelectionHudPaintable* createHudPaintable();
 
-    public: SelectionHudPaintable getHudPaintable();
+    public: SelectionHudPaintable* getHudPaintable();
 
     public: int32_t getType();
 

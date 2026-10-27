@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,11 +42,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "VelocityBehaviorBase.h"
+        #include "org/allbinary/game/physics/velocity/VelocityBehaviorBase.h"
 
 class NoDragVelocityBehavior: public VelocityBehaviorBase {
 
-    private: static NoDragVelocityBehavior instance() { return NoDragVelocityBehavior(); }
+    public: static NoDragVelocityBehavior* instance() { static std::unique_ptr<NoDragVelocityBehavior> value(new NoDragVelocityBehavior()); return value.get(); }
 
 };
 

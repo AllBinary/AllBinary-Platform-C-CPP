@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -67,11 +73,11 @@
         
 class HackRotationSpriteIndexedAnimation: public RotationAnimation {
 
-    protected: Sprite sprite;
+    protected: Sprite* sprite;
 
-    private: Image image;
+    private: Image* image;
 
-public: HackRotationSpriteIndexedAnimation(Sprite sprite, Image image, AngleInfo angleInfo, AnimationBehavior animationBehavior) : RotationAnimation(angleInfo, CircularIndexUtil::createInstance(360 /angleInfo.getAngleIncrementInfo().getAngleIncrement()), animationBehavior){
+public: HackRotationSpriteIndexedAnimation(Sprite* sprite, Image* image, AngleInfo* angleInfo, AnimationBehavior* animationBehavior) : RotationAnimation(angleInfo, CircularIndexUtil::createInstance(360 /angleInfo->getAngleIncrementInfo()->getAngleIncrement()), animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -97,7 +103,7 @@ this->image= image;
 }
 
 
-    public: void paintFrame(Graphics g, int32_t frame, int32_t x, int32_t y){
+    public: void paintFrame(Graphics* g, int32_t frame, int32_t x, int32_t y){
 this->setFrame(frame);
     
 this->paintXY(g, x, y);
@@ -105,28 +111,28 @@ this->paintXY(g, x, y);
 }
 
 
-    public: void paintXY(Graphics g, int32_t x, int32_t y){
-this->sprite.setPosition(x, y);
+    public: void paintXY(Graphics* g, int32_t x, int32_t y){
+this->sprite->setPosition(x, y);
     
 this->paint(g);
     
 }
 
 
-    protected: void paint(Graphics g){
-this->sprite.paint(g);
+    protected: void paint(Graphics* g){
+this->sprite->paint(g);
     
 }
 
 
     public: void nextRotation(){
-this->sprite.nextFrame();
+this->sprite->nextFrame();
     
 }
 
 
     public: void previousRotation(){
-this->sprite.prevFrame();
+this->sprite->prevFrame();
     
 }
 
@@ -136,13 +142,13 @@ this->sprite.prevFrame();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->sprite.getRawFrameCount();;
+                        return this->sprite->getRawFrameCount();;
     
 }
 
 
     public: void setFrame(int32_t frame){
-this->sprite.setFrame(frame);
+this->sprite->setFrame(frame);
     
 }
 
@@ -152,7 +158,7 @@ this->sprite.setFrame(frame);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->sprite.getFrame();;
+                        return this->sprite->getFrame();;
     
 }
 

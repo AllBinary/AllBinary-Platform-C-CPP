@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h>
 
       
@@ -45,7 +51,7 @@
         
 class PaymentGatewayDomNodeFactoryInterface {
 
-    DomNodeInterface getInstance(PaymentGatewayInterface paymentGatewayInterface)
+    public: virtual DomNodeInterface* getInstance(PaymentGatewayInterface* paymentGatewayInterface) = 0;
 
 };
 

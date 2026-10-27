@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -47,14 +53,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "VectorAnimation.h"
-#include "AnimationBehavior.h"
+        #include "org/allbinary/animation/VectorAnimation.h"
+#include "org/allbinary/animation/AnimationBehavior.h"
 
 class ColorLessVectorAnimation: public VectorAnimation {
 
-public: ColorLessVectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, AnimationBehavior animationBehavior);
+public: ColorLessVectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, AnimationBehavior* animationBehavior);
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
 };
 

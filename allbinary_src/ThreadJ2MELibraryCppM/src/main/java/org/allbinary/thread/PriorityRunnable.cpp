@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Runnable.h"
         
 
@@ -41,11 +47,11 @@
         
 class PriorityRunnable: public Runnable {
 
-    int32_t getPriority()
+    public: virtual int32_t getPriority() = 0;
 
-    bool isDone()
+    public: virtual bool isDone() = 0;
 
-    void reset()
+    public: virtual void reset() = 0;
 
 };
 

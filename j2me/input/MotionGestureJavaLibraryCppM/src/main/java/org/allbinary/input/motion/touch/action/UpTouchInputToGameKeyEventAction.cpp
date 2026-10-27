@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/game/input/PlatformInputMappingFactory.h>
 
       
@@ -51,14 +59,14 @@
         
 class UpTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static GameKeyCompleteMotionGestureInputEvent getInstance(){
+    public: static GameKeyCompleteMotionGestureInputEvent* getInstance(){
 
-                        if(UpTouchInputToGameKeyEventAction::instance() == NullUtil::getInstance().NULL_OBJECT)
+                        if(UpTouchInputToGameKeyEventAction::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    UpTouchInputToGameKeyEventAction::instance= UpTouchInputToGameKeyEventAction();
+                                    UpTouchInputToGameKeyEventAction::instance= new UpTouchInputToGameKeyEventAction();
     
 
                                     }
@@ -67,12 +75,12 @@ class UpTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInput
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UpTouchInputToGameKeyEventAction::instance();
+                        return dynamic_cast<GameKeyCompleteMotionGestureInputEvent*>(UpTouchInputToGameKeyEventAction::instance);
     
 }
 
 
-private: UpTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Up Action", TouchMotionGestureFactory::getInstance().UP, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping()){
+private: UpTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Up Action", TouchMotionGestureFactory::getInstance()->UP, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
 
                         //super/this constructor call is in the constructor initializer list.
                     

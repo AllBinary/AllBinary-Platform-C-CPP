@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
 
       
@@ -54,11 +60,11 @@
         
 class StaticTileLayerIntoPositionViewPosition: public ViewPosition {
 
-    private: static Layer tiledLayer = NullLayer::getInstance();
+    private: static inline Layer* tiledLayer = NullLayer::getInstance();
 
-    public: static AllBinaryLayer layer = AllBinaryLayer::NULL_ALLBINARY_LAYER;
+    public: static inline AllBinaryLayer* layer = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-    public: static void setTiledLayer(AllBinaryTiledLayer tiledLayer){
+    public: static void setTiledLayer(AllBinaryTiledLayer* tiledLayer){
 StaticTileLayerIntoPositionViewPosition::tiledLayer= tiledLayer;
     
 }
@@ -79,7 +85,7 @@ public: StaticTileLayerIntoPositionViewPosition() : ViewPosition(0, 0, 0){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getX() -StaticTileLayerIntoPositionViewPosition::tiledLayer.getXP();
+                        return super.getX() -StaticTileLayerIntoPositionViewPosition::tiledLayer->getXP();
     
 }
 
@@ -89,7 +95,7 @@ public: StaticTileLayerIntoPositionViewPosition() : ViewPosition(0, 0, 0){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getY() -StaticTileLayerIntoPositionViewPosition::tiledLayer.getYP();
+                        return super.getY() -StaticTileLayerIntoPositionViewPosition::tiledLayer->getYP();
     
 }
 
@@ -99,7 +105,7 @@ public: StaticTileLayerIntoPositionViewPosition() : ViewPosition(0, 0, 0){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getZ() -StaticTileLayerIntoPositionViewPosition::tiledLayer.getZP();
+                        return super.getZ() -StaticTileLayerIntoPositionViewPosition::tiledLayer->getZP();
     
 }
 

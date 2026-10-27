@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,7 +67,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SavedCaptureImagesWorker.h"
+        #include "org/allbinary/input/automation/module/generic/SavedCaptureImagesWorker.h"
 
 class GenericProfileCaptureWorkerFactory
             : public Object
@@ -69,12 +75,12 @@ class GenericProfileCaptureWorkerFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static CaptureWorkerInterface getInstance(GenericProfile genericProfile){
+    public: static CaptureWorkerInterface* getInstance(GenericProfile* genericProfile){
 
-    BasicArrayList vector = genericProfile.getGenericProfileDataWorkerTypeVector();;
+    BasicArrayList* vector = genericProfile->getGenericProfileDataWorkerTypeVector();;
     
 
-    int32_t size = vector.size();;
+    int32_t size = vector->size();;
     
 
 
@@ -84,7 +90,7 @@ class GenericProfileCaptureWorkerFactory
     int32_t index = 0;index < size; index++)
         {
 
-    GenericProfileDataWorkerType genericProfileDataWorkerType = vector.get(index);;
+    GenericProfileDataWorkerType* genericProfileDataWorkerType = dynamic_cast<GenericProfileDataWorkerType*>(vector->get(index));;
     
 
                         if(genericProfileDataWorkerType == GenericProfileDataWorkerType::SCREEN_CAPTURE)
@@ -94,7 +100,7 @@ class GenericProfileCaptureWorkerFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScreenCaptureImagesWorker();
+                        return new ScreenCaptureImagesWorker();
     
 
                                     }
@@ -107,7 +113,7 @@ class GenericProfileCaptureWorkerFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SavedCaptureImagesWorker(genericProfileDataWorkerType);
+                        return new SavedCaptureImagesWorker(dynamic_cast<SavedCaptureGenericProfileDataWorkerType*>(genericProfileDataWorkerType));
     
 
                                     }
@@ -117,7 +123,7 @@ class GenericProfileCaptureWorkerFactory
 
 
 
-                            throw Exception("No CaptureWorkerInterface specified in GenericProfile");
+                            throw new Exception("No CaptureWorkerInterface specified in GenericProfile");
                     
 }
 

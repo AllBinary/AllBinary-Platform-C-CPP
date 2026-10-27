@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -50,38 +56,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameRunnable.h"
-#include "DemoCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/GameRunnable.h"
+#include "org/allbinary/game/displayable/canvas/DemoCanvas.h"
 
 class DemoGameRunnable: public GameRunnable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: DemoCanvas demoCanvas;
+    private: DemoCanvas* demoCanvas;
 
-public: DemoGameRunnable(DemoCanvas demoCanvas){
+public: DemoGameRunnable(DemoCanvas* demoCanvas){
 this->demoCanvas= demoCanvas;
     
 }
 
 
-    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
+    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
     public: void run(){
 
         try {
-            this->demoCanvas.getLoopTimeHelperP().setStartTime(this->gameTickTimeDelayHelper.setStartTime());
+            this->demoCanvas->getLoopTimeHelperP()->setStartTime(this->gameTickTimeDelayHelper->setStartTime());
     
-this->demoCanvas.processGame();
+this->demoCanvas->processGame();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
     
 }
 
@@ -91,7 +97,7 @@ this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
                 //@Throws(Exception.constructor)
             
     public: void processLoopSleep(){
-this->demoCanvas.processLoopSleep();
+this->demoCanvas->processLoopSleep();
     
 }
 

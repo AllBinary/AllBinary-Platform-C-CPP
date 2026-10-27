@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/ai/BasicAI.h>
@@ -56,9 +64,9 @@
         
 class LastKeyAIVisitor: public Visitor {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const Boolean TRUE = BooleanFactory::getInstance().TRUE;
+    private: bool TRUE = BooleanFactory::getInstance()->TRUE;
 
 public: LastKeyAIVisitor(){
 }
@@ -68,28 +76,28 @@ public: LastKeyAIVisitor(){
 
         try {
             
-    BasicAI basicAI = *dynamic_cast<BasicAI*>(anyType);;
+    BasicAI* basicAI = dynamic_cast<BasicAI*>(anyType);;
     
 
-    int32_t key = basicAI.getLastKey();;
+    int32_t key = basicAI->getLastKey();;
     
 
                         if(key !=  -1)
                         
                                     {
-                                    basicAI.processKeyAI(key);
+                                    basicAI->processKeyAI(key);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.VISIT, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->VISIT, &e);
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSTORE_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSTORE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -71,18 +77,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoHttp.h"
-#include "TransformInfoHttpStoreInterface.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoHttp.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfoHttpStoreInterface.h"
 
 class TransformInfoHttpStore: public TransformInfoHttp, public TransformInfoHttpStoreInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: TransformInfoHttpStore(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
+public: TransformInfoHttpStore(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext);
 
-public: TransformInfoHttpStore(HashMap<Object*, Object*> databaseHashMap, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
+public: TransformInfoHttpStore(HashMap<Object*, Object*>* databaseHashMap, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext);
 
-public: TransformInfoHttpStore(StoreFrontInterface storeFrontInterface, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
+public: TransformInfoHttpStore(StoreFrontInterface* storeFrontInterface, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext);
 
                 //@Throws(Exception.constructor)
             
@@ -90,15 +96,15 @@ public: TransformInfoHttpStore(StoreFrontInterface storeFrontInterface, HashMap<
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getTemplateFilePath();
+    public: AbPath* getTemplateFilePath();
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getObjectConfigFilePath();
+    public: AbPath* getObjectConfigFilePath();
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getDataFilePath();
+    public: AbPath* getDataFilePath();
 
 };
 

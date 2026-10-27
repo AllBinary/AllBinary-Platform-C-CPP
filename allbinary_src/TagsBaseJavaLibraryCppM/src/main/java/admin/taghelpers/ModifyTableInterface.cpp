@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -43,15 +49,15 @@ class ModifyTableInterface {
 
                 //@Throws(Exception.constructor)
             
-    std::string insert()
+    public: virtual std::string insert() = 0;
 
                 //@Throws(Exception.constructor)
             
-    std::string delete_()
+    public: virtual std::string delete_() = 0;
 
                 //@Throws(Exception.constructor)
             
-    std::string update()
+    public: virtual std::string update() = 0;
 
 };
 

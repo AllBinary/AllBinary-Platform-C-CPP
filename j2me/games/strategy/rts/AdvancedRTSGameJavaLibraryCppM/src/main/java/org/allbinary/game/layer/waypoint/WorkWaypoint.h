@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WORKWAYPOINT_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WORKWAYPOINT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -70,18 +76,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Waypoint.h"
-#include "WaypointInfoHudPaintable.h"
+        #include "org/allbinary/game/layer/waypoint/Waypoint.h"
+#include "org/allbinary/game/layer/waypoint/WaypointInfoHudPaintable.h"
 
 class WorkWaypoint: public Waypoint {
 
-    public: static const Integer ID = SmallIntegerSingletonFactory::getInstance().getAt(25);
+    public: static inline int32_t ID = SmallIntegerSingletonFactory::getInstance()->getAt(25);
 
-public: WorkWaypoint(PathFindingLayerInterface ownerLayer);
+public: WorkWaypoint(PathFindingLayerInterface* ownerLayer);
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(UnitLayer unitLayer);
+    public: void visit(UnitLayer* unitLayer);
 
     public: int32_t getType();
 

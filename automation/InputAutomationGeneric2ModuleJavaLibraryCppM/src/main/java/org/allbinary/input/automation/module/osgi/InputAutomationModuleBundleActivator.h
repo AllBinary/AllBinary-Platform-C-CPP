@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -86,15 +92,15 @@
         
 class InputAutomationModuleBundleActivator
             : public Object
-        : public BundleActivator {
+        , public BundleActivator {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterface;
+    private: std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterface;
 
-    private: ServiceFactory serviceFactory;
+    private: ServiceFactory* serviceFactory;
 
 public: InputAutomationModuleBundleActivator();
 
@@ -104,31 +110,31 @@ public: InputAutomationModuleBundleActivator();
 
                 //@Throws(Exception.constructor)
             
-    private: InputAutomationConfigurationModuleChangeListener getInputAutomationConfigurationModuleChangeListener(BundleContext context);
+    private: InputAutomationConfigurationModuleChangeListener* getInputAutomationConfigurationModuleChangeListener(BundleContext* context);
 
-    private: void addModules(BundleContext context);
-
-                //@Throws(Exception.constructor)
-            
-    public: void registerAsService(BundleContext bundleContext);
-
-    private: void removeModules(BundleContext context);
+    private: void addModules(BundleContext* context);
 
                 //@Throws(Exception.constructor)
             
-    public: void start(BundleContext context);
+    public: void registerAsService(BundleContext* bundleContext);
+
+    private: void removeModules(BundleContext* context);
 
                 //@Throws(Exception.constructor)
             
-    public: void stop(BundleContext context);
+    public: void start(BundleContext* context);
 
-    protected: std::vector<InputAutomationModuleFactoryInterface> getInputAutomationModuleInterface();
+                //@Throws(Exception.constructor)
+            
+    public: void stop(BundleContext* context);
 
-    protected: void setInputAutomationModuleInterface(std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterface);
+    protected: std::vector<InputAutomationModuleFactoryInterface*> getInputAutomationModuleInterface();
+
+    protected: void setInputAutomationModuleInterface(std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterface);
 
     protected: Object* getServiceFactory();
 
-    protected: void setServiceFactory(ServiceFactory serviceObject);
+    protected: void setServiceFactory(ServiceFactory* serviceObject);
 
 };
 

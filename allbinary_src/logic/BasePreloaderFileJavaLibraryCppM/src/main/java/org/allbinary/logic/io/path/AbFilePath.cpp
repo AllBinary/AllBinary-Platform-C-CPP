@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -41,13 +47,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbPath.h"
-#include "AbPathData.h"
-#include "PathUtil.h"
+        #include "org/allbinary/logic/io/path/AbPath.h"
+#include "org/allbinary/logic/io/path/AbPathData.h"
+#include "org/allbinary/logic/io/path/PathUtil.h"
 
 class AbFilePath: public AbPath {
 
-public: AbFilePath(std::string aPath) : AbPath(StringUtil::getInstance().EMPTY_STRING, StringUtil::getInstance().EMPTY_STRING){
+public: AbFilePath(std::string aPath) : AbPath(StringUtil::getInstance()->EMPTY_STRING, StringUtil::getInstance()->EMPTY_STRING){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -55,16 +61,16 @@ public: AbFilePath(std::string aPath) : AbPath(StringUtil::getInstance().EMPTY_S
                             //For kotlin this is before the body of the constructor.
                     
 
-    AbPathData pathData = AbPathData::getInstance();;
+    AbPathData* pathData = AbPathData::getInstance();;
     
 
-    PathUtil abPathUtil = PathUtil::getInstance();;
+    PathUtil* abPathUtil = PathUtil::getInstance();;
     
 this->schema= this->getSchema(aPath);
     
-this->setName(pathData.getNameFromPath(aPath));
+this->setName(pathData->getNameFromPath(aPath));
     
-this->setPath(abPathUtil.adjust(this->getPathFromPath(abPathUtil.removeNameFromPath(aPath).toString())));
+this->setPath(abPathUtil->adjust(this->getPathFromPath(abPathUtil->removeNameFromPath(aPath)->toString())));
     
 }
 

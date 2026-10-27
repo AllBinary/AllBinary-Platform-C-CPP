@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONTDATA_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONTDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class StoreFrontData
             : public Object
          {
 
-    private: static StoreFrontData instance() { return StoreFrontData(); }
+    private: static StoreFrontData* instance() { static std::unique_ptr<StoreFrontData> value(new StoreFrontData()); return value.get(); }
 
-    public: static StoreFrontData getInstance();
+    public: static StoreFrontData* getInstance();
 
     public: const std::string CANCEL = "Cancel Store Front";
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -47,15 +53,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AngleFactory.h"
+        #include "org/allbinary/math/AngleFactory.h"
 
 class FrameUtil
             : public Object
          {
 
-    private: static FrameUtil instance() { return FrameUtil(); }
+    private: static FrameUtil* instance() { static std::unique_ptr<FrameUtil> value(new FrameUtil()); return value.get(); }
 
-    public: static FrameUtil getInstance(){
+    public: static FrameUtil* getInstance(){
 
 
 
@@ -94,18 +100,18 @@ private: FrameUtil(){
 
     public: int32_t adjustAngleToFrameAngle(int32_t currentAngle){
 
-    AngleFactory angleFactory = AngleFactory::getInstance();;
+    AngleFactory* angleFactory = AngleFactory::getInstance();;
     
 
                         if(currentAngle > 359)
                         
                                     {
-                                    currentAngle= (currentAngle -angleFactory.TOTAL_ANGLE);
+                                    currentAngle= (currentAngle -angleFactory->TOTAL_ANGLE);
     
 
         while(currentAngle > 359)
         {
-currentAngle= (currentAngle -angleFactory.TOTAL_ANGLE);
+currentAngle= (currentAngle -angleFactory->TOTAL_ANGLE);
     
 }
 
@@ -116,12 +122,12 @@ currentAngle= (currentAngle -angleFactory.TOTAL_ANGLE);
                         if(currentAngle < 0)
                         
                                     {
-                                    currentAngle= (currentAngle +angleFactory.TOTAL_ANGLE);
+                                    currentAngle= (currentAngle +angleFactory->TOTAL_ANGLE);
     
 
         while(currentAngle < 0)
         {
-currentAngle= (currentAngle +angleFactory.TOTAL_ANGLE);
+currentAngle= (currentAngle +angleFactory->TOTAL_ANGLE);
     
 }
 

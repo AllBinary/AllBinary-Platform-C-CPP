@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/input/automation/robot/InputRobotInterface.h>
 
       
@@ -47,7 +53,7 @@
         
 class InputAutomationRobotServiceInterface: public OSGIServiceInterface {
 
-    std::vector<InputRobotInterface> getInputRobotInterfaceArray()
+    public: virtual std::vector<InputRobotInterface*> getInputRobotInterfaceArray() = 0;
 
 };
 

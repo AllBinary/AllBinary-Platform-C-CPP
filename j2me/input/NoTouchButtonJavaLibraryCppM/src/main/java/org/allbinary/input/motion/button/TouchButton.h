@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTON_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTON_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -80,43 +86,43 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchButtonInput.h"
+        #include "org/allbinary/input/motion/button/TouchButtonInput.h"
 
 class TouchButton: public Paintable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: TouchButtonInput touchButtonInput;
+    private: TouchButtonInput* touchButtonInput;
 
-    private: Animation animationInterface;
+    private: Animation* animationInterface;
 
-    protected: Rectangle rawRectangle;
+    protected: Rectangle* rawRectangle;
 
     protected: int32_t xBorder;
 
     protected: int32_t yBorder;
 
-    protected: Rectangle rectangle = RectangleFactory::SINGLETON;
+    protected: Rectangle* rectangle = RectangleFactory::SINGLETON;
 
-    protected: CellPosition cellPosition;
+    protected: CellPosition* cellPosition;
 
     protected: int32_t animationX= 0;
 
     protected: int32_t animationY= 0;
 
-public: TouchButton(TouchButtonInput touchButtonInput, AnimationInterface animationInterface, Rectangle rawRectangle, CellPosition cellPosition, int32_t xBorder, int32_t yBorder);
+public: TouchButton(TouchButtonInput* touchButtonInput, AnimationInterface* animationInterface, Rectangle* rawRectangle, CellPosition* cellPosition, int32_t xBorder, int32_t yBorder);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
     protected: void updateRectangle();
 
-    public: CellPosition getCellPositionP();
+    public: CellPosition* getCellPositionP();
 
-    public: Rectangle getRectangleP();
+    public: Rectangle* getRectangleP();
 
-    public: TouchButtonInput getTouchButtonInput();
+    public: TouchButtonInput* getTouchButtonInput();
 
     public: std::string toString();
 

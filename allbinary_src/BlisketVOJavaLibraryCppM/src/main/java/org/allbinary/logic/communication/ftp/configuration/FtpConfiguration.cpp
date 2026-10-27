@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -41,12 +47,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "FtpConfigurationInterface.h"
-#include "FtpConfigurationData.h"
+        #include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationInterface.h"
+#include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationData.h"
 
 class FtpConfiguration
             : public Object
-        : public FtpConfigurationInterface {
+        , public FtpConfigurationInterface {
 
     private: std::string ftpServer;
 
@@ -60,14 +66,14 @@ public: FtpConfiguration(){
 }
 
 
-public: FtpConfiguration(HashMap<Object*, Object*> hashMap){
-this->ftpServer= hashMap.get(FtpConfigurationData::SERVER);
+public: FtpConfiguration(HashMap<Object*, Object*>* hashMap){
+this->ftpServer= hashMap->get(FtpConfigurationData::SERVER);
     
-this->ftpPath= hashMap.get(FtpConfigurationData::PATH);
+this->ftpPath= hashMap->get(FtpConfigurationData::PATH);
     
-this->ftpUserName= hashMap.get(FtpConfigurationData::USERNAME);
+this->ftpUserName= hashMap->get(FtpConfigurationData::USERNAME);
     
-this->ftpPassword= hashMap.get(FtpConfigurationData::PASSWORD);
+this->ftpPassword= hashMap->get(FtpConfigurationData::PASSWORD);
     
 }
 

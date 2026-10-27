@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONRESULTENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONRESULTENTITYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,21 +55,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransactionResultEntity.h"
+        #include "org/allbinary/data/tables/user/commerce/money/payment/transaction/TransactionResultEntity.h"
 
 class TransactionResultEntityFactory
             : public Object
          {
 
-    private: static TransactionResultEntityFactory instance() { return TransactionResultEntityFactory(); }
+    private: static TransactionResultEntityFactory* instance() { static std::unique_ptr<TransactionResultEntityFactory> value(new TransactionResultEntityFactory()); return value.get(); }
 
-    public: static TransactionResultEntityFactory getInstance();
+    public: static TransactionResultEntityFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: TransactionResultEntityFactory();
 
-    public: TransactionResultEntity getTransactionResultEntityInstance();
+    public: TransactionResultEntity* getTransactionResultEntityInstance();
 
 };
 

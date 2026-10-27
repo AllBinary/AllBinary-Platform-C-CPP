@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,23 +60,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryMidlet.h"
+        #include "org/allbinary/midlet/AllBinaryMidlet.h"
 
 class ExitRunnable
             : public Object
-        : public Runnable {
+        , public Runnable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: AllBinaryMidlet midlet;
+    private: AllBinaryMidlet* midlet;
 
-    private: Processor processor;
+    private: Processor* processor;
 
     private: bool isProgress;
 
-public: ExitRunnable(AllBinaryMidlet midlet, Processor processor, bool isProgress){
+public: ExitRunnable(AllBinaryMidlet* midlet, Processor* processor, bool isProgress){
 this->midlet= midlet;
     
 this->isProgress= isProgress;
@@ -83,33 +89,33 @@ this->processor= processor;
     public: void run(){
 
         try {
-            this->logUtil.putF(this->commonStrings.START_RUNNABLE, this, this->commonStrings.RUN);
+            this->logUtil->putF(this->commonStrings->START_RUNNABLE, this, this->commonStrings->RUN);
     
-this->midlet.destroyAppInRunnable(false, this->isProgress);
+this->midlet->destroyAppInRunnable(false, this->isProgress);
     
-this->midlet.setDisplay(NullCanvas::NULL_CANVAS);
+this->midlet->setDisplay(NullCanvas::NULL_CANVAS);
     
-this->midlet.notifyDestroyed();
+this->midlet->notifyDestroyed();
     
-this->logUtil.putF(this->commonStrings.END_RUNNABLE, this, this->commonStrings.RUN);
+this->logUtil->putF(this->commonStrings->END_RUNNABLE, this, this->commonStrings->RUN);
     
-this->processor.process();
+this->processor->process();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RUN, &e);
     
 
         try {
-            this->processor.process();
+            this->processor->process();
     
 
                 //: 
-} catch(e2) 
+} catch(Exception& e2) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RUN, e);
     
 }
 

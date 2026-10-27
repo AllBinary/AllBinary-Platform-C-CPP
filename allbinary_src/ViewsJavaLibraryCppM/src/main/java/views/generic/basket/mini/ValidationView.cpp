@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/globals/MESSAGES.h>
@@ -47,13 +53,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MiniBasketView.h"
-#include "Document.h"
-#include "Node.h"
+        #include "views/generic/basket/mini/MiniBasketView.h"
+#include "views/generic/basket/mini/Document.h"
+#include "views/generic/basket/mini/Node.h"
 
 class ValidationView: public MiniBasketView, public ValidationComponentInterface {
 
-public: ValidationView(TransformInfoInterface transformInfoInterface) : MiniBasketView(transformInfoInterface){
+public: ValidationView(TransformInfoInterface* transformInfoInterface) : MiniBasketView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -63,7 +69,7 @@ public: ValidationView(TransformInfoInterface transformInfoInterface) : MiniBask
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
 
 
@@ -73,7 +79,7 @@ public: ValidationView(TransformInfoInterface transformInfoInterface) : MiniBask
 }
 
 
-    public: org::w3c::dom::Document toValidationInfoDoc(){
+    public: org::w3c::dom::Document* toValidationInfoDoc(){
 
 
 
@@ -83,7 +89,7 @@ public: ValidationView(TransformInfoInterface transformInfoInterface) : MiniBask
 }
 
 
-    public: org::w3c::dom::Node toValidationInfoNode(org::w3c::dom::Document document){
+    public: org::w3c::dom::Node* toValidationInfoNode(org::w3c::dom::Document* document){
 
 
 

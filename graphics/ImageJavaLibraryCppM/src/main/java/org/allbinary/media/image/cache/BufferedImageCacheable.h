@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGECACHEABLE_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGECACHEABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/awt/image/BufferedImage.h>
@@ -50,23 +56,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BufferedImageInfo.h"
+        #include "org/allbinary/media/image/cache/BufferedImageInfo.h"
 
 class BufferedImageCacheable
             : public Object
-        : public CacheableInterface {
+        , public CacheableInterface {
 
-    private: BufferedImageInfo key;
+    private: BufferedImageInfo* key;
 
-    private: BufferedImage bufferedImage;
+    private: BufferedImage* bufferedImage;
 
-public: BufferedImageCacheable(BufferedImageInfo key);
+public: BufferedImageCacheable(BufferedImageInfo* key);
 
     public: Object* getKey();
 
-    public: BufferedImage getBufferedImage();
+    public: BufferedImage* getBufferedImage();
 
-    private: void setBufferedImage(BufferedImage bufferedImage);
+    private: void setBufferedImage(BufferedImage* bufferedImage);
 
     public: std::string toString();
 

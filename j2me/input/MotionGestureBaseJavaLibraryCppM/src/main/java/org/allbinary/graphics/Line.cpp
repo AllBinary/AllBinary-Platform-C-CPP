@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,23 +44,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GPoint.h"
-#include "PointFactory.h"
+        #include "org/allbinary/graphics/GPoint.h"
+#include "org/allbinary/graphics/PointFactory.h"
 
 class Line
             : public Object
          {
 
-    private: GPoint p1;
+    private: GPoint* p1;
 
-    private: GPoint p2;
+    private: GPoint* p2;
 
     private: double deltaX= 0.0;
 
     private: double deltaY= 0.0;
 
-public: Line(GPoint p1, GPoint p2){
-this->p1= PointFactory::getInstance().ZERO_ZERO;
+public: Line(GPoint* p1, GPoint* p2){
+this->p1= PointFactory::getInstance()->ZERO_ZERO;
     
 this->p2= this->p1;
     
@@ -76,9 +82,9 @@ this->setP2(p2);
 
 
     private: void update(){
-this->deltaX= this->getP1().getX() -this->getP2().getX();
+this->deltaX= this->getP1()->getX() -this->getP2()->getX();
     
-this->deltaY= this->getP1().getY() -this->getP2().getY();
+this->deltaY= this->getP1()->getY() -this->getP2()->getY();
     
 }
 
@@ -103,7 +109,7 @@ this->deltaY= this->getP1().getY() -this->getP2().getY();
 }
 
 
-    public: GPoint getP1(){
+    public: GPoint* getP1(){
 
 
 
@@ -113,7 +119,7 @@ this->deltaY= this->getP1().getY() -this->getP2().getY();
 }
 
 
-    public: GPoint getP2(){
+    public: GPoint* getP2(){
 
 
 
@@ -123,7 +129,7 @@ this->deltaY= this->getP1().getY() -this->getP2().getY();
 }
 
 
-    public: void setP1(GPoint p1){
+    public: void setP1(GPoint* p1){
 this->p1= p1;
     
 this->update();
@@ -131,7 +137,7 @@ this->update();
 }
 
 
-    public: void setP2(GPoint p2){
+    public: void setP2(GPoint* p2){
 this->p2= p2;
     
 this->update();

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_SCALEPROPERTIES_H
         #define ORG_ALLBINARY_MEDIA_SCALEPROPERTIES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -52,7 +58,7 @@ class ScaleProperties
             : public Object
          {
 
-    private: static ScaleProperties instance() { return ScaleProperties(); }
+    public: static ScaleProperties* instance() { static std::unique_ptr<ScaleProperties> value(new ScaleProperties()); return value.get(); }
 
     public: float scaleX = 1.0;
 

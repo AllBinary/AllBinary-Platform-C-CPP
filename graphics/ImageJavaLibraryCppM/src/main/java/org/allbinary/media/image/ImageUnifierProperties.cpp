@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -40,17 +46,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageUnifierCell.h"
+        #include "org/allbinary/media/image/ImageUnifierCell.h"
 
 class ImageUnifierProperties
             : public Object
          {
 
-    private: Integer rows;
+    private: int32_t rows;
 
-    private: Integer columns;
+    private: int32_t columns;
 
-    private: ImageUnifierCell imageUnifierCell;
+    private: ImageUnifierCell* imageUnifierCell;
 
 public: ImageUnifierProperties(){
 }
@@ -61,7 +67,7 @@ public: ImageUnifierProperties(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getColumns().intValue() *this->getImageUnifierCell().getWidth().intValue();
+                        return this->getColumns().intValue() *this->getImageUnifierCell()->getWidth().intValue();
     
 }
 
@@ -71,12 +77,12 @@ public: ImageUnifierProperties(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getRows().intValue() *this->getImageUnifierCell().getHeight().intValue();
+                        return this->getRows().intValue() *this->getImageUnifierCell()->getHeight().intValue();
     
 }
 
 
-    public: Integer getRows(){
+    public: int32_t getRows(){
 
 
 
@@ -86,13 +92,13 @@ public: ImageUnifierProperties(){
 }
 
 
-    public: void setRows(Integer rows){
+    public: void setRows(int32_t rows){
 this->rows= rows;
     
 }
 
 
-    public: Integer getColumns(){
+    public: int32_t getColumns(){
 
 
 
@@ -102,13 +108,13 @@ this->rows= rows;
 }
 
 
-    public: void setColumns(Integer columns){
+    public: void setColumns(int32_t columns){
 this->columns= columns;
     
 }
 
 
-    public: ImageUnifierCell getImageUnifierCell(){
+    public: ImageUnifierCell* getImageUnifierCell(){
 
 
 
@@ -118,7 +124,7 @@ this->columns= columns;
 }
 
 
-    public: void setImageUnifierCell(ImageUnifierCell imageUnifierCell){
+    public: void setImageUnifierCell(ImageUnifierCell* imageUnifierCell){
 this->imageUnifierCell= imageUnifierCell;
     
 }

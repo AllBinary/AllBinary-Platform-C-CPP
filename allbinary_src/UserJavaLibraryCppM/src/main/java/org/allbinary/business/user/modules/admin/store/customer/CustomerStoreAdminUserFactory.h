@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_CUSTOMER_CUSTOMERSTOREADMINUSERFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_CUSTOMER_CUSTOMERSTOREADMINUSERFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,21 +58,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CustomerStoreAdminUser.h"
+        #include "org/allbinary/business/user/modules/admin/store/customer/CustomerStoreAdminUser.h"
 
 class CustomerStoreAdminUserFactory
             : public Object
-        : public UserFactoryInterface {
+        , public UserFactoryInterface {
 
 public: CustomerStoreAdminUserFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface getInstance();
+    public: UserInterface* getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface getInstance(HashMap<Object*, Object*> hashMap);
+    public: UserInterface* getInstance(HashMap<Object*, Object*>* hashMap);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef VIEWS_GENERIC_BASKET_MINI_MINIBASKETVIEW_H
         #define VIEWS_GENERIC_BASKET_MINI_MINIBASKETVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/commerce/inventory/basket/BasketData.h>
@@ -71,13 +77,13 @@
         
 class MiniBasketView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: MiniBasketView(TransformInfoInterface transformInfoInterface);
+public: MiniBasketView(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
     public: void addDomNodeInterfaces();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,9 +69,9 @@ class DecalAnimationInterfaceFactory
             : public Object
          {
 
-    private: static DecalAnimationInterfaceFactory instance() { return DecalAnimationInterfaceFactory(); }
+    private: static DecalAnimationInterfaceFactory* instance() { static std::unique_ptr<DecalAnimationInterfaceFactory> value(new DecalAnimationInterfaceFactory()); return value.get(); }
 
-    public: static DecalAnimationInterfaceFactory getInstance(){
+    public: static DecalAnimationInterfaceFactory* getInstance(){
 
 
 
@@ -77,15 +83,15 @@ class DecalAnimationInterfaceFactory
 
                 //@Throws(Exception.constructor)
             
-    public: AnimationInterfaceFactoryInterface getAnimationFactory(BasicGameResources basicGameResources, BasicColor basicColor){
+    public: AnimationInterfaceFactoryInterface* getAnimationFactory(BasicGameResources* basicGameResources, BasicColor* basicColor){
 
-    AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface;;
+    AnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface;;
     
 
-                        if(basicColor == BasicColorFactory::getInstance().RED)
+                        if(basicColor == BasicColorFactory::getInstance()->RED)
                         
                                     {
-                                    animationInterfaceFactoryInterface= FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(basicGameResources.RESOURCE);
+                                    animationInterfaceFactoryInterface= FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(basicGameResources->RESOURCE);
     
 
                                     }

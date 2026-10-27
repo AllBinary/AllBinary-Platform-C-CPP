@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULEDATA_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULEDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class InputAutomationModuleData
             : public Object
          {
 
-    public: static std::string NAME = "INPUT_AUTOMATION_MODULE";
+    public: static inline std::string NAME = "INPUT_AUTOMATION_MODULE";
 
-    public: static std::string MODULE_NAME_END = " Module";
+    public: static inline std::string MODULE_NAME_END = " Module";
 
 private: InputAutomationModuleData();
 

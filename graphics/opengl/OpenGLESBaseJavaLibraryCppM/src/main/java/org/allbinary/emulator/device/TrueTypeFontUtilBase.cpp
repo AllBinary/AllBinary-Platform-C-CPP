@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -70,7 +76,7 @@ class TrueTypeFontUtilBase
 
     protected: const int32_t lastCapIndex = this->pattern.indexOf('Z');
 
-    public: Font currentFont = Font::getDefaultFont();
+    public: Font* currentFont = Font::getDefaultFont();
 
     public: int32_t scale;
 
@@ -88,7 +94,7 @@ class TrueTypeFontUtilBase
 
 public: TrueTypeFontUtilBase(int32_t scale){
 
-    std::string shortPattern = StringUtil::getInstance().EMPTY_STRING;;
+    std::string shortPattern = StringUtil::getInstance()->EMPTY_STRING;;
     
 
                         if(AvianUtil::isAvian())

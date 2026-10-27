@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -71,23 +77,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SoundStrings.h"
-#include "SoundsFactoryInterface.h"
-#include "Sound.h"
+        #include "org/allbinary/media/audio/SoundStrings.h"
+#include "org/allbinary/media/audio/SoundsFactoryInterface.h"
+#include "org/allbinary/media/audio/Sound.h"
 
 class Sounds
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const SoundStrings soundStrings = SoundStrings::getInstance();
+    private: SoundStrings* soundStrings = SoundStrings::getInstance();
 
-    private: SoundsFactoryInterface soundsFactoryInterface;
+    private: SoundsFactoryInterface* soundsFactoryInterface;
 
-public: Sounds(SoundsFactoryInterface soundsFactoryInterface);
+public: Sounds(SoundsFactoryInterface* soundsFactoryInterface);
 
                 //@Throws(Exception.constructor)
             

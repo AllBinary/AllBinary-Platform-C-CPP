@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -44,9 +50,9 @@
         
 class CryptInterface {
 
-    std::vector<int8_t> encrypt(std::vector<int8_t> array);
+    public: virtual std::vector<int8_t> encrypt(std::vector<int8_t> array) = 0;
 
-    std::vector<int8_t> decrypt(std::vector<int8_t> array);
+    public: virtual std::vector<int8_t> decrypt(std::vector<int8_t> array) = 0;
 
 };
 

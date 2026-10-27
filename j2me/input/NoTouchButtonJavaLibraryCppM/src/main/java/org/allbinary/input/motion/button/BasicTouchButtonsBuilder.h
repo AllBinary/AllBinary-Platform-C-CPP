@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICTOUCHBUTTONSBUILDER_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICTOUCHBUTTONSBUILDER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -56,17 +62,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseTouchInput.h"
+        #include "org/allbinary/input/motion/button/BaseTouchInput.h"
 
 class BasicTouchButtonsBuilder: public BaseTouchInput {
 
-    private: static const BasicTouchButtonsBuilder SINGLETON = BasicTouchButtonsBuilder();
+    private: static BasicTouchButtonsBuilder* SINGLETON() { static std::unique_ptr<BasicTouchButtonsBuilder> value(new BasicTouchButtonsBuilder()); return value.get(); }
 
-    public: static BaseTouchInput getInstance();
+    public: static BaseTouchInput* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: BasicArrayList getList();
+    public: BasicArrayList* getList();
 
 };
 

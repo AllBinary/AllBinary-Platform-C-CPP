@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/awt.h>
@@ -47,24 +53,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Rectangle.h"
-#include "Color.h"
+        #include "org/allbinary/media/image/comparison/Rectangle.h"
+#include "org/allbinary/media/image/comparison/Color.h"
 
 class ImageComparatorConstraintsInterface {
 
-    int32_t getMaxNonMatchingPixelDeltas()
+    public: virtual int32_t getMaxNonMatchingPixelDeltas() = 0;
 
-    bool isCollisionWithAvoidRectangles(Rectangle rectangle)
+    public: virtual bool isCollisionWithAvoidRectangles(Rectangle* rectangle) = 0;
 
-    bool isCollisionWithAvoidRectangles(GPoint point)
+    public: virtual bool isCollisionWithAvoidRectangles(GPoint* point) = 0;
 
-    bool isColorAllowed(int32_t frame, GPoint point, Color color)
+    public: virtual bool isColorAllowed(int32_t frame, GPoint* point, Color* color) = 0;
 
                 //@Throws(Exception.constructor)
             
-    bool isImageValid(BufferedImage bufferedImage)
+    public: virtual bool isImageValid(BufferedImage* bufferedImage) = 0;
 
-    bool isFrameAllowed(int32_t frame)
+    public: virtual bool isFrameAllowed(int32_t frame) = 0;
 
 };
 

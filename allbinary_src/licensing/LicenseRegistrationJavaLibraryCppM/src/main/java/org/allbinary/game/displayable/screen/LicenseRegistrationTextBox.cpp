@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Command.h>
@@ -89,17 +95,17 @@
         
 class LicenseRegistrationTextBox: public CustomTextBox {
 
-    public: static const Command DISPLAY_COMMAND = Command("Register", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 3);
+    public: static Command* DISPLAY_COMMAND() { static std::unique_ptr<Command> value(new Command("Register", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 3)); return value.get(); }
 
-    public: static const Command SUBMIT_COMMAND = Command("Submit", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 3);
+    public: static Command* SUBMIT_COMMAND() { static std::unique_ptr<Command> value(new Command("Submit", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 3)); return value.get(); }
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const Paintable pleaseWaitPaintable = SimpleTextPaintable(commonStrings.PLEASE_WAIT, BasicColorFactory::getInstance().WHITE);
+    private: Paintable* pleaseWaitPaintable = new SimpleTextPaintable(commonStrings.PLEASE_WAIT, BasicColorFactory::getInstance()->WHITE);
 
-    private: Paintable paintable = NullPaintable::getInstance();
+    private: Paintable* paintable = NullPaintable::getInstance();
 
-public: LicenseRegistrationTextBox(CommandListener cmdListener, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor) : CustomTextBox(cmdListener, "Enter Registration Code:", StringUtil::getInstance().EMPTY_STRING, 60, TextField::ANY, Font::getDefaultFont(), backgrounBasicColor, foregroundBasicColor){
+public: LicenseRegistrationTextBox(CommandListener* cmdListener, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) : CustomTextBox(cmdListener, "Enter Registration Code:", StringUtil::getInstance()->EMPTY_STRING, 60, TextField::ANY, Font::getDefaultFont(), backgrounBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -109,14 +115,14 @@ public: LicenseRegistrationTextBox(CommandListener cmdListener, BasicColor backg
 }
 
 
-    public: void initCommands(CommandListener cmdListener){
+    public: void initCommands(CommandListener* cmdListener){
 this->removeAllCommands();
     
-this->addCommand(GameCommandsFactory::getInstance().CLOSE_AND_SHOW_GAME_CANVAS);
+this->addCommand(GameCommandsFactory::getInstance()->CLOSE_AND_SHOW_GAME_CANVAS);
     
-this->addCommand(GameCommandsFactory::getInstance().TOGGLE_KEYBOARD);
+this->addCommand(GameCommandsFactory::getInstance()->TOGGLE_KEYBOARD);
     
-this->addCommand(SUBMIT_COMMAND);
+this->addCommand(SUBMIT_COMMAND());
     
 this->setCommandListener(cmdListener);
     
@@ -127,15 +133,15 @@ this->setCommandListener(cmdListener);
 
         try {
             
-    VirtualKeyboardEventHandler virtualKeyboardEventHandler = VirtualKeyboardEventHandler::getInstance();;
+    VirtualKeyboardEventHandler* virtualKeyboardEventHandler = VirtualKeyboardEventHandler::getInstance();;
     
-virtualKeyboardEventHandler.fireEvent(virtualKeyboardEventHandler.SHOW_EVENT);
+virtualKeyboardEventHandler->fireEvent(virtualKeyboardEventHandler->SHOW_EVENT);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(commonStrings.EXCEPTION, this, "open", e);
+this->logUtil->put(commonStrings.EXCEPTION, this, "open", &e);
     
 }
 
@@ -152,15 +158,15 @@ this->repaint();
 
         try {
             
-    VirtualKeyboardEventHandler virtualKeyboardEventHandler = VirtualKeyboardEventHandler::getInstance();;
+    VirtualKeyboardEventHandler* virtualKeyboardEventHandler = VirtualKeyboardEventHandler::getInstance();;
     
-virtualKeyboardEventHandler.fireEvent(virtualKeyboardEventHandler.HIDE_EVENT);
+virtualKeyboardEventHandler->fireEvent(virtualKeyboardEventHandler->HIDE_EVENT);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(commonStrings.EXCEPTION, this, "open", e);
+this->logUtil->put(commonStrings.EXCEPTION, this, "open", &e);
     
 }
 
@@ -173,19 +179,19 @@ super.close();
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 super.paint(graphics);
     
-this->paintable.paint(graphics);
+this->paintable->paint(graphics);
     
 }
 
 
     public: void submit(){
 
-    CommandListener commandListener = this->getCustomCommandListener();;
+    CommandListener* commandListener = this->getCustomCommandListener();;
     
-commandListener.commandAction(SUBMIT_COMMAND, this);
+commandListener->commandAction(SUBMIT_COMMAND(), this);
     
 }
 

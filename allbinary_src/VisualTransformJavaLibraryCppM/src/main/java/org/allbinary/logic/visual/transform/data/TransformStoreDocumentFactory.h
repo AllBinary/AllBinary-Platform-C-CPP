@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMSTOREDOCUMENTFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMSTOREDOCUMENTFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,8 +58,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformStoreDocument.h"
-#include "TransformDocumentInterface.h"
+        #include "org/allbinary/logic/visual/transform/data/TransformStoreDocument.h"
+#include "org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h"
 
 class TransformStoreDocumentFactory
             : public Object
@@ -61,11 +67,11 @@ class TransformStoreDocumentFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static TransformDocumentInterface getInstance(PageContext pageContext, WeblisketSession weblisketSession);
+    public: static TransformDocumentInterface* getInstance(PageContext* pageContext, WeblisketSession* weblisketSession);
 
                 //@Throws(Exception.constructor)
             
-    public: static TransformDocumentInterface getInstance(SearchRequest searchRequest);
+    public: static TransformDocumentInterface* getInstance(SearchRequest* searchRequest);
 
 private: TransformStoreDocumentFactory();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -51,46 +57,46 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchButtonFactory.h"
-#include "TouchButton.h"
+        #include "org/allbinary/input/motion/button/TouchButtonFactory.h"
+#include "org/allbinary/input/motion/button/TouchButton.h"
 
 class TouchButtonsPaintable: public Paintable {
 
-    protected: BasicColor foregroundBasicColor;
+    protected: BasicColor* foregroundBasicColor;
 
     protected: int32_t foregroundColor;
 
-    protected: const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
+    protected: BasicColorSetUtil* basicSetColorUtil = BasicColorSetUtil::getInstance();
 
-    private: const TouchButtonFactory touchButtonFactory = TouchButtonFactory::getInstance();
+    private: TouchButtonFactory* touchButtonFactory = TouchButtonFactory::getInstance();
 
-public: TouchButtonsPaintable(BasicColor basicColor){
+public: TouchButtonsPaintable(BasicColor* basicColor){
 this->foregroundBasicColor= basicColor;
     
-this->foregroundColor= basicColor.intValue();
+this->foregroundColor= basicColor->intValue();
     
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 
-    BasicArrayList list = this->touchButtonFactory.getList();;
+    BasicArrayList* list = this->touchButtonFactory->getList();;
     
-this->basicSetColorUtil.setBasicColorP3(graphics, this->foregroundBasicColor, this->foregroundColor);
+this->basicSetColorUtil->setBasicColorP3(graphics, this->foregroundBasicColor, this->foregroundColor);
     
 
-    TouchButton touchButton;;
+    TouchButton* touchButton;;
     
 
 
 
 
                         for (
-    int32_t index = list.size();--index >= 0; )
+    int32_t index = list->size();--index >= 0; )
         {
-touchButton= list.objectArray[index];
+touchButton= dynamic_cast<TouchButton*>(list->objectArray[index]);
     
-touchButton.paint(graphics);
+touchButton->paint(graphics);
     
 }
 
@@ -99,11 +105,11 @@ touchButton.paint(graphics);
 
 
                         for (
-    int32_t index = list.size();--index >= 0; )
+    int32_t index = list->size();--index >= 0; )
         {
-touchButton= list.objectArray[index];
+touchButton= dynamic_cast<TouchButton*>(list->objectArray[index]);
     
-touchButton.paintHint(graphics);
+touchButton->paintHint(graphics);
     
 }
 

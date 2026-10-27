@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTSVALIDATIONFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTSVALIDATIONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,7 +67,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CssElementValidationFactory.h"
+        #include "org/allbinary/logic/visual/dhtml/style/css/CssElementValidationFactory.h"
 
 class CssElementsValidationFactory
             : public Object
@@ -69,9 +75,9 @@ class CssElementsValidationFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList getInstance(BasicArrayList cssElementStyleNodeList);
+    public: static BasicArrayList* getInstance(BasicArrayList* cssElementStyleNodeList);
 
-    public: static BasicArrayList getInstance(HashMap<Object*, Object*> hashMap);
+    public: static BasicArrayList* getInstance(HashMap<Object*, Object*>* hashMap);
 
 private: CssElementsValidationFactory();
 

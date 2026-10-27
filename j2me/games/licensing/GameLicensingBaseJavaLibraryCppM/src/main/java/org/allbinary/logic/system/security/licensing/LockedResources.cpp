@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class LockedResources
             : public Object
          {
 
-    private: static LockedResources instance() { return LockedResources(); }
+    private: static LockedResources* instance() { static std::unique_ptr<LockedResources> value(new LockedResources()); return value.get(); }
 
-    public: static LockedResources getInstance(){
+    public: static LockedResources* getInstance(){
 
 
 

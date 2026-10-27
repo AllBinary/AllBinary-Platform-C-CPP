@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/ABHashtable.h>
@@ -41,13 +49,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryLayer.h"
+        #include "org/allbinary/layer/AllBinaryLayer.h"
 
 class LayerInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    AllBinaryLayer getNextInstance(ABHashtable<Object*, Object*> hashtable, int32_t x, int32_t y, int32_t z)
+    public: virtual AllBinaryLayer* getNextInstance(ABHashtable<Object*, Object*>* hashtable, int32_t x, int32_t y, int32_t z) = 0;
 
 };
 

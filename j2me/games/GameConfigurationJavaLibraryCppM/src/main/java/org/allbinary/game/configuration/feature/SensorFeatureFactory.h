@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_SENSORFEATUREFACTORY_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_SENSORFEATUREFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,33 +47,33 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SensorFeature.h"
+        #include "org/allbinary/game/configuration/feature/SensorFeature.h"
 
 class SensorFeatureFactory
             : public Object
          {
 
-    private: static SensorFeatureFactory instance() { return SensorFeatureFactory(); }
+    private: static SensorFeatureFactory* instance() { static std::unique_ptr<SensorFeatureFactory> value(new SensorFeatureFactory()); return value.get(); }
 
-    public: static SensorFeatureFactory getInstance();
+    public: static SensorFeatureFactory* getInstance();
 
 private: SensorFeatureFactory();
 
-    public: const SensorFeature NO_ORIENTATION = SensorFeature("No Orientation");
+    public: SensorFeature* NO_ORIENTATION = new SensorFeature("No Orientation");
 
-    public: const SensorFeature ORIENTATION_SENSORS = SensorFeature("Orientation Sensors");
+    public: SensorFeature* ORIENTATION_SENSORS = new SensorFeature("Orientation Sensors");
 
-    public: const SensorFeature SIMULATED_ORIENTATION_SENSORS = SensorFeature("Simulated Orientation Sensors");
+    public: SensorFeature* SIMULATED_ORIENTATION_SENSORS = new SensorFeature("Simulated Orientation Sensors");
 
-    public: const SensorFeature YAW = SensorFeature("Yaw");
+    public: SensorFeature* YAW = new SensorFeature("Yaw");
 
-    public: const SensorFeature YAW_MINUS_RIGHT_PLUS_LEFT = SensorFeature("Yaw -Right +Left");
+    public: SensorFeature* YAW_MINUS_RIGHT_PLUS_LEFT = new SensorFeature("Yaw -Right +Left");
 
-    public: const SensorFeature YAW_MINUS_LEFT_PLUS_RIGHT = SensorFeature("Yaw -Left +Right ");
+    public: SensorFeature* YAW_MINUS_LEFT_PLUS_RIGHT = new SensorFeature("Yaw -Left +Right ");
 
-    public: const SensorFeature PITCH = SensorFeature("Pitch");
+    public: SensorFeature* PITCH = new SensorFeature("Pitch");
 
-    public: const SensorFeature ROLL = SensorFeature("Roll");
+    public: SensorFeature* ROLL = new SensorFeature("Roll");
 
 };
 

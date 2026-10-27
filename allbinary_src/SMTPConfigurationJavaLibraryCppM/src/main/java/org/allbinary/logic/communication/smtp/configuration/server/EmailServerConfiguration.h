@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_SERVER_EMAILSERVERCONFIGURATION_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_SERVER_EMAILSERVERCONFIGURATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -53,14 +59,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "EmailServerConfigurationInterface.h"
-#include "EmailServerConfigurationData.h"
+        #include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationInterface.h"
+#include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationData.h"
 
 class EmailServerConfiguration
             : public Object
-        : public EmailServerConfigurationInterface {
+        , public EmailServerConfigurationInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string accountName;
 
@@ -70,7 +76,7 @@ class EmailServerConfiguration
 
 public: EmailServerConfiguration();
 
-public: EmailServerConfiguration(HashMap<Object*, Object*> hashMap);
+public: EmailServerConfiguration(HashMap<Object*, Object*>* hashMap);
 
 public: EmailServerConfiguration(std::string account, std::string password, std::string server);
 

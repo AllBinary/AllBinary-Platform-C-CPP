@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -77,28 +83,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicArrayListD.h"
-#include "PrintLicenseInitInfo.h"
+        #include "org/allbinary/logic/system/security/licensing/BasicArrayListD.h"
+#include "org/allbinary/logic/system/security/licensing/PrintLicenseInitInfo.h"
 
 class SetLicenseInitInfo
             : public Object
          {
 
-    private: static BufferedReader stdinput = BufferedReader(InputStreamReader(System::in));
+    private: static BufferedReader* stdinput() { static std::unique_ptr<BufferedReader> value(new BufferedReader(new InputStreamReader(System.in))); return value.get(); }
 
                 //@Throws(Exception.constructor)
             
     public: static void main(std::vector<std::string> args);
 
-    private: BasicArrayList vector = BasicArrayListD();
+    private: BasicArrayList* vector = new BasicArrayListD();
 
 public: SetLicenseInitInfo(std::vector<std::string> options);
 
                 //@Throws(Exception.constructor)
             
-    public: LicenseInitInfo getLicenseInitInfo();
+    public: LicenseInitInfo* getLicenseInitInfo();
 
-    public: void createNewLicenseInitInfo(BasicArrayList licenceServerVector);
+    public: void createNewLicenseInitInfo(BasicArrayList* licenceServerVector);
 
 };
 

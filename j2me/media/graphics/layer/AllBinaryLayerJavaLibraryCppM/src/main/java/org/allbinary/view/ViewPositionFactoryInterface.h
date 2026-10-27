@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_VIEW_VIEWPOSITIONFACTORYINTERFACE_H
         #define ORG_ALLBINARY_VIEW_VIEWPOSITIONFACTORYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -41,13 +47,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ViewPositionBase.h"
+        #include "org/allbinary/view/ViewPositionBase.h"
 
 class ViewPositionFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    ViewPositionBase getInstance();
+    public: virtual ViewPositionBase* getInstance() = 0;
 
 };
 

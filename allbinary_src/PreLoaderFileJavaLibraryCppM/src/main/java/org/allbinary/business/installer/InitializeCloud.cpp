@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -78,11 +84,11 @@ class InitializeCloud
             : public Object
          {
 
-    public: static const std::string CLOUD = "cloud/";
+    public: static inline const std::string CLOUD = "cloud/";
 
-    public: static const std::string CLOUD_UPDATE = "cloudupdate/";
+    public: static inline const std::string CLOUD_UPDATE = "cloudupdate/";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: InitializeCloud(){
 }
@@ -92,46 +98,46 @@ public: InitializeCloud(){
 
         try {
             
-                        if(AbIOSystem::getInstance().isType("com.vobject.appengine.java.io"))
+                        if(AbIOSystem::getInstance()->isType("com.vobject.appengine.java.io"))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(URLGLOBALS::getWebappPath());
+stringBuffer->append(URLGLOBALS::getWebappPath());
     
-stringBuffer.append(cloud);
+stringBuffer->append(cloud);
     
-stringBuffer.append(PATH_GLOBALS::getInstance().DATA_PATH);
-    
-
-    AbPath path = AbPath(stringBuffer.toString(), StringUtil::getInstance().EMPTY_STRING);;
-    
-stringBuffer.delete(0, stringBuffer.length());
-    
-stringBuffer.append(URLGLOBALS::getWebappPath());
+stringBuffer->append(PATH_GLOBALS::getInstance()->DATA_PATH);
     
 
-    AbPath realPath = AbPath(stringBuffer.toString(), StringUtil::getInstance().EMPTY_STRING);;
+    AbPath* path = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
+    
+stringBuffer->delete(0, stringBuffer->length());
+    
+stringBuffer->append(URLGLOBALS::getWebappPath());
     
 
-    AbFile file = AbFile::createAbFileFromAbPath(path);;
+    AbPath* realPath = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
     
 
-    BasicArrayList fileBasicArrayList = Directory::getInstance().search(file, true);;
+    AbFile* file = AbFile::createAbFileFromAbPath(path);;
     
 
-    int32_t size = fileBasicArrayList.size();;
+    BasicArrayList* fileBasicArrayList = Directory::getInstance()->search(file, true);;
     
-stringBuffer.delete(0, stringBuffer.length());
+
+    int32_t size = fileBasicArrayList->size();;
     
-stringBuffer.append("Searched: ");
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(path.toFileSystemString());
+stringBuffer->append("Searched: ");
     
-stringBuffer.append(" BasicArrayList: ");
+stringBuffer->append(path->toFileSystemString());
     
-stringBuffer.appendint(size);
+stringBuffer->append(" BasicArrayList: ");
+    
+stringBuffer->appendint(size);
     
 
     int32_t portion = size /total +1;;
@@ -151,18 +157,18 @@ stringBuffer.appendint(size);
 
                                     }
                                 
-stringBuffer.append(" Section: ");
+stringBuffer->append(" Section: ");
     
-stringBuffer.appendint(start);
+stringBuffer->appendint(start);
     
-stringBuffer.append(" - ");
+stringBuffer->append(" - ");
     
-stringBuffer.appendint(end);
+stringBuffer->appendint(end);
     
-this->logUtil.putF(stringBuffer.toString(), this, "initialize()");
+this->logUtil->putF(stringBuffer->toString(), this, "initialize()");
     
 
-    AbFile nextFile;;
+    AbFile* nextFile;;
     
 
 
@@ -171,24 +177,24 @@ this->logUtil.putF(stringBuffer.toString(), this, "initialize()");
                         for (
     int32_t index = start;index < end; index++)
         {
-nextFile= fileBasicArrayList.get(index);
+nextFile= dynamic_cast<AbFile*>(fileBasicArrayList->get(index));
     
 
-                        if(nextFile.isDirectory())
+                        if(nextFile->isDirectory())
                         
                                     {
                                     
                                     }
                                 
                         else {
-                            FileUtil::getInstance().copyToCloud(nextFile, path, realPath, cloud, overwriteNewer, overwriteAll);
+                            FileUtil::getInstance()->copyToCloud(nextFile, path, realPath, cloud, overwriteNewer, overwriteAll);
     
 
                         }
                             
 }
 
-this->logUtil.putF("Copied Files To Cloud", this, "initialize()");
+this->logUtil->putF("Copied Files To Cloud", this, "initialize()");
     
 
                                     }
@@ -201,9 +207,9 @@ this->logUtil.putF("Copied Files To Cloud", this, "initialize()");
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put("Unable to copy installer files into cloud", this, "initialize()", e);
+this->logUtil->put("Unable to copy installer files into cloud", this, "initialize()", &e);
     
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -86,18 +92,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ItemInterface.h"
-#include "BasicItemData.h"
+        #include "org/allbinary/business/user/commerce/inventory/item/ItemInterface.h"
+#include "org/allbinary/business/user/commerce/inventory/item/BasicItemData.h"
 
 class BasicItem
             : public Object
-        : public ItemInterface {
+        , public ItemInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
     protected: std::string itemId;
 
@@ -137,7 +143,7 @@ class BasicItem
 
     protected: std::string largeImage;
 
-    protected: Money price;
+    protected: Money* price;
 
     protected: std::string comment;
 
@@ -159,93 +165,93 @@ class BasicItem
 
     protected: std::string lastModified;
 
-public: BasicItem(HashMap<Object*, Object*> itemHashMap){
+public: BasicItem(HashMap<Object*, Object*>* itemHashMap){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, "Constructor(HashMap)");
+                                    this->logUtil->putF(this->commonStrings->START, this, "Constructor(HashMap)");
     
 
                                     }
                                 
-this->itemId= itemHashMap.get(basicItemData.ID);
+this->itemId= itemHashMap->get(basicItemData->ID);
     
-this->number= itemHashMap.get(basicItemData.NUMBER);
+this->number= itemHashMap->get(basicItemData->NUMBER);
     
-this->inBaskets= itemHashMap.get(basicItemData.INBASKETS);
+this->inBaskets= itemHashMap->get(basicItemData->INBASKETS);
     
-this->weight= itemHashMap.get(basicItemData.WEIGHT);
+this->weight= itemHashMap->get(basicItemData->WEIGHT);
     
-this->enabled= itemHashMap.get(EntryData::getInstance().ENABLE);
+this->enabled= itemHashMap->get(EntryData::getInstance()->ENABLE);
     
-this->newOrUsed= itemHashMap.get(basicItemData.NEWORUSED);
+this->newOrUsed= itemHashMap->get(basicItemData->NEWORUSED);
     
-this->summary= itemHashMap.get(basicItemData.SUMMARY);
+this->summary= itemHashMap->get(basicItemData->SUMMARY);
     
-this->distributor= itemHashMap.get(basicItemData.DISTRIBUTOR);
+this->distributor= itemHashMap->get(basicItemData->DISTRIBUTOR);
     
-this->idUsedByDistributor= itemHashMap.get(basicItemData.IDUSEDBYDISTRIBUTOR);
+this->idUsedByDistributor= itemHashMap->get(basicItemData->IDUSEDBYDISTRIBUTOR);
     
-this->producedBy= itemHashMap.get(basicItemData.PRODUCEDBY);
+this->producedBy= itemHashMap->get(basicItemData->PRODUCEDBY);
     
-this->productionDate= itemHashMap.get(basicItemData.PRODUCTIONDATE);
+this->productionDate= itemHashMap->get(basicItemData->PRODUCTIONDATE);
     
-this->startProductionDate= itemHashMap.get(basicItemData.STARTPRODUCTIONDATE);
+this->startProductionDate= itemHashMap->get(basicItemData->STARTPRODUCTIONDATE);
     
-this->description= itemHashMap.get(basicItemData.DESCRIPTION);
+this->description= itemHashMap->get(basicItemData->DESCRIPTION);
     
-this->keywords= itemHashMap.get(basicItemData.KEYWORDS);
+this->keywords= itemHashMap->get(basicItemData->KEYWORDS);
     
-this->category= itemHashMap.get(basicItemData.CATEGORY);
+this->category= itemHashMap->get(basicItemData->CATEGORY);
     
-this->type= itemHashMap.get(basicItemData.TYPE);
+this->type= itemHashMap->get(basicItemData->TYPE);
     
-this->smallImage= itemHashMap.get(basicItemData.SMALLIMAGE);
+this->smallImage= itemHashMap->get(basicItemData->SMALLIMAGE);
     
-this->mediumImage= itemHashMap.get(basicItemData.MEDIUMIMAGE);
+this->mediumImage= itemHashMap->get(basicItemData->MEDIUMIMAGE);
     
-this->largeImage= itemHashMap.get(basicItemData.LARGEIMAGE);
+this->largeImage= itemHashMap->get(basicItemData->LARGEIMAGE);
     
-this->timeEntered= itemHashMap.get(EntryData::getInstance().TIMECREATED);
+this->timeEntered= itemHashMap->get(EntryData::getInstance()->TIMECREATED);
     
-this->lastModified= itemHashMap.get(EntryData::getInstance().LASTMODIFIED);
+this->lastModified= itemHashMap->get(EntryData::getInstance()->LASTMODIFIED);
     
-this->price= Money(itemHashMap.get(basicItemData.PRICE));
+this->price= new Money(itemHashMap->get(basicItemData->PRICE));
     
-this->comment= itemHashMap.get(basicItemData.COMMENT);
+this->comment= itemHashMap->get(basicItemData->COMMENT);
     
-this->customs= itemHashMap.get(basicItemData.CUSTOMS);
+this->customs= itemHashMap->get(basicItemData->CUSTOMS);
     
-this->setDownloads(itemHashMap.get(basicItemData.DOWNLOADS));
+this->setDownloads(itemHashMap->get(basicItemData->DOWNLOADS));
     
-this->groups= itemHashMap.get(basicItemData.GROUPS);
+this->groups= itemHashMap->get(basicItemData->GROUPS);
     
-this->options= itemHashMap.get(basicItemData.OPTIONS);
+this->options= itemHashMap->get(basicItemData->OPTIONS);
     
-this->permissions= itemHashMap.get(basicItemData.PERMISSIONS);
+this->permissions= itemHashMap->get(basicItemData->PERMISSIONS);
     
-this->specials= itemHashMap.get(basicItemData.SPECIALS);
+this->specials= itemHashMap->get(basicItemData->SPECIALS);
     
 }
 
 
 public: BasicItem(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
                                 
 
-    std::string EMPTY = StringUtil::getInstance().EMPTY_STRING;;
+    std::string EMPTY = StringUtil::getInstance()->EMPTY_STRING;;
     
-this->itemId= ProductIdGenerator().getNext();
+this->itemId= (new ProductIdGenerator())->getNext();
     
-this->number= CommonPhoneStrings::getInstance().ZERO;
+this->number= CommonPhoneStrings::getInstance()->ZERO;
     
 this->inBaskets= EMPTY;
     
@@ -285,7 +291,7 @@ this->timeEntered= EMPTY;
     
 this->lastModified= EMPTY;
     
-this->price= Money();
+this->price= new Money();
     
 this->comment= EMPTY;
     
@@ -424,7 +430,7 @@ this->lastModified= value;
 }
 
 
-    public: void setPrice(Money value){
+    public: void setPrice(Money* value){
 this->price= value;
     
 }
@@ -446,11 +452,11 @@ this->customs= value;
 this->downloads= value;
     
 
-                        if(!StringValidationUtil::getInstance().isEmpty(this->downloads))
+                        if(!StringValidationUtil::getInstance()->isEmpty(this->downloads))
                         
                                     {
                                     
-    Integer downloadInteger = Integer::valueOf(this->downloads);;
+    int32_t downloadInteger = Integer.valueOf(this->downloads);;
     
 
                         if(downloadInteger.intValue() != 0)
@@ -697,7 +703,7 @@ this->enabled= value;
 }
 
 
-    public: Money getPrice(){
+    public: Money* getPrice(){
 
 
 
@@ -803,11 +809,11 @@ this->downloadable= downloadable;
 }
 
 
-    public: Money getTotal(){
+    public: Money* getTotal(){
 
-    Money itemTotal = Money(this->price);;
+    Money* itemTotal = new Money(this->price);;
     
-itemTotal.multiply(Integer(this->number).intValue());
+itemTotal->multiply((int32_t(this->number)).intValue());
     
 
 
@@ -818,80 +824,80 @@ itemTotal.multiply(Integer(this->number).intValue());
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, "toHashMap");
+                                    this->logUtil->putF(this->commonStrings->START, this, "toHashMap");
     
 
                                     }
                                 
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(basicItemData.ID, this->itemId);
+hashMap->put(basicItemData->ID, this->itemId);
     
-hashMap.put(basicItemData.NUMBER, this->number);
+hashMap->put(basicItemData->NUMBER, this->number);
     
-hashMap.put(basicItemData.INBASKETS, this->inBaskets);
+hashMap->put(basicItemData->INBASKETS, this->inBaskets);
     
-hashMap.put(basicItemData.WEIGHT, this->weight);
+hashMap->put(basicItemData->WEIGHT, this->weight);
     
-hashMap.put(EntryData::getInstance().ENABLE, this->enabled);
+hashMap->put(EntryData::getInstance()->ENABLE, this->enabled);
     
-hashMap.put(basicItemData.NEWORUSED, this->newOrUsed);
+hashMap->put(basicItemData->NEWORUSED, this->newOrUsed);
     
-hashMap.put(basicItemData.SUMMARY, this->summary);
+hashMap->put(basicItemData->SUMMARY, this->summary);
     
-hashMap.put(basicItemData.DISTRIBUTOR, this->distributor);
+hashMap->put(basicItemData->DISTRIBUTOR, this->distributor);
     
-hashMap.put(basicItemData.IDUSEDBYDISTRIBUTOR, this->idUsedByDistributor);
+hashMap->put(basicItemData->IDUSEDBYDISTRIBUTOR, this->idUsedByDistributor);
     
-hashMap.put(basicItemData.PRODUCEDBY, this->producedBy);
+hashMap->put(basicItemData->PRODUCEDBY, this->producedBy);
     
-hashMap.put(basicItemData.PRODUCTIONDATE, this->productionDate);
+hashMap->put(basicItemData->PRODUCTIONDATE, this->productionDate);
     
-hashMap.put(basicItemData.STARTPRODUCTIONDATE, this->startProductionDate);
+hashMap->put(basicItemData->STARTPRODUCTIONDATE, this->startProductionDate);
     
-hashMap.put(basicItemData.DESCRIPTION, this->description);
+hashMap->put(basicItemData->DESCRIPTION, this->description);
     
-hashMap.put(basicItemData.KEYWORDS, this->keywords);
+hashMap->put(basicItemData->KEYWORDS, this->keywords);
     
-hashMap.put(basicItemData.CATEGORY, this->category);
+hashMap->put(basicItemData->CATEGORY, this->category);
     
-hashMap.put(basicItemData.TYPE, this->type);
+hashMap->put(basicItemData->TYPE, this->type);
     
-hashMap.put(basicItemData.SMALLIMAGE, this->smallImage);
+hashMap->put(basicItemData->SMALLIMAGE, this->smallImage);
     
-hashMap.put(basicItemData.MEDIUMIMAGE, this->mediumImage);
+hashMap->put(basicItemData->MEDIUMIMAGE, this->mediumImage);
     
-hashMap.put(basicItemData.LARGEIMAGE, this->largeImage);
-    
-
-    Calendar calendar = Calendar::getInstance();;
+hashMap->put(basicItemData->LARGEIMAGE, this->largeImage);
     
 
-    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    Calendar* calendar = Calendar::getInstance();;
     
-hashMap.put(EntryData::getInstance().LASTMODIFIED, time);
+
+    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
     
-hashMap.put(basicItemData.PRICE, this->price.toString());
+hashMap->put(EntryData::getInstance()->LASTMODIFIED, time);
     
-hashMap.put(basicItemData.COMMENT, this->comment);
+hashMap->put(basicItemData->PRICE, this->price->toString());
     
-hashMap.put(basicItemData.CUSTOMS, this->customs);
+hashMap->put(basicItemData->COMMENT, this->comment);
     
-hashMap.put(basicItemData.DOWNLOADS, this->getDownloads());
+hashMap->put(basicItemData->CUSTOMS, this->customs);
     
-hashMap.put(basicItemData.GROUPS, this->groups);
+hashMap->put(basicItemData->DOWNLOADS, this->getDownloads());
     
-hashMap.put(basicItemData.OPTIONS, this->options);
+hashMap->put(basicItemData->GROUPS, this->groups);
     
-hashMap.put(basicItemData.PERMISSIONS, this->permissions);
+hashMap->put(basicItemData->OPTIONS, this->options);
     
-hashMap.put(basicItemData.SPECIALS, this->specials);
+hashMap->put(basicItemData->PERMISSIONS, this->permissions);
+    
+hashMap->put(basicItemData->SPECIALS, this->specials);
     
 
 
@@ -902,82 +908,82 @@ hashMap.put(basicItemData.SPECIALS, this->specials);
 }
 
 
-    public: BasicArrayList toVector(){
+    public: BasicArrayList* toVector(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, "toVector");
+                                    this->logUtil->putF(this->commonStrings->START, this, "toVector");
     
 
                                     }
                                 
 
-    BasicArrayList values = BasicArrayListD();;
+    BasicArrayList* values = new BasicArrayListD();;
     
-values.add(this->itemId);
+values->add(this->itemId);
     
-values.add(this->number);
+values->add(this->number);
     
-values.add(this->inBaskets);
+values->add(this->inBaskets);
     
-values.add(this->weight);
+values->add(this->weight);
     
-values.add(this->enabled);
+values->add(this->enabled);
     
-values.add(this->newOrUsed);
+values->add(this->newOrUsed);
     
-values.add(this->summary);
+values->add(this->summary);
     
-values.add(this->distributor);
+values->add(this->distributor);
     
-values.add(this->idUsedByDistributor);
+values->add(this->idUsedByDistributor);
     
-values.add(this->producedBy);
+values->add(this->producedBy);
     
-values.add(this->productionDate);
+values->add(this->productionDate);
     
-values.add(this->startProductionDate);
+values->add(this->startProductionDate);
     
-values.add(this->description);
+values->add(this->description);
     
-values.add(this->keywords);
+values->add(this->keywords);
     
-values.add(this->category);
+values->add(this->category);
     
-values.add(this->type);
+values->add(this->type);
     
-values.add(this->getSmallImage());
+values->add(this->getSmallImage());
     
-values.add(this->getMediumImage());
+values->add(this->getMediumImage());
     
-values.add(this->getLargeImage());
-    
-
-    Calendar calendar = Calendar::getInstance();;
+values->add(this->getLargeImage());
     
 
-    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    Calendar* calendar = Calendar::getInstance();;
     
-values.add(time);
+
+    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
     
-values.add(time);
+values->add(time);
     
-values.add(this->price.toString());
+values->add(time);
     
-values.add(this->comment);
+values->add(this->price->toString());
     
-values.add(this->customs);
+values->add(this->comment);
     
-values.add(this->getDownloads());
+values->add(this->customs);
     
-values.add(this->groups);
+values->add(this->getDownloads());
     
-values.add(this->options);
+values->add(this->groups);
     
-values.add(this->permissions);
+values->add(this->options);
     
-values.add(this->specials);
+values->add(this->permissions);
+    
+values->add(this->specials);
     
 
 

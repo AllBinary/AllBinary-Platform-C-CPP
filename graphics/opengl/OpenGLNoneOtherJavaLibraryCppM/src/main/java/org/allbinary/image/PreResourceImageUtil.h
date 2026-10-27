@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_IMAGE_PRERESOURCEIMAGEUTIL_H
         #define ORG_ALLBINARY_IMAGE_PRERESOURCEIMAGEUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -55,15 +61,15 @@ class PreResourceImageUtil
             : public Object
          {
 
-    private: static PreResourceImageUtil instance() { return PreResourceImageUtil(); }
+    private: static PreResourceImageUtil* instance() { static std::unique_ptr<PreResourceImageUtil> value(new PreResourceImageUtil()); return value.get(); }
 
-    public: static PreResourceImageUtil getInstance();
+    public: static PreResourceImageUtil* getInstance();
 
-    public: Image encapsulate(Image image);
+    public: Image* encapsulate(Image* image);
 
-    public: void updateGL(GL gl, Image image);
+    public: void updateGL(GL* gl, Image* image);
 
-    public: void update(Graphics graphics, Image image);
+    public: void update(Graphics* graphics, Image* image);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_HEALTH_NULLHEALTHLISTENER_H
         #define ORG_ALLBINARY_GAME_HEALTH_NULLHEALTHLISTENER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,13 +47,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HealthListenerInterface.h"
+        #include "org/allbinary/game/health/HealthListenerInterface.h"
 
 class NullHealthListener
             : public Object
-        : public HealthListenerInterface {
+        , public HealthListenerInterface {
 
-    public: static const NullHealthListener NULL_HEALTH_LISTENER = NullHealthListener();
+    public: static NullHealthListener* NULL_HEALTH_LISTENER() { static std::unique_ptr<NullHealthListener> value(new NullHealthListener()); return value.get(); }
 
     public: void onHealthChange();
 

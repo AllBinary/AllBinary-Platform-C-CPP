@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_DEMOSETUP_H
         #define ORG_ALLBINARY_GAME_MIDLET_DEMOSETUP_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,13 +47,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameMidlet.h"
+        #include "org/allbinary/game/midlet/GameMidlet.h"
 
 class DemoSetup
             : public Object
          {
 
-    public: void init(GameMidlet gameMidlet);
+    public: void init(GameMidlet* gameMidlet);
 
 };
 

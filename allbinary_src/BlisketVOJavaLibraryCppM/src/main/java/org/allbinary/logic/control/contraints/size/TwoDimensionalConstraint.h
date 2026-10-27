@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_SIZE_TWODIMENSIONALCONSTRAINT_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_SIZE_TWODIMENSIONALCONSTRAINT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/w3c/dom/Node.h>
@@ -44,26 +50,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TwoDimensionalConstraintInterface.h"
-#include "SizeConstraintInterface.h"
+        #include "org/allbinary/logic/control/contraints/size/TwoDimensionalConstraintInterface.h"
+#include "org/allbinary/logic/control/contraints/size/SizeConstraintInterface.h"
 
 class TwoDimensionalConstraint
             : public Object
-        : public TwoDimensionalConstraintInterface {
+        , public TwoDimensionalConstraintInterface {
 
-    private: SizeConstraintInterface widthSizeConstraintInterface;
+    private: SizeConstraintInterface* widthSizeConstraintInterface;
 
-    private: SizeConstraintInterface heightSizeConstraintInterface;
+    private: SizeConstraintInterface* heightSizeConstraintInterface;
 
-public: TwoDimensionalConstraint(Node node);
+public: TwoDimensionalConstraint(Node* node);
 
-    public: SizeConstraintInterface getHeight();
+    public: SizeConstraintInterface* getHeight();
 
-    public: SizeConstraintInterface getWidth();
+    public: SizeConstraintInterface* getWidth();
 
-    public: void setHeight(SizeConstraintInterface heightSizeConstraintInterface);
+    public: void setHeight(SizeConstraintInterface* heightSizeConstraintInterface);
 
-    public: void setWidth(SizeConstraintInterface widthSizeConstraintInterface);
+    public: void setWidth(SizeConstraintInterface* widthSizeConstraintInterface);
 
 };
 

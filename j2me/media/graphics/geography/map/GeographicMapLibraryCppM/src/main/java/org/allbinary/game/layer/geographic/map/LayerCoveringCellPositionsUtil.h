@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_LAYERCOVERINGCELLPOSITIONSUTIL_H
         #define ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_LAYERCOVERINGCELLPOSITIONSUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,19 +69,19 @@ class LayerCoveringCellPositionsUtil
             : public Object
          {
 
-    private: static LayerCoveringCellPositionsUtil instance() { return LayerCoveringCellPositionsUtil(); }
+    private: static LayerCoveringCellPositionsUtil* instance() { static std::unique_ptr<LayerCoveringCellPositionsUtil> value(new LayerCoveringCellPositionsUtil()); return value.get(); }
 
-    public: static LayerCoveringCellPositionsUtil getInstance();
+    public: static LayerCoveringCellPositionsUtil* getInstance();
 
-    private: const CellPositionsUtil cellPositionsUtil = CellPositionsUtil::getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public: BasicArrayList getAllXY(BasicGeographicMap geographicMapInterface, AllBinaryLayer layerInterface, int32_t x, int32_t y, BasicArrayList reusableList);
+    private: CellPositionsUtil* cellPositionsUtil = CellPositionsUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getAll(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition topLeftGeographicMapCellPosition, AllBinaryLayer layerInterface, BasicArrayList reusableList);
+    public: BasicArrayList* getAllXY(BasicGeographicMap* geographicMapInterface, AllBinaryLayer* layerInterface, int32_t x, int32_t y, BasicArrayList* reusableList);
+
+                //@Throws(Exception.constructor)
+            
+    public: BasicArrayList* getAll(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* topLeftGeographicMapCellPosition, AllBinaryLayer* layerInterface, BasicArrayList* reusableList);
 
 };
 

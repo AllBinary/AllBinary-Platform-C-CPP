@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFO_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFO_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -141,18 +147,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoInterface.h"
-#include "TransformInfoData.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfoData.h"
 
 class TransformInfo
             : public Object
-        : public TransformInfoInterface {
+        , public TransformInfoInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
     private: bool isChild = false;
 
@@ -166,15 +172,15 @@ class TransformInfo
 
     private: std::string objectConfigFileName;
 
-    private: TransformInfoObjectConfigInterface objectConfigInterface;
+    private: TransformInfoObjectConfigInterface* objectConfigInterface;
 
-    private: std::string template;
+    private: std::string template_;
 
     private: std::string templateFileName;
 
     private: std::string dataFileName;
 
-    private: std::string data = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string data = StringUtil::getInstance()->EMPTY_STRING;
 
 public: TransformInfo();
 
@@ -184,7 +190,7 @@ public: TransformInfo(std::string name, std::string objectFileName, std::string 
 
                 //@Throws(Exception.constructor)
             
-    public: void override(HashMap<Object*, Object*> hashMap);
+    public: void override(HashMap<Object*, Object*>* hashMap);
 
     public: std::string log();
 
@@ -230,15 +236,15 @@ public: TransformInfo(std::string name, std::string objectFileName, std::string 
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getTemplateFilePath();
+    public: AbPath* getTemplateFilePath();
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getObjectConfigFilePath();
+    public: AbPath* getObjectConfigFilePath();
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getDataFilePath();
+    public: AbPath* getDataFilePath();
 
     public: std::string getObjectConfigFile();
 
@@ -246,13 +252,13 @@ public: TransformInfo(std::string name, std::string objectFileName, std::string 
 
                 //@Throws(Exception.constructor)
             
-    public: Document getDataDocument();
+    public: Document* getDataDocument();
 
     public: std::string getDataFile();
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
-    public: BasicArrayList toVector();
+    public: BasicArrayList* toVector();
 
     public: Object* getKey();
 
@@ -260,9 +266,9 @@ public: TransformInfo(std::string name, std::string objectFileName, std::string 
 
     public: bool isChild();
 
-    public: TransformInfoObjectConfigInterface getObjectConfigInterface();
+    public: TransformInfoObjectConfigInterface* getObjectConfigInterface();
 
-    public: void setObjectConfigInterface(Object objectConfigInterface);
+    public: void setObjectConfigInterface(Object* objectConfigInterface);
 
 };
 

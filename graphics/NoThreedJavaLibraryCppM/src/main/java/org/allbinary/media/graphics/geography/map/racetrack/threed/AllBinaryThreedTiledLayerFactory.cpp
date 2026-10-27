@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,9 +60,9 @@ class AllBinaryThreedTiledLayerFactory
             : public Object
          {
 
-    private: static AllBinaryThreedTiledLayerFactory instance() { return AllBinaryThreedTiledLayerFactory(); }
+    private: static AllBinaryThreedTiledLayerFactory* instance() { static std::unique_ptr<AllBinaryThreedTiledLayerFactory> value(new AllBinaryThreedTiledLayerFactory()); return value.get(); }
 
-    public: static AllBinaryThreedTiledLayerFactory getInstance(){
+    public: static AllBinaryThreedTiledLayerFactory* getInstance(){
 
 
 
@@ -68,11 +74,11 @@ class AllBinaryThreedTiledLayerFactory
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryTiledLayer getInstance(RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData){
+    public: AllBinaryTiledLayer* getInstance(RaceTrackInfo* raceTrackInfo, RaceTrackData* raceTrackData){
 
 
 
-                            throw Exception("No Threed");
+                            throw new Exception("No Threed");
                     
 }
 

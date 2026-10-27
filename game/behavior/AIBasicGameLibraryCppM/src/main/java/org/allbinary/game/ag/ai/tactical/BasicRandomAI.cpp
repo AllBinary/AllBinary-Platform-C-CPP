@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -74,13 +80,13 @@ class BasicRandomAI: public BasicAI {
 
     private: int32_t i_random = 0;
 
-    private: InputProbability inputProbability;
+    private: InputProbability* inputProbability;
 
-    private: Visitor visitor;
+    private: Visitor* visitor;
 
     private: const std::vector<int32_t> keyArray = {Canvas::UP,Canvas::DOWN,Canvas::LEFT,Canvas::RIGHT,Canvas::KEY_NUM1,Canvas::KEY_NUM7,Canvas::KEY_NUM9};
 
-public: BasicRandomAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput, InputProbability inputProbability, Visitor visitor) : BasicAI(ownerLayerInterface, gameInput){
+public: BasicRandomAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput, InputProbability* inputProbability, Visitor* visitor) : BasicAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -94,22 +100,22 @@ this->visitor= visitor;
 }
 
 
-    private: const MyRandomFactory myRandomFactory = MyRandomFactory::getInstance();
+    private: MyRandomFactory* myRandomFactory = MyRandomFactory::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
 
-                        if(this->inputProbability.getTimeDelayHelper().isTime(GameTickTimeDelayHelperFactory::getInstance().startTime))
+                        if(this->inputProbability->getTimeDelayHelper()->isTime(GameTickTimeDelayHelperFactory::getInstance()->startTime))
                         
                                     {
-                                    this->i_random= this->myRandomFactory.getAbsoluteNextInt(this->inputProbability.getMax());
+                                    this->i_random= this->myRandomFactory->getAbsoluteNextInt(this->inputProbability->getMax());
     
 
     bool repeat = false;;
     
 
-    std::vector<Integer> repeatLikelyhoodIntegerArray = this->inputProbability.getRepeatLikelyhoodIntegerArray();;
+    std::vector<int32_t> repeatLikelyhoodIntegerArray = this->inputProbability->getRepeatLikelyhoodIntegerArray();;
     
 
                         if(this->getLastKey() !=  -1 && repeatLikelyhoodIntegerArray[this->getLastKey()].intValue() >= this->i_random)
@@ -125,15 +131,15 @@ this->visitor= visitor;
                         
                                     {
                                     
-    std::vector<std::vector<Integer>> likelyhoodIntegerArray = this->inputProbability.getLikelyhoodIntegerArray();;
+    std::vector<std::vector<int32_t>> likelyhoodIntegerArray = this->inputProbability->getLikelyhoodIntegerArray();;
     
-this->i_random= this->myRandomFactory.getAbsoluteNextInt(this->inputProbability.getMax());
+this->i_random= this->myRandomFactory->getAbsoluteNextInt(this->inputProbability->getMax());
     
 
     int32_t size = this->keyArray.size();;
     
 
-    std::vector<Integer> likelyhoodIntegerKeyArray;;
+    std::vector<int32_t> likelyhoodIntegerKeyArray;;
     
 
 
@@ -173,7 +179,7 @@ break;
 
                                     }
                                 
-this->visitor.visit(this);
+this->visitor->visit(this);
     
 
                                     }

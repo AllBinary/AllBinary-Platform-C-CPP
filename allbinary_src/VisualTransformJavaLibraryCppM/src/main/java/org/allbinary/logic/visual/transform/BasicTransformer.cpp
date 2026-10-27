@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayInputStream.h>
@@ -94,17 +100,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbTransformer.h"
+        #include "org/allbinary/logic/visual/transform/AbTransformer.h"
 
 class BasicTransformer: public AbTransformer {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const StreamUtil streamUtil = StreamUtil::getInstance();
+    private: StreamUtil* streamUtil = StreamUtil::getInstance();
 
-    private: AbeClientInformationInterface abeClientInformation;
+    private: AbeClientInformationInterface* abeClientInformation;
 
-public: BasicTransformer(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface) : AbTransformer(transformInfoInterface){
+public: BasicTransformer(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface) : AbTransformer(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -120,66 +126,66 @@ this->setTemplateAsInputStream();
 
                 //@Throws(Exception.constructor)
             
-    private: void setEncryptedTemplateFileAsInputStream(AbFile file){
+    private: void setEncryptedTemplateFileAsInputStream(AbFile* file){
 
-    ByteArrayOutputStream outputStream = 
+    ByteArrayOutputStream* outputStream = 
                 null
             ;;
     
 
-    AbFileInputStream inputStream = 
+    AbFileInputStream* inputStream = 
                 null
             ;;
     
 
         try {
-            outputStream= ByteArrayOutputStream();
+            outputStream= new ByteArrayOutputStream();
     
-inputStream= AbFileInputStream(file);
+inputStream= new AbFileInputStream(file);
     
-outputStream= this->streamUtil.get(inputStream, outputStream, std::vector<int8_t>(16384));
-    
-
-    AbCrypt abCrypt = AbCrypt(KeySpecFactory::DESEDE, AbKeys::getInstance().getKey(this->abeClientInformation, file.getAbsolutePath()));;
+outputStream= dynamic_cast<ByteArrayOutputStream*>(this->streamUtil->get(inputStream, outputStream, std::vector<int8_t>(16384)));
     
 
-    std::vector<int8_t> decrypted = abCrypt.decrypt(outputStream.toByteArray());;
+    AbCrypt* abCrypt = new AbCrypt(KeySpecFactory::DESEDE, AbKeys::getInstance()->getKey(this->abeClientInformation, file->getAbsolutePath()));;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORY))
+    std::vector<int8_t> decrypted = abCrypt->decrypt(outputStream->toByteArray());;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
                         
                                     {
-                                    this->logUtil.putF("Decrypted Template: \n" +
+                                    this->logUtil->putF("Decrypted Template: \n" +
                                     //Otherwise - right - ObjectCreationExpr
 , this, "setEncryptedTemplateFileAsInputStream(file)");
     
 
                                     }
                                 
-this->setInputStream(ByteArrayInputStream(decrypted));
+this->setInputStream(dynamic_cast<InputStream*>(new ByteArrayInputStream(decrypted)));
     
-this->setURIResolver(BasicUriResolver(TransformInfoTemplateData::getInstance().ENCRYPTED_EXTENSION));
+this->setURIResolver(dynamic_cast<URIResolver*>(new BasicUriResolver(TransformInfoTemplateData::getInstance()->ENCRYPTED_EXTENSION)));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Failed to get Encrypted File: ");
+stringBuffer->append("Failed to get Encrypted File: ");
     
-stringBuffer.append(file.getPath());
+stringBuffer->append(file->getPath());
     
-stringBuffer.append(" \nName:");
+stringBuffer->append(" \nName:");
     
-stringBuffer.append(file.getName());
+stringBuffer->append(file->getName());
     
-this->logUtil.put(stringBuffer.toString(), this, "setEncryptedTemplateFileAsInputStream()", e);
+this->logUtil->put(stringBuffer->toString(), this, "setEncryptedTemplateFileAsInputStream()", &e);
     
 
                                     }
@@ -192,9 +198,9 @@ this->logUtil.put(stringBuffer.toString(), this, "setEncryptedTemplateFileAsInpu
 }
 
          finally {
-            this->streamUtil.close(outputStream);
+            this->streamUtil->close(outputStream);
     
-this->streamUtil.close(inputStream);
+this->streamUtil->close(inputStream);
     
 
          }
@@ -206,51 +212,51 @@ this->streamUtil.close(inputStream);
             
     private: void setEncryptedTemplateAsInputStream(){
 
-    ByteArrayOutputStream outputStream = 
+    ByteArrayOutputStream* outputStream = 
                 null
             ;;
     
 
-    ByteArrayInputStream inputStream = 
+    ByteArrayInputStream* inputStream = 
                 null
             ;;
     
 
         try {
-            outputStream= ByteArrayOutputStream();
+            outputStream= new ByteArrayOutputStream();
     
-inputStream= ByteArrayInputStream(this->getTransformInfoInterface().getTemplate().getBytes());
+inputStream= new ByteArrayInputStream(this->getTransformInfoInterface()->getTemplate()->getBytes());
     
-outputStream= this->streamUtil.get(inputStream, outputStream, std::vector<int8_t>(16384));
-    
-
-    AbCrypt abCrypt = AbCrypt(KeySpecFactory::DESEDE, AbKeys::getInstance().getKey(this->abeClientInformation, this->getTransformInfoInterface().getName()));;
+outputStream= dynamic_cast<ByteArrayOutputStream*>(this->streamUtil->get(inputStream, outputStream, std::vector<int8_t>(16384)));
     
 
-    std::vector<int8_t> decrypted = abCrypt.decrypt(outputStream.toByteArray());;
+    AbCrypt* abCrypt = new AbCrypt(KeySpecFactory::DESEDE, AbKeys::getInstance()->getKey(this->abeClientInformation, this->getTransformInfoInterface()->getName()));;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORY))
+    std::vector<int8_t> decrypted = abCrypt->decrypt(outputStream->toByteArray());;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
                         
                                     {
-                                    this->logUtil.putF("Decrypted Template: \n" +decrypted.toString(), this, "setEncryptedTemplateAsInputStream()");
+                                    this->logUtil->putF("Decrypted Template: \n" +decrypted.toString(), this, "setEncryptedTemplateAsInputStream()");
     
 
                                     }
                                 
-this->setInputStream(ByteArrayInputStream(decrypted));
+this->setInputStream(dynamic_cast<InputStream*>(new ByteArrayInputStream(decrypted)));
     
-this->setURIResolver(BasicUriResolver(TransformInfoTemplateData::getInstance().ENCRYPTED_EXTENSION));
+this->setURIResolver(dynamic_cast<URIResolver*>(new BasicUriResolver(TransformInfoTemplateData::getInstance()->ENCRYPTED_EXTENSION)));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to set with template: " +this->getTransformInfoInterface().getTemplateFilePath(), this, "setEncryptedTemplateFileAsInputStream()", e);
+                                    this->logUtil->put("Failed to set with template: " +this->getTransformInfoInterface()->getTemplateFilePath(), this, "setEncryptedTemplateFileAsInputStream()", &e);
     
 
                                     }
@@ -263,9 +269,9 @@ this->setURIResolver(BasicUriResolver(TransformInfoTemplateData::getInstance().E
 }
 
          finally {
-            this->streamUtil.close(outputStream);
+            this->streamUtil->close(outputStream);
     
-this->streamUtil.close(inputStream);
+this->streamUtil->close(inputStream);
     
 
          }
@@ -277,99 +283,99 @@ this->streamUtil.close(inputStream);
             
     private: void setTemplateAsInputStream(){
 
-    AbFileInputStream inputStream = 
+    AbFileInputStream* inputStream = 
                 null
             ;;
     
 
-    ByteArrayOutputStream outputStream = 
+    ByteArrayOutputStream* outputStream = 
                 null
             ;;
     
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
                         
                                     {
-                                    this->logUtil.putF(this->getTransformInfoInterface().log(), this, "setTemplateAsInputStream()");
+                                    this->logUtil->putF(this->getTransformInfoInterface()->log(), this, "setTemplateAsInputStream()");
     
 
                                     }
                                 
 
-    TransformInfoTemplateData transformInfoTemplateData = TransformInfoTemplateData::getInstance();;
+    TransformInfoTemplateData* transformInfoTemplateData = TransformInfoTemplateData::getInstance();;
     
 
-    PathUtil pathUtil = PathUtil::getInstance();;
+    PathUtil* pathUtil = PathUtil::getInstance();;
     
 
-                        if(this->getTransformInfoInterface().getTemplateFilePath() != 
+                        if(this->getTransformInfoInterface()->getTemplateFilePath() != 
                                     nullptr
                                 )
                         
                                     {
                                     
-    std::string extension = pathUtil.getExtensionWithAbPath(this->getTransformInfoInterface().getTemplateFilePath());;
+    std::string extension = pathUtil->getExtensionWithAbPath(this->getTransformInfoInterface()->getTemplateFilePath());;
     
 
-    std::string filePath = pathUtil.getWithoutExtensionWithAbPath(this->getTransformInfoInterface().getTemplateFilePath());;
+    std::string filePath = pathUtil->getWithoutExtensionWithAbPath(this->getTransformInfoInterface()->getTemplateFilePath());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
                         
                                     {
-                                    this->logUtil.putF(this->getTransformInfoInterface().log(), this, "setTemplateAsInputStream()");
+                                    this->logUtil->putF(this->getTransformInfoInterface()->log(), this, "setTemplateAsInputStream()");
     
 
                                     }
                                 
 
-                        if(extension.compare(transformInfoTemplateData.UNCRYPTED_EXTENSION) == 0)
+                        if(extension.compare(transformInfoTemplateData->UNCRYPTED_EXTENSION) == 0)
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(filePath);
+stringBuffer->append(filePath);
     
-stringBuffer.append(AbPathData::getInstance().EXTENSION_SEP);
+stringBuffer->append(AbPathData::getInstance()->EXTENSION_SEP);
     
-stringBuffer.append(transformInfoTemplateData.ENCRYPTED_EXTENSION);
-    
-
-    AbFile encFile = AbFile::createAbFile(stringBuffer.toString());;
+stringBuffer->append(transformInfoTemplateData->ENCRYPTED_EXTENSION);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORY))
+    AbFile* encFile = AbFile::createAbFile(stringBuffer->toString());;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
                         
                                     {
-                                    this->logUtil.putF(this->getTransformInfoInterface().log(), this, "setTemplateAsInputStream()");
+                                    this->logUtil->putF(this->getTransformInfoInterface()->log(), this, "setTemplateAsInputStream()");
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
                         
                                     {
-                                    stringBuffer= StringMaker();
+                                    stringBuffer= new StringMaker();
     
-stringBuffer.append("Encrypted Template File isFile=");
+stringBuffer->append("Encrypted Template File isFile=");
     
-stringBuffer.appendboolean(encFile.isFile());
+stringBuffer->appendboolean(encFile->isFile());
     
-stringBuffer.append("\nEncTemplateFilePath: ");
+stringBuffer->append("\nEncTemplateFilePath: ");
     
-stringBuffer.append(encFile.getPath());
+stringBuffer->append(encFile->getPath());
     
-this->logUtil.putF(stringBuffer.toString(), this, "setTemplateAsInputStream()");
+this->logUtil->putF(stringBuffer->toString(), this, "setTemplateAsInputStream()");
     
 
                                     }
                                 
 
-                        if(encFile.isFile())
+                        if(encFile->isFile())
                         
                                     {
                                     this->setEncryptedTemplateFileAsInputStream(encFile);
@@ -385,48 +391,48 @@ this->logUtil.putF(stringBuffer.toString(), this, "setTemplateAsInputStream()");
                                 
                         else {
                             
-    AbFile file = AbFile::createAbFileFromAbPath(this->getTransformInfoInterface().getTemplateFilePath());;
+    AbFile* file = AbFile::createAbFileFromAbPath(this->getTransformInfoInterface()->getTemplateFilePath());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
                         
                                     {
-                                    this->logUtil.putF(this->getTransformInfoInterface().log(), this, "setTemplateAsInputStream()");
+                                    this->logUtil->putF(this->getTransformInfoInterface()->log(), this, "setTemplateAsInputStream()");
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
                         
                                     {
-                                    this->logUtil.putF("Template File isFile=" +file.isFile(), this, "setTemplateAsInputStream()");
+                                    this->logUtil->putF("Template File isFile=" +file->isFile(), this, "setTemplateAsInputStream()");
     
 
                                     }
                                 
 
-                        if(file.isFile())
+                        if(file->isFile())
                         
                                     {
-                                    inputStream= AbFileInputStream(file);
+                                    inputStream= new AbFileInputStream(file);
     
-outputStream= ByteArrayOutputStream();
+outputStream= new ByteArrayOutputStream();
     
-outputStream= this->streamUtil.get(inputStream, outputStream, std::vector<int8_t>(16384));
+outputStream= dynamic_cast<ByteArrayOutputStream*>(this->streamUtil->get(inputStream, outputStream, std::vector<int8_t>(16384)));
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
                         
                                     {
-                                    this->logUtil.putF("Template: " +outputStream.toString(), this, "getTemplateAsInputStream()");
+                                    this->logUtil->putF("Template: " +outputStream->toString(), this, "getTemplateAsInputStream()");
     
 
                                     }
                                 
-this->setInputStream(ByteArrayInputStream(outputStream.toByteArray()));
+this->setInputStream(dynamic_cast<InputStream*>(new ByteArrayInputStream(outputStream->toByteArray())));
     
-this->setURIResolver(BasicUriResolver(transformInfoTemplateData.UNCRYPTED_EXTENSION));
+this->setURIResolver(dynamic_cast<URIResolver*>(new BasicUriResolver(transformInfoTemplateData->UNCRYPTED_EXTENSION)));
     
 
 
@@ -444,23 +450,23 @@ this->setURIResolver(BasicUriResolver(transformInfoTemplateData.UNCRYPTED_EXTENS
                                     }
                                 
                              else 
-                        if(extension.compare(transformInfoTemplateData.ENCRYPTED_EXTENSION) == 0)
+                        if(extension.compare(transformInfoTemplateData->ENCRYPTED_EXTENSION) == 0)
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(filePath);
+stringBuffer->append(filePath);
     
-stringBuffer.append(AbPathData::getInstance().EXTENSION_SEP);
+stringBuffer->append(AbPathData::getInstance()->EXTENSION_SEP);
     
-stringBuffer.append(transformInfoTemplateData.ENCRYPTED_EXTENSION);
-    
-
-    AbFile file = AbFile::createAbFile(stringBuffer.toString());;
+stringBuffer->append(transformInfoTemplateData->ENCRYPTED_EXTENSION);
     
 
-                        if(file.isFile())
+    AbFile* file = AbFile::createAbFile(stringBuffer->toString());;
+    
+
+                        if(file->isFile())
                         
                                     {
                                     this->setEncryptedTemplateFileAsInputStream(file);
@@ -475,7 +481,7 @@ stringBuffer.append(transformInfoTemplateData.ENCRYPTED_EXTENSION);
                             
 
 
-                            throw Exception("View Template File Type Is Not Recognized: " +this->getTransformInfoInterface().getTemplateFilePath());
+                            throw new Exception("View Template File Type Is Not Recognized: " +this->getTransformInfoInterface()->getTemplateFilePath());
                     
 
                         }
@@ -491,13 +497,13 @@ stringBuffer.append(transformInfoTemplateData.ENCRYPTED_EXTENSION);
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to get Template Data", this, "setTemplateAsInputStream()", e);
+                                    this->logUtil->put("Failed to get Template Data", this, "setTemplateAsInputStream()", &e);
     
 
                                     }
@@ -510,9 +516,9 @@ stringBuffer.append(transformInfoTemplateData.ENCRYPTED_EXTENSION);
 }
 
          finally {
-            this->streamUtil.close(outputStream);
+            this->streamUtil->close(outputStream);
     
-this->streamUtil.close(inputStream);
+this->streamUtil->close(inputStream);
     
 
          }
@@ -520,7 +526,7 @@ this->streamUtil.close(inputStream);
 
 
 
-                            throw Exception("Error setTemplateAsInputStream()");
+                            throw new Exception("Error setTemplateAsInputStream()");
                     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,15 +73,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "XmlRpcAbeLicenseRetrievalClient.h"
+        #include "org/allbinary/logic/system/security/licensing/client/XmlRpcAbeLicenseRetrievalClient.h"
 
 class AbeLicenseClient
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: const int32_t MINSERVERS = 3;
 
@@ -86,23 +92,23 @@ public: AbeLicenseClient(){
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: AbeLicenseInterface get(AbeClientInformationInterface abeClientInformation){
+    public: AbeLicenseInterface* get(AbeClientInformationInterface* abeClientInformation){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.GET);
+            this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->GET);
     
 
-    XmlRpcAbeClient xmlRpcAbeLicenseClient = XmlRpcAbeLicenseRetrievalClient(abeClientInformation);;
+    XmlRpcAbeClient* xmlRpcAbeLicenseClient = new XmlRpcAbeLicenseRetrievalClient(abeClientInformation);;
     
 
-    AbeLicenseInterface abeLicenseInterface = xmlRpcAbeLicenseClient.get(
-                            nullptr);;
+    AbeLicenseInterface* abeLicenseInterface = dynamic_cast<AbeLicenseInterface*>(xmlRpcAbeLicenseClient->get(
+                            nullptr));;
     
 
-    std::string licenseId = abeLicenseInterface.getLicenseId();;
+    std::string licenseId = abeLicenseInterface->getLicenseId();;
     
 
-    BasicArrayList servers = abeLicenseInterface.getServers();;
+    BasicArrayList* servers = abeLicenseInterface->getServers();;
     
 
     bool isNewLicenseId = false;;
@@ -111,10 +117,10 @@ public: AbeLicenseClient(){
     bool isBetterServerList = false;;
     
 
-    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
+    StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-                        if(stringValidationUtil.isEmpty(abeClientInformation.getLicenseId()) && !abeClientInformation.isSameId(licenseId))
+                        if(stringValidationUtil->isEmpty(abeClientInformation->getLicenseId()) && !abeClientInformation->isSameId(licenseId))
                         
                                     {
                                     isNewLicenseId= true;
@@ -123,7 +129,7 @@ public: AbeLicenseClient(){
                                     }
                                 
 
-                        if(servers.size() >= this->MINSERVERS && abeClientInformation.isLargerOrDifferentServerList(servers))
+                        if(servers->size() >= this->MINSERVERS && abeClientInformation->isLargerOrDifferentServerList(servers))
                         
                                     {
                                     isBetterServerList= true;
@@ -136,20 +142,20 @@ public: AbeLicenseClient(){
                         
                                     {
                                     
-    LicenseInitInfo initInfo = LicenseInitInfoUtil::getInstance().read();;
+    LicenseInitInfo* initInfo = LicenseInitInfoUtil::getInstance()->read();;
     
-initInfo.setLicenseId(licenseId);
+initInfo->setLicenseId(licenseId);
     
-initInfo.setServerList(servers);
+initInfo->setServerList(servers);
     
-LicenseInitInfoUtil::getInstance().write(initInfo);
+LicenseInitInfoUtil::getInstance()->write(initInfo);
     
-abeClientInformation.init();
+abeClientInformation->init();
     
 
                                     }
                                 
-this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.GET);
+this->logUtil->putF(this->commonStrings->END, this, this->commonStrings->GET);
     
 
 
@@ -159,7 +165,7 @@ this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.GET);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 

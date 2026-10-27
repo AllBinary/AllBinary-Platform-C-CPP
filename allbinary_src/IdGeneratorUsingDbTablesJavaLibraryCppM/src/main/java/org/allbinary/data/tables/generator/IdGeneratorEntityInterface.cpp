@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -57,13 +63,13 @@ class IdGeneratorEntityInterface: public BasicDataTableInterface {
 
                 //@Throws(Exception.constructor)
             
-    Long get(std::string name)
+    public: virtual int64_t get(std::string name) = 0;
 
-    void deleteWhere(std::string key, std::string value)
+    public: virtual void deleteWhere(std::string key, std::string value) = 0;
 
-    void insert(BasicArrayList values)
+    public: virtual void insert(BasicArrayList* values) = 0;
 
-    void update(HashMap<Object*, Object*> updatedValues)
+    public: virtual void update(HashMap<Object*, Object*>* updatedValues) = 0;
 
 };
 

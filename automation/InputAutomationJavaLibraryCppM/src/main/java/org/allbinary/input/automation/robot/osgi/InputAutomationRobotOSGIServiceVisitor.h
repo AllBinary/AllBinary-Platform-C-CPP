@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -69,17 +75,17 @@
         
 class InputAutomationRobotOSGIServiceVisitor
             : public Object
-        : public OSGIServiceVisitorInterface {
+        , public OSGIServiceVisitorInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
 public: InputAutomationRobotOSGIServiceVisitor();
 
     public: Object* visit(Object* anyType);
 
-    public: Boolean visit(OSGIServiceInterface osgiServiceInterface);
+    public: bool visit(OSGIServiceInterface* osgiServiceInterface);
 
 };
 

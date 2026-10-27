@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILLPROPERTYINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILLPROPERTYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,9 +48,9 @@
         
 class GameSkillPropertyInterface {
 
-    std::string getName();
+    public: virtual std::string getName() = 0;
 
-    std::string getValue();
+    public: virtual std::string getValue() = 0;
 
 };
 

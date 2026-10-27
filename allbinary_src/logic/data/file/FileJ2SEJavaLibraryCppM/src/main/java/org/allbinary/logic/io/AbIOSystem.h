@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_ABIOSYSTEM_H
         #define ORG_ALLBINARY_LOGIC_IO_ABIOSYSTEM_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class AbIOSystem
             : public Object
          {
 
-    private: static AbIOSystem instance() { return AbIOSystem(); }
+    private: static AbIOSystem* instance() { static std::unique_ptr<AbIOSystem> value(new AbIOSystem()); return value.get(); }
 
-    public: static AbIOSystem getInstance();
+    public: static AbIOSystem* getInstance();
 
     private: const std::string type = "java.io";
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/RTSLayerFormFactory.h>
@@ -58,34 +64,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RTSScrollSelectionFormFactory.h"
-#include "RTSLayer.h"
+        #include "org/allbinary/game/layer/RTSScrollSelectionFormFactory.h"
+#include "org/allbinary/game/layer/RTSLayer.h"
 
 class AdvancedRTSLayerFormFactory: public RTSLayerFormFactory {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: ScrollSelectionForm scrollSelectionForm;
+    private: ScrollSelectionForm* scrollSelectionForm;
 
-protected: AdvancedRTSLayerFormFactory(std::string label, ItemArraySingletonFactoryInterface itemArrayFactoryInterface){
+protected: AdvancedRTSLayerFormFactory(std::string label, ItemArraySingletonFactoryInterface* itemArrayFactoryInterface){
 
-    ScrollSelectionForm scrollSelectionForm = ScrollSelectionForm::getNullScrollSelectionForm();;
+    ScrollSelectionForm* scrollSelectionForm = ScrollSelectionForm::getNullScrollSelectionForm();;
     
 
         try {
             
-    std::vector<ABCustomItem> items = itemArrayFactoryInterface.getItems();;
+    std::vector<ABCustomItem*> items = itemArrayFactoryInterface->getItems();;
     
 scrollSelectionForm= RTSScrollSelectionFormFactory::getInstance(label, items);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &e);
     
 }
 
@@ -94,7 +100,7 @@ this->scrollSelectionForm= scrollSelectionForm;
 }
 
 
-    public: ScrollSelectionForm getInstance(RTSLayer rtsLayer){
+    public: ScrollSelectionForm* getInstance(RTSLayer* rtsLayer){
 
 
 

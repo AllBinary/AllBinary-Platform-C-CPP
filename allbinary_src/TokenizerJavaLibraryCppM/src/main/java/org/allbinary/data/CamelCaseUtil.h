@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_CAMELCASEUTIL_H
         #define ORG_ALLBINARY_DATA_CAMELCASEUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Character.h"
@@ -71,15 +77,15 @@ class CamelCaseUtil
             : public Object
          {
 
-    private: static CamelCaseUtil instance() { return CamelCaseUtil(); }
+    private: static CamelCaseUtil* instance() { static std::unique_ptr<CamelCaseUtil> value(new CamelCaseUtil()); return value.get(); }
 
-    public: static CamelCaseUtil getInstance();
+    public: static CamelCaseUtil* getInstance();
 
-    private: const CommonSeps commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps = CommonSeps::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getAsCamelCase(std::string string, StringMaker stringBuilder);
+    public: std::string getAsCamelCase(std::string string, StringMaker* stringBuilder);
 
 };
 

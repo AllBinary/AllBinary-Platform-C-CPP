@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Math.h"
@@ -64,9 +70,9 @@ class BasicDirectionAIHelper
 
     private: std::string name;
 
-    private: AngleInfo angleInfo;
+    private: AngleInfo* angleInfo;
 
-public: BasicDirectionAIHelper(std::string name, AngleInfo angleInfo){
+public: BasicDirectionAIHelper(std::string name, AngleInfo* angleInfo){
 this->name= name;
     
 this->angleInfo= angleInfo;
@@ -79,10 +85,10 @@ this->angleInfo= angleInfo;
     int32_t keyDirection =  -1;;
     
 
-    int32_t directionAngle = this->angleInfo.getAngleIncrementInfo().getFrameAngle(frame);;
+    int32_t directionAngle = this->angleInfo->getAngleIncrementInfo()->getFrameAngle(frame);;
     
 
-    int16_t angle = this->angleInfo.getAngle();;
+    int16_t angle = this->angleInfo->getAngle();;
     
 
     int32_t degrees = Math::abs(directionAngle -angle);;
@@ -143,12 +149,12 @@ this->angleInfo= angleInfo;
 }
 
 
-    private: int32_t getAIKeyPressed(Integer frame){
+    private: int32_t getAIKeyPressed(int32_t frame){
 
-    int16_t angle = this->angleInfo.getAngleIncrementInfo().getFrameAngle(frame.intValue());;
+    int16_t angle = this->angleInfo->getAngleIncrementInfo()->getFrameAngle(frame.intValue());;
     
 
-                        if(this->angleInfo.getAngle() != angle)
+                        if(this->angleInfo->getAngle() != angle)
                         
                                     {
                                     
@@ -173,48 +179,48 @@ this->angleInfo= angleInfo;
 }
 
 
-    public: int32_t getAIKeyPressedFromDirection(Direction geographicMapDirectionData){
+    public: int32_t getAIKeyPressedFromDirection(Direction* geographicMapDirectionData){
 
     int32_t keyDirection =  -1;;
     
 
-    AngleIncrementInfo angleIncrementInfo = this->angleInfo.getAngleIncrementInfo();;
+    AngleIncrementInfo* angleIncrementInfo = this->angleInfo->getAngleIncrementInfo();;
     
 
-    DirectionFactory directionFactory = DirectionFactory::getInstance();;
+    DirectionFactory* directionFactory = DirectionFactory::getInstance();;
     
 
-                        if(geographicMapDirectionData == directionFactory.DOWN)
+                        if(geographicMapDirectionData == directionFactory->DOWN)
                         
                                     {
-                                    keyDirection= this->getAIKeyPressed(angleIncrementInfo.DOWN_FRAME);
+                                    keyDirection= this->getAIKeyPressed(angleIncrementInfo->DOWN_FRAME);
     
 
                                     }
                                 
                              else 
-                        if(geographicMapDirectionData == directionFactory.UP)
+                        if(geographicMapDirectionData == directionFactory->UP)
                         
                                     {
-                                    keyDirection= this->getAIKeyPressed(angleIncrementInfo.UP_FRAME);
+                                    keyDirection= this->getAIKeyPressed(angleIncrementInfo->UP_FRAME);
     
 
                                     }
                                 
                              else 
-                        if(geographicMapDirectionData == directionFactory.LEFT)
+                        if(geographicMapDirectionData == directionFactory->LEFT)
                         
                                     {
-                                    keyDirection= this->getAIKeyPressed(angleIncrementInfo.LEFT_FRAME);
+                                    keyDirection= this->getAIKeyPressed(angleIncrementInfo->LEFT_FRAME);
     
 
                                     }
                                 
                              else 
-                        if(geographicMapDirectionData == directionFactory.RIGHT)
+                        if(geographicMapDirectionData == directionFactory->RIGHT)
                         
                                     {
-                                    keyDirection= this->getAIKeyPressed(angleIncrementInfo.RIGHT_FRAME);
+                                    keyDirection= this->getAIKeyPressed(angleIncrementInfo->RIGHT_FRAME);
     
 
                                     }
@@ -228,7 +234,7 @@ this->angleInfo= angleInfo;
 }
 
 
-    protected: AngleInfo getAngleInfoP(){
+    protected: AngleInfo* getAngleInfoP(){
 
 
 

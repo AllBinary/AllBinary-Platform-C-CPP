@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/configuration/feature/GameFeature.h>
 
       
@@ -42,9 +48,9 @@
         
 class RaceTrackGameFeature: public GameFeature {
 
-    public: static const GameFeature MINI_MAP = RaceTrackGameFeature("Mini Map");
+    public: static inline GameFeature* MINI_MAP = new RaceTrackGameFeature("Mini Map");
 
-    public: static const GameFeature AUTO_FINISH_AI = RaceTrackGameFeature("Auto Finish AI");
+    public: static inline GameFeature* AUTO_FINISH_AI = new RaceTrackGameFeature("Auto Finish AI");
 
 protected: RaceTrackGameFeature(std::string name) : GameFeature(name){
 

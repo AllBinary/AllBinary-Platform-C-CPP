@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,18 +44,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DemoSetup.h"
+        #include "org/allbinary/game/midlet/DemoSetup.h"
 
 class LicensedDemoSetupFactory
             : public Object
          {
 
-    public: DemoSetup getInstance(){
+    public: DemoSetup* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DemoSetup();
+                        return new DemoSetup();
     
 }
 

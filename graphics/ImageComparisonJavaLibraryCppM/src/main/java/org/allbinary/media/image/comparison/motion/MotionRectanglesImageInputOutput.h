@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -104,21 +110,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllMotionRectanglesResultsCacheSingleton.h"
-#include "MotionRectanglesResultsFrameCacheable.h"
-#include "MotionRectangles.h"
-#include "ConsolidatedMotionRectanglesResultsCacheSingleton.h"
-#include "ConstrainedMotionRectanglesResultsCacheSingleton.h"
-#include "Graphics.h"
-#include "MotionRectangle.h"
-#include "Rectangle.h"
-#include "Color.h"
+        #include "org/allbinary/media/image/comparison/motion/AllMotionRectanglesResultsCacheSingleton.h"
+#include "org/allbinary/media/image/comparison/motion/MotionRectanglesResultsFrameCacheable.h"
+#include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
+#include "org/allbinary/media/image/comparison/motion/ConsolidatedMotionRectanglesResultsCacheSingleton.h"
+#include "org/allbinary/media/image/comparison/motion/ConstrainedMotionRectanglesResultsCacheSingleton.h"
+#include "org/allbinary/media/image/comparison/motion/Graphics.h"
+#include "org/allbinary/media/image/comparison/motion/MotionRectangle.h"
+#include "org/allbinary/media/image/comparison/motion/Rectangle.h"
+#include "org/allbinary/media/image/comparison/motion/Color.h"
 
 class MotionRectanglesImageInputOutput
             : public Object
-        : public ImageIOInterface {
+        , public ImageIOInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const int32_t NUMBER_OF_IMAGES = 1;
 
@@ -126,11 +132,11 @@ public: MotionRectanglesImageInputOutput();
 
                 //@Throws(Exception.constructor)
             
-    public: void save(Long frame);
+    public: void save(int64_t frame);
 
                 //@Throws(Exception.constructor)
             
-    public: void save(MotionRectangles motionRectangles, Long frame);
+    public: void save(MotionRectangles* motionRectangles, int64_t frame);
 
 };
 

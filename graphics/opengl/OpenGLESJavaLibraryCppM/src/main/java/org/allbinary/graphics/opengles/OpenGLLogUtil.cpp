@@ -6,6 +6,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -49,9 +55,9 @@ class OpenGLLogUtil
             : public Object
          {
 
-    private: static OpenGLLogUtil instance() { return OpenGLLogUtil(); }
+    private: static OpenGLLogUtil* instance() { static std::unique_ptr<OpenGLLogUtil> value(new OpenGLLogUtil()); return value.get(); }
 
-    public: static OpenGLLogUtil getInstance(){
+    public: static OpenGLLogUtil* getInstance(){
 
 
 
@@ -63,33 +69,33 @@ class OpenGLLogUtil
 
     private: const std::string MAX_TEXTURE = " Max Texture Size: ";
 
-    public: void logError(GL10 gl){
+    public: void logError(GL10* gl){
 
-    int32_t error = gl.glGetError();;
+    int32_t error = gl->glGetError();;
     
 
                         if(error != GL10::GL_NO_ERROR)
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(OpenGLStrings::getInstance().GL_ERROR_LABEL);
+stringBuffer->append(OpenGLStrings::getInstance()->GL_ERROR_LABEL);
     
-stringBuffer.appendint(error);
+stringBuffer->appendint(error);
     
 
                         if(error == 1281)
                         
                                     {
-                                    stringBuffer.append(this->MAX_TEXTURE);
+                                    stringBuffer->append(this->MAX_TEXTURE);
     
 
     std::vector<int32_t> maxTextureSize = std::vector<int32_t>(1);;
     
-gl.glGetIntegerv(GL10::GL_MAX_TEXTURE_SIZE, maxTextureSize, 0);
+gl->glGetIntegerv(GL10::GL_MAX_TEXTURE_SIZE, maxTextureSize, 0);
     
-stringBuffer.appendint(maxTextureSize[0]);
+stringBuffer->appendint(maxTextureSize[0]);
     
 
                                     }
@@ -98,13 +104,13 @@ stringBuffer.appendint(maxTextureSize[0]);
                         if(error == 1280)
                         
                                     {
-                                    PreLogUtil::put(stringBuffer.toString(), this, OpenGLStrings::getInstance().SET);
+                                    PreLogUtil::put(stringBuffer->toString(), this, OpenGLStrings::getInstance()->SET);
     
 
                                     }
                                 
                         else {
-                            ForcedLogUtil::log(stringBuffer.toString(), this);
+                            ForcedLogUtil::log(stringBuffer->toString(), this);
     
 
                         }
@@ -119,42 +125,42 @@ stringBuffer.appendint(maxTextureSize[0]);
 
     private: const std::string IMAGE = " Image: ";
 
-    public: void logError(GL10 gl, Image image){
+    public: void logError(GL10* gl, Image* image){
 
-    int32_t error = gl.glGetError();;
+    int32_t error = gl->glGetError();;
     
 
                         if(error != GL10::GL_NO_ERROR)
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(OpenGLStrings::getInstance().GL_ERROR_LABEL);
+stringBuffer->append(OpenGLStrings::getInstance()->GL_ERROR_LABEL);
     
-stringBuffer.appendint(error);
+stringBuffer->appendint(error);
     
 
                         if(error == 1281)
                         
                                     {
-                                    stringBuffer.append(this->MAX_TEXTURE);
+                                    stringBuffer->append(this->MAX_TEXTURE);
     
 
     std::vector<int32_t> maxTextureSize = std::vector<int32_t>(1);;
     
-gl.glGetIntegerv(GL10::GL_MAX_TEXTURE_SIZE, maxTextureSize, 0);
+gl->glGetIntegerv(GL10::GL_MAX_TEXTURE_SIZE, maxTextureSize, 0);
     
-stringBuffer.appendint(maxTextureSize[0]);
+stringBuffer->appendint(maxTextureSize[0]);
     
 
                                     }
                                 
-stringBuffer.append(this->IMAGE);
+stringBuffer->append(this->IMAGE);
     
-stringBuffer.append(image.toString());
+stringBuffer->append(image->toString());
     
-PreLogUtil::put(stringBuffer.toString(), this, this->LOG_ERROR);
+PreLogUtil::put(stringBuffer->toString(), this, this->LOG_ERROR);
     
 
                                     }

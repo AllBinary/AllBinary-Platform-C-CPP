@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -121,41 +127,41 @@ class HighScoreNamePersistanceSingleton
             : public Object
          {
 
-    private: static HighScoreNamePersistanceSingleton SINGLETON = HighScoreNamePersistanceSingleton();
+    private: static HighScoreNamePersistanceSingleton* SINGLETON() { static std::unique_ptr<HighScoreNamePersistanceSingleton> value(new HighScoreNamePersistanceSingleton()); return value.get(); }
 
-    public: static HighScoreNamePersistanceSingleton getInstance();
+    public: static HighScoreNamePersistanceSingleton* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const TsUtil tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil = TsUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const PlatformRecordIdUtil platformRecordIdUtil = PlatformRecordIdUtil::getInstance();
+    private: PlatformRecordIdUtil* platformRecordIdUtil = PlatformRecordIdUtil::getInstance();
 
     private: const std::string RECORD_ID = "_SN";
 
-    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: BasicArrayList nameBasicArrayList = BasicArrayListD();
+    private: BasicArrayList* nameBasicArrayList = new BasicArrayListD();
 
     public: void clear();
 
                 //@Throws(Exception.constructor)
             
-    public: void deleteAll(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo);
+    public: void deleteAll(AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo);
 
-    private: std::string getRecordId(AbeClientInformationInterface abeClientInformation);
+    private: std::string getRecordId(AbeClientInformationInterface* abeClientInformation);
 
                 //@Throws(Exception.constructor)
             
-    public: void delete_(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, int32_t deleteId);
+    public: void delete_(AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo, int32_t deleteId);
 
-    public: BasicArrayList getIds();
+    public: BasicArrayList* getIds();
 
-    public: std::string load(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo);
+    public: std::string load(AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo);
 
-    public: void save(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, std::string name);
+    public: void save(AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo, std::string name);
 
 };
 

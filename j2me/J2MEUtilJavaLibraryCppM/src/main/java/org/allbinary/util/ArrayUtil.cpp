@@ -6,6 +6,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -53,9 +59,9 @@ class ArrayUtil
             : public Object
          {
 
-    private: static ArrayUtil instance() { return ArrayUtil(); }
+    private: static ArrayUtil* instance() { static std::unique_ptr<ArrayUtil> value(new ArrayUtil()); return value.get(); }
 
-    public: static ArrayUtil getInstance(){
+    public: static ArrayUtil* getInstance(){
 
 
 
@@ -65,7 +71,7 @@ class ArrayUtil
 }
 
 
-    private: const MathUtil mathUtil = MathUtil::getInstance();
+    private: MathUtil* mathUtil = MathUtil::getInstance();
 
     public: std::vector<Object*> copyOf(std::vector<Object*> original, int32_t newLength){
 
@@ -81,7 +87,7 @@ class ArrayUtil
 
     std::vector<Object*> copy = std::vector<Object*>(newLength);;
     
-System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLength));
+System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newLength));
     
 
 
@@ -96,7 +102,7 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLe
 
     std::vector<int8_t> copy = std::vector<int8_t>(newLength);;
     
-System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLength));
+System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newLength));
     
 
 
@@ -111,7 +117,7 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLe
 
     std::vector<int16_t> copy = std::vector<int16_t>(newLength);;
     
-System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLength));
+System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newLength));
     
 
 
@@ -126,7 +132,7 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLe
 
     std::vector<int32_t> copy = std::vector<int32_t>(newLength);;
     
-System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLength));
+System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newLength));
     
 
 
@@ -141,7 +147,7 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLe
 
     std::vector<int64_t> copy = std::vector<int64_t>(newLength);;
     
-System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLength));
+System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newLength));
     
 
 
@@ -156,7 +162,7 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLe
 
     std::vector<char> copy = std::vector<char>(newLength);;
     
-System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLength));
+System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newLength));
     
 
 
@@ -171,7 +177,7 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLe
 
     std::vector<float> copy = std::vector<float>(newLength);;
     
-System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLength));
+System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newLength));
     
 
 
@@ -186,7 +192,7 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLe
 
     std::vector<double> copy = std::vector<double>(newLength);;
     
-System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLength));
+System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newLength));
     
 
 
@@ -201,7 +207,7 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLe
 
     std::vector<bool> copy = std::vector<bool>(newLength);;
     
-System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLength));
+System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newLength));
     
 
 
@@ -286,10 +292,10 @@ intArray[rowIndex +x]= temp;
 
     public: std::string toStringFromTwoDimensionaArray(std::vector<std::vector<int32_t>> twoDimensionalIntArray){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
     int32_t endIndex = twoDimensionalIntArray.size();;
@@ -304,7 +310,7 @@ intArray[rowIndex +x]= temp;
                         for (
     int32_t index = 0;index < endIndex; index++)
         {
-stringBuffer.append(commonSeps.BRACE_OPEN);
+stringBuffer->append(commonSeps->BRACE_OPEN);
     
 
 
@@ -313,15 +319,15 @@ stringBuffer.append(commonSeps.BRACE_OPEN);
                         for (
     int32_t index2 = 0;index2 < endIndex2; index2++)
         {
-stringBuffer.appendint(twoDimensionalIntArray[index][index2]);
+stringBuffer->appendint(twoDimensionalIntArray[index][index2]);
     
-stringBuffer.append(commonSeps.COMMA_SEP);
+stringBuffer->append(commonSeps->COMMA_SEP);
     
 }
 
-stringBuffer.append(commonSeps.BRACE_CLOSE);
+stringBuffer->append(commonSeps->BRACE_CLOSE);
     
-stringBuffer.append(commonSeps.NEW_LINE);
+stringBuffer->append(commonSeps->NEW_LINE);
     
 }
 
@@ -329,17 +335,17 @@ stringBuffer.append(commonSeps.NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
     public: std::string toStringFromObjectArray(std::vector<Object*> objectArray){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
 
@@ -348,9 +354,9 @@ stringBuffer.append(commonSeps.NEW_LINE);
                         for (
     int32_t index = 0;index < objectArray.size(); index++)
         {
-stringBuffer.append(StringUtil::getInstance().toString(objectArray[index]));
+stringBuffer->append(StringUtil::getInstance()->toString(objectArray[index]));
     
-stringBuffer.append(commonSeps.COMMA_SEP);
+stringBuffer->append(commonSeps->COMMA_SEP);
     
 }
 
@@ -358,17 +364,17 @@ stringBuffer.append(commonSeps.COMMA_SEP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
     public: std::string toStringFromByteArray(std::vector<int8_t> byteArray){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
 
@@ -377,9 +383,9 @@ stringBuffer.append(commonSeps.COMMA_SEP);
                         for (
     int32_t index = 0;index < byteArray.size(); index++)
         {
-stringBuffer.appendbyte(byteArray[index]);
+stringBuffer->appendbyte(byteArray[index]);
     
-stringBuffer.append(commonSeps.COMMA_SEP);
+stringBuffer->append(commonSeps->COMMA_SEP);
     
 }
 
@@ -387,7 +393,7 @@ stringBuffer.append(commonSeps.COMMA_SEP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

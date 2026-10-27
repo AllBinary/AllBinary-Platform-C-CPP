@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h>
@@ -76,15 +82,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RaceTrackDropCellPositionGenerator.h"
+        #include "org/allbinary/media/graphics/geography/map/racetrack/drop/RaceTrackDropCellPositionGenerator.h"
 
 class RaceTrackRandomDropCellPositionGenerator: public RaceTrackDropCellPositionGenerator {
 
-    private: static RaceTrackRandomDropCellPositionGenerator SINGLETON = RaceTrackRandomDropCellPositionGenerator();
+    private: static RaceTrackRandomDropCellPositionGenerator* SINGLETON() { static std::unique_ptr<RaceTrackRandomDropCellPositionGenerator> value(new RaceTrackRandomDropCellPositionGenerator()); return value.get(); }
 
-    public: static RaceTrackRandomDropCellPositionGenerator getInstance();
+    public: static RaceTrackRandomDropCellPositionGenerator* getInstance();
 
-    private: const MyRandomFactory myRandomFactory = MyRandomFactory::getInstance();
+    private: MyRandomFactory* myRandomFactory = MyRandomFactory::getInstance();
 
     private: const int32_t cellsPerRowOrColumn = 3;
 
@@ -102,11 +108,11 @@ private: RaceTrackRandomDropCellPositionGenerator();
 
                 //@Throws(Exception.constructor)
             
-    public: void update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface);
+    public: void update(AllBinaryGameLayerManager* allBinaryGameLayerManager, BasicGeographicMap* geographicMapInterface);
 
                 //@Throws(Exception.constructor)
             
-    protected: void drop(AllBinaryLayerManager allBinaryLayerManager, int32_t index);
+    protected: void drop(AllBinaryLayerManager* allBinaryLayerManager, int32_t index);
 
 };
 

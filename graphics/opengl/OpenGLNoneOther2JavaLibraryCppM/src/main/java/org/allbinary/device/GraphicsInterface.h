@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DEVICE_GRAPHICSINTERFACE_H
         #define ORG_ALLBINARY_DEVICE_GRAPHICSINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -48,7 +54,7 @@
         
 class GraphicsInterface {
 
-    void setFontDebug(Font font, FontDebugBase fontDebug);
+    public: virtual void setFontDebug(Font* font, FontDebugBase* fontDebug) = 0;
 
 };
 

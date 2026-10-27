@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_RANDOMPATROLAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_RANDOMPATROLAI_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -59,19 +67,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasePatrolAI.h"
+        #include "org/allbinary/game/ag/ai/scroller/BasePatrolAI.h"
 
 class RandomPatrolAI: public BasePatrolAI {
 
     private: bool changedDirection = true;
 
-public: RandomPatrolAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: RandomPatrolAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
     private: void updateRandomDistance();
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager);
 
     protected: void nextDirection();
 

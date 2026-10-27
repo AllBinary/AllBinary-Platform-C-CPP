@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -75,14 +81,14 @@ class GameGraphicsResourceUtil
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static GameGraphicsResourceUtil getInstance(){
+    public: static GameGraphicsResourceUtil* getInstance(){
 
-                        if(GameGraphicsResourceUtil::instance() == NullUtil::getInstance().NULL_OBJECT)
+                        if(GameGraphicsResourceUtil::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    GameGraphicsResourceUtil::instance= GameGraphicsResourceUtil();
+                                    GameGraphicsResourceUtil::instance= new GameGraphicsResourceUtil();
     
 
                                     }
@@ -91,18 +97,18 @@ class GameGraphicsResourceUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameGraphicsResourceUtil::instance();
+                        return dynamic_cast<GameGraphicsResourceUtil*>(GameGraphicsResourceUtil::instance);
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     public: const std::string SPRITE = "_sprite";
 
     public: const std::string QUARTER = "_quarter";
 
-    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
 
 public: GameGraphicsResourceUtil(){
 
@@ -111,12 +117,12 @@ public: GameGraphicsResourceUtil(){
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &e);
     
 }
 
@@ -127,46 +133,46 @@ this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
             
     private: std::string getString(){
 
-    GraphicsFeatureFactory graphicsFeatureFactory = GraphicsFeatureFactory::getInstance();;
+    GraphicsFeatureFactory* graphicsFeatureFactory = GraphicsFeatureFactory::getInstance();;
     
 
-    GraphicsFeature graphicsFeature = graphicsFeatureFactory.NONE;;
+    GraphicsFeature* graphicsFeature = graphicsFeatureFactory->NONE;;
     
 
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-                        if(features.isFeature(graphicsFeatureFactory.IMAGE_TO_ARRAY_GRAPHICS))
+                        if(features->isFeature(graphicsFeatureFactory->IMAGE_TO_ARRAY_GRAPHICS))
                         
                                     {
-                                    graphicsFeature= graphicsFeatureFactory.IMAGE_TO_ARRAY_GRAPHICS;
+                                    graphicsFeature= graphicsFeatureFactory->IMAGE_TO_ARRAY_GRAPHICS;
     
 
                                     }
                                 
                              else 
-                        if(features.isFeature(graphicsFeatureFactory.SPRITE_FULL_GRAPHICS))
+                        if(features->isFeature(graphicsFeatureFactory->SPRITE_FULL_GRAPHICS))
                         
                                     {
-                                    graphicsFeature= graphicsFeatureFactory.SPRITE_FULL_GRAPHICS;
+                                    graphicsFeature= graphicsFeatureFactory->SPRITE_FULL_GRAPHICS;
     
 
                                     }
                                 
                              else 
-                        if(features.isFeature(graphicsFeatureFactory.SPRITE_QUARTER_ROTATION_GRAPHICS))
+                        if(features->isFeature(graphicsFeatureFactory->SPRITE_QUARTER_ROTATION_GRAPHICS))
                         
                                     {
-                                    graphicsFeature= graphicsFeatureFactory.SPRITE_QUARTER_ROTATION_GRAPHICS;
+                                    graphicsFeature= graphicsFeatureFactory->SPRITE_QUARTER_ROTATION_GRAPHICS;
     
 
                                     }
                                 
                              else 
-                        if(features.isFeature(graphicsFeatureFactory.IMAGE_ROTATION_ON_THE_FLY))
+                        if(features->isFeature(graphicsFeatureFactory->IMAGE_ROTATION_ON_THE_FLY))
                         
                                     {
-                                    graphicsFeature= graphicsFeatureFactory.IMAGE_ROTATION_ON_THE_FLY;
+                                    graphicsFeature= graphicsFeatureFactory->IMAGE_ROTATION_ON_THE_FLY;
     
 
                                     }
@@ -182,52 +188,52 @@ this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getStringForFeature(GraphicsFeature graphicsFeature){
+    public: std::string getStringForFeature(GraphicsFeature* graphicsFeature){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    GraphicsFeatureFactory graphicsFeatureFactory = GraphicsFeatureFactory::getInstance();;
+    GraphicsFeatureFactory* graphicsFeatureFactory = GraphicsFeatureFactory::getInstance();;
     
-stringBuffer.delete(0, stringBuffer.length());
-    
-
-    Features features = Features::getInstance();;
+stringBuffer->delete(0, stringBuffer->length());
     
 
-                        if(features.isFeature(graphicsFeatureFactory.VECTOR_GRAPHICS))
+    Features* features = Features::getInstance();;
+    
+
+                        if(features->isFeature(graphicsFeatureFactory->VECTOR_GRAPHICS))
                         
                                     {
                                     
                                     }
                                 
                              else 
-                        if(features.isFeature(graphicsFeatureFactory.IMAGE_GRAPHICS))
+                        if(features->isFeature(graphicsFeatureFactory->IMAGE_GRAPHICS))
                         
                                     {
                                     
-                        if(graphicsFeature == graphicsFeatureFactory.IMAGE_TO_ARRAY_GRAPHICS || graphicsFeature == graphicsFeatureFactory.IMAGE_ROTATION_ON_THE_FLY)
+                        if(graphicsFeature == graphicsFeatureFactory->IMAGE_TO_ARRAY_GRAPHICS || graphicsFeature == graphicsFeatureFactory->IMAGE_ROTATION_ON_THE_FLY)
                         
                                     {
                                     
                                     }
                                 
                              else 
-                        if(graphicsFeature == graphicsFeatureFactory.SPRITE_FULL_GRAPHICS)
+                        if(graphicsFeature == graphicsFeatureFactory->SPRITE_FULL_GRAPHICS)
                         
                                     {
-                                    stringBuffer.append(this->SPRITE);
+                                    stringBuffer->append(this->SPRITE);
     
 
                                     }
                                 
                              else 
-                        if(graphicsFeature == graphicsFeatureFactory.SPRITE_QUARTER_ROTATION_GRAPHICS)
+                        if(graphicsFeature == graphicsFeatureFactory->SPRITE_QUARTER_ROTATION_GRAPHICS)
                         
                                     {
-                                    stringBuffer.append(this->QUARTER);
+                                    stringBuffer->append(this->QUARTER);
     
-stringBuffer.append(this->SPRITE);
+stringBuffer->append(this->SPRITE);
     
 
                                     }
@@ -236,7 +242,7 @@ stringBuffer.append(this->SPRITE);
                             
 
 
-                            throw Exception("None/Unknown Sub Image Resource Type Specified");
+                            throw new Exception("None/Unknown Sub Image Resource Type Specified");
                     
 
                         }
@@ -245,10 +251,10 @@ stringBuffer.append(this->SPRITE);
                                     }
                                 
                              else 
-                        if(OpenGLFeatureUtil::getInstance().isAnyThreed())
+                        if(OpenGLFeatureUtil::getInstance()->isAnyThreed())
                         
                                     {
-                                    stringBuffer.append(CanvasStrings::getInstance().OBJ_MODEL);
+                                    stringBuffer->append(CanvasStrings::getInstance()->OBJ_MODEL);
     
 
                                     }
@@ -257,7 +263,7 @@ stringBuffer.append(this->SPRITE);
                             
 
 
-                            throw Exception("None/Unknown Main Image Resource Type Specified");
+                            throw new Exception("None/Unknown Main Image Resource Type Specified");
                     
 
                         }
@@ -266,7 +272,7 @@ stringBuffer.append(this->SPRITE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

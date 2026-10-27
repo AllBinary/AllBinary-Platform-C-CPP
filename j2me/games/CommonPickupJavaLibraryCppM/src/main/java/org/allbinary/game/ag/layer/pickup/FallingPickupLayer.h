@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_FALLINGPICKUPLAYER_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_FALLINGPICKUPLAYER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/NullAnimationFactory.h>
@@ -71,11 +77,11 @@
         
 class FallingPickupLayer: public PickupLayer, public TickableInterface {
 
-    private: static const std::string NAME = "FallingPickupLayer";
+    private: static inline const std::string NAME = "FallingPickupLayer";
 
-public: FallingPickupLayer(RemoteInfo remoteInfo);
+public: FallingPickupLayer(RemoteInfo* remoteInfo);
 
-    public: void processTick(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager);
 
     public: bool implmentsTickableInterface();
 

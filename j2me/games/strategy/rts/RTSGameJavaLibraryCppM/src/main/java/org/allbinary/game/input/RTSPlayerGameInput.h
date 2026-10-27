@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -139,51 +145,51 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PlayerGameInput.h"
-#include "InputFactory.h"
-#include "GameInputProcessor.h"
-#include "ScrollMapPlayerGameInput.h"
-#include "SelectedRTSLayersPlayerGameInput.h"
-#include "LayerPositionFinderInterface.h"
-#include "SelectRTSLayerVisitorFactoryInterface.h"
-#include "RTSPlayerLeftGameInputProcessor.h"
-#include "RTSPlayerRightGameInputProcessor.h"
-#include "RTSPlayerFireGameInputProcessor.h"
-#include "GameInputProcessorUtil.h"
+        #include "org/allbinary/game/input/PlayerGameInput.h"
+#include "org/allbinary/game/input/InputFactory.h"
+#include "org/allbinary/game/input/GameInputProcessor.h"
+#include "org/allbinary/game/input/ScrollMapPlayerGameInput.h"
+#include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h"
+#include "org/allbinary/game/input/LayerPositionFinderInterface.h"
+#include "org/allbinary/game/input/SelectRTSLayerVisitorFactoryInterface.h"
+#include "org/allbinary/game/input/RTSPlayerLeftGameInputProcessor.h"
+#include "org/allbinary/game/input/RTSPlayerRightGameInputProcessor.h"
+#include "org/allbinary/game/input/RTSPlayerFireGameInputProcessor.h"
+#include "org/allbinary/game/input/GameInputProcessorUtil.h"
 
 class RTSPlayerGameInput: public PlayerGameInput {
 
-    protected: const std::vector<GameInputProcessor> inputProcessorArray = std::vector<GameInputProcessor>(InputFactory::getInstance().MAX);
+    protected: const std::vector<GameInputProcessor*> inputProcessorArray = std::vector<GameInputProcessor*>(InputFactory::getInstance()->MAX);
 
-    protected: const std::vector<GameInputProcessor> removeInputProcessorArray = std::vector<GameInputProcessor>(InputFactory::getInstance().MAX);
+    protected: const std::vector<GameInputProcessor*> removeInputProcessorArray = std::vector<GameInputProcessor*>(InputFactory::getInstance()->MAX);
 
-    private: BasicArrayList inputList;
+    private: BasicArrayList* inputList;
 
-    private: const bool isSingleKeyProcessing = Features::getInstance().isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_REPEAT_PRESS) || Features::getInstance().isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_PRESS);
+    private: const bool isSingleKeyProcessing = Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_REPEAT_PRESS) || Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_PRESS);
 
-    private: AllBinaryGameCanvas gameCanvas;
+    private: AllBinaryGameCanvas* gameCanvas;
 
-    private: const BasicArrayList motionGestureInputList = BasicArrayListD();
+    private: BasicArrayList* motionGestureInputList = new BasicArrayListD();
 
-    private: ScrollMapPlayerGameInput scrollPlayerGameInput;
+    private: ScrollMapPlayerGameInput* scrollPlayerGameInput;
 
-    private: SelectedRTSLayersPlayerGameInput selectedRTSLayerPlayerGameInput;
+    private: SelectedRTSLayersPlayerGameInput* selectedRTSLayerPlayerGameInput;
 
-    private: RTSLayerInfoPaintable towerInfoPaintable;
+    private: RTSLayerInfoPaintable* towerInfoPaintable;
 
-    private: RTSPlayerLayerInterface rtsPlayerLayerInterface;
+    private: RTSPlayerLayerInterface* rtsPlayerLayerInterface;
 
-    private: LayerPositionFinderInterface layerPositionFinderInterface;
+    private: LayerPositionFinderInterface* layerPositionFinderInterface;
 
-    private: RTSFormInput selectedRtsFormInput = NullRTSFormInputFactory::getInstance();
+    private: RTSFormInput* selectedRtsFormInput = NullRTSFormInputFactory::getInstance();
 
-public: RTSPlayerGameInput(AllBinaryGameCanvas gameCanvas, BasicArrayList inputList, int32_t playerInputId, RTSLayerInfoPaintable towerInfoPaintable, RTSPlayerLayerInterface rtsPlayerLayerInterface, LayerPositionFinderInterface layerPositionFinderInterface, SelectRTSLayerVisitorFactoryInterface selectRTSLayerVisitorFactoryInterface);
+public: RTSPlayerGameInput(AllBinaryGameCanvas* gameCanvas, BasicArrayList* inputList, int32_t playerInputId, RTSLayerInfoPaintable* towerInfoPaintable, RTSPlayerLayerInterface* rtsPlayerLayerInterface, LayerPositionFinderInterface* layerPositionFinderInterface, SelectRTSLayerVisitorFactoryInterface* selectRTSLayerVisitorFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager);
 
-    public: void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent);
+    public: void onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent);
 
                 //@Throws(Exception.constructor)
             
@@ -197,41 +203,41 @@ public: RTSPlayerGameInput(AllBinaryGameCanvas gameCanvas, BasicArrayList inputL
 
                 //@Throws(Exception.constructor)
             
-    public: void processInput(AllBinaryLayerManager layerManager);
+    public: void processInput(AllBinaryLayerManager* layerManager);
 
                 //@Throws(Exception.constructor)
             
-    public: void processMotionInput(AllBinaryLayerManager layerManager);
+    public: void processMotionInput(AllBinaryLayerManager* layerManager);
 
                 //@Throws(Exception.constructor)
             
-    protected: void select(MotionGestureEvent motionGestureEvent);
+    protected: void select(MotionGestureEvent* motionGestureEvent);
 
                 //@Throws(Exception.constructor)
             
-    public: void setSelectedRTSLayer(CollidableDestroyableDamageableLayer rtsLayer, GeographicMapCellPosition geographicMapCellPosition);
+    public: void setSelectedRTSLayer(CollidableDestroyableDamageableLayer* rtsLayer, GeographicMapCellPosition* geographicMapCellPosition);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
     public: void updatePaintable();
 
-    public: SelectedRTSLayersPlayerGameInput getSelectedBuildingPlayerGameInput();
+    public: SelectedRTSLayersPlayerGameInput* getSelectedBuildingPlayerGameInput();
 
-    public: RTSFormInput getSelectedRtsFormInput();
+    public: RTSFormInput* getSelectedRtsFormInput();
 
-    public: void setSelectedRtsFormInput(RTSFormInput selectedRtsFormInput);
+    public: void setSelectedRtsFormInput(RTSFormInput* selectedRtsFormInput);
 
-    public: RTSPlayerLayerInterface getRtsPlayerLayerInterface();
+    public: RTSPlayerLayerInterface* getRtsPlayerLayerInterface();
 
-    public: RTSLayerInfoPaintable getRTSLayerInfoPaintable();
+    public: RTSLayerInfoPaintable* getRTSLayerInfoPaintable();
 
-    public: BasicArrayList getMotionGestureInputList();
+    public: BasicArrayList* getMotionGestureInputList();
 
-    protected: AllBinaryGameCanvas getGameCanvas();
+    protected: AllBinaryGameCanvas* getGameCanvas();
 
     public: bool isIsSingleKeyProcessing();
 
-    public: ScrollMapPlayerGameInput getScrollPlayerGameInput();
+    public: ScrollMapPlayerGameInput* getScrollPlayerGameInput();
 
 };
 

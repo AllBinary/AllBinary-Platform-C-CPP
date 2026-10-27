@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -106,15 +114,15 @@
         
 class BasketView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
-public: BasketView(TransformInfoInterface transformInfoInterface);
+public: BasketView(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
     public: void addDomNodeInterfaces();
 

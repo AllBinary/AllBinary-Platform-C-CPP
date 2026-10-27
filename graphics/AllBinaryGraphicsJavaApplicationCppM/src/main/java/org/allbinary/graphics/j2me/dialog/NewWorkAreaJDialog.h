@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -69,31 +75,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JDialog.h"
-#include "Dimension.h"
-#include "JTextField.h"
-#include "Frame.h"
-#include "JButton.h"
-#include "GridLayout.h"
-#include "JLabel.h"
-#include "WindowAdapter.h"
-#include "WindowEvent.h"
+        #include "org/allbinary/graphics/j2me/dialog/JDialog.h"
+#include "org/allbinary/graphics/j2me/dialog/Dimension.h"
+#include "org/allbinary/graphics/j2me/dialog/JTextField.h"
+#include "org/allbinary/graphics/j2me/dialog/Frame.h"
+#include "org/allbinary/graphics/j2me/dialog/JButton.h"
+#include "org/allbinary/graphics/j2me/dialog/GridLayout.h"
+#include "org/allbinary/graphics/j2me/dialog/JLabel.h"
+#include "org/allbinary/graphics/j2me/dialog/WindowAdapter.h"
+#include "org/allbinary/graphics/j2me/dialog/WindowEvent.h"
 
 class NewWorkAreaJDialog: public javax::swing::JDialog {
 
     public: static void main(std::vector<std::string> args);
 
-    private: MyFrame parent;
+    private: MyFrame* parent;
 
-    private: Dimension dimension;
+    private: Dimension* dimension;
 
-    private: JTextField xSizeJTextField;
+    private: JTextField* xSizeJTextField;
 
-    private: JTextField ySizeJTextField;
+    private: JTextField* ySizeJTextField;
 
-    private: JTextField nameJTextField;
+    private: JTextField* nameJTextField;
 
-public: NewWorkAreaJDialog(MyFrame parent, bool modal, Dimension dimension, std::string newName);
+public: NewWorkAreaJDialog(MyFrame* parent, bool modal, Dimension* dimension, std::string newName);
 
                 //@Throws(Exception.constructor)
             
@@ -101,7 +107,7 @@ public: NewWorkAreaJDialog(MyFrame parent, bool modal, Dimension dimension, std:
 
     private: void initComponents();
 
-    private: void closeDialog(java::awt::event::WindowEvent evt);
+    private: void closeDialog(java::awt::event::WindowEvent* evt);
 
 };
 

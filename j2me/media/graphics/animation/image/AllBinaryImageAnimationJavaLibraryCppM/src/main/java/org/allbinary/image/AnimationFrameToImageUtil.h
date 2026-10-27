@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_IMAGE_ANIMATIONFRAMETOIMAGEUTIL_H
         #define ORG_ALLBINARY_IMAGE_ANIMATIONFRAMETOIMAGEUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,23 +58,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameFeatureImageCacheFactory.h"
+        #include "org/allbinary/image/GameFeatureImageCacheFactory.h"
 
 class AnimationFrameToImageUtil
             : public Object
          {
 
-    private: static AnimationFrameToImageUtil instance() { return AnimationFrameToImageUtil(); }
+    private: static AnimationFrameToImageUtil* instance() { static std::unique_ptr<AnimationFrameToImageUtil> value(new AnimationFrameToImageUtil()); return value.get(); }
 
-    public: static AnimationFrameToImageUtil getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public: Image getInstanceTranslate(int32_t width, int32_t height, Animation animationInterface);
+    public: static AnimationFrameToImageUtil* getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: Image getInstanceWH(int32_t width, int32_t height, Animation animationInterface);
+    public: Image* getInstanceTranslate(int32_t width, int32_t height, Animation* animationInterface);
+
+                //@Throws(Exception.constructor)
+            
+    public: Image* getInstanceWH(int32_t width, int32_t height, Animation* animationInterface);
 
 };
 

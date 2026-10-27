@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_IMAGECOMPARISONSEARCHWORKER_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_IMAGECOMPARISONSEARCHWORKER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/awt/image/BufferedImage.h>
@@ -80,27 +86,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageComparisonSearchConstraintsInterface.h"
+        #include "org/allbinary/media/image/search/ImageComparisonSearchConstraintsInterface.h"
 
 class ImageComparisonSearchWorker: public BasicEventHandler, public ImageComparisonResultsListener {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: BasicArrayList imageComparisonInfoVector;
+    private: BasicArrayList* imageComparisonInfoVector;
 
     private: int64_t index= 0;
 
     private: bool running= false;
 
-    private: ImageComparisonSearchConstraintsInterface imageSearchConstraintsInterface;
+    private: ImageComparisonSearchConstraintsInterface* imageSearchConstraintsInterface;
 
-public: ImageComparisonSearchWorker(ImageComparisonSearchConstraintsInterface imageSearchConstraintsInterface);
+public: ImageComparisonSearchWorker(ImageComparisonSearchConstraintsInterface* imageSearchConstraintsInterface);
 
-    public: void onImageComparisonResultsEvent(ImageComparisonResultsEvent imageComparisonResultsEvent);
+    public: void onImageComparisonResultsEvent(ImageComparisonResultsEvent* imageComparisonResultsEvent);
 
-    public: void onEvent(AllBinaryEventObject allBinaryEventObject);
+    public: void onEvent(AllBinaryEventObject* allBinaryEventObject);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: bool isRunning();

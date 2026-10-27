@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -76,23 +82,23 @@ class FrameLog
             : public Object
          {
 
-    private: static std::vector<int8_t> frameBytes = "Frame: ".getBytes();
+    private: static inline std::vector<int8_t> frameBytes = ("Frame: ").getBytes();
 
-    private: static std::vector<int8_t> info = "Info: \n".getBytes();
+    private: static inline std::vector<int8_t> info = ("Info: \n").getBytes();
 
-    private: static std::vector<int8_t> actions = "Actions: \n".getBytes();
+    private: static inline std::vector<int8_t> actions = ("Actions: \n").getBytes();
 
-    private: Long frame;
+    private: int64_t frame;
 
-    private: StringMaker infoStringBuffer = StringMaker();
+    private: StringMaker* infoStringBuffer = new StringMaker();
 
-    private: StringMaker actionsStringBuffer = StringMaker();
+    private: StringMaker* actionsStringBuffer = new StringMaker();
 
-public: FrameLog(Long frame);
+public: FrameLog(int64_t frame);
 
     public: void addInfo(std::string infoString);
 
-    public: void addActions(BasicArrayList vectorOfStrings);
+    public: void addActions(BasicArrayList* vectorOfStrings);
 
     public: void addAction(std::string action);
 
@@ -100,7 +106,7 @@ public: FrameLog(Long frame);
             
     public: void write();
 
-    public: Long getFrame();
+    public: int64_t getFrame();
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -53,22 +59,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TextAnimation.h"
-#include "TextInterface.h"
+        #include "org/allbinary/animation/text/TextAnimation.h"
+#include "org/allbinary/animation/text/TextInterface.h"
 
 class CustomTextAnimation: public TextAnimation, public TextInterface {
 
-    protected: const FontDebugFactory fontDebugFactory = FontDebugFactory::getInstance();
+    protected: FontDebugFactory* fontDebugFactory = FontDebugFactory::getInstance();
 
     protected: int32_t fontSize;
 
-    protected: Font font;
+    protected: Font* font;
 
-    private: std::string lastText = StringUtil::getInstance().INIT_STRING;
+    private: std::string lastText = StringUtil::getInstance()->INIT_STRING;
 
     protected: bool hasChanged = true;
 
-public: CustomTextAnimation(std::string text, int32_t fontSize, AnimationBehavior animationBehavior) : TextAnimation(text, animationBehavior){
+public: CustomTextAnimation(std::string text, int32_t fontSize, AnimationBehavior* animationBehavior) : TextAnimation(text, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -82,17 +88,17 @@ this->font= Font::getFont(Font::FACE_SYSTEM, Font::STYLE_PLAIN, fontSize);
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 this->myFontProcessor.process(graphics);
     
 
-    Font existingFont = graphics.getFont();;
+    Font* existingFont = graphics->getFont();;
     
-this->fontDebugFactory.setFont(this->font, graphics);
+this->fontDebugFactory->setFont(this->font, graphics);
     
 super.paintXYNoUpdate(graphics, x, y);
     
-this->fontDebugFactory.setFont(existingFont, graphics);
+this->fontDebugFactory->setFont(existingFont, graphics);
     
 }
 
@@ -105,7 +111,7 @@ this->fontDebugFactory.setFont(existingFont, graphics);
                                     
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 
                                     }
@@ -151,7 +157,7 @@ super.setText(text);
                         if(this->hasChanged)
                         
                                     {
-                                    this->textWidth= this->font.stringWidth(this->textArrayP[0]);
+                                    this->textWidth= this->font->stringWidth(this->textArrayP[0]);
     
 this->hasChanged= false;
     
@@ -172,7 +178,7 @@ this->hasChanged= false;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->font.getHeight();;
+                        return this->font->getHeight();;
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/InputFactory.h>
@@ -44,20 +50,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionGestureInput.h"
+        #include "org/allbinary/input/motion/gesture/MotionGestureInput.h"
 
 class TrackballMotionGestureFactory
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static TrackballMotionGestureFactory getInstance(){
+    public: static TrackballMotionGestureFactory* getInstance(){
 
-                        if(TrackballMotionGestureFactory::instance() == NullUtil::getInstance().NULL_OBJECT)
+                        if(TrackballMotionGestureFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    TrackballMotionGestureFactory::instance= TrackballMotionGestureFactory();
+                                    TrackballMotionGestureFactory::instance= new TrackballMotionGestureFactory();
     
 
                                     }
@@ -66,30 +72,30 @@ class TrackballMotionGestureFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TrackballMotionGestureFactory::instance();
+                        return dynamic_cast<TrackballMotionGestureFactory*>(TrackballMotionGestureFactory::instance);
     
 }
 
 
-    public: MotionGestureInput LEFT;
+    public: MotionGestureInput* LEFT;
 
-    public: MotionGestureInput RIGHT;
+    public: MotionGestureInput* RIGHT;
 
-    public: MotionGestureInput UP;
+    public: MotionGestureInput* UP;
 
-    public: MotionGestureInput DOWN;
+    public: MotionGestureInput* DOWN;
 
 private: TrackballMotionGestureFactory(){
 
-    int32_t MAX = InputFactory::getInstance().MAX;;
+    int32_t MAX = InputFactory::getInstance()->MAX;;
     
-this->LEFT= MotionGestureInput(MAX -26, "L Trackball");
+this->LEFT= new MotionGestureInput(MAX -26, "L Trackball");
     
-this->RIGHT= MotionGestureInput(MAX -27, "R Trackball");
+this->RIGHT= new MotionGestureInput(MAX -27, "R Trackball");
     
-this->UP= MotionGestureInput(MAX -28, "Up Trackball");
+this->UP= new MotionGestureInput(MAX -28, "Up Trackball");
     
-this->DOWN= MotionGestureInput(MAX -29, "D Trackball");
+this->DOWN= new MotionGestureInput(MAX -29, "D Trackball");
     
 }
 

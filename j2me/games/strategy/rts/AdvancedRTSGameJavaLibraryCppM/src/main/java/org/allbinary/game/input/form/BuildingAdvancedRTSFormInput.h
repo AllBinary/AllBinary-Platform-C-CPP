@@ -22,6 +22,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AdvancedPlayerOwnedRTSLayers.h>
@@ -105,29 +111,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BuildingRTSFormInput.h"
+        #include "org/allbinary/game/input/form/BuildingRTSFormInput.h"
 
 class BuildingAdvancedRTSFormInput: public BuildingRTSFormInput {
 
-    protected: GameNotificationEvent atLeastOneHouseGameNotificationEvent;
+    protected: GameNotificationEvent* atLeastOneHouseGameNotificationEvent;
 
-public: BuildingAdvancedRTSFormInput(std::vector<Group> groupInterface, bool isUnitProducer);
+public: BuildingAdvancedRTSFormInput(std::vector<Group*> groupInterface, bool isUnitProducer);
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager);
 
     public: bool isPositionBlocked();
 
                 //@Throws(Exception.constructor)
             
-    protected: bool isBuildAttemptValid(RTSPlayerLayerInterface rtsPlayerLayerInterface, RTSLayer layerInterface);
+    protected: bool isBuildAttemptValid(RTSPlayerLayerInterface* rtsPlayerLayerInterface, RTSLayer* layerInterface);
 
-    private: const RTSLayerEvent BUILD_BUILDING_RTS_LAYER_EVENT = RTSLayerEvent(NullPathFindingLayer::NULL_PATH_FINDING_LAYER);
+    private: RTSLayerEvent* BUILD_BUILDING_RTS_LAYER_EVENT = new RTSLayerEvent(NullPathFindingLayer::NULL_PATH_FINDING_LAYER);
 
                 //@Throws(Exception.constructor)
             
-    protected: void add(RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, RTSLayer layerInterface);
+    protected: void add(RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, RTSLayer* layerInterface);
 
 };
 

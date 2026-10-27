@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Choice.h>
@@ -68,13 +74,13 @@
         
 class InGameOptionsForm: public CommandForm {
 
-    public: static const Command DISPLAY = Command("Options In Game", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
+    public: static Command* DISPLAY() { static std::unique_ptr<Command> value(new Command("Options In Game", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1)); return value.get(); }
 
-    public: static const Command SAVE = Command("Save", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
+    public: static Command* SAVE() { static std::unique_ptr<Command> value(new Command("Save", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1)); return value.get(); }
 
-    public: static const Command DEFAULT = Command("Default", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
+    public: static Command* DEFAULT() { static std::unique_ptr<Command> value(new Command("Default", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1)); return value.get(); }
 
-: InGameOptionsForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor) : CommandForm(commandListener, title, backgrounBasicColor, foregroundBasicColor){
+: InGameOptionsForm(CommandListener* commandListener, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) : CommandForm(commandListener, title, backgrounBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -84,23 +90,23 @@ class InGameOptionsForm: public CommandForm {
 this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
-    GameFeatureFormUtil gameFeatureFormUtil = GameFeatureFormUtil::getInstance();;
+    GameFeatureFormUtil* gameFeatureFormUtil = GameFeatureFormUtil::getInstance();;
     
-gameFeatureFormUtil.addChoiceGroup(this, InGameFeatureChoiceGroups::getExclusiveInstance().get(), Choice::EXCLUSIVE);
+gameFeatureFormUtil->addChoiceGroup(this, InGameFeatureChoiceGroups::getExclusiveInstance()->get(), Choice::EXCLUSIVE);
     
-gameFeatureFormUtil.addChoiceGroup(this, InGameFeatureChoiceGroups::getMultipleInstance().get(), Choice::MULTIPLE);
+gameFeatureFormUtil->addChoiceGroup(this, InGameFeatureChoiceGroups::getMultipleInstance()->get(), Choice::MULTIPLE);
     
 this->initCommands(commandListener);
     
 }
 
 
-    public: void initCommands(CommandListener cmdListener){
+    public: void initCommands(CommandListener* cmdListener){
 this->removeAllCommands();
     
-this->addCommand(GameCommandsFactory::getInstance().CLOSE_AND_SHOW_GAME_CANVAS);
+this->addCommand(GameCommandsFactory::getInstance()->CLOSE_AND_SHOW_GAME_CANVAS);
     
-this->addCommand(InGameOptionsForm::DEFAULT);
+this->addCommand(InGameOptionsForm::DEFAULT());
     
 this->setCommandListener(cmdListener);
     

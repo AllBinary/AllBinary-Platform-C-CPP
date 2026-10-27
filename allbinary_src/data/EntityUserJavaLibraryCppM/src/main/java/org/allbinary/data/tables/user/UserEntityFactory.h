@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_USERENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_USERENTITYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,13 +55,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserEntity.h"
+        #include "org/allbinary/data/tables/user/UserEntity.h"
 
 class UserEntityFactory
             : public Object
          {
 
-    public: static UserEntity getInstance();
+    public: static UserEntity* getInstance();
 
 private: UserEntityFactory();
 

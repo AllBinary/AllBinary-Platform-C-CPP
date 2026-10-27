@@ -21,6 +21,12 @@
         #ifndef VIEWS_GENERIC_ADDRESS_SHIPPING_SHIPPINGADDRESSESVIEW_H
         #define VIEWS_GENERIC_ADDRESS_SHIPPING_SHIPPINGADDRESSESVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -88,19 +94,19 @@
         
 class ShippingAddressesView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
-    protected: BasicArrayList streetAddressList;
+    protected: BasicArrayList* streetAddressList;
 
-public: ShippingAddressesView(TransformInfoInterface transformInfoInterface);
+public: ShippingAddressesView(TransformInfoInterface* transformInfoInterface);
 
-    protected: HttpServletRequest getRequest();
+    protected: HttpServletRequest* getRequest();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
     public: void addDomNodeInterfaces();
 

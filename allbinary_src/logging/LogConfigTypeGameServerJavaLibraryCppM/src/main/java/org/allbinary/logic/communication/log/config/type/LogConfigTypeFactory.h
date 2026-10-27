@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPEFACTORY_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
@@ -47,27 +53,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogConfigType.h"
+        #include "org/allbinary/logic/communication/log/config/type/LogConfigType.h"
 
 class LogConfigTypeFactory
             : public Object
          {
 
-    private: static LogConfigTypeFactory instance() { return LogConfigTypeFactory(); }
+    private: static LogConfigTypeFactory* instance() { static std::unique_ptr<LogConfigTypeFactory> value(new LogConfigTypeFactory()); return value.get(); }
 
-    public: static LogConfigTypeFactory getInstance();
+    public: static LogConfigTypeFactory* getInstance();
 
     private: const std::string NO_DESCRIPTION = "No Description";
 
-    public: const LogConfigType INIT_SERVER = LogConfigType("Init Server", this->NO_DESCRIPTION);
+    public: LogConfigType* INIT_SERVER = new LogConfigType("Init Server", this->NO_DESCRIPTION);
 
-    public: const LogConfigType LOBBY_SERVER = LogConfigType("Lobby Server", this->NO_DESCRIPTION);
+    public: LogConfigType* LOBBY_SERVER = new LogConfigType("Lobby Server", this->NO_DESCRIPTION);
 
-    public: const LogConfigType GAME_SERVER = LogConfigType("Game Server", this->NO_DESCRIPTION);
+    public: LogConfigType* GAME_SERVER = new LogConfigType("Game Server", this->NO_DESCRIPTION);
 
-    public: const LogConfigType GAME_SIMULATOR = LogConfigType("Game Simulator", this->NO_DESCRIPTION);
+    public: LogConfigType* GAME_SIMULATOR = new LogConfigType("Game Simulator", this->NO_DESCRIPTION);
 
-    public: const LogConfigType CUSTOM_TYPES = LogConfigType("Custom Types", this->NO_DESCRIPTION);
+    public: LogConfigType* CUSTOM_TYPES = new LogConfigType("Custom Types", this->NO_DESCRIPTION);
 
 private: LogConfigTypeFactory();
 

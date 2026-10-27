@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_TACTICAL_HORIZONTALMANEUVERAIFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_AI_TACTICAL_HORIZONTALMANEUVERAIFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
@@ -56,13 +62,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HorizontalManeuverAI.h"
+        #include "org/allbinary/game/ag/ai/tactical/HorizontalManeuverAI.h"
 
 class HorizontalManeuverAIFactory
             : public Object
-        : public ArtificialIntelligenceInterfaceFactoryInterface {
+        , public ArtificialIntelligenceInterfaceFactoryInterface {
 
-    public: ArtificialIntelligenceInterface getInstance(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+    public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
 };
 

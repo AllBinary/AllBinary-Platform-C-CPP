@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,9 +66,9 @@ class LayerCoveringCellPositionsUtil
             : public Object
          {
 
-    private: static LayerCoveringCellPositionsUtil instance() { return LayerCoveringCellPositionsUtil(); }
+    private: static LayerCoveringCellPositionsUtil* instance() { static std::unique_ptr<LayerCoveringCellPositionsUtil> value(new LayerCoveringCellPositionsUtil()); return value.get(); }
 
-    public: static LayerCoveringCellPositionsUtil getInstance(){
+    public: static LayerCoveringCellPositionsUtil* getInstance(){
 
 
 
@@ -72,13 +78,13 @@ class LayerCoveringCellPositionsUtil
 }
 
 
-    private: const CellPositionsUtil cellPositionsUtil = CellPositionsUtil::getInstance();
+    private: CellPositionsUtil* cellPositionsUtil = CellPositionsUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getAllXY(BasicGeographicMap geographicMapInterface, AllBinaryLayer layerInterface, int32_t x, int32_t y, BasicArrayList reusableList){
+    public: BasicArrayList* getAllXY(BasicGeographicMap* geographicMapInterface, AllBinaryLayer* layerInterface, int32_t x, int32_t y, BasicArrayList* reusableList){
 
-    GeographicMapCellPosition topLeftGeographicMapCellPosition = geographicMapInterface.getCellPositionAtXY(x, y);;
+    GeographicMapCellPosition* topLeftGeographicMapCellPosition = geographicMapInterface->getCellPositionAtXY(x, y);;
     
 
 
@@ -91,14 +97,14 @@ class LayerCoveringCellPositionsUtil
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getAll(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition topLeftGeographicMapCellPosition, AllBinaryLayer layerInterface, BasicArrayList reusableList){
-reusableList.clear();
+    public: BasicArrayList* getAll(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* topLeftGeographicMapCellPosition, AllBinaryLayer* layerInterface, BasicArrayList* reusableList){
+reusableList->clear();
     
 
-    int32_t columns = layerInterface.getWidth() /geographicMapInterface.getAllBinaryTiledLayer().getCellWidth();;
+    int32_t columns = layerInterface->getWidth() /geographicMapInterface->getAllBinaryTiledLayer()->getCellWidth();;
     
 
-    int32_t rows = layerInterface.getHeight() /geographicMapInterface.getAllBinaryTiledLayer().getCellHeight();;
+    int32_t rows = layerInterface->getHeight() /geographicMapInterface->getAllBinaryTiledLayer()->getCellHeight();;
     
 
                         if(columns == 0)
@@ -112,7 +118,7 @@ reusableList.clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cellPositionsUtil.getAll(geographicMapInterface, topLeftGeographicMapCellPosition, columns, rows, reusableList);;
+                        return this->cellPositionsUtil->getAll(geographicMapInterface, topLeftGeographicMapCellPosition, columns, rows, reusableList);;
     
 }
 

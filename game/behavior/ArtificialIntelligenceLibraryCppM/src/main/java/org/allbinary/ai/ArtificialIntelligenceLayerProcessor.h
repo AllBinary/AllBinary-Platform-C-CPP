@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCELAYERPROCESSOR_H
         #define ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCELAYERPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/AllBinaryLayer.h>
@@ -50,8 +56,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ArtificialIntelligenceLayerManager.h"
-#include "ArtificialIntelligenceCompositeInterface.h"
+        #include "org/allbinary/ai/ArtificialIntelligenceLayerManager.h"
+#include "org/allbinary/ai/ArtificialIntelligenceCompositeInterface.h"
 
 class ArtificialIntelligenceLayerProcessor: public LayerProcessor {
 
@@ -59,11 +65,11 @@ public: ArtificialIntelligenceLayerProcessor();
 
                 //@Throws(Exception.constructor)
             
-    public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index);
+    public: void processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index);
 
                 //@Throws(Exception.constructor)
             
-    public: bool isProcessorLayer(AllBinaryLayer layerInterface);
+    public: bool isProcessorLayer(AllBinaryLayer* layerInterface);
 
 };
 

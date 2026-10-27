@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Character.h"
@@ -56,14 +62,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DefaultComboBoxModel.h"
-#include "KeyStroke.h"
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/DefaultComboBoxModel.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyStroke.h"
 
 class KeyCharDefaultComboBoxModelFactory
             : public Object
          {
 
-    public: static DefaultComboBoxModel getInstance();
+    public: static DefaultComboBoxModel* getInstance();
 
 private: KeyCharDefaultComboBoxModelFactory();
 

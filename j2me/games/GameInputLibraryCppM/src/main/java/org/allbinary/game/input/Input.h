@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_INPUT_H
         #define ORG_ALLBINARY_GAME_INPUT_INPUT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -54,7 +60,7 @@ class Input
 
     private: int32_t id= 0;
 
-    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
 
 public: Input(int32_t id, std::string name);
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -53,7 +59,7 @@
         
 class AffiliateUser: public User {
 
-    private: AffiliateSales affiliateSales;
+    private: AffiliateSales* affiliateSales;
 
 public: AffiliateUser() : User(){
 
@@ -62,24 +68,24 @@ public: AffiliateUser() : User(){
 
                             //For kotlin this is before the body of the constructor.
                     
-this->affiliateSales= AffiliateSales();
+this->affiliateSales= new AffiliateSales();
     
 }
 
 
-public: AffiliateUser(HashMap<Object*, Object*> userHashMap) : User(userHashMap){
+public: AffiliateUser(HashMap<Object*, Object*>* userHashMap) : User(userHashMap){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->affiliateSales= AffiliateSales();
+this->affiliateSales= new AffiliateSales();
     
 }
 
 
-    public: void validateSession(WeblisketSessionInterface weblisketSession){
+    public: void validateSession(WeblisketSessionInterface* weblisketSession){
 super.validateSession(weblisketSession);
     
 this->updateSession(weblisketSession);
@@ -87,18 +93,18 @@ this->updateSession(weblisketSession);
 }
 
 
-    public: void updateSession(WeblisketSessionInterface weblisketSession){
-weblisketSession.setStoreName(this->getPermissions());
+    public: void updateSession(WeblisketSessionInterface* weblisketSession){
+weblisketSession->setStoreName(this->getPermissions());
     
 }
 
 
-    public: Boolean isSessionValid(){
+    public: bool isSessionValid(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->affiliateSales.isValid();;
+                        return this->affiliateSales->isValid();;
     
 }
 

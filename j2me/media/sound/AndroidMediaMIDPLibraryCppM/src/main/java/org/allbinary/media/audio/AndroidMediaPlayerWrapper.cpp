@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -70,44 +76,44 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicPlayer.h"
+        #include "org/allbinary/media/audio/BasicPlayer.h"
 
 class AndroidMediaPlayerWrapper: public BasicPlayer {
 
-    public: static AndroidMediaPlayerWrapper createPlayerWrapper(){
+    public: static AndroidMediaPlayerWrapper* createPlayerWrapper(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AndroidMediaPlayerWrapper(StringUtil::getInstance().EMPTY_STRING);
+                        return new AndroidMediaPlayerWrapper(StringUtil::getInstance()->EMPTY_STRING);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 }
 
 
-    public: static const AndroidMediaPlayerWrapper NULL_ANDROID_MEDIA_PLAYER_WRAPPER = AndroidMediaPlayerWrapper::createPlayerWrapper();
+    public: static inline AndroidMediaPlayerWrapper* NULL_ANDROID_MEDIA_PLAYER_WRAPPER = AndroidMediaPlayerWrapper::createPlayerWrapper();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: MediaPlayer mediaPlayer = NullAndroidCanvas::NULL_MEDIA_PLAYER;
+    private: MediaPlayer* mediaPlayer = NullAndroidCanvas::NULL_MEDIA_PLAYER;
 
 public: AndroidMediaPlayerWrapper(std::string resource){
 
         try {
             
-                        if(resource == StringUtil::getInstance().EMPTY_STRING)
+                        if(resource == StringUtil::getInstance()->EMPTY_STRING)
                         
                                     {
                                     
@@ -115,10 +121,10 @@ public: AndroidMediaPlayerWrapper(std::string resource){
                                 
                         else {
                             
-    ResourceUtil resourceUtil = ResourceUtil::getInstance();;
+    ResourceUtil* resourceUtil = ResourceUtil::getInstance();;
     
 
-    MediaPlayer mediaPlayer = MediaPlayer::create(resourceUtil.getContext(), resourceUtil.getResourceId(resource).intValue());;
+    MediaPlayer* mediaPlayer = MediaPlayer::create(resourceUtil->getContext(), resourceUtil->getResourceId(resource)->intValue());;
     
 
                         if(mediaPlayer == 
@@ -129,23 +135,23 @@ public: AndroidMediaPlayerWrapper(std::string resource){
                                     
 
 
-                            throw Exception(StringMaker().append("Failed to create media player for: ").append(resource).append(" with id: ").append(resourceUtil.getResourceId(resource).toString()).toString());
+                            throw new Exception((new StringMaker())->append("Failed to create media player for: ")->append(resource)->append(" with id: ")->append(resourceUtil->getResourceId(resource)->toString())->toString());
                     
 
                                     }
                                 
 this->setMediaPlayer(mediaPlayer);
     
-this->mediaPlayer.setLooping(false);
+this->mediaPlayer->setLooping(false);
     
 
                         }
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION_LABEL +resource, this, this->commonStrings.CONSTRUCTOR, e);
+this->logUtil->put(this->commonStrings.EXCEPTION_LABEL +resource, this, this->commonStrings.CONSTRUCTOR, &e);
     
 
 
@@ -170,7 +176,7 @@ super.setLoopCount(count);
                         if(count == 0)
                         
                                     {
-                                    this->mediaPlayer.setLooping(false);
+                                    this->mediaPlayer->setLooping(false);
     
 
                                     }
@@ -186,13 +192,13 @@ super.setLoopCount(count);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void addPlayerListener(PlayerListener playerListener){
+    public: void addPlayerListener(PlayerListener* playerListener){
 super.addPlayerListener(playerListener);
     
 }
 
 
-    public: void removePlayerListener(PlayerListener playerListener){
+    public: void removePlayerListener(PlayerListener* playerListener){
 super.removePlayerListener(playerListener);
     
 }
@@ -200,7 +206,7 @@ super.removePlayerListener(playerListener);
 
     public: int32_t getState(){
 
-                        if(this->mediaPlayer.isPlaying())
+                        if(this->mediaPlayer->isPlaying())
                         
                                     {
                                     
@@ -228,15 +234,15 @@ super.removePlayerListener(playerListener);
     public: void close(){
 
         try {
-            this->mediaPlayer.release();
+            this->mediaPlayer->release();
     
 this->mediaPlayer= NullAndroidCanvas::NULL_MEDIA_PLAYER;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CLOSE, e);
+this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.CLOSE, &e);
     
 }
 
@@ -250,25 +256,25 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CLOSE
 
         try {
             
-                        if(this->mediaPlayer.isPlaying())
+                        if(this->mediaPlayer->isPlaying())
                         
                                     {
-                                    this->mediaPlayer.pause();
+                                    this->mediaPlayer->pause();
     
-this->mediaPlayer.seekTo(0);
+this->mediaPlayer->seekTo(0);
     
 
                                     }
                                 
-this->mediaPlayer.start();
+this->mediaPlayer->start();
     
 super.start();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.START_METHOD_NAME, e);
+this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.START_METHOD_NAME, &e);
     
 }
 
@@ -281,17 +287,17 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.START
     public: void stop(){
 
         try {
-            this->mediaPlayer.stop();
+            this->mediaPlayer->stop();
     
-this->mediaPlayer.prepare();
+this->mediaPlayer->prepare();
     
 super.stop();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "stop", e);
+this->logUtil->put(this->commonStrings.EXCEPTION, this, "stop", &e);
     
 }
 
@@ -299,7 +305,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "stop", e);
 
 
     public: void update(std::string event){
-this->logUtil.putF("LineEvent: " +event, this, this->commonStrings.UPDATE);
+this->logUtil->putF("LineEvent: " +event, this, this->commonStrings.UPDATE);
     
 
     int32_t size = this->listenersList.size();;
@@ -312,9 +318,9 @@ this->logUtil.putF("LineEvent: " +event, this, this->commonStrings.UPDATE);
     int32_t index = 0;index < size; index++)
         {
 
-    PlayerListener listener = this->listenersList.objectArray[index];;
+    PlayerListener* listener = dynamic_cast<PlayerListener*>(this->listenersList.objectArray[index]);;
     
-listener.playerUpdate(this, event, NullUtil::getInstance().NULL_OBJECT);
+listener->playerUpdate(this, event, NullUtil::getInstance()->NULL_OBJECT);
     
 }
 
@@ -322,7 +328,7 @@ listener.playerUpdate(this, event, NullUtil::getInstance().NULL_OBJECT);
 
 
     public: void setVolume(int32_t leftVolume, int32_t rightVolume){
-this->mediaPlayer.setVolume((leftVolume) /100.0, (rightVolume) /100.0);
+this->mediaPlayer->setVolume((leftVolume) /100.0, (rightVolume) /100.0);
     
 }
 
@@ -332,18 +338,18 @@ this->mediaPlayer.setVolume((leftVolume) /100.0, (rightVolume) /100.0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->mediaPlayer.getDuration();
+                        return this->mediaPlayer->getDuration();
     
 }
 
 
-    public: void setMediaPlayer(MediaPlayer mediaPlayer){
+    public: void setMediaPlayer(MediaPlayer* mediaPlayer){
 this->mediaPlayer= mediaPlayer;
     
 }
 
 
-    public: MediaPlayer getMediaPlayer(){
+    public: MediaPlayer* getMediaPlayer(){
 
 
 

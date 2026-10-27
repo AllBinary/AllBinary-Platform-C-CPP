@@ -21,6 +21,14 @@
         #ifndef ADMIN_TAGS_PAYMENTPROCESSTAG_H
         #define ADMIN_TAGS_PAYMENTPROCESSTAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Class.h"
         
             #include "java/lang/Exception.h"
@@ -67,7 +75,7 @@
         
 class PaymentProcessTag: public StoreValidationTransformTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: PaymentProcessTag();
 

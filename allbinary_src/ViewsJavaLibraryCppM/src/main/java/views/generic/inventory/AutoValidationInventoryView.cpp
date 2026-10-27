@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
@@ -50,11 +56,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InventoryView.h"
+        #include "views/generic/inventory/InventoryView.h"
 
 class AutoValidationInventoryView: public InventoryView, public ValidationComponentInterface {
 
-public: AutoValidationInventoryView(TransformInfoInterface transformInfoInterface) : InventoryView(transformInfoInterface){
+public: AutoValidationInventoryView(TransformInfoInterface* transformInfoInterface) : InventoryView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -64,7 +70,7 @@ public: AutoValidationInventoryView(TransformInfoInterface transformInfoInterfac
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
 
 
@@ -74,7 +80,7 @@ public: AutoValidationInventoryView(TransformInfoInterface transformInfoInterfac
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -84,7 +90,7 @@ public: AutoValidationInventoryView(TransformInfoInterface transformInfoInterfac
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,15 +55,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GenericProfileActionScriptOutputData.h"
+        #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/GenericProfileActionScriptOutputData.h"
 
 class BasicProfileActionScriptOutputNode
             : public Object
          {
 
-public: BasicProfileActionScriptOutputNode(Node node){
+public: BasicProfileActionScriptOutputNode(Node* node){
 
-    Node actionNode = DomSearchHelper::getNode(GenericProfileActionScriptOutputData::NAME, node.getChildNodes());;
+    Node* actionNode = DomSearchHelper::getNode(GenericProfileActionScriptOutputData::NAME, node->getChildNodes());;
     
 }
 
@@ -68,9 +74,9 @@ public: BasicProfileActionScriptOutputNode(){
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = document.createElement(GenericProfileActionScriptOutputData::NAME);;
+    Node* node = document->createElement(GenericProfileActionScriptOutputData::NAME);;
     
 
 

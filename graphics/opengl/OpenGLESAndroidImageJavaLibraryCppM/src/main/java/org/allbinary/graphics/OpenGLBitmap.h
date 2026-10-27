@@ -9,6 +9,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <android/graphics/Bitmap.h>
 
       
@@ -36,7 +44,7 @@
         
 class OpenGLBitmap: public PlatformBitmapBase {
 
-    public: Bitmap bitmap;
+    public: Bitmap* bitmap;
 
 public: OpenGLBitmap(Object* bitmap);
 

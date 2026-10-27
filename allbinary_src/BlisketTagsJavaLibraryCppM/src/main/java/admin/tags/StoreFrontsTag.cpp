@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
@@ -65,16 +73,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TableTag.h"
+        #include "admin/tags/TableTag.h"
 
 class StoreFrontsTag: public TableTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: StoreFrontsTag(){
-this->setTagHelperFactory(StoreFrontsHelperFactory());
+this->setTagHelperFactory(new StoreFrontsHelperFactory());
     
-this->setTagRequestHelperFactory(StoreFrontsRequestHelperFactory());
+this->setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
     
 }
 
@@ -85,14 +93,14 @@ this->setTagRequestHelperFactory(StoreFrontsRequestHelperFactory());
 
         try {
             
-    Object* anyType = this->getTagHelperFactoryInterface().getInstance(this->getPropertiesHashMap(), pageContext);;
+    Object* anyType = this->getTagHelperFactoryInterface()->getInstance(this->getPropertiesHashMap(), pageContext);;
     
 
-    Method method = anyType->constructor.name.getMethod("generateSelect", 
+    Method* method = anyType->getClass()->getMethod("generateSelect", 
                             nullptr);;
     
 
-    std::string result = method.invoke(anyType, 
+    std::string result = method->invoke(anyType, 
                             nullptr);;
     
 
@@ -103,7 +111,7 @@ this->setTagRequestHelperFactory(StoreFrontsRequestHelperFactory());
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -113,16 +121,16 @@ this->setTagRequestHelperFactory(StoreFrontsRequestHelperFactory());
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
     std::string error = "Failed to generate storefronts select";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "generateSelect()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "generateSelect()", &e);
     
 
                                     }
@@ -134,7 +142,7 @@ this->setTagRequestHelperFactory(StoreFrontsRequestHelperFactory());
                         return error;
     
 }
-*/
+
 }
 
 
@@ -144,14 +152,14 @@ this->setTagRequestHelperFactory(StoreFrontsRequestHelperFactory());
 
         try {
             
-    Object* anyType = this->getTagRequestHelperFactoryInterface().getInstance(this->getPropertiesHashMap(), pageContext);;
+    Object* anyType = this->getTagRequestHelperFactoryInterface()->getInstance(this->getPropertiesHashMap(), pageContext);;
     
 
-    Method method = anyType->constructor.name.getMethod("install", 
+    Method* method = anyType->getClass()->getMethod("install", 
                             nullptr);;
     
 
-    std::string result = method.invoke(anyType, 
+    std::string result = method->invoke(anyType, 
                             nullptr);;
     
 
@@ -162,7 +170,7 @@ this->setTagRequestHelperFactory(StoreFrontsRequestHelperFactory());
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -172,16 +180,16 @@ this->setTagRequestHelperFactory(StoreFrontsRequestHelperFactory());
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
     std::string error = "Failed to generate storefronts select";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "generateSelect()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "generateSelect()", &e);
     
 
                                     }
@@ -193,7 +201,7 @@ this->setTagRequestHelperFactory(StoreFrontsRequestHelperFactory());
                         return error;
     
 }
-*/
+
 }
 
 
@@ -203,14 +211,14 @@ this->setTagRequestHelperFactory(StoreFrontsRequestHelperFactory());
 
         try {
             
-    Object* anyType = this->getTagRequestHelperFactoryInterface().getInstance(this->getPropertiesHashMap(), pageContext);;
+    Object* anyType = this->getTagRequestHelperFactoryInterface()->getInstance(this->getPropertiesHashMap(), pageContext);;
     
 
-    Method method = anyType->constructor.name.getMethod("sendStoreCreatedEmails", 
+    Method* method = anyType->getClass()->getMethod("sendStoreCreatedEmails", 
                             nullptr);;
     
 
-    std::string result = method.invoke(anyType, 
+    std::string result = method->invoke(anyType, 
                             nullptr);;
     
 
@@ -221,7 +229,7 @@ this->setTagRequestHelperFactory(StoreFrontsRequestHelperFactory());
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -231,16 +239,16 @@ this->setTagRequestHelperFactory(StoreFrontsRequestHelperFactory());
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
     std::string error = "Failed to send email";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "sendStoreCreatedEmails()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "sendStoreCreatedEmails()", &e);
     
 
                                     }
@@ -252,7 +260,7 @@ this->setTagRequestHelperFactory(StoreFrontsRequestHelperFactory());
                         return error;
     
 }
-*/
+
 }
 
 
@@ -272,27 +280,27 @@ this->setTagRequestHelperFactory(StoreFrontsRequestHelperFactory());
                         
                                     {
                                     
-    StoreFrontData storeFrontData = StoreFrontData::getInstance();;
+    StoreFrontData* storeFrontData = StoreFrontData::getInstance();;
     
 
-                        if(this->getCommand().compareTo(storeFrontData.SELECT) == 0)
+                        if(this->getCommand()->compareTo(storeFrontData->SELECT) == 0)
                         
                                     {
-                                    this->pageContext.getOut().print(this->generateSelect());
+                                    this->pageContext.getOut()->print(this->generateSelect());
     
 
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(storeFrontData.INSTALL) == 0)
+                        if(this->getCommand()->compareTo(storeFrontData->INSTALL) == 0)
                         
                                     {
-                                    this->getPropertiesHashMap().put("current", this->getCurrent());
+                                    this->getPropertiesHashMap()->put("current", this->getCurrent());
     
-this->getPropertiesHashMap().put("total", this->getTotal());
+this->getPropertiesHashMap()->put("total", this->getTotal());
     
 
-                        if(this->getCurrent().intValue() == this->getTotal().intValue())
+                        if(this->getCurrent()->intValue() == this->getTotal()->intValue())
                         
                                     {
                                     
@@ -310,7 +318,7 @@ this->install();
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(storeFrontData.INSTALL_COMPLETE) == 0)
+                        if(this->getCommand()->compareTo(storeFrontData->INSTALL_COMPLETE) == 0)
                         
                                     {
                                     this->sendStoreCreatedEmails();
@@ -342,9 +350,9 @@ this->install();
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
-AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
     
 
 
@@ -355,9 +363,9 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 
@@ -366,7 +374,7 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
                         return SKIP_BODY;
     
 }
-*/
+
 }
 
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -92,16 +98,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLFeatureFactory.h"
-#include "OpenGLFeature.h"
+        #include "org/allbinary/graphics/opengles/OpenGLFeatureFactory.h"
+#include "org/allbinary/graphics/opengles/OpenGLFeature.h"
 
 class OpenGLCapabilities
             : public Object
          {
 
-    private: static OpenGLCapabilities instance() { return OpenGLCapabilities(); }
+    private: static OpenGLCapabilities* instance() { static std::unique_ptr<OpenGLCapabilities> value(new OpenGLCapabilities()); return value.get(); }
 
-    public: static OpenGLCapabilities getInstance(){
+    public: static OpenGLCapabilities* getInstance(){
 
 
 
@@ -111,29 +117,29 @@ class OpenGLCapabilities
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     public: const bool CUSTOM_GL_SURFACE_VIEW = true;
 
-    private: const StringUtil stringUtil = StringUtil::getInstance();
+    private: StringUtil* stringUtil = StringUtil::getInstance();
 
     private: bool initialized = false;
 
-    private: std::string glVersionString = this->stringUtil.EMPTY_STRING;
+    private: std::string glVersionString = this->stringUtil->EMPTY_STRING;
 
-    private: std::string glShaderVersionString = this->stringUtil.EMPTY_STRING;
+    private: std::string glShaderVersionString = this->stringUtil->EMPTY_STRING;
 
     public: int32_t shaderVersion = 0;
 
-    private: std::string glRenderer = this->stringUtil.EMPTY_STRING;
+    private: std::string glRenderer = this->stringUtil->EMPTY_STRING;
 
-    private: std::string glVendor = this->stringUtil.EMPTY_STRING;
+    private: std::string glVendor = this->stringUtil->EMPTY_STRING;
 
-    private: std::string glExtensions = this->stringUtil.EMPTY_STRING;
+    private: std::string glExtensions = this->stringUtil->EMPTY_STRING;
 
     private: bool possiblyAccelerated= false;
 
-    private: std::string acceleratedString = this->stringUtil.EMPTY_STRING;
+    private: std::string acceleratedString = this->stringUtil->EMPTY_STRING;
 
     public: int32_t maxTextureSize = 64;
 
@@ -189,36 +195,36 @@ private: OpenGLCapabilities(){
 }
 
 
-    public: void initCapabilities(GL10 gl){
+    public: void initCapabilities(GL10* gl){
 
     std::string METHOD_NAME = "initGLCapabilities";;
     
 
         try {
             
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-    OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
+    OpenGLFeatureFactory* openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
     
 
-    OpenGLImageSpecificFactory openGLImageSpecificFactory = OpenGLImageSpecificFactory::getInstance();;
+    OpenGLImageSpecificFactory* openGLImageSpecificFactory = OpenGLImageSpecificFactory::getInstance();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-this->glVersionString= gl.glGetString(GL10::GL_VERSION);
+this->glVersionString= gl->glGetString(GL10::GL_VERSION);
     
 
     int32_t GL_SHADING_LANGUAGE_VERSION = 0x8b8c;;
     
-this->glShaderVersionString= gl.glGetString(GL_SHADING_LANGUAGE_VERSION);
+this->glShaderVersionString= gl->glGetString(GL_SHADING_LANGUAGE_VERSION);
     
 
                         if(false)
                         
                                     {
-                                    this->glShaderVersionString= this->stringUtil.EMPTY_STRING;
+                                    this->glShaderVersionString= this->stringUtil->EMPTY_STRING;
     
 
                                     }
@@ -241,27 +247,27 @@ this->glShaderVersionString= gl.glGetString(GL_SHADING_LANGUAGE_VERSION);
 
                                     }
                                 
-this->shaderVersion= Integer::parseInt(this->glShaderVersionString.replace(CommonSeps::getInstance().PERIOD, StringUtil::getInstance().EMPTY_STRING));
+this->shaderVersion= Integer.parseInt(this->glShaderVersionString.replace(CommonSeps::getInstance()->PERIOD, StringUtil::getInstance()->EMPTY_STRING));
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, METHOD_NAME, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, METHOD_NAME, &e);
     
 }
 
-this->glRenderer= gl.glGetString(GL10::GL_RENDERER);
+this->glRenderer= gl->glGetString(GL10::GL_RENDERER);
     
-this->glVendor= gl.glGetString(GL10::GL_VENDOR);
+this->glVendor= gl->glGetString(GL10::GL_VENDOR);
     
-this->glExtensions= gl.glGetString(GL10::GL_EXTENSIONS);
+this->glExtensions= gl->glGetString(GL10::GL_EXTENSIONS);
     
 
                         if(this->glExtensions.indexOf(this->GL_EXT_GPU_SHADER_100) >= 0)
@@ -297,7 +303,7 @@ this->glExtensions= gl.glGetString(GL10::GL_EXTENSIONS);
                         if(false)
                         
                                     {
-                                    this->glRenderer= this->stringUtil.EMPTY_STRING;
+                                    this->glRenderer= this->stringUtil->EMPTY_STRING;
     
 
                                     }
@@ -330,7 +336,7 @@ this->glExtensionDrawTexture= false;
                         if(false)
                         
                                     {
-                                    this->glVersionString= this->stringUtil.EMPTY_STRING;
+                                    this->glVersionString= this->stringUtil->EMPTY_STRING;
     
 this->glVersion= this->VERSION_UNK;
     
@@ -362,7 +368,9 @@ this->glVersion= this->VERSION_UNK;
                         }
                             
 
-                        if(gl instanceof GL11)
+                        if(
+                                        (dynamic_cast<const GL11*>(gl) != nullptr)
+                                    )
                         
                                     {
                                     this->glInstanceVersion= this->VERSION_1_1;
@@ -371,7 +379,9 @@ this->glVersion= this->VERSION_UNK;
                                     }
                                 
                              else 
-                        if(gl instanceof GL10)
+                        if(
+                                        (dynamic_cast<const GL10*>(gl) != nullptr)
+                                    )
                         
                                     {
                                     this->glInstanceVersion= this->VERSION_1_0;
@@ -383,7 +393,7 @@ this->glVersion= this->VERSION_UNK;
                         if(false)
                         
                                     {
-                                    this->glVendor= this->stringUtil.EMPTY_STRING;
+                                    this->glVendor= this->stringUtil->EMPTY_STRING;
     
 
                                     }
@@ -392,7 +402,7 @@ this->glVersion= this->VERSION_UNK;
                         if(false)
                         
                                     {
-                                    this->glExtensions= this->stringUtil.EMPTY_STRING;
+                                    this->glExtensions= this->stringUtil->EMPTY_STRING;
     
 
                                     }
@@ -401,10 +411,10 @@ this->glVersion= this->VERSION_UNK;
                         if(this->possiblyAccelerated)
                         
                                     {
-                                    PreLogUtil::put(StringMaker().append("VBO:?").appendboolean((this->glInstanceVersion == this->VERSION_1_1)).append("||").appendboolean(this->isExtension(openGLFeatureFactory.OPENGL_VERTEX_BUFFER_OBJECT)).toString(), this, METHOD_NAME);
+                                    PreLogUtil::put((new StringMaker())->append("VBO:?")->appendboolean((this->glInstanceVersion == this->VERSION_1_1))->append("||")->appendboolean(this->isExtension(openGLFeatureFactory->OPENGL_VERTEX_BUFFER_OBJECT))->toString(), this, METHOD_NAME);
     
 
-                        if((this->glInstanceVersion == this->VERSION_1_1 || this->isExtension(openGLFeatureFactory.OPENGL_VERTEX_BUFFER_OBJECT)))
+                        if((this->glInstanceVersion == this->VERSION_1_1 || this->isExtension(openGLFeatureFactory->OPENGL_VERTEX_BUFFER_OBJECT)))
                         
                                     {
                                     
@@ -429,31 +439,31 @@ this->glVersion= this->VERSION_UNK;
                                     }
                                 
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
 
-                        if(features.isDefault(openGLFeatureFactory.OPENGL_AUTO_SELECT))
+                        if(features->isDefault(openGLFeatureFactory->OPENGL_AUTO_SELECT))
                         
                                     {
                                     
                         if(this->vertexBufferObjectSupport)
                         
                                     {
-                                    openGLImageSpecificFactory.setImageFactory(OpenGLESGL11VBOImageFactory());
+                                    openGLImageSpecificFactory->setImageFactory(new OpenGLESGL11VBOImageFactory());
     
 
                                     }
                                 
                         else {
-                            stringBuffer.append("OpenGL is on but ");
+                            stringBuffer->append("OpenGL is on but ");
     
-stringBuffer.append(stringUtil.toString(openGLFeatureFactory.OPENGL_DRAW_TEXTURE));
+stringBuffer->append(stringUtil->toString(openGLFeatureFactory->OPENGL_DRAW_TEXTURE));
     
-stringBuffer.append(" was not available");
+stringBuffer->append(" was not available");
     
-PreLogUtil::put(stringBuffer.toString(), this, METHOD_NAME);
+PreLogUtil::put(stringBuffer->toString(), this, METHOD_NAME);
     
-openGLImageSpecificFactory.setImageFactory(OpenGLESGL10ImageFactory());
+openGLImageSpecificFactory->setImageFactory(new OpenGLESGL10ImageFactory());
     
 
                         }
@@ -462,13 +472,13 @@ openGLImageSpecificFactory.setImageFactory(OpenGLESGL10ImageFactory());
                                     }
                                 
                         else {
-                            stringBuffer.append(stringUtil.toString(openGLFeatureFactory.OPENGL_AUTO_SELECT));
+                            stringBuffer->append(stringUtil->toString(openGLFeatureFactory->OPENGL_AUTO_SELECT));
     
-stringBuffer.append(" is not on");
+stringBuffer->append(" is not on");
     
-PreLogUtil::put(stringBuffer.toString(), this, METHOD_NAME);
+PreLogUtil::put(stringBuffer->toString(), this, METHOD_NAME);
     
-openGLImageSpecificFactory.setImageFactory(OpenGLESGL10ImageFactory());
+openGLImageSpecificFactory->setImageFactory(new OpenGLESGL10ImageFactory());
     
 
                         }
@@ -476,7 +486,7 @@ openGLImageSpecificFactory.setImageFactory(OpenGLESGL10ImageFactory());
 
     std::vector<int32_t> maxTextureSizeArray = std::vector<int32_t>(1);;
     
-gl.glGetIntegerv(GL10::GL_MAX_TEXTURE_SIZE, maxTextureSizeArray, 0);
+gl->glGetIntegerv(GL10::GL_MAX_TEXTURE_SIZE, maxTextureSizeArray, 0);
     
 this->maxTextureSize= maxTextureSizeArray[0];
     
@@ -484,21 +494,21 @@ this->initialized= true;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, METHOD_NAME, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, METHOD_NAME, &e);
     
 }
 
 }
 
 
-    private: bool isExtension(OpenGLFeature gameFeature){
+    private: bool isExtension(OpenGLFeature* gameFeature){
 
-    int32_t index = this->glExtensions.indexOf(gameFeature.getName());;
+    int32_t index = this->glExtensions.indexOf(gameFeature->getName());;
     
 
                         if(index >= 0)
@@ -659,59 +669,59 @@ this->requireInitialization();
 
     public: std::string toString(){
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("GL_VERSION: ");
+stringBuffer->append("GL_VERSION: ");
     
-stringBuffer.append(this->glVersionString);
+stringBuffer->append(this->glVersionString);
     
-stringBuffer.append(" GL_SHADING_LANGUAGE_VERSION: ");
+stringBuffer->append(" GL_SHADING_LANGUAGE_VERSION: ");
     
-stringBuffer.append(this->glShaderVersionString);
+stringBuffer->append(this->glShaderVersionString);
     
-stringBuffer.append(" GL_RENDERER: ");
+stringBuffer->append(" GL_RENDERER: ");
     
-stringBuffer.append(this->glRenderer);
+stringBuffer->append(this->glRenderer);
     
-stringBuffer.append(" GL_VENDOR: ");
+stringBuffer->append(" GL_VENDOR: ");
     
-stringBuffer.append(this->glVendor);
+stringBuffer->append(this->glVendor);
     
-stringBuffer.append(commonSeps.NEW_LINE);
+stringBuffer->append(commonSeps->NEW_LINE);
     
-stringBuffer.append(" Is Accelerated: ");
+stringBuffer->append(" Is Accelerated: ");
     
-stringBuffer.append(this->acceleratedString);
+stringBuffer->append(this->acceleratedString);
     
-stringBuffer.append(commonSeps.NEW_LINE);
+stringBuffer->append(commonSeps->NEW_LINE);
     
-stringBuffer.append(" VBO Support: ");
+stringBuffer->append(" VBO Support: ");
     
-stringBuffer.appendboolean(this->isVertexBufferObjectSupport());
+stringBuffer->appendboolean(this->isVertexBufferObjectSupport());
     
-stringBuffer.append(commonSeps.NEW_LINE);
+stringBuffer->append(commonSeps->NEW_LINE);
     
-stringBuffer.append(" Max Texture Size: ");
+stringBuffer->append(" Max Texture Size: ");
     
-stringBuffer.appendint(this->maxTextureSize);
+stringBuffer->appendint(this->maxTextureSize);
     
-stringBuffer.append(commonSeps.NEW_LINE);
+stringBuffer->append(commonSeps->NEW_LINE);
     
-stringBuffer.append(" GL_EXTENSIONS: ");
+stringBuffer->append(" GL_EXTENSIONS: ");
     
 
         try {
             
-    Tokenizer tokenizer = Tokenizer(commonSeps.SPACE);;
+    Tokenizer* tokenizer = new Tokenizer(commonSeps->SPACE);;
     
 
-    BasicArrayList list = tokenizer.getTokensFromString(this->glExtensions, BasicArrayListD());;
+    BasicArrayList* list = tokenizer->getTokensFromString(this->glExtensions, new BasicArrayListD());;
     
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
 
@@ -720,20 +730,20 @@ stringBuffer.append(" GL_EXTENSIONS: ");
                         for (
     int32_t index = 0;index < size; index++)
         {
-stringBuffer.append(commonSeps.NEW_LINE);
+stringBuffer->append(commonSeps->NEW_LINE);
     
-stringBuffer.append(this->stringUtil.toString(list.objectArray[index]));
+stringBuffer->append(this->stringUtil->toString(list->objectArray[index]));
     
 }
 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil::putOE(commonStrings.EXCEPTION, this, commonStrings.TOSTRING, e);
+PreLogUtil::putOE(commonStrings->EXCEPTION, this, commonStrings->TOSTRING, &e);
     
 }
 
@@ -741,7 +751,7 @@ PreLogUtil::putOE(commonStrings.EXCEPTION, this, commonStrings.TOSTRING, e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

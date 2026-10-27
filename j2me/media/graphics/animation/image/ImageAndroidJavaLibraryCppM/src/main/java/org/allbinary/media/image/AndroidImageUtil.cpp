@@ -20,6 +20,12 @@
 
             #include <hilog/log.h>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <android/graphics/Bitmap.h>
@@ -66,9 +72,9 @@ class AndroidImageUtil
             : public Object
          {
 
-    private: static AndroidImageUtil instance() { return AndroidImageUtil(); }
+    private: static AndroidImageUtil* instance() { static std::unique_ptr<AndroidImageUtil> value(new AndroidImageUtil()); return value.get(); }
 
-    public: static AndroidImageUtil getInstance(){
+    public: static AndroidImageUtil* getInstance(){
 
 
 
@@ -78,51 +84,51 @@ class AndroidImageUtil
 }
 
 
-    public: void paintBitmap(Bitmap bitmap, Bitmap originalBitmap, Paint paint){
-bitmap.eraseColor(Color::TRANSPARENT);
+    public: void paintBitmap(Bitmap* bitmap, Bitmap* originalBitmap, Paint* paint){
+bitmap->eraseColor(Color::TRANSPARENT);
     
 
-    Canvas canvas = android::graphics::Canvas();;
+    Canvas* canvas = new android::graphics::Canvas();;
     
-canvas.setBitmap(bitmap);
+canvas->setBitmap(bitmap);
     
-canvas.drawBitmap(originalBitmap, 0.0, 0.0, paint);
+canvas->drawBitmap(originalBitmap, 0.0, 0.0, paint);
     
 }
 
 
-    public: void paint(Image image, Image originalImage, Paint paint){
+    public: void paint(Image* image, Image* originalImage, Paint* paint){
 
-    AndroidImageInterface androidImage = image;;
+    AndroidImageInterface* androidImage = dynamic_cast<AndroidImageInterface*>(image);;
     
-androidImage.getBitmap().eraseColor(Color::TRANSPARENT);
-    
-
-    Canvas canvas = androidImage.getCanvas();;
+androidImage->getBitmap()->eraseColor(Color::TRANSPARENT);
     
 
-    AndroidImageInterface originalAndroidImage = originalImage;;
+    Canvas* canvas = androidImage->getCanvas();;
     
-canvas.drawBitmap(originalAndroidImage.getBitmap(), 0.0, 0.0, paint);
+
+    AndroidImageInterface* originalAndroidImage = dynamic_cast<AndroidImageInterface*>(originalImage);;
+    
+canvas->drawBitmap(originalAndroidImage->getBitmap(), 0.0, 0.0, paint);
     
 }
 
 
-    public: void rotate(Image image, Image originalImage, Matrix matrix, Paint paint){
+    public: void rotate(Image* image, Image* originalImage, Matrix* matrix, Paint* paint){
 
-    AndroidImageInterface androidImage = image;;
+    AndroidImageInterface* androidImage = dynamic_cast<AndroidImageInterface*>(image);;
     
-androidImage.getBitmap().eraseColor(Color::TRANSPARENT);
-    
-
-    Canvas canvas = androidImage.getCanvas();;
-    
-canvas.concat(matrix);
+androidImage->getBitmap()->eraseColor(Color::TRANSPARENT);
     
 
-    AndroidImageInterface originalAndroidImage = originalImage;;
+    Canvas* canvas = androidImage->getCanvas();;
     
-canvas.drawBitmap(originalAndroidImage.getBitmap(), 0.0, 0.0, paint);
+canvas->concat(matrix);
+    
+
+    AndroidImageInterface* originalAndroidImage = dynamic_cast<AndroidImageInterface*>(originalImage);;
+    
+canvas->drawBitmap(originalAndroidImage->getBitmap(), 0.0, 0.0, paint);
     
 }
 

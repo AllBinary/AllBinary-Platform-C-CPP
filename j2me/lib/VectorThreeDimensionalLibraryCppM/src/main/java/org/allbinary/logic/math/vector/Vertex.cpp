@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/math/BasicDecimal.h>
@@ -55,11 +61,11 @@ class Vertex
             : public Object
          {
 
-    public: BasicDecimal x = BasicDecimal(0);
+    public: BasicDecimal* x = new BasicDecimal(0);
 
-    public: BasicDecimal y = BasicDecimal(0);
+    public: BasicDecimal* y = new BasicDecimal(0);
 
-    public: BasicDecimal z = BasicDecimal(0);
+    public: BasicDecimal* z = new BasicDecimal(0);
 
 public: Vertex(){
 }
@@ -67,32 +73,32 @@ public: Vertex(){
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    PositionStrings positionStrings = PositionStrings::getInstance();;
+    PositionStrings* positionStrings = PositionStrings::getInstance();;
     
-stringBuffer.append(positionStrings.X_LABEL);
+stringBuffer->append(positionStrings->X_LABEL);
     
-stringBuffer.append(this->x.toString());
+stringBuffer->append(this->x->toString());
     
-stringBuffer.append(CommonSeps::getInstance().SPACE);
+stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-stringBuffer.append(positionStrings.Y_LABEL);
+stringBuffer->append(positionStrings->Y_LABEL);
     
-stringBuffer.append(this->y.toString());
+stringBuffer->append(this->y->toString());
     
-stringBuffer.append(CommonSeps::getInstance().SPACE);
+stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-stringBuffer.append(positionStrings.Z_LABEL);
+stringBuffer->append(positionStrings->Z_LABEL);
     
-stringBuffer.append(this->z.toString());
+stringBuffer->append(this->z->toString());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

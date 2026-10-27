@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,35 +79,35 @@
         
 class StatesView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
 public: StatesView(){
 }
 
 
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
         try {
             
-    Node node = document.createElement(StreetAddressData::STATES);;
+    Node* node = document->createElement(StreetAddressData::STATES);;
     
 
-    std::string statesFile = URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance().LINEDATAPATH +"states.txt";;
+    std::string statesFile = URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance()->LINEDATAPATH +"states.txt";;
     
 
-    LineReader lineReader = LineReader(statesFile);;
+    LineReader* lineReader = new LineReader(statesFile);;
     
 
-        while(lineReader.hasNext())
+        while(lineReader->hasNext())
         {
 
-    std::string option = lineReader.next();;
+    std::string option = lineReader->next();;
     
-node.appendChild(ModDomHelper::createNameValueNodes(document, StreetAddressData::STATE, option));
+node->appendChild(ModDomHelper::createNameValueNodes(document, StreetAddressData::STATE, option));
     
 }
 
@@ -113,13 +119,13 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, StreetAddressData:
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "toXmlNode", &e);
     
 
                                     }

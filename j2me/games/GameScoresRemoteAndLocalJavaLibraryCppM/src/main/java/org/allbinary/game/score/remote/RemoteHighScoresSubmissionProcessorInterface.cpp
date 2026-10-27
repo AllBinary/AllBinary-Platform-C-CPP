@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/score/HighScore.h>
 
       
@@ -42,11 +48,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RemoteHighScores.h"
+        #include "org/allbinary/game/score/remote/RemoteHighScores.h"
 
 class RemoteHighScoresSubmissionProcessorInterface {
 
-    void process(RemoteHighScores remoteHighScores, AbeClientInformationInterface abeClientInformation, HighScore highScore)
+    public: virtual void process(RemoteHighScores* remoteHighScores, AbeClientInformationInterface* abeClientInformation, HighScore* highScore) = 0;
 
 };
 

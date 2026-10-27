@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,30 +58,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DefaultListModel.h"
-#include "ListModel.h"
+        #include "org/allbinary/input/automation/module/DefaultListModel.h"
+#include "org/allbinary/input/automation/module/ListModel.h"
 
 class DefaultListModelHelper
             : public Object
          {
 
-    private: DefaultListModel defaultListModel;
+    private: DefaultListModel* defaultListModel;
 
-    private: BasicArrayList vector;
+    private: BasicArrayList* vector;
 
 public: DefaultListModelHelper(){
-this->vector= BasicArrayListD();
+this->vector= new BasicArrayListD();
     
-this->defaultListModel= DefaultListModel();
+this->defaultListModel= new DefaultListModel();
     
 }
 
 
     public: void initDefaultModelList(){
-this->defaultListModel= DefaultListModel();
+this->defaultListModel= new DefaultListModel();
     
 
-    int32_t size = this->vector.size();;
+    int32_t size = this->vector->size();;
     
 
 
@@ -85,33 +91,33 @@ this->defaultListModel= DefaultListModel();
     int32_t index = 0;index < size; index++)
         {
 
-    std::string moduleName = this->vector.get(index);;
+    std::string moduleName = this->vector->get(index);;
     
-this->defaultListModel.addElement(moduleName);
+this->defaultListModel->addElement(moduleName);
     
 }
 
 }
 
 
-    public: ListModel getListModel(){
+    public: ListModel* getListModel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->defaultListModel;
+                        return dynamic_cast<ListModel*>(this->defaultListModel);
     
 }
 
 
     public: void add(std::string string){
-this->vector.add(string);
+this->vector->add(string);
     
 }
 
 
     public: void remove(std::string string){
-this->vector.remove(string);
+this->vector->remove(string);
     
 }
 

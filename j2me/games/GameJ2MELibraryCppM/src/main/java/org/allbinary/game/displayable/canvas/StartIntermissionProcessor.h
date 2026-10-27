@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_STARTINTERMISSIONPROCESSOR_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_STARTINTERMISSIONPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/canvas/Processor.h>
@@ -50,19 +56,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryGameCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
 class StartIntermissionProcessor: public Processor {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: AllBinaryGameCanvas gameCanvas;
+    private: AllBinaryGameCanvas* gameCanvas;
 
     private: const int64_t WAIT = 5000;
 
-public: StartIntermissionProcessor(AllBinaryGameCanvas gameCanvas);
+public: StartIntermissionProcessor(AllBinaryGameCanvas* gameCanvas);
 
                 //@Throws(Exception.constructor)
             

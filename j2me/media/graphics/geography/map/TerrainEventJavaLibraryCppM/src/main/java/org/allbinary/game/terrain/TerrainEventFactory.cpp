@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
@@ -47,22 +53,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TerrainEvent.h"
+        #include "org/allbinary/game/terrain/TerrainEvent.h"
 
 class TerrainEventFactory
             : public Object
-        : public AllBinaryEventObjectFactoryInterface {
+        , public AllBinaryEventObjectFactoryInterface {
 
 public: TerrainEventFactory(){
 }
 
 
-    public: AllBinaryEventObject getInstance(){
+    public: AllBinaryEventObject* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TerrainEvent(NullUtil::getInstance().NULL_OBJECT);
+                        return new TerrainEvent(NullUtil::getInstance()->NULL_OBJECT);
     
 }
 

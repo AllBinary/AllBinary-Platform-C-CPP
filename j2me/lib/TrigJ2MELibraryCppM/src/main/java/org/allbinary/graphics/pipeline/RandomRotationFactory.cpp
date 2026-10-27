@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,15 +55,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicGraphicsPipeline.h"
+        #include "org/allbinary/graphics/pipeline/BasicGraphicsPipeline.h"
 
 class RandomRotationFactory
             : public Object
          {
 
-    private: static RandomRotationFactory instance() { return RandomRotationFactory(); }
+    private: static RandomRotationFactory* instance() { static std::unique_ptr<RandomRotationFactory> value(new RandomRotationFactory()); return value.get(); }
 
-    public: static RandomRotationFactory getInstance(){
+    public: static RandomRotationFactory* getInstance(){
 
 
 
@@ -67,25 +73,25 @@ class RandomRotationFactory
 }
 
 
-    private: const MyRandomFactory myRandomFactory = MyRandomFactory::getInstance();
+    private: MyRandomFactory* myRandomFactory = MyRandomFactory::getInstance();
 
-    private: const AngleFactory angleFactory = AngleFactory::getInstance();
+    private: AngleFactory* angleFactory = AngleFactory::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getInstanceList(BasicArrayList vector, int32_t howMuch){
+    public: BasicArrayList* getInstanceList(BasicArrayList* vector, int32_t howMuch){
 
-    BasicGraphicsPipeline graphicsPipe = BasicGraphicsPipeline(vector);;
+    BasicGraphicsPipeline* graphicsPipe = new BasicGraphicsPipeline(vector);;
     
-graphicsPipe.createMatrix();
+graphicsPipe->createMatrix();
     
-graphicsPipe.rotateToAngle(this->angleFactory.getAt(this->getNextRandomAngle(howMuch)));
+graphicsPipe->rotateToAngle(this->angleFactory->getAt(this->getNextRandomAngle(howMuch)));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return graphicsPipe.getMatrix();;
+                        return graphicsPipe->getMatrix();;
     
 }
 
@@ -95,7 +101,7 @@ graphicsPipe.rotateToAngle(this->angleFactory.getAt(this->getNextRandomAngle(how
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->myRandomFactory.getNextInt(howMuch *10);;
+                        return this->myRandomFactory->getNextInt(howMuch *10);;
     
 }
 

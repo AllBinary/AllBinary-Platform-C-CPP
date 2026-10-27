@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/globals/MESSAGES.h>
@@ -47,13 +53,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OrderHistoryView.h"
-#include "Document.h"
-#include "Node.h"
+        #include "views/generic/order/history/OrderHistoryView.h"
+#include "views/generic/order/history/Document.h"
+#include "views/generic/order/history/Node.h"
 
 class ValidationView: public OrderHistoryView, public ValidationComponentInterface {
 
-public: ValidationView(TransformInfoInterface transformInfoInterface) : OrderHistoryView(transformInfoInterface){
+public: ValidationView(TransformInfoInterface* transformInfoInterface) : OrderHistoryView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -63,7 +69,7 @@ public: ValidationView(TransformInfoInterface transformInfoInterface) : OrderHis
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
 
 
@@ -73,7 +79,7 @@ public: ValidationView(TransformInfoInterface transformInfoInterface) : OrderHis
 }
 
 
-    public: org::w3c::dom::Document toValidationInfoDoc(){
+    public: org::w3c::dom::Document* toValidationInfoDoc(){
 
 
 
@@ -83,7 +89,7 @@ public: ValidationView(TransformInfoInterface transformInfoInterface) : OrderHis
 }
 
 
-    public: org::w3c::dom::Node toValidationInfoNode(org::w3c::dom::Document document){
+    public: org::w3c::dom::Node* toValidationInfoNode(org::w3c::dom::Document* document){
 
 
 

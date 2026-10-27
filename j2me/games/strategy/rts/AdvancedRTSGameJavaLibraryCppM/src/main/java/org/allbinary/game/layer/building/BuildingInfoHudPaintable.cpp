@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -77,13 +83,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BuildingLayer.h"
+        #include "org/allbinary/game/layer/building/BuildingLayer.h"
 
 class BuildingInfoHudPaintable: public SelectionHudPaintable {
 
-    private: static BuildingInfoHudPaintable instance() { return BuildingInfoHudPaintable(); }
+    private: static BuildingInfoHudPaintable* instance() { static std::unique_ptr<BuildingInfoHudPaintable> value(new BuildingInfoHudPaintable()); return value.get(); }
 
-    public: static BuildingInfoHudPaintable getInstance(){
+    public: static BuildingInfoHudPaintable* getInstance(){
 
 
 
@@ -93,37 +99,37 @@ class BuildingInfoHudPaintable: public SelectionHudPaintable {
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const std::string HEALTH = "Health:";
 
-    private: NumberStringHud productivityHud;
+    private: NumberStringHud* productivityHud;
 
-    private: NumberStringHud efficiencyHud;
+    private: NumberStringHud* efficiencyHud;
 
-    private: NumberStringHud healthHud;
+    private: NumberStringHud* healthHud;
 
-    private: NumberStringHud maxHealthHud;
+    private: NumberStringHud* maxHealthHud;
 
-    private: PathFindingLayerInterface rtsLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
+    private: PathFindingLayerInterface* rtsLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
     private: int32_t currentHealth = 0;
 
 private: BuildingInfoHudPaintable(){
 
-    NumberStringHudFactory numberStringHudFactory = NumberStringHudFactory::getInstance();;
+    NumberStringHudFactory* numberStringHudFactory = NumberStringHudFactory::getInstance();;
     
 
-    NumberStringHud productivityHud = numberStringHudFactory.NULL_NUMBER_STRING_HUD;;
+    NumberStringHud* productivityHud = numberStringHudFactory->NULL_NUMBER_STRING_HUD;;
     
 
-    NumberStringHud efficiencyHud = numberStringHudFactory.NULL_NUMBER_STRING_HUD;;
+    NumberStringHud* efficiencyHud = numberStringHudFactory->NULL_NUMBER_STRING_HUD;;
     
 
-    NumberStringHud healthHud = numberStringHudFactory.NULL_NUMBER_STRING_HUD;;
+    NumberStringHud* healthHud = numberStringHudFactory->NULL_NUMBER_STRING_HUD;;
     
 
-    NumberStringHud maxHealthHud = numberStringHudFactory.NULL_NUMBER_STRING_HUD;;
+    NumberStringHud* maxHealthHud = numberStringHudFactory->NULL_NUMBER_STRING_HUD;;
     
 
         try {
@@ -131,10 +137,10 @@ private: BuildingInfoHudPaintable(){
     int32_t index = 0;;
     
 
-    BasicHudFactory basicHudFactory = BasicHudFactory::getInstance();;
+    BasicHudFactory* basicHudFactory = BasicHudFactory::getInstance();;
     
 
-    BasicColor basicColor = this->getBasicColorP();;
+    BasicColor* basicColor = this->getBasicColorP();;
     
 
     int32_t textX = this->textX;;
@@ -149,7 +155,7 @@ private: BuildingInfoHudPaintable(){
 //inner=true member= isStatic=
 class ProductivityNumberStringHud: public NumberStringHud {
 
-: ProductivityNumberStringHud() : SelectionHudPaintable("Productivity:", 999, basicHudFactory.ABSOLUTE, basicHudFactory.HORIZONTAL, 0, basicColor){
+: ProductivityNumberStringHud() : SelectionHudPaintable("Productivity:", 999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -159,13 +165,13 @@ class ProductivityNumberStringHud: public NumberStringHud {
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
 this->updateMaxWidth= textX;
     
-this->updateMaxHeight= y +((firstIndex +1) *font.getHeight());
+this->updateMaxHeight= y +((firstIndex +1) *font->getHeight());
     
 super.updateMeasurement(graphics);
     
@@ -178,7 +184,7 @@ super.updateMeasurement(graphics);
 
                     //Otherwise - statement - EmptyStmt
 
-productivityHud= ProductivityNumberStringHud();
+productivityHud= new ProductivityNumberStringHud();
     
 index++;
     
@@ -189,7 +195,7 @@ index++;
 //inner=true member= isStatic=
 class EfficiencyNumberStringHud: public NumberStringHud {
 
-: EfficiencyNumberStringHud() : SelectionHudPaintable("Efficiency:", 999, basicHudFactory.ABSOLUTE, basicHudFactory.HORIZONTAL, 0, basicColor){
+: EfficiencyNumberStringHud() : SelectionHudPaintable("Efficiency:", 999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -199,15 +205,15 @@ class EfficiencyNumberStringHud: public NumberStringHud {
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 super.updateMeasurement(graphics);
     
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
 this->updateMaxWidth= textX;
     
-this->updateMaxHeight= y +((secondIndex +1) *font.getHeight());
+this->updateMaxHeight= y +((secondIndex +1) *font->getHeight());
     
 }
 
@@ -218,7 +224,7 @@ this->updateMaxHeight= y +((secondIndex +1) *font.getHeight());
 
                     //Otherwise - statement - EmptyStmt
 
-efficiencyHud= EfficiencyNumberStringHud();
+efficiencyHud= new EfficiencyNumberStringHud();
     
 index++;
     
@@ -232,7 +238,7 @@ index++;
 //inner=true member= isStatic=
 class HealthNumberStringHud: public NumberStringHud {
 
-: HealthNumberStringHud() : SelectionHudPaintable(HEALTH, 99999, basicHudFactory.ABSOLUTE, basicHudFactory.HORIZONTAL, 0, basicColor){
+: HealthNumberStringHud() : SelectionHudPaintable(HEALTH, 99999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -242,13 +248,13 @@ class HealthNumberStringHud: public NumberStringHud {
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
 this->updateMaxWidth= textX;
     
-this->updateMaxHeight= y +((thirdIndex +1) *font.getHeight());
+this->updateMaxHeight= y +((thirdIndex +1) *font->getHeight());
     
 super.updateMeasurement(graphics);
     
@@ -264,7 +270,7 @@ super.updateMeasurement(graphics);
 
     int32_t totalLength = HEALTH.size() +1;;
     
-healthHud= HealthNumberStringHud();
+healthHud= new HealthNumberStringHud();
     
 
     int32_t fourthIndex = index;;
@@ -273,7 +279,7 @@ healthHud= HealthNumberStringHud();
 //inner=true member= isStatic=
 class MaxHealthNumberStringHud: public NumberStringHud {
 
-: MaxHealthNumberStringHud() : SelectionHudPaintable("/ ", 99999, basicHudFactory.ABSOLUTE, basicHudFactory.HORIZONTAL, 0, basicColor){
+: MaxHealthNumberStringHud() : SelectionHudPaintable("/ ", 99999, basicHudFactory->ABSOLUTE, basicHudFactory->HORIZONTAL, 0, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -283,15 +289,15 @@ class MaxHealthNumberStringHud: public NumberStringHud {
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 super.updateMeasurement(graphics);
     
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->updateMaxWidth= textX +(totalLength *font.getHeight());
+this->updateMaxWidth= textX +(totalLength *font->getHeight());
     
-this->updateMaxHeight= y +((fourthIndex +1) *font.getHeight());
+this->updateMaxHeight= y +((fourthIndex +1) *font->getHeight());
     
 }
 
@@ -302,16 +308,16 @@ this->updateMaxHeight= y +((fourthIndex +1) *font.getHeight());
 
                     //Otherwise - statement - EmptyStmt
 
-maxHealthHud= MaxHealthNumberStringHud();
+maxHealthHud= new MaxHealthNumberStringHud();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &e);
     
 }
 
@@ -326,76 +332,76 @@ this->maxHealthHud= maxHealthHud;
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
 
-    int32_t totalLength = HEALTH.size() +MathUtil::getInstance().getTotalDigits(this->currentHealth);;
+    int32_t totalLength = HEALTH.size() +MathUtil::getInstance()->getTotalDigits(this->currentHealth);;
     
-this->maxHealthHud.setX(this->textX +MyFontProcessor::defaultStringWidth(font, totalLength));
+this->maxHealthHud->setX(this->textX +MyFontProcessor::defaultStringWidth(font, totalLength));
     
 this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    public: void setBasicColorP(BasicColor basicColor){
+    public: void setBasicColorP(BasicColor* basicColor){
 super.setBasicColorP(basicColor);
     
-this->productivityHud.setBasicColorP(basicColor);
+this->productivityHud->setBasicColorP(basicColor);
     
-this->efficiencyHud.setBasicColorP(basicColor);
+this->efficiencyHud->setBasicColorP(basicColor);
     
-this->healthHud.setBasicColorP(basicColor);
+this->healthHud->setBasicColorP(basicColor);
     
-this->maxHealthHud.setBasicColorP(basicColor);
+this->maxHealthHud->setBasicColorP(basicColor);
     
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 super.paint(graphics);
     
 this->myFontProcessor.process(graphics);
     
-this->productivityHud.paint(graphics);
+this->productivityHud->paint(graphics);
     
-this->efficiencyHud.paint(graphics);
+this->efficiencyHud->paint(graphics);
     
-this->healthHud.paint(graphics);
+this->healthHud->paint(graphics);
     
-this->maxHealthHud.paint(graphics);
+this->maxHealthHud->paint(graphics);
     
-this->getAnimationInterface().paintXY(graphics, this->imageX, this->y);
+this->getAnimationInterface()->paintXY(graphics, this->imageX, this->y);
     
 }
 
 
     public: void updateSelectionInfo(){
 
-    BuildingLayer buildingLayer = this->rtsLayer;;
+    BuildingLayer* buildingLayer = dynamic_cast<BuildingLayer*>(this->rtsLayer);;
     
-this->setName(buildingLayer.getName());
+this->setName(buildingLayer->getName());
     
-this->setAnimationInterface(buildingLayer.getVerticleBuildAnimationInterface());
+this->setAnimationInterface(buildingLayer->getVerticleBuildAnimationInterface());
     
-this->productivityHud.set(buildingLayer.getProductivity());
+this->productivityHud->set(buildingLayer->getProductivity());
     
-this->efficiencyHud.set(buildingLayer.getEfficiency() /100);
+this->efficiencyHud->set(buildingLayer->getEfficiency() /100);
     
-this->currentHealth= buildingLayer.getHealthInterface().getHealth();
+this->currentHealth= buildingLayer->getHealthInterface()->getHealth();
     
-this->healthHud.set(this->currentHealth);
+this->healthHud->set(this->currentHealth);
     
 this->myFontProcessor= this->updateMyFontProcessor;
     
-this->maxHealthHud.set(buildingLayer.getHealthInterface().getMaxHealth());
+this->maxHealthHud->set(buildingLayer->getHealthInterface()->getMaxHealth());
     
 }
 
 
-    public: void setRtsLayer(PathFindingLayerInterface rtsLayer){
+    public: void setRtsLayer(PathFindingLayerInterface* rtsLayer){
 this->rtsLayer= rtsLayer;
     
 }

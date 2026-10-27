@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/Rectangle.h>
@@ -51,11 +57,11 @@ class RectangleResourceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    Rectangle getRectangle(std::string resource);
+    public: virtual Rectangle* getRectangle(std::string resource) = 0;
 
                 //@Throws(Exception.constructor)
             
-    std::vector<std::vector<Rectangle>> getRectangleArrayOfArrays(std::string resource);
+    public: virtual std::vector<std::vector<Rectangle*>> getRectangleArrayOfArrays(std::string resource) = 0;
 
 };
 

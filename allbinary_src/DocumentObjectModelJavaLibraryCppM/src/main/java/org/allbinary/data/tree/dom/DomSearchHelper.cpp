@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -57,9 +63,9 @@ class DomSearchHelper
             : public Object
          {
 
-    public: static Node getNodeNoThrow(std::string nodeName, NodeList nodeList){
+    public: static Node* getNodeNoThrow(std::string nodeName, NodeList* nodeList){
 
-    int32_t numberOfNodes = nodeList.getLength();;
+    int32_t numberOfNodes = nodeList->getLength();;
     
 
 
@@ -69,10 +75,10 @@ class DomSearchHelper
     int32_t index = 0;index < numberOfNodes; index++)
         {
 
-    Node node = nodeList.item(index);;
+    Node* node = nodeList->item(index);;
     
 
-                        if(node.getNodeName().compareTo(nodeName) == 0)
+                        if(node->getNodeName()->compareTo(nodeName) == 0)
                         
                                     {
                                     
@@ -97,9 +103,9 @@ class DomSearchHelper
 
                 //@Throws(Exception.constructor)
             
-    public: static Node getNode(std::string nodeName, NodeList nodeList){
+    public: static Node* getNode(std::string nodeName, NodeList* nodeList){
 
-    Node node = DomSearchHelper::getNodeNoThrow(nodeName, nodeList);;
+    Node* node = DomSearchHelper::getNodeNoThrow(nodeName, nodeList);;
     
 
                         if(node != 
@@ -120,7 +126,7 @@ class DomSearchHelper
                             
 
 
-                            throw Exception(nodeName +" Node Not Found in search");
+                            throw new Exception(nodeName +" Node Not Found in search");
                     
 
                         }
@@ -130,24 +136,24 @@ class DomSearchHelper
 
                 //@Throws(Exception.constructor)
             
-    public: static NodeList getChildNodeList(std::string nodeName, NodeList nodeList){
+    public: static NodeList* getChildNodeList(std::string nodeName, NodeList* nodeList){
 
-    Node node = DomSearchHelper::getNode(nodeName, nodeList);;
+    Node* node = DomSearchHelper::getNode(nodeName, nodeList);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return node.getChildNodes();;
+                        return node->getChildNodes();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList getAllNodes(std::string nodeName, NodeList nodeList){
+    public: static BasicArrayList* getAllNodes(std::string nodeName, NodeList* nodeList){
 
-    BasicArrayList vector = DomSearchHelper::getAllNodesNoThrow(nodeName, nodeList);;
+    BasicArrayList* vector = DomSearchHelper::getAllNodesNoThrow(nodeName, nodeList);;
     
 
                         if(vector == 
@@ -158,7 +164,7 @@ class DomSearchHelper
                                     
 
 
-                            throw Exception(nodeName +" Node Not Found in search");
+                            throw new Exception(nodeName +" Node Not Found in search");
                     
 
                                     }
@@ -176,12 +182,12 @@ class DomSearchHelper
 }
 
 
-    public: static BasicArrayList getAllNodesNoThrow(std::string nodeName, NodeList nodeList){
+    public: static BasicArrayList* getAllNodesNoThrow(std::string nodeName, NodeList* nodeList){
 
-    BasicArrayList nodeVector = BasicArrayListD();;
+    BasicArrayList* nodeVector = new BasicArrayListD();;
     
 
-    int32_t numberOfNodes = nodeList.getLength();;
+    int32_t numberOfNodes = nodeList->getLength();;
     
 
 
@@ -191,13 +197,13 @@ class DomSearchHelper
     int32_t index = 0;index < numberOfNodes; index++)
         {
 
-    Node node = nodeList.item(index);;
+    Node* node = nodeList->item(index);;
     
 
-                        if(node.getNodeName().compareTo(nodeName) == 0)
+                        if(node->getNodeName()->compareTo(nodeName) == 0)
                         
                                     {
-                                    nodeVector.add(node);
+                                    nodeVector->add(node);
     
 
                                     }

@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/category/CategoryView.h>
@@ -61,11 +69,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreThemeCategoryInterface.h"
+        #include "org/allbinary/business/category/store/theme/StoreThemeCategoryInterface.h"
 
 class StoreThemeCategoryPathView: public CategoryView, public DomNodeInterface {
 
-public: StoreThemeCategoryPathView(StoreThemeCategoryInterface categoryInterface) : CategoryView(categoryInterface){
+public: StoreThemeCategoryPathView(StoreThemeCategoryInterface* categoryInterface) : CategoryView(dynamic_cast<StoreThemeCategoryInterface*>(categoryInterface)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -77,15 +85,15 @@ public: StoreThemeCategoryPathView(StoreThemeCategoryInterface categoryInterface
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = super.toXmlNode(document);;
+    Node* node = super.toXmlNode(document);;
     
 
-    StoreThemeCategoryInterface storeThemeCategoryInterface = this->getCategoryInterface();;
+    StoreThemeCategoryInterface* storeThemeCategoryInterface = dynamic_cast<StoreThemeCategoryInterface*>(this->getCategoryInterface());;
     
 
-    std::vector<Object*> themeArray = storeThemeCategoryInterface.getThemes().toArray();;
+    std::vector<Object*> themeArray = storeThemeCategoryInterface->getThemes()->toArray();;
     
 
     int32_t size = themeArray.size();;
@@ -98,12 +106,12 @@ public: StoreThemeCategoryPathView(StoreThemeCategoryInterface categoryInterface
     int32_t i = 0;i < size; i++)
         {
 
-    ThemeValidation themeValidation = themeArray[i];;
+    ThemeValidation* themeValidation = dynamic_cast<ThemeValidation*>(themeArray[i]);;
     
 
-    DomNodeInterface domNodeInterface = ThemePropertiesView(themeValidation);;
+    DomNodeInterface* domNodeInterface = dynamic_cast<DomNodeInterface*>(new ThemePropertiesView(dynamic_cast<ThemeInterface*>(themeValidation)));;
     
-node.appendChild(domNodeInterface.toXmlNode(document));
+node->appendChild(domNodeInterface->toXmlNode(document));
     
 }
 

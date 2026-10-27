@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/resource/BaseResourceAnimationInterfaceFactoryInterfaceFactory.h>
@@ -62,17 +68,17 @@
         
 class TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory: public BaseResourceAnimationInterfaceFactoryInterfaceFactory {
 
-    public: static TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory createFactory(){
+    public: static TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory* createFactory(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory("TouchButton Animations");
+                        return new TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory("TouchButton Animations");
     
 }
 
 
-public: TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory(std::string name) : BaseResourceAnimationInterfaceFactoryInterfaceFactory(name, StdUtil::getInstance().createHashtable(), StdUtil::getInstance().createHashtable(), StdUtil::getInstance().createHashtable()){
+public: TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory(std::string name) : BaseResourceAnimationInterfaceFactoryInterfaceFactory(name, StdUtil::getInstance()->createHashtable(), StdUtil::getInstance()->createHashtable(), StdUtil::getInstance()->createHashtable()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -92,7 +98,7 @@ this->initImageCache(ImageCacheFactory::getInstance(), level);
 
                 //@Throws(Exception.constructor)
             
-    protected: void initImageCache(ImageCache imageCache, int32_t level){
+    protected: void initImageCache(ImageCache* imageCache, int32_t level){
 
                         if(this->isInitialized())
                         
@@ -113,10 +119,10 @@ super.init(level);
 
     public: bool isLoadingLevel(int32_t level){
 
-    ResourceLoadingLevelFactory resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
+    ResourceLoadingLevelFactory* resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
     
 
-                        if(level == resourceLoadingLevelFactory.LOAD_TOUCH.getLevel())
+                        if(level == resourceLoadingLevelFactory->LOAD_TOUCH.getLevel())
                         
                                     {
                                     
@@ -143,7 +149,7 @@ super.init(level);
 
     public: bool isFeature(){
 
-                        if(!Features::getInstance().isDefault(OpenGLFeatureFactory::getInstance().OPENGL))
+                        if(!Features::getInstance()->isDefault(OpenGLFeatureFactory::getInstance()->OPENGL))
                         
                                     {
                                     

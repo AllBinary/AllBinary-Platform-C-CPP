@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATURECONTROLLEDINTERFACE_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATURECONTROLLEDINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -46,11 +52,11 @@ class GameFeatureControlledInterface {
 
                 //@Throws(Exception.constructor)
             
-    void init(int32_t level);
+    public: virtual void init(int32_t level) = 0;
 
-    bool isFeature();
+    public: virtual bool isFeature() = 0;
 
-    bool isLoadingLevel(int32_t level);
+    public: virtual bool isLoadingLevel(int32_t level) = 0;
 
 };
 

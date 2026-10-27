@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYERCIRCULARPOOL_H
         #define ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYERCIRCULARPOOL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/combat/weapon/WeaponProperties.h>
@@ -53,7 +59,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WeaponLayer.h"
+        #include "org/allbinary/game/layer/weapon/WeaponLayer.h"
 
 class WeaponLayerCircularPool: public AllBinaryLayerCircularPool {
 
@@ -61,7 +67,7 @@ public: WeaponLayerCircularPool();
 
                 //@Throws(Exception.constructor)
             
-    public: WeaponLayer getInstanceWeaponLayer(AllBinaryLayer sourceLayerInterface, int32_t x, int32_t y, int32_t z, int32_t angle, int32_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreable);
+    public: WeaponLayer* getInstanceWeaponLayer(AllBinaryLayer* sourceLayerInterface, int32_t x, int32_t y, int32_t z, int32_t angle, int32_t otherAngle, WeaponProperties* weaponProperties, ScoreableInterface* scoreable);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREACONSTRAINTS_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREACONSTRAINTS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,26 +70,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdvertisementAreaConstraintsInterface.h"
-#include "AdvertisementAreaData.h"
+        #include "org/allbinary/business/advertisement/area/AdvertisementAreaConstraintsInterface.h"
+#include "org/allbinary/business/advertisement/area/AdvertisementAreaData.h"
 
 class AdvertisementAreaConstraints
             : public Object
-        : public AdvertisementAreaConstraintsInterface {
+        , public AdvertisementAreaConstraintsInterface {
 
-    private: DisplayInBrowserContraintsInterface displayInBrowserContraintsInterface;
+    private: DisplayInBrowserContraintsInterface* displayInBrowserContraintsInterface;
 
-    private: TwoDimensionalConstraintInterface twoDimensionConstraintsInterface;
+    private: TwoDimensionalConstraintInterface* twoDimensionConstraintsInterface;
 
-public: AdvertisementAreaConstraints(Document document);
+public: AdvertisementAreaConstraints(Document* document);
 
-    public: void setDisplayInBrowserContraints(DisplayInBrowserContraintsInterface displayInBrowserContraintsInterface);
+    public: void setDisplayInBrowserContraints(DisplayInBrowserContraintsInterface* displayInBrowserContraintsInterface);
 
-    public: void getTwoDimensionContraints(TwoDimensionalConstraintInterface twoDimensionConstraintsInterface);
+    public: void getTwoDimensionContraints(TwoDimensionalConstraintInterface* twoDimensionConstraintsInterface);
 
-    public: DisplayInBrowserContraintsInterface getDisplayInBrowserContraints();
+    public: DisplayInBrowserContraintsInterface* getDisplayInBrowserContraints();
 
-    public: TwoDimensionalConstraintInterface getTwoDimensionContraints();
+    public: TwoDimensionalConstraintInterface* getTwoDimensionContraints();
 
 };
 

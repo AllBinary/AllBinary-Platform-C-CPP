@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATION_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -44,12 +50,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "FtpConfigurationInterface.h"
-#include "FtpConfigurationData.h"
+        #include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationInterface.h"
+#include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationData.h"
 
 class FtpConfiguration
             : public Object
-        : public FtpConfigurationInterface {
+        , public FtpConfigurationInterface {
 
     private: std::string ftpServer;
 
@@ -61,7 +67,7 @@ class FtpConfiguration
 
 public: FtpConfiguration();
 
-public: FtpConfiguration(HashMap<Object*, Object*> hashMap);
+public: FtpConfiguration(HashMap<Object*, Object*>* hashMap);
 
     public: std::string getServer();
 

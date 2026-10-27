@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/canvas/Processor.h>
@@ -56,17 +62,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryGameCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
 class EndGameProcessor: public Processor {
 
-    protected: const GameStateFactory gameStateFactory = GameStateFactory::getInstance();
+    protected: GameStateFactory* gameStateFactory = GameStateFactory::getInstance();
 
-    private: AllBinaryGameCanvas gameCanvas;
+    private: AllBinaryGameCanvas* gameCanvas;
 
     private: const int64_t WAIT = 5000;
 
-public: EndGameProcessor(AllBinaryGameCanvas gameCanvas){
+public: EndGameProcessor(AllBinaryGameCanvas* gameCanvas){
 this->gameCanvas= gameCanvas;
     
 }
@@ -76,34 +82,34 @@ this->gameCanvas= gameCanvas;
             
     public: void process(){
 
-                        if(this->gameCanvas.isHighScoreSubmitted())
+                        if(this->gameCanvas->isHighScoreSubmitted())
                         
                                     {
                                     
-                        if(this->gameCanvas.getGameStateTimeHelper().isElapsedTNT(this->WAIT))
+                        if(this->gameCanvas->getGameStateTimeHelper()->isElapsedTNT(this->WAIT))
                         
                                     {
                                     
-                        if(this->gameCanvas.getGameState() == this->gameStateFactory.SHOW_END_RESULT_GAME_STATE)
+                        if(this->gameCanvas->getGameState() == this->gameStateFactory->SHOW_END_RESULT_GAME_STATE)
                         
                                     {
                                     
-    HighScoresHelperBase highScoresBase = this->gameCanvas.highScoresHelper;;
+    HighScoresHelperBase* highScoresBase = dynamic_cast<HighScoresHelperBase*>(this->gameCanvas->highScoresHelper);;
     
 
-    HighScores highScores = highScoresBase.getSelectedHighScores();;
+    HighScores* highScores = highScoresBase->getSelectedHighScores();;
     
 
                         if(highScores != NullHighScoresSingletonFactory::getInstance())
                         
                                     {
-                                    highScoresBase.selectHighScores();
+                                    highScoresBase->selectHighScores();
     
-this->gameCanvas.getRealHighScoresPaintable().setHighScores(highScores);
+this->gameCanvas->getRealHighScoresPaintable()->setHighScores(highScores);
     
-this->gameCanvas.setGameState(this->gameStateFactory.SHOW_HIGH_SCORE_GAME_STATE);
+this->gameCanvas->setGameState(this->gameStateFactory->SHOW_HIGH_SCORE_GAME_STATE);
     
-this->gameCanvas.setHighScoresPaintable(this->gameCanvas.getRealHighScoresPaintable());
+this->gameCanvas->setHighScoresPaintable(this->gameCanvas->getRealHighScoresPaintable());
     
 
                                     }
@@ -112,12 +118,12 @@ this->gameCanvas.setHighScoresPaintable(this->gameCanvas.getRealHighScoresPainta
                                     }
                                 
                              else 
-                        if(this->gameCanvas.getGameState() == this->gameStateFactory.SHOW_HIGH_SCORE_GAME_STATE)
+                        if(this->gameCanvas->getGameState() == this->gameStateFactory->SHOW_HIGH_SCORE_GAME_STATE)
                         
                                     {
-                                    this->gameCanvas.setGameState(this->gameStateFactory.SHOW_END_RESULT_GAME_STATE);
+                                    this->gameCanvas->setGameState(this->gameStateFactory->SHOW_END_RESULT_GAME_STATE);
     
-this->gameCanvas.setHighScoresPaintable(NullPaintable::getInstance());
+this->gameCanvas->setHighScoresPaintable(NullPaintable::getInstance());
     
 
                                     }

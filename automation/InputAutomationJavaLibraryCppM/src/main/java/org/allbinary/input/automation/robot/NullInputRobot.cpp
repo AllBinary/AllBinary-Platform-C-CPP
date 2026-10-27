@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -58,18 +64,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputRobotInterface.h"
-#include "Point.h"
-#include "Rectangle.h"
-#include "Color.h"
+        #include "org/allbinary/input/automation/robot/InputRobotInterface.h"
+#include "org/allbinary/input/automation/robot/Point.h"
+#include "org/allbinary/input/automation/robot/Rectangle.h"
+#include "org/allbinary/input/automation/robot/Color.h"
 
 class NullInputRobot: public AbstractInputRobot, public InputRobotInterface {
 
-    public: static const std::string LIBRARY_NAME = "null";
+    public: static inline const std::string LIBRARY_NAME = "null";
 
-    public: static const std::string NAME = "NULL";
+    public: static inline const std::string NAME = "NULL";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: NullInputRobot() : AbstractInputRobot(
                             nullptr){
@@ -92,7 +98,7 @@ public: NullInputRobot() : AbstractInputRobot(
 }
 
 
-    public: HelpSet getHelpSet(){
+    public: HelpSet* getHelpSet(){
 
 
 
@@ -102,7 +108,7 @@ public: NullInputRobot() : AbstractInputRobot(
 }
 
 
-    public: Point getMousePoint(){
+    public: Point* getMousePoint(){
 
 
 
@@ -112,37 +118,37 @@ public: NullInputRobot() : AbstractInputRobot(
 }
 
 
-    public: void keyPress(Integer keycode){
-this->logUtil.putF("KeyCode: " +keycode, this, "keyPress");
+    public: void keyPress(int32_t keycode){
+this->logUtil->putF("KeyCode: " +keycode, this, "keyPress");
     
 }
 
 
-    public: void keyRelease(Integer keycode){
-this->logUtil.putF("KeyCode: " +keycode, this, "keyRelease");
+    public: void keyRelease(int32_t keycode){
+this->logUtil->putF("KeyCode: " +keycode, this, "keyRelease");
     
 }
 
 
-    public: void mouseMove(Integer x, Integer y){
-this->logUtil.putF("X: " +x +" Y: " +y, this, "mouseMove");
+    public: void mouseMove(int32_t x, int32_t y){
+this->logUtil->putF("X: " +x +" Y: " +y, this, "mouseMove");
     
 }
 
 
-    public: void mousePress(Integer buttons){
-this->logUtil.putF("Buttons: " +buttons, this, "mousePress");
+    public: void mousePress(int32_t buttons){
+this->logUtil->putF("Buttons: " +buttons, this, "mousePress");
     
 }
 
 
-    public: void mouseRelease(Integer buttons){
-this->logUtil.putF("Buttons: " +buttons, this, "mouseRelease");
+    public: void mouseRelease(int32_t buttons){
+this->logUtil->putF("Buttons: " +buttons, this, "mouseRelease");
     
 }
 
 
-    public: BufferedImage createScreenCapture(Rectangle screenRect){
+    public: BufferedImage* createScreenCapture(Rectangle* screenRect){
 
 
 
@@ -152,11 +158,11 @@ this->logUtil.putF("Buttons: " +buttons, this, "mouseRelease");
 }
 
 
-    public: void delay(Integer ms){
+    public: void delay(int32_t ms){
 }
 
 
-    public: Integer getAutoDelay(){
+    public: int32_t getAutoDelay(){
 
 
 
@@ -166,7 +172,7 @@ this->logUtil.putF("Buttons: " +buttons, this, "mouseRelease");
 }
 
 
-    public: Color getPixelColor(Integer x, Integer y){
+    public: Color* getPixelColor(int32_t x, int32_t y){
 
 
 
@@ -186,11 +192,11 @@ this->logUtil.putF("Buttons: " +buttons, this, "mouseRelease");
 }
 
 
-    public: void mouseWheel(Integer wheelAmt){
+    public: void mouseWheel(int32_t wheelAmt){
 }
 
 
-    public: void setAutoDelay(Integer ms){
+    public: void setAutoDelay(int32_t ms){
 }
 
 

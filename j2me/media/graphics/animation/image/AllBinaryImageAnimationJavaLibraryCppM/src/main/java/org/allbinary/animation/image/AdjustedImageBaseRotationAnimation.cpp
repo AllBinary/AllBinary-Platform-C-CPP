@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -50,7 +56,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageBaseRotationAnimation.h"
+        #include "org/allbinary/animation/image/ImageBaseRotationAnimation.h"
 
 class AdjustedImageBaseRotationAnimation: public ImageBaseRotationAnimation {
 
@@ -58,7 +64,7 @@ class AdjustedImageBaseRotationAnimation: public ImageBaseRotationAnimation {
 
     private: int32_t dy= 0;
 
-public: AdjustedImageBaseRotationAnimation(Image image, AngleInfo angleInfo, int16_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior animationBehavior) : ImageBaseRotationAnimation(image, angleInfo, totalAngle, animationBehavior){
+public: AdjustedImageBaseRotationAnimation(Image* image, AngleInfo* angleInfo, int16_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) : ImageBaseRotationAnimation(image, angleInfo, totalAngle, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -80,7 +86,7 @@ this->dy= dy;
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 super.paintXY(graphics, x +this->dx, y +this->dy);
     
 }

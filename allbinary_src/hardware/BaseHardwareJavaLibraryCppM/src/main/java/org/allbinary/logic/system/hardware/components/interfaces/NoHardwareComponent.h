@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_INTERFACES_NOHARDWARECOMPONENT_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_INTERFACES_NOHARDWARECOMPONENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -44,17 +50,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HardwareComponentInterface.h"
+        #include "org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h"
 
 class NoHardwareComponent
             : public Object
-        : public HardwareComponentInterface {
+        , public HardwareComponentInterface {
 
-    private: static NoHardwareComponent instance() { return NoHardwareComponent(); }
+    private: static NoHardwareComponent* instance() { static std::unique_ptr<NoHardwareComponent> value(new NoHardwareComponent()); return value.get(); }
 
-    public: static NoHardwareComponent getInstance();
+    public: static NoHardwareComponent* getInstance();
 
-    public: bool compareTo(HardwareComponentInterface componentInterface);
+    public: bool compareTo(HardwareComponentInterface* componentInterface);
 
     public: std::string toString();
 

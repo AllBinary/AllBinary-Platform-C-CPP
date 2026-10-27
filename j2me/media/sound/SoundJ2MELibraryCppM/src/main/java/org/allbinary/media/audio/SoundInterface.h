@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_SOUNDINTERFACE_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_SOUNDINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/media/Player.h>
@@ -47,13 +53,13 @@
         
 class SoundInterface {
 
-    std::string getResource();
+    public: virtual std::string getResource() = 0;
 
-    Player getPlayerP();
+    public: virtual Player* getPlayerP() = 0;
 
                 //@Throws(Exception.constructor)
             
-    void init();
+    public: virtual void init() = 0;
 
 };
 

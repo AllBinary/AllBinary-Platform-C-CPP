@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -78,55 +84,55 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CapturedBufferedImagesCacheSingleton.h"
+        #include "org/allbinary/input/media/image/capture/CapturedBufferedImagesCacheSingleton.h"
 
 class CapturedImageInputOutput
             : public Object
-        : public ImageIOInterface {
+        , public ImageIOInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void save(Long frame){
+    public: void save(int64_t frame){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-    BufferedImageFrameCacheable capturedBufferedImageCacheable = ((getInstance).get(frame));;
+    BufferedImageFrameCacheable* capturedBufferedImageCacheable = (dynamic_cast<BufferedImageFrameCacheable*>((getInstance)).get(frame)));;
     
-this->logUtil.putF(("Saving: " +capturedBufferedImageCacheable.toString()), this, commonStrings.SAVE);
+this->logUtil->putF(("Saving: " +capturedBufferedImageCacheable->toString()), this, commonStrings->SAVE);
     
-this->save(capturedBufferedImageCacheable.getBufferedImage(), frame);
+this->save(capturedBufferedImageCacheable->getBufferedImage(), frame);
     
 }
 
 
-    public: void save(BufferedImage bufferedImage, Long frame){
+    public: void save(BufferedImage* bufferedImage, int64_t frame){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
-    
-
-    ImageUtil imageUtil = ImageUtil::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-    StringMaker filePathStringBuffer = StringMaker();;
-    
-filePathStringBuffer.append(ImageOutputData::SAVE_PATH);
-    
-filePathStringBuffer.append(LongUtil::fillIn(frame.toString()));
-    
-filePathStringBuffer.append(MediaDataFactory::getInstance().JPG.getExtension());
+    ImageUtil* imageUtil = ImageUtil::getInstance();;
     
 
-    std::string filePath = filePathStringBuffer.toString();;
+    StringMaker* filePathStringBuffer = new StringMaker();;
     
-this->logUtil.putF(("Image File Path: " +filePath +imageUtil.toString(bufferedImage)), this, commonStrings.SAVE);
+filePathStringBuffer->append(ImageOutputData::SAVE_PATH);
+    
+filePathStringBuffer->append(LongUtil::fillIn(frame.toString()));
+    
+filePathStringBuffer->append(MediaDataFactory::getInstance()->JPG.getExtension());
     
 
-    ImagePersistanceUtil imagePersistanceUtil = ImagePersistanceUtil::getInstance();;
+    std::string filePath = filePathStringBuffer->toString();;
     
-imagePersistanceUtil.saveWithImageIO(filePath, bufferedImage);
+this->logUtil->putF(("Image File Path: " +filePath +imageUtil->toString(bufferedImage)), this, commonStrings->SAVE);
+    
+
+    ImagePersistanceUtil* imagePersistanceUtil = ImagePersistanceUtil::getInstance();;
+    
+imagePersistanceUtil->saveWithImageIO(filePath, bufferedImage);
     
 }
 

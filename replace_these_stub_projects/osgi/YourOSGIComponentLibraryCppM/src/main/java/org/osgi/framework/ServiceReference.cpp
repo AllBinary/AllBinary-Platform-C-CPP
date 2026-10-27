@@ -6,6 +6,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 
 
 
@@ -24,13 +32,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Comparable.h"
+        #include "org/osgi/framework/Comparable.h"
 
 class ServiceReference: public Comparable {
 
-    Object* getProperty(std::string key)
+    public: virtual Object* getProperty(std::string key) = 0;
 
-    std::vector<std::string> getPropertyKeys()
+    public: virtual std::vector<std::string> getPropertyKeys() = 0;
 
 };
 

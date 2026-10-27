@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_SOLARIS_SOLARISOPERATINGSYSTEMFACTORY_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_SOLARIS_SOLARISOPERATINGSYSTEMFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,21 +73,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SolarisOS.h"
+        #include "org/allbinary/logic/system/os/solaris/SolarisOS.h"
 
 class SolarisOperatingSystemFactory
             : public Object
          {
 
-    private: static SolarisOperatingSystemFactory instance() { return SolarisOperatingSystemFactory(); }
+    private: static SolarisOperatingSystemFactory* instance() { static std::unique_ptr<SolarisOperatingSystemFactory> value(new SolarisOperatingSystemFactory()); return value.get(); }
 
-    public: static SolarisOperatingSystemFactory getInstance();
+    public: static SolarisOperatingSystemFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: SolarisOperatingSystemFactory();
 
-    public: GenericOperatingSystem getOperatingSystemInstance();
+    public: GenericOperatingSystem* getOperatingSystemInstance();
 
 };
 

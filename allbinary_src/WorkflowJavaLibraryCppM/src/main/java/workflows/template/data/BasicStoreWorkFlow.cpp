@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -50,11 +56,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicWorkFlow.h"
+        #include "workflows/template/data/BasicWorkFlow.h"
 
 class BasicStoreWorkFlow: public BasicWorkFlow, public StoreWorkFlowInterface {
 
-public: BasicStoreWorkFlow(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext) : BasicWorkFlow(propertiesHashMap, pageContext){
+public: BasicStoreWorkFlow(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : BasicWorkFlow(propertiesHashMap, pageContext){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -71,7 +77,7 @@ public: BasicStoreWorkFlow(HashMap<Object*, Object*> propertiesHashMap, PageCont
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getPropertiesHashMap().get(StoreFrontData::getInstance().NAME);
+                        return this->getPropertiesHashMap()->get(StoreFrontData::getInstance()->NAME);
     
 }
 

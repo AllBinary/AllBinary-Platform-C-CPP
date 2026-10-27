@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/io/path/AbPathData.h>
@@ -44,7 +50,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "FilePathData.h"
+        #include "org/allbinary/logic/io/file/FilePathData.h"
 //Used to correct user input for paths
 class FilePathUtil
             : public Object
@@ -52,28 +58,28 @@ class FilePathUtil
 
     public: static std::string adjust(std::string path){
 
-    AbPathData abPathData = AbPathData::getInstance();;
+    AbPathData* abPathData = AbPathData::getInstance();;
     
 
-    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
+    StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-    FilePathData filePathData = FilePathData::getInstance();;
+    FilePathData* filePathData = FilePathData::getInstance();;
     
 
-                        if(stringValidationUtil.isEmpty(path))
+                        if(stringValidationUtil->isEmpty(path))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return filePathData.PATH_START;
+                        return filePathData->PATH_START;
     
 
                                     }
                                 
-path= path.replace(abPathData.SEPARATORCHAR, filePathData.SEPARATORCHAR);
+path= JavaString::replace(path, abPathData->SEPARATORCHAR, filePathData->SEPARATORCHAR);
     
 
 

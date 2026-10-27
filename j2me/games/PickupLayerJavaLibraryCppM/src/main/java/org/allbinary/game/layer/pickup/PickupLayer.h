@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPLAYER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -77,30 +83,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PickedUpLayerInterface.h"
-#include "PickupableInterface.h"
-#include "CountedPickedUpLayerInterfaceFactory.h"
-#include "PickedUpLayerInterfaceFactoryInterface.h"
+        #include "org/allbinary/game/layer/pickup/PickedUpLayerInterface.h"
+#include "org/allbinary/game/layer/pickup/PickupableInterface.h"
+#include "org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactory.h"
+#include "org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h"
 
 class PickupLayer: public MultiPlayerGameLayer, public PickedUpLayerInterface, public PickupableInterface {
 
-    private: PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
+    private: PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
 
     private: bool destroyed= false;
 
-    private: Animation animationInterface = NullAnimationFactory::getFactoryInstance().getInstance(0);
+    private: Animation* animationInterface = NullAnimationFactory::getFactoryInstance()->getInstance(0);
 
-public: PickupLayer(std::string name, RemoteInfo remoteInfo, int32_t total, PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface, Animation animationInterface, Rectangle rectangle, ViewPositionBase viewPosition);
+public: PickupLayer(std::string name, RemoteInfo* remoteInfo, int32_t total, PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface, Animation* animationInterface, Rectangle* rectangle, ViewPositionBase* viewPosition);
 
-    public: void init(PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface, Animation animationInterface);
+    public: void init(PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface, Animation* animationInterface);
 
     public: void initXYZ(int32_t x, int32_t y, int32_t z);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: void paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics* graphics);
 
-    public: PickedUpLayerInterfaceFactoryInterface getPickedUpLayerInterfaceFactoryInterface();
+    public: PickedUpLayerInterfaceFactoryInterface* getPickedUpLayerInterfaceFactoryInterface();
 
     public: void setPickedUp();
 
@@ -114,7 +120,7 @@ public: PickupLayer(std::string name, RemoteInfo remoteInfo, int32_t total, Pick
 
                 //@Throws(Exception.constructor)
             
-    public: void set(GL gl);
+    public: void set(GL* gl);
 
 };
 

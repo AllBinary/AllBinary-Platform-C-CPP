@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ORDER_ORDERITEMSENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ORDER_ORDERITEMSENTITYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,13 +55,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OrderItemsEntity.h"
+        #include "org/allbinary/data/tables/user/commerce/inventory/order/OrderItemsEntity.h"
 
 class OrderItemsEntityFactory
             : public Object
          {
 
-    public: static OrderItemsEntity getInstance();
+    public: static OrderItemsEntity* getInstance();
 
 private: OrderItemsEntityFactory();
 

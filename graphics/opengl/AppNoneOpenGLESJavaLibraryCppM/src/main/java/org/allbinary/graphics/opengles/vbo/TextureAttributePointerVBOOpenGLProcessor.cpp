@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -47,9 +55,9 @@
         
 class TextureAttributePointerVBOOpenGLProcessor: public ObjectThreedOpenGLProcessor {
 
-    private: static TextureAttributePointerVBOOpenGLProcessor instance() { return TextureAttributePointerVBOOpenGLProcessor(); }
+    private: static TextureAttributePointerVBOOpenGLProcessor* instance() { static std::unique_ptr<TextureAttributePointerVBOOpenGLProcessor> value(new TextureAttributePointerVBOOpenGLProcessor()); return value.get(); }
 
-    public: static TextureAttributePointerVBOOpenGLProcessor getInstance(){
+    public: static TextureAttributePointerVBOOpenGLProcessor* getInstance(){
 
 
 
@@ -63,11 +71,11 @@ public: TextureAttributePointerVBOOpenGLProcessor(){
 }
 
 
-    public: void process(GL10 gl, Object* anyType){
+    public: void process(GL10* gl, Object* anyType){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

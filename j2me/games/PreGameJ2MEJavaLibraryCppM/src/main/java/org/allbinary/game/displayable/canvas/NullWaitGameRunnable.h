@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLWAITGAMERUNNABLE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLWAITGAMERUNNABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,13 +45,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameRunnable.h"
+        #include "org/allbinary/game/displayable/canvas/GameRunnable.h"
 
 class NullWaitGameRunnable: public GameRunnable {
 
-    private: static const GameRunnable instance = NullWaitGameRunnable();
+    private: static inline GameRunnable* instance = new NullWaitGameRunnable();
 
-    public: static GameRunnable getInstance();
+    public: static GameRunnable* getInstance();
 
 };
 

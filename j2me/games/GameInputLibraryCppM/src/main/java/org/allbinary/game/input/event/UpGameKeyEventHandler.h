@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/input/LocalPlayerInputIdFactory.h>
 
       
@@ -47,32 +53,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UpGameKeyEventHandlerBase.h"
+        #include "org/allbinary/game/input/event/UpGameKeyEventHandlerBase.h"
 
 class UpGameKeyEventHandler: public UpGameKeyEventHandlerBase {
 
-    private: static UpGameKeyEventHandler instance() { return UpGameKeyEventHandler(); }
+    private: static UpGameKeyEventHandler* instance() { static std::unique_ptr<UpGameKeyEventHandler> value(new UpGameKeyEventHandler()); return value.get(); }
 
-    private: static const std::vector<UpGameKeyEventHandlerBase> instanceArray = 
+    private: static inline const std::vector<UpGameKeyEventHandlerBase*> instanceArray = 
                                                         {
-                                                            UpGameKeyEventHandlerBase(),UpGameKeyEventHandlerBase(),UpGameKeyEventHandlerBase(),UpGameKeyEventHandlerBase(),UpGameKeyEventHandlerBase(),UpGameKeyEventHandlerBase()
+                                                            new UpGameKeyEventHandlerBase(),new UpGameKeyEventHandlerBase(),new UpGameKeyEventHandlerBase(),new UpGameKeyEventHandlerBase(),new UpGameKeyEventHandlerBase(),new UpGameKeyEventHandlerBase()
                                                         };
 
-    public: static UpGameKeyEventHandler getInstance();
+    public: static UpGameKeyEventHandler* getInstance();
 
-    private: const LocalPlayerInputIdFactory playerInputIdFactory = LocalPlayerInputIdFactory::getInstance();
+    private: LocalPlayerInputIdFactory* playerInputIdFactory = LocalPlayerInputIdFactory::getInstance();
 
-    public: UpGameKeyEventHandlerBase getInstanceForDevice(int32_t deviceId);
+    public: UpGameKeyEventHandlerBase* getInstanceForDevice(int32_t deviceId);
 
-    public: UpGameKeyEventHandlerBase getInstanceForPlayer(int32_t playerInputId);
+    public: UpGameKeyEventHandlerBase* getInstanceForPlayer(int32_t playerInputId);
 
 private: UpGameKeyEventHandler();
 
     public: void removeAllListeners();
 
-    public: void removeListenerSingleThreaded(EventListenerInterface eventListenerInterface);
+    public: void removeListenerSingleThreaded(EventListenerInterface* eventListenerInterface);
 
-    public: void removeListener(EventListenerInterface eventListenerInterface);
+    public: void removeListener(EventListenerInterface* eventListenerInterface);
 
 };
 

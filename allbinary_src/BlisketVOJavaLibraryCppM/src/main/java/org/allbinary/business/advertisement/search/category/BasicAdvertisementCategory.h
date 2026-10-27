@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_CATEGORY_BASICADVERTISEMENTCATEGORY_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_CATEGORY_BASICADVERTISEMENTCATEGORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,11 +47,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdvertisementCategoryInterface.h"
+        #include "org/allbinary/business/advertisement/search/category/AdvertisementCategoryInterface.h"
 
 class BasicAdvertisementCategory
             : public Object
-        : public AdvertisementCategoryInterface {
+        , public AdvertisementCategoryInterface {
 
     private: std::string categoryId;
 

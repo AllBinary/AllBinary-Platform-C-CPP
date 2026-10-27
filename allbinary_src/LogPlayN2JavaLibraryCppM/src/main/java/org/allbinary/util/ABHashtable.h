@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_UTIL_ABHASHTABLE_H
         #define ORG_ALLBINARY_UTIL_ABHASHTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <java/util/Enumeration.h>
 
       
@@ -64,7 +72,7 @@ public: ABHashtable();
 
     public: bool isEmpty();
 
-    public: Enumeration<V> elements();
+    public: Enumeration<V>* elements();
 
     public: bool contains(Object* value);
 

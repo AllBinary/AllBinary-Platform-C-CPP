@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graphics/CellPosition.h>
 
       
@@ -48,9 +54,9 @@
         
 class GeographicMapCellPosition: public CellPosition {
 
-    private: GPoint point;
+    private: GPoint* point;
 
-    private: GPoint midPoint;
+    private: GPoint* midPoint;
 
 public: GeographicMapCellPosition(int32_t column, int32_t row, int32_t columns, int32_t rows, int32_t width, int32_t height) : CellPosition(column, row, columns, rows){
 
@@ -66,16 +72,16 @@ public: GeographicMapCellPosition(int32_t column, int32_t row, int32_t columns, 
     int32_t y = this->getRow() *height;;
     
 
-    PointFactory pointFactory = PointFactory::getInstance();;
+    PointFactory* pointFactory = PointFactory::getInstance();;
     
-this->point= pointFactory.createXY(x, y);
+this->point= pointFactory->createXY(x, y);
     
-this->midPoint= pointFactory.createXY(x +(width>>1), y +(height>>1));
+this->midPoint= pointFactory->createXY(x +(width>>1), y +(height>>1));
     
 }
 
 
-    public: GPoint getPoint(){
+    public: GPoint* getPoint(){
 
 
 
@@ -85,7 +91,7 @@ this->midPoint= pointFactory.createXY(x +(width>>1), y +(height>>1));
 }
 
 
-    public: GPoint getMidPoint(){
+    public: GPoint* getMidPoint(){
 
 
 
@@ -95,7 +101,7 @@ this->midPoint= pointFactory.createXY(x +(width>>1), y +(height>>1));
 }
 
 
-    public: void setMidPoint(GPoint midPoint){
+    public: void setMidPoint(GPoint* midPoint){
 this->midPoint= midPoint;
     
 }

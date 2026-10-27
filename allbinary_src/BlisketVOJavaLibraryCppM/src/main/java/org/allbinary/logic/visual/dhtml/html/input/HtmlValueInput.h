@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLVALUEINPUT_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLVALUEINPUT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/string/StringUtil.h>
 
       
@@ -42,7 +48,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HtmlInput.h"
+        #include "org/allbinary/logic/visual/dhtml/html/input/HtmlInput.h"
 
 class HtmlValueInput: public HtmlInput {
 

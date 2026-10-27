@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -88,9 +96,9 @@
         
 class TestInputAutomationCaptureWorker: public AbstractInputAutomationWorker {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: GenericProfileActions genericProfileActions;
+    private: GenericProfileActions* genericProfileActions;
 
     private: const std::string MESSAGE = "GenericInputAutomationCaptureWorker";
 
@@ -100,7 +108,7 @@ class TestInputAutomationCaptureWorker: public AbstractInputAutomationWorker {
 
     private: const std::string IMAGE_NOT_AVAILABLE = "Image Not Available";
 
-public: TestInputAutomationCaptureWorker(InputAutomationActionInterface inputAutomationActionInterface, GenericProfileActions genericProfileActions, ImageComparatorConstraintsInterface imageComparatorConstraintsInterface, MotionRectangleConstraintsInterface motionRectangleConstraintsInterface);
+public: TestInputAutomationCaptureWorker(InputAutomationActionInterface* inputAutomationActionInterface, GenericProfileActions* genericProfileActions, ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface, MotionRectangleConstraintsInterface* motionRectangleConstraintsInterface);
 
                 //@Throws(Exception.constructor)
             
@@ -110,9 +118,9 @@ public: TestInputAutomationCaptureWorker(InputAutomationActionInterface inputAut
             
     public: void process();
 
-    public: GenericProfileActions getGenericProfileActions();
+    public: GenericProfileActions* getGenericProfileActions();
 
-    public: void setGenericProfileActions(GenericProfileActions genericProfileActions);
+    public: void setGenericProfileActions(GenericProfileActions* genericProfileActions);
 
 };
 

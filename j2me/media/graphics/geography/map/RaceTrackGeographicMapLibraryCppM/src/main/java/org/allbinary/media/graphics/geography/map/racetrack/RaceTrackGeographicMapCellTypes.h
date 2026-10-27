@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPCELLTYPES_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPCELLTYPES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,31 +47,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RaceTrackGeographicMapCellType.h"
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellType.h"
 
 class RaceTrackGeographicMapCellTypes
             : public Object
          {
 
-    private: static RaceTrackGeographicMapCellTypes instance() { return RaceTrackGeographicMapCellTypes(); }
+    private: static RaceTrackGeographicMapCellTypes* instance() { static std::unique_ptr<RaceTrackGeographicMapCellTypes> value(new RaceTrackGeographicMapCellTypes()); return value.get(); }
 
-    public: static RaceTrackGeographicMapCellTypes getInstance();
+    public: static RaceTrackGeographicMapCellTypes* getInstance();
 
-    public: RaceTrackGeographicMapCellType BOTTOM_LEFT_TURN_ROAD_CELL_TYPE;
+    public: RaceTrackGeographicMapCellType* BOTTOM_LEFT_TURN_ROAD_CELL_TYPE;
 
-    public: RaceTrackGeographicMapCellType BOTTOM_RIGHT_TURN_ROAD_CELL_TYPE;
+    public: RaceTrackGeographicMapCellType* BOTTOM_RIGHT_TURN_ROAD_CELL_TYPE;
 
-    public: RaceTrackGeographicMapCellType TOP_LEFT_TURN_ROAD_CELL_TYPE;
+    public: RaceTrackGeographicMapCellType* TOP_LEFT_TURN_ROAD_CELL_TYPE;
 
-    public: RaceTrackGeographicMapCellType TOP_RIGHT_TURN_ROAD_CELL_TYPE;
+    public: RaceTrackGeographicMapCellType* TOP_RIGHT_TURN_ROAD_CELL_TYPE;
 
-    public: RaceTrackGeographicMapCellType HORIZONTAL_STRAIGHT_ROAD_CELL_TYPE;
+    public: RaceTrackGeographicMapCellType* HORIZONTAL_STRAIGHT_ROAD_CELL_TYPE;
 
-    public: RaceTrackGeographicMapCellType VERTICAL_STRAIGHT_ROAD_CELL_TYPE;
+    public: RaceTrackGeographicMapCellType* VERTICAL_STRAIGHT_ROAD_CELL_TYPE;
 
-    public: RaceTrackGeographicMapCellType START_LINE_ROAD_CELL_TYPE;
+    public: RaceTrackGeographicMapCellType* START_LINE_ROAD_CELL_TYPE;
 
-    public: RaceTrackGeographicMapCellType DEFAULT_FINISH_LINE_ROAD_CELL_TYPE;
+    public: RaceTrackGeographicMapCellType* DEFAULT_FINISH_LINE_ROAD_CELL_TYPE;
 
 public: RaceTrackGeographicMapCellTypes();
 

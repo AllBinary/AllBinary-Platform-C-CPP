@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_XSLHELPER_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_XSLHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -84,39 +90,39 @@ class XslHelper
             : public Object
          {
 
-    private: static XslHelper instance() { return XslHelper(); }
+    private: static XslHelper* instance() { static std::unique_ptr<XslHelper> value(new XslHelper()); return value.get(); }
 
-    public: static XslHelper getInstance();
+    public: static XslHelper* getInstance();
 
 private: XslHelper();
 
                 //@Throws(Exception.constructor)
             
-    public: OutputStream translate(StreamSource xsltStreamSource, StreamSource xmlStreamSource, StreamResult streamResult);
+    public: OutputStream* translate(StreamSource* xsltStreamSource, StreamSource* xmlStreamSource, StreamResult* streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public: OutputStream translate(URIResolver resolver, StreamSource xsltStreamSource, StreamSource xmlStreamSource, StreamResult streamResult);
+    public: OutputStream* translate(URIResolver* resolver, StreamSource* xsltStreamSource, StreamSource* xmlStreamSource, StreamResult* streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string translateTemplate(Templates templates, StreamSource xmlStreamSource);
+    public: std::string translateTemplate(Templates* templates, StreamSource* xmlStreamSource);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string translate(StreamSource xsltStreamSource, Document xmlDocument);
+    public: std::string translate(StreamSource* xsltStreamSource, Document* xmlDocument);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string translate(StreamSource xsltStreamSource, StreamSource xmlStreamSource);
+    public: std::string translate(StreamSource* xsltStreamSource, StreamSource* xmlStreamSource);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string translate(URIResolver resolver, StreamSource xsltStreamSource, StreamSource xmlStreamSource);
+    public: std::string translate(URIResolver* resolver, StreamSource* xsltStreamSource, StreamSource* xmlStreamSource);
 
                 //@Throws(Exception.constructor)
             
-    public: void export(File outputFile, std::string xsltFilePath, Document xmlDocument);
+    public: void export_(File* outputFile, std::string xsltFilePath, Document* xmlDocument);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,30 +70,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionRectanglesResultsListener.h"
-#include "MotionRectanglesResultsEvent.h"
-#include "MotionRectangles.h"
-#include "MotionRectanglesImageInputOutput.h"
+        #include "org/allbinary/media/image/comparison/motion/MotionRectanglesResultsListener.h"
+#include "org/allbinary/media/image/comparison/motion/MotionRectanglesResultsEvent.h"
+#include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
+#include "org/allbinary/media/image/comparison/motion/MotionRectanglesImageInputOutput.h"
 
 class SaveMotionRectanglesResultsWorker
             : public Object
-        : public MotionRectanglesResultsListener {
+        , public MotionRectanglesResultsListener {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: bool running= false;
 
-    private: BasicArrayList motionRectanglesVector;
+    private: BasicArrayList* motionRectanglesVector;
 
 public: SaveMotionRectanglesResultsWorker(){
-this->motionRectanglesVector= BasicArrayListD();
+this->motionRectanglesVector= new BasicArrayListD();
     
 }
 
 
-    public: BasicArrayList getMotionRectanglesVector(){
+    public: BasicArrayList* getMotionRectanglesVector(){
 
 
 
@@ -97,16 +103,16 @@ this->motionRectanglesVector= BasicArrayListD();
 }
 
 
-    public: void onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent motionRectanglesResultsEvent){
-this->getMotionRectanglesVector().add(motionRectanglesResultsEvent);
+    public: void onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent* motionRectanglesResultsEvent){
+this->getMotionRectanglesVector()->add(motionRectanglesResultsEvent);
     
 this->run();
     
 }
 
 
-    public: void onEvent(AllBinaryEventObject allBinaryEventObject){
-this->onMotionRectanglesImageComparisonResultsEvent(allBinaryEventObject);
+    public: void onEvent(AllBinaryEventObject* allBinaryEventObject){
+this->onMotionRectanglesImageComparisonResultsEvent(dynamic_cast<MotionRectanglesResultsEvent*>(allBinaryEventObject));
     
 }
 
@@ -132,34 +138,34 @@ this->running= running;
     public: void run(){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.RUN);
+            this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->RUN);
     
 this->setRunning(true);
     
 
-    TimeDelayHelper timeHelper = TimeDelayHelper(1000);;
+    TimeDelayHelper* timeHelper = new TimeDelayHelper(1000);;
     
-timeHelper.setStartTimeTNT();
-    
-
-    MotionRectanglesResultsEvent motionRectanglesResultsEvent = this->getMotionRectanglesVector().get(0);;
+timeHelper->setStartTimeTNT();
     
 
-    MotionRectangles motionRectangles = motionRectanglesResultsEvent.getMotionRectangles();;
+    MotionRectanglesResultsEvent* motionRectanglesResultsEvent = dynamic_cast<MotionRectanglesResultsEvent*>(this->getMotionRectanglesVector()->get(0));;
     
-MotionRectanglesImageInputOutput().save(motionRectangles, motionRectanglesResultsEvent.getFrame());
+
+    MotionRectangles* motionRectangles = motionRectanglesResultsEvent->getMotionRectangles();;
     
-this->getMotionRectanglesVector().remove(motionRectangles);
+(new MotionRectanglesImageInputOutput())->save(motionRectangles, motionRectanglesResultsEvent->getFrame());
     
-this->logUtil.putF(CommonLabels::getInstance().ELAPSED +timeHelper.getElapsedTNT(), this, this->commonStrings.RUN);
+this->getMotionRectanglesVector()->remove(motionRectangles);
     
-this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.RUN);
+this->logUtil->putF(CommonLabels::getInstance()->ELAPSED +timeHelper->getElapsedTNT(), this, this->commonStrings->RUN);
+    
+this->logUtil->putF(this->commonStrings->END, this, this->commonStrings->RUN);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RUN, &e);
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -104,27 +110,27 @@ class InputAutomationModuleConfiguration
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: std::string className;
 
     private: std::string name;
 
-    private: InputAutomationModuleFactoryInterface inputAutomationModuleInterface;
+    private: InputAutomationModuleFactoryInterface* inputAutomationModuleInterface;
 
 public: InputAutomationModuleConfiguration(){
 }
 
 
-public: InputAutomationModuleConfiguration(AbeClientInformationInterface abeClientInformation, Node node){
+public: InputAutomationModuleConfiguration(AbeClientInformationInterface* abeClientInformation, Node* node){
 this->init(abeClientInformation, node);
     
 }
 
 
-public: InputAutomationModuleConfiguration(AbeClientInformationInterface abeClientInformation, std::string name, std::string className){
+public: InputAutomationModuleConfiguration(AbeClientInformationInterface* abeClientInformation, std::string name, std::string className){
 this->setName(name);
     
 this->setClassName(className);
@@ -134,19 +140,19 @@ this->init(abeClientInformation);
 }
 
 
-public: InputAutomationModuleConfiguration(InputAutomationModuleFactoryInterface inputAutomationModuleInterface){
+public: InputAutomationModuleConfiguration(InputAutomationModuleFactoryInterface* inputAutomationModuleInterface){
 this->setInputAutomationModuleInterface(inputAutomationModuleInterface);
     
-this->setClassName(this->inputAutomationModuleInterface.constructor.name.toString());
+this->setClassName(this->inputAutomationModuleInterface->getClass()->getName());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void init(AbeClientInformationInterface abeClientInformation, Node node){
+    public: void init(AbeClientInformationInterface* abeClientInformation, Node* node){
 
-    NodeList nodeList = node.getChildNodes();;
+    NodeList* nodeList = node->getChildNodes();;
     
 
                         if(nodeList != 
@@ -155,7 +161,7 @@ this->setClassName(this->inputAutomationModuleInterface.constructor.name.toStrin
                         
                                     {
                                     
-    Node classNameNode = DomSearchHelper::getNode(DynamicObjectData::NAME, nodeList);;
+    Node* classNameNode = DomSearchHelper::getNode(DynamicObjectData::NAME, nodeList);;
     
 
                         if(classNameNode != 
@@ -171,7 +177,7 @@ this->init(abeClientInformation);
                                     }
                                 
                         else {
-                            this->logUtil.putF("Class Node Null", this, this->commonStrings.INIT);
+                            this->logUtil->putF("Class Node Null", this, this->commonStrings->INIT);
     
 
                         }
@@ -180,7 +186,7 @@ this->init(abeClientInformation);
                                     }
                                 
                         else {
-                            this->logUtil.putF(InputAutomationData::NAME +" Node Has No Children", this, "Contructor");
+                            this->logUtil->putF(InputAutomationData::NAME +" Node Has No Children", this, "Contructor");
     
 
                         }
@@ -188,25 +194,25 @@ this->init(abeClientInformation);
 }
 
 
-    public: void init(AbeClientInformationInterface abeClientInformation){
+    public: void init(AbeClientInformationInterface* abeClientInformation){
 
         try {
-            this->logUtil.putF("Name: " +getName(), this, this->commonStrings.INIT);
+            this->logUtil->putF("Name: " +getName(), this, this->commonStrings->INIT);
     
-this->logUtil.putF("ClassName: " +className, this, this->commonStrings.INIT);
+this->logUtil->putF("ClassName: " +className, this, this->commonStrings->INIT);
     
-this->setInputAutomationModuleInterface(AbeFactory::getInstance().getInstance().getInstance(abeClientInformation, getClassName()));
+this->setInputAutomationModuleInterface(dynamic_cast<InputAutomationModuleFactoryInterface*>(AbeFactory::getInstance()->getInstance()->getInstance(abeClientInformation, getClassName())));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(commonStrings.EXCEPTION, this, this->commonStrings.INIT, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, this->commonStrings->INIT, &e);
     
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -215,14 +221,14 @@ this->logUtil.put(commonStrings.EXCEPTION, this, this->commonStrings.INIT, e);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toDomNode(Document document){
+    public: Node* toDomNode(Document* document){
 
-    Node node = document.createElement(InputAutomationModuleData::NAME);;
+    Node* node = document->createElement(InputAutomationModuleData::NAME);;
     
 
-    Node classNameNode = ModDomHelper::createTextNode(document, DynamicObjectData::NAME, this->getClassName());;
+    Node* classNameNode = ModDomHelper::createTextNode(document, DynamicObjectData::NAME, this->getClassName());;
     
-node.appendChild(classNameNode);
+node->appendChild(classNameNode);
     
 
 
@@ -244,7 +250,7 @@ node.appendChild(classNameNode);
 
 
     public: void setName(std::string name){
-this->logUtil.putF("Name: " +name, this, "setName");
+this->logUtil->putF("Name: " +name, this, "setName");
     
 this->name= name;
     
@@ -262,14 +268,14 @@ this->name= name;
 
 
     public: void setClassName(std::string className){
-this->logUtil.putF("ClassName : " +className, this, "setClassName");
+this->logUtil->putF("ClassName : " +className, this, "setClassName");
     
 this->className= className;
     
 }
 
 
-    public: InputAutomationModuleFactoryInterface getInputAutomationModuleInterface(){
+    public: InputAutomationModuleFactoryInterface* getInputAutomationModuleInterface(){
 
 
 
@@ -279,12 +285,12 @@ this->className= className;
 }
 
 
-    public: void setInputAutomationModuleInterface(InputAutomationModuleFactoryInterface inputAutomationModuleInterface){
-this->logUtil.putF("InputAutomationModuleFactoryInterface : " +inputAutomationModuleInterface, this, "setInputAutomationModuleInterface");
+    public: void setInputAutomationModuleInterface(InputAutomationModuleFactoryInterface* inputAutomationModuleInterface){
+this->logUtil->putF("InputAutomationModuleFactoryInterface : " +inputAutomationModuleInterface, this, "setInputAutomationModuleInterface");
     
 this->inputAutomationModuleInterface= inputAutomationModuleInterface;
     
-this->setName(this->inputAutomationModuleInterface.getName());
+this->setName(this->inputAutomationModuleInterface->getName());
     
 }
 

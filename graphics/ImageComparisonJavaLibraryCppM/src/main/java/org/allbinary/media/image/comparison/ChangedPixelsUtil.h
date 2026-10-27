@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -74,25 +80,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageComparisonResult.h"
+        #include "org/allbinary/media/image/comparison/ImageComparisonResult.h"
 
 class ChangedPixelsUtil
             : public Object
          {
 
-    private: static const int32_t START_X = 0;
+    private: static inline const int32_t START_X = 0;
 
-    private: static const int32_t START_Y = 0;
+    private: static inline const int32_t START_Y = 0;
 
-    private: static const int32_t OFFSET = 0;
+    private: static inline const int32_t OFFSET = 0;
 
-    private: static const int32_t SCAN_SIZE = 0;
+    private: static inline const int32_t SCAN_SIZE = 0;
 
-    private: static const std::vector<int32_t> CLEAR_INT_ARRAY = std::vector<int32_t>(1800 *1600);
+    private: static inline const std::vector<int32_t> CLEAR_INT_ARRAY = std::vector<int32_t>(1800 *1600);
 
                 //@Throws(Exception.constructor)
             
-    public: static std::vector<BufferedImageCacheable> generateBufferedImageChacheables(ImageComparisonResult imageComparisonInfo);
+    public: static std::vector<BufferedImageCacheable*> generateBufferedImageChacheables(ImageComparisonResult* imageComparisonInfo);
 
 private: ChangedPixelsUtil();
 

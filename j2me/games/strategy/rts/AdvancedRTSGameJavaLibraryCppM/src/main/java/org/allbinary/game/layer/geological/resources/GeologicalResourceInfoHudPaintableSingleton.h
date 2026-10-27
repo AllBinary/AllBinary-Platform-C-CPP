@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALRESOURCEINFOHUDPAINTABLESINGLETON_H
         #define ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALRESOURCEINFOHUDPAINTABLESINGLETON_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,15 +47,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeologicalResourceInfoHudPaintable.h"
+        #include "org/allbinary/game/layer/geological/resources/GeologicalResourceInfoHudPaintable.h"
 
 class GeologicalResourceInfoHudPaintableSingleton
             : public Object
          {
 
-    private: static GeologicalResourceInfoHudPaintable instance() { return GeologicalResourceInfoHudPaintable(); }
+    private: static GeologicalResourceInfoHudPaintable* instance() { static std::unique_ptr<GeologicalResourceInfoHudPaintable> value(new GeologicalResourceInfoHudPaintable()); return value.get(); }
 
-    public: static GeologicalResourceInfoHudPaintable getInstance();
+    public: static GeologicalResourceInfoHudPaintable* getInstance();
 
 };
 

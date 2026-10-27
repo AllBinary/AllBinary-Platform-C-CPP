@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/ai/ArtificialIntelligence.h>
@@ -73,15 +79,15 @@
         
 class SequenceAI: public ArrayAI {
 
-    private: static const std::string SEQUENCE_AI = "Sequence AI";
+    private: static inline const std::string SEQUENCE_AI = "Sequence AI";
 
     private: int32_t index= 0;
 
-public: SequenceAI(std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterfaceArray, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: SequenceAI(std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterfaceArray, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager);
 
     public: void next();
 
@@ -89,7 +95,7 @@ public: SequenceAI(std::vector<ArtificialIntelligenceInterface> artificialIntell
 
     public: void setIndex(int32_t index);
 
-    public: ArtificialIntelligenceInterface getSelectedArtificialIntelligenceInterface();
+    public: ArtificialIntelligenceInterface* getSelectedArtificialIntelligenceInterface();
 
     public: std::string getName();
 

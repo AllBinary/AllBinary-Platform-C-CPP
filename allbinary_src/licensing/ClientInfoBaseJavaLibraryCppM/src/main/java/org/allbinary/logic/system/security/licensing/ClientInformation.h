@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_CLIENTINFORMATION_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_CLIENTINFORMATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/TsUtil.h>
@@ -77,16 +83,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbeClientInformationInterface.h"
-#include "AbeClientInformationData.h"
+        #include "org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h"
+#include "org/allbinary/logic/system/security/licensing/AbeClientInformationData.h"
 // This is the information sent to the license server
 class ClientInformation
             : public Object
-        : public AbeClientInformationInterface {
+        , public AbeClientInformationInterface {
 
-    private: GenericOperatingSystem operatingSystemInterface = NoOperatingSystem::NO_OPERATING_SYSTEM;
+    private: GenericOperatingSystem* operatingSystemInterface = NoOperatingSystem::NO_OPERATING_SYSTEM;
 
-    private: const TsUtil tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil = TsUtil::getInstance();
 
     private: std::string name;
 
@@ -98,15 +104,15 @@ class ClientInformation
 
     private: bool hardSale = true;
 
-    private: std::string licenseId = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string licenseId = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: BasicArrayList licenseServers = BasicArrayListUtil::getInstance().getImmutableInstance();
+    private: BasicArrayList* licenseServers = BasicArrayListUtil::getInstance()->getImmutableInstance();
 
 public: ClientInformation(std::string name, std::string version, std::string specialName, std::string shortName);
 
     public: void init();
 
-    public: GenericOperatingSystem getOperatingSystemInterface();
+    public: GenericOperatingSystem* getOperatingSystemInterface();
 
     public: std::string getName();
 
@@ -116,27 +122,27 @@ public: ClientInformation(std::string name, std::string version, std::string spe
 
     public: std::string getLicenseId();
 
-    public: BasicArrayList getLicenseServers();
+    public: BasicArrayList* getLicenseServers();
 
     public: std::string getLicenseServer(int32_t index);
 
     public: int32_t getNumberOfLicenseServers();
 
-    public: ABHashtable<Object*, Object*> toHashtable();
+    public: ABHashtable<Object*, Object*>* toHashtable();
 
     public: bool isSameId(std::string alicenseId);
 
-    public: bool isLargerOrDifferentServerList(BasicArrayList list);
+    public: bool isLargerOrDifferentServerList(BasicArrayList* list);
 
     protected: void setHardSale(bool hardSale);
 
     public: bool isHardSale();
 
-    protected: void setOperatingSystemInterface(GenericOperatingSystem operatingSystemInterface);
+    protected: void setOperatingSystemInterface(GenericOperatingSystem* operatingSystemInterface);
 
     protected: void setLicenseId(std::string licenseId);
 
-    protected: void setLicenseServers(BasicArrayList licenseServers);
+    protected: void setLicenseServers(BasicArrayList* licenseServers);
 
     public: std::string toShortString();
 

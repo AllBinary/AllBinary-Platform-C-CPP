@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_QUOTEREQUEST_QUOTEREQUESTENTITYINTERFACE_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_QUOTEREQUEST_QUOTEREQUESTENTITYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -61,15 +67,15 @@ class QuoteRequestEntityInterface: public BasicDataTableInterface {
 
                 //@Throws(Exception.constructor)
             
-    QuoteRequest get(std::string userName, int32_t id);
+    public: virtual QuoteRequest* get(std::string userName, int32_t id) = 0;
 
-    BasicArrayList getIds(std::string userName);
+    public: virtual BasicArrayList* getIds(std::string userName) = 0;
 
-    void deleteWhere(std::string key, std::string value);
+    public: virtual void deleteWhere(std::string key, std::string value) = 0;
 
-    void insert(BasicArrayList values);
+    public: virtual void insert(BasicArrayList* values) = 0;
 
-    void update(std::string userName, HashMap<Object*, Object*> updatedValues);
+    public: virtual void update(std::string userName, HashMap<Object*, Object*>* updatedValues) = 0;
 
 };
 

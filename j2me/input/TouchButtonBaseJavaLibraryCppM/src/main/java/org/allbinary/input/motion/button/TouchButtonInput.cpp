@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/GameKey.h>
@@ -68,13 +74,13 @@
         
 class TouchButtonInput: public Input, public GameKeyEventSourceInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const GameKeyEventFactory gameKeyEventFactory = GameKeyEventFactory::getInstance();
+    private: GameKeyEventFactory* gameKeyEventFactory = GameKeyEventFactory::getInstance();
 
-    private: const int32_t TOUCH_BUTTON_SOURCE_ID = this->gameKeyEventFactory.TOUCH_BUTTON_SOURCE_ID;
+    private: const int32_t TOUCH_BUTTON_SOURCE_ID = this->gameKeyEventFactory->TOUCH_BUTTON_SOURCE_ID;
 
-    private: GameKeyEvent gameKeyEvent = GameKeyEvent::NONE;
+    private: GameKeyEvent* gameKeyEvent = GameKeyEvent::NONE;
 
 public: TouchButtonInput(int32_t id, std::string name) : Input(id, name){
 
@@ -84,29 +90,29 @@ public: TouchButtonInput(int32_t id, std::string name) : Input(id, name){
                             //For kotlin this is before the body of the constructor.
                     
 
-    InputFactory inputFactory = InputFactory::getInstance();;
+    InputFactory* inputFactory = InputFactory::getInstance();;
     
-inputFactory.add(this->getId(), this);
+inputFactory->add(this->getId(), this);
     
 }
 
 
-    public: void update(InputToGameKeyMapping inputToGameKeyMapping){
+    public: void update(InputToGameKeyMapping* inputToGameKeyMapping){
 
         try {
             
-    GameKey gameKey = inputToGameKeyMapping.getInstance(this->getId());;
+    GameKey* gameKey = inputToGameKeyMapping->getInstance(this->getId());;
     
-this->gameKeyEvent= this->gameKeyEventFactory.getInstanceForInput(this, gameKey);
+this->gameKeyEvent= this->gameKeyEventFactory->getInstanceForInput(this, gameKey);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.UPDATE, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->UPDATE, &e);
     
 }
 
@@ -123,7 +129,7 @@ this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.UPDATE, e);
 }
 
 
-    public: GameKeyEvent getGameKeyEvent(){
+    public: GameKeyEvent* getGameKeyEvent(){
 
 
 

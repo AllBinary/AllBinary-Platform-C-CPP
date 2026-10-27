@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_MODIFIERBASEPROCESSOR_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_MODIFIERBASEPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -55,13 +61,13 @@ class ModifierBaseProcessor
             : public Object
          {
 
-    private: static ModifierBaseProcessor instance() { return ModifierBaseProcessor(); }
+    private: static ModifierBaseProcessor* instance() { static std::unique_ptr<ModifierBaseProcessor> value(new ModifierBaseProcessor()); return value.get(); }
 
-    public: static ModifierBaseProcessor getInstance();
+    public: static ModifierBaseProcessor* getInstance();
 
-    public: void updateColor(ImageModifierUtil imageModifierUtil, Image originalImage, Image imageToShow, int32_t index, BasicColor basicColor);
+    public: void updateColor(ImageModifierUtil* imageModifierUtil, Image* originalImage, Image* imageToShow, int32_t index, BasicColor* basicColor);
 
-    public: void updateAlpha(ImageModifierUtil imageModifierUtil, Image originalImage, Image imageToShow, int32_t index, int32_t alpha);
+    public: void updateAlpha(ImageModifierUtil* imageModifierUtil, Image* originalImage, Image* imageToShow, int32_t index, int32_t alpha);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -103,31 +109,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        //#include "SetAndRemoveProcessor.h"
-//#include "NextUnremoveableProcessor.h"
+        //#include "org/allbinary/game/ag/layer/hud/basic/SetAndRemoveProcessor.h"
+//#include "org/allbinary/game/ag/layer/hud/basic/NextUnremoveableProcessor.h"
 
 class PlayerGameNotificationHud: public GameNotificationHud, public UpdateMyFontInterface {
 
-    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
+    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-    private: const std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;
+    private: const std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();
 
-    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(0);
+    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(0);
 
-    private: CircularIndexUtil circularIndexUtil;
+    private: CircularIndexUtil* circularIndexUtil;
 
-    private: const GameNotification gameNotification = GameNotification();
+    private: GameNotification* gameNotification = new GameNotification();
 
-    private: const GameNotification permanentGameNotification = GameNotification();
+    private: GameNotification* permanentGameNotification = new GameNotification();
 
 //inner= member=true isStatic=
 class SetAndRemoveProcessor: public Processor {
 
-    private: PlayerGameNotificationHud updateMeasurementProcessor;
+    private: PlayerGameNotificationHud* updateMeasurementProcessor;
 
-public: SetAndRemoveProcessor(PlayerGameNotificationHud updateMeasurementProcessor){
+public: SetAndRemoveProcessor(PlayerGameNotificationHud* updateMeasurementProcessor){
 this->updateMeasurementProcessor= updateMeasurementProcessor;
     
 }
@@ -136,7 +142,7 @@ this->updateMeasurementProcessor= updateMeasurementProcessor;
                 //@Throws(Exception.constructor)
             
     public: void process(){
-this->updateMeasurementProcessor.setAndRemoveProcess();
+this->updateMeasurementProcessor->setAndRemoveProcess();
     
 }
 
@@ -147,9 +153,9 @@ this->updateMeasurementProcessor.setAndRemoveProcess();
 //inner= member=true isStatic=
 class NextUnremoveableProcessor: public Processor {
 
-    private: PlayerGameNotificationHud updateMeasurementProcessor;
+    private: PlayerGameNotificationHud* updateMeasurementProcessor;
 
-public: NextUnremoveableProcessor(PlayerGameNotificationHud updateMeasurementProcessor){
+public: NextUnremoveableProcessor(PlayerGameNotificationHud* updateMeasurementProcessor){
 this->updateMeasurementProcessor= updateMeasurementProcessor;
     
 }
@@ -158,7 +164,7 @@ this->updateMeasurementProcessor= updateMeasurementProcessor;
                 //@Throws(Exception.constructor)
             
     public: void process(){
-this->updateMeasurementProcessor.setNextUnremoveableProcess();
+this->updateMeasurementProcessor->setNextUnremoveableProcess();
     
 }
 
@@ -166,23 +172,23 @@ this->updateMeasurementProcessor.setNextUnremoveableProcess();
 };
 
             
-    private: const Processor setAndRemoveProcessor = SetAndRemoveProcessor(this);
+    private: Processor* setAndRemoveProcessor = new SetAndRemoveProcessor(this);
 
-    private: const Processor nextUnremoveableProcessor = NextUnremoveableProcessor(this);
+    private: Processor* nextUnremoveableProcessor = new NextUnremoveableProcessor(this);
 
-    private: Processor processor = Processor::getInstance();
+    private: Processor* processor = Processor::getInstance();
 
     private: const std::string PERMANENT_GAME_NOTIFICATION = "Permanent Game Notification: ";
 
-    private: std::string lastString = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string lastString = StringUtil::getInstance()->EMPTY_STRING;
 
     private: std::string string = this->EMPTY_STRING;
 
-    private: CustomGPoint point = CustomGPoint::NULL_CUSTOM_POINT;
+    private: CustomGPoint* point = CustomGPoint::NULL_CUSTOM_POINT;
 
     private: int32_t width= 0;
 
-public: PlayerGameNotificationHud(int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor) : GameNotificationHud(location, direction, bufferZone, basicColor){
+public: PlayerGameNotificationHud(int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor) : GameNotificationHud(location, direction, bufferZone, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -192,52 +198,52 @@ public: PlayerGameNotificationHud(int32_t location, int32_t direction, int32_t b
 this->circularIndexUtil= CircularIndexUtil::createInstance(0);
     
 
-    GameNotificationEventHandler gameNotificationEventHandler = GameNotificationEventHandler::getInstance();;
+    GameNotificationEventHandler* gameNotificationEventHandler = GameNotificationEventHandler::getInstance();;
     
-gameNotificationEventHandler.removeAllListeners();
+gameNotificationEventHandler->removeAllListeners();
     
-gameNotificationEventHandler.addListenerInterface(this);
+gameNotificationEventHandler->addListenerInterface(this);
     
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
         try {
             super.updateMeasurement(graphics);
     
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->width= font.stringWidth(this->string);
+this->width= font->stringWidth(this->string);
     
-this->processor.process();
+this->processor->process();
     
 this->processor= Processor::getInstance();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil.put(commonStrings.EXCEPTION, this, commonStrings.UPDATE, e);
+logUtil->put(commonStrings->EXCEPTION, this, commonStrings->UPDATE, &e);
     
 }
 
 }
 
 
-    protected: GPoint getPoint(int32_t x, int32_t y){
+    protected: GPoint* getPoint(int32_t x, int32_t y){
 this->point= CustomGPoint::getInstance3(0, 0);
     
-this->point.setX(x);
+this->point->setX(x);
     
-this->point.setY(y);
+this->point->setY(y);
     
 
 
@@ -248,7 +254,7 @@ this->point.setY(y);
 }
 
 
-    protected: void add(std::string string, Integer seconds, BasicColor basicColor, Boolean permanent){
+    protected: void add(std::string string, int32_t seconds, BasicColor* basicColor, bool permanent){
 
                         if(permanent.valueOf())
                         
@@ -259,20 +265,20 @@ this->point.setY(y);
                                     {
                                     this->lastString= string;
     
-this->logUtil.putF(StringMaker().append(this->PERMANENT_GAME_NOTIFICATION).append(string).toString(), this, this->commonStrings.ADD);
+this->logUtil->putF((new StringMaker())->append(this->PERMANENT_GAME_NOTIFICATION)->append(string)->toString(), this, this->commonStrings->ADD);
     
 
                                     }
                                 
-this->permanentGameNotification.add(string, seconds, basicColor);
+this->permanentGameNotification->add(string, seconds, basicColor);
     
-this->circularIndexUtil.setSize(this->permanentGameNotification.getSize());
+this->circularIndexUtil->setSize(this->permanentGameNotification->getSize());
     
 
                                     }
                                 
                         else {
-                            this->gameNotification.add(string, seconds, basicColor);
+                            this->gameNotification->add(string, seconds, basicColor);
     
 
                         }
@@ -284,14 +290,14 @@ this->circularIndexUtil.setSize(this->permanentGameNotification.getSize());
             
     public: void processTick(){
 
-                        if(this->timeDelayHelper.isTime(this->gameTickTimeDelayHelper.startTime))
+                        if(this->timeDelayHelper->isTime(this->gameTickTimeDelayHelper->startTime))
                         
                                     {
                                     
-    GameAdState gameAdState = GameAdStateFactory::getInstance().getCurrentInstance();;
+    GameAdState* gameAdState = GameAdStateFactory::getInstance()->getCurrentInstance();;
     
 
-                        if(gameAdState.isShowingAtLocation(this->getLocation()))
+                        if(gameAdState->isShowingAtLocation(this->getLocation()))
                         
                                     {
                                     this->offsetY=  -54;
@@ -306,7 +312,7 @@ this->circularIndexUtil.setSize(this->permanentGameNotification.getSize());
                         }
                             
 
-                        if(this->gameNotification.getSize() > 0)
+                        if(this->gameNotification->getSize() > 0)
                         
                                     {
                                     this->setAndRemove();
@@ -315,7 +321,7 @@ this->circularIndexUtil.setSize(this->permanentGameNotification.getSize());
                                     }
                                 
                              else 
-                        if(this->permanentGameNotification.getSize() > 0)
+                        if(this->permanentGameNotification->getSize() > 0)
                         
                                     {
                                     this->setNextUnremoveable();
@@ -338,7 +344,7 @@ this->circularIndexUtil.setSize(this->permanentGameNotification.getSize());
                 //@Throws(Exception.constructor)
             
     private: void setAndRemove(){
-this->string= this->gameNotification.stringList.removeAt(0);
+this->string= this->gameNotification->stringList.removeAt(0);
     
 this->processor= this->setAndRemoveProcessor;
     
@@ -348,14 +354,14 @@ this->processor= this->setAndRemoveProcessor;
                 //@Throws(Exception.constructor)
             
     private: void setAndRemoveProcess(){
-this->setX((this->displayInfo.getLastWidth() -this->width)>>1);
+this->setX((this->displayInfo->getLastWidth() -this->width)>>1);
     
-this->point.setX(this->getX());
+this->point->setX(this->getX());
     
-this->point.setY(this->getY());
+this->point->setY(this->getY());
     
 
-    Integer time = this->gameNotification.timeList.removeAt(0);;
+    int32_t time = this->gameNotification->timeList.removeAt(0);;
     
 
     int32_t iTime = time.intValue() *1000;;
@@ -369,9 +375,9 @@ this->point.setY(this->getY());
 
                                     }
                                 
-this->timeDelayHelper.delay= iTime;
+this->timeDelayHelper->delay= iTime;
     
-this->setBasicColorP(this->gameNotification.colorList.removeAt(0));
+this->setBasicColorP(dynamic_cast<BasicColor*>(this->gameNotification->colorList.removeAt(0)));
     
 }
 
@@ -380,9 +386,9 @@ this->setBasicColorP(this->gameNotification.colorList.removeAt(0));
             
     private: void setNextUnremoveable(){
 
-    int32_t index = this->circularIndexUtil.getIndex();;
+    int32_t index = this->circularIndexUtil->getIndex();;
     
-this->string= this->permanentGameNotification.stringList.objectArray[index];
+this->string= this->permanentGameNotification->stringList.objectArray[index];
     
 this->processor= this->nextUnremoveableProcessor;
     
@@ -393,35 +399,35 @@ this->processor= this->nextUnremoveableProcessor;
             
     private: void setNextUnremoveableProcess(){
 
-    int32_t index = this->circularIndexUtil.getIndex();;
+    int32_t index = this->circularIndexUtil->getIndex();;
     
-this->setX((this->displayInfo.getLastWidth() -this->width)>>1);
+this->setX((this->displayInfo->getLastWidth() -this->width)>>1);
     
-this->point.setX(this->getX());
+this->point->setX(this->getX());
     
-this->point.setY(this->getY());
+this->point->setY(this->getY());
     
 
-    Integer time = this->permanentGameNotification.timeList.objectArray[index];;
+    int32_t time = this->permanentGameNotification->timeList.objectArray[index];;
     
-this->timeDelayHelper.delay= time.intValue() *1000;
+this->timeDelayHelper->delay= time.intValue() *1000;
     
-this->setBasicColorP(this->permanentGameNotification.colorList.objectArray[index]);
+this->setBasicColorP(dynamic_cast<BasicColor*>(this->permanentGameNotification->colorList.objectArray[index]));
     
-this->circularIndexUtil.next();
+this->circularIndexUtil->next();
     
 }
 
 
     public: void clear(){
-this->gameNotification.clear();
+this->gameNotification->clear();
     
-this->permanentGameNotification.clear();
+this->permanentGameNotification->clear();
     
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 this->myFontProcessor.process(graphics);
     
 super.paintString(graphics, this->string);

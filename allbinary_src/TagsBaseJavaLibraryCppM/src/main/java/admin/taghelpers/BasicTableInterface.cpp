@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -43,19 +49,19 @@ class BasicTableInterface {
 
                 //@Throws(Exception.constructor)
             
-    std::string drop()
+    public: virtual std::string drop() = 0;
 
                 //@Throws(Exception.constructor)
             
-    std::string create()
+    public: virtual std::string create() = 0;
 
                 //@Throws(Exception.constructor)
             
-    std::string restore()
+    public: virtual std::string restore() = 0;
 
                 //@Throws(Exception.constructor)
             
-    std::string backup()
+    public: virtual std::string backup() = 0;
 
 };
 

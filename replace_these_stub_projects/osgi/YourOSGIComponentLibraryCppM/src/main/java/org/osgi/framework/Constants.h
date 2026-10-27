@@ -7,6 +7,12 @@
         #ifndef ORG_OSGI_FRAMEWORK_CONSTANTS_H
         #define ORG_OSGI_FRAMEWORK_CONSTANTS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/string/StringUtil.h>
 
       
@@ -32,12 +38,12 @@
             // Interfaces do not have static fields, so create a C++ helper class.
             class ConstantsI {
         
-    public: static const std::string BUNDLE_SYMBOLICNAME = StringUtil::getInstance().EMPTY_STRING;
-            }
+    public: static inline const std::string BUNDLE_SYMBOLICNAME = StringUtil::getInstance()->EMPTY_STRING;
+            };
         
 class Constants {
 
-    //Interfaces do not have static fields - public: static const std::string BUNDLE_SYMBOLICNAME = StringUtil::getInstance().EMPTY_STRING;
+    //Interfaces do not have static fields - public: static inline const std::string BUNDLE_SYMBOLICNAME = StringUtil::getInstance()->EMPTY_STRING;
 
 };
 

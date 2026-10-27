@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -69,7 +75,7 @@ class LevelHudWidget: public BasicHud, public PaintableInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: static LevelHudWidget createHud(int32_t maxlevel, int32_t location, int32_t direction);
+    public: static LevelHudWidget* createHud(int32_t maxlevel, int32_t location, int32_t direction);
 
     private: int32_t level;
 
@@ -77,17 +83,17 @@ class LevelHudWidget: public BasicHud, public PaintableInterface {
 
     private: std::vector<char> levelString;
 
-    private: std::vector<char> levelNumberCharArray = NullUtil::getInstance().NULL_CHAR_ARRAY;
+    private: std::vector<char> levelNumberCharArray = NullUtil::getInstance()->NULL_CHAR_ARRAY;
 
     private: int32_t levelNumberTotalDigits= 0;
 
     private: int32_t offset= 0;
 
-    private: PrimitiveLongUtil primitiveLongUtil;
+    private: PrimitiveLongUtil* primitiveLongUtil;
 
 public: LevelHudWidget(int32_t maxlevel, int32_t location, int32_t direction);
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
     private: void update();
 
@@ -99,9 +105,9 @@ public: LevelHudWidget(int32_t maxlevel, int32_t location, int32_t direction);
 
     public: bool isComplete();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: void paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics* graphics);
 
 };
 

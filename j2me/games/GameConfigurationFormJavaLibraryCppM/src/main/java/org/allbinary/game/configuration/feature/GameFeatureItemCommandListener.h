@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREITEMCOMMANDLISTENER_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREITEMCOMMANDLISTENER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -79,15 +85,15 @@
         
 class GameFeatureItemCommandListener
             : public Object
-        : public ItemCommandListener {
+        , public ItemCommandListener {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: GameOptionsForm gameOptionsForm;
+    private: GameOptionsForm* gameOptionsForm;
 
-public: GameFeatureItemCommandListener(GameOptionsForm gameOptionsForm);
+public: GameFeatureItemCommandListener(GameOptionsForm* gameOptionsForm);
 
-    public: void commandAction(Command command, Item item);
+    public: void commandAction(Command* command, Item* item);
 
 };
 

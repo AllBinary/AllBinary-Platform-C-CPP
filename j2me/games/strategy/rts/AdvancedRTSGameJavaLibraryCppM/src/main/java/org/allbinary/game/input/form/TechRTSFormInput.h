@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/RTSGameStrings.h>
@@ -112,23 +118,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RTSFormInput.h"
+        #include "org/allbinary/game/input/form/RTSFormInput.h"
 
 class TechRTSFormInput: public RTSFormInput {
 
-    private: const AllBinaryEventObject EVENT = AllBinaryEventObject(this);
+    private: AllBinaryEventObject* EVENT = new AllBinaryEventObject(this);
 
-    protected: GameNotificationEvent noMoneyGameNotificationEvent;
+    protected: GameNotificationEvent* noMoneyGameNotificationEvent;
 
-public: TechRTSFormInput(std::vector<Group> groupInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+public: TechRTSFormInput(std::vector<Group*> groupInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void processGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t itemIndex);
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager);
+
+                //@Throws(Exception.constructor)
+            
+    public: void processGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t itemIndex);
 
 };
 

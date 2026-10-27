@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -78,26 +84,26 @@
         
 class BasicWorkFlow
             : public Object
-        : public WorkFlowInterface {
+        , public WorkFlowInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: ValidationComponentInterface validationDomNodeInterface;
+    private: ValidationComponentInterface* validationDomNodeInterface;
 
-    private: HashMap<Object*, Object*> propertiesHashMap;
+    private: HashMap<Object*, Object*>* propertiesHashMap;
 
-    private: PageContext pageContext;
+    private: PageContext* pageContext;
 
-public: BasicWorkFlow(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
+public: BasicWorkFlow(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().WORKFLOW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->WORKFLOW))
                         
                                     {
-                                    this->logUtil.putF("Properties: " +propertiesHashMap.toString(), this, "BasicWorkFlow()");
+                                    this->logUtil->putF("Properties: " +propertiesHashMap->toString(), this, "BasicWorkFlow()");
     
 
                                     }
@@ -106,7 +112,7 @@ this->propertiesHashMap= propertiesHashMap;
     
 this->pageContext= pageContext;
     
-this->validationDomNodeInterface= TransformFactory::getInstance().getInstance(this->abeClientInformation, propertiesHashMap, pageContext);
+this->validationDomNodeInterface= dynamic_cast<ValidationComponentInterface*>(TransformFactory::getInstance()->getInstance(this->abeClientInformation, propertiesHashMap, pageContext));
     
 }
 
@@ -118,12 +124,12 @@ this->validationDomNodeInterface= TransformFactory::getInstance().getInstance(th
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getPropertiesHashMap().get(WorkFlowData::getInstance().NAME);
+                        return this->getPropertiesHashMap()->get(WorkFlowData::getInstance()->NAME);
     
 }
 
 
-    protected: HashMap<Object*, Object*> getPropertiesHashMap(){
+    protected: HashMap<Object*, Object*>* getPropertiesHashMap(){
 
 
 
@@ -133,7 +139,7 @@ this->validationDomNodeInterface= TransformFactory::getInstance().getInstance(th
 }
 
 
-    protected: PageContext getPageContext(){
+    protected: PageContext* getPageContext(){
 
 
 
@@ -145,39 +151,39 @@ this->validationDomNodeInterface= TransformFactory::getInstance().getInstance(th
 
                 //@Throws(Exception.constructor)
             
-    public: Integer process(){
+    public: int32_t process(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().WORKFLOW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->WORKFLOW))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.PROCESS);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->PROCESS);
     
 
                                     }
                                 
 
-                        if(this->validationDomNodeInterface.isValid().valueOf())
+                        if(this->validationDomNodeInterface->isValid().valueOf())
                         
                                     {
-                                    this->pageContext.getOut().print(this->validationDomNodeInterface.view());
+                                    this->pageContext->getOut()->print(this->validationDomNodeInterface->view());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Integer::valueOf(TagSupport::EVAL_BODY_INCLUDE);;
+                        return Integer.valueOf(TagSupport::EVAL_BODY_INCLUDE);;
     
 
                                     }
                                 
                         else {
-                            this->pageContext.getOut().print(this->validationDomNodeInterface.validationInfo());
+                            this->pageContext->getOut()->print(this->validationDomNodeInterface->validationInfo());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Integer::valueOf(TagSupport::SKIP_BODY);;
+                        return Integer.valueOf(TagSupport::SKIP_BODY);;
     
 
                         }

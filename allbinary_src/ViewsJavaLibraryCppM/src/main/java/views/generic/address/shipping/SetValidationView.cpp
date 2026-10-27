@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/globals/MESSAGES.h>
@@ -53,11 +59,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShippingAddressView.h"
+        #include "views/generic/address/shipping/ShippingAddressView.h"
 
 class SetValidationView: public ShippingAddressView, public ValidationComponentInterface {
 
-public: SetValidationView(TransformInfoInterface transformInfoInterface) : ShippingAddressView(transformInfoInterface){
+public: SetValidationView(TransformInfoInterface* transformInfoInterface) : ShippingAddressView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -67,7 +73,7 @@ public: SetValidationView(TransformInfoInterface transformInfoInterface) : Shipp
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
 
 
@@ -87,7 +93,7 @@ public: SetValidationView(TransformInfoInterface transformInfoInterface) : Shipp
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -97,7 +103,7 @@ public: SetValidationView(TransformInfoInterface transformInfoInterface) : Shipp
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_ABFILEINPUTSTREAM_H
         #define ORG_ALLBINARY_LOGIC_IO_ABFILEINPUTSTREAM_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/io/File.h>
 
       
@@ -59,9 +65,9 @@ class AbFileInputStream: public FileInputStream {
 
 public: AbFileInputStream(std::string name);
 
-public: AbFileInputStream(AbFile file);
+public: AbFileInputStream(AbFile* file);
 
-protected: AbFileInputStream(File file);
+protected: AbFileInputStream(File* file);
 
 };
 

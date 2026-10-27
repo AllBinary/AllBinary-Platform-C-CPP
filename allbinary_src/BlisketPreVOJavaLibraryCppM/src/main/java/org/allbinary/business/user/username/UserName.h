@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_USERNAME_USERNAME_H
         #define ORG_ALLBINARY_BUSINESS_USER_USERNAME_USERNAME_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -69,25 +75,25 @@ class UserName
             : public Object
          {
 
-    private: static UserName instance() { return UserName(); }
+    private: static UserName* instance() { static std::unique_ptr<UserName> value(new UserName()); return value.get(); }
 
-    public: static UserName getInstance();
+    public: static UserName* getInstance();
 
     public: static std::string getValidationInfo(std::string aUserName);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string userName;
 
 private: UserName();
 
-public: UserName(HashMap<Object*, Object*> hashMap);
+public: UserName(HashMap<Object*, Object*>* hashMap);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string get();
 
-    public: Boolean isValid(std::string aUserName);
+    public: bool isValid(std::string aUserName);
 
 };
 

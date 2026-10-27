@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_GENERATOR_IDGENERATORINTERFACE_H
         #define ORG_ALLBINARY_DATA_GENERATOR_IDGENERATORINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/io/IOException.h>
 
       
@@ -47,7 +53,7 @@ class IdGeneratorInterface {
 
                 //@Throws(IOException.constructor)
             
-    std::string getNext();
+    public: virtual std::string getNext() = 0;
 
 };
 

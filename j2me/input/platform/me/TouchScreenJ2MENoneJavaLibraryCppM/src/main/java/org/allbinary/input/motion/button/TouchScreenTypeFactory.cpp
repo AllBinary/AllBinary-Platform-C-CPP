@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,15 +44,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchScreenFactory.h"
+        #include "org/allbinary/input/motion/button/TouchScreenFactory.h"
 
 class TouchScreenTypeFactory
             : public Object
          {
 
-    private: static TouchScreenTypeFactory instance() { return TouchScreenTypeFactory(); }
+    private: static TouchScreenTypeFactory* instance() { static std::unique_ptr<TouchScreenTypeFactory> value(new TouchScreenTypeFactory()); return value.get(); }
 
-    public: static TouchScreenTypeFactory getInstance(){
+    public: static TouchScreenTypeFactory* getInstance(){
 
 
 
@@ -58,9 +64,9 @@ class TouchScreenTypeFactory
 
     public: void TouchScreenTypeFactory(){
 
-    TouchScreenFactory touchScreenFactory = TouchScreenFactory::getInstance();;
+    TouchScreenFactory* touchScreenFactory = TouchScreenFactory::getInstance();;
     
-touchScreenFactory.setTouch(false);
+touchScreenFactory->setTouch(false);
     
 }
 

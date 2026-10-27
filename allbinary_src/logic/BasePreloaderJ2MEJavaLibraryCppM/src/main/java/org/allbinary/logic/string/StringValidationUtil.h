@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_STRING_STRINGVALIDATIONUTIL_H
         #define ORG_ALLBINARY_LOGIC_STRING_STRINGVALIDATIONUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/TsUtil.h>
@@ -44,19 +50,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StringUtil.h"
+        #include "org/allbinary/logic/string/StringUtil.h"
 
 class StringValidationUtil
             : public Object
          {
 
-    private: static StringValidationUtil instance() { return StringValidationUtil(); }
+    private: static StringValidationUtil* instance() { static std::unique_ptr<StringValidationUtil> value(new StringValidationUtil()); return value.get(); }
 
-    public: static StringValidationUtil getInstance();
+    public: static StringValidationUtil* getInstance();
 
-    private: const StringUtil stringUtil = StringUtil::getInstance();
+    private: StringUtil* stringUtil = StringUtil::getInstance();
 
-    private: const TsUtil tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil = TsUtil::getInstance();
 
 private: StringValidationUtil();
 

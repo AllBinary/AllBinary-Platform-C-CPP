@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,29 +58,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CssProperty.h"
+        #include "org/allbinary/logic/visual/dhtml/style/css/property/CssProperty.h"
 
 class CssPropertyView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: CssProperty cssProperty;
+    private: CssProperty* cssProperty;
 
 public: CssPropertyView(std::string name){
-this->cssProperty= CssProperty(name);
+this->cssProperty= new CssProperty(name);
     
 }
 
 
-public: CssPropertyView(Node node){
-this->cssProperty= CssProperty(node);
+public: CssPropertyView(Node* node){
+this->cssProperty= new CssProperty(node);
     
 }
 
 
-    public: CssProperty getProperty(){
+    public: CssProperty* getProperty(){
 
 
 
@@ -86,12 +92,12 @@ this->cssProperty= CssProperty(node);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cssProperty.toXmlNode(document);;
+                        return this->cssProperty->toXmlNode(document);;
     
 }
 

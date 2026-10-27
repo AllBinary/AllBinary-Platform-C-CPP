@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INIT_GAMEINITIALIZATIONUTIL_H
         #define ORG_ALLBINARY_GAME_INIT_GAMEINITIALIZATIONUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,26 +73,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameInitializationInterface.h"
-#include "BasicBuildGameInitializerFactory.h"
+        #include "org/allbinary/game/init/GameInitializationInterface.h"
+#include "org/allbinary/game/init/BasicBuildGameInitializerFactory.h"
 
 class GameInitializationUtil
             : public Object
          {
 
-    private: static GameInitializationUtil instance() { return GameInitializationUtil(); }
+    private: static GameInitializationUtil* instance() { static std::unique_ptr<GameInitializationUtil> value(new GameInitializationUtil()); return value.get(); }
 
-    public: static GameInitializationUtil getInstance();
+    public: static GameInitializationUtil* getInstance();
 
-    public: const GameInitializedEvent EVENT = GameInitializedEvent(this);
-
-                //@Throws(Exception.constructor)
-            
-    public: void initDemo(AbeClientInformationInterface abeClientInformation, MyCanvas canvas, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface);
+    public: GameInitializedEvent* EVENT = new GameInitializedEvent(this);
 
                 //@Throws(Exception.constructor)
             
-    public: void initGame(AbeClientInformationInterface abeClientInformation, MyCanvas canvas, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface);
+    public: void initDemo(AbeClientInformationInterface* abeClientInformation, MyCanvas* canvas, BasicBuildGameInitializerFactory* gameInitializationInterfaceFactoryInterface);
+
+                //@Throws(Exception.constructor)
+            
+    public: void initGame(AbeClientInformationInterface* abeClientInformation, MyCanvas* canvas, BasicBuildGameInitializerFactory* gameInitializationInterfaceFactoryInterface);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEKEY_H
         #define ORG_ALLBINARY_GAME_INPUT_GAMEKEY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -45,11 +51,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Input.h"
+        #include "org/allbinary/game/input/Input.h"
 
 class GameKey: public Input {
 
-    public: static const GameKey NULL_GAME_KEY = GameKey( -1, StringUtil::getInstance().NULL_STRING);
+    public: static GameKey* NULL_GAME_KEY() { static std::unique_ptr<GameKey> value(new GameKey( -1, StringUtil::getInstance()->NULL_STRING)); return value.get(); }
 
 : GameKey(int32_t key, std::string name);
 

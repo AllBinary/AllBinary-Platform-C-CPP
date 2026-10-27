@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
@@ -65,7 +71,7 @@
         
 class CustomLoaderTag: public CustomTagSupport {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string command;
 
@@ -93,21 +99,21 @@ this->webappPath= value;
 
         try {
             
-    AppUrlGlobals urlGlobals = AppUrlGlobals();;
+    AppUrlGlobals* urlGlobals = new AppUrlGlobals();;
     
-urlGlobals.setWebappPath(this->webappPath);
+urlGlobals->setWebappPath(this->webappPath);
     
 URLGLOBALS::init(urlGlobals);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setCustomLoaderWebappPath()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "setCustomLoaderWebappPath()", &e);
     
 
                                     }
@@ -123,10 +129,10 @@ URLGLOBALS::init(urlGlobals);
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, tagStrings.DO_START_TAG);
+                                    this->logUtil->putF(this->commonStrings.START, this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -155,9 +161,9 @@ URLGLOBALS::init(urlGlobals);
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
-AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
     
 
 
@@ -168,9 +174,9 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 
@@ -179,7 +185,7 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
                         return SKIP_BODY;
     
 }
-*/
+
 }
 
 

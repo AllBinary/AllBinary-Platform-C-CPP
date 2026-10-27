@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIESFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIESFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,25 +61,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryPropertiesFactoryInterface.h"
-#include "CategoryPropertiesInterface.h"
-#include "CategoryProperties.h"
+        #include "org/allbinary/business/category/properties/CategoryPropertiesFactoryInterface.h"
+#include "org/allbinary/business/category/properties/CategoryPropertiesInterface.h"
+#include "org/allbinary/business/category/properties/CategoryProperties.h"
 
 class CategoryPropertiesFactory
             : public Object
-        : public CategoryPropertiesFactoryInterface {
+        , public CategoryPropertiesFactoryInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: CategoryPropertiesInterface categoryPropertiesInterface;
+    private: CategoryPropertiesInterface* categoryPropertiesInterface;
 
 public: CategoryPropertiesFactory(std::string name);
 
-public: CategoryPropertiesFactory(Node node);
+public: CategoryPropertiesFactory(Node* node);
 
-public: CategoryPropertiesFactory(HashMap<Object*, Object*> categoryPropertiesHashMap);
+public: CategoryPropertiesFactory(HashMap<Object*, Object*>* categoryPropertiesHashMap);
 
-    public: CategoryPropertiesInterface getInstance();
+    public: CategoryPropertiesInterface* getInstance();
 
 };
 

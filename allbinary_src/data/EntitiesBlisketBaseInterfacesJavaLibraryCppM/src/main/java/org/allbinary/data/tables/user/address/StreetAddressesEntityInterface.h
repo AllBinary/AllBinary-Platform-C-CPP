@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_STREETADDRESSESENTITYINTERFACE_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_STREETADDRESSESENTITYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Integer.h"
         
 #include <org/allbinary/business/user/address/StreetAddress.h>
@@ -50,17 +56,17 @@
         
 class StreetAddressesEntityInterface: public BasicDataTableInterface {
 
-    void remove(Integer index);
+    public: virtual void remove(int32_t index) = 0;
 
-    void add(StreetAddress address);
+    public: virtual void add(StreetAddress* address) = 0;
 
-    void update(StreetAddress address);
+    public: virtual void update(StreetAddress* address) = 0;
 
-    std::string getLastId();
+    public: virtual std::string getLastId() = 0;
 
-    StreetAddress getDefault();
+    public: virtual StreetAddress* getDefault() = 0;
 
-    void setDefault(std::string value);
+    public: virtual void setDefault(std::string value) = 0;
 
 };
 

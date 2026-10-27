@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -74,13 +80,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GenericBodyCustomizerView.h"
+        #include "views/business/context/modules/storefront/customizer/bodies/generic/GenericBodyCustomizerView.h"
 
 class InsertGenericBodyValidationView: public GenericBodyCustomizerView, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: InsertGenericBodyValidationView(TransformInfoInterface transformInfoInterface) : GenericBodyCustomizerView(transformInfoInterface){
+public: InsertGenericBodyValidationView(TransformInfoInterface* transformInfoInterface) : GenericBodyCustomizerView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -88,16 +94,16 @@ public: InsertGenericBodyValidationView(TransformInfoInterface transformInfoInte
                             //For kotlin this is before the body of the constructor.
                     
 
-    HashMap<Object*, Object*> requestHashMap = RequestParams(this->getPageContext()).toHashMap();;
+    HashMap<Object*, Object*>* requestHashMap = (new RequestParams(this->getPageContext()))->toHashMap();;
     
-this->body= GenericBodyValidation(requestHashMap);
+this->body= new GenericBodyValidation(requestHashMap);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Document toXmlDoc(){
+    public: Document* toXmlDoc(){
 
 
 
@@ -107,26 +113,26 @@ this->body= GenericBodyValidation(requestHashMap);
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Started Validation", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("Started Validation", this, this->commonStrings.IS_VALID);
     
 
                                     }
                                 
 
-    Boolean isValid = this->body.isValid();;
+    bool isValid = this->body.isValid();;
     
 
                         if(isValid == Boolean::TRUE)
                         
                                     {
-                                    CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this->body);
+                                    CustomizerUtil::getInstance()->insert(this->getTransformInfoInterface(), dynamic_cast<DomNodeInterface*>(this->body));
     
 
                                     }
@@ -139,13 +145,13 @@ this->body= GenericBodyValidation(requestHashMap);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -165,25 +171,25 @@ this->body= GenericBodyValidation(requestHashMap);
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->body.validationInfo());
+stringBuffer->append(this->body.validationInfo());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -199,7 +205,7 @@ stringBuffer.append(this->body.validationInfo());
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -209,7 +215,7 @@ stringBuffer.append(this->body.validationInfo());
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -228,17 +234,17 @@ stringBuffer.append(this->body.validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreCustomizerComponentUtil::getInstance().generate(this->abeClientInformation, this->getTransformInfoInterface());;
+                        return StoreCustomizerComponentUtil::getInstance()->generate(this->abeClientInformation, this->getTransformInfoInterface());;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }

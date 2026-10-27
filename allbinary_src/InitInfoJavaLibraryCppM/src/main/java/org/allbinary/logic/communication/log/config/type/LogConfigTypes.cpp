@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,17 +67,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogConfigTypeFactory.h"
-#include "LogConfigTypeData.h"
-#include "LogConfigType.h"
+        #include "org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h"
+#include "org/allbinary/logic/communication/log/config/type/LogConfigTypeData.h"
+#include "org/allbinary/logic/communication/log/config/type/LogConfigType.h"
 
 class LogConfigTypes
             : public Object
          {
 
-    public: static const std::string JSP_ERROR_NO_FUNCTION = "in JSP Not In Function";
+    public: static inline const std::string JSP_ERROR_NO_FUNCTION = "in JSP Not In Function";
 
-    public: static BasicArrayList LOGGING = BasicArrayListD();
+    public: static inline BasicArrayList* LOGGING = new BasicArrayListD();
 
                     static int32_t initResult = LogConfigTypes::init();
                 static int32_t init() { 
@@ -92,24 +98,24 @@ LogConfigTypes::init();
 LogConfigTypeFactory::getInstance();
     
 
-    LoggingInitInfo loggingInitInfo = LoggingInitInfo();;
+    LoggingInitInfo* loggingInitInfo = new LoggingInitInfo();;
     
 
-    BasicArrayList logConfigTypeVector = loggingInitInfo.getTypeList();;
+    BasicArrayList* logConfigTypeVector = loggingInitInfo->getTypeList();;
     
-PreLogUtil::put("Number Of Log Configs: " +loggingInitInfo.getNumberOfLogConfigs(), "LogConfigTypes", "init()");
+PreLogUtil::put("Number Of Log Configs: " +loggingInitInfo->getNumberOfLogConfigs(), "LogConfigTypes", "init()");
     
-PreLogUtil::put("Number Of Log Config Type Names: " +logConfigTypeVector.size(), "LogConfigTypes", "init()");
+PreLogUtil::put("Number Of Log Config Type Names: " +logConfigTypeVector->size(), "LogConfigTypes", "init()");
     
-LogConfigTypes::LOGGING.addAllList(logConfigTypeVector);
+LogConfigTypes::LOGGING->addAllList(logConfigTypeVector);
     
-LogConfigTypes::LOGGING.add(LogConfigTypeFactory::getInstance().NETBEANS_MODULE);
+LogConfigTypes::LOGGING->add(LogConfigTypeFactory::getInstance()->NETBEANS_MODULE);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-PreLogUtil::putSE("Unable to initialize LogConfigTypes", "LogConfigTypes", "init()", e);
+PreLogUtil::putSE("Unable to initialize LogConfigTypes", "LogConfigTypes", "init()", &e);
     
 }
 
@@ -118,15 +124,15 @@ PreLogUtil::putSE("Unable to initialize LogConfigTypes", "LogConfigTypes", "init
 
                 //@Throws(Exception.constructor)
             
-    public: static LogConfigType getInstance(Node node){
+    public: static LogConfigType* getInstance(Node* node){
 
-    Node nameValueNode = DomSearchHelper::getNode(LogConfigTypeData::getInstance().NAME, node.getChildNodes());;
+    Node* nameValueNode = DomSearchHelper::getNode(LogConfigTypeData::getInstance()->NAME, node->getChildNodes());;
     
 
     std::string name = DomNodeHelper::getTextNodeValue(nameValueNode);;
     
 
-    Node descriptionValueNode = DomSearchHelper::getNodeNoThrow(LogConfigTypeData::getInstance().DESCRIPTION, node.getChildNodes());;
+    Node* descriptionValueNode = DomSearchHelper::getNodeNoThrow(LogConfigTypeData::getInstance()->DESCRIPTION, node->getChildNodes());;
     
 
                         if(descriptionValueNode != 
@@ -141,13 +147,13 @@ PreLogUtil::putSE("Unable to initialize LogConfigTypes", "LogConfigTypes", "init
                                     }
                                 
 
-    BasicArrayList availableLogConfigTypes = LogConfigType::availableLogConfigTypes;;
+    BasicArrayList* availableLogConfigTypes = LogConfigType::availableLogConfigTypes;;
     
 
-    int32_t size = availableLogConfigTypes.size();;
+    int32_t size = availableLogConfigTypes->size();;
     
 
-    LogConfigType logConfigType;;
+    LogConfigType* logConfigType;;
     
 
 
@@ -156,10 +162,10 @@ PreLogUtil::putSE("Unable to initialize LogConfigTypes", "LogConfigTypes", "init
                         for (
     int32_t index = 0;index < size; index++)
         {
-logConfigType= availableLogConfigTypes.get(index);
+logConfigType= dynamic_cast<LogConfigType*>(availableLogConfigTypes->get(index));
     
 
-                        if(logConfigType.getName().compareTo(name) == 0)
+                        if(logConfigType->getName().compareTo(name) == 0)
                         
                                     {
                                     
@@ -176,7 +182,7 @@ logConfigType= availableLogConfigTypes.get(index);
 
 
 
-                            throw Exception("No Such LogConfigType: " +name);
+                            throw new Exception("No Such LogConfigType: " +name);
                     
 }
 

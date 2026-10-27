@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -69,25 +75,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OSGIServiceUtil.h"
+        #include "org/allbinary/osgi/service/OSGIServiceUtil.h"
 
 class InputAutomationServiceConsumer
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const OSGIServiceUtil osgiServiceUtil = OSGIServiceUtil::getInstance();
+    protected: OSGIServiceUtil* osgiServiceUtil = OSGIServiceUtil::getInstance();
 
     private: std::string registryName;
 
-    private: BundleContext bundleContext;
+    private: BundleContext* bundleContext;
 
-    private: OSGIServiceVisitorInterface osgiServiceVisitorInterface;
+    private: OSGIServiceVisitorInterface* osgiServiceVisitorInterface;
 
-public: InputAutomationServiceConsumer(std::string registryName, BundleContext bundleContext, OSGIServiceVisitorInterface osgiServiceVisitorInterface);
+public: InputAutomationServiceConsumer(std::string registryName, BundleContext* bundleContext, OSGIServiceVisitorInterface* osgiServiceVisitorInterface);
 
                 //@Throws(Exception.constructor)
             
@@ -95,19 +101,19 @@ public: InputAutomationServiceConsumer(std::string registryName, BundleContext b
 
                 //@Throws(Exception.constructor)
             
-    private: std::vector<ServiceReference> getServiceReferences();
+    private: std::vector<ServiceReference*> getServiceReferences();
 
-    public: BundleContext getBundleContext();
+    public: BundleContext* getBundleContext();
 
-    public: void setBundleContext(BundleContext aBundleContext);
+    public: void setBundleContext(BundleContext* aBundleContext);
 
     public: std::string getRegistryName();
 
     public: void setRegistryName(std::string registryName);
 
-    public: OSGIServiceVisitorInterface getOsgiServiceVisitorInterface();
+    public: OSGIServiceVisitorInterface* getOsgiServiceVisitorInterface();
 
-    public: void setOsgiServiceVisitorInterface(OSGIServiceVisitorInterface osgiServiceVisitorInterface);
+    public: void setOsgiServiceVisitorInterface(OSGIServiceVisitorInterface* osgiServiceVisitorInterface);
 
 };
 

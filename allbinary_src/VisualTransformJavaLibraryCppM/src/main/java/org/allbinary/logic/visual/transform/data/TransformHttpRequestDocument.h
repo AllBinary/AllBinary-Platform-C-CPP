@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMHTTPREQUESTDOCUMENT_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMHTTPREQUESTDOCUMENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -79,31 +85,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformDocumentInterface.h"
+        #include "org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h"
 
 class TransformHttpRequestDocument
             : public Object
-        : public TransformDocumentInterface {
+        , public TransformDocumentInterface {
 
-    private: static const std::string language = "en";
+    private: static inline const std::string language = "en";
 
-    private: static const std::string local = "US";
+    private: static inline const std::string local = "US";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: Node baseNode;
+    private: Node* baseNode;
 
-    private: Document document;
+    private: Document* document;
 
-public: TransformHttpRequestDocument(PageContext pageContext, WeblisketSession weblisketSession);
+public: TransformHttpRequestDocument(PageContext* pageContext, WeblisketSession* weblisketSession);
 
-public: TransformHttpRequestDocument(SearchRequest searchRequest);
+public: TransformHttpRequestDocument(SearchRequest* searchRequest);
 
-    public: Node getBaseNode();
+    public: Node* getBaseNode();
 
-    public: Document getDoc();
+    public: Document* getDoc();
 
                 //@Throws(Exception.constructor)
             

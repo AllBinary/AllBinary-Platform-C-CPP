@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Character.h"
@@ -68,9 +74,9 @@ class CamelCaseUtil
             : public Object
          {
 
-    private: static CamelCaseUtil instance() { return CamelCaseUtil(); }
+    private: static CamelCaseUtil* instance() { static std::unique_ptr<CamelCaseUtil> value(new CamelCaseUtil()); return value.get(); }
 
-    public: static CamelCaseUtil getInstance(){
+    public: static CamelCaseUtil* getInstance(){
 
 
 
@@ -80,11 +86,11 @@ class CamelCaseUtil
 }
 
 
-    private: const CommonSeps commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps = CommonSeps::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getAsCamelCase(std::string string, StringMaker stringBuilder){
+    public: std::string getAsCamelCase(std::string string, StringMaker* stringBuilder){
 
                         if(false)
                         
@@ -93,26 +99,26 @@ class CamelCaseUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 
                                     }
                                 
 
-    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
+    StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
     
-stringBuilder.delete(0, stringBuilder.length());
-    
-
-    BasicArrayList list = BasicArrayListD();;
+stringBuilder->delete(0, stringBuilder->length());
     
 
-    Tokenizer tokenizer = Tokenizer(this->commonSeps.UNDERSCORE);;
-    
-tokenizer.getTokensFromString(string, list);
+    BasicArrayList* list = new BasicArrayListD();;
     
 
-    int32_t size = list.size();;
+    Tokenizer* tokenizer = new Tokenizer(this->commonSeps->UNDERSCORE);;
+    
+tokenizer->getTokensFromString(string, list);
+    
+
+    int32_t size = list->size();;
     
 
     std::string word;;
@@ -124,18 +130,18 @@ tokenizer.getTokensFromString(string, list);
                         for (
     int32_t i = 0;i < size; i++)
         {
-word= list.get(i);
+word= list->get(i);
     
-word= stringValidationUtil.isEmpty(word)
+word= stringValidationUtil->isEmpty(word)
                         ?       
                                 word
                                 :
 
-                            StringMaker().appendchar(Character::toUpperCase(word[0])).append(word.substring(1).toLowerCase()).toString();
+                            (new StringMaker())->appendchar(Character::toUpperCase(word[0]))->append(word.substring(1).toLowerCase())->toString();
 
     ;
     
-stringBuilder.append(word);
+stringBuilder->append(word);
     
 }
 
@@ -143,7 +149,7 @@ stringBuilder.append(word);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuilder.toString();;
+                        return stringBuilder->toString();;
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASINPUTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -60,26 +66,26 @@
         
 class HighScoresCanvasInputProcessor: public PlayerGameInput {
 
-    private: HighScoresCanvas highScoresCanvas;
+    private: HighScoresCanvas* highScoresCanvas;
 
-public: HighScoresCanvasInputProcessor(HighScoresCanvas highScoresCanvas);
+public: HighScoresCanvasInputProcessor(HighScoresCanvas* highScoresCanvas);
 
     public: void open();
 
     public: void close();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onPressGameKeyEvent(GameKeyEvent gameKeyEvent);
+    public: void onPressGameKeyEvent(GameKeyEvent* gameKeyEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onDownGameKeyEvent(GameKeyEvent gameKeyEvent);
+    public: void onDownGameKeyEvent(GameKeyEvent* gameKeyEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onUpGameKeyEvent(GameKeyEvent gameKeyEvent);
+    public: void onUpGameKeyEvent(GameKeyEvent* gameKeyEvent);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: HighScoresCanvas getHighScoresCanvas();
+    public: HighScoresCanvas* getHighScoresCanvas();
 
 };
 

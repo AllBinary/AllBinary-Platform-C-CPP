@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTS30KPICKEDUPLAYERINTERFACEFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTS30KPICKEDUPLAYERINTERFACEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h>
@@ -68,21 +74,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PointsLayerCircularStaticPool.h"
-#include "PointsLayerFactory.h"
-#include "PointsResources.h"
+        #include "org/allbinary/game/ag/layer/pickup/points/PointsLayerCircularStaticPool.h"
+#include "org/allbinary/game/ag/layer/pickup/points/PointsLayerFactory.h"
+#include "org/allbinary/game/ag/layer/pickup/points/PointsResources.h"
 
 class Points30kPickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory, public PickupProcessorInterface {
 
-    private: static PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
+    private: static inline PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
 
                 //@Throws(Exception.constructor)
             
     public: static void init();
 
-    public: static PickedUpLayerInterfaceFactoryInterface getInstance();
+    public: static PickedUpLayerInterfaceFactoryInterface* getInstance();
 
-    private: PointsLayerCircularStaticPool pool = PointsLayerCircularStaticPool(PointsLayerFactory(GameConfigurationUtil::getInstance().getCompetitionValue() *30000), 1);
+    private: PointsLayerCircularStaticPool* pool = new PointsLayerCircularStaticPool(new PointsLayerFactory(GameConfigurationUtil::getInstance()->getCompetitionValue() *30000), 1);
 
 private: Points30kPickedUpLayerInterfaceFactory();
 
@@ -90,7 +96,7 @@ private: Points30kPickedUpLayerInterfaceFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayer sourceLayerInterface);
+    public: void process(AllBinaryLayer* sourceLayerInterface);
 
 };
 

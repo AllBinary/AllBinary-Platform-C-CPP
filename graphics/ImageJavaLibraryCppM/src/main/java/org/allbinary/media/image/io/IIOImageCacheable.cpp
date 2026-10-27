@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/awt/image/BufferedImage.h>
@@ -53,11 +59,11 @@
         
 class IIOImageCacheable
             : public Object
-        : public CacheableInterface {
+        , public CacheableInterface {
 
     private: std::string key;
 
-    private: IIOImage iioImage;
+    private: IIOImage* iioImage;
 
 public: IIOImageCacheable(std::string key){
 this->key= key;
@@ -75,15 +81,15 @@ this->key= key;
 }
 
 
-    public: void setBufferedImage(BufferedImage bufferedImage){
-this->setIioImage(IIOImage(bufferedImage, 
+    public: void setBufferedImage(BufferedImage* bufferedImage){
+this->setIioImage(new IIOImage(bufferedImage, 
                             nullptr, 
                             nullptr));
     
 }
 
 
-    public: IIOImage getIioImage(){
+    public: IIOImage* getIioImage(){
 
 
 
@@ -93,7 +99,7 @@ this->setIioImage(IIOImage(bufferedImage,
 }
 
 
-    private: void setIioImage(IIOImage iioImage){
+    private: void setIioImage(IIOImage* iioImage){
 this->iioImage= iioImage;
     
 }
@@ -101,17 +107,17 @@ this->iioImage= iioImage;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->constructor.name.toString());
+stringBuffer->append(this->getClass()->getName());
     
-stringBuffer.append(" Reusable IIOImage");
+stringBuffer->append(" Reusable IIOImage");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

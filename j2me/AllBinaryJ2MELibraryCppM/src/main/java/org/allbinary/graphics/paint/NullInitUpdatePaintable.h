@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_NULLINITUPDATEPAINTABLE_H
         #define ORG_ALLBINARY_GRAPHICS_PAINT_NULLINITUPDATEPAINTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,13 +45,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InitUpdatePaintable.h"
+        #include "org/allbinary/graphics/paint/InitUpdatePaintable.h"
 
 class NullInitUpdatePaintable: public InitUpdatePaintable {
 
-    private: static const NullInitUpdatePaintable SINGLETON = NullInitUpdatePaintable();
+    private: static NullInitUpdatePaintable* SINGLETON() { static std::unique_ptr<NullInitUpdatePaintable> value(new NullInitUpdatePaintable()); return value.get(); }
 
-    public: static InitUpdatePaintable getInstance();
+    public: static InitUpdatePaintable* getInstance();
 
 private: NullInitUpdatePaintable();
 

@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_QUEUE_QUEUEINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_UTIL_QUEUE_QUEUEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 
@@ -46,15 +54,15 @@ class QueueInterface {
 
                 //@Throws(Exception.constructor)
             
-    bool offer(Object* anyType);
+    public: virtual bool offer(Object* anyType) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void remove(Object* anyType);
+    public: virtual void remove(Object* anyType) = 0;
 
                 //@Throws(Exception.constructor)
             
-    Object* remove();
+    public: virtual Object* remove() = 0;
 
 };
 

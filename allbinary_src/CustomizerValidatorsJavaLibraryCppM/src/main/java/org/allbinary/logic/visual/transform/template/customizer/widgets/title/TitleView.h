@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_TITLE_TITLEVIEW_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_TITLE_TITLEVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -79,35 +85,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TitleData.h"
+        #include "org/allbinary/logic/visual/transform/template/customizer/widgets/title/TitleData.h"
 
 class TitleView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: static const std::string NAME = "None";
+    private: static inline const std::string NAME = "None";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: std::string title;
 
 public: TitleView();
 
-public: TitleView(Node node);
+public: TitleView(Node* node);
 
-public: TitleView(HashMap<Object*, Object*> hashMap);
+public: TitleView(HashMap<Object*, Object*>* hashMap);
 
     public: std::string getTitle();
 
-    public: void getFormData(HashMap<Object*, Object*> hashMap);
+    public: void getFormData(HashMap<Object*, Object*>* hashMap);
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

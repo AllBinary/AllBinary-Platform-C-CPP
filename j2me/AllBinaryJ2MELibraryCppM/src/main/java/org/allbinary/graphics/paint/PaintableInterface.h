@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_PAINTABLEINTERFACE_H
         #define ORG_ALLBINARY_GRAPHICS_PAINT_PAINTABLEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -45,9 +51,9 @@
         
 class PaintableInterface {
 
-    void paint(Graphics graphics);
+    public: virtual void paint(Graphics* graphics) = 0;
 
-    void paintThreed(Graphics graphics);
+    public: virtual void paintThreed(Graphics* graphics) = 0;
 
 };
 

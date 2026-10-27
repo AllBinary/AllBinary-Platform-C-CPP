@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/ClassLoader.h"
@@ -52,7 +58,7 @@ class NoLicense
 
                 //@Throws(Exception.constructor)
             
-    public: static void init(ClassLoader classLoader, std::string pathString){
+    public: static void init(ClassLoader* classLoader, std::string pathString){
 Globals::init(classLoader, pathString);
     
 }

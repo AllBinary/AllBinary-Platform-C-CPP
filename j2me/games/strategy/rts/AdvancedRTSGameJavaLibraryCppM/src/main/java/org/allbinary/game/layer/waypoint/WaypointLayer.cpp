@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -85,9 +91,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CollidableWaypointBehavior.h"
-#include "Waypoint.h"
-#include "WaypointCellPositionHistory.h"
+        #include "org/allbinary/game/layer/waypoint/CollidableWaypointBehavior.h"
+#include "org/allbinary/game/layer/waypoint/Waypoint.h"
+#include "org/allbinary/game/layer/waypoint/WaypointCellPositionHistory.h"
 
 class WaypointLayer: public AdvancedRTSGameLayer {
 
@@ -101,23 +107,23 @@ class WaypointLayer: public AdvancedRTSGameLayer {
 }
 
 
-protected: WaypointLayer(RemoteInfo remoteInfo, PathFindingLayerInterface parentLayer, std::vector<Group> groupInterface, std::string rootName, std::string name, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y) : AdvancedRTSGameLayer(remoteInfo, parentLayer, AdvancedRTSProperties::createProperties(), groupInterface, rootName, name, Health(1000), NullRTSFormInputFactory::getInstance(), animationInterfaceFactoryInterface, animationInterfaceFactoryInterface, animationInterfaceFactoryInterface, animationInterfaceFactoryInterface, animationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y, TileLayerPositionIntoViewPosition()){
+protected: WaypointLayer(RemoteInfo* remoteInfo, PathFindingLayerInterface* parentLayer, std::vector<Group*> groupInterface, std::string rootName, std::string name, AnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface* proceduralAnimationInterfaceFactoryInterface, Rectangle* rectangle, int32_t x, int32_t y) : AdvancedRTSGameLayer(remoteInfo, parentLayer, AdvancedRTSProperties::createProperties(), groupInterface, rootName, name, new Health(1000), NullRTSFormInputFactory::getInstance(), animationInterfaceFactoryInterface, animationInterfaceFactoryInterface, animationInterfaceFactoryInterface, animationInterfaceFactoryInterface, animationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y, new TileLayerPositionIntoViewPosition()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->setCollidableInferface(CollidableWaypointBehavior(true));
+this->setCollidableInferface(new CollidableWaypointBehavior(true));
     
-this->getWaypointBehavior().setWaypoint(Waypoint(this, AttackSound::getInstance()));
+this->getWaypointBehavior()->setWaypoint(new Waypoint(this, AttackSound::getInstance()));
     
 this->setAnimationInterface(this->indexedButShouldBeRotationAnimationInterface);
     
 }
 
 
-    public: void construct(RTSPlayerLayerInterface rtsPlayerLayerInterface){
+    public: void construct(RTSPlayerLayerInterface* rtsPlayerLayerInterface){
 this->percentCompleteP= 100;
     
 this->initVisibility(rtsPlayerLayerInterface);
@@ -125,7 +131,7 @@ this->initVisibility(rtsPlayerLayerInterface);
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 
                         if(this->isVisible())
                         
@@ -138,16 +144,16 @@ this->initVisibility(rtsPlayerLayerInterface);
 }
 
 
-    public: void processTick(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager){
 
         try {
             this->indexedButShouldBeRotationAnimationInterface.nextFrame();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "processTick", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "processTick", &e);
     
 }
 
@@ -179,7 +185,7 @@ super.setDestroyed(destroyed);
                         if(this->isDestroyed())
                         
                                     {
-                                    WaypointCellPositionHistory::getInstance().removeLayer(this);
+                                    WaypointCellPositionHistory::getInstance()->removeLayer(this);
     
 
                                     }

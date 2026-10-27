@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,7 +45,7 @@
         
 class StateControlledInterface {
 
-    void setState(int32_t state)
+    public: virtual void setState(int32_t state) = 0;
 
 };
 

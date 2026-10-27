@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,15 +69,15 @@ class BasicGraphicsPipeline
             : public Object
          {
 
-    protected: BasicArrayList pointBasicArrayList;
+    protected: BasicArrayList* pointBasicArrayList;
 
-public: BasicGraphicsPipeline(BasicArrayList points){
+public: BasicGraphicsPipeline(BasicArrayList* points){
 this->pointBasicArrayList= points;
     
 }
 
 
-    public: void setInitMatrix(BasicArrayList points){
+    public: void setInitMatrix(BasicArrayList* points){
 this->pointBasicArrayList= points;
     
 }
@@ -85,16 +91,16 @@ this->pointBasicArrayList= points;
             
     public: void translate(int32_t x, int32_t y){
 
-    BasicArrayList newBasicArrayList = BasicArrayListD();;
+    BasicArrayList* newBasicArrayList = new BasicArrayListD();;
     
 
-    int32_t size = this->pointBasicArrayList.size();;
+    int32_t size = this->pointBasicArrayList->size();;
     
 
-    PointFactory pointFactory = PointFactory::getInstance();;
+    PointFactory* pointFactory = PointFactory::getInstance();;
     
 
-    GPoint secondPoint;;
+    GPoint* secondPoint;;
     
 
 
@@ -103,19 +109,19 @@ this->pointBasicArrayList= points;
                         for (
     int32_t index = 0;index < size; index++)
         {
-secondPoint= this->pointBasicArrayList.objectArray[index];
+secondPoint= dynamic_cast<GPoint*>(this->pointBasicArrayList->objectArray[index]);
     
 
-                        if(secondPoint.getX() != 1000)
+                        if(secondPoint->getX() != 1000)
                         
                                     {
-                                    newBasicArrayList.add(pointFactory.createXY(secondPoint.getX() +x, secondPoint.getY() +y));
+                                    newBasicArrayList->add(pointFactory->createXY(secondPoint->getX() +x, secondPoint->getY() +y));
     
 
                                     }
                                 
                         else {
-                            newBasicArrayList.add(secondPoint);
+                            newBasicArrayList->add(secondPoint);
     
 
                         }
@@ -129,22 +135,22 @@ this->pointBasicArrayList= newBasicArrayList;
 
                 //@Throws(Exception.constructor)
             
-    public: void rotateToAngle(Angle angle){
-this->rotate(static_cast<int32_t>(angle.getValue()));
+    public: void rotateToAngle(Angle* angle){
+this->rotate(static_cast<int32_t>(angle->getValue()));
     
 }
 
 
-    private: const NoDecimalTrigTable noDecimalTrigTable = NoDecimalTrigTable::getInstance();
+    private: NoDecimalTrigTable* noDecimalTrigTable = NoDecimalTrigTable::getInstance();
 
                 //@Throws(Exception.constructor)
             
     private: void rotate(int32_t angle){
 
-    BasicArrayList newBasicArrayList = BasicArrayListD();;
+    BasicArrayList* newBasicArrayList = new BasicArrayListD();;
     
 
-    GPoint secondPoint;;
+    GPoint* secondPoint;;
     
 
     int64_t y= 0;;
@@ -156,13 +162,13 @@ this->rotate(static_cast<int32_t>(angle.getValue()));
     int64_t secondY= 0;;
     
 
-    GPoint point;;
+    GPoint* point;;
     
 
-    PointFactory pointFactory = PointFactory::getInstance();;
+    PointFactory* pointFactory = PointFactory::getInstance();;
     
 
-    int32_t size = this->pointBasicArrayList.size();;
+    int32_t size = this->pointBasicArrayList->size();;
     
 
     int64_t sin= 0;;
@@ -177,31 +183,31 @@ this->rotate(static_cast<int32_t>(angle.getValue()));
                         for (
     int32_t index = 0;index < size; index++)
         {
-secondPoint= this->pointBasicArrayList.objectArray[index];
+secondPoint= dynamic_cast<GPoint*>(this->pointBasicArrayList->objectArray[index]);
     
 
-                        if(secondPoint.getX() != 1000)
+                        if(secondPoint->getX() != 1000)
                         
                                     {
-                                    sin= this->noDecimalTrigTable.sin(angle);
+                                    sin= this->noDecimalTrigTable->sin(angle);
     
-cos= this->noDecimalTrigTable.cos(angle);
+cos= this->noDecimalTrigTable->cos(angle);
     
-y= secondPoint.getY() *sin;
+y= secondPoint->getY() *sin;
     
-secondX= (secondPoint.getX() *cos) -y;
+secondX= (secondPoint->getX() *cos) -y;
     
-secondY= (secondPoint.getX() *sin) +(secondPoint.getY() *cos);
+secondY= (secondPoint->getX() *sin) +(secondPoint->getY() *cos);
     
-point= pointFactory.createXY(static_cast<int32_t>(secondX) /10000, static_cast<int32_t>(secondY) /10000);
+point= pointFactory->createXY(static_cast<int32_t>(secondX) /10000, static_cast<int32_t>(secondY) /10000);
     
-newBasicArrayList.add(point);
+newBasicArrayList->add(point);
     
 
                                     }
                                 
                         else {
-                            newBasicArrayList.add(secondPoint);
+                            newBasicArrayList->add(secondPoint);
     
 
                         }
@@ -217,25 +223,25 @@ this->pointBasicArrayList= newBasicArrayList;
             
     public: void mirror(int32_t width){
 
-    PointFactory pointFactory = PointFactory::getInstance();;
+    PointFactory* pointFactory = PointFactory::getInstance();;
     
 
     int32_t halfWidth = (width>>1);;
     
 
-    BasicArrayList newBasicArrayList = BasicArrayListD();;
+    BasicArrayList* newBasicArrayList = new BasicArrayListD();;
     
 
-    GPoint secondPoint;;
+    GPoint* secondPoint;;
     
 
     int32_t newX= 0;;
     
 
-    GPoint point;;
+    GPoint* point;;
     
 
-    int32_t size = this->pointBasicArrayList.size();;
+    int32_t size = this->pointBasicArrayList->size();;
     
 
 
@@ -244,38 +250,38 @@ this->pointBasicArrayList= newBasicArrayList;
                         for (
     int32_t index = 0;index < size; index++)
         {
-secondPoint= this->pointBasicArrayList.objectArray[index];
+secondPoint= dynamic_cast<GPoint*>(this->pointBasicArrayList->objectArray[index]);
     
 
-                        if(secondPoint.getX() != 1000)
+                        if(secondPoint->getX() != 1000)
                         
                                     {
                                     newX= 0;
     
 
-                        if(secondPoint.getX() > halfWidth)
+                        if(secondPoint->getX() > halfWidth)
                         
                                     {
-                                    newX= halfWidth -(secondPoint.getX() -halfWidth);
+                                    newX= halfWidth -(secondPoint->getX() -halfWidth);
     
 
                                     }
                                 
                         else {
-                            newX= halfWidth +(halfWidth -secondPoint.getX());
+                            newX= halfWidth +(halfWidth -secondPoint->getX());
     
 
                         }
                             
-point= pointFactory.createXY(newX, secondPoint.getY());
+point= pointFactory->createXY(newX, secondPoint->getY());
     
-newBasicArrayList.add(point);
+newBasicArrayList->add(point);
     
 
                                     }
                                 
                         else {
-                            newBasicArrayList.add(secondPoint);
+                            newBasicArrayList->add(secondPoint);
     
 
                         }
@@ -287,7 +293,7 @@ this->pointBasicArrayList= newBasicArrayList;
 }
 
 
-    public: BasicArrayList getMatrix(){
+    public: BasicArrayList* getMatrix(){
 
 
 

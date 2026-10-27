@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -51,9 +57,9 @@ this->name= name;
 }
 
 
-    public: bool isEqual(TenderType tenderType){
+    public: bool isEqual(TenderType* tenderType){
 
-                        if(this->toString().compareTo(tenderType.toString()) == 0)
+                        if(this->toString().compareTo(tenderType->toString()) == 0)
                         
                                     {
                                     

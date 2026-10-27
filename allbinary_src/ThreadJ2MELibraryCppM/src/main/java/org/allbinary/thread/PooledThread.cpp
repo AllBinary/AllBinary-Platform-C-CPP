@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/InterruptedException.h"
@@ -56,27 +62,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ThreadObjectUtil.h"
-#include "ThreadPool.h"
+        #include "org/allbinary/thread/ThreadObjectUtil.h"
+#include "org/allbinary/thread/ThreadPool.h"
 
 class PooledThread: public Thread {
 
-    private: const LogUtil logUtil = LogUtil::getInstance();
+    private: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const ThreadObjectUtil threadObjectUtil = ThreadObjectUtil::getInstance();
+    private: ThreadObjectUtil* threadObjectUtil = ThreadObjectUtil::getInstance();
 
-    private: ThreadPool threadPool;
+    private: ThreadPool* threadPool;
 
-public: PooledThread(ThreadPool threadPool) : Thread(threadPool.createName()){
+public: PooledThread(ThreadPool* threadPool) : Thread(threadPool->createName()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil.putF(this->commonStrings.CONSTRUCTOR, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(this->commonStrings->CONSTRUCTOR, this, this->commonStrings->CONSTRUCTOR);
     
 this->threadPool= threadPool;
     
@@ -86,30 +92,30 @@ this->threadPool= threadPool;
     private: const std::string INTERRUPT_EXCEPTION = "Exit InterruptedException";
 
     public: void run(){
-this->threadPool.threadStarted();
+this->threadPool->threadStarted();
     
 
         while(true)
         {
 
-    Runnable task2 = this->threadObjectUtil.NULL_PRIORITY_RUNNABLE;;
+    Runnable* task2 = this->threadObjectUtil->NULL_PRIORITY_RUNNABLE;;
     
 
         try {
-            task2= this->threadPool.getTask();
+            task2= this->threadPool->getTask();
     
-this->threadPool.runningTask= true;
+this->threadPool->runningTask= true;
     
-this->threadPool.startTask(task2);
+this->threadPool->startTask(task2);
     
 
                 //: 
-} catch(ex) 
+} catch(InterruptedException& ex) 
             {
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
-logUtil.putF(this->INTERRUPT_EXCEPTION, this, this->commonStrings.RUN);
+logUtil->putF(this->INTERRUPT_EXCEPTION, this, this->commonStrings->RUN);
     
 break;
 
@@ -117,7 +123,7 @@ break;
 }
 
 
-                        if(task2 == this->threadObjectUtil.NULL_PRIORITY_RUNNABLE)
+                        if(task2 == this->threadObjectUtil->NULL_PRIORITY_RUNNABLE)
                         
                                     {
                                     break;
@@ -128,26 +134,26 @@ break;
                                 
 
         try {
-            task2.run();
+            task2->run();
     
-this->threadPool.completedTask(task2);
+this->threadPool->completedTask(task2);
     
-this->threadPool.runningTask= false;
+this->threadPool->runningTask= false;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
-logUtil.put(StringMaker().append(this->commonStrings.EXCEPTION_LABEL).append(StringUtil::getInstance().toString(task2)).toString(), this, this->commonStrings.RUN, e);
+logUtil->put((new StringMaker())->append(this->commonStrings->EXCEPTION_LABEL)->append(StringUtil::getInstance()->toString(task2))->toString(), this, this->commonStrings->RUN, &e);
     
 }
 
 }
 
-this->threadPool.threadStopped();
+this->threadPool->threadStopped();
     
 }
 

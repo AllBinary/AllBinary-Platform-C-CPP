@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLRADIOINPUT_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLRADIOINPUT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/java/bool/BooleanFactory.h>
 
       
@@ -42,8 +48,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HtmlValueInput.h"
-#include "HtmlInputData.h"
+        #include "org/allbinary/logic/visual/dhtml/html/input/HtmlValueInput.h"
+#include "org/allbinary/logic/visual/dhtml/html/input/HtmlInputData.h"
 
 class HtmlRadioInput: public HtmlValueInput {
 

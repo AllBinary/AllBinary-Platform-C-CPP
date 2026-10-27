@@ -21,6 +21,12 @@
         #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_THEME_EDITTHEMEVALIDATIONVIEW_H
         #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_THEME_EDITTHEMEVALIDATIONVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/category/CategoryFactoryInterface.h>
@@ -89,21 +95,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ThemeCustomizerView.h"
+        #include "views/business/context/modules/storefront/customizer/includes/style/theme/ThemeCustomizerView.h"
 
 class EditThemeValidationView: public ThemeCustomizerView, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: EditThemeValidationView(TransformInfoInterface transformInfoInterface);
+public: EditThemeValidationView(TransformInfoInterface* transformInfoInterface);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string validationInfo();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
 };
 

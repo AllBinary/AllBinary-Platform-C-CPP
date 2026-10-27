@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MATH_LAYERDISTANCEUTIL_H
         #define ORG_ALLBINARY_MATH_LAYERDISTANCEUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/GPoint.h>
@@ -55,17 +61,17 @@ class LayerDistanceUtil
             : public Object
          {
 
-    private: static LayerDistanceUtil instance() { return LayerDistanceUtil(); }
+    private: static LayerDistanceUtil* instance() { static std::unique_ptr<LayerDistanceUtil> value(new LayerDistanceUtil()); return value.get(); }
 
-    public: static LayerDistanceUtil getInstance();
+    public: static LayerDistanceUtil* getInstance();
 
-    private: const MathUtil mathUtil = MathUtil::getInstance();
+    private: MathUtil* mathUtil = MathUtil::getInstance();
 
-    public: int32_t getDistance(AllBinaryLayer layerInterface, AllBinaryLayer layerInterface2);
+    public: int32_t getDistance(AllBinaryLayer* layerInterface, AllBinaryLayer* layerInterface2);
 
-    public: int32_t getDistance3D(AllBinaryLayer layerInterface, AllBinaryLayer layerInterface2);
+    public: int32_t getDistance3D(AllBinaryLayer* layerInterface, AllBinaryLayer* layerInterface2);
 
-    public: int32_t getDistanceAt(AllBinaryLayer layerInterface, GPoint point);
+    public: int32_t getDistanceAt(AllBinaryLayer* layerInterface, GPoint* point);
 
 };
 

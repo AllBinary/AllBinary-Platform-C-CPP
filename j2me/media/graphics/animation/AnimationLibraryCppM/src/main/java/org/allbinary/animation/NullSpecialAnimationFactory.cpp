@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,22 +52,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnimationInterfaceFactoryInterface.h"
-#include "ProceduralAnimationInterfaceFactoryInterface.h"
-#include "Animation.h"
+        #include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/Animation.h"
 
 class NullSpecialAnimationFactory
             : public Object
-        : public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
+        , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
 
-    private: static NullSpecialAnimationFactory NULL_SPECIAL_ANIMATION_FACTORY = NullSpecialAnimationFactory();
+    private: static NullSpecialAnimationFactory* NULL_SPECIAL_ANIMATION_FACTORY() { static std::unique_ptr<NullSpecialAnimationFactory> value(new NullSpecialAnimationFactory()); return value.get(); }
 
-    public: static NullSpecialAnimationFactory getFactoryInstance(){
+    public: static NullSpecialAnimationFactory* getFactoryInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullSpecialAnimationFactory::NULL_SPECIAL_ANIMATION_FACTORY;
+                        return NullSpecialAnimationFactory::NULL_SPECIAL_ANIMATION_FACTORY();
     
 }
 
@@ -72,7 +78,7 @@ private: NullSpecialAnimationFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId){
+    public: Animation* getInstance(int32_t instanceId){
 
 
 
@@ -84,7 +90,7 @@ private: NullSpecialAnimationFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstanceAnimation(Animation animationInterface){
+    public: Animation* getInstanceAnimation(Animation* animationInterface){
 
 
 
@@ -94,7 +100,7 @@ private: NullSpecialAnimationFactory(){
 }
 
 
-    public: void setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties* scaleProperties){
 }
 
 

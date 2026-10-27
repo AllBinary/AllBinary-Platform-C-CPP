@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/business/init/db/DatabaseConnectionInfoInterface.h>
 
       
@@ -48,17 +54,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InitDb.h"
+        #include "org/allbinary/business/installer/InitDb.h"
 //Warning you must have sql root access
 class DynamicInitDb: public InitDb {
 
-public: DynamicInitDb(AbeClientInformationInterface abeClientInformation){
+public: DynamicInitDb(AbeClientInformationInterface* abeClientInformation){
 this->setHelper(InitDbHelperFactory::getInstance(abeClientInformation));
     
 }
 
 
-public: DynamicInitDb(AbeClientInformationInterface abeClientInformation, DatabaseConnectionInfoInterface databaseConnectionInfoInterface){
+public: DynamicInitDb(AbeClientInformationInterface* abeClientInformation, DatabaseConnectionInfoInterface* databaseConnectionInfoInterface){
 this->setHelper(InitDbHelperFactory::getInstance(abeClientInformation, databaseConnectionInfoInterface));
     
 }

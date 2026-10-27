@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONTS_BASICSTOREFRONTSENTITY_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONTS_BASICSTOREFRONTSENTITY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -59,12 +65,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicStoreFront.h"
-#include "BasicStoreFrontInterface.h"
+        #include "org/allbinary/business/context/modules/storefronts/BasicStoreFront.h"
+#include "org/allbinary/business/context/modules/storefronts/BasicStoreFrontInterface.h"
 
 class BasicStoreFrontsEntity: public InitSql {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     protected: const std::string tableName = "storefronts";
 
@@ -72,7 +78,7 @@ public: BasicStoreFrontsEntity();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicStoreFrontInterface getStoreFrontInterface(std::string name);
+    public: BasicStoreFrontInterface* getStoreFrontInterface(std::string name);
 
 };
 

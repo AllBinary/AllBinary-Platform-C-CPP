@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MIDLET_MIDLETICON_H
         #define ORG_ALLBINARY_MIDLET_MIDLETICON_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,7 +52,7 @@ class MidletIcon
             : public Object
          {
 
-    public: static std::string RESOURCE = "icon";
+    public: static inline std::string RESOURCE = "icon";
 
 };
 

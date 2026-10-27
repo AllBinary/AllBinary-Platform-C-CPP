@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/string/CommonPhoneStrings.h>
@@ -49,9 +55,9 @@ class MathData
             : public Object
          {
 
-    private: static MathData instance() { return MathData(); }
+    private: static MathData* instance() { static std::unique_ptr<MathData> value(new MathData()); return value.get(); }
 
-    public: static MathData getInstance(){
+    public: static MathData* getInstance(){
 
 
 
@@ -75,15 +81,15 @@ class MathData
 
 private: MathData(){
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
-this->EQUALS= commonSeps.EQUALS;
+this->EQUALS= commonSeps->EQUALS;
     
-this->MINUS= commonSeps.DASH;
+this->MINUS= commonSeps->DASH;
     
-this->DIVIDE= commonSeps.FORWARD_SLASH;
+this->DIVIDE= commonSeps->FORWARD_SLASH;
     
-this->MULTIPLY= CommonPhoneStrings::getInstance().STAR;
+this->MULTIPLY= CommonPhoneStrings::getInstance()->STAR;
     
 }
 

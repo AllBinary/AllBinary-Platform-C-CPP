@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_SCREENCAPTUREIMAGESWORKER_H
         #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_SCREENCAPTUREIMAGESWORKER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -66,23 +72,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CaptureWorkerInterface.h"
-#include "ScreenScavangerRobot.h"
-#include "ProcessingFrameIndexFactory.h"
-#include "CapturedBufferedImagesCacheSingleton.h"
-#include "CapturedImageWorkerResultsEvent.h"
+        #include "org/allbinary/input/media/image/capture/CaptureWorkerInterface.h"
+#include "org/allbinary/input/media/image/capture/ScreenScavangerRobot.h"
+#include "org/allbinary/input/media/image/capture/ProcessingFrameIndexFactory.h"
+#include "org/allbinary/input/media/image/capture/CapturedBufferedImagesCacheSingleton.h"
+#include "org/allbinary/input/media/image/capture/CapturedImageWorkerResultsEvent.h"
 
 class ScreenCaptureImagesWorker: public BasicEventHandler, public CaptureWorkerInterface {
 
-    private: static int64_t index;
+    private: static inline int64_t index;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: bool running= false;
 
-    private: ScreenScavangerRobot screenScavangerRobot;
+    private: ScreenScavangerRobot* screenScavangerRobot;
 
 public: ScreenCaptureImagesWorker();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -94,7 +100,7 @@ public: ScreenCaptureImagesWorker();
 
                 //@Throws(Exception.constructor)
             
-    public: void setThread(Thread thread);
+    public: void setThread(Thread* thread);
 
     public: void run();
 

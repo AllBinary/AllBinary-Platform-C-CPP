@@ -17,6 +17,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
       
@@ -44,7 +50,7 @@
         
 class TechEventListenerInterface: public EventListenerInterface {
 
-    void onTechEvent(AllBinaryEventObject event)
+    public: virtual void onTechEvent(AllBinaryEventObject* event) = 0;
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCECOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCECOMPOSITEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -41,13 +47,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ArtificialIntelligenceInterface.h"
+        #include "org/allbinary/ai/ArtificialIntelligenceInterface.h"
 
 class ArtificialIntelligenceCompositeInterface {
 
                 //@Throws(Exception.constructor)
             
-    ArtificialIntelligenceInterface getArtificialIntelligenceInterface();
+    public: virtual ArtificialIntelligenceInterface* getArtificialIntelligenceInterface() = 0;
 
 };
 

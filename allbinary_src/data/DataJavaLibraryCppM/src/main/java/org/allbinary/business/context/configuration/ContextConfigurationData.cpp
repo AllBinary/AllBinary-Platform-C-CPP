@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/io/file/CommonDataFileStrings.h>
@@ -46,9 +52,9 @@ class ContextConfigurationData
             : public Object
          {
 
-    private: static ContextConfigurationData instance() { return ContextConfigurationData(); }
+    private: static ContextConfigurationData* instance() { static std::unique_ptr<ContextConfigurationData> value(new ContextConfigurationData()); return value.get(); }
 
-    public: static ContextConfigurationData getInstance(){
+    public: static ContextConfigurationData* getInstance(){
 
 
 
@@ -64,9 +70,9 @@ private: ContextConfigurationData(){
 
     public: const std::string NAME = "CONTEXT_CONFIGURATION_NAME";
 
-    public: const std::string UNCRYPTED_EXTENSION = CommonDataFileStrings::getInstance().UNCRYPTED_EXTENSION;
+    public: const std::string UNCRYPTED_EXTENSION = CommonDataFileStrings::getInstance()->UNCRYPTED_EXTENSION;
 
-    public: const std::string ENCRYPTED_EXTENSION = CommonDataFileStrings::getInstance().ENCRYPTED_EXTENSION;
+    public: const std::string ENCRYPTED_EXTENSION = CommonDataFileStrings::getInstance()->ENCRYPTED_EXTENSION;
 
 };
 

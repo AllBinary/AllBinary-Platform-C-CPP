@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -67,22 +73,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicProfileActionScriptCondition.h"
-#include "AlwaysActionScriptConditionInterface.h"
-#include "AlwaysActionScriptConditionJPanel.h"
-#include "AlwaysActionScriptConditionData.h"
+        #include "org/allbinary/input/automation/actions/script/condition/BasicProfileActionScriptCondition.h"
+#include "org/allbinary/input/automation/actions/script/condition/AlwaysActionScriptConditionInterface.h"
+#include "org/allbinary/input/automation/actions/script/condition/AlwaysActionScriptConditionJPanel.h"
+#include "org/allbinary/input/automation/actions/script/condition/AlwaysActionScriptConditionData.h"
 
 class AlwaysActionScriptCondition: public BasicProfileActionScriptCondition, public AlwaysActionScriptConditionInterface {
 
-    private: static const std::string NAME = "Always On/Off";
+    private: static inline const std::string NAME = "Always On/Off";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: AlwaysActionScriptConditionJPanel alwaysActionScriptConditionJPanel;
+    private: AlwaysActionScriptConditionJPanel* alwaysActionScriptConditionJPanel;
 
     private: bool isOn= false;
 
-public: AlwaysActionScriptCondition(Node node) : BasicProfileActionScriptCondition(AlwaysActionScriptCondition::NAME, node){
+public: AlwaysActionScriptCondition(Node* node) : BasicProfileActionScriptCondition(AlwaysActionScriptCondition::NAME, node){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,7 +96,7 @@ public: AlwaysActionScriptCondition(Node node) : BasicProfileActionScriptConditi
                             //For kotlin this is before the body of the constructor.
                     
 
-    Node actionNode = DomSearchHelper::getNode(AlwaysActionScriptConditionData::NAME, node.getChildNodes());;
+    Node* actionNode = DomSearchHelper::getNode(AlwaysActionScriptConditionData::NAME, node->getChildNodes());;
     
 
                         if(actionNode != 
@@ -99,26 +105,26 @@ public: AlwaysActionScriptCondition(Node node) : BasicProfileActionScriptConditi
                         
                                     {
                                     
-    NodeList nodeList = actionNode.getChildNodes();;
+    NodeList* nodeList = actionNode->getChildNodes();;
     
 
 
 
 
                         for (
-    int32_t index = 0;index < nodeList.getLength(); index++)
+    int32_t index = 0;index < nodeList->getLength(); index++)
         {
 
-    Node childNode = nodeList.item(index);;
+    Node* childNode = nodeList->item(index);;
     
 
-                        if(childNode.getNodeName().compareTo(AlwaysActionScriptConditionData::IS_ON) == 0)
+                        if(childNode->getNodeName()->compareTo(AlwaysActionScriptConditionData::IS_ON) == 0)
                         
                                     {
                                     
     std::string booleanString = DomNodeHelper::getTextNodeValue(childNode);;
     
-this->setIsOn(.valueOf());
+this->setIsOn(().valueOf());
     
 
                                     }
@@ -127,7 +133,7 @@ this->setIsOn(.valueOf());
                             
 
 
-                            throw Exception("Action Script Condition Unknown Node");
+                            throw new Exception("Action Script Condition Unknown Node");
                     
 
                         }
@@ -141,7 +147,7 @@ this->setIsOn(.valueOf());
                             
 
 
-                            throw Exception("Action Script Condition Node Null");
+                            throw new Exception("Action Script Condition Node Null");
                     
 
                         }
@@ -164,7 +170,7 @@ this->init();
 
 
     private: void init(){
-this->alwaysActionScriptConditionJPanel= AlwaysActionScriptConditionJPanel(this);
+this->alwaysActionScriptConditionJPanel= new AlwaysActionScriptConditionJPanel(this);
     
 }
 
@@ -186,18 +192,18 @@ this->isOn= isOn;
 
 
     public: void showDialog(){
-this->alwaysActionScriptConditionJPanel.getAlwaysActionJDialog().setVisible(true);
+this->alwaysActionScriptConditionJPanel->getAlwaysActionJDialog()->setVisible(true);
     
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(AlwaysActionScriptConditionData::IS_ON, Boolean::toString(this->isIsOn()));
+hashMap->put(AlwaysActionScriptConditionData::IS_ON, Boolean::toString(this->isIsOn()));
     
-this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
+this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
     
 
 
@@ -210,11 +216,11 @@ this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = super.toXmlNode(document);;
+    Node* node = super.toXmlNode(document);;
     
-node.appendChild(ModDomHelper::createNodeWithValueNodes(document, AlwaysActionScriptConditionData::NAME, this->toHashMap()));
+node->appendChild(ModDomHelper::createNodeWithValueNodes(document, AlwaysActionScriptConditionData::NAME, this->toHashMap()));
     
 
 
@@ -227,7 +233,7 @@ node.appendChild(ModDomHelper::createNodeWithValueNodes(document, AlwaysActionSc
 
                 //@Throws(Exception.constructor)
             
-    public: bool shouldProcess(Long frame){
+    public: bool shouldProcess(int64_t frame){
 
                         if(this->isIsOn())
                         
@@ -251,7 +257,7 @@ node.appendChild(ModDomHelper::createNodeWithValueNodes(document, AlwaysActionSc
 
 
     public: void log(){
-this->logUtil.putF("Is On: " +this->isIsOn(), this, "log");
+this->logUtil->putF("Is On: " +this->isIsOn(), this, "log");
     
 }
 

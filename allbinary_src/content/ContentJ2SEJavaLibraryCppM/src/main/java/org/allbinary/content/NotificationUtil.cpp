@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/System.h"
@@ -51,50 +57,50 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Context.h"
-#include "NotificationManager.h"
-#include "CommandUriAction.h"
-#include "Intent.h"
-#include "Notification.h"
-#include "PendingIntent.h"
+        #include "org/allbinary/content/Context.h"
+#include "org/allbinary/content/NotificationManager.h"
+#include "org/allbinary/content/CommandUriAction.h"
+#include "org/allbinary/content/Intent.h"
+#include "org/allbinary/content/Notification.h"
+#include "org/allbinary/content/PendingIntent.h"
 
 class NotificationUtil
             : public Object
          {
 
-    private: static const NotificationUtil SINGLETON = NotificationUtil();
+    private: static NotificationUtil* SINGLETON() { static std::unique_ptr<NotificationUtil> value(new NotificationUtil()); return value.get(); }
 
-    public: static NotificationUtil getInstance(){
+    public: static NotificationUtil* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NotificationUtil::SINGLETON;
+                        return NotificationUtil::SINGLETON();
     
 }
 
 
-    private: NotificationManager notificationManager = ResourceUtil::getInstance().getContext().getSystemService(Context::NOTIFICATION_SERVICE);
+    private: NotificationManager* notificationManager = dynamic_cast<NotificationManager*>(ResourceUtil::getInstance()->getContext()->getSystemService(Context::NOTIFICATION_SERVICE));
 
-    public: void notify(Command command, std::string resource, std::string message){
+    public: void notify(Command* command, std::string resource, std::string message){
 
-    Context context = ResourceUtil::getInstance().getContext();;
+    Context* context = ResourceUtil::getInstance()->getContext();;
     
 
-    Intent intent = CommandUriAction::getInstance().getIntent(command);;
+    Intent* intent = CommandUriAction::getInstance()->getIntent(command);;
     
 
-    Integer integer = ResourceUtil::getInstance().getResourceId(resource);;
+    int32_t integer = ResourceUtil::getInstance()->getResourceId(resource);;
     
 
-    Notification notification = Notification(integer.intValue(), message, System.currentTimeMillis());;
+    Notification* notification = new Notification(integer.intValue(), message, System.currentTimeMillis());;
     
 
-    PendingIntent pendingIntent = PendingIntent::getActivity(context, 0, intent, 0);;
+    PendingIntent* pendingIntent = PendingIntent::getActivity(context, 0, intent, 0);;
     
-notification.setLatestEventInfo(context, command.getLabel(), message, pendingIntent);
+notification->setLatestEventInfo(context, command->getLabel(), message, pendingIntent);
     
-this->notificationManager.notify(TsUtil::getInstance().hashCode(command), notification);
+this->notificationManager->notify(TsUtil::getInstance()->hashCode(command), notification);
     
 }
 

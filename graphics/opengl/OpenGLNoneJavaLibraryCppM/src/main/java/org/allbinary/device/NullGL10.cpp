@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -58,9 +64,9 @@
         
 class NullGL10
             : public Object
-        : public GL10 {
+        , public GL10 {
 
-    public: static const NullGL10 NULL_GL10 = NullGL10();
+    public: static NullGL10* NULL_GL10() { static std::unique_ptr<NullGL10> value(new NullGL10()); return value.get(); }
 
     public: void glActiveTexture(int32_t texture){
 
@@ -172,7 +178,7 @@ class NullGL10
 }
 
 
-    public: void glColorPointer(int32_t size, int32_t type, int32_t stride, Buffer pointer){
+    public: void glColorPointer(int32_t size, int32_t type, int32_t stride, Buffer* pointer){
 
 
 
@@ -182,7 +188,7 @@ class NullGL10
 }
 
 
-    public: void glCompressedTexImage2D(int32_t target, int32_t level, int32_t internalformat, int32_t width, int32_t height, int32_t border, int32_t imageSize, Buffer data){
+    public: void glCompressedTexImage2D(int32_t target, int32_t level, int32_t internalformat, int32_t width, int32_t height, int32_t border, int32_t imageSize, Buffer* data){
 
 
 
@@ -192,7 +198,7 @@ class NullGL10
 }
 
 
-    public: void glCompressedTexSubImage2D(int32_t target, int32_t level, int32_t xoffset, int32_t yoffset, int32_t width, int32_t height, int32_t format, int32_t imageSize, Buffer data){
+    public: void glCompressedTexSubImage2D(int32_t target, int32_t level, int32_t xoffset, int32_t yoffset, int32_t width, int32_t height, int32_t format, int32_t imageSize, Buffer* data){
 
 
 
@@ -242,7 +248,7 @@ class NullGL10
 }
 
 
-    public: void glDeleteTextures(int32_t n, IntBuffer textures){
+    public: void glDeleteTextures(int32_t n, IntBuffer* textures){
 
 
 
@@ -312,7 +318,7 @@ class NullGL10
 }
 
 
-    public: void glDrawElements(int32_t mode, int32_t count, int32_t type, Buffer indices){
+    public: void glDrawElements(int32_t mode, int32_t count, int32_t type, Buffer* indices){
 
 
 
@@ -382,7 +388,7 @@ class NullGL10
 }
 
 
-    public: void glFogfv(int32_t pname, FloatBuffer params){
+    public: void glFogfv(int32_t pname, FloatBuffer* params){
 
 
 
@@ -422,7 +428,7 @@ class NullGL10
 }
 
 
-    public: void glGenTextures(int32_t n, IntBuffer textures){
+    public: void glGenTextures(int32_t n, IntBuffer* textures){
 
 
 
@@ -452,7 +458,7 @@ class NullGL10
 }
 
 
-    public: void glGetIntegerv(int32_t pname, IntBuffer params){
+    public: void glGetIntegerv(int32_t pname, IntBuffer* params){
 
 
 
@@ -467,7 +473,7 @@ class NullGL10
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 }
 
@@ -502,7 +508,7 @@ class NullGL10
 }
 
 
-    public: void glLightModelfv(int32_t pname, FloatBuffer params){
+    public: void glLightModelfv(int32_t pname, FloatBuffer* params){
 
 
 
@@ -532,7 +538,7 @@ class NullGL10
 }
 
 
-    public: void glLightfv(int32_t light, int32_t pname, FloatBuffer params){
+    public: void glLightfv(int32_t light, int32_t pname, FloatBuffer* params){
 
 
 
@@ -572,7 +578,7 @@ class NullGL10
 }
 
 
-    public: void glLoadMatrixf(FloatBuffer m){
+    public: void glLoadMatrixf(FloatBuffer* m){
 
 
 
@@ -612,7 +618,7 @@ class NullGL10
 }
 
 
-    public: void glMaterialfv(int32_t face, int32_t pname, FloatBuffer params){
+    public: void glMaterialfv(int32_t face, int32_t pname, FloatBuffer* params){
 
 
 
@@ -642,7 +648,7 @@ class NullGL10
 }
 
 
-    public: void glMultMatrixf(FloatBuffer m){
+    public: void glMultMatrixf(FloatBuffer* m){
 
 
 
@@ -672,7 +678,7 @@ class NullGL10
 }
 
 
-    public: void glNormalPointer(int32_t type, int32_t stride, Buffer pointer){
+    public: void glNormalPointer(int32_t type, int32_t stride, Buffer* pointer){
 
 
 
@@ -742,7 +748,7 @@ class NullGL10
 }
 
 
-    public: void glReadPixels(int32_t x, int32_t y, int32_t width, int32_t height, int32_t format, int32_t type, Buffer pixels){
+    public: void glReadPixels(int32_t x, int32_t y, int32_t width, int32_t height, int32_t format, int32_t type, Buffer* pixels){
 
 
 
@@ -852,7 +858,7 @@ class NullGL10
 }
 
 
-    public: void glTexCoordPointer(int32_t size, int32_t type, int32_t stride, Buffer pointer){
+    public: void glTexCoordPointer(int32_t size, int32_t type, int32_t stride, Buffer* pointer){
 
 
 
@@ -882,7 +888,7 @@ class NullGL10
 }
 
 
-    public: void glTexEnvfv(int32_t target, int32_t pname, FloatBuffer params){
+    public: void glTexEnvfv(int32_t target, int32_t pname, FloatBuffer* params){
 
 
 
@@ -892,7 +898,7 @@ class NullGL10
 }
 
 
-    public: void glTexImage2D(int32_t target, int32_t level, int32_t internalformat, int32_t width, int32_t height, int32_t border, int32_t format, int32_t type, Buffer pixels){
+    public: void glTexImage2D(int32_t target, int32_t level, int32_t internalformat, int32_t width, int32_t height, int32_t border, int32_t format, int32_t type, Buffer* pixels){
 
 
 
@@ -922,7 +928,7 @@ class NullGL10
 }
 
 
-    public: void glTexSubImage2D(int32_t target, int32_t level, int32_t xoffset, int32_t yoffset, int32_t width, int32_t height, int32_t format, int32_t type, Buffer pixels){
+    public: void glTexSubImage2D(int32_t target, int32_t level, int32_t xoffset, int32_t yoffset, int32_t width, int32_t height, int32_t format, int32_t type, Buffer* pixels){
 
 
 
@@ -942,7 +948,7 @@ class NullGL10
 }
 
 
-    public: void glVertexPointer(int32_t size, int32_t type, int32_t stride, Buffer pointer){
+    public: void glVertexPointer(int32_t size, int32_t type, int32_t stride, Buffer* pointer){
 
 
 

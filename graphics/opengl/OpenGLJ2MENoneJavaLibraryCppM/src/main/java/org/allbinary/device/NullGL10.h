@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DEVICE_NULLGL10_H
         #define ORG_ALLBINARY_DEVICE_NULLGL10_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -47,9 +53,9 @@
         
 class NullGL10
             : public Object
-        : public GL10 {
+        , public GL10 {
 
-    public: static const NullGL10 NULL_GL10 = NullGL10();
+    public: static NullGL10* NULL_GL10() { static std::unique_ptr<NullGL10> value(new NullGL10()); return value.get(); }
 
 };
 

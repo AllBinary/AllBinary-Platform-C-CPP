@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayInputStream.h>
@@ -97,21 +103,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbTransformer.h"
+        #include "org/allbinary/logic/visual/transform/AbTransformer.h"
 
 class BasicTransformer: public AbTransformer {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const StreamUtil streamUtil = StreamUtil::getInstance();
+    private: StreamUtil* streamUtil = StreamUtil::getInstance();
 
-    private: AbeClientInformationInterface abeClientInformation;
+    private: AbeClientInformationInterface* abeClientInformation;
 
-public: BasicTransformer(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface);
+public: BasicTransformer(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    private: void setEncryptedTemplateFileAsInputStream(AbFile file);
+    private: void setEncryptedTemplateFileAsInputStream(AbFile* file);
 
                 //@Throws(Exception.constructor)
             

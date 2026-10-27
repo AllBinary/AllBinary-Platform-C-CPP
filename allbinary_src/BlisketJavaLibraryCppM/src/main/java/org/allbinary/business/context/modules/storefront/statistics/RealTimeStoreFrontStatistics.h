@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_REALTIMESTOREFRONTSTATISTICS_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_REALTIMESTOREFRONTSTATISTICS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -70,29 +76,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreFrontStatisticsInterface.h"
+        #include "org/allbinary/business/context/modules/storefront/statistics/StoreFrontStatisticsInterface.h"
 
 class RealTimeStoreFrontStatistics
             : public Object
-        : public StoreFrontStatisticsInterface {
+        , public StoreFrontStatisticsInterface {
 
-    private: StoreFrontAdvertisementsStatisticsInterface storeFrontAdvertisementsStatisticsInterface;
+    private: StoreFrontAdvertisementsStatisticsInterface* storeFrontAdvertisementsStatisticsInterface;
 
-    private: StoreFrontUsersStatisticsInterface storeFrontUsersStatisticsInterface;
+    private: StoreFrontUsersStatisticsInterface* storeFrontUsersStatisticsInterface;
 
-    private: StoreFrontInventoryStatisticsInterface storeFrontInventoryStatisticsInterface;
+    private: StoreFrontInventoryStatisticsInterface* storeFrontInventoryStatisticsInterface;
 
-    private: StoreFrontOrdersHistoryStatisticsInterface storeFrontOrderHistoryStatisticsInterface;
+    private: StoreFrontOrdersHistoryStatisticsInterface* storeFrontOrderHistoryStatisticsInterface;
 
-public: RealTimeStoreFrontStatistics(StoreFrontInterface storeFrontInterface);
+public: RealTimeStoreFrontStatistics(StoreFrontInterface* storeFrontInterface);
 
-    public: StoreFrontAdvertisementsStatisticsInterface getAdvertisements();
+    public: StoreFrontAdvertisementsStatisticsInterface* getAdvertisements();
 
-    public: StoreFrontUsersStatisticsInterface getUsers();
+    public: StoreFrontUsersStatisticsInterface* getUsers();
 
-    public: StoreFrontInventoryStatisticsInterface getInventory();
+    public: StoreFrontInventoryStatisticsInterface* getInventory();
 
-    public: StoreFrontOrdersHistoryStatisticsInterface getOrders();
+    public: StoreFrontOrdersHistoryStatisticsInterface* getOrders();
 
 };
 

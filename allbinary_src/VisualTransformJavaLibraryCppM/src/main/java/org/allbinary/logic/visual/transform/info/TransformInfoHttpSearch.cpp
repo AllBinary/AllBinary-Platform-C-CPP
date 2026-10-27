@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/globals/FREEBLISKET_PATH_GLOBALS.h>
@@ -59,11 +65,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoHttp.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoHttp.h"
 
 class TransformInfoHttpSearch: public TransformInfoHttp {
 
-public: TransformInfoHttpSearch(SearchRequest searchRequest) : TransformInfoHttp(searchRequest.getPropertiesHashMap(), searchRequest.getPageContext()){
+public: TransformInfoHttpSearch(SearchRequest* searchRequest) : TransformInfoHttp(searchRequest->getPropertiesHashMap(), searchRequest->getPageContext()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -71,24 +77,22 @@ public: TransformInfoHttpSearch(SearchRequest searchRequest) : TransformInfoHttp
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(searchRequest.getStoreFront().getName() != 
-                                    nullptr
-                                )
+                        if(true)
                         
                                     {
-                                    this->setStoreName(searchRequest.getStoreFront().getName());
+                                    this->setStoreName(searchRequest->getStoreFront()->getName());
     
 
                                     }
                                 
                         else {
-                            this->setStoreName(StringUtil::getInstance().EMPTY_STRING);
+                            this->setStoreName(StringUtil::getInstance()->EMPTY_STRING);
     
 
                         }
                             
 
-    std::string dataFileName = searchRequest.getXslFile();;
+    std::string dataFileName = searchRequest->getXslFile();;
     
 this->setTemplateFile(dataFileName);
     
@@ -99,57 +103,57 @@ this->setTemplateFile(dataFileName);
             
     private: std::string getPath(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(URLGLOBALS::getMainPath());
+stringBuffer->append(URLGLOBALS::getMainPath());
     
-stringBuffer.append(FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH);
+stringBuffer->append(FREEBLISKET_PATH_GLOBALS::getInstance()->XSLPATH);
     
-stringBuffer.append(this->getStoreName());
+stringBuffer->append(this->getStoreName());
     
-stringBuffer.append(AbPathData::getInstance().SEPARATOR);
+stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getTemplateFilePath(){
+    public: AbPath* getTemplateFilePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbPath(this->getPath(), this->getTemplateFile());
+                        return new AbPath(this->getPath(), this->getTemplateFile());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getObjectConfigFilePath(){
+    public: AbPath* getObjectConfigFilePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbPath(this->getPath(), this->getObjectConfigFile());
+                        return new AbPath(this->getPath(), this->getObjectConfigFile());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getDataFilePath(){
+    public: AbPath* getDataFilePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbPath(this->getPath(), this->getDataFile());
+                        return new AbPath(this->getPath(), this->getDataFile());
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -93,9 +99,9 @@ class XmlDocumentHelper
             : public Object
          {
 
-    private: static XmlDocumentHelper instance() { return XmlDocumentHelper(); }
+    private: static XmlDocumentHelper* instance() { static std::unique_ptr<XmlDocumentHelper> value(new XmlDocumentHelper()); return value.get(); }
 
-    public: static XmlDocumentHelper getInstance(){
+    public: static XmlDocumentHelper* getInstance(){
 
 
 
@@ -107,35 +113,35 @@ class XmlDocumentHelper
 
                 //@Throws(Exception.constructor)
             
-    public: static std::string toString(Document document){
+    public: static std::string toString(Document* document){
 
         try {
             
-    DOMSource domSource = DOMSource(document);;
+    DOMSource* domSource = new DOMSource(document);;
     
 
-    ByteArrayOutputStream byteArrayOutputStream = ByteArrayOutputStream();;
+    ByteArrayOutputStream* byteArrayOutputStream = new ByteArrayOutputStream();;
     
 
-    StreamResult streamResult = StreamResult(byteArrayOutputStream);;
+    StreamResult* streamResult = new StreamResult(byteArrayOutputStream);;
     
 
-    TransformerFactory copyTransformerFactory = TransformerFactory::newInstance();;
+    TransformerFactory* copyTransformerFactory = TransformerFactory::newInstance();;
     
 
-    Transformer copyTransformer = copyTransformerFactory.newTransformer();;
+    Transformer* copyTransformer = copyTransformerFactory->newTransformer();;
     
-copyTransformer.transform(domSource, streamResult);
+copyTransformer->transform(domSource, streamResult);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return byteArrayOutputStream.toString();;
+                        return byteArrayOutputStream->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -147,11 +153,11 @@ copyTransformer.transform(domSource, streamResult);
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const std::string INDENT_NUMBER = "indent-number";
 
-    private: Transformer transformer;
+    private: Transformer* transformer;
 
 private: XmlDocumentHelper(){
 this->init(4, true);
@@ -163,36 +169,36 @@ this->init(4, true);
 
         try {
             
-    BooleanFactory booleanFactory = BooleanFactory::getInstance();;
+    BooleanFactory* booleanFactory = BooleanFactory::getInstance();;
     
 
-    TransformerFactory transformerFactory = TransformerFactory::newInstance();;
+    TransformerFactory* transformerFactory = TransformerFactory::newInstance();;
     
-transformerFactory.setAttribute(this->INDENT_NUMBER, indent);
+transformerFactory->setAttribute(this->INDENT_NUMBER, indent);
     
-this->transformer= transformerFactory.newTransformer();
+this->transformer= transformerFactory->newTransformer();
     
-this->transformer.setOutputProperty(OutputKeys::ENCODING, CharacterSetData::getInstance().UTF_8);
+this->transformer->setOutputProperty(OutputKeys::ENCODING, CharacterSetData::getInstance()->UTF_8);
     
-this->transformer.setOutputProperty(OutputKeys::OMIT_XML_DECLARATION, ignoreDeclaration
+this->transformer->setOutputProperty(OutputKeys::OMIT_XML_DECLARATION, ignoreDeclaration
                         ?       
-                                booleanFactory.YES
+                                booleanFactory->YES
                                 :
 
-                            booleanFactory.NO;
+                            booleanFactory->NO;
 
     );
     
-this->transformer.setOutputProperty(OutputKeys::INDENT, booleanFactory.YES);
+this->transformer->setOutputProperty(OutputKeys::INDENT, booleanFactory->YES);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.INIT, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->INIT, &e);
     
 }
 
@@ -203,21 +209,21 @@ this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.INIT, e);
             
     public: std::string format(std::string xmlString){
 
-    InputSource src = InputSource(StringReader(xmlString));;
+    InputSource* src = new InputSource(new StringReader(xmlString));;
     
 
-    Document document = DocumentBuilderFactory::newInstance().newDocumentBuilder().parse(src);;
+    Document* document = DocumentBuilderFactory::newInstance()->newDocumentBuilder()->parse(src);;
     
 
-    Writer out = StringWriter();;
+    Writer* out = new StringWriter();;
     
-this->transformer.transform(DOMSource(document), StreamResult(out));
+this->transformer->transform(new DOMSource(document), new StreamResult(out));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return out.toString();;
+                        return out->toString();;
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -48,7 +54,7 @@
         
 class CaptionAnimationHelperBase: public Animation {
 
-    public: static const CaptionAnimationHelperBase INSTANCE = CaptionAnimationHelperBase();
+    public: static CaptionAnimationHelperBase* INSTANCE() { static std::unique_ptr<CaptionAnimationHelperBase> value(new CaptionAnimationHelperBase()); return value.get(); }
 
     public: bool isShowing(){
 
@@ -64,11 +70,11 @@ class CaptionAnimationHelperBase: public Animation {
 }
 
 
-    public: void update(std::string message, BasicColor basicColor){
+    public: void update(std::string message, BasicColor* basicColor){
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 }
 
 

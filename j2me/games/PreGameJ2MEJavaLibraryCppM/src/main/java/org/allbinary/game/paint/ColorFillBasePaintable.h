@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_PAINT_COLORFILLBASEPAINTABLE_H
         #define ORG_ALLBINARY_GAME_PAINT_COLORFILLBASEPAINTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -57,21 +63,21 @@
         
 class ColorFillBasePaintable: public Paintable, public ColorCompositeInterface {
 
-    protected: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
+    protected: BasicColor* basicColor = BasicColorFactory::getInstance()->WHITE;
 
     protected: int32_t colorP= 0;
 
-public: ColorFillBasePaintable(BasicColor basicColor);
+public: ColorFillBasePaintable(BasicColor* basicColor);
 
-    public: void setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor* basicColor);
 
-    public: BasicColor getBasicColorP();
+    public: BasicColor* getBasicColorP();
 
     protected: int32_t getColor();
 
     protected: void setColor(int32_t color);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

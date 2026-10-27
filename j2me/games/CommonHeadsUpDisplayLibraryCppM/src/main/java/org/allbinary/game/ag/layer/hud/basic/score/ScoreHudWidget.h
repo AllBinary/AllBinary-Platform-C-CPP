@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_SCORE_SCOREHUDWIDGET_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_SCORE_SCOREHUDWIDGET_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -61,11 +67,11 @@ class ScoreHudWidget: public NumberStringHud {
 
                 //@Throws(Exception.constructor)
             
-    public: static ScoreHudWidget getInstance(int32_t maxscore, int32_t location, int32_t direction);
+    public: static ScoreHudWidget* getInstance(int32_t maxscore, int32_t location, int32_t direction);
 
-public: ScoreHudWidget(int32_t maxscore, int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor);
+public: ScoreHudWidget(int32_t maxscore, int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor);
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
 };
 

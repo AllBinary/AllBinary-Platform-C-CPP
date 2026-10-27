@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,27 +70,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentGatewayInterface.h"
-#include "PaymentGatewayMapping.h"
-#include "PaymentGatewayData.h"
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h"
+#include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayMapping.h"
+#include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayData.h"
 
 class PaymentGatewayView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: PaymentGatewayInterface paymentGatewayInterface;
+    private: PaymentGatewayInterface* paymentGatewayInterface;
 
-public: PaymentGatewayView(PaymentGatewayInterface paymentGatewayInterface){
+public: PaymentGatewayView(PaymentGatewayInterface* paymentGatewayInterface){
 this->paymentGatewayInterface= paymentGatewayInterface;
     
 }
 
 
-    public: PaymentGatewayInterface getPaymentGatewayInterface(){
+    public: PaymentGatewayInterface* getPaymentGatewayInterface(){
 
 
 
@@ -96,9 +102,9 @@ this->paymentGatewayInterface= paymentGatewayInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
 
 
@@ -111,25 +117,25 @@ this->paymentGatewayInterface= paymentGatewayInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, "toXmlNode");
+                                    this->logUtil->putF(this->commonStrings->START, this, "toXmlNode");
     
 
                                     }
                                 
 
-    HashMap<Object*, Object*> hashMap = PaymentGatewayMapping(this->paymentGatewayInterface).toHashMap();;
+    HashMap<Object*, Object*>* hashMap = (new PaymentGatewayMapping(this->paymentGatewayInterface))->toHashMap();;
     
-hashMap.putAll(this->toHashMap());
+hashMap->putAll(this->toHashMap());
     
 
-    Node paymentGatewayNode = ModDomHelper::createNodeWithValueNodes(document, PaymentGatewayData::NAME.toString(), hashMap);;
+    Node* paymentGatewayNode = ModDomHelper::createNodeWithValueNodes(document, PaymentGatewayData::NAME.toString(), hashMap);;
     
 
 
@@ -139,13 +145,13 @@ hashMap.putAll(this->toHashMap());
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XSLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XSLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "toXmlNode", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "toXmlNode", &e);
     
 
                                     }

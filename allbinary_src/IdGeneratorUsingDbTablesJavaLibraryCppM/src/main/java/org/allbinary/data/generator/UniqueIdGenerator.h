@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_GENERATOR_UNIQUEIDGENERATOR_H
         #define ORG_ALLBINARY_DATA_GENERATOR_UNIQUEIDGENERATOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -69,17 +75,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "IdGeneratorInterface.h"
+        #include "org/allbinary/data/generator/IdGeneratorInterface.h"
 
 class UniqueIdGenerator
             : public Object
-        : public IdGeneratorInterface {
+        , public IdGeneratorInterface {
 
-    public: static const std::string EXT = ".unq";
+    public: static inline const std::string EXT = ".unq";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: IdGeneratorEntity idGeneratorEntity;
+    private: IdGeneratorEntity* idGeneratorEntity;
 
     private: std::string name;
 

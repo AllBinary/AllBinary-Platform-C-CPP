@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,7 +60,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DefaultComboBoxModel.h"
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/DefaultComboBoxModel.h"
 
 class InputAutomationTypeDefaultComboBoxModelFactory
             : public Object
@@ -62,7 +68,7 @@ class InputAutomationTypeDefaultComboBoxModelFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static DefaultComboBoxModel getInstance();
+    public: static DefaultComboBoxModel* getInstance();
 
 private: InputAutomationTypeDefaultComboBoxModelFactory();
 

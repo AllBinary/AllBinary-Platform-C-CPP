@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Integer.h"
         
 
@@ -43,31 +49,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProfileActionScriptInputInterface.h"
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/ProfileActionScriptInputInterface.h"
 
 class KeyboardActionScriptInputInterface: public ProfileActionScriptInputInterface {
 
-    int32_t getDelayBetweenKeys();
+    public: virtual int32_t getDelayBetweenKeys() = 0;
 
-    std::vector<Integer> getKeyArray();
+    public: virtual std::vector<int32_t> getKeyArray() = 0;
 
-    bool isPress();
+    public: virtual bool isPress() = 0;
 
-    bool isRelease();
+    public: virtual bool isRelease() = 0;
 
-    bool isNormal();
+    public: virtual bool isNormal() = 0;
 
-    void setPress(bool press);
+    public: virtual void setPress(bool press) = 0;
 
-    void setRelease(bool release);
+    public: virtual void setRelease(bool release) = 0;
 
-    void setNormal();
+    public: virtual void setNormal() = 0;
 
-    std::string getText();
+    public: virtual std::string getText() = 0;
 
-    void setText(std::string text);
+    public: virtual void setText(std::string text) = 0;
 
-    void log();
+    public: virtual void log() = 0;
 
 };
 

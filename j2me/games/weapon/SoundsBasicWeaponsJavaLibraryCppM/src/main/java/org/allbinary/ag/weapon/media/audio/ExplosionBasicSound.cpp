@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/media/audio/CompositeSound.h>
 
       
@@ -45,9 +51,9 @@
         
 class ExplosionBasicSound: public CompositeSound {
 
-    private: static Sound soundInterface = ExplosionBasicSound();
+    private: static inline Sound* soundInterface = new ExplosionBasicSound();
 
-    public: static Sound getInstance(){
+    public: static Sound* getInstance(){
 
 
 

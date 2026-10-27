@@ -13,6 +13,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEPERSISTANCEUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEPERSISTANCEUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -85,21 +91,21 @@ class ImagePersistanceUtil
             : public Object
          {
 
-    private: static ImagePersistanceUtil instance() { return ImagePersistanceUtil(); }
+    private: static ImagePersistanceUtil* instance() { static std::unique_ptr<ImagePersistanceUtil> value(new ImagePersistanceUtil()); return value.get(); }
 
-    public: static ImagePersistanceUtil getInstance();
+    public: static ImagePersistanceUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void saveWithBatik(AbFile file, BufferedImage bufferedImage);
+    public: void saveWithBatik(AbFile* file, BufferedImage* bufferedImage);
 
-    public: void saveWithImageIO(std::string filePath, BufferedImage bufferedImage);
+    public: void saveWithImageIO(std::string filePath, BufferedImage* bufferedImage);
 
-    public: void saveWithImageIO(File file, BufferedImage bufferedImage);
+    public: void saveWithImageIO(File* file, BufferedImage* bufferedImage);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/NullAnimationFactory.h>
@@ -68,9 +74,9 @@
         
 class FallingPickupLayer: public PickupLayer, public TickableInterface {
 
-    private: static const std::string NAME = "FallingPickupLayer";
+    private: static inline const std::string NAME = "FallingPickupLayer";
 
-public: FallingPickupLayer(RemoteInfo remoteInfo) : PickupLayer(FallingPickupLayer::NAME, remoteInfo, 0, CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY, NullAnimationFactory::getFactoryInstance().getInstance(0), Rectangle(PointFactory::getInstance().ZERO_ZERO, 0, 0), ViewPosition::getInstanceD()){
+public: FallingPickupLayer(RemoteInfo* remoteInfo) : PickupLayer(FallingPickupLayer::NAME, remoteInfo, 0, CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY, NullAnimationFactory::getFactoryInstance()->getInstance(0), new Rectangle(PointFactory::getInstance()->ZERO_ZERO, 0, 0), ViewPosition::getInstanceD()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -80,7 +86,7 @@ public: FallingPickupLayer(RemoteInfo remoteInfo) : PickupLayer(FallingPickupLay
 }
 
 
-    public: void processTick(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager){
 this->setPosition(this->x, this->y +1, this->z);
     
 }

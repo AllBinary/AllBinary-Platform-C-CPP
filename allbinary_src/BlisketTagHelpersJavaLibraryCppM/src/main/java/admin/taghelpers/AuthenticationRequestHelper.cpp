@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -100,28 +108,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TagHelper.h"
+        #include "admin/taghelpers/TagHelper.h"
 
 class AuthenticationRequestHelper: public TagHelper {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: WeblisketSession weblisketSession;
+    private: WeblisketSession* weblisketSession;
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
-public: AuthenticationRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
-this->weblisketSession= WeblisketSession(hashMap, pageContext);
+public: AuthenticationRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+this->weblisketSession= new WeblisketSession(hashMap, pageContext);
     
-this->request= pageContext.getRequest();
+this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
     
 }
 
 
-public: AuthenticationRequestHelper(HashMap<Object*, Object*> hashMap, HttpServletRequest httpServletRequest){
-this->weblisketSession= WeblisketSession(hashMap, httpServletRequest);
+public: AuthenticationRequestHelper(HashMap<Object*, Object*>* hashMap, HttpServletRequest* httpServletRequest){
+this->weblisketSession= new WeblisketSession(hashMap, httpServletRequest);
     
 this->request= httpServletRequest;
     
@@ -134,13 +142,13 @@ this->request= httpServletRequest;
 
                         if(this->weblisketSession != 
                                     nullptr
-                                 && this->weblisketSession.getId() != 
+                                 && this->weblisketSession->getId() != 
                                     nullptr
                                 )
                         
                                     {
                                     
-    int32_t startIndex = this->weblisketSession.getId().length();;
+    int32_t startIndex = this->weblisketSession->getId()->length();;
     
 
                         if(startIndex >= 8)
@@ -150,7 +158,7 @@ this->request= httpServletRequest;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->weblisketSession.getId().substring(startIndex -8);;
+                        return this->weblisketSession->getId()->substring(startIndex -8);;
     
 
                                     }
@@ -159,7 +167,7 @@ this->request= httpServletRequest;
                             
 
 
-                            throw Exception("Error Generating New Password");
+                            throw new Exception("Error Generating New Password");
                     
 
                         }
@@ -171,7 +179,7 @@ this->request= httpServletRequest;
                             
 
 
-                            throw Exception("No Session Available For Generating New Password");
+                            throw new Exception("No Session Available For Generating New Password");
                     
 
                         }
@@ -179,45 +187,45 @@ this->request= httpServletRequest;
 }
 
 
-    public: Boolean newPassword(){
+    public: bool newPassword(){
 
         try {
             
-    std::string userName = this->request.getParameter(WeblisketSessionData::REMOVABLEUSERNAME);;
+    std::string userName = this->request->getParameter(WeblisketSessionData::REMOVABLEUSERNAME);;
     
 
-    std::string email = this->request.getParameter(UserData::MAINEMAIL);;
+    std::string email = this->request->getParameter(UserData::MAINEMAIL);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil.putF("Generating New Password For: " +userName, this, "newPassword()");
+                                    this->logUtil->putF("Generating New Password For: " +userName, this, "newPassword()");
     
 
                                     }
                                 
 
-    UserEntityInterface userEntityInterface = UserEntityFactory::getInstance();;
+    UserEntityInterface* userEntityInterface = UserEntityFactory::getInstance();;
     
 
-    UserInterface userInterface = userEntityInterface.getUser(userName);;
+    UserInterface* userInterface = userEntityInterface->getUser(userName);;
     
 
-                        if(userInterface.getMainEmail().compareTo(email) != 0)
+                        if(userInterface->getMainEmail()->compareTo(email) != 0)
                         
                                     {
                                     
-                        if(userInterface.getSecondaryEmail() != 
+                        if(userInterface->getSecondaryEmail() != 
                                     nullptr
-                                 && userInterface.getSecondaryEmail().compareTo(email) != 0)
+                                 && userInterface->getSecondaryEmail()->compareTo(email) != 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil.putF("Requested Email Is Not In User Profile", this, "newPassword()");
+                                    this->logUtil->putF("Requested Email Is Not In User Profile", this, "newPassword()");
     
 
                                     }
@@ -237,20 +245,20 @@ this->request= httpServletRequest;
 
     std::string newPassword = this->generateNewPassword();;
     
-userInterface.setPassword(newPassword);
+userInterface->setPassword(newPassword);
     
 
-    HashMap<Object*, Object*> newPasswordHashMap = userInterface.toPasswordHashMap();;
+    HashMap<Object*, Object*>* newPasswordHashMap = userInterface->toPasswordHashMap();;
     
-UserEntityFactory::getInstance().update(userName, newPasswordHashMap);
+UserEntityFactory::getInstance()->update(userName, newPasswordHashMap);
     
-NewPasswordEmail(this->abeClientInformation, userInterface, newPassword).process();
+(new NewPasswordEmail(this->abeClientInformation, userInterface, newPassword))->process();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil.putF("Generated New Password For: " +userName, this, "newPassword()");
+                                    this->logUtil->putF("Generated New Password For: " +userName, this, "newPassword()");
     
 
                                     }
@@ -263,13 +271,13 @@ NewPasswordEmail(this->abeClientInformation, userInterface, newPassword).process
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "newPassword()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "newPassword()", &e);
     
 
                                     }
@@ -285,42 +293,42 @@ NewPasswordEmail(this->abeClientInformation, userInterface, newPassword).process
 }
 
 
-    public: Boolean changePassword(){
+    public: bool changePassword(){
 
         try {
             
-    std::string userName = this->request.getParameter(WeblisketSessionData::REMOVABLEUSERNAME);;
+    std::string userName = this->request->getParameter(WeblisketSessionData::REMOVABLEUSERNAME);;
     
 
-    std::string passwordString = this->request.getParameter(WeblisketSessionData::REMOVABLEPASSWORD);;
+    std::string passwordString = this->request->getParameter(WeblisketSessionData::REMOVABLEPASSWORD);;
     
 
-    std::string newPassword = this->request.getParameter(WeblisketSessionData::REMOVABLENEWPASSWORD);;
+    std::string newPassword = this->request->getParameter(WeblisketSessionData::REMOVABLENEWPASSWORD);;
     
 
-    std::string newReenteredPassword = this->request.getParameter(WeblisketSessionData::REMOVABLEREENTERNEWPASSWORD);;
+    std::string newReenteredPassword = this->request->getParameter(WeblisketSessionData::REMOVABLEREENTERNEWPASSWORD);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil.putF("Changing Password For User: " +userName, this, "changePassword()");
+                                    this->logUtil->putF("Changing Password For User: " +userName, this, "changePassword()");
     
 
                                     }
                                 
 
-    Password password = Password(newPassword);;
+    Password* password = new Password(newPassword);;
     
 
-                        if(!password.isValid().valueOf())
+                        if(!password->isValid().valueOf())
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil.putF("New Password Is Not Valid", this, "changePassword()");
+                                    this->logUtil->putF("New Password Is Not Valid", this, "changePassword()");
     
 
                                     }
@@ -339,10 +347,10 @@ NewPasswordEmail(this->abeClientInformation, userInterface, newPassword).process
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil.putF("New Password Fields Do Not Match", this, "changePassword()");
+                                    this->logUtil->putF("New Password Fields Do Not Match", this, "changePassword()");
     
 
                                     }
@@ -357,37 +365,37 @@ NewPasswordEmail(this->abeClientInformation, userInterface, newPassword).process
                                     }
                                 
 
-    std::string sessionPassword = this->weblisketSession.getPassword();;
+    std::string sessionPassword = this->weblisketSession->getPassword();;
     
 
-    UserEntityInterface userEntityInterface = UserEntityFactory::getInstance();;
+    UserEntityInterface* userEntityInterface = UserEntityFactory::getInstance();;
     
 
-    UserInterface userInterface = userEntityInterface.getUser(userName);;
+    UserInterface* userInterface = userEntityInterface->getUser(userName);;
     
 
-    std::string login = userEntityInterface.login(userName, passwordString);;
+    std::string login = userEntityInterface->login(userName, passwordString);;
     
 
                         if(login.compare(GLOBALS2::LOGINSUCCESS) == 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil.putF("Authentication Successful", this, "changePassword()");
+                                    this->logUtil->putF("Authentication Successful", this, "changePassword()");
     
 
                                     }
                                 
 
-    HashMap<Object*, Object*> newPasswordHashMap = password.toHashMap(
+    HashMap<Object*, Object*>* newPasswordHashMap = password->toHashMap(
                             nullptr);;
     
-UserEntityFactory::getInstance().update(userName, newPasswordHashMap);
+UserEntityFactory::getInstance()->update(userName, newPasswordHashMap);
     
-NewPasswordEmail(this->abeClientInformation, userInterface, newPassword).process();
+(new NewPasswordEmail(this->abeClientInformation, userInterface, newPassword))->process();
     
 
 
@@ -399,10 +407,10 @@ NewPasswordEmail(this->abeClientInformation, userInterface, newPassword).process
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil.putF("Authentication Failed", this, "changePassword()");
+                                    this->logUtil->putF("Authentication Failed", this, "changePassword()");
     
 
                                     }
@@ -415,13 +423,13 @@ NewPasswordEmail(this->abeClientInformation, userInterface, newPassword).process
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put("Authentication Failed", this, "changePassword()", e);
+                                    this->logUtil->put("Authentication Failed", this, "changePassword()", &e);
     
 
                                     }
@@ -437,26 +445,26 @@ NewPasswordEmail(this->abeClientInformation, userInterface, newPassword).process
 }
 
 
-    public: Boolean isRoleValid(std::string userName, std::string password, BasicArrayList roles){
+    public: bool isRoleValid(std::string userName, std::string password, BasicArrayList* roles){
 
         try {
             
-    UserEntityInterface userEntityInterface = UserEntityFactory::getInstance();;
+    UserEntityInterface* userEntityInterface = UserEntityFactory::getInstance();;
     
 
-    UserInterface userInterface = userEntityInterface.getUser(userName);;
+    UserInterface* userInterface = userEntityInterface->getUser(userName);;
     
 
-                        if(userInterface.getRole() == 
+                        if(userInterface->getRole() == 
                                     nullptr
                                 )
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil.putF("Role is null: " +userInterface.getRole() +" Valid Roles: " +roles.toString(), this, "isRoleValid()");
+                                    this->logUtil->putF("Role is null: " +userInterface->getRole() +" Valid Roles: " +roles->toString(), this, "isRoleValid()");
     
 
                                     }
@@ -471,7 +479,7 @@ NewPasswordEmail(this->abeClientInformation, userInterface, newPassword).process
                                     }
                                 
 
-    std::vector<Object*> basicUserRoleArray = roles.toArray();;
+    std::vector<Object*> basicUserRoleArray = roles->toArray();;
     
 
     int32_t size = basicUserRoleArray.size();;
@@ -484,17 +492,17 @@ NewPasswordEmail(this->abeClientInformation, userInterface, newPassword).process
     int32_t index = 0;index < size; index++)
         {
 
-    BasicUserRole nextRole = basicUserRoleArray[index];;
+    BasicUserRole* nextRole = dynamic_cast<BasicUserRole*>(basicUserRoleArray[index]);;
     
 
-                        if(userInterface.getRole().getBasicUserRole() === nextRole)
+                        if(userInterface->getRole()->getBasicUserRole() === nextRole)
                         
                                     {
-                                    userInterface.validateSession(this->weblisketSession);
+                                    userInterface->validateSession(dynamic_cast<WeblisketSessionInterface*>(this->weblisketSession));
     
-this->request.removeAttribute(WeblisketSessionData::REMOVABLEUSERNAME);
+this->request->removeAttribute(WeblisketSessionData::REMOVABLEUSERNAME);
     
-this->request.removeAttribute(WeblisketSessionData::REMOVABLEPASSWORD);
+this->request->removeAttribute(WeblisketSessionData::REMOVABLEPASSWORD);
     
 
 
@@ -508,21 +516,21 @@ this->request.removeAttribute(WeblisketSessionData::REMOVABLEPASSWORD);
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Role is not valid: ");
+stringBuffer->append("Role is not valid: ");
     
-stringBuffer.append(userInterface.getRole().toString());
+stringBuffer->append(userInterface->getRole()->toString());
     
-stringBuffer.append(" Valid Roles: ");
+stringBuffer->append(" Valid Roles: ");
     
-stringBuffer.append(roles.toString());
+stringBuffer->append(roles->toString());
     
-this->logUtil.putF(stringBuffer.toString(), this, "isRoleValid()");
+this->logUtil->putF(stringBuffer->toString(), this, "isRoleValid()");
     
 
                                     }
@@ -535,13 +543,13 @@ this->logUtil.putF(stringBuffer.toString(), this, "isRoleValid()");
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "isRoleValid()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "isRoleValid()", &e);
     
 
                                     }

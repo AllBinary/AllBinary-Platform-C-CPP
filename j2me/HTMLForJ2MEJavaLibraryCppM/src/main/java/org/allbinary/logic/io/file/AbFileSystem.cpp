@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -62,9 +68,9 @@ class AbFileSystem
             : public Object
          {
 
-    private: static AbFileSystem instance() { return AbFileSystem(); }
+    private: static AbFileSystem* instance() { static std::unique_ptr<AbFileSystem> value(new AbFileSystem()); return value.get(); }
 
-    public: static AbFileSystem getInstance(){
+    public: static AbFileSystem* getInstance(){
 
 
 
@@ -74,9 +80,9 @@ class AbFileSystem
 }
 
 
-    private: const LogUtil logUtil = LogUtil::getInstance();
+    private: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     public: bool isDirectoryOrFile(std::string path){
 
@@ -103,7 +109,7 @@ class AbFileSystem
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().getArrayInstance();;
+                        return StringUtil::getInstance()->getArrayInstance();;
     
 }
 
@@ -126,7 +132,7 @@ class AbFileSystem
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 }
 
@@ -141,9 +147,9 @@ class AbFileSystem
                         
                                     {
                                     
-    InputStream inputStream = (*dynamic_cast<InputStream*>(closeable));;
+    InputStream* inputStream = (dynamic_cast<InputStream*>(closeable));;
     
-inputStream.close();
+inputStream->close();
     
 
                                     }
@@ -156,9 +162,9 @@ inputStream.close();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CLOSE, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CLOSE, &e);
     
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
@@ -56,7 +62,7 @@ this->name= name;
 }
 
 
-    public: void authorize(AbeClientInformationInterface clientInformationInterface){
+    public: void authorize(AbeClientInformationInterface* clientInformationInterface){
 }
 
 

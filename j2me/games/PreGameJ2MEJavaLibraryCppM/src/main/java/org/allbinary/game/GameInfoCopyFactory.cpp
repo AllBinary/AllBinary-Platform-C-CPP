@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,28 +44,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameInfo.h"
+        #include "org/allbinary/game/GameInfo.h"
 
 class GameInfoCopyFactory
             : public Object
          {
 
-    public: static GameInfo getInstanceMaxLevel(GameInfo gameInfo, int32_t maxLevel){
+    public: static GameInfo* getInstanceMaxLevel(GameInfo* gameInfo, int32_t maxLevel){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameInfo(gameInfo.getGameType(), gameInfo.getGameMode(), gameInfo.getPlayerType(), maxLevel, gameInfo.getCurrentLevel());
+                        return new GameInfo(gameInfo->getGameType(), gameInfo->getGameMode(), gameInfo->getPlayerType(), maxLevel, gameInfo->getCurrentLevel());
     
 }
 
 
-    public: static GameInfo getInstance(GameInfo gameInfo){
+    public: static GameInfo* getInstance(GameInfo* gameInfo){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameInfo(gameInfo.getGameType(), gameInfo.getGameMode(), gameInfo.getPlayerType(), gameInfo.getHighestLevel(), gameInfo.getCurrentLevel());
+                        return new GameInfo(gameInfo->getGameType(), gameInfo->getGameMode(), gameInfo->getPlayerType(), gameInfo->getHighestLevel(), gameInfo->getCurrentLevel());
     
 }
 

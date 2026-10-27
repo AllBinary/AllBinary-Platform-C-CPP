@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -43,7 +49,7 @@ public: CryptFileReader(std::string decryptedExtension, std::string encryptedExt
 
                 //@Throws(Exception.constructor)
             
-    public: std::string get(AbPath fileAbPath){
+    public: std::string get(AbPath* fileAbPath){
 
 
 
@@ -55,7 +61,7 @@ public: CryptFileReader(std::string decryptedExtension, std::string encryptedExt
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream getInputStream(AbPath fileAbPath){
+    public: InputStream* getInputStream(AbPath* fileAbPath){
 
 
 

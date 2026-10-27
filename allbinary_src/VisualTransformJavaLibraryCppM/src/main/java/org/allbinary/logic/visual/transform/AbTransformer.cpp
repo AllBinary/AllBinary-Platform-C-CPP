@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -70,29 +76,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicTransformerInterface.h"
+        #include "org/allbinary/logic/visual/transform/BasicTransformerInterface.h"
 
 class AbTransformer
             : public Object
-        : public BasicTransformerInterface {
+        , public BasicTransformerInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: TransformInfoInterface transformInfoInterface;
+    private: TransformInfoInterface* transformInfoInterface;
 
-    private: InputStream inputStream;
+    private: InputStream* inputStream;
 
-    private: URIResolver uriResolver;
+    private: URIResolver* uriResolver;
 
-public: AbTransformer(TransformInfoInterface transformInfoInterface){
+public: AbTransformer(TransformInfoInterface* transformInfoInterface){
 this->transformInfoInterface= transformInfoInterface;
     
 }
 
 
-    public: TransformInfoInterface getTransformInfoInterface(){
+    public: TransformInfoInterface* getTransformInfoInterface(){
 
 
 
@@ -102,19 +108,19 @@ this->transformInfoInterface= transformInfoInterface;
 }
 
 
-    public: void setInputStream(InputStream inputStream){
+    public: void setInputStream(InputStream* inputStream){
 this->inputStream= inputStream;
     
 }
 
 
-    public: void setURIResolver(URIResolver uriResolver){
+    public: void setURIResolver(URIResolver* uriResolver){
 this->uriResolver= uriResolver;
     
 }
 
 
-    public: InputStream getInputStream(){
+    public: InputStream* getInputStream(){
 
 
 
@@ -124,7 +130,7 @@ this->uriResolver= uriResolver;
 }
 
 
-    public: URIResolver getURIResolver(){
+    public: URIResolver* getURIResolver(){
 
 
 
@@ -134,12 +140,12 @@ this->uriResolver= uriResolver;
 }
 
 
-    public: StreamSource getStreamSource(){
+    public: StreamSource* getStreamSource(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StreamSource(this->getInputStream());
+                        return new StreamSource(this->getInputStream());
     
 }
 
@@ -150,10 +156,10 @@ this->uriResolver= uriResolver;
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XMLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XMLLOGGING))
                         
                                     {
-                                    this->logUtil.putF("xml: \n" +xmlDocumentStr, this, "translate(String xmlDocumentStr)");
+                                    this->logUtil->putF("xml: \n" +xmlDocumentStr, this, "translate(String xmlDocumentStr)");
     
 
                                     }
@@ -167,41 +173,41 @@ this->uriResolver= uriResolver;
                                     
 
 
-                            throw Exception("No URIResolver");
+                            throw new Exception("No URIResolver");
                     
 
                                     }
                                 
 
-    std::string result = XslHelper::getInstance().translate(this->getURIResolver(), StreamSource(this->getInputStream()), StreamSource(StringBufferInputStream(xmlDocumentStr)));;
+    std::string result = XslHelper::getInstance()->translate(this->getURIResolver(), new StreamSource(this->getInputStream()), new StreamSource(new StringBufferInputStream(xmlDocumentStr)));;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XSLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XSLLOGGING))
                         
                                     {
-                                    this->logUtil.putF("translated xml: " +result, this, "translate(String xmlDocumentStr)");
+                                    this->logUtil->putF("translated xml: " +result, this, "translate(String xmlDocumentStr)");
     
 
                                     }
                                 
 
-    TransformInfoObjectConfigGenerator transformInfoObjectConfigGeneratorInterface = TransformInfoObjectConfigGeneratorFactory::getInstance().getInstance(this->getTransformInfoInterface());;
+    TransformInfoObjectConfigGenerator* transformInfoObjectConfigGeneratorInterface = TransformInfoObjectConfigGeneratorFactory::getInstance()->getInstance(this->getTransformInfoInterface());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return transformInfoObjectConfigGeneratorInterface.process(result);;
+                        return transformInfoObjectConfigGeneratorInterface->process(result);;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put(this->transformInfoInterface.log(), this, "translate(document)", e);
+                                    this->logUtil->put(this->transformInfoInterface->log(), this, "translate(document)", &e);
     
 
                                     }

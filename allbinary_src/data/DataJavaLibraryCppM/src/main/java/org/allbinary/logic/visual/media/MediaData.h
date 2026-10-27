@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIADATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIADATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,22 +55,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MediaTypeData.h"
-#include "MediaDataFactory.h"
+        #include "org/allbinary/logic/visual/media/MediaTypeData.h"
+#include "org/allbinary/logic/visual/media/MediaDataFactory.h"
 
 class MediaData
             : public Object
          {
 
-    private: static HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();
+    private: static inline HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: static MediaData get(std::string a_Name);
+    public: static MediaData* get(std::string a_Name);
 
-    public: static MediaData getDefault();
+    public: static MediaData* getDefault();
 
-    public: static HashMap<Object*, Object*> toHashMap();
+    public: static HashMap<Object*, Object*>* toHashMap();
 
     private: std::string name;
 
@@ -80,7 +86,7 @@ protected: MediaData(std::string a_Name);
 
     public: std::string getExtension();
 
-    public: bool isConvertableTo(MediaData mediaData);
+    public: bool isConvertableTo(MediaData* mediaData);
 
     public: std::string toString();
 

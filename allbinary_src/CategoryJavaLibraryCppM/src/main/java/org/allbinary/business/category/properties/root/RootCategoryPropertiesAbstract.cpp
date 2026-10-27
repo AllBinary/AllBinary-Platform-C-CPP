@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -72,15 +78,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RootCategoryPropertiesInterface.h"
+        #include "org/allbinary/business/category/properties/root/RootCategoryPropertiesInterface.h"
 
 class RootCategoryPropertiesAbstract
             : public Object
-        : public RootCategoryPropertiesInterface {
+        , public RootCategoryPropertiesInterface {
 
-    private: const std::string category = CategoryData::getInstance().ROOTCATEGORY;
+    private: const std::string category = CategoryData::getInstance()->ROOTCATEGORY;
 
-    private: const std::string fileName = this->category +AbPathData::getInstance().EXTENSION_SEP +CategoryData::getInstance().UNCRYPTED_EXTENSION;
+    private: const std::string fileName = this->category +AbPathData::getInstance()->EXTENSION_SEP +CategoryData::getInstance()->UNCRYPTED_EXTENSION;
 
 public: RootCategoryPropertiesAbstract(){
 }
@@ -112,18 +118,18 @@ public: RootCategoryPropertiesAbstract(){
 
 
 
-                            throw Exception("No Value Allowed");
+                            throw new Exception("No Value Allowed");
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void setRootFilePath(AbPath value){
+    public: void setRootFilePath(AbPath* value){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -134,18 +140,18 @@ public: RootCategoryPropertiesAbstract(){
 
 
 
-                            throw Exception("No Value Allowed");
+                            throw new Exception("No Value Allowed");
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getRootFilePath(){
+    public: AbPath* getRootFilePath(){
 
 
 
-                            throw Exception("No Value Allowed");
+                            throw new Exception("No Value Allowed");
                     
 }
 
@@ -156,7 +162,7 @@ public: RootCategoryPropertiesAbstract(){
 
 
 
-                            throw Exception("No A Real Root");
+                            throw new Exception("No A Real Root");
                     
 }
 
@@ -167,23 +173,23 @@ public: RootCategoryPropertiesAbstract(){
 
 
 
-                            throw Exception("Root but not implemented");
+                            throw new Exception("Root but not implemented");
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getWebAppPath(CategoryHierarchyInterface categoryHierarchyInterface){
+    public: std::string getWebAppPath(CategoryHierarchyInterface* categoryHierarchyInterface){
 
 
 
-                            throw Exception("Not Root");
+                            throw new Exception("Not Root");
                     
 }
 
 
-    public: AbPath getPath(CategoryHierarchyInterface categoryHierarchyInterface){
+    public: AbPath* getPath(CategoryHierarchyInterface* categoryHierarchyInterface){
 
 
 
@@ -203,7 +209,7 @@ public: RootCategoryPropertiesAbstract(){
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
 
 
@@ -213,11 +219,11 @@ public: RootCategoryPropertiesAbstract(){
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> categoryHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* categoryHashMap = StdUtil::getInstance()->createHashMap();;
     
-categoryHashMap.put(CategoryData::getInstance().NAME, this->category);
+categoryHashMap->put(CategoryData::getInstance()->NAME, this->category);
     
 
 
@@ -228,11 +234,11 @@ categoryHashMap.put(CategoryData::getInstance().NAME, this->category);
 }
 
 
-    public: BasicArrayList toVector(){
+    public: BasicArrayList* toVector(){
 
-    BasicArrayList categoryVector = BasicArrayListD();;
+    BasicArrayList* categoryVector = new BasicArrayListD();;
     
-categoryVector.add(this->category);
+categoryVector->add(this->category);
     
 
 
@@ -245,7 +251,7 @@ categoryVector.add(this->category);
 
                 //@Throws(Exception.constructor)
             
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -257,7 +263,7 @@ categoryVector.add(this->category);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

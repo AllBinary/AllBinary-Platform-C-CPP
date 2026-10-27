@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -75,18 +81,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Point.h"
-#include "Dimension.h"
-#include "JLabel.h"
-#include "DisplayHelpFromSource.h"
+        #include "org/allbinary/logic/java/help/Point.h"
+#include "org/allbinary/logic/java/help/Dimension.h"
+#include "org/allbinary/logic/java/help/JLabel.h"
+#include "org/allbinary/logic/java/help/DisplayHelpFromSource.h"
 
 class JavaHelpUtil
             : public Object
          {
 
-    private: static JavaHelpUtil instance() { return JavaHelpUtil(); }
+    private: static JavaHelpUtil* instance() { static std::unique_ptr<JavaHelpUtil> value(new JavaHelpUtil()); return value.get(); }
 
-    public: static JavaHelpUtil getInstance(){
+    public: static JavaHelpUtil* getInstance(){
 
 
 
@@ -100,42 +106,42 @@ class JavaHelpUtil
 
         try {
             
-    JavaHelpUtil javaHelpUtil = JavaHelpUtil::getInstance();;
+    JavaHelpUtil* javaHelpUtil = JavaHelpUtil::getInstance();;
     
-javaHelpUtil.show(javaHelpUtil.getHelpSet("G:/mnt/bc/mydev/working/automation/InputAutomationJavaApplication/AllBinaryInputAutomationHelp/AllBinaryInputAutomation.hs"));
+javaHelpUtil->show(javaHelpUtil->getHelpSet("G:/mnt/bc/mydev/working/automation/InputAutomationJavaApplication/AllBinaryInputAutomationHelp/AllBinaryInputAutomation.hs"));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 }
 
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const Point point = Point(0, 0);
+    private: Point* point = new Point(0, 0);
 
-    private: const Dimension dimension = Dimension(640, 480);
+    private: Dimension* dimension = new Dimension(640, 480);
 
-    private: ActionEvent contextSensitiveHelpActionEvent = ActionEvent(JLabel(), ActionEvent::ACTION_FIRST, 
+    private: ActionEvent* contextSensitiveHelpActionEvent = new ActionEvent(new JLabel(), ActionEvent::ACTION_FIRST, 
                             nullptr);
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
 private: JavaHelpUtil(){
 }
 
 
-    public: HelpSet getHelpSet(std::string filePath){
+    public: HelpSet* getHelpSet(std::string filePath){
 
         try {
             
-    URI helpSetURI = File(filePath).toURI();;
+    URI* helpSetURI = (new File(filePath))->toURI();;
     
 
-    URL helpSetURL = helpSetURI.toURL();;
+    URL* helpSetURL = helpSetURI->toURL();;
     
 
 
@@ -145,9 +151,9 @@ private: JavaHelpUtil(){
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, getInstance(), "set", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, getInstance(), "set", &e);
     
 
 
@@ -160,21 +166,21 @@ this->logUtil.put(this->commonStrings.EXCEPTION, getInstance(), "set", e);
 }
 
 
-    public: HelpSet getHelpSet(URL url){
+    public: HelpSet* getHelpSet(URL* url){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HelpSet(
+                        return new HelpSet(
                             nullptr, url);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, getInstance(), "set", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, getInstance(), "set", &e);
     
 
 
@@ -187,25 +193,25 @@ this->logUtil.put(this->commonStrings.EXCEPTION, getInstance(), "set", e);
 }
 
 
-    public: void show(HelpSet helpSet){
+    public: void show(HelpSet* helpSet){
 
         try {
             
-    HelpBroker helpBroker = helpSet.createHelpBroker();;
+    HelpBroker* helpBroker = helpSet->createHelpBroker();;
     
-helpBroker.setLocation(this->point);
+helpBroker->setLocation(this->point);
     
-helpBroker.setSize(this->dimension);
+helpBroker->setSize(this->dimension);
     
-CSH::DisplayHelpFromSource(helpBroker).actionPerformed(this->contextSensitiveHelpActionEvent);
+(new CSH::DisplayHelpFromSource(helpBroker))->actionPerformed(this->contextSensitiveHelpActionEvent);
     
-this->logUtil.putF("CSH Action", getInstance(), "show");
+this->logUtil->putF("CSH Action", getInstance(), "show");
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, getInstance(), "show", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, getInstance(), "show", &e);
     
 }
 

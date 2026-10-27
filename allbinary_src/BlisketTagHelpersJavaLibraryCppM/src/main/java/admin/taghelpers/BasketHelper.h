@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_BASKETHELPER_H
         #define ADMIN_TAGHELPERS_BASKETHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -65,25 +71,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TagHelper.h"
+        #include "admin/taghelpers/TagHelper.h"
 
 class BasketHelper: public TagHelper {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: WeblisketSession weblisketSession;
+    private: WeblisketSession* weblisketSession;
 
-    private: StoreFrontInterface storeFrontInterface;
+    private: StoreFrontInterface* storeFrontInterface;
 
-    private: HashMap<Object*, Object*> propertiesHashMap;
+    private: HashMap<Object*, Object*>* propertiesHashMap;
 
-    private: PageContext pageContext;
+    private: PageContext* pageContext;
 
     private: const int32_t MAX = 200;
 
-public: BasketHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: BasketHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
-    public: Boolean isBasketEmpty();
+    public: bool isBasketEmpty();
 
 };
 

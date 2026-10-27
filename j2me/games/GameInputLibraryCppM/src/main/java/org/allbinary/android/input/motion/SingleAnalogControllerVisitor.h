@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_SINGLEANALOGCONTROLLERVISITOR_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_SINGLEANALOGCONTROLLERVISITOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/input/analog/AnalogLocationInput.h>
 
       
@@ -48,8 +54,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnalogControllerVisitor.h"
-#include "AnalogLocationInputProcessor.h"
+        #include "org/allbinary/android/input/motion/AnalogControllerVisitor.h"
+#include "org/allbinary/android/input/motion/AnalogLocationInputProcessor.h"
 
 class SingleAnalogControllerVisitor: public AnalogControllerVisitor {
 
@@ -57,7 +63,7 @@ class SingleAnalogControllerVisitor: public AnalogControllerVisitor {
 
 public: SingleAnalogControllerVisitor(int32_t playerInputId);
 
-    public: void process(AllBinaryLayerManager allbinaryLayerManager, AnalogLocationInputProcessor analogLocationInputProcessor);
+    public: void process(AllBinaryLayerManager* allbinaryLayerManager, AnalogLocationInputProcessor* analogLocationInputProcessor);
 
 };
 

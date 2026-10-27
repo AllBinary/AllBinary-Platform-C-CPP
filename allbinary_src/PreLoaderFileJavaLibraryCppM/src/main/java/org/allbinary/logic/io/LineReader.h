@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -57,15 +63,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFileInputStream.h"
+        #include "org/allbinary/logic/io/AbFileInputStream.h"
 
 class LineReader
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: std::string fileName;
 
@@ -73,9 +79,9 @@ class LineReader
 
     private: int32_t index = 0;
 
-    private: AbFileInputStream idFile;
+    private: AbFileInputStream* idFile;
 
-    private: DataInputStream idData;
+    private: DataInputStream* idData;
 
 public: LineReader(std::string fileName);
 

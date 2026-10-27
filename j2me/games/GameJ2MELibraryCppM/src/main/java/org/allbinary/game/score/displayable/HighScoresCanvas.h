@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Command.h>
@@ -136,53 +142,53 @@
         
 class HighScoresCanvas: public GameCommandCanvas, public HighScoresResultsListener {
 
-    public: static const std::string NAME = "HighScoresCanvas";
+    public: static inline const std::string NAME = "HighScoresCanvas";
 
-    private: Paintable paintable = NullPaintable::getInstance();
+    private: Paintable* paintable = NullPaintable::getInstance();
 
-    private: const HighScoreCommandsFactory highScoreCommandsFactory = HighScoreCommandsFactory::getInstance();
+    private: HighScoreCommandsFactory* highScoreCommandsFactory = HighScoreCommandsFactory::getInstance();
 
-    private: const SimpleTextPaintable waitPaintable = SimpleTextPaintable(this->commonStrings.PLEASE_WAIT_FOR_SERVER, BasicColorFactory::getInstance().WHITE);
+    private: SimpleTextPaintable* waitPaintable = new SimpleTextPaintable(this->commonStrings->PLEASE_WAIT_FOR_SERVER, BasicColorFactory::getInstance()->WHITE);
 
-    private: HighScoresPaintable highScoresPaintable;
+    private: HighScoresPaintable* highScoresPaintable;
 
-    private: HighScoresFactoryInterface highScoresFactoryInterface;
+    private: HighScoresFactoryInterface* highScoresFactoryInterface;
 
-    protected: ColorFillBasePaintable colorFillPaintable;
+    protected: ColorFillBasePaintable* colorFillPaintable;
 
-    private: const HighScoresHelperBase highScoresHelper = HighScoresHelperBase();
+    private: HighScoresHelperBase* highScoresHelper = new HighScoresHelperBase();
 
-    private: GameInfo gameInfo;
+    private: GameInfo* gameInfo;
 
-    private: HighScoresCanvasInputProcessor highScoresCanvasInputProcessor;
+    private: HighScoresCanvasInputProcessor* highScoresCanvasInputProcessor;
 
-    private: Command currentCommand = this->highScoreCommandsFactory.HIGH_SCORE_COMMANDS[0];
+    private: Command* currentCommand = this->highScoreCommandsFactory->HIGH_SCORE_COMMANDS[0];
 
     private: bool hasPainted = false;
 
-public: HighScoresCanvas(CommandListener commandListener, AllBinaryGameLayerManager allBinaryGameLayerManager, GameInfo gameInfo, HighScoresPaintable paintable, HighScoresFactoryInterface highScoresFactoryInterface, HighScoresCanvasInputProcessorFactoryInterface highScoresCanvasInputProcessorFactoryInterface);
+public: HighScoresCanvas(CommandListener* commandListener, AllBinaryGameLayerManager* allBinaryGameLayerManager, GameInfo* gameInfo, HighScoresPaintable* paintable, HighScoresFactoryInterface* highScoresFactoryInterface, HighScoresCanvasInputProcessorFactoryInterface* highScoresCanvasInputProcessorFactoryInterface);
 
-    public: void initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener* cmdListener);
 
     public: void open();
 
     public: void close();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
     public: void executeUpdate();
 
-    private: HighScoresPaintable getHighScoresPaintable();
+    private: HighScoresPaintable* getHighScoresPaintable();
 
-    public: void setHighScoresArray(std::vector<HighScores> highScoresArray);
+    public: void setHighScoresArray(std::vector<HighScores*> highScoresArray);
 
                 //@Throws(Exception.constructor)
             
-    public: void updateCommand(Command command);
+    public: void updateCommand(Command* command);
 
-    public: GameInfo getGameInfo();
+    public: GameInfo* getGameInfo();
 
-    private: void setPaintable(Paintable paintable);
+    private: void setPaintable(Paintable* paintable);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Long.h"
@@ -46,17 +52,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageComparisonResult.h"
+        #include "org/allbinary/media/image/comparison/ImageComparisonResult.h"
 
 class ImageComparisonResultFrameCacheable
             : public Object
-        : public CacheableInterface {
+        , public CacheableInterface {
 
-    private: Long frame;
+    private: int64_t frame;
 
-    private: ImageComparisonResult imageComparisonResult;
+    private: ImageComparisonResult* imageComparisonResult;
 
-public: ImageComparisonResultFrameCacheable(ImageComparisonResult imageComparisonResult, Long frame){
+public: ImageComparisonResultFrameCacheable(ImageComparisonResult* imageComparisonResult, int64_t frame){
 this->setImageComparisonResult(imageComparisonResult);
     
 this->frame= frame;
@@ -74,7 +80,7 @@ this->frame= frame;
 }
 
 
-    public: Long getFrame(){
+    public: int64_t getFrame(){
 
 
 
@@ -84,13 +90,13 @@ this->frame= frame;
 }
 
 
-    public: void setFrame(Long frame){
+    public: void setFrame(int64_t frame){
 this->frame= frame;
     
 }
 
 
-    public: ImageComparisonResult getImageComparisonResult(){
+    public: ImageComparisonResult* getImageComparisonResult(){
 
 
 
@@ -100,7 +106,7 @@ this->frame= frame;
 }
 
 
-    public: void setImageComparisonResult(ImageComparisonResult imageComparisonResult){
+    public: void setImageComparisonResult(ImageComparisonResult* imageComparisonResult){
 this->imageComparisonResult= imageComparisonResult;
     
 }
@@ -108,19 +114,19 @@ this->imageComparisonResult= imageComparisonResult;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->constructor.name.toString());
+stringBuffer->append(this->getClass()->getName());
     
-stringBuffer.append(" Frame: ");
+stringBuffer->append(" Frame: ");
     
-stringBuffer.appendlong(this->getFrame());
+stringBuffer->appendlong(this->getFrame());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_FORMUTIL_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_FORMUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/PointFactory.h>
@@ -58,11 +64,11 @@ class FormUtil
             : public Object
          {
 
-    private: static FormUtil instance() { return FormUtil(); }
+    private: static FormUtil* instance() { static std::unique_ptr<FormUtil> value(new FormUtil()); return value.get(); }
 
-    public: static FormUtil getInstance();
+    public: static FormUtil* getInstance();
 
-    public: Rectangle createFormRectangle();
+    public: Rectangle* createFormRectangle();
 
 };
 

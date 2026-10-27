@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -56,23 +62,23 @@ class MotionRectangles
 
     private: std::string name;
 
-    private: BasicArrayList rectangleVector;
+    private: BasicArrayList* rectangleVector;
 
-    private: ImageComparisonResult imageComparisonResult;
+    private: ImageComparisonResult* imageComparisonResult;
 
     protected: const int32_t MAX_PIXEL_DISTANCE_THRESHOLD = 2;
 
-public: MotionRectangles(std::string name, ImageComparisonResult imageComparisonResult){
+public: MotionRectangles(std::string name, ImageComparisonResult* imageComparisonResult){
 this->name= name;
     
 this->setImageComparisonResult(imageComparisonResult);
     
-this->setVector(BasicArrayListD());
+this->setVector(new BasicArrayListD());
     
 }
 
 
-    public: BasicArrayList getVector(){
+    public: BasicArrayList* getVector(){
 
 
 
@@ -82,7 +88,7 @@ this->setVector(BasicArrayListD());
 }
 
 
-    public: void setVector(BasicArrayList rectangleVector){
+    public: void setVector(BasicArrayList* rectangleVector){
 this->rectangleVector= rectangleVector;
     
 }
@@ -98,7 +104,7 @@ this->rectangleVector= rectangleVector;
 }
 
 
-    public: ImageComparisonResult getImageComparisonResult(){
+    public: ImageComparisonResult* getImageComparisonResult(){
 
 
 
@@ -108,7 +114,7 @@ this->rectangleVector= rectangleVector;
 }
 
 
-    public: void setImageComparisonResult(ImageComparisonResult imageComparisonResult){
+    public: void setImageComparisonResult(ImageComparisonResult* imageComparisonResult){
 this->imageComparisonResult= imageComparisonResult;
     
 }

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,15 +45,15 @@
         
 class DebugInterface {
 
-    void start()
+    public: virtual void start() = 0;
 
-    void stop()
+    public: virtual void stop() = 0;
 
-    int64_t getStartTime()
+    public: virtual int64_t getStartTime() = 0;
 
-    int64_t getMaxTime()
+    public: virtual int64_t getMaxTime() = 0;
 
-    bool isRunning()
+    public: virtual bool isRunning() = 0;
 
 };
 

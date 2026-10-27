@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/business/entry/EntryData.h>
 
       
@@ -54,7 +60,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogTableEntityInterface.h"
+        #include "org/allbinary/data/tables/log/LogTableEntityInterface.h"
 
 class LogTableEntity: public AbSqlBean, public LogTableEntityInterface {
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_TEXTFIELDITEMVALIDATOR_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_TEXTFIELDITEMVALIDATOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graphics/form/item/ABTextFieldItem.h>
 
       
@@ -60,7 +66,7 @@
         
 class TextFieldItemValidator: public ValidatorBase {
 
-    private: ABTextFieldItem textFieldItem;
+    private: ABTextFieldItem* textFieldItem;
 
     private: int32_t min;
 
@@ -68,11 +74,11 @@ class TextFieldItemValidator: public ValidatorBase {
 
     private: bool allowOnEmpty;
 
-public: TextFieldItemValidator(ABTextFieldItem textFieldItem, int32_t min, int32_t max, bool allowOnEmpty);
+public: TextFieldItemValidator(ABTextFieldItem* textFieldItem, int32_t min, int32_t max, bool allowOnEmpty);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
-    public: BasicArrayList toList();
+    public: BasicArrayList* toList();
 
 };
 

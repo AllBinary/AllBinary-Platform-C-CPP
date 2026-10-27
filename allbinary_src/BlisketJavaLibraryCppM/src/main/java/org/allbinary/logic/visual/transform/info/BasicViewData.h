@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_BASICVIEWDATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_BASICVIEWDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class BasicViewData
             : public Object
          {
 
-    private: static BasicViewData instance() { return BasicViewData(); }
+    private: static BasicViewData* instance() { static std::unique_ptr<BasicViewData> value(new BasicViewData()); return value.get(); }
 
-    public: static BasicViewData getInstance();
+    public: static BasicViewData* getInstance();
 
 private: BasicViewData();
 

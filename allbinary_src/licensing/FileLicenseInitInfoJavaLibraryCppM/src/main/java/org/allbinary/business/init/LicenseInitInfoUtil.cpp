@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -84,15 +90,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LicenseInitInfo.h"
+        #include "org/allbinary/business/init/LicenseInitInfo.h"
 
 class LicenseInitInfoUtil
             : public Object
          {
 
-    private: static LicenseInitInfoUtil instance() { return LicenseInitInfoUtil(); }
+    private: static LicenseInitInfoUtil* instance() { static std::unique_ptr<LicenseInitInfoUtil> value(new LicenseInitInfoUtil()); return value.get(); }
 
-    public: static LicenseInitInfoUtil getInstance(){
+    public: static LicenseInitInfoUtil* getInstance(){
 
 
 
@@ -102,9 +108,9 @@ class LicenseInitInfoUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const StringUtil stringUtil = StringUtil::getInstance();
+    private: StringUtil* stringUtil = StringUtil::getInstance();
 
     public: const std::string INITFILENAME = "licenseinitdata.dat";
 
@@ -112,7 +118,7 @@ class LicenseInitInfoUtil
 
     public: const std::string PRIVACY_POLICY = "privacy_policy";
 
-    private: std::string filePath = this->stringUtil.EMPTY_STRING;
+    private: std::string filePath = this->stringUtil->EMPTY_STRING;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void setFilePath(std::string filePath){
@@ -124,12 +130,12 @@ this->filePath= filePath;
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void write(LicenseInitInfo initData){
+    public: void write(LicenseInitInfo* initData){
 
-                        if(this->filePath == this->stringUtil.EMPTY_STRING)
+                        if(this->filePath == this->stringUtil->EMPTY_STRING)
                         
                                     {
-                                    this->filePath= URLGLOBALS::getMainPath() +PATH_GLOBALS::getInstance().INIT_PATH;
+                                    this->filePath= URLGLOBALS::getMainPath() +PATH_GLOBALS::getInstance()->INIT_PATH;
     
 
                                     }
@@ -137,20 +143,20 @@ this->filePath= filePath;
 
         try {
             
-    TsUtil tsUtil = TsUtil::getInstance();;
+    TsUtil* tsUtil = TsUtil::getInstance();;
     
 
-    AbDataOutputStream dataOutputStream = DataOutputStreamFactory::getInstance().getInstance(this->filePath, this->INITFILENAME);;
+    AbDataOutputStream* dataOutputStream = DataOutputStreamFactory::getInstance()->getInstance(this->filePath, this->INITFILENAME);;
     
 
-    std::vector<int8_t> licenseIdCrypted = tsUtil.getByteArray(WeakCrypt(1).encrypt(initData.getLicenseId()));;
+    std::vector<int8_t> licenseIdCrypted = tsUtil->getByteArray((new WeakCrypt(1))->encrypt(initData->getLicenseId()));;
     
-dataOutputStream.writeUTF(DatabaseEncoder::encode(licenseIdCrypted));
+dataOutputStream->writeUTF(DatabaseEncoder::encode(licenseIdCrypted));
     
 
-    int32_t numberOfLicenseServers = initData.getNumberOfServers();;
+    int32_t numberOfLicenseServers = initData->getNumberOfServers();;
     
-dataOutputStream.writeInt(numberOfLicenseServers);
+dataOutputStream->writeInt(numberOfLicenseServers);
     
 
     std::vector<int8_t> licenseServerCrypted;;
@@ -162,19 +168,19 @@ dataOutputStream.writeInt(numberOfLicenseServers);
                         for (
     int32_t index = 0;index < numberOfLicenseServers; index++)
         {
-licenseServerCrypted= tsUtil.getByteArray(WeakCrypt(3).encrypt(initData.getServer(index)));
+licenseServerCrypted= tsUtil->getByteArray((new WeakCrypt(3))->encrypt(initData->getServer(index)));
     
-dataOutputStream.writeUTF(DatabaseEncoder::encode(licenseServerCrypted));
+dataOutputStream->writeUTF(DatabaseEncoder::encode(licenseServerCrypted));
     
 }
 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put("Command Failed: " +this->INITFILENAME, this, "write", e);
+this->logUtil->put("Command Failed: " +this->INITFILENAME, this, "write", &e);
     
-FileStreamFactory::getInstance().delete(this->filePath, this->INITFILENAME);
+FileStreamFactory::getInstance()->delete(this->filePath, this->INITFILENAME);
     
 
 
@@ -189,7 +195,7 @@ FileStreamFactory::getInstance().delete(this->filePath, this->INITFILENAME);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: LicenseInitInfo read(){
+    public: LicenseInitInfo* read(){
 
 
 
@@ -202,28 +208,28 @@ FileStreamFactory::getInstance().delete(this->filePath, this->INITFILENAME);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: LicenseInitInfo readAgain(int32_t initializeCounter){
+    public: LicenseInitInfo* readAgain(int32_t initializeCounter){
 
     std::string METHOD_NAME = "readAgain";;
     
 
-                        if(this->filePath == this->stringUtil.EMPTY_STRING)
+                        if(this->filePath == this->stringUtil->EMPTY_STRING)
                         
                                     {
-                                    this->filePath= URLGLOBALS::getMainPath() +PATH_GLOBALS::getInstance().INIT_PATH;
+                                    this->filePath= URLGLOBALS::getMainPath() +PATH_GLOBALS::getInstance()->INIT_PATH;
     
 
                                     }
                                 
 
         try {
-            this->logUtil.putF("LicenseInitInfo File: " +this->INITFILENAME, this, METHOD_NAME);
+            this->logUtil->putF("LicenseInitInfo File: " +this->INITFILENAME, this, METHOD_NAME);
     
 
-    FileStreamFactory fileStreamFactory = FileStreamFactory::getInstance();;
+    FileStreamFactory* fileStreamFactory = FileStreamFactory::getInstance();;
     
 
-    AbFileInputStream iFile = fileStreamFactory.getFileInputStreamInstance(this->filePath, this->INITFILENAME);;
+    AbFileInputStream* iFile = fileStreamFactory->getFileInputStreamInstance(this->filePath, this->INITFILENAME);;
     
 
                         if(iFile != 
@@ -232,24 +238,24 @@ FileStreamFactory::getInstance().delete(this->filePath, this->INITFILENAME);
                         
                                     {
                                     
-    AbDataInputStream iData = AbDataInputStream(iFile);;
+    AbDataInputStream* iData = new AbDataInputStream(iFile);;
     
 
-    LicenseInitInfo initInfo = LicenseInitInfo();;
+    LicenseInitInfo* initInfo = new LicenseInitInfo();;
     
 
-    std::vector<int8_t> decodedByteArray = DatabaseEncoder::decode(iData.readUTF());;
+    std::vector<int8_t> decodedByteArray = DatabaseEncoder::decode(iData->readUTF());;
     
 
     std::string licenseIdDecoded = String.fromCharCode(...decodedByteArray);;
     
-initInfo.setLicenseId(WeakCrypt(1).decrypt(licenseIdDecoded));
+initInfo->setLicenseId((new WeakCrypt(1))->decrypt(licenseIdDecoded));
     
 
-    int32_t numberOfLicenseServers = iData.readInt();;
+    int32_t numberOfLicenseServers = iData->readInt();;
     
 
-    std::string NEXT_FILE = StringMaker().append(CommonLabels::getInstance().NEXT).append(" License Server From File: ").toString();;
+    std::string NEXT_FILE = (new StringMaker())->append(CommonLabels::getInstance()->NEXT)->append(" License Server From File: ")->toString();;
     
 
     std::string licenseServerDecoded;;
@@ -261,13 +267,13 @@ initInfo.setLicenseId(WeakCrypt(1).decrypt(licenseIdDecoded));
                         for (
     int32_t index = 0;index < numberOfLicenseServers; index++)
         {
-decodedByteArray= DatabaseEncoder::decode(iData.readUTF());
+decodedByteArray= DatabaseEncoder::decode(iData->readUTF());
     
 licenseServerDecoded= String.fromCharCode(...decodedByteArray);
     
-initInfo.setServer(WeakCrypt(3).decrypt(licenseServerDecoded), index);
+initInfo->setServer((new WeakCrypt(3))->decrypt(licenseServerDecoded), index);
     
-this->logUtil.putF(NEXT_FILE +initInfo.getServer(index), this, METHOD_NAME);
+this->logUtil->putF(NEXT_FILE +initInfo->getServer(index), this, METHOD_NAME);
     
 }
 
@@ -284,31 +290,31 @@ this->logUtil.putF(NEXT_FILE +initInfo.getServer(index), this, METHOD_NAME);
                             
 
 
-                            throw Exception("Could Not Load License InitInfo: " +this->INITFILENAME);
+                            throw new Exception("Could Not Load License InitInfo: " +this->INITFILENAME);
                     
 
                         }
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
         try {
-            this->logUtil.put("Command Failed: " +this->INITFILENAME, this, METHOD_NAME, e);
+            this->logUtil->put("Command Failed: " +this->INITFILENAME, this, METHOD_NAME, &e);
     
 
                 //: 
-} catch(e2) 
+} catch(Exception& e2) 
             {
-this->logUtil.put("LicenseInitInfo Read Retry: " +this->INITFILENAME, this, "readAgain()", e2);
+this->logUtil->put("LicenseInitInfo Read Retry: " +this->INITFILENAME, this, "readAgain()", &e2);
     
 }
 
 
 
 
-                            throw Exception("LicenseInitInfo Read Error: " +this->INITFILENAME);
+                            throw new Exception("LicenseInitInfo Read Error: " +this->INITFILENAME);
                     
 }
 

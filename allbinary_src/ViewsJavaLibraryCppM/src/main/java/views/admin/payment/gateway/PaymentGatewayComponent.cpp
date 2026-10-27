@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h>
@@ -65,11 +71,11 @@
         
 class PaymentGatewayComponent: public HttpStoreComponentView {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: PaymentGatewayInterface paymentGatewayInterface;
+    private: PaymentGatewayInterface* paymentGatewayInterface;
 
-public: PaymentGatewayComponent(TransformInfoInterface transformInfoInterface, PaymentGatewayInterface paymentGatewayInterface) : HttpStoreComponentView(transformInfoInterface){
+public: PaymentGatewayComponent(TransformInfoInterface* transformInfoInterface, PaymentGatewayInterface* paymentGatewayInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,13 +91,13 @@ this->paymentGatewayInterface= paymentGatewayInterface;
             
     public: void addDomNodeInterfaces(){
 
-    BasicPaymentType paymentType = BasicPaymentTypeUtil::getInstance().get(this->paymentGatewayInterface.getName());;
+    BasicPaymentType* paymentType = BasicPaymentTypeUtil::getInstance()->get(this->paymentGatewayInterface->getName());;
     
 
-    PaymentGatewayDomNodeFactoryInterface paymentGatewayDomNodeFactoryInterface = paymentType.getPaymentGatewayDomNodeFactoryInterface();;
+    PaymentGatewayDomNodeFactoryInterface* paymentGatewayDomNodeFactoryInterface = paymentType->getPaymentGatewayDomNodeFactoryInterface();;
     
 
-    DomNodeInterface domNodeInterface = paymentGatewayDomNodeFactoryInterface.getInstance(this->paymentGatewayInterface);;
+    DomNodeInterface* domNodeInterface = dynamic_cast<DomNodeInterface*>(paymentGatewayDomNodeFactoryInterface->getInstance(this->paymentGatewayInterface));;
     
 this->addDomNodeInterface(domNodeInterface);
     
@@ -111,16 +117,16 @@ this->addDomNodeInterface(domNodeInterface);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to view payment gateway";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }

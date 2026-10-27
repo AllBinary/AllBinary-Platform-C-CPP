@@ -21,6 +21,12 @@
         #ifndef VIEWS_GENERIC_SHIPPING_VALIDATIONVIEW_H
         #define VIEWS_GENERIC_SHIPPING_VALIDATIONVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/globals/MESSAGES.h>
@@ -50,19 +56,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShippingMethodsView.h"
-#include "Document.h"
-#include "Node.h"
+        #include "views/generic/shipping/ShippingMethodsView.h"
+#include "views/generic/shipping/Document.h"
+#include "views/generic/shipping/Node.h"
 
 class ValidationView: public ShippingMethodsView, public ValidationComponentInterface {
 
-public: ValidationView(TransformInfoInterface transformInfoInterface);
+public: ValidationView(TransformInfoInterface* transformInfoInterface);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
-    public: org::w3c::dom::Document toValidationInfoDoc();
+    public: org::w3c::dom::Document* toValidationInfoDoc();
 
-    public: org::w3c::dom::Node toValidationInfoNode(org::w3c::dom::Document document);
+    public: org::w3c::dom::Node* toValidationInfoNode(org::w3c::dom::Document* document);
 
     public: std::string validationInfo();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,26 +55,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CompleteMotionGestureListenerInterface.h"
+        #include "org/allbinary/input/motion/gesture/observer/CompleteMotionGestureListenerInterface.h"
 
 class NullCompleteMotionGestureReceiver
             : public Object
-        : public CompleteMotionGestureListenerInterface {
+        , public CompleteMotionGestureListenerInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: NullCompleteMotionGestureReceiver(){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF("Null Gesture Reciever", this, commonStrings.CONSTRUCTOR);
+this->logUtil->putF("Null Gesture Reciever", this, commonStrings->CONSTRUCTOR);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void onMotionGestureCompleted(BasicArrayList list){
+    public: void onMotionGestureCompleted(BasicArrayList* list){
 }
 
 

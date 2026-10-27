@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -74,19 +80,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AngleFactory.h"
-#include "PositionStrings.h"
-#include "Angle.h"
+        #include "org/allbinary/math/AngleFactory.h"
+#include "org/allbinary/math/PositionStrings.h"
+#include "org/allbinary/math/Angle.h"
 
 class NoDecimalTrigTable
             : public Object
          {
 
-    private: static NoDecimalTrigTable instance() { return NoDecimalTrigTable(); }
+    private: static NoDecimalTrigTable* instance() { static std::unique_ptr<NoDecimalTrigTable> value(new NoDecimalTrigTable()); return value.get(); }
 
-    public: static NoDecimalTrigTable getInstance();
+    public: static NoDecimalTrigTable* getInstance();
 
-    private: const MathUtil mathUtil = MathUtil::getInstance();
+    private: MathUtil* mathUtil = MathUtil::getInstance();
 
     private: std::vector<int64_t> noDecimalSin;
 

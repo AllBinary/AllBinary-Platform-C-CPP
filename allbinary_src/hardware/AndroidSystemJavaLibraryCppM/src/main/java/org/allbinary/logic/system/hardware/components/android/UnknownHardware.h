@@ -23,6 +23,12 @@
 
             #include <hilog/log.h>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>
@@ -49,13 +55,13 @@
         
 class UnknownHardware
             : public Object
-        : public HardwareComponentInterface {
+        , public HardwareComponentInterface {
 
     private: std::string data;
 
 public: UnknownHardware(std::string data);
 
-    public: bool compareTo(HardwareComponentInterface componentInterface);
+    public: bool compareTo(HardwareComponentInterface* componentInterface);
 
     public: std::string toString();
 

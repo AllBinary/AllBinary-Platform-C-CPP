@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,16 +55,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryLoader.h"
-#include "CategoryLoaderInterface.h"
+        #include "org/allbinary/data/tree/category/CategoryLoader.h"
+#include "org/allbinary/data/tree/category/CategoryLoaderInterface.h"
 
 class CategoryLoaderFactory
             : public Object
          {
 
-    public: static CategoryLoaderInterface getInstance(CategoryFactoryInterface categoryFactoryInterface){
+    public: static CategoryLoaderInterface* getInstance(CategoryFactoryInterface* categoryFactoryInterface){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
         try {
@@ -66,20 +72,20 @@ class CategoryLoaderFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CategoryLoader(categoryFactoryInterface);
+                        return new CategoryLoader(categoryFactoryInterface);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
                         
                                     {
-                                    logUtil.put(commonStrings.EXCEPTION, "CategoryNodeFactory", commonStrings.GET_INSTANCE, e);
+                                    logUtil->put(commonStrings->EXCEPTION, "CategoryNodeFactory", commonStrings->GET_INSTANCE, &e);
     
 
                                     }

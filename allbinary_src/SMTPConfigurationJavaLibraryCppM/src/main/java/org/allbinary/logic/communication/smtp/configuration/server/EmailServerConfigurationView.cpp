@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,20 +67,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "EmailServerConfigurationInterface.h"
-#include "EmailServerConfigurationData.h"
-#include "EmailServerConfiguration.h"
-#include "EmailServerConfigurationMapping.h"
+        #include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationInterface.h"
+#include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationData.h"
+#include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfiguration.h"
+#include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationMapping.h"
 
 class EmailServerConfigurationView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: EmailServerConfigurationInterface emailServerConfigurationInterface;
+    private: EmailServerConfigurationInterface* emailServerConfigurationInterface;
 
-public: EmailServerConfigurationView(Node node){
+public: EmailServerConfigurationView(Node* node){
 
-    NodeList childNodeList = node.getChildNodes();;
+    NodeList* childNodeList = node->getChildNodes();;
     
 
     std::string server = DomNodeHelper::getTextNodeValue(EmailServerConfigurationData::SERVER, childNodeList);;
@@ -85,18 +91,18 @@ public: EmailServerConfigurationView(Node node){
 
     std::string password = DomNodeHelper::getTextNodeValue(EmailServerConfigurationData::PASSWORD, childNodeList);;
     
-this->emailServerConfigurationInterface= EmailServerConfiguration(accountName, password, server);
+this->emailServerConfigurationInterface= dynamic_cast<EmailServerConfigurationInterface*>(new EmailServerConfiguration(accountName, password, server));
     
 }
 
 
-public: EmailServerConfigurationView(EmailServerConfigurationInterface emailServerConfigurationInterface){
+public: EmailServerConfigurationView(EmailServerConfigurationInterface* emailServerConfigurationInterface){
 this->emailServerConfigurationInterface= emailServerConfigurationInterface;
     
 }
 
 
-    public: EmailServerConfigurationInterface getEmailConfigurationInterface(){
+    public: EmailServerConfigurationInterface* getEmailConfigurationInterface(){
 
 
 
@@ -108,15 +114,15 @@ this->emailServerConfigurationInterface= emailServerConfigurationInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    EmailServerConfigurationMapping emailConfigurationMapping = EmailServerConfigurationMapping(this->emailServerConfigurationInterface);;
+    EmailServerConfigurationMapping* emailConfigurationMapping = new EmailServerConfigurationMapping(this->emailServerConfigurationInterface);;
     
 
-    HashMap<Object*, Object*> hashMap = emailConfigurationMapping.toHashMap();;
+    HashMap<Object*, Object*>* hashMap = emailConfigurationMapping->toHashMap();;
     
 
-    Node node = ModDomHelper::createNodeWithValueNodes(document, EmailServerConfigurationData::NAME, hashMap);;
+    Node* node = ModDomHelper::createNodeWithValueNodes(document, EmailServerConfigurationData::NAME, hashMap);;
     
 
 

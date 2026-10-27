@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_RENDERER_RENDERERSTRINGS_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_RENDERER_RENDERERSTRINGS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class RendererStrings
             : public Object
          {
 
-    private: static RendererStrings instance() { return RendererStrings(); }
+    private: static RendererStrings* instance() { static std::unique_ptr<RendererStrings> value(new RendererStrings()); return value.get(); }
 
-    public: static RendererStrings getInstance();
+    public: static RendererStrings* getInstance();
 
     public: const std::string ON_SURFACE_CREATED = "onSurfaceCreated";
 

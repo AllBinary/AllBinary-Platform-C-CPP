@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -58,13 +64,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "IndexedAnimation.h"
-#include "VectorAnimationInterface.h"
-#include "AnimationBehavior.h"
+        #include "org/allbinary/animation/IndexedAnimation.h"
+#include "org/allbinary/animation/VectorAnimationInterface.h"
+#include "org/allbinary/animation/AnimationBehavior.h"
 
 class VectorAnimation: public IndexedAnimation, public VectorAnimationInterface {
 
-    public: static VectorAnimation createVectorAnimation(std::vector<std::vector<int32_t>> currentPoints2, BasicColor basicColor, AnimationBehavior animationBehavior){
+    public: static VectorAnimation* createVectorAnimation(std::vector<std::vector<int32_t>> currentPoints2, BasicColor* basicColor, AnimationBehavior* animationBehavior){
 
     std::vector<std::vector<std::vector<int32_t>>> currentPoints = std::vector<std::vector<std::vector<int32_t>>>(1, std::vector<std::vector<int32_t>>(currentPoints2.length, std::vector<int32_t>(2)));;
     
@@ -88,16 +94,16 @@ currentPoints[0][index][1]= currentPoints2[index][1];
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return VectorAnimation(currentPoints, basicColor, animationBehavior);
+                        return new VectorAnimation(currentPoints, basicColor, animationBehavior);
     
 }
 
 
-    private: std::vector<std::vector<std::vector<int32_t>>> currentPoints = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY_ARRAY;
+    private: std::vector<std::vector<std::vector<int32_t>>> currentPoints = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY_ARRAY;
 
-    private: CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstance(0);
+    private: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::createInstance(0);
 
-public: VectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior) : IndexedAnimation(animationBehavior){
+public: VectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -111,14 +117,14 @@ this->setBasicColorP(basicColor);
 }
 
 
-    public: void setBasicColorP(BasicColor basicColor){
+    public: void setBasicColorP(BasicColor* basicColor){
 
     bool changed = false;;
     
 
                         if(this->getBasicColorP() == 
                                     nullptr
-                                 || this->getBasicColorP().intValue() != basicColor.intValue())
+                                 || this->getBasicColorP()->intValue() != basicColor->intValue())
                         
                                     {
                                     changed= true;
@@ -140,14 +146,14 @@ super.setBasicColorP(basicColor);
 }
 
 
-    public: void changeBasicColor(BasicColor basicColor){
+    public: void changeBasicColor(BasicColor* basicColor){
 
     bool changed = false;;
     
 
                         if(this->getChangeBasicColor() == 
                                     nullptr
-                                 || this->getChangeBasicColor().intValue() != basicColor.intValue())
+                                 || this->getChangeBasicColor()->intValue() != basicColor->intValue())
                         
                                     {
                                     changed= true;
@@ -245,18 +251,18 @@ super.setAlpha(alpha);
 
 
     public: void nextFrame(){
-this->circularIndexUtil.next();
+this->circularIndexUtil->next();
     
 }
 
 
     public: void previousFrame(){
-this->circularIndexUtil.previous();
+this->circularIndexUtil->previous();
     
 }
 
 
-    protected: void paintVectors(Graphics graphics, int32_t x, int32_t y){
+    protected: void paintVectors(Graphics* graphics, int32_t x, int32_t y){
 
         try {
             
@@ -272,7 +278,7 @@ this->circularIndexUtil.previous();
     std::vector<int32_t> point;;
     
 
-    std::vector<std::vector<int32_t>> currentPointsFrame = this->currentPoints[this->circularIndexUtil.getIndex()];;
+    std::vector<std::vector<int32_t>> currentPointsFrame = this->currentPoints[this->circularIndexUtil->getIndex()];;
     
 
     int32_t size = currentPointsFrame.size();;
@@ -295,7 +301,7 @@ nextPointY= nextPoint[1];
                         if(nextPointX != 1000)
                         
                                     {
-                                    graphics.drawLine(point[0] +x, point[1] +y, nextPointX +x, nextPointY +y);
+                                    graphics->drawLine(point[0] +x, point[1] +y, nextPointX +x, nextPointY +y);
     
 
                                     }
@@ -310,16 +316,16 @@ nextPointY= nextPoint[1];
 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "paintVectors", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "paintVectors", &e);
     
 }
 
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 this->basicSetColorUtil.setBasicColorP(graphics, this->basicColor);
     
 this->paintVectors(graphics, x, y);
@@ -332,13 +338,13 @@ this->paintVectors(graphics, x, y);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->circularIndexUtil.getIndex();;
+                        return this->circularIndexUtil->getIndex();;
     
 }
 
 
     public: void setFrame(int32_t index){
-this->circularIndexUtil.setIndex(index);
+this->circularIndexUtil->setIndex(index);
     
 }
 

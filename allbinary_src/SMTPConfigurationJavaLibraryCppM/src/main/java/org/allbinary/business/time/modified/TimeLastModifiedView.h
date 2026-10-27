@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_TIME_MODIFIED_TIMELASTMODIFIEDVIEW_H
         #define ORG_ALLBINARY_BUSINESS_TIME_MODIFIED_TIMELASTMODIFIEDVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,25 +67,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TimeLastModified.h"
+        #include "org/allbinary/business/time/modified/TimeLastModified.h"
 
 class TimeLastModifiedView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: TimeLastModified timeLastModified;
+    private: TimeLastModified* timeLastModified;
 
-public: TimeLastModifiedView(TimeLastModified timeLastModified);
+public: TimeLastModifiedView(TimeLastModified* timeLastModified);
 
-public: TimeLastModifiedView(Node node);
+public: TimeLastModifiedView(Node* node);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
-    public: TimeLastModified getTimeLastModified();
+    public: TimeLastModified* getTimeLastModified();
 
-    public: void setTimeLastModified(TimeLastModified timeLastModified);
+    public: void setTimeLastModified(TimeLastModified* timeLastModified);
 
 };
 

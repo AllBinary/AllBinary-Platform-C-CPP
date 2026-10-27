@@ -8,6 +8,12 @@
         
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <android/app/Activity.h>
@@ -42,19 +48,19 @@ class ViewSwapper
             : public Object
          {
 
-    public: static const std::vector<View> NULL_VIEW_ARRAY = {};
+    public: static inline const std::vector<View*> NULL_VIEW_ARRAY = {};
 
     private: int32_t rootViewId;
 
-    private: Activity activity;
+    private: Activity* activity;
 
     private: int32_t currentMainViewId =  -1;
 
-    private: std::vector<View> mainViewArray = ViewSwapper::NULL_VIEW_ARRAY;
+    private: std::vector<View*> mainViewArray = ViewSwapper::NULL_VIEW_ARRAY;
 
-    private: std::vector<View> topViewArray = ViewSwapper::NULL_VIEW_ARRAY;
+    private: std::vector<View*> topViewArray = ViewSwapper::NULL_VIEW_ARRAY;
 
-public: ViewSwapper(Activity activity, int32_t rootViewId){
+public: ViewSwapper(Activity* activity, int32_t rootViewId){
 this->activity= activity;
     
 this->rootViewId= rootViewId;
@@ -62,13 +68,13 @@ this->rootViewId= rootViewId;
 }
 
 
-    public: void setMainViews(std::vector<View> viewArray){
+    public: void setMainViews(std::vector<View*> viewArray){
 this->mainViewArray= viewArray;
     
 }
 
 
-    public: void setTopViewArray(std::vector<View> topViewArray){
+    public: void setTopViewArray(std::vector<View*> topViewArray){
 this->topViewArray= topViewArray;
     
 }
@@ -76,7 +82,7 @@ this->topViewArray= topViewArray;
 
     public: void setMainView(int32_t id){
 
-    ViewGroup viewGroup = this->activity.findViewById(this->rootViewId) as unknown;;
+    ViewGroup* viewGroup = dynamic_cast<ViewGroup*>(this->activity->findViewById(this->rootViewId) as unknown);;
     
 
                         if(id != this->currentMainViewId)
@@ -89,7 +95,7 @@ this->topViewArray= topViewArray;
                         for (
     int32_t index = 0;index < this->topViewArray.size(); index++)
         {
-viewGroup.removeView(this->topViewArray[index]);
+viewGroup->removeView(this->topViewArray[index]);
     
 }
 
@@ -104,7 +110,7 @@ viewGroup.removeView(this->topViewArray[index]);
                         if(id != this->mainViewArray[index].getId())
                         
                                     {
-                                    viewGroup.removeView(this->mainViewArray[index]);
+                                    viewGroup->removeView(this->mainViewArray[index]);
     
 
                                     }
@@ -122,7 +128,7 @@ viewGroup.removeView(this->topViewArray[index]);
                         if(id == this->mainViewArray[index].getId())
                         
                                     {
-                                    viewGroup.addView(this->mainViewArray[index]);
+                                    viewGroup->addView(this->mainViewArray[index]);
     
 this->currentMainViewId= id;
     
@@ -138,7 +144,7 @@ this->currentMainViewId= id;
                         for (
     int32_t index = 0;index < this->topViewArray.size(); index++)
         {
-viewGroup.addView(this->topViewArray[index]);
+viewGroup->addView(this->topViewArray[index]);
     
 }
 

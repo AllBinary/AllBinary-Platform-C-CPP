@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -72,16 +78,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SunJCE.h"
-#include "KeySpecFactory.h"
+        #include "org/allbinary/logic/system/security/crypt/jcehelper/SunJCE.h"
+#include "org/allbinary/logic/system/security/crypt/jcehelper/KeySpecFactory.h"
 
 class AbBasicCrypt
             : public Object
-        : public CryptInterface {
+        , public CryptInterface {
 
-    private: Cipher cipher;
+    private: Cipher* cipher;
 
-    private: SecretKey secretKey;
+    private: SecretKey* secretKey;
 
     private: std::string algorithm;
 

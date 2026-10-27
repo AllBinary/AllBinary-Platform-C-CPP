@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -44,26 +50,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PathFindingInfoInterface.h"
-#include "PathFindingNodeCostInfoFactoryBase.h"
-#include "GeographicPathFinderBase.h"
-#include "PathFindingNode.h"
+        #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingInfoInterface.h"
+#include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfoFactoryBase.h"
+#include "org/allbinary/media/graphics/geography/pathfinding/GeographicPathFinderBase.h"
+#include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNode.h"
 
 class PathFindingInfo
             : public Object
-        : public PathFindingInfoInterface {
+        , public PathFindingInfoInterface {
 
-    public: static const PathFindingInfo NULL_PATH_FINDING_INFO = PathFindingInfo(PathFindingNodeCostInfoFactoryBase::NULL_PATH_FINDING_NODE_COST_INFO_FACTORY_BASE, BasicArrayListUtil::getInstance().getImmutableInstance(), BasicArrayListUtil::getInstance().getImmutableInstance());
+    public: static PathFindingInfo* NULL_PATH_FINDING_INFO() { static std::unique_ptr<PathFindingInfo> value(new PathFindingInfo(PathFindingNodeCostInfoFactoryBase::NULL_PATH_FINDING_NODE_COST_INFO_FACTORY_BASE, BasicArrayListUtil::getInstance()->getImmutableInstance(), BasicArrayListUtil::getInstance()->getImmutableInstance())); return value.get(); }
 
-    private: GeographicPathFinderBase pathFinder = GeographicPathFinderBase::NULL_GEOGRAPHIC_PATH_FINDER_BASE;
+    private: GeographicPathFinderBase* pathFinder = GeographicPathFinderBase::NULL_GEOGRAPHIC_PATH_FINDER_BASE;
 
-    private: BasicArrayList startPathFindingNodeList;
+    private: BasicArrayList* startPathFindingNodeList;
 
-    private: BasicArrayList endPathFindingNodeList;
+    private: BasicArrayList* endPathFindingNodeList;
 
-    private: PathFindingNodeCostInfoFactoryBase pathFindingNodeCostInfoFactoryInterface;
+    private: PathFindingNodeCostInfoFactoryBase* pathFindingNodeCostInfoFactoryInterface;
 
-public: PathFindingInfo(PathFindingNodeCostInfoFactoryBase pathFindingNodeCostInfoFactoryInterface, BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList){
+public: PathFindingInfo(PathFindingNodeCostInfoFactoryBase* pathFindingNodeCostInfoFactoryInterface, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList){
 this->pathFindingNodeCostInfoFactoryInterface= pathFindingNodeCostInfoFactoryInterface;
     
 this->startPathFindingNodeList= startPathFindingNodeList;
@@ -73,7 +79,7 @@ this->endPathFindingNodeList= endPathFindingNodeList;
 }
 
 
-    public: BasicArrayList getStartPathFindingNodeList(){
+    public: BasicArrayList* getStartPathFindingNodeList(){
 
 
 
@@ -83,7 +89,7 @@ this->endPathFindingNodeList= endPathFindingNodeList;
 }
 
 
-    public: BasicArrayList getEndPathFindingNodeList(){
+    public: BasicArrayList* getEndPathFindingNodeList(){
 
 
 
@@ -93,7 +99,7 @@ this->endPathFindingNodeList= endPathFindingNodeList;
 }
 
 
-    public: GeographicPathFinderBase getPathFinder(){
+    public: GeographicPathFinderBase* getPathFinder(){
 
 
 
@@ -103,25 +109,25 @@ this->endPathFindingNodeList= endPathFindingNodeList;
 }
 
 
-    public: void addStartPathFindingNode(PathFindingNode startPathFindingNode){
-this->startPathFindingNodeList.add(startPathFindingNode);
+    public: void addStartPathFindingNode(PathFindingNode* startPathFindingNode){
+this->startPathFindingNodeList->add(startPathFindingNode);
     
 }
 
 
-    public: void addEndPathFindingNode(PathFindingNode endPathFindingNode){
-this->endPathFindingNodeList.add(endPathFindingNode);
+    public: void addEndPathFindingNode(PathFindingNode* endPathFindingNode){
+this->endPathFindingNodeList->add(endPathFindingNode);
     
 }
 
 
-    public: void setPathFinder(GeographicPathFinderBase pathFinder){
+    public: void setPathFinder(GeographicPathFinderBase* pathFinder){
 this->pathFinder= pathFinder;
     
 }
 
 
-    public: PathFindingNodeCostInfoFactoryBase getPathFindingNodeCostInfoFactoryInterface(){
+    public: PathFindingNodeCostInfoFactoryBase* getPathFindingNodeCostInfoFactoryInterface(){
 
 
 

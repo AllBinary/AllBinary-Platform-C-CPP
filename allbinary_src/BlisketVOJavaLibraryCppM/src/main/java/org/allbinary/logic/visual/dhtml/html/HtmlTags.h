@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLTAGS_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLTAGS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -50,19 +56,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HtmlTag.h"
+        #include "org/allbinary/logic/visual/dhtml/html/HtmlTag.h"
 
 class HtmlTags
             : public Object
          {
 
-    private: BasicArrayList htmlTagVector;
+    private: BasicArrayList* htmlTagVector;
 
 public: HtmlTags();
 
-    public: HtmlTag get(int32_t index);
+    public: HtmlTag* get(int32_t index);
 
-    public: void add(HtmlTag htmlTag);
+    public: void add(HtmlTag* htmlTag);
 
     public: int32_t size();
 

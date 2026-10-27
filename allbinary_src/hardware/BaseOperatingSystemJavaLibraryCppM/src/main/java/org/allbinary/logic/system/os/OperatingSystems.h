@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMS_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class OperatingSystems
             : public Object
          {
 
-    private: static OperatingSystems instance() { return OperatingSystems(); }
+    private: static OperatingSystems* instance() { static std::unique_ptr<OperatingSystems> value(new OperatingSystems()); return value.get(); }
 
-    public: static OperatingSystems getInstance();
+    public: static OperatingSystems* getInstance();
 
     public: const std::string LINUX = "Linux";
 

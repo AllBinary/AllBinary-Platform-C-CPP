@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_NAMESPACEREQUESTPARAMDATA_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_NAMESPACEREQUESTPARAMDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,17 +52,17 @@ class NameSpaceRequestParamData
             : public Object
          {
 
-    public: static const std::string NAME = "NAMESPACE_REQUESTDATA_NAME";
+    public: static inline const std::string NAME = "NAMESPACE_REQUESTDATA_NAME";
 
-    public: static const std::string VALUE = "INPUT_VALUE";
+    public: static inline const std::string VALUE = "INPUT_VALUE";
 
-    public: static const std::string PROPERTIES = "_PROPERTIES_";
+    public: static inline const std::string PROPERTIES = "_PROPERTIES_";
 
-    public: static const std::string SEP = "_DOT_";
+    public: static inline const std::string SEP = "_DOT_";
 
-    public: static const std::string PROPERTIESSEPARATOR = "_PROPDOT_";
+    public: static inline const std::string PROPERTIESSEPARATOR = "_PROPDOT_";
 
-    public: static const std::string DOCUMENT = "NAMESPACE_REQUESTDATA_DOCUMENT";
+    public: static inline const std::string DOCUMENT = "NAMESPACE_REQUESTDATA_DOCUMENT";
 
 public: NameSpaceRequestParamData();
 

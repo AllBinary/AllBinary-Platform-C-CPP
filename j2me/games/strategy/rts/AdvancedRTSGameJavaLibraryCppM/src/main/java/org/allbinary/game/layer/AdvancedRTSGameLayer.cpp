@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -172,46 +178,46 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RTSLayer.h"
-#include "NullPathFindingLayer.h"
-#include "AdvancedRTSProperties.h"
-#include "PathFindingLayerInterface.h"
-#include "WaypointBehaviorBase.h"
-#include "AdvancedRTSPlayerLayerInterface.h"
-#include "RTSPlayerLayerInterface.h"
-#include "RTSLayerUtil.h"
+        #include "org/allbinary/game/layer/RTSLayer.h"
+#include "org/allbinary/game/layer/NullPathFindingLayer.h"
+#include "org/allbinary/game/layer/AdvancedRTSProperties.h"
+#include "org/allbinary/game/layer/PathFindingLayerInterface.h"
+#include "org/allbinary/game/layer/WaypointBehaviorBase.h"
+#include "org/allbinary/game/layer/AdvancedRTSPlayerLayerInterface.h"
+#include "org/allbinary/game/layer/RTSPlayerLayerInterface.h"
+#include "org/allbinary/game/layer/RTSLayerUtil.h"
 
 class AdvancedRTSGameLayer: public RTSLayer, public DestroyedEventListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: static AdvancedRTSGameLayer createSimulated(){
+    public: static AdvancedRTSGameLayer* createSimulated(){
 
-    AnimationInterfaceFactoryInterface nullAnimationInterfaceFactoryInterface = NullAnimationFactory::getFactoryInstance();;
+    AnimationInterfaceFactoryInterface* nullAnimationInterfaceFactoryInterface = NullAnimationFactory::getFactoryInstance();;
     
 
-    AnimationInterfaceFactoryInterface nullIndexedAnimationInterfaceFactoryInterface = NullIndexedAnimationFactory::getFactoryInstance();;
+    AnimationInterfaceFactoryInterface* nullIndexedAnimationInterfaceFactoryInterface = NullIndexedAnimationFactory::getFactoryInstance();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdvancedRTSGameLayer(RemoteInfo::REMOTE_INFO, NullPathFindingLayer::NULL_PATH_FINDING_LAYER, AdvancedRTSProperties::createPropertiesSimulated(), GroupFactory::getInstance().NULL_GROUP_ARRAY, StringUtil::getInstance().EMPTY_STRING, StringUtil::getInstance().EMPTY_STRING, Health::NULL_HEALTH, NullRTSFormInputFactory::getInstance(), nullAnimationInterfaceFactoryInterface, nullIndexedAnimationInterfaceFactoryInterface, nullAnimationInterfaceFactoryInterface, nullAnimationInterfaceFactoryInterface, nullIndexedAnimationInterfaceFactoryInterface, NullIndexedAnimationFactory::getFactoryInstance(), RectangleFactory::SINGLETON, 0, 0, TileLayerPositionIntoViewPosition());
+                        return new AdvancedRTSGameLayer(RemoteInfo::REMOTE_INFO, NullPathFindingLayer::NULL_PATH_FINDING_LAYER, AdvancedRTSProperties::createPropertiesSimulated(), GroupFactory::getInstance()->NULL_GROUP_ARRAY, StringUtil::getInstance()->EMPTY_STRING, StringUtil::getInstance()->EMPTY_STRING, Health::NULL_HEALTH, NullRTSFormInputFactory::getInstance(), nullAnimationInterfaceFactoryInterface, nullIndexedAnimationInterfaceFactoryInterface, nullAnimationInterfaceFactoryInterface, nullAnimationInterfaceFactoryInterface, nullIndexedAnimationInterfaceFactoryInterface, NullIndexedAnimationFactory::getFactoryInstance(), RectangleFactory::SINGLETON, 0, 0, new TileLayerPositionIntoViewPosition());
     
 }
 
 
-    protected: ShakeAnimationListener shakeListener;
+    protected: ShakeAnimationListener* shakeListener;
 
-    protected: AllBinaryVibrationME vibration;
+    protected: AllBinaryVibrationME* vibration;
 
     protected: int32_t duration;
 
-    private: PathFindingLayerInterface parentLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
+    private: PathFindingLayerInterface* parentLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
-    protected: TickableInterface waypointBehaviorBase = NullTickable::getInstance();
+    protected: TickableInterface* waypointBehaviorBase = NullTickable::getInstance();
 
-public: AdvancedRTSGameLayer(RemoteInfo remoteInfo, PathFindingLayerInterface parentLayer, AdvancedRTSProperties advancedRTSProperties, std::vector<Group> groupInterface, std::string rootName, std::string name, Health healthInterface, RTSFormInput rtsFormInput, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y, ViewPositionBase viewPosition) : RTSLayer(remoteInfo, groupInterface, rootName, name, healthInterface, rtsFormInput, animationInterfaceFactoryInterface, emptyAnimationInterfaceFactoryInterface, baseAnimationInterfaceFactoryInterface, buildAnimationInterfaceFactoryInterface, verticleBuildAnimationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y, viewPosition){
+public: AdvancedRTSGameLayer(RemoteInfo* remoteInfo, PathFindingLayerInterface* parentLayer, AdvancedRTSProperties* advancedRTSProperties, std::vector<Group*> groupInterface, std::string rootName, std::string name, Health* healthInterface, RTSFormInput* rtsFormInput, AnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface* proceduralAnimationInterfaceFactoryInterface, Rectangle* rectangle, int32_t x, int32_t y, ViewPositionBase* viewPosition) : RTSLayer(remoteInfo, groupInterface, rootName, name, healthInterface, rtsFormInput, animationInterfaceFactoryInterface, emptyAnimationInterfaceFactoryInterface, baseAnimationInterfaceFactoryInterface, buildAnimationInterfaceFactoryInterface, verticleBuildAnimationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y, viewPosition){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -220,13 +226,13 @@ public: AdvancedRTSGameLayer(RemoteInfo remoteInfo, PathFindingLayerInterface pa
                     
 this->setVisible(false);
     
-this->setWaypointBehavior(WaypointBehaviorBase());
+this->setWaypointBehavior(new WaypointBehaviorBase());
     
-this->shakeListener= advancedRTSProperties.shakeListener;
+this->shakeListener= advancedRTSProperties->shakeListener;
     
-this->vibration= advancedRTSProperties.vibration;
+this->vibration= advancedRTSProperties->vibration;
     
-this->duration= advancedRTSProperties.duration;
+this->duration= advancedRTSProperties->duration;
     
 this->setParentLayer(parentLayer);
     
@@ -235,20 +241,20 @@ this->setParentLayer(parentLayer);
 
                 //@Throws(Exception.constructor)
             
-    public: void updateWaypointBehavior(BasicGeographicMap geographicMapInterface){
+    public: void updateWaypointBehavior(BasicGeographicMap* geographicMapInterface){
 super.updateWaypointBehavior(geographicMapInterface);
     
-this->getWaypointBehavior().getWaypoint().setAllBinaryGameLayerManager(this->allBinaryGameLayerManagerP);
+this->getWaypointBehavior()->getWaypoint()->setAllBinaryGameLayerManager(this->allBinaryGameLayerManagerP);
     
 }
 
 
-    protected: void initVisibility(RTSPlayerLayerInterface rtsPlayerLayerInterface){
+    protected: void initVisibility(RTSPlayerLayerInterface* rtsPlayerLayerInterface){
 
-    AdvancedRTSPlayerLayerInterface advancedRTSPlayerLayerInterface = rtsPlayerLayerInterface;;
+    AdvancedRTSPlayerLayerInterface* advancedRTSPlayerLayerInterface = dynamic_cast<AdvancedRTSPlayerLayerInterface*>(rtsPlayerLayerInterface);;
     
 
-                        if(advancedRTSPlayerLayerInterface.isLocalPlayer() || advancedRTSPlayerLayerInterface.getGameType() == GameTypeFactory::getInstance().BOT)
+                        if(advancedRTSPlayerLayerInterface->isLocalPlayer() || advancedRTSPlayerLayerInterface->getGameType() == GameTypeFactory::getInstance()->BOT)
                         
                                     {
                                     this->setVisible(true);
@@ -267,12 +273,12 @@ this->getWaypointBehavior().getWaypoint().setAllBinaryGameLayerManager(this->all
 
                 //@Throws(Exception.constructor)
             
-    public: void construct(RTSPlayerLayerInterface rtsPlayerLayerInterface){
+    public: void construct(RTSPlayerLayerInterface* rtsPlayerLayerInterface){
 super.construct(rtsPlayerLayerInterface);
     
 this->initVisibility(rtsPlayerLayerInterface);
     
-BuildingEventHandler::getInstance().addListenerInterface(this->getWaypointBehavior().getWaypoint());
+BuildingEventHandler::getInstance()->addListenerInterface(this->getWaypointBehavior()->getWaypoint());
     
 }
 
@@ -286,13 +292,13 @@ super.setDestroyed(destroyed);
                         if(this->isDestroyed())
                         
                                     {
-                                    BuildingEventHandler::getInstance().removeListener(this->getWaypointBehavior().getWaypoint());
+                                    BuildingEventHandler::getInstance()->removeListener(this->getWaypointBehavior()->getWaypoint());
     
-BuildingEventHandler::getInstance().removeListener(this);
+BuildingEventHandler::getInstance()->removeListener(this);
     
-DestroyedEventHandler::getInstance().addListener(this);
+DestroyedEventHandler::getInstance()->addListener(this);
     
-RTSLayerUtil::getInstance().destroyAndClear(this->getWaypointBehavior().getOwnedWaypointList());
+RTSLayerUtil::getInstance()->destroyAndClear(this->getWaypointBehavior()->getOwnedWaypointList());
     
 
                                     }
@@ -300,7 +306,7 @@ RTSLayerUtil::getInstance().destroyAndClear(this->getWaypointBehavior().getOwned
 }
 
 
-    public: PathFindingLayerInterface getParentLayer(){
+    public: PathFindingLayerInterface* getParentLayer(){
 
 
 
@@ -310,29 +316,29 @@ RTSLayerUtil::getInstance().destroyAndClear(this->getWaypointBehavior().getOwned
 }
 
 
-    public: void setParentLayer(PathFindingLayerInterface parentLayer){
+    public: void setParentLayer(PathFindingLayerInterface* parentLayer){
 this->parentLayer= parentLayer;
     
 }
 
 
-    public: WaypointBehaviorBase getWaypointBehavior(){
+    public: WaypointBehaviorBase* getWaypointBehavior(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->waypointBehaviorBase;
+                        return dynamic_cast<WaypointBehaviorBase*>(this->waypointBehaviorBase);
     
 }
 
 
-    protected: void setWaypointBehavior(WaypointBehaviorBase unitWaypointHelper){
+    protected: void setWaypointBehavior(WaypointBehaviorBase* unitWaypointHelper){
 this->waypointBehaviorBase= unitWaypointHelper;
     
 }
 
 
-    public: WaypointLogHelper getWaypointLogHelper(){
+    public: WaypointLogHelper* getWaypointLogHelper(){
 
 
 
@@ -342,7 +348,7 @@ this->waypointBehaviorBase= unitWaypointHelper;
 }
 
 
-    public: Waypoint2LogHelper getWaypoint2LogHelper(){
+    public: Waypoint2LogHelper* getWaypoint2LogHelper(){
 
 
 
@@ -352,7 +358,7 @@ this->waypointBehaviorBase= unitWaypointHelper;
 }
 
 
-    public: WaypointRunnableLogHelper getWaypointRunnableLogHelper(){
+    public: WaypointRunnableLogHelper* getWaypointRunnableLogHelper(){
 
 
 
@@ -368,10 +374,10 @@ this->waypointBehaviorBase= unitWaypointHelper;
                         
                                     {
                                     
-    AdvancedRTSGameLayer parentAdvancedRTSGameLayer = this->parentLayer;;
+    AdvancedRTSGameLayer* parentAdvancedRTSGameLayer = dynamic_cast<AdvancedRTSGameLayer*>(this->parentLayer);;
     
 
-                        if(parentAdvancedRTSGameLayer.getType() != UnitLayer::getStaticType())
+                        if(parentAdvancedRTSGameLayer->getType() != UnitLayer::getStaticType())
                         
                                     {
                                     
@@ -420,24 +426,24 @@ this->waypointBehaviorBase= unitWaypointHelper;
 
                 //@Throws(Exception.constructor)
             
-    public: bool buildingChase(AllBinaryLayer allbinaryLayer, GeographicMapCellPosition cellPosition){
+    public: bool buildingChase(AllBinaryLayer* allbinaryLayer, GeographicMapCellPosition* cellPosition){
 
-    GeographicMapCellPosition geographicMapCellPosition = this->getCurrentGeographicMapCellPosition();;
+    GeographicMapCellPosition* geographicMapCellPosition = this->getCurrentGeographicMapCellPosition();;
     
 
-    Direction buildingDirection = GeographicMapDirectionUtil::getInstance().getDirectionFromCellPositionToAdjacentCellPosition(geographicMapCellPosition, cellPosition);;
+    Direction* buildingDirection = GeographicMapDirectionUtil::getInstance()->getDirectionFromCellPositionToAdjacentCellPosition(geographicMapCellPosition, cellPosition);;
     
 
-    AngleInfo angleInfo = this->getRotationAnimationInterface().getAngleInfoP();;
+    AngleInfo* angleInfo = this->getRotationAnimationInterface()->getAngleInfoP();;
     
 
-    int32_t angle = FrameUtil::getInstance().adjustAngleToFrameAngle(angleInfo.getAngle() +90);;
+    int32_t angle = FrameUtil::getInstance()->adjustAngleToFrameAngle(angleInfo->getAngle() +90);;
     
 
-    GameKeyEventFactory gameKeyEventFactory = GameKeyEventFactory::getInstance();;
+    GameKeyEventFactory* gameKeyEventFactory = GameKeyEventFactory::getInstance();;
     
 
-                        if(buildingDirection == DirectionFactory::getInstance().UP)
+                        if(buildingDirection == DirectionFactory::getInstance()->UP)
                         
                                     {
                                     this->rtsLayer2LogHelper.buildingAbove(this);
@@ -448,7 +454,7 @@ this->waypointBehaviorBase= unitWaypointHelper;
                                     {
                                     this->rtsLayer2LogHelper.buildingChaseLeft(this, angle);
     
-this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canvas::LEFT));
+this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Canvas::LEFT));
     
 
                         if(angle <= 190)
@@ -469,7 +475,7 @@ this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canv
                         else {
                             this->rtsLayer2LogHelper.buildingChaseRight(this, angle);
     
-this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canvas::RIGHT));
+this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Canvas::RIGHT));
     
 
                         if(angle >= 170)
@@ -491,7 +497,7 @@ this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canv
                                     }
                                 
                              else 
-                        if(buildingDirection == DirectionFactory::getInstance().DOWN)
+                        if(buildingDirection == DirectionFactory::getInstance()->DOWN)
                         
                                     {
                                     this->rtsLayer2LogHelper.buildingDown(this);
@@ -502,7 +508,7 @@ this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canv
                                     {
                                     this->rtsLayer2LogHelper.buildingChaseLeft(this, angle);
     
-this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canvas::RIGHT));
+this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Canvas::RIGHT));
     
 
                         if(angle > 315)
@@ -523,7 +529,7 @@ this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canv
                         else {
                             this->rtsLayer2LogHelper.buildingChaseRight(this, angle);
     
-this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canvas::LEFT));
+this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Canvas::LEFT));
     
 
                         if(angle < 45)
@@ -545,7 +551,7 @@ this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canv
                                     }
                                 
                              else 
-                        if(buildingDirection == DirectionFactory::getInstance().LEFT)
+                        if(buildingDirection == DirectionFactory::getInstance()->LEFT)
                         
                                     {
                                     this->rtsLayer2LogHelper.buildingLeft();
@@ -556,7 +562,7 @@ this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canv
                                     {
                                     this->rtsLayer2LogHelper.buildingChaseDown(this, angle);
     
-this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canvas::LEFT));
+this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Canvas::LEFT));
     
 
                         if(angle < 135)
@@ -577,7 +583,7 @@ this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canv
                         else {
                             this->rtsLayer2LogHelper.buildingChaseUp(this, angle);
     
-this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canvas::RIGHT));
+this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Canvas::RIGHT));
     
 
                         if(angle > 45)
@@ -599,7 +605,7 @@ this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canv
                                     }
                                 
                              else 
-                        if(buildingDirection == DirectionFactory::getInstance().RIGHT)
+                        if(buildingDirection == DirectionFactory::getInstance()->RIGHT)
                         
                                     {
                                     this->rtsLayer2LogHelper.buildingRight();
@@ -610,7 +616,7 @@ this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canv
                                     {
                                     this->rtsLayer2LogHelper.buildingChaseDown(this, angle);
     
-this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canvas::RIGHT));
+this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Canvas::RIGHT));
     
 
                         if(angle > 225)
@@ -631,7 +637,7 @@ this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canv
                         else {
                             this->rtsLayer2LogHelper.buildingChaseUp(this, angle);
     
-this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canvas::LEFT));
+this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Canvas::LEFT));
     
 
                         if(angle < 315 && angle > 180)
@@ -673,12 +679,12 @@ this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canv
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getSurroundingGeographicMapCellPositionList(){
+    public: BasicArrayList* getSurroundingGeographicMapCellPositionList(){
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = this->allBinaryGameLayerManagerP;;
+    GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(this->allBinaryGameLayerManagerP);;
     
 
-    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
+    BasicGeographicMap* geographicMapInterface = geographicMapCompositeInterface->getGeographicMapInterface()[0];;
     
 this->geographicMapCellPositionAreaBase.update(geographicMapInterface);
     
@@ -727,31 +733,31 @@ this->waypointRunnableLogHelperP= WaypointRunnableLogHelper::getInstance();
 }
 
 
-    public: void onDestroyed(DestroyedEvent destroyedEvent){
+    public: void onDestroyed(DestroyedEvent* destroyedEvent){
 
         try {
             
-    AllBinaryLayer layerInterface = destroyedEvent.getLayerInterface();;
+    AllBinaryLayer* layerInterface = destroyedEvent->getLayerInterface();;
     
 
                         if(layerInterface == this)
                         
                                     {
-                                    DestroyedEventHandler::getInstance().removeListener(this);
+                                    DestroyedEventHandler::getInstance()->removeListener(this);
     
 
-    WaypointBase waypoint = this->getWaypointBehavior().getWaypoint();;
+    WaypointBase* waypoint = dynamic_cast<WaypointBase*>(this->getWaypointBehavior()->getWaypoint());;
     
-waypoint.reset();
+waypoint->reset();
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "onDestroyed", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "onDestroyed", &e);
     
 }
 

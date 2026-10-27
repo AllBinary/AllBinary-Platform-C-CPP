@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYSCREENRELATIONALIMAGEANIMATIONINTERFACEFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYSCREENRELATIONALIMAGEANIMATIONINTERFACEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -68,18 +74,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseImageAnimationFactory.h"
-#include "ImageAnimation.h"
+        #include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
+#include "org/allbinary/animation/image/ImageAnimation.h"
 
 class AllBinaryScreenRelationalImageAnimationInterfaceFactory: public BaseImageAnimationFactory {
 
-    private: Image lastImage = NullImage::NULL_IMAGE;
+    private: Image* lastImage = NullImage::NULL_IMAGE;
 
-public: AllBinaryScreenRelationalImageAnimationInterfaceFactory(Image image, AnimationBehaviorFactory animationBehaviorFactory);
+public: AllBinaryScreenRelationalImageAnimationInterfaceFactory(Image* image, AnimationBehaviorFactory* animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId);
+    public: Animation* getInstance(int32_t instanceId);
 
 };
 

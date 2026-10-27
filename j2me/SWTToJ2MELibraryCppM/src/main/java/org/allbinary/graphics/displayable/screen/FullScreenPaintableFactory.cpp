@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/paint/FullScreenPaintable.h>
@@ -49,9 +55,9 @@ class FullScreenPaintableFactory
             : public Object
          {
 
-    private: static FullScreenPaintableFactory instance() { return FullScreenPaintableFactory(); }
+    private: static FullScreenPaintableFactory* instance() { static std::unique_ptr<FullScreenPaintableFactory> value(new FullScreenPaintableFactory()); return value.get(); }
 
-    public: static FullScreenPaintableFactory getInstance(){
+    public: static FullScreenPaintableFactory* getInstance(){
 
 
 
@@ -61,7 +67,7 @@ class FullScreenPaintableFactory
 }
 
 
-    public: Paintable paintable = FullScreenPaintable::getInstance();
+    public: Paintable* paintable = FullScreenPaintable::getInstance();
 
 };
 

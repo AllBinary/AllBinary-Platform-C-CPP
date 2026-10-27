@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESDATA_H
         #define ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class RemoteHighScoresData
             : public Object
          {
 
-    private: static const RemoteHighScoresData SINGLETON = RemoteHighScoresData();
+    private: static RemoteHighScoresData* SINGLETON() { static std::unique_ptr<RemoteHighScoresData> value(new RemoteHighScoresData()); return value.get(); }
 
-    public: static RemoteHighScoresData getInstance();
+    public: static RemoteHighScoresData* getInstance();
 
     public: const std::string HIGH_SCORES = "HIGH_SCORES";
 

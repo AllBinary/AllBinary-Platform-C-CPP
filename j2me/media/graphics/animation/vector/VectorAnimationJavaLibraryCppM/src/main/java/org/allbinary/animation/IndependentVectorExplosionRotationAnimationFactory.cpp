@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -51,26 +57,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProceduralAnimationInterfaceFactoryInterface.h"
-#include "VectorAnimationFactoryInterface.h"
-#include "VectorRotationGenerator.h"
-#include "VectorExplosionGenerator.h"
-#include "IndexedAnimation.h"
-#include "Animation.h"
+        #include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/VectorAnimationFactoryInterface.h"
+#include "org/allbinary/animation/VectorRotationGenerator.h"
+#include "org/allbinary/animation/VectorExplosionGenerator.h"
+#include "org/allbinary/animation/IndexedAnimation.h"
+#include "org/allbinary/animation/Animation.h"
 
 class IndependentVectorExplosionRotationAnimationFactory
             : public Object
-        : public ProceduralAnimationInterfaceFactoryInterface {
+        , public ProceduralAnimationInterfaceFactoryInterface {
 
-    private: std::vector<std::vector<std::vector<int32_t>>> framePoints = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY_ARRAY;
+    private: std::vector<std::vector<std::vector<int32_t>>> framePoints = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY_ARRAY;
 
-    private: VectorInfo vectorInfo;
+    private: VectorInfo* vectorInfo;
 
-    private: BasicColor basicColor;
+    private: BasicColor* basicColor;
 
-    private: VectorAnimationFactoryInterface vectorAnimationFactoryInterface;
+    private: VectorAnimationFactoryInterface* vectorAnimationFactoryInterface;
 
-public: IndependentVectorExplosionRotationAnimationFactory(VectorInfo vectorInfo, BasicColor basicColor, VectorAnimationFactoryInterface vectorAnimationFactoryInterface){
+public: IndependentVectorExplosionRotationAnimationFactory(VectorInfo* vectorInfo, BasicColor* basicColor, VectorAnimationFactoryInterface* vectorAnimationFactoryInterface){
 this->vectorInfo= vectorInfo;
     
 this->basicColor= basicColor;
@@ -85,16 +91,16 @@ this->init();
                 //@Throws(Exception.constructor)
             
     protected: void init(){
-this->framePoints= VectorRotationGenerator::getInstance().getInstance(this->vectorInfo);
+this->framePoints= VectorRotationGenerator::getInstance()->getInstance(this->vectorInfo);
     
 }
 
 
-    private: const VectorExplosionGenerator vectorExplosionGenerator = VectorExplosionGenerator::getInstance();
+    private: VectorExplosionGenerator* vectorExplosionGenerator = VectorExplosionGenerator::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstanceAnimation(Animation animationInterface){
+    public: Animation* getInstanceAnimation(Animation* animationInterface){
 
     int32_t frame = 0;;
     
@@ -105,21 +111,21 @@ this->framePoints= VectorRotationGenerator::getInstance().getInstance(this->vect
                         
                                     {
                                     
-    IndexedAnimation rotationAnimationInterface = animationInterface;;
+    IndexedAnimation* rotationAnimationInterface = dynamic_cast<IndexedAnimation*>(animationInterface);;
     
-frame= rotationAnimationInterface.getFrame();
+frame= rotationAnimationInterface->getFrame();
     
 
                                     }
                                 
 
-    std::vector<std::vector<std::vector<int32_t>>> points = this->vectorExplosionGenerator.getInstance(this->framePoints[frame], 6, this->vectorExplosionGenerator.ROTATION);;
+    std::vector<std::vector<std::vector<int32_t>>> points = this->vectorExplosionGenerator->getInstance(this->framePoints[frame], 6, this->vectorExplosionGenerator->ROTATION);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->vectorAnimationFactoryInterface.getInstance(points, this->basicColor);;
+                        return this->vectorAnimationFactoryInterface->getInstance(points, this->basicColor);;
     
 }
 

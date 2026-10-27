@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
@@ -46,22 +52,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PathFindingNodeCostInfoFactoryBase.h"
-#include "PathFindingNodeCostInfo.h"
+        #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfoFactoryBase.h"
+#include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfo.h"
 
 class PathFindingNodeCostInfoFactory: public PathFindingNodeCostInfoFactoryBase {
 
-    private: std::vector<std::vector<PathFindingNodeCostInfo>> pathFindingNodeCostInfoAdjacencyList;
+    private: std::vector<std::vector<PathFindingNodeCostInfo*>> pathFindingNodeCostInfoAdjacencyList;
 
 public: PathFindingNodeCostInfoFactory(int32_t max){
-this->pathFindingNodeCostInfoAdjacencyList= std::vector<std::vector<PathFindingNodeCostInfo>>(max, std::vector<PathFindingNodeCostInfo>(max));
+this->pathFindingNodeCostInfoAdjacencyList= std::vector<std::vector<PathFindingNodeCostInfo*>>(max, std::vector<PathFindingNodeCostInfo*>(max));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void create(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition goingToGeographicMapCellPosition, GeographicMapCellPosition geographicMapCellPosition, int64_t costFromStart, int64_t costToEnd){
+    public: void create(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* goingToGeographicMapCellPosition, GeographicMapCellPosition* geographicMapCellPosition, int64_t costFromStart, int64_t costToEnd){
 this->getInstance(goingToGeographicMapCellPosition, geographicMapCellPosition, costFromStart, costToEnd);
     
 }
@@ -69,9 +75,9 @@ this->getInstance(goingToGeographicMapCellPosition, geographicMapCellPosition, c
 
                 //@Throws(Exception.constructor)
             
-    public: PathFindingNodeCostInfo getInstance(GeographicMapCellPosition goingToGeographicMapCellPosition, GeographicMapCellPosition geographicMapCellPosition, int64_t costFromStart, int64_t costToEnd){
+    public: PathFindingNodeCostInfo* getInstance(GeographicMapCellPosition* goingToGeographicMapCellPosition, GeographicMapCellPosition* geographicMapCellPosition, int64_t costFromStart, int64_t costToEnd){
 
-    PathFindingNodeCostInfo pathFindingNodeCostInfo = this->getInstance(goingToGeographicMapCellPosition, geographicMapCellPosition);;
+    PathFindingNodeCostInfo* pathFindingNodeCostInfo = this->getInstance(goingToGeographicMapCellPosition, geographicMapCellPosition);;
     
 
                         if(pathFindingNodeCostInfo == 
@@ -79,21 +85,21 @@ this->getInstance(goingToGeographicMapCellPosition, geographicMapCellPosition, c
                                 )
                         
                                     {
-                                    pathFindingNodeCostInfo= PathFindingNodeCostInfo(costFromStart, costToEnd);
+                                    pathFindingNodeCostInfo= new PathFindingNodeCostInfo(costFromStart, costToEnd);
     
-pathFindingNodeCostInfo.setCalculatedTotalCost();
+pathFindingNodeCostInfo->setCalculatedTotalCost();
     
-this->pathFindingNodeCostInfoAdjacencyList[geographicMapCellPosition.getId()][goingToGeographicMapCellPosition.getId()]= pathFindingNodeCostInfo;
+this->pathFindingNodeCostInfoAdjacencyList[geographicMapCellPosition->getId()][goingToGeographicMapCellPosition->getId()]= pathFindingNodeCostInfo;
     
 
                                     }
                                 
                         else {
-                            pathFindingNodeCostInfo.setCostFromStart(costFromStart);
+                            pathFindingNodeCostInfo->setCostFromStart(costFromStart);
     
-pathFindingNodeCostInfo.setCostToEnd(costToEnd);
+pathFindingNodeCostInfo->setCostToEnd(costToEnd);
     
-pathFindingNodeCostInfo.setCalculatedTotalCost();
+pathFindingNodeCostInfo->setCalculatedTotalCost();
     
 
                         }
@@ -107,22 +113,22 @@ pathFindingNodeCostInfo.setCalculatedTotalCost();
 }
 
 
-    public: PathFindingNodeCostInfo getInstance(GeographicMapCellPosition goingToFromGeographicMapCellPosition, GeographicMapCellPosition geographicMapCellPosition){
+    public: PathFindingNodeCostInfo* getInstance(GeographicMapCellPosition* goingToFromGeographicMapCellPosition, GeographicMapCellPosition* geographicMapCellPosition){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->pathFindingNodeCostInfoAdjacencyList[geographicMapCellPosition.getId()][goingToFromGeographicMapCellPosition.getId()];
+                        return this->pathFindingNodeCostInfoAdjacencyList[geographicMapCellPosition->getId()][goingToFromGeographicMapCellPosition->getId()];
     
 }
 
 
-    public: int64_t getTotalCost(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition comingFromGeographicMapCellPosition, GeographicMapCellPosition geographicMapCellPosition){
+    public: int64_t getTotalCost(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* comingFromGeographicMapCellPosition, GeographicMapCellPosition* geographicMapCellPosition){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getInstance(comingFromGeographicMapCellPosition, geographicMapCellPosition).totalCostP;
+                        return this->getInstance(comingFromGeographicMapCellPosition, geographicMapCellPosition)->totalCostP;
     
 }
 

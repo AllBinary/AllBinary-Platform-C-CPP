@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEALWAYSPICKUPNEVERCOLLIDEBEHAVIORFACTORY_H
         #define ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEALWAYSPICKUPNEVERCOLLIDEBEHAVIORFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,19 +45,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CollidableBaseBehaviorFactory.h"
-#include "CollidableAlwaysPickupNeverCollideBehavior.h"
-#include "CollidableBaseBehavior.h"
+        #include "org/allbinary/game/collision/CollidableBaseBehaviorFactory.h"
+#include "org/allbinary/game/collision/CollidableAlwaysPickupNeverCollideBehavior.h"
+#include "org/allbinary/game/collision/CollidableBaseBehavior.h"
 
 class CollidableAlwaysPickupNeverCollideBehaviorFactory: public CollidableBaseBehaviorFactory {
 
-    private: static const CollidableAlwaysPickupNeverCollideBehaviorFactory instanceC = CollidableAlwaysPickupNeverCollideBehaviorFactory();
+    private: static CollidableAlwaysPickupNeverCollideBehaviorFactory* instanceC() { static std::unique_ptr<CollidableAlwaysPickupNeverCollideBehaviorFactory> value(new CollidableAlwaysPickupNeverCollideBehaviorFactory()); return value.get(); }
 
-    public: static CollidableAlwaysPickupNeverCollideBehaviorFactory getInstance();
+    public: static CollidableAlwaysPickupNeverCollideBehaviorFactory* getInstance();
 
-    private: const CollidableAlwaysPickupNeverCollideBehavior instance = CollidableAlwaysPickupNeverCollideBehavior();
+    private: CollidableAlwaysPickupNeverCollideBehavior* instance = new CollidableAlwaysPickupNeverCollideBehavior();
 
-    public: CollidableBaseBehavior createBehavior();
+    public: CollidableBaseBehavior* createBehavior();
 
 };
 

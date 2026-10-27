@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/osgi/framework/Bundle.h>
@@ -64,35 +70,35 @@
         
 class InputAutomationModuleServiceFactory
             : public Object
-        : public ServiceFactory {
+        , public ServiceFactory {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray;
+    private: std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterfaceArray;
 
 public: InputAutomationModuleServiceFactory(){
 }
 
 
-    public: Object* getService(Bundle bundle, ServiceRegistration registration){
-this->logUtil.putF(this->commonStrings.START, this, "getService");
+    public: Object* getService(Bundle* bundle, ServiceRegistration* registration){
+this->logUtil->putF(this->commonStrings->START, this, "getService");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputAutomationModuleService(this->getInputAutomationModuleInterfaceArray());
+                        return new InputAutomationModuleService(this->getInputAutomationModuleInterfaceArray());
     
 }
 
 
-    public: void ungetService(Bundle bundle, ServiceRegistration registration, Object* service){
+    public: void ungetService(Bundle* bundle, ServiceRegistration* registration, Object* service){
 }
 
 
-    public: std::vector<InputAutomationModuleFactoryInterface> getInputAutomationModuleInterfaceArray(){
+    public: std::vector<InputAutomationModuleFactoryInterface*> getInputAutomationModuleInterfaceArray(){
 
 
 
@@ -102,7 +108,7 @@ this->logUtil.putF(this->commonStrings.START, this, "getService");
 }
 
 
-    public: void setInputAutomationModuleInterfaceArray(std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray){
+    public: void setInputAutomationModuleInterfaceArray(std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterfaceArray){
 this->inputAutomationModuleInterfaceArray= inputAutomationModuleInterfaceArray;
     
 }

@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_BASICEMAILQUEUE_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_BASICEMAILQUEUE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/mail/Transport.h>
@@ -53,36 +61,36 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "EmailQueueInterface.h"
+        #include "org/allbinary/logic/communication/smtp/queue/EmailQueueInterface.h"
 
 class BasicEmailQueue: public BasicQueue, public EmailQueueInterface {
 
-    private: static BasicEmailQueue instance() { return BasicEmailQueue(); }
+    private: static BasicEmailQueue* instance() { static std::unique_ptr<BasicEmailQueue> value(new BasicEmailQueue()); return value.get(); }
 
-    private: static BasicEmailQueue basicEmailQueue;
+    private: static inline BasicEmailQueue* basicEmailQueue;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static BasicEmailQueue getInstance();
+    public: static BasicEmailQueue* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: BasicEmailQueue();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool offer(EmailInterface emailInterface);
+    public: bool offer(EmailInterface* emailInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: void remove(EmailInterface emailInterface);
+    private: void remove(EmailInterface* emailInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: EmailInterface remove();
+    public: EmailInterface* remove();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: void post(EmailInterface emailInterface);
+    private: void post(EmailInterface* emailInterface);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -90,7 +98,7 @@ private: BasicEmailQueue();
     protected: void processAllUnsent();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: bool send(EmailInterface emailInterface);
+    private: bool send(EmailInterface* emailInterface);
 
 };
 

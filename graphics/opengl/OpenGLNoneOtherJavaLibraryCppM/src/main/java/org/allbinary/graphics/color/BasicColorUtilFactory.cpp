@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,13 +44,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicColorUtil.h"
+        #include "org/allbinary/graphics/color/BasicColorUtil.h"
 
 class BasicColorUtilFactory
             : public Object
          {
 
-    public: static BasicColorUtil getInstance(){
+    public: static BasicColorUtil* getInstance(){
 
 
 

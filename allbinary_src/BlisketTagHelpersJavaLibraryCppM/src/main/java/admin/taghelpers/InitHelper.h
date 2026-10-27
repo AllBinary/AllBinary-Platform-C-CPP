@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_INITHELPER_H
         #define ADMIN_TAGHELPERS_INITHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -53,13 +59,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicTable.h"
+        #include "admin/taghelpers/BasicTable.h"
 
 class InitHelper: public BasicTable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: InitHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
     public: std::string drop();
 

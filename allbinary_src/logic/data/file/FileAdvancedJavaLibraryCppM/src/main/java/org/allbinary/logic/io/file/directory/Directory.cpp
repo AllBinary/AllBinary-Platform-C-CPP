@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -71,9 +77,9 @@ class Directory
             : public Object
          {
 
-    private: static Directory instance() { return Directory(); }
+    private: static Directory* instance() { static std::unique_ptr<Directory> value(new Directory()); return value.get(); }
 
-    public: static Directory getInstance(){
+    public: static Directory* getInstance(){
 
 
 
@@ -87,20 +93,20 @@ private: Directory(){
 }
 
 
-    public: bool create(AbPath directoryAbPath){
+    public: bool create(AbPath* directoryAbPath){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->create(directoryAbPath.toFileSystemString());;
+                        return this->create(directoryAbPath->toFileSystemString());;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void remove(AbPath existingDirectoryAbPath){
-this->remove(existingDirectoryAbPath.toFileSystemString());
+    public: void remove(AbPath* existingDirectoryAbPath){
+this->remove(existingDirectoryAbPath->toFileSystemString());
     
 }
 
@@ -109,16 +115,16 @@ this->remove(existingDirectoryAbPath.toFileSystemString());
 
         try {
             
-    AbFile directoryFile = FileFactory::getInstance().getInstance(directory);;
+    AbFile* directoryFile = FileFactory::getInstance()->getInstance(directory);;
     
 
-                        if(!directoryFile.isDirectory())
+                        if(!directoryFile->isDirectory())
                         
                                     {
                                     PreLogUtil::put("Creating Directories: " +directory, this, "create");
     
 
-                        if(!directoryFile.mkdirs())
+                        if(!directoryFile->mkdirs())
                         
                                     {
                                     
@@ -141,9 +147,9 @@ this->remove(existingDirectoryAbPath.toFileSystemString());
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-PreLogUtil::putOE("Error Creating Directories: " +directory, this, "create", e);
+PreLogUtil::putOE("Error Creating Directories: " +directory, this, "create", &e);
     
 
 
@@ -160,26 +166,26 @@ PreLogUtil::putOE("Error Creating Directories: " +directory, this, "create", e);
             
     private: void remove(std::string existingDirectory){
 
-    AbFile existingDirectoryFile = FileFactory::getInstance().getInstance(existingDirectory);;
+    AbFile* existingDirectoryFile = FileFactory::getInstance()->getInstance(existingDirectory);;
     
 
-                        if(existingDirectoryFile.isDirectory())
+                        if(existingDirectoryFile->isDirectory())
                         
                                     {
                                     
-                        if(existingDirectoryFile.list().length > 0)
+                        if(existingDirectoryFile->list()->length > 0)
                         
                                     {
                                     
 
 
-                            throw Exception("Did not remove category: " +existingDirectory +" because files exist");
+                            throw new Exception("Did not remove category: " +existingDirectory +" because files exist");
                     
 
                                     }
                                 
                              else 
-                        if(existingDirectoryFile.delete_())
+                        if(existingDirectoryFile->delete_())
                         
                                     {
                                     PreLogUtil::put("Successfully Removed: " +existingDirectory, "Directory", "remove");
@@ -194,7 +200,7 @@ PreLogUtil::putOE("Error Creating Directories: " +directory, this, "create", e);
                             
 
 
-                            throw Exception("Category Directory Is Missing:" +existingDirectory);
+                            throw new Exception("Category Directory Is Missing:" +existingDirectory);
                     
 
                         }
@@ -202,7 +208,7 @@ PreLogUtil::putOE("Error Creating Directories: " +directory, this, "create", e);
 }
 
 
-    public: BasicArrayList search(FileFilter fileFilter, AbFile file){
+    public: BasicArrayList* search(FileFilter* fileFilter, AbFile* file){
 
 
 
@@ -212,19 +218,19 @@ PreLogUtil::putOE("Error Creating Directories: " +directory, this, "create", e);
 }
 
 
-    public: BasicArrayList search(FileFilter fileFilter, AbFile file, bool isRecursiveSearch){
+    public: BasicArrayList* search(FileFilter* fileFilter, AbFile* file, bool isRecursiveSearch){
 
-    BasicArrayList fileList = BasicArrayListD();;
+    BasicArrayList* fileList = new BasicArrayListD();;
     
 
-    BasicArrayList recursiveFileList;;
+    BasicArrayList* recursiveFileList;;
     
 
-                        if(file.isDirectory())
+                        if(file->isDirectory())
                         
                                     {
                                     
-    std::vector<Object*> fileArray = file.listFilesFileFilter(fileFilter);;
+    std::vector<Object*> fileArray = file->listFilesFileFilter(fileFilter);;
     
 
                         if(fileArray == 
@@ -242,7 +248,7 @@ PreLogUtil::putOE("Error Creating Directories: " +directory, this, "create", e);
                                     }
                                 
 
-    std::vector<AbFile> files = FileWrapperUtil::wrapFiles(fileArray);;
+    std::vector<AbFile*> files = FileWrapperUtil::wrapFiles(fileArray);;
     
 
                         if(files == 
@@ -269,7 +275,7 @@ PreLogUtil::putOE("Error Creating Directories: " +directory, this, "create", e);
                         for (
     int32_t index = 0;index < size; index++)
         {
-fileList.add(files[index]);
+fileList->add(files[index]);
     
 
                         if(isRecursiveSearch)
@@ -277,7 +283,7 @@ fileList.add(files[index]);
                                     {
                                     recursiveFileList= this->search(fileFilter, files[index], isRecursiveSearch);
     
-fileList.addAllList(recursiveFileList);
+fileList->addAllList(recursiveFileList);
     
 
                                     }
@@ -296,7 +302,7 @@ fileList.addAllList(recursiveFileList);
 }
 
 
-    public: BasicArrayList search(AbFile file){
+    public: BasicArrayList* search(AbFile* file){
 
 
 
@@ -306,19 +312,19 @@ fileList.addAllList(recursiveFileList);
 }
 
 
-    public: BasicArrayList search(AbFile file, bool isRecursiveSearch){
+    public: BasicArrayList* search(AbFile* file, bool isRecursiveSearch){
 
-    BasicArrayList fileList = BasicArrayListD();;
+    BasicArrayList* fileList = new BasicArrayListD();;
     
 
-    BasicArrayList recursiveFileList;;
+    BasicArrayList* recursiveFileList;;
     
 
-                        if(file.isDirectory())
+                        if(file->isDirectory())
                         
                                     {
                                     
-    std::vector<Object*> fileArray = file.listFiles();;
+    std::vector<Object*> fileArray = file->listFiles();;
     
 
                         if(fileArray == 
@@ -336,7 +342,7 @@ fileList.addAllList(recursiveFileList);
                                     }
                                 
 
-    std::vector<AbFile> files = FileWrapperUtil::wrapFiles(fileArray);;
+    std::vector<AbFile*> files = FileWrapperUtil::wrapFiles(fileArray);;
     
 
                         if(files == 
@@ -360,7 +366,7 @@ fileList.addAllList(recursiveFileList);
                         for (
     int32_t index = 0;index < files.size(); index++)
         {
-fileList.add(files[index]);
+fileList->add(files[index]);
     
 
                         if(isRecursiveSearch)
@@ -368,7 +374,7 @@ fileList.add(files[index]);
                                     {
                                     recursiveFileList= this->search(files[index], isRecursiveSearch);
     
-fileList.addAllList(recursiveFileList);
+fileList->addAllList(recursiveFileList);
     
 
                                     }
@@ -387,7 +393,7 @@ fileList.addAllList(recursiveFileList);
 }
 
 
-    public: BasicArrayList search(std::string searchValue, AbFile file){
+    public: BasicArrayList* search(std::string searchValue, AbFile* file){
 
 
 
@@ -397,19 +403,19 @@ fileList.addAllList(recursiveFileList);
 }
 
 
-    public: BasicArrayList search(std::string searchValue, AbFile file, bool isRecursiveSearch){
+    public: BasicArrayList* search(std::string searchValue, AbFile* file, bool isRecursiveSearch){
 
-    BasicArrayList fileList = BasicArrayListD();;
+    BasicArrayList* fileList = new BasicArrayListD();;
     
 
-    BasicArrayList recursiveFileList;;
+    BasicArrayList* recursiveFileList;;
     
 
-                        if(file.isDirectory())
+                        if(file->isDirectory())
                         
                                     {
                                     
-    std::vector<Object*> fileArray = file.listFiles();;
+    std::vector<Object*> fileArray = file->listFiles();;
     
 
                         if(fileArray == 
@@ -427,7 +433,7 @@ fileList.addAllList(recursiveFileList);
                                     }
                                 
 
-    std::vector<AbFile> files = FileWrapperUtil::wrapFiles(fileArray);;
+    std::vector<AbFile*> files = FileWrapperUtil::wrapFiles(fileArray);;
     
 
                         if(files == 
@@ -452,10 +458,10 @@ fileList.addAllList(recursiveFileList);
     int32_t index = 0;index < files.size(); index++)
         {
 
-                        if(files[index].getPath().indexOf(searchValue) >= 0)
+                        if(files[index].getPath()->indexOf(searchValue) >= 0)
                         
                                     {
-                                    fileList.add(files[index]);
+                                    fileList->add(files[index]);
     
 
                                     }
@@ -466,7 +472,7 @@ fileList.addAllList(recursiveFileList);
                                     {
                                     recursiveFileList= this->search(searchValue, files[index], isRecursiveSearch);
     
-fileList.addAllList(recursiveFileList);
+fileList->addAllList(recursiveFileList);
     
 
                                     }
@@ -485,7 +491,7 @@ fileList.addAllList(recursiveFileList);
 }
 
 
-    public: BasicArrayList search(int32_t level, AbFile file){
+    public: BasicArrayList* search(int32_t level, AbFile* file){
 
 
 
@@ -495,19 +501,19 @@ fileList.addAllList(recursiveFileList);
 }
 
 
-    public: BasicArrayList search(int32_t level, AbFile file, bool isRecursiveSearch){
+    public: BasicArrayList* search(int32_t level, AbFile* file, bool isRecursiveSearch){
 
-    BasicArrayList fileList = BasicArrayListD();;
+    BasicArrayList* fileList = new BasicArrayListD();;
     
 
-    BasicArrayList recursiveFileList;;
+    BasicArrayList* recursiveFileList;;
     
 
-                        if(file.isDirectory())
+                        if(file->isDirectory())
                         
                                     {
                                     
-    std::vector<Object*> fileArray = file.listFiles();;
+    std::vector<Object*> fileArray = file->listFiles();;
     
 
                         if(fileArray == 
@@ -525,7 +531,7 @@ fileList.addAllList(recursiveFileList);
                                     }
                                 
 
-    std::vector<AbFile> files = FileWrapperUtil::wrapFiles(fileArray);;
+    std::vector<AbFile*> files = FileWrapperUtil::wrapFiles(fileArray);;
     
 
                         if(files == 
@@ -549,7 +555,7 @@ fileList.addAllList(recursiveFileList);
                         for (
     int32_t index = 0;index < files.size(); index++)
         {
-fileList.add(files[index]);
+fileList->add(files[index]);
     
 
                         if(level <= 0)
@@ -566,7 +572,7 @@ fileList.add(files[index]);
                                 
 recursiveFileList= this->search(level -1, files[index], isRecursiveSearch);
     
-fileList.addAllList(recursiveFileList);
+fileList->addAllList(recursiveFileList);
     
 }
 

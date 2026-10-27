@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_EMULATOR_SWT_SWTRUNNABLEPROCESSOR_H
         #define ORG_ALLBINARY_EMULATOR_SWT_SWTRUNNABLEPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/eclipse/swt/widgets/Display.h>
 
       
@@ -42,15 +48,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SWTProcessor.h"
+        #include "org/allbinary/emulator/swt/SWTProcessor.h"
 
 class SWTRunnableProcessor: public SWTProcessor {
 
-    private: static const SWTRunnableProcessor instanceR = SWTRunnableProcessor();
+    private: static SWTRunnableProcessor* instanceR() { static std::unique_ptr<SWTRunnableProcessor> value(new SWTRunnableProcessor()); return value.get(); }
 
-    public: static SWTRunnableProcessor getInstance();
+    public: static SWTRunnableProcessor* getInstance();
 
-    public: void process(Display display);
+    public: void process(Display* display);
 
 };
 

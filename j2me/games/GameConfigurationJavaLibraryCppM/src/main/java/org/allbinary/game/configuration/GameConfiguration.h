@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATION_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,49 +69,49 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameConfigurationSingleton.h"
+        #include "org/allbinary/game/configuration/GameConfigurationSingleton.h"
 
 class GameConfiguration
             : public Object
          {
 
-    private: static const Integer MIN_VALUE = Integer(Integer::MIN_VALUE);
+    private: static inline int32_t MIN_VALUE = int32_t(Integer.MIN_VALUE());
 
-    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: Integer defaultValue = SmallIntegerSingletonFactory::getInstance().getAt(0);
+    private: int32_t defaultValue = SmallIntegerSingletonFactory::getInstance()->getAt(0);
 
-    private: Integer value = GameConfiguration::MIN_VALUE;
+    private: int32_t value = GameConfiguration::MIN_VALUE();
 
-    private: Integer minValue = this->defaultValue;
+    private: int32_t minValue = this->defaultValue;
 
-    private: Integer maxValue = this->defaultValue;
+    private: int32_t maxValue = this->defaultValue;
 
-    private: Boolean modifiable = BooleanFactory::getInstance().TRUE;
+    private: bool modifiable = BooleanFactory::getInstance()->TRUE;
 
-public: GameConfiguration(std::string name, Integer defaultValue, Integer minValue, Integer maxValue);
+public: GameConfiguration(std::string name, int32_t defaultValue, int32_t minValue, int32_t maxValue);
 
                 //@Throws(Exception.constructor)
             
-    public: void setValue(Integer value);
+    public: void setValue(int32_t value);
 
-    public: Integer getValue();
+    public: int32_t getValue();
 
-    public: void setMaxValue(Integer maxValue);
+    public: void setMaxValue(int32_t maxValue);
 
-    public: Integer getMaxValue();
+    public: int32_t getMaxValue();
 
-    public: void setMinValue(Integer minValue);
+    public: void setMinValue(int32_t minValue);
 
-    public: Integer getMinValue();
+    public: int32_t getMinValue();
 
     public: void setName(std::string name);
 
     public: std::string getName();
 
-    public: void setDefaultValue(Integer defaultValue);
+    public: void setDefaultValue(int32_t defaultValue);
 
-    protected: Integer getDefaultValue();
+    protected: int32_t getDefaultValue();
 
                 //@Throws(Exception.constructor)
             
@@ -113,9 +119,9 @@ public: GameConfiguration(std::string name, Integer defaultValue, Integer minVal
 
     public: std::string toString();
 
-    public: void setModifiable(Boolean modifiable);
+    public: void setModifiable(bool modifiable);
 
-    public: Boolean isModifiable();
+    public: bool isModifiable();
 
 };
 

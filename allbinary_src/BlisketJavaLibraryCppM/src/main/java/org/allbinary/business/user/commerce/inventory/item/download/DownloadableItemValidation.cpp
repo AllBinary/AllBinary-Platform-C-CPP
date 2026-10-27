@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -59,27 +65,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DownloadableItem.h"
+        #include "org/allbinary/business/user/commerce/inventory/item/download/DownloadableItem.h"
 
 class DownloadableItemValidation: public Validation {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: DownloadableItem downloadableItem;
+    private: DownloadableItem* downloadableItem;
 
-public: DownloadableItemValidation(DownloadableItem downloadableItem){
+public: DownloadableItemValidation(DownloadableItem* downloadableItem){
 this->downloadableItem= downloadableItem;
     
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-                        if(this->downloadableItem.getId() == 
+                        if(this->downloadableItem->getId() == 
                                     nullptr
-                                 || this->downloadableItem.getId().length() < 1 || this->downloadableItem.getId().length() > AbSqlData::MAXNUM)
+                                 || this->downloadableItem->getId()->length() < 1 || this->downloadableItem->getId()->length() > AbSqlData::MAXNUM)
                         
                                     {
                                     
@@ -92,9 +98,9 @@ this->downloadableItem= downloadableItem;
                                     }
                                 
 
-                        if(this->downloadableItem.getId() != 
+                        if(this->downloadableItem->getId() != 
                                     nullptr
-                                 && !StringValidationUtil::getInstance().isNumber(this->downloadableItem.getId()))
+                                 && !StringValidationUtil::getInstance()->isNumber(this->downloadableItem->getId()))
                         
                                     {
                                     
@@ -107,9 +113,9 @@ this->downloadableItem= downloadableItem;
                                     }
                                 
 
-                        if(this->downloadableItem.getSystem() == 
+                        if(this->downloadableItem->getSystem() == 
                                     nullptr
-                                 || this->downloadableItem.getSystem().length() < 1 || this->downloadableItem.getSystem().length() > AbSqlData::MAXSTRING)
+                                 || this->downloadableItem->getSystem()->length() < 1 || this->downloadableItem->getSystem()->length() > AbSqlData::MAXSTRING)
                         
                                     {
                                     
@@ -122,9 +128,9 @@ this->downloadableItem= downloadableItem;
                                     }
                                 
 
-                        if(this->downloadableItem.getPlatform() == 
+                        if(this->downloadableItem->getPlatform() == 
                                     nullptr
-                                 || this->downloadableItem.getPlatform().length() < 1 || this->downloadableItem.getPlatform().length() > AbSqlData::MAXSTRING)
+                                 || this->downloadableItem->getPlatform()->length() < 1 || this->downloadableItem->getPlatform()->length() > AbSqlData::MAXSTRING)
                         
                                     {
                                     
@@ -137,9 +143,9 @@ this->downloadableItem= downloadableItem;
                                     }
                                 
 
-                        if(this->downloadableItem.getSpecialName() == 
+                        if(this->downloadableItem->getSpecialName() == 
                                     nullptr
-                                 || this->downloadableItem.getSpecialName().length() < 0 || this->downloadableItem.getSpecialName().length() > AbSqlData::MAXSTRING)
+                                 || this->downloadableItem->getSpecialName()->length() < 0 || this->downloadableItem->getSpecialName()->length() > AbSqlData::MAXSTRING)
                         
                                     {
                                     
@@ -152,9 +158,9 @@ this->downloadableItem= downloadableItem;
                                     }
                                 
 
-                        if(this->downloadableItem.getVersion() == 
+                        if(this->downloadableItem->getVersion() == 
                                     nullptr
-                                 || this->downloadableItem.getVersion().length() < 1 || this->downloadableItem.getVersion().length() > AbSqlData::MAXSTRING)
+                                 || this->downloadableItem->getVersion()->length() < 1 || this->downloadableItem->getVersion()->length() > AbSqlData::MAXSTRING)
                         
                                     {
                                     
@@ -167,9 +173,9 @@ this->downloadableItem= downloadableItem;
                                     }
                                 
 
-                        if(this->downloadableItem.getChanges() == 
+                        if(this->downloadableItem->getChanges() == 
                                     nullptr
-                                 || this->downloadableItem.getChanges().length() < 1 || this->downloadableItem.getChanges().length() > AbSqlData::MAXBLOB)
+                                 || this->downloadableItem->getChanges()->length() < 1 || this->downloadableItem->getChanges()->length() > AbSqlData::MAXBLOB)
                         
                                     {
                                     
@@ -182,7 +188,7 @@ this->downloadableItem= downloadableItem;
                                     }
                                 
 
-                        if(this->downloadableItem.getSize() == 
+                        if(this->downloadableItem->getSize() == 
                                     nullptr
                                 )
                         
@@ -198,7 +204,7 @@ this->downloadableItem= downloadableItem;
                                 
                         else {
                             
-    std::string size = this->downloadableItem.getSize().toString();;
+    std::string size = this->downloadableItem->getSize()->toString();;
     
 
                         if(size.size() < 1 || size.size() > AbSqlData::MAXNUM)
@@ -217,7 +223,7 @@ this->downloadableItem= downloadableItem;
                         }
                             
 
-                        if(this->downloadableItem.getValidTime() == 
+                        if(this->downloadableItem->getValidTime() == 
                                     nullptr
                                 )
                         
@@ -233,7 +239,7 @@ this->downloadableItem= downloadableItem;
                                 
                         else {
                             
-    std::string size = this->downloadableItem.getValidTime().toString();;
+    std::string size = this->downloadableItem->getValidTime()->toString();;
     
 
                         if(size.size() < 1 || size.size() > AbSqlData::MAXNUM)
@@ -252,7 +258,7 @@ this->downloadableItem= downloadableItem;
                         }
                             
 
-                        if(this->downloadableItem.getRetries() == 
+                        if(this->downloadableItem->getRetries() == 
                                     nullptr
                                 )
                         
@@ -268,7 +274,7 @@ this->downloadableItem= downloadableItem;
                                 
                         else {
                             
-    std::string size = this->downloadableItem.getRetries().toString();;
+    std::string size = this->downloadableItem->getRetries()->toString();;
     
 
                         if(size.size() < 1 || size.size() > AbSqlData::MAXNUM)
@@ -294,13 +300,13 @@ this->downloadableItem= downloadableItem;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -320,133 +326,133 @@ this->downloadableItem= downloadableItem;
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-                        if(this->downloadableItem.getId() == 
+                        if(this->downloadableItem->getId() == 
                                     nullptr
-                                 || this->downloadableItem.getId().length() < 1 || this->downloadableItem.getId().length() > AbSqlData::MAXNUM)
+                                 || this->downloadableItem->getId()->length() < 1 || this->downloadableItem->getId()->length() > AbSqlData::MAXNUM)
                         
                                     {
-                                    stringBuffer.append("Id is invalid. Must be number < ");
+                                    stringBuffer->append("Id is invalid. Must be number < ");
     
-stringBuffer.appendint(AbSqlData::MAXNUM);
+stringBuffer->appendint(AbSqlData::MAXNUM);
     
-stringBuffer.append(" and > 0 digits.<br/>");
+stringBuffer->append(" and > 0 digits.<br/>");
     
 
                                     }
                                 
 
-                        if(this->downloadableItem.getId() != 
+                        if(this->downloadableItem->getId() != 
                                     nullptr
-                                 && !StringValidationUtil::getInstance().isNumber(this->downloadableItem.getId()))
+                                 && !StringValidationUtil::getInstance()->isNumber(this->downloadableItem->getId()))
                         
                                     {
-                                    stringBuffer.append("Id is invalid. Must be > 0.<br/>");
+                                    stringBuffer->append("Id is invalid. Must be > 0.<br/>");
     
 
                                     }
                                 
 
-                        if(this->downloadableItem.getSystem() == 
+                        if(this->downloadableItem->getSystem() == 
                                     nullptr
-                                 || this->downloadableItem.getSystem().length() < 1 || this->downloadableItem.getSystem().length() > AbSqlData::MAXSTRING)
+                                 || this->downloadableItem->getSystem()->length() < 1 || this->downloadableItem->getSystem()->length() > AbSqlData::MAXSTRING)
                         
                                     {
-                                    stringBuffer.append("System value is invalid. Must be < ");
+                                    stringBuffer->append("System value is invalid. Must be < ");
     
-stringBuffer.appendint(AbSqlData::MAXSTRING);
+stringBuffer->appendint(AbSqlData::MAXSTRING);
     
-stringBuffer.append(" and > 0 characters long.<br/>");
+stringBuffer->append(" and > 0 characters long.<br/>");
     
 
                                     }
                                 
 
-                        if(this->downloadableItem.getPlatform() == 
+                        if(this->downloadableItem->getPlatform() == 
                                     nullptr
-                                 || this->downloadableItem.getPlatform().length() < 1 || this->downloadableItem.getPlatform().length() > AbSqlData::MAXSTRING)
+                                 || this->downloadableItem->getPlatform()->length() < 1 || this->downloadableItem->getPlatform()->length() > AbSqlData::MAXSTRING)
                         
                                     {
-                                    stringBuffer.append("Platform value is invalid. Must be < ");
+                                    stringBuffer->append("Platform value is invalid. Must be < ");
     
-stringBuffer.appendint(AbSqlData::MAXSTRING);
+stringBuffer->appendint(AbSqlData::MAXSTRING);
     
-stringBuffer.append(" and > 0 characters long.<br/>");
+stringBuffer->append(" and > 0 characters long.<br/>");
     
 
                                     }
                                 
 
-                        if(this->downloadableItem.getSpecialName() == 
+                        if(this->downloadableItem->getSpecialName() == 
                                     nullptr
-                                 || this->downloadableItem.getSpecialName().length() < 0 || this->downloadableItem.getSpecialName().length() > AbSqlData::MAXSTRING)
+                                 || this->downloadableItem->getSpecialName()->length() < 0 || this->downloadableItem->getSpecialName()->length() > AbSqlData::MAXSTRING)
                         
                                     {
-                                    stringBuffer.append("Special Name value is invalid. Must be < ");
+                                    stringBuffer->append("Special Name value is invalid. Must be < ");
     
-stringBuffer.appendint(AbSqlData::MAXSTRING);
+stringBuffer->appendint(AbSqlData::MAXSTRING);
     
-stringBuffer.append(" and > 0 characters long.<br/>");
+stringBuffer->append(" and > 0 characters long.<br/>");
     
 
                                     }
                                 
 
-                        if(this->downloadableItem.getVersion() == 
+                        if(this->downloadableItem->getVersion() == 
                                     nullptr
-                                 || this->downloadableItem.getVersion().length() < 1 || this->downloadableItem.getVersion().length() > AbSqlData::MAXSTRING)
+                                 || this->downloadableItem->getVersion()->length() < 1 || this->downloadableItem->getVersion()->length() > AbSqlData::MAXSTRING)
                         
                                     {
-                                    stringBuffer.append("Version value is invalid. Must be < ");
+                                    stringBuffer->append("Version value is invalid. Must be < ");
     
-stringBuffer.appendint(AbSqlData::MAXSTRING);
+stringBuffer->appendint(AbSqlData::MAXSTRING);
     
-stringBuffer.append(" and > 0 characters long.<br/>");
+stringBuffer->append(" and > 0 characters long.<br/>");
     
 
                                     }
                                 
 
-                        if(this->downloadableItem.getChanges() == 
+                        if(this->downloadableItem->getChanges() == 
                                     nullptr
-                                 || this->downloadableItem.getChanges().length() < 0 || this->downloadableItem.getChanges().length() > AbSqlData::MAXBLOB)
+                                 || this->downloadableItem->getChanges()->length() < 0 || this->downloadableItem->getChanges()->length() > AbSqlData::MAXBLOB)
                         
                                     {
-                                    stringBuffer.append("Changes value is invalid. Must be < ");
+                                    stringBuffer->append("Changes value is invalid. Must be < ");
     
-stringBuffer.appendint(AbSqlData::MAXBLOB);
+stringBuffer->appendint(AbSqlData::MAXBLOB);
     
-stringBuffer.append(" and >= 0 characters long.<br/>");
+stringBuffer->append(" and >= 0 characters long.<br/>");
     
 
                                     }
                                 
 
-                        if(this->downloadableItem.getSize() == 
+                        if(this->downloadableItem->getSize() == 
                                     nullptr
                                 )
                         
                                     {
-                                    stringBuffer.append("File Size is null");
+                                    stringBuffer->append("File Size is null");
     
 
                                     }
                                 
                         else {
                             
-    std::string size = this->downloadableItem.getSize().toString();;
+    std::string size = this->downloadableItem->getSize()->toString();;
     
 
                         if(size.size() < 1 || size.size() > AbSqlData::MAXNUM)
                         
                                     {
-                                    stringBuffer.append("File Size is invalid. Must be number < ");
+                                    stringBuffer->append("File Size is invalid. Must be number < ");
     
-stringBuffer.appendint(AbSqlData::MAXNUM);
+stringBuffer->appendint(AbSqlData::MAXNUM);
     
-stringBuffer.append(" and > 0 digits.<br/>");
+stringBuffer->append(" and > 0 digits.<br/>");
     
 
                                     }
@@ -455,29 +461,29 @@ stringBuffer.append(" and > 0 digits.<br/>");
                         }
                             
 
-                        if(this->downloadableItem.getValidTime() == 
+                        if(this->downloadableItem->getValidTime() == 
                                     nullptr
                                 )
                         
                                     {
-                                    stringBuffer.append("Valid Time is null");
+                                    stringBuffer->append("Valid Time is null");
     
 
                                     }
                                 
                         else {
                             
-    std::string size = this->downloadableItem.getValidTime().toString();;
+    std::string size = this->downloadableItem->getValidTime()->toString();;
     
 
                         if(size.size() < 1 || size.size() > AbSqlData::MAXNUM)
                         
                                     {
-                                    stringBuffer.append("Valid Time is invalid. Must be number < ");
+                                    stringBuffer->append("Valid Time is invalid. Must be number < ");
     
-stringBuffer.appendint(AbSqlData::MAXNUM);
+stringBuffer->appendint(AbSqlData::MAXNUM);
     
-stringBuffer.append(" and > 0 digits.<br/>");
+stringBuffer->append(" and > 0 digits.<br/>");
     
 
                                     }
@@ -486,29 +492,29 @@ stringBuffer.append(" and > 0 digits.<br/>");
                         }
                             
 
-                        if(this->downloadableItem.getRetries() == 
+                        if(this->downloadableItem->getRetries() == 
                                     nullptr
                                 )
                         
                                     {
-                                    stringBuffer.append("Retries is null");
+                                    stringBuffer->append("Retries is null");
     
 
                                     }
                                 
                         else {
                             
-    std::string size = this->downloadableItem.getRetries().toString();;
+    std::string size = this->downloadableItem->getRetries()->toString();;
     
 
                         if(size.size() < 1 || size.size() > AbSqlData::MAXNUM)
                         
                                     {
-                                    stringBuffer.append("Retries is invalid. Must be number < ");
+                                    stringBuffer->append("Retries is invalid. Must be number < ");
     
-stringBuffer.appendint(AbSqlData::MAXNUM);
+stringBuffer->appendint(AbSqlData::MAXNUM);
     
-stringBuffer.append(" and > 0 digits.<br/>");
+stringBuffer->append(" and > 0 digits.<br/>");
     
 
                                     }
@@ -520,17 +526,17 @@ stringBuffer.append(" and > 0 digits.<br/>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -546,7 +552,7 @@ stringBuffer.append(" and > 0 digits.<br/>");
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -556,7 +562,7 @@ stringBuffer.append(" and > 0 digits.<br/>");
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

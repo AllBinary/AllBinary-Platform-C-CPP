@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,21 +45,21 @@
         
 class FtpConfigurationInterface {
 
-    std::string getServer()
+    public: virtual std::string getServer() = 0;
 
-    std::string getPath()
+    public: virtual std::string getPath() = 0;
 
-    std::string getUserName()
+    public: virtual std::string getUserName() = 0;
 
-    std::string getPassword()
+    public: virtual std::string getPassword() = 0;
 
-    void setServer(std::string value)
+    public: virtual void setServer(std::string value) = 0;
 
-    void setPath(std::string value)
+    public: virtual void setPath(std::string value) = 0;
 
-    void setUserName(std::string value)
+    public: virtual void setUserName(std::string value) = 0;
 
-    void setPassword(std::string value)
+    public: virtual void setPassword(std::string value) = 0;
 
 };
 

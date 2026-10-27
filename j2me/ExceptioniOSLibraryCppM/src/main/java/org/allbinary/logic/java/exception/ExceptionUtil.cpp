@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Throwable.h"
@@ -50,9 +56,9 @@
             : public Object
          {
 
-    private: static ExceptionUtil instance() { return ExceptionUtil(); }
+    private: static ExceptionUtil* instance() { static std::unique_ptr<ExceptionUtil> value(new ExceptionUtil()); return value.get(); }
 
-    /*actual*/ public: static ExceptionUtil getInstance(){
+    /*actual*/ public: static ExceptionUtil* getInstance(){
 
 
 
@@ -66,18 +72,18 @@ private: ExceptionUtil(){
 }
 
 
-    /*actual*/ public: const Exception PRETEND_EXCEPTION = Exception("Not Really An Exception");
+    /*actual*/ public: Exception* PRETEND_EXCEPTION = new Exception("Not Really An Exception");
 
     private: const std::string NONE = "No Stack Trace";
 
-    /*actual*/ public: std::string getStackTrace(Throwable e){
+    /*actual*/ public: std::string getStackTrace(Throwable* e){
 
-    ByteArrayOutputStream bs = ByteArrayOutputStream();;
+    ByteArrayOutputStream* bs = new ByteArrayOutputStream();;
     
-e.printStackTrace();
+e->printStackTrace();
     
 
-    std::string output = bs.toString();;
+    std::string output = bs->toString();;
     
 
                         if(true)

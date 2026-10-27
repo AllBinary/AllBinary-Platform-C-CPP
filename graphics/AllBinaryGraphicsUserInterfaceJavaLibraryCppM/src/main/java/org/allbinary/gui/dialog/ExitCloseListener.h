@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GUI_DIALOG_EXITCLOSELISTENER_H
         #define ORG_ALLBINARY_GUI_DIALOG_EXITCLOSELISTENER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/System.h"
@@ -43,11 +49,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CloseJDialogListenerInterface.h"
+        #include "org/allbinary/gui/dialog/CloseJDialogListenerInterface.h"
 
 class ExitCloseListener
             : public Object
-        : public CloseJDialogListenerInterface {
+        , public CloseJDialogListenerInterface {
 
 public: ExitCloseListener();
 

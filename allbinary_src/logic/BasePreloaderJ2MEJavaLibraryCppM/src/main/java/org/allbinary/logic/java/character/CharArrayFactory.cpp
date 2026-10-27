@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -45,9 +51,9 @@ class CharArrayFactory
             : public Object
          {
 
-    private: static CharArrayFactory instance() { return CharArrayFactory(); }
+    private: static CharArrayFactory* instance() { static std::unique_ptr<CharArrayFactory> value(new CharArrayFactory()); return value.get(); }
 
-    public: static CharArrayFactory getInstance(){
+    public: static CharArrayFactory* getInstance(){
 
 
 

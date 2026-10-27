@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_RESIZABLEEMPTYLISTENER_H
         #define ORG_ALLBINARY_GRAPHICS_RESIZABLEEMPTYLISTENER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,11 +47,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ResizableListenerInterface.h"
+        #include "org/allbinary/graphics/ResizableListenerInterface.h"
 
 class ResizableEmptyListener
             : public Object
-        : public ResizableListenerInterface {
+        , public ResizableListenerInterface {
 
     public: void onResizable(bool isResizable);
 

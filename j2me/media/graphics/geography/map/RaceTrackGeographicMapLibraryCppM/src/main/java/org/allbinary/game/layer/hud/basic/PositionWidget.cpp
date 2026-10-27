@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -60,15 +66,15 @@ class PositionWidget: public BasicHud {
 
     public: static std::string toString(int32_t position){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(std::to_string(position));
+stringBuffer->append(std::to_string(position));
     
 
                         if(position == 1)
                         
                                     {
-                                    stringBuffer.append("st");
+                                    stringBuffer->append("st");
     
 
                                     }
@@ -77,7 +83,7 @@ stringBuffer.append(std::to_string(position));
                         if(position == 2)
                         
                                     {
-                                    stringBuffer.append("nd");
+                                    stringBuffer->append("nd");
     
 
                                     }
@@ -86,13 +92,13 @@ stringBuffer.append(std::to_string(position));
                         if(position == 3)
                         
                                     {
-                                    stringBuffer.append("rd");
+                                    stringBuffer->append("rd");
     
 
                                     }
                                 
                         else {
-                            stringBuffer.append("th");
+                            stringBuffer->append("th");
     
 
                         }
@@ -101,16 +107,16 @@ stringBuffer.append(std::to_string(position));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
     private: int32_t position= 0;
 
-    private: std::string positionString = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string positionString = StringUtil::getInstance()->EMPTY_STRING;
 
-public: PositionWidget(int32_t position, int32_t location, int32_t direction, BasicColor basicColor) : BasicHud(location, direction, 2, basicColor){
+public: PositionWidget(int32_t position, int32_t location, int32_t direction, BasicColor* basicColor) : BasicHud(location, direction, 2, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -142,7 +148,7 @@ this->positionString= PositionWidget::toString(this->get());
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 super.paintString(graphics, this->positionString);
     
 }

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -85,16 +91,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseImageAnimationFactory.h"
-#include "AdjustedImageArrayRotationAnimation.h"
+        #include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
+#include "org/allbinary/animation/image/AdjustedImageArrayRotationAnimation.h"
 
 class VectorToImageArrayRotationAnimationFactory: public BaseImageAnimationFactory {
 
-    private: std::vector<Image> imageArray = NullImage::NULL_IMAGE_ARRAY;
+    private: std::vector<Image*> imageArray = NullImage::NULL_IMAGE_ARRAY;
 
     private: int32_t angleIncrement= 0;
 
-public: VectorToImageArrayRotationAnimationFactory(VectorInfo vectorInfo, BasicColor basicColor, AnimationBehaviorFactory animationBehaviorFactory);
+public: VectorToImageArrayRotationAnimationFactory(VectorInfo* vectorInfo, BasicColor* basicColor, AnimationBehaviorFactory* animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
@@ -102,11 +108,11 @@ public: VectorToImageArrayRotationAnimationFactory(VectorInfo vectorInfo, BasicC
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId);
+    public: Animation* getInstance(int32_t instanceId);
 
     protected: int32_t getAngleIncrement();
 
-    public: void setInitialScale(ScaleProperties scaleProperties);
+    public: void setInitialScale(ScaleProperties* scaleProperties);
 
 };
 

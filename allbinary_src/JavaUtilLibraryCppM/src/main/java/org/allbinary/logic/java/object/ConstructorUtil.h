@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -61,7 +67,7 @@ class ConstructorUtil
 
     public: static std::string viewAll(Class* myClass, std::string lineBreak);
 
-    public: static std::string view(Constructor constructor, std::string lineBreak);
+    public: static std::string view(Constructor* constructor, std::string lineBreak);
 
 private: ConstructorUtil();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,23 +49,23 @@ class ColorAtActionScriptConditionData
             : public Object
          {
 
-    public: static std::string NAME = "COLOR_AT_ACTION_CONDITION_NAME";
+    public: static inline std::string NAME = "COLOR_AT_ACTION_CONDITION_NAME";
 
-    public: static std::string LOCATION_X = "COLOR_AT_ACTION_CONDITION_LOCATION_X";
+    public: static inline std::string LOCATION_X = "COLOR_AT_ACTION_CONDITION_LOCATION_X";
 
-    public: static std::string LOCATION_Y = "COLOR_AT_ACTION_CONDITION_LOCATION_Y";
+    public: static inline std::string LOCATION_Y = "COLOR_AT_ACTION_CONDITION_LOCATION_Y";
 
-    public: static std::string MIN_RED = "COLOR_AT_ACTION_CONDITION_MIN_RED";
+    public: static inline std::string MIN_RED = "COLOR_AT_ACTION_CONDITION_MIN_RED";
 
-    public: static std::string MAX_RED = "COLOR_AT_ACTION_CONDITION_MAX_RED";
+    public: static inline std::string MAX_RED = "COLOR_AT_ACTION_CONDITION_MAX_RED";
 
-    public: static std::string MIN_GREEN = "COLOR_AT_ACTION_CONDITION_MIN_GREEN";
+    public: static inline std::string MIN_GREEN = "COLOR_AT_ACTION_CONDITION_MIN_GREEN";
 
-    public: static std::string MAX_GREEN = "COLOR_AT_ACTION_CONDITION_MAX_GREEN";
+    public: static inline std::string MAX_GREEN = "COLOR_AT_ACTION_CONDITION_MAX_GREEN";
 
-    public: static std::string MIN_BLUE = "COLOR_AT_ACTION_CONDITION_MIN_BLUE";
+    public: static inline std::string MIN_BLUE = "COLOR_AT_ACTION_CONDITION_MIN_BLUE";
 
-    public: static std::string MAX_BLUE = "COLOR_AT_ACTION_CONDITION_MAX_BLUE";
+    public: static inline std::string MAX_BLUE = "COLOR_AT_ACTION_CONDITION_MAX_BLUE";
 
 private: ColorAtActionScriptConditionData(){
 }

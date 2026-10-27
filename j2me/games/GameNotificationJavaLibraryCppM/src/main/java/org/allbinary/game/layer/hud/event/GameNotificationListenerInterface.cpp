@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
@@ -41,13 +47,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameNotificationEvent.h"
+        #include "org/allbinary/game/layer/hud/event/GameNotificationEvent.h"
 
 class GameNotificationListenerInterface: public EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    void onGameNotificationEvent(GameNotificationEvent gameNotificationEvent)
+    public: virtual void onGameNotificationEvent(GameNotificationEvent* gameNotificationEvent) = 0;
 
 };
 

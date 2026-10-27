@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -70,21 +76,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLFeatureFactory.h"
-#include "OpenGLFeature.h"
+        #include "org/allbinary/graphics/opengles/OpenGLFeatureFactory.h"
+#include "org/allbinary/graphics/opengles/OpenGLFeature.h"
 
 class OpenGLConfiguration
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static OpenGLConfiguration getInstance(){
+    public: static OpenGLConfiguration* getInstance(){
 
-                        if(OpenGLConfiguration::instance() == NullUtil::getInstance().NULL_OBJECT)
+                        if(OpenGLConfiguration::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    OpenGLConfiguration::instance= OpenGLConfiguration();
+                                    OpenGLConfiguration::instance= new OpenGLConfiguration();
     
 
                                     }
@@ -93,24 +99,24 @@ class OpenGLConfiguration
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLConfiguration::instance();
+                        return dynamic_cast<OpenGLConfiguration*>(OpenGLConfiguration::instance);
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: bool opengl = false;
 
-    private: OpenGLFeature type = OpenGLFeatureFactory::getInstance().OPENGL_AS_GAME_THREAD;
+    private: OpenGLFeature* type = OpenGLFeatureFactory::getInstance()->OPENGL_AS_GAME_THREAD;
 
-    private: OpenGLFeature imageColor = OpenGLFeatureFactory::getInstance().IMAGE_COLOR_DEPTH_4444;
+    private: OpenGLFeature* imageColor = OpenGLFeatureFactory::getInstance()->IMAGE_COLOR_DEPTH_4444;
 
-    private: OpenGLFeature color = OpenGLFeatureFactory::getInstance().IMAGE_COLOR_DEPTH_4444;
+    private: OpenGLFeature* color = OpenGLFeatureFactory::getInstance()->IMAGE_COLOR_DEPTH_4444;
 
-    private: OpenGLFeature versionSelector = OpenGLFeatureFactory::getInstance().OPENGL_AUTO_SELECT;
+    private: OpenGLFeature* versionSelector = OpenGLFeatureFactory::getInstance()->OPENGL_AUTO_SELECT;
 
 private: OpenGLConfiguration(){
 }
@@ -124,10 +130,10 @@ private: OpenGLConfiguration(){
             
     public: void init(){
 
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-                        if(ChangedGameFeatureListener::getInstance().isChangedFeature(MainFeatureFactory::getInstance().STATIC))
+                        if(ChangedGameFeatureListener::getInstance()->isChangedFeature(MainFeatureFactory::getInstance()->STATIC))
                         
                                     {
                                     
@@ -135,28 +141,28 @@ private: OpenGLConfiguration(){
                         
                                     {
                                     
-                        if(!features.isDefault(OpenGLFeatureFactory::getInstance().OPENGL))
+                        if(!features->isDefault(OpenGLFeatureFactory::getInstance()->OPENGL))
                         
                                     {
-                                    this->logUtil.putF("Turning on OpenGL", this, this->commonStrings.INIT);
+                                    this->logUtil->putF("Turning on OpenGL", this, this->commonStrings->INIT);
     
-features.addDefault(OpenGLFeatureFactory::getInstance().OPENGL);
+features->addDefault(OpenGLFeatureFactory::getInstance()->OPENGL);
     
-this->logUtil.putF("Using OpenGL Type Feature: " +this->getType(), this, this->commonStrings.INIT);
+this->logUtil->putF("Using OpenGL Type Feature: " +this->getType(), this, this->commonStrings->INIT);
     
-features.addDefault(this->getType());
+features->addDefault(this->getType());
     
-this->logUtil.putF("Using OpenGL ImageColor Feature: " +this->getImageColor(), this, this->commonStrings.INIT);
+this->logUtil->putF("Using OpenGL ImageColor Feature: " +this->getImageColor(), this, this->commonStrings->INIT);
     
-features.addDefault(this->getImageColor());
+features->addDefault(this->getImageColor());
     
-this->logUtil.putF("Using OpenGL Color Feature: " +this->getColor(), this, this->commonStrings.INIT);
+this->logUtil->putF("Using OpenGL Color Feature: " +this->getColor(), this, this->commonStrings->INIT);
     
-features.addDefault(this->getColor());
+features->addDefault(this->getColor());
     
-this->logUtil.putF("Using OpenGL Version Selector Feature: " +this->getVersionSelector(), this, this->commonStrings.INIT);
+this->logUtil->putF("Using OpenGL Version Selector Feature: " +this->getVersionSelector(), this, this->commonStrings->INIT);
     
-features.addDefault(this->getVersionSelector());
+features->addDefault(this->getVersionSelector());
     
 
                                     }
@@ -165,7 +171,7 @@ features.addDefault(this->getVersionSelector());
                                     }
                                 
                         else {
-                            this->logUtil.putF("OpenGL is Off", this, this->commonStrings.INIT);
+                            this->logUtil->putF("OpenGL is Off", this, this->commonStrings->INIT);
     
 
                         }
@@ -175,10 +181,10 @@ features.addDefault(this->getVersionSelector());
                                 
                         else {
                             
-                        if(this->isOpenGL() && !features.isDefault(OpenGLFeatureFactory::getInstance().OPENGL))
+                        if(this->isOpenGL() && !features->isDefault(OpenGLFeatureFactory::getInstance()->OPENGL))
                         
                                     {
-                                    PreLogUtil::put("OpenGL is set but not Enabled since Statics where not cleared (Reboot or Complete exit is Required)", this, this->commonStrings.INIT);
+                                    PreLogUtil::put("OpenGL is set but not Enabled since Statics where not cleared (Reboot or Complete exit is Required)", this, this->commonStrings->INIT);
     
 
                                     }
@@ -186,29 +192,29 @@ features.addDefault(this->getVersionSelector());
 
                         }
                             
-PreLogUtil::put(this->toString(), this, this->commonStrings.INIT);
+PreLogUtil::put(this->toString(), this, this->commonStrings->INIT);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void update(Feature gameFeature, bool colorLocked){
+    public: void update(Feature* gameFeature, bool colorLocked){
 
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-    OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
+    OpenGLFeatureFactory* openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
     
 
     bool modified = false;;
     
 
-                        if(gameFeature == openGLFeatureFactory.OPENGL)
+                        if(gameFeature == openGLFeatureFactory->OPENGL)
                         
                                     {
                                     
-                        if(features.isFeature(gameFeature))
+                        if(features->isFeature(gameFeature))
                         
                                     {
                                     
@@ -244,18 +250,18 @@ modified= true;
                                     }
                                 
 
-                        if(gameFeature == openGLFeatureFactory.OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS || gameFeature == openGLFeatureFactory.OPENGL_AS_GAME_THREAD)
+                        if(gameFeature == openGLFeatureFactory->OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS || gameFeature == openGLFeatureFactory->OPENGL_AS_GAME_THREAD)
                         
                                     {
                                     
-                        if(features.isFeature(gameFeature))
+                        if(features->isFeature(gameFeature))
                         
                                     {
                                     
                         if(gameFeature != this->getType())
                         
                                     {
-                                    this->setType(gameFeature);
+                                    this->setType(dynamic_cast<OpenGLFeature*>(gameFeature));
     
 modified= true;
     
@@ -269,46 +275,46 @@ modified= true;
                                     }
                                 
 
-                        if(gameFeature == openGLFeatureFactory.IMAGE_COLOR_DEPTH_4444 || gameFeature == openGLFeatureFactory.IMAGE_COLOR_DEPTH_565 || gameFeature == openGLFeatureFactory.IMAGE_COLOR_DEPTH_8888)
+                        if(gameFeature == openGLFeatureFactory->IMAGE_COLOR_DEPTH_4444 || gameFeature == openGLFeatureFactory->IMAGE_COLOR_DEPTH_565 || gameFeature == openGLFeatureFactory->IMAGE_COLOR_DEPTH_8888)
                         
                                     {
                                     
-                        if(features.isFeature(gameFeature))
+                        if(features->isFeature(gameFeature))
                         
                                     {
                                     
                         if(this->getImageColor() != gameFeature)
                         
                                     {
-                                    this->setImageColor(gameFeature);
+                                    this->setImageColor(dynamic_cast<OpenGLFeature*>(gameFeature));
     
 
                         if(colorLocked)
                         
                                     {
                                     
-                        if(gameFeature == openGLFeatureFactory.IMAGE_COLOR_DEPTH_4444)
+                        if(gameFeature == openGLFeatureFactory->IMAGE_COLOR_DEPTH_4444)
                         
                                     {
-                                    this->setColor(openGLFeatureFactory.OPENGL_COLOR_DEPTH_4444);
+                                    this->setColor(openGLFeatureFactory->OPENGL_COLOR_DEPTH_4444);
     
 
                                     }
                                 
                              else 
-                        if(gameFeature == openGLFeatureFactory.IMAGE_COLOR_DEPTH_565)
+                        if(gameFeature == openGLFeatureFactory->IMAGE_COLOR_DEPTH_565)
                         
                                     {
-                                    this->setColor(openGLFeatureFactory.OPENGL_COLOR_DEPTH_565);
+                                    this->setColor(openGLFeatureFactory->OPENGL_COLOR_DEPTH_565);
     
 
                                     }
                                 
                              else 
-                        if(gameFeature == openGLFeatureFactory.IMAGE_COLOR_DEPTH_8888)
+                        if(gameFeature == openGLFeatureFactory->IMAGE_COLOR_DEPTH_8888)
                         
                                     {
-                                    this->setColor(openGLFeatureFactory.OPENGL_COLOR_DEPTH_8888);
+                                    this->setColor(openGLFeatureFactory->OPENGL_COLOR_DEPTH_8888);
     
 
                                     }
@@ -328,18 +334,18 @@ modified= true;
                                     }
                                 
 
-                        if(gameFeature == openGLFeatureFactory.OPENGL_COLOR_DEPTH_4444 || gameFeature == openGLFeatureFactory.OPENGL_COLOR_DEPTH_565 || gameFeature == openGLFeatureFactory.OPENGL_COLOR_DEPTH_8888)
+                        if(gameFeature == openGLFeatureFactory->OPENGL_COLOR_DEPTH_4444 || gameFeature == openGLFeatureFactory->OPENGL_COLOR_DEPTH_565 || gameFeature == openGLFeatureFactory->OPENGL_COLOR_DEPTH_8888)
                         
                                     {
                                     
-                        if(features.isFeature(gameFeature))
+                        if(features->isFeature(gameFeature))
                         
                                     {
                                     
                         if(this->getColor() != gameFeature)
                         
                                     {
-                                    this->setColor(gameFeature);
+                                    this->setColor(dynamic_cast<OpenGLFeature*>(gameFeature));
     
 modified= true;
     
@@ -353,14 +359,14 @@ modified= true;
                                     }
                                 
 
-                        if(gameFeature == openGLFeatureFactory.OPENGL_AUTO_SELECT || gameFeature == openGLFeatureFactory.OPENGL_MINIMUM)
+                        if(gameFeature == openGLFeatureFactory->OPENGL_AUTO_SELECT || gameFeature == openGLFeatureFactory->OPENGL_MINIMUM)
                         
                                     {
                                     
-                        if(features.isFeature(gameFeature))
+                        if(features->isFeature(gameFeature))
                         
                                     {
-                                    this->setVersionSelector(gameFeature);
+                                    this->setVersionSelector(dynamic_cast<OpenGLFeature*>(gameFeature));
     
 
                                     }
@@ -389,13 +395,13 @@ this->opengl= opengl;
 }
 
 
-    public: void setImageColor(OpenGLFeature imageColor){
+    public: void setImageColor(OpenGLFeature* imageColor){
 this->imageColor= imageColor;
     
 }
 
 
-    public: OpenGLFeature getImageColor(){
+    public: OpenGLFeature* getImageColor(){
 
 
 
@@ -405,13 +411,13 @@ this->imageColor= imageColor;
 }
 
 
-    public: void setColor(OpenGLFeature color){
+    public: void setColor(OpenGLFeature* color){
 this->color= color;
     
 }
 
 
-    public: OpenGLFeature getColor(){
+    public: OpenGLFeature* getColor(){
 
 
 
@@ -421,13 +427,13 @@ this->color= color;
 }
 
 
-    public: void setVersionSelector(OpenGLFeature versionSelector){
+    public: void setVersionSelector(OpenGLFeature* versionSelector){
 this->versionSelector= versionSelector;
     
 }
 
 
-    public: OpenGLFeature getVersionSelector(){
+    public: OpenGLFeature* getVersionSelector(){
 
 
 
@@ -437,13 +443,13 @@ this->versionSelector= versionSelector;
 }
 
 
-    public: void setType(OpenGLFeature type){
+    public: void setType(OpenGLFeature* type){
 this->type= type;
     
 }
 
 
-    public: OpenGLFeature getType(){
+    public: OpenGLFeature* getType(){
 
 
 
@@ -455,36 +461,36 @@ this->type= type;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
-stringBuffer.append(" isOpenGL: ");
+stringBuffer->append(" isOpenGL: ");
     
-stringBuffer.appendboolean(this->isOpenGL());
+stringBuffer->appendboolean(this->isOpenGL());
     
-stringBuffer.append(" VersionSelector: ");
+stringBuffer->append(" VersionSelector: ");
     
-stringBuffer.append(stringUtil.toString(this->getVersionSelector()));
+stringBuffer->append(stringUtil->toString(this->getVersionSelector()));
     
-stringBuffer.append(" Type: ");
+stringBuffer->append(" Type: ");
     
-stringBuffer.append(stringUtil.toString(this->getType()));
+stringBuffer->append(stringUtil->toString(this->getType()));
     
-stringBuffer.append(" Image Color: ");
+stringBuffer->append(" Image Color: ");
     
-stringBuffer.append(stringUtil.toString(this->getImageColor()));
+stringBuffer->append(stringUtil->toString(this->getImageColor()));
     
-stringBuffer.append(" Color: ");
+stringBuffer->append(" Color: ");
     
-stringBuffer.append(stringUtil.toString(this->getColor()));
+stringBuffer->append(stringUtil->toString(this->getColor()));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

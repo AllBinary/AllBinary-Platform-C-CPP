@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -38,14 +44,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicAnimationInterfaceFactoryInterface.h"
-#include "Animation.h"
+        #include "org/allbinary/animation/BasicAnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/Animation.h"
 
 class ProceduralAnimationInterfaceFactoryInterface: public BasicAnimationInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    Animation getInstanceAnimation(Animation animationInterface)
+    public: virtual Animation* getInstanceAnimation(Animation* animationInterface) = 0;
 
 };
 

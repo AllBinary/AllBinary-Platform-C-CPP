@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -81,11 +87,11 @@ class TransformTemplateCustomizerUtil
             : public Object
          {
 
-    private: static TransformTemplateCustomizerUtil instance() { return TransformTemplateCustomizerUtil(); }
+    private: static TransformTemplateCustomizerUtil* instance() { static std::unique_ptr<TransformTemplateCustomizerUtil> value(new TransformTemplateCustomizerUtil()); return value.get(); }
 
-    public: static TransformTemplateCustomizerUtil getInstance();
+    public: static TransformTemplateCustomizerUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string CUSTOMIZER_NAME;
 

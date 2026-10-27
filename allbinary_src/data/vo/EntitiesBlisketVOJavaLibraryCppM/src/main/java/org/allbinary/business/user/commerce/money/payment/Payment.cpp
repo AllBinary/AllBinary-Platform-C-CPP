@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -72,13 +78,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentInterface.h"
-#include "PaymentData.h"
-#include "CreditCardType.h"
+        #include "org/allbinary/business/user/commerce/money/payment/PaymentInterface.h"
+#include "org/allbinary/business/user/commerce/money/payment/PaymentData.h"
+#include "org/allbinary/business/user/commerce/money/payment/CreditCardType.h"
 
 class Payment
             : public Object
-        : public PaymentInterface, public DomNodeInterface {
+        , public PaymentInterface, public DomNodeInterface {
 
     private: std::string name;
 
@@ -114,24 +120,24 @@ class Payment
 
     private: bool isDefault = false;
 
-public: Payment(HashMap<Object*, Object*> payment){
-this->name= payment.get(PaymentData::NAME);
+public: Payment(HashMap<Object*, Object*>* payment){
+this->name= payment->get(PaymentData::NAME);
     
-this->type= payment.get(PaymentData::TYPE);
+this->type= payment->get(PaymentData::TYPE);
     
-this->expiration= payment.get(PaymentData::EXPIRATION);
+this->expiration= payment->get(PaymentData::EXPIRATION);
     
-this->encryption= payment.get(EntryData::getInstance().ENCRYPTION);
+this->encryption= payment->get(EntryData::getInstance()->ENCRYPTION);
     
-this->number= SuperCrypt(Integer(this->encryption).intValue()).decrypt(payment.get(PaymentData::NUMBER));
+this->number= (new SuperCrypt((int32_t(this->encryption)).intValue()))->decrypt(payment->get(PaymentData::NUMBER));
     
-this->id= payment.get(PaymentData::ID);
-    
-
-    std::string def = payment.get(EntryData::getInstance().DEFAULT);;
+this->id= payment->get(PaymentData::ID);
     
 
-                        if(true && def.compare(EntryData::getInstance().DEFAULT) == 0)
+    std::string def = payment->get(EntryData::getInstance()->DEFAULT);;
+    
+
+                        if(true && def.compare(EntryData::getInstance()->DEFAULT) == 0)
                         
                                     {
                                     this->isDefault= true;
@@ -145,57 +151,57 @@ this->id= payment.get(PaymentData::ID);
 
                         }
                             
-this->tenderType= payment.get(PaymentData::TENDERTYPE);
+this->tenderType= payment->get(PaymentData::TENDERTYPE);
     
-this->transactionType= payment.get(PaymentData::TRANSACTIONTYPE);
+this->transactionType= payment->get(PaymentData::TRANSACTIONTYPE);
     
-this->aba= payment.get(PaymentData::ABA);
+this->aba= payment->get(PaymentData::ABA);
     
-this->account= payment.get(PaymentData::ACCOUNT);
+this->account= payment->get(PaymentData::ACCOUNT);
     
-this->accountType= payment.get(PaymentData::ACCOUNTTYPE);
+this->accountType= payment->get(PaymentData::ACCOUNTTYPE);
     
-this->authorizationCode= payment.get(PaymentData::AUTHORIZATIONCODE);
+this->authorizationCode= payment->get(PaymentData::AUTHORIZATIONCODE);
     
-this->checkNumber= payment.get(PaymentData::CHECKNUMBER);
+this->checkNumber= payment->get(PaymentData::CHECKNUMBER);
     
-this->checkType= payment.get(PaymentData::CHECKTYPE);
+this->checkType= payment->get(PaymentData::CHECKTYPE);
     
-this->driversLicense= payment.get(PaymentData::DRIVERSLICENSE);
+this->driversLicense= payment->get(PaymentData::DRIVERSLICENSE);
     
-this->magneticInkCheckReader= payment.get(PaymentData::MAGNETICINKCHECKREADER);
+this->magneticInkCheckReader= payment->get(PaymentData::MAGNETICINKCHECKREADER);
     
 }
 
 
-public: Payment(ServletRequest request){
-this->name= request.getParameter(PaymentData::NAME);
+public: Payment(ServletRequest* request){
+this->name= request->getParameter(PaymentData::NAME);
     
-this->type= request.getParameter(PaymentData::TYPE);
+this->type= request->getParameter(PaymentData::TYPE);
     
-this->expiration= request.getParameter(PaymentData::EXPIRATION);
+this->expiration= request->getParameter(PaymentData::EXPIRATION);
     
-this->number= request.getParameter(PaymentData::NUMBER);
+this->number= request->getParameter(PaymentData::NUMBER);
     
-this->tenderType= request.getParameter(PaymentData::TENDERTYPE);
+this->tenderType= request->getParameter(PaymentData::TENDERTYPE);
     
-this->transactionType= request.getParameter(PaymentData::TRANSACTIONTYPE);
+this->transactionType= request->getParameter(PaymentData::TRANSACTIONTYPE);
     
-this->aba= request.getParameter(PaymentData::ABA);
+this->aba= request->getParameter(PaymentData::ABA);
     
-this->account= request.getParameter(PaymentData::ACCOUNT);
+this->account= request->getParameter(PaymentData::ACCOUNT);
     
-this->accountType= request.getParameter(PaymentData::ACCOUNTTYPE);
+this->accountType= request->getParameter(PaymentData::ACCOUNTTYPE);
     
-this->authorizationCode= request.getParameter(PaymentData::AUTHORIZATIONCODE);
+this->authorizationCode= request->getParameter(PaymentData::AUTHORIZATIONCODE);
     
-this->checkNumber= request.getParameter(PaymentData::CHECKNUMBER);
+this->checkNumber= request->getParameter(PaymentData::CHECKNUMBER);
     
-this->checkType= request.getParameter(PaymentData::CHECKTYPE);
+this->checkType= request->getParameter(PaymentData::CHECKTYPE);
     
-this->driversLicense= request.getParameter(PaymentData::DRIVERSLICENSE);
+this->driversLicense= request->getParameter(PaymentData::DRIVERSLICENSE);
     
-this->magneticInkCheckReader= request.getParameter(PaymentData::MAGNETICINKCHECKREADER);
+this->magneticInkCheckReader= request->getParameter(PaymentData::MAGNETICINKCHECKREADER);
     
 }
 
@@ -204,15 +210,15 @@ public: Payment(){
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
 
-    Boolean aFalse = Boolean::FALSE;;
+    bool aFalse = Boolean::FALSE;;
     
 
-                        if(false || this->name.compare(stringUtil.EMPTY_STRING) == 0)
+                        if(false || this->name.compare(stringUtil->EMPTY_STRING) == 0)
                         
                                     {
                                     
@@ -225,7 +231,7 @@ public: Payment(){
                                     }
                                 
 
-                        if(false || this->type.compare(stringUtil.EMPTY_STRING) == 0)
+                        if(false || this->type.compare(stringUtil->EMPTY_STRING) == 0)
                         
                                     {
                                     
@@ -238,7 +244,7 @@ public: Payment(){
                                     }
                                 
 
-                        if(false || this->expiration.compare(stringUtil.EMPTY_STRING) == 0)
+                        if(false || this->expiration.compare(stringUtil->EMPTY_STRING) == 0)
                         
                                     {
                                     
@@ -251,7 +257,7 @@ public: Payment(){
                                     }
                                 
 
-                        if(false || this->number.compare(stringUtil.EMPTY_STRING) == 0)
+                        if(false || this->number.compare(stringUtil->EMPTY_STRING) == 0)
                         
                                     {
                                     
@@ -560,47 +566,47 @@ this->number= value;
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(PaymentData::NAME, this->name);
+hashMap->put(PaymentData::NAME, this->name);
     
-hashMap.put(PaymentData::TYPE, this->type);
+hashMap->put(PaymentData::TYPE, this->type);
     
-hashMap.put(PaymentData::EXPIRATION, this->expiration);
+hashMap->put(PaymentData::EXPIRATION, this->expiration);
     
-hashMap.put(PaymentData::NUMBER, this->getLastFour());
+hashMap->put(PaymentData::NUMBER, this->getLastFour());
     
-hashMap.put(PaymentData::TENDERTYPE, this->tenderType);
+hashMap->put(PaymentData::TENDERTYPE, this->tenderType);
     
-hashMap.put(PaymentData::TRANSACTIONTYPE, this->transactionType);
+hashMap->put(PaymentData::TRANSACTIONTYPE, this->transactionType);
     
-hashMap.put(PaymentData::ABA, this->aba);
+hashMap->put(PaymentData::ABA, this->aba);
     
-hashMap.put(PaymentData::ACCOUNT, this->account);
+hashMap->put(PaymentData::ACCOUNT, this->account);
     
-hashMap.put(PaymentData::ACCOUNTTYPE, this->accountType);
+hashMap->put(PaymentData::ACCOUNTTYPE, this->accountType);
     
-hashMap.put(PaymentData::AUTHORIZATIONCODE, this->authorizationCode);
+hashMap->put(PaymentData::AUTHORIZATIONCODE, this->authorizationCode);
     
-hashMap.put(PaymentData::CHECKNUMBER, this->checkNumber);
+hashMap->put(PaymentData::CHECKNUMBER, this->checkNumber);
     
-hashMap.put(PaymentData::DRIVERSLICENSE, this->driversLicense);
+hashMap->put(PaymentData::DRIVERSLICENSE, this->driversLicense);
     
-hashMap.put(PaymentData::MAGNETICINKCHECKREADER, this->magneticInkCheckReader);
+hashMap->put(PaymentData::MAGNETICINKCHECKREADER, this->magneticInkCheckReader);
     
 
                         if(this->isDefault)
                         
                                     {
-                                    hashMap.put(EntryData::getInstance().DEFAULT, EntryData::getInstance().DEFAULT);
+                                    hashMap->put(EntryData::getInstance()->DEFAULT, EntryData::getInstance()->DEFAULT);
     
 
                                     }
                                 
                         else {
-                            hashMap.put(EntryData::getInstance().DEFAULT, StringUtil::getInstance().EMPTY_STRING);
+                            hashMap->put(EntryData::getInstance()->DEFAULT, StringUtil::getInstance()->EMPTY_STRING);
     
 
                         }
@@ -616,12 +622,12 @@ hashMap.put(PaymentData::MAGNETICINKCHECKREADER, this->magneticInkCheckReader);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    HashMap<Object*, Object*> hashMap = this->toHashMap();;
+    HashMap<Object*, Object*>* hashMap = this->toHashMap();;
     
 
-    Node node = ModDomHelper::createNameValueNodes(document, PaymentData::PAYMENT, hashMap);;
+    Node* node = ModDomHelper::createNameValueNodes(document, PaymentData::PAYMENT, hashMap);;
     
 
 
@@ -632,7 +638,7 @@ hashMap.put(PaymentData::MAGNETICINKCHECKREADER, this->magneticInkCheckReader);
 }
 
 
-    public: Document toXmlDoc(){
+    public: Document* toXmlDoc(){
 
 
 
@@ -652,7 +658,7 @@ hashMap.put(PaymentData::MAGNETICINKCHECKREADER, this->magneticInkCheckReader);
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -662,7 +668,7 @@ hashMap.put(PaymentData::MAGNETICINKCHECKREADER, this->magneticInkCheckReader);
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

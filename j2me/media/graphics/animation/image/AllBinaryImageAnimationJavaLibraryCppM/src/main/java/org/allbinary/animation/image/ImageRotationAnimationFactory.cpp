@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -59,15 +65,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseImageAnimationFactory.h"
-#include "ImageBaseRotationAnimation.h"
-#include "AdjustedImageBaseRotationAnimation.h"
+        #include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
+#include "org/allbinary/animation/image/ImageBaseRotationAnimation.h"
+#include "org/allbinary/animation/image/AdjustedImageBaseRotationAnimation.h"
 
 class ImageRotationAnimationFactory: public BaseImageAnimationFactory {
 
     protected: int16_t angleIncrement;
 
-public: ImageRotationAnimationFactory(Image image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory) : BaseImageAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), width, height, 0, 0, animationBehaviorFactory){
+public: ImageRotationAnimationFactory(Image* image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory) : BaseImageAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), width, height, 0, 0, animationBehaviorFactory){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,7 +91,7 @@ this->animationFactoryInitializationVisitor.dy= dy;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId){
+    public: Animation* getInstance(int32_t instanceId){
 
                         if(this->animationFactoryInitializationVisitor.dx != 0 || this->animationFactoryInitializationVisitor.dy != 0)
                         
@@ -96,7 +102,7 @@ this->animationFactoryInitializationVisitor.dy= dy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdjustedImageBaseRotationAnimation(this->getImage(), AngleInfo::getInstance(this->angleIncrement), AngleFactory::getInstance().TOTAL_ANGLE, this->animationFactoryInitializationVisitor.dx, this->animationFactoryInitializationVisitor.dy, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new AdjustedImageBaseRotationAnimation(this->getImage(), AngleInfo::getInstance(this->angleIncrement), AngleFactory::getInstance()->TOTAL_ANGLE, this->animationFactoryInitializationVisitor.dx, this->animationFactoryInitializationVisitor.dy, this->animationBehaviorFactory.getOrCreateInstance());
     
 
                                     }
@@ -106,7 +112,7 @@ this->animationFactoryInitializationVisitor.dy= dy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageBaseRotationAnimation(this->getImage(), AngleInfo::getInstance(this->angleIncrement), AngleFactory::getInstance().TOTAL_ANGLE, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new ImageBaseRotationAnimation(this->getImage(), AngleInfo::getInstance(this->angleIncrement), AngleFactory::getInstance()->TOTAL_ANGLE, this->animationBehaviorFactory.getOrCreateInstance());
     
 
                         }

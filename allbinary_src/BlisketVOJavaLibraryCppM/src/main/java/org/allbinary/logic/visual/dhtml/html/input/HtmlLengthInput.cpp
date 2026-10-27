@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Integer.h"
         
 
@@ -38,7 +44,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HtmlValueInput.h"
+        #include "org/allbinary/logic/visual/dhtml/html/input/HtmlValueInput.h"
 
 class HtmlLengthInput: public HtmlValueInput {
 
@@ -60,7 +66,7 @@ public: HtmlLengthInput(std::string before, std::string type, std::string name, 
 }
 
 
-    public: void setMaxLength(Integer length){
+    public: void setMaxLength(int32_t length){
 this->length= length.toString();
     
 addAttribute(this->MAXLENGTH, this->length);
@@ -68,7 +74,7 @@ addAttribute(this->MAXLENGTH, this->length);
 }
 
 
-    public: void setSize(Integer size){
+    public: void setSize(int32_t size){
 this->size= size.toString();
     
 addAttribute(this->MAXLENGTH, this->size);

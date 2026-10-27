@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -75,7 +81,7 @@
         
 class PressStartMenuPaintable: public Paintable, public UpdateMyFontInterface {
 
-    private: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();
 
     private: const std::string PRESS_START = "Press Screen To Start";
 
@@ -83,17 +89,17 @@ class PressStartMenuPaintable: public Paintable, public UpdateMyFontInterface {
 
     private: const std::string MENU_START = "Press Start From The Menu To Begin";
 
-    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
 
-    private: std::string startString = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string startString = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: TimeDelayHelper timeDelayHelper = TimeDelayHelper(1100);
+    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(1100);
 
     private: bool flash= false;
 
 public: PressStartMenuPaintable(){
 
-                        if(TouchScreenFactory::getInstance().isTouch())
+                        if(TouchScreenFactory::getInstance()->isTouch())
                         
                                     {
                                     this->startString= this->PRESS_START;
@@ -125,22 +131,22 @@ public: PressStartMenuPaintable(){
 
     private: int32_t line= 0;
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->beginWidth= (graphics.getFont().stringWidth(this->startString)>>1);
+this->beginWidth= (graphics->getFont()->stringWidth(this->startString)>>1);
     
-this->line= (4 *MyFontProcessor::defaultCharWidth(font)) +(font.getHeight()>>1);
+this->line= (4 *MyFontProcessor::defaultCharWidth(font)) +(font->getHeight()>>1);
     
 this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 
-                        if(this->timeDelayHelper.isTimeTNT())
+                        if(this->timeDelayHelper->isTimeTNT())
                         
                                     {
                                     
@@ -165,9 +171,9 @@ this->myFontProcessor= MyFontProcessor::getInstance();
                         if(this->isFlash())
                         
                                     {
-                                    this->myFontProcessor.process(graphics);
+                                    this->myFontProcessor->process(graphics);
     
-graphics.drawString(this->startString, displayInfo.getLastHalfWidth() -beginWidth, displayInfo.getLastHeight() -line, this->anchor);
+graphics->drawString(this->startString, displayInfo->getLastHalfWidth() -beginWidth, displayInfo->getLastHeight() -line, this->anchor);
     
 
                                     }

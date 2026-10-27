@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_DROPCELLPOSITIONHISTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_DROPCELLPOSITIONHISTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -61,33 +67,33 @@ class DropCellPositionHistory
             : public Object
          {
 
-    private: static const DropCellPositionHistory SINGLETON = DropCellPositionHistory();
+    private: static DropCellPositionHistory* SINGLETON() { static std::unique_ptr<DropCellPositionHistory> value(new DropCellPositionHistory()); return value.get(); }
 
-    public: static DropCellPositionHistory getInstance();
+    public: static DropCellPositionHistory* getInstance();
 
-    private: const CellPositionFactory cellPositionFactory = CellPositionFactory::getInstance();
+    private: CellPositionFactory* cellPositionFactory = CellPositionFactory::getInstance();
 
-    private: BasicArrayList positionList = BasicArrayListD();
+    private: BasicArrayList* positionList = new BasicArrayListD();
 
-    private: BasicArrayList layerList = BasicArrayListD();
+    private: BasicArrayList* layerList = new BasicArrayListD();
 
-    public: void add(CellPosition cellPosition, AllBinaryLayer layerInterface);
+    public: void add(CellPosition* cellPosition, AllBinaryLayer* layerInterface);
 
-    public: void addAll(BasicArrayList list, AllBinaryLayer layerInterface);
+    public: void addAll(BasicArrayList* list, AllBinaryLayer* layerInterface);
 
-    public: void remove(CellPosition cellPosition);
+    public: void remove(CellPosition* cellPosition);
 
-    public: void removeAll(AllBinaryLayer layerInterface);
+    public: void removeAll(AllBinaryLayer* layerInterface);
 
     public: void clear();
 
-    public: bool isCellPositionWithDrop(CellPosition cellPosition);
+    public: bool isCellPositionWithDrop(CellPosition* cellPosition);
 
-    public: bool anyCellPositionWithDrop(BasicArrayList list);
+    public: bool anyCellPositionWithDrop(BasicArrayList* list);
 
-    public: CellPosition getCellPositionWithDrop(BasicArrayList list);
+    public: CellPosition* getCellPositionWithDrop(BasicArrayList* list);
 
-    public: AllBinaryLayer getLayerInterface(CellPosition cellPosition);
+    public: AllBinaryLayer* getLayerInterface(CellPosition* cellPosition);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_IDENTIFICATION_COMPOSITEGROUP_H
         #define ORG_ALLBINARY_GAME_IDENTIFICATION_COMPOSITEGROUP_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -59,28 +65,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Group.h"
-#include "GroupCommonFactory.h"
+        #include "org/allbinary/game/identification/Group.h"
+#include "org/allbinary/game/identification/GroupCommonFactory.h"
 
 class CompositeGroup
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: Group groupInterface;
+    private: Group* groupInterface;
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
-public: CompositeGroup(Group groupInterface);
+public: CompositeGroup(Group* groupInterface);
 
     public: void clear();
 
-    public: void add(Group groupInterface);
+    public: void add(Group* groupInterface);
 
-    public: bool isInGroup(Group groupInterface);
+    public: bool isInGroup(Group* groupInterface);
 
-    public: Group getGroup();
+    public: Group* getGroup();
 
 };
 

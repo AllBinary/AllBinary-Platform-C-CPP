@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_STYLESVALIDATIONFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_STYLESVALIDATIONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -82,28 +88,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StylesData.h"
-#include "StyleData.h"
+        #include "org/allbinary/logic/visual/dhtml/style/StylesData.h"
+#include "org/allbinary/logic/visual/dhtml/style/StyleData.h"
 
 class StylesValidationFactory
             : public Object
          {
 
-    private: static StylesValidationFactory instance() { return StylesValidationFactory(); }
+    private: static StylesValidationFactory* instance() { static std::unique_ptr<StylesValidationFactory> value(new StylesValidationFactory()); return value.get(); }
 
-    public: static StylesValidationFactory getInstance();
+    public: static StylesValidationFactory* getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList getInstance(HashMap<Object*, Object*> hashMap);
+    public: static BasicArrayList* getInstance(HashMap<Object*, Object*>* hashMap);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: StylesValidationFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getInstance(Document document);
+    public: BasicArrayList* getInstance(Document* document);
 
 };
 

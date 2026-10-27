@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -68,30 +74,30 @@
         //HTMLForJ2ME
 class AboutPaintable: public Paintable, public UpdateMyFontInterface {
 
-    public: static AboutPaintable getInstance(std::vector<std::string> info, std::vector<std::string> developers){
+    public: static AboutPaintable* getInstance(std::vector<std::string> info, std::vector<std::string> developers){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AboutPaintable(info, developers);
+                        return new AboutPaintable(info, developers);
     
 }
 
 
-    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-    private: const std::string ABOUT = CanvasStrings::getInstance().ABOUT;
+    private: const std::string ABOUT = CanvasStrings::getInstance()->ABOUT;
 
     private: std::vector<std::string> info;
 
     private: std::vector<std::string> developers;
 
-    private: const std::vector<Paintable> paintableArray = 
+    private: const std::vector<Paintable*> paintableArray = 
                                                         {
                                                             this
                                                         };
 
-    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
 
     private: int32_t charHeight= 0;
 
@@ -115,13 +121,13 @@ this->developersBeginWidth= std::vector<int32_t>(this->developers.length);
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->charHeight= font.getHeight();
+this->charHeight= font->getHeight();
     
-this->aboutBeginWidth= (font.stringWidth(this->ABOUT)>>1);
+this->aboutBeginWidth= (font->stringWidth(this->ABOUT)>>1);
     
 
     int32_t infoSize = this->info.size();;
@@ -133,7 +139,7 @@ this->aboutBeginWidth= (font.stringWidth(this->ABOUT)>>1);
                         for (
     int32_t index = 0;index < infoSize; index++)
         {
-this->infoBeginWidth[index]= (font.stringWidth(this->info[index])>>1);
+this->infoBeginWidth[index]= (font->stringWidth(this->info[index])>>1);
     
 }
 
@@ -147,7 +153,7 @@ this->infoBeginWidth[index]= (font.stringWidth(this->info[index])>>1);
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->developersBeginWidth[index]= (font.stringWidth(this->developers[index])>>1);
+this->developersBeginWidth[index]= (font->stringWidth(this->developers[index])>>1);
     
 }
 
@@ -156,7 +162,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: std::vector<Paintable> getPaintableArrayInstance(){
+    public: std::vector<Paintable*> getPaintableArrayInstance(){
 
 
 
@@ -166,13 +172,13 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void paint(Graphics graphics){
-this->myFontProcessor.process(graphics);
+    public: void paint(Graphics* graphics){
+this->myFontProcessor->process(graphics);
     
 
-    int32_t halfWidth = this->displayInfoSingleton.getLastHalfWidth();;
+    int32_t halfWidth = this->displayInfoSingleton->getLastHalfWidth();;
     
-graphics.drawString(this->ABOUT, halfWidth -this->aboutBeginWidth, 2 *this->charHeight, this->anchor);
+graphics->drawString(this->ABOUT, halfWidth -this->aboutBeginWidth, 2 *this->charHeight, this->anchor);
     
 
     int32_t infoSize = this->info.size();;
@@ -184,7 +190,7 @@ graphics.drawString(this->ABOUT, halfWidth -this->aboutBeginWidth, 2 *this->char
                         for (
     int32_t index = 0;index < infoSize; index++)
         {
-graphics.drawString(this->info[index], halfWidth -this->infoBeginWidth[index], (4 +index) *this->charHeight, this->anchor);
+graphics->drawString(this->info[index], halfWidth -this->infoBeginWidth[index], (4 +index) *this->charHeight, this->anchor);
     
 }
 
@@ -198,7 +204,7 @@ graphics.drawString(this->info[index], halfWidth -this->infoBeginWidth[index], (
                         for (
     int32_t index = 0;index < size; index++)
         {
-graphics.drawString(this->developers[index], halfWidth -this->developersBeginWidth[index], (5 +infoSize +index) *this->charHeight, this->anchor);
+graphics->drawString(this->developers[index], halfWidth -this->developersBeginWidth[index], (5 +infoSize +index) *this->charHeight, this->anchor);
     
 }
 

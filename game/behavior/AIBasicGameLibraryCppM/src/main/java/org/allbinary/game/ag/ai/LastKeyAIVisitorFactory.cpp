@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,15 +44,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LastKeyAIVisitor.h"
+        #include "org/allbinary/game/ag/ai/LastKeyAIVisitor.h"
 
 class LastKeyAIVisitorFactory
             : public Object
          {
 
-    private: static LastKeyAIVisitor instance() { return LastKeyAIVisitor(); }
+    private: static LastKeyAIVisitor* instance() { static std::unique_ptr<LastKeyAIVisitor> value(new LastKeyAIVisitor()); return value.get(); }
 
-    public: static LastKeyAIVisitor getInstance(){
+    public: static LastKeyAIVisitor* getInstance(){
 
 
 

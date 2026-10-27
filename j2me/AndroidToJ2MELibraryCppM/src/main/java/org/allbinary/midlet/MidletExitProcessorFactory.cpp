@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/midlet/MIDlet.h>
@@ -50,15 +56,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MidletExitProcessor.h"
+        #include "org/allbinary/midlet/MidletExitProcessor.h"
 
 class MidletExitProcessorFactory
             : public Object
          {
 
-    private: static MidletExitProcessorFactory instance() { return MidletExitProcessorFactory(); }
+    private: static MidletExitProcessorFactory* instance() { static std::unique_ptr<MidletExitProcessorFactory> value(new MidletExitProcessorFactory()); return value.get(); }
 
-    public: static MidletExitProcessorFactory getInstance(){
+    public: static MidletExitProcessorFactory* getInstance(){
 
 
 
@@ -68,7 +74,7 @@ class MidletExitProcessorFactory
 }
 
 
-    public: Processor getExitInstance(MIDlet midlet){
+    public: Processor* getExitInstance(MIDlet* midlet){
 
                         if(AppletUtil::isAppletLoader(midlet) || J2MEUtil::isJ2ME())
                         
@@ -87,7 +93,7 @@ class MidletExitProcessorFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MidletExitProcessor(midlet);
+                        return new MidletExitProcessor(midlet);
     
 
                         }

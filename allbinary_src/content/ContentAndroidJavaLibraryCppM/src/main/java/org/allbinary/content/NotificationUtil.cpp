@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -70,41 +76,41 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NotificationBuilder.h"
-#include "NotificationBuilderAPI23.h"
-#include "CommandUriAction.h"
+        #include "org/allbinary/content/NotificationBuilder.h"
+#include "org/allbinary/content/NotificationBuilderAPI23.h"
+#include "org/allbinary/content/CommandUriAction.h"
 
 class NotificationUtil
             : public Object
          {
 
-    private: static const NotificationUtil SINGLETON = NotificationUtil();
+    private: static NotificationUtil* SINGLETON() { static std::unique_ptr<NotificationUtil> value(new NotificationUtil()); return value.get(); }
 
-    public: static NotificationUtil getInstance(){
+    public: static NotificationUtil* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NotificationUtil::SINGLETON;
+                        return NotificationUtil::SINGLETON();
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: NotificationManager notificationManager = ResourceUtil::getInstance().getContext().getSystemService(Context::NOTIFICATION_SERVICE);
+    private: NotificationManager* notificationManager = dynamic_cast<NotificationManager*>(ResourceUtil::getInstance()->getContext()->getSystemService(Context::NOTIFICATION_SERVICE));
 
-    private: const NotificationBuilder notificationBuilder;
+    private: NotificationBuilder* notificationBuilder;
 
 private: NotificationUtil(){
 
-    int32_t SDK_VERSION = AndroidInfoFactory::getInstance().getVersion();;
+    int32_t SDK_VERSION = AndroidInfoFactory::getInstance()->getVersion();;
     
 
                         if(SDK_VERSION > 22)
                         
                                     {
-                                    this->notificationBuilder= NotificationBuilderAPI23();
+                                    this->notificationBuilder= new NotificationBuilderAPI23();
     
 
                                     }
@@ -118,24 +124,24 @@ private: NotificationUtil(){
 }
 
 
-    public: void notify(Command command, std::string resource, std::string message){
+    public: void notify(Command* command, std::string resource, std::string message){
 
-    Context context = ResourceUtil::getInstance().getContext();;
+    Context* context = ResourceUtil::getInstance()->getContext();;
     
 
-    Intent intent = CommandUriAction::getInstance().getIntent(command);;
+    Intent* intent = CommandUriAction::getInstance()->getIntent(command);;
     
 
-    Integer integer = ResourceUtil::getInstance().getResourceId(resource);;
+    int32_t integer = ResourceUtil::getInstance()->getResourceId(resource);;
     
 
     int32_t FLAG_IMMUTABLE = 1<<26;;
     
 
-    int32_t SDK_VERSION = AndroidInfoFactory::getInstance().getVersion();;
+    int32_t SDK_VERSION = AndroidInfoFactory::getInstance()->getVersion();;
     
 
-    PendingIntent pendingIntent = PendingIntent::getActivity(context, 0, intent, SDK_VERSION > 22
+    PendingIntent* pendingIntent = PendingIntent::getActivity(context, 0, intent, SDK_VERSION > 22
                         ?       
                                 FLAG_IMMUTABLE
                                 :
@@ -151,9 +157,9 @@ private: NotificationUtil(){
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF(commonStrings.EXCEPTION, this, commonStrings.NOT_IMPLEMENTED);
+this->logUtil->putF(commonStrings->EXCEPTION, this, commonStrings->NOT_IMPLEMENTED);
     
 
 
@@ -164,7 +170,7 @@ this->logUtil.putF(commonStrings.EXCEPTION, this, commonStrings.NOT_IMPLEMENTED)
 
                                     }
                                 
-this->notificationBuilder.build(context, command, message, integer, pendingIntent);
+this->notificationBuilder->build(context, command, message, integer, pendingIntent);
     
 }
 

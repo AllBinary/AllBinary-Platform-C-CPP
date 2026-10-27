@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -77,20 +83,20 @@
         
 class GenericCssStyleValidation: public Validation, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: GenericCssStyleValidation(){
 }
 
 
-public: GenericCssStyleValidation(Document document){
+public: GenericCssStyleValidation(Document* document){
 
-    NodeList nodeList = document.getElementsByTagName(StylesData::getInstance().NAME);;
+    NodeList* nodeList = document->getElementsByTagName(StylesData::getInstance()->NAME);;
     
 }
 
 
-public: GenericCssStyleValidation(HashMap<Object*, Object*> hashMap){
+public: GenericCssStyleValidation(HashMap<Object*, Object*>* hashMap){
 this->getFormData(hashMap);
     
 }
@@ -98,30 +104,30 @@ this->getFormData(hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<Object*, Object*> hashMap){
+    public: void getFormData(HashMap<Object*, Object*>* hashMap){
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-    Boolean isValid = Boolean::TRUE;;
+    bool isValid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.IS_VALID);
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("End: " +isValid, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("End: " +isValid, this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -134,13 +140,13 @@ this->getFormData(hashMap);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -160,23 +166,23 @@ this->getFormData(hashMap);
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -192,7 +198,7 @@ this->getFormData(hashMap);
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -202,7 +208,7 @@ this->getFormData(hashMap);
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -214,9 +220,9 @@ this->getFormData(hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = ModDomHelper::createNameValueNodes(document, BodyData::getInstance().NAME, StringUtil::getInstance().EMPTY_STRING);;
+    Node* node = ModDomHelper::createNameValueNodes(document, BodyData::getInstance()->NAME, StringUtil::getInstance()->EMPTY_STRING);;
     
 
 

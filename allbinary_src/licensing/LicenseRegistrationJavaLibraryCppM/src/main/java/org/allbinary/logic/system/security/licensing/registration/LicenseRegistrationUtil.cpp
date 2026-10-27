@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,43 +64,43 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RegistrationConfiguration.h"
-#include "XmlRpcRemoteLicenseRegistrationClient.h"
+        #include "org/allbinary/logic/system/security/licensing/registration/RegistrationConfiguration.h"
+#include "org/allbinary/logic/system/security/licensing/registration/XmlRpcRemoteLicenseRegistrationClient.h"
 
 class LicenseRegistrationUtil
             : public Object
          {
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void process(AbeClientInformationInterface abeClientInformation, std::string registrationId){
+    public: static void process(AbeClientInformationInterface* abeClientInformation, std::string registrationId){
 
         try {
             
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil::put(CommonLabels::getInstance().START_LABEL +"License Registration", "LicenseRegistrationUtil", commonStrings.PROCESS);
-    
-
-    RegistrationConfiguration registrationConfiguration = RegistrationConfiguration::getInstance();;
-    
-registrationConfiguration.setRegistrationCode(registrationId);
-    
-registrationConfiguration.write();
+PreLogUtil::put(CommonLabels::getInstance()->START_LABEL +"License Registration", "LicenseRegistrationUtil", commonStrings->PROCESS);
     
 
-    ABHashtable<Object*, Object*> hashtable = abeClientInformation.toHashtable();;
+    RegistrationConfiguration* registrationConfiguration = RegistrationConfiguration::getInstance();;
     
-hashtable.put(RegistrationConfiguration::getInstance().NAME, registrationId);
+registrationConfiguration->setRegistrationCode(registrationId);
     
-hashtable.put("message", SpecialMessageUtil::getInstance().get());
+registrationConfiguration->write();
     
-XmlRpcRemoteLicenseRegistrationClient(abeClientInformation).get(hashtable);
+
+    ABHashtable<Object*, Object*>* hashtable = abeClientInformation->toHashtable();;
+    
+hashtable->put(RegistrationConfiguration::getInstance()->NAME, registrationId);
+    
+hashtable->put("message", SpecialMessageUtil::getInstance()->get());
+    
+(new XmlRpcRemoteLicenseRegistrationClient(abeClientInformation))->get(hashtable);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-PreLogUtil::putOE("License Registration Exception", "LicenseRegistrationUtil", "License Registration", e);
+PreLogUtil::putOE("License Registration Exception", "LicenseRegistrationUtil", "License Registration", &e);
     
 }
 

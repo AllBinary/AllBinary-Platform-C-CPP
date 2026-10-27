@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -43,15 +49,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Component.h"
+        #include "org/allbinary/logic/system/hardware/components/Component.h"
 
 class ComponentFactory
             : public Object
          {
 
-    private: static ComponentFactory instance() { return ComponentFactory(); }
+    private: static ComponentFactory* instance() { static std::unique_ptr<ComponentFactory> value(new ComponentFactory()); return value.get(); }
 
-    public: static ComponentFactory getInstance(){
+    public: static ComponentFactory* getInstance(){
 
 
 
@@ -61,31 +67,31 @@ class ComponentFactory
 }
 
 
-    public: const Component VGA = Component("VGA");
+    public: Component* VGA = new Component("VGA");
 
-    public: const Component IDE = Component("IDE");
+    public: Component* IDE = new Component("IDE");
 
-    public: const Component SCSI = Component("SCSI");
+    public: Component* SCSI = new Component("SCSI");
 
-    public: const Component BRIDGE = Component("bridge");
+    public: Component* BRIDGE = new Component("bridge");
 
-    public: const Component ETHERNET = Component("Ethernet");
+    public: Component* ETHERNET = new Component("Ethernet");
 
-    public: const Component USB = Component("USB");
+    public: Component* USB = new Component("USB");
 
-    public: const Component MULTIMEDIA = Component("Multimedia");
+    public: Component* MULTIMEDIA = new Component("Multimedia");
 
-    public: const Component PCI = Component("PCI");
+    public: Component* PCI = new Component("PCI");
 
-    public: const Component RAID = Component("RAID");
+    public: Component* RAID = new Component("RAID");
 
-    public: const Component SMBUS = Component("SMBus");
+    public: Component* SMBUS = new Component("SMBus");
 
-    public: const Component PIC = Component("PIC");
+    public: Component* PIC = new Component("PIC");
 
-    public: const Component Class = Component("Class");
+    public: Component* Class = new Component("Class");
 
-    public: const Component UNKNOWN = Component(CommonStrings::getInstance().UNKNOWN);
+    public: Component* UNKNOWN = new Component(CommonStrings::getInstance()->UNKNOWN);
 
 };
 

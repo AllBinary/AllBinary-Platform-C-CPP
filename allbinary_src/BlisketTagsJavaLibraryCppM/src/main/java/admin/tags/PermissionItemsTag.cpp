@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <admin/taghelpers/PermissionItemsHelperFactory.h>
 
       
@@ -42,14 +48,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TableTag.h"
+        #include "admin/tags/TableTag.h"
 
 class PermissionItemsTag: public TableTag {
 
 public: PermissionItemsTag(){
-this->setTagHelperFactory(PermissionItemsHelperFactory());
+this->setTagHelperFactory(new PermissionItemsHelperFactory());
     
-this->setTagRequestHelperFactory(PermissionItemsRequestHelperFactory());
+this->setTagRequestHelperFactory(new PermissionItemsRequestHelperFactory());
     
 }
 

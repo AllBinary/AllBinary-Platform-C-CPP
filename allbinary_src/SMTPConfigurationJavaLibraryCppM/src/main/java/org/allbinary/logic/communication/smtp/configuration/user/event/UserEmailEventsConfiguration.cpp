@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,19 +70,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserEmailEventsConfigurationInterface.h"
-#include "UserEmailEventConfigurationInterface.h"
-#include "UserEmailEventListenerFactory.h"
+        #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventsConfigurationInterface.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationInterface.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventListenerFactory.h"
 
 class UserEmailEventsConfiguration
             : public Object
-        : public UserEmailEventsConfigurationInterface {
+        , public UserEmailEventsConfigurationInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: HashMap<Object*, Object*> emailEventHashMap;
+    private: HashMap<Object*, Object*>* emailEventHashMap;
 
 public: UserEmailEventsConfiguration(){
 this->init();
@@ -84,20 +90,20 @@ this->init();
 }
 
 
-public: UserEmailEventsConfiguration(HashMap<Object*, Object*> hashMap){
+public: UserEmailEventsConfiguration(HashMap<Object*, Object*>* hashMap){
 this->init();
     
 }
 
 
     private: void init(){
-this->emailEventHashMap= StdUtil::getInstance().createHashMap();
+this->emailEventHashMap= StdUtil::getInstance()->createHashMap();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.CONSTRUCTOR, this, " Constructor");
+                                    this->logUtil->putF(this->commonStrings->CONSTRUCTOR, this, " Constructor");
     
 
                                     }
@@ -105,7 +111,7 @@ this->emailEventHashMap= StdUtil::getInstance().createHashMap();
 }
 
 
-    public: HashMap<Object*, Object*> getEventConfigurationHashMap(){
+    public: HashMap<Object*, Object*>* getEventConfigurationHashMap(){
 
 
 
@@ -115,26 +121,26 @@ this->emailEventHashMap= StdUtil::getInstance().createHashMap();
 }
 
 
-    public: void addUserEmailEventConfiguration(UserEmailEventConfigurationInterface userEmailEventConfigurationInterface){
+    public: void addUserEmailEventConfiguration(UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
                         
                                     {
-                                    this->logUtil.putF("Adding: " +userEmailEventConfigurationInterface.log(), this, "addUserEmailEventConfiguration");
+                                    this->logUtil->putF("Adding: " +userEmailEventConfigurationInterface->log(), this, "addUserEmailEventConfiguration");
     
 
                                     }
                                 
-this->emailEventHashMap.put(userEmailEventConfigurationInterface.getName(), userEmailEventConfigurationInterface);
+this->emailEventHashMap->put(userEmailEventConfigurationInterface->getName(), userEmailEventConfigurationInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: UserEmailEventListenerInterface getEventListener(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, UserInterface userInterface){
+    public: UserEmailEventListenerInterface* getEventListener(AbeClientInformationInterface* abeClientInformation, UserEmailEventNameData* userEmailEventNameData, UserInterface* userInterface){
 
-    UserEmailEventConfigurationInterface userEmailEventConfigurationInterface = this->emailEventHashMap.get(userEmailEventNameData.toString());;
+    UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface = dynamic_cast<UserEmailEventConfigurationInterface*>(this->emailEventHashMap->get(userEmailEventNameData->toString()));;
     
 
 

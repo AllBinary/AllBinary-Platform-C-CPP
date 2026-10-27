@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -53,7 +61,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HtmlCell.h"
+        #include "org/allbinary/logic/visual/dhtml/html/table/HtmlCell.h"
 
 class HtmlRow: public HtmlTag {
 
@@ -69,20 +77,20 @@ class HtmlRow: public HtmlTag {
 
     private: std::string after;
 
-    private: BasicArrayList htmlCellsVector;
+    private: BasicArrayList* htmlCellsVector;
 
 public: HtmlRow(std::string before, std::string after){
 this->before= std::string(before);
     
 this->after= std::string(after);
     
-this->htmlCellsVector= BasicArrayListD();
+this->htmlCellsVector= new BasicArrayListD();
     
 }
 
 
-    public: void addCell(HtmlCell htmlCell){
-this->htmlCellsVector.add(htmlCell);
+    public: void addCell(HtmlCell* htmlCell){
+this->htmlCellsVector->add(htmlCell);
     
 this->numberOfColumns++;
     
@@ -101,19 +109,19 @@ this->numberOfColumns++;
 
     public: std::string toString(){
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
 
-    std::string result = stringUtil.EMPTY_STRING;;
+    std::string result = stringUtil->EMPTY_STRING;;
     
 
-    std::vector<Object*> attributeKeys = this->otherAttributes.keySet().();;
+    std::vector<Object*> attributeKeys = this->otherAttributes.keySet()->();;
     
 
     int32_t attributeSize = attributeKeys.size();;
     
 
-    int32_t cellSize = this->htmlCellsVector.size();;
+    int32_t cellSize = this->htmlCellsVector->size();;
     
 result= this->before;
     
@@ -135,7 +143,7 @@ result += " ";
     std::string value = otherAttributes.get(key);;
     
 
-                        if(true && value.compare(stringUtil.EMPTY_STRING) != 0)
+                        if(true && value.compare(stringUtil->EMPTY_STRING) != 0)
                         
                                     {
                                     result += key;
@@ -160,7 +168,7 @@ result += this->END;
                         for (
     int32_t i = 0;i < cellSize; i++)
         {
-result += this->htmlCellsVector.get(i).toString();
+result += this->htmlCellsVector->get(i)->toString();
     
 result += " ";
     

@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_TEXTUREATTRIBUTEPOINTEROPENGLPROCESSOR_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_TEXTUREATTRIBUTEPOINTEROPENGLPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -50,13 +58,13 @@
         
 class TextureAttributePointerOpenGLProcessor: public ObjectThreedOpenGLProcessor {
 
-    private: static TextureAttributePointerOpenGLProcessor instance() { return TextureAttributePointerOpenGLProcessor(); }
+    private: static TextureAttributePointerOpenGLProcessor* instance() { static std::unique_ptr<TextureAttributePointerOpenGLProcessor> value(new TextureAttributePointerOpenGLProcessor()); return value.get(); }
 
-    public: static TextureAttributePointerOpenGLProcessor getInstance();
+    public: static TextureAttributePointerOpenGLProcessor* getInstance();
 
 public: TextureAttributePointerOpenGLProcessor();
 
-    public: void process(GL10 gl, Object* anyType);
+    public: void process(GL10* gl, Object* anyType);
 
 };
 

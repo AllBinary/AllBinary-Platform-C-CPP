@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONCACHEABLE_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONCACHEABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/AnimationBehavior.h>
@@ -53,12 +61,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdjustedImageArrayRotationAnimation.h"
-#include "ImageArrayRotationAnimationInfo.h"
+        #include "org/allbinary/animation/image/AdjustedImageArrayRotationAnimation.h"
+#include "org/allbinary/animation/image/ImageArrayRotationAnimationInfo.h"
 
 class ImageArrayRotationAnimationCacheable: public AdjustedImageArrayRotationAnimation, public CacheableInterface {
 
-public: ImageArrayRotationAnimationCacheable(Object* anyType, AnimationBehavior animationBehavior);
+public: ImageArrayRotationAnimationCacheable(Object* anyType, AnimationBehavior* animationBehavior);
 
     public: Object* getKey();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/NewUserFactory.h>
@@ -71,11 +77,11 @@
         
 class UpdateValidationUserView: public HttpContextView, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: UserInterface user;
+    private: UserInterface* user;
 
-public: UpdateValidationUserView(TransformInfoInterface transformInfoInterface) : HttpContextView(transformInfoInterface){
+public: UpdateValidationUserView(TransformInfoInterface* transformInfoInterface) : HttpContextView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -87,20 +93,20 @@ this->user= NewUserFactory::getInstance(transformInfoInterface);
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-                        if(UserEntityFactory::getInstance().getUser(this->user.getUserName()) == 
+                        if(UserEntityFactory::getInstance()->getUser(this->user->getUserName()) == 
                                     nullptr
                                 )
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("User does not exist", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("User does not exist", this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -115,7 +121,7 @@ this->user= NewUserFactory::getInstance(transformInfoInterface);
                                     }
                                 
 
-                        if(this->user.isValid() == Boolean::FALSE)
+                        if(this->user->isValid() == Boolean::FALSE)
                         
                                     {
                                     
@@ -135,13 +141,13 @@ this->user= NewUserFactory::getInstance(transformInfoInterface);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -161,33 +167,33 @@ this->user= NewUserFactory::getInstance(transformInfoInterface);
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-                        if(UserEntityFactory::getInstance().getUser(this->user.getUserName()) == 
+                        if(UserEntityFactory::getInstance()->getUser(this->user->getUserName()) == 
                                     nullptr
                                 )
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("User does not exist", this, "validationInfo()");
+                                    this->logUtil->putF("User does not exist", this, "validationInfo()");
     
 
                                     }
                                 
-stringBuffer.append("Unable to update user that does not exist.<br />");
+stringBuffer->append("Unable to update user that does not exist.<br />");
     
 
                                     }
                                 
 
-                        if(this->user.isValid() == Boolean::FALSE)
+                        if(this->user->isValid() == Boolean::FALSE)
                         
                                     {
-                                    stringBuffer.append(this->user.validationInfo());
+                                    stringBuffer->append(this->user->validationInfo());
     
 
                                     }
@@ -196,17 +202,17 @@ stringBuffer.append("Unable to update user that does not exist.<br />");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -222,7 +228,7 @@ stringBuffer.append("Unable to update user that does not exist.<br />");
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -232,7 +238,7 @@ stringBuffer.append("Unable to update user that does not exist.<br />");
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -249,7 +255,7 @@ stringBuffer.append("Unable to update user that does not exist.<br />");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return views.ValidationOnlyTempUtil.getInstance().view(this);;
+                        return views.ValidationOnlyTempUtil.getInstance()->view(this);;
     
 }
 

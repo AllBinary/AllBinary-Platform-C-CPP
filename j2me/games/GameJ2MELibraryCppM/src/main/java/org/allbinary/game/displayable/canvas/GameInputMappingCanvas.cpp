@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -103,34 +109,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameCommandCanvas.h"
-#include "GameInputMappingInstructionsCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/GameCommandCanvas.h"
+#include "org/allbinary/game/displayable/canvas/GameInputMappingInstructionsCanvas.h"
 
 class GameInputMappingCanvas: public GameCommandCanvas, public InputMappingInterface {
 
-    public: static const std::string NAME = "GameInputMappingCanvas";
+    public: static inline const std::string NAME = "GameInputMappingCanvas";
 
-    public: static const Command DISPLAY = Command("Controls", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 2);
+    public: static Command* DISPLAY() { static std::unique_ptr<Command> value(new Command("Controls", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 2)); return value.get(); }
 
-    public: static const Command DEFAULT = Command("Default", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 2);
+    public: static Command* DEFAULT() { static std::unique_ptr<Command> value(new Command("Default", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 2)); return value.get(); }
 
-    private: ProcessPaintable paintable;
+    private: ProcessPaintable* paintable;
 
-    private: InputMappingHelpPaintable helpPaintable;
+    private: InputMappingHelpPaintable* helpPaintable;
 
-    protected: ColorFillBasePaintable colorFillPaintable;
+    protected: ColorFillBasePaintable* colorFillPaintable;
 
-    private: PersistentInputMapping inputMapping;
+    private: PersistentInputMapping* inputMapping;
 
-    private: const GameKey NONE = GameKeyFactory::getInstance().NONE;
+    private: GameKey* NONE = GameKeyFactory::getInstance()->NONE;
 
-    private: AbeClientInformationInterface abeClientInformation;
+    private: AbeClientInformationInterface* abeClientInformation;
 
-    private: GameKey selectedGameKey = this->NONE;
+    private: GameKey* selectedGameKey = this->NONE;
 
-    private: Input selectedInput = this->NONE;
+    private: Input* selectedInput = this->NONE;
 
-public: GameInputMappingCanvas(AbeClientInformationInterface abeClientInformation, CommandListener commandListener, AllBinaryGameLayerManager allBinaryGameLayerManager, HelpPaintable helpPaintable) : GameCommandCanvas(commandListener, GameInputMappingCanvas::NAME, allBinaryGameLayerManager.getBackgroundBasicColor(), allBinaryGameLayerManager.getForegroundBasicColor()){
+public: GameInputMappingCanvas(AbeClientInformationInterface* abeClientInformation, CommandListener* commandListener, AllBinaryGameLayerManager* allBinaryGameLayerManager, HelpPaintable* helpPaintable) : GameCommandCanvas(commandListener, GameInputMappingCanvas::NAME, allBinaryGameLayerManager->getBackgroundBasicColor(), allBinaryGameLayerManager->getForegroundBasicColor()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -148,20 +154,20 @@ this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUC
                                     
 
 
-                            throw Exception("Help Paintable Exception");
+                            throw new Exception("Help Paintable Exception");
                     
 
                                     }
                                 
 this->abeClientInformation= abeClientInformation;
     
-this->helpPaintable= helpPaintable;
+this->helpPaintable= dynamic_cast<InputMappingHelpPaintable*>(helpPaintable);
     
-this->inputMapping= PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance();
+this->inputMapping= PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance();
     
-this->paintable= ProcessPaintable();
+this->paintable= new ProcessPaintable();
     
-this->colorFillPaintable= ColorFillPaintableFactory::getInstance().getInstance(allBinaryGameLayerManager.getBackgroundBasicColor(), false);
+this->colorFillPaintable= ColorFillPaintableFactory::getInstance()->getInstance(allBinaryGameLayerManager->getBackgroundBasicColor(), false);
     
 }
 
@@ -169,7 +175,7 @@ this->colorFillPaintable= ColorFillPaintableFactory::getInstance().getInstance(a
     public: void close(){
 super.close();
     
-this->paintable.process();
+this->paintable->process();
     
 this->selectedGameKey= this->NONE;
     
@@ -180,14 +186,14 @@ this->update();
 }
 
 
-    public: void initCommands(CommandListener cmdListener){
+    public: void initCommands(CommandListener* cmdListener){
 this->removeAllCommands();
     
-this->addCommand(GameCommandsFactory::getInstance().CLOSE_AND_SHOW_GAME_CANVAS);
+this->addCommand(GameCommandsFactory::getInstance()->CLOSE_AND_SHOW_GAME_CANVAS);
     
-this->addCommand(GameInputMappingCanvas::DEFAULT);
+this->addCommand(GameInputMappingCanvas::DEFAULT());
     
-this->addCommand(GameInputMappingInstructionsCanvas::DISPLAY);
+this->addCommand(GameInputMappingInstructionsCanvas::DISPLAY());
     
 this->setCommandListener(cmdListener);
     
@@ -220,26 +226,26 @@ super.keyPressedByDevice(keyCode, 0);
 }
 
 
-    private: const InputFactory inputFactory = InputFactory::getInstance();
+    private: InputFactory* inputFactory = InputFactory::getInstance();
 
     private: void addGameKey(int32_t keyCode, bool repeated){
 
         try {
-            this->logUtil.putF(StringMaker().append("Raw Device Key Code: ").append(Integer::toHexString(keyCode)).toString(), this, this->gameInputStrings.ADD_KEY_EVENT);
+            this->logUtil.putF((new StringMaker())->append("Raw Device Key Code: ")->append(Integer.toHexString(keyCode))->toString(), this, this->gameInputStrings.ADD_KEY_EVENT);
     
 
-    GameKey gameKey = this->inputToGameKeyMapping.getInstanceForCanvas(this, keyCode);;
+    GameKey* gameKey = this->inputToGameKeyMapping.getInstanceForCanvas(this, keyCode);;
     
 
-    Input input = this->inputFactory.getInstanceById(keyCode);;
+    Input* input = this->inputFactory->getInstanceById(keyCode);;
     
 this->processInputMapping(gameKey, input);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put("Key Event Error", this, this->gameInputStrings.ADD_KEY_EVENT, e);
+this->logUtil.put("Key Event Error", this, this->gameInputStrings.ADD_KEY_EVENT, &e);
     
 }
 
@@ -248,19 +254,19 @@ this->logUtil.put("Key Event Error", this, this->gameInputStrings.ADD_KEY_EVENT,
 
                 //@Throws(Exception.constructor)
             
-    public: void processInputMapping(GameKey gameKey, Input input){
+    public: void processInputMapping(GameKey* gameKey, Input* input){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Start Passed GameKey: ");
+stringBuffer->append("Start Passed GameKey: ");
     
-stringBuffer.append(this->stringUtil.toString(gameKey));
+stringBuffer->append(this->stringUtil.toString(gameKey));
     
-stringBuffer.append(" Input: ");
+stringBuffer->append(" Input: ");
     
-stringBuffer.append(this->stringUtil.toString(input));
+stringBuffer->append(this->stringUtil.toString(input));
     
-this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.PROCESS);
+this->logUtil.putF(stringBuffer->toString(), this, this->commonStrings.PROCESS);
     
 
                         if(this->selectedGameKey != this->NONE)
@@ -280,14 +286,14 @@ this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.PROCESS);
 }
 
 
-    private: void setSelectedAction(GameKey gameKey){
-this->logUtil.putF(StringMaker().append("Selected GameKey: ").append(this->stringUtil.toString(gameKey)).toString(), this, "setSelectedAction");
+    private: void setSelectedAction(GameKey* gameKey){
+this->logUtil.putF((new StringMaker())->append("Selected GameKey: ")->append(this->stringUtil.toString(gameKey))->toString(), this, "setSelectedAction");
     
 this->selectedGameKey= gameKey;
     
 this->selectedInput= this->NONE;
     
-this->helpPaintable.update(this->selectedGameKey, this->selectedInput);
+this->helpPaintable->update(this->selectedGameKey, this->selectedInput);
     
 this->repaintBehavior.onChangeRepaint(this);
     
@@ -296,39 +302,39 @@ this->repaintBehavior.onChangeRepaint(this);
 
                 //@Throws(Exception.constructor)
             
-    private: void gameActionCrud(GameKey gameKey, Input input){
+    private: void gameActionCrud(GameKey* gameKey, Input* input){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Start GameKey: ");
+stringBuffer->append("Start GameKey: ");
     
-stringBuffer.append(this->stringUtil.toString(this->selectedGameKey));
+stringBuffer->append(this->stringUtil.toString(this->selectedGameKey));
     
-stringBuffer.append(" Input: ");
+stringBuffer->append(" Input: ");
     
-stringBuffer.append(this->stringUtil.toString(this->selectedInput));
+stringBuffer->append(this->stringUtil.toString(this->selectedInput));
     
-this->logUtil.putF(stringBuffer.toString(), this, "gameActionCrud");
+this->logUtil.putF(stringBuffer->toString(), this, "gameActionCrud");
     
 
                         if(this->selectedInput == this->NONE)
                         
                                     {
                                     
-    BasicArrayList list = this->inputMapping.getInputMapping().getMappedInput(this->selectedGameKey);;
+    BasicArrayList* list = this->inputMapping->getInputMapping()->getMappedInput(this->selectedGameKey);;
     
 
-    bool isInputAlreadyMappedToSelectedAction = list.contains(input);;
+    bool isInputAlreadyMappedToSelectedAction = list->contains(input);;
     
 
                         if(isInputAlreadyMappedToSelectedAction)
                         
                                     {
-                                    this->logUtil.putF(StringMaker().append("Already Mapped Input: ").append(this->stringUtil.toString(input)).toString(), this, "gameActionCrud");
+                                    this->logUtil.putF((new StringMaker())->append("Already Mapped Input: ")->append(this->stringUtil.toString(input))->toString(), this, "gameActionCrud");
     
 this->selectedInput= input;
     
-this->helpPaintable.update(this->selectedGameKey, this->selectedInput);
+this->helpPaintable->update(this->selectedGameKey, this->selectedInput);
     
 this->repaintBehavior.onChangeRepaint(this);
     
@@ -345,7 +351,7 @@ this->repaintBehavior.onChangeRepaint(this);
                                     }
                                 
                              else 
-                        if(this->inputMapping.isDelete(input))
+                        if(this->inputMapping->isDelete(input))
                         
                                     {
                                     this->deleteCurrentMapping();
@@ -364,33 +370,33 @@ this->repaintBehavior.onChangeRepaint(this);
 
                 //@Throws(Exception.constructor)
             
-    private: void addNewMapping(GameKey gameKey, Input input){
+    private: void addNewMapping(GameKey* gameKey, Input* input){
 
     std::string METHOD_NAME = "addNewMapping";;
     
 this->logUtil.putF(this->commonStrings.START, this, METHOD_NAME);
     
 
-    bool isInputAlreadyMapped = this->inputMapping.getInputMapping().isMapped(input);;
+    bool isInputAlreadyMapped = this->inputMapping->getInputMapping()->isMapped(input);;
     
 
-                        if(!isInputAlreadyMapped && !this->inputMapping.isSystemInput(input))
+                        if(!isInputAlreadyMapped && !this->inputMapping->isSystemInput(input))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Add Key Mapping : GameKey: ");
+stringBuffer->append("Add Key Mapping : GameKey: ");
     
-stringBuffer.append(this->stringUtil.toString(this->selectedGameKey));
+stringBuffer->append(this->stringUtil.toString(this->selectedGameKey));
     
-stringBuffer.append(" Input: ");
+stringBuffer->append(" Input: ");
     
-stringBuffer.append(this->stringUtil.toString(this->selectedInput));
+stringBuffer->append(this->stringUtil.toString(this->selectedInput));
     
-this->logUtil.putF(stringBuffer.toString(), this, METHOD_NAME);
+this->logUtil.putF(stringBuffer->toString(), this, METHOD_NAME);
     
-this->inputMapping.getInputMapping().add(this->selectedGameKey, input);
+this->inputMapping->getInputMapping()->add(this->selectedGameKey, input);
     
 this->selectedInput= input;
     
@@ -417,28 +423,28 @@ this->setSelectedAction(gameKey);
     std::string METHOD_NAME = "deleteCurrentMapping";;
     
 
-    BasicArrayList list = this->inputMapping.getInputMapping().getMappedInput(this->selectedGameKey);;
+    BasicArrayList* list = this->inputMapping->getInputMapping()->getMappedInput(this->selectedGameKey);;
     
 
-                        if(list.size() > 1)
+                        if(list->size() > 1)
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Start GameKey: ");
+stringBuffer->append("Start GameKey: ");
     
-stringBuffer.append("Remove Key Mapping: GameKey: ");
+stringBuffer->append("Remove Key Mapping: GameKey: ");
     
-stringBuffer.append(this->stringUtil.toString(this->selectedGameKey));
+stringBuffer->append(this->stringUtil.toString(this->selectedGameKey));
     
-stringBuffer.append(" Input: ");
+stringBuffer->append(" Input: ");
     
-stringBuffer.append(this->stringUtil.toString(this->selectedInput));
+stringBuffer->append(this->stringUtil.toString(this->selectedInput));
     
-this->logUtil.putF(stringBuffer.toString(), this, METHOD_NAME);
+this->logUtil.putF(stringBuffer->toString(), this, METHOD_NAME);
     
-this->inputMapping.getInputMapping().remove(this->selectedGameKey, this->selectedInput);
+this->inputMapping->getInputMapping()->remove(this->selectedGameKey, this->selectedInput);
     
 this->selectedInput= this->NONE;
     
@@ -459,9 +465,9 @@ this->update();
                 //@Throws(Exception.constructor)
             
     public: void setDefault(){
-this->inputMapping.setDefault(this->abeClientInformation);
+this->inputMapping->setDefault(this->abeClientInformation);
     
-this->helpPaintable.update(this->NONE, this->NONE);
+this->helpPaintable->update(this->NONE, this->NONE);
     
 this->repaintBehavior.onChangeRepaint(this);
     
@@ -471,21 +477,21 @@ this->repaintBehavior.onChangeRepaint(this);
                 //@Throws(Exception.constructor)
             
     public: void update(){
-this->inputMapping.update(this->abeClientInformation);
+this->inputMapping->update(this->abeClientInformation);
     
-this->helpPaintable.update(this->selectedGameKey, this->selectedInput);
+this->helpPaintable->update(this->selectedGameKey, this->selectedInput);
     
 this->repaintBehavior.onChangeRepaint(this);
     
 }
 
 
-    public: void paint(Graphics graphics){
-this->colorFillPaintable.paint(graphics);
+    public: void paint(Graphics* graphics){
+this->colorFillPaintable->paint(graphics);
     
-this->helpPaintable.paint(graphics);
+this->helpPaintable->paint(graphics);
     
-this->paintable.paint(graphics);
+this->paintable->paint(graphics);
     
 super.paint(graphics);
     

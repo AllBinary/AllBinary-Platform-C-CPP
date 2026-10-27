@@ -6,6 +6,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/imageio/ImageIO.h>
@@ -34,9 +40,9 @@ class MediaIOUtil
             : public Object
          {
 
-    private: static MediaIOUtil instance() { return MediaIOUtil(); }
+    private: static MediaIOUtil* instance() { static std::unique_ptr<MediaIOUtil> value(new MediaIOUtil()); return value.get(); }
 
-    public: static MediaIOUtil getInstance(){
+    public: static MediaIOUtil* getInstance(){
 
 
 

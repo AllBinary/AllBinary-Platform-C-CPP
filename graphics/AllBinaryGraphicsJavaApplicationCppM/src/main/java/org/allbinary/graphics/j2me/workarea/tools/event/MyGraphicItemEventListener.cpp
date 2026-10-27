@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -38,21 +44,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MyGraphicItemEvent.h"
+        #include "org/allbinary/graphics/j2me/workarea/tools/event/MyGraphicItemEvent.h"
 
 class MyGraphicItemEventListener {
 
-    void delete_(MyGraphicItemEvent evt)
+    public: virtual void delete_(MyGraphicItemEvent* evt) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void duplicate(MyGraphicItemEvent evt)
+    public: virtual void duplicate(MyGraphicItemEvent* evt) = 0;
 
-    void rotate(MyGraphicItemEvent evt)
+    public: virtual void rotate(MyGraphicItemEvent* evt) = 0;
 
-    void highlight(MyGraphicItemEvent evt)
+    public: virtual void highlight(MyGraphicItemEvent* evt) = 0;
 
-    void deselect(MyGraphicItemEvent evt)
+    public: virtual void deselect(MyGraphicItemEvent* evt) = 0;
 
 };
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -40,18 +46,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameKeyFactory.h"
-#include "GameKey.h"
-#include "InputFactory.h"
-#include "Input.h"
+        #include "org/allbinary/game/input/GameKeyFactory.h"
+#include "org/allbinary/game/input/GameKey.h"
+#include "org/allbinary/game/input/InputFactory.h"
+#include "org/allbinary/game/input/Input.h"
 
 class J2MEKeyFactory
             : public Object
          {
 
-    private: static J2MEKeyFactory instance() { return J2MEKeyFactory(); }
+    private: static J2MEKeyFactory* instance() { static std::unique_ptr<J2MEKeyFactory> value(new J2MEKeyFactory()); return value.get(); }
 
-    public: static J2MEKeyFactory getInstance(){
+    public: static J2MEKeyFactory* getInstance(){
 
 
 
@@ -65,17 +71,17 @@ private: J2MEKeyFactory(){
 }
 
 
-    private: const GameKeyFactory gameKeyFactory = GameKeyFactory::getInstance();
+    private: GameKeyFactory* gameKeyFactory = GameKeyFactory::getInstance();
 
     public: void init(){
 
-    std::vector<GameKey> gameKeyArray = 
+    std::vector<GameKey*> gameKeyArray = 
                                                         {
-                                                            this->gameKeyFactory.DOWN,this->gameKeyFactory.FIRE,this->gameKeyFactory.GAME_A,this->gameKeyFactory.GAME_B,this->gameKeyFactory.GAME_C,this->gameKeyFactory.GAME_D,this->gameKeyFactory.KEY_NUM0,this->gameKeyFactory.KEY_NUM1,this->gameKeyFactory.KEY_NUM2,this->gameKeyFactory.KEY_NUM3,this->gameKeyFactory.KEY_NUM4,this->gameKeyFactory.KEY_NUM5,this->gameKeyFactory.KEY_NUM6,this->gameKeyFactory.KEY_NUM7,this->gameKeyFactory.KEY_NUM8,this->gameKeyFactory.KEY_NUM9,this->gameKeyFactory.KEY_POUND,this->gameKeyFactory.KEY_STAR,this->gameKeyFactory.LEFT,this->gameKeyFactory.LEVEL_DOWN,this->gameKeyFactory.LEVEL_UP,this->gameKeyFactory.NONE,this->gameKeyFactory.RIGHT,this->gameKeyFactory.UP
+                                                            this->gameKeyFactory->DOWN,this->gameKeyFactory->FIRE,this->gameKeyFactory->GAME_A,this->gameKeyFactory->GAME_B,this->gameKeyFactory->GAME_C,this->gameKeyFactory->GAME_D,this->gameKeyFactory->KEY_NUM0,this->gameKeyFactory->KEY_NUM1,this->gameKeyFactory->KEY_NUM2,this->gameKeyFactory->KEY_NUM3,this->gameKeyFactory->KEY_NUM4,this->gameKeyFactory->KEY_NUM5,this->gameKeyFactory->KEY_NUM6,this->gameKeyFactory->KEY_NUM7,this->gameKeyFactory->KEY_NUM8,this->gameKeyFactory->KEY_NUM9,this->gameKeyFactory->KEY_POUND,this->gameKeyFactory->KEY_STAR,this->gameKeyFactory->LEFT,this->gameKeyFactory->LEVEL_DOWN,this->gameKeyFactory->LEVEL_UP,this->gameKeyFactory->NONE,this->gameKeyFactory->RIGHT,this->gameKeyFactory->UP
                                                         };;
     
 
-    InputFactory inputFactory = InputFactory::getInstance();;
+    InputFactory* inputFactory = InputFactory::getInstance();;
     
 
 
@@ -84,16 +90,16 @@ private: J2MEKeyFactory(){
                         for (
     int32_t index = gameKeyArray.size();--index >= 0; )
         {
-inputFactory.add(gameKeyArray[index].getId(), gameKeyArray[index]);
+inputFactory->add(gameKeyArray[index].getId(), gameKeyArray[index]);
     
 }
 
 }
 
 
-    public: bool isSubmission(Input input){
+    public: bool isSubmission(Input* input){
 
-                        if(input == this->gameKeyFactory.FIRE)
+                        if(input == this->gameKeyFactory->FIRE)
                         
                                     {
                                     
@@ -114,9 +120,9 @@ inputFactory.add(gameKeyArray[index].getId(), gameKeyArray[index]);
 }
 
 
-    public: bool isDelete(Input input){
+    public: bool isDelete(Input* input){
 
-                        if(input == this->gameKeyFactory.GAME_D)
+                        if(input == this->gameKeyFactory->GAME_D)
                         
                                     {
                                     
@@ -137,7 +143,7 @@ inputFactory.add(gameKeyArray[index].getId(), gameKeyArray[index]);
 }
 
 
-    public: bool isBackSpace(Input input){
+    public: bool isBackSpace(Input* input){
 
 
 
@@ -147,9 +153,9 @@ inputFactory.add(gameKeyArray[index].getId(), gameKeyArray[index]);
 }
 
 
-    public: bool isUp(Input input){
+    public: bool isUp(Input* input){
 
-                        if(input == this->gameKeyFactory.UP)
+                        if(input == this->gameKeyFactory->UP)
                         
                                     {
                                     
@@ -170,9 +176,9 @@ inputFactory.add(gameKeyArray[index].getId(), gameKeyArray[index]);
 }
 
 
-    public: bool isDown(Input input){
+    public: bool isDown(Input* input){
 
-                        if(input == this->gameKeyFactory.DOWN)
+                        if(input == this->gameKeyFactory->DOWN)
                         
                                     {
                                     
@@ -193,9 +199,9 @@ inputFactory.add(gameKeyArray[index].getId(), gameKeyArray[index]);
 }
 
 
-    public: bool isLeft(Input input){
+    public: bool isLeft(Input* input){
 
-                        if(input == this->gameKeyFactory.LEFT)
+                        if(input == this->gameKeyFactory->LEFT)
                         
                                     {
                                     
@@ -216,9 +222,9 @@ inputFactory.add(gameKeyArray[index].getId(), gameKeyArray[index]);
 }
 
 
-    public: bool isRight(Input input){
+    public: bool isRight(Input* input){
 
-                        if(input == this->gameKeyFactory.RIGHT)
+                        if(input == this->gameKeyFactory->RIGHT)
                         
                                     {
                                     
@@ -239,9 +245,9 @@ inputFactory.add(gameKeyArray[index].getId(), gameKeyArray[index]);
 }
 
 
-    public: bool isEnter(Input input){
+    public: bool isEnter(Input* input){
 
-                        if(input == this->gameKeyFactory.FIRE)
+                        if(input == this->gameKeyFactory->FIRE)
                         
                                     {
                                     

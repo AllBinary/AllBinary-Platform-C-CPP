@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -71,15 +77,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryEntityInterface.h"
+        #include "org/allbinary/data/tables/category/CategoryEntityInterface.h"
 
 class CategoryEntity: public AbSqlBean, public CategoryEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     protected: const std::string tableName = "categories";
 
-public: CategoryEntity(CategoryFactoryInterface categoryFactoryInterface) : AbSqlBean(InventoryDbInitInfo()){
+public: CategoryEntity(CategoryFactoryInterface* categoryFactoryInterface) : AbSqlBean(new InventoryDbInitInfo()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -91,7 +97,7 @@ this->setTableName(this->tableName);
 }
 
 
-public: CategoryEntity() : AbSqlBean(InventoryDbInitInfo()){
+public: CategoryEntity() : AbSqlBean(new InventoryDbInitInfo()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -103,39 +109,39 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void insert(Category category){
+    public: void insert(Category* category){
 
         try {
             
-    BasicArrayList categoryVector = category.toVector();;
+    BasicArrayList* categoryVector = category->toVector();;
     
 
-    BasicArrayList values = BasicArrayListD();;
+    BasicArrayList* values = new BasicArrayListD();;
     
-values.add(categoryVector.get(0));
+values->add(categoryVector->get(0));
     
-values.add(categoryVector.get(1));
+values->add(categoryVector->get(1));
     
 super.insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, INSERT);
+                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, INSERT);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, INSERT, e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, INSERT, &e);
     
 
                                     }
@@ -148,26 +154,26 @@ super.insert(values);
     public: void delete_(std::string value){
 
         try {
-            super.deleteWhere(CategoryData::getInstance().NAME, value);
+            super.deleteWhere(CategoryData::getInstance()->NAME, value);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
+                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, &e);
     
 
                                     }
@@ -179,33 +185,33 @@ super.insert(values);
 
     public: std::string createTableStatement(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->sqlStrings.CREATE_TABLE);
+stringBuffer->append(this->sqlStrings.CREATE_TABLE);
     
-stringBuffer.append(this->tableName);
+stringBuffer->append(this->tableName);
     
-stringBuffer.append(this->sqlStrings.START);
+stringBuffer->append(this->sqlStrings.START);
     
-stringBuffer.append(CategoryData::getInstance().NAME);
+stringBuffer->append(CategoryData::getInstance()->NAME);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(CategoryData::getInstance().LEVEL);
+stringBuffer->append(CategoryData::getInstance()->LEVEL);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(this->sqlStrings.PRIMARY_KEY);
+stringBuffer->append(this->sqlStrings.PRIMARY_KEY);
     
-stringBuffer.append(CategoryData::getInstance().NAME);
+stringBuffer->append(CategoryData::getInstance()->NAME);
     
-stringBuffer.append(this->sqlStrings.END);
+stringBuffer->append(this->sqlStrings.END);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
@@ -220,8 +226,8 @@ stringBuffer.append(this->sqlStrings.END);
 }
 
 
-    public: void update(HashMap<Object*, Object*> updatedValues){
-super.updateWhere(CategoryData::getInstance().NAME, updatedValues.get(CategoryData::getInstance().NAME), updatedValues);
+    public: void update(HashMap<Object*, Object*>* updatedValues){
+super.updateWhere(CategoryData::getInstance()->NAME, updatedValues->get(CategoryData::getInstance()->NAME), updatedValues);
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NOTIFICATION_GAMENOTIFICATIONHUD_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NOTIFICATION_GAMENOTIFICATIONHUD_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -73,31 +79,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameNotification.h"
+        #include "org/allbinary/game/ag/layer/hud/basic/notification/GameNotification.h"
 
 class GameNotificationHud: public BasicHud, public GameNotificationListenerInterface {
 
-    public: static const GameNotificationHud NULL_GAME_NOTIFICATION = GameNotificationHud(BasicHudFactory::getInstance().TOPCENTER, BasicHudFactory::getInstance().HORIZONTAL, 0, BasicColorFactory::getInstance().RED);
+    public: static GameNotificationHud* NULL_GAME_NOTIFICATION() { static std::unique_ptr<GameNotificationHud> value(new GameNotificationHud(BasicHudFactory::getInstance()->TOPCENTER, BasicHudFactory::getInstance()->HORIZONTAL, 0, BasicColorFactory::getInstance()->RED)); return value.get(); }
 
-public: GameNotificationHud(int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor);
+public: GameNotificationHud(int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor);
 
-    public: void onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject* eventObject);
 
     private: const std::string METHOD_NAME = "onGameNotificationEvent";
 
-    private: GameNotificationEvent lastGameNotificationEvent = GameNotification::NULL_GAME_NOTIFICATION_EVENT;
+    private: GameNotificationEvent* lastGameNotificationEvent = GameNotification::NULL_GAME_NOTIFICATION_EVENT;
 
                 //@Throws(Exception.constructor)
             
-    public: void onGameNotificationEvent(GameNotificationEvent gameNotificationEvent);
+    public: void onGameNotificationEvent(GameNotificationEvent* gameNotificationEvent);
 
-    protected: void add(std::string string, Integer seconds, BasicColor basicColor, Boolean permanent);
+    protected: void add(std::string string, int32_t seconds, BasicColor* basicColor, bool permanent);
 
                 //@Throws(Exception.constructor)
             
     public: void processTick();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
     public: void clear();
 

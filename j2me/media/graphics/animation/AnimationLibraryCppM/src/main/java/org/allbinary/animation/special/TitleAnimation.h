@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -70,13 +76,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SpecialAnimation.h"
+        #include "org/allbinary/animation/special/SpecialAnimation.h"
 
 class TitleAnimation: public SpecialAnimation {
 
-    public: static TitleAnimation createAnimation(std::vector<IndexedAnimation> animationInterfaceArray, std::vector<BasicColor> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width);
+    public: static TitleAnimation* createAnimation(std::vector<IndexedAnimation*> animationInterfaceArray, std::vector<BasicColor*> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width);
 
-    protected: const ABSystemWrapper systemWrapper = ABSystemWrapper::getInstance();
+    protected: ABSystemWrapper* systemWrapper = ABSystemWrapper::getInstance();
 
     public: float deltaX= 0.0;
 
@@ -84,7 +90,7 @@ class TitleAnimation: public SpecialAnimation {
 
     public: float deltaZ= 0.0;
 
-    protected: std::vector<BasicColor> basicColorArray;
+    protected: std::vector<BasicColor*> basicColorArray;
 
     protected: std::vector<int32_t> dxArray;
 
@@ -92,7 +98,7 @@ class TitleAnimation: public SpecialAnimation {
 
     protected: int32_t widthP;
 
-    protected: std::vector<IndexedAnimation> animationInterfaceArray;
+    protected: std::vector<IndexedAnimation*> animationInterfaceArray;
 
     protected: int32_t sizeP;
 
@@ -100,9 +106,9 @@ class TitleAnimation: public SpecialAnimation {
 
     private: int64_t lastFrameStartTime;
 
-    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-public: TitleAnimation(std::vector<IndexedAnimation> animationInterfaceArray, std::vector<BasicColor> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width, AnimationBehavior animationBehavior);
+public: TitleAnimation(std::vector<IndexedAnimation*> animationInterfaceArray, std::vector<BasicColor*> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width, AnimationBehavior* animationBehavior);
 
     public: void nextFrame();
 
@@ -124,11 +130,11 @@ public: TitleAnimation(std::vector<IndexedAnimation> animationInterfaceArray, st
 
     public: void previousFrame();
 
-    public: void paintFrameXY(Graphics graphics, int32_t frame, int32_t x, int32_t y);
+    public: void paintFrameXY(Graphics* graphics, int32_t frame, int32_t x, int32_t y);
 
-    protected: const BasicColor CLEAR_COLOR = BasicColorFactory::getInstance().CLEAR_COLOR;
+    protected: BasicColor* CLEAR_COLOR = BasicColorFactory::getInstance()->CLEAR_COLOR;
 
-    public: void paintXY(Graphics graphics, int32_t ax, int32_t ay);
+    public: void paintXY(Graphics* graphics, int32_t ax, int32_t ay);
 
 };
 

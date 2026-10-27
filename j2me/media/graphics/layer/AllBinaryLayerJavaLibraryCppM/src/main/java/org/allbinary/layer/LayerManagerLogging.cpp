@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -55,15 +61,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LayerManagerLoggingBase.h"
-#include "AllBinaryLayer.h"
-#include "LayerManager.h"
+        #include "org/allbinary/layer/LayerManagerLoggingBase.h"
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#include "org/allbinary/layer/LayerManager.h"
 
 class LayerManagerLogging: public LayerManagerLoggingBase {
 
-    private: static LayerManagerLogging instance() { return LayerManagerLogging(); }
+    private: static LayerManagerLogging* instance() { static std::unique_ptr<LayerManagerLogging> value(new LayerManagerLogging()); return value.get(); }
 
-    public: static LayerManagerLogging getInstance(){
+    public: static LayerManagerLogging* getInstance(){
 
 
 
@@ -73,11 +79,11 @@ class LayerManagerLogging: public LayerManagerLoggingBase {
 }
 
 
-    private: static bool removeFailed = false;
+    private: static inline bool removeFailed = false;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const StringMaker stringBuilder = StringMaker();
+    private: StringMaker* stringBuilder = new StringMaker();
 
     private: const std::string APPEND = "append";
 
@@ -97,40 +103,40 @@ class LayerManagerLogging: public LayerManagerLoggingBase {
 
                 //@Throws(Exception.constructor)
             
-    public: void append(AllBinaryLayer layerInterface){
-this->stringBuilder.delete(0, this->stringBuilder.length());
+    public: void append(AllBinaryLayer* layerInterface){
+this->stringBuilder->delete(0, this->stringBuilder->length());
     
-this->logUtil.putF(this->stringBuilder.appendint(TsUtil::getInstance().hashCode(this)).append(this->APPEND_).append(layerInterface.getName()).toString(), this, this->APPEND);
-    
-}
-
-
-    public: void appendAt(AllBinaryLayer layerInterface, int32_t index){
-this->stringBuilder.delete(0, this->stringBuilder.length());
-    
-this->logUtil.putF(this->stringBuilder.appendint(TsUtil::getInstance().hashCode(this)).append(this->APPEND_).append(layerInterface.getName()).append(this->_AT_).appendint(index).toString(), this, this->APPEND);
+this->logUtil->putF(this->stringBuilder->appendint(TsUtil::getInstance()->hashCode(this))->append(this->APPEND_).append(layerInterface->getName()).toString(), this, this->APPEND);
     
 }
 
 
-    public: void remove(AllBinaryLayer layerInterface){
+    public: void appendAt(AllBinaryLayer* layerInterface, int32_t index){
+this->stringBuilder->delete(0, this->stringBuilder->length());
+    
+this->logUtil->putF(this->stringBuilder->appendint(TsUtil::getInstance()->hashCode(this))->append(this->APPEND_).append(layerInterface->getName()).append(this->_AT_).appendint(index)->toString(), this, this->APPEND);
+    
+}
+
+
+    public: void remove(AllBinaryLayer* layerInterface){
 
                         if(layerInterface == 
                                     nullptr
                                 )
                         
                                     {
-                                    this->stringBuilder.delete(0, this->stringBuilder.length());
+                                    this->stringBuilder->delete(0, this->stringBuilder->length());
     
-this->logUtil.putF(this->stringBuilder.appendint(TsUtil::getInstance().hashCode(this)).append(this->ATTEMPT_REMOVE_).append(StringUtil::getInstance().toString(layerInterface)).toString(), this, this->REMOVE);
+this->logUtil->putF(this->stringBuilder->appendint(TsUtil::getInstance()->hashCode(this))->append(this->ATTEMPT_REMOVE_).append(StringUtil::getInstance()->toString(layerInterface)).toString(), this, this->REMOVE);
     
 
                                     }
                                 
                         else {
-                            this->stringBuilder.delete(0, this->stringBuilder.length());
+                            this->stringBuilder->delete(0, this->stringBuilder->length());
     
-this->logUtil.putF(this->stringBuilder.appendint(TsUtil::getInstance().hashCode(this)).append(this->ATTEMPT_REMOVE_).append(layerInterface.getName()).toString(), this, this->REMOVE);
+this->logUtil->putF(this->stringBuilder->appendint(TsUtil::getInstance()->hashCode(this))->append(this->ATTEMPT_REMOVE_).append(layerInterface->getName()).toString(), this, this->REMOVE);
     
 
                         }
@@ -138,16 +144,16 @@ this->logUtil.putF(this->stringBuilder.appendint(TsUtil::getInstance().hashCode(
 }
 
 
-    public: void removeResult(LayerManager layerManager, AllBinaryLayer layerInterface, bool result){
+    public: void removeResult(LayerManager* layerManager, AllBinaryLayer* layerInterface, bool result){
 
                         if(layerInterface == 
                                     nullptr
                                 )
                         
                                     {
-                                    this->stringBuilder.delete(0, this->stringBuilder.length());
+                                    this->stringBuilder->delete(0, this->stringBuilder->length());
     
-this->logUtil.putF(this->stringBuilder.appendint(TsUtil::getInstance().hashCode(this)).append(this->REMOVE_).append(StringUtil::getInstance().toString(layerInterface)).toString(), this, this->REMOVE);
+this->logUtil->putF(this->stringBuilder->appendint(TsUtil::getInstance()->hashCode(this))->append(this->REMOVE_).append(StringUtil::getInstance()->toString(layerInterface)).toString(), this, this->REMOVE);
     
 
                                     }
@@ -160,9 +166,9 @@ this->logUtil.putF(this->stringBuilder.appendint(TsUtil::getInstance().hashCode(
                         if(LayerManagerLogging::removeFailed)
                         
                                     {
-                                    this->stringBuilder.delete(0, this->stringBuilder.length());
+                                    this->stringBuilder->delete(0, this->stringBuilder->length());
     
-this->logUtil.putF(this->stringBuilder.appendint(TsUtil::getInstance().hashCode(this)).append(this->REMOVE_).append(layerInterface.getName()).toString(), this, this->REMOVE);
+this->logUtil->putF(this->stringBuilder->appendint(TsUtil::getInstance()->hashCode(this))->append(this->REMOVE_).append(layerInterface->getName()).toString(), this, this->REMOVE);
     
 
                                     }
@@ -171,9 +177,9 @@ this->logUtil.putF(this->stringBuilder.appendint(TsUtil::getInstance().hashCode(
                                     }
                                 
                         else {
-                            this->stringBuilder.delete(0, this->stringBuilder.length());
+                            this->stringBuilder->delete(0, this->stringBuilder->length());
     
-this->logUtil.putF(this->stringBuilder.appendint(TsUtil::getInstance().hashCode(this)).append(this->DID_NOT_REMOVE).append(layerInterface.getName()).toString(), this, this->REMOVE);
+this->logUtil->putF(this->stringBuilder->appendint(TsUtil::getInstance()->hashCode(this))->append(this->DID_NOT_REMOVE).append(layerInterface->getName()).toString(), this, this->REMOVE);
     
 LayerManagerLogging::removeFailed= true;
     
@@ -183,21 +189,21 @@ LayerManagerLogging::removeFailed= true;
 }
 
 
-    private: void log(LayerManager layerManager){
-this->stringBuilder.delete(0, this->stringBuilder.length());
+    private: void log(LayerManager* layerManager){
+this->stringBuilder->delete(0, this->stringBuilder->length());
     
 
-    int32_t size = layerManager.getSize();;
+    int32_t size = layerManager->getSize();;
     
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
-this->stringBuilder.append(Integer::toHexString(TsUtil::getInstance().hashCode(layerManager))).append(commonSeps.COLON_SEP);
+this->stringBuilder->append(Integer.toHexString(TsUtil::getInstance()->hashCode(layerManager))).append(commonSeps->COLON_SEP);
     
-this->stringBuilder.appendint(size).append(commonSeps.COLON_SEP);
+this->stringBuilder->appendint(size)->append(commonSeps->COLON_SEP);
     
 
-    AllBinaryLayer allBinaryLayer;;
+    AllBinaryLayer* allBinaryLayer;;
     
 
 
@@ -206,21 +212,21 @@ this->stringBuilder.appendint(size).append(commonSeps.COLON_SEP);
                         for (
     int32_t index = 0;index < size; index++)
         {
-allBinaryLayer= (layerManager.getLayerAt(index));
+allBinaryLayer= (dynamic_cast<AllBinaryLayer*>(layerManager->getLayerAt(index)));
     
-this->stringBuilder.append(allBinaryLayer.getName()).append(commonSeps.COMMA);
+this->stringBuilder->append(allBinaryLayer->getName()).append(commonSeps->COMMA);
     
 }
 
-this->logUtil.putF(this->stringBuilder.toString(), this, this->REMOVE);
+this->logUtil->putF(this->stringBuilder->toString(), this, this->REMOVE);
     
 }
 
 
     public: void clear(){
-this->stringBuilder.delete(0, this->stringBuilder.length());
+this->stringBuilder->delete(0, this->stringBuilder->length());
     
-this->logUtil.putF(this->stringBuilder.appendint(TsUtil::getInstance().hashCode(this)).append(this->CLEAR).toString(), this, this->CLEAR);
+this->logUtil->putF(this->stringBuilder->appendint(TsUtil::getInstance()->hashCode(this))->append(this->CLEAR).toString(), this, this->CLEAR);
     
 }
 

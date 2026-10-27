@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_LAZYPROGRESSCANVAS_H
         #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_LAZYPROGRESSCANVAS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/canvas/Processor.h>
@@ -53,11 +59,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProgressCanvas.h"
+        #include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
 
 class LazyProgressCanvas: public ProgressCanvas {
 
-public: LazyProgressCanvas(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: LazyProgressCanvas(std::string title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
     public: void start();
 

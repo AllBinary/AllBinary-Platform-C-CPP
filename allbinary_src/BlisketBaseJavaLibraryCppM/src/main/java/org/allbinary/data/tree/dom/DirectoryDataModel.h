@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DIRECTORYDATAMODEL_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_DIRECTORYDATAMODEL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,18 +79,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DomNodeInterface.h"
-#include "FileDomDataModel.h"
+        #include "org/allbinary/data/tree/dom/DomNodeInterface.h"
+#include "org/allbinary/data/tree/dom/FileDomDataModel.h"
 
 class DirectoryDataModel
             : public Object
-        : public DomNodeInterface, public TransformInterface {
+        , public DomNodeInterface, public TransformInterface {
 
-    private: BasicArrayList fileBasicArrayList;
+    private: BasicArrayList* fileBasicArrayList;
 
-    private: TransformDocumentInterface transformDocumentInterface;
+    private: TransformDocumentInterface* transformDocumentInterface;
 
-public: DirectoryDataModel(AbFile file);
+public: DirectoryDataModel(AbFile* file);
 
     public: int32_t NO_TYPE = 0;
 
@@ -92,19 +98,19 @@ public: DirectoryDataModel(AbFile file);
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface getTransformInfoInterface();
+    public: TransformInfoInterface* getTransformInfoInterface();
 
-    public: void setTransformDocumentInterface(TransformDocumentInterface transformDocumentInterface);
+    public: void setTransformDocumentInterface(TransformDocumentInterface* transformDocumentInterface);
 
-    public: TransformDocumentInterface getTransformDocumentInterface();
-
-                //@Throws(Exception.constructor)
-            
-    public: Node toXmlNode(Document document);
+    public: TransformDocumentInterface* getTransformDocumentInterface();
 
                 //@Throws(Exception.constructor)
             
-    public: Document toXmlDoc();
+    public: Node* toXmlNode(Document* document);
+
+                //@Throws(Exception.constructor)
+            
+    public: Document* toXmlDoc();
 
                 //@Throws(Exception.constructor)
             

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/identification/Group.h>
@@ -46,18 +52,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CapitalEventHandler.h"
+        #include "org/allbinary/game/layer/capital/event/CapitalEventHandler.h"
 
 class CapitalEventHandlerFactory
             : public Object
          {
 
-    private: static const std::vector<CapitalEventHandler> capitalEventHandlerArray;
+    private: static inline const std::vector<CapitalEventHandler*> capitalEventHandlerArray;
 
                     static int32_t initResult;
                 static int32_t init();
             
-    public: static CapitalEventHandler getInstance(Group groupInterface);
+    public: static CapitalEventHandler* getInstance(Group* groupInterface);
 
     public: static void removeAll();
 

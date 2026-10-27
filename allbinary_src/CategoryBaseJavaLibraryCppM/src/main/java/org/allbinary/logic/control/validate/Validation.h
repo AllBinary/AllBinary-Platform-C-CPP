@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_VALIDATION_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_VALIDATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,25 +60,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ValidationInterface.h"
+        #include "org/allbinary/logic/control/validate/ValidationInterface.h"
 
 class Validation
             : public Object
-        : public ValidationInterface {
+        , public ValidationInterface {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public: Boolean isValid();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toValidationInfoNode(Document document);
+    public: bool isValid();
 
                 //@Throws(Exception.constructor)
             
-    public: Document toValidationInfoDoc();
+    public: Node* toValidationInfoNode(Document* document);
+
+                //@Throws(Exception.constructor)
+            
+    public: Document* toValidationInfoDoc();
 
                 //@Throws(Exception.constructor)
             

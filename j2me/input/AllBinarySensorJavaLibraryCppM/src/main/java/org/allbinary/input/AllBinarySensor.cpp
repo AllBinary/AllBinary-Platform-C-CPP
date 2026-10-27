@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,15 +55,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinarySensorListener.h"
+        #include "org/allbinary/input/AllBinarySensorListener.h"
 
 class AllBinarySensor
             : public Object
-        : public AllBinarySensorListener {
+        , public AllBinarySensorListener {
 
-    public: static const AllBinarySensor NULL_ALLBINARY_SENSOR = AllBinarySensor();
+    public: static AllBinarySensor* NULL_ALLBINARY_SENSOR() { static std::unique_ptr<AllBinarySensor> value(new AllBinarySensor()); return value.get(); }
 
-    private: static int32_t max = 100;
+    private: static inline int32_t max = 100;
 
     public: static void setMax(int32_t max){
 AllBinarySensor::max= max;
@@ -75,9 +81,9 @@ AllBinarySensor::max= max;
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
 protected: AllBinarySensor(){
 }
@@ -104,13 +110,13 @@ protected: AllBinarySensor(){
 
 
     public: void shutdown(){
-this->logUtil.putF(this->commonStrings.START, this, "shutdown");
+this->logUtil->putF(this->commonStrings->START, this, "shutdown");
     
 }
 
 
     public: void onSensorChange(){
-ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
+ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, this);
     
 }
 

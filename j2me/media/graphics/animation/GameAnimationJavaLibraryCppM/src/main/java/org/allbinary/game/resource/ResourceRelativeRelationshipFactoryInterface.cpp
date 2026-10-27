@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/configuration/feature/GameFeatureControlledInterface.h>
@@ -52,11 +58,11 @@ class ResourceRelativeRelationshipFactoryInterface: public GameFeatureControlled
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList getResourceRelativeRelationshipList(std::string resource)
+    public: virtual BasicArrayList* getResourceRelativeRelationshipList(std::string resource) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void addResourceRelativeRelationship(std::string resource, RelativeRelationship relativeRelationship)
+    public: virtual void addResourceRelativeRelationship(std::string resource, RelativeRelationship* relativeRelationship) = 0;
 
 };
 

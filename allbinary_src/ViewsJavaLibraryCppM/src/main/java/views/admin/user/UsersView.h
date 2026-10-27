@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_USER_USERSVIEW_H
         #define VIEWS_ADMIN_USER_USERSVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -77,13 +83,13 @@
         
 class UsersView: public HttpContextView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: BasicArrayList userVector;
+    protected: BasicArrayList* userVector;
 
-public: UsersView(TransformInfoInterface transformInfoInterface);
+public: UsersView(TransformInfoInterface* transformInfoInterface);
 
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
     public: void addDomNodeInterfaces();
 

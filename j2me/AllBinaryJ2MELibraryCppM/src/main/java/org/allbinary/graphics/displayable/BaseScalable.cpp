@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,11 +44,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ScalableListener.h"
+        #include "org/allbinary/graphics/displayable/ScalableListener.h"
 
 class BaseScalable
             : public Object
-        : public ScalableListener {
+        , public ScalableListener {
 
     public: float getRatio(float ratio){
 

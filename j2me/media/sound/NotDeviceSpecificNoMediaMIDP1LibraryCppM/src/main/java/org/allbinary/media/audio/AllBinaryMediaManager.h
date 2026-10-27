@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,15 +72,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Sounds.h"
-#include "SoundsFactoryInterface.h"
-#include "NoPlayer.h"
+        #include "org/allbinary/media/audio/Sounds.h"
+#include "org/allbinary/media/audio/SoundsFactoryInterface.h"
+#include "org/allbinary/media/audio/NoPlayer.h"
 //NotDeviceSpecificNoMediaMIDP1Library
 class AllBinaryMediaManager
             : public Object
          {
 
-    private: static const std::string THIS = "AllBinaryMediaManagerNoMediaMIDP1";
+    private: static inline const std::string THIS = "AllBinaryMediaManagerNoMediaMIDP1";
 
     public: static bool isMuted();
 
@@ -84,15 +90,15 @@ class AllBinaryMediaManager
 
                 //@Throws(Exception.constructor)
             
-    public: static void init(SoundsFactoryInterface soundsFactoryInterface);
+    public: static void init(SoundsFactoryInterface* soundsFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: static void shutdown(SoundsFactoryInterface soundsFactoryInterface);
+    public: static void shutdown(SoundsFactoryInterface* soundsFactoryInterface);
 
-    public: static Player createPlayerFromInputStream(InputStream stream, std::string type);
+    public: static Player* createPlayerFromInputStream(InputStream* stream, std::string type);
 
-    public: static Player createPlayer(std::string locator);
+    public: static Player* createPlayer(std::string locator);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: static void playTone(int32_t frequency, int32_t time, int32_t volume);

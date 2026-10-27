@@ -20,6 +20,12 @@
 
             #include <hilog/log.h>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -90,13 +96,13 @@
         
 class AndroidHardware
             : public Object
-        : public HardwareInterface {
+        , public HardwareInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: BasicArrayList componentInterfaceVector = BasicArrayListD();
+    private: BasicArrayList* componentInterfaceVector = new BasicArrayListD();
 
     private: const std::string PROC_BUS_INPUT_DIRECTORY = "/proc/bus/input/";
 
@@ -108,7 +114,7 @@ public: AndroidHardware(){
 this->init(this->DEVICES);
     
 
-    int32_t size = this->componentInterfaceVector.size();;
+    int32_t size = this->componentInterfaceVector->size();;
     
 
                         if(size < this->MINHARDWARE)
@@ -117,7 +123,7 @@ this->init(this->DEVICES);
                                     
 
 
-                            throw Exception("Not Enough Data For A Valid License On Linux");
+                            throw new Exception("Not Enough Data For A Valid License On Linux");
                     
 
                                     }
@@ -129,7 +135,7 @@ this->init(this->DEVICES);
             
     private: void init(std::string filePath){
 
-    Closeable lineNumberReader = NullCloseable::NULL_CLOSEABLE;;
+    Closeable* lineNumberReader = NullCloseable::NULL_CLOSEABLE;;
     
 
         try {
@@ -137,9 +143,9 @@ this->init(this->DEVICES);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put("Hardware Data: " +this->toString(), this, this->commonStrings.INIT, e);
+this->logUtil->put("Hardware Data: " +this->toString(), this, this->commonStrings->INIT, &e);
     
 
 
@@ -155,7 +161,7 @@ this->logUtil.put("Hardware Data: " +this->toString(), this, this->commonStrings
                                 )
                         
                                     {
-                                    lineNumberReader.close();
+                                    lineNumberReader->close();
     
 
                                     }
@@ -168,26 +174,26 @@ this->logUtil.put("Hardware Data: " +this->toString(), this, this->commonStrings
 
                 //@Throws(Exception.constructor)
             
-    private: LineNumberReader get(std::string filePath){
-this->componentInterfaceVector= BasicArrayListD();
+    private: LineNumberReader* get(std::string filePath){
+this->componentInterfaceVector= new BasicArrayListD();
     
 
-    FileReader pciFile = FileReader(filePath);;
+    FileReader* pciFile = new FileReader(filePath);;
     
 
-    LineNumberReader lineNumberReader = LineNumberReader(pciFile);;
+    LineNumberReader* lineNumberReader = new LineNumberReader(pciFile);;
     
-this->logUtil.putF("File Found", this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF("File Found", this, this->commonStrings->CONSTRUCTOR);
     
 
-    std::string nextLine = lineNumberReader.readLine();;
+    std::string nextLine = lineNumberReader->readLine();;
     
 
         while(true)
         {
-nextLine= lineNumberReader.readLine();
+nextLine= lineNumberReader->readLine();
     
-this->componentInterfaceVector.add(UnknownHardware(nextLine));
+this->componentInterfaceVector->add(new UnknownHardware(nextLine));
     
 }
 
@@ -200,22 +206,22 @@ this->componentInterfaceVector.add(UnknownHardware(nextLine));
 }
 
 
-    public: HardwareComponentInterface getComponent(int32_t index){
+    public: HardwareComponentInterface* getComponent(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->componentInterfaceVector.get(index);
+                        return dynamic_cast<HardwareComponentInterface*>(this->componentInterfaceVector->get(index));
     
 }
 
 
     public: std::string toString(){
 
-    StringMaker stringBuilder = StringMaker();;
+    StringMaker* stringBuilder = new StringMaker();;
     
 
-    int32_t size = this->componentInterfaceVector.size();;
+    int32_t size = this->componentInterfaceVector->size();;
     
 
 
@@ -225,11 +231,11 @@ this->componentInterfaceVector.add(UnknownHardware(nextLine));
     int32_t index = 0;index < size; index++)
         {
 
-    HardwareComponentInterface componentInterface = this->componentInterfaceVector.get(index);;
+    HardwareComponentInterface* componentInterface = dynamic_cast<HardwareComponentInterface*>(this->componentInterfaceVector->get(index));;
     
-stringBuilder.append(componentInterface.toString());
+stringBuilder->append(componentInterface->toString());
     
-stringBuilder.append(CommonSeps::getInstance().NEW_LINE);
+stringBuilder->append(CommonSeps::getInstance()->NEW_LINE);
     
 }
 
@@ -237,12 +243,12 @@ stringBuilder.append(CommonSeps::getInstance().NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuilder.toString();;
+                        return stringBuilder->toString();;
     
 }
 
 
-    public: bool compareTo(HardwareInterface hardwareInterface){
+    public: bool compareTo(HardwareInterface* hardwareInterface){
 
 
 
@@ -252,12 +258,12 @@ stringBuilder.append(CommonSeps::getInstance().NEW_LINE);
 }
 
 
-    public: ABHashtable<Object*, Object*> difference(HardwareInterface hardwareInterface){
+    public: ABHashtable<Object*, Object*>* difference(HardwareInterface* hardwareInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StdUtil::getInstance().NULL_TABLE;
+                        return StdUtil::getInstance()->NULL_TABLE;
     
 }
 

@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_AUTOMATICCACHEINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_AUTOMATICCACHEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 
@@ -41,14 +49,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CacheInterface.h"
-#include "CacheableInterface.h"
+        #include "org/allbinary/logic/util/cache/CacheInterface.h"
+#include "org/allbinary/logic/util/cache/CacheableInterface.h"
 
 class AutomaticCacheInterface: public CacheInterface {
 
                 //@Throws(Exception.constructor)
             
-    CacheableInterface get(Object* key);
+    public: virtual CacheableInterface* get(Object* key) = 0;
 
 };
 

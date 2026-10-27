@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/animation/Animation.h>
 
       
@@ -50,12 +56,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CompoundAnimationInterfaceFactory.h"
-#include "AutoCompoundRotationAnimation.h"
+        #include "org/allbinary/animation/compound/CompoundAnimationInterfaceFactory.h"
+#include "org/allbinary/animation/compound/AutoCompoundRotationAnimation.h"
 
 class AutoCompoundRotationAnimationInterfaceFactory: public CompoundAnimationInterfaceFactory {
 
-public: AutoCompoundRotationAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory animationBehaviorFactory) : CompoundAnimationInterfaceFactory(basicAnimationInterfaceFactoryInterfaceArray, animationBehaviorFactory){
+public: AutoCompoundRotationAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory) : CompoundAnimationInterfaceFactory(basicAnimationInterfaceFactoryInterfaceArray, animationBehaviorFactory){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -65,22 +71,22 @@ public: AutoCompoundRotationAnimationInterfaceFactory(std::vector<AnimationInter
 }
 
 
-    protected: std::vector<Animation> createArray(int32_t size){
+    protected: std::vector<Animation*> createArray(int32_t size){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return std::vector<RotationAnimation>(size);
+                        return std::vector<RotationAnimation*>(size);
     
 }
 
 
-    protected: Animation createAnimation(std::vector<Animation> animationInterfaceArray){
+    protected: Animation* createAnimation(std::vector<Animation*> animationInterfaceArray){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AutoCompoundRotationAnimation(animationInterfaceArray as RotationAnimation[], this->animationBehaviorFactory.getOrCreateInstance());
+                        return new AutoCompoundRotationAnimation(animationInterfaceArray as RotationAnimation[], this->animationBehaviorFactory.getOrCreateInstance());
     
 }
 

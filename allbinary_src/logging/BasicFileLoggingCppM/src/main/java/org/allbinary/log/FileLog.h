@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOG_FILELOG_H
         #define ORG_ALLBINARY_LOG_FILELOG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Throwable.h"
@@ -82,29 +88,29 @@ class FileLog
             : public Object
          {
 
-    private: static const StringUtil stringUtil = StringUtil::getInstance();
+    private: static inline StringUtil* stringUtil = StringUtil::getInstance();
 
-    private: static const int64_t logLength = 33000000;
+    private: static inline const int64_t logLength = 33000000;
 
-    private: static const std::string logPath = "g:\\log\\";
+    private: static inline const std::string logPath = "g:\\log\\";
 
-    private: static const std::string extension = "dat";
+    private: static inline const std::string extension = "dat";
 
-    private: static const std::string fileName = .toCharArray();
+    private: static inline const std::string fileName = .toCharArray();
 
-    private: static const std::string backupFileName = FileLog::fileName.concat(".bak");
+    private: static inline const std::string backupFileName = FileLog::fileName().concat(".bak");
 
-    private: static const std::string ORG_ALLBINARY = "org.allbinary: ";
+    private: static inline const std::string ORG_ALLBINARY = "org.allbinary: ";
 
-    private: static bool firstTime = true;
+    private: static inline bool firstTime = true;
 
-    private: static File logFile = File(FileLog::logPath, FileLog::fileName);
+    private: static File* logFile() { static std::unique_ptr<File> value(new File(FileLog::logPath, FileLog::fileName())); return value.get(); }
 
-    private: static File logFileBak;
+    private: static inline File* logFileBak;
 
-    private: static BufferedWriter fileOut;
+    private: static inline BufferedWriter* fileOut;
 
-    private: static int32_t backupIndex= 0;
+    private: static inline int32_t backupIndex= 0;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: static bool createLogFile();
@@ -116,13 +122,13 @@ class FileLog
     public: static std::string put(std::string specialMessage, Object* anyType, std::string functionName);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static std::string put(std::string specialMessage, Object* anyType, std::string functionName, Throwable exception);
+    public: static std::string put(std::string specialMessage, Object* anyType, std::string functionName, Throwable* exception);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: static std::string put(std::string specialMessage, std::string className, std::string functionName);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static std::string put(std::string specialMessage, std::string className, std::string functionName, Exception exception);
+    public: static std::string put(std::string specialMessage, std::string className, std::string functionName, Exception* exception);
 
     public: static std::string getFilePath();
 

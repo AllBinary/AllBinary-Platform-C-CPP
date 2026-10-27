@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_SUBSCRIPTION_SUBSCRIPTION_H
         #define ORG_ALLBINARY_BUSINESS_USER_SUBSCRIPTION_SUBSCRIPTION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -48,7 +54,7 @@ class Subscription
 
 public: Subscription();
 
-    public: Boolean isSubscribed();
+    public: bool isSubscribed();
 
 };
 

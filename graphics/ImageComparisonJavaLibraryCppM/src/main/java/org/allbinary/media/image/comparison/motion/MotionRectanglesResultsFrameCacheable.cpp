@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Long.h"
@@ -46,17 +52,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionRectangles.h"
+        #include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
 
 class MotionRectanglesResultsFrameCacheable
             : public Object
-        : public CacheableInterface {
+        , public CacheableInterface {
 
-    private: MotionRectangles motionRectangles;
+    private: MotionRectangles* motionRectangles;
 
-    private: Long frame;
+    private: int64_t frame;
 
-public: MotionRectanglesResultsFrameCacheable(MotionRectangles motionRectangles, Long frame){
+public: MotionRectanglesResultsFrameCacheable(MotionRectangles* motionRectangles, int64_t frame){
 this->frame= frame;
     
 this->setMotionRectangles(motionRectangles);
@@ -74,7 +80,7 @@ this->setMotionRectangles(motionRectangles);
 }
 
 
-    public: MotionRectangles getMotionRectangles(){
+    public: MotionRectangles* getMotionRectangles(){
 
 
 
@@ -84,7 +90,7 @@ this->setMotionRectangles(motionRectangles);
 }
 
 
-    public: void setMotionRectangles(MotionRectangles motionRectangles){
+    public: void setMotionRectangles(MotionRectangles* motionRectangles){
 this->motionRectangles= motionRectangles;
     
 }
@@ -92,19 +98,19 @@ this->motionRectangles= motionRectangles;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->constructor.name.toString());
+stringBuffer->append(this->getClass()->getName());
     
-stringBuffer.append(" Frame: ");
+stringBuffer->append(" Frame: ");
     
-stringBuffer.append(this->getKey().toString());
+stringBuffer->append(this->getKey()->toString());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

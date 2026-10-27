@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWGAMELAYERBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWGAMELAYERBEHAVIOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/layer/behavior/GameLayerBehavior.h>
 
       
@@ -48,7 +54,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InitialJumpBehavior.h"
+        #include "org/allbinary/game/behavior/topview/InitialJumpBehavior.h"
 
 class TopViewGameLayerBehavior: public GameLayerBehavior {
 
@@ -66,13 +72,13 @@ public: TopViewGameLayerBehavior(int32_t maxGravityActionIndex);
 
     public: void gravity();
 
-    public: void land(VelocityProperties velocityProperties);
+    public: void land(VelocityProperties* velocityProperties);
 
     public: void landReset();
 
-    public: void up(VelocityProperties velocityProperties, BasicAccelerationProperties acceleration, InitialJumpBehavior jumpBehavior, int32_t accelerationMultiplier);
+    public: void up(VelocityProperties* velocityProperties, BasicAccelerationProperties* acceleration, InitialJumpBehavior* jumpBehavior, int32_t accelerationMultiplier);
 
-    public: void inputFrames(VelocityProperties velocityProperties);
+    public: void inputFrames(VelocityProperties* velocityProperties);
 
 };
 

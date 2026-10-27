@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/layer/AllBinaryLayer.h>
@@ -47,15 +53,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LayerPositionFinderInterface.h"
+        #include "org/allbinary/game/input/LayerPositionFinderInterface.h"
 
 class RTSGameLayerPositionFinder
             : public Object
-        : public LayerPositionFinderInterface {
+        , public LayerPositionFinderInterface {
 
-    private: static RTSGameLayerPositionFinder instance() { return RTSGameLayerPositionFinder(); }
+    private: static RTSGameLayerPositionFinder* instance() { static std::unique_ptr<RTSGameLayerPositionFinder> value(new RTSGameLayerPositionFinder()); return value.get(); }
 
-    public: static RTSGameLayerPositionFinder getInstance(){
+    public: static RTSGameLayerPositionFinder* getInstance(){
 
 
 
@@ -69,12 +75,12 @@ private: RTSGameLayerPositionFinder(){
 }
 
 
-    public: AllBinaryLayer getLayerInterface(GeographicMapCellPosition geographicMapCellPosition){
+    public: AllBinaryLayer* getLayerInterface(GeographicMapCellPosition* geographicMapCellPosition){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DropCellPositionHistory::getInstance().getLayerInterface(geographicMapCellPosition);;
+                        return DropCellPositionHistory::getInstance()->getLayerInterface(geographicMapCellPosition);;
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,15 +44,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HtmlMetaAttributeData.h"
+        #include "org/allbinary/logic/visual/dhtml/html/head/meta/HtmlMetaAttributeData.h"
 
 class HtmlMetaAttributeDataFactory
             : public Object
          {
 
-    private: static HtmlMetaAttributeDataFactory instance() { return HtmlMetaAttributeDataFactory(); }
+    private: static HtmlMetaAttributeDataFactory* instance() { static std::unique_ptr<HtmlMetaAttributeDataFactory> value(new HtmlMetaAttributeDataFactory()); return value.get(); }
 
-    public: static HtmlMetaAttributeDataFactory getInstance(){
+    public: static HtmlMetaAttributeDataFactory* getInstance(){
 
 
 
@@ -60,11 +66,11 @@ private: HtmlMetaAttributeDataFactory(){
 }
 
 
-    public: HtmlMetaAttributeData NAME = HtmlMetaAttributeData(0, "HTMLMETA_ATTRIBUTE_NAME");
+    public: HtmlMetaAttributeData* NAME = new HtmlMetaAttributeData(0, "HTMLMETA_ATTRIBUTE_NAME");
 
-    public: HtmlMetaAttributeData HTTP_EQUIV = HtmlMetaAttributeData(1, "HTMLMETA_ATTRIBUTE_HTTPEQUIV");
+    public: HtmlMetaAttributeData* HTTP_EQUIV = new HtmlMetaAttributeData(1, "HTMLMETA_ATTRIBUTE_HTTPEQUIV");
 
-    public: HtmlMetaAttributeData CONTENT = HtmlMetaAttributeData(2, "HTMLMETA_ATTRIBUTE_CONTENT");
+    public: HtmlMetaAttributeData* CONTENT = new HtmlMetaAttributeData(2, "HTMLMETA_ATTRIBUTE_CONTENT");
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_GRAPHICSSTRINGS_H
         #define ORG_ALLBINARY_GRAPHICS_GRAPHICSSTRINGS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class GraphicsStrings
             : public Object
          {
 
-    private: static GraphicsStrings instance() { return GraphicsStrings(); }
+    private: static GraphicsStrings* instance() { static std::unique_ptr<GraphicsStrings> value(new GraphicsStrings()); return value.get(); }
 
-    public: static GraphicsStrings getInstance();
+    public: static GraphicsStrings* getInstance();
 
     public: const std::string ANIMATION = "animation";
 

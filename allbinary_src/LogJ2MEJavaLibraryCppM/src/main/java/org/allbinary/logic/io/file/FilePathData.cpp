@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class FilePathData
             : public Object
          {
 
-    private: static FilePathData instance() { return FilePathData(); }
+    private: static FilePathData* instance() { static std::unique_ptr<FilePathData> value(new FilePathData()); return value.get(); }
 
-    public: static FilePathData getInstance(){
+    public: static FilePathData* getInstance(){
 
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/System.h"
@@ -57,9 +63,9 @@ class RaceTracksPathPrinter
             : public Object
          {
 
-    private: void printPath(BasicArrayList list){
+    private: void printPath(BasicArrayList* list){
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
 
@@ -69,18 +75,18 @@ class RaceTracksPathPrinter
     int32_t index = 0;index < size; index++)
         {
 
-    Object* anyType = list.get(index);;
+    Object* anyType = list->get(index);;
     
-PreLogUtil::put(StringMaker().append("pathList.add(cellPositionFactory.getInstance").append(anyType->toString()).append(");").toString(), this, "printPath");
+PreLogUtil::put((new StringMaker())->append("pathList.add(cellPositionFactory.getInstance")->append(anyType->toString())->append(");")->toString(), this, "printPath");
     
 }
 
 }
 
 
-    protected: void printPaths(BasicArrayList list){
+    protected: void printPaths(BasicArrayList* list){
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
 
@@ -89,9 +95,9 @@ PreLogUtil::put(StringMaker().append("pathList.add(cellPositionFactory.getInstan
                         for (
     int32_t index = 0;index < size; index++)
         {
-console.log(StringMaker().append(" Path ").appendint(index).append(CommonLabels::getInstance().COLON_SEP).toString());
+System.out.println((new StringMaker())->append(" Path ")->appendint(index)->append(CommonLabels::getInstance()->COLON_SEP)->toString());
     
-this->printPath(list.get(index));
+this->printPath(dynamic_cast<BasicArrayList*>(list->get(index)));
     
 }
 

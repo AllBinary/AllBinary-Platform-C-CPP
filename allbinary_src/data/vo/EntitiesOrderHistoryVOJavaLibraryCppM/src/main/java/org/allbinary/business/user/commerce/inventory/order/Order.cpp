@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -87,15 +93,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OrderInterface.h"
-#include "OrderHistoryData.h"
-#include "OrderData.h"
+        #include "org/allbinary/business/user/commerce/inventory/order/OrderInterface.h"
+#include "org/allbinary/business/user/commerce/inventory/order/OrderHistoryData.h"
+#include "org/allbinary/business/user/commerce/inventory/order/OrderData.h"
 
 class Order
             : public Object
-        : public OrderInterface, public Serializable {
+        , public OrderInterface, public Serializable {
 
-    private: BasketInterface basket;
+    private: BasketInterface* basket;
 
     private: std::string paymentMethod;
 
@@ -115,19 +121,19 @@ class Order
 
     private: std::string storeCancelComment;
 
-public: Order(BasketInterface basket){
+public: Order(BasketInterface* basket){
 this->basket= basket;
     
 this->id= 
                                         nullptr
                                     ;
     
-this->shippingType= StringUtil::getInstance().EMPTY_STRING;
+this->shippingType= StringUtil::getInstance()->EMPTY_STRING;
     
 }
 
 
-public: Order(std::string storeName, BasketInterface basket, std::string id, std::string shippingType, std::string special, std::string paymentMethod){
+public: Order(std::string storeName, BasketInterface* basket, std::string id, std::string shippingType, std::string special, std::string paymentMethod){
 this->storeName= storeName;
     
 this->basket= basket;
@@ -143,11 +149,11 @@ this->paymentMethod= paymentMethod;
 }
 
 
-    public: Boolean isIdValid(){
+    public: bool isIdValid(){
 
                         if(this->getId() == 
                                     nullptr
-                                 || this->getId().compareTo(StringUtil::getInstance().EMPTY_STRING) == 0 || this->getId().length() > OrderHistoryData::MAXIDLEN || !StringValidationUtil::getInstance().isNumber(this->getId()))
+                                 || this->getId().compareTo(StringUtil::getInstance()->EMPTY_STRING) == 0 || this->getId().length() > OrderHistoryData::MAXIDLEN || !StringValidationUtil::getInstance()->isNumber(this->getId()))
                         
                                     {
                                     
@@ -168,7 +174,7 @@ this->paymentMethod= paymentMethod;
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
 
 
@@ -180,12 +186,12 @@ this->paymentMethod= paymentMethod;
 
     public: std::string getIdValidationInfo(){
 
-    std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;;
+    std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;;
     
 
                         if(this->getId() == 
                                     nullptr
-                                 || this->getId().compareTo(EMPTY_STRING) == 0 || this->getId().length() > OrderHistoryData::MAXIDLEN || !StringValidationUtil::getInstance().isNumber(this->getId()))
+                                 || this->getId().compareTo(EMPTY_STRING) == 0 || this->getId().length() > OrderHistoryData::MAXIDLEN || !StringValidationUtil::getInstance()->isNumber(this->getId()))
                         
                                     {
                                     
@@ -260,7 +266,7 @@ this->storeCancelComment= value;
 }
 
 
-    public: BasketInterface getBasket(){
+    public: BasketInterface* getBasket(){
 
 
 
@@ -380,7 +386,7 @@ this->storeCancelComment= value;
 }
 
 
-    public: std::string emailOrder(std::string userName, std::string paymentMethod, StoreFrontInterface storeFrontInterface){
+    public: std::string emailOrder(std::string userName, std::string paymentMethod, StoreFrontInterface* storeFrontInterface){
 
 
 
@@ -390,27 +396,27 @@ this->storeCancelComment= value;
 }
 
 
-    public: HashMap<Object*, Object*> toHashMapOrder(){
+    public: HashMap<Object*, Object*>* toHashMapOrder(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(PaymentData::METHOD, this->paymentMethod);
+hashMap->put(PaymentData::METHOD, this->paymentMethod);
     
-hashMap.put(ShippingMethodData::NAME, this->shippingType);
+hashMap->put(ShippingMethodData::NAME, this->shippingType);
     
-hashMap.put(StoreFrontData::getInstance().NAME, this->storeName);
+hashMap->put(StoreFrontData::getInstance()->NAME, this->storeName);
     
-hashMap.put(EntryData::getInstance().SPECIAL, this->special);
+hashMap->put(EntryData::getInstance()->SPECIAL, this->special);
     
-hashMap.put(OrderData::ID, this->id);
+hashMap->put(OrderData::ID, this->id);
     
-hashMap.put(OrderData::CUSTOMERCOMMENT, this->userComment);
+hashMap->put(OrderData::CUSTOMERCOMMENT, this->userComment);
     
-hashMap.put(OrderData::CUSTOMERCANCELCOMMENT, this->userCancelComment);
+hashMap->put(OrderData::CUSTOMERCANCELCOMMENT, this->userCancelComment);
     
-hashMap.put(OrderData::STORECOMMENT, this->storeComment);
+hashMap->put(OrderData::STORECOMMENT, this->storeComment);
     
-hashMap.put(OrderData::STORECANCELCOMMENT, this->storeCancelComment);
+hashMap->put(OrderData::STORECANCELCOMMENT, this->storeCancelComment);
     
 
 
@@ -423,21 +429,21 @@ hashMap.put(OrderData::STORECANCELCOMMENT, this->storeCancelComment);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    HashMap<Object*, Object*> hashMap = this->toHashMapOrder();;
+    HashMap<Object*, Object*>* hashMap = this->toHashMapOrder();;
     
 
-    Set keySet = hashMap.keys();;
+    Set* keySet = hashMap->keys();;
     
 
-    std::vector<Object*> keyArray = keySet.();;
+    std::vector<Object*> keyArray = keySet->();;
     
 
     int32_t size = keyArray.size();;
     
 
-    Node node = document.createElement(OrderData::ORDER);;
+    Node* node = document->createElement(OrderData::ORDER);;
     
 
 
@@ -450,11 +456,11 @@ hashMap.put(OrderData::STORECANCELCOMMENT, this->storeCancelComment);
     std::string name = keyArray[i];;
     
 
-    std::string value = hashMap.get(name);;
+    std::string value = hashMap->get(name);;
     
-value= StringUtil::getInstance().getNonNull(value);
+value= StringUtil::getInstance()->getNonNull(value);
     
-node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
+node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     
 }
 

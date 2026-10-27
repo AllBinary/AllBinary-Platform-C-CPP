@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/game/layer/resources/BasicGameResources.h>
 
       
@@ -47,14 +55,14 @@
         
 class MineWeaponResources: public BasicGameResources {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static MineWeaponResources getInstance(){
+    public: static MineWeaponResources* getInstance(){
 
-                        if(MineWeaponResources::instance() == NullUtil::getInstance().NULL_OBJECT)
+                        if(MineWeaponResources::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    MineWeaponResources::instance= MineWeaponResources();
+                                    MineWeaponResources::instance= new MineWeaponResources();
     
 
                                     }
@@ -63,7 +71,7 @@ class MineWeaponResources: public BasicGameResources {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MineWeaponResources::instance();
+                        return dynamic_cast<MineWeaponResources*>(MineWeaponResources::instance);
     
 }
 

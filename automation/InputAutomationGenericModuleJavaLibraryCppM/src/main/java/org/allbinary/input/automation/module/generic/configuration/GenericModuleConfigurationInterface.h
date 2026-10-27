@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_GENERICMODULECONFIGURATIONINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_GENERICMODULECONFIGURATIONINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/input/automation/module/generic/configuration/profile/GenericProfile.h>
 
       
@@ -45,9 +51,9 @@
         
 class GenericModuleConfigurationInterface {
 
-    GenericProfile getSelectedGenericProfile();
+    public: virtual GenericProfile* getSelectedGenericProfile() = 0;
 
-    void setSelectedGenericProfile(GenericProfile selectedGenericProfile);
+    public: virtual void setSelectedGenericProfile(GenericProfile* selectedGenericProfile) = 0;
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/awt.h>
@@ -53,15 +59,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionRectangles.h"
-#include "MotionRectangle.h"
-#include "Rectangle.h"
+        #include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
+#include "org/allbinary/media/image/comparison/motion/MotionRectangle.h"
+#include "org/allbinary/media/image/comparison/motion/Rectangle.h"
 
 class AllMotionRectangles: public MotionRectangles {
 
-    private: static const std::string NAME = "allMotionRectangles_";
+    private: static inline const std::string NAME = "allMotionRectangles_";
 
-public: AllMotionRectangles(ImageComparisonResult imageComparisonResult) : MotionRectangles(NAME, imageComparisonResult){
+public: AllMotionRectangles(ImageComparisonResult* imageComparisonResult) : MotionRectangles(NAME, imageComparisonResult){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,12 +81,12 @@ this->createMotionRectangles(imageComparisonResult);
 
                 //@Throws(Exception.constructor)
             
-    private: void createMotionRectangles(ImageComparisonResult imageComparisonInfo){
+    private: void createMotionRectangles(ImageComparisonResult* imageComparisonInfo){
 
-    BasicArrayList vector = imageComparisonInfo.getNonMatchingPixelVector();;
+    BasicArrayList* vector = imageComparisonInfo->getNonMatchingPixelVector();;
     
 
-    int32_t size = vector.size();;
+    int32_t size = vector->size();;
     
 
 
@@ -90,7 +96,7 @@ this->createMotionRectangles(imageComparisonResult);
     int32_t index = 0;index < size; index++)
         {
 
-    PixelDelta pixelDelta = vector.get(index);;
+    PixelDelta* pixelDelta = dynamic_cast<PixelDelta*>(vector->get(index));;
     
 this->addPixelDeltaToAMotionRectangle(pixelDelta);
     
@@ -101,12 +107,12 @@ this->addPixelDeltaToAMotionRectangle(pixelDelta);
 
                 //@Throws(Exception.constructor)
             
-    private: bool addPixelDeltaToExistingMotionRectangle(PixelDelta pixelDelta){
+    private: bool addPixelDeltaToExistingMotionRectangle(PixelDelta* pixelDelta){
 
-    BasicArrayList vector = this->getVector();;
+    BasicArrayList* vector = this->getVector();;
     
 
-    int32_t size = vector.size();;
+    int32_t size = vector->size();;
     
 
 
@@ -116,37 +122,37 @@ this->addPixelDeltaToAMotionRectangle(pixelDelta);
     int32_t index = 0;index < size; index++)
         {
 
-    MotionRectangle motionRectangle = vector.get(index);;
+    MotionRectangle* motionRectangle = dynamic_cast<MotionRectangle*>(vector->get(index));;
     
 
                         if(shouldPixelDeltaPartOfMotionRectangle(motionRectangle, pixelDelta))
                         
                                     {
                                     
-    int32_t newWidth = pixelDelta.getPoint().getX() -motionRectangle.getRectangle().x;;
+    int32_t newWidth = pixelDelta->getPoint()->getX() -motionRectangle->getRectangle()->x;;
     
 
-    int32_t newHeight = pixelDelta.getPoint().getY() -motionRectangle.getRectangle().y;;
+    int32_t newHeight = pixelDelta->getPoint()->getY() -motionRectangle->getRectangle()->y;;
     
 
-                        if(newWidth < motionRectangle.getRectangle().width)
+                        if(newWidth < motionRectangle->getRectangle()->width)
                         
                                     {
-                                    newWidth= motionRectangle.getRectangle().width;
+                                    newWidth= motionRectangle->getRectangle()->width;
     
 
                                     }
                                 
 
-                        if(newHeight < motionRectangle.getRectangle().height)
+                        if(newHeight < motionRectangle->getRectangle()->height)
                         
                                     {
-                                    newHeight= motionRectangle.getRectangle().height;
+                                    newHeight= motionRectangle->getRectangle()->height;
     
 
                                     }
                                 
-motionRectangle.getRectangle().setSize(newWidth, newHeight);
+motionRectangle->getRectangle()->setSize(newWidth, newHeight);
     
 
 
@@ -170,20 +176,20 @@ motionRectangle.getRectangle().setSize(newWidth, newHeight);
 
                 //@Throws(Exception.constructor)
             
-    private: void addPixelDeltaToAMotionRectangle(PixelDelta pixelDelta){
+    private: void addPixelDeltaToAMotionRectangle(PixelDelta* pixelDelta){
 
                         if(!addPixelDeltaToExistingMotionRectangle(pixelDelta))
                         
                                     {
                                     
-    Rectangle newRectangle = Rectangle(pixelDelta.getPoint().getX(), pixelDelta.getPoint().getY(), 1, 1);;
+    Rectangle* newRectangle = new Rectangle(pixelDelta->getPoint()->getX(), pixelDelta->getPoint()->getY(), 1, 1);;
     
 
-    MotionRectangle motionRectangle = MotionRectangle(newRectangle);;
+    MotionRectangle* motionRectangle = new MotionRectangle(newRectangle);;
     
-motionRectangle.getPixelDeltaVector().add(pixelDelta);
+motionRectangle->getPixelDeltaVector()->add(pixelDelta);
     
-this->getVector().add(motionRectangle);
+this->getVector()->add(motionRectangle);
     
 
                                     }
@@ -193,24 +199,24 @@ this->getVector().add(motionRectangle);
 
                 //@Throws(Exception.constructor)
             
-    private: bool shouldPixelDeltaPartOfMotionRectangle(MotionRectangle motionRectangle, PixelDelta pixelDelta){
+    private: bool shouldPixelDeltaPartOfMotionRectangle(MotionRectangle* motionRectangle, PixelDelta* pixelDelta){
 
     bool isPixelLeftOfTheRectangle = false;;
     
 
-                        if(motionRectangle.getRectangle().y > pixelDelta.getPoint().getY())
+                        if(motionRectangle->getRectangle()->y > pixelDelta->getPoint()->getY())
                         
                                     {
                                     
 
 
-                            throw Exception("PixelAboveTheRectangle");
+                            throw new Exception("PixelAboveTheRectangle");
                     
 
                                     }
                                 
 
-                        if(motionRectangle.getRectangle().x > pixelDelta.getPoint().getX())
+                        if(motionRectangle->getRectangle()->x > pixelDelta->getPoint()->getX())
                         
                                     {
                                     isPixelLeftOfTheRectangle= true;
@@ -242,18 +248,18 @@ this->getVector().add(motionRectangle);
 
                 //@Throws(Exception.constructor)
             
-    private: bool isPixelDeltaLikelyPartOfMotionRectangle(MotionRectangle motionRectangle, PixelDelta pixelDelta){
+    private: bool isPixelDeltaLikelyPartOfMotionRectangle(MotionRectangle* motionRectangle, PixelDelta* pixelDelta){
 
-    int32_t maxX = motionRectangle.getRectangle().x +motionRectangle.getRectangle().width;;
+    int32_t maxX = motionRectangle->getRectangle()->x +motionRectangle->getRectangle()->width;;
     
 
-    int32_t maxY = motionRectangle.getRectangle().y +motionRectangle.getRectangle().height;;
+    int32_t maxY = motionRectangle->getRectangle()->y +motionRectangle->getRectangle()->height;;
     
 
-    int32_t horizontalDistance = pixelDelta.getPoint().getX() -maxX;;
+    int32_t horizontalDistance = pixelDelta->getPoint()->getX() -maxX;;
     
 
-    int32_t verticalDistance = pixelDelta.getPoint().getY() -maxY;;
+    int32_t verticalDistance = pixelDelta->getPoint()->getY() -maxY;;
     
 
                         if(horizontalDistance < this->MAX_PIXEL_DISTANCE_THRESHOLD && verticalDistance < this->MAX_PIXEL_DISTANCE_THRESHOLD)

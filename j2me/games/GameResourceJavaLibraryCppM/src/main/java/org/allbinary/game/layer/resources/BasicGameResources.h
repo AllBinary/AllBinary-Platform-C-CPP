@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,19 +66,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameGraphicsResourceUtil.h"
+        #include "org/allbinary/game/layer/resources/GameGraphicsResourceUtil.h"
 
 class BasicGameResources
             : public Object
          {
 
-    protected: static const StringMaker stringBuffer = StringMaker();
+    protected: static StringMaker* stringBuffer() { static std::unique_ptr<StringMaker> value(new StringMaker()); return value.get(); }
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: std::string RESOURCE = StringUtil::getInstance().EMPTY_STRING;
+    public: std::string RESOURCE = StringUtil::getInstance()->EMPTY_STRING;
 
-    public: std::string RESOURCE_DESTROY = StringUtil::getInstance().EMPTY_STRING;
+    public: std::string RESOURCE_DESTROY = StringUtil::getInstance()->EMPTY_STRING;
 
 protected: BasicGameResources();
 

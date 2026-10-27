@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MATH_ANGLEINCREMENTINFO_H
         #define ORG_ALLBINARY_MATH_ANGLEINCREMENTINFO_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -61,28 +67,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AngleFactory.h"
-#include "FrameUtil.h"
+        #include "org/allbinary/math/AngleFactory.h"
+#include "org/allbinary/math/FrameUtil.h"
 
 class AngleIncrementInfo
             : public Object
          {
 
-    private: static const std::string INCREMENT = "Inc: ";
+    private: static inline const std::string INCREMENT = "Inc: ";
 
     private: int16_t angleIncrement;
 
-    public: Integer DOWN_FRAME;
+    public: int32_t DOWN_FRAME;
 
-    public: Integer UP_FRAME;
+    public: int32_t UP_FRAME;
 
-    public: Integer LEFT_FRAME;
+    public: int32_t LEFT_FRAME;
 
-    public: Integer RIGHT_FRAME;
+    public: int32_t RIGHT_FRAME;
 
 public: AngleIncrementInfo(int16_t angleIncrement);
 
-    private: const FrameUtil frameUtil = FrameUtil::getInstance();
+    private: FrameUtil* frameUtil = FrameUtil::getInstance();
 
     public: int32_t getFrameAngle(int32_t frame);
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_GYRO_ORIENTATIONDATA_H
         #define ORG_ALLBINARY_INPUT_GYRO_ORIENTATIONDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class OrientationData
             : public Object
          {
 
-    private: static const OrientationData SINGLETON = OrientationData();
+    private: static OrientationData* SINGLETON() { static std::unique_ptr<OrientationData> value(new OrientationData()); return value.get(); }
 
-    public: static OrientationData getInstance();
+    public: static OrientationData* getInstance();
 
 private: OrientationData();
 

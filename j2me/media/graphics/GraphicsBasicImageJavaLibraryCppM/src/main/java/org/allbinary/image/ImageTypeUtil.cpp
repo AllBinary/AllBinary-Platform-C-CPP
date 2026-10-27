@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -49,14 +55,14 @@ class ImageTypeUtil
             : public Object
          {
 
-    private: static ImageTypeUtil SINGLETON = ImageTypeUtil();
+    private: static ImageTypeUtil* SINGLETON() { static std::unique_ptr<ImageTypeUtil> value(new ImageTypeUtil()); return value.get(); }
 
-    public: static ImageTypeUtil getInstance(){
+    public: static ImageTypeUtil* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageTypeUtil::SINGLETON;
+                        return ImageTypeUtil::SINGLETON();
     
 }
 
@@ -67,30 +73,30 @@ class ImageTypeUtil
 
     public: const std::string GIF = "gif";
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: ImageTypeUtil(){
-this->list.add(JPG);
+this->list->add(JPG);
     
-this->list.add(GIF);
+this->list->add(GIF);
     
-this->list.add(PNG);
+this->list->add(PNG);
     
 }
 
 
     public: bool isSupported(std::string mediaFileType){
-mediaFileType= mediaFileType.toLowerCase();
+mediaFileType= JavaString::toLowerCase(mediaFileType);
     
 
 
 
 
                         for (
-    int32_t index = this->list.size() -1;index >= 0; index--)
+    int32_t index = this->list->size() -1;index >= 0; index--)
         {
 
-    std::string name = this->list.get(index);;
+    std::string name = this->list->get(index);;
     
 
                         if(mediaFileType.compare(name) == 0)

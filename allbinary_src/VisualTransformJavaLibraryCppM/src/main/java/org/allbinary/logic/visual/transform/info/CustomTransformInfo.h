@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_CUSTOMTRANSFORMINFO_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_CUSTOMTRANSFORMINFO_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -41,8 +47,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfo.h"
-#include "TransformInfoInterface.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfo.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
 
 class CustomTransformInfo: public TransformInfo, public TransformInfoInterface {
 

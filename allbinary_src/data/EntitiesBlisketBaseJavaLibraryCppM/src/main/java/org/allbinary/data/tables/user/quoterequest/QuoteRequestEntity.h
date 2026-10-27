@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_QUOTEREQUEST_QUOTEREQUESTENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_QUOTEREQUEST_QUOTEREQUESTENTITY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -79,23 +85,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "QuoteRequestEntityInterface.h"
+        #include "org/allbinary/data/tables/user/quoterequest/QuoteRequestEntityInterface.h"
 
 class QuoteRequestEntity: public AbSqlBean, public QuoteRequestEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const std::string tableName = "quoterequest";
 
 public: QuoteRequestEntity();
 
-    public: void insert(BasicArrayList values);
+    public: void insert(BasicArrayList* values);
 
                 //@Throws(Exception.constructor)
             
-    public: QuoteRequest get(std::string userName, int32_t id);
+    public: QuoteRequest* get(std::string userName, int32_t id);
 
-    public: BasicArrayList getIds(std::string userName);
+    public: BasicArrayList* getIds(std::string userName);
 
     public: void deleteWhere(std::string key, std::string value);
 
@@ -105,7 +111,7 @@ public: QuoteRequestEntity();
 
     public: std::string dropTable();
 
-    public: void update(std::string userName, HashMap<Object*, Object*> updatedValues);
+    public: void update(std::string userName, HashMap<Object*, Object*>* updatedValues);
 
 };
 

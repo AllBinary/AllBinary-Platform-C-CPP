@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_SHIPPINGMETHODS_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_SHIPPINGMETHODS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,32 +70,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShippingMethodsInterface.h"
-#include "ShippingMethodsFactory.h"
+        #include "org/allbinary/business/user/commerce/shipping/ShippingMethodsInterface.h"
+#include "org/allbinary/business/user/commerce/shipping/ShippingMethodsFactory.h"
 
 class ShippingMethods
             : public Object
-        : public ShippingMethodsInterface {
+        , public ShippingMethodsInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: BasicArrayList shippingVector;
+    private: BasicArrayList* shippingVector;
 
-    private: ShippingInterface defaultShippingMethodInterface;
+    private: ShippingInterface* defaultShippingMethodInterface;
 
-public: ShippingMethods(AbeClientInformationInterface abeClientInformation, StoreFrontInterface storeFrontInterface);
+public: ShippingMethods(AbeClientInformationInterface* abeClientInformation, StoreFrontInterface* storeFrontInterface);
 
-    public: BasicArrayList get();
-
-                //@Throws(Exception.constructor)
-            
-    public: ShippingInterface getShippingInterface(std::string name);
+    public: BasicArrayList* get();
 
                 //@Throws(Exception.constructor)
             
-    public: ShippingInterface getDefault();
+    public: ShippingInterface* getShippingInterface(std::string name);
+
+                //@Throws(Exception.constructor)
+            
+    public: ShippingInterface* getDefault();
 
 };
 

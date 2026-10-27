@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_ABEHTTPREQUESTINFODATA_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_ABEHTTPREQUESTINFODATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class AbeHttpRequestInfoData
             : public Object
          {
 
-    private: static AbeHttpRequestInfoData instance() { return AbeHttpRequestInfoData(); }
+    private: static AbeHttpRequestInfoData* instance() { static std::unique_ptr<AbeHttpRequestInfoData> value(new AbeHttpRequestInfoData()); return value.get(); }
 
-    public: static AbeHttpRequestInfoData getInstance();
+    public: static AbeHttpRequestInfoData* getInstance();
 
 private: AbeHttpRequestInfoData();
 

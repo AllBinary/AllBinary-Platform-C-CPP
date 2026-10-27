@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,30 +79,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CssPropertyValues.h"
-#include "CssPropertyData.h"
+        #include "org/allbinary/logic/visual/dhtml/style/css/property/CssPropertyValues.h"
+#include "org/allbinary/logic/visual/dhtml/style/css/property/CssPropertyData.h"
 
 class CssProperty
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string propertyName;
 
-    private: CssPropertyValues cssPropertyValues;
+    private: CssPropertyValues* cssPropertyValues;
 
 public: CssProperty(std::string name);
 
-public: CssProperty(Node node);
+public: CssProperty(Node* node);
 
     public: std::string getName();
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

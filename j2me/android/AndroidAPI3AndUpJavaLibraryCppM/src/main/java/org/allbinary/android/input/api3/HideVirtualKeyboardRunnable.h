@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_API3_HIDEVIRTUALKEYBOARDRUNNABLE_H
         #define ORG_ALLBINARY_ANDROID_INPUT_API3_HIDEVIRTUALKEYBOARDRUNNABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -75,13 +81,13 @@
         
 class HideVirtualKeyboardRunnable
             : public Object
-        : public Runnable {
+        , public Runnable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: Activity activity;
+    private: Activity* activity;
 
-public: HideVirtualKeyboardRunnable(Activity activity);
+public: HideVirtualKeyboardRunnable(Activity* activity);
 
     public: void run();
 

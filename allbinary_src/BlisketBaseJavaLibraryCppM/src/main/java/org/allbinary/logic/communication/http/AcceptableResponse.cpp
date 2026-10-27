@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -44,25 +50,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AcceptableResponseUtil.h"
+        #include "org/allbinary/logic/communication/http/AcceptableResponseUtil.h"
 
 class AcceptableResponse
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
 protected: AcceptableResponse(std::string candidate, std::string tagName, int32_t index){
-this->logUtil.putF(tagName, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(tagName, this, this->commonStrings->CONSTRUCTOR);
     
 
-    AcceptableResponseUtil acceptableResponseUtil = AcceptableResponseUtil::getInstance();;
+    AcceptableResponseUtil* acceptableResponseUtil = AcceptableResponseUtil::getInstance();;
     
-acceptableResponseUtil.candidateVector.addAt(index, candidate);
+acceptableResponseUtil->candidateVector.addAt(index, candidate);
     
-acceptableResponseUtil.tagNameVector.addAt(index, tagName);
+acceptableResponseUtil->tagNameVector.addAt(index, tagName);
     
 }
 

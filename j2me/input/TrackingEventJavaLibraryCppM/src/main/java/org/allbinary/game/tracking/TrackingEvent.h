@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENT_H
         #define ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/layer/AllBinaryLayer.h>
 
       
@@ -48,21 +56,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TrackingEventHandler.h"
+        #include "org/allbinary/game/tracking/TrackingEventHandler.h"
 
 class TrackingEvent: public AllBinaryEventObject {
 
-    private: AllBinaryLayer layerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer* layerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
 public: TrackingEvent(Object* allBinaryLayerInterface);
 
     public: void init(Object* anyType);
 
-    public: AllBinaryLayer getLayerInterface();
+    public: AllBinaryLayer* getLayerInterface();
 
-    private: void setLayerInterface(AllBinaryLayer layerInterface);
+    private: void setLayerInterface(AllBinaryLayer* layerInterface);
 
-    public: void setLayerInterfaceForCircularStaticPool(AllBinaryLayer layerInterface);
+    public: void setLayerInterfaceForCircularStaticPool(AllBinaryLayer* layerInterface);
 
     public: std::string toString();
 

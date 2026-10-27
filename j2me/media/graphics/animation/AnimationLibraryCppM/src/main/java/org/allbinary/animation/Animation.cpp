@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,19 +64,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnimationInterface.h"
+        #include "org/allbinary/animation/AnimationInterface.h"
 
 class Animation
             : public Object
-        : public AnimationInterface, public OpenGLSurfaceChangedInterface {
+        , public AnimationInterface, public OpenGLSurfaceChangedInterface {
 
-    protected: const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
+    protected: BasicColorSetUtil* basicSetColorUtil = BasicColorSetUtil::getInstance();
 
-    protected: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
+    protected: BasicColor* basicColor = BasicColorFactory::getInstance()->WHITE;
 
     protected: int32_t colorP= 0;
 
-    protected: BasicColor changeBasicColorP = BasicColorFactory::getInstance().NULL_COLOR;
+    protected: BasicColor* changeBasicColorP = BasicColorFactory::getInstance()->NULL_COLOR;
 
     protected: int32_t changeColorP= 0;
 
@@ -92,13 +98,13 @@ this->alphaP= alpha;
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
-this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+this->basicSetColorUtil->setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
 }
 
 
-    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
+    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z){
 }
 
 
@@ -112,7 +118,7 @@ this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->
 }
 
 
-    public: BasicColor getBasicColorP(){
+    public: BasicColor* getBasicColorP(){
 
 
 
@@ -122,19 +128,19 @@ this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->
 }
 
 
-    public: void setBasicColorP(BasicColor basicColor){
+    public: void setBasicColorP(BasicColor* basicColor){
 this->basicColor= basicColor;
     
-this->colorP= this->basicColor.intValue();
+this->colorP= this->basicColor->intValue();
     
 }
 
 
-    public: void setBackgroundBasicColorP(BasicColor basicColor){
+    public: void setBackgroundBasicColorP(BasicColor* basicColor){
 }
 
 
-    public: BasicColor getChangeBasicColor(){
+    public: BasicColor* getChangeBasicColor(){
 
 
 
@@ -144,10 +150,10 @@ this->colorP= this->basicColor.intValue();
 }
 
 
-    public: void changeBasicColor(BasicColor basicColor){
+    public: void changeBasicColor(BasicColor* basicColor){
 this->changeBasicColorP= basicColor;
     
-this->changeColorP= this->changeBasicColorP.intValue();
+this->changeColorP= this->changeBasicColorP->intValue();
     
 }
 
@@ -182,7 +188,7 @@ this->changeColorP= this->changeBasicColorP.intValue();
 
                 //@Throws(Exception.constructor)
             
-    public: void set(GL gl){
+    public: void set(GL* gl){
 }
 
 

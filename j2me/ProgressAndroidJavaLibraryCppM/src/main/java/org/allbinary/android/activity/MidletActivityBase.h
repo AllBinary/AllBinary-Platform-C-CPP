@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -72,16 +78,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SimpleProgressActivityInterface.h"
-#include "KeyInputViewCompositeInterface.h"
+        #include "org/allbinary/android/activity/SimpleProgressActivityInterface.h"
+#include "org/allbinary/android/activity/KeyInputViewCompositeInterface.h"
 
 class MidletActivityBase: public Activity, public GameFeatureListenerInterface, public GameInitializedListenerInterface, public SimpleProgressActivityInterface, public KeyInputViewCompositeInterface, public GenericMotionEventVerifyInterface {
 
-    public: void onGameFeatureChange(GameFeatureEvent gameFeatureEvent);
+    public: void onGameFeatureChange(GameFeatureEvent* gameFeatureEvent);
 
-    public: void onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject* eventObject);
 
-    public: void onGameInitialized(GameInitializedEvent gameInitializedEvent);
+    public: void onGameInitialized(GameInitializedEvent* gameInitializedEvent);
 
                 //@Throws(Exception.constructor)
             
@@ -95,13 +101,13 @@ class MidletActivityBase: public Activity, public GameFeatureListenerInterface, 
             
     public: void onShowProgress(bool indeterminate, std::vector<int32_t> animationSequence);
 
-    public: View getRootView();
+    public: View* getRootView();
 
-    public: View getView();
+    public: View* getView();
 
-    public: void setKeyInputView(View keyInputView);
+    public: void setKeyInputView(View* keyInputView);
 
-    public: bool onGenericMotionEvent(MotionEvent event);
+    public: bool onGenericMotionEvent(MotionEvent* event);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_THIRDPARTYINAPPLICATIONPURCHASE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_THIRDPARTYINAPPLICATIONPURCHASE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -44,14 +50,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ThirdPartyInApplicationPurchaseInterface.h"
-#include "LockableFeature.h"
+        #include "org/allbinary/logic/system/security/licensing/ThirdPartyInApplicationPurchaseInterface.h"
+#include "org/allbinary/logic/system/security/licensing/LockableFeature.h"
 
 class ThirdPartyInApplicationPurchase
             : public Object
-        : public ThirdPartyInApplicationPurchaseInterface {
+        , public ThirdPartyInApplicationPurchaseInterface {
 
-    public: bool isPurchased(LockableFeature lockableFeature);
+    public: bool isPurchased(LockableFeature* lockableFeature);
 
     public: void onCreate(Object* anyType, Object* stateObject);
 
@@ -65,11 +71,11 @@ class ThirdPartyInApplicationPurchase
 
     public: void onStop();
 
-    public: void requestPurchase(LockableFeature lockableFeature);
+    public: void requestPurchase(LockableFeature* lockableFeature);
 
     public: void requestReceipts();
 
-    public: void add(LockableFeature lockableFeature);
+    public: void add(LockableFeature* lockableFeature);
 
     public: std::string getUserName();
 

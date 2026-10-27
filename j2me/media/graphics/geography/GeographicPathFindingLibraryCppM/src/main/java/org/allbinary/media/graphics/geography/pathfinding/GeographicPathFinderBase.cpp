@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -48,34 +54,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MultipassState.h"
+        #include "org/allbinary/media/graphics/geography/pathfinding/MultipassState.h"
 
 class GeographicPathFinderBase
             : public Object
          {
 
-    public: static const GeographicPathFinderBase NULL_GEOGRAPHIC_PATH_FINDER_BASE = GeographicPathFinderBase();
+    public: static GeographicPathFinderBase* NULL_GEOGRAPHIC_PATH_FINDER_BASE() { static std::unique_ptr<GeographicPathFinderBase> value(new GeographicPathFinderBase()); return value.get(); }
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList searchTotalPath(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, int32_t totalPaths){
+    public: BasicArrayList* searchTotalPath(BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList, int32_t totalPaths){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList searchTotalPathN(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, int32_t totalPaths, MultipassState multipassState){
+    public: BasicArrayList* searchTotalPathN(BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList, int32_t totalPaths, MultipassState* multipassState){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

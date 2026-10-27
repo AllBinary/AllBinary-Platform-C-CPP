@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -68,13 +76,13 @@ class KeyPressesAI: public BasicAI {
 
     private: bool on = true;
 
-    protected: std::vector<Integer> keys;
+    protected: std::vector<int32_t> keys;
 
-public: KeyPressesAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: KeyPressesAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager);
 
                 //@Throws(Exception.constructor)
             

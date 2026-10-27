@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Float.h"
@@ -51,11 +57,11 @@ class TaxModuleInterface {
 
                 //@Throws(Exception.constructor)
             
-    number getTaxRate(StreetAddress streetAddress, StoreFrontInterface storeFrontInterface)
+    public: virtual float getTaxRate(StreetAddress* streetAddress, StoreFrontInterface* storeFrontInterface) = 0;
 
                 //@Throws(Exception.constructor)
             
-    Boolean isValid(StreetAddress streetAddress, StoreFrontInterface storeFrontInterface)
+    public: virtual bool isValid(StreetAddress* streetAddress, StoreFrontInterface* storeFrontInterface) = 0;
 
 };
 

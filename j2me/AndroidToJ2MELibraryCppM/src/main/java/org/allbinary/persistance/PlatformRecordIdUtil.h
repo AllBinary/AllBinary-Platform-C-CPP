@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_PERSISTANCE_PLATFORMRECORDIDUTIL_H
         #define ORG_ALLBINARY_PERSISTANCE_PLATFORMRECORDIDUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -55,13 +61,13 @@ class PlatformRecordIdUtil
             : public Object
          {
 
-    private: static PlatformRecordIdUtil instance() { return PlatformRecordIdUtil(); }
+    private: static PlatformRecordIdUtil* instance() { static std::unique_ptr<PlatformRecordIdUtil> value(new PlatformRecordIdUtil()); return value.get(); }
 
-    public: static PlatformRecordIdUtil getInstance();
+    public: static PlatformRecordIdUtil* getInstance();
 
     private: const std::string PLATFORM_SHORT_NAME = "AND";
 
-    public: std::string getRecordId(AbeClientInformationInterface abeClientInformation, std::string baseRecordId);
+    public: std::string getRecordId(AbeClientInformationInterface* abeClientInformation, std::string baseRecordId);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_COLORRANGE_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_COLORRANGE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/awt.h>
@@ -50,12 +56,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ColorRangeInterface.h"
-#include "Color.h"
+        #include "org/allbinary/media/image/analysis/ColorRangeInterface.h"
+#include "org/allbinary/media/image/analysis/Color.h"
 
 class ColorRange
             : public Object
-        : public ColorRangeInterface {
+        , public ColorRangeInterface {
 
     private: int32_t minRed;
 
@@ -95,7 +101,7 @@ public: ColorRange();
 
     public: void setMaxBlue(int32_t maxBlue);
 
-    public: bool isInRange(Color color);
+    public: bool isInRange(Color* color);
 
     public: std::string toString();
 

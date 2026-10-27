@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTINTERFACEWRAPPER_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTINTERFACEWRAPPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/input/automation/robot/InputRobotInterface.h>
@@ -49,13 +55,13 @@ class InputAutomationRobotInterfaceWrapper
             : public Object
          {
 
-    private: InputRobotInterface inputRobotInterface;
+    private: InputRobotInterface* inputRobotInterface;
 
-public: InputAutomationRobotInterfaceWrapper(InputRobotInterface inputRobotInterface);
+public: InputAutomationRobotInterfaceWrapper(InputRobotInterface* inputRobotInterface);
 
-    public: InputRobotInterface getInputRobotInterface();
+    public: InputRobotInterface* getInputRobotInterface();
 
-    public: void setInputRobotInterface(InputRobotInterface inputRobotInterface);
+    public: void setInputRobotInterface(InputRobotInterface* inputRobotInterface);
 
 };
 

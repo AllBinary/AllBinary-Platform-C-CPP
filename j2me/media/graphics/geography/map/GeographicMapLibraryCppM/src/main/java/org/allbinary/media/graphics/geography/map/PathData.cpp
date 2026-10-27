@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class PathData
             : public Object
          {
 
-    private: static PathData instance() { return PathData(); }
+    private: static PathData* instance() { static std::unique_ptr<PathData> value(new PathData()); return value.get(); }
 
-    public: static PathData getInstance(){
+    public: static PathData* getInstance(){
 
 
 

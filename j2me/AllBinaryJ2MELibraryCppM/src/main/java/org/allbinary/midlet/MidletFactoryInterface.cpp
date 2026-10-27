@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/midlet/MIDlet.h>
@@ -41,13 +47,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryMidlet.h"
+        #include "org/allbinary/midlet/AllBinaryMidlet.h"
 
 class MidletFactoryInterface
             : public Object
          {
 
-    public: MIDlet getInstance(){
+    public: MIDlet* getInstance(){
 
 
 

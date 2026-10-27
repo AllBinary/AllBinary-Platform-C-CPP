@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -78,33 +84,33 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageComparatorConstraintsInterface.h"
-#include "ImageComparator.h"
-#include "ImageComparisonResult.h"
-#include "ImageComparisonResultFrameCacheable.h"
-#include "ImageComparisonResultCacheSingleton.h"
-#include "ImageComparisonResultsEvent.h"
+        #include "org/allbinary/media/image/comparison/ImageComparatorConstraintsInterface.h"
+#include "org/allbinary/media/image/comparison/ImageComparator.h"
+#include "org/allbinary/media/image/comparison/ImageComparisonResult.h"
+#include "org/allbinary/media/image/comparison/ImageComparisonResultFrameCacheable.h"
+#include "org/allbinary/media/image/comparison/ImageComparisonResultCacheSingleton.h"
+#include "org/allbinary/media/image/comparison/ImageComparisonResultsEvent.h"
 
 class ImageComparisonWorker: public BasicEventHandler, public CapturedImageWorkerResultsListener {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const BasicArrayList bufferedImageVector = BasicArrayListD();
+    private: BasicArrayList* bufferedImageVector = new BasicArrayListD();
 
-    private: ImageComparatorConstraintsInterface imageComparatorConstraintsInterface;
+    private: ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface;
 
-    private: ImageComparator imageComparator;
+    private: ImageComparator* imageComparator;
 
     private: bool running= false;
 
     private: int32_t index2= 0;
 
-public: ImageComparisonWorker(ImageComparatorConstraintsInterface imageComparatorConstraintsInterface){
+public: ImageComparisonWorker(ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface){
 this->imageComparatorConstraintsInterface= imageComparatorConstraintsInterface;
     
-this->imageComparator= ImageComparator(imageComparatorConstraintsInterface);
+this->imageComparator= new ImageComparator(imageComparatorConstraintsInterface);
     
 }
 
@@ -128,11 +134,11 @@ this->running= running;
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onCaptureEvent(CapturedImageWorkerResultsEvent capturedImageWorkerResultsEvent){
-this->bufferedImageVector.add(capturedImageWorkerResultsEvent);
+    public: void onCaptureEvent(CapturedImageWorkerResultsEvent* capturedImageWorkerResultsEvent){
+this->bufferedImageVector->add(capturedImageWorkerResultsEvent);
     
 
-                        if(this->bufferedImageVector.size() > 1)
+                        if(this->bufferedImageVector->size() > 1)
                         
                                     {
                                     this->run();
@@ -144,8 +150,8 @@ this->bufferedImageVector.add(capturedImageWorkerResultsEvent);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onEvent(AllBinaryEventObject allBinaryEventObject){
-this->onCaptureEvent(allBinaryEventObject);
+    public: void onEvent(AllBinaryEventObject* allBinaryEventObject){
+this->onCaptureEvent(dynamic_cast<CapturedImageWorkerResultsEvent*>(allBinaryEventObject));
     
 }
 
@@ -153,50 +159,50 @@ this->onCaptureEvent(allBinaryEventObject);
     public: void run(){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.RUN);
+            this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->RUN);
     
 this->setRunning(true);
     
 
-    TimeDelayHelper timeHelper = TimeDelayHelper(1000);;
+    TimeDelayHelper* timeHelper = new TimeDelayHelper(1000);;
     
-timeHelper.setStartTimeTNT();
+timeHelper->setStartTimeTNT();
     
 
-                        if(this->imageComparatorConstraintsInterface.isFrameAllowed(this->index2))
+                        if(this->imageComparatorConstraintsInterface->isFrameAllowed(this->index2))
                         
                                     {
                                     
-    std::vector<CapturedImageWorkerResultsEvent> capturedImageWorkerResultsEvent = std::vector<CapturedImageWorkerResultsEvent>(2);;
+    std::vector<CapturedImageWorkerResultsEvent*> capturedImageWorkerResultsEvent = std::vector<CapturedImageWorkerResultsEvent*>(2);;
     
-capturedImageWorkerResultsEvent[0]= this->bufferedImageVector.get(0);
+capturedImageWorkerResultsEvent[0]= dynamic_cast<CapturedImageWorkerResultsEvent*>(this->bufferedImageVector->get(0));
     
-capturedImageWorkerResultsEvent[1]= this->bufferedImageVector.get(1);
+capturedImageWorkerResultsEvent[1]= dynamic_cast<CapturedImageWorkerResultsEvent*>(this->bufferedImageVector->get(1));
     
 
-                        if(this->imageComparatorConstraintsInterface.isImageValid(capturedImageWorkerResultsEvent[0].getBufferedImage()) && this->imageComparatorConstraintsInterface.isImageValid(capturedImageWorkerResultsEvent[1].getBufferedImage()))
+                        if(this->imageComparatorConstraintsInterface->isImageValid(capturedImageWorkerResultsEvent[0].getBufferedImage()) && this->imageComparatorConstraintsInterface->isImageValid(capturedImageWorkerResultsEvent[1].getBufferedImage()))
                         
                                     {
                                     
-    ImageComparisonResult imageComparisonResult = this->imageComparator.compare(capturedImageWorkerResultsEvent[0].getBufferedImage(), capturedImageWorkerResultsEvent[1].getBufferedImage(), capturedImageWorkerResultsEvent[0].getFrame(), capturedImageWorkerResultsEvent[1].getFrame(), 0);;
+    ImageComparisonResult* imageComparisonResult = this->imageComparator->compare(capturedImageWorkerResultsEvent[0].getBufferedImage(), capturedImageWorkerResultsEvent[1].getBufferedImage(), capturedImageWorkerResultsEvent[0].getFrame(), capturedImageWorkerResultsEvent[1].getFrame(), 0);;
     
 
-    Long frame = capturedImageWorkerResultsEvent[1].getFrame();;
+    int64_t frame = capturedImageWorkerResultsEvent[1].getFrame();;
     
 
-    ImageComparisonResultFrameCacheable imageComparisonResultFrameCacheable = ImageComparisonResultFrameCacheable(imageComparisonResult, frame);;
+    ImageComparisonResultFrameCacheable* imageComparisonResultFrameCacheable = new ImageComparisonResultFrameCacheable(imageComparisonResult, frame);;
     
-ImageComparisonResultCacheSingleton::getInstance().add(imageComparisonResultFrameCacheable);
+ImageComparisonResultCacheSingleton::getInstance()->add(imageComparisonResultFrameCacheable);
     
-this->fireEvent(ImageComparisonResultsEvent(this, imageComparisonResult));
+this->fireEvent(new ImageComparisonResultsEvent(this, imageComparisonResult));
     
-this->logUtil.putF(StringMaker().append("Image Comparison Result: ").append(imageComparisonResult.toString()).append(" for frame: ").appendlong(frame).toString(), this, this->commonStrings.RUN);
+this->logUtil->putF((new StringMaker())->append("Image Comparison Result: ")->append(imageComparisonResult->toString())->append(" for frame: ")->appendlong(frame)->toString(), this, this->commonStrings->RUN);
     
 
                                     }
                                 
                         else {
-                            this->logUtil.putF("An Image Was Not Valid: Image Worker Event Processing terminated", this, this->commonStrings.RUN);
+                            this->logUtil->putF("An Image Was Not Valid: Image Worker Event Processing terminated", this, this->commonStrings->RUN);
     
 
                         }
@@ -204,24 +210,24 @@ this->logUtil.putF(StringMaker().append("Image Comparison Result: ").append(imag
 
                                     }
                                 
-this->bufferedImageVector.remove(0);
+this->bufferedImageVector->remove(0);
     
 this->index2++;
     
 
-    std::string message = StringMaker().append("Frame: ").appendint(this->index2).append(CommonLabels::getInstance().ELAPSED).appendlong(timeHelper.getElapsedTNT()).toString();;
+    std::string message = (new StringMaker())->append("Frame: ")->appendint(this->index2)->append(CommonLabels::getInstance()->ELAPSED)->appendlong(timeHelper->getElapsedTNT())->toString();;
     
-this->logUtil.putF(message, this, this->commonStrings.RUN);
+this->logUtil->putF(message, this, this->commonStrings->RUN);
     
 this->setRunning(false);
     
-this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.RUN);
+this->logUtil->putF(this->commonStrings->END, this, this->commonStrings->RUN);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RUN, &e);
     
 }
 

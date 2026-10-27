@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_CONFIGURATION_INPUTAUTOMATIONCONFIGURATIONMODULECHANGEEVENT_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_CONFIGURATION_INPUTAUTOMATIONCONFIGURATIONMODULECHANGEEVENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/input/automation/module/configuration/InputAutomationModuleConfiguration.h>
@@ -49,13 +55,13 @@ class InputAutomationConfigurationModuleChangeEvent
             : public Object
          {
 
-    private: InputAutomationModuleConfiguration inputAutomationModuleConfiguration;
+    private: InputAutomationModuleConfiguration* inputAutomationModuleConfiguration;
 
-public: InputAutomationConfigurationModuleChangeEvent(InputAutomationModuleConfiguration inputAutomationModuleConfiguration);
+public: InputAutomationConfigurationModuleChangeEvent(InputAutomationModuleConfiguration* inputAutomationModuleConfiguration);
 
-    public: InputAutomationModuleConfiguration getInputAutomationModuleConfiguration();
+    public: InputAutomationModuleConfiguration* getInputAutomationModuleConfiguration();
 
-    private: void setInputAutomationModuleConfiguration(InputAutomationModuleConfiguration inputAutomationModuleConfiguration);
+    private: void setInputAutomationModuleConfiguration(InputAutomationModuleConfiguration* inputAutomationModuleConfiguration);
 
 };
 

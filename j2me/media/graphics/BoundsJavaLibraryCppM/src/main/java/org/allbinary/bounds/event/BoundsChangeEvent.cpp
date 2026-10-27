@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graphics/Rectangle.h>
 
       
@@ -45,7 +51,7 @@
         
 class BoundsChangeEvent: public AllBinaryEventObject {
 
-public: BoundsChangeEvent(Rectangle rectangle) : AllBinaryEventObject(rectangle){
+public: BoundsChangeEvent(Rectangle* rectangle) : AllBinaryEventObject(rectangle){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -55,12 +61,12 @@ public: BoundsChangeEvent(Rectangle rectangle) : AllBinaryEventObject(rectangle)
 }
 
 
-    public: Rectangle getRectangle(){
+    public: Rectangle* getRectangle(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getSource();
+                        return dynamic_cast<Rectangle*>(this->getSource());
     
 }
 

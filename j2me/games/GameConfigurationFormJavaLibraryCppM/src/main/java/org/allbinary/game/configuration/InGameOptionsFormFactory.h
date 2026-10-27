@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_INGAMEOPTIONSFORMFACTORY_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_INGAMEOPTIONSFORMFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,23 +70,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InGameOptionsForm.h"
+        #include "org/allbinary/game/configuration/InGameOptionsForm.h"
 
 class InGameOptionsFormFactory
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static InGameOptionsFormFactory getInstance();
+    public: static InGameOptionsFormFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: CommandForm SINGLETON = CommandForm::getNullCommandForm();
+    private: CommandForm* SINGLETON = CommandForm::getNullCommandForm();
 
-    public: void init(CommandListener commandListener, Init initInterface, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
+    public: void init(CommandListener* commandListener, Init* initInterface, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor);
 
-    public: CommandForm get();
+    public: CommandForm* get();
 
 };
 

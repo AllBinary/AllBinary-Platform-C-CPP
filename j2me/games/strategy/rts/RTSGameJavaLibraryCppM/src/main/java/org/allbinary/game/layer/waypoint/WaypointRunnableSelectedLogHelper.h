@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTRUNNABLESELECTEDLOGHELPER_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTRUNNABLESELECTEDLOGHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/layer/PathFindingLayerInterface.h>
 
       
@@ -51,21 +57,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WaypointRunnableLogHelper.h"
+        #include "org/allbinary/game/layer/waypoint/WaypointRunnableLogHelper.h"
 
 class WaypointRunnableSelectedLogHelper: public WaypointRunnableLogHelper {
 
-    private: static const WaypointRunnableSelectedLogHelper instanceC = WaypointRunnableSelectedLogHelper();
+    private: static WaypointRunnableSelectedLogHelper* instanceC() { static std::unique_ptr<WaypointRunnableSelectedLogHelper> value(new WaypointRunnableSelectedLogHelper()); return value.get(); }
 
-    public: static WaypointRunnableSelectedLogHelper getInstance();
+    public: static WaypointRunnableSelectedLogHelper* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    public: void start(PathFindingLayerInterface pathFindingLayerInterface);
+    public: void start(PathFindingLayerInterface* pathFindingLayerInterface);
 
-    public: void end(PathFindingLayerInterface pathFindingLayerInterface);
+    public: void end(PathFindingLayerInterface* pathFindingLayerInterface);
 
 };
 

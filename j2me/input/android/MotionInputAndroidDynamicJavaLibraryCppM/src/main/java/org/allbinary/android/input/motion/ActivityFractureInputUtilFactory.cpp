@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/android/ActivityFractureUtil.h>
@@ -61,9 +67,9 @@ class ActivityFractureInputUtilFactory
             : public Object
          {
 
-    public: static ActivityFractureUtil getInstance(){
+    public: static ActivityFractureUtil* getInstance(){
 
-    int32_t SDK_VERSION = AndroidInfoFactory::getInstance().getVersion();;
+    int32_t SDK_VERSION = AndroidInfoFactory::getInstance()->getVersion();;
     
 
                         if(SDK_VERSION <= 4)

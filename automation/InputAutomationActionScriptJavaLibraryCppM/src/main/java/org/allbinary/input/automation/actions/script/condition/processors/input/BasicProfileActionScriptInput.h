@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_BASICPROFILEACTIONSCRIPTINPUT_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_BASICPROFILEACTIONSCRIPTINPUT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -91,18 +99,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProfileActionScriptInputInterface.h"
-#include "GenericProfileActionScriptInputData.h"
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/ProfileActionScriptInputInterface.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/GenericProfileActionScriptInputData.h"
 
 class BasicProfileActionScriptInput: public BasicProfileActionScriptProcessor, public ProfileActionScriptInputInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: InputRobotInterface inputRobotInterface;
+    private: InputRobotInterface* inputRobotInterface;
 
     private: int32_t time= 0;
 
-public: BasicProfileActionScriptInput(std::string label, Node node);
+public: BasicProfileActionScriptInput(std::string label, Node* node);
 
 public: BasicProfileActionScriptInput(std::string label);
 
@@ -110,15 +118,15 @@ public: BasicProfileActionScriptInput(std::string label);
 
     public: void setTime(int32_t time);
 
-    public: HashMap<Object*, Object*> BasicProfileActionScriptInput_toHashMap();
+    public: HashMap<Object*, Object*>* BasicProfileActionScriptInput_toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
-    public: void setInputRobotInterface(InputRobotInterface inputRobotInterface);
+    public: void setInputRobotInterface(InputRobotInterface* inputRobotInterface);
 
-    public: InputRobotInterface getInputRobotInterface();
+    public: InputRobotInterface* getInputRobotInterface();
 
     public: std::string toString();
 

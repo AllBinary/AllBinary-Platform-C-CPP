@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -63,15 +71,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "KeyPressesAI.h"
+        #include "org/allbinary/game/ag/ai/KeyPressesAI.h"
 
 class MultiKeyPressesAI: public KeyPressesAI {
 
-    private: const TimeDelayHelper toggleTimeHelper = TimeDelayHelper(600);
+    private: TimeDelayHelper* toggleTimeHelper = new TimeDelayHelper(600);
 
-    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
+    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-public: MultiKeyPressesAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput) : KeyPressesAI(hashtable, ownerLayerInterface, gameInput){
+public: MultiKeyPressesAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : KeyPressesAI(hashtable, ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,7 +93,7 @@ this->update();
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
 }
 
 
@@ -93,10 +101,10 @@ this->update();
             
     private: void update(){
 
-    GameInput gameInput = this->getGameInput();;
+    GameInput* gameInput = this->getGameInput();;
     
 
-    std::vector<Integer> keys = this->keys;;
+    std::vector<int32_t> keys = this->keys;;
     
 
     int32_t size = keys.size();;
@@ -119,7 +127,7 @@ this->update();
                         if(key !=  -1)
                         
                                     {
-                                    gameInput.add(this->gameKeyEventFactory.getInstanceForKey(this, key));
+                                    gameInput->add(this->gameKeyEventFactory.getInstanceForKey(this, key));
     
 
                                     }
@@ -144,7 +152,7 @@ this->update();
                         if(key !=  -1)
                         
                                     {
-                                    gameInput.addForRemoval(this->gameKeyEventFactory.getInstanceForKey(this, key));
+                                    gameInput->addForRemoval(this->gameKeyEventFactory.getInstanceForKey(this, key));
     
 
                                     }
@@ -161,7 +169,7 @@ this->update();
             
     public: void toggle(){
 
-                        if(this->toggleTimeHelper.isTime(this->gameTickTimeDelayHelper.startTime))
+                        if(this->toggleTimeHelper->isTime(this->gameTickTimeDelayHelper->startTime))
                         
                                     {
                                     super.toggle();
@@ -178,7 +186,7 @@ this->update();
             
     public: void disable(){
 
-                        if(this->toggleTimeHelper.isTime(this->gameTickTimeDelayHelper.startTime))
+                        if(this->toggleTimeHelper->isTime(this->gameTickTimeDelayHelper->startTime))
                         
                                     {
                                     super.disable();
@@ -195,7 +203,7 @@ this->update();
             
     public: void enable(){
 
-                        if(this->toggleTimeHelper.isTime(this->gameTickTimeDelayHelper.startTime))
+                        if(this->toggleTimeHelper->isTime(this->gameTickTimeDelayHelper->startTime))
                         
                                     {
                                     super.enable();

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -50,15 +56,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RatioProcessor.h"
+        #include "org/allbinary/graphics/threed/RatioProcessor.h"
 //OpenGLNone
 class SWTJOGLProcessor
             : public Object
-        : public Runnable {
+        , public Runnable {
 
-    private: static SWTJOGLProcessor instance() { return SWTJOGLProcessor(); }
+    private: static SWTJOGLProcessor* instance() { static std::unique_ptr<SWTJOGLProcessor> value(new SWTJOGLProcessor()); return value.get(); }
 
-    public: static SWTJOGLProcessor getInstance(){
+    public: static SWTJOGLProcessor* getInstance(){
 
 
 
@@ -120,7 +126,7 @@ class SWTJOGLProcessor
 }
 
 
-    public: void addListeners(MIDlet midlet){
+    public: void addListeners(MIDlet* midlet){
 }
 
 
@@ -136,7 +142,7 @@ class SWTJOGLProcessor
 }
 
 
-    public: void setRatioProcessor(RatioProcessor ratioProcessor){
+    public: void setRatioProcessor(RatioProcessor* ratioProcessor){
 }
 
 
@@ -150,38 +156,38 @@ class SWTJOGLProcessor
 }
 
 
-    public: int32_t charWidth(Font font, char ch){
+    public: int32_t charWidth(Font* font, char ch){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: int32_t charsWidth(Font font, std::vector<char> ch, int32_t offset, int32_t length){
+    public: int32_t charsWidth(Font* font, std::vector<char> ch, int32_t offset, int32_t length){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: int32_t stringWidth(Font font, std::string str){
+    public: int32_t stringWidth(Font* font, std::string str){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: int32_t substringWidth(Font font, std::string str, int32_t offset, int32_t len){
+    public: int32_t substringWidth(Font* font, std::string str, int32_t offset, int32_t len){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

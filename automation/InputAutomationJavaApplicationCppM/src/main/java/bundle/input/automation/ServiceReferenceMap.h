@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/Collection.h>
@@ -61,13 +67,13 @@
         
 class ServiceReferenceMap
             : public Object
-        : public Map {
+        , public Map {
 
-    public: static std::string toString(Map map);
+    public: static std::string toString(Map* map);
 
-    private: ServiceReference serviceReference;
+    private: ServiceReference* serviceReference;
 
-public: ServiceReferenceMap(ServiceReference serviceReference);
+public: ServiceReferenceMap(ServiceReference* serviceReference);
 
     public: int32_t size();
 
@@ -83,15 +89,15 @@ public: ServiceReferenceMap(ServiceReference serviceReference);
 
     public: Object* remove(Object* key);
 
-    public: void putAll(Map m);
+    public: void putAll(Map* m);
 
     public: void clear();
 
-    public: Set keySet();
+    public: Set* keySet();
 
-    public: Collection<Object*> values();
+    public: Collection<Object*>* values();
 
-    public: Set entrySet();
+    public: Set* entrySet();
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,14 +49,14 @@ class OrientationData
             : public Object
          {
 
-    private: static const OrientationData SINGLETON = OrientationData();
+    private: static OrientationData* SINGLETON() { static std::unique_ptr<OrientationData> value(new OrientationData()); return value.get(); }
 
-    public: static OrientationData getInstance(){
+    public: static OrientationData* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OrientationData::SINGLETON;
+                        return OrientationData::SINGLETON();
     
 }
 

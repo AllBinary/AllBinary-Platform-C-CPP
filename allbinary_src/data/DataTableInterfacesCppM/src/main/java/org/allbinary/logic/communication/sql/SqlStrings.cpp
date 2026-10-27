@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/string/CommonSeps.h>
@@ -32,9 +38,9 @@ class SqlStrings
             : public Object
          {
 
-    private: static SqlStrings instance() { return SqlStrings(); }
+    private: static SqlStrings* instance() { static std::unique_ptr<SqlStrings> value(new SqlStrings()); return value.get(); }
 
-    public: static SqlStrings getInstance(){
+    public: static SqlStrings* getInstance(){
 
 
 
@@ -90,7 +96,7 @@ class SqlStrings
 
     public: const std::string EQUAL_QUOTE = " = \"";
 
-    public: const std::string CLOSE_QUOTE = CommonSeps::getInstance().QUOTE;
+    public: const std::string CLOSE_QUOTE = CommonSeps::getInstance()->QUOTE;
 
     public: const std::string EQUAL_QUOTE_NO_SPACE = "=\"";
 

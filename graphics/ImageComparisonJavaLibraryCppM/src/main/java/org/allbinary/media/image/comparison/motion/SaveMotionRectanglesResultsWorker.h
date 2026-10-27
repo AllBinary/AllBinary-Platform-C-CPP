@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_SAVEMOTIONRECTANGLESRESULTSWORKER_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_SAVEMOTIONRECTANGLESRESULTSWORKER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,30 +73,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionRectanglesResultsListener.h"
-#include "MotionRectanglesResultsEvent.h"
-#include "MotionRectangles.h"
-#include "MotionRectanglesImageInputOutput.h"
+        #include "org/allbinary/media/image/comparison/motion/MotionRectanglesResultsListener.h"
+#include "org/allbinary/media/image/comparison/motion/MotionRectanglesResultsEvent.h"
+#include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
+#include "org/allbinary/media/image/comparison/motion/MotionRectanglesImageInputOutput.h"
 
 class SaveMotionRectanglesResultsWorker
             : public Object
-        : public MotionRectanglesResultsListener {
+        , public MotionRectanglesResultsListener {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: bool running= false;
 
-    private: BasicArrayList motionRectanglesVector;
+    private: BasicArrayList* motionRectanglesVector;
 
 public: SaveMotionRectanglesResultsWorker();
 
-    public: BasicArrayList getMotionRectanglesVector();
+    public: BasicArrayList* getMotionRectanglesVector();
 
-    public: void onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent motionRectanglesResultsEvent);
+    public: void onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent* motionRectanglesResultsEvent);
 
-    public: void onEvent(AllBinaryEventObject allBinaryEventObject);
+    public: void onEvent(AllBinaryEventObject* allBinaryEventObject);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: bool isRunning();

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -52,9 +58,9 @@ class RectangleCollisionUtil
             : public Object
          {
 
-    private: static RectangleCollisionUtil instance() { return RectangleCollisionUtil(); }
+    private: static RectangleCollisionUtil* instance() { static std::unique_ptr<RectangleCollisionUtil> value(new RectangleCollisionUtil()); return value.get(); }
 
-    public: static RectangleCollisionUtil getInstance(){
+    public: static RectangleCollisionUtil* getInstance(){
 
 
 

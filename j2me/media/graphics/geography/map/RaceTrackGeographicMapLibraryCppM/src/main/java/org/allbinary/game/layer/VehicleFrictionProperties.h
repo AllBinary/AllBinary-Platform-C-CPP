@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_VEHICLEFRICTIONPROPERTIES_H
         #define ORG_ALLBINARY_GAME_LAYER_VEHICLEFRICTIONPROPERTIES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/physics/FrictionProperties.h>
 
       

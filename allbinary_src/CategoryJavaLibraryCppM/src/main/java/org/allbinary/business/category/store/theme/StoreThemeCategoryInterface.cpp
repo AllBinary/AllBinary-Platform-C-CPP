@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -60,9 +66,9 @@
         
 class StoreThemeCategoryInterface: public CategoryInterface, public TableMappingInterface, public ValidationInterface, public CompositeTransformInfoInterface {
 
-    void addTheme(ThemeValidation themeValidation)
+    public: virtual void addTheme(ThemeValidation* themeValidation) = 0;
 
-    BasicArrayList getThemes()
+    public: virtual BasicArrayList* getThemes() = 0;
 
 };
 

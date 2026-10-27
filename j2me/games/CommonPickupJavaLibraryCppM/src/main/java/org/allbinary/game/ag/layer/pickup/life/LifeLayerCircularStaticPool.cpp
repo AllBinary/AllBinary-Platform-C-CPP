@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/ag/life/Life.h>
@@ -53,11 +59,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LifeLayer.h"
+        #include "org/allbinary/game/ag/layer/pickup/life/LifeLayer.h"
 
 class LifeLayerCircularStaticPool: public AllBinaryLayerCircularPool {
 
-public: LifeLayerCircularStaticPool(AllBinaryLayerFactoryInterface allbinaryLayerFactoryInterface, int32_t total){
+public: LifeLayerCircularStaticPool(AllBinaryLayerFactoryInterface* allbinaryLayerFactoryInterface, int32_t total){
 super.initAllBinaryLayerCircularPool(allbinaryLayerFactoryInterface, total);
     
 }
@@ -65,17 +71,17 @@ super.initAllBinaryLayerCircularPool(allbinaryLayerFactoryInterface, total);
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(AllBinaryLayer sourceLayerInterface){
+    public: void visit(AllBinaryLayer* sourceLayerInterface){
 
-    LifeLayer lifeLayer = this->getNextInstance();;
+    LifeLayer* lifeLayer = dynamic_cast<LifeLayer*>(this->getNextInstance());;
     
 
-    LifeInterfaceCompositeInterface lifeInterfaceCompositeInterface = sourceLayerInterface as unknown;;
+    LifeInterfaceCompositeInterface* lifeInterfaceCompositeInterface = dynamic_cast<LifeInterfaceCompositeInterface*>(sourceLayerInterface as unknown);;
     
 
-    Life lifeInterface = lifeInterfaceCompositeInterface.getLifeInterface();;
+    Life* lifeInterface = lifeInterfaceCompositeInterface->getLifeInterface();;
     
-lifeLayer.visit(lifeInterface);
+lifeLayer->visit(lifeInterface);
     
 }
 

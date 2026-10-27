@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Throwable.h"
         
             #include "java/lang/Exception.h"
@@ -78,17 +84,17 @@
         
 class ImageArrayBaseRotationAnimation: public RotationAnimation {
 
-    private: const ImageModifierUtil imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
+    private: ImageModifierUtil* imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
 
-    private: std::vector<Image> originalImageArray;
+    private: std::vector<Image*> originalImageArray;
 
-    private: std::vector<Image> imageArray = NullImage::NULL_IMAGE_ARRAY;
+    private: std::vector<Image*> imageArray = NullImage::NULL_IMAGE_ARRAY;
 
-    private: Image currentImage;
+    private: Image* currentImage;
 
     private: int32_t totalFrames= 0;
 
-public: ImageArrayBaseRotationAnimation(std::vector<Image> originalImageArray, AngleInfo angleInfo, AnimationBehavior animationBehavior) : RotationAnimation(angleInfo, CircularIndexUtil::createInstance(360 /angleInfo.getAngleIncrementInfo().getAngleIncrement()), animationBehavior){
+public: ImageArrayBaseRotationAnimation(std::vector<Image*> originalImageArray, AngleInfo* angleInfo, AnimationBehavior* animationBehavior) : RotationAnimation(angleInfo, CircularIndexUtil::createInstance(360 /angleInfo->getAngleIncrementInfo()->getAngleIncrement()), animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -97,7 +103,7 @@ public: ImageArrayBaseRotationAnimation(std::vector<Image> originalImageArray, A
                     
 this->originalImageArray= originalImageArray;
     
-this->setImageArray(this->imageModifierUtil.getImageArray(originalImageArray));
+this->setImageArray(this->imageModifierUtil->getImageArray(originalImageArray));
     
 this->currentImage= this->imageArray[this->circularIndexUtil.getIndex()];
     
@@ -123,12 +129,12 @@ this->currentImage= this->imageArray[this->circularIndexUtil.getIndex()];
                                     {
                                     super.setAlpha(alpha);
     
-this->imageModifierUtil.reset();
+this->imageModifierUtil->reset();
     
 
     int32_t index = this->circularIndexUtil.getIndex();;
     
-this->imageModifierUtil.setAlpha(this->originalImageArray[index], this->imageArray[index], index, this->alphaP);
+this->imageModifierUtil->setAlpha(this->originalImageArray[index], this->imageArray[index], index, this->alphaP);
     
 
                                     }
@@ -142,7 +148,7 @@ super.nextRotation();
 
     int32_t index = this->circularIndexUtil.getIndex();;
     
-this->imageModifierUtil.setAlpha(this->originalImageArray[index], this->imageArray[index], index, this->alphaP);
+this->imageModifierUtil->setAlpha(this->originalImageArray[index], this->imageArray[index], index, this->alphaP);
     
 this->currentImage= this->imageArray[index];
     
@@ -155,7 +161,7 @@ super.previousRotation();
 
     int32_t index = this->circularIndexUtil.getIndex();;
     
-this->imageModifierUtil.setAlpha(this->originalImageArray[index], this->imageArray[index], index, this->alphaP);
+this->imageModifierUtil->setAlpha(this->originalImageArray[index], this->imageArray[index], index, this->alphaP);
     
 this->currentImage= this->imageArray[index];
     
@@ -168,7 +174,7 @@ super.setFrame(index2);
 
     int32_t index = this->circularIndexUtil.getIndex();;
     
-this->imageModifierUtil.setAlpha(this->originalImageArray[index], this->imageArray[index], index, this->alphaP);
+this->imageModifierUtil->setAlpha(this->originalImageArray[index], this->imageArray[index], index, this->alphaP);
     
 this->currentImage= this->imageArray[index];
     
@@ -189,7 +195,7 @@ this->currentImage= this->imageArray[index];
 }
 
 
-    protected: void setImageArray(std::vector<Image> imageArray){
+    protected: void setImageArray(std::vector<Image*> imageArray){
 this->imageArray= imageArray;
     
 this->totalFrames= imageArray.size();
@@ -201,15 +207,15 @@ this->circularIndexUtil= CircularIndexUtil::createInstance(this->totalFrames);
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
-graphics.drawImage(this->currentImage, x, y, this->anchor);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+graphics->drawImage(this->currentImage, x, y, this->anchor);
     
 }
 
 
     public: void close(){
 
-    DisposalUtil disposalUtil = DisposalUtil::getInstance();;
+    DisposalUtil* disposalUtil = DisposalUtil::getInstance();;
     
 
     int32_t size2 = this->imageArray.size();;
@@ -221,7 +227,7 @@ graphics.drawImage(this->currentImage, x, y, this->anchor);
                         for (
     int32_t index = 0;index < size2; index++)
         {
-disposalUtil.disposeImage(this->imageArray[index]);
+disposalUtil->disposeImage(this->imageArray[index]);
     
 }
 
@@ -235,11 +241,11 @@ disposalUtil.disposeImage(this->imageArray[index]);
                         for (
     int32_t index = 0;index < size; index++)
         {
-disposalUtil.disposeImage(this->originalImageArray[index]);
+disposalUtil->disposeImage(this->originalImageArray[index]);
     
 }
 
-disposalUtil.disposeImage(this->currentImage);
+disposalUtil->disposeImage(this->currentImage);
     
 }
 
@@ -248,7 +254,7 @@ disposalUtil.disposeImage(this->currentImage);
             
     protected: void finalize(){
 
-    DisposalUtil disposalUtil = DisposalUtil::getInstance();;
+    DisposalUtil* disposalUtil = DisposalUtil::getInstance();;
     
 
     int32_t size2 = this->imageArray.size();;
@@ -260,7 +266,7 @@ disposalUtil.disposeImage(this->currentImage);
                         for (
     int32_t index = 0;index < size2; index++)
         {
-disposalUtil.disposeImage(this->imageArray[index]);
+disposalUtil->disposeImage(this->imageArray[index]);
     
 }
 
@@ -274,11 +280,11 @@ disposalUtil.disposeImage(this->imageArray[index]);
                         for (
     int32_t index = 0;index < size; index++)
         {
-disposalUtil.disposeImage(this->originalImageArray[index]);
+disposalUtil->disposeImage(this->originalImageArray[index]);
     
 }
 
-disposalUtil.disposeImage(this->currentImage);
+disposalUtil->disposeImage(this->currentImage);
     
 }
 

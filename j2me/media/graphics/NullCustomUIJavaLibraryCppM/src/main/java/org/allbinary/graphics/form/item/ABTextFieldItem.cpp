@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -37,13 +43,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ABTextItem.h"
+        #include "org/allbinary/graphics/form/item/ABTextItem.h"
 
 class ABTextFieldItem: public ABTextItem {
 
-    private: Font font;
+    private: Font* font;
 
-public: ABTextFieldItem(Canvas canvas, Visitor visitor, std::string label, std::string value, int32_t maxSize, int32_t layout, std::string altText, Font font, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : ABTextItem(label, layout, altText, backgroundBasicColor, foregroundBasicColor){
+public: ABTextFieldItem(Canvas* canvas, Visitor* visitor, std::string label, std::string value, int32_t maxSize, int32_t layout, std::string altText, Font* font, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ABTextItem(label, layout, altText, backgroundBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -60,7 +66,7 @@ this->font= font;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 }
 
@@ -74,7 +80,7 @@ this->font= font;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 }
 
@@ -92,16 +98,16 @@ this->font= font;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->font.getHeight();;
+                        return this->font->getHeight();;
     
 }
 
 
-    public: void setBackgroundBasicColorP(BasicColor basicColor){
+    public: void setBackgroundBasicColorP(BasicColor* basicColor){
 }
 
 
-    public: void setForegroundBasicColorP(BasicColor basicColor){
+    public: void setForegroundBasicColorP(BasicColor* basicColor){
 }
 
 

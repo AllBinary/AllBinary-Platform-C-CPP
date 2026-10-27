@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_LINUX_PCCOMPONENTFACTORY_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_LINUX_PCCOMPONENTFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -90,17 +96,17 @@ class PCComponentFactory
             : public Object
          {
 
-    private: static PCComponentFactory instance() { return PCComponentFactory(); }
+    private: static PCComponentFactory* instance() { static std::unique_ptr<PCComponentFactory> value(new PCComponentFactory()); return value.get(); }
 
-    public: static PCComponentFactory getInstance();
+    public: static PCComponentFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const ComponentFactory componentFactory = ComponentFactory::getInstance();
+    private: ComponentFactory* componentFactory = ComponentFactory::getInstance();
 
 private: PCComponentFactory();
 
-    public: HardwareComponentInterface getInstance(std::string component, std::string componentData);
+    public: HardwareComponentInterface* getInstance(std::string component, std::string componentData);
 
     public: std::string getComponentType(std::string component);
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -53,9 +59,9 @@ class GameInputProcessor
             : public Object
          {
 
-    private: static GameInputProcessor instance() { return GameInputProcessor(); }
+    private: static GameInputProcessor* instance() { static std::unique_ptr<GameInputProcessor> value(new GameInputProcessor()); return value.get(); }
 
-    public: static GameInputProcessor getInstance(){
+    public: static GameInputProcessor* getInstance(){
 
 
 
@@ -71,31 +77,31 @@ protected: GameInputProcessor(){
 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
+    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processReleasedEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
+    public: void processReleasedEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processAnalog(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent, int32_t analogValue){
+    public: void processAnalog(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent, int32_t analogValue){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayerManager allbinaryLayerManager, Integer keyAsInteger){
+    public: void process(AllBinaryLayerManager* allbinaryLayerManager, int32_t keyAsInteger){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processReleased(AllBinaryLayerManager allbinaryLayerManager, Integer keyAsInteger){
+    public: void processReleased(AllBinaryLayerManager* allbinaryLayerManager, int32_t keyAsInteger){
 }
 
 

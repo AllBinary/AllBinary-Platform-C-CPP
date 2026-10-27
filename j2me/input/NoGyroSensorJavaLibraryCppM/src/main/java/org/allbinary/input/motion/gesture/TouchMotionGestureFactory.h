@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_TOUCHMOTIONGESTUREFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_TOUCHMOTIONGESTUREFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/InputFactory.h>
@@ -47,43 +53,43 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionGestureInput.h"
+        #include "org/allbinary/input/motion/gesture/MotionGestureInput.h"
 
 class TouchMotionGestureFactory
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static TouchMotionGestureFactory getInstance();
+    public: static TouchMotionGestureFactory* getInstance();
 
-    public: MotionGestureInput LEFT;
+    public: MotionGestureInput* LEFT;
 
-    public: MotionGestureInput RIGHT;
+    public: MotionGestureInput* RIGHT;
 
-    public: MotionGestureInput UP;
+    public: MotionGestureInput* UP;
 
-    public: MotionGestureInput DOWN;
+    public: MotionGestureInput* DOWN;
 
-    public: MotionGestureInput PRESSED;
+    public: MotionGestureInput* PRESSED;
 
-    public: MotionGestureInput RELEASED;
+    public: MotionGestureInput* RELEASED;
 
-    public: MotionGestureInput DIAGONAL_DOWN_RIGHT;
+    public: MotionGestureInput* DIAGONAL_DOWN_RIGHT;
 
-    public: MotionGestureInput DIAGONAL_DOWN_LEFT;
+    public: MotionGestureInput* DIAGONAL_DOWN_LEFT;
 
-    public: MotionGestureInput DIAGONAL_UP_RIGHT;
+    public: MotionGestureInput* DIAGONAL_UP_RIGHT;
 
-    public: MotionGestureInput DIAGONAL_UP_LEFT;
+    public: MotionGestureInput* DIAGONAL_UP_LEFT;
 
-    public: MotionGestureInput SCROLL_UP;
+    public: MotionGestureInput* SCROLL_UP;
 
-    public: MotionGestureInput SCROLL_DOWN;
+    public: MotionGestureInput* SCROLL_DOWN;
 
-    public: MotionGestureInput NO_MOTION;
+    public: MotionGestureInput* NO_MOTION;
 
-    public: MotionGestureInput LAST_MOTION;
+    public: MotionGestureInput* LAST_MOTION;
 
 private: TouchMotionGestureFactory();
 

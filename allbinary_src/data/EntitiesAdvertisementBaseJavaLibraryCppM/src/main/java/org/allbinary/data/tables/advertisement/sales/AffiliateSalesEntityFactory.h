@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_SALES_AFFILIATESALESENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_SALES_AFFILIATESALESENTITYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,16 +55,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AffiliateSalesEntity.h"
-#include "AffiliateSalesEntityInterface.h"
+        #include "org/allbinary/data/tables/advertisement/sales/AffiliateSalesEntity.h"
+#include "org/allbinary/data/tables/advertisement/sales/AffiliateSalesEntityInterface.h"
 
 class AffiliateSalesEntityFactory
             : public Object
          {
 
-    private: static const std::string CLASSNAME = "org.allbinary.data.tables.AffiliatesSalesEntity";
+    private: static inline const std::string CLASSNAME = "org.allbinary.data.tables.AffiliatesSalesEntity";
 
-    public: static AffiliateSalesEntityInterface getInstance();
+    public: static AffiliateSalesEntityInterface* getInstance();
 
 private: AffiliateSalesEntityFactory();
 

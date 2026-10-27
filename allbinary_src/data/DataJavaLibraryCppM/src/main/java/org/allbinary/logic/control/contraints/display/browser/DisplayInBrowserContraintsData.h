@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_DISPLAY_BROWSER_DISPLAYINBROWSERCONTRAINTSDATA_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_DISPLAY_BROWSER_DISPLAYINBROWSERCONTRAINTSDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,15 +52,15 @@ class DisplayInBrowserContraintsData
             : public Object
          {
 
-    public: static const std::string NAME = "DISPLAYBROWSERCONSTRAINTS_NAME";
+    public: static inline const std::string NAME = "DISPLAYBROWSERCONSTRAINTS_NAME";
 
-    public: static const std::string FRAMEABLE = "DISPLAYBROWSERCONSTRAINTS_FRAMEABLE";
+    public: static inline const std::string FRAMEABLE = "DISPLAYBROWSERCONSTRAINTS_FRAMEABLE";
 
-    public: static const std::string MOUNTABLE = "DISPLAYBROWSERCONSTRAINTS_MOUNTABLE";
+    public: static inline const std::string MOUNTABLE = "DISPLAYBROWSERCONSTRAINTS_MOUNTABLE";
 
-    public: static const std::string QUICKFRAMEABLE = "DISPLAYBROWSERCONSTRAINTS_QUICKFRAMEABLE";
+    public: static inline const std::string QUICKFRAMEABLE = "DISPLAYBROWSERCONSTRAINTS_QUICKFRAMEABLE";
 
-    public: static const std::string MOUNTABLELINK = "DISPLAYBROWSERCONSTRAINTS_MOUNTABLELINK";
+    public: static inline const std::string MOUNTABLELINK = "DISPLAYBROWSERCONSTRAINTS_MOUNTABLELINK";
 
 private: DisplayInBrowserContraintsData();
 

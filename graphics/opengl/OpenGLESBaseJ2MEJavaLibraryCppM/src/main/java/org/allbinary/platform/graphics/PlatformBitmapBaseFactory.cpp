@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -43,19 +49,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PlatformBitmapBase.h"
+        #include "org/allbinary/platform/graphics/PlatformBitmapBase.h"
 
 class PlatformBitmapBaseFactory
             : public Object
          {
 
-    public: static const PlatformBitmapBaseFactory NULL_PLATFORM_BITMAP_BASE_FACTORY = PlatformBitmapBaseFactory();
+    public: static PlatformBitmapBaseFactory* NULL_PLATFORM_BITMAP_BASE_FACTORY() { static std::unique_ptr<PlatformBitmapBaseFactory> value(new PlatformBitmapBaseFactory()); return value.get(); }
 
-    public: PlatformBitmapBase createBitmap(Image image){
+    public: PlatformBitmapBase* createBitmap(Image* image){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

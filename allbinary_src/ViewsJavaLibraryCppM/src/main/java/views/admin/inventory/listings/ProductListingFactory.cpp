@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,16 +55,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProductListing.h"
-#include "ProductListingInterface.h"
+        #include "views/admin/inventory/listings/ProductListing.h"
+#include "views/admin/inventory/listings/ProductListingInterface.h"
 
 class ProductListingFactory
             : public Object
          {
 
-    public: static ProductListingInterface getInstance(SearchRequest searchRequest){
+    public: static ProductListingInterface* getInstance(SearchRequest* searchRequest){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
         try {
@@ -66,20 +72,20 @@ class ProductListingFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return views::admin::inventory::listings::ProductListing(searchRequest);
+                        return dynamic_cast<ProductListingInterface*>(new views::admin::inventory::listings::ProductListing(searchRequest));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().FACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->FACTORYERROR))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil.put(commonStrings.EXCEPTION, "ProductListingFactory", commonStrings.GET_INSTANCE, e);
+logUtil->put(commonStrings->EXCEPTION, "ProductListingFactory", commonStrings->GET_INSTANCE, &e);
     
 
                                     }

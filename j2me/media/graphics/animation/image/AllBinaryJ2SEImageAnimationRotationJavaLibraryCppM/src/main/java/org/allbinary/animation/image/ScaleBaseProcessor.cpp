@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -48,9 +54,9 @@ class ScaleBaseProcessor
             : public Object
          {
 
-    private: static ScaleBaseProcessor instance() { return ScaleBaseProcessor(); }
+    private: static ScaleBaseProcessor* instance() { static std::unique_ptr<ScaleBaseProcessor> value(new ScaleBaseProcessor()); return value.get(); }
 
-    public: static ScaleBaseProcessor getInstance(){
+    public: static ScaleBaseProcessor* getInstance(){
 
 
 
@@ -60,7 +66,7 @@ class ScaleBaseProcessor
 }
 
 
-    public: void update(Image originalImage, std::vector<Image> originalImageArray, std::vector<Image> imageToShowArray, int32_t index, float scaleX, float scaleY, float maxScaleX, float maxScaleY){
+    public: void update(Image* originalImage, std::vector<Image*> originalImageArray, std::vector<Image*> imageToShowArray, int32_t index, float scaleX, float scaleY, float maxScaleX, float maxScaleY){
 }
 
 

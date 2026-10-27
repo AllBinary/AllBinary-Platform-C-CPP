@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,21 +73,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LayerPlacementInterface.h"
-#include "LayerPlacementType.h"
-#include "LayerPlacementTypeFactory.h"
+        #include "org/allbinary/game/layer/LayerPlacementInterface.h"
+#include "org/allbinary/game/layer/LayerPlacementType.h"
+#include "org/allbinary/game/layer/LayerPlacementTypeFactory.h"
 
 class LayerPlacer
             : public Object
          {
 
-    private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
+    private: EnumerationUtil* enumerationUtil = EnumerationUtil::getInstance();
 
-    protected: LayerInterfaceVisitor layerInterfaceVisitor;
+    protected: LayerInterfaceVisitor* layerInterfaceVisitor;
 
-    private: GPoint dimension;
+    private: GPoint* dimension;
 
-public: LayerPlacer(LayerInterfaceVisitor layerInterfaceVisitor, GPoint dimension){
+public: LayerPlacer(LayerInterfaceVisitor* layerInterfaceVisitor, GPoint* dimension){
 this->layerInterfaceVisitor= layerInterfaceVisitor;
     
 this->dimension= dimension;
@@ -91,12 +97,12 @@ this->dimension= dimension;
 
                 //@Throws(Exception.constructor)
             
-    public: void processList(BasicArrayList list){
+    public: void processList(BasicArrayList* list){
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
-    LayerPlacementInterface layerPlacementInterface;;
+    LayerPlacementInterface* layerPlacementInterface;;
     
 
 
@@ -105,7 +111,7 @@ this->dimension= dimension;
                         for (
     int32_t index = 0;index < size; index++)
         {
-layerPlacementInterface= list.objectArray[index];
+layerPlacementInterface= dynamic_cast<LayerPlacementInterface*>(list->objectArray[index]);
     
 this->process(layerPlacementInterface);
     
@@ -116,24 +122,24 @@ this->process(layerPlacementInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void process(LayerPlacementInterface layerPlacementInterface){
+    public: void process(LayerPlacementInterface* layerPlacementInterface){
 
-    GPoint relativePoint = this->getPoint(layerPlacementInterface);;
+    GPoint* relativePoint = this->getPoint(layerPlacementInterface);;
     
 
-    LayerInterfaceFactory layerInterfaceFactory = LayerInterfaceFactory::getInstance();;
+    LayerInterfaceFactory* layerInterfaceFactory = LayerInterfaceFactory::getInstance();;
     
 
-    ABHashtable<Object*, Object*> hashtable = layerPlacementInterface.getInstance();;
+    ABHashtable<Object*, Object*>* hashtable = layerPlacementInterface->getInstance();;
     
 
-    Enumeration<Object*> enumeration = hashtable.keys();;
+    Enumeration<Object*>* enumeration = hashtable->keys();;
     
 
-    GPoint point;;
+    GPoint* point;;
     
 
-    ABHashtable<Object*, Object*> layerHashtable;;
+    ABHashtable<Object*, Object*>* layerHashtable;;
     
 
     int32_t x= 0;;
@@ -145,24 +151,24 @@ this->process(layerPlacementInterface);
     int32_t z= 0;;
     
 
-    AllBinaryLayer layerInterface;;
+    AllBinaryLayer* layerInterface;;
     
 
-        while(this->enumerationUtil.hasMoreElements(enumeration))
+        while(this->enumerationUtil->hasMoreElements(enumeration))
         {
-point= this->enumerationUtil.nextElement(enumeration);
+point= dynamic_cast<GPoint*>(this->enumerationUtil->nextElement(enumeration));
     
-layerHashtable= hashtable.get(point);
+layerHashtable= dynamic_cast<ABHashtable<Object*, Object*>*>(hashtable->get(point));
     
-x= point.getX() +relativePoint.getX();
+x= point->getX() +relativePoint->getX();
     
-y= point.getY() +relativePoint.getY();
+y= point->getY() +relativePoint->getY();
     
-z= point.getZ() +relativePoint.getZ();
+z= point->getZ() +relativePoint->getZ();
     
-layerInterface= layerInterfaceFactory.getNexInstance(layerHashtable, x, y, z);
+layerInterface= layerInterfaceFactory->getNexInstance(layerHashtable, x, y, z);
     
-this->layerInterfaceVisitor.visit(layerInterface);
+this->layerInterfaceVisitor->visit(layerInterface);
     
 }
 
@@ -171,50 +177,50 @@ this->layerInterfaceVisitor.visit(layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: GPoint getPoint(LayerPlacementInterface layerPlacementInterface){
+    public: GPoint* getPoint(LayerPlacementInterface* layerPlacementInterface){
 
-    PointFactory pointFactory = PointFactory::getInstance();;
+    PointFactory* pointFactory = PointFactory::getInstance();;
     
 
-    LayerPlacementType layerPlacementType = layerPlacementInterface.getLayerType();;
+    LayerPlacementType* layerPlacementType = layerPlacementInterface->getLayerType();;
     
 
-                        if(layerPlacementType == LayerPlacementTypeFactory::getInstance().MAP)
+                        if(layerPlacementType == LayerPlacementTypeFactory::getInstance()->MAP)
                         
                                     {
                                     
-    int32_t width = layerPlacementInterface.getWidth();;
+    int32_t width = layerPlacementInterface->getWidth();;
     
 
-    int32_t height = layerPlacementInterface.getHeight();;
+    int32_t height = layerPlacementInterface->getHeight();;
     
 
-    int32_t x = ((this->dimension.getX() -width) /2);;
+    int32_t x = ((this->dimension->getX() -width) /2);;
     
 
-    int32_t y = ((this->dimension.getY() -height) /2);;
+    int32_t y = ((this->dimension->getY() -height) /2);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return pointFactory.createXY(x, y);;
+                        return pointFactory->createXY(x, y);;
     
 
                                     }
                                 
                              else 
-                        if(layerPlacementType == LayerPlacementTypeFactory::getInstance().UP)
+                        if(layerPlacementType == LayerPlacementTypeFactory::getInstance()->UP)
                         
                                     {
                                     
-    int32_t width = layerPlacementInterface.getWidth();;
+    int32_t width = layerPlacementInterface->getWidth();;
     
 
-    int32_t height = layerPlacementInterface.getHeight();;
+    int32_t height = layerPlacementInterface->getHeight();;
     
 
-    int32_t x = ((this->dimension.getX() -width) /2);;
+    int32_t x = ((this->dimension->getX() -width) /2);;
     
 
     int32_t y =  -height;;
@@ -223,7 +229,7 @@ this->layerInterfaceVisitor.visit(layerInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return pointFactory.createXY(x, y);;
+                        return pointFactory->createXY(x, y);;
     
 
                                     }
@@ -232,7 +238,7 @@ this->layerInterfaceVisitor.visit(layerInterface);
                             
 
 
-                            throw Exception("PlacementType Not Recognized");
+                            throw new Exception("PlacementType Not Recognized");
                     
 
                         }

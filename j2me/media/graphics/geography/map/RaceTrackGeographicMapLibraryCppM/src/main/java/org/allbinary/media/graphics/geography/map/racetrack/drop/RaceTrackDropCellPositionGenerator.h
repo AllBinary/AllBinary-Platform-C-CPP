@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DROP_RACETRACKDROPCELLPOSITIONGENERATOR_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DROP_RACETRACKDROPCELLPOSITIONGENERATOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -101,15 +107,15 @@
         
 class RaceTrackDropCellPositionGenerator: public BaseDropCellPositionGenerator {
 
-    protected: const BasicArrayList list = BasicArrayListD();
+    protected: BasicArrayList* list = new BasicArrayListD();
 
-    private: TimeDelayHelper timeDelayHelper;
+    private: TimeDelayHelper* timeDelayHelper;
 
     private: const int32_t STRAIGHTAWAY = 4;
 
-    protected: RaceTrackGeographicMapInterface raceTrackGeographicMap = NullRaceTrackGeographicMap::NULL_RACE_TRACK_GEOGRAPHIC_MAP;
+    protected: RaceTrackGeographicMapInterface* raceTrackGeographicMap = NullRaceTrackGeographicMap::NULL_RACE_TRACK_GEOGRAPHIC_MAP;
 
-    protected: GeographicMapCellTypeFactory raceTrackGeographicMapCellTypeFactory = GeographicMapCellTypeFactory::getInstance();
+    protected: GeographicMapCellTypeFactory* raceTrackGeographicMapCellTypeFactory = GeographicMapCellTypeFactory::getInstance();
 
 protected: RaceTrackDropCellPositionGenerator();
 
@@ -117,21 +123,21 @@ protected: RaceTrackDropCellPositionGenerator();
 
                 //@Throws(Exception.constructor)
             
-    public: bool isDropAllowedAt(GeographicMapCellPosition geographicMapCellPosition);
+    public: bool isDropAllowedAt(GeographicMapCellPosition* geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: void update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface);
+    public: void update(AllBinaryGameLayerManager* allBinaryGameLayerManager, BasicGeographicMap* geographicMapInterface);
 
-    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public: void processTick(AllBinaryLayerManager allBinaryLayerManager);
+    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    protected: void drop(AllBinaryLayerManager allBinaryLayerManager, int32_t index);
+    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager);
+
+                //@Throws(Exception.constructor)
+            
+    protected: void drop(AllBinaryLayerManager* allBinaryLayerManager, int32_t index);
 
 };
 

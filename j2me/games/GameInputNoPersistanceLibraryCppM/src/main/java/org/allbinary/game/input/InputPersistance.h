@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/rms/RecordEnumeration.h>
@@ -85,21 +93,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Input.h"
+        #include "org/allbinary/game/input/Input.h"
 //GameInputNoPersistanceLibrary
 class InputPersistance: public BasicPersitance {
 
-    private: const HashtableUtil hashtableUtil = HashtableUtil::getInstance();
+    private: HashtableUtil* hashtableUtil = HashtableUtil::getInstance();
 
 public: InputPersistance(std::string name);
 
                 //@Throws(Exception.constructor)
             
-    public: void loadAll(AbeClientInformationInterface abeClientInformation);
+    public: void loadAll(AbeClientInformationInterface* abeClientInformation);
 
                 //@Throws(Exception.constructor)
             
-    public: void save(AbeClientInformationInterface abeClientInformation, ABHashtable<Object*, Object*> hashtable);
+    public: void save(AbeClientInformationInterface* abeClientInformation, ABHashtable<Object*, Object*>* hashtable);
 
 };
 

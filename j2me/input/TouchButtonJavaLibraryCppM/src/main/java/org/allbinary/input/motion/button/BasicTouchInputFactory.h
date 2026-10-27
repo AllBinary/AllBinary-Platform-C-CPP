@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICTOUCHINPUTFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICTOUCHINPUTFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/InputFactory.h>
@@ -65,58 +71,58 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchButtonInput.h"
+        #include "org/allbinary/input/motion/button/TouchButtonInput.h"
 
 class BasicTouchInputFactory
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static BasicTouchInputFactory getInstance();
+    public: static BasicTouchInputFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: TouchButtonInput SPECIAL_BUTTON_SEVEN_TESTING_ONLY;
+    public: TouchButtonInput* SPECIAL_BUTTON_SEVEN_TESTING_ONLY;
 
-    public: TouchButtonInput SPECIAL_BUTTON_EIGHT_TESTING_ONLY;
+    public: TouchButtonInput* SPECIAL_BUTTON_EIGHT_TESTING_ONLY;
 
-    public: TouchButtonInput SPECIAL_BUTTON_SIX;
+    public: TouchButtonInput* SPECIAL_BUTTON_SIX;
 
-    public: TouchButtonInput SPECIAL_BUTTON_FIVE;
+    public: TouchButtonInput* SPECIAL_BUTTON_FIVE;
 
-    public: TouchButtonInput SPECIAL_BUTTON_FOUR;
+    public: TouchButtonInput* SPECIAL_BUTTON_FOUR;
 
-    public: TouchButtonInput SPECIAL_BUTTON_THREE;
+    public: TouchButtonInput* SPECIAL_BUTTON_THREE;
 
-    public: TouchButtonInput SPECIAL_BUTTON_TWO;
+    public: TouchButtonInput* SPECIAL_BUTTON_TWO;
 
-    public: TouchButtonInput SPECIAL_BUTTON_ONE;
+    public: TouchButtonInput* SPECIAL_BUTTON_ONE;
 
-    public: TouchButtonInput UP;
+    public: TouchButtonInput* UP;
 
-    public: TouchButtonInput LEFT;
+    public: TouchButtonInput* LEFT;
 
-    public: TouchButtonInput RIGHT;
+    public: TouchButtonInput* RIGHT;
 
-    public: TouchButtonInput DOWN;
+    public: TouchButtonInput* DOWN;
 
-    public: TouchButtonInput NONE;
+    public: TouchButtonInput* NONE;
 
     private: bool initialized = false;
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: BasicTouchInputFactory();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void init(InputToGameKeyMapping inputToGameKeyMapping);
+    public: void init(InputToGameKeyMapping* inputToGameKeyMapping);
 
-    public: void updateAll(InputToGameKeyMapping inputToGameKeyMapping);
+    public: void updateAll(InputToGameKeyMapping* inputToGameKeyMapping);
 
-    public: void updateAllFromList(BasicArrayList list, InputToGameKeyMapping inputToGameKeyMapping);
+    public: void updateAllFromList(BasicArrayList* list, InputToGameKeyMapping* inputToGameKeyMapping);
 
-    public: BasicArrayList getList();
+    public: BasicArrayList* getList();
 
 };
 

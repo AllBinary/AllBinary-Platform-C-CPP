@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -29,14 +35,14 @@ class BasicGameInfoFactory
             : public Object
          {
 
-    private: static const BasicGameInfoFactory SINGLETON = BasicGameInfoFactory();
+    private: static BasicGameInfoFactory* SINGLETON() { static std::unique_ptr<BasicGameInfoFactory> value(new BasicGameInfoFactory()); return value.get(); }
 
-    public: static BasicGameInfoFactory getInstance(){
+    public: static BasicGameInfoFactory* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicGameInfoFactory::SINGLETON;
+                        return BasicGameInfoFactory::SINGLETON();
     
 }
 

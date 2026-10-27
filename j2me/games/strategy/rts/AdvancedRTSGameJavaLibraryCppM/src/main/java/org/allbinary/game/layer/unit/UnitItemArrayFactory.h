@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -99,33 +105,33 @@
         
 class UnitItemArrayFactory
             : public Object
-        : public ItemArraySingletonFactoryInterface {
+        , public ItemArraySingletonFactoryInterface {
 
-    private: static const std::vector<ABCustomItem> ITEMS = CustomItemUtil::getInstance().CUSTOM_ITEM_ARRAY;
+    private: static inline const std::vector<ABCustomItem*> ITEMS = CustomItemUtil::getInstance()->CUSTOM_ITEM_ARRAY;
 
-    private: const CommonSeps commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps = CommonSeps::getInstance();
 
-    private: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
+    private: BasicColor* basicColor = BasicColorFactory::getInstance()->WHITE;
 
-    private: std::vector<BasicGameResources> resources;
+    private: std::vector<BasicGameResources*> resources;
 
-protected: UnitItemArrayFactory(std::vector<BasicGameResources> resources);
-
-                //@Throws(Exception.constructor)
-            
-    protected: ABCustomItem createFlagItem(FlagGameResources flagResources, LayerInterfaceFactoryInterface layerInterfaceFactoryInterface);
+protected: UnitItemArrayFactory(std::vector<BasicGameResources*> resources);
 
                 //@Throws(Exception.constructor)
             
-    protected: ABCustomItem createNamedFlagItem(FlagGameResources flagResources, std::string name, LayerInterfaceFactoryInterface layerInterfaceFactoryInterface);
+    protected: ABCustomItem* createFlagItem(FlagGameResources* flagResources, LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<ABCustomItem> getItems();
+    protected: ABCustomItem* createNamedFlagItem(FlagGameResources* flagResources, std::string name, LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface);
 
-    public: std::vector<BasicGameResources> getResources();
+                //@Throws(Exception.constructor)
+            
+    public: std::vector<ABCustomItem*> getItems();
 
-    public: int32_t indexOf(BasicGameResources basicGameResources);
+    public: std::vector<BasicGameResources*> getResources();
+
+    public: int32_t indexOf(BasicGameResources* basicGameResources);
 
 };
 

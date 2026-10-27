@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLOR_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -56,7 +62,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicColorUtil.h"
+        #include "org/allbinary/graphics/color/BasicColorUtil.h"
 
 class BasicColor
             : public Object

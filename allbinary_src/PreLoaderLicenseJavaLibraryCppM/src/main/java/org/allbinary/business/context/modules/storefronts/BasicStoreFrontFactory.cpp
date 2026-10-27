@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,16 +52,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicStoreFrontsEntity.h"
-#include "BasicStoreFrontInterface.h"
+        #include "org/allbinary/business/context/modules/storefronts/BasicStoreFrontsEntity.h"
+#include "org/allbinary/business/context/modules/storefronts/BasicStoreFrontInterface.h"
 
 class BasicStoreFrontFactory
             : public Object
          {
 
-    private: static BasicStoreFrontFactory instance() { return BasicStoreFrontFactory(); }
+    private: static BasicStoreFrontFactory* instance() { static std::unique_ptr<BasicStoreFrontFactory> value(new BasicStoreFrontFactory()); return value.get(); }
 
-    public: static BasicStoreFrontFactory getInstance(){
+    public: static BasicStoreFrontFactory* getInstance(){
 
 
 
@@ -65,7 +71,7 @@ class BasicStoreFrontFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: BasicStoreFrontFactory(){
 }
@@ -73,30 +79,30 @@ private: BasicStoreFrontFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: BasicStoreFrontInterface getInstance(std::string storeName){
+    public: BasicStoreFrontInterface* getInstance(std::string storeName){
 
         try {
             
-    BasicStoreFrontsEntity storeFronts = BasicStoreFrontsEntity();;
+    BasicStoreFrontsEntity* storeFronts = new BasicStoreFrontsEntity();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return storeFronts.getStoreFrontInterface(storeName);;
+                        return storeFronts->getStoreFrontInterface(storeName);;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().FACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->FACTORYERROR))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
     
 
                                     }

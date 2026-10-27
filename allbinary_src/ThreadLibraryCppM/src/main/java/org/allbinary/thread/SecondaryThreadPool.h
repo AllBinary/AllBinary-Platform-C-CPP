@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_THREAD_SECONDARYTHREADPOOL_H
         #define ORG_ALLBINARY_THREAD_SECONDARYTHREADPOOL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/System.h"
         
             #include "java/lang/Runnable.h"
@@ -52,21 +58,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ThreadPool.h"
+        #include "org/allbinary/thread/ThreadPool.h"
 //This is mainly for network communications.
 class SecondaryThreadPool: public ThreadPool {
 
-    private: static const ThreadPool instance = SecondaryThreadPool("Secondary", 1, ThreadPool::NORMAL_PRIORITY);
+    private: static inline ThreadPool* instance = new SecondaryThreadPool("Secondary", 1, ThreadPool::NORMAL_PRIORITY);
 
-    public: static ThreadPool getInstance();
+    public: static ThreadPool* getInstance();
 
 public: SecondaryThreadPool(std::string poolName, int32_t numThreads, int32_t priority);
 
-    public: void runTask(Runnable task);
+    public: void runTask(Runnable* task);
 
-    protected: void startTask(Runnable task);
+    protected: void startTask(Runnable* task);
 
-    protected: void completedTask(Runnable task);
+    protected: void completedTask(Runnable* task);
 
 };
 

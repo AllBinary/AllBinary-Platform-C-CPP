@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -58,7 +64,7 @@ class ParamsUtil
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
 
@@ -67,9 +73,9 @@ class ParamsUtil
                         for (
     int32_t index = 0;index < params.size(); index++)
         {
-stringBuffer.append(" ");
+stringBuffer->append(" ");
     
-stringBuffer.append(params[index].getName());
+stringBuffer->append(params[index].getName());
     
 }
 
@@ -77,7 +83,7 @@ stringBuffer.append(params[index].getName());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                                     }

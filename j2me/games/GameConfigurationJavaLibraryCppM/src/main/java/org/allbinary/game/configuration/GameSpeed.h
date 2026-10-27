@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_GAMESPEED_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMESPEED_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,16 +47,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameConfigurationCentral.h"
-#include "GameConfiguration.h"
+        #include "org/allbinary/game/configuration/GameConfigurationCentral.h"
+#include "org/allbinary/game/configuration/GameConfiguration.h"
 
 class GameSpeed
             : public Object
          {
 
-    private: static GameSpeed instance() { return GameSpeed(); }
+    private: static GameSpeed* instance() { static std::unique_ptr<GameSpeed> value(new GameSpeed()); return value.get(); }
 
-    public: static GameSpeed getInstance();
+    public: static GameSpeed* getInstance();
 
     public: int32_t getSpeed();
 

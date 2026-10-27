@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -61,36 +67,36 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameTypeFactory.h"
-#include "GameMode.h"
-#include "PlayerTypesFactory.h"
-#include "GameInfoData.h"
-#include "GameType.h"
-#include "PlayerType.h"
+        #include "org/allbinary/game/GameTypeFactory.h"
+#include "org/allbinary/game/GameMode.h"
+#include "org/allbinary/game/PlayerTypesFactory.h"
+#include "org/allbinary/game/GameInfoData.h"
+#include "org/allbinary/game/GameType.h"
+#include "org/allbinary/game/PlayerType.h"
 
 class GameInfo
             : public Object
          {
 
-    public: static const GameInfo NONE = GameInfo(GameTypeFactory::getInstance().NONE, GameMode::NONE, PlayerTypesFactory::getInstance().PLAYER_TYPE_ONE,  -1,  -1);
+    public: static GameInfo* NONE() { static std::unique_ptr<GameInfo> value(new GameInfo(GameTypeFactory::getInstance()->NONE(), GameMode::NONE(), PlayerTypesFactory::getInstance()->PLAYER_TYPE_ONE,  -1,  -1)); return value.get(); }
 
-    public: static const std::string LEVEL_NAME = "LEVEL";
+    public: static inline const std::string LEVEL_NAME = "LEVEL";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const GameInfoData gameInfoData = GameInfoData::getInstance();
+    private: GameInfoData* gameInfoData = GameInfoData::getInstance();
 
-    private: GameType gameType;
+    private: GameType* gameType;
 
-    private: GameMode gameMode;
+    private: GameMode* gameMode;
 
-    private: PlayerType playerType;
+    private: PlayerType* playerType;
 
     private: int32_t highestLevel= 0;
 
     private: int32_t currentLevel;
 
-public: GameInfo(GameType gameType, GameMode gameMode, PlayerType playerType, int32_t highestLevel, int32_t currentLevel){
+public: GameInfo(GameType* gameType, GameMode* gameMode, PlayerType* playerType, int32_t highestLevel, int32_t currentLevel){
 this->gameType= gameType;
     
 this->gameMode= gameMode;
@@ -104,7 +110,7 @@ this->playerType= playerType;
 }
 
 
-    public: GameType getGameType(){
+    public: GameType* getGameType(){
 
 
 
@@ -114,7 +120,7 @@ this->playerType= playerType;
 }
 
 
-    public: GameMode getGameMode(){
+    public: GameMode* getGameMode(){
 
 
 
@@ -124,7 +130,7 @@ this->playerType= playerType;
 }
 
 
-    public: PlayerType getPlayerType(){
+    public: PlayerType* getPlayerType(){
 
 
 
@@ -167,7 +173,7 @@ this->highestLevel= highestLevel;
     public: void setCurrentLevel(int32_t currentLevel){
 this->currentLevel= currentLevel;
     
-this->logUtil.putF(StringMaker().append(this->NEW_LEVEL).appendint(this->getCurrentLevel()).toString(), this, this->SET_CURRENT_LEVEL);
+this->logUtil->putF((new StringMaker())->append(this->NEW_LEVEL)->appendint(this->getCurrentLevel())->toString(), this, this->SET_CURRENT_LEVEL);
     
 }
 
@@ -184,7 +190,7 @@ this->logUtil.putF(StringMaker().append(this->NEW_LEVEL).appendint(this->getCurr
 
                                     }
                                 
-this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().NEXT).append(CommonSeps::getInstance().SPACE).append(this->NEW_LEVEL).appendint(this->getCurrentLevel()).toString(), this, this->NEXT_GAME_LEVEL);
+this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->NEXT)->append(CommonSeps::getInstance()->SPACE)->append(this->NEW_LEVEL)->appendint(this->getCurrentLevel())->toString(), this, this->NEXT_GAME_LEVEL);
     
 }
 
@@ -224,19 +230,19 @@ this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().NEXT).append
 }
 
 
-    public: ABHashtable<Object*, Object*> toHashtable(){
+    public: ABHashtable<Object*, Object*>* toHashtable(){
 
-    ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();;
+    ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();;
     
-hashtable.put(this->gameInfoData.GAME_TYPE, this->getGameType().toString());
+hashtable->put(this->gameInfoData->GAME_TYPE, this->getGameType()->toString());
     
-hashtable.put(this->gameInfoData.GAME_MODE, this->gameMode.toString());
+hashtable->put(this->gameInfoData->GAME_MODE, this->gameMode->toString());
     
-hashtable.put(this->gameInfoData.PLAYER_TYPE, this->playerType.toString());
+hashtable->put(this->gameInfoData->PLAYER_TYPE, this->playerType->toString());
     
-hashtable.put(this->gameInfoData.HIGHEST_LEVEL, std::to_string(getHighestLevel));
+hashtable->put(this->gameInfoData->HIGHEST_LEVEL, std::to_string(getHighestLevel));
     
-hashtable.put(this->gameInfoData.CURRENT_LEVEL, std::to_string(currentLevel));
+hashtable->put(this->gameInfoData->CURRENT_LEVEL, std::to_string(currentLevel));
     
 
 
@@ -249,54 +255,54 @@ hashtable.put(this->gameInfoData.CURRENT_LEVEL, std::to_string(currentLevel));
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
-stringBuffer.append(this->gameInfoData.GAME_TYPE);
+stringBuffer->append(this->gameInfoData->GAME_TYPE);
     
-stringBuffer.append(commonSeps.EQUALS);
+stringBuffer->append(commonSeps->EQUALS);
     
-stringBuffer.append(this->getGameType().toString());
+stringBuffer->append(this->getGameType()->toString());
     
-stringBuffer.append(commonSeps.COMMA_SEP);
+stringBuffer->append(commonSeps->COMMA_SEP);
     
-stringBuffer.append(this->gameInfoData.GAME_MODE);
+stringBuffer->append(this->gameInfoData->GAME_MODE);
     
-stringBuffer.append(commonSeps.EQUALS);
+stringBuffer->append(commonSeps->EQUALS);
     
-stringBuffer.append(this->gameMode.toString());
+stringBuffer->append(this->gameMode->toString());
     
-stringBuffer.append(commonSeps.COMMA_SEP);
+stringBuffer->append(commonSeps->COMMA_SEP);
     
-stringBuffer.append(this->gameInfoData.PLAYER_TYPE);
+stringBuffer->append(this->gameInfoData->PLAYER_TYPE);
     
-stringBuffer.append(commonSeps.EQUALS);
+stringBuffer->append(commonSeps->EQUALS);
     
-stringBuffer.append(StringUtil::getInstance().toString(this->playerType));
+stringBuffer->append(StringUtil::getInstance()->toString(this->playerType));
     
-stringBuffer.append(commonSeps.COMMA_SEP);
+stringBuffer->append(commonSeps->COMMA_SEP);
     
-stringBuffer.append(this->gameInfoData.HIGHEST_LEVEL);
+stringBuffer->append(this->gameInfoData->HIGHEST_LEVEL);
     
-stringBuffer.append(commonSeps.EQUALS);
+stringBuffer->append(commonSeps->EQUALS);
     
-stringBuffer.appendint(this->getHighestLevel());
+stringBuffer->appendint(this->getHighestLevel());
     
-stringBuffer.append(commonSeps.COMMA_SEP);
+stringBuffer->append(commonSeps->COMMA_SEP);
     
-stringBuffer.append(this->gameInfoData.CURRENT_LEVEL);
+stringBuffer->append(this->gameInfoData->CURRENT_LEVEL);
     
-stringBuffer.append(commonSeps.EQUALS);
+stringBuffer->append(commonSeps->EQUALS);
     
-stringBuffer.appendint(this->currentLevel);
+stringBuffer->appendint(this->currentLevel);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

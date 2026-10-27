@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -52,19 +58,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryHierarchyInterface.h"
+        #include "org/allbinary/business/category/hierarchy/CategoryHierarchyInterface.h"
 
 class CategoryHierarchy
             : public Object
-        : public CategoryHierarchyInterface {
+        , public CategoryHierarchyInterface {
 
-    private: CategoryInterface rootCategoryInterface;
+    private: CategoryInterface* rootCategoryInterface;
 
-    private: CategoryInterface parentCategoryInterface;
+    private: CategoryInterface* parentCategoryInterface;
 
     private: int32_t level;
 
-public: CategoryHierarchy(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface){
+public: CategoryHierarchy(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface){
 this->level= 0;
     
 this->setRoot(rootCategoryInterface);
@@ -74,7 +80,7 @@ this->setParent(parentCategoryInterface);
 }
 
 
-public: CategoryHierarchy(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, int32_t level){
+public: CategoryHierarchy(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, int32_t level){
 this->level= level;
     
 this->setRoot(rootCategoryInterface);
@@ -84,11 +90,11 @@ this->setParent(parentCategoryInterface);
 }
 
 
-public: CategoryHierarchy(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<Object*, Object*> categoryPropertiesHashMap){
+public: CategoryHierarchy(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap){
 
-    std::string levelString = StringUtil::getInstance().getNonNull(categoryPropertiesHashMap.get(CategoryData::getInstance().LEVEL));;
+    std::string levelString = StringUtil::getInstance()->getNonNull(categoryPropertiesHashMap->get(CategoryData::getInstance()->LEVEL));;
     
-this->level= Integer::valueOf(levelString).intValue();
+this->level= Integer.valueOf(levelString)->intValue();
     
 this->setRoot(rootCategoryInterface);
     
@@ -123,19 +129,19 @@ this->level= level;
 }
 
 
-    public: void setParent(CategoryInterface categoryInterface){
+    public: void setParent(CategoryInterface* categoryInterface){
 this->parentCategoryInterface= categoryInterface;
     
 }
 
 
-    public: void setRoot(CategoryInterface categoryInterface){
+    public: void setRoot(CategoryInterface* categoryInterface){
 this->rootCategoryInterface= categoryInterface;
     
 }
 
 
-    public: CategoryInterface getRoot(){
+    public: CategoryInterface* getRoot(){
 
 
 
@@ -145,7 +151,7 @@ this->rootCategoryInterface= categoryInterface;
 }
 
 
-    public: CategoryInterface getParent(){
+    public: CategoryInterface* getParent(){
 
 
 

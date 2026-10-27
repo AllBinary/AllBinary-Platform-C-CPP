@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/util/HashMap.h>
 
       
@@ -48,15 +54,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoInterface.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
 
 class TransformInfoHttpInterface: public TransformInfoInterface {
 
-    WeblisketSessionInterface getWeblisketSession();
+    public: virtual WeblisketSessionInterface* getWeblisketSession() = 0;
 
-    PageContext getPageContext();
+    public: virtual PageContext* getPageContext() = 0;
 
-    HashMap<Object*, Object*> getPropertiesHashMap();
+    public: virtual HashMap<Object*, Object*>* getPropertiesHashMap() = 0;
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h>
@@ -62,23 +68,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LifeLayerCircularStaticPool.h"
-#include "LifeLayerFactory.h"
-#include "LifeResources.h"
+        #include "org/allbinary/game/ag/layer/pickup/life/LifeLayerCircularStaticPool.h"
+#include "org/allbinary/game/ag/layer/pickup/life/LifeLayerFactory.h"
+#include "org/allbinary/game/ag/layer/pickup/life/LifeResources.h"
 
 class LifePickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory, public PickupProcessorInterface {
 
-    private: static PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
+    private: static inline PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
 
                 //@Throws(Exception.constructor)
             
     public: static void init(){
-LifePickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface= LifePickedUpLayerInterfaceFactory();
+LifePickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface= new LifePickedUpLayerInterfaceFactory();
     
 }
 
 
-    public: static PickedUpLayerInterfaceFactoryInterface getInstance(){
+    public: static PickedUpLayerInterfaceFactoryInterface* getInstance(){
 
 
 
@@ -88,9 +94,9 @@ LifePickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface= LifeP
 }
 
 
-    private: LifeLayerCircularStaticPool pool = LifeLayerCircularStaticPool(LifeLayerFactory(), 1);
+    private: LifeLayerCircularStaticPool* pool = new LifeLayerCircularStaticPool(new LifeLayerFactory(), 1);
 
-private: LifePickedUpLayerInterfaceFactory() : PickedUpLayerInterfaceFactory(PickedUpLayerTypeFactory::getInstance().LIFE, IconLayerFactory::getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(LifeResources::getInstance().RESOURCE).getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(LifeResources::getInstance().RESOURCE).getInstance(0)){
+private: LifePickedUpLayerInterfaceFactory() : PickedUpLayerInterfaceFactory(PickedUpLayerTypeFactory::getInstance()->LIFE, IconLayerFactory::getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(LifeResources::getInstance()->RESOURCE)->getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(LifeResources::getInstance()->RESOURCE)->getInstance(0)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -112,8 +118,8 @@ private: LifePickedUpLayerInterfaceFactory() : PickedUpLayerInterfaceFactory(Pic
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayer sourceLayerInterface){
-this->pool.visit(sourceLayerInterface);
+    public: void process(AllBinaryLayer* sourceLayerInterface){
+this->pool->visit(sourceLayerInterface);
     
 }
 

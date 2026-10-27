@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,7 +44,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameKeyEvent.h"
+        #include "org/allbinary/game/input/event/GameKeyEvent.h"
 
 class GameKeyEventUtil
             : public Object
@@ -46,13 +52,13 @@ class GameKeyEventUtil
 
     public: static int32_t getKey(Object* anyType){
 
-    GameKeyEvent gameKeyEvent = *dynamic_cast<GameKeyEvent*>(anyType);;
+    GameKeyEvent* gameKeyEvent = dynamic_cast<GameKeyEvent*>(anyType);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return gameKeyEvent.getKey();;
+                        return gameKeyEvent->getKey();;
     
 }
 

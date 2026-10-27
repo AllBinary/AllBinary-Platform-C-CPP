@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -91,9 +97,9 @@
         
 class InventoryView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: InventoryView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+public: InventoryView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -105,31 +111,31 @@ public: InventoryView(TransformInfoInterface transformInfoInterface) : HttpStore
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Starting", this, "toXmlNode");
+                                    this->logUtil->putF("Starting", this, "toXmlNode");
     
 
                                     }
                                 
 
-    InventoryEntity inventoryEntityInterface = InventoryEntityFactory::getInstance().getInventoryEntityInstance();;
+    InventoryEntity* inventoryEntityInterface = InventoryEntityFactory::getInstance()->getInventoryEntityInstance();;
     
 
-    Node inventoryNode = document.createElement(InventoryData::INVENTORY);;
+    Node* inventoryNode = document->createElement(InventoryData::INVENTORY);;
     
 
-    BasicArrayList itemVector = inventoryEntityInterface.getItems(StoreFrontFactory::getInstance(this->getTransformInfoInterface().getStoreName()));;
+    BasicArrayList* itemVector = inventoryEntityInterface->getItems(StoreFrontFactory::getInstance(this->getTransformInfoInterface()->getStoreName()));;
     
-inventoryNode.appendChild(ModDomHelper::createNameValueNodes(document, SearchData::TOTAL_NUMBER_ITEMS_ON_THIS_PAGE, Integer(itemVector.size()).toString()));
+inventoryNode->appendChild(ModDomHelper::createNameValueNodes(document, SearchData::TOTAL_NUMBER_ITEMS_ON_THIS_PAGE, (int32_t(itemVector->size())).toString()));
     
 
-    int32_t size = itemVector.size();;
+    int32_t size = itemVector->size();;
     
 
 
@@ -139,7 +145,7 @@ inventoryNode.appendChild(ModDomHelper::createNameValueNodes(document, SearchDat
     int32_t index = 0;index < size; index++)
         {
 
-    ItemInterface itemInterface = itemVector.get(index);;
+    ItemInterface* itemInterface = dynamic_cast<ItemInterface*>(itemVector->get(index));;
     
 
                         if(itemInterface != 
@@ -148,15 +154,15 @@ inventoryNode.appendChild(ModDomHelper::createNameValueNodes(document, SearchDat
                         
                                     {
                                     
-    Node node = BasicItemView(itemInterface, BasicArrayListD()).toXmlNode(document);;
+    Node* node = (new BasicItemView(itemInterface, new BasicArrayListD()))->toXmlNode(document);;
     
-inventoryNode.appendChild(node);
+inventoryNode->appendChild(node);
     
 
                                     }
                                 
                         else {
-                            this->logUtil.putF("Inventory", this, "toXmlNode");
+                            this->logUtil->putF("Inventory", this, "toXmlNode");
     
 
                         }
@@ -171,13 +177,13 @@ inventoryNode.appendChild(node);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, "toXmlNode", &e);
     
 
                                     }
@@ -193,7 +199,7 @@ inventoryNode.appendChild(node);
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this);
+this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     
 }
 
@@ -211,16 +217,16 @@ this->addDomNodeInterface(this);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to view Inventory";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }

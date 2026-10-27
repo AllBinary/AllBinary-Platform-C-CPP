@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -65,17 +71,17 @@ class Tokenizer
 
     private: std::string sep;
 
-    private: std::string endSep = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string endSep = StringUtil::getInstance()->EMPTY_STRING;
 
 public: Tokenizer(std::string sep){
 
-                        if(false || TsUtil::getInstance().compareTo(sep, StringUtil::getInstance().EMPTY_STRING) == 0)
+                        if(false || TsUtil::getInstance()->compareTo(sep, StringUtil::getInstance()->EMPTY_STRING) == 0)
                         
                                     {
                                     
 
 
-                            throw Exception("Sep provided is not valid");
+                            throw new Exception("Sep provided is not valid");
                     
 
                                     }
@@ -97,9 +103,9 @@ this->endSep= endSep;
 }
 
 
-    public: BasicArrayList getInsideSep(std::string string){
+    public: BasicArrayList* getInsideSep(std::string string){
 
-    BasicArrayList tokenList = BasicArrayListD();;
+    BasicArrayList* tokenList = new BasicArrayListD();;
     
 
     int32_t index = 0;;
@@ -110,20 +116,20 @@ this->endSep= endSep;
 
         while(index < size)
         {
-index= string.indexOf(this->sep, index);
+index= JavaString::indexOf(string, this->sep, index);
     
 
                         if(index !=  -1)
                         
                                     {
                                     
-    int32_t end = string.indexOf(this->endSep, index +sep.size());;
+    int32_t end = JavaString::indexOf(string, this->endSep, index +sep.size());;
     
 
                         if(end !=  -1)
                         
                                     {
-                                    tokenList.add(string.substring(index +sep.size(), end -(endSep.size() -1)));
+                                    tokenList->add(JavaString::substring(string, index +sep.size(), end -(endSep.size() -1)));
     
 index= end +endSep.size();
     
@@ -155,7 +161,7 @@ index= end +endSep.size();
 }
 
 
-    public: BasicArrayList getTokensFromString(std::string string, BasicArrayList tokenVector){
+    public: BasicArrayList* getTokensFromString(std::string string, BasicArrayList* tokenVector){
 
     int32_t index = 0;;
     
@@ -165,13 +171,13 @@ index= end +endSep.size();
 
         while(index < string.size())
         {
-end= string.indexOf(this->sep, index);
+end= JavaString::indexOf(string, this->sep, index);
     
 
                         if(end !=  -1)
                         
                                     {
-                                    tokenVector.add(string.substring(index, end));
+                                    tokenVector->add(JavaString::substring(string, index, end));
     
 index= end +sep.size();
     
@@ -179,7 +185,7 @@ index= end +sep.size();
                                     }
                                 
                         else {
-                            tokenVector.add(string.substring(index, string.size()));
+                            tokenVector->add(JavaString::substring(string, index, string.size()));
     
 break;
 
@@ -198,18 +204,18 @@ break;
 }
 
 
-    public: ABHashtable<Object*, Object*> getTokens(BasicArrayList stringVector){
+    public: ABHashtable<Object*, Object*>* getTokens(BasicArrayList* stringVector){
 
-    ABHashtable<Object*, Object*> tokenHashtable = StdUtil::getInstance().createHashtable();;
+    ABHashtable<Object*, Object*>* tokenHashtable = StdUtil::getInstance()->createHashtable();;
     
 
-    std::string string = StringUtil::getInstance().EMPTY_STRING;;
+    std::string string = StringUtil::getInstance()->EMPTY_STRING;;
     
 
     int32_t end = 0;;
     
 
-    int32_t size = stringVector.size();;
+    int32_t size = stringVector->size();;
     
 
 
@@ -218,15 +224,15 @@ break;
                         for (
     int32_t index = 0;index < size; index++)
         {
-string= stringVector.objectArray[index];
+string= stringVector->objectArray[index];
     
-end= string.indexOf(this->sep);
+end= JavaString::indexOf(string, this->sep);
     
 
                         if(end >= 0)
                         
                                     {
-                                    tokenHashtable.put(string.substring(0, end), string.substring(end +1, string.size()));
+                                    tokenHashtable->put(JavaString::substring(string, 0, end), JavaString::substring(string, end +1, string.size()));
     
 
                                     }

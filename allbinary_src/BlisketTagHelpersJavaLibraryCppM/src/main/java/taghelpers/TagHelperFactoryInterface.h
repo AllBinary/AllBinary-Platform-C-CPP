@@ -21,6 +21,14 @@
         #ifndef TAGHELPERS_TAGHELPERFACTORYINTERFACE_H
         #define TAGHELPERS_TAGHELPERFACTORYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <java/util/HashMap.h>
 
       
@@ -53,7 +61,7 @@ class TagHelperFactoryInterface {
 
                 //@Throws(LicensingException.constructor)
             
-    Object* getInstance(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+    public: virtual Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) = 0;
 
 };
 

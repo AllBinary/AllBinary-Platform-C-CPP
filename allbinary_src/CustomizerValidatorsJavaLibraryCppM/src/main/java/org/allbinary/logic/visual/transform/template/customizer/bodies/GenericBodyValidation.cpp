@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -83,36 +89,36 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BodyData.h"
+        #include "org/allbinary/logic/visual/transform/template/customizer/bodies/BodyData.h"
 
 class GenericBodyValidation: public Validation, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string body;
 
 public: GenericBodyValidation(){
-this->body= StringUtil::getInstance().EMPTY_STRING;
+this->body= StringUtil::getInstance()->EMPTY_STRING;
     
 }
 
 
-public: GenericBodyValidation(Document document){
+public: GenericBodyValidation(Document* document){
 
-    NodeList nodeList = document.getElementsByTagName(BodyData::getInstance().NAME);;
+    NodeList* nodeList = document->getElementsByTagName(BodyData::getInstance()->NAME);;
     
 
 
 
 
                         for (
-    int32_t index = 0;index < nodeList.getLength(); index++)
+    int32_t index = 0;index < nodeList->getLength(); index++)
         {
 
-    Node aBodyNode = nodeList.item(index);;
+    Node* aBodyNode = nodeList->item(index);;
     
 
-    Node aBodyValueNode = DomSearchHelper::getNode(DomData::VALUE, aBodyNode.getChildNodes());;
+    Node* aBodyValueNode = DomSearchHelper::getNode(DomData::VALUE, aBodyNode->getChildNodes());;
     
 this->body= DomNodeHelper::getTextNodeValue(aBodyValueNode);
     
@@ -121,7 +127,7 @@ this->body= DomNodeHelper::getTextNodeValue(aBodyValueNode);
 }
 
 
-public: GenericBodyValidation(HashMap<Object*, Object*> hashMap){
+public: GenericBodyValidation(HashMap<Object*, Object*>* hashMap){
 this->getFormData(hashMap);
     
 }
@@ -129,29 +135,29 @@ this->getFormData(hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<Object*, Object*> hashMap){
-this->body= hashMap.get(BodyData::getInstance().NAME);
+    public: void getFormData(HashMap<Object*, Object*>* hashMap){
+this->body= hashMap->get(BodyData::getInstance()->NAME);
     
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-    Boolean isValid = Boolean::TRUE;;
+    bool isValid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.IS_VALID);
     
 
                                     }
                                 
 
-                        if(!StringValidationUtil::getInstance().isValidNotRequired(this->body, BodyData::getInstance().MIN, AbSqlData::MAXBLOB))
+                        if(!StringValidationUtil::getInstance()->isValidNotRequired(this->body, BodyData::getInstance()->MIN, AbSqlData::MAXBLOB))
                         
                                     {
                                     isValid= Boolean::FALSE;
@@ -160,10 +166,10 @@ this->body= hashMap.get(BodyData::getInstance().NAME);
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("BodyValidation: " +isValid, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("BodyValidation: " +isValid, this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -176,13 +182,13 @@ this->body= hashMap.get(BodyData::getInstance().NAME);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -202,18 +208,18 @@ this->body= hashMap.get(BodyData::getInstance().NAME);
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
 
                             {
-                            stringBuffer.append("Error: Data submitted is < ");
+                            stringBuffer->append("Error: Data submitted is < ");
     
-stringBuffer.appendint(BodyData::getInstance().MIN);
+stringBuffer->appendint(BodyData::getInstance()->MIN);
     
-stringBuffer.append(" or > ");
+stringBuffer->append(" or > ");
     
-stringBuffer.appendint(AbSqlData::MAXBLOB);
+stringBuffer->appendint(AbSqlData::MAXBLOB);
     
 
                             }
@@ -222,17 +228,17 @@ stringBuffer.appendint(AbSqlData::MAXBLOB);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -248,7 +254,7 @@ stringBuffer.appendint(AbSqlData::MAXBLOB);
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -258,7 +264,7 @@ stringBuffer.appendint(AbSqlData::MAXBLOB);
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -270,9 +276,9 @@ stringBuffer.appendint(AbSqlData::MAXBLOB);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = ModDomHelper::createNameValueNodes(document, BodyData::getInstance().NAME, this->body);;
+    Node* node = ModDomHelper::createNameValueNodes(document, BodyData::getInstance()->NAME, this->body);;
     
 
 

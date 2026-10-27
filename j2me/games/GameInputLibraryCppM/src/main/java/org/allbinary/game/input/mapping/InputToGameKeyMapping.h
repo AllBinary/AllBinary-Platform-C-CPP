@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Throwable.h"
         
             #include "java/lang/Exception.h"
@@ -84,24 +92,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputMapping.h"
+        #include "org/allbinary/game/input/mapping/InputMapping.h"
 
 class InputToGameKeyMapping: public InputMapping {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static InputToGameKeyMapping getNullInstance();
+    public: static InputToGameKeyMapping* getNullInstance();
 
-    private: const GameKeyFactory gameKeyFactory = GameKeyFactory::getInstance();
+    private: GameKeyFactory* gameKeyFactory = GameKeyFactory::getInstance();
 
-    private: const std::vector<GameKey> mappedGameKeys = 
+    private: const std::vector<GameKey*> mappedGameKeys = 
                                                         {
-                                                            this->gameKeyFactory.UP,this->gameKeyFactory.DOWN,this->gameKeyFactory.LEFT,this->gameKeyFactory.RIGHT
+                                                            this->gameKeyFactory->UP,this->gameKeyFactory->DOWN,this->gameKeyFactory->LEFT,this->gameKeyFactory->RIGHT
                                                         };
 
-    private: const std::vector<GameKey> platformToGameKeyMapping = std::vector<GameKey>(InputFactory::getInstance().MAX);
+    private: const std::vector<GameKey*> platformToGameKeyMapping = std::vector<GameKey*>(InputFactory::getInstance()->MAX);
 
-    protected: std::vector<GameKey> negativePlatformToGameKeyMapping = {};
+    protected: std::vector<GameKey*> negativePlatformToGameKeyMapping = {};
 
 public: InputToGameKeyMapping();
 
@@ -109,33 +117,33 @@ public: InputToGameKeyMapping();
 
     protected: void removeAll();
 
-    public: void addMapping(InputToGameKeyMapping inputToGameKeyMapping);
+    public: void addMapping(InputToGameKeyMapping* inputToGameKeyMapping);
 
-    private: void addAll(Input input, BasicArrayList list);
+    private: void addAll(Input* input, BasicArrayList* list);
 
-    public: void add(Input input, Input mappedToInput);
+    public: void add(Input* input, Input* mappedToInput);
 
-    public: void remove(Input input, Input mappedToInput);
+    public: void remove(Input* input, Input* mappedToInput);
 
-    private: void set(Input input, Input mappedToInput);
+    private: void set(Input* input, Input* mappedToInput);
 
     public: int32_t getMaxMappable();
 
-    public: BasicArrayList getReverseInstance(int32_t id);
+    public: BasicArrayList* getReverseInstance(int32_t id);
 
                 //@Throws(Exception.constructor)
             
-    private: void initGameKey(Canvas canvas, GameKey gameKey);
+    private: void initGameKey(Canvas* canvas, GameKey* gameKey);
 
                 //@Throws(Exception.constructor)
             
-    private: int32_t getSmallestCanvasGameKeyCode(Canvas canvas);
+    private: int32_t getSmallestCanvasGameKeyCode(Canvas* canvas);
 
-    public: void init(Canvas canvas);
+    public: void init(Canvas* canvas);
 
-    public: GameKey getInstanceForCanvas(Canvas canvas, int32_t id);
+    public: GameKey* getInstanceForCanvas(Canvas* canvas, int32_t id);
 
-    public: GameKey getInstance(int32_t id);
+    public: GameKey* getInstance(int32_t id);
 
 };
 

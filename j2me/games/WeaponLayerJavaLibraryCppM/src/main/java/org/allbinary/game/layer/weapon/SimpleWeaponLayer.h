@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WEAPON_SIMPLEWEAPONLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_WEAPON_SIMPLEWEAPONLAYER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/Animation.h>
@@ -65,16 +71,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WeaponLayer.h"
-#include "CollidableWeaponBehavior.h"
+        #include "org/allbinary/game/layer/weapon/WeaponLayer.h"
+#include "org/allbinary/game/layer/weapon/CollidableWeaponBehavior.h"
 
 class SimpleWeaponLayer: public WeaponLayer {
 
                 //@Throws(Exception.constructor)
             
-    public: static Animation createDestroyed();
+    public: static Animation* createDestroyed();
 
-public: SimpleWeaponLayer(std::string name, RemoteInfo remoteInfo, int32_t multiPlayerType, Movement movement, Animation animationInterface, Animation destroyedAnimationInterface, Rectangle rectangle, ViewPositionBase viewPosition);
+public: SimpleWeaponLayer(std::string name, RemoteInfo* remoteInfo, int32_t multiPlayerType, Movement* movement, Animation* animationInterface, Animation* destroyedAnimationInterface, Rectangle* rectangle, ViewPositionBase* viewPosition);
 
 };
 

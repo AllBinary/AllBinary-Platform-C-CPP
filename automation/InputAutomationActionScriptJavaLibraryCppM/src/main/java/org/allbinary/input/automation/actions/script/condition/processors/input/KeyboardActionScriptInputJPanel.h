@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYBOARDACTIONSCRIPTINPUTJPANEL_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYBOARDACTIONSCRIPTINPUTJPANEL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -70,34 +76,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "KeyboardActionScriptInputInterface.h"
-#include "DefaultComboBoxModel.h"
-#include "KeyNameDefaultComboBoxModelFactory.h"
-#include "KeyCharDefaultComboBoxModelFactory.h"
-#include "ComboBoxModel.h"
-#include "JDialog.h"
-#include "JLabel.h"
-#include "JComboBox.h"
-#include "JTextField.h"
-#include "JRadioButton.h"
-#include "JButton.h"
-#include "Dimension.h"
-#include "ActionListener.h"
-#include "ActionEvent.h"
-#include "Insets.h"
-#include "GroupLayout.h"
-#include "Short.h"
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/JPanel.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyboardActionScriptInputInterface.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/DefaultComboBoxModel.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyNameDefaultComboBoxModelFactory.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyCharDefaultComboBoxModelFactory.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/ComboBoxModel.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/JDialog.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/JLabel.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/JComboBox.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/JTextField.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/JRadioButton.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/JButton.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/Dimension.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/ActionListener.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/ActionEvent.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/Insets.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/GroupLayout.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/Short.h"
 
 class KeyboardActionScriptInputJPanel: public javax::swing::JPanel {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: KeyboardActionScriptInputInterface keyActionScriptInputInterface;
+    private: KeyboardActionScriptInputInterface* keyActionScriptInputInterface;
 
-public: KeyboardActionScriptInputJPanel(KeyboardActionScriptInputInterface keyActionScriptInputInterface);
+public: KeyboardActionScriptInputJPanel(KeyboardActionScriptInputInterface* keyActionScriptInputInterface);
 
     private: void set();
 
@@ -105,7 +111,7 @@ public: KeyboardActionScriptInputJPanel(KeyboardActionScriptInputInterface keyAc
             
     private: void updateInputType();
 
-    private: Integer getSelectedKey();
+    private: int32_t getSelectedKey();
 
     private: void updateKeys();
 
@@ -113,75 +119,75 @@ public: KeyboardActionScriptInputJPanel(KeyboardActionScriptInputInterface keyAc
             
     private: void update();
 
-    public: javax::swing::JDialog getKeyActionJDialog();
+    public: javax::swing::JDialog* getKeyActionJDialog();
 
-    public: void setKeyActionJDialog(javax::swing::JDialog keyActionJDialog);
+    public: void setKeyActionJDialog(javax::swing::JDialog* keyActionJDialog);
 
     private: void initComponents();
 
-    private: void prependText(Integer integer);
+    private: void prependText(int32_t integer);
 
-    private: void keyIntegerJComboBoxActionPerformed(java::awt::event::ActionEvent evt);
+    private: void keyIntegerJComboBoxActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void sequenceJRadioButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void sequenceJRadioButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void simultaneousJRadioButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void simultaneousJRadioButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void keyNameJComboBoxActionPerformed(java::awt::event::ActionEvent evt);
+    private: void keyNameJComboBoxActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void okJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void okJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void keyActionJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void keyActionJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void normalJRadioButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void normalJRadioButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void releaseJRadioButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void releaseJRadioButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void pressJRadioButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void pressJRadioButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: javax::swing::JLabel addKeyJLabel;
+    private: javax::swing::JLabel* addKeyJLabel;
 
-    private: javax::swing::JLabel delayBetweenJLabel;
+    private: javax::swing::JLabel* delayBetweenJLabel;
 
-    private: javax::swing::JTextField delayJTextField;
+    private: javax::swing::JTextField* delayJTextField;
 
-    private: javax::swing::JLabel holdTimeJLabel;
+    private: javax::swing::JLabel* holdTimeJLabel;
 
-    private: javax::swing::JComboBox inputAutomationTypeJComboBox;
+    private: javax::swing::JComboBox* inputAutomationTypeJComboBox;
 
-    private: javax::swing::JLabel inputTypeJLabel;
+    private: javax::swing::JLabel* inputTypeJLabel;
 
-    private: javax::swing::JLabel jLabel1;
+    private: javax::swing::JLabel* jLabel1;
 
-    private: javax::swing::JPanel jPanel1;
+    private: javax::swing::JPanel* jPanel1;
 
-    private: javax::swing::JButton keyActionJButton;
+    private: javax::swing::JButton* keyActionJButton;
 
-    private: javax::swing::JDialog keyActionJDialog;
+    private: javax::swing::JDialog* keyActionJDialog;
 
-    private: javax::swing::JComboBox keyIntegerJComboBox;
+    private: javax::swing::JComboBox* keyIntegerJComboBox;
 
-    private: javax::swing::JComboBox keyNameJComboBox;
+    private: javax::swing::JComboBox* keyNameJComboBox;
 
-    private: javax::swing::JRadioButton normalJRadioButton;
+    private: javax::swing::JRadioButton* normalJRadioButton;
 
-    private: javax::swing::JButton okJButton;
+    private: javax::swing::JButton* okJButton;
 
-    private: javax::swing::JRadioButton pressJRadioButton;
+    private: javax::swing::JRadioButton* pressJRadioButton;
 
-    private: javax::swing::JRadioButton releaseJRadioButton;
+    private: javax::swing::JRadioButton* releaseJRadioButton;
 
-    private: javax::swing::JRadioButton sequenceJRadioButton;
+    private: javax::swing::JRadioButton* sequenceJRadioButton;
 
-    private: javax::swing::JRadioButton simultaneousJRadioButton;
+    private: javax::swing::JRadioButton* simultaneousJRadioButton;
 
-    private: javax::swing::JLabel testJLabel;
+    private: javax::swing::JLabel* testJLabel;
 
-    private: javax::swing::JTextField textJTextField;
+    private: javax::swing::JTextField* textJTextField;
 
-    private: javax::swing::JTextField timeJTextField;
+    private: javax::swing::JTextField* timeJTextField;
 
-    private: javax::swing::JLabel titleJLabel;
+    private: javax::swing::JLabel* titleJLabel;
 
 };
 

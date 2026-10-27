@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,28 +69,28 @@
         
 class BasicCrypt
             : public Object
-        : public CryptInterface {
+        , public CryptInterface {
 
-    private: const ByteUtil byteUtil = ByteUtil::getInstance();
+    private: ByteUtil* byteUtil = ByteUtil::getInstance();
 
     private: std::vector<int8_t> key;
 
 public: BasicCrypt(std::string keyAsString){
 
-    std::vector<int8_t> key = NullUtil::getInstance().NULL_BYTE_ARRAY;;
+    std::vector<int8_t> key = NullUtil::getInstance()->NULL_BYTE_ARRAY;;
     
 
         try {
-            key= TsUtil::getInstance().getByteArray(keyAsString);
+            key= TsUtil::getInstance()->getByteArray(keyAsString);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil::putOE(commonStrings.EXCEPTION, this, "AbCrypt(alg,key)", e);
+PreLogUtil::putOE(commonStrings->EXCEPTION, this, "AbCrypt(alg,key)", &e);
     
 }
 
@@ -104,15 +110,15 @@ this->key= key;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-PreLogUtil::putOE("Encrypt Failed", this, "encrypt", e);
+PreLogUtil::putOE("Encrypt Failed", this, "encrypt", &e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance().NULL_BYTE_ARRAY;
+                        return NullUtil::getInstance()->NULL_BYTE_ARRAY;
     
 }
 
@@ -130,15 +136,15 @@ PreLogUtil::putOE("Encrypt Failed", this, "encrypt", e);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-PreLogUtil::putOE("decrypt Failed", this, "decrypt", e);
+PreLogUtil::putOE("decrypt Failed", this, "decrypt", &e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance().NULL_BYTE_ARRAY;
+                        return NullUtil::getInstance()->NULL_BYTE_ARRAY;
     
 }
 
@@ -158,7 +164,7 @@ PreLogUtil::putOE("decrypt Failed", this, "decrypt", e);
         {
 value= this->key[index];
     
-array= this->byteUtil.xor(array, value);
+array= this->byteUtil->xor_(array, value);
     
 }
 

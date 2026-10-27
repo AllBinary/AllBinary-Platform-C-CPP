@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -48,9 +54,9 @@ class HttpRequestUtil
             : public Object
          {
 
-    private: static HttpRequestUtil instance() { return HttpRequestUtil(); }
+    private: static HttpRequestUtil* instance() { static std::unique_ptr<HttpRequestUtil> value(new HttpRequestUtil()); return value.get(); }
 
-    public: static HttpRequestUtil getInstance(){
+    public: static HttpRequestUtil* getInstance(){
 
 
 
@@ -66,13 +72,13 @@ private: HttpRequestUtil(){
 
     public: int32_t getLastSeparatorIndex(std::string requestPath){
 
-    int32_t beginIndex = requestPath.lastIndexOf(AbPathData::getInstance().SEPARATOR);;
+    int32_t beginIndex = JavaString::lastIndexOf(requestPath, AbPathData::getInstance()->SEPARATOR);;
     
 
                         if(beginIndex < 0)
                         
                                     {
-                                    beginIndex= requestPath.lastIndexOf("\\");
+                                    beginIndex= JavaString::lastIndexOf(requestPath, "\\");
     
 
                                     }
@@ -110,7 +116,7 @@ private: HttpRequestUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return requestPath.substring(beginIndex +1);;
+                        return JavaString::substring(requestPath, beginIndex +1);;
     
 
                         }

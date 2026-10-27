@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/media/Control.h>
 
       
@@ -44,12 +50,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicPlayer.h"
-#include "NullControl.h"
+        #include "org/allbinary/media/audio/BasicPlayer.h"
+#include "org/allbinary/media/audio/NullControl.h"
 
 class NoPlayer: public BasicPlayer {
 
-    public: static const NoPlayer NO_PLAYER = NoPlayer();
+    public: static NoPlayer* NO_PLAYER() { static std::unique_ptr<NoPlayer> value(new NoPlayer()); return value.get(); }
 
 public: NoPlayer(){
 }
@@ -64,22 +70,22 @@ public: NoPlayer(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().NULL_STRING;
+                        return StringUtil::getInstance()->NULL_STRING;
     
 }
 
 
-    public: Control getControl(std::string controlType){
+    public: Control* getControl(std::string controlType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullControl();
+                        return new NullControl();
     
 }
 
 
-    public: std::vector<Control> getControls(){
+    public: std::vector<Control*> getControls(){
 
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/sql/Connection.h>
@@ -70,9 +76,9 @@ class SqlConnectionPool
             : public Object
          {
 
-    private: static SqlConnectionPool instance() { return SqlConnectionPool(); }
+    private: static SqlConnectionPool* instance() { static std::unique_ptr<SqlConnectionPool> value(new SqlConnectionPool()); return value.get(); }
 
-    public: static SqlConnectionPool getInstance(){
+    public: static SqlConnectionPool* getInstance(){
 
 
 
@@ -82,11 +88,11 @@ class SqlConnectionPool
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const StdUtil stdUtil = StdUtil::getInstance();
+    protected: StdUtil* stdUtil = StdUtil::getInstance();
 
-    private: HashMap<Object*, Object*> connectionHashMap = 
+    private: HashMap<Object*, Object*>* connectionHashMap = 
                 null
             ;
 
@@ -117,20 +123,20 @@ private: SqlConnectionPool(){
                 //@Throws(SQLException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: Connection get(std::string url){
+    public: Connection* get(std::string url){
 
                         if(this->connectionHashMap == 
                                     nullptr
                                 )
                         
                                     {
-                                    this->connectionHashMap= this->stdUtil.createHashMap();
+                                    this->connectionHashMap= this->stdUtil->createHashMap();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGPOOL))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGPOOL))
                         
                                     {
-                                    this->logUtil.putF(this->FIRST_NEW_CONNECTION_CREATED +url, this, METHOD_GET);
+                                    this->logUtil->putF(this->FIRST_NEW_CONNECTION_CREATED +url, this, METHOD_GET);
     
 
                                     }
@@ -146,7 +152,7 @@ private: SqlConnectionPool(){
                                 
                         else {
                             
-    BasicArrayList connectionVector = this->connectionHashMap.get(url);;
+    BasicArrayList* connectionVector = dynamic_cast<BasicArrayList*>(this->connectionHashMap->get(url));;
     
 
                         if(connectionVector == 
@@ -154,24 +160,24 @@ private: SqlConnectionPool(){
                                 )
                         
                                     {
-                                    connectionVector= BasicArrayListD();
+                                    connectionVector= new BasicArrayListD();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGPOOL))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGPOOL))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->FIRST);
+stringBuffer->append(this->FIRST);
     
-stringBuffer.append(this->NEW_CONNECTION_FOR);
+stringBuffer->append(this->NEW_CONNECTION_FOR);
     
-stringBuffer.append(url);
+stringBuffer->append(url);
     
-stringBuffer.append(this->CREATED);
+stringBuffer->append(this->CREATED);
     
-this->logUtil.putF(stringBuffer.toString(), this, this->METHOD_GET);
+this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET);
     
 
                                     }
@@ -186,14 +192,14 @@ this->logUtil.putF(stringBuffer.toString(), this, this->METHOD_GET);
                                     }
                                 
                              else 
-                        if(connectionVector.size() == 0)
+                        if(connectionVector->size() == 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGPOOL))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGPOOL))
                         
                                     {
-                                    this->logUtil.putF(StringMaker().append(this->NEW_CONNECTION_FOR).append(url).append(this->CREATED).toString(), this, METHOD_GET);
+                                    this->logUtil->putF((new StringMaker())->append(this->NEW_CONNECTION_FOR)->append(url)->append(this->CREATED)->toString(), this, METHOD_GET);
     
 
                                     }
@@ -209,10 +215,10 @@ this->logUtil.putF(stringBuffer.toString(), this, this->METHOD_GET);
                                 
                         else {
                             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    int32_t size = connectionVector.size();;
+    int32_t size = connectionVector->size();;
     
 
 
@@ -222,33 +228,33 @@ this->logUtil.putF(stringBuffer.toString(), this, this->METHOD_GET);
     int32_t i = 0;i < size; i++)
         {
 
-    Connection sqlConnection = connectionVector.get(i);;
+    Connection* sqlConnection = dynamic_cast<Connection*>(connectionVector->get(i));;
     
 
-                        if(!sqlConnection.isClosed())
+                        if(!sqlConnection->isClosed())
                         
                                     {
-                                    connectionVector.remove(sqlConnection);
+                                    connectionVector->remove(sqlConnection);
     
-this->connectionHashMap.put(url, connectionVector);
+this->connectionHashMap->put(url, connectionVector);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGPOOL))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGPOOL))
                         
                                     {
-                                    stringBuffer.delete(0, stringBuffer.length());
+                                    stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(this->NUMBER_OF_SQL_CONNECTIONS_FOR);
+stringBuffer->append(this->NUMBER_OF_SQL_CONNECTIONS_FOR);
     
-stringBuffer.append(url);
+stringBuffer->append(url);
     
-stringBuffer.append(this->IS);
+stringBuffer->append(this->IS);
     
-stringBuffer.appendint(connectionVector.size());
+stringBuffer->appendint(connectionVector->size());
     
-this->logUtil.putF(NUMBER_OF_SQL_CONNECTION_VECTORS +this->connectionHashMap.size(), this, this->METHOD_GET);
+this->logUtil->putF(NUMBER_OF_SQL_CONNECTION_VECTORS +this->connectionHashMap->size(), this, this->METHOD_GET);
     
-this->logUtil.putF(stringBuffer.toString(), this, METHOD_GET);
+this->logUtil->putF(stringBuffer->toString(), this, METHOD_GET);
     
 
                                     }
@@ -257,7 +263,7 @@ this->logUtil.putF(stringBuffer.toString(), this, METHOD_GET);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return sqlConnection;
+                        return dynamic_cast<Connection*>(sqlConnection);
     
 
                                     }
@@ -271,19 +277,19 @@ this->logUtil.putF(stringBuffer.toString(), this, METHOD_GET);
                         }
                             
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGPOOL))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGPOOL))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->NEW_CONNECTION_FOR);
+stringBuffer->append(this->NEW_CONNECTION_FOR);
     
-stringBuffer.append(url);
+stringBuffer->append(url);
     
-stringBuffer.append(this->CREATED);
+stringBuffer->append(this->CREATED);
     
-this->logUtil.putF(stringBuffer.toString(), this, this->METHOD_GET);
+this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET);
     
 
                                     }
@@ -300,13 +306,13 @@ this->logUtil.putF(stringBuffer.toString(), this, this->METHOD_GET);
                 //@Throws(SQLException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void add(std::string url, Connection sqlConnection){
+    public: void add(std::string url, Connection* sqlConnection){
 
-                        if(!sqlConnection.isClosed())
+                        if(!sqlConnection->isClosed())
                         
                                     {
                                     
-    BasicArrayList connectionVector;;
+    BasicArrayList* connectionVector;;
     
 
                         if(this->connectionHashMap == 
@@ -314,17 +320,17 @@ this->logUtil.putF(stringBuffer.toString(), this, this->METHOD_GET);
                                 )
                         
                                     {
-                                    this->connectionHashMap= this->stdUtil.createHashMap();
+                                    this->connectionHashMap= this->stdUtil->createHashMap();
     
-connectionVector= BasicArrayListD();
+connectionVector= new BasicArrayListD();
     
-connectionVector.add(sqlConnection);
+connectionVector->add(sqlConnection);
     
 
                                     }
                                 
                         else {
-                            connectionVector= this->connectionHashMap.get(url);
+                            connectionVector= dynamic_cast<BasicArrayList*>(this->connectionHashMap->get(url));
     
 
                         if(connectionVector == 
@@ -332,36 +338,36 @@ connectionVector.add(sqlConnection);
                                 )
                         
                                     {
-                                    connectionVector= BasicArrayListD();
+                                    connectionVector= new BasicArrayListD();
     
 
                                     }
                                 
-connectionVector.add(sqlConnection);
+connectionVector->add(sqlConnection);
     
-this->connectionHashMap.put(url, connectionVector);
+this->connectionHashMap->put(url, connectionVector);
     
 
                         }
                             
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGPOOL))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGPOOL))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->NUMBER_OF_SQL_CONNECTIONS_FOR);
+stringBuffer->append(this->NUMBER_OF_SQL_CONNECTIONS_FOR);
     
-stringBuffer.append(url);
+stringBuffer->append(url);
     
-stringBuffer.append(this->IS);
+stringBuffer->append(this->IS);
     
-stringBuffer.appendint(connectionVector.size());
+stringBuffer->appendint(connectionVector->size());
     
-this->logUtil.putF(this->NUMBER_OF_SQL_CONNECTION_VECTORS +this->connectionHashMap.size(), this, this->METHOD_ADD);
+this->logUtil->putF(this->NUMBER_OF_SQL_CONNECTION_VECTORS +this->connectionHashMap->size(), this, this->METHOD_ADD);
     
-this->logUtil.putF(stringBuffer.toString(), this, this->METHOD_ADD);
+this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_ADD);
     
 
                                     }
@@ -370,10 +376,10 @@ this->logUtil.putF(stringBuffer.toString(), this, this->METHOD_ADD);
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGPOOL))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGPOOL))
                         
                                     {
-                                    this->logUtil.putF(this->CONNECTION_ALLREADY_CLOSED, this, METHOD_ADD);
+                                    this->logUtil->putF(this->CONNECTION_ALLREADY_CLOSED, this, METHOD_ADD);
     
 
                                     }

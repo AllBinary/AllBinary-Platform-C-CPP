@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
@@ -41,13 +47,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputMappingEvent.h"
+        #include "org/allbinary/game/input/mapping/event/InputMappingEvent.h"
 
 class InputMappingEventListenerInterface: public EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    void onInputMappingEvent(InputMappingEvent inputMappingEvent)
+    public: virtual void onInputMappingEvent(InputMappingEvent* inputMappingEvent) = 0;
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,23 +44,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Log.h"
+        #include "org/allbinary/logic/communication/log/Log.h"
 //ActualPlatform
 /*actual*/ class LogFactory
             : public Object
          {
 
-    /*actual*/ public: static Log getInstance(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
+    /*actual*/ public: static Log* getInstance(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Log(specialMessage, anyType, functionName, exception);
+                        return new Log(specialMessage, anyType, functionName, exception);
     
 }
 
 
-    /*actual*/ public: static Log getInstanceF(std::string specialMessage, Object* anyType, std::string functionName){
+    /*actual*/ public: static Log* getInstanceF(std::string specialMessage, Object* anyType, std::string functionName){
 
 
 

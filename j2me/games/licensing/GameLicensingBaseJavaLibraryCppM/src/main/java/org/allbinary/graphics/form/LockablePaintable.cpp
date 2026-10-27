@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -53,11 +59,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ItemPaintable.h"
+        #include "org/allbinary/graphics/form/ItemPaintable.h"
 
 class LockablePaintable: public ItemPaintable {
 
-    private: const Animation animation = FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(LockedResources::getInstance().LOCKED_DEMO_GAME_FEATURE_RESOURCE).getInstance(0);
+    private: Animation* animation = FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(LockedResources::getInstance()->LOCKED_DEMO_GAME_FEATURE_RESOURCE)->getInstance(0);
 
     private: int32_t lockedIndex;
 
@@ -67,12 +73,12 @@ this->lockedIndex= lockedIndex;
 }
 
 
-    public: void paint(Graphics graphics, int32_t currentIndex, int32_t x, int32_t y){
+    public: void paint(Graphics* graphics, int32_t currentIndex, int32_t x, int32_t y){
 
-                        if(LockedUtil::getInstance().isLocked() && currentIndex >= this->getLockedIndex())
+                        if(LockedUtil::getInstance()->isLocked() && currentIndex >= this->getLockedIndex())
                         
                                     {
-                                    this->getAnimation().paintXY(graphics, x, y);
+                                    this->getAnimation()->paintXY(graphics, x, y);
     
 
                                     }
@@ -90,7 +96,7 @@ this->lockedIndex= lockedIndex;
 }
 
 
-    protected: Animation getAnimation(){
+    protected: Animation* getAnimation(){
 
 
 

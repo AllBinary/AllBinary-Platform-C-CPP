@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,15 +73,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Sounds.h"
-#include "SoundsFactoryInterface.h"
-#include "NoPlayer.h"
+        #include "org/allbinary/media/audio/Sounds.h"
+#include "org/allbinary/media/audio/SoundsFactoryInterface.h"
+#include "org/allbinary/media/audio/NoPlayer.h"
 //MediaMIDP2ForHTMLJavaLibrary
 class AllBinaryMediaManager
             : public Object
          {
 
-    private: static const std::string THIS = "AllBinaryMediaManagerHTML5";
+    private: static inline const std::string THIS = "AllBinaryMediaManagerHTML5";
 
     public: static bool isMuted(){
 
@@ -103,43 +109,43 @@ class AllBinaryMediaManager
 
                 //@Throws(Exception.constructor)
             
-    public: static void init(SoundsFactoryInterface soundsFactoryInterface){
+    public: static void init(SoundsFactoryInterface* soundsFactoryInterface){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonString = CommonStrings::getInstance();;
+    CommonStrings* commonString = CommonStrings::getInstance();;
     
-logUtil.putF(commonString.START, AllBinaryMediaManager::THIS, commonString.INIT);
+logUtil->putF(commonString->START, AllBinaryMediaManager::THIS, commonString->INIT);
     
-ProgressCanvasFactory::getInstance().addNormalPortion(50, "Media Manager");
+ProgressCanvasFactory::getInstance()->addNormalPortion(50, "Media Manager");
     
-Sounds(soundsFactoryInterface).init();
+(new Sounds(soundsFactoryInterface))->init();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: static void shutdown(SoundsFactoryInterface soundsFactoryInterface){
-Sounds(soundsFactoryInterface).stopAll();
+    public: static void shutdown(SoundsFactoryInterface* soundsFactoryInterface){
+(new Sounds(soundsFactoryInterface))->stopAll();
     
-Sounds(soundsFactoryInterface).closeAll();
+(new Sounds(soundsFactoryInterface))->closeAll();
     
-TsUtil::getInstance().gc();
+TsUtil::getInstance()->gc();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: static Player createPlayer(std::string resource){
+    public: static Player* createPlayer(std::string resource){
 
-                        if(Features::getInstance().isFeature(GameFeatureFactory::getInstance().SOUND))
+                        if(Features::getInstance()->isFeature(GameFeatureFactory::getInstance()->SOUND))
                         
                                     {
                                     
-                        if(TsUtil::getInstance().compareTo(resource, Manager::TONE_DEVICE_LOCATOR) == 0)
+                        if(TsUtil::getInstance()->compareTo(resource, Manager::TONE_DEVICE_LOCATOR) == 0)
                         
                                     {
                                     
@@ -156,7 +162,7 @@ TsUtil::getInstance().gc();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Manager::createPlayer(resource.substring(0, resource.size() -4));;
+                        return Manager::createPlayer(JavaString::substring(resource, 0, resource.size() -4));;
     
 
                         }
@@ -182,7 +188,7 @@ TsUtil::getInstance().gc();
 
     public: static void playTone(int32_t frequency, int32_t time, int32_t volume){
 
-                        if(Features::getInstance().isFeature(GameFeatureFactory::getInstance().SOUND))
+                        if(Features::getInstance()->isFeature(GameFeatureFactory::getInstance()->SOUND))
                         
                                     {
                                     Manager::playTone(frequency, time, volume);

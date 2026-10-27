@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -68,31 +74,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFile.h"
+        #include "org/allbinary/logic/io/file/AbFile.h"
 
 class FileListFetcher
             : public Object
          {
 
-    private: static FileListFetcher instance() { return FileListFetcher(); }
+    private: static FileListFetcher* instance() { static std::unique_ptr<FileListFetcher> value(new FileListFetcher()); return value.get(); }
 
-    public: static FileListFetcher getInstance();
+    public: static FileListFetcher* getInstance();
 
-    private: const SubDirectory subDirectory = SubDirectory::getInstance();
+    private: SubDirectory* subDirectory = SubDirectory::getInstance();
 
-    public: BasicArrayList getFiles(std::string path);
+    public: BasicArrayList* getFiles(std::string path);
 
-    public: BasicArrayList getFiles(std::string path, std::vector<std::string> includeExtensions);
+    public: BasicArrayList* getFiles(std::string path, std::vector<std::string> includeExtensions);
 
-    public: BasicArrayList getFiles(std::string path, std::string includeExtension);
+    public: BasicArrayList* getFiles(std::string path, std::string includeExtension);
 
-    public: BasicArrayList getFiles(std::string path, std::string pathIncludes, std::string includeExtension);
+    public: BasicArrayList* getFiles(std::string path, std::string pathIncludes, std::string includeExtension);
 
-    public: BasicArrayList getTrackedFiles(std::string path, std::vector<std::string> includeExtensions);
+    public: BasicArrayList* getTrackedFiles(std::string path, std::vector<std::string> includeExtensions);
 
-    public: BasicArrayList getTrackedFiles(std::string path, std::string includeExtension);
+    public: BasicArrayList* getTrackedFiles(std::string path, std::string includeExtension);
 
-    public: BasicArrayList getDirectories(std::string path);
+    public: BasicArrayList* getDirectories(std::string path);
 
 };
 

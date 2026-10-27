@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_COLLIDABLECHARACTERBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_COLLIDABLECHARACTERBEHAVIOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/collision/CollidableInterfaceCompositeInterface.h>
@@ -59,8 +65,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CollidableDestroyableDamageableBehavior.h"
-#include "CollidableDestroyableDamageableLayer.h"
+        #include "org/allbinary/game/layer/special/CollidableDestroyableDamageableBehavior.h"
+#include "org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h"
 
 class CollidableCharacterBehavior: public CollidableDestroyableDamageableBehavior {
 
@@ -68,11 +74,11 @@ public: CollidableCharacterBehavior(bool collidable);
 
                 //@Throws(Exception.constructor)
             
-    public: void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
+    public: void collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface);
+    public: void collideInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface);
 
 };
 

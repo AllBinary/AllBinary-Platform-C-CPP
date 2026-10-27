@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/business/user/commerce/inventory/order/OrderInterface.h>
@@ -44,11 +50,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShippingInterface.h"
+        #include "org/allbinary/business/user/commerce/shipping/modules/ShippingInterface.h"
 
 class UpsShippingModule
             : public Object
-        : public ShippingInterface {
+        , public ShippingInterface {
 
     private: const std::string name = "UPS";
 
@@ -58,12 +64,12 @@ public: UpsShippingModule(){
 }
 
 
-    public: Money getCost(OrderInterface order){
+    public: Money* getCost(OrderInterface* order){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Money();
+                        return new Money();
     
 }
 

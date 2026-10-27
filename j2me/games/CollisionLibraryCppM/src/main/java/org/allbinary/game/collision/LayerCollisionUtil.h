@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_COLLISION_LAYERCOLLISIONUTIL_H
         #define ORG_ALLBINARY_GAME_COLLISION_LAYERCOLLISIONUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/configuration/feature/Features.h>
@@ -53,23 +59,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CollisionProcessor.h"
-#include "Collision2DProcessor.h"
-#include "CollisionThreedProcessor.h"
+        #include "org/allbinary/game/collision/CollisionProcessor.h"
+#include "org/allbinary/game/collision/Collision2DProcessor.h"
+#include "org/allbinary/game/collision/CollisionThreedProcessor.h"
 
 class LayerCollisionUtil
             : public Object
          {
 
-    private: static LayerCollisionUtil instance() { return LayerCollisionUtil(); }
+    private: static LayerCollisionUtil* instance() { static std::unique_ptr<LayerCollisionUtil> value(new LayerCollisionUtil()); return value.get(); }
 
-    public: static LayerCollisionUtil getInstance();
+    public: static LayerCollisionUtil* getInstance();
 
-    private: const CollisionProcessor collisionProcessor;
+    private: CollisionProcessor* collisionProcessor;
 
 private: LayerCollisionUtil();
 
-    public: bool isCollision(AllBinaryLayer myLayer, AllBinaryLayer myLayer2);
+    public: bool isCollision(AllBinaryLayer* myLayer, AllBinaryLayer* myLayer2);
 
 };
 

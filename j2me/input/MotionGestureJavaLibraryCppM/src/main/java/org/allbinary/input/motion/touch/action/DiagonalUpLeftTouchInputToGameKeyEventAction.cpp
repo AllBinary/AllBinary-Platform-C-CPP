@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/game/input/PlatformInputMappingFactory.h>
 
       
@@ -51,14 +59,14 @@
         
 class DiagonalUpLeftTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static GameKeyCompleteMotionGestureInputEvent getInstance(){
+    public: static GameKeyCompleteMotionGestureInputEvent* getInstance(){
 
-                        if(DiagonalUpLeftTouchInputToGameKeyEventAction::instance() == NullUtil::getInstance().NULL_OBJECT)
+                        if(DiagonalUpLeftTouchInputToGameKeyEventAction::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    DiagonalUpLeftTouchInputToGameKeyEventAction::instance= DiagonalUpLeftTouchInputToGameKeyEventAction();
+                                    DiagonalUpLeftTouchInputToGameKeyEventAction::instance= new DiagonalUpLeftTouchInputToGameKeyEventAction();
     
 
                                     }
@@ -67,12 +75,12 @@ class DiagonalUpLeftTouchInputToGameKeyEventAction: public GameKeyCompleteMotion
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DiagonalUpLeftTouchInputToGameKeyEventAction::instance();
+                        return dynamic_cast<GameKeyCompleteMotionGestureInputEvent*>(DiagonalUpLeftTouchInputToGameKeyEventAction::instance);
     
 }
 
 
-private: DiagonalUpLeftTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Diagonal Up Left Action", TouchMotionGestureFactory::getInstance().DIAGONAL_UP_LEFT, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping()){
+private: DiagonalUpLeftTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Diagonal Up Left Action", TouchMotionGestureFactory::getInstance()->DIAGONAL_UP_LEFT, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
 
                         //super/this constructor call is in the constructor initializer list.
                     

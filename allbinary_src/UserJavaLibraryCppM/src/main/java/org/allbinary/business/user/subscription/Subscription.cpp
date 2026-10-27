@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -47,7 +53,7 @@ public: Subscription(){
 }
 
 
-    public: Boolean isSubscribed(){
+    public: bool isSubscribed(){
 
 
 

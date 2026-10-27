@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class TransformInfoTemplateData
             : public Object
          {
 
-    private: static TransformInfoTemplateData instance() { return TransformInfoTemplateData(); }
+    private: static TransformInfoTemplateData* instance() { static std::unique_ptr<TransformInfoTemplateData> value(new TransformInfoTemplateData()); return value.get(); }
 
-    public: static TransformInfoTemplateData getInstance(){
+    public: static TransformInfoTemplateData* getInstance(){
 
 
 

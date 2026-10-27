@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_BASICDECIMAL_H
         #define ORG_ALLBINARY_LOGIC_MATH_BASICDECIMAL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Long.h"
@@ -43,15 +49,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ScaleFactorFactory.h"
+        #include "org/allbinary/logic/math/ScaleFactorFactory.h"
 
 class BasicDecimal
             : public Object
          {
 
-    public: static const BasicDecimal ZERO_BIGDECIMAL = BasicDecimal(0);
+    public: static BasicDecimal* ZERO_BIGDECIMAL() { static std::unique_ptr<BasicDecimal> value(new BasicDecimal(0)); return value.get(); }
 
-    public: static BasicDecimal createBigDecimal(BasicDecimal bigDecimal);
+    public: static BasicDecimal* createBigDecimal(BasicDecimal* bigDecimal);
 
     private: int64_t units;
 
@@ -61,31 +67,31 @@ public: BasicDecimal(int64_t units);
 
     public: void setlong(int64_t value);
 
-    public: void set(BasicDecimal bigDecimal);
+    public: void set(BasicDecimal* bigDecimal);
 
     public: void addint(int32_t value);
 
     public: void addlong(int64_t value);
 
-    public: void add(BasicDecimal bigDecimal);
+    public: void add(BasicDecimal* bigDecimal);
 
     public: void subtractint(int32_t value);
 
     public: void subtractlong(int64_t value);
 
-    public: void subtract(BasicDecimal bigDecimal);
+    public: void subtract(BasicDecimal* bigDecimal);
 
     public: void multiplyint(int32_t value);
 
     public: void multiplylong(int64_t value);
 
-    public: void multiply(BasicDecimal bigDecimal);
+    public: void multiply(BasicDecimal* bigDecimal);
 
     public: void divideint(int32_t value);
 
     public: void dividelong(int64_t value);
 
-    public: void divide(BasicDecimal bigDecimal);
+    public: void divide(BasicDecimal* bigDecimal);
 
     public: int64_t getUnscaled();
 
@@ -97,9 +103,9 @@ public: BasicDecimal(int64_t units);
 
     public: std::string toString();
 
-    private: const int32_t factor = ScaleFactorFactory::getInstance().DEFAULT_SCALE_FACTOR;
+    private: const int32_t factor = ScaleFactorFactory::getInstance()->DEFAULT_SCALE_FACTOR;
 
-    private: const int32_t factorValue = ScaleFactorFactory::getInstance().DEFAULT_SCALE_VALUE;
+    private: const int32_t factorValue = ScaleFactorFactory::getInstance()->DEFAULT_SCALE_VALUE;
 
     public: int32_t getScaledFactor();
 

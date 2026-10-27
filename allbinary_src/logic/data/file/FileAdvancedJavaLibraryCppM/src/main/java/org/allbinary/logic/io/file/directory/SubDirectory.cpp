@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/io/FileFilter.h>
@@ -53,15 +59,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Directory.h"
+        #include "org/allbinary/logic/io/file/directory/Directory.h"
 
 class SubDirectory
             : public Object
          {
 
-    private: static SubDirectory instance() { return SubDirectory(); }
+    private: static SubDirectory* instance() { static std::unique_ptr<SubDirectory> value(new SubDirectory()); return value.get(); }
 
-    public: static SubDirectory getInstance(){
+    public: static SubDirectory* getInstance(){
 
 
 
@@ -71,15 +77,15 @@ class SubDirectory
 }
 
 
-    public: static std::string toString(BasicArrayList files){
+    public: static std::string toString(BasicArrayList* files){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    std::string NEW_LINE = CommonSeps::getInstance().NEW_LINE;;
+    std::string NEW_LINE = CommonSeps::getInstance()->NEW_LINE;;
     
 
-    int32_t size = files.size();;
+    int32_t size = files->size();;
     
 
 
@@ -89,11 +95,11 @@ class SubDirectory
     int32_t index = 0;index < size; index++)
         {
 
-    AbFile file = files.get(index);;
+    AbFile* file = dynamic_cast<AbFile*>(files->get(index));;
     
-stringBuffer.append(file.getPath());
+stringBuffer->append(file->getPath());
     
-stringBuffer.append(NEW_LINE);
+stringBuffer->append(NEW_LINE);
     
 }
 
@@ -101,53 +107,53 @@ stringBuffer.append(NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
-    private: const Directory directory = Directory::getInstance();
+    private: Directory* directory = Directory::getInstance();
 
 private: SubDirectory(){
 }
 
 
-    public: BasicArrayList search(FileFilter fileFilter, AbFile file){
+    public: BasicArrayList* search(FileFilter* fileFilter, AbFile* file){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->directory.search(fileFilter, file, true);;
+                        return this->directory->search(fileFilter, file, true);;
     
 }
 
 
-    public: BasicArrayList search(AbFile file){
+    public: BasicArrayList* search(AbFile* file){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->directory.search(file, true);;
+                        return this->directory->search(file, true);;
     
 }
 
 
-    public: BasicArrayList search(std::string searchValue, AbFile file){
+    public: BasicArrayList* search(std::string searchValue, AbFile* file){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->directory.search(searchValue, file, true);;
+                        return this->directory->search(searchValue, file, true);;
     
 }
 
 
-    public: BasicArrayList search(int32_t level, AbFile file){
+    public: BasicArrayList* search(int32_t level, AbFile* file){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->directory.search(level, file, true);;
+                        return this->directory->search(level, file, true);;
     
 }
 

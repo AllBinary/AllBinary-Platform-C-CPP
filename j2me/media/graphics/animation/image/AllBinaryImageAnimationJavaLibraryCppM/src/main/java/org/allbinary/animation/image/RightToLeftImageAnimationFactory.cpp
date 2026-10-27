@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -50,13 +56,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseImageAnimationFactory.h"
-#include "RightToLeftImageAnimation.h"
-#include "AdjustedRightToLeftImageAnimation.h"
+        #include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
+#include "org/allbinary/animation/image/RightToLeftImageAnimation.h"
+#include "org/allbinary/animation/image/AdjustedRightToLeftImageAnimation.h"
 
 class RightToLeftImageAnimationFactory: public BaseImageAnimationFactory {
 
-public: RightToLeftImageAnimationFactory(Image image, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory) : BaseImageAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), image.getWidth(), image.getHeight(), dx, dy, animationBehaviorFactory){
+public: RightToLeftImageAnimationFactory(Image* image, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory) : BaseImageAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), image->getWidth(), image->getHeight(), dx, dy, animationBehaviorFactory){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -68,9 +74,9 @@ public: RightToLeftImageAnimationFactory(Image image, int32_t dx, int32_t dy, An
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId){
+    public: Animation* getInstance(int32_t instanceId){
 
-    Image scaledImage = this->animationFactoryImageScaleUtil.createImage(this->getImage(), this->animationFactoryInitializationVisitor.width, this->animationFactoryInitializationVisitor.height, this->scaleProperties.scaleWidth, this->scaleProperties.scaleHeight);;
+    Image* scaledImage = this->animationFactoryImageScaleUtil.createImage(this->getImage(), this->animationFactoryInitializationVisitor.width, this->animationFactoryInitializationVisitor.height, this->scaleProperties.scaleWidth, this->scaleProperties.scaleHeight);;
     
 
                         if(this->animationFactoryInitializationVisitor.dx != 0 || this->animationFactoryInitializationVisitor.dy != 0)
@@ -82,7 +88,7 @@ public: RightToLeftImageAnimationFactory(Image image, int32_t dx, int32_t dy, An
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdjustedRightToLeftImageAnimation(scaledImage, this->animationFactoryInitializationVisitor.dx, this->animationFactoryInitializationVisitor.dy, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new AdjustedRightToLeftImageAnimation(scaledImage, this->animationFactoryInitializationVisitor.dx, this->animationFactoryInitializationVisitor.dy, this->animationBehaviorFactory.getOrCreateInstance());
     
 
                                     }
@@ -92,7 +98,7 @@ public: RightToLeftImageAnimationFactory(Image image, int32_t dx, int32_t dy, An
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RightToLeftImageAnimation(scaledImage, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new RightToLeftImageAnimation(scaledImage, this->animationBehaviorFactory.getOrCreateInstance());
     
 
                         }

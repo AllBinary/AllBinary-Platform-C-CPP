@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARATOR_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARATOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -76,29 +82,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageComparatorConstraintsInterface.h"
-#include "Color.h"
-#include "ImageComparisonResult.h"
+        #include "org/allbinary/media/image/comparison/ImageComparatorConstraintsInterface.h"
+#include "org/allbinary/media/image/comparison/Color.h"
+#include "org/allbinary/media/image/comparison/ImageComparisonResult.h"
 
 class ImageComparator
             : public Object
          {
 
-    private: ImageComparatorConstraintsInterface imageComparatorConstraintsInterface;
+    private: ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface;
 
-public: ImageComparator(ImageComparatorConstraintsInterface imageComparatorConstraintsInterface);
-
-                //@Throws(Exception.constructor)
-            
-    private: void process(ImageComparisonResult imageComparisonInfo, GPoint point);
+public: ImageComparator(ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: ImageComparisonResult compare(BufferedImage bufferedImage1, BufferedImage bufferedImage2, Long frameOne, Long frameTwo, int32_t tolerance);
+    private: void process(ImageComparisonResult* imageComparisonInfo, GPoint* point);
 
                 //@Throws(Exception.constructor)
             
-    public: ImageComparisonResult compare(BufferedImage bufferedImage1, BufferedImage bufferedImage2, Long frameOne, Long frameTwo, int32_t tolerance, std::string name);
+    public: ImageComparisonResult* compare(BufferedImage* bufferedImage1, BufferedImage* bufferedImage2, int64_t frameOne, int64_t frameTwo, int32_t tolerance);
+
+                //@Throws(Exception.constructor)
+            
+    public: ImageComparisonResult* compare(BufferedImage* bufferedImage1, BufferedImage* bufferedImage2, int64_t frameOne, int64_t frameTwo, int32_t tolerance, std::string name);
 
 };
 

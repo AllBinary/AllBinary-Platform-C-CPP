@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -95,17 +101,17 @@ class CryptService
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const AbCryptUtil abCryptUtil = AbCryptUtil::getInstance();
+    private: AbCryptUtil* abCryptUtil = AbCryptUtil::getInstance();
 
 public: CryptService();
 
-    public: InputStream getDecryptedInputStream(AbeClientInformationInterface abeClientInformation, std::string name, InputStream inputStream);
+    public: InputStream* getDecryptedInputStream(AbeClientInformationInterface* abeClientInformation, std::string name, InputStream* inputStream);
 
-    private: void showLicenseDialog(AbeClientInformationInterface abeClientInformation, Exception e);
+    private: void showLicenseDialog(AbeClientInformationInterface* abeClientInformation, Exception* e);
 
 };
 

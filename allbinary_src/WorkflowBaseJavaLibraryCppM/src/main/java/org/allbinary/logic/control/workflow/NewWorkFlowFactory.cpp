@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -71,16 +77,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WorkFlowWrapper.h"
-#include "WorkFlowInterface.h"
+        #include "org/allbinary/logic/control/workflow/WorkFlowWrapper.h"
+#include "org/allbinary/logic/control/workflow/WorkFlowInterface.h"
 
 class NewWorkFlowFactory
             : public Object
          {
 
-    private: static NewWorkFlowFactory instance() { return NewWorkFlowFactory(); }
+    private: static NewWorkFlowFactory* instance() { static std::unique_ptr<NewWorkFlowFactory> value(new NewWorkFlowFactory()); return value.get(); }
 
-    public: static NewWorkFlowFactory getInstance(){
+    public: static NewWorkFlowFactory* getInstance(){
 
 
 
@@ -90,7 +96,7 @@ class NewWorkFlowFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: NewWorkFlowFactory(){
 }
@@ -98,47 +104,47 @@ private: NewWorkFlowFactory(){
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: WorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<Object*, Object*> hashMap, PageContext pageContext){
+    public: WorkFlowInterface* getInstance(AbeClientInformationInterface* abeClientInformation, HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
 
         try {
             
-    std::string className = hashMap.get(DynamicObjectData::NAME);;
+    std::string className = hashMap->get(DynamicObjectData::NAME);;
     
 
     std::vector<Object*> params = std::vector<Object*>(2);;
     
 
-    std::vector<Class*> classes = std::vector<Class>(2);;
+    std::vector<Class*> classes = std::vector<Class*>(2);;
     
-classes[0]= hashMap.getClass();
+classes[0]= hashMap->getClass();
     
-classes[1]= AbeFactory::getInstance().getClass();
+classes[1]= AbeFactory::getInstance()->getClass();
     
 params[0]= hashMap;
     
 params[1]= pageContext;
     
 
-    Object* anyType = AbeFactory::getInstance().getInstance(abeClientInformation, className, classes, params);;
+    Object* anyType = AbeFactory::getInstance()->getInstance(abeClientInformation, className, classes, params);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WorkFlowWrapper(anyType);
+                        return dynamic_cast<WorkFlowInterface*>(new WorkFlowWrapper(anyType));
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, "getInstance(HashMap)", e);
+this->logUtil->put(commonStrings->EXCEPTION, this, "getInstance(HashMap)", &e);
     
 
                                     }
@@ -151,16 +157,16 @@ this->logUtil.put(commonStrings.EXCEPTION, this, "getInstance(HashMap)", e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, "getInstance(HashMap)", e);
+this->logUtil->put(commonStrings->EXCEPTION, this, "getInstance(HashMap)", &e);
     
 
                                     }
@@ -171,24 +177,24 @@ this->logUtil.put(commonStrings.EXCEPTION, this, "getInstance(HashMap)", e);
                             throw e;
                     
 }
-*/
+
 }
 
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: WorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, std::string className){
+    public: WorkFlowInterface* getInstance(AbeClientInformationInterface* abeClientInformation, std::string className){
 
         try {
             
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
 
-                        if(true && className.compare(stringUtil.EMPTY_STRING) != 0)
+                        if(true && className.compare(stringUtil->EMPTY_STRING) != 0)
                         
                                     {
                                     
-    Object* anyType = AbeFactory::getInstance().getInstance(abeClientInformation, className, 
+    Object* anyType = AbeFactory::getInstance()->getInstance(abeClientInformation, className, 
                             nullptr, 
                             nullptr);;
     
@@ -196,7 +202,7 @@ this->logUtil.put(commonStrings.EXCEPTION, this, "getInstance(HashMap)", e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WorkFlowWrapper(anyType);
+                        return dynamic_cast<WorkFlowInterface*>(new WorkFlowWrapper(anyType));
     
 
                                     }
@@ -206,16 +212,16 @@ this->logUtil.put(commonStrings.EXCEPTION, this, "getInstance(HashMap)", e);
                         
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
     
 
                                     }
@@ -228,16 +234,16 @@ this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
     
 
                                     }
@@ -248,7 +254,7 @@ this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
                             throw e;
                     
 }
-*/
+
 }
 
 

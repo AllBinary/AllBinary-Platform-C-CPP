@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/util/HashMap.h>
 
       
@@ -45,21 +51,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryInterface.h"
+        #include "org/allbinary/business/category/CategoryInterface.h"
 
 class CategoryFactoryInterface {
 
-    CategoryInterface getRootInstance()
+    public: virtual CategoryInterface* getRootInstance() = 0;
 
-    CategoryInterface getRootInstance(AbPath categoryPath)
+    public: virtual CategoryInterface* getRootInstance(AbPath* categoryPath) = 0;
 
-    CategoryInterface getRootInstanceFromNode(Node node)
+    public: virtual CategoryInterface* getRootInstanceFromNode(Node* node) = 0;
 
-    CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, std::string name)
+    public: virtual CategoryInterface* getInstance(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, std::string name) = 0;
 
-    CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, Node node)
+    public: virtual CategoryInterface* getInstance(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, Node* node) = 0;
 
-    CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<Object*, Object*> categoryPropertiesHashMap)
+    public: virtual CategoryInterface* getInstance(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap) = 0;
 
 };
 

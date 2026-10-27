@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -40,16 +46,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Rectangle.h"
-#include "PointFactory.h"
+        #include "org/allbinary/graphics/Rectangle.h"
+#include "org/allbinary/graphics/PointFactory.h"
 
 class RectangleFactory
             : public Object
          {
 
-    public: static const Rectangle SINGLETON = Rectangle(PointFactory::getInstance().ZERO_ZERO, 0, 0);
+    public: static Rectangle* SINGLETON() { static std::unique_ptr<Rectangle> value(new Rectangle(PointFactory::getInstance()->ZERO_ZERO, 0, 0)); return value.get(); }
 
-    public: static const std::vector<std::vector<Rectangle>> ARRAY_OF_ARRAYS = std::vector<std::vector<Rectangle>>(0, std::vector<Rectangle>(0));
+    public: static inline const std::vector<std::vector<Rectangle*>> ARRAY_OF_ARRAYS = std::vector<std::vector<Rectangle*>>(0, std::vector<Rectangle*>(0));
 
 };
 

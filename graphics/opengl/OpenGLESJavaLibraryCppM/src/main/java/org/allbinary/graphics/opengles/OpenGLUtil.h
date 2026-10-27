@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLUTIL_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -91,60 +97,60 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLCapabilities.h"
-#include "OpenGLLogUtil.h"
+        #include "org/allbinary/graphics/opengles/OpenGLCapabilities.h"
+#include "org/allbinary/graphics/opengles/OpenGLLogUtil.h"
 
 class OpenGLUtil
             : public Object
          {
 
-    private: static OpenGLUtil instance() { return OpenGLUtil(); }
+    private: static OpenGLUtil* instance() { static std::unique_ptr<OpenGLUtil> value(new OpenGLUtil()); return value.get(); }
 
-    public: static OpenGLUtil getInstance();
+    public: static OpenGLUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const RendererStrings renderStrings = RendererStrings::getInstance();
+    private: RendererStrings* renderStrings = RendererStrings::getInstance();
 
-    protected: const CanvasStrings canvasStrings = CanvasStrings::getInstance();
+    protected: CanvasStrings* canvasStrings = CanvasStrings::getInstance();
 
-    protected: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
+    protected: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-    private: const PreResourceImageUtil preResourceImageUtil = PreResourceImageUtil::getInstance();
+    private: PreResourceImageUtil* preResourceImageUtil = PreResourceImageUtil::getInstance();
 
-    private: const SynchObject lockObject = SynchObject();
+    private: SynchObject* lockObject = new SynchObject();
 
-    private: const SynchObject anyType = SynchObject();
+    private: SynchObject* anyType = new SynchObject();
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
-    public: const BasicArrayList runnableList = BasicArrayListD();
+    public: BasicArrayList* runnableList = new BasicArrayListD();
 
     private: bool created = false;
 
-    public: void onSurfaceCreated(GL10 gl);
+    public: void onSurfaceCreated(GL10* gl);
 
-    public: void onSurfaceCreated(GL10 gl, LoadTextures loadTextures);
+    public: void onSurfaceCreated(GL10* gl, LoadTextures* loadTextures);
 
     private: bool surfaceCreatedAndInitialized = false;
 
                 //@Throws(Exception.constructor)
             
-    public: void onSurfaceChanged(GL10 gl, OpenGLESGraphics graphics);
+    public: void onSurfaceChanged(GL10* gl, OpenGLESGraphics* graphics);
 
-    public: Image addImage(Image image);
+    public: Image* addImage(Image* image);
 
     public: void clear();
 
-    public: void addRunnable(Runnable runnable);
+    public: void addRunnable(Runnable* runnable);
 
     private: void processRunnables();
 
                 //@Throws(Exception.constructor)
             
-    private: void set(GL10 gl);
+    private: void set(GL10* gl);
 
 };
 

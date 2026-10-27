@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_INPUTPROCESSOR_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_INPUTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/canvas/Processor.h>
@@ -50,9 +56,9 @@
         
 class InputProcessor: public Processor {
 
-    private: PlayerGameInputCompositeInterface playerGameInputCompositeInterface;
+    private: PlayerGameInputCompositeInterface* playerGameInputCompositeInterface;
 
-public: InputProcessor(PlayerGameInputCompositeInterface playerGameInputCompositeInterface);
+public: InputProcessor(PlayerGameInputCompositeInterface* playerGameInputCompositeInterface);
 
                 //@Throws(Exception.constructor)
             

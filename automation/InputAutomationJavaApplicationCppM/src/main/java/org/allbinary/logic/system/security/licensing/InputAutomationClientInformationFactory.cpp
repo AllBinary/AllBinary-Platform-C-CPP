@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,15 +44,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputAutomationClientInformation.h"
+        #include "org/allbinary/logic/system/security/licensing/InputAutomationClientInformation.h"
 
 class InputAutomationClientInformationFactory
             : public Object
          {
 
-    private: static InputAutomationClientInformation instance() { return InputAutomationClientInformation(); }
+    private: static InputAutomationClientInformation* instance() { static std::unique_ptr<InputAutomationClientInformation> value(new InputAutomationClientInformation()); return value.get(); }
 
-    public: static InputAutomationClientInformation getInstance(){
+    public: static InputAutomationClientInformation* getInstance(){
 
 
 

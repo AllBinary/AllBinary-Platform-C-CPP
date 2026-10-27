@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,41 +67,41 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdvertisementAreaConstraintsInterface.h"
-#include "AdvertisementAreaData.h"
+        #include "org/allbinary/business/advertisement/area/AdvertisementAreaConstraintsInterface.h"
+#include "org/allbinary/business/advertisement/area/AdvertisementAreaData.h"
 
 class AdvertisementAreaConstraints
             : public Object
-        : public AdvertisementAreaConstraintsInterface {
+        , public AdvertisementAreaConstraintsInterface {
 
-    private: DisplayInBrowserContraintsInterface displayInBrowserContraintsInterface;
+    private: DisplayInBrowserContraintsInterface* displayInBrowserContraintsInterface;
 
-    private: TwoDimensionalConstraintInterface twoDimensionConstraintsInterface;
+    private: TwoDimensionalConstraintInterface* twoDimensionConstraintsInterface;
 
-public: AdvertisementAreaConstraints(Document document){
+public: AdvertisementAreaConstraints(Document* document){
 
-    Node node = DomSearchHelper::getNode(AdvertisementAreaData::getInstance().NAME, document.getChildNodes());;
+    Node* node = DomSearchHelper::getNode(AdvertisementAreaData::getInstance()->NAME, document->getChildNodes());;
     
-this->displayInBrowserContraintsInterface= DisplayInBrowserContraints(node);
+this->displayInBrowserContraintsInterface= new DisplayInBrowserContraints(node);
     
-this->twoDimensionConstraintsInterface= TwoDimensionalConstraint(node);
+this->twoDimensionConstraintsInterface= new TwoDimensionalConstraint(node);
     
 }
 
 
-    public: void setDisplayInBrowserContraints(DisplayInBrowserContraintsInterface displayInBrowserContraintsInterface){
+    public: void setDisplayInBrowserContraints(DisplayInBrowserContraintsInterface* displayInBrowserContraintsInterface){
 this->displayInBrowserContraintsInterface= displayInBrowserContraintsInterface;
     
 }
 
 
-    public: void getTwoDimensionContraints(TwoDimensionalConstraintInterface twoDimensionConstraintsInterface){
+    public: void getTwoDimensionContraints(TwoDimensionalConstraintInterface* twoDimensionConstraintsInterface){
 this->twoDimensionConstraintsInterface= twoDimensionConstraintsInterface;
     
 }
 
 
-    public: DisplayInBrowserContraintsInterface getDisplayInBrowserContraints(){
+    public: DisplayInBrowserContraintsInterface* getDisplayInBrowserContraints(){
 
 
 
@@ -105,7 +111,7 @@ this->twoDimensionConstraintsInterface= twoDimensionConstraintsInterface;
 }
 
 
-    public: TwoDimensionalConstraintInterface getTwoDimensionContraints(){
+    public: TwoDimensionalConstraintInterface* getTwoDimensionContraints(){
 
 
 

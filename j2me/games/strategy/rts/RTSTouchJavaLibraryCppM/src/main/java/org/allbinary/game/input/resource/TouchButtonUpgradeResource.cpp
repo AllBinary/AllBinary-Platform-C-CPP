@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/input/motion/button/TouchButtonResource.h>
 
       
@@ -42,14 +48,14 @@
         
 class TouchButtonUpgradeResource: public TouchButtonResource {
 
-    private: static const TouchButtonResource instance = TouchButtonUpgradeResource();
+    private: static inline TouchButtonResource* instance = new TouchButtonUpgradeResource();
 
-    public: static TouchButtonResource getInstance(){
+    public: static TouchButtonResource* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TouchButtonUpgradeResource::instance();
+                        return TouchButtonUpgradeResource::instance;
     
 }
 

@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_GAMEMIDLET_H
         #define ORG_ALLBINARY_GAME_MIDLET_GAMEMIDLET_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Thread.h"
@@ -310,30 +318,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameMidletStateFactory.h"
-#include "GameMidletEventHandler.h"
-#include "DemoGameMidletEvent.h"
-#include "DemoGameMidletStateFactory.h"
+        #include "org/allbinary/game/midlet/GameMidletStateFactory.h"
+#include "org/allbinary/game/midlet/GameMidletEventHandler.h"
+#include "org/allbinary/game/midlet/DemoGameMidletEvent.h"
+#include "org/allbinary/game/midlet/DemoGameMidletStateFactory.h"
 
 class GameMidlet: public ProgressMidlet, public CommandListener {
 
-    private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
+    private: EnumerationUtil* enumerationUtil = EnumerationUtil::getInstance();
 
-    protected: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
+    protected: BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();
 
-    protected: const Features features = Features::getInstance();
+    protected: Features* features = Features::getInstance();
 
-    protected: const MidletStrings midletStrings = MidletStrings::getInstance();
+    protected: MidletStrings* midletStrings = MidletStrings::getInstance();
 
-    protected: const MyCommandsFactory myCommandsFactory = MyCommandsFactory::getInstance();
+    protected: MyCommandsFactory* myCommandsFactory = MyCommandsFactory::getInstance();
 
-    protected: const GameStrings gameStrings = GameStrings::getInstance();
+    protected: GameStrings* gameStrings = GameStrings::getInstance();
 
-    protected: const GameAdStateFactory gameAdStateFactory = GameAdStateFactory::getInstance();
+    protected: GameAdStateFactory* gameAdStateFactory = GameAdStateFactory::getInstance();
 
-    protected: const GameStateFactory gameStateFactory = GameStateFactory::getInstance();
+    protected: GameStateFactory* gameStateFactory = GameStateFactory::getInstance();
 
-    protected: const TsUtil tsUtil = TsUtil::getInstance();
+    protected: TsUtil* tsUtil = TsUtil::getInstance();
 
     private: const std::string DISPLAYABLE = " Displayable: ";
 
@@ -343,35 +351,35 @@ class GameMidlet: public ProgressMidlet, public CommandListener {
 
     private: const std::string NO_DISPLAYABLE = "No Displayable";
 
-    private: const std::string COMMAND_ACTION = StringMaker().append("GameMidlet::").append(this->midletStrings.COMMAND_ACTION).toString();
+    private: const std::string COMMAND_ACTION = (new StringMaker())->append("GameMidlet::")->append(this->midletStrings->COMMAND_ACTION)->toString();
 
     private: const std::string PAUSE_APP_BACKGROUND = "pauseAppBackground";
 
     private: const std::string UN_PAUSE_APP_BACKGROUND = "unPauseAppBackground";
 
-    private: const AboutCommandProcessor aboutCommandProcessor = AboutCommandProcessor::getInstance();
+    private: AboutCommandProcessor* aboutCommandProcessor = AboutCommandProcessor::getInstance();
 
-    private: const WebCommandProcessor webCommandProcessor = WebCommandProcessor::getInstance();
+    private: WebCommandProcessor* webCommandProcessor = WebCommandProcessor::getInstance();
 
-    private: const GameMidletStateFactory gameMidletStateFactory = GameMidletStateFactory::getInstance();
+    private: GameMidletStateFactory* gameMidletStateFactory = GameMidletStateFactory::getInstance();
 
-    protected: const TimeDelayHelper gameStartTimeHelper = TimeDelayHelper(240);
+    protected: TimeDelayHelper* gameStartTimeHelper = new TimeDelayHelper(240);
 
-    private: const FullScreenUtil fullScreenUtil = FullScreenUtil::getInstance();
+    private: FullScreenUtil* fullScreenUtil = FullScreenUtil::getInstance();
 
-    private: DebugInterface debugInterface;
+    private: DebugInterface* debugInterface;
 
-    private: GameCanvasRunnableInterface allbinaryGameCanvasRunnableInterface = NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE;
+    private: GameCanvasRunnableInterface* allbinaryGameCanvasRunnableInterface = NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE;
 
-    private: Thread thread = NullThread::NULL_THREAD;
+    private: Thread* thread = NullThread::NULL_THREAD;
 
-    private: CommandForm loadGameForm;
+    private: CommandForm* loadGameForm;
 
     private: bool isFullScreen= false;
 
     private: bool resized= false;
 
-public: GameMidlet(ClientInformationFactory clientInformationFactory);
+public: GameMidlet(ClientInformationFactory* clientInformationFactory);
 
     protected: void init();
 
@@ -406,31 +414,31 @@ public: GameMidlet(ClientInformationFactory clientInformationFactory);
     protected: void startApp();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void commandAction(Command command, Displayable displayable);
+    public: void commandAction(Command* command, Displayable* displayable);
 
     private: void updateFullScreen();
 
-    public: void onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject* eventObject);
 
                 //@Throws(Exception.constructor)
             
-    protected: MyCanvas getInputMappingInstructionsCanvas();
+    protected: MyCanvas* getInputMappingInstructionsCanvas();
 
                 //@Throws(Exception.constructor)
             
-    protected: MyCanvas getInputMappingCanvas();
+    protected: MyCanvas* getInputMappingCanvas();
 
                 //@Throws(Exception.constructor)
             
-    protected: MyCanvas getAboutCanvas();
+    protected: MyCanvas* getAboutCanvas();
 
                 //@Throws(Exception.constructor)
             
-    protected: HelpPaintable getHelpPaintable();
+    protected: HelpPaintable* getHelpPaintable();
 
                 //@Throws(Exception.constructor)
             
-    protected: HighScoresCanvas createHighScoresCanvas();
+    protected: HighScoresCanvas* createHighScoresCanvas();
 
                 //@Throws(Exception.constructor)
             
@@ -440,13 +448,13 @@ public: GameMidlet(ClientInformationFactory clientInformationFactory);
             
     protected: void stopGameCanvasRunnableInterface();
 
-    public: GameCanvasRunnableInterface getGameCanvasRunnableInterface();
+    public: GameCanvasRunnableInterface* getGameCanvasRunnableInterface();
 
-    public: void setGameCanvasRunnableInterface(GameCanvasRunnableInterface gameCanvasRunnableInterface);
+    public: void setGameCanvasRunnableInterface(GameCanvasRunnableInterface* gameCanvasRunnableInterface);
 
-    protected: AllBinaryGameLayerManager createGameLayerManager();
+    protected: AllBinaryGameLayerManager* createGameLayerManager();
 
-    protected: CommandForm getGameOptionsForm();
+    protected: CommandForm* getGameOptionsForm();
 
                 //@Throws(Exception.constructor)
             
@@ -454,11 +462,11 @@ public: GameMidlet(ClientInformationFactory clientInformationFactory);
 
                 //@Throws(Exception.constructor)
             
-    public: ABHashtable<Object*, Object*> getCurrentStateHashtable();
+    public: ABHashtable<Object*, Object*>* getCurrentStateHashtable();
 
-    public: void setLoadGameForm(LoadGameForm loadGameForm);
+    public: void setLoadGameForm(LoadGameForm* loadGameForm);
 
-    public: CommandForm getLoadGameForm();
+    public: CommandForm* getLoadGameForm();
 
     public: void setResized(bool resized);
 

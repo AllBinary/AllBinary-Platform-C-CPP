@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <android/view/MotionEvent.h>
@@ -70,19 +78,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameInputMotionInfoAPI5.h"
+        #include "org/allbinary/android/input/motion/api5/GameInputMotionInfoAPI5.h"
 
 class GameInputMotionEventProcessorAPI5: public BaseGameInputMotionEventProcessor {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static GameInputMotionEventProcessorAPI5 getInstance();
+    public: static GameInputMotionEventProcessorAPI5* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();
 
-    private: std::vector<MotionRecognizer> motionRecognizerArray;
+    private: std::vector<MotionRecognizer*> motionRecognizerArray;
 
     private: int32_t TOTAL_MINUS_ONE;
 
@@ -90,7 +98,7 @@ private: GameInputMotionEventProcessorAPI5();
 
     private: bool isValid(int32_t pointerId);
 
-    public: void process(MotionEvent motionEvent);
+    public: void process(MotionEvent* motionEvent);
 
 };
 

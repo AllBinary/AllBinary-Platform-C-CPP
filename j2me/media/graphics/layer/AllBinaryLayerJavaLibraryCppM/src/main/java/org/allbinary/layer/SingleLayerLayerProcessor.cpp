@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -38,15 +44,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LayerProcessor.h"
-#include "SingleLayerLayerManager.h"
-#include "LayerManager.h"
-#include "AllBinaryLayer.h"
-#include "AllBinaryLayerManager.h"
+        #include "org/allbinary/layer/LayerProcessor.h"
+#include "org/allbinary/layer/SingleLayerLayerManager.h"
+#include "org/allbinary/layer/LayerManager.h"
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#include "org/allbinary/layer/AllBinaryLayerManager.h"
 
 class SingleLayerLayerProcessor: public LayerProcessor {
 
-public: SingleLayerLayerProcessor() : LayerProcessor(SingleLayerLayerManager()){
+public: SingleLayerLayerProcessor() : LayerProcessor(new SingleLayerLayerManager()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -58,11 +64,11 @@ public: SingleLayerLayerProcessor() : LayerProcessor(SingleLayerLayerManager()){
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayerManager allBinaryLayerManager){
+    public: void process(AllBinaryLayerManager* allBinaryLayerManager){
 
-    LayerManager layerManager = this->getLayerManager();;
+    LayerManager* layerManager = this->getLayerManager();;
     
-this->processAt(allBinaryLayerManager, layerManager.getLayerAt(0), 0);
+this->processAt(allBinaryLayerManager, dynamic_cast<AllBinaryLayer*>(layerManager->getLayerAt(0)), 0);
     
 }
 

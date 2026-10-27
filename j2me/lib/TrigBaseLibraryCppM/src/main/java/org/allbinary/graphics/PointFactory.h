@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_POINTFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_POINTFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -53,25 +59,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GPoint.h"
+        #include "org/allbinary/graphics/GPoint.h"
 
 class PointFactory
             : public Object
          {
 
-    private: static PointFactory instance() { return PointFactory(); }
+    private: static PointFactory* instance() { static std::unique_ptr<PointFactory> value(new PointFactory()); return value.get(); }
 
-    public: static PointFactory getInstance();
+    public: static PointFactory* getInstance();
 
-    public: GPoint ZERO_ZERO = this->createXYZ(0, 0, 0);
+    public: GPoint* ZERO_ZERO = this->createXYZ(0, 0, 0);
 
     public: void init();
 
 private: PointFactory();
 
-    public: GPoint createXY(int32_t x, int32_t y);
+    public: GPoint* createXY(int32_t x, int32_t y);
 
-    public: GPoint createXYZ(int32_t x, int32_t y, int32_t z);
+    public: GPoint* createXYZ(int32_t x, int32_t y, int32_t z);
 
 };
 

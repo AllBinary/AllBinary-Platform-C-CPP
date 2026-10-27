@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_CAMPAIGN_INTERNAL_ADVERTISEMENTCAMPAIGNINTERNALENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_CAMPAIGN_INTERNAL_ADVERTISEMENTCAMPAIGNINTERNALENTITY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -89,11 +95,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdvertisementCampaignInternalEntityInterface.h"
+        #include "org/allbinary/data/tables/advertisement/campaign/internal/AdvertisementCampaignInternalEntityInterface.h"
 
 class AdvertisementCampaignInternalEntity: public AbSqlBean, public AdvertisementCampaignInternalEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     protected: const std::string tableName = "adCampaignInternal";
 
@@ -101,11 +107,11 @@ public: AdvertisementCampaignInternalEntity();
 
     public: void delete_(std::string value);
 
-    public: AdvertisementCampaignsInterface getCampaignsInStore(std::string storeName);
+    public: AdvertisementCampaignsInterface* getCampaignsInStore(std::string storeName);
 
-    public: AdvertisementCampaignInterface get(std::string storeName, std::string name);
+    public: AdvertisementCampaignInterface* get(std::string storeName, std::string name);
 
-    public: void update(HashMap<Object*, Object*> updatedValues);
+    public: void update(HashMap<Object*, Object*>* updatedValues);
 
     public: std::string createTableStatement();
 

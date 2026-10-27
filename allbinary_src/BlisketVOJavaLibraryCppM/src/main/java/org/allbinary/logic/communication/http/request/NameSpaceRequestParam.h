@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_NAMESPACEREQUESTPARAM_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_NAMESPACEREQUESTPARAM_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -69,31 +75,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NameSpaceRequestParamData.h"
+        #include "org/allbinary/logic/communication/http/request/NameSpaceRequestParamData.h"
 
 class NameSpaceRequestParam
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: BasicArrayList nameSpaceVector;
+    private: BasicArrayList* nameSpaceVector;
 
-    private: HashMap<Object*, Object*> nameSpacePropertiesHashMap;
+    private: HashMap<Object*, Object*>* nameSpacePropertiesHashMap;
 
     private: std::string value;
 
 public: NameSpaceRequestParam(std::string nameSpace, std::string value);
 
-    public: BasicArrayList getPackages();
+    public: BasicArrayList* getPackages();
 
-    public: HashMap<Object*, Object*> getPackageProperties(int32_t packageIndex);
+    public: HashMap<Object*, Object*>* getPackageProperties(int32_t packageIndex);
 
     public: std::string getValue();
 
                 //@Throws(Exception.constructor)
             
-    private: HashMap<Object*, Object*> generatePackagePropertiesHashMap(std::string properties);
+    private: HashMap<Object*, Object*>* generatePackagePropertiesHashMap(std::string properties);
 
 };
 

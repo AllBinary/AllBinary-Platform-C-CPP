@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTMAPPING_H
         #define ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTMAPPING_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,19 +79,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputToGameKeyMapping.h"
+        #include "org/allbinary/game/input/mapping/InputToGameKeyMapping.h"
 
 class InputMapping
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
+    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
 
-    private: const BasicArrayList mappedList = BasicArrayListD();
+    private: BasicArrayList* mappedList = new BasicArrayListD();
 
 protected: InputMapping();
 
@@ -93,23 +99,23 @@ protected: InputMapping();
 
     protected: bool isDefaultNew();
 
-    protected: InputToGameKeyMapping getDefault();
+    protected: InputToGameKeyMapping* getDefault();
 
     protected: void removeAll();
 
-    public: void remove(Input input, Input mappedToInput);
+    public: void remove(Input* input, Input* mappedToInput);
 
                 //@Throws(Exception.constructor)
             
-    public: void addMapping(InputToGameKeyMapping inputToGameKeyMapping);
+    public: void addMapping(InputToGameKeyMapping* inputToGameKeyMapping);
 
-    public: void add(Input input, Input mappedToInput);
+    public: void add(Input* input, Input* mappedToInput);
 
-    public: bool isMapped(Input input);
+    public: bool isMapped(Input* input);
 
-    public: BasicArrayList getMappedInput(Input id);
+    public: BasicArrayList* getMappedInput(Input* id);
 
-    public: ABHashtable<Object*, Object*> getHashtable();
+    public: ABHashtable<Object*, Object*>* getHashtable();
 
 };
 

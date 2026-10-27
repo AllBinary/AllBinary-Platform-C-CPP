@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -57,14 +63,14 @@ class AllBinaryCollisionManager
             : public Object
          {
 
-    private: static AllBinaryCollisionManager allBinaryCollisionManager = AllBinaryCollisionManager();
+    private: static AllBinaryCollisionManager* allBinaryCollisionManager() { static std::unique_ptr<AllBinaryCollisionManager> value(new AllBinaryCollisionManager()); return value.get(); }
 
-    public: static AllBinaryCollisionManager getInstance(){
+    public: static AllBinaryCollisionManager* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryCollisionManager::allBinaryCollisionManager;
+                        return AllBinaryCollisionManager::allBinaryCollisionManager();
     
 }
 
@@ -75,9 +81,9 @@ private: AllBinaryCollisionManager(){
 
                 //@Throws(Exception.constructor)
             
-    public: void process(LayerManager layerManager, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface, int32_t startIndex){
+    public: void process(LayerManager* layerManager, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface, int32_t startIndex){
 
-    int32_t size = layerManager.getSize();;
+    int32_t size = layerManager->getSize();;
     
 
 
@@ -87,7 +93,7 @@ private: AllBinaryCollisionManager(){
     int32_t index = startIndex +1;index < size; index++)
         {
 
-    CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface2 = layerManager.getLayerAt(index);;
+    CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface2 = dynamic_cast<CollidableInterfaceCompositeInterface*>(layerManager->getLayerAt(index));;
     
 this->collide(layerManager, collidableInterfaceCompositeInterface, collidableInterfaceCompositeInterface2);
     
@@ -98,24 +104,24 @@ this->collide(layerManager, collidableInterfaceCompositeInterface, collidableInt
 
                 //@Throws(Exception.constructor)
             
-    private: void collide(LayerManager layerManager, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface2){
+    private: void collide(LayerManager* layerManager, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface2){
 
-    CollidableBaseBehavior collidableBase2 = collidableInterfaceCompositeInterface2.getCollidableInferface();;
+    CollidableBaseBehavior* collidableBase2 = collidableInterfaceCompositeInterface2->getCollidableInferface();;
     
 
-    CollidableBaseBehavior collidableBase = collidableInterfaceCompositeInterface.getCollidableInferface();;
+    CollidableBaseBehavior* collidableBase = collidableInterfaceCompositeInterface->getCollidableInferface();;
     
 
-                        if(collidableBase2.isCollidable(collidableInterfaceCompositeInterface))
+                        if(collidableBase2->isCollidable(dynamic_cast<CollidableCompositeLayer*>(collidableInterfaceCompositeInterface)))
                         
                                     {
                                     
-                        if(collidableBase.isCollisionInterface(collidableInterfaceCompositeInterface, collidableInterfaceCompositeInterface2))
+                        if(collidableBase->isCollisionInterface(dynamic_cast<CollidableCompositeLayer*>(collidableInterfaceCompositeInterface), collidableInterfaceCompositeInterface2))
                         
                                     {
-                                    collidableBase.collideInterface(collidableInterfaceCompositeInterface, collidableInterfaceCompositeInterface2);
+                                    collidableBase->collideInterface(dynamic_cast<CollidableCompositeLayer*>(collidableInterfaceCompositeInterface), collidableInterfaceCompositeInterface2);
     
-collidableBase2.collideInterface(collidableInterfaceCompositeInterface, collidableInterfaceCompositeInterface);
+collidableBase2->collideInterface(dynamic_cast<CollidableCompositeLayer*>(collidableInterfaceCompositeInterface), collidableInterfaceCompositeInterface);
     
 
                                     }

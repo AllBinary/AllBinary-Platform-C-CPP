@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/System.h"
@@ -58,7 +64,7 @@ class TimeDelayHelper
 
     private: int64_t startTime =  -1;
 
-    private: int64_t elapsedTimeAtPause = Long::MIN_VALUE;
+    private: int64_t elapsedTimeAtPause = Long.MIN_VALUE;
 
     public: int32_t delay;
 
@@ -298,19 +304,19 @@ this->startTime= System.currentTimeMillis();
     public: void pause(){
 this->elapsedTimeAtPause= this->getElapsedTNT();
     
-this->startTime= Long::MAX_VALUE;
+this->startTime= Long.MAX_VALUE;
     
 }
 
 
     public: bool resume(){
 
-                        if(this->elapsedTimeAtPause != Long::MIN_VALUE)
+                        if(this->elapsedTimeAtPause != Long.MIN_VALUE)
                         
                                     {
                                     this->startTime= System.currentTimeMillis() +this->elapsedTimeAtPause;
     
-this->elapsedTimeAtPause= Long::MIN_VALUE;
+this->elapsedTimeAtPause= Long.MIN_VALUE;
     
 this->setStartTimeTNT();
     
@@ -341,7 +347,7 @@ this->setStartTimeTNT();
                         
                                     {
                                     
-    CommonLabels commonLabels = CommonLabels::getInstance();;
+    CommonLabels* commonLabels = CommonLabels::getInstance();;
     
 
     std::string elapsedAsString = std::to_string(elapsed);;
@@ -350,7 +356,7 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().append(commonLabels.START).appendlong(this->startTime).append(commonLabels.CURRENT).appendlong(currentTime).append(commonLabels.ELAPSED).append(elapsedAsString).toString();;
+                        return (new StringMaker())->append(commonLabels->START)->appendlong(this->startTime)->append(commonLabels->CURRENT)->appendlong(currentTime)->append(commonLabels->ELAPSED)->append(elapsedAsString)->toString();;
     
 
                                     }
@@ -360,7 +366,7 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 
                         }
@@ -380,7 +386,7 @@ this->setStartTimeTNT();
                         
                                     {
                                     
-    CommonLabels commonLabels = CommonLabels::getInstance();;
+    CommonLabels* commonLabels = CommonLabels::getInstance();;
     
 
     std::string elapsedAsString = std::to_string(elapsed);;
@@ -389,7 +395,7 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().append(commonLabels.START).appendlong(this->startTime).append(commonLabels.CURRENT).appendlong(currentTime).append(commonLabels.ELAPSED).append(elapsedAsString).toString();;
+                        return (new StringMaker())->append(commonLabels->START)->appendlong(this->startTime)->append(commonLabels->CURRENT)->appendlong(currentTime)->append(commonLabels->ELAPSED)->append(elapsedAsString)->toString();;
     
 
                                     }
@@ -399,7 +405,7 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 
                         }

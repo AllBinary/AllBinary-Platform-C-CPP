@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class GameDifficultyFactory
             : public Object
          {
 
-    private: static GameDifficultyFactory instance() { return GameDifficultyFactory(); }
+    private: static GameDifficultyFactory* instance() { static std::unique_ptr<GameDifficultyFactory> value(new GameDifficultyFactory()); return value.get(); }
 
-    public: static GameDifficultyFactory getInstance(){
+    public: static GameDifficultyFactory* getInstance(){
 
 
 

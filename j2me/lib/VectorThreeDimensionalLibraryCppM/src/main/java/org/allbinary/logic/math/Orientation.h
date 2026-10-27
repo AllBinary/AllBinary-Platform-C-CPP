@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_ORIENTATION_H
         #define ORG_ALLBINARY_LOGIC_MATH_ORIENTATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -44,23 +50,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicDecimal.h"
+        #include "org/allbinary/logic/math/BasicDecimal.h"
 
 class Orientation
             : public Object
          {
 
-    public: static Orientation NONE = Orientation(0, 0, 0);
+    public: static Orientation* NONE() { static std::unique_ptr<Orientation> value(new Orientation(0, 0, 0)); return value.get(); }
 
-    private: static Orientation SINGLETON = Orientation(0, 0, 0);
+    private: static Orientation* SINGLETON() { static std::unique_ptr<Orientation> value(new Orientation(0, 0, 0)); return value.get(); }
 
-    public: static Orientation getInstance(int32_t yaw, int32_t pitch, int32_t roll);
+    public: static Orientation* getInstance(int32_t yaw, int32_t pitch, int32_t roll);
 
-    public: BasicDecimal yaw = BasicDecimal(0);
+    public: BasicDecimal* yaw = new BasicDecimal(0);
 
-    public: BasicDecimal pitch = BasicDecimal(0);
+    public: BasicDecimal* pitch = new BasicDecimal(0);
 
-    public: BasicDecimal roll = BasicDecimal(0);
+    public: BasicDecimal* roll = new BasicDecimal(0);
 
 private: Orientation(int32_t yaw, int32_t pitch, int32_t roll);
 

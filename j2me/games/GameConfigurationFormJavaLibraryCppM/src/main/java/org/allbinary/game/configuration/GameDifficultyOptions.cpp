@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -79,11 +87,11 @@
         
 class GameDifficultyOptions: public CommandForm {
 
-    private: const MEUtil meUtil = MEUtil::getInstance();
+    private: MEUtil* meUtil = MEUtil::getInstance();
 
-    private: BasicArrayList list;
+    private: BasicArrayList* list;
 
-public: GameDifficultyOptions(CommandListener commandListener, std::string title, BasicArrayList list, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor) : CommandForm(commandListener, title, backgrounBasicColor, foregroundBasicColor){
+public: GameDifficultyOptions(CommandListener* commandListener, std::string title, BasicArrayList* list, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) : CommandForm(commandListener, title, backgrounBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -99,9 +107,9 @@ this->update();
 this->initCommands(commandListener);
     
 
-    GameDifficultyFactory gameDifficultyFactory = GameDifficultyFactory::getInstance();;
+    GameDifficultyFactory* gameDifficultyFactory = GameDifficultyFactory::getInstance();;
     
-this->setSelectedId(gameDifficultyFactory.getLevel());
+this->setSelectedId(gameDifficultyFactory->getLevel());
     
 }
 
@@ -124,20 +132,20 @@ this->save();
             
     public: void save(){
 
-    GameDifficultyFactory gameDifficultyFactory = GameDifficultyFactory::getInstance();;
+    GameDifficultyFactory* gameDifficultyFactory = GameDifficultyFactory::getInstance();;
     
-gameDifficultyFactory.setLevel(this->getSelectedId());
+gameDifficultyFactory->setLevel(this->getSelectedId());
     
 }
 
 
-    public: void initCommands(CommandListener cmdListener){
+    public: void initCommands(CommandListener* cmdListener){
 
-    GameCommandsFactory gameCommandsFactory = GameCommandsFactory::getInstance();;
+    GameCommandsFactory* gameCommandsFactory = GameCommandsFactory::getInstance();;
     
 this->removeAllCommands();
     
-this->addCommand(gameCommandsFactory.CLOSE_AND_SHOW_GAME_CANVAS);
+this->addCommand(gameCommandsFactory->CLOSE_AND_SHOW_GAME_CANVAS);
     
 this->setCommandListener(cmdListener);
     
@@ -156,25 +164,25 @@ super.update();
 }
 
 
-    private: void add(BasicArrayList list, std::string name, int32_t option){
+    private: void add(BasicArrayList* list, std::string name, int32_t option){
 
-    ChoiceGroup choiceGroup = this->getChoiceGroup(list, name, option);;
+    ChoiceGroup* choiceGroup = this->getChoiceGroup(list, name, option);;
     
 
-                        if(list.size() > 0)
+                        if(list->size() > 0)
                         
                                     {
-                                    choiceGroup.setSelectedIndex(0, true);
+                                    choiceGroup->setSelectedIndex(0, true);
     
 
                                     }
                                 
-this->meUtil.appendItem(this, choiceGroup);
+this->meUtil->appendItem(this, choiceGroup);
     
 }
 
 
-    private: ChoiceGroup getChoiceGroup(BasicArrayList list, std::string name, int32_t option){
+    private: ChoiceGroup* getChoiceGroup(BasicArrayList* list, std::string name, int32_t option){
 
     std::string METHOD_NAME = "addChoiceGroup";;
     
@@ -182,10 +190,10 @@ this->meUtil.appendItem(this, choiceGroup);
     std::string NAME = "Adding Choice: ";;
     
 
-    ChoiceGroup choiceGroup = ChoiceGroup(name, option, StringUtil::getInstance().getArrayInstance(), NullImage::NULL_IMAGE_ARRAY);;
+    ChoiceGroup* choiceGroup = new ChoiceGroup(name, option, StringUtil::getInstance()->getArrayInstance(), NullImage::NULL_IMAGE_ARRAY);;
     
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
     Object* anyType;;
@@ -197,11 +205,11 @@ this->meUtil.appendItem(this, choiceGroup);
                         for (
     int32_t index = 0;index < size; index++)
         {
-anyType= list.objectArray[index];
+anyType= list->objectArray[index];
     
-this->logUtil.putF(StringMaker().append(NAME).append(anyType->toString()).toString(), this, METHOD_NAME);
+this->logUtil.putF((new StringMaker())->append(NAME)->append(anyType->toString())->toString(), this, METHOD_NAME);
     
-choiceGroup.append(anyType->toString(), NullImage::NULL_IMAGE);
+choiceGroup->append(anyType->toString(), NullImage::NULL_IMAGE);
     
 }
 
@@ -216,32 +224,32 @@ choiceGroup.append(anyType->toString(), NullImage::NULL_IMAGE);
 
     public: void setSelectedId(int32_t id){
 
-    ChoiceGroup choiceGroup = this->get(0);;
+    ChoiceGroup* choiceGroup = dynamic_cast<ChoiceGroup*>(this->get(0));;
     
-choiceGroup.setSelectedIndex(id, true);
+choiceGroup->setSelectedIndex(id, true);
     
 }
 
 
     public: int32_t getSelectedId(){
 
-    ChoiceGroup choiceGroup = this->get(0);;
+    ChoiceGroup* choiceGroup = dynamic_cast<ChoiceGroup*>(this->get(0));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return choiceGroup.getSelectedIndex();;
+                        return choiceGroup->getSelectedIndex();;
     
 }
 
 
     public: int32_t getSelectedText(){
 
-    ChoiceGroup choiceGroup = this->get(0);;
+    ChoiceGroup* choiceGroup = dynamic_cast<ChoiceGroup*>(this->get(0));;
     
 
-    int32_t value = Integer::valueOf(choiceGroup.getString(choiceGroup.getSelectedIndex())).intValue();;
+    int32_t value = Integer.valueOf(choiceGroup->getString(choiceGroup->getSelectedIndex()))->intValue();;
     
 
 

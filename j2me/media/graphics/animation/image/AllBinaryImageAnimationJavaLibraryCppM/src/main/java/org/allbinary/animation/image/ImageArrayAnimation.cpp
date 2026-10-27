@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -67,13 +73,13 @@
         
 class ImageArrayAnimation: public IndexedAnimation {
 
-    private: std::vector<Image> imageArray = NullImage::NULL_IMAGE_ARRAY;
+    private: std::vector<Image*> imageArray = NullImage::NULL_IMAGE_ARRAY;
 
     private: int32_t totalFrames= 0;
 
-    protected: CircularIndexUtil circularIndexUtil = CircularIndexUtil::NULL_CIRCULAR_INDEX_UTIL;
+    protected: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::NULL_CIRCULAR_INDEX_UTIL;
 
-public: ImageArrayAnimation(std::vector<Image> imageArray, AnimationBehavior animationBehavior) : IndexedAnimation(animationBehavior){
+public: ImageArrayAnimation(std::vector<Image*> imageArray, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -98,19 +104,19 @@ this->setImageArray(imageArray);
 
 
     public: void nextFrame(){
-this->circularIndexUtil.next();
+this->circularIndexUtil->next();
     
 }
 
 
     public: void previousFrame(){
-this->circularIndexUtil.previous();
+this->circularIndexUtil->previous();
     
 }
 
 
     public: void setFrame(int32_t index){
-this->circularIndexUtil.setIndex(index);
+this->circularIndexUtil->setIndex(index);
     
 }
 
@@ -120,7 +126,7 @@ this->circularIndexUtil.setIndex(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->circularIndexUtil.getIndex();;
+                        return this->circularIndexUtil->getIndex();;
     
 }
 
@@ -149,7 +155,7 @@ this->circularIndexUtil.setIndex(index);
 }
 
 
-    public: Image getImage(int32_t index){
+    public: Image* getImage(int32_t index){
 
 
 
@@ -159,7 +165,7 @@ this->circularIndexUtil.setIndex(index);
 }
 
 
-    public: std::vector<Image> getImageArray(){
+    public: std::vector<Image*> getImageArray(){
 
 
 
@@ -169,7 +175,7 @@ this->circularIndexUtil.setIndex(index);
 }
 
 
-    protected: void setImageArray(std::vector<Image> imageArray){
+    protected: void setImageArray(std::vector<Image*> imageArray){
 this->imageArray= imageArray;
     
 this->totalFrames= imageArray.size();
@@ -181,8 +187,8 @@ this->circularIndexUtil= CircularIndexUtil::createInstance(this->totalFrames);
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
-graphics.drawImage(this->imageArray[this->circularIndexUtil.getIndex()], x, y, this->anchor);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+graphics->drawImage(this->imageArray[this->circularIndexUtil->getIndex()], x, y, this->anchor);
     
 }
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,26 +61,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MeteredGameObjectInterface.h"
-#include "GraphicsAnalysisUtil.h"
+        #include "org/allbinary/input/automation/module/game/MeteredGameObjectInterface.h"
+#include "org/allbinary/input/automation/module/game/GraphicsAnalysisUtil.h"
 
 class MeteredGameObject
             : public Object
-        : public MeteredGameObjectInterface {
+        , public MeteredGameObjectInterface {
 
-    private: std::vector<number> ratios;
+    private: std::vector<double> ratios;
 
     private: bool good = false;
 
     private: bool dropping = false;
 
-    private: Integer minX;
+    private: int32_t minX;
 
-    private: Integer maxX;
+    private: int32_t maxX;
 
-    private: Integer y;
+    private: int32_t y;
 
-    private: Integer size;
+    private: int32_t size;
 
     private: const std::string RATIOS_LABEL = "Ratios: ";
 
@@ -82,8 +88,8 @@ class MeteredGameObject
 
     private: const std::string IS_DROPPPING_LABEL = "isDropping: ";
 
-public: MeteredGameObject(std::vector<BufferedImage> bufferedImage, Integer minX, Integer maxX, Integer y){
-this->setRatios(std::vector<Double>(bufferedImage.length));
+public: MeteredGameObject(std::vector<BufferedImage*> bufferedImage, int32_t minX, int32_t maxX, int32_t y){
+this->setRatios(std::vector<double>(bufferedImage.length));
     
 this->setMinX(minX);
     
@@ -103,7 +109,7 @@ this->setSize(maxX -minX);
 
     double nominator = GraphicsAnalysisUtil::getNominator(bufferedImage[index], this->getMinX(), this->getMaxX(), this->getY());;
     
-this->getRatios()[index]= number(nominator /this->getSize());
+this->getRatios()[index]= double(nominator /this->getSize());
     
 }
 
@@ -172,7 +178,7 @@ this->dropping= dropping;
 }
 
 
-    public: std::vector<number> getRatios(){
+    public: std::vector<double> getRatios(){
 
 
 
@@ -184,14 +190,14 @@ this->dropping= dropping;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
-stringBuffer.append(commonSeps.NEW_LINE);
+stringBuffer->append(commonSeps->NEW_LINE);
     
-stringBuffer.append(this->RATIOS_LABEL);
+stringBuffer->append(this->RATIOS_LABEL);
     
 
 
@@ -200,47 +206,47 @@ stringBuffer.append(this->RATIOS_LABEL);
                         for (
     int32_t index = 0;index < this->getRatios().length; index++)
         {
-stringBuffer.append(this->getRatios()[index].toString());
+stringBuffer->append(this->getRatios()[index].toString());
     
 
                         if(index < this->getRatios().length -1)
                         
                                     {
-                                    stringBuffer.append(commonSeps.COMMA_SEP);
+                                    stringBuffer->append(commonSeps->COMMA_SEP);
     
 
                                     }
                                 
 }
 
-stringBuffer.append(commonSeps.NEW_LINE);
+stringBuffer->append(commonSeps->NEW_LINE);
     
-stringBuffer.append(this->IS_GOOD_LABEL);
+stringBuffer->append(this->IS_GOOD_LABEL);
     
-stringBuffer.appendboolean(this->isGood());
+stringBuffer->appendboolean(this->isGood());
     
-stringBuffer.append(commonSeps.NEW_LINE);
+stringBuffer->append(commonSeps->NEW_LINE);
     
-stringBuffer.append(this->IS_DROPPPING_LABEL);
+stringBuffer->append(this->IS_DROPPPING_LABEL);
     
-stringBuffer.appendboolean(this->isDropping());
+stringBuffer->appendboolean(this->isDropping());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
-    public: void setRatios(std::vector<number> ratios){
+    public: void setRatios(std::vector<double> ratios){
 this->ratios= ratios;
     
 }
 
 
-    public: Integer getMinX(){
+    public: int32_t getMinX(){
 
 
 
@@ -250,13 +256,13 @@ this->ratios= ratios;
 }
 
 
-    public: void setMinX(Integer minX){
+    public: void setMinX(int32_t minX){
 this->minX= minX;
     
 }
 
 
-    public: Integer getMaxX(){
+    public: int32_t getMaxX(){
 
 
 
@@ -266,13 +272,13 @@ this->minX= minX;
 }
 
 
-    public: void setMaxX(Integer maxX){
+    public: void setMaxX(int32_t maxX){
 this->maxX= maxX;
     
 }
 
 
-    public: Integer getY(){
+    public: int32_t getY(){
 
 
 
@@ -282,13 +288,13 @@ this->maxX= maxX;
 }
 
 
-    public: void setY(Integer y){
+    public: void setY(int32_t y){
 this->y= y;
     
 }
 
 
-    public: Integer getSize(){
+    public: int32_t getSize(){
 
 
 
@@ -298,7 +304,7 @@ this->y= y;
 }
 
 
-    public: void setSize(Integer size){
+    public: void setSize(int32_t size){
 this->size= size;
     
 }

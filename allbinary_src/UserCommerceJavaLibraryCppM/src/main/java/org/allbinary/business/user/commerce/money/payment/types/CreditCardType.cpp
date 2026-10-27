@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,7 +49,7 @@ class CreditCardType
             : public Object
          {
 
-    public: static const int32_t MAXLEN = 19;
+    public: static inline const int32_t MAXLEN = 19;
 
     private: std::string name;
 

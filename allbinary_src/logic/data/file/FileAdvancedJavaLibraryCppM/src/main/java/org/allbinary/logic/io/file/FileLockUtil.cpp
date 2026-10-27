@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,15 +70,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFile.h"
+        #include "org/allbinary/logic/io/file/AbFile.h"
 
 class FileLockUtil
             : public Object
          {
 
-    private: static FileLockUtil instance() { return FileLockUtil(); }
+    private: static FileLockUtil* instance() { static std::unique_ptr<FileLockUtil> value(new FileLockUtil()); return value.get(); }
 
-    public: static FileLockUtil getInstance(){
+    public: static FileLockUtil* getInstance(){
 
 
 
@@ -82,7 +88,7 @@ class FileLockUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: FileLockUtil(){
 }
@@ -90,12 +96,12 @@ private: FileLockUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getAll(BasicArrayList vector, bool isReturnOnFailure){
+    public: BasicArrayList* getAll(BasicArrayList* vector, bool isReturnOnFailure){
 
-    BasicArrayList fileLockVector = BasicArrayListD();;
+    BasicArrayList* fileLockVector = new BasicArrayListD();;
     
 
-    int32_t size = vector.size();;
+    int32_t size = vector->size();;
     
 
 
@@ -105,10 +111,10 @@ private: FileLockUtil(){
     int32_t index = 0;index < size; index++)
         {
 
-    AbFile file = vector.get(index);;
+    AbFile* file = dynamic_cast<AbFile*>(vector->get(index));;
     
 
-    FileLock fileLock = this->getLock(file);;
+    FileLock* fileLock = this->getLock(file);;
     
 
                         if(fileLock != 
@@ -116,9 +122,9 @@ private: FileLockUtil(){
                                 )
                         
                                     {
-                                    this->logUtil.putF("File Lock Obtained: " +file.getAbsolutePath(), this, "getAll");
+                                    this->logUtil->putF("File Lock Obtained: " +file->getAbsolutePath(), this, "getAll");
     
-fileLockVector.add(fileLock);
+fileLockVector->add(fileLock);
     
 
                                     }
@@ -127,7 +133,7 @@ fileLockVector.add(fileLock);
                         if(isReturnOnFailure)
                         
                                     {
-                                    this->logUtil.putF("Total Locks Obtained: " +fileLockVector.size(), this, "getAll");
+                                    this->logUtil->putF("Total Locks Obtained: " +fileLockVector->size(), this, "getAll");
     
 
 
@@ -140,7 +146,7 @@ fileLockVector.add(fileLock);
                                 
 }
 
-this->logUtil.putF("Total Locks Obtained: " +fileLockVector.size(), this, "getAll");
+this->logUtil->putF("Total Locks Obtained: " +fileLockVector->size(), this, "getAll");
     
 
 
@@ -153,7 +159,7 @@ this->logUtil.putF("Total Locks Obtained: " +fileLockVector.size(), this, "getAl
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getAllPossible(BasicArrayList vector){
+    public: BasicArrayList* getAllPossible(BasicArrayList* vector){
 
 
 
@@ -165,19 +171,19 @@ this->logUtil.putF("Total Locks Obtained: " +fileLockVector.size(), this, "getAl
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getAllOrNone(BasicArrayList vector){
+    public: BasicArrayList* getAllOrNone(BasicArrayList* vector){
 
-    BasicArrayList fileLockVector = this->getAll(vector, true);;
+    BasicArrayList* fileLockVector = this->getAll(vector, true);;
     
 
-                        if(vector.size() != fileLockVector.size())
+                        if(vector->size() != fileLockVector->size())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicArrayListD();
+                        return new BasicArrayListD();
     
 
                                     }
@@ -197,7 +203,7 @@ this->logUtil.putF("Total Locks Obtained: " +fileLockVector.size(), this, "getAl
 
                 //@Throws(Exception.constructor)
             
-    public: FileLock getLock(AbFile file){
+    public: FileLock* getLock(AbFile* file){
 
         try {
             
@@ -208,9 +214,9 @@ this->logUtil.putF("Total Locks Obtained: " +fileLockVector.size(), this, "getAl
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put("Exception returns null", this, "getLock", e);
+this->logUtil->put("Exception returns null", this, "getLock", &e);
     
 
 
@@ -229,11 +235,11 @@ this->logUtil.put("Exception returns null", this, "getLock", e);
 
                 //@Throws(Exception.constructor)
             
-    public: FileLock getLock(AbFileOutputStream fileOutputStream){
+    public: FileLock* getLock(AbFileOutputStream* fileOutputStream){
 
         try {
             
-    FileLock fileLock = this->getLock(fileOutputStream.getChannel());;
+    FileLock* fileLock = this->getLock(fileOutputStream->getChannel());;
     
 
 
@@ -243,9 +249,9 @@ this->logUtil.put("Exception returns null", this, "getLock", e);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put("Exception returns null", this, "getLock", e);
+this->logUtil->put("Exception returns null", this, "getLock", &e);
     
 
 
@@ -256,9 +262,9 @@ this->logUtil.put("Exception returns null", this, "getLock", e);
 }
 
          finally {
-            this->logUtil.putF("Finally - Closing FileOutputStream", this, "getLock");
+            this->logUtil->putF("Finally - Closing FileOutputStream", this, "getLock");
     
-StreamUtil::getInstance().close(fileOutputStream);
+StreamUtil::getInstance()->close(fileOutputStream);
     
 
          }
@@ -268,11 +274,11 @@ StreamUtil::getInstance().close(fileOutputStream);
 
                 //@Throws(Exception.constructor)
             
-    public: FileLock getLock(FileChannel fileChannel){
+    public: FileLock* getLock(FileChannel* fileChannel){
 
         try {
             
-    FileLock fileLock = fileChannel.tryLock();;
+    FileLock* fileLock = fileChannel->tryLock();;
     
 
 
@@ -282,9 +288,9 @@ StreamUtil::getInstance().close(fileOutputStream);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put("Exception returns null", this, "getLock", e);
+this->logUtil->put("Exception returns null", this, "getLock", &e);
     
 
 
@@ -295,9 +301,9 @@ this->logUtil.put("Exception returns null", this, "getLock", e);
 }
 
          finally {
-            this->logUtil.putF("Finally - Closing FileChannel", this, "getLock");
+            this->logUtil->putF("Finally - Closing FileChannel", this, "getLock");
     
-fileChannel.close();
+fileChannel->close();
     
 
          }

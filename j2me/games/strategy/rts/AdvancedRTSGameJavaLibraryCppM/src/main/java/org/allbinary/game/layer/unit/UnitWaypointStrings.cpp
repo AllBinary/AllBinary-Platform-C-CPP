@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/string/CommonLabels.h>
@@ -46,9 +52,9 @@ class UnitWaypointStrings
             : public Object
          {
 
-    private: static UnitWaypointStrings instance() { return UnitWaypointStrings(); }
+    private: static UnitWaypointStrings* instance() { static std::unique_ptr<UnitWaypointStrings> value(new UnitWaypointStrings()); return value.get(); }
 
-    public: static UnitWaypointStrings getInstance(){
+    public: static UnitWaypointStrings* getInstance(){
 
 
 
@@ -82,7 +88,7 @@ class UnitWaypointStrings
 
     public: const std::string ALREADY_THERE = "Already There";
 
-    public: const std::string NEXT_PATH_NODE = CommonLabels::getInstance().NEXT +" Path Node";
+    public: const std::string NEXT_PATH_NODE = CommonLabels::getInstance()->NEXT +" Path Node";
 
 };
 

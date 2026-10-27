@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,18 +42,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchButtonResource.h"
+        #include "org/allbinary/input/motion/button/TouchButtonResource.h"
 
 class TouchButtonStartResource: public TouchButtonResource {
 
-    private: static const TouchButtonResource instance = TouchButtonStartResource();
+    private: static inline TouchButtonResource* instance = new TouchButtonStartResource();
 
-    public: static TouchButtonResource getInstance(){
+    public: static TouchButtonResource* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TouchButtonStartResource::instance();
+                        return TouchButtonStartResource::instance;
     
 }
 

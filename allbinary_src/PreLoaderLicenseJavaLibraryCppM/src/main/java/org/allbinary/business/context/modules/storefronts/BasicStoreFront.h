@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONTS_BASICSTOREFRONT_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONTS_BASICSTOREFRONT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,11 +73,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicStoreFrontInterface.h"
+        #include "org/allbinary/business/context/modules/storefronts/BasicStoreFrontInterface.h"
 
 class BasicStoreFront
             : public Object
-        : public BasicStoreFrontInterface {
+        , public BasicStoreFrontInterface {
 
     private: std::string name;
 
@@ -131,7 +137,7 @@ class BasicStoreFront
 
 public: BasicStoreFront();
 
-public: BasicStoreFront(HashMap<Object*, Object*> storeHashMap);
+public: BasicStoreFront(HashMap<Object*, Object*>* storeHashMap);
 
     public: std::string getTestHtmlPath();
 
@@ -173,7 +179,7 @@ public: BasicStoreFront(HashMap<Object*, Object*> storeHashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getSubStores();
+    public: BasicArrayList* getSubStores();
 
     public: std::string getTagLocation();
 

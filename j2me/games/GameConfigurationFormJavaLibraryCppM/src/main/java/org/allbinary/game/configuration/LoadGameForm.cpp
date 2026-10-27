@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -85,11 +93,11 @@
         
 class LoadGameForm: public CommandForm {
 
-    private: const MEUtil meUtil = MEUtil::getInstance();
+    private: MEUtil* meUtil = MEUtil::getInstance();
 
     private: bool areChoices= false;
 
-public: LoadGameForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor) : CommandForm(commandListener, title, backgrounBasicColor, foregroundBasicColor){
+public: LoadGameForm(CommandListener* commandListener, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) : CommandForm(commandListener, title, backgrounBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -105,17 +113,17 @@ this->initCommands(commandListener);
 }
 
 
-    public: void initCommands(CommandListener cmdListener){
+    public: void initCommands(CommandListener* cmdListener){
 
-    GameCommandsFactory gameCommandsFactory = GameCommandsFactory::getInstance();;
+    GameCommandsFactory* gameCommandsFactory = GameCommandsFactory::getInstance();;
     
 this->removeAllCommands();
     
-this->addCommand(gameCommandsFactory.LOAD_FILE);
+this->addCommand(gameCommandsFactory->LOAD_FILE);
     
-this->addCommand(gameCommandsFactory.DELETE_FILE);
+this->addCommand(gameCommandsFactory->DELETE_FILE);
     
-this->addCommand(gameCommandsFactory.CLOSE_AND_SHOW_GAME_CANVAS);
+this->addCommand(gameCommandsFactory->CLOSE_AND_SHOW_GAME_CANVAS);
     
 this->setCommandListener(cmdListener);
     
@@ -126,12 +134,12 @@ this->setCommandListener(cmdListener);
             
     public: void update(){
 
-    BasicArrayList list = GamePersistanceSingleton::getInstance().getIds();;
+    BasicArrayList* list = GamePersistanceSingleton::getInstance()->getIds();;
     
 this->deleteAll();
     
 
-                        if(list.size() > 0)
+                        if(list->size() > 0)
                         
                                     {
                                     this->add(list, "Select A Saved Game", Choice::EXCLUSIVE);
@@ -142,7 +150,7 @@ this->areChoices= true;
                                     }
                                 
                         else {
-                            this->meUtil.appendItem(this, StringItem("No Saved Games", StringUtil::getInstance().EMPTY_STRING, Item::PLAIN));
+                            this->meUtil->appendItem(this, new StringItem("No Saved Games", StringUtil::getInstance()->EMPTY_STRING, Item::PLAIN));
     
 this->areChoices= false;
     
@@ -154,25 +162,25 @@ super.update();
 }
 
 
-    private: void add(BasicArrayList list, std::string name, int32_t option){
+    private: void add(BasicArrayList* list, std::string name, int32_t option){
 
-    ChoiceGroup choiceGroup = this->getChoiceGroup(list, name, option);;
+    ChoiceGroup* choiceGroup = this->getChoiceGroup(list, name, option);;
     
 
-                        if(list.size() > 0)
+                        if(list->size() > 0)
                         
                                     {
-                                    choiceGroup.setSelectedIndex(0, true);
+                                    choiceGroup->setSelectedIndex(0, true);
     
 
                                     }
                                 
-this->meUtil.appendItem(this, choiceGroup);
+this->meUtil->appendItem(this, choiceGroup);
     
 }
 
 
-    private: ChoiceGroup getChoiceGroup(BasicArrayList list, std::string name, int32_t option){
+    private: ChoiceGroup* getChoiceGroup(BasicArrayList* list, std::string name, int32_t option){
 
     std::string METHOD_NAME = "getChoiceGroup";;
     
@@ -180,10 +188,10 @@ this->meUtil.appendItem(this, choiceGroup);
     std::string ADDING_CHOICE = "Adding Choice: ";;
     
 
-    ChoiceGroup choiceGroup = ChoiceGroup(name, option, StringUtil::getInstance().getArrayInstance(), NullImage::NULL_IMAGE_ARRAY);;
+    ChoiceGroup* choiceGroup = new ChoiceGroup(name, option, StringUtil::getInstance()->getArrayInstance(), NullImage::NULL_IMAGE_ARRAY);;
     
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
 
@@ -193,11 +201,11 @@ this->meUtil.appendItem(this, choiceGroup);
     int32_t index = 0;index < size; index++)
         {
 
-    Object* anyType = list.objectArray[index];;
+    Object* anyType = list->objectArray[index];;
     
-this->logUtil.putF(StringMaker().append(ADDING_CHOICE).append(anyType->toString()).toString(), this, METHOD_NAME);
+this->logUtil.putF((new StringMaker())->append(ADDING_CHOICE)->append(anyType->toString())->toString(), this, METHOD_NAME);
     
-choiceGroup.append(anyType->toString(), NullImage::NULL_IMAGE);
+choiceGroup->append(anyType->toString(), NullImage::NULL_IMAGE);
     
 }
 
@@ -216,13 +224,13 @@ choiceGroup.append(anyType->toString(), NullImage::NULL_IMAGE);
                         
                                     {
                                     
-    ChoiceGroup choiceGroup = this->get(0);;
+    ChoiceGroup* choiceGroup = dynamic_cast<ChoiceGroup*>(this->get(0));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return choiceGroup.getSelectedIndex();;
+                        return choiceGroup->getSelectedIndex();;
     
 
                                     }
@@ -246,10 +254,10 @@ choiceGroup.append(anyType->toString(), NullImage::NULL_IMAGE);
                         
                                     {
                                     
-    ChoiceGroup choiceGroup = this->get(0);;
+    ChoiceGroup* choiceGroup = dynamic_cast<ChoiceGroup*>(this->get(0));;
     
 
-    int32_t value = Integer::valueOf(choiceGroup.getString(choiceGroup.getSelectedIndex())).intValue();;
+    int32_t value = Integer.valueOf(choiceGroup->getString(choiceGroup->getSelectedIndex()))->intValue();;
     
 
 

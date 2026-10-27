@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/configuration/feature/Features.h>
@@ -53,49 +59,49 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameStatisticsFactory.h"
+        #include "org/allbinary/canvas/GameStatisticsFactory.h"
 
 class SpecialMessageUtil
             : public Object
          {
 
-    private: static const SpecialMessageUtil SINGLETON = SpecialMessageUtil();
+    private: static SpecialMessageUtil* SINGLETON() { static std::unique_ptr<SpecialMessageUtil> value(new SpecialMessageUtil()); return value.get(); }
 
-    public: static SpecialMessageUtil getInstance(){
+    public: static SpecialMessageUtil* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SpecialMessageUtil::SINGLETON;
+                        return SpecialMessageUtil::SINGLETON();
     
 }
 
 
     public: std::string get(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(Memory::getInfo());
+stringBuffer->append(Memory::getInfo());
     
-stringBuffer.append(CommonSeps::getInstance().SPACE);
+stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-stringBuffer.append(GameStatisticsFactory::getInstance().toString());
+stringBuffer->append(GameStatisticsFactory::getInstance()->toString());
     
-stringBuffer.append(CommonSeps::getInstance().SPACE);
+stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-stringBuffer.append(" Option: ");
+stringBuffer->append(" Option: ");
     
 
-                        if(Features::getInstance().isDefault(OpenGLFeatureFactory::getInstance().OPENGL_AUTO_SELECT))
+                        if(Features::getInstance()->isDefault(OpenGLFeatureFactory::getInstance()->OPENGL_AUTO_SELECT))
                         
                                     {
-                                    stringBuffer.append(OpenGLFeatureFactory::getInstance().OPENGL_AUTO_SELECT.getName());
+                                    stringBuffer->append(OpenGLFeatureFactory::getInstance()->OPENGL_AUTO_SELECT.getName());
     
 
                                     }
                                 
                         else {
-                            stringBuffer.append(OpenGLFeatureFactory::getInstance().OPENGL_MINIMUM.getName());
+                            stringBuffer->append(OpenGLFeatureFactory::getInstance()->OPENGL_MINIMUM.getName());
     
 
                         }
@@ -104,7 +110,7 @@ stringBuffer.append(" Option: ");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

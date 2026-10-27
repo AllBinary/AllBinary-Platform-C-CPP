@@ -21,6 +21,12 @@
         #ifndef BUNDLE_INPUT_AUTOMATION_MODULE_CONFIGURATION_INPUTAUTOMATIONCONFIGURATIONMODULECHANGELISTENER_H
         #define BUNDLE_INPUT_AUTOMATION_MODULE_CONFIGURATION_INPUTAUTOMATIONCONFIGURATIONMODULECHANGELISTENER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/input/automation/configuration/InputAutomationConfigurationModuleChangeEvent.h>
 
       
@@ -45,9 +51,9 @@
         
 class InputAutomationConfigurationModuleChangeListener {
 
-    void onAdd(InputAutomationConfigurationModuleChangeEvent inputAutomationConfigurationChangeEvent);
+    public: virtual void onAdd(InputAutomationConfigurationModuleChangeEvent* inputAutomationConfigurationChangeEvent) = 0;
 
-    void onRemove(InputAutomationConfigurationModuleChangeEvent inputAutomationConfigurationChangeEvent);
+    public: virtual void onRemove(InputAutomationConfigurationModuleChangeEvent* inputAutomationConfigurationChangeEvent) = 0;
 
 };
 

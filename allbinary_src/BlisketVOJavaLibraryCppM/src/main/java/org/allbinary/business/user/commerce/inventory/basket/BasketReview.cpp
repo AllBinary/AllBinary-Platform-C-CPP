@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,19 +79,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasketData.h"
+        #include "org/allbinary/business/user/commerce/inventory/basket/BasketData.h"
 
 class BasketReview
             : public Object
          {
 
-    BasicArrayList items = BasicArrayListD();
+    BasicArrayList* items = new BasicArrayListD();
 
 public: BasketReview(){
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
 
 
@@ -95,13 +101,13 @@ public: BasketReview(){
 }
 
 
-    public: void addItem(Item item){
-this->items.add(item);
+    public: void addItem(Item* item){
+this->items->add(item);
     
 }
 
 
-    public: BasicArrayList getItems(){
+    public: BasicArrayList* getItems(){
 
 
 
@@ -113,7 +119,7 @@ this->items.add(item);
 
     public: void removeItem(std::string id){
 
-    std::vector<Object*> itemArray = this->items.toArray();;
+    std::vector<Object*> itemArray = this->items->toArray();;
     
 
     int32_t size = itemArray.size();;
@@ -126,13 +132,13 @@ this->items.add(item);
     int32_t index = 0;index < size; index++)
         {
 
-    Item item = itemArray[index];;
+    Item* item = dynamic_cast<Item*>(itemArray[index]);;
     
 
-                        if(item.getId().compareTo(id) == 0)
+                        if(item->getId()->compareTo(id) == 0)
                         
                                     {
-                                    this->items.remove(item);
+                                    this->items->remove(item);
     
 
                                     }
@@ -144,7 +150,7 @@ this->items.add(item);
 
     public: void adjustItem(std::string id, std::string num){
 
-    std::vector<Object*> itemArray = this->items.toArray();;
+    std::vector<Object*> itemArray = this->items->toArray();;
     
 
     int32_t size = itemArray.size();;
@@ -157,13 +163,13 @@ this->items.add(item);
     int32_t index = 0;index < size; index++)
         {
 
-    Item item = itemArray[index];;
+    Item* item = dynamic_cast<Item*>(itemArray[index]);;
     
 
-                        if(item.getId().compareTo(id) == 0)
+                        if(item->getId()->compareTo(id) == 0)
                         
                                     {
-                                    item.setNumber(num);
+                                    item->setNumber(num);
     
 
                                     }
@@ -178,7 +184,7 @@ this->items.add(item);
     float weightFloat = 0;;
     
 
-    std::vector<Object*> itemArray = this->items.toArray();;
+    std::vector<Object*> itemArray = this->items->toArray();;
     
 
     int32_t size = itemArray.size();;
@@ -191,9 +197,9 @@ this->items.add(item);
     int32_t index = 0;index < size; index++)
         {
 
-    Item item = itemArray[index];;
+    Item* item = dynamic_cast<Item*>(itemArray[index]);;
     
-weightFloat += number(item.getWeight());
+weightFloat += (float(item->getWeight()));
     
 }
 
@@ -201,27 +207,27 @@ weightFloat += number(item.getWeight());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return number(weightFloat).toString();;
+                        return (float(weightFloat)).toString();;
     
 }
 
 
-    public: Integer getNumberOfItems(){
+    public: int32_t getNumberOfItems(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Integer(this->items.size());
+                        return int32_t(this->items->size());
     
 }
 
 
-    public: Set getIds(){
+    public: Set* getIds(){
 
-    HashSet idSet = HashSet();;
+    HashSet* idSet = new HashSet();;
     
 
-    std::vector<Object*> itemArray = this->items.toArray();;
+    std::vector<Object*> itemArray = this->items->toArray();;
     
 
     int32_t size = itemArray.size();;
@@ -234,9 +240,9 @@ weightFloat += number(item.getWeight());
     int32_t index = 0;index < size; index++)
         {
 
-    Item item = itemArray[index];;
+    Item* item = dynamic_cast<Item*>(itemArray[index]);;
     
-idSet.add(item.getId());
+idSet->add(item->getId());
     
 }
 
@@ -244,14 +250,14 @@ idSet.add(item.getId());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return idSet;
+                        return dynamic_cast<Set*>(idSet);
     
 }
 
 
-    public: Integer getNumberOf(std::string id){
+    public: int32_t getNumberOf(std::string id){
 
-    std::vector<Object*> itemArray = this->items.toArray();;
+    std::vector<Object*> itemArray = this->items->toArray();;
     
 
     int32_t size = itemArray.size();;
@@ -264,17 +270,17 @@ idSet.add(item.getId());
     int32_t index = 0;index < size; index++)
         {
 
-    Item item = itemArray[index];;
+    Item* item = dynamic_cast<Item*>(itemArray[index]);;
     
 
-                        if(item.getId().compareTo(id) == 0)
+                        if(item->getId()->compareTo(id) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Integer(item.getNumber());
+                        return int32_t(item->getNumber());
     
 
                                     }
@@ -285,19 +291,19 @@ idSet.add(item.getId());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Integer(0);
+                        return int32_t(0);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = document.createElement(BasketData::BASKET);;
+    Node* node = document->createElement(BasketData::BASKET);;
     
 
-    std::vector<Object*> itemArray = this->items.toArray();;
+    std::vector<Object*> itemArray = this->items->toArray();;
     
 
     int32_t size = itemArray.size();;
@@ -310,9 +316,9 @@ idSet.add(item.getId());
     int32_t index = 0;index < size; index++)
         {
 
-    Item item = itemArray[index];;
+    Item* item = dynamic_cast<Item*>(itemArray[index]);;
     
-node.appendChild(ItemView(item, BasicArrayListD()).toXmlNode(document));
+node->appendChild((new ItemView(item, new BasicArrayListD()))->toXmlNode(document));
     
 }
 

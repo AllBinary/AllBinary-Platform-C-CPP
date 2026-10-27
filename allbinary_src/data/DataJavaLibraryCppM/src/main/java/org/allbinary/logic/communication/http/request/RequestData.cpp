@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,13 +49,13 @@ class RequestData
             : public Object
          {
 
-    public: static const std::string REQUEST = "REQUESTDATA_REQUEST";
+    public: static inline const std::string REQUEST = "REQUESTDATA_REQUEST";
 
-    public: static const std::string PARAMETER = "REQUESTDATA_PARAMETER";
+    public: static inline const std::string PARAMETER = "REQUESTDATA_PARAMETER";
 
-    public: static const std::string VIEWS = "REQUESTDATA_VIEWS";
+    public: static inline const std::string VIEWS = "REQUESTDATA_VIEWS";
 
-    public: static const std::string VISITORS = "REQUESTDATA_VISITORS";
+    public: static inline const std::string VISITORS = "REQUESTDATA_VISITORS";
 
 public: RequestData(){
 }

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_NUMBER_LONGUTIL_H
         #define ORG_ALLBINARY_LOGIC_JAVA_NUMBER_LONGUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -47,7 +53,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LongData.h"
+        #include "org/allbinary/logic/java/number/LongData.h"
 
 class LongUtil
             : public Object

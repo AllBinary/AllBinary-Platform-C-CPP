@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -62,27 +68,27 @@ class InputProbability
             : public Object
          {
 
-    public: static Integer INPUT_PROBABILITY = SmallIntegerSingletonFactory::getInstance().getAt(0);
+    public: static inline int32_t INPUT_PROBABILITY = SmallIntegerSingletonFactory::getInstance()->getAt(0);
 
-    private: std::vector<std::vector<Integer>> likelyhoodIntegerArray;
+    private: std::vector<std::vector<int32_t>> likelyhoodIntegerArray;
 
-    private: std::vector<Integer> repeatLikelyhoodIntegerArray;
+    private: std::vector<int32_t> repeatLikelyhoodIntegerArray;
 
     private: int32_t max;
 
-    private: TimeDelayHelper timeDelayHelper;
+    private: TimeDelayHelper* timeDelayHelper;
 
-public: InputProbability(std::vector<std::vector<Integer>> likelyhoodIntegerArray, std::vector<Integer> repeatLikelyhoodIntegerArray, int32_t max, TimeDelayHelper timeDelayHelper);
+public: InputProbability(std::vector<std::vector<int32_t>> likelyhoodIntegerArray, std::vector<int32_t> repeatLikelyhoodIntegerArray, int32_t max, TimeDelayHelper* timeDelayHelper);
 
-    public: std::vector<std::vector<Integer>> getLikelyhoodIntegerArray();
+    public: std::vector<std::vector<int32_t>> getLikelyhoodIntegerArray();
 
-    public: std::vector<Integer> getRepeatLikelyhoodIntegerArray();
+    public: std::vector<int32_t> getRepeatLikelyhoodIntegerArray();
 
     public: int32_t getMax();
 
-    public: TimeDelayHelper getTimeDelayHelper();
+    public: TimeDelayHelper* getTimeDelayHelper();
 
-    public: ABHashtable<Object*, Object*> toHashtable();
+    public: ABHashtable<Object*, Object*>* toHashtable();
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,31 +52,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MineCountedPickedUpLayerInterfaceFactory.h"
-#include "MineLayerFactory.h"
+        #include "org/allbinary/game/ag/layer/weapon/mine/MineCountedPickedUpLayerInterfaceFactory.h"
+#include "org/allbinary/game/ag/layer/weapon/mine/MineLayerFactory.h"
 
 class MineLayerCircularStaticPool
             : public Object
          {
 
-    private: static WeaponLayerCircularPool WEAPON_LAYER_CIRCULAR_STATIC_POOL = WeaponLayerCircularPool();
+    private: static WeaponLayerCircularPool* WEAPON_LAYER_CIRCULAR_STATIC_POOL() { static std::unique_ptr<WeaponLayerCircularPool> value(new WeaponLayerCircularPool()); return value.get(); }
 
                 //@Throws(Exception.constructor)
             
-    public: static void init(ViewPositionFactoryInterface viewPositionFactoryInterface){
+    public: static void init(ViewPositionFactoryInterface* viewPositionFactoryInterface){
 MineCountedPickedUpLayerInterfaceFactory::init();
     
-MineLayerCircularStaticPool::WEAPON_LAYER_CIRCULAR_STATIC_POOL.initAllBinaryLayerCircularPool(MineLayerFactory(viewPositionFactoryInterface), 20);
+MineLayerCircularStaticPool::WEAPON_LAYER_CIRCULAR_STATIC_POOL()->initAllBinaryLayerCircularPool(new MineLayerFactory(viewPositionFactoryInterface), 20);
     
 }
 
 
-    public: static WeaponLayerCircularPool getInstance(){
+    public: static WeaponLayerCircularPool* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MineLayerCircularStaticPool::WEAPON_LAYER_CIRCULAR_STATIC_POOL;
+                        return MineLayerCircularStaticPool::WEAPON_LAYER_CIRCULAR_STATIC_POOL();
     
 }
 

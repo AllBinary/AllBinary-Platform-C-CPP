@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/collision/CollisionType.h>
@@ -47,7 +53,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CollidableCompositeLayer.h"
+        #include "org/allbinary/game/layer/CollidableCompositeLayer.h"
 
 class CollidableRTSBehavior: public CollidableDestroyableDamageableBehavior {
 
@@ -61,22 +67,22 @@ public: CollidableRTSBehavior(bool collidable) : CollidableDestroyableDamageable
 }
 
 
-    public: bool isCollision(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface){
+    public: bool isCollision(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface){
 
-    CollisionTypeFactory collisionTypeFactory = CollisionTypeFactory::getInstance();;
+    CollisionTypeFactory* collisionTypeFactory = CollisionTypeFactory::getInstance();;
     
 
-    CollisionType collisionType = collidableInterfaceCompositeInterface.getCollidableInferface().getCollisionTypeWith(ownerLayer);;
+    CollisionType* collisionType = collidableInterfaceCompositeInterface->getCollidableInferface()->getCollisionTypeWith(ownerLayer);;
     
 
-                        if(collisionType == collisionTypeFactory.PICKUP)
+                        if(collisionType == collisionTypeFactory->PICKUP)
                         
                                     {
                                     
                                     }
                                 
                              else 
-                        if(collisionType == collisionTypeFactory.COLLISION)
+                        if(collisionType == collisionTypeFactory->COLLISION)
                         
                                     {
                                     
@@ -90,7 +96,7 @@ public: CollidableRTSBehavior(bool collidable) : CollidableDestroyableDamageable
                                 
                         else {
                             
-                        if(collidableInterfaceCompositeInterface.getX2() <= ownerLayer.getXP() || collidableInterfaceCompositeInterface.getY2() <= ownerLayer.getYP() || collidableInterfaceCompositeInterface.getYP() >= ownerLayer.getY2() || collidableInterfaceCompositeInterface.getXP() >= ownerLayer.getX2())
+                        if(collidableInterfaceCompositeInterface->getX2() <= ownerLayer->getXP() || collidableInterfaceCompositeInterface->getY2() <= ownerLayer->getYP() || collidableInterfaceCompositeInterface->getYP() >= ownerLayer->getY2() || collidableInterfaceCompositeInterface->getXP() >= ownerLayer->getX2())
                         
                                     {
                                     
@@ -126,22 +132,22 @@ public: CollidableRTSBehavior(bool collidable) : CollidableDestroyableDamageable
 
                 //@Throws(Exception.constructor)
             
-    public: void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface){
+    public: void collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface){
 
-    CollisionTypeFactory collisionTypeFactory = CollisionTypeFactory::getInstance();;
+    CollisionTypeFactory* collisionTypeFactory = CollisionTypeFactory::getInstance();;
     
 
-    CollisionType collisionType = collidableInterfaceCompositeInterface.getCollidableInferface().getCollisionTypeWith(ownerLayer);;
+    CollisionType* collisionType = collidableInterfaceCompositeInterface->getCollidableInferface()->getCollisionTypeWith(ownerLayer);;
     
 
-                        if(collisionType == collisionTypeFactory.PICKUP)
+                        if(collisionType == collisionTypeFactory->PICKUP)
                         
                                     {
                                     
                                     }
                                 
                              else 
-                        if(collisionType == collisionTypeFactory.COLLISION)
+                        if(collisionType == collisionTypeFactory->COLLISION)
                         
                                     {
                                     super.collide(ownerLayer, collidableInterfaceCompositeInterface);
@@ -160,7 +166,7 @@ public: CollidableRTSBehavior(bool collidable) : CollidableDestroyableDamageable
 
                 //@Throws(Exception.constructor)
             
-    protected: void collideNone(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterface){
+    protected: void collideNone(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterface){
 }
 
 

@@ -21,6 +21,12 @@
         #ifndef VIEWS_GENERIC_ADVERTISEMENT_AREA_ADVERTISEMENTAREAVIEW_H
         #define VIEWS_GENERIC_ADVERTISEMENT_AREA_ADVERTISEMENTAREAVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/advertisement/area/AdvertisementAreaData.h>
@@ -74,15 +80,15 @@
         
 class AdvertisementAreaView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string advertisementAreaName;
 
-public: AdvertisementAreaView(TransformInfoInterface transformInfoInterface);
+public: AdvertisementAreaView(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
     public: void addDomNodeInterfaces();
 

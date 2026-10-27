@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MIDLET_MIDLETEXITPROCESSORFACTORY_H
         #define ORG_ALLBINARY_MIDLET_MIDLETEXITPROCESSORFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/midlet/MIDlet.h>
@@ -53,17 +59,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MidletExitProcessor.h"
+        #include "org/allbinary/midlet/MidletExitProcessor.h"
 
 class MidletExitProcessorFactory
             : public Object
          {
 
-    private: static MidletExitProcessorFactory instance() { return MidletExitProcessorFactory(); }
+    private: static MidletExitProcessorFactory* instance() { static std::unique_ptr<MidletExitProcessorFactory> value(new MidletExitProcessorFactory()); return value.get(); }
 
-    public: static MidletExitProcessorFactory getInstance();
+    public: static MidletExitProcessorFactory* getInstance();
 
-    public: Processor getExitInstance(MIDlet midlet);
+    public: Processor* getExitInstance(MIDlet* midlet);
 
 };
 

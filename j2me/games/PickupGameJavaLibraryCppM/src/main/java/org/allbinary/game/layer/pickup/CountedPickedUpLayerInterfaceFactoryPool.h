@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_COUNTEDPICKEDUPLAYERINTERFACEFACTORYPOOL_H
         #define ORG_ALLBINARY_GAME_LAYER_PICKUP_COUNTEDPICKEDUPLAYERINTERFACEFACTORYPOOL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -52,17 +58,17 @@ class CountedPickedUpLayerInterfaceFactoryPool
             : public Object
          {
 
-    private: static CountedPickedUpLayerInterfaceFactoryPool SINGLETON = CountedPickedUpLayerInterfaceFactoryPool();
+    private: static CountedPickedUpLayerInterfaceFactoryPool* SINGLETON() { static std::unique_ptr<CountedPickedUpLayerInterfaceFactoryPool> value(new CountedPickedUpLayerInterfaceFactoryPool()); return value.get(); }
 
-    public: static CountedPickedUpLayerInterfaceFactoryPool getInstance();
+    public: static CountedPickedUpLayerInterfaceFactoryPool* getInstance();
 
     public: static void init();
 
-    private: BasicArrayList list;
+    private: BasicArrayList* list;
 
 private: CountedPickedUpLayerInterfaceFactoryPool();
 
-    public: BasicArrayList getList();
+    public: BasicArrayList* getList();
 
 };
 

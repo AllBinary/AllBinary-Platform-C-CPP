@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -78,33 +84,33 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserEmailEventsConfigurationInterface.h"
-#include "UserEmailEventsConfiguration.h"
-#include "UserEmailEventConfigurationData.h"
-#include "UserEmailEventConfigurationView.h"
-#include "UserEmailEventsConfigurationMapping.h"
-#include "UserEmailEventsConfigurationData.h"
-#include "UserEmailEventConfigurationInterface.h"
+        #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventsConfigurationInterface.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventsConfiguration.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationData.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationView.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventsConfigurationMapping.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventsConfigurationData.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationInterface.h"
 
 class UserEmailEventsConfigurationView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface;
+    private: UserEmailEventsConfigurationInterface* userEmailEventsConfigurationInterface;
 
-public: UserEmailEventsConfigurationView(Node node);
+public: UserEmailEventsConfigurationView(Node* node);
 
-public: UserEmailEventsConfigurationView(UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface);
+public: UserEmailEventsConfigurationView(UserEmailEventsConfigurationInterface* userEmailEventsConfigurationInterface);
 
-    public: UserEmailEventsConfigurationInterface getUserEmailEventsConfigurationInterface();
+    public: UserEmailEventsConfigurationInterface* getUserEmailEventsConfigurationInterface();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

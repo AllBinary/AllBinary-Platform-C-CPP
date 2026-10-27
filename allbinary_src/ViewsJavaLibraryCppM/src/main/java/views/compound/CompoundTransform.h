@@ -21,6 +21,12 @@
         #ifndef VIEWS_COMPOUND_COMPOUNDTRANSFORM_H
         #define VIEWS_COMPOUND_COMPOUNDTRANSFORM_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/io/InputStream.h>
@@ -74,11 +80,11 @@
         
 class CompoundTransform: public AbTransformer {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-public: CompoundTransform(TransformInfoInterface transformInfoInterface);
+public: CompoundTransform(TransformInfoInterface* transformInfoInterface);
 
 };
 

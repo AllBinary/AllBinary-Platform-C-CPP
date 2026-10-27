@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/event/GameKeyEvent.h>
@@ -53,16 +59,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CommandFormInputProcessor.h"
-#include "GameCommandCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/CommandFormInputProcessor.h"
+#include "org/allbinary/game/displayable/canvas/GameCommandCanvas.h"
 
 class ImmediateCommandFormInputProcessor: public CommandFormInputProcessor {
 
-    private: const TimeDelayHelper timeHelper = TimeDelayHelper(25);
+    private: TimeDelayHelper* timeHelper = new TimeDelayHelper(25);
 
-    protected: GameCommandCanvas gameCommandCanvas;
+    protected: GameCommandCanvas* gameCommandCanvas;
 
-public: ImmediateCommandFormInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, GameCommandCanvas gameCommandCanvas, ScrollSelectionForm form) : CommandFormInputProcessor(gameKeyEventList, playerInputId, gameCommandCanvas, form){
+public: ImmediateCommandFormInputProcessor(BasicArrayList* gameKeyEventList, int32_t playerInputId, GameCommandCanvas* gameCommandCanvas, ScrollSelectionForm* form) : CommandFormInputProcessor(gameKeyEventList, playerInputId, gameCommandCanvas, form){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,27 +81,27 @@ this->gameCommandCanvas= gameCommandCanvas;
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onPressGameKeyEvent(GameKeyEvent gameKeyEvent){
+    public: void onPressGameKeyEvent(GameKeyEvent* gameKeyEvent){
 
         try {
             super.onPressGameKeyEvent(gameKeyEvent);
     
 
-                        if(this->timeHelper.isTimeTNT())
+                        if(this->timeHelper->isTimeTNT())
                         
                                     {
                                     this->processInputList();
     
-this->gameCommandCanvas.repaintBehavior.onChangeRepaint(this->getCanvas());
+this->gameCommandCanvas->repaintBehavior.onChangeRepaint(this->getCanvas());
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.ON_PRESS_GAME_KEY, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.ON_PRESS_GAME_KEY, &e);
     
 }
 
@@ -103,27 +109,27 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.ON
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onDownGameKeyEvent(GameKeyEvent gameKeyEvent){
+    public: void onDownGameKeyEvent(GameKeyEvent* gameKeyEvent){
 
         try {
             super.onDownGameKeyEvent(gameKeyEvent);
     
 
-                        if(this->timeHelper.isTimeTNT())
+                        if(this->timeHelper->isTimeTNT())
                         
                                     {
                                     this->processInputList();
     
-this->gameCommandCanvas.repaintBehavior.onChangeRepaint(this->getCanvas());
+this->gameCommandCanvas->repaintBehavior.onChangeRepaint(this->getCanvas());
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.ON_DOWN_GAME_KEY, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.ON_DOWN_GAME_KEY, &e);
     
 }
 
@@ -131,54 +137,54 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.ON
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onUpGameKeyEvent(GameKeyEvent gameKeyEvent){
+    public: void onUpGameKeyEvent(GameKeyEvent* gameKeyEvent){
 
         try {
             super.onUpGameKeyEvent(gameKeyEvent);
     
 
-                        if(this->timeHelper.isTimeTNT())
+                        if(this->timeHelper->isTimeTNT())
                         
                                     {
                                     this->processInputList();
     
-this->gameCommandCanvas.repaintBehavior.onChangeRepaint(this->getCanvas());
+this->gameCommandCanvas->repaintBehavior.onChangeRepaint(this->getCanvas());
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.ON_UP_GAME_KEY, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.ON_UP_GAME_KEY, &e);
     
 }
 
 }
 
 
-    public: void onMotionGestureEvent(MotionGestureEvent motionGestureEvent){
+    public: void onMotionGestureEvent(MotionGestureEvent* motionGestureEvent){
 
         try {
             super.onMotionGestureEvent(motionGestureEvent);
     
 
-                        if(this->timeHelper.isTimeTNT())
+                        if(this->timeHelper->isTimeTNT())
                         
                                     {
                                     this->processInputList();
     
-this->gameCommandCanvas.repaintBehavior.onChangeRepaint(this->getCanvas());
+this->gameCommandCanvas->repaintBehavior.onChangeRepaint(this->getCanvas());
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "onMotionGestureEvent", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "onMotionGestureEvent", &e);
     
 }
 

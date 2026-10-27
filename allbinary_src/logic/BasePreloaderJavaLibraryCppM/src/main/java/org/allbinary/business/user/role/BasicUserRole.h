@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLE_H
         #define ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/io/Serializable.h>
@@ -44,11 +50,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicUserRoles.h"
+        #include "org/allbinary/business/user/role/BasicUserRoles.h"
 
 class BasicUserRole
             : public Object
-        : public Serializable {
+        , public Serializable {
 
     private: int32_t m_int_RoleId;
 
@@ -72,7 +78,7 @@ class BasicUserRole
 
     public: int64_t getSessionInactivityTimeout();
 
-    public: bool equals(BasicUserRole basicUserRole);
+    public: bool equals(BasicUserRole* basicUserRole);
 
     public: std::string toString();
 

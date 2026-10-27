@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Runtime.h"
@@ -50,39 +56,39 @@
 
     /*actual*/ public: static std::string getInfo(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    int64_t maxUtilizedMemoryAvailable = Runtime::getRuntime().maxMemory();;
+    int64_t maxUtilizedMemoryAvailable = Runtime::getRuntime()->maxMemory();;
     
 
-    int64_t memoryUsed = Runtime::getRuntime().totalMemory();;
+    int64_t memoryUsed = Runtime::getRuntime()->totalMemory();;
     
-stringBuffer.append("APK Memory: Available: ");
+stringBuffer->append("APK Memory: Available: ");
     
-stringBuffer.appendlong(maxUtilizedMemoryAvailable);
+stringBuffer->appendlong(maxUtilizedMemoryAvailable);
     
-stringBuffer.append("/");
+stringBuffer->append("/");
     
-stringBuffer.appendlong(Runtime::getRuntime().maxMemory());
+stringBuffer->appendlong(Runtime::getRuntime()->maxMemory());
     
-stringBuffer.append(" Used: ");
+stringBuffer->append(" Used: ");
     
-stringBuffer.appendlong(memoryUsed);
+stringBuffer->appendlong(memoryUsed);
     
-stringBuffer.append(" Free: ");
+stringBuffer->append(" Free: ");
     
-stringBuffer.appendlong(maxUtilizedMemoryAvailable -memoryUsed);
+stringBuffer->appendlong(maxUtilizedMemoryAvailable -memoryUsed);
     
-stringBuffer.append("/");
+stringBuffer->append("/");
     
-stringBuffer.appendlong(Runtime::getRuntime().maxMemory() -memoryUsed);
+stringBuffer->appendlong(Runtime::getRuntime()->maxMemory() -memoryUsed);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

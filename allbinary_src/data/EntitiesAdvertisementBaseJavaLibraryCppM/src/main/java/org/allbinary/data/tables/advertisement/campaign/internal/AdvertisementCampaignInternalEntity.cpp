@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -86,15 +92,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdvertisementCampaignInternalEntityInterface.h"
+        #include "org/allbinary/data/tables/advertisement/campaign/internal/AdvertisementCampaignInternalEntityInterface.h"
 
 class AdvertisementCampaignInternalEntity: public AbSqlBean, public AdvertisementCampaignInternalEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     protected: const std::string tableName = "adCampaignInternal";
 
-public: AdvertisementCampaignInternalEntity() : AbSqlBean(UserDbInitInfo()){
+public: AdvertisementCampaignInternalEntity() : AbSqlBean(new UserDbInitInfo()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -109,26 +115,26 @@ this->setTableName(this->tableName);
     public: void delete_(std::string value){
 
         try {
-            super.deleteWhere(StoreFrontData::getInstance().NAME, value);
+            super.deleteWhere(StoreFrontData::getInstance()->NAME, value);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
+                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, &e);
     
 
                                     }
@@ -138,20 +144,20 @@ this->setTableName(this->tableName);
 }
 
 
-    public: AdvertisementCampaignsInterface getCampaignsInStore(std::string storeName){
+    public: AdvertisementCampaignsInterface* getCampaignsInStore(std::string storeName){
 
-    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* keysAndValues = StdUtil::getInstance()->createHashMap();;
     
-keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
-    
-
-    BasicArrayList hashMapVector = super.getRows(keysAndValues);;
+keysAndValues->put(StoreFrontData::getInstance()->NAME, storeName);
     
 
-    BasicArrayList vector = BasicArrayListD();;
+    BasicArrayList* hashMapVector = super.getRows(keysAndValues);;
     
 
-    int32_t size = hashMapVector.size();;
+    BasicArrayList* vector = new BasicArrayListD();;
+    
+
+    int32_t size = hashMapVector->size();;
     
 
 
@@ -161,7 +167,7 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<Object*, Object*> hashMap = hashMapVector.get(index);;
+    HashMap<Object*, Object*>* hashMap = dynamic_cast<HashMap*>(hashMapVector->get(index));;
     
 
                         if(hashMap != 
@@ -169,7 +175,7 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
                                 )
                         
                                     {
-                                    vector.add(AdvertisementCampaign(hashMap));
+                                    vector->add(dynamic_cast<AdvertisementCampaignInterface*>(new AdvertisementCampaign(hashMap)));
     
 
                                     }
@@ -180,21 +186,21 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdvertisementCampaigns(vector);
+                        return dynamic_cast<AdvertisementCampaignsInterface*>(new AdvertisementCampaigns(vector));
     
 }
 
 
-    public: AdvertisementCampaignInterface get(std::string storeName, std::string name){
+    public: AdvertisementCampaignInterface* get(std::string storeName, std::string name){
 
-    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* keysAndValues = StdUtil::getInstance()->createHashMap();;
     
-keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
+keysAndValues->put(StoreFrontData::getInstance()->NAME, storeName);
     
-keysAndValues.put(AdvertisementCampaignData::getInstance().NAME, name);
+keysAndValues->put(AdvertisementCampaignData::getInstance()->NAME, name);
     
 
-    HashMap<Object*, Object*> hashMap = super.getRow(keysAndValues);;
+    HashMap<Object*, Object*>* hashMap = super.getRow(keysAndValues);;
     
 
                         if(hashMap != 
@@ -206,7 +212,7 @@ keysAndValues.put(AdvertisementCampaignData::getInstance().NAME, name);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdvertisementCampaign(hashMap);
+                        return dynamic_cast<AdvertisementCampaignInterface*>(new AdvertisementCampaign(hashMap));
     
 
                                     }
@@ -224,35 +230,35 @@ keysAndValues.put(AdvertisementCampaignData::getInstance().NAME, name);
 }
 
 
-    public: void update(HashMap<Object*, Object*> updatedValues){
-super.updateWhere(EntryData::getInstance().getInstance().ID, updatedValues.get(EntryData::getInstance().getInstance().ID), updatedValues);
+    public: void update(HashMap<Object*, Object*>* updatedValues){
+super.updateWhere(EntryData::getInstance()->getInstance()->ID, updatedValues->get(EntryData::getInstance()->getInstance()->ID), updatedValues);
     
 }
 
 
     public: std::string createTableStatement(){
 
-    EntryData entryData = EntryData::getInstance().getInstance();;
+    EntryData* entryData = EntryData::getInstance()->getInstance();;
     
 
-    AdvertisementCampaignData advertisementCampaignData = AdvertisementCampaignData::getInstance();;
+    AdvertisementCampaignData* advertisementCampaignData = AdvertisementCampaignData::getInstance();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->sqlStrings.CREATE_TABLE);
+stringBuffer->append(this->sqlStrings.CREATE_TABLE);
     
-stringBuffer.append(this->getTableName());
+stringBuffer->append(this->getTableName());
     
-stringBuffer.append(this->sqlStrings.START);
+stringBuffer->append(this->sqlStrings.START);
     
-stringBuffer.append(entryData.ID).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(StoreFrontData::getInstance().NAME).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(advertisementCampaignData.NAME).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(advertisementCampaignData.DESCRIPTION).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(advertisementCampaignData.CONFIG).append(this->sqlTypeStrings.BLOB_NOT_NULL).append(TimeData::getInstance().START).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(TimeData::getInstance().END).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(entryData.TIMECREATED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(entryData.LASTMODIFIED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(this->sqlStrings.PRIMARY_KEY).append(entryData.ID).append(this->sqlStrings.END);
+stringBuffer->append(entryData->ID)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(StoreFrontData::getInstance()->NAME)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(advertisementCampaignData->NAME)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(advertisementCampaignData->DESCRIPTION)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(advertisementCampaignData->CONFIG)->append(this->sqlTypeStrings.BLOB_NOT_NULL)->append(TimeData::getInstance()->START)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(TimeData::getInstance()->END)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(entryData->TIMECREATED)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(entryData->LASTMODIFIED)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(this->sqlStrings.PRIMARY_KEY)->append(entryData->ID)->append(this->sqlStrings.END);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

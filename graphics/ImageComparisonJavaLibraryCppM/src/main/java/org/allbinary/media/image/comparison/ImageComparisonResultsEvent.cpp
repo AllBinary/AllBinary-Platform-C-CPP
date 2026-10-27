@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
       
@@ -39,13 +47,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageComparisonResult.h"
+        #include "org/allbinary/media/image/comparison/ImageComparisonResult.h"
 
 class ImageComparisonResultsEvent: public AllBinaryEventObject {
 
-    private: ImageComparisonResult imageComparisonResult;
+    private: ImageComparisonResult* imageComparisonResult;
 
-public: ImageComparisonResultsEvent(Object* anyType, ImageComparisonResult imageComparisonInfo) : AllBinaryEventObject(anyType){
+public: ImageComparisonResultsEvent(Object* anyType, ImageComparisonResult* imageComparisonInfo) : AllBinaryEventObject(anyType){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -57,7 +65,7 @@ this->setImageComparisonResult(imageComparisonInfo);
 }
 
 
-    public: ImageComparisonResult getImageComparisonResult(){
+    public: ImageComparisonResult* getImageComparisonResult(){
 
 
 
@@ -67,7 +75,7 @@ this->setImageComparisonResult(imageComparisonInfo);
 }
 
 
-    public: void setImageComparisonResult(ImageComparisonResult imageComparisonResult){
+    public: void setImageComparisonResult(ImageComparisonResult* imageComparisonResult){
 this->imageComparisonResult= imageComparisonResult;
     
 }

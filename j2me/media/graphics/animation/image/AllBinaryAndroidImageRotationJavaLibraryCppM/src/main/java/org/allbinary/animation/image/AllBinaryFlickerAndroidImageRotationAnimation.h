@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYFLICKERANDROIDIMAGEROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYFLICKERANDROIDIMAGEROTATIONANIMATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <android/graphics/Matrix.h>
@@ -62,15 +68,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageBaseRotationAnimation.h"
+        #include "org/allbinary/animation/image/ImageBaseRotationAnimation.h"
 
 class AllBinaryFlickerAndroidImageRotationAnimation: public ImageBaseRotationAnimation {
 
-    private: const ImageModifierUtil imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
+    private: ImageModifierUtil* imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
 
-    private: const AndroidImageUtil androidImageUtil = AndroidImageUtil::getInstance();
+    private: AndroidImageUtil* androidImageUtil = AndroidImageUtil::getInstance();
 
-    private: const Matrix matrix = Matrix();
+    private: Matrix* matrix = new Matrix();
 
     private: int32_t halfWidth;
 
@@ -78,13 +84,13 @@ class AllBinaryFlickerAndroidImageRotationAnimation: public ImageBaseRotationAni
 
     private: int16_t increment;
 
-    private: Image originalImage;
+    private: Image* originalImage;
 
-public: AllBinaryFlickerAndroidImageRotationAnimation(Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior);
+public: AllBinaryFlickerAndroidImageRotationAnimation(Image* originalImage, Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior);
 
-    public: void setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor* basicColor);
 
-    public: void changeBasicColor(BasicColor basicColor);
+    public: void changeBasicColor(BasicColor* basicColor);
 
     public: void setAlpha(int32_t alpha);
 

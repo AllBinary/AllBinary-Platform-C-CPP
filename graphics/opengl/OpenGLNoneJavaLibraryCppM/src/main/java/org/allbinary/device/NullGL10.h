@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -61,9 +67,9 @@
         
 class NullGL10
             : public Object
-        : public GL10 {
+        , public GL10 {
 
-    public: static const NullGL10 NULL_GL10 = NullGL10();
+    public: static NullGL10* NULL_GL10() { static std::unique_ptr<NullGL10> value(new NullGL10()); return value.get(); }
 
     public: void glActiveTexture(int32_t texture);
 
@@ -87,11 +93,11 @@ class NullGL10
 
     public: void glColorMask(bool red, bool green, bool blue, bool alpha);
 
-    public: void glColorPointer(int32_t size, int32_t type, int32_t stride, Buffer pointer);
+    public: void glColorPointer(int32_t size, int32_t type, int32_t stride, Buffer* pointer);
 
-    public: void glCompressedTexImage2D(int32_t target, int32_t level, int32_t internalformat, int32_t width, int32_t height, int32_t border, int32_t imageSize, Buffer data);
+    public: void glCompressedTexImage2D(int32_t target, int32_t level, int32_t internalformat, int32_t width, int32_t height, int32_t border, int32_t imageSize, Buffer* data);
 
-    public: void glCompressedTexSubImage2D(int32_t target, int32_t level, int32_t xoffset, int32_t yoffset, int32_t width, int32_t height, int32_t format, int32_t imageSize, Buffer data);
+    public: void glCompressedTexSubImage2D(int32_t target, int32_t level, int32_t xoffset, int32_t yoffset, int32_t width, int32_t height, int32_t format, int32_t imageSize, Buffer* data);
 
     public: void glCopyTexImage2D(int32_t target, int32_t level, int32_t internalformat, int32_t x, int32_t y, int32_t width, int32_t height, int32_t border);
 
@@ -101,7 +107,7 @@ class NullGL10
 
     public: void glDeleteTextures(int32_t n, std::vector<int32_t> textures, int32_t offset);
 
-    public: void glDeleteTextures(int32_t n, IntBuffer textures);
+    public: void glDeleteTextures(int32_t n, IntBuffer* textures);
 
     public: void glDepthFunc(int32_t func);
 
@@ -115,7 +121,7 @@ class NullGL10
 
     public: void glDrawArrays(int32_t mode, int32_t first, int32_t count);
 
-    public: void glDrawElements(int32_t mode, int32_t count, int32_t type, Buffer indices);
+    public: void glDrawElements(int32_t mode, int32_t count, int32_t type, Buffer* indices);
 
     public: void glEnable(int32_t cap);
 
@@ -129,7 +135,7 @@ class NullGL10
 
     public: void glFogfv(int32_t pname, std::vector<float> params, int32_t offset);
 
-    public: void glFogfv(int32_t pname, FloatBuffer params);
+    public: void glFogfv(int32_t pname, FloatBuffer* params);
 
     public: void glFrontFace(int32_t mode);
 
@@ -137,13 +143,13 @@ class NullGL10
 
     public: void glGenTextures(int32_t n, std::vector<int32_t> textures, int32_t offset);
 
-    public: void glGenTextures(int32_t n, IntBuffer textures);
+    public: void glGenTextures(int32_t n, IntBuffer* textures);
 
     public: int32_t glGetError();
 
     public: void glGetIntegerv(int32_t pname, std::vector<int32_t> params, int32_t offset);
 
-    public: void glGetIntegerv(int32_t pname, IntBuffer params);
+    public: void glGetIntegerv(int32_t pname, IntBuffer* params);
 
     public: std::string glGetString(int32_t name);
 
@@ -153,13 +159,13 @@ class NullGL10
 
     public: void glLightModelfv(int32_t pname, std::vector<float> params, int32_t offset);
 
-    public: void glLightModelfv(int32_t pname, FloatBuffer params);
+    public: void glLightModelfv(int32_t pname, FloatBuffer* params);
 
     public: void glLightf(int32_t light, int32_t pname, float param);
 
     public: void glLightfv(int32_t light, int32_t pname, std::vector<float> params, int32_t offset);
 
-    public: void glLightfv(int32_t light, int32_t pname, FloatBuffer params);
+    public: void glLightfv(int32_t light, int32_t pname, FloatBuffer* params);
 
     public: void glLineWidth(float width);
 
@@ -167,7 +173,7 @@ class NullGL10
 
     public: void glLoadMatrixf(std::vector<float> m, int32_t offset);
 
-    public: void glLoadMatrixf(FloatBuffer m);
+    public: void glLoadMatrixf(FloatBuffer* m);
 
     public: void glLogicOp(int32_t opcode);
 
@@ -175,19 +181,19 @@ class NullGL10
 
     public: void glMaterialfv(int32_t face, int32_t pname, std::vector<float> params, int32_t offset);
 
-    public: void glMaterialfv(int32_t face, int32_t pname, FloatBuffer params);
+    public: void glMaterialfv(int32_t face, int32_t pname, FloatBuffer* params);
 
     public: void glMatrixMode(int32_t mode);
 
     public: void glMultMatrixf(std::vector<float> m, int32_t offset);
 
-    public: void glMultMatrixf(FloatBuffer m);
+    public: void glMultMatrixf(FloatBuffer* m);
 
     public: void glMultiTexCoord4f(int32_t target, float s, float t, float r, float q);
 
     public: void glNormal3f(float nx, float ny, float nz);
 
-    public: void glNormalPointer(int32_t type, int32_t stride, Buffer pointer);
+    public: void glNormalPointer(int32_t type, int32_t stride, Buffer* pointer);
 
     public: void glOrthof(float left, float right, float bottom, float top, float zNear, float zFar);
 
@@ -201,7 +207,7 @@ class NullGL10
 
     public: void glPushMatrix();
 
-    public: void glReadPixels(int32_t x, int32_t y, int32_t width, int32_t height, int32_t format, int32_t type, Buffer pixels);
+    public: void glReadPixels(int32_t x, int32_t y, int32_t width, int32_t height, int32_t format, int32_t type, Buffer* pixels);
 
     public: void glRotatef(float angle, float x, float y, float z);
 
@@ -223,25 +229,25 @@ class NullGL10
 
     public: void glStencilOp(int32_t fail, int32_t zfail, int32_t zpass);
 
-    public: void glTexCoordPointer(int32_t size, int32_t type, int32_t stride, Buffer pointer);
+    public: void glTexCoordPointer(int32_t size, int32_t type, int32_t stride, Buffer* pointer);
 
     public: void glTexEnvf(int32_t target, int32_t pname, float param);
 
     public: void glTexEnvfv(int32_t target, int32_t pname, std::vector<float> params, int32_t offset);
 
-    public: void glTexEnvfv(int32_t target, int32_t pname, FloatBuffer params);
+    public: void glTexEnvfv(int32_t target, int32_t pname, FloatBuffer* params);
 
-    public: void glTexImage2D(int32_t target, int32_t level, int32_t internalformat, int32_t width, int32_t height, int32_t border, int32_t format, int32_t type, Buffer pixels);
+    public: void glTexImage2D(int32_t target, int32_t level, int32_t internalformat, int32_t width, int32_t height, int32_t border, int32_t format, int32_t type, Buffer* pixels);
 
     public: void glTexParameterf(int32_t target, int32_t pname, float param);
 
     public: void glTexParameteri(int32_t target, int32_t pname, int32_t param);
 
-    public: void glTexSubImage2D(int32_t target, int32_t level, int32_t xoffset, int32_t yoffset, int32_t width, int32_t height, int32_t format, int32_t type, Buffer pixels);
+    public: void glTexSubImage2D(int32_t target, int32_t level, int32_t xoffset, int32_t yoffset, int32_t width, int32_t height, int32_t format, int32_t type, Buffer* pixels);
 
     public: void glTranslatef(float x, float y, float z);
 
-    public: void glVertexPointer(int32_t size, int32_t type, int32_t stride, Buffer pointer);
+    public: void glVertexPointer(int32_t size, int32_t type, int32_t stride, Buffer* pointer);
 
     public: void glViewport(int32_t x, int32_t y, int32_t width, int32_t height);
 

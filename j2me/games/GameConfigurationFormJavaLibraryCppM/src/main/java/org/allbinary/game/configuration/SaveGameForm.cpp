@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -64,12 +70,12 @@
         
 class SaveGameForm: public CommandForm {
 
-    private: static CommandForm FORM = CommandForm::getNullCommandForm();
+    private: static inline CommandForm* FORM = CommandForm::getNullCommandForm();
 
                 //@Throws(Exception.constructor)
             
-    public: static CommandForm createForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
-SaveGameForm::FORM= SaveGameForm(commandListener, title, backgrounBasicColor, foregroundBasicColor);
+    public: static CommandForm* createForm(CommandListener* commandListener, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor){
+SaveGameForm::FORM= new SaveGameForm(commandListener, title, backgrounBasicColor, foregroundBasicColor);
     
 
 
@@ -80,7 +86,7 @@ SaveGameForm::FORM= SaveGameForm(commandListener, title, backgrounBasicColor, fo
 }
 
 
-    public: static CommandForm getInstance(){
+    public: static CommandForm* getInstance(){
 
 
 
@@ -90,9 +96,9 @@ SaveGameForm::FORM= SaveGameForm(commandListener, title, backgrounBasicColor, fo
 }
 
 
-    private: const MEUtil meUtil = MEUtil::getInstance();
+    private: MEUtil* meUtil = MEUtil::getInstance();
 
-private: SaveGameForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor) : CommandForm(commandListener, title, backgrounBasicColor, foregroundBasicColor){
+private: SaveGameForm(CommandListener* commandListener, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) : CommandForm(commandListener, title, backgrounBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -104,22 +110,22 @@ this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUC
 
     std::string timeString = std::to_string(currentTimeMillis);;
     
-this->meUtil.appendItem(this, TextField("Name: ", timeString, 30, TextField::ANY));
+this->meUtil->appendItem(this, new TextField("Name: ", timeString, 30, TextField::ANY));
     
 this->initCommands(commandListener);
     
 }
 
 
-    public: void initCommands(CommandListener cmdListener){
+    public: void initCommands(CommandListener* cmdListener){
 
-    GameCommandsFactory gameCommandsFactory = GameCommandsFactory::getInstance();;
+    GameCommandsFactory* gameCommandsFactory = GameCommandsFactory::getInstance();;
     
 this->removeAllCommands();
     
-this->addCommand(gameCommandsFactory.SAVE);
+this->addCommand(gameCommandsFactory->SAVE);
     
-this->addCommand(gameCommandsFactory.CLOSE_AND_SHOW_GAME_CANVAS);
+this->addCommand(gameCommandsFactory->CLOSE_AND_SHOW_GAME_CANVAS);
     
 this->setCommandListener(cmdListener);
     

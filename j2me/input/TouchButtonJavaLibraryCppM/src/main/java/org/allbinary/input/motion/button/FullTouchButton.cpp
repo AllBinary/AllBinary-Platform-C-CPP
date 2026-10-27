@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/Animation.h>
@@ -56,25 +62,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchButton.h"
-#include "TouchButtonInput.h"
-#include "TouchButtonResource.h"
+        #include "org/allbinary/input/motion/button/TouchButton.h"
+#include "org/allbinary/input/motion/button/TouchButtonInput.h"
+#include "org/allbinary/input/motion/button/TouchButtonResource.h"
 
 class FullTouchButton: public TouchButton {
 
                 //@Throws(Exception.constructor)
             
-    public: static FullTouchButton createButton(TouchButtonInput touchButtonInput, TouchButtonResource touchButtonResource, Rectangle rawRectangle, CellPosition cellPosition, int32_t xBorder, int32_t yBorder){
+    public: static FullTouchButton* createButton(TouchButtonInput* touchButtonInput, TouchButtonResource* touchButtonResource, Rectangle* rawRectangle, CellPosition* cellPosition, int32_t xBorder, int32_t yBorder){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FullTouchButton(touchButtonInput, FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(touchButtonResource.RESOURCE).getInstance(0), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(touchButtonResource.HINT).getInstance(0), rawRectangle, cellPosition, xBorder, yBorder);
+                        return new FullTouchButton(touchButtonInput, FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(touchButtonResource->RESOURCE)->getInstance(0), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(touchButtonResource->HINT)->getInstance(0), rawRectangle, cellPosition, xBorder, yBorder);
     
 }
 
 
-public: FullTouchButton(TouchButtonInput touchButtonInput, Animation animationInterface, Animation hintAnimationInterface, Rectangle rawRectangle, CellPosition cellPosition, int32_t xBorder, int32_t yBorder) : TouchButton(touchButtonInput, animationInterface, hintAnimationInterface, rawRectangle, cellPosition, xBorder, yBorder){
+public: FullTouchButton(TouchButtonInput* touchButtonInput, Animation* animationInterface, Animation* hintAnimationInterface, Rectangle* rawRectangle, CellPosition* cellPosition, int32_t xBorder, int32_t yBorder) : TouchButton(touchButtonInput, animationInterface, hintAnimationInterface, rawRectangle, cellPosition, xBorder, yBorder){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -88,7 +94,7 @@ public: FullTouchButton(TouchButtonInput touchButtonInput, Animation animationIn
 
         try {
             
-    PointFactory pointFactory = PointFactory::getInstance();;
+    PointFactory* pointFactory = PointFactory::getInstance();;
     
 
     int32_t x = this->rawRectangle.getWidth() *this->cellPositionP.getColumn();;
@@ -96,22 +102,22 @@ public: FullTouchButton(TouchButtonInput touchButtonInput, Animation animationIn
 
     int32_t y = this->rawRectangle.getHeight() *this->cellPositionP.getRow();;
     
-this->rectangleP= Rectangle(pointFactory.createXY(x, y), this->rawRectangle.getWidth() +(2 *this->xBorder), this->rawRectangle.getHeight() +(2 *this->yBorder));
+this->rectangleP= new Rectangle(pointFactory->createXY(x, y), this->rawRectangle.getWidth() +(2 *this->xBorder), this->rawRectangle.getHeight() +(2 *this->yBorder));
     
 
-    GPoint point = this->rectangleP.getPoint();;
+    GPoint* point = this->rectangleP.getPoint();;
     
-this->animationX= point.getX() +this->xBorder;
+this->animationX= point->getX() +this->xBorder;
     
-this->animationY= point.getY() +this->yBorder;
+this->animationY= point->getY() +this->yBorder;
     
 this->hintAnimationY= this->animationY -this->rectangleP.getHeight()>>1;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "updateRectangle", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "updateRectangle", &e);
     
 }
 

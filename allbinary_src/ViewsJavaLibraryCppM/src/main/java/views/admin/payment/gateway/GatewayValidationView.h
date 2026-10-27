@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_PAYMENT_GATEWAY_GATEWAYVALIDATIONVIEW_H
         #define VIEWS_ADMIN_PAYMENT_GATEWAY_GATEWAYVALIDATIONVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
@@ -56,25 +62,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GatewayView.h"
+        #include "views/admin/payment/gateway/GatewayView.h"
 
 class GatewayValidationView: public HttpStoreComponentView, public ValidationComponentInterface {
 
-public: GatewayValidationView(TransformInfoInterface transformInfoInterface);
+public: GatewayValidationView(TransformInfoInterface* transformInfoInterface);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
                 //@Throws(Exception.constructor)
             
     public: std::string validationInfo();
 
-    public: Document toXmlDoc();
+    public: Document* toXmlDoc();
 
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
                 //@Throws(Exception.constructor)
             

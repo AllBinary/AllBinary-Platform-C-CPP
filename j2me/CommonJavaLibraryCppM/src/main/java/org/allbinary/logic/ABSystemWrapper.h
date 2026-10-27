@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_ABSYSTEMWRAPPER_H
         #define ORG_ALLBINARY_LOGIC_ABSYSTEMWRAPPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/System.h"
@@ -51,9 +57,9 @@ class ABSystemWrapper
             : public Object
          {
 
-    private: static ABSystemWrapper instance() { return ABSystemWrapper(); }
+    private: static ABSystemWrapper* instance() { static std::unique_ptr<ABSystemWrapper> value(new ABSystemWrapper()); return value.get(); }
 
-    public: static ABSystemWrapper getInstance();
+    public: static ABSystemWrapper* getInstance();
 
     public: template<typename Value> void arraycopy(const std::vector<Value>& src, int32_t srcPos, std::vector<Value>& dest, int32_t destPos, int32_t length) {
         System.arraycopy(src, srcPos, dest, destPos, length);

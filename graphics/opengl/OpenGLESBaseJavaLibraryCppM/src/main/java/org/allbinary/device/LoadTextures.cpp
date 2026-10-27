@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -50,7 +56,7 @@ class LoadTextures
 
                 //@Throws(Exception.constructor)
             
-    public: void load(GL10 gl){
+    public: void load(GL10* gl){
 }
 
 

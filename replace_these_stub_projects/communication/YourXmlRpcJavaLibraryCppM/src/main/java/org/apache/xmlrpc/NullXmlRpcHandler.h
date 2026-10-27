@@ -21,6 +21,12 @@
         #ifndef ORG_APACHE_XMLRPC_NULLXMLRPCHANDLER_H
         #define ORG_APACHE_XMLRPC_NULLXMLRPCHANDLER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,17 +58,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "XmlRpcHandler.h"
+        #include "org/apache/xmlrpc/XmlRpcHandler.h"
 
 class NullXmlRpcHandler
             : public Object
-        : public XmlRpcHandler {
+        , public XmlRpcHandler {
 
-    public: static const NullXmlRpcHandler NULL_XML_RPC_HANDLER = NullXmlRpcHandler();
+    public: static NullXmlRpcHandler* NULL_XML_RPC_HANDLER() { static std::unique_ptr<NullXmlRpcHandler> value(new NullXmlRpcHandler()); return value.get(); }
 
                 //@Throws(Exception.constructor)
             
-    public: Object* execute(std::string method, BasicArrayList params);
+    public: Object* execute(std::string method, BasicArrayList* params);
 
 };
 

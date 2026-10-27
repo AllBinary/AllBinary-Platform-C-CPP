@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLEFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/business/user/modules/UserFactory.h>
@@ -89,54 +95,54 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicUserRoleFactory.h"
-#include "UserRoleB.h"
-#include "UserRole.h"
+        #include "org/allbinary/business/user/role/BasicUserRoleFactory.h"
+#include "org/allbinary/business/user/role/UserRoleB.h"
+#include "org/allbinary/business/user/role/UserRole.h"
 
 class UserRoleFactory
             : public Object
          {
 
-    private: static UserRoleFactory instance() { return UserRoleFactory(); }
+    private: static UserRoleFactory* instance() { static std::unique_ptr<UserRoleFactory> value(new UserRoleFactory()); return value.get(); }
 
-    public: static UserRoleFactory getInstance();
+    public: static UserRoleFactory* getInstance();
 
-    private: const BasicUserRoleFactory basicUserRoleFactory = BasicUserRoleFactory::getInstance();
+    private: BasicUserRoleFactory* basicUserRoleFactory = BasicUserRoleFactory::getInstance();
 
-    public: const UserRole INSTALLER = UserRoleB(this->basicUserRoleFactory.INSTALLER, 
+    public: UserRole* INSTALLER = new UserRoleB(this->basicUserRoleFactory->INSTALLER, 
                             nullptr);
 
-    public: const UserRole ADMINISTRATOR = UserRoleB(this->basicUserRoleFactory.ADMINISTRATOR, AdminUserFactory());
+    public: UserRole* ADMINISTRATOR = new UserRoleB(this->basicUserRoleFactory->ADMINISTRATOR, new AdminUserFactory());
 
-    public: const UserRole CUSTOMER = UserRoleB(this->basicUserRoleFactory.CUSTOMER, UserFactory());
+    public: UserRole* CUSTOMER = new UserRoleB(this->basicUserRoleFactory->CUSTOMER, new UserFactory());
 
-    public: const UserRole SUBSCRIBERCUSTOMER = UserRoleB(this->basicUserRoleFactory.SUBSCRIBERCUSTOMER, SubscriberUserFactory());
+    public: UserRole* SUBSCRIBERCUSTOMER = new UserRoleB(this->basicUserRoleFactory->SUBSCRIBERCUSTOMER, new SubscriberUserFactory());
 
-    public: const UserRole WHOLESALECUSTOMER = UserRoleB(this->basicUserRoleFactory.WHOLESALECUSTOMER, WholesaleUserFactory());
+    public: UserRole* WHOLESALECUSTOMER = new UserRoleB(this->basicUserRoleFactory->WHOLESALECUSTOMER, new WholesaleUserFactory());
 
-    public: const UserRole STOREMANAGER = UserRoleB(this->basicUserRoleFactory.STOREMANAGER, StoreAdminUserFactory());
+    public: UserRole* STOREMANAGER = new UserRoleB(this->basicUserRoleFactory->STOREMANAGER, new StoreAdminUserFactory());
 
-    public: const UserRole PRODUCTMANAGER = UserRoleB(this->basicUserRoleFactory.PRODUCTMANAGER, ProductStoreAdminUserFactory());
+    public: UserRole* PRODUCTMANAGER = new UserRoleB(this->basicUserRoleFactory->PRODUCTMANAGER, new ProductStoreAdminUserFactory());
 
-    public: const UserRole CUSTOMERMANAGER = UserRoleB(this->basicUserRoleFactory.CUSTOMERMANAGER, CustomerStoreAdminUserFactory());
+    public: UserRole* CUSTOMERMANAGER = new UserRoleB(this->basicUserRoleFactory->CUSTOMERMANAGER, new CustomerStoreAdminUserFactory());
 
-    public: const UserRole PAYMENTMANAGER = UserRoleB(this->basicUserRoleFactory.PAYMENTMANAGER, PaymentStoreAdminUserFactory());
+    public: UserRole* PAYMENTMANAGER = new UserRoleB(this->basicUserRoleFactory->PAYMENTMANAGER, new PaymentStoreAdminUserFactory());
 
-    public: const UserRole ORDERMANAGER = UserRoleB(this->basicUserRoleFactory.ORDERMANAGER, OrderStoreAdminUserFactory());
+    public: UserRole* ORDERMANAGER = new UserRoleB(this->basicUserRoleFactory->ORDERMANAGER, new OrderStoreAdminUserFactory());
 
-    public: const UserRole WEBMANAGER = UserRoleB(this->basicUserRoleFactory.WEBMANAGER, WebStoreAdminUserFactory());
+    public: UserRole* WEBMANAGER = new UserRoleB(this->basicUserRoleFactory->WEBMANAGER, new WebStoreAdminUserFactory());
 
-    public: const UserRole REVIEWER = UserRoleB(this->basicUserRoleFactory.REVIEWER, ReviewOrderStoreAdminUserFactory());
+    public: UserRole* REVIEWER = new UserRoleB(this->basicUserRoleFactory->REVIEWER, new ReviewOrderStoreAdminUserFactory());
 
-    public: const UserRole SHIPPING = UserRoleB(this->basicUserRoleFactory.SHIPPING, ShipOrderStoreAdminUserFactory());
+    public: UserRole* SHIPPING = new UserRoleB(this->basicUserRoleFactory->SHIPPING, new ShipOrderStoreAdminUserFactory());
 
-    public: const UserRole ADJUSTER = UserRoleB(this->basicUserRoleFactory.ADJUSTER, AdjustOrderStoreAdminUserFactory());
+    public: UserRole* ADJUSTER = new UserRoleB(this->basicUserRoleFactory->ADJUSTER, new AdjustOrderStoreAdminUserFactory());
 
-    public: const UserRole WORKFLOWEDITOR = UserRoleB(this->basicUserRoleFactory.WORKFLOWEDITOR, WorkflowEditorWebStoreAdminUserFactory());
+    public: UserRole* WORKFLOWEDITOR = new UserRoleB(this->basicUserRoleFactory->WORKFLOWEDITOR, new WorkflowEditorWebStoreAdminUserFactory());
 
-    public: const UserRole WIZARD = UserRoleB(this->basicUserRoleFactory.WIZARD, WizardWebStoreAdminUserFactory());
+    public: UserRole* WIZARD = new UserRoleB(this->basicUserRoleFactory->WIZARD, new WizardWebStoreAdminUserFactory());
 
-    public: const UserRole VIEWEDITOR = UserRoleB(this->basicUserRoleFactory.VIEWEDITOR, ViewEditorWebStoreAdminUserFactory());
+    public: UserRole* VIEWEDITOR = new UserRoleB(this->basicUserRoleFactory->VIEWEDITOR, new ViewEditorWebStoreAdminUserFactory());
 
 };
 

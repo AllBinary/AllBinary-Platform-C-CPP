@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tables/workflow/WorkFlowEntityFactory.h>
@@ -62,28 +68,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WorkFlowView.h"
+        #include "views/admin/workflow/WorkFlowView.h"
 
 class DeleteValidationView: public WorkFlowView, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string workFlowName;
 
-public: DeleteValidationView(TransformInfoInterface transformInfoInterface) : WorkFlowView(transformInfoInterface){
+public: DeleteValidationView(TransformInfoInterface* transformInfoInterface) : WorkFlowView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->workFlowName= this->getPageContext().getRequest().getParameter(WorkFlowData::getInstance().NAME);
+this->workFlowName= this->getPageContext()->getRequest()->getParameter(WorkFlowData::getInstance()->NAME);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Name: " +this->workFlowName, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("Name: " +this->workFlowName, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -91,7 +97,7 @@ this->workFlowName= this->getPageContext().getRequest().getParameter(WorkFlowDat
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
@@ -108,16 +114,16 @@ this->workFlowName= this->getPageContext().getRequest().getParameter(WorkFlowDat
                                     }
                                 
 
-                        if(WorkFlowEntityFactory::getInstance().create2().get(this->workFlowName, this->getWeblisketSession().getStoreName()) == 
+                        if(WorkFlowEntityFactory::getInstance()->create2()->get(this->workFlowName, this->getWeblisketSession()->getStoreName()) == 
                                     nullptr
                                 )
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("WorkFlow does not exist.", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("WorkFlow does not exist.", this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -139,13 +145,13 @@ this->workFlowName= this->getPageContext().getRequest().getParameter(WorkFlowDat
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -165,33 +171,33 @@ this->workFlowName= this->getPageContext().getRequest().getParameter(WorkFlowDat
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
                         if(false)
                         
                                     {
-                                    stringBuffer.append("WorkFlow name is invalid<br />");
+                                    stringBuffer->append("WorkFlow name is invalid<br />");
     
 
                                     }
                                 
 
-                        if(WorkFlowEntityFactory::getInstance().create2().get(this->workFlowName, this->getWeblisketSession().getStoreName()) == 
+                        if(WorkFlowEntityFactory::getInstance()->create2()->get(this->workFlowName, this->getWeblisketSession()->getStoreName()) == 
                                     nullptr
                                 )
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("WorkFlow does not exist.", this, "validationInfo()");
+                                    this->logUtil->putF("WorkFlow does not exist.", this, "validationInfo()");
     
 
                                     }
                                 
-stringBuffer.append("WorkFlow does not exist<br />");
+stringBuffer->append("WorkFlow does not exist<br />");
     
 
                                     }
@@ -200,17 +206,17 @@ stringBuffer.append("WorkFlow does not exist<br />");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -226,7 +232,7 @@ stringBuffer.append("WorkFlow does not exist<br />");
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -236,7 +242,7 @@ stringBuffer.append("WorkFlow does not exist<br />");
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -50,15 +56,15 @@
         
 class ShippingMethodsInterface {
 
-    BasicArrayList get()
+    public: virtual BasicArrayList* get() = 0;
 
                 //@Throws(Exception.constructor)
             
-    ShippingInterface getShippingInterface(std::string name)
+    public: virtual ShippingInterface* getShippingInterface(std::string name) = 0;
 
                 //@Throws(Exception.constructor)
             
-    ShippingInterface getDefault()
+    public: virtual ShippingInterface* getDefault() = 0;
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENTSOURCE_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENTSOURCE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/swing/tree/MutableTreeNode.h>
@@ -51,17 +57,17 @@ class MyCanvasEventSource
 
     private: std::string command;
 
-    private: MutableTreeNode treeNode;
+    private: MutableTreeNode* treeNode;
 
     private: double angle = 0;
 
-public: MyCanvasEventSource(std::string command, MutableTreeNode treeNode);
+public: MyCanvasEventSource(std::string command, MutableTreeNode* treeNode);
 
-public: MyCanvasEventSource(std::string command, double angle, MutableTreeNode treeNode);
+public: MyCanvasEventSource(std::string command, double angle, MutableTreeNode* treeNode);
 
     public: std::string getCommand();
 
-    public: MutableTreeNode getTreeNode();
+    public: MutableTreeNode* getTreeNode();
 
     public: double getAngle();
 

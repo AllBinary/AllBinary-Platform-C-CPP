@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -115,30 +121,30 @@ this->type= type;
 
     public: std::string toString(){
 
-    CommonLabels commonLabels = CommonLabels::getInstance();;
+    CommonLabels* commonLabels = CommonLabels::getInstance();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("BufferedImageInfo -");
+stringBuffer->append("BufferedImageInfo -");
     
-stringBuffer.append(commonLabels.WIDTH_LABEL);
+stringBuffer->append(commonLabels->WIDTH_LABEL);
     
-stringBuffer.appendint(this->getWidth());
+stringBuffer->appendint(this->getWidth());
     
-stringBuffer.append(commonLabels.HEIGHT_LABEL);
+stringBuffer->append(commonLabels->HEIGHT_LABEL);
     
-stringBuffer.appendint(this->getHeight());
+stringBuffer->appendint(this->getHeight());
     
-stringBuffer.append(" Type: ");
+stringBuffer->append(" Type: ");
     
-stringBuffer.appendint(this->getType());
+stringBuffer->appendint(this->getType());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

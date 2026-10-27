@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -78,9 +84,9 @@ class TransformTemplateCustomizerUtil
             : public Object
          {
 
-    private: static TransformTemplateCustomizerUtil instance() { return TransformTemplateCustomizerUtil(); }
+    private: static TransformTemplateCustomizerUtil* instance() { static std::unique_ptr<TransformTemplateCustomizerUtil> value(new TransformTemplateCustomizerUtil()); return value.get(); }
 
-    public: static TransformTemplateCustomizerUtil getInstance(){
+    public: static TransformTemplateCustomizerUtil* getInstance(){
 
 
 
@@ -90,7 +96,7 @@ class TransformTemplateCustomizerUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string CUSTOMIZER_NAME;
 
@@ -110,103 +116,103 @@ class TransformTemplateCustomizerUtil
 
 private: TransformTemplateCustomizerUtil(){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-    std::string SPACE = CommonSeps::getInstance().SPACE;;
+    std::string SPACE = CommonSeps::getInstance()->SPACE;;
     
 this->CUSTOMIZER_NAME= SPACE +CustomizerTransformInfoData::NAME;
     
-this->BODY_VIEWNAMEKEY= SPACE +BodyData::getInstance().VIEWNAMEKEY;
+this->BODY_VIEWNAMEKEY= SPACE +BodyData::getInstance()->VIEWNAMEKEY;
     
-this->TITLE_VIEWNAMEKEY= SPACE +TitleData::getInstance().VIEWNAMEKEY;
+this->TITLE_VIEWNAMEKEY= SPACE +TitleData::getInstance()->VIEWNAMEKEY;
     
 this->GLOBALS_NEW= GLOBALS2::NEW +SPACE;
     
-this->GLOBALS_INSERT= commonStrings.INSERT +SPACE;
+this->GLOBALS_INSERT= commonStrings->INSERT +SPACE;
     
-this->GLOBALS_DELETE= commonStrings.DELETE +SPACE;
+this->GLOBALS_DELETE= commonStrings->DELETE +SPACE;
     
 this->GLOBALS_EDIT= GLOBALS2::EDIT +SPACE;
     
-this->GLOBALS_UPDATE= commonStrings.UPDATE +SPACE;
+this->GLOBALS_UPDATE= commonStrings->UPDATE +SPACE;
     
 }
 
 
     public: std::string getPageNameHack(std::string viewName, std::string storeName){
 
-    std::string SPACE = CommonSeps::getInstance().SPACE;;
+    std::string SPACE = CommonSeps::getInstance()->SPACE;;
     
 
-    std::vector<std::string> ONE_EMPTY_STRING_ARRAY = StringUtil::getInstance().ONE_EMPTY_STRING_ARRAY;;
+    std::vector<std::string> ONE_EMPTY_STRING_ARRAY = StringUtil::getInstance()->ONE_EMPTY_STRING_ARRAY;;
     
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(
+hashMap->put(
                                                 {
                                                     viewName +SPACE
                                                 }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap.put(
+hashMap->put(
                                                 {
                                                     storeName +SPACE
                                                 }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap.put(
+hashMap->put(
                                                 {
                                                     this->CUSTOMIZER_NAME
                                                 }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap.put(
+hashMap->put(
                                                 {
                                                     this->BODY_VIEWNAMEKEY
                                                 }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap.put(
+hashMap->put(
                                                 {
                                                     this->TITLE_VIEWNAMEKEY
                                                 }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap.put(
+hashMap->put(
                                                 {
                                                     this->GLOBALS_NEW
                                                 }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap.put(
+hashMap->put(
                                                 {
                                                     this->GLOBALS_INSERT
                                                 }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap.put(
+hashMap->put(
                                                 {
                                                     this->GLOBALS_DELETE
                                                 }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap.put(
+hashMap->put(
                                                 {
                                                     this->GLOBALS_EDIT
                                                 }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap.put(
+hashMap->put(
                                                 {
                                                     this->GLOBALS_UPDATE
                                                 }, ONE_EMPTY_STRING_ARRAY);
     
 
-    Replace replace = 
+    Replace* replace = 
                 null
             ;;
     
 
-    std::string rootViewName = replace.all(viewName);;
+    std::string rootViewName = replace->all(viewName);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("RootViewName for ObjectConfig: " +rootViewName, this, "getPageNameHack");
+                                    this->logUtil->putF("RootViewName for ObjectConfig: " +rootViewName, this, "getPageNameHack");
     
 
                                     }

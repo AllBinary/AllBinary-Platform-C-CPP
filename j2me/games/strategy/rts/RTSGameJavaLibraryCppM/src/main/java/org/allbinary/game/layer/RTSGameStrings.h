@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_RTSGAMESTRINGS_H
         #define ORG_ALLBINARY_GAME_LAYER_RTSGAMESTRINGS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class RTSGameStrings
             : public Object
          {
 
-    private: static RTSGameStrings instance() { return RTSGameStrings(); }
+    private: static RTSGameStrings* instance() { static std::unique_ptr<RTSGameStrings> value(new RTSGameStrings()); return value.get(); }
 
-    public: static RTSGameStrings getInstance();
+    public: static RTSGameStrings* getInstance();
 
     public: const std::string DRAG_TO_SPOT = "Please Drag";
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_MOTIONRECTANGLECONSTRAINTS_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_MOTIONRECTANGLECONSTRAINTS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -56,16 +62,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Dimension.h"
-#include "Rectangle.h"
+        #include "org/allbinary/input/automation/module/Dimension.h"
+#include "org/allbinary/input/automation/module/Rectangle.h"
 
 class MotionRectangleConstraints
             : public Object
-        : public MotionRectangleConstraintsInterface {
+        , public MotionRectangleConstraintsInterface {
 
-    private: Dimension minDimension;
+    private: Dimension* minDimension;
 
-    private: Dimension maxDimension;
+    private: Dimension* maxDimension;
 
     private: int32_t maxMotionRectangles= 0;
 
@@ -73,23 +79,23 @@ class MotionRectangleConstraints
 
 public: MotionRectangleConstraints();
 
-    public: Dimension getMinDimension();
+    public: Dimension* getMinDimension();
 
-    public: Dimension getMaxDimension();
+    public: Dimension* getMaxDimension();
 
-    public: bool isTooSmall(Rectangle rectangle);
+    public: bool isTooSmall(Rectangle* rectangle);
 
-    public: bool isAreaTooSmall(Rectangle rectangle);
+    public: bool isAreaTooSmall(Rectangle* rectangle);
 
-    public: bool isTooBig(Rectangle rectangle);
+    public: bool isTooBig(Rectangle* rectangle);
 
                 //@Throws(Exception.constructor)
             
-    public: bool isValid(Long frame, BufferedImage bufferedImage, Rectangle rectangle);
+    public: bool isValid(int64_t frame, BufferedImage* bufferedImage, Rectangle* rectangle);
 
-    public: void setMinDimension(Dimension minDimension);
+    public: void setMinDimension(Dimension* minDimension);
 
-    public: void setMaxDimension(Dimension maxDimension);
+    public: void setMaxDimension(Dimension* maxDimension);
 
     public: int32_t getMaxMotionRectangles();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,14 +61,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HighScoresInterface.h"
-#include "HighScore.h"
+        #include "org/allbinary/game/score/HighScoresInterface.h"
+#include "org/allbinary/game/score/HighScore.h"
 
 class HighScores
             : public Object
-        : public HighScoresInterface {
+        , public HighScoresInterface {
 
-    private: BasicArrayList orderedHighScoresList = BasicArrayListD();
+    private: BasicArrayList* orderedHighScoresList = new BasicArrayListD();
 
     private: std::string name;
 
@@ -82,13 +88,13 @@ this->columnTwoHeading= columnTwoHeading;
 }
 
 
-    public: void setList(BasicArrayList orderedHighScoresList){
+    public: void setList(BasicArrayList* orderedHighScoresList){
 this->orderedHighScoresList= orderedHighScoresList;
     
 }
 
 
-    public: BasicArrayList getList(){
+    public: BasicArrayList* getList(){
 
 
 
@@ -113,13 +119,13 @@ this->orderedHighScoresList= orderedHighScoresList;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getList().size();;
+                        return this->getList()->size();;
     
 }
 
 
-    public: void addHighScore(HighScore newHighScore){
-this->orderedHighScoresList.add(newHighScore);
+    public: void addHighScore(HighScore* newHighScore){
+this->orderedHighScoresList->add(newHighScore);
     
 }
 
@@ -156,7 +162,7 @@ this->orderedHighScoresList.add(newHighScore);
 
                 //@Throws(Exception.constructor)
             
-    public: bool isBestScore(HighScore newHighScore){
+    public: bool isBestScore(HighScore* newHighScore){
 
 
 
@@ -168,23 +174,23 @@ this->orderedHighScoresList.add(newHighScore);
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("HighScores: ");
+stringBuffer->append("HighScores: ");
     
-stringBuffer.append(this->heading);
+stringBuffer->append(this->heading);
     
-stringBuffer.append(CommonSeps::getInstance().SPACE);
+stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-stringBuffer.append(CommonLabels::getInstance().TOTAL_LABEL);
+stringBuffer->append(CommonLabels::getInstance()->TOTAL_LABEL);
     
-stringBuffer.appendint(this->orderedHighScoresList.size());
+stringBuffer->appendint(this->orderedHighScoresList->size());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANDROID_API30_ACTIVITYFRACTUREUTILAPI30_H
         #define ORG_ALLBINARY_ANDROID_API30_ACTIVITYFRACTUREUTILAPI30_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <android/app/Activity.h>
 
       
@@ -60,11 +66,11 @@
         
 class ActivityFractureUtilAPI30: public ActivityFractureUtilAPI5 {
 
-    private: static const ActivityFractureUtilAPI30 instance30 = ActivityFractureUtilAPI30();
+    private: static ActivityFractureUtilAPI30* instance30() { static std::unique_ptr<ActivityFractureUtilAPI30> value(new ActivityFractureUtilAPI30()); return value.get(); }
 
-    public: static ActivityFractureUtilAPI30 getInstance();
+    public: static ActivityFractureUtilAPI30* getInstance();
 
-    public: void setFullScreen(Activity activity);
+    public: void setFullScreen(Activity* activity);
 
 };
 

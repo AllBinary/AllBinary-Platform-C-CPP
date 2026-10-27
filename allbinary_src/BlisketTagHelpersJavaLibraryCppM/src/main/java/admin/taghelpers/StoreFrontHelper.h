@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_STOREFRONTHELPER_H
         #define ADMIN_TAGHELPERS_STOREFRONTHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/util/HashMap.h>
 
       
@@ -66,17 +72,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TagHelper.h"
+        #include "admin/taghelpers/TagHelper.h"
 
 class StoreFrontHelper: public TagHelper {
 
-    private: const StoreFrontInterface storeFrontInterface;
+    private: StoreFrontInterface* storeFrontInterface;
 
     private: const std::string currentLocation;
 
     private: const std::string currentHomeLocation;
 
-public: StoreFrontHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: StoreFrontHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
     public: std::string getCurrentLocation();
 

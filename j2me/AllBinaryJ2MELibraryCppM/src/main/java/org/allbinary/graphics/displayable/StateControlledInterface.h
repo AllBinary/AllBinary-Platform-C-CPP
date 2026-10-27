@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_STATECONTROLLEDINTERFACE_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_STATECONTROLLEDINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,7 +48,7 @@
         
 class StateControlledInterface {
 
-    void setState(int32_t state);
+    public: virtual void setState(int32_t state) = 0;
 
 };
 

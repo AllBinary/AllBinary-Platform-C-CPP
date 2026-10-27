@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -48,7 +54,7 @@
         
 class GenericViewTag: public TransformTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string output;
 
@@ -56,10 +62,10 @@ class GenericViewTag: public TransformTag {
 
 public: GenericViewTag(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -70,7 +76,7 @@ public: GenericViewTag(){
     public: void setOutput(std::string value){
 this->output= value;
     
-this->getPropertiesHashMap().put(InputOutputTypeData::getInstance().NAME, this->output);
+this->getPropertiesHashMap()->put(InputOutputTypeData::getInstance()->NAME, this->output);
     
 }
 
@@ -78,7 +84,7 @@ this->getPropertiesHashMap().put(InputOutputTypeData::getInstance().NAME, this->
     public: void setFile(std::string value){
 this->file= value;
     
-this->getPropertiesHashMap().put(InputOutputTypeData::getInstance().FILE, this->file);
+this->getPropertiesHashMap()->put(InputOutputTypeData::getInstance()->FILE, this->file);
     
 }
 

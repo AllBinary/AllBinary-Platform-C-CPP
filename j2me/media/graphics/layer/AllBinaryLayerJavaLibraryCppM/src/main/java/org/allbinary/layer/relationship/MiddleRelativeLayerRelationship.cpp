@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/PointFactory.h>
@@ -47,11 +53,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RelativeLayerRelationship.h"
+        #include "org/allbinary/layer/relationship/RelativeLayerRelationship.h"
 
 class MiddleRelativeLayerRelationship: public RelativeLayerRelationship {
 
-public: MiddleRelativeLayerRelationship(AllBinaryLayer layer) : RelativeLayerRelationship(layer, PointFactory::getInstance().createXY(layer.getHalfWidth(), layer.getHalfHeight()), BasicArrayListUtil::getInstance().getImmutableInstance()){
+public: MiddleRelativeLayerRelationship(AllBinaryLayer* layer) : RelativeLayerRelationship(layer, PointFactory::getInstance()->createXY(layer->getHalfWidth(), layer->getHalfHeight()), BasicArrayListUtil::getInstance()->getImmutableInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     

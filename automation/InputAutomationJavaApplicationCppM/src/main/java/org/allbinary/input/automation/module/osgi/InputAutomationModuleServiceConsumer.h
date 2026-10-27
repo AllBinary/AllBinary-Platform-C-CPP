@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULESERVICECONSUMER_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULESERVICECONSUMER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/osgi/framework/BundleContext.h>
 
       
@@ -48,11 +54,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputAutomationModuleOSGIServiceVisitor.h"
+        #include "org/allbinary/input/automation/module/osgi/InputAutomationModuleOSGIServiceVisitor.h"
 
 class InputAutomationModuleServiceConsumer: public InputAutomationServiceConsumer {
 
-public: InputAutomationModuleServiceConsumer(BundleContext bundleContext);
+public: InputAutomationModuleServiceConsumer(BundleContext* bundleContext);
 
 };
 

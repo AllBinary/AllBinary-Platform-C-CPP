@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/direction/Direction.h>
@@ -70,39 +76,39 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TopViewCharacterBehavior.h"
+        #include "org/allbinary/game/behavior/topview/TopViewCharacterBehavior.h"
 
 class PlayerTopViewCharacterBehavior: public TopViewCharacterBehavior {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void terrainEvent(AllBinaryLayer layer, Direction direction, int32_t x, int32_t y, std::vector<BasicGeographicMap> geographicMapInterfaceArray, GeographicMapCellPosition geographicMapCellPosition){
-TrackingEventHandler::getInstance().fireEvent(TrackingEventCircularStaticPool::getInstance().getNextInstance(layer));
+    public: void terrainEvent(AllBinaryLayer* layer, Direction* direction, int32_t x, int32_t y, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, GeographicMapCellPosition* geographicMapCellPosition){
+TrackingEventHandler::getInstance()->fireEvent(TrackingEventCircularStaticPool::getInstance()->getNextInstance(layer));
     
 }
 
 
-    public: void terrainMove(AllBinaryLayer layer, std::vector<BasicGeographicMap> geographicMapInterfaceArray, int32_t x, int32_t y){
+    public: void terrainMove(AllBinaryLayer* layer, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, int32_t x, int32_t y){
 
-    BasicGeographicMapUtil basicGeographicMapUtil = BasicGeographicMapUtil::getInstance();;
+    BasicGeographicMapUtil* basicGeographicMapUtil = BasicGeographicMapUtil::getInstance();;
     
-basicGeographicMapUtil.setPosition(geographicMapInterfaceArray, x, y);
+basicGeographicMapUtil->setPosition(geographicMapInterfaceArray, x, y);
     
 }
 
 
-    private: void moveIfOnScreen(AllBinaryLayer layer, int32_t ax, int32_t ay){
+    private: void moveIfOnScreen(AllBinaryLayer* layer, int32_t ax, int32_t ay){
 }
 
 
-    private: bool isTiledLayerMoveable(AllBinaryTiledLayer terrainTiledLayer, int32_t x, int32_t y){
+    private: bool isTiledLayerMoveable(AllBinaryTiledLayer* terrainTiledLayer, int32_t x, int32_t y){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return (terrainTiledLayer.getXP() +DisplayInfoSingleton::getInstance().getLastWidth() < terrainTiledLayer.getWidth() || x < 0) && (terrainTiledLayer.getXP() > 0 || x > 0);
+                        return (terrainTiledLayer->getXP() +DisplayInfoSingleton::getInstance()->getLastWidth() < terrainTiledLayer->getWidth() || x < 0) && (terrainTiledLayer->getXP() > 0 || x > 0);
     
 }
 

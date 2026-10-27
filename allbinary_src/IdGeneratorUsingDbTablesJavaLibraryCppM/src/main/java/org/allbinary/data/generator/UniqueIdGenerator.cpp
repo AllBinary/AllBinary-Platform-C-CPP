@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,22 +72,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "IdGeneratorInterface.h"
+        #include "org/allbinary/data/generator/IdGeneratorInterface.h"
 
 class UniqueIdGenerator
             : public Object
-        : public IdGeneratorInterface {
+        , public IdGeneratorInterface {
 
-    public: static const std::string EXT = ".unq";
+    public: static inline const std::string EXT = ".unq";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: IdGeneratorEntity idGeneratorEntity;
+    private: IdGeneratorEntity* idGeneratorEntity;
 
     private: std::string name;
 
 public: UniqueIdGenerator(){
-this->idGeneratorEntity= IdGeneratorEntityFactory::getInstance();
+this->idGeneratorEntity= dynamic_cast<IdGeneratorEntity*>(IdGeneratorEntityFactory::getInstance());
     
 }
 
@@ -90,26 +96,26 @@ this->idGeneratorEntity= IdGeneratorEntityFactory::getInstance();
 
         try {
             
-    BasicArrayList vector = BasicArrayListD();;
+    BasicArrayList* vector = new BasicArrayListD();;
     
-vector.add(this->name);
+vector->add(this->name);
     
-vector.add(Long::valueOf(value).toString());
+vector->add(Long.valueOf(value)->toString());
     
-this->idGeneratorEntity.insert(vector);
+this->idGeneratorEntity->insert(vector);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().IDLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->IDLOGGING))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, "initialize", e);
+this->logUtil->put(commonStrings->EXCEPTION, this, "initialize", &e);
     
 
                                     }
@@ -135,12 +141,12 @@ this->name= name;
 
         try {
             
-    Long idLong = this->idGeneratorEntity.get(this->name);;
+    int64_t idLong = this->idGeneratorEntity->get(this->name);;
     
 
-    Long newValue = (idLong.longValue() +1).toLong();;
+    int64_t newValue = (idLong.longValue() +1).toLong();;
     
-this->idGeneratorEntity.update(this->name, newValue);
+this->idGeneratorEntity->update(this->name, newValue);
     
 
 
@@ -150,16 +156,16 @@ this->idGeneratorEntity.update(this->name, newValue);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().IDLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->IDLOGGING))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, "getNext", e);
+this->logUtil->put(commonStrings->EXCEPTION, this, "getNext", &e);
     
 
                                     }

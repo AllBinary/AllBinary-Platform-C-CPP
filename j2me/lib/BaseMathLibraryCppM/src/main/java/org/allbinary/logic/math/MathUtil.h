@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_MATHUTIL_H
         #define ORG_ALLBINARY_LOGIC_MATH_MATHUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -35,9 +41,9 @@ class MathUtil
             : public Object
          {
 
-    private: static MathUtil instance() { return MathUtil(); }
+    private: static MathUtil* instance() { static std::unique_ptr<MathUtil> value(new MathUtil()); return value.get(); }
 
-    public: static MathUtil getInstance();
+    public: static MathUtil* getInstance();
 
     public: int32_t getTotalDigits(int32_t digits);
 

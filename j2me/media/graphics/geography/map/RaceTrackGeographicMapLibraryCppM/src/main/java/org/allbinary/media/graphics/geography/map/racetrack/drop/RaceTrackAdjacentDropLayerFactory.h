@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DROP_RACETRACKADJACENTDROPLAYERFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DROP_RACETRACKADJACENTDROPLAYERFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -58,11 +64,11 @@ class RaceTrackAdjacentDropLayerFactory
             : public Object
          {
 
-    private: static RaceTrackAdjacentDropLayerFactory DROP_LAYER_FACTORY = RaceTrackAdjacentDropLayerFactory();
+    private: static RaceTrackAdjacentDropLayerFactory* DROP_LAYER_FACTORY() { static std::unique_ptr<RaceTrackAdjacentDropLayerFactory> value(new RaceTrackAdjacentDropLayerFactory()); return value.get(); }
 
-    public: static RaceTrackAdjacentDropLayerFactory getInstance();
+    public: static RaceTrackAdjacentDropLayerFactory* getInstance();
 
-    private: BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: RaceTrackAdjacentDropLayerFactory();
 
@@ -70,11 +76,11 @@ private: RaceTrackAdjacentDropLayerFactory();
 
     public: int32_t getSize();
 
-    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
+    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    public: LayerInterfaceFactoryInterface getRandomInstance();
+    public: LayerInterfaceFactoryInterface* getRandomInstance();
 
-    public: void add(LayerInterfaceFactoryInterface layerInterfaceFactoryInterface);
+    public: void add(LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface);
 
 };
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -58,23 +64,23 @@ class ConstructorUtil
 
     public: static std::string viewAll(Class* myClass, std::string lineBreak){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    std::vector<Constructor> constructor = myClass.getConstructors();;
+    std::vector<Constructor*> constructor = myClass->getConstructors();;
     
-stringBuffer.append("Constructors: ");
+stringBuffer->append("Constructors: ");
     
-stringBuffer.append(lineBreak);
+stringBuffer->append(lineBreak);
     
 
 
 
 
                         for (
-    int32_t index = 0;index < constructor.size(); index++)
+    int32_t index = 0;index < constructor->size(); index++)
         {
-stringBuffer.append(ConstructorUtil::view(constructor[index], lineBreak));
+stringBuffer->append(ConstructorUtil::view(constructor[index], lineBreak));
     
 }
 
@@ -82,12 +88,12 @@ stringBuffer.append(ConstructorUtil::view(constructor[index], lineBreak));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
-    public: static std::string view(Constructor constructor, std::string lineBreak){
+    public: static std::string view(Constructor* constructor, std::string lineBreak){
 
                         if(constructor != 
                                     nullptr
@@ -95,15 +101,15 @@ stringBuffer.append(ConstructorUtil::view(constructor[index], lineBreak));
                         
                                     {
                                     
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(constructor.getName());
+stringBuffer->append(constructor->getName());
     
 
-    std::vector<Class*> classes = constructor.getParameterTypes();;
+    std::vector<Class*> classes = constructor->getParameterTypes();;
     
 
 
@@ -112,23 +118,23 @@ stringBuffer.append(constructor.getName());
                         for (
     int32_t index = 0;index < classes.size(); index++)
         {
-stringBuffer.append(commonSeps.SPACE);
+stringBuffer->append(commonSeps->SPACE);
     
-stringBuffer.append(classes[index].getName());
+stringBuffer->append(classes[index].getName());
     
-stringBuffer.append(commonSeps.COLON);
+stringBuffer->append(commonSeps->COLON);
     
-stringBuffer.appendint(index);
+stringBuffer->appendint(index);
     
 }
 
-stringBuffer.append(lineBreak);
+stringBuffer->append(lineBreak);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                                     }

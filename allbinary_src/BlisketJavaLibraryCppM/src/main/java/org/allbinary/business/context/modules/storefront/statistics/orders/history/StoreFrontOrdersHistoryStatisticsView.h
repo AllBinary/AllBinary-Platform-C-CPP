@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ORDERS_HISTORY_STOREFRONTORDERSHISTORYSTATISTICSVIEW_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ORDERS_HISTORY_STOREFRONTORDERSHISTORYSTATISTICSVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,20 +64,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreFrontOrdersHistoryStatisticsInterface.h"
-#include "StoreFrontOrdersHistoryStatisticsData.h"
+        #include "org/allbinary/business/context/modules/storefront/statistics/orders/history/StoreFrontOrdersHistoryStatisticsInterface.h"
+#include "org/allbinary/business/context/modules/storefront/statistics/orders/history/StoreFrontOrdersHistoryStatisticsData.h"
 
 class StoreFrontOrdersHistoryStatisticsView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: StoreFrontOrdersHistoryStatisticsInterface storeFrontOrdersHistoryStatisticsInterface;
+    private: StoreFrontOrdersHistoryStatisticsInterface* storeFrontOrdersHistoryStatisticsInterface;
 
-public: StoreFrontOrdersHistoryStatisticsView(StoreFrontOrdersHistoryStatisticsInterface storeFrontOrdersHistoryStatisticsInterface);
+public: StoreFrontOrdersHistoryStatisticsView(StoreFrontOrdersHistoryStatisticsInterface* storeFrontOrdersHistoryStatisticsInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

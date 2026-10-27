@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_RESOURCE_RESOURCERELATIVERELATIONSHIPFACTORY_H
         #define ORG_ALLBINARY_GAME_RESOURCE_RESOURCERELATIVERELATIONSHIPFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,15 +67,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ResourceRelativeRelationshipFactoryInterface.h"
+        #include "org/allbinary/game/resource/ResourceRelativeRelationshipFactoryInterface.h"
 
 class ResourceRelativeRelationshipFactory
             : public Object
-        : public ResourceRelativeRelationshipFactoryInterface {
+        , public ResourceRelativeRelationshipFactoryInterface {
 
-    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
+    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    private: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
+    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
 
     private: bool initialized= false;
 
@@ -79,11 +85,11 @@ class ResourceRelativeRelationshipFactory
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getResourceRelativeRelationshipList(std::string resource);
+    public: BasicArrayList* getResourceRelativeRelationshipList(std::string resource);
 
                 //@Throws(Exception.constructor)
             
-    public: void addResourceRelativeRelationship(std::string resource, RelativeRelationship hardPoint);
+    public: void addResourceRelativeRelationship(std::string resource, RelativeRelationship* hardPoint);
 
     public: bool isLoadingLevel(int32_t level);
 

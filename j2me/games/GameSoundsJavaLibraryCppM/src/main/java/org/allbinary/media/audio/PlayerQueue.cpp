@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,18 +64,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Sound.h"
-#include "NoSound.h"
+        #include "org/allbinary/media/audio/Sound.h"
+#include "org/allbinary/media/audio/NoSound.h"
 
 class PlayerQueue
             : public Object
          {
 
-    private: static const std::string TOTAL = "Sounds In Queue: ";
+    private: static inline const std::string TOTAL = "Sounds In Queue: ";
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
     private: int32_t max;
 
@@ -79,23 +85,23 @@ this->max= max;
 }
 
 
-    public: void add(Sound sound){
+    public: void add(Sound* sound){
 
         try {
             
-                        if(!this->list.contains(sound))
+                        if(!this->list->contains(sound))
                         
                                     {
-                                    this->list.add(sound);
+                                    this->list->add(sound);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-PreLogUtil::put(this->commonStrings.EXCEPTION, this, this->commonStrings.ADD);
+PreLogUtil::put(this->commonStrings->EXCEPTION, this, this->commonStrings->ADD);
     
 }
 
@@ -104,7 +110,7 @@ PreLogUtil::put(this->commonStrings.EXCEPTION, this, this->commonStrings.ADD);
 
     public: bool process(){
 
-    Sound sound = NoSound::getInstance();;
+    Sound* sound = NoSound::getInstance();;
     
 
         try {
@@ -112,10 +118,10 @@ PreLogUtil::put(this->commonStrings.EXCEPTION, this, this->commonStrings.ADD);
     bool played = false;;
     
 
-                        if(this->list.size() > 0)
+                        if(this->list->size() > 0)
                         
                                     {
-                                    sound= this->list.removeAt(0);
+                                    sound= dynamic_cast<Sound*>(this->list->removeAt(0));
     
 
                         if(sound != 
@@ -123,15 +129,15 @@ PreLogUtil::put(this->commonStrings.EXCEPTION, this, this->commonStrings.ADD);
                                 )
                         
                                     {
-                                    sound.getPlayerP().start();
+                                    sound->getPlayerP()->start();
     
 
                                     }
                                 
 
-        while(this->list.size() > this->max)
+        while(this->list->size() > this->max)
         {
-this->list.removeAt(0);
+this->list->removeAt(0);
     
 }
 
@@ -148,10 +154,10 @@ played= true;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    std::string resource = StringUtil::getInstance().EMPTY_STRING;;
+    std::string resource = StringUtil::getInstance()->EMPTY_STRING;;
     
 
                         if(sound != 
@@ -159,12 +165,12 @@ played= true;
                                 )
                         
                                     {
-                                    resource= sound.getResource();
+                                    resource= sound->getResource();
     
 
                                     }
                                 
-PreLogUtil::put(StringMaker().append(this->commonStrings.EXCEPTION_LABEL).append(resource).toString(), this, this->commonStrings.PROCESS);
+PreLogUtil::put((new StringMaker())->append(this->commonStrings->EXCEPTION_LABEL)->append(resource)->toString(), this, this->commonStrings->PROCESS);
     
 
 
@@ -178,7 +184,7 @@ PreLogUtil::put(StringMaker().append(this->commonStrings.EXCEPTION_LABEL).append
 
 
     public: void clear(){
-this->list.clear();
+this->list->clear();
     
 }
 
@@ -188,7 +194,7 @@ this->list.clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().append(PlayerQueue::TOTAL).appendint(this->list.size()).toString();;
+                        return (new StringMaker())->append(PlayerQueue::TOTAL)->appendint(this->list->size())->toString();;
     
 }
 

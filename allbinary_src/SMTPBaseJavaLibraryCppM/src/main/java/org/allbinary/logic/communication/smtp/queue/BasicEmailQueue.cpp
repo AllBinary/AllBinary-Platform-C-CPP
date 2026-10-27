@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/mail/Transport.h>
@@ -50,23 +58,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "EmailQueueInterface.h"
+        #include "org/allbinary/logic/communication/smtp/queue/EmailQueueInterface.h"
 
 class BasicEmailQueue: public BasicQueue, public EmailQueueInterface {
 
-    private: static BasicEmailQueue instance() { return BasicEmailQueue(); }
+    private: static BasicEmailQueue* instance() { static std::unique_ptr<BasicEmailQueue> value(new BasicEmailQueue()); return value.get(); }
 
-    private: static BasicEmailQueue basicEmailQueue;
+    private: static inline BasicEmailQueue* basicEmailQueue;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static BasicEmailQueue getInstance(){
+    public: static BasicEmailQueue* getInstance(){
 
                         if(BasicEmailQueue::basicEmailQueue == 
                                     nullptr
                                 )
                         
                                     {
-                                    BasicEmailQueue::basicEmailQueue= BasicEmailQueue();
+                                    BasicEmailQueue::basicEmailQueue= new BasicEmailQueue();
     
 
                                     }
@@ -80,7 +88,7 @@ class BasicEmailQueue: public BasicQueue, public EmailQueueInterface {
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: BasicEmailQueue(){
 }
@@ -89,7 +97,7 @@ private: BasicEmailQueue(){
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool offer(EmailInterface emailInterface){
+    public: bool offer(EmailInterface* emailInterface){
 this->offer(emailInterface);
     
 this->post(emailInterface);
@@ -104,14 +112,14 @@ this->post(emailInterface);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: void remove(EmailInterface emailInterface){
+    private: void remove(EmailInterface* emailInterface){
 this->remove(emailInterface);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: EmailInterface remove(){
+    public: EmailInterface* remove(){
 
 
 
@@ -124,7 +132,7 @@ this->remove(emailInterface);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: void post(EmailInterface emailInterface){
+    private: void post(EmailInterface* emailInterface){
 
                         if(this->send(emailInterface))
                         
@@ -154,7 +162,7 @@ this->processAllUnsent();
     int32_t index = 0;index < size; index++)
         {
 
-    EmailInterface emailInterface = queueVector.get(index);;
+    EmailInterface* emailInterface = dynamic_cast<EmailInterface*>(queueVector.get(index));;
     
 
                         if(this->send(emailInterface))
@@ -173,25 +181,25 @@ this->processAllUnsent();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: bool send(EmailInterface emailInterface){
+    private: bool send(EmailInterface* emailInterface){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
                         
                                     {
-                                    this->logUtil.putF("Sending: " +emailInterface.log(), this, "send");
+                                    this->logUtil->putF("Sending: " +emailInterface->log(), this, "send");
     
 
                                     }
                                 
-Transport::send(emailInterface.getMimeMessage());
+Transport::send(emailInterface->getMimeMessage());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
                         
                                     {
-                                    this->logUtil.putF("Email Send Debug: " +emailInterface.getDebugInfo(), this, "send");
+                                    this->logUtil->putF("Email Send Debug: " +emailInterface->getDebugInfo(), this, "send");
     
 
                                     }
@@ -204,13 +212,13 @@ Transport::send(emailInterface.getMimeMessage());
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
                         
                                     {
-                                    this->logUtil.put("Failed Email Send Debug: " +emailInterface.getDebugInfo(), this, "send", e);
+                                    this->logUtil->put("Failed Email Send Debug: " +emailInterface->getDebugInfo(), this, "send", &e);
     
 
                                     }

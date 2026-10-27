@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
@@ -65,13 +71,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TitleBodyCustomizerView.h"
+        #include "views/business/context/modules/storefront/customizer/bodies/generic/title/TitleBodyCustomizerView.h"
 
 class NewTitleBodyValidationView: public TitleBodyCustomizerView, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: NewTitleBodyValidationView(TransformInfoInterface transformInfoInterface) : TitleBodyCustomizerView(transformInfoInterface){
+public: NewTitleBodyValidationView(TransformInfoInterface* transformInfoInterface) : TitleBodyCustomizerView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -79,22 +85,22 @@ public: NewTitleBodyValidationView(TransformInfoInterface transformInfoInterface
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("View Name: " +transformInfoInterface.getName(), this, "NewTitleBodyValidationView()");
+                                    this->logUtil->putF("View Name: " +transformInfoInterface->getName(), this, "NewTitleBodyValidationView()");
     
 
                                     }
                                 
-this->titleBody= TitleBodyValidation();
+this->titleBody= new TitleBodyValidation();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Document toXmlDoc(){
+    public: Document* toXmlDoc(){
 
 
 
@@ -104,14 +110,14 @@ this->titleBody= TitleBodyValidation();
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("View Name: " +this->getTransformInfoInterface().getName(), this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("View Name: " +this->getTransformInfoInterface()->getName(), this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -119,7 +125,7 @@ this->titleBody= TitleBodyValidation();
 
 
                             {
-                            CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this->titleBody);
+                            CustomizerUtil::getInstance()->insert(this->getTransformInfoInterface(), dynamic_cast<DomNodeInterface*>(this->titleBody));
     
 
                             }
@@ -132,13 +138,13 @@ this->titleBody= TitleBodyValidation();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -158,25 +164,25 @@ this->titleBody= TitleBodyValidation();
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->titleBody.validationInfo());
+stringBuffer->append(this->titleBody.validationInfo());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -192,7 +198,7 @@ stringBuffer.append(this->titleBody.validationInfo());
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -202,7 +208,7 @@ stringBuffer.append(this->titleBody.validationInfo());
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -219,7 +225,7 @@ stringBuffer.append(this->titleBody.validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return views.ValidationOnlyTempUtil.getInstance().view(this);;
+                        return views.ValidationOnlyTempUtil.getInstance()->view(this);;
     
 }
 

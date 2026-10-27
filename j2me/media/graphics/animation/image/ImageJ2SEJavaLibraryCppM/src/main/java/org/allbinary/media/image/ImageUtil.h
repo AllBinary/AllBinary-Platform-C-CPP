@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -92,13 +98,13 @@ class ImageUtil
             : public Object
          {
 
-    private: static ImageUtil instance() { return ImageUtil(); }
+    private: static ImageUtil* instance() { static std::unique_ptr<ImageUtil> value(new ImageUtil()); return value.get(); }
 
-    public: static ImageUtil getInstance();
+    public: static ImageUtil* getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const CommonSeps commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps = CommonSeps::getInstance();
 
     private: std::string IIOIMAGE_POOL_NAME = "IIOIMAGE_POOL_NAME";
 
@@ -106,43 +112,43 @@ class ImageUtil
 
 private: ImageUtil();
 
-    private: GraphicsConfiguration getDefaultConfiguration();
+    private: GraphicsConfiguration* getDefaultConfiguration();
 
-    public: BufferedImage create(int32_t width, int32_t height);
-
-                //@Throws(Exception.constructor)
-            
-    public: std::vector<BufferedImage> createBufferedImageForResize(std::vector<BufferedImage> bufferedImageArray, int32_t percent, bool scale);
+    public: BufferedImage* create(int32_t width, int32_t height);
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<BufferedImage> createBufferedImage2(std::vector<BufferedImage> bufferedImageArray, float percent, bool scale);
+    public: std::vector<BufferedImage*> createBufferedImageForResize(std::vector<BufferedImage*> bufferedImageArray, int32_t percent, bool scale);
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<BufferedImage> createBufferedImage3(std::vector<BufferedImage> bufferedImageArray, int32_t width, int32_t height, bool scale);
+    public: std::vector<BufferedImage*> createBufferedImage2(std::vector<BufferedImage*> bufferedImageArray, float percent, bool scale);
 
                 //@Throws(Exception.constructor)
             
-    public: BufferedImage createBufferedImageForSave(BufferedImage bufferedImage, int32_t newWidth, int32_t newHeight);
+    public: std::vector<BufferedImage*> createBufferedImage3(std::vector<BufferedImage*> bufferedImageArray, int32_t width, int32_t height, bool scale);
 
                 //@Throws(Exception.constructor)
             
-    public: BufferedImage createBufferedImage(BufferedImage bufferedImage, int32_t newWidth, int32_t newHeight, bool scale);
+    public: BufferedImage* createBufferedImageForSave(BufferedImage* bufferedImage, int32_t newWidth, int32_t newHeight);
 
                 //@Throws(Exception.constructor)
             
-    public: BufferedImage createBufferedImageAllowTranslate(BufferedImage bufferedImage, int32_t newWidth, int32_t newHeight, bool scale, bool allowTranslate);
+    public: BufferedImage* createBufferedImage(BufferedImage* bufferedImage, int32_t newWidth, int32_t newHeight, bool scale);
 
                 //@Throws(Exception.constructor)
             
-    public: BufferedImage createBufferedImageWithLargerCanvas(BufferedImage bufferedImage, int32_t newWidth, int32_t newHeight);
+    public: BufferedImage* createBufferedImageAllowTranslate(BufferedImage* bufferedImage, int32_t newWidth, int32_t newHeight, bool scale, bool allowTranslate);
 
-    public: BufferedImage convertToBufferedImage(java::awt::Image toolkitImage);
+                //@Throws(Exception.constructor)
+            
+    public: BufferedImage* createBufferedImageWithLargerCanvas(BufferedImage* bufferedImage, int32_t newWidth, int32_t newHeight);
 
-    public: BufferedImage getBufferedImage(Image image);
+    public: BufferedImage* convertToBufferedImage(java::awt::Image* toolkitImage);
 
-    public: std::string toString(BufferedImage bufferedImage);
+    public: BufferedImage* getBufferedImage(Image* image);
+
+    public: std::string toString(BufferedImage* bufferedImage);
 
 };
 

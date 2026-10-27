@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -77,33 +83,33 @@
         
 class HelpPaintable: public Paintable, public UpdateMyFontInterface {
 
-    protected: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
+    protected: DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();
 
-    protected: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
+    protected: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
 
-    protected: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
+    protected: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
 
     protected: int32_t anchor = Anchor::TOP_LEFT;
 
     protected: std::string title;
 
-    protected: std::vector<std::string> inputInfo = StringUtil::getInstance().getArrayInstance();
+    protected: std::vector<std::string> inputInfo = StringUtil::getInstance()->getArrayInstance();
 
-    protected: BasicColor basicColor;
+    protected: BasicColor* basicColor;
 
     protected: int32_t titleBeginWidth= 0;
 
-    private: std::vector<int32_t> beginWidthArray = NullUtil::getInstance().NULL_INT_ARRAY;
+    private: std::vector<int32_t> beginWidthArray = NullUtil::getInstance()->NULL_INT_ARRAY;
 
     private: int32_t charHeight= 0;
 
-public: HelpPaintable(std::string title, BasicColor backgroundBasicColor, BasicColor basicColor);
+public: HelpPaintable(std::string title, BasicColor* backgroundBasicColor, BasicColor* basicColor);
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
     public: void setInputInfoP(std::vector<std::string> inputInfo);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

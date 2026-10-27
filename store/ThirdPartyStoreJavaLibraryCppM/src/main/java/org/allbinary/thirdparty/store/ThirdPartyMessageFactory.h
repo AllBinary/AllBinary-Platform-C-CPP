@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYMESSAGEFACTORY_H
         #define ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYMESSAGEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class ThirdPartyMessageFactory
             : public Object
          {
 
-    private: static ThirdPartyMessageFactory instance() { return ThirdPartyMessageFactory(); }
+    private: static ThirdPartyMessageFactory* instance() { static std::unique_ptr<ThirdPartyMessageFactory> value(new ThirdPartyMessageFactory()); return value.get(); }
 
-    public: static ThirdPartyMessageFactory getInstance();
+    public: static ThirdPartyMessageFactory* getInstance();
 
     public: const std::string AUTHORIZED = "Authorized";
 

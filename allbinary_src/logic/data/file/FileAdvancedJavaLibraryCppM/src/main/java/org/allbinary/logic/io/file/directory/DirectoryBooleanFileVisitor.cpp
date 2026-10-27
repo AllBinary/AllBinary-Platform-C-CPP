@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/io/file/AbFile.h>
@@ -47,7 +53,7 @@
         
 class DirectoryBooleanFileVisitor
             : public Object
-        : public VisitorInterface {
+        , public VisitorInterface {
 
 public: DirectoryBooleanFileVisitor(){
 }
@@ -58,14 +64,14 @@ public: DirectoryBooleanFileVisitor(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->visit(*dynamic_cast<AbFile*>(anyType));
+                        return this->visit(dynamic_cast<AbFile*>(anyType));
     
 }
 
 
-    public: Boolean visit(AbFile file){
+    public: bool visit(AbFile* file){
 
-                        if(file.isDirectory())
+                        if(file->isDirectory())
                         
                                     {
                                     

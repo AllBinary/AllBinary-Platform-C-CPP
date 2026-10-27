@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -52,9 +58,9 @@ class CommonLabels
             : public Object
          {
 
-    private: static CommonLabels instance() { return CommonLabels(); }
+    private: static CommonLabels* instance() { static std::unique_ptr<CommonLabels> value(new CommonLabels()); return value.get(); }
 
-    public: static CommonLabels getInstance(){
+    public: static CommonLabels* getInstance(){
 
 
 

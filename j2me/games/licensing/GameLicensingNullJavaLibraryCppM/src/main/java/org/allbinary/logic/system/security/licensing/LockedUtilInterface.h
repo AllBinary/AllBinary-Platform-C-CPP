@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKEDUTILINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKEDUTILINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,13 +45,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LockableFeature.h"
+        #include "org/allbinary/logic/system/security/licensing/LockableFeature.h"
 
 class LockedUtilInterface {
 
-    bool isLocked();
+    public: virtual bool isLocked() = 0;
 
-    bool isLockedFeature(LockableFeature lockableFeatrue);
+    public: virtual bool isLockedFeature(LockableFeature* lockableFeatrue) = 0;
 
 };
 

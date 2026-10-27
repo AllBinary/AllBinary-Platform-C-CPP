@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/j2me/workarea/canvas/CanvasJPanel.h>
@@ -41,20 +47,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GraphicsItemInterfaceFactoryInterface.h"
-#include "SelectionTool.h"
-#include "GraphicItemInterface.h"
+        #include "org/allbinary/graphics/j2me/workarea/tools/GraphicsItemInterfaceFactoryInterface.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/SelectionTool.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h"
 
 class SelectionToolFactory
             : public Object
-        : public GraphicsItemInterfaceFactoryInterface {
+        , public GraphicsItemInterfaceFactoryInterface {
 
-    public: GraphicItemInterface getInstance(CanvasJPanel canvasJPanel){
+    public: GraphicItemInterface* getInstance(CanvasJPanel* canvasJPanel){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SelectionTool(canvasJPanel);
+                        return new SelectionTool(canvasJPanel);
     
 }
 

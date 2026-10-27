@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_UTIL_CIRCULARINDEXUTIL_H
         #define ORG_ALLBINARY_UTIL_CIRCULARINDEXUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -64,11 +70,11 @@ class CircularIndexUtil
             : public Object
          {
 
-    public: static const CircularIndexUtil NULL_CIRCULAR_INDEX_UTIL = CircularIndexUtil(0, 0);
+    public: static CircularIndexUtil* NULL_CIRCULAR_INDEX_UTIL() { static std::unique_ptr<CircularIndexUtil> value(new CircularIndexUtil(0, 0)); return value.get(); }
 
-    public: static CircularIndexUtil createInstance(int32_t max);
+    public: static CircularIndexUtil* createInstance(int32_t max);
 
-    public: static CircularIndexUtil createInstanceAt(int32_t index, int32_t max);
+    public: static CircularIndexUtil* createInstanceAt(int32_t index, int32_t max);
 
     private: int32_t index = 0;
 

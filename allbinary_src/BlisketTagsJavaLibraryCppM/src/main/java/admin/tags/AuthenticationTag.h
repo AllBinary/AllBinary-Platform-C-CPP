@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Class.h"
         
             #include "java/lang/Exception.h"
@@ -101,7 +109,7 @@
         
 class AuthenticationTag: public CustomTagSupport {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string command;
 
@@ -111,9 +119,9 @@ class AuthenticationTag: public CustomTagSupport {
 
     private: std::string newPassword;
 
-    private: BasicArrayList roles;
+    private: BasicArrayList* roles;
 
-    private: HashMap<Object*, Object*> propertiesHashMap;
+    private: HashMap<Object*, Object*>* propertiesHashMap;
 
 public: AuthenticationTag();
 
@@ -125,7 +133,7 @@ public: AuthenticationTag();
 
     public: void setNewPassword(std::string value);
 
-    public: void setRoles(BasicArrayList values);
+    public: void setRoles(BasicArrayList* values);
 
                 //@Throws(LicensingException.constructor)
             

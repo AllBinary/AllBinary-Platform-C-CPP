@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
@@ -76,21 +82,21 @@ this->setObjectFile("views.generic.payment.ValidationView");
                         
                                     {
                                     
-                        if(this->getCommand().compareTo(PaymentData::VIEW) == 0 || this->getCommand().compareTo(PaymentData::CHANGE) == 0 || this->getCommand().compareTo(PaymentData::ADDNEW) == 0)
+                        if(this->getCommand()->compareTo(PaymentData::VIEW) == 0 || this->getCommand()->compareTo(PaymentData::CHANGE) == 0 || this->getCommand()->compareTo(PaymentData::ADDNEW) == 0)
                         
                                     {
                                     
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(this->commonStrings.INSERT) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings.INSERT) == 0)
                         
                                     {
                                     
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(this->commonStrings.DELETE) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings.DELETE) == 0)
                         
                                     {
                                     
@@ -103,7 +109,7 @@ this->setObjectFile("views.generic.payment.ValidationView");
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(PaymentData::SELECT) == 0)
+                        if(this->getCommand()->compareTo(PaymentData::SELECT) == 0)
                         
                                     {
                                     
@@ -119,7 +125,7 @@ this->setObjectFile("views.generic.payment.ValidationView");
                             
 
 
-                            throw Exception("No Such View Command: " +this->getCommand());
+                            throw new Exception("No Such View Command: " +this->getCommand());
                     
 
                         }
@@ -136,13 +142,13 @@ this->setObjectFile("views.generic.payment.ValidationView");
 
 
 
-                            throw Exception("Command Null");
+                            throw new Exception("Command Null");
                     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
-AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
     
 
 
@@ -153,9 +159,9 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 
@@ -164,7 +170,7 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
                         return SKIP_BODY;
     
 }
-*/
+
 }
 
 

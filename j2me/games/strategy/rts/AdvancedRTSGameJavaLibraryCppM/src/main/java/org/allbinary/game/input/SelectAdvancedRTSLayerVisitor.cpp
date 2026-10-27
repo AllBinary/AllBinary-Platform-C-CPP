@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/game/input/form/AssignWaypointsUtil.h>
 
       
@@ -63,13 +71,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SelectedRTSLayersPlayerGameInput.h"
+        #include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h"
 
 class SelectAdvancedRTSLayerVisitor: public Visitor {
 
-    private: SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput;
+    private: SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput;
 
-public: SelectAdvancedRTSLayerVisitor(SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput){
+public: SelectAdvancedRTSLayerVisitor(SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput){
 this->selectedRTSLayersPlayerGameInput= selectedRTSLayersPlayerGameInput;
     
 }
@@ -77,45 +85,45 @@ this->selectedRTSLayersPlayerGameInput= selectedRTSLayersPlayerGameInput;
 
     public: Object* visit(Object* anyType){
 
-    CollidableDestroyableDamageableLayer selectedLayer = *dynamic_cast<CollidableDestroyableDamageableLayer*>(anyType);;
+    CollidableDestroyableDamageableLayer* selectedLayer = dynamic_cast<CollidableDestroyableDamageableLayer*>(anyType);;
     
 
-                        if(selectedLayer != CollidableDestroyableDamageableLayer::getNullInstance() && selectedLayer.getType() == BuildingLayer::getStaticType())
+                        if(selectedLayer != CollidableDestroyableDamageableLayer::getNullInstance() && selectedLayer->getType() == BuildingLayer::getStaticType())
                         
                                     {
                                     
-    AdvancedRTSGameLayer rtsGameLayer = selectedLayer;;
+    AdvancedRTSGameLayer* rtsGameLayer = dynamic_cast<AdvancedRTSGameLayer*>(selectedLayer);;
     
 
-    AssignWaypointsUtil assignWaypointsUtil = AssignWaypointsUtil::getInstance();;
+    AssignWaypointsUtil* assignWaypointsUtil = AssignWaypointsUtil::getInstance();;
     
 
-    BasicArrayList list = this->selectedRTSLayersPlayerGameInput.getSelectedBasicArrayList();;
+    BasicArrayList* list = this->selectedRTSLayersPlayerGameInput->getSelectedBasicArrayList();;
     
 
-    RTSLayer currentRTSLayer;;
+    RTSLayer* currentRTSLayer;;
     
 
-    UnitLayer unitLayer;;
+    UnitLayer* unitLayer;;
     
 
 
 
 
                         for (
-    int32_t index = list.size() -1;index >= 0; index--)
+    int32_t index = list->size() -1;index >= 0; index--)
         {
-currentRTSLayer= list.get(index);
+currentRTSLayer= dynamic_cast<RTSLayer*>(list->get(index));
     
 
-                        if(currentRTSLayer.getType() == UnitLayer::getStaticType())
+                        if(currentRTSLayer->getType() == UnitLayer::getStaticType())
                         
                                     {
-                                    unitLayer= currentRTSLayer;
+                                    unitLayer= dynamic_cast<UnitLayer*>(currentRTSLayer);
     
-unitLayer.setParentLayer(rtsGameLayer);
+unitLayer->setParentLayer(rtsGameLayer);
     
-assignWaypointsUtil.set(unitLayer, rtsGameLayer);
+assignWaypointsUtil->set(unitLayer, rtsGameLayer);
     
 
                                     }
@@ -129,7 +137,7 @@ assignWaypointsUtil.set(unitLayer, rtsGameLayer);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance().NULL_OBJECT;
+                        return NullUtil::getInstance()->NULL_OBJECT;
     
 }
 

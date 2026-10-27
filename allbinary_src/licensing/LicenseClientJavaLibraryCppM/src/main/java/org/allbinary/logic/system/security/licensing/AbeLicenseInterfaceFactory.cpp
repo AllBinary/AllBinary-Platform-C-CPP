@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,31 +61,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbeLicenseInterface.h"
-#include "AbeClientInformationInterface.h"
-#include "AbeNoLicense.h"
-#include "AbeClientInformationData.h"
-#include "LicensingException.h"
+        #include "org/allbinary/logic/system/security/licensing/AbeLicenseInterface.h"
+#include "org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h"
+#include "org/allbinary/logic/system/security/licensing/AbeNoLicense.h"
+#include "org/allbinary/logic/system/security/licensing/AbeClientInformationData.h"
+#include "org/allbinary/logic/system/security/licensing/LicensingException.h"
 
 class AbeLicenseInterfaceFactory
             : public Object
          {
 
-    private: static const AbeLicenseInterfaceFactory SINGLETON = AbeLicenseInterfaceFactory();
+    private: static AbeLicenseInterfaceFactory* SINGLETON() { static std::unique_ptr<AbeLicenseInterfaceFactory> value(new AbeLicenseInterfaceFactory()); return value.get(); }
 
-    public: static AbeLicenseInterfaceFactory getInstance(){
+    public: static AbeLicenseInterfaceFactory* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeLicenseInterfaceFactory::SINGLETON;
+                        return AbeLicenseInterfaceFactory::SINGLETON();
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: int64_t time = 0;
 
@@ -87,7 +93,7 @@ class AbeLicenseInterfaceFactory
 
     private: int32_t checkPeriod = 36000000;
 
-    private: AbeLicenseInterface abeLicenseInterface = 
+    private: AbeLicenseInterface* abeLicenseInterface = 
                 null
             ;
 
@@ -97,7 +103,7 @@ private: AbeLicenseInterfaceFactory(){
 
                 //@Throws(LicensingException.constructor)
             
-    public: AbeLicenseInterface getLicenseInstance(AbeClientInformationInterface abeClientInformation){
+    public: AbeLicenseInterface* getLicenseInstance(AbeClientInformationInterface* abeClientInformation){
 
                         if(isTimeToGetKey())
                         
@@ -126,17 +132,17 @@ private: AbeLicenseInterfaceFactory(){
 
                 //@Throws(LicensingException.constructor)
             
-    private: AbeLicenseInterface get(AbeClientInformationInterface abeClientInformation){
+    private: AbeLicenseInterface* get(AbeClientInformationInterface* abeClientInformation){
 
         try {
-            this->logUtil.putF("Getting Keys", this, this->commonStrings.GET);
+            this->logUtil->putF("Getting Keys", this, this->commonStrings->GET);
     
 this->abeLicenseInterface= AbeNoLicense::getInstance();
     
 
-    AbeLicenseClient licenseClient = AbeLicenseClient();;
+    AbeLicenseClient* licenseClient = new AbeLicenseClient();;
     
-this->abeLicenseInterface= licenseClient.get(abeClientInformation);
+this->abeLicenseInterface= licenseClient->get(abeClientInformation);
     
 
                         if(this->abeLicenseInterface != 
@@ -144,7 +150,7 @@ this->abeLicenseInterface= licenseClient.get(abeClientInformation);
                                 )
                         
                                     {
-                                    this->logUtil.putF("Default Key: " +this->abeLicenseInterface.getKey(AbeClientInformationData::getInstance().KEY), this, this->commonStrings.GET);
+                                    this->logUtil->putF("Default Key: " +this->abeLicenseInterface->getKey(AbeClientInformationData::getInstance()->KEY), this, this->commonStrings->GET);
     
 
                                     }
@@ -157,43 +163,43 @@ this->abeLicenseInterface= licenseClient.get(abeClientInformation);
     
 
                 //: 
-} catch(e) 
+} catch(IOException& e) 
             {
-this->logUtil.put("Licensing IO Error", this, this->commonStrings.GET, e);
+this->logUtil->put("Licensing IO Error", this, this->commonStrings->GET, &e);
     
 
 
 
-                            throw LicensingException("License Server Connection Error");
+                            throw new LicensingException("License Server Connection Error");
                     
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-this->logUtil.put("Licensing Failure", this, this->commonStrings.GET, e);
+this->logUtil->put("Licensing Failure", this, this->commonStrings->GET, &e);
     
 
 
 
-                            throw LicensingException("Unknown License Failure: " +this->constructor.name.toString());
+                            throw new LicensingException("Unknown License Failure: " +this->getClass()->getName());
                     
 }
-*/
+
 }
 
 
     private: bool isTimeToGetKey(){
 
-    Calendar calendar = Calendar::getInstance();;
+    Calendar* calendar = Calendar::getInstance();;
     
 
-    int64_t currentTime = calendar.getTimeInMillis();;
+    int64_t currentTime = calendar->getTimeInMillis();;
     
 
                         if(this->abeLicenseInterface == 
                                     nullptr
-                                 || this->abeLicenseInterface == AbeNoLicense::getInstance() || !this->abeLicenseInterface.hasKey() || isCheck() || currentTime -checkPeriod > time)
+                                 || this->abeLicenseInterface == AbeNoLicense::getInstance() || !this->abeLicenseInterface->hasKey() || isCheck() || currentTime -checkPeriod > time)
                         
                                     {
                                     this->abeLicenseInterface= 

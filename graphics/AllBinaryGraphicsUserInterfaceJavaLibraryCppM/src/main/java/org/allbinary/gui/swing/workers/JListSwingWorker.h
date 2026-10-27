@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GUI_SWING_WORKERS_JLISTSWINGWORKER_H
         #define ORG_ALLBINARY_GUI_SWING_WORKERS_JLISTSWINGWORKER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <javax/swing.h>
 
       
@@ -42,29 +50,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SwingWorker.h"
-#include "JList.h"
-#include "ListModel.h"
+        #include "org/allbinary/gui/swing/workers/SwingWorker.h"
+#include "org/allbinary/gui/swing/workers/JList.h"
+#include "org/allbinary/gui/swing/workers/ListModel.h"
 
 class JListSwingWorker: public SwingWorker {
 
-    private: JList jList;
+    private: JList* jList;
 
-    private: ListModel listModel;
+    private: ListModel* listModel;
 
-public: JListSwingWorker(JList jList, ListModel listModel);
+public: JListSwingWorker(JList* jList, ListModel* listModel);
 
     public: Object* doInBackground();
 
     protected: void done();
 
-    private: JList getJList();
+    private: JList* getJList();
 
-    private: void setJList(JList jList);
+    private: void setJList(JList* jList);
 
-    private: ListModel getListModel();
+    private: ListModel* getListModel();
 
-    private: void setListModel(ListModel listModel);
+    private: void setListModel(ListModel* listModel);
 
 };
 

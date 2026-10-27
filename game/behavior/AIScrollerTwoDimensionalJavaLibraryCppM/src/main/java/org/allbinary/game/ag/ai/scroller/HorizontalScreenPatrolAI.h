@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_HORIZONTALSCREENPATROLAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_HORIZONTALSCREENPATROLAI_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -88,29 +96,29 @@
         
 class HorizontalScreenPatrolAI: public BasicAI {
 
-    public: static const Integer SOUND = SmallIntegerSingletonFactory::getInstance().getAt(433);
+    public: static inline int32_t SOUND = SmallIntegerSingletonFactory::getInstance()->getAt(433);
 
     protected: int32_t keyDirection = Canvas::LEFT;
 
-    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-    private: int32_t firingX = this->displayInfoSingleton.getLastHalfWidth();
+    private: int32_t firingX = this->displayInfoSingleton->getLastHalfWidth();
 
     private: int32_t firedIndex = 0;
 
     private: const int32_t MAX_FIRE = 28;
 
-    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(240);
+    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(240);
 
-    private: const PlayerQueue secondaryPlayerQueue = SecondaryPlayerQueueFactory::getInstance();
+    private: PlayerQueue* secondaryPlayerQueue = SecondaryPlayerQueueFactory::getInstance();
 
-    private: Sound sound;
+    private: Sound* sound;
 
-public: HorizontalScreenPatrolAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: HorizontalScreenPatrolAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager);
 
     protected: void nextDirection();
 

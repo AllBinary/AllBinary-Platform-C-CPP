@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/event/GameKeyEvent.h>
@@ -44,12 +50,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SpecialGameInputInterfaceProcessor.h"
-#include "SpecialGameInputInterface.h"
+        #include "org/allbinary/game/layer/special/SpecialGameInputInterfaceProcessor.h"
+#include "org/allbinary/game/layer/special/SpecialGameInputInterface.h"
 
 class SpecialDownGameInputInterfaceProcessor: public SpecialGameInputInterfaceProcessor {
 
-public: SpecialDownGameInputInterfaceProcessor(SpecialGameInputInterface collidableDestroyableDamageableLayer) : SpecialGameInputInterfaceProcessor(collidableDestroyableDamageableLayer){
+public: SpecialDownGameInputInterfaceProcessor(SpecialGameInputInterface* collidableDestroyableDamageableLayer) : SpecialGameInputInterfaceProcessor(collidableDestroyableDamageableLayer){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -61,7 +67,7 @@ public: SpecialDownGameInputInterfaceProcessor(SpecialGameInputInterface collida
 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
+    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
 this->specialGameInputInterface.down();
     
 }

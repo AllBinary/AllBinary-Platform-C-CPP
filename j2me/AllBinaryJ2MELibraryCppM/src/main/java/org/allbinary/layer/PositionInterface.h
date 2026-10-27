@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LAYER_POSITIONINTERFACE_H
         #define ORG_ALLBINARY_LAYER_POSITIONINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,7 +48,7 @@
         
 class PositionInterface {
 
-    void setPosition(int32_t x, int32_t y, int32_t z);
+    public: virtual void setPosition(int32_t x, int32_t y, int32_t z) = 0;
 
 };
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graphics/color/BasicColor.h>
 
       
@@ -50,14 +56,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "VectorAnimation.h"
-#include "AnimationBehavior.h"
+        #include "org/allbinary/animation/VectorAnimation.h"
+#include "org/allbinary/animation/AnimationBehavior.h"
 
 class TimedVectorAnimation: public VectorAnimation {
 
-    private: TimeDelayHelper timeElapsedHelper = TimeDelayHelper(200);
+    private: TimeDelayHelper* timeElapsedHelper = new TimeDelayHelper(200);
 
-public: TimedVectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior);
+public: TimedVectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior);
 
     public: void nextFrame();
 

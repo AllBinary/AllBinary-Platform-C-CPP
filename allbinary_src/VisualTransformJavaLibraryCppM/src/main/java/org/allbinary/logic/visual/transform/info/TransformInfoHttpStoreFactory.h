@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSTOREFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSTOREFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,23 +55,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoFactoryInterface.h"
-#include "TransformInfoHttpStore.h"
-#include "TransformInfoInterface.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoFactoryInterface.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfoHttpStore.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
 
 class TransformInfoHttpStoreFactory
             : public Object
-        : public TransformInfoFactoryInterface {
+        , public TransformInfoFactoryInterface {
 
-    private: static TransformInfoHttpStoreFactory instance() { return TransformInfoHttpStoreFactory(); }
+    private: static TransformInfoHttpStoreFactory* instance() { static std::unique_ptr<TransformInfoHttpStoreFactory> value(new TransformInfoHttpStoreFactory()); return value.get(); }
 
-    public: static TransformInfoHttpStoreFactory getInstance();
+    public: static TransformInfoHttpStoreFactory* getInstance();
 
 private: TransformInfoHttpStoreFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface getInstance(HashMap<Object*, Object*> databaseHashMap, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
+    public: TransformInfoInterface* getInstance(HashMap<Object*, Object*>* databaseHashMap, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -63,21 +69,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CaptionAnimationHelperBase.h"
-#include "CaptionAnimation.h"
+        #include "org/allbinary/animation/caption/CaptionAnimationHelperBase.h"
+#include "org/allbinary/animation/caption/CaptionAnimation.h"
 
 class CaptionAnimationHelper: public CaptionAnimationHelperBase {
 
-    private: const TimeDelayHelper timeHelper = TimeDelayHelper(620);
+    private: TimeDelayHelper* timeHelper = new TimeDelayHelper(620);
 
-    private: const TextAnimation textAnimation = TextAnimation(StringUtil::getInstance().EMPTY_STRING, AnimationBehavior::getInstance());
+    private: TextAnimation* textAnimation = new TextAnimation(StringUtil::getInstance()->EMPTY_STRING, AnimationBehavior::getInstance());
 
-    private: Animation captionAnimation;
+    private: Animation* captionAnimation;
 
-    private: Animation animation = NullAnimationFactory::getFactoryInstance().getInstance(0);
+    private: Animation* animation = NullAnimationFactory::getFactoryInstance()->getInstance(0);
 
-public: CaptionAnimationHelper(Animation captionAnimation, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy){
-this->captionAnimation= CaptionAnimation(captionAnimation, this->textAnimation, captionDx, captionDy, dx, dy);
+public: CaptionAnimationHelper(Animation* captionAnimation, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy){
+this->captionAnimation= new CaptionAnimation(captionAnimation, this->textAnimation, captionDx, captionDy, dx, dy);
     
 }
 
@@ -111,10 +117,10 @@ this->captionAnimation= CaptionAnimation(captionAnimation, this->textAnimation, 
 
     public: void tick(){
 
-                        if(this->timeHelper.isTime(GameTickTimeDelayHelperFactory::getInstance().startTime))
+                        if(this->timeHelper->isTime(GameTickTimeDelayHelperFactory::getInstance()->startTime))
                         
                                     {
-                                    this->animation= NullAnimationFactory::getFactoryInstance().getInstance(0);
+                                    this->animation= NullAnimationFactory::getFactoryInstance()->getInstance(0);
     
 
                                     }
@@ -122,20 +128,20 @@ this->captionAnimation= CaptionAnimation(captionAnimation, this->textAnimation, 
 }
 
 
-    public: void update(std::string message, BasicColor basicColor){
-this->textAnimation.setBasicColorP(basicColor);
+    public: void update(std::string message, BasicColor* basicColor){
+this->textAnimation->setBasicColorP(basicColor);
     
-this->textAnimation.setText(message);
+this->textAnimation->setText(message);
     
 this->animation= this->captionAnimation;
     
-this->timeHelper.setStartTimeTNT();
+this->timeHelper->setStartTimeTNT();
     
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
-this->animation.paintXY(graphics, x, y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+this->animation->paintXY(graphics, x, y);
     
 }
 

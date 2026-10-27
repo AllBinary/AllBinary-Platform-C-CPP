@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_COLLIDABLECOMPOSITELAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_COLLIDABLECOMPOSITELAYER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/ai/ArtificialIntelligence.h>
 
       
@@ -81,27 +89,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryGameLayer.h"
+        #include "org/allbinary/game/layer/AllBinaryGameLayer.h"
 
 class CollidableCompositeLayer: public AllBinaryGameLayer, public CollidableInterfaceCompositeInterface {
 
-    private: static Object* NULL_COLLIDABLE_COMPOSITE_LAYER = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* NULL_COLLIDABLE_COMPOSITE_LAYER = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static CollidableCompositeLayer getNullInstance();
+    public: static CollidableCompositeLayer* getNullInstance();
 
-    private: CollidableBaseBehavior collidableInferface = CollidableNeverCollideBehaviorFactory::getInstance().createBehavior();
+    private: CollidableBaseBehavior* collidableInferface = CollidableNeverCollideBehaviorFactory::getInstance()->createBehavior();
 
-public: CollidableCompositeLayer(std::string name, Rectangle layerInfo, ViewPositionBase viewPosition, CollidableBaseBehaviorFactory collidableBaseBehaviorFactory);
+public: CollidableCompositeLayer(std::string name, Rectangle* layerInfo, ViewPositionBase* viewPosition, CollidableBaseBehaviorFactory* collidableBaseBehaviorFactory);
 
-    public: ArtificialIntelligenceInterface getArtificialIntelligenceInterface();
+    public: ArtificialIntelligenceInterface* getArtificialIntelligenceInterface();
 
-    public: CollidableBaseBehavior getCollidableInferface();
+    public: CollidableBaseBehavior* getCollidableInferface();
 
-    public: void setCollidableInferface(CollidableBaseBehavior collidableInferface);
+    public: void setCollidableInferface(CollidableBaseBehavior* collidableInferface);
 
     public: bool implmentsCollidableInterface();
 
-    public: void toStringAppend(StringMaker stringBuffer);
+    public: void toStringAppend(StringMaker* stringBuffer);
 
     public: std::string toString();
 

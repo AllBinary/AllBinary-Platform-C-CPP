@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_INTERFACES_CPUINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_INTERFACES_CPUINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,23 +48,23 @@
         
 class CpuInterface {
 
-    std::string getProcessor();
+    public: virtual std::string getProcessor() = 0;
 
-    std::string getVendorId();
+    public: virtual std::string getVendorId() = 0;
 
-    std::string getCpuFamily();
+    public: virtual std::string getCpuFamily() = 0;
 
-    std::string getModel();
+    public: virtual std::string getModel() = 0;
 
-    std::string getModelName();
+    public: virtual std::string getModelName() = 0;
 
-    std::string getStepping();
+    public: virtual std::string getStepping() = 0;
 
-    std::string getCpuSpeed();
+    public: virtual std::string getCpuSpeed() = 0;
 
-    std::string getCacheSize();
+    public: virtual std::string getCacheSize() = 0;
 
-    bool compareTo(CpuInterface cpuInterface);
+    public: virtual bool compareTo(CpuInterface* cpuInterface) = 0;
 
 };
 

@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -114,18 +122,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SpecialGameInputInterface.h"
+        #include "org/allbinary/game/layer/special/SpecialGameInputInterface.h"
 
 class CollidableDestroyableDamageableLayer: public CollidableCompositeLayer, public DestroyableInterface, public DamageableInterface, public PickupCompositeInterface, public SpecialGameInputInterface {
 
-    private: static Object* NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static CollidableDestroyableDamageableLayer getNullInstance(){
+    public: static CollidableDestroyableDamageableLayer* getNullInstance(){
 
-                        if(CollidableDestroyableDamageableLayer::NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER == NullUtil::getInstance().NULL_OBJECT)
+                        if(CollidableDestroyableDamageableLayer::NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    CollidableDestroyableDamageableLayer::NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER= CollidableDestroyableDamageableLayer(BasicGroupFactory::getInstance().NONE_ARRAY, StringUtil::getInstance().EMPTY_STRING, RectangleFactory::SINGLETON, ViewPositionBase::NULL_VIEW_POSITION);
+                                    CollidableDestroyableDamageableLayer::NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER= new CollidableDestroyableDamageableLayer(BasicGroupFactory::getInstance()->NONE_ARRAY, StringUtil::getInstance()->EMPTY_STRING, RectangleFactory::SINGLETON, ViewPositionBase::NULL_VIEW_POSITION);
     
 
                                     }
@@ -134,14 +142,14 @@ class CollidableDestroyableDamageableLayer: public CollidableCompositeLayer, pub
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CollidableDestroyableDamageableLayer::NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER;
+                        return dynamic_cast<CollidableDestroyableDamageableLayer*>(CollidableDestroyableDamageableLayer::NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER);
     
 }
 
 
-    private: static const std::string READYFOREXPLOSION = "ReadyForExplosion: ";
+    private: static inline const std::string READYFOREXPLOSION = "ReadyForExplosion: ";
 
-    private: std::vector<Group> groupInterface;
+    private: std::vector<Group*> groupInterface;
 
     private: bool readyForExplosion= false;
 
@@ -155,11 +163,11 @@ class CollidableDestroyableDamageableLayer: public CollidableCompositeLayer, pub
 
     private: int32_t initZ= 0;
 
-    protected: std::vector<PartInterface> partInterfaceArrayP = PartInterfaceUtil::getZeroArray();
+    protected: std::vector<PartInterface*> partInterfaceArrayP = PartInterfaceUtil::getZeroArray();
 
-    private: PickupBehavior pickupBehavior;
+    private: PickupBehavior* pickupBehavior;
 
-    public: AllBinaryGameLayerManager allBinaryGameLayerManagerP = AllBinaryGameLayerManager::getNullInstance();
+    public: AllBinaryGameLayerManager* allBinaryGameLayerManagerP = AllBinaryGameLayerManager::getNullInstance();
 
     public: bool isDraggable = false;
 
@@ -167,16 +175,16 @@ class CollidableDestroyableDamageableLayer: public CollidableCompositeLayer, pub
 
     public: bool isDropped = false;
 
-public: CollidableDestroyableDamageableLayer(std::vector<Group> groupInterface, std::string name, Rectangle layerInfo, ViewPositionBase viewPosition) : CollidableCompositeLayer(name, layerInfo, viewPosition, CollidableNeverCollideBehaviorFactory::getInstance()){
+public: CollidableDestroyableDamageableLayer(std::vector<Group*> groupInterface, std::string name, Rectangle* layerInfo, ViewPositionBase* viewPosition) : CollidableCompositeLayer(name, layerInfo, viewPosition, CollidableNeverCollideBehaviorFactory::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->initWidth= layerInfo.getWidth();
+this->initWidth= layerInfo->getWidth();
     
-this->initHeight= layerInfo.getHeight();
+this->initHeight= layerInfo->getHeight();
     
 this->groupInterface= groupInterface;
     
@@ -205,7 +213,7 @@ this->initZ= z;
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 super.paint(graphics);
     
 }
@@ -217,7 +225,7 @@ super.paint(graphics);
 
 
 
-                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw new Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
@@ -228,7 +236,7 @@ super.paint(graphics);
 
 
 
-                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw new Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
@@ -239,12 +247,12 @@ super.paint(graphics);
 
 
 
-                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw new Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
-    public: std::vector<Group> getGroupInterface(){
+    public: std::vector<Group*> getGroupInterface(){
 
 
 
@@ -254,7 +262,7 @@ super.paint(graphics);
 }
 
 
-    public: void setGroupInterface(std::vector<Group> teamInterface){
+    public: void setGroupInterface(std::vector<Group*> teamInterface){
 this->groupInterface= teamInterface;
     
 }
@@ -262,7 +270,7 @@ this->groupInterface= teamInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager){
 this->allBinaryGameLayerManagerP= allBinaryGameLayerManager;
     
 
@@ -274,7 +282,7 @@ this->allBinaryGameLayerManagerP= allBinaryGameLayerManager;
                                     
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 
                                     }
@@ -376,37 +384,37 @@ this->readyForExplosion= isReadyForExplosion;
 
                 //@Throws(Exception.constructor)
             
-    public: void fire(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
+    public: void fire(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void special1(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
+    public: void special1(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void special2(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
+    public: void special2(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void special3(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
+    public: void special3(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void special4(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
+    public: void special4(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void special5(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
+    public: void special5(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent){
 }
 
 
@@ -436,21 +444,21 @@ this->readyForExplosion= isReadyForExplosion;
 
                 //@Throws(Exception.constructor)
             
-    public: void rightTrigger(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent, int32_t xAnalogValue){
+    public: void rightTrigger(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent, int32_t xAnalogValue){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void leftTrigger(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent, int32_t xAnalogValue){
+    public: void leftTrigger(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent, int32_t xAnalogValue){
 }
 
 
-    public: void onDestroyed(DestroyedEvent destroyedEvent){
+    public: void onDestroyed(DestroyedEvent* destroyedEvent){
 }
 
 
-    public: PickupBehavior getPickupBehavior(){
+    public: PickupBehavior* getPickupBehavior(){
 
 
 
@@ -460,7 +468,7 @@ this->readyForExplosion= isReadyForExplosion;
 }
 
 
-    public: void setPickupBehavior(PickupBehavior pickupBehavior){
+    public: void setPickupBehavior(PickupBehavior* pickupBehavior){
 this->pickupBehavior= pickupBehavior;
     
 }
@@ -468,17 +476,17 @@ this->pickupBehavior= pickupBehavior;
 
                 //@Throws(Exception.constructor)
             
-    public: void addPart(PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface){
+    public: void addPart(PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface){
 }
 
 
-    public: void setPartInterfaceArray(std::vector<PartInterface> partInterfaceArray){
+    public: void setPartInterfaceArray(std::vector<PartInterface*> partInterfaceArray){
 this->partInterfaceArrayP= partInterfaceArray;
     
 }
 
 
-    public: std::vector<PartInterface> getPartInterfaceArray(){
+    public: std::vector<PartInterface*> getPartInterfaceArray(){
 
 
 
@@ -488,19 +496,19 @@ this->partInterfaceArrayP= partInterfaceArray;
 }
 
 
-    public: void toStringAppend(StringMaker stringBuffer){
+    public: void toStringAppend(StringMaker* stringBuffer){
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
-    PositionStrings positionStrings = PositionStrings::getInstance();;
+    PositionStrings* positionStrings = PositionStrings::getInstance();;
     
 super.toStringAppend(stringBuffer);
     
-stringBuffer.append(commonSeps.NEW_LINE);
+stringBuffer->append(commonSeps->NEW_LINE);
     
 
-    std::vector<Group> groupInterfaceArray = this->getGroupInterface();;
+    std::vector<Group*> groupInterfaceArray = this->getGroupInterface();;
     
 
     int32_t size = groupInterfaceArray.size();;
@@ -512,14 +520,14 @@ stringBuffer.append(commonSeps.NEW_LINE);
                         for (
     int32_t index = 0;index < size; index++)
         {
-stringBuffer.append(groupInterfaceArray[index].toString());
+stringBuffer->append(groupInterfaceArray[index].toString());
     
-stringBuffer.append(commonSeps.COMMA);
+stringBuffer->append(commonSeps->COMMA);
     
 }
 
 
-    PickupBehavior pickupBehavior = this->getPickupBehavior();;
+    PickupBehavior* pickupBehavior = this->getPickupBehavior();;
     
 
                         if(pickupBehavior != 
@@ -527,43 +535,43 @@ stringBuffer.append(commonSeps.COMMA);
                                 )
                         
                                     {
-                                    stringBuffer.append(commonSeps.NEW_LINE);
+                                    stringBuffer->append(commonSeps->NEW_LINE);
     
-stringBuffer.append(pickupBehavior.toString());
+stringBuffer->append(pickupBehavior->toString());
     
 
                                     }
                                 
-stringBuffer.append(commonSeps.NEW_LINE);
+stringBuffer->append(commonSeps->NEW_LINE);
     
-stringBuffer.append(CollidableDestroyableDamageableLayer::READYFOREXPLOSION);
+stringBuffer->append(CollidableDestroyableDamageableLayer::READYFOREXPLOSION);
     
-stringBuffer.appendboolean(this->readyForExplosion);
+stringBuffer->appendboolean(this->readyForExplosion);
     
-stringBuffer.append(commonSeps.NEW_LINE);
+stringBuffer->append(commonSeps->NEW_LINE);
     
-stringBuffer.append(this->commonStrings.INIT);
+stringBuffer->append(this->commonStrings.INIT);
     
-stringBuffer.append(commonSeps.SPACE);
+stringBuffer->append(commonSeps->SPACE);
     
-stringBuffer.append(positionStrings.X_LABEL);
+stringBuffer->append(positionStrings->X_LABEL);
     
-stringBuffer.appendint(this->initX);
+stringBuffer->appendint(this->initX);
     
-stringBuffer.append(positionStrings.Y_LABEL);
+stringBuffer->append(positionStrings->Y_LABEL);
     
-stringBuffer.appendint(this->initX);
+stringBuffer->appendint(this->initX);
     
-stringBuffer.append(positionStrings.Z_LABEL);
+stringBuffer->append(positionStrings->Z_LABEL);
     
-stringBuffer.appendint(this->initZ);
+stringBuffer->appendint(this->initZ);
     
 }
 
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 this->toStringAppend(stringBuffer);
     
@@ -571,7 +579,7 @@ this->toStringAppend(stringBuffer);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

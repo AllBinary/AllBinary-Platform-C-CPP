@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_INPUTIMAGETYPE_H
         #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_INPUTIMAGETYPE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -58,19 +64,19 @@ class InputImageType
             : public Object
          {
 
-    private: static HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();
+    private: static inline HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();
 
-    private: static const BasicArrayList TYPE_VECTOR = BasicArrayListD();
+    private: static inline BasicArrayList* TYPE_VECTOR = new BasicArrayListD();
 
-    public: static InputImageType CAPTURE = InputImageType("Capture", 0);
+    public: static InputImageType* CAPTURE() { static std::unique_ptr<InputImageType> value(new InputImageType("Capture", 0)); return value.get(); }
 
-    public: static InputImageType COMPARISON = InputImageType("Comparison", 1);
+    public: static InputImageType* COMPARISON() { static std::unique_ptr<InputImageType> value(new InputImageType("Comparison", 1)); return value.get(); }
 
-    public: static InputImageType MOTION = InputImageType("Motion", 2);
+    public: static InputImageType* MOTION() { static std::unique_ptr<InputImageType> value(new InputImageType("Motion", 2)); return value.get(); }
 
-    public: static InputImageType getInstance(std::string imageTypeString);
+    public: static InputImageType* getInstance(std::string imageTypeString);
 
-    public: static BasicArrayList getAllAsVector();
+    public: static BasicArrayList* getAllAsVector();
 
     private: std::string name;
 

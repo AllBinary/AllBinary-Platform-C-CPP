@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,15 +44,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseTouchInput.h"
+        #include "org/allbinary/input/motion/button/BaseTouchInput.h"
 
 class NoButtonsTouchInputFactory
             : public Object
          {
 
-    private: static BaseTouchInput instance() { return BaseTouchInput(); }
+    private: static BaseTouchInput* instance() { static std::unique_ptr<BaseTouchInput> value(new BaseTouchInput()); return value.get(); }
 
-    public: static BaseTouchInput getInstance(){
+    public: static BaseTouchInput* getInstance(){
 
 
 

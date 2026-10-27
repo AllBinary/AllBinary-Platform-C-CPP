@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENTLISTENER_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENTLISTENER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -41,29 +47,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MyCanvasEvent.h"
+        #include "org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEvent.h"
 
 class MyCanvasEventListener {
 
-    void delete_(MyCanvasEvent evt);
+    public: virtual void delete_(MyCanvasEvent* evt) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void duplicate(MyCanvasEvent evt);
+    public: virtual void duplicate(MyCanvasEvent* evt) = 0;
 
-    void select(MyCanvasEvent evt);
+    public: virtual void select(MyCanvasEvent* evt) = 0;
 
-    void rotate(MyCanvasEvent evt);
+    public: virtual void rotate(MyCanvasEvent* evt) = 0;
 
-    void explode(MyCanvasEvent evt);
-
-                //@Throws(Exception.constructor)
-            
-    void autoExplode(MyCanvasEvent evt);
+    public: virtual void explode(MyCanvasEvent* evt) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void center(MyCanvasEvent evt);
+    public: virtual void autoExplode(MyCanvasEvent* evt) = 0;
+
+                //@Throws(Exception.constructor)
+            
+    public: virtual void center(MyCanvasEvent* evt) = 0;
 
 };
 

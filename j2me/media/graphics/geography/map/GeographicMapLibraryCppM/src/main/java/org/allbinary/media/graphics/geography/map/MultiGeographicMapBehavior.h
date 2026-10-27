@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -45,9 +51,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapCellType.h"
-#include "BasicGeographicMap.h"
-#include "GeographicMapCellPosition.h"
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellType.h"
+#include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
 
 class MultiGeographicMapBehavior
             : public Object
@@ -55,7 +61,7 @@ class MultiGeographicMapBehavior
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<GeographicMapCellType> getCellTypeAt(std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, GeographicMapCellPosition geographicMapCellPosition);
+    public: std::vector<GeographicMapCellType*> getCellTypeAt(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, GeographicMapCellPosition* geographicMapCellPosition);
 
 };
 

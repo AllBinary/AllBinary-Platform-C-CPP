@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADEROPENGLPROCESSOR_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADEROPENGLPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/khronos/opengles/GL10.h>
 
       
@@ -36,15 +42,15 @@ class ShaderOpenGLProcessor: public OpenGLProcessor {
 
 public: ShaderOpenGLProcessor();
 
-    public: void process0(GL10 gl);
+    public: void process0(GL10* gl);
 
-    public: void process1(GL10 gl);
+    public: void process1(GL10* gl);
 
-    public: void process(GL10 gl);
+    public: void process(GL10* gl);
 
-    public: void process2(GL10 gl);
+    public: void process2(GL10* gl);
 
-    public: void process3(GL10 gl);
+    public: void process3(GL10* gl);
 
 };
 

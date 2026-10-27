@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/NumberFormatException.h"
         
             #include "java/lang/Integer.h"
@@ -64,7 +70,7 @@
         
 class NumberTextFieldItemValidator: public ValidatorBase {
 
-    private: ABTextFieldItem textFieldItem;
+    private: ABTextFieldItem* textFieldItem;
 
     private: int32_t min;
 
@@ -72,7 +78,7 @@ class NumberTextFieldItemValidator: public ValidatorBase {
 
     private: int32_t maxChars;
 
-public: NumberTextFieldItemValidator(ABTextFieldItem textFieldItem, int32_t maxChars, int32_t min, int32_t max){
+public: NumberTextFieldItemValidator(ABTextFieldItem* textFieldItem, int32_t maxChars, int32_t min, int32_t max){
 this->textFieldItem= textFieldItem;
     
 this->min= min;
@@ -84,32 +90,32 @@ this->maxChars= maxChars;
 }
 
 
-    protected: Boolean isNumberValid(Integer value){
+    protected: bool isNumberValid(int32_t value){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory::getInstance().TRUE;
+                        return BooleanFactory::getInstance()->TRUE;
     
 }
 
 
-    protected: BasicArrayList toNumberVector(Integer value){
+    protected: BasicArrayList* toNumberVector(int32_t value){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicArrayListD();
+                        return new BasicArrayListD();
     
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
-    Boolean result = BooleanFactory::getInstance().TRUE;;
+    bool result = BooleanFactory::getInstance()->TRUE;;
     
 
-    std::string string = this->textFieldItem.getString();;
+    std::string string = this->textFieldItem->getString();;
     
 
     int32_t textLength = string.size();;
@@ -120,13 +126,13 @@ this->maxChars= maxChars;
                                     {
                                     
         try {
-            Integer::parseInt(this->textFieldItem.getString());
+            Integer.parseInt(this->textFieldItem->getString());
     
 
                 //: 
-} catch(e) 
+} catch(NumberFormatException& e) 
             {
-result= BooleanFactory::getInstance().FALSE;
+result= BooleanFactory::getInstance()->FALSE;
     
 }
 
@@ -138,7 +144,7 @@ result= BooleanFactory::getInstance().FALSE;
                         if(textLength < 1)
                         
                                     {
-                                    result= BooleanFactory::getInstance().FALSE;
+                                    result= BooleanFactory::getInstance()->FALSE;
     
 
                                     }
@@ -147,7 +153,7 @@ result= BooleanFactory::getInstance().FALSE;
                         if(textLength > this->maxChars)
                         
                                     {
-                                    result= BooleanFactory::getInstance().FALSE;
+                                    result= BooleanFactory::getInstance()->FALSE;
     
 
                                     }
@@ -164,27 +170,27 @@ result= BooleanFactory::getInstance().FALSE;
 }
 
 
-    public: BasicArrayList toList(){
+    public: BasicArrayList* toList(){
 
-    BasicArrayList list = BasicArrayListD();;
+    BasicArrayList* list = new BasicArrayListD();;
     
 
-    std::string string = this->textFieldItem.getString();;
+    std::string string = this->textFieldItem->getString();;
     
 
     int32_t textLength = string.size();;
     
 
-    std::string label = this->textFieldItem.getLabel();;
+    std::string label = this->textFieldItem->getLabel();;
     
 
-    std::string name = label.substring(0, label.size() -2);;
+    std::string name = JavaString::substring(label, 0, label.size() -2);;
     
 
-    SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
+    SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
 
-    StringMaker stringMaker = StringMaker();;
+    StringMaker* stringMaker = new StringMaker();;
     
 
                         if(textLength > 0 && textLength < this->maxChars)
@@ -193,15 +199,15 @@ result= BooleanFactory::getInstance().FALSE;
                                     
         try {
             
-    Integer number = smallIntegerSingletonFactory.createInstance(Integer::parseInt(this->textFieldItem.getString()));;
+    int32_t number = smallIntegerSingletonFactory->createInstance(Integer.parseInt(this->textFieldItem->getString()));;
     
 
                         if(number.intValue() > this->min)
                         
                                     {
-                                    stringMaker.delete(0, stringMaker.length());
+                                    stringMaker->delete(0, stringMaker->length());
     
-list.add(stringMaker.append(name).append(" is to small").toString());
+list->add(stringMaker->append(name)->append(" is to small")->toString());
     
 
                                     }
@@ -210,20 +216,20 @@ list.add(stringMaker.append(name).append(" is to small").toString());
                         if(number.intValue() > this->max)
                         
                                     {
-                                    stringMaker.delete(0, stringMaker.length());
+                                    stringMaker->delete(0, stringMaker->length());
     
-list.add(stringMaker.append(name).append(" is to large").toString());
+list->add(stringMaker->append(name)->append(" is to large")->toString());
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(NumberFormatException& e) 
             {
-stringMaker.delete(0, stringMaker.length());
+stringMaker->delete(0, stringMaker->length());
     
-list.add(stringMaker.append(name).append(" is not a number").toString());
+list->add(stringMaker->append(name)->append(" is not a number")->toString());
     
 }
 
@@ -235,9 +241,9 @@ list.add(stringMaker.append(name).append(" is not a number").toString());
                         if(textLength < 1)
                         
                                     {
-                                    stringMaker.delete(0, stringMaker.length());
+                                    stringMaker->delete(0, stringMaker->length());
     
-list.add(stringMaker.append(name).append(" is to short").toString());
+list->add(stringMaker->append(name)->append(" is to short")->toString());
     
 
                                     }
@@ -246,9 +252,9 @@ list.add(stringMaker.append(name).append(" is to short").toString());
                         if(textLength > this->maxChars)
                         
                                     {
-                                    stringMaker.delete(0, stringMaker.length());
+                                    stringMaker->delete(0, stringMaker->length());
     
-list.add(stringMaker.append(name).append(" is to long").toString());
+list->add(stringMaker->append(name)->append(" is to long")->toString());
     
 
                                     }

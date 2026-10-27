@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSEARCH_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSEARCH_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/globals/FREEBLISKET_PATH_GLOBALS.h>
@@ -62,11 +68,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoHttp.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoHttp.h"
 
 class TransformInfoHttpSearch: public TransformInfoHttp {
 
-public: TransformInfoHttpSearch(SearchRequest searchRequest);
+public: TransformInfoHttpSearch(SearchRequest* searchRequest);
 
                 //@Throws(Exception.constructor)
             
@@ -74,15 +80,15 @@ public: TransformInfoHttpSearch(SearchRequest searchRequest);
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getTemplateFilePath();
+    public: AbPath* getTemplateFilePath();
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getObjectConfigFilePath();
+    public: AbPath* getObjectConfigFilePath();
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getDataFilePath();
+    public: AbPath* getDataFilePath();
 
 };
 

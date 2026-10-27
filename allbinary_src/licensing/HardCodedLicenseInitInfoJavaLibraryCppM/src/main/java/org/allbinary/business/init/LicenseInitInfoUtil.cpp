@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -40,15 +46,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LicenseInitInfo.h"
+        #include "org/allbinary/business/init/LicenseInitInfo.h"
 
 class LicenseInitInfoUtil
             : public Object
          {
 
-    private: static LicenseInitInfoUtil instance() { return LicenseInitInfoUtil(); }
+    private: static LicenseInitInfoUtil* instance() { static std::unique_ptr<LicenseInitInfoUtil> value(new LicenseInitInfoUtil()); return value.get(); }
 
-    public: static LicenseInitInfoUtil getInstance(){
+    public: static LicenseInitInfoUtil* getInstance(){
 
 
 
@@ -78,14 +84,14 @@ private: LicenseInitInfoUtil(){
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void write(LicenseInitInfo initData){
+    public: void write(LicenseInitInfo* initData){
 }
 
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: LicenseInitInfo read(){
+    public: LicenseInitInfo* read(){
 
 
 
@@ -98,13 +104,13 @@ private: LicenseInitInfoUtil(){
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: LicenseInitInfo readAgain(int32_t initializeCounter){
+    public: LicenseInitInfo* readAgain(int32_t initializeCounter){
 
-    LicenseInitInfo licenseInitInfo = LicenseInitInfo();;
+    LicenseInitInfo* licenseInitInfo = new LicenseInitInfo();;
     
-licenseInitInfo.clearServers();
+licenseInitInfo->clearServers();
     
-licenseInitInfo.addServer(this->OFFICIAL_ALLBINARY_SERVICES_SERVER);
+licenseInitInfo->addServer(this->OFFICIAL_ALLBINARY_SERVICES_SERVER);
     
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,25 +42,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RaceTrackGeographicMapCellTypeFactory.h"
-#include "EmptyRaceRaceTrackGeographicMapCellTypeFactory.h"
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellTypeFactory.h"
+#include "org/allbinary/media/graphics/geography/map/racetrack/EmptyRaceRaceTrackGeographicMapCellTypeFactory.h"
 
 class CloseLoopRaceTrackGeographicMapCellTypeFactory: public RaceTrackGeographicMapCellTypeFactory {
 
-    private: static const CloseLoopRaceTrackGeographicMapCellTypeFactory instanceC = CloseLoopRaceTrackGeographicMapCellTypeFactory();
+    private: static CloseLoopRaceTrackGeographicMapCellTypeFactory* instanceC() { static std::unique_ptr<CloseLoopRaceTrackGeographicMapCellTypeFactory> value(new CloseLoopRaceTrackGeographicMapCellTypeFactory()); return value.get(); }
 
-    public: static CloseLoopRaceTrackGeographicMapCellTypeFactory getInstance(){
+    public: static CloseLoopRaceTrackGeographicMapCellTypeFactory* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CloseLoopRaceTrackGeographicMapCellTypeFactory::instanceC;
+                        return CloseLoopRaceTrackGeographicMapCellTypeFactory::instanceC();
     
 }
 
 
 private: CloseLoopRaceTrackGeographicMapCellTypeFactory(){
-this->EMPTY_CELL_TYPE= EmptyRaceRaceTrackGeographicMapCellTypeFactory::getInstance().EMPTY_CELL_TYPE;
+this->EMPTY_CELL_TYPE= EmptyRaceRaceTrackGeographicMapCellTypeFactory::getInstance()->EMPTY_CELL_TYPE;
     
 this->EASY_CELL_TYPE= this->EMPTY_CELL_TYPE;
     

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,17 +52,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicUserRole.h"
+        #include "org/allbinary/business/user/role/BasicUserRole.h"
 
 class UserRole
             : public Object
-        : public Serializable {
+        , public Serializable {
 
-    private: BasicUserRole basicUserRole;
+    private: BasicUserRole* basicUserRole;
 
-    private: UserFactoryInterface userFactoryInterface;
+    private: UserFactoryInterface* userFactoryInterface;
 
-protected: UserRole(BasicUserRole aBasicUserRole, UserFactoryInterface aUserFactoryInterface){
+protected: UserRole(BasicUserRole* aBasicUserRole, UserFactoryInterface* aUserFactoryInterface){
 this->basicUserRole= aBasicUserRole;
     
 this->userFactoryInterface= aUserFactoryInterface;
@@ -69,12 +75,12 @@ this->userFactoryInterface= aUserFactoryInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->basicUserRole.toString();;
+                        return this->basicUserRole->toString();;
     
 }
 
 
-    public: BasicUserRole getBasicUserRole(){
+    public: BasicUserRole* getBasicUserRole(){
 
 
 
@@ -86,7 +92,7 @@ this->userFactoryInterface= aUserFactoryInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: UserFactoryInterface getUserFactory(){
+    public: UserFactoryInterface* getUserFactory(){
 
 
 
@@ -101,7 +107,7 @@ this->userFactoryInterface= aUserFactoryInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->basicUserRole.getSessionTimeout();;
+                        return this->basicUserRole->getSessionTimeout();;
     
 }
 
@@ -111,7 +117,7 @@ this->userFactoryInterface= aUserFactoryInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->basicUserRole.getSessionInactivityTimeout();;
+                        return this->basicUserRole->getSessionInactivityTimeout();;
     
 }
 

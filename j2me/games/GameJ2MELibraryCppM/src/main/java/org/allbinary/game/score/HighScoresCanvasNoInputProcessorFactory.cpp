@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/score/displayable/HighScoresCanvas.h>
@@ -41,19 +47,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HighScoresCanvasInputProcessorFactoryInterface.h"
-#include "HighScoresCanvasInputProcessor.h"
+        #include "org/allbinary/game/score/HighScoresCanvasInputProcessorFactoryInterface.h"
+#include "org/allbinary/game/score/HighScoresCanvasInputProcessor.h"
 
 class HighScoresCanvasNoInputProcessorFactory
             : public Object
-        : public HighScoresCanvasInputProcessorFactoryInterface {
+        , public HighScoresCanvasInputProcessorFactoryInterface {
 
-    public: HighScoresCanvasInputProcessor getInstance(HighScoresCanvas highScoresCanvas){
+    public: HighScoresCanvasInputProcessor* getInstance(HighScoresCanvas* highScoresCanvas){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HighScoresCanvasInputProcessor(highScoresCanvas);
+                        return new HighScoresCanvasInputProcessor(highScoresCanvas);
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/string/CommonSeps.h>
@@ -58,45 +64,45 @@ class LayerUtil
             : public Object
          {
 
-    private: static const std::string HASHTABLE = "Hashtable: ";
+    private: static inline const std::string HASHTABLE = "Hashtable: ";
 
-    public: static std::string toString(ABHashtable<Object*, Object*> hashtable, int32_t x, int32_t y, int32_t z){
+    public: static std::string toString(ABHashtable<Object*, Object*>* hashtable, int32_t x, int32_t y, int32_t z){
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
-    
-
-    PositionStrings positionStrings = PositionStrings::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    PositionStrings* positionStrings = PositionStrings::getInstance();;
     
-stringBuffer.append(LayerUtil::HASHTABLE);
+
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(StringUtil::getInstance().toString(hashtable));
+stringBuffer->append(LayerUtil::HASHTABLE);
     
-stringBuffer.append(commonSeps.SPACE);
+stringBuffer->append(StringUtil::getInstance()->toString(hashtable));
     
-stringBuffer.append(positionStrings.X_LABEL);
+stringBuffer->append(commonSeps->SPACE);
     
-stringBuffer.appendint(x);
+stringBuffer->append(positionStrings->X_LABEL);
     
-stringBuffer.append(commonSeps.SPACE);
+stringBuffer->appendint(x);
     
-stringBuffer.append(positionStrings.Y_LABEL);
+stringBuffer->append(commonSeps->SPACE);
     
-stringBuffer.appendint(y);
+stringBuffer->append(positionStrings->Y_LABEL);
     
-stringBuffer.append(commonSeps.SPACE);
+stringBuffer->appendint(y);
     
-stringBuffer.append(positionStrings.Z_LABEL);
+stringBuffer->append(commonSeps->SPACE);
     
-stringBuffer.appendint(z);
+stringBuffer->append(positionStrings->Z_LABEL);
+    
+stringBuffer->appendint(z);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

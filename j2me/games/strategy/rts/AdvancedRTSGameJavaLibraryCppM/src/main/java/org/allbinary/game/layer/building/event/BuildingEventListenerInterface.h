@@ -20,6 +20,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_BUILDING_EVENT_BUILDINGEVENTLISTENERINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_BUILDING_EVENT_BUILDINGEVENTLISTENERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/RTSLayerEvent.h>
@@ -51,7 +57,7 @@ class BuildingEventListenerInterface: public EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    void onBuildingEvent(RTSLayerEvent event);
+    public: virtual void onBuildingEvent(RTSLayerEvent* event) = 0;
 
 };
 

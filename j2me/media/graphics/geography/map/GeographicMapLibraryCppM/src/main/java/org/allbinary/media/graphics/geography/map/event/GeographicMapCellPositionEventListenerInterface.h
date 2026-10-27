@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENTLISTENERINTERFACE_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENTLISTENERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
@@ -44,17 +50,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapCellPositionEvent.h"
+        #include "org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEvent.h"
 
 class GeographicMapCellPositionEventListenerInterface: public EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    void onGeographicMapCellPositionEvent(GeographicMapCellPositionEvent geographicMapCellPositionEvent);
+    public: virtual void onGeographicMapCellPositionEvent(GeographicMapCellPositionEvent* geographicMapCellPositionEvent) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void onRemoveGeographicMapCellPositionEvent(GeographicMapCellPositionEvent geographicMapCellPositionEvent);
+    public: virtual void onRemoveGeographicMapCellPositionEvent(GeographicMapCellPositionEvent* geographicMapCellPositionEvent) = 0;
 
 };
 

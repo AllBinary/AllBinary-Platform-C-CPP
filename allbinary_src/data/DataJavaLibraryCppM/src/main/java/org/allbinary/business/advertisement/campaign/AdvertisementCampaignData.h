@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNDATA_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class AdvertisementCampaignData
             : public Object
          {
 
-    private: static AdvertisementCampaignData instance() { return AdvertisementCampaignData(); }
+    private: static AdvertisementCampaignData* instance() { static std::unique_ptr<AdvertisementCampaignData> value(new AdvertisementCampaignData()); return value.get(); }
 
-    public: static AdvertisementCampaignData getInstance();
+    public: static AdvertisementCampaignData* getInstance();
 
 private: AdvertisementCampaignData();
 

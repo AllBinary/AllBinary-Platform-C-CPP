@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -72,22 +78,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicProfileActionScriptCondition.h"
-#include "TimeIntervalActionScriptConditionInterface.h"
-#include "TimeIntervalActionScriptConditionJPanel.h"
-#include "TimeIntervalActionScriptConditionData.h"
+        #include "org/allbinary/input/automation/actions/script/condition/BasicProfileActionScriptCondition.h"
+#include "org/allbinary/input/automation/actions/script/condition/TimeIntervalActionScriptConditionInterface.h"
+#include "org/allbinary/input/automation/actions/script/condition/TimeIntervalActionScriptConditionJPanel.h"
+#include "org/allbinary/input/automation/actions/script/condition/TimeIntervalActionScriptConditionData.h"
 
 class TimeIntervalActionScriptCondition: public BasicProfileActionScriptCondition, public TimeIntervalActionScriptConditionInterface {
 
-    private: static const std::string NAME = "Time Interval";
+    private: static inline const std::string NAME = "Time Interval";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: TimeIntervalActionScriptConditionJPanel timeIntervalActionScriptConditionJPanel;
+    private: TimeIntervalActionScriptConditionJPanel* timeIntervalActionScriptConditionJPanel;
 
-    private: TimeDelayHelper timeHelper;
+    private: TimeDelayHelper* timeHelper;
 
-public: TimeIntervalActionScriptCondition(Node node) : BasicProfileActionScriptCondition(TimeIntervalActionScriptCondition::NAME, node){
+public: TimeIntervalActionScriptCondition(Node* node) : BasicProfileActionScriptCondition(TimeIntervalActionScriptCondition::NAME, node){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -95,7 +101,7 @@ public: TimeIntervalActionScriptCondition(Node node) : BasicProfileActionScriptC
                             //For kotlin this is before the body of the constructor.
                     
 
-    Node actionNode = DomSearchHelper::getNode(TimeIntervalActionScriptConditionData::NAME, node.getChildNodes());;
+    Node* actionNode = DomSearchHelper::getNode(TimeIntervalActionScriptConditionData::NAME, node->getChildNodes());;
     
 
                         if(actionNode != 
@@ -104,26 +110,26 @@ public: TimeIntervalActionScriptCondition(Node node) : BasicProfileActionScriptC
                         
                                     {
                                     
-    NodeList nodeList = actionNode.getChildNodes();;
+    NodeList* nodeList = actionNode->getChildNodes();;
     
 
 
 
 
                         for (
-    int32_t index = 0;index < nodeList.getLength(); index++)
+    int32_t index = 0;index < nodeList->getLength(); index++)
         {
 
-    Node childNode = nodeList.item(index);;
+    Node* childNode = nodeList->item(index);;
     
 
-                        if(childNode.getNodeName().compareTo(TimeIntervalActionScriptConditionData::TIME) == 0)
+                        if(childNode->getNodeName()->compareTo(TimeIntervalActionScriptConditionData::TIME) == 0)
                         
                                     {
                                     
     std::string interval = DomNodeHelper::getTextNodeValue(childNode);;
     
-this->setTimeDelayHelper(TimeDelayHelper(Integer::valueOf(interval)));
+this->setTimeDelayHelper(new TimeDelayHelper(Integer.valueOf(interval)));
     
 
                                     }
@@ -132,7 +138,7 @@ this->setTimeDelayHelper(TimeDelayHelper(Integer::valueOf(interval)));
                             
 
 
-                            throw Exception("Time Interval Action Script Condition Unknown Node");
+                            throw new Exception("Time Interval Action Script Condition Unknown Node");
                     
 
                         }
@@ -146,7 +152,7 @@ this->setTimeDelayHelper(TimeDelayHelper(Integer::valueOf(interval)));
                             
 
 
-                            throw Exception("Time Interval Action Script Condition Node Null");
+                            throw new Exception("Time Interval Action Script Condition Node Null");
                     
 
                         }
@@ -163,7 +169,7 @@ public: TimeIntervalActionScriptCondition() : BasicProfileActionScriptCondition(
 
                             //For kotlin this is before the body of the constructor.
                     
-this->setTimeDelayHelper(TimeDelayHelper(0));
+this->setTimeDelayHelper(new TimeDelayHelper(0));
     
 this->init();
     
@@ -171,24 +177,24 @@ this->init();
 
 
     private: void init(){
-this->timeIntervalActionScriptConditionJPanel= TimeIntervalActionScriptConditionJPanel(this);
+this->timeIntervalActionScriptConditionJPanel= new TimeIntervalActionScriptConditionJPanel(this);
     
 }
 
 
     public: void showDialog(){
-this->timeIntervalActionScriptConditionJPanel.getTimeIntervalActionJDialog().setVisible(true);
+this->timeIntervalActionScriptConditionJPanel->getTimeIntervalActionJDialog()->setVisible(true);
     
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(TimeIntervalActionScriptConditionData::TIME, std::to_string(delay));
+hashMap->put(TimeIntervalActionScriptConditionData::TIME, std::to_string(delay));
     
-this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
+this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
     
 
 
@@ -201,11 +207,11 @@ this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = super.toXmlNode(document);;
+    Node* node = super.toXmlNode(document);;
     
-node.appendChild(ModDomHelper::createNodeWithValueNodes(document, TimeIntervalActionScriptConditionData::NAME, this->toHashMap()));
+node->appendChild(ModDomHelper::createNodeWithValueNodes(document, TimeIntervalActionScriptConditionData::NAME, this->toHashMap()));
     
 
 
@@ -217,12 +223,12 @@ node.appendChild(ModDomHelper::createNodeWithValueNodes(document, TimeIntervalAc
 
 
     public: void log(){
-this->logUtil.putF("Time Interval: " +this->timeHelper.delay, this, "log");
+this->logUtil->putF("Time Interval: " +this->timeHelper->delay, this, "log");
     
 }
 
 
-    public: TimeDelayHelper getTimeDelayHelper(){
+    public: TimeDelayHelper* getTimeDelayHelper(){
 
 
 
@@ -232,7 +238,7 @@ this->logUtil.putF("Time Interval: " +this->timeHelper.delay, this, "log");
 }
 
 
-    public: void setTimeDelayHelper(TimeDelayHelper timeHelper){
+    public: void setTimeDelayHelper(TimeDelayHelper* timeHelper){
 this->timeHelper= timeHelper;
     
 }
@@ -240,15 +246,15 @@ this->timeHelper= timeHelper;
 
                 //@Throws(Exception.constructor)
             
-    public: bool shouldProcess(Long frame){
+    public: bool shouldProcess(int64_t frame){
 
-    TimeDelayHelper timeHelper = this->getTimeDelayHelper();;
+    TimeDelayHelper* timeHelper = this->getTimeDelayHelper();;
     
 
-                        if(timeHelper.isTimeTNT())
+                        if(timeHelper->isTimeTNT())
                         
                                     {
-                                    timeHelper.setStartTimeTNT();
+                                    timeHelper->setStartTimeTNT();
     
 
 

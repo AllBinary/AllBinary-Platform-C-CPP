@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYLOADER_H
         #define ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYLOADER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/category/CategoryData.h>
@@ -83,35 +89,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryModifierTree.h"
-#include "CategoryLoaderInterface.h"
+        #include "org/allbinary/data/tree/category/CategoryModifierTree.h"
+#include "org/allbinary/data/tree/category/CategoryLoaderInterface.h"
 
 class CategoryLoader: public CategoryModifierTree, public CategoryLoaderInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: CategoryLoader(CategoryFactoryInterface categoryFactoryInterface);
+public: CategoryLoader(CategoryFactoryInterface* categoryFactoryInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: Document getDoc(CategoryInterface categoryInterface);
+    public: Document* getDoc(CategoryInterface* categoryInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: CategoryInterface get(CategoryInterface categoryInterface);
+    public: CategoryInterface* get(CategoryInterface* categoryInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: CategoryInterface get(Document document);
+    public: CategoryInterface* get(Document* document);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: CategoryInterface getAll(CategoryInterface categoryInterface);
+    public: CategoryInterface* getAll(CategoryInterface* categoryInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: CategoryInterface getAll(Document document);
+    private: CategoryInterface* getAll(Document* document);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: CategoryInterface getAll(CategoryInterface parentCategoryInterface, NodeList categoryNodeList);
+    private: CategoryInterface* getAll(CategoryInterface* parentCategoryInterface, NodeList* categoryNodeList);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: CategoryInterface addProperties(CategoryInterface loadedCategoryInterface, NodeList categoryNodeList);
+    private: CategoryInterface* addProperties(CategoryInterface* loadedCategoryInterface, NodeList* categoryNodeList);
 
 };
 

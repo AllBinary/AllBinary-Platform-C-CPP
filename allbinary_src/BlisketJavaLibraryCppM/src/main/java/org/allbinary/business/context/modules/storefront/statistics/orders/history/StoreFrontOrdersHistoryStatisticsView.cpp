@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,16 +61,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreFrontOrdersHistoryStatisticsInterface.h"
-#include "StoreFrontOrdersHistoryStatisticsData.h"
+        #include "org/allbinary/business/context/modules/storefront/statistics/orders/history/StoreFrontOrdersHistoryStatisticsInterface.h"
+#include "org/allbinary/business/context/modules/storefront/statistics/orders/history/StoreFrontOrdersHistoryStatisticsData.h"
 
 class StoreFrontOrdersHistoryStatisticsView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: StoreFrontOrdersHistoryStatisticsInterface storeFrontOrdersHistoryStatisticsInterface;
+    private: StoreFrontOrdersHistoryStatisticsInterface* storeFrontOrdersHistoryStatisticsInterface;
 
-public: StoreFrontOrdersHistoryStatisticsView(StoreFrontOrdersHistoryStatisticsInterface storeFrontOrdersHistoryStatisticsInterface){
+public: StoreFrontOrdersHistoryStatisticsView(StoreFrontOrdersHistoryStatisticsInterface* storeFrontOrdersHistoryStatisticsInterface){
 this->storeFrontOrdersHistoryStatisticsInterface= storeFrontOrdersHistoryStatisticsInterface;
     
 }
@@ -72,12 +78,12 @@ this->storeFrontOrdersHistoryStatisticsInterface= storeFrontOrdersHistoryStatist
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    HashMap<Object*, Object*> hashMap = this->storeFrontOrdersHistoryStatisticsInterface.toHashMap();;
+    HashMap<Object*, Object*>* hashMap = this->storeFrontOrdersHistoryStatisticsInterface->toHashMap();;
     
 
-    Node node = ModDomHelper::createNameValueNodes(document, StoreFrontOrdersHistoryStatisticsData::getInstance().NAME, hashMap);;
+    Node* node = ModDomHelper::createNameValueNodes(document, StoreFrontOrdersHistoryStatisticsData::getInstance()->NAME, hashMap);;
     
 
 

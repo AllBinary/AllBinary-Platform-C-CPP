@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Throwable.h"
         
             #include "java/lang/Exception.h"
@@ -75,9 +81,9 @@
         
 class ImageBaseRotationAnimation: public RotationAnimation {
 
-    private: Image image;
+    private: Image* image;
 
-public: ImageBaseRotationAnimation(Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior);
+public: ImageBaseRotationAnimation(Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior);
 
                 //@Throws(Exception.constructor)
             
@@ -89,9 +95,9 @@ public: ImageBaseRotationAnimation(Image image, AngleInfo angleInfo, int16_t tot
 
     protected: int32_t anchor = Anchor::TOP_LEFT;
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
-    protected: Image getImage();
+    protected: Image* getImage();
 
     public: int32_t getWidth();
 

@@ -21,6 +21,12 @@
         #ifndef BUNDLE_INPUT_AUTOMATION_INPUTAUTOMATIONBUNDLEACTIVATORLISTENERINTERFACE_H
         #define BUNDLE_INPUT_AUTOMATION_INPUTAUTOMATIONBUNDLEACTIVATORLISTENERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -46,11 +52,11 @@ class InputAutomationBundleActivatorListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    void registerAsService();
+    public: virtual void registerAsService() = 0;
 
                 //@Throws(Exception.constructor)
             
-    void useServices();
+    public: virtual void useServices() = 0;
 
 };
 

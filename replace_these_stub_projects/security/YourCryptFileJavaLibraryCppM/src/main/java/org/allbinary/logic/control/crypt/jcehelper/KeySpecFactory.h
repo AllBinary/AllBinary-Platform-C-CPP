@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/security/spec/KeySpec.h>
@@ -51,11 +57,11 @@ class KeySpecFactory
             : public Object
          {
 
-    public: static const std::string DES = "DES";
+    public: static inline const std::string DES = "DES";
 
-    public: static const std::string DESEDE = "DESede";
+    public: static inline const std::string DESEDE = "DESede";
 
-    public: static KeySpec getInstance(std::string algorithm, std::vector<int8_t> keyData);
+    public: static KeySpec* getInstance(std::string algorithm, std::vector<int8_t> keyData);
 
 private: KeySpecFactory();
 

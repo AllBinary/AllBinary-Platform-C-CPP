@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,16 +44,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TestClientInformation.h"
-#include "AbeClientInformationInterface.h"
+        #include "org/allbinary/logic/system/security/licensing/TestClientInformation.h"
+#include "org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h"
 
 class ServiceClientInformationInterfaceFactory
             : public Object
          {
 
-    private: static TestClientInformation instance() { return TestClientInformation(); }
+    private: static TestClientInformation* instance() { static std::unique_ptr<TestClientInformation> value(new TestClientInformation()); return value.get(); }
 
-    public: static AbeClientInformationInterface getInstance(){
+    public: static AbeClientInformationInterface* getInstance(){
 
 
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -133,19 +139,19 @@
         
 class DiveAndDirectionalTrackingAI: public BasicAI, public TrackingEventListenerInterface, public DestroyedEventListenerInterface {
 
-    private: const MathUtil mathUtil = MathUtil::getInstance();
+    private: MathUtil* mathUtil = MathUtil::getInstance();
 
-    private: const DirectionFactory directionFactory = DirectionFactory::getInstance();
+    private: DirectionFactory* directionFactory = DirectionFactory::getInstance();
 
-    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
+    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(500);
+    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(500);
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
-    private: DirectionalInterface directionalInterface;
+    private: DirectionalInterface* directionalInterface;
 
-    private: BasicVelocityProperties velocityInterface;
+    private: BasicVelocityProperties* velocityInterface;
 
     private: const std::vector<int32_t> directionToKeyMap = {Canvas::LEFT,Canvas::DOWN,Canvas::UP,Canvas::RIGHT};
 
@@ -153,19 +159,19 @@ class DiveAndDirectionalTrackingAI: public BasicAI, public TrackingEventListener
 
     private: bool diveP= false;
 
-    private: Direction directionOfTarget = Direction::getInstance(0);
+    private: Direction* directionOfTarget = Direction::getInstance(0);
 
     private: const int32_t MIN_DISTANCE = 40;
 
-    private: AllBinaryLayer lastTrackingLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer* lastTrackingLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-    private: ArtificialIntelligenceInterface artificialIntelligenceInterface;
+    private: ArtificialIntelligenceInterface* artificialIntelligenceInterface;
 
-    private: Visitor aiVistor;
+    private: Visitor* aiVistor;
 
-    private: Direction lastDirection = DirectionFactory::getInstance().NO_DIRECTION;
+    private: Direction* lastDirection = DirectionFactory::getInstance()->NO_DIRECTION;
 
-public: DiveAndDirectionalTrackingAI(AllBinaryLayer ownerLayerInterface, ArtificialIntelligenceInterface artificialIntelligenceInterface, GameInput gameInput, Visitor visitor) : BasicAI(ownerLayerInterface, gameInput){
+public: DiveAndDirectionalTrackingAI(AllBinaryLayer* ownerLayerInterface, ArtificialIntelligenceInterface* artificialIntelligenceInterface, GameInput* gameInput, Visitor* visitor) : BasicAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -177,16 +183,16 @@ this->aiVistor= visitor;
 this->artificialIntelligenceInterface= artificialIntelligenceInterface;
     
 
-    DirectionalCompositeInterface directionalCompositeInterface = this->getOwnerLayerInterface() as unknown;;
+    DirectionalCompositeInterface* directionalCompositeInterface = dynamic_cast<DirectionalCompositeInterface*>(this->getOwnerLayerInterface() as unknown);;
     
-this->directionalInterface= directionalCompositeInterface.getDirectionalInterface();
+this->directionalInterface= directionalCompositeInterface->getDirectionalInterface();
     
 
-    VelocityInterfaceCompositeInterface velocityInterfaceCompositeInterface = this->getOwnerLayerInterface() as unknown;;
+    VelocityInterfaceCompositeInterface* velocityInterfaceCompositeInterface = dynamic_cast<VelocityInterfaceCompositeInterface*>(this->getOwnerLayerInterface() as unknown);;
     
-this->velocityInterface= velocityInterfaceCompositeInterface.getVelocityProperties();
+this->velocityInterface= velocityInterfaceCompositeInterface->getVelocityProperties();
     
-DestroyedEventHandler::getInstance().addListenerInterface(this);
+DestroyedEventHandler::getInstance()->addListenerInterface(this);
     
 this->init();
     
@@ -195,14 +201,14 @@ this->init();
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
 
                         if(this->isBeyondTarget())
                         
                                     {
                                     this->init();
     
-this->velocityInterface.zero();
+this->velocityInterface->zero();
     
 
                                     }
@@ -224,7 +230,7 @@ this->attack();
 
                         }
                             
-this->list.clear();
+this->list->clear();
     
 }
 
@@ -232,18 +238,18 @@ this->list.clear();
     private: void init(){
 this->diveP= false;
     
-this->directionOfTarget= DirectionFactory::getInstance().NOT_BORDERED_WITH;
+this->directionOfTarget= DirectionFactory::getInstance()->NOT_BORDERED_WITH;
     
-TrackingEventHandler::getInstance().addListenerInterface(this);
+TrackingEventHandler::getInstance()->addListenerInterface(this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: void target(AllBinaryLayerManager allBinaryLayerManager){
+    private: void target(AllBinaryLayerManager* allBinaryLayerManager){
 
-                        if(this->list.size() == 0)
+                        if(this->list->size() == 0)
                         
                                     {
                                     
@@ -256,18 +262,18 @@ TrackingEventHandler::getInstance().addListenerInterface(this);
                                     }
                                 
 
-    TrackingEvent lastTrackingEvent = this->list.removeAt(0);;
+    TrackingEvent* lastTrackingEvent = dynamic_cast<TrackingEvent*>(this->list->removeAt(0));;
     
-this->lastTrackingLayerInterface= lastTrackingEvent.getLayerInterface();
-    
-
-    AllBinaryLayer layerInterface = this->lastTrackingLayerInterface;;
+this->lastTrackingLayerInterface= lastTrackingEvent->getLayerInterface();
     
 
-    AllBinaryLayer ownerLayerInterface = this->getOwnerLayerInterface();;
+    AllBinaryLayer* layerInterface = this->lastTrackingLayerInterface;;
     
 
-                        if(layerInterface.getGroupInterface() == ownerLayerInterface.getGroupInterface())
+    AllBinaryLayer* ownerLayerInterface = this->getOwnerLayerInterface();;
+    
+
+                        if(layerInterface->getGroupInterface() == ownerLayerInterface->getGroupInterface())
                         
                                     {
                                     
@@ -280,29 +286,29 @@ this->lastTrackingLayerInterface= lastTrackingEvent.getLayerInterface();
                                     }
                                 
 
-    int32_t x = this->lastTrackingLayerInterface.getXP();;
+    int32_t x = this->lastTrackingLayerInterface->getXP();;
     
 
-    int32_t y = this->lastTrackingLayerInterface.getYP();;
+    int32_t y = this->lastTrackingLayerInterface->getYP();;
     
 
-    int32_t yDistance = ownerLayerInterface.getYP() -y -ownerLayerInterface.getHeight();;
+    int32_t yDistance = ownerLayerInterface->getYP() -y -ownerLayerInterface->getHeight();;
     
 
-    int32_t xDistance = ownerLayerInterface.getXP() -x -ownerLayerInterface.getWidth();;
+    int32_t xDistance = ownerLayerInterface->getXP() -x -ownerLayerInterface->getWidth();;
     
 
-    DirectionFactory directionFactory = DirectionFactory::getInstance();;
+    DirectionFactory* directionFactory = DirectionFactory::getInstance();;
     
 
-                        if(this->mathUtil.abs(yDistance) > this->mathUtil.abs(xDistance))
+                        if(this->mathUtil->abs(yDistance) > this->mathUtil->abs(xDistance))
                         
                                     {
                                     
                         if(yDistance > this->MIN_DISTANCE)
                         
                                     {
-                                    this->directionOfTarget= directionFactory.UP;
+                                    this->directionOfTarget= directionFactory->UP;
     
 
                                     }
@@ -311,7 +317,7 @@ this->lastTrackingLayerInterface= lastTrackingEvent.getLayerInterface();
                         if(yDistance <  -this->MIN_DISTANCE)
                         
                                     {
-                                    this->directionOfTarget= directionFactory.DOWN;
+                                    this->directionOfTarget= directionFactory->DOWN;
     
 
                                     }
@@ -324,7 +330,7 @@ this->lastTrackingLayerInterface= lastTrackingEvent.getLayerInterface();
                         if(xDistance > this->MIN_DISTANCE)
                         
                                     {
-                                    this->directionOfTarget= directionFactory.LEFT;
+                                    this->directionOfTarget= directionFactory->LEFT;
     
 
                                     }
@@ -333,7 +339,7 @@ this->lastTrackingLayerInterface= lastTrackingEvent.getLayerInterface();
                         if(xDistance <  -this->MIN_DISTANCE)
                         
                                     {
-                                    this->directionOfTarget= directionFactory.RIGHT;
+                                    this->directionOfTarget= directionFactory->RIGHT;
     
 
                                     }
@@ -342,7 +348,7 @@ this->lastTrackingLayerInterface= lastTrackingEvent.getLayerInterface();
                         }
                             
 
-                        if(!this->initialDropped && this->directionOfTarget != directionFactory.NOT_BORDERED_WITH)
+                        if(!this->initialDropped && this->directionOfTarget != directionFactory->NOT_BORDERED_WITH)
                         
                                     {
                                     this->drop();
@@ -355,7 +361,7 @@ this->lastTrackingLayerInterface= lastTrackingEvent.getLayerInterface();
                         
                                     {
                                     
-                        if(this->directionOfTarget == directionFactory.UP || this->directionOfTarget == directionFactory.DOWN)
+                        if(this->directionOfTarget == directionFactory->UP || this->directionOfTarget == directionFactory->DOWN)
                         
                                     {
                                     this->verticalTargeting(x);
@@ -364,7 +370,7 @@ this->lastTrackingLayerInterface= lastTrackingEvent.getLayerInterface();
                                     }
                                 
                              else 
-                        if(this->directionOfTarget == directionFactory.LEFT || this->directionOfTarget == directionFactory.RIGHT)
+                        if(this->directionOfTarget == directionFactory->LEFT || this->directionOfTarget == directionFactory->RIGHT)
                         
                                     {
                                     this->horizontalTargeting(y);
@@ -373,7 +379,7 @@ this->lastTrackingLayerInterface= lastTrackingEvent.getLayerInterface();
                                     }
                                 
                         else {
-                            this->artificialIntelligenceInterface.processAI(allBinaryLayerManager);
+                            this->artificialIntelligenceInterface->processAI(allBinaryLayerManager);
     
 
                         }
@@ -388,10 +394,10 @@ this->lastTrackingLayerInterface= lastTrackingEvent.getLayerInterface();
             
     private: void verticalTargeting(int32_t x){
 
-    AllBinaryLayer ownerLayerInterface = this->getOwnerLayerInterface();;
+    AllBinaryLayer* ownerLayerInterface = this->getOwnerLayerInterface();;
     
 
-                        if(ownerLayerInterface.getXP() < x)
+                        if(ownerLayerInterface->getXP() < x)
                         
                                     {
                                     this->moveRight();
@@ -400,7 +406,7 @@ this->lastTrackingLayerInterface= lastTrackingEvent.getLayerInterface();
                                     }
                                 
 
-                        if(ownerLayerInterface.getXP() > x)
+                        if(ownerLayerInterface->getXP() > x)
                         
                                     {
                                     this->moveLeft();
@@ -409,7 +415,7 @@ this->lastTrackingLayerInterface= lastTrackingEvent.getLayerInterface();
                                     }
                                 
 
-                        if(ownerLayerInterface.getXP() > x -3 && ownerLayerInterface.getXP() < x +3)
+                        if(ownerLayerInterface->getXP() > x -3 && ownerLayerInterface->getXP() < x +3)
                         
                                     {
                                     this->setDive();
@@ -424,10 +430,10 @@ this->lastTrackingLayerInterface= lastTrackingEvent.getLayerInterface();
             
     private: void horizontalTargeting(int32_t y){
 
-    AllBinaryLayer ownerLayerInterface = this->getOwnerLayerInterface();;
+    AllBinaryLayer* ownerLayerInterface = this->getOwnerLayerInterface();;
     
 
-                        if(ownerLayerInterface.getYP() < y)
+                        if(ownerLayerInterface->getYP() < y)
                         
                                     {
                                     this->moveDown();
@@ -436,7 +442,7 @@ this->lastTrackingLayerInterface= lastTrackingEvent.getLayerInterface();
                                     }
                                 
 
-                        if(ownerLayerInterface.getYP() > y)
+                        if(ownerLayerInterface->getYP() > y)
                         
                                     {
                                     this->moveUp();
@@ -445,7 +451,7 @@ this->lastTrackingLayerInterface= lastTrackingEvent.getLayerInterface();
                                     }
                                 
 
-                        if(ownerLayerInterface.getYP() > y -3 && ownerLayerInterface.getYP() < y +3)
+                        if(ownerLayerInterface->getYP() > y -3 && ownerLayerInterface->getYP() < y +3)
                         
                                     {
                                     this->setDive();
@@ -459,9 +465,9 @@ this->lastTrackingLayerInterface= lastTrackingEvent.getLayerInterface();
     private: void setDive(){
 this->diveP= true;
     
-this->velocityInterface.zero();
+this->velocityInterface->zero();
     
-TrackingEventHandler::getInstance().removeListener(this);
+TrackingEventHandler::getInstance()->removeListener(this);
     
 }
 
@@ -469,11 +475,11 @@ TrackingEventHandler::getInstance().removeListener(this);
                 //@Throws(Exception.constructor)
             
     private: void moveRight(){
-this->setLastDirection(this->directionFactory.RIGHT);
+this->setLastDirection(this->directionFactory->RIGHT);
     
-this->directionalInterface.setFrameByDirection(this->lastDirection);
+this->directionalInterface->setFrameByDirection(this->lastDirection);
     
-this->aiVistor.visit(this);
+this->aiVistor->visit(this);
     
 }
 
@@ -481,11 +487,11 @@ this->aiVistor.visit(this);
                 //@Throws(Exception.constructor)
             
     private: void moveLeft(){
-this->setLastDirection(this->directionFactory.LEFT);
+this->setLastDirection(this->directionFactory->LEFT);
     
-this->directionalInterface.setFrameByDirection(this->lastDirection);
+this->directionalInterface->setFrameByDirection(this->lastDirection);
     
-this->aiVistor.visit(this);
+this->aiVistor->visit(this);
     
 }
 
@@ -493,11 +499,11 @@ this->aiVistor.visit(this);
                 //@Throws(Exception.constructor)
             
     private: void moveDown(){
-this->setLastDirection(this->directionFactory.DOWN);
+this->setLastDirection(this->directionFactory->DOWN);
     
-this->directionalInterface.setFrameByDirection(this->lastDirection);
+this->directionalInterface->setFrameByDirection(this->lastDirection);
     
-this->aiVistor.visit(this);
+this->aiVistor->visit(this);
     
 }
 
@@ -505,11 +511,11 @@ this->aiVistor.visit(this);
                 //@Throws(Exception.constructor)
             
     private: void moveUp(){
-this->setLastDirection(this->directionFactory.UP);
+this->setLastDirection(this->directionFactory->UP);
     
-this->directionalInterface.setFrameByDirection(this->lastDirection);
+this->directionalInterface->setFrameByDirection(this->lastDirection);
     
-this->aiVistor.visit(this);
+this->aiVistor->visit(this);
     
 }
 
@@ -517,9 +523,9 @@ this->aiVistor.visit(this);
                 //@Throws(Exception.constructor)
             
     private: void dive(){
-this->directionalInterface.setFrameByDirection(this->directionOfTarget);
+this->directionalInterface->setFrameByDirection(this->directionOfTarget);
     
-this->aiVistor.visit(this);
+this->aiVistor->visit(this);
     
 }
 
@@ -536,12 +542,12 @@ super.processKeyAI(Canvas::KEY_NUM1);
             
     private: void drop(){
 
-                        if(this->timeDelayHelper.isTime(this->gameTickTimeDelayHelper.startTime))
+                        if(this->timeDelayHelper->isTime(this->gameTickTimeDelayHelper->startTime))
                         
                                     {
                                     this->initialDropped= true;
     
-this->aiVistor.visit(this);
+this->aiVistor->visit(this);
     
 
                                     }
@@ -551,41 +557,11 @@ this->aiVistor.visit(this);
 
     private: bool isBeyondTarget(){
 
-                        if(this->directionOfTarget == this->directionFactory.DOWN)
+                        if(this->directionOfTarget == this->directionFactory->DOWN)
                         
                                     {
                                     
-                        if(this->getOwnerLayerInterface().getYP() > this->lastTrackingLayerInterface.getYP() +this->MIN_DISTANCE)
-                        
-                                    {
-                                    
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true;
-    
-
-                                    }
-                                
-                        else {
-                            
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false;
-    
-
-                        }
-                            
-
-                                    }
-                                
-                             else 
-                        if(this->directionOfTarget == this->directionFactory.UP)
-                        
-                                    {
-                                    
-                        if(this->getOwnerLayerInterface().getYP() < this->lastTrackingLayerInterface.getYP() +this->MIN_DISTANCE)
+                        if(this->getOwnerLayerInterface()->getYP() > this->lastTrackingLayerInterface->getYP() +this->MIN_DISTANCE)
                         
                                     {
                                     
@@ -611,11 +587,11 @@ this->aiVistor.visit(this);
                                     }
                                 
                              else 
-                        if(this->directionOfTarget == this->directionFactory.RIGHT)
+                        if(this->directionOfTarget == this->directionFactory->UP)
                         
                                     {
                                     
-                        if(this->getOwnerLayerInterface().getXP() > this->lastTrackingLayerInterface.getXP() +this->MIN_DISTANCE)
+                        if(this->getOwnerLayerInterface()->getYP() < this->lastTrackingLayerInterface->getYP() +this->MIN_DISTANCE)
                         
                                     {
                                     
@@ -641,11 +617,41 @@ this->aiVistor.visit(this);
                                     }
                                 
                              else 
-                        if(this->directionOfTarget == this->directionFactory.LEFT)
+                        if(this->directionOfTarget == this->directionFactory->RIGHT)
                         
                                     {
                                     
-                        if(this->getOwnerLayerInterface().getXP() < this->lastTrackingLayerInterface.getXP() +this->MIN_DISTANCE)
+                        if(this->getOwnerLayerInterface()->getXP() > this->lastTrackingLayerInterface->getXP() +this->MIN_DISTANCE)
+                        
+                                    {
+                                    
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true;
+    
+
+                                    }
+                                
+                        else {
+                            
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
+    
+
+                        }
+                            
+
+                                    }
+                                
+                             else 
+                        if(this->directionOfTarget == this->directionFactory->LEFT)
+                        
+                                    {
+                                    
+                        if(this->getOwnerLayerInterface()->getXP() < this->lastTrackingLayerInterface->getXP() +this->MIN_DISTANCE)
                         
                                     {
                                     
@@ -683,26 +689,26 @@ this->aiVistor.visit(this);
 }
 
 
-    public: void onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject* eventObject){
+ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public: void onMovement(TrackingEvent trackingEvent){
-this->list.add(trackingEvent);
+    public: void onMovement(TrackingEvent* trackingEvent){
+this->list->add(trackingEvent);
     
 }
 
 
-    public: void onDestroyed(DestroyedEvent destroyedEvent){
+    public: void onDestroyed(DestroyedEvent* destroyedEvent){
 
-                        if(this->getOwnerLayerInterface() == destroyedEvent.getLayerInterface())
+                        if(this->getOwnerLayerInterface() == destroyedEvent->getLayerInterface())
                         
                                     {
-                                    TrackingEventHandler::getInstance().removeListener(this);
+                                    TrackingEventHandler::getInstance()->removeListener(this);
     
-DestroyedEventHandler::getInstance().removeListener(this);
+DestroyedEventHandler::getInstance()->removeListener(this);
     
 
                                     }
@@ -710,11 +716,11 @@ DestroyedEventHandler::getInstance().removeListener(this);
 }
 
 
-    public: void setLastDirection(Direction lastDirection){
+    public: void setLastDirection(Direction* lastDirection){
 this->lastDirection= lastDirection;
     
 
-    int32_t value = this->getLastDirection().getValue();;
+    int32_t value = this->getLastDirection()->getValue();;
     
 
                         if(value < 4)
@@ -735,7 +741,7 @@ super.setLastKey(lastKey);
                         if(this->getLastKey() == Canvas::LEFT)
                         
                                     {
-                                    this->lastDirection= DirectionFactory::getInstance().LEFT;
+                                    this->lastDirection= DirectionFactory::getInstance()->LEFT;
     
 
                                     }
@@ -744,7 +750,7 @@ super.setLastKey(lastKey);
                         if(this->getLastKey() == Canvas::DOWN)
                         
                                     {
-                                    this->lastDirection= DirectionFactory::getInstance().DOWN;
+                                    this->lastDirection= DirectionFactory::getInstance()->DOWN;
     
 
                                     }
@@ -753,7 +759,7 @@ super.setLastKey(lastKey);
                         if(this->getLastKey() == Canvas::UP)
                         
                                     {
-                                    this->lastDirection= DirectionFactory::getInstance().UP;
+                                    this->lastDirection= DirectionFactory::getInstance()->UP;
     
 
                                     }
@@ -762,7 +768,7 @@ super.setLastKey(lastKey);
                         if(this->getLastKey() == Canvas::RIGHT)
                         
                                     {
-                                    this->lastDirection= DirectionFactory::getInstance().RIGHT;
+                                    this->lastDirection= DirectionFactory::getInstance()->RIGHT;
     
 
                                     }
@@ -770,7 +776,7 @@ super.setLastKey(lastKey);
 }
 
 
-    public: Direction getLastDirection(){
+    public: Direction* getLastDirection(){
 
 
 
@@ -782,19 +788,19 @@ super.setLastKey(lastKey);
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(super.toString());
+stringBuffer->append(super.toString());
     
-stringBuffer.append(" LastDirection: ");
+stringBuffer->append(" LastDirection: ");
     
-stringBuffer.append(StringUtil::getInstance().toString(this->getLastDirection()));
+stringBuffer->append(StringUtil::getInstance()->toString(this->getLastDirection()));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

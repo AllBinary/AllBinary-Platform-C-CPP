@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -76,17 +82,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TitleData.h"
+        #include "org/allbinary/logic/visual/transform/template/customizer/widgets/title/TitleData.h"
 
 class TitleView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: static const std::string NAME = "None";
+    private: static inline const std::string NAME = "None";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: std::string title;
 
@@ -96,17 +102,17 @@ this->title= TitleView::NAME;
 }
 
 
-public: TitleView(Node node){
+public: TitleView(Node* node){
 
-    Node titleTextNode = DomSearchHelper::getNode(TitleData::getInstance().TEXT, node.getChildNodes());;
+    Node* titleTextNode = DomSearchHelper::getNode(TitleData::getInstance()->TEXT, node->getChildNodes());;
     
 
-    Node valueNode = DomSearchHelper::getNode(DomData::VALUE, titleTextNode.getChildNodes());;
+    Node* valueNode = DomSearchHelper::getNode(DomData::VALUE, titleTextNode->getChildNodes());;
     
 this->title= DomNodeHelper::getTextNodeValue(valueNode);
     
 
-                        if(StringValidationUtil::getInstance().isEmpty(this->title))
+                        if(StringValidationUtil::getInstance()->isEmpty(this->title))
                         
                                     {
                                     this->title= TitleView::NAME;
@@ -115,10 +121,10 @@ this->title= DomNodeHelper::getTextNodeValue(valueNode);
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Title: " +this->getTitle(), this, "Consructor()");
+                                    this->logUtil->putF("Title: " +this->getTitle(), this, "Consructor()");
     
 
                                     }
@@ -126,12 +132,12 @@ this->title= DomNodeHelper::getTextNodeValue(valueNode);
 }
 
 
-public: TitleView(HashMap<Object*, Object*> hashMap){
+public: TitleView(HashMap<Object*, Object*>* hashMap){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("HashMap: " +hashMap.toString(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("HashMap: " +hashMap->toString(), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -151,11 +157,11 @@ this->getFormData(hashMap);
 }
 
 
-    public: void getFormData(HashMap<Object*, Object*> hashMap){
-this->title= hashMap.get(TitleData::getInstance().TEXT);
+    public: void getFormData(HashMap<Object*, Object*>* hashMap){
+this->title= hashMap->get(TitleData::getInstance()->TEXT);
     
 
-                        if(StringValidationUtil::getInstance().isEmpty(this->title))
+                        if(StringValidationUtil::getInstance()->isEmpty(this->title))
                         
                                     {
                                     this->title= TitleView::NAME;
@@ -166,11 +172,11 @@ this->title= hashMap.get(TitleData::getInstance().TEXT);
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(TitleData::getInstance().TEXT, this->getTitle());
+hashMap->put(TitleData::getInstance()->TEXT, this->getTitle());
     
 
 
@@ -183,15 +189,15 @@ hashMap.put(TitleData::getInstance().TEXT, this->getTitle());
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    HashMap<Object*, Object*> hashMap = this->toHashMap();;
+    HashMap<Object*, Object*>* hashMap = this->toHashMap();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("TitleView HashMap: " +hashMap.toString(), this, "toXmlNode()");
+                                    this->logUtil->putF("TitleView HashMap: " +hashMap->toString(), this, "toXmlNode()");
     
 
                                     }
@@ -200,7 +206,7 @@ hashMap.put(TitleData::getInstance().TEXT, this->getTitle());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModDomHelper::createNameValueNodes(document, TitleData::getInstance().NAME, hashMap);;
+                        return ModDomHelper::createNameValueNodes(document, TitleData::getInstance()->NAME, hashMap);;
     
 }
 

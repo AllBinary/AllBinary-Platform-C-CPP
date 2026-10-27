@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_GEOGRAPHICMAPCELLPATHHISTORYINFO_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_GEOGRAPHICMAPCELLPATHHISTORYINFO_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
@@ -52,35 +58,35 @@ class GeographicMapCellPathHistoryInfo
             : public Object
          {
 
-    private: GeographicMapCellPosition previousGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition* previousGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: GeographicMapCellPosition previousOnPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition* previousOnPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: GeographicMapCellPosition nextUnvisitedOnPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition* nextUnvisitedOnPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: GeographicMapCellPosition nextOnPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition* nextOnPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: GeographicMapCellPosition nextChosenOnPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition* nextChosenOnPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    public: GeographicMapCellPosition getPreviousGeographicMapCellPosition();
+    public: GeographicMapCellPosition* getPreviousGeographicMapCellPosition();
 
-    public: void setPreviousGeographicMapCellPosition(GeographicMapCellPosition previousGeographicMapCellPosition);
+    public: void setPreviousGeographicMapCellPosition(GeographicMapCellPosition* previousGeographicMapCellPosition);
 
-    public: GeographicMapCellPosition getPreviousOnPathGeographicMapCellPosition();
+    public: GeographicMapCellPosition* getPreviousOnPathGeographicMapCellPosition();
 
-    public: void setPreviousOnPathGeographicMapCellPosition(GeographicMapCellPosition previousOnPathGeographicMapCellPosition);
+    public: void setPreviousOnPathGeographicMapCellPosition(GeographicMapCellPosition* previousOnPathGeographicMapCellPosition);
 
-    public: GeographicMapCellPosition getNextUnvisitedOnPathGeographicMapCellPosition();
+    public: GeographicMapCellPosition* getNextUnvisitedOnPathGeographicMapCellPosition();
 
-    public: void setNextUnvisitedOnPathGeographicMapCellPosition(GeographicMapCellPosition nextUnvisitedOnPathGeographicMapCellPosition);
+    public: void setNextUnvisitedOnPathGeographicMapCellPosition(GeographicMapCellPosition* nextUnvisitedOnPathGeographicMapCellPosition);
 
-    public: GeographicMapCellPosition getNextOnPathGeographicMapCellPosition();
+    public: GeographicMapCellPosition* getNextOnPathGeographicMapCellPosition();
 
-    public: void setNextOnPathGeographicMapCellPosition(GeographicMapCellPosition nextOnPathGeographicMapCellPosition);
+    public: void setNextOnPathGeographicMapCellPosition(GeographicMapCellPosition* nextOnPathGeographicMapCellPosition);
 
-    public: GeographicMapCellPosition getNextChosenOnPathGeographicMapCellPosition();
+    public: GeographicMapCellPosition* getNextChosenOnPathGeographicMapCellPosition();
 
-    public: void setNextChosenOnPathGeographicMapCellPosition(GeographicMapCellPosition nextChosenOnPathGeographicMapCellPosition);
+    public: void setNextChosenOnPathGeographicMapCellPosition(GeographicMapCellPosition* nextChosenOnPathGeographicMapCellPosition);
 
 };
 

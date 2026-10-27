@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -71,9 +77,9 @@ class TextNotificationUtil
             : public Object
          {
 
-    private: static TextNotificationUtil instance() { return TextNotificationUtil(); }
+    private: static TextNotificationUtil* instance() { static std::unique_ptr<TextNotificationUtil> value(new TextNotificationUtil()); return value.get(); }
 
-    public: static TextNotificationUtil getInstance(){
+    public: static TextNotificationUtil* getInstance(){
 
 
 
@@ -86,7 +92,7 @@ class TextNotificationUtil
                 //@Throws(Exception.constructor)
             
     public: void fireError(std::string message){
-PrimaryPlayerQueueFactory::getInstance().add(ErrorSound::getInstance());
+PrimaryPlayerQueueFactory::getInstance()->add(ErrorSound::getInstance());
     
 this->fire(message);
     
@@ -96,7 +102,7 @@ this->fire(message);
                 //@Throws(Exception.constructor)
             
     public: void fireNew(std::string message){
-PrimaryPlayerQueueFactory::getInstance().add(SelectSound::getInstance());
+PrimaryPlayerQueueFactory::getInstance()->add(SelectSound::getInstance());
     
 this->fire(message);
     
@@ -106,26 +112,26 @@ this->fire(message);
                 //@Throws(Exception.constructor)
             
     public: void fireSuccess(std::string message){
-PrimaryPlayerQueueFactory::getInstance().add(SelectSound::getInstance());
+PrimaryPlayerQueueFactory::getInstance()->add(SelectSound::getInstance());
     
 this->fire(message);
     
 }
 
 
-    private: const Integer TWO = SmallIntegerSingletonFactory::getInstance().getAt(2);
+    private: int32_t TWO = SmallIntegerSingletonFactory::getInstance()->getAt(2);
 
-    private: const Boolean FALSE = BooleanFactory::getInstance().FALSE;
+    private: bool FALSE = BooleanFactory::getInstance()->FALSE;
 
-    private: const GameNotificationEventHandler gameNotificationEventHandler = GameNotificationEventHandler::getInstance();
+    private: GameNotificationEventHandler* gameNotificationEventHandler = GameNotificationEventHandler::getInstance();
 
                 //@Throws(Exception.constructor)
             
     public: void fire(std::string message){
 
-    GameNotificationEvent gameNotificationEvent = GameNotificationEvent(this, message, this->TWO, BasicColorFactory::getInstance().RED, this->FALSE);;
+    GameNotificationEvent* gameNotificationEvent = new GameNotificationEvent(this, message, this->TWO, BasicColorFactory::getInstance()->RED, this->FALSE);;
     
-this->gameNotificationEventHandler.fireEvent(gameNotificationEvent);
+this->gameNotificationEventHandler->fireEvent(gameNotificationEvent);
     
 }
 

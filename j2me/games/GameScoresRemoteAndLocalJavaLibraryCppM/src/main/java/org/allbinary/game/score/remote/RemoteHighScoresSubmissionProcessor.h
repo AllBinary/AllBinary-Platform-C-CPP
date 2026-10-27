@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESSUBMISSIONPROCESSOR_H
         #define ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESSUBMISSIONPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -81,25 +87,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RemoteHighScoresSubmissionProcessorInterface.h"
-#include "RemoteHighScoresData.h"
-#include "XmlRpcRemoteHighScoresClient.h"
-#include "RemoteHighScores.h"
+        #include "org/allbinary/game/score/remote/RemoteHighScoresSubmissionProcessorInterface.h"
+#include "org/allbinary/game/score/remote/RemoteHighScoresData.h"
+#include "org/allbinary/game/score/remote/XmlRpcRemoteHighScoresClient.h"
+#include "org/allbinary/game/score/remote/RemoteHighScores.h"
 
 class RemoteHighScoresSubmissionProcessor
             : public Object
-        : public RemoteHighScoresSubmissionProcessorInterface {
+        , public RemoteHighScoresSubmissionProcessorInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const NoCrypt noCrypt = NoCrypt();
+    private: NoCrypt* noCrypt = new NoCrypt();
 
 public: RemoteHighScoresSubmissionProcessor();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void process(RemoteHighScores remoteHighScores, AbeClientInformationInterface abeClientInformation, HighScore highScore);
+    public: void process(RemoteHighScores* remoteHighScores, AbeClientInformationInterface* abeClientInformation, HighScore* highScore);
 
 };
 

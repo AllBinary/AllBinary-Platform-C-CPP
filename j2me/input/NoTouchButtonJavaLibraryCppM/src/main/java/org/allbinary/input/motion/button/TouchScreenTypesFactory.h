@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENTYPESFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENTYPESFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,23 +47,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchScreenType.h"
+        #include "org/allbinary/input/motion/button/TouchScreenType.h"
 
 class TouchScreenTypesFactory
             : public Object
          {
 
-    private: static TouchScreenTypesFactory instance() { return TouchScreenTypesFactory(); }
+    private: static TouchScreenTypesFactory* instance() { static std::unique_ptr<TouchScreenTypesFactory> value(new TouchScreenTypesFactory()); return value.get(); }
 
-    public: static TouchScreenTypesFactory getInstance();
+    public: static TouchScreenTypesFactory* getInstance();
 
-    public: const TouchScreenType FINGER = TouchScreenType("Finger");
+    public: TouchScreenType* FINGER = new TouchScreenType("Finger");
 
-    public: const TouchScreenType NOTOUCH = TouchScreenType("No Touch");
+    public: TouchScreenType* NOTOUCH = new TouchScreenType("No Touch");
 
-    public: const TouchScreenType STYLUS = TouchScreenType("Stylus");
+    public: TouchScreenType* STYLUS = new TouchScreenType("Stylus");
 
-    public: const TouchScreenType UNDEFINED = TouchScreenType("Undefined");
+    public: TouchScreenType* UNDEFINED = new TouchScreenType("Undefined");
 
 };
 

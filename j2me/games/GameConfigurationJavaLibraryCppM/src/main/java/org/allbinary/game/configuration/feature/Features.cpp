@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -76,25 +82,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Feature.h"
-#include "GameFeatureFactory.h"
-#include "InputFeatureFactory.h"
-#include "SensorFeatureFactory.h"
-#include "TouchFeatureFactory.h"
-#include "MainFeatureFactory.h"
+        #include "org/allbinary/game/configuration/feature/Feature.h"
+#include "org/allbinary/game/configuration/feature/GameFeatureFactory.h"
+#include "org/allbinary/game/configuration/feature/InputFeatureFactory.h"
+#include "org/allbinary/game/configuration/feature/SensorFeatureFactory.h"
+#include "org/allbinary/game/configuration/feature/TouchFeatureFactory.h"
+#include "org/allbinary/game/configuration/feature/MainFeatureFactory.h"
 
 class Features
             : public Object
          {
 
-    private: static Object* SINGLETON = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* SINGLETON = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static Features getInstance(){
+    public: static Features* getInstance(){
 
-                        if(Features::SINGLETON == NullUtil::getInstance().NULL_OBJECT)
+                        if(Features::SINGLETON == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    Features::SINGLETON= Features();
+                                    Features::SINGLETON= new Features();
     
 
                                     }
@@ -103,23 +109,23 @@ class Features
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Features::SINGLETON;
+                        return dynamic_cast<Features*>(Features::SINGLETON);
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: BasicArrayList list;
+    private: BasicArrayList* list;
 
-    private: BasicArrayList defaultList;
+    private: BasicArrayList* defaultList;
 
 private: Features(){
-this->list= BasicArrayListD();
+this->list= new BasicArrayListD();
     
-this->defaultList= BasicArrayListD();
+this->defaultList= new BasicArrayListD();
     
 this->init();
     
@@ -128,14 +134,14 @@ this->init();
 
                 //@Throws(Exception.constructor)
             
-    public: void addDefault(Feature gameFeature){
+    public: void addDefault(Feature* gameFeature){
 this->add(gameFeature);
     
 
-                        if(!this->defaultList.contains(gameFeature))
+                        if(!this->defaultList->contains(gameFeature))
                         
                                     {
-                                    this->defaultList.add(gameFeature);
+                                    this->defaultList->add(gameFeature);
     
 
                                     }
@@ -145,16 +151,16 @@ this->add(gameFeature);
 
                 //@Throws(Exception.constructor)
             
-    public: void add(Feature gameFeature){
+    public: void add(Feature* gameFeature){
 
-                        if(!this->list.contains(gameFeature))
+                        if(!this->list->contains(gameFeature))
                         
                                     {
-                                    this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().START_LABEL).append(gameFeature.toString()).toString(), this, this->commonStrings.ADD);
+                                    this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append(gameFeature->toString())->toString(), this, this->commonStrings->ADD);
     
-this->list.add(gameFeature);
+this->list->add(gameFeature);
     
-GameFeatureEventHandler::getInstance().fireEvent(GameFeatureEvent(gameFeature, gameFeature.toString()));
+GameFeatureEventHandler::getInstance()->fireEvent(new GameFeatureEvent(gameFeature, gameFeature->toString()));
     
 
                                     }
@@ -164,28 +170,28 @@ GameFeatureEventHandler::getInstance().fireEvent(GameFeatureEvent(gameFeature, g
 
                 //@Throws(Exception.constructor)
             
-    public: void removeDefault(Feature gameFeature){
-this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().START_LABEL).append(gameFeature.toString()).toString(), this, "removeDefault");
+    public: void removeDefault(Feature* gameFeature){
+this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append(gameFeature->toString())->toString(), this, "removeDefault");
     
 this->remove(gameFeature);
     
-this->defaultList.remove(gameFeature);
+this->defaultList->remove(gameFeature);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void remove(Feature gameFeature){
+    public: void remove(Feature* gameFeature){
 
-                        if(this->list.contains(gameFeature))
+                        if(this->list->contains(gameFeature))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.REMOVE);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->REMOVE);
     
-this->list.remove(gameFeature);
+this->list->remove(gameFeature);
     
-GameFeatureEventHandler::getInstance().fireEvent(GameFeatureEvent(gameFeature, gameFeature.toString()));
+GameFeatureEventHandler::getInstance()->fireEvent(new GameFeatureEvent(gameFeature, gameFeature->toString()));
     
 
                                     }
@@ -197,95 +203,95 @@ GameFeatureEventHandler::getInstance().fireEvent(GameFeatureEvent(gameFeature, g
 
         try {
             
-    GameFeatureFactory gameFeatureFactory = GameFeatureFactory::getInstance();;
+    GameFeatureFactory* gameFeatureFactory = GameFeatureFactory::getInstance();;
     
 
-    InputFeatureFactory inputFeatureFactory = InputFeatureFactory::getInstance();;
+    InputFeatureFactory* inputFeatureFactory = InputFeatureFactory::getInstance();;
     
 
-    SensorFeatureFactory sensorFeatureFactory = SensorFeatureFactory::getInstance();;
+    SensorFeatureFactory* sensorFeatureFactory = SensorFeatureFactory::getInstance();;
     
 
-    TouchFeatureFactory touchFeatureFactory = TouchFeatureFactory::getInstance();;
+    TouchFeatureFactory* touchFeatureFactory = TouchFeatureFactory::getInstance();;
     
-this->addDefault(gameFeatureFactory.ARTIFICIAL_INTELLEGENCE_PROCESSOR);
+this->addDefault(gameFeatureFactory->ARTIFICIAL_INTELLEGENCE_PROCESSOR);
     
-this->addDefault(gameFeatureFactory.COLLIDABLE_INTERFACE_LAYER_PROCESSOR);
+this->addDefault(gameFeatureFactory->COLLIDABLE_INTERFACE_LAYER_PROCESSOR);
     
-this->addDefault(gameFeatureFactory.GAME_INPUT_LAYER_PROCESSOR);
+this->addDefault(gameFeatureFactory->GAME_INPUT_LAYER_PROCESSOR);
     
-this->addDefault(gameFeatureFactory.TICKABLE_LAYER_PROCESSOR);
+this->addDefault(gameFeatureFactory->TICKABLE_LAYER_PROCESSOR);
     
-this->addDefault(inputFeatureFactory.MULTI_KEY_PRESS);
+this->addDefault(inputFeatureFactory->MULTI_KEY_PRESS);
     
-this->addDefault(inputFeatureFactory.REMOVE_DUPLICATE_KEY_PRESSES);
+this->addDefault(inputFeatureFactory->REMOVE_DUPLICATE_KEY_PRESSES);
     
-this->addDefault(gameFeatureFactory.SCREEN_SHAKE);
+this->addDefault(gameFeatureFactory->SCREEN_SHAKE);
     
-this->addDefault(gameFeatureFactory.POST_IMAGE_LOADING_MODIFICATION);
-    
-
-    GenericOperatingSystem operatingSystemInterface = OperatingSystemFactory::getInstance().getOperatingSystemInstance();;
+this->addDefault(gameFeatureFactory->POST_IMAGE_LOADING_MODIFICATION);
     
 
-                        if(operatingSystemInterface.isOverScan())
+    GenericOperatingSystem* operatingSystemInterface = OperatingSystemFactory::getInstance()->getOperatingSystemInstance();;
+    
+
+                        if(operatingSystemInterface->isOverScan())
                         
                                     {
-                                    this->addDefault(sensorFeatureFactory.NO_ORIENTATION);
+                                    this->addDefault(sensorFeatureFactory->NO_ORIENTATION);
     
-this->addDefault(touchFeatureFactory.HIDE_SCREEN_BUTTONS);
+this->addDefault(touchFeatureFactory->HIDE_SCREEN_BUTTONS);
     
 
                                     }
                                 
                         else {
-                            this->addDefault(sensorFeatureFactory.ORIENTATION_SENSORS);
+                            this->addDefault(sensorFeatureFactory->ORIENTATION_SENSORS);
     
-this->addDefault(touchFeatureFactory.AUTO_HIDE_SHOW_SCREEN_BUTTONS);
+this->addDefault(touchFeatureFactory->AUTO_HIDE_SHOW_SCREEN_BUTTONS);
     
 
                         }
                             
-this->addDefault(touchFeatureFactory.TOUCH_ENABLED);
+this->addDefault(touchFeatureFactory->TOUCH_ENABLED);
     
-this->addDefault(MainFeatureFactory::getInstance().FULL_SCREEN);
+this->addDefault(MainFeatureFactory::getInstance()->FULL_SCREEN);
     
-this->addDefault(MainFeatureFactory::getInstance().LOAD_ONDEMAND);
+this->addDefault(MainFeatureFactory::getInstance()->LOAD_ONDEMAND);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-PreLogUtil::putOE(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT, e);
+PreLogUtil::putOE(this->commonStrings->EXCEPTION, this, this->commonStrings->INIT, &e);
     
 }
 
 }
 
 
-    public: bool isDefault(Feature gameFeature){
+    public: bool isDefault(Feature* gameFeature){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->defaultList.contains(gameFeature);;
+                        return this->defaultList->contains(gameFeature);;
     
 }
 
 
-    public: bool isFeature(Feature gameFeature){
+    public: bool isFeature(Feature* gameFeature){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->list.contains(gameFeature);;
+                        return this->list->contains(gameFeature);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void toggle(Feature gameFeature){
+    public: void toggle(Feature* gameFeature){
 
                         if(this->isFeature(gameFeature))
                         

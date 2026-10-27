@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <java/util/HashMap.h>
 
       
@@ -106,7 +114,7 @@ class ABHashMap: public HashMap<K, V> {
                 //Otherwise - typeArguments - type - WildcardType
 
                 //Otherwise - typeArguments - type - WildcardType
-> map){
+>* map){
 super.putAll(map);
     
 }
@@ -138,7 +146,7 @@ super.clear();
 }
 
 
-    public: Set<K> keySet(){
+    public: Set<K>* keySet(){
 
 
 
@@ -148,7 +156,7 @@ super.clear();
 }
 
 
-    public: Set<Entry> entrySet(){
+    public: Set<Entry<K, V>*>* entrySet(){
 
 
 

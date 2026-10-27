@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_PROFILEACTIONSCRIPTINPUTINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_PROFILEACTIONSCRIPTINPUTINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/input/automation/actions/script/condition/processors/ProfileActionScriptProcessorInterface.h>
 
       
@@ -48,13 +54,13 @@
         
 class ProfileActionScriptInputInterface: public ProfileActionScriptProcessorInterface {
 
-    void setInputRobotInterface(InputRobotInterface inputRobotInterface);
+    public: virtual void setInputRobotInterface(InputRobotInterface* inputRobotInterface) = 0;
 
-    InputRobotInterface getInputRobotInterface();
+    public: virtual InputRobotInterface* getInputRobotInterface() = 0;
 
-    int32_t getTime();
+    public: virtual int32_t getTime() = 0;
 
-    void setTime(int32_t time);
+    public: virtual void setTime(int32_t time) = 0;
 
 };
 

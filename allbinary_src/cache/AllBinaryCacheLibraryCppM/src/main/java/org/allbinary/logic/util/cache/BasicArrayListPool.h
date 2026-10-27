@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTPOOL_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTPOOL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -44,28 +52,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbstractArrayListPool.h"
-#include "CacheableInterfaceFactoryInterface.h"
-#include "CacheableInterface.h"
-#include "BasicArrayListCacheable.h"
+        #include "org/allbinary/logic/util/cache/AbstractArrayListPool.h"
+#include "org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h"
+#include "org/allbinary/logic/util/cache/CacheableInterface.h"
+#include "org/allbinary/logic/util/cache/BasicArrayListCacheable.h"
 
 class BasicArrayListPool: public AbstractArrayListPool {
 
-public: BasicArrayListPool(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface);
+public: BasicArrayListPool(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface);
 
     public: void clear();
 
                 //@Throws(Exception.constructor)
             
-    public: CacheableInterface remove(Object* key);
+    public: CacheableInterface* remove(Object* key);
 
                 //@Throws(Exception.constructor)
             
-    public: void addAll(BasicArrayList usedList);
+    public: void addAll(BasicArrayList* usedList);
 
                 //@Throws(Exception.constructor)
             
-    public: void releaseUsedBackToPool(BasicArrayList usedList);
+    public: void releaseUsedBackToPool(BasicArrayList* usedList);
 
 };
 

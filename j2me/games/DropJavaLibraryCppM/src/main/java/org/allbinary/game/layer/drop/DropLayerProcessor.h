@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_DROP_DROPLAYERPROCESSOR_H
         #define ORG_ALLBINARY_GAME_LAYER_DROP_DROPLAYERPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/AllBinaryLayer.h>
@@ -53,19 +59,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DropLayerInterface.h"
+        #include "org/allbinary/game/layer/drop/DropLayerInterface.h"
 
 class DropLayerProcessor: public BasicLayerProcessor {
 
-    private: static const BasicLayerProcessor LAYER_PROCESSOR = DropLayerProcessor();
+    private: static inline BasicLayerProcessor* LAYER_PROCESSOR = new DropLayerProcessor();
 
-    public: static BasicLayerProcessor getInstance();
+    public: static BasicLayerProcessor* getInstance();
 
 private: DropLayerProcessor();
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayerManager allBinaryLayerManager);
+    public: void process(AllBinaryLayerManager* allBinaryLayerManager);
 
 };
 

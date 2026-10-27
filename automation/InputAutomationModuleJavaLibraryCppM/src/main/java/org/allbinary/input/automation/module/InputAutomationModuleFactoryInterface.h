@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULEFACTORYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,7 +58,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
+        #include "org/allbinary/input/automation/module/JPanel.h"
 
 class InputAutomationModuleFactoryInterface
             : public Object
@@ -60,13 +66,13 @@ class InputAutomationModuleFactoryInterface
 
     public: std::string getName();
 
-    public: JPanel getConfigurationJPanel();
+    public: JPanel* getConfigurationJPanel();
 
-    public: HelpSet getHelpSet();
+    public: HelpSet* getHelpSet();
 
                 //@Throws(Exception.constructor)
             
-    public: RunnableInterface getInstance();
+    public: RunnableInterface* getInstance();
 
 };
 

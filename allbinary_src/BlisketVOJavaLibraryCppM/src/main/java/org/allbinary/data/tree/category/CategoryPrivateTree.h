@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYPRIVATETREE_H
         #define ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYPRIVATETREE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -75,21 +81,21 @@ class CategoryPrivateTree
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: CategoryFactoryInterface categoryFactoryInterface;
+    protected: CategoryFactoryInterface* categoryFactoryInterface;
 
-public: CategoryPrivateTree(CategoryFactoryInterface categoryFactoryInterface);
-
-                //@Throws(Exception.constructor)
-            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    protected: void save(CategoryInterface categoryInterface);
+public: CategoryPrivateTree(CategoryFactoryInterface* categoryFactoryInterface);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    protected: void delete_(CategoryInterface categoryInterface);
+    protected: void save(CategoryInterface* categoryInterface);
+
+                //@Throws(Exception.constructor)
+            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    protected: void delete_(CategoryInterface* categoryInterface);
 
 };
 

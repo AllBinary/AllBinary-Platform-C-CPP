@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -69,11 +75,11 @@
         
 class InputAutomationModuleOSGIServiceVisitor
             : public Object
-        : public OSGIServiceVisitorInterface {
+        , public OSGIServiceVisitorInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
 public: InputAutomationModuleOSGIServiceVisitor(){
 }
@@ -84,19 +90,19 @@ public: InputAutomationModuleOSGIServiceVisitor(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->visit(*dynamic_cast<OSGIServiceInterface*>(anyType));;
+                        return this->visit(dynamic_cast<OSGIServiceInterface*>(anyType));;
     
 }
 
 
-    public: Boolean visit(OSGIServiceInterface osgiServiceInterface){
+    public: bool visit(OSGIServiceInterface* osgiServiceInterface){
 
         try {
             
-    InputAutomationModuleService inputAutomationModuleService = osgiServiceInterface;;
+    InputAutomationModuleService* inputAutomationModuleService = dynamic_cast<InputAutomationModuleService*>(osgiServiceInterface);;
     
 
-    std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray = inputAutomationModuleService.getInputAutomationModuleInterfaceArray();;
+    std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterfaceArray = inputAutomationModuleService->getInputAutomationModuleInterfaceArray();;
     
 
 
@@ -105,7 +111,7 @@ public: InputAutomationModuleOSGIServiceVisitor(){
                         for (
     int32_t index = 0;index < inputAutomationModuleInterfaceArray.size(); index++)
         {
-InputAutomationJFrame::getInstance().onAdd(InputAutomationConfigurationUtil::getChangeEvent(inputAutomationModuleInterfaceArray[index]));
+InputAutomationJFrame::getInstance()->onAdd(InputAutomationConfigurationUtil::getChangeEvent(inputAutomationModuleInterfaceArray[index]));
     
 }
 
@@ -117,9 +123,9 @@ InputAutomationJFrame::getInstance().onAdd(InputAutomationConfigurationUtil::get
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "visit", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "visit", &e);
     
 
 

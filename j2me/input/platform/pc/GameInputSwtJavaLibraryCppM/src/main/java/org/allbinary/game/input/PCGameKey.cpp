@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/string/StringUtil.h>
 
       
@@ -39,14 +45,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Input.h"
-#include "InputFactory.h"
+        #include "org/allbinary/game/input/Input.h"
+#include "org/allbinary/game/input/InputFactory.h"
 
 class PCGameKey: public Input {
 
     public: static std::string getString(int32_t keyCode){
 
-    Input input = InputFactory::getInstance().getInstanceById(keyCode);;
+    Input* input = InputFactory::getInstance()->getInstanceById(keyCode);;
     
 
                         if(input != 
@@ -58,7 +64,7 @@ class PCGameKey: public Input {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return input.getName();;
+                        return input->getName();;
     
 
                                     }
@@ -68,7 +74,7 @@ class PCGameKey: public Input {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 
                         }
@@ -90,7 +96,7 @@ class PCGameKey: public Input {
                         if(id >= 0)
                         
                                     {
-                                    InputFactory::getInstance().add(id, this);
+                                    InputFactory::getInstance()->add(id, this);
     
 
                                     }

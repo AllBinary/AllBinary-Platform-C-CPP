@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -81,37 +87,37 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RequestData.h"
+        #include "org/allbinary/logic/communication/http/request/RequestData.h"
 //Note: if request is destroyed or messed up this will not work. Use fileRequestParams
 class RequestParams
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: Map map;
+    private: Map* map;
 
 public: RequestParams();
 
-public: RequestParams(HttpServletRequest request);
+public: RequestParams(HttpServletRequest* request);
 
-public: RequestParams(PageContext pageContext);
+public: RequestParams(PageContext* pageContext);
 
-    protected: void setMap(Map map);
+    protected: void setMap(Map* map);
 
-    protected: Map getMap();
+    protected: Map* getMap();
 
     private: const std::string KEY = "Key: ";
 
     private: const std::string VALUE = " Value: ";
 
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
 };
 

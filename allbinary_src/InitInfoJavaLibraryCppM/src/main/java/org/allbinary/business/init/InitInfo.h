@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_INITINFO_H
         #define ORG_ALLBINARY_BUSINESS_INIT_INITINFO_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,15 +73,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InitInfoEntity.h"
+        #include "org/allbinary/business/init/InitInfoEntity.h"
 
 class InitInfo
             : public Object
          {
 
-    private: static InitInfo instance() { return InitInfo(); }
+    private: static InitInfo* instance() { static std::unique_ptr<InitInfo> value(new InitInfo()); return value.get(); }
 
-    public: static InitInfo getInstance();
+    public: static InitInfo* getInstance();
 
     public: const std::string TESTING = "TESTING";
 
@@ -87,11 +93,11 @@ class InitInfo
                 nullptr
             ;
 
-    private: AbPath mainPath = 
+    private: AbPath* mainPath = 
                 nullptr
             ;
 
-    private: AbPath testHtmlPath = 
+    private: AbPath* testHtmlPath = 
                 nullptr
             ;
 
@@ -105,7 +111,7 @@ private: InitInfo();
     public: void set();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void set(HashMap<Object*, Object*> hashMap);
+    public: void set(HashMap<Object*, Object*>* hashMap);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     private: void get();
@@ -126,19 +132,19 @@ private: InitInfo();
 
     public: void setTesting(std::string value);
 
-    public: void setTestHtmlPath(AbPath value);
+    public: void setTestHtmlPath(AbPath* value);
 
-    public: void setMainPath(AbPath value);
+    public: void setMainPath(AbPath* value);
 
-    public: bool isMainPathValid(AbPath abPath);
+    public: bool isMainPathValid(AbPath* abPath);
 
-    public: bool isTestHtmlPathValid(AbPath abPath);
+    public: bool isTestHtmlPathValid(AbPath* abPath);
 
                 //@Throws(Exception.constructor)
             
     public: bool isTestingValid(std::string testing);
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
 };
 

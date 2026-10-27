@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_MOTIONLAPTOPDEFAULTGAMEINPUTMAPPING_H
         #define ORG_ALLBINARY_GAME_INPUT_MOTIONLAPTOPDEFAULTGAMEINPUTMAPPING_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/configuration/persistance/GamePersistanceStrings.h>
 
       
@@ -54,8 +60,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PCKeyFactory.h"
-#include "GameKeyFactory.h"
+        #include "org/allbinary/game/input/PCKeyFactory.h"
+#include "org/allbinary/game/input/GameKeyFactory.h"
 
 class MotionLaptopDefaultGameInputMapping: public PersistentInputMapping {
 

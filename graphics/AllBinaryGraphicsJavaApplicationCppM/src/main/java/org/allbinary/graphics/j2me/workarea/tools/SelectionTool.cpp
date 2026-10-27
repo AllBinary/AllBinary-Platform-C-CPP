@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -85,20 +91,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GraphicItemInterface.h"
-#include "Color.h"
-#include "Points.h"
-#include "LinesGraphicItem.h"
-#include "Graphics.h"
-#include "MouseEvent.h"
-#include "MouseStrings.h"
-#include "KeyEvent.h"
+        #include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/Color.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/Points.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/Graphics.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/MouseEvent.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/MouseStrings.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/KeyEvent.h"
 
 class SelectionTool
             : public Object
-        : public GraphicItemInterface {
+        , public GraphicItemInterface {
 
-    private: static const std::string NAME = "Selection Tool";
+    private: static inline const std::string NAME = "Selection Tool";
 
     public: static std::string getStaticName(){
 
@@ -110,25 +116,25 @@ class SelectionTool
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: CanvasJPanel canvasJPanel;
+    private: CanvasJPanel* canvasJPanel;
 
     private: bool active = true;
 
-public: SelectionTool(CanvasJPanel canvasJPanel){
+public: SelectionTool(CanvasJPanel* canvasJPanel){
 this->canvasJPanel= canvasJPanel;
     
 }
 
 
-    public: void setColor(Color color){
+    public: void setColor(Color* color){
 }
 
 
-    public: MutableTreeNode getTreeNode(){
+    public: MutableTreeNode* getTreeNode(){
 
 
 
@@ -138,7 +144,7 @@ this->canvasJPanel= canvasJPanel;
 }
 
 
-    public: Points getPointsInterface(){
+    public: Points* getPointsInterface(){
 
 
 
@@ -148,7 +154,7 @@ this->canvasJPanel= canvasJPanel;
 }
 
 
-    public: void setPointsInterface(Points points){
+    public: void setPointsInterface(Points* points){
 }
 
 
@@ -180,7 +186,7 @@ this->canvasJPanel= canvasJPanel;
 }
 
 
-    public: void setFulcrumPoint(GPoint point){
+    public: void setFulcrumPoint(GPoint* point){
 }
 
 
@@ -223,19 +229,19 @@ this->canvasJPanel= canvasJPanel;
     int32_t xRect = this->getXRect();;
     
 
-    int32_t xRect2 = Math::abs(this->endPoint.getX() -this->startPoint.getX()) +xRect;;
+    int32_t xRect2 = Math::abs(this->endPoint->getX() -this->startPoint->getX()) +xRect;;
     
 
     int32_t yRect = this->getYRect();;
     
 
-    int32_t yRect2 = Math::abs(this->endPoint.getY() -this->startPoint.getY()) +yRect;;
+    int32_t yRect2 = Math::abs(this->endPoint->getY() -this->startPoint->getY()) +yRect;;
     
 
-    HashMap<Object*, Object*> hashMap = this->canvasJPanel.getGraphicItemHashMap();;
+    HashMap<Object*, Object*>* hashMap = this->canvasJPanel->getGraphicItemHashMap();;
     
 
-    std::vector<Object*> graphicItemArray = hashMap.keys().();;
+    std::vector<Object*> graphicItemArray = hashMap->keys().();;
     
 
     int32_t size = graphicItemArray.size();;
@@ -248,19 +254,19 @@ this->canvasJPanel= canvasJPanel;
     int32_t index = 0;index < size; index++)
         {
 
-    GraphicItemInterface item = hashMap.get(graphicItemArray[index]);;
+    GraphicItemInterface* item = dynamic_cast<GraphicItemInterface*>(hashMap->get(graphicItemArray[index]));;
     
 
-                        if(item.getName() == LinesGraphicItem::getStaticName())
+                        if(item->getName() == LinesGraphicItem::getStaticName())
                         
                                     {
                                     
-                        if(RectangleCollisionPointUtil::allPointsInsideCell(xRect, yRect, xRect2, yRect2, item.getPointsInterface().getPoints(), this->canvasJPanel.getXPixelsPerWorkAreaPixel(), this->canvasJPanel.getYPixelsPerWorkAreaPixel()))
+                        if(RectangleCollisionPointUtil::allPointsInsideCell(xRect, yRect, xRect2, yRect2, item->getPointsInterface()->getPoints(), this->canvasJPanel->getXPixelsPerWorkAreaPixel(), this->canvasJPanel->getYPixelsPerWorkAreaPixel()))
                         
                                     {
-                                    item.setColor(Color::YELLOW);
+                                    item->setColor(Color::YELLOW);
     
-item.activate();
+item->activate();
     
 
                                     }
@@ -269,9 +275,9 @@ item.activate();
                         if(!this->controlIdDown)
                         
                                     {
-                                    item.setColor(Color::WHITE);
+                                    item->setColor(Color::WHITE);
     
-item.deactivate();
+item->deactivate();
     
 
                                     }
@@ -284,20 +290,20 @@ item.deactivate();
 }
 
 
-    private: const Color rectColor = Color(BasicColorFactory::getInstance().RED.intValue());
+    private: Color* rectColor = new Color(BasicColorFactory::getInstance()->RED.intValue());
 
     public: int32_t getXRect(){
 
-    int32_t xDiff = this->endPoint.getX() -this->startPoint.getX();;
+    int32_t xDiff = this->endPoint->getX() -this->startPoint->getX();;
     
 
-    int32_t xRect = this->startPoint.getX();;
+    int32_t xRect = this->startPoint->getX();;
     
 
                         if(xDiff < 0)
                         
                                     {
-                                    xRect= this->endPoint.getX();
+                                    xRect= this->endPoint->getX();
     
 
                                     }
@@ -313,16 +319,16 @@ item.deactivate();
 
     public: int32_t getYRect(){
 
-    int32_t yDiff = this->endPoint.getY() -this->startPoint.getY();;
+    int32_t yDiff = this->endPoint->getY() -this->startPoint->getY();;
     
 
-    int32_t yRect = this->startPoint.getY();;
+    int32_t yRect = this->startPoint->getY();;
     
 
                         if(yDiff < 0)
                         
                                     {
-                                    yRect= this->endPoint.getY();
+                                    yRect= this->endPoint->getY();
     
 
                                     }
@@ -336,29 +342,29 @@ item.deactivate();
 }
 
 
-    public: void paint(Graphics g, number canvasAngle, IntegerDimension dimension, int32_t x, int32_t y){
-g.setColor(this->rectColor);
+    public: void paint(Graphics* g, double canvasAngle, IntegerDimension* dimension, int32_t x, int32_t y){
+g->setColor(this->rectColor);
     
 
     int32_t xRect = this->getXRect();;
     
 
-    int32_t width = Math::abs(this->endPoint.getX() -this->startPoint.getX());;
+    int32_t width = Math::abs(this->endPoint->getX() -this->startPoint->getX());;
     
 
     int32_t yRect = this->getYRect();;
     
 
-    int32_t height = Math::abs(this->endPoint.getY() -this->startPoint.getY());;
+    int32_t height = Math::abs(this->endPoint->getY() -this->startPoint->getY());;
     
-g.drawRect(xRect, yRect, width, height);
+g->drawRect(xRect, yRect, width, height);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Node toDom(CanvasDom canvasDom){
+    public: Node* toDom(CanvasDom* canvasDom){
 
 
 
@@ -368,7 +374,7 @@ g.drawRect(xRect, yRect, width, height);
 }
 
 
-    public: GPoint removePoint(){
+    public: GPoint* removePoint(){
 
 
 
@@ -378,7 +384,7 @@ g.drawRect(xRect, yRect, width, height);
 }
 
 
-    public: void addPoint(GPoint point){
+    public: void addPoint(GPoint* point){
 }
 
 
@@ -392,40 +398,40 @@ g.drawRect(xRect, yRect, width, height);
 }
 
 
-    private: GPoint startPoint = PointFactory::getInstance().ZERO_ZERO;
+    private: GPoint* startPoint = PointFactory::getInstance()->ZERO_ZERO;
 
-    private: GPoint endPoint = this->startPoint;
+    private: GPoint* endPoint = this->startPoint;
 
-    public: void mouseClicked(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
+    public: void mouseClicked(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
 }
 
 
-    public: void mouseMoved(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
+    public: void mouseMoved(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
 }
 
 
-    public: void mouseEntered(java::awt::event::MouseEvent mouseEvent){
+    public: void mouseEntered(java::awt::event::MouseEvent* mouseEvent){
 }
 
 
-    public: void mouseExited(java::awt::event::MouseEvent mouseEvent){
+    public: void mouseExited(java::awt::event::MouseEvent* mouseEvent){
 }
 
 
-    public: void mousePressed(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
-this->logUtil.putF(this->commonStrings.START, this, MouseStrings::getInstance().MOUSE_PRESSED);
+    public: void mousePressed(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
+this->logUtil->putF(this->commonStrings->START, this, MouseStrings::getInstance()->MOUSE_PRESSED);
     
-this->startPoint= PointFactory::getInstance().createXY(mouseEvent.getX(), mouseEvent.getY());
+this->startPoint= PointFactory::getInstance()->createXY(mouseEvent->getX(), mouseEvent->getY());
     
 this->endPoint= this->startPoint;
     
 }
 
 
-    public: void mouseReleased(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
-this->logUtil.putF(this->commonStrings.START, this, MouseStrings::getInstance().MOUSE_RELEASED);
+    public: void mouseReleased(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
+this->logUtil->putF(this->commonStrings->START, this, MouseStrings::getInstance()->MOUSE_RELEASED);
     
-this->endPoint= PointFactory::getInstance().createXY(mouseEvent.getX(), mouseEvent.getY());
+this->endPoint= PointFactory::getInstance()->createXY(mouseEvent->getX(), mouseEvent->getY());
     
 this->active= false;
     
@@ -434,15 +440,15 @@ this->makeSelection();
 }
 
 
-    public: void mouseDragged(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
-this->endPoint= PointFactory::getInstance().createXY(mouseEvent.getX(), mouseEvent.getY());
+    public: void mouseDragged(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
+this->endPoint= PointFactory::getInstance()->createXY(mouseEvent->getX(), mouseEvent->getY());
     
 }
 
 
-    public: void keyPressed(java::awt::event::KeyEvent keyEvent){
+    public: void keyPressed(java::awt::event::KeyEvent* keyEvent){
 
-                        if(keyEvent.getKeyCode() == keyEvent.VK_CONTROL)
+                        if(keyEvent->getKeyCode() == keyEvent->VK_CONTROL)
                         
                                     {
                                     this->controlIdDown= true;
@@ -453,9 +459,9 @@ this->endPoint= PointFactory::getInstance().createXY(mouseEvent.getX(), mouseEve
 }
 
 
-    public: void keyReleased(java::awt::event::KeyEvent keyEvent){
+    public: void keyReleased(java::awt::event::KeyEvent* keyEvent){
 
-                        if(keyEvent.getKeyCode() == keyEvent.VK_CONTROL)
+                        if(keyEvent->getKeyCode() == keyEvent->VK_CONTROL)
                         
                                     {
                                     this->controlIdDown= false;
@@ -466,13 +472,13 @@ this->endPoint= PointFactory::getInstance().createXY(mouseEvent.getX(), mouseEve
 }
 
 
-    public: void keyTyped(java::awt::event::KeyEvent keyEvent){
+    public: void keyTyped(java::awt::event::KeyEvent* keyEvent){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: GraphicItemInterface duplicate(){
+    public: GraphicItemInterface* duplicate(){
 
 
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -96,15 +102,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameInitializationInterface.h"
+        #include "org/allbinary/game/init/GameInitializationInterface.h"
 
 class BaseGameInitialization
             : public Object
-        : public GameInitializationInterface {
+        , public GameInitializationInterface {
 
-    public: static const BaseGameInitialization NULL_BASE_GAME_INITIALIZATION = BaseGameInitialization({}, 0);
+    public: static BaseGameInitialization* NULL_BASE_GAME_INITIALIZATION() { static std::unique_ptr<BaseGameInitialization> value(new BaseGameInitialization({}, 0)); return value.get(); }
 
-    protected: std::vector<ResourceInitialization> resourceInitializationArray;
+    protected: std::vector<ResourceInitialization*> resourceInitializationArray;
 
     private: int32_t portion;
 
@@ -118,7 +124,7 @@ class BaseGameInitialization
 
     protected: const int32_t GAME_CHANGABLE_RESOURCES = 3;
 
-public: BaseGameInitialization(std::vector<ResourceInitialization> resourceInitializationArray, int32_t portion){
+public: BaseGameInitialization(std::vector<ResourceInitialization*> resourceInitializationArray, int32_t portion){
 this->resourceInitializationArray= resourceInitializationArray;
     
 this->portion= portion;
@@ -134,16 +140,16 @@ this->portion= portion;
 
                 //@Throws(Exception.constructor)
             
-    protected: void initKeyMapping(AbeClientInformationInterface abeClientInformation, int32_t portion){
+    protected: void initKeyMapping(AbeClientInformationInterface* abeClientInformation, int32_t portion){
 
-                        if(ChangedGameFeatureListener::getInstance().isChangedFeature(InputFeatureFactory::getInstance().INPUT_MAPPING))
+                        if(ChangedGameFeatureListener::getInstance()->isChangedFeature(InputFeatureFactory::getInstance()->INPUT_MAPPING))
                         
                                     {
-                                    PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().init(abeClientInformation);
+                                    PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->init(abeClientInformation);
     
-ProgressCanvasFactory::getInstance().addNormalPortion(50, "Game Keys");
+ProgressCanvasFactory::getInstance()->addNormalPortion(50, "Game Keys");
     
-ChangedGameFeatureListener::getInstance().remove(InputFeatureFactory::getInstance().INPUT_MAPPING);
+ChangedGameFeatureListener::getInstance()->remove(InputFeatureFactory::getInstance()->INPUT_MAPPING);
     
 
                                     }
@@ -153,19 +159,19 @@ ChangedGameFeatureListener::getInstance().remove(InputFeatureFactory::getInstanc
 
                 //@Throws(Exception.constructor)
             
-    public: void init(AbeClientInformationInterface abeClientInformation, CommandListener commandListener, int32_t level){
+    public: void init(AbeClientInformationInterface* abeClientInformation, CommandListener* commandListener, int32_t level){
 
-    ResourceLoadingLevelFactory resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
+    ResourceLoadingLevelFactory* resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
     
 
-                        if(!this->isInitialized() && (level == resourceLoadingLevelFactory.LOAD_ALL.getLevel() || level == resourceLoadingLevelFactory.LOAD_EARLY.getLevel()))
+                        if(!this->isInitialized() && (level == resourceLoadingLevelFactory->LOAD_ALL.getLevel() || level == resourceLoadingLevelFactory->LOAD_EARLY.getLevel()))
                         
                                     {
                                     
     int32_t localPortion = 40;;
     
 
-                        if(level == resourceLoadingLevelFactory.LOAD_EARLY.getLevel())
+                        if(level == resourceLoadingLevelFactory->LOAD_EARLY.getLevel())
                         
                                     {
                                     localPortion= 8;
@@ -179,26 +185,26 @@ this->initKey(this->getPortion());
     
 this->initKeyMapping(abeClientInformation, this->getPortion());
     
-GameKeyEventFactory::getInstance().init();
+GameKeyEventFactory::getInstance()->init();
     
 
-    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
+    ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
     
-progressCanvas.addNormalPortion(localPortion, "Game Key Events");
+progressCanvas->addNormalPortion(localPortion, "Game Key Events");
     
-BasicTouchInputFactory::getInstance().init(PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping());
+BasicTouchInputFactory::getInstance()->init(PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping());
     
 CancelTouchButtonInputFactory::getInstance();
     
-progressCanvas.addNormalPortion(localPortion, "Touch Input");
+progressCanvas->addNormalPortion(localPortion, "Touch Input");
     
-CompleteMotionGestureInputToGameMotionGestureInput::getInstance().init();
+CompleteMotionGestureInputToGameMotionGestureInput::getInstance()->init();
     
-progressCanvas.addNormalPortion(localPortion, "Motion Input");
+progressCanvas->addNormalPortion(localPortion, "Motion Input");
     
 GameFeatureImageCacheFactory::init();
     
-progressCanvas.addNormalPortion(localPortion, "Image Cache");
+progressCanvas->addNormalPortion(localPortion, "Image Cache");
     
 this->resourceInitializationArray[this->EARLY_RESOURCES].init();
     
@@ -216,10 +222,10 @@ this->resourceInitializationArray[this->EARLY_RESOURCES].init();
             
     public: void resourceInitialization(int32_t level){
 
-    ResourceLoadingLevelFactory resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
+    ResourceLoadingLevelFactory* resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
     
 
-                        if(this->resourceAnimationChange() && level == resourceLoadingLevelFactory.LOAD_EARLY.getLevel())
+                        if(this->resourceAnimationChange() && level == resourceLoadingLevelFactory->LOAD_EARLY.getLevel())
                         
                                     {
                                     this->clearResources();
@@ -230,7 +236,7 @@ this->resourceInitializationArray[this->EARLY_CHANGABLE_RESOURCES].init();
                                     }
                                 
 
-                        if(this->resourceAnimationChange() && level == resourceLoadingLevelFactory.LOAD_ALL.getLevel())
+                        if(this->resourceAnimationChange() && level == resourceLoadingLevelFactory->LOAD_ALL.getLevel())
                         
                                     {
                                     
@@ -243,7 +249,7 @@ this->resourceInitializationArray[this->EARLY_CHANGABLE_RESOURCES].init();
                                     }
                                 
 
-                        if(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().getList().size() == 0)
+                        if(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->getList()->size() == 0)
                         
                                     {
                                     this->resourceInitializationArray[this->EARLY_CHANGABLE_RESOURCES].init();
@@ -263,13 +269,13 @@ this->allLoaded= true;
 
     public: bool resourceAnimationChange(){
 
-    ChangedGameFeatureListener changedGameFeatureListener = ChangedGameFeatureListener::getInstance();;
+    ChangedGameFeatureListener* changedGameFeatureListener = ChangedGameFeatureListener::getInstance();;
     
 
-    GameConfigurationCentral gameConfigurationCentral = GameConfigurationCentral::getInstance();;
+    GameConfigurationCentral* gameConfigurationCentral = GameConfigurationCentral::getInstance();;
     
 
-                        if(changedGameFeatureListener.isChangedGameConfiguration(gameConfigurationCentral.SCALE))
+                        if(changedGameFeatureListener->isChangedGameConfiguration(gameConfigurationCentral->SCALE))
                         
                                     {
                                     
@@ -282,7 +288,7 @@ this->allLoaded= true;
                                     }
                                 
 
-                        if(ChangedGameFeatureListener::getInstance().isChangedFeature(MainFeatureFactory::getInstance().STATIC))
+                        if(ChangedGameFeatureListener::getInstance()->isChangedFeature(MainFeatureFactory::getInstance()->STATIC))
                         
                                     {
                                     
@@ -309,11 +315,11 @@ this->allLoaded= false;
 GameFeatureImageCacheFactory::releaseAll();
     
 
-    FeaturedAnimationInterfaceFactoryInterfaceFactory featuredAnimationInterfaceFactoryInterfaceFactory = FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance();;
+    FeaturedAnimationInterfaceFactoryInterfaceFactory* featuredAnimationInterfaceFactoryInterfaceFactory = FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance();;
     
-featuredAnimationInterfaceFactoryInterfaceFactory.clear();
+featuredAnimationInterfaceFactoryInterfaceFactory->clear();
     
-FeaturedResourceRelativeRelationshipFactory::getInstance().clear();
+FeaturedResourceRelativeRelationshipFactory::getInstance()->clear();
     
 }
 

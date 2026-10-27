@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_TIMEINTERVALACTIONSCRIPTCONDITIONDATA_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_TIMEINTERVALACTIONSCRIPTCONDITIONDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class TimeIntervalActionScriptConditionData
             : public Object
          {
 
-    public: static std::string NAME = "TIME_INTERVAL_ACTION_CONDITION_NAME";
+    public: static inline std::string NAME = "TIME_INTERVAL_ACTION_CONDITION_NAME";
 
-    public: static std::string TIME = "TIME_INTERVAL_ACTION_CONDITION_TIME";
+    public: static inline std::string TIME = "TIME_INTERVAL_ACTION_CONDITION_TIME";
 
 private: TimeIntervalActionScriptConditionData();
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -41,20 +47,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Paintable.h"
-#include "PaintableInterface.h"
+        #include "org/allbinary/graphics/paint/Paintable.h"
+#include "org/allbinary/graphics/paint/PaintableInterface.h"
 
 class PaintableComposite: public Paintable {
 
-    private: std::vector<PaintableInterface> paintableArray;
+    private: std::vector<PaintableInterface*> paintableArray;
 
-public: PaintableComposite(std::vector<PaintableInterface> paintableArray){
+public: PaintableComposite(std::vector<PaintableInterface*> paintableArray){
 this->paintableArray= paintableArray;
     
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 
 
 
@@ -69,7 +75,7 @@ this->paintableArray[index].paint(graphics);
 }
 
 
-    public: void paintThreed(Graphics graphics){
+    public: void paintThreed(Graphics* graphics){
 
 
 

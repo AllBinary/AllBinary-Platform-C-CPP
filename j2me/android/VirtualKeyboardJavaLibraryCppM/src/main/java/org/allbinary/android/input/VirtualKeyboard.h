@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_VIRTUALKEYBOARD_H
         #define ORG_ALLBINARY_ANDROID_INPUT_VIRTUALKEYBOARD_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/input/event/VirtualKeyboardEvent.h>
@@ -58,11 +64,11 @@ class VirtualKeyboard
             : public Object
          {
 
-    public: static const VirtualKeyboard NULL_VIRTUAL_KEYBOARD = VirtualKeyboard();
+    public: static VirtualKeyboard* NULL_VIRTUAL_KEYBOARD() { static std::unique_ptr<VirtualKeyboard> value(new VirtualKeyboard()); return value.get(); }
 
-    public: void onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject* eventObject);
 
-    public: void onVirtualKeyboardEvent(VirtualKeyboardEvent virtualKeyboardEvent);
+    public: void onVirtualKeyboardEvent(VirtualKeyboardEvent* virtualKeyboardEvent);
 
     public: void forceHide();
 

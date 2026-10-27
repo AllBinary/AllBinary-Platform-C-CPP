@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_RTSGAMELAYERPOSITIONFINDER_H
         #define ORG_ALLBINARY_GAME_INPUT_RTSGAMELAYERPOSITIONFINDER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/layer/AllBinaryLayer.h>
@@ -50,19 +56,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LayerPositionFinderInterface.h"
+        #include "org/allbinary/game/input/LayerPositionFinderInterface.h"
 
 class RTSGameLayerPositionFinder
             : public Object
-        : public LayerPositionFinderInterface {
+        , public LayerPositionFinderInterface {
 
-    private: static RTSGameLayerPositionFinder instance() { return RTSGameLayerPositionFinder(); }
+    private: static RTSGameLayerPositionFinder* instance() { static std::unique_ptr<RTSGameLayerPositionFinder> value(new RTSGameLayerPositionFinder()); return value.get(); }
 
-    public: static RTSGameLayerPositionFinder getInstance();
+    public: static RTSGameLayerPositionFinder* getInstance();
 
 private: RTSGameLayerPositionFinder();
 
-    public: AllBinaryLayer getLayerInterface(GeographicMapCellPosition geographicMapCellPosition);
+    public: AllBinaryLayer* getLayerInterface(GeographicMapCellPosition* geographicMapCellPosition);
 
 };
 

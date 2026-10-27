@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Displayable.h>
@@ -44,15 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "EmulatorViewInterface.h"
+        #include "org/allbinary/view/EmulatorViewInterface.h"
 
 class NullEmulatorView
             : public Object
-        : public EmulatorViewInterface {
+        , public EmulatorViewInterface {
 
-    public: static const NullEmulatorView NULL_EMULATOR_VIEW = NullEmulatorView();
+    public: static NullEmulatorView* NULL_EMULATOR_VIEW() { static std::unique_ptr<NullEmulatorView> value(new NullEmulatorView()); return value.get(); }
 
-    public: void setMidlet(MIDlet midlet){
+    public: void setMidlet(MIDlet* midlet){
 }
 
 
@@ -60,7 +66,7 @@ class NullEmulatorView
 }
 
 
-    public: void onSetDisplayable(Displayable displayable){
+    public: void onSetDisplayable(Displayable* displayable){
 }
 
 

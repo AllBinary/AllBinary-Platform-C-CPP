@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,28 +70,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "FileUploadData.h"
+        #include "org/allbinary/logic/communication/http/file/upload/FileUploadData.h"
 
 class HttpFilePermissions
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: AbFile file;
+    private: AbFile* file;
 
-    private: const BasicArrayList userRoles = BasicArrayListD();
+    private: BasicArrayList* userRoles = new BasicArrayListD();
 
-public: HttpFilePermissions(AbPath fullPath){
-this->file= AbFile::createAbFileFromAbPath(AbPath(fullPath.toFileSystemString(), FileUploadData::getInstance().FILE));
+public: HttpFilePermissions(AbPath* fullPath){
+this->file= AbFile::createAbFileFromAbPath(new AbPath(fullPath->toFileSystemString(), FileUploadData::getInstance()->FILE));
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.putF("Loading Privileges: " +fullPath.toFileSystemString(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("Loading Privileges: " +fullPath->toFileSystemString(), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -94,16 +100,16 @@ this->file= AbFile::createAbFileFromAbPath(AbPath(fullPath.toFileSystemString(),
                         if(this->isFile())
                         
                                     {
-                                    this->userRoles.add(BasicUserRoleFactory::getInstance().ADMINISTRATOR);
+                                    this->userRoles->add(BasicUserRoleFactory::getInstance()->ADMINISTRATOR);
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.putF("User Roles: " +this->userRoles, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("User Roles: " +this->userRoles, this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -116,12 +122,12 @@ this->file= AbFile::createAbFileFromAbPath(AbPath(fullPath.toFileSystemString(),
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->file.isFile();;
+                        return this->file->isFile();;
     
 }
 
 
-    public: BasicArrayList getUserRoles(){
+    public: BasicArrayList* getUserRoles(){
 
 
 

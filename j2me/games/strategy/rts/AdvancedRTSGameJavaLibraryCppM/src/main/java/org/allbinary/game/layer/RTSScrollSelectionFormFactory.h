@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -82,7 +88,7 @@ class RTSScrollSelectionFormFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static ScrollSelectionForm getInstance(std::string formLabel, std::vector<ABCustomItem> items);
+    public: static ScrollSelectionForm* getInstance(std::string formLabel, std::vector<ABCustomItem*> items);
 
 };
 

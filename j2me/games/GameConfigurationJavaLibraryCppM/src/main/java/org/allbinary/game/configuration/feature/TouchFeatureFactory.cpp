@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,15 +44,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchFeature.h"
+        #include "org/allbinary/game/configuration/feature/TouchFeature.h"
 
 class TouchFeatureFactory
             : public Object
          {
 
-    private: static TouchFeatureFactory instance() { return TouchFeatureFactory(); }
+    private: static TouchFeatureFactory* instance() { static std::unique_ptr<TouchFeatureFactory> value(new TouchFeatureFactory()); return value.get(); }
 
-    public: static TouchFeatureFactory getInstance(){
+    public: static TouchFeatureFactory* getInstance(){
 
 
 
@@ -60,13 +66,13 @@ private: TouchFeatureFactory(){
 }
 
 
-    public: const TouchFeature TOUCH_ENABLED = TouchFeature("Touch Enabled");
+    public: TouchFeature* TOUCH_ENABLED = new TouchFeature("Touch Enabled");
 
-    public: const TouchFeature SHOW_SCREEN_BUTTONS = TouchFeature("Show");
+    public: TouchFeature* SHOW_SCREEN_BUTTONS = new TouchFeature("Show");
 
-    public: const TouchFeature AUTO_HIDE_SHOW_SCREEN_BUTTONS = TouchFeature("Auto Hide (One Level)");
+    public: TouchFeature* AUTO_HIDE_SHOW_SCREEN_BUTTONS = new TouchFeature("Auto Hide (One Level)");
 
-    public: const TouchFeature HIDE_SCREEN_BUTTONS = TouchFeature("Hide");
+    public: TouchFeature* HIDE_SCREEN_BUTTONS = new TouchFeature("Hide");
 
 };
 

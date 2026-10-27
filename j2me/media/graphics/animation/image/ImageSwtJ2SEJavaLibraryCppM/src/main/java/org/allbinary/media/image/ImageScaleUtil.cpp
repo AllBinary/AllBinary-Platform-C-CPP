@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,15 +66,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageCopyUtil.h"
+        #include "org/allbinary/media/image/ImageCopyUtil.h"
 
 class ImageScaleUtil
             : public Object
          {
 
-    private: static ImageScaleUtil instance() { return ImageScaleUtil(); }
+    private: static ImageScaleUtil* instance() { static std::unique_ptr<ImageScaleUtil> value(new ImageScaleUtil()); return value.get(); }
 
-    public: static ImageScaleUtil getInstance(){
+    public: static ImageScaleUtil* getInstance(){
 
 
 
@@ -78,15 +84,15 @@ class ImageScaleUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const ImageCopyUtil imageCopyUtil = ImageCopyUtil::getInstance();
+    private: ImageCopyUtil* imageCopyUtil = ImageCopyUtil::getInstance();
 
-    private: const GameFeatureFactory gameFeatureFactory = GameFeatureFactory::getInstance();
+    private: GameFeatureFactory* gameFeatureFactory = GameFeatureFactory::getInstance();
 
-    private: const Features features = Features::getInstance();
+    private: Features* features = Features::getInstance();
 
     private: const std::string NO_COPY = "SWT should not copy images after initial loading as the alpha is not honored";
 
@@ -96,7 +102,7 @@ private: ImageScaleUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImage2(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached){
+    public: Image* createImage2(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached){
 
 
 
@@ -108,12 +114,12 @@ private: ImageScaleUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImage3(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable){
+    public: Image* createImage3(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable_){
 
-                        if(!this->features.isFeature(this->gameFeatureFactory.POST_IMAGE_LOADING_MODIFICATION))
+                        if(!this->features->isFeature(this->gameFeatureFactory->POST_IMAGE_LOADING_MODIFICATION))
                         
                                     {
-                                    this->logUtil.putF(this->NO_COPY, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->NO_COPY, this, this->commonStrings->CONSTRUCTOR);
     
 
 
@@ -125,10 +131,10 @@ private: ImageScaleUtil(){
                                     }
                                 
 
-    int32_t width = originalImage.getWidth();;
+    int32_t width = originalImage->getWidth();;
     
 
-    int32_t height = originalImage.getHeight();;
+    int32_t height = originalImage->getHeight();;
     
 
     float scaleX = scaleNominatorX /scaleDenominatorX;;
@@ -137,7 +143,7 @@ private: ImageScaleUtil(){
     float scaleY = scaleNominatorY /scaleDenominatorY;;
     
 
-    Image scaledImage = this->imageCopyUtil.createImageWH(originalImage, static_cast<int32_t>((scaleX *width)), static_cast<int32_t>((scaleY *height)), mutable);;
+    Image* scaledImage = this->imageCopyUtil->createImageWH(originalImage, static_cast<int32_t>((scaleX *width)), static_cast<int32_t>((scaleY *height)), mutable_);;
     
 
 
@@ -150,7 +156,7 @@ private: ImageScaleUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: void scale2(Image originalImage, std::vector<Image> originalImageArray, std::vector<Image> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY){
+    public: void scale2(Image* originalImage, std::vector<Image*> originalImageArray, std::vector<Image*> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY){
 this->scale(originalImage, originalImageArray, ximageToShowArray, unused, scaleX, scaleY, maxScaleX, maxScaleY, true);
     
 }
@@ -158,15 +164,15 @@ this->scale(originalImage, originalImageArray, ximageToShowArray, unused, scaleX
 
                 //@Throws(Exception.constructor)
             
-    public: void scale(Image originalImage, std::vector<Image> originalImageArray, std::vector<Image> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY, bool mutable){
+    public: void scale(Image* originalImage, std::vector<Image*> originalImageArray, std::vector<Image*> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY, bool mutable_){
 
-    int32_t width = originalImage.getWidth();;
+    int32_t width = originalImage->getWidth();;
     
 
-    int32_t height = originalImage.getHeight();;
+    int32_t height = originalImage->getHeight();;
     
 
-    Image scaledImage = this->imageCopyUtil.createImageWH(originalImage, static_cast<int32_t>((scaleX *width)), static_cast<int32_t>((scaleY *height)), mutable);;
+    Image* scaledImage = this->imageCopyUtil->createImageWH(originalImage, static_cast<int32_t>((scaleX *width)), static_cast<int32_t>((scaleY *height)), mutable_);;
     
 originalImageArray[0]= scaledImage;
     

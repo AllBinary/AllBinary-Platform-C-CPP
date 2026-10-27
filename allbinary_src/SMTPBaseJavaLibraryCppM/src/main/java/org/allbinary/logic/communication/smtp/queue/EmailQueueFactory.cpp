@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,16 +44,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicEmailQueue.h"
-#include "EmailQueueInterface.h"
+        #include "org/allbinary/logic/communication/smtp/queue/BasicEmailQueue.h"
+#include "org/allbinary/logic/communication/smtp/queue/EmailQueueInterface.h"
 
 class EmailQueueFactory
             : public Object
          {
 
-    private: static EmailQueueInterface emailQueueInterface = BasicEmailQueue::getInstance();
+    private: static inline EmailQueueInterface* emailQueueInterface = dynamic_cast<EmailQueueInterface*>(BasicEmailQueue::getInstance());
 
-    public: static EmailQueueInterface getInstance(){
+    public: static EmailQueueInterface* getInstance(){
 
 
 

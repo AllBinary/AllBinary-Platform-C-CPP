@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -86,31 +92,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionRectanglesResultsListener.h"
-#include "MotionRectanglesResultsEvent.h"
-#include "MotionRectangles.h"
+        #include "org/allbinary/media/image/comparison/motion/MotionRectanglesResultsListener.h"
+#include "org/allbinary/media/image/comparison/motion/MotionRectanglesResultsEvent.h"
+#include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
 
 class TestInputForMotionRectanglesResultsWorker
             : public Object
-        : public MotionRectanglesResultsListener {
+        , public MotionRectanglesResultsListener {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: int64_t index= 0;
 
     private: bool running= false;
 
-    private: BasicArrayList motionRectanglesVector;
+    private: BasicArrayList* motionRectanglesVector;
 
 public: TestInputForMotionRectanglesResultsWorker(){
-this->motionRectanglesVector= BasicArrayListD();
+this->motionRectanglesVector= new BasicArrayListD();
     
 }
 
 
-    public: BasicArrayList getMotionRectanglesVector(){
+    public: BasicArrayList* getMotionRectanglesVector(){
 
 
 
@@ -120,16 +126,16 @@ this->motionRectanglesVector= BasicArrayListD();
 }
 
 
-    public: void onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent motionRectanglesImageComparisonResultsEvent){
-this->getMotionRectanglesVector().add(motionRectanglesImageComparisonResultsEvent.getMotionRectangles());
+    public: void onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent* motionRectanglesImageComparisonResultsEvent){
+this->getMotionRectanglesVector()->add(motionRectanglesImageComparisonResultsEvent->getMotionRectangles());
     
 this->run();
     
 }
 
 
-    public: void onEvent(AllBinaryEventObject allBinaryEventObject){
-this->onMotionRectanglesImageComparisonResultsEvent(allBinaryEventObject);
+    public: void onEvent(AllBinaryEventObject* allBinaryEventObject){
+this->onMotionRectanglesImageComparisonResultsEvent(dynamic_cast<MotionRectanglesResultsEvent*>(allBinaryEventObject));
     
 }
 
@@ -155,33 +161,33 @@ this->running= running;
     public: void run(){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.RUN);
+            this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->RUN);
     
 this->setRunning(true);
     
 
-    TimeDelayHelper timeHelper = TimeDelayHelper(1000);;
+    TimeDelayHelper* timeHelper = new TimeDelayHelper(1000);;
     
-timeHelper.setStartTimeTNT();
-    
-
-    MotionRectangles motionRectangles = this->getMotionRectanglesVector().get(0);;
+timeHelper->setStartTimeTNT();
     
 
-    BasicArrayList motionRectangleVector = motionRectangles.getVector();;
+    MotionRectangles* motionRectangles = dynamic_cast<MotionRectangles*>(this->getMotionRectanglesVector()->get(0));;
     
 
-                        if(motionRectangleVector.size() > 0)
+    BasicArrayList* motionRectangleVector = motionRectangles->getVector();;
+    
+
+                        if(motionRectangleVector->size() > 0)
                         
                                     {
                                     
-    Rectangle rectangle = motionRectangleVector.get(0);;
+    Rectangle* rectangle = dynamic_cast<Rectangle*>(motionRectangleVector->get(0));;
     
 
-    ABHashtable<Object*, Object*> robotHashtable = InputRobotFactory::getInstance().get();;
+    ABHashtable<Object*, Object*>* robotHashtable = InputRobotFactory::getInstance()->get();;
     
 
-    std::vector<Object*> inputTypeNameArray = robotHashtable.keys().();;
+    std::vector<Object*> inputTypeNameArray = robotHashtable->keys().();;
     
 
     int32_t size = inputTypeNameArray.size();;
@@ -197,61 +203,61 @@ timeHelper.setStartTimeTNT();
     std::string inputTypeNameString = inputTypeNameArray[index];;
     
 
-    InputRobotInterface inputRobotInterface = robotHashtable.get(inputTypeNameString);;
+    InputRobotInterface* inputRobotInterface = dynamic_cast<InputRobotInterface*>(robotHashtable->get(inputTypeNameString));;
     
-inputRobotInterface.mouseMoveToTarget(rectangle);
+inputRobotInterface->mouseMoveToTarget(rectangle);
     
 
-                        if(inputRobotInterface.getName().compareTo(TempInputRobotNames::DX_NAME) == 0)
+                        if(inputRobotInterface->getName().compareTo(TempInputRobotNames::DX_NAME) == 0)
                         
                                     {
-                                    inputRobotInterface.mousePress(InputEvent::BUTTON1_MASK);
+                                    inputRobotInterface->mousePress(InputEvent::BUTTON1_MASK);
     
 Thread::sleep(300);
     
-inputRobotInterface.mouseRelease(InputEvent::BUTTON1_MASK);
+inputRobotInterface->mouseRelease(InputEvent::BUTTON1_MASK);
     
-inputRobotInterface.mousePress(InputEvent::BUTTON2_MASK);
-    
-Thread::sleep(300);
-    
-inputRobotInterface.mouseRelease(InputEvent::BUTTON2_MASK);
-    
-inputRobotInterface.mousePress(InputEvent::BUTTON3_MASK);
+inputRobotInterface->mousePress(InputEvent::BUTTON2_MASK);
     
 Thread::sleep(300);
     
-inputRobotInterface.mouseRelease(InputEvent::BUTTON3_MASK);
+inputRobotInterface->mouseRelease(InputEvent::BUTTON2_MASK);
     
-inputRobotInterface.keyPress(KeyEvent::VK_1);
-    
-Thread::sleep(300);
-    
-inputRobotInterface.keyRelease(KeyEvent::VK_1);
-    
-inputRobotInterface.keyPress(KeyEvent::VK_2);
+inputRobotInterface->mousePress(InputEvent::BUTTON3_MASK);
     
 Thread::sleep(300);
     
-inputRobotInterface.keyRelease(KeyEvent::VK_2);
+inputRobotInterface->mouseRelease(InputEvent::BUTTON3_MASK);
     
-inputRobotInterface.keyPress(KeyEvent::VK_3);
-    
-Thread::sleep(300);
-    
-inputRobotInterface.keyRelease(KeyEvent::VK_3);
-    
-inputRobotInterface.keyPress(KeyEvent::VK_4);
+inputRobotInterface->keyPress(KeyEvent::VK_1);
     
 Thread::sleep(300);
     
-inputRobotInterface.keyRelease(KeyEvent::VK_4);
+inputRobotInterface->keyRelease(KeyEvent::VK_1);
     
-inputRobotInterface.keyPress(KeyEvent::VK_F1);
+inputRobotInterface->keyPress(KeyEvent::VK_2);
     
 Thread::sleep(300);
     
-inputRobotInterface.keyRelease(KeyEvent::VK_F1);
+inputRobotInterface->keyRelease(KeyEvent::VK_2);
+    
+inputRobotInterface->keyPress(KeyEvent::VK_3);
+    
+Thread::sleep(300);
+    
+inputRobotInterface->keyRelease(KeyEvent::VK_3);
+    
+inputRobotInterface->keyPress(KeyEvent::VK_4);
+    
+Thread::sleep(300);
+    
+inputRobotInterface->keyRelease(KeyEvent::VK_4);
+    
+inputRobotInterface->keyPress(KeyEvent::VK_F1);
+    
+Thread::sleep(300);
+    
+inputRobotInterface->keyRelease(KeyEvent::VK_F1);
     
 
                                     }
@@ -263,17 +269,17 @@ inputRobotInterface.keyRelease(KeyEvent::VK_F1);
                                 
 this->index++;
     
-this->getMotionRectanglesVector().remove(motionRectangles);
+this->getMotionRectanglesVector()->remove(motionRectangles);
     
-this->logUtil.putF(CommonLabels::getInstance().ELAPSED +timeHelper.getElapsedTNT(), this, this->commonStrings.RUN);
+this->logUtil->putF(CommonLabels::getInstance()->ELAPSED +timeHelper->getElapsedTNT(), this, this->commonStrings->RUN);
     
-this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.RUN);
+this->logUtil->putF(this->commonStrings->END, this, this->commonStrings->RUN);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RUN, &e);
     
 }
 

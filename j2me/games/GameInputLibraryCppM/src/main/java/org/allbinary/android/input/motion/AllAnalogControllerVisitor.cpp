@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/input/analog/AnalogLocationInput.h>
 
       
@@ -48,28 +54,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnalogControllerVisitor.h"
-#include "AnalogLocationInputProcessor.h"
+        #include "org/allbinary/android/input/motion/AnalogControllerVisitor.h"
+#include "org/allbinary/android/input/motion/AnalogLocationInputProcessor.h"
 
 class AllAnalogControllerVisitor: public AnalogControllerVisitor {
 
-    public: void process(AllBinaryLayerManager allbinaryLayerManager, AnalogLocationInputProcessor analogLocationInputProcessor){
+    public: void process(AllBinaryLayerManager* allbinaryLayerManager, AnalogLocationInputProcessor* analogLocationInputProcessor){
 
-    BasicArrayList analogLocationInputList = AnalogLocationInputFactory::getInstance().getList();;
+    BasicArrayList* analogLocationInputList = AnalogLocationInputFactory::getInstance()->getList();;
     
 
-    AnalogLocationInput analogLocationInput;;
+    AnalogLocationInput* analogLocationInput;;
     
 
 
 
 
                         for (
-    int32_t index = analogLocationInputList.size() -1;index >= 0; index--)
+    int32_t index = analogLocationInputList->size() -1;index >= 0; index--)
         {
-analogLocationInput= analogLocationInputList.get(index);
+analogLocationInput= dynamic_cast<AnalogLocationInput*>(analogLocationInputList->get(index));
     
-analogLocationInputProcessor.process(allbinaryLayerManager, analogLocationInput);
+analogLocationInputProcessor->process(allbinaryLayerManager, analogLocationInput);
     
 }
 

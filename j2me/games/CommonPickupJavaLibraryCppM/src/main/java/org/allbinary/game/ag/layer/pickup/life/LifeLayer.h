@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFELAYER_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFELAYER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -70,9 +76,9 @@ class LifeLayer: public AllBinaryLayer, public LifeVisitorInterface {
 
 public: LifeLayer();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: void visit(Life lifeInterface);
+    public: void visit(Life* lifeInterface);
 
 };
 

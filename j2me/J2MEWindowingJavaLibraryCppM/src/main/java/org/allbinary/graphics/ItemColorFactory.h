@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_ITEMCOLORFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_ITEMCOLORFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class ItemColorFactory
             : public Object
          {
 
-    private: static ItemColorFactory instance() { return ItemColorFactory(); }
+    private: static ItemColorFactory* instance() { static std::unique_ptr<ItemColorFactory> value(new ItemColorFactory()); return value.get(); }
 
-    public: static ItemColorFactory getInstance();
+    public: static ItemColorFactory* getInstance();
 
     public: int32_t INVERT_PAINT = static_cast<int32_t>(0xFF000000);
 

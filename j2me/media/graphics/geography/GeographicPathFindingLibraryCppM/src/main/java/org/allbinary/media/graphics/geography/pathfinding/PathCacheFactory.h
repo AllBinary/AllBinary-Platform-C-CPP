@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHCACHEFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHCACHEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -62,21 +68,21 @@ class PathCacheFactory
             : public Object
          {
 
-    private: static PathCacheFactory pathFactory = PathCacheFactory();
+    private: static PathCacheFactory* pathFactory() { static std::unique_ptr<PathCacheFactory> value(new PathCacheFactory()); return value.get(); }
 
-    public: static PathCacheFactory getInstance();
+    public: static PathCacheFactory* getInstance();
 
-    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
+    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    private: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
+    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
 
 private: PathCacheFactory();
 
     public: int32_t getSize();
 
-    public: void add(Integer pathId, BasicArrayList list);
+    public: void add(int32_t pathId, BasicArrayList* list);
 
-    public: void remove(Integer pathId);
+    public: void remove(int32_t pathId);
 
                 //@Throws(Exception.constructor)
             
@@ -84,7 +90,7 @@ private: PathCacheFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getOrCreate(Integer pathIdInteger);
+    public: BasicArrayList* getOrCreate(int32_t pathIdInteger);
 
 };
 

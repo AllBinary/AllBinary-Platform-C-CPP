@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/business/advertisement/AdvertisementsInterface.h>
 
       
@@ -48,15 +56,15 @@
         
 class AdvertisementCampaignInterface {
 
-    std::string getName();
+    public: virtual std::string getName() = 0;
 
-    Object* getComponent();
+    public: virtual Object* getComponent() = 0;
 
-    void setName(std::string name);
+    public: virtual void setName(std::string name) = 0;
 
-    void setComponentName(std::string name);
+    public: virtual void setComponentName(std::string name) = 0;
 
-    AdvertisementsInterface search(AdvertisementSearchInterface advertisementSearchInterface);
+    public: virtual AdvertisementsInterface* search(AdvertisementSearchInterface* advertisementSearchInterface) = 0;
 
 };
 

@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -121,31 +129,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InventoryUploadMediaUtil.h"
+        #include "views/admin/inventory/InventoryUploadMediaUtil.h"
 
 class InventoryItemView: public HttpStoreComponentView, public RequestMapInterface {
 
-    public: static int32_t TYPE_ID = 10;
+    public: static inline int32_t TYPE_ID = 10;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
-    protected: HttpServletRequest request;
+    protected: HttpServletRequest* request;
 
     private: std::string imageFileName;
 
-    private: MediaData mediaData;
+    private: MediaData* mediaData;
 
-    protected: ItemInterface itemInterface;
+    protected: ItemInterface* itemInterface;
 
-    protected: BasicArrayList downloadableItemVector;
+    protected: BasicArrayList* downloadableItemVector;
 
-    private: HashMap<Object*, Object*> requestHashMap;
+    private: HashMap<Object*, Object*>* requestHashMap;
 
-public: InventoryItemView(TransformInfoInterface transformInfoInterface);
+public: InventoryItemView(TransformInfoInterface* transformInfoInterface);
 
-public: InventoryItemView(TransformInfoInterface transformInfoInterface, std::string empty);
+public: InventoryItemView(TransformInfoInterface* transformInfoInterface, std::string empty);
 
     public: int32_t getTypeId();
 
@@ -155,7 +163,7 @@ public: InventoryItemView(TransformInfoInterface transformInfoInterface, std::st
 
     public: void addDomNodeInterfaces();
 
-    public: ItemInterface getItemInterface();
+    public: ItemInterface* getItemInterface();
 
                 //@Throws(Exception.constructor)
             
@@ -165,9 +173,9 @@ public: InventoryItemView(TransformInfoInterface transformInfoInterface, std::st
             
     protected: void processImageFiles();
 
-    private: void setRequestHashMap(HashMap<Object*, Object*> requestHashMap);
+    private: void setRequestHashMap(HashMap<Object*, Object*>* requestHashMap);
 
-    public: HashMap<Object*, Object*> getRequestHashMap();
+    public: HashMap<Object*, Object*>* getRequestHashMap();
 
 };
 

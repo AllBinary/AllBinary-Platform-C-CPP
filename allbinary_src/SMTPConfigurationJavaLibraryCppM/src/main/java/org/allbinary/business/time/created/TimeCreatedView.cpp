@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,39 +64,39 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TimeCreated.h"
+        #include "org/allbinary/business/time/created/TimeCreated.h"
 
 class TimeCreatedView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: TimeCreated timeCreated;
+    private: TimeCreated* timeCreated;
 
-public: TimeCreatedView(TimeCreated timeCreated){
+public: TimeCreatedView(TimeCreated* timeCreated){
 this->setTimeCreated(timeCreated);
     
 }
 
 
-public: TimeCreatedView(Node node){
-this->setTimeCreated(TimeCreated(DomNodeHelper::getTextNodeValue(node)));
+public: TimeCreatedView(Node* node){
+this->setTimeCreated(new TimeCreated(DomNodeHelper::getTextNodeValue(node)));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModDomHelper::createTextNode(document, EntryData::getInstance().TIMECREATED, this->getTimeCreated().toString());;
+                        return ModDomHelper::createTextNode(document, EntryData::getInstance()->TIMECREATED, this->getTimeCreated()->toString());;
     
 }
 
 
-    public: TimeCreated getTimeCreated(){
+    public: TimeCreated* getTimeCreated(){
 
 
 
@@ -100,7 +106,7 @@ this->setTimeCreated(TimeCreated(DomNodeHelper::getTextNodeValue(node)));
 }
 
 
-    public: void setTimeCreated(TimeCreated timeCreated){
+    public: void setTimeCreated(TimeCreated* timeCreated){
 this->timeCreated= timeCreated;
     
 }

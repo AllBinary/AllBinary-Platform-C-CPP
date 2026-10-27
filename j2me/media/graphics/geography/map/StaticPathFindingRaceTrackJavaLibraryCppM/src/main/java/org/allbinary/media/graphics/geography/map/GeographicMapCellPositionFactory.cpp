@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/string/CommonStrings.h>
@@ -56,15 +64,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapCellPositionBaseFactory.h"
-#include "BasicGeographicMapCellPositionFactory.h"
-#include "BasicGeographicMap.h"
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionBaseFactory.h"
+#include "org/allbinary/media/graphics/geography/map/BasicGeographicMapCellPositionFactory.h"
+#include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
 
 class GeographicMapCellPositionFactory: public GeographicMapCellPositionBaseFactory {
 
-    private: static const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
+    private: static inline ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
 
-    public: static ABHashtable<Object*, Object*> getHashtable(){
+    public: static ABHashtable<Object*, Object*>* getHashtable(){
 
 
 
@@ -74,19 +82,19 @@ class GeographicMapCellPositionFactory: public GeographicMapCellPositionBaseFact
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicGeographicMapCellPositionFactory getInstance(BasicGeographicMap geographicMapInterface){
+    public: BasicGeographicMapCellPositionFactory* getInstance(BasicGeographicMap* geographicMapInterface){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-    AllBinaryTiledLayer allBinaryTiledLayer = geographicMapInterface.getAllBinaryTiledLayer();;
+    AllBinaryTiledLayer* allBinaryTiledLayer = geographicMapInterface->getAllBinaryTiledLayer();;
     
 
-    Object* geographicMapCellPositionFactoryCanBeNull = GeographicMapCellPositionFactory::hashtable.get(allBinaryTiledLayer.getDataId());;
+    Object* geographicMapCellPositionFactoryCanBeNull = GeographicMapCellPositionFactory::hashtable->get(allBinaryTiledLayer->getDataId());;
     
 
                         if(geographicMapCellPositionFactoryCanBeNull == 
@@ -94,29 +102,29 @@ class GeographicMapCellPositionFactory: public GeographicMapCellPositionBaseFact
                                 )
                         
                                     {
-                                    this->logUtil.putF(StringMaker().append("Creating GeographicMapCellPositionFactory for TileLayer: ").appendint(allBinaryTiledLayer.getDataId().intValue()).toString(), this, commonStrings.GET_INSTANCE);
+                                    this->logUtil->putF((new StringMaker())->append("Creating GeographicMapCellPositionFactory for TileLayer: ")->appendint(allBinaryTiledLayer->getDataId()->intValue())->toString(), this, commonStrings->GET_INSTANCE);
     
-geographicMapCellPositionFactoryCanBeNull= BasicGeographicMapCellPositionFactory(geographicMapInterface);
+geographicMapCellPositionFactoryCanBeNull= new BasicGeographicMapCellPositionFactory(geographicMapInterface);
     
-GeographicMapCellPositionFactory::hashtable.put(allBinaryTiledLayer.getDataId(), geographicMapCellPositionFactoryCanBeNull);
+GeographicMapCellPositionFactory::hashtable->put(allBinaryTiledLayer->getDataId(), geographicMapCellPositionFactoryCanBeNull);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *dynamic_cast<BasicGeographicMapCellPositionFactory*>(geographicMapCellPositionFactoryCanBeNull);
+                        return dynamic_cast<BasicGeographicMapCellPositionFactory*>(geographicMapCellPositionFactoryCanBeNull);
     
 
                                     }
                                 
                         else {
-                            this->logUtil.putF(StringMaker().append("Reusing GeographicMapCellPositionFactory for TileLayer: ").appendint(allBinaryTiledLayer.getDataId().intValue()).toString(), this, commonStrings.GET_INSTANCE);
+                            this->logUtil->putF((new StringMaker())->append("Reusing GeographicMapCellPositionFactory for TileLayer: ")->appendint(allBinaryTiledLayer->getDataId()->intValue())->toString(), this, commonStrings->GET_INSTANCE);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *dynamic_cast<BasicGeographicMapCellPositionFactory*>(geographicMapCellPositionFactoryCanBeNull);
+                        return dynamic_cast<BasicGeographicMapCellPositionFactory*>(geographicMapCellPositionFactoryCanBeNull);
     
 
                         }

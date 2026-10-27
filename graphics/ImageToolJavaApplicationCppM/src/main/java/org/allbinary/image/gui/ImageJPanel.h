@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_IMAGE_GUI_IMAGEJPANEL_H
         #define ORG_ALLBINARY_IMAGE_GUI_IMAGEJPANEL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/awt.h>
 
       
@@ -54,26 +60,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "Graphics.h"
-#include "GroupLayout.h"
-#include "Short.h"
+        #include "org/allbinary/image/gui/JPanel.h"
+#include "org/allbinary/image/gui/Graphics.h"
+#include "org/allbinary/image/gui/GroupLayout.h"
+#include "org/allbinary/image/gui/Short.h"
 
 class ImageJPanel: public javax::swing::JPanel {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const CanvasStrings canvasStrings = CanvasStrings::getInstance();
+    private: CanvasStrings* canvasStrings = CanvasStrings::getInstance();
 
     private: bool isDrawn = false;
 
-    private: BufferedImage bufferedImage;
+    private: BufferedImage* bufferedImage;
 
-public: ImageJPanel(BufferedImage bufferedImage);
+public: ImageJPanel(BufferedImage* bufferedImage);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
     private: void initComponents();
 

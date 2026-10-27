@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_CONFIGURATION_ADMINCONFIGURATIONDATA_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_CONFIGURATION_ADMINCONFIGURATIONDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,7 +52,7 @@ class AdminConfigurationData
             : public Object
          {
 
-    public: static const std::string CONTEXTNAME = "Admin";
+    public: static inline const std::string CONTEXTNAME = "Admin";
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/string/CommonSeps.h>
@@ -52,9 +58,9 @@ class PlatformRecordIdUtil
             : public Object
          {
 
-    private: static PlatformRecordIdUtil instance() { return PlatformRecordIdUtil(); }
+    private: static PlatformRecordIdUtil* instance() { static std::unique_ptr<PlatformRecordIdUtil> value(new PlatformRecordIdUtil()); return value.get(); }
 
-    public: static PlatformRecordIdUtil getInstance(){
+    public: static PlatformRecordIdUtil* getInstance(){
 
 
 
@@ -66,12 +72,12 @@ class PlatformRecordIdUtil
 
     private: const std::string PLATFORM_SHORT_NAME = "AVN";
 
-    public: std::string getRecordId(AbeClientInformationInterface abeClientInformation, std::string baseRecordId){
+    public: std::string getRecordId(AbeClientInformationInterface* abeClientInformation, std::string baseRecordId){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().append(abeClientInformation.toShortString()).append(CommonSeps::getInstance().UNDERSCORE).append(this->PLATFORM_SHORT_NAME).append(baseRecordId).toString();;
+                        return (new StringMaker())->append(abeClientInformation->toShortString())->append(CommonSeps::getInstance()->UNDERSCORE)->append(this->PLATFORM_SHORT_NAME)->append(baseRecordId)->toString();;
     
 }
 

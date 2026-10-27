@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
@@ -65,13 +71,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CssCustomizerView.h"
+        #include "views/business/context/modules/storefront/customizer/includes/style/css/CssCustomizerView.h"
 
 class InsertCssValidationView: public CssCustomizerView, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: InsertCssValidationView(TransformInfoInterface transformInfoInterface) : CssCustomizerView(transformInfoInterface){
+public: InsertCssValidationView(TransformInfoInterface* transformInfoInterface) : CssCustomizerView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -83,7 +89,7 @@ public: InsertCssValidationView(TransformInfoInterface transformInfoInterface) :
 
                 //@Throws(Exception.constructor)
             
-    public: Document toXmlDoc(){
+    public: Document* toXmlDoc(){
 
 
 
@@ -93,17 +99,17 @@ public: InsertCssValidationView(TransformInfoInterface transformInfoInterface) :
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-    Boolean isValid = Boolean::TRUE;;
+    bool isValid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Started Validation", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("Started Validation", this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -112,7 +118,7 @@ public: InsertCssValidationView(TransformInfoInterface transformInfoInterface) :
                         if(isValid == Boolean::TRUE)
                         
                                     {
-                                    CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this->styleValidationInterface);
+                                    CustomizerUtil::getInstance()->insert(this->getTransformInfoInterface(), dynamic_cast<DomNodeInterface*>(this->styleValidationInterface));
     
 
                                     }
@@ -125,13 +131,13 @@ public: InsertCssValidationView(TransformInfoInterface transformInfoInterface) :
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -151,23 +157,23 @@ public: InsertCssValidationView(TransformInfoInterface transformInfoInterface) :
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -183,7 +189,7 @@ public: InsertCssValidationView(TransformInfoInterface transformInfoInterface) :
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -193,7 +199,7 @@ public: InsertCssValidationView(TransformInfoInterface transformInfoInterface) :
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -212,17 +218,17 @@ public: InsertCssValidationView(TransformInfoInterface transformInfoInterface) :
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreCustomizerComponentUtil::getInstance().generate(this->abeClientInformation, this->getTransformInfoInterface());;
+                        return StoreCustomizerComponentUtil::getInstance()->generate(this->abeClientInformation, this->getTransformInfoInterface());;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/io/Closeable.h>
@@ -47,9 +53,9 @@
         
 class NullCloseable
             : public Object
-        : public Closeable {
+        , public Closeable {
 
-    public: static const NullCloseable NULL_CLOSEABLE = NullCloseable();
+    public: static NullCloseable* NULL_CLOSEABLE() { static std::unique_ptr<NullCloseable> value(new NullCloseable()); return value.get(); }
 
     public: void close(){
 }

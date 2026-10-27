@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -96,17 +102,17 @@
         
 class UnitItemArrayFactory
             : public Object
-        : public ItemArraySingletonFactoryInterface {
+        , public ItemArraySingletonFactoryInterface {
 
-    private: static const std::vector<ABCustomItem> ITEMS = CustomItemUtil::getInstance().CUSTOM_ITEM_ARRAY;
+    private: static inline const std::vector<ABCustomItem*> ITEMS = CustomItemUtil::getInstance()->CUSTOM_ITEM_ARRAY;
 
-    private: const CommonSeps commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps = CommonSeps::getInstance();
 
-    private: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
+    private: BasicColor* basicColor = BasicColorFactory::getInstance()->WHITE;
 
-    private: std::vector<BasicGameResources> resources;
+    private: std::vector<BasicGameResources*> resources;
 
-protected: UnitItemArrayFactory(std::vector<BasicGameResources> resources){
+protected: UnitItemArrayFactory(std::vector<BasicGameResources*> resources){
 this->resources= resources;
     
 }
@@ -114,18 +120,18 @@ this->resources= resources;
 
                 //@Throws(Exception.constructor)
             
-    protected: ABCustomItem createFlagItem(FlagGameResources flagResources, LayerInterfaceFactoryInterface layerInterfaceFactoryInterface){
+    protected: ABCustomItem* createFlagItem(FlagGameResources* flagResources, LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface){
 
-    std::string name = flagResources.NAME;;
+    std::string name = flagResources->NAME;;
     
 
-    int32_t index = name.indexOf(this->commonSeps.SPACE);;
+    int32_t index = JavaString::indexOf(name, this->commonSeps->SPACE);;
     
 
                         if(index >= 0)
                         
                                     {
-                                    name= name.substring(index);
+                                    name= JavaString::substring(name, index);
     
 
                                     }
@@ -141,17 +147,17 @@ this->resources= resources;
 
                 //@Throws(Exception.constructor)
             
-    protected: ABCustomItem createNamedFlagItem(FlagGameResources flagResources, std::string name, LayerInterfaceFactoryInterface layerInterfaceFactoryInterface){
+    protected: ABCustomItem* createNamedFlagItem(FlagGameResources* flagResources, std::string name, LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface){
 
-    ImageCache IMAGE_CACHE = GameFeatureImageCacheFactory::getInstance();;
+    ImageCache* IMAGE_CACHE = GameFeatureImageCacheFactory::getInstance();;
     
 
-    Image image = IMAGE_CACHE::getWithKey(flagResources.RESOURCE_ICON);;
+    Image* image = IMAGE_CACHE->getWithKey(flagResources->RESOURCE_ICON);;
     
 
-    ABCustomItem item = LayerInterfaceFactoryImageItem(name, image, ImageItem::LAYOUT_DEFAULT, flagResources.NAME, this->basicColor, 
+    ABCustomItem* item = new LayerInterfaceFactoryImageItem(name, image, ImageItem::LAYOUT_DEFAULT, flagResources->NAME, this->basicColor, 
                                                 {
-                                                    RTSLayerTextAnimation(RTSGameStrings::getInstance().DRAGGABLE, image)
+                                                    new RTSLayerTextAnimation(RTSGameStrings::getInstance()->DRAGGABLE, image)
                                                 }, layerInterfaceFactoryInterface);;
     
 
@@ -165,7 +171,7 @@ this->resources= resources;
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<ABCustomItem> getItems(){
+    public: std::vector<ABCustomItem*> getItems(){
 
 
 
@@ -175,7 +181,7 @@ this->resources= resources;
 }
 
 
-    public: std::vector<BasicGameResources> getResources(){
+    public: std::vector<BasicGameResources*> getResources(){
 
 
 
@@ -185,7 +191,7 @@ this->resources= resources;
 }
 
 
-    public: int32_t indexOf(BasicGameResources basicGameResources){
+    public: int32_t indexOf(BasicGameResources* basicGameResources){
 
 
 

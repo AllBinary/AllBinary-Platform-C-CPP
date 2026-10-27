@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -67,31 +73,31 @@ this->setAvgBlue(0);
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("getAvgRed(): ");
+stringBuffer->append("getAvgRed(): ");
     
-stringBuffer.appendfloat(this->getAvgRed());
+stringBuffer->appendfloat(this->getAvgRed());
     
-stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
+stringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
     
-stringBuffer.append("getAvgRed(): ");
+stringBuffer->append("getAvgRed(): ");
     
-stringBuffer.appendfloat(this->getAvgRed());
+stringBuffer->appendfloat(this->getAvgRed());
     
-stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
+stringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
     
-stringBuffer.append("getAvgGreen(): ");
+stringBuffer->append("getAvgGreen(): ");
     
-stringBuffer.appendfloat(this->getAvgGreen());
+stringBuffer->appendfloat(this->getAvgGreen());
     
-stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
+stringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

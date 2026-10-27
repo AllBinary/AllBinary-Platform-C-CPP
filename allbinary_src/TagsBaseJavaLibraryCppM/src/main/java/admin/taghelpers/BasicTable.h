@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_BASICTABLE_H
         #define ADMIN_TAGHELPERS_BASICTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -48,13 +54,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicTableInterface.h"
+        #include "admin/taghelpers/BasicTableInterface.h"
 
 class BasicTable
             : public Object
-        : public BasicTableInterface {
+        , public BasicTableInterface {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             

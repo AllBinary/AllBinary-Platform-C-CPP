@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/business/user/commerce/money/payment/gateway/transaction/TransactionResultInterface.h>
 
       
@@ -45,11 +51,11 @@
         
 class TransactionResultEntityInterface: public BasicDataTableInterface {
 
-    TransactionResultInterface getTransactionResultInterface(std::string orderNumber)
+    public: virtual TransactionResultInterface* getTransactionResultInterface(std::string orderNumber) = 0;
 
-    void remove(std::string userName, std::string orderNumber)
+    public: virtual void remove(std::string userName, std::string orderNumber) = 0;
 
-    void add(std::string userName, std::string orderNumber, TransactionResultInterface resultInterface)
+    public: virtual void add(std::string userName, std::string orderNumber, TransactionResultInterface* resultInterface) = 0;
 
 };
 

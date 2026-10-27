@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,16 +44,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicColorFactory.h"
-#include "BasicColor.h"
+        #include "org/allbinary/graphics/color/BasicColorFactory.h"
+#include "org/allbinary/graphics/color/BasicColor.h"
 
 class ColorTemperatureUtil
             : public Object
          {
 
-    private: static ColorTemperatureUtil instance() { return ColorTemperatureUtil(); }
+    private: static ColorTemperatureUtil* instance() { static std::unique_ptr<ColorTemperatureUtil> value(new ColorTemperatureUtil()); return value.get(); }
 
-    public: static ColorTemperatureUtil getInstance(){
+    public: static ColorTemperatureUtil* getInstance(){
 
 
 
@@ -57,17 +63,17 @@ class ColorTemperatureUtil
 }
 
 
-    private: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
+    private: BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();
 
-    public: BasicColor getBasicColor(int32_t thirdTemp){
+    public: BasicColor* getBasicColor(int32_t thirdTemp){
 
-    BasicColor basicColor = this->basicColorFactory.RED;;
+    BasicColor* basicColor = this->basicColorFactory->RED;;
     
 
                         if(thirdTemp > 3700)
                         
                                     {
-                                    basicColor= this->basicColorFactory.PURPLE;
+                                    basicColor= this->basicColorFactory->PURPLE;
     
 
                                     }
@@ -76,7 +82,7 @@ class ColorTemperatureUtil
                         if(thirdTemp > 3200)
                         
                                     {
-                                    basicColor= this->basicColorFactory.BLUE;
+                                    basicColor= this->basicColorFactory->BLUE;
     
 
                                     }
@@ -85,7 +91,7 @@ class ColorTemperatureUtil
                         if(thirdTemp > 2700)
                         
                                     {
-                                    basicColor= this->basicColorFactory.PUCE;
+                                    basicColor= this->basicColorFactory->PUCE;
     
 
                                     }
@@ -94,7 +100,7 @@ class ColorTemperatureUtil
                         if(thirdTemp > 2200)
                         
                                     {
-                                    basicColor= this->basicColorFactory.WHITE;
+                                    basicColor= this->basicColorFactory->WHITE;
     
 
                                     }
@@ -103,7 +109,7 @@ class ColorTemperatureUtil
                         if(thirdTemp > 1700)
                         
                                     {
-                                    basicColor= this->basicColorFactory.GREEN;
+                                    basicColor= this->basicColorFactory->GREEN;
     
 
                                     }
@@ -112,7 +118,7 @@ class ColorTemperatureUtil
                         if(thirdTemp > 1200)
                         
                                     {
-                                    basicColor= this->basicColorFactory.YELLOW;
+                                    basicColor= this->basicColorFactory->YELLOW;
     
 
                                     }
@@ -121,7 +127,7 @@ class ColorTemperatureUtil
                         if(thirdTemp > 700)
                         
                                     {
-                                    basicColor= this->basicColorFactory.ORANGE;
+                                    basicColor= this->basicColorFactory->ORANGE;
     
 
                                     }

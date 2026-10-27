@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,15 +55,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionLaptopGameInputMapping.h"
+        #include "org/allbinary/game/input/MotionLaptopGameInputMapping.h"
 
 class PlatformInputMappingFactory
             : public Object
          {
 
-    private: static PlatformInputMappingFactory instance() { return PlatformInputMappingFactory(); }
+    private: static PlatformInputMappingFactory* instance() { static std::unique_ptr<PlatformInputMappingFactory> value(new PlatformInputMappingFactory()); return value.get(); }
 
-    public: static PlatformInputMappingFactory getInstance(){
+    public: static PlatformInputMappingFactory* getInstance(){
 
 
 
@@ -67,30 +73,30 @@ class PlatformInputMappingFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: PersistentInputMapping inputToGameKeyMapping = PersistentInputMapping::getNullInstance();
+    private: PersistentInputMapping* inputToGameKeyMapping = PersistentInputMapping::getNullInstance();
 
-    public: PersistentInputMapping getPersistentInputMappingInstance(){
+    public: PersistentInputMapping* getPersistentInputMappingInstance(){
 
         try {
             
                         if(this->inputToGameKeyMapping == PersistentInputMapping::getNullInstance())
                         
                                     {
-                                    this->inputToGameKeyMapping= MotionLaptopGameInputMapping();
+                                    this->inputToGameKeyMapping= new MotionLaptopGameInputMapping();
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
     
 }
 

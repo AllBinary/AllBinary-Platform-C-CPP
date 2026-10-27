@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_COLORRANGEINTERFACE_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_COLORRANGEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/awt.h>
 
       
@@ -42,35 +48,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Color.h"
+        #include "org/allbinary/media/image/analysis/Color.h"
 
 class ColorRangeInterface {
 
-    int32_t getMinRed();
+    public: virtual int32_t getMinRed() = 0;
 
-    void setMinRed(int32_t minRed);
+    public: virtual void setMinRed(int32_t minRed) = 0;
 
-    int32_t getMaxRed();
+    public: virtual int32_t getMaxRed() = 0;
 
-    void setMaxRed(int32_t maxRed);
+    public: virtual void setMaxRed(int32_t maxRed) = 0;
 
-    int32_t getMinGreen();
+    public: virtual int32_t getMinGreen() = 0;
 
-    void setMinGreen(int32_t minGreen);
+    public: virtual void setMinGreen(int32_t minGreen) = 0;
 
-    int32_t getMaxGreen();
+    public: virtual int32_t getMaxGreen() = 0;
 
-    void setMaxGreen(int32_t maxGreen);
+    public: virtual void setMaxGreen(int32_t maxGreen) = 0;
 
-    int32_t getMinBlue();
+    public: virtual int32_t getMinBlue() = 0;
 
-    void setMinBlue(int32_t minBlue);
+    public: virtual void setMinBlue(int32_t minBlue) = 0;
 
-    int32_t getMaxBlue();
+    public: virtual int32_t getMaxBlue() = 0;
 
-    void setMaxBlue(int32_t maxBlue);
+    public: virtual void setMaxBlue(int32_t maxBlue) = 0;
 
-    bool isInRange(Color color);
+    public: virtual bool isInRange(Color* color) = 0;
 
 };
 

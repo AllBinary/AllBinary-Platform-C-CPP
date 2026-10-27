@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -58,53 +64,53 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AngleFactory.h"
-#include "FrameUtil.h"
+        #include "org/allbinary/math/AngleFactory.h"
+#include "org/allbinary/math/FrameUtil.h"
 
 class AngleIncrementInfo
             : public Object
          {
 
-    private: static const std::string INCREMENT = "Inc: ";
+    private: static inline const std::string INCREMENT = "Inc: ";
 
     private: int16_t angleIncrement;
 
-    public: Integer DOWN_FRAME;
+    public: int32_t DOWN_FRAME;
 
-    public: Integer UP_FRAME;
+    public: int32_t UP_FRAME;
 
-    public: Integer LEFT_FRAME;
+    public: int32_t LEFT_FRAME;
 
-    public: Integer RIGHT_FRAME;
+    public: int32_t RIGHT_FRAME;
 
 public: AngleIncrementInfo(int16_t angleIncrement){
 this->angleIncrement= angleIncrement;
     
 
-    AngleFactory angleFactory = AngleFactory::getInstance();;
+    AngleFactory* angleFactory = AngleFactory::getInstance();;
     
 
-    SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
+    SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
-this->DOWN_FRAME= smallIntegerSingletonFactory.getAt(angleFactory.DOWN.getValue() /this->angleIncrement);
+this->DOWN_FRAME= smallIntegerSingletonFactory->getAt(angleFactory->DOWN.getValue() /this->angleIncrement);
     
-this->UP_FRAME= smallIntegerSingletonFactory.getAt(static_cast<int32_t>(angleFactory.UP.getValue()));
+this->UP_FRAME= smallIntegerSingletonFactory->getAt(static_cast<int32_t>(angleFactory->UP.getValue()));
     
-this->LEFT_FRAME= smallIntegerSingletonFactory.getAt(angleFactory.LEFT.getValue() /this->angleIncrement);
+this->LEFT_FRAME= smallIntegerSingletonFactory->getAt(angleFactory->LEFT.getValue() /this->angleIncrement);
     
-this->RIGHT_FRAME= smallIntegerSingletonFactory.getAt(angleFactory.RIGHT.getValue() /this->angleIncrement);
+this->RIGHT_FRAME= smallIntegerSingletonFactory->getAt(angleFactory->RIGHT.getValue() /this->angleIncrement);
     
 }
 
 
-    private: const FrameUtil frameUtil = FrameUtil::getInstance();
+    private: FrameUtil* frameUtil = FrameUtil::getInstance();
 
     public: int32_t getFrameAngle(int32_t frame){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->frameUtil.getFrameAngle(frame, static_cast<int32_t>(this->angleIncrement));;
+                        return this->frameUtil->getFrameAngle(frame, static_cast<int32_t>(this->angleIncrement));;
     
 }
 
@@ -124,14 +130,14 @@ this->RIGHT_FRAME= smallIntegerSingletonFactory.getAt(angleFactory.RIGHT.getValu
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().append(AngleIncrementInfo::INCREMENT).appendshort(this->angleIncrement).toString();;
+                        return (new StringMaker())->append(AngleIncrementInfo::INCREMENT)->appendshort(this->angleIncrement)->toString();;
     
 }
 
 
     public: int32_t getClosestGeneralDirection(int16_t angle){
 
-    Integer closestDirection = SmallIntegerSingletonFactory::getInstance().getAt(360);;
+    int32_t closestDirection = SmallIntegerSingletonFactory::getInstance()->getAt(360);;
     
 
                         if(this->UP_FRAME.intValue() -angle < closestDirection.intValue() -angle)

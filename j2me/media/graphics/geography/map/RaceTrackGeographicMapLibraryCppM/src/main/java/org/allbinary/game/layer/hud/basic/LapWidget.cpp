@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -63,9 +69,9 @@ class LapWidget: public BasicHud {
 
     private: const std::string OF_STR = " of ";
 
-    private: std::string string = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string string = StringUtil::getInstance()->EMPTY_STRING;
 
-public: LapWidget(int32_t location, int32_t direction, BasicColor basicColor) : BasicHud(location, direction, 2, basicColor){
+public: LapWidget(int32_t location, int32_t direction, BasicColor* basicColor) : BasicHud(location, direction, 2, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -79,26 +85,26 @@ this->updateMaxWidth= 40;
 }
 
 
-    public: void update(LapInfo lapInfo){
+    public: void update(LapInfo* lapInfo){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(this->LAP_STR);
+stringBuffer->append(this->LAP_STR);
     
-stringBuffer.appendint(lapInfo.getCurrentLap());
+stringBuffer->appendint(lapInfo->getCurrentLap());
     
-stringBuffer.append(this->OF_STR);
+stringBuffer->append(this->OF_STR);
     
-stringBuffer.appendint(lapInfo.getTotalLaps());
+stringBuffer->appendint(lapInfo->getTotalLaps());
     
-this->string= stringBuffer.toString();
+this->string= stringBuffer->toString();
     
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 super.paintString(graphics, this->string);
     
 }

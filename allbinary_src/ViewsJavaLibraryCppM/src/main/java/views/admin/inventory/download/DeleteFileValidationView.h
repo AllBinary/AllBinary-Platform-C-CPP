@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_INVENTORY_DOWNLOAD_DELETEFILEVALIDATIONVIEW_H
         #define VIEWS_ADMIN_INVENTORY_DOWNLOAD_DELETEFILEVALIDATIONVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -92,23 +98,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DownloadableInventoryItemView.h"
+        #include "views/admin/inventory/download/DownloadableInventoryItemView.h"
 
 class DeleteFileValidationView: public DownloadableInventoryItemView, public ValidationComponentInterface {
 
     private: std::string downloadItemId;
 
-public: DeleteFileValidationView(TransformInfoInterface transformInfoInterface);
+public: DeleteFileValidationView(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
     public: void getFormData();
 
-    public: Boolean isValid();
+    public: bool isValid();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
     public: std::string validationInfo();
 

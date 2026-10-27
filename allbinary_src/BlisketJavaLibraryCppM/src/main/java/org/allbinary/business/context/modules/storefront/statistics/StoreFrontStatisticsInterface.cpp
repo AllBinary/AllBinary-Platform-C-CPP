@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/business/context/modules/storefront/statistics/advertisements/StoreFrontAdvertisementsStatisticsInterface.h>
 
       
@@ -51,13 +57,13 @@
         
 class StoreFrontStatisticsInterface {
 
-    StoreFrontAdvertisementsStatisticsInterface getAdvertisements()
+    public: virtual StoreFrontAdvertisementsStatisticsInterface* getAdvertisements() = 0;
 
-    StoreFrontUsersStatisticsInterface getUsers()
+    public: virtual StoreFrontUsersStatisticsInterface* getUsers() = 0;
 
-    StoreFrontInventoryStatisticsInterface getInventory()
+    public: virtual StoreFrontInventoryStatisticsInterface* getInventory() = 0;
 
-    StoreFrontOrdersHistoryStatisticsInterface getOrders()
+    public: virtual StoreFrontOrdersHistoryStatisticsInterface* getOrders() = 0;
 
 };
 

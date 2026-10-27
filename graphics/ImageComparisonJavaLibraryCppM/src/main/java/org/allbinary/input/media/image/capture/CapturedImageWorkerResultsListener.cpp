@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/util/event/BasicEventListenerInterface.h>
 
       
@@ -39,11 +45,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CapturedImageWorkerResultsEvent.h"
+        #include "org/allbinary/input/media/image/capture/CapturedImageWorkerResultsEvent.h"
 
 class CapturedImageWorkerResultsListener: public BasicEventListenerInterface {
 
-    void onCaptureEvent(CapturedImageWorkerResultsEvent capturedimageworkerresultsevent)
+    public: virtual void onCaptureEvent(CapturedImageWorkerResultsEvent* capturedimageworkerresultsevent) = 0;
 
 };
 

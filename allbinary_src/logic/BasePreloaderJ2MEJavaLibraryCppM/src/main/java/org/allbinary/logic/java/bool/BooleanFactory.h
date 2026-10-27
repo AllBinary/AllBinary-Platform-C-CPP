@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_BOOL_BOOLEANFACTORY_H
         #define ORG_ALLBINARY_LOGIC_JAVA_BOOL_BOOLEANFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,13 +52,13 @@ class BooleanFactory
             : public Object
          {
 
-    private: static BooleanFactory instance() { return BooleanFactory(); }
+    private: static BooleanFactory* instance() { static std::unique_ptr<BooleanFactory> value(new BooleanFactory()); return value.get(); }
 
-    public: static BooleanFactory getInstance();
+    public: static BooleanFactory* getInstance();
 
-    public: const Boolean TRUE = true;
+    public: bool TRUE = true;
 
-    public: const Boolean FALSE = false;
+    public: bool FALSE = false;
 
     public: const std::string TRUE_STRING = this->TRUE.toString();
 

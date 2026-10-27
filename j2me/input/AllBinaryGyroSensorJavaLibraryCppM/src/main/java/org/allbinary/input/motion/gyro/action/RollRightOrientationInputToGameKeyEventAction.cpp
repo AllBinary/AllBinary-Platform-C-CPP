@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/game/input/PlatformInputMappingFactory.h>
 
       
@@ -51,14 +59,14 @@
         
 class RollRightOrientationInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static GameKeyCompleteMotionGestureInputEvent getInstance(){
+    public: static GameKeyCompleteMotionGestureInputEvent* getInstance(){
 
-                        if(RollRightOrientationInputToGameKeyEventAction::instance() == NullUtil::getInstance().NULL_OBJECT)
+                        if(RollRightOrientationInputToGameKeyEventAction::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    RollRightOrientationInputToGameKeyEventAction::instance= RollRightOrientationInputToGameKeyEventAction();
+                                    RollRightOrientationInputToGameKeyEventAction::instance= new RollRightOrientationInputToGameKeyEventAction();
     
 
                                     }
@@ -67,12 +75,12 @@ class RollRightOrientationInputToGameKeyEventAction: public GameKeyCompleteMotio
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RollRightOrientationInputToGameKeyEventAction::instance();
+                        return dynamic_cast<GameKeyCompleteMotionGestureInputEvent*>(RollRightOrientationInputToGameKeyEventAction::instance);
     
 }
 
 
-private: RollRightOrientationInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Roll Right Action", OrientationMotionGestureFactory::getInstance().ROLL_RIGHT, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping()){
+private: RollRightOrientationInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Roll Right Action", OrientationMotionGestureFactory::getInstance()->ROLL_RIGHT, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
 
                         //super/this constructor call is in the constructor initializer list.
                     

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Runtime.h"
@@ -50,21 +56,21 @@
 
     /*actual*/ public: static std::string getInfo(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Memory: Free: ");
+stringBuffer->append("Memory: Free: ");
     
-stringBuffer.append(Runtime::getRuntime().freeMemory());
+stringBuffer->append(Runtime::getRuntime()->freeMemory());
     
-stringBuffer.append(" Total: ");
+stringBuffer->append(" Total: ");
     
-stringBuffer.append(Runtime::getRuntime().totalMemory());
+stringBuffer->append(Runtime::getRuntime()->totalMemory());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -56,7 +64,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HtmlRow.h"
+        #include "org/allbinary/logic/visual/dhtml/html/table/HtmlRow.h"
 
 class HtmlTable: public HtmlTag {
 
@@ -110,7 +118,7 @@ class HtmlTable: public HtmlTag {
 
     private: std::string after;
 
-    private: BasicArrayList htmlRowsVector;
+    private: BasicArrayList* htmlRowsVector;
 
 public: HtmlTable(std::string before, std::string cellpadding, std::string cellspacing, std::string after){
 this->before= before;
@@ -121,9 +129,9 @@ this->cellspacing= cellspacing;
     
 this->after= after;
     
-this->htmlRowsVector= BasicArrayListD();
+this->htmlRowsVector= new BasicArrayListD();
     
-addAttribute(this->BORDER, CommonPhoneStrings::getInstance().ZERO);
+addAttribute(this->BORDER, CommonPhoneStrings::getInstance()->ZERO);
     
 addAttribute(this->CELLPADDING, this->cellpadding);
     
@@ -134,25 +142,25 @@ addAttribute(this->STYLE, this->BORDERCOLLAPSE);
 }
 
 
-    public: void addRow(HtmlRow htmlRow){
+    public: void addRow(HtmlRow* htmlRow){
 
-                        if(this->numberOfColumns < htmlRow.getNumberOfColumns())
-                        this->numberOfColumns= htmlRow.getNumberOfColumns();
+                        if(this->numberOfColumns < htmlRow->getNumberOfColumns())
+                        this->numberOfColumns= htmlRow->getNumberOfColumns();
                                 
-this->htmlRowsVector.add(htmlRow);
+this->htmlRowsVector->add(htmlRow);
     
 }
 
 
     public: std::string toString(){
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
 
-    std::string result = stringUtil.EMPTY_STRING;;
+    std::string result = stringUtil->EMPTY_STRING;;
     
 
-    std::vector<Object*> attributeKeys = this->otherAttributes.keySet().();;
+    std::vector<Object*> attributeKeys = this->otherAttributes.keySet()->();;
     
 result= this->before;
     
@@ -174,7 +182,7 @@ result += " ";
     std::string value = otherAttributes.get(key);;
     
 
-                        if(true && value.compare(stringUtil.EMPTY_STRING) != 0)
+                        if(true && value.compare(stringUtil->EMPTY_STRING) != 0)
                         
                                     {
                                     result += key;
@@ -193,7 +201,7 @@ result += "\" ";
 result += this->END;
     
 
-    int32_t size = this->htmlRowsVector.size();;
+    int32_t size = this->htmlRowsVector->size();;
     
 
 
@@ -202,7 +210,7 @@ result += this->END;
                         for (
     int32_t i = 0;i < size; i++)
         {
-result += this->htmlRowsVector.get(i).toString();
+result += this->htmlRowsVector->get(i)->toString();
     
 result += " ";
     

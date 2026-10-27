@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -45,9 +51,9 @@ class GeographicMapCellHistoryProgressBase
             : public Object
          {
 
-    private: static GeographicMapCellHistoryProgressBase instance() { return GeographicMapCellHistoryProgressBase(); }
+    private: static GeographicMapCellHistoryProgressBase* instance() { static std::unique_ptr<GeographicMapCellHistoryProgressBase> value(new GeographicMapCellHistoryProgressBase()); return value.get(); }
 
-    public: static GeographicMapCellHistoryProgressBase getInstance(){
+    public: static GeographicMapCellHistoryProgressBase* getInstance(){
 
 
 
@@ -65,7 +71,7 @@ public: GeographicMapCellHistoryProgressBase(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -74,7 +80,7 @@ public: GeographicMapCellHistoryProgressBase(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

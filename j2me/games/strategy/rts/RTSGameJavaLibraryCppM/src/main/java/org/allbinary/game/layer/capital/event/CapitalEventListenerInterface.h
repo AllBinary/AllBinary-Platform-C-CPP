@@ -20,6 +20,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENTLISTENERINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENTLISTENERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
@@ -43,13 +49,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CapitalEvent.h"
+        #include "org/allbinary/game/layer/capital/event/CapitalEvent.h"
 
 class CapitalEventListenerInterface: public EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    void onCapitalChangeEvent(CapitalEvent event);
+    public: virtual void onCapitalChangeEvent(CapitalEvent* event) = 0;
 
 };
 

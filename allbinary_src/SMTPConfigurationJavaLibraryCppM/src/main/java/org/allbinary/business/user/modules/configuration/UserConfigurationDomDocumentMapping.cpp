@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,16 +61,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserConfigurationInterface.h"
-#include "UserConfigurationView.h"
+        #include "org/allbinary/business/user/modules/configuration/UserConfigurationInterface.h"
+#include "org/allbinary/business/user/modules/configuration/UserConfigurationView.h"
 
 class UserConfigurationDomDocumentMapping
             : public Object
-        : public DomDocumentMappingInterface {
+        , public DomDocumentMappingInterface {
 
-    private: UserConfigurationInterface userConfigurationInterface;
+    private: UserConfigurationInterface* userConfigurationInterface;
 
-public: UserConfigurationDomDocumentMapping(UserConfigurationInterface userConfigurationInterface){
+public: UserConfigurationDomDocumentMapping(UserConfigurationInterface* userConfigurationInterface){
 this->userConfigurationInterface= userConfigurationInterface;
     
 }
@@ -72,14 +78,14 @@ this->userConfigurationInterface= userConfigurationInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Document toXmlDoc(){
+    public: Document* toXmlDoc(){
 
-    Document document = DomDocumentHelper::create();;
+    Document* document = DomDocumentHelper::create();;
     
 
-    Node node = UserConfigurationView(this->userConfigurationInterface).toXmlNode(document);;
+    Node* node = (new UserConfigurationView(this->userConfigurationInterface))->toXmlNode(document);;
     
-document.appendChild(node);
+document->appendChild(node);
     
 
 

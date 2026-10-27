@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_ROLE_STOREROLEFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_ROLE_STOREROLEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -47,29 +53,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicUserRoleFactory.h"
+        #include "org/allbinary/business/user/role/BasicUserRoleFactory.h"
 
 class StoreRoleFactory
             : public Object
          {
 
-    private: static StoreRoleFactory instance() { return StoreRoleFactory(); }
+    private: static StoreRoleFactory* instance() { static std::unique_ptr<StoreRoleFactory> value(new StoreRoleFactory()); return value.get(); }
 
-    public: static StoreRoleFactory getInstance();
+    public: static StoreRoleFactory* getInstance();
 
-    private: const BasicArrayList roles = BasicArrayListD();
+    private: BasicArrayList* roles = new BasicArrayListD();
 
-    private: const BasicArrayList subscriberRoles = BasicArrayListD();
+    private: BasicArrayList* subscriberRoles = new BasicArrayListD();
 
-    private: const BasicArrayList wholesaleRoles = BasicArrayListD();
+    private: BasicArrayList* wholesaleRoles = new BasicArrayListD();
 
 private: StoreRoleFactory();
 
-    public: BasicArrayList getRoles();
+    public: BasicArrayList* getRoles();
 
-    public: BasicArrayList getSubscriberRoles();
+    public: BasicArrayList* getSubscriberRoles();
 
-    public: BasicArrayList getWholesaleRoles();
+    public: BasicArrayList* getWholesaleRoles();
 
 };
 

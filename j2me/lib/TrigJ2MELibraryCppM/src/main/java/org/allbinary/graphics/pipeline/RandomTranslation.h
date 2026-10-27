@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PIPELINE_RANDOMTRANSLATION_H
         #define ORG_ALLBINARY_GRAPHICS_PIPELINE_RANDOMTRANSLATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,7 +55,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicGraphicsPipeline.h"
+        #include "org/allbinary/graphics/pipeline/BasicGraphicsPipeline.h"
 
 class RandomTranslation
             : public Object
@@ -57,7 +63,7 @@ class RandomTranslation
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList getInstance(BasicArrayList vector, int32_t howMuch);
+    public: static BasicArrayList* getInstance(BasicArrayList* vector, int32_t howMuch);
 
 };
 

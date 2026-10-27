@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -33,13 +39,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLGLUUtils.h"
+        #include "org/platform/opengl/OpenGLGLUUtils.h"
 
 class OpenGLTextureFactory: public PlatformTextureBaseFactory {
 
-    private: static OpenGLTextureFactory instance() { return OpenGLTextureFactory(); }
+    private: static OpenGLTextureFactory* instance() { static std::unique_ptr<OpenGLTextureFactory> value(new OpenGLTextureFactory()); return value.get(); }
 
-    public: static OpenGLTextureFactory getInstance(){
+    public: static OpenGLTextureFactory* getInstance(){
 
 
 
@@ -49,17 +55,17 @@ class OpenGLTextureFactory: public PlatformTextureBaseFactory {
 }
 
 
-    private: const OpenGLGLUUtils gluUtils = OpenGLGLUUtils::getInstance();
+    private: OpenGLGLUUtils* gluUtils = OpenGLGLUUtils::getInstance();
 
 private: OpenGLTextureFactory(){
 }
 
 
-    public: void load(GL10 gl, int32_t target, int32_t level, Image image, int32_t border, bool flip){
+    public: void load(GL10* gl, int32_t target, int32_t level, Image* image, int32_t border, bool flip){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

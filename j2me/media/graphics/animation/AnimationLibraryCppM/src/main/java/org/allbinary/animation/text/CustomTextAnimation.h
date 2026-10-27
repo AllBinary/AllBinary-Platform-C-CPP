@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTANIMATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -56,24 +62,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TextAnimation.h"
-#include "TextInterface.h"
+        #include "org/allbinary/animation/text/TextAnimation.h"
+#include "org/allbinary/animation/text/TextInterface.h"
 
 class CustomTextAnimation: public TextAnimation, public TextInterface {
 
-    protected: const FontDebugFactory fontDebugFactory = FontDebugFactory::getInstance();
+    protected: FontDebugFactory* fontDebugFactory = FontDebugFactory::getInstance();
 
     protected: int32_t fontSize;
 
-    protected: Font font;
+    protected: Font* font;
 
-    private: std::string lastText = StringUtil::getInstance().INIT_STRING;
+    private: std::string lastText = StringUtil::getInstance()->INIT_STRING;
 
     protected: bool hasChanged = true;
 
-public: CustomTextAnimation(std::string text, int32_t fontSize, AnimationBehavior animationBehavior);
+public: CustomTextAnimation(std::string text, int32_t fontSize, AnimationBehavior* animationBehavior);
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
     public: void setScale(float scaleX, float scaleY);
 

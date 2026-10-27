@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,15 +49,15 @@ class DomData
             : public Object
          {
 
-    public: static const std::string ID = "id";
+    public: static inline const std::string ID = "id";
 
-    public: static const std::string CHILD = "child";
+    public: static inline const std::string CHILD = "child";
 
-    public: static const std::string NAME = "name";
+    public: static inline const std::string NAME = "name";
 
-    public: static const std::string VALUE = "value";
+    public: static inline const std::string VALUE = "value";
 
-    public: static const std::string INDEX = "index";
+    public: static inline const std::string INDEX = "index";
 
 private: DomData(){
 }

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERPROCESSORUTIL_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERPROCESSORUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,21 +58,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Order.h"
+        #include "org/allbinary/business/user/commerce/inventory/order/Order.h"
 
 class OrderProcessorUtil
             : public Object
          {
 
-    private: static OrderProcessorUtil instance() { return OrderProcessorUtil(); }
+    private: static OrderProcessorUtil* instance() { static std::unique_ptr<OrderProcessorUtil> value(new OrderProcessorUtil()); return value.get(); }
 
-    public: static OrderProcessorUtil getInstance();
+    public: static OrderProcessorUtil* getInstance();
 
     private: const std::string ORDER_PROCESSED = "Order Processed";
 
                 //@Throws(Exception.constructor)
             
-    public: std::string process(std::string userName, Order order);
+    public: std::string process(std::string userName, Order* order);
 
 };
 

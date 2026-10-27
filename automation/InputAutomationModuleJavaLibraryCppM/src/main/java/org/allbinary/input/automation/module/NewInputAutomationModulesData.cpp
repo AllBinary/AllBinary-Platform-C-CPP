@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,7 +49,7 @@ class NewInputAutomationModulesData
             : public Object
          {
 
-    public: static std::string NAME = "NEW_INPUT_AUTOMATION_MODULES";
+    public: static inline std::string NAME = "NEW_INPUT_AUTOMATION_MODULES";
 
 private: NewInputAutomationModulesData(){
 }

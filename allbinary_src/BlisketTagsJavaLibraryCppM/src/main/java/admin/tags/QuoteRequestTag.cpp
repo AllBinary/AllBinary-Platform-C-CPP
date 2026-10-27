@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Class.h"
         
             #include "java/lang/Exception.h"
@@ -64,18 +72,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TableTag.h"
+        #include "admin/tags/TableTag.h"
 
 class QuoteRequestTag: public TableTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string storeName;
 
 public: QuoteRequestTag(){
-this->setTagHelperFactory(QuoteHelperFactory());
+this->setTagHelperFactory(new QuoteHelperFactory());
     
-this->setTagRequestHelperFactory(QuoteRequestHelperFactory());
+this->setTagRequestHelperFactory(new QuoteRequestHelperFactory());
     
 }
 
@@ -92,17 +100,17 @@ this->storeName= storeName;
 
         try {
             
-    Object* anyType = QuoteHelperFactory().getInstance(this->getPropertiesHashMap(), pageContext);;
+    Object* anyType = (new QuoteHelperFactory())->getInstance(this->getPropertiesHashMap(), pageContext);;
     
 
     Class* helperClass = anyType->getClass();;
     
 
-    Method method = helperClass.getMethod("email", 
+    Method* method = helperClass->getMethod("email", 
                             nullptr);;
     
 
-    std::string result = method.invoke(anyType, 
+    std::string result = method->invoke(anyType, 
                             nullptr);;
     
 
@@ -113,7 +121,7 @@ this->storeName= storeName;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -123,16 +131,16 @@ this->storeName= storeName;
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
     std::string error = "Failed to send QuoteRequest emails";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "sendEmail()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "sendEmail()", &e);
     
 
                                     }
@@ -144,7 +152,7 @@ this->storeName= storeName;
                         return error;
     
 }
-*/
+
 }
 
 
@@ -159,10 +167,10 @@ this->storeName= storeName;
                                 )
                         
                                     {
-                                    this->getPropertiesHashMap().put(StoreFrontData::getInstance().NAME, this->storeName);
+                                    this->getPropertiesHashMap()->put(StoreFrontData::getInstance()->NAME, this->storeName);
     
 
-                        if(this->getCommand().compareTo("EMAIL") == 0)
+                        if(this->getCommand()->compareTo("EMAIL") == 0)
                         
                                     {
                                     this->email();
@@ -197,9 +205,9 @@ this->storeName= storeName;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
-AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
     
 
 
@@ -210,9 +218,9 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 
@@ -221,7 +229,7 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
                         return SKIP_BODY;
     
 }
-*/
+
 }
 
 

@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_DROP_PLACEDLAYERFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_DROP_PLACEDLAYERFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/layer/AllBinaryLayerFactoryInterface.h>
@@ -44,11 +50,11 @@ class PlacedLayerFactory
             : public Object
          {
 
-    private: static PlacedLayerFactory instance() { return PlacedLayerFactory(); }
+    private: static PlacedLayerFactory* instance() { static std::unique_ptr<PlacedLayerFactory> value(new PlacedLayerFactory()); return value.get(); }
 
-    public: static PlacedLayerFactory getInstance();
+    public: static PlacedLayerFactory* getInstance();
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: PlacedLayerFactory();
 
@@ -56,11 +62,11 @@ private: PlacedLayerFactory();
 
     public: int32_t getSize();
 
-    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
+    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    public: AllBinaryLayerFactoryInterface getRandomInstance();
+    public: AllBinaryLayerFactoryInterface* getRandomInstance();
 
-    public: void add(AllBinaryLayerFactoryInterface layerInterfaceFactoryInterface);
+    public: void add(AllBinaryLayerFactoryInterface* layerInterfaceFactoryInterface);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,11 +42,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryPropertiesInterface.h"
+        #include "org/allbinary/business/category/properties/CategoryPropertiesInterface.h"
 
 class CategoryPropertiesFactoryInterface {
 
-    CategoryPropertiesInterface getInstance()
+    public: virtual CategoryPropertiesInterface* getInstance() = 0;
 
 };
 

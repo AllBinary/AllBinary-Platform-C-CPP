@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -74,7 +80,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DomData.h"
+        #include "org/allbinary/data/tree/dom/DomData.h"
 
 class ModDomHelper
             : public Object
@@ -82,55 +88,55 @@ class ModDomHelper
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createTextNode(Document document, std::string name, std::string text);
+    public: static Node* createTextNode(Document* document, std::string name, std::string text);
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createValueNode(Document document, std::string text);
+    public: static Node* createValueNode(Document* document, std::string text);
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createNameNode(Document document, std::string text);
+    public: static Node* createNameNode(Document* document, std::string text);
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createIndexNode(Document document, int32_t index);
+    public: static Node* createIndexNode(Document* document, int32_t index);
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createNameValueNodes(Document document, std::string elementName, std::string nameText, std::string valueText);
+    public: static Node* createNameValueNodes(Document* document, std::string elementName, std::string nameText, std::string valueText);
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createNameValueNodes(Document document, std::string elementNameAndNameText, std::string valueText);
+    public: static Node* createNameValueNodes(Document* document, std::string elementNameAndNameText, std::string valueText);
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createNameValueIndexNodes(Document document, std::string elementNameAndNameText, int32_t index, std::string valueText);
+    public: static Node* createNameValueIndexNodes(Document* document, std::string elementNameAndNameText, int32_t index, std::string valueText);
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createNameValueNodes(Document document, std::string rootNode, HashMap<Object*, Object*> hashMap);
+    public: static Node* createNameValueNodes(Document* document, std::string rootNode, HashMap<Object*, Object*>* hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createNameValueNodes(Document document, Node node, HashMap<Object*, Object*> hashMap);
+    public: static Node* createNameValueNodes(Document* document, Node* node, HashMap<Object*, Object*>* hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createNameValueNodes(Document document, std::string rootNodeName, std::string duplicateNodeName, BasicArrayList valueVector);
+    public: static Node* createNameValueNodes(Document* document, std::string rootNodeName, std::string duplicateNodeName, BasicArrayList* valueVector);
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createNameValueIndexNodes(Document document, std::string rootNodeName, std::string duplicateNodeName, BasicArrayList valueVector);
+    public: static Node* createNameValueIndexNodes(Document* document, std::string rootNodeName, std::string duplicateNodeName, BasicArrayList* valueVector);
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createNodeWithValueNodes(Document document, std::string rootNode, HashMap<Object*, Object*> hashMap);
+    public: static Node* createNodeWithValueNodes(Document* document, std::string rootNode, HashMap<Object*, Object*>* hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createNodeWithValueNodes(Document document, Node node, HashMap<Object*, Object*> hashMap);
+    public: static Node* createNodeWithValueNodes(Document* document, Node* node, HashMap<Object*, Object*>* hashMap);
 
 private: ModDomHelper();
 

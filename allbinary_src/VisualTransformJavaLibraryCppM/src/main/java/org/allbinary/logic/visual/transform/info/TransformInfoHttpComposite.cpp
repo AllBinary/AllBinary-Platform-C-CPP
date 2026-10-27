@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,37 +61,37 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoHttpInterface.h"
-#include "TransformInfoInterface.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpInterface.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
 
 class TransformInfoHttpComposite
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: TransformInfoHttpInterface transformInfoInterface;
+    private: TransformInfoHttpInterface* transformInfoInterface;
 
-public: TransformInfoHttpComposite(TransformInfoInterface transformInfoInterface){
+public: TransformInfoHttpComposite(TransformInfoInterface* transformInfoInterface){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("View Name: " +transformInfoInterface.getName(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("View Name: " +transformInfoInterface->getName(), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
                                 
-this->transformInfoInterface= transformInfoInterface;
+this->transformInfoInterface= dynamic_cast<TransformInfoHttpInterface*>(transformInfoInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface getTransformInfoInterface(){
+    public: TransformInfoInterface* getTransformInfoInterface(){
 
 
 
@@ -95,32 +101,32 @@ this->transformInfoInterface= transformInfoInterface;
 }
 
 
-    public: WeblisketSession getWeblisketSession(){
+    public: WeblisketSession* getWeblisketSession(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WeblisketSession(this->getPropertiesHashMap(), this->getPageContext());
+                        return new WeblisketSession(this->getPropertiesHashMap(), this->getPageContext());
     
 }
 
 
-    public: PageContext getPageContext(){
+    public: PageContext* getPageContext(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->transformInfoInterface.getPageContext();;
+                        return this->transformInfoInterface->getPageContext();;
     
 }
 
 
-    public: HashMap<Object*, Object*> getPropertiesHashMap(){
+    public: HashMap<Object*, Object*>* getPropertiesHashMap(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->transformInfoInterface.getPropertiesHashMap();;
+                        return this->transformInfoInterface->getPropertiesHashMap();;
     
 }
 

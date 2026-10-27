@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_AFFILIATE_AFFILIATEUSER_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_AFFILIATE_AFFILIATEUSER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -56,17 +62,17 @@
         
 class AffiliateUser: public User {
 
-    private: AffiliateSales affiliateSales;
+    private: AffiliateSales* affiliateSales;
 
 public: AffiliateUser();
 
-public: AffiliateUser(HashMap<Object*, Object*> userHashMap);
+public: AffiliateUser(HashMap<Object*, Object*>* userHashMap);
 
-    public: void validateSession(WeblisketSessionInterface weblisketSession);
+    public: void validateSession(WeblisketSessionInterface* weblisketSession);
 
-    public: void updateSession(WeblisketSessionInterface weblisketSession);
+    public: void updateSession(WeblisketSessionInterface* weblisketSession);
 
-    public: Boolean isSessionValid();
+    public: bool isSessionValid();
 
 };
 

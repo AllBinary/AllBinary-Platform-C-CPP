@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/layer/RTSInterface.h>
@@ -41,11 +47,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UnitTechnologySingletonFactory.h"
+        #include "org/allbinary/game/rts/technology/UnitTechnologySingletonFactory.h"
 
 class HealthTechnology
             : public Object
-        : public RTSInterface {
+        , public RTSInterface {
 
     private: int32_t level= 0;
 
@@ -172,9 +178,9 @@ this->maxLevel= maxLevel;
 this->level++;
     
 
-    UnitTechnologySingletonFactory unitTechnologySingletonFactory = UnitTechnologySingletonFactory::getInstance();;
+    UnitTechnologySingletonFactory* unitTechnologySingletonFactory = UnitTechnologySingletonFactory::getInstance();;
     
-unitTechnologySingletonFactory.setHealth(unitTechnologySingletonFactory.getHealth() +(this->getLevel() *100));
+unitTechnologySingletonFactory->setHealth(unitTechnologySingletonFactory->getHealth() +(this->getLevel() *100));
     
 }
 

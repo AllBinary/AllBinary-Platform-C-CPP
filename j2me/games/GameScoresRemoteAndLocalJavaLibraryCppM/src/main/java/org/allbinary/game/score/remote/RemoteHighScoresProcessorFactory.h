@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESPROCESSORFACTORY_H
         #define ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESPROCESSORFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,16 +47,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RemoteHighScoresProcessor.h"
-#include "RemoteHighScoresProcessorInterface.h"
+        #include "org/allbinary/game/score/remote/RemoteHighScoresProcessor.h"
+#include "org/allbinary/game/score/remote/RemoteHighScoresProcessorInterface.h"
 
 class RemoteHighScoresProcessorFactory
             : public Object
          {
 
-    private: static const RemoteHighScoresProcessorInterface SINGLETON = RemoteHighScoresProcessor();
+    private: static inline RemoteHighScoresProcessorInterface* SINGLETON = new RemoteHighScoresProcessor();
 
-    public: static RemoteHighScoresProcessorInterface getInstance();
+    public: static RemoteHighScoresProcessorInterface* getInstance();
 
 };
 

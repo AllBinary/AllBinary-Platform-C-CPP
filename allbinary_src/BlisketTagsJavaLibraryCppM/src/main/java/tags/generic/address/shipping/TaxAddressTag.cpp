@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
@@ -69,7 +75,7 @@ public: TaxAddressTag(){
                         
                                     {
                                     
-                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
                         
                                     {
                                     this->setName("Basic Shipping Address View");
@@ -80,7 +86,7 @@ this->setObjectFile("views.generic.address.shipping.TaxValidationView");
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.NEW) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.NEW) == 0)
                         
                                     {
                                     this->setName("Basic Shipping Address View");
@@ -91,7 +97,7 @@ this->setObjectFile("views.generic.address.shipping.NewValidationView");
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(this->commonStrings.INSERT) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings.INSERT) == 0)
                         
                                     {
                                     this->setName("Basic Shipping Address View");
@@ -102,7 +108,7 @@ this->setObjectFile("views.generic.address.shipping.AddTaxValidationView");
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(this->commonStrings.UPDATE) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings.UPDATE) == 0)
                         
                                     {
                                     this->setName("Basic Shipping Address View");
@@ -116,7 +122,7 @@ this->setObjectFile("views.generic.address.shipping.UpdateTaxValidationView");
                             
 
 
-                            throw Exception("No Such View Command: " +this->getCommand());
+                            throw new Exception("No Such View Command: " +this->getCommand());
                     
 
                         }
@@ -133,13 +139,13 @@ this->setObjectFile("views.generic.address.shipping.UpdateTaxValidationView");
 
 
 
-                            throw Exception("Command Null");
+                            throw new Exception("Command Null");
                     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
-AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
     
 
 
@@ -150,9 +156,9 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 
@@ -161,7 +167,7 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
                         return SKIP_BODY;
     
 }
-*/
+
 }
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -51,23 +57,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PreGameScrollSelectionForm.h"
+        #include "org/allbinary/game/displayable/canvas/PreGameScrollSelectionForm.h"
 
 class PreGameSelectorPaintable: public InitUpdatePaintable {
 
     private: std::string title;
 
-    private: CanvasDrawLineString canvasDrawLineString;
+    private: CanvasDrawLineString* canvasDrawLineString;
 
-    private: PreGameScrollSelectionForm preGameScrollSelectionForm;
+    private: PreGameScrollSelectionForm* preGameScrollSelectionForm;
 
-public: PreGameSelectorPaintable(std::string title, PreGameScrollSelectionForm preGameScrollSelectionForm){
+public: PreGameSelectorPaintable(std::string title, PreGameScrollSelectionForm* preGameScrollSelectionForm){
 this->title= title;
     
 
-    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
+    DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
-this->canvasDrawLineString= CanvasDrawLineString(displayInfo.getLastHalfWidth(), 0);
+this->canvasDrawLineString= new CanvasDrawLineString(displayInfo->getLastHalfWidth(), 0);
     
 this->preGameScrollSelectionForm= preGameScrollSelectionForm;
     
@@ -76,24 +82,24 @@ this->preGameScrollSelectionForm= preGameScrollSelectionForm;
 
     public: void update(){
 
-    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
+    DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
-this->canvasDrawLineString= CanvasDrawLineString(displayInfo.getLastHalfWidth(), 0);
-    
-}
-
-
-    public: void paint(Graphics graphics){
-graphics.setColor(BasicColorFactory::getInstance().WHITE.intValue());
-    
-this->canvasDrawLineString.paint(graphics, title, 0);
-    
-this->getPreGameSelectionForm().paint(graphics);
+this->canvasDrawLineString= new CanvasDrawLineString(displayInfo->getLastHalfWidth(), 0);
     
 }
 
 
-    public: PreGameScrollSelectionForm getPreGameSelectionForm(){
+    public: void paint(Graphics* graphics){
+graphics->setColor(BasicColorFactory::getInstance()->WHITE.intValue());
+    
+this->canvasDrawLineString->paint(graphics, title, 0);
+    
+this->getPreGameSelectionForm()->paint(graphics);
+    
+}
+
+
+    public: PreGameScrollSelectionForm* getPreGameSelectionForm(){
 
 
 

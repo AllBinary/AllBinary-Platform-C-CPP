@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_CONTEXT_MODULE_STOREFRONTS_STOREFRONTSENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_CONTEXT_MODULE_STOREFRONTS_STOREFRONTSENTITYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,21 +55,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreFrontsEntity.h"
+        #include "org/allbinary/data/tables/context/module/storefronts/StoreFrontsEntity.h"
 
 class StoreFrontsEntityFactory
             : public Object
          {
 
-    private: static StoreFrontsEntityFactory instance() { return StoreFrontsEntityFactory(); }
+    private: static StoreFrontsEntityFactory* instance() { static std::unique_ptr<StoreFrontsEntityFactory> value(new StoreFrontsEntityFactory()); return value.get(); }
 
-    public: static StoreFrontsEntityFactory getInstance();
+    public: static StoreFrontsEntityFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: StoreFrontsEntityFactory();
 
-    public: StoreFrontsEntity getStoreFrontsEntityInstance();
+    public: StoreFrontsEntity* getStoreFrontsEntityInstance();
 
 };
 

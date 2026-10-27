@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_PHYSICS_FRICTIONPROPERTIES_H
         #define ORG_ALLBINARY_GAME_PHYSICS_FRICTIONPROPERTIES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/physics/friction/FrictionData.h>
@@ -57,7 +63,7 @@ class FrictionProperties
 
 public: FrictionProperties();
 
-    public: void friction(VelocityProperties velocityProperties, int32_t nominator);
+    public: void friction(VelocityProperties* velocityProperties, int32_t nominator);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Integer.h"
         
 
@@ -38,21 +44,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HtmlLengthInput.h"
-#include "HtmlInputData.h"
+        #include "org/allbinary/logic/visual/dhtml/html/input/HtmlLengthInput.h"
+#include "org/allbinary/logic/visual/dhtml/html/input/HtmlInputData.h"
 
 class HtmlTextInput: public HtmlLengthInput {
 
-public: HtmlTextInput(std::string before, std::string name, std::string value, std::string after) : HtmlLengthInput(before, HtmlInputData::getInstance().TEXT, name, value, after){
+public: HtmlTextInput(std::string before, std::string name, std::string value, std::string after) : HtmlLengthInput(before, HtmlInputData::getInstance()->TEXT, name, value, after){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-setSize(Integer(19));
+setSize(int32_t(19));
     
-setMaxLength(Integer(60));
+setMaxLength(int32_t(60));
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_BASICVELOCITYPROPERTIES_H
         #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_BASICVELOCITYPROPERTIES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/direction/Direction.h>
@@ -71,49 +77,49 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicVelocityInterface.h"
+        #include "org/allbinary/game/physics/velocity/BasicVelocityInterface.h"
 
 class BasicVelocityProperties
             : public Object
-        : public BasicVelocityInterface {
+        , public BasicVelocityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: BasicDecimal velocityXBasicDecimal;
+    protected: BasicDecimal* velocityXBasicDecimal;
 
-    protected: BasicDecimal velocityYBasicDecimal;
+    protected: BasicDecimal* velocityYBasicDecimal;
 
-    protected: BasicDecimal velocityZBasicDecimal;
+    protected: BasicDecimal* velocityZBasicDecimal;
 
-    private: const AxisMathVectorUtil axisMathVectorUtil = AxisMathVectorUtil::getInstance();
+    private: AxisMathVectorUtil* axisMathVectorUtil = AxisMathVectorUtil::getInstance();
 
 public: BasicVelocityProperties();
 
     public: void zero();
 
-    public: BasicDecimal getVelocityXBasicDecimalP();
+    public: BasicDecimal* getVelocityXBasicDecimalP();
 
-    public: BasicDecimal getVelocityYBasicDecimalP();
+    public: BasicDecimal* getVelocityYBasicDecimalP();
 
-    public: BasicDecimal getVelocityZBasicDecimalP();
+    public: BasicDecimal* getVelocityZBasicDecimalP();
 
-    protected: const DirectionUtil directionUtil = DirectionUtil::getInstance();
+    protected: DirectionUtil* directionUtil = DirectionUtil::getInstance();
 
-    public: void setVelocityWithBigDecimalAndDirection(BasicDecimal magnitudeBasicDecimal, Direction direction, Direction otherDirection);
+    public: void setVelocityWithBigDecimalAndDirection(BasicDecimal* magnitudeBasicDecimal, Direction* direction, Direction* otherDirection);
 
-    public: void setVelocityWithDirection(int64_t magnitude, Direction direction, Direction otherDirection);
+    public: void setVelocityWithDirection(int64_t magnitude, Direction* direction, Direction* otherDirection);
 
-    public: void addVelocityWithBigDecimalAndDirection(BasicDecimal magnitudeBasicDecimal, Direction direction, Direction otherDirection);
+    public: void addVelocityWithBigDecimalAndDirection(BasicDecimal* magnitudeBasicDecimal, Direction* direction, Direction* otherDirection);
 
-    public: void addVelocityWithDirection(int64_t magnitude, Direction direction, Direction otherDirection);
+    public: void addVelocityWithDirection(int64_t magnitude, Direction* direction, Direction* otherDirection);
 
-    public: void setVelocityWithBigDecimal(BasicDecimal magnitudeBasicDecimal, Angle angle, Angle otherAngle);
+    public: void setVelocityWithBigDecimal(BasicDecimal* magnitudeBasicDecimal, Angle* angle, Angle* otherAngle);
 
-    public: void addVelocityWithBigDecimal(BasicDecimal magnitudeBasicDecimal, Angle angle, Angle otherAngle);
+    public: void addVelocityWithBigDecimal(BasicDecimal* magnitudeBasicDecimal, Angle* angle, Angle* otherAngle);
 
-    public: void setVelocity(int64_t magnitude, Angle angle, Angle otherAngle);
+    public: void setVelocity(int64_t magnitude, Angle* angle, Angle* otherAngle);
 
-    public: void addVelocity(int64_t magnitude, Angle angle, Angle otherAngle);
+    public: void addVelocity(int64_t magnitude, Angle* angle, Angle* otherAngle);
 
     public: void setVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle);
 

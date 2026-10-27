@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_OVERRIDESTORETRANSFORMINFOOBJECTCONFIG_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_OVERRIDESTORETRANSFORMINFOOBJECTCONFIG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
@@ -50,19 +56,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GenericStoreTransformInfoObjectConfig.h"
+        #include "org/allbinary/logic/visual/transform/info/objectConfig/GenericStoreTransformInfoObjectConfig.h"
 
 class OverrideStoreTransformInfoObjectConfig: public GenericStoreTransformInfoObjectConfig {
 
-public: OverrideStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface);
+public: OverrideStoreTransformInfoObjectConfig(Object* abeClientInformation, Object* transformInfoInterface);
 
-public: OverrideStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, Object document);
+public: OverrideStoreTransformInfoObjectConfig(Object* abeClientInformation, Object* transformInfoInterface, Object* document);
 
-public: OverrideStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, std::string name, std::string type);
+public: OverrideStoreTransformInfoObjectConfig(Object* abeClientInformation, Object* transformInfoInterface, std::string name, std::string type);
 
                 //@Throws(Exception.constructor)
             
-    protected: Document generate(Document objectConfigDocument);
+    protected: Document* generate(Document* objectConfigDocument);
 
 };
 

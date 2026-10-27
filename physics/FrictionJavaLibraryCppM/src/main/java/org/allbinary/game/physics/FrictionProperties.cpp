@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/physics/friction/FrictionData.h>
@@ -56,7 +62,7 @@ public: FrictionProperties(){
 }
 
 
-    public: void friction(VelocityProperties velocityProperties, int32_t nominator){
+    public: void friction(VelocityProperties* velocityProperties, int32_t nominator){
 DragVelocityBehavior::instance.reduce(velocityProperties, nominator, FrictionData::getFrictionDenominator());
     
 }

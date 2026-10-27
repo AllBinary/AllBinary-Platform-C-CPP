@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -82,15 +88,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ModifyTable.h"
+        #include "admin/taghelpers/ModifyTable.h"
 
 class BasicGroupItemsRequestHelper: public ModifyTable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
     private: std::string id;
 
@@ -118,8 +124,8 @@ class BasicGroupItemsRequestHelper: public ModifyTable {
 
     private: std::string lastModified;
 
-public: BasicGroupItemsRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
-this->request= pageContext.getRequest();
+public: BasicGroupItemsRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
     
 this->getFormData();
     
@@ -127,68 +133,68 @@ this->getFormData();
 
 
     public: void getFormData(){
-this->id= this->request.getParameter(basicItemData.ID);
+this->id= this->request->getParameter(basicItemData->ID);
     
-this->itemOne= this->request.getParameter(BasicGroupItemData::ITEM_ONE);
+this->itemOne= this->request->getParameter(BasicGroupItemData::ITEM_ONE);
     
-this->itemTwo= this->request.getParameter(BasicGroupItemData::ITEM_TWO);
+this->itemTwo= this->request->getParameter(BasicGroupItemData::ITEM_TWO);
     
-this->itemThree= this->request.getParameter(BasicGroupItemData::ITEM_THREE);
+this->itemThree= this->request->getParameter(BasicGroupItemData::ITEM_THREE);
     
-this->itemFour= this->request.getParameter(BasicGroupItemData::ITEM_FOUR);
+this->itemFour= this->request->getParameter(BasicGroupItemData::ITEM_FOUR);
     
-this->itemFive= this->request.getParameter(BasicGroupItemData::ITEM_FIVE);
+this->itemFive= this->request->getParameter(BasicGroupItemData::ITEM_FIVE);
     
-this->itemSix= this->request.getParameter(BasicGroupItemData::ITEM_SIX);
+this->itemSix= this->request->getParameter(BasicGroupItemData::ITEM_SIX);
     
-this->itemSeven= this->request.getParameter(BasicGroupItemData::ITEM_SEVEN);
+this->itemSeven= this->request->getParameter(BasicGroupItemData::ITEM_SEVEN);
     
-this->itemEight= this->request.getParameter(BasicGroupItemData::ITEM_EIGHT);
+this->itemEight= this->request->getParameter(BasicGroupItemData::ITEM_EIGHT);
     
-this->itemNine= this->request.getParameter(BasicGroupItemData::ITEM_NINE);
+this->itemNine= this->request->getParameter(BasicGroupItemData::ITEM_NINE);
     
-this->itemTen= this->request.getParameter(BasicGroupItemData::ITEM_TEN);
+this->itemTen= this->request->getParameter(BasicGroupItemData::ITEM_TEN);
     
-this->timeEntered= this->request.getParameter(EntryData::getInstance().TIMECREATED);
+this->timeEntered= this->request->getParameter(EntryData::getInstance()->TIMECREATED);
     
-this->lastModified= this->request.getParameter(EntryData::getInstance().LASTMODIFIED);
+this->lastModified= this->request->getParameter(EntryData::getInstance()->LASTMODIFIED);
     
 }
 
 
-    private: HashMap<Object*, Object*> getHashMap(){
+    private: HashMap<Object*, Object*>* getHashMap(){
 
-    HashMap<Object*, Object*> values = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* values = StdUtil::getInstance()->createHashMap();;
     
-values.put(basicItemData.ID, id);
+values->put(basicItemData->ID, id);
     
-values.put(BasicGroupItemData::ITEM_ONE, this->itemOne);
+values->put(BasicGroupItemData::ITEM_ONE, this->itemOne);
     
-values.put(BasicGroupItemData::ITEM_TWO, this->itemTwo);
+values->put(BasicGroupItemData::ITEM_TWO, this->itemTwo);
     
-values.put(BasicGroupItemData::ITEM_THREE, this->itemThree);
+values->put(BasicGroupItemData::ITEM_THREE, this->itemThree);
     
-values.put(BasicGroupItemData::ITEM_FOUR, this->itemFour);
+values->put(BasicGroupItemData::ITEM_FOUR, this->itemFour);
     
-values.put(BasicGroupItemData::ITEM_FIVE, this->itemFive);
+values->put(BasicGroupItemData::ITEM_FIVE, this->itemFive);
     
-values.put(BasicGroupItemData::ITEM_SIX, this->itemSix);
+values->put(BasicGroupItemData::ITEM_SIX, this->itemSix);
     
-values.put(BasicGroupItemData::ITEM_SEVEN, this->itemSeven);
+values->put(BasicGroupItemData::ITEM_SEVEN, this->itemSeven);
     
-values.put(BasicGroupItemData::ITEM_EIGHT, this->itemEight);
+values->put(BasicGroupItemData::ITEM_EIGHT, this->itemEight);
     
-values.put(BasicGroupItemData::ITEM_NINE, this->itemNine);
+values->put(BasicGroupItemData::ITEM_NINE, this->itemNine);
     
-values.put(BasicGroupItemData::ITEM_TEN, this->itemTen);
-    
-
-    Calendar calendar = Calendar::getInstance();;
+values->put(BasicGroupItemData::ITEM_TEN, this->itemTen);
     
 
-    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    Calendar* calendar = Calendar::getInstance();;
     
-values.put(EntryData::getInstance().LASTMODIFIED, time);
+
+    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
+    
+values->put(EntryData::getInstance()->LASTMODIFIED, time);
     
 
 
@@ -203,50 +209,50 @@ values.put(EntryData::getInstance().LASTMODIFIED, time);
 
         try {
             
-    Calendar calendar = Calendar::getInstance();;
+    Calendar* calendar = Calendar::getInstance();;
     
 
-    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
     
 
-    BasicArrayList values = BasicArrayListD();;
+    BasicArrayList* values = new BasicArrayListD();;
     
-values.add(this->id);
+values->add(this->id);
     
-values.add(this->itemOne);
+values->add(this->itemOne);
     
-values.add(this->itemTwo);
+values->add(this->itemTwo);
     
-values.add(this->itemThree);
+values->add(this->itemThree);
     
-values.add(this->itemFour);
+values->add(this->itemFour);
     
-values.add(this->itemFive);
+values->add(this->itemFive);
     
-values.add(this->itemSix);
+values->add(this->itemSix);
     
-values.add(this->itemSeven);
+values->add(this->itemSeven);
     
-values.add(this->itemEight);
+values->add(this->itemEight);
     
-values.add(this->itemNine);
+values->add(this->itemNine);
     
-values.add(this->itemTen);
+values->add(this->itemTen);
     
-values.add(time);
+values->add(time);
     
-values.add(time);
+values->add(time);
     
-BasicGroupItemsEntityFactory::getInstance().getBasicGroupItemsEntityInstance().insert(values);
+BasicGroupItemsEntityFactory::getInstance()->getBasicGroupItemsEntityInstance()->insert(values);
     
 
     std::string success = "Successfully inserted " +this->id +" into items table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "insert()");
+                                    this->logUtil->putF(success, this, "insert()");
     
 
                                     }
@@ -259,16 +265,16 @@ BasicGroupItemsEntityFactory::getInstance().getBasicGroupItemsEntityInstance().i
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to insert " +this->id +" into items table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "inserts()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "inserts()", &e);
     
 
                                     }
@@ -287,16 +293,16 @@ BasicGroupItemsEntityFactory::getInstance().getBasicGroupItemsEntityInstance().i
     public: std::string delete_(){
 
         try {
-            BasicGroupItemsEntityFactory::getInstance().getBasicGroupItemsEntityInstance().delete(this->id);
+            BasicGroupItemsEntityFactory::getInstance()->getBasicGroupItemsEntityInstance()->delete(this->id);
     
 
     std::string success = "Successfully deleted";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "delete()");
+                                    this->logUtil->putF(success, this, "delete()");
     
 
                                     }
@@ -309,16 +315,16 @@ BasicGroupItemsEntityFactory::getInstance().getBasicGroupItemsEntityInstance().i
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to delete";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "delete()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "delete()", &e);
     
 
                                     }
@@ -341,15 +347,15 @@ BasicGroupItemsEntityFactory::getInstance().getBasicGroupItemsEntityInstance().i
     std::string success = "Update Pricing Successful";;
     
 
-    HashMap<Object*, Object*> values = this->getHashMap();;
+    HashMap<Object*, Object*>* values = this->getHashMap();;
     
-BasicGroupItemsEntityFactory::getInstance().getBasicGroupItemsEntityInstance().update(values);
+BasicGroupItemsEntityFactory::getInstance()->getBasicGroupItemsEntityInstance()->update(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(StringMaker().append(this->id).append(CommonSeps::getInstance().SPACE).append(success).toString(), this, "update()");
+                                    this->logUtil->putF((new StringMaker())->append(this->id)->append(CommonSeps::getInstance()->SPACE)->append(success)->toString(), this, "update()");
     
 
                                     }
@@ -362,16 +368,16 @@ BasicGroupItemsEntityFactory::getInstance().getBasicGroupItemsEntityInstance().u
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to update: " +this->id;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "update()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "update()", &e);
     
 
                                     }

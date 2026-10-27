@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -51,7 +57,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnimationFrameToImageUtil.h"
+        #include "org/allbinary/image/AnimationFrameToImageUtil.h"
 
 class IndexedAnimationToImageArrayUtil
             : public Object
@@ -59,7 +65,7 @@ class IndexedAnimationToImageArrayUtil
 
                 //@Throws(Exception.constructor)
             
-    public: static std::vector<Image> getInstance(int32_t width, int32_t height, IndexedAnimation sequentialAnimationInterface);
+    public: static std::vector<Image*> getInstance(int32_t width, int32_t height, IndexedAnimation* sequentialAnimationInterface);
 
 };
 

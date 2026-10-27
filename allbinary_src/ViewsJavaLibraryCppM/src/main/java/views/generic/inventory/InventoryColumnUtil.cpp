@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -64,9 +70,9 @@ class InventoryColumnUtil
             : public Object
          {
 
-    private: static InventoryColumnUtil instance() { return InventoryColumnUtil(); }
+    private: static InventoryColumnUtil* instance() { static std::unique_ptr<InventoryColumnUtil> value(new InventoryColumnUtil()); return value.get(); }
 
-    public: static InventoryColumnUtil getInstance(){
+    public: static InventoryColumnUtil* getInstance(){
 
 
 
@@ -76,21 +82,21 @@ class InventoryColumnUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
-    public: BasicArrayList getColumnWhereLike(InventoryEntity inventoryEntity, std::string category, std::string column){
-this->logUtil.putF("Start Category: " +category, this, "getKeywords");
+    public: BasicArrayList* getColumnWhereLike(InventoryEntity* inventoryEntity, std::string category, std::string column){
+this->logUtil->putF("Start Category: " +category, this, "getKeywords");
     
 
-    BasicArrayList keywords = BasicArrayListD();;
+    BasicArrayList* keywords = new BasicArrayListD();;
     
 
-    BasicArrayList vectorOfHashMaps = inventoryEntity.getAllRows();;
+    BasicArrayList* vectorOfHashMaps = inventoryEntity->getAllRows();;
     
 
-    int32_t size = vectorOfHashMaps.size();;
+    int32_t size = vectorOfHashMaps->size();;
     
 
 
@@ -100,16 +106,16 @@ this->logUtil.putF("Start Category: " +category, this, "getKeywords");
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<Object*, Object*> hashMap = vectorOfHashMaps.get(index);;
+    HashMap<Object*, Object*>* hashMap = dynamic_cast<HashMap*>(vectorOfHashMaps->get(index));;
     
 
-    std::string categoryName = hashMap.get(basicItemData.CATEGORY);;
+    std::string categoryName = hashMap->get(basicItemData->CATEGORY);;
     
 
-                        if(!StringValidationUtil::getInstance().isEmpty(categoryName) && categoryName.startsWith(category))
+                        if(!StringValidationUtil::getInstance()->isEmpty(categoryName) && JavaString::startsWith(categoryName, category))
                         
                                     {
-                                    keywords.add(hashMap.get(column));
+                                    keywords->add(hashMap->get(column));
     
 
                                     }

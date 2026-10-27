@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_PERMISSIONS_PERMISSIONITEMSENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_PERMISSIONS_PERMISSIONITEMSENTITYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,19 +55,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PermissionItemsEntity.h"
+        #include "org/allbinary/data/tables/user/commerce/inventory/item/permissions/PermissionItemsEntity.h"
 
 class PermissionItemsEntityFactory
             : public Object
          {
 
-    private: static PermissionItemsEntityFactory instance() { return PermissionItemsEntityFactory(); }
+    private: static PermissionItemsEntityFactory* instance() { static std::unique_ptr<PermissionItemsEntityFactory> value(new PermissionItemsEntityFactory()); return value.get(); }
 
-    public: static PermissionItemsEntityFactory getInstance();
+    public: static PermissionItemsEntityFactory* getInstance();
 
-    public: static PermissionItemsEntity getPermissionItemsEntityInstance();
+    public: static PermissionItemsEntity* getPermissionItemsEntityInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: PermissionItemsEntityFactory();
 

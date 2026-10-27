@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -53,7 +59,7 @@
         
 class OverlayPaintable: public InitUpdatePaintable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: OverlayPaintable(){
 }
@@ -64,19 +70,19 @@ public: OverlayPaintable(){
         try {
             
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.UPDATE, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->UPDATE, &e);
     
 }
 
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 }
 
 

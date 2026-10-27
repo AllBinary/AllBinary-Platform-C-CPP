@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -90,16 +96,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Layer.h"
-#include "LayerInterface.h"
+        #include "org/allbinary/layer/Layer.h"
+#include "org/allbinary/layer/LayerInterface.h"
 
 class AllBinaryLayer: public Layer, public LayerInterface {
 
-    public: static const AllBinaryLayer NULL_ALLBINARY_LAYER = AllBinaryLayer(StringUtil::getInstance().EMPTY_STRING, RectangleFactory::SINGLETON, ViewPositionBase::NULL_VIEW_POSITION);
+    public: static AllBinaryLayer* NULL_ALLBINARY_LAYER() { static std::unique_ptr<AllBinaryLayer> value(new AllBinaryLayer(StringUtil::getInstance()->EMPTY_STRING, RectangleFactory::SINGLETON, ViewPositionBase::NULL_VIEW_POSITION)); return value.get(); }
 
-    private: static const std::string TYPE = "Type: ";
+    private: static inline const std::string TYPE = "Type: ";
 
-    protected: const ViewPositionEvent viewPositionEvent = ViewPositionEvent(this);
+    protected: ViewPositionEvent* viewPositionEvent = new ViewPositionEvent(this);
 
     private: int32_t halfWidth= 0;
 
@@ -107,15 +113,15 @@ class AllBinaryLayer: public Layer, public LayerInterface {
 
     private: std::string name;
 
-    private: ViewPositionBase viewPosition = ViewPositionBase::NULL_VIEW_POSITION;
+    private: ViewPositionBase* viewPosition = ViewPositionBase::NULL_VIEW_POSITION;
 
-public: AllBinaryLayer(std::string name, Rectangle rectangle, ViewPositionBase viewPosition);
+public: AllBinaryLayer(std::string name, Rectangle* rectangle, ViewPositionBase* viewPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: void onChangeEvent(ViewPositionEvent layerManagerEvent);
+    public: void onChangeEvent(ViewPositionEvent* layerManagerEvent);
 
-    public: void paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics* graphics);
 
     public: int32_t getX2();
 
@@ -135,11 +141,11 @@ public: AllBinaryLayer(std::string name, Rectangle rectangle, ViewPositionBase v
 
     public: int32_t getHalfDepth();
 
-    public: ViewPositionBase getViewPosition();
+    public: ViewPositionBase* getViewPosition();
 
-    public: void setViewPosition(ViewPositionBase viewPosition);
+    public: void setViewPosition(ViewPositionBase* viewPosition);
 
-    public: std::vector<Group> getGroupInterface();
+    public: std::vector<Group*> getGroupInterface();
 
     public: bool implmentsTickableInterface();
 
@@ -155,7 +161,7 @@ public: AllBinaryLayer(std::string name, Rectangle rectangle, ViewPositionBase v
 
     public: int32_t getMultiPlayerType();
 
-    public: void toStringAppend(StringMaker stringBuffer);
+    public: void toStringAppend(StringMaker* stringBuffer);
 
     public: std::string toString();
 

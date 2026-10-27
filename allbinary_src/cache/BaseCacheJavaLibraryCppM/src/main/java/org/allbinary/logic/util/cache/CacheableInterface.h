@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEABLEINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEABLEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -48,7 +56,7 @@
         
 class CacheableInterface {
 
-    Object* getKey();
+    public: virtual Object* getKey() = 0;
 
 };
 

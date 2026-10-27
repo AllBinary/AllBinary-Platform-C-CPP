@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERICSTORETRANSFORMINFOOBJECTCONFIG_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERICSTORETRANSFORMINFOOBJECTCONFIG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -98,36 +104,36 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoObjectConfig.h"
-#include "TransformInfoObjectConfigData.h"
+        #include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfig.h"
+#include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigData.h"
 
 class GenericStoreTransformInfoObjectConfig: public TransformInfoObjectConfig {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: AbeClientInformationInterface abeClientInformation;
+    protected: AbeClientInformationInterface* abeClientInformation;
 
-public: GenericStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface);
+public: GenericStoreTransformInfoObjectConfig(Object* abeClientInformation, Object* transformInfoInterface);
 
-public: GenericStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, Object document);
+public: GenericStoreTransformInfoObjectConfig(Object* abeClientInformation, Object* transformInfoInterface, Object* document);
 
-public: GenericStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, std::string name, std::string type);
-
-                //@Throws(Exception.constructor)
-            
-    protected: Document generate(Document objectConfigDocument);
+public: GenericStoreTransformInfoObjectConfig(Object* abeClientInformation, Object* transformInfoInterface, std::string name, std::string type);
 
                 //@Throws(Exception.constructor)
             
-    private: HashMap<Object*, Object*> createReplaceHashMap(TransformInfoHttp transformInfoHttpStoreInterface, std::string objectConfigDocumentString);
+    protected: Document* generate(Document* objectConfigDocument);
 
                 //@Throws(Exception.constructor)
             
-    private: HashMap<Object*, Object*> createHashMap(TransformInfoHttp transformInfoHttpStoreInterface, std::string objectConfigDocumentString);
+    private: HashMap<Object*, Object*>* createReplaceHashMap(TransformInfoHttp* transformInfoHttpStoreInterface, std::string objectConfigDocumentString);
 
                 //@Throws(Exception.constructor)
             
-    private: Document generate(std::string objectConfigDocumentString, HashMap<Object*, Object*> hashMap);
+    private: HashMap<Object*, Object*>* createHashMap(TransformInfoHttp* transformInfoHttpStoreInterface, std::string objectConfigDocumentString);
+
+                //@Throws(Exception.constructor)
+            
+    private: Document* generate(std::string objectConfigDocumentString, HashMap<Object*, Object*>* hashMap);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -38,15 +44,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameState.h"
+        #include "org/allbinary/game/state/GameState.h"
 
 class GameStateCompositeInterface {
 
                 //@Throws(Exception.constructor)
             
-    void setGameState(GameState gameState)
+    public: virtual void setGameState(GameState* gameState) = 0;
 
-    GameState getGameState()
+    public: virtual GameState* getGameState() = 0;
 
 };
 

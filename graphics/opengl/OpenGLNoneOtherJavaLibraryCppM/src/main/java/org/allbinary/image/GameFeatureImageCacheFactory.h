@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_IMAGE_GAMEFEATUREIMAGECACHEFACTORY_H
         #define ORG_ALLBINARY_IMAGE_GAMEFEATUREIMAGECACHEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,14 +47,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageCacheFactory.h"
-#include "ImageCache.h"
+        #include "org/allbinary/image/ImageCacheFactory.h"
+#include "org/allbinary/image/ImageCache.h"
 
 class GameFeatureImageCacheFactory
             : public Object
          {
 
-    public: static ImageCache getInstance();
+    public: static ImageCache* getInstance();
 
     public: static void init();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/AllBinaryLayer.h>
@@ -47,12 +53,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TickableLayerManager.h"
-#include "TickableInterface.h"
+        #include "org/allbinary/game/tick/TickableLayerManager.h"
+#include "org/allbinary/game/tick/TickableInterface.h"
 
 class TickableLayerProcessor: public LayerProcessor {
 
-public: TickableLayerProcessor() : LayerProcessor(TickableLayerManager()){
+public: TickableLayerProcessor() : LayerProcessor(new TickableLayerManager()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -64,18 +70,18 @@ public: TickableLayerProcessor() : LayerProcessor(TickableLayerManager()){
 
                 //@Throws(Exception.constructor)
             
-    public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
+    public: void processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index){
 
-    TickableInterface tickableInterface = layerInterface;;
+    TickableInterface* tickableInterface = dynamic_cast<TickableInterface*>(layerInterface);;
     
-tickableInterface.processTick(allBinaryLayerManager);
+tickableInterface->processTick(allBinaryLayerManager);
     
 }
 
 
-    public: bool isProcessorLayer(AllBinaryLayer layerInterface){
+    public: bool isProcessorLayer(AllBinaryLayer* layerInterface){
 
-                        if(layerInterface.implmentsTickableInterface())
+                        if(layerInterface->implmentsTickableInterface())
                         
                                     {
                                     

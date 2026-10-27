@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_TICK_TICKABLELAYERPROCESSOR_H
         #define ORG_ALLBINARY_GAME_TICK_TICKABLELAYERPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/AllBinaryLayer.h>
@@ -50,8 +56,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TickableLayerManager.h"
-#include "TickableInterface.h"
+        #include "org/allbinary/game/tick/TickableLayerManager.h"
+#include "org/allbinary/game/tick/TickableInterface.h"
 
 class TickableLayerProcessor: public LayerProcessor {
 
@@ -59,9 +65,9 @@ public: TickableLayerProcessor();
 
                 //@Throws(Exception.constructor)
             
-    public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index);
+    public: void processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index);
 
-    public: bool isProcessorLayer(AllBinaryLayer layerInterface);
+    public: bool isProcessorLayer(AllBinaryLayer* layerInterface);
 
 };
 

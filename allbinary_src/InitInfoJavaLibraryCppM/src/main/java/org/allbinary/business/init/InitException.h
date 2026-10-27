@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_INITEXCEPTION_H
         #define ORG_ALLBINARY_BUSINESS_INIT_INITEXCEPTION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 

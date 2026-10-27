@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONTFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONTFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,13 +61,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreFront.h"
+        #include "org/allbinary/business/context/modules/storefront/StoreFront.h"
 
 class StoreFrontFactory
             : public Object
          {
 
-    public: static StoreFront getInstance(std::string storeName);
+    public: static StoreFront* getInstance(std::string storeName);
 
 private: StoreFrontFactory();
 

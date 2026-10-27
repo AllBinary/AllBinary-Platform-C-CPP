@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
@@ -58,35 +64,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Input.h"
+        #include "org/allbinary/game/input/Input.h"
 
 class InputFactory
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static InputFactory getInstance();
+    public: static InputFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     public: const std::string KEY_CODE_LABEL = "KeyCode: ";
 
     public: const std::string DEVICE_ID_LABEL = "DeviceId: ";
 
-    public: const int32_t MAX = SmallIntegerSingletonFactory::getInstance().getMin();
+    public: const int32_t MAX = SmallIntegerSingletonFactory::getInstance()->getMin();
 
-    protected: const std::vector<Input> inputIntegerArray = std::vector<Input>(this->MAX);
+    protected: const std::vector<Input*> inputIntegerArray = std::vector<Input*>(this->MAX);
 
-    public: const Input NO_INPUT = Input(0, this->commonStrings.UNKNOWN);
+    public: Input* NO_INPUT = new Input(0, this->commonStrings->UNKNOWN);
 
 private: InputFactory();
 
-    public: void add(int32_t id, Input input);
+    public: void add(int32_t id, Input* input);
 
-    public: Input getInstanceById(int32_t id);
+    public: Input* getInstanceById(int32_t id);
 
 };
 

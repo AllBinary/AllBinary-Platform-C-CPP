@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_OPTIONS_XMLOPTIONITEMSENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_OPTIONS_XMLOPTIONITEMSENTITY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -71,19 +77,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "XmlOptionItemsEntityInterface.h"
+        #include "org/allbinary/data/tables/user/commerce/inventory/item/options/XmlOptionItemsEntityInterface.h"
 
 class XmlOptionItemsEntity: public AbSqlBean, public XmlOptionItemsEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
     protected: const std::string tableName = "xmloptionitems";
 
 public: XmlOptionItemsEntity();
 
-    public: void insert(BasicArrayList values);
+    public: void insert(BasicArrayList* values);
 
     public: void delete_(std::string value);
 
@@ -91,7 +97,7 @@ public: XmlOptionItemsEntity();
 
     public: std::string createTable();
 
-    public: void update(HashMap<Object*, Object*> updatedValues);
+    public: void update(HashMap<Object*, Object*>* updatedValues);
 
     public: std::string dropTable();
 

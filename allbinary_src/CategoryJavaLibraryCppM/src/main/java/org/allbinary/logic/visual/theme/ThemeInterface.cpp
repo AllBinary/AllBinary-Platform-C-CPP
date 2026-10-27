@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/data/tables/TableMappingInterface.h>
 
       
@@ -42,13 +48,13 @@
         
 class ThemeInterface: public TableMappingInterface {
 
-    std::string getName()
+    public: virtual std::string getName() = 0;
 
-    std::string getPath()
+    public: virtual std::string getPath() = 0;
 
-    std::string getPreviewImageName()
+    public: virtual std::string getPreviewImageName() = 0;
 
-    std::string getPreviewImagePath()
+    public: virtual std::string getPreviewImagePath() = 0;
 
 };
 

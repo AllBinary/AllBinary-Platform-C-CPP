@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABTEXTFIELDITEM_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABTEXTFIELDITEM_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -40,13 +46,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ABTextItem.h"
+        #include "org/allbinary/graphics/form/item/ABTextItem.h"
 
 class ABTextFieldItem: public ABTextItem {
 
-    private: Font font;
+    private: Font* font;
 
-public: ABTextFieldItem(Canvas canvas, Visitor visitor, std::string label, std::string value, int32_t maxSize, int32_t layout, std::string altText, Font font, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: ABTextFieldItem(Canvas* canvas, Visitor* visitor, std::string label, std::string value, int32_t maxSize, int32_t layout, std::string altText, Font* font, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
     public: std::string getLabel();
 
@@ -60,9 +66,9 @@ public: ABTextFieldItem(Canvas canvas, Visitor visitor, std::string label, std::
 
     public: int32_t getFontHeight();
 
-    public: void setBackgroundBasicColorP(BasicColor basicColor);
+    public: void setBackgroundBasicColorP(BasicColor* basicColor);
 
-    public: void setForegroundBasicColorP(BasicColor basicColor);
+    public: void setForegroundBasicColorP(BasicColor* basicColor);
 
 };
 

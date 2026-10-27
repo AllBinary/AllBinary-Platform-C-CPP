@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/awt/Dimension.h>
@@ -69,13 +75,13 @@ class DisplaysUtil
             : public Object
          {
 
-    public: static DisplaysUtil getInstance();
+    public: static DisplaysUtil* getInstance();
 
-    private: static DisplaysUtil instance() { return DisplaysUtil(); }
+    private: static DisplaysUtil* instance() { static std::unique_ptr<DisplaysUtil> value(new DisplaysUtil()); return value.get(); }
 
-    public: Rectangle getPrimaryScreenSize();
+    public: Rectangle* getPrimaryScreenSize();
 
-    public: std::vector<Rectangle> getScreenSizesAsRectangleArray();
+    public: std::vector<Rectangle*> getScreenSizesAsRectangleArray();
 
 };
 

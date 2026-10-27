@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GLOBALS_FREEBLISKET_PATH_GLOBALS_H
         #define ORG_ALLBINARY_GLOBALS_FREEBLISKET_PATH_GLOBALS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/io/path/AbPathData.h>
@@ -52,23 +58,23 @@ class FREEBLISKET_PATH_GLOBALS
             : public Object
          {
 
-    private: static FREEBLISKET_PATH_GLOBALS instance() { return FREEBLISKET_PATH_GLOBALS(); }
+    private: static FREEBLISKET_PATH_GLOBALS* instance() { static std::unique_ptr<FREEBLISKET_PATH_GLOBALS> value(new FREEBLISKET_PATH_GLOBALS()); return value.get(); }
 
-    public: static FREEBLISKET_PATH_GLOBALS getInstance();
+    public: static FREEBLISKET_PATH_GLOBALS* getInstance();
 
     public: std::string INSTALLPATH;
 
     public: std::string XSLPATH;
 
-    public: const std::string TEMPLATEPATH = "template" +AbPathData::getInstance().SEPARATOR;
+    public: const std::string TEMPLATEPATH = "template" +AbPathData::getInstance()->SEPARATOR;
 
-    public: const std::string STYLEPATH = this->TEMPLATEPATH +"style" +AbPathData::getInstance().SEPARATOR;
+    public: const std::string STYLEPATH = this->TEMPLATEPATH +"style" +AbPathData::getInstance()->SEPARATOR;
 
-    public: const std::string THEMEPATH = this->STYLEPATH +"theme" +AbPathData::getInstance().SEPARATOR;
+    public: const std::string THEMEPATH = this->STYLEPATH +"theme" +AbPathData::getInstance()->SEPARATOR;
 
-    public: const std::string DBINITPATH = PATH_GLOBALS::getInstance().INIT_PATH +"db" +AbPathData::getInstance().SEPARATOR;
+    public: const std::string DBINITPATH = PATH_GLOBALS::getInstance()->INIT_PATH +"db" +AbPathData::getInstance()->SEPARATOR;
 
-    public: const std::string LINEDATAPATH = PATH_GLOBALS::getInstance().INIT_PATH +"lineData" +AbPathData::getInstance().SEPARATOR;
+    public: const std::string LINEDATAPATH = PATH_GLOBALS::getInstance()->INIT_PATH +"lineData" +AbPathData::getInstance()->SEPARATOR;
 
     public: std::string CONFIGURATIONPATH;
 

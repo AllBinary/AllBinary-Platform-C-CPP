@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_BASICPROFILEACTIONSCRIPTCONDITION_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_BASICPROFILEACTIONSCRIPTCONDITION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -106,70 +112,70 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProfileActionScriptConditionInterface.h"
-#include "GenericProfileActionScriptConditionData.h"
-#include "ProfileActionScriptConditionFactory.h"
-#include "JMenu.h"
-#include "JMenuItem.h"
-#include "TimeIntervalActionScriptCondition.h"
-#include "AlwaysActionScriptCondition.h"
-#include "ColorAtActionScriptCondition.h"
+        #include "org/allbinary/input/automation/actions/script/condition/ProfileActionScriptConditionInterface.h"
+#include "org/allbinary/input/automation/actions/script/condition/GenericProfileActionScriptConditionData.h"
+#include "org/allbinary/input/automation/actions/script/condition/ProfileActionScriptConditionFactory.h"
+#include "org/allbinary/input/automation/actions/script/condition/JMenu.h"
+#include "org/allbinary/input/automation/actions/script/condition/JMenuItem.h"
+#include "org/allbinary/input/automation/actions/script/condition/TimeIntervalActionScriptCondition.h"
+#include "org/allbinary/input/automation/actions/script/condition/AlwaysActionScriptCondition.h"
+#include "org/allbinary/input/automation/actions/script/condition/ColorAtActionScriptCondition.h"
 
 class BasicProfileActionScriptCondition: public ProfileActionScriptItem, public ProfileActionScriptConditionInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: BasicArrayList profileActionProcessorInterfaceVector;
+    private: BasicArrayList* profileActionProcessorInterfaceVector;
 
-    private: BasicArrayList profileActionConditionInterfaceVector;
+    private: BasicArrayList* profileActionConditionInterfaceVector;
 
-public: BasicProfileActionScriptCondition(std::string label, Node node);
+public: BasicProfileActionScriptCondition(std::string label, Node* node);
 
                 //@Throws(Exception.constructor)
             
-    public: void addProcessorNodes(Node node);
+    public: void addProcessorNodes(Node* node);
 
 public: BasicProfileActionScriptCondition(std::string label);
 
     private: void init();
 
-    private: JMenu getConditionJPopupMenu();
+    private: JMenu* getConditionJPopupMenu();
 
-    private: JMenu getInputJPopupMenu();
+    private: JMenu* getInputJPopupMenu();
 
-    private: JMenu getOutputJPopupMenu();
+    private: JMenu* getOutputJPopupMenu();
 
-    public: void addProcessor(ProfileActionScriptProcessorInterface profileActionProcessorInterface);
+    public: void addProcessor(ProfileActionScriptProcessorInterface* profileActionProcessorInterface);
 
-    public: void removeProcessor(ProfileActionScriptProcessorInterface profileActionProcessorInterface);
+    public: void removeProcessor(ProfileActionScriptProcessorInterface* profileActionProcessorInterface);
 
-    public: void removeCondition(ProfileActionScriptNodeInterface profileActionScriptNodeInterface);
+    public: void removeCondition(ProfileActionScriptNodeInterface* profileActionScriptNodeInterface);
 
-    public: void addCondition(ProfileActionScriptNodeInterface profileActionScriptNodeInterface);
+    public: void addCondition(ProfileActionScriptNodeInterface* profileActionScriptNodeInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
-    public: BasicArrayList getProfileActionConditionInterfaceVector();
+    public: BasicArrayList* getProfileActionConditionInterfaceVector();
 
-    public: void setProfileActionConditionInterfaceVector(BasicArrayList profileActionConditionInterfaceVector);
+    public: void setProfileActionConditionInterfaceVector(BasicArrayList* profileActionConditionInterfaceVector);
 
-    public: void actionPerformed(ActionEvent actionEvent);
+    public: void actionPerformed(ActionEvent* actionEvent);
 
-    public: BasicArrayList getProfileActionProcessorInterfaceVector();
+    public: BasicArrayList* getProfileActionProcessorInterfaceVector();
 
-    public: void setProfileActionProcessorInterfaceVector(BasicArrayList profileActionProcessorInterfaceVector);
+    public: void setProfileActionProcessorInterfaceVector(BasicArrayList* profileActionProcessorInterfaceVector);
 
     private: void updateTree();
 
                 //@Throws(Exception.constructor)
             
-    public: bool shouldProcess(Long frame);
+    public: bool shouldProcess(int64_t frame);
 
                 //@Throws(Exception.constructor)
             
-    public: void process(Long frame);
+    public: void process(int64_t frame);
 
 };
 

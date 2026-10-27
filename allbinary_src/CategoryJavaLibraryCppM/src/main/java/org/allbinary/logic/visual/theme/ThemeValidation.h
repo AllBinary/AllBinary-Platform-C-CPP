@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMEVALIDATION_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMEVALIDATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -139,36 +145,36 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ThemeInterface.h"
-#include "ThemeData.h"
+        #include "org/allbinary/logic/visual/theme/ThemeInterface.h"
+#include "org/allbinary/logic/visual/theme/ThemeData.h"
 
 class ThemeValidation
             : public Object
-        : public ThemeInterface, public ValidationInterface, public DomNodeInterface, public CompositeTransformInfoInterface {
+        , public ThemeInterface, public ValidationInterface, public DomNodeInterface, public CompositeTransformInfoInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: TransformInfoInterface transformInfoInterface;
+    private: TransformInfoInterface* transformInfoInterface;
 
-    private: ValidationInterface styleValidationInterface;
+    private: ValidationInterface* styleValidationInterface;
 
     private: std::string themeName;
 
     private: std::string themePreviewImageName;
 
-    private: AbPath webAppAbPath;
+    private: AbPath* webAppAbPath;
 
-    private: AbPath categoryAbPath;
+    private: AbPath* categoryAbPath;
 
-    private: AbPath fileAbPath;
+    private: AbPath* fileAbPath;
 
-public: ThemeValidation(TransformInfoInterface transformInfoInterface, CssStyleValidation cssStyleValidation, std::string categoryThemePath);
+public: ThemeValidation(TransformInfoInterface* transformInfoInterface, CssStyleValidation* cssStyleValidation, std::string categoryThemePath);
 
-public: ThemeValidation(TransformInfoInterface transformInfoInterface, HashMap<Object*, Object*> hashMap);
+public: ThemeValidation(TransformInfoInterface* transformInfoInterface, HashMap<Object*, Object*>* hashMap);
 
-public: ThemeValidation(StoreThemeCategoryInterface storeThemeCategoryInterface, Node node);
+public: ThemeValidation(StoreThemeCategoryInterface* storeThemeCategoryInterface, Node* node);
 
                 //@Throws(Exception.constructor)
             
@@ -176,11 +182,11 @@ public: ThemeValidation(StoreThemeCategoryInterface storeThemeCategoryInterface,
 
                 //@Throws(Exception.constructor)
             
-    private: void init(StoreThemeCategoryInterface storeThemeCategoryInterface);
+    private: void init(StoreThemeCategoryInterface* storeThemeCategoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface getTransformInfoInterface();
+    public: TransformInfoInterface* getTransformInfoInterface();
 
     public: std::string getName();
 
@@ -192,25 +198,25 @@ public: ThemeValidation(StoreThemeCategoryInterface storeThemeCategoryInterface,
 
                 //@Throws(Exception.constructor)
             
-    public: CssStyleValidation getCssStyleValidation();
+    public: CssStyleValidation* getCssStyleValidation();
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string validationInfo();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
     public: Object* getKey();
 
-    public: BasicArrayList toVector();
+    public: BasicArrayList* toVector();
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

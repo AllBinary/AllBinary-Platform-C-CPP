@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLTYPE_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLTYPE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,17 +47,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CacheType.h"
+        #include "org/allbinary/logic/util/cache/CacheType.h"
 
 class PoolType
             : public Object
          {
 
-    private: CacheType cacheType;
+    private: CacheType* cacheType;
 
-public: PoolType(CacheType cacheType);
+public: PoolType(CacheType* cacheType);
 
-    public: CacheType getCacheType();
+    public: CacheType* getCacheType();
 
     public: std::string toString();
 

@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASRUNNABLEINTERFACE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASRUNNABLEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/CommandListener.h>
@@ -62,43 +70,43 @@
         
 class GameCanvasRunnableInterface: public RunnableInterface, public PaintableInterface, public ItemStateListener, public GameStateCompositeInterface {
 
-    std::string getTitle();
+    public: virtual std::string getTitle() = 0;
 
-    bool isInitialized();
+    public: virtual bool isInitialized() = 0;
 
-    bool isPaused();
+    public: virtual bool isPaused() = 0;
 
-    void unPause();
+    public: virtual void unPause() = 0;
 
-    void pause();
+    public: virtual void pause() = 0;
 
-    bool isHighScoreSubmitted();
-
-                //@Throws(Exception.constructor)
-            
-    void setHighScoreSubmitted(bool highScoreSubmitted);
+    public: virtual bool isHighScoreSubmitted() = 0;
 
                 //@Throws(Exception.constructor)
             
-    void processGameOver();
-
-    bool isGameOver();
-
-    void initCommands(CommandListener cmdListener);
+    public: virtual void setHighScoreSubmitted(bool highScoreSubmitted) = 0;
 
                 //@Throws(Exception.constructor)
             
-    ABHashtable<Object*, Object*> getCurrentStateHashtable();
+    public: virtual void processGameOver() = 0;
+
+    public: virtual bool isGameOver() = 0;
+
+    public: virtual void initCommands(CommandListener* cmdListener) = 0;
 
                 //@Throws(Exception.constructor)
             
-    ABHashtable<Object*, Object*> getLoadStateHashtable();
+    public: virtual ABHashtable<Object*, Object*>* getCurrentStateHashtable() = 0;
 
                 //@Throws(Exception.constructor)
             
-    void setLoadStateHashtable(ABHashtable<Object*, Object*> hashtable);
+    public: virtual ABHashtable<Object*, Object*>* getLoadStateHashtable() = 0;
 
-    int32_t getType();
+                //@Throws(Exception.constructor)
+            
+    public: virtual void setLoadStateHashtable(ABHashtable<Object*, Object*>* hashtable) = 0;
+
+    public: virtual int32_t getType() = 0;
 
 };
 

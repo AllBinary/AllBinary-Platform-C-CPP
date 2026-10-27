@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/NullCanvas.h>
@@ -62,11 +68,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicMenuInputProcessor.h"
+        #include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
 
 class DemoCanvasBasicStartInputProcessor: public BasicMenuInputProcessor {
 
-public: DemoCanvasBasicStartInputProcessor(BasicArrayList gameKeyEventList, RunnableCanvas gameCanvas) : BasicMenuInputProcessor(gameKeyEventList,  -1, gameCanvas){
+public: DemoCanvasBasicStartInputProcessor(BasicArrayList* gameKeyEventList, RunnableCanvas* gameCanvas) : BasicMenuInputProcessor(gameKeyEventList,  -1, gameCanvas){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -80,13 +86,13 @@ public: DemoCanvasBasicStartInputProcessor(BasicArrayList gameKeyEventList, Runn
             
     public: int32_t processInputList(){
 
-    BasicArrayList list = this->getGameKeyEventList();;
+    BasicArrayList* list = this->getGameKeyEventList();;
     
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
-    GameKeyEvent gameKeyEvent;;
+    GameKeyEvent* gameKeyEvent;;
     
 
 
@@ -95,13 +101,13 @@ public: DemoCanvasBasicStartInputProcessor(BasicArrayList gameKeyEventList, Runn
                         for (
     int32_t index = 0;index < size; index++)
         {
-gameKeyEvent= list.objectArray[index];
+gameKeyEvent= dynamic_cast<GameKeyEvent*>(list->objectArray[index]);
     
-this->logUtil.putF(StringMaker().append("Start GameKey: ").append(StringUtil::getInstance().toString(gameKeyEvent)).toString(), this, GameInputStrings::getInstance().PROCESS_INPUT);
+this->logUtil.putF((new StringMaker())->append("Start GameKey: ")->append(StringUtil::getInstance()->toString(gameKeyEvent))->toString(), this, GameInputStrings::getInstance()->PROCESS_INPUT);
     
 }
 
-this->getCanvas().getCustomCommandListener().commandAction(GameCommandsFactory::getInstance().START_COMMAND, NullCanvas::NULL_CANVAS);
+this->getCanvas()->getCustomCommandListener()->commandAction(GameCommandsFactory::getInstance()->START_COMMAND, NullCanvas::NULL_CANVAS);
     
 
 

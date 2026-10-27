@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOXINDEXEDANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOXINDEXEDANIMATIONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -76,16 +82,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CustomTextBox2.h"
-#include "CustomTextBoxIndexedAnimation.h"
+        #include "org/allbinary/animation/text/CustomTextBox2.h"
+#include "org/allbinary/animation/text/CustomTextBoxIndexedAnimation.h"
 
 class CustomTextBoxIndexedAnimationFactory
             : public Object
-        : public AnimationInterfaceFactoryInterface {
+        , public AnimationInterfaceFactoryInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: ScaleProperties scaleProperties;
+    public: ScaleProperties* scaleProperties;
 
     private: int32_t maxLength;
 
@@ -93,9 +99,9 @@ public: CustomTextBoxIndexedAnimationFactory(int32_t fontSize, int32_t maxLength
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId);
+    public: Animation* getInstance(int32_t instanceId);
 
-    public: void setInitialScale(ScaleProperties scaleProperties);
+    public: void setInitialScale(ScaleProperties* scaleProperties);
 
 };
 

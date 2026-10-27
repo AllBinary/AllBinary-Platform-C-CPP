@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -61,24 +67,24 @@ class CircularIndexUtil
             : public Object
          {
 
-    public: static const CircularIndexUtil NULL_CIRCULAR_INDEX_UTIL = CircularIndexUtil(0, 0);
+    public: static CircularIndexUtil* NULL_CIRCULAR_INDEX_UTIL() { static std::unique_ptr<CircularIndexUtil> value(new CircularIndexUtil(0, 0)); return value.get(); }
 
-    public: static CircularIndexUtil createInstance(int32_t max){
+    public: static CircularIndexUtil* createInstance(int32_t max){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CircularIndexUtil(0, max);
+                        return new CircularIndexUtil(0, max);
     
 }
 
 
-    public: static CircularIndexUtil createInstanceAt(int32_t index, int32_t max){
+    public: static CircularIndexUtil* createInstanceAt(int32_t index, int32_t max){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CircularIndexUtil(index, max);
+                        return new CircularIndexUtil(index, max);
     
 }
 
@@ -201,7 +207,7 @@ this->index= 0;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().append(CommonLabels::getInstance().INDEX_LABEL).appendint(this->index).append("lastIndex: ").appendint(this->lastIndex).append("size: ").appendint(this->size).toString();;
+                        return (new StringMaker())->append(CommonLabels::getInstance()->INDEX_LABEL)->appendint(this->index)->append("lastIndex: ")->appendint(this->lastIndex)->append("size: ")->appendint(this->size)->toString();;
     
 }
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/SelectionHudPaintable.h>
@@ -64,12 +70,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeologicalResourceInfoHudPaintableSingleton.h"
-#include "GeologicalResourceInfoHudPaintable.h"
+        #include "org/allbinary/game/layer/geological/resources/GeologicalResourceInfoHudPaintableSingleton.h"
+#include "org/allbinary/game/layer/geological/resources/GeologicalResourceInfoHudPaintable.h"
 
 class ResourceWaypointLayer: public WaypointLayer {
 
-public: ResourceWaypointLayer(RemoteInfo remoteInfo, PathFindingLayerInterface parentLayer, std::vector<Group> groupInterface, std::string rootName, std::string name, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y) : WaypointLayer(remoteInfo, parentLayer, groupInterface, rootName, name, animationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y){
+public: ResourceWaypointLayer(RemoteInfo* remoteInfo, PathFindingLayerInterface* parentLayer, std::vector<Group*> groupInterface, std::string rootName, std::string name, AnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface* proceduralAnimationInterfaceFactoryInterface, Rectangle* rectangle, int32_t x, int32_t y) : WaypointLayer(remoteInfo, parentLayer, groupInterface, rootName, name, animationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -79,13 +85,13 @@ public: ResourceWaypointLayer(RemoteInfo remoteInfo, PathFindingLayerInterface p
 }
 
 
-    public: SelectionHudPaintable createHudPaintable(){
+    public: SelectionHudPaintable* createHudPaintable(){
 
-    GeologicalResourceInfoHudPaintable rtsLayerHudPaintable = GeologicalResourceInfoHudPaintableSingleton::getInstance();;
+    GeologicalResourceInfoHudPaintable* rtsLayerHudPaintable = GeologicalResourceInfoHudPaintableSingleton::getInstance();;
     
-rtsLayerHudPaintable.setBasicColorP(this->allBinaryGameLayerManagerP.getForegroundBasicColor());
+rtsLayerHudPaintable->setBasicColorP(this->allBinaryGameLayerManagerP.getForegroundBasicColor());
     
-rtsLayerHudPaintable.setRtsLayer(this);
+rtsLayerHudPaintable->setRtsLayer(this);
     
 
 
@@ -96,9 +102,9 @@ rtsLayerHudPaintable.setRtsLayer(this);
 }
 
 
-    public: SelectionHudPaintable getHudPaintable(){
+    public: SelectionHudPaintable* getHudPaintable(){
 
-    GeologicalResourceInfoHudPaintable rtsLayerHudPaintable = GeologicalResourceInfoHudPaintableSingleton::getInstance();;
+    GeologicalResourceInfoHudPaintable* rtsLayerHudPaintable = GeologicalResourceInfoHudPaintableSingleton::getInstance();;
     
 
 

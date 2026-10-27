@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/media/graphics/geography/map/MultiGeographicMapBehavior.h>
@@ -82,49 +88,49 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TopViewCharacterBehavior.h"
+        #include "org/allbinary/game/behavior/topview/TopViewCharacterBehavior.h"
 
 class NonPlayerTopViewCharacterBehavior: public TopViewCharacterBehavior {
 
-    private: const MultiGeographicMapBehavior geographicMapBehavior = MultiGeographicMapBehavior();
+    private: MultiGeographicMapBehavior* geographicMapBehavior = new MultiGeographicMapBehavior();
 
-    private: const BasicTerrainInfo CLIFF = BasicTerrainInfo(AngleFactory::getInstance().DOWN);
+    private: BasicTerrainInfo* CLIFF = new BasicTerrainInfo(AngleFactory::getInstance()->DOWN);
 
                 //@Throws(Exception.constructor)
             
-    public: void terrainEvent(AllBinaryLayer layer, Direction direction, int32_t x, int32_t y, std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, GeographicMapCellPosition geographicMapCellPosition){
+    public: void terrainEvent(AllBinaryLayer* layer, Direction* direction, int32_t x, int32_t y, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, GeographicMapCellPosition* geographicMapCellPosition){
 
-    int32_t maxColumns = geographicMapInterfaceArray[0].getAllBinaryTiledLayer().getColumns();;
+    int32_t maxColumns = geographicMapInterfaceArray[0].getAllBinaryTiledLayer()->getColumns();;
     
 
-                        if(geographicMapCellPosition.getColumn() > 0 && geographicMapCellPosition.getColumn() < maxColumns)
+                        if(geographicMapCellPosition->getColumn() > 0 && geographicMapCellPosition->getColumn() < maxColumns)
                         
                                     {
                                     
-    GeographicMapCellPosition nextTerrainGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;;
+    GeographicMapCellPosition* nextTerrainGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;;
     
 
-    BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory = geographicMapInterfaceArray[0].getGeographicMapCellPositionFactory();;
+    BasicGeographicMapCellPositionFactory* geographicMapCellPositionFactory = geographicMapInterfaceArray[0].getGeographicMapCellPositionFactory();;
     
 
-                        if(direction == DirectionFactory::getInstance().LEFT)
+                        if(direction == DirectionFactory::getInstance()->LEFT)
                         
                                     {
-                                    nextTerrainGeographicMapCellPosition= geographicMapCellPositionFactory.getAt(geographicMapCellPosition.getColumn() -1, geographicMapCellPosition.getRow());
+                                    nextTerrainGeographicMapCellPosition= geographicMapCellPositionFactory->getAt(geographicMapCellPosition->getColumn() -1, geographicMapCellPosition->getRow());
     
 
                                     }
                                 
                              else 
-                        if(direction == DirectionFactory::getInstance().RIGHT)
+                        if(direction == DirectionFactory::getInstance()->RIGHT)
                         
                                     {
-                                    nextTerrainGeographicMapCellPosition= geographicMapCellPositionFactory.getAt(geographicMapCellPosition.getColumn() +1, geographicMapCellPosition.getRow());
+                                    nextTerrainGeographicMapCellPosition= geographicMapCellPositionFactory->getAt(geographicMapCellPosition->getColumn() +1, geographicMapCellPosition->getRow());
     
 
                                     }
                                 
-this->geographicMapBehavior.getCellTypeAt(geographicMapInterfaceArray, geographicMapCellTypeArray, nextTerrainGeographicMapCellPosition);
+this->geographicMapBehavior->getCellTypeAt(geographicMapInterfaceArray, geographicMapCellTypeArray, nextTerrainGeographicMapCellPosition);
     
 
     bool hasSolidBlock = this->hasSolidBlock(geographicMapInterfaceArray, geographicMapCellTypeArray);;
@@ -134,9 +140,9 @@ this->geographicMapBehavior.getCellTypeAt(geographicMapInterfaceArray, geographi
                         
                                     {
                                     
-    TerrainEvent terrainEvent = TerrainEventCircularStaticPool::getInstance().getNext(this->CLIFF);;
+    TerrainEvent* terrainEvent = TerrainEventCircularStaticPool::getInstance()->getNext(this->CLIFF);;
     
-TerrainEventHandler::getInstance(layer).fireEvent(terrainEvent);
+TerrainEventHandler::getInstance(layer)->fireEvent(terrainEvent);
     
 
                                     }
@@ -147,8 +153,8 @@ TerrainEventHandler::getInstance(layer).fireEvent(terrainEvent);
 }
 
 
-    public: void terrainMove(AllBinaryLayer layer, std::vector<BasicGeographicMap> geographicMapInterfaceArray, int32_t x, int32_t y){
-layer.moveDXY(x, y);
+    public: void terrainMove(AllBinaryLayer* layer, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, int32_t x, int32_t y){
+layer->moveDXY(x, y);
     
 }
 

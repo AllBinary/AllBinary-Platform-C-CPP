@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,7 +67,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "KeyboardActionScriptInputInterface.h"
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyboardActionScriptInputInterface.h"
 
 class KeyboardInputAutomationProcessor
             : public Object
@@ -69,23 +75,23 @@ class KeyboardInputAutomationProcessor
 
                 //@Throws(Exception.constructor)
             
-    public: static void process(KeyboardActionScriptInputInterface keyActionScriptInputInterface){
+    public: static void process(KeyboardActionScriptInputInterface* keyActionScriptInputInterface){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil.putF(CommonLabels::getInstance().START +keyActionScriptInputInterface.toString(), "KeyInputAutomationProcessor", commonStrings.PROCESS);
-    
-
-    InputRobotInterface inputRobotInterface = keyActionScriptInputInterface.getInputRobotInterface();;
+logUtil->putF(CommonLabels::getInstance()->START +keyActionScriptInputInterface->toString(), "KeyInputAutomationProcessor", commonStrings->PROCESS);
     
 
-    std::vector<Integer> integer = keyActionScriptInputInterface.getKeyArray();;
+    InputRobotInterface* inputRobotInterface = keyActionScriptInputInterface->getInputRobotInterface();;
     
 
-                        if(keyActionScriptInputInterface.getDelayBetweenKeys() == 0)
+    std::vector<int32_t> integer = keyActionScriptInputInterface->getKeyArray();;
+    
+
+                        if(keyActionScriptInputInterface->getDelayBetweenKeys() == 0)
                         
                                     {
                                     
@@ -93,33 +99,33 @@ logUtil.putF(CommonLabels::getInstance().START +keyActionScriptInputInterface.to
 
 
                         for (
-    int32_t index = 0;index < keyActionScriptInputInterface.getKeyArray().length; index++)
+    int32_t index = 0;index < keyActionScriptInputInterface->getKeyArray()->length; index++)
         {
 
-                        if(keyActionScriptInputInterface.isPress())
+                        if(keyActionScriptInputInterface->isPress())
                         
                                     {
-                                    inputRobotInterface.keyPress(integer[index]);
+                                    inputRobotInterface->keyPress(integer[index]);
     
 
                                     }
                                 
 }
 
-Thread::sleep(keyActionScriptInputInterface.getTime());
+Thread::sleep(keyActionScriptInputInterface->getTime());
     
 
 
 
 
                         for (
-    int32_t index = keyActionScriptInputInterface.getKeyArray().length -1;index >= 0; index--)
+    int32_t index = keyActionScriptInputInterface->getKeyArray()->length -1;index >= 0; index--)
         {
 
-                        if(keyActionScriptInputInterface.isRelease())
+                        if(keyActionScriptInputInterface->isRelease())
                         
                                     {
-                                    inputRobotInterface.keyRelease(integer[index]);
+                                    inputRobotInterface->keyRelease(integer[index]);
     
 
                                     }
@@ -135,36 +141,36 @@ Thread::sleep(keyActionScriptInputInterface.getTime());
 
 
                         for (
-    int32_t index = 0;index < keyActionScriptInputInterface.getKeyArray().length; index++)
+    int32_t index = 0;index < keyActionScriptInputInterface->getKeyArray()->length; index++)
         {
 
-                        if(keyActionScriptInputInterface.isPress())
+                        if(keyActionScriptInputInterface->isPress())
                         
                                     {
-                                    inputRobotInterface.keyPress(integer[index]);
+                                    inputRobotInterface->keyPress(integer[index]);
     
 
                                     }
                                 
-Thread::sleep(keyActionScriptInputInterface.getTime());
+Thread::sleep(keyActionScriptInputInterface->getTime());
     
 
-                        if(keyActionScriptInputInterface.isRelease())
+                        if(keyActionScriptInputInterface->isRelease())
                         
                                     {
-                                    inputRobotInterface.keyRelease(integer[index]);
+                                    inputRobotInterface->keyRelease(integer[index]);
     
 
                                     }
                                 
 
-    TimeDelayHelper timeHelper = TimeDelayHelper(keyActionScriptInputInterface.getDelayBetweenKeys());;
+    TimeDelayHelper* timeHelper = new TimeDelayHelper(keyActionScriptInputInterface->getDelayBetweenKeys());;
     
 
     int32_t toLong = 0;;
     
 
-        while(!timeHelper.isTimeTNT() || toLong > 6000)
+        while(!timeHelper->isTimeTNT() || toLong > 6000)
         {
 toLong++;
     

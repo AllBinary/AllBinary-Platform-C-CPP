@@ -22,6 +22,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -128,31 +134,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RTSFormInput.h"
-#include "AssignWaypointsUtil.h"
-#include "PlayersSingletonFactory.h"
+        #include "org/allbinary/game/input/form/RTSFormInput.h"
+#include "org/allbinary/game/input/form/AssignWaypointsUtil.h"
+#include "org/allbinary/game/input/form/PlayersSingletonFactory.h"
 
 class UnitRTSFormInput: public RTSFormInput {
 
-    public: static const Integer DECAL_ID = SmallIntegerSingletonFactory::getInstance().getAt(23);
+    public: static inline int32_t DECAL_ID = SmallIntegerSingletonFactory::getInstance()->getAt(23);
 
-    protected: GameNotificationEvent noMoneyGameNotificationEvent;
+    protected: GameNotificationEvent* noMoneyGameNotificationEvent;
 
-    protected: GameNotificationEvent newUnitGameNotificationEvent;
+    protected: GameNotificationEvent* newUnitGameNotificationEvent;
 
-public: UnitRTSFormInput(std::vector<Group> groupInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+public: UnitRTSFormInput(std::vector<Group*> groupInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void processGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t itemIndex);
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager);
 
                 //@Throws(Exception.constructor)
             
-    private: void attemptBuild(RTSLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, RTSLayer layerInterface, int32_t itemIndex);
+    public: void processGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t itemIndex);
+
+                //@Throws(Exception.constructor)
+            
+    private: void attemptBuild(RTSLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, RTSLayer* layerInterface, int32_t itemIndex);
 
 };
 

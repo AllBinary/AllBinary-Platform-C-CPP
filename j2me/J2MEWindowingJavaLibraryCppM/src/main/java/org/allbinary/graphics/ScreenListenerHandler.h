@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_SCREENLISTENERHANDLER_H
         #define ORG_ALLBINARY_GRAPHICS_SCREENLISTENERHANDLER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,20 +47,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ScreenEmptyListener.h"
-#include "ScreenListenerInterface.h"
+        #include "org/allbinary/graphics/ScreenEmptyListener.h"
+#include "org/allbinary/graphics/ScreenListenerInterface.h"
 
 class ScreenListenerHandler
             : public Object
          {
 
-    private: static ScreenListenerHandler instance() { return ScreenListenerHandler(); }
+    private: static ScreenListenerHandler* instance() { static std::unique_ptr<ScreenListenerHandler> value(new ScreenListenerHandler()); return value.get(); }
 
-    public: static ScreenListenerHandler getInstance();
+    public: static ScreenListenerHandler* getInstance();
 
-    private: ScreenListenerInterface screenListenerInterface = ScreenEmptyListener();
+    private: ScreenListenerInterface* screenListenerInterface = new ScreenEmptyListener();
 
-    public: void setListener(ScreenListenerInterface screenListenerInterface);
+    public: void setListener(ScreenListenerInterface* screenListenerInterface);
 
     public: void fireWithState(bool isFullScreen);
 

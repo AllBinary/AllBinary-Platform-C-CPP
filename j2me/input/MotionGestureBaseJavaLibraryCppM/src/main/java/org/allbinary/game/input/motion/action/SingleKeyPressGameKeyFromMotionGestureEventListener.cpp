@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/CompleteMotionGestureInputEvent.h>
@@ -65,37 +71,37 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameKeyCompleteMotionGestureInputEvent.h"
+        #include "org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h"
 
 class SingleKeyPressGameKeyFromMotionGestureEventListener: public CompleteMotionGestureInputEventListener {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: void onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject* eventObject){
+ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public: void onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent completeMotionGestureInputEvent){
+    public: void onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent* completeMotionGestureInputEvent){
 
         try {
             
-    GameKeyCompleteMotionGestureInputEvent gameKeyCompleteMotionGestureInputEvent = completeMotionGestureInputEvent;;
+    GameKeyCompleteMotionGestureInputEvent* gameKeyCompleteMotionGestureInputEvent = dynamic_cast<GameKeyCompleteMotionGestureInputEvent*>(completeMotionGestureInputEvent);;
     
 
-    GameKeyEvent gameKeyEvent = gameKeyCompleteMotionGestureInputEvent.getGameKeyEvent();;
+    GameKeyEvent* gameKeyEvent = gameKeyCompleteMotionGestureInputEvent->getGameKeyEvent();;
     
-PressGameKeyEventHandler::getInstance().fireEvent(gameKeyEvent);
+PressGameKeyEventHandler::getInstance()->fireEvent(gameKeyEvent);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, "onCompleteMotionGestureInputEvent", e);
+this->logUtil->put(commonStrings->EXCEPTION, this, "onCompleteMotionGestureInputEvent", &e);
     
 }
 

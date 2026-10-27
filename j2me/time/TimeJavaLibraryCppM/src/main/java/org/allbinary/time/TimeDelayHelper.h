@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_TIME_TIMEDELAYHELPER_H
         #define ORG_ALLBINARY_TIME_TIMEDELAYHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/System.h"
@@ -61,7 +67,7 @@ class TimeDelayHelper
 
     private: int64_t startTime =  -1;
 
-    private: int64_t elapsedTimeAtPause = Long::MIN_VALUE;
+    private: int64_t elapsedTimeAtPause = Long.MIN_VALUE;
 
     public: int32_t delay;
 

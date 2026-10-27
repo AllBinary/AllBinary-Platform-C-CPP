@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/math/BasicDecimal.h>
 
       
@@ -39,12 +45,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MathVector.h"
-#include "YAxisMathVectorUtil.h"
+        #include "org/allbinary/logic/math/vector/MathVector.h"
+#include "org/allbinary/logic/math/vector/YAxisMathVectorUtil.h"
 
 class YAxisMathVector: public MathVector {
 
-public: YAxisMathVector(BasicDecimal magnitudeBasicDecimal, int32_t direction) : MathVector(magnitudeBasicDecimal, direction){
+public: YAxisMathVector(BasicDecimal* magnitudeBasicDecimal, int32_t direction) : MathVector(magnitudeBasicDecimal, direction){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -56,7 +62,7 @@ this->calculate();
 }
 
 
-    public: BasicDecimal getResult(){
+    public: BasicDecimal* getResult(){
 
 
 
@@ -68,9 +74,9 @@ this->calculate();
 
     private: void calculate(){
 
-    int64_t result = YAxisMathVectorUtil::calculate(this->getMagnitude().getUnscaled(), this->getDirection());;
+    int64_t result = YAxisMathVectorUtil::calculate(this->getMagnitude()->getUnscaled(), this->getDirection());;
     
-this->resultBasicDecimal= BasicDecimal(result);
+this->resultBasicDecimal= new BasicDecimal(result);
     
 }
 

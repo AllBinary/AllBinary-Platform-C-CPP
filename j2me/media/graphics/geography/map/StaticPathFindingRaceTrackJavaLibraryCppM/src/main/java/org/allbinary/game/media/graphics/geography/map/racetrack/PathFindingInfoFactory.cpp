@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/string/CommonStrings.h>
@@ -67,9 +73,9 @@
         
 class PathFindingInfoFactory: public BasePathFindingInfoFactory {
 
-    private: static PathFindingInfoFactory instance() { return PathFindingInfoFactory(); }
+    private: static PathFindingInfoFactory* instance() { static std::unique_ptr<PathFindingInfoFactory> value(new PathFindingInfoFactory()); return value.get(); }
 
-    public: static PathFindingInfoFactory getInstance(){
+    public: static PathFindingInfoFactory* getInstance(){
 
 
 
@@ -85,16 +91,16 @@ private: PathFindingInfoFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: PathFindingInfo getInstancePathFindingInfo(BasicGeographicMap geographicMapInterface, std::vector<std::vector<int32_t>> graphArray){
+    public: PathFindingInfo* getInstancePathFindingInfo(BasicGeographicMap* geographicMapInterface, std::vector<std::vector<int32_t>> graphArray){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil::put(commonStrings.START, this, commonStrings.GET_INSTANCE);
+PreLogUtil::put(commonStrings->START, this, commonStrings->GET_INSTANCE);
     
 
-    PathFindingInfo pathFindingInfo = PathFindingInfo(PathFindingNodeCostInfoFactoryBase(), BasicArrayListS(1), BasicArrayListS(1));;
+    PathFindingInfo* pathFindingInfo = new PathFindingInfo(new PathFindingNodeCostInfoFactoryBase(), new BasicArrayListS(1), new BasicArrayListS(1));;
     
-RaceTrackRoadsGeographicMapCellHistoryFactory::getInstance().init();
+RaceTrackRoadsGeographicMapCellHistoryFactory::getInstance()->init();
     
 this->init(geographicMapInterface, pathFindingInfo, graphArray);
     

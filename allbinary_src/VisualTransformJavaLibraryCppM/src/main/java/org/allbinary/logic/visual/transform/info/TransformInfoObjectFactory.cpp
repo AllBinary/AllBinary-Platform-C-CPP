@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -65,15 +71,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoInterface.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
 
 class TransformInfoObjectFactory
             : public Object
          {
 
-    private: static TransformInfoObjectFactory instance() { return TransformInfoObjectFactory(); }
+    private: static TransformInfoObjectFactory* instance() { static std::unique_ptr<TransformInfoObjectFactory> value(new TransformInfoObjectFactory()); return value.get(); }
 
-    public: static TransformInfoObjectFactory getInstance(){
+    public: static TransformInfoObjectFactory* getInstance(){
 
 
 
@@ -83,7 +89,7 @@ class TransformInfoObjectFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: TransformInfoObjectFactory(){
 }
@@ -91,17 +97,17 @@ private: TransformInfoObjectFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInterface getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface){
+    public: TransformInterface* getInstance(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF("Creating View: " +transformInfoInterface.getName(), this, commonStrings.GET_INSTANCE);
+this->logUtil->putF("Creating View: " +transformInfoInterface->getName(), this, commonStrings->GET_INSTANCE);
     
 
                                     }
@@ -110,7 +116,7 @@ this->logUtil.putF("Creating View: " +transformInfoInterface.getName(), this, co
     std::vector<Object*> params = std::vector<Object*>(1);;
     
 
-    std::vector<Class*> classes = std::vector<Class>(1);;
+    std::vector<Class*> classes = std::vector<Class*>(1);;
     
 classes[0]= 
                                     //Otherwise - expression - AssignExpr - value - ClassExpr
@@ -119,7 +125,7 @@ classes[0]=
 params[0]= transformInfoInterface;
     
 
-    TransformInterface anyType = AbeFactory::getInstance().getInstance(abeClientInformation, transformInfoInterface.getObjectFile(), classes, params);;
+    TransformInterface* anyType = dynamic_cast<TransformInterface*>(AbeFactory::getInstance()->getInstance(abeClientInformation, transformInfoInterface->getObjectFile(), classes, params));;
     
 
                         if(anyType == 
@@ -134,20 +140,20 @@ params[0]= transformInfoInterface;
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("\nNo Such View Name: ");
+stringBuffer->append("\nNo Such View Name: ");
     
-stringBuffer.append(transformInfoInterface.getName());
+stringBuffer->append(transformInfoInterface->getName());
     
-stringBuffer.append("\nNo Such View Object: ");
+stringBuffer->append("\nNo Such View Object: ");
     
-stringBuffer.append(transformInfoInterface.getObjectFile());
+stringBuffer->append(transformInfoInterface->getObjectFile());
     
 
 
 
-                            throw Exception(stringBuffer.toString());
+                            throw new Exception(stringBuffer->toString());
                     
 
                                     }
@@ -156,7 +162,7 @@ stringBuffer.append(transformInfoInterface.getObjectFile());
                             
 
 
-                            throw Exception("No Such View Object since transformInfo is null");
+                            throw new Exception("No Such View Object since transformInfo is null");
                     
 
                         }
@@ -172,7 +178,7 @@ stringBuffer.append(transformInfoInterface.getObjectFile());
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
     std::string error = "Failed To Get Instance: ";;
@@ -183,19 +189,19 @@ stringBuffer.append(transformInfoInterface.getObjectFile());
                                 )
                         
                                     {
-                                    error= error +transformInfoInterface.getName();
+                                    error= error +transformInfoInterface->getName();
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(error, this, commonStrings.GET_INSTANCE, e);
+this->logUtil->put(error, this, commonStrings->GET_INSTANCE, &e);
     
 
                                     }
@@ -208,7 +214,7 @@ this->logUtil.put(error, this, commonStrings.GET_INSTANCE, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
     std::string error = "Failed To Get Instance: ";;
@@ -219,19 +225,19 @@ this->logUtil.put(error, this, commonStrings.GET_INSTANCE, e);
                                 )
                         
                                     {
-                                    error= error +transformInfoInterface.getName();
+                                    error= error +transformInfoInterface->getName();
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(error, this, commonStrings.GET_INSTANCE, e);
+this->logUtil->put(error, this, commonStrings->GET_INSTANCE, &e);
     
 
                                     }
@@ -242,7 +248,7 @@ this->logUtil.put(error, this, commonStrings.GET_INSTANCE, e);
                             throw e;
                     
 }
-*/
+
 }
 
 

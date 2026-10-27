@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DISPOSALUTIL_H
         #define ORG_ALLBINARY_DISPOSALUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -52,13 +58,13 @@ class DisposalUtil
             : public Object
          {
 
-    private: static DisposalUtil instance() { return DisposalUtil(); }
+    private: static DisposalUtil* instance() { static std::unique_ptr<DisposalUtil> value(new DisposalUtil()); return value.get(); }
 
-    public: static DisposalUtil getInstance();
+    public: static DisposalUtil* getInstance();
 
-    public: void disposeImage(Image image);
+    public: void disposeImage(Image* image);
 
-    public: void disposeResource(Resource resource);
+    public: void disposeResource(Resource* resource);
 
 };
 

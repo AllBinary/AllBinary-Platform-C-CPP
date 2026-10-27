@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_BASICITEM_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_BASICITEM_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -89,18 +95,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ItemInterface.h"
-#include "BasicItemData.h"
+        #include "org/allbinary/business/user/commerce/inventory/item/ItemInterface.h"
+#include "org/allbinary/business/user/commerce/inventory/item/BasicItemData.h"
 
 class BasicItem
             : public Object
-        : public ItemInterface {
+        , public ItemInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
     protected: std::string itemId;
 
@@ -140,7 +146,7 @@ class BasicItem
 
     protected: std::string largeImage;
 
-    protected: Money price;
+    protected: Money* price;
 
     protected: std::string comment;
 
@@ -162,7 +168,7 @@ class BasicItem
 
     protected: std::string lastModified;
 
-public: BasicItem(HashMap<Object*, Object*> itemHashMap);
+public: BasicItem(HashMap<Object*, Object*>* itemHashMap);
 
 public: BasicItem();
 
@@ -206,7 +212,7 @@ public: BasicItem();
 
     public: void setLastModified(std::string value);
 
-    public: void setPrice(Money value);
+    public: void setPrice(Money* value);
 
     public: void setComment(std::string value);
 
@@ -264,7 +270,7 @@ public: BasicItem();
 
     public: std::string getLastModified();
 
-    public: Money getPrice();
+    public: Money* getPrice();
 
     public: std::string getComment();
 
@@ -286,11 +292,11 @@ public: BasicItem();
 
     public: std::string getEnabled();
 
-    public: Money getTotal();
+    public: Money* getTotal();
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
-    public: BasicArrayList toVector();
+    public: BasicArrayList* toVector();
 
                 //@Throws(Exception.constructor)
             

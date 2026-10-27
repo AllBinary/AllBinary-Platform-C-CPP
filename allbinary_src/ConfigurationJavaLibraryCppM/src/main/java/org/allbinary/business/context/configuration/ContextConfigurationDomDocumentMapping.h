@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONDOMDOCUMENTMAPPING_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONDOMDOCUMENTMAPPING_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,20 +64,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ContextConfigurationInterface.h"
-#include "ContextConfigurationView.h"
+        #include "org/allbinary/business/context/configuration/ContextConfigurationInterface.h"
+#include "org/allbinary/business/context/configuration/ContextConfigurationView.h"
 
 class ContextConfigurationDomDocumentMapping
             : public Object
-        : public DomDocumentMappingInterface {
+        , public DomDocumentMappingInterface {
 
-    private: ContextConfigurationInterface contextConfigurationInterface;
+    private: ContextConfigurationInterface* contextConfigurationInterface;
 
-public: ContextConfigurationDomDocumentMapping(ContextConfigurationInterface contextConfigurationInterface);
+public: ContextConfigurationDomDocumentMapping(ContextConfigurationInterface* contextConfigurationInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Document toXmlDoc();
+    public: Document* toXmlDoc();
 
                 //@Throws(Exception.constructor)
             

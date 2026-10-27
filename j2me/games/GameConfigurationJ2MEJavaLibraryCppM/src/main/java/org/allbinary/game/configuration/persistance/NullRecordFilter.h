@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/rms/RecordFilter.h>
@@ -49,9 +55,9 @@
         
 class NullRecordFilter
             : public Object
-        : public RecordFilter {
+        , public RecordFilter {
 
-    public: static NullRecordFilter NULL_RECORD_FILTER = NullRecordFilter();
+    public: static NullRecordFilter* NULL_RECORD_FILTER() { static std::unique_ptr<NullRecordFilter> value(new NullRecordFilter()); return value.get(); }
 
     public: bool matches(std::vector<int8_t> candidate);
 

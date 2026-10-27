@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -47,27 +53,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HealthListenerInterface.h"
-#include "HealthBarAnimation.h"
-#include "HealthInterface.h"
-#include "Health.h"
+        #include "org/allbinary/game/health/HealthListenerInterface.h"
+#include "org/allbinary/game/health/HealthBarAnimation.h"
+#include "org/allbinary/game/health/HealthInterface.h"
+#include "org/allbinary/game/health/Health.h"
 
 class HealthBar: public Paintable, public HealthListenerInterface {
 
-    private: HealthBarAnimation animationInterface;
+    private: HealthBarAnimation* animationInterface;
 
-    private: HealthInterface healthInterface;
+    private: HealthInterface* healthInterface;
 
-    protected: AllBinaryLayer allbinaryLayer;
+    protected: AllBinaryLayer* allbinaryLayer;
 
-public: HealthBar(AllBinaryLayer layerInterface, Health healthInterface, HealthBarAnimation animationInterface, int32_t direction){
+public: HealthBar(AllBinaryLayer* layerInterface, Health* healthInterface, HealthBarAnimation* animationInterface, int32_t direction){
 this->allbinaryLayer= layerInterface;
     
 this->animationInterface= animationInterface;
     
 this->healthInterface= healthInterface;
     
-this->healthInterface.addListener(this);
+this->healthInterface->addListener(this);
     
 this->onHealthChange();
     
@@ -75,19 +81,19 @@ this->onHealthChange();
 
 
     public: void onHealthChange(){
-this->animationInterface.onHealthChange(this->healthInterface.getHealth() *this->allbinaryLayer.getWidth() /this->healthInterface.getMaxHealth());
+this->animationInterface->onHealthChange(this->healthInterface->getHealth() *this->allbinaryLayer->getWidth() /this->healthInterface->getMaxHealth());
     
 }
 
 
-    public: void paint(Graphics graphics){
-this->animationInterface.paintXY(graphics, 0, 0);
+    public: void paint(Graphics* graphics){
+this->animationInterface->paintXY(graphics, 0, 0);
     
 }
 
 
-    public: void paintThreed(Graphics graphics){
-this->animationInterface.paintThreedXYZ(graphics, 0, 0, 0);
+    public: void paintThreed(Graphics* graphics){
+this->animationInterface->paintThreedXYZ(graphics, 0, 0, 0);
     
 }
 

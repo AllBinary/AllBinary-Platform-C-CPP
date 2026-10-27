@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graphics/form/item/ABTextFieldItem.h>
 
       
@@ -39,11 +45,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TextFieldItemValidator.h"
+        #include "org/allbinary/graphics/form/item/validation/TextFieldItemValidator.h"
 
 class PasswordValidator: public TextFieldItemValidator {
 
-public: PasswordValidator(ABTextFieldItem textFieldItem, int32_t min, int32_t max, bool allowOnEmpty) : TextFieldItemValidator(textFieldItem, min, max, allowOnEmpty){
+public: PasswordValidator(ABTextFieldItem* textFieldItem, int32_t min, int32_t max, bool allowOnEmpty) : TextFieldItemValidator(textFieldItem, min, max, allowOnEmpty){
 
                         //super/this constructor call is in the constructor initializer list.
                     

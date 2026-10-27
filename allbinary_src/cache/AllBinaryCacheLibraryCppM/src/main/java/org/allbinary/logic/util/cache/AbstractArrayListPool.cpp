@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -51,21 +57,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PoolInterface.h"
-#include "CacheableInterfaceFactoryInterface.h"
-#include "CacheableInterface.h"
+        #include "org/allbinary/logic/util/cache/PoolInterface.h"
+#include "org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h"
+#include "org/allbinary/logic/util/cache/CacheableInterface.h"
 
 class AbstractArrayListPool
             : public Object
-        : public PoolInterface {
+        , public PoolInterface {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: BasicArrayList buffers = BasicArrayListD();
+    protected: BasicArrayList* buffers = new BasicArrayListD();
 
-    protected: CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface;
+    protected: CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface;
 
-public: AbstractArrayListPool(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface){
+public: AbstractArrayListPool(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface){
 this->cacheableInterfaceFactoryInterface= cacheableInterfaceFactoryInterface;
     
 }
@@ -77,33 +83,33 @@ this->cacheableInterfaceFactoryInterface= cacheableInterfaceFactoryInterface;
 
 
 
-                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: CacheableInterface remove(Object* key){
+    public: CacheableInterface* remove(Object* key){
 
 
 
-                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void add(CacheableInterface cacheableInterface){
-this->buffers.add(cacheableInterface);
+    public: void add(CacheableInterface* cacheableInterface){
+this->buffers->add(cacheableInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void addArray(std::vector<CacheableInterface> cacheableInterfaces){
+    public: void addArray(std::vector<CacheableInterface*> cacheableInterfaces){
 
 
 
@@ -111,7 +117,7 @@ this->buffers.add(cacheableInterface);
                         for (
     int32_t index = 0;index < cacheableInterfaces.size(); index++)
         {
-this->buffers.add(cacheableInterfaces[index]);
+this->buffers->add(cacheableInterfaces[index]);
     
 }
 

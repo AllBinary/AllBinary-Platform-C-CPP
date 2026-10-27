@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -84,13 +90,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StreetAddressData.h"
+        #include "org/allbinary/business/user/address/StreetAddressData.h"
 
 class StreetAddress
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string id;
 
@@ -112,34 +118,34 @@ public: StreetAddress(){
 }
 
 
-public: StreetAddress(Node node){
+public: StreetAddress(Node* node){
 
-    Node nameNode = DomSearchHelper::getNode(StreetAddressData::NAME, node.getChildNodes());;
+    Node* nameNode = DomSearchHelper::getNode(StreetAddressData::NAME, node->getChildNodes());;
     
 this->name= DomNodeHelper::getTextNodeValue(nameNode);
     
 
-    Node streetNode = DomSearchHelper::getNode(StreetAddressData::STREET, node.getChildNodes());;
+    Node* streetNode = DomSearchHelper::getNode(StreetAddressData::STREET, node->getChildNodes());;
     
 this->street= DomNodeHelper::getTextNodeValue(streetNode);
     
 
-    Node cityNode = DomSearchHelper::getNode(StreetAddressData::CITY, node.getChildNodes());;
+    Node* cityNode = DomSearchHelper::getNode(StreetAddressData::CITY, node->getChildNodes());;
     
 this->city= DomNodeHelper::getTextNodeValue(cityNode);
     
 
-    Node stateNode = DomSearchHelper::getNode(StreetAddressData::STATE, node.getChildNodes());;
+    Node* stateNode = DomSearchHelper::getNode(StreetAddressData::STATE, node->getChildNodes());;
     
 this->state= DomNodeHelper::getTextNodeValue(stateNode);
     
 
-    Node codeNode = DomSearchHelper::getNode(StreetAddressData::CODE, node.getChildNodes());;
+    Node* codeNode = DomSearchHelper::getNode(StreetAddressData::CODE, node->getChildNodes());;
     
 this->code= DomNodeHelper::getTextNodeValue(codeNode);
     
 
-    Node countryNode = DomSearchHelper::getNode(StreetAddressData::COUNTRY, node.getChildNodes());;
+    Node* countryNode = DomSearchHelper::getNode(StreetAddressData::COUNTRY, node->getChildNodes());;
     
 this->country= DomNodeHelper::getTextNodeValue(countryNode);
     
@@ -148,42 +154,42 @@ this->log();
 }
 
 
-public: StreetAddress(StreetAddress streetAddress){
-this->id= streetAddress.getId();
+public: StreetAddress(StreetAddress* streetAddress){
+this->id= streetAddress->getId();
     
-this->name= streetAddress.getName();
+this->name= streetAddress->getName();
     
-this->street= streetAddress.getStreet();
+this->street= streetAddress->getStreet();
     
-this->city= streetAddress.getCity();
+this->city= streetAddress->getCity();
     
-this->state= streetAddress.getState();
+this->state= streetAddress->getState();
     
-this->code= streetAddress.getCode();
+this->code= streetAddress->getCode();
     
-this->country= streetAddress.getCountry();
+this->country= streetAddress->getCountry();
     
-this->isDefault= streetAddress.isDefault();
+this->isDefault= streetAddress->isDefault();
     
 this->log();
     
 }
 
 
-public: StreetAddress(HttpServletRequest request){
-this->setId(request.getParameter(StreetAddressData::ID));
+public: StreetAddress(HttpServletRequest* request){
+this->setId(request->getParameter(StreetAddressData::ID));
     
-this->setName(request.getParameter(StreetAddressData::NAME));
+this->setName(request->getParameter(StreetAddressData::NAME));
     
-this->setStreet(request.getParameter(StreetAddressData::STREET));
+this->setStreet(request->getParameter(StreetAddressData::STREET));
     
-this->setCity(request.getParameter(StreetAddressData::CITY));
+this->setCity(request->getParameter(StreetAddressData::CITY));
     
-this->setState(request.getParameter(StreetAddressData::STATE));
+this->setState(request->getParameter(StreetAddressData::STATE));
     
-this->setCode(request.getParameter(StreetAddressData::CODE));
+this->setCode(request->getParameter(StreetAddressData::CODE));
     
-this->setCountry(request.getParameter(StreetAddressData::COUNTRY));
+this->setCountry(request->getParameter(StreetAddressData::COUNTRY));
     
 this->log();
     
@@ -208,23 +214,23 @@ this->log();
 }
 
 
-public: StreetAddress(HashMap<Object*, Object*> address){
-this->id= address.get(StreetAddressData::ID);
+public: StreetAddress(HashMap<Object*, Object*>* address){
+this->id= address->get(StreetAddressData::ID);
     
-this->name= address.get(StreetAddressData::NAME);
+this->name= address->get(StreetAddressData::NAME);
     
-this->street= address.get(StreetAddressData::STREET);
+this->street= address->get(StreetAddressData::STREET);
     
-this->city= address.get(StreetAddressData::CITY);
+this->city= address->get(StreetAddressData::CITY);
     
-this->state= address.get(StreetAddressData::STATE);
+this->state= address->get(StreetAddressData::STATE);
     
-this->code= address.get(StreetAddressData::CODE);
+this->code= address->get(StreetAddressData::CODE);
     
-this->country= address.get(StreetAddressData::COUNTRY);
+this->country= address->get(StreetAddressData::COUNTRY);
     
 
-    std::string def = address.get(StreetAddressData::DEFAULT);;
+    std::string def = address->get(StreetAddressData::DEFAULT);;
     
 
                         if(true && def.compare(StreetAddressData::DEFAULT) == 0)
@@ -248,10 +254,10 @@ this->log();
 
     private: void log(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF("Created Address: \n" +this->toHashMap(), this, "log");
+                                    this->logUtil->putF("Created Address: \n" +this->toHashMap(), this, "log");
     
 
                                     }
@@ -381,14 +387,12 @@ this->country= value;
 }
 
 
-    public: Boolean isEmpty(){
+    public: bool isEmpty(){
 
-    std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;;
+    std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;;
     
 
-                        if(this->getName() == 
-                                    nullptr
-                                 && this->getName().compareTo(EMPTY_STRING) == 0 && this->getStreet() == 
+                        if(false && this->getName().compareTo(EMPTY_STRING) == 0 && this->getStreet() == 
                                     nullptr
                                  && this->getStreet().compareTo(EMPTY_STRING) == 0 && this->getCity() == 
                                     nullptr
@@ -419,14 +423,12 @@ this->country= value;
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
-    std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;;
+    std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;;
     
 
-                        if(this->getName() == 
-                                    nullptr
-                                 || this->getName().compareTo(EMPTY_STRING) == 0 || this->getStreet() == 
+                        if(false || this->getName().compareTo(EMPTY_STRING) == 0 || this->getStreet() == 
                                     nullptr
                                  || this->getStreet().compareTo(EMPTY_STRING) == 0 || this->getCity() == 
                                     nullptr
@@ -459,75 +461,75 @@ this->country= value;
 
     public: std::string validationInfo(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Address Failed To Validate - All fields must contain data.<br></br>");
-    
-
-    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
+stringBuffer->append("Address Failed To Validate - All fields must contain data.<br></br>");
     
 
-                        if(!stringValidationUtil.isValidRequired(this->getName(), StreetAddressData::MIN, StreetAddressData::MAX))
+    StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
+    
+
+                        if(!stringValidationUtil->isValidRequired(this->getName(), StreetAddressData::MIN, StreetAddressData::MAX))
                         
                                     {
-                                    stringBuffer.append("Please enter a valid name");
+                                    stringBuffer->append("Please enter a valid name");
     
-stringBuffer.append("<br></br>");
+stringBuffer->append("<br></br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil.isValidRequired(this->getStreet(), StreetAddressData::MIN, StreetAddressData::MAX))
+                        if(!stringValidationUtil->isValidRequired(this->getStreet(), StreetAddressData::MIN, StreetAddressData::MAX))
                         
                                     {
-                                    stringBuffer.append("Please enter a valid street");
+                                    stringBuffer->append("Please enter a valid street");
     
-stringBuffer.append("<br></br>");
+stringBuffer->append("<br></br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil.isValidRequired(this->getCity(), StreetAddressData::MIN, StreetAddressData::MAX))
+                        if(!stringValidationUtil->isValidRequired(this->getCity(), StreetAddressData::MIN, StreetAddressData::MAX))
                         
                                     {
-                                    stringBuffer.append("Please enter a valid city");
+                                    stringBuffer->append("Please enter a valid city");
     
-stringBuffer.append("<br></br>");
+stringBuffer->append("<br></br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil.isValidRequired(this->getState(), StreetAddressData::MIN, StreetAddressData::MAX))
+                        if(!stringValidationUtil->isValidRequired(this->getState(), StreetAddressData::MIN, StreetAddressData::MAX))
                         
                                     {
-                                    stringBuffer.append("Please enter a valid state");
+                                    stringBuffer->append("Please enter a valid state");
     
-stringBuffer.append("<br></br>");
+stringBuffer->append("<br></br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil.isValidRequired(this->getCode(), StreetAddressData::MIN, StreetAddressData::MAX))
+                        if(!stringValidationUtil->isValidRequired(this->getCode(), StreetAddressData::MIN, StreetAddressData::MAX))
                         
                                     {
-                                    stringBuffer.append("Please enter a valid zipcode");
+                                    stringBuffer->append("Please enter a valid zipcode");
     
-stringBuffer.append("<br></br>");
+stringBuffer->append("<br></br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil.isValidRequired(this->getCountry(), StreetAddressData::MIN, StreetAddressData::MAX))
+                        if(!stringValidationUtil->isValidRequired(this->getCountry(), StreetAddressData::MIN, StreetAddressData::MAX))
                         
                                     {
-                                    stringBuffer.append("Please enter a valid country");
+                                    stringBuffer->append("Please enter a valid country");
     
-stringBuffer.append("<br></br>");
+stringBuffer->append("<br></br>");
     
 
                                     }
@@ -536,12 +538,12 @@ stringBuffer.append("<br></br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
-    private: Document toValidationInfoDoc(){
+    private: Document* toValidationInfoDoc(){
 
 
 
@@ -551,13 +553,13 @@ stringBuffer.append("<br></br>");
 }
 
 
-    private: Node toValidationInfoNode(Document document){
+    private: Node* toValidationInfoNode(Document* document){
 
         try {
             
-    Node node = document.createElement(StreetAddressData::FORM);;
+    Node* node = document->createElement(StreetAddressData::FORM);;
     
-node.appendChild(this->toXmlNode(document));
+node->appendChild(this->toXmlNode(document));
     
 
 
@@ -567,16 +569,16 @@ node.appendChild(this->toXmlNode(document));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, "toValidationInfoNode", e);
+this->logUtil->put(commonStrings->EXCEPTION, this, "toValidationInfoNode", &e);
     
 
                                     }
@@ -592,23 +594,23 @@ this->logUtil.put(commonStrings.EXCEPTION, this, "toValidationInfoNode", e);
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(StreetAddressData::ID, this->id);
+hashMap->put(StreetAddressData::ID, this->id);
     
-hashMap.put(StreetAddressData::NAME, this->name);
+hashMap->put(StreetAddressData::NAME, this->name);
     
-hashMap.put(StreetAddressData::STREET, this->street);
+hashMap->put(StreetAddressData::STREET, this->street);
     
-hashMap.put(StreetAddressData::CITY, this->city);
+hashMap->put(StreetAddressData::CITY, this->city);
     
-hashMap.put(StreetAddressData::STATE, this->state);
+hashMap->put(StreetAddressData::STATE, this->state);
     
-hashMap.put(StreetAddressData::CODE, this->code);
+hashMap->put(StreetAddressData::CODE, this->code);
     
-hashMap.put(StreetAddressData::COUNTRY, this->country);
+hashMap->put(StreetAddressData::COUNTRY, this->country);
     
 
 
@@ -621,24 +623,24 @@ hashMap.put(StreetAddressData::COUNTRY, this->country);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
 
-    HashMap<Object*, Object*> hashMap = this->toHashMap();;
+    HashMap<Object*, Object*>* hashMap = this->toHashMap();;
     
 
-    Set keySet = hashMap.keys();;
+    Set* keySet = hashMap->keys();;
     
 
-    std::vector<Object*> keyArray = keySet.();;
+    std::vector<Object*> keyArray = keySet->();;
     
 
     int32_t size = keyArray.size();;
     
 
-    Node node = document.createElement(StreetAddressData::ADDRESS);;
+    Node* node = document->createElement(StreetAddressData::ADDRESS);;
     
 
 
@@ -651,9 +653,9 @@ hashMap.put(StreetAddressData::COUNTRY, this->country);
     std::string name = keyArray[i];;
     
 
-    std::string value = stringUtil.getNonNull(hashMap.get(name));;
+    std::string value = stringUtil->getNonNull(hashMap->get(name));;
     
-node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
+node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     
 }
 

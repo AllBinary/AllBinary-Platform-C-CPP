@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALRESOURCEINFOHUDPAINTABLE_H
         #define ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALRESOURCEINFOHUDPAINTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -57,23 +63,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeologicalGeographicMapCellPosition.h"
+        #include "org/allbinary/game/layer/geological/resources/GeologicalGeographicMapCellPosition.h"
 
 class GeologicalResourceInfoHudPaintable: public WaypointInfoHudPaintable {
 
-    private: static const std::string RESOURCES = "Resources: ";
+    private: static inline const std::string RESOURCES = "Resources: ";
 
-    private: KeyValueDrawCharArray keyvalueDrawString;
+    private: KeyValueDrawCharArray* keyvalueDrawString;
 
     private: int32_t fontHeight = 0;
 
 public: GeologicalResourceInfoHudPaintable();
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
     public: void updateSelectionInfo();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

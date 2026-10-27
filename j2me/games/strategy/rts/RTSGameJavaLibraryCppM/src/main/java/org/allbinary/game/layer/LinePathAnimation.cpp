@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -52,9 +58,9 @@ class LinePathAnimation
             : public Object
          {
 
-    private: static LinePathAnimation instance() { return LinePathAnimation(); }
+    private: static LinePathAnimation* instance() { static std::unique_ptr<LinePathAnimation> value(new LinePathAnimation()); return value.get(); }
 
-    public: static LinePathAnimation getInstance(){
+    public: static LinePathAnimation* getInstance(){
 
 
 
@@ -64,8 +70,8 @@ class LinePathAnimation
 }
 
 
-    public: void paint(Graphics graphics, GPoint point, GPoint nextPoint, Layer tiledLayer){
-graphics.drawLine(nextPoint.getX(), nextPoint.getY(), point.getX(), point.getY());
+    public: void paint(Graphics* graphics, GPoint* point, GPoint* nextPoint, Layer* tiledLayer){
+graphics->drawLine(nextPoint->getX(), nextPoint->getY(), point->getX(), point->getY());
     
 }
 

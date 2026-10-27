@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOX2_H
         #define ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOX2_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/CommandListener.h>
@@ -56,7 +62,7 @@
         
 class CustomTextBox2: public CustomTextBox {
 
-public: CustomTextBox2(CommandListener cmdListener, std::string label, std::string text, int32_t maxSize, int32_t constraints, Font font, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: CustomTextBox2(CommandListener* cmdListener, std::string label, std::string text, int32_t maxSize, int32_t constraints, Font* font, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
 };
 

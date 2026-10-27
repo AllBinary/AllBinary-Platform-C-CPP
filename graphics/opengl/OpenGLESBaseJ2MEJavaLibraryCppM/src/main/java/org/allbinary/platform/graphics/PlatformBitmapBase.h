@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_PLATFORM_GRAPHICS_PLATFORMBITMAPBASE_H
         #define ORG_ALLBINARY_PLATFORM_GRAPHICS_PLATFORMBITMAPBASE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -52,7 +58,7 @@ class PlatformBitmapBase
             : public Object
          {
 
-    public: Image getImage();
+    public: Image* getImage();
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -57,9 +63,9 @@ class ValidationOnlyTempUtil
             : public Object
          {
 
-    private: static ValidationOnlyTempUtil instance() { return ValidationOnlyTempUtil(); }
+    private: static ValidationOnlyTempUtil* instance() { static std::unique_ptr<ValidationOnlyTempUtil> value(new ValidationOnlyTempUtil()); return value.get(); }
 
-    public: static ValidationOnlyTempUtil getInstance(){
+    public: static ValidationOnlyTempUtil* getInstance(){
 
 
 
@@ -69,7 +75,7 @@ class ValidationOnlyTempUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: ValidationOnlyTempUtil(){
 }
@@ -77,17 +83,17 @@ private: ValidationOnlyTempUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(ValidationComponentInterface validationComponentInterface){
+    public: std::string view(ValidationComponentInterface* validationComponentInterface){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("View Name: " +validationComponentInterface.getTransformInfoInterface().getName(), this, "view()");
+                                    this->logUtil->putF("View Name: " +validationComponentInterface->getTransformInfoInterface()->getName(), this, "view()");
     
 
                                     }
@@ -96,17 +102,17 @@ private: ValidationOnlyTempUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put(commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }

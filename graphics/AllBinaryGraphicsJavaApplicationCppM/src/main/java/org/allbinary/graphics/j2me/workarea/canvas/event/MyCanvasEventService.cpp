@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -44,41 +50,41 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "EventListenerList.h"
-#include "EventListener.h"
-#include "MyCanvasEventListener.h"
-#include "MyCanvasEvent.h"
+        #include "org/allbinary/graphics/j2me/workarea/canvas/event/EventListenerList.h"
+#include "org/allbinary/graphics/j2me/workarea/canvas/event/EventListener.h"
+#include "org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEventListener.h"
+#include "org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEvent.h"
 
 class MyCanvasEventService
             : public Object
          {
 
-    private: static javax::swing::event::EventListenerList listenerList = javax::swing::event::EventListenerList();
+    private: static javax::swing::event::EventListenerList* listenerList() { static std::unique_ptr<javax::swing::event::EventListenerList> value(new javax::swing::event::EventListenerList()); return value.get(); }
 
-    public: static std::string DELETE = "delete";
+    public: static inline std::string DELETE = "delete";
 
-    public: static std::string DUPLICATE = "duplicate";
+    public: static inline std::string DUPLICATE = "duplicate";
 
-    public: static std::string SELECT = "select";
+    public: static inline std::string SELECT = "select";
 
-    public: static std::string ROTATE = "rotate";
+    public: static inline std::string ROTATE = "rotate";
 
-    public: static std::string EXPLODE = "explode";
+    public: static inline std::string EXPLODE = "explode";
 
-    public: static std::string AUTOEXPLODE = "autoExplode";
+    public: static inline std::string AUTOEXPLODE = "autoExplode";
 
-    public: static std::string CENTER = "center";
+    public: static inline std::string CENTER = "center";
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void addListener(MyCanvasEventListener listener){
-MyCanvasEventService::listenerList.add(listener.getClass(), listener);
+    public: static void addListener(MyCanvasEventListener* listener){
+MyCanvasEventService::listenerList()->add(listener->getClass(), dynamic_cast<java::util::EventListener*>(listener));
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void removeListener(MyCanvasEventListener listener){
-MyCanvasEventService::listenerList.remove(listener.getClass(), listener);
+    public: static void removeListener(MyCanvasEventListener* listener){
+MyCanvasEventService::listenerList()->remove(listener->getClass(), dynamic_cast<java::util::EventListener*>(listener));
     
 }
 
@@ -86,9 +92,9 @@ MyCanvasEventService::listenerList.remove(listener.getClass(), listener);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void fire(MyCanvasEvent evt){
+    public: static void fire(MyCanvasEvent* evt){
 
-    std::vector<Object*> listeners = listenerList.getListenerList();;
+    std::vector<Object*> listeners = listenerList()->getListenerList();;
     
 
 
@@ -102,10 +108,10 @@ MyCanvasEventService::listenerList.remove(listener.getClass(), listener);
                         
                                     {
                                     
-                        if(evt.getCommand().compareTo(MyCanvasEventService::DELETE) == 0)
+                        if(evt->getCommand()->compareTo(MyCanvasEventService::DELETE) == 0)
                         
                                     {
-                                     = listeners[i +1]
+                                     = dynamic_cast<MyCanvasEventListener*>(listeners[i +1])
 .
                     delete(evt);
     
@@ -113,10 +119,10 @@ MyCanvasEventService::listenerList.remove(listener.getClass(), listener);
                                     }
                                 
                              else 
-                        if(evt.getCommand().compareTo(MyCanvasEventService::DUPLICATE) == 0)
+                        if(evt->getCommand()->compareTo(MyCanvasEventService::DUPLICATE) == 0)
                         
                                     {
-                                     = listeners[i +1]
+                                     = dynamic_cast<MyCanvasEventListener*>(listeners[i +1])
 .
                     duplicate(evt);
     
@@ -124,10 +130,10 @@ MyCanvasEventService::listenerList.remove(listener.getClass(), listener);
                                     }
                                 
                              else 
-                        if(evt.getCommand().compareTo(MyCanvasEventService::SELECT) == 0)
+                        if(evt->getCommand()->compareTo(MyCanvasEventService::SELECT) == 0)
                         
                                     {
-                                     = listeners[i +1]
+                                     = dynamic_cast<MyCanvasEventListener*>(listeners[i +1])
 .
                     select(evt);
     
@@ -135,10 +141,10 @@ MyCanvasEventService::listenerList.remove(listener.getClass(), listener);
                                     }
                                 
                              else 
-                        if(evt.getCommand().compareTo(MyCanvasEventService::ROTATE) == 0)
+                        if(evt->getCommand()->compareTo(MyCanvasEventService::ROTATE) == 0)
                         
                                     {
-                                     = listeners[i +1]
+                                     = dynamic_cast<MyCanvasEventListener*>(listeners[i +1])
 .
                     rotate(evt);
     
@@ -146,10 +152,10 @@ MyCanvasEventService::listenerList.remove(listener.getClass(), listener);
                                     }
                                 
                              else 
-                        if(evt.getCommand().compareTo(MyCanvasEventService::EXPLODE) == 0)
+                        if(evt->getCommand()->compareTo(MyCanvasEventService::EXPLODE) == 0)
                         
                                     {
-                                     = listeners[i +1]
+                                     = dynamic_cast<MyCanvasEventListener*>(listeners[i +1])
 .
                     explode(evt);
     
@@ -157,10 +163,10 @@ MyCanvasEventService::listenerList.remove(listener.getClass(), listener);
                                     }
                                 
                              else 
-                        if(evt.getCommand().compareTo(MyCanvasEventService::AUTOEXPLODE) == 0)
+                        if(evt->getCommand()->compareTo(MyCanvasEventService::AUTOEXPLODE) == 0)
                         
                                     {
-                                     = listeners[i +1]
+                                     = dynamic_cast<MyCanvasEventListener*>(listeners[i +1])
 .
                     autoExplode(evt);
     
@@ -168,10 +174,10 @@ MyCanvasEventService::listenerList.remove(listener.getClass(), listener);
                                     }
                                 
                              else 
-                        if(evt.getCommand().compareTo(MyCanvasEventService::CENTER) == 0)
+                        if(evt->getCommand()->compareTo(MyCanvasEventService::CENTER) == 0)
                         
                                     {
-                                     = listeners[i +1]
+                                     = dynamic_cast<MyCanvasEventListener*>(listeners[i +1])
 .
                     center(evt);
     

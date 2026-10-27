@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -56,13 +64,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasePatrolAI.h"
+        #include "org/allbinary/game/ag/ai/scroller/BasePatrolAI.h"
 
 class RandomPatrolAI: public BasePatrolAI {
 
     private: bool changedDirection = true;
 
-public: RandomPatrolAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput) : BasePatrolAI(hashtable, ownerLayerInterface, gameInput){
+public: RandomPatrolAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasePatrolAI(hashtable, ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,14 +83,14 @@ this->updateRandomDistance();
 
 
     private: void updateRandomDistance(){
-this->currentDistance= MyRandomFactory::getInstance().getAbsoluteNextInt(this->maxDistance.intValue());
+this->currentDistance= MyRandomFactory::getInstance()->getAbsoluteNextInt(this->maxDistance.intValue());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
 super.update();
     
 super.processKeyAI(this->keyDirection);

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -81,9 +87,9 @@ class XslHelper
             : public Object
          {
 
-    private: static XslHelper instance() { return XslHelper(); }
+    private: static XslHelper* instance() { static std::unique_ptr<XslHelper> value(new XslHelper()); return value.get(); }
 
-    public: static XslHelper getInstance(){
+    public: static XslHelper* getInstance(){
 
 
 
@@ -99,26 +105,26 @@ private: XslHelper(){
 
                 //@Throws(Exception.constructor)
             
-    public: OutputStream translate(StreamSource xsltStreamSource, StreamSource xmlStreamSource, StreamResult streamResult){
+    public: OutputStream* translate(StreamSource* xsltStreamSource, StreamSource* xmlStreamSource, StreamResult* streamResult){
 
         try {
             
-    TransformerFactory transformerFactory = TransformerFactory::newInstance();;
+    TransformerFactory* transformerFactory = TransformerFactory::newInstance();;
     
 
-    Transformer transformer = transformerFactory.newTransformer(xsltStreamSource);;
+    Transformer* transformer = transformerFactory->newTransformer(xsltStreamSource);;
     
-transformer.transform(xmlStreamSource, streamResult);
+transformer->transform(xmlStreamSource, streamResult);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return streamResult.getOutputStream();;
+                        return streamResult->getOutputStream();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -132,28 +138,28 @@ transformer.transform(xmlStreamSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public: OutputStream translate(URIResolver resolver, StreamSource xsltStreamSource, StreamSource xmlStreamSource, StreamResult streamResult){
+    public: OutputStream* translate(URIResolver* resolver, StreamSource* xsltStreamSource, StreamSource* xmlStreamSource, StreamResult* streamResult){
 
         try {
             
-    TransformerFactory tFactory = TransformerFactory::newInstance();;
+    TransformerFactory* tFactory = TransformerFactory::newInstance();;
     
-tFactory.setURIResolver(resolver);
+tFactory->setURIResolver(resolver);
     
 
-    Transformer transformer = tFactory.newTransformer(xsltStreamSource);;
+    Transformer* transformer = tFactory->newTransformer(xsltStreamSource);;
     
-transformer.transform(xmlStreamSource, streamResult);
+transformer->transform(xmlStreamSource, streamResult);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return streamResult.getOutputStream();;
+                        return streamResult->getOutputStream();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -167,26 +173,26 @@ transformer.transform(xmlStreamSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string translateTemplate(Templates templates, StreamSource xmlStreamSource){
+    public: std::string translateTemplate(Templates* templates, StreamSource* xmlStreamSource){
 
         try {
             
-    ByteArrayOutputStream outputStream = ByteArrayOutputStream();;
+    ByteArrayOutputStream* outputStream = new ByteArrayOutputStream();;
     
 
-    StreamResult streamResult = StreamResult(outputStream);;
+    StreamResult* streamResult = new StreamResult(outputStream);;
     
-templates.newTransformer().transform(xmlStreamSource, streamResult);
+templates->newTransformer()->transform(xmlStreamSource, streamResult);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return streamResult.getOutputStream().toString();;
+                        return streamResult->getOutputStream()->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -200,21 +206,21 @@ templates.newTransformer().transform(xmlStreamSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string translate(StreamSource xsltStreamSource, Document xmlDocument){
+    public: std::string translate(StreamSource* xsltStreamSource, Document* xmlDocument){
 
         try {
             
-    ByteArrayOutputStream outputStream = ByteArrayOutputStream();;
+    ByteArrayOutputStream* outputStream = new ByteArrayOutputStream();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->translate(xsltStreamSource, StreamSource(StringBufferInputStream(XmlDocumentHelper::toString(xmlDocument))), StreamResult(outputStream)).toString();;
+                        return this->translate(xsltStreamSource, new StreamSource(new StringBufferInputStream(XmlDocumentHelper::toString(xmlDocument))), new StreamResult(outputStream))->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -228,21 +234,21 @@ templates.newTransformer().transform(xmlStreamSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string translate(StreamSource xsltStreamSource, StreamSource xmlStreamSource){
+    public: std::string translate(StreamSource* xsltStreamSource, StreamSource* xmlStreamSource){
 
         try {
             
-    ByteArrayOutputStream outputStream = ByteArrayOutputStream();;
+    ByteArrayOutputStream* outputStream = new ByteArrayOutputStream();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->translate(xsltStreamSource, xmlStreamSource, StreamResult(outputStream)).toString();;
+                        return this->translate(xsltStreamSource, xmlStreamSource, new StreamResult(outputStream))->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -256,21 +262,21 @@ templates.newTransformer().transform(xmlStreamSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string translate(URIResolver resolver, StreamSource xsltStreamSource, StreamSource xmlStreamSource){
+    public: std::string translate(URIResolver* resolver, StreamSource* xsltStreamSource, StreamSource* xmlStreamSource){
 
         try {
             
-    ByteArrayOutputStream outputStream = ByteArrayOutputStream();;
+    ByteArrayOutputStream* outputStream = new ByteArrayOutputStream();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->translate(resolver, xsltStreamSource, xmlStreamSource, StreamResult(outputStream)).toString();;
+                        return this->translate(resolver, xsltStreamSource, xmlStreamSource, new StreamResult(outputStream))->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -284,16 +290,16 @@ templates.newTransformer().transform(xmlStreamSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public: void export(File outputFile, std::string xsltFilePath, Document xmlDocument){
+    public: void export_(File* outputFile, std::string xsltFilePath, Document* xmlDocument){
 
         try {
-            outputFile.createNewFile();
+            outputFile->createNewFile();
     
-this->translate(StreamSource(xsltFilePath), StreamSource(StringBufferInputStream(XmlDocumentHelper::toString(xmlDocument))), StreamResult(outputFile));
+this->translate(new StreamSource(xsltFilePath), new StreamSource(new StringBufferInputStream(XmlDocumentHelper::toString(xmlDocument))), new StreamResult(outputFile));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 

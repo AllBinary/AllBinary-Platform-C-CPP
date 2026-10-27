@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_LOGCONFIGSDATA_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_LOGCONFIGSDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class LogConfigsData
             : public Object
          {
 
-    private: static LogConfigsData instance() { return LogConfigsData(); }
+    private: static LogConfigsData* instance() { static std::unique_ptr<LogConfigsData> value(new LogConfigsData()); return value.get(); }
 
-    public: static LogConfigsData getInstance();
+    public: static LogConfigsData* getInstance();
 
     public: const std::string NAME = "LOG_CONFIGS_NAME";
 

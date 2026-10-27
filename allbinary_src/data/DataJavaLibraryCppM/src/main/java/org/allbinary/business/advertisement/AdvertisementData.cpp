@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class AdvertisementData
             : public Object
          {
 
-    private: static AdvertisementData instance() { return AdvertisementData(); }
+    private: static AdvertisementData* instance() { static std::unique_ptr<AdvertisementData> value(new AdvertisementData()); return value.get(); }
 
-    public: static AdvertisementData getInstance(){
+    public: static AdvertisementData* getInstance(){
 
 
 

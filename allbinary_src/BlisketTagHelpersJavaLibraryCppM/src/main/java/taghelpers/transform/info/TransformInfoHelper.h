@@ -21,6 +21,12 @@
         #ifndef TAGHELPERS_TRANSFORM_INFO_TRANSFORMINFOHELPER_H
         #define TAGHELPERS_TRANSFORM_INFO_TRANSFORMINFOHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -65,11 +71,11 @@
         
 class TransformInfoHelper: public BasicTable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: Portion portion;
+    private: Portion* portion;
 
-public: TransformInfoHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: TransformInfoHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
     public: std::string drop();
 

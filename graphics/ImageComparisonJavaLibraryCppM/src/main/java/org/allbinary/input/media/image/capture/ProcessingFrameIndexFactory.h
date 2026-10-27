@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_PROCESSINGFRAMEINDEXFACTORY_H
         #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_PROCESSINGFRAMEINDEXFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,7 +52,7 @@ class ProcessingFrameIndexFactory
             : public Object
          {
 
-    private: static int64_t currentFrame = 0;
+    private: static inline int64_t currentFrame = 0;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: static int64_t next();

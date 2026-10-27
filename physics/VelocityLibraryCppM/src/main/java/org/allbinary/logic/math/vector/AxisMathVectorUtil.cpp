@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/math/NoDecimalTrigTable.h>
@@ -46,9 +52,9 @@ class AxisMathVectorUtil
             : public Object
          {
 
-    private: static AxisMathVectorUtil instance() { return AxisMathVectorUtil(); }
+    private: static AxisMathVectorUtil* instance() { static std::unique_ptr<AxisMathVectorUtil> value(new AxisMathVectorUtil()); return value.get(); }
 
-    public: static AxisMathVectorUtil getInstance(){
+    public: static AxisMathVectorUtil* getInstance(){
 
 
 
@@ -58,14 +64,14 @@ class AxisMathVectorUtil
 }
 
 
-    private: const NoDecimalTrigTable noDecimalTrigTable = NoDecimalTrigTable::getInstance();
+    private: NoDecimalTrigTable* noDecimalTrigTable = NoDecimalTrigTable::getInstance();
 
     public: int64_t calculateX(int64_t magnitude, int32_t angle){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return magnitude *this->noDecimalTrigTable.cos(angle) /10;
+                        return magnitude *this->noDecimalTrigTable->cos(angle) /10;
     
 }
 
@@ -75,7 +81,7 @@ class AxisMathVectorUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return magnitude *this->noDecimalTrigTable.sin(angle) /10;
+                        return magnitude *this->noDecimalTrigTable->sin(angle) /10;
     
 }
 
@@ -85,7 +91,7 @@ class AxisMathVectorUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return magnitude *this->noDecimalTrigTable.sin(otherAngle) /10;
+                        return magnitude *this->noDecimalTrigTable->sin(otherAngle) /10;
     
 }
 

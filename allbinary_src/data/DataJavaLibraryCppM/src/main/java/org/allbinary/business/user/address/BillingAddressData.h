@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_ADDRESS_BILLINGADDRESSDATA_H
         #define ORG_ALLBINARY_BUSINESS_USER_ADDRESS_BILLINGADDRESSDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,39 +52,39 @@ class BillingAddressData
             : public Object
          {
 
-    public: static const int32_t MAX = 255;
+    public: static inline const int32_t MAX = 255;
 
-    public: static const int32_t MIN = 0;
+    public: static inline const int32_t MIN = 0;
 
-    public: static const std::string MULTIPLE = "BILLINGADDRESSES";
+    public: static inline const std::string MULTIPLE = "BILLINGADDRESSES";
 
-    public: static const std::string STATES = "BILLINGADDRESS_STATES";
+    public: static inline const std::string STATES = "BILLINGADDRESS_STATES";
 
-    public: static const std::string SETTOSHIPPINGADDRESS = "Set To Shipping Address";
+    public: static inline const std::string SETTOSHIPPINGADDRESS = "Set To Shipping Address";
 
-    public: static const std::string SELECT = "Select Billing Address";
+    public: static inline const std::string SELECT = "Select Billing Address";
 
-    public: static const std::string SETTOSHIPPINGADDRESSNAME = "SETTOSHIPPINGADDRESS";
+    public: static inline const std::string SETTOSHIPPINGADDRESSNAME = "SETTOSHIPPINGADDRESS";
 
-    public: static const std::string BILLINGADDRESSES = "BILLINGADDRESSES";
+    public: static inline const std::string BILLINGADDRESSES = "BILLINGADDRESSES";
 
-    public: static const std::string BILLINGADDRESS = "BILLINGADDRESS";
+    public: static inline const std::string BILLINGADDRESS = "BILLINGADDRESS";
 
-    public: static const std::string ID = "BILLINGADDRESS_ID";
+    public: static inline const std::string ID = "BILLINGADDRESS_ID";
 
-    public: static const std::string ADDRESS = "BILLINGADDRESS_ADDRESS";
+    public: static inline const std::string ADDRESS = "BILLINGADDRESS_ADDRESS";
 
-    public: static const std::string NAME = "BILLINGADDRESS_NAME";
+    public: static inline const std::string NAME = "BILLINGADDRESS_NAME";
 
-    public: static const std::string STREET = "BILLINGADDRESS_STREET";
+    public: static inline const std::string STREET = "BILLINGADDRESS_STREET";
 
-    public: static const std::string CITY = "BILLINGADDRESS_CITY";
+    public: static inline const std::string CITY = "BILLINGADDRESS_CITY";
 
-    public: static const std::string STATE = "BILLINGADDRESS_STATE";
+    public: static inline const std::string STATE = "BILLINGADDRESS_STATE";
 
-    public: static const std::string CODE = "BILLINGADDRESS_CODE";
+    public: static inline const std::string CODE = "BILLINGADDRESS_CODE";
 
-    public: static const std::string COUNTRY = "BILLINGADDRESS_COUNTRY";
+    public: static inline const std::string COUNTRY = "BILLINGADDRESS_COUNTRY";
 
 private: BillingAddressData();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -50,16 +56,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PlayerGameInput.h"
-#include "GameInputProcessorInterface.h"
+        #include "org/allbinary/game/input/PlayerGameInput.h"
+#include "org/allbinary/game/input/GameInputProcessorInterface.h"
 
 class GameInputProcessorComposite: public PlayerGameInput {
 
     private: std::string name;
 
-    private: GameInputProcessorInterface gameInputProcessorInterface;
+    private: GameInputProcessorInterface* gameInputProcessorInterface;
 
-public: GameInputProcessorComposite(std::string name, GameInputProcessorInterface gameInputProcessorInterface) : PlayerGameInput(BasicArrayListD(), BasicArrayListD(),  -1){
+public: GameInputProcessorComposite(std::string name, GameInputProcessorInterface* gameInputProcessorInterface) : PlayerGameInput(new BasicArrayListD(), new BasicArrayListD(),  -1){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -78,15 +84,15 @@ this->gameInputProcessorInterface= gameInputProcessorInterface;
 
         try {
             
-    BasicArrayList list = this->getGameKeyEventList();;
+    BasicArrayList* list = this->getGameKeyEventList();;
     
-this->gameInputProcessorInterface.onInput(list);
+this->gameInputProcessorInterface->onInput(list);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.UPDATE, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.UPDATE, &e);
     
 }
 
@@ -100,7 +106,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.UPDAT
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().append(super.toString()).append(this->NAME_LABEL).append(this->name).toString();;
+                        return (new StringMaker())->append(super.toString())->append(this->NAME_LABEL)->append(this->name)->toString();;
     
 }
 

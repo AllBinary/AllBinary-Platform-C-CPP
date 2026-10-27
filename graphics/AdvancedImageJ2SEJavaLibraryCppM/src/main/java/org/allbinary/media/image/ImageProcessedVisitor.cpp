@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/awt/image/BufferedImage.h>
 
       
@@ -42,13 +48,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageProcessorInputCompositeInterface.h"
+        #include "org/allbinary/media/image/ImageProcessorInputCompositeInterface.h"
 
 class ImageProcessedVisitor: public ImageProcessorInputCompositeInterface {
 
                 //@Throws(IOException.constructor)
             
-    void visit(BufferedImage generatedBufferedImage, std::string nameEnding, int32_t index)
+    public: virtual void visit(BufferedImage* generatedBufferedImage, std::string nameEnding, int32_t index) = 0;
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,15 +44,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLObject3dProcessor.h"
+        #include "org/allbinary/graphics/opengles/shader/OpenGLObject3dProcessor.h"
 
 class NullOpenGLTextureProcessor
             : public Object
          {
 
-    private: static OpenGLObject3dProcessor instance() { return OpenGLObject3dProcessor(); }
+    private: static OpenGLObject3dProcessor* instance() { static std::unique_ptr<OpenGLObject3dProcessor> value(new OpenGLObject3dProcessor()); return value.get(); }
 
-    public: static OpenGLObject3dProcessor getInstance(){
+    public: static OpenGLObject3dProcessor* getInstance(){
 
 
 

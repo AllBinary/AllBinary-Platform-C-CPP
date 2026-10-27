@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -43,9 +49,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PointsDomUtil.h"
-#include "LinesGraphicItem.h"
-#include "GraphicItemInterface.h"
+        #include "org/allbinary/graphics/j2me/workarea/tools/PointsDomUtil.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h"
 
 class GraphicItemBuilder
             : public Object
@@ -53,19 +59,19 @@ class GraphicItemBuilder
 
                 //@Throws(Exception.constructor)
             
-    public: static GraphicItemInterface getInstance(Node node){
+    public: static GraphicItemInterface* getInstance(Node* node){
 
-    std::string graphicItemName = node.getNodeName();;
+    std::string graphicItemName = node->getNodeName();;
     
 
-                        if(graphicItemName.compare(PointsDomUtil::getInstance().LINES) == 0)
+                        if(graphicItemName.compare(PointsDomUtil::getInstance()->LINES) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LinesGraphicItem(node);
+                        return new LinesGraphicItem(node);
     
 
                                     }
@@ -74,7 +80,7 @@ class GraphicItemBuilder
                             
 
 
-                            throw Exception("Graphic Item Does Not Exist: " +graphicItemName);
+                            throw new Exception("Graphic Item Does Not Exist: " +graphicItemName);
                     
 
                         }

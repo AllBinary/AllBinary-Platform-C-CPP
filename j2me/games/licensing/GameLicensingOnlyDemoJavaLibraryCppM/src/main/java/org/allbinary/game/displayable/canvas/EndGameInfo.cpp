@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/GameInfo.h>
@@ -58,13 +64,13 @@ class EndGameInfo
 
     private: const std::string TEASER_DEMO_GAME_END = "Demo Game Over.";
 
-    private: std::string gameOverStr = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string gameOverStr = StringUtil::getInstance()->EMPTY_STRING;
 
     private: std::string winStr = this->gameOverStr;
 
-    public: void update(GameInfo gameInfo, MyCanvas myCanvas){
+    public: void update(GameInfo* gameInfo, MyCanvas* myCanvas){
 
-                        if(gameInfo.isLastLevel())
+                        if(gameInfo->isLastLevel())
                         
                                     {
                                     this->setWinStr(this->TEASER_DEMO_GAME_END_LAST_LEVEL);

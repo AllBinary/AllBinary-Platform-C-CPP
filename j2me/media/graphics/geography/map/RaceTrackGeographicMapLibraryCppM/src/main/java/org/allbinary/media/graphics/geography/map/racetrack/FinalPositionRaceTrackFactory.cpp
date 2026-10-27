@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class FinalPositionRaceTrackFactory
             : public Object
          {
 
-    public: static const int32_t FIRST_POSITION = 1;
+    public: static inline const int32_t FIRST_POSITION = 1;
 
-    private: static int32_t index = FinalPositionRaceTrackFactory::FIRST_POSITION;
+    private: static inline int32_t index = FinalPositionRaceTrackFactory::FIRST_POSITION;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: static int32_t getInstance(){

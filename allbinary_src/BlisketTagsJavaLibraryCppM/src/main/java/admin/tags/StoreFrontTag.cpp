@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
@@ -71,13 +79,13 @@
         
 class StoreFrontTag: public CustomTagSupport {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string command;
 
     private: std::string storeName;
 
-    private: HashMap<Object*, Object*> propertiesHashMap;
+    private: HashMap<Object*, Object*>* propertiesHashMap;
 
 public: StoreFrontTag(){
 }
@@ -101,14 +109,14 @@ this->storeName= value;
 
         try {
             
-    Object* anyType = StoreFrontHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = (new StoreFrontHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    Method method = anyType->constructor.name.getMethod("getCurrentLocation", 
+    Method* method = anyType->getClass()->getMethod("getCurrentLocation", 
                             nullptr);;
     
 
-    std::string result = method.invoke(anyType, 
+    std::string result = method->invoke(anyType, 
                             nullptr);;
     
 
@@ -119,7 +127,7 @@ this->storeName= value;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -129,16 +137,16 @@ this->storeName= value;
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
     std::string error = "Failed to retrieve current location";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "getCurrentLocation()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "getCurrentLocation()", &e);
     
 
                                     }
@@ -150,7 +158,7 @@ this->storeName= value;
                         return error;
     
 }
-*/
+
 }
 
 
@@ -160,14 +168,14 @@ this->storeName= value;
 
         try {
             
-    Object* anyType = StoreFrontHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = (new StoreFrontHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    Method method = anyType->constructor.name.getMethod("getCurrentHomeLocation", 
+    Method* method = anyType->getClass()->getMethod("getCurrentHomeLocation", 
                             nullptr);;
     
 
-    std::string result = method.invoke(anyType, 
+    std::string result = method->invoke(anyType, 
                             nullptr);;
     
 
@@ -178,7 +186,7 @@ this->storeName= value;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -188,16 +196,16 @@ this->storeName= value;
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
     std::string error = "Failed to retrieve current home location";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "getCurrentHomeLocation()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "getCurrentHomeLocation()", &e);
     
 
                                     }
@@ -209,7 +217,7 @@ this->storeName= value;
                         return error;
     
 }
-*/
+
 }
 
 
@@ -222,15 +230,15 @@ this->storeName= value;
                         if(true)
                         
                                     {
-                                    this->propertiesHashMap= StdUtil::getInstance().createHashMap();
+                                    this->propertiesHashMap= StdUtil::getInstance()->createHashMap();
     
-this->propertiesHashMap.put(StoreFrontData::getInstance().NAME, this->storeName);
+this->propertiesHashMap->put(StoreFrontData::getInstance()->NAME, this->storeName);
     
 
                         if(this->command.compare(org.allbinary.globals.GLOBALS2.GETCURRENTLOCATION) == 0)
                         
                                     {
-                                    pageContext.getOut().print(this->getCurrentLocation());
+                                    pageContext.getOut()->print(this->getCurrentLocation());
     
 
                                     }
@@ -239,7 +247,7 @@ this->propertiesHashMap.put(StoreFrontData::getInstance().NAME, this->storeName)
                         if(this->command.compare(org.allbinary.globals.GLOBALS2.GETCURRENTHOMELOCATION) == 0)
                         
                                     {
-                                    pageContext.getOut().print(this->getCurrentHomeLocation());
+                                    pageContext.getOut()->print(this->getCurrentHomeLocation());
     
 
                                     }
@@ -255,9 +263,9 @@ this->propertiesHashMap.put(StoreFrontData::getInstance().NAME, this->storeName)
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
-AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
     
 
 
@@ -268,9 +276,9 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 
@@ -279,7 +287,7 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
                         return SKIP_BODY;
     
 }
-*/
+
 }
 
 

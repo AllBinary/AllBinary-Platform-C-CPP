@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -62,21 +68,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MusicStrings.h"
+        #include "org/allbinary/media/audio/music/MusicStrings.h"
 
 class BaseMusicService: public Service {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const CommonStateStrings commonStateStrings = CommonStateStrings::getInstance();
+    private: CommonStateStrings* commonStateStrings = CommonStateStrings::getInstance();
 
     private: const std::string ALREADY_PLAYING = "This is one song per music service";
 
     private: const std::string WAITING_FOR_MUSIC_TO_END = "Waiting for music to end";
 
-    private: MediaPlayer player = NullAndroidCanvas::NULL_MEDIA_PLAYER;
+    private: MediaPlayer* player = NullAndroidCanvas::NULL_MEDIA_PLAYER;
 
     private: int32_t songId =  -1;
 
@@ -84,8 +90,8 @@ class BaseMusicService: public Service {
 
     private: int32_t rightVolume =  -1;
 
-    public: IBinder onBind(Intent intent){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStateStrings.BIND);
+    public: IBinder* onBind(Intent* intent){
+this->logUtil->putF(this->commonStrings->START, this, this->commonStateStrings->BIND);
     
 
 
@@ -97,25 +103,25 @@ this->logUtil.putF(this->commonStrings.START, this, this->commonStateStrings.BIN
 
 
     public: void onCreate(){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStateStrings.CREATE);
+this->logUtil->putF(this->commonStrings->START, this, this->commonStateStrings->CREATE);
     
 }
 
 
     public: void onDestroy(){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStateStrings.DESTROY);
+this->logUtil->putF(this->commonStrings->START, this, this->commonStateStrings->DESTROY);
     
 
                         if(this->player != NullAndroidCanvas::NULL_MEDIA_PLAYER)
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStateStrings.PAUSE);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStateStrings->PAUSE);
     
-this->player.stop();
+this->player->stop();
     
-this->player.reset();
+this->player->reset();
     
-this->player.release();
+this->player->release();
     
 
                                     }
@@ -128,9 +134,9 @@ this->player.release();
                         if(this->player != NullAndroidCanvas::NULL_MEDIA_PLAYER)
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStateStrings.PAUSE);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStateStrings->PAUSE);
     
-this->player.pause();
+this->player->pause();
     
 
                                     }
@@ -140,12 +146,12 @@ this->player.pause();
 
     public: void resume(){
 
-                        if(this->player != NullAndroidCanvas::NULL_MEDIA_PLAYER && !this->player.isPlaying())
+                        if(this->player != NullAndroidCanvas::NULL_MEDIA_PLAYER && !this->player->isPlaying())
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStateStrings.RESUME);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStateStrings->RESUME);
     
-this->player.start();
+this->player->start();
     
 
                                     }
@@ -156,24 +162,24 @@ this->player.start();
     public: void start(){
 this->player= MediaPlayer::create(this, this->songId);
     
-this->player.setVolume((this->leftVolume) /100.0, (this->rightVolume) /100.0);
+this->player->setVolume((this->leftVolume) /100.0, (this->rightVolume) /100.0);
     
-this->player.setLooping(false);
+this->player->setLooping(false);
     
-this->player.start();
+this->player->start();
     
 }
 
 
-    public: void onStart(Intent intent, int32_t startid){
+    public: void onStart(Intent* intent, int32_t startid){
 this->onStartCommandIntent(intent);
     
-this->logUtil.putF(this->commonStrings.START, this, this->commonStateStrings.START);
+this->logUtil->putF(this->commonStrings->START, this, this->commonStateStrings->START);
     
 }
 
 
-    public: int32_t onStartCommand(Intent intent, int32_t flags, int32_t startId){
+    public: int32_t onStartCommand(Intent* intent, int32_t flags, int32_t startId){
 this->onStartCommandIntent(intent);
     
 
@@ -185,11 +191,11 @@ this->onStartCommandIntent(intent);
 }
 
 
-    public: void onStartCommandIntent(Intent intent){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStateStrings.ON_START_COMMAND);
+    public: void onStartCommandIntent(Intent* intent){
+this->logUtil->putF(this->commonStrings->START, this, this->commonStateStrings->ON_START_COMMAND);
     
 
-    MusicStrings musicStrings = MusicStrings::getInstance();;
+    MusicStrings* musicStrings = MusicStrings::getInstance();;
     
 
                         if(intent != 
@@ -198,9 +204,9 @@ this->logUtil.putF(this->commonStrings.START, this, this->commonStateStrings.ON_
                         
                                     {
                                     
-    int32_t command = intent.getIntExtra(this->commonStateStrings.ON_START_COMMAND,  -1);;
+    int32_t command = intent->getIntExtra(this->commonStateStrings->ON_START_COMMAND,  -1);;
     
-this->logUtil.putF(CommonLabels::getInstance().COMMAND_LABEL +command, this, this->commonStateStrings.ON_START_COMMAND);
+this->logUtil->putF(CommonLabels::getInstance()->COMMAND_LABEL +command, this, this->commonStateStrings->ON_START_COMMAND);
     
 
                         if(command == 1)
@@ -233,11 +239,11 @@ this->logUtil.putF(CommonLabels::getInstance().COMMAND_LABEL +command, this, thi
                                     }
                                 
                         else {
-                            this->songId= intent.getIntExtra(musicStrings.SONG_EXTRA,  -1);
+                            this->songId= intent->getIntExtra(musicStrings->SONG_EXTRA,  -1);
     
-this->leftVolume= intent.getIntExtra(musicStrings.LEFT_VOLUME,  -1);
+this->leftVolume= intent->getIntExtra(musicStrings->LEFT_VOLUME,  -1);
     
-this->rightVolume= intent.getIntExtra(musicStrings.RIGHT_VOLUME,  -1);
+this->rightVolume= intent->getIntExtra(musicStrings->RIGHT_VOLUME,  -1);
     
 
                         }
@@ -249,7 +255,7 @@ this->rightVolume= intent.getIntExtra(musicStrings.RIGHT_VOLUME,  -1);
                             
 
 
-                            throw RuntimeException("Started service without intent");
+                            throw new RuntimeException("Started service without intent");
                     
 
                         }
@@ -261,21 +267,21 @@ this->rightVolume= intent.getIntExtra(musicStrings.RIGHT_VOLUME,  -1);
                                     System.gc();
     
 
-                        if(this->player != NullAndroidCanvas::NULL_MEDIA_PLAYER && this->player.isPlaying())
+                        if(this->player != NullAndroidCanvas::NULL_MEDIA_PLAYER && this->player->isPlaying())
                         
                                     {
                                     
-    MediaPlayer player = this->player;;
+    MediaPlayer* player = this->player;;
     
-this->logUtil.putF(this->ALREADY_PLAYING, this, this->commonStateStrings.ON_START_COMMAND);
+this->logUtil->putF(this->ALREADY_PLAYING, this, this->commonStateStrings->ON_START_COMMAND);
     
 
 //inner=true member= isStatic=
 class MusicRunnable: public ARunnable {
 
-    private: BaseMusicService baseMusicService;
+    private: BaseMusicService* baseMusicService;
 
-: MusicRunnable(BaseMusicService baseMusicService){
+: MusicRunnable(BaseMusicService* baseMusicService){
 this->baseMusicService= baseMusicService;
     
 }
@@ -283,32 +289,32 @@ this->baseMusicService= baseMusicService;
 
     public: void run(){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-    CommonStateStrings commonStateStrings = CommonStateStrings::getInstance();;
+    CommonStateStrings* commonStateStrings = CommonStateStrings::getInstance();;
     
 
         try {
             
-        while(player.isPlaying())
+        while(player->isPlaying())
         {
-logUtil.putF(this->baseMusicService.WAITING_FOR_MUSIC_TO_END, this, commonStateStrings.ON_START_COMMAND);
+logUtil->putF(this->baseMusicService->WAITING_FOR_MUSIC_TO_END, this, commonStateStrings->ON_START_COMMAND);
     
 Thread::sleep(1200);
     
 }
 
-this->baseMusicService.onStartCommandIntent(intent);
+this->baseMusicService->onStartCommandIntent(intent);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-logUtil.put(commonStrings.EXCEPTION, this, commonStateStrings.ON_START_COMMAND, e);
+logUtil->put(commonStrings->EXCEPTION, this, commonStateStrings->ON_START_COMMAND, &e);
     
 }
 
@@ -322,12 +328,12 @@ logUtil.put(commonStrings.EXCEPTION, this, commonStateStrings.ON_START_COMMAND, 
                     //Otherwise - statement - EmptyStmt
 
 
-    Runnable runnable = MusicRunnable(this);;
+    Runnable* runnable = new MusicRunnable(this);;
     
 
-    Thread thread = Thread(runnable);;
+    Thread* thread = new Thread(runnable);;
     
-thread.start();
+thread->start();
     
 
 

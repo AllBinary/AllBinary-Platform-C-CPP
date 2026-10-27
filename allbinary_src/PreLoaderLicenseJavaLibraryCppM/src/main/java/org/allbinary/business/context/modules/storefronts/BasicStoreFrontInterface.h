@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONTS_BASICSTOREFRONTINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONTS_BASICSTOREFRONTINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -47,71 +53,71 @@
         
 class BasicStoreFrontInterface {
 
-    std::string getTestHtmlPath();
+    public: virtual std::string getTestHtmlPath() = 0;
 
-    std::string getCurrentHostName();
+    public: virtual std::string getCurrentHostName() = 0;
 
-    std::string getCurrentHostNamePath();
+    public: virtual std::string getCurrentHostNamePath() = 0;
 
-    std::string getCurrentHomeHostName();
+    public: virtual std::string getCurrentHomeHostName() = 0;
 
-    std::string getCurrentHomeHostNamePath();
+    public: virtual std::string getCurrentHomeHostNamePath() = 0;
 
-    std::string getName();
+    public: virtual std::string getName() = 0;
 
-    std::string getUserName();
+    public: virtual std::string getUserName() = 0;
 
-    std::string getBasketName();
+    public: virtual std::string getBasketName() = 0;
 
-    std::string getHomeHostName();
+    public: virtual std::string getHomeHostName() = 0;
 
-    std::string getHomeHostNamePath();
+    public: virtual std::string getHomeHostNamePath() = 0;
 
-    std::string getHostName();
+    public: virtual std::string getHostName() = 0;
 
-    std::string getHostNamePath();
+    public: virtual std::string getHostNamePath() = 0;
 
-    std::string getTestHomeHostName();
+    public: virtual std::string getTestHomeHostName() = 0;
 
-    std::string getTestHomeHostNamePath();
+    public: virtual std::string getTestHomeHostNamePath() = 0;
 
-    std::string getTestHostName();
+    public: virtual std::string getTestHostName() = 0;
 
-    std::string getTestHostNamePath();
+    public: virtual std::string getTestHostNamePath() = 0;
 
-    std::string getStaticPath();
+    public: virtual std::string getStaticPath() = 0;
 
-    std::string getCategoryPath();
+    public: virtual std::string getCategoryPath() = 0;
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList getSubStores();
+    public: virtual BasicArrayList* getSubStores() = 0;
 
-    std::string getTagLocation();
+    public: virtual std::string getTagLocation() = 0;
 
-    std::string getPackageLocation();
+    public: virtual std::string getPackageLocation() = 0;
 
-    std::string getInventoryControl();
+    public: virtual std::string getInventoryControl() = 0;
 
-    std::string getFtp();
+    public: virtual std::string getFtp() = 0;
 
-    std::string getFtpPath();
+    public: virtual std::string getFtpPath() = 0;
 
-    std::string getFtpUserName();
+    public: virtual std::string getFtpUserName() = 0;
 
-    std::string getFtpPassword();
+    public: virtual std::string getFtpPassword() = 0;
 
-    std::string getTestFtp();
+    public: virtual std::string getTestFtp() = 0;
 
-    std::string getTestFtpPath();
+    public: virtual std::string getTestFtpPath() = 0;
 
-    std::string getTestFtpUserName();
+    public: virtual std::string getTestFtpUserName() = 0;
 
-    std::string getTestFtpPassword();
+    public: virtual std::string getTestFtpPassword() = 0;
 
-    std::string getTimeCreated();
+    public: virtual std::string getTimeCreated() = 0;
 
-    std::string getLastModified();
+    public: virtual std::string getLastModified() = 0;
 
 };
 

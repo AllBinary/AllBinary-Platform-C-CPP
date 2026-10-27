@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_EVENT_ANALOGCONTROLLERCONFIGURATIONEVENTLISTENERINTERFACE_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_EVENT_ANALOGCONTROLLERCONFIGURATIONEVENTLISTENERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
@@ -44,13 +50,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnalogControllerConfigurationEvent.h"
+        #include "org/allbinary/android/input/motion/event/AnalogControllerConfigurationEvent.h"
 
 class AnalogControllerConfigurationEventListenerInterface: public EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    void onAnalogControllerConfigurationEvent(AnalogControllerConfigurationEvent analogControllerConfigurationEvent);
+    public: virtual void onAnalogControllerConfigurationEvent(AnalogControllerConfigurationEvent* analogControllerConfigurationEvent) = 0;
 
 };
 

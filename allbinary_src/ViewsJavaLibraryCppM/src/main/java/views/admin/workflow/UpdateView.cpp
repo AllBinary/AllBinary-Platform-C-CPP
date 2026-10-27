@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -56,13 +62,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WorkFlowView.h"
+        #include "views/admin/workflow/WorkFlowView.h"
 
 class UpdateView: public WorkFlowView, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: UpdateView(TransformInfoInterface transformInfoInterface) : WorkFlowView(transformInfoInterface){
+public: UpdateView(TransformInfoInterface* transformInfoInterface) : WorkFlowView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -72,7 +78,7 @@ public: UpdateView(TransformInfoInterface transformInfoInterface) : WorkFlowView
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
@@ -83,13 +89,13 @@ public: UpdateView(TransformInfoInterface transformInfoInterface) : WorkFlowView
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -109,23 +115,23 @@ public: UpdateView(TransformInfoInterface transformInfoInterface) : WorkFlowView
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -141,7 +147,7 @@ public: UpdateView(TransformInfoInterface transformInfoInterface) : WorkFlowView
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -151,7 +157,7 @@ public: UpdateView(TransformInfoInterface transformInfoInterface) : WorkFlowView
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTOR_ADJUSTEDCIRCLEANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_VECTOR_ADJUSTEDCIRCLEANIMATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -48,25 +54,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CircleAnimation.h"
+        #include "org/allbinary/animation/vector/CircleAnimation.h"
 
 class AdjustedCircleAnimation: public CircleAnimation {
 
-    public: static AdjustedCircleAnimation createAnimation(int32_t width, int32_t height, int32_t xAdjustment, int32_t yAdjustment, BasicColor basicColor);
+    public: static AdjustedCircleAnimation* createAnimation(int32_t width, int32_t height, int32_t xAdjustment, int32_t yAdjustment, BasicColor* basicColor);
 
-    public: static AdjustedCircleAnimation createW(int32_t width, int32_t height, int32_t innerWidth, BasicColor basicColor);
+    public: static AdjustedCircleAnimation* createW(int32_t width, int32_t height, int32_t innerWidth, BasicColor* basicColor);
 
     private: int32_t xAdjustment= 0;
 
     private: int32_t yAdjustment= 0;
 
-public: AdjustedCircleAnimation(int32_t width, int32_t height, BasicColor basicColor);
+public: AdjustedCircleAnimation(int32_t width, int32_t height, BasicColor* basicColor);
 
     private: void initXY(int32_t xAdjustment, int32_t yAdjustment);
 
     private: void init(int32_t innerWidth);
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
 };
 

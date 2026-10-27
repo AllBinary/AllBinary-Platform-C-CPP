@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/commands/GameCommandsFactory.h>
@@ -58,9 +64,9 @@ class PostGameCommandFactory
             : public Object
          {
 
-    private: static PostGameCommandFactory instance() { return PostGameCommandFactory(); }
+    private: static PostGameCommandFactory* instance() { static std::unique_ptr<PostGameCommandFactory> value(new PostGameCommandFactory()); return value.get(); }
 
-    public: static PostGameCommandFactory getInstance(){
+    public: static PostGameCommandFactory* getInstance(){
 
 
 
@@ -70,23 +76,23 @@ class PostGameCommandFactory
 }
 
 
-    public: void addCommands(MyCanvas canvas){
+    public: void addCommands(MyCanvas* canvas){
 
-    GenericOperatingSystem operatingSystemInterface = OperatingSystemFactory::getInstance().getOperatingSystemInstance();;
+    GenericOperatingSystem* operatingSystemInterface = OperatingSystemFactory::getInstance()->getOperatingSystemInstance();;
     
 
-    GameCommandsFactory gameCommandsFactory = GameCommandsFactory::getInstance();;
+    GameCommandsFactory* gameCommandsFactory = GameCommandsFactory::getInstance();;
     
 
-                        if(!operatingSystemInterface.isOverScan())
+                        if(!operatingSystemInterface->isOverScan())
                         
                                     {
-                                    canvas.addCommand(gameCommandsFactory.TOGGLE_KEYBOARD);
+                                    canvas->addCommand(gameCommandsFactory->TOGGLE_KEYBOARD);
     
 
                                     }
                                 
-MultiPlayerGameFeatureFactory::getInstance().addCommands(canvas);
+MultiPlayerGameFeatureFactory::getInstance()->addCommands(canvas);
     
 }
 

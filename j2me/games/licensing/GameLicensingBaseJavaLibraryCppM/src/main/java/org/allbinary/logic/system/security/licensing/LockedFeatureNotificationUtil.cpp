@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,15 +70,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LicenseStrings.h"
+        #include "org/allbinary/logic/system/security/licensing/LicenseStrings.h"
 
 class LockedFeatureNotificationUtil
             : public Object
          {
 
-    private: static LockedFeatureNotificationUtil instance() { return LockedFeatureNotificationUtil(); }
+    private: static LockedFeatureNotificationUtil* instance() { static std::unique_ptr<LockedFeatureNotificationUtil> value(new LockedFeatureNotificationUtil()); return value.get(); }
 
-    public: static LockedFeatureNotificationUtil getInstance(){
+    public: static LockedFeatureNotificationUtil* getInstance(){
 
 
 
@@ -82,26 +88,26 @@ class LockedFeatureNotificationUtil
 }
 
 
-    private: const GameNotificationEvent gameNotificationEvent = GameNotificationEvent(this, LicenseStrings::getInstance().LOCKED, SmallIntegerSingletonFactory::getInstance().getAt(3), BasicColorFactory::getInstance().RED, BooleanFactory::getInstance().FALSE);
+    private: GameNotificationEvent* gameNotificationEvent = new GameNotificationEvent(this, LicenseStrings::getInstance()->LOCKED, SmallIntegerSingletonFactory::getInstance()->getAt(3), BasicColorFactory::getInstance()->RED, BooleanFactory::getInstance()->FALSE);
 
                 //@Throws(Exception.constructor)
             
     public: void fire(){
-PrimaryPlayerQueueFactory::getInstance().add(ErrorSound::getInstance());
+PrimaryPlayerQueueFactory::getInstance()->add(ErrorSound::getInstance());
     
-GameNotificationEventHandler::getInstance().fireEvent(this->gameNotificationEvent);
+GameNotificationEventHandler::getInstance()->fireEvent(this->gameNotificationEvent);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void fireWithColor(BasicColor basicColor){
-PrimaryPlayerQueueFactory::getInstance().add(ErrorSound::getInstance());
+    public: void fireWithColor(BasicColor* basicColor){
+PrimaryPlayerQueueFactory::getInstance()->add(ErrorSound::getInstance());
     
-this->gameNotificationEvent.setBasicColorP(basicColor);
+this->gameNotificationEvent->setBasicColorP(basicColor);
     
-GameNotificationEventHandler::getInstance().fireEvent(this->gameNotificationEvent);
+GameNotificationEventHandler::getInstance()->fireEvent(this->gameNotificationEvent);
     
 }
 

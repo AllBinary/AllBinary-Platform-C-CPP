@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTHANDLER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -50,36 +56,36 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PressGameKeyEventHandler.h"
-#include "UpGameKeyEventHandler.h"
-#include "DownGameKeyEventHandler.h"
+        #include "org/allbinary/game/input/event/PressGameKeyEventHandler.h"
+#include "org/allbinary/game/input/event/UpGameKeyEventHandler.h"
+#include "org/allbinary/game/input/event/DownGameKeyEventHandler.h"
 
 class GameKeyEventHandler
             : public Object
          {
 
-    private: static GameKeyEventHandler instance() { return GameKeyEventHandler(); }
+    private: static GameKeyEventHandler* instance() { static std::unique_ptr<GameKeyEventHandler> value(new GameKeyEventHandler()); return value.get(); }
 
-    public: static GameKeyEventHandler getInstance();
+    public: static GameKeyEventHandler* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const PressGameKeyEventHandler pressGameKeyEventHandler = PressGameKeyEventHandler::getInstance();
+    private: PressGameKeyEventHandler* pressGameKeyEventHandler = PressGameKeyEventHandler::getInstance();
 
-    private: const UpGameKeyEventHandler upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
+    private: UpGameKeyEventHandler* upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
 
-    private: const DownGameKeyEventHandler downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
+    private: DownGameKeyEventHandler* downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void removeAllListeners();
 
-    public: void addListenerForPlayer(EventListenerInterface eventListenerInterface, int32_t playerInputId);
+    public: void addListenerForPlayer(EventListenerInterface* eventListenerInterface, int32_t playerInputId);
 
-    public: void addListener(EventListenerInterface eventListenerInterface);
+    public: void addListener(EventListenerInterface* eventListenerInterface);
 
-    public: void removeListener(EventListenerInterface eventListenerInterface);
+    public: void removeListener(EventListenerInterface* eventListenerInterface);
 
 };
 

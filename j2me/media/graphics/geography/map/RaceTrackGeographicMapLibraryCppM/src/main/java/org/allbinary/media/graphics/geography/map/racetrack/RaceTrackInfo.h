@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKINFO_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKINFO_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -46,21 +52,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RaceTrackFrictionProperties.h"
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackFrictionProperties.h"
 
 class RaceTrackInfo
             : public Object
          {
 
-    private: Integer id;
+    private: int32_t id;
 
     private: std::string name;
 
-    private: RaceTrackFrictionProperties raceTrackFrictionProperties;
+    private: RaceTrackFrictionProperties* raceTrackFrictionProperties;
 
-    private: BasicColor foregroundBasicColor;
+    private: BasicColor* foregroundBasicColor;
 
-    private: BasicColor backgroundBasicColor;
+    private: BasicColor* backgroundBasicColor;
 
     private: int32_t qualifyTime;
 
@@ -68,11 +74,11 @@ class RaceTrackInfo
 
     private: int32_t totalLaps;
 
-public: RaceTrackInfo(Integer id, std::string name, RaceTrackFrictionProperties raceTrackFrictionProperties, BasicColor foregroundBasicColor, BasicColor backgroundBasicColor, int32_t qualifyTime, int32_t worstContinuePosition, int32_t totalLaps);
+public: RaceTrackInfo(int32_t id, std::string name, RaceTrackFrictionProperties* raceTrackFrictionProperties, BasicColor* foregroundBasicColor, BasicColor* backgroundBasicColor, int32_t qualifyTime, int32_t worstContinuePosition, int32_t totalLaps);
 
-    public: Integer getId();
+    public: int32_t getId();
 
-    private: void setId(Integer id);
+    private: void setId(int32_t id);
 
     public: std::string getName();
 
@@ -90,17 +96,17 @@ public: RaceTrackInfo(Integer id, std::string name, RaceTrackFrictionProperties 
 
     public: void setTotalLaps(int32_t totalLaps);
 
-    public: BasicColor getForegroundBasicColor();
+    public: BasicColor* getForegroundBasicColor();
 
-    public: void setForegroundBasicColor(BasicColor foregroundBasicColor);
+    public: void setForegroundBasicColor(BasicColor* foregroundBasicColor);
 
-    public: BasicColor getBackgroundBasicColor();
+    public: BasicColor* getBackgroundBasicColor();
 
-    public: void setBackgroundBasicColor(BasicColor backgroundBasicColor);
+    public: void setBackgroundBasicColor(BasicColor* backgroundBasicColor);
 
-    public: RaceTrackFrictionProperties getRaceTrackFrictionProperties();
+    public: RaceTrackFrictionProperties* getRaceTrackFrictionProperties();
 
-    public: void setRaceTrackFrictionProperties(RaceTrackFrictionProperties raceTrackFrictionProperties);
+    public: void setRaceTrackFrictionProperties(RaceTrackFrictionProperties* raceTrackFrictionProperties);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLLENGTHINPUT_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLLENGTHINPUT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Integer.h"
         
 
@@ -41,7 +47,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HtmlValueInput.h"
+        #include "org/allbinary/logic/visual/dhtml/html/input/HtmlValueInput.h"
 
 class HtmlLengthInput: public HtmlValueInput {
 
@@ -55,9 +61,9 @@ class HtmlLengthInput: public HtmlValueInput {
 
 public: HtmlLengthInput(std::string before, std::string type, std::string name, std::string value, std::string after);
 
-    public: void setMaxLength(Integer length);
+    public: void setMaxLength(int32_t length);
 
-    public: void setSize(Integer size);
+    public: void setSize(int32_t size);
 
 };
 

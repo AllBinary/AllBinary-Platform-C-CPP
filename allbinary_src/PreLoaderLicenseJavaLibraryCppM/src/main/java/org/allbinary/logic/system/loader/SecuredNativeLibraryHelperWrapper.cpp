@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/system/security/AbKeys.h>
 
       
@@ -45,14 +51,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NativeLibraryHelperWrapper.h"
-#include "SecuredNativeLibraryInterface.h"
+        #include "org/allbinary/logic/system/loader/NativeLibraryHelperWrapper.h"
+#include "org/allbinary/logic/system/loader/SecuredNativeLibraryInterface.h"
 
 class SecuredNativeLibraryHelperWrapper: public NativeLibraryHelperWrapper {
 
-    private: SecuredNativeLibraryInterface securedNativeLibraryInterface;
+    private: SecuredNativeLibraryInterface* securedNativeLibraryInterface;
 
-public: SecuredNativeLibraryHelperWrapper(SecuredNativeLibraryInterface securedNativeLibraryInterface) : NativeLibraryHelperWrapper(securedNativeLibraryInterface.getLibraryName()){
+public: SecuredNativeLibraryHelperWrapper(SecuredNativeLibraryInterface* securedNativeLibraryInterface) : NativeLibraryHelperWrapper(securedNativeLibraryInterface->getLibraryName()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -66,12 +72,12 @@ this->securedNativeLibraryInterface= securedNativeLibraryInterface;
 
                 //@Throws(LicensingException.constructor)
             
-    public: bool unlock(AbeClientInformationInterface abeClientInformation){
+    public: bool unlock(AbeClientInformationInterface* abeClientInformation){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->securedNativeLibraryInterface.unlock(AbKeys::getInstance().getKey(abeClientInformation, this->securedNativeLibraryInterface.getName()));;
+                        return this->securedNativeLibraryInterface->unlock(AbKeys::getInstance()->getKey(abeClientInformation, this->securedNativeLibraryInterface->getName()));;
     
 }
 

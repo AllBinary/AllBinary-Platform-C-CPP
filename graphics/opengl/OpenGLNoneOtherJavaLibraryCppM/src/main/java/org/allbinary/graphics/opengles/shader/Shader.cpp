@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -52,11 +58,11 @@ class Shader
             : public Object
          {
 
-    public: std::string shaderName = StringUtil::getInstance().EMPTY_STRING;
+    public: std::string shaderName = StringUtil::getInstance()->EMPTY_STRING;
 
-    public: BasicArrayList shaderStringList = BasicArrayListUtil::getInstance().getImmutableInstance();
+    public: BasicArrayList* shaderStringList = BasicArrayListUtil::getInstance()->getImmutableInstance();
 
-    public: std::string shaderAsString = StringUtil::getInstance().EMPTY_STRING;
+    public: std::string shaderAsString = StringUtil::getInstance()->EMPTY_STRING;
 
     public: int32_t shaderHandle= 0;
 

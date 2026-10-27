@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENTUTIL_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENTUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,26 +55,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapCellPositionEvent.h"
-#include "GeographicMapCellPositionEventHandler.h"
+        #include "org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEvent.h"
+#include "org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEventHandler.h"
 
 class GeographicMapCellPositionEventUtil
             : public Object
          {
 
-    private: GeographicMapCellPositionEvent geographicMapCellPositionEvent;
+    private: GeographicMapCellPositionEvent* geographicMapCellPositionEvent;
 
-    private: const GeographicMapCellPositionEventHandler geographicMapCellPositionEventHandler = GeographicMapCellPositionEventHandler::getInstance();
+    private: GeographicMapCellPositionEventHandler* geographicMapCellPositionEventHandler = GeographicMapCellPositionEventHandler::getInstance();
 
 public: GeographicMapCellPositionEventUtil(Object* anyType);
 
                 //@Throws(Exception.constructor)
             
-    public: void update(GeographicMapCellPositionTracking geographicMapCellPositionTracking);
+    public: void update(GeographicMapCellPositionTracking* geographicMapCellPositionTracking);
 
                 //@Throws(Exception.constructor)
             
-    public: void remove(GeographicMapCellPositionTracking geographicMapCellPositionTracking);
+    public: void remove(GeographicMapCellPositionTracking* geographicMapCellPositionTracking);
 
 };
 

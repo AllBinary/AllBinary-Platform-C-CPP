@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -83,15 +91,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageCacheBase.h"
+        #include "org/allbinary/image/ImageCacheBase.h"
 
 class ImageCache: public ImageCacheBase {
 
-    public: static const ImageCache NULL_IMAGE_CACHE = ImageCache();
+    public: static ImageCache* NULL_IMAGE_CACHE() { static std::unique_ptr<ImageCache> value(new ImageCache()); return value.get(); }
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const TsUtil tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil = TsUtil::getInstance();
 
 public: ImageCache();
 
@@ -101,11 +109,11 @@ public: ImageCache();
 
                 //@Throws(Exception.constructor)
             
-    public: Image get(std::string caller, int32_t width, int32_t height);
+    public: Image* get(std::string caller, int32_t width, int32_t height);
 
                 //@Throws(Exception.constructor)
             
-    public: Image getWithKey(Object* key);
+    public: Image* getWithKey(Object* key);
 
                 //@Throws(Exception.constructor)
             

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -57,32 +63,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnimationInterfaceFactoryInterface.h"
-#include "AnimationBehaviorFactory.h"
-#include "VectorRotationAnimation.h"
-#include "Animation.h"
+        #include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/AnimationBehaviorFactory.h"
+#include "org/allbinary/animation/VectorRotationAnimation.h"
+#include "org/allbinary/animation/Animation.h"
 
 class VectorRotationAnimationInterfaceFactory
             : public Object
-        : public AnimationInterfaceFactoryInterface {
+        , public AnimationInterfaceFactoryInterface {
 
-    private: std::vector<std::vector<std::vector<int32_t>>> currentPoints = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY_ARRAY;
+    private: std::vector<std::vector<std::vector<int32_t>>> currentPoints = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY_ARRAY;
 
-    private: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
+    private: BasicColor* basicColor = BasicColorFactory::getInstance()->WHITE;
 
-    protected: AnimationBehaviorFactory animationBehaviorFactory;
+    protected: AnimationBehaviorFactory* animationBehaviorFactory;
 
-public: VectorRotationAnimationInterfaceFactory(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehaviorFactory animationBehaviorFactory);
+public: VectorRotationAnimationInterfaceFactory(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor* basicColor, AnimationBehaviorFactory* animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId);
+    public: Animation* getInstance(int32_t instanceId);
 
-    protected: void setBasicColorP(BasicColor basicColor);
+    protected: void setBasicColorP(BasicColor* basicColor);
 
-    protected: BasicColor getBasicColorP();
+    protected: BasicColor* getBasicColorP();
 
-    public: void setInitialScale(ScaleProperties scaleProperties);
+    public: void setInitialScale(ScaleProperties* scaleProperties);
 
 };
 

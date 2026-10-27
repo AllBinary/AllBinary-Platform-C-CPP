@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/w3c/dom/Document.h>
 
       
@@ -45,9 +51,9 @@
         
 class TransformDocumentInterface {
 
-    Node getBaseNode()
+    public: virtual Node* getBaseNode() = 0;
 
-    Document getDoc()
+    public: virtual Document* getDoc() = 0;
 
 };
 

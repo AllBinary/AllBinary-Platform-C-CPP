@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -51,23 +57,23 @@ class TouchButtonFactory
             : public Object
          {
 
-    private: static const TouchButtonFactory SINGLETON = TouchButtonFactory();
+    private: static TouchButtonFactory* SINGLETON() { static std::unique_ptr<TouchButtonFactory> value(new TouchButtonFactory()); return value.get(); }
 
-    public: static TouchButtonFactory getInstance(){
+    public: static TouchButtonFactory* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TouchButtonFactory::SINGLETON;
+                        return TouchButtonFactory::SINGLETON();
     
 }
 
 
-    private: BasicArrayList LIST = BasicArrayListUtil::getInstance().getImmutableInstance();
+    private: BasicArrayList* LIST = BasicArrayListUtil::getInstance()->getImmutableInstance();
 
-    private: BasicArrayList list = this->LIST;
+    private: BasicArrayList* list = this->LIST;
 
-    private: BasicArrayList savedList = this->LIST;
+    private: BasicArrayList* savedList = this->LIST;
 
 private: TouchButtonFactory(){
 }
@@ -84,9 +90,9 @@ this->toggle(false, this->LIST);
     private: bool saved = false;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void toggle(bool save, BasicArrayList list){
+    public: void toggle(bool save, BasicArrayList* list){
 
-                        if(list != BasicArrayListUtil::getInstance().getImmutableInstance())
+                        if(list != BasicArrayListUtil::getInstance()->getImmutableInstance())
                         
                                     {
                                     this->savedList= list;
@@ -144,7 +150,7 @@ this->saved= false;
 
                 //@Throws(Exception.constructor)
             
-    public: void setList(BasicArrayList list){
+    public: void setList(BasicArrayList* list){
 
                         if(list == 
                                     nullptr
@@ -154,7 +160,7 @@ this->saved= false;
                                     
 
 
-                            throw Exception("Null List");
+                            throw new Exception("Null List");
                     
 
                                     }
@@ -164,7 +170,7 @@ this->list= list;
 }
 
 
-    protected: BasicArrayList getList(){
+    protected: BasicArrayList* getList(){
 
 
 

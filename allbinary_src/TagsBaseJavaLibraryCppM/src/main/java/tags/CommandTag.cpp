@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,12 +42,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CustomTagSupport.h"
-#include "TagStrings.h"
+        #include "tags/CustomTagSupport.h"
+#include "tags/TagStrings.h"
 
 class CommandTag: public CustomTagSupport {
 
-    protected: const TagStrings tagStrings = TagStrings::getInstance();
+    protected: TagStrings* tagStrings = TagStrings::getInstance();
 
     private: std::string command;
 

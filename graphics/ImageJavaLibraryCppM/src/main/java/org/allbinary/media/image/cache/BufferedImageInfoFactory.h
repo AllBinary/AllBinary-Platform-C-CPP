@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGEINFOFACTORY_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGEINFOFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -50,15 +56,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BufferedImageInfo.h"
+        #include "org/allbinary/media/image/cache/BufferedImageInfo.h"
 
 class BufferedImageInfoFactory
             : public Object
          {
 
-    private: static HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();
+    private: static inline HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();
 
-    public: static BufferedImageInfo getInstance(int32_t width, int32_t height, int32_t type);
+    public: static BufferedImageInfo* getInstance(int32_t width, int32_t height, int32_t type);
 
 private: BufferedImageInfoFactory();
 

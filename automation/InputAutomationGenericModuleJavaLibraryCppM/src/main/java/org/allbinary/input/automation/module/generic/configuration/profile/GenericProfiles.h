@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -99,25 +105,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GenericProfilesData.h"
-#include "GenericProfileData.h"
-#include "GenericProfile.h"
+        #include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfilesData.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfileData.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfile.h"
 
 class GenericProfiles
             : public Object
-        : public DomNodeInterface, public DomDocumentMappingInterface {
+        , public DomNodeInterface, public DomDocumentMappingInterface {
 
-    public: static const std::string DEFAULT_PROFILES_PATH = "./modules/configs/profiles/";
+    public: static inline const std::string DEFAULT_PROFILES_PATH = "./modules/configs/profiles/";
 
-    public: static const std::string DEFAULT_PROFILE_ACTIONS_PATH = GenericProfiles::DEFAULT_PROFILES_PATH +"actions/";
+    public: static inline const std::string DEFAULT_PROFILE_ACTIONS_PATH = GenericProfiles::DEFAULT_PROFILES_PATH +"actions/";
 
-    public: static const std::string DEFAULT_FILE = GenericProfiles::DEFAULT_PROFILES_PATH +"profiles.xml";
+    public: static inline const std::string DEFAULT_FILE = GenericProfiles::DEFAULT_PROFILES_PATH +"profiles.xml";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: HashMap<Object*, Object*> hashMap;
+    private: HashMap<Object*, Object*>* hashMap;
 
-    private: DefaultListModelHelper profilesDefaultListModelHelper;
+    private: DefaultListModelHelper* profilesDefaultListModelHelper;
 
     private: std::string fileName;
 
@@ -125,13 +131,13 @@ public: GenericProfiles(std::string fileName);
 
                 //@Throws(Exception.constructor)
             
-    private: void initProfiles(Node node);
+    private: void initProfiles(Node* node);
 
-    public: DefaultListModelHelper getDefaultListModelHelper();
+    public: DefaultListModelHelper* getDefaultListModelHelper();
 
                 //@Throws(Exception.constructor)
             
-    public: GenericProfile get(std::string name);
+    public: GenericProfile* get(std::string name);
 
                 //@Throws(Exception.constructor)
             
@@ -143,11 +149,11 @@ public: GenericProfiles(std::string fileName);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
                 //@Throws(Exception.constructor)
             
-    public: Document toXmlDoc();
+    public: Document* toXmlDoc();
 
                 //@Throws(Exception.constructor)
             

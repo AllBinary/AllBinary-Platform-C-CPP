@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_INVENTORY_STOREFRONTINVENTORYSTATISTICSDATA_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_INVENTORY_STOREFRONTINVENTORYSTATISTICSDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class StoreFrontInventoryStatisticsData
             : public Object
          {
 
-    private: static StoreFrontInventoryStatisticsData instance() { return StoreFrontInventoryStatisticsData(); }
+    private: static StoreFrontInventoryStatisticsData* instance() { static std::unique_ptr<StoreFrontInventoryStatisticsData> value(new StoreFrontInventoryStatisticsData()); return value.get(); }
 
-    public: static StoreFrontInventoryStatisticsData getInstance();
+    public: static StoreFrontInventoryStatisticsData* getInstance();
 
 private: StoreFrontInventoryStatisticsData();
 

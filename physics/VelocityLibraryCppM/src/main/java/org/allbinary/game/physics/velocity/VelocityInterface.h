@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYINTERFACE_H
         #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,25 +45,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicVelocityInterface.h"
+        #include "org/allbinary/game/physics/velocity/BasicVelocityInterface.h"
 
 class VelocityInterface: public BasicVelocityInterface {
 
-    int32_t getMaxForwardVelocity();
+    public: virtual int32_t getMaxForwardVelocity() = 0;
 
-    int32_t getMaxReverseVelocity();
+    public: virtual int32_t getMaxReverseVelocity() = 0;
 
-    void limitMaxXYForwardVelocity();
+    public: virtual void limitMaxXYForwardVelocity() = 0;
 
-    void limitMaxXYReverseVelocity();
+    public: virtual void limitMaxXYReverseVelocity() = 0;
 
-    void limitXYToForwardAndReverseMaxVelocity();
+    public: virtual void limitXYToForwardAndReverseMaxVelocity() = 0;
 
-    void limitMaxXYVelocity(int32_t maxVelocity);
+    public: virtual void limitMaxXYVelocity(int32_t maxVelocity) = 0;
 
-    void setMaxForwardVelocity(int32_t maxForwardVelocity);
+    public: virtual void setMaxForwardVelocity(int32_t maxForwardVelocity) = 0;
 
-    void setMaxReverseVelocity(int32_t maxReverseVelocity);
+    public: virtual void setMaxReverseVelocity(int32_t maxReverseVelocity) = 0;
 
 };
 

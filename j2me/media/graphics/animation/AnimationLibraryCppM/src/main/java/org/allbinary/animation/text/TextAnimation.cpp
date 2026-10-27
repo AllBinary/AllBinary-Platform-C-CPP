@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -79,15 +85,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TextChangeListener.h"
+        #include "org/allbinary/animation/text/TextChangeListener.h"
 
 class TextAnimation: public IndexedAnimation, public UpdateMyFontInterface {
 
-    private: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
 
-    protected: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
+    protected: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
 
-    protected: std::vector<std::string> textArrayP = StringUtil::getInstance().ONE_EMPTY_STRING_ARRAY;
+    protected: std::vector<std::string> textArrayP = StringUtil::getInstance()->ONE_EMPTY_STRING_ARRAY;
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
@@ -95,9 +101,9 @@ class TextAnimation: public IndexedAnimation, public UpdateMyFontInterface {
 
     private: int32_t offsetY = 0;
 
-    private: TextChangeListener textChangeListener = TextChangeListener::getInstance();
+    private: TextChangeListener* textChangeListener = TextChangeListener::getInstance();
 
-public: TextAnimation(std::string text, AnimationBehavior animationBehavior) : IndexedAnimation(animationBehavior){
+public: TextAnimation(std::string text, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -109,16 +115,16 @@ this->setText(text);
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->fontHeight= font.getHeight();
+this->fontHeight= font->getHeight();
     
 
     int32_t adjustedFontHeight = static_cast<int32_t>( -(this->fontHeight *2.00));;
     
-this->offsetY= SWTJOGLProcessor::getInstance().isJOGL()
+this->offsetY= SWTJOGLProcessor::getInstance()->isJOGL()
                         ?       
                                 adjustedFontHeight
                                 :
@@ -127,7 +133,7 @@ this->offsetY= SWTJOGLProcessor::getInstance().isJOGL()
 
     ;
     
-this->textChangeListener.onMeasure();
+this->textChangeListener->onMeasure();
     
 this->textChangeListener= TextChangeListener::getInstance();
     
@@ -142,15 +148,15 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
-this->myFontProcessor.process(graphics);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+this->myFontProcessor->process(graphics);
     
 this->paintXYNoUpdate(graphics, x, y);
     
 }
 
 
-    public: void paintXYNoUpdate(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXYNoUpdate(Graphics* graphics, int32_t x, int32_t y){
 this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
 
@@ -163,14 +169,14 @@ this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->
                         for (
     int32_t index = 0;index < size; index++)
         {
-graphics.drawString(this->textArrayP[index], x, y +this->offsetY +(index *this->fontHeight), this->anchor);
+graphics->drawString(this->textArrayP[index], x, y +this->offsetY +(index *this->fontHeight), this->anchor);
     
 }
 
 }
 
 
-    public: void setTextWithOnMeasure(std::string text, TextChangeListener textChangeListener){
+    public: void setTextWithOnMeasure(std::string text, TextChangeListener* textChangeListener){
 this->setText(text);
     
 this->textChangeListener= textChangeListener;
@@ -180,7 +186,7 @@ this->textChangeListener= textChangeListener;
 
     public: void setText(std::string text){
 
-    BasicArrayList list = BasicArrayListD();;
+    BasicArrayList* list = new BasicArrayListD();;
     
 
                         if(true && text.size() > 0)
@@ -200,7 +206,7 @@ this->textChangeListener= textChangeListener;
         {
 startIndex= index;
     
-index= text.indexOf('\n', startIndex);
+index= JavaString::indexOf(text, '\n', startIndex);
     
 endIndex= index;
     
@@ -213,7 +219,7 @@ endIndex= index;
 
                                     }
                                 
-list.add(text.substring(startIndex, endIndex));
+list->add(JavaString::substring(text, startIndex, endIndex));
     
 
                         if(index < 0)
@@ -233,14 +239,14 @@ index++;
                                     }
                                 
 
-                        if(list.size() > 0)
+                        if(list->size() > 0)
                         
                                     {
                                     
-    std::vector<std::string> textArray = std::vector<std::string>(list.size());;
+    std::vector<std::string> textArray = std::vector<std::string>(list->size());;
     
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
 
@@ -249,7 +255,7 @@ index++;
                         for (
     int32_t index = 0;index < size; index++)
         {
-textArray[index]= list.get(index);
+textArray[index]= list->get(index);
     
 }
 
@@ -259,7 +265,7 @@ this->textArrayP= textArray;
                                     }
                                 
                         else {
-                            this->textArrayP= StringUtil::getInstance().ONE_EMPTY_STRING_ARRAY;
+                            this->textArrayP= StringUtil::getInstance()->ONE_EMPTY_STRING_ARRAY;
     
 
                         }

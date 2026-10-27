@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_GAMEMODE_H
         #define ORG_ALLBINARY_GAME_GAMEMODE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -49,13 +55,13 @@ class GameMode
             : public Object
          {
 
-    public: static GameMode NONE = GameMode(StringUtil::getInstance().NULL_STRING);
+    public: static GameMode* NONE() { static std::unique_ptr<GameMode> value(new GameMode(StringUtil::getInstance()->NULL_STRING)); return value.get(); }
 
-    public: static GameMode SERVER = GameMode("Server");
+    public: static GameMode* SERVER() { static std::unique_ptr<GameMode> value(new GameMode("Server")); return value.get(); }
 
-    public: static GameMode CLIENT = GameMode("Client");
+    public: static GameMode* CLIENT() { static std::unique_ptr<GameMode> value(new GameMode("Client")); return value.get(); }
 
-    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
 
 private: GameMode(std::string name);
 

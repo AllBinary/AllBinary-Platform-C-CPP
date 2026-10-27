@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAIL_NEWPASSWORDEMAIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAIL_NEWPASSWORDEMAIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -81,17 +87,17 @@ class NewPasswordEmail
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: AbeClientInformationInterface abeClientInformation;
+    private: AbeClientInformationInterface* abeClientInformation;
 
-    private: UserInterface userInterface;
+    private: UserInterface* userInterface;
 
     private: std::string newPassword;
 
-public: NewPasswordEmail(AbeClientInformationInterface abeClientInformation, UserInterface userInterface, std::string newPassword);
+public: NewPasswordEmail(AbeClientInformationInterface* abeClientInformation, UserInterface* userInterface, std::string newPassword);
 
                 //@Throws(Exception.constructor)
             

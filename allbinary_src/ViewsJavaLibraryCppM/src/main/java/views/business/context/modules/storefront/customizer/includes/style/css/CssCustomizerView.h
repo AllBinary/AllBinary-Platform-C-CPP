@@ -21,6 +21,12 @@
         #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_CSS_CSSCUSTOMIZERVIEW_H
         #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_CSS_CSSCUSTOMIZERVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
@@ -59,11 +65,11 @@
         
 class CssCustomizerView: public HttpStoreComponentView {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: ValidationInterface styleValidationInterface;
+    protected: ValidationInterface* styleValidationInterface;
 
-public: CssCustomizerView(TransformInfoInterface transformInfoInterface);
+public: CssCustomizerView(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             

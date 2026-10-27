@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -68,8 +74,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InitSql.h"
-#include "InitInfo.h"
+        #include "org/allbinary/business/init/InitSql.h"
+#include "org/allbinary/business/init/InitInfo.h"
 
 class InitInfoEntity: public InitSql {
 
@@ -93,7 +99,7 @@ class InitInfoEntity: public InitSql {
 
     private: const std::string FAILED_TO_CREATE = "Failed to create ";
 
-public: InitInfoEntity() : InitSql(UserDbInitInfo()){
+public: InitInfoEntity() : InitSql(new UserDbInitInfo()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -101,37 +107,37 @@ public: InitInfoEntity() : InitSql(UserDbInitInfo()){
                             //For kotlin this is before the body of the constructor.
                     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->sqlStrings.CREATE_TABLE);
+stringBuffer->append(this->sqlStrings.CREATE_TABLE);
     
-stringBuffer.append(this->tableName);
+stringBuffer->append(this->tableName);
     
-stringBuffer.append(this->sqlStrings.START);
+stringBuffer->append(this->sqlStrings.START);
     
-stringBuffer.append(this->NOTHING);
+stringBuffer->append(this->NOTHING);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(InitInfo::getInstance().TESTING);
+stringBuffer->append(InitInfo::getInstance()->TESTING);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(InitInfo::getInstance().TESTHTMLPATH);
+stringBuffer->append(InitInfo::getInstance()->TESTHTMLPATH);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(InitInfo::getInstance().MAINPATH);
+stringBuffer->append(InitInfo::getInstance()->MAINPATH);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(this->sqlStrings.PRIMARY_KEY);
+stringBuffer->append(this->sqlStrings.PRIMARY_KEY);
     
-stringBuffer.append(this->NOTHING);
+stringBuffer->append(this->NOTHING);
     
-stringBuffer.append(this->sqlStrings.END);
+stringBuffer->append(this->sqlStrings.END);
     
-this->tableData= stringBuffer.toString();
+this->tableData= stringBuffer->toString();
     
 this->setTable(this->tableName);
     
@@ -142,12 +148,12 @@ this->setTable(this->tableName);
 
         try {
             
-    HashMap<Object*, Object*> keyAndValue = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* keyAndValue = StdUtil::getInstance()->createHashMap();;
     
-keyAndValue.put(this->NOTHING, this->NOTHING);
+keyAndValue->put(this->NOTHING, this->NOTHING);
     
 
-    HashMap<Object*, Object*> hashMap = getRow(keyAndValue);;
+    HashMap<Object*, Object*>* hashMap = getRow(keyAndValue);;
     
 
                         if(hashMap != 
@@ -155,7 +161,7 @@ keyAndValue.put(this->NOTHING, this->NOTHING);
                                 )
                         
                                     {
-                                    InitInfo::getInstance().set(hashMap);
+                                    InitInfo::getInstance()->set(hashMap);
     
 
 
@@ -168,7 +174,7 @@ keyAndValue.put(this->NOTHING, this->NOTHING);
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADER))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADER))
                         
                                     {
                                     PreLogUtil::put(this->NOT_IN_DB, NAME, this->METHOD_GET);
@@ -187,13 +193,13 @@ keyAndValue.put(this->NOTHING, this->NOTHING);
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
                         
                                     {
-                                    PreLogUtil::putOE(this->commonStrings.EXCEPTION, this->NAME, this->METHOD_GET, e);
+                                    PreLogUtil::putOE(this->commonStrings.EXCEPTION, this->NAME, this->METHOD_GET, &e);
     
 
                                     }
@@ -213,12 +219,12 @@ keyAndValue.put(this->NOTHING, this->NOTHING);
 
         try {
             
-    HashMap<Object*, Object*> keyAndValue = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* keyAndValue = StdUtil::getInstance()->createHashMap();;
     
-keyAndValue.put(this->NOTHING, this->NOTHING);
+keyAndValue->put(this->NOTHING, this->NOTHING);
     
 
-    HashMap<Object*, Object*> hashMap = getRow(keyAndValue);;
+    HashMap<Object*, Object*>* hashMap = getRow(keyAndValue);;
     
 
                         if(hashMap != 
@@ -237,7 +243,7 @@ keyAndValue.put(this->NOTHING, this->NOTHING);
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADER))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADER))
                         
                                     {
                                     PreLogUtil::put(this->NOT_IN_DB, this->NAME, this->METHOD_IS);
@@ -256,13 +262,13 @@ keyAndValue.put(this->NOTHING, this->NOTHING);
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
                         
                                     {
-                                    PreLogUtil::putOE(this->commonStrings.EXCEPTION, this->NAME, this->METHOD_IS, e);
+                                    PreLogUtil::putOE(this->commonStrings.EXCEPTION, this->NAME, this->METHOD_IS, &e);
     
 
                                     }
@@ -279,7 +285,7 @@ keyAndValue.put(this->NOTHING, this->NOTHING);
 
 
     public: void update(){
-updateWhere(NOTHING, NOTHING, InitInfo::getInstance().toHashMap());
+updateWhere(NOTHING, NOTHING, InitInfo::getInstance()->toHashMap());
     
 }
 
@@ -288,27 +294,27 @@ updateWhere(NOTHING, NOTHING, InitInfo::getInstance().toHashMap());
 
         try {
             
-    BasicArrayList values = BasicArrayListD();;
+    BasicArrayList* values = new BasicArrayListD();;
     
-values.add(this->NOTHING);
+values->add(this->NOTHING);
     
-values.add(InitInfo::getInstance().getTesting());
+values->add(InitInfo::getInstance()->getTesting());
     
-values.add(InitInfo::getInstance().getTestHtmlPath());
+values->add(InitInfo::getInstance()->getTestHtmlPath());
     
-values.add(InitInfo::getInstance().getMainPath());
+values->add(InitInfo::getInstance()->getMainPath());
     
 insert(values);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
                         
                                     {
-                                    PreLogUtil::putOE(this->commonStrings.EXCEPTION, this->NAME, this->METHOD_ADD, e);
+                                    PreLogUtil::putOE(this->commonStrings.EXCEPTION, this->NAME, this->METHOD_ADD, &e);
     
 
                                     }
@@ -334,19 +340,19 @@ insert(values);
                                 
                         else {
                             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->FAILED_TO_CREATE);
+stringBuffer->append(this->FAILED_TO_CREATE);
     
-stringBuffer.append(this->tableData);
+stringBuffer->append(this->tableData);
     
-stringBuffer.append(AbPathData::getInstance().EXTENSION_SEP);
+stringBuffer->append(AbPathData::getInstance()->EXTENSION_SEP);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                         }

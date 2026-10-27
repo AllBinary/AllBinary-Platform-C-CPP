@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_ALLBINARYSENSORMANAGER_H
         #define ORG_ALLBINARY_INPUT_ALLBINARYSENSORMANAGER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -69,13 +75,13 @@ class AllBinarySensorManager
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static AllBinarySensorManager getInstance();
+    public: static AllBinarySensorManager* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     public: const std::string ORIENTATION_SENSOR_INPUT = "Orientation Sensor Input";
 
@@ -85,9 +91,9 @@ private: AllBinarySensorManager();
 
     public: void init();
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
-    public: BasicArrayList getSensorNamesList();
+    public: BasicArrayList* getSensorNamesList();
 
     public: void shutdown();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/Rectangle.h>
@@ -47,27 +53,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryLayerFactoryInterface.h"
-#include "AllBinaryLayer.h"
+        #include "org/allbinary/layer/AllBinaryLayerFactoryInterface.h"
+#include "org/allbinary/layer/AllBinaryLayer.h"
 
 class AllBinaryLayerFactory
             : public Object
-        : public AllBinaryLayerFactoryInterface {
+        , public AllBinaryLayerFactoryInterface {
 
-    private: Rectangle rectangle;
+    private: Rectangle* rectangle;
 
-public: AllBinaryLayerFactory(Rectangle rectangle){
+public: AllBinaryLayerFactory(Rectangle* rectangle){
 this->rectangle= rectangle;
     
 }
 
 
-    public: AllBinaryLayer getInstance(){
+    public: AllBinaryLayer* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryLayer(StringUtil::getInstance().EMPTY_STRING, this->rectangle, ViewPosition::getInstanceD());
+                        return new AllBinaryLayer(StringUtil::getInstance()->EMPTY_STRING, this->rectangle, ViewPosition::getInstanceD());
     
 }
 

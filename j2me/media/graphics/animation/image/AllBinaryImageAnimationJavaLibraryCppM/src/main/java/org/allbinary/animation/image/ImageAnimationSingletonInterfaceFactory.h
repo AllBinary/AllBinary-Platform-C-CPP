@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEANIMATIONSINGLETONINTERFACEFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEANIMATIONSINGLETONINTERFACEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/Animation.h>
@@ -53,11 +59,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageAnimation.h"
+        #include "org/allbinary/animation/image/ImageAnimation.h"
 
 class ImageAnimationSingletonInterfaceFactory: public SingletonAnimationInterfaceFactory {
 
-public: ImageAnimationSingletonInterfaceFactory(Animation animationInterface, int32_t width, int32_t height);
+public: ImageAnimationSingletonInterfaceFactory(Animation* animationInterface, int32_t width, int32_t height);
 
 };
 

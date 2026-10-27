@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOSDATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOSDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class TransformInfosData
             : public Object
          {
 
-    private: static TransformInfosData instance() { return TransformInfosData(); }
+    private: static TransformInfosData* instance() { static std::unique_ptr<TransformInfosData> value(new TransformInfosData()); return value.get(); }
 
-    public: static TransformInfosData getInstance();
+    public: static TransformInfosData* getInstance();
 
 private: TransformInfosData();
 

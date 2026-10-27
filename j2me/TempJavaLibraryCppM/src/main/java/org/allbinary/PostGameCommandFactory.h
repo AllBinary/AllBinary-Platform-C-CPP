@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_POSTGAMECOMMANDFACTORY_H
         #define ORG_ALLBINARY_POSTGAMECOMMANDFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -51,11 +57,11 @@ class PostGameCommandFactory
             : public Object
          {
 
-    private: static PostGameCommandFactory instance() { return PostGameCommandFactory(); }
+    private: static PostGameCommandFactory* instance() { static std::unique_ptr<PostGameCommandFactory> value(new PostGameCommandFactory()); return value.get(); }
 
-    public: static PostGameCommandFactory getInstance();
+    public: static PostGameCommandFactory* getInstance();
 
-    public: void addCommands(Canvas canvas);
+    public: void addCommands(Canvas* canvas);
 
 };
 

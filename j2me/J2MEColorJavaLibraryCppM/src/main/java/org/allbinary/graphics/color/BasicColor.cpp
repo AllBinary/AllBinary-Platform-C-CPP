@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -53,7 +59,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicColorUtil.h"
+        #include "org/allbinary/graphics/color/BasicColorUtil.h"
 
 class BasicColor
             : public Object
@@ -86,14 +92,14 @@ this->name= name;
     int32_t tempValue= 0;;
     
 
-    BasicColorUtil basicColorUtil = BasicColorUtil::getInstance();;
+    BasicColorUtil* basicColorUtil = BasicColorUtil::getInstance();;
     
 
-                        if(basicColorUtil.isAlpha)
+                        if(basicColorUtil->isAlpha)
                         
                                     {
                                     
-                        if(basicColorUtil.ffOpaque)
+                        if(basicColorUtil->ffOpaque)
                         
                                     {
                                     tempValue= alphaValue | value;
@@ -171,35 +177,35 @@ this->value= tempValue;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("BasicColor: ");
+stringBuffer->append("BasicColor: ");
     
-stringBuffer.append("Alpha: ");
+stringBuffer->append("Alpha: ");
     
-stringBuffer.appendshort(this->alpha);
+stringBuffer->appendshort(this->alpha);
     
-stringBuffer.append(" Red: ");
+stringBuffer->append(" Red: ");
     
-stringBuffer.appendshort(this->red);
+stringBuffer->appendshort(this->red);
     
-stringBuffer.append(" Green: ");
+stringBuffer->append(" Green: ");
     
-stringBuffer.appendshort(this->green);
+stringBuffer->appendshort(this->green);
     
-stringBuffer.append(" Blue: ");
+stringBuffer->append(" Blue: ");
     
-stringBuffer.appendshort(this->blue);
+stringBuffer->appendshort(this->blue);
     
-stringBuffer.append(" Value: ");
+stringBuffer->append(" Value: ");
     
-stringBuffer.appendint(this->value);
+stringBuffer->appendint(this->value);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

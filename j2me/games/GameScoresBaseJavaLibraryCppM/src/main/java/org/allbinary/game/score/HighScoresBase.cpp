@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -46,43 +52,43 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HighScoresFactoryInterface.h"
-#include "HighScoresResultsListener.h"
-#include "HighScoresHelperBaseInterface.h"
+        #include "org/allbinary/game/score/HighScoresFactoryInterface.h"
+#include "org/allbinary/game/score/HighScoresResultsListener.h"
+#include "org/allbinary/game/score/HighScoresHelperBaseInterface.h"
 
 class HighScoresBase
             : public Object
-        : public HighScoresFactoryInterface {
+        , public HighScoresFactoryInterface {
 
-    protected: CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
 protected: HighScoresBase(){
 }
 
 
-    public: void fetchHighScores(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener){
+    public: void fetchHighScores(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: void fetchHighScoresPreload(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener, bool preload){
+    public: void fetchHighScoresPreload(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener, bool preload){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: HighScoresHelperBaseInterface createHighScoresHelper(){
+    public: HighScoresHelperBaseInterface* createHighScoresHelper(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

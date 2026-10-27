@@ -23,6 +23,12 @@
 
             #include <hilog/log.h>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <android/content/Context.h>
@@ -63,13 +69,13 @@ class AndroidSystemProperties
             : public Object
          {
 
-    private: static const AndroidSystemProperties SINGLETON = AndroidSystemProperties(ResourceUtil::getInstance().getContext());
+    private: static AndroidSystemProperties* SINGLETON() { static std::unique_ptr<AndroidSystemProperties> value(new AndroidSystemProperties(ResourceUtil::getInstance()->getContext())); return value.get(); }
 
-    public: static AndroidSystemProperties getInstance();
+    public: static AndroidSystemProperties* getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-public: AndroidSystemProperties(Context context);
+public: AndroidSystemProperties(Context* context);
 
     public: std::string getDeviceId();
 

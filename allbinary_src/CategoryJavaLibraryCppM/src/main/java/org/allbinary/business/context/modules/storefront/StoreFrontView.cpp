@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,26 +70,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreFrontInterface.h"
-#include "StoreFrontData.h"
+        #include "org/allbinary/business/context/modules/storefront/StoreFrontInterface.h"
+#include "org/allbinary/business/context/modules/storefront/StoreFrontData.h"
 
 class StoreFrontView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: StoreFrontInterface storeFrontInterface;
+    private: StoreFrontInterface* storeFrontInterface;
 
-public: StoreFrontView(StoreFrontInterface storeFrontInterface){
+public: StoreFrontView(StoreFrontInterface* storeFrontInterface){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF("Constructing: StoreFrontView for: " +storeFrontInterface.getName(), this, commonStrings.GET_INSTANCE);
+this->logUtil->putF("Constructing: StoreFrontView for: " +storeFrontInterface->getName(), this, commonStrings->GET_INSTANCE);
     
 
                                     }
@@ -95,25 +101,25 @@ this->storeFrontInterface= storeFrontInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    HashMap<Object*, Object*> hashMap = this->storeFrontInterface.toHashMap();;
-    
-
-    StoreFrontData storeFrontData = StoreFrontData::getInstance();;
-    
-hashMap.put(storeFrontData.CURRENTHOMEHOSTNAME, this->storeFrontInterface.getCurrentHomeHostName());
-    
-hashMap.put(storeFrontData.CURRENTHOMEHOSTNAMEPATH, this->storeFrontInterface.getCurrentHomeHostNamePath());
-    
-hashMap.put(storeFrontData.CURRENTHOSTNAME, this->storeFrontInterface.getCurrentHostName());
-    
-hashMap.put(storeFrontData.CURRENTHOSTNAMEPATH, this->storeFrontInterface.getCurrentHostNamePath());
-    
-hashMap.put(BasketData::NAME, this->storeFrontInterface.getBasketName());
+    HashMap<Object*, Object*>* hashMap = this->storeFrontInterface->toHashMap();;
     
 
-    Node node = ModDomHelper::createNameValueNodes(document, storeFrontData.NAME, hashMap);;
+    StoreFrontData* storeFrontData = StoreFrontData::getInstance();;
+    
+hashMap->put(storeFrontData->CURRENTHOMEHOSTNAME, this->storeFrontInterface->getCurrentHomeHostName());
+    
+hashMap->put(storeFrontData->CURRENTHOMEHOSTNAMEPATH, this->storeFrontInterface->getCurrentHomeHostNamePath());
+    
+hashMap->put(storeFrontData->CURRENTHOSTNAME, this->storeFrontInterface->getCurrentHostName());
+    
+hashMap->put(storeFrontData->CURRENTHOSTNAMEPATH, this->storeFrontInterface->getCurrentHostNamePath());
+    
+hashMap->put(BasketData::NAME, this->storeFrontInterface->getBasketName());
+    
+
+    Node* node = ModDomHelper::createNameValueNodes(document, storeFrontData->NAME, hashMap);;
     
 
 

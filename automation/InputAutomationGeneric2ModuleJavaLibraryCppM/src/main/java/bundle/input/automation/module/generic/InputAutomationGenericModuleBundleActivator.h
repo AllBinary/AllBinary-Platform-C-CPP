@@ -21,6 +21,12 @@
         #ifndef BUNDLE_INPUT_AUTOMATION_MODULE_GENERIC_INPUTAUTOMATIONGENERICMODULEBUNDLEACTIVATOR_H
         #define BUNDLE_INPUT_AUTOMATION_MODULE_GENERIC_INPUTAUTOMATIONGENERICMODULEBUNDLEACTIVATOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/input/automation/module/generic/InputAutomationGenericModuleServiceFactory.h>

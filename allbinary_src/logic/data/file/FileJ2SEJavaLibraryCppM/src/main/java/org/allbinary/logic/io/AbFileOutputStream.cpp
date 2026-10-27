@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/io/FileNotFoundException.h>
 
       
@@ -53,48 +59,48 @@ class AbFileOutputStream: public FileOutputStream {
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public: static AbFileOutputStream createFromAbFile(AbFile file){
+    public: static AbFileOutputStream* createFromAbFile(AbFile* file){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFileOutputStream(file.getPath(), false);
+                        return new AbFileOutputStream(file->getPath(), false);
     
 }
 
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public: static AbFileOutputStream createFromAbFileAppend(AbFile file, bool append){
+    public: static AbFileOutputStream* createFromAbFileAppend(AbFile* file, bool append){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFileOutputStream(file.getPath(), append);
+                        return new AbFileOutputStream(file->getPath(), append);
     
 }
 
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public: static AbFileOutputStream createFromFilePath(std::string name){
+    public: static AbFileOutputStream* createFromFilePath(std::string name){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFileOutputStream(name, false);
+                        return new AbFileOutputStream(name, false);
     
 }
 
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public: static AbFileOutputStream createFromFilePathAppend(std::string name, bool append){
+    public: static AbFileOutputStream* createFromFilePathAppend(std::string name, bool append){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFileOutputStream(name, append);
+                        return new AbFileOutputStream(name, append);
     
 }
 

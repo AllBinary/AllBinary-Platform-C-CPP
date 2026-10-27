@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/media/Control.h>
@@ -64,19 +70,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TimeBaseInterface.h"
-#include "Controllable2.h"
-#include "NullControl.h"
+        #include "org/allbinary/media/audio/TimeBaseInterface.h"
+#include "org/allbinary/media/audio/Controllable2.h"
+#include "org/allbinary/media/audio/NullControl.h"
 //BasicPlayerMIDP2JavaLibrary
 class BasicPlayer
             : public Object
-        : public Player, public TimeBaseInterface, public Controllable2 {
+        , public Player, public TimeBaseInterface, public Controllable2 {
 
-    public: static std::string CONTROL_TYPE = "ToneControl";
+    public: static inline std::string CONTROL_TYPE = "ToneControl";
 
-    protected: const BasicArrayList listenersList = BasicArrayListD();
+    protected: BasicArrayList* listenersList = new BasicArrayListD();
 
-    private: TimeBase timeBase;
+    private: TimeBase* timeBase;
 
     protected: int32_t stateP= 0;
 
@@ -95,22 +101,22 @@ this->setState(Player::UNREALIZED);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 }
 
 
-    public: Control getControl(std::string controlType){
+    public: Control* getControl(std::string controlType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullControl();
+                        return new NullControl();
     
 }
 
 
-    public: std::vector<Control> getControls(){
+    public: std::vector<Control*> getControls(){
 
 
 
@@ -125,12 +131,12 @@ this->setState(Player::UNREALIZED);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void addPlayerListener(PlayerListener playerListener){
+    public: void addPlayerListener(PlayerListener* playerListener){
 
-                        if(!this->listenersList.contains(playerListener))
+                        if(!this->listenersList->contains(playerListener))
                         
                                     {
-                                    this->listenersList.add(playerListener);
+                                    this->listenersList->add(playerListener);
     
 
                                     }
@@ -138,8 +144,8 @@ this->setState(Player::UNREALIZED);
 }
 
 
-    public: void removePlayerListener(PlayerListener playerListener){
-this->listenersList.remove(playerListener);
+    public: void removePlayerListener(PlayerListener* playerListener){
+this->listenersList->remove(playerListener);
     
 }
 
@@ -181,7 +187,7 @@ this->stateP= state;
 }
 
 
-    public: TimeBase getTimeBase(){
+    public: TimeBase* getTimeBase(){
 
 
 
@@ -192,7 +198,7 @@ this->stateP= state;
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setTimeBase(TimeBase timeBase){
+    public: void setTimeBase(TimeBase* timeBase){
 this->timeBase= timeBase;
     
 }

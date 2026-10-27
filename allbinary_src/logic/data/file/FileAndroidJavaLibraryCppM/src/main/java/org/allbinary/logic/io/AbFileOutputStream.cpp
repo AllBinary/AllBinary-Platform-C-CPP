@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/io/FileNotFoundException.h>
 
       
@@ -64,72 +70,72 @@ class AbFileOutputStream: public OutputStream {
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public: static AbFileOutputStream createFromAbFile(AbFile file){
+    public: static AbFileOutputStream* createFromAbFile(AbFile* file){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFileOutputStream(FileOutputStream(AbFileNativeUtil::get(file)));
+                        return new AbFileOutputStream(new FileOutputStream(AbFileNativeUtil::get(file)));
     
 }
 
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public: static AbFileOutputStream createFromAbFileAppend(AbFile file, bool append){
+    public: static AbFileOutputStream* createFromAbFileAppend(AbFile* file, bool append){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFileOutputStream(FileOutputStream(file.getPath()));
+                        return new AbFileOutputStream(new FileOutputStream(file->getPath()));
     
 }
 
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public: static AbFileOutputStream createFromFilePath(std::string name){
+    public: static AbFileOutputStream* createFromFilePath(std::string name){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFileOutputStream(FileOutputStream(name));
+                        return new AbFileOutputStream(new FileOutputStream(name));
     
 }
 
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public: static AbFileOutputStream createFromFilePathAppend(std::string name, bool append){
+    public: static AbFileOutputStream* createFromFilePathAppend(std::string name, bool append){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFileOutputStream(FileOutputStream(name));
+                        return new AbFileOutputStream(new FileOutputStream(name));
     
 }
 
 
-    private: FileOutputStream fileOutputStream;
+    private: FileOutputStream* fileOutputStream;
 
-public: AbFileOutputStream(FileOutputStream fileOutputStream){
+public: AbFileOutputStream(FileOutputStream* fileOutputStream){
 this->fileOutputStream= fileOutputStream;
     
 }
 
 
     public: void close(){
-this->fileOutputStream.close();
+this->fileOutputStream->close();
     
 }
 
 
-    public: FileChannel getChannel(){
+    public: FileChannel* getChannel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->fileOutputStream.getChannel();;
+                        return this->fileOutputStream->getChannel();;
     
 }
 
@@ -137,7 +143,7 @@ this->fileOutputStream.close();
                 //@Throws(IOException.constructor)
             
     public: void write(std::vector<int8_t> buffer){
-this->fileOutputStream.write(buffer);
+this->fileOutputStream->write(buffer);
     
 }
 
@@ -145,7 +151,7 @@ this->fileOutputStream.write(buffer);
                 //@Throws(IOException.constructor)
             
     public: void write(std::vector<int8_t> buffer, int32_t offset, int32_t count){
-this->fileOutputStream.write(buffer, offset, count);
+this->fileOutputStream->write(buffer, offset, count);
     
 }
 
@@ -153,7 +159,7 @@ this->fileOutputStream.write(buffer, offset, count);
                 //@Throws(IOException.constructor)
             
     public: void write(int32_t b){
-this->fileOutputStream.write(b);
+this->fileOutputStream->write(b);
     
 }
 

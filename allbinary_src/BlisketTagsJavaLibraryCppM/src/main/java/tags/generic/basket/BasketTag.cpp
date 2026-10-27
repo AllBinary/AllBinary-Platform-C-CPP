@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
@@ -70,7 +76,7 @@ this->setObjectFile("views.generic.basket.ValidationView");
                         
                                     {
                                     
-                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
                         
                                     {
                                     
@@ -80,7 +86,7 @@ this->setObjectFile("views.generic.basket.ValidationView");
                             
 
 
-                            throw Exception("No Such View Command: " +this->getCommand());
+                            throw new Exception("No Such View Command: " +this->getCommand());
                     
 
                         }
@@ -97,13 +103,13 @@ this->setObjectFile("views.generic.basket.ValidationView");
 
 
 
-                            throw Exception("Command Null");
+                            throw new Exception("Command Null");
                     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 

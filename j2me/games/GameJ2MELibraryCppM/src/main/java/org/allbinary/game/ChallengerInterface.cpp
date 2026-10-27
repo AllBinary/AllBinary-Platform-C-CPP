@@ -10,6 +10,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -31,7 +37,7 @@
         
 class ChallengerInterface {
 
-    void setWinner(bool isWinner)
+    public: virtual void setWinner(bool isWinner) = 0;
 
 };
 

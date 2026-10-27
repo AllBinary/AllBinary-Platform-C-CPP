@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -43,17 +49,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TerrainEventFactory.h"
-#include "TerrainEvent.h"
-#include "BasicTerrainInfo.h"
+        #include "org/allbinary/game/terrain/TerrainEventFactory.h"
+#include "org/allbinary/game/terrain/TerrainEvent.h"
+#include "org/allbinary/game/terrain/BasicTerrainInfo.h"
 
 class TerrainEventCircularStaticPool
             : public Object
          {
 
-    private: static TerrainEventCircularStaticPool instance() { return TerrainEventCircularStaticPool(); }
+    private: static TerrainEventCircularStaticPool* instance() { static std::unique_ptr<TerrainEventCircularStaticPool> value(new TerrainEventCircularStaticPool()); return value.get(); }
 
-    public: static TerrainEventCircularStaticPool getInstance(){
+    public: static TerrainEventCircularStaticPool* getInstance(){
 
 
 
@@ -63,10 +69,10 @@ class TerrainEventCircularStaticPool
 }
 
 
-    private: AllBinaryEventCircularPool EVENT_POOL = AllBinaryEventCircularPool(20);
+    private: AllBinaryEventCircularPool* EVENT_POOL = new AllBinaryEventCircularPool(20);
 
     public: void init(){
-this->EVENT_POOL.initAllBinaryEventCircularPool(TerrainEventFactory());
+this->EVENT_POOL->initAllBinaryEventCircularPool(new TerrainEventFactory());
     
 }
 
@@ -74,11 +80,11 @@ this->EVENT_POOL.initAllBinaryEventCircularPool(TerrainEventFactory());
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: TerrainEvent getNext(BasicTerrainInfo basicTerrainInfo){
+    public: TerrainEvent* getNext(BasicTerrainInfo* basicTerrainInfo){
 
-    TerrainEvent trackingEvent = this->EVENT_POOL.getNextInstance();;
+    TerrainEvent* trackingEvent = dynamic_cast<TerrainEvent*>(this->EVENT_POOL->getNextInstance());;
     
-trackingEvent.setBasicTerrainInfoForCircularStaticPool(basicTerrainInfo);
+trackingEvent->setBasicTerrainInfoForCircularStaticPool(basicTerrainInfo);
     
 
 

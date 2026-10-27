@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TRANSITION_RUNATENDANIMATIONLISTENER_H
         #define ORG_ALLBINARY_ANIMATION_TRANSITION_RUNATENDANIMATIONLISTENER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Runnable.h"
@@ -43,15 +49,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnimationListenerInterface.h"
+        #include "org/allbinary/animation/transition/AnimationListenerInterface.h"
 
 class RunAtEndAnimationListener
             : public Object
-        : public AnimationListenerInterface {
+        , public AnimationListenerInterface {
 
-    protected: Runnable runnable;
+    protected: Runnable* runnable;
 
-protected: RunAtEndAnimationListener(Runnable runnable);
+protected: RunAtEndAnimationListener(Runnable* runnable);
 
     public: void onPlatformAnimationStart();
 

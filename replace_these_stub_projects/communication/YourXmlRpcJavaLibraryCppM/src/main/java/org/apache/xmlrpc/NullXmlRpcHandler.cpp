@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,22 +55,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "XmlRpcHandler.h"
+        #include "org/apache/xmlrpc/XmlRpcHandler.h"
 
 class NullXmlRpcHandler
             : public Object
-        : public XmlRpcHandler {
+        , public XmlRpcHandler {
 
-    public: static const NullXmlRpcHandler NULL_XML_RPC_HANDLER = NullXmlRpcHandler();
+    public: static NullXmlRpcHandler* NULL_XML_RPC_HANDLER() { static std::unique_ptr<NullXmlRpcHandler> value(new NullXmlRpcHandler()); return value.get(); }
 
                 //@Throws(Exception.constructor)
             
-    public: Object* execute(std::string method, BasicArrayList params){
+    public: Object* execute(std::string method, BasicArrayList* params){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance().NULL_OBJECT;
+                        return NullUtil::getInstance()->NULL_OBJECT;
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_PAINT_OWNERSHIPPAINTABLE_H
         #define ORG_ALLBINARY_GAME_PAINT_OWNERSHIPPAINTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -75,19 +81,19 @@
         //AndroidToJ2ME
 class OwnershipPaintable: public Paintable, public UpdateMyFontInterface {
 
-    public: static OwnershipPaintable getInstance();
+    public: static OwnershipPaintable* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();
 
-    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
 
     private: const std::string COPYRIGHT = "AllBinary Copyright (c) 2011";
 
-    private: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
+    private: BasicColor* basicColor = BasicColorFactory::getInstance()->WHITE;
 
-    private: int32_t color = this->basicColor.intValue();
+    private: int32_t color = this->basicColor->intValue();
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
@@ -97,13 +103,13 @@ class OwnershipPaintable: public Paintable, public UpdateMyFontInterface {
 
 private: OwnershipPaintable();
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
-    public: void setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor* basicColor);
 
-    public: BasicColor getBasicColorP();
+    public: BasicColor* getBasicColorP();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

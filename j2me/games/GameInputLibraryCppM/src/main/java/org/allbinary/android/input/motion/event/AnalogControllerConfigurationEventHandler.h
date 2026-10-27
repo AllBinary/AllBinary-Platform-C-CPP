@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_EVENT_ANALOGCONTROLLERCONFIGURATIONEVENTHANDLER_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_EVENT_ANALOGCONTROLLERCONFIGURATIONEVENTHANDLER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -59,32 +65,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnalogControllerConfigurationEventListenerInterface.h"
-#include "AnalogControllerConfigurationEvent.h"
+        #include "org/allbinary/android/input/motion/event/AnalogControllerConfigurationEventListenerInterface.h"
+#include "org/allbinary/android/input/motion/event/AnalogControllerConfigurationEvent.h"
 
 class AnalogControllerConfigurationEventHandler: public BasicEventHandler {
 
-    private: static AnalogControllerConfigurationEventHandler instance() { return AnalogControllerConfigurationEventHandler(); }
+    private: static AnalogControllerConfigurationEventHandler* instance() { static std::unique_ptr<AnalogControllerConfigurationEventHandler> value(new AnalogControllerConfigurationEventHandler()); return value.get(); }
 
-    public: static AnalogControllerConfigurationEventHandler getInstance();
+    public: static AnalogControllerConfigurationEventHandler* getInstance();
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: AnalogControllerConfigurationEventHandler();
 
-    public: void addListener(AnalogControllerConfigurationEventListenerInterface analogControllerConfigurationEventListenerInterface);
+    public: void addListener(AnalogControllerConfigurationEventListenerInterface* analogControllerConfigurationEventListenerInterface);
 
     public: void removeAllListeners();
 
-    public: void removeListener(EventListenerInterface eventListenerInterface);
+    public: void removeListener(EventListenerInterface* eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(AllBinaryEventObject eventObject);
+    public: void fireEvent(AllBinaryEventObject* eventObject);
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
 };
 

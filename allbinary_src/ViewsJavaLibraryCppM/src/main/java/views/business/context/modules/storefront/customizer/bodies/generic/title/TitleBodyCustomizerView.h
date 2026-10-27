@@ -21,6 +21,12 @@
         #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_BODIES_GENERIC_TITLE_TITLEBODYCUSTOMIZERVIEW_H
         #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_BODIES_GENERIC_TITLE_TITLEBODYCUSTOMIZERVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/page/PageData.h>
@@ -86,13 +92,13 @@
         
 class TitleBodyCustomizerView: public HttpStoreComponentView, public DomNodeInterface {
 
-    private: static const std::string NAME = "None";
+    private: static inline const std::string NAME = "None";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: TitleBodyValidation titleBody;
+    protected: TitleBodyValidation* titleBody;
 
-public: TitleBodyCustomizerView(TransformInfoInterface transformInfoInterface);
+public: TitleBodyCustomizerView(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
@@ -100,7 +106,7 @@ public: TitleBodyCustomizerView(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
                 //@Throws(Exception.constructor)
             

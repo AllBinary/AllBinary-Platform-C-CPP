@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -58,17 +64,17 @@ class AdvertisementAreasEntityInterface: public BasicDataTableInterface {
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList get(std::string storeName)
+    public: virtual BasicArrayList* get(std::string storeName) = 0;
 
                 //@Throws(Exception.constructor)
             
-    AdvertisementAreaInterface get(std::string storeName, std::string advertisementAreaName)
+    public: virtual AdvertisementAreaInterface* get(std::string storeName, std::string advertisementAreaName) = 0;
 
-    void delete_(std::string value)
+    public: virtual void delete_(std::string value) = 0;
 
-    void insert(BasicArrayList values)
+    public: virtual void insert(BasicArrayList* values) = 0;
 
-    void update(HashMap<Object*, Object*> updatedValues)
+    public: virtual void update(HashMap<Object*, Object*>* updatedValues) = 0;
 
 };
 

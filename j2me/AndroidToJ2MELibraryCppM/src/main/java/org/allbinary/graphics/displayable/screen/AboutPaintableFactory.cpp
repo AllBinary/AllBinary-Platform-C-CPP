@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/paint/NullPaintable.h>
@@ -51,9 +57,9 @@ class AboutPaintableFactory
             : public Object
          {
 
-    private: static AboutPaintableFactory instance() { return AboutPaintableFactory(); }
+    private: static AboutPaintableFactory* instance() { static std::unique_ptr<AboutPaintableFactory> value(new AboutPaintableFactory()); return value.get(); }
 
-    public: static AboutPaintableFactory getInstance(){
+    public: static AboutPaintableFactory* getInstance(){
 
 
 
@@ -63,7 +69,7 @@ class AboutPaintableFactory
 }
 
 
-    public: std::vector<Paintable> paintableArray = 
+    public: std::vector<Paintable*> paintableArray = 
                                                 {
                                                     NullPaintable::getInstance()
                                                 };

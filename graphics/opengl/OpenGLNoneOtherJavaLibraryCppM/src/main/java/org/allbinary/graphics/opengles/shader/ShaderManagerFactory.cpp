@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,15 +44,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShaderManager.h"
+        #include "org/allbinary/graphics/opengles/shader/ShaderManager.h"
 
 class ShaderManagerFactory
             : public Object
          {
 
-    private: static ShaderManagerFactory instance() { return ShaderManagerFactory(); }
+    private: static ShaderManagerFactory* instance() { static std::unique_ptr<ShaderManagerFactory> value(new ShaderManagerFactory()); return value.get(); }
 
-    public: static ShaderManagerFactory getInstance(){
+    public: static ShaderManagerFactory* getInstance(){
 
 
 
@@ -56,7 +62,7 @@ class ShaderManagerFactory
 }
 
 
-    public: ShaderManager create(){
+    public: ShaderManager* create(){
 
 
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Math.h"
@@ -62,21 +68,21 @@ class GLUtil
             : public Object
          {
 
-    private: static GLUtil instance() { return GLUtil(); }
+    private: static GLUtil* instance() { static std::unique_ptr<GLUtil> value(new GLUtil()); return value.get(); }
 
-    public: static GLUtil getInstance();
+    public: static GLUtil* getInstance();
 
     private: const int32_t BYTES_PER_FLOAT = 4;
 
-    public: const FloatBuffer NULL_FLOAT_BUFFER = ByteBuffer::allocateDirect(0).asFloatBuffer();
+    public: FloatBuffer* NULL_FLOAT_BUFFER = ByteBuffer::allocateDirect(0)->asFloatBuffer();
 
-    public: FloatBuffer makeFloatBuffer3(float p_a, float p_b, float p_c);
+    public: FloatBuffer* makeFloatBuffer3(float p_a, float p_b, float p_c);
 
-    public: FloatBuffer makeFloatBuffer4(float p_a, float p_b, float p_c, float p_d);
+    public: FloatBuffer* makeFloatBuffer4(float p_a, float p_b, float p_c, float p_d);
 
-    public: FloatBuffer makeFloatBuffer(ByteBuffer byteBuffer);
+    public: FloatBuffer* makeFloatBuffer(ByteBuffer* byteBuffer);
 
-    public: Buffer position(Buffer buffer, int32_t newPosition);
+    public: Buffer* position(Buffer* buffer, int32_t newPosition);
 
     public: void rotateUVs(std::vector<float> uvs, float angleDegrees, float pivotU, float pivotV);
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -74,28 +80,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ModifyTable.h"
+        #include "admin/taghelpers/ModifyTable.h"
 //TWB - Am I missing the correct Quote Request? Probably not
 class QuoteRequestHelper: public ModifyTable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: WeblisketSession weblisketSession;
+    private: WeblisketSession* weblisketSession;
 
-    private: StoreFrontInterface storeFrontInterface;
+    private: StoreFrontInterface* storeFrontInterface;
 
-    private: QuoteRequest quoteRequest;
+    private: QuoteRequest* quoteRequest;
 
-public: QuoteRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
+public: QuoteRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
 
-    HttpServletRequest request = pageContext.getRequest();;
+    HttpServletRequest* request = dynamic_cast<HttpServletRequest*>(pageContext->getRequest());;
     
-this->weblisketSession= WeblisketSession(hashMap, pageContext);
+this->weblisketSession= new WeblisketSession(hashMap, pageContext);
     
-this->quoteRequest= QuoteRequest(this->weblisketSession.getUserName(), request);
+this->quoteRequest= new QuoteRequest(this->weblisketSession->getUserName(), request);
     
 
-    std::string storeName = hashMap.get(StoreFrontData::getInstance().NAME);;
+    std::string storeName = hashMap->get(StoreFrontData::getInstance()->NAME);;
     
 
                         if(true)
@@ -109,12 +115,12 @@ this->quoteRequest= QuoteRequest(this->weblisketSession.getUserName(), request);
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->quoteRequest.isValid();;
+                        return this->quoteRequest->isValid();;
     
 }
 
@@ -124,7 +130,7 @@ this->quoteRequest= QuoteRequest(this->weblisketSession.getUserName(), request);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->quoteRequest.validationInfo();;
+                        return this->quoteRequest->validationInfo();;
     
 }
 
@@ -133,18 +139,18 @@ this->quoteRequest= QuoteRequest(this->weblisketSession.getUserName(), request);
 
         try {
             
-    BasicArrayList values = this->quoteRequest.toVector();;
+    BasicArrayList* values = this->quoteRequest->toVector();;
     
-QuoteRequestEntityFactory::getInstance().getQuoteRequestEntityInstance().insert(values);
+QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance()->insert(values);
     
 
     std::string success = "New QuoteRequest Successfully added to the QuoteRequest Table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "add()");
+                                    this->logUtil->putF(success, this, "add()");
     
 
                                     }
@@ -157,16 +163,16 @@ QuoteRequestEntityFactory::getInstance().getQuoteRequestEntityInstance().insert(
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to add QuoteRequest";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "add()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "add()", &e);
     
 
                                     }
@@ -186,18 +192,18 @@ QuoteRequestEntityFactory::getInstance().getQuoteRequestEntityInstance().insert(
 
         try {
             
-    HashMap<Object*, Object*> values = this->quoteRequest.toHashMap();;
+    HashMap<Object*, Object*>* values = this->quoteRequest->toHashMap();;
     
-QuoteRequestEntityFactory::getInstance().getQuoteRequestEntityInstance().update(this->quoteRequest.getUserName(), values);
+QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance()->update(this->quoteRequest->getUserName(), values);
     
 
     std::string success = "New QuoteRequest Successfully updated";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "update()");
+                                    this->logUtil->putF(success, this, "update()");
     
 
                                     }
@@ -210,16 +216,16 @@ QuoteRequestEntityFactory::getInstance().getQuoteRequestEntityInstance().update(
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to update QuoteRequest";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "update()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "update()", &e);
     
 
                                     }

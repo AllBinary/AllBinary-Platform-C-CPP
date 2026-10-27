@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMDOCUMENT_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMDOCUMENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,25 +70,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformDocumentInterface.h"
+        #include "org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h"
 
 class TransformDocument
             : public Object
-        : public TransformDocumentInterface {
+        , public TransformDocumentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: Node baseNode;
+    private: Node* baseNode;
 
-    private: Document document;
+    private: Document* document;
 
 public: TransformDocument();
 
-    public: Node getBaseNode();
+    public: Node* getBaseNode();
 
-    public: Document getDoc();
+    public: Document* getDoc();
 
                 //@Throws(Exception.constructor)
             

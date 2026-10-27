@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,7 +60,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MouseActionScriptInputInterface.h"
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/MouseActionScriptInputInterface.h"
 
 class MouseInputAutomationProcessor
             : public Object
@@ -62,43 +68,43 @@ class MouseInputAutomationProcessor
 
                 //@Throws(Exception.constructor)
             
-    public: static void process(MouseActionScriptInputInterface mouseActionScriptInputInterface){
+    public: static void process(MouseActionScriptInputInterface* mouseActionScriptInputInterface){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil.putF(StringMaker().append("Start - Processing Mouse Input at: ").append(mouseActionScriptInputInterface.getPoint().toString()).append(" clicks: ").appendint(mouseActionScriptInputInterface.getButtonClicks()).toString(), "MouseInputAutomationProcessor", commonStrings.PROCESS);
-    
-
-    InputRobotInterface inputRobotInterface = mouseActionScriptInputInterface.getInputRobotInterface();;
+logUtil->putF((new StringMaker())->append("Start - Processing Mouse Input at: ")->append(mouseActionScriptInputInterface->getPoint()->toString())->append(" clicks: ")->appendint(mouseActionScriptInputInterface->getButtonClicks())->toString(), "MouseInputAutomationProcessor", commonStrings->PROCESS);
     
 
-                        if(mouseActionScriptInputInterface.getPoint().x !=  -1 && mouseActionScriptInputInterface.getPoint().y !=  -1)
+    InputRobotInterface* inputRobotInterface = mouseActionScriptInputInterface->getInputRobotInterface();;
+    
+
+                        if(mouseActionScriptInputInterface->getPoint()->x !=  -1 && mouseActionScriptInputInterface->getPoint()->y !=  -1)
                         
                                     {
-                                    inputRobotInterface.mouseMove(mouseActionScriptInputInterface.getPoint());
+                                    inputRobotInterface->mouseMove(mouseActionScriptInputInterface->getPoint());
     
 
                                     }
                                 
-Thread::sleep(mouseActionScriptInputInterface.getTime());
+Thread::sleep(mouseActionScriptInputInterface->getTime());
     
 
-                        if(mouseActionScriptInputInterface.getButtonClicks() != 0)
+                        if(mouseActionScriptInputInterface->getButtonClicks() != 0)
                         
                                     {
-                                    inputRobotInterface.mousePress(mouseActionScriptInputInterface.getButtonClicks());
+                                    inputRobotInterface->mousePress(mouseActionScriptInputInterface->getButtonClicks());
     
-Thread::sleep(mouseActionScriptInputInterface.getTime());
+Thread::sleep(mouseActionScriptInputInterface->getTime());
     
-inputRobotInterface.mouseRelease(mouseActionScriptInputInterface.getButtonClicks());
+inputRobotInterface->mouseRelease(mouseActionScriptInputInterface->getButtonClicks());
     
 
                                     }
                                 
-Thread::sleep(mouseActionScriptInputInterface.getTime());
+Thread::sleep(mouseActionScriptInputInterface->getTime());
     
 }
 

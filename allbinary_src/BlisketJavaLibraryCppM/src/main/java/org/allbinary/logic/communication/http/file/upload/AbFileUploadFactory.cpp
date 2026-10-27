@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,17 +73,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFileUpload.h"
-#include "HttpFileUploadUtil.h"
-#include "AbFileItem.h"
+        #include "org/allbinary/logic/communication/http/file/upload/AbFileUpload.h"
+#include "org/allbinary/logic/communication/http/file/upload/HttpFileUploadUtil.h"
+#include "org/allbinary/logic/communication/http/file/upload/AbFileItem.h"
 
 class AbFileUploadFactory
             : public Object
          {
 
-    private: static AbFileUploadFactory instance() { return AbFileUploadFactory(); }
+    private: static AbFileUploadFactory* instance() { static std::unique_ptr<AbFileUploadFactory> value(new AbFileUploadFactory()); return value.get(); }
 
-    public: static AbFileUploadFactory getInstance(){
+    public: static AbFileUploadFactory* getInstance(){
 
 
 
@@ -87,7 +93,7 @@ class AbFileUploadFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: AbFileUploadFactory(){
 }
@@ -95,30 +101,30 @@ private: AbFileUploadFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: List getFileItemStreamList(HttpServletRequest httpServletRequest){
+    public: List* getFileItemStreamList(HttpServletRequest* httpServletRequest){
 
         try {
             
-    AbFileUpload fileUpload = AbFileUpload(AbFileItemFactory());;
+    AbFileUpload* fileUpload = new AbFileUpload(new AbFileItemFactory());;
     
 
-    FileItemIterator iterator = fileUpload.getItemIterator(httpServletRequest);;
+    FileItemIterator* iterator = fileUpload->getItemIterator(httpServletRequest);;
     
 
-    List items = ArrayList();;
+    List* items = new ArrayList();;
     
 
-        while(iterator.hasNext())
+        while(iterator->hasNext())
         {
 
-    FileItemStream fileItemStream = iterator.next();;
+    FileItemStream* fileItemStream = iterator->next();;
     
 HttpFileUploadUtil::log(fileItemStream);
     
 
-    AbFileItem fileItem = AbFileItem(fileItemStream.getName(), fileItemStream.getFieldName(), FileItemUtil::getInstance().getBytes(fileItemStream));;
+    AbFileItem* fileItem = new AbFileItem(fileItemStream->getName(), fileItemStream->getFieldName(), FileItemUtil::getInstance()->getBytes(fileItemStream));;
     
-items.add(fileItem);
+items->add(fileItem);
     
 }
 
@@ -130,16 +136,16 @@ items.add(fileItem);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPERROR))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, "get()", e);
+this->logUtil->put(commonStrings->EXCEPTION, this, "get()", &e);
     
 
                                     }
@@ -156,30 +162,30 @@ this->logUtil.put(commonStrings.EXCEPTION, this, "get()", e);
 
                 //@Throws(Exception.constructor)
             
-    public: List getFileItemList(HttpServletRequest httpServletRequest){
+    public: List* getFileItemList(HttpServletRequest* httpServletRequest){
 
         try {
             
-    AbFileUpload abFileUpload = AbFileUpload(AbFileItemFactory());;
+    AbFileUpload* abFileUpload = new AbFileUpload(new AbFileItemFactory());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return abFileUpload.parseRequest(httpServletRequest);;
+                        return abFileUpload->parseRequest(httpServletRequest);;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPERROR))
                         
                                     {
-                                    this->logUtil.put(commonStrings.EXCEPTION, this, "get()", e);
+                                    this->logUtil->put(commonStrings->EXCEPTION, this, "get()", &e);
     
 
                                     }

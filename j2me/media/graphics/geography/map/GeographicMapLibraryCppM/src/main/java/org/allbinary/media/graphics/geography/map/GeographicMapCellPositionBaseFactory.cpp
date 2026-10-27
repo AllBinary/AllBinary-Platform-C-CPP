@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -40,8 +46,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicGeographicMapCellPositionFactory.h"
-#include "BasicGeographicMap.h"
+        #include "org/allbinary/media/graphics/geography/map/BasicGeographicMapCellPositionFactory.h"
+#include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
 
 class GeographicMapCellPositionBaseFactory
             : public Object
@@ -49,12 +55,12 @@ class GeographicMapCellPositionBaseFactory
 
                 //@Throws(Exception.constructor)
             
-    public: BasicGeographicMapCellPositionFactory getInstance(BasicGeographicMap geographicMapInterface){
+    public: BasicGeographicMapCellPositionFactory* getInstance(BasicGeographicMap* geographicMapInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicGeographicMapCellPositionFactory(geographicMapInterface);
+                        return new BasicGeographicMapCellPositionFactory(geographicMapInterface);
     
 }
 

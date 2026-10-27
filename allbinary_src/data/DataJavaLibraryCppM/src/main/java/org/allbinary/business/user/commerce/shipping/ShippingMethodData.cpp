@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,15 +49,15 @@ class ShippingMethodData
             : public Object
          {
 
-    public: static const std::string DESCRIPTION = "SHIPPINGMETHOD_DESCRIPTION";
+    public: static inline const std::string DESCRIPTION = "SHIPPINGMETHOD_DESCRIPTION";
 
-    public: static const std::string DEFAULT = "SHIPPINGMETHOD_DEFAULT";
+    public: static inline const std::string DEFAULT = "SHIPPINGMETHOD_DEFAULT";
 
-    public: static const std::string NAME = "SHIPPINGMETHOD_NAME";
+    public: static inline const std::string NAME = "SHIPPINGMETHOD_NAME";
 
-    public: static const std::string GROUP = "SHIPPINGMETHOD_GROUP";
+    public: static inline const std::string GROUP = "SHIPPINGMETHOD_GROUP";
 
-    public: static const std::string COST = "SHIPPINGMETHOD_COST";
+    public: static inline const std::string COST = "SHIPPINGMETHOD_COST";
 
 public: ShippingMethodData(){
 }

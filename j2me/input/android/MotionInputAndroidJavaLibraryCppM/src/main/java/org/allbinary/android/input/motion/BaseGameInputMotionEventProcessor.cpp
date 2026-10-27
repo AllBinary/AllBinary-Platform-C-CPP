@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <android/view/MotionEvent.h>
 
       
@@ -51,31 +57,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionEventProcessor.h"
+        #include "org/allbinary/android/input/motion/MotionEventProcessor.h"
 
 class BaseGameInputMotionEventProcessor: public MotionEventProcessor {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: GameMotionGestureListener gameMotionGestureListener;
+    private: GameMotionGestureListener* gameMotionGestureListener;
 
 protected: BaseGameInputMotionEventProcessor(){
-this->gameMotionGestureListener= GameMotionGestureListener(MotionGestureReceiveInterfaceFactory::getInstance());
+this->gameMotionGestureListener= new GameMotionGestureListener(MotionGestureReceiveInterfaceFactory::getInstance());
     
 this->addListener();
     
 }
 
 
-    public: void process(MotionEvent motionEvent){
+    public: void process(MotionEvent* motionEvent){
 }
 
 
     public: void addListener(){
 
-    BasicMotionGesturesHandler motionGesturesHandler = BasicMotionGesturesHandler::getInstance();;
+    BasicMotionGesturesHandler* motionGesturesHandler = BasicMotionGesturesHandler::getInstance();;
     
-motionGesturesHandler.addListenerInterface(this->gameMotionGestureListener);
+motionGesturesHandler->addListenerInterface(this->gameMotionGestureListener);
     
 }
 

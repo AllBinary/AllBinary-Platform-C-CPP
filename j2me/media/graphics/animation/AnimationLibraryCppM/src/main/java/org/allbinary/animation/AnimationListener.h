@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_ANIMATIONLISTENER_H
         #define ORG_ALLBINARY_ANIMATION_ANIMATIONLISTENER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
 
       
@@ -45,7 +51,7 @@
         
 class AnimationListener: public EventListenerInterface {
 
-    void onEnd();
+    public: virtual void onEnd() = 0;
 
 };
 

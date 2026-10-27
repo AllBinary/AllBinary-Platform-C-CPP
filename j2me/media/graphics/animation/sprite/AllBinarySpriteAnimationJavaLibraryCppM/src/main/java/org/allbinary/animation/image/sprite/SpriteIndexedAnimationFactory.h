@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -76,38 +82,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SpriteIndexedAnimation.h"
-#include "AdjustedSpriteIndexedAnimation.h"
+        #include "org/allbinary/animation/image/sprite/SpriteIndexedAnimation.h"
+#include "org/allbinary/animation/image/sprite/AdjustedSpriteIndexedAnimation.h"
 
 class SpriteIndexedAnimationFactory: public BaseImageAnimationFactory, public ProceduralAnimationInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: static SpriteIndexedAnimationFactory createCWHDXY(Image image, std::vector<BasicColor> basicColorArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static SpriteIndexedAnimationFactory* createCWHDXY(Image* image, std::vector<BasicColor*> basicColorArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public: static SpriteIndexedAnimationFactory createCWH(Image image, std::vector<BasicColor> basicColorArray, int32_t width, int32_t height, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static SpriteIndexedAnimationFactory* createCWH(Image* image, std::vector<BasicColor*> basicColorArray, int32_t width, int32_t height, AnimationBehaviorFactory* animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public: static SpriteIndexedAnimationFactory createWH(Image image, int32_t width, int32_t height, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static SpriteIndexedAnimationFactory* createWH(Image* image, int32_t width, int32_t height, AnimationBehaviorFactory* animationBehaviorFactory);
 
-    private: const AnimationFactorySpriteScaleUtil animationFactorySpriteScaleUtil = AnimationFactorySpriteScaleUtil::getInstance();
+    private: AnimationFactorySpriteScaleUtil* animationFactorySpriteScaleUtil = AnimationFactorySpriteScaleUtil::getInstance();
 
-    private: std::vector<BasicColor> basicColorArray = BasicColorUtil::getInstance().ZERO_ARRAY;
+    private: std::vector<BasicColor*> basicColorArray = BasicColorUtil::getInstance()->ZERO_ARRAY;
 
-private: SpriteIndexedAnimationFactory(Image image, std::vector<BasicColor> basicColorArray, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
+private: SpriteIndexedAnimationFactory(Image* image, std::vector<BasicColor*> basicColorArray, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory);
 
     private: void initHWH();
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId);
+    public: Animation* getInstance(int32_t instanceId);
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstanceAnimation(Animation animationInterface);
+    public: Animation* getInstanceAnimation(Animation* animationInterface);
 
 };
 

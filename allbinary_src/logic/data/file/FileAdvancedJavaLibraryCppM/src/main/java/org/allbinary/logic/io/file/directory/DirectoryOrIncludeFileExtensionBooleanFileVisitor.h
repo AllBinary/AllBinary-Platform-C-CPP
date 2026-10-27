@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORYORINCLUDEFILEEXTENSIONBOOLEANFILEVISITOR_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORYORINCLUDEFILEEXTENSIONBOOLEANFILEVISITOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/io/file/AbFile.h>
 
       
@@ -53,11 +59,11 @@ class DirectoryOrIncludeFileExtensionBooleanFileVisitor: public IncludeFileExten
 
     private: std::string includesString;
 
-public: DirectoryOrIncludeFileExtensionBooleanFileVisitor(BasicArrayList filterStringBasicArrayList);
+public: DirectoryOrIncludeFileExtensionBooleanFileVisitor(BasicArrayList* filterStringBasicArrayList);
 
-public: DirectoryOrIncludeFileExtensionBooleanFileVisitor(BasicArrayList filterStringBasicArrayList, std::string includesString);
+public: DirectoryOrIncludeFileExtensionBooleanFileVisitor(BasicArrayList* filterStringBasicArrayList, std::string includesString);
 
-    public: Boolean visit(AbFile file);
+    public: bool visit(AbFile* file);
 
 };
 

@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_BUILDING_SIMULATEDBUILDINGPROPERTIESFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_BUILDING_SIMULATEDBUILDINGPROPERTIESFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/combat/damage/DamageFloaters.h>
@@ -62,26 +70,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BuildingPropertiesFactory.h"
-#include "BuildingLayer.h"
+        #include "org/allbinary/game/layer/building/BuildingPropertiesFactory.h"
+#include "org/allbinary/game/layer/building/BuildingLayer.h"
 
 class SimulatedBuildingPropertiesFactory: public BuildingPropertiesFactory {
 
-    private: static const SimulatedBuildingPropertiesFactory instanceC = SimulatedBuildingPropertiesFactory();
+    private: static SimulatedBuildingPropertiesFactory* instanceC() { static std::unique_ptr<SimulatedBuildingPropertiesFactory> value(new SimulatedBuildingPropertiesFactory()); return value.get(); }
 
-    public: static SimulatedBuildingPropertiesFactory getInstance();
+    public: static SimulatedBuildingPropertiesFactory* getInstance();
 
-    public: int32_t getEfficiencyPerLevel(BuildingLayer buildingLayer);
+    public: int32_t getEfficiencyPerLevel(BuildingLayer* buildingLayer);
 
-    public: DamageFloaters getDamageFloaters(BuildingLayer buildingLayer);
+    public: DamageFloaters* getDamageFloaters(BuildingLayer* buildingLayer);
 
                 //@Throws(Exception.constructor)
             
-    public: Paintable getHealthBar(BuildingLayer buildingLayer);
+    public: Paintable* getHealthBar(BuildingLayer* buildingLayer);
 
-    public: ABHashtable<Object*, Object*> getHashtable();
+    public: ABHashtable<Object*, Object*>* getHashtable();
 
-    public: TrackingEvent getTrackingEvent(BuildingLayer buildingLayer);
+    public: TrackingEvent* getTrackingEvent(BuildingLayer* buildingLayer);
 
 };
 

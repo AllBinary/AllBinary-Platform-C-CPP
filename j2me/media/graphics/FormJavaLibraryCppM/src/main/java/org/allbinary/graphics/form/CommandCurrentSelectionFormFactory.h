@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,10 +66,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ScrollSelectionFormNoneFactory.h"
-#include "CommandCurrentSelectionForm.h"
-#include "ScrollSelectionForm.h"
-#include "FormType.h"
+        #include "org/allbinary/graphics/form/ScrollSelectionFormNoneFactory.h"
+#include "org/allbinary/graphics/form/CommandCurrentSelectionForm.h"
+#include "org/allbinary/graphics/form/ScrollSelectionForm.h"
+#include "org/allbinary/graphics/form/FormType.h"
 
 class CommandCurrentSelectionFormFactory
             : public Object
@@ -71,7 +77,7 @@ class CommandCurrentSelectionFormFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static ScrollSelectionForm getInstance(std::string title, std::vector<ABCustomItem> items, Rectangle rectangle, FormType formType, int32_t border, bool moveForSmallScreen, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+    public: static ScrollSelectionForm* getInstance(std::string title, std::vector<ABCustomItem*> items, Rectangle* rectangle, FormType* formType, int32_t border, bool moveForSmallScreen, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
 };
 

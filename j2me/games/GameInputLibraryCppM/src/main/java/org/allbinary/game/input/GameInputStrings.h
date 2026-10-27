@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEINPUTSTRINGS_H
         #define ORG_ALLBINARY_GAME_INPUT_GAMEINPUTSTRINGS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class GameInputStrings
             : public Object
          {
 
-    private: static GameInputStrings instance() { return GameInputStrings(); }
+    private: static GameInputStrings* instance() { static std::unique_ptr<GameInputStrings> value(new GameInputStrings()); return value.get(); }
 
-    public: static GameInputStrings getInstance();
+    public: static GameInputStrings* getInstance();
 
     public: const std::string PROCESS_INPUT = "processInput";
 

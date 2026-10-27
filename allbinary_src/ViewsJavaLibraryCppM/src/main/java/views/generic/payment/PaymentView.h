@@ -21,6 +21,12 @@
         #ifndef VIEWS_GENERIC_PAYMENT_PAYMENTVIEW_H
         #define VIEWS_GENERIC_PAYMENT_PAYMENTVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -77,13 +83,13 @@
         
 class PaymentView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: PaymentView(TransformInfoInterface transformInfoInterface);
+public: PaymentView(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
     public: void addDomNodeInterfaces();
 

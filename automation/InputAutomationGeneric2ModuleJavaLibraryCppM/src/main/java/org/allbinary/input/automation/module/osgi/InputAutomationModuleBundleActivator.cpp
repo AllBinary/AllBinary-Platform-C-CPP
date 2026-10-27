@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -83,15 +89,15 @@
         
 class InputAutomationModuleBundleActivator
             : public Object
-        : public BundleActivator {
+        , public BundleActivator {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterface;
+    private: std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterface;
 
-    private: ServiceFactory serviceFactory;
+    private: ServiceFactory* serviceFactory;
 
 public: InputAutomationModuleBundleActivator(){
 this->init();
@@ -105,16 +111,16 @@ this->init();
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: InputAutomationConfigurationModuleChangeListener getInputAutomationConfigurationModuleChangeListener(BundleContext context){
+    private: InputAutomationConfigurationModuleChangeListener* getInputAutomationConfigurationModuleChangeListener(BundleContext* context){
 
-    ServiceReference serviceReference = context.getServiceReference(InputAutomationConfigurationModuleChangeListener.constructor.toString());;
+    ServiceReference* serviceReference = context->getServiceReference(InputAutomationConfigurationModuleChangeListener.constructor.getName());;
     
 
                         if(serviceReference != 
@@ -123,14 +129,14 @@ this->init();
                         
                                     {
                                     
-    InputAutomationConfigurationModuleChangeListener inputAutomationConfigurationModuleChangeListener = context.getService(serviceReference);;
+    InputAutomationConfigurationModuleChangeListener* inputAutomationConfigurationModuleChangeListener = dynamic_cast<InputAutomationConfigurationModuleChangeListener*>(context->getService(serviceReference));;
     
 
                         if(inputAutomationConfigurationModuleChangeListener == 
                                     nullptr
                                 )
                         
-                                    throw Exception("No Service For ServiceReference");
+                                    throw new Exception("No Service For ServiceReference");
                                 
 
 
@@ -142,7 +148,7 @@ this->init();
                                     }
                                 
                         else {
-                            this->logUtil.putF("No ServiceReference: " +InputAutomationConfigurationModuleChangeListener.constructor.toString(), this, "addModules");
+                            this->logUtil->putF("No ServiceReference: " +InputAutomationConfigurationModuleChangeListener.constructor.getName(), this, "addModules");
     
 
 
@@ -156,13 +162,13 @@ this->init();
 }
 
 
-    private: void addModules(BundleContext context){
+    private: void addModules(BundleContext* context){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, "addModules");
+            this->logUtil->putF(this->commonStrings->START, this, "addModules");
     
 
-    InputAutomationConfigurationModuleChangeListener inputAutomationConfigurationModuleChangeListener = this->getInputAutomationConfigurationModuleChangeListener(context);;
+    InputAutomationConfigurationModuleChangeListener* inputAutomationConfigurationModuleChangeListener = this->getInputAutomationConfigurationModuleChangeListener(context);;
     
 
                         if(inputAutomationConfigurationModuleChangeListener != 
@@ -178,9 +184,9 @@ this->init();
     int32_t index = 0;index < this->getInputAutomationModuleInterface().length; index++)
         {
 
-    InputAutomationConfigurationModuleChangeEvent inputAutomationConfigurationModuleChangeEvent = InputAutomationConfigurationUtil::getChangeEvent(this->getInputAutomationModuleInterface()[index]);;
+    InputAutomationConfigurationModuleChangeEvent* inputAutomationConfigurationModuleChangeEvent = InputAutomationConfigurationUtil::getChangeEvent(this->getInputAutomationModuleInterface()[index]);;
     
-inputAutomationConfigurationModuleChangeListener.onAdd(inputAutomationConfigurationModuleChangeEvent);
+inputAutomationConfigurationModuleChangeListener->onAdd(inputAutomationConfigurationModuleChangeEvent);
     
 }
 
@@ -189,9 +195,9 @@ inputAutomationConfigurationModuleChangeListener.onAdd(inputAutomationConfigurat
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.putF(this->commonStrings.EXCEPTION, this, "addModules");
+this->logUtil->putF(this->commonStrings->EXCEPTION, this, "addModules");
     
 }
 
@@ -200,19 +206,19 @@ this->logUtil.putF(this->commonStrings.EXCEPTION, this, "addModules");
 
                 //@Throws(Exception.constructor)
             
-    public: void registerAsService(BundleContext bundleContext){
-OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), InputAutomationModuleServiceInterface.constructor.toString());
+    public: void registerAsService(BundleContext* bundleContext){
+OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), InputAutomationModuleServiceInterface.constructor.getName());
     
 }
 
 
-    private: void removeModules(BundleContext context){
+    private: void removeModules(BundleContext* context){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, "removeModules");
+            this->logUtil->putF(this->commonStrings->START, this, "removeModules");
     
 
-    InputAutomationConfigurationModuleChangeListener inputAutomationConfigurationModuleChangeListener = this->getInputAutomationConfigurationModuleChangeListener(context);;
+    InputAutomationConfigurationModuleChangeListener* inputAutomationConfigurationModuleChangeListener = this->getInputAutomationConfigurationModuleChangeListener(context);;
     
 
                         if(inputAutomationConfigurationModuleChangeListener != 
@@ -228,9 +234,9 @@ OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), InputAu
     int32_t index = 0;index < this->getInputAutomationModuleInterface().length; index++)
         {
 
-    InputAutomationConfigurationModuleChangeEvent inputAutomationConfigurationModuleChangeEvent = InputAutomationConfigurationUtil::getChangeEvent(this->getInputAutomationModuleInterface()[index]);;
+    InputAutomationConfigurationModuleChangeEvent* inputAutomationConfigurationModuleChangeEvent = InputAutomationConfigurationUtil::getChangeEvent(this->getInputAutomationModuleInterface()[index]);;
     
-inputAutomationConfigurationModuleChangeListener.onRemove(inputAutomationConfigurationModuleChangeEvent);
+inputAutomationConfigurationModuleChangeListener->onRemove(inputAutomationConfigurationModuleChangeEvent);
     
 }
 
@@ -239,9 +245,9 @@ inputAutomationConfigurationModuleChangeListener.onRemove(inputAutomationConfigu
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.putF(this->commonStrings.EXCEPTION, this, "removeModules");
+this->logUtil->putF(this->commonStrings->EXCEPTION, this, "removeModules");
     
 }
 
@@ -250,8 +256,8 @@ this->logUtil.putF(this->commonStrings.EXCEPTION, this, "removeModules");
 
                 //@Throws(Exception.constructor)
             
-    public: void start(BundleContext context){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.START);
+    public: void start(BundleContext* context){
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->START);
     
 this->addModules(context);
     
@@ -262,15 +268,15 @@ this->registerAsService(context);
 
                 //@Throws(Exception.constructor)
             
-    public: void stop(BundleContext context){
-this->logUtil.putF(this->commonStrings.START, this, "stop");
+    public: void stop(BundleContext* context){
+this->logUtil->putF(this->commonStrings->START, this, "stop");
     
 this->removeModules(context);
     
 }
 
 
-    protected: std::vector<InputAutomationModuleFactoryInterface> getInputAutomationModuleInterface(){
+    protected: std::vector<InputAutomationModuleFactoryInterface*> getInputAutomationModuleInterface(){
 
 
 
@@ -280,7 +286,7 @@ this->removeModules(context);
 }
 
 
-    protected: void setInputAutomationModuleInterface(std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterface){
+    protected: void setInputAutomationModuleInterface(std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterface){
 this->inputAutomationModuleInterface= inputAutomationModuleInterface;
     
 }
@@ -296,7 +302,7 @@ this->inputAutomationModuleInterface= inputAutomationModuleInterface;
 }
 
 
-    protected: void setServiceFactory(ServiceFactory serviceObject){
+    protected: void setServiceFactory(ServiceFactory* serviceObject){
 this->serviceFactory= serviceObject;
     
 }

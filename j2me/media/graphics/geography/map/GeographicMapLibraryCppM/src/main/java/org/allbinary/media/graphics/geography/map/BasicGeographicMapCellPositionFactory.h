@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -57,30 +63,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicGeographicMap.h"
-#include "GeographicMapCellPositionFactoryInterface.h"
-#include "GeographicMapCellPosition.h"
-#include "GeographicMapCellPositionFactoryInitVisitorInterface.h"
+        #include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInterface.h"
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInitVisitorInterface.h"
 
 class BasicGeographicMapCellPositionFactory
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: std::vector<std::vector<GeographicMapCellPosition>> geographicMapCellPositionArray;
+    protected: std::vector<std::vector<GeographicMapCellPosition*>> geographicMapCellPositionArray;
 
-    protected: BasicGeographicMap geographicMapInterface;
+    protected: BasicGeographicMap* geographicMapInterface;
 
-    protected: GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface;
+    protected: GeographicMapCellPositionFactoryInterface* geographicMapCellPositionFactoryInterface;
 
     private: int32_t columns;
 
     private: int32_t rows;
 
-    private: AllBinaryTiledLayer tiledLayer;
+    private: AllBinaryTiledLayer* tiledLayer;
 
-public: BasicGeographicMapCellPositionFactory(BasicGeographicMap geographicMapInterface);
+public: BasicGeographicMapCellPositionFactory(BasicGeographicMap* geographicMapInterface);
 
                 //@Throws(Exception.constructor)
             
@@ -88,19 +94,19 @@ public: BasicGeographicMapCellPositionFactory(BasicGeographicMap geographicMapIn
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(GeographicMapCellPositionFactoryInitVisitorInterface geographicMapCelPositionFactoryInitVisitorInterface);
+    public: void visit(GeographicMapCellPositionFactoryInitVisitorInterface* geographicMapCelPositionFactoryInitVisitorInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition getAt(int32_t i_column, int32_t i_row);
+    public: GeographicMapCellPosition* getAt(int32_t i_column, int32_t i_row);
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition getInstance(GeographicMapCellPosition anotherMapGeographicMapCellPosition);
+    public: GeographicMapCellPosition* getInstance(GeographicMapCellPosition* anotherMapGeographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition createInstance(int32_t i_column, int32_t i_row, int32_t width, int32_t height);
+    public: GeographicMapCellPosition* createInstance(int32_t i_column, int32_t i_row, int32_t width, int32_t height);
 
     public: int32_t getColumns();
 

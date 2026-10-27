@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_IMAGE_ANIMATIONFACTORYIMAGESCALEUTIL_H
         #define ORG_ALLBINARY_IMAGE_ANIMATIONFACTORYIMAGESCALEUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -75,19 +81,19 @@ class AnimationFactoryImageScaleUtil
             : public Object
          {
 
-    private: static AnimationFactoryImageScaleUtil instance() { return AnimationFactoryImageScaleUtil(); }
+    private: static AnimationFactoryImageScaleUtil* instance() { static std::unique_ptr<AnimationFactoryImageScaleUtil> value(new AnimationFactoryImageScaleUtil()); return value.get(); }
 
-    public: static AnimationFactoryImageScaleUtil getInstance();
+    public: static AnimationFactoryImageScaleUtil* getInstance();
 
-    private: const ImageJ2MEScaleUtil imageScaleUtil = ImageJ2MEScaleUtil::getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public: Image createImage(Image image, int32_t width, int32_t height, int32_t scaleWidth, int32_t scaleHeight);
+    private: ImageJ2MEScaleUtil* imageScaleUtil = ImageJ2MEScaleUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void processAdjust(BaseImageAnimationFactory baseImageAnimationFactory);
+    public: Image* createImage(Image* image, int32_t width, int32_t height, int32_t scaleWidth, int32_t scaleHeight);
+
+                //@Throws(Exception.constructor)
+            
+    public: void processAdjust(BaseImageAnimationFactory* baseImageAnimationFactory);
 
 };
 

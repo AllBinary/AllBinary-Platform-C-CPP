@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_EVENT_EVENTSTRINGS_H
         #define ORG_ALLBINARY_LOGIC_UTIL_EVENT_EVENTSTRINGS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class EventStrings
             : public Object
          {
 
-    private: static EventStrings instance() { return EventStrings(); }
+    private: static EventStrings* instance() { static std::unique_ptr<EventStrings> value(new EventStrings()); return value.get(); }
 
-    public: static EventStrings getInstance();
+    public: static EventStrings* getInstance();
 
     public: const std::string PERFORMANCE_MESSAGE = "Use Custom onEvent Methods for needed optimization";
 

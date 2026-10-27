@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,26 +66,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RendererStrings.h"
+        #include "org/allbinary/graphics/opengles/renderer/RendererStrings.h"
 
 class EmulatorCustomRenderer
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const RendererStrings renderStrings = RendererStrings::getInstance();
+    protected: RendererStrings* renderStrings = RendererStrings::getInstance();
 
-    public: void onSurfaceCreated(GL10 gl, EGLConfig eglConfig){
-this->logUtil.putF(this->commonStrings.START, this, this->renderStrings.ON_SURFACE_CREATED);
+    public: void onSurfaceCreated(GL10* gl, EGLConfig* eglConfig){
+this->logUtil->putF(this->commonStrings->START, this, this->renderStrings->ON_SURFACE_CREATED);
     
 
-    InitEmulatorFactory initEmulatorFactory = InitEmulatorFactory::getInstance();;
+    InitEmulatorFactory* initEmulatorFactory = InitEmulatorFactory::getInstance();;
     
 
-                        if(!initEmulatorFactory.isInitEmulator())
+                        if(!initEmulatorFactory->isInitEmulator())
                         
                                     {
                                     
@@ -88,9 +94,9 @@ this->logUtil.putF(this->commonStrings.START, this, this->renderStrings.ON_SURFA
     std::string WAIT_FOR_EMULATOR = "Waiting on Emulator Initialization";;
     
 
-        while(!initEmulatorFactory.isInitEmulator())
+        while(!initEmulatorFactory->isInitEmulator())
         {
-PreLogUtil::put(WAIT_FOR_EMULATOR, this, this->renderStrings.ON_SURFACE_CREATED);
+PreLogUtil::put(WAIT_FOR_EMULATOR, this, this->renderStrings->ON_SURFACE_CREATED);
     
 Thread::sleep(180);
     
@@ -98,9 +104,9 @@ Thread::sleep(180);
 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->renderStrings.ON_SURFACE_CREATED, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->renderStrings->ON_SURFACE_CREATED, &e);
     
 }
 

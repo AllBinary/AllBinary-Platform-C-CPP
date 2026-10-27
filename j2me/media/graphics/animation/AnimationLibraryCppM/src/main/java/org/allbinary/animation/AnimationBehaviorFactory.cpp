@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,15 +44,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnimationBehavior.h"
+        #include "org/allbinary/animation/AnimationBehavior.h"
 
 class AnimationBehaviorFactory
             : public Object
          {
 
-    private: static AnimationBehaviorFactory instance() { return AnimationBehaviorFactory(); }
+    private: static AnimationBehaviorFactory* instance() { static std::unique_ptr<AnimationBehaviorFactory> value(new AnimationBehaviorFactory()); return value.get(); }
 
-    public: static AnimationBehaviorFactory getInstance(){
+    public: static AnimationBehaviorFactory* getInstance(){
 
 
 
@@ -56,7 +62,7 @@ class AnimationBehaviorFactory
 }
 
 
-    public: AnimationBehavior getOrCreateInstance(){
+    public: AnimationBehavior* getOrCreateInstance(){
 
 
 

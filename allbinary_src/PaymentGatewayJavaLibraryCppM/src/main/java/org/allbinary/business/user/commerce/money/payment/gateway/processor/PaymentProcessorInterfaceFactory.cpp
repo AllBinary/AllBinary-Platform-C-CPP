@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,16 +70,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentProcessorInterfaceFactoryInterface.h"
-#include "PaymentProcessorInterface.h"
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/processor/PaymentProcessorInterfaceFactoryInterface.h"
+#include "org/allbinary/business/user/commerce/money/payment/gateway/processor/PaymentProcessorInterface.h"
 
 class PaymentProcessorInterfaceFactory
             : public Object
          {
 
-    private: static PaymentProcessorInterfaceFactory instance() { return PaymentProcessorInterfaceFactory(); }
+    private: static PaymentProcessorInterfaceFactory* instance() { static std::unique_ptr<PaymentProcessorInterfaceFactory> value(new PaymentProcessorInterfaceFactory()); return value.get(); }
 
-    public: static PaymentProcessorInterfaceFactory getInstance(){
+    public: static PaymentProcessorInterfaceFactory* getInstance(){
 
 
 
@@ -83,7 +89,7 @@ class PaymentProcessorInterfaceFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: PaymentProcessorInterfaceFactory(){
 }
@@ -92,30 +98,30 @@ private: PaymentProcessorInterfaceFactory(){
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: PaymentProcessorInterface getInstance(TransformInfoInterface transformInfoInterface){
+    public: PaymentProcessorInterface* getInstance(TransformInfoInterface* transformInfoInterface){
 
         try {
             
-    PaymentTransactionInterface paymentTransactionInterface = PaymentTransactionInterfaceRequestFactory::getInstance().getInstance(transformInfoInterface);;
+    PaymentTransactionInterface* paymentTransactionInterface = PaymentTransactionInterfaceRequestFactory::getInstance()->getInstance(transformInfoInterface);;
     
 
-    std::string gatewayName = paymentTransactionInterface.getOrderHistory().getPaymentMethod();;
+    std::string gatewayName = paymentTransactionInterface->getOrderHistory()->getPaymentMethod();;
     
 
-                        if(!StringValidationUtil::getInstance().isEmpty(gatewayName))
+                        if(!StringValidationUtil::getInstance()->isEmpty(gatewayName))
                         
                                     {
                                     
-    PaymentType paymentType = PaymentTypeUtil::getInstance().get(gatewayName);;
+    PaymentType* paymentType = PaymentTypeUtil::getInstance()->get(gatewayName);;
     
 
-    PaymentProcessorInterfaceFactoryInterface paymentProcessorInterfaceFactoryInterface = paymentType.getPaymentProcessorInterfaceFactoryInterface();;
+    PaymentProcessorInterfaceFactoryInterface* paymentProcessorInterfaceFactoryInterface = paymentType->getPaymentProcessorInterfaceFactoryInterface();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return paymentProcessorInterfaceFactoryInterface.getInstance(transformInfoInterface, paymentTransactionInterface);
+                        return dynamic_cast<PaymentProcessorInterface*>(paymentProcessorInterfaceFactoryInterface->getInstance(transformInfoInterface, paymentTransactionInterface));
     
 
                                     }
@@ -123,20 +129,20 @@ private: PaymentProcessorInterfaceFactory(){
 
 
 
-                            throw Exception("Error Getting PaymentProcessorInterface");
+                            throw new Exception("Error Getting PaymentProcessorInterface");
                     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PAYMENTERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PAYMENTERROR))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
     
 
                                     }

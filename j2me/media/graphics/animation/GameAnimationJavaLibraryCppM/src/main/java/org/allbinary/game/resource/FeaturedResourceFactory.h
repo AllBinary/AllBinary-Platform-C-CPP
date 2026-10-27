@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_RESOURCE_FEATUREDRESOURCEFACTORY_H
         #define ORG_ALLBINARY_GAME_RESOURCE_FEATUREDRESOURCEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -76,19 +82,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ResourceLoadingLevelFactory.h"
+        #include "org/allbinary/game/resource/ResourceLoadingLevelFactory.h"
 
 class FeaturedResourceFactory
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 public: FeaturedResourceFactory();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: const std::string ANIMATION_FEATURES = "Animation Features: Vector: ";
 
@@ -114,9 +120,9 @@ public: FeaturedResourceFactory();
 
     public: void clear();
 
-    public: void add(GameFeatureControlledInterface featureInterface);
+    public: void add(GameFeatureControlledInterface* featureInterface);
 
-    public: BasicArrayList getList();
+    public: BasicArrayList* getList();
 
 };
 

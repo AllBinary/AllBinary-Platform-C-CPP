@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/System.h"
@@ -66,35 +72,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImmutableBasicArrayList.h"
-#include "BasicArrayList.h"
-#include "BasicArrayListD.h"
+        #include "org/allbinary/util/ImmutableBasicArrayList.h"
+#include "org/allbinary/util/BasicArrayList.h"
+#include "org/allbinary/util/BasicArrayListD.h"
 
 class BasicArrayListUtil
             : public Object
          {
 
-    private: static BasicArrayListUtil instance() { return BasicArrayListUtil(); }
+    private: static BasicArrayListUtil* instance() { static std::unique_ptr<BasicArrayListUtil> value(new BasicArrayListUtil()); return value.get(); }
 
-    public: static BasicArrayListUtil getInstance();
+    public: static BasicArrayListUtil* getInstance();
 
     public: static void main(std::vector<std::string> args);
 
-    public: const std::vector<std::vector<BasicArrayList>> NULL_ARRAY_OF_ARRAY = std::vector<std::vector<BasicArrayList>>(0, std::vector<BasicArrayList>(0));
+    public: const std::vector<std::vector<BasicArrayList*>> NULL_ARRAY_OF_ARRAY = std::vector<std::vector<BasicArrayList*>>(0, std::vector<BasicArrayList*>(0));
 
-    private: const MyRandomFactory myRandomFactory = MyRandomFactory::getInstance();
+    private: MyRandomFactory* myRandomFactory = MyRandomFactory::getInstance();
 
-    private: const BasicArrayList immutableInstance = ImmutableBasicArrayList("Immutable", 0);
+    private: BasicArrayList* immutableInstance = new ImmutableBasicArrayList("Immutable", 0);
 
-    public: Object* getRandom(BasicArrayList list);
+    public: Object* getRandom(BasicArrayList* list);
 
-    public: int32_t getRandomIndex(BasicArrayList list);
+    public: int32_t getRandomIndex(BasicArrayList* list);
 
-    public: void reverse(BasicArrayList list);
+    public: void reverse(BasicArrayList* list);
 
-    public: std::string log(BasicArrayList list);
+    public: std::string log(BasicArrayList* list);
 
-    public: BasicArrayList getImmutableInstance();
+    public: BasicArrayList* getImmutableInstance();
 
 };
 

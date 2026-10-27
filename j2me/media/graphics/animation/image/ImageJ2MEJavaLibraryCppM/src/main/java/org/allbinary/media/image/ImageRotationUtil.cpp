@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -51,9 +57,9 @@ class ImageRotationUtil
             : public Object
          {
 
-    private: static ImageRotationUtil instance() { return ImageRotationUtil(); }
+    private: static ImageRotationUtil* instance() { static std::unique_ptr<ImageRotationUtil> value(new ImageRotationUtil()); return value.get(); }
 
-    public: static ImageRotationUtil getInstance(){
+    public: static ImageRotationUtil* getInstance(){
 
 
 
@@ -71,7 +77,7 @@ private: ImageRotationUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image createRotatedImage(Image originalImage, int32_t rotationInDegrees){
+    public: Image* createRotatedImage(Image* originalImage, int32_t rotationInDegrees){
 
 
 

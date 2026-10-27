@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/event/LayerManagerEvent.h>
@@ -49,45 +55,45 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LayerManager.h"
-#include "LayerProcessor.h"
-#include "LayerManagerNoDebug.h"
-#include "AllBinaryLayer.h"
+        #include "org/allbinary/layer/LayerManager.h"
+#include "org/allbinary/layer/LayerProcessor.h"
+#include "org/allbinary/layer/LayerManagerNoDebug.h"
+#include "org/allbinary/layer/AllBinaryLayer.h"
 
 class AllBinaryLayerManager: public LayerManager {
 
-    private: const LayerManagerEventHandler layerManagerEventHandler = LayerManagerEventHandler::getInstance();
+    private: LayerManagerEventHandler* layerManagerEventHandler = LayerManagerEventHandler::getInstance();
 
-    private: const LayerManagerEvent createLayerManagerEvent = LayerManagerEvent(this, this->layerManagerEventHandler.CREATE);
+    private: LayerManagerEvent* createLayerManagerEvent = new LayerManagerEvent(this, this->layerManagerEventHandler->CREATE);
 
-    private: const LayerManagerEvent deleteLayerManagerEvent = LayerManagerEvent(this, this->layerManagerEventHandler.DELETE);
+    private: LayerManagerEvent* deleteLayerManagerEvent = new LayerManagerEvent(this, this->layerManagerEventHandler->DELETE);
 
-    private: std::vector<LayerProcessor> basicLayerProcessorArray = {};
+    private: std::vector<LayerProcessor*> basicLayerProcessorArray = {};
 
 protected: AllBinaryLayerManager();
 
-    protected: std::vector<LayerProcessor> getLayerProcessorArray();
+    protected: std::vector<LayerProcessor*> getLayerProcessorArray();
 
-    public: void setLayerProcessorArray(std::vector<LayerProcessor> layerProcessorArray);
+    public: void setLayerProcessorArray(std::vector<LayerProcessor*> layerProcessorArray);
 
     public: void log();
 
                 //@Throws(Exception.constructor)
             
-    public: void append(AllBinaryLayer layerInterface);
+    public: void append(AllBinaryLayer* layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void appendAt(AllBinaryLayer layerInterface, int32_t index);
+    public: void appendAt(AllBinaryLayer* layerInterface, int32_t index);
 
                 //@Throws(Exception.constructor)
             
-    private: void appendProcessors(AllBinaryLayer layerInterface);
+    private: void appendProcessors(AllBinaryLayer* layerInterface);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void remove(AllBinaryLayer layerInterface);
+    public: void remove(AllBinaryLayer* layerInterface);
 
                 //@Throws(Exception.constructor)
             

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONINTERFACECOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONINTERFACECOMPOSITEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -38,11 +44,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Group.h"
+        #include "org/allbinary/game/identification/Group.h"
 
 class GroupInterfaceCompositeInterface {
 
-    std::vector<Group> getGroupInterface()
+    public: virtual std::vector<Group*> getGroupInterface() = 0;
 
 };
 

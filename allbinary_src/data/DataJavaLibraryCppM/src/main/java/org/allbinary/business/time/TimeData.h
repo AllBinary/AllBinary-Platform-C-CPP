@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_TIME_TIMEDATA_H
         #define ORG_ALLBINARY_BUSINESS_TIME_TIMEDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class TimeData
             : public Object
          {
 
-    private: static TimeData instance() { return TimeData(); }
+    private: static TimeData* instance() { static std::unique_ptr<TimeData> value(new TimeData()); return value.get(); }
 
-    public: static TimeData getInstance();
+    public: static TimeData* getInstance();
 
 private: TimeData();
 

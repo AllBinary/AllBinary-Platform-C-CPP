@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/io/InputStream.h>
 
       
@@ -46,14 +52,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        //#include "Config.h"
-#include "OpenGLBitmap.h"
+        //#include "org/allbinary/graphics/Config.h"
+#include "org/allbinary/graphics/OpenGLBitmap.h"
 
 class OpenGLBitmapFactory: public PlatformBitmapBaseFactory {
 
-    private: static OpenGLBitmapFactory instance() { return OpenGLBitmapFactory(); }
+    private: static OpenGLBitmapFactory* instance() { static std::unique_ptr<OpenGLBitmapFactory> value(new OpenGLBitmapFactory()); return value.get(); }
 
-    public: static OpenGLBitmapFactory getInstance(){
+    public: static OpenGLBitmapFactory* getInstance(){
 
 
 
@@ -72,7 +78,7 @@ class Config
 
     public: bitmapConfig;
 
-: Config(Bitmap::Config bitmapConfig){
+: Config(Bitmap::Config* bitmapConfig){
 this->bitmapConfig= bitmapConfig;
     
 }
@@ -81,36 +87,36 @@ this->bitmapConfig= bitmapConfig;
 };
 
             
-    public: const ARGB_8888 = Config(Bitmap::Config.ARGB_8888);
+    public: ARGB_8888 = new Config(Bitmap::Config.ARGB_8888);
 
-    public: OpenGLBitmap createBitmap(int32_t width, int32_t height, OpenGLBitmapFactory::Config config){
+    public: OpenGLBitmap* createBitmap(int32_t width, int32_t height, OpenGLBitmapFactory::Config* config){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLBitmap(Bitmap::createBitmap(width, height, config.bitmapConfig));
+                        return new OpenGLBitmap(Bitmap::createBitmap(width, height, config->bitmapConfig));
     
 }
 
 
                 //@Throws(IOException.constructor)
             
-    public: OpenGLBitmap decodeStream(InputStream inputStream){
+    public: OpenGLBitmap* decodeStream(InputStream* inputStream){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLBitmap(BitmapFactory::decodeStream(inputStream));
+                        return new OpenGLBitmap(BitmapFactory::decodeStream(inputStream));
     
 }
 
 
-    public: PlatformBitmapBase createBitmap(Image image){
+    public: PlatformBitmapBase* createBitmap(Image* image){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLBitmap((image).getBitmap());
+                        return new OpenGLBitmap((image)).getBitmap());
     
 }
 

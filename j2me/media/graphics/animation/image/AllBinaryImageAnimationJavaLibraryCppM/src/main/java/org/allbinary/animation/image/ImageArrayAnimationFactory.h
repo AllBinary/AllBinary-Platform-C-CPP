@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,28 +72,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageArrayAnimation.h"
-#include "AdjustedImageArrayAnimation.h"
+        #include "org/allbinary/animation/image/ImageArrayAnimation.h"
+#include "org/allbinary/animation/image/AdjustedImageArrayAnimation.h"
 
 class ImageArrayAnimationFactory
             : public Object
-        : public AnimationInterfaceFactoryInterface {
+        , public AnimationInterfaceFactoryInterface {
 
     private: int32_t dx = 0;
 
     private: int32_t dy = 0;
 
-    private: std::vector<Image> imageArray;
+    private: std::vector<Image*> imageArray;
 
-    private: AnimationBehaviorFactory animationBehaviorFactory;
+    private: AnimationBehaviorFactory* animationBehaviorFactory;
 
-public: ImageArrayAnimationFactory(std::vector<Image> imageArray, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
+public: ImageArrayAnimationFactory(std::vector<Image*> imageArray, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId);
+    public: Animation* getInstance(int32_t instanceId);
 
-    public: void setInitialScale(ScaleProperties scaleProperties);
+    public: void setInitialScale(ScaleProperties* scaleProperties);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IO_IIOIMAGECACHEABLE_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IO_IIOIMAGECACHEABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/awt/image/BufferedImage.h>
@@ -56,21 +62,21 @@
         
 class IIOImageCacheable
             : public Object
-        : public CacheableInterface {
+        , public CacheableInterface {
 
     private: std::string key;
 
-    private: IIOImage iioImage;
+    private: IIOImage* iioImage;
 
 public: IIOImageCacheable(std::string key);
 
     public: Object* getKey();
 
-    public: void setBufferedImage(BufferedImage bufferedImage);
+    public: void setBufferedImage(BufferedImage* bufferedImage);
 
-    public: IIOImage getIioImage();
+    public: IIOImage* getIioImage();
 
-    private: void setIioImage(IIOImage iioImage);
+    private: void setIioImage(IIOImage* iioImage);
 
     public: std::string toString();
 

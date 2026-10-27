@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -89,30 +95,30 @@ class ClassUtil
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    std::vector<Class*> classes = myClass.getClasses();;
+    std::vector<Class*> classes = myClass->getClasses();;
     
-stringBuffer.append(lineBreak);
+stringBuffer->append(lineBreak);
     
-stringBuffer.append("Class: ");
+stringBuffer->append("Class: ");
     
-stringBuffer.append(myClass.toString());
+stringBuffer->append(myClass->getName());
     
-stringBuffer.append(" uses ");
+stringBuffer->append(" uses ");
     
-stringBuffer.appendint(classes.size());
+stringBuffer->appendint(classes.size());
     
-stringBuffer.append(" other classes");
+stringBuffer->append(" other classes");
     
-stringBuffer.append(lineBreak);
+stringBuffer->append(lineBreak);
     
-stringBuffer.append(lineBreak);
+stringBuffer->append(lineBreak);
     
-stringBuffer.append("Classes: ");
+stringBuffer->append("Classes: ");
     
-stringBuffer.append(lineBreak);
+stringBuffer->append(lineBreak);
     
 
 
@@ -121,29 +127,29 @@ stringBuffer.append(lineBreak);
                         for (
     int32_t index = 0;index < classes.size(); index++)
         {
-stringBuffer.append("Class: ");
+stringBuffer->append("Class: ");
     
-stringBuffer.append(classes[index].getName());
+stringBuffer->append(classes[index].getName());
     
-stringBuffer.append(lineBreak);
+stringBuffer->append(lineBreak);
     
 }
 
-stringBuffer.append(InterfaceUtil::viewAll(myClass, lineBreak));
+stringBuffer->append(InterfaceUtil::viewAll(myClass, lineBreak));
     
-stringBuffer.append(lineBreak);
+stringBuffer->append(lineBreak);
     
-stringBuffer.append(ConstructorUtil::viewAll(myClass, lineBreak));
+stringBuffer->append(ConstructorUtil::viewAll(myClass, lineBreak));
     
-stringBuffer.append(lineBreak);
+stringBuffer->append(lineBreak);
     
-stringBuffer.append(MethodUtil::viewAll(myClass, lineBreak));
+stringBuffer->append(MethodUtil::viewAll(myClass, lineBreak));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                                     }

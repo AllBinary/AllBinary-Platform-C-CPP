@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/communication/log/PreLogUtil.h>
 
       
@@ -53,25 +59,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SimpleWeaponProperties.h"
+        #include "org/allbinary/game/combat/weapon/SimpleWeaponProperties.h"
 
 class WeaponProperties: public SimpleWeaponProperties {
 
-    public: static const WeaponProperties NULL_WEAPON_PROPERTIES = WeaponProperties(0, 0, 0, 0, 0);
+    public: static WeaponProperties* NULL_WEAPON_PROPERTIES() { static std::unique_ptr<WeaponProperties> value(new WeaponProperties(0, 0, 0, 0, 0)); return value.get(); }
 
-    private: static bool messageSent = false;
+    private: static inline bool messageSent = false;
 
-    private: static const std::string DAMAGE = "Damage: ";
+    private: static inline const std::string DAMAGE = "Damage: ";
 
-    private: static const std::string RANGE = "Range: ";
+    private: static inline const std::string RANGE = "Range: ";
 
-    private: static const std::string RELOAD = "Reload: ";
+    private: static inline const std::string RELOAD = "Reload: ";
 
     private: int64_t reloadTime= 0;
 
     private: int64_t targetingTime= 0;
 
-    private: BasicDecimal speed = BasicDecimal::ZERO_BIGDECIMAL;
+    private: BasicDecimal* speed = BasicDecimal::ZERO_BIGDECIMAL;
 
     private: const int64_t MAX = 10240;
 
@@ -86,9 +92,9 @@ public: WeaponProperties(int64_t reloadTime, int64_t targetingTime, int64_t spee
     std::string MESSAGE = "Danger Danger Danger: Speed probably to slow if using 1 degree calculations as velocity for a single axis could be below 1024: ";;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil::put(StringMaker().append(MESSAGE).appendlong(speed).toString(), this, commonStrings.CONSTRUCTOR);
+PreLogUtil::put((new StringMaker())->append(MESSAGE)->appendlong(speed)->toString(), this, commonStrings->CONSTRUCTOR);
     
 WeaponProperties::messageSent= true;
     
@@ -103,17 +109,17 @@ this->setDamage(damage);
     
 this->setDissipation(dissipation);
     
-this->setSpeed(BasicDecimal(speed));
+this->setSpeed(new BasicDecimal(speed));
     
 
                         if(dissipation != this->ZERO)
                         
                                     {
                                     
-    int64_t unscaledDamage = this->speed.getUnscaled() *damage;;
+    int64_t unscaledDamage = this->speed->getUnscaled() *damage;;
     
 
-    int32_t scaledDissipation = dissipation *this->speed.getScaledFactorValue();;
+    int32_t scaledDissipation = dissipation *this->speed->getScaledFactorValue();;
     
 
     int64_t value = (unscaledDamage /scaledDissipation);;
@@ -158,7 +164,7 @@ this->targetingTime= targetingTime;
 }
 
 
-    public: BasicDecimal getSpeed(){
+    public: BasicDecimal* getSpeed(){
 
 
 
@@ -168,7 +174,7 @@ this->targetingTime= targetingTime;
 }
 
 
-    public: void setSpeed(BasicDecimal speed){
+    public: void setSpeed(BasicDecimal* speed){
 this->speed= speed;
     
 }
@@ -179,7 +185,7 @@ this->speed= speed;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getDamage() -((this->getDissipation() *range) /this->speed.getScaled());
+                        return this->getDamage() -((this->getDissipation() *range) /this->speed->getScaled());
     
 }
 
@@ -192,17 +198,17 @@ this->speed= speed;
     std::vector<std::string> stringArray = std::vector<std::string>(3);;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringArray[index++]= stringBuffer.append(WeaponProperties::DAMAGE).appendint(this->getDamage()).toString();
+stringArray[index++]= stringBuffer->append(WeaponProperties::DAMAGE)->appendint(this->getDamage())->toString();
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringArray[index++]= stringBuffer.append(WeaponProperties::RANGE).appendint(this->getRange()).toString();
+stringArray[index++]= stringBuffer->append(WeaponProperties::RANGE)->appendint(this->getRange())->toString();
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringArray[index++]= stringBuffer.append(WeaponProperties::RELOAD).appendlong(this->getReloadTime()).toString();
+stringArray[index++]= stringBuffer->append(WeaponProperties::RELOAD)->appendlong(this->getReloadTime())->toString();
     
 
 
@@ -215,23 +221,23 @@ stringArray[index++]= stringBuffer.append(WeaponProperties::RELOAD).appendlong(t
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(WeaponProperties::DAMAGE).appendint(this->getDamage());
+stringBuffer->append(WeaponProperties::DAMAGE)->appendint(this->getDamage());
     
-stringBuffer.append(CommonSeps::getInstance().SPACE);
+stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-stringBuffer.append(WeaponProperties::RANGE).appendint(this->getRange());
+stringBuffer->append(WeaponProperties::RANGE)->appendint(this->getRange());
     
-stringBuffer.append(CommonSeps::getInstance().SPACE);
+stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-stringBuffer.append(WeaponProperties::RELOAD).appendlong(this->getReloadTime());
+stringBuffer->append(WeaponProperties::RELOAD)->appendlong(this->getReloadTime());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

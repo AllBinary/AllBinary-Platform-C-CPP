@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/animation/AnimationBehavior.h>
 
       
@@ -45,23 +51,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SpecialAnimationInterface.h"
+        #include "org/allbinary/animation/special/SpecialAnimationInterface.h"
 
 class SpecialAnimation: public IndexedAnimation, public SpecialAnimationInterface {
 
-    private: static const SpecialAnimation NULL_SPECIAL_ANIMATION = SpecialAnimation(IndexedAnimationBehavior(1, 250));
+    private: static SpecialAnimation* NULL_SPECIAL_ANIMATION() { static std::unique_ptr<SpecialAnimation> value(new SpecialAnimation(new IndexedAnimationBehavior(1, 250))); return value.get(); }
 
-    public: static SpecialAnimation getInstance(){
+    public: static SpecialAnimation* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SpecialAnimation::NULL_SPECIAL_ANIMATION;
+                        return SpecialAnimation::NULL_SPECIAL_ANIMATION();
     
 }
 
 
-public: SpecialAnimation(AnimationBehavior animationBehavior) : IndexedAnimation(animationBehavior){
+public: SpecialAnimation(AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,9 +79,9 @@ public: SpecialAnimation(AnimationBehavior animationBehavior) : IndexedAnimation
 
     public: void nextFrame(){
 
-    IndexedAnimationBehavior indexedAnimationBehavior = (this->animationBehaviorP);;
+    IndexedAnimationBehavior* indexedAnimationBehavior = (dynamic_cast<IndexedAnimationBehavior*>(this->animationBehaviorP));;
     
-indexedAnimationBehavior.loopIndex++;
+indexedAnimationBehavior->loopIndex++;
     
 }
 

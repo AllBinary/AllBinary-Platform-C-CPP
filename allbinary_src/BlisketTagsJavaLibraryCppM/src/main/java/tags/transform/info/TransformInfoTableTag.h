@@ -21,6 +21,12 @@
         #ifndef TAGS_TRANSFORM_INFO_TRANSFORMINFOTABLETAG_H
         #define TAGS_TRANSFORM_INFO_TRANSFORMINFOTABLETAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <admin/tags/TableTag.h>
 
       

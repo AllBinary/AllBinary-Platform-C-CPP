@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/score/ScoreableInterface.h>
@@ -50,11 +56,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PointsLayer.h"
+        #include "org/allbinary/game/ag/layer/pickup/points/PointsLayer.h"
 
 class PointsLayerCircularStaticPool: public AllBinaryLayerCircularPool {
 
-public: PointsLayerCircularStaticPool(AllBinaryLayerFactoryInterface allbinaryLayerFactoryInterface, int32_t total){
+public: PointsLayerCircularStaticPool(AllBinaryLayerFactoryInterface* allbinaryLayerFactoryInterface, int32_t total){
 super.initAllBinaryLayerCircularPool(allbinaryLayerFactoryInterface, total);
     
 }
@@ -62,14 +68,14 @@ super.initAllBinaryLayerCircularPool(allbinaryLayerFactoryInterface, total);
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(AllBinaryLayer sourceLayerInterface){
+    public: void visit(AllBinaryLayer* sourceLayerInterface){
 
-    PointsLayer pointsLayer = this->getNextInstance();;
+    PointsLayer* pointsLayer = dynamic_cast<PointsLayer*>(this->getNextInstance());;
     
 
-    ScoreableInterface scoreableInterface = sourceLayerInterface;;
+    ScoreableInterface* scoreableInterface = dynamic_cast<ScoreableInterface*>(sourceLayerInterface);;
     
-pointsLayer.visit(scoreableInterface);
+pointsLayer->visit(scoreableInterface);
     
 }
 

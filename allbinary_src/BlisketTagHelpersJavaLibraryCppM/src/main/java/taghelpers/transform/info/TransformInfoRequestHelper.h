@@ -21,6 +21,12 @@
         #ifndef TAGHELPERS_TRANSFORM_INFO_TRANSFORMINFOREQUESTHELPER_H
         #define TAGHELPERS_TRANSFORM_INFO_TRANSFORMINFOREQUESTHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -71,11 +77,11 @@
         
 class TransformInfoRequestHelper: public ModifyTable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: TransformInfoHttpInterface transformInfoInterface;
+    private: TransformInfoHttpInterface* transformInfoInterface;
 
-public: TransformInfoRequestHelper(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
+public: TransformInfoRequestHelper(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext);
 
     public: std::string update();
 

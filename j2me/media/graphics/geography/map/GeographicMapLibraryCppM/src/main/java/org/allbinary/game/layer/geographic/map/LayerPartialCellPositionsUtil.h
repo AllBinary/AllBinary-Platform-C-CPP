@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_LAYERPARTIALCELLPOSITIONSUTIL_H
         #define ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_LAYERPARTIALCELLPOSITIONSUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,17 +69,17 @@ class LayerPartialCellPositionsUtil
             : public Object
          {
 
-    private: static LayerPartialCellPositionsUtil instance() { return LayerPartialCellPositionsUtil(); }
+    private: static LayerPartialCellPositionsUtil* instance() { static std::unique_ptr<LayerPartialCellPositionsUtil> value(new LayerPartialCellPositionsUtil()); return value.get(); }
 
-    public: static LayerPartialCellPositionsUtil getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public: BasicArrayList getAll(BasicGeographicMap geographicMapInterface, AllBinaryLayer layerInterface, BasicArrayList reusableList);
+    public: static LayerPartialCellPositionsUtil* getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getAllDXY(BasicGeographicMap geographicMapInterface, AllBinaryLayer layerInterface, int32_t dx, int32_t dy, BasicArrayList reusableList);
+    public: BasicArrayList* getAll(BasicGeographicMap* geographicMapInterface, AllBinaryLayer* layerInterface, BasicArrayList* reusableList);
+
+                //@Throws(Exception.constructor)
+            
+    public: BasicArrayList* getAllDXY(BasicGeographicMap* geographicMapInterface, AllBinaryLayer* layerInterface, int32_t dx, int32_t dy, BasicArrayList* reusableList);
 
 };
 

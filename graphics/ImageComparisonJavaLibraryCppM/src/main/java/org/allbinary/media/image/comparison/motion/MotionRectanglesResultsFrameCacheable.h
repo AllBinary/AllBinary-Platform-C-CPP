@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLESRESULTSFRAMECACHEABLE_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLESRESULTSFRAMECACHEABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Long.h"
@@ -49,23 +55,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionRectangles.h"
+        #include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
 
 class MotionRectanglesResultsFrameCacheable
             : public Object
-        : public CacheableInterface {
+        , public CacheableInterface {
 
-    private: MotionRectangles motionRectangles;
+    private: MotionRectangles* motionRectangles;
 
-    private: Long frame;
+    private: int64_t frame;
 
-public: MotionRectanglesResultsFrameCacheable(MotionRectangles motionRectangles, Long frame);
+public: MotionRectanglesResultsFrameCacheable(MotionRectangles* motionRectangles, int64_t frame);
 
     public: Object* getKey();
 
-    public: MotionRectangles getMotionRectangles();
+    public: MotionRectangles* getMotionRectangles();
 
-    public: void setMotionRectangles(MotionRectangles motionRectangles);
+    public: void setMotionRectangles(MotionRectangles* motionRectangles);
 
     public: std::string toString();
 

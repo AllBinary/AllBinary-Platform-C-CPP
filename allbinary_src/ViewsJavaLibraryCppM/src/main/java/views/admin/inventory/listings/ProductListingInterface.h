@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_INVENTORY_LISTINGS_PRODUCTLISTINGINTERFACE_H
         #define VIEWS_ADMIN_INVENTORY_LISTINGS_PRODUCTLISTINGINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -46,11 +52,11 @@ class ProductListingInterface {
 
                 //@Throws(Exception.constructor)
             
-    std::string generateAll();
+    public: virtual std::string generateAll() = 0;
 
                 //@Throws(Exception.constructor)
             
-    std::string generateAll(std::string storeName);
+    public: virtual std::string generateAll(std::string storeName) = 0;
 
 };
 

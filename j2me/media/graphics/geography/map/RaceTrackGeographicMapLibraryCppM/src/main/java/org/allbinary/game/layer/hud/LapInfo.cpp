@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -46,7 +52,7 @@ class LapInfo
             : public Object
          {
 
-    public: static LapInfo NULL_LAP_INFO = LapInfo( -1);
+    public: static LapInfo* NULL_LAP_INFO() { static std::unique_ptr<LapInfo> value(new LapInfo( -1)); return value.get(); }
 
     private: int32_t numberOfLaps;
 
@@ -111,25 +117,25 @@ this->numberOfLaps++;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("isDone: ");
+stringBuffer->append("isDone: ");
     
-stringBuffer.appendboolean(this->isDone());
+stringBuffer->appendboolean(this->isDone());
     
-stringBuffer.append(" CurrentLap: ");
+stringBuffer->append(" CurrentLap: ");
     
-stringBuffer.appendint(this->getCurrentLap());
+stringBuffer->appendint(this->getCurrentLap());
     
-stringBuffer.append(" Total Laps: ");
+stringBuffer->append(" Total Laps: ");
     
-stringBuffer.appendint(this->getTotalLaps());
+stringBuffer->appendint(this->getTotalLaps());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

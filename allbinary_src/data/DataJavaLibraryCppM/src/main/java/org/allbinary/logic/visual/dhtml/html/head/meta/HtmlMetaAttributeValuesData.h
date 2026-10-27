@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETAATTRIBUTEVALUESDATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETAATTRIBUTEVALUESDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class HtmlMetaAttributeValuesData
             : public Object
          {
 
-    private: static HtmlMetaAttributeValuesData instance() { return HtmlMetaAttributeValuesData(); }
+    private: static HtmlMetaAttributeValuesData* instance() { static std::unique_ptr<HtmlMetaAttributeValuesData> value(new HtmlMetaAttributeValuesData()); return value.get(); }
 
-    public: static HtmlMetaAttributeValuesData getInstance();
+    public: static HtmlMetaAttributeValuesData* getInstance();
 
 private: HtmlMetaAttributeValuesData();
 

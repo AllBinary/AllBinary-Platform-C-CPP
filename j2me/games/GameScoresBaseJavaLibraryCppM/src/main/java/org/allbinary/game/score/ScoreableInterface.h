@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_SCOREABLEINTERFACE_H
         #define ORG_ALLBINARY_GAME_SCORE_SCOREABLEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,11 +48,11 @@
         
 class ScoreableInterface {
 
-    int32_t getPoints();
+    public: virtual int32_t getPoints() = 0;
 
-    void addPoints(int32_t points);
+    public: virtual void addPoints(int32_t points) = 0;
 
-    void removePoints(int32_t points);
+    public: virtual void removePoints(int32_t points) = 0;
 
 };
 

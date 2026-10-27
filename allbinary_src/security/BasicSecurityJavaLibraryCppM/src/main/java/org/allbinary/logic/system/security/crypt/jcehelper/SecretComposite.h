@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/crypto/Cipher.h>
@@ -52,19 +58,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseSecretComposite.h"
+        #include "org/allbinary/logic/system/security/crypt/jcehelper/BaseSecretComposite.h"
 
 class SecretComposite: public BaseSecretComposite {
 
-    private: const ByteUtil byteUtil = ByteUtil::getInstance();
+    private: ByteUtil* byteUtil = ByteUtil::getInstance();
 
-    private: Cipher cipher;
+    private: Cipher* cipher;
 
-    private: SecretKey secretKey;
+    private: SecretKey* secretKey;
 
     private: std::vector<int8_t> key;
 
-public: SecretComposite(SecretKey secretKey, Cipher cipher, std::vector<int8_t> key);
+public: SecretComposite(SecretKey* secretKey, Cipher* cipher, std::vector<int8_t> key);
 
                 //@Throws(Exception.constructor)
             

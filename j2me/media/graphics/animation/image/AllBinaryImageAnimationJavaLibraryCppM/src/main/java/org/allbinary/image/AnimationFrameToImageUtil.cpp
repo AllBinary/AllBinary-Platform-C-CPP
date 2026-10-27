@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,15 +55,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameFeatureImageCacheFactory.h"
+        #include "org/allbinary/image/GameFeatureImageCacheFactory.h"
 
 class AnimationFrameToImageUtil
             : public Object
          {
 
-    private: static AnimationFrameToImageUtil instance() { return AnimationFrameToImageUtil(); }
+    private: static AnimationFrameToImageUtil* instance() { static std::unique_ptr<AnimationFrameToImageUtil> value(new AnimationFrameToImageUtil()); return value.get(); }
 
-    public: static AnimationFrameToImageUtil getInstance(){
+    public: static AnimationFrameToImageUtil* getInstance(){
 
 
 
@@ -69,12 +75,12 @@ class AnimationFrameToImageUtil
 
                 //@Throws(Exception.constructor)
             
-    public: Image getInstanceTranslate(int32_t width, int32_t height, Animation animationInterface){
+    public: Image* getInstanceTranslate(int32_t width, int32_t height, Animation* animationInterface){
 
-    Image image = GameFeatureImageCacheFactory::getInstance().get(AnimationFrameToImageUtil::instance.constructor.name.toString(), ((width *3)>>1), ((height *3)>>1));;
+    Image* image = GameFeatureImageCacheFactory::getInstance()->get(AnimationFrameToImageUtil::instance()->getClass()->getName(), ((width *3)>>1), ((height *3)>>1));;
     
 
-    Graphics graphics = image.getGraphics();;
+    Graphics* graphics = image->getGraphics();;
     
 
     int32_t tranlateX = (width>>2);;
@@ -82,11 +88,11 @@ class AnimationFrameToImageUtil
 
     int32_t tranlateY = (height>>2);;
     
-graphics.translate(tranlateX, tranlateY);
+graphics->translate(tranlateX, tranlateY);
     
-animationInterface.paintXY(graphics, 0, 0);
+animationInterface->paintXY(graphics, 0, 0);
     
-graphics.translate( -tranlateX,  -tranlateY);
+graphics->translate( -tranlateX,  -tranlateY);
     
 
 
@@ -99,14 +105,14 @@ graphics.translate( -tranlateX,  -tranlateY);
 
                 //@Throws(Exception.constructor)
             
-    public: Image getInstanceWH(int32_t width, int32_t height, Animation animationInterface){
+    public: Image* getInstanceWH(int32_t width, int32_t height, Animation* animationInterface){
 
-    Image image = GameFeatureImageCacheFactory::getInstance().get(AnimationFrameToImageUtil::instance.constructor.name.toString(), width, height);;
+    Image* image = GameFeatureImageCacheFactory::getInstance()->get(AnimationFrameToImageUtil::instance()->getClass()->getName(), width, height);;
     
 
-    Graphics graphics = image.getGraphics();;
+    Graphics* graphics = image->getGraphics();;
     
-animationInterface.paintXY(graphics, 0, 0);
+animationInterface->paintXY(graphics, 0, 0);
     
 
 

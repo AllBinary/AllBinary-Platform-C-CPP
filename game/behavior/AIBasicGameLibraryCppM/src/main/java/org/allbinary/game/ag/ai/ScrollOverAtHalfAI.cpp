@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/ai/BasicAI.h>
@@ -56,7 +62,7 @@
         
 class ScrollOverAtHalfAI: public BasicAI {
 
-public: ScrollOverAtHalfAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput) : BasicAI(ownerLayerInterface, gameInput){
+public: ScrollOverAtHalfAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -68,39 +74,39 @@ public: ScrollOverAtHalfAI(AllBinaryLayer ownerLayerInterface, GameInput gameInp
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
 
-    AllBinaryLayer ownerLayerInterface = this->getOwnerLayerInterface();;
+    AllBinaryLayer* ownerLayerInterface = this->getOwnerLayerInterface();;
     
 
-    int32_t x = ownerLayerInterface.getXP();;
+    int32_t x = ownerLayerInterface->getXP();;
     
 
-    int32_t y = ownerLayerInterface.getYP();;
+    int32_t y = ownerLayerInterface->getYP();;
     
 
-    int32_t halfWidth = ownerLayerInterface.getHalfWidth();;
+    int32_t halfWidth = ownerLayerInterface->getHalfWidth();;
     
 
-    int32_t halfHeight = ownerLayerInterface.getHalfHeight();;
+    int32_t halfHeight = ownerLayerInterface->getHalfHeight();;
     
 
-    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
+    DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-                        if(x > displayInfo.getLastWidth() -halfWidth)
+                        if(x > displayInfo->getLastWidth() -halfWidth)
                         
                                     {
-                                    ownerLayerInterface.setPosition(halfWidth +1, y, ownerLayerInterface.getZP());
+                                    ownerLayerInterface->setPosition(halfWidth +1, y, ownerLayerInterface->getZP());
     
 
                                     }
                                 
 
-                        if(y > displayInfo.getLastHeight() -halfHeight)
+                        if(y > displayInfo->getLastHeight() -halfHeight)
                         
                                     {
-                                    ownerLayerInterface.setPosition(x, halfHeight +1, ownerLayerInterface.getZP());
+                                    ownerLayerInterface->setPosition(x, halfHeight +1, ownerLayerInterface->getZP());
     
 
                                     }
@@ -109,7 +115,7 @@ public: ScrollOverAtHalfAI(AllBinaryLayer ownerLayerInterface, GameInput gameInp
                         if(x <  -halfWidth)
                         
                                     {
-                                    ownerLayerInterface.setPosition(displayInfo.getLastWidth() -halfWidth, y, ownerLayerInterface.getZP());
+                                    ownerLayerInterface->setPosition(displayInfo->getLastWidth() -halfWidth, y, ownerLayerInterface->getZP());
     
 
                                     }
@@ -118,7 +124,7 @@ public: ScrollOverAtHalfAI(AllBinaryLayer ownerLayerInterface, GameInput gameInp
                         if(y <  -halfHeight)
                         
                                     {
-                                    ownerLayerInterface.setPosition(x, displayInfo.getLastHeight() -halfHeight, ownerLayerInterface.getZP());
+                                    ownerLayerInterface->setPosition(x, displayInfo->getLastHeight() -halfHeight, ownerLayerInterface->getZP());
     
 
                                     }

@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/combat/destroy/event/DestroyEventCircularStaticPool.h>
@@ -71,15 +79,15 @@
         
 class DestroyedLayerProcessor: public BasicLayerProcessor {
 
-    private: static BasicLayerProcessor DESTROYED_LAYER_PROCESSOR = BasicLayerProcessor::NULL_LAYER_PROCESSOR;
+    private: static inline BasicLayerProcessor* DESTROYED_LAYER_PROCESSOR = BasicLayerProcessor::NULL_LAYER_PROCESSOR;
 
     public: static void init(){
-DestroyedLayerProcessor::DESTROYED_LAYER_PROCESSOR= DestroyedLayerProcessor();
+DestroyedLayerProcessor::DESTROYED_LAYER_PROCESSOR= new DestroyedLayerProcessor();
     
 }
 
 
-    public: static BasicLayerProcessor getInstance(){
+    public: static BasicLayerProcessor* getInstance(){
 
 
 
@@ -95,24 +103,24 @@ private: DestroyedLayerProcessor(){
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayerManager allBinaryLayerManager){
+    public: void process(AllBinaryLayerManager* allBinaryLayerManager){
 
-    BasicArrayList list = this->getList();;
+    BasicArrayList* list = this->getList();;
     
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
-    DestroyedEventHandler destroyedEventHandler = DestroyedEventHandler::getInstance();;
+    DestroyedEventHandler* destroyedEventHandler = DestroyedEventHandler::getInstance();;
     
 
-    DestroyEventCircularStaticPool destroyEventCircularStaticPool = DestroyEventCircularStaticPool::getInstance();;
+    DestroyEventCircularStaticPool* destroyEventCircularStaticPool = DestroyEventCircularStaticPool::getInstance();;
     
 
-    DestroyedEvent destroyedEvent;;
+    DestroyedEvent* destroyedEvent;;
     
 
-    AllBinaryLayer layerInterface;;
+    AllBinaryLayer* layerInterface;;
     
 
 
@@ -122,7 +130,7 @@ private: DestroyedLayerProcessor(){
     int32_t index = 0;index < size; index++)
         {
 
-    Object* layerInterfaceCanBeNull = list.objectArray[index];;
+    Object* layerInterfaceCanBeNull = list->objectArray[index];;
     
 
                         if(layerInterfaceCanBeNull != 
@@ -130,27 +138,27 @@ private: DestroyedLayerProcessor(){
                                 )
                         
                                     {
-                                    layerInterface= *dynamic_cast<AllBinaryLayer*>(layerInterfaceCanBeNull);
+                                    layerInterface= dynamic_cast<AllBinaryLayer*>(layerInterfaceCanBeNull);
     
-allBinaryLayerManager.remove(layerInterface);
+allBinaryLayerManager->remove(layerInterface);
     
-destroyedEvent= destroyEventCircularStaticPool.getInstanceForLayer(layerInterface);
+destroyedEvent= destroyEventCircularStaticPool->getInstanceForLayer(layerInterface);
     
-destroyedEventHandler.fireEvent(destroyedEvent);
+destroyedEventHandler->fireEvent(destroyedEvent);
     
 
                                     }
                                 
                         else {
                             
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
                         }
                             
 }
 
-list.clear();
+list->clear();
     
 }
 

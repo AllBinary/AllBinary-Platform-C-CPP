@@ -21,6 +21,12 @@
         #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_CUSTOMIZERUTIL_H
         #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_CUSTOMIZERUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -87,41 +93,41 @@ class CustomizerUtil
             : public Object
          {
 
-    private: static CustomizerUtil instance() { return CustomizerUtil(); }
+    private: static CustomizerUtil* instance() { static std::unique_ptr<CustomizerUtil> value(new CustomizerUtil()); return value.get(); }
 
-    public: static CustomizerUtil getInstance();
+    public: static CustomizerUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: CustomizerUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface getTransformInfoInterfaceToCustomize(TransformInfoInterface customizerTransformInfoInterface, TransformInfoInterface transformInfoInterface);
+    public: TransformInfoInterface* getTransformInfoInterfaceToCustomize(TransformInfoInterface* customizerTransformInfoInterface, TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getTransformInfoObjectConfigComponentNodesToCustomize(Object customizerTransformInfoInterface, Object transformInfoInterface);
+    public: BasicArrayList* getTransformInfoObjectConfigComponentNodesToCustomize(Object* customizerTransformInfoInterface, Object* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getTransformInfoObjectConfigComponentNodes(Object transformInfoInterface);
+    public: BasicArrayList* getTransformInfoObjectConfigComponentNodes(Object* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getTransformInfoObjectConfigGroupComponentNodes(Object transformInfoInterface);
+    public: BasicArrayList* getTransformInfoObjectConfigGroupComponentNodes(Object* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void insert(TransformInfoInterface transformInfoInterface, DomNodeInterface domNodeInterface);
+    public: void insert(TransformInfoInterface* transformInfoInterface, DomNodeInterface* domNodeInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void write(TransformInfoInterface specifiedTransformInfoInterface, std::string documentString);
+    public: void write(TransformInfoInterface* specifiedTransformInfoInterface, std::string documentString);
 
                 //@Throws(Exception.constructor)
             
-    public: Document getViewDataForComponentsInObjectConfig(Object transformInfoInterface);
+    public: Document* getViewDataForComponentsInObjectConfig(Object* transformInfoInterface);
 
 };
 

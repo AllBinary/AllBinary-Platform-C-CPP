@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/bounds/event/BoundsChangeEvent.h>
@@ -59,23 +65,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BoundsVisitorInterface.h"
+        #include "org/allbinary/bounds/BoundsVisitorInterface.h"
 
 class LayerBounds
             : public Object
-        : public BoundsChangeEventListener {
+        , public BoundsChangeEventListener {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: Rectangle rectangle;
+    protected: Rectangle* rectangle;
 
-protected: LayerBounds(Rectangle rectangle){
+protected: LayerBounds(Rectangle* rectangle){
 this->rectangle= rectangle;
     
 }
 
 
-    public: Rectangle getRectangleP(){
+    public: Rectangle* getRectangleP(){
 
 
 
@@ -85,18 +91,18 @@ this->rectangle= rectangle;
 }
 
 
-    public: void visit(BoundsVisitorInterface boundsVisitorInterface){
+    public: void visit(BoundsVisitorInterface* boundsVisitorInterface){
 }
 
 
-    public: void onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject* eventObject){
+ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public: void onBoundsChangeEvent(BoundsChangeEvent boundsChangeEvent){
-this->rectangle= boundsChangeEvent.getRectangle();
+    public: void onBoundsChangeEvent(BoundsChangeEvent* boundsChangeEvent){
+this->rectangle= boundsChangeEvent->getRectangle();
     
 }
 

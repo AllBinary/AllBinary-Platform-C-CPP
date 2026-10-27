@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/GameInput.h>
@@ -71,26 +79,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PacePatrolAI.h"
+        #include "org/allbinary/game/ag/ai/scroller/PacePatrolAI.h"
 
 class TerrainPatrolAI: public PacePatrolAI {
 
-    private: const TerrainEventListener terrainEventListener = TerrainEventListener();
+    private: TerrainEventListener* terrainEventListener = new TerrainEventListener();
 
-    private: const Angle DOWN = AngleFactory::getInstance().DOWN;
+    private: Angle* DOWN = AngleFactory::getInstance()->DOWN;
 
-    private: const BasicTerrainInfo CLIFF = BasicTerrainInfo(this->DOWN);
+    private: BasicTerrainInfo* CLIFF = new BasicTerrainInfo(this->DOWN);
 
-public: TerrainPatrolAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput) : PacePatrolAI(hashtable, ownerLayerInterface, gameInput){
+public: TerrainPatrolAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : PacePatrolAI(hashtable, ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-TerrainEventHandler::getInstance(ownerLayerInterface).addListener(this->terrainEventListener);
+TerrainEventHandler::getInstance(ownerLayerInterface)->addListener(this->terrainEventListener);
     
-this->terrainEventListener.onTerrainEvent(TerrainEventCircularStaticPool::getInstance().getNext(this->CLIFF));
+this->terrainEventListener->onTerrainEvent(TerrainEventCircularStaticPool::getInstance()->getNext(this->CLIFF));
     
 }
 
@@ -105,10 +113,10 @@ this->changeDirectionIfCliffReached();
 
     private: void changeDirectionIfCliffReached(){
 
-    BasicArrayList list = this->terrainEventListener.getList();;
+    BasicArrayList* list = this->terrainEventListener->getList();;
     
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
 
@@ -118,13 +126,13 @@ this->changeDirectionIfCliffReached();
     int32_t index = 0;index < size; index++)
         {
 
-    TerrainEvent terrainEvent = list.removeAt(index);;
+    TerrainEvent* terrainEvent = dynamic_cast<TerrainEvent*>(list->removeAt(index));;
     
 
-    BasicTerrainInfo basicTerrainInfo = terrainEvent.getBasicTerrainInfo();;
+    BasicTerrainInfo* basicTerrainInfo = terrainEvent->getBasicTerrainInfo();;
     
 
-    Angle angle = basicTerrainInfo.getAngle();;
+    Angle* angle = basicTerrainInfo->getAngle();;
     
 
                         if(angle == this->DOWN)

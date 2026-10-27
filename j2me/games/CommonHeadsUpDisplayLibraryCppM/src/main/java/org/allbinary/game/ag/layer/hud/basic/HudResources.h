@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_HUDRESOURCES_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_HUDRESOURCES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class HudResources
             : public Object
          {
 
-    private: static HudResources instance() { return HudResources(); }
+    private: static HudResources* instance() { static std::unique_ptr<HudResources> value(new HudResources()); return value.get(); }
 
-    public: static HudResources getInstance();
+    public: static HudResources* getInstance();
 
 private: HudResources();
 

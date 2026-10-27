@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -76,18 +82,18 @@
         
 class ViewHelper
             : public Object
-        : public TransformInterface {
+        , public TransformInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: TransformInterface componentInterface;
+    private: TransformInterface* componentInterface;
 
-public: ViewHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
-this->componentInterface= TransformFactory::getInstance().getInstance(this->abeClientInformation, hashMap, pageContext);
+public: ViewHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+this->componentInterface= TransformFactory::getInstance()->getInstance(this->abeClientInformation, hashMap, pageContext);
     
 }
 
@@ -113,11 +119,11 @@ this->componentInterface= TransformFactory::getInstance().getInstance(this->abeC
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->componentInterface.view();;
+                        return this->componentInterface->view();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to View: ";;
@@ -126,16 +132,16 @@ this->componentInterface= TransformFactory::getInstance().getInstance(this->abeC
                         if(this->componentInterface != 
                                     nullptr
                                 )
-                        error += this->componentInterface.constructor.name.toString();
+                        error += this->componentInterface->getClass()->getName();
                                 
                              else 
                         if()
                         
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -152,17 +158,17 @@ this->componentInterface= TransformFactory::getInstance().getInstance(this->abeC
 
                 //@Throws(Exception.constructor)
             
-    public: Document toXmlDoc(){
+    public: Document* toXmlDoc(){
 
         try {
             
 
 
-                            throw Exception("Hmm: " +this->componentInterface.getTransformDocumentInterface().getDoc());
+                            throw new Exception("Hmm: " +this->componentInterface->getTransformDocumentInterface()->getDoc());
                     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to View: ";;
@@ -171,16 +177,16 @@ this->componentInterface= TransformFactory::getInstance().getInstance(this->abeC
                         if(this->componentInterface != 
                                     nullptr
                                 )
-                        error += this->componentInterface.constructor.name.toString();
+                        error += this->componentInterface->getClass()->getName();
                                 
                              else 
                         if()
                         
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -195,7 +201,7 @@ this->componentInterface= TransformFactory::getInstance().getInstance(this->abeC
 }
 
 
-    public: TransformInterface getViewObject(){
+    public: TransformInterface* getViewObject(){
 
 
 
@@ -207,17 +213,17 @@ this->componentInterface= TransformFactory::getInstance().getInstance(this->abeC
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface getTransformInfoInterface(){
+    public: TransformInfoInterface* getTransformInfoInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->componentInterface.getTransformInfoInterface();;
+                        return this->componentInterface->getTransformInfoInterface();;
     
 }
 
 
-    public: TransformDocumentInterface getTransformDocumentInterface(){
+    public: TransformDocumentInterface* getTransformDocumentInterface(){
 
 
 
@@ -227,7 +233,7 @@ this->componentInterface= TransformFactory::getInstance().getInstance(this->abeC
 }
 
 
-    public: void setTransformDocumentInterface(TransformDocumentInterface viewDocumentInterface){
+    public: void setTransformDocumentInterface(TransformDocumentInterface* viewDocumentInterface){
 
 
 

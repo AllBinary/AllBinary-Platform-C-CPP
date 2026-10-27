@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABENOLICENSE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABENOLICENSE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -50,19 +56,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbeLicenseInterface.h"
-#include "LicenseTypeFactory.h"
-#include "LicenseType.h"
+        #include "org/allbinary/logic/system/security/licensing/AbeLicenseInterface.h"
+#include "org/allbinary/logic/system/security/licensing/LicenseTypeFactory.h"
+#include "org/allbinary/logic/system/security/licensing/LicenseType.h"
 
 class AbeNoLicense
             : public Object
-        : public AbeLicenseInterface {
+        , public AbeLicenseInterface {
 
-    private: static AbeNoLicense abeNoLicense = AbeNoLicense();
+    private: static AbeNoLicense* abeNoLicense() { static std::unique_ptr<AbeNoLicense> value(new AbeNoLicense()); return value.get(); }
 
-    public: static AbeNoLicense getInstance();
+    public: static AbeNoLicense* getInstance();
 
-    public: BasicArrayList serverVector = BasicArrayListD();
+    public: BasicArrayList* serverVector = new BasicArrayListD();
 
 private: AbeNoLicense();
 
@@ -74,11 +80,11 @@ private: AbeNoLicense();
 
     public: std::string getSpecial();
 
-    public: BasicArrayList getServers();
+    public: BasicArrayList* getServers();
 
     public: bool isValid();
 
-    public: LicenseType getLicenseType();
+    public: LicenseType* getLicenseType();
 
 };
 

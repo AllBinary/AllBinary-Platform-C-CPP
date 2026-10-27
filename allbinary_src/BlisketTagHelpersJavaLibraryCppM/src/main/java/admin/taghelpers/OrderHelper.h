@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_ORDERHELPER_H
         #define ADMIN_TAGHELPERS_ORDERHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -101,25 +107,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TagHelper.h"
+        #include "admin/taghelpers/TagHelper.h"
 
 class OrderHelper: public TagHelper {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: WeblisketSession weblisketSession;
+    private: WeblisketSession* weblisketSession;
 
-    private: StoreFrontInterface storeFrontInterface;
+    private: StoreFrontInterface* storeFrontInterface;
 
-    private: HashMap<Object*, Object*> propertiesHashMap;
+    private: HashMap<Object*, Object*>* propertiesHashMap;
 
-    private: PageContext pageContext;
+    private: PageContext* pageContext;
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
-public: OrderHelper(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
+public: OrderHelper(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext);
 
-    public: Boolean setPaymentGateway();
+    public: bool setPaymentGateway();
 
     public: std::string process();
 

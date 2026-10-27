@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -70,29 +76,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLSurfaceChangedInterface.h"
-#include "OpenGLESImageProperties.h"
+        #include "org/allbinary/image/opengles/OpenGLSurfaceChangedInterface.h"
+#include "org/allbinary/image/opengles/OpenGLESImageProperties.h"
 //OpenGLESNullImageJ2MEJavaLibrary
 class OpenGLESImage
             : public Object
-        : public OpenGLSurfaceChangedInterface {
+        , public OpenGLSurfaceChangedInterface {
 
-    public: static const OpenGLESImage NULL_OPENGL_IMAGE = OpenGLESImage(NullImage::NULL_IMAGE, PlatformBitmapBaseFactory::NULL_PLATFORM_BITMAP_BASE_FACTORY, PlatformTextureBaseFactory::NULL_PLATFORM_TEXTURE_BASE_FACTORY);
+    public: static OpenGLESImage* NULL_OPENGL_IMAGE() { static std::unique_ptr<OpenGLESImage> value(new OpenGLESImage(NullImage::NULL_IMAGE, PlatformBitmapBaseFactory::NULL_PLATFORM_BITMAP_BASE_FACTORY, PlatformTextureBaseFactory::NULL_PLATFORM_TEXTURE_BASE_FACTORY)); return value.get(); }
 
-    public: static const BasicArrayList texture2dList = BasicArrayListD();
+    public: static inline BasicArrayList* texture2dList = new BasicArrayListD();
 
-    public: static const int32_t TYPE = 4;
+    public: static inline const int32_t TYPE = 4;
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: PlatformTextureBaseFactory textureFactory;
+    protected: PlatformTextureBaseFactory* textureFactory;
 
-    public: PlatformBitmapBase openGLBitmap;
+    public: PlatformBitmapBase* openGLBitmap;
 
-    public: const OpenGLESImageProperties openGLESImageProperties = OpenGLESImageProperties();
+    public: OpenGLESImageProperties* openGLESImageProperties = new OpenGLESImageProperties();
 
-public: OpenGLESImage(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory){
-this->openGLBitmap= bitmapFactory.createBitmap(image);
+public: OpenGLESImage(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory){
+this->openGLBitmap= bitmapFactory->createBitmap(image);
     
 this->textureFactory= textureFactory;
     
@@ -101,16 +107,16 @@ this->textureFactory= textureFactory;
 
                 //@Throws(Exception.constructor)
             
-    public: void set(GL gl){
+    public: void set(GL* gl){
 
 
 
-                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
-    protected: bool initTexture(GL10 gl){
+    protected: bool initTexture(GL10* gl){
 
 
 
@@ -120,11 +126,11 @@ this->textureFactory= textureFactory;
 }
 
 
-    public: void drawRegion(GL10 gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z){
+    public: void drawRegion(GL10* gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z){
 }
 
 
-    public: void draw(GL10 gl, int32_t x, int32_t y, int32_t z){
+    public: void draw(GL10* gl, int32_t x, int32_t y, int32_t z){
 }
 
 

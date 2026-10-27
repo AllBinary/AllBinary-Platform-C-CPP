@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_MEDIAPLAYERUTIL_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_MEDIAPLAYERUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -56,15 +62,15 @@ class MediaPlayerUtil
             : public Object
          {
 
-    private: static MediaPlayerUtil instance() { return MediaPlayerUtil(); }
+    private: static MediaPlayerUtil* instance() { static std::unique_ptr<MediaPlayerUtil> value(new MediaPlayerUtil()); return value.get(); }
 
-    public: static MediaPlayerUtil getInstance();
+    public: static MediaPlayerUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void waitForMediaPlayer(MediaPlayer mediaPlayer);
+    public: void waitForMediaPlayer(MediaPlayer* mediaPlayer);
 
 };
 

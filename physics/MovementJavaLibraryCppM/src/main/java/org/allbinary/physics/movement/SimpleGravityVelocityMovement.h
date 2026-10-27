@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_SIMPLEGRAVITYVELOCITYMOVEMENT_H
         #define ORG_ALLBINARY_PHYSICS_MOVEMENT_SIMPLEGRAVITYVELOCITYMOVEMENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
@@ -53,17 +59,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicConstantVelocityMovement.h"
+        #include "org/allbinary/physics/movement/BasicConstantVelocityMovement.h"
 
 class SimpleGravityVelocityMovement: public BasicConstantVelocityMovement {
 
-public: SimpleGravityVelocityMovement(BasicDecimal speedBasicDecimal);
+public: SimpleGravityVelocityMovement(BasicDecimal* speedBasicDecimal);
 
-    private: const GravityUtil gravityUtil = GravityUtil::getInstance();
+    private: GravityUtil* gravityUtil = GravityUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryGameLayer layer);
+    public: void process(AllBinaryGameLayer* layer);
 
 };
 

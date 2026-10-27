@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/awt.h>
@@ -41,22 +47,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PointFactory.h"
-#include "Point.h"
-#include "Rectangle.h"
+        #include "org/allbinary/input/automation/PointFactory.h"
+#include "org/allbinary/input/automation/Point.h"
+#include "org/allbinary/input/automation/Rectangle.h"
 
 class PointHelper
             : public Object
          {
 
-    private: static const double two = 2;
+    private: static inline const double two = 2;
 
-    public: static Point getCenterPoint(Rectangle rectangle){
+    public: static Point* getCenterPoint(Rectangle* rectangle){
 
-    double x = rectangle.getX() +rectangle.getWidth() /PointHelper::two;;
+    double x = rectangle->getX() +rectangle->getWidth() /PointHelper::two;;
     
 
-    double y = rectangle.getY() +rectangle.getHeight() /PointHelper::two;;
+    double y = rectangle->getY() +rectangle->getHeight() /PointHelper::two;;
     
 
 

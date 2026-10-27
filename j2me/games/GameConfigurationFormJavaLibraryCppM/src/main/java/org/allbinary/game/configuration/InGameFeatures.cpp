@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/game/configuration/feature/Features.h>
 
       
@@ -71,13 +79,13 @@ class InGameFeatures: public Init {
     std::string LABEL = "Screen Buttons";;
     
 
-    OrientationData orientationData = OrientationData::getInstance();;
+    OrientationData* orientationData = OrientationData::getInstance();;
     
 
-    BasicArrayList exclusiveOrientationSensorVector = GameFeatureChoiceGroups::getExclusiveInstance().get().get(orientationData.ORIENTATION_SENSOR_INPUT);;
+    BasicArrayList* exclusiveOrientationSensorVector = dynamic_cast<BasicArrayList*>(GameFeatureChoiceGroups::getExclusiveInstance()->get()->get(orientationData->ORIENTATION_SENSOR_INPUT));;
     
 
-    InGameFeatureChoiceGroups inGameFeatureChoiceGroups = InGameFeatureChoiceGroups::getExclusiveInstance();;
+    InGameFeatureChoiceGroups* inGameFeatureChoiceGroups = InGameFeatureChoiceGroups::getExclusiveInstance();;
     
 
                         if(exclusiveOrientationSensorVector != 
@@ -86,7 +94,7 @@ class InGameFeatures: public Init {
                         
                                     {
                                     
-    Object* inGameExclusiveOrientationSensorVectorCanBeNull = inGameFeatureChoiceGroups.get().get(orientationData.ORIENTATION_SENSOR_INPUT);;
+    Object* inGameExclusiveOrientationSensorVectorCanBeNull = inGameFeatureChoiceGroups->get()->get(orientationData->ORIENTATION_SENSOR_INPUT);;
     
 
                         if(inGameExclusiveOrientationSensorVectorCanBeNull == 
@@ -101,10 +109,10 @@ class InGameFeatures: public Init {
                                 
                         else {
                             
-    BasicArrayList inGameExclusiveOrientationSensorVector = *dynamic_cast<BasicArrayList*>(inGameExclusiveOrientationSensorVectorCanBeNull);;
+    BasicArrayList* inGameExclusiveOrientationSensorVector = dynamic_cast<BasicArrayList*>(inGameExclusiveOrientationSensorVectorCanBeNull);;
     
 
-                        if(inGameExclusiveOrientationSensorVector.size() == 0)
+                        if(inGameExclusiveOrientationSensorVector->size() == 0)
                         
                                     {
                                     this->addToInGameMenu();
@@ -119,25 +127,25 @@ class InGameFeatures: public Init {
                                     }
                                 
 
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-                        if(features.isFeature(TouchFeatureFactory::getInstance().SHOW_SCREEN_BUTTONS) || features.isFeature(TouchFeatureFactory::getInstance().AUTO_HIDE_SHOW_SCREEN_BUTTONS) || features.isFeature(TouchFeatureFactory::getInstance().HIDE_SCREEN_BUTTONS))
+                        if(features->isFeature(TouchFeatureFactory::getInstance()->SHOW_SCREEN_BUTTONS) || features->isFeature(TouchFeatureFactory::getInstance()->AUTO_HIDE_SHOW_SCREEN_BUTTONS) || features->isFeature(TouchFeatureFactory::getInstance()->HIDE_SCREEN_BUTTONS))
                         
                                     {
                                     
-    BasicArrayList exclusiveScreenButtonsVector = BasicArrayListD();;
+    BasicArrayList* exclusiveScreenButtonsVector = new BasicArrayListD();;
     
 
-    TouchFeatureFactory touchFeatureFactory = TouchFeatureFactory::getInstance();;
+    TouchFeatureFactory* touchFeatureFactory = TouchFeatureFactory::getInstance();;
     
-exclusiveScreenButtonsVector.add(touchFeatureFactory.AUTO_HIDE_SHOW_SCREEN_BUTTONS);
+exclusiveScreenButtonsVector->add(touchFeatureFactory->AUTO_HIDE_SHOW_SCREEN_BUTTONS);
     
-exclusiveScreenButtonsVector.add(touchFeatureFactory.SHOW_SCREEN_BUTTONS);
+exclusiveScreenButtonsVector->add(touchFeatureFactory->SHOW_SCREEN_BUTTONS);
     
-exclusiveScreenButtonsVector.add(touchFeatureFactory.HIDE_SCREEN_BUTTONS);
+exclusiveScreenButtonsVector->add(touchFeatureFactory->HIDE_SCREEN_BUTTONS);
     
-inGameFeatureChoiceGroups.add(LABEL, exclusiveScreenButtonsVector);
+inGameFeatureChoiceGroups->add(LABEL, exclusiveScreenButtonsVector);
     
 
                                     }
@@ -147,29 +155,29 @@ inGameFeatureChoiceGroups.add(LABEL, exclusiveScreenButtonsVector);
 
     private: void addToInGameMenu(){
 
-    OrientationData orientationData = OrientationData::getInstance();;
+    OrientationData* orientationData = OrientationData::getInstance();;
     
 
-    BasicArrayList inGameExclusiveOrientationSensorVector = BasicArrayListD();;
+    BasicArrayList* inGameExclusiveOrientationSensorVector = new BasicArrayListD();;
     
-inGameExclusiveOrientationSensorVector.add(SensorFeatureFactory::getInstance().ORIENTATION_SENSORS);
+inGameExclusiveOrientationSensorVector->add(SensorFeatureFactory::getInstance()->ORIENTATION_SENSORS);
     
-inGameExclusiveOrientationSensorVector.add(SensorFeatureFactory::getInstance().NO_ORIENTATION);
+inGameExclusiveOrientationSensorVector->add(SensorFeatureFactory::getInstance()->NO_ORIENTATION);
     
-InGameFeatureChoiceGroups::getExclusiveInstance().add(orientationData.ORIENTATION_SENSOR_INPUT, inGameExclusiveOrientationSensorVector);
+InGameFeatureChoiceGroups::getExclusiveInstance()->add(orientationData->ORIENTATION_SENSOR_INPUT, inGameExclusiveOrientationSensorVector);
     
 }
 
 
     public: bool isAny(){
 
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-    TouchFeatureFactory touchFeatureFactory = TouchFeatureFactory::getInstance();;
+    TouchFeatureFactory* touchFeatureFactory = TouchFeatureFactory::getInstance();;
     
 
-                        if(features.isFeature(touchFeatureFactory.SHOW_SCREEN_BUTTONS) || features.isFeature(touchFeatureFactory.AUTO_HIDE_SHOW_SCREEN_BUTTONS) || features.isFeature(touchFeatureFactory.HIDE_SCREEN_BUTTONS))
+                        if(features->isFeature(touchFeatureFactory->SHOW_SCREEN_BUTTONS) || features->isFeature(touchFeatureFactory->AUTO_HIDE_SHOW_SCREEN_BUTTONS) || features->isFeature(touchFeatureFactory->HIDE_SCREEN_BUTTONS))
                         
                                     {
                                     
@@ -182,7 +190,7 @@ InGameFeatureChoiceGroups::getExclusiveInstance().add(orientationData.ORIENTATIO
                                     }
                                 
 
-    BasicArrayList exclusiveOrientationSensorVector = GameFeatureChoiceGroups::getExclusiveInstance().get().get(OrientationData::getInstance().ORIENTATION_SENSOR_INPUT);;
+    BasicArrayList* exclusiveOrientationSensorVector = dynamic_cast<BasicArrayList*>(GameFeatureChoiceGroups::getExclusiveInstance()->get()->get(OrientationData::getInstance()->ORIENTATION_SENSOR_INPUT));;
     
 
                         if(exclusiveOrientationSensorVector != 

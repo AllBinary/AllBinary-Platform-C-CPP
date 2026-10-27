@@ -7,6 +7,12 @@
         #ifndef ORG_OSGI_FRAMEWORK_BUNDLE_H
         #define ORG_OSGI_FRAMEWORK_BUNDLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -28,15 +34,15 @@
         
 class Bundle {
 
-    std::string getSymbolicName();
+    public: virtual std::string getSymbolicName() = 0;
 
                 //@Throws(BundleException.constructor)
             
-    void start();
+    public: virtual void start() = 0;
 
                 //@Throws(BundleException.constructor)
             
-    void start(int32_t options);
+    public: virtual void start(int32_t options) = 0;
 
 };
 

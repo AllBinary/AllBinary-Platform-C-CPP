@@ -9,6 +9,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <javax/microedition/lcdui/Image.h>
 
       
@@ -45,11 +53,11 @@
         
 class OpenGLBitmap: public PlatformBitmapBase {
 
-    public: Image image;
+    public: Image* image;
 
 public: OpenGLBitmap(Object* bitmap);
 
-    public: Image getImage();
+    public: Image* getImage();
 
     public: int32_t getDepth();
 

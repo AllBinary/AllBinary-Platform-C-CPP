@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_HIERARCHY_CATEGORYHIERARCHY_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_HIERARCHY_CATEGORYHIERARCHY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -55,23 +61,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryHierarchyInterface.h"
+        #include "org/allbinary/business/category/hierarchy/CategoryHierarchyInterface.h"
 
 class CategoryHierarchy
             : public Object
-        : public CategoryHierarchyInterface {
+        , public CategoryHierarchyInterface {
 
-    private: CategoryInterface rootCategoryInterface;
+    private: CategoryInterface* rootCategoryInterface;
 
-    private: CategoryInterface parentCategoryInterface;
+    private: CategoryInterface* parentCategoryInterface;
 
     private: int32_t level;
 
-public: CategoryHierarchy(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface);
+public: CategoryHierarchy(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface);
 
-public: CategoryHierarchy(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, int32_t level);
+public: CategoryHierarchy(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, int32_t level);
 
-public: CategoryHierarchy(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<Object*, Object*> categoryPropertiesHashMap);
+public: CategoryHierarchy(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap);
 
     public: int32_t getLevel();
 
@@ -79,13 +85,13 @@ public: CategoryHierarchy(CategoryInterface rootCategoryInterface, CategoryInter
 
     public: void setLevel(int32_t level);
 
-    public: void setParent(CategoryInterface categoryInterface);
+    public: void setParent(CategoryInterface* categoryInterface);
 
-    public: void setRoot(CategoryInterface categoryInterface);
+    public: void setRoot(CategoryInterface* categoryInterface);
 
-    public: CategoryInterface getRoot();
+    public: CategoryInterface* getRoot();
 
-    public: CategoryInterface getParent();
+    public: CategoryInterface* getParent();
 
 };
 

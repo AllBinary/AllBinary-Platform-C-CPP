@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
@@ -53,16 +59,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TableTag.h"
-#include "ParentInventoryTagHelper.h"
-#include "AbTagData.h"
+        #include "admin/tags/TableTag.h"
+#include "admin/tags/ParentInventoryTagHelper.h"
+#include "admin/tags/AbTagData.h"
 
 class DownloadItemsTag: public TableTag {
 
 public: DownloadItemsTag(){
-this->setTagHelperFactory(DownloadItemsHelperFactory());
+this->setTagHelperFactory(new DownloadItemsHelperFactory());
     
-this->setTagRequestHelperFactory(DownloadItemsRequestHelperFactory());
+this->setTagRequestHelperFactory(new DownloadItemsRequestHelperFactory());
     
 }
 
@@ -83,15 +89,15 @@ this->setTagRequestHelperFactory(DownloadItemsRequestHelperFactory());
                         
                                     {
                                     
-                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.BACKUP) != 0 && this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.RESTORE) != 0 && this->getCommand().compareTo(this->commonStrings.CREATE) != 0 && this->getCommand().compareTo(this->commonStrings.DROP) != 0)
+                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.BACKUP) != 0 && this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.RESTORE) != 0 && this->getCommand()->compareTo(this->commonStrings.CREATE) != 0 && this->getCommand()->compareTo(this->commonStrings.DROP) != 0)
                         
                                     {
                                     
-    Tag parentTag = this->getParent();;
+    Tag* parentTag = this->getParent();;
     
-ParentInventoryTagHelper::getInstance().isValid(this, parentTag);
+ParentInventoryTagHelper::getInstance()->isValid(this, parentTag);
     
-this->getPropertiesHashMap().put(AbTagData::PARENT, parentTag);
+this->getPropertiesHashMap()->put(AbTagData::PARENT, parentTag);
     
 
                                     }
@@ -116,9 +122,9 @@ this->getPropertiesHashMap().put(AbTagData::PARENT, parentTag);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 

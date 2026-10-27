@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_PERSISTANCESTRINGS_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_PERSISTANCESTRINGS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class PersistanceStrings
             : public Object
          {
 
-    private: static PersistanceStrings instance() { return PersistanceStrings(); }
+    private: static PersistanceStrings* instance() { static std::unique_ptr<PersistanceStrings> value(new PersistanceStrings()); return value.get(); }
 
-    public: static PersistanceStrings getInstance();
+    public: static PersistanceStrings* getInstance();
 
     public: const std::string SAVING = "Saving: ";
 

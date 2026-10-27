@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFORMATUTIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFORMATUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -69,9 +75,9 @@
             : public Object
          {
 
-    private: static LogFormatUtil instance() { return LogFormatUtil(); }
+    private: static LogFormatUtil* instance() { static std::unique_ptr<LogFormatUtil> value(new LogFormatUtil()); return value.get(); }
 
-    public: static LogFormatUtil getInstance();
+    public: static LogFormatUtil* getInstance();
 
 
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -40,19 +46,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameInputProcessor.h"
-#include "InputFactory.h"
+        #include "org/allbinary/game/input/GameInputProcessor.h"
+#include "org/allbinary/game/input/InputFactory.h"
 
 class GameInputProcessorUtil
             : public Object
          {
 
-    public: static void init(std::vector<GameInputProcessor> inputProcessorArray){
+    public: static void init(std::vector<GameInputProcessor*> inputProcessorArray){
 
-    GameInputProcessor noInputProcessor = GameInputProcessor::getInstance();;
+    GameInputProcessor* noInputProcessor = GameInputProcessor::getInstance();;
     
 
-    int32_t total = InputFactory::getInstance().MAX;;
+    int32_t total = InputFactory::getInstance()->MAX;;
     
 
 
@@ -62,7 +68,7 @@ class GameInputProcessorUtil
     int32_t index = 0;index < total; index++)
         {
 
-    GameInputProcessor inputProcessorCanBeNull = inputProcessorArray[index];;
+    GameInputProcessor* inputProcessorCanBeNull = inputProcessorArray[index];;
     
 
                         if(inputProcessorCanBeNull == 

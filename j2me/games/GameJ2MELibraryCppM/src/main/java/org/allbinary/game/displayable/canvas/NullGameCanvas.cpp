@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -67,40 +75,40 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryGameCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
 class NullGameCanvas: public AllBinaryGameCanvas {
 
-    private: static NullGameCanvas createNull(){
+    private: static NullGameCanvas* createNull(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullGameCanvas(AllBinaryGameLayerManager::getNullInstance());
+                        return new NullGameCanvas(AllBinaryGameLayerManager::getNullInstance());
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-LogUtil::getInstance().put(CommonStrings::getInstance().EXCEPTION, "NullGameCanvas", CommonStrings::getInstance().GET_INSTANCE, e);
+LogUtil::getInstance()->put(CommonStrings::getInstance()->EXCEPTION, "NullGameCanvas", CommonStrings::getInstance()->GET_INSTANCE, &e);
     
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 }
 
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static NullGameCanvas getInstance(){
+    public: static NullGameCanvas* getInstance(){
 
-                        if(NullGameCanvas::instance() == NullUtil::getInstance().NULL_OBJECT)
+                        if(NullGameCanvas::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
                                     NullGameCanvas::instance= NullGameCanvas::createNull();
@@ -112,20 +120,20 @@ LogUtil::getInstance().put(CommonStrings::getInstance().EXCEPTION, "NullGameCanv
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullGameCanvas::instance();
+                        return dynamic_cast<NullGameCanvas*>(NullGameCanvas::instance);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: static NullGameCanvas createCanvas(AllBinaryGameLayerManager gameLayerManager){
+    public: static NullGameCanvas* createCanvas(AllBinaryGameLayerManager* gameLayerManager){
 
-    NullGameCanvas nullGameCanvas = NullGameCanvas(gameLayerManager);;
+    NullGameCanvas* nullGameCanvas = new NullGameCanvas(gameLayerManager);;
     
-nullGameCanvas.setInitialized(true);
+nullGameCanvas->setInitialized(true);
     
-nullGameCanvas.setTitle(NullGameCanvas::NO_GAME);
+nullGameCanvas->setTitle(NullGameCanvas::NO_GAME);
     
 
 
@@ -136,11 +144,11 @@ nullGameCanvas.setTitle(NullGameCanvas::NO_GAME);
 }
 
 
-    public: static const std::string NO_GAME = "No Background Game";
+    public: static inline const std::string NO_GAME = "No Background Game";
 
-    public: static const int32_t TYPE = 1;
+    public: static inline const int32_t TYPE = 1;
 
-protected: NullGameCanvas(AllBinaryGameLayerManager gameLayerManager) : AllBinaryGameCanvas(NullCommandListener::NULL_COMMAND_LISTENER, gameLayerManager, NoHighScoresFactory::getInstance(), BasicBuildGameInitializerFactory::NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY, false){
+protected: NullGameCanvas(AllBinaryGameLayerManager* gameLayerManager) : AllBinaryGameCanvas(NullCommandListener::NULL_COMMAND_LISTENER, gameLayerManager, NoHighScoresFactory::getInstance(), BasicBuildGameInitializerFactory::NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY, false){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -196,7 +204,7 @@ this->setPaused(false);
 }
 
 
-    public: void initCommands(CommandListener cmdListener){
+    public: void initCommands(CommandListener* cmdListener){
 this->removeAllCommands();
     
 this->setCommandListener(cmdListener);
@@ -210,7 +218,7 @@ this->setCommandListener(cmdListener);
 }
 
 
-    public: void draw(Graphics graphics){
+    public: void draw(Graphics* graphics){
 }
 
 
@@ -223,9 +231,9 @@ this->logUtil.putF(this->commonStrings.END_RUNNABLE, this, this->commonStrings.R
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, &e);
     
 }
 

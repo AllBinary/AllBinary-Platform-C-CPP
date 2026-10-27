@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/PointFactory.h>
@@ -52,9 +58,9 @@ class CommonButtons
             : public Object
          {
 
-    private: static CommonButtons instance() { return CommonButtons(); }
+    private: static CommonButtons* instance() { static std::unique_ptr<CommonButtons> value(new CommonButtons()); return value.get(); }
 
-    public: static CommonButtons getInstance(){
+    public: static CommonButtons* getInstance(){
 
 
 
@@ -66,13 +72,13 @@ class CommonButtons
 
     public: int32_t STANDARD_BUTTON_SIZE;
 
-    public: Rectangle NORMAL_BUTTON;
+    public: Rectangle* NORMAL_BUTTON;
 
-    public: Rectangle LARGE_BUTTON;
+    public: Rectangle* LARGE_BUTTON;
 
 private: CommonButtons(){
 
-    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
+    DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
 
     int32_t commonButtonSize = 128;;
@@ -81,10 +87,10 @@ private: CommonButtons(){
         while(commonButtonSize > 64)
         {
 
-    int32_t totalColumns = displayInfo.getLastWidth() /commonButtonSize;;
+    int32_t totalColumns = displayInfo->getLastWidth() /commonButtonSize;;
     
 
-    int32_t totalRows = displayInfo.getLastHeight() /commonButtonSize;;
+    int32_t totalRows = displayInfo->getLastHeight() /commonButtonSize;;
     
 
     int32_t max = totalColumns;;
@@ -114,9 +120,9 @@ commonButtonSize= commonButtonSize>>1;
 
 this->STANDARD_BUTTON_SIZE= commonButtonSize;
     
-this->NORMAL_BUTTON= Rectangle(PointFactory::getInstance().ZERO_ZERO, this->STANDARD_BUTTON_SIZE, this->STANDARD_BUTTON_SIZE);
+this->NORMAL_BUTTON= new Rectangle(PointFactory::getInstance()->ZERO_ZERO, this->STANDARD_BUTTON_SIZE, this->STANDARD_BUTTON_SIZE);
     
-this->LARGE_BUTTON= Rectangle(PointFactory::getInstance().ZERO_ZERO, this->STANDARD_BUTTON_SIZE<<1, this->STANDARD_BUTTON_SIZE<<1);
+this->LARGE_BUTTON= new Rectangle(PointFactory::getInstance()->ZERO_ZERO, this->STANDARD_BUTTON_SIZE<<1, this->STANDARD_BUTTON_SIZE<<1);
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONBEHAVIORFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONBEHAVIORFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,9 +45,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnimationBehaviorFactory.h"
-#include "IndexedAnimationBehavior.h"
-#include "AnimationBehavior.h"
+        #include "org/allbinary/animation/AnimationBehaviorFactory.h"
+#include "org/allbinary/animation/IndexedAnimationBehavior.h"
+#include "org/allbinary/animation/AnimationBehavior.h"
 
 class IndexedAnimationBehaviorFactory: public AnimationBehaviorFactory {
 
@@ -51,7 +57,7 @@ class IndexedAnimationBehaviorFactory: public AnimationBehaviorFactory {
 
 public: IndexedAnimationBehaviorFactory(int32_t loopTotal, int64_t frameDelayTime);
 
-    public: AnimationBehavior getOrCreateInstance();
+    public: AnimationBehavior* getOrCreateInstance();
 
 };
 

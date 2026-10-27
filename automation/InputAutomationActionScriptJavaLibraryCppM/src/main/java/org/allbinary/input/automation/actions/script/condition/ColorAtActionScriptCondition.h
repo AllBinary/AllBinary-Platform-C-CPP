@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_COLORATACTIONSCRIPTCONDITION_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_COLORATACTIONSCRIPTCONDITION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -108,40 +114,40 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicProfileActionScriptCondition.h"
-#include "ColorAtActionScriptConditionInterface.h"
-#include "ColorAtActionScriptConditionJPanel.h"
-#include "ColorAtActionScriptConditionData.h"
+        #include "org/allbinary/input/automation/actions/script/condition/BasicProfileActionScriptCondition.h"
+#include "org/allbinary/input/automation/actions/script/condition/ColorAtActionScriptConditionInterface.h"
+#include "org/allbinary/input/automation/actions/script/condition/ColorAtActionScriptConditionJPanel.h"
+#include "org/allbinary/input/automation/actions/script/condition/ColorAtActionScriptConditionData.h"
 
 class ColorAtActionScriptCondition: public BasicProfileActionScriptCondition, public ColorAtActionScriptConditionInterface {
 
-    private: static const std::string NAME = "If Color At";
+    private: static inline const std::string NAME = "If Color At";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: ColorAtActionScriptConditionJPanel colorAtActionScriptConditionJPanel;
+    private: ColorAtActionScriptConditionJPanel* colorAtActionScriptConditionJPanel;
 
-    private: Point point;
+    private: Point* point;
 
-    private: ColorRangeInterface colorRangeInterface = ColorRange();
+    private: ColorRangeInterface* colorRangeInterface = dynamic_cast<ColorRangeInterface*>(new ColorRange());
 
-public: ColorAtActionScriptCondition(Node node);
+public: ColorAtActionScriptCondition(Node* node);
 
 public: ColorAtActionScriptCondition();
 
     private: void init();
 
-    public: Point getPoint();
+    public: Point* getPoint();
 
-    public: void setPoint(Point point);
+    public: void setPoint(Point* point);
 
     public: void showDialog();
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
                 //@Throws(Exception.constructor)
             
@@ -149,9 +155,9 @@ public: ColorAtActionScriptCondition();
 
     public: void log();
 
-    public: ColorRangeInterface getColorRangeInterface();
+    public: ColorRangeInterface* getColorRangeInterface();
 
-    public: void setColorRangeInterface(ColorRangeInterface colorRangeInterface);
+    public: void setColorRangeInterface(ColorRangeInterface* colorRangeInterface);
 
 };
 

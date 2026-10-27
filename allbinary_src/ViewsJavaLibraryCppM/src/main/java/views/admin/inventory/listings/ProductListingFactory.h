@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_INVENTORY_LISTINGS_PRODUCTLISTINGFACTORY_H
         #define VIEWS_ADMIN_INVENTORY_LISTINGS_PRODUCTLISTINGFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,14 +58,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProductListing.h"
-#include "ProductListingInterface.h"
+        #include "views/admin/inventory/listings/ProductListing.h"
+#include "views/admin/inventory/listings/ProductListingInterface.h"
 
 class ProductListingFactory
             : public Object
          {
 
-    public: static ProductListingInterface getInstance(SearchRequest searchRequest);
+    public: static ProductListingInterface* getInstance(SearchRequest* searchRequest);
 
 private: ProductListingFactory();
 

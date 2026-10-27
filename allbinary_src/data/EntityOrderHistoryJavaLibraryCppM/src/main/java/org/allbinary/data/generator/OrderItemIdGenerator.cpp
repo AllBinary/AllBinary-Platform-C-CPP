@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/globals/PATH_GLOBALS.h>
@@ -47,7 +53,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UniqueIdGenerator.h"
+        #include "org/allbinary/data/generator/UniqueIdGenerator.h"
 
 class OrderItemIdGenerator: public UniqueIdGenerator {
 
@@ -55,17 +61,17 @@ class OrderItemIdGenerator: public UniqueIdGenerator {
 
 public: OrderItemIdGenerator(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(URLGLOBALS::getMainPath());
+stringBuffer->append(URLGLOBALS::getMainPath());
     
-stringBuffer.append(PATH_GLOBALS::getInstance().INIT_PATH);
+stringBuffer->append(PATH_GLOBALS::getInstance()->INIT_PATH);
     
-stringBuffer.append(this->IDFILE);
+stringBuffer->append(this->IDFILE);
     
-stringBuffer.append(UniqueIdGenerator::EXT);
+stringBuffer->append(UniqueIdGenerator::EXT);
     
-super.setFile(stringBuffer.toString(), this->IDFILE);
+super.setFile(stringBuffer->toString(), this->IDFILE);
     
 }
 

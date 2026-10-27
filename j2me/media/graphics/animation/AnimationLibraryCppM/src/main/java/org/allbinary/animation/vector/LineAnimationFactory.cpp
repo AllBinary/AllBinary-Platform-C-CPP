@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,15 +58,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LineAnimation.h"
+        #include "org/allbinary/animation/vector/LineAnimation.h"
 
 class LineAnimationFactory
             : public Object
-        : public AnimationInterfaceFactoryInterface {
+        , public AnimationInterfaceFactoryInterface {
 
-    private: BasicColor basicColor;
+    private: BasicColor* basicColor;
 
-public: LineAnimationFactory(BasicColor basicColor){
+public: LineAnimationFactory(BasicColor* basicColor){
 this->basicColor= basicColor;
     
 }
@@ -68,17 +74,17 @@ this->basicColor= basicColor;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId){
+    public: Animation* getInstance(int32_t instanceId){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LineAnimation(this->basicColor);
+                        return new LineAnimation(this->basicColor);
     
 }
 
 
-    public: void setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties* scaleProperties){
 }
 
 

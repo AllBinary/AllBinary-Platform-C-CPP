@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -92,40 +98,40 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicProfileActionScriptInput.h"
-#include "KeyboardActionScriptInputInterface.h"
-#include "KeyboardActionScriptInputJPanel.h"
-#include "KeyboardActionScriptInputData.h"
-#include "KeyboardInputAutomationProcessor.h"
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/BasicProfileActionScriptInput.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyboardActionScriptInputInterface.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyboardActionScriptInputJPanel.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyboardActionScriptInputData.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyboardInputAutomationProcessor.h"
 
 class KeyboardActionScriptInput: public BasicProfileActionScriptInput, public KeyboardActionScriptInputInterface {
 
-    private: static const std::string NAME = "Keyboard";
+    private: static inline const std::string NAME = "Keyboard";
 
-    private: static std::string getText(std::vector<Integer> integerArray){
+    private: static std::string getText(std::vector<int32_t> integerArray){
 
     int32_t index = 0;;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
         while(index < integerArray.size())
         {
 
-    Integer nextInteger = integerArray[index];;
+    int32_t nextInteger = integerArray[index];;
     
 
                         if(KeyUtil::isNormallyDisplayed(nextInteger))
                         
                                     {
-                                    stringBuffer.append(KeyEvent::getKeyText(nextInteger));
+                                    stringBuffer->append(KeyEvent::getKeyText(nextInteger));
     
 
                                     }
                                 
                         else {
-                            stringBuffer.append("&#" +nextInteger +";");
+                            stringBuffer->append("&#" +nextInteger +";");
     
 
                         }
@@ -138,19 +144,19 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: std::vector<Integer> keyArray = 
+    private: std::vector<int32_t> keyArray = 
                                                         {
                                                             KeySingletonFactory::getInstance(KeyEvent::VK_0)
                                                         };
 
-    private: KeyboardActionScriptInputJPanel keyboardActionScriptInputJPanel;
+    private: KeyboardActionScriptInputJPanel* keyboardActionScriptInputJPanel;
 
     private: bool press= false;
 
@@ -158,17 +164,17 @@ index++;
 
     private: int32_t delayBetweenKeys= 0;
 
-public: KeyboardActionScriptInput(Node node) : BasicProfileActionScriptInput(NAME, node){
+public: KeyboardActionScriptInput(Node* node) : BasicProfileActionScriptInput(NAME, node){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
-    Node actionNode = DomSearchHelper::getNode(KeyboardActionScriptInputData::NAME, node.getChildNodes());;
+    Node* actionNode = DomSearchHelper::getNode(KeyboardActionScriptInputData::NAME, node->getChildNodes());;
     
 
                         if(actionNode != 
@@ -177,47 +183,47 @@ this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUC
                         
                                     {
                                     
-    NodeList nodeList = actionNode.getChildNodes();;
+    NodeList* nodeList = actionNode->getChildNodes();;
     
 
-    BasicArrayList vector = BasicArrayListD();;
+    BasicArrayList* vector = new BasicArrayListD();;
     
 
 
 
 
                         for (
-    int32_t index = 0;index < nodeList.getLength(); index++)
+    int32_t index = 0;index < nodeList->getLength(); index++)
         {
 
-    Node childNode = nodeList.item(index);;
+    Node* childNode = nodeList->item(index);;
     
 
-                        if(childNode.getNodeName().startsWith(KeyboardActionScriptInputData::KEY))
+                        if(childNode->getNodeName()->startsWith(KeyboardActionScriptInputData::KEY))
                         
                                     {
                                     
     std::string keyString = DomNodeHelper::getTextNodeValue(childNode);;
     
-vector.add(keyString.valueOf());
+vector->add(keyString.valueOf());
     
 
                                     }
                                 
                              else 
-                        if(childNode.getNodeName().compareTo(KeyboardActionScriptInputData::DELAY_BETWEEN_KEYS) == 0)
+                        if(childNode->getNodeName()->compareTo(KeyboardActionScriptInputData::DELAY_BETWEEN_KEYS) == 0)
                         
                                     {
                                     
     std::string time = DomNodeHelper::getTextNodeValue(childNode);;
     
-this->setDelayBetweenKeys(Integer::valueOf(time).intValue());
+this->setDelayBetweenKeys(Integer.valueOf(time)->intValue());
     
 
                                     }
                                 
                              else 
-                        if(childNode.getNodeName().compareTo(KeyboardActionScriptInputData::PRESS) == 0)
+                        if(childNode->getNodeName()->compareTo(KeyboardActionScriptInputData::PRESS) == 0)
                         
                                     {
                                     
@@ -229,7 +235,7 @@ this->setPress(value.slice(, ).join(''));
                                     }
                                 
                              else 
-                        if(childNode.getNodeName().compareTo(KeyboardActionScriptInputData::RELEASE) == 0)
+                        if(childNode->getNodeName()->compareTo(KeyboardActionScriptInputData::RELEASE) == 0)
                         
                                     {
                                     
@@ -244,14 +250,14 @@ this->setRelease(value.slice(, ).join(''));
                             
 
 
-                            throw Exception("Action Script Input Unknown Node");
+                            throw new Exception("Action Script Input Unknown Node");
                     
 
                         }
                             
 }
 
-this->setKeyArray(vector.toArrayType(std::vector<Integer>(vector.size())) as Integer[]);
+this->setKeyArray(vector->toArrayType(std::vector<int32_t>(vector->size())) as Integer[]);
     
 
                                     }
@@ -260,7 +266,7 @@ this->setKeyArray(vector.toArrayType(std::vector<Integer>(vector.size())) as Int
                             
 
 
-                            throw Exception("Action Script Input Node Null");
+                            throw new Exception("Action Script Input Node Null");
                     
 
                         }
@@ -276,7 +282,7 @@ this->setAllowsChildren(false);
 
                                     }
                                 
-this->keyboardActionScriptInputJPanel= KeyboardActionScriptInputJPanel(this);
+this->keyboardActionScriptInputJPanel= new KeyboardActionScriptInputJPanel(this);
     
 }
 
@@ -301,7 +307,7 @@ this->setAllowsChildren(false);
     
 this->setTime(120);
     
-this->keyboardActionScriptInputJPanel= KeyboardActionScriptInputJPanel(this);
+this->keyboardActionScriptInputJPanel= new KeyboardActionScriptInputJPanel(this);
     
 }
 
@@ -372,7 +378,7 @@ this->setRelease(true);
 }
 
 
-    public: std::vector<Integer> getKeyArray(){
+    public: std::vector<int32_t> getKeyArray(){
 
 
 
@@ -382,12 +388,12 @@ this->setRelease(true);
 }
 
 
-    public: void setKeyArray(std::vector<Integer> keyArray){
+    public: void setKeyArray(std::vector<int32_t> keyArray){
 
                         if(keyArray != 
                                     nullptr
                                 )
-                        this->logUtil.putF(CommonLabels::getInstance().START +keyArray.size(), this, "setKeyArray");
+                        this->logUtil->putF(CommonLabels::getInstance()->START +keyArray.size(), this, "setKeyArray");
                                 
 this->keyArray= keyArray;
     
@@ -395,7 +401,7 @@ this->keyArray= keyArray;
 
 
     public: void showDialog(){
-this->keyboardActionScriptInputJPanel.getKeyActionJDialog().setVisible(true);
+this->keyboardActionScriptInputJPanel->getKeyActionJDialog()->setVisible(true);
     
 }
 
@@ -411,21 +417,21 @@ this->keyboardActionScriptInputJPanel.getKeyActionJDialog().setVisible(true);
 
 
     public: void setText(std::string text){
-this->logUtil.putF(CommonLabels::getInstance().START +text, this, "setText");
+this->logUtil->putF(CommonLabels::getInstance()->START +text, this, "setText");
     
 
-    std::vector<Integer> integerArray = this->integerArrayValue(text);;
+    std::vector<int32_t> integerArray = this->integerArrayValue(text);;
     
 this->setKeyArray(integerArray);
     
 }
 
 
-    private: std::vector<Integer> integerArrayValue(std::string text){
-this->logUtil.putF(CommonLabels::getInstance().START +text, this, "integerArrayValue");
+    private: std::vector<int32_t> integerArrayValue(std::string text){
+this->logUtil->putF(CommonLabels::getInstance()->START +text, this, "integerArrayValue");
     
 
-    BasicArrayList vector = BasicArrayListD();;
+    BasicArrayList* vector = new BasicArrayListD();;
     
 
     int32_t index = 0;;
@@ -445,18 +451,18 @@ this->logUtil.putF(CommonLabels::getInstance().START +text, this, "integerArrayV
                         
                                     {
                                     
-    int32_t endIndex = text.indexOf(';', index +1);;
+    int32_t endIndex = JavaString::indexOf(text, ';', index +1);;
     
 
                         if(endIndex !=  -1)
                         
                                     {
                                     
-    std::string nextCharString = text.substring(index +2, endIndex);;
+    std::string nextCharString = JavaString::substring(text, index +2, endIndex);;
     
-this->logUtil.putF(CommonLabels::getInstance().NEXT +" Char String: " +nextCharString, this, "integerArrayValue");
+this->logUtil->putF(CommonLabels::getInstance()->NEXT +" Char String: " +nextCharString, this, "integerArrayValue");
     
-vector.add(substring.valueOf());
+vector->add(substring.valueOf());
     
 index= index +nextCharString.size() +3;
     
@@ -473,14 +479,14 @@ index= index +nextCharString.size() +3;
 
                                     }
                                 
-vector.add(KeySingletonFactory::getHashtable().get(aChar.slice(, ).join('')));
+vector->add(KeySingletonFactory::getHashtable()->get(aChar.slice(, ).join('')));
     
 index++;
     
 }
 
 
-    std::vector<Integer> integerArray = vector.toArrayType(std::vector<Integer>(vector.size())) as Integer[];;
+    std::vector<int32_t> integerArray = vector->toArrayType(std::vector<int32_t>(vector->size())) as Integer[];;
     
 
 
@@ -491,9 +497,9 @@ index++;
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
 
 
@@ -502,17 +508,17 @@ index++;
                         for (
     int32_t index = 0;index < this->getKeyArray().length; index++)
         {
-hashMap.put(KeyboardActionScriptInputData::KEY +index, std::to_string());
+hashMap->put(KeyboardActionScriptInputData::KEY +index, std::to_string());
     
 }
 
-hashMap.put(KeyboardActionScriptInputData::DELAY_BETWEEN_KEYS, std::to_string(getDelayBetweenKeys));
+hashMap->put(KeyboardActionScriptInputData::DELAY_BETWEEN_KEYS, std::to_string(getDelayBetweenKeys));
     
-hashMap.put(KeyboardActionScriptInputData::PRESS, Boolean::toString(this->isPress()));
+hashMap->put(KeyboardActionScriptInputData::PRESS, Boolean::toString(this->isPress()));
     
-hashMap.put(KeyboardActionScriptInputData::RELEASE, Boolean::toString(this->isRelease()));
+hashMap->put(KeyboardActionScriptInputData::RELEASE, Boolean::toString(this->isRelease()));
     
-this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
+this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
     
 
 
@@ -525,11 +531,11 @@ this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = super.toXmlNode(document);;
+    Node* node = super.toXmlNode(document);;
     
-node.appendChild(ModDomHelper::createNodeWithValueNodes(document, KeyboardActionScriptInputData::NAME, this->toHashMap()));
+node->appendChild(ModDomHelper::createNodeWithValueNodes(document, KeyboardActionScriptInputData::NAME, this->toHashMap()));
     
 
 
@@ -542,45 +548,45 @@ node.appendChild(ModDomHelper::createNodeWithValueNodes(document, KeyboardAction
 
                 //@Throws(Exception.constructor)
             
-    public: void process(Long frame){
+    public: void process(int64_t frame){
 KeyboardInputAutomationProcessor::process(this);
     
 }
 
 
     public: void log(){
-this->logUtil.putF(this->toString(), this, "log");
+this->logUtil->putF(this->toString(), this, "log");
     
 }
 
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(super.toString());
+stringBuffer->append(super.toString());
     
-stringBuffer.append(" Text: ");
+stringBuffer->append(" Text: ");
     
-stringBuffer.append(this->getText());
+stringBuffer->append(this->getText());
     
-stringBuffer.append(" isPress: ");
+stringBuffer->append(" isPress: ");
     
-stringBuffer.appendboolean(this->isPress());
+stringBuffer->appendboolean(this->isPress());
     
-stringBuffer.append(" isRelease: ");
+stringBuffer->append(" isRelease: ");
     
-stringBuffer.appendboolean(this->isRelease());
+stringBuffer->appendboolean(this->isRelease());
     
-stringBuffer.append(" Between Key Delay: ");
+stringBuffer->append(" Between Key Delay: ");
     
-stringBuffer.appendint(this->getDelayBetweenKeys());
+stringBuffer->appendint(this->getDelayBetweenKeys());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

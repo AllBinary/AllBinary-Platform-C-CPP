@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <admin/taghelpers/PaymentTransactionResultHelperFactory.h>
 
       
@@ -39,14 +45,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TableTag.h"
+        #include "admin/tags/TableTag.h"
 
 class PaymentTransactionResultTag: public TableTag {
 
 public: PaymentTransactionResultTag(){
-this->setTagHelperFactory(PaymentTransactionResultHelperFactory());
+this->setTagHelperFactory(new PaymentTransactionResultHelperFactory());
     
-this->setTagRequestHelperFactory(PaymentTransactionResultHelperFactory());
+this->setTagRequestHelperFactory(new PaymentTransactionResultHelperFactory());
     
 }
 

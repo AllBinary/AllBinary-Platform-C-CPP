@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_TRANSFORM_INFO_TRANSFORMINFOENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_TRANSFORM_INFO_TRANSFORMINFOENTITY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -101,45 +109,45 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoEntityInterface.h"
+        #include "org/allbinary/data/tables/transform/info/TransformInfoEntityInterface.h"
 
 class TransformInfoEntity: public AbSqlBean, public TransformInfoEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     protected: const std::string tableName = "transforminfo";
 
-    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: TransformInfoFactoryInterface transformInfoFactoryInterface;
+    private: TransformInfoFactoryInterface* transformInfoFactoryInterface;
 
-    private: TransformInfoObjectConfigAndManipulatorFactoryBase transformInfoObjectConfigAndManipulatorFactoryInterface;
+    private: TransformInfoObjectConfigAndManipulatorFactoryBase* transformInfoObjectConfigAndManipulatorFactoryInterface;
 
-    private: TransformInfoObjectConfigGeneratorFactoryInterface transformInfoObjectConfigGeneratorFactoryInterface;
+    private: TransformInfoObjectConfigGeneratorFactoryInterface* transformInfoObjectConfigGeneratorFactoryInterface;
 
-public: TransformInfoEntity(TransformInfoObjectConfigGeneratorFactoryInterface transformInfoObjectConfigGeneratorFactoryInterface, TransformInfoObjectConfigAndManipulatorFactoryBase transformInfoObjectConfigAndManipulatorFactoryInterface, TransformInfoFactoryInterface transformInfoFactoryInterface);
+public: TransformInfoEntity(TransformInfoObjectConfigGeneratorFactoryInterface* transformInfoObjectConfigGeneratorFactoryInterface, TransformInfoObjectConfigAndManipulatorFactoryBase* transformInfoObjectConfigAndManipulatorFactoryInterface, TransformInfoFactoryInterface* transformInfoFactoryInterface);
 
-    public: void insert(BasicArrayList values);
+    public: void insert(BasicArrayList* values);
 
     public: void delete_(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface get(std::string name, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
+    public: TransformInfoInterface* get(std::string name, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getObjectConfigs(std::string storeName);
+    public: BasicArrayList* getObjectConfigs(std::string storeName);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getNames(std::string storeName);
+    public: BasicArrayList* getNames(std::string storeName);
 
     public: std::string createTableStatement();
 
     public: std::string createTable();
 
-    public: void update(HashMap<Object*, Object*> updatedValues);
+    public: void update(HashMap<Object*, Object*>* updatedValues);
 
     public: std::string dropTable();
 

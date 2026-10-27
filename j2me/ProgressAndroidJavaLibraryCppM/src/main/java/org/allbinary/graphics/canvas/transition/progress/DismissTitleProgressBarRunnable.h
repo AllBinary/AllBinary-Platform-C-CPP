@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/transition/TransistionTypes.h>
@@ -55,16 +61,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProgressRunnable.h"
-#include "ProgressCanvas.h"
+        #include "org/allbinary/graphics/canvas/transition/progress/ProgressRunnable.h"
+#include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
 
 class DismissTitleProgressBarRunnable: public ProgressRunnable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: DismissTitleProgressBarRunnable(Activity midletActivity, ProgressCanvas progressCanvas);
+public: DismissTitleProgressBarRunnable(Activity* midletActivity, ProgressCanvas* progressCanvas);
 
-    private: const std::vector<int32_t> ZOOM_OUT_AND_IN = {TransistionTypes::getInstance().ZOOM_OUT,TransistionTypes::getInstance().ZOOM_IN};
+    private: const std::vector<int32_t> ZOOM_OUT_AND_IN = {TransistionTypes::getInstance()->ZOOM_OUT,TransistionTypes::getInstance()->ZOOM_IN};
 
     public: void run();
 

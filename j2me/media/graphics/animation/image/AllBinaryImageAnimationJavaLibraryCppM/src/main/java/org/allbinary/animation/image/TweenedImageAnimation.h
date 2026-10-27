@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Throwable.h"
         
             #include "java/lang/Exception.h"
@@ -72,7 +78,7 @@
         
 class TweenedImageAnimation: public IndexedAnimation {
 
-    private: Image image;
+    private: Image* image;
 
     private: int32_t dx;
 
@@ -80,9 +86,9 @@ class TweenedImageAnimation: public IndexedAnimation {
 
     private: int32_t totalFrames;
 
-    protected: CircularIndexUtil circularIndexUtil;
+    protected: CircularIndexUtil* circularIndexUtil;
 
-public: TweenedImageAnimation(Image image, int32_t dx, int32_t dy, int32_t totalFrames, AnimationBehavior animationBehavior);
+public: TweenedImageAnimation(Image* image, int32_t dx, int32_t dy, int32_t totalFrames, AnimationBehavior* animationBehavior);
 
                 //@Throws(Exception.constructor)
             
@@ -104,7 +110,7 @@ public: TweenedImageAnimation(Image image, int32_t dx, int32_t dy, int32_t total
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
     public: void close();
 

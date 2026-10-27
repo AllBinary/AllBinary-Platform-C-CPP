@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VECTORUTIL_H
         #define ORG_ALLBINARY_LOGIC_VECTORUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/Vector.h>
@@ -49,9 +55,9 @@ class VectorUtil
             : public Object
          {
 
-    private: static VectorUtil instance() { return VectorUtil(); }
+    private: static VectorUtil* instance() { static std::unique_ptr<VectorUtil> value(new VectorUtil()); return value.get(); }
 
-    public: static VectorUtil getInstance();
+    public: static VectorUtil* getInstance();
 
     public: int32_t getSize(Object* anyType);
 

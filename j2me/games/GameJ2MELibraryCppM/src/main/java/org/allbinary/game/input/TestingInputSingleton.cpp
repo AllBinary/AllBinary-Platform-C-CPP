@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -73,17 +79,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameInputInterface.h"
-#include "InputFactory.h"
-#include "GameInputProcessor.h"
-#include "GameInputProcessorUtil.h"
-#include "TestInputInterface.h"
+        #include "org/allbinary/game/input/GameInputInterface.h"
+#include "org/allbinary/game/input/InputFactory.h"
+#include "org/allbinary/game/input/GameInputProcessor.h"
+#include "org/allbinary/game/input/GameInputProcessorUtil.h"
+#include "org/allbinary/game/input/TestInputInterface.h"
 
 class TestingInputSingleton: public AllBinaryGameLayer, public GameInputInterface {
 
-    private: static TestingInputSingleton instance() { return TestingInputSingleton(); }
+    private: static TestingInputSingleton* instance() { static std::unique_ptr<TestingInputSingleton> value(new TestingInputSingleton()); return value.get(); }
 
-    public: static TestingInputSingleton getInstance(){
+    public: static TestingInputSingleton* getInstance(){
 
 
 
@@ -93,9 +99,9 @@ class TestingInputSingleton: public AllBinaryGameLayer, public GameInputInterfac
 }
 
 
-    protected: const std::vector<GameInputProcessor> inputProcessorArray = std::vector<GameInputProcessor>(InputFactory::getInstance().MAX);
+    protected: const std::vector<GameInputProcessor*> inputProcessorArray = std::vector<GameInputProcessor*>(InputFactory::getInstance()->MAX);
 
-private: TestingInputSingleton() : AllBinaryGameLayer(StringUtil::getInstance().EMPTY_STRING, RectangleFactory::SINGLETON, ViewPosition::getInstanceD()){
+private: TestingInputSingleton() : AllBinaryGameLayer(StringUtil::getInstance()->EMPTY_STRING, RectangleFactory::SINGLETON, ViewPosition::getInstanceD()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -107,15 +113,15 @@ GameInputProcessorUtil::init(this->inputProcessorArray);
 }
 
 
-    private: PaintableInterface paintable = NullPaintable::getInstance();
+    private: PaintableInterface* paintable = NullPaintable::getInstance();
 
     public: void initInputProcessors(){
 }
 
 
-    public: void initInputProcessorsForTestInput(TestInputInterface aTestInputInterface){
+    public: void initInputProcessorsForTestInput(TestInputInterface* aTestInputInterface){
 
-    TestInputInterface testInputInterface = aTestInputInterface;;
+    TestInputInterface* testInputInterface = aTestInputInterface;;
     
 this->paintable= testInputInterface;
     
@@ -124,8 +130,8 @@ this->inputProcessorArray[Canvas::UP]= class extends GameInputProcessor
                                 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
-testInputInterface.up();
+    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
+testInputInterface->up();
     
 }
 
@@ -137,8 +143,8 @@ this->inputProcessorArray[Canvas::DOWN]= class extends GameInputProcessor
                                 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
-testInputInterface.down();
+    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
+testInputInterface->down();
     
 }
 
@@ -150,8 +156,8 @@ this->inputProcessorArray[Canvas::LEFT]= class extends GameInputProcessor
                                 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
-testInputInterface.left();
+    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
+testInputInterface->left();
     
 }
 
@@ -163,8 +169,8 @@ this->inputProcessorArray[Canvas::RIGHT]= class extends GameInputProcessor
                                 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
-testInputInterface.right();
+    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
+testInputInterface->right();
     
 }
 
@@ -176,8 +182,8 @@ this->inputProcessorArray[Canvas::KEY_NUM7]= class extends GameInputProcessor
                                 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
-testInputInterface.strafeLeft();
+    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
+testInputInterface->strafeLeft();
     
 }
 
@@ -189,8 +195,8 @@ this->inputProcessorArray[Canvas::KEY_NUM9]= class extends GameInputProcessor
                                 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
-testInputInterface.strafeRight();
+    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
+testInputInterface->strafeRight();
     
 }
 
@@ -205,15 +211,15 @@ GameInputProcessorUtil::init(this->inputProcessorArray);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void processInputList(AllBinaryLayerManager allbinaryLayerManager, BasicArrayList list){
+    public: void processInputList(AllBinaryLayerManager* allbinaryLayerManager, BasicArrayList* list){
 
     int32_t key = 0;;
     
 
-    GameKeyEvent gameKeyEvent;;
+    GameKeyEvent* gameKeyEvent;;
     
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
 
@@ -222,9 +228,9 @@ GameInputProcessorUtil::init(this->inputProcessorArray);
                         for (
     int32_t index = 0;index < size; index++)
         {
-gameKeyEvent= (list.objectArray[index]);
+gameKeyEvent= (dynamic_cast<GameKeyEvent*>(list->objectArray[index]));
     
-key= gameKeyEvent.getKey();
+key= gameKeyEvent->getKey();
     
 this->inputProcessorArray[key].processEvent(allbinaryLayerManager, GameKeyEvent::NONE);
     
@@ -236,16 +242,16 @@ this->inputProcessorArray[key].processEvent(allbinaryLayerManager, GameKeyEvent:
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void processInput(AllBinaryLayerManager allbinaryLayerManager){
+    public: void processInput(AllBinaryLayerManager* allbinaryLayerManager){
 this->processInputList(allbinaryLayerManager, this->getGameKeyEventList());
     
-this->getGameKeyEventList().clear();
+this->getGameKeyEventList()->clear();
     
 }
 
 
-    public: void paint(Graphics graphics){
-this->paintable.paint(graphics);
+    public: void paint(Graphics* graphics){
+this->paintable->paint(graphics);
     
 }
 

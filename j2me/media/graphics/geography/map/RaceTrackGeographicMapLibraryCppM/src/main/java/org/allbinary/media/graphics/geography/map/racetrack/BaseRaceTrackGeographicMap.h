@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_BASERACETRACKGEOGRAPHICMAP_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_BASERACETRACKGEOGRAPHICMAP_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/string/CommonStrings.h>
@@ -65,33 +71,33 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RaceTrackGeographicMapInterface.h"
-#include "RaceTrackInfo.h"
-#include "RaceTrackData.h"
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapInterface.h"
+#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackInfo.h"
+#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackData.h"
 
 class BaseRaceTrackGeographicMap: public BasicGeographicMap, public RaceTrackGeographicMapInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: RaceTrackInfo raceTrackInfo;
+    private: RaceTrackInfo* raceTrackInfo;
 
-    private: RaceTrackData raceTrackData;
+    private: RaceTrackData* raceTrackData;
 
-    private: BasicGeographicMap miniGeographicMap;
+    private: BasicGeographicMap* miniGeographicMap;
 
-public: BaseRaceTrackGeographicMap(RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData, AllBinaryTiledLayer tiledLayer, BasicGeographicMap miniGeographicMap, GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory geographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory geographicMapCellTypeFactory);
+public: BaseRaceTrackGeographicMap(RaceTrackInfo* raceTrackInfo, RaceTrackData* raceTrackData, AllBinaryTiledLayer* tiledLayer, BasicGeographicMap* miniGeographicMap, GeographicMapCellPositionFactoryInterface* geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory* geographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory* geographicMapCellTypeFactory);
 
-    public: RaceTrackInfo getRaceTrackInfo();
+    public: RaceTrackInfo* getRaceTrackInfo();
 
-    public: void setRaceTrackInfo(RaceTrackInfo aRaceTrackInfo);
+    public: void setRaceTrackInfo(RaceTrackInfo* aRaceTrackInfo);
 
-    public: void setMiniBasicGeographicMap(BasicGeographicMap miniBasicGeographicMap);
+    public: void setMiniBasicGeographicMap(BasicGeographicMap* miniBasicGeographicMap);
 
-    public: BasicGeographicMap getMiniBasicGeographicMap();
+    public: BasicGeographicMap* getMiniBasicGeographicMap();
 
-    public: RaceTrackData getRaceTrackData();
+    public: RaceTrackData* getRaceTrackData();
 
-    public: void setRaceTrackData(RaceTrackData raceTrackData);
+    public: void setRaceTrackData(RaceTrackData* raceTrackData);
 
 };
 

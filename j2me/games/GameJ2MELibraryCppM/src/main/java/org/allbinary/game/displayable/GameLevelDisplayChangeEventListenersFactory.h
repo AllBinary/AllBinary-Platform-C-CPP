@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_GAMELEVELDISPLAYCHANGEEVENTLISTENERSFACTORY_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_GAMELEVELDISPLAYCHANGEEVENTLISTENERSFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/displayable/event/DisplayChangeEventHandler.h>
@@ -61,13 +67,13 @@ class GameLevelDisplayChangeEventListenersFactory
             : public Object
          {
 
-    private: static GameLevelDisplayChangeEventListenersFactory instance() { return GameLevelDisplayChangeEventListenersFactory(); }
+    private: static GameLevelDisplayChangeEventListenersFactory* instance() { static std::unique_ptr<GameLevelDisplayChangeEventListenersFactory> value(new GameLevelDisplayChangeEventListenersFactory()); return value.get(); }
 
-    public: static GameLevelDisplayChangeEventListenersFactory getInstance();
+    public: static GameLevelDisplayChangeEventListenersFactory* getInstance();
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
-    public: void add(DisplayChangeEventListener displayChangeEventListener);
+    public: void add(DisplayChangeEventListener* displayChangeEventListener);
 
     public: void clear();
 

@@ -10,6 +10,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -33,15 +39,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LockableFeature.h"
+        #include "org/allbinary/logic/system/security/licensing/LockableFeature.h"
 
 class InApplicationPurchaseFactory
             : public Object
          {
 
-    private: static InApplicationPurchaseFactory instance() { return InApplicationPurchaseFactory(); }
+    private: static InApplicationPurchaseFactory* instance() { static std::unique_ptr<InApplicationPurchaseFactory> value(new InApplicationPurchaseFactory()); return value.get(); }
 
-    public: static InApplicationPurchaseFactory getInstance(){
+    public: static InApplicationPurchaseFactory* getInstance(){
 
 
 
@@ -83,11 +89,11 @@ private: InApplicationPurchaseFactory(){
 }
 
 
-    public: void purchase(LockableFeature lockableFeature){
+    public: void purchase(LockableFeature* lockableFeature){
 }
 
 
-    public: bool isPurchased(LockableFeature lockableFeature){
+    public: bool isPurchased(LockableFeature* lockableFeature){
 
 
 
@@ -97,7 +103,7 @@ private: InApplicationPurchaseFactory(){
 }
 
 
-    public: void add(LockableFeature lockableFeature){
+    public: void add(LockableFeature* lockableFeature){
 }
 
 
@@ -106,7 +112,7 @@ private: InApplicationPurchaseFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 }
 

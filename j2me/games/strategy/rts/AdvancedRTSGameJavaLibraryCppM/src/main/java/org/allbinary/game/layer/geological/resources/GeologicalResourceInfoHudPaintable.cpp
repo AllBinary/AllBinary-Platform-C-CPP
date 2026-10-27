@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -54,29 +60,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeologicalGeographicMapCellPosition.h"
+        #include "org/allbinary/game/layer/geological/resources/GeologicalGeographicMapCellPosition.h"
 
 class GeologicalResourceInfoHudPaintable: public WaypointInfoHudPaintable {
 
-    private: static const std::string RESOURCES = "Resources: ";
+    private: static inline const std::string RESOURCES = "Resources: ";
 
-    private: KeyValueDrawCharArray keyvalueDrawString;
+    private: KeyValueDrawCharArray* keyvalueDrawString;
 
     private: int32_t fontHeight = 0;
 
 public: GeologicalResourceInfoHudPaintable(){
-this->keyvalueDrawString= KeyValueDrawCharArray(GeologicalResourceInfoHudPaintable::RESOURCES, this->textX);
+this->keyvalueDrawString= new KeyValueDrawCharArray(GeologicalResourceInfoHudPaintable::RESOURCES, this->textX);
     
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 super.updateMeasurement(graphics);
     
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->fontHeight= (2 *font.getHeight());
+this->fontHeight= (2 *font->getHeight());
     
 }
 
@@ -85,10 +91,10 @@ this->fontHeight= (2 *font.getHeight());
 super.updateSelectionInfo();
     
 
-    RTSLayer rtsLayer = this->rtsLayerP;;
+    RTSLayer* rtsLayer = dynamic_cast<RTSLayer*>(this->rtsLayerP);;
     
 
-    BasicArrayList list = rtsLayer.geographicMapCellPositionAreaBase.getOccupyingGeographicMapCellPositionList();;
+    BasicArrayList* list = rtsLayer->geographicMapCellPositionAreaBase.getOccupyingGeographicMapCellPositionList();;
     
 
     int32_t total = 0;;
@@ -98,24 +104,24 @@ super.updateSelectionInfo();
 
 
                         for (
-    int32_t index = list.size();--index >= 0; )
+    int32_t index = list->size();--index >= 0; )
         {
 
-    GeologicalGeographicMapCellPosition geographicMapCellPosition = list.get(index);;
+    GeologicalGeographicMapCellPosition* geographicMapCellPosition = dynamic_cast<GeologicalGeographicMapCellPosition*>(list->get(index));;
     
-total += geographicMapCellPosition.getGeologicalResource().getTotal();
-    
-}
-
-this->keyvalueDrawString.update(this->getPrimitiveLongUtil().getCharArray(total), this->getPrimitiveLongUtil().getCurrentTotalDigits());
+total += geographicMapCellPosition->getGeologicalResource()->getTotal();
     
 }
 
+this->keyvalueDrawString->update(this->getPrimitiveLongUtil()->getCharArray(total), this->getPrimitiveLongUtil()->getCurrentTotalDigits());
+    
+}
 
-    public: void paint(Graphics graphics){
+
+    public: void paint(Graphics* graphics){
 super.paint(graphics);
     
-this->keyvalueDrawString.paint(graphics, (this->y +this->fontHeight));
+this->keyvalueDrawString->paint(graphics, (this->y +this->fontHeight));
     
 }
 

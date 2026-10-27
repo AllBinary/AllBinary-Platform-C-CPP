@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_ADVERTISEMENTSEARCHDATA_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_ADVERTISEMENTSEARCHDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class AdvertisementSearchData
             : public Object
          {
 
-    private: static AdvertisementSearchData instance() { return AdvertisementSearchData(); }
+    private: static AdvertisementSearchData* instance() { static std::unique_ptr<AdvertisementSearchData> value(new AdvertisementSearchData()); return value.get(); }
 
-    public: static AdvertisementSearchData getInstance();
+    public: static AdvertisementSearchData* getInstance();
 
 private: AdvertisementSearchData();
 

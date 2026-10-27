@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NUMBERSTRINGHUDFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NUMBERSTRINGHUDFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,19 +69,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NumberStringHud.h"
+        #include "org/allbinary/game/ag/layer/hud/basic/NumberStringHud.h"
 
 class NumberStringHudFactory
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance();
+    private: static inline Object* instance = NullUtil::getInstance();
 
-    public: static NumberStringHudFactory getInstance();
+    public: static NumberStringHudFactory* getInstance();
 
-    public: NumberStringHud createHud();
+    public: NumberStringHud* createHud();
 
-    public: const NumberStringHud NULL_NUMBER_STRING_HUD = this->createHud();
+    public: NumberStringHud* NULL_NUMBER_STRING_HUD = this->createHud();
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/System.h"
@@ -57,9 +63,9 @@ class DisposalUtil
             : public Object
          {
 
-    private: static DisposalUtil instance() { return DisposalUtil(); }
+    private: static DisposalUtil* instance() { static std::unique_ptr<DisposalUtil> value(new DisposalUtil()); return value.get(); }
 
-    public: static DisposalUtil getInstance(){
+    public: static DisposalUtil* getInstance(){
 
 
 
@@ -69,9 +75,9 @@ class DisposalUtil
 }
 
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    public: void disposeImage(Image image){
+    public: void disposeImage(Image* image){
 
                         if(image == 
                                     nullptr
@@ -88,13 +94,13 @@ class DisposalUtil
                                     }
                                 
 
-                        if(image.isMutable())
+                        if(image->isMutable())
                         
                                     {
                                     
-    SwtMutableImage mutableImage = image;;
+    SwtMutableImage* mutableImage = dynamic_cast<SwtMutableImage*>(image);;
     
-this->disposeResource(mutableImage.getImage());
+this->disposeResource(dynamic_cast<Resource*>(mutableImage->getImage()));
     
 
                                     }
@@ -106,14 +112,14 @@ this->disposeResource(mutableImage.getImage());
 }
 
 
-    public: void disposeResource(Resource resource){
+    public: void disposeResource(Resource* resource){
 
-                        if(!resource.isDisposed())
+                        if(!resource->isDisposed())
                         
                                     {
-                                    console.log(this->commonStrings.CLOSE);
+                                    System.out.println(this->commonStrings->CLOSE);
     
-resource.dispose();
+resource->dispose();
     
 
                                     }

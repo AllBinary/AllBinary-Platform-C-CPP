@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -91,16 +97,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CssElementData.h"
-#include "CssElementsValidationFactory.h"
+        #include "org/allbinary/logic/visual/dhtml/style/css/CssElementData.h"
+#include "org/allbinary/logic/visual/dhtml/style/css/CssElementsValidationFactory.h"
 
 class CssElementView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: const std::string TITLE = "title";
 
@@ -112,35 +118,35 @@ class CssElementView
 
     private: std::string description;
 
-    protected: BasicArrayList cssElementVector;
+    protected: BasicArrayList* cssElementVector;
 
-    protected: BasicArrayList cssPropertyVector;
+    protected: BasicArrayList* cssPropertyVector;
 
 public: CssElementView(){
-this->cssPropertyVector= BasicArrayListD();
+this->cssPropertyVector= new BasicArrayListD();
     
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
-this->title= stringUtil.EMPTY_STRING;
+this->title= stringUtil->EMPTY_STRING;
     
-this->description= stringUtil.EMPTY_STRING;
+this->description= stringUtil->EMPTY_STRING;
     
-this->value= stringUtil.EMPTY_STRING;
+this->value= stringUtil->EMPTY_STRING;
     
 }
 
 
-public: CssElementView(Node node){
+public: CssElementView(Node* node){
 
         try {
             
-    Node valueNode = DomSearchHelper::getNode(DomData::VALUE, node.getChildNodes());;
+    Node* valueNode = DomSearchHelper::getNode(DomData::VALUE, node->getChildNodes());;
     
 this->value= DomNodeHelper::getTextNodeValue(valueNode);
     
 
-    Node titleValueNode = DomSearchHelper::getNodeNoThrow(this->TITLE, node.getChildNodes());;
+    Node* titleValueNode = DomSearchHelper::getNodeNoThrow(this->TITLE, node->getChildNodes());;
     
 
                         if(titleValueNode != 
@@ -155,15 +161,15 @@ this->value= DomNodeHelper::getTextNodeValue(valueNode);
                                 
                         else {
                             
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
-this->title= stringUtil.EMPTY_STRING;
+this->title= stringUtil->EMPTY_STRING;
     
 
                         }
                             
 
-    Node descriptionValueNode = DomSearchHelper::getNodeNoThrow(this->DESCRIPTION, node.getChildNodes());;
+    Node* descriptionValueNode = DomSearchHelper::getNodeNoThrow(this->DESCRIPTION, node->getChildNodes());;
     
 
                         if(descriptionValueNode != 
@@ -177,28 +183,28 @@ this->title= stringUtil.EMPTY_STRING;
                                     }
                                 
                         else {
-                            this->description= StringUtil::getInstance().EMPTY_STRING;
+                            this->description= StringUtil::getInstance()->EMPTY_STRING;
     
 
                         }
                             
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF(StringMaker().append("Value: ").append(this->value).append("\nTitle: ").append(this->title).append("\nDescription: ").append(this->description).toString(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF((new StringMaker())->append("Value: ")->append(this->value)->append("\nTitle: ")->append(this->title)->append("\nDescription: ")->append(this->description)->toString(), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
                                 
 
-    BasicArrayList cssElementStyleNodeVector = DomSearchHelper::getAllNodes(CssElementData::getInstance().NAME, node.getChildNodes());;
+    BasicArrayList* cssElementStyleNodeVector = DomSearchHelper::getAllNodes(CssElementData::getInstance()->NAME, node->getChildNodes());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Child Css Elements: " +cssElementStyleNodeVector.size(), this, "CssElementView()");
+                                    this->logUtil->putF("Child Css Elements: " +cssElementStyleNodeVector->size(), this, "CssElementView()");
     
 
                                     }
@@ -206,19 +212,19 @@ this->title= stringUtil.EMPTY_STRING;
 this->cssElementVector= CssElementsValidationFactory::getInstance(cssElementStyleNodeVector);
     
 
-    NodeList nodeList = node.getChildNodes();;
+    NodeList* nodeList = node->getChildNodes();;
     
 this->cssPropertyVector= CssPropertiesValidationFactory::getInstance(nodeList);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put(StringMaker().append("Value: ").append(this->value).append("\nTitle: ").append(this->title).append("\nDescription: ").append(this->description).toString(), this, this->commonStrings.CONSTRUCTOR, e);
+                                    this->logUtil->put((new StringMaker())->append("Value: ")->append(this->value)->append("\nTitle: ")->append(this->title)->append("\nDescription: ")->append(this->description)->toString(), this, this->commonStrings->CONSTRUCTOR, &e);
     
 
                                     }
@@ -226,7 +232,7 @@ this->cssPropertyVector= CssPropertiesValidationFactory::getInstance(nodeList);
 
 
 
-                            throw Exception("CssElementView");
+                            throw new Exception("CssElementView");
                     
 }
 
@@ -243,15 +249,15 @@ this->cssPropertyVector= CssPropertiesValidationFactory::getInstance(nodeList);
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(DomData::VALUE, this->value);
+hashMap->put(DomData::VALUE, this->value);
     
-hashMap.put(this->TITLE, this->title);
+hashMap->put(this->TITLE, this->title);
     
-hashMap.put(this->DESCRIPTION, this->description);
+hashMap->put(this->DESCRIPTION, this->description);
     
 
 
@@ -264,24 +270,24 @@ hashMap.put(this->DESCRIPTION, this->description);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    HashMap<Object*, Object*> hashMap = this->toHashMap();;
+    HashMap<Object*, Object*>* hashMap = this->toHashMap();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("CssView HashMap: " +hashMap.toString(), this, "toXmlNode");
+                                    this->logUtil->putF("CssView HashMap: " +hashMap->toString(), this, "toXmlNode");
     
 
                                     }
                                 
 
-    Node node = ModDomHelper::createNodeWithValueNodes(document, CssElementData::getInstance().NAME, hashMap);;
+    Node* node = ModDomHelper::createNodeWithValueNodes(document, CssElementData::getInstance()->NAME, hashMap);;
     
 
-    int32_t size = this->cssPropertyVector.size();;
+    int32_t size = this->cssPropertyVector->size();;
     
 
 
@@ -291,14 +297,14 @@ hashMap.put(this->DESCRIPTION, this->description);
     int32_t index = 0;index < size; index++)
         {
 
-    DomNodeInterface cssPropertyDomNodeInterface = this->cssPropertyVector.get(index);;
+    DomNodeInterface* cssPropertyDomNodeInterface = dynamic_cast<DomNodeInterface*>(this->cssPropertyVector->get(index));;
     
-node.appendChild(cssPropertyDomNodeInterface.toXmlNode(document));
+node->appendChild(cssPropertyDomNodeInterface->toXmlNode(document));
     
 }
 
 
-    int32_t size2 = this->cssElementVector.size();;
+    int32_t size2 = this->cssElementVector->size();;
     
 
 
@@ -308,9 +314,9 @@ node.appendChild(cssPropertyDomNodeInterface.toXmlNode(document));
     int32_t index = 0;index < size2; index++)
         {
 
-    DomNodeInterface cssElementDomNodeInterface = this->cssElementVector.get(index);;
+    DomNodeInterface* cssElementDomNodeInterface = dynamic_cast<DomNodeInterface*>(this->cssElementVector->get(index));;
     
-node.appendChild(cssElementDomNodeInterface.toXmlNode(document));
+node->appendChild(cssElementDomNodeInterface->toXmlNode(document));
     
 }
 

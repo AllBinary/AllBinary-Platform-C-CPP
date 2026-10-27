@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/game/configuration/feature/GameFeatureControlledInterface.h>
 
       
@@ -45,11 +53,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ResourceAnimationInterfaceFactoryInterface.h"
+        #include "org/allbinary/animation/resource/ResourceAnimationInterfaceFactoryInterface.h"
 
 class FeatureResourceAnimationInterfaceFactoryInterface: public ResourceAnimationInterfaceFactoryInterface, public RectangleResourceFactoryInterface, public GameFeatureControlledInterface {
 
-    ABHashtable<Object*, Object*> getHashtable()
+    public: virtual ABHashtable<Object*, Object*>* getHashtable() = 0;
 
 };
 

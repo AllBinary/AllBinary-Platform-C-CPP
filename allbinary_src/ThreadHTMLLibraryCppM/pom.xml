@@ -23,6 +23,14 @@
         </repository>
     </distributionManagement>
 
+    <properties>
+        <cygwin.home>G:/cygwin64</cygwin.home>
+        <native.include.path>G:/mnt/bc/mydev/workcpp/j2me/J2SEForCppLibraryCppM/src/main/java</native.include.path>
+        <native.c.standard>c17</native.c.standard>
+        <native.cpp.standard>c++17</native.cpp.standard>
+        <native.compiler.flags>-O2 -Wall -Wextra</native.compiler.flags>
+    </properties>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -62,6 +70,28 @@
   <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.8.1</version>
+                <executions>
+                    <execution>
+                        <id>unpack-native-dependency-headers</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>sources</classifier>
+                            <includeGroupIds>org.allbinary</includeGroupIds>
+                            <includeScope>compile</includeScope>
+                            <includes>**/*.h</includes>
+                            <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+                            <outputDirectory>${project.build.directory}/native/dependency-include</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.5.0</version>
@@ -84,6 +114,7 @@
                                 <argument>${native.cpp.standard}</argument>
                                 <argument>${native.compiler.flags}</argument>
                                 <argument>${native.include.path}</argument>
+                                <argument>${project.build.directory}/native/dependency-include</argument>
                             </arguments>
                         </configuration>
                     </execution>

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_VIRTUALKEYBOARDFACTORY_H
         #define ORG_ALLBINARY_ANDROID_INPUT_VIRTUALKEYBOARDFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/android/AndroidInfoFactory.h>
@@ -53,17 +59,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "VirtualKeyboard.h"
+        #include "org/allbinary/android/input/VirtualKeyboard.h"
 
 class VirtualKeyboardFactory
             : public Object
          {
 
-    private: static VirtualKeyboard virtualKeyboard = VirtualKeyboard::NULL_VIRTUAL_KEYBOARD;
+    private: static inline VirtualKeyboard* virtualKeyboard = VirtualKeyboard::NULL_VIRTUAL_KEYBOARD;
 
-    public: static void init(Activity activity);
+    public: static void init(Activity* activity);
 
-    public: static VirtualKeyboard getInstance();
+    public: static VirtualKeyboard* getInstance();
 
 };
 

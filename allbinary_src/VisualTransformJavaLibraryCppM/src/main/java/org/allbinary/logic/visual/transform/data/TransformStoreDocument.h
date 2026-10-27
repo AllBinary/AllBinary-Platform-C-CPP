@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMSTOREDOCUMENT_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMSTOREDOCUMENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -62,15 +68,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformHttpRequestDocument.h"
+        #include "org/allbinary/logic/visual/transform/data/TransformHttpRequestDocument.h"
 
 class TransformStoreDocument: public TransformHttpRequestDocument {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: TransformStoreDocument(PageContext pageContext, WeblisketSession weblisketSession);
+public: TransformStoreDocument(PageContext* pageContext, WeblisketSession* weblisketSession);
 
-public: TransformStoreDocument(SearchRequest searchRequest);
+public: TransformStoreDocument(SearchRequest* searchRequest);
 
 };
 

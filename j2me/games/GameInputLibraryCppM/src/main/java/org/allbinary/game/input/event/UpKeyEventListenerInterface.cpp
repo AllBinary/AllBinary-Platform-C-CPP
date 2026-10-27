@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -48,7 +54,7 @@ class UpKeyEventListenerInterface: public EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    void onUpKeyEvent(Integer keyAsInteger)
+    public: virtual void onUpKeyEvent(int32_t keyAsInteger) = 0;
 
 };
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -69,20 +75,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SimpleProgressActivityInterface.h"
-#include "KeyInputViewCompositeInterface.h"
+        #include "org/allbinary/android/activity/SimpleProgressActivityInterface.h"
+#include "org/allbinary/android/activity/KeyInputViewCompositeInterface.h"
 
 class MidletActivityBase: public Activity, public GameFeatureListenerInterface, public GameInitializedListenerInterface, public SimpleProgressActivityInterface, public KeyInputViewCompositeInterface, public GenericMotionEventVerifyInterface {
 
-    public: void onGameFeatureChange(GameFeatureEvent gameFeatureEvent){
+    public: void onGameFeatureChange(GameFeatureEvent* gameFeatureEvent){
 }
 
 
-    public: void onEvent(AllBinaryEventObject eventObject){
+    public: void onEvent(AllBinaryEventObject* eventObject){
 }
 
 
-    public: void onGameInitialized(GameInitializedEvent gameInitializedEvent){
+    public: void onGameInitialized(GameInitializedEvent* gameInitializedEvent){
 }
 
 
@@ -104,33 +110,33 @@ class MidletActivityBase: public Activity, public GameFeatureListenerInterface, 
 }
 
 
-    public: View getRootView(){
+    public: View* getRootView(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: View getView(){
+    public: View* getView(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: void setKeyInputView(View keyInputView){
+    public: void setKeyInputView(View* keyInputView){
 }
 
 
-    public: bool onGenericMotionEvent(MotionEvent event){
+    public: bool onGenericMotionEvent(MotionEvent* event){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

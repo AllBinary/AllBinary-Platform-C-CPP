@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_CANVAS_GAMESTATISTICSFACTORY_H
         #define ORG_ALLBINARY_CANVAS_GAMESTATISTICSFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/RuntimeException.h"
         
 
@@ -41,13 +47,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseGameStatistics.h"
+        #include "org/allbinary/canvas/BaseGameStatistics.h"
 //NoPlatform
 // class GameStatisticsFactory: public BaseGameStatistics {
 
-    private: static GameStatisticsFactory instance() { return GameStatisticsFactory(); }
+    private: static GameStatisticsFactory* instance() { static std::unique_ptr<GameStatisticsFactory> value(new GameStatisticsFactory()); return value.get(); }
 
-    public: static GameStatisticsFactory getInstance();
+    public: static GameStatisticsFactory* getInstance();
 
     public: void add(std::string string);
 

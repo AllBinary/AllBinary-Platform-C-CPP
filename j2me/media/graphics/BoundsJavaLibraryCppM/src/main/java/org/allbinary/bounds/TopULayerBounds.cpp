@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graphics/Rectangle.h>
 
       
@@ -39,12 +45,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LayerBounds.h"
-#include "BoundsVisitorInterface.h"
+        #include "org/allbinary/bounds/LayerBounds.h"
+#include "org/allbinary/bounds/BoundsVisitorInterface.h"
 
 class TopULayerBounds: public LayerBounds {
 
-public: TopULayerBounds(Rectangle rectangle) : LayerBounds(rectangle){
+public: TopULayerBounds(Rectangle* rectangle) : LayerBounds(rectangle){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -54,30 +60,30 @@ public: TopULayerBounds(Rectangle rectangle) : LayerBounds(rectangle){
 }
 
 
-    public: void visit(BoundsVisitorInterface boundsVisitorInterface){
+    public: void visit(BoundsVisitorInterface* boundsVisitorInterface){
 
-                        if(boundsVisitorInterface.getX() > this->rectangle.getMaxX())
+                        if(boundsVisitorInterface->getX() > this->rectangle.getMaxX())
                         
                                     {
-                                    boundsVisitorInterface.maxX();
+                                    boundsVisitorInterface->maxX();
     
 
                                     }
                                 
 
-                        if(boundsVisitorInterface.getX() < this->rectangle.getPoint().getX())
+                        if(boundsVisitorInterface->getX() < this->rectangle.getPoint()->getX())
                         
                                     {
-                                    boundsVisitorInterface.minX();
+                                    boundsVisitorInterface->minX();
     
 
                                     }
                                 
 
-                        if(boundsVisitorInterface.getY() < this->rectangle.getPoint().getY())
+                        if(boundsVisitorInterface->getY() < this->rectangle.getPoint()->getY())
                         
                                     {
-                                    boundsVisitorInterface.minY();
+                                    boundsVisitorInterface->minY();
     
 
                                     }

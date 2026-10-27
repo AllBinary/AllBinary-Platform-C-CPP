@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -50,28 +56,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchButtonsListBuilder.h"
-#include "BasicTouchButtonsBuilder.h"
-#include "BuildingScrollTouchButtonsBuilder.h"
-#include "UpgradeDowngradeTouchButtonsBuilder.h"
+        #include "org/allbinary/input/motion/button/TouchButtonsListBuilder.h"
+#include "org/allbinary/input/motion/button/BasicTouchButtonsBuilder.h"
+#include "org/allbinary/input/motion/button/BuildingScrollTouchButtonsBuilder.h"
+#include "org/allbinary/input/motion/button/UpgradeDowngradeTouchButtonsBuilder.h"
 
 class EndLevelTouchButtonsBuilder: public TouchButtonsListBuilder {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: BasicArrayList getList(){
+    public: BasicArrayList* getList(){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+            this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
-    BasicArrayList list = BasicArrayListD();;
+    BasicArrayList* list = new BasicArrayListD();;
     
-list.addAllList(BasicTouchButtonsBuilder().getList());
+list->addAllList((new BasicTouchButtonsBuilder())->getList());
     
-list.addAllList(BuildingScrollTouchButtonsBuilder().getList());
+list->addAllList((new BuildingScrollTouchButtonsBuilder())->getList());
     
-list.addAllList(UpgradeDowngradeTouchButtonsBuilder().getList());
+list->addAllList((new UpgradeDowngradeTouchButtonsBuilder())->getList());
     
 this->addList(list);
     
@@ -83,15 +89,15 @@ this->addList(list);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, e);
+this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, &e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicArrayListUtil::getInstance().getImmutableInstance();;
+                        return BasicArrayListUtil::getInstance()->getImmutableInstance();;
     
 }
 

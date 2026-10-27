@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_TIME_NOTIMEDELAYHELPER_H
         #define ORG_ALLBINARY_TIME_NOTIMEDELAYHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,11 +45,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TimeDelayHelper.h"
+        #include "org/allbinary/time/TimeDelayHelper.h"
 
 class NoTimeDelayHelper: public TimeDelayHelper {
 
-    public: static const NoTimeDelayHelper SINGLETON = NoTimeDelayHelper();
+    public: static NoTimeDelayHelper* SINGLETON() { static std::unique_ptr<NoTimeDelayHelper> value(new NoTimeDelayHelper()); return value.get(); }
 
 public: NoTimeDelayHelper();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,14 +61,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdvertisementAreaInterface.h"
-#include "AdvertisementAreaConstraintsInterface.h"
-#include "AdvertisementAreaData.h"
-#include "AdvertisementAreaConstraints.h"
+        #include "org/allbinary/business/advertisement/area/AdvertisementAreaInterface.h"
+#include "org/allbinary/business/advertisement/area/AdvertisementAreaConstraintsInterface.h"
+#include "org/allbinary/business/advertisement/area/AdvertisementAreaData.h"
+#include "org/allbinary/business/advertisement/area/AdvertisementAreaConstraints.h"
 
 class AdvertisementArea
             : public Object
-        : public AdvertisementAreaInterface {
+        , public AdvertisementAreaInterface {
 
     private: std::string name;
 
@@ -70,26 +76,26 @@ class AdvertisementArea
 
     private: std::string description;
 
-    private: AdvertisementAreaConstraintsInterface advertisementAreaConstraintsInterface;
+    private: AdvertisementAreaConstraintsInterface* advertisementAreaConstraintsInterface;
 
     private: std::string campaign;
 
-public: AdvertisementArea(HashMap<Object*, Object*> hashMap){
-this->name= hashMap.get(AdvertisementAreaData::getInstance().NAME);
+public: AdvertisementArea(HashMap<Object*, Object*>* hashMap){
+this->name= hashMap->get(AdvertisementAreaData::getInstance()->NAME);
     
-this->storeName= hashMap.get(StoreFrontData::getInstance().NAME);
+this->storeName= hashMap->get(StoreFrontData::getInstance()->NAME);
     
-this->description= hashMap.get(AdvertisementAreaData::getInstance().DESCRIPTION);
-    
-
-    std::string constraintsDomString = hashMap.get(AdvertisementAreaData::getInstance().CONSTRAINTS);;
+this->description= hashMap->get(AdvertisementAreaData::getInstance()->DESCRIPTION);
     
 
-    Document document = DomDocumentHelper::create(constraintsDomString);;
+    std::string constraintsDomString = hashMap->get(AdvertisementAreaData::getInstance()->CONSTRAINTS);;
     
-this->advertisementAreaConstraintsInterface= AdvertisementAreaConstraints(document);
+
+    Document* document = DomDocumentHelper::create(constraintsDomString);;
     
-this->campaign= hashMap.get(AdvertisementCampaignData::getInstance().NAME);
+this->advertisementAreaConstraintsInterface= new AdvertisementAreaConstraints(document);
+    
+this->campaign= hashMap->get(AdvertisementCampaignData::getInstance()->NAME);
     
 }
 
@@ -124,7 +130,7 @@ this->campaign= hashMap.get(AdvertisementCampaignData::getInstance().NAME);
 }
 
 
-    public: AdvertisementAreaConstraintsInterface getConstraints(){
+    public: AdvertisementAreaConstraintsInterface* getConstraints(){
 
 
 
@@ -162,7 +168,7 @@ this->description= description;
 }
 
 
-    public: void setConstraints(AdvertisementAreaConstraintsInterface advertisementConstraintsInterface){
+    public: void setConstraints(AdvertisementAreaConstraintsInterface* advertisementConstraintsInterface){
 this->advertisementAreaConstraintsInterface= this->advertisementAreaConstraintsInterface;
     
 }

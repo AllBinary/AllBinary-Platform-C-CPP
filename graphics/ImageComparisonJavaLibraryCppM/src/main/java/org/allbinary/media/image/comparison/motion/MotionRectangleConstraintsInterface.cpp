@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -46,28 +52,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Dimension.h"
-#include "Rectangle.h"
+        #include "org/allbinary/media/image/comparison/motion/Dimension.h"
+#include "org/allbinary/media/image/comparison/motion/Rectangle.h"
 
 class MotionRectangleConstraintsInterface {
 
-    int32_t getMaxMotionRectangles()
+    public: virtual int32_t getMaxMotionRectangles() = 0;
 
-    Dimension getMinDimension()
+    public: virtual Dimension* getMinDimension() = 0;
 
-    int32_t getMinArea()
+    public: virtual int32_t getMinArea() = 0;
 
-    Dimension getMaxDimension()
+    public: virtual Dimension* getMaxDimension() = 0;
 
-    bool isTooSmall(Rectangle rectangle)
+    public: virtual bool isTooSmall(Rectangle* rectangle) = 0;
 
-    bool isAreaTooSmall(Rectangle rectangle)
+    public: virtual bool isAreaTooSmall(Rectangle* rectangle) = 0;
 
-    bool isTooBig(Rectangle rectangle)
+    public: virtual bool isTooBig(Rectangle* rectangle) = 0;
 
                 //@Throws(Exception.constructor)
             
-    bool isValid(Long frame, BufferedImage bufferedImage, Rectangle rectangle)
+    public: virtual bool isValid(int64_t frame, BufferedImage* bufferedImage, Rectangle* rectangle) = 0;
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/resources/BasicGameResources.h>
@@ -50,21 +56,21 @@
         
 class FlagGameResources: public BasicGameResources {
 
-    private: static const std::string ICON = "_icon";
+    private: static inline const std::string ICON = "_icon";
 
-    private: static const std::string BUILD = "_build";
+    private: static inline const std::string BUILD = "_build";
 
-    private: static const std::string DESTROY = "_destroy";
+    private: static inline const std::string DESTROY = "_destroy";
 
-    private: static const std::string ICON_BUILD = "_icon" +FlagGameResources::BUILD;
+    private: static inline const std::string ICON_BUILD = "_icon" +FlagGameResources::BUILD;
 
-    public: std::string NAME = StringUtil::getInstance().EMPTY_STRING;
+    public: std::string NAME = StringUtil::getInstance()->EMPTY_STRING;
 
-    public: std::string RESOURCE_ICON_ANIMATION = StringUtil::getInstance().EMPTY_STRING;
+    public: std::string RESOURCE_ICON_ANIMATION = StringUtil::getInstance()->EMPTY_STRING;
 
-    public: std::string RESOURCE_ICON_BUILD = StringUtil::getInstance().EMPTY_STRING;
+    public: std::string RESOURCE_ICON_BUILD = StringUtil::getInstance()->EMPTY_STRING;
 
-    public: std::string RESOURCE_ICON = StringUtil::getInstance().EMPTY_STRING;
+    public: std::string RESOURCE_ICON = StringUtil::getInstance()->EMPTY_STRING;
 
 protected: FlagGameResources(){
 }
@@ -78,7 +84,7 @@ protected: FlagGameResources(){
 super.append(ROOT, sizeString);
     
 
-    std::string string = GameGraphicsResourceUtil::getInstance().getName();;
+    std::string string = GameGraphicsResourceUtil::getInstance()->getName();;
     
 BasicGameResources::stringBuffer.delete(0, BasicGameResources::stringBuffer.length());
     

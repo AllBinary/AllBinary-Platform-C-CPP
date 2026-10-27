@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,13 +69,13 @@ class LogoImageFileUtil
             : public Object
          {
 
-    private: const Directory directory = Directory::getInstance();
+    private: Directory* directory = Directory::getInstance();
 
     private: std::string fileName;
 
-    private: AbPath imageFileAbPath;
+    private: AbPath* imageFileAbPath;
 
-public: LogoImageFileUtil(AbPath imageAbPath, std::string imageFile){
+public: LogoImageFileUtil(AbPath* imageAbPath, std::string imageFile){
 this->fileName= imageFile;
     
 this->imageFileAbPath= imageAbPath;
@@ -79,7 +85,7 @@ this->imageFileAbPath= imageAbPath;
 
                 //@Throws(Exception.constructor)
             
-    public: void saveFiles(FileItem fileItem){
+    public: void saveFiles(FileItem* fileItem){
 
                         if(false)
                         
@@ -87,29 +93,29 @@ this->imageFileAbPath= imageAbPath;
                                     
 
 
-                            throw Exception("Image File Name Was Null");
+                            throw new Exception("Image File Name Was Null");
                     
 
                                     }
                                 
 
-                        if(!this->directory.create(this->imageFileAbPath))
+                        if(!this->directory->create(this->imageFileAbPath))
                         
                                     {
                                     
 
 
-                            throw Exception("Unable to save file to non creatable directory");
+                            throw new Exception("Unable to save file to non creatable directory");
                     
 
                                     }
                                 
 
-    AbFile originalImageFile = AbFile::createAbFile(this->imageFileAbPath.toString() +this->fileName);;
+    AbFile* originalImageFile = AbFile::createAbFile(this->imageFileAbPath->toString() +this->fileName);;
     
-originalImageFile.createNewFile();
+originalImageFile->createNewFile();
     
-FileUtil::getInstance().write(ByteArrayInputStream(fileItem.get()), originalImageFile);
+FileUtil::getInstance()->write(new ByteArrayInputStream(fileItem->get()), originalImageFile);
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFO_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFO_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -51,14 +57,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Comparable.h"
-#include "PathFindingNodeCostInfoData.h"
+        #include "org/allbinary/media/graphics/geography/pathfinding/Comparable.h"
+#include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfoData.h"
 
 class PathFindingNodeCostInfo
             : public Object
-        : public Comparable<PathFindingNodeCostInfo> {
+        , public Comparable<PathFindingNodeCostInfo*> {
 
-    private: const PathFindingNodeCostInfoData pathFindingNodeCostInfoData = PathFindingNodeCostInfoData::getInstance();
+    private: PathFindingNodeCostInfoData* pathFindingNodeCostInfoData = PathFindingNodeCostInfoData::getInstance();
 
     public: int64_t costFromStartP;
 
@@ -80,7 +86,7 @@ public: PathFindingNodeCostInfo(int64_t costFromStart, int64_t costToGoal);
 
     public: void addCostFromStart(int64_t cost);
 
-    public: int32_t compareTo(PathFindingNodeCostInfo pathFindingNodeCostInfo);
+    public: int32_t compareTo(PathFindingNodeCostInfo* pathFindingNodeCostInfo);
 
     public: std::string toString();
 

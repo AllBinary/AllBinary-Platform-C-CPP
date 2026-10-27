@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -47,29 +53,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserEmailEventConfigurationInterface.h"
-#include "UserEmailEventConfigurationData.h"
+        #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationInterface.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationData.h"
 
 class UserEmailEventConfiguration
             : public Object
-        : public UserEmailEventConfigurationInterface {
+        , public UserEmailEventConfigurationInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string name;
 
     private: std::string eventListenerClassPath;
 
 public: UserEmailEventConfiguration(){
-this->setName(StringUtil::getInstance().EMPTY_STRING);
+this->setName(StringUtil::getInstance()->EMPTY_STRING);
     
-this->setEventListenerClassPath(StringUtil::getInstance().EMPTY_STRING);
+this->setEventListenerClassPath(StringUtil::getInstance()->EMPTY_STRING);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
                         
                                     {
-                                    this->logUtil.putF("New", this, " Constructor");
+                                    this->logUtil->putF("New", this, " Constructor");
     
 
                                     }
@@ -77,16 +83,16 @@ this->setEventListenerClassPath(StringUtil::getInstance().EMPTY_STRING);
 }
 
 
-public: UserEmailEventConfiguration(HashMap<Object*, Object*> hashMap){
-this->setName(hashMap.get(UserEmailEventConfigurationData::NAME));
+public: UserEmailEventConfiguration(HashMap<Object*, Object*>* hashMap){
+this->setName(hashMap->get(UserEmailEventConfigurationData::NAME));
     
-this->setEventListenerClassPath(hashMap.get(UserEmailEventConfigurationData::LISTENER_CLASSPATH));
+this->setEventListenerClassPath(hashMap->get(UserEmailEventConfigurationData::LISTENER_CLASSPATH));
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
                         
                                     {
-                                    this->logUtil.putF("Log: " +this->log(), this, " Constructor");
+                                    this->logUtil->putF("Log: " +this->log(), this, " Constructor");
     
 
                                     }

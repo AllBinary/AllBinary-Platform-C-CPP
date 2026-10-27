@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/configuration/event/GameInitializedListenerInterface.h>
 
       
@@ -31,15 +37,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "EmulatorViewInterface.h"
+        #include "org/allbinary/view/EmulatorViewInterface.h"
 
 class AllBinaryMidletViewInterface: public MidletCompositeInterface, public EmulatorViewInterface, public DemoGameMidletEventListener, public GameInitializedListenerInterface {
 
-    void onResume()
+    public: virtual void onResume() = 0;
 
-    void onPause()
+    public: virtual void onPause() = 0;
 
-    void onDestroy()
+    public: virtual void onDestroy() = 0;
 
 };
 

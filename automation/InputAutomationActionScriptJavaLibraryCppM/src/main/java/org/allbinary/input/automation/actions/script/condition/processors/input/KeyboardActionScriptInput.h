@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -95,26 +101,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicProfileActionScriptInput.h"
-#include "KeyboardActionScriptInputInterface.h"
-#include "KeyboardActionScriptInputJPanel.h"
-#include "KeyboardActionScriptInputData.h"
-#include "KeyboardInputAutomationProcessor.h"
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/BasicProfileActionScriptInput.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyboardActionScriptInputInterface.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyboardActionScriptInputJPanel.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyboardActionScriptInputData.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyboardInputAutomationProcessor.h"
 
 class KeyboardActionScriptInput: public BasicProfileActionScriptInput, public KeyboardActionScriptInputInterface {
 
-    private: static const std::string NAME = "Keyboard";
+    private: static inline const std::string NAME = "Keyboard";
 
-    private: static std::string getText(std::vector<Integer> integerArray);
+    private: static std::string getText(std::vector<int32_t> integerArray);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: std::vector<Integer> keyArray = 
+    private: std::vector<int32_t> keyArray = 
                                                         {
                                                             KeySingletonFactory::getInstance(KeyEvent::VK_0)
                                                         };
 
-    private: KeyboardActionScriptInputJPanel keyboardActionScriptInputJPanel;
+    private: KeyboardActionScriptInputJPanel* keyboardActionScriptInputJPanel;
 
     private: bool press= false;
 
@@ -122,7 +128,7 @@ class KeyboardActionScriptInput: public BasicProfileActionScriptInput, public Ke
 
     private: int32_t delayBetweenKeys= 0;
 
-public: KeyboardActionScriptInput(Node node);
+public: KeyboardActionScriptInput(Node* node);
 
 public: KeyboardActionScriptInput();
 
@@ -142,9 +148,9 @@ public: KeyboardActionScriptInput();
 
     public: void setNormal();
 
-    public: std::vector<Integer> getKeyArray();
+    public: std::vector<int32_t> getKeyArray();
 
-    public: void setKeyArray(std::vector<Integer> keyArray);
+    public: void setKeyArray(std::vector<int32_t> keyArray);
 
     public: void showDialog();
 
@@ -152,17 +158,17 @@ public: KeyboardActionScriptInput();
 
     public: void setText(std::string text);
 
-    private: std::vector<Integer> integerArrayValue(std::string text);
+    private: std::vector<int32_t> integerArrayValue(std::string text);
 
-    public: HashMap<Object*, Object*> toHashMap();
-
-                //@Throws(Exception.constructor)
-            
-    public: Node toXmlNode(Document document);
+    public: HashMap<Object*, Object*>* toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: void process(Long frame);
+    public: Node* toXmlNode(Document* document);
+
+                //@Throws(Exception.constructor)
+            
+    public: void process(int64_t frame);
 
     public: void log();
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/direction/Direction.h>
@@ -58,22 +64,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "VectorBaseRotationAnimation.h"
-#include "AnimationBehavior.h"
+        #include "org/allbinary/animation/VectorBaseRotationAnimation.h"
+#include "org/allbinary/animation/AnimationBehavior.h"
 
 class VectorRotationAnimation: public VectorBaseRotationAnimation {
 
-public: VectorRotationAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior);
+public: VectorRotationAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior);
 
-    public: void setFrameByDirection(Direction direction);
+    public: void setFrameByDirection(Direction* direction);
 
-    public: void setFrameToAngle(Angle angle);
+    public: void setFrameToAngle(Angle* angle);
 
     public: void setFrame(int32_t index);
 
     public: void adjustFrame(int16_t newAngle);
 
-    public: void adjustFrameToAngle(Angle newAngle);
+    public: void adjustFrameToAngle(Angle* newAngle);
 
 };
 

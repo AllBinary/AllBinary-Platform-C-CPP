@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,13 +52,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProfileActionScriptConditionInterface.h"
-#include "ColorAtActionScriptConditionData.h"
-#include "TimeIntervalActionScriptConditionData.h"
-#include "AlwaysActionScriptConditionData.h"
-#include "AlwaysActionScriptCondition.h"
-#include "TimeIntervalActionScriptCondition.h"
-#include "ColorAtActionScriptCondition.h"
+        #include "org/allbinary/input/automation/actions/script/condition/ProfileActionScriptConditionInterface.h"
+#include "org/allbinary/input/automation/actions/script/condition/ColorAtActionScriptConditionData.h"
+#include "org/allbinary/input/automation/actions/script/condition/TimeIntervalActionScriptConditionData.h"
+#include "org/allbinary/input/automation/actions/script/condition/AlwaysActionScriptConditionData.h"
+#include "org/allbinary/input/automation/actions/script/condition/AlwaysActionScriptCondition.h"
+#include "org/allbinary/input/automation/actions/script/condition/TimeIntervalActionScriptCondition.h"
+#include "org/allbinary/input/automation/actions/script/condition/ColorAtActionScriptCondition.h"
 
 class ProfileActionScriptConditionFactory
             : public Object
@@ -60,41 +66,41 @@ class ProfileActionScriptConditionFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static ProfileActionScriptConditionInterface getInstance(Node node){
+    public: static ProfileActionScriptConditionInterface* getInstance(Node* node){
 
-    ProfileActionScriptConditionInterface profileActionScriptConditionInterface = 
+    ProfileActionScriptConditionInterface* profileActionScriptConditionInterface = 
                 null
             ;;
     
 
-                        if(DomSearchHelper::getNodeNoThrow(ColorAtActionScriptConditionData::NAME, node.getChildNodes()) != 
+                        if(DomSearchHelper::getNodeNoThrow(ColorAtActionScriptConditionData::NAME, node->getChildNodes()) != 
                                     nullptr
                                 )
                         
                                     {
-                                    profileActionScriptConditionInterface= ColorAtActionScriptCondition(node);
+                                    profileActionScriptConditionInterface= new ColorAtActionScriptCondition(node);
     
 
                                     }
                                 
                              else 
-                        if(DomSearchHelper::getNodeNoThrow(TimeIntervalActionScriptConditionData::NAME, node.getChildNodes()) != 
+                        if(DomSearchHelper::getNodeNoThrow(TimeIntervalActionScriptConditionData::NAME, node->getChildNodes()) != 
                                     nullptr
                                 )
                         
                                     {
-                                    profileActionScriptConditionInterface= TimeIntervalActionScriptCondition(node);
+                                    profileActionScriptConditionInterface= new TimeIntervalActionScriptCondition(node);
     
 
                                     }
                                 
                              else 
-                        if(DomSearchHelper::getNodeNoThrow(AlwaysActionScriptConditionData::NAME, node.getChildNodes()) != 
+                        if(DomSearchHelper::getNodeNoThrow(AlwaysActionScriptConditionData::NAME, node->getChildNodes()) != 
                                     nullptr
                                 )
                         
                                     {
-                                    profileActionScriptConditionInterface= AlwaysActionScriptCondition(node);
+                                    profileActionScriptConditionInterface= new AlwaysActionScriptCondition(node);
     
 
                                     }

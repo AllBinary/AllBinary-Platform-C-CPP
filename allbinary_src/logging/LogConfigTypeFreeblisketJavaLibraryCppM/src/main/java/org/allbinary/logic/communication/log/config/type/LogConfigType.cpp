@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -52,9 +58,9 @@ class LogConfigType
             : public Object
          {
 
-    public: static BasicArrayList availableLogConfigTypes = BasicArrayListD();
+    public: static inline BasicArrayList* availableLogConfigTypes = new BasicArrayListD();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string name;
 
@@ -65,7 +71,7 @@ this->name= name;
     
 this->description= description;
     
-LogConfigType::availableLogConfigTypes.add(this);
+LogConfigType::availableLogConfigTypes->add(this);
     
 }
 

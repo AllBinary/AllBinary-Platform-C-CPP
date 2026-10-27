@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,7 +49,7 @@ class TitleResource
             : public Object
          {
 
-    public: static const std::string RESOURCE_TITLE = "/title_sprite_100_by_100.png";
+    public: static inline const std::string RESOURCE_TITLE = "/title_sprite_100_by_100.png";
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,11 +42,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "VehicleProperties.h"
+        #include "org/allbinary/game/layer/VehicleProperties.h"
 
 class VehiclePropertiesCompositeInterface {
 
-    VehicleProperties getVehicleProperties()
+    public: virtual VehicleProperties* getVehicleProperties() = 0;
 
 };
 

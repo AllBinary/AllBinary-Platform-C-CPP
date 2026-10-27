@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_FORMTYPEFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_FORMTYPEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
@@ -47,27 +53,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "FormType.h"
+        #include "org/allbinary/graphics/form/FormType.h"
 
 class FormTypeFactory
             : public Object
          {
 
-    private: static FormTypeFactory instance() { return FormTypeFactory(); }
+    private: static FormTypeFactory* instance() { static std::unique_ptr<FormTypeFactory> value(new FormTypeFactory()); return value.get(); }
 
-    public: static FormTypeFactory getInstance();
+    public: static FormTypeFactory* getInstance();
 
     public: const std::string UNK = "Unknown FormType";
 
-    public: const FormType NULL_FORM_TYPE = FormType(StringUtil::getInstance().NULL_STRING);
+    public: FormType* NULL_FORM_TYPE = new FormType(StringUtil::getInstance()->NULL_STRING);
 
-    public: const FormType TEMP_HORIZONTAL_FORM = FormType("TempHorizontal");
+    public: FormType* TEMP_HORIZONTAL_FORM = new FormType("TempHorizontal");
 
-    public: const FormType HORIZONTAL_FORM = FormType("Horizontal");
+    public: FormType* HORIZONTAL_FORM = new FormType("Horizontal");
 
-    public: const FormType VERTICAL_CENTER_FORM = FormType("Vertical");
+    public: FormType* VERTICAL_CENTER_FORM = new FormType("Vertical");
 
-    public: FormType getFormType();
+    public: FormType* getFormType();
 
 };
 

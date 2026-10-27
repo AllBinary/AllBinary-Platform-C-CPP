@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKEDRESOURCES_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKEDRESOURCES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class LockedResources
             : public Object
          {
 
-    private: static LockedResources instance() { return LockedResources(); }
+    private: static LockedResources* instance() { static std::unique_ptr<LockedResources> value(new LockedResources()); return value.get(); }
 
-    public: static LockedResources getInstance();
+    public: static LockedResources* getInstance();
 
     public: const std::string LOCKED_DEMO_GAME_FEATURE_RESOURCE = "/locked_demo_game_feature_64_by_64.png";
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h>
@@ -47,16 +53,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapCompositeInterface.h"
-#include "BasicGeographicMap.h"
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCompositeInterface.h"
+#include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
 
 class ColorFromEventUtil
             : public Object
          {
 
-    private: static ColorFromEventUtil instance() { return ColorFromEventUtil(); }
+    private: static ColorFromEventUtil* instance() { static std::unique_ptr<ColorFromEventUtil> value(new ColorFromEventUtil()); return value.get(); }
 
-    public: static ColorFromEventUtil getInstance(){
+    public: static ColorFromEventUtil* getInstance(){
 
 
 
@@ -66,19 +72,19 @@ class ColorFromEventUtil
 }
 
 
-    private: const BasicColor YELLOW = BasicColorFactory::getInstance().YELLOW;
+    private: BasicColor* YELLOW = BasicColorFactory::getInstance()->YELLOW;
 
-    public: const int32_t COLOR_INT = this->YELLOW.intValue();
+    public: const int32_t COLOR_INT = this->YELLOW->intValue();
 
-    public: BasicColor getForegroundColor(AllBinaryGameCanvas gameCanvasInterface){
+    public: BasicColor* getForegroundColor(AllBinaryGameCanvas* gameCanvasInterface){
 
-    BasicColor color = this->YELLOW;;
+    BasicColor* color = this->YELLOW;;
     
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = gameCanvasInterface.getLayerManager();;
+    GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(gameCanvasInterface->getLayerManager());;
     
 
-    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
+    BasicGeographicMap* geographicMapInterface = geographicMapCompositeInterface->getGeographicMapInterface()[0];;
     
 
                         if(geographicMapInterface != 
@@ -87,7 +93,7 @@ class ColorFromEventUtil
                         
                                     {
                                     
-    BasicColor foregroundBasicColor = geographicMapInterface.getForegroundBasicColor();;
+    BasicColor* foregroundBasicColor = geographicMapInterface->getForegroundBasicColor();;
     
 color= foregroundBasicColor;
     

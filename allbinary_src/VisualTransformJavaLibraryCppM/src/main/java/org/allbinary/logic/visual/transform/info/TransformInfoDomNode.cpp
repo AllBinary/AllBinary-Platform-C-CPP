@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,130 +70,130 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoInterface.h"
-#include "TransformInfoData.h"
-#include "TransformInfo.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfoData.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfo.h"
 
 class TransformInfoDomNode
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: TransformInfoInterface transformInfoInterface;
+    private: TransformInfoInterface* transformInfoInterface;
 
     private: std::string mappedName;
 
-public: TransformInfoDomNode(Node node){
+public: TransformInfoDomNode(Node* node){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Constructing TransformInfo From TransformInfoDomNode: " +node.getNodeName(), this, "TransformInfoDomNode(Node node)");
+                                    this->logUtil->putF("Constructing TransformInfo From TransformInfoDomNode: " +node->getNodeName(), this, "TransformInfoDomNode(Node node)");
     
 
                                     }
                                 
 
-    TransformInfoData transformInfoData = TransformInfoData::getInstance();;
+    TransformInfoData* transformInfoData = TransformInfoData::getInstance();;
     
 
-    NamedNodeMap attributes = node.getAttributes();;
+    NamedNodeMap* attributes = node->getAttributes();;
     
 
-    Attr attrNode = attributes.getNamedItem(transformInfoData.NAME);;
+    Attr* attrNode = dynamic_cast<Attr*>(attributes->getNamedItem(transformInfoData->NAME));;
     
 
-    std::string name = attrNode.getValue();;
+    std::string name = attrNode->getValue();;
     
 
-    NodeList nodeList = node.getChildNodes();;
+    NodeList* nodeList = node->getChildNodes();;
     
 
-                        if(nodeList.getLength() > 1)
+                        if(nodeList->getLength() > 1)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Constructing Complete TransformInfo Node For: ");
+stringBuffer->append("Constructing Complete TransformInfo Node For: ");
     
-stringBuffer.append(name);
+stringBuffer->append(name);
     
-stringBuffer.append(" with ");
+stringBuffer->append(" with ");
     
-stringBuffer.appendint(nodeList.getLength());
+stringBuffer->appendint(nodeList->getLength());
     
-stringBuffer.append(" children");
+stringBuffer->append(" children");
     
-this->logUtil.putF(stringBuffer.toString(), this, "TransformInfoObjectConfigComponent(Node node)");
+this->logUtil->putF(stringBuffer->toString(), this, "TransformInfoObjectConfigComponent(Node node)");
     
 
                                     }
                                 
 
-    Node objectFileNameNode = DomSearchHelper::getNode(transformInfoData.OBJECTFILENAME, nodeList);;
+    Node* objectFileNameNode = DomSearchHelper::getNode(transformInfoData->OBJECTFILENAME, nodeList);;
     
 
     std::string objectFileName = DomNodeHelper::getTextNodeValue(objectFileNameNode);;
     
 
-    Node objectConfigFileNameNode = DomSearchHelper::getNode(transformInfoData.OBJECTCONFIGFILENAME, nodeList);;
+    Node* objectConfigFileNameNode = DomSearchHelper::getNode(transformInfoData->OBJECTCONFIGFILENAME, nodeList);;
     
 
     std::string objectConfigFileName = DomNodeHelper::getTextNodeValue(objectConfigFileNameNode);;
     
 
-    Node templateFileNameNode = DomSearchHelper::getNode(transformInfoData.TEMPLATEFILENAME, nodeList);;
+    Node* templateFileNameNode = DomSearchHelper::getNode(transformInfoData->TEMPLATEFILENAME, nodeList);;
     
 
     std::string templateFileName = DomNodeHelper::getTextNodeValue(templateFileNameNode);;
     
 
-    Node dataFileNameNode = DomSearchHelper::getNode(transformInfoData.DATAFILENAME, nodeList);;
+    Node* dataFileNameNode = DomSearchHelper::getNode(transformInfoData->DATAFILENAME, nodeList);;
     
 
     std::string dataFileName = DomNodeHelper::getTextNodeValue(dataFileNameNode);;
     
-this->transformInfoInterface= TransformInfo(name, objectFileName, objectConfigFileName, templateFileName, dataFileName);
+this->transformInfoInterface= dynamic_cast<TransformInfoInterface*>(new TransformInfo(name, objectFileName, objectConfigFileName, templateFileName, dataFileName));
     
 
                                     }
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Constructing Partial TransformInfo Node For: ");
+stringBuffer->append("Constructing Partial TransformInfo Node For: ");
     
-stringBuffer.append(name);
+stringBuffer->append(name);
     
-stringBuffer.append(" with ");
+stringBuffer->append(" with ");
     
-stringBuffer.appendint(nodeList.getLength());
+stringBuffer->appendint(nodeList->getLength());
     
-stringBuffer.append(" children");
+stringBuffer->append(" children");
     
-this->logUtil.putF(stringBuffer.toString(), this, "TransformInfoObjectConfigComponent(Node node)");
+this->logUtil->putF(stringBuffer->toString(), this, "TransformInfoObjectConfigComponent(Node node)");
     
 
                                     }
                                 
-this->transformInfoInterface= TransformInfo(name);
+this->transformInfoInterface= dynamic_cast<TransformInfoInterface*>(new TransformInfo(name));
     
 
                         }
                             
 
-    Attr templateAttrNode = attributes.getNamedItem(transformInfoData.MAPPED);;
+    Attr* templateAttrNode = dynamic_cast<Attr*>(attributes->getNamedItem(transformInfoData->MAPPED));;
     
 
                         if(templateAttrNode != 
@@ -195,13 +201,13 @@ this->transformInfoInterface= TransformInfo(name);
                                 )
                         
                                     {
-                                    this->mappedName= templateAttrNode.getValue();
+                                    this->mappedName= templateAttrNode->getValue();
     
 
                                     }
                                 
                         else {
-                            this->mappedName= this->getTransformInfoInterface().getName();
+                            this->mappedName= this->getTransformInfoInterface()->getName();
     
 
                         }
@@ -209,15 +215,15 @@ this->transformInfoInterface= TransformInfo(name);
 }
 
 
-public: TransformInfoDomNode(TransformInfoInterface transformInfoInterface){
+public: TransformInfoDomNode(TransformInfoInterface* transformInfoInterface){
 this->transformInfoInterface= transformInfoInterface;
     
-this->mappedName= transformInfoInterface.getName();
+this->mappedName= transformInfoInterface->getName();
     
 }
 
 
-public: TransformInfoDomNode(TransformInfoInterface transformInfoInterface, std::string mappedName){
+public: TransformInfoDomNode(TransformInfoInterface* transformInfoInterface, std::string mappedName){
 this->transformInfoInterface= transformInfoInterface;
     
 this->mappedName= mappedName;
@@ -226,14 +232,14 @@ this->mappedName= mappedName;
 
 
 public: TransformInfoDomNode(std::string name, std::string mappedName){
-this->transformInfoInterface= TransformInfo(name);
+this->transformInfoInterface= new TransformInfo(name);
     
 this->mappedName= mappedName;
     
 }
 
 
-    public: TransformInfoInterface getTransformInfoInterface(){
+    public: TransformInfoInterface* getTransformInfoInterface(){
 
 
 
@@ -255,22 +261,22 @@ this->mappedName= mappedName;
 
     public: std::string getReplaceKey(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("<transform:component name=\"");
+stringBuffer->append("<transform:component name=\"");
     
-stringBuffer.append("body");
+stringBuffer->append("body");
     
-stringBuffer.append("\"/>");
-    
-
-    std::string key = stringBuffer.toString();;
+stringBuffer->append("\"/>");
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+    std::string key = stringBuffer->toString();;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Component Key: " +key, this, "getReplaceKey()");
+                                    this->logUtil->putF("Component Key: " +key, this, "getReplaceKey()");
     
 
                                     }

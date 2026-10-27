@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -40,16 +46,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AppUrlGlobals.h"
-#include "UrlGlobalsInterface.h"
+        #include "org/allbinary/globals/AppUrlGlobals.h"
+#include "org/allbinary/globals/UrlGlobalsInterface.h"
 
 class URLGLOBALS
             : public Object
          {
 
-    private: static UrlGlobalsInterface urlGlobalsInterface = AppUrlGlobals::NULL_APP_URL_GLOBALS;
+    private: static inline UrlGlobalsInterface* urlGlobalsInterface = AppUrlGlobals::NULL_APP_URL_GLOBALS;
 
-    public: static void init(UrlGlobalsInterface urlGlobalsInterface){
+    public: static void init(UrlGlobalsInterface* urlGlobalsInterface){
 URLGLOBALS::urlGlobalsInterface= urlGlobalsInterface;
     
 }
@@ -60,7 +66,7 @@ URLGLOBALS::urlGlobalsInterface= urlGlobalsInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return URLGLOBALS::urlGlobalsInterface.isTestingMode();;
+                        return URLGLOBALS::urlGlobalsInterface->isTestingMode();;
     
 }
 
@@ -70,7 +76,7 @@ URLGLOBALS::urlGlobalsInterface= urlGlobalsInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return URLGLOBALS::urlGlobalsInterface.getWebappPath();;
+                        return URLGLOBALS::urlGlobalsInterface->getWebappPath();;
     
 }
 
@@ -80,7 +86,7 @@ URLGLOBALS::urlGlobalsInterface= urlGlobalsInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return URLGLOBALS::urlGlobalsInterface.getTestHtmlPath();;
+                        return URLGLOBALS::urlGlobalsInterface->getTestHtmlPath();;
     
 }
 
@@ -92,7 +98,7 @@ URLGLOBALS::urlGlobalsInterface= urlGlobalsInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return URLGLOBALS::urlGlobalsInterface.getMainPath();;
+                        return URLGLOBALS::urlGlobalsInterface->getMainPath();;
     
 }
 

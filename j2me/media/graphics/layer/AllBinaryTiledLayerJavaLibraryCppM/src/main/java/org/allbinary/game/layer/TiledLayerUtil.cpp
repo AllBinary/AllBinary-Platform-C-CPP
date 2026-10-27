@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,15 +44,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryTiledLayer.h"
+        #include "org/allbinary/game/layer/AllBinaryTiledLayer.h"
 
 class TiledLayerUtil
             : public Object
          {
 
-    private: static TiledLayerUtil instance() { return TiledLayerUtil(); }
+    private: static TiledLayerUtil* instance() { static std::unique_ptr<TiledLayerUtil> value(new TiledLayerUtil()); return value.get(); }
 
-    public: static TiledLayerUtil getInstance(){
+    public: static TiledLayerUtil* getInstance(){
 
 
 
@@ -56,12 +62,12 @@ class TiledLayerUtil
 }
 
 
-    public: int32_t keepOnBorderdMapX(AllBinaryTiledLayer terrainTiledLayer, int32_t x, int32_t width, int32_t mapBorderBufferWidth){
+    public: int32_t keepOnBorderdMapX(AllBinaryTiledLayer* terrainTiledLayer, int32_t x, int32_t width, int32_t mapBorderBufferWidth){
 
     int32_t newX = x;;
     
 
-    int32_t maxRight = terrainTiledLayer.getWidth() -width -mapBorderBufferWidth;;
+    int32_t maxRight = terrainTiledLayer->getWidth() -width -mapBorderBufferWidth;;
     
 
                         if(x +width > maxRight)
@@ -90,12 +96,12 @@ class TiledLayerUtil
 }
 
 
-    public: int32_t keepOnBorderdMapY(AllBinaryTiledLayer terrainTiledLayer, int32_t y, int32_t height, int32_t mapBorderBufferHeight){
+    public: int32_t keepOnBorderdMapY(AllBinaryTiledLayer* terrainTiledLayer, int32_t y, int32_t height, int32_t mapBorderBufferHeight){
 
     int32_t newY = y;;
     
 
-    int32_t maxBottom = terrainTiledLayer.getHeight() -height -mapBorderBufferHeight;;
+    int32_t maxBottom = terrainTiledLayer->getHeight() -height -mapBorderBufferHeight;;
     
 
                         if(y +height > maxBottom)
@@ -124,12 +130,12 @@ class TiledLayerUtil
 }
 
 
-    public: int32_t keepOnMapX(AllBinaryTiledLayer terrainTiledLayer, int32_t x, int32_t width){
+    public: int32_t keepOnMapX(AllBinaryTiledLayer* terrainTiledLayer, int32_t x, int32_t width){
 
     int32_t newX = x;;
     
 
-    int32_t maxRight = terrainTiledLayer.getWidth() -width;;
+    int32_t maxRight = terrainTiledLayer->getWidth() -width;;
     
 
                         if(x >= maxRight)
@@ -158,12 +164,12 @@ class TiledLayerUtil
 }
 
 
-    public: int32_t keepOnMapY(AllBinaryTiledLayer terrainTiledLayer, int32_t y, int32_t height){
+    public: int32_t keepOnMapY(AllBinaryTiledLayer* terrainTiledLayer, int32_t y, int32_t height){
 
     int32_t newY = y;;
     
 
-    int32_t maxBottom = terrainTiledLayer.getHeight() -height;;
+    int32_t maxBottom = terrainTiledLayer->getHeight() -height;;
     
 
                         if(y >= maxBottom)

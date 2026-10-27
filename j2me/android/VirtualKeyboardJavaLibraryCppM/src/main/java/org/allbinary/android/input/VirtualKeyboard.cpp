@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/input/event/VirtualKeyboardEvent.h>
@@ -55,15 +61,15 @@ class VirtualKeyboard
             : public Object
          {
 
-    public: static const VirtualKeyboard NULL_VIRTUAL_KEYBOARD = VirtualKeyboard();
+    public: static VirtualKeyboard* NULL_VIRTUAL_KEYBOARD() { static std::unique_ptr<VirtualKeyboard> value(new VirtualKeyboard()); return value.get(); }
 
-    public: void onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject* eventObject){
+ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public: void onVirtualKeyboardEvent(VirtualKeyboardEvent virtualKeyboardEvent){
+    public: void onVirtualKeyboardEvent(VirtualKeyboardEvent* virtualKeyboardEvent){
 }
 
 

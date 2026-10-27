@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_WORKFLOWINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_WORKFLOWINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -48,11 +54,11 @@ class WorkFlowInterface {
 
                 //@Throws(Exception.constructor)
             
-    std::string getName();
+    public: virtual std::string getName() = 0;
 
                 //@Throws(Exception.constructor)
             
-    Integer process();
+    public: virtual int32_t process() = 0;
 
 };
 

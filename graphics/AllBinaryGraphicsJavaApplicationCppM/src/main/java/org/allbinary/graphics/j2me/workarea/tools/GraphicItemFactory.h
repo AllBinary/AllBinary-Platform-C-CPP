@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,32 +64,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SelectionToolFactory.h"
-#include "GraphicsItemInterfaceFactoryInterface.h"
-#include "LinesGraphicItem.h"
-#include "LinesGraphicItemFactory.h"
-#include "GraphicItemBuilder.h"
-#include "GraphicItemInterface.h"
+        #include "org/allbinary/graphics/j2me/workarea/tools/SelectionToolFactory.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/GraphicsItemInterfaceFactoryInterface.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItemFactory.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemBuilder.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h"
 
 class GraphicItemFactory
             : public Object
          {
 
-    private: static GraphicItemFactory instance() { return GraphicItemFactory(); }
+    private: static GraphicItemFactory* instance() { static std::unique_ptr<GraphicItemFactory> value(new GraphicItemFactory()); return value.get(); }
 
-    public: static GraphicItemFactory getInstance();
+    public: static GraphicItemFactory* getInstance();
 
-    private: HashMap<Object*, Object*> graphicItems;
+    private: HashMap<Object*, Object*>* graphicItems;
 
-    private: const GraphicsItemInterfaceFactoryInterface DEFAULT = SelectionToolFactory();
+    private: GraphicsItemInterfaceFactoryInterface* DEFAULT = new SelectionToolFactory();
 
 private: GraphicItemFactory();
 
-    public: GraphicsItemInterfaceFactoryInterface getInstance(std::string itemName);
+    public: GraphicsItemInterfaceFactoryInterface* getInstance(std::string itemName);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> getInstance(BasicArrayList graphicItemNodeList);
+    public: HashMap<Object*, Object*>* getInstance(BasicArrayList* graphicItemNodeList);
 
 };
 

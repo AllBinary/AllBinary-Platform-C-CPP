@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -68,13 +74,13 @@ class HighScore
 
     private: std::string name;
 
-    private: GameInfo gameInfo;
+    private: GameInfo* gameInfo;
 
     private: int64_t score;
 
     private: std::string scoreString;
 
-public: HighScore(int32_t id, std::string name, GameInfo gameInfo, int64_t score){
+public: HighScore(int32_t id, std::string name, GameInfo* gameInfo, int64_t score){
 this->id= id;
     
 this->name= name;
@@ -122,25 +128,25 @@ this->scoreString= std::to_string(score);
             
     public: std::vector<int8_t> getAsBytes(){
 
-    ByteArrayOutputStream byteArrayOutputStream = ByteArrayOutputStream();;
+    ByteArrayOutputStream* byteArrayOutputStream = new ByteArrayOutputStream();;
     
 
-    DataOutputStream outputStream = DataOutputStream(byteArrayOutputStream);;
+    DataOutputStream* outputStream = new DataOutputStream(byteArrayOutputStream);;
     
-outputStream.writeUTF(this->getName());
+outputStream->writeUTF(this->getName());
     
-outputStream.writeLong(this->getScore());
+outputStream->writeLong(this->getScore());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return byteArrayOutputStream.toByteArray();;
+                        return byteArrayOutputStream->toByteArray();;
     
 }
 
 
-    public: GameInfo getGameInfo(){
+    public: GameInfo* getGameInfo(){
 
 
 
@@ -168,13 +174,13 @@ this->name= name;
 
     public: std::string toString(){
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().append(this->name).append(commonSeps.COLON).appendlong(this->score).append(commonSeps.FORWARD_SLASH).append(this->scoreString).toString();;
+                        return (new StringMaker())->append(this->name)->append(commonSeps->COLON)->appendlong(this->score)->append(commonSeps->FORWARD_SLASH)->append(this->scoreString)->toString();;
     
 }
 

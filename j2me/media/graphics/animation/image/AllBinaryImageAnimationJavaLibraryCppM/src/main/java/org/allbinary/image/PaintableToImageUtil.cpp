@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,24 +55,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameFeatureImageCacheFactory.h"
+        #include "org/allbinary/image/GameFeatureImageCacheFactory.h"
 
 class PaintableToImageUtil
             : public Object
          {
 
-    private: static PaintableToImageUtil instance() { return PaintableToImageUtil(); }
+    private: static PaintableToImageUtil* instance() { static std::unique_ptr<PaintableToImageUtil> value(new PaintableToImageUtil()); return value.get(); }
 
                 //@Throws(Exception.constructor)
             
-    public: static Image getImage(PaintableInterface paintableInterface, int32_t width, int32_t height){
+    public: static Image* getImage(PaintableInterface* paintableInterface, int32_t width, int32_t height){
 
-    Image image = GameFeatureImageCacheFactory::getInstance().get(PaintableToImageUtil::instance.constructor.name.toString(), width, height);;
+    Image* image = GameFeatureImageCacheFactory::getInstance()->get(PaintableToImageUtil::instance()->getClass()->getName(), width, height);;
     
 
-    Graphics graphics = image.getGraphics();;
+    Graphics* graphics = image->getGraphics();;
     
-paintableInterface.paint(graphics);
+paintableInterface->paint(graphics);
     
 
 

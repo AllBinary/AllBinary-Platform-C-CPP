@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LAYER_BASICLAYERPROCESSORINTERFACE_H
         #define ORG_ALLBINARY_LAYER_BASICLAYERPROCESSORINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -41,13 +47,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryLayerManager.h"
+        #include "org/allbinary/layer/AllBinaryLayerManager.h"
 
 class BasicLayerProcessorInterface {
 
                 //@Throws(Exception.constructor)
             
-    void process(AllBinaryLayerManager allBinaryLayerManager);
+    public: virtual void process(AllBinaryLayerManager* allBinaryLayerManager) = 0;
 
 };
 

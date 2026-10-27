@@ -21,6 +21,14 @@
         #ifndef VIEWS_ADMIN_INVENTORY_UPDATEFILEVALIDATIONVIEW_H
         #define VIEWS_ADMIN_INVENTORY_UPDATEFILEVALIDATIONVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>
@@ -107,21 +115,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InventoryItemView.h"
+        #include "views/admin/inventory/InventoryItemView.h"
 
 class UpdateFileValidationView: public InventoryItemView, public ValidationComponentInterface {
 
-    private: static const std::string UPDATEPRODUCT = CommonStrings::getInstance().UPDATE;
+    private: static inline const std::string UPDATEPRODUCT = CommonStrings::getInstance()->UPDATE;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: UpdateFileValidationView(TransformInfoInterface transformInfoInterface);
+public: UpdateFileValidationView(TransformInfoInterface* transformInfoInterface);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
                 //@Throws(Exception.constructor)
             
@@ -129,9 +137,9 @@ public: UpdateFileValidationView(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    private: Boolean isValid(std::string fileName, int64_t size);
+    private: bool isValid(std::string fileName, int64_t size);
 
-    private: void validationInfo(StringMaker stringBuffer, std::string fileName, std::string fileItemFieldName, int64_t size);
+    private: void validationInfo(StringMaker* stringBuffer, std::string fileName, std::string fileItemFieldName, int64_t size);
 
 };
 

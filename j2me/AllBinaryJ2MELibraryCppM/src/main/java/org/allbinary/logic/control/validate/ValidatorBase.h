@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_VALIDATORBASE_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_VALIDATORBASE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/StdUtil.h>
@@ -59,25 +65,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ValidatorBaseInterface.h"
+        #include "org/allbinary/logic/control/validate/ValidatorBaseInterface.h"
 
 class ValidatorBase
             : public Object
-        : public ValidatorBaseInterface {
+        , public ValidatorBaseInterface {
 
-    private: static ValidatorBase instance() { return ValidatorBase(); }
+    private: static ValidatorBase* instance() { static std::unique_ptr<ValidatorBase> value(new ValidatorBase()); return value.get(); }
 
-    public: static ValidatorBase getInstance();
+    public: static ValidatorBase* getInstance();
 
 public: ValidatorBase();
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string validationInfo();
 
-    public: ABHashtable<Object*, Object*> toHashtable();
+    public: ABHashtable<Object*, Object*>* toHashtable();
 
-    public: BasicArrayList toList();
+    public: BasicArrayList* toList();
 
 };
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -77,20 +83,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputAutomationRobotUtil.h"
-#include "InputAutomationRobotChangeEvent.h"
+        #include "org/allbinary/input/automation/robot/osgi/InputAutomationRobotUtil.h"
+#include "org/allbinary/input/automation/robot/osgi/InputAutomationRobotChangeEvent.h"
 
 class InputAutomationRobotBundleActivator
             : public Object
-        : public BundleActivator {
+        , public BundleActivator {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: std::vector<InputRobotInterface> inputRobotInterface;
+    private: std::vector<InputRobotInterface*> inputRobotInterface;
 
-    private: ServiceFactory serviceFactory;
+    private: ServiceFactory* serviceFactory;
 
 public: InputAutomationRobotBundleActivator();
 
@@ -100,31 +106,31 @@ public: InputAutomationRobotBundleActivator();
 
                 //@Throws(Exception.constructor)
             
-    public: void registerAsService(BundleContext bundleContext);
+    public: void registerAsService(BundleContext* bundleContext);
 
                 //@Throws(Exception.constructor)
             
-    private: InputAutomationRobotChangeListener getInputAutomationRobotChangeListener(BundleContext context);
+    private: InputAutomationRobotChangeListener* getInputAutomationRobotChangeListener(BundleContext* context);
 
-    private: void addRobots(BundleContext context);
+    private: void addRobots(BundleContext* context);
 
-    private: void removeRobots(BundleContext context);
-
-                //@Throws(Exception.constructor)
-            
-    public: void start(BundleContext context);
+    private: void removeRobots(BundleContext* context);
 
                 //@Throws(Exception.constructor)
             
-    public: void stop(BundleContext context);
+    public: void start(BundleContext* context);
+
+                //@Throws(Exception.constructor)
+            
+    public: void stop(BundleContext* context);
 
     protected: Object* getServiceFactory();
 
-    protected: void setServiceFactory(ServiceFactory serviceObject);
+    protected: void setServiceFactory(ServiceFactory* serviceObject);
 
-    public: std::vector<InputRobotInterface> getInputRobotInterface();
+    public: std::vector<InputRobotInterface*> getInputRobotInterface();
 
-    public: void setInputRobotInterface(std::vector<InputRobotInterface> inputRobotInterface);
+    public: void setInputRobotInterface(std::vector<InputRobotInterface*> inputRobotInterface);
 
 };
 

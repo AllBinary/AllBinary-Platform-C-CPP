@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CAPTUREWORKERUTIL_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CAPTUREWORKERUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,9 +73,9 @@ class CaptureWorkerUtil
 
                 //@Throws(Exception.constructor)
             
-    public: static void processProfileActionConditions(BasicArrayList vector, Long frame);
+    public: static void processProfileActionConditions(BasicArrayList* vector, int64_t frame);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: CaptureWorkerUtil();
 

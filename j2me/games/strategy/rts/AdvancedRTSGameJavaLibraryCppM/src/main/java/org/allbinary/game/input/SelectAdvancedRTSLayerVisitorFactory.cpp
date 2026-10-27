@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/util/visitor/Visitor.h>
@@ -41,17 +47,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SelectRTSLayerVisitorFactoryInterface.h"
-#include "SelectAdvancedRTSLayerVisitor.h"
-#include "SelectedRTSLayersPlayerGameInput.h"
+        #include "org/allbinary/game/input/SelectRTSLayerVisitorFactoryInterface.h"
+#include "org/allbinary/game/input/SelectAdvancedRTSLayerVisitor.h"
+#include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h"
 
 class SelectAdvancedRTSLayerVisitorFactory
             : public Object
-        : public SelectRTSLayerVisitorFactoryInterface {
+        , public SelectRTSLayerVisitorFactoryInterface {
 
-    private: static SelectAdvancedRTSLayerVisitorFactory instance() { return SelectAdvancedRTSLayerVisitorFactory(); }
+    private: static SelectAdvancedRTSLayerVisitorFactory* instance() { static std::unique_ptr<SelectAdvancedRTSLayerVisitorFactory> value(new SelectAdvancedRTSLayerVisitorFactory()); return value.get(); }
 
-    public: static SelectAdvancedRTSLayerVisitorFactory getInstance(){
+    public: static SelectAdvancedRTSLayerVisitorFactory* getInstance(){
 
 
 
@@ -65,12 +71,12 @@ private: SelectAdvancedRTSLayerVisitorFactory(){
 }
 
 
-    public: Visitor create(SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput){
+    public: Visitor* create(SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SelectAdvancedRTSLayerVisitor(selectedRTSLayersPlayerGameInput);
+                        return new SelectAdvancedRTSLayerVisitor(selectedRTSLayersPlayerGameInput);
     
 }
 

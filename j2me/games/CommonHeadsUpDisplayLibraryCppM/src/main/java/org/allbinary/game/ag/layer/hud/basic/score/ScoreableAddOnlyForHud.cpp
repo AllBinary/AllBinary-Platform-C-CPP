@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/score/Scoreable.h>
 
       
@@ -39,13 +45,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ScoreHudWidget.h"
+        #include "org/allbinary/game/ag/layer/hud/basic/score/ScoreHudWidget.h"
 
 class ScoreableAddOnlyForHud: public Scoreable {
 
-    private: ScoreHudWidget scoreHudWidget;
+    private: ScoreHudWidget* scoreHudWidget;
 
-public: ScoreableAddOnlyForHud(ScoreHudWidget scoreVectorGraphic) : Scoreable(0){
+public: ScoreableAddOnlyForHud(ScoreHudWidget* scoreVectorGraphic) : Scoreable(0){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -54,7 +60,7 @@ public: ScoreableAddOnlyForHud(ScoreHudWidget scoreVectorGraphic) : Scoreable(0)
                     
 this->scoreHudWidget= scoreVectorGraphic;
     
-this->getScoreHudWidget().set(0);
+this->getScoreHudWidget()->set(0);
     
 }
 
@@ -66,12 +72,12 @@ this->getScoreHudWidget().set(0);
     public: void addPoints(int32_t points){
 super.addPoints(points);
     
-this->getScoreHudWidget().add(points);
+this->getScoreHudWidget()->add(points);
     
 }
 
 
-    public: ScoreHudWidget getScoreHudWidget(){
+    public: ScoreHudWidget* getScoreHudWidget(){
 
 
 

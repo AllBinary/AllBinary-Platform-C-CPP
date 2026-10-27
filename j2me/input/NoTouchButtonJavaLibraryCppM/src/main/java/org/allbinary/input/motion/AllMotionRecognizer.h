@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_ALLMOTIONRECOGNIZER_H
         #define ORG_ALLBINARY_INPUT_MOTION_ALLMOTIONRECOGNIZER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -48,7 +54,7 @@ class AllMotionRecognizer
             : public Object
          {
 
-    private: static int32_t index = 0;
+    private: static inline int32_t index = 0;
 
     private: int32_t id;
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -47,14 +53,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BoundsChangeEventListener.h"
-#include "BoundsChangeEvent.h"
+        #include "org/allbinary/bounds/event/BoundsChangeEventListener.h"
+#include "org/allbinary/bounds/event/BoundsChangeEvent.h"
 
 class BoundsChangeEventHandler: public BasicEventHandler {
 
-    private: static BasicEventHandler SINGLETON = BoundsChangeEventHandler();
+    private: static inline BasicEventHandler* SINGLETON = new BoundsChangeEventHandler();
 
-    public: static BasicEventHandler getInstance(){
+    public: static BasicEventHandler* getInstance(){
 
 
 
@@ -70,11 +76,11 @@ private: BoundsChangeEventHandler(){
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
 
-    BoundsChangeEventListener boundsChangeEventListener = eventListenerInterface;;
+    BoundsChangeEventListener* boundsChangeEventListener = dynamic_cast<BoundsChangeEventListener*>(eventListenerInterface);;
     
-boundsChangeEventListener.onBoundsChangeEvent(eventObject);
+boundsChangeEventListener->onBoundsChangeEvent(dynamic_cast<BoundsChangeEvent*>(eventObject));
     
 }
 

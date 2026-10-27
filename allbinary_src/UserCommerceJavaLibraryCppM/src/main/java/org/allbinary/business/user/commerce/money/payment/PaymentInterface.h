@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENTINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENTINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,29 +48,29 @@
         
 class PaymentInterface {
 
-    void setName(std::string value);
+    public: virtual void setName(std::string value) = 0;
 
-    void setType(std::string value);
+    public: virtual void setType(std::string value) = 0;
 
-    void setExpiration(std::string value);
+    public: virtual void setExpiration(std::string value) = 0;
 
-    void setNumber(std::string value);
+    public: virtual void setNumber(std::string value) = 0;
 
-    std::string getId();
+    public: virtual std::string getId() = 0;
 
-    std::string getName();
+    public: virtual std::string getName() = 0;
 
-    std::string getType();
+    public: virtual std::string getType() = 0;
 
-    std::string getExpiration();
+    public: virtual std::string getExpiration() = 0;
 
-    std::string getEncryption();
+    public: virtual std::string getEncryption() = 0;
 
-    std::string getNumber();
+    public: virtual std::string getNumber() = 0;
 
-    std::string getLastFour();
+    public: virtual std::string getLastFour() = 0;
 
-    bool isDefault();
+    public: virtual bool isDefault() = 0;
 
 };
 

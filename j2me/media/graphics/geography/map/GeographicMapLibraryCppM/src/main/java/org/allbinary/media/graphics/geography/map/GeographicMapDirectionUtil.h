@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPDIRECTIONUTIL_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPDIRECTIONUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,15 +61,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapCellPosition.h"
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
 
 class GeographicMapDirectionUtil
             : public Object
          {
 
-    private: static GeographicMapDirectionUtil instance() { return GeographicMapDirectionUtil(); }
+    private: static GeographicMapDirectionUtil* instance() { static std::unique_ptr<GeographicMapDirectionUtil> value(new GeographicMapDirectionUtil()); return value.get(); }
 
-    public: static GeographicMapDirectionUtil getInstance();
+    public: static GeographicMapDirectionUtil* getInstance();
 
 private: GeographicMapDirectionUtil();
 
@@ -71,15 +77,15 @@ private: GeographicMapDirectionUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: Direction getDirectionFromCellPositionToAdjacentCellPosition(GeographicMapCellPosition fromGeographicMapCellPosition, GeographicMapCellPosition toGeographicMapCellPosition);
+    public: Direction* getDirectionFromCellPositionToAdjacentCellPosition(GeographicMapCellPosition* fromGeographicMapCellPosition, GeographicMapCellPosition* toGeographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: Direction getEightDirectionFromCellPositionToAdjacentCellPosition(GeographicMapCellPosition fromGeographicMapCellPosition, GeographicMapCellPosition toGeographicMapCellPosition);
+    public: Direction* getEightDirectionFromCellPositionToAdjacentCellPosition(GeographicMapCellPosition* fromGeographicMapCellPosition, GeographicMapCellPosition* toGeographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: Direction getDirectionFromCellPositionToCellPosition(GeographicMapCellPosition fromGeographicMapCellPosition, GeographicMapCellPosition toGeographicMapCellPosition);
+    public: Direction* getDirectionFromCellPositionToCellPosition(GeographicMapCellPosition* fromGeographicMapCellPosition, GeographicMapCellPosition* toGeographicMapCellPosition);
 
     private: const std::string ERROR = "Error: ";
 
@@ -87,7 +93,7 @@ private: GeographicMapDirectionUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: Direction getEightDirectionFromCellPositionToCellPosition(GeographicMapCellPosition fromGeographicMapCellPosition, GeographicMapCellPosition toGeographicMapCellPosition);
+    public: Direction* getEightDirectionFromCellPositionToCellPosition(GeographicMapCellPosition* fromGeographicMapCellPosition, GeographicMapCellPosition* toGeographicMapCellPosition);
 
 };
 

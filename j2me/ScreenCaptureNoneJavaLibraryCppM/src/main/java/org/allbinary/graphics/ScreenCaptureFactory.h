@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_SCREENCAPTUREFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_SCREENCAPTUREFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,16 +47,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ScreenCaptureNoneFactory.h"
-#include "ScreenCapture.h"
+        #include "org/allbinary/graphics/ScreenCaptureNoneFactory.h"
+#include "org/allbinary/graphics/ScreenCapture.h"
 
 class ScreenCaptureFactory
             : public Object
          {
 
-    private: static const ScreenCapture instance = ScreenCaptureNoneFactory::getInstance();
+    private: static inline ScreenCapture* instance = ScreenCaptureNoneFactory::getInstance();
 
-    public: static ScreenCapture getInstance();
+    public: static ScreenCapture* getInstance();
 
 };
 

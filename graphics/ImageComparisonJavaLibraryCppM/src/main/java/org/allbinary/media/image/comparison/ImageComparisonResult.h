@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Long.h"
@@ -77,11 +83,11 @@ class ImageComparisonResult
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const std::vector<BufferedImage> bufferedImages = std::vector<BufferedImage>(2);
+    private: const std::vector<BufferedImage*> bufferedImages = std::vector<BufferedImage*>(2);
 
     public: std::string name;
 
@@ -93,11 +99,11 @@ class ImageComparisonResult
 
     public: int32_t imageWidth;
 
-    private: BasicArrayList nonMatchingPixelVector;
+    private: BasicArrayList* nonMatchingPixelVector;
 
-    private: Long frameOne;
+    private: int64_t frameOne;
 
-    private: Long frameTwo;
+    private: int64_t frameTwo;
 
     public: int32_t pixelsThatMatch= 0;
 
@@ -107,25 +113,25 @@ class ImageComparisonResult
 
     private: float matchingPercent =  -1;
 
-public: ImageComparisonResult(std::string name, BufferedImage bufferedImage, BufferedImage bufferedImage2, Long frameOne, Long frameTwo, int32_t tolerance);
+public: ImageComparisonResult(std::string name, BufferedImage* bufferedImage, BufferedImage* bufferedImage2, int64_t frameOne, int64_t frameTwo, int32_t tolerance);
 
     public: float getMatchingPercent();
 
-    public: void add(PixelDelta pixel);
+    public: void add(PixelDelta* pixel);
 
-    public: BasicArrayList getNonMatchingPixelVector();
+    public: BasicArrayList* getNonMatchingPixelVector();
 
     public: std::string toString();
 
-    public: std::vector<BufferedImage> getBufferedImages();
+    public: std::vector<BufferedImage*> getBufferedImages();
 
     public: int32_t getTolerance();
 
     private: void setTolerance(int32_t tolerance);
 
-    public: Long getFrameOne();
+    public: int64_t getFrameOne();
 
-    public: Long getFrameTwo();
+    public: int64_t getFrameTwo();
 
 };
 

@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/logic/system/os/GenericOperatingSystem.h>
 
       
@@ -48,33 +56,33 @@
         
 class AbeClientInformationInterface {
 
-    void init()
+    public: virtual void init() = 0;
 
-    GenericOperatingSystem getOperatingSystemInterface()
+    public: virtual GenericOperatingSystem* getOperatingSystemInterface() = 0;
 
-    std::string getName()
+    public: virtual std::string getName() = 0;
 
-    std::string getSpecialName()
+    public: virtual std::string getSpecialName() = 0;
 
-    std::string getVersion()
+    public: virtual std::string getVersion() = 0;
 
-    std::string getLicenseId()
+    public: virtual std::string getLicenseId() = 0;
 
-    BasicArrayList getLicenseServers()
+    public: virtual BasicArrayList* getLicenseServers() = 0;
 
-    std::string getLicenseServer(int32_t index)
+    public: virtual std::string getLicenseServer(int32_t index) = 0;
 
-    int32_t getNumberOfLicenseServers()
+    public: virtual int32_t getNumberOfLicenseServers() = 0;
 
-    ABHashtable<Object*, Object*> toHashtable()
+    public: virtual ABHashtable<Object*, Object*>* toHashtable() = 0;
 
-    bool isSameId(std::string alicenseId)
+    public: virtual bool isSameId(std::string alicenseId) = 0;
 
-    bool isLargerOrDifferentServerList(BasicArrayList vector)
+    public: virtual bool isLargerOrDifferentServerList(BasicArrayList* vector) = 0;
 
-    bool isHardSale()
+    public: virtual bool isHardSale() = 0;
 
-    std::string toShortString()
+    public: virtual std::string toShortString() = 0;
 
 };
 

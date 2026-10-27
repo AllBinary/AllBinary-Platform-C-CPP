@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -48,9 +54,9 @@ class ItemIndexDx
             : public Object
          {
 
-    private: static ItemIndexDx instance() { return ItemIndexDx(); }
+    private: static ItemIndexDx* instance() { static std::unique_ptr<ItemIndexDx> value(new ItemIndexDx()); return value.get(); }
 
-    public: static ItemIndexDx getInstance(){
+    public: static ItemIndexDx* getInstance(){
 
 
 
@@ -62,7 +68,7 @@ class ItemIndexDx
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
+    public: int32_t getDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
 
 
 

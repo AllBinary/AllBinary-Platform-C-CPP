@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -41,16 +47,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapCellType.h"
-#include "BasicGeographicMap.h"
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellType.h"
+#include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
 
 class GeographicMapCompositeInterface {
 
-    std::vector<GeographicMapCellType> geographicMapCellTypeArray();
+    public: virtual std::vector<GeographicMapCellType*> geographicMapCellTypeArray() = 0;
 
-    std::vector<BasicGeographicMap> getGeographicMapInterface();
+    public: virtual std::vector<BasicGeographicMap*> getGeographicMapInterface() = 0;
 
-    void setGeographicMapInterface(std::vector<BasicGeographicMap> geographicMapInterface);
+    public: virtual void setGeographicMapInterface(std::vector<BasicGeographicMap*> geographicMapInterface) = 0;
 
 };
 

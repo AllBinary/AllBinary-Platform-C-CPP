@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/System.h"
@@ -49,9 +55,9 @@
         
 class MidletExitProcessor: public Processor {
 
-    private: MIDlet midlet;
+    private: MIDlet* midlet;
 
-public: MidletExitProcessor(MIDlet midlet){
+public: MidletExitProcessor(MIDlet* midlet){
 this->midlet= midlet;
     
 }

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -76,9 +82,9 @@ class WeblisketFinder
             : public Object
          {
 
-    private: static WeblisketFinder instance() { return WeblisketFinder(); }
+    private: static WeblisketFinder* instance() { static std::unique_ptr<WeblisketFinder> value(new WeblisketFinder()); return value.get(); }
 
-    public: static WeblisketFinder getInstance(){
+    public: static WeblisketFinder* getInstance(){
 
 
 
@@ -88,54 +94,54 @@ class WeblisketFinder
 }
 
 
-    private: static const std::string KEY = "installerdata.dat";
+    private: static inline const std::string KEY = "installerdata.dat";
 
                 //@Throws(Exception.constructor)
             
     public: static void main(std::vector<std::string> args){
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
 
-    BasicArrayList vector = WeblisketFinder::getInstance().findAll(stringUtil.EMPTY_STRING);;
+    BasicArrayList* vector = WeblisketFinder::getInstance()->findAll(stringUtil->EMPTY_STRING);;
     
-console.log(vector.size());
+System.out.println(vector->size());
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const SubDirectory subDirectory = SubDirectory::getInstance();
+    private: SubDirectory* subDirectory = SubDirectory::getInstance();
 
 private: WeblisketFinder(){
 }
 
 
-    public: BasicArrayList findAll(std::string path){
+    public: BasicArrayList* findAll(std::string path){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, "findAll");
+            this->logUtil->putF(this->commonStrings->START, this, "findAll");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->subDirectory.search(WeblisketFinder::KEY, AbFile::createAbFile(path));;
+                        return this->subDirectory->search(WeblisketFinder::KEY, AbFile::createAbFile(path));;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "findAll", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "findAll", &e);
     
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "findAll", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "findAll", &e);
     
 
                                     }
@@ -151,14 +157,14 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "findAll", e);
 }
 
 
-    public: std::string getInstallationPath(AbFile file){
+    public: std::string getInstallationPath(AbFile* file){
 
         try {
             
-    std::string filePath = file.getPath();;
+    std::string filePath = file->getPath();;
     
 
-    int32_t end = filePath.indexOf(KEY);;
+    int32_t end = JavaString::indexOf(filePath, KEY);;
     
 
                         if(end < 0)
@@ -177,17 +183,17 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "findAll", e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return filePath.substring(0, end);;
+                        return JavaString::substring(filePath, 0, end);;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRELOADERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRELOADERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "getInstallationPath", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "getInstallationPath", &e);
     
 
                                     }

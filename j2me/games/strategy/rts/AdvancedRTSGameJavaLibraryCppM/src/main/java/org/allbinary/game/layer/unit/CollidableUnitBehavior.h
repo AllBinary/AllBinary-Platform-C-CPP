@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_UNIT_COLLIDABLEUNITBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_LAYER_UNIT_COLLIDABLEUNITBEHAVIOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -95,18 +103,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UnitLayer.h"
-//#include "SimpleSteeringVisitor.h"
+        #include "org/allbinary/game/layer/unit/UnitLayer.h"
+//#include "org/allbinary/game/layer/unit/SimpleSteeringVisitor.h"
 
 class CollidableUnitBehavior: public CollidableRTSBehavior {
 
-    private: const LayerPartialCellPositionsUtil layerPartialCellPositionsUtil = LayerPartialCellPositionsUtil::getInstance();
+    private: LayerPartialCellPositionsUtil* layerPartialCellPositionsUtil = LayerPartialCellPositionsUtil::getInstance();
 
 public: CollidableUnitBehavior(bool collidable);
 
                 //@Throws(Exception.constructor)
             
-    protected: void collideNone(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
+    protected: void collideNone(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface);
 
 //inner= member=true isStatic=
 class SimpleSteeringVisitor: public SteeringVisitor {
@@ -116,19 +124,19 @@ class SimpleSteeringVisitor: public SteeringVisitor {
 };
 
             
-    private: const simpleSteeringVisitor = SimpleSteeringVisitor();
+    private: simpleSteeringVisitor = new SimpleSteeringVisitor();
 
                 //@Throws(Exception.constructor)
             
-    private: bool steer(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
+    private: bool steer(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface);
 
                 //@Throws(Exception.constructor)
             
-    private: void chase(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
+    private: void chase(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface);
 
                 //@Throws(Exception.constructor)
             
-    protected: void collideUnit(CollidableCompositeLayer ownerLayer, UnitLayer unitLayer);
+    protected: void collideUnit(CollidableCompositeLayer* ownerLayer, UnitLayer* unitLayer);
 
 };
 

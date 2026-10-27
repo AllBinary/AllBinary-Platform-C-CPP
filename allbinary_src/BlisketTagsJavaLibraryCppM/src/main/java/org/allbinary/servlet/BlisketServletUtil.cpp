@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -58,9 +64,9 @@ class BlisketServletUtil
             : public Object
          {
 
-    private: static BlisketServletUtil instance() { return BlisketServletUtil(); }
+    private: static BlisketServletUtil* instance() { static std::unique_ptr<BlisketServletUtil> value(new BlisketServletUtil()); return value.get(); }
 
-    public: static BlisketServletUtil getInstance(){
+    public: static BlisketServletUtil* getInstance(){
 
 
 
@@ -70,15 +76,15 @@ class BlisketServletUtil
 }
 
 
-    public: void init(HttpServletRequest request){
+    public: void init(HttpServletRequest* request){
 
-    AppUrlGlobals urlGlobals = AppUrlGlobals();;
+    AppUrlGlobals* urlGlobals = new AppUrlGlobals();;
     
-urlGlobals.setWebappPath(request.getServletContext().getRealPath(AbPathData::getInstance().SEPARATOR));
+urlGlobals->setWebappPath(request->getServletContext()->getRealPath(AbPathData::getInstance()->SEPARATOR));
     
 URLGLOBALS::init(urlGlobals);
     
-WebappClassLoaderInfo::setLoader(constructor.namegetClassLoader());
+WebappClassLoaderInfo::setLoader(getClass()getClassLoader());
     
 }
 

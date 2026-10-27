@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
@@ -47,13 +53,13 @@
         
 class MovementInterface {
 
-    void init(BasicDecimal speedBasicDecimal, int32_t angle, int32_t otherAngle)
+    public: virtual void init(BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void process(AllBinaryGameLayer layer)
+    public: virtual void process(AllBinaryGameLayer* layer) = 0;
 
-    void stop()
+    public: virtual void stop() = 0;
 
 };
 

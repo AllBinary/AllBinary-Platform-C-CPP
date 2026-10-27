@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/awt/image/BufferedImage.h>
@@ -47,20 +53,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BufferedImageInfo.h"
+        #include "org/allbinary/media/image/cache/BufferedImageInfo.h"
 
 class BufferedImageCacheable
             : public Object
-        : public CacheableInterface {
+        , public CacheableInterface {
 
-    private: BufferedImageInfo key;
+    private: BufferedImageInfo* key;
 
-    private: BufferedImage bufferedImage;
+    private: BufferedImage* bufferedImage;
 
-public: BufferedImageCacheable(BufferedImageInfo key){
+public: BufferedImageCacheable(BufferedImageInfo* key){
 this->key= key;
     
-this->setBufferedImage(BufferedImage(key.getWidth(), key.getHeight(), key.getType()));
+this->setBufferedImage(new BufferedImage(key->getWidth(), key->getHeight(), key->getType()));
     
 }
 
@@ -75,7 +81,7 @@ this->setBufferedImage(BufferedImage(key.getWidth(), key.getHeight(), key.getTyp
 }
 
 
-    public: BufferedImage getBufferedImage(){
+    public: BufferedImage* getBufferedImage(){
 
 
 
@@ -85,7 +91,7 @@ this->setBufferedImage(BufferedImage(key.getWidth(), key.getHeight(), key.getTyp
 }
 
 
-    private: void setBufferedImage(BufferedImage bufferedImage){
+    private: void setBufferedImage(BufferedImage* bufferedImage){
 this->bufferedImage= bufferedImage;
     
 }
@@ -93,19 +99,19 @@ this->bufferedImage= bufferedImage;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->constructor.name.toString());
+stringBuffer->append(this->getClass()->getName());
     
-stringBuffer.append(" ");
+stringBuffer->append(" ");
     
-stringBuffer.append(this->getKey().toString());
+stringBuffer->append(this->getKey()->toString());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/address/StreetAddress.h>
@@ -56,11 +62,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShippingAddressesView.h"
+        #include "views/generic/address/shipping/ShippingAddressesView.h"
 
 class ValidationView: public ShippingAddressesView, public ValidationComponentInterface {
 
-public: ValidationView(TransformInfoInterface transformInfoInterface) : ShippingAddressesView(transformInfoInterface){
+public: ValidationView(TransformInfoInterface* transformInfoInterface) : ShippingAddressesView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -70,11 +76,11 @@ public: ValidationView(TransformInfoInterface transformInfoInterface) : Shipping
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
-    ShippingAddressesEntity billingAddressesEntity = ShippingAddressesEntity(this->getWeblisketSession().getUserName());;
+    ShippingAddressesEntity* billingAddressesEntity = new ShippingAddressesEntity(this->getWeblisketSession()->getUserName());;
     
-this->streetAddressList= billingAddressesEntity.get();
+this->streetAddressList= billingAddressesEntity->get();
     
 
                         if(this->streetAddressList == 
@@ -102,10 +108,10 @@ this->streetAddressList= billingAddressesEntity.get();
     int32_t index = 0;index < size; index++)
         {
 
-    StreetAddress streetAddress = streetAddressList.get(index);;
+    StreetAddress* streetAddress = dynamic_cast<StreetAddress*>(streetAddressList.get(index));;
     
 
-                        if(streetAddress.isValid() == Boolean::FALSE)
+                        if(streetAddress->isValid() == Boolean::FALSE)
                         
                                     {
                                     streetAddressList.remove(streetAddress);
@@ -147,7 +153,7 @@ this->streetAddressList= billingAddressesEntity.get();
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -157,7 +163,7 @@ this->streetAddressList= billingAddressesEntity.get();
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -65,11 +71,11 @@
         
 class BasicMenuInputProcessor: public PlayerGameInput, public BaseMotionGestureEventListener {
 
-    public: const BasicArrayList motionGestureEventList = BasicArrayListD();
+    public: BasicArrayList* motionGestureEventList = new BasicArrayListD();
 
-    private: Canvas canvas = NullCanvas::NULL_CANVAS;
+    private: Canvas* canvas = NullCanvas::NULL_CANVAS;
 
-protected: BasicMenuInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, Canvas gameCanvas) : PlayerGameInput(gameKeyEventList, BasicArrayListD(), playerInputId){
+protected: BasicMenuInputProcessor(BasicArrayList* gameKeyEventList, int32_t playerInputId, Canvas* gameCanvas) : PlayerGameInput(gameKeyEventList, new BasicArrayListD(), playerInputId){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -81,28 +87,28 @@ this->canvas= gameCanvas;
 }
 
 
-    public: void onMotionGestureEvent(MotionGestureEvent motionGestureEvent){
-this->motionGestureEventList.add(motionGestureEvent);
+    public: void onMotionGestureEvent(MotionGestureEvent* motionGestureEvent){
+this->motionGestureEventList->add(motionGestureEvent);
     
 }
 
 
-    public: void onScrolledMotionGestureEvent(MotionGestureEvent motionGestureEvent){
+    public: void onScrolledMotionGestureEvent(MotionGestureEvent* motionGestureEvent){
 }
 
 
-    private: void setCanvas(MyCanvas canvas){
+    private: void setCanvas(MyCanvas* canvas){
 this->canvas= canvas;
     
 }
 
 
-    protected: MyCanvas getCanvas(){
+    protected: MyCanvas* getCanvas(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->canvas;
+                        return dynamic_cast<MyCanvas*>(this->canvas);
     
 }
 

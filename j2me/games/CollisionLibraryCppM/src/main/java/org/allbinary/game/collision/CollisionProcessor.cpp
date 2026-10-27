@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/layer/AllBinaryLayer.h>
@@ -32,7 +38,7 @@ class CollisionProcessor
             : public Object
          {
 
-    public: bool isCollision(AllBinaryLayer myLayer, AllBinaryLayer myLayer2){
+    public: bool isCollision(AllBinaryLayer* myLayer, AllBinaryLayer* myLayer2){
 
 
 

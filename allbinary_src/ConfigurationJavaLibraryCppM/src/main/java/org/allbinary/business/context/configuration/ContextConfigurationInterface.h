@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationInterface.h>
 
       
@@ -45,9 +51,9 @@
         
 class ContextConfigurationInterface {
 
-    EmailServerConfigurationInterface getEmailServerConfigurationInterface();
+    public: virtual EmailServerConfigurationInterface* getEmailServerConfigurationInterface() = 0;
 
-    void setEmailServerConfigurationInterface(EmailServerConfigurationInterface emailServerConfigurationInterface);
+    public: virtual void setEmailServerConfigurationInterface(EmailServerConfigurationInterface* emailServerConfigurationInterface) = 0;
 
 };
 

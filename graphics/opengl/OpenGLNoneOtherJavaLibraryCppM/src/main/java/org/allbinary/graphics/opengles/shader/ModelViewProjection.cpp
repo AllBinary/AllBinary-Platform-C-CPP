@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
@@ -48,9 +54,9 @@ class ModelViewProjection
             : public Object
          {
 
-    private: static ModelViewProjection instance() { return ModelViewProjection(); }
+    private: static ModelViewProjection* instance() { static std::unique_ptr<ModelViewProjection> value(new ModelViewProjection()); return value.get(); }
 
-    public: static ModelViewProjection getInstance(){
+    public: static ModelViewProjection* getInstance(){
 
 
 
@@ -65,7 +71,7 @@ class ModelViewProjection
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance().NULL_FLOAT_ARRAY;
+                        return NullUtil::getInstance()->NULL_FLOAT_ARRAY;
     
 }
 

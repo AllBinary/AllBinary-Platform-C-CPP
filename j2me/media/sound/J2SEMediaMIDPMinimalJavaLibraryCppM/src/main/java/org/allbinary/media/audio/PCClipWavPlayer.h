@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -100,20 +106,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicPlayer.h"
-#include "NullAudioFormat.h"
-#include "NullClip.h"
-#include "NullControl.h"
+        #include "org/allbinary/media/audio/BasicPlayer.h"
+#include "org/allbinary/media/audio/NullAudioFormat.h"
+#include "org/allbinary/media/audio/NullClip.h"
+#include "org/allbinary/media/audio/NullControl.h"
 
 class PCClipWavPlayer: public BasicPlayer, public LineListener {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: AudioInputStream audioInputStream;
+    private: AudioInputStream* audioInputStream;
 
-    private: Clip clip;
+    private: Clip* clip;
 
-public: PCClipWavPlayer(InputStream inputStream);
+public: PCClipWavPlayer(InputStream* inputStream);
 
     public: void close();
 
@@ -134,7 +140,7 @@ public: PCClipWavPlayer(InputStream inputStream);
 
                 //@Throws(Exception.constructor)
             
-    private: Clip create(AudioInputStream audioInputStream);
+    private: Clip* create(AudioInputStream* audioInputStream);
 
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -145,9 +151,9 @@ public: PCClipWavPlayer(InputStream inputStream);
             
     private: void stop2();
 
-    public: Control getControl(std::string controlType);
+    public: Control* getControl(std::string controlType);
 
-    public: std::vector<Control> getControls();
+    public: std::vector<Control*> getControls();
 
     public: void setVolume(int32_t leftVolume, int32_t rightVolume);
 
@@ -157,7 +163,7 @@ public: PCClipWavPlayer(InputStream inputStream);
 
     public: int64_t getDuration();
 
-    public: void update(LineEvent event);
+    public: void update(LineEvent* event);
 
 };
 

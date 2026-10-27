@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Integer.h"
         
 #include <org/allbinary/android/input/motion/GameInputMotionInfo.h>
@@ -44,9 +50,9 @@
         
 class GameInputMotionInfoAPI5: public GameInputMotionInfo {
 
-    private: static GameInputMotionInfoAPI5 instance() { return GameInputMotionInfoAPI5(); }
+    private: static GameInputMotionInfoAPI5* instance() { static std::unique_ptr<GameInputMotionInfoAPI5> value(new GameInputMotionInfoAPI5()); return value.get(); }
 
-    public: static GameInputMotionInfoAPI5 getInstance(){
+    public: static GameInputMotionInfoAPI5* getInstance(){
 
 
 
@@ -56,7 +62,7 @@ class GameInputMotionInfoAPI5: public GameInputMotionInfo {
 }
 
 
-private: GameInputMotionInfoAPI5() : GameInputMotionInfo(Integer::MAX_VALUE, 10){
+private: GameInputMotionInfoAPI5() : GameInputMotionInfo(Integer.MAX_VALUE, 10){
 
                         //super/this constructor call is in the constructor initializer list.
                     

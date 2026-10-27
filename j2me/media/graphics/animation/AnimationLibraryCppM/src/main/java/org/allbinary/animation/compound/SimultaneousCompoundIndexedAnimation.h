@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -61,9 +67,9 @@
         
 class SimultaneousCompoundIndexedAnimation: public IndexedAnimation {
 
-    private: std::vector<Animation> animationInterfaceArray;
+    private: std::vector<Animation*> animationInterfaceArray;
 
-public: SimultaneousCompoundIndexedAnimation(std::vector<Animation> animationInterfaceArray, AnimationBehavior animationBehavior);
+public: SimultaneousCompoundIndexedAnimation(std::vector<Animation*> animationInterfaceArray, AnimationBehavior* animationBehavior);
 
     public: void setFrame(int32_t frameIndex);
 
@@ -81,13 +87,13 @@ public: SimultaneousCompoundIndexedAnimation(std::vector<Animation> animationInt
             
     public: void nextFrame();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
-    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
+    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z);
 
-    public: std::vector<Animation> getAnimationInterfaceArray();
+    public: std::vector<Animation*> getAnimationInterfaceArray();
 
-    public: void setAnimationInterfaceArray(std::vector<Animation> animationInterfaceArray);
+    public: void setAnimationInterfaceArray(std::vector<Animation*> animationInterfaceArray);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSPAINTABLECOMPOSITE_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSPAINTABLECOMPOSITE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/CompleteMotionGestureInputEvent.h>
@@ -95,25 +101,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchButtonsMappingPaintable.h"
+        #include "org/allbinary/input/motion/button/TouchButtonsMappingPaintable.h"
 
 class TouchButtonsPaintableComposite: public ProcessPaintable, public CompleteMotionGestureInputEventListenerInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: InputMappingInterface inputMappingInterface;
+    private: InputMappingInterface* inputMappingInterface;
 
-    protected: TouchButtonsMappingPaintable touchButtonsPaintable;
+    protected: TouchButtonsMappingPaintable* touchButtonsPaintable;
 
-    private: TimeDelayHelper timeHelper = TimeDelayHelper(250);
+    private: TimeDelayHelper* timeHelper = new TimeDelayHelper(250);
 
     private: bool released = true;
 
-public: TouchButtonsPaintableComposite(InputMappingInterface inputMappingInterface, BasicColor basicColor);
+public: TouchButtonsPaintableComposite(InputMappingInterface* inputMappingInterface, BasicColor* basicColor);
 
-    public: void onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject* eventObject);
 
     private: const std::string METHOD_NAME = "onCompleteMotionGestureInputEvent";
 
@@ -123,7 +129,7 @@ public: TouchButtonsPaintableComposite(InputMappingInterface inputMappingInterfa
 
     private: const std::string IGNORE = "Ignoring: Until Released";
 
-    public: void onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent completeMotionGestureInputEvent);
+    public: void onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent* completeMotionGestureInputEvent);
 
     public: void process();
 

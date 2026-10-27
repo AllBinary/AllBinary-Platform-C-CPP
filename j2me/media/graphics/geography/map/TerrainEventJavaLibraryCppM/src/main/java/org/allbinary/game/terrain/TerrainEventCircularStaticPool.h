@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTCIRCULARSTATICPOOL_H
         #define ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTCIRCULARSTATICPOOL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,26 +52,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TerrainEventFactory.h"
-#include "TerrainEvent.h"
-#include "BasicTerrainInfo.h"
+        #include "org/allbinary/game/terrain/TerrainEventFactory.h"
+#include "org/allbinary/game/terrain/TerrainEvent.h"
+#include "org/allbinary/game/terrain/BasicTerrainInfo.h"
 
 class TerrainEventCircularStaticPool
             : public Object
          {
 
-    private: static TerrainEventCircularStaticPool instance() { return TerrainEventCircularStaticPool(); }
+    private: static TerrainEventCircularStaticPool* instance() { static std::unique_ptr<TerrainEventCircularStaticPool> value(new TerrainEventCircularStaticPool()); return value.get(); }
 
-    public: static TerrainEventCircularStaticPool getInstance();
+    public: static TerrainEventCircularStaticPool* getInstance();
 
-    private: AllBinaryEventCircularPool EVENT_POOL = AllBinaryEventCircularPool(20);
+    private: AllBinaryEventCircularPool* EVENT_POOL = new AllBinaryEventCircularPool(20);
 
     public: void init();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: TerrainEvent getNext(BasicTerrainInfo basicTerrainInfo);
+    public: TerrainEvent* getNext(BasicTerrainInfo* basicTerrainInfo);
 
 };
 

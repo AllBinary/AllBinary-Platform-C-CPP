@@ -21,6 +21,12 @@
         #ifndef VIEWS_GENERIC_INVENTORY_INVENTORYVIEW_H
         #define VIEWS_GENERIC_INVENTORY_INVENTORYVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -94,13 +100,13 @@
         
 class InventoryView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: InventoryView(TransformInfoInterface transformInfoInterface);
+public: InventoryView(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
     public: void addDomNodeInterfaces();
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,20 +67,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ColorCacheableFactory.h"
+        #include "org/allbinary/graphics/color/ColorCacheableFactory.h"
 
 class ColorCacheFactory
             : public Object
          {
 
-    private: static AutomaticCacheInterface cacheInterface = 
+    private: static inline AutomaticCacheInterface* cacheInterface = 
                 nullptr
             ;
 
                     static int32_t initResult;
                 static int32_t init();
             
-    public: static AutomaticCacheInterface getInstance();
+    public: static AutomaticCacheInterface* getInstance();
 
 private: ColorCacheFactory();
 

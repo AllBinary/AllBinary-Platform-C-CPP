@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -49,29 +57,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageArrayBaseRotationAnimation.h"
-#include "ImageArrayRotationAnimationInfo.h"
+        #include "org/allbinary/animation/image/ImageArrayBaseRotationAnimation.h"
+#include "org/allbinary/animation/image/ImageArrayRotationAnimationInfo.h"
 
 class ImageArrayRotationAnimation: public ImageArrayBaseRotationAnimation {
 
                 //@Throws(Exception.constructor)
             
-    protected: static ImageArrayRotationAnimation createAnimation(Object* anyType, AnimationBehavior animationBehavior){
+    protected: static ImageArrayRotationAnimation* createAnimation(Object* anyType, AnimationBehavior* animationBehavior){
 
-    ImageArrayRotationAnimationInfo imageRotationAnimationInfo = *dynamic_cast<ImageArrayRotationAnimationInfo*>(anyType);;
+    ImageArrayRotationAnimationInfo* imageRotationAnimationInfo = dynamic_cast<ImageArrayRotationAnimationInfo*>(anyType);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageArrayRotationAnimation(imageRotationAnimationInfo.getImageArray(), imageRotationAnimationInfo.getAngleInfoP(), imageRotationAnimationInfo.getTotalAngle(), animationBehavior);
+                        return new ImageArrayRotationAnimation(imageRotationAnimationInfo->getImageArray(), imageRotationAnimationInfo->getAngleInfoP(), imageRotationAnimationInfo->getTotalAngle(), animationBehavior);
     
 }
 
 
     private: int32_t expectedTotalFrames= 0;
 
-public: ImageArrayRotationAnimation(std::vector<Image> imageArray, AngleInfo angleInfo, int32_t totalAngle, AnimationBehavior animationBehavior) : ImageArrayBaseRotationAnimation(imageArray, angleInfo, animationBehavior){
+public: ImageArrayRotationAnimation(std::vector<Image*> imageArray, AngleInfo* angleInfo, int32_t totalAngle, AnimationBehavior* animationBehavior) : ImageArrayBaseRotationAnimation(imageArray, angleInfo, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,8 +93,8 @@ this->init(imageArray, angleInfo, totalAngle);
 
                 //@Throws(Exception.constructor)
             
-    private: void init(std::vector<Image> imageArray, AngleInfo angleInfo, int32_t totalAngle){
-this->expectedTotalFrames= totalAngle /this->angleInfo.getAngleIncrementInfo().getAngleIncrement();
+    private: void init(std::vector<Image*> imageArray, AngleInfo* angleInfo, int32_t totalAngle){
+this->expectedTotalFrames= totalAngle /this->angleInfo.getAngleIncrementInfo()->getAngleIncrement();
     
 this->angleInfo.adjustAngle(0);
     
@@ -97,7 +105,7 @@ this->angleInfo.adjustAngle(0);
                                     
 
 
-                            throw Exception("Wrong Number of Frames");
+                            throw new Exception("Wrong Number of Frames");
                     
 
                                     }
@@ -105,7 +113,7 @@ this->angleInfo.adjustAngle(0);
 }
 
 
-    public: void setImageArray(std::vector<Image> imageArray){
+    public: void setImageArray(std::vector<Image*> imageArray){
 super.setImageArray(imageArray);
     
 this->angleInfo.adjustAngle(0);

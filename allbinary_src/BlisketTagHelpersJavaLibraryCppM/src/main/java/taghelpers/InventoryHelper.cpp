@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -98,47 +104,47 @@
         
 class InventoryHelper: public TagHelper {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
-    private: WeblisketSession weblisketSession;
+    private: WeblisketSession* weblisketSession;
 
-    private: HttpServletResponse response;
+    private: HttpServletResponse* response;
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
-    private: StreetAddress streetAddress;
+    private: StreetAddress* streetAddress;
 
     private: std::string id;
 
-    private: SearchRequest searchRequest;
+    private: SearchRequest* searchRequest;
 
-public: InventoryHelper(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
-this->response= pageContext.getResponse();
+public: InventoryHelper(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
+this->response= dynamic_cast<HttpServletResponse*>(pageContext->getResponse());
     
-this->request= pageContext.getRequest();
-    
-
-    std::string storeName = propertiesHashMap.get(StoreFrontData::getInstance().NAME);;
+this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
     
 
-    std::string xslFile = propertiesHashMap.get(TransformInfoData::getInstance().TEMPLATEFILENAME);;
+    std::string storeName = propertiesHashMap->get(StoreFrontData::getInstance()->NAME);;
+    
+
+    std::string xslFile = propertiesHashMap->get(TransformInfoData::getInstance()->TEMPLATEFILENAME);;
     
 
                         if(true)
                         
                                     {
                                     
-    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(storeName);;
+    StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(storeName);;
     
 
-    std::string contentType = AcceptableResponseGenerator::getInstance().get(this->request);;
+    std::string contentType = AcceptableResponseGenerator::getInstance()->get(this->request);;
     
 
-    SearchParams searchParams = SearchParams(this->request);;
+    SearchParams* searchParams = new SearchParams(this->request);;
     
-this->searchRequest= SearchRequest(storeFrontInterface, searchParams, xslFile, contentType, propertiesHashMap, pageContext);
+this->searchRequest= new SearchRequest(storeFrontInterface, searchParams, xslFile, contentType, propertiesHashMap, pageContext);
     
 
                                     }
@@ -149,7 +155,7 @@ this->getFormData();
 
 
     private: void getFormData(){
-this->id= this->request.getParameter(basicItemData.ID);
+this->id= this->request->getParameter(basicItemData->ID);
     
 }
 
@@ -158,16 +164,16 @@ this->id= this->request.getParameter(basicItemData.ID);
 
         try {
             
-    InventoryViewSearchInterface inventoryViewSearchInterface = InventoryViewFactory::getInstance(this->searchRequest);;
+    InventoryViewSearchInterface* inventoryViewSearchInterface = InventoryViewFactory::getInstance(this->searchRequest);;
     
 
-    std::string result = inventoryViewSearchInterface.getProduct(this->id);;
+    std::string result = inventoryViewSearchInterface->getProduct(this->id);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF("Successfull Inventory View Summary", this, "viewSummary()");
+                                    this->logUtil->putF("Successfull Inventory View Summary", this, "viewSummary()");
     
 
                                     }
@@ -180,16 +186,16 @@ this->id= this->request.getParameter(basicItemData.ID);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to View Summary";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "viewSummary()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "viewSummary()", &e);
     
 
                                     }
@@ -209,13 +215,13 @@ this->id= this->request.getParameter(basicItemData.ID);
 
         try {
             
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
 
-    std::string keywords = this->searchRequest.getParams().get().get(basicItemData.KEYWORDS);;
+    std::string keywords = this->searchRequest->getParams()->get()->get(basicItemData->KEYWORDS);;
     
 
-                        if(false || keywords.compare(stringUtil.EMPTY_STRING) == 0)
+                        if(false || keywords.compare(stringUtil->EMPTY_STRING) == 0)
                         
                                     {
                                     
@@ -228,16 +234,16 @@ this->id= this->request.getParameter(basicItemData.ID);
                                     }
                                 
 
-    InventoryViewSearchInterface inventoryViewSearchInterface = InventoryViewFactory::getInstance(this->searchRequest);;
+    InventoryViewSearchInterface* inventoryViewSearchInterface = InventoryViewFactory::getInstance(this->searchRequest);;
     
 
-    std::string result = inventoryViewSearchInterface.searchSingleDynamicPage();;
+    std::string result = inventoryViewSearchInterface->searchSingleDynamicPage();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF("Successful Inventory Dynamic Search", this, "searchSingleDynamicPage()");
+                                    this->logUtil->putF("Successful Inventory Dynamic Search", this, "searchSingleDynamicPage()");
     
 
                                     }
@@ -250,16 +256,16 @@ this->id= this->request.getParameter(basicItemData.ID);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to search Inventory by keyword";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "searchSingleDynamicPage()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "searchSingleDynamicPage()", &e);
     
 
                                     }

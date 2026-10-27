@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
@@ -50,13 +56,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CompoundTransform.h"
+        #include "views/compound/CompoundTransform.h"
 
 class CompoundComponentView: public HttpStoreComponentView {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: CompoundComponentView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+public: CompoundComponentView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,7 +81,7 @@ public: CompoundComponentView(TransformInfoInterface transformInfoInterface) : H
     std::string success = XmlDocumentHelper::toString(this->getDoc());;
     
 
-    std::string result = CompoundTransform(this->getTransformInfoInterface()).translate(success);;
+    std::string result = (new CompoundTransform(this->getTransformInfoInterface()))->translate(success);;
     
 
 
@@ -85,13 +91,13 @@ public: CompoundComponentView(TransformInfoInterface transformInfoInterface) : H
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }

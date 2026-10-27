@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_BASICTEXTEMAILHELPER_H
         #define ADMIN_TAGHELPERS_BASICTEXTEMAILHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -71,17 +77,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TagHelper.h"
+        #include "admin/taghelpers/TagHelper.h"
 
 class BasicTextEmailHelper: public TagHelper {
 
-    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: HashMap<Object*, Object*> hashMap;
+    private: HashMap<Object*, Object*>* hashMap;
 
-    private: PageContext pageContext;
+    private: PageContext* pageContext;
 
-public: BasicTextEmailHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: BasicTextEmailHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
                 //@Throws(Exception.constructor)
             

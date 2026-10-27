@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/ClassLoader.h"
@@ -58,16 +64,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AppUrlGlobals.h"
-#include "URLGLOBALS.h"
+        #include "org/allbinary/globals/AppUrlGlobals.h"
+#include "org/allbinary/globals/URLGLOBALS.h"
 
 class Globals
             : public Object
          {
 
-    private: static Globals instance() { return Globals(); }
+    private: static Globals* instance() { static std::unique_ptr<Globals> value(new Globals()); return value.get(); }
 
-    public: static Globals getInstance(){
+    public: static Globals* getInstance(){
 
 
 
@@ -77,71 +83,71 @@ class Globals
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: Globals(){
 }
 
 
-    public: void init(ClassLoader classLoader, std::string pathString){
+    public: void init(ClassLoader* classLoader, std::string pathString){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-    AppUrlGlobals appUrlGlobals = AppUrlGlobals();;
+    AppUrlGlobals* appUrlGlobals = new AppUrlGlobals();;
     
-appUrlGlobals.setWebappPath(pathString);
+appUrlGlobals->setWebappPath(pathString);
     
 URLGLOBALS::init(appUrlGlobals);
     
 WebappClassLoaderInfo::setLoader(classLoader);
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Setting Up AllBinary System Configuration Args: ");
+stringBuffer->append("Setting Up AllBinary System Configuration Args: ");
     
-stringBuffer.append(pathString);
+stringBuffer->append(pathString);
     
-stringBuffer.append(" ClassLoader: ");
+stringBuffer->append(" ClassLoader: ");
     
-stringBuffer.append(classLoader.constructor.name.toString());
+stringBuffer->append(classLoader->getClass()->getName());
     
-this->logUtil.putF(stringBuffer.toString(), this, commonStrings.INIT);
-    
-
-    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
+this->logUtil->putF(stringBuffer->toString(), this, commonStrings->INIT);
     
 
-                        if(stringValidationUtil.isEmpty(pathString))
+    StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
+    
+
+                        if(stringValidationUtil->isEmpty(pathString))
                         
                                     {
-                                    stringBuffer.delete(0, stringBuffer.length());
+                                    stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append("No Path Provided. Using Process Path: ");
+stringBuffer->append("No Path Provided. Using Process Path: ");
     
-stringBuffer.append(pathString);
+stringBuffer->append(pathString);
     
-stringBuffer.append(CommonSeps::getInstance().SPACE);
+stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-stringBuffer.append(CommonSeps::getInstance().EQUALS);
+stringBuffer->append(CommonSeps::getInstance()->EQUALS);
     
-stringBuffer.append(CommonSeps::getInstance().SPACE);
+stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-stringBuffer.append(URLGLOBALS::getWebappPath());
+stringBuffer->append(URLGLOBALS::getWebappPath());
     
-this->logUtil.putF(stringBuffer.toString(), this, commonStrings.INIT);
+this->logUtil->putF(stringBuffer->toString(), this, commonStrings->INIT);
     
 
                                     }
                                 
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append("Webapp Path Set To: ");
+stringBuffer->append("Webapp Path Set To: ");
     
-stringBuffer.append(URLGLOBALS::getWebappPath());
+stringBuffer->append(URLGLOBALS::getWebappPath());
     
-this->logUtil.putF(stringBuffer.toString(), this, commonStrings.INIT);
+this->logUtil->putF(stringBuffer->toString(), this, commonStrings->INIT);
     
 }
 

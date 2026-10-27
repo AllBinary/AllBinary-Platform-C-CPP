@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/canvas/Processor.h>
@@ -63,31 +69,31 @@ class AccelerometerSensorUpdateProcessor: public Processor {
             
     public: void process(){
 
-    SensorFeatureFactory sensorFeatureFactory = SensorFeatureFactory::getInstance();;
+    SensorFeatureFactory* sensorFeatureFactory = SensorFeatureFactory::getInstance();;
     
 
-                        if(Features::getInstance().isFeature(sensorFeatureFactory.ORIENTATION_SENSORS))
+                        if(Features::getInstance()->isFeature(sensorFeatureFactory->ORIENTATION_SENSORS))
                         
                                     {
-                                    AccelerometerSensorFactory::getInstance().setCompleteMotionGestureInputEventListener(SingleKeyPressGameKeyFromMotionGestureEventListener());
-    
-
-                                    }
-                                
-                             else 
-                        if(Features::getInstance().isFeature(sensorFeatureFactory.SIMULATED_ORIENTATION_SENSORS))
-                        
-                                    {
-                                    AccelerometerSensorFactory::getInstance().setCompleteMotionGestureInputEventListener(SingleKeyPressGameKeyFromMotionGestureEventListener());
+                                    AccelerometerSensorFactory::getInstance()->setCompleteMotionGestureInputEventListener(new SingleKeyPressGameKeyFromMotionGestureEventListener());
     
 
                                     }
                                 
                              else 
-                        if(Features::getInstance().isFeature(sensorFeatureFactory.NO_ORIENTATION))
+                        if(Features::getInstance()->isFeature(sensorFeatureFactory->SIMULATED_ORIENTATION_SENSORS))
                         
                                     {
-                                    AccelerometerSensorFactory::getInstance().setCompleteMotionGestureInputEventListener(NoCompleteMotionGestureInputEventListener::getInstance());
+                                    AccelerometerSensorFactory::getInstance()->setCompleteMotionGestureInputEventListener(new SingleKeyPressGameKeyFromMotionGestureEventListener());
+    
+
+                                    }
+                                
+                             else 
+                        if(Features::getInstance()->isFeature(sensorFeatureFactory->NO_ORIENTATION))
+                        
+                                    {
+                                    AccelerometerSensorFactory::getInstance()->setCompleteMotionGestureInputEventListener(NoCompleteMotionGestureInputEventListener::getInstance());
     
 
                                     }
@@ -96,7 +102,7 @@ class AccelerometerSensorUpdateProcessor: public Processor {
                             
 
 
-                            throw Exception("Sensor Feature Not Set");
+                            throw new Exception("Sensor Feature Not Set");
                     
 
                         }

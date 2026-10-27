@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSIONDATA_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSIONDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,21 +52,21 @@ class WeblisketSessionData
             : public Object
          {
 
-    public: static const std::string INVALIDATESESSION = "SESSION_INVALIDATE_SESSION";
+    public: static inline const std::string INVALIDATESESSION = "SESSION_INVALIDATE_SESSION";
 
-    public: static const std::string ATTEMPTS = "SESSION_ATTEMPTS";
+    public: static inline const std::string ATTEMPTS = "SESSION_ATTEMPTS";
 
-    public: static const std::string TIMEOUT = "SESSION_TIMEOUT";
+    public: static inline const std::string TIMEOUT = "SESSION_TIMEOUT";
 
-    public: static const std::string REMOVABLEUSERNAME = "SESSION_REMOVABLE_USER_NAME";
+    public: static inline const std::string REMOVABLEUSERNAME = "SESSION_REMOVABLE_USER_NAME";
 
-    public: static const std::string REMOVABLEPASSWORD = "SESSION_REMOVABLE_PASSWORD";
+    public: static inline const std::string REMOVABLEPASSWORD = "SESSION_REMOVABLE_PASSWORD";
 
-    public: static const std::string REMOVABLENEWPASSWORD = "SESSION_REMOVABLE_NEW_PASSWORD";
+    public: static inline const std::string REMOVABLENEWPASSWORD = "SESSION_REMOVABLE_NEW_PASSWORD";
 
-    public: static const std::string REMOVABLEREENTERNEWPASSWORD = "SESSION_REMOVABLE_REENTER_NEW_PASSWORD";
+    public: static inline const std::string REMOVABLEREENTERNEWPASSWORD = "SESSION_REMOVABLE_REENTER_NEW_PASSWORD";
 
-    public: static const std::string AUTHENTICATED = "SESSION_AUTHENTICATED";
+    public: static inline const std::string AUTHENTICATED = "SESSION_AUTHENTICATED";
 
 public: WeblisketSessionData();
 

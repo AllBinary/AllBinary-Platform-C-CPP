@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_ANALOGCONTROLLERHELPER_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_ANALOGCONTROLLERHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,7 +55,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnalogControllerConfigurationFactory.h"
+        #include "org/allbinary/android/input/motion/AnalogControllerConfigurationFactory.h"
 
 class AnalogControllerHelper
             : public Object
@@ -59,31 +65,31 @@ class AnalogControllerHelper
 
 public: AnalogControllerHelper(int32_t reduceTimeFactor);
 
-    private: const int32_t SCALE_VALUE = AnalogControllerConfigurationFactory::getInstance().SCALE_VALUE;
+    private: const int32_t SCALE_VALUE = AnalogControllerConfigurationFactory::getInstance()->SCALE_VALUE;
 
-    private: const TimeDelayHelper rightTimeElapsedHelper = TimeDelayHelper(0);
+    private: TimeDelayHelper* rightTimeElapsedHelper = new TimeDelayHelper(0);
 
-    private: const TimeDelayHelper leftTimeElapsedHelper = TimeDelayHelper(0);
+    private: TimeDelayHelper* leftTimeElapsedHelper = new TimeDelayHelper(0);
 
-    private: const TimeDelayHelper downTimeElapsedHelper = TimeDelayHelper(0);
+    private: TimeDelayHelper* downTimeElapsedHelper = new TimeDelayHelper(0);
 
-    private: const TimeDelayHelper upTimeElapsedHelper = TimeDelayHelper(0);
-
-                //@Throws(Exception.constructor)
-            
-    public: void right(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer, int32_t xAnalogValue);
+    private: TimeDelayHelper* upTimeElapsedHelper = new TimeDelayHelper(0);
 
                 //@Throws(Exception.constructor)
             
-    public: void left(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer, int32_t xAnalogValue);
+    public: void right(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer, int32_t xAnalogValue);
 
                 //@Throws(Exception.constructor)
             
-    public: void up(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer, int32_t xAnalogValue);
+    public: void left(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer, int32_t xAnalogValue);
 
                 //@Throws(Exception.constructor)
             
-    public: void down(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer, int32_t xAnalogValue);
+    public: void up(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer, int32_t xAnalogValue);
+
+                //@Throws(Exception.constructor)
+            
+    public: void down(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer, int32_t xAnalogValue);
 
 };
 

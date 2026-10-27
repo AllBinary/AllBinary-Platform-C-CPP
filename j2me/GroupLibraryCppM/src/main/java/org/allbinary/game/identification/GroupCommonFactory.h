@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPCOMMONFACTORY_H
         #define ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPCOMMONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -54,11 +60,11 @@ class GroupCommonFactory
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static GroupCommonFactory getInstance();
+    public: static GroupCommonFactory* getInstance();
 
-    public: const Integer ID = SmallIntegerSingletonFactory::getInstance().getAt(10);
+    public: int32_t ID = SmallIntegerSingletonFactory::getInstance()->getAt(10);
 
     public: const std::string GROUP_NAME_LABEL = "Group Name: ";
 

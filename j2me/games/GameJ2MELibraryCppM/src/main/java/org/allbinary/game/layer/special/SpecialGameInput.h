@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALGAMEINPUT_H
         #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALGAMEINPUT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,11 +58,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SpecialGameInputInterface.h"
+        #include "org/allbinary/game/layer/special/SpecialGameInputInterface.h"
 
 class SpecialGameInput
             : public Object
-        : public SpecialGameInputInterface {
+        , public SpecialGameInputInterface {
 
                 //@Throws(Exception.constructor)
             
@@ -84,31 +90,31 @@ class SpecialGameInput
 
                 //@Throws(Exception.constructor)
             
-    public: void fire(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent);
+    public: void fire(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
 
                 //@Throws(Exception.constructor)
             
-    public: void special1(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent);
+    public: void special1(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
 
                 //@Throws(Exception.constructor)
             
-    public: void special2(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent);
+    public: void special2(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
 
                 //@Throws(Exception.constructor)
             
-    public: void special3(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent);
+    public: void special3(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
 
                 //@Throws(Exception.constructor)
             
-    public: void special4(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent);
+    public: void special4(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
 
                 //@Throws(Exception.constructor)
             
-    public: void special5(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent);
+    public: void special5(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: void paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics* graphics);
 
 };
 

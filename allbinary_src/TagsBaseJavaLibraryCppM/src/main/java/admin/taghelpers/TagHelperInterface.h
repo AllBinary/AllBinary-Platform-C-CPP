@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_TAGHELPERINTERFACE_H
         #define ADMIN_TAGHELPERS_TAGHELPERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 

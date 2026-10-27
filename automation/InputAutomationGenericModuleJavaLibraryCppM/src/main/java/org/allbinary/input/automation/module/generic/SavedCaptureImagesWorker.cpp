@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -99,22 +105,22 @@
         
 class SavedCaptureImagesWorker: public BasicEventHandler, public CaptureWorkerInterface {
 
-    private: static int64_t index;
+    private: static inline int64_t index;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: bool running= false;
 
-    private: ScreenScavangerRobot screenScavangerRobot;
+    private: ScreenScavangerRobot* screenScavangerRobot;
 
-    private: SavedCaptureGenericProfileDataWorkerType savedCaptureGenericProfileDataWorkerType;
+    private: SavedCaptureGenericProfileDataWorkerType* savedCaptureGenericProfileDataWorkerType;
 
-public: SavedCaptureImagesWorker(SavedCaptureGenericProfileDataWorkerType savedCaptureGenericProfileDataWorkerType){
+public: SavedCaptureImagesWorker(SavedCaptureGenericProfileDataWorkerType* savedCaptureGenericProfileDataWorkerType){
 this->savedCaptureGenericProfileDataWorkerType= savedCaptureGenericProfileDataWorkerType;
     
-this->screenScavangerRobot= ScreenScavangerRobot();
+this->screenScavangerRobot= new ScreenScavangerRobot();
     
 SavedCaptureImagesWorker::index= ProcessingFrameIndexFactory::next();
     
@@ -123,7 +129,7 @@ SavedCaptureImagesWorker::index= ProcessingFrameIndexFactory::next();
 
                 //@Throws(Exception.constructor)
             
-    public: void setThread(Thread thread){
+    public: void setThread(Thread* thread){
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -148,51 +154,51 @@ this->running= running;
     public: void run(){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.RUN);
+            this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->RUN);
     
 this->setRunning(true);
     
 
-    TimeDelayHelper timeHelper = TimeDelayHelper(1000);;
+    TimeDelayHelper* timeHelper = new TimeDelayHelper(1000);;
     
 
         while(this->isRunning())
         {
-timeHelper.setStartTimeTNT();
+timeHelper->setStartTimeTNT();
     
 
-    Long frame = Long(index);;
+    int64_t frame = int64_t(index);;
     
 
-    StringMaker filePathStringBuffer = StringMaker();;
+    StringMaker* filePathStringBuffer = new StringMaker();;
     
-filePathStringBuffer.append(this->savedCaptureGenericProfileDataWorkerType.getPath());
+filePathStringBuffer->append(this->savedCaptureGenericProfileDataWorkerType->getPath());
     
-filePathStringBuffer.append(LongUtil::fillIn(frame.toString()));
+filePathStringBuffer->append(LongUtil::fillIn(frame.toString()));
     
-filePathStringBuffer.append(MediaDataFactory::getInstance().JPG.getExtension());
-    
-
-    std::string filePath = filePathStringBuffer.toString();;
-    
-this->logUtil.putF("Loading Image File Path: " +filePath, this, this->commonStrings.RUN);
+filePathStringBuffer->append(MediaDataFactory::getInstance()->JPG.getExtension());
     
 
-    File file = File(filePath);;
+    std::string filePath = filePathStringBuffer->toString();;
+    
+this->logUtil->putF("Loading Image File Path: " +filePath, this, this->commonStrings->RUN);
     
 
-                        if(file.isFile())
+    File* file = new File(filePath);;
+    
+
+                        if(file->isFile())
                         
                                     {
                                     
-    BufferedImage bufferedImage = ImageIO::read(file);;
+    BufferedImage* bufferedImage = ImageIO::read(file);;
     
 SavedCaptureImagesWorker::index++;
     
-CapturedBufferedImagesCacheSingleton::getInstance().add(BufferedImageFrameCacheable(bufferedImage, frame));
+CapturedBufferedImagesCacheSingleton::getInstance()->add(new BufferedImageFrameCacheable(bufferedImage, frame));
     
 
-    CapturedImageWorkerResultsEvent capturedImageEvent = CapturedImageWorkerResultsEvent(this, frame, bufferedImage);;
+    CapturedImageWorkerResultsEvent* capturedImageEvent = new CapturedImageWorkerResultsEvent(this, frame, bufferedImage);;
     
 this->fireEvent(capturedImageEvent);
     
@@ -200,24 +206,24 @@ this->fireEvent(capturedImageEvent);
                                     }
                                 
                         else {
-                            this->logUtil.putF("Could Not Load File: " +filePath, this, this->commonStrings.RUN);
+                            this->logUtil->putF("Could Not Load File: " +filePath, this, this->commonStrings->RUN);
     
 
                         }
                             
-this->logUtil.putF(CommonLabels::getInstance().ELAPSED +timeHelper.getElapsedTNT(), this, this->commonStrings.RUN);
+this->logUtil->putF(CommonLabels::getInstance()->ELAPSED +timeHelper->getElapsedTNT(), this, this->commonStrings->RUN);
     
 this->setRunning(false);
     
 }
 
-this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.RUN);
+this->logUtil->putF(this->commonStrings->END, this, this->commonStrings->RUN);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RUN, &e);
     
 }
 

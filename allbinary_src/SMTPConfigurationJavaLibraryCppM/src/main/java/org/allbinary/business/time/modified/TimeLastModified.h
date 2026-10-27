@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_TIME_MODIFIED_TIMELASTMODIFIED_H
         #define ORG_ALLBINARY_BUSINESS_TIME_MODIFIED_TIMELASTMODIFIED_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/business/time/Time.h>
 
       

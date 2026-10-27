@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_IDENTIFIERINTERFACE_H
         #define ORG_ALLBINARY_GRAPHICS_IDENTIFIERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,7 +48,7 @@
         
 class IdentifierInterface {
 
-    int32_t getId();
+    public: virtual int32_t getId() = 0;
 
 };
 

@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_THRUSTAIVISITOR_H
         #define ORG_ALLBINARY_GAME_AG_AI_THRUSTAIVISITOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -62,9 +70,9 @@
         
 class ThrustAIVisitor: public Visitor {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const Boolean TRUE = BooleanFactory::getInstance().TRUE;
+    private: bool TRUE = BooleanFactory::getInstance()->TRUE;
 
 public: ThrustAIVisitor();
 

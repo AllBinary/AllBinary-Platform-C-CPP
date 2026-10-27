@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/identification/Group.h>
@@ -43,18 +49,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CapitalEventHandler.h"
+        #include "org/allbinary/game/layer/capital/event/CapitalEventHandler.h"
 
 class CapitalEventHandlerFactory
             : public Object
          {
 
-    private: static const std::vector<CapitalEventHandler> capitalEventHandlerArray;
+    private: static inline const std::vector<CapitalEventHandler*> capitalEventHandlerArray;
 
                     static int32_t initResult = CapitalEventHandlerFactory::init();
                 static int32_t init() { 
                     
-capitalEventHandlerArray= std::vector<CapitalEventHandler>(10);
+capitalEventHandlerArray= std::vector<CapitalEventHandler*>(10);
     
 
 
@@ -63,7 +69,7 @@ capitalEventHandlerArray= std::vector<CapitalEventHandler>(10);
                         for (
     int32_t index = CapitalEventHandlerFactory::capitalEventHandlerArray.size() -1;index >= 0; index--)
         {
-CapitalEventHandlerFactory::capitalEventHandlerArray[index]= CapitalEventHandler();
+CapitalEventHandlerFactory::capitalEventHandlerArray[index]= new CapitalEventHandler();
     
 }
 
@@ -72,12 +78,12 @@ CapitalEventHandlerFactory::capitalEventHandlerArray[index]= CapitalEventHandler
                     return 0;
                 }
             
-    public: static CapitalEventHandler getInstance(Group groupInterface){
+    public: static CapitalEventHandler* getInstance(Group* groupInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CapitalEventHandlerFactory::capitalEventHandlerArray[static_cast<int32_t>(groupInterface.getGroupId();)];
+                        return CapitalEventHandlerFactory::capitalEventHandlerArray[static_cast<int32_t>(groupInterface->getGroupId();)];
     
 }
 

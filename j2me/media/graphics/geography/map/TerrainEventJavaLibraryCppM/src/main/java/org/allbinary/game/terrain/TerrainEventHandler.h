@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTHANDLER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/StdUtil.h>
@@ -65,35 +73,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TerrainEventListener.h"
-#include "TerrainEvent.h"
-#include "TerrainEventListenerInterface.h"
+        #include "org/allbinary/game/terrain/TerrainEventListener.h"
+#include "org/allbinary/game/terrain/TerrainEvent.h"
+#include "org/allbinary/game/terrain/TerrainEventListenerInterface.h"
 
 class TerrainEventHandler: public BasicEventHandler {
 
-    private: static ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().NULL_TABLE;
+    private: static inline ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->NULL_TABLE;
 
     public: static void init();
 
-    public: static TerrainEventHandler getInstance(Object* anyType);
+    public: static TerrainEventHandler* getInstance(Object* anyType);
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: TerrainEventHandler();
 
-    public: void addListener(TerrainEventListener terrainEventListener);
+    public: void addListener(TerrainEventListener* terrainEventListener);
 
     public: void removeAllListeners();
 
-    public: void removeListener(EventListenerInterface eventListenerInterface);
+    public: void removeListener(EventListenerInterface* eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(AllBinaryEventObject eventObject);
+    public: void fireEvent(AllBinaryEventObject* eventObject);
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
 };
 

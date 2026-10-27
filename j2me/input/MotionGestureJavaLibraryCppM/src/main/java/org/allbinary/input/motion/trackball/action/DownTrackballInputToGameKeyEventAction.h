@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_TRACKBALL_ACTION_DOWNTRACKBALLINPUTTOGAMEKEYEVENTACTION_H
         #define ORG_ALLBINARY_INPUT_MOTION_TRACKBALL_ACTION_DOWNTRACKBALLINPUTTOGAMEKEYEVENTACTION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/game/input/PlatformInputMappingFactory.h>
 
       
@@ -54,9 +62,9 @@
         
 class DownTrackballInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static GameKeyCompleteMotionGestureInputEvent getInstance();
+    public: static GameKeyCompleteMotionGestureInputEvent* getInstance();
 
 private: DownTrackballInputToGameKeyEventAction();
 

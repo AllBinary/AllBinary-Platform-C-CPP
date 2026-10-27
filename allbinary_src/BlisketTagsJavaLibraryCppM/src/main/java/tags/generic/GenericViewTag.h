@@ -21,6 +21,12 @@
         #ifndef TAGS_GENERIC_GENERICVIEWTAG_H
         #define TAGS_GENERIC_GENERICVIEWTAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -51,7 +57,7 @@
         
 class GenericViewTag: public TransformTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string output;
 

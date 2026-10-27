@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_INTERFACES_HARDWARECOMPONENTINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_INTERFACES_HARDWARECOMPONENTINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,9 +48,9 @@
         
 class HardwareComponentInterface {
 
-    bool compareTo(HardwareComponentInterface componentInterface);
+    public: virtual bool compareTo(HardwareComponentInterface* componentInterface) = 0;
 
-    std::string toString();
+    public: virtual std::string toString() = 0;
 
 };
 

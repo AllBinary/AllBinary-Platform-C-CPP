@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_STATEPAINTABLEFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_PAINT_STATEPAINTABLEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,15 +47,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StatePaintable.h"
+        #include "org/allbinary/graphics/paint/StatePaintable.h"
 
 class StatePaintableFactory
             : public Object
          {
 
-    private: static StatePaintable instance() { return StatePaintable(); }
+    private: static StatePaintable* instance() { static std::unique_ptr<StatePaintable> value(new StatePaintable()); return value.get(); }
 
-    public: static StatePaintable getInstance();
+    public: static StatePaintable* getInstance();
 
 };
 

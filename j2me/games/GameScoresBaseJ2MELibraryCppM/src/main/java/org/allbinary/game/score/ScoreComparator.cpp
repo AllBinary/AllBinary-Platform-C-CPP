@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -68,9 +74,9 @@
         
 class ScoreComparator
             : public Object
-        : public RecordComparator {
+        , public RecordComparator {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: bool isHighestBest;
 
@@ -87,7 +93,7 @@ this->isHighestBest= isHighestBest;
                         //if statement needs to be on the same line and ternary does not work the same way.
                         return this->isHighestBest
                         ?       
-                                Long::MAX_VALUE
+                                Long.MAX_VALUE
                                 :
 
                             0;
@@ -99,16 +105,16 @@ this->isHighestBest= isHighestBest;
 
     public: int32_t compare(std::vector<int8_t> recordOne, std::vector<int8_t> recordTwo){
 
-    ByteArrayInputStream byteArrayInputStreamOne = ByteArrayInputStream(recordOne);;
+    ByteArrayInputStream* byteArrayInputStreamOne = new ByteArrayInputStream(recordOne);;
     
 
-    DataInputStream inputStreamOne = DataInputStream(byteArrayInputStreamOne);;
+    DataInputStream* inputStreamOne = new DataInputStream(byteArrayInputStreamOne);;
     
 
-    ByteArrayInputStream byteArrayInputStreamTwo = ByteArrayInputStream(recordTwo);;
+    ByteArrayInputStream* byteArrayInputStreamTwo = new ByteArrayInputStream(recordTwo);;
     
 
-    DataInputStream inputStreamTwo = DataInputStream(byteArrayInputStreamTwo);;
+    DataInputStream* inputStreamTwo = new DataInputStream(byteArrayInputStreamTwo);;
     
 
     int64_t scoreOne = 0;;
@@ -118,45 +124,45 @@ this->isHighestBest= isHighestBest;
     
 
         try {
-            inputStreamOne.readUTF();
+            inputStreamOne->readUTF();
     
-inputStreamTwo.readUTF();
+inputStreamTwo->readUTF();
     
-scoreOne= inputStreamOne.readLong();
+scoreOne= inputStreamOne->readLong();
     
-scoreTwo= inputStreamTwo.readLong();
+scoreTwo= inputStreamTwo->readLong();
     
 
                 //: 
-} catch(e) 
+} catch(EOFException& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, "compare", e);
+this->logUtil->put(commonStrings->EXCEPTION, this, "compare", &e);
     
 }
 
                 //: 
-/* catch(e) 
+ catch(IOException& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, "compare", e);
+this->logUtil->put(commonStrings->EXCEPTION, this, "compare", &e);
     
 }
-*/
+
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, "compare", e);
+this->logUtil->put(commonStrings->EXCEPTION, this, "compare", &e);
     
 }
-*/
+
 
                         if(this->isHighestBest)
                         

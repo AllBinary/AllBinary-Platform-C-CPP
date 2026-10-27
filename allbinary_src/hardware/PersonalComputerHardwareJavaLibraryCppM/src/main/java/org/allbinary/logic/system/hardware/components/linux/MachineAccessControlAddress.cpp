@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -50,13 +56,13 @@
         
 class MachineAccessControlAddress
             : public Object
-        : public HardwareComponentInterface, public MachineAccessControlAddressInterface {
+        , public HardwareComponentInterface, public MachineAccessControlAddressInterface {
 
 public: MachineAccessControlAddress(){
 }
 
 
-    public: bool compareTo(HardwareComponentInterface componentInterface){
+    public: bool compareTo(HardwareComponentInterface* componentInterface){
 
 
 
@@ -71,7 +77,7 @@ public: MachineAccessControlAddress(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 }
 

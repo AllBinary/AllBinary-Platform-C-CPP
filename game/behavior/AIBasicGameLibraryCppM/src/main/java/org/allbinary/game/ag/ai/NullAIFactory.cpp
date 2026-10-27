@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
@@ -53,30 +59,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NullAI.h"
+        #include "org/allbinary/game/ag/ai/NullAI.h"
 
 class NullAIFactory
             : public Object
-        : public ArtificialIntelligenceInterfaceFactoryInterface {
+        , public ArtificialIntelligenceInterfaceFactoryInterface {
 
-    private: static NullAI NULL_AI = NullAI();
+    private: static NullAI* NULL_AI() { static std::unique_ptr<NullAI> value(new NullAI()); return value.get(); }
 
-    public: static ArtificialIntelligenceInterface getInstance(){
+    public: static ArtificialIntelligenceInterface* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullAIFactory::NULL_AI;
+                        return NullAIFactory::NULL_AI();
     
 }
 
 
-    public: ArtificialIntelligenceInterface getInstance(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+    public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullAIFactory::NULL_AI;
+                        return NullAIFactory::NULL_AI();
     
 }
 

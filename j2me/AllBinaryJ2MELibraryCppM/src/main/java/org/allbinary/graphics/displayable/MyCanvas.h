@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_MYCANVAS_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_MYCANVAS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -86,55 +94,55 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DisplayableInterface.h"
-#include "CanvasStrings.h"
-#include "DisplayInfoSingleton.h"
+        #include "org/allbinary/graphics/displayable/DisplayableInterface.h"
+#include "org/allbinary/graphics/displayable/CanvasStrings.h"
+#include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
 
 class MyCanvas: public Canvas, public DisplayableInterface, public MyCommandInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const CanvasStrings canvasStrings = CanvasStrings::getInstance();
+    protected: CanvasStrings* canvasStrings = CanvasStrings::getInstance();
 
-    protected: const StringUtil stringUtil = StringUtil::getInstance();
+    protected: StringUtil* stringUtil = StringUtil::getInstance();
 
-    protected: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
+    protected: DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();
 
     private: std::string name;
 
-    private: BasicArrayList childNameList;
+    private: BasicArrayList* childNameList;
 
-    private: ABStack<Object*> commandStack;
+    private: ABStack<Object*>* commandStack;
 
-    private: CommandListener commandListener = NullCommandListener::NULL_COMMAND_LISTENER;
+    private: CommandListener* commandListener = NullCommandListener::NULL_COMMAND_LISTENER;
 
     private: bool paused= false;
 
-public: MyCanvas(std::string name, BasicArrayList childNameList);
+public: MyCanvas(std::string name, BasicArrayList* childNameList);
 
     public: void setFullScreenMode(bool mode);
 
     protected: void sizeChanged(int32_t w, int32_t h);
 
-    public: ABStack<Object*> getCommandStack();
+    public: ABStack<Object*>* getCommandStack();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isCommand(Command command);
+    public: bool isCommand(Command* command);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void addCommand(Command command);
+    public: void addCommand(Command* command);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void removeCommand(Command command);
+    public: void removeCommand(Command* command);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void removeAllCommands();
 
-    public: void setCommandListener(CommandListener l);
+    public: void setCommandListener(CommandListener* l);
 
-    public: CommandListener getCustomCommandListener();
+    public: CommandListener* getCustomCommandListener();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: bool isPaused();
@@ -151,11 +159,11 @@ public: MyCanvas(std::string name, BasicArrayList childNameList);
             
     protected: void process();
 
-    protected: void paint(Graphics graphics);
+    protected: void paint(Graphics* graphics);
 
-    public: void draw(Graphics graphics);
+    public: void draw(Graphics* graphics);
 
-    public: bool hasChild(MyCanvas displayable);
+    public: bool hasChild(MyCanvas* displayable);
 
     public: void destroy();
 
@@ -167,7 +175,7 @@ public: MyCanvas(std::string name, BasicArrayList childNameList);
 
     public: void keyReleasedByDevice(int32_t keyCode, int32_t deviceId);
 
-    private: const TouchJ2ME touchME = TouchJ2ME();
+    private: TouchJ2ME* touchME = new TouchJ2ME();
 
     protected: void pointerDragged(int32_t x, int32_t y);
 
@@ -175,7 +183,7 @@ public: MyCanvas(std::string name, BasicArrayList childNameList);
 
     protected: void pointerReleased(int32_t x, int32_t y);
 
-    public: void nextSong(Sound nextSongSound, int32_t leftVolume, int32_t rightVolume);
+    public: void nextSong(Sound* nextSongSound, int32_t leftVolume, int32_t rightVolume);
 
 };
 

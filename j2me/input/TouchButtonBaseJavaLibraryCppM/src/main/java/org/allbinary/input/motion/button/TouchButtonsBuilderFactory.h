@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSBUILDERFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSBUILDERFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,16 +47,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NoButtonsTouchInputFactory.h"
-#include "BaseTouchInput.h"
+        #include "org/allbinary/input/motion/button/NoButtonsTouchInputFactory.h"
+#include "org/allbinary/input/motion/button/BaseTouchInput.h"
 
 class TouchButtonsBuilderFactory
             : public Object
          {
 
-    public: static const TouchButtonsBuilderFactory NO_TOUCH_BUTTON_BUILDER_FACTORY = TouchButtonsBuilderFactory();
+    public: static TouchButtonsBuilderFactory* NO_TOUCH_BUTTON_BUILDER_FACTORY() { static std::unique_ptr<TouchButtonsBuilderFactory> value(new TouchButtonsBuilderFactory()); return value.get(); }
 
-    public: BaseTouchInput getInstance();
+    public: BaseTouchInput* getInstance();
 
 };
 

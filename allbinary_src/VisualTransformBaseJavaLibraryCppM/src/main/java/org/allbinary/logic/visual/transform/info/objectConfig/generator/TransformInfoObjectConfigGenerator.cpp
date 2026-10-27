@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -45,13 +51,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoObjectConfigGeneratorInterface.h"
+        #include "org/allbinary/logic/visual/transform/info/objectConfig/generator/TransformInfoObjectConfigGeneratorInterface.h"
 
 class TransformInfoObjectConfigGenerator
             : public Object
-        : public TransformInfoObjectConfigGeneratorInterface {
+        , public TransformInfoObjectConfigGeneratorInterface {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
@@ -59,7 +65,7 @@ class TransformInfoObjectConfigGenerator
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

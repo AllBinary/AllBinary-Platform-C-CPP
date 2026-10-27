@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/awt.h>
@@ -53,17 +59,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionRectangles.h"
-#include "MotionRectangle.h"
-#include "Rectangle.h"
+        #include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
+#include "org/allbinary/media/image/comparison/motion/MotionRectangle.h"
+#include "org/allbinary/media/image/comparison/motion/Rectangle.h"
 
 class ConsolidateMotionRectangles: public MotionRectangles {
 
-    private: static const std::string NAME = "consolidatedMotionRectangles_";
+    private: static inline const std::string NAME = "consolidatedMotionRectangles_";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: ConsolidateMotionRectangles(MotionRectangles motionRectangles) : MotionRectangles(NAME, motionRectangles.getImageComparisonResult()){
+public: ConsolidateMotionRectangles(MotionRectangles* motionRectangles) : MotionRectangles(NAME, motionRectangles->getImageComparisonResult()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -71,10 +77,10 @@ public: ConsolidateMotionRectangles(MotionRectangles motionRectangles) : MotionR
                             //For kotlin this is before the body of the constructor.
                     
 
-    BasicArrayList vector = motionRectangles.getVector();;
+    BasicArrayList* vector = motionRectangles->getVector();;
     
 
-    int32_t size = vector.size();;
+    int32_t size = vector->size();;
     
 
 
@@ -84,9 +90,9 @@ public: ConsolidateMotionRectangles(MotionRectangles motionRectangles) : MotionR
     int32_t index = 0;index < size; index++)
         {
 
-    MotionRectangle motionRectangle = vector.get(index);;
+    MotionRectangle* motionRectangle = dynamic_cast<MotionRectangle*>(vector->get(index));;
     
-vector.add(motionRectangle.clone());
+vector->add(motionRectangle->clone());
     
 }
 
@@ -97,15 +103,15 @@ this->consolidateMotionRectangles();
 
     private: void consolidateMotionRectangles(){
 
-    BasicArrayList vector = this->getVector();;
+    BasicArrayList* vector = this->getVector();;
     
-this->logUtil.putF("Start - Size Before: " +vector.size(), this, "consolidateMotionRectangleConstraints");
-    
-
-    BasicArrayList removeVector = BasicArrayListD();;
+this->logUtil->putF("Start - Size Before: " +vector->size(), this, "consolidateMotionRectangleConstraints");
     
 
-    int32_t size = vector.size();;
+    BasicArrayList* removeVector = new BasicArrayListD();;
+    
+
+    int32_t size = vector->size();;
     
 
 
@@ -115,41 +121,41 @@ this->logUtil.putF("Start - Size Before: " +vector.size(), this, "consolidateMot
     int32_t index = 0;index < size; index++)
         {
 
-    MotionRectangle motionRectangle = vector.get(index);;
+    MotionRectangle* motionRectangle = dynamic_cast<MotionRectangle*>(vector->get(index));;
     
 
 
 
 
                         for (
-    int32_t i = index +1;i < vector.size(); i++)
+    int32_t i = index +1;i < vector->size(); i++)
         {
 
-    MotionRectangle motionRectangle2 = vector.get(i);;
+    MotionRectangle* motionRectangle2 = dynamic_cast<MotionRectangle*>(vector->get(i));;
     
 
-    Rectangle rectangle = motionRectangle.getRectangle();;
+    Rectangle* rectangle = motionRectangle->getRectangle();;
     
 
-    Rectangle rectangle2 = motionRectangle2.getRectangle();;
+    Rectangle* rectangle2 = motionRectangle2->getRectangle();;
     
 
-    int32_t x2 = rectangle.x +rectangle.width;;
+    int32_t x2 = rectangle->x +rectangle->width;;
     
 
-    int32_t y2 = rectangle.y +rectangle.height;;
+    int32_t y2 = rectangle->y +rectangle->height;;
     
 
-    int32_t rightX = rectangle2.x +rectangle2.width;;
+    int32_t rightX = rectangle2->x +rectangle2->width;;
     
 
-    int32_t bottomY = rectangle2.y +rectangle2.height;;
+    int32_t bottomY = rectangle2->y +rectangle2->height;;
     
 
-                        if(rectangle.x <= rectangle2.x && rectangle.y <= rectangle2.y && x2 >= rightX && y2 >= bottomY)
+                        if(rectangle->x <= rectangle2->x && rectangle->y <= rectangle2->y && x2 >= rightX && y2 >= bottomY)
                         
                                     {
-                                    removeVector.add(motionRectangle2);
+                                    removeVector->add(motionRectangle2);
     
 
                                     }
@@ -163,12 +169,12 @@ this->remove(removeVector);
 }
 
 
-    private: void remove(BasicArrayList removeVector){
+    private: void remove(BasicArrayList* removeVector){
 
-    BasicArrayList vector = this->getVector();;
+    BasicArrayList* vector = this->getVector();;
     
 
-    int32_t size = removeVector.size();;
+    int32_t size = removeVector->size();;
     
 
 
@@ -177,7 +183,7 @@ this->remove(removeVector);
                         for (
     int32_t index = 0;index < size; index++)
         {
-vector.remove(removeVector.get(index));
+vector->remove(removeVector->get(index));
     
 }
 

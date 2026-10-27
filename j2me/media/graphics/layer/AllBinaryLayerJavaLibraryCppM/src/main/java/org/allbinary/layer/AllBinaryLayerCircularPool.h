@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LAYER_ALLBINARYLAYERCIRCULARPOOL_H
         #define ORG_ALLBINARY_LAYER_ALLBINARYLAYERCIRCULARPOOL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/cache/BaseCircularPool.h>
@@ -47,7 +53,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryLayerFactoryInterface.h"
+        #include "org/allbinary/layer/AllBinaryLayerFactoryInterface.h"
 
 class AllBinaryLayerCircularPool: public BaseCircularPool {
 
@@ -55,7 +61,7 @@ protected: AllBinaryLayerCircularPool();
 
                 //@Throws(Exception.constructor)
             
-    public: void initAllBinaryLayerCircularPool(AllBinaryLayerFactoryInterface allbinaryLayerFactoryInterface, int32_t total);
+    public: void initAllBinaryLayerCircularPool(AllBinaryLayerFactoryInterface* allbinaryLayerFactoryInterface, int32_t total);
 
 };
 

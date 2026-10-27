@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Runtime.h"
@@ -49,7 +55,7 @@ class JvmStatistics
             : public Object
          {
 
-    private: Runtime runtime;
+    private: Runtime* runtime;
 
 public: JvmStatistics(){
 this->runtime= Runtime::getRuntime();
@@ -62,7 +68,7 @@ this->runtime= Runtime::getRuntime();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->runtime.freeMemory();;
+                        return this->runtime->freeMemory();;
     
 }
 
@@ -92,7 +98,7 @@ this->runtime= Runtime::getRuntime();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->runtime.maxMemory();;
+                        return this->runtime->maxMemory();;
     
 }
 
@@ -122,7 +128,7 @@ this->runtime= Runtime::getRuntime();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->runtime.totalMemory();;
+                        return this->runtime->totalMemory();;
     
 }
 
@@ -147,92 +153,92 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: Long getFreeMemoryBytesLong(){
+    public: int64_t getFreeMemoryBytesLong(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Long(this->getFreeMemoryBytes());
+                        return int64_t(this->getFreeMemoryBytes());
     
 }
 
 
-    public: Long getFreeMemoryKilobytesLong(){
+    public: int64_t getFreeMemoryKilobytesLong(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Long(this->getFreeMemoryKilobytes());
+                        return int64_t(this->getFreeMemoryKilobytes());
     
 }
 
 
-    public: Long getFreeMemoryMegabytesLong(){
+    public: int64_t getFreeMemoryMegabytesLong(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Long(this->getFreeMemoryMegabytes());
+                        return int64_t(this->getFreeMemoryMegabytes());
     
 }
 
 
-    public: Long getMaxMemoryBytesLong(){
+    public: int64_t getMaxMemoryBytesLong(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Long(this->getMaxMemoryBytes());
+                        return int64_t(this->getMaxMemoryBytes());
     
 }
 
 
-    public: Long getMaxMemoryKilobytesLong(){
+    public: int64_t getMaxMemoryKilobytesLong(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Long(this->getMaxMemoryKilobytes());
+                        return int64_t(this->getMaxMemoryKilobytes());
     
 }
 
 
-    public: Long getMaxMemoryMegabytesLong(){
+    public: int64_t getMaxMemoryMegabytesLong(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Long(this->getMaxMemoryMegabytes());
+                        return int64_t(this->getMaxMemoryMegabytes());
     
 }
 
 
-    public: Long getTotalMemoryBytesLong(){
+    public: int64_t getTotalMemoryBytesLong(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Long(this->getTotalMemoryBytes());
+                        return int64_t(this->getTotalMemoryBytes());
     
 }
 
 
-    public: Long getTotalMemoryKilobytesLong(){
+    public: int64_t getTotalMemoryKilobytesLong(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Long(this->getTotalMemoryKilobytes());
+                        return int64_t(this->getTotalMemoryKilobytes());
     
 }
 
 
-    public: Long getTotalMemoryMegabytesLong(){
+    public: int64_t getTotalMemoryMegabytesLong(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Long(this->getTotalMemoryMegabytes());
+                        return int64_t(this->getTotalMemoryMegabytes());
     
 }
 
@@ -337,12 +343,12 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: Long getNumberOfThreadsLong(){
+    public: int64_t getNumberOfThreadsLong(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Long(this->getNumberOfThreads());
+                        return int64_t(this->getNumberOfThreads());
     
 }
 
@@ -358,7 +364,7 @@ this->runtime= Runtime::getRuntime();
 
 
     public: void collectGarbage(){
-this->runtime.gc();
+this->runtime->gc();
     
 }
 

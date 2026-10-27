@@ -9,6 +9,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Double.h"
@@ -40,9 +46,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StringBuffer.h"
-#include "FixedPoint.h"
-#include "PGUtil.h"
+        #include "org/allbinary/animation/StringBuffer.h"
+#include "org/allbinary/animation/FixedPoint.h"
+#include "org/allbinary/animation/PGUtil.h"
 
 class PathParser
             : public Object

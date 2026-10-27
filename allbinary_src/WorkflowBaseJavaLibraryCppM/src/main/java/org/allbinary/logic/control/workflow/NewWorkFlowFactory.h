@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -74,28 +80,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WorkFlowWrapper.h"
-#include "WorkFlowInterface.h"
+        #include "org/allbinary/logic/control/workflow/WorkFlowWrapper.h"
+#include "org/allbinary/logic/control/workflow/WorkFlowInterface.h"
 
 class NewWorkFlowFactory
             : public Object
          {
 
-    private: static NewWorkFlowFactory instance() { return NewWorkFlowFactory(); }
+    private: static NewWorkFlowFactory* instance() { static std::unique_ptr<NewWorkFlowFactory> value(new NewWorkFlowFactory()); return value.get(); }
 
-    public: static NewWorkFlowFactory getInstance();
+    public: static NewWorkFlowFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: NewWorkFlowFactory();
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: WorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<Object*, Object*> hashMap, PageContext pageContext);
+    public: WorkFlowInterface* getInstance(AbeClientInformationInterface* abeClientInformation, HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: WorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, std::string className);
+    public: WorkFlowInterface* getInstance(AbeClientInformationInterface* abeClientInformation, std::string className);
 
 };
 

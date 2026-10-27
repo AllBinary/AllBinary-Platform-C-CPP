@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_DEFAULTLISTMODELHELPER_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_DEFAULTLISTMODELHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,22 +61,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DefaultListModel.h"
-#include "ListModel.h"
+        #include "org/allbinary/input/automation/module/DefaultListModel.h"
+#include "org/allbinary/input/automation/module/ListModel.h"
 
 class DefaultListModelHelper
             : public Object
          {
 
-    private: DefaultListModel defaultListModel;
+    private: DefaultListModel* defaultListModel;
 
-    private: BasicArrayList vector;
+    private: BasicArrayList* vector;
 
 public: DefaultListModelHelper();
 
     public: void initDefaultModelList();
 
-    public: ListModel getListModel();
+    public: ListModel* getListModel();
 
     public: void add(std::string string);
 

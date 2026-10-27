@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTYVALUES_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTYVALUES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -87,26 +93,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CssPropertyValueData.h"
-#include "CssPropertyData.h"
+        #include "org/allbinary/logic/visual/dhtml/style/css/property/CssPropertyValueData.h"
+#include "org/allbinary/logic/visual/dhtml/style/css/property/CssPropertyData.h"
 
 class CssPropertyValues
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: BasicArrayList propertyValueVector;
+    private: BasicArrayList* propertyValueVector;
 
 public: CssPropertyValues();
 
-public: CssPropertyValues(Node node);
+public: CssPropertyValues(Node* node);
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

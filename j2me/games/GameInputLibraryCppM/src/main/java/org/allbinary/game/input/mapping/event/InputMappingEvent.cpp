@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/game/input/mapping/InputToGameKeyMapping.h>
 
       
@@ -45,7 +53,7 @@
         
 class InputMappingEvent: public AllBinaryEventObject {
 
-    private: InputToGameKeyMapping inputToGameKeyMapping = InputToGameKeyMapping::getNullInstance();
+    private: InputToGameKeyMapping* inputToGameKeyMapping = InputToGameKeyMapping::getNullInstance();
 
 public: InputMappingEvent(Object* anyType) : AllBinaryEventObject(anyType){
 
@@ -57,13 +65,13 @@ public: InputMappingEvent(Object* anyType) : AllBinaryEventObject(anyType){
 }
 
 
-    public: void setInputToGameKeyMapping(InputToGameKeyMapping inputToGameKeyMapping){
+    public: void setInputToGameKeyMapping(InputToGameKeyMapping* inputToGameKeyMapping){
 this->inputToGameKeyMapping= inputToGameKeyMapping;
     
 }
 
 
-    public: InputToGameKeyMapping getInputToGameKeyMapping(){
+    public: InputToGameKeyMapping* getInputToGameKeyMapping(){
 
 
 

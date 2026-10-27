@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -57,12 +63,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeologicalGeographicMapCellPosition.h"
-#include "GeologicalResource.h"
+        #include "org/allbinary/game/layer/geological/resources/GeologicalGeographicMapCellPosition.h"
+#include "org/allbinary/game/layer/geological/resources/GeologicalResource.h"
 
 class GeologicalGeographicMapCellPositionFactory
             : public Object
-        : public GeographicMapCellPositionFactoryInterface {
+        , public GeographicMapCellPositionFactoryInterface {
 
     private: std::vector<int32_t> resourcePerMapCellType;
 
@@ -74,18 +80,18 @@ this->resourcePerMapCellType= resourcePerMapCellType;
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition getInstance(BasicGeographicMap geographicMapInterface, int32_t i_column, int32_t i_row, int32_t columns, int32_t rows, int32_t width, int32_t height){
+    public: GeographicMapCellPosition* getInstance(BasicGeographicMap* geographicMapInterface, int32_t i_column, int32_t i_row, int32_t columns, int32_t rows, int32_t width, int32_t height){
 
-    AllBinaryTiledLayer tiledLayer = geographicMapInterface.getAllBinaryTiledLayer();;
+    AllBinaryTiledLayer* tiledLayer = geographicMapInterface->getAllBinaryTiledLayer();;
     
 
-    int32_t resources = this->resourcePerMapCellType[tiledLayer.getCell(i_column, i_row)] +MyRandomFactory::getInstance().getAbsoluteNextInt(1000);;
+    int32_t resources = this->resourcePerMapCellType[tiledLayer->getCell(i_column, i_row)] +MyRandomFactory::getInstance()->getAbsoluteNextInt(1000);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GeologicalGeographicMapCellPosition(i_column, i_row, columns, rows, width, height, GeologicalResource(resources));
+                        return new GeologicalGeographicMapCellPosition(i_column, i_row, columns, rows, width, height, new GeologicalResource(resources));
     
 }
 

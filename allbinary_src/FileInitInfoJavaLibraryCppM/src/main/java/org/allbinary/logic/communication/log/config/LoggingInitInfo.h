@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_LOGGINGINITINFO_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_LOGGINGINITINFO_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -82,28 +88,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogConfigsData.h"
-#include "LogConfigData.h"
-#include "LogConfig.h"
+        #include "org/allbinary/logic/communication/log/config/LogConfigsData.h"
+#include "org/allbinary/logic/communication/log/config/LogConfigData.h"
+#include "org/allbinary/logic/communication/log/config/LogConfig.h"
 
 class LoggingInitInfo
             : public Object
          {
 
-    private: static const std::string INITFILENAME = "logConfig.xml";
+    private: static inline const std::string INITFILENAME = "logConfig.xml";
 
-    private: static const std::string PACKAGE = PATH_GLOBALS::getInstance().INIT_PATH;
+    private: static inline const std::string PACKAGE = PATH_GLOBALS::getInstance()->INIT_PATH;
 
-    private: static BasicArrayList logConfigInfoList = 
+    private: static inline BasicArrayList* logConfigInfoList = 
                 nullptr
             ;
 
-    private: static bool hasRead = false;
+    private: static inline bool hasRead = false;
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static Document getDoc();
+    public: static Document* getDoc();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -124,19 +130,19 @@ class LoggingInitInfo
     private: static void updateIfNeeded();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void set(BasicArrayList logConfigInfoVector);
+    public: static void set(BasicArrayList* logConfigInfoVector);
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList get();
+    public: static BasicArrayList* get();
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList getTypeNameList();
+    public: static BasicArrayList* getTypeNameList();
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList getTypeList();
+    public: static BasicArrayList* getTypeList();
 
 public: LoggingInitInfo();
 

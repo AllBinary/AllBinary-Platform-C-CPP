@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_SAVEDCAPTUREIMAGESWORKER_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_SAVEDCAPTUREIMAGESWORKER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -102,23 +108,23 @@
         
 class SavedCaptureImagesWorker: public BasicEventHandler, public CaptureWorkerInterface {
 
-    private: static int64_t index;
+    private: static inline int64_t index;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: bool running= false;
 
-    private: ScreenScavangerRobot screenScavangerRobot;
+    private: ScreenScavangerRobot* screenScavangerRobot;
 
-    private: SavedCaptureGenericProfileDataWorkerType savedCaptureGenericProfileDataWorkerType;
+    private: SavedCaptureGenericProfileDataWorkerType* savedCaptureGenericProfileDataWorkerType;
 
-public: SavedCaptureImagesWorker(SavedCaptureGenericProfileDataWorkerType savedCaptureGenericProfileDataWorkerType);
+public: SavedCaptureImagesWorker(SavedCaptureGenericProfileDataWorkerType* savedCaptureGenericProfileDataWorkerType);
 
                 //@Throws(Exception.constructor)
             
-    public: void setThread(Thread thread);
+    public: void setThread(Thread* thread);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: bool isRunning();

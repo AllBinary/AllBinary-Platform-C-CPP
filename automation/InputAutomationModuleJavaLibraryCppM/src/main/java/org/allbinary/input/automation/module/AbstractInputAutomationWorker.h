@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ABSTRACTINPUTAUTOMATIONWORKER_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ABSTRACTINPUTAUTOMATIONWORKER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -71,35 +77,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputAutomationActionInterface.h"
+        #include "org/allbinary/input/automation/module/InputAutomationActionInterface.h"
 
 class AbstractInputAutomationWorker
             : public Object
-        : public RunnableInterface {
+        , public RunnableInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: int64_t index= 0;
 
     private: bool running= false;
 
-    private: InputAutomationActionInterface inputAutomationActionInterface;
+    private: InputAutomationActionInterface* inputAutomationActionInterface;
 
-    private: CaptureWorkerInterface captureWorkerInterface;
+    private: CaptureWorkerInterface* captureWorkerInterface;
 
-    private: ImageComparisonWorker imageComparisonWorker;
+    private: ImageComparisonWorker* imageComparisonWorker;
 
-    private: MotionRectanglesWorker motionRectanglesWorker;
+    private: MotionRectanglesWorker* motionRectanglesWorker;
 
-    private: Thread captureThread;
+    private: Thread* captureThread;
 
-public: AbstractInputAutomationWorker(InputAutomationActionInterface inputAutomationActionInterface);
+public: AbstractInputAutomationWorker(InputAutomationActionInterface* inputAutomationActionInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void setThread(Thread thread);
+    public: void setThread(Thread* thread);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: bool isRunning();
@@ -130,21 +136,21 @@ public: AbstractInputAutomationWorker(InputAutomationActionInterface inputAutoma
 
     public: void run();
 
-    public: InputAutomationActionInterface getInputAutomationActionInterface();
+    public: InputAutomationActionInterface* getInputAutomationActionInterface();
 
-    public: void setInputAutomationActionInterface(InputAutomationActionInterface inputAutomationActionInterface);
+    public: void setInputAutomationActionInterface(InputAutomationActionInterface* inputAutomationActionInterface);
 
-    protected: CaptureWorkerInterface getCaptureWorker();
+    protected: CaptureWorkerInterface* getCaptureWorker();
 
-    protected: void setCaptureWorker(CaptureWorkerInterface captureWorkerInterface);
+    protected: void setCaptureWorker(CaptureWorkerInterface* captureWorkerInterface);
 
-    protected: ImageComparisonWorker getImageComparisonWorker();
+    protected: ImageComparisonWorker* getImageComparisonWorker();
 
-    protected: void setImageComparisonWorker(ImageComparisonWorker imageComparisonWorker);
+    protected: void setImageComparisonWorker(ImageComparisonWorker* imageComparisonWorker);
 
-    protected: MotionRectanglesWorker getMotionRectanglesWorker();
+    protected: MotionRectanglesWorker* getMotionRectanglesWorker();
 
-    protected: void setMotionRectanglesWorker(MotionRectanglesWorker motionRectanglesWorker);
+    protected: void setMotionRectanglesWorker(MotionRectanglesWorker* motionRectanglesWorker);
 
 };
 

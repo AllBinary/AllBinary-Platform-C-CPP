@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -75,31 +81,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "VectorAnimationUtil.h"
+        #include "org/allbinary/animation/VectorAnimationUtil.h"
 
 class VectorRotationGenerator
             : public Object
          {
 
-    private: static VectorRotationGenerator instance() { return VectorRotationGenerator(); }
+    private: static VectorRotationGenerator* instance() { static std::unique_ptr<VectorRotationGenerator> value(new VectorRotationGenerator()); return value.get(); }
 
-    public: static VectorRotationGenerator getInstance();
+    public: static VectorRotationGenerator* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const VectorAnimationUtil vectorAnimationUtil = VectorAnimationUtil::getInstance();
+    private: VectorAnimationUtil* vectorAnimationUtil = VectorAnimationUtil::getInstance();
 
 private: VectorRotationGenerator();
 
-    public: std::vector<std::vector<std::vector<int32_t>>> getInstance(VectorInfo vectorRotationInfo);
+    public: std::vector<std::vector<std::vector<int32_t>>> getInstance(VectorInfo* vectorRotationInfo);
 
-    private: const AngleFactory angleFactory = AngleFactory::getInstance();
+    private: AngleFactory* angleFactory = AngleFactory::getInstance();
 
     public: std::vector<std::vector<std::vector<int32_t>>> getInstanceFrames(int32_t width, int32_t height, std::vector<std::vector<int32_t>> points, int32_t frames);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getListAtAngle(int32_t width, int32_t height, BasicArrayList pointBasicArrayList, Angle angle);
+    public: BasicArrayList* getListAtAngle(int32_t width, int32_t height, BasicArrayList* pointBasicArrayList, Angle* angle);
 
 };
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -45,9 +51,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NullImage.h"
-#include "Image.h"
-#include "Graphics.h"
+        #include "javax/microedition/lcdui/NullImage.h"
+#include "javax/microedition/lcdui/Image.h"
+#include "javax/microedition/lcdui/Graphics.h"
 //PlatformNullImageJavaLibrary
 class PlatformImage
             : public Object
@@ -83,7 +89,7 @@ class PlatformImage
 }
 
 
-    public: int32_t getWidth(Image image, int32_t width){
+    public: int32_t getWidth(Image* image, int32_t width){
 
 
 
@@ -93,7 +99,7 @@ class PlatformImage
 }
 
 
-    public: int32_t getHeight(Image image, int32_t height){
+    public: int32_t getHeight(Image* image, int32_t height){
 
 
 
@@ -103,37 +109,37 @@ class PlatformImage
 }
 
 
-    public: javax::microedition::lcdui::Graphics getGraphics(Object* graphicsSurface, int32_t width, int32_t height, Image image){
+    public: javax::microedition::lcdui::Graphics* getGraphics(Object* graphicsSurface, int32_t width, int32_t height, Image* image){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: void drawImage(Image image, int32_t x, int32_t y, int32_t anchor, javax::microedition::lcdui::Graphics g2, Object* g){
+    public: void drawImage(Image* image, int32_t x, int32_t y, int32_t anchor, javax::microedition::lcdui::Graphics* g2, Object* g){
 }
 
 
-    public: void drawRegion(Image image, int32_t x_src, int32_t y_src, int32_t width, int32_t height, int32_t transform, int32_t x_dst, int32_t y_dst, int32_t anchor, javax::microedition::lcdui::Graphics g){
+    public: void drawRegion(Image* image, int32_t x_src, int32_t y_src, int32_t width, int32_t height, int32_t transform, int32_t x_dst, int32_t y_dst, int32_t anchor, javax::microedition::lcdui::Graphics* g){
 }
 
 
-    public: void getRGB(std::vector<int32_t> argb, int32_t offset, int32_t scanlength, int32_t x, int32_t y, int32_t width, int32_t height, Image image){
+    public: void getRGB(std::vector<int32_t> argb, int32_t offset, int32_t scanlength, int32_t x, int32_t y, int32_t width, int32_t height, Image* image){
 }
 
 
-    public: void setRGB(std::vector<int32_t> argb, int32_t offset, int32_t scanlength, int32_t x, int32_t y, int32_t width, int32_t height, Image image){
+    public: void setRGB(std::vector<int32_t> argb, int32_t offset, int32_t scanlength, int32_t x, int32_t y, int32_t width, int32_t height, Image* image){
 }
 
 
-    public: std::vector<int32_t> getData(Image image){
+    public: std::vector<int32_t> getData(Image* image){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance().NULL_INT_ARRAY;
+                        return NullUtil::getInstance()->NULL_INT_ARRAY;
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/business/category/CategoryInterface.h>
 
       
@@ -42,9 +48,9 @@
         
 class CategoryModifierTreeInterface {
 
-    void insert(CategoryInterface parentCategoryInterface, CategoryInterface newChildCategoryInterface)
+    public: virtual void insert(CategoryInterface* parentCategoryInterface, CategoryInterface* newChildCategoryInterface) = 0;
 
-    void delete_(CategoryInterface parentCategoryInterface, CategoryInterface newChildCategoryInterface)
+    public: virtual void delete_(CategoryInterface* parentCategoryInterface, CategoryInterface* newChildCategoryInterface) = 0;
 
 };
 

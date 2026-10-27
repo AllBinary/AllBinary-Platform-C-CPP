@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_DESTROY_EVENT_DESTROYEDEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_COMBAT_DESTROY_EVENT_DESTROYEDEVENTHANDLER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h>
@@ -62,35 +68,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DestroyedEvent.h"
-#include "DestroyedEventListenerInterface.h"
+        #include "org/allbinary/game/combat/destroy/event/DestroyedEvent.h"
+#include "org/allbinary/game/combat/destroy/event/DestroyedEventListenerInterface.h"
 
 class DestroyedEventHandler: public BasicEventHandler {
 
-    private: static DestroyedEventHandler instance() { return DestroyedEventHandler(); }
+    private: static DestroyedEventHandler* instance() { static std::unique_ptr<DestroyedEventHandler> value(new DestroyedEventHandler()); return value.get(); }
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static DestroyedEventHandler getInstance();
+    public: static DestroyedEventHandler* getInstance();
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: DestroyedEventHandler();
 
-    public: void addListener(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer);
+    public: void addListener(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void removeAllListeners();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void removeListener(EventListenerInterface eventListenerInterface);
+    public: void removeListener(EventListenerInterface* eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(AllBinaryEventObject eventObject);
+    public: void fireEvent(AllBinaryEventObject* eventObject);
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
 };
 

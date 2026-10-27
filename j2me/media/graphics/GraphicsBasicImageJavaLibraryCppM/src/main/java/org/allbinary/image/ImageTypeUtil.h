@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_IMAGE_IMAGETYPEUTIL_H
         #define ORG_ALLBINARY_IMAGE_IMAGETYPEUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -52,9 +58,9 @@ class ImageTypeUtil
             : public Object
          {
 
-    private: static ImageTypeUtil SINGLETON = ImageTypeUtil();
+    private: static ImageTypeUtil* SINGLETON() { static std::unique_ptr<ImageTypeUtil> value(new ImageTypeUtil()); return value.get(); }
 
-    public: static ImageTypeUtil getInstance();
+    public: static ImageTypeUtil* getInstance();
 
     public: const std::string PNG = "png";
 
@@ -62,7 +68,7 @@ class ImageTypeUtil
 
     public: const std::string GIF = "gif";
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: ImageTypeUtil();
 

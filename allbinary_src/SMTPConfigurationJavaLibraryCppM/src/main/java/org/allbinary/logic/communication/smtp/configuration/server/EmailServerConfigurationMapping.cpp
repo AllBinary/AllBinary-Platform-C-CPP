@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,30 +61,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "EmailServerConfigurationInterface.h"
-#include "EmailServerConfigurationData.h"
+        #include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationInterface.h"
+#include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationData.h"
 
 class EmailServerConfigurationMapping
             : public Object
-        : public TableMappingInterface {
+        , public TableMappingInterface {
 
-    private: EmailServerConfigurationInterface emailServerConfigurationInterface;
+    private: EmailServerConfigurationInterface* emailServerConfigurationInterface;
 
-public: EmailServerConfigurationMapping(EmailServerConfigurationInterface emailServerConfigurationInterface){
+public: EmailServerConfigurationMapping(EmailServerConfigurationInterface* emailServerConfigurationInterface){
 this->emailServerConfigurationInterface= emailServerConfigurationInterface;
     
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(EmailServerConfigurationData::SERVER, this->emailServerConfigurationInterface.getSmtpServer());
+hashMap->put(EmailServerConfigurationData::SERVER, this->emailServerConfigurationInterface->getSmtpServer());
     
-hashMap.put(EmailServerConfigurationData::ACCOUNT, this->emailServerConfigurationInterface.getAccountName());
+hashMap->put(EmailServerConfigurationData::ACCOUNT, this->emailServerConfigurationInterface->getAccountName());
     
-hashMap.put(EmailServerConfigurationData::PASSWORD, this->emailServerConfigurationInterface.getPassword());
+hashMap->put(EmailServerConfigurationData::PASSWORD, this->emailServerConfigurationInterface->getPassword());
     
 
 
@@ -103,11 +109,11 @@ hashMap.put(EmailServerConfigurationData::PASSWORD, this->emailServerConfigurati
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList toVector(){
+    public: BasicArrayList* toVector(){
 
-    BasicArrayList vector = BasicArrayListD();;
+    BasicArrayList* vector = new BasicArrayListD();;
     
-vector.add(this->emailServerConfigurationInterface.getSmtpServer());
+vector->add(this->emailServerConfigurationInterface->getSmtpServer());
     
 
 

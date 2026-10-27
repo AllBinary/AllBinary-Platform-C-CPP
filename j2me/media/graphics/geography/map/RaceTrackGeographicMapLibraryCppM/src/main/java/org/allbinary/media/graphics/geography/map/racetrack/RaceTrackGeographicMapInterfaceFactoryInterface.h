@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPINTERFACEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPINTERFACEFACTORYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -43,17 +49,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RaceTrackGeographicMap.h"
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMap.h"
 
 class RaceTrackGeographicMapInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    RaceTrackGeographicMap getLevelInstance(Integer id);
+    public: virtual RaceTrackGeographicMap* getLevelInstance(int32_t id) = 0;
 
                 //@Throws(Exception.constructor)
             
-    RaceTrackGeographicMap getTrackInstance(Integer id);
+    public: virtual RaceTrackGeographicMap* getTrackInstance(int32_t id) = 0;
 
 };
 

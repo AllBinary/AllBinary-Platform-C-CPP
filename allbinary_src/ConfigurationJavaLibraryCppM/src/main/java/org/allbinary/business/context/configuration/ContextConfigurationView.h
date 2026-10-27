@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONVIEW_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,25 +73,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ContextConfigurationInterface.h"
-#include "ContextConfiguration.h"
-#include "ContextConfigurationData.h"
+        #include "org/allbinary/business/context/configuration/ContextConfigurationInterface.h"
+#include "org/allbinary/business/context/configuration/ContextConfiguration.h"
+#include "org/allbinary/business/context/configuration/ContextConfigurationData.h"
 
 class ContextConfigurationView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: ContextConfigurationInterface contextConfigurationInterface;
+    private: ContextConfigurationInterface* contextConfigurationInterface;
 
-public: ContextConfigurationView(Node node);
+public: ContextConfigurationView(Node* node);
 
-public: ContextConfigurationView(ContextConfigurationInterface contextConfigurationInterface);
+public: ContextConfigurationView(ContextConfigurationInterface* contextConfigurationInterface);
 
-    public: ContextConfigurationInterface getContextConfigurationInterface();
+    public: ContextConfigurationInterface* getContextConfigurationInterface();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

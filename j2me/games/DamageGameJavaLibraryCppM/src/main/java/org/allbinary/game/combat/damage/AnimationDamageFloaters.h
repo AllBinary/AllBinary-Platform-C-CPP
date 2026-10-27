@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -70,27 +76,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DamageFloaters.h"
+        #include "org/allbinary/game/combat/damage/DamageFloaters.h"
 
 class AnimationDamageFloaters: public DamageFloaters {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: AllBinaryLayer layerInterface;
+    private: AllBinaryLayer* layerInterface;
 
-    private: std::vector<IndexedAnimation> animationInterfaceArray;
+    private: std::vector<IndexedAnimation*> animationInterfaceArray;
 
-    private: CircularIndexUtil circularIndexUtil;
+    private: CircularIndexUtil* circularIndexUtil;
 
     private: int32_t dx;
 
     private: int32_t dy;
 
-public: AnimationDamageFloaters(AllBinaryLayer layerInterface, std::vector<IndexedAnimation> animationInterfaceArray, int32_t dx, int32_t dy);
+public: AnimationDamageFloaters(AllBinaryLayer* layerInterface, std::vector<IndexedAnimation*> animationInterfaceArray, int32_t dx, int32_t dy);
 
     public: void add(int32_t damage);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

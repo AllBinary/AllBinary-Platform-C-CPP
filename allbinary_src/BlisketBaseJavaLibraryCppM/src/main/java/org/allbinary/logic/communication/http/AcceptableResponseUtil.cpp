@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -50,15 +56,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AcceptableResponseFactory.h"
+        #include "org/allbinary/logic/communication/http/AcceptableResponseFactory.h"
 
 class AcceptableResponseUtil
             : public Object
          {
 
-    private: static AcceptableResponseUtil instance() { return AcceptableResponseUtil(); }
+    private: static AcceptableResponseUtil* instance() { static std::unique_ptr<AcceptableResponseUtil> value(new AcceptableResponseUtil()); return value.get(); }
 
-    public: static AcceptableResponseUtil getInstance(){
+    public: static AcceptableResponseUtil* getInstance(){
 
 
 
@@ -71,23 +77,23 @@ class AcceptableResponseUtil
                     static int32_t initResult = AcceptableResponseUtil::init();
                 static int32_t init() { 
                     
-TsUtil::getInstance().hashCode(AcceptableResponseFactory::getInstance().HTML);
+TsUtil::getInstance()->hashCode(AcceptableResponseFactory::getInstance()->HTML);
     
 
 
                     return 0;
                 }
             
-    public: const BasicArrayList candidateVector = BasicArrayListD();
+    public: BasicArrayList* candidateVector = new BasicArrayListD();
 
-    public: const BasicArrayList tagNameVector = BasicArrayListD();
+    public: BasicArrayList* tagNameVector = new BasicArrayListD();
 
     public: std::string get(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->candidateVector.get(index);
+                        return this->candidateVector->get(index);
     
 }
 
@@ -97,7 +103,7 @@ TsUtil::getInstance().hashCode(AcceptableResponseFactory::getInstance().HTML);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->tagNameVector.get(index);
+                        return this->tagNameVector->get(index);
     
 }
 
@@ -107,7 +113,7 @@ TsUtil::getInstance().hashCode(AcceptableResponseFactory::getInstance().HTML);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->candidateVector.size();;
+                        return this->candidateVector->size();;
     
 }
 

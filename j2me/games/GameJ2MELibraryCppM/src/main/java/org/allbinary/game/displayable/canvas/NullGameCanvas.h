@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLGAMECANVAS_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLGAMECANVAS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -70,25 +78,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryGameCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
 class NullGameCanvas: public AllBinaryGameCanvas {
 
-    private: static NullGameCanvas createNull();
+    private: static NullGameCanvas* createNull();
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static NullGameCanvas getInstance();
+    public: static NullGameCanvas* getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: static NullGameCanvas createCanvas(AllBinaryGameLayerManager gameLayerManager);
+    public: static NullGameCanvas* createCanvas(AllBinaryGameLayerManager* gameLayerManager);
 
-    public: static const std::string NO_GAME = "No Background Game";
+    public: static inline const std::string NO_GAME = "No Background Game";
 
-    public: static const int32_t TYPE = 1;
+    public: static inline const int32_t TYPE = 1;
 
-protected: NullGameCanvas(AllBinaryGameLayerManager gameLayerManager);
+protected: NullGameCanvas(AllBinaryGameLayerManager* gameLayerManager);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: bool isGameOver();
@@ -106,13 +114,13 @@ protected: NullGameCanvas(AllBinaryGameLayerManager gameLayerManager);
 
     public: void unPause();
 
-    public: void initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener* cmdListener);
 
                 //@Throws(Exception.constructor)
             
     public: void buildGameInit(bool isProgress);
 
-    public: void draw(Graphics graphics);
+    public: void draw(Graphics* graphics);
 
     public: void run();
 

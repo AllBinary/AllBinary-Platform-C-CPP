@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -67,81 +73,81 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WeblisketSessionData.h"
+        #include "org/allbinary/logic/communication/http/request/session/WeblisketSessionData.h"
 
 class BasicWeblisketSession
             : public Object
          {
 
-    private: HttpSession session;
+    private: HttpSession* session;
 
-    private: PageContext pageContext;
+    private: PageContext* pageContext;
 
-public: BasicWeblisketSession(PageContext pageContext){
+public: BasicWeblisketSession(PageContext* pageContext){
 this->pageContext= pageContext;
     
 
-    HttpServletRequest request = pageContext.getRequest();;
+    HttpServletRequest* request = dynamic_cast<HttpServletRequest*>(pageContext->getRequest());;
     
-this->session= request.getSession(true);
-    
-}
-
-
-    public: void setRole(BasicUserRole aRole){
-this->session.setAttribute(BasicUserRoleData::NAME.toString(), aRole);
+this->session= request->getSession(true);
     
 }
 
 
-    public: BasicUserRole getRole(){
+    public: void setRole(BasicUserRole* aRole){
+this->session->setAttribute(BasicUserRoleData::NAME.toString(), aRole);
+    
+}
+
+
+    public: BasicUserRole* getRole(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(BasicUserRoleData::NAME.toString());
+                        return dynamic_cast<BasicUserRole*>(this->session->getAttribute(BasicUserRoleData::NAME.toString()));
     
 }
 
 
     public: void setPassword(std::string password){
-this->session.setAttribute(UserData::PASSWORD, password);
+this->session->setAttribute(UserData::PASSWORD, password);
     
 }
 
 
     public: void setUserName(std::string userName){
-this->session.setAttribute(UserData::USERNAME, userName);
+this->session->setAttribute(UserData::USERNAME, userName);
     
 }
 
 
     public: void setPaymentMethod(std::string value){
-this->session.setAttribute(PaymentGatewayData::NAME.toString(), value);
+this->session->setAttribute(PaymentGatewayData::NAME.toString(), value);
     
 }
 
 
     public: void setAuthenticated(){
-this->session.setAttribute(WeblisketSessionData::AUTHENTICATED, BooleanFactory::getInstance().TRUE_STRING);
+this->session->setAttribute(WeblisketSessionData::AUTHENTICATED, BooleanFactory::getInstance()->TRUE_STRING);
     
 }
 
 
-    public: void setAttempts(Integer value){
-this->session.setAttribute(WeblisketSessionData::ATTEMPTS, value);
+    public: void setAttempts(int32_t value){
+this->session->setAttribute(WeblisketSessionData::ATTEMPTS, value);
     
 }
 
 
     public: void setTimeout(std::string value){
-this->session.setAttribute(WeblisketSessionData::TIMEOUT, value);
+this->session->setAttribute(WeblisketSessionData::TIMEOUT, value);
     
 }
 
 
     public: void setStoreName(std::string value){
-this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
+this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
     
 }
 
@@ -151,7 +157,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(org.allbinary.globals.GLOBALS2.WEBAPPPATH);
+                        return this->session->getAttribute(org.allbinary.globals.GLOBALS2.WEBAPPPATH);
     
 }
 
@@ -161,7 +167,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(UserData::USERNAME);
+                        return this->session->getAttribute(UserData::USERNAME);
     
 }
 
@@ -171,7 +177,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(UserData::PASSWORD);
+                        return this->session->getAttribute(UserData::PASSWORD);
     
 }
 
@@ -181,7 +187,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(PaymentGatewayData::NAME.toString());
+                        return this->session->getAttribute(PaymentGatewayData::NAME.toString());
     
 }
 
@@ -191,17 +197,17 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(WeblisketSessionData::AUTHENTICATED);
+                        return this->session->getAttribute(WeblisketSessionData::AUTHENTICATED);
     
 }
 
 
-    public: Integer getAttempts(){
+    public: int32_t getAttempts(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(WeblisketSessionData::ATTEMPTS);
+                        return this->session->getAttribute(WeblisketSessionData::ATTEMPTS);
     
 }
 
@@ -211,7 +217,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(WeblisketSessionData::TIMEOUT);
+                        return this->session->getAttribute(WeblisketSessionData::TIMEOUT);
     
 }
 
@@ -221,25 +227,25 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(StoreFrontData::getInstance().NAME);
+                        return this->session->getAttribute(StoreFrontData::getInstance()->NAME);
     
 }
 
 
     public: void setAuthenticated(bool value){
-this->session.setAttribute(WeblisketSessionData::AUTHENTICATED, BooleanFactory::getInstance().FALSE_STRING);
+this->session->setAttribute(WeblisketSessionData::AUTHENTICATED, BooleanFactory::getInstance()->FALSE_STRING);
     
 }
 
 
     public: void clear(){
-this->session.removeAttribute(WeblisketSessionData::AUTHENTICATED);
+this->session->removeAttribute(WeblisketSessionData::AUTHENTICATED);
     
-this->session.removeAttribute(WeblisketSessionData::TIMEOUT);
+this->session->removeAttribute(WeblisketSessionData::TIMEOUT);
     
-this->session.removeAttribute(BasicUserRoleData::NAME.toString());
+this->session->removeAttribute(BasicUserRoleData::NAME.toString());
     
-this->session.removeAttribute(UserData::USERNAME);
+this->session->removeAttribute(UserData::USERNAME);
     
 }
 
@@ -249,14 +255,14 @@ this->session.removeAttribute(UserData::USERNAME);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getCreationTime();;
+                        return this->session->getCreationTime();;
     
 }
 
 
     public: int64_t getLastAccessedTime(){
 
-    int64_t lastAccessedTime = this->session.getLastAccessedTime();;
+    int64_t lastAccessedTime = this->session->getLastAccessedTime();;
     
 
 

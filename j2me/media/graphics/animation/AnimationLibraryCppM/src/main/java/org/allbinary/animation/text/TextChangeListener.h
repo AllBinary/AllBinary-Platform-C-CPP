@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TEXT_TEXTCHANGELISTENER_H
         #define ORG_ALLBINARY_ANIMATION_TEXT_TEXTCHANGELISTENER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class TextChangeListener
             : public Object
          {
 
-    private: static TextChangeListener instance() { return TextChangeListener(); }
+    private: static TextChangeListener* instance() { static std::unique_ptr<TextChangeListener> value(new TextChangeListener()); return value.get(); }
 
-    public: static TextChangeListener getInstance();
+    public: static TextChangeListener* getInstance();
 
     public: void onMeasure();
 

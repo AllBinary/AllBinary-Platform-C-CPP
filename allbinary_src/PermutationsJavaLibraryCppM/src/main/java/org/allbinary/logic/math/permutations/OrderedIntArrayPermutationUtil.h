@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/System.h"
@@ -48,15 +54,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "IntPermutationVisitor.h"
+        #include "org/allbinary/logic/math/permutations/IntPermutationVisitor.h"
 
 class OrderedIntArrayPermutationUtil
             : public Object
          {
 
-    private: static OrderedIntArrayPermutationUtil instance() { return OrderedIntArrayPermutationUtil(); }
+    private: static OrderedIntArrayPermutationUtil* instance() { static std::unique_ptr<OrderedIntArrayPermutationUtil> value(new OrderedIntArrayPermutationUtil()); return value.get(); }
 
-    public: static OrderedIntArrayPermutationUtil getInstance();
+    public: static OrderedIntArrayPermutationUtil* getInstance();
 
     public: static void main(std::vector<std::string> args);
 
@@ -72,7 +78,7 @@ private: OrderedIntArrayPermutationUtil();
 
     public: int64_t factorial(int32_t dataLength);
 
-    public: void generate(std::vector<int32_t> data, Visitor visitor);
+    public: void generate(std::vector<int32_t> data, Visitor* visitor);
 
 };
 

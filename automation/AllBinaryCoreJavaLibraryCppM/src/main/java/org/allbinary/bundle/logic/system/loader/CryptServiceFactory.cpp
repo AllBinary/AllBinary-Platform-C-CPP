@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/osgi/framework/Bundle.h>
@@ -53,24 +59,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CryptService.h"
+        #include "org/allbinary/bundle/logic/system/loader/CryptService.h"
 
 class CryptServiceFactory
             : public Object
-        : public ServiceFactory {
+        , public ServiceFactory {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: CryptService cryptService = CryptService();
+    private: CryptService* cryptService = new CryptService();
 
 public: CryptServiceFactory(){
 }
 
 
-    public: Object* getService(Bundle bundle, ServiceRegistration registration){
-this->logUtil.putF(this->commonStrings.START, this, "getService");
+    public: Object* getService(Bundle* bundle, ServiceRegistration* registration){
+this->logUtil->putF(this->commonStrings->START, this, "getService");
     
 
 
@@ -81,7 +87,7 @@ this->logUtil.putF(this->commonStrings.START, this, "getService");
 }
 
 
-    public: void ungetService(Bundle bundle, ServiceRegistration registration, Object* service){
+    public: void ungetService(Bundle* bundle, ServiceRegistration* registration, Object* service){
 }
 
 

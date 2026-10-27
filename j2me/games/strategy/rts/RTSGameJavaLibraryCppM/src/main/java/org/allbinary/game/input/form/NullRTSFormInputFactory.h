@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_NULLRTSFORMINPUTFACTORY_H
         #define ORG_ALLBINARY_GAME_INPUT_FORM_NULLRTSFORMINPUTFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/identification/BasicGroupFactory.h>
@@ -44,15 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RTSFormInput.h"
+        #include "org/allbinary/game/input/form/RTSFormInput.h"
 
 class NullRTSFormInputFactory
             : public Object
          {
 
-    private: static const RTSFormInput SINGLETON = RTSFormInput(BasicGroupFactory::getInstance().NONE_ARRAY);
+    private: static RTSFormInput* SINGLETON() { static std::unique_ptr<RTSFormInput> value(new RTSFormInput(BasicGroupFactory::getInstance()->NONE_ARRAY)); return value.get(); }
 
-    public: static RTSFormInput getInstance();
+    public: static RTSFormInput* getInstance();
 
 };
 

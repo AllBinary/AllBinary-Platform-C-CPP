@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_USERHELPER_H
         #define ADMIN_TAGHELPERS_USERHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -98,23 +104,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Table.h"
+        #include "admin/taghelpers/Table.h"
 
 class UserHelper: public Table {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: HashMap<Object*, Object*> hashMap;
+    private: HashMap<Object*, Object*>* hashMap;
 
-    private: PageContext pageContext;
+    private: PageContext* pageContext;
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
     private: std::string path;
 
-    private: Portion portion;
+    private: Portion* portion;
 
-public: UserHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: UserHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
     public: std::string delete_();
 

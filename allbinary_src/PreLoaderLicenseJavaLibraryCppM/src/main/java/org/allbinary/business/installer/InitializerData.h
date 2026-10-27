@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INSTALLER_INITIALIZERDATA_H
         #define ORG_ALLBINARY_BUSINESS_INSTALLER_INITIALIZERDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -49,9 +55,9 @@ class InitializerData
             : public Object
          {
 
-    private: static InitializerData instance() { return InitializerData(); }
+    private: static InitializerData* instance() { static std::unique_ptr<InitializerData> value(new InitializerData()); return value.get(); }
 
-    public: static InitializerData getInstance();
+    public: static InitializerData* getInstance();
 
     public: const std::string DBUSER = "DBUSER";
 

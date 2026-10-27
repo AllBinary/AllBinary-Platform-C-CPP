@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_TICK_TICKABLELAYERMANAGER_H
         #define ORG_ALLBINARY_GAME_TICK_TICKABLELAYERMANAGER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/layer/LayerManager.h>
 
       

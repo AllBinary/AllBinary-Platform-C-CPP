@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_STEERINGVISITOR_H
         #define ORG_ALLBINARY_GAME_LAYER_STEERINGVISITOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -51,9 +57,9 @@
         
 class SteeringVisitor: public Visitor {
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
-    public: BasicArrayList getList();
+    public: BasicArrayList* getList();
 
 };
 

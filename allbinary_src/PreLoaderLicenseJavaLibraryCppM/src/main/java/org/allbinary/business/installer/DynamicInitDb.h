@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INSTALLER_DYNAMICINITDB_H
         #define ORG_ALLBINARY_BUSINESS_INSTALLER_DYNAMICINITDB_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/business/init/db/DatabaseConnectionInfoInterface.h>
 
       
@@ -51,13 +57,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InitDb.h"
+        #include "org/allbinary/business/installer/InitDb.h"
 //Warning you must have sql root access
 class DynamicInitDb: public InitDb {
 
-public: DynamicInitDb(AbeClientInformationInterface abeClientInformation);
+public: DynamicInitDb(AbeClientInformationInterface* abeClientInformation);
 
-public: DynamicInitDb(AbeClientInformationInterface abeClientInformation, DatabaseConnectionInfoInterface databaseConnectionInfoInterface);
+public: DynamicInitDb(AbeClientInformationInterface* abeClientInformation, DatabaseConnectionInfoInterface* databaseConnectionInfoInterface);
 
 };
 

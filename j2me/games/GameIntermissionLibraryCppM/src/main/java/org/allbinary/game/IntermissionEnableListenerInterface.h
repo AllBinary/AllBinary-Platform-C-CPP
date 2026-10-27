@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INTERMISSIONENABLELISTENERINTERFACE_H
         #define ORG_ALLBINARY_GAME_INTERMISSIONENABLELISTENERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,7 +48,7 @@
         
 class IntermissionEnableListenerInterface {
 
-    void notifyIntermission(bool enable);
+    public: virtual void notifyIntermission(bool enable) = 0;
 
 };
 

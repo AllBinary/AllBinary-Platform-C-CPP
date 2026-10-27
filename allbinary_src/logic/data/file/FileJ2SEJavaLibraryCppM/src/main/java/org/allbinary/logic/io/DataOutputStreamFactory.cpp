@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -43,17 +49,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFileOutputStream.h"
-#include "AbDataOutputStream.h"
-#include "FileStreamFactory.h"
+        #include "org/allbinary/logic/io/AbFileOutputStream.h"
+#include "org/allbinary/logic/io/AbDataOutputStream.h"
+#include "org/allbinary/logic/io/FileStreamFactory.h"
 
 class DataOutputStreamFactory
             : public Object
          {
 
-    private: static DataOutputStreamFactory instance() { return DataOutputStreamFactory(); }
+    private: static DataOutputStreamFactory* instance() { static std::unique_ptr<DataOutputStreamFactory> value(new DataOutputStreamFactory()); return value.get(); }
 
-    public: static DataOutputStreamFactory getInstance(){
+    public: static DataOutputStreamFactory* getInstance(){
 
 
 
@@ -65,12 +71,12 @@ class DataOutputStreamFactory
 
                 //@Throws(Exception.constructor)
             
-    public: AbDataOutputStream getInstanceForAbFile(AbFile file){
+    public: AbDataOutputStream* getInstanceForAbFile(AbFile* file){
 
-    AbFileOutputStream idFileOutputStream = AbFileOutputStream::createFromAbFile(file);;
+    AbFileOutputStream* idFileOutputStream = AbFileOutputStream::createFromAbFile(file);;
     
 
-    AbDataOutputStream idOutData = AbDataOutputStream(idFileOutputStream);;
+    AbDataOutputStream* idOutData = new AbDataOutputStream(idFileOutputStream);;
     
 
 
@@ -83,15 +89,15 @@ class DataOutputStreamFactory
 
                 //@Throws(Exception.constructor)
             
-    public: AbDataOutputStream getInstance(std::string filePath, std::string fileName){
+    public: AbDataOutputStream* getInstance(std::string filePath, std::string fileName){
 
-    FileStreamFactory fileStreamFactory = FileStreamFactory::getInstance();;
+    FileStreamFactory* fileStreamFactory = FileStreamFactory::getInstance();;
     
 
-    AbFileOutputStream fileOutputStream = fileStreamFactory.getFileOutputStreamInstance(filePath, fileName);;
+    AbFileOutputStream* fileOutputStream = fileStreamFactory->getFileOutputStreamInstance(filePath, fileName);;
     
 
-    AbDataOutputStream idOutData = AbDataOutputStream(fileOutputStream);;
+    AbDataOutputStream* idOutData = new AbDataOutputStream(fileOutputStream);;
     
 
 

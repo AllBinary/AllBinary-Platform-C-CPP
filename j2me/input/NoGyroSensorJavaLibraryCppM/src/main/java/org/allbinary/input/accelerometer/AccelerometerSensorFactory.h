@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_ACCELEROMETER_ACCELEROMETERSENSORFACTORY_H
         #define ORG_ALLBINARY_INPUT_ACCELEROMETER_ACCELEROMETERSENSORFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,19 +58,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NoAccelerometerSensor.h"
+        #include "org/allbinary/input/accelerometer/NoAccelerometerSensor.h"
 
 class AccelerometerSensorFactory
             : public Object
          {
 
-    private: static AllBinaryOrientationSensor allBinaryAccelerometerSensor = AllBinaryOrientationSensor::NULL_ALLBINARY_ORIENTATION_SENSOR;
+    private: static inline AllBinaryOrientationSensor* allBinaryAccelerometerSensor = AllBinaryOrientationSensor::NULL_ALLBINARY_ORIENTATION_SENSOR;
 
                 //@Throws(Exception.constructor)
             
     public: static void init();
 
-    public: static AllBinaryOrientationSensor getInstance();
+    public: static AllBinaryOrientationSensor* getInstance();
 
 };
 

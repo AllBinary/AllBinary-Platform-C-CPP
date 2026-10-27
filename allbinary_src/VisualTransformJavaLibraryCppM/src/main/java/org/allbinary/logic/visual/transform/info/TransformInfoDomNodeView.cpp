@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
@@ -53,13 +59,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoDomNode.h"
-#include "TransformInfoInterface.h"
-#include "TransformInfoData.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoDomNode.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfoData.h"
 
 class TransformInfoDomNodeView: public TransformInfoDomNode, public DomNodeInterface {
 
-public: TransformInfoDomNodeView(TransformInfoInterface transformInfoInterface, std::string mapping) : TransformInfoDomNode(transformInfoInterface, mapping){
+public: TransformInfoDomNodeView(TransformInfoInterface* transformInfoInterface, std::string mapping) : TransformInfoDomNode(transformInfoInterface, mapping){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -69,7 +75,7 @@ public: TransformInfoDomNodeView(TransformInfoInterface transformInfoInterface, 
 }
 
 
-public: TransformInfoDomNodeView(TransformInfoInterface transformInfoInterface) : TransformInfoDomNode(transformInfoInterface){
+public: TransformInfoDomNodeView(TransformInfoInterface* transformInfoInterface) : TransformInfoDomNode(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -102,22 +108,22 @@ public: TransformInfoDomNodeView(std::string name) : TransformInfoDomNode(name,
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    TransformInfoData transformInfoData = TransformInfoData::getInstance();;
-    
-
-    Node subViewNode = document.createElement(transformInfoData.NAME);;
+    TransformInfoData* transformInfoData = TransformInfoData::getInstance();;
     
 
-    Attr viewNameAttr = document.createAttribute(transformInfoData.NAME);;
-    
-viewNameAttr.setValue(this->getTransformInfoInterface().getName());
+    Node* subViewNode = document->createElement(transformInfoData->NAME);;
     
 
-    NamedNodeMap componentNodeAttributes = subViewNode.getAttributes();;
+    Attr* viewNameAttr = document->createAttribute(transformInfoData->NAME);;
     
-componentNodeAttributes.setNamedItem(viewNameAttr);
+viewNameAttr->setValue(this->getTransformInfoInterface()->getName());
+    
+
+    NamedNodeMap* componentNodeAttributes = subViewNode->getAttributes();;
+    
+componentNodeAttributes->setNamedItem(viewNameAttr);
     
 
                         if(this->getMappedName() != 
@@ -126,11 +132,11 @@ componentNodeAttributes.setNamedItem(viewNameAttr);
                         
                                     {
                                     
-    Attr mappedNameAttr = document.createAttribute(transformInfoData.MAPPED);;
+    Attr* mappedNameAttr = document->createAttribute(transformInfoData->MAPPED);;
     
-mappedNameAttr.setValue(this->getMappedName());
+mappedNameAttr->setValue(this->getMappedName());
     
-componentNodeAttributes.setNamedItem(mappedNameAttr);
+componentNodeAttributes->setNamedItem(mappedNameAttr);
     
 
                                     }

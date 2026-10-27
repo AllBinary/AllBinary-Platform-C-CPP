@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -40,8 +46,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryLayer.h"
-#include "LayerManager.h"
+        #include "org/allbinary/layer/AllBinaryLayer.h"
+#include "org/allbinary/layer/LayerManager.h"
 
 class LayerManagerLoggingBase
             : public Object
@@ -49,19 +55,19 @@ class LayerManagerLoggingBase
 
                 //@Throws(Exception.constructor)
             
-    public: void append(AllBinaryLayer layerInterface){
+    public: void append(AllBinaryLayer* layerInterface){
 }
 
 
-    public: void appendAt(AllBinaryLayer layerInterface, int32_t index){
+    public: void appendAt(AllBinaryLayer* layerInterface, int32_t index){
 }
 
 
-    public: void remove(AllBinaryLayer layerInterface){
+    public: void remove(AllBinaryLayer* layerInterface){
 }
 
 
-    public: void removeResult(LayerManager layerManager, AllBinaryLayer layerInterface, bool result){
+    public: void removeResult(LayerManager* layerManager, AllBinaryLayer* layerInterface, bool result){
 }
 
 

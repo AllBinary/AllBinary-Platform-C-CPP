@@ -21,6 +21,12 @@
         #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_GENERATOR_PREVIEWGENERATORSTOREFRONTCONTEXTVIEW_H
         #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_GENERATOR_PREVIEWGENERATORSTOREFRONTCONTEXTVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -59,13 +65,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeneratorStoreFrontContextView.h"
+        #include "views/business/context/modules/storefront/generator/GeneratorStoreFrontContextView.h"
 
 class PreviewGeneratorStoreFrontContextView: public GeneratorStoreFrontContextView {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: PreviewGeneratorStoreFrontContextView(TransformInfoInterface transformInfoInterface);
+public: PreviewGeneratorStoreFrontContextView(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             

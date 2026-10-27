@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -71,15 +77,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WorkFlowInterface.h"
+        #include "org/allbinary/logic/control/workflow/WorkFlowInterface.h"
 
 class TagWorkFlowFactory
             : public Object
          {
 
-    private: static TagWorkFlowFactory instance() { return TagWorkFlowFactory(); }
+    private: static TagWorkFlowFactory* instance() { static std::unique_ptr<TagWorkFlowFactory> value(new TagWorkFlowFactory()); return value.get(); }
 
-    public: static TagWorkFlowFactory getInstance(){
+    public: static TagWorkFlowFactory* getInstance(){
 
 
 
@@ -89,7 +95,7 @@ class TagWorkFlowFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: TagWorkFlowFactory(){
 }
@@ -97,21 +103,21 @@ private: TagWorkFlowFactory(){
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: WorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
+    public: WorkFlowInterface* getInstance(AbeClientInformationInterface* abeClientInformation, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
 
         try {
             
-    std::string workFlowClassName = propertiesHashMap.get(DynamicObjectData::NAME);;
+    std::string workFlowClassName = propertiesHashMap->get(DynamicObjectData::NAME);;
     
 
     std::vector<Object*> params = std::vector<Object*>(2);;
     
 
-    std::vector<Class*> classes = std::vector<Class>(2);;
+    std::vector<Class*> classes = std::vector<Class*>(2);;
     
-classes[0]= propertiesHashMap.getClass();
+classes[0]= propertiesHashMap->getClass();
     
-classes[1]= AbeFactory::getInstance().getClass();
+classes[1]= AbeFactory::getInstance()->getClass();
     
 params[0]= propertiesHashMap;
     
@@ -121,34 +127,34 @@ params[1]= pageContext;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeFactory::getInstance().getInstance(abeClientInformation, workFlowClassName, classes, params);
+                        return dynamic_cast<WorkFlowInterface*>(AbeFactory::getInstance()->getInstance(abeClientInformation, workFlowClassName, classes, params));
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    std::string workFlowClassName = propertiesHashMap.get(DynamicObjectData::NAME);;
+    std::string workFlowClassName = propertiesHashMap->get(DynamicObjectData::NAME);;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Failed To Get Instance: ");
+stringBuffer->append("Failed To Get Instance: ");
     
-stringBuffer.append(workFlowClassName);
+stringBuffer->append(workFlowClassName);
     
-stringBuffer.append("->");
+stringBuffer->append("->");
     
-stringBuffer.append(TagWorkFlowFactory::instance.constructor.name.toString());
+stringBuffer->append(TagWorkFlowFactory::instance()->getClass()->getName());
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(stringBuffer.toString(), this, commonStrings.GET_INSTANCE, e);
+this->logUtil->put(stringBuffer->toString(), this, commonStrings->GET_INSTANCE, &e);
     
 
                                     }
@@ -161,30 +167,30 @@ this->logUtil.put(stringBuffer.toString(), this, commonStrings.GET_INSTANCE, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    std::string workFlowClassName = propertiesHashMap.get(DynamicObjectData::NAME);;
+    std::string workFlowClassName = propertiesHashMap->get(DynamicObjectData::NAME);;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Failed To Get Instance: ");
+stringBuffer->append("Failed To Get Instance: ");
     
-stringBuffer.append(workFlowClassName);
+stringBuffer->append(workFlowClassName);
     
-stringBuffer.append("->");
+stringBuffer->append("->");
     
-stringBuffer.append(TagWorkFlowFactory::instance.constructor.name.toString());
+stringBuffer->append(TagWorkFlowFactory::instance()->getClass()->getName());
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(stringBuffer.toString(), this, commonStrings.GET_INSTANCE, e);
+this->logUtil->put(stringBuffer->toString(), this, commonStrings->GET_INSTANCE, &e);
     
 
                                     }
@@ -195,7 +201,7 @@ this->logUtil.put(stringBuffer.toString(), this, commonStrings.GET_INSTANCE, e);
                             throw e;
                     
 }
-*/
+
 }
 
 

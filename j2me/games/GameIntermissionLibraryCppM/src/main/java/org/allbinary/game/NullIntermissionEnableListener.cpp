@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,15 +44,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "IntermissionEnableListenerInterface.h"
+        #include "org/allbinary/game/IntermissionEnableListenerInterface.h"
 
 class NullIntermissionEnableListener
             : public Object
-        : public IntermissionEnableListenerInterface {
+        , public IntermissionEnableListenerInterface {
 
-    private: static const IntermissionEnableListenerInterface SINGLETON = NullIntermissionEnableListener();
+    private: static inline IntermissionEnableListenerInterface* SINGLETON = new NullIntermissionEnableListener();
 
-    public: static IntermissionEnableListenerInterface getInstance(){
+    public: static IntermissionEnableListenerInterface* getInstance(){
 
 
 

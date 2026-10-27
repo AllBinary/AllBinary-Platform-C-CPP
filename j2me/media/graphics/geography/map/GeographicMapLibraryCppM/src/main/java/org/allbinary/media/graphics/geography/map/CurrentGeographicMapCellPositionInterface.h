@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_CURRENTGEOGRAPHICMAPCELLPOSITIONINTERFACE_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_CURRENTGEOGRAPHICMAPCELLPOSITIONINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,11 +45,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapCellPosition.h"
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
 
 class CurrentGeographicMapCellPositionInterface {
 
-    GeographicMapCellPosition getCurrentGeographicMapCellPosition();
+    public: virtual GeographicMapCellPosition* getCurrentGeographicMapCellPosition() = 0;
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_STATUS_ORDERSTATUSEMAIL_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_STATUS_ORDERSTATUSEMAIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -99,19 +105,19 @@ class OrderStatusEmail
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: AbeClientInformationInterface abeClientInformation;
+    private: AbeClientInformationInterface* abeClientInformation;
 
-    private: OrderHistory orderHistory;
+    private: OrderHistory* orderHistory;
 
-    private: StoreFrontInterface storeFrontInterface;
+    private: StoreFrontInterface* storeFrontInterface;
 
-    private: UserInterface user;
+    private: UserInterface* user;
 
-public: OrderStatusEmail(AbeClientInformationInterface abeClientInformation, OrderHistory orderHistory);
+public: OrderStatusEmail(AbeClientInformationInterface* abeClientInformation, OrderHistory* orderHistory);
 
                 //@Throws(Exception.constructor)
             

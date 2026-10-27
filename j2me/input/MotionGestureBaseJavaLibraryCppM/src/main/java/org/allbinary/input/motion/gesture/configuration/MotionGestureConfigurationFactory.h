@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_CONFIGURATION_MOTIONGESTURECONFIGURATIONFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_CONFIGURATION_MOTIONGESTURECONFIGURATIONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,15 +47,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionGestureConfiguration.h"
+        #include "org/allbinary/input/motion/gesture/configuration/MotionGestureConfiguration.h"
 
 class MotionGestureConfigurationFactory
             : public Object
          {
 
-    private: static MotionGestureConfiguration config = MotionGestureConfiguration();
+    private: static MotionGestureConfiguration* config() { static std::unique_ptr<MotionGestureConfiguration> value(new MotionGestureConfiguration()); return value.get(); }
 
-    public: static MotionGestureConfiguration getInstance();
+    public: static MotionGestureConfiguration* getInstance();
 
 public: MotionGestureConfigurationFactory();
 

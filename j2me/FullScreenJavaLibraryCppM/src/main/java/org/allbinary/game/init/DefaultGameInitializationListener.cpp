@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -75,52 +81,52 @@
         
 class DefaultGameInitializationListener
             : public Object
-        : public GameInitializedListenerInterface {
+        , public GameInitializedListenerInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const SWTJOGLProcessor swtJOGLProcessor = SWTJOGLProcessor::getInstance();
+    private: SWTJOGLProcessor* swtJOGLProcessor = SWTJOGLProcessor::getInstance();
 
 public: DefaultGameInitializationListener(){
 
-    GameInitializedEventHandler gameInitializedEventHandler = GameInitializedEventHandler::getInstance();;
+    GameInitializedEventHandler* gameInitializedEventHandler = GameInitializedEventHandler::getInstance();;
     
-gameInitializedEventHandler.removeAllListeners();
+gameInitializedEventHandler->removeAllListeners();
     
-gameInitializedEventHandler.addListenerInterface(this);
+gameInitializedEventHandler->addListenerInterface(dynamic_cast<GameInitializedListenerInterface*>(this));
     
 }
 
 
-    public: void onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject* eventObject){
+ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
     bool firstTime = true;
 
-    public: void onGameInitialized(GameInitializedEvent gameInitializedEvent){
+    public: void onGameInitialized(GameInitializedEvent* gameInitializedEvent){
 
     std::string ON_GAME_INITIALIZED = "onGameInitialized";;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
         try {
-            this->logUtil.putF(commonStrings.START, this, ON_GAME_INITIALIZED);
+            this->logUtil->putF(commonStrings->START, this, ON_GAME_INITIALIZED);
     
 
-        while(!this->swtJOGLProcessor.isHolderCreated())
+        while(!this->swtJOGLProcessor->isHolderCreated())
         {
-this->logUtil.putF(commonStrings.UPDATE, this, ON_GAME_INITIALIZED);
+this->logUtil->putF(commonStrings->UPDATE, this, ON_GAME_INITIALIZED);
     
 Thread::sleep(20);
     
 }
 
-FeatureResourceInitializationUtil::getInstance().init(gameInitializedEvent.getLevel());
+FeatureResourceInitializationUtil::getInstance()->init(gameInitializedEvent->getLevel());
     
 
                         if(this->firstTime)
@@ -132,16 +138,16 @@ FeatureResourceInitializationUtil::getInstance().init(gameInitializedEvent.getLe
                                     }
                                 
                         else {
-                            this->swtJOGLProcessor.onSurfaceChanged();
+                            this->swtJOGLProcessor->onSurfaceChanged();
     
 
                         }
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(commonStrings.EXCEPTION, this, ON_GAME_INITIALIZED, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, ON_GAME_INITIALIZED, &e);
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_PROFILEACTIONSCRIPTOUTPUTFACTORY_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_PROFILEACTIONSCRIPTOUTPUTFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,9 +55,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProfileActionScriptOutputInterface.h"
-#include "ImageActionScriptOutputData.h"
-#include "ImageActionScriptOutput.h"
+        #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ProfileActionScriptOutputInterface.h"
+#include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutputData.h"
+#include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutput.h"
 
 class ProfileActionScriptOutputFactory
             : public Object
@@ -59,7 +65,7 @@ class ProfileActionScriptOutputFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static ProfileActionScriptOutputInterface getInstance(Node node);
+    public: static ProfileActionScriptOutputInterface* getInstance(Node* node);
 
 private: ProfileActionScriptOutputFactory();
 

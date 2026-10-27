@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,16 +60,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PrimitiveLongSingleton.h"
-#include "MathUtil.h"
+        #include "org/allbinary/logic/math/PrimitiveLongSingleton.h"
+#include "org/allbinary/logic/math/MathUtil.h"
 
 class PrimitiveLongUtil
             : public Object
          {
 
-    public: static PrimitiveLongUtil createPowerOfTen(int32_t powerOfTen);
+    public: static PrimitiveLongUtil* createPowerOfTen(int32_t powerOfTen);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: int32_t powerOfTen;
 
@@ -75,7 +81,7 @@ class PrimitiveLongUtil
 
     private: int32_t currentTotalDigits= 0;
 
-    private: const PrimitiveLongSingleton primitiveLongSingleton = PrimitiveLongSingleton::getInstance();
+    private: PrimitiveLongSingleton* primitiveLongSingleton = PrimitiveLongSingleton::getInstance();
 
 public: PrimitiveLongUtil(int32_t powerOfTen, Object* unused);
 

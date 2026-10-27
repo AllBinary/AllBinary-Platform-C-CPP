@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_INVENTORYENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_INVENTORYENTITY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -86,29 +92,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InventoryEntityInterface.h"
+        #include "org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntityInterface.h"
 
 class InventoryEntity: public AbSqlBean, public InventoryEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
     private: const std::string tableName = "basicinventory";
 
 public: InventoryEntity();
 
-    public: void insert(BasicArrayList values);
+    public: void insert(BasicArrayList* values);
 
     public: void delete_(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getItems(StoreFrontInterface storeFrontInterface);
+    public: BasicArrayList* getItems(StoreFrontInterface* storeFrontInterface);
 
                 //@Throws(MoneyException.constructor)
             
-    public: ItemInterface getItem(std::string id);
+    public: ItemInterface* getItem(std::string id);
 
     public: std::string getWeight(std::string id);
 
@@ -116,7 +122,7 @@ public: InventoryEntity();
 
     public: std::string createTable();
 
-    public: void update(HashMap<Object*, Object*> updatedValues);
+    public: void update(HashMap<Object*, Object*>* updatedValues);
 
     public: std::string dropTable();
 

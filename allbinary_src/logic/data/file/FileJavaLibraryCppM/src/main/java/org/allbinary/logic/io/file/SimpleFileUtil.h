@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -94,31 +100,31 @@ class SimpleFileUtil
             : public Object
          {
 
-    private: static SimpleFileUtil instance() { return SimpleFileUtil(); }
+    private: static SimpleFileUtil* instance() { static std::unique_ptr<SimpleFileUtil> value(new SimpleFileUtil()); return value.get(); }
 
-    public: static SimpleFileUtil getInstance();
+    public: static SimpleFileUtil* getInstance();
 
-    public: static OutputStream nullOutputStream();
+    public: static OutputStream* nullOutputStream();
 
-    public: static Writer nullWriter();
+    public: static Writer* nullWriter();
 
-    public: static Reader nullReader();
+    public: static Reader* nullReader();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: const Writer NULL_WRITER = SimpleFileUtil::nullWriter();
+    public: Writer* NULL_WRITER = SimpleFileUtil::nullWriter();
 
-    public: const Reader NULL_READER = SimpleFileUtil::nullReader();
+    public: Reader* NULL_READER = SimpleFileUtil::nullReader();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const NullUtil nullUtil = NullUtil::getInstance();
+    private: NullUtil* nullUtil = NullUtil::getInstance();
 
-    private: const StreamUtil streamUtil = StreamUtil::getInstance();
+    private: StreamUtil* streamUtil = StreamUtil::getInstance();
 
-    public: BasicArrayList loadFileAsList(InputStream inputStream, int32_t max, std::vector<int8_t> byteArray1);
+    public: BasicArrayList* loadFileAsList(InputStream* inputStream, int32_t max, std::vector<int8_t> byteArray1);
 
-    public: BasicArrayList loadFileAsListReturnLine(InputStream inputStream, int32_t max, std::vector<int8_t> byteArray1, int32_t includeReturnLine);
+    public: BasicArrayList* loadFileAsListReturnLine(InputStream* inputStream, int32_t max, std::vector<int8_t> byteArray1, int32_t includeReturnLine);
 
     public: std::string createStringFromArrayOfStrings(std::vector<std::string> stringArray);
 

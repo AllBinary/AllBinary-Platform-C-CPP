@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_TIMEINTERVALACTIONSCRIPTCONDITION_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_TIMEINTERVALACTIONSCRIPTCONDITION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -75,22 +81,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicProfileActionScriptCondition.h"
-#include "TimeIntervalActionScriptConditionInterface.h"
-#include "TimeIntervalActionScriptConditionJPanel.h"
-#include "TimeIntervalActionScriptConditionData.h"
+        #include "org/allbinary/input/automation/actions/script/condition/BasicProfileActionScriptCondition.h"
+#include "org/allbinary/input/automation/actions/script/condition/TimeIntervalActionScriptConditionInterface.h"
+#include "org/allbinary/input/automation/actions/script/condition/TimeIntervalActionScriptConditionJPanel.h"
+#include "org/allbinary/input/automation/actions/script/condition/TimeIntervalActionScriptConditionData.h"
 
 class TimeIntervalActionScriptCondition: public BasicProfileActionScriptCondition, public TimeIntervalActionScriptConditionInterface {
 
-    private: static const std::string NAME = "Time Interval";
+    private: static inline const std::string NAME = "Time Interval";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: TimeIntervalActionScriptConditionJPanel timeIntervalActionScriptConditionJPanel;
+    private: TimeIntervalActionScriptConditionJPanel* timeIntervalActionScriptConditionJPanel;
 
-    private: TimeDelayHelper timeHelper;
+    private: TimeDelayHelper* timeHelper;
 
-public: TimeIntervalActionScriptCondition(Node node);
+public: TimeIntervalActionScriptCondition(Node* node);
 
 public: TimeIntervalActionScriptCondition();
 
@@ -98,21 +104,21 @@ public: TimeIntervalActionScriptCondition();
 
     public: void showDialog();
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
     public: void log();
 
-    public: TimeDelayHelper getTimeDelayHelper();
+    public: TimeDelayHelper* getTimeDelayHelper();
 
-    public: void setTimeDelayHelper(TimeDelayHelper timeHelper);
+    public: void setTimeDelayHelper(TimeDelayHelper* timeHelper);
 
                 //@Throws(Exception.constructor)
             
-    public: bool shouldProcess(Long frame);
+    public: bool shouldProcess(int64_t frame);
 
 };
 

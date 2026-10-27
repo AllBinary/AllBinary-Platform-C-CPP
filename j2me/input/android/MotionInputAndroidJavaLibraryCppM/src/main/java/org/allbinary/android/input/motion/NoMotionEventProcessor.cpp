@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,18 +42,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionEventProcessor.h"
+        #include "org/allbinary/android/input/motion/MotionEventProcessor.h"
 
 class NoMotionEventProcessor: public MotionEventProcessor {
 
-    public: static const MotionEventProcessor SINGLETON = MotionEventProcessor();
+    public: static MotionEventProcessor* SINGLETON() { static std::unique_ptr<MotionEventProcessor> value(new MotionEventProcessor()); return value.get(); }
 
-    public: static MotionEventProcessor getInstance(){
+    public: static MotionEventProcessor* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoMotionEventProcessor::SINGLETON;
+                        return NoMotionEventProcessor::SINGLETON();
     
 }
 

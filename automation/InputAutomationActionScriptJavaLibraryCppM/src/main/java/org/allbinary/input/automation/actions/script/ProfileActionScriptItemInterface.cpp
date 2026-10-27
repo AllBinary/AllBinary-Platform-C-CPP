@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -45,7 +51,7 @@ class ProfileActionScriptItemInterface {
 
                 //@Throws(Exception.constructor)
             
-    void process(Long frame)
+    public: virtual void process(int64_t frame) = 0;
 
 };
 

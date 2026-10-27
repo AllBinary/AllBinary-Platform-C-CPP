@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <android/graphics/Matrix.h>
@@ -59,15 +65,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageBaseRotationAnimation.h"
+        #include "org/allbinary/animation/image/ImageBaseRotationAnimation.h"
 
 class AllBinaryFlickerAndroidImageRotationAnimation: public ImageBaseRotationAnimation {
 
-    private: const ImageModifierUtil imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
+    private: ImageModifierUtil* imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
 
-    private: const AndroidImageUtil androidImageUtil = AndroidImageUtil::getInstance();
+    private: AndroidImageUtil* androidImageUtil = AndroidImageUtil::getInstance();
 
-    private: const Matrix matrix = Matrix();
+    private: Matrix* matrix = new Matrix();
 
     private: int32_t halfWidth;
 
@@ -75,9 +81,9 @@ class AllBinaryFlickerAndroidImageRotationAnimation: public ImageBaseRotationAni
 
     private: int16_t increment;
 
-    private: Image originalImage;
+    private: Image* originalImage;
 
-public: AllBinaryFlickerAndroidImageRotationAnimation(Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior) : ImageBaseRotationAnimation(image, angleInfo, totalAngle, animationBehavior){
+public: AllBinaryFlickerAndroidImageRotationAnimation(Image* originalImage, Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior) : ImageBaseRotationAnimation(image, angleInfo, totalAngle, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -86,26 +92,26 @@ public: AllBinaryFlickerAndroidImageRotationAnimation(Image originalImage, Image
                     
 this->originalImage= originalImage;
     
-this->halfWidth= (image.getWidth()>>1);
+this->halfWidth= (image->getWidth()>>1);
     
-this->halfHeight= (image.getHeight()>>1);
+this->halfHeight= (image->getHeight()>>1);
     
-this->increment= (this->angleInfo.getAngleIncrementInfo().getAngleIncrement());
+this->increment= (this->angleInfo.getAngleIncrementInfo()->getAngleIncrement());
     
 }
 
 
-    public: void setBasicColorP(BasicColor basicColor){
+    public: void setBasicColorP(BasicColor* basicColor){
 
     bool changed = false;;
     
 
                         if(this->getBasicColorP() == 
                                     nullptr
-                                 || this->getBasicColorP().intValue() != basicColor.intValue())
+                                 || this->getBasicColorP()->intValue() != basicColor->intValue())
                         
                                     {
-                                    this->imageModifierUtil.setColor(this->originalImage, this->getImage(), 0, basicColor);
+                                    this->imageModifierUtil->setColor(this->originalImage, this->getImage(), 0, basicColor);
     
 changed= true;
     
@@ -118,7 +124,7 @@ super.setBasicColorP(basicColor);
                         if(changed)
                         
                                     {
-                                    this->matrix.setRotate(0.0, this->halfWidth, this->halfHeight);
+                                    this->matrix->setRotate(0.0, this->halfWidth, this->halfHeight);
     
 this->updateImage();
     
@@ -128,7 +134,7 @@ this->updateImage();
 }
 
 
-    public: void changeBasicColor(BasicColor basicColor){
+    public: void changeBasicColor(BasicColor* basicColor){
 this->setBasicColorP(basicColor);
     
 }
@@ -149,13 +155,13 @@ this->setBasicColorP(basicColor);
                                 
 super.setAlpha(alpha);
     
-this->imageModifierUtil.setAlpha(this->originalImage, this->getImage(), 0, this->alphaP);
+this->imageModifierUtil->setAlpha(this->originalImage, this->getImage(), 0, this->alphaP);
     
 
                         if(changed)
                         
                                     {
-                                    this->matrix.setRotate(0.0, this->halfWidth, this->halfHeight);
+                                    this->matrix->setRotate(0.0, this->halfWidth, this->halfHeight);
     
 this->updateImage();
     
@@ -168,7 +174,7 @@ this->updateImage();
     public: void nextRotation(){
 super.nextRotation();
     
-this->matrix.setRotate(this->increment, this->halfWidth, this->halfHeight);
+this->matrix->setRotate(this->increment, this->halfWidth, this->halfHeight);
     
 this->updateImage();
     
@@ -178,7 +184,7 @@ this->updateImage();
     public: void previousRotation(){
 super.previousRotation();
     
-this->matrix.setRotate( -this->increment, this->halfWidth, this->halfHeight);
+this->matrix->setRotate( -this->increment, this->halfWidth, this->halfHeight);
     
 this->updateImage();
     
@@ -186,7 +192,7 @@ this->updateImage();
 
 
     private: void updateImage(){
-this->androidImageUtil.rotate(this->getImage(), originalImage, matrix, imageModifierUtil.paint);
+this->androidImageUtil->rotate(this->getImage(), originalImage, matrix, imageModifierUtil->paint);
     
 }
 
@@ -202,7 +208,7 @@ this->circularIndexUtil.setIndex(index);
     
 this->angleInfo.adjustAngle(newFrame);
     
-this->matrix.setRotate((newFrame -currentFrame) *this->increment, this->halfWidth, this->halfHeight);
+this->matrix->setRotate((newFrame -currentFrame) *this->increment, this->halfWidth, this->halfHeight);
     
 this->updateImage();
     

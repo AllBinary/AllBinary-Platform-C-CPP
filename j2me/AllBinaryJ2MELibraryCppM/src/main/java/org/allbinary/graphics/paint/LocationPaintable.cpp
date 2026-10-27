@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -41,15 +47,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LocationPaintableInterface.h"
+        #include "org/allbinary/graphics/paint/LocationPaintableInterface.h"
 
 class LocationPaintable
             : public Object
-        : public LocationPaintableInterface {
+        , public LocationPaintableInterface {
 
-    private: static LocationPaintable instance() { return LocationPaintable(); }
+    private: static LocationPaintable* instance() { static std::unique_ptr<LocationPaintable> value(new LocationPaintable()); return value.get(); }
 
-    public: static LocationPaintable getInstance(){
+    public: static LocationPaintable* getInstance(){
 
 
 
@@ -59,7 +65,7 @@ class LocationPaintable
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 }
 
 

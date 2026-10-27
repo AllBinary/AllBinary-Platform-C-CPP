@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_CONTENT_NOTIFICATIONBUILDER_H
         #define ORG_ALLBINARY_CONTENT_NOTIFICATIONBUILDER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -63,9 +69,9 @@ class NotificationBuilder
             : public Object
          {
 
-    public: static const NotificationBuilder NULL_NOTIFICATION_BUILDER = NotificationBuilder();
+    public: static NotificationBuilder* NULL_NOTIFICATION_BUILDER() { static std::unique_ptr<NotificationBuilder> value(new NotificationBuilder()); return value.get(); }
 
-    public: Parcelable build(Context context, Command command, std::string message, Integer integer, PendingIntent pendingIntent);
+    public: Parcelable* build(Context* context, Command* command, std::string message, int32_t integer, PendingIntent* pendingIntent);
 
 };
 

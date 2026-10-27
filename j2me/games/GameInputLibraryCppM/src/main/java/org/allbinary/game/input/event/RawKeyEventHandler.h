@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_RAWKEYEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_INPUT_EVENT_RAWKEYEVENTHANDLER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,37 +67,37 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RawKeyEventListener.h"
+        #include "org/allbinary/game/input/event/RawKeyEventListener.h"
 
 class RawKeyEventHandler
             : public Object
          {
 
-    private: static RawKeyEventHandler instance() { return RawKeyEventHandler(); }
+    private: static RawKeyEventHandler* instance() { static std::unique_ptr<RawKeyEventHandler> value(new RawKeyEventHandler()); return value.get(); }
 
-    public: static RawKeyEventHandler getInstance();
+    public: static RawKeyEventHandler* getInstance();
 
-    private: static const std::string TOTAL_LISTENERS = "Total Listeners: ";
+    private: static inline const std::string TOTAL_LISTENERS = "Total Listeners: ";
 
-    private: static const std::string LISTENER_LABEL = " Listener: ";
+    private: static inline const std::string LISTENER_LABEL = " Listener: ";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: BasicArrayList eventListenerInterfaceList;
+    protected: BasicArrayList* eventListenerInterfaceList;
 
 public: RawKeyEventHandler();
 
     public: void removeAllListeners();
 
-    public: void addListeners(BasicArrayList vector);
+    public: void addListeners(BasicArrayList* vector);
 
-    public: void addListenerSingleThreaded(RawKeyEventListener eventListenerInterface);
+    public: void addListenerSingleThreaded(RawKeyEventListener* eventListenerInterface);
 
-    public: void addListener(RawKeyEventListener eventListenerInterface);
+    public: void addListener(RawKeyEventListener* eventListenerInterface);
 
-    public: void removeListenerSingleThreaded(RawKeyEventListener eventListenerInterface);
+    public: void removeListenerSingleThreaded(RawKeyEventListener* eventListenerInterface);
 
-    public: void removeListener(RawKeyEventListener eventListenerInterface);
+    public: void removeListener(RawKeyEventListener* eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
@@ -99,9 +105,9 @@ public: RawKeyEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(int32_t keyCode, int32_t deviceId, bool repeated, RawKeyEventListener eventListenerInterface);
+    protected: void process(int32_t keyCode, int32_t deviceId, bool repeated, RawKeyEventListener* eventListenerInterface);
 
-    public: BasicArrayList getEventListenerInterfaceListP();
+    public: BasicArrayList* getEventListenerInterfaceListP();
 
     public: std::string toString();
 

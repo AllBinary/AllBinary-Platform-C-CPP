@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -55,11 +61,11 @@ class PlatformBitmapBase
             : public Object
          {
 
-    public: static const PlatformBitmapBase NULL_PLATFORM_BITMAP_BASE = PlatformBitmapBase();
+    public: static PlatformBitmapBase* NULL_PLATFORM_BITMAP_BASE() { static std::unique_ptr<PlatformBitmapBase> value(new PlatformBitmapBase()); return value.get(); }
 
     public: int32_t alpha = 255;
 
-    public: BasicColor basicColor = BasicColorFactory::getInstance().NULL_COLOR;
+    public: BasicColor* basicColor = BasicColorFactory::getInstance()->NULL_COLOR;
 
     public: int32_t getWidth(){
 
@@ -81,7 +87,7 @@ class PlatformBitmapBase
 }
 
 
-    public: Image getImage(){
+    public: Image* getImage(){
 
 
 

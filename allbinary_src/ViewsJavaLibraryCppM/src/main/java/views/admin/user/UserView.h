@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_USER_USERVIEW_H
         #define VIEWS_ADMIN_USER_USERVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/UserDomNode.h>
@@ -62,11 +68,11 @@
         
 class UserView: public HttpContextView {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: UserInterface user;
+    protected: UserInterface* user;
 
-public: UserView(TransformInfoInterface transformInfoInterface);
+public: UserView(TransformInfoInterface* transformInfoInterface);
 
     public: void addDomNodeInterfaces();
 

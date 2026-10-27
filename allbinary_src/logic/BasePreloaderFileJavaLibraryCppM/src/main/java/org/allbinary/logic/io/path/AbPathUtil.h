@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_PATH_ABPATHUTIL_H
         #define ORG_ALLBINARY_LOGIC_IO_PATH_ABPATHUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,17 +47,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbPath.h"
+        #include "org/allbinary/logic/io/path/AbPath.h"
 
 class AbPathUtil
             : public Object
          {
 
-    private: static AbPathUtil instance() { return AbPathUtil(); }
+    private: static AbPathUtil* instance() { static std::unique_ptr<AbPathUtil> value(new AbPathUtil()); return value.get(); }
 
-    public: static AbPathUtil getInstance();
+    public: static AbPathUtil* getInstance();
 
-    public: const AbPath NO_ABPATH = AbPath::createAbPath();
+    public: AbPath* NO_ABPATH = AbPath::createAbPath();
 
 };
 

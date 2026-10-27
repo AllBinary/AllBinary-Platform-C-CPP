@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYMODIFIERTREE_H
         #define ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYMODIFIERTREE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/category/CategoryFactoryInterface.h>
@@ -62,24 +68,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryPrivateTree.h"
-#include "CategoryModifierTreeInterface.h"
+        #include "org/allbinary/data/tree/category/CategoryPrivateTree.h"
+#include "org/allbinary/data/tree/category/CategoryModifierTreeInterface.h"
 
 class CategoryModifierTree: public CategoryPrivateTree, public CategoryModifierTreeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const Directory directory = Directory::getInstance();
+    private: Directory* directory = Directory::getInstance();
 
-public: CategoryModifierTree(CategoryFactoryInterface categoryFactoryInterface);
+public: CategoryModifierTree(CategoryFactoryInterface* categoryFactoryInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void insert(CategoryInterface parentCategoryInterface, CategoryInterface newChildCategoryInterface);
+    public: void insert(CategoryInterface* parentCategoryInterface, CategoryInterface* newChildCategoryInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void delete_(CategoryInterface parentCategoryInterface, CategoryInterface existingChildCategoryInterface);
+    public: void delete_(CategoryInterface* parentCategoryInterface, CategoryInterface* existingChildCategoryInterface);
 
 };
 

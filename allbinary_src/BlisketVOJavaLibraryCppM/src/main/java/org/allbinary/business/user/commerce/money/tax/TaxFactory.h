@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_TAXFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_TAXFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -114,13 +120,13 @@ class TaxFactory
             : public Object
          {
 
-    private: static TaxFactory instance() { return TaxFactory(); }
+    private: static TaxFactory* instance() { static std::unique_ptr<TaxFactory> value(new TaxFactory()); return value.get(); }
 
-    public: static TaxFactory getInstance();
+    public: static TaxFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: const std::string TAXATIONFILENAME = "taxationMethod.xml";
 
@@ -128,7 +134,7 @@ private: TaxFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: TaxModuleInterface getInstance(AbeClientInformationInterface abeClientInformation, StoreFrontInterface storeFrontInterface);
+    public: TaxModuleInterface* getInstance(AbeClientInformationInterface* abeClientInformation, StoreFrontInterface* storeFrontInterface);
 
 };
 

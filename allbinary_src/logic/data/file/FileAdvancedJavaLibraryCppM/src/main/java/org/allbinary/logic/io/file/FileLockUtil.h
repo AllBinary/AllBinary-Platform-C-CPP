@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILELOCKUTIL_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_FILELOCKUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,43 +73,43 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFile.h"
+        #include "org/allbinary/logic/io/file/AbFile.h"
 
 class FileLockUtil
             : public Object
          {
 
-    private: static FileLockUtil instance() { return FileLockUtil(); }
+    private: static FileLockUtil* instance() { static std::unique_ptr<FileLockUtil> value(new FileLockUtil()); return value.get(); }
 
-    public: static FileLockUtil getInstance();
+    public: static FileLockUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: FileLockUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getAll(BasicArrayList vector, bool isReturnOnFailure);
+    public: BasicArrayList* getAll(BasicArrayList* vector, bool isReturnOnFailure);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getAllPossible(BasicArrayList vector);
+    public: BasicArrayList* getAllPossible(BasicArrayList* vector);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getAllOrNone(BasicArrayList vector);
+    public: BasicArrayList* getAllOrNone(BasicArrayList* vector);
 
                 //@Throws(Exception.constructor)
             
-    public: FileLock getLock(AbFile file);
+    public: FileLock* getLock(AbFile* file);
 
                 //@Throws(Exception.constructor)
             
-    public: FileLock getLock(AbFileOutputStream fileOutputStream);
+    public: FileLock* getLock(AbFileOutputStream* fileOutputStream);
 
                 //@Throws(Exception.constructor)
             
-    public: FileLock getLock(FileChannel fileChannel);
+    public: FileLock* getLock(FileChannel* fileChannel);
 
 };
 

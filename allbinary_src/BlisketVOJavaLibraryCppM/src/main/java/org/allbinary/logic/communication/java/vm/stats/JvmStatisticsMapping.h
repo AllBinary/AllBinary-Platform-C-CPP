@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_JAVA_VM_STATS_JVMSTATISTICSMAPPING_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_JAVA_VM_STATS_JVMSTATISTICSMAPPING_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -56,14 +64,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JvmStatistics.h"
-#include "JvmStatisticsData.h"
+        #include "org/allbinary/logic/communication/java/vm/stats/JvmStatistics.h"
+#include "org/allbinary/logic/communication/java/vm/stats/JvmStatisticsData.h"
 
 class JvmStatisticsMapping: public JvmStatistics, public TableMappingInterface {
 
 public: JvmStatisticsMapping();
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
                 //@Throws(Exception.constructor)
             
@@ -71,7 +79,7 @@ public: JvmStatisticsMapping();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList toVector();
+    public: BasicArrayList* toVector();
 
 };
 

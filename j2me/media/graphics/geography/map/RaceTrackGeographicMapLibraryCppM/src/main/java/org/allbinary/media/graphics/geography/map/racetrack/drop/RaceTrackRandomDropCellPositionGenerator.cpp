@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h>
@@ -73,23 +79,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RaceTrackDropCellPositionGenerator.h"
+        #include "org/allbinary/media/graphics/geography/map/racetrack/drop/RaceTrackDropCellPositionGenerator.h"
 
 class RaceTrackRandomDropCellPositionGenerator: public RaceTrackDropCellPositionGenerator {
 
-    private: static RaceTrackRandomDropCellPositionGenerator SINGLETON = RaceTrackRandomDropCellPositionGenerator();
+    private: static RaceTrackRandomDropCellPositionGenerator* SINGLETON() { static std::unique_ptr<RaceTrackRandomDropCellPositionGenerator> value(new RaceTrackRandomDropCellPositionGenerator()); return value.get(); }
 
-    public: static RaceTrackRandomDropCellPositionGenerator getInstance(){
+    public: static RaceTrackRandomDropCellPositionGenerator* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RaceTrackRandomDropCellPositionGenerator::SINGLETON;
+                        return RaceTrackRandomDropCellPositionGenerator::SINGLETON();
     
 }
 
 
-    private: const MyRandomFactory myRandomFactory = MyRandomFactory::getInstance();
+    private: MyRandomFactory* myRandomFactory = MyRandomFactory::getInstance();
 
     private: const int32_t cellsPerRowOrColumn = 3;
 
@@ -109,30 +115,30 @@ private: RaceTrackRandomDropCellPositionGenerator(){
 
                 //@Throws(Exception.constructor)
             
-    public: void update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface){
+    public: void update(AllBinaryGameLayerManager* allBinaryGameLayerManager, BasicGeographicMap* geographicMapInterface){
 super.update(allBinaryGameLayerManager, geographicMapInterface);
     
 
-    AllBinaryTiledLayer tiledLayer = geographicMapInterface.getAllBinaryTiledLayer();;
+    AllBinaryTiledLayer* tiledLayer = geographicMapInterface->getAllBinaryTiledLayer();;
     
-this->cellWidth= tiledLayer.getCellWidth() /this->cellsPerRowOrColumn;
+this->cellWidth= tiledLayer->getCellWidth() /this->cellsPerRowOrColumn;
     
-this->cellHeight= tiledLayer.getCellHeight() /this->cellsPerRowOrColumn;
+this->cellHeight= tiledLayer->getCellHeight() /this->cellsPerRowOrColumn;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void drop(AllBinaryLayerManager allBinaryLayerManager, int32_t index){
+    protected: void drop(AllBinaryLayerManager* allBinaryLayerManager, int32_t index){
 
-    GeographicMapCellPosition geographicMapCellPosition = this->list.get(index);;
+    GeographicMapCellPosition* geographicMapCellPosition = dynamic_cast<GeographicMapCellPosition*>(this->list.get(index));;
     
 
-    GPoint point = geographicMapCellPosition.getPoint();;
+    GPoint* point = geographicMapCellPosition->getPoint();;
     
 
-    int32_t randomCell = this->myRandomFactory.getAbsoluteNextInt(this->totalCells);;
+    int32_t randomCell = this->myRandomFactory->getAbsoluteNextInt(this->totalCells);;
     
 
     int32_t row = this->rowArray[randomCell];;
@@ -141,23 +147,23 @@ this->cellHeight= tiledLayer.getCellHeight() /this->cellsPerRowOrColumn;
     int32_t column = this->columnArray[randomCell];;
     
 
-    int32_t x = point.getX() +(row *this->cellWidth);;
+    int32_t x = point->getX() +(row *this->cellWidth);;
     
 
-    int32_t y = point.getY() +(column *this->cellHeight);;
+    int32_t y = point->getY() +(column *this->cellHeight);;
     
 
-    PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactory = DropLayerFactory::getInstance().getRandomInstance();;
+    PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactory = DropLayerFactory::getInstance()->getRandomInstance();;
     
 
-    AllBinaryTiledLayer tiledLayer = this->raceTrackGeographicMap.getAllBinaryTiledLayer();;
+    AllBinaryTiledLayer* tiledLayer = this->raceTrackGeographicMap.getAllBinaryTiledLayer();;
     
 
-    RaceTrackPickupLayer pickupLayer = PickupLayerCircularStaticPool::getInstance().getInstanceXYZ(pickedUpLayerInterfaceFactory, x, y, tiledLayer.getZP() +3);;
+    RaceTrackPickupLayer* pickupLayer = dynamic_cast<RaceTrackPickupLayer*>(PickupLayerCircularStaticPool::getInstance()->getInstanceXYZ(pickedUpLayerInterfaceFactory, x, y, tiledLayer->getZP() +3));;
     
-pickupLayer.setTiledLayer(tiledLayer);
+pickupLayer->setTiledLayer(tiledLayer);
     
-allBinaryLayerManager.append(pickupLayer);
+allBinaryLayerManager->append(pickupLayer);
     
 }
 

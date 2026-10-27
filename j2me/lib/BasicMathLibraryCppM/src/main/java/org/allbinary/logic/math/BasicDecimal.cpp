@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Long.h"
@@ -40,20 +46,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ScaleFactorFactory.h"
+        #include "org/allbinary/logic/math/ScaleFactorFactory.h"
 
 class BasicDecimal
             : public Object
          {
 
-    public: static const BasicDecimal ZERO_BIGDECIMAL = BasicDecimal(0);
+    public: static BasicDecimal* ZERO_BIGDECIMAL() { static std::unique_ptr<BasicDecimal> value(new BasicDecimal(0)); return value.get(); }
 
-    public: static BasicDecimal createBigDecimal(BasicDecimal bigDecimal){
+    public: static BasicDecimal* createBigDecimal(BasicDecimal* bigDecimal){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicDecimal(bigDecimal.getUnscaled());
+                        return new BasicDecimal(bigDecimal->getUnscaled());
     
 }
 
@@ -84,8 +90,8 @@ this->updateScaled();
 }
 
 
-    public: void set(BasicDecimal bigDecimal){
-this->units= bigDecimal.getUnscaled();
+    public: void set(BasicDecimal* bigDecimal){
+this->units= bigDecimal->getUnscaled();
     
 this->updateScaled();
     
@@ -108,8 +114,8 @@ this->updateScaled();
 }
 
 
-    public: void add(BasicDecimal bigDecimal){
-this->units= this->units +bigDecimal.getUnscaled();
+    public: void add(BasicDecimal* bigDecimal){
+this->units= this->units +bigDecimal->getUnscaled();
     
 this->updateScaled();
     
@@ -132,8 +138,8 @@ this->updateScaled();
 }
 
 
-    public: void subtract(BasicDecimal bigDecimal){
-this->units= this->units -bigDecimal.getUnscaled();
+    public: void subtract(BasicDecimal* bigDecimal){
+this->units= this->units -bigDecimal->getUnscaled();
     
 this->updateScaled();
     
@@ -156,8 +162,8 @@ this->updateScaled();
 }
 
 
-    public: void multiply(BasicDecimal bigDecimal){
-this->units= this->units *bigDecimal.getUnscaled();
+    public: void multiply(BasicDecimal* bigDecimal){
+this->units= this->units *bigDecimal->getUnscaled();
     
 this->updateScaled();
     
@@ -180,8 +186,8 @@ this->updateScaled();
 }
 
 
-    public: void divide(BasicDecimal bigDecimal){
-this->units= this->units /bigDecimal.getUnscaled();
+    public: void divide(BasicDecimal* bigDecimal){
+this->units= this->units /bigDecimal->getUnscaled();
     
 this->updateScaled();
     
@@ -226,9 +232,9 @@ this->scaled= static_cast<int32_t>((this->units /this->factorValue));
 }
 
 
-    private: const int32_t factor = ScaleFactorFactory::getInstance().DEFAULT_SCALE_FACTOR;
+    private: const int32_t factor = ScaleFactorFactory::getInstance()->DEFAULT_SCALE_FACTOR;
 
-    private: const int32_t factorValue = ScaleFactorFactory::getInstance().DEFAULT_SCALE_VALUE;
+    private: const int32_t factorValue = ScaleFactorFactory::getInstance()->DEFAULT_SCALE_VALUE;
 
     public: int32_t getScaledFactor(){
 

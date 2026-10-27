@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,15 +70,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentGatewayInterfaceFactoryInterface.h"
-#include "PaymentGatewayInterface.h"
-#include "PaymentGatewayData.h"
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterfaceFactoryInterface.h"
+#include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h"
+#include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayData.h"
 
 class PaymentGatewayInterfaceFactory
             : public Object
-        : public PaymentGatewayInterfaceFactoryInterface {
+        , public PaymentGatewayInterfaceFactoryInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: PaymentGatewayInterfaceFactory(){
 }
@@ -80,17 +86,17 @@ public: PaymentGatewayInterfaceFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentGatewayInterface getInstance(HttpServletRequest httpServletRequest){
+    public: PaymentGatewayInterface* getInstance(HttpServletRequest* httpServletRequest){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PAYMENT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PAYMENT))
                         
                                     {
-                                    this->logUtil.putF("Getting", this, commonStrings.GET_INSTANCE);
+                                    this->logUtil->putF("Getting", this, commonStrings->GET_INSTANCE);
     
 
                                     }
@@ -99,17 +105,17 @@ public: PaymentGatewayInterfaceFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getInstance(RequestParams(httpServletRequest).toHashMap());;
+                        return this->getInstance((new RequestParams(httpServletRequest))->toHashMap());;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PAYMENTERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PAYMENTERROR))
                         
                                     {
-                                    this->logUtil.put(commonStrings.EXCEPTION, this, "getInstance(HttpServletRequest)", e);
+                                    this->logUtil->put(commonStrings->EXCEPTION, this, "getInstance(HttpServletRequest)", &e);
     
 
                                     }
@@ -126,11 +132,11 @@ public: PaymentGatewayInterfaceFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentGatewayInterface getInstance(BasicPaymentType paymentType){
+    public: PaymentGatewayInterface* getInstance(BasicPaymentType* paymentType){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(PaymentGatewayData::NAME.toString(), paymentType.getName());
+hashMap->put(PaymentGatewayData::NAME.toString(), paymentType->getName());
     
 
 
@@ -143,45 +149,45 @@ hashMap.put(PaymentGatewayData::NAME.toString(), paymentType.getName());
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentGatewayInterface getInstance(HashMap<Object*, Object*> hashMap){
+    public: PaymentGatewayInterface* getInstance(HashMap<Object*, Object*>* hashMap){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
-    std::string gatewayName = hashMap.get(PaymentGatewayData::NAME.toString());;
+    std::string gatewayName = hashMap->get(PaymentGatewayData::NAME.toString());;
     
 
-    BasicPaymentType paymentType = BasicPaymentTypeUtil::getInstance().get(gatewayName);;
+    BasicPaymentType* paymentType = BasicPaymentTypeUtil::getInstance()->get(gatewayName);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PAYMENT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PAYMENT))
                         
                                     {
-                                    this->logUtil.putF("Getting PaymentGatewayInterface for PaymentType: " +paymentType.getName() +" with: " +hashMap, this, commonStrings.GET_INSTANCE);
+                                    this->logUtil->putF("Getting PaymentGatewayInterface for PaymentType: " +paymentType->getName() +" with: " +hashMap, this, commonStrings->GET_INSTANCE);
     
 
                                     }
                                 
 
-    PaymentGatewayInterfaceFactoryInterface paymentGatewayInterfaceFactoryInterface = paymentType.getPaymentGatewayInterfaceFactoryInterface();;
+    PaymentGatewayInterfaceFactoryInterface* paymentGatewayInterfaceFactoryInterface = paymentType->getPaymentGatewayInterfaceFactoryInterface();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return paymentGatewayInterfaceFactoryInterface.getInstance(hashMap);;
+                        return paymentGatewayInterfaceFactoryInterface->getInstance(hashMap);;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PAYMENTERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PAYMENTERROR))
                         
                                     {
-                                    this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
+                                    this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
     
 
                                     }

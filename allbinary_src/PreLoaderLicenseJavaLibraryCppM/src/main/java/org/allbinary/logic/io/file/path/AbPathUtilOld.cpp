@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,9 +72,9 @@ class AbPathUtilOld
             : public Object
          {
 
-    private: static AbPathUtilOld instance() { return AbPathUtilOld(); }
+    private: static AbPathUtilOld* instance() { static std::unique_ptr<AbPathUtilOld> value(new AbPathUtilOld()); return value.get(); }
 
-    public: static AbPathUtilOld getInstance(){
+    public: static AbPathUtilOld* getInstance(){
 
 
 
@@ -78,13 +84,13 @@ class AbPathUtilOld
 }
 
 
-    private: static const int32_t MIN = 4;
+    private: static inline const int32_t MIN = 4;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const AbPathData abPathData = AbPathData::getInstance();
+    private: AbPathData* abPathData = AbPathData::getInstance();
 
-    private: const FilePathData filePathData = FilePathData::getInstance();
+    private: FilePathData* filePathData = FilePathData::getInstance();
 
 private: AbPathUtilOld(){
 }
@@ -92,24 +98,24 @@ private: AbPathUtilOld(){
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getExtension(AbFilePath abFilePath){
+    public: std::string getExtension(AbFilePath* abFilePath){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getExtension(abFilePath.toString());;
+                        return this->getExtension(abFilePath->toString());;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getExtension(AbPath abPath){
+    public: std::string getExtension(AbPath* abPath){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getExtension(abPath.toString());;
+                        return this->getExtension(abPath->toString());;
     
 }
 
@@ -124,7 +130,7 @@ private: AbPathUtilOld(){
                                     
 
 
-                            throw Exception("Could not be a file path since its less that 4 characters");
+                            throw new Exception("Could not be a file path since its less that 4 characters");
                     
 
                                     }
@@ -133,13 +139,13 @@ private: AbPathUtilOld(){
     int32_t beginIndex = filePath.size() -AbPathUtilOld::MIN;;
     
 
-    std::string extension = filePath.substring(beginIndex +1);;
+    std::string extension = JavaString::substring(filePath, beginIndex +1);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("FileExtension: " +extension, this, "getExtension()");
+                                    this->logUtil->putF("FileExtension: " +extension, this, "getExtension()");
     
 
                                     }
@@ -155,24 +161,24 @@ private: AbPathUtilOld(){
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getWithoutExtension(AbFilePath abFilePath){
+    public: std::string getWithoutExtension(AbFilePath* abFilePath){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getWithoutExtension(abFilePath.toString());;
+                        return this->getWithoutExtension(abFilePath->toString());;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getWithoutExtension(AbPath abPath){
+    public: std::string getWithoutExtension(AbPath* abPath){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getWithoutExtension(abPath.toString());;
+                        return this->getWithoutExtension(abPath->toString());;
     
 }
 
@@ -187,7 +193,7 @@ private: AbPathUtilOld(){
                                     
 
 
-                            throw Exception("Could not be a file path since its less that 4 characters");
+                            throw new Exception("Could not be a file path since its less that 4 characters");
                     
 
                                     }
@@ -196,13 +202,13 @@ private: AbPathUtilOld(){
     int32_t endIndex = filePath.size() -AbPathUtilOld::MIN;;
     
 
-    std::string pathWithoutExtension = filePath.substring(0, endIndex);;
+    std::string pathWithoutExtension = JavaString::substring(filePath, 0, endIndex);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("FileWithoutExtension: " +pathWithoutExtension, this, "getWithoutExtension()");
+                                    this->logUtil->putF("FileWithoutExtension: " +pathWithoutExtension, this, "getWithoutExtension()");
     
 
                                     }
@@ -248,7 +254,7 @@ private: AbPathUtilOld(){
 
     private: bool isValidStart(std::string path){
 
-                        if(path[0] == this->abPathData.SEPARATORCHAR)
+                        if(path[0] == this->abPathData->SEPARATORCHAR)
                         
                                     {
                                     
@@ -275,7 +281,7 @@ private: AbPathUtilOld(){
 
     private: bool isValidEnd(std::string path){
 
-                        if(StringValidationUtil::getInstance().isEmpty(path))
+                        if(StringValidationUtil::getInstance()->isEmpty(path))
                         
                                     {
                                     
@@ -288,7 +294,7 @@ private: AbPathUtilOld(){
                                     }
                                 
 
-                        if(path[path.size() -1] == this->abPathData.SEPARATORCHAR)
+                        if(path[path.size() -1] == this->abPathData->SEPARATORCHAR)
                         
                                     {
                                     
@@ -318,7 +324,7 @@ private: AbPathUtilOld(){
                         if(!this->isValidStart(path))
                         
                                     {
-                                    path= this->abPathData.SEPARATOR +path;
+                                    path= this->abPathData->SEPARATOR +path;
     
 
                                     }
@@ -337,7 +343,7 @@ private: AbPathUtilOld(){
                         if(!this->isValidEnd(path))
                         
                                     {
-                                    path= path +this->abPathData.SEPARATOR;
+                                    path= path +this->abPathData->SEPARATOR;
     
 
                                     }
@@ -353,23 +359,23 @@ private: AbPathUtilOld(){
 
     public: std::string adjust(std::string path){
 
-                        if(StringValidationUtil::getInstance().isEmpty(path))
+                        if(StringValidationUtil::getInstance()->isEmpty(path))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->abPathData.SEPARATOR;
+                        return this->abPathData->SEPARATOR;
     
 
                                     }
                                 
 
-                        if(path.indexOf("\\") >= 0)
+                        if(JavaString::indexOf(path, "\\") >= 0)
                         
                                     {
-                                    path= path.replace('\\', this->abPathData.SEPARATORCHAR);
+                                    path= JavaString::replace(path, '\\', this->abPathData->SEPARATORCHAR);
     
 
                                     }
@@ -386,13 +392,13 @@ private: AbPathUtilOld(){
 
     public: std::string getNameFromPath(std::string categoryPath){
 
-    int32_t endIndex = categoryPath.lastIndexOf(this->abPathData.SEPARATOR);;
+    int32_t endIndex = JavaString::lastIndexOf(categoryPath, this->abPathData->SEPARATOR);;
     
 
                         if(endIndex < 0)
                         
                                     {
-                                    endIndex= categoryPath.lastIndexOf(this->filePathData.SEPARATORCHAR);
+                                    endIndex= JavaString::lastIndexOf(categoryPath, this->filePathData->SEPARATORCHAR);
     
 
                                     }
@@ -410,7 +416,7 @@ private: AbPathUtilOld(){
                         
                                     {
                                     
-    std::string categoryName = categoryPath.substring(0, endIndex);;
+    std::string categoryName = JavaString::substring(categoryPath, 0, endIndex);;
     
 
 
@@ -423,7 +429,7 @@ private: AbPathUtilOld(){
                                 
                         else {
                             
-    std::string categoryName = categoryPath.substring(endIndex +1);;
+    std::string categoryName = JavaString::substring(categoryPath, endIndex +1);;
     
 
 
@@ -440,15 +446,15 @@ private: AbPathUtilOld(){
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: AbPath removeNameFromPath(std::string categoryPath){
+    public: AbPath* removeNameFromPath(std::string categoryPath){
 
-    int32_t endIndex = categoryPath.lastIndexOf(this->abPathData.SEPARATOR);;
+    int32_t endIndex = JavaString::lastIndexOf(categoryPath, this->abPathData->SEPARATOR);;
     
 
                         if(endIndex < 0)
                         
                                     {
-                                    endIndex= categoryPath.lastIndexOf(this->filePathData.SEPARATORCHAR);
+                                    endIndex= JavaString::lastIndexOf(categoryPath, this->filePathData->SEPARATORCHAR);
     
 
                                     }
@@ -474,20 +480,20 @@ private: AbPathUtilOld(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->removeNameFromPath(categoryPath.substring(0, endIndex -1));;
+                        return this->removeNameFromPath(JavaString::substring(categoryPath, 0, endIndex -1));;
     
 
                                     }
                                 
                         else {
                             
-    std::string categoryName = categoryPath.substring(0, endIndex);;
+    std::string categoryName = JavaString::substring(categoryPath, 0, endIndex);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbPath(categoryName, StringUtil::getInstance().EMPTY_STRING);
+                        return new AbPath(categoryName, StringUtil::getInstance()->EMPTY_STRING);
     
 
                         }

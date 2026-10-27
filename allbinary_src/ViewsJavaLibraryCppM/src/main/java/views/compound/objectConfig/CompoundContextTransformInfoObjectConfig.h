@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayInputStream.h>
@@ -106,13 +112,13 @@
         
 class CompoundContextTransformInfoObjectConfig: public GenericStoreTransformInfoObjectConfig {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: CompoundContextTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface);
+public: CompoundContextTransformInfoObjectConfig(Object* abeClientInformation, Object* transformInfoInterface);
 
-public: CompoundContextTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, Object document);
+public: CompoundContextTransformInfoObjectConfig(Object* abeClientInformation, Object* transformInfoInterface, Object* document);
 
-public: CompoundContextTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, std::string name, std::string type);
+public: CompoundContextTransformInfoObjectConfig(Object* abeClientInformation, Object* transformInfoInterface, std::string name, std::string type);
 
                 //@Throws(Exception.constructor)
             
@@ -120,7 +126,7 @@ public: CompoundContextTransformInfoObjectConfig(Object abeClientInformation, Ob
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream createInputStream();
+    public: InputStream* createInputStream();
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -49,57 +55,57 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Rectangle.h"
-#include "Color.h"
-#include "Point.h"
+        #include "org/allbinary/input/automation/robot/Rectangle.h"
+#include "org/allbinary/input/automation/robot/Color.h"
+#include "org/allbinary/input/automation/robot/Point.h"
 
 class InputRobotInterface {
 
-    std::string getName()
+    public: virtual std::string getName() = 0;
 
-    HelpSet getHelpSet()
+    public: virtual HelpSet* getHelpSet() = 0;
 
-    BufferedImage createScreenCapture(Rectangle screenRect)
+    public: virtual BufferedImage* createScreenCapture(Rectangle* screenRect) = 0;
 
-    void delay(Integer ms)
+    public: virtual void delay(int32_t ms) = 0;
 
-    Integer getAutoDelay()
+    public: virtual int32_t getAutoDelay() = 0;
 
-    Color getPixelColor(Integer x, Integer y)
+    public: virtual Color* getPixelColor(int32_t x, int32_t y) = 0;
 
-    bool isAutoWaitForIdle()
+    public: virtual bool isAutoWaitForIdle() = 0;
 
-    void keyPress(Integer keycode)
+    public: virtual void keyPress(int32_t keycode) = 0;
 
-    void keyRelease(Integer keycode)
+    public: virtual void keyRelease(int32_t keycode) = 0;
 
-    Point getMousePoint()
+    public: virtual Point* getMousePoint() = 0;
 
-    void mouseMove(Integer x, Integer y)
+    public: virtual void mouseMove(int32_t x, int32_t y) = 0;
 
-    void mousePress(Integer buttons)
+    public: virtual void mousePress(int32_t buttons) = 0;
 
-    void mouseRelease(Integer buttons)
+    public: virtual void mouseRelease(int32_t buttons) = 0;
 
-    void mouseWheel(Integer wheelAmt)
+    public: virtual void mouseWheel(int32_t wheelAmt) = 0;
 
-    void setAutoDelay(Integer ms)
+    public: virtual void setAutoDelay(int32_t ms) = 0;
 
-    void setAutoWaitForIdle(bool isOn)
+    public: virtual void setAutoWaitForIdle(bool isOn) = 0;
 
-    std::string toString()
+    public: virtual std::string toString() = 0;
 
-    void waitForIdle()
+    public: virtual void waitForIdle() = 0;
 
-    void mouseMove(Point point)
-
-                //@Throws(Exception.constructor)
-            
-    void mouseMoveToTarget(Rectangle rectangle)
+    public: virtual void mouseMove(Point* point) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void mouseMoveToTarget(Rectangle rectangle, Integer x, Integer y)
+    public: virtual void mouseMoveToTarget(Rectangle* rectangle) = 0;
+
+                //@Throws(Exception.constructor)
+            
+    public: virtual void mouseMoveToTarget(Rectangle* rectangle, int32_t x, int32_t y) = 0;
 
 };
 

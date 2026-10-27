@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -44,15 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicUserRoleFactory.h"
+        #include "org/allbinary/business/user/role/BasicUserRoleFactory.h"
 
 class StoreRoleFactory
             : public Object
          {
 
-    private: static StoreRoleFactory instance() { return StoreRoleFactory(); }
+    private: static StoreRoleFactory* instance() { static std::unique_ptr<StoreRoleFactory> value(new StoreRoleFactory()); return value.get(); }
 
-    public: static StoreRoleFactory getInstance(){
+    public: static StoreRoleFactory* getInstance(){
 
 
 
@@ -62,30 +68,30 @@ class StoreRoleFactory
 }
 
 
-    private: const BasicArrayList roles = BasicArrayListD();
+    private: BasicArrayList* roles = new BasicArrayListD();
 
-    private: const BasicArrayList subscriberRoles = BasicArrayListD();
+    private: BasicArrayList* subscriberRoles = new BasicArrayListD();
 
-    private: const BasicArrayList wholesaleRoles = BasicArrayListD();
+    private: BasicArrayList* wholesaleRoles = new BasicArrayListD();
 
 private: StoreRoleFactory(){
 
-    BasicUserRoleFactory basicUserRoleFactory = BasicUserRoleFactory::getInstance();;
+    BasicUserRoleFactory* basicUserRoleFactory = BasicUserRoleFactory::getInstance();;
     
-this->roles.add(basicUserRoleFactory.CUSTOMER);
+this->roles->add(basicUserRoleFactory->CUSTOMER);
     
-this->roles.add(basicUserRoleFactory.SUBSCRIBERCUSTOMER);
+this->roles->add(basicUserRoleFactory->SUBSCRIBERCUSTOMER);
     
-this->roles.add(basicUserRoleFactory.WHOLESALECUSTOMER);
+this->roles->add(basicUserRoleFactory->WHOLESALECUSTOMER);
     
-this->subscriberRoles.add(basicUserRoleFactory.SUBSCRIBERCUSTOMER);
+this->subscriberRoles->add(basicUserRoleFactory->SUBSCRIBERCUSTOMER);
     
-this->wholesaleRoles.add(basicUserRoleFactory.WHOLESALECUSTOMER);
+this->wholesaleRoles->add(basicUserRoleFactory->WHOLESALECUSTOMER);
     
 }
 
 
-    public: BasicArrayList getRoles(){
+    public: BasicArrayList* getRoles(){
 
 
 
@@ -95,7 +101,7 @@ this->wholesaleRoles.add(basicUserRoleFactory.WHOLESALECUSTOMER);
 }
 
 
-    public: BasicArrayList getSubscriberRoles(){
+    public: BasicArrayList* getSubscriberRoles(){
 
 
 
@@ -105,7 +111,7 @@ this->wholesaleRoles.add(basicUserRoleFactory.WHOLESALECUSTOMER);
 }
 
 
-    public: BasicArrayList getWholesaleRoles(){
+    public: BasicArrayList* getWholesaleRoles(){
 
 
 

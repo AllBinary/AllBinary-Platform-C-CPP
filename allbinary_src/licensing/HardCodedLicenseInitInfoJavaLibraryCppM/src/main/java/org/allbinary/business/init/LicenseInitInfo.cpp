@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/debug/DebugFactory.h>
@@ -58,9 +64,9 @@ class LicenseInitInfo
             : public Object
          {
 
-    private: std::string id = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string id = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: BasicArrayList serverList = BasicArrayListD();
+    private: BasicArrayList* serverList = new BasicArrayListD();
 
 : LicenseInitInfo(){
 }
@@ -81,7 +87,7 @@ class LicenseInitInfo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->serverList.get(index);
+                        return this->serverList->get(index);
     
 }
 
@@ -91,7 +97,7 @@ class LicenseInitInfo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->serverList.size();;
+                        return this->serverList->size();;
     
 }
 
@@ -103,24 +109,24 @@ this->id= value;
 
 
     public: void clearServers(){
-this->serverList.clear();
+this->serverList->clear();
     
 }
 
 
     public: void setServer(std::string value, int32_t index){
-this->serverList.addAt(index, value);
+this->serverList->addAt(index, value);
     
 }
 
 
     public: void addServer(std::string value){
-this->serverList.add(value);
+this->serverList->add(value);
     
 }
 
 
-    public: BasicArrayList getServerList(){
+    public: BasicArrayList* getServerList(){
 
 
 
@@ -130,7 +136,7 @@ this->serverList.add(value);
 }
 
 
-    public: void setServerList(BasicArrayList servers){
+    public: void setServerList(BasicArrayList* servers){
 
                         if(DebugFactory::getInstance() == NoDebug::getInstance())
                         

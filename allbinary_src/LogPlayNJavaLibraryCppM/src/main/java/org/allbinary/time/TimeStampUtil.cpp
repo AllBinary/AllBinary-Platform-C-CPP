@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <com/google/gwt/i18n/client/DateTimeFormat.h>
@@ -49,9 +55,9 @@
             : public Object
          {
 
-    private: static TimeStampUtil instance() { return TimeStampUtil(); }
+    private: static TimeStampUtil* instance() { static std::unique_ptr<TimeStampUtil> value(new TimeStampUtil()); return value.get(); }
 
-    /*actual*/ public: static TimeStampUtil getInstance(){
+    /*actual*/ public: static TimeStampUtil* getInstance(){
 
 
 
@@ -67,16 +73,16 @@ private: TimeStampUtil(){
 
     public: std::string getAsString(){
 
-    DateTimeFormat simpleDataFormat = DateTimeFormat::getFormat("yyyy-MM-dd HH:mm:ss.SSS");;
+    DateTimeFormat* simpleDataFormat = DateTimeFormat::getFormat("yyyy-MM-dd HH:mm:ss.SSS");;
     
 
-    Date date = Date();;
+    Date* date = new Date();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return simpleDataFormat.format(date);;
+                        return simpleDataFormat->format(date);;
     
 }
 

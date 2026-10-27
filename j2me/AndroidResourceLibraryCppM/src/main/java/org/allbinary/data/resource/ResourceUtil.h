@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -100,39 +106,39 @@ class ResourceUtil
             : public Object
          {
 
-    private: static ResourceUtil instance() { return ResourceUtil(); }
+    private: static ResourceUtil* instance() { static std::unique_ptr<ResourceUtil> value(new ResourceUtil()); return value.get(); }
 
-    public: static ResourceUtil getInstance();
+    public: static ResourceUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: Object* context = NullUtil::getInstance().NULL_OBJECT;
+    private: Object* context = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: Object* resources = NullUtil::getInstance().NULL_OBJECT;
+    private: Object* resources = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: ABHashtable<Object*, Object*> hashMap = StdUtil::getInstance().createHashtable();
+    private: ABHashtable<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashtable();
 
 private: ResourceUtil();
 
     public: void setLoadingPaths(std::string path, std::string ext);
 
-    public: Context getContext();
+    public: Context* getContext();
 
-    public: void setContextFromActivity(Activity activity);
+    public: void setContextFromActivity(Activity* activity);
 
-    public: void setContext(Context aContext);
+    public: void setContext(Context* aContext);
 
-    public: Integer getResourceId(std::string resource);
+    public: int32_t getResourceId(std::string resource);
 
-    public: void addResource(std::string resource, Integer value);
+    public: void addResource(std::string resource, int32_t value);
 
-    private: bool containsDuplicate(std::string resource, Integer value);
+    private: bool containsDuplicate(std::string resource, int32_t value);
 
-    public: void setResources(Resources resources);
+    public: void setResources(Resources* resources);
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream getResourceAsStream(std::string resource);
+    public: InputStream* getResourceAsStream(std::string resource);
 
 };
 

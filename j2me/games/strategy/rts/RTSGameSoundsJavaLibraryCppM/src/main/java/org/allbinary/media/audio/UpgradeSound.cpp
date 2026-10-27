@@ -17,6 +17,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/media/audio/CompositeSound.h>
 
       
@@ -44,9 +50,9 @@
         
 class UpgradeSound: public CompositeSound {
 
-    private: static Sound soundInterface = UpgradeSound();
+    private: static inline Sound* soundInterface = new UpgradeSound();
 
-    public: static Sound getInstance(){
+    public: static Sound* getInstance(){
 
 
 

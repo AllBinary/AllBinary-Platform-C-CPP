@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,9 +72,9 @@ class UserName
             : public Object
          {
 
-    private: static UserName instance() { return UserName(); }
+    private: static UserName* instance() { static std::unique_ptr<UserName> value(new UserName()); return value.get(); }
 
-    public: static UserName getInstance(){
+    public: static UserName* getInstance(){
 
 
 
@@ -80,7 +86,7 @@ class UserName
 
     public: static std::string getValidationInfo(std::string aUserName){
 
-                        if(!StringValidationUtil::getInstance().isValidRequired(aUserName, 5, UserData::MAXLEN))
+                        if(!StringValidationUtil::getInstance()->isValidRequired(aUserName, 5, UserData::MAXLEN))
                         
                                     {
                                     
@@ -96,12 +102,12 @@ class UserName
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string userName;
 
@@ -109,13 +115,13 @@ private: UserName(){
 }
 
 
-public: UserName(HashMap<Object*, Object*> hashMap){
-this->userName= hashMap.get(UserData::USERNAME);
+public: UserName(HashMap<Object*, Object*>* hashMap){
+this->userName= hashMap->get(UserData::USERNAME);
     
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
@@ -126,13 +132,13 @@ this->userName= hashMap.get(UserData::USERNAME);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate form", this, "isUserNameValid()", e);
+                                    this->logUtil->put("Failed to validate form", this, "isUserNameValid()", &e);
     
 
                                     }
@@ -158,41 +164,41 @@ this->userName= hashMap.get(UserData::USERNAME);
 }
 
 
-    public: Boolean isValid(std::string aUserName){
+    public: bool isValid(std::string aUserName){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
-    BooleanFactory booleanFactory = BooleanFactory::getInstance();;
+    BooleanFactory* booleanFactory = BooleanFactory::getInstance();;
     
 
-    Boolean valid = booleanFactory.TRUE;;
+    bool valid = booleanFactory->TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VALIDATION))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VALIDATION))
                         
                                     {
-                                    this->logUtil.putF("UserName: " +aUserName, this, commonStrings.IS_VALID);
+                                    this->logUtil->putF("UserName: " +aUserName, this, commonStrings->IS_VALID);
     
 
                                     }
                                 
 
-                        if(!StringValidationUtil::getInstance().isValidRequired(aUserName, 5, UserData::MAXLEN))
+                        if(!StringValidationUtil::getInstance()->isValidRequired(aUserName, 5, UserData::MAXLEN))
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VALIDATION))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VALIDATION))
                         
                                     {
-                                    this->logUtil.putF("UserName is invalid", this, commonStrings.IS_VALID);
+                                    this->logUtil->putF("UserName is invalid", this, commonStrings->IS_VALID);
     
 
                                     }
                                 
-valid= booleanFactory.FALSE;
+valid= booleanFactory->FALSE;
     
 
                                     }
@@ -205,13 +211,13 @@ valid= booleanFactory.FALSE;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate form", this, commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate form", this, commonStrings->IS_VALID, &e);
     
 
                                     }

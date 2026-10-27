@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_PLATFORMINPUTMAPPINGFACTORY_H
         #define ORG_ALLBINARY_GAME_INPUT_PLATFORMINPUTMAPPINGFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,21 +58,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionJ2MEGameInputMapping.h"
+        #include "org/allbinary/game/input/MotionJ2MEGameInputMapping.h"
 
 class PlatformInputMappingFactory
             : public Object
          {
 
-    private: static PlatformInputMappingFactory instance() { return PlatformInputMappingFactory(); }
+    private: static PlatformInputMappingFactory* instance() { static std::unique_ptr<PlatformInputMappingFactory> value(new PlatformInputMappingFactory()); return value.get(); }
 
-    public: static PlatformInputMappingFactory getInstance();
+    public: static PlatformInputMappingFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: PersistentInputMapping inputToGameKeyMapping = PersistentInputMapping::getNullInstance();
+    private: PersistentInputMapping* inputToGameKeyMapping = PersistentInputMapping::getNullInstance();
 
-    public: PersistentInputMapping getPersistentInputMappingInstance();
+    public: PersistentInputMapping* getPersistentInputMappingInstance();
 
 };
 

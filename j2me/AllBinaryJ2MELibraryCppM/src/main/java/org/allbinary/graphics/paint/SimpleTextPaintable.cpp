@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -60,19 +66,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Paintable.h"
+        #include "org/allbinary/graphics/paint/Paintable.h"
 
 class SimpleTextPaintable: public Paintable, public UpdateMyFontInterface {
 
-    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-    private: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
 
-    private: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
+    private: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
 
     private: std::string text;
 
-    private: BasicColor basicColor;
+    private: BasicColor* basicColor;
 
     private: int32_t topScoresWidth = 0;
 
@@ -80,7 +86,7 @@ class SimpleTextPaintable: public Paintable, public UpdateMyFontInterface {
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
-public: SimpleTextPaintable(std::string text, BasicColor basicColor){
+public: SimpleTextPaintable(std::string text, BasicColor* basicColor){
 this->text= text;
     
 this->basicColor= basicColor;
@@ -88,39 +94,39 @@ this->basicColor= basicColor;
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->topScoresWidth= (font.stringWidth(this->text)>>1);
+this->topScoresWidth= (font->stringWidth(this->text)>>1);
     
-this->fontHeight= font.getHeight();
+this->fontHeight= font->getHeight();
     
 this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    public: void paint(Graphics graphics){
-this->myFontProcessor.process(graphics);
+    public: void paint(Graphics* graphics){
+this->myFontProcessor->process(graphics);
     
 
-    int32_t width = this->displayInfoSingleton.getLast()[this->displayInfoSingleton.WIDTH];;
+    int32_t width = this->displayInfoSingleton->getLast()[this->displayInfoSingleton->WIDTH];;
     
-graphics.setColor(this->getBasicColorP().intValue());
+graphics->setColor(this->getBasicColorP()->intValue());
     
-graphics.drawString(this->text, (width>>1) -this->topScoresWidth, this->fontHeight, this->anchor);
+graphics->drawString(this->text, (width>>1) -this->topScoresWidth, this->fontHeight, this->anchor);
     
 }
 
 
-    public: void setBasicColorP(BasicColor basicColor){
+    public: void setBasicColorP(BasicColor* basicColor){
 this->basicColor= basicColor;
     
 }
 
 
-    private: BasicColor getBasicColorP(){
+    private: BasicColor* getBasicColorP(){
 
 
 

@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_LOADGAMEFORM_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_LOADGAMEFORM_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -88,21 +96,21 @@
         
 class LoadGameForm: public CommandForm {
 
-    private: const MEUtil meUtil = MEUtil::getInstance();
+    private: MEUtil* meUtil = MEUtil::getInstance();
 
     private: bool areChoices= false;
 
-public: LoadGameForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
+public: LoadGameForm(CommandListener* commandListener, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor);
 
-    public: void initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener* cmdListener);
 
                 //@Throws(Exception.constructor)
             
     public: void update();
 
-    private: void add(BasicArrayList list, std::string name, int32_t option);
+    private: void add(BasicArrayList* list, std::string name, int32_t option);
 
-    private: ChoiceGroup getChoiceGroup(BasicArrayList list, std::string name, int32_t option);
+    private: ChoiceGroup* getChoiceGroup(BasicArrayList* list, std::string name, int32_t option);
 
     public: int32_t getSelectedId();
 

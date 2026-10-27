@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_J2MEGAMEKEY_H
         #define ORG_ALLBINARY_GAME_INPUT_J2MEGAMEKEY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -45,8 +51,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Input.h"
-#include "InputFactory.h"
+        #include "org/allbinary/game/input/Input.h"
+#include "org/allbinary/game/input/InputFactory.h"
 
 class J2MEGameKey: public Input {
 

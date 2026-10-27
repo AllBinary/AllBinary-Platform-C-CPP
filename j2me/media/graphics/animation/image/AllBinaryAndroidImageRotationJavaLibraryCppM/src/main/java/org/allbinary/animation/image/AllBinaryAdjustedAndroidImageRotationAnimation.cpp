@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -50,7 +56,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryFlickerAndroidImageRotationAnimation.h"
+        #include "org/allbinary/animation/image/AllBinaryFlickerAndroidImageRotationAnimation.h"
 
 class AllBinaryAdjustedAndroidImageRotationAnimation: public AllBinaryFlickerAndroidImageRotationAnimation {
 
@@ -58,7 +64,7 @@ class AllBinaryAdjustedAndroidImageRotationAnimation: public AllBinaryFlickerAnd
 
     private: int32_t dy= 0;
 
-public: AllBinaryAdjustedAndroidImageRotationAnimation(Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior animationBehavior) : AllBinaryFlickerAndroidImageRotationAnimation(originalImage, image, angleInfo, totalAngle, animationBehavior){
+public: AllBinaryAdjustedAndroidImageRotationAnimation(Image* originalImage, Image* image, AngleInfo* angleInfo, int16_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) : AllBinaryFlickerAndroidImageRotationAnimation(originalImage, image, angleInfo, totalAngle, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -112,7 +118,7 @@ this->dy= dy;
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 super.paintXY(graphics, x +this->dx, y +this->dy);
     
 }

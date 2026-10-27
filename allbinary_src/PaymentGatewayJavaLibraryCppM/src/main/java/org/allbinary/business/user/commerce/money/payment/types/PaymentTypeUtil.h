@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_PAYMENTTYPEUTIL_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_PAYMENTTYPEUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -106,22 +112,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentType.h"
+        #include "org/allbinary/business/user/commerce/money/payment/types/PaymentType.h"
 
 class PaymentTypeUtil
             : public Object
          {
 
-    private: static PaymentTypeUtil instance() { return PaymentTypeUtil(); }
+    private: static PaymentTypeUtil* instance() { static std::unique_ptr<PaymentTypeUtil> value(new PaymentTypeUtil()); return value.get(); }
 
                     static int32_t initResult;
                 static int32_t init();
             
-    public: static PaymentTypeUtil getInstance();
+    public: static PaymentTypeUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: std::string PAYMENTGATEWAYFILEPATHSTRING;
 
@@ -131,15 +137,15 @@ class PaymentTypeUtil
                 nullptr
             ;
 
-    private: BasicArrayList paymentTypeVector = BasicArrayListD();
+    private: BasicArrayList* paymentTypeVector = new BasicArrayListD();
 
 private: PaymentTypeUtil();
 
-    public: void add(PaymentType paymentType);
+    public: void add(PaymentType* paymentType);
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentType get(std::string paymentTypeString);
+    public: PaymentType* get(std::string paymentTypeString);
 
                 //@Throws(Exception.constructor)
             
@@ -147,11 +153,11 @@ private: PaymentTypeUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentType getDefault(std::string storeName);
+    public: PaymentType* getDefault(std::string storeName);
 
-    public: bool isContain(PaymentType paymentType);
+    public: bool isContain(PaymentType* paymentType);
 
-    public: BasicArrayList difference(BasicArrayList a_PaymentTypeVector);
+    public: BasicArrayList* difference(BasicArrayList* a_PaymentTypeVector);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LAYER_RELATIONSHIP_RELATIVELAYERRELATIONSHIP_H
         #define ORG_ALLBINARY_LAYER_RELATIONSHIP_RELATIVELAYERRELATIONSHIP_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graphics/GPoint.h>
 
       
@@ -54,9 +60,9 @@
         
 class RelativeLayerRelationship: public RelativeRelationship {
 
-    private: AllBinaryLayer layer = AllBinaryLayer::NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer* layer = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-public: RelativeLayerRelationship(AllBinaryLayer layer, GPoint point, BasicArrayList typesAllowedList);
+public: RelativeLayerRelationship(AllBinaryLayer* layer, GPoint* point, BasicArrayList* typesAllowedList);
 
     public: int32_t getX();
 

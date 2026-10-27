@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_J2SECACHEINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_J2SECACHEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <java/util/Set.h>
 
       
@@ -42,11 +50,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AutomaticCacheInterface.h"
+        #include "org/allbinary/logic/util/cache/AutomaticCacheInterface.h"
 
 class J2SECacheInterface: public AutomaticCacheInterface {
 
-    Set<Object*> keySet();
+    public: virtual Set<Object*>* keySet() = 0;
 
 };
 

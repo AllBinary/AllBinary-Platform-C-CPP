@@ -6,6 +6,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,16 +55,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "FileItemStream.h"
-#include "FileItem.h"
+        #include "org/apache/commons/fileupload/FileItemStream.h"
+#include "org/apache/commons/fileupload/FileItem.h"
 
 class FileItemUtil
             : public Object
          {
 
-    private: static FileItemUtil instance() { return FileItemUtil(); }
+    private: static FileItemUtil* instance() { static std::unique_ptr<FileItemUtil> value(new FileItemUtil()); return value.get(); }
 
-    public: static FileItemUtil getInstance(){
+    public: static FileItemUtil* getInstance(){
 
 
 
@@ -68,7 +74,7 @@ class FileItemUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     public: const std::string DEFAULT_CHARSET = "ISO-8859-1";
 
@@ -86,7 +92,7 @@ class FileItemUtil
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getString(FileItemStream fileItem){
+    public: std::string getString(FileItemStream* fileItem){
 
 
 
@@ -98,65 +104,65 @@ class FileItemUtil
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<int8_t> getBytes(FileItemStream fileItem){
+    public: std::vector<int8_t> getBytes(FileItemStream* fileItem){
 
-    StreamUtil streamUtil = StreamUtil::getInstance();;
+    StreamUtil* streamUtil = StreamUtil::getInstance();;
     
 
-    InputStream inputStream = 
+    InputStream* inputStream = 
                 null
             ;;
     
 
-    ByteArrayOutputStream outputStream = 
+    ByteArrayOutputStream* outputStream = 
                 null
             ;;
     
 
         try {
-            inputStream= fileItem.openStream();
+            inputStream= fileItem->openStream();
     
-outputStream= ByteArrayOutputStream();
+outputStream= new ByteArrayOutputStream();
     
 
-                        if(fileItem.isFormField())
+                        if(fileItem->isFormField())
                         
                                     {
-                                    this->logUtil.putF("FileItemStream FieldName: " +fileItem.getFieldName(), this, "write()");
+                                    this->logUtil->putF("FileItemStream FieldName: " +fileItem->getFieldName(), this, "write()");
     
 
                                     }
                                 
                         else {
                             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Uploaded File FieldName: ");
+stringBuffer->append("Uploaded File FieldName: ");
     
-stringBuffer.append(fileItem.getFieldName());
+stringBuffer->append(fileItem->getFieldName());
     
-stringBuffer.append(" name = ");
+stringBuffer->append(" name = ");
     
-stringBuffer.append(fileItem.getName());
+stringBuffer->append(fileItem->getName());
     
-this->logUtil.putF(stringBuffer.toString(), this, "write()");
+this->logUtil->putF(stringBuffer->toString(), this, "write()");
     
 
                         }
                             
-outputStream= streamUtil.get(inputStream, outputStream, std::vector<int8_t>(16384));
+outputStream= dynamic_cast<ByteArrayOutputStream*>(streamUtil->get(inputStream, outputStream, std::vector<int8_t>(16384)));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return outputStream.toByteArray();;
+                        return outputStream->toByteArray();;
     
 
          finally {
-            streamUtil.close(outputStream);
+            streamUtil->close(outputStream);
     
-streamUtil.close(inputStream);
+streamUtil->close(inputStream);
     
 
          }
@@ -166,8 +172,8 @@ streamUtil.close(inputStream);
 
                 //@Throws(Exception.constructor)
             
-    public: void write(FileItem fileItem, AbFile file){
-fileItem.write(AbFileNativeUtil::get(file));
+    public: void write(FileItem* fileItem, AbFile* file){
+fileItem->write(AbFileNativeUtil::get(file));
     
 }
 

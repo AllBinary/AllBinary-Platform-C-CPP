@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTCELLPOSITIONHISTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTCELLPOSITIONHISTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -58,29 +64,29 @@ class WaypointCellPositionHistory
             : public Object
          {
 
-    private: static const WaypointCellPositionHistory SINGLETON = WaypointCellPositionHistory();
+    private: static WaypointCellPositionHistory* SINGLETON() { static std::unique_ptr<WaypointCellPositionHistory> value(new WaypointCellPositionHistory()); return value.get(); }
 
-    public: static WaypointCellPositionHistory getInstance();
+    public: static WaypointCellPositionHistory* getInstance();
 
-    private: BasicArrayList positionList = BasicArrayListD();
+    private: BasicArrayList* positionList = new BasicArrayListD();
 
-    private: BasicArrayList layerList = BasicArrayListD();
+    private: BasicArrayList* layerList = new BasicArrayListD();
 
-    public: void add(CellPosition cellPosition, AllBinaryLayer layerInterface);
+    public: void add(CellPosition* cellPosition, AllBinaryLayer* layerInterface);
 
-    public: void addList(BasicArrayList list, AllBinaryLayer layerInterface);
+    public: void addList(BasicArrayList* list, AllBinaryLayer* layerInterface);
 
-    public: void remove(CellPosition cellPosition);
+    public: void remove(CellPosition* cellPosition);
 
-    public: void removeLayer(AllBinaryLayer layerInterface);
+    public: void removeLayer(AllBinaryLayer* layerInterface);
 
     public: void clear();
 
-    public: bool isCellPositionWithDrop(CellPosition cellPosition);
+    public: bool isCellPositionWithDrop(CellPosition* cellPosition);
 
-    public: bool anyCellPositionWithDrop(BasicArrayList list);
+    public: bool anyCellPositionWithDrop(BasicArrayList* list);
 
-    public: AllBinaryLayer getLayerInterface(CellPosition cellPosition);
+    public: AllBinaryLayer* getLayerInterface(CellPosition* cellPosition);
 
 };
 

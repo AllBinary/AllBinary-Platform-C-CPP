@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,7 +49,7 @@ class AdminConfigurationData
             : public Object
          {
 
-    public: static const std::string CONTEXTNAME = "Admin";
+    public: static inline const std::string CONTEXTNAME = "Admin";
 
 };
 

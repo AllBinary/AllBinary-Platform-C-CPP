@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -105,20 +113,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Order.h"
-#include "OrderHistoryInterface.h"
-#include "OrderData.h"
-#include "OrderHistoryData.h"
+        #include "org/allbinary/business/user/commerce/inventory/order/Order.h"
+#include "org/allbinary/business/user/commerce/inventory/order/OrderHistoryInterface.h"
+#include "org/allbinary/business/user/commerce/inventory/order/OrderData.h"
+#include "org/allbinary/business/user/commerce/inventory/order/OrderHistoryData.h"
 
 class OrderHistory: public Order, public OrderHistoryInterface {
 
     private: std::string userName;
 
-    private: StreetAddress shippingAddress;
+    private: StreetAddress* shippingAddress;
 
-    private: StreetAddress billingAddress;
+    private: StreetAddress* billingAddress;
 
-    private: Payment payment;
+    private: Payment* payment;
 
     private: std::string shipDate;
 
@@ -130,27 +138,27 @@ class OrderHistory: public Order, public OrderHistoryInterface {
 
     private: std::string status;
 
-    private: Money subTotal;
+    private: Money* subTotal;
 
-    private: Money shippingCost;
+    private: Money* shippingCost;
 
-    private: Money taxes;
+    private: Money* taxes;
 
-    private: Money total;
+    private: Money* total;
 
-public: OrderHistory(BasketInterface basketInterface);
+public: OrderHistory(BasketInterface* basketInterface);
 
-public: OrderHistory(BasketInterface basketInterface, OrderHistory orderHistory);
+public: OrderHistory(BasketInterface* basketInterface, OrderHistory* orderHistory);
 
-public: OrderHistory(BasketInterface basketInterface, HashMap<Object*, Object*> orderHistoryHashMap);
+public: OrderHistory(BasketInterface* basketInterface, HashMap<Object*, Object*>* orderHistoryHashMap);
 
     public: void setUserName(std::string value);
 
-    public: void setDefaultShippingAddress(StreetAddress shippingAddress);
+    public: void setDefaultShippingAddress(StreetAddress* shippingAddress);
 
-    public: void setBillingAddress(StreetAddress billingAddress);
+    public: void setBillingAddress(StreetAddress* billingAddress);
 
-    public: void setPaymentInfo(Payment payment);
+    public: void setPaymentInfo(Payment* payment);
 
     public: void setShipDate(std::string value);
 
@@ -162,21 +170,21 @@ public: OrderHistory(BasketInterface basketInterface, HashMap<Object*, Object*> 
 
     public: void setStatus(std::string value);
 
-    public: void setSubTotal(Money value);
+    public: void setSubTotal(Money* value);
 
-    public: void setShippingCost(Money value);
+    public: void setShippingCost(Money* value);
 
-    public: void setTaxes(Money value);
+    public: void setTaxes(Money* value);
 
-    public: void setTotal(Money value);
+    public: void setTotal(Money* value);
 
     public: std::string getUserName();
 
-    public: StreetAddress getShippingAddress();
+    public: StreetAddress* getShippingAddress();
 
-    public: StreetAddress getBillingAddress();
+    public: StreetAddress* getBillingAddress();
 
-    public: Payment getPaymentInfo();
+    public: Payment* getPaymentInfo();
 
     public: std::string getShipDate();
 
@@ -188,19 +196,19 @@ public: OrderHistory(BasketInterface basketInterface, HashMap<Object*, Object*> 
 
     public: std::string getStatus();
 
-    public: Money getSubTotal();
+    public: Money* getSubTotal();
 
-    public: Money getShippingCost();
+    public: Money* getShippingCost();
 
-    public: Money getTaxes();
+    public: Money* getTaxes();
 
-    public: Money getTotal();
+    public: Money* getTotal();
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -91,9 +97,9 @@ class SimpleFileUtil
             : public Object
          {
 
-    private: static SimpleFileUtil instance() { return SimpleFileUtil(); }
+    private: static SimpleFileUtil* instance() { static std::unique_ptr<SimpleFileUtil> value(new SimpleFileUtil()); return value.get(); }
 
-    public: static SimpleFileUtil getInstance(){
+    public: static SimpleFileUtil* getInstance(){
 
 
 
@@ -103,7 +109,7 @@ class SimpleFileUtil
 }
 
 
-    public: static OutputStream nullOutputStream(){
+    public: static OutputStream* nullOutputStream(){
 
 
 
@@ -130,7 +136,7 @@ class SimpleFileUtil
 }
 
 
-    public: static Writer nullWriter(){
+    public: static Writer* nullWriter(){
 
 
 
@@ -141,34 +147,34 @@ class SimpleFileUtil
     bool closed= false;
                 //@Throws(IOException.constructor)
             
-    public: Writer append(char c){
+    public: Writer* append(char c){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *this;
+                        return this;
     
 }
 
                 //@Throws(IOException.constructor)
             
-    public: Writer append(CharSequence csq){
+    public: Writer* append(CharSequence* csq){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *this;
+                        return this;
     
 }
 
                 //@Throws(IOException.constructor)
             
-    public: Writer append(CharSequence csq, int32_t start, int32_t end){
+    public: Writer* append(CharSequence* csq, int32_t start, int32_t end){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *this;
+                        return this;
     
 }
 
@@ -206,7 +212,7 @@ class SimpleFileUtil
 }
 
 
-    public: static Reader nullReader(){
+    public: static Reader* nullReader(){
 
 
 
@@ -238,7 +244,7 @@ class SimpleFileUtil
 
                 //@Throws(IOException.constructor)
             
-    public: int32_t read(CharBuffer target){
+    public: int32_t read(CharBuffer* target){
 
 
 
@@ -278,19 +284,19 @@ class SimpleFileUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: const Writer NULL_WRITER = SimpleFileUtil::nullWriter();
+    public: Writer* NULL_WRITER = SimpleFileUtil::nullWriter();
 
-    public: const Reader NULL_READER = SimpleFileUtil::nullReader();
+    public: Reader* NULL_READER = SimpleFileUtil::nullReader();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const NullUtil nullUtil = NullUtil::getInstance();
+    private: NullUtil* nullUtil = NullUtil::getInstance();
 
-    private: const StreamUtil streamUtil = StreamUtil::getInstance();
+    private: StreamUtil* streamUtil = StreamUtil::getInstance();
 
-    public: BasicArrayList loadFileAsList(InputStream inputStream, int32_t max, std::vector<int8_t> byteArray1){
+    public: BasicArrayList* loadFileAsList(InputStream* inputStream, int32_t max, std::vector<int8_t> byteArray1){
 
 
 
@@ -300,9 +306,9 @@ class SimpleFileUtil
 }
 
 
-    public: BasicArrayList loadFileAsListReturnLine(InputStream inputStream, int32_t max, std::vector<int8_t> byteArray1, int32_t includeReturnLine){
+    public: BasicArrayList* loadFileAsListReturnLine(InputStream* inputStream, int32_t max, std::vector<int8_t> byteArray1, int32_t includeReturnLine){
 
-    BasicArrayList stringList = BasicArrayListD();;
+    BasicArrayList* stringList = new BasicArrayListD();;
     
 
                         if(inputStream == 
@@ -320,24 +326,24 @@ class SimpleFileUtil
                                     }
                                 
 
-    std::vector<int8_t> byteArray = this->nullUtil.NULL_BYTE_ARRAY;;
+    std::vector<int8_t> byteArray = this->nullUtil->NULL_BYTE_ARRAY;;
     
 
         try {
             
-    ByteArrayOutputStream outputStream2 = ByteArrayOutputStream(max);;
+    ByteArrayOutputStream* outputStream2 = new ByteArrayOutputStream(max);;
     
-byteArray= this->streamUtil.getByteArray(inputStream, outputStream2, byteArray1);
+byteArray= this->streamUtil->getByteArray(inputStream, outputStream2, byteArray1);
     
-this->streamUtil.close(inputStream);
+this->streamUtil->close(inputStream);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->streamUtil.close(inputStream);
+this->streamUtil->close(inputStream);
     
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.ADD, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->ADD, &e);
     
 }
 
@@ -405,7 +411,7 @@ index++;
 
     std::string s = String.fromCharCode(...byteArray);;
     
-stringList.add(s);
+stringList->add(s);
     
 index++;
     
@@ -422,7 +428,7 @@ index++;
 
     public: std::string createStringFromArrayOfStrings(std::vector<std::string> stringArray){
 
-    StringMaker stringMaker = StringMaker();;
+    StringMaker* stringMaker = new StringMaker();;
     
 
     int32_t size = stringArray.size();;
@@ -434,7 +440,7 @@ index++;
                         for (
     int32_t index = 0;index < size; index++)
         {
-stringMaker.append(stringArray[index]);
+stringMaker->append(stringArray[index]);
     
 }
 
@@ -442,7 +448,7 @@ stringMaker.append(stringArray[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringMaker.toString();;
+                        return stringMaker->toString();;
     
 }
 

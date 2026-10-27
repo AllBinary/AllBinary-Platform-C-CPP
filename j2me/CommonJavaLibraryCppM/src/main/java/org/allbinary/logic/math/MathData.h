@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_MATHDATA_H
         #define ORG_ALLBINARY_LOGIC_MATH_MATHDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/string/CommonPhoneStrings.h>
@@ -52,9 +58,9 @@ class MathData
             : public Object
          {
 
-    private: static MathData instance() { return MathData(); }
+    private: static MathData* instance() { static std::unique_ptr<MathData> value(new MathData()); return value.get(); }
 
-    public: static MathData getInstance();
+    public: static MathData* getInstance();
 
     public: std::string EQUALS;
 

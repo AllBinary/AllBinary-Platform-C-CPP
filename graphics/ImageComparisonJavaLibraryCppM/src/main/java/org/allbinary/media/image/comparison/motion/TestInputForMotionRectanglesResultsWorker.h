@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -89,31 +95,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionRectanglesResultsListener.h"
-#include "MotionRectanglesResultsEvent.h"
-#include "MotionRectangles.h"
+        #include "org/allbinary/media/image/comparison/motion/MotionRectanglesResultsListener.h"
+#include "org/allbinary/media/image/comparison/motion/MotionRectanglesResultsEvent.h"
+#include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
 
 class TestInputForMotionRectanglesResultsWorker
             : public Object
-        : public MotionRectanglesResultsListener {
+        , public MotionRectanglesResultsListener {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: int64_t index= 0;
 
     private: bool running= false;
 
-    private: BasicArrayList motionRectanglesVector;
+    private: BasicArrayList* motionRectanglesVector;
 
 public: TestInputForMotionRectanglesResultsWorker();
 
-    public: BasicArrayList getMotionRectanglesVector();
+    public: BasicArrayList* getMotionRectanglesVector();
 
-    public: void onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent motionRectanglesImageComparisonResultsEvent);
+    public: void onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent* motionRectanglesImageComparisonResultsEvent);
 
-    public: void onEvent(AllBinaryEventObject allBinaryEventObject);
+    public: void onEvent(AllBinaryEventObject* allBinaryEventObject);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: bool isRunning();

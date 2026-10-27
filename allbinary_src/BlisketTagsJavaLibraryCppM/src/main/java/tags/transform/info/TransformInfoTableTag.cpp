@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <admin/tags/TableTag.h>
 
       
@@ -46,7 +52,7 @@
 class TransformInfoTableTag: public TableTag {
 
 public: TransformInfoTableTag(){
-this->setTagHelperFactory(TransformInfoHelperFactory());
+this->setTagHelperFactory(new TransformInfoHelperFactory());
     
 }
 

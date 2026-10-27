@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSUTIL_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -62,13 +68,13 @@ class PointsUtil
             : public Object
          {
 
-    private: static PointsUtil instance() { return PointsUtil(); }
+    private: static PointsUtil* instance() { static std::unique_ptr<PointsUtil> value(new PointsUtil()); return value.get(); }
 
-    public: static PointsUtil getInstance();
+    public: static PointsUtil* getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList doTransforms(BasicArrayList pointVector, number angle, GPoint fulcrumPoint);
+    public: BasicArrayList* doTransforms(BasicArrayList* pointVector, double angle, GPoint* fulcrumPoint);
 
 };
 

@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Thread.h"
@@ -66,16 +74,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbstractInputAutomationWorker.h"
-#include "InputAutomationActionInterface.h"
+        #include "org/allbinary/input/automation/module/AbstractInputAutomationWorker.h"
+#include "org/allbinary/input/automation/module/InputAutomationActionInterface.h"
 
 class TestInputAutomationActionWorker: public AbstractInputAutomationWorker {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: int32_t sleep;
 
-public: TestInputAutomationActionWorker(int32_t sleep, InputAutomationActionInterface inputAutomationActionInterface, ImageComparatorConstraintsInterface imageComparatorConstraintsInterface, MotionRectangleConstraintsInterface motionRectangleConstraintsInterface);
+public: TestInputAutomationActionWorker(int32_t sleep, InputAutomationActionInterface* inputAutomationActionInterface, ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface, MotionRectangleConstraintsInterface* motionRectangleConstraintsInterface);
 
                 //@Throws(Exception.constructor)
             

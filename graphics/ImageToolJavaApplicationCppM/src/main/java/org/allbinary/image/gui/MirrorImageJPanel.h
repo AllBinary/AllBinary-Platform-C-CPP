@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Thread.h"
@@ -78,66 +84,66 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "JLayeredPane.h"
-#include "ButtonGroup.h"
-#include "Graphics.h"
-#include "JCheckBox.h"
-#include "JButton.h"
-#include "JRadioButton.h"
-#include "JLabel.h"
-#include "GroupLayout.h"
-#include "Short.h"
-#include "ActionListener.h"
-#include "ActionEvent.h"
+        #include "org/allbinary/image/gui/JPanel.h"
+#include "org/allbinary/image/gui/JLayeredPane.h"
+#include "org/allbinary/image/gui/ButtonGroup.h"
+#include "org/allbinary/image/gui/Graphics.h"
+#include "org/allbinary/image/gui/JCheckBox.h"
+#include "org/allbinary/image/gui/JButton.h"
+#include "org/allbinary/image/gui/JRadioButton.h"
+#include "org/allbinary/image/gui/JLabel.h"
+#include "org/allbinary/image/gui/GroupLayout.h"
+#include "org/allbinary/image/gui/Short.h"
+#include "org/allbinary/image/gui/ActionListener.h"
+#include "org/allbinary/image/gui/ActionEvent.h"
 
 class MirrorImageJPanel: public javax::swing::JPanel, public ImageProcessorInputCompositeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const ImageStrings imageStrings = ImageStrings::getInstance();
+    private: ImageStrings* imageStrings = ImageStrings::getInstance();
 
-    private: ImageProcessorInput imageProcessorInput;
+    private: ImageProcessorInput* imageProcessorInput;
 
-    private: BufferedImage result;
+    private: BufferedImage* result;
 
-public: MirrorImageJPanel(ImageProcessorInput imageProcessorInput);
+public: MirrorImageJPanel(ImageProcessorInput* imageProcessorInput);
 
     public: void process();
 
     private: void initComponents();
 
-    private: void generateJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void generateJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void renameJRadioButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void renameJRadioButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: javax::swing::ButtonGroup buttonGroup;
+    private: javax::swing::ButtonGroup* buttonGroup;
 
-    private: javax::swing::JButton generateJButton;
+    private: javax::swing::JButton* generateJButton;
 
-    private: javax::swing::JCheckBox horizontalJCheckBox;
+    private: javax::swing::JCheckBox* horizontalJCheckBox;
 
-    private: javax::swing::JLabel jLabel2;
+    private: javax::swing::JLabel* jLabel2;
 
-    private: javax::swing::JLayeredPane jLayeredPane1;
+    private: javax::swing::JLayeredPane* jLayeredPane1;
 
-    private: javax::swing::JPanel jPanel1;
+    private: javax::swing::JPanel* jPanel1;
 
-    private: javax::swing::JPanel jPanel2;
+    private: javax::swing::JPanel* jPanel2;
 
-    private: javax::swing::JPanel jPanel3;
+    private: javax::swing::JPanel* jPanel3;
 
-    private: javax::swing::JRadioButton renameJRadioButton;
+    private: javax::swing::JRadioButton* renameJRadioButton;
 
-    private: javax::swing::JCheckBox verticleJCheckBox;
+    private: javax::swing::JCheckBox* verticleJCheckBox;
 
-    private: javax::swing::JRadioButton writeOverOriginalJRadioButton;
+    private: javax::swing::JRadioButton* writeOverOriginalJRadioButton;
 
-    public: ImageProcessorInput getImageProcessorInput();
+    public: ImageProcessorInput* getImageProcessorInput();
 
-    public: void setImageProcessorInput(ImageProcessorInput imageProcessorInput);
+    public: void setImageProcessorInput(ImageProcessorInput* imageProcessorInput);
 
 };
 

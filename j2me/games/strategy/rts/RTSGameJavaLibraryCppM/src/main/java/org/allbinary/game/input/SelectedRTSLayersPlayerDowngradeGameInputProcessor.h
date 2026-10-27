@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_SELECTEDRTSLAYERSPLAYERDOWNGRADEGAMEINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_INPUT_SELECTEDRTSLAYERSPLAYERDOWNGRADEGAMEINPUTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/event/GameKeyEvent.h>
@@ -47,16 +53,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SelectedRTSLayersPlayerGameInputProcessor.h"
-#include "SelectedRTSLayersPlayerGameInput.h"
+        #include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInputProcessor.h"
+#include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h"
 
 class SelectedRTSLayersPlayerDowngradeGameInputProcessor: public SelectedRTSLayersPlayerGameInputProcessor {
 
-public: SelectedRTSLayersPlayerDowngradeGameInputProcessor(SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput);
+public: SelectedRTSLayersPlayerDowngradeGameInputProcessor(SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput);
 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent);
+    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent);
 
 };
 

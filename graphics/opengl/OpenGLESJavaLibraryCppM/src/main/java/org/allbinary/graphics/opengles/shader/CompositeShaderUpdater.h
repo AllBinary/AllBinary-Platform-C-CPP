@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/khronos/egl/EGLConfig.h>
 
       
@@ -56,18 +62,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShaderUpdater.h"
-#include "ShaderStrings.h"
+        #include "org/allbinary/graphics/opengles/shader/ShaderUpdater.h"
+#include "org/allbinary/graphics/opengles/shader/ShaderStrings.h"
 
 class CompositeShaderUpdater: public ShaderUpdater {
 
-    private: static const CompositeShaderUpdater instanceC = CompositeShaderUpdater(StringUtil::getInstance().getArrayInstance(), StringUtil::getInstance().getArrayInstance(), StringUtil::getInstance().getArrayInstance(), NullUtil::getInstance().NULL_INT_ARRAY);
+    private: static CompositeShaderUpdater* instanceC() { static std::unique_ptr<CompositeShaderUpdater> value(new CompositeShaderUpdater(StringUtil::getInstance()->getArrayInstance(), StringUtil::getInstance()->getArrayInstance(), StringUtil::getInstance()->getArrayInstance(), NullUtil::getInstance()->NULL_INT_ARRAY)); return value.get(); }
 
-    public: static CompositeShaderUpdater getInstance();
+    public: static CompositeShaderUpdater* getInstance();
 
-    protected: const CommonSeps commonSeps = CommonSeps::getInstance();
+    protected: CommonSeps* commonSeps = CommonSeps::getInstance();
 
-    protected: const ShaderStrings shaderStrings = ShaderStrings::getInstance();
+    protected: ShaderStrings* shaderStrings = ShaderStrings::getInstance();
 
     public: std::vector<int32_t> uniformBlockHandleArray;
 
@@ -83,9 +89,9 @@ class CompositeShaderUpdater: public ShaderUpdater {
 
 public: CompositeShaderUpdater(std::vector<std::string> uniformBlockArray, std::vector<std::string> uniformArray, std::vector<std::string> attributeArray, std::vector<int32_t> attributeHandleArray);
 
-    public: void onSurfaceCreated(GL10 gl, EGLConfig eglConfig, int32_t programHandle);
+    public: void onSurfaceCreated(GL10* gl, EGLConfig* eglConfig, int32_t programHandle);
 
-    public: void onSurfaceDestroyed(GL10 gl);
+    public: void onSurfaceDestroyed(GL10* gl);
 
 };
 

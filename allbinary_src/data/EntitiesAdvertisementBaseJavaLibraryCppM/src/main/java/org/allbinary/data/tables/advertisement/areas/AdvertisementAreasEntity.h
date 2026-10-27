@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_AREAS_ADVERTISEMENTAREASENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_AREAS_ADVERTISEMENTAREASENTITY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -83,11 +89,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdvertisementAreasEntityInterface.h"
+        #include "org/allbinary/data/tables/advertisement/areas/AdvertisementAreasEntityInterface.h"
 
 class AdvertisementAreasEntity: public AbSqlBean, public AdvertisementAreasEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     protected: const std::string tableName = "advertisements";
 
@@ -97,17 +103,17 @@ public: AdvertisementAreasEntity();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList get(std::string storeName);
+    public: BasicArrayList* get(std::string storeName);
 
                 //@Throws(Exception.constructor)
             
-    public: AdvertisementAreaInterface get(std::string storeName, std::string advertisementAreaName);
+    public: AdvertisementAreaInterface* get(std::string storeName, std::string advertisementAreaName);
 
     public: std::string createTableStatement();
 
     public: std::string createTable();
 
-    public: void update(HashMap<Object*, Object*> updatedValues);
+    public: void update(HashMap<Object*, Object*>* updatedValues);
 
     public: std::string dropTable();
 

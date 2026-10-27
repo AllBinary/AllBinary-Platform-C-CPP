@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/io/file/AbFile.h>
 
       
@@ -50,7 +56,7 @@ class DirectoryOrIncludeFileExtensionBooleanFileVisitor: public IncludeFileExten
 
     private: std::string includesString;
 
-public: DirectoryOrIncludeFileExtensionBooleanFileVisitor(BasicArrayList filterStringBasicArrayList) : IncludeFileExtensionsBooleanFileVisitor(filterStringBasicArrayList){
+public: DirectoryOrIncludeFileExtensionBooleanFileVisitor(BasicArrayList* filterStringBasicArrayList) : IncludeFileExtensionsBooleanFileVisitor(filterStringBasicArrayList){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -64,7 +70,7 @@ this->includesString=
 }
 
 
-public: DirectoryOrIncludeFileExtensionBooleanFileVisitor(BasicArrayList filterStringBasicArrayList, std::string includesString) : IncludeFileExtensionsBooleanFileVisitor(filterStringBasicArrayList){
+public: DirectoryOrIncludeFileExtensionBooleanFileVisitor(BasicArrayList* filterStringBasicArrayList, std::string includesString) : IncludeFileExtensionsBooleanFileVisitor(filterStringBasicArrayList){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -76,9 +82,9 @@ this->includesString= includesString;
 }
 
 
-    public: Boolean visit(AbFile file){
+    public: bool visit(AbFile* file){
 
-                        if(file.isDirectory())
+                        if(file->isDirectory())
                         
                                     {
                                     
@@ -91,7 +97,7 @@ this->includesString= includesString;
                                     }
                                 
 
-                        if(false || file.getAbsolutePath().indexOf(this->includesString) >= 0)
+                        if(false || file->getAbsolutePath()->indexOf(this->includesString) >= 0)
                         
                                     {
                                     

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLEBASEBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLEBASEBEHAVIOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,15 +52,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DestroyableInterface.h"
+        #include "org/allbinary/game/combat/destroy/DestroyableInterface.h"
 
 class DestroyableBaseBehavior
             : public Object
-        : public DestroyableInterface {
+        , public DestroyableInterface {
 
-    private: static DestroyableBaseBehavior instance() { return DestroyableBaseBehavior(); }
+    private: static DestroyableBaseBehavior* instance() { static std::unique_ptr<DestroyableBaseBehavior> value(new DestroyableBaseBehavior()); return value.get(); }
 
-    public: static DestroyableBaseBehavior getInstance();
+    public: static DestroyableBaseBehavior* getInstance();
 
     public: std::string getName();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Throwable.h"
@@ -55,17 +61,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogFormatUtil.h"
-#include "Log.h"
-#include "PreLogUtil.h"
+        #include "org/allbinary/logic/communication/log/LogFormatUtil.h"
+#include "org/allbinary/logic/communication/log/Log.h"
+#include "org/allbinary/logic/communication/log/PreLogUtil.h"
 //ActualPlatform
 /*actual*/ class LogUtil
             : public Object
          {
 
-    private: static LogUtil instance() { return LogUtil(); }
+    private: static LogUtil* instance() { static std::unique_ptr<LogUtil> value(new LogUtil()); return value.get(); }
 
-    /*actual*/ public: static LogUtil getInstance(){
+    /*actual*/ public: static LogUtil* getInstance(){
 
 
 
@@ -75,7 +81,7 @@
 }
 
 
-    private: const LogFormatUtil logFormatUtil = LogFormatUtil::getInstance();
+    private: LogFormatUtil* logFormatUtil = LogFormatUtil::getInstance();
 
     private: const std::string LOG_SUCCESS = "org.allbinary: ";
 
@@ -83,7 +89,7 @@ private: LogUtil(){
 }
 
 
-    /*actual*/ public: void putL(Log log){
+    /*actual*/ public: void putL(Log* log){
 
                         if(log == 
                                     nullptr
@@ -100,16 +106,16 @@ private: LogUtil(){
                                     }
                                 
 
-    std::string specialMessage = log.getSpecialMessage();;
+    std::string specialMessage = log->getSpecialMessage();;
     
 
-    Object* anyType = log.getObject();;
+    Object* anyType = log->getObject();;
     
 
-    std::string functionName = log.getFunctionName();;
+    std::string functionName = log->getFunctionName();;
     
 
-    Object* exception = log.getThrowable();;
+    Object* exception = log->getThrowable();;
     
 this->put(specialMessage, anyType, functionName, exception);
     
@@ -124,30 +130,30 @@ this->put(specialMessage, anyType, functionName, exception);
                         if(false)
                         
                                     {
-                                    className= CommonStrings::getInstance().EMPTY;
+                                    className= CommonStrings::getInstance()->EMPTY;
     
 
                                     }
                                 
 
-    std::string message = this->logFormatUtil.getS(className, functionName, specialMessage);;
+    std::string message = this->logFormatUtil->getS(className, functionName, specialMessage);;
     
 
-    PlayN playN = PlayN::getInstance();;
+    PlayN* playN = PlayN::getInstance();;
     
-playN.log().debug(this->LOG_SUCCESS +message);
+playN->log()->debug(this->LOG_SUCCESS +message);
     
 }
 
 
     /*actual*/ public: void putFS(std::string specialMessage, std::string className, std::string functionName){
 
-    std::string message = this->logFormatUtil.getS(className, functionName, specialMessage);;
+    std::string message = this->logFormatUtil->getS(className, functionName, specialMessage);;
     
 
-    PlayN playN = PlayN::getInstance();;
+    PlayN* playN = PlayN::getInstance();;
     
-playN.log().debug(this->LOG_SUCCESS +message);
+playN->log()->debug(this->LOG_SUCCESS +message);
     
 }
 
@@ -160,16 +166,16 @@ playN.log().debug(this->LOG_SUCCESS +message);
                         if(false)
                         
                                     {
-                                    className= CommonStrings::getInstance().EMPTY;
+                                    className= CommonStrings::getInstance()->EMPTY;
     
 
                                     }
                                 
 
-    std::string message = this->logFormatUtil.get(className, functionName, specialMessage, exception);;
+    std::string message = this->logFormatUtil->get(className, functionName, specialMessage, exception);;
     
 
-    PlayN playN = PlayN::getInstance();;
+    PlayN* playN = PlayN::getInstance();;
     
 
                         if(exception != 
@@ -177,13 +183,13 @@ playN.log().debug(this->LOG_SUCCESS +message);
                                 )
                         
                                     {
-                                    playN.log().error(this->LOG_SUCCESS +message, *dynamic_cast<Throwable*>(exception));
+                                    playN->log()->error(this->LOG_SUCCESS +message, dynamic_cast<Throwable*>(exception));
     
 
                                     }
                                 
                         else {
-                            playN.log().debug(this->LOG_SUCCESS +message);
+                            playN->log()->debug(this->LOG_SUCCESS +message);
     
 
                         }

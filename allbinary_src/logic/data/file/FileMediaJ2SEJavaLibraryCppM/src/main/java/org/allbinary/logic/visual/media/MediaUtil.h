@@ -9,6 +9,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,26 +70,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageIOUtil.h"
-#include "MediaData.h"
+        #include "org/allbinary/logic/visual/media/ImageIOUtil.h"
+#include "org/allbinary/logic/visual/media/MediaData.h"
 //import com.sun.imageio.plugins.common.ImageUtil;
 class MediaUtil
             : public Object
          {
 
-    private: static MediaUtil instance() { return MediaUtil(); }
+    private: static MediaUtil* instance() { static std::unique_ptr<MediaUtil> value(new MediaUtil()); return value.get(); }
 
-    public: static MediaUtil getInstance();
+    public: static MediaUtil* getInstance();
 
-    private: static HashMap<Object*, Object*> getImageBufferPropertyHashMap(BufferedImage bufferedImage);
+    private: static HashMap<Object*, Object*>* getImageBufferPropertyHashMap(BufferedImage* bufferedImage);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: MediaUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: void saveImageFile(AbFile originalImageFile, std::string newImageFileName, std::string category, MediaData mediaData, int32_t newWidth, int32_t newHeight);
+    public: void saveImageFile(AbFile* originalImageFile, std::string newImageFileName, std::string category, MediaData* mediaData, int32_t newWidth, int32_t newHeight);
 
 };
 

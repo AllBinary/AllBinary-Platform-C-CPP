@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABCUSTOMITEMINTERFACE_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABCUSTOMITEMINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -31,15 +37,15 @@
         
 class ABCustomItemInterface {
 
-    int32_t getMinimumWidth();
+    public: virtual int32_t getMinimumWidth() = 0;
 
-    int32_t getMinimumHeight();
+    public: virtual int32_t getMinimumHeight() = 0;
 
-    std::string getLabel();
+    public: virtual std::string getLabel() = 0;
 
-    void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: virtual void paintXY(Graphics* graphics, int32_t x, int32_t y) = 0;
 
-    void paintUnselected(Graphics graphics, int32_t x, int32_t y);
+    public: virtual void paintUnselected(Graphics* graphics, int32_t x, int32_t y) = 0;
 
 };
 

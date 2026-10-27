@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTCHANGEEVENT_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTCHANGEEVENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,19 +47,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputAutomationRobotInterfaceWrapper.h"
+        #include "org/allbinary/input/automation/robot/osgi/InputAutomationRobotInterfaceWrapper.h"
 
 class InputAutomationRobotChangeEvent
             : public Object
          {
 
-    private: InputAutomationRobotInterfaceWrapper inputAutomationRobotInterfaceWrapper;
+    private: InputAutomationRobotInterfaceWrapper* inputAutomationRobotInterfaceWrapper;
 
-public: InputAutomationRobotChangeEvent(InputAutomationRobotInterfaceWrapper inputAutomationRobotInterfaceWrapper);
+public: InputAutomationRobotChangeEvent(InputAutomationRobotInterfaceWrapper* inputAutomationRobotInterfaceWrapper);
 
-    public: InputAutomationRobotInterfaceWrapper getInputAutomationRobotInterfaceWrapper();
+    public: InputAutomationRobotInterfaceWrapper* getInputAutomationRobotInterfaceWrapper();
 
-    public: void setInputAutomationRobotInterfaceWrapper(InputAutomationRobotInterfaceWrapper inputAutomationRobotInterfaceWrapper);
+    public: void setInputAutomationRobotInterfaceWrapper(InputAutomationRobotInterfaceWrapper* inputAutomationRobotInterfaceWrapper);
 
 };
 

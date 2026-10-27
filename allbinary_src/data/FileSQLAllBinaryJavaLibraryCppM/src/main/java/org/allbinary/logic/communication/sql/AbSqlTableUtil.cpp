@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -101,17 +107,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SqlStrings.h"
-#include "StringBuilder.h"
-#include "AbSqlTable.h"
+        #include "org/allbinary/logic/communication/sql/SqlStrings.h"
+#include "org/allbinary/logic/communication/sql/StringBuilder.h"
+#include "org/allbinary/logic/communication/sql/AbSqlTable.h"
 
 class AbSqlTableUtil
             : public Object
          {
 
-    private: static AbSqlTableUtil instance() { return AbSqlTableUtil(); }
+    private: static AbSqlTableUtil* instance() { static std::unique_ptr<AbSqlTableUtil> value(new AbSqlTableUtil()); return value.get(); }
 
-    public: static AbSqlTableUtil getInstance(){
+    public: static AbSqlTableUtil* getInstance(){
 
 
 
@@ -121,7 +127,7 @@ class AbSqlTableUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string EXTENSION = ".adb";
 
@@ -165,51 +171,51 @@ class AbSqlTableUtil
 
     private: const std::string NEW_LINE = "\\n";
 
-    protected: const StringUtil stringUtil = StringUtil::getInstance();
+    protected: StringUtil* stringUtil = StringUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const CommonSeps commonSeps = CommonSeps::getInstance();
+    protected: CommonSeps* commonSeps = CommonSeps::getInstance();
 
-    protected: const SqlStrings sqlStrings = SqlStrings::getInstance();
+    protected: SqlStrings* sqlStrings = SqlStrings::getInstance();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: OutputStream getOutputStream(std::string backupPath, std::string tableName){
+    private: OutputStream* getOutputStream(std::string backupPath, std::string tableName){
 
         try {
             
     std::string fileName = tableName +this->EXTENSION;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->SAVING +tableName, this, this->METHOD_GET_OUTPUT_STREAM);
+                                    this->logUtil->putF(this->SAVING +tableName, this, this->METHOD_GET_OUTPUT_STREAM);
     
 
                                     }
                                 
 
-    AbPath backupFilePath = AbPath(backupPath, fileName);;
+    AbPath* backupFilePath = new AbPath(backupPath, fileName);;
     
 
-    AbFile backupFile = AbFile::createAbFile(backupFilePath);;
+    AbFile* backupFile = AbFile::createAbFile(backupFilePath);;
     
 
-                        if(backupFile.exists())
+                        if(backupFile->exists())
                         
                                     {
                                     this->backupFile(backupFilePath, backupPath, tableName);
     
-backupFile.delete();
+backupFile->delete();
     
 
                                     }
                                 
-backupFile.createNewFile();
+backupFile->createNewFile();
     
 
-    OutputStream outputStream = AbFileOutputStream(backupFile);;
+    OutputStream* outputStream = new AbFileOutputStream(backupFile);;
     
 
 
@@ -219,13 +225,13 @@ backupFile.createNewFile();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put("Create File", this, this->METHOD_GET_OUTPUT_STREAM, e);
+                                    this->logUtil->put("Create File", this, this->METHOD_GET_OUTPUT_STREAM, &e);
     
 
                                     }
@@ -242,48 +248,48 @@ backupFile.createNewFile();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: bool backupFile(AbPath path, std::string backupPath, std::string tableName){
+    private: bool backupFile(AbPath* path, std::string backupPath, std::string tableName){
 
         try {
             
-    Calendar calendar = Calendar::getInstance();;
+    Calendar* calendar = Calendar::getInstance();;
     
 
-    Long timeLong = Long(calendar.getTimeInMillis());;
+    int64_t timeLong = int64_t(calendar->getTimeInMillis());;
     
 
     std::string time = timeLong.toString();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
     std::string fileName = tableName +this->EXTENSION;;
     
-stringBuffer.append(backupPath);
+stringBuffer->append(backupPath);
     
-stringBuffer.append(AbPathData::getInstance().SEPARATOR);
+stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
-stringBuffer.append(time);
-    
-
-    AbPath backupAbPath = AbPath(stringBuffer.toString());;
+stringBuffer->append(time);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+    AbPath* backupAbPath = new AbPath(stringBuffer->toString());;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    stringBuffer.delete(0, stringBuffer.length());
+                                    stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(this->SAVING_BACKUP_PATH);
+stringBuffer->append(this->SAVING_BACKUP_PATH);
     
-stringBuffer.append(backupAbPath.toFileSystemString());
+stringBuffer->append(backupAbPath->toFileSystemString());
     
-stringBuffer.append(this->FILE_LABEL);
+stringBuffer->append(this->FILE_LABEL);
     
-stringBuffer.append(fileName);
+stringBuffer->append(fileName);
     
-this->logUtil.putF(stringBuffer.toString(), this, this->METHOD_BACKUP_FILE);
+this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_BACKUP_FILE);
     
 
                                     }
@@ -291,11 +297,11 @@ this->logUtil.putF(stringBuffer.toString(), this, this->METHOD_BACKUP_FILE);
 Directory::create(backupAbPath);
     
 
-    AbFile backupFileBak = AbFile::createAbFile(backupAbPath.toFileSystemString());;
+    AbFile* backupFileBak = AbFile::createAbFile(backupAbPath->toFileSystemString());;
     
-backupFileBak.createNewFile();
+backupFileBak->createNewFile();
     
-FileUtil::getInstance().copy(path, backupAbPath);
+FileUtil::getInstance()->copy(path, backupAbPath);
     
 
 
@@ -305,13 +311,13 @@ FileUtil::getInstance().copy(path, backupAbPath);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->METHOD_BACKUP_FILE, e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->METHOD_BACKUP_FILE, &e);
     
 
                                     }
@@ -329,7 +335,7 @@ FileUtil::getInstance().copy(path, backupAbPath);
 
     private: std::string convertNewLines(std::string value){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
     int32_t index = 0;;
@@ -340,18 +346,18 @@ FileUtil::getInstance().copy(path, backupAbPath);
 
         while(index < value.size())
         {
-index= value.indexOf(specialCharArray[0], lastIndex);
+index= JavaString::indexOf(value, specialCharArray[0], lastIndex);
     
 
                         if(index !=  -1)
                         
                                     {
                                     
-    std::string nextLine = value.substring(lastIndex, index -1);;
+    std::string nextLine = JavaString::substring(value, lastIndex, index -1);;
     
-stringBuffer.append(nextLine);
+stringBuffer->append(nextLine);
     
-stringBuffer.append(this->NEW_LINE);
+stringBuffer->append(this->NEW_LINE);
     
 lastIndex= index +1;
     
@@ -371,7 +377,7 @@ lastIndex= index +1;
                         if(lastIndex < value.size())
                         
                                     {
-                                    stringBuffer.append(value.substring(lastIndex, value.size()));
+                                    stringBuffer->append(JavaString::substring(value, lastIndex, value.size()));
     
 
                                     }
@@ -380,15 +386,15 @@ lastIndex= index +1;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: std::string backupTable(AbSqlTable abSqlTable){
+    public: std::string backupTable(AbSqlTable* abSqlTable){
 
-    std::string tableName = abSqlTable.getTableName();;
+    std::string tableName = abSqlTable->getTableName();;
     
 
         try {
@@ -396,20 +402,20 @@ lastIndex= index +1;
     int32_t count = 0;;
     
 
-    std::string sqlStatement = this->sqlStrings.SELECT_ALL_FROM +tableName;;
+    std::string sqlStatement = this->sqlStrings->SELECT_ALL_FROM +tableName;;
     
 
-    std::string path = org.allbinary.globals.URLGLOBALS.getMainPath() +PATH_GLOBALS::getInstance().BACKUP_PATH;;
+    std::string path = org.allbinary.globals.URLGLOBALS.getMainPath() +PATH_GLOBALS::getInstance()->BACKUP_PATH;;
     
 
-                        if(!Directory::create(AbPath(path)))
+                        if(!Directory::create(new AbPath(path)))
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(ERROR_CREATING +path, this, this->METHOD_BACKUP_TABLE);
+                                    this->logUtil->putF(ERROR_CREATING +path, this, this->METHOD_BACKUP_TABLE);
     
 
                                     }
@@ -418,29 +424,29 @@ lastIndex= index +1;
                                     }
                                 
 
-    ResultSet rset = abSqlTable.executeSQLStatement(sqlStatement);;
+    ResultSet* rset = abSqlTable->executeSQLStatement(sqlStatement);;
     
 
-    ResultSetMetaData rsmd = rset.getMetaData();;
+    ResultSetMetaData* rsmd = rset->getMetaData();;
     
 
-    int32_t colNum = rsmd.getColumnCount();;
+    int32_t colNum = rsmd->getColumnCount();;
     
 
-    std::string QUERY_START = StringBuilder().append(this->sqlStrings.INSERT_INTO).append(tableName).append(this->sqlStrings.VALUES).toString();;
+    std::string QUERY_START = (new StringBuilder())->append(this->sqlStrings->INSERT_INTO)->append(tableName)->append(this->sqlStrings->VALUES)->toString();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    OutputStream outputStream = this->getOutputStream(path, tableName);;
+    OutputStream* outputStream = this->getOutputStream(path, tableName);;
     
 
-        while(rset.next())
+        while(rset->next())
         {
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(QUERY_START);
+stringBuffer->append(QUERY_START);
     
 
 
@@ -450,35 +456,35 @@ stringBuffer.append(QUERY_START);
     int32_t i = 1;i < colNum; i++)
         {
 
-    std::string value = rset.getString(i);;
+    std::string value = rset->getString(i);;
     
-stringBuffer.append(this->convertNewLines(value));
+stringBuffer->append(this->convertNewLines(value));
     
-stringBuffer.append(this->sqlStrings.SINGLE_QUOTE_COMMA_SEP);
+stringBuffer->append(this->sqlStrings->SINGLE_QUOTE_COMMA_SEP);
     
 }
 
-stringBuffer.append(rset.getString(colNum));
+stringBuffer->append(rset->getString(colNum));
     
-stringBuffer.append(this->END);
-    
-
-    std::string sqlStatementLine = stringBuffer.toString();;
+stringBuffer->append(this->END);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+    std::string sqlStatementLine = stringBuffer->toString();;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->APPENDING +sqlStatementLine, this, this->METHOD_BACKUP_TABLE);
+                                    this->logUtil->putF(this->APPENDING +sqlStatementLine, this, this->METHOD_BACKUP_TABLE);
     
 
                                     }
                                 
-outputStream.write(sqlStatementLine.getBytes());
+outputStream->write(JavaString::getBytes(sqlStatementLine));
     
 }
 
-StreamUtil::getInstance().close(outputStream);
+StreamUtil::getInstance()->close(outputStream);
     
 
 
@@ -488,13 +494,13 @@ StreamUtil::getInstance().close(outputStream);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put("Backup Table Failed\nSQL Statement", this, this->METHOD_BACKUP_TABLE, e);
+                                    this->logUtil->put("Backup Table Failed\nSQL Statement", this, this->METHOD_BACKUP_TABLE, &e);
     
 
                                     }
@@ -511,31 +517,31 @@ StreamUtil::getInstance().close(outputStream);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: std::string restoreTable(AbSqlTable abSqlTable, Portion portion){
+    public: std::string restoreTable(AbSqlTable* abSqlTable, Portion* portion){
 
-    std::string tableName = abSqlTable.getTableName();;
+    std::string tableName = abSqlTable->getTableName();;
     
 
         try {
             
-    std::string path = org.allbinary.globals.URLGLOBALS.getMainPath() +PATH_GLOBALS::getInstance().BACKUP_PATH;;
+    std::string path = org.allbinary.globals.URLGLOBALS.getMainPath() +PATH_GLOBALS::getInstance()->BACKUP_PATH;;
     
 
-    int32_t current = portion.getCurrent().intValue();;
+    int32_t current = portion->getCurrent()->intValue();;
     
 
                         if(current == 0)
                         
                                     {
                                     
-                        if(Directory::create(AbPath(path)))
+                        if(Directory::create(new AbPath(path)))
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->ERROR_CREATING +path, this, this->METHOD_RESTORE_TABLE);
+                                    this->logUtil->putF(this->ERROR_CREATING +path, this, this->METHOD_RESTORE_TABLE);
     
 
                                     }
@@ -547,16 +553,16 @@ StreamUtil::getInstance().close(outputStream);
                                     }
                                 
 
-    AbFile backupFile = AbFile::createAbFile(path, tableName +this->EXTENSION);;
+    AbFile* backupFile = AbFile::createAbFile(path, tableName +this->EXTENSION);;
     
 
-    BufferedLineReader bufferedLineReader = BufferedLineReader(backupFile);;
+    BufferedLineReader* bufferedLineReader = new BufferedLineReader(backupFile);;
     
 
-    int64_t size = bufferedLineReader.getSize();;
+    int64_t size = bufferedLineReader->getSize();;
     
 
-    int64_t section = size /portion.getTotal().intValue() +1;;
+    int64_t section = size /portion->getTotal()->intValue() +1;;
     
 
     int64_t start = section *current;;
@@ -574,36 +580,36 @@ StreamUtil::getInstance().close(outputStream);
                                     }
                                 
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->TOTAL_LABEL);
+stringBuffer->append(this->TOTAL_LABEL);
     
-stringBuffer.append(size);
+stringBuffer->append(size);
     
-stringBuffer.append(this->SECTION_LABEL);
+stringBuffer->append(this->SECTION_LABEL);
     
-stringBuffer.append(start);
+stringBuffer->append(start);
     
-stringBuffer.append(this->DASH);
+stringBuffer->append(this->DASH);
     
-stringBuffer.append(end);
+stringBuffer->append(end);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(stringBuffer.toString(), this, this->METHOD_RESTORE_TABLE);
+                                    this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_RESTORE_TABLE);
     
 
                                     }
                                 
-bufferedLineReader.readUpToLines(start);
+bufferedLineReader->readUpToLines(start);
     
 
-    std::string line = this->stringUtil.EMPTY_STRING;;
+    std::string line = this->stringUtil->EMPTY_STRING;;
     
 
-        while(bufferedLineReader.getCurrent() < end && (line= bufferedLineReader.readLine()) != 
+        while(bufferedLineReader->getCurrent() < end && (line= bufferedLineReader->readLine()) != 
                                     nullptr
                                 )
         {
@@ -611,54 +617,54 @@ bufferedLineReader.readUpToLines(start);
                         if(line.size() > 1)
                         
                                     {
-                                    abSqlTable.executeSQLStatement(line);
+                                    abSqlTable->executeSQLStatement(line);
     
 
                                     }
                                 
 }
 
-stringBuffer.append(this->commonSeps.SPACE);
+stringBuffer->append(this->commonSeps->SPACE);
     
-stringBuffer.append(this->TABLE_LABEL);
+stringBuffer->append(this->TABLE_LABEL);
     
-stringBuffer.append(tableName);
+stringBuffer->append(tableName);
     
-stringBuffer.append(this->PORTION_RESTORED);
+stringBuffer->append(this->PORTION_RESTORED);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put("Restore Table Failed\nSQL Statement", this, this->METHOD_RESTORE_TABLE, e);
+                                    this->logUtil->put("Restore Table Failed\nSQL Statement", this, this->METHOD_RESTORE_TABLE, &e);
     
 
                                     }
                                 
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->TABLE_LABEL);
+stringBuffer->append(this->TABLE_LABEL);
     
-stringBuffer.append(tableName);
+stringBuffer->append(tableName);
     
-stringBuffer.append(" Restoration Failed");
+stringBuffer->append(" Restoration Failed");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

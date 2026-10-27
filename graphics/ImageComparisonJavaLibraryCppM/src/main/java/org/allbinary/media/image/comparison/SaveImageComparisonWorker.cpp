@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,37 +70,37 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageComparisonResultsListener.h"
-#include "ImageComparisonResultsEvent.h"
-#include "ImageComparisonResult.h"
-#include "ComparisonImageInputOutput.h"
+        #include "org/allbinary/media/image/comparison/ImageComparisonResultsListener.h"
+#include "org/allbinary/media/image/comparison/ImageComparisonResultsEvent.h"
+#include "org/allbinary/media/image/comparison/ImageComparisonResult.h"
+#include "org/allbinary/media/image/comparison/ComparisonImageInputOutput.h"
 
 class SaveImageComparisonWorker
             : public Object
-        : public ImageComparisonResultsListener {
+        , public ImageComparisonResultsListener {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: bool running= false;
 
-    private: const BasicArrayList imageComparisonInfoVector = BasicArrayListD();
+    private: BasicArrayList* imageComparisonInfoVector = new BasicArrayListD();
 
 public: SaveImageComparisonWorker(){
 }
 
 
-    public: void onImageComparisonResultsEvent(ImageComparisonResultsEvent imageComparisonResultsEvent){
-this->imageComparisonInfoVector.add(imageComparisonResultsEvent);
+    public: void onImageComparisonResultsEvent(ImageComparisonResultsEvent* imageComparisonResultsEvent){
+this->imageComparisonInfoVector->add(imageComparisonResultsEvent);
     
 this->run();
     
 }
 
 
-    public: void onEvent(AllBinaryEventObject allBinaryEventObject){
-this->onImageComparisonResultsEvent(allBinaryEventObject);
+    public: void onEvent(AllBinaryEventObject* allBinaryEventObject){
+this->onImageComparisonResultsEvent(dynamic_cast<ImageComparisonResultsEvent*>(allBinaryEventObject));
     
 }
 
@@ -120,36 +126,36 @@ this->running= running;
     public: void run(){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.RUN);
+            this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->RUN);
     
 this->setRunning(true);
     
 
-    TimeDelayHelper timeHelper = TimeDelayHelper(1000);;
+    TimeDelayHelper* timeHelper = new TimeDelayHelper(1000);;
     
-timeHelper.setStartTimeTNT();
-    
-
-    ImageComparisonResultsEvent imageComparisonResultsEvent = this->imageComparisonInfoVector.get(0);;
+timeHelper->setStartTimeTNT();
     
 
-    ImageComparisonResult imageComparisonInfo = imageComparisonResultsEvent.getImageComparisonResult();;
+    ImageComparisonResultsEvent* imageComparisonResultsEvent = dynamic_cast<ImageComparisonResultsEvent*>(this->imageComparisonInfoVector->get(0));;
     
-this->logUtil.putF(imageComparisonInfo.toString(), this, this->commonStrings.RUN);
+
+    ImageComparisonResult* imageComparisonInfo = imageComparisonResultsEvent->getImageComparisonResult();;
     
-ComparisonImageInputOutput().save(imageComparisonInfo, imageComparisonInfo.getFrameTwo());
+this->logUtil->putF(imageComparisonInfo->toString(), this, this->commonStrings->RUN);
     
-this->imageComparisonInfoVector.remove(imageComparisonInfo);
+(new ComparisonImageInputOutput())->save(imageComparisonInfo, imageComparisonInfo->getFrameTwo());
     
-this->logUtil.putF(CommonLabels::getInstance().ELAPSED +timeHelper.getElapsedTNT(), this, this->commonStrings.RUN);
+this->imageComparisonInfoVector->remove(imageComparisonInfo);
     
-this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.RUN);
+this->logUtil->putF(CommonLabels::getInstance()->ELAPSED +timeHelper->getElapsedTNT(), this, this->commonStrings->RUN);
+    
+this->logUtil->putF(this->commonStrings->END, this, this->commonStrings->RUN);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RUN, &e);
     
 }
 

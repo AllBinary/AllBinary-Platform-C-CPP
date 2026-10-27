@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ALLBINARYSPRITEROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ALLBINARYSPRITEROTATIONANIMATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Image.h>
 
       
@@ -60,23 +66,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HackRotationSpriteIndexedAnimation.h"
+        #include "org/allbinary/animation/image/sprite/HackRotationSpriteIndexedAnimation.h"
 
 class AllBinarySpriteRotationAnimation: public HackRotationSpriteIndexedAnimation {
 
-public: AllBinarySpriteRotationAnimation(Sprite sprite, Image image, AnimationBehavior animationBehavior);
+public: AllBinarySpriteRotationAnimation(Sprite* sprite, Image* image, AnimationBehavior* animationBehavior);
 
     public: void nextRotation();
 
     public: void previousRotation();
 
-    public: void setFrameByDirection(Direction direction);
+    public: void setFrameByDirection(Direction* direction);
 
-    public: void setFrameToAngle(Angle angle);
+    public: void setFrameToAngle(Angle* angle);
 
     public: void setFrame(int32_t index);
 
-    public: void adjustFrameToAngle(Angle angle);
+    public: void adjustFrameToAngle(Angle* angle);
 
     public: void adjustFrame(int16_t angle);
 

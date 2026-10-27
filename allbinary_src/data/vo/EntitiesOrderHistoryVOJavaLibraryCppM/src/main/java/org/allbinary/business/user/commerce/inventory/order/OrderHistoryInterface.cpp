@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/business/user/address/StreetAddress.h>
 
       
@@ -48,59 +54,59 @@
         
 class OrderHistoryInterface {
 
-    void setUserName(std::string value)
+    public: virtual void setUserName(std::string value) = 0;
 
-    void setDefaultShippingAddress(StreetAddress shippingAddress)
+    public: virtual void setDefaultShippingAddress(StreetAddress* shippingAddress) = 0;
 
-    void setBillingAddress(StreetAddress billingAddress)
+    public: virtual void setBillingAddress(StreetAddress* billingAddress) = 0;
 
-    void setPaymentInfo(Payment payment)
+    public: virtual void setPaymentInfo(Payment* payment) = 0;
 
-    void setShipDate(std::string value)
+    public: virtual void setShipDate(std::string value) = 0;
 
-    void setOrderDate(std::string value)
+    public: virtual void setOrderDate(std::string value) = 0;
 
-    void setTransDate(std::string value)
+    public: virtual void setTransDate(std::string value) = 0;
 
-    void setCancelDate(std::string value)
+    public: virtual void setCancelDate(std::string value) = 0;
 
-    void setStatus(std::string value)
+    public: virtual void setStatus(std::string value) = 0;
 
-    void setSubTotal(Money value)
+    public: virtual void setSubTotal(Money* value) = 0;
 
-    void setShippingCost(Money value)
+    public: virtual void setShippingCost(Money* value) = 0;
 
-    void setTaxes(Money value)
+    public: virtual void setTaxes(Money* value) = 0;
 
-    void setTotal(Money value)
+    public: virtual void setTotal(Money* value) = 0;
 
-    std::string getUserName()
+    public: virtual std::string getUserName() = 0;
 
-    StreetAddress getShippingAddress()
+    public: virtual StreetAddress* getShippingAddress() = 0;
 
-    StreetAddress getBillingAddress()
+    public: virtual StreetAddress* getBillingAddress() = 0;
 
-    Payment getPaymentInfo()
+    public: virtual Payment* getPaymentInfo() = 0;
 
-    std::string getShipDate()
+    public: virtual std::string getShipDate() = 0;
 
-    std::string getOrderDate()
+    public: virtual std::string getOrderDate() = 0;
 
-    std::string getTransDate()
+    public: virtual std::string getTransDate() = 0;
 
-    std::string getCancelDate()
+    public: virtual std::string getCancelDate() = 0;
 
-    std::string getStatus()
+    public: virtual std::string getStatus() = 0;
 
-    Money getSubTotal()
+    public: virtual Money* getSubTotal() = 0;
 
-    Money getShippingCost()
+    public: virtual Money* getShippingCost() = 0;
 
-    Money getTaxes()
+    public: virtual Money* getTaxes() = 0;
 
-    Money getTotal()
+    public: virtual Money* getTotal() = 0;
 
-    std::string getPaymentMethod()
+    public: virtual std::string getPaymentMethod() = 0;
 
 };
 

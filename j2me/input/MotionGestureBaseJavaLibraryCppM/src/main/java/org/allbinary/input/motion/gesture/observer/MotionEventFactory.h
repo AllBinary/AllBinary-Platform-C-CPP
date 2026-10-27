@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONEVENTFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONEVENTFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/Input.h>
@@ -59,13 +65,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionGestureEvent.h"
+        #include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
 
 class MotionEventFactory
             : public Object
-        : public AllBinaryEventObjectFactoryInterface {
+        , public AllBinaryEventObjectFactoryInterface {
 
-    private: static int32_t index = 0;
+    private: static inline int32_t index = 0;
 
     private: Object* source;
 
@@ -73,7 +79,7 @@ class MotionEventFactory
 
 public: MotionEventFactory(Object* source, int32_t id);
 
-    public: AllBinaryEventObject getInstance();
+    public: AllBinaryEventObject* getInstance();
 
 };
 

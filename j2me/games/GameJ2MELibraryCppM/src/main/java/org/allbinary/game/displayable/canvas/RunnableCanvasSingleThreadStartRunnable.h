@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_RUNNABLECANVASSINGLETHREADSTARTRUNNABLE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_RUNNABLECANVASSINGLETHREADSTARTRUNNABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/canvas/RunnableCanvas.h>
@@ -50,15 +56,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameRunnable.h"
+        #include "org/allbinary/game/displayable/canvas/GameRunnable.h"
 
 class RunnableCanvasSingleThreadStartRunnable: public GameRunnable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: RunnableCanvas runnableCanvas;
+    private: RunnableCanvas* runnableCanvas;
 
-public: RunnableCanvasSingleThreadStartRunnable(RunnableCanvas demoCanvas);
+public: RunnableCanvasSingleThreadStartRunnable(RunnableCanvas* demoCanvas);
 
     public: void run();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,15 +58,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HardwareInterface.h"
+        #include "org/allbinary/logic/system/hardware/HardwareInterface.h"
 
 class HardwareFactory
             : public Object
          {
 
-    private: static HardwareFactory instance() { return HardwareFactory(); }
+    private: static HardwareFactory* instance() { static std::unique_ptr<HardwareFactory> value(new HardwareFactory()); return value.get(); }
 
-    public: static HardwareFactory getInstance(){
+    public: static HardwareFactory* getInstance(){
 
 
 
@@ -72,34 +78,34 @@ class HardwareFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static HardwareInterface getInstance(GenericOperatingSystem os){
+    public: static HardwareInterface* getInstance(GenericOperatingSystem* os){
 
         try {
             
-    OperatingSystems operatingSystems = OperatingSystems::getInstance();;
+    OperatingSystems* operatingSystems = OperatingSystems::getInstance();;
     
 
-                        if(os.getName().compareTo(operatingSystems.LINUX) == 0)
+                        if(os->getName().compareTo(operatingSystems->LINUX) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LinuxHardware();
+                        return dynamic_cast<HardwareInterface*>(new LinuxHardware());
     
 
                                     }
                                 
                              else 
-                        if(os.getName().indexOf(operatingSystems.WINDOWS) >= 0)
+                        if(os->getName().indexOf(operatingSystems->WINDOWS) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WindowsHardware();
+                        return dynamic_cast<HardwareInterface*>(new WindowsHardware());
     
 
                                     }
@@ -107,11 +113,11 @@ class HardwareFactory
 
 
 
-                            throw Exception("No Hardware Imp for: " +os.getName());
+                            throw new Exception("No Hardware Imp for: " +os->getName());
                     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 

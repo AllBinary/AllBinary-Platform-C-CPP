@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_LAYERPOSITIONFINDERINTERFACE_H
         #define ORG_ALLBINARY_GAME_INPUT_LAYERPOSITIONFINDERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/layer/AllBinaryLayer.h>
 
       
@@ -48,7 +54,7 @@
         
 class LayerPositionFinderInterface {
 
-    AllBinaryLayer getLayerInterface(GeographicMapCellPosition geographicMapCellPosition);
+    public: virtual AllBinaryLayer* getLayerInterface(GeographicMapCellPosition* geographicMapCellPosition) = 0;
 
 };
 

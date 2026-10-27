@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Long.h"
         
 #include <org/allbinary/data/tables/TableMappingInterface.h>
@@ -44,9 +50,9 @@
         //import org.allbinary.business.user.commerce.money.Money;
 class StoreFrontUsersStatisticsInterface: public TableMappingInterface {
 
-    Long getNumberOfUsers()
+    public: virtual int64_t getNumberOfUsers() = 0;
 
-    Long getNumberOfUsersByRole(std::string role)
+    public: virtual int64_t getNumberOfUsersByRole(std::string role) = 0;
 
 };
 

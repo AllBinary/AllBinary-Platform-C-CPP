@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,14 +42,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "IndexedAnimationInterfaceCompositeInterface.h"
-#include "RotationAnimation.h"
+        #include "org/allbinary/animation/IndexedAnimationInterfaceCompositeInterface.h"
+#include "org/allbinary/animation/RotationAnimation.h"
 
 class RotationAnimationInterfaceCompositeInterface: public IndexedAnimationInterfaceCompositeInterface {
 
-    RotationAnimation getRotationAnimationInterface()
+    public: virtual RotationAnimation* getRotationAnimationInterface() = 0;
 
-    void setFrame(int32_t index)
+    public: virtual void setFrame(int32_t index) = 0;
 
 };
 

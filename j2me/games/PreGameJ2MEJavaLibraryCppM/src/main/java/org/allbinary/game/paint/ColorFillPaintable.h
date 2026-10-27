@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_PAINT_COLORFILLPAINTABLE_H
         #define ORG_ALLBINARY_GAME_PAINT_COLORFILLPAINTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -48,15 +54,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ColorFillBasePaintable.h"
+        #include "org/allbinary/game/paint/ColorFillBasePaintable.h"
 
 class ColorFillPaintable: public ColorFillBasePaintable {
 
-    protected: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
+    protected: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-public: ColorFillPaintable(BasicColor basicColor);
+public: ColorFillPaintable(BasicColor* basicColor);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

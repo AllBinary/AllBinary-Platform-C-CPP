@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -53,15 +59,15 @@
         
 class PaintableLayerComposite: public Paintable {
 
-    private: std::vector<Layer> paintableArray;
+    private: std::vector<Layer*> paintableArray;
 
-public: PaintableLayerComposite(std::vector<Layer> paintableArray){
+public: PaintableLayerComposite(std::vector<Layer*> paintableArray){
 this->paintableArray= paintableArray;
     
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 
 
 
@@ -76,9 +82,9 @@ this->paintableArray[index].paint(graphics);
 }
 
 
-    public: void paintThreed(Graphics graphics){
+    public: void paintThreed(Graphics* graphics){
 
-    PaintableInterface paintableInterface;;
+    PaintableInterface* paintableInterface;;
     
 
 
@@ -87,9 +93,9 @@ this->paintableArray[index].paint(graphics);
                         for (
     int32_t index = this->paintableArray.size();--index >= 0; )
         {
-paintableInterface= this->paintableArray[index];
+paintableInterface= dynamic_cast<PaintableInterface*>(this->paintableArray[index]);
     
-paintableInterface.paintThreed(graphics);
+paintableInterface->paintThreed(graphics);
     
 }
 

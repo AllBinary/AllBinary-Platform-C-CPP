@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTOR_RECTANGLEFILLEDANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_VECTOR_RECTANGLEFILLEDANIMATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -58,11 +64,11 @@ class RectangleFilledAnimation: public Animation, public ColorCompositeInterface
 
     protected: int32_t heightP;
 
-public: RectangleFilledAnimation(int32_t width, int32_t height, BasicColor basicColor);
+public: RectangleFilledAnimation(int32_t width, int32_t height, BasicColor* basicColor);
 
     public: void nextFrame();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
     public: void setWidth(int32_t width);
 

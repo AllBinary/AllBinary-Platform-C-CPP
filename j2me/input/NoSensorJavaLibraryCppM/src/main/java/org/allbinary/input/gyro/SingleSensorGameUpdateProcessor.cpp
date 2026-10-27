@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 
@@ -38,7 +46,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SensorGameUpdateProcessor.h"
+        #include "org/allbinary/input/gyro/SensorGameUpdateProcessor.h"
 
 class SingleSensorGameUpdateProcessor: public SensorGameUpdateProcessor {
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_PAINT_BASICGAMEDEMOPAINTABLE_H
         #define ORG_ALLBINARY_GAME_PAINT_BASICGAMEDEMOPAINTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -54,27 +60,27 @@
         
 class BasicGameDemoPaintable: public StatePaintable {
 
-    private: Paintable mainDemoStatePaintable;
+    private: Paintable* mainDemoStatePaintable;
 
-    private: Paintable ownershipPaintable;
+    private: Paintable* ownershipPaintable;
 
-    private: Paintable helpPaintableInterface;
+    private: Paintable* helpPaintableInterface;
 
-    private: Paintable currentStatePaintable = NullPaintable::getInstance();
+    private: Paintable* currentStatePaintable = NullPaintable::getInstance();
 
-public: BasicGameDemoPaintable(Paintable mainDemoStatePaintable, Paintable ownershipPaintable, Paintable helpPaintableInterface);
+public: BasicGameDemoPaintable(Paintable* mainDemoStatePaintable, Paintable* ownershipPaintable, Paintable* helpPaintableInterface);
 
     public: void setState(int32_t state);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: Paintable getHelpPaintableInterface();
+    public: Paintable* getHelpPaintableInterface();
 
-    protected: void setCurrentStatePaintable(Paintable currentStatePaintable);
+    protected: void setCurrentStatePaintable(Paintable* currentStatePaintable);
 
-    protected: Paintable getCurrentStatePaintable();
+    protected: Paintable* getCurrentStatePaintable();
 
-    protected: Paintable getMainDemoStatePaintable();
+    protected: Paintable* getMainDemoStatePaintable();
 
 };
 

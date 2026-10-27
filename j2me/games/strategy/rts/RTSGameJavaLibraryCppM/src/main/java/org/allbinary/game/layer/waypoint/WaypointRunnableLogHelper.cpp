@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/layer/PathFindingLayerInterface.h>
@@ -46,9 +52,9 @@ class WaypointRunnableLogHelper
             : public Object
          {
 
-    private: static WaypointRunnableLogHelper instance() { return WaypointRunnableLogHelper(); }
+    private: static WaypointRunnableLogHelper* instance() { static std::unique_ptr<WaypointRunnableLogHelper> value(new WaypointRunnableLogHelper()); return value.get(); }
 
-    public: static WaypointRunnableLogHelper getInstance(){
+    public: static WaypointRunnableLogHelper* getInstance(){
 
 
 
@@ -58,11 +64,11 @@ class WaypointRunnableLogHelper
 }
 
 
-    public: void start(PathFindingLayerInterface pathFindingLayerInterface){
+    public: void start(PathFindingLayerInterface* pathFindingLayerInterface){
 }
 
 
-    public: void end(PathFindingLayerInterface pathFindingLayerInterface){
+    public: void end(PathFindingLayerInterface* pathFindingLayerInterface){
 }
 
 

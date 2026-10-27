@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_FILTER_IMAGEFILEFILTER_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_FILTER_IMAGEFILEFILTER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/io/File.h>
 
       
@@ -48,7 +54,7 @@
         //TWB - replace with file visitor version
 class ImageFileFilter: public FileFilter {
 
-    public: bool accept(File f);
+    public: bool accept(File* f);
 
     public: std::string getDescription();
 

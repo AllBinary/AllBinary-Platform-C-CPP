@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,13 +42,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LayerManagerLoggingBase.h"
+        #include "org/allbinary/layer/LayerManagerLoggingBase.h"
 
 class LayerManagerNoDebug: public LayerManagerLoggingBase {
 
-    private: static LayerManagerNoDebug instance() { return LayerManagerNoDebug(); }
+    private: static LayerManagerNoDebug* instance() { static std::unique_ptr<LayerManagerNoDebug> value(new LayerManagerNoDebug()); return value.get(); }
 
-    public: static LayerManagerNoDebug getInstance(){
+    public: static LayerManagerNoDebug* getInstance(){
 
 
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOMDOCUMENTFILEHELPER_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOMDOCUMENTFILEHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,7 +79,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DomDocumentHelper.h"
+        #include "org/allbinary/data/tree/dom/document/DomDocumentHelper.h"
 
 class DomDocumentFileHelper
             : public Object
@@ -81,11 +87,11 @@ class DomDocumentFileHelper
 
                 //@Throws(Exception.constructor)
             
-    public: static Document createDocument(AbFile xmlFile);
+    public: static Document* createDocument(AbFile* xmlFile);
 
                 //@Throws(Exception.constructor)
             
-    public: static void save(AbFile file, Document document);
+    public: static void save(AbFile* file, Document* document);
 
 private: DomDocumentFileHelper();
 

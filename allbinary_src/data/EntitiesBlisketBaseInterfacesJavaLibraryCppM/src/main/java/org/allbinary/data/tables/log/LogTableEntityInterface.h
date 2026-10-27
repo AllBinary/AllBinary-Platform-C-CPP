@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITYINTERFACE_H
         #define ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -51,9 +57,9 @@
         
 class LogTableEntityInterface: public BasicDataTableInterface {
 
-    void deleteWhere(std::string key, std::string value);
+    public: virtual void deleteWhere(std::string key, std::string value) = 0;
 
-    void insert(BasicArrayList values);
+    public: virtual void insert(BasicArrayList* values) = 0;
 
 };
 

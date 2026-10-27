@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Math.h"
@@ -51,16 +57,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageUtil.h"
-#include "ImageJ2SEUtil.h"
+        #include "org/allbinary/media/image/ImageUtil.h"
+#include "org/allbinary/media/image/ImageJ2SEUtil.h"
 
 class ImageJ2SERotationUtil
             : public Object
          {
 
-    private: static ImageJ2SERotationUtil instance() { return ImageJ2SERotationUtil(); }
+    private: static ImageJ2SERotationUtil* instance() { static std::unique_ptr<ImageJ2SERotationUtil> value(new ImageJ2SERotationUtil()); return value.get(); }
 
-    public: static ImageJ2SERotationUtil getInstance(){
+    public: static ImageJ2SERotationUtil* getInstance(){
 
 
 
@@ -70,15 +76,15 @@ class ImageJ2SERotationUtil
 }
 
 
-    private: const ImageUtil imageUtil = ImageUtil::getInstance();
+    private: ImageUtil* imageUtil = ImageUtil::getInstance();
 
-    private: const ImageJ2SEUtil imageJ2SEUtil = ImageJ2SEUtil::getInstance();
+    private: ImageJ2SEUtil* imageJ2SEUtil = ImageJ2SEUtil::getInstance();
 
 private: ImageJ2SERotationUtil(){
 }
 
 
-    public: BufferedImage getRotatedImage(Image bufferedImage, int32_t totalAngle){
+    public: BufferedImage* getRotatedImage(Image* bufferedImage, int32_t totalAngle){
 
 
 
@@ -88,32 +94,32 @@ private: ImageJ2SERotationUtil(){
 }
 
 
-    public: BufferedImage getRotatedImageRadians(Image bufferedImage, double radians){
+    public: BufferedImage* getRotatedImageRadians(Image* bufferedImage, double radians){
 
-    BufferedImage newBufferedImage = this->imageUtil.create(bufferedImage.getWidth(
-                            nullptr), bufferedImage.getHeight(
+    BufferedImage* newBufferedImage = this->imageUtil->create(bufferedImage->getWidth(
+                            nullptr), bufferedImage->getHeight(
                             nullptr));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->drawRotatedImageRadians(bufferedImage, newBufferedImage, newBufferedImage.createGraphics(), radians);;
+                        return this->drawRotatedImageRadians(bufferedImage, newBufferedImage, newBufferedImage->createGraphics(), radians);;
     
 }
 
 
-    private: BufferedImage drawRotatedImageRadians(Image bufferedImage, BufferedImage newBufferedImage, Graphics2D g, double radians){
-g.rotate(radians, newBufferedImage.getWidth(
-                            nullptr) /2, newBufferedImage.getHeight(
+    private: BufferedImage* drawRotatedImageRadians(Image* bufferedImage, BufferedImage* newBufferedImage, Graphics2D* g, double radians){
+g->rotate(radians, newBufferedImage->getWidth(
+                            nullptr) /2, newBufferedImage->getHeight(
                             nullptr) /2);
     
-g.drawImage(bufferedImage, 0, 0, bufferedImage.getWidth(
-                            nullptr), bufferedImage.getHeight(
+g->drawImage(bufferedImage, 0, 0, bufferedImage->getWidth(
+                            nullptr), bufferedImage->getHeight(
                             nullptr), 
                             nullptr);
     
-g.dispose();
+g->dispose();
     
 
 
@@ -126,26 +132,13 @@ g.dispose();
 
     private: const double TWO_PIE = 2 *Math::PI;
 
-    public: BufferedImage rotateImage(Image bufferedImage, BufferedImage newBufferedImage, int32_t totalAngle){
+    public: BufferedImage* rotateImage(Image* bufferedImage, BufferedImage* newBufferedImage, int32_t totalAngle){
 
-    Graphics2D g = newBufferedImage.createGraphics();;
+    Graphics2D* g = newBufferedImage->createGraphics();;
     
-g.setBackground(this->imageJ2SEUtil.TRANSPARENT_COLOR);
+g->setBackground(this->imageJ2SEUtil->TRANSPARENT_COLOR);
     
-g.clearRect(0, 0, newBufferedImage.getWidth(), newBufferedImage.getHeight());
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->drawRotatedImageRadians(bufferedImage, newBufferedImage, g, TWO_PIE *totalAngle /360);;
-    
-}
-
-
-    public: BufferedImage createRotatedImage(Image bufferedImage, BufferedImage newBufferedImage, int32_t totalAngle){
-
-    Graphics2D g = newBufferedImage.createGraphics();;
+g->clearRect(0, 0, newBufferedImage->getWidth(), newBufferedImage->getHeight());
     
 
 
@@ -156,9 +149,22 @@ g.clearRect(0, 0, newBufferedImage.getWidth(), newBufferedImage.getHeight());
 }
 
 
-    public: std::vector<BufferedImage> getRotatedImages(Image bufferedImage, int32_t numberOfFrames, int32_t totalAngle){
+    public: BufferedImage* createRotatedImage(Image* bufferedImage, BufferedImage* newBufferedImage, int32_t totalAngle){
 
-    std::vector<BufferedImage> bufferedImageArray = std::vector<BufferedImage>(numberOfFrames);;
+    Graphics2D* g = newBufferedImage->createGraphics();;
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->drawRotatedImageRadians(bufferedImage, newBufferedImage, g, TWO_PIE *totalAngle /360);;
+    
+}
+
+
+    public: std::vector<BufferedImage*> getRotatedImages(Image* bufferedImage, int32_t numberOfFrames, int32_t totalAngle){
+
+    std::vector<BufferedImage*> bufferedImageArray = std::vector<BufferedImage*>(numberOfFrames);;
     
 
     double arc = () *totalAngle /360;;
@@ -189,7 +195,7 @@ bufferedImageArray[index]= this->getRotatedImageRadians(bufferedImage, radians);
 }
 
 
-    public: BufferedImage createSpriteImage(std::vector<BufferedImage> bufferedImageArray){
+    public: BufferedImage* createSpriteImage(std::vector<BufferedImage*> bufferedImageArray){
 
     int32_t columns = 9;;
     
@@ -220,15 +226,15 @@ rows= (size /columns);
                                     }
                                 
 
-    BufferedImage firstBufferedImage = bufferedImageArray[0];;
+    BufferedImage* firstBufferedImage = bufferedImageArray[0];;
     
 
-    BufferedImage bufferedImage = this->imageUtil.create(firstBufferedImage.getWidth(
-                            nullptr) *columns, firstBufferedImage.getHeight(
+    BufferedImage* bufferedImage = this->imageUtil->create(firstBufferedImage->getWidth(
+                            nullptr) *columns, firstBufferedImage->getHeight(
                             nullptr) *rows);;
     
 
-    Graphics2D g = bufferedImage.createGraphics();;
+    Graphics2D* g = bufferedImage->createGraphics();;
     
 
     int32_t columnIndex = 0;;
@@ -237,7 +243,7 @@ rows= (size /columns);
     int32_t rowIndex = 0;;
     
 
-    BufferedImage nextBufferedImage;;
+    BufferedImage* nextBufferedImage;;
     
 
 
@@ -259,10 +265,10 @@ columnIndex= 0;
                                 
 nextBufferedImage= bufferedImageArray[index];
     
-g.drawImage(nextBufferedImage, nextBufferedImage.getWidth(
-                            nullptr) *columnIndex, nextBufferedImage.getHeight(
-                            nullptr) *rowIndex, nextBufferedImage.getWidth(
-                            nullptr), nextBufferedImage.getHeight(
+g->drawImage(nextBufferedImage, nextBufferedImage->getWidth(
+                            nullptr) *columnIndex, nextBufferedImage->getHeight(
+                            nullptr) *rowIndex, nextBufferedImage->getWidth(
+                            nullptr), nextBufferedImage->getHeight(
                             nullptr), 
                             nullptr);
     
@@ -270,7 +276,7 @@ columnIndex++;
     
 }
 
-g.dispose();
+g->dispose();
     
 
 

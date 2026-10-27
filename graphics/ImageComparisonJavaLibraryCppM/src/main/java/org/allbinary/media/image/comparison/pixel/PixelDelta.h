@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_PIXEL_PIXELDELTA_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_PIXEL_PIXELDELTA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/GPoint.h>
@@ -62,27 +68,27 @@
         
 class PixelDelta
             : public Object
-        : public CacheableInterface {
+        , public CacheableInterface {
 
-    public: static Object* getKey(GPoint point, ColorDelta colorDelta);
+    public: static Object* getKey(GPoint* point, ColorDelta* colorDelta);
 
-    private: GPoint point;
+    private: GPoint* point;
 
-    private: ColorDelta colorDelta;
+    private: ColorDelta* colorDelta;
 
     private: Object* key;
 
-public: PixelDelta(GPoint point, ColorDelta colorDelta);
+public: PixelDelta(GPoint* point, ColorDelta* colorDelta);
 
     public: Object* getKey();
 
-    public: GPoint getPoint();
+    public: GPoint* getPoint();
 
-    public: void setPoint(GPoint point);
+    public: void setPoint(GPoint* point);
 
-    public: ColorDelta getColorDelta();
+    public: ColorDelta* getColorDelta();
 
-    public: void setColorDelta(ColorDelta colorDelta);
+    public: void setColorDelta(ColorDelta* colorDelta);
 
     public: std::string toString();
 

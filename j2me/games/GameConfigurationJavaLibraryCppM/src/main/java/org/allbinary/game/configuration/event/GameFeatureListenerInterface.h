@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEFEATURELISTENERINTERFACE_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEFEATURELISTENERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
 
       
@@ -42,11 +48,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameFeatureEvent.h"
+        #include "org/allbinary/game/configuration/event/GameFeatureEvent.h"
 
 class GameFeatureListenerInterface: public EventListenerInterface {
 
-    void onGameFeatureChange(GameFeatureEvent gameFeatureEvent);
+    public: virtual void onGameFeatureChange(GameFeatureEvent* gameFeatureEvent) = 0;
 
 };
 

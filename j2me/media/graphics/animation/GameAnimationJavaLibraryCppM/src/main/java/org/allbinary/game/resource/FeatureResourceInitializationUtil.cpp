@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,16 +55,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "FeaturedResourceFactory.h"
-#include "FeaturedResourceRelativeRelationshipFactory.h"
+        #include "org/allbinary/game/resource/FeaturedResourceFactory.h"
+#include "org/allbinary/game/resource/FeaturedResourceRelativeRelationshipFactory.h"
 
 class FeatureResourceInitializationUtil
             : public Object
          {
 
-    private: static FeatureResourceInitializationUtil instance() { return FeatureResourceInitializationUtil(); }
+    private: static FeatureResourceInitializationUtil* instance() { static std::unique_ptr<FeatureResourceInitializationUtil> value(new FeatureResourceInitializationUtil()); return value.get(); }
 
-    public: static FeatureResourceInitializationUtil getInstance(){
+    public: static FeatureResourceInitializationUtil* getInstance(){
 
 
 
@@ -68,22 +74,22 @@ class FeatureResourceInitializationUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
     public: void init(int32_t level){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF(commonStrings.START, this, commonStrings.INIT);
+this->logUtil->putF(commonStrings->START, this, commonStrings->INIT);
     
 
-    FeaturedResourceFactory featuredResourceFactory = FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance();;
+    FeaturedResourceFactory* featuredResourceFactory = FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance();;
     
-featuredResourceFactory.init(level);
+featuredResourceFactory->init(level);
     
-FeaturedResourceRelativeRelationshipFactory::getInstance().init(level);
+FeaturedResourceRelativeRelationshipFactory::getInstance()->init(level);
     
 }
 

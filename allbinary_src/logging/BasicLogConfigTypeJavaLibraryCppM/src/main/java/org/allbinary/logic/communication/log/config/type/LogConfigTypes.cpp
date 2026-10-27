@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -49,7 +55,7 @@ class LogConfigTypes
             : public Object
          {
 
-    public: static BasicArrayList LOGGING = BasicArrayListD();
+    public: static inline BasicArrayList* LOGGING = new BasicArrayListD();
 
 private: LogConfigTypes(){
 }

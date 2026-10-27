@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_EVENT_ALLBINARYEVENTOBJECT_H
         #define ORG_ALLBINARY_LOGIC_UTIL_EVENT_ALLBINARYEVENTOBJECT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -61,7 +67,7 @@ class AllBinaryEventObject
             : public Object
          {
 
-    public: static const AllBinaryEventObject NULL_EVENT = AllBinaryEventObject(NullUtil::getInstance().NULL_OBJECT);
+    public: static AllBinaryEventObject* NULL_EVENT() { static std::unique_ptr<AllBinaryEventObject> value(new AllBinaryEventObject(NullUtil::getInstance()->NULL_OBJECT)); return value.get(); }
 
     private: Object* source;
 

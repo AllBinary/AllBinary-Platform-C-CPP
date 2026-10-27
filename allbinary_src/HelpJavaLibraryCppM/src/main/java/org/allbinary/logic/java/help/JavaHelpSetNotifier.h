@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/net/URL.h>
@@ -60,11 +66,11 @@ class JavaHelpSetNotifier
             : public Object
          {
 
-    private: static BasicArrayList vector = BasicArrayListD();
+    private: static inline BasicArrayList* vector = new BasicArrayListD();
 
-    private: static BasicArrayList get();
+    private: static BasicArrayList* get();
 
-    public: static bool isNotified(HelpSet helpSet);
+    public: static bool isNotified(HelpSet* helpSet);
 
 private: JavaHelpSetNotifier();
 

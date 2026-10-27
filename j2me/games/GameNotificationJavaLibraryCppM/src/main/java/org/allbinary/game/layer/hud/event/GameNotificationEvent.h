@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_HUD_EVENT_GAMENOTIFICATIONEVENT_H
         #define ORG_ALLBINARY_GAME_LAYER_HUD_EVENT_GAMENOTIFICATIONEVENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Integer.h"
         
 #include <org/allbinary/graphics/color/BasicColor.h>
@@ -56,27 +64,27 @@
         
 class GameNotificationEvent: public AllBinaryEventObject {
 
-    private: std::string string = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string string = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: Integer seconds;
+    private: int32_t seconds;
 
-    private: BasicColor basicColor = BasicColorFactory::getInstance().BLACK;
+    private: BasicColor* basicColor = BasicColorFactory::getInstance()->BLACK;
 
-    private: Boolean removeable;
+    private: bool removeable;
 
-public: GameNotificationEvent(Object* anyType, std::string string, Integer seconds, BasicColor basicColor, Boolean permanent);
+public: GameNotificationEvent(Object* anyType, std::string string, int32_t seconds, BasicColor* basicColor, bool permanent);
 
     public: std::string getString();
 
-    public: Integer getSeconds();
+    public: int32_t getSeconds();
 
-    public: BasicColor getBasicColorP();
+    public: BasicColor* getBasicColorP();
 
-    public: Boolean getPermanent();
+    public: bool getPermanent();
 
     public: void setString(std::string string);
 
-    public: void setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor* basicColor);
 
 };
 

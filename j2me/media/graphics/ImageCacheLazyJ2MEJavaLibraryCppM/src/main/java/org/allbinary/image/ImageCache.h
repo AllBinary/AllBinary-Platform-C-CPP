@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -128,40 +136,40 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageCacheBase.h"
-//#include "NotHTMLEndProcessor.h"
-//#include "FirstProcessor.h"
-//#include "NotHTMLProcessor.h"
-//#include "HTMLEndProcessor.h"
-#include "ImageFactory.h"
+        #include "org/allbinary/image/ImageCacheBase.h"
+//#include "org/allbinary/image/NotHTMLEndProcessor.h"
+//#include "org/allbinary/image/FirstProcessor.h"
+//#include "org/allbinary/image/NotHTMLProcessor.h"
+//#include "org/allbinary/image/HTMLEndProcessor.h"
+#include "org/allbinary/image/ImageFactory.h"
 
 class ImageCache: public ImageCacheBase {
 
-    public: static const ImageCache NULL_IMAGE_CACHE = ImageCache();
+    public: static ImageCache* NULL_IMAGE_CACHE() { static std::unique_ptr<ImageCache> value(new ImageCache()); return value.get(); }
 
-    private: const TsUtil tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil = TsUtil::getInstance();
 
-    private: const BaseImageLoadingProcessor concurrentImageLoadingProcessor = ConcurrentImageLoadingProcessor(this);
+    private: BaseImageLoadingProcessor* concurrentImageLoadingProcessor = new ConcurrentImageLoadingProcessor(this);
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const CommonSeps commonSeps = CommonSeps::getInstance();
+    protected: CommonSeps* commonSeps = CommonSeps::getInstance();
 
-    protected: const ResourceUtil resourceUtil = ResourceUtil::getInstance();
+    protected: ResourceUtil* resourceUtil = ResourceUtil::getInstance();
 
-    private: const GameGlobalsFactory gameGlobalsFactory = GameGlobalsFactory::getInstance();
+    private: GameGlobalsFactory* gameGlobalsFactory = GameGlobalsFactory::getInstance();
 
-    private: const GDResources gdResources = GDResources::getInstance();
+    private: GDResources* gdResources = GDResources::getInstance();
 
-    public: const BasicArrayList loadNowList = BasicArrayListD();
+    public: BasicArrayList* loadNowList = new BasicArrayListD();
 
-    public: const BasicArrayList loadSoonList = BasicArrayListD();
+    public: BasicArrayList* loadSoonList = new BasicArrayListD();
 
-    public: const BasicArrayList loadList = BasicArrayListD();
+    public: BasicArrayList* loadList = new BasicArrayListD();
 
-    public: const BasicArrayList loadAfterList = BasicArrayListD();
+    public: BasicArrayList* loadAfterList = new BasicArrayListD();
 
-    private: const SynchObject lock = SynchObject();
+    private: SynchObject* lock = new SynchObject();
 
     private: bool firstTime = true;
 
@@ -211,9 +219,9 @@ class FirstProcessor: public Processor {
 };
 
             
-    private: Processor processor = FirstProcessor();
+    private: Processor* processor = new FirstProcessor();
 
-    private: Processor endProcessor = Processor::getInstance();
+    private: Processor* endProcessor = Processor::getInstance();
 
 public: ImageCache();
 
@@ -245,7 +253,7 @@ public: ImageCache();
 
                 //@Throws(Exception.constructor)
             
-    private: bool loadImageForLazyAnimation(LazyImageRotationAnimation lazyImageRotationAnimation);
+    private: bool loadImageForLazyAnimation(LazyImageRotationAnimation* lazyImageRotationAnimation);
 
                 //@Throws(Exception.constructor)
             
@@ -253,41 +261,41 @@ public: ImageCache();
 
                 //@Throws(Exception.constructor)
             
-    private: bool loadImage(Image image);
+    private: bool loadImage(Image* image);
 
                 //@Throws(Exception.constructor)
             
-    protected: void init(Image image, Image image2);
+    protected: void init(Image* image, Image* image2);
 
                 //@Throws(Exception.constructor)
             
-    protected: Image creatImage(std::string key);
+    protected: Image* creatImage(std::string key);
 
                 //@Throws(Exception.constructor)
             
-    public: Image get(std::string caller, int32_t width, int32_t height);
+    public: Image* get(std::string caller, int32_t width, int32_t height);
 
                 //@Throws(Exception.constructor)
             
-    public: Image getWithKey(Object* key);
+    public: Image* getWithKey(Object* key);
 
     public: int32_t getIndex(Object* key);
 
                 //@Throws(Exception.constructor)
             
-    protected: Image createImageFromInputStream(Object* key, InputStream inputStream);
+    protected: Image* createImageFromInputStream(Object* key, InputStream* inputStream);
 
                 //@Throws(Exception.constructor)
             
-    protected: Image createImageLater(std::string key, int32_t width, int32_t height);
+    protected: Image* createImageLater(std::string key, int32_t width, int32_t height);
 
-    public: BasicArrayList getAssociated(LazyImageRotationAnimation lazyImageRotationAnimation);
+    public: BasicArrayList* getAssociated(LazyImageRotationAnimation* lazyImageRotationAnimation);
 
-    public: void add(LazyImageRotationAnimation lazyImageRotationAnimation);
+    public: void add(LazyImageRotationAnimation* lazyImageRotationAnimation);
 
                 //@Throws(Exception.constructor)
             
-    public: void insertFirst(LazyImageRotationAnimation lazyImageRotationAnimation);
+    public: void insertFirst(LazyImageRotationAnimation* lazyImageRotationAnimation);
 
     public: void progressEnded();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -75,18 +81,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NoOperatingSystem.h"
-#include "GenericOperatingSystem.h"
-#include "OperatingSystems.h"
-#include "SystemProperties.h"
+        #include "org/allbinary/logic/system/os/NoOperatingSystem.h"
+#include "org/allbinary/logic/system/os/GenericOperatingSystem.h"
+#include "org/allbinary/logic/system/os/OperatingSystems.h"
+#include "org/allbinary/logic/system/os/SystemProperties.h"
 
 class OperatingSystemFactory
             : public Object
          {
 
-    private: static OperatingSystemFactory instance() { return OperatingSystemFactory(); }
+    private: static OperatingSystemFactory* instance() { static std::unique_ptr<OperatingSystemFactory> value(new OperatingSystemFactory()); return value.get(); }
 
-    public: static OperatingSystemFactory getInstance(){
+    public: static OperatingSystemFactory* getInstance(){
 
 
 
@@ -96,11 +102,11 @@ class OperatingSystemFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: GenericOperatingSystem genericOperatingSystem = NoOperatingSystem::NO_OPERATING_SYSTEM;
+    private: GenericOperatingSystem* genericOperatingSystem = NoOperatingSystem::NO_OPERATING_SYSTEM;
 
     private: bool hasDetected = false;
 
@@ -109,82 +115,82 @@ private: OperatingSystemFactory(){
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: GenericOperatingSystem getOperatingSystemInstance(){
+    public: GenericOperatingSystem* getOperatingSystemInstance(){
 
         try {
             
-    OperatingSystems operatingSystems = OperatingSystems::getInstance();;
+    OperatingSystems* operatingSystems = OperatingSystems::getInstance();;
     
 
-    SystemProperties systemProperties = SystemProperties::getInstance();;
+    SystemProperties* systemProperties = SystemProperties::getInstance();;
     
 
-    std::string osName = systemProperties.getName();;
+    std::string osName = systemProperties->getName();;
     
 
-    std::string osArch = systemProperties.getArch();;
+    std::string osArch = systemProperties->getArch();;
     
 
-    std::string osVersion = systemProperties.getVersion();;
+    std::string osVersion = systemProperties->getVersion();;
     
 
                         if(!this->hasDetected)
                         
                                     {
-                                    this->logUtil.putF("osName: " +osName, this, this->commonStrings.GET_INSTANCE);
+                                    this->logUtil->putF("osName: " +osName, this, this->commonStrings->GET_INSTANCE);
     
 this->hasDetected= true;
     
 
-                        if(osName.indexOf(operatingSystems.LINUX) >= 0)
+                        if(JavaString::indexOf(osName, operatingSystems->LINUX) >= 0)
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().FACTORYERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
                         
                                     {
-                                    this->logUtil.putF("Found a Linux OS", this, this->commonStrings.GET_INSTANCE);
+                                    this->logUtil->putF("Found a Linux OS", this, this->commonStrings->GET_INSTANCE);
     
 
                                     }
                                 
-this->genericOperatingSystem= LinuxOperatingSystemFactory::getInstance().getOperatingSystemInstance();
+this->genericOperatingSystem= LinuxOperatingSystemFactory::getInstance()->getOperatingSystemInstance();
     
 
                                     }
                                 
                              else 
-                        if(osName.indexOf(operatingSystems.WINDOWS) >= 0)
+                        if(JavaString::indexOf(osName, operatingSystems->WINDOWS) >= 0)
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().FACTORYERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
                         
                                     {
-                                    this->logUtil.putF("Found a Windows OS", this, this->commonStrings.GET_INSTANCE);
+                                    this->logUtil->putF("Found a Windows OS", this, this->commonStrings->GET_INSTANCE);
     
 
                                     }
                                 
-this->genericOperatingSystem= WindowsOperatingSystemFactory::getInstance().getOperatingSystemInstance();
+this->genericOperatingSystem= WindowsOperatingSystemFactory::getInstance()->getOperatingSystemInstance();
     
 
                                     }
                                 
                              else 
-                        if(osName.indexOf(operatingSystems.SOLARIS) >= 0)
+                        if(JavaString::indexOf(osName, operatingSystems->SOLARIS) >= 0)
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().FACTORYERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
                         
                                     {
-                                    this->logUtil.putF("Found a Solaris OS", this, this->commonStrings.GET_INSTANCE);
+                                    this->logUtil->putF("Found a Solaris OS", this, this->commonStrings->GET_INSTANCE);
     
 
                                     }
                                 
-this->genericOperatingSystem= SolarisOperatingSystemFactory::getInstance().getOperatingSystemInstance();
+this->genericOperatingSystem= SolarisOperatingSystemFactory::getInstance()->getOperatingSystemInstance();
     
 
                                     }
@@ -193,17 +199,17 @@ this->genericOperatingSystem= SolarisOperatingSystemFactory::getInstance().getOp
                             
 
 
-                            throw Exception(StringMaker().append("OS Not Supported: ").append(osName).toString());
+                            throw new Exception((new StringMaker())->append("OS Not Supported: ")->append(osName)->toString());
                     
 
                         }
                             
 
-    Log log = LogFactory::getInstanceF(StringMaker().append("OperatingSystem Info: ").append(StringUtil::getInstance().toString(this->genericOperatingSystem)).toString(), this, this->commonStrings.GET_INSTANCE);;
+    Log* log = LogFactory::getInstanceF((new StringMaker())->append("OperatingSystem Info: ")->append(StringUtil::getInstance()->toString(this->genericOperatingSystem))->toString(), this, this->commonStrings->GET_INSTANCE);;
     
-console.log(log.toString());
+System.out.println(log->toString());
     
-this->logUtil.putL(log);
+this->logUtil->putL(log);
     
 
                                     }
@@ -216,13 +222,13 @@ this->logUtil.putL(log);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().FACTORYERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET_INSTANCE, e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->GET_INSTANCE, &e);
     
 
                                     }

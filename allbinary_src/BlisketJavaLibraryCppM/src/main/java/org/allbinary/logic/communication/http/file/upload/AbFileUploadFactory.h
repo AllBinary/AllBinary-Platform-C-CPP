@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_ABFILEUPLOADFACTORY_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_ABFILEUPLOADFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -70,29 +76,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFileUpload.h"
-#include "HttpFileUploadUtil.h"
-#include "AbFileItem.h"
+        #include "org/allbinary/logic/communication/http/file/upload/AbFileUpload.h"
+#include "org/allbinary/logic/communication/http/file/upload/HttpFileUploadUtil.h"
+#include "org/allbinary/logic/communication/http/file/upload/AbFileItem.h"
 
 class AbFileUploadFactory
             : public Object
          {
 
-    private: static AbFileUploadFactory instance() { return AbFileUploadFactory(); }
+    private: static AbFileUploadFactory* instance() { static std::unique_ptr<AbFileUploadFactory> value(new AbFileUploadFactory()); return value.get(); }
 
-    public: static AbFileUploadFactory getInstance();
+    public: static AbFileUploadFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: AbFileUploadFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: List getFileItemStreamList(HttpServletRequest httpServletRequest);
+    public: List* getFileItemStreamList(HttpServletRequest* httpServletRequest);
 
                 //@Throws(Exception.constructor)
             
-    public: List getFileItemList(HttpServletRequest httpServletRequest);
+    public: List* getFileItemList(HttpServletRequest* httpServletRequest);
 
 };
 

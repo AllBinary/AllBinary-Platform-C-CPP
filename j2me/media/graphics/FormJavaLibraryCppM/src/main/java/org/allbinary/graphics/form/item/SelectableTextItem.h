@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_SELECTABLETEXTITEM_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_SELECTABLETEXTITEM_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -45,16 +51,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ABTextItem.h"
-#include "ABStringComponent.h"
+        #include "org/allbinary/graphics/form/item/ABTextItem.h"
+#include "org/allbinary/graphics/form/item/ABStringComponent.h"
 
 class SelectableTextItem: public ABTextItem {
 
-public: SelectableTextItem(std::string label, int32_t layout, std::string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: SelectableTextItem(std::string label, int32_t layout, std::string altText, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
     public: bool isFocusable();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
 };
 

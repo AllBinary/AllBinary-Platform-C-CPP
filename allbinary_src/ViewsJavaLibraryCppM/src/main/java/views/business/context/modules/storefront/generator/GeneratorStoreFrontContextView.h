@@ -21,6 +21,12 @@
         #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_GENERATOR_GENERATORSTOREFRONTCONTEXTVIEW_H
         #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_GENERATOR_GENERATORSTOREFRONTCONTEXTVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -62,9 +68,9 @@
         
 class GeneratorStoreFrontContextView: public HttpStoreComponentView {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: GeneratorStoreFrontContextView(TransformInfoInterface transformInfoInterface);
+public: GeneratorStoreFrontContextView(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             

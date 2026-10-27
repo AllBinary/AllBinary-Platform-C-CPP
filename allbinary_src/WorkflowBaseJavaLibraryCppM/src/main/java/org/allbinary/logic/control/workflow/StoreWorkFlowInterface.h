@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_STOREWORKFLOWINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_STOREWORKFLOWINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -41,13 +47,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WorkFlowInterface.h"
+        #include "org/allbinary/logic/control/workflow/WorkFlowInterface.h"
 //extends ValidationComponentInterface, ValidationInterface, ComponentInterface, DomNodeInterface, DataMappingInterface
 class StoreWorkFlowInterface: public WorkFlowInterface {
 
                 //@Throws(Exception.constructor)
             
-    std::string getStoreName();
+    public: virtual std::string getStoreName() = 0;
 
 };
 

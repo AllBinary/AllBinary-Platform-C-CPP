@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -44,23 +50,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TrackingEvent.h"
-#include "TrackingEventHandler.h"
+        #include "org/allbinary/game/tracking/TrackingEvent.h"
+#include "org/allbinary/game/tracking/TrackingEventHandler.h"
 
 class TrackingEventFactory
             : public Object
-        : public AllBinaryEventObjectFactoryInterface {
+        , public AllBinaryEventObjectFactoryInterface {
 
 public: TrackingEventFactory(){
 }
 
 
-    public: AllBinaryEventObject getInstance(){
+    public: AllBinaryEventObject* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TrackingEvent(TrackingEventHandler::getInstance());
+                        return new TrackingEvent(TrackingEventHandler::getInstance());
     
 }
 

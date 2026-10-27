@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -60,7 +66,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NativeLibraryClassLoader.h"
+        #include "org/allbinary/logic/system/loader/NativeLibraryClassLoader.h"
 
 class NativeLibraryHelperWrapper
             : public Object
@@ -68,7 +74,7 @@ class NativeLibraryHelperWrapper
 
     private: std::string libraryName;
 
-    private: ClassLoader loader;
+    private: ClassLoader* loader;
 
     private: Object* anyType;
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -45,13 +51,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ColorFillBasePaintable.h"
+        #include "org/allbinary/game/paint/ColorFillBasePaintable.h"
 
 class ColorFillPaintable: public ColorFillBasePaintable {
 
-    protected: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
+    protected: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-public: ColorFillPaintable(BasicColor basicColor) : ColorFillBasePaintable(basicColor){
+public: ColorFillPaintable(BasicColor* basicColor) : ColorFillBasePaintable(basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -61,10 +67,10 @@ public: ColorFillPaintable(BasicColor basicColor) : ColorFillBasePaintable(basic
 }
 
 
-    public: void paint(Graphics graphics){
-graphics.setColor(this->colorP);
+    public: void paint(Graphics* graphics){
+graphics->setColor(this->colorP);
     
-graphics.fillRect(0, 0, this->displayInfoSingleton.getLastWidth(), this->displayInfoSingleton.getLastHeight());
+graphics->fillRect(0, 0, this->displayInfoSingleton->getLastWidth(), this->displayInfoSingleton->getLastHeight());
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_USB_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_USB_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>
@@ -50,13 +56,13 @@
         
 class Usb
             : public Object
-        : public HardwareComponentInterface, public UsbInterface {
+        , public HardwareComponentInterface, public UsbInterface {
 
     private: std::string data;
 
 public: Usb(std::string data);
 
-    public: bool compareTo(HardwareComponentInterface componentInterface);
+    public: bool compareTo(HardwareComponentInterface* componentInterface);
 
     public: std::string toString();
 

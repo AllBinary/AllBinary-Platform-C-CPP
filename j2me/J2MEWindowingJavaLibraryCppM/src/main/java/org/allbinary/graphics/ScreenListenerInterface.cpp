@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,9 +45,9 @@
         
 class ScreenListenerInterface {
 
-    void onFullScreen(bool isFullScreen)
+    public: virtual void onFullScreen(bool isFullScreen) = 0;
 
-    void onFullScreenDisplay()
+    public: virtual void onFullScreenDisplay() = 0;
 
 };
 

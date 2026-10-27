@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/business/advertisement/image/AdvertisementImageInterface.h>
 
       
@@ -54,51 +60,51 @@
         
 class AdvertisementInterface {
 
-    std::string getArtist()
+    public: virtual std::string getArtist() = 0;
 
-    std::string getArtistLink()
+    public: virtual std::string getArtistLink() = 0;
 
-    std::string getTitle()
+    public: virtual std::string getTitle() = 0;
 
-    std::string getDateAdded()
+    public: virtual std::string getDateAdded() = 0;
 
-    std::string getDirectory()
+    public: virtual std::string getDirectory() = 0;
 
-    std::string getFramedLink()
+    public: virtual std::string getFramedLink() = 0;
 
-    Money getListPrice()
+    public: virtual Money* getListPrice() = 0;
 
-    Money getOurPrice()
+    public: virtual Money* getOurPrice() = 0;
 
-    int32_t getRank()
+    public: virtual int32_t getRank() = 0;
 
-    AdvertisementImageInterface getImage()
+    public: virtual AdvertisementImageInterface* getImage() = 0;
 
-    AdvertisementProductInterface getProduct()
+    public: virtual AdvertisementProductInterface* getProduct() = 0;
 
-    AdvertisementThumbnailInterface getThumbnail()
+    public: virtual AdvertisementThumbnailInterface* getThumbnail() = 0;
 
-    DisplayInBrowserContraintsInterface getDisplayInBrowserContraintsInterface()
+    public: virtual DisplayInBrowserContraintsInterface* getDisplayInBrowserContraintsInterface() = 0;
 
-    void setArtist(std::string artist)
+    public: virtual void setArtist(std::string artist) = 0;
 
-    void setArtistLink(std::string artistLink)
+    public: virtual void setArtistLink(std::string artistLink) = 0;
 
-    void setTitle(std::string title)
+    public: virtual void setTitle(std::string title) = 0;
 
-    void setDateAdded(std::string dateAdded)
+    public: virtual void setDateAdded(std::string dateAdded) = 0;
 
-    void setDirectory(std::string directory)
+    public: virtual void setDirectory(std::string directory) = 0;
 
-    void setFramedLink(std::string framedLink)
+    public: virtual void setFramedLink(std::string framedLink) = 0;
 
-    void setRank(int32_t rank)
+    public: virtual void setRank(int32_t rank) = 0;
 
-    void setImage(AdvertisementImageInterface AdvertisementImageInterface)
+    public: virtual void setImage(AdvertisementImageInterface* AdvertisementImageInterface) = 0;
 
-    void setProduct(AdvertisementProductInterface AdvertisementProductInterface)
+    public: virtual void setProduct(AdvertisementProductInterface* AdvertisementProductInterface) = 0;
 
-    void setThumbnail(AdvertisementThumbnailInterface AdvertisementThumbnailInterface)
+    public: virtual void setThumbnail(AdvertisementThumbnailInterface* AdvertisementThumbnailInterface) = 0;
 
 };
 

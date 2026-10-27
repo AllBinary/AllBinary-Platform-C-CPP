@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_INPUTIMAGEIOINTERFACEFACTORY_H
         #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_INPUTIMAGEIOINTERFACEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,7 +61,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputImageType.h"
+        #include "org/allbinary/input/media/image/InputImageType.h"
 
 class InputImageIOInterfaceFactory
             : public Object
@@ -63,7 +69,7 @@ class InputImageIOInterfaceFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static ImageIOInterface getInstance(InputImageType imageType);
+    public: static ImageIOInterface* getInstance(InputImageType* imageType);
 
 private: InputImageIOInterfaceFactory();
 

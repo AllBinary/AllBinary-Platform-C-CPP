@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_XMLRPCREMOTELOGCLIENT_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_XMLRPCREMOTELOGCLIENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/System.h"
@@ -79,9 +87,9 @@
         
 class XmlRpcRemoteLogClient: public XmlRpcAbeClient {
 
-    private: const NoCrypt noCrypt = NoCrypt();
+    private: NoCrypt* noCrypt = new NoCrypt();
 
-public: XmlRpcRemoteLogClient(AbeClientInformationInterface clientInfo);
+public: XmlRpcRemoteLogClient(AbeClientInformationInterface* clientInfo);
 
                 //@Throws(Exception.constructor)
             

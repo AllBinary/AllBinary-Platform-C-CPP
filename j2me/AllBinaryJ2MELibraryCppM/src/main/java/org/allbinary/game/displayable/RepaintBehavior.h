@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_REPAINTBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_REPAINTBEHAVIOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -74,17 +80,17 @@ class RepaintBehavior
             : public Object
          {
 
-    private: static RepaintBehavior instance() { return RepaintBehavior(); }
+    private: static RepaintBehavior* instance() { static std::unique_ptr<RepaintBehavior> value(new RepaintBehavior()); return value.get(); }
 
-    public: static RepaintBehavior getInstance();
+    public: static RepaintBehavior* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: void repaint(Canvas canvas);
+    public: void repaint(Canvas* canvas);
 
     private: const std::string NAME = "RepaintBehavior";
 
-    public: void onChangeRepaint(Canvas canvas);
+    public: void onChangeRepaint(Canvas* canvas);
 
 };
 

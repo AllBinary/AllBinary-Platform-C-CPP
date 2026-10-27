@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -105,15 +113,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Input.h"
-#include "GameKeyMappingFactory.h"
-#include "InputFactory.h"
+        #include "org/allbinary/game/input/Input.h"
+#include "org/allbinary/game/input/GameKeyMappingFactory.h"
+#include "org/allbinary/game/input/InputFactory.h"
 //GameInputPersistanceLibrary
 class InputPersistance: public BasicPersitance {
 
-    private: const TsUtil tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil = TsUtil::getInstance();
 
-    private: const HashtableUtil hashtableUtil = HashtableUtil::getInstance();
+    private: HashtableUtil* hashtableUtil = HashtableUtil::getInstance();
 
 public: InputPersistance(std::string name) : BasicPersitance(name){
 
@@ -127,16 +135,16 @@ public: InputPersistance(std::string name) : BasicPersitance(name){
 
                 //@Throws(Exception.constructor)
             
-    public: void loadAll(AbeClientInformationInterface abeClientInformation){
+    public: void loadAll(AbeClientInformationInterface* abeClientInformation){
 
-    RecordStore recordStore = NullRecordStore::NULL_RECORD_STORE;;
+    RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
 
         try {
             recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);
     
 
-    RecordEnumeration recordEnum = recordStore.enumerateRecords(NullRecordFilter::NULL_RECORD_FILTER, NullRecordComparator::NULL_RECORD_COMPARATOR, true);;
+    RecordEnumeration* recordEnum = recordStore->enumerateRecords(NullRecordFilter::NULL_RECORD_FILTER, NullRecordComparator::NULL_RECORD_COMPARATOR, true);;
     
 
     int64_t gameActionInputId= 0;;
@@ -145,49 +153,49 @@ public: InputPersistance(std::string name) : BasicPersitance(name){
     int64_t inputId= 0;;
     
 
-    Input gameActionInput;;
+    Input* gameActionInput;;
     
 
-    Input input;;
+    Input* input;;
     
 
-    ABHashtable<Object*, Object*> hashtable;;
+    ABHashtable<Object*, Object*>* hashtable;;
     
 
-    GameKeyMappingFactory gameKeyFactory = GameKeyMappingFactory::getInstance();;
+    GameKeyMappingFactory* gameKeyFactory = GameKeyMappingFactory::getInstance();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    InputFactory inputFactory = InputFactory::getInstance();;
+    InputFactory* inputFactory = InputFactory::getInstance();;
     
 
-    SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
+    SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
 
-    StdUtil stdUtil = StdUtil::getInstance();;
+    StdUtil* stdUtil = StdUtil::getInstance();;
     
 
     std::vector<int8_t> recordAsBytes;;
     
 
-    ByteArrayInputStream byteArrayInputStream;;
+    ByteArrayInputStream* byteArrayInputStream;;
     
 
-    DataInputStream inputStream;;
+    DataInputStream* inputStream;;
     
 
-        while(recordEnum.hasNextElement())
+        while(recordEnum->hasNextElement())
         {
 
-    int32_t id = recordEnum.nextRecordId();;
+    int32_t id = recordEnum->nextRecordId();;
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-this->logUtil.putF(stringBuffer.append(this->persistanceStrings.LOADING_ID).appendint(id).toString(), this, this->persistanceStrings.LOAD_ALL);
+this->logUtil.putF(stringBuffer->append(this->persistanceStrings.LOADING_ID)->appendint(id)->toString(), this, this->persistanceStrings.LOAD_ALL);
     
-recordAsBytes= this->tsUtil.getRecord(recordStore, id);
+recordAsBytes= this->tsUtil->getRecord(recordStore, id);
     
 
                         if(recordAsBytes != 
@@ -195,56 +203,56 @@ recordAsBytes= this->tsUtil.getRecord(recordStore, id);
                                 )
                         
                                     {
-                                    byteArrayInputStream= ByteArrayInputStream(recordAsBytes);
+                                    byteArrayInputStream= new ByteArrayInputStream(recordAsBytes);
     
-inputStream= DataInputStream(byteArrayInputStream);
+inputStream= new DataInputStream(byteArrayInputStream);
     
-hashtable= stdUtil.createHashtable();
+hashtable= stdUtil->createHashtable();
     
 
     int32_t value= 0;;
     
 
-        while(inputStream.available() > 0)
+        while(inputStream->available() > 0)
         {
 
-    std::string gameActionInputIdAsString = inputStream.readUTF();;
+    std::string gameActionInputIdAsString = inputStream->readUTF();;
     
-value= Integer::parseInt(gameActionInputIdAsString);
+value= Integer.parseInt(gameActionInputIdAsString);
     
 gameActionInputId= value;
     
-inputStream.readUTF();
+inputStream->readUTF();
     
-value= Integer::parseInt(inputStream.readUTF());
+value= Integer.parseInt(inputStream->readUTF());
     
 inputId= value;
     
-gameActionInput= gameKeyFactory.getGameKey(static_cast<int32_t>(gameActionInputId));
+gameActionInput= gameKeyFactory->getGameKey(static_cast<int32_t>(gameActionInputId));
     
-input= inputFactory.getInstanceById(static_cast<int32_t>(inputId));
+input= inputFactory->getInstanceById(static_cast<int32_t>(inputId));
     
 
-                        if(input == inputFactory.NO_INPUT || gameActionInput == 
+                        if(input == inputFactory->NO_INPUT || gameActionInput == 
                                     nullptr
                                 )
                         
                                     {
-                                    stringBuffer.delete(0, stringBuffer.length());
+                                    stringBuffer->delete(0, stringBuffer->length());
     
 
-                        if(input == inputFactory.NO_INPUT)
+                        if(input == inputFactory->NO_INPUT)
                         
                                     {
-                                    stringBuffer.append(this->persistanceStrings.ERROR_LOADING_ID);
+                                    stringBuffer->append(this->persistanceStrings.ERROR_LOADING_ID);
     
-stringBuffer.appendlong(inputId);
+stringBuffer->appendlong(inputId);
     
-stringBuffer.append(this->persistanceStrings.GAME_ACTION_INPUT);
+stringBuffer->append(this->persistanceStrings.GAME_ACTION_INPUT);
     
-stringBuffer.appendlong(gameActionInputId);
+stringBuffer->appendlong(gameActionInputId);
     
-PreLogUtil::put(stringBuffer.toString(), this, this->persistanceStrings.LOAD_ALL);
+PreLogUtil::put(stringBuffer->toString(), this, this->persistanceStrings.LOAD_ALL);
     
 
                                     }
@@ -255,17 +263,17 @@ PreLogUtil::put(stringBuffer.toString(), this, this->persistanceStrings.LOAD_ALL
                                 )
                         
                                     {
-                                    stringBuffer.delete(0, stringBuffer.length());
+                                    stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(this->persistanceStrings.ERROR_LOADING);
+stringBuffer->append(this->persistanceStrings.ERROR_LOADING);
     
-stringBuffer.appendlong(gameActionInputId);
+stringBuffer->appendlong(gameActionInputId);
     
-stringBuffer.append(this->persistanceStrings.ID);
+stringBuffer->append(this->persistanceStrings.ID);
     
-stringBuffer.appendlong(inputId);
+stringBuffer->appendlong(inputId);
     
-PreLogUtil::put(stringBuffer.toString(), this, this->persistanceStrings.LOAD_ALL);
+PreLogUtil::put(stringBuffer->toString(), this, this->persistanceStrings.LOAD_ALL);
     
 
                                     }
@@ -277,13 +285,13 @@ PreLogUtil::put(stringBuffer.toString(), this, this->persistanceStrings.LOAD_ALL
                             
                         }
                             
-hashtable.put(input, gameActionInput);
+hashtable->put(input, gameActionInput);
     
 }
 
 this->valueList.add(hashtable);
     
-this->idList.add(smallIntegerSingletonFactory.getAt(id));
+this->idList.add(smallIntegerSingletonFactory->getAt(id));
     
 
                                     }
@@ -296,7 +304,7 @@ this->idList.add(smallIntegerSingletonFactory.getAt(id));
 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -314,7 +322,7 @@ this->idList.add(smallIntegerSingletonFactory.getAt(id));
                                     {
                                     PreLogUtil::put(this->persistanceStrings.CLOSING_RECORDSTORE, this, this->persistanceStrings.LOAD_ALL);
     
-recordStore.closeRecordStore();
+recordStore->closeRecordStore();
     
 
                                     }
@@ -327,45 +335,45 @@ recordStore.closeRecordStore();
 
                 //@Throws(Exception.constructor)
             
-    public: void save(AbeClientInformationInterface abeClientInformation, ABHashtable<Object*, Object*> hashtable){
+    public: void save(AbeClientInformationInterface* abeClientInformation, ABHashtable<Object*, Object*>* hashtable){
 
-    RecordStore recordStore = NullRecordStore::NULL_RECORD_STORE;;
+    RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-PreLogUtil::put(stringBuffer.append(this->persistanceStrings.SAVING).append(StringUtil::getInstance().toString(hashtable)).toString(), this, this->commonStrings.SAVE);
+PreLogUtil::put(stringBuffer->append(this->persistanceStrings.SAVING)->append(StringUtil::getInstance()->toString(hashtable))->toString(), this, this->commonStrings.SAVE);
     
 recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);
     
 
-    ByteArrayOutputStream byteArrayOutputStream = ByteArrayOutputStream();;
+    ByteArrayOutputStream* byteArrayOutputStream = new ByteArrayOutputStream();;
     
 
-    DataOutputStream outputStream = DataOutputStream(byteArrayOutputStream);;
+    DataOutputStream* outputStream = new DataOutputStream(byteArrayOutputStream);;
     
 
-    Input gameActionInput;;
+    Input* gameActionInput;;
     
 
-    BasicArrayList list;;
+    BasicArrayList* list;;
     
 
-    Input input;;
+    Input* input;;
     
 
     std::vector<int8_t> savedGameBytes;;
     
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
-    SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
+    SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
 
-    std::vector<Object*> inputObjectArray = this->hashtableUtil.getKeysAsArray(hashtable);;
+    std::vector<Object*> inputObjectArray = this->hashtableUtil->getKeysAsArray(hashtable);;
     
 
     int32_t size = inputObjectArray.size();;
@@ -377,42 +385,42 @@ recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation
                         for (
     int32_t index = 0;index < size; index++)
         {
-gameActionInput= inputObjectArray[index];
+gameActionInput= dynamic_cast<Input*>(inputObjectArray[index]);
     
-list= hashtable.get(inputObjectArray[index]);
+list= dynamic_cast<BasicArrayList*>(hashtable->get(inputObjectArray[index]));
     
 
 
 
 
                         for (
-    int32_t index2 = 0;index2 < list.size(); index2++)
+    int32_t index2 = 0;index2 < list->size(); index2++)
         {
 
-    std::string gameActionInputIdAsString = smallIntegerSingletonFactory.getAt(gameActionInput.getId()).toString();;
+    std::string gameActionInputIdAsString = smallIntegerSingletonFactory->getAt(gameActionInput->getId())->toString();;
     
-outputStream.writeUTF(gameActionInputIdAsString);
+outputStream->writeUTF(gameActionInputIdAsString);
     
-outputStream.writeUTF(commonSeps.EQUALS);
+outputStream->writeUTF(commonSeps->EQUALS);
     
-input= list.objectArray[index2];
+input= dynamic_cast<Input*>(list->objectArray[index2]);
     
 
-    std::string inputIdAsString = smallIntegerSingletonFactory.getAt(input.getId()).toString();;
+    std::string inputIdAsString = smallIntegerSingletonFactory->getAt(input->getId())->toString();;
     
-outputStream.writeUTF(inputIdAsString);
+outputStream->writeUTF(inputIdAsString);
     
 }
 
 }
 
-savedGameBytes= byteArrayOutputStream.toByteArray();
+savedGameBytes= byteArrayOutputStream->toByteArray();
     
-recordStore.addRecord(savedGameBytes, 0, savedGameBytes.size());
+recordStore->addRecord(savedGameBytes, 0, savedGameBytes.size());
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -430,7 +438,7 @@ recordStore.addRecord(savedGameBytes, 0, savedGameBytes.size());
                                     {
                                     PreLogUtil::put(this->persistanceStrings.CLOSING_RECORDSTORE, this, this->commonStrings.SAVE);
     
-recordStore.closeRecordStore();
+recordStore->closeRecordStore();
     
 
                                     }

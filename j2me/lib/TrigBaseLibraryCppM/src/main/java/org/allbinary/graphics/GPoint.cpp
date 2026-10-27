@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -61,48 +67,48 @@ class GPoint
             : public Object
          {
 
-    public: static GPoint getInstance(GPoint point){
+    public: static GPoint* getInstance(GPoint* point){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GPoint(point.getX(), point.getY(), point.getZ());
+                        return new GPoint(point->getX(), point->getY(), point->getZ());
     
 }
 
 
-    private: static const std::string POINT_LABEL = "Point: ";
+    private: static inline const std::string POINT_LABEL = "Point: ";
 
     public: static std::string toStringStatic(int32_t x, int32_t y, int32_t z){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    PositionStrings positionStrings = PositionStrings::getInstance();;
+    PositionStrings* positionStrings = PositionStrings::getInstance();;
     
-stringBuffer.append(GPoint::POINT_LABEL);
+stringBuffer->append(GPoint::POINT_LABEL);
     
-stringBuffer.append(positionStrings.X_LABEL);
+stringBuffer->append(positionStrings->X_LABEL);
     
-stringBuffer.appendint(x);
+stringBuffer->appendint(x);
     
-stringBuffer.append(CommonSeps::getInstance().SPACE);
+stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-stringBuffer.append(positionStrings.Y_LABEL);
+stringBuffer->append(positionStrings->Y_LABEL);
     
-stringBuffer.appendint(y);
+stringBuffer->appendint(y);
     
-stringBuffer.append(CommonSeps::getInstance().SPACE);
+stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-stringBuffer.append(positionStrings.Z_LABEL);
+stringBuffer->append(positionStrings->Z_LABEL);
     
-stringBuffer.appendint(z);
+stringBuffer->appendint(z);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

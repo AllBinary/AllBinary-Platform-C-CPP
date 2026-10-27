@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_RACETRACKPICKUPLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_PICKUP_RACETRACKPICKUPLAYER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/NullAnimationFactory.h>
@@ -71,18 +77,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PickupLayer.h"
-#include "CountedPickedUpLayerInterfaceFactory.h"
+        #include "org/allbinary/game/layer/pickup/PickupLayer.h"
+#include "org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactory.h"
 
 class RaceTrackPickupLayer: public PickupLayer {
 
-    private: static const std::string NAME = "RaceTrackPickupLayer";
+    private: static inline const std::string NAME = "RaceTrackPickupLayer";
 
 public: RaceTrackPickupLayer();
 
-    private: const ViewPositionEventHandler viewPositionEventHandler = ViewPositionEventHandler::getInstance();
+    private: ViewPositionEventHandler* viewPositionEventHandler = ViewPositionEventHandler::getInstance();
 
-    public: void setTiledLayer(AllBinaryTiledLayer tiledLayer);
+    public: void setTiledLayer(AllBinaryTiledLayer* tiledLayer);
 
     public: void setDestroyed(bool destroyed);
 

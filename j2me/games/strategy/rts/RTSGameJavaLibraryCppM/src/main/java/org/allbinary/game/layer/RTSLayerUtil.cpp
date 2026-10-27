@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -86,17 +92,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RTSLayer.h"
-#include "FakeLayerManager.h"
-#include "AllBinaryGameLayerManager.h"
+        #include "org/allbinary/game/layer/RTSLayer.h"
+#include "org/allbinary/game/layer/FakeLayerManager.h"
+#include "org/allbinary/game/layer/AllBinaryGameLayerManager.h"
 
 class RTSLayerUtil
             : public Object
          {
 
-    private: static RTSLayerUtil instance() { return RTSLayerUtil(); }
+    private: static RTSLayerUtil* instance() { static std::unique_ptr<RTSLayerUtil> value(new RTSLayerUtil()); return value.get(); }
 
-    public: static RTSLayerUtil getInstance(){
+    public: static RTSLayerUtil* getInstance(){
 
 
 
@@ -106,13 +112,13 @@ class RTSLayerUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const GroupCommonFactory groupCommonFactory = GroupCommonFactory::getInstance();
+    private: GroupCommonFactory* groupCommonFactory = GroupCommonFactory::getInstance();
 
-    private: WeaponProperties createWeaponProperties(WeaponProperties weaponProperties, int32_t currentLevel, int32_t lastLevel){
+    private: WeaponProperties* createWeaponProperties(WeaponProperties* weaponProperties, int32_t currentLevel, int32_t lastLevel){
 
-    int64_t reloadTime = weaponProperties.getReloadTime();;
+    int64_t reloadTime = weaponProperties->getReloadTime();;
     
 
                         if(lastLevel > currentLevel)
@@ -133,7 +139,7 @@ class RTSLayerUtil
                                     }
                                 
 
-    WeaponProperties newWeaponProperties = WeaponProperties(reloadTime, weaponProperties.getTargetingTime(), weaponProperties.getSpeed().getUnscaled(), weaponProperties.getDamage() /lastLevel *currentLevel, weaponProperties.getDissipation());;
+    WeaponProperties* newWeaponProperties = new WeaponProperties(reloadTime, weaponProperties->getTargetingTime(), weaponProperties->getSpeed()->getUnscaled(), weaponProperties->getDamage() /lastLevel *currentLevel, weaponProperties->getDissipation());;
     
 
 
@@ -144,17 +150,17 @@ class RTSLayerUtil
 }
 
 
-    public: void downgrade(RTSLayer rtsLayer){
-rtsLayer.setLevel(rtsLayer.getLevel() -1);
+    public: void downgrade(RTSLayer* rtsLayer){
+rtsLayer->setLevel(rtsLayer->getLevel() -1);
     
 
-    std::vector<PartInterface> partInterfaceArray = rtsLayer.getPartInterfaceArray();;
+    std::vector<PartInterface*> partInterfaceArray = rtsLayer->getPartInterfaceArray();;
     
 
     int32_t size = partInterfaceArray.size();;
     
 
-    BasicWeaponPart partInterface;;
+    BasicWeaponPart* partInterface;;
     
 
 
@@ -163,28 +169,28 @@ rtsLayer.setLevel(rtsLayer.getLevel() -1);
                         for (
     int32_t index = size;--index >= 0; )
         {
-partInterface= partInterfaceArray[index];
+partInterface= dynamic_cast<BasicWeaponPart*>(partInterfaceArray[index]);
     
-partInterface.setWeaponProperties(this->createWeaponProperties(partInterface.getWeaponProperties(), rtsLayer.getLevel(), rtsLayer.getLevel() +1));
-    
-}
-
-rtsLayer.select();
+partInterface->setWeaponProperties(this->createWeaponProperties(partInterface->getWeaponProperties(), rtsLayer->getLevel(), rtsLayer->getLevel() +1));
     
 }
 
+rtsLayer->select();
+    
+}
 
-    public: void upgrade(RTSLayer rtsLayer){
-rtsLayer.setLevel(rtsLayer.getLevel() +1);
+
+    public: void upgrade(RTSLayer* rtsLayer){
+rtsLayer->setLevel(rtsLayer->getLevel() +1);
     
 
-    std::vector<PartInterface> partInterfaceArray = rtsLayer.getPartInterfaceArray();;
+    std::vector<PartInterface*> partInterfaceArray = rtsLayer->getPartInterfaceArray();;
     
 
     int32_t size = partInterfaceArray.size();;
     
 
-    BasicWeaponPart partInterface;;
+    BasicWeaponPart* partInterface;;
     
 
 
@@ -193,18 +199,18 @@ rtsLayer.setLevel(rtsLayer.getLevel() +1);
                         for (
     int32_t index = size;--index >= 0; )
         {
-partInterface= partInterfaceArray[index];
+partInterface= dynamic_cast<BasicWeaponPart*>(partInterfaceArray[index]);
     
-partInterface.setWeaponProperties(this->createWeaponProperties(partInterface.getWeaponProperties(), rtsLayer.getLevel(), rtsLayer.getLevel() -1));
-    
-}
-
-rtsLayer.select();
+partInterface->setWeaponProperties(this->createWeaponProperties(partInterface->getWeaponProperties(), rtsLayer->getLevel(), rtsLayer->getLevel() -1));
     
 }
 
+rtsLayer->select();
+    
+}
 
-    private: const int64_t MAX_RELOAD_TIME = Integer::MAX_VALUE /100000;
+
+    private: const int64_t MAX_RELOAD_TIME = Integer.MAX_VALUE /100000;
 
     public: int64_t getCostExponential(int64_t cost){
 
@@ -216,9 +222,9 @@ rtsLayer.select();
 }
 
 
-    private: int32_t getWeaponPropertiesCost(WeaponProperties weaponProperties){
+    private: int32_t getWeaponPropertiesCost(WeaponProperties* weaponProperties){
 
-    int64_t cost = (weaponProperties.getDamage() +weaponProperties.getRange() +((this->MAX_RELOAD_TIME /weaponProperties.getReloadTime())>>1));;
+    int64_t cost = (weaponProperties->getDamage() +weaponProperties->getRange() +((this->MAX_RELOAD_TIME /weaponProperties->getReloadTime())>>1));;
     
 cost= this->getCostExponential(cost);
     
@@ -231,21 +237,21 @@ cost= this->getCostExponential(cost);
 }
 
 
-    public: int32_t getCost(RTSLayer rtsLayer){
+    public: int32_t getCost(RTSLayer* rtsLayer){
 
     int32_t total = 0;;
     
 
-    std::vector<PartInterface> partInterfaceArray = rtsLayer.getPartInterfaceArray();;
+    std::vector<PartInterface*> partInterfaceArray = rtsLayer->getPartInterfaceArray();;
     
 
     int32_t size = partInterfaceArray.size();;
     
 
-    BasicWeaponPart partInterface;;
+    BasicWeaponPart* partInterface;;
     
 
-    WeaponProperties weaponProperties;;
+    WeaponProperties* weaponProperties;;
     
 
 
@@ -254,9 +260,9 @@ cost= this->getCostExponential(cost);
                         for (
     int32_t index = size -1;index >= 0; index--)
         {
-partInterface= partInterfaceArray[index];
+partInterface= dynamic_cast<BasicWeaponPart*>(partInterfaceArray[index]);
     
-weaponProperties= partInterface.getWeaponProperties();
+weaponProperties= partInterface->getWeaponProperties();
     
 total += this->getWeaponPropertiesCost(weaponProperties);
     
@@ -271,9 +277,9 @@ total += this->getWeaponPropertiesCost(weaponProperties);
 }
 
 
-    public: int32_t getDowngradeCost(RTSLayer rtsLayer){
+    public: int32_t getDowngradeCost(RTSLayer* rtsLayer){
 
-    std::vector<PartInterface> partInterfaceArray = rtsLayer.getPartInterfaceArray();;
+    std::vector<PartInterface*> partInterfaceArray = rtsLayer->getPartInterfaceArray();;
     
 
     int32_t size = partInterfaceArray.size();;
@@ -282,10 +288,10 @@ total += this->getWeaponPropertiesCost(weaponProperties);
     int32_t downgradeCost = 0;;
     
 
-    BasicWeaponPart partInterface;;
+    BasicWeaponPart* partInterface;;
     
 
-    WeaponProperties weaponProperties;;
+    WeaponProperties* weaponProperties;;
     
 
     int32_t downgradeWeaponCost= 0;;
@@ -300,11 +306,11 @@ total += this->getWeaponPropertiesCost(weaponProperties);
                         for (
     int32_t index = size -1;index >= 0; index--)
         {
-partInterface= partInterfaceArray[index];
+partInterface= dynamic_cast<BasicWeaponPart*>(partInterfaceArray[index]);
     
-weaponProperties= partInterface.getWeaponProperties();
+weaponProperties= partInterface->getWeaponProperties();
     
-downgradeWeaponCost= this->getWeaponPropertiesCost(this->createWeaponProperties(weaponProperties, rtsLayer.getLevel() -1, rtsLayer.getLevel()));
+downgradeWeaponCost= this->getWeaponPropertiesCost(this->createWeaponProperties(weaponProperties, rtsLayer->getLevel() -1, rtsLayer->getLevel()));
     
 currentWeaponCost= this->getWeaponPropertiesCost(weaponProperties);
     
@@ -314,7 +320,7 @@ downgradeCost += (currentWeaponCost -downgradeWeaponCost);
 
 downgradeCost= downgradeCost *9 /10;
     
-this->logUtil.putF(StringMaker().append("Total Cost: ").appendint(downgradeCost).toString(), this, "getDowngradeCost");
+this->logUtil->putF((new StringMaker())->append("Total Cost: ")->appendint(downgradeCost)->toString(), this, "getDowngradeCost");
     
 
 
@@ -325,21 +331,21 @@ this->logUtil.putF(StringMaker().append("Total Cost: ").appendint(downgradeCost)
 }
 
 
-    public: int32_t getUpgradeCost(RTSLayer rtsLayer){
+    public: int32_t getUpgradeCost(RTSLayer* rtsLayer){
 
     int32_t upgradeCost = 0;;
     
 
-    std::vector<PartInterface> partInterfaceArray = rtsLayer.getPartInterfaceArray();;
+    std::vector<PartInterface*> partInterfaceArray = rtsLayer->getPartInterfaceArray();;
     
 
     int32_t size = partInterfaceArray.size();;
     
 
-    BasicWeaponPart partInterface;;
+    BasicWeaponPart* partInterface;;
     
 
-    WeaponProperties weaponProperties;;
+    WeaponProperties* weaponProperties;;
     
 
     int32_t upgradedWeaponCost= 0;;
@@ -354,11 +360,11 @@ this->logUtil.putF(StringMaker().append("Total Cost: ").appendint(downgradeCost)
                         for (
     int32_t index = size -1;index >= 0; index--)
         {
-partInterface= partInterfaceArray[index];
+partInterface= dynamic_cast<BasicWeaponPart*>(partInterfaceArray[index]);
     
-weaponProperties= partInterface.getWeaponProperties();
+weaponProperties= partInterface->getWeaponProperties();
     
-upgradedWeaponCost= this->getWeaponPropertiesCost(this->createWeaponProperties(weaponProperties, rtsLayer.getLevel() +1, rtsLayer.getLevel()));
+upgradedWeaponCost= this->getWeaponPropertiesCost(this->createWeaponProperties(weaponProperties, rtsLayer->getLevel() +1, rtsLayer->getLevel()));
     
 currentWeaponCost= this->getWeaponPropertiesCost(weaponProperties);
     
@@ -366,7 +372,7 @@ upgradeCost += (upgradedWeaponCost -currentWeaponCost);
     
 }
 
-this->logUtil.putF(StringMaker().append("Total Cost: ").appendint(upgradeCost).toString(), this, "getUpgradeCost");
+this->logUtil->putF((new StringMaker())->append("Total Cost: ")->appendint(upgradeCost)->toString(), this, "getUpgradeCost");
     
 
 
@@ -379,45 +385,45 @@ this->logUtil.putF(StringMaker().append("Total Cost: ").appendint(upgradeCost).t
 
                 //@Throws(Exception.constructor)
             
-    public: void destroyAndClear(BasicArrayList list){
+    public: void destroyAndClear(BasicArrayList* list){
 
-    RTSLayer rtsLayer;;
+    RTSLayer* rtsLayer;;
     
 
 
 
 
                         for (
-    int32_t index = list.size() -1;index >= 0; index--)
+    int32_t index = list->size() -1;index >= 0; index--)
         {
-rtsLayer= list.get(index);
+rtsLayer= dynamic_cast<RTSLayer*>(list->get(index));
     
-rtsLayer.setDestroyed(true);
-    
-}
-
-list.clear();
+rtsLayer->setDestroyed(true);
     
 }
 
+list->clear();
+    
+}
 
-    public: ABHashtable<Object*, Object*> createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap baseRaceTrackGeographicMap){
 
-    ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();;
+    public: ABHashtable<Object*, Object*>* createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap* baseRaceTrackGeographicMap){
+
+    ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();;
     
 
-    FakeLayerManager layerManager = FakeLayerManager(GameInfo::NONE);;
+    FakeLayerManager* layerManager = new FakeLayerManager(GameInfo::NONE);;
     
-layerManager.setGeographicMapInterface(
+layerManager->setGeographicMapInterface(
                                                 {
                                                     baseRaceTrackGeographicMap
                                                 });
     
-hashtable.put(AllBinaryGameLayerManager::ID, layerManager);
+hashtable->put(AllBinaryGameLayerManager::ID, layerManager);
     
-hashtable.put(DirectionFactory::getInstance().NAME, DirectionFactory::getInstance().LEFT);
+hashtable->put(DirectionFactory::getInstance()->NAME, DirectionFactory::getInstance()->LEFT);
     
-hashtable.put(this->groupCommonFactory.ID, BasicGroupFactory::getInstance().NONE_ARRAY);
+hashtable->put(this->groupCommonFactory->ID, BasicGroupFactory::getInstance()->NONE_ARRAY);
     
 
 

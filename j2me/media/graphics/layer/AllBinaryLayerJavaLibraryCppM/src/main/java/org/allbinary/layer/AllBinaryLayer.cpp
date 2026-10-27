@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -87,16 +93,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Layer.h"
-#include "LayerInterface.h"
+        #include "org/allbinary/layer/Layer.h"
+#include "org/allbinary/layer/LayerInterface.h"
 
 class AllBinaryLayer: public Layer, public LayerInterface {
 
-    public: static const AllBinaryLayer NULL_ALLBINARY_LAYER = AllBinaryLayer(StringUtil::getInstance().EMPTY_STRING, RectangleFactory::SINGLETON, ViewPositionBase::NULL_VIEW_POSITION);
+    public: static AllBinaryLayer* NULL_ALLBINARY_LAYER() { static std::unique_ptr<AllBinaryLayer> value(new AllBinaryLayer(StringUtil::getInstance()->EMPTY_STRING, RectangleFactory::SINGLETON, ViewPositionBase::NULL_VIEW_POSITION)); return value.get(); }
 
-    private: static const std::string TYPE = "Type: ";
+    private: static inline const std::string TYPE = "Type: ";
 
-    protected: const ViewPositionEvent viewPositionEvent = ViewPositionEvent(this);
+    protected: ViewPositionEvent* viewPositionEvent = new ViewPositionEvent(this);
 
     private: int32_t halfWidth= 0;
 
@@ -104,9 +110,9 @@ class AllBinaryLayer: public Layer, public LayerInterface {
 
     private: std::string name;
 
-    private: ViewPositionBase viewPosition = ViewPositionBase::NULL_VIEW_POSITION;
+    private: ViewPositionBase* viewPosition = ViewPositionBase::NULL_VIEW_POSITION;
 
-public: AllBinaryLayer(std::string name, Rectangle rectangle, ViewPositionBase viewPosition) : Layer(rectangle.getWidth(), rectangle.getHeight()){
+public: AllBinaryLayer(std::string name, Rectangle* rectangle, ViewPositionBase* viewPosition) : Layer(rectangle->getWidth(), rectangle->getHeight()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -120,13 +126,13 @@ public: AllBinaryLayer(std::string name, Rectangle rectangle, ViewPositionBase v
                         if(false)
                         
                                     {
-                                    localName= this->constructor.name.toString();
+                                    localName= this->getClass()->getName();
     
 
                                     }
                                 
                         else {
-                            localName= StringMaker().append(name).append(CommonSeps::getInstance().COLON).append(Integer::toHexString(TsUtil::getInstance().hashCode(this))).toString();
+                            localName= (new StringMaker())->append(name)->append(CommonSeps::getInstance()->COLON)->append(Integer.toHexString(TsUtil::getInstance()->hashCode(this)))->toString();
     
 
                         }
@@ -134,9 +140,9 @@ public: AllBinaryLayer(std::string name, Rectangle rectangle, ViewPositionBase v
 this->name= localName;
     
 
-    GPoint point = rectangle.getPoint();;
+    GPoint* point = rectangle->getPoint();;
     
-this->setPosition(point.getX(), point.getY(), point.getZ());
+this->setPosition(point->getX(), point->getY(), point->getZ());
     
 this->setHalfWidth((this->getWidth()>>1));
     
@@ -144,18 +150,18 @@ this->setHalfHeight((this->getHeight()>>1));
     
 this->viewPosition= viewPosition;
     
-this->viewPosition.setAllbinaryLayer(this);
+this->viewPosition->setAllbinaryLayer(this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void onChangeEvent(ViewPositionEvent layerManagerEvent){
+    public: void onChangeEvent(ViewPositionEvent* layerManagerEvent){
 }
 
 
-    public: void paintThreed(Graphics graphics){
+    public: void paintThreed(Graphics* graphics){
 }
 
 
@@ -241,7 +247,7 @@ this->halfHeight= halfHeight;
 }
 
 
-    public: ViewPositionBase getViewPosition(){
+    public: ViewPositionBase* getViewPosition(){
 
 
 
@@ -251,18 +257,18 @@ this->halfHeight= halfHeight;
 }
 
 
-    public: void setViewPosition(ViewPositionBase viewPosition){
+    public: void setViewPosition(ViewPositionBase* viewPosition){
 this->viewPosition= viewPosition;
     
 }
 
 
-    public: std::vector<Group> getGroupInterface(){
+    public: std::vector<Group*> getGroupInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicGroupFactory::getInstance().NONE_ARRAY;
+                        return BasicGroupFactory::getInstance()->NONE_ARRAY;
     
 }
 
@@ -312,7 +318,7 @@ this->viewPosition= viewPosition;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLFeatureUtil::getInstance().isAnyThreed();;
+                        return OpenGLFeatureUtil::getInstance()->isAnyThreed();;
     
 }
 
@@ -337,60 +343,60 @@ this->viewPosition= viewPosition;
 }
 
 
-    public: void toStringAppend(StringMaker stringBuffer){
+    public: void toStringAppend(StringMaker* stringBuffer){
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
-    
-
-    PositionStrings positionStrings = PositionStrings::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
-    CommonLabels commonLabels = CommonLabels::getInstance();;
+    PositionStrings* positionStrings = PositionStrings::getInstance();;
     
-stringBuffer.append(this->getName());
+
+    CommonLabels* commonLabels = CommonLabels::getInstance();;
     
-stringBuffer.append(commonSeps.COLON);
+stringBuffer->append(this->getName());
     
-stringBuffer.append(AllBinaryLayer::TYPE);
+stringBuffer->append(commonSeps->COLON);
     
-stringBuffer.appendint(this->getType());
+stringBuffer->append(AllBinaryLayer::TYPE);
     
-stringBuffer.append(commonSeps.SPACE);
+stringBuffer->appendint(this->getType());
     
-stringBuffer.append(positionStrings.X_LABEL);
+stringBuffer->append(commonSeps->SPACE);
     
-stringBuffer.appendint(this->getXP());
+stringBuffer->append(positionStrings->X_LABEL);
     
-stringBuffer.append(commonSeps.SPACE);
+stringBuffer->appendint(this->getXP());
     
-stringBuffer.append(positionStrings.Y_LABEL);
+stringBuffer->append(commonSeps->SPACE);
     
-stringBuffer.appendint(this->getYP());
+stringBuffer->append(positionStrings->Y_LABEL);
     
-stringBuffer.append(commonSeps.SPACE);
+stringBuffer->appendint(this->getYP());
     
-stringBuffer.append(positionStrings.Z_LABEL);
+stringBuffer->append(commonSeps->SPACE);
     
-stringBuffer.appendint(this->getZP());
+stringBuffer->append(positionStrings->Z_LABEL);
     
-stringBuffer.append(commonSeps.SPACE);
+stringBuffer->appendint(this->getZP());
     
-stringBuffer.append(commonLabels.WIDTH_LABEL);
+stringBuffer->append(commonSeps->SPACE);
     
-stringBuffer.appendint(this->getWidth());
+stringBuffer->append(commonLabels->WIDTH_LABEL);
     
-stringBuffer.append(commonSeps.SPACE);
+stringBuffer->appendint(this->getWidth());
     
-stringBuffer.append(commonLabels.HEIGHT_LABEL);
+stringBuffer->append(commonSeps->SPACE);
     
-stringBuffer.appendint(this->getHeight());
+stringBuffer->append(commonLabels->HEIGHT_LABEL);
+    
+stringBuffer->appendint(this->getHeight());
     
 }
 
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 this->toStringAppend(stringBuffer);
     
@@ -398,7 +404,7 @@ this->toStringAppend(stringBuffer);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

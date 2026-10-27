@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/state/GameState.h>
@@ -47,27 +53,27 @@ class GameMidletStateFactory
             : public Object
          {
 
-    private: static const GameMidletStateFactory INSTANCE = GameMidletStateFactory();
+    private: static GameMidletStateFactory* INSTANCE() { static std::unique_ptr<GameMidletStateFactory> value(new GameMidletStateFactory()); return value.get(); }
 
-    public: static GameMidletStateFactory getInstance(){
+    public: static GameMidletStateFactory* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameMidletStateFactory::INSTANCE;
+                        return GameMidletStateFactory::INSTANCE();
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: GameState currentGameState = GameStateFactory::getInstance().NO_GAME_STATE;
+    private: GameState* currentGameState = GameStateFactory::getInstance()->NO_GAME_STATE;
 
 private: GameMidletStateFactory(){
 }
 
 
-    public: GameState getCurrentGameState(){
+    public: GameState* getCurrentGameState(){
 
 
 
@@ -77,8 +83,8 @@ private: GameMidletStateFactory(){
 }
 
 
-    public: void setCurrentGameState(GameState currentGameState){
-this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().CURRENT).append(" GameState: ").append(StringUtil::getInstance().toString(currentGameState)).toString(), this, "setCurrentGameState");
+    public: void setCurrentGameState(GameState* currentGameState){
+this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->CURRENT)->append(" GameState: ")->append(StringUtil::getInstance()->toString(currentGameState))->toString(), this, "setCurrentGameState");
     
 this->currentGameState= currentGameState;
     

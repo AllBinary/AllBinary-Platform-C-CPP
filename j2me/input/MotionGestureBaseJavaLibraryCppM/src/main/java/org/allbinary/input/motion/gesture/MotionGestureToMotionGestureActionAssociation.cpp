@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/CompleteMotionGestureInputEvent.h>
@@ -49,11 +55,11 @@ class MotionGestureToMotionGestureActionAssociation
             : public Object
          {
 
-    private: BasicArrayList list;
+    private: BasicArrayList* list;
 
-    private: CompleteMotionGestureInputEvent motionGestureAction;
+    private: CompleteMotionGestureInputEvent* motionGestureAction;
 
-public: MotionGestureToMotionGestureActionAssociation(BasicArrayList list, CompleteMotionGestureInputEvent commandAction){
+public: MotionGestureToMotionGestureActionAssociation(BasicArrayList* list, CompleteMotionGestureInputEvent* commandAction){
 this->list= list;
     
 this->motionGestureAction= commandAction;
@@ -61,7 +67,7 @@ this->motionGestureAction= commandAction;
 }
 
 
-    public: BasicArrayList getMotionGesture(){
+    public: BasicArrayList* getMotionGesture(){
 
 
 
@@ -71,13 +77,13 @@ this->motionGestureAction= commandAction;
 }
 
 
-    public: void setMotionGestures(BasicArrayList list){
+    public: void setMotionGestures(BasicArrayList* list){
 this->list= list;
     
 }
 
 
-    public: CompleteMotionGestureInputEvent getCommandAction(){
+    public: CompleteMotionGestureInputEvent* getCommandAction(){
 
 
 
@@ -87,18 +93,18 @@ this->list= list;
 }
 
 
-    public: void setMotionGestureAction(CompleteMotionGestureInputEvent commandAction){
+    public: void setMotionGestureAction(CompleteMotionGestureInputEvent* commandAction){
 this->motionGestureAction= commandAction;
     
 }
 
 
-    public: bool isMotionGestureArrayEquals(BasicArrayList aList){
+    public: bool isMotionGestureArrayEquals(BasicArrayList* aList){
 
-    int32_t size = aList.size();;
+    int32_t size = aList->size();;
     
 
-                        if(this->list.size() != size)
+                        if(this->list->size() != size)
                         
                                     {
                                     
@@ -118,7 +124,7 @@ this->motionGestureAction= commandAction;
     int32_t i = size -1;i >= 0; i--)
         {
 
-                        if(aList.objectArray[i] != this->list.objectArray[i])
+                        if(aList->objectArray[i] != this->list->objectArray[i])
                         
                                     {
                                     

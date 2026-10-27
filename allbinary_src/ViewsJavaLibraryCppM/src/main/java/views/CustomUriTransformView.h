@@ -21,6 +21,12 @@
         #ifndef VIEWS_CUSTOMURITRANSFORMVIEW_H
         #define VIEWS_CUSTOMURITRANSFORMVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -82,37 +88,37 @@
         
 class CustomUriTransformView
             : public Object
-        : public TransformInterface {
+        , public TransformInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    protected: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: TransformInfoInterface transformInfoInterface;
+    private: TransformInfoInterface* transformInfoInterface;
 
-    private: TransformDocumentInterface transformDocumentInterface;
+    private: TransformDocumentInterface* transformDocumentInterface;
 
-public: CustomUriTransformView(TransformInfoInterface transformInfoInterface);
+public: CustomUriTransformView(TransformInfoInterface* transformInfoInterface);
 
     public: int32_t NO_TYPE = 0;
 
     public: int32_t getTypeId();
 
-    public: TransformInfoInterface getTransformInfoInterface();
+    public: TransformInfoInterface* getTransformInfoInterface();
 
-    public: void setTransformInfoInterface(TransformInfoInterface transformInfoInterface);
+    public: void setTransformInfoInterface(TransformInfoInterface* transformInfoInterface);
 
-    public: TransformDocumentInterface getTransformDocumentInterface();
+    public: TransformDocumentInterface* getTransformDocumentInterface();
 
-    public: void setTransformDocumentInterface(TransformDocumentInterface transformDocumentInterface);
+    public: void setTransformDocumentInterface(TransformDocumentInterface* transformDocumentInterface);
 
-    public: Document toXmlDoc();
+    public: Document* toXmlDoc();
 
                 //@Throws(Exception.constructor)
             
-    public: Document getDoc();
+    public: Document* getDoc();
 
                 //@Throws(Exception.constructor)
             

@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_TIME_TIMETYPEUTIL_H
         #define ORG_ALLBINARY_TIME_TIMETYPEUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/Calendar.h>
@@ -38,9 +44,9 @@ class TimeTypeUtil
             : public Object
          {
 
-    private: static TimeTypeUtil instance() { return TimeTypeUtil(); }
+    private: static TimeTypeUtil* instance() { static std::unique_ptr<TimeTypeUtil> value(new TimeTypeUtil()); return value.get(); }
 
-    public: static TimeTypeUtil getInstance();
+    public: static TimeTypeUtil* getInstance();
 
     public: const std::string NIGHT = "Night";
 

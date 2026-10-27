@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/System.h"
@@ -76,9 +84,9 @@
         
 class XmlRpcRemoteLogClient: public XmlRpcAbeClient {
 
-    private: const NoCrypt noCrypt = NoCrypt();
+    private: NoCrypt* noCrypt = new NoCrypt();
 
-public: XmlRpcRemoteLogClient(AbeClientInformationInterface clientInfo) : XmlRpcAbeClient(clientInfo, "SSLLogServ.logUtil"){
+public: XmlRpcRemoteLogClient(AbeClientInformationInterface* clientInfo) : XmlRpcAbeClient(clientInfo, "SSLLogServ.logUtil"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -94,34 +102,34 @@ public: XmlRpcRemoteLogClient(AbeClientInformationInterface clientInfo) : XmlRpc
 
         try {
             
-    BasicArrayList param = BasicArrayListD();;
+    BasicArrayList* param = new BasicArrayListD();;
     
 
-    std::string serverUrl = getClientInfo().getLicenseServer(this->getServer());;
+    std::string serverUrl = getClientInfo()->getLicenseServer(this->getServer());;
     
 
-    int32_t index = serverUrl.lastIndexOf("/");;
+    int32_t index = JavaString::lastIndexOf(serverUrl, "/");;
     
-serverUrl= serverUrl.substring(0, index +1) +"logservssl.php";
+serverUrl= JavaString::substring(serverUrl, 0, index +1) +"logservssl.php";
     
 
-    XmlRpcClient xmlRpcClient = XmlRpcClient(serverUrl);;
+    XmlRpcClient* xmlRpcClient = new XmlRpcClient(serverUrl);;
     
 this->setClient(xmlRpcClient);
     
-xmlRpcClient.setBasicAuthentication(
+xmlRpcClient->setBasicAuthentication(
                             nullptr, 
                             nullptr);
     
 
-    ABHashtable<Object*, Object*> hashtable = *dynamic_cast<ABHashtable<Object*, Object*>*>(anyType);;
+    ABHashtable<Object*, Object*>* hashtable = dynamic_cast<ABHashtable<Object*, Object*>*>(anyType);;
     
-param.add(hashtable);
+param->add(hashtable);
     
 
-    Object* result = xmlRpcClient.execute(this->getRemoteMethod(), param, this->noCrypt);;
+    Object* result = xmlRpcClient->execute(this->getRemoteMethod(), param, this->noCrypt);;
     
-console.log(CommonLabels::getInstance().RESULT_ +CommonSeps::getInstance().NEW_LINE +result->toString());
+System.out.println(CommonLabels::getInstance()->RESULT_ +CommonSeps::getInstance()->NEW_LINE +result->toString());
     
 
 
@@ -131,9 +139,9 @@ console.log(CommonLabels::getInstance().RESULT_ +CommonSeps::getInstance().NEW_L
     
 
                 //: 
-} catch(e) 
+} catch(IOException& e) 
             {
-console.log("IOException Trying Other Servers");
+System.out.println("IOException Trying Other Servers");
     
 
                         if(!e.getMessage().startsWith(HOST_NOT_RESOLVED))
@@ -152,7 +160,7 @@ console.log("IOException Trying Other Servers");
                             
 
 
-                            throw Exception(HOST_NOT_RESOLVED_MSG);
+                            throw new Exception(HOST_NOT_RESOLVED_MSG);
                     
 
                         }
@@ -160,7 +168,7 @@ console.log("IOException Trying Other Servers");
 }
 
                 //: 
-/* catch(e) 
+ catch(XmlRpcException& e) 
             {
 
 
@@ -169,9 +177,9 @@ console.log("IOException Trying Other Servers");
                         return this->tryAnother(anyType);;
     
 }
-*/
+
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
 
@@ -180,7 +188,7 @@ console.log("IOException Trying Other Servers");
                         return this->tryAnother(anyType);;
     
 }
-*/
+
 }
 
 

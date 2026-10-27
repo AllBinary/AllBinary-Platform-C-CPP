@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Class.h"
         
             #include "java/lang/Exception.h"
@@ -98,7 +106,7 @@
         
 class AuthenticationTag: public CustomTagSupport {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string command;
 
@@ -108,17 +116,17 @@ class AuthenticationTag: public CustomTagSupport {
 
     private: std::string newPassword;
 
-    private: BasicArrayList roles;
+    private: BasicArrayList* roles;
 
-    private: HashMap<Object*, Object*> propertiesHashMap;
+    private: HashMap<Object*, Object*>* propertiesHashMap;
 
 public: AuthenticationTag(){
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
-this->userName= stringUtil.EMPTY_STRING;
+this->userName= stringUtil->EMPTY_STRING;
     
-this->password= stringUtil.EMPTY_STRING;
+this->password= stringUtil->EMPTY_STRING;
     
 }
 
@@ -147,7 +155,7 @@ this->newPassword= value;
 }
 
 
-    public: void setRoles(BasicArrayList values){
+    public: void setRoles(BasicArrayList* values){
 this->roles= values;
     
 }
@@ -159,17 +167,17 @@ this->roles= values;
 
         try {
             
-    Object* anyType = AuthenticationRequestHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = (new AuthenticationRequestHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
     
 
     Class* addressHelperClass = anyType->getClass();;
     
 
-    Method method = addressHelperClass.getMethod("changePassword", 
+    Method* method = addressHelperClass->getMethod("changePassword", 
                             nullptr);;
     
 
-    Boolean result = method.invoke(anyType, 
+    bool result = method->invoke(anyType, 
                             nullptr);;
     
 
@@ -180,7 +188,7 @@ this->roles= values;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -190,13 +198,13 @@ this->roles= values;
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "changePassword()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "changePassword()", &e);
     
 
                                     }
@@ -208,7 +216,7 @@ this->roles= values;
                         return false;
     
 }
-*/
+
 }
 
 
@@ -218,17 +226,17 @@ this->roles= values;
 
         try {
             
-    Object* anyType = AuthenticationRequestHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = (new AuthenticationRequestHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
     
 
     Class* addressHelperClass = anyType->getClass();;
     
 
-    Method method = addressHelperClass.getMethod("newPassword", 
+    Method* method = addressHelperClass->getMethod("newPassword", 
                             nullptr);;
     
 
-    Boolean result = method.invoke(anyType, 
+    bool result = method->invoke(anyType, 
                             nullptr);;
     
 
@@ -239,7 +247,7 @@ this->roles= values;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -249,13 +257,13 @@ this->roles= values;
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "newPassword()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "newPassword()", &e);
     
 
                                     }
@@ -267,7 +275,7 @@ this->roles= values;
                         return false;
     
 }
-*/
+
 }
 
 
@@ -277,17 +285,17 @@ this->roles= values;
 
         try {
             
-    Object* anyType = AuthenticationHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = (new AuthenticationHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
     
 
     Class* addressHelperClass = anyType->getClass();;
     
 
-    Method method = addressHelperClass.getMethod("invalidateSession", 
+    Method* method = addressHelperClass->getMethod("invalidateSession", 
                             nullptr);;
     
 
-    Integer resultInteger = method.invoke(anyType, 
+    int32_t resultInteger = method->invoke(anyType, 
                             nullptr);;
     
 
@@ -298,7 +306,7 @@ this->roles= values;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -308,13 +316,13 @@ this->roles= values;
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "invalidateSession()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "invalidateSession()", &e);
     
 
                                     }
@@ -326,7 +334,7 @@ this->roles= values;
                         return TagSupport::SKIP_BODY;
     
 }
-*/
+
 }
 
 
@@ -336,17 +344,17 @@ this->roles= values;
 
         try {
             
-    Object* anyType = AuthenticationHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = (new AuthenticationHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
     
 
     Class* helperClass = anyType->getClass();;
     
 
-    Method method = helperClass.getMethod("isSessionOld", 
+    Method* method = helperClass->getMethod("isSessionOld", 
                             nullptr);;
     
 
-    Boolean resultBoolean = method.invoke(anyType, 
+    bool resultBoolean = method->invoke(anyType, 
                             nullptr);;
     
 
@@ -357,7 +365,7 @@ this->roles= values;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -367,13 +375,13 @@ this->roles= values;
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "isSessionOld()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "isSessionOld()", &e);
     
 
                                     }
@@ -385,7 +393,7 @@ this->roles= values;
                         return false;
     
 }
-*/
+
 }
 
 
@@ -395,7 +403,7 @@ this->roles= values;
 
         try {
             
-    Object* anyType = AuthenticationRequestHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = (new AuthenticationRequestHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
     
 
     Class* addressHelperClass = anyType->getClass();;
@@ -403,11 +411,11 @@ this->roles= values;
 
     std::vector<Class*> methodParams = 
                                                         {
-                                                            this->userName.getClass(), this->password.getClass(), this->roles.getClass()
+                                                            this->userName.getClass(), this->password.getClass(), this->roles->getClass()
                                                         };;
     
 
-    Method method = addressHelperClass.getMethod("isRoleValid", methodParams);;
+    Method* method = addressHelperClass->getMethod("isRoleValid", methodParams);;
     
 
     std::vector<Object*> methodArgs = 
@@ -416,7 +424,7 @@ this->roles= values;
                                                         };;
     
 
-    Boolean resultBoolean = method.invoke(anyType, methodArgs);;
+    bool resultBoolean = method->invoke(anyType, methodArgs);;
     
 
 
@@ -426,7 +434,7 @@ this->roles= values;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -436,13 +444,13 @@ this->roles= values;
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "isRoleValid()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "isRoleValid()", &e);
     
 
                                     }
@@ -454,7 +462,7 @@ this->roles= values;
                         return false;
     
 }
-*/
+
 }
 
 
@@ -464,17 +472,17 @@ this->roles= values;
 
         try {
             
-    Object* anyType = AuthenticationHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = (new AuthenticationHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
     
 
     Class* addressHelperClass = anyType->getClass();;
     
 
-    Method method = addressHelperClass.getMethod("validRole", 
+    Method* method = addressHelperClass->getMethod("validRole", 
                             nullptr);;
     
 
-    std::string result = method.invoke(anyType, 
+    std::string result = method->invoke(anyType, 
                             nullptr);;
     
 
@@ -485,7 +493,7 @@ this->roles= values;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -495,16 +503,16 @@ this->roles= values;
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
     std::string error = "Failed to set valid role";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "validRole()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "validRole()", &e);
     
 
                                     }
@@ -516,7 +524,7 @@ this->roles= values;
                         return error;
     
 }
-*/
+
 }
 
 
@@ -526,17 +534,17 @@ this->roles= values;
 
         try {
             
-    Object* anyType = AuthenticationHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = (new AuthenticationHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
     
 
     Class* addressHelperClass = anyType->getClass();;
     
 
-    Method method = addressHelperClass.getMethod("invalidRole", 
+    Method* method = addressHelperClass->getMethod("invalidRole", 
                             nullptr);;
     
 
-    std::string result = method.invoke(anyType, 
+    std::string result = method->invoke(anyType, 
                             nullptr);;
     
 
@@ -547,7 +555,7 @@ this->roles= values;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -557,16 +565,16 @@ this->roles= values;
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
     std::string error = "Failed to set role invalid";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "invalidRole()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "invalidRole()", &e);
     
 
                                     }
@@ -578,7 +586,7 @@ this->roles= values;
                         return error;
     
 }
-*/
+
 }
 
 
@@ -588,7 +596,7 @@ this->roles= values;
 
         try {
             
-    Object* anyType = AuthenticationHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = (new AuthenticationHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
     
 
     Class* addressHelperClass = anyType->getClass();;
@@ -596,11 +604,11 @@ this->roles= values;
 
     std::vector<Class*> methodParams = 
                                                         {
-                                                            this->roles.getClass()
+                                                            this->roles->getClass()
                                                         };;
     
 
-    Method method = addressHelperClass.getMethod("isAuthenticationSessionValid", methodParams);;
+    Method* method = addressHelperClass->getMethod("isAuthenticationSessionValid", methodParams);;
     
 
     std::vector<Object*> methodArgs = 
@@ -609,7 +617,7 @@ this->roles= values;
                                                         };;
     
 
-    Boolean resultBoolean = method.invoke(anyType, methodArgs);;
+    bool resultBoolean = method->invoke(anyType, methodArgs);;
     
 
 
@@ -619,7 +627,7 @@ this->roles= values;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -629,13 +637,13 @@ this->roles= values;
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "isAuthenticationSessionValid()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "isAuthenticationSessionValid()", &e);
     
 
                                     }
@@ -647,7 +655,7 @@ this->roles= values;
                         return false;
     
 }
-*/
+
 }
 
 
@@ -657,7 +665,7 @@ this->roles= values;
 
         try {
             
-    Object* anyType = AuthenticationHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = (new AuthenticationHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
     
 
     Class* helperClass = anyType->getClass();;
@@ -669,7 +677,7 @@ this->roles= values;
                                                         };;
     
 
-    Method method = helperClass.getMethod("processIfNewLogin", methodParams);;
+    Method* method = helperClass->getMethod("processIfNewLogin", methodParams);;
     
 
     std::vector<Object*> methodArgs = 
@@ -678,7 +686,7 @@ this->roles= values;
                                                         };;
     
 
-    Boolean resultBoolean = method.invoke(anyType, methodArgs);;
+    bool resultBoolean = method->invoke(anyType, methodArgs);;
     
 
 
@@ -688,7 +696,7 @@ this->roles= values;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -698,13 +706,13 @@ this->roles= values;
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "processIfNewLogin()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "processIfNewLogin()", &e);
     
 
                                     }
@@ -716,7 +724,7 @@ this->roles= values;
                         return false;
     
 }
-*/
+
 }
 
 
@@ -726,17 +734,17 @@ this->roles= values;
 
         try {
             
-    Object* anyType = AuthenticationHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = (new AuthenticationHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
     
 
     Class* addressHelperClass = anyType->getClass();;
     
 
-    Method method = addressHelperClass.getMethod("processInvalidation", 
+    Method* method = addressHelperClass->getMethod("processInvalidation", 
                             nullptr);;
     
 
-    Boolean resultBoolean = method.invoke(anyType, 
+    bool resultBoolean = method->invoke(anyType, 
                             nullptr);;
     
 
@@ -747,7 +755,7 @@ this->roles= values;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -757,13 +765,13 @@ this->roles= values;
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "isSetToInvalidate()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "isSetToInvalidate()", &e);
     
 
                                     }
@@ -775,7 +783,7 @@ this->roles= values;
                         return false;
     
 }
-*/
+
 }
 
 
@@ -785,23 +793,23 @@ this->roles= values;
 
         try {
             
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
                                     
-    HttpServletRequest request = this->pageContext.getRequest();;
+    HttpServletRequest* request = dynamic_cast<HttpServletRequest*>(this->pageContext.getRequest());;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(" Request URI: ");
+stringBuffer->append(" Request URI: ");
     
-stringBuffer.append(request.getRequestURI());
+stringBuffer->append(request->getRequestURI());
     
-this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
+this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -810,17 +818,17 @@ this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
                         if(true)
                         
                                     {
-                                    this->propertiesHashMap= StdUtil::getInstance().createHashMap();
+                                    this->propertiesHashMap= StdUtil::getInstance()->createHashMap();
     
 
                         if(this->command.compare(org.allbinary.globals.GLOBALS2.NEWPASSWORD) == 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF("New Password", this, tagStrings.DO_START_TAG);
+                                    this->logUtil->putF("New Password", this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -829,7 +837,7 @@ this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
                         if(!this->newPassword())
                         
                                     {
-                                    pageContext.getOut().print("New Password Request Failed.<p/>");
+                                    pageContext.getOut()->print("New Password Request Failed.<p/>");
     
 
 
@@ -841,7 +849,7 @@ this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
                                     }
                                 
                         else {
-                            pageContext.getOut().print("New Password Was Sent.<p/>");
+                            pageContext.getOut()->print("New Password Was Sent.<p/>");
     
 
 
@@ -860,10 +868,10 @@ this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF("Change Password", this, tagStrings.DO_START_TAG);
+                                    this->logUtil->putF("Change Password", this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -872,7 +880,7 @@ this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
                         if(!this->changePassword())
                         
                                     {
-                                    pageContext.getOut().print("Password Change Attempt Failed.<p/>");
+                                    pageContext.getOut()->print("Password Change Attempt Failed.<p/>");
     
 
 
@@ -884,7 +892,7 @@ this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
                                     }
                                 
                         else {
-                            pageContext.getOut().print("Password Changed Successfully.<p/>");
+                            pageContext.getOut()->print("Password Changed Successfully.<p/>");
     
 
 
@@ -903,10 +911,10 @@ this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF("INVALIDATESESSION", this, tagStrings.DO_START_TAG);
+                                    this->logUtil->putF("INVALIDATESESSION", this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -930,15 +938,15 @@ this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF("Processing Invalidation", this, tagStrings.DO_START_TAG);
+                                    this->logUtil->putF("Processing Invalidation", this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
-pageContext.getOut().print("Please login again.<p>");
+pageContext.getOut()->print("Please login again.<p>");
     
 
                         if(this->command.compare(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
@@ -968,10 +976,10 @@ pageContext.getOut().print("Please login again.<p>");
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF("Preparing session for invalidation", this, tagStrings.DO_START_TAG);
+                                    this->logUtil->putF("Preparing session for invalidation", this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -1006,16 +1014,16 @@ pageContext.getOut().print("Please login again.<p>");
                                     }
                                 
 
-                        if((false || this->userName.compare(stringUtil.EMPTY_STRING) == 0) && (false || this->password.compare(stringUtil.EMPTY_STRING) == 0) && this->roles != 
+                        if((false || this->userName.compare(stringUtil->EMPTY_STRING) == 0) && (false || this->password.compare(stringUtil->EMPTY_STRING) == 0) && this->roles != 
                                     nullptr
                                  && this->isAuthenticationSessionValid())
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF("Authenticated session is valid", this, tagStrings.DO_START_TAG);
+                                    this->logUtil->putF("Authenticated session is valid", this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -1051,10 +1059,10 @@ pageContext.getOut().print("Please login again.<p>");
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF("Processing new login.", this, tagStrings.DO_START_TAG);
+                                    this->logUtil->putF("Processing new login.", this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -1064,15 +1072,15 @@ pageContext.getOut().print("Please login again.<p>");
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF("Role is valid - Processing new login", this, tagStrings.DO_START_TAG);
+                                    this->logUtil->putF("Role is valid - Processing new login", this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
-pageContext.getOut().print(validRole());
+pageContext.getOut()->print(validRole());
     
 
                         if(this->command.compare(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
@@ -1102,15 +1110,15 @@ pageContext.getOut().print(validRole());
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF("Role is not valid - Processing new login", this, tagStrings.DO_START_TAG);
+                                    this->logUtil->putF("Role is not valid - Processing new login", this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
-pageContext.getOut().print(invalidRole());
+pageContext.getOut()->print(invalidRole());
     
 
                         if(this->command.compare(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
@@ -1143,19 +1151,19 @@ pageContext.getOut().print(invalidRole());
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF("Invalid Login", this, tagStrings.DO_START_TAG);
+                                    this->logUtil->putF("Invalid Login", this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(true && this->userName.compare(stringUtil.EMPTY_STRING) != 0 && true && this->password.compare(stringUtil.EMPTY_STRING) != 0)
+                        if(true && this->userName.compare(stringUtil->EMPTY_STRING) != 0 && true && this->password.compare(stringUtil->EMPTY_STRING) != 0)
                         
                                     {
-                                    pageContext.getOut().print("Sorry your username and/or password is invalid.<p/>");
+                                    pageContext.getOut()->print("Sorry your username and/or password is invalid.<p/>");
     
 
                                     }
@@ -1164,10 +1172,10 @@ pageContext.getOut().print(invalidRole());
                         }
                             
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF(StringMaker().append("Major authentication error - userName: ").append(this->userName).append(" Password: ").append(this->password).append(" Command: ").append(this->command).toString(), this, tagStrings.DO_START_TAG);
+                                    this->logUtil->putF((new StringMaker())->append("Major authentication error - userName: ")->append(this->userName)->append(" Password: ")->append(this->password)->append(" Command: ")->append(this->command)->toString(), this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -1209,9 +1217,9 @@ pageContext.getOut().print(invalidRole());
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
-AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
     
 
 
@@ -1222,9 +1230,9 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 
@@ -1233,7 +1241,7 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
                         return SKIP_BODY;
     
 }
-*/
+
 }
 
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/crypto/Cipher.h>
@@ -49,19 +55,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseSecretComposite.h"
+        #include "org/allbinary/logic/system/security/crypt/jcehelper/BaseSecretComposite.h"
 
 class SecretComposite: public BaseSecretComposite {
 
-    private: const ByteUtil byteUtil = ByteUtil::getInstance();
+    private: ByteUtil* byteUtil = ByteUtil::getInstance();
 
-    private: Cipher cipher;
+    private: Cipher* cipher;
 
-    private: SecretKey secretKey;
+    private: SecretKey* secretKey;
 
     private: std::vector<int8_t> key;
 
-public: SecretComposite(SecretKey secretKey, Cipher cipher, std::vector<int8_t> key){
+public: SecretComposite(SecretKey* secretKey, Cipher* cipher, std::vector<int8_t> key){
 this->secretKey= secretKey;
     
 this->cipher= cipher;
@@ -76,13 +82,13 @@ this->key= key;
     public: std::vector<int8_t> encrypt(std::vector<int8_t> array){
 array= this->mutilate(array);
     
-this->cipher.init(Cipher::ENCRYPT_MODE, this->secretKey);
+this->cipher->init(Cipher::ENCRYPT_MODE, this->secretKey);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cipher.doFinal(array);;
+                        return this->cipher->doFinal(array);;
     
 }
 
@@ -90,13 +96,13 @@ this->cipher.init(Cipher::ENCRYPT_MODE, this->secretKey);
                 //@Throws(Exception.constructor)
             
     public: std::vector<int8_t> decrypt(std::vector<int8_t> array){
-this->cipher.init(Cipher::DECRYPT_MODE, this->secretKey);
+this->cipher->init(Cipher::DECRYPT_MODE, this->secretKey);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->mutilate(this->cipher.doFinal(array));;
+                        return this->mutilate(this->cipher->doFinal(array));;
     
 }
 
@@ -116,7 +122,7 @@ this->cipher.init(Cipher::DECRYPT_MODE, this->secretKey);
                         if(value < 8 && value > 0)
                         
                                     {
-                                    array= this->byteUtil.xorByte(array, static_cast<int32_t>(value));
+                                    array= this->byteUtil->xorByte(array, static_cast<int32_t>(value));
     
 
                                     }

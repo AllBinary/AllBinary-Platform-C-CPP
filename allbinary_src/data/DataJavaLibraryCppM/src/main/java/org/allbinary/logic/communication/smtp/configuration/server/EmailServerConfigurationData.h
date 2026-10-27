@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_SERVER_EMAILSERVERCONFIGURATIONDATA_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_SERVER_EMAILSERVERCONFIGURATIONDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,13 +52,13 @@ class EmailServerConfigurationData
             : public Object
          {
 
-    public: static const std::string NAME = "EMAIL_SERVER_CONFIGURATION_NAME";
+    public: static inline const std::string NAME = "EMAIL_SERVER_CONFIGURATION_NAME";
 
-    public: static const std::string SERVER = "EMAIL_SERVER_CONFIGURATION_SERVER";
+    public: static inline const std::string SERVER = "EMAIL_SERVER_CONFIGURATION_SERVER";
 
-    public: static const std::string ACCOUNT = "EMAIL_SERVER_CONFIGURATION_ACCOUNT";
+    public: static inline const std::string ACCOUNT = "EMAIL_SERVER_CONFIGURATION_ACCOUNT";
 
-    public: static const std::string PASSWORD = "EMAIL_SERVER_CONFIGURATION_PASSWORD";
+    public: static inline const std::string PASSWORD = "EMAIL_SERVER_CONFIGURATION_PASSWORD";
 
 private: EmailServerConfigurationData();
 

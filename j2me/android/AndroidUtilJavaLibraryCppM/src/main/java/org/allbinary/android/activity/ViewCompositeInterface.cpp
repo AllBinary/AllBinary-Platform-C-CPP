@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Runnable.h"
         
 #include <android/view/View.h>
@@ -44,11 +50,11 @@
         
 class ViewCompositeInterface {
 
-    View getRootView()
+    public: virtual View* getRootView() = 0;
 
-    View getView()
+    public: virtual View* getView() = 0;
 
-    void runOnUiThread(Runnable action)
+    public: virtual void runOnUiThread(Runnable* action) = 0;
 
 };
 

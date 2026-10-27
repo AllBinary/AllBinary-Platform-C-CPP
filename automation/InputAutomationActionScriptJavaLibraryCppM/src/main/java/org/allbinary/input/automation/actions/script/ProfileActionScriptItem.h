@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_PROFILEACTIONSCRIPTITEM_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_PROFILEACTIONSCRIPTITEM_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -66,43 +72,43 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProfileActionScriptItemInterface.h"
-#include "JPopupMenu.h"
-#include "JMenuItem.h"
+        #include "org/allbinary/input/automation/actions/script/ProfileActionScriptItemInterface.h"
+#include "org/allbinary/input/automation/actions/script/JPopupMenu.h"
+#include "org/allbinary/input/automation/actions/script/JMenuItem.h"
 
 class ProfileActionScriptItem: public DefaultMutableTreeNode, public ProfileActionScriptItemInterface, public ActionListener {
 
-    private: static const std::string EDIT = "Edit";
+    private: static inline const std::string EDIT = "Edit";
 
-    protected: static const std::string DELETE = "Delete";
+    protected: static inline const std::string DELETE = "Delete";
 
-    protected: static const std::string NEW_CONDITION = "New Condition";
+    protected: static inline const std::string NEW_CONDITION = "New Condition";
 
-    protected: static const std::string NEW_INPUT = "New Input";
+    protected: static inline const std::string NEW_INPUT = "New Input";
 
-    protected: static const std::string NEW_OUTPUT = "New Output";
+    protected: static inline const std::string NEW_OUTPUT = "New Output";
 
-    protected: static const std::string NEW_COLOR_AT = "Color At";
+    protected: static inline const std::string NEW_COLOR_AT = "Color At";
 
-    protected: static const std::string NEW_TIME_INTERVAL = "Time Interval";
+    protected: static inline const std::string NEW_TIME_INTERVAL = "Time Interval";
 
-    protected: static const std::string NEW_ALWAYS = "Always On/Off";
+    protected: static inline const std::string NEW_ALWAYS = "Always On/Off";
 
-    protected: static const std::string NEW_KEY_INPUT = "Key";
+    protected: static inline const std::string NEW_KEY_INPUT = "Key";
 
-    protected: static const std::string NEW_MOUSE_INPUT = "Mouse";
+    protected: static inline const std::string NEW_MOUSE_INPUT = "Mouse";
 
-    protected: static const std::string NEW_JOYSTICK_INPUT = "Joystick";
+    protected: static inline const std::string NEW_JOYSTICK_INPUT = "Joystick";
 
-    protected: static const std::string NEW_IMAGE_OUTPUT = "Image";
+    protected: static inline const std::string NEW_IMAGE_OUTPUT = "Image";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: JPopupMenu jPopupMenu;
+    private: JPopupMenu* jPopupMenu;
 
-public: ProfileActionScriptItem(std::string label, Node node);
+public: ProfileActionScriptItem(std::string label, Node* node);
 
 public: ProfileActionScriptItem(std::string label);
 
@@ -110,15 +116,15 @@ public: ProfileActionScriptItem(std::string label);
 
                 //@Throws(Exception.constructor)
             
-    public: void process(Long frame);
+    public: void process(int64_t frame);
 
-    public: JPopupMenu getJPopupMenu();
+    public: JPopupMenu* getJPopupMenu();
 
     public: void showDialog();
 
-    public: void actionPerformed(ActionEvent actionEvent);
+    public: void actionPerformed(ActionEvent* actionEvent);
 
-    public: void setJPopupMenu(JPopupMenu jPopupMenu);
+    public: void setJPopupMenu(JPopupMenu* jPopupMenu);
 
 };
 

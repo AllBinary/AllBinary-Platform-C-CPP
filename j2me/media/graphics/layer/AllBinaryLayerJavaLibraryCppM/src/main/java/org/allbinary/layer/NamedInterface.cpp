@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,7 +45,7 @@
         
 class NamedInterface {
 
-    std::string getName()
+    public: virtual std::string getName() = 0;
 
 };
 

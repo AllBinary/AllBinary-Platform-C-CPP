@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -42,14 +48,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Input.h"
-#include "InputFactory.h"
+        #include "org/allbinary/game/input/Input.h"
+#include "org/allbinary/game/input/InputFactory.h"
 
 class J2MEGameKey: public Input {
 
     public: static std::string getString(int32_t keyCode){
 
-    Input input = InputFactory::getInstance().getInstanceById(keyCode);;
+    Input* input = InputFactory::getInstance()->getInstanceById(keyCode);;
     
 
                         if(input != 
@@ -61,7 +67,7 @@ class J2MEGameKey: public Input {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return input.getName();;
+                        return input->getName();;
     
 
                                     }
@@ -71,7 +77,7 @@ class J2MEGameKey: public Input {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 
                         }
@@ -94,9 +100,9 @@ protected: J2MEGameKey(int32_t key, std::string keyName) : Input(key, keyName){
                         
                                     {
                                     
-    InputFactory inputFactory = InputFactory::getInstance();;
+    InputFactory* inputFactory = InputFactory::getInstance();;
     
-inputFactory.add(id, this);
+inputFactory->add(id, this);
     
 
                                     }
@@ -109,7 +115,7 @@ inputFactory.add(id, this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().append("J2MEGameKey: ").append(super.toString()).toString();;
+                        return (new StringMaker())->append("J2MEGameKey: ")->append(super.toString())->toString();;
     
 }
 

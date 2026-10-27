@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -43,13 +49,13 @@ class PopupMenuInterface {
 
                 //@Throws(Exception.constructor)
             
-    void popupMenu()
+    public: virtual void popupMenu() = 0;
 
-    void closeMenu()
+    public: virtual void closeMenu() = 0;
 
                 //@Throws(Exception.constructor)
             
-    void toggleMenu()
+    public: virtual void toggleMenu() = 0;
 
 };
 

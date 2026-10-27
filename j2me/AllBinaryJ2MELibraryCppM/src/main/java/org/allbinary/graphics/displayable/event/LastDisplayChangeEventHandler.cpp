@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -47,19 +53,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DisplayChangeEventListener.h"
-#include "DisplayChangeEvent.h"
+        #include "org/allbinary/graphics/displayable/event/DisplayChangeEventListener.h"
+#include "org/allbinary/graphics/displayable/event/DisplayChangeEvent.h"
 
 class LastDisplayChangeEventHandler: public BasicEventHandler {
 
-    private: static const LastDisplayChangeEventHandler SINGLETON = LastDisplayChangeEventHandler();
+    private: static LastDisplayChangeEventHandler* SINGLETON() { static std::unique_ptr<LastDisplayChangeEventHandler> value(new LastDisplayChangeEventHandler()); return value.get(); }
 
-    public: static LastDisplayChangeEventHandler getInstance(){
+    public: static LastDisplayChangeEventHandler* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LastDisplayChangeEventHandler::SINGLETON;
+                        return LastDisplayChangeEventHandler::SINGLETON();
     
 }
 
@@ -70,11 +76,11 @@ private: LastDisplayChangeEventHandler(){
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
 
-    DisplayChangeEventListener displayChangeEventListener = (eventListenerInterface);;
+    DisplayChangeEventListener* displayChangeEventListener = (dynamic_cast<DisplayChangeEventListener*>(eventListenerInterface));;
     
-displayChangeEventListener.onDisplayChangeEvent(eventObject);
+displayChangeEventListener->onDisplayChangeEvent(dynamic_cast<DisplayChangeEvent*>(eventObject));
     
 }
 

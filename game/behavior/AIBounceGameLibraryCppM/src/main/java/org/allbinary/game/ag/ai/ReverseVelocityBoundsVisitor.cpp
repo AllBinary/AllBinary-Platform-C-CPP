@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/bounds/BoundsVisitorInterface.h>
@@ -56,21 +62,21 @@
         
 class ReverseVelocityBoundsVisitor
             : public Object
-        : public BoundsVisitorInterface {
+        , public BoundsVisitorInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: VelocityInterface velocityInterface;
+    protected: VelocityInterface* velocityInterface;
 
-    private: LayerInterface layerInterface;
+    private: LayerInterface* layerInterface;
 
-public: ReverseVelocityBoundsVisitor(LayerInterface layerInterface){
+public: ReverseVelocityBoundsVisitor(LayerInterface* layerInterface){
 this->layerInterface= layerInterface;
     
 
-    VelocityInterfaceCompositeInterface velocityInterfaceCompositeInterface = layerInterface;;
+    VelocityInterfaceCompositeInterface* velocityInterfaceCompositeInterface = dynamic_cast<VelocityInterfaceCompositeInterface*>(layerInterface);;
     
-this->velocityInterface= velocityInterfaceCompositeInterface.getVelocityProperties();
+this->velocityInterface= dynamic_cast<VelocityInterface*>(velocityInterfaceCompositeInterface->getVelocityProperties());
     
 }
 
@@ -80,7 +86,7 @@ this->velocityInterface= velocityInterfaceCompositeInterface.getVelocityProperti
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->layerInterface.getXP();;
+                        return this->layerInterface->getXP();;
     
 }
 
@@ -90,39 +96,39 @@ this->velocityInterface= velocityInterfaceCompositeInterface.getVelocityProperti
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->layerInterface.getYP();;
+                        return this->layerInterface->getYP();;
     
 }
 
 
     public: void minX(){
 
-                        if(this->velocityInterface.getVelocityXBasicDecimalP().getUnscaled() < 0)
-                        this->velocityInterface.getVelocityXBasicDecimalP().multiplyint( -1);
+                        if(this->velocityInterface->getVelocityXBasicDecimalP()->getUnscaled() < 0)
+                        this->velocityInterface->getVelocityXBasicDecimalP()->multiplyint( -1);
                                 
 }
 
 
     public: void maxX(){
 
-                        if(this->velocityInterface.getVelocityXBasicDecimalP().getUnscaled() > 0)
-                        this->velocityInterface.getVelocityXBasicDecimalP().multiplyint( -1);
+                        if(this->velocityInterface->getVelocityXBasicDecimalP()->getUnscaled() > 0)
+                        this->velocityInterface->getVelocityXBasicDecimalP()->multiplyint( -1);
                                 
 }
 
 
     public: void minY(){
 
-                        if(this->velocityInterface.getVelocityYBasicDecimalP().getUnscaled() < 0)
-                        this->velocityInterface.getVelocityYBasicDecimalP().multiplyint( -1);
+                        if(this->velocityInterface->getVelocityYBasicDecimalP()->getUnscaled() < 0)
+                        this->velocityInterface->getVelocityYBasicDecimalP()->multiplyint( -1);
                                 
 }
 
 
     public: void maxY(){
 
-                        if(this->velocityInterface.getVelocityYBasicDecimalP().getUnscaled() > 0)
-                        this->velocityInterface.getVelocityYBasicDecimalP().multiplyint( -1);
+                        if(this->velocityInterface->getVelocityYBasicDecimalP()->getUnscaled() > 0)
+                        this->velocityInterface->getVelocityYBasicDecimalP()->multiplyint( -1);
                                 
 }
 

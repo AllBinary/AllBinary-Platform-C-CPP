@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -42,11 +48,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ColorFillPaintable.h"
+        #include "org/allbinary/game/paint/ColorFillPaintable.h"
 
 class OverScanColorFillPaintable: public ColorFillPaintable {
 
-public: OverScanColorFillPaintable(BasicColor basicColor) : ColorFillPaintable(basicColor){
+public: OverScanColorFillPaintable(BasicColor* basicColor) : ColorFillPaintable(basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -56,10 +62,10 @@ public: OverScanColorFillPaintable(BasicColor basicColor) : ColorFillPaintable(b
 }
 
 
-    public: void paint(Graphics graphics){
-graphics.setColor(this->colorP);
+    public: void paint(Graphics* graphics){
+graphics->setColor(this->colorP);
     
-graphics.fillRect( -graphics.getClipX(),  -graphics.getClipY(), this->displayInfoSingleton.getLastWidth() +(graphics.getClipX() *2), this->displayInfoSingleton.getLastHeight() +(graphics.getClipY() *2));
+graphics->fillRect( -graphics->getClipX(),  -graphics->getClipY(), this->displayInfoSingleton.getLastWidth() +(graphics->getClipX() *2), this->displayInfoSingleton.getLastHeight() +(graphics->getClipY() *2));
     
 }
 

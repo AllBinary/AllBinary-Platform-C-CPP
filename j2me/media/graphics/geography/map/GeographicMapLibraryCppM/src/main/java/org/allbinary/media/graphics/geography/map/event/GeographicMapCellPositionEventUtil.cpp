@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,39 +52,39 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapCellPositionEvent.h"
-#include "GeographicMapCellPositionEventHandler.h"
+        #include "org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEvent.h"
+#include "org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEventHandler.h"
 
 class GeographicMapCellPositionEventUtil
             : public Object
          {
 
-    private: GeographicMapCellPositionEvent geographicMapCellPositionEvent;
+    private: GeographicMapCellPositionEvent* geographicMapCellPositionEvent;
 
-    private: const GeographicMapCellPositionEventHandler geographicMapCellPositionEventHandler = GeographicMapCellPositionEventHandler::getInstance();
+    private: GeographicMapCellPositionEventHandler* geographicMapCellPositionEventHandler = GeographicMapCellPositionEventHandler::getInstance();
 
 public: GeographicMapCellPositionEventUtil(Object* anyType){
-this->geographicMapCellPositionEvent= GeographicMapCellPositionEvent(anyType, CellPositionFactory::getInstance().NONE);
+this->geographicMapCellPositionEvent= new GeographicMapCellPositionEvent(anyType, CellPositionFactory::getInstance()->NONE);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void update(GeographicMapCellPositionTracking geographicMapCellPositionTracking){
-this->geographicMapCellPositionEvent.setGeographicMapCellPosition(geographicMapCellPositionTracking.getCurrentGeographicMapCellPosition());
+    public: void update(GeographicMapCellPositionTracking* geographicMapCellPositionTracking){
+this->geographicMapCellPositionEvent->setGeographicMapCellPosition(geographicMapCellPositionTracking->getCurrentGeographicMapCellPosition());
     
-this->geographicMapCellPositionEventHandler.fireEvent(this->geographicMapCellPositionEvent);
+this->geographicMapCellPositionEventHandler->fireEvent(this->geographicMapCellPositionEvent);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void remove(GeographicMapCellPositionTracking geographicMapCellPositionTracking){
-this->geographicMapCellPositionEvent.setGeographicMapCellPosition(geographicMapCellPositionTracking.getCurrentGeographicMapCellPosition());
+    public: void remove(GeographicMapCellPositionTracking* geographicMapCellPositionTracking){
+this->geographicMapCellPositionEvent->setGeographicMapCellPosition(geographicMapCellPositionTracking->getCurrentGeographicMapCellPosition());
     
-this->geographicMapCellPositionEventHandler.fireRemoveEvent(this->geographicMapCellPositionEvent);
+this->geographicMapCellPositionEventHandler->fireRemoveEvent(this->geographicMapCellPositionEvent);
     
 }
 

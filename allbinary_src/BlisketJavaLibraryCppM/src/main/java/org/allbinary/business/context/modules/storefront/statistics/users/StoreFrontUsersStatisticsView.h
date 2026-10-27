@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_USERS_STOREFRONTUSERSSTATISTICSVIEW_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_USERS_STOREFRONTUSERSSTATISTICSVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,20 +64,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreFrontUsersStatisticsInterface.h"
-#include "StoreFrontUsersStatisticsData.h"
+        #include "org/allbinary/business/context/modules/storefront/statistics/users/StoreFrontUsersStatisticsInterface.h"
+#include "org/allbinary/business/context/modules/storefront/statistics/users/StoreFrontUsersStatisticsData.h"
 
 class StoreFrontUsersStatisticsView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: StoreFrontUsersStatisticsInterface storeFrontUsersStatisticsInterface;
+    private: StoreFrontUsersStatisticsInterface* storeFrontUsersStatisticsInterface;
 
-public: StoreFrontUsersStatisticsView(StoreFrontUsersStatisticsInterface storeFrontUsersStatisticsInterface);
+public: StoreFrontUsersStatisticsView(StoreFrontUsersStatisticsInterface* storeFrontUsersStatisticsInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

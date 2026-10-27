@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -55,26 +61,26 @@ class RaceTrackAdjacentDropLayerFactory
             : public Object
          {
 
-    private: static RaceTrackAdjacentDropLayerFactory DROP_LAYER_FACTORY = RaceTrackAdjacentDropLayerFactory();
+    private: static RaceTrackAdjacentDropLayerFactory* DROP_LAYER_FACTORY() { static std::unique_ptr<RaceTrackAdjacentDropLayerFactory> value(new RaceTrackAdjacentDropLayerFactory()); return value.get(); }
 
-    public: static RaceTrackAdjacentDropLayerFactory getInstance(){
+    public: static RaceTrackAdjacentDropLayerFactory* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RaceTrackAdjacentDropLayerFactory::DROP_LAYER_FACTORY;
+                        return RaceTrackAdjacentDropLayerFactory::DROP_LAYER_FACTORY();
     
 }
 
 
-    private: BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: RaceTrackAdjacentDropLayerFactory(){
 }
 
 
     public: void clear(){
-this->list.clear();
+this->list->clear();
     
 }
 
@@ -84,25 +90,25 @@ this->list.clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->list.size();;
+                        return this->list->size();;
     
 }
 
 
-    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
+    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    public: LayerInterfaceFactoryInterface getRandomInstance(){
+    public: LayerInterfaceFactoryInterface* getRandomInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->basicArrayListUtil.getRandom(this->list);
+                        return dynamic_cast<LayerInterfaceFactoryInterface*>(this->basicArrayListUtil->getRandom(this->list));
     
 }
 
 
-    public: void add(LayerInterfaceFactoryInterface layerInterfaceFactoryInterface){
-this->list.add(layerInterfaceFactoryInterface);
+    public: void add(LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface){
+this->list->add(layerInterfaceFactoryInterface);
     
 }
 

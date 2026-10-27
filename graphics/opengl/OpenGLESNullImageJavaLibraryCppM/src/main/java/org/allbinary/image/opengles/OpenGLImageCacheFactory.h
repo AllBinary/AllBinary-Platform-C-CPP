@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGECACHEFACTORY_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGECACHEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/image/ImageCache.h>
@@ -49,9 +55,9 @@ class OpenGLImageCacheFactory
             : public Object
          {
 
-    private: static ImageCache IMAGE_CACHE = ImageCache::NULL_IMAGE_CACHE;
+    private: static inline ImageCache* IMAGE_CACHE = ImageCache::NULL_IMAGE_CACHE;
 
-    public: static ImageCache getInstance();
+    public: static ImageCache* getInstance();
 
     public: static void init();
 

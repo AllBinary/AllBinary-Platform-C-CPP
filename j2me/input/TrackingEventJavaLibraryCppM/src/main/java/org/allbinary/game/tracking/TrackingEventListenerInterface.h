@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENTLISTENERINTERFACE_H
         #define ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENTLISTENERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
@@ -44,13 +50,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TrackingEvent.h"
+        #include "org/allbinary/game/tracking/TrackingEvent.h"
 
 class TrackingEventListenerInterface: public EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    void onMovement(TrackingEvent trackingEvent);
+    public: virtual void onMovement(TrackingEvent* trackingEvent) = 0;
 
 };
 

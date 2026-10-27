@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_ALLBINARYTILEDLAYERFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_ALLBINARYTILEDLAYERFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,20 +70,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryTiledLayer.h"
-#include "AllBinaryJ2METiledLayer.h"
+        #include "org/allbinary/game/layer/AllBinaryTiledLayer.h"
+#include "org/allbinary/game/layer/AllBinaryJ2METiledLayer.h"
 
 class AllBinaryTiledLayerFactory
             : public Object
-        : public AllBinaryTiledLayerFactoryInterface {
+        , public AllBinaryTiledLayerFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryTiledLayer getInstance(RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData);
+    public: AllBinaryTiledLayer* getInstance(RaceTrackInfo* raceTrackInfo, RaceTrackData* raceTrackData);
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryTiledLayer getMiniInstance(RaceTrackData raceTrackData);
+    public: AllBinaryTiledLayer* getMiniInstance(RaceTrackData* raceTrackData);
 
 };
 

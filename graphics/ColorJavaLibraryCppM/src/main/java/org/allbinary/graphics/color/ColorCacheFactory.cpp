@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,13 +64,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ColorCacheableFactory.h"
+        #include "org/allbinary/graphics/color/ColorCacheableFactory.h"
 
 class ColorCacheFactory
             : public Object
          {
 
-    private: static AutomaticCacheInterface cacheInterface = 
+    private: static inline AutomaticCacheInterface* cacheInterface = 
                 null
             ;
 
@@ -72,27 +78,27 @@ class ColorCacheFactory
                 static int32_t init() { 
                     
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
     std::string STATIC_BLOCK = "Static Block";;
     
 
         try {
-            logUtil.putF(commonStrings.START, ColorCacheFactory.constructor, STATIC_BLOCK);
+            logUtil->putF(commonStrings->START, ColorCacheFactory.constructor, STATIC_BLOCK);
     
-ColorCacheFactory::cacheInterface= AutomaticCacheInterfaceFactory::getInstance(ColorCacheableFactory(), CacheTypeFactory::getInstance().CACHE, CachePolicyFactory::getInstance().THIRTY_MINUTES_TEN_THOUSAND_MAX);
+ColorCacheFactory::cacheInterface= AutomaticCacheInterfaceFactory::getInstance(new ColorCacheableFactory(), CacheTypeFactory::getInstance()->CACHE, CachePolicyFactory::getInstance()->THIRTY_MINUTES_TEN_THOUSAND_MAX);
     
-logUtil.putF(commonStrings.END, ColorCacheFactory.constructor, STATIC_BLOCK);
+logUtil->putF(commonStrings->END, ColorCacheFactory.constructor, STATIC_BLOCK);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-logUtil.put(commonStrings.EXCEPTION, ColorCacheFactory.constructor, STATIC_BLOCK, e);
+logUtil->put(commonStrings->EXCEPTION, ColorCacheFactory.constructor, STATIC_BLOCK, &e);
     
 }
 
@@ -101,7 +107,7 @@ logUtil.put(commonStrings.EXCEPTION, ColorCacheFactory.constructor, STATIC_BLOCK
                     return 0;
                 }
             
-    public: static AutomaticCacheInterface getInstance(){
+    public: static AutomaticCacheInterface* getInstance(){
 
 
 

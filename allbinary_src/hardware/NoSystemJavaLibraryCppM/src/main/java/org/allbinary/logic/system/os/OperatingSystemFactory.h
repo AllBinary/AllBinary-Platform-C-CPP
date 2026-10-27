@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMFACTORY_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,25 +60,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NoOperatingSystem.h"
-#include "GenericOperatingSystem.h"
+        #include "org/allbinary/logic/system/os/NoOperatingSystem.h"
+#include "org/allbinary/logic/system/os/GenericOperatingSystem.h"
 
 class OperatingSystemFactory
             : public Object
          {
 
-    private: static OperatingSystemFactory instance() { return OperatingSystemFactory(); }
+    private: static OperatingSystemFactory* instance() { static std::unique_ptr<OperatingSystemFactory> value(new OperatingSystemFactory()); return value.get(); }
 
-    public: static OperatingSystemFactory getInstance();
+    public: static OperatingSystemFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: GenericOperatingSystem genericOperatingSystem = NoOperatingSystem::NO_OPERATING_SYSTEM;
+    private: GenericOperatingSystem* genericOperatingSystem = NoOperatingSystem::NO_OPERATING_SYSTEM;
 
 private: OperatingSystemFactory();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: GenericOperatingSystem getOperatingSystemInstance();
+    public: GenericOperatingSystem* getOperatingSystemInstance();
 
 };
 

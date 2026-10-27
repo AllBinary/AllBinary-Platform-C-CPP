@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Long.h"
@@ -45,21 +51,21 @@ class Time
             : public Object
          {
 
-    private: Long timeLong;
+    private: int64_t timeLong;
 
 public: Time(std::string time){
-this->timeLong= Long(time);
+this->timeLong= int64_t(time);
     
 }
 
 
 public: Time(int64_t time){
-this->timeLong= Long(time);
+this->timeLong= int64_t(time);
     
 }
 
 
-    public: Long getLong(){
+    public: int64_t getLong(){
 
 
 

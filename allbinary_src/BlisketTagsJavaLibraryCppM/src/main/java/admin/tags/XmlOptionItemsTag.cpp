@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <admin/taghelpers/XmlOptionItemsHelperFactory.h>
 
       
@@ -42,14 +48,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TableTag.h"
+        #include "admin/tags/TableTag.h"
 
 class XmlOptionItemsTag: public TableTag {
 
 public: XmlOptionItemsTag(){
-this->setTagHelperFactory(XmlOptionItemsHelperFactory());
+this->setTagHelperFactory(new XmlOptionItemsHelperFactory());
     
-this->setTagRequestHelperFactory(XmlOptionItemsRequestHelperFactory());
+this->setTagRequestHelperFactory(new XmlOptionItemsRequestHelperFactory());
     
 }
 

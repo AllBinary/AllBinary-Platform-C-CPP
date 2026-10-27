@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -76,9 +82,9 @@
         
 class CaptionIndexedAnimation: public IndexedAnimation {
 
-    private: Animation animationInterface;
+    private: Animation* animationInterface;
 
-    private: IndexedAnimation movieIndexedAnimationInterface;
+    private: IndexedAnimation* movieIndexedAnimationInterface;
 
     private: int32_t captionDx;
 
@@ -90,13 +96,13 @@ class CaptionIndexedAnimation: public IndexedAnimation {
 
     private: int32_t time;
 
-    private: AllBinaryEventObject END_EVENT;
+    private: AllBinaryEventObject* END_EVENT;
 
-    private: TimeDelayHelper timeDelayHelper;
+    private: TimeDelayHelper* timeDelayHelper;
 
-    private: Player player;
+    private: Player* player;
 
-public: CaptionIndexedAnimation(Animation animationInterface, IndexedAnimation movieIndexedAnimationInterface, Player player, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy, int32_t time, AnimationBehavior animationBehavior);
+public: CaptionIndexedAnimation(Animation* animationInterface, IndexedAnimation* movieIndexedAnimationInterface, Player* player, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy, int32_t time, AnimationBehavior* animationBehavior);
 
                 //@Throws(Exception.constructor)
             
@@ -116,9 +122,9 @@ public: CaptionIndexedAnimation(Animation animationInterface, IndexedAnimation m
 
     public: std::vector<int32_t> getSequence();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
-    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
+    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z);
 
 };
 

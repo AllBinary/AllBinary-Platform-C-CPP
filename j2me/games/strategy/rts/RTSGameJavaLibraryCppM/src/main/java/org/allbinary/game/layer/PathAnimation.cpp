@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -77,23 +83,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LinePathAnimation.h"
-#include "PathFindingLayerInterface.h"
-#include "AllBinaryGameLayerManager.h"
-#include "WaypointBehaviorBase.h"
-#include "AllBinaryTiledLayer.h"
+        #include "org/allbinary/game/layer/LinePathAnimation.h"
+#include "org/allbinary/game/layer/PathFindingLayerInterface.h"
+#include "org/allbinary/game/layer/AllBinaryGameLayerManager.h"
+#include "org/allbinary/game/layer/WaypointBehaviorBase.h"
+#include "org/allbinary/game/layer/AllBinaryTiledLayer.h"
 
 class PathAnimation: public Animation {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: LinePathAnimation linePathAnimation;
+    private: LinePathAnimation* linePathAnimation;
 
-    private: PathFindingLayerInterface pathFindingLayer;
+    private: PathFindingLayerInterface* pathFindingLayer;
 
-    protected: AllBinaryGameLayerManager allBinaryGameLayerManagerP = AllBinaryGameLayerManager::getNullInstance();
+    protected: AllBinaryGameLayerManager* allBinaryGameLayerManagerP = AllBinaryGameLayerManager::getNullInstance();
 
-public: PathAnimation(PathFindingLayerInterface pathFindingLayer, LinePathAnimation linePathAnimation){
+public: PathAnimation(PathFindingLayerInterface* pathFindingLayer, LinePathAnimation* linePathAnimation){
 this->pathFindingLayer= pathFindingLayer;
     
 this->linePathAnimation= linePathAnimation;
@@ -103,7 +109,7 @@ this->linePathAnimation= linePathAnimation;
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager){
 this->allBinaryGameLayerManagerP= allBinaryGameLayerManager;
     
 }
@@ -115,17 +121,17 @@ this->allBinaryGameLayerManagerP= allBinaryGameLayerManager;
 }
 
 
-    private: const BasicColor startColor = BasicColorFactory::getInstance().RED;
+    private: BasicColor* startColor = BasicColorFactory::getInstance()->RED;
 
-    private: const BasicColor middleColor = BasicColorFactory::getInstance().BLUE;
+    private: BasicColor* middleColor = BasicColorFactory::getInstance()->BLUE;
 
-    private: const BasicColor endColor = BasicColorFactory::getInstance().GREEN;
+    private: BasicColor* endColor = BasicColorFactory::getInstance()->GREEN;
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 
         try {
             
-    WaypointBehaviorBase waypointBehaviorBase = this->pathFindingLayer.getWaypointBehavior();;
+    WaypointBehaviorBase* waypointBehaviorBase = this->pathFindingLayer->getWaypointBehavior();;
     
 
                         if(waypointBehaviorBase != 
@@ -134,35 +140,35 @@ this->allBinaryGameLayerManagerP= allBinaryGameLayerManager;
                         
                                     {
                                     
-    GeographicMapCellHistory geographicMapCellHistory = waypointBehaviorBase.getCurrentGeographicMapCellHistory();;
+    GeographicMapCellHistory* geographicMapCellHistory = waypointBehaviorBase->getCurrentGeographicMapCellHistory();;
     
 
-    BasicArrayList list = geographicMapCellHistory.getTracked();;
+    BasicArrayList* list = geographicMapCellHistory->getTracked();;
     
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
                         if(size > 0)
                         
                                     {
                                     
-    GeographicMapCompositeInterface geographicMapCompositeInterface = this->allBinaryGameLayerManagerP;;
+    GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(this->allBinaryGameLayerManagerP);;
     
 
-    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
+    BasicGeographicMap* geographicMapInterface = geographicMapCompositeInterface->getGeographicMapInterface()[0];;
     
 
-    AllBinaryTiledLayer tiledLayer = geographicMapInterface.getAllBinaryTiledLayer();;
+    AllBinaryTiledLayer* tiledLayer = geographicMapInterface->getAllBinaryTiledLayer();;
     
 
-    GeographicMapCellPosition geographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;;
+    GeographicMapCellPosition* geographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;;
     
 
-    GPoint nextPoint;;
+    GPoint* nextPoint;;
     
 
-    GPoint point;;
+    GPoint* point;;
     
 
     int32_t start = size -2;;
@@ -186,7 +192,7 @@ this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->
                                     }
                                 
                              else 
-                        if(geographicMapCellHistory.isVisited(geographicMapCellPosition))
+                        if(geographicMapCellHistory->isVisited(geographicMapCellPosition))
                         
                                     {
                                     this->setBasicColorP(this->endColor);
@@ -204,15 +210,15 @@ this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->
 
                         }
                             
-geographicMapCellPosition= list.get(index);
+geographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(list->get(index));
     
-point= geographicMapCellPosition.getMidPoint();
+point= geographicMapCellPosition->getMidPoint();
     
-geographicMapCellPosition= list.get(index +1);
+geographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(list->get(index +1));
     
-nextPoint= geographicMapCellPosition.getMidPoint();
+nextPoint= geographicMapCellPosition->getMidPoint();
     
-this->linePathAnimation.paint(graphics, point, nextPoint, tiledLayer);
+this->linePathAnimation->paint(graphics, point, nextPoint, tiledLayer);
     
 }
 
@@ -224,9 +230,9 @@ this->linePathAnimation.paint(graphics, point, nextPoint, tiledLayer);
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.putF("Cleared Target", this, CanvasStrings::getInstance().PAINT);
+this->logUtil->putF("Cleared Target", this, CanvasStrings::getInstance()->PAINT);
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -76,35 +82,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SalvoInterface.h"
+        #include "org/allbinary/game/part/weapon/SalvoInterface.h"
 
 class BasicWeaponPart
             : public Object
-        : public PartInterface, public SalvoInterface {
+        , public PartInterface, public SalvoInterface {
 
-    public: static BasicWeaponPart createBasicWeaponPart(Animation animationInterface){
+    public: static BasicWeaponPart* createBasicWeaponPart(Animation* animationInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicWeaponPart(animationInterface, AllBinaryLayer::NULL_ALLBINARY_LAYER, WeaponProperties::NULL_WEAPON_PROPERTIES, NoScoreable::getInstance(), RelativeRelationship::NULL_RELATIVE_RELATIONSHIP);
+                        return new BasicWeaponPart(animationInterface, AllBinaryLayer::NULL_ALLBINARY_LAYER, WeaponProperties::NULL_WEAPON_PROPERTIES, NoScoreable::getInstance(), RelativeRelationship::NULL_RELATIVE_RELATIONSHIP);
     
 }
 
 
-    public: static const BasicWeaponPart NULL_BASIC_WEAPON_PART = BasicWeaponPart::createBasicWeaponPart(NullAnimationFactory::getFactoryInstance().getInstance(0));
+    public: static inline BasicWeaponPart* NULL_BASIC_WEAPON_PART = BasicWeaponPart::createBasicWeaponPart(NullAnimationFactory::getFactoryInstance()->getInstance(0));
 
-    private: Animation animationInterface = NullAnimationFactory::getFactoryInstance().getInstance(0);
+    private: Animation* animationInterface = NullAnimationFactory::getFactoryInstance()->getInstance(0);
 
-    private: AllBinaryLayer ownerLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer* ownerLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-    private: WeaponProperties weaponProperties = WeaponProperties::NULL_WEAPON_PROPERTIES;
+    private: WeaponProperties* weaponProperties = WeaponProperties::NULL_WEAPON_PROPERTIES;
 
-    private: ScoreableInterface scoreableInterface = NoScoreable::getInstance();
+    private: ScoreableInterface* scoreableInterface = NoScoreable::getInstance();
 
-    protected: RelativeRelationship relativeRelationship = RelativeRelationship::NULL_RELATIVE_RELATIONSHIP;
+    protected: RelativeRelationship* relativeRelationship = RelativeRelationship::NULL_RELATIVE_RELATIONSHIP;
 
-public: BasicWeaponPart(Animation animationInterface, AllBinaryLayer sourceLayerInterface, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface, RelativeRelationship relativeRelationship){
+public: BasicWeaponPart(Animation* animationInterface, AllBinaryLayer* sourceLayerInterface, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship){
 this->init(sourceLayerInterface, weaponProperties, scoreableInterface, relativeRelationship);
     
 this->setAnimationInterface(animationInterface);
@@ -112,7 +118,7 @@ this->setAnimationInterface(animationInterface);
 }
 
 
-    public: void init(AllBinaryLayer sourceLayerInterface, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface, RelativeRelationship relativeRelationship){
+    public: void init(AllBinaryLayer* sourceLayerInterface, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship){
 this->setOwnerLayerInterface(sourceLayerInterface);
     
 this->setWeaponProperties(weaponProperties);
@@ -126,7 +132,7 @@ this->relativeRelationship= relativeRelationship;
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayerManager allbinaryLayerManager, int16_t angle, int16_t otherAngle){
+    public: void process(AllBinaryLayerManager* allbinaryLayerManager, int16_t angle, int16_t otherAngle){
 this->processScore(allbinaryLayerManager, angle, otherAngle, this->getWeaponProperties(), this->scoreableInterface);
     
 }
@@ -134,16 +140,16 @@ this->processScore(allbinaryLayerManager, angle, otherAngle, this->getWeaponProp
 
                 //@Throws(Exception.constructor)
             
-    public: void processScore(AllBinaryLayerManager allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface){
+    public: void processScore(AllBinaryLayerManager* allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface){
 
 
 
-                            throw Exception(CommonStrings::getInstance().NOT_IMPLEMENTED);
+                            throw new Exception(CommonStrings::getInstance()->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: AllBinaryLayer getOwnerLayerInterface(){
+    public: AllBinaryLayer* getOwnerLayerInterface(){
 
 
 
@@ -153,13 +159,13 @@ this->processScore(allbinaryLayerManager, angle, otherAngle, this->getWeaponProp
 }
 
 
-    public: void setOwnerLayerInterface(AllBinaryLayer ownerLayerInterface){
+    public: void setOwnerLayerInterface(AllBinaryLayer* ownerLayerInterface){
 this->ownerLayerInterface= ownerLayerInterface;
     
 }
 
 
-    public: Animation getAnimationInterface(){
+    public: Animation* getAnimationInterface(){
 
 
 
@@ -169,32 +175,32 @@ this->ownerLayerInterface= ownerLayerInterface;
 }
 
 
-    public: void setAnimationInterface(Animation animationInterface){
+    public: void setAnimationInterface(Animation* animationInterface){
 this->animationInterface= animationInterface;
     
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 
-    ViewPositionBase viewPosition = this->getOwnerLayerInterface().getViewPosition();;
+    ViewPositionBase* viewPosition = this->getOwnerLayerInterface()->getViewPosition();;
     
 
-    int32_t viewX = viewPosition.getX();;
+    int32_t viewX = viewPosition->getX();;
     
 
-    int32_t viewY = viewPosition.getY();;
+    int32_t viewY = viewPosition->getY();;
     
-this->animationInterface.paintXY(graphics, viewX, viewY);
+this->animationInterface->paintXY(graphics, viewX, viewY);
     
 }
 
 
-    public: void paintThreed(Graphics graphics){
+    public: void paintThreed(Graphics* graphics){
 }
 
 
-    public: WeaponProperties getWeaponProperties(){
+    public: WeaponProperties* getWeaponProperties(){
 
 
 
@@ -204,7 +210,7 @@ this->animationInterface.paintXY(graphics, viewX, viewY);
 }
 
 
-    public: void setWeaponProperties(WeaponProperties weaponProperties){
+    public: void setWeaponProperties(WeaponProperties* weaponProperties){
 this->weaponProperties= weaponProperties;
     
 }

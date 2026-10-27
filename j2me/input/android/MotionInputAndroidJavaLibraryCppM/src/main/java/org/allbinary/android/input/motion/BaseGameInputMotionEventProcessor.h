@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_BASEGAMEINPUTMOTIONEVENTPROCESSOR_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_BASEGAMEINPUTMOTIONEVENTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <android/view/MotionEvent.h>
 
       
@@ -54,17 +60,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionEventProcessor.h"
+        #include "org/allbinary/android/input/motion/MotionEventProcessor.h"
 
 class BaseGameInputMotionEventProcessor: public MotionEventProcessor {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: GameMotionGestureListener gameMotionGestureListener;
+    private: GameMotionGestureListener* gameMotionGestureListener;
 
 protected: BaseGameInputMotionEventProcessor();
 
-    public: void process(MotionEvent motionEvent);
+    public: void process(MotionEvent* motionEvent);
 
     public: void addListener();
 

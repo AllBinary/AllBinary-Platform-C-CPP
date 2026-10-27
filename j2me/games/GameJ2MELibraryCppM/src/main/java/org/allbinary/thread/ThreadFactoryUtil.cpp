@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Thread.h"
@@ -75,17 +81,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ABRunnable.h"
-#include "PrimaryThreadPool.h"
-#include "ThreadPool.h"
+        #include "org/allbinary/thread/ABRunnable.h"
+#include "org/allbinary/thread/PrimaryThreadPool.h"
+#include "org/allbinary/thread/ThreadPool.h"
 
 class ThreadFactoryUtil
             : public Object
          {
 
-    private: static ThreadFactoryUtil instance() { return ThreadFactoryUtil(); }
+    private: static ThreadFactoryUtil* instance() { static std::unique_ptr<ThreadFactoryUtil> value(new ThreadFactoryUtil()); return value.get(); }
 
-    public: static ThreadFactoryUtil getInstance(){
+    public: static ThreadFactoryUtil* getInstance(){
 
 
 
@@ -95,31 +101,31 @@ class ThreadFactoryUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: Thread getInstanceGameCanvasRunnable(GameCanvasRunnableInterface runnable){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getInstanceType(runnable, runnable.getType());;
-    
-}
-
-
-    public: Thread getInstanceForRunnable(ABRunnable runnable){
+    public: Thread* getInstanceGameCanvasRunnable(GameCanvasRunnableInterface* runnable){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getInstanceType(runnable, runnable.getType());;
+                        return this->getInstanceType(runnable, runnable->getType());;
     
 }
 
 
-    private: Thread getInstanceType(Runnable runnable, int32_t type){
+    public: Thread* getInstanceForRunnable(ABRunnable* runnable){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->getInstanceType(runnable, runnable->getType());;
+    
+}
+
+
+    private: Thread* getInstanceType(Runnable* runnable, int32_t type){
+
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
                         if(J2MEUtil::isHTML())
@@ -130,25 +136,25 @@ class ThreadFactoryUtil
                         
                                     {
                                     
-    RunnableCanvasSingleThreadStartRunnable demoGameSingleThreadStartRunnable = RunnableCanvasSingleThreadStartRunnable(runnable);;
+    RunnableCanvasSingleThreadStartRunnable* demoGameSingleThreadStartRunnable = new RunnableCanvasSingleThreadStartRunnable(dynamic_cast<RunnableCanvas*>(runnable));;
     
-PreLogUtil::put(StringMaker().append("Using Pseudo Thread for DemoCanvas/AllBinaryGameCanvas under PlayN/HTML5: ").append(StringUtil::getInstance().toString(runnable)).toString(), this, commonStrings.CONSTRUCTOR);
+PreLogUtil::put((new StringMaker())->append("Using Pseudo Thread for DemoCanvas/AllBinaryGameCanvas under PlayN/HTML5: ")->append(StringUtil::getInstance()->toString(runnable))->toString(), this, commonStrings->CONSTRUCTOR);
     
 
-    ThreadPool primaryThreadPool = PrimaryThreadPool::getInstance();;
+    ThreadPool* primaryThreadPool = PrimaryThreadPool::getInstance();;
     
-primaryThreadPool.runTask(demoGameSingleThreadStartRunnable);
+primaryThreadPool->runTask(demoGameSingleThreadStartRunnable);
     
 
                                     }
                                 
                         else {
-                            PreLogUtil::put(StringMaker().append("Using Pseudo Thread for Runnable under PlayN/HTML5: ").append(StringUtil::getInstance().toString(runnable)).toString(), this, commonStrings.CONSTRUCTOR);
+                            PreLogUtil::put((new StringMaker())->append("Using Pseudo Thread for Runnable under PlayN/HTML5: ")->append(StringUtil::getInstance()->toString(runnable))->toString(), this, commonStrings->CONSTRUCTOR);
     
 
-    ThreadPool primaryThreadPool = PrimaryThreadPool::getInstance();;
+    ThreadPool* primaryThreadPool = PrimaryThreadPool::getInstance();;
     
-primaryThreadPool.runTask(runnable);
+primaryThreadPool->runTask(runnable);
     
 
                         }
@@ -157,9 +163,9 @@ primaryThreadPool.runTask(runnable);
                                     }
                                 
 
-    Thread thread = Thread(runnable, runnable.toString());;
+    Thread* thread = new Thread(runnable, runnable->toString());;
     
-this->logUtil.putF(thread.toString(), this, commonStrings.CONSTRUCTOR);
+this->logUtil->putF(thread->toString(), this, commonStrings->CONSTRUCTOR);
     
 
 
@@ -170,8 +176,8 @@ this->logUtil.putF(thread.toString(), this, commonStrings.CONSTRUCTOR);
 }
 
 
-    public: void start(Thread thread){
-thread.start();
+    public: void start(Thread* thread){
+thread->start();
     
 }
 

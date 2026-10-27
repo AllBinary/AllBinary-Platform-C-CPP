@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,7 +49,7 @@ class CaptionResources
             : public Object
          {
 
-    public: static const std::string RESOURCE = "/character_message_bubbled_box.png";
+    public: static inline const std::string RESOURCE = "/character_message_bubbled_box.png";
 
 };
 

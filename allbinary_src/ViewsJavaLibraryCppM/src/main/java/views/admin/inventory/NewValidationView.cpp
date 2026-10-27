@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/commerce/inventory/item/BasicItem.h>
@@ -59,23 +65,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InventoryItemView.h"
+        #include "views/admin/inventory/InventoryItemView.h"
 
 class NewValidationView: public InventoryItemView, public ValidationComponentInterface {
 
-public: NewValidationView(TransformInfoInterface transformInfoInterface) : InventoryItemView(transformInfoInterface, StringUtil::getInstance().EMPTY_STRING){
+public: NewValidationView(TransformInfoInterface* transformInfoInterface) : InventoryItemView(transformInfoInterface, StringUtil::getInstance()->EMPTY_STRING){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->itemInterface= BasicItem();
+this->itemInterface= dynamic_cast<ItemInterface*>(new BasicItem());
     
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
@@ -86,7 +92,7 @@ this->itemInterface= BasicItem();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -99,7 +105,7 @@ this->itemInterface= BasicItem();
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -109,7 +115,7 @@ this->itemInterface= BasicItem();
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

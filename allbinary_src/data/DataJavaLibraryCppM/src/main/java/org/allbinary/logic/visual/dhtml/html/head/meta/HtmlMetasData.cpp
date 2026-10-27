@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class HtmlMetasData
             : public Object
          {
 
-    private: static HtmlMetasData instance() { return HtmlMetasData(); }
+    private: static HtmlMetasData* instance() { static std::unique_ptr<HtmlMetasData> value(new HtmlMetasData()); return value.get(); }
 
-    public: static HtmlMetasData getInstance(){
+    public: static HtmlMetasData* getInstance(){
 
 
 

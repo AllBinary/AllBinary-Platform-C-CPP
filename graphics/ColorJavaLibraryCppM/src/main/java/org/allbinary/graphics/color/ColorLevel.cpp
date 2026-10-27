@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,15 +49,15 @@ class ColorLevel
             : public Object
          {
 
-    public: static const int32_t COLOR_MASK = 0x00FFFFFF;
+    public: static inline const int32_t COLOR_MASK = 0x00FFFFFF;
 
-    public: static const int32_t MIN = 0x44;
+    public: static inline const int32_t MIN = 0x44;
 
-    public: static const int32_t AVG = 0x77;
+    public: static inline const int32_t AVG = 0x77;
 
-    public: static const int32_t LIGHT = 0xAA;
+    public: static inline const int32_t LIGHT = 0xAA;
 
-    public: static const int32_t HIGH = 0xEE;
+    public: static inline const int32_t HIGH = 0xEE;
 
 private: ColorLevel(){
 }

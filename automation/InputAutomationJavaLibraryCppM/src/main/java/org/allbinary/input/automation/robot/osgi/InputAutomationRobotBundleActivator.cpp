@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -74,20 +80,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputAutomationRobotUtil.h"
-#include "InputAutomationRobotChangeEvent.h"
+        #include "org/allbinary/input/automation/robot/osgi/InputAutomationRobotUtil.h"
+#include "org/allbinary/input/automation/robot/osgi/InputAutomationRobotChangeEvent.h"
 
 class InputAutomationRobotBundleActivator
             : public Object
-        : public BundleActivator {
+        , public BundleActivator {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: std::vector<InputRobotInterface> inputRobotInterface;
+    private: std::vector<InputRobotInterface*> inputRobotInterface;
 
-    private: ServiceFactory serviceFactory;
+    private: ServiceFactory* serviceFactory;
 
 public: InputAutomationRobotBundleActivator(){
 this->init();
@@ -101,24 +107,24 @@ this->init();
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void registerAsService(BundleContext bundleContext){
-OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), InputAutomationRobotServiceInterface.constructor.toString());
+    public: void registerAsService(BundleContext* bundleContext){
+OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), InputAutomationRobotServiceInterface.constructor.getName());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: InputAutomationRobotChangeListener getInputAutomationRobotChangeListener(BundleContext context){
+    private: InputAutomationRobotChangeListener* getInputAutomationRobotChangeListener(BundleContext* context){
 
-    ServiceReference serviceReference = context.getServiceReference(InputAutomationRobotChangeListener.constructor.toString());;
+    ServiceReference* serviceReference = context->getServiceReference(InputAutomationRobotChangeListener.constructor.getName());;
     
 
                         if(serviceReference != 
@@ -127,14 +133,14 @@ OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), InputAu
                         
                                     {
                                     
-    InputAutomationRobotChangeListener inputAutomationRobotChangeListener = context.getService(serviceReference);;
+    InputAutomationRobotChangeListener* inputAutomationRobotChangeListener = dynamic_cast<InputAutomationRobotChangeListener*>(context->getService(serviceReference));;
     
 
                         if(inputAutomationRobotChangeListener == 
                                     nullptr
                                 )
                         
-                                    throw Exception("No Service For ServiceReference");
+                                    throw new Exception("No Service For ServiceReference");
                                 
 
 
@@ -146,7 +152,7 @@ OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), InputAu
                                     }
                                 
                         else {
-                            this->logUtil.putF("No ServiceReference: " +InputAutomationRobotChangeListener.constructor.toString(), this, "getInputAutomationRobotChangeListener");
+                            this->logUtil->putF("No ServiceReference: " +InputAutomationRobotChangeListener.constructor.getName(), this, "getInputAutomationRobotChangeListener");
     
 
 
@@ -160,13 +166,13 @@ OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), InputAu
 }
 
 
-    private: void addRobots(BundleContext context){
+    private: void addRobots(BundleContext* context){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, "addRobots");
+            this->logUtil->putF(this->commonStrings->START, this, "addRobots");
     
 
-    InputAutomationRobotChangeListener inputAutomationRobotChangeListener = this->getInputAutomationRobotChangeListener(context);;
+    InputAutomationRobotChangeListener* inputAutomationRobotChangeListener = this->getInputAutomationRobotChangeListener(context);;
     
 
                         if(inputAutomationRobotChangeListener != 
@@ -182,9 +188,9 @@ OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), InputAu
     int32_t index = 0;index < this->getInputRobotInterface().length; index++)
         {
 
-    InputAutomationRobotChangeEvent inputAutomationRobotChangeEvent = InputAutomationRobotUtil::getChangeEvent(this->getInputRobotInterface()[index]);;
+    InputAutomationRobotChangeEvent* inputAutomationRobotChangeEvent = InputAutomationRobotUtil::getChangeEvent(this->getInputRobotInterface()[index]);;
     
-inputAutomationRobotChangeListener.onAdd(inputAutomationRobotChangeEvent);
+inputAutomationRobotChangeListener->onAdd(inputAutomationRobotChangeEvent);
     
 }
 
@@ -193,22 +199,22 @@ inputAutomationRobotChangeListener.onAdd(inputAutomationRobotChangeEvent);
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.putF(this->commonStrings.EXCEPTION, this, "addModules");
+this->logUtil->putF(this->commonStrings->EXCEPTION, this, "addModules");
     
 }
 
 }
 
 
-    private: void removeRobots(BundleContext context){
+    private: void removeRobots(BundleContext* context){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, "removeRobots");
+            this->logUtil->putF(this->commonStrings->START, this, "removeRobots");
     
 
-    InputAutomationRobotChangeListener inputAutomationRobotChangeListener = this->getInputAutomationRobotChangeListener(context);;
+    InputAutomationRobotChangeListener* inputAutomationRobotChangeListener = this->getInputAutomationRobotChangeListener(context);;
     
 
                         if(inputAutomationRobotChangeListener != 
@@ -224,9 +230,9 @@ this->logUtil.putF(this->commonStrings.EXCEPTION, this, "addModules");
     int32_t index = 0;index < this->getInputRobotInterface().length; index++)
         {
 
-    InputAutomationRobotChangeEvent inputAutomationRobotChangeEvent = InputAutomationRobotUtil::getChangeEvent(this->getInputRobotInterface()[index]);;
+    InputAutomationRobotChangeEvent* inputAutomationRobotChangeEvent = InputAutomationRobotUtil::getChangeEvent(this->getInputRobotInterface()[index]);;
     
-inputAutomationRobotChangeListener.onRemove(inputAutomationRobotChangeEvent);
+inputAutomationRobotChangeListener->onRemove(inputAutomationRobotChangeEvent);
     
 }
 
@@ -235,9 +241,9 @@ inputAutomationRobotChangeListener.onRemove(inputAutomationRobotChangeEvent);
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.putF(this->commonStrings.EXCEPTION, this, "removeRobots");
+this->logUtil->putF(this->commonStrings->EXCEPTION, this, "removeRobots");
     
 }
 
@@ -246,8 +252,8 @@ this->logUtil.putF(this->commonStrings.EXCEPTION, this, "removeRobots");
 
                 //@Throws(Exception.constructor)
             
-    public: void start(BundleContext context){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.START);
+    public: void start(BundleContext* context){
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->START);
     
 this->addRobots(context);
     
@@ -258,8 +264,8 @@ this->registerAsService(context);
 
                 //@Throws(Exception.constructor)
             
-    public: void stop(BundleContext context){
-this->logUtil.putF("Stop", this, this->commonStrings.START);
+    public: void stop(BundleContext* context){
+this->logUtil->putF("Stop", this, this->commonStrings->START);
     
 this->removeRobots(context);
     
@@ -276,13 +282,13 @@ this->removeRobots(context);
 }
 
 
-    protected: void setServiceFactory(ServiceFactory serviceObject){
+    protected: void setServiceFactory(ServiceFactory* serviceObject){
 this->serviceFactory= serviceObject;
     
 }
 
 
-    public: std::vector<InputRobotInterface> getInputRobotInterface(){
+    public: std::vector<InputRobotInterface*> getInputRobotInterface(){
 
 
 
@@ -292,7 +298,7 @@ this->serviceFactory= serviceObject;
 }
 
 
-    public: void setInputRobotInterface(std::vector<InputRobotInterface> inputRobotInterface){
+    public: void setInputRobotInterface(std::vector<InputRobotInterface*> inputRobotInterface){
 this->inputRobotInterface= inputRobotInterface;
     
 }

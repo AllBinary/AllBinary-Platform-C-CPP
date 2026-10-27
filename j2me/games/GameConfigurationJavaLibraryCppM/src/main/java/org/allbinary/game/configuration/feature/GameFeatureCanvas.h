@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATURECANVAS_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATURECANVAS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -50,7 +56,7 @@ class GameFeatureCanvas: public Canvas {
 
 public: GameFeatureCanvas();
 
-    protected: void paint(Graphics graphics);
+    protected: void paint(Graphics* graphics);
 
 };
 

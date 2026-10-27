@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFACTORY_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
@@ -47,19 +53,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Log.h"
+        #include "org/allbinary/logic/communication/log/Log.h"
 //ActualPlatform
 /*actual*/ class LogFactory
             : public Object
          {
 
-    /*actual*/ public: static Log getInstanceD();
+    /*actual*/ public: static Log* getInstanceD();
 
-    /*actual*/ public: static Log getInstanceNoF(std::string specialMessage, Object* anyType, Object* exception);
+    /*actual*/ public: static Log* getInstanceNoF(std::string specialMessage, Object* anyType, Object* exception);
 
-    /*actual*/ public: static Log getInstance(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
+    /*actual*/ public: static Log* getInstance(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
 
-    /*actual*/ public: static Log getInstanceF(std::string specialMessage, Object* anyType, std::string functionName);
+    /*actual*/ public: static Log* getInstanceF(std::string specialMessage, Object* anyType, std::string functionName);
 
 };
 

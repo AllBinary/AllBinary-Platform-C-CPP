@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/context/configuration/ContextConfigurationInterface.h>
@@ -53,15 +59,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicEmailInfo.h"
+        #include "org/allbinary/logic/communication/smtp/info/BasicEmailInfo.h"
 
 class StoreEmailInfo: public BasicEmailInfo {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: StoreFrontInterface storeFrontInterface;
+    private: StoreFrontInterface* storeFrontInterface;
 
-public: StoreEmailInfo(StoreFrontInterface storeFrontInterface, std::string subject, std::string textBody) : BasicEmailInfo(subject, textBody){
+public: StoreEmailInfo(StoreFrontInterface* storeFrontInterface, std::string subject, std::string textBody) : BasicEmailInfo(subject, textBody){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -69,13 +75,13 @@ public: StoreEmailInfo(StoreFrontInterface storeFrontInterface, std::string subj
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF(commonStrings.START, this, commonStrings.CONSTRUCTOR);
+this->logUtil->putF(commonStrings->START, this, commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -91,10 +97,10 @@ this->init();
             
     protected: void init(){
 
-    ContextConfigurationInterface contextConfigurationInterface = this->storeFrontInterface.getContextConfigurationInterface();;
+    ContextConfigurationInterface* contextConfigurationInterface = this->storeFrontInterface->getContextConfigurationInterface();;
     
 
-    EmailServerConfigurationInterface emailServerConfigurationInterface = contextConfigurationInterface.getEmailServerConfigurationInterface();;
+    EmailServerConfigurationInterface* emailServerConfigurationInterface = contextConfigurationInterface->getEmailServerConfigurationInterface();;
     
 this->setEmailServerConfigurationInterface(emailServerConfigurationInterface);
     

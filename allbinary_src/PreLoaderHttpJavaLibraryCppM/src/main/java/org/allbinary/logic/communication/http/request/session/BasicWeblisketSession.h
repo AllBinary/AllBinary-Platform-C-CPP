@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_BASICWEBLISKETSESSION_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_BASICWEBLISKETSESSION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -70,21 +76,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WeblisketSessionData.h"
+        #include "org/allbinary/logic/communication/http/request/session/WeblisketSessionData.h"
 
 class BasicWeblisketSession
             : public Object
          {
 
-    private: HttpSession session;
+    private: HttpSession* session;
 
-    private: PageContext pageContext;
+    private: PageContext* pageContext;
 
-public: BasicWeblisketSession(PageContext pageContext);
+public: BasicWeblisketSession(PageContext* pageContext);
 
-    public: void setRole(BasicUserRole aRole);
+    public: void setRole(BasicUserRole* aRole);
 
-    public: BasicUserRole getRole();
+    public: BasicUserRole* getRole();
 
     public: void setPassword(std::string password);
 
@@ -94,7 +100,7 @@ public: BasicWeblisketSession(PageContext pageContext);
 
     public: void setAuthenticated();
 
-    public: void setAttempts(Integer value);
+    public: void setAttempts(int32_t value);
 
     public: void setTimeout(std::string value);
 
@@ -110,7 +116,7 @@ public: BasicWeblisketSession(PageContext pageContext);
 
     public: std::string getAuthentication();
 
-    public: Integer getAttempts();
+    public: int32_t getAttempts();
 
     public: std::string getTimeout();
 

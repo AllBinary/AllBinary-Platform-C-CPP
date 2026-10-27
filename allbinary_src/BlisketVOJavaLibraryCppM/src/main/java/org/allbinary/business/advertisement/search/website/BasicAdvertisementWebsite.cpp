@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,11 +44,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdvertisementWebsiteInterface.h"
+        #include "org/allbinary/business/advertisement/search/website/AdvertisementWebsiteInterface.h"
 
 class BasicAdvertisementWebsite
             : public Object
-        : public AdvertisementWebsiteInterface {
+        , public AdvertisementWebsiteInterface {
 
     private: std::string websiteId;
 

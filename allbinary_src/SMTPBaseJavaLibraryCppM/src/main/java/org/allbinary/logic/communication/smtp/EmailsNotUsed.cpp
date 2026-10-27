@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,44 +73,44 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "EmailData.h"
-#include "Email.h"
+        #include "org/allbinary/logic/communication/smtp/EmailData.h"
+#include "org/allbinary/logic/communication/smtp/Email.h"
 
 class EmailsNotUsed
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: BasicArrayList emailInfoVector;
+    protected: BasicArrayList* emailInfoVector;
 
 public: EmailsNotUsed(){
-this->emailInfoVector= BasicArrayListD();
+this->emailInfoVector= new BasicArrayListD();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PAYMENT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PAYMENT))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, "toXmlNode");
+                                    this->logUtil->putF(this->commonStrings->START, this, "toXmlNode");
     
 
                                     }
                                 
 
-    Node node = document.createElement(EmailData::NAME);;
+    Node* node = document->createElement(EmailData::NAME);;
     
 
-    int32_t size = this->emailInfoVector.size();;
+    int32_t size = this->emailInfoVector->size();;
     
 
 
@@ -114,10 +120,10 @@ this->emailInfoVector= BasicArrayListD();
     int32_t index = 0;index < size; index++)
         {
 
-    Email email = this->emailInfoVector.get(index);;
+    Email* email = dynamic_cast<Email*>(this->emailInfoVector->get(index));;
     
 
-    Node emailNode = email.toXmlNode(document);;
+    Node* emailNode = email->toXmlNode(document);;
     
 
                         if(emailNode != 
@@ -125,7 +131,7 @@ this->emailInfoVector= BasicArrayListD();
                                 )
                         
                                     {
-                                    node.appendChild(emailNode);
+                                    node->appendChild(emailNode);
     
 
                                     }
@@ -133,10 +139,10 @@ this->emailInfoVector= BasicArrayListD();
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PAYMENT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PAYMENT))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.END, this, "toXmlNode()");
+                                    this->logUtil->putF(this->commonStrings->END, this, "toXmlNode()");
     
 
                                     }
@@ -149,13 +155,13 @@ this->emailInfoVector= BasicArrayListD();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "toXmlNode()", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "toXmlNode()", &e);
     
 
                                     }

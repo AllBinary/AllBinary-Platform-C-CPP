@@ -21,6 +21,12 @@
         #ifndef VIEWS_BUSINESS_CONTEXT_HTTPCONTEXTVIEW_H
         #define VIEWS_BUSINESS_CONTEXT_HTTPCONTEXTVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
@@ -65,11 +71,11 @@
         
 class HttpContextView: public HttpComponentView {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-public: HttpContextView(TransformInfoInterface transformInfoInterface);
+public: HttpContextView(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             

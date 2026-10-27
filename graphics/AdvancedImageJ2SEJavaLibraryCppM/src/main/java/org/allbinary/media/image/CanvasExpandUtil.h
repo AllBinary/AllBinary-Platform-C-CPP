@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,25 +60,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageUtil.h"
-#include "ImageProcessorInput.h"
-#include "ImageProcessedVisitor.h"
+        #include "org/allbinary/media/image/ImageUtil.h"
+#include "org/allbinary/media/image/ImageProcessorInput.h"
+#include "org/allbinary/media/image/ImageProcessedVisitor.h"
 
 class CanvasExpandUtil
             : public Object
          {
 
-    private: static CanvasExpandUtil instance() { return CanvasExpandUtil(); }
+    private: static CanvasExpandUtil* instance() { static std::unique_ptr<CanvasExpandUtil> value(new CanvasExpandUtil()); return value.get(); }
 
-    public: static CanvasExpandUtil getInstance();
+    public: static CanvasExpandUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const StringUtil stringUtil = StringUtil::getInstance();
+    private: StringUtil* stringUtil = StringUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void process(ImageProcessorInput imageProcessorInput, int32_t increaseX, int32_t increaseY, ImageProcessedVisitor visitor);
+    public: void process(ImageProcessorInput* imageProcessorInput, int32_t increaseX, int32_t increaseY, ImageProcessedVisitor* visitor);
 
 };
 

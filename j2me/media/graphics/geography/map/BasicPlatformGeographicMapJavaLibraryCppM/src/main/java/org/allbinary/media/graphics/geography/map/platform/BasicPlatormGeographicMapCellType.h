@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -62,13 +68,13 @@ class BasicPlatormGeographicMapCellType
             : public Object
          {
 
-    public: static BasicPlatormGeographicMapCellType createType(int32_t type);
+    public: static BasicPlatormGeographicMapCellType* createType(int32_t type);
 
     private: std::vector<int32_t> types;
 
-public: BasicPlatormGeographicMapCellType(BasicArrayList types);
+public: BasicPlatormGeographicMapCellType(BasicArrayList* types);
 
-    public: bool isType(GeographicMapCellType type);
+    public: bool isType(GeographicMapCellType* type);
 
     public: bool hasType(int32_t type);
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_GRAPHICSANALYSISUTIL_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_GRAPHICSANALYSISUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,17 +66,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Color.h"
+        #include "org/allbinary/input/automation/module/game/Color.h"
 
 class GraphicsAnalysisUtil
             : public Object
          {
 
-    private: static const int32_t MAX = 122;
+    private: static inline const int32_t MAX = 122;
 
                 //@Throws(Exception.constructor)
             
-    public: static double getNominator(BufferedImage bufferedImage, Integer min_x, Integer max_x, Integer y);
+    public: static double getNominator(BufferedImage* bufferedImage, int32_t min_x, int32_t max_x, int32_t y);
 
 private: GraphicsAnalysisUtil();
 

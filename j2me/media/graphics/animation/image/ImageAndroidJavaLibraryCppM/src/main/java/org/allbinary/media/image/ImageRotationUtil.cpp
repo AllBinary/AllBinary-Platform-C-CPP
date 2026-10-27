@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,15 +64,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageCreationUtil.h"
+        #include "org/allbinary/media/image/ImageCreationUtil.h"
 
 class ImageRotationUtil
             : public Object
          {
 
-    private: static ImageRotationUtil instance() { return ImageRotationUtil(); }
+    private: static ImageRotationUtil* instance() { static std::unique_ptr<ImageRotationUtil> value(new ImageRotationUtil()); return value.get(); }
 
-    public: static ImageRotationUtil getInstance(){
+    public: static ImageRotationUtil* getInstance(){
 
 
 
@@ -76,7 +82,7 @@ class ImageRotationUtil
 }
 
 
-    private: const Matrix matrix = Matrix();
+    private: Matrix* matrix = new Matrix();
 
 private: ImageRotationUtil(){
 }
@@ -86,31 +92,31 @@ private: ImageRotationUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image createRotatedImage(Image originalImage, int32_t rotationInDegrees){
+    public: Image* createRotatedImage(Image* originalImage, int32_t rotationInDegrees){
 
-    Image image = ImageCreationUtil::getInstance().createImageWH(originalImage.getWidth(), originalImage.getHeight());;
+    Image* image = ImageCreationUtil::getInstance()->createImageWH(originalImage->getWidth(), originalImage->getHeight());;
     
 
-                        if(image.isMutable())
+                        if(image->isMutable())
                         
                                     {
                                     
-    Bitmap bitmap = (image).getBitmap();;
+    Bitmap* bitmap = (image)).getBitmap();;
     
 
-    int32_t width = bitmap.getWidth();;
+    int32_t width = bitmap->getWidth();;
     
 
-    int32_t height = bitmap.getHeight();;
+    int32_t height = bitmap->getHeight();;
     
-this->matrix.setRotate(rotationInDegrees, (width>>1), (height>>1));
+this->matrix->setRotate(rotationInDegrees, (width>>1), (height>>1));
     
 
-    Canvas canvas = (image).getCanvas();;
+    Canvas* canvas = (image)).getCanvas();;
     
-canvas.concat(this->matrix);
+canvas->concat(this->matrix);
     
-image.getGraphics().drawImage(originalImage, 0, 0, this->anchor);
+image->getGraphics()->drawImage(originalImage, 0, 0, this->anchor);
     
 
 
@@ -125,7 +131,7 @@ image.getGraphics().drawImage(originalImage, 0, 0, this->anchor);
                             
 
 
-                            throw Exception("Not Mutable");
+                            throw new Exception("Not Mutable");
                     
 
                         }

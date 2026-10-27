@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_TOOLFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_TOOLFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,22 +58,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GraphicsItemInterfaceFactoryInterface.h"
-#include "GraphicItemFactory.h"
+        #include "org/allbinary/graphics/j2me/workarea/tools/GraphicsItemInterfaceFactoryInterface.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemFactory.h"
 
 class ToolFactory
             : public Object
          {
 
-    private: static ToolFactory instance() { return ToolFactory(); }
+    private: static ToolFactory* instance() { static std::unique_ptr<ToolFactory> value(new ToolFactory()); return value.get(); }
 
-    public: static ToolFactory getInstance();
+    public: static ToolFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: GraphicsItemInterfaceFactoryInterface selectedTool = 
+    private: GraphicsItemInterfaceFactoryInterface* selectedTool = 
                 nullptr
             ;
 
@@ -79,7 +85,7 @@ class ToolFactory
 
     public: void setSelectedTool(std::string tool);
 
-    public: GraphicsItemInterfaceFactoryInterface getSelectedToolFactory();
+    public: GraphicsItemInterfaceFactoryInterface* getSelectedToolFactory();
 
 };
 

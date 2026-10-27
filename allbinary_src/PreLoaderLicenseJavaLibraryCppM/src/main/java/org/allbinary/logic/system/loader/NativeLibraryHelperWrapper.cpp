@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -57,7 +63,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NativeLibraryClassLoader.h"
+        #include "org/allbinary/logic/system/loader/NativeLibraryClassLoader.h"
 
 class NativeLibraryHelperWrapper
             : public Object
@@ -65,7 +71,7 @@ class NativeLibraryHelperWrapper
 
     private: std::string libraryName;
 
-    private: ClassLoader loader;
+    private: ClassLoader* loader;
 
     private: Object* anyType;
 
@@ -84,28 +90,28 @@ this->setLibraryName(libraryName);
 params[0]= this->getLibraryName();
     
 
-    std::vector<Class*> classes = std::vector<Class>(1);;
+    std::vector<Class*> classes = std::vector<Class*>(1);;
     
 classes[0]= this->getLibraryName().getClass();
     
-this->loader= NativeLibraryClassLoader(this->constructor.namegetClassLoader());
+this->loader= new NativeLibraryClassLoader(this->getClass()getClassLoader());
     
 
-    Class* myClass = this->loader.loadClass("dynamic.NativeLibraryHelper");;
+    Class* myClass = this->loader->loadClass("dynamic.NativeLibraryHelper");;
     
 
-    Constructor constructor = myClass.getConstructor(classes);;
+    Constructor* constructor = myClass->getConstructor(classes);;
     
-this->anyType= constructor.newInstance(params);
-    
-
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+this->anyType= constructor->newInstance(params);
     
 
-    Method method = this->anyType->constructor.name.getMethod(commonStrings.LOAD, 
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
+    
+
+    Method* method = this->anyType->getClass()->getMethod(commonStrings->LOAD, 
                             nullptr);;
     
-method.invoke(this->anyType, 
+method->invoke(this->anyType, 
                             nullptr);
     
 }

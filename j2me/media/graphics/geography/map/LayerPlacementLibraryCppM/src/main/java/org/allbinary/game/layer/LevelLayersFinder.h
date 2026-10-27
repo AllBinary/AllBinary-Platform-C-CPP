@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_LEVELLAYERSFINDER_H
         #define ORG_ALLBINARY_GAME_LAYER_LEVELLAYERSFINDER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -69,13 +75,13 @@ class LevelLayersFinder
             : public Object
          {
 
-    private: static LevelLayersFinder instance() { return LevelLayersFinder(); }
+    private: static LevelLayersFinder* instance() { static std::unique_ptr<LevelLayersFinder> value(new LevelLayersFinder()); return value.get(); }
 
-    public: static LevelLayersFinder getInstance();
+    public: static LevelLayersFinder* getInstance();
 
-    private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
+    private: EnumerationUtil* enumerationUtil = EnumerationUtil::getInstance();
 
-    public: BasicArrayList get(ABHashtable<Object*, Object*> hashtable);
+    public: BasicArrayList* get(ABHashtable<Object*, Object*>* hashtable);
 
 };
 

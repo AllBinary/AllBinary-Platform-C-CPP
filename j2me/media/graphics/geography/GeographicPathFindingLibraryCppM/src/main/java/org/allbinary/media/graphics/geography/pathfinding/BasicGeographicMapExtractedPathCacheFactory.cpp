@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/util/cache/BaseBasicArrayListCache.h>
 
       
@@ -34,9 +40,9 @@
         
 class BasicGeographicMapExtractedPathCacheFactory: public BaseBasicArrayListCache {
 
-    private: static BasicGeographicMapExtractedPathCacheFactory instance() { return BasicGeographicMapExtractedPathCacheFactory(); }
+    private: static BasicGeographicMapExtractedPathCacheFactory* instance() { static std::unique_ptr<BasicGeographicMapExtractedPathCacheFactory> value(new BasicGeographicMapExtractedPathCacheFactory()); return value.get(); }
 
-    public: static BasicGeographicMapExtractedPathCacheFactory getInstance(){
+    public: static BasicGeographicMapExtractedPathCacheFactory* getInstance(){
 
 
 
@@ -66,7 +72,7 @@ private: BasicGeographicMapExtractedPathCacheFactory(){
                         for (
     int32_t index = maxConcurrentPaths;index >= this->maxConcurrentPaths; index--)
         {
-this->list.add(BasicArrayListS(maxPaths));
+this->list.add(new BasicArrayListS(maxPaths));
     
 }
 
@@ -80,7 +86,7 @@ this->maxPaths= maxPaths;
 }
 
 
-    public: BasicArrayList getPath(){
+    public: BasicArrayList* getPath(){
 
                         if(this->list.size() > 0)
                         
@@ -89,7 +95,7 @@ this->maxPaths= maxPaths;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->list.removeAt(0);
+                        return dynamic_cast<BasicArrayList*>(this->list.removeAt(0));
     
 
                                     }
@@ -99,7 +105,7 @@ this->maxPaths= maxPaths;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicArrayListS(this->maxPaths);
+                        return new BasicArrayListS(this->maxPaths);
     
 
                         }
@@ -107,8 +113,8 @@ this->maxPaths= maxPaths;
 }
 
 
-    public: void release(BasicArrayList list){
-list.clear();
+    public: void release(BasicArrayList* list){
+list->clear();
     
 this->list.add(list);
     

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_PCI_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_PCI_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>
@@ -50,13 +56,13 @@
         
 class PCI
             : public Object
-        : public HardwareComponentInterface, public VideoInterface {
+        , public HardwareComponentInterface, public VideoInterface {
 
     private: std::string data;
 
 public: PCI(std::string data);
 
-    public: bool compareTo(HardwareComponentInterface componentInterface);
+    public: bool compareTo(HardwareComponentInterface* componentInterface);
 
     public: std::string toString();
 

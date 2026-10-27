@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_FONT_FONTFAMILYVIEW_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_FONT_FONTFAMILYVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/visual/dhtml/style/css/property/CssPropertyView.h>
@@ -47,13 +53,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "FontFamilyData.h"
+        #include "org/allbinary/logic/visual/dhtml/style/css/property/font/FontFamilyData.h"
 
 class FontFamilyView: public CssPropertyView {
 
 public: FontFamilyView();
 
-public: FontFamilyView(Node node);
+public: FontFamilyView(Node* node);
 
 };
 

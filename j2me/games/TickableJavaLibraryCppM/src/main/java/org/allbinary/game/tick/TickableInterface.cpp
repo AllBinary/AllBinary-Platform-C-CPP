@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/AllBinaryLayerManager.h>
@@ -49,7 +55,7 @@ class TickableInterface: public NamedInterface {
 
                 //@Throws(Exception.constructor)
             
-    void processTick(AllBinaryLayerManager allBinaryLayerManager)
+    public: virtual void processTick(AllBinaryLayerManager* allBinaryLayerManager) = 0;
 
 };
 

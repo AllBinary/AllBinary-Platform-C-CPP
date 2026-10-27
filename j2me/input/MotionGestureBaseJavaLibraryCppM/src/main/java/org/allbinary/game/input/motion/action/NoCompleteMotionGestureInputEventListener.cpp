@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/input/CompleteMotionGestureInputEvent.h>
 
       
@@ -54,9 +60,9 @@
         
 class NoCompleteMotionGestureInputEventListener: public CompleteMotionGestureInputEventListener {
 
-    private: static NoCompleteMotionGestureInputEventListener instance() { return NoCompleteMotionGestureInputEventListener(); }
+    private: static NoCompleteMotionGestureInputEventListener* instance() { static std::unique_ptr<NoCompleteMotionGestureInputEventListener> value(new NoCompleteMotionGestureInputEventListener()); return value.get(); }
 
-    public: static NoCompleteMotionGestureInputEventListener getInstance(){
+    public: static NoCompleteMotionGestureInputEventListener* getInstance(){
 
 
 
@@ -70,13 +76,13 @@ private: NoCompleteMotionGestureInputEventListener(){
 }
 
 
-    public: void onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject* eventObject){
+ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public: void onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent completeMotionGestureInputEvent){
+    public: void onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent* completeMotionGestureInputEvent){
 }
 
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_REPAIRTECHNOLOGY_H
         #define ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_REPAIRTECHNOLOGY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/layer/RTSInterface.h>
@@ -44,11 +50,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UnitTechnologySingletonFactory.h"
+        #include "org/allbinary/game/rts/technology/UnitTechnologySingletonFactory.h"
 
 class RepairTechnology
             : public Object
-        : public RTSInterface {
+        , public RTSInterface {
 
     private: int32_t level= 0;
 

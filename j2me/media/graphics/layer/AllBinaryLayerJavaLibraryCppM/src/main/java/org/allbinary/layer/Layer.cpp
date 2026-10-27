@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/IllegalArgumentException.h"
@@ -65,9 +71,9 @@ class Layer
             : public Object
          {
 
-    public: static const Integer ID = SmallIntegerSingletonFactory::getInstance().getAt(0);
+    public: static inline int32_t ID = SmallIntegerSingletonFactory::getInstance()->getAt(0);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     protected: int32_t x= 0;
 
@@ -193,14 +199,14 @@ this->visible= visible;
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-    CanvasStrings canvasStrings = CanvasStrings::getInstance();;
+    CanvasStrings* canvasStrings = CanvasStrings::getInstance();;
     
-this->logUtil.putF(commonStrings.NOT_IMPLEMENTED, this, canvasStrings.PAINT);
+this->logUtil->putF(commonStrings->NOT_IMPLEMENTED, this, canvasStrings->PAINT);
     
 }
 
@@ -213,7 +219,7 @@ this->logUtil.putF(commonStrings.NOT_IMPLEMENTED, this, canvasStrings.PAINT);
                                     
 
 
-                            throw IllegalArgumentException();
+                            throw new IllegalArgumentException();
                     
 
                                     }
@@ -231,7 +237,7 @@ this->width= width;
                                     
 
 
-                            throw IllegalArgumentException();
+                            throw new IllegalArgumentException();
                     
 
                                     }
@@ -241,7 +247,7 @@ this->height= height;
 }
 
 
-    public: void toStringAppend(StringMaker stringBuffer){
+    public: void toStringAppend(StringMaker* stringBuffer){
 }
 
 

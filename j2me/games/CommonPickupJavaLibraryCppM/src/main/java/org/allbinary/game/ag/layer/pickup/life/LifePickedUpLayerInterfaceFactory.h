@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFEPICKEDUPLAYERINTERFACEFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFEPICKEDUPLAYERINTERFACEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h>
@@ -65,21 +71,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LifeLayerCircularStaticPool.h"
-#include "LifeLayerFactory.h"
-#include "LifeResources.h"
+        #include "org/allbinary/game/ag/layer/pickup/life/LifeLayerCircularStaticPool.h"
+#include "org/allbinary/game/ag/layer/pickup/life/LifeLayerFactory.h"
+#include "org/allbinary/game/ag/layer/pickup/life/LifeResources.h"
 
 class LifePickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory, public PickupProcessorInterface {
 
-    private: static PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
+    private: static inline PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
 
                 //@Throws(Exception.constructor)
             
     public: static void init();
 
-    public: static PickedUpLayerInterfaceFactoryInterface getInstance();
+    public: static PickedUpLayerInterfaceFactoryInterface* getInstance();
 
-    private: LifeLayerCircularStaticPool pool = LifeLayerCircularStaticPool(LifeLayerFactory(), 1);
+    private: LifeLayerCircularStaticPool* pool = new LifeLayerCircularStaticPool(new LifeLayerFactory(), 1);
 
 private: LifePickedUpLayerInterfaceFactory();
 
@@ -87,7 +93,7 @@ private: LifePickedUpLayerInterfaceFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayer sourceLayerInterface);
+    public: void process(AllBinaryLayer* sourceLayerInterface);
 
 };
 

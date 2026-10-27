@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_ALWAYSACTIONSCRIPTCONDITION_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_ALWAYSACTIONSCRIPTCONDITION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -70,22 +76,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicProfileActionScriptCondition.h"
-#include "AlwaysActionScriptConditionInterface.h"
-#include "AlwaysActionScriptConditionJPanel.h"
-#include "AlwaysActionScriptConditionData.h"
+        #include "org/allbinary/input/automation/actions/script/condition/BasicProfileActionScriptCondition.h"
+#include "org/allbinary/input/automation/actions/script/condition/AlwaysActionScriptConditionInterface.h"
+#include "org/allbinary/input/automation/actions/script/condition/AlwaysActionScriptConditionJPanel.h"
+#include "org/allbinary/input/automation/actions/script/condition/AlwaysActionScriptConditionData.h"
 
 class AlwaysActionScriptCondition: public BasicProfileActionScriptCondition, public AlwaysActionScriptConditionInterface {
 
-    private: static const std::string NAME = "Always On/Off";
+    private: static inline const std::string NAME = "Always On/Off";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: AlwaysActionScriptConditionJPanel alwaysActionScriptConditionJPanel;
+    private: AlwaysActionScriptConditionJPanel* alwaysActionScriptConditionJPanel;
 
     private: bool isOn= false;
 
-public: AlwaysActionScriptCondition(Node node);
+public: AlwaysActionScriptCondition(Node* node);
 
 public: AlwaysActionScriptCondition();
 
@@ -97,15 +103,15 @@ public: AlwaysActionScriptCondition();
 
     public: void showDialog();
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
                 //@Throws(Exception.constructor)
             
-    public: bool shouldProcess(Long frame);
+    public: bool shouldProcess(int64_t frame);
 
     public: void log();
 

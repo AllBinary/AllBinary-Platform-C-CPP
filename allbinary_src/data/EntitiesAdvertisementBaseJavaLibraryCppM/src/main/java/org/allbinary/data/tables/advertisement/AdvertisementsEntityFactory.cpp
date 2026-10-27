@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,18 +52,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdvertisementsEntity.h"
-#include "AdvertisementsEntityInterface.h"
+        #include "org/allbinary/data/tables/advertisement/AdvertisementsEntity.h"
+#include "org/allbinary/data/tables/advertisement/AdvertisementsEntityInterface.h"
 
 class AdvertisementsEntityFactory
             : public Object
          {
 
-    private: static const std::string CLASSNAME = "org.allbinary.data.tables.AdvertisementEntity";
+    private: static inline const std::string CLASSNAME = "org.allbinary.data.tables.AdvertisementEntity";
 
-    public: static AdvertisementsEntityInterface getInstance(){
+    public: static AdvertisementsEntityInterface* getInstance(){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
         try {
@@ -65,20 +71,20 @@ class AdvertisementsEntityFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdvertisementsEntity();
+                        return dynamic_cast<AdvertisementsEntityInterface*>(new AdvertisementsEntity());
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil.put(commonStrings.EXCEPTION, "AdvertisementEntityFactory", commonStrings.GET_INSTANCE, e);
+logUtil->put(commonStrings->EXCEPTION, "AdvertisementEntityFactory", commonStrings->GET_INSTANCE, &e);
     
 
                                     }

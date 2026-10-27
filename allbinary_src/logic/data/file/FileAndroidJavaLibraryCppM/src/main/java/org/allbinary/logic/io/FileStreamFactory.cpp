@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,21 +55,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFileInputStream.h"
-#include "AbFileOutputStream.h"
+        #include "org/allbinary/logic/io/AbFileInputStream.h"
+#include "org/allbinary/logic/io/AbFileOutputStream.h"
 
 class FileStreamFactory
             : public Object
          {
 
-    private: static Object* SINGLETON = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* SINGLETON = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static FileStreamFactory getInstance(){
+    public: static FileStreamFactory* getInstance(){
 
-                        if(FileStreamFactory::SINGLETON == NullUtil::getInstance().NULL_OBJECT)
+                        if(FileStreamFactory::SINGLETON == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    FileStreamFactory::SINGLETON= FileStreamFactory(ResourceUtil::getInstance().getContext());
+                                    FileStreamFactory::SINGLETON= new FileStreamFactory(ResourceUtil::getInstance()->getContext());
     
 
                                     }
@@ -72,14 +78,14 @@ class FileStreamFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileStreamFactory::SINGLETON;
+                        return dynamic_cast<FileStreamFactory*>(FileStreamFactory::SINGLETON);
     
 }
 
 
     private: Object* context;
 
-private: FileStreamFactory(Context context){
+private: FileStreamFactory(Context* context){
 this->context= context;
     
 }
@@ -87,21 +93,21 @@ this->context= context;
 
                 //@Throws(Exception.constructor)
             
-    public: AbFileInputStream getFileInputStreamInstance(std::string path, std::string fileName){
+    public: AbFileInputStream* getFileInputStreamInstance(std::string path, std::string fileName){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFileInputStream(this->getContext().openFileInput(fileName));
+                        return new AbFileInputStream(this->getContext()->openFileInput(fileName));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: AbFileOutputStream getFileOutputStreamInstance(std::string path, std::string fileName){
+    public: AbFileOutputStream* getFileOutputStreamInstance(std::string path, std::string fileName){
 
-    Context context = this->getContext();;
+    Context* context = this->getContext();;
     
 context->deleteFile(fileName);
     
@@ -109,7 +115,7 @@ context->deleteFile(fileName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFileOutputStream(context->openFileOutput(fileName, 0));
+                        return new AbFileOutputStream(context->openFileOutput(fileName, 0));
     
 }
 
@@ -117,17 +123,17 @@ context->deleteFile(fileName);
                 //@Throws(Exception.constructor)
             
     public: void delete_(std::string path, std::string fileName){
-this->getContext().deleteFile(fileName);
+this->getContext()->deleteFile(fileName);
     
 }
 
 
-    private: Context getContext(){
+    private: Context* getContext(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->context;
+                        return dynamic_cast<Context*>(this->context);
     
 }
 

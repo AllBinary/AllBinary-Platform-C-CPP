@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/identification/Group.h>
@@ -88,34 +94,34 @@
         
 class GroupLayerManagerListener: public LayerManagerEventListener {
 
-    private: static GroupLayerManagerListener SINGLETON = GroupLayerManagerListener();
+    private: static GroupLayerManagerListener* SINGLETON() { static std::unique_ptr<GroupLayerManagerListener> value(new GroupLayerManagerListener()); return value.get(); }
 
-    public: static GroupLayerManagerListener getInstance(){
+    public: static GroupLayerManagerListener* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GroupLayerManagerListener::SINGLETON;
+                        return GroupLayerManagerListener::SINGLETON();
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: GroupLayerManagerListener(){
-LayerManagerEventHandler::getInstance().addListener(this);
+LayerManagerEventHandler::getInstance()->addListener(this);
     
 }
 
 
     public: void clear(){
 
-    BasicArrayList groupList;;
+    BasicArrayList* groupList;;
     
 
-    int32_t size = this->list.size();;
+    int32_t size = this->list->size();;
     
 
 
@@ -124,18 +130,18 @@ LayerManagerEventHandler::getInstance().addListener(this);
                         for (
     int32_t index = size -1;index >= 0; index--)
         {
-groupList= this->list.objectArray[index];
+groupList= dynamic_cast<BasicArrayList*>(this->list->objectArray[index]);
     
-groupList.clear();
+groupList->clear();
     
 }
 
 }
 
 
-    public: int32_t getGroupSizeFromInterface(GroupInterfaceCompositeInterface groupInterfaceCompositeInterface){
+    public: int32_t getGroupSizeFromInterface(GroupInterfaceCompositeInterface* groupInterfaceCompositeInterface){
 
-    std::vector<Group> groupInterfaceArray = groupInterfaceCompositeInterface.getGroupInterface();;
+    std::vector<Group*> groupInterfaceArray = groupInterfaceCompositeInterface->getGroupInterface();;
     
 
 
@@ -146,9 +152,9 @@ groupList.clear();
 }
 
 
-    public: int32_t getGroupSize(Group groupInterface){
+    public: int32_t getGroupSize(Group* groupInterface){
 
-    int32_t id = static_cast<int32_t>(groupInterface.getGroupId());;
+    int32_t id = static_cast<int32_t>(groupInterface->getGroupId());;
     
 
 
@@ -159,9 +165,9 @@ groupList.clear();
 }
 
 
-    public: BasicArrayList getList(Group groupInterface){
+    public: BasicArrayList* getList(Group* groupInterface){
 
-    int32_t id = static_cast<int32_t>(groupInterface.getGroupId());;
+    int32_t id = static_cast<int32_t>(groupInterface->getGroupId());;
     
 
 
@@ -172,9 +178,9 @@ groupList.clear();
 }
 
 
-    private: BasicArrayList getListById(int32_t groupId){
+    private: BasicArrayList* getListById(int32_t groupId){
 
-    BasicArrayList groupList = this->list.objectArray[groupId];;
+    BasicArrayList* groupList = dynamic_cast<BasicArrayList*>(this->list->objectArray[groupId]);;
     
 
 
@@ -187,10 +193,10 @@ groupList.clear();
 
     private: int32_t getGroupSizeById(int32_t groupId){
 
-    BasicArrayList groupList = this->list.objectArray[groupId];;
+    BasicArrayList* groupList = dynamic_cast<BasicArrayList*>(this->list->objectArray[groupId]);;
     
 
-    int32_t size = groupList.size();;
+    int32_t size = groupList->size();;
     
 
 
@@ -201,12 +207,12 @@ groupList.clear();
 }
 
 
-    public: bool areAllOtherGroupsEmpty(Group groupInterface){
+    public: bool areAllOtherGroupsEmpty(Group* groupInterface){
 
-    int32_t id = static_cast<int32_t>(groupInterface.getGroupId());;
+    int32_t id = static_cast<int32_t>(groupInterface->getGroupId());;
     
 
-    int32_t size = this->list.size();;
+    int32_t size = this->list->size();;
     
 
 
@@ -226,7 +232,7 @@ groupList.clear();
                         if(groupSize != 0)
                         
                                     {
-                                    this->logUtil.putF(StringMaker().append("Group Size: ").appendint(groupSize).toString(), this, "areAllOtherGroupsEmpty");
+                                    this->logUtil->putF((new StringMaker())->append("Group Size: ")->appendint(groupSize)->toString(), this, "areAllOtherGroupsEmpty");
     
 
 
@@ -251,15 +257,15 @@ groupList.clear();
 }
 
 
-    private: bool isIdInList(int32_t id, BasicArrayList excludeGroupList){
+    private: bool isIdInList(int32_t id, BasicArrayList* excludeGroupList){
 
-    int32_t size = excludeGroupList.size();;
+    int32_t size = excludeGroupList->size();;
     
 
-    std::vector<Group> groupInterfaceArray;;
+    std::vector<Group*> groupInterfaceArray;;
     
 
-    Group groupInterface;;
+    Group* groupInterface;;
     
 
     int32_t groupId= 0;;
@@ -271,7 +277,7 @@ groupList.clear();
                         for (
     int32_t index = size -1;index >= 0; index--)
         {
-groupInterfaceArray= excludeGroupList.objectArray[index] as Group[];
+groupInterfaceArray= excludeGroupList->objectArray[index] as Group[];
     
 
     int32_t size2 = groupInterfaceArray.size();;
@@ -285,7 +291,7 @@ groupInterfaceArray= excludeGroupList.objectArray[index] as Group[];
         {
 groupInterface= groupInterfaceArray[index2];
     
-groupId= static_cast<int32_t>(groupInterface.getGroupId());
+groupId= static_cast<int32_t>(groupInterface->getGroupId());
     
 
                         if(groupId == id)
@@ -313,9 +319,9 @@ groupId= static_cast<int32_t>(groupInterface.getGroupId());
 }
 
 
-    public: bool areAllOtherGroupsLessThan(BasicArrayList excludeGroupList, int32_t maxSize){
+    public: bool areAllOtherGroupsLessThan(BasicArrayList* excludeGroupList, int32_t maxSize){
 
-    int32_t size = this->list.size();;
+    int32_t size = this->list->size();;
     
 
 
@@ -360,29 +366,29 @@ groupId= static_cast<int32_t>(groupInterface.getGroupId());
 
     public: void init(int32_t total){
 
-        while(this->list.size() <= total +1)
+        while(this->list->size() <= total +1)
         {
-this->list.add(BasicArrayListD());
+this->list->add(new BasicArrayListD());
     
 }
 
 }
 
 
-    public: void onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject* eventObject){
+ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void onCreateLayerManagerEvent(LayerManagerEvent layerManagerEvent){
+    public: void onCreateLayerManagerEvent(LayerManagerEvent* layerManagerEvent){
 
-    AllBinaryLayer layerInterface = layerManagerEvent.getLayerInterface();;
+    AllBinaryLayer* layerInterface = layerManagerEvent->getLayerInterface();;
     
 
-    std::vector<Group> groupInterfaceArray = layerInterface.getGroupInterface();;
+    std::vector<Group*> groupInterfaceArray = layerInterface->getGroupInterface();;
     
 
     int32_t size = groupInterfaceArray.size();;
@@ -391,7 +397,7 @@ ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
     int32_t id= 0;;
     
 
-    BasicArrayList groupList;;
+    BasicArrayList* groupList;;
     
 
 
@@ -402,7 +408,7 @@ ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
         {
 id= static_cast<int32_t>(groupInterfaceArray[index].getGroupId());
     
-groupList= this->list.objectArray[id];
+groupList= dynamic_cast<BasicArrayList*>(this->list->objectArray[id]);
     
 
                         if(groupList == 
@@ -410,16 +416,16 @@ groupList= this->list.objectArray[id];
                                 )
                         
                                     {
-                                    this->logUtil.putF(StringMaker().append("id: ").appendint(id).toString(), this, "onCreateLayerManagerEvent");
+                                    this->logUtil->putF((new StringMaker())->append("id: ")->appendint(id)->toString(), this, "onCreateLayerManagerEvent");
     
 
                                     }
                                 
 
-                        if(!groupList.contains(layerInterface))
+                        if(!groupList->contains(layerInterface))
                         
                                     {
-                                    groupList.add(layerInterface);
+                                    groupList->add(layerInterface);
     
 
                                     }
@@ -435,12 +441,12 @@ groupList= this->list.objectArray[id];
 
                 //@Throws(Exception.constructor)
             
-    public: void onDeleteLayerManagerEvent(LayerManagerEvent layerManagerEvent){
+    public: void onDeleteLayerManagerEvent(LayerManagerEvent* layerManagerEvent){
 
-    AllBinaryLayer layerInterface = layerManagerEvent.getLayerInterface();;
+    AllBinaryLayer* layerInterface = layerManagerEvent->getLayerInterface();;
     
 
-    std::vector<Group> groupInterfaceArray = layerInterface.getGroupInterface();;
+    std::vector<Group*> groupInterfaceArray = layerInterface->getGroupInterface();;
     
 
     int32_t size = groupInterfaceArray.size();;
@@ -449,7 +455,7 @@ groupList= this->list.objectArray[id];
     int32_t id= 0;;
     
 
-    BasicArrayList groupList;;
+    BasicArrayList* groupList;;
     
 
 
@@ -460,9 +466,9 @@ groupList= this->list.objectArray[id];
         {
 id= static_cast<int32_t>(groupInterfaceArray[index].getGroupId());
     
-groupList= this->list.objectArray[id];
+groupList= dynamic_cast<BasicArrayList*>(this->list->objectArray[id]);
     
-groupList.remove(layerInterface);
+groupList->remove(layerInterface);
     
 }
 
@@ -471,19 +477,19 @@ groupList.remove(layerInterface);
 
     public: void log(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
     std::string GROUP = "Group: ";;
     
 
-    std::string SPACE = CommonSeps::getInstance().SPACE;;
+    std::string SPACE = CommonSeps::getInstance()->SPACE;;
     
 
-    std::string TOTAL_LABEL = CommonLabels::getInstance().TOTAL_LABEL;;
+    std::string TOTAL_LABEL = CommonLabels::getInstance()->TOTAL_LABEL;;
     
 
-    int32_t size = this->list.size();;
+    int32_t size = this->list->size();;
     
 
 
@@ -493,23 +499,23 @@ groupList.remove(layerInterface);
     int32_t index = size -1;index >= 0; index--)
         {
 
-    BasicArrayList groupList = this->list.objectArray[index];;
+    BasicArrayList* groupList = dynamic_cast<BasicArrayList*>(this->list->objectArray[index]);;
     
-stringBuffer.append(GROUP);
+stringBuffer->append(GROUP);
     
-stringBuffer.appendint(index);
+stringBuffer->appendint(index);
     
-stringBuffer.append(SPACE);
+stringBuffer->append(SPACE);
     
-stringBuffer.append(TOTAL_LABEL);
+stringBuffer->append(TOTAL_LABEL);
     
-stringBuffer.appendint(groupList.size());
+stringBuffer->appendint(groupList->size());
     
-stringBuffer.append(SPACE);
+stringBuffer->append(SPACE);
     
 }
 
-this->logUtil.putF(stringBuffer.toString(), this, "log");
+this->logUtil->putF(stringBuffer->toString(), this, "log");
     
 }
 

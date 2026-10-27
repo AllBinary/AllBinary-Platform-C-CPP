@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,9 +42,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DownGameKeyEventListenerInterface.h"
-#include "UpGameKeyEventListenerInterface.h"
-#include "PressGameKeyEventListenerInterface.h"
+        #include "org/allbinary/game/input/event/DownGameKeyEventListenerInterface.h"
+#include "org/allbinary/game/input/event/UpGameKeyEventListenerInterface.h"
+#include "org/allbinary/game/input/event/PressGameKeyEventListenerInterface.h"
 
 class GameKeyEventListenerInterface: public DownGameKeyEventListenerInterface, public UpGameKeyEventListenerInterface, public PressGameKeyEventListenerInterface {
 

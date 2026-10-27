@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_GYRO_SENSORGAMEUPDATEPROCESSOR_H
         #define ORG_ALLBINARY_INPUT_GYRO_SENSORGAMEUPDATEPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,17 +61,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GyroSensorFactory.h"
+        #include "org/allbinary/input/gyro/GyroSensorFactory.h"
 
 class SensorGameUpdateProcessor
             : public Object
          {
 
-    private: AllBinarySensor inputSensor;
+    private: AllBinarySensor* inputSensor;
 
-    protected: void setInputSensor(AllBinarySensor inputSensor);
+    protected: void setInputSensor(AllBinarySensor* inputSensor);
 
-    public: AllBinarySensor getInputSensor();
+    public: AllBinarySensor* getInputSensor();
 
                 //@Throws(Exception.constructor)
             

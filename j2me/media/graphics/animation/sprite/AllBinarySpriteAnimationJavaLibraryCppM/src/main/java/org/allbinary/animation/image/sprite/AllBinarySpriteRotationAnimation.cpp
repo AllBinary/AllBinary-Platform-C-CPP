@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Image.h>
 
       
@@ -57,11 +63,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HackRotationSpriteIndexedAnimation.h"
+        #include "org/allbinary/animation/image/sprite/HackRotationSpriteIndexedAnimation.h"
 
 class AllBinarySpriteRotationAnimation: public HackRotationSpriteIndexedAnimation {
 
-public: AllBinarySpriteRotationAnimation(Sprite sprite, Image image, AnimationBehavior animationBehavior) : HackRotationSpriteIndexedAnimation(sprite, image, AngleInfo::getInstance((AngleFactory::getInstance().TOTAL_ANGLE /sprite.getRawFrameCount())), animationBehavior){
+public: AllBinarySpriteRotationAnimation(Sprite* sprite, Image* image, AnimationBehavior* animationBehavior) : HackRotationSpriteIndexedAnimation(sprite, image, AngleInfo::getInstance((AngleFactory::getInstance()->TOTAL_ANGLE /sprite->getRawFrameCount())), animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -89,16 +95,16 @@ this->angleInfo.adjustAngle(this->sprite.getFrame());
 }
 
 
-    public: void setFrameByDirection(Direction direction){
+    public: void setFrameByDirection(Direction* direction){
 
-    Angle angle = this->directionUtil.getFrameAngle(direction);;
+    Angle* angle = this->directionUtil.getFrameAngle(direction);;
     
 this->adjustFrameToAngle(angle);
     
 }
 
 
-    public: void setFrameToAngle(Angle angle){
+    public: void setFrameToAngle(Angle* angle){
 this->adjustFrameToAngle(angle);
     
 }
@@ -112,14 +118,14 @@ this->angleInfo.adjustAngle(this->getFrame());
 }
 
 
-    public: void adjustFrameToAngle(Angle angle){
-this->adjustFrame(angle.getValue());
+    public: void adjustFrameToAngle(Angle* angle){
+this->adjustFrame(angle->getValue());
     
 }
 
 
     public: void adjustFrame(int16_t angle){
-this->setFrame(this->frameUtil.getFrameForAngle(angle, static_cast<int32_t>(this->angleInfo.getAngleIncrementInfo().getAngleIncrement())));
+this->setFrame(this->frameUtil.getFrameForAngle(angle, static_cast<int32_t>(this->angleInfo.getAngleIncrementInfo()->getAngleIncrement())));
     
 }
 

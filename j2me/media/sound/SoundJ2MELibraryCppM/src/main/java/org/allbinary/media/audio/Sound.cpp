@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -51,16 +57,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SoundInterface.h"
-#include "NoPlayer.h"
+        #include "org/allbinary/media/audio/SoundInterface.h"
+#include "org/allbinary/media/audio/NoPlayer.h"
 
 class Sound
             : public Object
-        : public SoundInterface, public Runnable {
+        , public SoundInterface, public Runnable {
 
     private: std::string resource;
 
-    protected: Player player = NoPlayer::NO_PLAYER;
+    protected: Player* player = NoPlayer::NO_PLAYER;
 
 protected: Sound(std::string resource){
 this->resource= resource;
@@ -78,7 +84,7 @@ this->resource= resource;
 }
 
 
-    public: Player getPlayerP(){
+    public: Player* getPlayerP(){
 
 
 
@@ -88,7 +94,7 @@ this->resource= resource;
 }
 
 
-    public: void setPlayerP(Player player){
+    public: void setPlayerP(Player* player){
 this->player= player;
     
 }
@@ -113,16 +119,16 @@ this->player= player;
     public: void run(){
 
         try {
-            this->player.start();
+            this->player->start();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil::put(commonStrings.EXCEPTION, this, commonStrings.RUN);
+PreLogUtil::put(commonStrings->EXCEPTION, this, commonStrings->RUN);
     
 }
 

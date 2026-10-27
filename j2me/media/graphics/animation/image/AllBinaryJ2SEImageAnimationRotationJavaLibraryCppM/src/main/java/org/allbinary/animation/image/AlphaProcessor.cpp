@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Image.h>
 
       
@@ -42,24 +48,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ModifierBaseProcessor.h"
+        #include "org/allbinary/animation/image/ModifierBaseProcessor.h"
 
 class AlphaProcessor: public ModifierBaseProcessor {
 
-    private: static const AlphaProcessor instanceC = AlphaProcessor();
+    private: static AlphaProcessor* instanceC() { static std::unique_ptr<AlphaProcessor> value(new AlphaProcessor()); return value.get(); }
 
-    public: static AlphaProcessor getInstance(){
+    public: static AlphaProcessor* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AlphaProcessor::instanceC;
+                        return AlphaProcessor::instanceC();
     
 }
 
 
-    public: void updateAlpha(ImageModifierUtil imageModifierUtil, Image originalImage, Image imageToShow, int32_t index, int32_t alpha){
-imageModifierUtil.setAlpha(originalImage, imageToShow, index, alpha);
+    public: void updateAlpha(ImageModifierUtil* imageModifierUtil, Image* originalImage, Image* imageToShow, int32_t index, int32_t alpha){
+imageModifierUtil->setAlpha(originalImage, imageToShow, index, alpha);
     
 }
 

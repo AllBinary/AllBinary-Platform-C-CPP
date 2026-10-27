@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,7 +45,7 @@
         
 class AdvertisementCategoryInterface {
 
-    std::string toString()
+    public: virtual std::string toString() = 0;
 
 };
 

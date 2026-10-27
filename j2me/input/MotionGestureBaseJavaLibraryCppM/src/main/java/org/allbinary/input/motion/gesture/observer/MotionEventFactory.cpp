@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/Input.h>
@@ -56,13 +62,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionGestureEvent.h"
+        #include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
 
 class MotionEventFactory
             : public Object
-        : public AllBinaryEventObjectFactoryInterface {
+        , public AllBinaryEventObjectFactoryInterface {
 
-    private: static int32_t index = 0;
+    private: static inline int32_t index = 0;
 
     private: Object* source;
 
@@ -73,27 +79,27 @@ this->source= source;
     
 this->id= id;
     
-MotionEventFactory::index= TouchMotionGestureFactory::getInstance().LAST_MOTION.getId();
+MotionEventFactory::index= TouchMotionGestureFactory::getInstance()->LAST_MOTION.getId();
     
 }
 
 
-    public: AllBinaryEventObject getInstance(){
+    public: AllBinaryEventObject* getInstance(){
 
-    InputFactory inputFactory = InputFactory::getInstance();;
+    InputFactory* inputFactory = InputFactory::getInstance();;
     
 
-    Input input = inputFactory.getInstanceById(MotionEventFactory::index++);;
+    Input* input = inputFactory->getInstanceById(MotionEventFactory::index++);;
     
 
-                        if(input == inputFactory.NO_INPUT)
+                        if(input == inputFactory->NO_INPUT)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MotionGestureEvent(this->source, this->id, TouchMotionGestureFactory::getInstance().NO_MOTION);
+                        return new MotionGestureEvent(this->source, this->id, dynamic_cast<MotionGestureInput*>(TouchMotionGestureFactory::getInstance()->NO_MOTION));
     
 
                                     }
@@ -103,7 +109,7 @@ MotionEventFactory::index= TouchMotionGestureFactory::getInstance().LAST_MOTION.
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MotionGestureEvent(this->source, this->id, input);
+                        return new MotionGestureEvent(this->source, this->id, dynamic_cast<MotionGestureInput*>(input));
     
 
                         }

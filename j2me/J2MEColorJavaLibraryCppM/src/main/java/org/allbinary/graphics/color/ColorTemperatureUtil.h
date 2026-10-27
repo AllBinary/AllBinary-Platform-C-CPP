@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORTEMPERATUREUTIL_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORTEMPERATUREUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,20 +47,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicColorFactory.h"
-#include "BasicColor.h"
+        #include "org/allbinary/graphics/color/BasicColorFactory.h"
+#include "org/allbinary/graphics/color/BasicColor.h"
 
 class ColorTemperatureUtil
             : public Object
          {
 
-    private: static ColorTemperatureUtil instance() { return ColorTemperatureUtil(); }
+    private: static ColorTemperatureUtil* instance() { static std::unique_ptr<ColorTemperatureUtil> value(new ColorTemperatureUtil()); return value.get(); }
 
-    public: static ColorTemperatureUtil getInstance();
+    public: static ColorTemperatureUtil* getInstance();
 
-    private: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
+    private: BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();
 
-    public: BasicColor getBasicColor(int32_t thirdTemp);
+    public: BasicColor* getBasicColor(int32_t thirdTemp);
 
 };
 

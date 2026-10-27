@@ -6,6 +6,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/IndexOutOfBoundsException.h"
@@ -51,16 +57,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ArrayUtil.h"
-#include "BasicArrayListS.h"
+        #include "org/allbinary/util/ArrayUtil.h"
+#include "org/allbinary/util/BasicArrayListS.h"
 //This is a very fast and simple resizable list.
 class BasicArrayList
             : public Object
          {
 
-    private: static const std::string SIZE = ", Size: ";
+    private: static inline const std::string SIZE = ", Size: ";
 
-    private: const ArrayUtil arrayUtil = ArrayUtil::getInstance();
+    private: ArrayUtil* arrayUtil = ArrayUtil::getInstance();
 
     public: std::vector<Object*> objectArray;
 
@@ -78,20 +84,20 @@ this->objectArray= objectArray;
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(CommonLabels::getInstance().INDEX_LABEL);
+stringBuffer->append(CommonLabels::getInstance()->INDEX_LABEL);
     
-stringBuffer.appendint(index);
+stringBuffer->appendint(index);
     
-stringBuffer.append(BasicArrayList::SIZE);
+stringBuffer->append(BasicArrayList::SIZE);
     
-stringBuffer.appendint(this->currentIndex);
+stringBuffer->appendint(this->currentIndex);
     
 
 
 
-                            throw IndexOutOfBoundsException(stringBuffer.toString());
+                            throw new IndexOutOfBoundsException(stringBuffer->toString());
                     
 
                                     }
@@ -127,20 +133,20 @@ this->objectArray[this->currentIndex++]= anyType;
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(CommonLabels::getInstance().INDEX_LABEL);
+stringBuffer->append(CommonLabels::getInstance()->INDEX_LABEL);
     
-stringBuffer.appendint(index);
+stringBuffer->appendint(index);
     
-stringBuffer.append(BasicArrayList::SIZE);
+stringBuffer->append(BasicArrayList::SIZE);
     
-stringBuffer.appendint(this->currentIndex);
+stringBuffer->appendint(this->currentIndex);
     
 
 
 
-                            throw IndexOutOfBoundsException(stringBuffer.toString());
+                            throw new IndexOutOfBoundsException(stringBuffer->toString());
                     
 
                                     }
@@ -274,12 +280,12 @@ this->objectArray[--this->currentIndex]=
 }
 
 
-    public: bool removeAll2(BasicArrayList list){
+    public: bool removeAll2(BasicArrayList* list){
 
     bool result = true;;
     
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
 
@@ -289,7 +295,7 @@ this->objectArray[--this->currentIndex]=
     int32_t index = 0;index < size; index++)
         {
 
-                        if(this->remove(list.get(index)))
+                        if(this->remove(list->get(index)))
                         
                                     {
                                     
@@ -312,11 +318,11 @@ this->objectArray[--this->currentIndex]=
 }
 
 
-    public: bool addAll2(BasicArrayList list){
-this->ensureCapacity(this->currentIndex +list.currentIndex);
+    public: bool addAll2(BasicArrayList* list){
+this->ensureCapacity(this->currentIndex +list->currentIndex);
     
 
-    int32_t listSize = list.currentIndex;;
+    int32_t listSize = list->currentIndex;;
     
 
 
@@ -325,7 +331,7 @@ this->ensureCapacity(this->currentIndex +list.currentIndex);
                         for (
     int32_t index = 0;index < listSize; index++)
         {
-this->objectArray[this->currentIndex++]= list.objectArray[index];
+this->objectArray[this->currentIndex++]= list->objectArray[index];
     
 }
 
@@ -338,9 +344,9 @@ this->objectArray[this->currentIndex++]= list.objectArray[index];
 }
 
 
-    public: bool addAllList(BasicArrayList list){
+    public: bool addAllList(BasicArrayList* list){
 
-    std::vector<Object*> newObjectArray = list.toArray();;
+    std::vector<Object*> newObjectArray = list->toArray();;
     
 
 
@@ -390,7 +396,7 @@ this->currentIndex += numSize;
 
                                     }
                                 
-this->objectArray= this->arrayUtil.copyOf(this->objectArray, newCapacity);
+this->objectArray= this->arrayUtil->copyOf(this->objectArray, newCapacity);
     
 
                                     }
@@ -406,7 +412,7 @@ this->objectArray= this->arrayUtil.copyOf(this->objectArray, newCapacity);
                         if(this->currentIndex < oldCapacity)
                         
                                     {
-                                    this->objectArray= this->arrayUtil.copyOf(this->objectArray, this->currentIndex);
+                                    this->objectArray= this->arrayUtil->copyOf(this->objectArray, this->currentIndex);
     
 
                                     }
@@ -558,20 +564,20 @@ this->objectArray= this->arrayUtil.copyOf(this->objectArray, newCapacity);
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(CommonLabels::getInstance().INDEX_LABEL);
+stringBuffer->append(CommonLabels::getInstance()->INDEX_LABEL);
     
-stringBuffer.appendint(index);
+stringBuffer->appendint(index);
     
-stringBuffer.append(BasicArrayList::SIZE);
+stringBuffer->append(BasicArrayList::SIZE);
     
-stringBuffer.appendint(this->currentIndex);
+stringBuffer->appendint(this->currentIndex);
     
 
 
 
-                            throw IndexOutOfBoundsException(stringBuffer.toString());
+                            throw new IndexOutOfBoundsException(stringBuffer->toString());
                     
 
                                     }
@@ -591,20 +597,20 @@ stringBuffer.appendint(this->currentIndex);
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(CommonLabels::getInstance().INDEX_LABEL);
+stringBuffer->append(CommonLabels::getInstance()->INDEX_LABEL);
     
-stringBuffer.appendint(index);
+stringBuffer->appendint(index);
     
-stringBuffer.append(BasicArrayList::SIZE);
+stringBuffer->append(BasicArrayList::SIZE);
     
-stringBuffer.appendint(this->currentIndex);
+stringBuffer->appendint(this->currentIndex);
     
 
 
 
-                            throw IndexOutOfBoundsException(stringBuffer.toString());
+                            throw new IndexOutOfBoundsException(stringBuffer->toString());
                     
 
                                     }
@@ -677,7 +683,7 @@ this->currentIndex= 0;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->arrayUtil.copyOf(this->objectArray, this->currentIndex);;
+                        return this->arrayUtil->copyOf(this->objectArray, this->currentIndex);;
     
 }
 
@@ -691,7 +697,7 @@ this->currentIndex= 0;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->arrayUtil.copyOfType(this->objectArray, this->currentIndex, objectArray.getClass());;
+                        return this->arrayUtil->copyOfType(this->objectArray, this->currentIndex, objectArray.getClass());;
     
 
                                     }
@@ -723,7 +729,7 @@ System.arraycopy(this->objectArray, 0, objectArray, 0, this->currentIndex);
     int32_t size = this->size();;
     
 
-    BasicArrayList list = BasicArrayListS(size);;
+    BasicArrayList* list = new BasicArrayListS(size);;
     
 
     Object* anyType;;
@@ -737,7 +743,7 @@ System.arraycopy(this->objectArray, 0, objectArray, 0, this->currentIndex);
         {
 anyType= this->objectArray[index];
     
-list.add(anyType);
+list->add(anyType);
     
 }
 
@@ -752,10 +758,10 @@ list.add(anyType);
 
     public: std::string toString(){
 
-    std::string COMMA_SEP = CommonSeps::getInstance().COMMA_SEP;;
+    std::string COMMA_SEP = CommonSeps::getInstance()->COMMA_SEP;;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
 
@@ -764,9 +770,9 @@ list.add(anyType);
                         for (
     int32_t index = 0;index < this->currentIndex; index++)
         {
-stringBuffer.append(this->objectArray[index].toString());
+stringBuffer->append(this->objectArray[index].toString());
     
-stringBuffer.append(COMMA_SEP);
+stringBuffer->append(COMMA_SEP);
     
 }
 
@@ -774,7 +780,7 @@ stringBuffer.append(COMMA_SEP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

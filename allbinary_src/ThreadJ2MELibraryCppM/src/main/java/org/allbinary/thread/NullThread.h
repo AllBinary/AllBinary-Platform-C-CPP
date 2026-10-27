@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_THREAD_NULLTHREAD_H
         #define ORG_ALLBINARY_THREAD_NULLTHREAD_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Thread.h"
@@ -48,7 +54,7 @@ class NullThread
             : public Object
          {
 
-    public: static const Thread NULL_THREAD = Thread();
+    public: static Thread* NULL_THREAD() { static std::unique_ptr<Thread> value(new Thread()); return value.get(); }
 
 };
 

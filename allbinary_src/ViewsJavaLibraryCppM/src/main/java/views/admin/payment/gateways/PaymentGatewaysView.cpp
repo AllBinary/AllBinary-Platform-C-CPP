@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -86,11 +92,11 @@
         
 class PaymentGatewaysView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: BasicArrayList paymentGatewayVector;
+    private: BasicArrayList* paymentGatewayVector;
 
-public: PaymentGatewaysView(TransformInfoInterface transformInfoInterface, BasicArrayList gatewayVector) : HttpStoreComponentView(transformInfoInterface){
+public: PaymentGatewaysView(TransformInfoInterface* transformInfoInterface, BasicArrayList* gatewayVector) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -104,17 +110,17 @@ this->paymentGatewayVector= gatewayVector;
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
         try {
             
-    std::string storeName = this->getTransformInfoInterface().getStoreName();;
+    std::string storeName = this->getTransformInfoInterface()->getStoreName();;
     
 
-    Node paymentGatewaysNode = document.createElement(PaymentGatewaysData::NAME);;
+    Node* paymentGatewaysNode = document->createElement(PaymentGatewaysData::NAME);;
     
 
-    int32_t size = this->paymentGatewayVector.size();;
+    int32_t size = this->paymentGatewayVector->size();;
     
 
 
@@ -124,17 +130,17 @@ this->paymentGatewayVector= gatewayVector;
     int32_t index = 0;index < size; index++)
         {
 
-    BasicPaymentType paymentType = this->paymentGatewayVector.get(index);;
+    BasicPaymentType* paymentType = dynamic_cast<BasicPaymentType*>(this->paymentGatewayVector->get(index));;
     
 
-    HashMap<Object*, Object*> hashMap = paymentType.toHashMap();;
+    HashMap<Object*, Object*>* hashMap = paymentType->toHashMap();;
     
-hashMap.put(EntryData::getInstance().DEFAULT, PaymentTypeUtil::getInstance().getDefault(storeName).getBasicPaymentType().getName());
+hashMap->put(EntryData::getInstance()->DEFAULT, PaymentTypeUtil::getInstance()->getDefault(storeName)->getBasicPaymentType()->getName());
     
 
-    Node paymentGatewayNode = ModDomHelper::createNodeWithValueNodes(document, PaymentGatewayData::NAME.toString(), hashMap);;
+    Node* paymentGatewayNode = ModDomHelper::createNodeWithValueNodes(document, PaymentGatewayData::NAME.toString(), hashMap);;
     
-paymentGatewaysNode.appendChild(paymentGatewayNode);
+paymentGatewaysNode->appendChild(paymentGatewayNode);
     
 }
 
@@ -146,13 +152,13 @@ paymentGatewaysNode.appendChild(paymentGatewayNode);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XSLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XSLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, "toXmlNode", &e);
     
 
                                     }
@@ -168,7 +174,7 @@ paymentGatewaysNode.appendChild(paymentGatewayNode);
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this);
+this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     
 }
 
@@ -186,16 +192,16 @@ this->addDomNodeInterface(this);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to view payment gateways";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_CUSTOMMAPGENERATORFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_CUSTOMMAPGENERATORFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -41,16 +47,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CustomMapGeneratorBaseFactory.h"
-#include "CustomMapGenerator.h"
-#include "CustomMapGeneratorBase.h"
-#include "RaceTrackGeographicMap.h"
+        #include "org/allbinary/media/graphics/geography/map/racetrack/CustomMapGeneratorBaseFactory.h"
+#include "org/allbinary/media/graphics/geography/map/racetrack/CustomMapGenerator.h"
+#include "org/allbinary/media/graphics/geography/map/racetrack/CustomMapGeneratorBase.h"
+#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMap.h"
 
 class CustomMapGeneratorFactory: public CustomMapGeneratorBaseFactory {
 
                 //@Throws(Exception.constructor)
             
-    public: CustomMapGeneratorBase create(RaceTrackGeographicMap raceTrackGeographicMap);
+    public: CustomMapGeneratorBase* create(RaceTrackGeographicMap* raceTrackGeographicMap);
 
 };
 

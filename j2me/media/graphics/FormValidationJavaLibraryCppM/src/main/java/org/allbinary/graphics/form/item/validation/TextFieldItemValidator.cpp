@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graphics/form/item/ABTextFieldItem.h>
 
       
@@ -57,7 +63,7 @@
         
 class TextFieldItemValidator: public ValidatorBase {
 
-    private: ABTextFieldItem textFieldItem;
+    private: ABTextFieldItem* textFieldItem;
 
     private: int32_t min;
 
@@ -65,7 +71,7 @@ class TextFieldItemValidator: public ValidatorBase {
 
     private: bool allowOnEmpty;
 
-public: TextFieldItemValidator(ABTextFieldItem textFieldItem, int32_t min, int32_t max, bool allowOnEmpty){
+public: TextFieldItemValidator(ABTextFieldItem* textFieldItem, int32_t min, int32_t max, bool allowOnEmpty){
 this->textFieldItem= textFieldItem;
     
 this->min= min;
@@ -77,15 +83,15 @@ this->allowOnEmpty= allowOnEmpty;
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
-    BooleanFactory booleanFactory = BooleanFactory::getInstance();;
+    BooleanFactory* booleanFactory = BooleanFactory::getInstance();;
     
 
-    Boolean result = booleanFactory.TRUE;;
+    bool result = booleanFactory->TRUE;;
     
 
-    std::string string = this->textFieldItem.getString();;
+    std::string string = this->textFieldItem->getString();;
     
 
     int32_t textLength = string.size();;
@@ -102,7 +108,7 @@ this->allowOnEmpty= allowOnEmpty;
                         if(textLength < this->min)
                         
                                     {
-                                    result= booleanFactory.FALSE;
+                                    result= booleanFactory->FALSE;
     
 
                                     }
@@ -111,7 +117,7 @@ this->allowOnEmpty= allowOnEmpty;
                         if(textLength > this->max)
                         
                                     {
-                                    result= booleanFactory.FALSE;
+                                    result= booleanFactory->FALSE;
     
 
                                     }
@@ -128,12 +134,12 @@ this->allowOnEmpty= allowOnEmpty;
 }
 
 
-    public: BasicArrayList toList(){
+    public: BasicArrayList* toList(){
 
-    BasicArrayList list = BasicArrayListD();;
+    BasicArrayList* list = new BasicArrayListD();;
     
 
-    std::string string = this->textFieldItem.getString();;
+    std::string string = this->textFieldItem->getString();;
     
 
     int32_t textLength = string.size();;
@@ -147,16 +153,16 @@ this->allowOnEmpty= allowOnEmpty;
                                 
                         else {
                             
-    std::string label = this->textFieldItem.getLabel();;
+    std::string label = this->textFieldItem->getLabel();;
     
 
-    std::string name = label.substring(0, label.size() -2);;
+    std::string name = JavaString::substring(label, 0, label.size() -2);;
     
 
                         if(textLength < this->min)
                         
                                     {
-                                    list.add(StringMaker().append(name).append(" is to short").toString());
+                                    list->add((new StringMaker())->append(name)->append(" is to short")->toString());
     
 
                                     }
@@ -165,7 +171,7 @@ this->allowOnEmpty= allowOnEmpty;
                         if(textLength > this->max)
                         
                                     {
-                                    list.add(StringMaker().append(name).append(" is to long").toString());
+                                    list->add((new StringMaker())->append(name)->append(" is to long")->toString());
     
 
                                     }

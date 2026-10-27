@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_THREAD_MUSICTHREADPOOL_H
         #define ORG_ALLBINARY_THREAD_MUSICTHREADPOOL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/System.h"
         
             #include "java/lang/Runnable.h"
@@ -52,21 +58,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ThreadPool.h"
+        #include "org/allbinary/thread/ThreadPool.h"
 
 class MusicThreadPool: public ThreadPool {
 
-    private: static const ThreadPool THREAD_POOL = ThreadPool("Music", 2, ThreadPool::NORMAL_PRIORITY);
+    private: static ThreadPool* THREAD_POOL() { static std::unique_ptr<ThreadPool> value(new ThreadPool("Music", 2, ThreadPool::NORMAL_PRIORITY)); return value.get(); }
 
-    public: static ThreadPool getInstance();
+    public: static ThreadPool* getInstance();
 
 public: MusicThreadPool(std::string poolName, int32_t numThreads, int32_t priority);
 
-    public: void runTask(Runnable task);
+    public: void runTask(Runnable* task);
 
-    protected: void startTask(Runnable task);
+    protected: void startTask(Runnable* task);
 
-    protected: void completedTask(Runnable task);
+    protected: void completedTask(Runnable* task);
 
 };
 

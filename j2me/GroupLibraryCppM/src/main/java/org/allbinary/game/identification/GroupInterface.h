@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPINTERFACE_H
         #define ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,9 +48,9 @@
         
 class GroupInterface {
 
-    std::string getGroupName();
+    public: virtual std::string getGroupName() = 0;
 
-    int16_t getGroupId();
+    public: virtual int16_t getGroupId() = 0;
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_ABTRANSFORMER_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_ABTRANSFORMER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,35 +79,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicTransformerInterface.h"
+        #include "org/allbinary/logic/visual/transform/BasicTransformerInterface.h"
 
 class AbTransformer
             : public Object
-        : public BasicTransformerInterface {
+        , public BasicTransformerInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: TransformInfoInterface transformInfoInterface;
+    private: TransformInfoInterface* transformInfoInterface;
 
-    private: InputStream inputStream;
+    private: InputStream* inputStream;
 
-    private: URIResolver uriResolver;
+    private: URIResolver* uriResolver;
 
-public: AbTransformer(TransformInfoInterface transformInfoInterface);
+public: AbTransformer(TransformInfoInterface* transformInfoInterface);
 
-    public: TransformInfoInterface getTransformInfoInterface();
+    public: TransformInfoInterface* getTransformInfoInterface();
 
-    public: void setInputStream(InputStream inputStream);
+    public: void setInputStream(InputStream* inputStream);
 
-    public: void setURIResolver(URIResolver uriResolver);
+    public: void setURIResolver(URIResolver* uriResolver);
 
-    public: InputStream getInputStream();
+    public: InputStream* getInputStream();
 
-    public: URIResolver getURIResolver();
+    public: URIResolver* getURIResolver();
 
-    public: StreamSource getStreamSource();
+    public: StreamSource* getStreamSource();
 
                 //@Throws(Exception.constructor)
             

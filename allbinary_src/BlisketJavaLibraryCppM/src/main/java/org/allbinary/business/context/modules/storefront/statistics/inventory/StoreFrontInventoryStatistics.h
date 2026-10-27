@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_INVENTORY_STOREFRONTINVENTORYSTATISTICS_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_INVENTORY_STOREFRONTINVENTORYSTATISTICS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -74,26 +80,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreFrontInventoryStatisticsInterface.h"
-#include "StoreFrontInventoryStatisticsData.h"
+        #include "org/allbinary/business/context/modules/storefront/statistics/inventory/StoreFrontInventoryStatisticsInterface.h"
+#include "org/allbinary/business/context/modules/storefront/statistics/inventory/StoreFrontInventoryStatisticsData.h"
 
 class StoreFrontInventoryStatistics
             : public Object
-        : public StoreFrontInventoryStatisticsInterface {
+        , public StoreFrontInventoryStatisticsInterface {
 
     private: int64_t totalNumberOfItems= 0;
 
-    private: Money totalInventorySaleValueMoney;
+    private: Money* totalInventorySaleValueMoney;
 
-public: StoreFrontInventoryStatistics(StoreFrontInterface storeFrontInterface);
+public: StoreFrontInventoryStatistics(StoreFrontInterface* storeFrontInterface);
 
-    public: Long getNumber();
+    public: int64_t getNumber();
 
-    public: Money getTotal();
+    public: Money* getTotal();
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
-    public: BasicArrayList toVector();
+    public: BasicArrayList* toVector();
 
     public: Object* getKey();
 

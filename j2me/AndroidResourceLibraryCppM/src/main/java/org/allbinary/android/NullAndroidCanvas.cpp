@@ -20,6 +20,12 @@
 
             #include <hilog/log.h>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <android/graphics/Canvas.h>
@@ -51,9 +57,9 @@ class NullAndroidCanvas
             : public Object
          {
 
-    public: static const Canvas NULL_CANVAS = Canvas();
+    public: static Canvas* NULL_CANVAS() { static std::unique_ptr<Canvas> value(new Canvas()); return value.get(); }
 
-    public: static const MediaPlayer NULL_MEDIA_PLAYER = MediaPlayer();
+    public: static MediaPlayer* NULL_MEDIA_PLAYER() { static std::unique_ptr<MediaPlayer> value(new MediaPlayer()); return value.get(); }
 
 };
 

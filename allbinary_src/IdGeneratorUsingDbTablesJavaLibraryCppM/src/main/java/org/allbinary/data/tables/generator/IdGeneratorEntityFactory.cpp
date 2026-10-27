@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,33 +52,33 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "IdGeneratorEntity.h"
-#include "IdGeneratorEntityInterface.h"
+        #include "org/allbinary/data/tables/generator/IdGeneratorEntity.h"
+#include "org/allbinary/data/tables/generator/IdGeneratorEntityInterface.h"
 
 class IdGeneratorEntityFactory
             : public Object
          {
 
-    public: static IdGeneratorEntityInterface getInstance(){
+    public: static IdGeneratorEntityInterface* getInstance(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return org::allbinary::data::tables::generator::IdGeneratorEntity();
+                        return dynamic_cast<IdGeneratorEntityInterface*>(new org::allbinary::data::tables::generator::IdGeneratorEntity());
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil.put(commonStrings.EXCEPTION, "ServerLicenseRequestEntityFactory", commonStrings.GET_INSTANCE, e);
+logUtil->put(commonStrings->EXCEPTION, "ServerLicenseRequestEntityFactory", commonStrings->GET_INSTANCE, &e);
     
 
 

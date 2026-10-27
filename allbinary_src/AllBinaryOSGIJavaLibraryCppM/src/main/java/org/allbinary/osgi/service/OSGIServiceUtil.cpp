@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -68,9 +74,9 @@ class OSGIServiceUtil
             : public Object
          {
 
-    private: static OSGIServiceUtil instance() { return OSGIServiceUtil(); }
+    private: static OSGIServiceUtil* instance() { static std::unique_ptr<OSGIServiceUtil> value(new OSGIServiceUtil()); return value.get(); }
 
-    public: static OSGIServiceUtil getInstance(){
+    public: static OSGIServiceUtil* getInstance(){
 
 
 
@@ -80,7 +86,7 @@ class OSGIServiceUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: OSGIServiceUtil(){
 }
@@ -88,9 +94,9 @@ private: OSGIServiceUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getServicesObjectVector(Object bundleContext, std::vector<ServiceReference> serviceReferences){
+    public: BasicArrayList* getServicesObjectVector(Object* bundleContext, std::vector<ServiceReference*> serviceReferences){
 
-    BasicArrayList vector = BasicArrayListD();;
+    BasicArrayList* vector = new BasicArrayListD();;
     
 
                         if(serviceReferences != 
@@ -101,7 +107,7 @@ private: OSGIServiceUtil(){
                                     
     int32_t size = serviceReferences.size();;
     
-this->logUtil.putF("Service References: " +size, this, "getServicesObjectVector");
+this->logUtil->putF("Service References: " +size, this, "getServicesObjectVector");
     
 
 
@@ -111,7 +117,7 @@ this->logUtil.putF("Service References: " +size, this, "getServicesObjectVector"
     int32_t index = 0;index < size; index++)
         {
 
-    ServiceReference serviceReference = serviceReferences[index];;
+    ServiceReference* serviceReference = serviceReferences[index];;
     
 
                         if(serviceReference != 
@@ -120,7 +126,7 @@ this->logUtil.putF("Service References: " +size, this, "getServicesObjectVector"
                         
                                     {
                                     
-    OSGIServiceInterface osgiServiceInterface = bundleContext.getService(serviceReference);;
+    OSGIServiceInterface* osgiServiceInterface = dynamic_cast<OSGIServiceInterface*>(bundleContext->getService(serviceReference));;
     
 
                         if(osgiServiceInterface == 
@@ -131,12 +137,12 @@ this->logUtil.putF("Service References: " +size, this, "getServicesObjectVector"
                                     
 
 
-                            throw Exception("No Service For Reference");
+                            throw new Exception("No Service For Reference");
                     
 
                                     }
                                 
-vector.add(osgiServiceInterface);
+vector->add(osgiServiceInterface);
     
 
                                     }

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -76,15 +82,15 @@ class BaseGameStatistics
             : public Object
          {
 
-    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(Integer::MAX_VALUE);
+    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(Integer.MAX_VALUE);
 
-    private: const TimeDelayHelper updateDelayHelper = TimeDelayHelper(2000);
+    private: TimeDelayHelper* updateDelayHelper = new TimeDelayHelper(2000);
 
     private: int64_t totalRefreshes= 0;
 
     private: int64_t totalFrames= 0;
 
-    protected: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
+    protected: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
 public: BaseGameStatistics();
 
@@ -98,15 +104,15 @@ public: BaseGameStatistics();
 
     public: void nextRefresh();
 
-    private: const int32_t DEFAULT_SCALE_FACTOR = ScaleFactorFactory::getInstance().DEFAULT_SCALE_FACTOR;
+    private: const int32_t DEFAULT_SCALE_FACTOR = ScaleFactorFactory::getInstance()->DEFAULT_SCALE_FACTOR;
 
     public: int16_t getRefreshRate();
 
-    protected: TimeDelayHelper getTimeDelayHelper();
+    protected: TimeDelayHelper* getTimeDelayHelper();
 
     protected: const std::string NOT = "Not enough Time to Calculate";
 
-    private: const std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;
+    private: const std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;
 
     private: const std::vector<std::string> STRING_ARRAY = 
                                                         {
@@ -124,7 +130,7 @@ public: BaseGameStatistics();
                                                             ['F','r','a','m','e','s','/','1','0',' ','S','e','c',':'],['X','X'],['P','a','i','n','t','s','/','1','0',' ','S','e','c',':'],['X','X']
                                                         };
 
-    private: const PrimitiveLongSingleton primitiveLongSingleton = PrimitiveLongSingleton::getInstance();
+    private: PrimitiveLongSingleton* primitiveLongSingleton = PrimitiveLongSingleton::getInstance();
 
     public: std::vector<std::vector<char>> to2DCharArray();
 

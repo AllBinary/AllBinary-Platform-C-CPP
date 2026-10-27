@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_INVENTORYHELPER_H
         #define ADMIN_TAGHELPERS_INVENTORYHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -59,15 +65,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicTable.h"
+        #include "admin/taghelpers/BasicTable.h"
 
 class InventoryHelper: public BasicTable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: Portion portion;
+    private: Portion* portion;
 
-public: InventoryHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: InventoryHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
     public: std::string drop();
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_AG_WEAPON_MEDIA_AUDIO_DROPWEAPONSOUND_H
         #define ORG_ALLBINARY_AG_WEAPON_MEDIA_AUDIO_DROPWEAPONSOUND_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/media/audio/CompositeSound.h>
 
       
@@ -48,9 +54,9 @@
         
 class DropWeaponSound: public CompositeSound {
 
-    private: static Sound soundInterface = DropWeaponSound();
+    private: static inline Sound* soundInterface = new DropWeaponSound();
 
-    public: static Sound getInstance();
+    public: static Sound* getInstance();
 
 private: DropWeaponSound();
 

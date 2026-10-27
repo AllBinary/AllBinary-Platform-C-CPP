@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_RENDERER_ALLBINARYRENDERERBASE3_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_RENDERER_ALLBINARYRENDERERBASE3_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,13 +69,13 @@ class AllBinaryRendererBase3
             : public Object
          {
 
-    public: const BasicArrayList list = BasicArrayListD();
+    public: BasicArrayList* list = new BasicArrayListD();
 
                 //@Throws(Exception.constructor)
             
-    protected: void update(GL10 gl);
+    protected: void update(GL10* gl);
 
-    public: void add(Image image);
+    public: void add(Image* image);
 
 };
 

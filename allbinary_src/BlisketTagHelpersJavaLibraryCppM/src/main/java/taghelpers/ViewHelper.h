@@ -21,6 +21,12 @@
         #ifndef TAGHELPERS_VIEWHELPER_H
         #define TAGHELPERS_VIEWHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -79,17 +85,17 @@
         
 class ViewHelper
             : public Object
-        : public TransformInterface {
+        , public TransformInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: TransformInterface componentInterface;
+    private: TransformInterface* componentInterface;
 
-public: ViewHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: ViewHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
     public: int32_t NO_TYPE = 0;
 
@@ -101,17 +107,17 @@ public: ViewHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             
-    public: Document toXmlDoc();
+    public: Document* toXmlDoc();
 
-    public: TransformInterface getViewObject();
+    public: TransformInterface* getViewObject();
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface getTransformInfoInterface();
+    public: TransformInfoInterface* getTransformInfoInterface();
 
-    public: TransformDocumentInterface getTransformDocumentInterface();
+    public: TransformDocumentInterface* getTransformDocumentInterface();
 
-    public: void setTransformDocumentInterface(TransformDocumentInterface viewDocumentInterface);
+    public: void setTransformDocumentInterface(TransformDocumentInterface* viewDocumentInterface);
 
 };
 

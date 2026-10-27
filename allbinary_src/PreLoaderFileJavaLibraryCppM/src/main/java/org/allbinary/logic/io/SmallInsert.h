@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_SMALLINSERT_H
         #define ORG_ALLBINARY_LOGIC_IO_SMALLINSERT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -65,9 +71,9 @@ class SmallInsert
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: std::string fileName;
 

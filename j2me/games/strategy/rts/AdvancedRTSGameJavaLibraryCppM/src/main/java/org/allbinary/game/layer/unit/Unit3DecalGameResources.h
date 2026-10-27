@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/resources/BasicGameResources.h>
@@ -58,9 +64,9 @@
         
 class Unit3DecalGameResources: public BasicGameResources {
 
-    private: static Unit3DecalGameResources instance() { return Unit3DecalGameResources(); }
+    private: static Unit3DecalGameResources* instance() { static std::unique_ptr<Unit3DecalGameResources> value(new Unit3DecalGameResources()); return value.get(); }
 
-    public: static BasicGameResources getInstance();
+    public: static BasicGameResources* getInstance();
 
 private: Unit3DecalGameResources();
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESGL10IMAGEFACTORY_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESGL10IMAGEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Image.h>
 
       
@@ -48,12 +54,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLImageFactory.h"
-#include "OpenGLESGL10Image.h"
+        #include "org/allbinary/image/opengles/OpenGLImageFactory.h"
+#include "org/allbinary/image/opengles/OpenGLESGL10Image.h"
 
 class OpenGLESGL10ImageFactory: public OpenGLImageFactory {
 
-    public: Image getInstance(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory);
+    public: Image* getInstance(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory);
 
 };
 

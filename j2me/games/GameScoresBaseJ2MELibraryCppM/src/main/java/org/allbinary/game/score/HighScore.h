@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -71,13 +77,13 @@ class HighScore
 
     private: std::string name;
 
-    private: GameInfo gameInfo;
+    private: GameInfo* gameInfo;
 
     private: int64_t score;
 
     private: std::string scoreString;
 
-public: HighScore(int32_t id, std::string name, GameInfo gameInfo, int64_t score);
+public: HighScore(int32_t id, std::string name, GameInfo* gameInfo, int64_t score);
 
     public: int32_t getId();
 
@@ -89,7 +95,7 @@ public: HighScore(int32_t id, std::string name, GameInfo gameInfo, int64_t score
             
     public: std::vector<int8_t> getAsBytes();
 
-    public: GameInfo getGameInfo();
+    public: GameInfo* getGameInfo();
 
     public: std::string getScoreString();
 

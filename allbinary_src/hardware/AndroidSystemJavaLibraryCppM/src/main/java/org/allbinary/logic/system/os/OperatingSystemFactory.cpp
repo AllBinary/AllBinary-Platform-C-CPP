@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,18 +58,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NoOperatingSystem.h"
-#include "GenericOperatingSystem.h"
-#include "SystemProperties.h"
-#include "OperatingSystems.h"
+        #include "org/allbinary/logic/system/os/NoOperatingSystem.h"
+#include "org/allbinary/logic/system/os/GenericOperatingSystem.h"
+#include "org/allbinary/logic/system/os/SystemProperties.h"
+#include "org/allbinary/logic/system/os/OperatingSystems.h"
 
 class OperatingSystemFactory
             : public Object
          {
 
-    private: static OperatingSystemFactory instance() { return OperatingSystemFactory(); }
+    private: static OperatingSystemFactory* instance() { static std::unique_ptr<OperatingSystemFactory> value(new OperatingSystemFactory()); return value.get(); }
 
-    public: static OperatingSystemFactory getInstance(){
+    public: static OperatingSystemFactory* getInstance(){
 
 
 
@@ -73,9 +79,9 @@ class OperatingSystemFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: GenericOperatingSystem genericOperatingSystem = NoOperatingSystem::NO_OPERATING_SYSTEM;
+    private: GenericOperatingSystem* genericOperatingSystem = NoOperatingSystem::NO_OPERATING_SYSTEM;
 
     private: bool hasDetected = false;
 
@@ -84,17 +90,17 @@ private: OperatingSystemFactory(){
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: GenericOperatingSystem getOperatingSystemInstance(){
+    public: GenericOperatingSystem* getOperatingSystemInstance(){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
-    SystemProperties systemProperties = SystemProperties::getInstance();;
+    SystemProperties* systemProperties = SystemProperties::getInstance();;
     
 
-    std::string osName = systemProperties.getName();;
+    std::string osName = systemProperties->getName();;
     
 
                         if(!this->hasDetected)
@@ -103,27 +109,27 @@ private: OperatingSystemFactory(){
                                     this->hasDetected= true;
     
 
-                        if(osName.indexOf(OperatingSystems::getInstance().ANDROID) >= 0)
+                        if(JavaString::indexOf(osName, OperatingSystems::getInstance()->ANDROID) >= 0)
                         
                                     {
-                                    this->logUtil.putF("Found a Android OS", this, commonStrings.GET_INSTANCE);
+                                    this->logUtil->putF("Found a Android OS", this, commonStrings->GET_INSTANCE);
     
-this->genericOperatingSystem= AndroidOperatingSystemFactory::getInstance().getOperatingSystemInstance();
+this->genericOperatingSystem= AndroidOperatingSystemFactory::getInstance()->getOperatingSystemInstance();
     
-this->logUtil.putF(StringMaker().append("Operating System Info: ").append(this->genericOperatingSystem.toString()).toString(), this, commonStrings.GET_INSTANCE);
+this->logUtil->putF((new StringMaker())->append("Operating System Info: ")->append(this->genericOperatingSystem->toString())->toString(), this, commonStrings->GET_INSTANCE);
     
 
                                     }
                                 
                              else 
-                        if(osName.indexOf(OperatingSystems::getInstance().HARMONY) >= 0)
+                        if(JavaString::indexOf(osName, OperatingSystems::getInstance()->HARMONY) >= 0)
                         
                                     {
-                                    this->logUtil.putF("Found a Harmony OS", this, commonStrings.GET_INSTANCE);
+                                    this->logUtil->putF("Found a Harmony OS", this, commonStrings->GET_INSTANCE);
     
-this->genericOperatingSystem= AndroidOperatingSystemFactory::getInstance().getOperatingSystemInstance();
+this->genericOperatingSystem= AndroidOperatingSystemFactory::getInstance()->getOperatingSystemInstance();
     
-this->logUtil.putF(StringMaker().append("Operating System Info: ").append(this->genericOperatingSystem.toString()).toString(), this, commonStrings.GET_INSTANCE);
+this->logUtil->putF((new StringMaker())->append("Operating System Info: ")->append(this->genericOperatingSystem->toString())->toString(), this, commonStrings->GET_INSTANCE);
     
 
                                     }
@@ -132,7 +138,7 @@ this->logUtil.putF(StringMaker().append("Operating System Info: ").append(this->
                             
 
 
-                            throw Exception(StringMaker().append("OS Not Supported: ").append(osName).toString());
+                            throw new Exception((new StringMaker())->append("OS Not Supported: ")->append(osName)->toString());
                     
 
                         }
@@ -142,11 +148,11 @@ this->logUtil.putF(StringMaker().append("Operating System Info: ").append(this->
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 this->genericOperatingSystem= NoOperatingSystem::NO_OPERATING_SYSTEM;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
     
 }
 

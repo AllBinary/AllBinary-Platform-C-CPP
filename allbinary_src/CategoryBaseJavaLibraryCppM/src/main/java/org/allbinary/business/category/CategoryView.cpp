@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -70,24 +76,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryInterface.h"
-#include "CategoryData.h"
+        #include "org/allbinary/business/category/CategoryInterface.h"
+#include "org/allbinary/business/category/CategoryData.h"
 
 class CategoryView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: CategoryInterface categoryInterface;
+    private: CategoryInterface* categoryInterface;
 
-public: CategoryView(CategoryInterface categoryInterface){
+public: CategoryView(CategoryInterface* categoryInterface){
 this->categoryInterface= categoryInterface;
     
 }
 
 
-    public: CategoryInterface getCategoryInterface(){
+    public: CategoryInterface* getCategoryInterface(){
 
 
 
@@ -99,24 +105,24 @@ this->categoryInterface= categoryInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = document.createElement(CategoryData::getInstance().NAME);;
+    Node* node = document->createElement(CategoryData::getInstance()->NAME);;
     
 
-    BasicArrayList childCategoryVector = this->categoryInterface.getChildNodes();;
+    BasicArrayList* childCategoryVector = this->categoryInterface->getChildNodes();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
                         
                                     {
-                                    this->logUtil.putF("Number Of Children: " +childCategoryVector.size(), this, "toXmlNode");
+                                    this->logUtil->putF("Number Of Children: " +childCategoryVector->size(), this, "toXmlNode");
     
 
                                     }
                                 
 
-    int32_t size = childCategoryVector.size();;
+    int32_t size = childCategoryVector->size();;
     
 
 
@@ -126,10 +132,10 @@ this->categoryInterface= categoryInterface;
     int32_t i = 0;i < size; i++)
         {
 
-    Object* anyType = childCategoryVector.get(i);;
+    Object* anyType = childCategoryVector->get(i);;
     
 
-    CategoryPropertiesInterface categoryPropertiesInterface = 
+    CategoryPropertiesInterface* categoryPropertiesInterface = 
                 null
             ;;
     
@@ -137,7 +143,7 @@ this->categoryInterface= categoryInterface;
                         if(InterfaceUtil::isImplemented("CategoryPropertiesInterface", anyType))
                         
                                     {
-                                    categoryPropertiesInterface= *dynamic_cast<CategoryPropertiesInterface*>(anyType);
+                                    categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(anyType);
     
 
                                     }
@@ -147,29 +153,29 @@ this->categoryInterface= categoryInterface;
                         
                                     {
                                     
-    CategoryInterface categoryInterface = *dynamic_cast<CategoryInterface*>(anyType);;
+    CategoryInterface* categoryInterface = dynamic_cast<CategoryInterface*>(anyType);;
     
-categoryPropertiesInterface= categoryInterface.getProperties();
+categoryPropertiesInterface= categoryInterface->getProperties();
     
 
                                     }
                                 
                         else {
                             
-    std::string isImpl = InterfaceUtil::viewAll(anyType->getClass(), CommonSeps::getInstance().NEW_LINE);;
+    std::string isImpl = InterfaceUtil::viewAll(anyType->getClass(), CommonSeps::getInstance()->NEW_LINE);;
     
 
 
 
-                            throw Exception("CategoryView found unknown object.\n" +"Show Testing:" +isImpl);
+                            throw new Exception("CategoryView found unknown object.\n" +"Show Testing:" +isImpl);
                     
 
                         }
                             
 
-    Node childCategoryNode = CategoryPropertiesView(categoryPropertiesInterface).toXmlNode(document);;
+    Node* childCategoryNode = (new CategoryPropertiesView(categoryPropertiesInterface))->toXmlNode(document);;
     
-node.appendChild(childCategoryNode);
+node->appendChild(childCategoryNode);
     
 }
 

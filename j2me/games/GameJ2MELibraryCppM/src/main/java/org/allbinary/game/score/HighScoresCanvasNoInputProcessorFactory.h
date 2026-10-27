@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASNOINPUTPROCESSORFACTORY_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASNOINPUTPROCESSORFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/score/displayable/HighScoresCanvas.h>
@@ -44,14 +50,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HighScoresCanvasInputProcessorFactoryInterface.h"
-#include "HighScoresCanvasInputProcessor.h"
+        #include "org/allbinary/game/score/HighScoresCanvasInputProcessorFactoryInterface.h"
+#include "org/allbinary/game/score/HighScoresCanvasInputProcessor.h"
 
 class HighScoresCanvasNoInputProcessorFactory
             : public Object
-        : public HighScoresCanvasInputProcessorFactoryInterface {
+        , public HighScoresCanvasInputProcessorFactoryInterface {
 
-    public: HighScoresCanvasInputProcessor getInstance(HighScoresCanvas highScoresCanvas);
+    public: HighScoresCanvasInputProcessor* getInstance(HighScoresCanvas* highScoresCanvas);
 
 };
 

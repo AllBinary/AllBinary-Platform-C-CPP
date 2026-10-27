@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Integer.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -53,19 +59,19 @@
         
 class PaymentEntityInterface: public BasicDataTableInterface {
 
-    std::string getLastId(std::string userName)
+    public: virtual std::string getLastId(std::string userName) = 0;
 
-    void setDefault(std::string userName, Integer index)
+    public: virtual void setDefault(std::string userName, int32_t index) = 0;
 
-    PaymentInterface getDefault(std::string userName)
+    public: virtual PaymentInterface* getDefault(std::string userName) = 0;
 
-    BasicArrayList get(std::string userName)
+    public: virtual BasicArrayList* get(std::string userName) = 0;
 
-    void add(std::string userName, PaymentInterface paymentInterface)
+    public: virtual void add(std::string userName, PaymentInterface* paymentInterface) = 0;
 
-    void remove(std::string userName, Integer index)
+    public: virtual void remove(std::string userName, int32_t index) = 0;
 
-    void insert(BasicArrayList values)
+    public: virtual void insert(BasicArrayList* values) = 0;
 
 };
 

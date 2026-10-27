@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,15 +60,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFileInputStream.h"
+        #include "org/allbinary/logic/io/AbFileInputStream.h"
 
 class LineReader
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: std::string fileName;
 
@@ -70,9 +76,9 @@ class LineReader
 
     private: int32_t index = 0;
 
-    private: AbFileInputStream idFile;
+    private: AbFileInputStream* idFile;
 
-    private: DataInputStream idData;
+    private: DataInputStream* idData;
 
 public: LineReader(std::string fileName){
 
@@ -82,17 +88,17 @@ public: LineReader(std::string fileName){
     
 this->fileName= fileName;
     
-this->idFile= AbFileInputStream(fileName);
+this->idFile= new AbFileInputStream(fileName);
     
-this->idFile.read(bytes);
+this->idFile->read(bytes);
     
 this->string= String.fromCharCode(...bytes);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put("File: " +fileName, this, "LineReader", e);
+this->logUtil->put("File: " +fileName, this, "LineReader", &e);
     
 
 
@@ -109,7 +115,7 @@ this->logUtil.put("File: " +fileName, this, "LineReader", e);
 
         try {
             
-    int32_t nextIndex = this->string.indexOf(CommonSeps::getInstance().NEW_LINE, index);;
+    int32_t nextIndex = this->string.indexOf(CommonSeps::getInstance()->NEW_LINE, index);;
     
 
                         if(nextIndex ==  -1)
@@ -132,9 +138,9 @@ this->logUtil.put("File: " +fileName, this, "LineReader", e);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(commonStrings.EXCEPTION, this, "hasNext", e);
+this->logUtil->put(commonStrings->EXCEPTION, this, "hasNext", &e);
     
 
 
@@ -159,7 +165,7 @@ this->logUtil.put(commonStrings.EXCEPTION, this, "hasNext", e);
 
         try {
             
-    int32_t nextIndex = this->string.indexOf(CommonSeps::getInstance().NEW_LINE, index);;
+    int32_t nextIndex = this->string.indexOf(CommonSeps::getInstance()->NEW_LINE, index);;
     
 
                         if(nextIndex ==  -1)
@@ -168,7 +174,7 @@ this->logUtil.put(commonStrings.EXCEPTION, this, "hasNext", e);
                                     
 
 
-                            throw Exception("next() should have been called first");
+                            throw new Exception("next() should have been called first");
                     
 
                                     }
@@ -186,9 +192,9 @@ index= nextIndex +1;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(commonStrings.EXCEPTION, this, "next", e);
+this->logUtil->put(commonStrings->EXCEPTION, this, "next", &e);
     
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,7 +52,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentGatewayEntity.h"
+        #include "org/allbinary/data/tables/user/commerce/money/payment/gateway/PaymentGatewayEntity.h"
 
 class PaymentGatewayEntityFactory
             : public Object
@@ -54,9 +60,9 @@ class PaymentGatewayEntityFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static PaymentGatewayEntity getInstance(){
+    public: static PaymentGatewayEntity* getInstance(){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
         try {
@@ -64,20 +70,20 @@ class PaymentGatewayEntityFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return org::allbinary::data::tables::user::commerce::money::payment::gateway::PaymentGatewayEntity();
+                        return new org::allbinary::data::tables::user::commerce::money::payment::gateway::PaymentGatewayEntity();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
                         
                                     {
-                                    logUtil.put(commonStrings.EXCEPTION, "PaymentGatewayEntityFactory", commonStrings.GET_INSTANCE, e);
+                                    logUtil->put(commonStrings->EXCEPTION, "PaymentGatewayEntityFactory", commonStrings->GET_INSTANCE, &e);
     
 
                                     }

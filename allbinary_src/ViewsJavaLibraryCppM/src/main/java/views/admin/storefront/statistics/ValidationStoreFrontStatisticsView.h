@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_STOREFRONT_STATISTICS_VALIDATIONSTOREFRONTSTATISTICSVIEW_H
         #define VIEWS_ADMIN_STOREFRONT_STATISTICS_VALIDATIONSTOREFRONTSTATISTICSVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
@@ -62,23 +68,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreFrontStatisticsComponent.h"
+        #include "views/admin/storefront/statistics/StoreFrontStatisticsComponent.h"
 //extends StoreFrontComponent
 class ValidationStoreFrontStatisticsView: public StoreFrontStatisticsComponent, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: StoreFrontInterface newStoreFrontInterface;
+    protected: StoreFrontInterface* newStoreFrontInterface;
 
-public: ValidationStoreFrontStatisticsView(TransformInfoInterface transformInfoInterface);
+public: ValidationStoreFrontStatisticsView(TransformInfoInterface* transformInfoInterface);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string validationInfo();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
 };
 

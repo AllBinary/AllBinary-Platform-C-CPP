@@ -6,6 +6,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -34,17 +40,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameAdStateFactoryInterface.h"
-#include "AppNameLicensingAdConfiguration.h"
-#include "GameAdStateBase.h"
+        #include "org/allbinary/business/advertisement/GameAdStateFactoryInterface.h"
+#include "org/allbinary/business/advertisement/AppNameLicensingAdConfiguration.h"
+#include "org/allbinary/business/advertisement/GameAdStateBase.h"
 
 class GameAdStateFactory
             : public Object
-        : public GameAdStateFactoryInterface {
+        , public GameAdStateFactoryInterface {
 
-    private: static GameAdStateFactory instance() { return GameAdStateFactory(); }
+    private: static GameAdStateFactory* instance() { static std::unique_ptr<GameAdStateFactory> value(new GameAdStateFactory()); return value.get(); }
 
-    public: static GameAdStateFactory getInstance(){
+    public: static GameAdStateFactory* getInstance(){
 
 
 
@@ -54,14 +60,14 @@ class GameAdStateFactory
 }
 
 
-    private: const std::vector<GameAdState> gameAdStateArray = 
+    private: const std::vector<GameAdState*> gameAdStateArray = 
                                                         {
-                                                            GameAdState(AppNameLicensingAdConfiguration())
+                                                            new GameAdState(new AppNameLicensingAdConfiguration())
                                                         };
 
-    private: GameAdState gameAdState = this->gameAdStateArray[0];
+    private: GameAdState* gameAdState = this->gameAdStateArray[0];
 
-    public: GameAdState getCurrentInstance(){
+    public: GameAdState* getCurrentInstance(){
 
 
 
@@ -73,7 +79,7 @@ class GameAdStateFactory
 
                 //@Throws(Exception.constructor)
             
-    public: GameAdStateBase getInstanceForApp(SoftwareInformation softwareInformation){
+    public: GameAdStateBase* getInstanceForApp(SoftwareInformation* softwareInformation){
 this->gameAdState= this->gameAdStateArray[0];
     
 

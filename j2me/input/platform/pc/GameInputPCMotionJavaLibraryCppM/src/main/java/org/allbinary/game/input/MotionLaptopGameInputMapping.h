@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_MOTIONLAPTOPGAMEINPUTMAPPING_H
         #define ORG_ALLBINARY_GAME_INPUT_MOTIONLAPTOPGAMEINPUTMAPPING_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/input/mapping/InputToGameKeyMapping.h>
 
       
@@ -42,12 +48,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PCGameInputMapping.h"
-#include "MotionLaptopDefaultGameInputMapping.h"
+        #include "org/allbinary/game/input/PCGameInputMapping.h"
+#include "org/allbinary/game/input/MotionLaptopDefaultGameInputMapping.h"
 
 class MotionLaptopGameInputMapping: public PCGameInputMapping {
 
-    protected: InputToGameKeyMapping getDefault();
+    protected: InputToGameKeyMapping* getDefault();
 
 };
 

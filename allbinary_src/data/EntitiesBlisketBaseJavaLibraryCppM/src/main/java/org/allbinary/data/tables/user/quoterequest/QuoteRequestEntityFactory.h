@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_QUOTEREQUEST_QUOTEREQUESTENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_QUOTEREQUEST_QUOTEREQUESTENTITYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,21 +55,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "QuoteRequestEntity.h"
+        #include "org/allbinary/data/tables/user/quoterequest/QuoteRequestEntity.h"
 
 class QuoteRequestEntityFactory
             : public Object
          {
 
-    private: static QuoteRequestEntityFactory instance() { return QuoteRequestEntityFactory(); }
+    private: static QuoteRequestEntityFactory* instance() { static std::unique_ptr<QuoteRequestEntityFactory> value(new QuoteRequestEntityFactory()); return value.get(); }
 
-    public: static QuoteRequestEntityFactory getInstance();
+    public: static QuoteRequestEntityFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: QuoteRequestEntityFactory();
 
-    public: QuoteRequestEntity getQuoteRequestEntityInstance();
+    public: QuoteRequestEntity* getQuoteRequestEntityInstance();
 
 };
 

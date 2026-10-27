@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_DB_DBCONNECTIONINFO_H
         #define ORG_ALLBINARY_BUSINESS_INIT_DB_DBCONNECTIONINFO_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/io/path/AbPathData.h>
@@ -50,11 +56,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DatabaseConnectionInfoInterface.h"
+        #include "org/allbinary/business/init/db/DatabaseConnectionInfoInterface.h"
 
 class DbConnectionInfo
             : public Object
-        : public DatabaseConnectionInfoInterface {
+        , public DatabaseConnectionInfoInterface {
 
     private: std::string jdbcDriver;
 

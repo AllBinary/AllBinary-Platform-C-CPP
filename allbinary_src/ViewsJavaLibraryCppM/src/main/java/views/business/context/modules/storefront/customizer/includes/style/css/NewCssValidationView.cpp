@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
@@ -65,27 +71,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CssCustomizerView.h"
+        #include "views/business/context/modules/storefront/customizer/includes/style/css/CssCustomizerView.h"
 
 class NewCssValidationView: public CssCustomizerView, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: NewCssValidationView(TransformInfoInterface transformInfoInterface) : CssCustomizerView(transformInfoInterface){
+public: NewCssValidationView(TransformInfoInterface* transformInfoInterface) : CssCustomizerView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->styleValidationInterface= GenericCssStyleValidation();
+this->styleValidationInterface= new GenericCssStyleValidation();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Document toXmlDoc(){
+    public: Document* toXmlDoc(){
 
 
 
@@ -95,13 +101,13 @@ this->styleValidationInterface= GenericCssStyleValidation();
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
 
                             {
-                            CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this->styleValidationInterface);
+                            CustomizerUtil::getInstance()->insert(this->getTransformInfoInterface(), dynamic_cast<DomNodeInterface*>(this->styleValidationInterface));
     
 
                             }
@@ -114,13 +120,13 @@ this->styleValidationInterface= GenericCssStyleValidation();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -140,25 +146,25 @@ this->styleValidationInterface= GenericCssStyleValidation();
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->styleValidationInterface.validationInfo());
+stringBuffer->append(this->styleValidationInterface.validationInfo());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -174,7 +180,7 @@ stringBuffer.append(this->styleValidationInterface.validationInfo());
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -184,7 +190,7 @@ stringBuffer.append(this->styleValidationInterface.validationInfo());
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -201,7 +207,7 @@ stringBuffer.append(this->styleValidationInterface.validationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return views.ValidationOnlyTempUtil.getInstance().view(this);;
+                        return views.ValidationOnlyTempUtil.getInstance()->view(this);;
     
 }
 

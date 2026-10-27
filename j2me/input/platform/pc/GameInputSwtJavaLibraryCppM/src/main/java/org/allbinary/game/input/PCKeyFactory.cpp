@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/math/PositionStrings.h>
@@ -47,186 +53,186 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PCGameKey.h"
-#include "Input.h"
+        #include "org/allbinary/game/input/PCGameKey.h"
+#include "org/allbinary/game/input/Input.h"
 
 class PCKeyFactory
             : public Object
          {
 
-    private: static const PCKeyFactory SINGLETON = PCKeyFactory();
+    private: static PCKeyFactory* SINGLETON() { static std::unique_ptr<PCKeyFactory> value(new PCKeyFactory()); return value.get(); }
 
-    public: static PCKeyFactory getInstance(){
+    public: static PCKeyFactory* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PCKeyFactory::SINGLETON;
+                        return PCKeyFactory::SINGLETON();
     
 }
 
 
-    public: const PCGameKey UNKNOWN = PCGameKey(254, "UNKNOWN");
+    public: PCGameKey* UNKNOWN = new PCGameKey(254, "UNKNOWN");
 
-    public: const PCGameKey ENTER = PCGameKey(13, "Enter");
+    public: PCGameKey* ENTER = new PCGameKey(13, "Enter");
 
-    public: const PCGameKey _A = PCGameKey(65, "A");
+    public: PCGameKey* _A = new PCGameKey(65, "A");
 
-    public: const PCGameKey _B = PCGameKey(66, "B");
+    public: PCGameKey* _B = new PCGameKey(66, "B");
 
-    public: const PCGameKey _C = PCGameKey(67, "C");
+    public: PCGameKey* _C = new PCGameKey(67, "C");
 
-    public: const PCGameKey _D = PCGameKey(68, "D");
+    public: PCGameKey* _D = new PCGameKey(68, "D");
 
-    public: const PCGameKey _E = PCGameKey(69, "E");
+    public: PCGameKey* _E = new PCGameKey(69, "E");
 
-    public: const PCGameKey _F = PCGameKey(70, "F");
+    public: PCGameKey* _F = new PCGameKey(70, "F");
 
-    public: const PCGameKey _G = PCGameKey(71, "G");
+    public: PCGameKey* _G = new PCGameKey(71, "G");
 
-    public: const PCGameKey _H = PCGameKey(72, "H");
+    public: PCGameKey* _H = new PCGameKey(72, "H");
 
-    public: const PCGameKey _I = PCGameKey(73, "I");
+    public: PCGameKey* _I = new PCGameKey(73, "I");
 
-    public: const PCGameKey _J = PCGameKey(74, "J");
+    public: PCGameKey* _J = new PCGameKey(74, "J");
 
-    public: const PCGameKey _K = PCGameKey(75, "K");
+    public: PCGameKey* _K = new PCGameKey(75, "K");
 
-    public: const PCGameKey _L = PCGameKey(76, "L");
+    public: PCGameKey* _L = new PCGameKey(76, "L");
 
-    public: const PCGameKey _M = PCGameKey(77, "M");
+    public: PCGameKey* _M = new PCGameKey(77, "M");
 
-    public: const PCGameKey _N = PCGameKey(78, "N");
+    public: PCGameKey* _N = new PCGameKey(78, "N");
 
-    public: const PCGameKey _O = PCGameKey(79, "O");
+    public: PCGameKey* _O = new PCGameKey(79, "O");
 
-    public: const PCGameKey _P = PCGameKey(80, "P");
+    public: PCGameKey* _P = new PCGameKey(80, "P");
 
-    public: const PCGameKey _Q = PCGameKey(81, "Q");
+    public: PCGameKey* _Q = new PCGameKey(81, "Q");
 
-    public: const PCGameKey _R = PCGameKey(82, "R");
+    public: PCGameKey* _R = new PCGameKey(82, "R");
 
-    public: const PCGameKey _S = PCGameKey(83, "S");
+    public: PCGameKey* _S = new PCGameKey(83, "S");
 
-    public: const PCGameKey _T = PCGameKey(84, "T");
+    public: PCGameKey* _T = new PCGameKey(84, "T");
 
-    public: const PCGameKey _U = PCGameKey(85, "U");
+    public: PCGameKey* _U = new PCGameKey(85, "U");
 
-    public: const PCGameKey _V = PCGameKey(86, "V");
+    public: PCGameKey* _V = new PCGameKey(86, "V");
 
-    public: const PCGameKey _W = PCGameKey(87, "W");
+    public: PCGameKey* _W = new PCGameKey(87, "W");
 
-    public: const PCGameKey _X = PCGameKey(88, "X");
+    public: PCGameKey* _X = new PCGameKey(88, "X");
 
-    public: const PCGameKey _Y = PCGameKey(89, "Y");
+    public: PCGameKey* _Y = new PCGameKey(89, "Y");
 
-    public: const PCGameKey _Z = PCGameKey(90, "Z");
+    public: PCGameKey* _Z = new PCGameKey(90, "Z");
 
-    public: const PCGameKey a = PCGameKey(97, "a");
+    public: PCGameKey* a = new PCGameKey(97, "a");
 
-    public: const PCGameKey b = PCGameKey(98, "b");
+    public: PCGameKey* b = new PCGameKey(98, "b");
 
-    public: const PCGameKey c = PCGameKey(99, "c");
+    public: PCGameKey* c = new PCGameKey(99, "c");
 
-    public: const PCGameKey d = PCGameKey(100, "d");
+    public: PCGameKey* d = new PCGameKey(100, "d");
 
-    public: const PCGameKey e = PCGameKey(101, "e");
+    public: PCGameKey* e = new PCGameKey(101, "e");
 
-    public: const PCGameKey f = PCGameKey(102, "f");
+    public: PCGameKey* f = new PCGameKey(102, "f");
 
-    public: const PCGameKey g = PCGameKey(103, "g");
+    public: PCGameKey* g = new PCGameKey(103, "g");
 
-    public: const PCGameKey h = PCGameKey(104, "h");
+    public: PCGameKey* h = new PCGameKey(104, "h");
 
-    public: const PCGameKey i = PCGameKey(105, "i");
+    public: PCGameKey* i = new PCGameKey(105, "i");
 
-    public: const PCGameKey j = PCGameKey(106, "j");
+    public: PCGameKey* j = new PCGameKey(106, "j");
 
-    public: const PCGameKey k = PCGameKey(107, "k");
+    public: PCGameKey* k = new PCGameKey(107, "k");
 
-    public: const PCGameKey l = PCGameKey(108, "l");
+    public: PCGameKey* l = new PCGameKey(108, "l");
 
-    public: const PCGameKey m = PCGameKey(109, "m");
+    public: PCGameKey* m = new PCGameKey(109, "m");
 
-    public: const PCGameKey n = PCGameKey(110, "n");
+    public: PCGameKey* n = new PCGameKey(110, "n");
 
-    public: const PCGameKey o = PCGameKey(111, "o");
+    public: PCGameKey* o = new PCGameKey(111, "o");
 
-    public: const PCGameKey p = PCGameKey(112, "p");
+    public: PCGameKey* p = new PCGameKey(112, "p");
 
-    public: const PCGameKey q = PCGameKey(113, "q");
+    public: PCGameKey* q = new PCGameKey(113, "q");
 
-    public: const PCGameKey r = PCGameKey(114, "r");
+    public: PCGameKey* r = new PCGameKey(114, "r");
 
-    public: const PCGameKey s = PCGameKey(115, "s");
+    public: PCGameKey* s = new PCGameKey(115, "s");
 
-    public: const PCGameKey t = PCGameKey(116, "t");
+    public: PCGameKey* t = new PCGameKey(116, "t");
 
-    public: const PCGameKey u = PCGameKey(117, "u");
+    public: PCGameKey* u = new PCGameKey(117, "u");
 
-    public: const PCGameKey v = PCGameKey(118, "v");
+    public: PCGameKey* v = new PCGameKey(118, "v");
 
-    public: const PCGameKey w = PCGameKey(119, "w");
+    public: PCGameKey* w = new PCGameKey(119, "w");
 
-    public: const PCGameKey x = PCGameKey(120, PositionStrings::getInstance().X);
+    public: PCGameKey* x = new PCGameKey(120, PositionStrings::getInstance()->X);
 
-    public: const PCGameKey y = PCGameKey(121, PositionStrings::getInstance().Y);
+    public: PCGameKey* y = new PCGameKey(121, PositionStrings::getInstance()->Y);
 
-    public: const PCGameKey z = PCGameKey(122, "z");
+    public: PCGameKey* z = new PCGameKey(122, "z");
 
-    public: const PCGameKey ZERO = PCGameKey(48, CommonPhoneStrings::getInstance().ZERO);
+    public: PCGameKey* ZERO = new PCGameKey(48, CommonPhoneStrings::getInstance()->ZERO);
 
-    public: const PCGameKey ONE = PCGameKey(49, CommonPhoneStrings::getInstance().ONE);
+    public: PCGameKey* ONE = new PCGameKey(49, CommonPhoneStrings::getInstance()->ONE);
 
-    public: const PCGameKey TWO = PCGameKey(50, CommonPhoneStrings::getInstance().TWO);
+    public: PCGameKey* TWO = new PCGameKey(50, CommonPhoneStrings::getInstance()->TWO);
 
-    public: const PCGameKey THREE = PCGameKey(51, CommonPhoneStrings::getInstance().THREE);
+    public: PCGameKey* THREE = new PCGameKey(51, CommonPhoneStrings::getInstance()->THREE);
 
-    public: const PCGameKey FOUR = PCGameKey(52, CommonPhoneStrings::getInstance().FOUR);
+    public: PCGameKey* FOUR = new PCGameKey(52, CommonPhoneStrings::getInstance()->FOUR);
 
-    public: const PCGameKey FIVE = PCGameKey(53, CommonPhoneStrings::getInstance().FIVE);
+    public: PCGameKey* FIVE = new PCGameKey(53, CommonPhoneStrings::getInstance()->FIVE);
 
-    public: const PCGameKey SIX = PCGameKey(54, CommonPhoneStrings::getInstance().SIX);
+    public: PCGameKey* SIX = new PCGameKey(54, CommonPhoneStrings::getInstance()->SIX);
 
-    public: const PCGameKey SEVEN = PCGameKey(55, CommonPhoneStrings::getInstance().SEVEN);
+    public: PCGameKey* SEVEN = new PCGameKey(55, CommonPhoneStrings::getInstance()->SEVEN);
 
-    public: const PCGameKey EIGHT = PCGameKey(56, CommonPhoneStrings::getInstance().EIGHT);
+    public: PCGameKey* EIGHT = new PCGameKey(56, CommonPhoneStrings::getInstance()->EIGHT);
 
-    public: const PCGameKey NINE = PCGameKey(57, CommonPhoneStrings::getInstance().NINE);
+    public: PCGameKey* NINE = new PCGameKey(57, CommonPhoneStrings::getInstance()->NINE);
 
-    public: const PCGameKey DPAD_UP = PCGameKey(38, CommonPhoneStrings::getInstance().UP);
+    public: PCGameKey* DPAD_UP = new PCGameKey(38, CommonPhoneStrings::getInstance()->UP);
 
-    public: const PCGameKey DPAD_DOWN = PCGameKey(40, CommonPhoneStrings::getInstance().DOWN);
+    public: PCGameKey* DPAD_DOWN = new PCGameKey(40, CommonPhoneStrings::getInstance()->DOWN);
 
-    public: const PCGameKey DPAD_LEFT = PCGameKey(37, CommonPhoneStrings::getInstance().LEFT);
+    public: PCGameKey* DPAD_LEFT = new PCGameKey(37, CommonPhoneStrings::getInstance()->LEFT);
 
-    public: const PCGameKey DPAD_RIGHT = PCGameKey(39, CommonPhoneStrings::getInstance().RIGHT);
+    public: PCGameKey* DPAD_RIGHT = new PCGameKey(39, CommonPhoneStrings::getInstance()->RIGHT);
 
-    public: const PCGameKey DPAD_UP2 = this->DPAD_UP;
+    public: PCGameKey* DPAD_UP2 = this->DPAD_UP;
 
-    public: const PCGameKey DPAD_DOWN2 = this->DPAD_DOWN;
+    public: PCGameKey* DPAD_DOWN2 = this->DPAD_DOWN;
 
-    public: const PCGameKey DPAD_LEFT2 = this->DPAD_LEFT;
+    public: PCGameKey* DPAD_LEFT2 = this->DPAD_LEFT;
 
-    public: const PCGameKey DPAD_RIGHT2 = this->DPAD_RIGHT;
+    public: PCGameKey* DPAD_RIGHT2 = this->DPAD_RIGHT;
 
-    public: const PCGameKey COMMA = PCGameKey(44, "COMMA");
+    public: PCGameKey* COMMA = new PCGameKey(44, "COMMA");
 
-    public: const PCGameKey SPACE = PCGameKey(32, "SPACE");
+    public: PCGameKey* SPACE = new PCGameKey(32, "SPACE");
 
-    public: const PCGameKey DEL = PCGameKey(46, "DEL");
+    public: PCGameKey* DEL = new PCGameKey(46, "DEL");
 
-    public: const PCGameKey STAR = PCGameKey(42, CommonPhoneStrings::getInstance().STAR);
+    public: PCGameKey* STAR = new PCGameKey(42, CommonPhoneStrings::getInstance()->STAR);
 
-    public: const PCGameKey QUESTION = PCGameKey(47, "?");
+    public: PCGameKey* QUESTION = new PCGameKey(47, "?");
 
-    public: const PCGameKey PERIOD = PCGameKey(46, CommonSeps::getInstance().PERIOD);
+    public: PCGameKey* PERIOD = new PCGameKey(46, CommonSeps::getInstance()->PERIOD);
 
-    public: const PCGameKey ESCAPE = PCGameKey(27, "Esc");
+    public: PCGameKey* ESCAPE = new PCGameKey(27, "Esc");
 
-    public: const PCGameKey BACK_SPACE = PCGameKey(8, "Backspace");
+    public: PCGameKey* BACK_SPACE = new PCGameKey(8, "Backspace");
 
-    public: bool isSubmission(Input input){
+    public: bool isSubmission(Input* input){
 
                         if(input == this->ENTER)
                         
@@ -249,7 +255,7 @@ class PCKeyFactory
 }
 
 
-    public: bool isDelete(Input input){
+    public: bool isDelete(Input* input){
 
                         if(input == this->DEL)
                         
@@ -272,7 +278,7 @@ class PCKeyFactory
 }
 
 
-    public: bool isBackSpace(Input input){
+    public: bool isBackSpace(Input* input){
 
                         if(input == this->BACK_SPACE)
                         
@@ -295,7 +301,7 @@ class PCKeyFactory
 }
 
 
-    public: bool isUp(Input input){
+    public: bool isUp(Input* input){
 
                         if(input == this->DPAD_UP || input == this->DPAD_UP2)
                         
@@ -318,7 +324,7 @@ class PCKeyFactory
 }
 
 
-    public: bool isDown(Input input){
+    public: bool isDown(Input* input){
 
                         if(input == this->DPAD_DOWN || input == this->DPAD_DOWN2)
                         
@@ -341,7 +347,7 @@ class PCKeyFactory
 }
 
 
-    public: bool isLeft(Input input){
+    public: bool isLeft(Input* input){
 
                         if(input == this->DPAD_LEFT || input == this->DPAD_LEFT2)
                         
@@ -364,7 +370,7 @@ class PCKeyFactory
 }
 
 
-    public: bool isRight(Input input){
+    public: bool isRight(Input* input){
 
                         if(input == this->DPAD_RIGHT || input == this->DPAD_RIGHT2)
                         
@@ -387,7 +393,7 @@ class PCKeyFactory
 }
 
 
-    public: bool isEnter(Input input){
+    public: bool isEnter(Input* input){
 
                         if(input == this->ENTER)
                         

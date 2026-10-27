@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -42,12 +48,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ABTextItem.h"
-#include "ABStringComponent.h"
+        #include "org/allbinary/graphics/form/item/ABTextItem.h"
+#include "org/allbinary/graphics/form/item/ABStringComponent.h"
 
 class SelectableTextItem: public ABTextItem {
 
-public: SelectableTextItem(std::string label, int32_t layout, std::string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : ABTextItem(label, layout, altText, backgroundBasicColor, foregroundBasicColor){
+public: SelectableTextItem(std::string label, int32_t layout, std::string altText, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ABTextItem(label, layout, altText, backgroundBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -67,11 +73,11 @@ public: SelectableTextItem(std::string label, int32_t layout, std::string altTex
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 this->myFontProcessor.process(graphics);
     
 
-    ABStringComponent stringComponent = this->getLabelStringComponent();;
+    ABStringComponent* stringComponent = this->getLabelStringComponent();;
     
 
                         if(stringComponent != 
@@ -79,12 +85,12 @@ this->myFontProcessor.process(graphics);
                                 )
                         
                                     {
-                                    graphics.setColor(stringComponent.getForegroundBasicColor().intValue());
+                                    graphics->setColor(stringComponent->getForegroundBasicColor()->intValue());
     
 
                                     }
                                 
-graphics.drawString(this->getLabel(), x +2, y, 0);
+graphics->drawString(this->getLabel(), x +2, y, 0);
     
 }
 

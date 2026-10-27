@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -52,21 +58,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Animation.h"
-#include "IndexedAnimationInterface.h"
-#include "AnimationBehavior.h"
+        #include "org/allbinary/animation/Animation.h"
+#include "org/allbinary/animation/IndexedAnimationInterface.h"
+#include "org/allbinary/animation/AnimationBehavior.h"
 
 class IndexedAnimation: public Animation, public IndexedAnimationInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: AnimationBehavior animationBehaviorP;
+    protected: AnimationBehavior* animationBehaviorP;
 
-protected: IndexedAnimation(AnimationBehavior animationBehavior);
+protected: IndexedAnimation(AnimationBehavior* animationBehavior);
 
-    public: AnimationBehavior getAnimationBehavior();
+    public: AnimationBehavior* getAnimationBehavior();
 
     public: void reset();
 
@@ -88,7 +94,7 @@ protected: IndexedAnimation(AnimationBehavior animationBehavior);
 
     public: std::vector<int32_t> getSequence();
 
-    public: void setState(IndexedAnimation indexedAnimation);
+    public: void setState(IndexedAnimation* indexedAnimation);
 
     public: int32_t getWidth();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/util/HashMap.h>
 
       
@@ -63,19 +69,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TagHelper.h"
+        #include "admin/taghelpers/TagHelper.h"
 
 class StoreFrontHelper: public TagHelper {
 
-    private: const StoreFrontInterface storeFrontInterface;
+    private: StoreFrontInterface* storeFrontInterface;
 
     private: const std::string currentLocation;
 
     private: const std::string currentHomeLocation;
 
-public: StoreFrontHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
+public: StoreFrontHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
 
-    std::string storeName = hashMap.get(StoreFrontData::getInstance().NAME);;
+    std::string storeName = hashMap->get(StoreFrontData::getInstance()->NAME);;
     
 
                         if(true)
@@ -83,22 +89,22 @@ public: StoreFrontHelper(HashMap<Object*, Object*> hashMap, PageContext pageCont
                                     {
                                     this->storeFrontInterface= StoreFrontFactory::getInstance(storeName);
     
-this->currentLocation= Replace(CommonSeps::getInstance().SPACE, "%20").all(this->storeFrontInterface.getCurrentHostName() +this->storeFrontInterface.getCurrentHostNamePath());
+this->currentLocation= (new Replace(CommonSeps::getInstance()->SPACE, "%20"))->all(this->storeFrontInterface->getCurrentHostName() +this->storeFrontInterface->getCurrentHostNamePath());
     
-this->currentHomeLocation= Replace(CommonSeps::getInstance().SPACE, "%20").all(this->storeFrontInterface.getCurrentHomeHostName() +this->storeFrontInterface.getCurrentHomeHostNamePath());
+this->currentHomeLocation= (new Replace(CommonSeps::getInstance()->SPACE, "%20"))->all(this->storeFrontInterface->getCurrentHomeHostName() +this->storeFrontInterface->getCurrentHomeHostNamePath());
     
 
                                     }
                                 
                         else {
                             
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
-this->storeFrontInterface= StoreFront();
+this->storeFrontInterface= new StoreFront();
     
-this->currentLocation= stringUtil.EMPTY_STRING;
+this->currentLocation= stringUtil->EMPTY_STRING;
     
-this->currentHomeLocation= stringUtil.EMPTY_STRING;
+this->currentHomeLocation= stringUtil->EMPTY_STRING;
     
 
                         }

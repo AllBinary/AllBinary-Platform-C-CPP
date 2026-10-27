@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -79,15 +85,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserEmailEventHandler.h"
+        #include "org/allbinary/logic/communication/smtp/event/handler/UserEmailEventHandler.h"
 
 class EmailEventHandlerUtil
             : public Object
          {
 
-    private: static EmailEventHandlerUtil instance() { return EmailEventHandlerUtil(); }
+    private: static EmailEventHandlerUtil* instance() { static std::unique_ptr<EmailEventHandlerUtil> value(new EmailEventHandlerUtil()); return value.get(); }
 
-    public: static EmailEventHandlerUtil getInstance(){
+    public: static EmailEventHandlerUtil* getInstance(){
 
 
 
@@ -99,23 +105,23 @@ class EmailEventHandlerUtil
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList getUserEmailEventListenerVector(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, UserInterface userInterface){
+    public: static BasicArrayList* getUserEmailEventListenerVector(AbeClientInformationInterface* abeClientInformation, UserEmailEventNameData* userEmailEventNameData, UserInterface* userInterface){
 
-    UserConfigurationInterface userConfigurationInterface = userInterface.getUserConfigurationInterface();;
+    UserConfigurationInterface* userConfigurationInterface = userInterface->getUserConfigurationInterface();;
     
 
-    UserEmailConfigurationInterface userEmailConfigurationInterface = userConfigurationInterface.getUserEmailConfigurationInterface();;
+    UserEmailConfigurationInterface* userEmailConfigurationInterface = userConfigurationInterface->getUserEmailConfigurationInterface();;
     
 
-    UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface = userEmailConfigurationInterface.getUserEmailEventsConfigurationInterface();;
+    UserEmailEventsConfigurationInterface* userEmailEventsConfigurationInterface = userEmailConfigurationInterface->getUserEmailEventsConfigurationInterface();;
     
 
-    UserEmailEventListenerInterface userEmailEventListenerInterface = userEmailEventsConfigurationInterface.getEventListener(abeClientInformation, userEmailEventNameData, userInterface);;
+    UserEmailEventListenerInterface* userEmailEventListenerInterface = userEmailEventsConfigurationInterface->getEventListener(abeClientInformation, userEmailEventNameData, userInterface);;
     
 
-    BasicArrayList vector = BasicArrayListD();;
+    BasicArrayList* vector = new BasicArrayListD();;
     
-vector.add(userEmailEventListenerInterface);
+vector->add(userEmailEventListenerInterface);
     
 
 
@@ -126,7 +132,7 @@ vector.add(userEmailEventListenerInterface);
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: EmailEventHandlerUtil(){
 }
@@ -134,32 +140,32 @@ private: EmailEventHandlerUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: UserEmailEventHandler getEventHandler(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, BasicArrayList userVector){
+    public: UserEmailEventHandler* getEventHandler(AbeClientInformationInterface* abeClientInformation, UserEmailEventNameData* userEmailEventNameData, BasicArrayList* userVector){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Returning UserEmailEventHandler for ");
+stringBuffer->append("Returning UserEmailEventHandler for ");
     
-stringBuffer.appendint(userVector.size());
+stringBuffer->appendint(userVector->size());
     
-stringBuffer.append(" users.");
+stringBuffer->append(" users.");
     
-this->logUtil.putF(stringBuffer.toString(), this, "getEventHandler");
+this->logUtil->putF(stringBuffer->toString(), this, "getEventHandler");
     
 
                                     }
                                 
 
-    UserEmailEventHandler userEmailEventHandler = UserEmailEventHandler();;
+    UserEmailEventHandler* userEmailEventHandler = new UserEmailEventHandler();;
     
-userEmailEventHandler.addListener(LogUserEmailEventListenerModule());
+userEmailEventHandler->addListener(new LogUserEmailEventListenerModule());
     
 
-    int32_t size = userVector.size();;
+    int32_t size = userVector->size();;
     
 
 
@@ -169,12 +175,12 @@ userEmailEventHandler.addListener(LogUserEmailEventListenerModule());
     int32_t index = 0;index < size; index++)
         {
 
-    UserInterface userInterface = userVector.get(index);;
+    UserInterface* userInterface = dynamic_cast<UserInterface*>(userVector->get(index));;
     
 
-    BasicArrayList vector = EmailEventHandlerUtil::getUserEmailEventListenerVector(abeClientInformation, userEmailEventNameData, userInterface);;
+    BasicArrayList* vector = EmailEventHandlerUtil::getUserEmailEventListenerVector(abeClientInformation, userEmailEventNameData, userInterface);;
     
-userEmailEventHandler.addListener(vector);
+userEmailEventHandler->addListener(vector);
     
 }
 

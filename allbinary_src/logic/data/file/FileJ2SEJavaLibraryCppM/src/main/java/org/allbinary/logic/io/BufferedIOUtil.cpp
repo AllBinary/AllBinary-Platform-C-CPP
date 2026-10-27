@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -68,20 +74,20 @@ class BufferedIOUtil
 
                 //@Throws(Exception.constructor)
             
-    public: static void copy(AbFile backupFile, AbFile backupFileBak){
+    public: static void copy(AbFile* backupFile, AbFile* backupFileBak){
 
-    std::string line = StringUtil::getInstance().EMPTY_STRING;;
+    std::string line = StringUtil::getInstance()->EMPTY_STRING;;
     
 
-    BufferedWriter tmpOut = BufferedWriter(FileWriter(AbFileNativeUtil::get(backupFileBak)));;
+    BufferedWriter* tmpOut = new BufferedWriter(new FileWriter(AbFileNativeUtil::get(backupFileBak)));;
     
 
-    BufferedReader tmpIn = BufferedReader(FileReader(AbFileNativeUtil::get(backupFile)));;
+    BufferedReader* tmpIn = new BufferedReader(new FileReader(AbFileNativeUtil::get(backupFile)));;
     
 
         while(true)
         {
-line= tmpIn.readLine();
+line= tmpIn->readLine();
     
 
                         if(false)
@@ -93,13 +99,13 @@ line= tmpIn.readLine();
 
                                     }
                                 
-tmpOut.write(line, 0, line.size());
+tmpOut->write(line, 0, line.size());
     
-tmpOut.newLine();
+tmpOut->newLine();
     
 }
 
-tmpOut.flush();
+tmpOut->flush();
     
 }
 

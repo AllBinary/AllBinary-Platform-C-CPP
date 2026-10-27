@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/CommandListener.h>
@@ -49,7 +55,7 @@ class GameInitializationInterface {
 
                 //@Throws(Exception.constructor)
             
-    void init(AbeClientInformationInterface abeClientInformation, CommandListener commandListener, int32_t level)
+    public: virtual void init(AbeClientInformationInterface* abeClientInformation, CommandListener* commandListener, int32_t level) = 0;
 
 };
 

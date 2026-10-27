@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,16 +44,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameFeature.h"
-#include "Feature.h"
+        #include "org/allbinary/game/configuration/feature/GameFeature.h"
+#include "org/allbinary/game/configuration/feature/Feature.h"
 
 class GameFeatureFactory
             : public Object
          {
 
-    private: static GameFeatureFactory instance() { return GameFeatureFactory(); }
+    private: static GameFeatureFactory* instance() { static std::unique_ptr<GameFeatureFactory> value(new GameFeatureFactory()); return value.get(); }
 
-    public: static GameFeatureFactory getInstance(){
+    public: static GameFeatureFactory* getInstance(){
 
 
 
@@ -61,37 +67,37 @@ private: GameFeatureFactory(){
 }
 
 
-    public: const GameFeature SOUND = GameFeature("Sound");
+    public: GameFeature* SOUND = new GameFeature("Sound");
 
-    public: const GameFeature MUSIC = GameFeature("Music");
+    public: GameFeature* MUSIC = new GameFeature("Music");
 
-    public: const Feature SCREEN_SHAKE = Feature("Screen Shake");
+    public: Feature* SCREEN_SHAKE = new Feature("Screen Shake");
 
-    public: const Feature POST_IMAGE_LOADING_MODIFICATION = Feature("Post Image Loading Modification (Scaling, Rotation, or Other)");
+    public: Feature* POST_IMAGE_LOADING_MODIFICATION = new Feature("Post Image Loading Modification (Scaling, Rotation, or Other)");
 
-    public: const GameFeature HEALTH_BARS = GameFeature("Health Bars");
+    public: GameFeature* HEALTH_BARS = new GameFeature("Health Bars");
 
-    public: const GameFeature DAMAGE_FLOATERS = GameFeature("Damage Floaters");
+    public: GameFeature* DAMAGE_FLOATERS = new GameFeature("Damage Floaters");
 
-    public: const GameFeature GAME_INPUT_LAYER_PROCESSOR = GameFeature("Game Input Layer Processor");
+    public: GameFeature* GAME_INPUT_LAYER_PROCESSOR = new GameFeature("Game Input Layer Processor");
 
-    public: const GameFeature ARTIFICIAL_INTELLEGENCE_PROCESSOR = GameFeature("Artificial Intelligence Layer Processor");
+    public: GameFeature* ARTIFICIAL_INTELLEGENCE_PROCESSOR = new GameFeature("Artificial Intelligence Layer Processor");
 
-    public: const GameFeature COLLIDABLE_INTERFACE_LAYER_PROCESSOR = GameFeature("Collidable Interface Layer Processor");
+    public: GameFeature* COLLIDABLE_INTERFACE_LAYER_PROCESSOR = new GameFeature("Collidable Interface Layer Processor");
 
-    public: const GameFeature TICKABLE_LAYER_PROCESSOR = GameFeature("Tickable Layer Processor");
+    public: GameFeature* TICKABLE_LAYER_PROCESSOR = new GameFeature("Tickable Layer Processor");
 
-    public: const GameFeature CHEATING = GameFeature("Cheating");
+    public: GameFeature* CHEATING = new GameFeature("Cheating");
 
-    public: const GameFeature DROPPED_ITEMS = GameFeature("Drops");
+    public: GameFeature* DROPPED_ITEMS = new GameFeature("Drops");
 
-    public: const GameFeature DROPPED_ITEMS_FROM_DEATH = GameFeature("Drops from Dead");
+    public: GameFeature* DROPPED_ITEMS_FROM_DEATH = new GameFeature("Drops from Dead");
 
-    public: const GameFeature TEST_DESTROYED_LAYER_PROCESSOR = GameFeature("Destroyed Layer Processor");
+    public: GameFeature* TEST_DESTROYED_LAYER_PROCESSOR = new GameFeature("Destroyed Layer Processor");
 
-    public: const GameFeature COLLISIONS_WITH_SOURCE = GameFeature("Allow Collisions With Source");
+    public: GameFeature* COLLISIONS_WITH_SOURCE = new GameFeature("Allow Collisions With Source");
 
-    public: const GameFeature COLLISIONS_FORCED_TWO_DIMENSIONAL = GameFeature("Collisions Forced Two Dimensional");
+    public: GameFeature* COLLISIONS_FORCED_TWO_DIMENSIONAL = new GameFeature("Collisions Forced Two Dimensional");
 
 };
 

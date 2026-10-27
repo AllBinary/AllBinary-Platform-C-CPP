@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/System.h"
         
             #include "java/lang/Runnable.h"
@@ -49,18 +55,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ThreadPool.h"
+        #include "org/allbinary/thread/ThreadPool.h"
 
 class MusicThreadPool: public ThreadPool {
 
-    private: static const ThreadPool THREAD_POOL = ThreadPool("Music", 2, ThreadPool::NORMAL_PRIORITY);
+    private: static ThreadPool* THREAD_POOL() { static std::unique_ptr<ThreadPool> value(new ThreadPool("Music", 2, ThreadPool::NORMAL_PRIORITY)); return value.get(); }
 
-    public: static ThreadPool getInstance(){
+    public: static ThreadPool* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MusicThreadPool::THREAD_POOL;
+                        return MusicThreadPool::THREAD_POOL();
     
 }
 
@@ -75,22 +81,22 @@ public: MusicThreadPool(std::string poolName, int32_t numThreads, int32_t priori
 }
 
 
-    public: void runTask(Runnable task){
-this->logUtil.putF(StringMaker().append(StringUtil::getInstance().toString(task)).appendlong(System.currentTimeMillis()).toString(), this, this->threadPoolStrings.ADD_TASK);
+    public: void runTask(Runnable* task){
+this->logUtil.putF((new StringMaker())->append(StringUtil::getInstance()->toString(task))->appendlong(System.currentTimeMillis())->toString(), this, this->threadPoolStrings.ADD_TASK);
     
 super.runTask(task);
     
 }
 
 
-    protected: void startTask(Runnable task){
-this->logUtil.putF(StringMaker().append(this->threadPoolStrings.START_TASK).append(StringUtil::getInstance().toString(task)).appendlong(System.currentTimeMillis()).toString(), this, this->commonStrings.RUN);
+    protected: void startTask(Runnable* task){
+this->logUtil.putF((new StringMaker())->append(this->threadPoolStrings.START_TASK)->append(StringUtil::getInstance()->toString(task))->appendlong(System.currentTimeMillis())->toString(), this, this->commonStrings.RUN);
     
 }
 
 
-    protected: void completedTask(Runnable task){
-this->logUtil.putF(StringMaker().append(this->threadPoolStrings.COMPLETE_TASK).append(StringUtil::getInstance().toString(task)).appendlong(System.currentTimeMillis()).toString(), this, this->commonStrings.RUN);
+    protected: void completedTask(Runnable* task){
+this->logUtil.putF((new StringMaker())->append(this->threadPoolStrings.COMPLETE_TASK)->append(StringUtil::getInstance()->toString(task))->appendlong(System.currentTimeMillis())->toString(), this, this->commonStrings.RUN);
     
 }
 

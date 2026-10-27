@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_BASICEMAIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_BASICEMAIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,21 +67,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "EmailInterface.h"
-#include "AbEmail.h"
-#include "Email.h"
+        #include "org/allbinary/logic/communication/smtp/EmailInterface.h"
+#include "org/allbinary/logic/communication/smtp/AbEmail.h"
+#include "org/allbinary/logic/communication/smtp/Email.h"
 
 class BasicEmail
             : public Object
-        : public EmailInterface {
+        , public EmailInterface {
 
-    private: AbEmail email;
+    private: AbEmail* email;
 
-public: BasicEmail(EmailInfo emailInfo, std::string to);
+public: BasicEmail(EmailInfo* emailInfo, std::string to);
 
-    public: Email getEmail();
+    public: Email* getEmail();
 
-    public: MimeMessage getMimeMessage();
+    public: MimeMessage* getMimeMessage();
 
     public: std::string getDebugInfo();
 
@@ -85,15 +91,15 @@ public: BasicEmail(EmailInfo emailInfo, std::string to);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
                 //@Throws(Exception.constructor)
             
-    public: Document toXmlDoc();
+    public: Document* toXmlDoc();
 
 };
 

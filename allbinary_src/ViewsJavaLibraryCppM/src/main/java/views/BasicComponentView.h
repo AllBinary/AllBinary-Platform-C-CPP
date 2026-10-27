@@ -21,6 +21,12 @@
         #ifndef VIEWS_BASICCOMPONENTVIEW_H
         #define VIEWS_BASICCOMPONENTVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -82,37 +88,37 @@
         
 class BasicComponentView
             : public Object
-        : public TransformInterface {
+        , public TransformInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    protected: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: TransformDocumentInterface transformDocumentInterface;
+    private: TransformDocumentInterface* transformDocumentInterface;
 
-    private: TransformInfoInterface transformInfoInterface;
+    private: TransformInfoInterface* transformInfoInterface;
 
-public: BasicComponentView(TransformInfoInterface transformInfoInterface);
+public: BasicComponentView(TransformInfoInterface* transformInfoInterface);
 
     public: int32_t NO_TYPE = 0;
 
     public: int32_t getTypeId();
 
-    public: TransformDocumentInterface getTransformDocumentInterface();
+    public: TransformDocumentInterface* getTransformDocumentInterface();
 
-    public: void setTransformDocumentInterface(TransformDocumentInterface transformDocumentInterface);
+    public: void setTransformDocumentInterface(TransformDocumentInterface* transformDocumentInterface);
 
-    public: TransformInfoInterface getTransformInfoInterface();
+    public: TransformInfoInterface* getTransformInfoInterface();
 
-    public: void setTransformInfoInterface(TransformInfoInterface transformInfoInterface);
+    public: void setTransformInfoInterface(TransformInfoInterface* transformInfoInterface);
 
-    public: Document toXmlDoc();
+    public: Document* toXmlDoc();
 
                 //@Throws(Exception.constructor)
             
-    public: Document getDoc();
+    public: Document* getDoc();
 
                 //@Throws(Exception.constructor)
             

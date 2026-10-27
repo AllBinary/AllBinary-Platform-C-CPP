@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -74,54 +80,54 @@
         
 class PageValidation: public Validation, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: TitleValidation title;
+    private: TitleValidation* title;
 
 public: PageValidation(){
-this->title= TitleValidation();
+this->title= new TitleValidation();
     
 }
 
 
-public: PageValidation(Document document){
+public: PageValidation(Document* document){
 
-    Node node = DomSearchHelper::getNode(TitleData::getInstance().NAME, document.getElementsByTagName(PageData::getInstance().NAME));;
+    Node* node = DomSearchHelper::getNode(TitleData::getInstance()->NAME, document->getElementsByTagName(PageData::getInstance()->NAME));;
     
-this->title= TitleValidation(node);
+this->title= new TitleValidation(node);
     
 }
 
 
-public: PageValidation(HashMap<Object*, Object*> hashMap){
+public: PageValidation(HashMap<Object*, Object*>* hashMap){
 this->getFormData(hashMap);
     
 }
 
 
-    public: void getFormData(HashMap<Object*, Object*> hashMap){
-this->title= TitleValidation(hashMap);
+    public: void getFormData(HashMap<Object*, Object*>* hashMap){
+this->title= new TitleValidation(hashMap);
     
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-    Boolean valid = Boolean::TRUE;;
+    bool valid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("PageValidation", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("PageValidation", this, this->commonStrings.IS_VALID);
     
 
                                     }
                                 
 
-                        if(!this->title.isValid().valueOf())
+                        if(!this->title->isValid().valueOf())
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -130,10 +136,10 @@ this->title= TitleValidation(hashMap);
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("PageValidation: " +valid, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("PageValidation: " +valid, this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -146,13 +152,13 @@ this->title= TitleValidation(hashMap);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -172,13 +178,13 @@ this->title= TitleValidation(hashMap);
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-                        if(!this->title.isValid().valueOf())
+                        if(!this->title->isValid().valueOf())
                         
                                     {
-                                    stringBuffer.append(this->title.validationInfo());
+                                    stringBuffer->append(this->title->validationInfo());
     
 
                                     }
@@ -187,17 +193,17 @@ this->title= TitleValidation(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -213,7 +219,7 @@ this->title= TitleValidation(hashMap);
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -223,7 +229,7 @@ this->title= TitleValidation(hashMap);
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -235,11 +241,11 @@ this->title= TitleValidation(hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = document.createElement(PageData::getInstance().NAME);;
+    Node* node = document->createElement(PageData::getInstance()->NAME);;
     
-node.appendChild(this->title.toXmlNode(document));
+node->appendChild(this->title->toXmlNode(document));
     
 
 

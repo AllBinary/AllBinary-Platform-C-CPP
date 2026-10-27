@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/commerce/shipping/ShippingMethodData.h>
@@ -53,18 +59,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PickUpShippingModule.h"
-#include "Document.h"
+        #include "org/allbinary/business/user/commerce/shipping/modules/PickUpShippingModule.h"
+#include "org/allbinary/business/user/commerce/shipping/modules/Document.h"
 
 class PickUpShippingModuleView: public PickUpShippingModule, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: PickUpShippingModuleView(){
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
 
 
@@ -74,7 +80,7 @@ public: PickUpShippingModuleView(){
 }
 
 
-    public: org::w3c::dom::Document toValidationInfoDoc(){
+    public: org::w3c::dom::Document* toValidationInfoDoc(){
 
 
 
@@ -84,7 +90,7 @@ public: PickUpShippingModuleView(){
 }
 
 
-    public: org::w3c::dom::Node toValidationInfoNode(org::w3c::dom::Document document){
+    public: org::w3c::dom::Node* toValidationInfoNode(org::w3c::dom::Document* document){
 
 
 
@@ -94,7 +100,7 @@ public: PickUpShippingModuleView(){
 }
 
 
-    public: org::w3c::dom::Document toXmlDoc(){
+    public: org::w3c::dom::Document* toXmlDoc(){
 
 
 
@@ -104,15 +110,15 @@ public: PickUpShippingModuleView(){
 }
 
 
-    public: org::w3c::dom::Node toXmlNode(org::w3c::dom::Document document){
+    public: org::w3c::dom::Node* toXmlNode(org::w3c::dom::Document* document){
 
         try {
             
-    Node shippingMethodNode = document.createElement(ShippingMethodData::NAME);;
+    Node* shippingMethodNode = document->createElement(ShippingMethodData::NAME);;
     
-shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodData::NAME, this->getName()));
+shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodData::NAME, this->getName()));
     
-shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodData::DESCRIPTION, this->getDescription()));
+shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodData::DESCRIPTION, this->getDescription()));
     
 
 
@@ -122,13 +128,13 @@ shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, Ship
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "toXmlNode", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "toXmlNode", &e);
     
 
                                     }

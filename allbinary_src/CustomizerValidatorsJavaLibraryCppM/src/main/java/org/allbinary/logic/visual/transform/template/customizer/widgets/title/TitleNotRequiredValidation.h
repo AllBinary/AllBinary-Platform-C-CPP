@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_TITLE_TITLENOTREQUIREDVALIDATION_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_TITLE_TITLENOTREQUIREDVALIDATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -62,26 +68,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TitleView.h"
-#include "TitleData.h"
+        #include "org/allbinary/logic/visual/transform/template/customizer/widgets/title/TitleView.h"
+#include "org/allbinary/logic/visual/transform/template/customizer/widgets/title/TitleData.h"
 
 class TitleNotRequiredValidation: public TitleView, public ValidationInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: TitleNotRequiredValidation();
 
-public: TitleNotRequiredValidation(Node node);
+public: TitleNotRequiredValidation(Node* node);
 
-public: TitleNotRequiredValidation(HashMap<Object*, Object*> hashMap);
+public: TitleNotRequiredValidation(HashMap<Object*, Object*>* hashMap);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string validationInfo();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
 };
 

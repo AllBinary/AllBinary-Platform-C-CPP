@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/ABHashMap.h>
@@ -55,23 +61,23 @@
             : public Object
          {
 
-    private: static StdUtil instance() { return StdUtil(); }
+    private: static StdUtil* instance() { static std::unique_ptr<StdUtil> value(new StdUtil()); return value.get(); }
 
-    /*actual*/ public: static StdUtil getInstance()
+    /*actual*/ public: static StdUtil* getInstance()
 
-    /*actual*/ public: const ABVector<Object*> EMPTY_VECTOR
+    /*actual*/ public: ABVector<Object*>* EMPTY_VECTOR
 
-    /*actual*/ public: const ABHashtable<Object*, Object*> NULL_TABLE
+    /*actual*/ public: ABHashtable<Object*, Object*>* NULL_TABLE
 
-    /*actual*/ public: const ABHashMap<Object*, Object*> NULL_MAP
+    /*actual*/ public: ABHashMap<Object*, Object*>* NULL_MAP
 
-    public: ABStack<Object*> createStack()
+    public: ABStack<Object*>* createStack()
 
-    public: ABVector<Object*> createVector()
+    public: ABVector<Object*>* createVector()
 
-    public: ABHashtable<Object*, Object*> createHashtable()
+    public: ABHashtable<Object*, Object*>* createHashtable()
 
-    public: ABHashMap<Object*, Object*> createHashMap()
+    public: ABHashMap<Object*, Object*>* createHashMap()
 
 };
 

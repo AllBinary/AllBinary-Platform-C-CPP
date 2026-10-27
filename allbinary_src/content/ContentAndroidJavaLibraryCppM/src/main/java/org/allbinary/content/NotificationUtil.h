@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_H
         #define ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -73,27 +79,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NotificationBuilder.h"
-#include "NotificationBuilderAPI23.h"
-#include "CommandUriAction.h"
+        #include "org/allbinary/content/NotificationBuilder.h"
+#include "org/allbinary/content/NotificationBuilderAPI23.h"
+#include "org/allbinary/content/CommandUriAction.h"
 
 class NotificationUtil
             : public Object
          {
 
-    private: static const NotificationUtil SINGLETON = NotificationUtil();
+    private: static NotificationUtil* SINGLETON() { static std::unique_ptr<NotificationUtil> value(new NotificationUtil()); return value.get(); }
 
-    public: static NotificationUtil getInstance();
+    public: static NotificationUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: NotificationManager notificationManager = ResourceUtil::getInstance().getContext().getSystemService(Context::NOTIFICATION_SERVICE);
+    private: NotificationManager* notificationManager = dynamic_cast<NotificationManager*>(ResourceUtil::getInstance()->getContext()->getSystemService(Context::NOTIFICATION_SERVICE));
 
-    private: const NotificationBuilder notificationBuilder;
+    private: NotificationBuilder* notificationBuilder;
 
 private: NotificationUtil();
 
-    public: void notify(Command command, std::string resource, std::string message);
+    public: void notify(Command* command, std::string resource, std::string message);
 
 };
 

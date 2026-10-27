@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -87,19 +93,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LicenseInitInfo.h"
+        #include "org/allbinary/business/init/LicenseInitInfo.h"
 
 class LicenseInitInfoUtil
             : public Object
          {
 
-    private: static LicenseInitInfoUtil instance() { return LicenseInitInfoUtil(); }
+    private: static LicenseInitInfoUtil* instance() { static std::unique_ptr<LicenseInitInfoUtil> value(new LicenseInitInfoUtil()); return value.get(); }
 
-    public: static LicenseInitInfoUtil getInstance();
+    public: static LicenseInitInfoUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const StringUtil stringUtil = StringUtil::getInstance();
+    private: StringUtil* stringUtil = StringUtil::getInstance();
 
     public: const std::string INITFILENAME = "licenseinitdata.dat";
 
@@ -107,7 +113,7 @@ class LicenseInitInfoUtil
 
     public: const std::string PRIVACY_POLICY = "privacy_policy";
 
-    private: std::string filePath = this->stringUtil.EMPTY_STRING;
+    private: std::string filePath = this->stringUtil->EMPTY_STRING;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void setFilePath(std::string filePath);
@@ -115,17 +121,17 @@ class LicenseInitInfoUtil
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void write(LicenseInitInfo initData);
+    public: void write(LicenseInitInfo* initData);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: LicenseInitInfo read();
+    public: LicenseInitInfo* read();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: LicenseInitInfo readAgain(int32_t initializeCounter);
+    public: LicenseInitInfo* readAgain(int32_t initializeCounter);
 
     public: std::string getFilePath();
 

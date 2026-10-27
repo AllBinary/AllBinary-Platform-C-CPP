@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -68,14 +74,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoHttp.h"
-#include "TransformInfoHttpStoreInterface.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoHttp.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfoHttpStoreInterface.h"
 
 class TransformInfoHttpStore: public TransformInfoHttp, public TransformInfoHttpStoreInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: TransformInfoHttpStore(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext) : TransformInfoHttp(propertiesHashMap, pageContext, true){
+public: TransformInfoHttpStore(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : TransformInfoHttp(propertiesHashMap, pageContext, true){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -83,10 +89,10 @@ public: TransformInfoHttpStore(HashMap<Object*, Object*> propertiesHashMap, Page
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Properties HashMap: " +propertiesHashMap.toString(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("Properties HashMap: " +propertiesHashMap->toString(), this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -94,7 +100,7 @@ public: TransformInfoHttpStore(HashMap<Object*, Object*> propertiesHashMap, Page
 }
 
 
-public: TransformInfoHttpStore(HashMap<Object*, Object*> databaseHashMap, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext) : TransformInfoHttp(databaseHashMap, propertiesHashMap, pageContext){
+public: TransformInfoHttpStore(HashMap<Object*, Object*>* databaseHashMap, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : TransformInfoHttp(databaseHashMap, propertiesHashMap, pageContext){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -102,31 +108,31 @@ public: TransformInfoHttpStore(HashMap<Object*, Object*> databaseHashMap, HashMa
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Database HashMap: ");
+stringBuffer->append("Database HashMap: ");
     
-stringBuffer.append(databaseHashMap.toString());
+stringBuffer->append(databaseHashMap->toString());
     
-stringBuffer.append("\nProperties HashMap: ");
+stringBuffer->append("\nProperties HashMap: ");
     
-stringBuffer.append(propertiesHashMap.toString());
+stringBuffer->append(propertiesHashMap->toString());
     
-this->logUtil.putF(stringBuffer.toString(), this, "Constructor(HashMap, HashMap , PageContext)");
+this->logUtil->putF(stringBuffer->toString(), this, "Constructor(HashMap, HashMap , PageContext)");
     
 
                                     }
                                 
-this->setStoreName(databaseHashMap.get(StoreFrontData::getInstance().NAME));
+this->setStoreName(databaseHashMap->get(StoreFrontData::getInstance()->NAME));
     
 }
 
 
-public: TransformInfoHttpStore(StoreFrontInterface storeFrontInterface, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext) : TransformInfoHttp(propertiesHashMap, pageContext){
+public: TransformInfoHttpStore(StoreFrontInterface* storeFrontInterface, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : TransformInfoHttp(propertiesHashMap, pageContext){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -134,15 +140,15 @@ public: TransformInfoHttpStore(StoreFrontInterface storeFrontInterface, HashMap<
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Properties HashMap: " +propertiesHashMap.toString(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("Properties HashMap: " +propertiesHashMap->toString(), this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
-this->setStoreName(storeFrontInterface.getName());
+this->setStoreName(storeFrontInterface->getName());
     
 }
 
@@ -151,57 +157,57 @@ this->setStoreName(storeFrontInterface.getName());
             
     private: std::string getPath(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(URLGLOBALS::getMainPath());
+stringBuffer->append(URLGLOBALS::getMainPath());
     
-stringBuffer.append(FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH);
+stringBuffer->append(FREEBLISKET_PATH_GLOBALS::getInstance()->XSLPATH);
     
-stringBuffer.append(this->getStoreName());
+stringBuffer->append(this->getStoreName());
     
-stringBuffer.append(AbPathData::getInstance().SEPARATOR);
+stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getTemplateFilePath(){
+    public: AbPath* getTemplateFilePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbPath(this->getPath(), this->getTemplateFile());
+                        return new AbPath(this->getPath(), this->getTemplateFile());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getObjectConfigFilePath(){
+    public: AbPath* getObjectConfigFilePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbPath(this->getPath(), this->getObjectConfigFile());
+                        return new AbPath(this->getPath(), this->getObjectConfigFile());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getDataFilePath(){
+    public: AbPath* getDataFilePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbPath(this->getPath(), this->getDataFile());
+                        return new AbPath(this->getPath(), this->getDataFile());
     
 }
 

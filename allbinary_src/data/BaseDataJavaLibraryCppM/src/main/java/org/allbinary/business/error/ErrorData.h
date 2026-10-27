@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ERROR_ERRORDATA_H
         #define ORG_ALLBINARY_BUSINESS_ERROR_ERRORDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class ErrorData
             : public Object
          {
 
-    private: static ErrorData instance() { return ErrorData(); }
+    private: static ErrorData* instance() { static std::unique_ptr<ErrorData> value(new ErrorData()); return value.get(); }
 
-    public: static ErrorData getInstance();
+    public: static ErrorData* getInstance();
 
 private: ErrorData();
 

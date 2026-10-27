@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -57,9 +63,9 @@ class StringUtil
             : public Object
          {
 
-    private: static StringUtil instance() { return StringUtil(); }
+    private: static StringUtil* instance() { static std::unique_ptr<StringUtil> value(new StringUtil()); return value.get(); }
 
-    public: static StringUtil getInstance(){
+    public: static StringUtil* getInstance(){
 
 
 

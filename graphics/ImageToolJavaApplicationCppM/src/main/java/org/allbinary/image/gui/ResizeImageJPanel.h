@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/System.h"
@@ -81,27 +87,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "DefaultComboBoxModel.h"
-#include "JLabel.h"
-#include "JComboBox.h"
-#include "JButton.h"
-#include "JTextField.h"
-#include "ActionListener.h"
-#include "ActionEvent.h"
-#include "Dimension.h"
-#include "GroupLayout.h"
-#include "Short.h"
+        #include "org/allbinary/image/gui/JPanel.h"
+#include "org/allbinary/image/gui/DefaultComboBoxModel.h"
+#include "org/allbinary/image/gui/JLabel.h"
+#include "org/allbinary/image/gui/JComboBox.h"
+#include "org/allbinary/image/gui/JButton.h"
+#include "org/allbinary/image/gui/JTextField.h"
+#include "org/allbinary/image/gui/ActionListener.h"
+#include "org/allbinary/image/gui/ActionEvent.h"
+#include "org/allbinary/image/gui/Dimension.h"
+#include "org/allbinary/image/gui/GroupLayout.h"
+#include "org/allbinary/image/gui/Short.h"
 
 class ResizeImageJPanel: public javax::swing::JPanel, public ImageProcessorInputCompositeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: ImageProcessorInput imageProcessorInput;
+    private: ImageProcessorInput* imageProcessorInput;
 
-public: ResizeImageJPanel(ImageProcessorInput imageProcessorInput);
+public: ResizeImageJPanel(ImageProcessorInput* imageProcessorInput);
 
     public: void process();
 
@@ -111,41 +117,41 @@ public: ResizeImageJPanel(ImageProcessorInput imageProcessorInput);
 
     public: void updateFor16Below();
 
-    public: ImageProcessorInput getImageProcessorInput();
+    public: ImageProcessorInput* getImageProcessorInput();
 
-    public: void setImageProcessorInput(ImageProcessorInput imageProcessorInput);
+    public: void setImageProcessorInput(ImageProcessorInput* imageProcessorInput);
 
     private: void initComponents();
 
-    private: void aboveJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void aboveJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void updateJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void updateJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void adjustFor16AboveJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void adjustFor16AboveJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void adjustFor16BelowJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void adjustFor16BelowJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: javax::swing::JButton aboveJButton;
+    private: javax::swing::JButton* aboveJButton;
 
-    private: javax::swing::JButton adjustFor16AboveJButton;
+    private: javax::swing::JButton* adjustFor16AboveJButton;
 
-    private: javax::swing::JButton adjustFor16BelowJButton;
+    private: javax::swing::JButton* adjustFor16BelowJButton;
 
-    private: javax::swing::JTextField floatPercentJTextField;
+    private: javax::swing::JTextField* floatPercentJTextField;
 
-    private: javax::swing::JComboBox<std::string> jComboBox1;
+    private: javax::swing::JComboBox<std::string>* jComboBox1;
 
-    private: javax::swing::JLabel jLabel1;
+    private: javax::swing::JLabel* jLabel1;
 
-    private: javax::swing::JLabel jLabel2;
+    private: javax::swing::JLabel* jLabel2;
 
-    private: javax::swing::JLabel jLabel3;
+    private: javax::swing::JLabel* jLabel3;
 
-    private: javax::swing::JTextField jTextField1;
+    private: javax::swing::JTextField* jTextField1;
 
-    private: javax::swing::JTextField jTextField2;
+    private: javax::swing::JTextField* jTextField2;
 
-    private: javax::swing::JButton updateJButton;
+    private: javax::swing::JButton* updateJButton;
 
 };
 

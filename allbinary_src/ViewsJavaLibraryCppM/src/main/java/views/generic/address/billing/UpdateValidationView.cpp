@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/address/StreetAddress.h>
@@ -53,11 +59,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BillingAddressView.h"
+        #include "views/generic/address/billing/BillingAddressView.h"
 
 class UpdateValidationView: public BillingAddressView, public ValidationComponentInterface {
 
-public: UpdateValidationView(TransformInfoInterface transformInfoInterface) : BillingAddressView(transformInfoInterface){
+public: UpdateValidationView(TransformInfoInterface* transformInfoInterface) : BillingAddressView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -69,8 +75,8 @@ public: UpdateValidationView(TransformInfoInterface transformInfoInterface) : Bi
 
                 //@Throws(Exception.constructor)
             
-    public: Boolean isValid(){
-this->streetAddress= StreetAddress(this->getRequest());
+    public: bool isValid(){
+this->streetAddress= new StreetAddress(this->getRequest());
     
 
                         if(this->streetAddress.isValid() == Boolean::FALSE)
@@ -104,7 +110,7 @@ this->streetAddress= StreetAddress(this->getRequest());
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -114,7 +120,7 @@ this->streetAddress= StreetAddress(this->getRequest());
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

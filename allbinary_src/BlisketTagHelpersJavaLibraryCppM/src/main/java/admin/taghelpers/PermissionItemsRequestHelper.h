@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_PERMISSIONITEMSREQUESTHELPER_H
         #define ADMIN_TAGHELPERS_PERMISSIONITEMSREQUESTHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -85,15 +91,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ModifyTable.h"
+        #include "admin/taghelpers/ModifyTable.h"
 
 class PermissionItemsRequestHelper: public ModifyTable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
     private: std::string id;
 
@@ -119,11 +125,11 @@ class PermissionItemsRequestHelper: public ModifyTable {
 
     private: std::string lastModified;
 
-public: PermissionItemsRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: PermissionItemsRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
     public: void getFormData();
 
-    private: HashMap<Object*, Object*> getHashMap();
+    private: HashMap<Object*, Object*>* getHashMap();
 
     public: std::string insert();
 

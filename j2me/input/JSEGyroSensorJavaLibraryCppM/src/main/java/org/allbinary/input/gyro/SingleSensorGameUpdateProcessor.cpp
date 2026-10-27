@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/canvas/Processor.h>
@@ -41,15 +49,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SensorGameUpdateProcessor.h"
-#include "AccelerometerSensorUpdateProcessor.h"
-#include "GyroSensorUpdateProcessor.h"
+        #include "org/allbinary/input/gyro/SensorGameUpdateProcessor.h"
+#include "org/allbinary/input/gyro/AccelerometerSensorUpdateProcessor.h"
+#include "org/allbinary/input/gyro/GyroSensorUpdateProcessor.h"
 
 class SingleSensorGameUpdateProcessor: public SensorGameUpdateProcessor {
 
-    private: const Processor accelerometerSensorUpdateProcessor = AccelerometerSensorUpdateProcessor();
+    private: Processor* accelerometerSensorUpdateProcessor = new AccelerometerSensorUpdateProcessor();
 
-    private: const Processor gyroSensorUpdateProcessor = GyroSensorUpdateProcessor();
+    private: Processor* gyroSensorUpdateProcessor = new GyroSensorUpdateProcessor();
 
                 //@Throws(Exception.constructor)
             

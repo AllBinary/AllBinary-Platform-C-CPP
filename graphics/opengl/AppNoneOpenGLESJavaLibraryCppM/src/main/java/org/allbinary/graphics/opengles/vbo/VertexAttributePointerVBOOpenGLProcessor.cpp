@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -47,9 +55,9 @@
         
 class VertexAttributePointerVBOOpenGLProcessor: public ObjectThreedOpenGLProcessor {
 
-    private: static VertexAttributePointerVBOOpenGLProcessor instance() { return VertexAttributePointerVBOOpenGLProcessor(); }
+    private: static VertexAttributePointerVBOOpenGLProcessor* instance() { static std::unique_ptr<VertexAttributePointerVBOOpenGLProcessor> value(new VertexAttributePointerVBOOpenGLProcessor()); return value.get(); }
 
-    public: static VertexAttributePointerVBOOpenGLProcessor getInstance(){
+    public: static VertexAttributePointerVBOOpenGLProcessor* getInstance(){
 
 
 
@@ -63,11 +71,11 @@ public: VertexAttributePointerVBOOpenGLProcessor(){
 }
 
 
-    public: void process(GL10 gl, Object* anyType){
+    public: void process(GL10* gl, Object* anyType){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

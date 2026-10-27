@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULEFACTORYFACTORY_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULEFACTORYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -82,28 +88,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DefaultListModelHelper.h"
-#include "InputAutomationModuleFactoryInterface.h"
+        #include "org/allbinary/input/automation/module/DefaultListModelHelper.h"
+#include "org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h"
 
 class InputAutomationModuleFactoryFactory
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: HashMap<Object*, Object*> hashMap;
+    private: HashMap<Object*, Object*>* hashMap;
 
-    private: DefaultListModelHelper defaultListModelHelper;
+    private: DefaultListModelHelper* defaultListModelHelper;
 
-    private: HelpSetListener helpSetListenerInterface;
+    private: HelpSetListener* helpSetListenerInterface;
 
-public: InputAutomationModuleFactoryFactory(InputAutomationModuleConfigurations inputAutomationModuleConfigurations, HelpSetListener helpSetListenerInterface);
+public: InputAutomationModuleFactoryFactory(InputAutomationModuleConfigurations* inputAutomationModuleConfigurations, HelpSetListener* helpSetListenerInterface);
 
-    private: void add(InputAutomationModuleConfiguration inputAutomationModuleConfiguration);
+    private: void add(InputAutomationModuleConfiguration* inputAutomationModuleConfiguration);
 
-    public: ListModel getListModel();
+    public: ListModel* getListModel();
 
-    public: InputAutomationModuleFactoryInterface getInstance(std::string moduleName);
+    public: InputAutomationModuleFactoryInterface* getInstance(std::string moduleName);
 
 };
 

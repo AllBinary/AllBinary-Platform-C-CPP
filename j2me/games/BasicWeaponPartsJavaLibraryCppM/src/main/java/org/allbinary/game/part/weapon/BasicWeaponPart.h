@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPART_H
         #define ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPART_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -79,53 +85,53 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SalvoInterface.h"
+        #include "org/allbinary/game/part/weapon/SalvoInterface.h"
 
 class BasicWeaponPart
             : public Object
-        : public PartInterface, public SalvoInterface {
+        , public PartInterface, public SalvoInterface {
 
-    public: static BasicWeaponPart createBasicWeaponPart(Animation animationInterface);
+    public: static BasicWeaponPart* createBasicWeaponPart(Animation* animationInterface);
 
-    public: static const BasicWeaponPart NULL_BASIC_WEAPON_PART = BasicWeaponPart::createBasicWeaponPart(NullAnimationFactory::getFactoryInstance().getInstance(0));
+    public: static inline BasicWeaponPart* NULL_BASIC_WEAPON_PART = BasicWeaponPart::createBasicWeaponPart(NullAnimationFactory::getFactoryInstance()->getInstance(0));
 
-    private: Animation animationInterface = NullAnimationFactory::getFactoryInstance().getInstance(0);
+    private: Animation* animationInterface = NullAnimationFactory::getFactoryInstance()->getInstance(0);
 
-    private: AllBinaryLayer ownerLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer* ownerLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-    private: WeaponProperties weaponProperties = WeaponProperties::NULL_WEAPON_PROPERTIES;
+    private: WeaponProperties* weaponProperties = WeaponProperties::NULL_WEAPON_PROPERTIES;
 
-    private: ScoreableInterface scoreableInterface = NoScoreable::getInstance();
+    private: ScoreableInterface* scoreableInterface = NoScoreable::getInstance();
 
-    protected: RelativeRelationship relativeRelationship = RelativeRelationship::NULL_RELATIVE_RELATIONSHIP;
+    protected: RelativeRelationship* relativeRelationship = RelativeRelationship::NULL_RELATIVE_RELATIONSHIP;
 
-public: BasicWeaponPart(Animation animationInterface, AllBinaryLayer sourceLayerInterface, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface, RelativeRelationship relativeRelationship);
+public: BasicWeaponPart(Animation* animationInterface, AllBinaryLayer* sourceLayerInterface, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship);
 
-    public: void init(AllBinaryLayer sourceLayerInterface, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface, RelativeRelationship relativeRelationship);
-
-                //@Throws(Exception.constructor)
-            
-    public: void process(AllBinaryLayerManager allbinaryLayerManager, int16_t angle, int16_t otherAngle);
+    public: void init(AllBinaryLayer* sourceLayerInterface, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship);
 
                 //@Throws(Exception.constructor)
             
-    public: void processScore(AllBinaryLayerManager allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface);
+    public: void process(AllBinaryLayerManager* allbinaryLayerManager, int16_t angle, int16_t otherAngle);
 
-    public: AllBinaryLayer getOwnerLayerInterface();
+                //@Throws(Exception.constructor)
+            
+    public: void processScore(AllBinaryLayerManager* allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface);
 
-    public: void setOwnerLayerInterface(AllBinaryLayer ownerLayerInterface);
+    public: AllBinaryLayer* getOwnerLayerInterface();
 
-    public: Animation getAnimationInterface();
+    public: void setOwnerLayerInterface(AllBinaryLayer* ownerLayerInterface);
 
-    public: void setAnimationInterface(Animation animationInterface);
+    public: Animation* getAnimationInterface();
 
-    public: void paint(Graphics graphics);
+    public: void setAnimationInterface(Animation* animationInterface);
 
-    public: void paintThreed(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: WeaponProperties getWeaponProperties();
+    public: void paintThreed(Graphics* graphics);
 
-    public: void setWeaponProperties(WeaponProperties weaponProperties);
+    public: WeaponProperties* getWeaponProperties();
+
+    public: void setWeaponProperties(WeaponProperties* weaponProperties);
 
 };
 

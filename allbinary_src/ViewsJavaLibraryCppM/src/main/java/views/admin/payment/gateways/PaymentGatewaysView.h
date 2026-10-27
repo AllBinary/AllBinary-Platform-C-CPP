@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_PAYMENT_GATEWAYS_PAYMENTGATEWAYSVIEW_H
         #define VIEWS_ADMIN_PAYMENT_GATEWAYS_PAYMENTGATEWAYSVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -89,15 +95,15 @@
         
 class PaymentGatewaysView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: BasicArrayList paymentGatewayVector;
+    private: BasicArrayList* paymentGatewayVector;
 
-public: PaymentGatewaysView(TransformInfoInterface transformInfoInterface, BasicArrayList gatewayVector);
+public: PaymentGatewaysView(TransformInfoInterface* transformInfoInterface, BasicArrayList* gatewayVector);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
     public: void addDomNodeInterfaces();
 

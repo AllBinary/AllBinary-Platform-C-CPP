@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -62,45 +68,45 @@
         
 class CategoryInterface: public TableMappingInterface, public ValidationInterface {
 
-    BasicArrayList getChildNodes()
+    public: virtual BasicArrayList* getChildNodes() = 0;
 
-    bool addChildProperty(CategoryPropertiesInterface categoryPropertiesInterface)
+    public: virtual bool addChildProperty(CategoryPropertiesInterface* categoryPropertiesInterface) = 0;
 
-    bool addChild(CategoryInterface categoryInterface)
+    public: virtual bool addChild(CategoryInterface* categoryInterface) = 0;
 
-    bool removeChild(CategoryInterface categoryInterface)
-
-                //@Throws(Exception.constructor)
-            
-    bool isLeaf()
-
-    CategoryPropertiesInterface getProperties()
-
-    void setProperties(CategoryPropertiesInterface categoryPropertiesInterface)
-
-    CategoryHierarchyInterface getHierarchy()
-
-    void setHierarchy(CategoryHierarchyInterface categoryHierarchyInterface)
+    public: virtual bool removeChild(CategoryInterface* categoryInterface) = 0;
 
                 //@Throws(Exception.constructor)
             
-    AbPath getPath()
+    public: virtual bool isLeaf() = 0;
+
+    public: virtual CategoryPropertiesInterface* getProperties() = 0;
+
+    public: virtual void setProperties(CategoryPropertiesInterface* categoryPropertiesInterface) = 0;
+
+    public: virtual CategoryHierarchyInterface* getHierarchy() = 0;
+
+    public: virtual void setHierarchy(CategoryHierarchyInterface* categoryHierarchyInterface) = 0;
 
                 //@Throws(Exception.constructor)
             
-    AbPath getFilePath()
+    public: virtual AbPath* getPath() = 0;
 
                 //@Throws(Exception.constructor)
             
-    AbPath getWebAppPath()
+    public: virtual AbPath* getFilePath() = 0;
 
                 //@Throws(Exception.constructor)
             
-    AbPath getRootFilePath()
+    public: virtual AbPath* getWebAppPath() = 0;
 
                 //@Throws(Exception.constructor)
             
-    void log()
+    public: virtual AbPath* getRootFilePath() = 0;
+
+                //@Throws(Exception.constructor)
+            
+    public: virtual void log() = 0;
 
 };
 

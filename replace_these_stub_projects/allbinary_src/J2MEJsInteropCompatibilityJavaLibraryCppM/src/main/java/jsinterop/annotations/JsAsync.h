@@ -7,6 +7,12 @@
         #ifndef JSINTEROP_ANNOTATIONS_JSASYNC_H
         #define JSINTEROP_ANNOTATIONS_JSASYNC_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 

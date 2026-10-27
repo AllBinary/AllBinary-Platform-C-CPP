@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,33 +79,33 @@ class FrameLog
             : public Object
          {
 
-    private: static std::vector<int8_t> frameBytes = "Frame: ".getBytes();
+    private: static inline std::vector<int8_t> frameBytes = ("Frame: ").getBytes();
 
-    private: static std::vector<int8_t> info = "Info: \n".getBytes();
+    private: static inline std::vector<int8_t> info = ("Info: \n").getBytes();
 
-    private: static std::vector<int8_t> actions = "Actions: \n".getBytes();
+    private: static inline std::vector<int8_t> actions = ("Actions: \n").getBytes();
 
-    private: Long frame;
+    private: int64_t frame;
 
-    private: StringMaker infoStringBuffer = StringMaker();
+    private: StringMaker* infoStringBuffer = new StringMaker();
 
-    private: StringMaker actionsStringBuffer = StringMaker();
+    private: StringMaker* actionsStringBuffer = new StringMaker();
 
-public: FrameLog(Long frame){
+public: FrameLog(int64_t frame){
 this->frame= frame;
     
 }
 
 
     public: void addInfo(std::string infoString){
-this->infoStringBuffer.append(infoString);
+this->infoStringBuffer->append(infoString);
     
 }
 
 
-    public: void addActions(BasicArrayList vectorOfStrings){
+    public: void addActions(BasicArrayList* vectorOfStrings){
 
-    int32_t size = vectorOfStrings.size();;
+    int32_t size = vectorOfStrings->size();;
     
 
 
@@ -108,7 +114,7 @@ this->infoStringBuffer.append(infoString);
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->addAction(vectorOfStrings.get(index));
+this->addAction(vectorOfStrings->get(index));
     
 }
 
@@ -116,9 +122,9 @@ this->addAction(vectorOfStrings.get(index));
 
 
     public: void addAction(std::string action){
-this->actionsStringBuffer.append(action);
+this->actionsStringBuffer->append(action);
     
-this->actionsStringBuffer.append(CommonSeps::getInstance().NEW_LINE);
+this->actionsStringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
     
 }
 
@@ -127,42 +133,42 @@ this->actionsStringBuffer.append(CommonSeps::getInstance().NEW_LINE);
             
     public: void write(){
 
-    StringMaker filePathStringBuffer = StringMaker();;
+    StringMaker* filePathStringBuffer = new StringMaker();;
     
-filePathStringBuffer.append(ImageOutputData::SAVE_PATH);
+filePathStringBuffer->append(ImageOutputData::SAVE_PATH);
     
-filePathStringBuffer.append(LongUtil::fillIn(this->frame.toString()));
+filePathStringBuffer->append(LongUtil::fillIn(this->frame.toString()));
     
-filePathStringBuffer.append(".txt");
-    
-
-    std::string filePath = filePathStringBuffer.toString();;
+filePathStringBuffer->append(".txt");
     
 
-    FileOutputStream fileOutputStream = FileOutputStream(File(filePath));;
+    std::string filePath = filePathStringBuffer->toString();;
     
-fileOutputStream.write(FrameLog::frameBytes);
+
+    FileOutputStream* fileOutputStream = new FileOutputStream(new File(filePath));;
     
-fileOutputStream.write(getFrame().toString().getBytes());
+fileOutputStream->write(FrameLog::frameBytes);
     
-fileOutputStream.write('\n');
+fileOutputStream->write(getFrame().toString().getBytes());
     
-fileOutputStream.write(FrameLog::info);
+fileOutputStream->write('\n');
     
-fileOutputStream.write(this->infoStringBuffer.toString().getBytes());
+fileOutputStream->write(FrameLog::info);
     
-fileOutputStream.write('\n');
+fileOutputStream->write(this->infoStringBuffer->toString().getBytes());
     
-fileOutputStream.write(FrameLog::actions);
+fileOutputStream->write('\n');
     
-fileOutputStream.write(this->actionsStringBuffer.toString().getBytes());
+fileOutputStream->write(FrameLog::actions);
     
-fileOutputStream.close();
+fileOutputStream->write(this->actionsStringBuffer->toString().getBytes());
+    
+fileOutputStream->close();
     
 }
 
 
-    public: Long getFrame(){
+    public: int64_t getFrame(){
 
 
 

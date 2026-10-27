@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGS_BASICGROUPITEMSTAG_H
         #define ADMIN_TAGS_BASICGROUPITEMSTAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/util/HashMap.h>
 
       
@@ -48,11 +54,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TableTag.h"
+        #include "admin/tags/TableTag.h"
 
 class BasicGroupItemsTag: public TableTag {
 
-    private: HashMap<Object*, Object*> propertiesHashMap;
+    private: HashMap<Object*, Object*>* propertiesHashMap;
 
 public: BasicGroupItemsTag();
 

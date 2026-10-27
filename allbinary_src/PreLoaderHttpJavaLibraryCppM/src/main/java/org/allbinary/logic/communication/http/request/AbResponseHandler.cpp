@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -77,32 +83,32 @@ class AbResponseHandler
 
                 //@Throws(JspTagException.constructor)
             
-    public: static void sendJspTagRedirect(PageContext pageContext, Exception e){
+    public: static void sendJspTagRedirect(PageContext* pageContext, Exception* e){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
         try {
             
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().JSPTAGERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->JSPTAGERROR))
                         
                                     {
-                                    logUtil.put("Jsp Tag Exception", "AbResponseHandler", "sendJspRedirect()", e);
+                                    logUtil->put("Jsp Tag Exception", "AbResponseHandler", "sendJspRedirect()", e);
     
 
                                     }
                                 
-AbResponseHandler::sendRedirect(pageContext, FREEBLISKET_PATH_GLOBALS::getInstance().ERRORPAGE);
+AbResponseHandler::sendRedirect(pageContext, FREEBLISKET_PATH_GLOBALS::getInstance()->ERRORPAGE);
     
 
                 //: 
-} catch(e2) 
+} catch(Exception& e2) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().LICENSINGERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->LICENSINGERROR))
                         
                                     {
-                                    logUtil.put("Exception in Redirect Handling", "AbResponseHandler", "sendJspRedirect", e);
+                                    logUtil->put("Exception in Redirect Handling", "AbResponseHandler", "sendJspRedirect", e);
     
 
                                     }
@@ -110,7 +116,7 @@ AbResponseHandler::sendRedirect(pageContext, FREEBLISKET_PATH_GLOBALS::getInstan
 
 
 
-                            throw JspTagException();
+                            throw new JspTagException();
                     
 }
 
@@ -119,32 +125,32 @@ AbResponseHandler::sendRedirect(pageContext, FREEBLISKET_PATH_GLOBALS::getInstan
 
                 //@Throws(ServletException.constructor)
             
-    public: static void sendServletRedirect(PageContext pageContext, Exception e){
+    public: static void sendServletRedirect(PageContext* pageContext, Exception* e){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
         try {
             
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().JSPTAGERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->JSPTAGERROR))
                         
                                     {
-                                    logUtil.put("Jsp Tag Exception", "AbResponseHandler", "sendJspRedirect()", e);
+                                    logUtil->put("Jsp Tag Exception", "AbResponseHandler", "sendJspRedirect()", e);
     
 
                                     }
                                 
-AbResponseHandler::sendRedirect(pageContext, FREEBLISKET_PATH_GLOBALS::getInstance().ERRORPAGE);
+AbResponseHandler::sendRedirect(pageContext, FREEBLISKET_PATH_GLOBALS::getInstance()->ERRORPAGE);
     
 
                 //: 
-} catch(e2) 
+} catch(Exception& e2) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().LICENSINGERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->LICENSINGERROR))
                         
                                     {
-                                    logUtil.put("Exception in Redirect Handling", "AbResponseHandler", "sendJspRedirect", e);
+                                    logUtil->put("Exception in Redirect Handling", "AbResponseHandler", "sendJspRedirect", e);
     
 
                                     }
@@ -152,7 +158,7 @@ AbResponseHandler::sendRedirect(pageContext, FREEBLISKET_PATH_GLOBALS::getInstan
 
 
 
-                            throw ServletException();
+                            throw new ServletException();
                     
 }
 
@@ -161,32 +167,32 @@ AbResponseHandler::sendRedirect(pageContext, FREEBLISKET_PATH_GLOBALS::getInstan
 
                 //@Throws(JspTagException.constructor)
             
-    public: static void sendJspTagLicensingRedirect(PageContext pageContext, Exception e){
+    public: static void sendJspTagLicensingRedirect(PageContext* pageContext, Exception* e){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
         try {
             
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().JSPTAGERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->JSPTAGERROR))
                         
                                     {
-                                    logUtil.put("Licensing Exception", "AbResponseHandler", "sendJspTagLicensingRedirect()", e);
+                                    logUtil->put("Licensing Exception", "AbResponseHandler", "sendJspTagLicensingRedirect()", e);
     
 
                                     }
                                 
-AbResponseHandler::sendRedirect(pageContext, FREEBLISKET_PATH_GLOBALS::getInstance().LICENSEERRORPAGE);
+AbResponseHandler::sendRedirect(pageContext, FREEBLISKET_PATH_GLOBALS::getInstance()->LICENSEERRORPAGE);
     
 
                 //: 
-} catch(e2) 
+} catch(Exception& e2) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().LICENSINGERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->LICENSINGERROR))
                         
                                     {
-                                    logUtil.put("Exception in Redirect Handling", "AbResponseHandler", "sendJspTagLicensingRedirect", e);
+                                    logUtil->put("Exception in Redirect Handling", "AbResponseHandler", "sendJspTagLicensingRedirect", e);
     
 
                                     }
@@ -194,7 +200,7 @@ AbResponseHandler::sendRedirect(pageContext, FREEBLISKET_PATH_GLOBALS::getInstan
 
 
 
-                            throw JspTagException();
+                            throw new JspTagException();
                     
 }
 
@@ -203,32 +209,32 @@ AbResponseHandler::sendRedirect(pageContext, FREEBLISKET_PATH_GLOBALS::getInstan
 
                 //@Throws(ServletException.constructor)
             
-    public: static void sendServletLicensingRedirect(PageContext pageContext, Exception e){
+    public: static void sendServletLicensingRedirect(PageContext* pageContext, Exception* e){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
         try {
             
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().JSPTAGERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->JSPTAGERROR))
                         
                                     {
-                                    logUtil.put("Licensing Exception", "AbResponseHandler", "sendServletLicensingRedirect()", e);
+                                    logUtil->put("Licensing Exception", "AbResponseHandler", "sendServletLicensingRedirect()", e);
     
 
                                     }
                                 
-AbResponseHandler::sendRedirect(pageContext, FREEBLISKET_PATH_GLOBALS::getInstance().LICENSEERRORPAGE);
+AbResponseHandler::sendRedirect(pageContext, FREEBLISKET_PATH_GLOBALS::getInstance()->LICENSEERRORPAGE);
     
 
                 //: 
-} catch(e2) 
+} catch(Exception& e2) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().LICENSINGERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->LICENSINGERROR))
                         
                                     {
-                                    logUtil.put("Exception in Redirect Handling", "AbResponseHandler", "sendServletLicensingRedirect", e);
+                                    logUtil->put("Exception in Redirect Handling", "AbResponseHandler", "sendServletLicensingRedirect", e);
     
 
                                     }
@@ -236,7 +242,7 @@ AbResponseHandler::sendRedirect(pageContext, FREEBLISKET_PATH_GLOBALS::getInstan
 
 
 
-                            throw ServletException();
+                            throw new ServletException();
                     
 }
 
@@ -245,21 +251,21 @@ AbResponseHandler::sendRedirect(pageContext, FREEBLISKET_PATH_GLOBALS::getInstan
 
                 //@Throws(Exception.constructor)
             
-    public: static void sendRedirect(PageContext pageContext, std::string page){
+    public: static void sendRedirect(PageContext* pageContext, std::string page){
 
-    HttpServletRequest request = pageContext.getRequest();;
+    HttpServletRequest* request = dynamic_cast<HttpServletRequest*>(pageContext->getRequest());;
     
 
-    HttpServletResponse response = pageContext.getResponse();;
+    HttpServletResponse* response = dynamic_cast<HttpServletResponse*>(pageContext->getResponse());;
     
 
-    RequestDispatcher requestDispatcher = request.getRequestDispatcher(page);;
+    RequestDispatcher* requestDispatcher = request->getRequestDispatcher(page);;
     
 
-                        if(response.isCommitted())
+                        if(response->isCommitted())
                         
                                     {
-                                    response.sendRedirect(page);
+                                    response->sendRedirect(page);
     
 
                                     }
@@ -267,13 +273,13 @@ AbResponseHandler::sendRedirect(pageContext, FREEBLISKET_PATH_GLOBALS::getInstan
                         else {
                             
         try {
-            requestDispatcher.forward(request, response);
+            requestDispatcher->forward(request, response);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-pageContext.getOut().print("Error: " +page);
+pageContext->getOut()->print("Error: " +page);
     
 }
 
@@ -283,7 +289,7 @@ pageContext.getOut().print("Error: " +page);
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: AbResponseHandler(){
 }

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_GYRO_ORIENTATIONTOGAMEKEYEVENT_H
         #define ORG_ALLBINARY_INPUT_GYRO_ORIENTATIONTOGAMEKEYEVENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,22 +58,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryOrientationSensor.h"
-#include "NoGyroSensor.h"
+        #include "org/allbinary/input/gyro/AllBinaryOrientationSensor.h"
+#include "org/allbinary/input/gyro/NoGyroSensor.h"
 
 class OrientationToGameKeyEvent
             : public Object
          {
 
-    private: AllBinaryOrientationSensor allBinaryGyroSensor;
+    private: AllBinaryOrientationSensor* allBinaryGyroSensor;
 
     private: const int32_t MIN = 15;
 
 public: OrientationToGameKeyEvent();
 
-    public: void setAllBinaryGyroSensor(AllBinaryOrientationSensor allBinaryGyroSensor);
+    public: void setAllBinaryGyroSensor(AllBinaryOrientationSensor* allBinaryGyroSensor);
 
-    public: AllBinaryOrientationSensor getAllBinaryGyroSensor();
+    public: AllBinaryOrientationSensor* getAllBinaryGyroSensor();
 
                 //@Throws(Exception.constructor)
             
@@ -75,7 +81,7 @@ public: OrientationToGameKeyEvent();
 
                 //@Throws(Exception.constructor)
             
-    private: void updateGameKeyEvents(Orientation orientation, int32_t yaw, int32_t pitch, int32_t roll);
+    private: void updateGameKeyEvents(Orientation* orientation, int32_t yaw, int32_t pitch, int32_t roll);
 
 };
 

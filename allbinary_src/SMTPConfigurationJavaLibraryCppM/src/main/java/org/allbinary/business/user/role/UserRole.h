@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLE_H
         #define ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,25 +55,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicUserRole.h"
+        #include "org/allbinary/business/user/role/BasicUserRole.h"
 
 class UserRole
             : public Object
-        : public Serializable {
+        , public Serializable {
 
-    private: BasicUserRole basicUserRole;
+    private: BasicUserRole* basicUserRole;
 
-    private: UserFactoryInterface userFactoryInterface;
+    private: UserFactoryInterface* userFactoryInterface;
 
-protected: UserRole(BasicUserRole aBasicUserRole, UserFactoryInterface aUserFactoryInterface);
+protected: UserRole(BasicUserRole* aBasicUserRole, UserFactoryInterface* aUserFactoryInterface);
 
     public: std::string toString();
 
-    public: BasicUserRole getBasicUserRole();
+    public: BasicUserRole* getBasicUserRole();
 
                 //@Throws(Exception.constructor)
             
-    public: UserFactoryInterface getUserFactory();
+    public: UserFactoryInterface* getUserFactory();
 
     public: int64_t getSessionTimeout();
 

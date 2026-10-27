@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/math/Angle.h>
@@ -49,17 +55,17 @@ class BasicTerrainInfo
             : public Object
          {
 
-    public: static const BasicTerrainInfo NULL_BASIC_TERRAIN_INFO = BasicTerrainInfo(AngleFactory::getInstance().NOT_ANGLE);
+    public: static BasicTerrainInfo* NULL_BASIC_TERRAIN_INFO() { static std::unique_ptr<BasicTerrainInfo> value(new BasicTerrainInfo(AngleFactory::getInstance()->NOT_ANGLE)); return value.get(); }
 
-    private: Angle angle;
+    private: Angle* angle;
 
-public: BasicTerrainInfo(Angle angle){
+public: BasicTerrainInfo(Angle* angle){
 this->angle= angle;
     
 }
 
 
-    public: Angle getAngle(){
+    public: Angle* getAngle(){
 
 
 
@@ -69,7 +75,7 @@ this->angle= angle;
 }
 
 
-    public: void setAngle(Angle angle){
+    public: void setAngle(Angle* angle){
 this->angle= angle;
     
 }

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,27 +66,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameConfigurationSingleton.h"
+        #include "org/allbinary/game/configuration/GameConfigurationSingleton.h"
 
 class GameConfiguration
             : public Object
          {
 
-    private: static const Integer MIN_VALUE = Integer(Integer::MIN_VALUE);
+    private: static inline int32_t MIN_VALUE = int32_t(Integer.MIN_VALUE());
 
-    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: Integer defaultValue = SmallIntegerSingletonFactory::getInstance().getAt(0);
+    private: int32_t defaultValue = SmallIntegerSingletonFactory::getInstance()->getAt(0);
 
-    private: Integer value = GameConfiguration::MIN_VALUE;
+    private: int32_t value = GameConfiguration::MIN_VALUE();
 
-    private: Integer minValue = this->defaultValue;
+    private: int32_t minValue = this->defaultValue;
 
-    private: Integer maxValue = this->defaultValue;
+    private: int32_t maxValue = this->defaultValue;
 
-    private: Boolean modifiable = BooleanFactory::getInstance().TRUE;
+    private: bool modifiable = BooleanFactory::getInstance()->TRUE;
 
-public: GameConfiguration(std::string name, Integer defaultValue, Integer minValue, Integer maxValue){
+public: GameConfiguration(std::string name, int32_t defaultValue, int32_t minValue, int32_t maxValue){
 this->setName(name);
     
 this->setDefaultValue(defaultValue);
@@ -91,24 +97,24 @@ this->setMinValue(minValue);
     
 this->setMaxValue(maxValue);
     
-GameConfigurationSingleton::getInstance().getHashtable().put(this->getName(), this);
+GameConfigurationSingleton::getInstance()->getHashtable()->put(this->getName(), this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void setValue(Integer value){
+    public: void setValue(int32_t value){
 
                         if(this->value != value)
                         
                                     {
                                     
-    Integer oldValue = this->value;;
+    int32_t oldValue = this->value;;
     
 this->value= value;
     
-GameFeatureEventHandler::getInstance().fireEvent(GameFeatureEvent(this, StringMaker().append(this->name).append(" value: from: ").appendint(oldValue.intValue()).append(" to ").appendint(this->value.intValue()).toString()));
+GameFeatureEventHandler::getInstance()->fireEvent(new GameFeatureEvent(this, (new StringMaker())->append(this->name)->append(" value: from: ")->appendint(oldValue.intValue())->append(" to ")->appendint(this->value.intValue())->toString()));
     
 
                                     }
@@ -116,7 +122,7 @@ GameFeatureEventHandler::getInstance().fireEvent(GameFeatureEvent(this, StringMa
 }
 
 
-    public: Integer getValue(){
+    public: int32_t getValue(){
 
 
 
@@ -126,13 +132,13 @@ GameFeatureEventHandler::getInstance().fireEvent(GameFeatureEvent(this, StringMa
 }
 
 
-    public: void setMaxValue(Integer maxValue){
+    public: void setMaxValue(int32_t maxValue){
 this->maxValue= maxValue;
     
 }
 
 
-    public: Integer getMaxValue(){
+    public: int32_t getMaxValue(){
 
 
 
@@ -142,13 +148,13 @@ this->maxValue= maxValue;
 }
 
 
-    public: void setMinValue(Integer minValue){
+    public: void setMinValue(int32_t minValue){
 this->minValue= minValue;
     
 }
 
 
-    public: Integer getMinValue(){
+    public: int32_t getMinValue(){
 
 
 
@@ -174,13 +180,13 @@ this->name= name;
 }
 
 
-    public: void setDefaultValue(Integer defaultValue){
+    public: void setDefaultValue(int32_t defaultValue){
 this->defaultValue= defaultValue;
     
 }
 
 
-    protected: Integer getDefaultValue(){
+    protected: int32_t getDefaultValue(){
 
 
 
@@ -200,48 +206,48 @@ this->setValue(this->getDefaultValue());
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Name: ");
+stringBuffer->append("Name: ");
     
-stringBuffer.append(this->name);
+stringBuffer->append(this->name);
     
-stringBuffer.append(" Min: ");
+stringBuffer->append(" Min: ");
     
-stringBuffer.appendint(this->getMinValue().intValue());
+stringBuffer->appendint(this->getMinValue().intValue());
     
-stringBuffer.append(" Max: ");
+stringBuffer->append(" Max: ");
     
-stringBuffer.appendint(this->getMaxValue().intValue());
+stringBuffer->appendint(this->getMaxValue().intValue());
     
-stringBuffer.append(" Value: ");
+stringBuffer->append(" Value: ");
     
-stringBuffer.appendint(this->getValue().intValue());
+stringBuffer->appendint(this->getValue().intValue());
     
-stringBuffer.append(" Default: ");
+stringBuffer->append(" Default: ");
     
-stringBuffer.appendint(this->getDefaultValue().intValue());
+stringBuffer->appendint(this->getDefaultValue().intValue());
     
-stringBuffer.append(" Modifiable: ");
+stringBuffer->append(" Modifiable: ");
     
-stringBuffer.appendboolean(this->isModifiable().valueOf());
+stringBuffer->appendboolean(this->isModifiable().valueOf());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
-    public: void setModifiable(Boolean modifiable){
+    public: void setModifiable(bool modifiable){
 this->modifiable= modifiable;
     
 }
 
 
-    public: Boolean isModifiable(){
+    public: bool isModifiable(){
 
 
 

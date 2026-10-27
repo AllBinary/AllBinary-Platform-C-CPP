@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_OPTIONS_XMLOPTIONITEMSENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_OPTIONS_XMLOPTIONITEMSENTITYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,21 +55,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "XmlOptionItemsEntity.h"
+        #include "org/allbinary/data/tables/user/commerce/inventory/item/options/XmlOptionItemsEntity.h"
 
 class XmlOptionItemsEntityFactory
             : public Object
          {
 
-    private: static XmlOptionItemsEntityFactory instance() { return XmlOptionItemsEntityFactory(); }
+    private: static XmlOptionItemsEntityFactory* instance() { static std::unique_ptr<XmlOptionItemsEntityFactory> value(new XmlOptionItemsEntityFactory()); return value.get(); }
 
-    public: static XmlOptionItemsEntityFactory getInstance();
+    public: static XmlOptionItemsEntityFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: XmlOptionItemsEntityFactory();
 
-    public: XmlOptionItemsEntity getXmlOptionItemsEntityInstance();
+    public: XmlOptionItemsEntity* getXmlOptionItemsEntityInstance();
 
 };
 

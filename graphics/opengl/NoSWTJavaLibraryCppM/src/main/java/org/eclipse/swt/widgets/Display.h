@@ -21,6 +21,12 @@
         #ifndef ORG_ECLIPSE_SWT_WIDGETS_DISPLAY_H
         #define ORG_ECLIPSE_SWT_WIDGETS_DISPLAY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 

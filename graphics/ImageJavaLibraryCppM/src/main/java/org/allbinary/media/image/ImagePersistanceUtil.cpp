@@ -10,6 +10,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -82,9 +88,9 @@ class ImagePersistanceUtil
             : public Object
          {
 
-    private: static ImagePersistanceUtil instance() { return ImagePersistanceUtil(); }
+    private: static ImagePersistanceUtil* instance() { static std::unique_ptr<ImagePersistanceUtil> value(new ImagePersistanceUtil()); return value.get(); }
 
-    public: static ImagePersistanceUtil getInstance(){
+    public: static ImagePersistanceUtil* getInstance(){
 
 
 
@@ -94,64 +100,64 @@ class ImagePersistanceUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void saveWithBatik(AbFile file, BufferedImage bufferedImage){
+    public: void saveWithBatik(AbFile* file, BufferedImage* bufferedImage){
 
-    PNGImageWriter batikPNGImageWriter = PNGImageWriter();;
+    PNGImageWriter* batikPNGImageWriter = new PNGImageWriter();;
     
 
-    AbFileOutputStream fileOutputStream = AbFileOutputStream::createFromAbFile(file);;
+    AbFileOutputStream* fileOutputStream = AbFileOutputStream::createFromAbFile(file);;
     
 
         try {
-            batikPNGImageWriter.writeImage(bufferedImage, fileOutputStream);
+            batikPNGImageWriter->writeImage(bufferedImage, fileOutputStream);
     
 
          finally {
-            fileOutputStream.flush();
+            fileOutputStream->flush();
     
-StreamUtil::getInstance().close(fileOutputStream);
+StreamUtil::getInstance()->close(fileOutputStream);
     
 
          }
         
-this->logUtil.putF("Wrote Image: " +file.getAbsolutePath(), this, this->commonStrings.SAVE);
+this->logUtil->putF("Wrote Image: " +file->getAbsolutePath(), this, this->commonStrings->SAVE);
     
 }
 
 
-    public: void saveWithImageIO(std::string filePath, BufferedImage bufferedImage){
-this->saveWithImageIO(File(filePath), bufferedImage);
+    public: void saveWithImageIO(std::string filePath, BufferedImage* bufferedImage){
+this->saveWithImageIO(new File(filePath), bufferedImage);
     
 }
 
 
-    public: void saveWithImageIO(File file, BufferedImage bufferedImage){
+    public: void saveWithImageIO(File* file, BufferedImage* bufferedImage){
 
-    ImageWriter writer = 
+    ImageWriter* writer = 
                 null
             ;;
     
 
-    ImageOutputStream ios = 
+    ImageOutputStream* ios = 
                 null
             ;;
     
 
         try {
             
-    Iterator iter = ImageIO::getImageWritersByFormatName("jpeg");;
+    Iterator* iter = ImageIO::getImageWritersByFormatName("jpeg");;
     
 
-                        if(!iter.hasNext())
+                        if(!iter->hasNext())
                         
                                     {
-                                    this->logUtil.putF("Unable to save image to jpeg file type.", this, this->commonStrings.SAVE);
+                                    this->logUtil->putF("Unable to save image to jpeg file type.", this, this->commonStrings->SAVE);
     
 
 
@@ -162,31 +168,31 @@ this->saveWithImageIO(File(filePath), bufferedImage);
 
                                     }
                                 
-writer= iter.next();
+writer= dynamic_cast<ImageWriter*>(iter->next());
     
 ios= ImageIO::createImageOutputStream(file);
     
-writer.setOutput(ios);
+writer->setOutput(ios);
     
 
-    ImageWriteParam iwp = writer.getDefaultWriteParam();;
+    ImageWriteParam* iwp = writer->getDefaultWriteParam();;
     
-iwp.setCompressionMode(ImageWriteParam::MODE_EXPLICIT);
+iwp->setCompressionMode(ImageWriteParam::MODE_EXPLICIT);
     
-iwp.setCompressionQuality(0.95);
+iwp->setCompressionQuality(0.95);
     
-writer.write(
-                            nullptr, IIOImage(bufferedImage, 
+writer->write(
+                            nullptr, new IIOImage(bufferedImage, 
                             nullptr, 
                             nullptr), iwp);
     
-this->logUtil.putF("Wrote Image: " +file.getAbsolutePath(), this, this->commonStrings.SAVE);
+this->logUtil->putF("Wrote Image: " +file->getAbsolutePath(), this, this->commonStrings->SAVE);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.SAVE, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->SAVE, &e);
     
 }
 
@@ -199,7 +205,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.SAVE,
                                 )
                         
                                     {
-                                    ios.flush();
+                                    ios->flush();
     
 
         try {
@@ -209,18 +215,18 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.SAVE,
                                 )
                         
                                     {
-                                    this->logUtil.putF(ios.toString(), ios, this->commonStrings.CLOSE);
+                                    this->logUtil->putF(ios->toString(), ios, this->commonStrings->CLOSE);
     
-ios.close();
+ios->close();
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(commonStrings.EXCEPTION, ios, commonStrings.CLOSE, e);
+this->logUtil->put(commonStrings->EXCEPTION, ios, commonStrings->CLOSE, &e);
     
 }
 
@@ -233,16 +239,16 @@ this->logUtil.put(commonStrings.EXCEPTION, ios, commonStrings.CLOSE, e);
                                 )
                         
                                     {
-                                    writer.dispose();
+                                    writer->dispose();
     
 
                                     }
                                 
 
                 //: 
-} catch(e2) 
+} catch(IOException& e2) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.SAVE, e2);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->SAVE, &e2);
     
 }
 

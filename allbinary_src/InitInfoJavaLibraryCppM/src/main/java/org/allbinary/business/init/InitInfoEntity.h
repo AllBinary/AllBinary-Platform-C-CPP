@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_INITINFOENTITY_H
         #define ORG_ALLBINARY_BUSINESS_INIT_INITINFOENTITY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -71,8 +77,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InitSql.h"
-#include "InitInfo.h"
+        #include "org/allbinary/business/init/InitSql.h"
+#include "org/allbinary/business/init/InitInfo.h"
 
 class InitInfoEntity: public InitSql {
 

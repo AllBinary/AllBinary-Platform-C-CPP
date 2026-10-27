@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -47,17 +53,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PressGameKeyEventHandler.h"
-#include "UpGameKeyEventHandler.h"
-#include "DownGameKeyEventHandler.h"
+        #include "org/allbinary/game/input/event/PressGameKeyEventHandler.h"
+#include "org/allbinary/game/input/event/UpGameKeyEventHandler.h"
+#include "org/allbinary/game/input/event/DownGameKeyEventHandler.h"
 
 class GameKeyEventHandler
             : public Object
          {
 
-    private: static GameKeyEventHandler instance() { return GameKeyEventHandler(); }
+    private: static GameKeyEventHandler* instance() { static std::unique_ptr<GameKeyEventHandler> value(new GameKeyEventHandler()); return value.get(); }
 
-    public: static GameKeyEventHandler getInstance(){
+    public: static GameKeyEventHandler* getInstance(){
 
 
 
@@ -67,59 +73,59 @@ class GameKeyEventHandler
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const PressGameKeyEventHandler pressGameKeyEventHandler = PressGameKeyEventHandler::getInstance();
+    private: PressGameKeyEventHandler* pressGameKeyEventHandler = PressGameKeyEventHandler::getInstance();
 
-    private: const UpGameKeyEventHandler upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
+    private: UpGameKeyEventHandler* upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
 
-    private: const DownGameKeyEventHandler downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
+    private: DownGameKeyEventHandler* downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void removeAllListeners(){
-this->pressGameKeyEventHandler.removeAllListeners();
+this->pressGameKeyEventHandler->removeAllListeners();
     
-this->upGameKeyEventHandler.removeAllListeners();
+this->upGameKeyEventHandler->removeAllListeners();
     
-this->downGameKeyEventHandler.removeAllListeners();
-    
-}
-
-
-    public: void addListenerForPlayer(EventListenerInterface eventListenerInterface, int32_t playerInputId){
-this->logUtil.putF(eventListenerInterface.toString(), this, this->commonStrings.ADD_LISTENER);
-    
-this->pressGameKeyEventHandler.addListenerSingleThreaded(eventListenerInterface);
-    
-this->upGameKeyEventHandler.getInstanceForPlayer(playerInputId).addListenerSingleThreaded(eventListenerInterface);
-    
-this->downGameKeyEventHandler.getInstanceForPlayer(playerInputId).addListenerSingleThreaded(eventListenerInterface);
+this->downGameKeyEventHandler->removeAllListeners();
     
 }
 
 
-    public: void addListener(EventListenerInterface eventListenerInterface){
-this->logUtil.putF(eventListenerInterface.toString(), this, this->commonStrings.ADD_LISTENER);
+    public: void addListenerForPlayer(EventListenerInterface* eventListenerInterface, int32_t playerInputId){
+this->logUtil->putF(eventListenerInterface->toString(), this, this->commonStrings->ADD_LISTENER);
     
-this->pressGameKeyEventHandler.addListenerSingleThreaded(eventListenerInterface);
+this->pressGameKeyEventHandler->addListenerSingleThreaded(eventListenerInterface);
     
-this->upGameKeyEventHandler.addListenerSingleThreaded(eventListenerInterface);
+this->upGameKeyEventHandler->getInstanceForPlayer(playerInputId)->addListenerSingleThreaded(eventListenerInterface);
     
-this->downGameKeyEventHandler.addListenerSingleThreaded(eventListenerInterface);
+this->downGameKeyEventHandler->getInstanceForPlayer(playerInputId)->addListenerSingleThreaded(eventListenerInterface);
     
 }
 
 
-    public: void removeListener(EventListenerInterface eventListenerInterface){
-this->logUtil.putF(eventListenerInterface.toString(), this, this->commonStrings.REMOVE_LISTENER);
+    public: void addListener(EventListenerInterface* eventListenerInterface){
+this->logUtil->putF(eventListenerInterface->toString(), this, this->commonStrings->ADD_LISTENER);
     
-this->pressGameKeyEventHandler.removeListenerSingleThreaded(eventListenerInterface);
+this->pressGameKeyEventHandler->addListenerSingleThreaded(eventListenerInterface);
     
-this->upGameKeyEventHandler.removeListenerSingleThreaded(eventListenerInterface);
+this->upGameKeyEventHandler->addListenerSingleThreaded(eventListenerInterface);
     
-this->downGameKeyEventHandler.removeListenerSingleThreaded(eventListenerInterface);
+this->downGameKeyEventHandler->addListenerSingleThreaded(eventListenerInterface);
+    
+}
+
+
+    public: void removeListener(EventListenerInterface* eventListenerInterface){
+this->logUtil->putF(eventListenerInterface->toString(), this, this->commonStrings->REMOVE_LISTENER);
+    
+this->pressGameKeyEventHandler->removeListenerSingleThreaded(eventListenerInterface);
+    
+this->upGameKeyEventHandler->removeListenerSingleThreaded(eventListenerInterface);
+    
+this->downGameKeyEventHandler->removeListenerSingleThreaded(eventListenerInterface);
     
 }
 

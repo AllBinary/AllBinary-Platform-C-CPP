@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,17 +79,17 @@ class AbFileSystem
             : public Object
          {
 
-    private: static AbFileSystem instance() { return AbFileSystem(); }
+    private: static AbFileSystem* instance() { static std::unique_ptr<AbFileSystem> value(new AbFileSystem()); return value.get(); }
 
-    public: static AbFileSystem getInstance();
+    public: static AbFileSystem* getInstance();
 
                 //@Throws(Exception.constructor)
             
     public: static void main(std::vector<std::string> args);
 
-    private: const LogUtil logUtil = LogUtil::getInstance();
+    private: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     public: bool isDirectoryOrFile(std::string path);
 

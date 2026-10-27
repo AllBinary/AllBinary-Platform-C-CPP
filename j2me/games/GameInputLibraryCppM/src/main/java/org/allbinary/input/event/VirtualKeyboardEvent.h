@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_INPUT_EVENT_VIRTUALKEYBOARDEVENT_H
         #define ORG_ALLBINARY_INPUT_EVENT_VIRTUALKEYBOARDEVENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
       

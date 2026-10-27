@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLDEMOPAINTABLE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLDEMOPAINTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,13 +47,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DemoPaintableInterface.h"
+        #include "org/allbinary/game/displayable/canvas/DemoPaintableInterface.h"
 
 class NullDemoPaintable
             : public Object
-        : public DemoPaintableInterface {
+        , public DemoPaintableInterface {
 
-    public: static const NullDemoPaintable NULL_DEMO_PAINTABLE = NullDemoPaintable();
+    public: static NullDemoPaintable* NULL_DEMO_PAINTABLE() { static std::unique_ptr<NullDemoPaintable> value(new NullDemoPaintable()); return value.get(); }
 
     public: void showGamePaintable();
 

@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -68,30 +76,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseDropCellPositionGenerator.h"
+        #include "org/allbinary/media/graphics/geography/map/drop/BaseDropCellPositionGenerator.h"
 
 class AnyRandomDropCellPositionGenerator: public BaseDropCellPositionGenerator {
 
-    protected: const BasicArrayList list = BasicArrayListD();
+    protected: BasicArrayList* list = new BasicArrayListD();
 
-    protected: Object* geographicMapInterface = NullUtil::getInstance().NULL_OBJECT;
+    protected: Object* geographicMapInterface = NullUtil::getInstance()->NULL_OBJECT;
 
                 //@Throws(Exception.constructor)
             
-    public: void update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface){
+    public: void update(AllBinaryGameLayerManager* allBinaryGameLayerManager, BasicGeographicMap* geographicMapInterface){
 this->geographicMapInterface= geographicMapInterface;
     
 
-    BasicGeographicMapCellPositionFactory basicGeographicMapCellPositionFactory = geographicMapInterface->getGeographicMapCellPositionFactory();;
+    BasicGeographicMapCellPositionFactory* basicGeographicMapCellPositionFactory = geographicMapInterface->getGeographicMapCellPositionFactory();;
     
 
-    MyRandomFactory randomFactory = MyRandomFactory::getInstance();;
+    MyRandomFactory* randomFactory = MyRandomFactory::getInstance();;
     
 
-    AllBinaryTiledLayer tiledLayer = geographicMapInterface->getAllBinaryTiledLayer();;
+    AllBinaryTiledLayer* tiledLayer = geographicMapInterface->getAllBinaryTiledLayer();;
     
 
-    int32_t total = tiledLayer.getColumns() *tiledLayer.getRows();;
+    int32_t total = tiledLayer->getColumns() *tiledLayer->getRows();;
     
 
     int32_t randomColumn= 0;;
@@ -100,7 +108,7 @@ this->geographicMapInterface= geographicMapInterface;
     int32_t randomRow= 0;;
     
 
-    GeographicMapCellPosition geographicMapCellPosition;;
+    GeographicMapCellPosition* geographicMapCellPosition;;
     
 
 
@@ -109,17 +117,17 @@ this->geographicMapInterface= geographicMapInterface;
                         for (
     int32_t index = total;--index >= 0; )
         {
-randomColumn= randomFactory.getAbsoluteNextInt(tiledLayer.getColumns());
+randomColumn= randomFactory->getAbsoluteNextInt(tiledLayer->getColumns());
     
-randomRow= randomFactory.getAbsoluteNextInt(tiledLayer.getRows());
+randomRow= randomFactory->getAbsoluteNextInt(tiledLayer->getRows());
     
-geographicMapCellPosition= basicGeographicMapCellPositionFactory.getAt(randomColumn, randomRow);
+geographicMapCellPosition= basicGeographicMapCellPositionFactory->getAt(randomColumn, randomRow);
     
 
                         if(this->isDropAllowedAt(geographicMapCellPosition))
                         
                                     {
-                                    this->list.add(geographicMapCellPosition);
+                                    this->list->add(geographicMapCellPosition);
     
 
                                     }
@@ -131,7 +139,7 @@ geographicMapCellPosition= basicGeographicMapCellPositionFactory.getAt(randomCol
 
                 //@Throws(Exception.constructor)
             
-    public: void processTick(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager){
 }
 
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/business/user/commerce/inventory/basket/BasketInterface.h>
 
       
@@ -45,41 +51,41 @@
         
 class OrderInterface {
 
-    void setShippingMethod(std::string shippingType);
+    public: virtual void setShippingMethod(std::string shippingType) = 0;
 
-    void setPaymentMethod(std::string value);
+    public: virtual void setPaymentMethod(std::string value) = 0;
 
-    void setSpecial(std::string special);
+    public: virtual void setSpecial(std::string special) = 0;
 
-    void setStoreName(std::string value);
+    public: virtual void setStoreName(std::string value) = 0;
 
-    void setUserComments(std::string value);
+    public: virtual void setUserComments(std::string value) = 0;
 
-    void setUserCancelComments(std::string value);
+    public: virtual void setUserCancelComments(std::string value) = 0;
 
-    void setStoreComments(std::string value);
+    public: virtual void setStoreComments(std::string value) = 0;
 
-    void setStoreCancelComments(std::string value);
+    public: virtual void setStoreCancelComments(std::string value) = 0;
 
-    BasketInterface getBasket();
+    public: virtual BasketInterface* getBasket() = 0;
 
-    std::string getShippingMethod();
+    public: virtual std::string getShippingMethod() = 0;
 
-    std::string getPaymentMethod();
+    public: virtual std::string getPaymentMethod() = 0;
 
-    std::string getSpecial();
+    public: virtual std::string getSpecial() = 0;
 
-    std::string getId();
+    public: virtual std::string getId() = 0;
 
-    std::string getStoreName();
+    public: virtual std::string getStoreName() = 0;
 
-    std::string getUserComments();
+    public: virtual std::string getUserComments() = 0;
 
-    std::string getUserCancelComments();
+    public: virtual std::string getUserCancelComments() = 0;
 
-    std::string getStoreComments();
+    public: virtual std::string getStoreComments() = 0;
 
-    std::string getStoreCancelComments();
+    public: virtual std::string getStoreCancelComments() = 0;
 
 };
 

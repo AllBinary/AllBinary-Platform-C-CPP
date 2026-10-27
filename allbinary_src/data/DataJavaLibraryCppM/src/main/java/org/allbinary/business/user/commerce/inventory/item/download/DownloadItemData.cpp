@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,43 +49,43 @@ class DownloadItemData
             : public Object
          {
 
-    public: static const std::string NAME = "DOWNLOADITEM_NAME";
+    public: static inline const std::string NAME = "DOWNLOADITEM_NAME";
 
-    public: static const std::string ID = "DOWNLOADITEM_ID";
+    public: static inline const std::string ID = "DOWNLOADITEM_ID";
 
-    public: static const std::string SYSTEM = "DOWNLOADITEM_SYSTEM";
+    public: static inline const std::string SYSTEM = "DOWNLOADITEM_SYSTEM";
 
-    public: static const std::string PLATFORM = "DOWNLOADITEM_PLATFORM";
+    public: static inline const std::string PLATFORM = "DOWNLOADITEM_PLATFORM";
 
-    public: static const std::string SPECIAL_NAME = "DOWNLOADITEM_SPECIAL_NAME";
+    public: static inline const std::string SPECIAL_NAME = "DOWNLOADITEM_SPECIAL_NAME";
 
-    public: static const std::string VERSION = "DOWNLOADITEM_VERSION";
+    public: static inline const std::string VERSION = "DOWNLOADITEM_VERSION";
 
-    public: static const std::string CHANGES = "DOWNLOADITEM_CHANGES";
+    public: static inline const std::string CHANGES = "DOWNLOADITEM_CHANGES";
 
-    public: static const std::string LICENSE_FILE = "DOWNLOADITEM_LICENSE_FILE";
+    public: static inline const std::string LICENSE_FILE = "DOWNLOADITEM_LICENSE_FILE";
 
-    public: static const std::string FILE = "DOWNLOADITEM_FILE";
+    public: static inline const std::string FILE = "DOWNLOADITEM_FILE";
 
-    public: static const std::string EXTRA_FILES = "DOWNLOADITEM_EXTRA_FILES";
+    public: static inline const std::string EXTRA_FILES = "DOWNLOADITEM_EXTRA_FILES";
 
-    public: static const std::string SIZE = "DOWNLOADITEM_SIZE";
+    public: static inline const std::string SIZE = "DOWNLOADITEM_SIZE";
 
-    public: static const std::string VALID_TIME = "DOWNLOADITEM_VALID_TIME";
+    public: static inline const std::string VALID_TIME = "DOWNLOADITEM_VALID_TIME";
 
-    public: static const std::string VALID_TIME_YEARS = "DOWNLOADITEM_VALID_TIME_YEAR";
+    public: static inline const std::string VALID_TIME_YEARS = "DOWNLOADITEM_VALID_TIME_YEAR";
 
-    public: static const std::string VALID_TIME_MONTHS = "DOWNLOADITEM_VALID_TIME_MONTH";
+    public: static inline const std::string VALID_TIME_MONTHS = "DOWNLOADITEM_VALID_TIME_MONTH";
 
-    public: static const std::string VALID_TIME_DAYS = "DOWNLOADITEM_VALID_TIME_DAY";
+    public: static inline const std::string VALID_TIME_DAYS = "DOWNLOADITEM_VALID_TIME_DAY";
 
-    public: static const std::string VALID_TIME_HOURS = "DOWNLOADITEM_VALID_TIME_HOUR";
+    public: static inline const std::string VALID_TIME_HOURS = "DOWNLOADITEM_VALID_TIME_HOUR";
 
-    public: static const std::string VALID_TIME_MINUTES = "DOWNLOADITEM_VALID_TIME_MINUTES";
+    public: static inline const std::string VALID_TIME_MINUTES = "DOWNLOADITEM_VALID_TIME_MINUTES";
 
-    public: static const std::string VALID_TIME_SECONDS = "DOWNLOADITEM_VALID_TIME_SECONDS";
+    public: static inline const std::string VALID_TIME_SECONDS = "DOWNLOADITEM_VALID_TIME_SECONDS";
 
-    public: static const std::string RETRIES = "DOWNLOADITEM_RETRIES";
+    public: static inline const std::string RETRIES = "DOWNLOADITEM_RETRIES";
 
 };
 

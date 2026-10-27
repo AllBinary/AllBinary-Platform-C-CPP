@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOPYUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOPYUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,22 +64,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageUtil.h"
-#include "ImageCreationUtil.h"
+        #include "org/allbinary/media/image/ImageUtil.h"
+#include "org/allbinary/media/image/ImageCreationUtil.h"
 
 class ImageCopyUtil
             : public Object
          {
 
-    private: static ImageCopyUtil instance() { return ImageCopyUtil(); }
+    private: static ImageCopyUtil* instance() { static std::unique_ptr<ImageCopyUtil> value(new ImageCopyUtil()); return value.get(); }
 
-    public: static ImageCopyUtil getInstance();
+    public: static ImageCopyUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const ImageUtil imageUtil = ImageUtil::getInstance();
+    private: ImageUtil* imageUtil = ImageUtil::getInstance();
 
-    private: const ImageCreationUtil imageCreationUtil = ImageCreationUtil::getInstance();
+    private: ImageCreationUtil* imageCreationUtil = ImageCreationUtil::getInstance();
 
 private: ImageCopyUtil();
 
@@ -81,15 +87,15 @@ private: ImageCopyUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImageForRotation(Image originalImage);
+    public: Image* createImageForRotation(Image* originalImage);
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImage(Image originalImage);
+    public: Image* createImage(Image* originalImage);
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImageScale(Image originalImage, float canvasScale, bool resize);
+    public: Image* createImageScale(Image* originalImage, float canvasScale, bool resize);
 
 };
 

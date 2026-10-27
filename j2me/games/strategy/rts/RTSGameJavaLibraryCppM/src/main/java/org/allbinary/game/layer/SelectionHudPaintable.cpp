@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -84,13 +90,13 @@
         
 class SelectionHudPaintable: public InitUpdatePaintable, public UpdateMyFontInterface {
 
-    protected: const int32_t y = CommonButtons::getInstance().STANDARD_BUTTON_SIZE +17;
+    protected: const int32_t y = CommonButtons::getInstance()->STANDARD_BUTTON_SIZE +17;
 
-    private: PrimitiveLongUtil primitiveLongUtil;
+    private: PrimitiveLongUtil* primitiveLongUtil;
 
-    protected: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
+    protected: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
 
-    protected: MyFontProcessor myFontProcessor = updateMyFontProcessor;
+    protected: MyFontProcessor* myFontProcessor = updateMyFontProcessor;
 
     private: int32_t x= 0;
 
@@ -98,7 +104,7 @@ class SelectionHudPaintable: public InitUpdatePaintable, public UpdateMyFontInte
 
     protected: int32_t imageX= 0;
 
-    private: BasicColor basicColor = BasicColorFactory::getInstance().BLACK;
+    private: BasicColor* basicColor = BasicColorFactory::getInstance()->BLACK;
 
     private: int32_t color= 0;
 
@@ -106,11 +112,11 @@ class SelectionHudPaintable: public InitUpdatePaintable, public UpdateMyFontInte
 
     private: int32_t height= 0;
 
-    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: Animation animationInterface = NullAnimationFactory::getFactoryInstance().getInstance(0);
+    private: Animation* animationInterface = NullAnimationFactory::getFactoryInstance()->getInstance(0);
 
-    private: const int32_t backgroundColor = BasicColorFactory::getInstance().GREY.intValue();
+    private: const int32_t backgroundColor = BasicColorFactory::getInstance()->GREY.intValue();
 
 protected: SelectionHudPaintable(){
 this->update();
@@ -120,14 +126,14 @@ this->primitiveLongUtil= PrimitiveLongUtil::createPowerOfTen(10000);
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    CommonButtons commonButtons = CommonButtons::getInstance();;
+    CommonButtons* commonButtons = CommonButtons::getInstance();;
     
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->setHeight(commonButtons.STANDARD_BUTTON_SIZE +font.getHeight());
+this->setHeight(commonButtons->STANDARD_BUTTON_SIZE +font->getHeight());
     
 this->myFontProcessor= MyFontProcessor::getInstance();
     
@@ -136,21 +142,21 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 
     public: void update(){
 
-    CommonButtons commonButtons = CommonButtons::getInstance();;
+    CommonButtons* commonButtons = CommonButtons::getInstance();;
     
 
-    TouchButtonLocationHelper touchButtonLocationHelper = TouchButtonLocationHelper();;
+    TouchButtonLocationHelper* touchButtonLocationHelper = new TouchButtonLocationHelper();;
     
 
-    DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();;
+    DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();;
     
-this->x= commonButtons.STANDARD_BUTTON_SIZE +touchButtonLocationHelper.getColumnsRemainderHalf();
+this->x= commonButtons->STANDARD_BUTTON_SIZE +touchButtonLocationHelper->getColumnsRemainderHalf();
     
 this->textX= this->getX() +4;
     
-this->width= displayInfoSingleton.getLastWidth() -this->getX() *2;
+this->width= displayInfoSingleton->getLastWidth() -this->getX() *2;
     
-this->imageX= this->getWidth() +touchButtonLocationHelper.getColumnsRemainderHalf() -10;
+this->imageX= this->getWidth() +touchButtonLocationHelper->getColumnsRemainderHalf() -10;
     
 this->myFontProcessor= this->updateMyFontProcessor;
     
@@ -165,7 +171,7 @@ this->myFontProcessor= this->updateMyFontProcessor;
 }
 
 
-    protected: PrimitiveLongUtil getPrimitiveLongUtil(){
+    protected: PrimitiveLongUtil* getPrimitiveLongUtil(){
 
 
 
@@ -175,13 +181,13 @@ this->myFontProcessor= this->updateMyFontProcessor;
 }
 
 
-    protected: void setAnimationInterface(Animation animationInterface){
+    protected: void setAnimationInterface(Animation* animationInterface){
 this->animationInterface= animationInterface;
     
 }
 
 
-    protected: Animation getAnimationInterface(){
+    protected: Animation* getAnimationInterface(){
 
 
 
@@ -207,15 +213,15 @@ this->name= name;
 }
 
 
-    public: void setBasicColorP(BasicColor basicColor){
+    public: void setBasicColorP(BasicColor* basicColor){
 this->basicColor= basicColor;
     
-this->setColor(basicColor.intValue());
+this->setColor(basicColor->intValue());
     
 }
 
 
-    protected: BasicColor getBasicColorP(){
+    protected: BasicColor* getBasicColorP(){
 
 
 
@@ -277,16 +283,16 @@ this->height= height;
 }
 
 
-    public: void paint(Graphics graphics){
-this->myFontProcessor.process(graphics);
+    public: void paint(Graphics* graphics){
+this->myFontProcessor->process(graphics);
     
-graphics.setColor(this->backgroundColor);
+graphics->setColor(this->backgroundColor);
     
-graphics.drawRect(this->getX(), this->y, this->getWidth(), this->getHeight());
+graphics->drawRect(this->getX(), this->y, this->getWidth(), this->getHeight());
     
-graphics.setColor(this->getColor());
+graphics->setColor(this->getColor());
     
-graphics.drawString(this->getName(), this->textX, this->y, 0);
+graphics->drawString(this->getName(), this->textX, this->y, 0);
     
 }
 

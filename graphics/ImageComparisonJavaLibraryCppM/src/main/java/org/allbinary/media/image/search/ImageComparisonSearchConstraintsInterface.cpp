@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -45,7 +51,7 @@
         
 class ImageComparisonSearchConstraintsInterface {
 
-    BasicArrayList getStatisticalMatchConstraintsVector()
+    public: virtual BasicArrayList* getStatisticalMatchConstraintsVector() = 0;
 
 };
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -75,15 +81,15 @@ class MyRandomFactory
             : public Object
          {
 
-    private: static MyRandomFactory instance() { return MyRandomFactory(); }
+    private: static MyRandomFactory* instance() { static std::unique_ptr<MyRandomFactory> value(new MyRandomFactory()); return value.get(); }
 
-    public: static MyRandomFactory getInstance();
+    public: static MyRandomFactory* getInstance();
 
     public: static void main(std::vector<std::string> args);
 
-    private: const MathUtil mathUtil = MathUtil::getInstance();
+    private: MathUtil* mathUtil = MathUtil::getInstance();
 
-    private: Random rand;
+    private: Random* rand;
 
 private: MyRandomFactory();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,11 +44,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ScreenListenerInterface.h"
+        #include "org/allbinary/graphics/ScreenListenerInterface.h"
 
 class ScreenEmptyListener
             : public Object
-        : public ScreenListenerInterface {
+        , public ScreenListenerInterface {
 
     public: void onFullScreen(bool isFullScreen){
 }

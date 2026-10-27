@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_SYSTEMHARDWAREFACTORY_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_SYSTEMHARDWAREFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,29 +64,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NoHardware.h"
-#include "HardwareInterface.h"
-#include "HardwareFactory.h"
+        #include "org/allbinary/logic/system/hardware/NoHardware.h"
+#include "org/allbinary/logic/system/hardware/HardwareInterface.h"
+#include "org/allbinary/logic/system/hardware/HardwareFactory.h"
 
 class SystemHardwareFactory
             : public Object
          {
 
-    private: static SystemHardwareFactory instance() { return SystemHardwareFactory(); }
+    private: static SystemHardwareFactory* instance() { static std::unique_ptr<SystemHardwareFactory> value(new SystemHardwareFactory()); return value.get(); }
 
-    public: static SystemHardwareFactory getInstance();
+    public: static SystemHardwareFactory* getInstance();
 
     public: static std::string static_toString();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: HardwareInterface hardwareInterface = NoHardware::getInstance();
+    private: HardwareInterface* hardwareInterface = NoHardware::getInstance();
 
 private: SystemHardwareFactory();
 
-    public: HardwareInterface getInstance(GenericOperatingSystem operatingSystemInterface);
+    public: HardwareInterface* getInstance(GenericOperatingSystem* operatingSystemInterface);
 
 };
 

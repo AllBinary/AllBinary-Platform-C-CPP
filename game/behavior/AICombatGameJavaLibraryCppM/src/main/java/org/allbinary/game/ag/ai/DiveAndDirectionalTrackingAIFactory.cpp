@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,20 +70,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ThrustAIVisitorFactory.h"
-#include "BasicProbabilityAIDataFactory.h"
-#include "LastKeyAIVisitorFactory.h"
-#include "DiveAndDirectionalTrackingAI.h"
+        #include "org/allbinary/game/ag/ai/ThrustAIVisitorFactory.h"
+#include "org/allbinary/game/ag/ai/BasicProbabilityAIDataFactory.h"
+#include "org/allbinary/game/ag/ai/LastKeyAIVisitorFactory.h"
+#include "org/allbinary/game/ag/ai/DiveAndDirectionalTrackingAI.h"
 
 class DiveAndDirectionalTrackingAIFactory
             : public Object
-        : public ArtificialIntelligenceInterfaceFactoryInterface {
+        , public ArtificialIntelligenceInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: ArtificialIntelligenceInterface getInstance(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+    public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput){
 
-    Object* visitorCanBeNull = hashtable.get(BasicAI::AI_VISITOR);;
+    Object* visitorCanBeNull = hashtable->get(BasicAI::AI_VISITOR);;
     
 
                         if(visitorCanBeNull == 
@@ -91,18 +97,18 @@ class DiveAndDirectionalTrackingAIFactory
                                     }
                                 
 
-    ABHashtable<Object*, Object*> hashtable2 = BasicProbabilityAIDataFactory().getInstance();;
+    ABHashtable<Object*, Object*>* hashtable2 = (new BasicProbabilityAIDataFactory())->getInstance();;
     
-hashtable2.put(BasicAI::AI_VISITOR, LastKeyAIVisitorFactory::getInstance());
+hashtable2->put(BasicAI::AI_VISITOR, LastKeyAIVisitorFactory::getInstance());
     
 
-    ArtificialIntelligenceInterface artificialIntelligenceInterface = BasicRandomAIFactory().getInstance(hashtable2, ownerLayerInterface, gameInput);;
+    ArtificialIntelligenceInterface* artificialIntelligenceInterface = (new BasicRandomAIFactory())->getInstance(hashtable2, ownerLayerInterface, gameInput);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DiveAndDirectionalTrackingAI(ownerLayerInterface, artificialIntelligenceInterface, gameInput, *dynamic_cast<Visitor*>(visitorCanBeNull));
+                        return new DiveAndDirectionalTrackingAI(ownerLayerInterface, artificialIntelligenceInterface, gameInput, dynamic_cast<Visitor*>(visitorCanBeNull));
     
 }
 

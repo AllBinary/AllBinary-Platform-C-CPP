@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -73,7 +79,7 @@
         
 class NumberStringHud: public BasicHud, public PaintableInterface {
 
-    private: PrimitiveLongUtil primitiveLongUtil;
+    private: PrimitiveLongUtil* primitiveLongUtil;
 
     private: std::string prependString;
 
@@ -89,9 +95,9 @@ class NumberStringHud: public BasicHud, public PaintableInterface {
 
     private: int32_t valueTotalDigits= 0;
 
-public: NumberStringHud(std::string prependString, int32_t max, int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor);
+public: NumberStringHud(std::string prependString, int32_t max, int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor);
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
     public: int32_t get();
 
@@ -101,11 +107,11 @@ public: NumberStringHud(std::string prependString, int32_t max, int32_t location
 
     public: void reduce(int32_t value);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
-    public: void paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics* graphics);
 
 };
 

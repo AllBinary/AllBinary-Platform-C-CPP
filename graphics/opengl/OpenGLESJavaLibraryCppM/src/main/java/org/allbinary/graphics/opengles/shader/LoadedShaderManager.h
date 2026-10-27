@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_LOADEDSHADERMANAGER_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_LOADEDSHADERMANAGER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,15 +47,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShaderManager.h"
+        #include "org/allbinary/graphics/opengles/shader/ShaderManager.h"
 
 class LoadedShaderManager
             : public Object
          {
 
-    private: static ShaderManager instance() { return ShaderManager(); }
+    private: static ShaderManager* instance() { static std::unique_ptr<ShaderManager> value(new ShaderManager( -1,  -1)); return value.get(); }
 
-    public: static ShaderManager getInstance();
+    public: static ShaderManager* getInstance();
 
 };
 

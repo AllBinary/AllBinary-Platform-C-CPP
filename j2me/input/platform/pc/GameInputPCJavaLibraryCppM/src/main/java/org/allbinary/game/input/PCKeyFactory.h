@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_PCKEYFACTORY_H
         #define ORG_ALLBINARY_GAME_INPUT_PCKEYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/math/PositionStrings.h>
@@ -50,195 +56,195 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ABKeyEventWrapper.h"
-#include "PCGameKey.h"
-#include "Input.h"
+        #include "org/allbinary/game/input/ABKeyEventWrapper.h"
+#include "org/allbinary/game/input/PCGameKey.h"
+#include "org/allbinary/game/input/Input.h"
 
 class PCKeyFactory
             : public Object
          {
 
-    private: static const PCKeyFactory SINGLETON = PCKeyFactory();
+    private: static PCKeyFactory* SINGLETON() { static std::unique_ptr<PCKeyFactory> value(new PCKeyFactory()); return value.get(); }
 
-    public: static PCKeyFactory getInstance();
+    public: static PCKeyFactory* getInstance();
 
-    private: const ABKeyEventWrapper keyEventWrapper = ABKeyEventWrapper::getInstance();
+    private: ABKeyEventWrapper* keyEventWrapper = ABKeyEventWrapper::getInstance();
 
-    public: const PCGameKey UNKNOWN = PCGameKey(this->keyEventWrapper.VK_UNDEFINED, "UNKNOWN");
+    public: PCGameKey* UNKNOWN = new PCGameKey(this->keyEventWrapper->VK_UNDEFINED, "UNKNOWN");
 
-    public: const PCGameKey ENTER = PCGameKey(5, "Enter");
+    public: PCGameKey* ENTER = new PCGameKey(5, "Enter");
 
-    public: const PCGameKey _A = PCGameKey(this->keyEventWrapper.VK_A, "A");
+    public: PCGameKey* _A = new PCGameKey(this->keyEventWrapper->VK_A, "A");
 
-    public: const PCGameKey _B = PCGameKey(this->keyEventWrapper.VK_B, "B");
+    public: PCGameKey* _B = new PCGameKey(this->keyEventWrapper->VK_B, "B");
 
-    public: const PCGameKey _C = PCGameKey(this->keyEventWrapper.VK_C, "C");
+    public: PCGameKey* _C = new PCGameKey(this->keyEventWrapper->VK_C, "C");
 
-    public: const PCGameKey _D = PCGameKey(this->keyEventWrapper.VK_D, "D");
+    public: PCGameKey* _D = new PCGameKey(this->keyEventWrapper->VK_D, "D");
 
-    public: const PCGameKey _E = PCGameKey(this->keyEventWrapper.VK_E, "E");
+    public: PCGameKey* _E = new PCGameKey(this->keyEventWrapper->VK_E, "E");
 
-    public: const PCGameKey _F = PCGameKey(this->keyEventWrapper.VK_F, "F");
+    public: PCGameKey* _F = new PCGameKey(this->keyEventWrapper->VK_F, "F");
 
-    public: const PCGameKey _G = PCGameKey(this->keyEventWrapper.VK_G, "G");
+    public: PCGameKey* _G = new PCGameKey(this->keyEventWrapper->VK_G, "G");
 
-    public: const PCGameKey _H = PCGameKey(this->keyEventWrapper.VK_H, "H");
+    public: PCGameKey* _H = new PCGameKey(this->keyEventWrapper->VK_H, "H");
 
-    public: const PCGameKey _I = PCGameKey(this->keyEventWrapper.VK_I, "I");
+    public: PCGameKey* _I = new PCGameKey(this->keyEventWrapper->VK_I, "I");
 
-    public: const PCGameKey _J = PCGameKey(this->keyEventWrapper.VK_J, "J");
+    public: PCGameKey* _J = new PCGameKey(this->keyEventWrapper->VK_J, "J");
 
-    public: const PCGameKey _K = PCGameKey(this->keyEventWrapper.VK_K, "K");
+    public: PCGameKey* _K = new PCGameKey(this->keyEventWrapper->VK_K, "K");
 
-    public: const PCGameKey _L = PCGameKey(this->keyEventWrapper.VK_L, "L");
+    public: PCGameKey* _L = new PCGameKey(this->keyEventWrapper->VK_L, "L");
 
-    public: const PCGameKey _M = PCGameKey(this->keyEventWrapper.VK_M, "M");
+    public: PCGameKey* _M = new PCGameKey(this->keyEventWrapper->VK_M, "M");
 
-    public: const PCGameKey _N = PCGameKey(this->keyEventWrapper.VK_N, "N");
+    public: PCGameKey* _N = new PCGameKey(this->keyEventWrapper->VK_N, "N");
 
-    public: const PCGameKey _O = PCGameKey(this->keyEventWrapper.VK_O, "O");
+    public: PCGameKey* _O = new PCGameKey(this->keyEventWrapper->VK_O, "O");
 
-    public: const PCGameKey _P = PCGameKey(this->keyEventWrapper.VK_P, "P");
+    public: PCGameKey* _P = new PCGameKey(this->keyEventWrapper->VK_P, "P");
 
-    public: const PCGameKey _Q = PCGameKey(this->keyEventWrapper.VK_Q, "Q");
+    public: PCGameKey* _Q = new PCGameKey(this->keyEventWrapper->VK_Q, "Q");
 
-    public: const PCGameKey _R = PCGameKey(this->keyEventWrapper.VK_R, "R");
+    public: PCGameKey* _R = new PCGameKey(this->keyEventWrapper->VK_R, "R");
 
-    public: const PCGameKey _S = PCGameKey(this->keyEventWrapper.VK_S, "S");
+    public: PCGameKey* _S = new PCGameKey(this->keyEventWrapper->VK_S, "S");
 
-    public: const PCGameKey _T = PCGameKey(this->keyEventWrapper.VK_T, "T");
+    public: PCGameKey* _T = new PCGameKey(this->keyEventWrapper->VK_T, "T");
 
-    public: const PCGameKey _U = PCGameKey(this->keyEventWrapper.VK_U, "U");
+    public: PCGameKey* _U = new PCGameKey(this->keyEventWrapper->VK_U, "U");
 
-    public: const PCGameKey _V = PCGameKey(this->keyEventWrapper.VK_V, "V");
+    public: PCGameKey* _V = new PCGameKey(this->keyEventWrapper->VK_V, "V");
 
-    public: const PCGameKey _W = PCGameKey(this->keyEventWrapper.VK_W, "W");
+    public: PCGameKey* _W = new PCGameKey(this->keyEventWrapper->VK_W, "W");
 
-    public: const PCGameKey _X = PCGameKey(this->keyEventWrapper.VK_X, "X");
+    public: PCGameKey* _X = new PCGameKey(this->keyEventWrapper->VK_X, "X");
 
-    public: const PCGameKey _Y = PCGameKey(this->keyEventWrapper.VK_Y, "Y");
+    public: PCGameKey* _Y = new PCGameKey(this->keyEventWrapper->VK_Y, "Y");
 
-    public: const PCGameKey _Z = PCGameKey(this->keyEventWrapper.VK_Z, "Z");
+    public: PCGameKey* _Z = new PCGameKey(this->keyEventWrapper->VK_Z, "Z");
 
-    public: const PCGameKey a = PCGameKey(97, "a");
+    public: PCGameKey* a = new PCGameKey(97, "a");
 
-    public: const PCGameKey b = PCGameKey(98, "b");
+    public: PCGameKey* b = new PCGameKey(98, "b");
 
-    public: const PCGameKey c = PCGameKey(99, "c");
+    public: PCGameKey* c = new PCGameKey(99, "c");
 
-    public: const PCGameKey d = PCGameKey(100, "d");
+    public: PCGameKey* d = new PCGameKey(100, "d");
 
-    public: const PCGameKey e = PCGameKey(101, "e");
+    public: PCGameKey* e = new PCGameKey(101, "e");
 
-    public: const PCGameKey f = PCGameKey(102, "f");
+    public: PCGameKey* f = new PCGameKey(102, "f");
 
-    public: const PCGameKey g = PCGameKey(103, "g");
+    public: PCGameKey* g = new PCGameKey(103, "g");
 
-    public: const PCGameKey h = PCGameKey(104, "h");
+    public: PCGameKey* h = new PCGameKey(104, "h");
 
-    public: const PCGameKey i = PCGameKey(105, "i");
+    public: PCGameKey* i = new PCGameKey(105, "i");
 
-    public: const PCGameKey j = PCGameKey(106, "j");
+    public: PCGameKey* j = new PCGameKey(106, "j");
 
-    public: const PCGameKey k = PCGameKey(107, "k");
+    public: PCGameKey* k = new PCGameKey(107, "k");
 
-    public: const PCGameKey l = PCGameKey(108, "l");
+    public: PCGameKey* l = new PCGameKey(108, "l");
 
-    public: const PCGameKey m = PCGameKey(109, "m");
+    public: PCGameKey* m = new PCGameKey(109, "m");
 
-    public: const PCGameKey n = PCGameKey(110, "n");
+    public: PCGameKey* n = new PCGameKey(110, "n");
 
-    public: const PCGameKey o = PCGameKey(111, "o");
+    public: PCGameKey* o = new PCGameKey(111, "o");
 
-    public: const PCGameKey p = PCGameKey(112, "p");
+    public: PCGameKey* p = new PCGameKey(112, "p");
 
-    public: const PCGameKey q = PCGameKey(113, "q");
+    public: PCGameKey* q = new PCGameKey(113, "q");
 
-    public: const PCGameKey r = PCGameKey(114, "r");
+    public: PCGameKey* r = new PCGameKey(114, "r");
 
-    public: const PCGameKey s = PCGameKey(115, "s");
+    public: PCGameKey* s = new PCGameKey(115, "s");
 
-    public: const PCGameKey t = PCGameKey(116, "t");
+    public: PCGameKey* t = new PCGameKey(116, "t");
 
-    public: const PCGameKey u = PCGameKey(117, "u");
+    public: PCGameKey* u = new PCGameKey(117, "u");
 
-    public: const PCGameKey v = PCGameKey(118, "v");
+    public: PCGameKey* v = new PCGameKey(118, "v");
 
-    public: const PCGameKey w = PCGameKey(119, "w");
+    public: PCGameKey* w = new PCGameKey(119, "w");
 
-    public: const PCGameKey x = PCGameKey(120, PositionStrings::getInstance().X);
+    public: PCGameKey* x = new PCGameKey(120, PositionStrings::getInstance()->X);
 
-    public: const PCGameKey y = PCGameKey(121, PositionStrings::getInstance().Y);
+    public: PCGameKey* y = new PCGameKey(121, PositionStrings::getInstance()->Y);
 
-    public: const PCGameKey z = PCGameKey(122, "z");
+    public: PCGameKey* z = new PCGameKey(122, "z");
 
-    public: const PCGameKey ZERO = PCGameKey(this->keyEventWrapper.VK_0, CommonPhoneStrings::getInstance().ZERO);
+    public: PCGameKey* ZERO = new PCGameKey(this->keyEventWrapper->VK_0, CommonPhoneStrings::getInstance()->ZERO);
 
-    public: const PCGameKey ONE = PCGameKey(this->keyEventWrapper.VK_1, CommonPhoneStrings::getInstance().ONE);
+    public: PCGameKey* ONE = new PCGameKey(this->keyEventWrapper->VK_1, CommonPhoneStrings::getInstance()->ONE);
 
-    public: const PCGameKey TWO = PCGameKey(this->keyEventWrapper.VK_2, CommonPhoneStrings::getInstance().TWO);
+    public: PCGameKey* TWO = new PCGameKey(this->keyEventWrapper->VK_2, CommonPhoneStrings::getInstance()->TWO);
 
-    public: const PCGameKey THREE = PCGameKey(this->keyEventWrapper.VK_3, CommonPhoneStrings::getInstance().THREE);
+    public: PCGameKey* THREE = new PCGameKey(this->keyEventWrapper->VK_3, CommonPhoneStrings::getInstance()->THREE);
 
-    public: const PCGameKey FOUR = PCGameKey(this->keyEventWrapper.VK_4, CommonPhoneStrings::getInstance().FOUR);
+    public: PCGameKey* FOUR = new PCGameKey(this->keyEventWrapper->VK_4, CommonPhoneStrings::getInstance()->FOUR);
 
-    public: const PCGameKey FIVE = PCGameKey(this->keyEventWrapper.VK_5, CommonPhoneStrings::getInstance().FIVE);
+    public: PCGameKey* FIVE = new PCGameKey(this->keyEventWrapper->VK_5, CommonPhoneStrings::getInstance()->FIVE);
 
-    public: const PCGameKey SIX = PCGameKey(this->keyEventWrapper.VK_6, CommonPhoneStrings::getInstance().SIX);
+    public: PCGameKey* SIX = new PCGameKey(this->keyEventWrapper->VK_6, CommonPhoneStrings::getInstance()->SIX);
 
-    public: const PCGameKey SEVEN = PCGameKey(this->keyEventWrapper.VK_7, CommonPhoneStrings::getInstance().SEVEN);
+    public: PCGameKey* SEVEN = new PCGameKey(this->keyEventWrapper->VK_7, CommonPhoneStrings::getInstance()->SEVEN);
 
-    public: const PCGameKey EIGHT = PCGameKey(this->keyEventWrapper.VK_8, CommonPhoneStrings::getInstance().EIGHT);
+    public: PCGameKey* EIGHT = new PCGameKey(this->keyEventWrapper->VK_8, CommonPhoneStrings::getInstance()->EIGHT);
 
-    public: const PCGameKey NINE = PCGameKey(this->keyEventWrapper.VK_9, CommonPhoneStrings::getInstance().NINE);
+    public: PCGameKey* NINE = new PCGameKey(this->keyEventWrapper->VK_9, CommonPhoneStrings::getInstance()->NINE);
 
-    public: const PCGameKey DPAD_UP = PCGameKey(this->keyEventWrapper.VK_UP, CommonPhoneStrings::getInstance().UP);
+    public: PCGameKey* DPAD_UP = new PCGameKey(this->keyEventWrapper->VK_UP, CommonPhoneStrings::getInstance()->UP);
 
-    public: const PCGameKey DPAD_DOWN = PCGameKey(this->keyEventWrapper.VK_DOWN, CommonPhoneStrings::getInstance().DOWN);
+    public: PCGameKey* DPAD_DOWN = new PCGameKey(this->keyEventWrapper->VK_DOWN, CommonPhoneStrings::getInstance()->DOWN);
 
-    public: const PCGameKey DPAD_LEFT = PCGameKey(this->keyEventWrapper.VK_LEFT, CommonPhoneStrings::getInstance().LEFT);
+    public: PCGameKey* DPAD_LEFT = new PCGameKey(this->keyEventWrapper->VK_LEFT, CommonPhoneStrings::getInstance()->LEFT);
 
-    public: const PCGameKey DPAD_RIGHT = PCGameKey(this->keyEventWrapper.VK_RIGHT, CommonPhoneStrings::getInstance().RIGHT);
+    public: PCGameKey* DPAD_RIGHT = new PCGameKey(this->keyEventWrapper->VK_RIGHT, CommonPhoneStrings::getInstance()->RIGHT);
 
-    public: const PCGameKey DPAD_UP2 = this->DPAD_UP;
+    public: PCGameKey* DPAD_UP2 = this->DPAD_UP;
 
-    public: const PCGameKey DPAD_DOWN2 = this->DPAD_DOWN;
+    public: PCGameKey* DPAD_DOWN2 = this->DPAD_DOWN;
 
-    public: const PCGameKey DPAD_LEFT2 = this->DPAD_LEFT;
+    public: PCGameKey* DPAD_LEFT2 = this->DPAD_LEFT;
 
-    public: const PCGameKey DPAD_RIGHT2 = this->DPAD_RIGHT;
+    public: PCGameKey* DPAD_RIGHT2 = this->DPAD_RIGHT;
 
-    public: const PCGameKey COMMA = PCGameKey(this->keyEventWrapper.VK_COMMA, "COMMA");
+    public: PCGameKey* COMMA = new PCGameKey(this->keyEventWrapper->VK_COMMA, "COMMA");
 
-    public: const PCGameKey SPACE = PCGameKey(this->keyEventWrapper.VK_SPACE, "SPACE");
+    public: PCGameKey* SPACE = new PCGameKey(this->keyEventWrapper->VK_SPACE, "SPACE");
 
-    public: const PCGameKey DEL = PCGameKey(this->keyEventWrapper.VK_DELETE, "DEL");
+    public: PCGameKey* DEL = new PCGameKey(this->keyEventWrapper->VK_DELETE, "DEL");
 
-    public: const PCGameKey STAR = PCGameKey(42, CommonPhoneStrings::getInstance().STAR);
+    public: PCGameKey* STAR = new PCGameKey(42, CommonPhoneStrings::getInstance()->STAR);
 
-    public: const PCGameKey QUESTION = PCGameKey(47, "?");
+    public: PCGameKey* QUESTION = new PCGameKey(47, "?");
 
-    public: const PCGameKey PERIOD = PCGameKey(this->keyEventWrapper.VK_PERIOD, CommonSeps::getInstance().PERIOD);
+    public: PCGameKey* PERIOD = new PCGameKey(this->keyEventWrapper->VK_PERIOD, CommonSeps::getInstance()->PERIOD);
 
-    public: const PCGameKey ESCAPE = PCGameKey(this->keyEventWrapper.VK_ESCAPE, "Esc");
+    public: PCGameKey* ESCAPE = new PCGameKey(this->keyEventWrapper->VK_ESCAPE, "Esc");
 
-    public: const PCGameKey BACK_SPACE = PCGameKey(this->keyEventWrapper.VK_BACK_SPACE, "Backspace");
+    public: PCGameKey* BACK_SPACE = new PCGameKey(this->keyEventWrapper->VK_BACK_SPACE, "Backspace");
 
-    public: bool isSubmission(Input input);
+    public: bool isSubmission(Input* input);
 
-    public: bool isDelete(Input input);
+    public: bool isDelete(Input* input);
 
-    public: bool isBackSpace(Input input);
+    public: bool isBackSpace(Input* input);
 
-    public: bool isUp(Input input);
+    public: bool isUp(Input* input);
 
-    public: bool isDown(Input input);
+    public: bool isDown(Input* input);
 
-    public: bool isLeft(Input input);
+    public: bool isLeft(Input* input);
 
-    public: bool isRight(Input input);
+    public: bool isRight(Input* input);
 
-    public: bool isEnter(Input input);
+    public: bool isEnter(Input* input);
 
 };
 

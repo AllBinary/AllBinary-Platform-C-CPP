@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_FILE_CRYPTFILEWRITER_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_FILE_CRYPTFILEWRITER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -44,7 +50,7 @@ public: CryptFileWriter(std::string decryptedExtension, std::string encryptedExt
 
                 //@Throws(Exception.constructor)
             
-    public: void write(AbPath fileAbPath, Document document);
+    public: void write(AbPath* fileAbPath, Document* document);
 
 };
 

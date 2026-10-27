@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_SIMPLEPATHFINDERGRAPHVISITORFACTORY_H
         #define ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_SIMPLEPATHFINDERGRAPHVISITORFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
 
       
@@ -48,7 +54,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasePathFinderGraphVisitor.h"
+        #include "org/allbinary/game/media/graphics/geography/map/racetrack/BasePathFinderGraphVisitor.h"
 
 class SimplePathFinderGraphVisitorFactory: public PathFinderGraphVisitorFactoryBase {
 
@@ -60,7 +66,7 @@ class SimplePathFinderGraphVisitorFactory: public PathFinderGraphVisitorFactoryB
 
 public: SimplePathFinderGraphVisitorFactory(int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight);
 
-    public: PathFinderGraphVisitorBase getInstance(BasicGeographicMap geographicMapInterface);
+    public: PathFinderGraphVisitorBase* getInstance(BasicGeographicMap* geographicMapInterface);
 
 };
 

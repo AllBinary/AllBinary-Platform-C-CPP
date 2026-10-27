@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Displayable.h>
 
       
@@ -42,15 +48,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryMidlet.h"
+        #include "org/allbinary/midlet/AllBinaryMidlet.h"
 
 class MidletCompositeInterface {
 
-    void setMidlet(MIDlet midlet)
+    public: virtual void setMidlet(MIDlet* midlet) = 0;
 
-    AllBinaryMidlet getMidlet()
+    public: virtual AllBinaryMidlet* getMidlet() = 0;
 
-    Displayable getDisplayable()
+    public: virtual Displayable* getDisplayable() = 0;
 
 };
 

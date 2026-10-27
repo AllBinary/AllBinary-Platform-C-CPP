@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class J2SEMath
             : public Object
          {
 
-    private: static J2SEMath instance() { return J2SEMath(); }
+    private: static J2SEMath* instance() { static std::unique_ptr<J2SEMath> value(new J2SEMath()); return value.get(); }
 
-    public: static J2SEMath getInstance(){
+    public: static J2SEMath* getInstance(){
 
 
 

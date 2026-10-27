@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,11 +64,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UrlGlobalsData.h"
+        #include "org/allbinary/globals/UrlGlobalsData.h"
 
 class UrlGlobalsView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
 public: UrlGlobalsView(){
 }
@@ -70,14 +76,14 @@ public: UrlGlobalsView(){
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(UrlGlobalsData::WEBAPPPATH, org.allbinary.globals.URLGLOBALS.getWebappPath());
+hashMap->put(UrlGlobalsData::WEBAPPPATH, org.allbinary.globals.URLGLOBALS.getWebappPath());
     
 
-    Node node = ModDomHelper::createNameValueNodes(document, UrlGlobalsData::NAME, hashMap);;
+    Node* node = ModDomHelper::createNameValueNodes(document, UrlGlobalsData::NAME, hashMap);;
     
 
 

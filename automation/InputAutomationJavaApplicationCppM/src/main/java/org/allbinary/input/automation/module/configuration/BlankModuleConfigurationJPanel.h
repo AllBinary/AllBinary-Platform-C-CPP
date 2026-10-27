@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_CONFIGURATION_BLANKMODULECONFIGURATIONJPANEL_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_CONFIGURATION_BLANKMODULECONFIGURATIONJPANEL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,10 +45,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "JLabel.h"
-#include "GroupLayout.h"
-#include "Short.h"
+        #include "org/allbinary/input/automation/module/configuration/JPanel.h"
+#include "org/allbinary/input/automation/module/configuration/JLabel.h"
+#include "org/allbinary/input/automation/module/configuration/GroupLayout.h"
+#include "org/allbinary/input/automation/module/configuration/Short.h"
 
 class BlankModuleConfigurationJPanel: public javax::swing::JPanel {
 
@@ -50,7 +56,7 @@ public: BlankModuleConfigurationJPanel();
 
     private: void initComponents();
 
-    private: javax::swing::JLabel jLabel1;
+    private: javax::swing::JLabel* jLabel1;
 
 };
 

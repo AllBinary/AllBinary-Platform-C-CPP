@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_IMAGECOMPARATORCONSTRAINTS_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_IMAGECOMPARATORCONSTRAINTS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -75,11 +81,11 @@
         
 class ImageComparatorConstraints
             : public Object
-        : public ImageComparatorConstraintsInterface {
+        , public ImageComparatorConstraintsInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: BasicArrayList avoidVector;
+    private: BasicArrayList* avoidVector;
 
     private: int32_t maxNonMatchingPixelDeltas= 0;
 
@@ -87,15 +93,15 @@ class ImageComparatorConstraints
 
 public: ImageComparatorConstraints(int32_t doImageComparisonEveryNthFrame);
 
-    public: BasicArrayList getAvoidVector();
+    public: BasicArrayList* getAvoidVector();
 
-    public: bool isColorAllowed(int32_t frame, GPoint point, Color color);
+    public: bool isColorAllowed(int32_t frame, GPoint* point, Color* color);
 
-    public: bool isCollisionWithAvoidRectangles(Rectangle rectangle);
+    public: bool isCollisionWithAvoidRectangles(Rectangle* rectangle);
 
-    public: bool isCollisionWithAvoidRectangles(GPoint point);
+    public: bool isCollisionWithAvoidRectangles(GPoint* point);
 
-    public: void setAvoidVector(BasicArrayList avoidVector);
+    public: void setAvoidVector(BasicArrayList* avoidVector);
 
     public: int32_t getMaxNonMatchingPixelDeltas();
 
@@ -105,7 +111,7 @@ public: ImageComparatorConstraints(int32_t doImageComparisonEveryNthFrame);
 
                 //@Throws(Exception.constructor)
             
-    public: bool isImageValid(BufferedImage bufferedImage);
+    public: bool isImageValid(BufferedImage* bufferedImage);
 
     public: void log();
 

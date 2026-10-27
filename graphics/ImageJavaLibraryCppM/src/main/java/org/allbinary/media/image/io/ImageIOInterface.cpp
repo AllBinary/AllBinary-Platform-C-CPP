@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -45,7 +51,7 @@ class ImageIOInterface {
 
                 //@Throws(Exception.constructor)
             
-    void save(Long frame)
+    public: virtual void save(int64_t frame) = 0;
 
 };
 

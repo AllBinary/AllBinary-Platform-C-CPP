@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -77,50 +83,50 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TimeBaseInterface.h"
-#include "Controllable2.h"
+        #include "org/allbinary/media/audio/TimeBaseInterface.h"
+#include "org/allbinary/media/audio/Controllable2.h"
 //BasicPlayerMIDP2
 class PlayerComposite
             : public Object
-        : public Controllable, public Player {
+        , public Controllable, public Player {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: Player player;
+    private: Player* player;
 
-    private: const TimeDelayHelper timeElapsedHelper = TimeDelayHelper(0);
+    private: TimeDelayHelper* timeElapsedHelper = new TimeDelayHelper(0);
 
-public: PlayerComposite(Player player, int32_t repeatTime){
+public: PlayerComposite(Player* player, int32_t repeatTime){
 this->player= player;
     
-this->timeElapsedHelper.delay= repeatTime;
+this->timeElapsedHelper->delay= repeatTime;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void addPlayerListener(PlayerListener playerListener){
-this->player.addPlayerListener(playerListener);
+    public: void addPlayerListener(PlayerListener* playerListener){
+this->player->addPlayerListener(playerListener);
     
 }
 
 
-    public: void removePlayerListener(PlayerListener playerListener){
-this->player.removePlayerListener(playerListener);
+    public: void removePlayerListener(PlayerListener* playerListener){
+this->player->removePlayerListener(playerListener);
     
 }
 
 
     public: void close(){
-this->player.close();
+this->player->close();
     
 }
 
 
     public: void deallocate(){
-this->player.deallocate();
+this->player->deallocate();
     
 }
 
@@ -130,7 +136,7 @@ this->player.deallocate();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->player.getContentType();;
+                        return this->player->getContentType();;
     
 }
 
@@ -140,7 +146,7 @@ this->player.deallocate();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->player.getDuration();;
+                        return this->player->getDuration();;
     
 }
 
@@ -150,17 +156,17 @@ this->player.deallocate();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->player.getMediaTime();;
+                        return this->player->getMediaTime();;
     
 }
 
 
-    public: TimeBase getTimeBase(){
+    public: TimeBase* getTimeBase(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return (player).getTimeBase();;
+                        return (player)).getTimeBase();;
     
 }
 
@@ -168,8 +174,8 @@ this->player.deallocate();
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setTimeBase(TimeBase timeBase){
-player = this->playerplayer
+    public: void setTimeBase(TimeBase* timeBase){
+player = dynamic_cast<TimeBaseInterface*>(this->playerplayer)
 player.
                     setTimeBase(timeBase);
     
@@ -179,13 +185,13 @@ player.
     public: void prefetch(){
 
         try {
-            this->player.prefetch();
+            this->player->prefetch();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "prefetch", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "prefetch", &e);
     
 }
 
@@ -195,13 +201,13 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "prefetch", e);
     public: void realize(){
 
         try {
-            this->player.realize();
+            this->player->realize();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "realize", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "realize", &e);
     
 }
 
@@ -213,13 +219,13 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "realize", e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->player.getState();;
+                        return this->player->getState();;
     
 }
 
 
     public: void setLoopCount(int32_t count){
-this->player.setLoopCount(count);
+this->player->setLoopCount(count);
     
 }
 
@@ -231,13 +237,13 @@ this->player.setLoopCount(count);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->player.setMediaTime(now);;
+                        return this->player->setMediaTime(now);;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "setMediaTime", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "setMediaTime", &e);
     
 
 
@@ -250,25 +256,25 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "setMediaTime", e);
 }
 
 
-    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
+    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
     public: void start(){
 
         try {
             
-                        if(this->timeElapsedHelper.isTime(this->gameTickTimeDelayHelper.startTime))
+                        if(this->timeElapsedHelper->isTime(this->gameTickTimeDelayHelper->startTime))
                         
                                     {
-                                    this->player.start();
+                                    this->player->start();
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.START_METHOD_NAME, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->START_METHOD_NAME, &e);
     
 }
 
@@ -278,48 +284,48 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.START
     public: void stop(){
 
         try {
-            this->player.stop();
+            this->player->stop();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "stop", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "stop", &e);
     
 }
 
 }
 
 
-    public: Control getControl(std::string controlType){
+    public: Control* getControl(std::string controlType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->player.getControl(controlType);;
+                        return this->player->getControl(controlType);;
     
 }
 
 
-    public: std::vector<Control> getControls(){
+    public: std::vector<Control*> getControls(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
     public: void setVolume(int32_t leftVolume, int32_t rightVolume){
 
-    Controllable2 controllable2 = (this->player as unknown);;
+    Controllable2* controllable2 = (dynamic_cast<Controllable2*>(this->player as unknown));;
     
-controllable2.setVolume(leftVolume, rightVolume);
+controllable2->setVolume(leftVolume, rightVolume);
     
 }
 
 
-    public: Player getPlayerP(){
+    public: Player* getPlayerP(){
 
 
 

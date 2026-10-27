@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/Calendar.h>
@@ -35,9 +41,9 @@ class TimeTypeUtil
             : public Object
          {
 
-    private: static TimeTypeUtil instance() { return TimeTypeUtil(); }
+    private: static TimeTypeUtil* instance() { static std::unique_ptr<TimeTypeUtil> value(new TimeTypeUtil()); return value.get(); }
 
-    public: static TimeTypeUtil getInstance(){
+    public: static TimeTypeUtil* getInstance(){
 
 
 
@@ -66,13 +72,13 @@ class TimeTypeUtil
 
     public: int32_t getHourOfDay(){
 
-    Calendar calendar = Calendar::getInstance();;
+    Calendar* calendar = Calendar::getInstance();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return calendar.get(Calendar::HOUR_OF_DAY);;
+                        return calendar->get(Calendar::HOUR_OF_DAY);;
     
 }
 
@@ -96,15 +102,15 @@ class TimeTypeUtil
 
     public: int32_t getHourOfDay(int64_t timeInMillis){
 
-    Calendar calendar = Calendar::getInstance();;
+    Calendar* calendar = Calendar::getInstance();;
     
-calendar.setTimeInMillis(timeInMillis);
+calendar->setTimeInMillis(timeInMillis);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return calendar.get(Calendar::HOUR_OF_DAY);;
+                        return calendar->get(Calendar::HOUR_OF_DAY);;
     
 }
 

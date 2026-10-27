@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,40 +49,40 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameKeyFactory.h"
-#include "GameKey.h"
-#include "InputFactory.h"
-#include "Input.h"
+        #include "org/allbinary/game/input/GameKeyFactory.h"
+#include "org/allbinary/game/input/GameKey.h"
+#include "org/allbinary/game/input/InputFactory.h"
+#include "org/allbinary/game/input/Input.h"
 
 class J2MEKeyFactory
             : public Object
          {
 
-    private: static J2MEKeyFactory instance() { return J2MEKeyFactory(); }
+    private: static J2MEKeyFactory* instance() { static std::unique_ptr<J2MEKeyFactory> value(new J2MEKeyFactory()); return value.get(); }
 
-    public: static J2MEKeyFactory getInstance();
+    public: static J2MEKeyFactory* getInstance();
 
 private: J2MEKeyFactory();
 
-    private: const GameKeyFactory gameKeyFactory = GameKeyFactory::getInstance();
+    private: GameKeyFactory* gameKeyFactory = GameKeyFactory::getInstance();
 
     public: void init();
 
-    public: bool isSubmission(Input input);
+    public: bool isSubmission(Input* input);
 
-    public: bool isDelete(Input input);
+    public: bool isDelete(Input* input);
 
-    public: bool isBackSpace(Input input);
+    public: bool isBackSpace(Input* input);
 
-    public: bool isUp(Input input);
+    public: bool isUp(Input* input);
 
-    public: bool isDown(Input input);
+    public: bool isDown(Input* input);
 
-    public: bool isLeft(Input input);
+    public: bool isLeft(Input* input);
 
-    public: bool isRight(Input input);
+    public: bool isRight(Input* input);
 
-    public: bool isEnter(Input input);
+    public: bool isEnter(Input* input);
 
 };
 

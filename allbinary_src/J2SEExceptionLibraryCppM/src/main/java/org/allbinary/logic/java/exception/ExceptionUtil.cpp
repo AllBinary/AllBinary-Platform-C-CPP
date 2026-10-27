@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Throwable.h"
@@ -53,9 +59,9 @@
             : public Object
          {
 
-    private: static ExceptionUtil instance() { return ExceptionUtil(); }
+    private: static ExceptionUtil* instance() { static std::unique_ptr<ExceptionUtil> value(new ExceptionUtil()); return value.get(); }
 
-    /*actual*/ public: static ExceptionUtil getInstance(){
+    /*actual*/ public: static ExceptionUtil* getInstance(){
 
 
 
@@ -65,7 +71,7 @@
 }
 
 
-    /*actual*/ public: static const Exception PRETEND_EXCEPTION = Exception("Not Really An Exception");
+    /*actual*/ public: static Exception* PRETEND_EXCEPTION() { static std::unique_ptr<Exception> value(new Exception("Not Really An Exception")); return value.get(); }
 
 private: ExceptionUtil(){
 }
@@ -73,7 +79,7 @@ private: ExceptionUtil(){
 
     private: const std::string NONE = "No Stack Trace";
 
-    /*actual*/ public: std::string getStackTrace(Throwable e){
+    /*actual*/ public: std::string getStackTrace(Throwable* e){
 
                         if(e != 
                                     nullptr
@@ -81,15 +87,15 @@ private: ExceptionUtil(){
                         
                                     {
                                     
-    ByteArrayOutputStream byteArrayOutputStream = ByteArrayOutputStream();;
+    ByteArrayOutputStream* byteArrayOutputStream = new ByteArrayOutputStream();;
     
 
-    PrintStream printStream = PrintStream(byteArrayOutputStream);;
+    PrintStream* printStream = new PrintStream(byteArrayOutputStream);;
     
-e.printStackTrace(printStream);
+e->printStackTrace(printStream);
     
 
-    std::string output = byteArrayOutputStream.toString();;
+    std::string output = byteArrayOutputStream->toString();;
     
 
                         if(true)

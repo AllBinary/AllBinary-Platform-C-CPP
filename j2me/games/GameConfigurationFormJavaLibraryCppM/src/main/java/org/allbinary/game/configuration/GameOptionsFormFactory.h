@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_GAMEOPTIONSFORMFACTORY_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMEOPTIONSFORMFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,21 +64,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameOptionsForm.h"
+        #include "org/allbinary/game/configuration/GameOptionsForm.h"
 
 class GameOptionsFormFactory
             : public Object
          {
 
-    private: static GameOptionsFormFactory instance() { return GameOptionsFormFactory(); }
+    private: static GameOptionsFormFactory* instance() { static std::unique_ptr<GameOptionsFormFactory> value(new GameOptionsFormFactory()); return value.get(); }
 
-    public: static GameOptionsFormFactory getInstance();
+    public: static GameOptionsFormFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: GameOptionsFormFactory();
 
-    public: CommandForm init(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
+    public: CommandForm* init(CommandListener* commandListener, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor);
 
 };
 

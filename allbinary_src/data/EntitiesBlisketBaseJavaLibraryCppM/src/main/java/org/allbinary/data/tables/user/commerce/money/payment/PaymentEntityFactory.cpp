@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,15 +52,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentEntity.h"
+        #include "org/allbinary/data/tables/user/commerce/money/payment/PaymentEntity.h"
 
 class PaymentEntityFactory
             : public Object
          {
 
-    private: static PaymentEntityFactory instance() { return PaymentEntityFactory(); }
+    private: static PaymentEntityFactory* instance() { static std::unique_ptr<PaymentEntityFactory> value(new PaymentEntityFactory()); return value.get(); }
 
-    public: static PaymentEntityFactory getInstance(){
+    public: static PaymentEntityFactory* getInstance(){
 
 
 
@@ -64,33 +70,33 @@ class PaymentEntityFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: PaymentEntityFactory(){
 }
 
 
-    public: PaymentEntity getPaymentEntityInstance(){
+    public: PaymentEntity* getPaymentEntityInstance(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return org::allbinary::data::tables::user::commerce::money::payment::PaymentEntity();
+                        return new org::allbinary::data::tables::user::commerce::money::payment::PaymentEntity();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
+                                    this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
     
 
                                     }

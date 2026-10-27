@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGECOLORRANGERESULTS_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGECOLORRANGERESULTS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,14 +47,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ColorRangeInterface.h"
-#include "ColorRange.h"
+        #include "org/allbinary/media/image/analysis/ColorRangeInterface.h"
+#include "org/allbinary/media/image/analysis/ColorRange.h"
 
 class ImageColorRangeResults
             : public Object
          {
 
-    private: ColorRangeInterface colorRangeInterface;
+    private: ColorRangeInterface* colorRangeInterface;
 
     private: int64_t matchingPixelsChecked= 0;
 
@@ -56,9 +62,9 @@ class ImageColorRangeResults
 
 public: ImageColorRangeResults();
 
-    public: ColorRangeInterface getColorRangeInterface();
+    public: ColorRangeInterface* getColorRangeInterface();
 
-    public: void setColorRangeInterface(ColorRangeInterface colorRangeInterface);
+    public: void setColorRangeInterface(ColorRangeInterface* colorRangeInterface);
 
     public: int64_t getMatchingPixelsChecked();
 

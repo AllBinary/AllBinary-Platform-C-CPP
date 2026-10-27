@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GLOBALS_GLOBALS_H
         #define ORG_ALLBINARY_GLOBALS_GLOBALS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/ClassLoader.h"
@@ -61,22 +67,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AppUrlGlobals.h"
-#include "URLGLOBALS.h"
+        #include "org/allbinary/globals/AppUrlGlobals.h"
+#include "org/allbinary/globals/URLGLOBALS.h"
 
 class Globals
             : public Object
          {
 
-    private: static Globals instance() { return Globals(); }
+    private: static Globals* instance() { static std::unique_ptr<Globals> value(new Globals()); return value.get(); }
 
-    public: static Globals getInstance();
+    public: static Globals* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: Globals();
 
-    public: void init(ClassLoader classLoader, std::string pathString);
+    public: void init(ClassLoader* classLoader, std::string pathString);
 
 };
 

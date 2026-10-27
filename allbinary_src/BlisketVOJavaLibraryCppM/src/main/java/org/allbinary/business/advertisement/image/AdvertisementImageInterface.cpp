@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/control/contraints/size/TwoDimensionalConstraintInterface.h>
 
       
@@ -42,11 +48,11 @@
         
 class AdvertisementImageInterface {
 
-    std::string getFileName()
+    public: virtual std::string getFileName() = 0;
 
-    std::string getUrl()
+    public: virtual std::string getUrl() = 0;
 
-    TwoDimensionalConstraintInterface getTwoDimensionalConstraint()
+    public: virtual TwoDimensionalConstraintInterface* getTwoDimensionalConstraint() = 0;
 
 };
 

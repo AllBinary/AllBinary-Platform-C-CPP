@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICNEEDEDTOUCHBUTTONSBUILDER_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICNEEDEDTOUCHBUTTONSBUILDER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/Animation.h>
@@ -59,18 +65,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseTouchInput.h"
-#include "TouchButtonLocationHelper.h"
-#include "BasicTouchButtonCellPositionFactory.h"
-#include "CommonButtons.h"
-#include "TouchButton.h"
-#include "BasicTouchInputFactory.h"
+        #include "org/allbinary/input/motion/button/BaseTouchInput.h"
+#include "org/allbinary/input/motion/button/TouchButtonLocationHelper.h"
+#include "org/allbinary/input/motion/button/BasicTouchButtonCellPositionFactory.h"
+#include "org/allbinary/input/motion/button/CommonButtons.h"
+#include "org/allbinary/input/motion/button/TouchButton.h"
+#include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
 
 class BasicNeededTouchButtonsBuilder: public BaseTouchInput {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: BasicArrayList getList();
+    public: BasicArrayList* getList();
 
 };
 

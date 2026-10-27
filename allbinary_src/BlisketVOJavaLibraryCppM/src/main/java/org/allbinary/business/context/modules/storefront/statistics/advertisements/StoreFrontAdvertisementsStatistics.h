@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ADVERTISEMENTS_STOREFRONTADVERTISEMENTSSTATISTICS_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ADVERTISEMENTS_STOREFRONTADVERTISEMENTSSTATISTICS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,17 +64,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreFrontAdvertisementsStatisticsInterface.h"
+        #include "org/allbinary/business/context/modules/storefront/statistics/advertisements/StoreFrontAdvertisementsStatisticsInterface.h"
 
 class StoreFrontAdvertisementsStatistics
             : public Object
-        : public StoreFrontAdvertisementsStatisticsInterface {
+        , public StoreFrontAdvertisementsStatisticsInterface {
 
-public: StoreFrontAdvertisementsStatistics(StoreFrontInterface storeFrontInterface);
+public: StoreFrontAdvertisementsStatistics(StoreFrontInterface* storeFrontInterface);
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
-    public: BasicArrayList toVector();
+    public: BasicArrayList* toVector();
 
     public: Object* getKey();
 

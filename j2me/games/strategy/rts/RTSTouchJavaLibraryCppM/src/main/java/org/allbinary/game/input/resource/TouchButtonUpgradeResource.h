@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_RESOURCE_TOUCHBUTTONUPGRADERESOURCE_H
         #define ORG_ALLBINARY_GAME_INPUT_RESOURCE_TOUCHBUTTONUPGRADERESOURCE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/input/motion/button/TouchButtonResource.h>
 
       
@@ -45,9 +51,9 @@
         
 class TouchButtonUpgradeResource: public TouchButtonResource {
 
-    private: static const TouchButtonResource instance = TouchButtonUpgradeResource();
+    private: static inline TouchButtonResource* instance = new TouchButtonUpgradeResource();
 
-    public: static TouchButtonResource getInstance();
+    public: static TouchButtonResource* getInstance();
 
 private: TouchButtonUpgradeResource();
 

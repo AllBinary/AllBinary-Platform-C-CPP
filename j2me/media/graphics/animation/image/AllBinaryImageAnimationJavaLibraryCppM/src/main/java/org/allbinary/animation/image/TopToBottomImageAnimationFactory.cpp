@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -49,12 +55,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseImageAnimationFactory.h"
-#include "TopToBottomImageAnimation.h"
+        #include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
+#include "org/allbinary/animation/image/TopToBottomImageAnimation.h"
 
 class TopToBottomImageAnimationFactory: public BaseImageAnimationFactory {
 
-public: TopToBottomImageAnimationFactory(Image image, std::vector<int32_t> sequenceArray, AnimationBehaviorFactory animationBehaviorFactory) : BaseImageAnimationFactory(image, sequenceArray, image.getWidth(), image.getHeight(), 0, 0, animationBehaviorFactory){
+public: TopToBottomImageAnimationFactory(Image* image, std::vector<int32_t> sequenceArray, AnimationBehaviorFactory* animationBehaviorFactory) : BaseImageAnimationFactory(image, sequenceArray, image->getWidth(), image->getHeight(), 0, 0, animationBehaviorFactory){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -66,15 +72,15 @@ public: TopToBottomImageAnimationFactory(Image image, std::vector<int32_t> seque
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId){
+    public: Animation* getInstance(int32_t instanceId){
 
-    Image scaledImage = this->animationFactoryImageScaleUtil.createImage(this->getImage(), this->animationFactoryInitializationVisitor.width, this->animationFactoryInitializationVisitor.height, this->scaleProperties.scaleWidth, this->scaleProperties.scaleHeight);;
+    Image* scaledImage = this->animationFactoryImageScaleUtil.createImage(this->getImage(), this->animationFactoryInitializationVisitor.width, this->animationFactoryInitializationVisitor.height, this->scaleProperties.scaleWidth, this->scaleProperties.scaleHeight);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TopToBottomImageAnimation(scaledImage, this->getSequenceArray(), this->animationBehaviorFactory.getOrCreateInstance());
+                        return new TopToBottomImageAnimation(scaledImage, this->getSequenceArray(), this->animationBehaviorFactory.getOrCreateInstance());
     
 }
 

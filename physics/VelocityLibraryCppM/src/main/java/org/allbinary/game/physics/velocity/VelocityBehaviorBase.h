@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYBEHAVIORBASE_H
         #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYBEHAVIORBASE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,17 +47,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicVelocityProperties.h"
+        #include "org/allbinary/game/physics/velocity/BasicVelocityProperties.h"
 
 class VelocityBehaviorBase
             : public Object
          {
 
-    public: void reduce(BasicVelocityProperties velocityProperties, int32_t nominator, int32_t denominator);
+    public: void reduce(BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator);
 
-    public: void reduceX(BasicVelocityProperties velocityProperties, int32_t nominator, int32_t denominator);
+    public: void reduceX(BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator);
 
-    public: void reduceY(BasicVelocityProperties velocityProperties, int32_t nominator, int32_t denominator);
+    public: void reduceY(BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator);
 
 };
 

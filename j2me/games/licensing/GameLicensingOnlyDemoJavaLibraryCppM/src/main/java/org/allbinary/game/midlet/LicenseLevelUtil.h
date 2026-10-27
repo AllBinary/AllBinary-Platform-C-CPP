@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_LICENSELEVELUTIL_H
         #define ORG_ALLBINARY_GAME_MIDLET_LICENSELEVELUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class LicenseLevelUtil
             : public Object
          {
 
-    private: static LicenseLevelUtil instance() { return LicenseLevelUtil(); }
+    private: static LicenseLevelUtil* instance() { static std::unique_ptr<LicenseLevelUtil> value(new LicenseLevelUtil()); return value.get(); }
 
-    public: static LicenseLevelUtil getInstance();
+    public: static LicenseLevelUtil* getInstance();
 
     public: int32_t getMaxLevel(int32_t maxLevel, int32_t demoLevel);
 

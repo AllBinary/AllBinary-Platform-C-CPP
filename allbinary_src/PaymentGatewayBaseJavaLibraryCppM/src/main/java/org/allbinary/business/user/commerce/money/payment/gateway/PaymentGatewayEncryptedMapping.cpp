@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,15 +58,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentGatewayInterface.h"
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h"
 
 class PaymentGatewayEncryptedMapping
             : public Object
-        : public TableMappingInterface {
+        , public TableMappingInterface {
 
-    private: PaymentGatewayInterface paymentGatewayInterface;
+    private: PaymentGatewayInterface* paymentGatewayInterface;
 
-public: PaymentGatewayEncryptedMapping(PaymentGatewayInterface paymentGatewayInterface){
+public: PaymentGatewayEncryptedMapping(PaymentGatewayInterface* paymentGatewayInterface){
 this->paymentGatewayInterface= paymentGatewayInterface;
     
 }
@@ -68,22 +74,22 @@ this->paymentGatewayInterface= paymentGatewayInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->paymentGatewayInterface.toHashMap(true);;
+                        return this->paymentGatewayInterface->toHashMap(true);;
     
 }
 
 
-    public: BasicArrayList toVector(){
+    public: BasicArrayList* toVector(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->paymentGatewayInterface.toVector(true);;
+                        return this->paymentGatewayInterface->toVector(true);;
     
 }
 
@@ -95,7 +101,7 @@ this->paymentGatewayInterface= paymentGatewayInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->paymentGatewayInterface.getKey();
+                        return this->paymentGatewayInterface->getKey();
     
 }
 

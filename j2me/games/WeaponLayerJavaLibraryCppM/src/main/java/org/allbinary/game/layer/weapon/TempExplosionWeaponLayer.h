@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WEAPON_TEMPEXPLOSIONWEAPONLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_WEAPON_TEMPEXPLOSIONWEAPONLAYER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/Animation.h>
@@ -54,19 +60,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SimpleWeaponLayer.h"
+        #include "org/allbinary/game/layer/weapon/SimpleWeaponLayer.h"
 
 class TempExplosionWeaponLayer: public SimpleWeaponLayer {
 
-    public: const WeaponProperties weaponProperties = WeaponProperties( -1,  -1, 0, 1000, 0);
+    public: WeaponProperties* weaponProperties = new WeaponProperties( -1,  -1, 0, 1000, 0);
 
-    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(0);
+    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(0);
 
-public: TempExplosionWeaponLayer(std::string name, Movement movement, Animation animationInterface, Rectangle rectangle, ViewPositionBase viewPosition, int32_t timeDelay);
+public: TempExplosionWeaponLayer(std::string name, Movement* movement, Animation* animationInterface, Rectangle* rectangle, ViewPositionBase* viewPosition, int32_t timeDelay);
 
                 //@Throws(Exception.constructor)
             
-    public: void processTick(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager);
 
 };
 

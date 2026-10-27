@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_DATAOUTPUTSTREAMFACTORY_H
         #define ORG_ALLBINARY_LOGIC_IO_DATAOUTPUTSTREAMFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,25 +52,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFileOutputStream.h"
-#include "AbDataOutputStream.h"
-#include "FileStreamFactory.h"
+        #include "org/allbinary/logic/io/AbFileOutputStream.h"
+#include "org/allbinary/logic/io/AbDataOutputStream.h"
+#include "org/allbinary/logic/io/FileStreamFactory.h"
 
 class DataOutputStreamFactory
             : public Object
          {
 
-    private: static DataOutputStreamFactory instance() { return DataOutputStreamFactory(); }
+    private: static DataOutputStreamFactory* instance() { static std::unique_ptr<DataOutputStreamFactory> value(new DataOutputStreamFactory()); return value.get(); }
 
-    public: static DataOutputStreamFactory getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public: AbDataOutputStream getInstanceForAbFile(AbFile file);
+    public: static DataOutputStreamFactory* getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: AbDataOutputStream getInstance(std::string filePath, std::string fileName);
+    public: AbDataOutputStream* getInstanceForAbFile(AbFile* file);
+
+                //@Throws(Exception.constructor)
+            
+    public: AbDataOutputStream* getInstance(std::string filePath, std::string fileName);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_ROOTTRANSFORMINFODATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_ROOTTRANSFORMINFODATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,7 +52,7 @@ class RootTransformInfoData
             : public Object
          {
 
-    public: static const std::string NAME = "ROOT_TRANSFORM_INFO_NAME";
+    public: static inline const std::string NAME = "ROOT_TRANSFORM_INFO_NAME";
 
 private: RootTransformInfoData();
 

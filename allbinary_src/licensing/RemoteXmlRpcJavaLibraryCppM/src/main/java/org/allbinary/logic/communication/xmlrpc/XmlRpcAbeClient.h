@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_XMLRPC_XMLRPCABECLIENT_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_XMLRPC_XMLRPCABECLIENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -84,17 +90,17 @@ class XmlRpcAbeClient
             : public Object
          {
 
-    public: static bool isOnline = true;
+    public: static inline bool isOnline = true;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: std::string remoteMethod;
 
-    private: AbeClientInformationInterface clientInfo;
+    private: AbeClientInformationInterface* clientInfo;
 
-    private: XmlRpcHandler client = NullXmlRpcHandler::NULL_XML_RPC_HANDLER;
+    private: XmlRpcHandler* client = NullXmlRpcHandler::NULL_XML_RPC_HANDLER;
 
     private: int32_t server;
 
@@ -108,11 +114,11 @@ class XmlRpcAbeClient
 
     protected: const std::string TRYING = "Trying Server #";
 
-    protected: const std::string SEP = CommonLabels::getInstance().COLON_SEP;
+    protected: const std::string SEP = CommonLabels::getInstance()->COLON_SEP;
 
     protected: const std::string CLIENT_INFO = "Client Info: \n";
 
-    protected: const std::string RESULT = CommonLabels::getInstance().RESULT_ +CommonSeps::getInstance().NEW_LINE;
+    protected: const std::string RESULT = CommonLabels::getInstance()->RESULT_ +CommonSeps::getInstance()->NEW_LINE;
 
     protected: const std::string INVALID = "License data is Invalid Trying Other Servers";
 
@@ -128,9 +134,9 @@ class XmlRpcAbeClient
 
     protected: const std::string HOST_NOT_RESOLVED = "Host is unresolved";
 
-    private: const MyRandomFactory myRandomFactory = MyRandomFactory::getInstance();
+    private: MyRandomFactory* myRandomFactory = MyRandomFactory::getInstance();
 
-public: XmlRpcAbeClient(AbeClientInformationInterface clientInfo, std::string remoteMethod);
+public: XmlRpcAbeClient(AbeClientInformationInterface* clientInfo, std::string remoteMethod);
 
                 //@Throws(Exception.constructor)
             
@@ -140,11 +146,11 @@ public: XmlRpcAbeClient(AbeClientInformationInterface clientInfo, std::string re
             
     protected: Object* tryAnother(Object* anyType);
 
-    protected: AbeClientInformationInterface getClientInfo();
+    protected: AbeClientInformationInterface* getClientInfo();
 
-    protected: XmlRpcHandler getClient();
+    protected: XmlRpcHandler* getClient();
 
-    protected: void setClient(XmlRpcClient client);
+    protected: void setClient(XmlRpcClient* client);
 
     protected: int32_t getServer();
 

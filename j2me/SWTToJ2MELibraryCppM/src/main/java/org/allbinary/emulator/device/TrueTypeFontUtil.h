@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -105,29 +111,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TrueTypeFontUtilBase.h"
+        #include "org/allbinary/emulator/device/TrueTypeFontUtilBase.h"
 //TTF
 class TrueTypeFontUtil: public TrueTypeFontUtilBase {
 
-    private: static TrueTypeFontUtil instance() { return TrueTypeFontUtil(); }
+    private: static TrueTypeFontUtil* instance() { static std::unique_ptr<TrueTypeFontUtil> value(new TrueTypeFontUtil()); return value.get(); }
 
-    public: static TrueTypeFontUtil getInstance();
+    public: static TrueTypeFontUtil* getInstance();
 
-    private: const PreResourceImageUtil preResourceImageUtil = PreResourceImageUtil::getInstance();
+    private: PreResourceImageUtil* preResourceImageUtil = PreResourceImageUtil::getInstance();
 
     private: const std::vector<float> widthFloatArray;
 
-    public: OpenGLESImage fontImage = OpenGLESImage::NULL_OPENGL_IMAGE;
+    public: OpenGLESImage* fontImage = OpenGLESImage::NULL_OPENGL_IMAGE;
 
     private: float widthScale;
 
 private: TrueTypeFontUtil();
 
-    public: Image getFontBitmapGL(GL10 gl, std::string filename, int32_t cellSize, BasicColor basicColor);
+    public: Image* getFontBitmapGL(GL10* gl, std::string filename, int32_t cellSize, BasicColor* basicColor);
 
     public: void saveFontAtlasAsFile();
 
-    public: Image getFontBitmap(std::string filename, int32_t cellSize, BasicColor basicColor);
+    public: Image* getFontBitmap(std::string filename, int32_t cellSize, BasicColor* basicColor);
 
     public: std::vector<int32_t> getFontWidths(std::string filename, int32_t fontSize);
 

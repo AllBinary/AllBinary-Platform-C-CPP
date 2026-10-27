@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -57,20 +63,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameKeyEvent.h"
+        #include "org/allbinary/game/input/event/GameKeyEvent.h"
 
 class GameKeyEventFactory
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static GameKeyEventFactory getInstance(){
+    public: static GameKeyEventFactory* getInstance(){
 
-                        if(GameKeyEventFactory::instance() == NullUtil::getInstance().NULL_OBJECT)
+                        if(GameKeyEventFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    GameKeyEventFactory::instance= GameKeyEventFactory();
+                                    GameKeyEventFactory::instance= new GameKeyEventFactory();
     
 
                                     }
@@ -79,12 +85,12 @@ class GameKeyEventFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameKeyEventFactory::instance();
+                        return dynamic_cast<GameKeyEventFactory*>(GameKeyEventFactory::instance);
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     public: const int32_t TOUCH_BUTTON_SOURCE_ID = 2;
 
@@ -92,7 +98,7 @@ class GameKeyEventFactory
 
     private: const int32_t MAX_SOURCES = 4;
 
-    private: std::vector<std::vector<GameKeyEvent>> ARRAY = std::vector<std::vector<GameKeyEvent>>(this->MAX_SOURCES, std::vector<GameKeyEvent>(InputFactory::getInstance().MAX));
+    private: std::vector<std::vector<GameKeyEvent*>> ARRAY = std::vector<std::vector<GameKeyEvent*>>(this->MAX_SOURCES, std::vector<GameKeyEvent*>(InputFactory::getInstance()->MAX));
 
 private: GameKeyEventFactory(){
 }
@@ -100,10 +106,10 @@ private: GameKeyEventFactory(){
 
     public: void init(){
 
-    NullUtil nullUtil = NullUtil::getInstance();;
+    NullUtil* nullUtil = NullUtil::getInstance();;
     
 
-    int32_t size = InputFactory::getInstance().MAX;;
+    int32_t size = InputFactory::getInstance()->MAX;;
     
 
 
@@ -119,7 +125,7 @@ private: GameKeyEventFactory(){
                         for (
     int32_t index2 = size;--index2 >= 0; )
         {
-this->ARRAY[index][index2]= GameKeyEvent::createEvent(nullUtil.NULL_OBJECT, index, index2);
+this->ARRAY[index][index2]= GameKeyEvent::createEvent(nullUtil->NULL_OBJECT, index, index2);
     
 }
 
@@ -130,9 +136,9 @@ this->ARRAY[index][index2]= GameKeyEvent::createEvent(nullUtil.NULL_OBJECT, inde
 
                 //@Throws(Exception.constructor)
             
-    public: GameKeyEvent getInstanceForKey(GameKeyEventSourceInterface anyType, int32_t key){
+    public: GameKeyEvent* getInstanceForKey(GameKeyEventSourceInterface* anyType, int32_t key){
 
-    GameKeyEvent gameKeyEvent = this->ARRAY[anyType.getSourceId()][key];;
+    GameKeyEvent* gameKeyEvent = this->ARRAY[anyType->getSourceId()][key];;
     
 
 
@@ -145,9 +151,9 @@ this->ARRAY[index][index2]= GameKeyEvent::createEvent(nullUtil.NULL_OBJECT, inde
 
                 //@Throws(Exception.constructor)
             
-    public: GameKeyEvent getInstanceForInput(GameKeyEventSourceInterface anyType, Input input){
+    public: GameKeyEvent* getInstanceForInput(GameKeyEventSourceInterface* anyType, Input* input){
 
-    GameKeyEvent gameKeyEvent = this->ARRAY[anyType.getSourceId()][input.getId()];;
+    GameKeyEvent* gameKeyEvent = this->ARRAY[anyType->getSourceId()][input->getId()];;
     
 
 

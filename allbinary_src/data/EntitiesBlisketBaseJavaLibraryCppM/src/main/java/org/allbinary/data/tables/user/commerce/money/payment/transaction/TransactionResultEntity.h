@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONRESULTENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONRESULTENTITY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -88,11 +94,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransactionResultEntityInterface.h"
+        #include "org/allbinary/data/tables/user/commerce/money/payment/transaction/TransactionResultEntityInterface.h"
 
 class TransactionResultEntity: public AbSqlBean, public TransactionResultEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const std::string tableName = "vresults";
 
@@ -100,9 +106,9 @@ public: TransactionResultEntity();
 
     public: void remove(std::string userName, std::string orderNumber);
 
-    public: void add(std::string userName, std::string orderNumber, TransactionResultInterface transactionResultInterface);
+    public: void add(std::string userName, std::string orderNumber, TransactionResultInterface* transactionResultInterface);
 
-    public: TransactionResultInterface getTransactionResultInterface(std::string orderNumber);
+    public: TransactionResultInterface* getTransactionResultInterface(std::string orderNumber);
 
     public: std::string createTableStatement();
 

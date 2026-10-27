@@ -21,6 +21,12 @@
         #ifndef TAGS_TRANSFORMTAG_H
         #define TAGS_TRANSFORMTAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
@@ -68,11 +74,11 @@
         
 class TransformTag: public TransformInfoTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: TransformTag();
 
-public: TransformTag(TagHelperFactoryInterface tagHelperFactoryInterface);
+public: TransformTag(TagHelperFactoryInterface* tagHelperFactoryInterface);
 
                 //@Throws(Exception.constructor)
             

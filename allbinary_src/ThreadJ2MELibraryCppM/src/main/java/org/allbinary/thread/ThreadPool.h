@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_THREAD_THREADPOOL_H
         #define ORG_ALLBINARY_THREAD_THREADPOOL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -69,29 +75,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NullRunnable.h"
-#include "ThreadPoolStrings.h"
-#include "ThreadObjectUtil.h"
-#include "PooledThread.h"
-#include "PriorityRunnable.h"
+        #include "org/allbinary/thread/NullRunnable.h"
+#include "org/allbinary/thread/ThreadPoolStrings.h"
+#include "org/allbinary/thread/ThreadObjectUtil.h"
+#include "org/allbinary/thread/PooledThread.h"
+#include "org/allbinary/thread/PriorityRunnable.h"
 
 class ThreadPool
             : public Object
          {
 
-    private: static const std::string ROOT_NAME = "-PooledThread-";
+    private: static inline const std::string ROOT_NAME = "-PooledThread-";
 
-    public: static const int32_t NORMAL_PRIORITY = Thread::NORM_PRIORITY;
+    public: static inline const int32_t NORMAL_PRIORITY = Thread::NORM_PRIORITY;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const NullRunnable NULL_RUNNABLE = NullRunnable::getInstance();
+    protected: NullRunnable* NULL_RUNNABLE = NullRunnable::getInstance();
 
-    protected: const ThreadPoolStrings threadPoolStrings = ThreadPoolStrings::getInstance();
+    protected: ThreadPoolStrings* threadPoolStrings = ThreadPoolStrings::getInstance();
 
-    protected: const ThreadObjectUtil threadObjectUtil = ThreadObjectUtil::getInstance();
+    protected: ThreadObjectUtil* threadObjectUtil = ThreadObjectUtil::getInstance();
 
     private: std::string poolName;
 
@@ -99,7 +105,7 @@ class ThreadPool
 
     private: bool isAlive = false;
 
-    private: BasicArrayList taskQueue = BasicArrayListUtil::getInstance().getImmutableInstance();
+    private: BasicArrayList* taskQueue = BasicArrayListUtil::getInstance()->getImmutableInstance();
 
     private: int32_t threadID= 0;
 
@@ -115,13 +121,13 @@ public: ThreadPool(std::string poolName, int32_t numThreads, int32_t priority);
             
     public: void runAPriorityTask();
 
-    public: void runTaskWithPriority(PriorityRunnable task);
+    public: void runTaskWithPriority(PriorityRunnable* task);
 
-    public: void runTask(Runnable task);
+    public: void runTask(Runnable* task);
 
                 //@Throws(InterruptedException.constructor)
             
-    protected: Runnable getTask();
+    protected: Runnable* getTask();
 
     public: void clear();
 
@@ -135,9 +141,9 @@ public: ThreadPool(std::string poolName, int32_t numThreads, int32_t priority);
 
     protected: void threadStopped();
 
-    protected: void startTask(Runnable task);
+    protected: void startTask(Runnable* task);
 
-    protected: void completedTask(Runnable task);
+    protected: void completedTask(Runnable* task);
 
     public: std::string createName();
 

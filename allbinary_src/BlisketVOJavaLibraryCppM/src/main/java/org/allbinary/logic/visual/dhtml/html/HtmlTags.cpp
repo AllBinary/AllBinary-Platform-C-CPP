@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -47,32 +53,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HtmlTag.h"
+        #include "org/allbinary/logic/visual/dhtml/html/HtmlTag.h"
 
 class HtmlTags
             : public Object
          {
 
-    private: BasicArrayList htmlTagVector;
+    private: BasicArrayList* htmlTagVector;
 
 public: HtmlTags(){
-this->htmlTagVector= BasicArrayListD();
+this->htmlTagVector= new BasicArrayListD();
     
 }
 
 
-    public: HtmlTag get(int32_t index){
+    public: HtmlTag* get(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->htmlTagVector.get(index);
+                        return dynamic_cast<HtmlTag*>(this->htmlTagVector->get(index));
     
 }
 
 
-    public: void add(HtmlTag htmlTag){
-this->htmlTagVector.add(htmlTag);
+    public: void add(HtmlTag* htmlTag){
+this->htmlTagVector->add(htmlTag);
     
 }
 
@@ -82,7 +88,7 @@ this->htmlTagVector.add(htmlTag);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->htmlTagVector.size();;
+                        return this->htmlTagVector->size();;
     
 }
 

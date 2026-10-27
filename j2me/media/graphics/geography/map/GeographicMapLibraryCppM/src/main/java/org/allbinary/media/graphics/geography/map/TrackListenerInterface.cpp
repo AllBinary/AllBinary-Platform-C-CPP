@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/layer/AllBinaryLayer.h>
 
       
@@ -42,7 +48,7 @@
         
 class TrackListenerInterface {
 
-    void finished(AllBinaryLayer layerInterface)
+    public: virtual void finished(AllBinaryLayer* layerInterface) = 0;
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREAJPANELINTERFACE_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREAJPANELINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/w3c/dom/Document.h>
@@ -44,41 +50,41 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "KeyListener.h"
+        #include "org/allbinary/graphics/j2me/workarea/KeyListener.h"
 
 class WorkAreaJPanelInterface: public java::awt::event::KeyListener {
 
-    std::string getName();
+    public: virtual std::string getName() = 0;
 
-    void deselect();
+    public: virtual void deselect() = 0;
 
-    void select();
+    public: virtual void select() = 0;
 
-    void changeZoom(int32_t factor);
+    public: virtual void changeZoom(int32_t factor) = 0;
 
-    void explodeAll();
-
-                //@Throws(Exception.constructor)
-            
-    void autoRotate(int32_t increments, int32_t totalAngle);
+    public: virtual void explodeAll() = 0;
 
                 //@Throws(Exception.constructor)
             
-    void autoExplode(int32_t numberOfFrames, int32_t explodeType);
+    public: virtual void autoRotate(int32_t increments, int32_t totalAngle) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void autoMirror();
-
-    void play();
-
-    void stop();
-
-    bool isPlaying();
+    public: virtual void autoExplode(int32_t numberOfFrames, int32_t explodeType) = 0;
 
                 //@Throws(Exception.constructor)
             
-    Document toDocument();
+    public: virtual void autoMirror() = 0;
+
+    public: virtual void play() = 0;
+
+    public: virtual void stop() = 0;
+
+    public: virtual bool isPlaying() = 0;
+
+                //@Throws(Exception.constructor)
+            
+    public: virtual Document* toDocument() = 0;
 
 };
 

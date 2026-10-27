@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_EVENT_DISPLAYCHANGEEVENTLISTENER_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_EVENT_DISPLAYCHANGEEVENTLISTENER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
@@ -44,13 +50,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DisplayChangeEvent.h"
+        #include "org/allbinary/graphics/displayable/event/DisplayChangeEvent.h"
 
 class DisplayChangeEventListener: public EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent);
+    public: virtual void onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent) = 0;
 
 };
 

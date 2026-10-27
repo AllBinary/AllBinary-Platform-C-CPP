@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_THREAD_IMAGETHREADPOOL_H
         #define ORG_ALLBINARY_THREAD_IMAGETHREADPOOL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Runnable.h"
         
 #include <org/allbinary/string/CommonLabels.h>
@@ -53,24 +59,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ThreadPool.h"
+        #include "org/allbinary/thread/ThreadPool.h"
 //This is mainly for network communications.
 class ImageThreadPool: public ThreadPool {
 
-    private: static const ThreadPool instance = ImageThreadPool("ImageLoader", 1, ThreadPool::NORMAL_PRIORITY);
+    private: static inline ThreadPool* instance = new ImageThreadPool("ImageLoader", 1, ThreadPool::NORMAL_PRIORITY);
 
-    public: static ThreadPool getInstance();
+    public: static ThreadPool* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: ImageThreadPool(std::string poolName, int32_t numThreads, int32_t priority);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void runTask(Runnable task);
+    public: void runTask(Runnable* task);
 
-    protected: void startTask(Runnable task);
+    protected: void startTask(Runnable* task);
 
-    protected: void completedTask(Runnable task);
+    protected: void completedTask(Runnable* task);
 
 };
 

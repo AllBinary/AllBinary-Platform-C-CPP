@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -49,15 +55,15 @@ class PaymentGatewayPageData
             : public Object
          {
 
-    private: static const std::string EXTENSION = ".jsp";
+    private: static inline const std::string EXTENSION = ".jsp";
 
-    private: static const std::string NAME = StringUtil::getInstance().EMPTY_STRING;
+    private: static inline const std::string NAME = StringUtil::getInstance()->EMPTY_STRING;
 
-    public: static const std::string FORWARDMAKEPAYMENT = "MakePayment.jsp";
+    public: static inline const std::string FORWARDMAKEPAYMENT = "MakePayment.jsp";
 
-    public: static const std::string PAYMENTOPTIONS = "PaymentOptions" +PaymentGatewayPageData::EXTENSION;
+    public: static inline const std::string PAYMENTOPTIONS = "PaymentOptions" +PaymentGatewayPageData::EXTENSION;
 
-    public: static const std::string STARTCHECKOUT = "StartCheckout" +PaymentGatewayPageData::EXTENSION;
+    public: static inline const std::string STARTCHECKOUT = "StartCheckout" +PaymentGatewayPageData::EXTENSION;
 
     public: std::string MAKEPAYMENT;
 
@@ -82,95 +88,95 @@ public: PaymentGatewayPageData(std::string location, std::string paymentMethod){
     std::string paymentMethodString = PaymentGatewayPageData::NAME +paymentMethod;;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(location);
+stringBuffer->append(location);
     
-stringBuffer.append("MakePayment");
+stringBuffer->append("MakePayment");
     
-stringBuffer.append(PaymentGatewayPageData::EXTENSION);
+stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
-MAKEPAYMENT= stringBuffer.toString();
+MAKEPAYMENT= stringBuffer->toString();
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(paymentMethodString);
+stringBuffer->append(paymentMethodString);
     
-stringBuffer.append("Checkout");
+stringBuffer->append("Checkout");
     
-stringBuffer.append(PaymentGatewayPageData::EXTENSION);
+stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
-CHECKOUT= stringBuffer.toString();
+CHECKOUT= stringBuffer->toString();
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(paymentMethodString);
+stringBuffer->append(paymentMethodString);
     
-stringBuffer.append("Shipping");
+stringBuffer->append("Shipping");
     
-stringBuffer.append(PaymentGatewayPageData::EXTENSION);
+stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
-SHIPPING= stringBuffer.toString();
+SHIPPING= stringBuffer->toString();
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(paymentMethodString);
+stringBuffer->append(paymentMethodString);
     
-stringBuffer.append("ShippingAddress");
+stringBuffer->append("ShippingAddress");
     
-stringBuffer.append(PaymentGatewayPageData::EXTENSION);
+stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
-SHIPPINGADDRESS= stringBuffer.toString();
+SHIPPINGADDRESS= stringBuffer->toString();
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(paymentMethodString);
+stringBuffer->append(paymentMethodString);
     
-stringBuffer.append("ShippingAddressAction");
+stringBuffer->append("ShippingAddressAction");
     
-stringBuffer.append(PaymentGatewayPageData::EXTENSION);
+stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
-SHIPPINGADDRESSACTION= stringBuffer.toString();
+SHIPPINGADDRESSACTION= stringBuffer->toString();
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(paymentMethodString);
+stringBuffer->append(paymentMethodString);
     
-stringBuffer.append("BillingAddress");
+stringBuffer->append("BillingAddress");
     
-stringBuffer.append(PaymentGatewayPageData::EXTENSION);
+stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
-BILLINGADDRESS= stringBuffer.toString();
+BILLINGADDRESS= stringBuffer->toString();
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(paymentMethodString);
+stringBuffer->append(paymentMethodString);
     
-stringBuffer.append("Payment");
+stringBuffer->append("Payment");
     
-stringBuffer.append(PaymentGatewayPageData::EXTENSION);
+stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
-PAYMENT= stringBuffer.toString();
+PAYMENT= stringBuffer->toString();
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(paymentMethodString);
+stringBuffer->append(paymentMethodString);
     
-stringBuffer.append("Authorize");
+stringBuffer->append("Authorize");
     
-stringBuffer.append(PaymentGatewayPageData::EXTENSION);
+stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
-AUTHORIZE= stringBuffer.toString();
+AUTHORIZE= stringBuffer->toString();
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(paymentMethodString);
+stringBuffer->append(paymentMethodString);
     
-stringBuffer.append("PaymentFinish");
+stringBuffer->append("PaymentFinish");
     
-stringBuffer.append(PaymentGatewayPageData::EXTENSION);
+stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
-FINISH= stringBuffer.toString();
+FINISH= stringBuffer->toString();
     
 }
 

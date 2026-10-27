@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/rms/RecordStore.h>
 
       
@@ -42,7 +48,7 @@
         
 class NullRecordStore: public RecordStore {
 
-    public: static NullRecordStore NULL_RECORD_STORE = NullRecordStore();
+    public: static NullRecordStore* NULL_RECORD_STORE() { static std::unique_ptr<NullRecordStore> value(new NullRecordStore()); return value.get(); }
 
 };
 

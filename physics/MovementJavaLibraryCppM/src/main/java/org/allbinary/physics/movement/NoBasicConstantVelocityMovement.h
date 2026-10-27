@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_NOBASICCONSTANTVELOCITYMOVEMENT_H
         #define ORG_ALLBINARY_PHYSICS_MOVEMENT_NOBASICCONSTANTVELOCITYMOVEMENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
@@ -50,7 +56,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicConstantVelocityMovement.h"
+        #include "org/allbinary/physics/movement/BasicConstantVelocityMovement.h"
 
 class NoBasicConstantVelocityMovement: public BasicConstantVelocityMovement {
 
@@ -58,7 +64,7 @@ public: NoBasicConstantVelocityMovement();
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryGameLayer layer);
+    public: void process(AllBinaryGameLayer* layer);
 
 };
 

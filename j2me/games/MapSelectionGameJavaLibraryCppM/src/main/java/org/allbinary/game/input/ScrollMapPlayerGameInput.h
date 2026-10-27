@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -85,34 +91,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PlayerGameInput.h"
-#include "InputFactory.h"
-#include "GameInputProcessor.h"
-#include "ScrollMapUpGameInputProcessor.h"
-#include "ScrollMapDownGameInputProcessor.h"
-#include "ScrollMapRightGameInputProcessor.h"
-#include "ScrollMapLeftGameInputProcessor.h"
-#include "GameInputProcessorUtil.h"
+        #include "org/allbinary/game/input/PlayerGameInput.h"
+#include "org/allbinary/game/input/InputFactory.h"
+#include "org/allbinary/game/input/GameInputProcessor.h"
+#include "org/allbinary/game/input/ScrollMapUpGameInputProcessor.h"
+#include "org/allbinary/game/input/ScrollMapDownGameInputProcessor.h"
+#include "org/allbinary/game/input/ScrollMapRightGameInputProcessor.h"
+#include "org/allbinary/game/input/ScrollMapLeftGameInputProcessor.h"
+#include "org/allbinary/game/input/GameInputProcessorUtil.h"
 
 class ScrollMapPlayerGameInput: public PlayerGameInput {
 
-    protected: const std::vector<GameInputProcessor> inputProcessorArray = std::vector<GameInputProcessor>(InputFactory::getInstance().MAX);
+    protected: const std::vector<GameInputProcessor*> inputProcessorArray = std::vector<GameInputProcessor*>(InputFactory::getInstance()->MAX);
 
     private: const int32_t border = 150;
 
-    private: BasicArrayList inputList;
+    private: BasicArrayList* inputList;
 
-    protected: const bool isSingleKeyProcessing = Features::getInstance().isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_REPEAT_PRESS) || Features::getInstance().isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_PRESS);
+    protected: const bool isSingleKeyProcessing = Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_REPEAT_PRESS) || Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_PRESS);
 
-    private: BasicGeographicMap geographicMapInterface;
+    private: BasicGeographicMap* geographicMapInterface;
 
     private: int32_t maxBottom= 0;
 
     private: int32_t maxRight= 0;
 
-public: ScrollMapPlayerGameInput(BasicGeographicMap geographicMapInterface, BasicArrayList list, int32_t playerInputId);
+public: ScrollMapPlayerGameInput(BasicGeographicMap* geographicMapInterface, BasicArrayList* list, int32_t playerInputId);
 
-    private: const ScrollMapEvent scrollMapEvent = ScrollMapEvent(this);
+    private: ScrollMapEvent* scrollMapEvent = new ScrollMapEvent(this);
 
                 //@Throws(Exception.constructor)
             
@@ -152,7 +158,7 @@ public: ScrollMapPlayerGameInput(BasicGeographicMap geographicMapInterface, Basi
 
                 //@Throws(Exception.constructor)
             
-    public: void processInput(AllBinaryLayerManager layerManager);
+    public: void processInput(AllBinaryLayerManager* layerManager);
 
     private: int32_t getSpecialHeight();
 

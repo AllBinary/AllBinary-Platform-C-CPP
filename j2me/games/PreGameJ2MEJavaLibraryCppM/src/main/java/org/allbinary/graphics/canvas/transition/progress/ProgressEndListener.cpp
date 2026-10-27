@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,7 +49,7 @@ class ProgressEndListener
             : public Object
          {
 
-    private: static ProgressEndListener instance() { return ProgressEndListener(); }
+    public: static ProgressEndListener* instance() { static std::unique_ptr<ProgressEndListener> value(new ProgressEndListener()); return value.get(); }
 
     public: void onEndEvent(){
 }

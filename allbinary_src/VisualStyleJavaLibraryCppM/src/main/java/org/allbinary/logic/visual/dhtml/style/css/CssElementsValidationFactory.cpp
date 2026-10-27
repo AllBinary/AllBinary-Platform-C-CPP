@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,7 +64,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CssElementValidationFactory.h"
+        #include "org/allbinary/logic/visual/dhtml/style/css/CssElementValidationFactory.h"
 
 class CssElementsValidationFactory
             : public Object
@@ -66,18 +72,18 @@ class CssElementsValidationFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList getInstance(BasicArrayList cssElementStyleNodeList){
+    public: static BasicArrayList* getInstance(BasicArrayList* cssElementStyleNodeList){
 
-    BasicArrayList styles = BasicArrayListD();;
+    BasicArrayList* styles = new BasicArrayListD();;
     
 
-    int32_t size = cssElementStyleNodeList.size();;
+    int32_t size = cssElementStyleNodeList->size();;
     
 
-    Node cssElementStyleNode;;
+    Node* cssElementStyleNode;;
     
 
-    ValidationInterface cssValidationInterface;;
+    ValidationInterface* cssValidationInterface;;
     
 
 
@@ -86,11 +92,11 @@ class CssElementsValidationFactory
                         for (
     int32_t index = 0;index < size; index++)
         {
-cssElementStyleNode= cssElementStyleNodeList.get(index);
+cssElementStyleNode= dynamic_cast<Node*>(cssElementStyleNodeList->get(index));
     
-cssValidationInterface= CssElementValidationFactory::getInstance(cssElementStyleNode);
+cssValidationInterface= dynamic_cast<ValidationInterface*>(CssElementValidationFactory::getInstance(cssElementStyleNode));
     
-styles.add(cssValidationInterface);
+styles->add(cssValidationInterface);
     
 }
 
@@ -103,9 +109,9 @@ styles.add(cssValidationInterface);
 }
 
 
-    public: static BasicArrayList getInstance(HashMap<Object*, Object*> hashMap){
+    public: static BasicArrayList* getInstance(HashMap<Object*, Object*>* hashMap){
 
-    BasicArrayList styles = BasicArrayListD();;
+    BasicArrayList* styles = new BasicArrayListD();;
     
 
 

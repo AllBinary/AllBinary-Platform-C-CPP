@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHBARANIMATION_H
         #define ORG_ALLBINARY_GAME_HEALTH_HEALTHBARANIMATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/Animation.h>
@@ -56,7 +62,7 @@
         
 class HealthBarAnimation: public Animation {
 
-    private: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
+    private: BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();
 
     protected: int32_t x2= 0;
 
@@ -64,9 +70,9 @@ class HealthBarAnimation: public Animation {
 
     private: int32_t location;
 
-    protected: AllBinaryLayer allbinaryLayer;
+    protected: AllBinaryLayer* allbinaryLayer;
 
-public: HealthBarAnimation(AllBinaryLayer layerInterface, int32_t location);
+public: HealthBarAnimation(AllBinaryLayer* layerInterface, int32_t location);
 
     public: void onHealthChange(int32_t newX2);
 

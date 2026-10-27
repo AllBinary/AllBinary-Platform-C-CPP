@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_XMLDOCUMENTHELPER_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_XMLDOCUMENTHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -96,19 +102,19 @@ class XmlDocumentHelper
             : public Object
          {
 
-    private: static XmlDocumentHelper instance() { return XmlDocumentHelper(); }
+    private: static XmlDocumentHelper* instance() { static std::unique_ptr<XmlDocumentHelper> value(new XmlDocumentHelper()); return value.get(); }
 
-    public: static XmlDocumentHelper getInstance();
+    public: static XmlDocumentHelper* getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: static std::string toString(Document document);
+    public: static std::string toString(Document* document);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const std::string INDENT_NUMBER = "indent-number";
 
-    private: Transformer transformer;
+    private: Transformer* transformer;
 
 private: XmlDocumentHelper();
 

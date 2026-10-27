@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GLOBALS_URLGLOBALSVIEW_H
         #define ORG_ALLBINARY_GLOBALS_URLGLOBALSVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,17 +67,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UrlGlobalsData.h"
+        #include "org/allbinary/globals/UrlGlobalsData.h"
 
 class UrlGlobalsView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
 public: UrlGlobalsView();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

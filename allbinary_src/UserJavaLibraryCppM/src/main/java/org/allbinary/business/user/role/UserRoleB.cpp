@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -53,29 +59,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserRole.h"
-#include "BasicUserRole.h"
-#include "UserRoleFactory.h"
+        #include "org/allbinary/business/user/role/UserRole.h"
+#include "org/allbinary/business/user/role/BasicUserRole.h"
+#include "org/allbinary/business/user/role/UserRoleFactory.h"
 
 class UserRoleB: public UserRole {
 
-    public: static BasicArrayList roleVector = BasicArrayListD();
+    public: static inline BasicArrayList* roleVector = new BasicArrayListD();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static UserRole getRole(std::string role){
+    public: static UserRole* getRole(std::string role){
 UserRoleFactory::getInstance();
     
 
-                        if(!StringValidationUtil::getInstance().isEmpty(role))
+                        if(!StringValidationUtil::getInstance()->isEmpty(role))
                         
                                     {
                                     
-    BasicArrayList roleVector = UserRoleB::getAll();;
+    BasicArrayList* roleVector = UserRoleB::getAll();;
     
 
-    int32_t size = roleVector.size();;
+    int32_t size = roleVector->size();;
     
 
 
@@ -85,10 +91,10 @@ UserRoleFactory::getInstance();
     int32_t index = 0;index < size; index++)
         {
 
-    UserRole userRole = roleVector.get(index);;
+    UserRole* userRole = dynamic_cast<UserRole*>(roleVector->get(index));;
     
 
-                        if(role.compare(userRole.toString()) == 0)
+                        if(role.compare(userRole->toString()) == 0)
                         
                                     {
                                     
@@ -108,12 +114,12 @@ UserRoleFactory::getInstance();
 
 
 
-                            throw Exception("Unable to get role - Unknown Role = " +role);
+                            throw new Exception("Unable to get role - Unknown Role = " +role);
                     
 }
 
 
-    public: static BasicArrayList getAll(){
+    public: static BasicArrayList* getAll(){
 UserRoleFactory::getInstance();
     
 
@@ -125,14 +131,14 @@ UserRoleFactory::getInstance();
 }
 
 
-protected: UserRoleB(BasicUserRole aBasicUserRole, UserFactoryInterface aUserFactoryInterface) : UserRole(aBasicUserRole, aUserFactoryInterface){
+protected: UserRoleB(BasicUserRole* aBasicUserRole, UserFactoryInterface* aUserFactoryInterface) : UserRole(aBasicUserRole, aUserFactoryInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-UserRoleB::roleVector.add(this);
+UserRoleB::roleVector->add(this);
     
 }
 

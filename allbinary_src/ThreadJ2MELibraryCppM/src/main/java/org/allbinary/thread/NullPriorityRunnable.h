@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_THREAD_NULLPRIORITYRUNNABLE_H
         #define ORG_ALLBINARY_THREAD_NULLPRIORITYRUNNABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,11 +47,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PriorityRunnable.h"
+        #include "org/allbinary/thread/PriorityRunnable.h"
 
 class NullPriorityRunnable
             : public Object
-        : public PriorityRunnable {
+        , public PriorityRunnable {
 
     public: int32_t getPriority();
 

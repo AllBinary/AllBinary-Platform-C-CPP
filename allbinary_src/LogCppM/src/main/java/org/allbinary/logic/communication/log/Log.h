@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOG_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -54,7 +60,7 @@ class Log
             : public Object
          {
 
-    private: const LogFormatUtil logFormatUtil = LogFormatUtil::getInstance();
+    private: LogFormatUtil* logFormatUtil = LogFormatUtil::getInstance();
 
     private: std::string specialMessage;
 

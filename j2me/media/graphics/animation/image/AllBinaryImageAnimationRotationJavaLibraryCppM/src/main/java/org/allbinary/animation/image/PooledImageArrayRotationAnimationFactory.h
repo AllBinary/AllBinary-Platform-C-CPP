@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -72,32 +78,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageArrayRotationAnimationInfo.h"
-#include "AdjustedImageArrayRotationAnimation.h"
+        #include "org/allbinary/animation/image/ImageArrayRotationAnimationInfo.h"
+#include "org/allbinary/animation/image/AdjustedImageArrayRotationAnimation.h"
 //TWB - Adjustments should be done in the resource creation and not at the animation level
 class PooledImageArrayRotationAnimationFactory
             : public Object
-        : public AnimationInterfaceFactoryInterface {
+        , public AnimationInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: static PooledImageArrayRotationAnimationFactory createFactory(Image image, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static PooledImageArrayRotationAnimationFactory* createFactory(Image* image, AnimationBehaviorFactory* animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public: static PooledImageArrayRotationAnimationFactory createDXY(Image image, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static PooledImageArrayRotationAnimationFactory* createDXY(Image* image, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory);
 
-    private: Object* allBinaryImageRotationAnimationInfo = NullUtil::getInstance().NULL_OBJECT;
+    private: Object* allBinaryImageRotationAnimationInfo = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: AnimationBehaviorFactory animationBehaviorFactory;
+    private: AnimationBehaviorFactory* animationBehaviorFactory;
 
-public: PooledImageArrayRotationAnimationFactory(Image image, int32_t width, int32_t height, int32_t dx, int32_t dy, int32_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory);
+public: PooledImageArrayRotationAnimationFactory(Image* image, int32_t width, int32_t height, int32_t dx, int32_t dy, int32_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId);
+    public: Animation* getInstance(int32_t instanceId);
 
-    public: void setInitialScale(ScaleProperties scaleProperties);
+    public: void setInitialScale(ScaleProperties* scaleProperties);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class LogConfigTypeData
             : public Object
          {
 
-    private: static LogConfigTypeData instance() { return LogConfigTypeData(); }
+    private: static LogConfigTypeData* instance() { static std::unique_ptr<LogConfigTypeData> value(new LogConfigTypeData()); return value.get(); }
 
-    public: static LogConfigTypeData getInstance(){
+    public: static LogConfigTypeData* getInstance(){
 
 
 

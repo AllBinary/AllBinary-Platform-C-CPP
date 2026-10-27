@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/direction/Direction.h>
@@ -68,43 +74,43 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicVelocityInterface.h"
+        #include "org/allbinary/game/physics/velocity/BasicVelocityInterface.h"
 
 class BasicVelocityProperties
             : public Object
-        : public BasicVelocityInterface {
+        , public BasicVelocityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: BasicDecimal velocityXBasicDecimal;
+    protected: BasicDecimal* velocityXBasicDecimal;
 
-    protected: BasicDecimal velocityYBasicDecimal;
+    protected: BasicDecimal* velocityYBasicDecimal;
 
-    protected: BasicDecimal velocityZBasicDecimal;
+    protected: BasicDecimal* velocityZBasicDecimal;
 
-    private: const AxisMathVectorUtil axisMathVectorUtil = AxisMathVectorUtil::getInstance();
+    private: AxisMathVectorUtil* axisMathVectorUtil = AxisMathVectorUtil::getInstance();
 
 public: BasicVelocityProperties(){
-this->velocityXBasicDecimal= BasicDecimal(0);
+this->velocityXBasicDecimal= new BasicDecimal(0);
     
-this->velocityYBasicDecimal= BasicDecimal(0);
+this->velocityYBasicDecimal= new BasicDecimal(0);
     
-this->velocityZBasicDecimal= BasicDecimal(0);
+this->velocityZBasicDecimal= new BasicDecimal(0);
     
 }
 
 
     public: void zero(){
-this->velocityXBasicDecimal.setint(0);
+this->velocityXBasicDecimal->setint(0);
     
-this->velocityYBasicDecimal.setint(0);
+this->velocityYBasicDecimal->setint(0);
     
-this->velocityZBasicDecimal.setint(0);
+this->velocityZBasicDecimal->setint(0);
     
 }
 
 
-    public: BasicDecimal getVelocityXBasicDecimalP(){
+    public: BasicDecimal* getVelocityXBasicDecimalP(){
 
 
 
@@ -114,7 +120,7 @@ this->velocityZBasicDecimal.setint(0);
 }
 
 
-    public: BasicDecimal getVelocityYBasicDecimalP(){
+    public: BasicDecimal* getVelocityYBasicDecimalP(){
 
 
 
@@ -124,7 +130,7 @@ this->velocityZBasicDecimal.setint(0);
 }
 
 
-    public: BasicDecimal getVelocityZBasicDecimalP(){
+    public: BasicDecimal* getVelocityZBasicDecimalP(){
 
 
 
@@ -134,160 +140,160 @@ this->velocityZBasicDecimal.setint(0);
 }
 
 
-    protected: const DirectionUtil directionUtil = DirectionUtil::getInstance();
+    protected: DirectionUtil* directionUtil = DirectionUtil::getInstance();
 
-    public: void setVelocityWithBigDecimalAndDirection(BasicDecimal magnitudeBasicDecimal, Direction direction, Direction otherDirection){
+    public: void setVelocityWithBigDecimalAndDirection(BasicDecimal* magnitudeBasicDecimal, Direction* direction, Direction* otherDirection){
 
-    Angle angle = this->directionUtil.getAngle(direction);;
+    Angle* angle = this->directionUtil->getAngle(direction);;
     
 
-    Angle otherAngle = this->directionUtil.getAngle(otherDirection);;
+    Angle* otherAngle = this->directionUtil->getAngle(otherDirection);;
     
 this->setVelocityWithBigDecimal(magnitudeBasicDecimal, angle, otherAngle);
     
 }
 
 
-    public: void setVelocityWithDirection(int64_t magnitude, Direction direction, Direction otherDirection){
+    public: void setVelocityWithDirection(int64_t magnitude, Direction* direction, Direction* otherDirection){
 
-    Angle angle = this->directionUtil.getAngle(direction);;
+    Angle* angle = this->directionUtil->getAngle(direction);;
     
 
-    Angle otherAngle = this->directionUtil.getAngle(otherDirection);;
+    Angle* otherAngle = this->directionUtil->getAngle(otherDirection);;
     
 this->setVelocity(magnitude, angle, otherAngle);
     
 }
 
 
-    public: void addVelocityWithBigDecimalAndDirection(BasicDecimal magnitudeBasicDecimal, Direction direction, Direction otherDirection){
+    public: void addVelocityWithBigDecimalAndDirection(BasicDecimal* magnitudeBasicDecimal, Direction* direction, Direction* otherDirection){
 
-    Angle angle = this->directionUtil.getAngle(direction);;
+    Angle* angle = this->directionUtil->getAngle(direction);;
     
 
-    Angle otherAngle = this->directionUtil.getAngle(otherDirection);;
+    Angle* otherAngle = this->directionUtil->getAngle(otherDirection);;
     
 this->addVelocityWithBigDecimal(magnitudeBasicDecimal, angle, otherAngle);
     
 }
 
 
-    public: void addVelocityWithDirection(int64_t magnitude, Direction direction, Direction otherDirection){
+    public: void addVelocityWithDirection(int64_t magnitude, Direction* direction, Direction* otherDirection){
 
-    Angle angle = this->directionUtil.getAngle(direction);;
+    Angle* angle = this->directionUtil->getAngle(direction);;
     
 
-    Angle otherAngle = this->directionUtil.getAngle(otherDirection);;
+    Angle* otherAngle = this->directionUtil->getAngle(otherDirection);;
     
 this->addVelocity(magnitude, angle, otherAngle);
     
 }
 
 
-    public: void setVelocityWithBigDecimal(BasicDecimal magnitudeBasicDecimal, Angle angle, Angle otherAngle){
+    public: void setVelocityWithBigDecimal(BasicDecimal* magnitudeBasicDecimal, Angle* angle, Angle* otherAngle){
 
-    int64_t magnitude = magnitudeBasicDecimal.getUnscaled();;
+    int64_t magnitude = magnitudeBasicDecimal->getUnscaled();;
     
 this->setVelocity(magnitude, angle, otherAngle);
     
 }
 
 
-    public: void addVelocityWithBigDecimal(BasicDecimal magnitudeBasicDecimal, Angle angle, Angle otherAngle){
+    public: void addVelocityWithBigDecimal(BasicDecimal* magnitudeBasicDecimal, Angle* angle, Angle* otherAngle){
 
-    int64_t magnitude = magnitudeBasicDecimal.getUnscaled();;
+    int64_t magnitude = magnitudeBasicDecimal->getUnscaled();;
     
 this->addVelocity(magnitude, angle, otherAngle);
     
 }
 
 
-    public: void setVelocity(int64_t magnitude, Angle angle, Angle otherAngle){
-this->setVelocityi(magnitude, static_cast<int32_t>(angle.getValue()), static_cast<int32_t>(otherAngle.getValue()));
+    public: void setVelocity(int64_t magnitude, Angle* angle, Angle* otherAngle){
+this->setVelocityi(magnitude, static_cast<int32_t>(angle->getValue()), static_cast<int32_t>(otherAngle->getValue()));
     
 }
 
 
-    public: void addVelocity(int64_t magnitude, Angle angle, Angle otherAngle){
-this->addVelocityi(magnitude, static_cast<int32_t>(angle.getValue()), static_cast<int32_t>(otherAngle.getValue()));
+    public: void addVelocity(int64_t magnitude, Angle* angle, Angle* otherAngle){
+this->addVelocityi(magnitude, static_cast<int32_t>(angle->getValue()), static_cast<int32_t>(otherAngle->getValue()));
     
 }
 
 
     public: void setVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle){
 
-    int64_t xVector = (this->axisMathVectorUtil.calculateX(magnitude, angle) /this->velocityXBasicDecimal.getScaledFactorValue());;
+    int64_t xVector = (this->axisMathVectorUtil->calculateX(magnitude, angle) /this->velocityXBasicDecimal->getScaledFactorValue());;
     
 
-    int64_t yVector = (this->axisMathVectorUtil.calculateY(magnitude, angle) /this->velocityYBasicDecimal.getScaledFactorValue());;
+    int64_t yVector = (this->axisMathVectorUtil->calculateY(magnitude, angle) /this->velocityYBasicDecimal->getScaledFactorValue());;
     
 
-    int64_t zVector = (this->axisMathVectorUtil.calculateZ(magnitude, otherAngle) /this->velocityZBasicDecimal.getScaledFactorValue());;
+    int64_t zVector = (this->axisMathVectorUtil->calculateZ(magnitude, otherAngle) /this->velocityZBasicDecimal->getScaledFactorValue());;
     
-this->velocityXBasicDecimal.setlong(xVector);
+this->velocityXBasicDecimal->setlong(xVector);
     
-this->velocityYBasicDecimal.setlong(yVector);
+this->velocityYBasicDecimal->setlong(yVector);
     
-this->velocityZBasicDecimal.setlong(zVector);
+this->velocityZBasicDecimal->setlong(zVector);
     
 }
 
 
     public: void addVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle){
 
-    int64_t xVector = (this->axisMathVectorUtil.calculateX(magnitude, angle) /this->velocityXBasicDecimal.getScaledFactorValue());;
+    int64_t xVector = (this->axisMathVectorUtil->calculateX(magnitude, angle) /this->velocityXBasicDecimal->getScaledFactorValue());;
     
 
-    int64_t yVector = (this->axisMathVectorUtil.calculateY(magnitude, angle) /this->velocityYBasicDecimal.getScaledFactorValue());;
+    int64_t yVector = (this->axisMathVectorUtil->calculateY(magnitude, angle) /this->velocityYBasicDecimal->getScaledFactorValue());;
     
 
-    int64_t zVector = (this->axisMathVectorUtil.calculateZ(magnitude, otherAngle) /this->velocityZBasicDecimal.getScaledFactorValue());;
+    int64_t zVector = (this->axisMathVectorUtil->calculateZ(magnitude, otherAngle) /this->velocityZBasicDecimal->getScaledFactorValue());;
     
-this->velocityXBasicDecimal.addlong(xVector);
+this->velocityXBasicDecimal->addlong(xVector);
     
-this->velocityYBasicDecimal.addlong(yVector);
+this->velocityYBasicDecimal->addlong(yVector);
     
-this->velocityZBasicDecimal.addlong(zVector);
+this->velocityZBasicDecimal->addlong(zVector);
     
 }
 
 
     public: std::string toString(){
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
-    PositionStrings positionStrings = PositionStrings::getInstance();;
+    PositionStrings* positionStrings = PositionStrings::getInstance();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
-stringBuffer.append("Velocity ");
+stringBuffer->append("Velocity ");
     
-stringBuffer.append(positionStrings.X_LABEL);
+stringBuffer->append(positionStrings->X_LABEL);
     
-stringBuffer.append(stringUtil.toString(this->velocityXBasicDecimal));
+stringBuffer->append(stringUtil->toString(this->velocityXBasicDecimal));
     
-stringBuffer.append(commonSeps.SPACE);
+stringBuffer->append(commonSeps->SPACE);
     
-stringBuffer.append(positionStrings.Y_LABEL);
+stringBuffer->append(positionStrings->Y_LABEL);
     
-stringBuffer.append(stringUtil.toString(this->velocityYBasicDecimal));
+stringBuffer->append(stringUtil->toString(this->velocityYBasicDecimal));
     
-stringBuffer.append(commonSeps.SPACE);
+stringBuffer->append(commonSeps->SPACE);
     
-stringBuffer.append(positionStrings.Z_LABEL);
+stringBuffer->append(positionStrings->Z_LABEL);
     
-stringBuffer.append(stringUtil.toString(this->velocityZBasicDecimal));
+stringBuffer->append(stringUtil->toString(this->velocityZBasicDecimal));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

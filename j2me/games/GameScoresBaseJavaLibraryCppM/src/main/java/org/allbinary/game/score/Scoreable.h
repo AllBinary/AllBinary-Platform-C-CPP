@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_SCOREABLE_H
         #define ORG_ALLBINARY_GAME_SCORE_SCOREABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -46,13 +52,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ScoreableInterface.h"
+        #include "org/allbinary/game/score/ScoreableInterface.h"
 
 class Scoreable
             : public Object
-        : public ScoreableInterface {
+        , public ScoreableInterface {
 
-    public: static Integer ID = SmallIntegerSingletonFactory::getInstance().getAt(3);
+    public: static inline int32_t ID = SmallIntegerSingletonFactory::getInstance()->getAt(3);
 
     private: int32_t points;
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,9 +66,9 @@ class LayerPartialCellPositionsUtil
             : public Object
          {
 
-    private: static LayerPartialCellPositionsUtil instance() { return LayerPartialCellPositionsUtil(); }
+    private: static LayerPartialCellPositionsUtil* instance() { static std::unique_ptr<LayerPartialCellPositionsUtil> value(new LayerPartialCellPositionsUtil()); return value.get(); }
 
-    public: static LayerPartialCellPositionsUtil getInstance(){
+    public: static LayerPartialCellPositionsUtil* getInstance(){
 
 
 
@@ -74,26 +80,26 @@ class LayerPartialCellPositionsUtil
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getAll(BasicGeographicMap geographicMapInterface, AllBinaryLayer layerInterface, BasicArrayList reusableList){
-reusableList.clear();
+    public: BasicArrayList* getAll(BasicGeographicMap* geographicMapInterface, AllBinaryLayer* layerInterface, BasicArrayList* reusableList){
+reusableList->clear();
     
 
-    GeographicMapCellPosition topLeftGeographicMapCellPosition = geographicMapInterface.getCellPositionAtXYNoThrow(layerInterface.getXP(), layerInterface.getYP());;
+    GeographicMapCellPosition* topLeftGeographicMapCellPosition = geographicMapInterface->getCellPositionAtXYNoThrow(layerInterface->getXP(), layerInterface->getYP());;
     
 
-    GeographicMapCellPosition topRightGeographicMapCellPosition = geographicMapInterface.getCellPositionAtXYNoThrow(layerInterface.getXP() +layerInterface.getWidth(), layerInterface.getYP());;
+    GeographicMapCellPosition* topRightGeographicMapCellPosition = geographicMapInterface->getCellPositionAtXYNoThrow(layerInterface->getXP() +layerInterface->getWidth(), layerInterface->getYP());;
     
 
-    GeographicMapCellPosition bottomLeftGeographicMapCellPosition = geographicMapInterface.getCellPositionAtXYNoThrow(layerInterface.getXP(), layerInterface.getYP() +layerInterface.getHeight());;
+    GeographicMapCellPosition* bottomLeftGeographicMapCellPosition = geographicMapInterface->getCellPositionAtXYNoThrow(layerInterface->getXP(), layerInterface->getYP() +layerInterface->getHeight());;
     
 
-    GeographicMapCellPosition bottomRightGeographicMapCellPosition = geographicMapInterface.getCellPositionAtXYNoThrow(layerInterface.getXP() +layerInterface.getWidth(), layerInterface.getYP() +layerInterface.getHeight());;
+    GeographicMapCellPosition* bottomRightGeographicMapCellPosition = geographicMapInterface->getCellPositionAtXYNoThrow(layerInterface->getXP() +layerInterface->getWidth(), layerInterface->getYP() +layerInterface->getHeight());;
     
 
                         if(topLeftGeographicMapCellPosition != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION)
                         
                                     {
-                                    reusableList.add(topLeftGeographicMapCellPosition);
+                                    reusableList->add(topLeftGeographicMapCellPosition);
     
 
                                     }
@@ -102,25 +108,25 @@ reusableList.clear();
                         if(topRightGeographicMapCellPosition != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION && topLeftGeographicMapCellPosition != topRightGeographicMapCellPosition)
                         
                                     {
-                                    reusableList.add(topRightGeographicMapCellPosition);
+                                    reusableList->add(topRightGeographicMapCellPosition);
     
 
                                     }
                                 
 
-                        if(bottomLeftGeographicMapCellPosition != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION && !reusableList.contains(bottomLeftGeographicMapCellPosition))
+                        if(bottomLeftGeographicMapCellPosition != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION && !reusableList->contains(bottomLeftGeographicMapCellPosition))
                         
                                     {
-                                    reusableList.add(bottomLeftGeographicMapCellPosition);
+                                    reusableList->add(bottomLeftGeographicMapCellPosition);
     
 
                                     }
                                 
 
-                        if(bottomRightGeographicMapCellPosition != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION && !reusableList.contains(bottomRightGeographicMapCellPosition))
+                        if(bottomRightGeographicMapCellPosition != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION && !reusableList->contains(bottomRightGeographicMapCellPosition))
                         
                                     {
-                                    reusableList.add(bottomRightGeographicMapCellPosition);
+                                    reusableList->add(bottomRightGeographicMapCellPosition);
     
 
                                     }
@@ -136,26 +142,26 @@ reusableList.clear();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getAllDXY(BasicGeographicMap geographicMapInterface, AllBinaryLayer layerInterface, int32_t dx, int32_t dy, BasicArrayList reusableList){
-reusableList.clear();
+    public: BasicArrayList* getAllDXY(BasicGeographicMap* geographicMapInterface, AllBinaryLayer* layerInterface, int32_t dx, int32_t dy, BasicArrayList* reusableList){
+reusableList->clear();
     
 
-    GeographicMapCellPosition topLeftGeographicMapCellPosition = geographicMapInterface.getCellPositionAtXYNoThrow(layerInterface.getXP() +dx, layerInterface.getYP() +dy);;
+    GeographicMapCellPosition* topLeftGeographicMapCellPosition = geographicMapInterface->getCellPositionAtXYNoThrow(layerInterface->getXP() +dx, layerInterface->getYP() +dy);;
     
 
-    GeographicMapCellPosition topRightGeographicMapCellPosition = geographicMapInterface.getCellPositionAtXYNoThrow(layerInterface.getXP() +layerInterface.getWidth() +dx, layerInterface.getYP() +dy);;
+    GeographicMapCellPosition* topRightGeographicMapCellPosition = geographicMapInterface->getCellPositionAtXYNoThrow(layerInterface->getXP() +layerInterface->getWidth() +dx, layerInterface->getYP() +dy);;
     
 
-    GeographicMapCellPosition bottomLeftGeographicMapCellPosition = geographicMapInterface.getCellPositionAtXYNoThrow(layerInterface.getXP() +dx, layerInterface.getYP() +layerInterface.getHeight() +dy);;
+    GeographicMapCellPosition* bottomLeftGeographicMapCellPosition = geographicMapInterface->getCellPositionAtXYNoThrow(layerInterface->getXP() +dx, layerInterface->getYP() +layerInterface->getHeight() +dy);;
     
 
-    GeographicMapCellPosition bottomRightGeographicMapCellPosition = geographicMapInterface.getCellPositionAtXYNoThrow(layerInterface.getXP() +layerInterface.getWidth() +dx, layerInterface.getYP() +layerInterface.getHeight() +dy);;
+    GeographicMapCellPosition* bottomRightGeographicMapCellPosition = geographicMapInterface->getCellPositionAtXYNoThrow(layerInterface->getXP() +layerInterface->getWidth() +dx, layerInterface->getYP() +layerInterface->getHeight() +dy);;
     
 
                         if(topLeftGeographicMapCellPosition != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION)
                         
                                     {
-                                    reusableList.add(topLeftGeographicMapCellPosition);
+                                    reusableList->add(topLeftGeographicMapCellPosition);
     
 
                                     }
@@ -164,25 +170,25 @@ reusableList.clear();
                         if(topRightGeographicMapCellPosition != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION && topLeftGeographicMapCellPosition != topRightGeographicMapCellPosition)
                         
                                     {
-                                    reusableList.add(topRightGeographicMapCellPosition);
+                                    reusableList->add(topRightGeographicMapCellPosition);
     
 
                                     }
                                 
 
-                        if(bottomLeftGeographicMapCellPosition != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION && !reusableList.contains(bottomLeftGeographicMapCellPosition))
+                        if(bottomLeftGeographicMapCellPosition != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION && !reusableList->contains(bottomLeftGeographicMapCellPosition))
                         
                                     {
-                                    reusableList.add(bottomLeftGeographicMapCellPosition);
+                                    reusableList->add(bottomLeftGeographicMapCellPosition);
     
 
                                     }
                                 
 
-                        if(bottomRightGeographicMapCellPosition != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION && !reusableList.contains(bottomRightGeographicMapCellPosition))
+                        if(bottomRightGeographicMapCellPosition != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION && !reusableList->contains(bottomRightGeographicMapCellPosition))
                         
                                     {
-                                    reusableList.add(bottomRightGeographicMapCellPosition);
+                                    reusableList->add(bottomRightGeographicMapCellPosition);
     
 
                                     }

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -55,16 +61,16 @@ class InterfaceUtil
 
     public: static std::string viewAll(Class* myClass, std::string lineBreak){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    std::vector<Class*> interfaces = myClass.getInterfaces();;
+    std::vector<Class*> interfaces = myClass->getInterfaces();;
     
-stringBuffer.append(lineBreak);
+stringBuffer->append(lineBreak);
     
-stringBuffer.append("Interfaces: ");
+stringBuffer->append("Interfaces: ");
     
-stringBuffer.append(lineBreak);
+stringBuffer->append(lineBreak);
     
 
 
@@ -73,11 +79,11 @@ stringBuffer.append(lineBreak);
                         for (
     int32_t index = 0;index < interfaces.size(); index++)
         {
-stringBuffer.append("Interface: ");
+stringBuffer->append("Interface: ");
     
-stringBuffer.append(interfaces[index].getName());
+stringBuffer->append(interfaces[index].getName());
     
-stringBuffer.append(lineBreak);
+stringBuffer->append(lineBreak);
     
 }
 
@@ -85,7 +91,7 @@ stringBuffer.append(lineBreak);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
@@ -133,7 +139,7 @@ stringBuffer.append(lineBreak);
 
     public: static bool isImplemented(Class* clazz, Object* anyType){
 
-    std::vector<Class*> classes = anyType->constructor.name.getInterfaces();;
+    std::vector<Class*> classes = anyType->getClass()->getInterfaces();;
     
 
 
@@ -143,7 +149,7 @@ stringBuffer.append(lineBreak);
     int32_t index = 0;index < classes.size(); index++)
         {
 
-                        if(clazz.toString().compareTo(classes[index].getName()) == 0)
+                        if(clazz->getName().compareTo(classes[index].getName()) == 0)
                         
 
 
@@ -163,7 +169,7 @@ stringBuffer.append(lineBreak);
 
     public: static bool isImplemented(std::string className, Object* anyType){
 
-    std::vector<Class*> classes = anyType->constructor.name.getInterfaces();;
+    std::vector<Class*> classes = anyType->getClass()->getInterfaces();;
     
 
 
@@ -198,12 +204,12 @@ stringBuffer.append(lineBreak);
 
     public: static std::string isImplementedView(Class* clazz, Object* anyType){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    std::vector<Class*> classes = anyType->constructor.name.getInterfaces();;
+    std::vector<Class*> classes = anyType->getClass()->getInterfaces();;
     
-stringBuffer.append("isImplementedView: \n");
+stringBuffer->append("isImplementedView: \n");
     
 
 
@@ -212,15 +218,15 @@ stringBuffer.append("isImplementedView: \n");
                         for (
     int32_t index = 0;index < classes.size(); index++)
         {
-stringBuffer.append(clazz.toString());
+stringBuffer->append(clazz->getName());
     
-stringBuffer.append(" should be = ");
+stringBuffer->append(" should be = ");
     
-stringBuffer.append(classes[index].getName());
+stringBuffer->append(classes[index].getName());
     
-stringBuffer.append(classes[index].getName());
+stringBuffer->append(classes[index].getName());
     
-stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
+stringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
     
 }
 
@@ -228,7 +234,7 @@ stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

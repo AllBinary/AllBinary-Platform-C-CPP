@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/game/layer/resources/BasicGameResources.h>
 
       
@@ -50,9 +58,9 @@
         
 class MineWeaponResources: public BasicGameResources {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static MineWeaponResources getInstance();
+    public: static MineWeaponResources* getInstance();
 
     public: const std::string DROP_TEXT_RESOURCE = "/mine_drop_text_20_by_20.png";
 

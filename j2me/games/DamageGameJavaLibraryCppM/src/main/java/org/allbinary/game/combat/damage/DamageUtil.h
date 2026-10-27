@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEUTIL_H
         #define ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,17 +61,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DamageableInterface.h"
+        #include "org/allbinary/game/combat/damage/DamageableInterface.h"
 
 class DamageUtil
             : public Object
          {
 
-    private: static DamageUtil instance() { return DamageUtil(); }
+    private: static DamageUtil* instance() { static std::unique_ptr<DamageUtil> value(new DamageUtil()); return value.get(); }
 
-    public: static DamageUtil getInstance();
+    public: static DamageUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     public: const std::string COLLIDE = "collide";
 
@@ -73,11 +79,11 @@ private: DamageUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: void process(DamageableInterface damageableInterface, DamageableInterface damageableInterface2);
+    public: void process(DamageableInterface* damageableInterface, DamageableInterface* damageableInterface2);
 
                 //@Throws(Exception.constructor)
             
-    public: void debugDamage(CollidableCompositeLayer collidableInterfaceCompositeInterface1, CollidableCompositeLayer collidableInterfaceCompositeInterface);
+    public: void debugDamage(CollidableCompositeLayer* collidableInterfaceCompositeInterface1, CollidableCompositeLayer* collidableInterfaceCompositeInterface);
 
 };
 

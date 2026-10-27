@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Throwable.h"
         
             #include "java/lang/Exception.h"
@@ -75,27 +81,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageBaseRotationAnimation.h"
-#include "ModifierBaseProcessor.h"
-#include "ScaleProcessor.h"
-#include "ScaleBaseProcessor.h"
-#include "SetColorProcessor.h"
-#include "ChangeColorProcessor.h"
-#include "AlphaProcessor.h"
+        #include "org/allbinary/animation/image/ImageBaseRotationAnimation.h"
+#include "org/allbinary/animation/image/ModifierBaseProcessor.h"
+#include "org/allbinary/animation/image/ScaleProcessor.h"
+#include "org/allbinary/animation/image/ScaleBaseProcessor.h"
+#include "org/allbinary/animation/image/SetColorProcessor.h"
+#include "org/allbinary/animation/image/ChangeColorProcessor.h"
+#include "org/allbinary/animation/image/AlphaProcessor.h"
 
 class AllBinaryJ2SEImageRotationAnimation: public ImageBaseRotationAnimation {
 
-    private: const ImageRotationUtil imageRotationUtil = ImageRotationUtil::getInstance();
+    private: ImageRotationUtil* imageRotationUtil = ImageRotationUtil::getInstance();
 
-    private: const ImageModifierUtil imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
+    private: ImageModifierUtil* imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
 
-    private: Image realOriginalImage;
+    private: Image* realOriginalImage;
 
-    private: const std::vector<Image> originalImageArray = std::vector<Image>(1);
+    private: const std::vector<Image*> originalImageArray = std::vector<Image*>(1);
 
-    private: const std::vector<Image> twoImages = std::vector<Image>(2);
+    private: const std::vector<Image*> twoImages = std::vector<Image*>(2);
 
-    private: Image imageToShow;
+    private: Image* imageToShow;
 
     private: int32_t bufferedImageIndex= 0;
 
@@ -111,19 +117,19 @@ class AllBinaryJ2SEImageRotationAnimation: public ImageBaseRotationAnimation {
 
     private: float maxScaleY= 0.0;
 
-    private: ModifierBaseProcessor alphaProcessor = ModifierBaseProcessor::getInstance();
+    private: ModifierBaseProcessor* alphaProcessor = ModifierBaseProcessor::getInstance();
 
-    private: ModifierBaseProcessor setColorProcessor = ModifierBaseProcessor::getInstance();
+    private: ModifierBaseProcessor* setColorProcessor = ModifierBaseProcessor::getInstance();
 
-    private: ModifierBaseProcessor changeColorProcessor = ModifierBaseProcessor::getInstance();
+    private: ModifierBaseProcessor* changeColorProcessor = ModifierBaseProcessor::getInstance();
 
-    private: ScaleBaseProcessor scaleProcessor = ScaleProcessor::getInstance();
+    private: ScaleBaseProcessor* scaleProcessor = ScaleProcessor::getInstance();
 
-public: AllBinaryJ2SEImageRotationAnimation(Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior);
+public: AllBinaryJ2SEImageRotationAnimation(Image* originalImage, Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior);
 
-    public: void setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor* basicColor);
 
-    public: void changeBasicColor(BasicColor basicColor);
+    public: void changeBasicColor(BasicColor* basicColor);
 
     public: void setAlpha(int32_t alpha);
 
@@ -141,7 +147,7 @@ public: AllBinaryJ2SEImageRotationAnimation(Image originalImage, Image image, An
 
     public: void swap();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
     public: void close();
 

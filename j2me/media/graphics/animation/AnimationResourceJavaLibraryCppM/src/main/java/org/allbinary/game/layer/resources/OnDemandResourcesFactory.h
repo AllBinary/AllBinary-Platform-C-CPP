@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDRESOURCESFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDRESOURCESFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,7 +47,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OnDemandResources.h"
+        #include "org/allbinary/game/layer/resources/OnDemandResources.h"
 
 class OnDemandResourcesFactory
             : public Object
@@ -49,7 +55,7 @@ class OnDemandResourcesFactory
 
     public: int32_t size();
 
-    public: OnDemandResources remove(int32_t layerId);
+    public: OnDemandResources* remove(int32_t layerId);
 
 };
 

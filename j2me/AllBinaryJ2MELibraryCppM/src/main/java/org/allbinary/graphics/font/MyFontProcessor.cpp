@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -49,17 +55,17 @@ class MyFontProcessor
             : public Object
          {
 
-    public: static int32_t defaultCharWidth(Font font){
+    public: static int32_t defaultCharWidth(Font* font){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return font.charWidth('C');;
+                        return font->charWidth('C');;
     
 }
 
 
-    public: static int32_t defaultStringWidth(Font font, int32_t size){
+    public: static int32_t defaultStringWidth(Font* font, int32_t size){
 
 
 
@@ -69,9 +75,9 @@ class MyFontProcessor
 }
 
 
-    private: static MyFontProcessor instance() { return MyFontProcessor(); }
+    private: static MyFontProcessor* instance() { static std::unique_ptr<MyFontProcessor> value(new MyFontProcessor()); return value.get(); }
 
-    public: static MyFontProcessor getInstance(){
+    public: static MyFontProcessor* getInstance(){
 
 
 
@@ -81,7 +87,7 @@ class MyFontProcessor
 }
 
 
-    public: void process(Graphics graphics){
+    public: void process(Graphics* graphics){
 }
 
 

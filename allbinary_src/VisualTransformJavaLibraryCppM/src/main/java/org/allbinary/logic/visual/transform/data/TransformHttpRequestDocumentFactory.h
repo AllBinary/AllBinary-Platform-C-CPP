@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMHTTPREQUESTDOCUMENTFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMHTTPREQUESTDOCUMENTFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,8 +55,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformHttpRequestDocument.h"
-#include "TransformDocumentInterface.h"
+        #include "org/allbinary/logic/visual/transform/data/TransformHttpRequestDocument.h"
+#include "org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h"
 
 class TransformHttpRequestDocumentFactory
             : public Object
@@ -58,7 +64,7 @@ class TransformHttpRequestDocumentFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static TransformDocumentInterface getInstance(PageContext pageContext, WeblisketSession weblisketSession);
+    public: static TransformDocumentInterface* getInstance(PageContext* pageContext, WeblisketSession* weblisketSession);
 
 private: TransformHttpRequestDocumentFactory();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,13 +42,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "IntermissionInterface.h"
+        #include "org/allbinary/game/IntermissionInterface.h"
 
 class IntermissionCompositeInterface {
 
-    IntermissionInterface getStartIntermissionInterface()
+    public: virtual IntermissionInterface* getStartIntermissionInterface() = 0;
 
-    IntermissionInterface getEndLevelIntermissionInterface()
+    public: virtual IntermissionInterface* getEndLevelIntermissionInterface() = 0;
 
 };
 

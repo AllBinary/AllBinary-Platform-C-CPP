@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_MULTIPARTREQUESTPARAMFORWARDHELPER_H
         #define ADMIN_TAGHELPERS_MULTIPARTREQUESTPARAMFORWARDHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -79,25 +85,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InventoryItemViewParentTagHelper.h"
+        #include "admin/taghelpers/InventoryItemViewParentTagHelper.h"
 
 class MultipartRequestParamForwardHelper
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: PageContext pageContext;
+    private: PageContext* pageContext;
 
-    private: RequestMapInterface requestMapInterface;
+    private: RequestMapInterface* requestMapInterface;
 
     private: std::string page;
 
     private: std::string command;
 
-    private: BasicArrayList paramVector;
+    private: BasicArrayList* paramVector;
 
-public: MultipartRequestParamForwardHelper(HelperTag parentHelperTag, std::string page, std::string command, BasicArrayList paramVector, PageContext pageContext);
+public: MultipartRequestParamForwardHelper(HelperTag* parentHelperTag, std::string page, std::string command, BasicArrayList* paramVector, PageContext* pageContext);
 
                 //@Throws(Exception.constructor)
             

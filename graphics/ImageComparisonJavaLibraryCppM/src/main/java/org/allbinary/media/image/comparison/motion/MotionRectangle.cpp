@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Cloneable.h"
@@ -55,21 +61,21 @@
         
 class MotionRectangle
             : public Object
-        : public Cloneable {
+        , public Cloneable {
 
-    private: Rectangle rectangle;
+    private: Rectangle* rectangle;
 
-    private: BasicArrayList pixelDeltaVector;
+    private: BasicArrayList* pixelDeltaVector;
 
-public: MotionRectangle(Rectangle rectangle){
+public: MotionRectangle(Rectangle* rectangle){
 this->setRectangle(rectangle);
     
-this->setPixelDeltaVector(BasicArrayListD());
+this->setPixelDeltaVector(new BasicArrayListD());
     
 }
 
 
-    public: Rectangle getRectangle(){
+    public: Rectangle* getRectangle(){
 
 
 
@@ -79,13 +85,13 @@ this->setPixelDeltaVector(BasicArrayListD());
 }
 
 
-    public: void setRectangle(Rectangle rectangle){
+    public: void setRectangle(Rectangle* rectangle){
 this->rectangle= rectangle;
     
 }
 
 
-    public: BasicArrayList getPixelDeltaVector(){
+    public: BasicArrayList* getPixelDeltaVector(){
 
 
 
@@ -95,7 +101,7 @@ this->rectangle= rectangle;
 }
 
 
-    public: void setPixelDeltaVector(BasicArrayList pixelDeltaVector){
+    public: void setPixelDeltaVector(BasicArrayList* pixelDeltaVector){
 this->pixelDeltaVector= pixelDeltaVector;
     
 }
@@ -103,9 +109,9 @@ this->pixelDeltaVector= pixelDeltaVector;
 
     public: Object* clone(){
 
-    MotionRectangle motionRectangle = MotionRectangle(this->getRectangle().clone());;
+    MotionRectangle* motionRectangle = new MotionRectangle(dynamic_cast<Rectangle*>(this->getRectangle()->clone()));;
     
-motionRectangle.setPixelDeltaVector(this->getPixelDeltaVector().clone());
+motionRectangle->setPixelDeltaVector(dynamic_cast<BasicArrayList*>(this->getPixelDeltaVector()->clone()));
     
 
 

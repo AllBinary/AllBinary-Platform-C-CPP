@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TIMEDFIREAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TIMEDFIREAI_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -67,21 +73,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TimeFiredInterface.h"
+        #include "org/allbinary/game/ag/ai/scroller/TimeFiredInterface.h"
 
 class TimedFireAI: public BasicAI {
 
-    public: static const Integer TIME = SmallIntegerSingletonFactory::getInstance().getAt(1);
+    public: static inline int32_t TIME = SmallIntegerSingletonFactory::getInstance()->getAt(1);
 
-    protected: const TimeDelayHelper maxFireDelayTimeHelper = TimeDelayHelper(0);
+    protected: TimeDelayHelper* maxFireDelayTimeHelper = new TimeDelayHelper(0);
 
     private: int32_t delay;
 
-public: TimedFireAI(int32_t delay, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: TimedFireAI(int32_t delay, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager);
 
 };
 

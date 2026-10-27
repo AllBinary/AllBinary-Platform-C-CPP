@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOPAINTABLEINTERFACE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOPAINTABLEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,7 +48,7 @@
         
 class DemoPaintableInterface {
 
-    void showGamePaintable();
+    public: virtual void showGamePaintable() = 0;
 
 };
 

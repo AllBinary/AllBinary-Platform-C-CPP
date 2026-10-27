@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -104,19 +110,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CollidableWeaponBehavior.h"
+        #include "org/allbinary/game/layer/weapon/CollidableWeaponBehavior.h"
 
 class WeaponLayer: public MultiPlayerGameLayer, public TickableInterface {
 
     public: static int32_t getStaticType();
 
-    private: Animation animationInterface = NullAnimationFactory::getFactoryInstance().getInstance(0);
+    private: Animation* animationInterface = NullAnimationFactory::getFactoryInstance()->getInstance(0);
 
-    protected: Animation initAnimationInterface;
+    protected: Animation* initAnimationInterface;
 
-    private: Animation destroyedAnimationInterface;
+    private: Animation* destroyedAnimationInterface;
 
-    private: AllBinaryLayer sourceLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer* sourceLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
     protected: int32_t totalDamage= 0;
 
@@ -124,19 +130,19 @@ class WeaponLayer: public MultiPlayerGameLayer, public TickableInterface {
 
     private: bool destroyed = true;
 
-    protected: ScoreableInterface scoreableInterface = NoScoreable::getInstance();
+    protected: ScoreableInterface* scoreableInterface = NoScoreable::getInstance();
 
-    private: Movement movement;
+    private: Movement* movement;
 
-    private: WeaponProperties weaponProperties = WeaponProperties::NULL_WEAPON_PROPERTIES;
+    private: WeaponProperties* weaponProperties = WeaponProperties::NULL_WEAPON_PROPERTIES;
 
     private: int32_t multiPlayerType;
 
-protected: WeaponLayer(std::string name, RemoteInfo remoteInfo, int32_t multiPlayerType, Movement movement, Animation animationInterface, Animation destroyedAnimationInterface, Rectangle rectangle, ViewPositionBase viewPosition);
+protected: WeaponLayer(std::string name, RemoteInfo* remoteInfo, int32_t multiPlayerType, Movement* movement, Animation* animationInterface, Animation* destroyedAnimationInterface, Rectangle* rectangle, ViewPositionBase* viewPosition);
 
-    private: CollidableWeaponBehavior collidableWeaponBehavior = CollidableWeaponBehavior::getNullInstance();
+    private: CollidableWeaponBehavior* collidableWeaponBehavior = CollidableWeaponBehavior::getNullInstance();
 
-    public: void setCollidableInferface(CollidableBaseBehavior collidableInferface);
+    public: void setCollidableInferface(CollidableBaseBehavior* collidableInferface);
 
                 //@Throws(Exception.constructor)
             
@@ -144,13 +150,13 @@ protected: WeaponLayer(std::string name, RemoteInfo remoteInfo, int32_t multiPla
 
                 //@Throws(Exception.constructor)
             
-    public: void init(AllBinaryLayer sourceLayerInterface, int32_t angle, int32_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreable);
+    public: void init(AllBinaryLayer* sourceLayerInterface, int32_t angle, int32_t otherAngle, WeaponProperties* weaponProperties, ScoreableInterface* scoreable);
 
     protected: void setGroupInterfaces();
 
                 //@Throws(Exception.constructor)
             
-    public: void processTick(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager);
 
     public: bool isDestroyed();
 
@@ -166,41 +172,41 @@ protected: WeaponLayer(std::string name, RemoteInfo remoteInfo, int32_t multiPla
 
     protected: int32_t getInitDamage();
 
-    protected: void setAnimationInterface(Animation animationInterface);
+    protected: void setAnimationInterface(Animation* animationInterface);
 
-    protected: Animation getAnimationInterface();
+    protected: Animation* getAnimationInterface();
 
-    public: Animation getInitAnimationInterfaceP();
+    public: Animation* getInitAnimationInterfaceP();
 
-    public: void setInitAnimationInterfaceP(Animation initAnimationInterface);
+    public: void setInitAnimationInterfaceP(Animation* initAnimationInterface);
 
-    public: Animation getDestroyedAnimationInterface();
+    public: Animation* getDestroyedAnimationInterface();
 
-    public: AllBinaryLayer getOwnerLayerInterface();
+    public: AllBinaryLayer* getOwnerLayerInterface();
 
-    public: void setOwnerLayerInterface(AllBinaryLayer sourceLayerInterface);
+    public: void setOwnerLayerInterface(AllBinaryLayer* sourceLayerInterface);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: void paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics* graphics);
 
-    public: Movement getMovement();
+    public: Movement* getMovement();
 
-    public: void setMovement(Movement movement);
+    public: void setMovement(Movement* movement);
 
     public: int32_t getType();
 
     public: int32_t getMultiPlayerType();
 
-    public: void setWeaponPropertiesP(WeaponProperties weaponProperties);
+    public: void setWeaponPropertiesP(WeaponProperties* weaponProperties);
 
-    public: WeaponProperties getWeaponPropertiesP();
+    public: WeaponProperties* getWeaponPropertiesP();
 
     public: bool implmentsTickableInterface();
 
                 //@Throws(Exception.constructor)
             
-    public: void set(GL gl);
+    public: void set(GL* gl);
 
 };
 

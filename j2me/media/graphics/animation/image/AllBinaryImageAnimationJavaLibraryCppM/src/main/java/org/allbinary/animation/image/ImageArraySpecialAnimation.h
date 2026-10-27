@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -64,13 +70,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageArrayAnimation.h"
+        #include "org/allbinary/animation/image/ImageArrayAnimation.h"
 
 class ImageArraySpecialAnimation: public ImageArrayAnimation, public SpecialAnimationInterface {
 
-    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(270);
+    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(270);
 
-public: ImageArraySpecialAnimation(std::vector<Image> imageArray, AnimationBehavior animationBehavior);
+public: ImageArraySpecialAnimation(std::vector<Image*> imageArray, AnimationBehavior* animationBehavior);
 
     private: int32_t loopCount = 0;
 
@@ -86,7 +92,7 @@ public: ImageArraySpecialAnimation(std::vector<Image> imageArray, AnimationBehav
 
     public: bool isComplete();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
 };
 

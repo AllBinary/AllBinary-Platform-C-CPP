@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_INVENTORYITEMVIEWPARENTTAGHELPER_H
         #define ADMIN_TAGHELPERS_INVENTORYITEMVIEWPARENTTAGHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -69,21 +75,21 @@ class InventoryItemViewParentTagHelper
             : public Object
          {
 
-    private: static InventoryItemViewParentTagHelper instance() { return InventoryItemViewParentTagHelper(); }
+    private: static InventoryItemViewParentTagHelper* instance() { static std::unique_ptr<InventoryItemViewParentTagHelper> value(new InventoryItemViewParentTagHelper()); return value.get(); }
 
-    public: static InventoryItemViewParentTagHelper getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public: InventoryItemView getInventoryItemView(HelperTag inventoryTag);
+    public: static InventoryItemViewParentTagHelper* getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: DownloadableInventoryItemView getDownloadableInventoryItemView(HelperTag inventoryTag);
+    public: InventoryItemView* getInventoryItemView(HelperTag* inventoryTag);
 
                 //@Throws(Exception.constructor)
             
-    public: RequestMapInterface getRequestMapInterface(HelperTag inventoryTag);
+    public: DownloadableInventoryItemView* getDownloadableInventoryItemView(HelperTag* inventoryTag);
+
+                //@Throws(Exception.constructor)
+            
+    public: RequestMapInterface* getRequestMapInterface(HelperTag* inventoryTag);
 
                 //@Throws(Exception.constructor)
             

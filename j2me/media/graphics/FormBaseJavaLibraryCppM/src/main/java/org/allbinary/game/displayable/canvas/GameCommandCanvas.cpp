@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -195,54 +201,54 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MenuListener.h"
-#include "NoMenuInputProcessor.h"
-#include "BasicMenuInputProcessor.h"
-#include "ImmediateCommandFormInputProcessor.h"
+        #include "org/allbinary/game/displayable/canvas/MenuListener.h"
+#include "org/allbinary/game/displayable/canvas/NoMenuInputProcessor.h"
+#include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
+#include "org/allbinary/game/displayable/canvas/ImmediateCommandFormInputProcessor.h"
 
 class GameCommandCanvas: public MyCanvas, public MenuListener, public DisplayChangeEventListener, public UpdateMyFontInterface {
 
-    private: static const int32_t id = 0;
+    private: static inline const int32_t id = 0;
 
-    private: const Processor repaintProcessor = ScreenRepaintProcessorFactory::getInstance().create(this);
+    private: Processor* repaintProcessor = ScreenRepaintProcessorFactory::getInstance()->create(this);
 
-    protected: const GameInputStrings gameInputStrings = GameInputStrings::getInstance();
+    protected: GameInputStrings* gameInputStrings = GameInputStrings::getInstance();
 
-    protected: BasicColor foregroundBasicColor;
+    protected: BasicColor* foregroundBasicColor;
 
-    protected: BasicColor backgroundBasicColor;
+    protected: BasicColor* backgroundBasicColor;
 
-    protected: const InputToGameKeyMapping inputToGameKeyMapping = PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping();
+    protected: InputToGameKeyMapping* inputToGameKeyMapping = PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping();
 
-    protected: const GameKeyFactory gameKeyFactory = GameKeyFactory::getInstance();
+    protected: GameKeyFactory* gameKeyFactory = GameKeyFactory::getInstance();
 
-    private: const GameKeyEventFactory gameKeyEventFactory = GameKeyEventFactory::getInstance();
+    private: GameKeyEventFactory* gameKeyEventFactory = GameKeyEventFactory::getInstance();
 
-    private: const DownGameKeyEventHandler downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
+    private: DownGameKeyEventHandler* downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
 
-    private: const UpGameKeyEventHandler upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
+    private: UpGameKeyEventHandler* upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
 
-    public: RepaintBehavior repaintBehavior;
+    public: RepaintBehavior* repaintBehavior;
 
-    protected: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
+    protected: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
 
-    protected: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
+    protected: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
 
     protected: int32_t foregroundColor;
 
     protected: int32_t backgroundColor;
 
-    private: BasicMenuInputProcessor menuInputProcessor = NoMenuInputProcessor::getInstance();
+    private: BasicMenuInputProcessor* menuInputProcessor = NoMenuInputProcessor::getInstance();
 
-    private: Paintable menuPaintable = NullPaintable::getInstance();
+    private: Paintable* menuPaintable = NullPaintable::getInstance();
 
-    private: PaintableForm menuForm = PaintableForm::getNullPaintableForm();
+    private: PaintableForm* menuForm = PaintableForm::getNullPaintableForm();
 
-    private: bool isSingleKeyRepeatableProcessing = Features::getInstance().isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_REPEAT_PRESS);
+    private: bool isSingleKeyRepeatableProcessing = Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_REPEAT_PRESS);
 
     protected: int32_t fontHeight = 0;
 
-public: GameCommandCanvas(CommandListener cmdListener, std::string name, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : MyCanvas(name, CanvasStrings::getInstance().EMPTY_CHILD_NAME_LIST){
+public: GameCommandCanvas(CommandListener* cmdListener, std::string name, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : MyCanvas(name, CanvasStrings::getInstance()->EMPTY_CHILD_NAME_LIST){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -255,9 +261,9 @@ this->foregroundBasicColor= foregroundBasicColor;
     
 this->backgroundBasicColor= backgroundBasicColor;
     
-this->foregroundColor= this->foregroundBasicColor.intValue();
+this->foregroundColor= this->foregroundBasicColor->intValue();
     
-this->backgroundColor= this->backgroundBasicColor.intValue();
+this->backgroundColor= this->backgroundBasicColor->intValue();
     
 this->initCommands(cmdListener);
     
@@ -269,16 +275,16 @@ this->initCommands(cmdListener);
         try {
             this->initMenu();
     
-this->repaintProcessor.process();
+this->repaintProcessor->process();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -288,28 +294,28 @@ this->repaintProcessor.process();
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
         try {
             
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->logUtil.putF(StringMaker().append(this->commonStrings.START).append(this->canvasStrings.FD_WIDTH).appendint(MyFontProcessor::defaultCharWidth(font)).append(this->canvasStrings.FD_HEIGHT).appendint(font.getHeight()).toString(), this, this->canvasStrings.UPDATE_MEASUREMENT);
+this->logUtil.putF((new StringMaker())->append(this->commonStrings.START)->append(this->canvasStrings.FD_WIDTH)->appendint(MyFontProcessor::defaultCharWidth(font))->append(this->canvasStrings.FD_HEIGHT)->appendint(font->getHeight())->toString(), this, this->canvasStrings.UPDATE_MEASUREMENT);
     
-this->fontHeight= font.getHeight();
+this->fontHeight= font->getHeight();
     
 
-    Rectangle rectangle = this->createRectangle(this->menuForm.size());;
+    Rectangle* rectangle = this->createRectangle(this->menuForm->size());;
     
-this->menuForm.init(rectangle, FormTypeFactory::getInstance().VERTICAL_CENTER_FORM);
+this->menuForm->init(rectangle, FormTypeFactory::getInstance()->VERTICAL_CENTER_FORM);
     
 this->update();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->canvasStrings.ON_DISPLAY_CHANGE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->canvasStrings.ON_DISPLAY_CHANGE_EVENT, &e);
     
 }
 
@@ -318,24 +324,24 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject* eventObject){
+ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public: void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent){
-this->logUtil.putF(StringMaker().append(this->commonStrings.START).append(DisplayInfoSingleton::getInstance().toString()).toString(), this, this->canvasStrings.ON_DISPLAY_CHANGE_EVENT);
+    public: void onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent){
+this->logUtil.putF((new StringMaker())->append(this->commonStrings.START)->append(DisplayInfoSingleton::getInstance()->toString())->toString(), this, this->canvasStrings.ON_DISPLAY_CHANGE_EVENT);
     
 this->myFontProcessor= this->updateMyFontProcessor;
     
 }
 
 
-    public: void initCommands(CommandListener cmdListener){
+    public: void initCommands(CommandListener* cmdListener){
 this->removeAllCommands();
     
-this->addCommand(GameCommandsFactory::getInstance().CLOSE_AND_SHOW_GAME_CANVAS);
+this->addCommand(GameCommandsFactory::getInstance()->CLOSE_AND_SHOW_GAME_CANVAS);
     
 this->setCommandListener(cmdListener);
     
@@ -346,7 +352,7 @@ this->setCommandListener(cmdListener);
             
     protected: void initMenu(){
 
-    ScrollSelectionForm form = this->createForm();;
+    ScrollSelectionForm* form = this->createForm();;
     
 this->menuForm= form;
     
@@ -354,37 +360,37 @@ this->menuForm= form;
                         if(form != ScrollSelectionFormNoneFactory::getInstance())
                         
                                     {
-                                    this->setMenuInputProcessor(ImmediateCommandFormInputProcessor(BasicArrayListD(),  -1, this, form));
+                                    this->setMenuInputProcessor(new ImmediateCommandFormInputProcessor(new BasicArrayListD(),  -1, this, form));
     
-this->menuPaintable= FormPaintable(form);
+this->menuPaintable= new FormPaintable(form);
     
 
                                     }
                                 
-this->repaintBehavior.onChangeRepaint(this);
+this->repaintBehavior->onChangeRepaint(this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: ScrollSelectionForm createForm(){
+    public: ScrollSelectionForm* createForm(){
 
-    std::vector<ABCustomItem> items = CommandTextItemArrayFactory(AllCommandsVisitor()).getInstance(this->getCommandStack(), this->backgroundBasicColor, this->foregroundBasicColor);;
+    std::vector<ABCustomItem*> items = (new CommandTextItemArrayFactory(new AllCommandsVisitor()))->getInstance(this->getCommandStack(), this->backgroundBasicColor, this->foregroundBasicColor);;
     
 
-    Rectangle rectangle = this->createRectangle(items.size());;
+    Rectangle* rectangle = this->createRectangle(items.size());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CommandCurrentSelectionFormFactory::getInstance(StringUtil::getInstance().EMPTY_STRING, items, rectangle, FormTypeFactory::getInstance().VERTICAL_CENTER_FORM, 15, false, this->backgroundBasicColor, this->foregroundBasicColor);;
+                        return CommandCurrentSelectionFormFactory::getInstance(StringUtil::getInstance()->EMPTY_STRING, items, rectangle, FormTypeFactory::getInstance()->VERTICAL_CENTER_FORM, 15, false, this->backgroundBasicColor, this->foregroundBasicColor);;
     
 }
 
 
-    public: Rectangle createRectangle(int32_t size){
+    public: Rectangle* createRectangle(int32_t size){
 
     int32_t height = size *this->fontHeight;;
     
@@ -392,10 +398,10 @@ this->repaintBehavior.onChangeRepaint(this);
     int32_t startY = (this->displayInfo.getLastHeight() *2 /3) -height;;
     
 
-    PointFactory pointFactory = PointFactory::getInstance();;
+    PointFactory* pointFactory = PointFactory::getInstance();;
     
 
-    Rectangle rectangle = Rectangle(pointFactory.createXY(30, startY), this->displayInfo.getLastWidth() -30, startY);;
+    Rectangle* rectangle = new Rectangle(pointFactory->createXY(30, startY), this->displayInfo.getLastWidth() -30, startY);;
     
 
 
@@ -409,11 +415,11 @@ this->repaintBehavior.onChangeRepaint(this);
     public: void open(){
 this->logUtil.putF(this->commonStrings.START, this, "open");
     
-BasicMotionGesturesHandler::getInstance().addListenerInterface(this->getMenuInputProcessor());
+BasicMotionGesturesHandler::getInstance()->addListenerInterface(this->getMenuInputProcessor());
     
-GameKeyEventHandler::getInstance().addListener(this->getMenuInputProcessor());
+GameKeyEventHandler::getInstance()->addListener(this->getMenuInputProcessor());
     
-DisplayChangeEventHandler::getInstance().addListenerInterface(this);
+DisplayChangeEventHandler::getInstance()->addListenerInterface(this);
     
 }
 
@@ -421,11 +427,11 @@ DisplayChangeEventHandler::getInstance().addListenerInterface(this);
     public: void close(){
 this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CLOSE);
     
-BasicMotionGesturesHandler::getInstance().removeListener(this->getMenuInputProcessor());
+BasicMotionGesturesHandler::getInstance()->removeListener(this->getMenuInputProcessor());
     
-GameKeyEventHandler::getInstance().removeListener(this->getMenuInputProcessor());
+GameKeyEventHandler::getInstance()->removeListener(this->getMenuInputProcessor());
     
-DisplayChangeEventHandler::getInstance().removeListener(this);
+DisplayChangeEventHandler::getInstance()->removeListener(this);
     
 }
 
@@ -433,7 +439,7 @@ DisplayChangeEventHandler::getInstance().removeListener(this);
                 //@Throws(Exception.constructor)
             
     public: void update(){
-this->repaintProcessor.process();
+this->repaintProcessor->process();
     
 }
 
@@ -467,7 +473,7 @@ this->keyRepeatedByDevice(keyCode, 0);
 
 
     public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId){
-this->logUtil.putF(StringMaker().append(CommonSeps::getInstance().SPACE).appendint(keyCode).toString(), this, this->gameInputStrings.KEY_PRESSED);
+this->logUtil.putF((new StringMaker())->append(CommonSeps::getInstance()->SPACE)->appendint(keyCode)->toString(), this, this->gameInputStrings->KEY_PRESSED);
     
 this->addGameKeyEvent(keyCode, 0, false);
     
@@ -497,33 +503,33 @@ this->removeGameKeyEvent(keyCode, deviceId, false);
 
         try {
             
-    GameKey gameKey = this->inputToGameKeyMapping.getInstanceForCanvas(this, keyCode);;
+    GameKey* gameKey = this->inputToGameKeyMapping->getInstanceForCanvas(this, keyCode);;
     
 
-                        if(gameKey != this->gameKeyFactory.NONE)
+                        if(gameKey != this->gameKeyFactory->NONE)
                         
                                     {
                                     
-    GameKeyEvent gameKeyEvent = this->gameKeyEventFactory.getInstanceForInput(this, gameKey);;
+    GameKeyEvent* gameKeyEvent = this->gameKeyEventFactory->getInstanceForInput(this, gameKey);;
     
-this->downGameKeyEventHandler.fireEvent(gameKeyEvent);
+this->downGameKeyEventHandler->fireEvent(gameKeyEvent);
     
-this->downGameKeyEventHandler.getInstanceForDevice(deviceId).fireEvent(gameKeyEvent);
+this->downGameKeyEventHandler->getInstanceForDevice(deviceId)->fireEvent(gameKeyEvent);
     
 
                                     }
                                 
                         else {
-                            this->logUtil.putF(StringMaker().append(this->gameInputStrings.NO_KEY).appendint(keyCode).toString(), this, this->gameInputStrings.ADD_KEY_EVENT);
+                            this->logUtil.putF((new StringMaker())->append(this->gameInputStrings->NO_KEY)->appendint(keyCode)->toString(), this, this->gameInputStrings->ADD_KEY_EVENT);
     
 
                         }
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put("Key Event Error", this, this->gameInputStrings.ADD_KEY_EVENT, e);
+this->logUtil.put("Key Event Error", this, this->gameInputStrings->ADD_KEY_EVENT, &e);
     
 }
 
@@ -534,56 +540,56 @@ this->logUtil.put("Key Event Error", this, this->gameInputStrings.ADD_KEY_EVENT,
 
         try {
             
-    GameKey gameKey = this->inputToGameKeyMapping.getInstanceForCanvas(this, keyCode);;
+    GameKey* gameKey = this->inputToGameKeyMapping->getInstanceForCanvas(this, keyCode);;
     
 
-                        if(gameKey != this->gameKeyFactory.NONE)
+                        if(gameKey != this->gameKeyFactory->NONE)
                         
                                     {
                                     
-    GameKeyEvent gameKeyEvent = this->gameKeyEventFactory.getInstanceForInput(this, gameKey);;
+    GameKeyEvent* gameKeyEvent = this->gameKeyEventFactory->getInstanceForInput(this, gameKey);;
     
-this->upGameKeyEventHandler.fireEvent(gameKeyEvent);
+this->upGameKeyEventHandler->fireEvent(gameKeyEvent);
     
-this->upGameKeyEventHandler.getInstanceForDevice(deviceId).fireEvent(gameKeyEvent);
+this->upGameKeyEventHandler->getInstanceForDevice(deviceId)->fireEvent(gameKeyEvent);
     
 
                                     }
                                 
                         else {
-                            this->logUtil.putF(StringMaker().append(this->gameInputStrings.NO_KEY).appendint(keyCode).toString(), this, this->gameInputStrings.REMOVE_KEY_EVENT);
+                            this->logUtil.putF((new StringMaker())->append(this->gameInputStrings->NO_KEY)->appendint(keyCode)->toString(), this, this->gameInputStrings->REMOVE_KEY_EVENT);
     
 
                         }
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put("Key Event Error", this, this->gameInputStrings.REMOVE_KEY_EVENT, e);
+this->logUtil.put("Key Event Error", this, this->gameInputStrings->REMOVE_KEY_EVENT, &e);
     
 }
 
 }
 
 
-    public: void paint(Graphics graphics){
-this->myFontProcessor.process(graphics);
+    public: void paint(Graphics* graphics){
+this->myFontProcessor->process(graphics);
     
-this->menuPaintable.paint(graphics);
+this->menuPaintable->paint(graphics);
     
-this->repaintBehavior.repaint(this);
+this->repaintBehavior->repaint(this);
     
 }
 
 
-    private: void setMenuInputProcessor(BasicMenuInputProcessor menuInputProcessor){
+    private: void setMenuInputProcessor(BasicMenuInputProcessor* menuInputProcessor){
 this->menuInputProcessor= menuInputProcessor;
     
 }
 
 
-    protected: BasicMenuInputProcessor getMenuInputProcessor(){
+    protected: BasicMenuInputProcessor* getMenuInputProcessor(){
 
 
 

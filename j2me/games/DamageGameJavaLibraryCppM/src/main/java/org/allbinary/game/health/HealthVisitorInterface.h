@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHVISITORINTERFACE_H
         #define ORG_ALLBINARY_GAME_HEALTH_HEALTHVISITORINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,11 +45,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HealthInterface.h"
+        #include "org/allbinary/game/health/HealthInterface.h"
 
 class HealthVisitorInterface {
 
-    void visit(HealthInterface healthInterface);
+    public: virtual void visit(HealthInterface* healthInterface) = 0;
 
 };
 

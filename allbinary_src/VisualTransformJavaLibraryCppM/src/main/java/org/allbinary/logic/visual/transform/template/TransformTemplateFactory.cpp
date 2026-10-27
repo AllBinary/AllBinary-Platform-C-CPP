@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,15 +70,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformTemplateInterface.h"
+        #include "org/allbinary/logic/visual/transform/template/TransformTemplateInterface.h"
 
 class TransformTemplateFactory
             : public Object
          {
 
-    private: static TransformTemplateFactory instance() { return TransformTemplateFactory(); }
+    private: static TransformTemplateFactory* instance() { static std::unique_ptr<TransformTemplateFactory> value(new TransformTemplateFactory()); return value.get(); }
 
-    public: static TransformTemplateFactory getInstance(){
+    public: static TransformTemplateFactory* getInstance(){
 
 
 
@@ -82,7 +88,7 @@ class TransformTemplateFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: TransformTemplateFactory(){
 }
@@ -90,33 +96,33 @@ private: TransformTemplateFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: TransformTemplateInterface getInstance(AbeClientInformationInterface abeClientInformation, std::string templateName, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
+    public: TransformTemplateInterface* getInstance(AbeClientInformationInterface* abeClientInformation, std::string templateName, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
 
         try {
             
-    TransformInfoEntity transformInfoEntity = TransformInfoEntityBuilder::getInstance();;
+    TransformInfoEntity* transformInfoEntity = TransformInfoEntityBuilder::getInstance();;
     
 
-    TransformInfoInterface transformInfoInterface = transformInfoEntity.get(templateName, propertiesHashMap, pageContext);;
+    TransformInfoInterface* transformInfoInterface = transformInfoEntity->get(templateName, propertiesHashMap, pageContext);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoObjectFactory::getInstance().getInstance(abeClientInformation, transformInfoInterface);
+                        return dynamic_cast<TransformTemplateInterface*>(TransformInfoObjectFactory::getInstance()->getInstance(abeClientInformation, transformInfoInterface));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed To Get Instance";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put(error +templateName +"->TemplateFactory", this, "getInstance(viewName, HashMap, PageContext)", e);
+                                    this->logUtil->put(error +templateName +"->TemplateFactory", this, "getInstance(viewName, HashMap, PageContext)", &e);
     
 
                                     }

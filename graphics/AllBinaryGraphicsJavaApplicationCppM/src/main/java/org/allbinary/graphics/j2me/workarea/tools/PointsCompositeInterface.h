@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSCOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSCOMPOSITEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,11 +45,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PointsInterface.h"
+        #include "org/allbinary/graphics/j2me/workarea/tools/PointsInterface.h"
 
 class PointsCompositeInterface {
 
-    PointsInterface getPointsInterface();
+    public: virtual PointsInterface* getPointsInterface() = 0;
 
 };
 

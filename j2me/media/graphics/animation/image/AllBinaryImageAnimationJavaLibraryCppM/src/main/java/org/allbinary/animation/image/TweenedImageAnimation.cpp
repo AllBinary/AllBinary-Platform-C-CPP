@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Throwable.h"
         
             #include "java/lang/Exception.h"
@@ -69,7 +75,7 @@
         
 class TweenedImageAnimation: public IndexedAnimation {
 
-    private: Image image;
+    private: Image* image;
 
     private: int32_t dx;
 
@@ -77,9 +83,9 @@ class TweenedImageAnimation: public IndexedAnimation {
 
     private: int32_t totalFrames;
 
-    protected: CircularIndexUtil circularIndexUtil;
+    protected: CircularIndexUtil* circularIndexUtil;
 
-public: TweenedImageAnimation(Image image, int32_t dx, int32_t dy, int32_t totalFrames, AnimationBehavior animationBehavior) : IndexedAnimation(animationBehavior){
+public: TweenedImageAnimation(Image* image, int32_t dx, int32_t dy, int32_t totalFrames, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -112,19 +118,19 @@ this->circularIndexUtil= CircularIndexUtil::createInstance(this->totalFrames);
 
 
     public: void nextFrame(){
-this->circularIndexUtil.next();
+this->circularIndexUtil->next();
     
 }
 
 
     public: void previousFrame(){
-this->circularIndexUtil.previous();
+this->circularIndexUtil->previous();
     
 }
 
 
     public: void setFrame(int32_t index){
-this->circularIndexUtil.setIndex(index);
+this->circularIndexUtil->setIndex(index);
     
 }
 
@@ -134,7 +140,7 @@ this->circularIndexUtil.setIndex(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->circularIndexUtil.getIndex();;
+                        return this->circularIndexUtil->getIndex();;
     
 }
 
@@ -165,7 +171,7 @@ this->circularIndexUtil.setIndex(index);
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 
     int32_t frame = this->getFrame();;
     
@@ -175,13 +181,13 @@ this->circularIndexUtil.setIndex(index);
 
     int32_t currentY = this->dy *frame;;
     
-graphics.drawImage(this->image, x +currentX, y +currentY, this->anchor);
+graphics->drawImage(this->image, x +currentX, y +currentY, this->anchor);
     
 }
 
 
     public: void close(){
-DisposalUtil::getInstance().disposeImage(this->image);
+DisposalUtil::getInstance()->disposeImage(this->image);
     
 }
 
@@ -189,7 +195,7 @@ DisposalUtil::getInstance().disposeImage(this->image);
                 //@Throws(Throwable.constructor)
             
     protected: void finalize(){
-DisposalUtil::getInstance().disposeImage(this->image);
+DisposalUtil::getInstance()->disposeImage(this->image);
     
 }
 

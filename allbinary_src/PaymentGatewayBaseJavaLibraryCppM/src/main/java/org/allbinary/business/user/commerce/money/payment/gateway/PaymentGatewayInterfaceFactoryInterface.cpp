@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -41,13 +47,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentGatewayInterface.h"
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h"
 
 class PaymentGatewayInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    PaymentGatewayInterface getInstance(HashMap<Object*, Object*> hashMap)
+    public: virtual PaymentGatewayInterface* getInstance(HashMap<Object*, Object*>* hashMap) = 0;
 
 };
 

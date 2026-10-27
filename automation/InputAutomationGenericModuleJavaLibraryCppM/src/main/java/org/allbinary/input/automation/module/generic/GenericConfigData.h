@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICCONFIGDATA_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICCONFIGDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,17 +52,17 @@ class GenericConfigData
             : public Object
          {
 
-    public: static std::string RELATIVE_PATH = "./";
+    public: static inline std::string RELATIVE_PATH = "./";
 
-    public: static std::string CONFIG_PATH = "modules/configs/";
+    public: static inline std::string CONFIG_PATH = "modules/configs/";
 
-    public: static std::string MODULE_RELATIVE_PATH = GenericConfigData::RELATIVE_PATH +GenericConfigData::CONFIG_PATH +"allbinary/input/automation/module/";
+    public: static inline std::string MODULE_RELATIVE_PATH = GenericConfigData::RELATIVE_PATH +GenericConfigData::CONFIG_PATH +"allbinary/input/automation/module/";
 
-    public: static std::string GAME_MODULE_RELATIVE_PATH = GenericConfigData::MODULE_RELATIVE_PATH +"game/";
+    public: static inline std::string GAME_MODULE_RELATIVE_PATH = GenericConfigData::MODULE_RELATIVE_PATH +"game/";
 
-    public: static std::string MMO_GAME_MODULE_RELATIVE_PATH = GenericConfigData::GAME_MODULE_RELATIVE_PATH +"mmog/";
+    public: static inline std::string MMO_GAME_MODULE_RELATIVE_PATH = GenericConfigData::GAME_MODULE_RELATIVE_PATH +"mmog/";
 
-    public: static std::string FREE_MMO_GAME_MODULE_RELATIVE_PATH = "free/";
+    public: static inline std::string FREE_MMO_GAME_MODULE_RELATIVE_PATH = "free/";
 
 private: GenericConfigData();
 

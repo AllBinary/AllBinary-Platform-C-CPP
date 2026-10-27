@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -49,12 +55,12 @@ class SimpleWeaponProperties
 
     private: int32_t range= 0;
 
-    public: void set(SimpleWeaponProperties simpleWeaponProperties){
-this->setDamage(simpleWeaponProperties.getDamage());
+    public: void set(SimpleWeaponProperties* simpleWeaponProperties){
+this->setDamage(simpleWeaponProperties->getDamage());
     
-this->setDissipation(simpleWeaponProperties.getDissipation());
+this->setDissipation(simpleWeaponProperties->getDissipation());
     
-this->setRange(simpleWeaponProperties.getRange());
+this->setRange(simpleWeaponProperties->getRange());
     
 }
 

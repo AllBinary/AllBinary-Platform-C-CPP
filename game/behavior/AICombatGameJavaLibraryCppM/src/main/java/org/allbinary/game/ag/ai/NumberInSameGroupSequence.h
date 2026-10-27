@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -53,29 +59,29 @@ class NumberInSameGroupSequence
             : public Object
          {
 
-    public: static NumberInSameGroupSequence getInstance();
+    public: static NumberInSameGroupSequence* getInstance();
 
-    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_ZERO;
+    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_ZERO;
 
-    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_ONE;
+    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_ONE;
 
-    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_TWO;
+    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_TWO;
 
-    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_THREE;
+    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_THREE;
 
-    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_FOUR;
+    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_FOUR;
 
-    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_FIVE;
+    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_FIVE;
 
-    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_SIX;
+    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_SIX;
 
-    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_SEVEN;
+    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_SEVEN;
 
-    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_EIGHT;
+    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_EIGHT;
 
-    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_NINE;
+    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_NINE;
 
-    public: std::vector<Integer> NUMBER_ON_SAME_TEAM_SEQUENCE;
+    public: std::vector<int32_t> NUMBER_ON_SAME_TEAM_SEQUENCE;
 
 private: NumberInSameGroupSequence();
 

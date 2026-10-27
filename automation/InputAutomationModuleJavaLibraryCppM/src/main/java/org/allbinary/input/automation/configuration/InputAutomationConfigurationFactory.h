@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_CONFIGURATION_INPUTAUTOMATIONCONFIGURATIONFACTORY_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_CONFIGURATION_INPUTAUTOMATIONCONFIGURATIONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -76,19 +82,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputAutomationConfiguration.h"
+        #include "org/allbinary/input/automation/configuration/InputAutomationConfiguration.h"
 
 class InputAutomationConfigurationFactory
             : public Object
          {
 
-    private: static InputAutomationConfigurationFactory instance() { return InputAutomationConfigurationFactory(); }
+    private: static InputAutomationConfigurationFactory* instance() { static std::unique_ptr<InputAutomationConfigurationFactory> value(new InputAutomationConfigurationFactory()); return value.get(); }
 
-    public: static InputAutomationConfigurationFactory getInstance();
+    public: static InputAutomationConfigurationFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: InputAutomationConfiguration inputAutomationConfiguration = 
+    public: InputAutomationConfiguration* inputAutomationConfiguration = 
                 nullptr
             ;
 
@@ -96,7 +102,7 @@ private: InputAutomationConfigurationFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: void init(AbeClientInformationInterface abeClientInformation);
+    public: void init(AbeClientInformationInterface* abeClientInformation);
 
 };
 

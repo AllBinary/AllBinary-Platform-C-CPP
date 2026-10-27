@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -38,14 +44,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ItemPaintable.h"
-#include "PaintableForm.h"
+        #include "org/allbinary/graphics/form/ItemPaintable.h"
+#include "org/allbinary/graphics/form/PaintableForm.h"
 
 class ItemPaintableFactory: public ItemPaintable {
 
-    private: static ItemPaintableFactory instance() { return ItemPaintableFactory(); }
+    private: static ItemPaintableFactory* instance() { static std::unique_ptr<ItemPaintableFactory> value(new ItemPaintableFactory()); return value.get(); }
 
-    public: static ItemPaintableFactory getInstance(){
+    public: static ItemPaintableFactory* getInstance(){
 
 
 
@@ -57,7 +63,7 @@ class ItemPaintableFactory: public ItemPaintable {
 
                 //@Throws(Exception.constructor)
             
-    public: ItemPaintable getInstanceItemPaintable(PaintableForm paintableForm){
+    public: ItemPaintable* getInstanceItemPaintable(PaintableForm* paintableForm){
 
 
 

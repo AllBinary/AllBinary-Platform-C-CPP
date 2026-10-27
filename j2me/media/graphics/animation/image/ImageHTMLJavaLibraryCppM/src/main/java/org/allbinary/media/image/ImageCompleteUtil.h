@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,31 +69,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Hashtable.h"
+        #include "org/allbinary/media/image/Hashtable.h"
 
 class ImageCompleteUtil
             : public Object
          {
 
-    private: static ImageCompleteUtil instance() { return ImageCompleteUtil(); }
+    private: static ImageCompleteUtil* instance() { static std::unique_ptr<ImageCompleteUtil> value(new ImageCompleteUtil()); return value.get(); }
 
-    public: static ImageCompleteUtil getInstance();
+    public: static ImageCompleteUtil* getInstance();
 
-    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(18000);
+    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(18000);
 
-    private: const TimeDelayHelper allTimeDelayHelper = TimeDelayHelper(120000);
-
-                //@Throws(Exception.constructor)
-            
-    public: void waitForImage(Image image, std::string name);
+    private: TimeDelayHelper* allTimeDelayHelper = new TimeDelayHelper(120000);
 
                 //@Throws(Exception.constructor)
             
-    public: bool isReady(Image image, std::string name, TimeDelayHelper timeDelayHelper);
+    public: void waitForImage(Image* image, std::string name);
 
                 //@Throws(Exception.constructor)
             
-    private: void waitForATime(Image image, std::string name, TimeDelayHelper timeDelayHelper);
+    public: bool isReady(Image* image, std::string name, TimeDelayHelper* timeDelayHelper);
+
+                //@Throws(Exception.constructor)
+            
+    private: void waitForATime(Image* image, std::string name, TimeDelayHelper* timeDelayHelper);
 
                 //@Throws(Exception.constructor)
             

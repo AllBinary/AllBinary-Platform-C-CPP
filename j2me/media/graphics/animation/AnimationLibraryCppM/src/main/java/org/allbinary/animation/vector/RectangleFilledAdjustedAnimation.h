@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTOR_RECTANGLEFILLEDADJUSTEDANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_VECTOR_RECTANGLEFILLEDADJUSTEDANIMATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -48,7 +54,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RectangleFilledAnimation.h"
+        #include "org/allbinary/animation/vector/RectangleFilledAnimation.h"
 
 class RectangleFilledAdjustedAnimation: public RectangleFilledAnimation, public ColorCompositeInterface {
 
@@ -56,11 +62,11 @@ class RectangleFilledAdjustedAnimation: public RectangleFilledAnimation, public 
 
     private: int32_t offsetY;
 
-public: RectangleFilledAdjustedAnimation(int32_t width, int32_t height, int32_t offsetX, int32_t offsetY, BasicColor basicColor);
+public: RectangleFilledAdjustedAnimation(int32_t width, int32_t height, int32_t offsetX, int32_t offsetY, BasicColor* basicColor);
 
     public: void nextFrame();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
     public: void setOffsetX(int32_t offsetX);
 

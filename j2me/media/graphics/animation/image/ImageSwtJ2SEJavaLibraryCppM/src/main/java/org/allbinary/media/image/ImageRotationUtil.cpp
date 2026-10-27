@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,15 +70,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageSwtRotationUtil.h"
+        #include "org/allbinary/media/image/ImageSwtRotationUtil.h"
 
 class ImageRotationUtil
             : public Object
          {
 
-    private: static ImageRotationUtil instance() { return ImageRotationUtil(); }
+    private: static ImageRotationUtil* instance() { static std::unique_ptr<ImageRotationUtil> value(new ImageRotationUtil()); return value.get(); }
 
-    public: static ImageRotationUtil getInstance(){
+    public: static ImageRotationUtil* getInstance(){
 
 
 
@@ -82,30 +88,30 @@ class ImageRotationUtil
 }
 
 
-    private: const ImageSwtRotationUtil imageSwtRotationUtil = ImageSwtRotationUtil::getInstance();
+    private: ImageSwtRotationUtil* imageSwtRotationUtil = ImageSwtRotationUtil::getInstance();
 
 private: ImageRotationUtil(){
 }
 
 
-    private: const Features features = Features::getInstance();
+    private: Features* features = Features::getInstance();
 
-    public: void rotateImage(Image originalImage, Image image, int32_t totalAngle){
+    public: void rotateImage(Image* originalImage, Image* image, int32_t totalAngle){
 
-    Image originalImage2 = originalImage;;
+    Image* originalImage2 = originalImage;;
     
 
-                        if(this->features.isFeature(OpenGLFeatureFactory::getInstance().OPENGL))
+                        if(this->features->isFeature(OpenGLFeatureFactory::getInstance()->OPENGL))
                         
                                     {
                                     
-                        if(image.getType() >= OpenGLESImage::TYPE)
+                        if(image->getType() >= OpenGLESImage::TYPE)
                         
                                     {
                                     
-    OpenGLESImage openGLESImage = (image);;
+    OpenGLESImage* openGLESImage = (dynamic_cast<OpenGLESImage*>(image));;
     
-openGLESImage.openGLESImageProperties.angle= totalAngle;
+openGLESImage->openGLESImageProperties.angle= totalAngle;
     
 
 
@@ -117,7 +123,7 @@ openGLESImage.openGLESImageProperties.angle= totalAngle;
                                     }
                                 
                         else {
-                            PreLogUtil::put("OpenGL but image is: " +image +" type: " +image.getType(), this, "rotateImage");
+                            PreLogUtil::put("OpenGL but image is: " +image +" type: " +image->getType(), this, "rotateImage");
     
 
                         }
@@ -126,36 +132,36 @@ openGLESImage.openGLESImageProperties.angle= totalAngle;
                                     }
                                 
 
-    org::eclipse::swt::graphics::Image originalSwtImage = (originalImage2.getImage());;
+    org::eclipse::swt::graphics::Image* originalSwtImage = (dynamic_cast<org::eclipse::swt::graphics::Image*>(originalImage2->getImage()));;
     
 
-    GC gc = 
+    GC* gc = 
                 null
             ;;
     
 
-    org::eclipse::swt::graphics::Image copySwtImage = 
+    org::eclipse::swt::graphics::Image* copySwtImage = 
                 null
             ;;
     
 
-                        if(image.isMutable())
+                        if(image->isMutable())
                         
                                     {
                                     
-    SwtMutableImage swtImage = image;;
+    SwtMutableImage* swtImage = dynamic_cast<SwtMutableImage*>(image);;
     
-copySwtImage= swtImage.getImage();
+copySwtImage= dynamic_cast<org::eclipse::swt::graphics::Image*>(swtImage->getImage());
     
-gc= swtImage.getGc();
+gc= swtImage->getGc();
     
-this->imageSwtRotationUtil.rotateImage(originalSwtImage, copySwtImage, gc, totalAngle);
+this->imageSwtRotationUtil->rotateImage(originalSwtImage, copySwtImage, gc, totalAngle);
     
 
                                     }
                                 
                         else {
-                            PreLogUtil::put("No rotation for: " +image.toString(), this, "rotateImage");
+                            PreLogUtil::put("No rotation for: " +image->toString(), this, "rotateImage");
     
 
                         }
@@ -165,7 +171,7 @@ this->imageSwtRotationUtil.rotateImage(originalSwtImage, copySwtImage, gc, total
 
                 //@Throws(Exception.constructor)
             
-    public: Image createRotatedImage(Image originalImage, int32_t rotationInDegrees){
+    public: Image* createRotatedImage(Image* originalImage, int32_t rotationInDegrees){
 
 
 

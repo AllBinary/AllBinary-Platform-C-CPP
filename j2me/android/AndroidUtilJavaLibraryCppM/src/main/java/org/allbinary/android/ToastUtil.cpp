@@ -6,6 +6,12 @@
 
             #include <hilog/log.h>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -50,9 +56,9 @@ class ToastUtil
             : public Object
          {
 
-    private: static ToastUtil instance() { return ToastUtil(); }
+    private: static ToastUtil* instance() { static std::unique_ptr<ToastUtil> value(new ToastUtil()); return value.get(); }
 
-    public: static ToastUtil getInstance(){
+    public: static ToastUtil* getInstance(){
 
 
 
@@ -62,14 +68,14 @@ class ToastUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: void makeToast(View view, Context context, std::string message, int32_t time){
+    public: void makeToast(View* view, Context* context, std::string message, int32_t time){
 
 //inner=true member= isStatic=
 class MakeToast
             : public Object
-        : public Runnable {
+        , public Runnable {
 
     std::string string;
 
@@ -81,20 +87,20 @@ this->string= string;
 
     public: void run(){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
         try {
-            Toast::makeText(context, this->string, time).show();
+            Toast::makeText(context, this->string, time)->show();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
+logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
     
 }
 
@@ -104,7 +110,7 @@ logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
 };
 
             
-view.post(MakeToast(message));
+view->post(new MakeToast(message));
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -89,13 +95,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DownloadableInventoryItemView.h"
+        #include "views/admin/inventory/download/DownloadableInventoryItemView.h"
 
 class DeleteFileValidationView: public DownloadableInventoryItemView, public ValidationComponentInterface {
 
     private: std::string downloadItemId;
 
-public: DeleteFileValidationView(TransformInfoInterface transformInfoInterface) : DownloadableInventoryItemView(transformInfoInterface, StringUtil::getInstance().EMPTY_STRING){
+public: DeleteFileValidationView(TransformInfoInterface* transformInfoInterface) : DownloadableInventoryItemView(transformInfoInterface, StringUtil::getInstance()->EMPTY_STRING){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -111,7 +117,7 @@ this->getFormData();
             
     public: void getFormData(){
 
-    HashMap<Object*, Object*> hashMap = RequestParams(request).toHashMap();;
+    HashMap<Object*, Object*>* hashMap = (new RequestParams(request))->toHashMap();;
     
 
                         if(hashMap == 
@@ -122,25 +128,25 @@ this->getFormData();
                                     
 
 
-                            throw Exception("No Request Params Found");
+                            throw new Exception("No Request Params Found");
                     
 
                                     }
                                 
-this->id= hashMap.get(basicItemData.ID);
+this->id= hashMap->get(basicItemData.ID);
     
-this->downloadItemId= hashMap.get(DownloadItemData::ID);
+this->downloadItemId= hashMap->get(DownloadItemData::ID);
     
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
                         if(id == 
                                     nullptr
-                                 || !StringValidationUtil::getInstance().isNumber(this->id))
+                                 || !StringValidationUtil::getInstance()->isNumber(this->id))
                         
                                     {
                                     
@@ -153,9 +159,9 @@ this->downloadItemId= hashMap.get(DownloadItemData::ID);
                                     }
                                 
 
-    InventoryEntity inventoryEntity = InventoryEntityFactory::getInstance().getInventoryEntityInstance();;
+    InventoryEntity* inventoryEntity = InventoryEntityFactory::getInstance()->getInventoryEntityInstance();;
     
-this->itemInterface= inventoryEntity.getItem(this->id);
+this->itemInterface= inventoryEntity->getItem(this->id);
     
 
                         if(this->itemInterface == 
@@ -173,13 +179,13 @@ this->itemInterface= inventoryEntity.getItem(this->id);
                                     }
                                 
 
-    DownloadItemsEntity downloadItemsEntity = DownloadItemsEntityFactory::getInstance().getDownloadItemsEntityInstance();;
+    DownloadItemsEntity* downloadItemsEntity = DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance();;
     
 
-    BasicArrayList vector = downloadItemsEntity.getForItem(this->id, this->downloadItemId);;
+    BasicArrayList* vector = downloadItemsEntity->getForItem(this->id, this->downloadItemId);;
     
 
-                        if(vector.size() != 1)
+                        if(vector->size() != 1)
                         
                                     {
                                     
@@ -199,7 +205,7 @@ this->itemInterface= inventoryEntity.getItem(this->id);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -212,7 +218,7 @@ this->itemInterface= inventoryEntity.getItem(this->id);
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -222,7 +228,7 @@ this->itemInterface= inventoryEntity.getItem(this->id);
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -236,50 +242,50 @@ this->itemInterface= inventoryEntity.getItem(this->id);
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
                         if(this->id == 
                                     nullptr
-                                 || !StringValidationUtil::getInstance().isNumber(this->id))
+                                 || !StringValidationUtil::getInstance()->isNumber(this->id))
                         
                                     {
-                                    stringBuffer.append("Id is not valid.<br />");
+                                    stringBuffer->append("Id is not valid.<br />");
     
 
                                     }
                                 
 
-                        if(InventoryEntityFactory::getInstance().getInventoryEntityInstance().getItem(this->id) == 
+                        if(InventoryEntityFactory::getInstance()->getInventoryEntityInstance()->getItem(this->id) == 
                                     nullptr
                                 )
                         
                                     {
-                                    stringBuffer.append("Item does not exist.<br />");
+                                    stringBuffer->append("Item does not exist.<br />");
     
 
                                     }
                                 
 
-    DownloadItemsEntity downloadItemsEntity = DownloadItemsEntityFactory::getInstance().getDownloadItemsEntityInstance();;
+    DownloadItemsEntity* downloadItemsEntity = DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance();;
     
 
-    BasicArrayList vector = downloadItemsEntity.getForItem(this->id, this->downloadItemId);;
+    BasicArrayList* vector = downloadItemsEntity->getForItem(this->id, this->downloadItemId);;
     
 
-                        if(vector.size() == 0)
+                        if(vector->size() == 0)
                         
                                     {
-                                    stringBuffer.append("DownloadItem does not exist.<br />");
+                                    stringBuffer->append("DownloadItem does not exist.<br />");
     
 
                                     }
                                 
 
-                        if(vector.size() > 1)
+                        if(vector->size() > 1)
                         
                                     {
-                                    stringBuffer.append("To Many DownloadItems exist.<br />");
+                                    stringBuffer->append("To Many DownloadItems exist.<br />");
     
 
                                     }
@@ -288,11 +294,11 @@ this->itemInterface= inventoryEntity.getItem(this->id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 

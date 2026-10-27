@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -39,21 +45,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MyFontProcessor.h"
-#include "UpdateMyFontInterface.h"
+        #include "org/allbinary/graphics/font/MyFontProcessor.h"
+#include "org/allbinary/graphics/font/UpdateMyFontInterface.h"
 
 class UpdateMyFontProcessor: public MyFontProcessor {
 
-    private: UpdateMyFontInterface updateMeasurementProcessor;
+    private: UpdateMyFontInterface* updateMeasurementProcessor;
 
-public: UpdateMyFontProcessor(UpdateMyFontInterface keyValueDrawCharArray){
+public: UpdateMyFontProcessor(UpdateMyFontInterface* keyValueDrawCharArray){
 this->updateMeasurementProcessor= keyValueDrawCharArray;
     
 }
 
 
-    public: void process(Graphics graphics){
-this->updateMeasurementProcessor.updateMeasurement(graphics);
+    public: void process(Graphics* graphics){
+this->updateMeasurementProcessor->updateMeasurement(graphics);
     
 }
 

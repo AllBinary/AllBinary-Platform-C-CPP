@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Thread.h"
@@ -40,15 +46,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RunnableInterface.h"
+        #include "org/allbinary/thread/RunnableInterface.h"
 
 class ABRunnable
             : public Object
-        : public RunnableInterface {
+        , public RunnableInterface {
 
     private: bool running = false;
 
-    public: void setThread(Thread thread){
+    public: void setThread(Thread* thread){
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.

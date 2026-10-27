@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORCOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORCOMPOSITEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -45,12 +51,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicColorCompositeSetterInterface.h"
-#include "BasicColor.h"
+        #include "org/allbinary/graphics/color/BasicColorCompositeSetterInterface.h"
+#include "org/allbinary/graphics/color/BasicColor.h"
 
 class ColorCompositeInterface: public BasicColorCompositeSetterInterface {
 
-    BasicColor getBasicColorP();
+    public: virtual BasicColor* getBasicColorP() = 0;
 
 };
 

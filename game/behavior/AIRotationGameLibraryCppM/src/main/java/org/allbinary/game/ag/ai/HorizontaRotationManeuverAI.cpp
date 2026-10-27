@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -91,17 +97,17 @@
         
 class HorizontaRotationManeuverAI: public BasicAI, public ArtificialIntelligenceTransitionInterface {
 
-    private: const CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstanceAt(10, Integer::MAX_VALUE);
+    private: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::createInstanceAt(10, Integer.MAX_VALUE);
 
     private: int32_t currentSpeedDivisor = 5;
 
-    private: IndexedAnimation rotationAnimationInterface;
+    private: IndexedAnimation* rotationAnimationInterface;
 
-    private: BasicVelocityProperties baseVelocityInterface;
+    private: BasicVelocityProperties* baseVelocityInterface;
 
-    private: VelocityInterface velocityInterface;
+    private: VelocityInterface* velocityInterface;
 
-public: HorizontaRotationManeuverAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput) : BasicAI(ownerLayerInterface, gameInput){
+public: HorizontaRotationManeuverAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -109,65 +115,65 @@ public: HorizontaRotationManeuverAI(AllBinaryLayer ownerLayerInterface, GameInpu
                             //For kotlin this is before the body of the constructor.
                     
 
-    RotationAnimationInterfaceCompositeInterface rotationAnimationInterfaceCompositeInterface = this->getOwnerLayerInterface() as unknown;;
+    RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface() as unknown);;
     
-this->rotationAnimationInterface= rotationAnimationInterfaceCompositeInterface.getRotationAnimationInterface();
-    
-
-    VelocityInterfaceCompositeInterface velocityInterfaceCompositeInterface = this->getOwnerLayerInterface() as unknown;;
-    
-this->baseVelocityInterface= velocityInterfaceCompositeInterface.getVelocityProperties();
-    
-this->velocityInterface= this->baseVelocityInterface as unknown;
+this->rotationAnimationInterface= rotationAnimationInterfaceCompositeInterface->getRotationAnimationInterface();
     
 
-    RotationAnimationInterface rotationAnimationInterface = this->rotationAnimationInterface as unknown;;
+    VelocityInterfaceCompositeInterface* velocityInterfaceCompositeInterface = dynamic_cast<VelocityInterfaceCompositeInterface*>(this->getOwnerLayerInterface() as unknown);;
+    
+this->baseVelocityInterface= velocityInterfaceCompositeInterface->getVelocityProperties();
+    
+this->velocityInterface= dynamic_cast<VelocityInterface*>(this->baseVelocityInterface as unknown);
     
 
-    AngleIncrementInfo angleIncrementInfo = rotationAnimationInterface.getAngleInfoP().getAngleIncrementInfo();;
+    RotationAnimationInterface* rotationAnimationInterface = dynamic_cast<RotationAnimationInterface*>(this->rotationAnimationInterface as unknown);;
     
-rotationAnimationInterfaceCompositeInterface.setFrame(angleIncrementInfo.RIGHT_FRAME.intValue());
+
+    AngleIncrementInfo* angleIncrementInfo = rotationAnimationInterface->getAngleInfoP()->getAngleIncrementInfo();;
+    
+rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->RIGHT_FRAME.intValue());
     
 }
 
 
     public: void transition(){
 
-    RotationAnimationInterface rotationAnimationInterface = this->rotationAnimationInterface as unknown;;
+    RotationAnimationInterface* rotationAnimationInterface = dynamic_cast<RotationAnimationInterface*>(this->rotationAnimationInterface as unknown);;
     
 
-    AngleIncrementInfo angleIncrementInfo = rotationAnimationInterface.getAngleInfoP().getAngleIncrementInfo();;
+    AngleIncrementInfo* angleIncrementInfo = rotationAnimationInterface->getAngleInfoP()->getAngleIncrementInfo();;
     
 
-    RotationAnimationInterfaceCompositeInterface rotationAnimationInterfaceCompositeInterface = this->getOwnerLayerInterface() as unknown;;
+    RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface() as unknown);;
     
-rotationAnimationInterfaceCompositeInterface.setFrame(angleIncrementInfo.RIGHT_FRAME.intValue());
+rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->RIGHT_FRAME.intValue());
     
 
-    AllBinaryLayer allbinaryLayer = this->getOwnerLayerInterface();;
+    AllBinaryLayer* allbinaryLayer = this->getOwnerLayerInterface();;
     
-allbinaryLayer.setPosition(allbinaryLayer.getXP(), 1, allbinaryLayer.getZP());
+allbinaryLayer->setPosition(allbinaryLayer->getXP(), 1, allbinaryLayer->getZP());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
 
-    RotationAnimationInterface rotationAnimationInterface = (this->rotationAnimationInterface as unknown);;
+    RotationAnimationInterface* rotationAnimationInterface = (dynamic_cast<RotationAnimationInterface*>(this->rotationAnimationInterface as unknown));;
     
 
-    AngleIncrementInfo angleIncrementInfo = rotationAnimationInterface.getAngleInfoP().getAngleIncrementInfo();;
+    AngleIncrementInfo* angleIncrementInfo = rotationAnimationInterface->getAngleInfoP()->getAngleIncrementInfo();;
     
 
-    int32_t frame = this->rotationAnimationInterface.getFrame();;
+    int32_t frame = this->rotationAnimationInterface->getFrame();;
     
 
-    AllBinaryLayer ownerLayerInterface = this->getOwnerLayerInterface();;
+    AllBinaryLayer* ownerLayerInterface = this->getOwnerLayerInterface();;
     
 
-                        if(ownerLayerInterface.getXP() -ownerLayerInterface.getWidth() <= 0 && frame == angleIncrementInfo.LEFT_FRAME.intValue())
+                        if(ownerLayerInterface->getXP() -ownerLayerInterface->getWidth() <= 0 && frame == angleIncrementInfo->LEFT_FRAME.intValue())
                         
                                     {
                                     this->reverse();
@@ -178,10 +184,10 @@ this->drop();
                                     }
                                 
 
-    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
+    DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-                        if(ownerLayerInterface.getX2() +ownerLayerInterface.getWidth() > displayInfo.getLastWidth() && frame == angleIncrementInfo.RIGHT_FRAME.intValue())
+                        if(ownerLayerInterface->getX2() +ownerLayerInterface->getWidth() > displayInfo->getLastWidth() && frame == angleIncrementInfo->RIGHT_FRAME.intValue())
                         
                                     {
                                     this->reverse();
@@ -194,7 +200,7 @@ this->drop();
                                     }
                                 
 
-    int32_t index = this->circularIndexUtil.getIndex();;
+    int32_t index = this->circularIndexUtil->getIndex();;
     
 
                         if(index % this->currentSpeedDivisor == 0 && index % 2 == 0)
@@ -202,15 +208,15 @@ this->drop();
                                     {
                                     super.processKeyAI(Canvas::UP);
     
-this->velocityInterface.limitMaxXYVelocity(this->velocityInterface.getMaxForwardVelocity() /this->currentSpeedDivisor);
+this->velocityInterface->limitMaxXYVelocity(this->velocityInterface->getMaxForwardVelocity() /this->currentSpeedDivisor);
     
 
                                     }
                                 
-this->circularIndexUtil.next();
+this->circularIndexUtil->next();
     
 
-                        if(frame == angleIncrementInfo.LEFT_FRAME.intValue())
+                        if(frame == angleIncrementInfo->LEFT_FRAME.intValue())
                         
                                     {
                                     super.processKeyAI(Canvas::KEY_NUM0);
@@ -219,7 +225,7 @@ this->circularIndexUtil.next();
                                     }
                                 
                              else 
-                        if(frame == angleIncrementInfo.RIGHT_FRAME.intValue())
+                        if(frame == angleIncrementInfo->RIGHT_FRAME.intValue())
                         
                                     {
                                     super.processKeyAI(Canvas::KEY_POUND);
@@ -232,38 +238,38 @@ this->circularIndexUtil.next();
 
     protected: void reverse(){
 
-    RotationAnimationInterface rotationAnimationInterface = this->rotationAnimationInterface as unknown;;
+    RotationAnimationInterface* rotationAnimationInterface = dynamic_cast<RotationAnimationInterface*>(this->rotationAnimationInterface as unknown);;
     
 
-    AngleIncrementInfo angleIncrementInfo = rotationAnimationInterface.getAngleInfoP().getAngleIncrementInfo();;
+    AngleIncrementInfo* angleIncrementInfo = rotationAnimationInterface->getAngleInfoP()->getAngleIncrementInfo();;
     
 
-    int32_t frame = this->rotationAnimationInterface.getFrame();;
+    int32_t frame = this->rotationAnimationInterface->getFrame();;
     
 
-                        if(frame == angleIncrementInfo.LEFT_FRAME.intValue())
+                        if(frame == angleIncrementInfo->LEFT_FRAME.intValue())
                         
                                     {
                                     
-    RotationAnimationInterfaceCompositeInterface rotationAnimationInterfaceCompositeInterface = this->getOwnerLayerInterface() as unknown;;
+    RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface() as unknown);;
     
-rotationAnimationInterfaceCompositeInterface.setFrame(angleIncrementInfo.RIGHT_FRAME.intValue());
+rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->RIGHT_FRAME.intValue());
     
-this->baseVelocityInterface.zero();
+this->baseVelocityInterface->zero();
     
 
                                     }
                                 
                              else 
-                        if(frame == angleIncrementInfo.RIGHT_FRAME.intValue())
+                        if(frame == angleIncrementInfo->RIGHT_FRAME.intValue())
                         
                                     {
                                     
-    RotationAnimationInterfaceCompositeInterface rotationAnimationInterfaceCompositeInterface = this->getOwnerLayerInterface() as unknown;;
+    RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface() as unknown);;
     
-rotationAnimationInterfaceCompositeInterface.setFrame(angleIncrementInfo.LEFT_FRAME.intValue());
+rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->LEFT_FRAME.intValue());
     
-this->baseVelocityInterface.zero();
+this->baseVelocityInterface->zero();
     
 
                                     }
@@ -286,16 +292,16 @@ this->baseVelocityInterface.zero();
 
     private: void drop(){
 
-    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
+    DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-    AllBinaryLayer ownerLayerInterface = this->getOwnerLayerInterface();;
+    AllBinaryLayer* ownerLayerInterface = this->getOwnerLayerInterface();;
     
 
-    int32_t y = ownerLayerInterface.getYP();;
+    int32_t y = ownerLayerInterface->getYP();;
     
 
-                        if(ownerLayerInterface.getY2() +ownerLayerInterface.getHeight() > displayInfo.getLastHeight())
+                        if(ownerLayerInterface->getY2() +ownerLayerInterface->getHeight() > displayInfo->getLastHeight())
                         
                                     {
                                     y= 0;
@@ -304,12 +310,12 @@ this->baseVelocityInterface.zero();
                                     }
                                 
                         else {
-                            y += ownerLayerInterface.getHeight() +1;
+                            y += ownerLayerInterface->getHeight() +1;
     
 
                         }
                             
-ownerLayerInterface.setPosition(ownerLayerInterface.getXP(), y, ownerLayerInterface.getZP());
+ownerLayerInterface->setPosition(ownerLayerInterface->getXP(), y, ownerLayerInterface->getZP());
     
 }
 

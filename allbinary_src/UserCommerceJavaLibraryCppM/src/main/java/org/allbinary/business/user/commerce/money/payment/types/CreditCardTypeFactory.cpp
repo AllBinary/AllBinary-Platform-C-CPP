@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,15 +44,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CreditCardType.h"
+        #include "org/allbinary/business/user/commerce/money/payment/types/CreditCardType.h"
 
 class CreditCardTypeFactory
             : public Object
          {
 
-    private: static CreditCardTypeFactory instance() { return CreditCardTypeFactory(); }
+    private: static CreditCardTypeFactory* instance() { static std::unique_ptr<CreditCardTypeFactory> value(new CreditCardTypeFactory()); return value.get(); }
 
-    public: static CreditCardTypeFactory getInstance(){
+    public: static CreditCardTypeFactory* getInstance(){
 
 
 
@@ -56,13 +62,13 @@ class CreditCardTypeFactory
 }
 
 
-    public: const CreditCardType VISA = CreditCardType("Visa");
+    public: CreditCardType* VISA = new CreditCardType("Visa");
 
-    public: const CreditCardType MASTERCARD = CreditCardType("MasterCard");
+    public: CreditCardType* MASTERCARD = new CreditCardType("MasterCard");
 
-    public: const CreditCardType DISCOVER = CreditCardType("Discover");
+    public: CreditCardType* DISCOVER = new CreditCardType("Discover");
 
-    public: const CreditCardType AMERICANEXPRESS = CreditCardType("AMX");
+    public: CreditCardType* AMERICANEXPRESS = new CreditCardType("AMX");
 
 };
 

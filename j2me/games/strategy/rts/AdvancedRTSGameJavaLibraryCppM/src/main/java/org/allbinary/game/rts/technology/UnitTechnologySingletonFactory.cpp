@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class UnitTechnologySingletonFactory
             : public Object
          {
 
-    private: static UnitTechnologySingletonFactory instance() { return UnitTechnologySingletonFactory(); }
+    private: static UnitTechnologySingletonFactory* instance() { static std::unique_ptr<UnitTechnologySingletonFactory> value(new UnitTechnologySingletonFactory()); return value.get(); }
 
-    public: static UnitTechnologySingletonFactory getInstance(){
+    public: static UnitTechnologySingletonFactory* getInstance(){
 
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,11 +72,11 @@ class CapturedBufferedImagesCacheSingleton
             : public Object
          {
 
-    private: static AutomaticCacheInterface cacheInterface = 
+    private: static inline AutomaticCacheInterface* cacheInterface = 
                 null
             ;
 
-    public: static CacheInterface getInstance(){
+    public: static CacheInterface* getInstance(){
 
 
 
@@ -84,10 +90,10 @@ class CapturedBufferedImagesCacheSingleton
                 static int32_t init() { 
                     
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
     std::string STATIC_BLOCK = "Static Block";;
@@ -97,17 +103,17 @@ class CapturedBufferedImagesCacheSingleton
     
 
         try {
-            logUtil.putF(commonStrings.START, instance, STATIC_BLOCK);
+            logUtil->putF(commonStrings->START, instance, STATIC_BLOCK);
     
-CapturedBufferedImagesCacheSingleton::cacheInterface= CacheInterfaceFactory::getInstance((), ());
+CapturedBufferedImagesCacheSingleton::cacheInterface= dynamic_cast<AutomaticCacheInterface*>(CacheInterfaceFactory::getInstance((), ()));
     
-logUtil.putF(commonStrings.END, instance, STATIC_BLOCK);
+logUtil->putF(commonStrings->END, instance, STATIC_BLOCK);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-logUtil.put(commonStrings.EXCEPTION, instance, STATIC_BLOCK, e);
+logUtil->put(commonStrings->EXCEPTION, instance, STATIC_BLOCK, &e);
     
 }
 
@@ -116,7 +122,7 @@ logUtil.put(commonStrings.EXCEPTION, instance, STATIC_BLOCK, e);
                     return 0;
                 }
             
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: CapturedBufferedImagesCacheSingleton(){
 }

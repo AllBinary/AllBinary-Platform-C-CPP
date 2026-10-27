@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -84,34 +90,34 @@ class VectorCenterGenerator
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList translate(BasicArrayList list, int32_t x, int32_t y){
+    public: static BasicArrayList* translate(BasicArrayList* list, int32_t x, int32_t y){
 
-    BasicGraphicsPipeline graphicsPipe = BasicGraphicsPipeline(list);;
+    BasicGraphicsPipeline* graphicsPipe = new BasicGraphicsPipeline(list);;
     
-graphicsPipe.createMatrix();
+graphicsPipe->createMatrix();
     
-graphicsPipe.translate(x, y);
+graphicsPipe->translate(x, y);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return graphicsPipe.getMatrix();;
+                        return graphicsPipe->getMatrix();;
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    int32_t minX = Integer::MAX_VALUE;
+    int32_t minX = Integer.MAX_VALUE;
 
-    int32_t minY = Integer::MAX_VALUE;
+    int32_t minY = Integer.MAX_VALUE;
 
-    int32_t maxX = Integer::MIN_VALUE;
+    int32_t maxX = Integer.MIN_VALUE;
 
-    int32_t maxY = Integer::MIN_VALUE;
+    int32_t maxY = Integer.MIN_VALUE;
 
     private: int32_t dx = 0;
 
@@ -127,9 +133,9 @@ public: VectorCenterGenerator(){
 
                 //@Throws(Exception.constructor)
             
-    public: void calculate(HashMap<Object*, Object*> hashMap){
+    public: void calculate(HashMap<Object*, Object*>* hashMap){
 
-    std::vector<Object*> graphicItemArray = hashMap.keys().();;
+    std::vector<Object*> graphicItemArray = hashMap->keys().();;
     
 
     int32_t size = graphicItemArray.size();;
@@ -142,20 +148,20 @@ public: VectorCenterGenerator(){
     int32_t index = 0;index < size; index++)
         {
 
-    GraphicItemInterface item = hashMap.get(graphicItemArray[index]);;
+    GraphicItemInterface* item = dynamic_cast<GraphicItemInterface*>(hashMap->get(graphicItemArray[index]));;
     
 
-                        if(item.getName() == LinesGraphicItem::getStaticName())
+                        if(item->getName() == LinesGraphicItem::getStaticName())
                         
                                     {
-                                    this->getInstance(item.getPointsInterface().getPoints());
+                                    this->getInstance(item->getPointsInterface()->getPoints());
     
 
                                     }
                                 
 }
 
-this->logUtil.putF("minX: " +this->minX +" minY: " +this->minY +" maxX: " +this->maxX +" maxY: " +this->maxY, this, this->commonStrings.GET_INSTANCE);
+this->logUtil->putF("minX: " +this->minX +" minY: " +this->minY +" maxX: " +this->maxX +" maxY: " +this->maxY, this, this->commonStrings->GET_INSTANCE);
     
 this->setWidth(this->maxX -this->minX);
     
@@ -177,12 +183,12 @@ this->setHeight(this->maxY -this->minY);
     int32_t middle = max /2;;
     
 
-    CommonLabels commonLabels = CommonLabels::getInstance();;
+    CommonLabels* commonLabels = CommonLabels::getInstance();;
     
 
-    std::string s = StringMaker().append(commonLabels.WIDTH_LABEL).appendint(getWidth()).append(commonLabels.HEIGHT_LABEL).appendint(getHeight()).append(" max: ").appendint(max).append(" middle: ").appendint(middle).toString();;
+    std::string s = (new StringMaker())->append(commonLabels->WIDTH_LABEL)->appendint(getWidth())->append(commonLabels->HEIGHT_LABEL)->appendint(getHeight())->append(" max: ")->appendint(max)->append(" middle: ")->appendint(middle)->toString();;
     
-this->logUtil.putF(s, this, this->commonStrings.GET_INSTANCE);
+this->logUtil->putF(s, this, this->commonStrings->GET_INSTANCE);
     
 
     int32_t currentMiddleX = this->minX +this->getWidth() /2;;
@@ -199,13 +205,13 @@ this->dy= middle -currentMiddleY;
 
                 //@Throws(Exception.constructor)
             
-    public: void transform(HashMap<Object*, Object*> hashMap){
+    public: void transform(HashMap<Object*, Object*>* hashMap){
 this->calculate(hashMap);
     
-this->logUtil.putF(StringMaker().append(" dx: ").appendint(this->dx).append(" dy: ").appendint(this->dy).toString(), this, this->commonStrings.GET_INSTANCE);
+this->logUtil->putF((new StringMaker())->append(" dx: ")->appendint(this->dx)->append(" dy: ")->appendint(this->dy)->toString(), this, this->commonStrings->GET_INSTANCE);
     
 
-    std::vector<Object*> graphicItemArray = hashMap.keys().();;
+    std::vector<Object*> graphicItemArray = hashMap->keys().();;
     
 
     int32_t size = graphicItemArray.size();;
@@ -218,17 +224,17 @@ this->logUtil.putF(StringMaker().append(" dx: ").appendint(this->dx).append(" dy
     int32_t index = 0;index < size; index++)
         {
 
-    GraphicItemInterface item = hashMap.get(graphicItemArray[index]);;
+    GraphicItemInterface* item = dynamic_cast<GraphicItemInterface*>(hashMap->get(graphicItemArray[index]));;
     
 
-    BasicArrayList list = VectorCenterGenerator::translate(item.getPointsInterface().getPoints(), dx, dy);;
+    BasicArrayList* list = VectorCenterGenerator::translate(item->getPointsInterface()->getPoints(), dx, dy);;
     
 
-    Points newPoints = Points();;
+    Points* newPoints = new Points();;
     
-newPoints.addPoints(list);
+newPoints->addPoints(list);
     
-item.setPointsInterface(newPoints);
+item->setPointsInterface(newPoints);
     
 }
 
@@ -237,11 +243,11 @@ item.setPointsInterface(newPoints);
 
                 //@Throws(Exception.constructor)
             
-    private: void getInstance(BasicArrayList pointVector){
+    private: void getInstance(BasicArrayList* pointVector){
 
         try {
             
-    int32_t size = pointVector.size();;
+    int32_t size = pointVector->size();;
     
 
 
@@ -251,40 +257,40 @@ item.setPointsInterface(newPoints);
     int32_t index = 0;index < size; index++)
         {
 
-    GPoint point = pointVector.get(index);;
+    GPoint* point = dynamic_cast<GPoint*>(pointVector->get(index));;
     
 
-                        if(point.getX() < this->minX)
+                        if(point->getX() < this->minX)
                         
                                     {
-                                    this->minX= point.getX();
-    
-
-                                    }
-                                
-
-                        if(point.getX() > this->maxX)
-                        
-                                    {
-                                    this->maxX= point.getX();
+                                    this->minX= point->getX();
     
 
                                     }
                                 
 
-                        if(point.getY() < this->minY)
+                        if(point->getX() > this->maxX)
                         
                                     {
-                                    this->minY= point.getY();
+                                    this->maxX= point->getX();
     
 
                                     }
                                 
 
-                        if(point.getY() > this->maxY)
+                        if(point->getY() < this->minY)
                         
                                     {
-                                    this->maxY= point.getY();
+                                    this->minY= point->getY();
+    
+
+                                    }
+                                
+
+                        if(point->getY() > this->maxY)
+                        
+                                    {
+                                    this->maxY= point->getY();
     
 
                                     }
@@ -293,9 +299,9 @@ item.setPointsInterface(newPoints);
 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET_INSTANCE, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->GET_INSTANCE, &e);
     
 
 

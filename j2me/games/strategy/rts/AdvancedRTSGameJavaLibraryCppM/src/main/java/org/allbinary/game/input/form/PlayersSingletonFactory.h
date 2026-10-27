@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_PLAYERSSINGLETONFACTORY_H
         #define ORG_ALLBINARY_GAME_INPUT_FORM_PLAYERSSINGLETONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,7 +52,7 @@ class PlayersSingletonFactory
             : public Object
          {
 
-    public: static int32_t total= 0;
+    public: static inline int32_t total= 0;
 
 };
 

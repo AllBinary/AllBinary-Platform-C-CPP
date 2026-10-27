@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_CUSTOMTREENODEINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_CUSTOMTREENODEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/swing.h>
 
       
@@ -45,11 +51,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPopupMenu.h"
+        #include "org/allbinary/input/automation/actions/script/condition/JPopupMenu.h"
 
 class CustomTreeNodeInterface: public MutableTreeNode {
 
-    JPopupMenu getJPopupMenu();
+    public: virtual JPopupMenu* getJPopupMenu() = 0;
 
 };
 

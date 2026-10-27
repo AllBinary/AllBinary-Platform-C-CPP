@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -45,7 +51,7 @@ class HealthVectorData
             : public Object
          {
 
-    public: static std::vector<std::vector<std::vector<int32_t>>> points = 
+    public: static inline std::vector<std::vector<std::vector<int32_t>>> points = 
                                                         {
                                                             [[2,1]
 ,[3,2]

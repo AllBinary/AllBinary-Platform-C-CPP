@@ -21,6 +21,12 @@
         #ifndef VIEWS_GENERIC_PAYMENT_VALIDATIONVIEW_H
         #define VIEWS_GENERIC_PAYMENT_VALIDATIONVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/globals/MESSAGES.h>
@@ -56,17 +62,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentView.h"
+        #include "views/generic/payment/PaymentView.h"
 
 class ValidationView: public PaymentView, public ValidationComponentInterface {
 
-public: ValidationView(TransformInfoInterface transformInfoInterface);
+public: ValidationView(TransformInfoInterface* transformInfoInterface);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
     public: std::string validationInfo();
 

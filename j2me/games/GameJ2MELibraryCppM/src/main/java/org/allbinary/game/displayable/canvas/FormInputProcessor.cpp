@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -89,27 +95,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryGameCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
 class FormInputProcessor: public InputProcessor {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const GameKeyEventFactory gameKeyEventFactory = GameKeyEventFactory::getInstance();
+    private: GameKeyEventFactory* gameKeyEventFactory = GameKeyEventFactory::getInstance();
 
-    private: const DownKeyEventHandler downKeyEventHandler = DownKeyEventHandler::getInstance();
+    private: DownKeyEventHandler* downKeyEventHandler = DownKeyEventHandler::getInstance();
 
-    private: const UpGameKeyEventHandler upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
+    private: UpGameKeyEventHandler* upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
 
-    private: const InputFactory inputFactory = InputFactory::getInstance();
+    private: InputFactory* inputFactory = InputFactory::getInstance();
 
-    private: const PlatformKeyFactory platformKeyFactory = PlatformKeyFactory::getInstance();
+    private: PlatformKeyFactory* platformKeyFactory = PlatformKeyFactory::getInstance();
 
-    private: AllBinaryGameCanvas allBinaryGameCanvas;
+    private: AllBinaryGameCanvas* allBinaryGameCanvas;
 
-public: FormInputProcessor(AllBinaryGameCanvas allBinaryGameCanvas){
+public: FormInputProcessor(AllBinaryGameCanvas* allBinaryGameCanvas){
 this->allBinaryGameCanvas= allBinaryGameCanvas;
     
 }
@@ -118,60 +124,60 @@ this->allBinaryGameCanvas= allBinaryGameCanvas;
     public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId){
 
         try {
-            PreLogUtil::put(StringMaker().append(this->inputFactory.KEY_CODE_LABEL).appendint(keyCode).append(CommonSeps::getInstance().SPACE).append(this->inputFactory.DEVICE_ID_LABEL).appendint(deviceId).toString(), this, this->gameInputStrings.KEY_PRESSED);
+            PreLogUtil::put((new StringMaker())->append(this->inputFactory->KEY_CODE_LABEL)->appendint(keyCode)->append(CommonSeps::getInstance()->SPACE)->append(this->inputFactory->DEVICE_ID_LABEL)->appendint(deviceId)->toString(), this, this->gameInputStrings.KEY_PRESSED);
     
 
-    Input input = this->inputFactory.getInstanceById(keyCode);;
+    Input* input = this->inputFactory->getInstanceById(keyCode);;
     
 
-    GameKeyEvent gameKeyEvent = this->gameKeyEventFactory.getInstanceForInput(this->allBinaryGameCanvas, input);;
+    GameKeyEvent* gameKeyEvent = this->gameKeyEventFactory->getInstanceForInput(this->allBinaryGameCanvas, input);;
     
-this->downKeyEventHandler.fireEventForGameKeyEvent(gameKeyEvent);
+this->downKeyEventHandler->fireEventForGameKeyEvent(gameKeyEvent);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.ADD_KEY_EVENT, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings.ADD_KEY_EVENT, &e);
     
 }
 
 }
 
 
-    public: void keyReleasedByDevice(Canvas canvas, int32_t keyCode, int32_t deviceId){
+    public: void keyReleasedByDevice(Canvas* canvas, int32_t keyCode, int32_t deviceId){
 
         try {
             
-    Input input = this->inputFactory.getInstanceById(keyCode);;
+    Input* input = this->inputFactory->getInstanceById(keyCode);;
     
 
-                        if(this->platformKeyFactory.isEnter(input))
+                        if(this->platformKeyFactory->isEnter(input))
                         
                                     {
-                                    PreLogUtil::put(StringMaker().append(this->inputFactory.KEY_CODE_LABEL).appendint(keyCode).append(CommonSeps::getInstance().SPACE).append(this->inputFactory.DEVICE_ID_LABEL).appendint(deviceId).toString(), this, this->gameInputStrings.KEY_RELEASED);
+                                    PreLogUtil::put((new StringMaker())->append(this->inputFactory->KEY_CODE_LABEL)->appendint(keyCode)->append(CommonSeps::getInstance()->SPACE)->append(this->inputFactory->DEVICE_ID_LABEL)->appendint(deviceId)->toString(), this, this->gameInputStrings.KEY_RELEASED);
     
 
-    GameKey gameKey = GameKeyFactory::getInstance().KEY_NUM0;;
+    GameKey* gameKey = GameKeyFactory::getInstance()->KEY_NUM0;;
     
 
-    GameKeyEventSourceInterface gameKeyEventSourceInterface = canvas as unknown;;
+    GameKeyEventSourceInterface* gameKeyEventSourceInterface = dynamic_cast<GameKeyEventSourceInterface*>(canvas as unknown);;
     
 
-    GameKeyEvent gameKeyEvent = this->gameKeyEventFactory.getInstanceForInput(gameKeyEventSourceInterface, gameKey);;
+    GameKeyEvent* gameKeyEvent = this->gameKeyEventFactory->getInstanceForInput(gameKeyEventSourceInterface, gameKey);;
     
-this->upGameKeyEventHandler.fireEvent(gameKeyEvent);
+this->upGameKeyEventHandler->fireEvent(gameKeyEvent);
     
-this->upGameKeyEventHandler.getInstanceForDevice(deviceId).fireEvent(gameKeyEvent);
+this->upGameKeyEventHandler->getInstanceForDevice(deviceId)->fireEvent(gameKeyEvent);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.ADD_KEY_EVENT, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings.ADD_KEY_EVENT, &e);
     
 }
 

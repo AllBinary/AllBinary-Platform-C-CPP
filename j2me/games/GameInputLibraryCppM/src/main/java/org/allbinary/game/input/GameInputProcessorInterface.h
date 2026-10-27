@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSORINTERFACE_H
         #define ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSORINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -49,7 +55,7 @@ class GameInputProcessorInterface {
 
                 //@Throws(Exception.constructor)
             
-    void onInput(BasicArrayList list);
+    public: virtual void onInput(BasicArrayList* list) = 0;
 
 };
 

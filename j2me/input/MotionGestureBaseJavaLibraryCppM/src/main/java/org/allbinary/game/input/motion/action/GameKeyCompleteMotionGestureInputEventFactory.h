@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_MOTION_ACTION_GAMEKEYCOMPLETEMOTIONGESTUREINPUTEVENTFACTORY_H
         #define ORG_ALLBINARY_GAME_INPUT_MOTION_ACTION_GAMEKEYCOMPLETEMOTIONGESTUREINPUTEVENTFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -56,21 +62,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameKeyCompleteMotionGestureInputEvent.h"
+        #include "org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h"
 
 class GameKeyCompleteMotionGestureInputEventFactory
             : public Object
          {
 
-    private: static const GameKeyCompleteMotionGestureInputEventFactory SINGLETON = GameKeyCompleteMotionGestureInputEventFactory();
+    private: static GameKeyCompleteMotionGestureInputEventFactory* SINGLETON() { static std::unique_ptr<GameKeyCompleteMotionGestureInputEventFactory> value(new GameKeyCompleteMotionGestureInputEventFactory()); return value.get(); }
 
-    public: static GameKeyCompleteMotionGestureInputEventFactory getInstance();
+    public: static GameKeyCompleteMotionGestureInputEventFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const BasicArrayList eventList = BasicArrayListD();
+    private: BasicArrayList* eventList = new BasicArrayListD();
 
-    public: void add(GameKeyCompleteMotionGestureInputEvent gameKeyCompleteMotionGestureInputEvent);
+    public: void add(GameKeyCompleteMotionGestureInputEvent* gameKeyCompleteMotionGestureInputEvent);
 
     public: void updateAll();
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AI_PATH_BASICAIPROCESSOR_H
         #define ORG_ALLBINARY_GAME_AI_PATH_BASICAIPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -70,7 +76,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicDirectionAIHelper.h"
+        #include "org/allbinary/game/ai/path/BasicDirectionAIHelper.h"
 
 class BasicAIProcessor
             : public Object
@@ -78,43 +84,43 @@ class BasicAIProcessor
 
     private: std::string name;
 
-    private: GeographicMapCellHistory geographicMapCellHistory;
+    private: GeographicMapCellHistory* geographicMapCellHistory;
 
-    private: BasicArrayList geographicMapCellPositionBasicArrayList;
+    private: BasicArrayList* geographicMapCellPositionBasicArrayList;
 
-    private: GeographicMapCellPathHistoryInfo geographicMapCellPathHistoryInfo;
+    private: GeographicMapCellPathHistoryInfo* geographicMapCellPathHistoryInfo;
 
-    private: BasicDirectionAIHelper basicAI;
+    private: BasicDirectionAIHelper* basicAI;
 
-public: BasicAIProcessor(std::string name, GeographicMapCellHistory geographicMapCellHistory, GeographicMapCellPathHistoryInfo geographicMapCellPathHistoryInfo, BasicArrayList chosenPathList, AngleInfo angleInfo, int32_t seed);
+public: BasicAIProcessor(std::string name, GeographicMapCellHistory* geographicMapCellHistory, GeographicMapCellPathHistoryInfo* geographicMapCellPathHistoryInfo, BasicArrayList* chosenPathList, AngleInfo* angleInfo, int32_t seed);
 
-    private: void setNewPath(GeographicMapCellHistory geographicMapCellHistory, BasicArrayList chosenPathList);
+    private: void setNewPath(GeographicMapCellHistory* geographicMapCellHistory, BasicArrayList* chosenPathList);
 
     public: void init();
 
-    private: const GeographicMapDirectionUtil geographicMapDirectionUtil = GeographicMapDirectionUtil::getInstance();
+    private: GeographicMapDirectionUtil* geographicMapDirectionUtil = GeographicMapDirectionUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    private: int32_t goTowardNextChosenOnPathPosition(GeographicMapCellPosition currentGeographicMapCellPosition);
+    private: int32_t goTowardNextChosenOnPathPosition(GeographicMapCellPosition* currentGeographicMapCellPosition);
 
     private: void update();
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t processAI(AllBinaryLayerManager myManager, GeographicMapCellPosition currentGeographicMapCellPosition);
+    public: int32_t processAI(AllBinaryLayerManager* myManager, GeographicMapCellPosition* currentGeographicMapCellPosition);
 
     public: std::string getName();
 
     public: void setName(std::string name);
 
-    public: GeographicMapCellPathHistoryInfo getGeographicMapCellPathHistoryInfo();
+    public: GeographicMapCellPathHistoryInfo* getGeographicMapCellPathHistoryInfo();
 
-    public: void setGeographicMapCellPathHistoryInfo(GeographicMapCellPathHistoryInfo geographicMapCellPathHistoryInfo);
+    public: void setGeographicMapCellPathHistoryInfo(GeographicMapCellPathHistoryInfo* geographicMapCellPathHistoryInfo);
 
-    public: GeographicMapCellHistory getGeographicMapCellHistory();
+    public: GeographicMapCellHistory* getGeographicMapCellHistory();
 
-    public: void setGeographicMapCellHistory(GeographicMapCellHistory geographicMapCellHistory);
+    public: void setGeographicMapCellHistory(GeographicMapCellHistory* geographicMapCellHistory);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -45,111 +51,111 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PlayerOwnedRTSLayers.h"
-#include "RTSLayer.h"
-#include "AllBinaryGameLayer.h"
+        #include "org/allbinary/game/layer/PlayerOwnedRTSLayers.h"
+#include "org/allbinary/game/layer/RTSLayer.h"
+#include "org/allbinary/game/layer/AllBinaryGameLayer.h"
 
 class AdvancedPlayerOwnedRTSLayers: public PlayerOwnedRTSLayers {
 
-    private: const BasicArrayList unitsList = BasicArrayListD();
+    private: BasicArrayList* unitsList = new BasicArrayListD();
 
-    private: const BasicArrayList waypointsList = BasicArrayListD();
+    private: BasicArrayList* waypointsList = new BasicArrayListD();
 
-    private: const BasicArrayList buildingList = BasicArrayListD();
+    private: BasicArrayList* buildingList = new BasicArrayListD();
 
-    private: const BasicArrayList baseList = BasicArrayListD();
+    private: BasicArrayList* baseList = new BasicArrayListD();
 
-    private: const BasicArrayList garrisonList = BasicArrayListD();
+    private: BasicArrayList* garrisonList = new BasicArrayListD();
 
-    private: const BasicArrayList houseList = BasicArrayListD();
+    private: BasicArrayList* houseList = new BasicArrayListD();
 
-    private: const BasicArrayList labList = BasicArrayListD();
+    private: BasicArrayList* labList = new BasicArrayListD();
 
-    private: const BasicArrayList factoryList = BasicArrayListD();
+    private: BasicArrayList* factoryList = new BasicArrayListD();
 
-    public: void addUnit(RTSLayer rtsLayer){
-this->unitsList.add(rtsLayer);
+    public: void addUnit(RTSLayer* rtsLayer){
+this->unitsList->add(rtsLayer);
     
 this->rtsLayerList.add(rtsLayer);
     
 }
 
 
-    public: void addWaypoint(RTSLayer rtsLayer){
-this->waypointsList.add(rtsLayer);
+    public: void addWaypoint(RTSLayer* rtsLayer){
+this->waypointsList->add(rtsLayer);
     
 this->rtsLayerList.add(rtsLayer);
     
 }
 
 
-    public: void addBase(RTSLayer rtsLayer){
-this->baseList.add(rtsLayer);
+    public: void addBase(RTSLayer* rtsLayer){
+this->baseList->add(rtsLayer);
     
-this->buildingList.add(rtsLayer);
-    
-this->rtsLayerList.add(rtsLayer);
-    
-}
-
-
-    public: void addGarrison(RTSLayer rtsLayer){
-this->garrisonList.add(rtsLayer);
-    
-this->buildingList.add(rtsLayer);
+this->buildingList->add(rtsLayer);
     
 this->rtsLayerList.add(rtsLayer);
     
 }
 
 
-    public: void addHouse(RTSLayer rtsLayer){
-this->houseList.add(rtsLayer);
+    public: void addGarrison(RTSLayer* rtsLayer){
+this->garrisonList->add(rtsLayer);
     
-this->buildingList.add(rtsLayer);
-    
-this->rtsLayerList.add(rtsLayer);
-    
-}
-
-
-    public: void addLab(RTSLayer rtsLayer){
-this->labList.add(rtsLayer);
-    
-this->buildingList.add(rtsLayer);
+this->buildingList->add(rtsLayer);
     
 this->rtsLayerList.add(rtsLayer);
     
 }
 
 
-    public: void addFactory(RTSLayer rtsLayer){
-this->factoryList.add(rtsLayer);
+    public: void addHouse(RTSLayer* rtsLayer){
+this->houseList->add(rtsLayer);
     
-this->buildingList.add(rtsLayer);
+this->buildingList->add(rtsLayer);
     
 this->rtsLayerList.add(rtsLayer);
     
 }
 
 
-    public: void removeUnit(AllBinaryGameLayer gameLayer){
-this->unitsList.remove(gameLayer);
+    public: void addLab(RTSLayer* rtsLayer){
+this->labList->add(rtsLayer);
+    
+this->buildingList->add(rtsLayer);
+    
+this->rtsLayerList.add(rtsLayer);
+    
+}
+
+
+    public: void addFactory(RTSLayer* rtsLayer){
+this->factoryList->add(rtsLayer);
+    
+this->buildingList->add(rtsLayer);
+    
+this->rtsLayerList.add(rtsLayer);
+    
+}
+
+
+    public: void removeUnit(AllBinaryGameLayer* gameLayer){
+this->unitsList->remove(gameLayer);
     
 this->rtsLayerList.remove(gameLayer);
     
 }
 
 
-    public: void removeWaypoint(AllBinaryGameLayer gameLayer){
-this->waypointsList.remove(gameLayer);
+    public: void removeWaypoint(AllBinaryGameLayer* gameLayer){
+this->waypointsList->remove(gameLayer);
     
 this->rtsLayerList.remove(gameLayer);
     
 }
 
 
-    public: BasicArrayList getUnitsList(){
+    public: BasicArrayList* getUnitsList(){
 
 
 
@@ -159,7 +165,7 @@ this->rtsLayerList.remove(gameLayer);
 }
 
 
-    public: BasicArrayList getWaypointsList(){
+    public: BasicArrayList* getWaypointsList(){
 
 
 
@@ -169,7 +175,7 @@ this->rtsLayerList.remove(gameLayer);
 }
 
 
-    public: BasicArrayList getBaseList(){
+    public: BasicArrayList* getBaseList(){
 
 
 
@@ -179,7 +185,7 @@ this->rtsLayerList.remove(gameLayer);
 }
 
 
-    public: BasicArrayList getGarrisonList(){
+    public: BasicArrayList* getGarrisonList(){
 
 
 
@@ -189,7 +195,7 @@ this->rtsLayerList.remove(gameLayer);
 }
 
 
-    public: BasicArrayList getHouseList(){
+    public: BasicArrayList* getHouseList(){
 
 
 
@@ -199,7 +205,7 @@ this->rtsLayerList.remove(gameLayer);
 }
 
 
-    public: BasicArrayList getLabList(){
+    public: BasicArrayList* getLabList(){
 
 
 
@@ -209,7 +215,7 @@ this->rtsLayerList.remove(gameLayer);
 }
 
 
-    public: BasicArrayList getFactoryList(){
+    public: BasicArrayList* getFactoryList(){
 
 
 
@@ -224,16 +230,16 @@ this->rtsLayerList.remove(gameLayer);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->baseList.size() +this->garrisonList.size() +this->houseList.size() +this->labList.size() +this->factoryList.size();
+                        return this->baseList->size() +this->garrisonList->size() +this->houseList->size() +this->labList->size() +this->factoryList->size();
     
 }
 
 
-    public: void removeBuilding(AllBinaryGameLayer layerInterface){
-this->buildingList.add(layerInterface);
+    public: void removeBuilding(AllBinaryGameLayer* layerInterface){
+this->buildingList->add(layerInterface);
     
 
-                        if(this->getBaseList().remove(layerInterface))
+                        if(this->getBaseList()->remove(layerInterface))
                         
                                     {
                                     this->rtsLayerList.remove(layerInterface);
@@ -242,7 +248,7 @@ this->buildingList.add(layerInterface);
                                     }
                                 
                              else 
-                        if(this->getFactoryList().remove(layerInterface))
+                        if(this->getFactoryList()->remove(layerInterface))
                         
                                     {
                                     this->rtsLayerList.remove(layerInterface);
@@ -251,7 +257,7 @@ this->buildingList.add(layerInterface);
                                     }
                                 
                              else 
-                        if(this->getGarrisonList().remove(layerInterface))
+                        if(this->getGarrisonList()->remove(layerInterface))
                         
                                     {
                                     this->rtsLayerList.remove(layerInterface);
@@ -260,7 +266,7 @@ this->buildingList.add(layerInterface);
                                     }
                                 
                              else 
-                        if(this->getLabList().remove(layerInterface))
+                        if(this->getLabList()->remove(layerInterface))
                         
                                     {
                                     this->rtsLayerList.remove(layerInterface);
@@ -269,7 +275,7 @@ this->buildingList.add(layerInterface);
                                     }
                                 
                              else 
-                        if(this->getHouseList().remove(layerInterface))
+                        if(this->getHouseList()->remove(layerInterface))
                         
                                     {
                                     this->rtsLayerList.remove(layerInterface);
@@ -282,48 +288,48 @@ this->buildingList.add(layerInterface);
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(super.toString());
+stringBuffer->append(super.toString());
     
-stringBuffer.append(" Bases: ");
+stringBuffer->append(" Bases: ");
     
-stringBuffer.appendint(this->getBaseList().size());
+stringBuffer->appendint(this->getBaseList()->size());
     
-stringBuffer.append(" Factory: ");
+stringBuffer->append(" Factory: ");
     
-stringBuffer.appendint(this->getFactoryList().size());
+stringBuffer->appendint(this->getFactoryList()->size());
     
-stringBuffer.append(" Garrison: ");
+stringBuffer->append(" Garrison: ");
     
-stringBuffer.appendint(this->getGarrisonList().size());
+stringBuffer->appendint(this->getGarrisonList()->size());
     
-stringBuffer.append(" Labs: ");
+stringBuffer->append(" Labs: ");
     
-stringBuffer.appendint(this->getLabList().size());
+stringBuffer->appendint(this->getLabList()->size());
     
-stringBuffer.append(" Houses: ");
+stringBuffer->append(" Houses: ");
     
-stringBuffer.appendint(this->getHouseList().size());
+stringBuffer->appendint(this->getHouseList()->size());
     
-stringBuffer.append(" Waypoints: ");
+stringBuffer->append(" Waypoints: ");
     
-stringBuffer.appendint(this->getWaypointsList().size());
+stringBuffer->appendint(this->getWaypointsList()->size());
     
-stringBuffer.append(" Units: ");
+stringBuffer->append(" Units: ");
     
-stringBuffer.appendint(this->getUnitsList().size());
+stringBuffer->appendint(this->getUnitsList()->size());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
-    public: BasicArrayList getBuildingList(){
+    public: BasicArrayList* getBuildingList(){
 
 
 

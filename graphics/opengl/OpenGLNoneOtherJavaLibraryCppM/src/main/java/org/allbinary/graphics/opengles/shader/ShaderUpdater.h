@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERUPDATER_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERUPDATER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/khronos/egl/EGLConfig.h>
@@ -58,15 +64,15 @@ class ShaderUpdater
             : public Object
          {
 
-    private: static ShaderUpdater instance() { return ShaderUpdater(); }
+    private: static ShaderUpdater* instance() { static std::unique_ptr<ShaderUpdater> value(new ShaderUpdater()); return value.get(); }
 
-    public: static ShaderUpdater getInstance();
+    public: static ShaderUpdater* getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const RendererStrings rendererStrings = RendererStrings::getInstance();
+    protected: RendererStrings* rendererStrings = RendererStrings::getInstance();
 
-    public: void onSurfaceCreated(GL10 gl, EGLConfig eglConfig);
+    public: void onSurfaceCreated(GL10* gl, EGLConfig* eglConfig);
 
 };
 

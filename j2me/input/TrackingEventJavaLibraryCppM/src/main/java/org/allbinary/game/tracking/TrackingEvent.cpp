@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/layer/AllBinaryLayer.h>
 
       
@@ -45,11 +53,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TrackingEventHandler.h"
+        #include "org/allbinary/game/tracking/TrackingEventHandler.h"
 
 class TrackingEvent: public AllBinaryEventObject {
 
-    private: AllBinaryLayer layerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer* layerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
 public: TrackingEvent(Object* allBinaryLayerInterface) : AllBinaryEventObject(allBinaryLayerInterface){
 
@@ -62,7 +70,7 @@ public: TrackingEvent(Object* allBinaryLayerInterface) : AllBinaryEventObject(al
                         if(allBinaryLayerInterface != TrackingEventHandler::getInstance())
                         
                                     {
-                                    this->setLayerInterface(*dynamic_cast<AllBinaryLayer*>(allBinaryLayerInterface));
+                                    this->setLayerInterface(dynamic_cast<AllBinaryLayer*>(allBinaryLayerInterface));
     
 
                                     }
@@ -76,7 +84,7 @@ this->setSource(anyType);
 }
 
 
-    public: AllBinaryLayer getLayerInterface(){
+    public: AllBinaryLayer* getLayerInterface(){
 
 
 
@@ -86,13 +94,13 @@ this->setSource(anyType);
 }
 
 
-    private: void setLayerInterface(AllBinaryLayer layerInterface){
+    private: void setLayerInterface(AllBinaryLayer* layerInterface){
 this->layerInterface= layerInterface;
     
 }
 
 
-    public: void setLayerInterfaceForCircularStaticPool(AllBinaryLayer layerInterface){
+    public: void setLayerInterfaceForCircularStaticPool(AllBinaryLayer* layerInterface){
 this->layerInterface= layerInterface;
     
 }
@@ -100,19 +108,19 @@ this->layerInterface= layerInterface;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("TrackingEvent: \n");
+stringBuffer->append("TrackingEvent: \n");
     
-stringBuffer.append("LayerInterface: ");
+stringBuffer->append("LayerInterface: ");
     
-stringBuffer.append(this->layerInterface.toString());
+stringBuffer->append(this->layerInterface->toString());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

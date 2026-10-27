@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATION_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -56,25 +62,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ContextConfigurationInterface.h"
+        #include "org/allbinary/business/context/configuration/ContextConfigurationInterface.h"
 
 class ContextConfiguration
             : public Object
-        : public ContextConfigurationInterface {
+        , public ContextConfigurationInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: EmailServerConfigurationInterface emailServerConfigurationInterface;
+    private: EmailServerConfigurationInterface* emailServerConfigurationInterface;
 
 public: ContextConfiguration();
 
-public: ContextConfiguration(HashMap<Object*, Object*> hashMap);
+public: ContextConfiguration(HashMap<Object*, Object*>* hashMap);
 
-    public: EmailServerConfigurationInterface getEmailServerConfigurationInterface();
+    public: EmailServerConfigurationInterface* getEmailServerConfigurationInterface();
 
-    public: void setEmailServerConfigurationInterface(EmailServerConfigurationInterface emailServerConfigurationInterface);
+    public: void setEmailServerConfigurationInterface(EmailServerConfigurationInterface* emailServerConfigurationInterface);
 
 };
 

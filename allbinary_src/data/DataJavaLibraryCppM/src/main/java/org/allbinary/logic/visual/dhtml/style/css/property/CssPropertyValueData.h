@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTYVALUEDATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTYVALUEDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class CssPropertyValueData
             : public Object
          {
 
-    private: static CssPropertyValueData instance() { return CssPropertyValueData(); }
+    private: static CssPropertyValueData* instance() { static std::unique_ptr<CssPropertyValueData> value(new CssPropertyValueData()); return value.get(); }
 
-    public: static CssPropertyValueData getInstance();
+    public: static CssPropertyValueData* getInstance();
 
 private: CssPropertyValueData();
 

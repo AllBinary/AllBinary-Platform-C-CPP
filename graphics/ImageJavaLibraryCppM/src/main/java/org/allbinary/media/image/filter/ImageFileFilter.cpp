@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/io/File.h>
 
       
@@ -45,9 +51,9 @@
         //TWB - replace with file visitor version
 class ImageFileFilter: public FileFilter {
 
-    public: bool accept(File f){
+    public: bool accept(File* f){
 
-                        if(f.isDirectory())
+                        if(f->isDirectory())
                         
                                     {
                                     
@@ -60,10 +66,10 @@ class ImageFileFilter: public FileFilter {
                                     }
                                 
 
-    std::string s = f.getName();;
+    std::string s = f->getName();;
     
 
-    int32_t i = s.lastIndexOf('.');;
+    int32_t i = JavaString::lastIndexOf(s, '.');;
     
 
                         if(i > 0 && i < s.size() -1)

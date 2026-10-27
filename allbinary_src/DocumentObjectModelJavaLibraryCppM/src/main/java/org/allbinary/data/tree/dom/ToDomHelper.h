@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_TODOMHELPER_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_TODOMHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>

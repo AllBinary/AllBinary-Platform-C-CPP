@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_PAYMENTGATEWAYHELPER_H
         #define ADMIN_TAGHELPERS_PAYMENTGATEWAYHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -77,19 +83,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicTable.h"
+        #include "admin/taghelpers/BasicTable.h"
 
 class PaymentGatewayHelper: public BasicTable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: WeblisketSession weblisketSession;
+    private: WeblisketSession* weblisketSession;
 
-    private: const HttpServletRequest httpServletRequest;
+    private: HttpServletRequest* httpServletRequest;
 
-    private: const Portion portion;
+    private: Portion* portion;
 
-public: PaymentGatewayHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: PaymentGatewayHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
     public: std::string insert();
 

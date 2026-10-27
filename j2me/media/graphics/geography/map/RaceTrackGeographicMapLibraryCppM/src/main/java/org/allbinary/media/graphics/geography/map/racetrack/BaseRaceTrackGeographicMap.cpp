@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/string/CommonStrings.h>
@@ -62,21 +68,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RaceTrackGeographicMapInterface.h"
-#include "RaceTrackInfo.h"
-#include "RaceTrackData.h"
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapInterface.h"
+#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackInfo.h"
+#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackData.h"
 
 class BaseRaceTrackGeographicMap: public BasicGeographicMap, public RaceTrackGeographicMapInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: RaceTrackInfo raceTrackInfo;
+    private: RaceTrackInfo* raceTrackInfo;
 
-    private: RaceTrackData raceTrackData;
+    private: RaceTrackData* raceTrackData;
 
-    private: BasicGeographicMap miniGeographicMap;
+    private: BasicGeographicMap* miniGeographicMap;
 
-public: BaseRaceTrackGeographicMap(RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData, AllBinaryTiledLayer tiledLayer, BasicGeographicMap miniGeographicMap, GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory geographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory geographicMapCellTypeFactory) : BasicGeographicMap(raceTrackInfo.getId(), raceTrackInfo.getName(), raceTrackData.getCellTypeIdToGeographicMapCellTypeArray(), tiledLayer, raceTrackInfo.getForegroundBasicColor(), raceTrackInfo.getBackgroundBasicColor(), geographicMapCellPositionFactoryInterface, geographicMapCellPositionBaseFactory, geographicMapCellTypeFactory){
+public: BaseRaceTrackGeographicMap(RaceTrackInfo* raceTrackInfo, RaceTrackData* raceTrackData, AllBinaryTiledLayer* tiledLayer, BasicGeographicMap* miniGeographicMap, GeographicMapCellPositionFactoryInterface* geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory* geographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory* geographicMapCellTypeFactory) : BasicGeographicMap(raceTrackInfo->getId(), raceTrackInfo->getName(), raceTrackData->getCellTypeIdToGeographicMapCellTypeArray(), tiledLayer, raceTrackInfo->getForegroundBasicColor(), raceTrackInfo->getBackgroundBasicColor(), geographicMapCellPositionFactoryInterface, geographicMapCellPositionBaseFactory, geographicMapCellTypeFactory){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,44 +96,44 @@ this->raceTrackData= raceTrackData;
 this->miniGeographicMap= miniGeographicMap;
     
 
-    AllBinaryTiledLayer miniTiledLayer = this->miniGeographicMap.getAllBinaryTiledLayer();;
+    AllBinaryTiledLayer* miniTiledLayer = this->miniGeographicMap->getAllBinaryTiledLayer();;
     
 
-                        if(miniTiledLayer.getColumns() != this->getGeographicMapCellPositionFactory().getColumns())
+                        if(miniTiledLayer->getColumns() != this->getGeographicMapCellPositionFactory()->getColumns())
                         
                                     {
                                     
-    std::string error = StringMaker().append("RaceTrackMap has incorrect Mini Map columns: ").appendint(miniTiledLayer.getColumns()).append(" != ").appendint(this->getGeographicMapCellPositionFactory().getColumns()).toString();;
+    std::string error = (new StringMaker())->append("RaceTrackMap has incorrect Mini Map columns: ")->appendint(miniTiledLayer->getColumns())->append(" != ")->appendint(this->getGeographicMapCellPositionFactory()->getColumns())->toString();;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR);
+this->logUtil->putF(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR);
     
 
 
 
-                            throw Exception(error);
+                            throw new Exception(error);
                     
 
                                     }
                                 
 
-                        if(miniTiledLayer.getRows() != this->getGeographicMapCellPositionFactory().getRows())
+                        if(miniTiledLayer->getRows() != this->getGeographicMapCellPositionFactory()->getRows())
                         
                                     {
                                     
     std::string error = "RaceTrackMap has incorrect Mini Map rows";;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR);
+this->logUtil->putF(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR);
     
 
 
 
-                            throw Exception(error);
+                            throw new Exception(error);
                     
 
                                     }
@@ -135,7 +141,7 @@ this->logUtil.putF(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR);
 }
 
 
-    public: RaceTrackInfo getRaceTrackInfo(){
+    public: RaceTrackInfo* getRaceTrackInfo(){
 
 
 
@@ -145,19 +151,19 @@ this->logUtil.putF(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR);
 }
 
 
-    public: void setRaceTrackInfo(RaceTrackInfo aRaceTrackInfo){
+    public: void setRaceTrackInfo(RaceTrackInfo* aRaceTrackInfo){
 this->raceTrackInfo= aRaceTrackInfo;
     
 }
 
 
-    public: void setMiniBasicGeographicMap(BasicGeographicMap miniBasicGeographicMap){
+    public: void setMiniBasicGeographicMap(BasicGeographicMap* miniBasicGeographicMap){
 this->miniGeographicMap= miniBasicGeographicMap;
     
 }
 
 
-    public: BasicGeographicMap getMiniBasicGeographicMap(){
+    public: BasicGeographicMap* getMiniBasicGeographicMap(){
 
 
 
@@ -167,7 +173,7 @@ this->miniGeographicMap= miniBasicGeographicMap;
 }
 
 
-    public: RaceTrackData getRaceTrackData(){
+    public: RaceTrackData* getRaceTrackData(){
 
 
 
@@ -177,7 +183,7 @@ this->miniGeographicMap= miniBasicGeographicMap;
 }
 
 
-    public: void setRaceTrackData(RaceTrackData raceTrackData){
+    public: void setRaceTrackData(RaceTrackData* raceTrackData){
 this->raceTrackData= raceTrackData;
     
 }

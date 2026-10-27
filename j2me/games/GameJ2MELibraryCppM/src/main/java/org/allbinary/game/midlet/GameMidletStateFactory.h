@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_GAMEMIDLETSTATEFACTORY_H
         #define ORG_ALLBINARY_GAME_MIDLET_GAMEMIDLETSTATEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/state/GameState.h>
@@ -50,19 +56,19 @@ class GameMidletStateFactory
             : public Object
          {
 
-    private: static const GameMidletStateFactory INSTANCE = GameMidletStateFactory();
+    private: static GameMidletStateFactory* INSTANCE() { static std::unique_ptr<GameMidletStateFactory> value(new GameMidletStateFactory()); return value.get(); }
 
-    public: static GameMidletStateFactory getInstance();
+    public: static GameMidletStateFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: GameState currentGameState = GameStateFactory::getInstance().NO_GAME_STATE;
+    private: GameState* currentGameState = GameStateFactory::getInstance()->NO_GAME_STATE;
 
 private: GameMidletStateFactory();
 
-    public: GameState getCurrentGameState();
+    public: GameState* getCurrentGameState();
 
-    public: void setCurrentGameState(GameState currentGameState);
+    public: void setCurrentGameState(GameState* currentGameState);
 
 };
 

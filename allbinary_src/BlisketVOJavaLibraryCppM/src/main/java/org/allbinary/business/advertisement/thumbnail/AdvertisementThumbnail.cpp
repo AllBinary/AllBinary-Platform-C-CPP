@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/control/contraints/size/TwoDimensionalConstraintInterface.h>
@@ -41,17 +47,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdvertisementThumbnailInterface.h"
+        #include "org/allbinary/business/advertisement/thumbnail/AdvertisementThumbnailInterface.h"
 
 class AdvertisementThumbnail
             : public Object
-        : public AdvertisementThumbnailInterface {
+        , public AdvertisementThumbnailInterface {
 
     private: std::string imageFileName;
 
     private: std::string imageUrl;
 
-    private: TwoDimensionalConstraintInterface constraint;
+    private: TwoDimensionalConstraintInterface* constraint;
 
 public: AdvertisementThumbnail(){
 }
@@ -77,7 +83,7 @@ public: AdvertisementThumbnail(){
 }
 
 
-    public: TwoDimensionalConstraintInterface getTwoDimensionalConstraint(){
+    public: TwoDimensionalConstraintInterface* getTwoDimensionalConstraint(){
 
 
 

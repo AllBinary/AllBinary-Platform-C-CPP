@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -59,17 +65,17 @@
         
 class WorkFlowEntityInterface: public BasicDataTableInterface {
 
-    BasicArrayList get(std::string storeName)
+    public: virtual BasicArrayList* get(std::string storeName) = 0;
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    WorkFlowInterface get(std::string name, std::string storeName)
+    public: virtual WorkFlowInterface* get(std::string name, std::string storeName) = 0;
 
-    void delete_(std::string name, std::string storeName)
+    public: virtual void delete_(std::string name, std::string storeName) = 0;
 
-    void insert(BasicArrayList values)
+    public: virtual void insert(BasicArrayList* values) = 0;
 
-    void update(HashMap<Object*, Object*> updatedValues)
+    public: virtual void update(HashMap<Object*, Object*>* updatedValues) = 0;
 
 };
 

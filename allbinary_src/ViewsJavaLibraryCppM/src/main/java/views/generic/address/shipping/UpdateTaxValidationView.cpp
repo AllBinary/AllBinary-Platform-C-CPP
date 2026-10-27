@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -74,11 +80,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShippingAddressView.h"
+        #include "views/generic/address/shipping/ShippingAddressView.h"
 
 class UpdateTaxValidationView: public ShippingAddressView, public ValidationComponentInterface {
 
-public: UpdateTaxValidationView(TransformInfoInterface transformInfoInterface) : ShippingAddressView(transformInfoInterface){
+public: UpdateTaxValidationView(TransformInfoInterface* transformInfoInterface) : ShippingAddressView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,14 +96,14 @@ public: UpdateTaxValidationView(TransformInfoInterface transformInfoInterface) :
 
                 //@Throws(Exception.constructor)
             
-    public: Boolean isValid(){
-this->streetAddress= StreetAddress(this->getRequest());
+    public: bool isValid(){
+this->streetAddress= new StreetAddress(this->getRequest());
     
 
-    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(this->getTransformInfoInterface().getStoreName());;
+    StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(this->getTransformInfoInterface()->getStoreName());;
     
 
-                        if(TaxFactory::getInstance().getInstance(this->abeClientInformation, storeFrontInterface).isValid(this->streetAddress, storeFrontInterface) == Boolean::FALSE)
+                        if(TaxFactory::getInstance()->getInstance(this->abeClientInformation, storeFrontInterface)->isValid(this->streetAddress, storeFrontInterface) == Boolean::FALSE)
                         
                                     {
                                     
@@ -110,10 +116,10 @@ this->streetAddress= StreetAddress(this->getRequest());
                                     }
                                 
 
-    ShippingAddressesEntity billingAddressesEntity = ShippingAddressesEntity(this->getWeblisketSession().getUserName());;
+    ShippingAddressesEntity* billingAddressesEntity = new ShippingAddressesEntity(this->getWeblisketSession()->getUserName());;
     
 
-    BasicArrayList streetAddressList = billingAddressesEntity.get();;
+    BasicArrayList* streetAddressList = billingAddressesEntity->get();;
     
 
                         if(streetAddressList == 
@@ -134,7 +140,7 @@ this->streetAddress= StreetAddress(this->getRequest());
     int32_t count = 0;;
     
 
-    int32_t size = streetAddressList.size();;
+    int32_t size = streetAddressList->size();;
     
 
 
@@ -144,10 +150,10 @@ this->streetAddress= StreetAddress(this->getRequest());
     int32_t index = 0;index < size; index++)
         {
 
-    StreetAddress aStreetAddress = streetAddressList.get(index);;
+    StreetAddress* aStreetAddress = dynamic_cast<StreetAddress*>(streetAddressList->get(index));;
     
 
-                        if(aStreetAddress.getName().compareTo(ShippingAddressData::TAX) == 0)
+                        if(aStreetAddress->getName().compareTo(ShippingAddressData::TAX) == 0)
                         
                                     {
                                     count++;
@@ -184,7 +190,7 @@ this->streetAddress= StreetAddress(this->getRequest());
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -194,7 +200,7 @@ this->streetAddress= StreetAddress(this->getRequest());
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

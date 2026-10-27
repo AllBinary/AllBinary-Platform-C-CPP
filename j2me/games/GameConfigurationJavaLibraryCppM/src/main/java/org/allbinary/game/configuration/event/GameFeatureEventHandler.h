@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEFEATUREEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEFEATUREEVENTHANDLER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -50,20 +56,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameFeatureListenerInterface.h"
-#include "GameFeatureEvent.h"
+        #include "org/allbinary/game/configuration/event/GameFeatureListenerInterface.h"
+#include "org/allbinary/game/configuration/event/GameFeatureEvent.h"
 
 class GameFeatureEventHandler: public BasicEventHandler {
 
-    private: static const GameFeatureEventHandler gameKeyEventHandler = GameFeatureEventHandler();
+    private: static GameFeatureEventHandler* gameKeyEventHandler() { static std::unique_ptr<GameFeatureEventHandler> value(new GameFeatureEventHandler()); return value.get(); }
 
-    public: static GameFeatureEventHandler getInstance();
+    public: static GameFeatureEventHandler* getInstance();
 
 private: GameFeatureEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
 };
 

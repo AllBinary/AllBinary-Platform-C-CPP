@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_SCROLLMAPUPGAMEINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_INPUT_SCROLLMAPUPGAMEINPUTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/event/GameKeyEvent.h>
@@ -47,16 +53,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ScrollMapGameInputProcessor.h"
-#include "ScrollMapPlayerGameInput.h"
+        #include "org/allbinary/game/input/ScrollMapGameInputProcessor.h"
+#include "org/allbinary/game/input/ScrollMapPlayerGameInput.h"
 
 class ScrollMapUpGameInputProcessor: public ScrollMapGameInputProcessor {
 
-public: ScrollMapUpGameInputProcessor(ScrollMapPlayerGameInput scrollMapPlayerGameInput);
+public: ScrollMapUpGameInputProcessor(ScrollMapPlayerGameInput* scrollMapPlayerGameInput);
 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent);
+    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent);
 
 };
 

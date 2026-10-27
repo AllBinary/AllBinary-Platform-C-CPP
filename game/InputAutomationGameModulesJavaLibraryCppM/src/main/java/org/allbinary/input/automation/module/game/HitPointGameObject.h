@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -54,8 +60,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MeteredGameObject.h"
-#include "HitPointGameObjectInterface.h"
+        #include "org/allbinary/input/automation/module/game/MeteredGameObject.h"
+#include "org/allbinary/input/automation/module/game/HitPointGameObjectInterface.h"
 
 class HitPointGameObject: public MeteredGameObject, public HitPointGameObjectInterface {
 
@@ -69,7 +75,7 @@ class HitPointGameObject: public MeteredGameObject, public HitPointGameObjectInt
 
     private: const std::string IS_CLOSE_DEATH_LABEL = "isCloseDeath: ";
 
-public: HitPointGameObject(std::vector<BufferedImage> bufferedImage, Integer minX, Integer maxX, Integer y);
+public: HitPointGameObject(std::vector<BufferedImage*> bufferedImage, int32_t minX, int32_t maxX, int32_t y);
 
     public: bool isMoreThan(float aFloat);
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANDROID_ACTIVITY_NULLPROGRESSACTIVITY_H
         #define ORG_ALLBINARY_ANDROID_ACTIVITY_NULLPROGRESSACTIVITY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Runnable.h"
@@ -43,15 +49,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProgressActivityInterface.h"
+        #include "org/allbinary/android/activity/ProgressActivityInterface.h"
 
 class NullProgressActivity
             : public Object
-        : public ProgressActivityInterface {
+        , public ProgressActivityInterface {
 
-    public: static const NullProgressActivity NULL_PROGRESS_ACTIVITY = NullProgressActivity();
+    public: static NullProgressActivity* NULL_PROGRESS_ACTIVITY() { static std::unique_ptr<NullProgressActivity> value(new NullProgressActivity()); return value.get(); }
 
-    public: void runOnUiThread(Runnable action);
+    public: void runOnUiThread(Runnable* action);
 
     public: void onDismissTitleProgressBar();
 

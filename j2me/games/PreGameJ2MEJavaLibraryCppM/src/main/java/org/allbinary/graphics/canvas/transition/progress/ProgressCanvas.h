@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSCANVAS_H
         #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSCANVAS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/CommandListener.h>
@@ -113,40 +119,40 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        //#include "ProgressPaintable.h"
-#include "ProgressEndListener.h"
+        //#include "org/allbinary/graphics/canvas/transition/progress/ProgressPaintable.h"
+#include "org/allbinary/graphics/canvas/transition/progress/ProgressEndListener.h"
 
 class ProgressCanvas: public RunnableCanvas, public PaintableInterface, public UpdateMyFontInterface {
 
     protected: bool hasPainted= false;
 
-    private: BasicColor backgroundBasicColor;
+    private: BasicColor* backgroundBasicColor;
 
 //inner= member=true isStatic=
 class ProgressPaintable: public Paintable {
 
-    ProgressCanvas progressCanvas;
+    ProgressCanvas* progressCanvas;
 
-: ProgressPaintable(ProgressCanvas progressCanvas);
+: ProgressPaintable(ProgressCanvas* progressCanvas);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 
             
-    public: const Paintable GAUGE_PAINTABLE = ProgressPaintable(this);
+    public: Paintable* GAUGE_PAINTABLE = new ProgressPaintable(this);
 
     private: const float maxValue = 100.0;
 
-    protected: ABCustomGaugeItem gauge;
+    protected: ABCustomGaugeItem* gauge;
 
     private: const std::string TEXT = this->commonStrings.LOADING;
 
-    private: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
 
-    private: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
+    private: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
 
-    protected: AllBinaryMidlet allbinaryMidlet = AllBinaryMidlet::getNullInstance();
+    protected: AllBinaryMidlet* allbinaryMidlet = AllBinaryMidlet::getNullInstance();
 
     private: float value= 0.0;
 
@@ -154,35 +160,35 @@ class ProgressPaintable: public Paintable {
 
     private: bool background = true;
 
-    protected: PaintableInterface paintable = this->GAUGE_PAINTABLE;
+    protected: PaintableInterface* paintable = this->GAUGE_PAINTABLE;
 
     public: bool inProgress = false;
 
-    private: const Processor IN_GAME_PROCESSOR = class extends Processor
+    private: Processor* IN_GAME_PROCESSOR = class extends Processor
                                 {
                                 
-    const ThreadPool pathFindingThreadPool = PathFindingThreadPool::getInstance();
+    ThreadPool* pathFindingThreadPool = PathFindingThreadPool::getInstance();
                 //@Throws(Exception.constructor)
             
     public: void process();
                                 }
                             ;
 
-    public: Processor inGameProcessor = Processor::getInstance();
+    public: Processor* inGameProcessor = Processor::getInstance();
 
-    public: ProgressEndListener progressEndListener = ProgressEndListener::instance;
+    public: ProgressEndListener* progressEndListener = ProgressEndListener::instance;
 
-: ProgressCanvas(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+: ProgressCanvas(std::string title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
-    public: void init(AllBinaryMidlet gameMidlet);
+    public: void init(AllBinaryMidlet* gameMidlet);
 
                 //@Throws(Exception.constructor)
             
-    public: void update(Graphics graphics);
+    public: void update(Graphics* graphics);
 
-    public: void initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener* cmdListener);
 
     protected: float getMaxValue();
 
@@ -218,11 +224,11 @@ class ProgressPaintable: public Paintable {
 
     protected: void setValue(int32_t value);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: void paint2(Graphics graphics);
+    public: void paint2(Graphics* graphics);
 
-    public: void paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics* graphics);
 
     protected: float getValue();
 

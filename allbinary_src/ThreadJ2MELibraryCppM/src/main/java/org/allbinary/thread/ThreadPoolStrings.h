@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_THREAD_THREADPOOLSTRINGS_H
         #define ORG_ALLBINARY_THREAD_THREADPOOLSTRINGS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class ThreadPoolStrings
             : public Object
          {
 
-    private: static ThreadPoolStrings instance() { return ThreadPoolStrings(); }
+    private: static ThreadPoolStrings* instance() { static std::unique_ptr<ThreadPoolStrings> value(new ThreadPoolStrings()); return value.get(); }
 
-    public: static ThreadPoolStrings getInstance();
+    public: static ThreadPoolStrings* getInstance();
 
     public: const std::string ADD_TASK = "addTask";
 

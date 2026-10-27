@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/score/displayable/HighScoresCanvas.h>
 
       
@@ -39,11 +45,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HighScoresCanvasInputProcessor.h"
+        #include "org/allbinary/game/score/HighScoresCanvasInputProcessor.h"
 
 class HighScoresCanvasInputProcessorFactoryInterface {
 
-    HighScoresCanvasInputProcessor getInstance(HighScoresCanvas highScoresCanvas)
+    public: virtual HighScoresCanvasInputProcessor* getInstance(HighScoresCanvas* highScoresCanvas) = 0;
 
 };
 

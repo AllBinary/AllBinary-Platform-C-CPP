@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Math.h"
@@ -43,15 +49,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Color.h"
+        #include "org/allbinary/graphics/color/Color.h"
 
 class ColorUtil
             : public Object
          {
 
-    private: static ColorUtil instance() { return ColorUtil(); }
+    private: static ColorUtil* instance() { static std::unique_ptr<ColorUtil> value(new ColorUtil()); return value.get(); }
 
-    public: static ColorUtil getInstance(){
+    public: static ColorUtil* getInstance(){
 
 
 
@@ -61,9 +67,9 @@ class ColorUtil
 }
 
 
-    public: bool isGreyishOrWhiteLike(Color color){
+    public: bool isGreyishOrWhiteLike(Color* color){
 
-                        if(Math::abs(color.getRed() -color.getGreen()) > 20 || Math::abs(color.getRed() -color.getBlue()) > 20 || Math::abs(color.getGreen() -color.getBlue()) > 20)
+                        if(Math::abs(color->getRed() -color->getGreen()) > 20 || Math::abs(color->getRed() -color->getBlue()) > 20 || Math::abs(color->getGreen() -color->getBlue()) > 20)
                         
                                     {
                                     
@@ -84,9 +90,9 @@ class ColorUtil
 }
 
 
-    public: bool isDark(Color color){
+    public: bool isDark(Color* color){
 
-                        if(color.getRed() < 0x77 && color.getRed() < 0x77 && color.getRed() < 0x77)
+                        if(color->getRed() < 0x77 && color->getRed() < 0x77 && color->getRed() < 0x77)
                         
                                     {
                                     

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILEFACTORY_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_FILEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -43,23 +49,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFile.h"
+        #include "org/allbinary/logic/io/file/AbFile.h"
 
 class FileFactory
             : public Object
          {
 
-    private: static FileFactory instance() { return FileFactory(); }
+    private: static FileFactory* instance() { static std::unique_ptr<FileFactory> value(new FileFactory()); return value.get(); }
 
-    public: static FileFactory getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public: AbFile getInstance(std::string filePath);
+    public: static FileFactory* getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: AbFile getInstance(AbFile file, std::string childFilePath);
+    public: AbFile* getInstance(std::string filePath);
+
+                //@Throws(Exception.constructor)
+            
+    public: AbFile* getInstance(AbFile* file, std::string childFilePath);
 
                 //@Throws(Exception.constructor)
             

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Math.h"
@@ -52,11 +58,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicGraphicsPipeline.h"
+        #include "org/allbinary/graphics/pipeline/BasicGraphicsPipeline.h"
 
 class GraphicsPipeline: public BasicGraphicsPipeline {
 
-public: GraphicsPipeline(BasicArrayList points) : BasicGraphicsPipeline(points){
+public: GraphicsPipeline(BasicArrayList* points) : BasicGraphicsPipeline(points){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -70,7 +76,7 @@ public: GraphicsPipeline(BasicArrayList points) : BasicGraphicsPipeline(points){
             
     public: void rotateTheta(double aTheta){
 
-    BasicArrayList newVector = BasicArrayListD();;
+    BasicArrayList* newVector = new BasicArrayListD();;
     
 
     int32_t size = this->pointBasicArrayList.size();;
@@ -83,18 +89,18 @@ public: GraphicsPipeline(BasicArrayList points) : BasicGraphicsPipeline(points){
     int32_t index = 0;index < size; index++)
         {
 
-    GPoint secondPoint = pointBasicArrayList.get(index);;
+    GPoint* secondPoint = dynamic_cast<GPoint*>(pointBasicArrayList.get(index));;
     
 
-    double secondX = (secondPoint.getX() *Math::cos(aTheta)) -(secondPoint.getY() *Math::sin(aTheta));;
+    double secondX = (secondPoint->getX() *Math::cos(aTheta)) -(secondPoint->getY() *Math::sin(aTheta));;
     
 
-    double secondY = (secondPoint.getX() *Math::sin(aTheta)) +(secondPoint.getY() *Math::cos(aTheta));;
+    double secondY = (secondPoint->getX() *Math::sin(aTheta)) +(secondPoint->getY() *Math::cos(aTheta));;
     
 
-    GPoint point = PointFactory::getInstance().createXY((static_cast<int32_t>(secondX)), (static_cast<int32_t>(secondY)));;
+    GPoint* point = PointFactory::getInstance()->createXY((static_cast<int32_t>(secondX)), (static_cast<int32_t>(secondY)));;
     
-newVector.add(point);
+newVector->add(point);
     
 }
 

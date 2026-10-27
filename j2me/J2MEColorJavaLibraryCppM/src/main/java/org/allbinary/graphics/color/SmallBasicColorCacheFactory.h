@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -46,30 +52,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicColor.h"
-#include "BasicColorFactory.h"
+        #include "org/allbinary/graphics/color/BasicColor.h"
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
 
 class SmallBasicColorCacheFactory
             : public Object
          {
 
-    private: static SmallBasicColorCacheFactory instance() { return SmallBasicColorCacheFactory(); }
+    private: static SmallBasicColorCacheFactory* instance() { static std::unique_ptr<SmallBasicColorCacheFactory> value(new SmallBasicColorCacheFactory()); return value.get(); }
 
-    public: static SmallBasicColorCacheFactory getInstance();
+    public: static SmallBasicColorCacheFactory* getInstance();
 
     private: const int32_t SIZE = 255;
 
     private: const std::vector<int32_t> INDEX_TO_COLOR = std::vector<int32_t>(this->SIZE);
 
-    private: const std::vector<BasicColor> BASIC_COLOR_ARRAY = std::vector<BasicColor>(this->SIZE);
+    private: const std::vector<BasicColor*> BASIC_COLOR_ARRAY = std::vector<BasicColor*>(this->SIZE);
 
     private: int32_t colorIndex = 0;
 
 private: SmallBasicColorCacheFactory();
 
-    public: void add(BasicColor basicDefaultColor);
+    public: void add(BasicColor* basicDefaultColor);
 
-    public: BasicColor getAndOrCreate(int32_t colorAsInt);
+    public: BasicColor* getAndOrCreate(int32_t colorAsInt);
 
 };
 

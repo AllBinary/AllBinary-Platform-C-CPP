@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGECACHEFACTORY_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGECACHEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/image/ImageCache.h>
@@ -44,15 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLImageCache.h"
+        #include "org/allbinary/image/opengles/OpenGLImageCache.h"
 //ImageCacheOpenGLESJavaLibrary
 class OpenGLImageCacheFactory
             : public Object
          {
 
-    private: static const ImageCache IMAGE_CACHE = OpenGLImageCache();
+    private: static inline ImageCache* IMAGE_CACHE = new OpenGLImageCache();
 
-    public: static ImageCache getInstance();
+    public: static ImageCache* getInstance();
 
     public: static void init();
 

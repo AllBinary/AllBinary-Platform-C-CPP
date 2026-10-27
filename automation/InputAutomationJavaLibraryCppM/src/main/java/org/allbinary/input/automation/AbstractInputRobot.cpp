@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -53,25 +59,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Point.h"
-#include "PointHelper.h"
-#include "Rectangle.h"
+        #include "org/allbinary/input/automation/Point.h"
+#include "org/allbinary/input/automation/PointHelper.h"
+#include "org/allbinary/input/automation/Rectangle.h"
 
 class AbstractInputRobot
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: HelpSet helpSet;
+    private: HelpSet* helpSet;
 
-public: AbstractInputRobot(HelpSet helpSet){
+public: AbstractInputRobot(HelpSet* helpSet){
 this->setHelpSet(helpSet);
     
 }
 
 
-    public: HelpSet getHelpSet(){
+    public: HelpSet* getHelpSet(){
 
 
 
@@ -81,45 +87,45 @@ this->setHelpSet(helpSet);
 }
 
 
-    public: void mouseMove(Point point){
-this->mouseMove(point.x, point.y);
+    public: void mouseMove(Point* point){
+this->mouseMove(point->x, point->y);
     
-this->logUtil.putF("Moved Mouse To: x: " +point.x +" y: " +point.y, this, "moveMouse");
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: void mouseMoveToTarget(Rectangle rectangle, Integer x, Integer y){
-
-    Point point = PointHelper::getCenterPoint(rectangle);;
-    
-this->mouseMove(point.x +x, point.y +y);
-    
-this->logUtil.putF("Moved Mouse To: x: " +point.x +" y: " +point.y +" in the middle of: " +rectangle, this, "moveMouseToTarget");
+this->logUtil->putF("Moved Mouse To: x: " +point->x +" y: " +point->y, this, "moveMouse");
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void mouseMoveToTarget(Rectangle rectangle){
+    public: void mouseMoveToTarget(Rectangle* rectangle, int32_t x, int32_t y){
+
+    Point* point = PointHelper::getCenterPoint(rectangle);;
+    
+this->mouseMove(point->x +x, point->y +y);
+    
+this->logUtil->putF("Moved Mouse To: x: " +point->x +" y: " +point->y +" in the middle of: " +rectangle, this, "moveMouseToTarget");
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: void mouseMoveToTarget(Rectangle* rectangle){
 this->mouseMoveToTarget(rectangle, 0, 0);
     
 }
 
 
-    public: void mouseMove(Integer x, Integer y){
+    public: void mouseMove(int32_t x, int32_t y){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    private: void setHelpSet(HelpSet helpSet){
+    private: void setHelpSet(HelpSet* helpSet){
 this->helpSet= helpSet;
     
 }

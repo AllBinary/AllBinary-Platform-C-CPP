@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOMSEARCHHELPER_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_DOMSEARCHHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,21 +66,21 @@ class DomSearchHelper
             : public Object
          {
 
-    public: static Node getNodeNoThrow(std::string nodeName, NodeList nodeList);
+    public: static Node* getNodeNoThrow(std::string nodeName, NodeList* nodeList);
 
                 //@Throws(Exception.constructor)
             
-    public: static Node getNode(std::string nodeName, NodeList nodeList);
+    public: static Node* getNode(std::string nodeName, NodeList* nodeList);
 
                 //@Throws(Exception.constructor)
             
-    public: static NodeList getChildNodeList(std::string nodeName, NodeList nodeList);
+    public: static NodeList* getChildNodeList(std::string nodeName, NodeList* nodeList);
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList getAllNodes(std::string nodeName, NodeList nodeList);
+    public: static BasicArrayList* getAllNodes(std::string nodeName, NodeList* nodeList);
 
-    public: static BasicArrayList getAllNodesNoThrow(std::string nodeName, NodeList nodeList);
+    public: static BasicArrayList* getAllNodesNoThrow(std::string nodeName, NodeList* nodeList);
 
 private: DomSearchHelper();
 

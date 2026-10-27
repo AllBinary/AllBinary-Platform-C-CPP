@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -49,9 +55,9 @@ class LockableFeatureFactory
             : public Object
          {
 
-    private: static LockableFeatureFactory instance() { return LockableFeatureFactory(); }
+    private: static LockableFeatureFactory* instance() { static std::unique_ptr<LockableFeatureFactory> value(new LockableFeatureFactory()); return value.get(); }
 
-    public: static LockableFeatureFactory getInstance(){
+    public: static LockableFeatureFactory* getInstance(){
 
 
 
@@ -61,9 +67,9 @@ class LockableFeatureFactory
 }
 
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
-    public: BasicArrayList getList(){
+    public: BasicArrayList* getList(){
 
 
 

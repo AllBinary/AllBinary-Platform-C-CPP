@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -58,23 +64,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HealthGraphic.h"
+        #include "org/allbinary/game/layer/hud/basic/HealthGraphic.h"
 
 class ImageHealthGraphic: public HealthGraphic {
 
-    private: std::vector<Image> image;
+    private: std::vector<Image*> image;
 
-public: ImageHealthGraphic(AnimationInterface animationInterface, HealthInterface healthInterface, int32_t location, int32_t direction) : HealthGraphic(animationInterface, healthInterface, location, direction){
+public: ImageHealthGraphic(AnimationInterface* animationInterface, HealthInterface* healthInterface, int32_t location, int32_t direction) : HealthGraphic(animationInterface, healthInterface, location, direction){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->image= std::vector<Image>(this->healthInterface.getMaxHealth());
+this->image= std::vector<Image*>(this->healthInterface.getMaxHealth());
     
 
-    ImageCacheFactory imageCacheFactory = ImageCacheFactory::getInstance();;
+    ImageCacheFactory* imageCacheFactory = ImageCacheFactory::getInstance();;
     
 
 
@@ -83,7 +89,7 @@ this->image= std::vector<Image>(this->healthInterface.getMaxHealth());
                         for (
     int32_t numOfHealth = 0;numOfHealth <= max; numOfHealth++)
         {
-this->image[numOfHealth]= imageCacheFactory.get(this, numOfHealth +1 *10, 10);
+this->image[numOfHealth]= imageCacheFactory->get(this, numOfHealth +1 *10, 10);
     
 }
 
@@ -110,8 +116,8 @@ this->animationInterface.paint(this->image[numOfHealth].getGraphics(), numOfHeal
 }
 
 
-    public: void paint(Graphics graphics){
-graphics.drawImage(this->image[max], x, y, Anchor::TOP_LEFT);
+    public: void paint(Graphics* graphics){
+graphics->drawImage(this->image[max], x, y, Anchor::TOP_LEFT);
     
 }
 

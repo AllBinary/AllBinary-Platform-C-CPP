@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_CONSOLIDATEMOTIONRECTANGLES_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_CONSOLIDATEMOTIONRECTANGLES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/awt.h>
@@ -56,21 +62,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionRectangles.h"
-#include "MotionRectangle.h"
-#include "Rectangle.h"
+        #include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
+#include "org/allbinary/media/image/comparison/motion/MotionRectangle.h"
+#include "org/allbinary/media/image/comparison/motion/Rectangle.h"
 
 class ConsolidateMotionRectangles: public MotionRectangles {
 
-    private: static const std::string NAME = "consolidatedMotionRectangles_";
+    private: static inline const std::string NAME = "consolidatedMotionRectangles_";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: ConsolidateMotionRectangles(MotionRectangles motionRectangles);
+public: ConsolidateMotionRectangles(MotionRectangles* motionRectangles);
 
     private: void consolidateMotionRectangles();
 
-    private: void remove(BasicArrayList removeVector);
+    private: void remove(BasicArrayList* removeVector);
 
 };
 

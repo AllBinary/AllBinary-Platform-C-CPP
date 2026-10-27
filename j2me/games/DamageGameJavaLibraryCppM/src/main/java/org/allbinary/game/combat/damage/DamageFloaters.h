@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEFLOATERS_H
         #define ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEFLOATERS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graphics/paint/Paintable.h>
 
       
@@ -45,9 +51,9 @@
         
 class DamageFloaters: public Paintable {
 
-    private: static const DamageFloaters SINGLETON = DamageFloaters();
+    private: static DamageFloaters* SINGLETON() { static std::unique_ptr<DamageFloaters> value(new DamageFloaters()); return value.get(); }
 
-    public: static DamageFloaters getInstance();
+    public: static DamageFloaters* getInstance();
 
     public: void add(int32_t damage);
 

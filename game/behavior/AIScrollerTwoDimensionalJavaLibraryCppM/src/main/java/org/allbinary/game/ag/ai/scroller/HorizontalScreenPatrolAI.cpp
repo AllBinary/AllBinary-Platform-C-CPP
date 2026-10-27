@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -85,32 +93,32 @@
         
 class HorizontalScreenPatrolAI: public BasicAI {
 
-    public: static const Integer SOUND = SmallIntegerSingletonFactory::getInstance().getAt(433);
+    public: static inline int32_t SOUND = SmallIntegerSingletonFactory::getInstance()->getAt(433);
 
     protected: int32_t keyDirection = Canvas::LEFT;
 
-    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-    private: int32_t firingX = this->displayInfoSingleton.getLastHalfWidth();
+    private: int32_t firingX = this->displayInfoSingleton->getLastHalfWidth();
 
     private: int32_t firedIndex = 0;
 
     private: const int32_t MAX_FIRE = 28;
 
-    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(240);
+    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(240);
 
-    private: const PlayerQueue secondaryPlayerQueue = SecondaryPlayerQueueFactory::getInstance();
+    private: PlayerQueue* secondaryPlayerQueue = SecondaryPlayerQueueFactory::getInstance();
 
-    private: Sound sound;
+    private: Sound* sound;
 
-public: HorizontalScreenPatrolAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput) : BasicAI(ownerLayerInterface, gameInput){
+public: HorizontalScreenPatrolAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->sound= hashtable.get(HorizontalScreenPatrolAI::SOUND);
+this->sound= dynamic_cast<Sound*>(hashtable->get(HorizontalScreenPatrolAI::SOUND));
     
 
                         if(this->sound == 
@@ -121,7 +129,7 @@ this->sound= hashtable.get(HorizontalScreenPatrolAI::SOUND);
                                     
 
 
-                            throw Exception("No Sound Provided!!");
+                            throw new Exception("No Sound Provided!!");
                     
 
                                     }
@@ -131,48 +139,48 @@ this->sound= hashtable.get(HorizontalScreenPatrolAI::SOUND);
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
 super.processKeyAI(this->keyDirection);
     
 
-                        if(this->timeDelayHelper.isTimeTNT())
+                        if(this->timeDelayHelper->isTimeTNT())
                         
                                     {
                                     
-    AllBinaryLayer layerInterface = this->getOwnerLayerInterface();;
+    AllBinaryLayer* layerInterface = this->getOwnerLayerInterface();;
     
 
-    int32_t currentOwnerLayerX = layerInterface.getXP();;
+    int32_t currentOwnerLayerX = layerInterface->getXP();;
     
 
-                        if(currentOwnerLayerX <  -layerInterface.getWidth())
+                        if(currentOwnerLayerX <  -layerInterface->getWidth())
                         
                                     {
                                     
-    int32_t y = MyRandomFactory::getInstance().getAbsoluteNextIntAllowZero(50);;
+    int32_t y = MyRandomFactory::getInstance()->getAbsoluteNextIntAllowZero(50);;
     
-layerInterface.setPosition(this->displayInfoSingleton.getLastWidth() +layerInterface.getWidth() +50, y, layerInterface.getZP());
+layerInterface->setPosition(this->displayInfoSingleton->getLastWidth() +layerInterface->getWidth() +50, y, layerInterface->getZP());
     
 this->firedIndex= 0;
     
-this->firingX= this->displayInfoSingleton.getLastHalfWidth() +MyRandomFactory::getInstance().getNextInt(this->displayInfoSingleton.getLastHalfWidth());
+this->firingX= this->displayInfoSingleton->getLastHalfWidth() +MyRandomFactory::getInstance()->getNextInt(this->displayInfoSingleton->getLastHalfWidth());
     
-this->secondaryPlayerQueue.add(this->sound);
+this->secondaryPlayerQueue->add(this->sound);
     
 
                                     }
                                 
 
-                        if(currentOwnerLayerX < this->firingX && currentOwnerLayerX >  -layerInterface.getWidth())
+                        if(currentOwnerLayerX < this->firingX && currentOwnerLayerX >  -layerInterface->getWidth())
                         
                                     {
                                     super.processKeyAI(Canvas::KEY_NUM1);
     
 
-    AllBinaryGameLayerManager gameLayerManager = allBinaryLayerManager;;
+    AllBinaryGameLayerManager* gameLayerManager = dynamic_cast<AllBinaryGameLayerManager*>(allBinaryLayerManager);;
     
 
-    int32_t FIRE = (gameLayerManager.getGameInfo().getCurrentLevel() +12)>>2;;
+    int32_t FIRE = (gameLayerManager->getGameInfo()->getCurrentLevel() +12)>>2;;
     
 
                         if(FIRE > this->MAX_FIRE)
@@ -189,7 +197,7 @@ this->secondaryPlayerQueue.add(this->sound);
                                     {
                                     this->firedIndex= 0;
     
-this->firingX= Integer::MIN_VALUE;
+this->firingX= Integer.MIN_VALUE;
     
 
                                     }

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_VIEW_STATICTILELAYERINTOPOSITIONVIEWPOSITION_H
         #define ORG_ALLBINARY_GAME_VIEW_STATICTILELAYERINTOPOSITIONVIEWPOSITION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
 
       
@@ -57,11 +63,11 @@
         
 class StaticTileLayerIntoPositionViewPosition: public ViewPosition {
 
-    private: static Layer tiledLayer = NullLayer::getInstance();
+    private: static inline Layer* tiledLayer = NullLayer::getInstance();
 
-    public: static AllBinaryLayer layer = AllBinaryLayer::NULL_ALLBINARY_LAYER;
+    public: static inline AllBinaryLayer* layer = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-    public: static void setTiledLayer(AllBinaryTiledLayer tiledLayer);
+    public: static void setTiledLayer(AllBinaryTiledLayer* tiledLayer);
 
 public: StaticTileLayerIntoPositionViewPosition();
 

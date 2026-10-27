@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -44,7 +50,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LongData.h"
+        #include "org/allbinary/logic/java/number/LongData.h"
 
 class LongUtil
             : public Object
@@ -52,17 +58,17 @@ class LongUtil
 
     public: static std::string fillIn(std::string end){
 
-    StringMaker frameStringBuffer = StringMaker();;
+    StringMaker* frameStringBuffer = new StringMaker();;
     
 
-                        if(frameStringBuffer.length() < LongData::MAX_LONG_LENGTH)
+                        if(frameStringBuffer->length() < LongData::MAX_LONG_LENGTH)
                         
                                     {
                                     
-    CommonPhoneStrings commonPhoneStrings = CommonPhoneStrings::getInstance();;
+    CommonPhoneStrings* commonPhoneStrings = CommonPhoneStrings::getInstance();;
     
 
-    int32_t size = LongData::MAX_LONG_LENGTH -frameStringBuffer.length();;
+    int32_t size = LongData::MAX_LONG_LENGTH -frameStringBuffer->length();;
     
 
 
@@ -71,20 +77,20 @@ class LongUtil
                         for (
     int32_t index = 0;index < size; index++)
         {
-frameStringBuffer.append(commonPhoneStrings.ZERO);
+frameStringBuffer->append(commonPhoneStrings->ZERO);
     
 }
 
 
                                     }
                                 
-frameStringBuffer.append(end);
+frameStringBuffer->append(end);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return frameStringBuffer.toString();;
+                        return frameStringBuffer->toString();;
     
 }
 

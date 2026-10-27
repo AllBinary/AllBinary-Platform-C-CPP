@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_DISPLAY_BROWSER_DISPLAYINBROWSERCONTRAINTSINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_DISPLAY_BROWSER_DISPLAYINBROWSERCONTRAINTSINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,21 +48,21 @@
         
 class DisplayInBrowserContraintsInterface {
 
-    bool isMountable();
+    public: virtual bool isMountable() = 0;
 
-    bool isFrameable();
+    public: virtual bool isFrameable() = 0;
 
-    bool isQuickFrameable();
+    public: virtual bool isQuickFrameable() = 0;
 
-    void setMountable(bool canBeMounted);
+    public: virtual void setMountable(bool canBeMounted) = 0;
 
-    void setFrameable(bool canBeFramed);
+    public: virtual void setFrameable(bool canBeFramed) = 0;
 
-    void setQuickFrameable(bool canBeQuickFramed);
+    public: virtual void setQuickFrameable(bool canBeQuickFramed) = 0;
 
-    void setMountedLink(std::string mountedLink);
+    public: virtual void setMountedLink(std::string mountedLink) = 0;
 
-    std::string getMountedLink();
+    public: virtual std::string getMountedLink() = 0;
 
 };
 

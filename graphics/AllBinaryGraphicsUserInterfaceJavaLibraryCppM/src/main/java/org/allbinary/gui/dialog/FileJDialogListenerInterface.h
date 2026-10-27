@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/io/File.h>
 
       
@@ -47,7 +53,7 @@
         
 class FileJDialogListenerInterface {
 
-    void onFiles(std::vector<File> files);
+    public: virtual void onFiles(std::vector<File*> files) = 0;
 
 };
 

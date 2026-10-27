@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_ALWAYSREPAINTBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_ALWAYSREPAINTBEHAVIOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Thread.h"
@@ -67,19 +73,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RepaintBehavior.h"
+        #include "org/allbinary/game/displayable/RepaintBehavior.h"
 
 class AlwaysRepaintBehavior: public RepaintBehavior {
 
-    private: static const AlwaysRepaintBehavior instanceC = AlwaysRepaintBehavior();
+    private: static AlwaysRepaintBehavior* instanceC() { static std::unique_ptr<AlwaysRepaintBehavior> value(new AlwaysRepaintBehavior()); return value.get(); }
 
-    public: static AlwaysRepaintBehavior getInstance();
+    public: static AlwaysRepaintBehavior* getInstance();
 
     private: const std::string NAME = "AlwaysRepaintBehavior";
 
-    public: void repaint(Canvas canvas);
+    public: void repaint(Canvas* canvas);
 
-    public: void onChangeRepaint(Canvas canvas);
+    public: void onChangeRepaint(Canvas* canvas);
 
 };
 

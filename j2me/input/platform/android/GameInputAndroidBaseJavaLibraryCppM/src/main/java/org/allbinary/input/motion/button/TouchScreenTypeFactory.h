@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENTYPEFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENTYPEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <android/app/Activity.h>
@@ -53,18 +59,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchScreenFactory.h"
-#include "TouchScreenTypesFactory.h"
+        #include "org/allbinary/input/motion/button/TouchScreenFactory.h"
+#include "org/allbinary/input/motion/button/TouchScreenTypesFactory.h"
 
 class TouchScreenTypeFactory
             : public Object
          {
 
-    private: static TouchScreenTypeFactory instance() { return TouchScreenTypeFactory(); }
+    private: static TouchScreenTypeFactory* instance() { static std::unique_ptr<TouchScreenTypeFactory> value(new TouchScreenTypeFactory()); return value.get(); }
 
-    public: static TouchScreenTypeFactory getInstance();
+    public: static TouchScreenTypeFactory* getInstance();
 
-    public: void update(Activity activity);
+    public: void update(Activity* activity);
 
 };
 

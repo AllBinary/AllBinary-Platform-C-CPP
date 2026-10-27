@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -49,9 +55,9 @@ class AlphaBaseProcessor
             : public Object
          {
 
-    private: static AlphaBaseProcessor instance() { return AlphaBaseProcessor(); }
+    private: static AlphaBaseProcessor* instance() { static std::unique_ptr<AlphaBaseProcessor> value(new AlphaBaseProcessor()); return value.get(); }
 
-    public: static AlphaBaseProcessor getInstance(){
+    public: static AlphaBaseProcessor* getInstance(){
 
 
 
@@ -61,7 +67,7 @@ class AlphaBaseProcessor
 }
 
 
-    public: void setAlpha(ImageModifierUtil imageModifierUtil, Image originalImage, Image imageToShow, int32_t alpha){
+    public: void setAlpha(ImageModifierUtil* imageModifierUtil, Image* originalImage, Image* imageToShow, int32_t alpha){
 }
 
 

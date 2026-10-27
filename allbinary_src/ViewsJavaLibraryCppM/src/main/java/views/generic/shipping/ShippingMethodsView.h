@@ -21,6 +21,12 @@
         #ifndef VIEWS_GENERIC_SHIPPING_SHIPPINGMETHODSVIEW_H
         #define VIEWS_GENERIC_SHIPPING_SHIPPINGMETHODSVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Float.h"
@@ -112,17 +118,17 @@
         
 class ShippingMethodsView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: ShippingMethods shippingMethods;
+    private: ShippingMethods* shippingMethods;
 
-    private: StoreFrontInterface storeFrontInterface;
+    private: StoreFrontInterface* storeFrontInterface;
 
-public: ShippingMethodsView(TransformInfoInterface transformInfoInterface);
+public: ShippingMethodsView(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
     public: void addDomNodeInterfaces();
 

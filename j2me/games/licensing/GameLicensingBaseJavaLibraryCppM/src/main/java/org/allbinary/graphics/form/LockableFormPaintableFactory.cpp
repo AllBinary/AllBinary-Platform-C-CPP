@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -38,10 +44,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ItemPaintableFactory.h"
-#include "LockablePaintable.h"
-#include "ItemPaintable.h"
-#include "PaintableForm.h"
+        #include "org/allbinary/graphics/form/ItemPaintableFactory.h"
+#include "org/allbinary/graphics/form/LockablePaintable.h"
+#include "org/allbinary/graphics/form/ItemPaintable.h"
+#include "org/allbinary/graphics/form/PaintableForm.h"
 
 class LockableFormPaintableFactory: public ItemPaintableFactory {
 
@@ -55,12 +61,12 @@ this->lockedIndex= lockedIndex;
 
                 //@Throws(Exception.constructor)
             
-    public: ItemPaintable getInstanceItemPaintable(PaintableForm paintableForm){
+    public: ItemPaintable* getInstanceItemPaintable(PaintableForm* paintableForm){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LockablePaintable(this->lockedIndex);
+                        return new LockablePaintable(this->lockedIndex);
     
 }
 

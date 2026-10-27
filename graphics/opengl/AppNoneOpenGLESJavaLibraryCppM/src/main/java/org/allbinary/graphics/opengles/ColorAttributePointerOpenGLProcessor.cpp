@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -47,9 +55,9 @@
         
 class ColorAttributePointerOpenGLProcessor: public ObjectThreedOpenGLProcessor {
 
-    private: static ColorAttributePointerOpenGLProcessor instance() { return ColorAttributePointerOpenGLProcessor(); }
+    private: static ColorAttributePointerOpenGLProcessor* instance() { static std::unique_ptr<ColorAttributePointerOpenGLProcessor> value(new ColorAttributePointerOpenGLProcessor()); return value.get(); }
 
-    public: static ColorAttributePointerOpenGLProcessor getInstance(){
+    public: static ColorAttributePointerOpenGLProcessor* getInstance(){
 
 
 
@@ -63,11 +71,11 @@ public: ColorAttributePointerOpenGLProcessor(){
 }
 
 
-    public: void process(GL10 gl, Object* anyType){
+    public: void process(GL10* gl, Object* anyType){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

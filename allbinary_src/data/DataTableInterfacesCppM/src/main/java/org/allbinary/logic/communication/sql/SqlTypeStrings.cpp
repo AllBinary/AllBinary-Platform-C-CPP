@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -35,9 +41,9 @@ class SqlTypeStrings
             : public Object
          {
 
-    private: static SqlTypeStrings instance() { return SqlTypeStrings(); }
+    private: static SqlTypeStrings* instance() { static std::unique_ptr<SqlTypeStrings> value(new SqlTypeStrings()); return value.get(); }
 
-    public: static SqlTypeStrings getInstance(){
+    public: static SqlTypeStrings* getInstance(){
 
 
 
@@ -69,19 +75,19 @@ class SqlTypeStrings
 
     public: const std::string TWELVE_SIZE = "(12)";
 
-    public: const std::string ONE_KB_CHAR_COLUMN = StringMaker().append(CommonSeps::getInstance().SPACE).append(CHAR_COLUMN).append("(1024)").append(CommonSeps::getInstance().COMMA_SEP).toString();
+    public: const std::string ONE_KB_CHAR_COLUMN = (new StringMaker())->append(CommonSeps::getInstance()->SPACE)->append(CHAR_COLUMN)->append("(1024)")->append(CommonSeps::getInstance()->COMMA_SEP)->toString();
 
-    public: const std::string MAX_CHAR_COLUMN = StringMaker().append(CommonSeps::getInstance().SPACE).append(CHAR_COLUMN).append(MAX_SIZE).append(CommonSeps::getInstance().COMMA_SEP).toString();
+    public: const std::string MAX_CHAR_COLUMN = (new StringMaker())->append(CommonSeps::getInstance()->SPACE)->append(CHAR_COLUMN)->append(MAX_SIZE)->append(CommonSeps::getInstance()->COMMA_SEP)->toString();
 
-    public: const std::string MAX_CHAR_COLUMN_NOT_NULL = StringMaker().append(CommonSeps::getInstance().SPACE).append(CHAR_COLUMN).append(MAX_SIZE).append(CommonSeps::getInstance().SPACE).append(NOT_NULL).append(CommonSeps::getInstance().COMMA_SEP).toString();
+    public: const std::string MAX_CHAR_COLUMN_NOT_NULL = (new StringMaker())->append(CommonSeps::getInstance()->SPACE)->append(CHAR_COLUMN)->append(MAX_SIZE)->append(CommonSeps::getInstance()->SPACE)->append(NOT_NULL)->append(CommonSeps::getInstance()->COMMA_SEP)->toString();
 
-    public: const std::string SIXTY_CHAR_COLUMN_NOT_NULL = StringMaker().append(CommonSeps::getInstance().SPACE).append(CHAR_COLUMN).append(SIXTY_SIZE).append(NOT_NULL).append(CommonSeps::getInstance().COMMA_SEP).toString();
+    public: const std::string SIXTY_CHAR_COLUMN_NOT_NULL = (new StringMaker())->append(CommonSeps::getInstance()->SPACE)->append(CHAR_COLUMN)->append(SIXTY_SIZE)->append(NOT_NULL)->append(CommonSeps::getInstance()->COMMA_SEP)->toString();
 
-    public: const std::string ONE_CHAR_COLUMN_NOT_NULL = StringMaker().append(CommonSeps::getInstance().SPACE).append(CHAR_COLUMN).append(ONE_SIZE).append(NOT_NULL).append(CommonSeps::getInstance().COMMA_SEP).toString();
+    public: const std::string ONE_CHAR_COLUMN_NOT_NULL = (new StringMaker())->append(CommonSeps::getInstance()->SPACE)->append(CHAR_COLUMN)->append(ONE_SIZE)->append(NOT_NULL)->append(CommonSeps::getInstance()->COMMA_SEP)->toString();
 
-    public: const std::string SIX_CHAR_COLUMN_NOT_NULL = StringMaker().append(CommonSeps::getInstance().SPACE).append(CHAR_COLUMN).append(SIX_SIZE).append(NOT_NULL).append(CommonSeps::getInstance().COMMA_SEP).toString();
+    public: const std::string SIX_CHAR_COLUMN_NOT_NULL = (new StringMaker())->append(CommonSeps::getInstance()->SPACE)->append(CHAR_COLUMN)->append(SIX_SIZE)->append(NOT_NULL)->append(CommonSeps::getInstance()->COMMA_SEP)->toString();
 
-    public: const std::string TWELVE_CHAR_COLUMN_NOT_NULL = StringMaker().append(CommonSeps::getInstance().SPACE).append(CHAR_COLUMN).append(this->TWELVE_SIZE).append(NOT_NULL).append(CommonSeps::getInstance().COMMA_SEP).toString();
+    public: const std::string TWELVE_CHAR_COLUMN_NOT_NULL = (new StringMaker())->append(CommonSeps::getInstance()->SPACE)->append(CHAR_COLUMN)->append(this->TWELVE_SIZE)->append(NOT_NULL)->append(CommonSeps::getInstance()->COMMA_SEP)->toString();
 
     public: const std::string TWO_INT_NOT_NULL = " INT(2) NOT NULL, ";
 

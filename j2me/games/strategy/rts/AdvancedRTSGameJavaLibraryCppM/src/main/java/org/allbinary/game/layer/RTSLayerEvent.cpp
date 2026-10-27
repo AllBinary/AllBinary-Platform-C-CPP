@@ -17,6 +17,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -41,14 +47,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NullPathFindingLayer.h"
-#include "PathFindingLayerInterface.h"
+        #include "org/allbinary/game/layer/NullPathFindingLayer.h"
+#include "org/allbinary/game/layer/PathFindingLayerInterface.h"
 
 class RTSLayerEvent: public AllBinaryEventObject {
 
-    private: PathFindingLayerInterface rtsLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
+    private: PathFindingLayerInterface* rtsLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
-public: RTSLayerEvent(PathFindingLayerInterface rtsLayer) : AllBinaryEventObject(rtsLayer){
+public: RTSLayerEvent(PathFindingLayerInterface* rtsLayer) : AllBinaryEventObject(rtsLayer){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -60,24 +66,24 @@ public: RTSLayerEvent(PathFindingLayerInterface rtsLayer) : AllBinaryEventObject
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("RTSLayerEvent: \n");
+stringBuffer->append("RTSLayerEvent: \n");
     
-stringBuffer.append("RTSLayer: ");
+stringBuffer->append("RTSLayer: ");
     
-stringBuffer.append(this->getRtsLayer().toString());
+stringBuffer->append(this->getRtsLayer()->toString());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
-    public: PathFindingLayerInterface getRtsLayer(){
+    public: PathFindingLayerInterface* getRtsLayer(){
 
 
 
@@ -87,7 +93,7 @@ stringBuffer.append(this->getRtsLayer().toString());
 }
 
 
-    public: void setRtsLayer(PathFindingLayerInterface rtsLayer){
+    public: void setRtsLayer(PathFindingLayerInterface* rtsLayer){
 this->rtsLayer= rtsLayer;
     
 }

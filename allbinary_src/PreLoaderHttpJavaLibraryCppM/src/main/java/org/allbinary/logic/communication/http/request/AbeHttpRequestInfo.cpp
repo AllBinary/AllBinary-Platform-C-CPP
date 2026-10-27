@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -67,7 +73,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbeHttpRequestInfoData.h"
+        #include "org/allbinary/logic/communication/http/request/AbeHttpRequestInfoData.h"
 
 class AbeHttpRequestInfo
             : public Object
@@ -75,9 +81,9 @@ class AbeHttpRequestInfo
 
     private: const std::string NAME = "AbeHttpRequestInfo";
 
-    private: const AbeHttpRequestInfoData abeHttpRequestInfoData = AbeHttpRequestInfoData::getInstance();
+    private: AbeHttpRequestInfoData* abeHttpRequestInfoData = AbeHttpRequestInfoData::getInstance();
 
-    private: const CommonSeps commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps = CommonSeps::getInstance();
 
     private: std::string httpUserAgent;
 
@@ -91,77 +97,77 @@ class AbeHttpRequestInfo
 
     private: std::string requestedFilePath;
 
-public: AbeHttpRequestInfo(HashMap<Object*, Object*> hashMap){
+public: AbeHttpRequestInfo(HashMap<Object*, Object*>* hashMap){
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
-this->httpUserAgent= stringUtil.getNonNull(hashMap.get(this->abeHttpRequestInfoData.HTTP_USER_AGENT));
+this->httpUserAgent= stringUtil->getNonNull(hashMap->get(this->abeHttpRequestInfoData->HTTP_USER_AGENT));
     
-this->remoteAddress= stringUtil.getNonNull(hashMap.get(this->abeHttpRequestInfoData.REMOTE_ADDRESS));
+this->remoteAddress= stringUtil->getNonNull(hashMap->get(this->abeHttpRequestInfoData->REMOTE_ADDRESS));
     
-this->remoteHost= stringUtil.getNonNull(hashMap.get(this->abeHttpRequestInfoData.REMOTE_HOST));
+this->remoteHost= stringUtil->getNonNull(hashMap->get(this->abeHttpRequestInfoData->REMOTE_HOST));
     
-this->remoteHostByAddr= stringUtil.getNonNull(hashMap.get(this->abeHttpRequestInfoData.REMOTE_HOST_BY_ADDRESS));
+this->remoteHostByAddr= stringUtil->getNonNull(hashMap->get(this->abeHttpRequestInfoData->REMOTE_HOST_BY_ADDRESS));
     
-this->remotePort= stringUtil.getNonNull(hashMap.get(this->abeHttpRequestInfoData.REMOTE_PORT));
+this->remotePort= stringUtil->getNonNull(hashMap->get(this->abeHttpRequestInfoData->REMOTE_PORT));
     
-this->requestedFilePath= stringUtil.getNonNull(hashMap.get(this->abeHttpRequestInfoData.REQUEST_FILE_PATH));
+this->requestedFilePath= stringUtil->getNonNull(hashMap->get(this->abeHttpRequestInfoData->REQUEST_FILE_PATH));
     
 }
 
 
-public: AbeHttpRequestInfo(HttpServletRequest httpServletRequest){
+public: AbeHttpRequestInfo(HttpServletRequest* httpServletRequest){
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
-this->httpUserAgent= stringUtil.EMPTY_STRING;
-    
-
-    Enumeration<Object*> enumuration = httpServletRequest.getHeaderNames();;
+this->httpUserAgent= stringUtil->EMPTY_STRING;
     
 
-        while(enumuration.hasMoreElements())
+    Enumeration<Object*>* enumuration = httpServletRequest->getHeaderNames();;
+    
+
+        while(enumuration->hasMoreElements())
         {
 
-    std::string key = enumuration.nextElement();;
+    std::string key = enumuration->nextElement();;
     
 
-    std::string value = httpServletRequest.getHeader(key);;
+    std::string value = httpServletRequest->getHeader(key);;
     
 
-                        if(key.indexOf("user") >= 0)
+                        if(JavaString::indexOf(key, "user") >= 0)
                         this->httpUserAgent= "key: " +key +" value: " +value;
                                 
 }
 
-this->remoteHostByAddr= stringUtil.EMPTY_STRING;
+this->remoteHostByAddr= stringUtil->EMPTY_STRING;
     
-this->remoteAddress= httpServletRequest.getRemoteAddr();
+this->remoteAddress= httpServletRequest->getRemoteAddr();
     
-this->remoteHost= httpServletRequest.getRemoteHost();
+this->remoteHost= httpServletRequest->getRemoteHost();
     
-this->requestedFilePath= httpServletRequest.getServletPath();
+this->requestedFilePath= httpServletRequest->getServletPath();
     
 this->remotePort= std::to_string(getRemotePort);
     
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(abeHttpRequestInfoData.HTTP_USER_AGENT, this->httpUserAgent);
+hashMap->put(abeHttpRequestInfoData->HTTP_USER_AGENT, this->httpUserAgent);
     
-hashMap.put(abeHttpRequestInfoData.REMOTE_ADDRESS, this->remoteAddress);
+hashMap->put(abeHttpRequestInfoData->REMOTE_ADDRESS, this->remoteAddress);
     
-hashMap.put(abeHttpRequestInfoData.REMOTE_HOST, this->remoteHost);
+hashMap->put(abeHttpRequestInfoData->REMOTE_HOST, this->remoteHost);
     
-hashMap.put(abeHttpRequestInfoData.REMOTE_HOST_BY_ADDRESS, this->remoteHostByAddr);
+hashMap->put(abeHttpRequestInfoData->REMOTE_HOST_BY_ADDRESS, this->remoteHostByAddr);
     
-hashMap.put(abeHttpRequestInfoData.REMOTE_PORT, this->remotePort);
+hashMap->put(abeHttpRequestInfoData->REMOTE_PORT, this->remotePort);
     
-hashMap.put(abeHttpRequestInfoData.REQUEST_FILE_PATH, this->requestedFilePath);
+hashMap->put(abeHttpRequestInfoData->REQUEST_FILE_PATH, this->requestedFilePath);
     
 
 
@@ -172,21 +178,21 @@ hashMap.put(abeHttpRequestInfoData.REQUEST_FILE_PATH, this->requestedFilePath);
 }
 
 
-    public: BasicArrayList toVector(){
+    public: BasicArrayList* toVector(){
 
-    BasicArrayList vector = BasicArrayListD();;
+    BasicArrayList* vector = new BasicArrayListD();;
     
-vector.add(this->httpUserAgent);
+vector->add(this->httpUserAgent);
     
-vector.add(this->remoteAddress);
+vector->add(this->remoteAddress);
     
-vector.add(this->remoteHost);
+vector->add(this->remoteHost);
     
-vector.add(this->remoteHostByAddr);
+vector->add(this->remoteHostByAddr);
     
-vector.add(this->remotePort);
+vector->add(this->remotePort);
     
-vector.add(this->requestedFilePath);
+vector->add(this->requestedFilePath);
     
 
 
@@ -202,7 +208,7 @@ vector.add(this->requestedFilePath);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().append(this->NAME).append(this->commonSeps.COLON_SEP).append(abeHttpRequestInfoData.HTTP_USER_AGENT).append(this->commonSeps.COLON_SEP).append(this->httpUserAgent).append(this->commonSeps.SPACE).append(abeHttpRequestInfoData.REMOTE_ADDRESS).append(this->commonSeps.COLON_SEP).append(this->remoteAddress).append(this->commonSeps.SPACE).append(abeHttpRequestInfoData.REMOTE_HOST).append(this->commonSeps.COLON_SEP).append(this->remoteHost).append(this->commonSeps.SPACE).append(abeHttpRequestInfoData.REMOTE_HOST_BY_ADDRESS).append(this->commonSeps.COLON_SEP).append(this->remoteHostByAddr).append(this->commonSeps.SPACE).append(abeHttpRequestInfoData.REMOTE_PORT).append(this->commonSeps.COLON_SEP).append(this->remotePort).append(this->commonSeps.SPACE).append(abeHttpRequestInfoData.REQUEST_FILE_PATH).append(this->commonSeps.COLON_SEP).append(this->requestedFilePath).toString();;
+                        return (new StringMaker())->append(this->NAME)->append(this->commonSeps->COLON_SEP)->append(abeHttpRequestInfoData->HTTP_USER_AGENT)->append(this->commonSeps->COLON_SEP)->append(this->httpUserAgent)->append(this->commonSeps->SPACE)->append(abeHttpRequestInfoData->REMOTE_ADDRESS)->append(this->commonSeps->COLON_SEP)->append(this->remoteAddress)->append(this->commonSeps->SPACE)->append(abeHttpRequestInfoData->REMOTE_HOST)->append(this->commonSeps->COLON_SEP)->append(this->remoteHost)->append(this->commonSeps->SPACE)->append(abeHttpRequestInfoData->REMOTE_HOST_BY_ADDRESS)->append(this->commonSeps->COLON_SEP)->append(this->remoteHostByAddr)->append(this->commonSeps->SPACE)->append(abeHttpRequestInfoData->REMOTE_PORT)->append(this->commonSeps->COLON_SEP)->append(this->remotePort)->append(this->commonSeps->SPACE)->append(abeHttpRequestInfoData->REQUEST_FILE_PATH)->append(this->commonSeps->COLON_SEP)->append(this->requestedFilePath)->toString();;
     
 }
 

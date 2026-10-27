@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_ALWAYSACTIONSCRIPTCONDITIONDATA_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_ALWAYSACTIONSCRIPTCONDITIONDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class AlwaysActionScriptConditionData
             : public Object
          {
 
-    public: static std::string NAME = "ALWAYS_ACTION_CONDITION_NAME";
+    public: static inline std::string NAME = "ALWAYS_ACTION_CONDITION_NAME";
 
-    public: static std::string IS_ON = "ALWAYS_ACTION_CONDITION_IS_ON";
+    public: static inline std::string IS_ON = "ALWAYS_ACTION_CONDITION_IS_ON";
 
 private: AlwaysActionScriptConditionData();
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_BASICHIGHSCORESGAMEINFOFACTORY_H
         #define ORG_ALLBINARY_GAME_BASICHIGHSCORESGAMEINFOFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,22 +47,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameInfo.h"
-#include "GameTypeFactory.h"
-#include "GameMode.h"
-#include "PlayerTypesFactory.h"
+        #include "org/allbinary/game/GameInfo.h"
+#include "org/allbinary/game/GameTypeFactory.h"
+#include "org/allbinary/game/GameMode.h"
+#include "org/allbinary/game/PlayerTypesFactory.h"
 
 class BasicHighScoresGameInfoFactory
             : public Object
          {
 
-    private: static const BasicHighScoresGameInfoFactory SINGLETON = BasicHighScoresGameInfoFactory();
+    private: static BasicHighScoresGameInfoFactory* SINGLETON() { static std::unique_ptr<BasicHighScoresGameInfoFactory> value(new BasicHighScoresGameInfoFactory()); return value.get(); }
 
-    public: static BasicHighScoresGameInfoFactory getInstance();
+    public: static BasicHighScoresGameInfoFactory* getInstance();
 
-    public: const GameInfo MULTI_PLAYER_SERVER = GameInfo(GameTypeFactory::getInstance().MULTI_PLAYER, GameMode::SERVER, PlayerTypesFactory::getInstance().PLAYER_TYPE_ONE, 0, 0);
+    public: GameInfo* MULTI_PLAYER_SERVER = new GameInfo(GameTypeFactory::getInstance()->MULTI_PLAYER, GameMode::SERVER, PlayerTypesFactory::getInstance()->PLAYER_TYPE_ONE, 0, 0);
 
-    public: const GameInfo SINGLE_PLAYER_SERVER = GameInfo(GameTypeFactory::getInstance().SINGLE_PLAYER, GameMode::SERVER, PlayerTypesFactory::getInstance().PLAYER_TYPE_ONE, 0, 0);
+    public: GameInfo* SINGLE_PLAYER_SERVER = new GameInfo(GameTypeFactory::getInstance()->SINGLE_PLAYER, GameMode::SERVER, PlayerTypesFactory::getInstance()->PLAYER_TYPE_ONE, 0, 0);
 
 };
 

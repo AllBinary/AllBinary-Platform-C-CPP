@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_CONTROLLABLE2_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_CONTROLLABLE2_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,7 +48,7 @@
         
 class Controllable2 {
 
-    void setVolume(int32_t leftVolume, int32_t rightVolume);
+    public: virtual void setVolume(int32_t leftVolume, int32_t rightVolume) = 0;
 
 };
 

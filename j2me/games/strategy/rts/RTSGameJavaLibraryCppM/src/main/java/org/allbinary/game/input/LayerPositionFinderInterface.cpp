@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/layer/AllBinaryLayer.h>
 
       
@@ -45,7 +51,7 @@
         
 class LayerPositionFinderInterface {
 
-    AllBinaryLayer getLayerInterface(GeographicMapCellPosition geographicMapCellPosition)
+    public: virtual AllBinaryLayer* getLayerInterface(GeographicMapCellPosition* geographicMapCellPosition) = 0;
 
 };
 

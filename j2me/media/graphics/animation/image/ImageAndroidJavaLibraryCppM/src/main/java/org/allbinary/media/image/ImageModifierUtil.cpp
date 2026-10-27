@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <android/graphics/Paint.h>
@@ -60,36 +66,36 @@ class ImageModifierUtil
             : public Object
          {
 
-    public: static ImageModifierUtil getInstanceOrCreate(){
+    public: static ImageModifierUtil* getInstanceOrCreate(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageModifierUtil();
+                        return new ImageModifierUtil();
     
 }
 
 
-    public: const Paint paint = Paint(Paint::ANTI_ALIAS_FLAG);
+    public: Paint* paint = new Paint(Paint::ANTI_ALIAS_FLAG);
 
-    public: void setColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor){
-this->paint.setColorFilter(PorterDuffColorFilter(basicColor.intValue(), PorterDuff::Mode.SRC_IN));
+    public: void setColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor){
+this->paint->setColorFilter(new PorterDuffColorFilter(basicColor->intValue(), PorterDuff::Mode.SRC_IN));
     
 }
 
 
-    public: void changeColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor){
-this->paint.setColorFilter(PorterDuffColorFilter(basicColor.intValue(), PorterDuff::Mode.SRC_IN));
+    public: void changeColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor){
+this->paint->setColorFilter(new PorterDuffColorFilter(basicColor->intValue(), PorterDuff::Mode.SRC_IN));
     
 }
 
 
-    public: void setAlpha(Image originalImage, Image image, int32_t imageIndex, int32_t alphaInt){
+    public: void setAlpha(Image* originalImage, Image* image, int32_t imageIndex, int32_t alphaInt){
 
-                        if(alphaInt != this->paint.getAlpha())
+                        if(alphaInt != this->paint->getAlpha())
                         
                                     {
-                                    this->paint.setAlpha(alphaInt);
+                                    this->paint->setAlpha(alphaInt);
     
 
                                     }
@@ -97,7 +103,7 @@ this->paint.setColorFilter(PorterDuffColorFilter(basicColor.intValue(), PorterDu
 }
 
 
-    public: std::vector<Image> getImageArray(std::vector<Image> originalImageArray){
+    public: std::vector<Image*> getImageArray(std::vector<Image*> originalImageArray){
 
 
 
@@ -107,7 +113,7 @@ this->paint.setColorFilter(PorterDuffColorFilter(basicColor.intValue(), PorterDu
 }
 
 
-    public: void handleImage(std::vector<Image> imageArray, int32_t index, Image image){
+    public: void handleImage(std::vector<Image*> imageArray, int32_t index, Image* image){
 }
 
 

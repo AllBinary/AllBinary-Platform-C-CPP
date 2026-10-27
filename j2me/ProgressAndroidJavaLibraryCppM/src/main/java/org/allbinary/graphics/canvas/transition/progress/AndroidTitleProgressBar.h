@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_ANDROIDTITLEPROGRESSBAR_H
         #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_ANDROIDTITLEPROGRESSBAR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Runnable.h"
@@ -61,22 +67,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProgressCanvas.h"
-//#include "ShowTitleProgressBarRunnable.h"
-//#include "DismissTitleProgressBarRunnable.h"
-//#include "TitleProgressBarPortionSetProgressRunnable.h"
-//#include "TitleProgressBarSetProgressRunnable.h"
+        #include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
+//#include "org/allbinary/graphics/canvas/transition/progress/ShowTitleProgressBarRunnable.h"
+//#include "org/allbinary/graphics/canvas/transition/progress/DismissTitleProgressBarRunnable.h"
+//#include "org/allbinary/graphics/canvas/transition/progress/TitleProgressBarPortionSetProgressRunnable.h"
+//#include "org/allbinary/graphics/canvas/transition/progress/TitleProgressBarSetProgressRunnable.h"
 
 class AndroidTitleProgressBar: public ProgressCanvas {
 
 //inner= member=true isStatic=
 class TitleProgressBarSetProgressRunnable
             : public Object
-        : public Runnable {
+        , public Runnable {
 
-    private: AndroidTitleProgressBar androidTitleProgressBar;
+    private: AndroidTitleProgressBar* androidTitleProgressBar;
 
-: TitleProgressBarSetProgressRunnable(AndroidTitleProgressBar androidTitleProgressBar);
+: TitleProgressBarSetProgressRunnable(AndroidTitleProgressBar* androidTitleProgressBar);
 
     public: void run();
 
@@ -86,11 +92,11 @@ class TitleProgressBarSetProgressRunnable
 //inner= member=true isStatic=
 class TitleProgressBarPortionSetProgressRunnable
             : public Object
-        : public Runnable {
+        , public Runnable {
 
-    private: AndroidTitleProgressBar androidTitleProgressBar;
+    private: AndroidTitleProgressBar* androidTitleProgressBar;
 
-: TitleProgressBarPortionSetProgressRunnable(AndroidTitleProgressBar androidTitleProgressBar);
+: TitleProgressBarPortionSetProgressRunnable(AndroidTitleProgressBar* androidTitleProgressBar);
 
     public: void run();
 
@@ -100,11 +106,11 @@ class TitleProgressBarPortionSetProgressRunnable
 //inner= member=true isStatic=
 class ShowTitleProgressBarRunnable
             : public Object
-        : public Runnable {
+        , public Runnable {
 
-    private: AndroidTitleProgressBar androidTitleProgressBar;
+    private: AndroidTitleProgressBar* androidTitleProgressBar;
 
-: ShowTitleProgressBarRunnable(AndroidTitleProgressBar androidTitleProgressBar);
+: ShowTitleProgressBarRunnable(AndroidTitleProgressBar* androidTitleProgressBar);
 
     public: void run();
 
@@ -114,32 +120,32 @@ class ShowTitleProgressBarRunnable
 //inner= member=true isStatic=
 class DismissTitleProgressBarRunnable
             : public Object
-        : public Runnable {
+        , public Runnable {
 
-    private: AndroidTitleProgressBar androidTitleProgressBar;
+    private: AndroidTitleProgressBar* androidTitleProgressBar;
 
-: DismissTitleProgressBarRunnable(AndroidTitleProgressBar androidTitleProgressBar);
+: DismissTitleProgressBarRunnable(AndroidTitleProgressBar* androidTitleProgressBar);
 
     public: void run();
 
 };
 
             
-    private: showTitleProgressBarRunnable = ShowTitleProgressBarRunnable(this);
+    private: showTitleProgressBarRunnable = new ShowTitleProgressBarRunnable(this);
 
-    private: dismissTitleProgressBarRunnable = DismissTitleProgressBarRunnable(this);
+    private: dismissTitleProgressBarRunnable = new DismissTitleProgressBarRunnable(this);
 
-    private: progressDialogPortionSetProgressRunnable = TitleProgressBarPortionSetProgressRunnable(this);
+    private: progressDialogPortionSetProgressRunnable = new TitleProgressBarPortionSetProgressRunnable(this);
 
-    private: progressDialogSetProgressRunnable = TitleProgressBarSetProgressRunnable(this);
+    private: progressDialogSetProgressRunnable = new TitleProgressBarSetProgressRunnable(this);
 
-    private: ProgressActivityInterface progressActivity = NullProgressActivity::NULL_PROGRESS_ACTIVITY;
+    private: ProgressActivityInterface* progressActivity = NullProgressActivity::NULL_PROGRESS_ACTIVITY;
 
     private: int32_t portion = 0;
 
-protected: AndroidTitleProgressBar(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+protected: AndroidTitleProgressBar(std::string title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
-    public: void init(ProgressActivityInterface activity);
+    public: void init(ProgressActivityInterface* activity);
 
     public: bool isInitialized();
 
@@ -155,7 +161,7 @@ protected: AndroidTitleProgressBar(std::string title, BasicColor backgroundBasic
 
     public: void waitUntilDisplayed();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

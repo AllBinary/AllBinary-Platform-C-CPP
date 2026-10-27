@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -63,19 +69,19 @@
         //SwtToJ2ME
 class FullScreenPaintable: public Paintable, public UpdateMyFontInterface {
 
-    public: static FullScreenPaintable getInstance(){
+    public: static FullScreenPaintable* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FullScreenPaintable();
+                        return new FullScreenPaintable();
     
 }
 
 
-    private: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();
 
-    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
 
     private: const std::string FULLSCREEN_TEXT = "F11 - Toggle Fullscreen";
 
@@ -89,29 +95,29 @@ private: FullScreenPaintable(){
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->Y= 4 *font.getHeight();
+this->Y= 4 *font->getHeight();
     
-this->beginWidth= (font.stringWidth(this->FULLSCREEN_TEXT)>>1);
+this->beginWidth= (font->stringWidth(this->FULLSCREEN_TEXT)>>1);
     
 this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    public: void paint(Graphics graphics){
-this->myFontProcessor.process(graphics);
+    public: void paint(Graphics* graphics){
+this->myFontProcessor->process(graphics);
     
 
-    int32_t halfWidth = this->displayInfo.getLastHalfWidth();;
+    int32_t halfWidth = this->displayInfo->getLastHalfWidth();;
     
 
-    int32_t height = this->displayInfo.getLastHeight();;
+    int32_t height = this->displayInfo->getLastHeight();;
     
-graphics.drawString(this->FULLSCREEN_TEXT, halfWidth -this->beginWidth, height -this->Y, this->anchor);
+graphics->drawString(this->FULLSCREEN_TEXT, halfWidth -this->beginWidth, height -this->Y, this->anchor);
     
 }
 

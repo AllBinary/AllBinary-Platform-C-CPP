@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/ai/ArtificialIntelligence.h>
 
       
@@ -78,18 +86,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryGameLayer.h"
+        #include "org/allbinary/game/layer/AllBinaryGameLayer.h"
 
 class CollidableCompositeLayer: public AllBinaryGameLayer, public CollidableInterfaceCompositeInterface {
 
-    private: static Object* NULL_COLLIDABLE_COMPOSITE_LAYER = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* NULL_COLLIDABLE_COMPOSITE_LAYER = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static CollidableCompositeLayer getNullInstance(){
+    public: static CollidableCompositeLayer* getNullInstance(){
 
-                        if(CollidableCompositeLayer::NULL_COLLIDABLE_COMPOSITE_LAYER == NullUtil::getInstance().NULL_OBJECT)
+                        if(CollidableCompositeLayer::NULL_COLLIDABLE_COMPOSITE_LAYER == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    CollidableCompositeLayer::NULL_COLLIDABLE_COMPOSITE_LAYER= CollidableCompositeLayer(StringUtil::getInstance().EMPTY_STRING, RectangleFactory::SINGLETON, ViewPositionBase::NULL_VIEW_POSITION, CollidableNeverCollideBehaviorFactory::getInstance());
+                                    CollidableCompositeLayer::NULL_COLLIDABLE_COMPOSITE_LAYER= new CollidableCompositeLayer(StringUtil::getInstance()->EMPTY_STRING, RectangleFactory::SINGLETON, ViewPositionBase::NULL_VIEW_POSITION, CollidableNeverCollideBehaviorFactory::getInstance());
     
 
                                     }
@@ -98,14 +106,14 @@ class CollidableCompositeLayer: public AllBinaryGameLayer, public CollidableInte
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CollidableCompositeLayer::NULL_COLLIDABLE_COMPOSITE_LAYER;
+                        return dynamic_cast<CollidableCompositeLayer*>(CollidableCompositeLayer::NULL_COLLIDABLE_COMPOSITE_LAYER);
     
 }
 
 
-    private: CollidableBaseBehavior collidableInferface = CollidableNeverCollideBehaviorFactory::getInstance().createBehavior();
+    private: CollidableBaseBehavior* collidableInferface = CollidableNeverCollideBehaviorFactory::getInstance()->createBehavior();
 
-public: CollidableCompositeLayer(std::string name, Rectangle layerInfo, ViewPositionBase viewPosition, CollidableBaseBehaviorFactory collidableBaseBehaviorFactory) : AllBinaryGameLayer(name, layerInfo, viewPosition){
+public: CollidableCompositeLayer(std::string name, Rectangle* layerInfo, ViewPositionBase* viewPosition, CollidableBaseBehaviorFactory* collidableBaseBehaviorFactory) : AllBinaryGameLayer(name, layerInfo, viewPosition){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -116,7 +124,7 @@ public: CollidableCompositeLayer(std::string name, Rectangle layerInfo, ViewPosi
                         if(collidableBaseBehaviorFactory != CollidableNeverCollideBehaviorFactory::getInstance())
                         
                                     {
-                                    this->setCollidableInferface(collidableBaseBehaviorFactory.createBehavior());
+                                    this->setCollidableInferface(collidableBaseBehaviorFactory->createBehavior());
     
 
                                     }
@@ -124,7 +132,7 @@ public: CollidableCompositeLayer(std::string name, Rectangle layerInfo, ViewPosi
 }
 
 
-    public: ArtificialIntelligenceInterface getArtificialIntelligenceInterface(){
+    public: ArtificialIntelligenceInterface* getArtificialIntelligenceInterface(){
 ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
     
 
@@ -136,7 +144,7 @@ ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
 }
 
 
-    public: CollidableBaseBehavior getCollidableInferface(){
+    public: CollidableBaseBehavior* getCollidableInferface(){
 
 
 
@@ -146,7 +154,7 @@ ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
 }
 
 
-    public: void setCollidableInferface(CollidableBaseBehavior collidableInferface){
+    public: void setCollidableInferface(CollidableBaseBehavior* collidableInferface){
 this->collidableInferface= collidableInferface;
     
 }
@@ -162,22 +170,22 @@ this->collidableInferface= collidableInferface;
 }
 
 
-    public: void toStringAppend(StringMaker stringBuffer){
+    public: void toStringAppend(StringMaker* stringBuffer){
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 super.toStringAppend(stringBuffer);
     
-stringBuffer.append(commonSeps.NEW_LINE);
+stringBuffer->append(commonSeps->NEW_LINE);
     
-stringBuffer.append(this->getCollidableInferface().toString());
+stringBuffer->append(this->getCollidableInferface()->toString());
     
 }
 
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 this->toStringAppend(stringBuffer);
     
@@ -185,7 +193,7 @@ this->toStringAppend(stringBuffer);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/io/path/AbPathData.h>
@@ -47,11 +53,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DatabaseConnectionInfoInterface.h"
+        #include "org/allbinary/business/init/db/DatabaseConnectionInfoInterface.h"
 
 class DbConnectionInfo
             : public Object
-        : public DatabaseConnectionInfoInterface {
+        , public DatabaseConnectionInfoInterface {
 
     private: std::string jdbcDriver;
 
@@ -85,21 +91,21 @@ public: DbConnectionInfo(){
 this->updateHost();
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->getHost());
+stringBuffer->append(this->getHost());
     
-stringBuffer.append(this->getName());
+stringBuffer->append(this->getName());
     
-stringBuffer.append(this->getUserNameKey());
+stringBuffer->append(this->getUserNameKey());
     
-stringBuffer.append(this->getUserName());
+stringBuffer->append(this->getUserName());
     
-stringBuffer.append(this->getPasswordKey());
+stringBuffer->append(this->getPasswordKey());
     
-stringBuffer.append(this->getPassword());
+stringBuffer->append(this->getPassword());
     
-this->url= stringBuffer.toString();
+this->url= stringBuffer->toString();
     
 }
 
@@ -156,13 +162,13 @@ this->url= stringBuffer.toString();
 
     private: void updateHost(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->getSchema());
+stringBuffer->append(this->getSchema());
     
-stringBuffer.append(this->SCHEMA_SEP);
+stringBuffer->append(this->SCHEMA_SEP);
     
-stringBuffer.append(this->getServer());
+stringBuffer->append(this->getServer());
     
 
                         if(this->getPort() != 
@@ -170,16 +176,16 @@ stringBuffer.append(this->getServer());
                                  && this->getPort().length() > 1)
                         
                                     {
-                                    stringBuffer.append(CommonSeps::getInstance().COLON);
+                                    stringBuffer->append(CommonSeps::getInstance()->COLON);
     
-stringBuffer.append(this->getPort());
+stringBuffer->append(this->getPort());
     
 
                                     }
                                 
-stringBuffer.append(AbPathData::getInstance().SEPARATOR);
+stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
-this->host= stringBuffer.toString();
+this->host= stringBuffer->toString();
     
 }
 

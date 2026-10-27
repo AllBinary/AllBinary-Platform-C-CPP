@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,29 +72,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NameSpaceRequestParamData.h"
+        #include "org/allbinary/logic/communication/http/request/NameSpaceRequestParamData.h"
 
 class NameSpaceRequestParam
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: BasicArrayList nameSpaceVector;
+    private: BasicArrayList* nameSpaceVector;
 
-    private: HashMap<Object*, Object*> nameSpacePropertiesHashMap;
+    private: HashMap<Object*, Object*>* nameSpacePropertiesHashMap;
 
     private: std::string value;
 
 public: NameSpaceRequestParam(std::string nameSpace, std::string value){
-this->nameSpaceVector= BasicArrayListD();
+this->nameSpaceVector= new BasicArrayListD();
     
-this->nameSpacePropertiesHashMap= StdUtil::getInstance().createHashMap();
+this->nameSpacePropertiesHashMap= StdUtil::getInstance()->createHashMap();
     
 this->value= value;
     
 
-    int32_t beginIndex = nameSpace.indexOf(NameSpaceRequestParamData::NAME);;
+    int32_t beginIndex = JavaString::indexOf(nameSpace, NameSpaceRequestParamData::NAME);;
     
 
                         if(beginIndex < 0)
@@ -97,70 +103,70 @@ this->value= value;
                                     
 
 
-                            throw Exception("Not a NameSpaceRequest");
+                            throw new Exception("Not a NameSpaceRequest");
                     
 
                                     }
                                 
 
-    std::string packages = nameSpace.substring(beginIndex +NameSpaceRequestParamData::NAME.length() +NameSpaceRequestParamData::SEP.length());;
+    std::string packages = JavaString::substring(nameSpace, beginIndex +NameSpaceRequestParamData::NAME.length() +NameSpaceRequestParamData::SEP.length());;
     
 
-    Tokenizer sepTokenizer = Tokenizer(NameSpaceRequestParamData::SEP);;
+    Tokenizer* sepTokenizer = new Tokenizer(NameSpaceRequestParamData::SEP);;
     
 
-    BasicArrayList nameSpaceWithPropertiesVector = sepTokenizer.getTokensFromString(packages, BasicArrayListD());;
+    BasicArrayList* nameSpaceWithPropertiesVector = sepTokenizer->getTokensFromString(packages, new BasicArrayListD());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil.putF("\nSep Tokens: " +nameSpaceWithPropertiesVector.toString(), this, "NameSpaceRequestParam()");
+                                    this->logUtil->putF("\nSep Tokens: " +nameSpaceWithPropertiesVector->toString(), this, "NameSpaceRequestParam()");
     
 
                                     }
                                 
 
-    Tokenizer nameSpaceAndPropertiesTokenizer = Tokenizer(NameSpaceRequestParamData::PROPERTIES);;
+    Tokenizer* nameSpaceAndPropertiesTokenizer = new Tokenizer(NameSpaceRequestParamData::PROPERTIES);;
     
 
     int32_t packageIndex = 0;;
     
 
-    BasicArrayList list = BasicArrayListD();;
+    BasicArrayList* list = new BasicArrayListD();;
     
 
     int32_t index = 0;;
     
 
-    int32_t size = nameSpaceWithPropertiesVector.size();;
+    int32_t size = nameSpaceWithPropertiesVector->size();;
     
 
         while(index < size)
         {
 
-    std::string nameSpaceWithProperties = nameSpaceWithPropertiesVector.get(index++);;
+    std::string nameSpaceWithProperties = nameSpaceWithPropertiesVector->get(index++);;
     
-list.clear();
-    
-
-    BasicArrayList nameSpaceAndPropertiesVector = nameSpaceAndPropertiesTokenizer.getTokensFromString(nameSpaceWithProperties, list);;
+list->clear();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
+    BasicArrayList* nameSpaceAndPropertiesVector = nameSpaceAndPropertiesTokenizer->getTokensFromString(nameSpaceWithProperties, list);;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil.putF("\nPackageName and PackageName Properties Tokens: " +nameSpaceAndPropertiesVector.toString(), this, "NameSpaceRequestParam()");
+                                    this->logUtil->putF("\nPackageName and PackageName Properties Tokens: " +nameSpaceAndPropertiesVector->toString(), this, "NameSpaceRequestParam()");
     
 
                                     }
                                 
 
-                        if(nameSpaceAndPropertiesVector.size() > 0)
+                        if(nameSpaceAndPropertiesVector->size() > 0)
                         
                                     {
                                     
-    std::string packageName = nameSpaceAndPropertiesVector.get(0);;
+    std::string packageName = nameSpaceAndPropertiesVector->get(0);;
     
 
                         if(false)
@@ -169,24 +175,24 @@ list.clear();
                                     
 
 
-                            throw Exception("Package Name Is Null");
+                            throw new Exception("Package Name Is Null");
                     
 
                                     }
                                 
-this->nameSpaceVector.add(packageName);
+this->nameSpaceVector->add(packageName);
     
 
-                        if(nameSpaceAndPropertiesVector.size() > 1)
+                        if(nameSpaceAndPropertiesVector->size() > 1)
                         
                                     {
                                     
-    std::string properties = nameSpaceAndPropertiesVector.get(1);;
+    std::string properties = nameSpaceAndPropertiesVector->get(1);;
     
 
-    HashMap<Object*, Object*> packagePropertiesHashMap = this->generatePackagePropertiesHashMap(properties);;
+    HashMap<Object*, Object*>* packagePropertiesHashMap = this->generatePackagePropertiesHashMap(properties);;
     
-this->nameSpacePropertiesHashMap.put(std::to_string(packageIndex)packagePropertiesHashMap);
+this->nameSpacePropertiesHashMap->put(std::to_string(packageIndex)packagePropertiesHashMap);
     
 
                                     }
@@ -199,10 +205,10 @@ packageIndex++;
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil.putF("NameSpace: " +this->nameSpaceVector.toString(), this, "NameSpaceRequestParam()");
+                                    this->logUtil->putF("NameSpace: " +this->nameSpaceVector->toString(), this, "NameSpaceRequestParam()");
     
 
                                     }
@@ -210,12 +216,12 @@ packageIndex++;
 }
 
 
-    public: BasicArrayList getPackages(){
+    public: BasicArrayList* getPackages(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil.putF("NameSpace: " +this->nameSpaceVector.toString(), this, "getPackages()");
+                                    this->logUtil->putF("NameSpace: " +this->nameSpaceVector->toString(), this, "getPackages()");
     
 
                                     }
@@ -229,9 +235,9 @@ packageIndex++;
 }
 
 
-    public: HashMap<Object*, Object*> getPackageProperties(int32_t packageIndex){
+    public: HashMap<Object*, Object*>* getPackageProperties(int32_t packageIndex){
 
-    HashMap<Object*, Object*> packagePropertiesHashMap = this->nameSpacePropertiesHashMap.get(std::to_string(packageIndex));;
+    HashMap<Object*, Object*>* packagePropertiesHashMap = dynamic_cast<HashMap*>(this->nameSpacePropertiesHashMap->get(std::to_string(packageIndex)));;
     
 
                         if(packagePropertiesHashMap == 
@@ -239,16 +245,16 @@ packageIndex++;
                                 )
                         
                                     {
-                                    packagePropertiesHashMap= StdUtil::getInstance().createHashMap();
+                                    packagePropertiesHashMap= StdUtil::getInstance()->createHashMap();
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil.putF("Package Properties: " +packagePropertiesHashMap.toString(), this, "getPackagesProperties()");
+                                    this->logUtil->putF("Package Properties: " +packagePropertiesHashMap->toString(), this, "getPackagesProperties()");
     
 
                                     }
@@ -264,10 +270,10 @@ packageIndex++;
 
     public: std::string getValue(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil.putF("\nValue: " +this->value, this, "getValue()");
+                                    this->logUtil->putF("\nValue: " +this->value, this, "getValue()");
     
 
                                     }
@@ -283,71 +289,71 @@ packageIndex++;
 
                 //@Throws(Exception.constructor)
             
-    private: HashMap<Object*, Object*> generatePackagePropertiesHashMap(std::string properties){
+    private: HashMap<Object*, Object*>* generatePackagePropertiesHashMap(std::string properties){
 
-    Tokenizer propertiesTokenizer = Tokenizer(NameSpaceRequestParamData::PROPERTIESSEPARATOR);;
+    Tokenizer* propertiesTokenizer = new Tokenizer(NameSpaceRequestParamData::PROPERTIESSEPARATOR);;
     
 
-    HashMap<Object*, Object*> packagePropertiesHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* packagePropertiesHashMap = StdUtil::getInstance()->createHashMap();;
     
 
-    BasicArrayList propertyVector = propertiesTokenizer.getTokensFromString(properties, BasicArrayListD());;
+    BasicArrayList* propertyVector = propertiesTokenizer->getTokensFromString(properties, new BasicArrayListD());;
     
 
-    BasicArrayList list = BasicArrayListD();;
+    BasicArrayList* list = new BasicArrayListD();;
     
 
-    Tokenizer propertyTokenizer = Tokenizer(HtmlNameMathData::getInstance().EQUALS);;
+    Tokenizer* propertyTokenizer = new Tokenizer(HtmlNameMathData::getInstance()->EQUALS);;
     
 
     int32_t index = 0;;
     
 
-    int32_t size = propertyVector.size();;
+    int32_t size = propertyVector->size();;
     
 
         while(index < size)
         {
 
-    std::string property = propertyVector.get(index);;
+    std::string property = propertyVector->get(index);;
     
-list.clear();
+list->clear();
     
 
-    BasicArrayList propertyNameValueVector = propertyTokenizer.getTokensFromString(property, list);;
+    BasicArrayList* propertyNameValueVector = propertyTokenizer->getTokensFromString(property, list);;
     
 
     int32_t index2 = 0;;
     
 
-        while(index2 < propertyNameValueVector.size())
+        while(index2 < propertyNameValueVector->size())
         {
 
-    std::string propertyName = propertyNameValueVector.get(index2++);;
+    std::string propertyName = propertyNameValueVector->get(index2++);;
     
 
-                        if(propertyNameValueVector.size() > 1)
+                        if(propertyNameValueVector->size() > 1)
                         
                                     {
                                     
-    std::string propertyValue = propertyNameValueVector.get(index2++);;
+    std::string propertyValue = propertyNameValueVector->get(index2++);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil.putF("\nProperty Name: " +propertyName +"\nProperty Value: " +propertyValue, this, "generatePackagePropertiesHashMap()");
+                                    this->logUtil->putF("\nProperty Name: " +propertyName +"\nProperty Value: " +propertyValue, this, "generatePackagePropertiesHashMap()");
     
 
                                     }
                                 
-packagePropertiesHashMap.put(propertyName, propertyValue);
+packagePropertiesHashMap->put(propertyName, propertyValue);
     
 
                                     }
                                 
                         else {
-                            packagePropertiesHashMap.put(propertyName, StringUtil::getInstance().EMPTY_STRING);
+                            packagePropertiesHashMap->put(propertyName, StringUtil::getInstance()->EMPTY_STRING);
     
 
                         }

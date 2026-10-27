@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABSTRINGCOMPONENT_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABSTRINGCOMPONENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/color/BasicColor.h>
@@ -38,15 +44,15 @@ class ABStringComponent
             : public Object
          {
 
-    public: static const ABStringComponent NULL_STRING_COMPONENT = ABStringComponent(BasicColorFactory::getInstance().BLACK, BasicColorFactory::getInstance().WHITE);
+    public: static ABStringComponent* NULL_STRING_COMPONENT() { static std::unique_ptr<ABStringComponent> value(new ABStringComponent(BasicColorFactory::getInstance()->BLACK, BasicColorFactory::getInstance()->WHITE)); return value.get(); }
 
-    public: BasicColor getBackgroundBasicColor();
+    public: BasicColor* getBackgroundBasicColor();
 
-public: ABStringComponent(BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: ABStringComponent(BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
-    public: BasicColor getForegroundBasicColor();
+    public: BasicColor* getForegroundBasicColor();
 
-    public: void setForegroundBasicColor(BasicColor foregroundBasicColor);
+    public: void setForegroundBasicColor(BasicColor* foregroundBasicColor);
 
 };
 

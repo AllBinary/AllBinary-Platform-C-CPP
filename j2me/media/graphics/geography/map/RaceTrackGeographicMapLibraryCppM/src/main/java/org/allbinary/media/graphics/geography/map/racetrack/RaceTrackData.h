@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -62,9 +68,9 @@ class RaceTrackData
             : public Object
          {
 
-    private: Image tileSetImage = NullImage::NULL_IMAGE;
+    private: Image* tileSetImage = NullImage::NULL_IMAGE;
 
-    private: Image miniTileSetImage = NullImage::NULL_IMAGE;
+    private: Image* miniTileSetImage = NullImage::NULL_IMAGE;
 
     private: int32_t cellWidth = 0;
 
@@ -74,17 +80,17 @@ class RaceTrackData
 
     private: int32_t miniCellHeight = 0;
 
-    private: std::vector<std::vector<int32_t>> mapArray = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY;
+    private: std::vector<std::vector<int32_t>> mapArray = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY;
 
-    private: std::vector<int32_t> cellTypeIdToGeographicMapCellTypeArray = NullUtil::getInstance().NULL_INT_ARRAY;
+    private: std::vector<int32_t> cellTypeIdToGeographicMapCellTypeArray = NullUtil::getInstance()->NULL_INT_ARRAY;
 
-    private: std::vector<CellPosition> NO_OVER_PASSES_ARRAY = {};
+    private: std::vector<CellPosition*> NO_OVER_PASSES_ARRAY = {};
 
-    private: std::vector<CellPosition> overPassGeographicMapCellPositionArray = this->NO_OVER_PASSES_ARRAY;
+    private: std::vector<CellPosition*> overPassGeographicMapCellPositionArray = this->NO_OVER_PASSES_ARRAY;
 
-    private: Integer id;
+    private: int32_t id;
 
-public: RaceTrackData(Integer id, int32_t cellWidth, int32_t cellHeight, int32_t miniCellWidth, int32_t miniCellHeight, std::vector<int32_t> cellTypeIdToGeographicMapCellTypeArray, std::vector<std::vector<int32_t>> mapArray);
+public: RaceTrackData(int32_t id, int32_t cellWidth, int32_t cellHeight, int32_t miniCellWidth, int32_t miniCellHeight, std::vector<int32_t> cellTypeIdToGeographicMapCellTypeArray, std::vector<std::vector<int32_t>> mapArray);
 
     protected: void setMapArray(std::vector<std::vector<int32_t>> mapArray);
 
@@ -102,17 +108,17 @@ public: RaceTrackData(Integer id, int32_t cellWidth, int32_t cellHeight, int32_t
 
     public: int32_t getCellHeight();
 
-    public: std::vector<CellPosition> getOverPassGeographicMapCellPositionArray();
+    public: std::vector<CellPosition*> getOverPassGeographicMapCellPositionArray();
 
-    public: void setOverPassGeographicMapCellPositionArray(std::vector<CellPosition> overPassGeographicMapCellPositionArray);
+    public: void setOverPassGeographicMapCellPositionArray(std::vector<CellPosition*> overPassGeographicMapCellPositionArray);
 
-    public: Image getTileSetImage();
+    public: Image* getTileSetImage();
 
-    public: void setTileSetImage(Image tileSetImage);
+    public: void setTileSetImage(Image* tileSetImage);
 
-    public: Image getMiniTileSetImage();
+    public: Image* getMiniTileSetImage();
 
-    public: void setMiniTileSetImage(Image miniTileSetImage);
+    public: void setMiniTileSetImage(Image* miniTileSetImage);
 
     public: int32_t getMiniCellWidth();
 
@@ -122,9 +128,9 @@ public: RaceTrackData(Integer id, int32_t cellWidth, int32_t cellHeight, int32_t
 
     public: void setMiniCellHeight(int32_t miniCellHeight);
 
-    public: void setId(Integer id);
+    public: void setId(int32_t id);
 
-    public: Integer getId();
+    public: int32_t getId();
 
 };
 

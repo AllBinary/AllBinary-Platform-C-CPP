@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/input/automation/actions/script/condition/ProfileActionScriptConditionInterface.h>
 
       
@@ -48,21 +54,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Panel.h"
-#include "JButton.h"
-#include "GridLayout.h"
-#include "ActionListener.h"
-#include "ActionEvent.h"
+        #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/Panel.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/JButton.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/GridLayout.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/ActionListener.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/ActionEvent.h"
 
 class RemoveActionScriptItemJPanel: public java::awt::Panel {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: GenericProfileActionJPanel genericProfileActionJPanel;
+    private: GenericProfileActionJPanel* genericProfileActionJPanel;
 
-    private: ProfileActionScriptConditionInterface profileActionScriptConditionInterface;
+    private: ProfileActionScriptConditionInterface* profileActionScriptConditionInterface;
 
-public: RemoveActionScriptItemJPanel(GenericProfileActionJPanel genericProfileActionJPanel, ProfileActionScriptConditionInterface profileActionScriptConditionInterface){
+public: RemoveActionScriptItemJPanel(GenericProfileActionJPanel* genericProfileActionJPanel, ProfileActionScriptConditionInterface* profileActionScriptConditionInterface){
 this->initComponents();
     
 this->genericProfileActionJPanel= genericProfileActionJPanel;
@@ -73,16 +79,16 @@ this->profileActionScriptConditionInterface= profileActionScriptConditionInterfa
 
 
     private: void initComponents(){
-this->removeJButton= javax::swing::JButton();
+this->removeJButton= new javax::swing::JButton();
     
-setLayout(java::awt::GridLayout());
+setLayout(new java::awt::GridLayout());
     
-this->removeJButton.setText("Remove");
+this->removeJButton->setText("Remove");
     
-this->removeJButton.addActionListener(class extends java::awt::event::ActionListener
+this->removeJButton->addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public: void actionPerformed(java::awt::event::ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent* evt){
 removeJButtonActionPerformed(evt);
     
 }
@@ -95,9 +101,9 @@ add(this->removeJButton);
 }
 
 
-    private: void removeJButtonActionPerformed(java::awt::event::ActionEvent evt){
+    private: void removeJButtonActionPerformed(java::awt::event::ActionEvent* evt){
 
-    GenericProfileAction genericProfileAction = this->genericProfileActionJPanel.getGenericProfileAction();;
+    GenericProfileAction* genericProfileAction = this->genericProfileActionJPanel->getGenericProfileAction();;
     
 
                         if(genericProfileAction == 
@@ -105,7 +111,7 @@ add(this->removeJButton);
                                 )
                         
                                     {
-                                    this->logUtil.putF("GenericProfileAction was null", this, "removeJButtonActionPerformed");
+                                    this->logUtil->putF("GenericProfileAction was null", this, "removeJButtonActionPerformed");
     
 
 
@@ -116,14 +122,14 @@ add(this->removeJButton);
 
                                     }
                                 
-genericProfileAction.getGenericProfileActionScript().removeCondition(this->profileActionScriptConditionInterface);
+genericProfileAction->getGenericProfileActionScript()->removeCondition(this->profileActionScriptConditionInterface);
     
-this->genericProfileActionJPanel.updateProfileActionUI();
+this->genericProfileActionJPanel->updateProfileActionUI();
     
 }
 
 
-    private: javax::swing::JButton removeJButton;
+    private: javax::swing::JButton* removeJButton;
 
 };
 

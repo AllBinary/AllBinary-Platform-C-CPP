@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHINTERFACE_H
         #define ORG_ALLBINARY_GAME_HEALTH_HEALTHINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,25 +45,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HealthListenerInterface.h"
+        #include "org/allbinary/game/health/HealthListenerInterface.h"
 
 class HealthInterface {
 
-    bool isAlive();
+    public: virtual bool isAlive() = 0;
 
-    void damage(int32_t ahealth);
+    public: virtual void damage(int32_t ahealth) = 0;
 
-    void heal(int32_t ahealth);
+    public: virtual void heal(int32_t ahealth) = 0;
 
-    void healMax();
+    public: virtual void healMax() = 0;
 
-    int32_t getMaxHealth();
+    public: virtual int32_t getMaxHealth() = 0;
 
-    void setMaxHealth(int32_t maxHealth);
+    public: virtual void setMaxHealth(int32_t maxHealth) = 0;
 
-    int32_t getHealth();
+    public: virtual int32_t getHealth() = 0;
 
-    void addListener(HealthListenerInterface healthListenerInterface);
+    public: virtual void addListener(HealthListenerInterface* healthListenerInterface) = 0;
 
 };
 

@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
@@ -39,30 +45,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TerrainEventListenerInterface.h"
-#include "TerrainEvent.h"
+        #include "org/allbinary/game/terrain/TerrainEventListenerInterface.h"
+#include "org/allbinary/game/terrain/TerrainEvent.h"
 
 class TerrainEventListener
             : public Object
-        : public TerrainEventListenerInterface {
+        , public TerrainEventListenerInterface {
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
-    public: void onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject* eventObject){
+ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public: void onTerrainEvent(TerrainEvent terrainEvent){
-this->list.clear();
+    public: void onTerrainEvent(TerrainEvent* terrainEvent){
+this->list->clear();
     
-this->list.add(terrainEvent);
+this->list->add(terrainEvent);
     
 }
 
 
-    public: BasicArrayList getList(){
+    public: BasicArrayList* getList(){
 
 
 

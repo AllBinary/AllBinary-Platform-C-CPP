@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -66,19 +74,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "KeyPressesAI.h"
+        #include "org/allbinary/game/ag/ai/KeyPressesAI.h"
 
 class MultiKeyPressesAI: public KeyPressesAI {
 
-    private: const TimeDelayHelper toggleTimeHelper = TimeDelayHelper(600);
+    private: TimeDelayHelper* toggleTimeHelper = new TimeDelayHelper(600);
 
-    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
+    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-public: MultiKeyPressesAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: MultiKeyPressesAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager);
 
                 //@Throws(Exception.constructor)
             

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_REVERSEVELOCITYBOUNDSVISITOR_H
         #define ORG_ALLBINARY_GAME_AG_AI_REVERSEVELOCITYBOUNDSVISITOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/bounds/BoundsVisitorInterface.h>
@@ -59,15 +65,15 @@
         
 class ReverseVelocityBoundsVisitor
             : public Object
-        : public BoundsVisitorInterface {
+        , public BoundsVisitorInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: VelocityInterface velocityInterface;
+    protected: VelocityInterface* velocityInterface;
 
-    private: LayerInterface layerInterface;
+    private: LayerInterface* layerInterface;
 
-public: ReverseVelocityBoundsVisitor(LayerInterface layerInterface);
+public: ReverseVelocityBoundsVisitor(LayerInterface* layerInterface);
 
     public: int32_t getX();
 

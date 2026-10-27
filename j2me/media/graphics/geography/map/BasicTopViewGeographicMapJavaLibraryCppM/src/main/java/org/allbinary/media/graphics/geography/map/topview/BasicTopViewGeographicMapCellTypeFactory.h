@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/string/CommonStrings.h>
 
       
@@ -65,28 +73,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicTopViewGeographicMapCellType.h"
-#include "BasicTopViewGeographicMapStrings.h"
+        #include "org/allbinary/media/graphics/geography/map/topview/BasicTopViewGeographicMapCellType.h"
+#include "org/allbinary/media/graphics/geography/map/topview/BasicTopViewGeographicMapStrings.h"
 
 class BasicTopViewGeographicMapCellTypeFactory: public GeographicMapCellTypeFactory {
 
-    public: BasicTopViewGeographicMapCellType BLOCK_CELL_TYPE;
+    public: BasicTopViewGeographicMapCellType* BLOCK_CELL_TYPE;
 
-    public: BasicTopViewGeographicMapCellType OFF_MAP_CELL_TYPE;
+    public: BasicTopViewGeographicMapCellType* OFF_MAP_CELL_TYPE;
 
-    public: BasicTopViewGeographicMapCellType FLOOR_CELL_TYPE;
+    public: BasicTopViewGeographicMapCellType* FLOOR_CELL_TYPE;
 
-    public: BasicTopViewGeographicMapCellType DOOR_CELL_TYPE;
+    public: BasicTopViewGeographicMapCellType* DOOR_CELL_TYPE;
 
-    public: BasicTopViewGeographicMapCellType STAIRS_UP_CELL_TYPE;
+    public: BasicTopViewGeographicMapCellType* STAIRS_UP_CELL_TYPE;
 
-    public: BasicTopViewGeographicMapCellType STAIRS_DOWN_CELL_TYPE;
+    public: BasicTopViewGeographicMapCellType* STAIRS_DOWN_CELL_TYPE;
 
-    public: BasicTopViewGeographicMapCellType OTHER_CELL_TYPE;
+    public: BasicTopViewGeographicMapCellType* OTHER_CELL_TYPE;
 
     private: int32_t maxTileId;
 
-public: BasicTopViewGeographicMapCellTypeFactory(ABHashtable<Object*, Object*> tileTypeToTileIdsMap, int32_t maxTileId);
+public: BasicTopViewGeographicMapCellTypeFactory(ABHashtable<Object*, Object*>* tileTypeToTileIdsMap, int32_t maxTileId);
 
     public: int32_t getStartType();
 
@@ -94,7 +102,7 @@ public: BasicTopViewGeographicMapCellTypeFactory(ABHashtable<Object*, Object*> t
 
     public: int32_t getEmptyType();
 
-    public: bool isPath(GeographicMapCellType cellType);
+    public: bool isPath(GeographicMapCellType* cellType);
 
     public: std::string toString();
 

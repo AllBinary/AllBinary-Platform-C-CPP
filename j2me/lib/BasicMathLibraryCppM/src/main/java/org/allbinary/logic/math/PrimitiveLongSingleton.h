@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -53,9 +59,9 @@ class PrimitiveLongSingleton
             : public Object
          {
 
-    private: static PrimitiveLongSingleton instance() { return PrimitiveLongSingleton(); }
+    private: static PrimitiveLongSingleton* instance() { static std::unique_ptr<PrimitiveLongSingleton> value(new PrimitiveLongSingleton()); return value.get(); }
 
-    public: static PrimitiveLongSingleton getInstance();
+    public: static PrimitiveLongSingleton* getInstance();
 
     public: const std::vector<char> UNK = ['U','n','k'];
 

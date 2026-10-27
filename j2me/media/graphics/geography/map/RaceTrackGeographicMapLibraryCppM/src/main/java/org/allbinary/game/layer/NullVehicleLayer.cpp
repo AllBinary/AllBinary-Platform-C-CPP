@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -65,29 +71,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "VehicleLayerInterface.h"
-#include "VehicleProperties.h"
+        #include "org/allbinary/game/layer/VehicleLayerInterface.h"
+#include "org/allbinary/game/layer/VehicleProperties.h"
 
 class NullVehicleLayer
             : public Object
-        : public VehicleLayerInterface {
+        , public VehicleLayerInterface {
 
-    public: static const NullVehicleLayer NULL_VEHICLE_LAYER = NullVehicleLayer();
+    public: static NullVehicleLayer* NULL_VEHICLE_LAYER() { static std::unique_ptr<NullVehicleLayer> value(new NullVehicleLayer()); return value.get(); }
 
     public: std::string getName(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: std::vector<Group> getGroupInterface(){
+    public: std::vector<Group*> getGroupInterface(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -96,7 +102,7 @@ class NullVehicleLayer
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -105,7 +111,7 @@ class NullVehicleLayer
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -114,7 +120,7 @@ class NullVehicleLayer
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -123,7 +129,7 @@ class NullVehicleLayer
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -132,7 +138,7 @@ class NullVehicleLayer
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -141,7 +147,7 @@ class NullVehicleLayer
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -150,7 +156,7 @@ class NullVehicleLayer
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -159,7 +165,7 @@ class NullVehicleLayer
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -168,7 +174,7 @@ class NullVehicleLayer
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -177,7 +183,7 @@ class NullVehicleLayer
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -186,7 +192,7 @@ class NullVehicleLayer
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -195,7 +201,7 @@ class NullVehicleLayer
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -204,7 +210,7 @@ class NullVehicleLayer
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -213,7 +219,7 @@ class NullVehicleLayer
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -222,7 +228,7 @@ class NullVehicleLayer
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -231,7 +237,7 @@ class NullVehicleLayer
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -240,7 +246,7 @@ class NullVehicleLayer
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -249,7 +255,7 @@ class NullVehicleLayer
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -258,34 +264,34 @@ class NullVehicleLayer
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: VehicleProperties getVehicleProperties(){
+    public: VehicleProperties* getVehicleProperties(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: BasicArrayList getGameKeyEventList(){
+    public: BasicArrayList* getGameKeyEventList(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: BasicDecimal getSpeedBasicDecimal(){
+    public: BasicDecimal* getSpeedBasicDecimal(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -294,25 +300,25 @@ class NullVehicleLayer
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: RotationAnimation getRotationAnimationInterface(){
+    public: RotationAnimation* getRotationAnimationInterface(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: void setRotationAnimationInterface(RotationAnimation animationInterface){
+    public: void setRotationAnimationInterface(RotationAnimation* animationInterface){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -321,7 +327,7 @@ class NullVehicleLayer
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -330,7 +336,7 @@ class NullVehicleLayer
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -339,7 +345,7 @@ class NullVehicleLayer
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -350,43 +356,43 @@ class NullVehicleLayer
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: GeographicMapCellPositionTracking getGeographicMapCellPositionTracking(){
+    public: GeographicMapCellPositionTracking* getGeographicMapCellPositionTracking(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: std::vector<GeographicMapCellHistory> getGeographicMapCellHistoryArray(){
+    public: std::vector<GeographicMapCellHistory*> getGeographicMapCellHistoryArray(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: void setGeographicMapCellHistoryArray(std::vector<GeographicMapCellHistory> geographicMapCellHistory){
+    public: void setGeographicMapCellHistoryArray(std::vector<GeographicMapCellHistory*> geographicMapCellHistory){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 }
 
 
-    public: void paintThreed(Graphics graphics){
+    public: void paintThreed(Graphics* graphics){
 }
 
 

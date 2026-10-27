@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Runnable.h"
@@ -48,19 +54,19 @@
         
 class SimpleProgressActivityInterface {
 
-    void runOnUiThread(Runnable action);
+    public: virtual void runOnUiThread(Runnable* action) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void onSetProgress(int32_t value, std::string text);
+    public: virtual void onSetProgress(int32_t value, std::string text) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void onDismissProgress(std::vector<int32_t> animationSequence);
+    public: virtual void onDismissProgress(std::vector<int32_t> animationSequence) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void onShowProgress(bool indeterminate, std::vector<int32_t> animationSequence);
+    public: virtual void onShowProgress(bool indeterminate, std::vector<int32_t> animationSequence) = 0;
 
 };
 

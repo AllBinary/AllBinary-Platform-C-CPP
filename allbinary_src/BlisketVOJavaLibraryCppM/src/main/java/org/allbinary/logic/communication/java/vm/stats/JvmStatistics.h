@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_JAVA_VM_STATS_JVMSTATISTICS_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_JAVA_VM_STATS_JVMSTATISTICS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Runtime.h"
@@ -52,7 +58,7 @@ class JvmStatistics
             : public Object
          {
 
-    private: Runtime runtime;
+    private: Runtime* runtime;
 
 public: JvmStatistics();
 
@@ -74,23 +80,23 @@ public: JvmStatistics();
 
     public: int64_t getTotalMemoryMegabytes();
 
-    public: Long getFreeMemoryBytesLong();
+    public: int64_t getFreeMemoryBytesLong();
 
-    public: Long getFreeMemoryKilobytesLong();
+    public: int64_t getFreeMemoryKilobytesLong();
 
-    public: Long getFreeMemoryMegabytesLong();
+    public: int64_t getFreeMemoryMegabytesLong();
 
-    public: Long getMaxMemoryBytesLong();
+    public: int64_t getMaxMemoryBytesLong();
 
-    public: Long getMaxMemoryKilobytesLong();
+    public: int64_t getMaxMemoryKilobytesLong();
 
-    public: Long getMaxMemoryMegabytesLong();
+    public: int64_t getMaxMemoryMegabytesLong();
 
-    public: Long getTotalMemoryBytesLong();
+    public: int64_t getTotalMemoryBytesLong();
 
-    public: Long getTotalMemoryKilobytesLong();
+    public: int64_t getTotalMemoryKilobytesLong();
 
-    public: Long getTotalMemoryMegabytesLong();
+    public: int64_t getTotalMemoryMegabytesLong();
 
     public: std::string getFreeMemoryBytesString();
 
@@ -112,7 +118,7 @@ public: JvmStatistics();
 
     public: int64_t getNumberOfThreads();
 
-    public: Long getNumberOfThreadsLong();
+    public: int64_t getNumberOfThreadsLong();
 
     public: std::string getNumberOfThreadsString();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,32 +72,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Layer.h"
-#include "LayerInterfaceFactoryInterface.h"
-#include "AllBinaryLayer.h"
+        #include "org/allbinary/layer/Layer.h"
+#include "org/allbinary/layer/LayerInterfaceFactoryInterface.h"
+#include "org/allbinary/layer/AllBinaryLayer.h"
 
 class LayerInterfaceFactory
             : public Object
          {
 
-    private: static const LayerInterfaceFactory SINGLETON = LayerInterfaceFactory();
+    private: static LayerInterfaceFactory* SINGLETON() { static std::unique_ptr<LayerInterfaceFactory> value(new LayerInterfaceFactory()); return value.get(); }
 
-    public: static LayerInterfaceFactory getInstance(){
+    public: static LayerInterfaceFactory* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LayerInterfaceFactory::SINGLETON;
+                        return LayerInterfaceFactory::SINGLETON();
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: BasicArrayList list = BasicArrayListUtil::getInstance().getImmutableInstance();
+    private: BasicArrayList* list = BasicArrayListUtil::getInstance()->getImmutableInstance();
 
     public: void init(){
-this->list= BasicArrayListD();
+this->list= new BasicArrayListD();
     
 }
 
@@ -100,29 +106,29 @@ this->list= BasicArrayListD();
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer getNexInstance(ABHashtable<Object*, Object*> hashtable, int32_t x, int32_t y, int32_t z){
+    public: AllBinaryLayer* getNexInstance(ABHashtable<Object*, Object*>* hashtable, int32_t x, int32_t y, int32_t z){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF(StringMaker().append(this->HASHTABLE_LABEL).append(StringUtil::getInstance().toString(hashtable)).toString(), this, commonStrings.GET_INSTANCE);
-    
-
-    Integer typeInteger = hashtable.get(Layer::ID);;
+this->logUtil->putF((new StringMaker())->append(this->HASHTABLE_LABEL)->append(StringUtil::getInstance()->toString(hashtable))->toString(), this, commonStrings->GET_INSTANCE);
     
 
-    LayerInterfaceFactoryInterface layerInterfaceFactoryInterface = this->list.objectArray[typeInteger.intValue() -1];;
+    int32_t typeInteger = hashtable->get(Layer::ID);;
+    
+
+    LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface = dynamic_cast<LayerInterfaceFactoryInterface*>(this->list->objectArray[typeInteger.intValue() -1]);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return layerInterfaceFactoryInterface.getNextInstance(hashtable, x, y, z);;
+                        return layerInterfaceFactoryInterface->getNextInstance(hashtable, x, y, z);;
     
 }
 
 
-    public: void add(LayerInterfaceFactoryInterface layerInterfaceFactoryInterface){
-this->list.add(layerInterfaceFactoryInterface);
+    public: void add(LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface){
+this->list->add(layerInterfaceFactoryInterface);
     
 }
 

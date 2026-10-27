@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/layer/PathFindingLayerInterface.h>
 
       
@@ -48,34 +54,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WaypointRunnableLogHelper.h"
+        #include "org/allbinary/game/layer/waypoint/WaypointRunnableLogHelper.h"
 
 class WaypointRunnableSelectedLogHelper: public WaypointRunnableLogHelper {
 
-    private: static const WaypointRunnableSelectedLogHelper instanceC = WaypointRunnableSelectedLogHelper();
+    private: static WaypointRunnableSelectedLogHelper* instanceC() { static std::unique_ptr<WaypointRunnableSelectedLogHelper> value(new WaypointRunnableSelectedLogHelper()); return value.get(); }
 
-    public: static WaypointRunnableSelectedLogHelper getInstance(){
+    public: static WaypointRunnableSelectedLogHelper* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WaypointRunnableSelectedLogHelper::instanceC;
+                        return WaypointRunnableSelectedLogHelper::instanceC();
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    public: void start(PathFindingLayerInterface pathFindingLayerInterface){
-this->logUtil.putF(StringMaker().append(pathFindingLayerInterface.getName()).append(this->commonStrings.START_RUNNABLE).toString(), this, this->commonStrings.RUN);
+    public: void start(PathFindingLayerInterface* pathFindingLayerInterface){
+this->logUtil->putF((new StringMaker())->append(pathFindingLayerInterface->getName())->append(this->commonStrings->START_RUNNABLE)->toString(), this, this->commonStrings->RUN);
     
 }
 
 
-    public: void end(PathFindingLayerInterface pathFindingLayerInterface){
-this->logUtil.putF(StringMaker().append(pathFindingLayerInterface.getName()).append(this->commonStrings.END_RUNNABLE).toString(), this, this->commonStrings.RUN);
+    public: void end(PathFindingLayerInterface* pathFindingLayerInterface){
+this->logUtil->putF((new StringMaker())->append(pathFindingLayerInterface->getName())->append(this->commonStrings->END_RUNNABLE)->toString(), this, this->commonStrings->RUN);
     
 }
 

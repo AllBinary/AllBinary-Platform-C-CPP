@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/input/event/GameKeyEvent.h>
 
       
@@ -42,23 +48,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PlayerGameInput.h"
+        #include "org/allbinary/game/input/PlayerGameInput.h"
 
 class NoPlayerGameInput: public PlayerGameInput {
 
-    private: static const NoPlayerGameInput SINGLETON = NoPlayerGameInput();
+    private: static NoPlayerGameInput* SINGLETON() { static std::unique_ptr<NoPlayerGameInput> value(new NoPlayerGameInput()); return value.get(); }
 
-    public: static NoPlayerGameInput getInstance(){
+    public: static NoPlayerGameInput* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoPlayerGameInput::SINGLETON;
+                        return NoPlayerGameInput::SINGLETON();
     
 }
 
 
-private: NoPlayerGameInput() : PlayerGameInput(BasicArrayListD(), BasicArrayListD(),  -1){
+private: NoPlayerGameInput() : PlayerGameInput(new BasicArrayListD(), new BasicArrayListD(),  -1){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -69,12 +75,12 @@ private: NoPlayerGameInput() : PlayerGameInput(BasicArrayListD(), BasicArrayList
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onDownGameKeyEvent(GameKeyEvent gameKeyEvent){
+    public: void onDownGameKeyEvent(GameKeyEvent* gameKeyEvent){
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onUpGameKeyEvent(GameKeyEvent gameKeyEvent){
+    public: void onUpGameKeyEvent(GameKeyEvent* gameKeyEvent){
 }
 
 

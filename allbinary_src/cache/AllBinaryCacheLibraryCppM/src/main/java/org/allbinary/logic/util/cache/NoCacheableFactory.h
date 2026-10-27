@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_NOCACHEABLEFACTORY_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_NOCACHEABLEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -43,18 +49,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CacheableInterfaceFactoryInterface.h"
-#include "CacheableInterface.h"
+        #include "org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h"
+#include "org/allbinary/logic/util/cache/CacheableInterface.h"
 
 class NoCacheableFactory
             : public Object
-        : public CacheableInterfaceFactoryInterface {
+        , public CacheableInterfaceFactoryInterface {
 
 public: NoCacheableFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: CacheableInterface getInstance(Object* key);
+    public: CacheableInterface* getInstance(Object* key);
 
 };
 

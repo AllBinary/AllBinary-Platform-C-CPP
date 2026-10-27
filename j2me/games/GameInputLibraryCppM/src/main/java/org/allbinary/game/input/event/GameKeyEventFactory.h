@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,17 +66,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameKeyEvent.h"
+        #include "org/allbinary/game/input/event/GameKeyEvent.h"
 
 class GameKeyEventFactory
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static GameKeyEventFactory getInstance();
+    public: static GameKeyEventFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     public: const int32_t TOUCH_BUTTON_SOURCE_ID = 2;
 
@@ -78,7 +84,7 @@ class GameKeyEventFactory
 
     private: const int32_t MAX_SOURCES = 4;
 
-    private: std::vector<std::vector<GameKeyEvent>> ARRAY = std::vector<std::vector<GameKeyEvent>>(this->MAX_SOURCES, std::vector<GameKeyEvent>(InputFactory::getInstance().MAX));
+    private: std::vector<std::vector<GameKeyEvent*>> ARRAY = std::vector<std::vector<GameKeyEvent*>>(this->MAX_SOURCES, std::vector<GameKeyEvent*>(InputFactory::getInstance()->MAX));
 
 private: GameKeyEventFactory();
 
@@ -86,11 +92,11 @@ private: GameKeyEventFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: GameKeyEvent getInstanceForKey(GameKeyEventSourceInterface anyType, int32_t key);
+    public: GameKeyEvent* getInstanceForKey(GameKeyEventSourceInterface* anyType, int32_t key);
 
                 //@Throws(Exception.constructor)
             
-    public: GameKeyEvent getInstanceForInput(GameKeyEventSourceInterface anyType, Input input);
+    public: GameKeyEvent* getInstanceForInput(GameKeyEventSourceInterface* anyType, Input* input);
 
 };
 

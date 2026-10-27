@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONTABLEMAPPING_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONTABLEMAPPING_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,18 +64,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ContextConfigurationInterface.h"
-#include "ContextConfigurationData.h"
+        #include "org/allbinary/business/context/configuration/ContextConfigurationInterface.h"
+#include "org/allbinary/business/context/configuration/ContextConfigurationData.h"
 
 class ContextConfigurationTableMapping
             : public Object
-        : public TableMappingInterface {
+        , public TableMappingInterface {
 
-    private: ContextConfigurationInterface contextConfigurationInterface;
+    private: ContextConfigurationInterface* contextConfigurationInterface;
 
-public: ContextConfigurationTableMapping(ContextConfigurationInterface contextConfigurationInterface);
+public: ContextConfigurationTableMapping(ContextConfigurationInterface* contextConfigurationInterface);
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
                 //@Throws(Exception.constructor)
             
@@ -77,7 +83,7 @@ public: ContextConfigurationTableMapping(ContextConfigurationInterface contextCo
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList toVector();
+    public: BasicArrayList* toVector();
 
 };
 

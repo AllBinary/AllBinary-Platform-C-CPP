@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,7 +52,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CssElementValidation.h"
+        #include "org/allbinary/logic/visual/dhtml/style/css/CssElementValidation.h"
 
 class CssElementValidationFactory
             : public Object
@@ -54,12 +60,12 @@ class CssElementValidationFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static ValidationInterface getInstance(Node node){
+    public: static ValidationInterface* getInstance(Node* node){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CssElementValidation(node);
+                        return dynamic_cast<ValidationInterface*>(new CssElementValidation(node));
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h>
@@ -53,21 +59,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseImageLoadingProcessor.h"
-#include "ABRunnable.h"
-//#include "ImageCacheRunnable.h"
-#include "ImageThreadPool.h"
+        #include "org/allbinary/thread/BaseImageLoadingProcessor.h"
+#include "org/allbinary/thread/ABRunnable.h"
+//#include "org/allbinary/thread/ImageCacheRunnable.h"
+#include "org/allbinary/thread/ImageThreadPool.h"
 
 class ConcurrentImageLoadingProcessor: public BaseImageLoadingProcessor {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 //inner= member=true isStatic=
 class ImageCacheRunnable: public ABRunnable {
 
-    private: ImageCache imageCache;
+    private: ImageCache* imageCache;
 
-public: ImageCacheRunnable(ImageCache imageCache){
+public: ImageCacheRunnable(ImageCache* imageCache){
 this->imageCache= imageCache;
     
 }
@@ -75,42 +81,42 @@ this->imageCache= imageCache;
 
     public: void run(){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
         try {
             this->setRunning(true);
     
-this->imageCache.waitForLoadNow();
+this->imageCache->waitForLoadNow();
     
-this->imageCache.loadImages();
+this->imageCache->loadImages();
     
-this->imageCache.loadRemainingAnimations();
+this->imageCache->loadRemainingAnimations();
     
 this->setRunning(false);
     
 
-    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
+    ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
     
 
-                        if(!progressCanvas.inProgress)
+                        if(!progressCanvas->inProgress)
                         
                                     {
-                                    progressCanvas.endFromInitialLazyLoadingComplete();
+                                    progressCanvas->endFromInitialLazyLoadingComplete();
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 this->setRunning(false);
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
+logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
     
 }
 
@@ -120,20 +126,20 @@ logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
 };
 
             
-    private: ABRunnable runnable;
+    private: ABRunnable* runnable;
 
-public: ConcurrentImageLoadingProcessor(ImageCache imageCache){
-this->runnable= ImageCacheRunnable(imageCache);
+public: ConcurrentImageLoadingProcessor(ImageCache* imageCache){
+this->runnable= new ImageCacheRunnable(imageCache);
     
 }
 
 
     public: void runTask(){
 
-                        if(!this->runnable.isRunning())
+                        if(!this->runnable->isRunning())
                         
                                     {
-                                    ImageThreadPool::getInstance().runTask(this->runnable);
+                                    ImageThreadPool::getInstance()->runTask(this->runnable);
     
 
                                     }

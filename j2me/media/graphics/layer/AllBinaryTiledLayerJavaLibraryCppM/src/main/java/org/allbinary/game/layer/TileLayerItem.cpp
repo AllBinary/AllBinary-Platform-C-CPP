@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -51,13 +57,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryTiledLayer.h"
+        #include "org/allbinary/game/layer/AllBinaryTiledLayer.h"
 
 class TileLayerItem: public ABCustomItem, public ABCustomItemInterface {
 
-    private: AllBinaryTiledLayer tiledLayer;
+    private: AllBinaryTiledLayer* tiledLayer;
 
-public: TileLayerItem(std::string label, AllBinaryTiledLayer tiledLayer, int32_t layout, std::string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : ABCustomItem(label, backgroundBasicColor, foregroundBasicColor){
+public: TileLayerItem(std::string label, AllBinaryTiledLayer* tiledLayer, int32_t layout, std::string altText, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ABCustomItem(label, backgroundBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -69,7 +75,7 @@ this->tiledLayer= tiledLayer;
 }
 
 
-    public: void setOwner(Screen owner){
+    public: void setOwner(Screen* owner){
 }
 
 
@@ -78,7 +84,7 @@ this->tiledLayer= tiledLayer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->tiledLayer.getWidth();;
+                        return this->tiledLayer->getWidth();;
     
 }
 
@@ -88,7 +94,7 @@ this->tiledLayer= tiledLayer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->tiledLayer.getHeight();;
+                        return this->tiledLayer->getHeight();;
     
 }
 
@@ -98,7 +104,7 @@ this->tiledLayer= tiledLayer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->tiledLayer.getHeight();;
+                        return this->tiledLayer->getHeight();;
     
 }
 
@@ -108,7 +114,7 @@ this->tiledLayer= tiledLayer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->tiledLayer.getWidth();;
+                        return this->tiledLayer->getWidth();;
     
 }
 
@@ -118,7 +124,7 @@ this->tiledLayer= tiledLayer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->tiledLayer.getHeight();;
+                        return this->tiledLayer->getHeight();;
     
 }
 
@@ -128,20 +134,20 @@ this->tiledLayer= tiledLayer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->tiledLayer.getWidth();;
+                        return this->tiledLayer->getWidth();;
     
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
-this->tiledLayer.setPosition(x, y, this->tiledLayer.getZP());
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+this->tiledLayer->setPosition(x, y, this->tiledLayer->getZP());
     
-this->tiledLayer.paint(graphics);
+this->tiledLayer->paint(graphics);
     
 }
 
 
-    public: void paintUnselected(Graphics graphics, int32_t x, int32_t y){
+    public: void paintUnselected(Graphics* graphics, int32_t x, int32_t y){
 }
 
 

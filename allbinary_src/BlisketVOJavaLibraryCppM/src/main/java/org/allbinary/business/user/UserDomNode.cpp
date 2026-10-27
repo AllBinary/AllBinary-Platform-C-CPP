@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,15 +70,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserData.h"
+        #include "org/allbinary/business/user/UserData.h"
 
 class UserDomNode
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: TableMappingInterface dataMappingInterface;
+    private: TableMappingInterface* dataMappingInterface;
 
-public: UserDomNode(TableMappingInterface dataMappingInterface){
+public: UserDomNode(TableMappingInterface* dataMappingInterface){
 this->dataMappingInterface= dataMappingInterface;
     
 }
@@ -80,18 +86,18 @@ this->dataMappingInterface= dataMappingInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;;
+    std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;;
     
 
-    HashMap<Object*, Object*> hashMap = this->dataMappingInterface.toHashMap();;
+    HashMap<Object*, Object*>* hashMap = this->dataMappingInterface->toHashMap();;
     
-hashMap.put(EntryData::getInstance().LASTMODIFIED, EMPTY_STRING);
+hashMap->put(EntryData::getInstance()->LASTMODIFIED, EMPTY_STRING);
     
-hashMap.put(EntryData::getInstance().ENCRYPTION, EMPTY_STRING);
+hashMap->put(EntryData::getInstance()->ENCRYPTION, EMPTY_STRING);
     
-hashMap.put(UserData::PASSWORD, EMPTY_STRING);
+hashMap->put(UserData::PASSWORD, EMPTY_STRING);
     
 
 
@@ -104,7 +110,7 @@ hashMap.put(UserData::PASSWORD, EMPTY_STRING);
 
                 //@Throws(Exception.constructor)
             
-    public: Document toXmlDoc(){
+    public: Document* toXmlDoc(){
 
 
 

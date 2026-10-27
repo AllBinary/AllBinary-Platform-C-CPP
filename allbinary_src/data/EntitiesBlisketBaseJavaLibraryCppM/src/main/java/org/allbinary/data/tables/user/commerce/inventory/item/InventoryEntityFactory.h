@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_INVENTORYENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_INVENTORYENTITYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,21 +55,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InventoryEntity.h"
+        #include "org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntity.h"
 
 class InventoryEntityFactory
             : public Object
          {
 
-    private: static InventoryEntityFactory instance() { return InventoryEntityFactory(); }
+    private: static InventoryEntityFactory* instance() { static std::unique_ptr<InventoryEntityFactory> value(new InventoryEntityFactory()); return value.get(); }
 
-    public: static InventoryEntityFactory getInstance();
+    public: static InventoryEntityFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: InventoryEntityFactory();
 
-    public: InventoryEntity getInventoryEntityInstance();
+    public: InventoryEntity* getInventoryEntityInstance();
 
 };
 

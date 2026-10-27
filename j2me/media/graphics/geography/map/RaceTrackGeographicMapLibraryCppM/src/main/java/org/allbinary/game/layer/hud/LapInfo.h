@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_HUD_LAPINFO_H
         #define ORG_ALLBINARY_GAME_LAYER_HUD_LAPINFO_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -49,7 +55,7 @@ class LapInfo
             : public Object
          {
 
-    public: static LapInfo NULL_LAP_INFO = LapInfo( -1);
+    public: static LapInfo* NULL_LAP_INFO() { static std::unique_ptr<LapInfo> value(new LapInfo( -1)); return value.get(); }
 
     private: int32_t numberOfLaps;
 

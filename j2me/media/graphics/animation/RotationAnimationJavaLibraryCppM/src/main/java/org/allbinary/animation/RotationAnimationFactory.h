@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,17 +61,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnimationInterfaceFactoryInterface.h"
-#include "ProceduralAnimationInterfaceFactoryInterface.h"
-#include "NullRotationAnimation.h"
-#include "AnimationBehavior.h"
-#include "Animation.h"
+        #include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/NullRotationAnimation.h"
+#include "org/allbinary/animation/AnimationBehavior.h"
+#include "org/allbinary/animation/Animation.h"
 
 class RotationAnimationFactory
             : public Object
-        : public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
+        , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
 
-    public: static RotationAnimationFactory createFactory();
+    public: static RotationAnimationFactory* createFactory();
 
     private: int16_t totalAngle;
 
@@ -75,13 +81,13 @@ public: RotationAnimationFactory(int16_t totalAngle, int16_t angleIncrement);
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId);
+    public: Animation* getInstance(int32_t instanceId);
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstanceAnimation(Animation animationInterface);
+    public: Animation* getInstanceAnimation(Animation* animationInterface);
 
-    public: void setInitialScale(ScaleProperties scaleProperties);
+    public: void setInitialScale(ScaleProperties* scaleProperties);
 
 };
 

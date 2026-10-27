@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITION_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graphics/CellPosition.h>
 
       
@@ -51,17 +57,17 @@
         
 class GeographicMapCellPosition: public CellPosition {
 
-    private: GPoint point;
+    private: GPoint* point;
 
-    private: GPoint midPoint;
+    private: GPoint* midPoint;
 
 public: GeographicMapCellPosition(int32_t column, int32_t row, int32_t columns, int32_t rows, int32_t width, int32_t height);
 
-    public: GPoint getPoint();
+    public: GPoint* getPoint();
 
-    public: GPoint getMidPoint();
+    public: GPoint* getMidPoint();
 
-    public: void setMidPoint(GPoint midPoint);
+    public: void setMidPoint(GPoint* midPoint);
 
 };
 

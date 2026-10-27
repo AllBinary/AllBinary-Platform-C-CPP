@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLGAMECANVASRUNNABLE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLGAMECANVASRUNNABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -69,15 +75,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameCanvasRunnableInterface.h"
+        #include "org/allbinary/game/displayable/canvas/GameCanvasRunnableInterface.h"
 
 class NullGameCanvasRunnable
             : public Object
-        : public GameCanvasRunnableInterface {
+        , public GameCanvasRunnableInterface {
 
-    public: static const NullGameCanvasRunnable NULL_GAME_CANVAS_RUNNABLE = NullGameCanvasRunnable();
+    public: static NullGameCanvasRunnable* NULL_GAME_CANVAS_RUNNABLE() { static std::unique_ptr<NullGameCanvasRunnable> value(new NullGameCanvasRunnable()); return value.get(); }
 
-    protected: const GameStateFactory gameStateFactory = GameStateFactory::getInstance();
+    protected: GameStateFactory* gameStateFactory = GameStateFactory::getInstance();
 
     public: std::string getTitle();
 
@@ -101,33 +107,33 @@ class NullGameCanvasRunnable
 
     public: bool isGameOver();
 
-    public: void initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener* cmdListener);
 
                 //@Throws(Exception.constructor)
             
-    public: ABHashtable<Object*, Object*> getCurrentStateHashtable();
+    public: ABHashtable<Object*, Object*>* getCurrentStateHashtable();
 
                 //@Throws(Exception.constructor)
             
-    public: ABHashtable<Object*, Object*> getLoadStateHashtable();
+    public: ABHashtable<Object*, Object*>* getLoadStateHashtable();
 
                 //@Throws(Exception.constructor)
             
-    public: void setLoadStateHashtable(ABHashtable<Object*, Object*> hashtable);
+    public: void setLoadStateHashtable(ABHashtable<Object*, Object*>* hashtable);
 
     public: int32_t getType();
 
                 //@Throws(Exception.constructor)
             
-    public: void setGameState(GameState gameState);
+    public: void setGameState(GameState* gameState);
 
-    public: GameState getGameState();
+    public: GameState* getGameState();
 
-    public: void itemStateChanged(Item item);
+    public: void itemStateChanged(Item* item);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: void paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics* graphics);
 
     public: bool isRunning();
 
@@ -135,7 +141,7 @@ class NullGameCanvasRunnable
 
                 //@Throws(Exception.constructor)
             
-    public: void setThread(Thread thread);
+    public: void setThread(Thread* thread);
 
     public: void run();
 

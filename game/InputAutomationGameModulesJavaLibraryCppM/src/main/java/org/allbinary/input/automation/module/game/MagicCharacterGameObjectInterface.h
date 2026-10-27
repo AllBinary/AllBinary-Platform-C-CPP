@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_MAGICCHARACTERGAMEOBJECTINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_MAGICCHARACTERGAMEOBJECTINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,14 +45,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HitPointGameObjectInterface.h"
-#include "MagicGameObjectInterface.h"
+        #include "org/allbinary/input/automation/module/game/HitPointGameObjectInterface.h"
+#include "org/allbinary/input/automation/module/game/MagicGameObjectInterface.h"
 
 class MagicCharacterGameObjectInterface {
 
-    HitPointGameObjectInterface getHitPointGameObjectInterface();
+    public: virtual HitPointGameObjectInterface* getHitPointGameObjectInterface() = 0;
 
-    MagicGameObjectInterface getMagicGameObjectInterface();
+    public: virtual MagicGameObjectInterface* getMagicGameObjectInterface() = 0;
 
 };
 

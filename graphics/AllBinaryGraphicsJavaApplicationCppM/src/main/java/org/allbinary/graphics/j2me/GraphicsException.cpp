@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/GuiLog.h>
@@ -47,9 +55,9 @@
         
 class GraphicsException: public java::lang::Exception {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const GuiLog guiLog = GuiLog::getInstance();
+    private: GuiLog* guiLog = GuiLog::getInstance();
 
 public: GraphicsException(std::string msg, Object* obj, std::string method) : java::lang::Exception(msg){
 
@@ -60,13 +68,13 @@ public: GraphicsException(std::string msg, Object* obj, std::string method) : ja
                     
 
         try {
-            this->guiLog.showDialog(msg);
+            this->guiLog->showDialog(msg);
     
-this->logUtil.put(msg, obj, method, this);
+this->logUtil->put(msg, obj, method, this);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 }
 
@@ -82,13 +90,13 @@ public: GraphicsException(std::string msg, std::string className, std::string me
                     
 
         try {
-            this->guiLog.showDialog(msg);
+            this->guiLog->showDialog(msg);
     
-this->logUtil.put(msg, className, method, this);
+this->logUtil->put(msg, className, method, this);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 }
 

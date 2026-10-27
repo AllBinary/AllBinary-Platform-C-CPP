@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUNIFIERPROPERTIES_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUNIFIERPROPERTIES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -43,17 +49,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageUnifierCell.h"
+        #include "org/allbinary/media/image/ImageUnifierCell.h"
 
 class ImageUnifierProperties
             : public Object
          {
 
-    private: Integer rows;
+    private: int32_t rows;
 
-    private: Integer columns;
+    private: int32_t columns;
 
-    private: ImageUnifierCell imageUnifierCell;
+    private: ImageUnifierCell* imageUnifierCell;
 
 public: ImageUnifierProperties();
 
@@ -61,17 +67,17 @@ public: ImageUnifierProperties();
 
     public: int32_t getHeight();
 
-    public: Integer getRows();
+    public: int32_t getRows();
 
-    public: void setRows(Integer rows);
+    public: void setRows(int32_t rows);
 
-    public: Integer getColumns();
+    public: int32_t getColumns();
 
-    public: void setColumns(Integer columns);
+    public: void setColumns(int32_t columns);
 
-    public: ImageUnifierCell getImageUnifierCell();
+    public: ImageUnifierCell* getImageUnifierCell();
 
-    public: void setImageUnifierCell(ImageUnifierCell imageUnifierCell);
+    public: void setImageUnifierCell(ImageUnifierCell* imageUnifierCell);
 
 };
 

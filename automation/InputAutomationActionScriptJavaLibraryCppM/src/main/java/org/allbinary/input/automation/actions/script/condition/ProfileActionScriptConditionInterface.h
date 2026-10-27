@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROFILEACTIONSCRIPTCONDITIONINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROFILEACTIONSCRIPTCONDITIONINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -52,17 +58,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CustomTreeNodeInterface.h"
+        #include "org/allbinary/input/automation/actions/script/condition/CustomTreeNodeInterface.h"
 
 class ProfileActionScriptConditionInterface: public ProfileActionScriptNodeInterface, public CustomTreeNodeInterface, public ProfileActionScriptItemInterface {
 
-    void addProcessor(ProfileActionScriptProcessorInterface profileActionProcessorInterface);
+    public: virtual void addProcessor(ProfileActionScriptProcessorInterface* profileActionProcessorInterface) = 0;
 
-    void removeProcessor(ProfileActionScriptProcessorInterface profileActionProcessorInterface);
+    public: virtual void removeProcessor(ProfileActionScriptProcessorInterface* profileActionProcessorInterface) = 0;
 
                 //@Throws(Exception.constructor)
             
-    bool shouldProcess(Long frame);
+    public: virtual bool shouldProcess(int64_t frame) = 0;
 
 };
 

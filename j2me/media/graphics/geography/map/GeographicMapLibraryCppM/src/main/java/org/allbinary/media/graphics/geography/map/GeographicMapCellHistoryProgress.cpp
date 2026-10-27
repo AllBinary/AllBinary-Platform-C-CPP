@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/NullUtil.h>
 
       
@@ -41,16 +47,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapCellHistoryProgressBase.h"
-#include "GeographicMapCellHistory.h"
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellHistoryProgressBase.h"
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h"
 
 class GeographicMapCellHistoryProgress: public GeographicMapCellHistoryProgressBase {
 
-    private: std::vector<int32_t> totalVisitedArray = NullUtil::getInstance().NULL_INT_ARRAY;
+    private: std::vector<int32_t> totalVisitedArray = NullUtil::getInstance()->NULL_INT_ARRAY;
 
-    private: std::vector<GeographicMapCellHistory> geographicMapCellHistoryArray = GeographicMapCellHistory::NULL_GEOGRPAHIC_MAP_HISTORY_ARRAY;
+    private: std::vector<GeographicMapCellHistory*> geographicMapCellHistoryArray = GeographicMapCellHistory::NULL_GEOGRPAHIC_MAP_HISTORY_ARRAY;
 
-public: GeographicMapCellHistoryProgress(std::vector<GeographicMapCellHistory> geographicMapCellHistoryArray){
+public: GeographicMapCellHistoryProgress(std::vector<GeographicMapCellHistory*> geographicMapCellHistoryArray){
 this->geographicMapCellHistoryArray= geographicMapCellHistoryArray;
     
 this->init();

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_CONFIGURATION_INPUTAUTOMATIONMODULECONFIGURATION_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_CONFIGURATION_INPUTAUTOMATIONMODULECONFIGURATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -107,33 +113,33 @@ class InputAutomationModuleConfiguration
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: std::string className;
 
     private: std::string name;
 
-    private: InputAutomationModuleFactoryInterface inputAutomationModuleInterface;
+    private: InputAutomationModuleFactoryInterface* inputAutomationModuleInterface;
 
 public: InputAutomationModuleConfiguration();
 
-public: InputAutomationModuleConfiguration(AbeClientInformationInterface abeClientInformation, Node node);
+public: InputAutomationModuleConfiguration(AbeClientInformationInterface* abeClientInformation, Node* node);
 
-public: InputAutomationModuleConfiguration(AbeClientInformationInterface abeClientInformation, std::string name, std::string className);
+public: InputAutomationModuleConfiguration(AbeClientInformationInterface* abeClientInformation, std::string name, std::string className);
 
-public: InputAutomationModuleConfiguration(InputAutomationModuleFactoryInterface inputAutomationModuleInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public: void init(AbeClientInformationInterface abeClientInformation, Node node);
-
-    public: void init(AbeClientInformationInterface abeClientInformation);
+public: InputAutomationModuleConfiguration(InputAutomationModuleFactoryInterface* inputAutomationModuleInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toDomNode(Document document);
+    public: void init(AbeClientInformationInterface* abeClientInformation, Node* node);
+
+    public: void init(AbeClientInformationInterface* abeClientInformation);
+
+                //@Throws(Exception.constructor)
+            
+    public: Node* toDomNode(Document* document);
 
     public: std::string getName();
 
@@ -143,9 +149,9 @@ public: InputAutomationModuleConfiguration(InputAutomationModuleFactoryInterface
 
     public: void setClassName(std::string className);
 
-    public: InputAutomationModuleFactoryInterface getInputAutomationModuleInterface();
+    public: InputAutomationModuleFactoryInterface* getInputAutomationModuleInterface();
 
-    public: void setInputAutomationModuleInterface(InputAutomationModuleFactoryInterface inputAutomationModuleInterface);
+    public: void setInputAutomationModuleInterface(InputAutomationModuleFactoryInterface* inputAutomationModuleInterface);
 
 };
 

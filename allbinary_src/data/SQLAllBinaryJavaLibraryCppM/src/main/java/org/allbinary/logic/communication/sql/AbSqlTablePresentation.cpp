@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/business/init/db/DbConnectionInfo.h>
 
       
@@ -39,11 +45,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbSqlBasic.h"
+        #include "org/allbinary/logic/communication/sql/AbSqlBasic.h"
 
 class AbSqlTablePresentation: public AbSqlBasic {
 
-public: AbSqlTablePresentation(DbConnectionInfo databaseConnectionInfoInterface) : AbSqlBasic(databaseConnectionInfoInterface){
+public: AbSqlTablePresentation(DbConnectionInfo* databaseConnectionInfoInterface) : AbSqlBasic(databaseConnectionInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     

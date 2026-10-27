@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_REALTIMESTOREFRONTSTATISTICSVIEW_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_REALTIMESTOREFRONTSTATISTICSVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -82,22 +88,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreFrontStatisticsInterface.h"
-#include "StoreFrontStatisticsData.h"
+        #include "org/allbinary/business/context/modules/storefront/statistics/StoreFrontStatisticsInterface.h"
+#include "org/allbinary/business/context/modules/storefront/statistics/StoreFrontStatisticsData.h"
 
 class RealTimeStoreFrontStatisticsView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: StoreFrontStatisticsInterface storeFrontStatisticsInterface;
+    private: StoreFrontStatisticsInterface* storeFrontStatisticsInterface;
 
-    private: UserRole userRole;
+    private: UserRole* userRole;
 
-public: RealTimeStoreFrontStatisticsView(StoreFrontStatisticsInterface storeFrontStatisticsInterface, UserRole userRole);
+public: RealTimeStoreFrontStatisticsView(StoreFrontStatisticsInterface* storeFrontStatisticsInterface, UserRole* userRole);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

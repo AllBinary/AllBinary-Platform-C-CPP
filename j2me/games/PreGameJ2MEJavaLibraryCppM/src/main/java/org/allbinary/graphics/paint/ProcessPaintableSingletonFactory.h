@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_PROCESSPAINTABLESINGLETONFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_PAINT_PROCESSPAINTABLESINGLETONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,15 +47,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProcessPaintable.h"
+        #include "org/allbinary/graphics/paint/ProcessPaintable.h"
 
 class ProcessPaintableSingletonFactory
             : public Object
          {
 
-    private: static const ProcessPaintable SINGLETON = ProcessPaintable();
+    private: static ProcessPaintable* SINGLETON() { static std::unique_ptr<ProcessPaintable> value(new ProcessPaintable()); return value.get(); }
 
-    public: static ProcessPaintable getInstance();
+    public: static ProcessPaintable* getInstance();
 
 private: ProcessPaintableSingletonFactory();
 

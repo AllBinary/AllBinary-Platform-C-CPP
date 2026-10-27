@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -88,21 +94,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CollidableWaypointBehavior.h"
-#include "Waypoint.h"
-#include "WaypointCellPositionHistory.h"
+        #include "org/allbinary/game/layer/waypoint/CollidableWaypointBehavior.h"
+#include "org/allbinary/game/layer/waypoint/Waypoint.h"
+#include "org/allbinary/game/layer/waypoint/WaypointCellPositionHistory.h"
 
 class WaypointLayer: public AdvancedRTSGameLayer {
 
     public: static int32_t getStaticType();
 
-protected: WaypointLayer(RemoteInfo remoteInfo, PathFindingLayerInterface parentLayer, std::vector<Group> groupInterface, std::string rootName, std::string name, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y);
+protected: WaypointLayer(RemoteInfo* remoteInfo, PathFindingLayerInterface* parentLayer, std::vector<Group*> groupInterface, std::string rootName, std::string name, AnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface* proceduralAnimationInterfaceFactoryInterface, Rectangle* rectangle, int32_t x, int32_t y);
 
-    public: void construct(RTSPlayerLayerInterface rtsPlayerLayerInterface);
+    public: void construct(RTSPlayerLayerInterface* rtsPlayerLayerInterface);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: void processTick(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager);
 
     public: void damage(int32_t damage, int32_t damageType);
 

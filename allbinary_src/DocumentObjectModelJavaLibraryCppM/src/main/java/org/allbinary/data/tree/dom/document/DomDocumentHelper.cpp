@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -79,17 +85,17 @@ System.setProperty("jdk.xml.totalEntitySizeLimit", LIMIT);
 }
 
 
-    public: static Document create(){
+    public: static Document* create(){
 
         try {
             
-    DocumentBuilderFactory factory = DocumentBuilderFactory::newInstance();;
+    DocumentBuilderFactory* factory = DocumentBuilderFactory::newInstance();;
     
 
-    DocumentBuilder builder = factory.newDocumentBuilder();;
+    DocumentBuilder* builder = factory->newDocumentBuilder();;
     
 
-    Document document = builder.newDocument();;
+    Document* document = builder->newDocument();;
     
 
 
@@ -99,7 +105,7 @@ System.setProperty("jdk.xml.totalEntitySizeLimit", LIMIT);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -114,17 +120,17 @@ System.setProperty("jdk.xml.totalEntitySizeLimit", LIMIT);
 
                 //@Throws(Exception.constructor)
             
-    public: static Document create(InputStream inputStream){
+    public: static Document* create(InputStream* inputStream){
 
         try {
             
-    DocumentBuilderFactory factory = DocumentBuilderFactory::newInstance();;
+    DocumentBuilderFactory* factory = DocumentBuilderFactory::newInstance();;
     
 
-    DocumentBuilder builder = factory.newDocumentBuilder();;
+    DocumentBuilder* builder = factory->newDocumentBuilder();;
     
 
-    Document document = builder.parse(inputStream);;
+    Document* document = builder->parse(inputStream);;
     
 
 
@@ -134,7 +140,7 @@ System.setProperty("jdk.xml.totalEntitySizeLimit", LIMIT);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -148,17 +154,17 @@ System.setProperty("jdk.xml.totalEntitySizeLimit", LIMIT);
 
                 //@Throws(Exception.constructor)
             
-    public: static Document create(std::string xmlString){
+    public: static Document* create(std::string xmlString){
 
         try {
             
-    DocumentBuilderFactory factory = DocumentBuilderFactory::newInstance();;
+    DocumentBuilderFactory* factory = DocumentBuilderFactory::newInstance();;
     
 
-    DocumentBuilder builder = factory.newDocumentBuilder();;
+    DocumentBuilder* builder = factory->newDocumentBuilder();;
     
 
-    Document document = builder.parse(StringBufferInputStream(xmlString));;
+    Document* document = builder->parse(new StringBufferInputStream(xmlString));;
     
 
 
@@ -168,7 +174,7 @@ System.setProperty("jdk.xml.totalEntitySizeLimit", LIMIT);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 

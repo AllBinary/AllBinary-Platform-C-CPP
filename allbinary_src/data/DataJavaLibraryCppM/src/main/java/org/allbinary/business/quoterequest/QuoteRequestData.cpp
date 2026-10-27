@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class QuoteRequestData
             : public Object
          {
 
-    private: static QuoteRequestData instance() { return QuoteRequestData(); }
+    private: static QuoteRequestData* instance() { static std::unique_ptr<QuoteRequestData> value(new QuoteRequestData()); return value.get(); }
 
-    public: static QuoteRequestData getInstance(){
+    public: static QuoteRequestData* getInstance(){
 
 
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -64,13 +70,13 @@
         
 class LivesHudWidget: public BasicHud, public PaintableInterface {
 
-    private: Life lifeInterface;
+    private: Life* lifeInterface;
 
     private: std::vector<int32_t> xArray;
 
-    private: Animation animationInterface;
+    private: Animation* animationInterface;
 
-public: LivesHudWidget(Animation animationInterface, Life lifeInterface, int32_t location, int32_t direction) : BasicHud(location, direction, 2, BasicColorFactory::getInstance().WHITE){
+public: LivesHudWidget(Animation* animationInterface, Life* lifeInterface, int32_t location, int32_t direction) : BasicHud(location, direction, 2, BasicColorFactory::getInstance()->WHITE){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -80,24 +86,24 @@ public: LivesHudWidget(Animation animationInterface, Life lifeInterface, int32_t
 this->lifeInterface= lifeInterface;
     
 
-    int32_t size = static_cast<int32_t>(this->getLifeInterface().getMaxlives());;
+    int32_t size = static_cast<int32_t>(this->getLifeInterface()->getMaxlives());;
     
 this->xArray= std::vector<int32_t>(size);
     
 this->animationInterface= animationInterface;
     
-this->updateMaxWidth= this->lifeInterface.getMaxlives() *16;
+this->updateMaxWidth= this->lifeInterface->getMaxlives() *16;
     
 this->updateMaxHeight= 16;
     
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 super.updateMeasurement(graphics);
     
 
-    int32_t maxLives = static_cast<int32_t>(this->getLifeInterface().getMaxlives());;
+    int32_t maxLives = static_cast<int32_t>(this->getLifeInterface()->getMaxlives());;
     
 
 
@@ -113,7 +119,7 @@ this->xArray[index]= this->getX() +(index *16);
 }
 
 
-    public: void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent){
+    public: void onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent){
 super.onDisplayChangeEvent(displayChangeEvent);
     
 this->myFontProcessor= this->updateMyFontProcessor;
@@ -129,7 +135,7 @@ this->myFontProcessor= this->updateMyFontProcessor;
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 this->myFontProcessor.process(graphics);
     
 
@@ -137,20 +143,20 @@ this->myFontProcessor.process(graphics);
 
 
                         for (
-    int32_t index = static_cast<int32_t>(this->getLifeInterface().get());--index >= 0; )
+    int32_t index = static_cast<int32_t>(this->getLifeInterface()->get());--index >= 0; )
         {
-this->animationInterface.paintXY(graphics, this->xArray[index], this->getY());
+this->animationInterface->paintXY(graphics, this->xArray[index], this->getY());
     
 }
 
 }
 
 
-    public: void paintThreed(Graphics graphics){
+    public: void paintThreed(Graphics* graphics){
 }
 
 
-    public: Life getLifeInterface(){
+    public: Life* getLifeInterface(){
 
 
 

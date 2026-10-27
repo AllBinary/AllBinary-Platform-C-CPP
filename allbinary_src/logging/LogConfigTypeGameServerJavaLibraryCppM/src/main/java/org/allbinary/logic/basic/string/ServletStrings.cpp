@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class ServletStrings
             : public Object
          {
 
-    private: static ServletStrings instance() { return ServletStrings(); }
+    private: static ServletStrings* instance() { static std::unique_ptr<ServletStrings> value(new ServletStrings()); return value.get(); }
 
-    public: static ServletStrings getInstance(){
+    public: static ServletStrings* getInstance(){
 
 
 

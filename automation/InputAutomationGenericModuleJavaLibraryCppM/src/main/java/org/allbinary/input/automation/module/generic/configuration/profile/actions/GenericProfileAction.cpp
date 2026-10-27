@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -70,24 +76,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GenericProfileActionJPanel.h"
-#include "GenericProfileActionData.h"
+        #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionJPanel.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionData.h"
 
 class GenericProfileAction
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string name;
 
-    private: GenericProfileActionScript genericProfileActionScript;
+    private: GenericProfileActionScript* genericProfileActionScript;
 
-    private: GenericProfileActionJPanel genericProfileActionJPanel;
+    private: GenericProfileActionJPanel* genericProfileActionJPanel;
 
-public: GenericProfileAction(GenericProfileActionJPanel genericProfileActionJPanel, Node node){
+public: GenericProfileAction(GenericProfileActionJPanel* genericProfileActionJPanel, Node* node){
 
-    Node actionNameNode = DomSearchHelper::getNode(GenericProfileActionData::NAME, node.getChildNodes());;
+    Node* actionNameNode = DomSearchHelper::getNode(GenericProfileActionData::NAME, node->getChildNodes());;
     
 
                         if(actionNameNode != 
@@ -104,12 +110,12 @@ public: GenericProfileAction(GenericProfileActionJPanel genericProfileActionJPan
                             
 
 
-                            throw Exception("Profile Action Name Node Null");
+                            throw new Exception("Profile Action Name Node Null");
                     
 
                         }
                             
-this->setGenericProfileActionScript(GenericProfileActionScript(this->genericProfileActionJPanel, node));
+this->setGenericProfileActionScript(new GenericProfileActionScript(this->genericProfileActionJPanel, node));
     
 }
 
@@ -117,7 +123,7 @@ this->setGenericProfileActionScript(GenericProfileActionScript(this->genericProf
 public: GenericProfileAction(std::string name){
 this->name= name;
     
-this->setGenericProfileActionScript(GenericProfileActionScript(this->genericProfileActionJPanel));
+this->setGenericProfileActionScript(new GenericProfileActionScript(this->genericProfileActionJPanel));
     
 }
 
@@ -138,13 +144,13 @@ this->name= name;
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(GenericProfileActionData::NAME, this->name);
+hashMap->put(GenericProfileActionData::NAME, this->name);
     
-this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
+this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
     
 
 
@@ -157,11 +163,11 @@ this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = ModDomHelper::createNodeWithValueNodes(document, GenericProfileActionData::NAME, this->toHashMap());;
+    Node* node = ModDomHelper::createNodeWithValueNodes(document, GenericProfileActionData::NAME, this->toHashMap());;
     
-node.appendChild(getGenericProfileActionScript().toXmlNode(document));
+node->appendChild(getGenericProfileActionScript()->toXmlNode(document));
     
 
 
@@ -172,7 +178,7 @@ node.appendChild(getGenericProfileActionScript().toXmlNode(document));
 }
 
 
-    public: GenericProfileActionScript getGenericProfileActionScript(){
+    public: GenericProfileActionScript* getGenericProfileActionScript(){
 
 
 
@@ -182,7 +188,7 @@ node.appendChild(getGenericProfileActionScript().toXmlNode(document));
 }
 
 
-    public: void setGenericProfileActionScript(GenericProfileActionScript genericProfileActionScript){
+    public: void setGenericProfileActionScript(GenericProfileActionScript* genericProfileActionScript){
 this->genericProfileActionScript= genericProfileActionScript;
     
 }

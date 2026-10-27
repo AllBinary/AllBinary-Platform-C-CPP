@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DEBUG_DEBUGFACTORY_H
         #define ORG_ALLBINARY_DEBUG_DEBUGFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,14 +47,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NoDebug.h"
-#include "DebugInterface.h"
+        #include "org/allbinary/debug/NoDebug.h"
+#include "org/allbinary/debug/DebugInterface.h"
 
 class DebugFactory
             : public Object
          {
 
-    public: static DebugInterface getInstance();
+    public: static DebugInterface* getInstance();
 
 };
 

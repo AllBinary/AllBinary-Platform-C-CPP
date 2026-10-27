@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/GPoint.h>
@@ -46,7 +52,7 @@ class Grid
             : public Object
          {
 
-    public: GPoint grid;
+    public: GPoint* grid;
 
     public: bool isGridOn = true;
 
@@ -60,14 +66,14 @@ public: Grid(){
 }
 
 
-public: Grid(Grid grid){
-this->grid= grid.grid;
+public: Grid(Grid* grid){
+this->grid= grid->grid;
     
-this->showGrid(grid.isGridOn);
+this->showGrid(grid->isGridOn);
     
-this->isGridPossible= grid.isGridPossible;
+this->isGridPossible= grid->isGridPossible;
     
-this->setZoom(grid.getZoom());
+this->setZoom(grid->getZoom());
     
 }
 
@@ -92,7 +98,7 @@ this->setZoom(grid.getZoom());
 }
 
 
-    public: GPoint getGrid(){
+    public: GPoint* getGrid(){
 
 
 

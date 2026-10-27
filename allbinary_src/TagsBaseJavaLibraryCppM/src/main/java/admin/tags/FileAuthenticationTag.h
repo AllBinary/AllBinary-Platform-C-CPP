@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGS_FILEAUTHENTICATIONTAG_H
         #define ADMIN_TAGS_FILEAUTHENTICATIONTAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -103,13 +109,13 @@
         
 class FileAuthenticationTag: public CustomTagSupport {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: Integer attemptsInteger;
+    private: int32_t attemptsInteger;
 
-    private: BasicWeblisketSession weblisketSession;
+    private: BasicWeblisketSession* weblisketSession;
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
     private: std::string command;
 
@@ -123,11 +129,11 @@ class FileAuthenticationTag: public CustomTagSupport {
 
     private: std::string sessionUserName;
 
-    private: BasicUserRole role;
+    private: BasicUserRole* role;
 
     private: std::string timeout;
 
-    private: BasicArrayList roles;
+    private: BasicArrayList* roles;
 
 public: FileAuthenticationTag();
 
@@ -139,9 +145,9 @@ public: FileAuthenticationTag();
 
     public: void setNewPassword(std::string value);
 
-    public: void setRoles(BasicArrayList values);
+    public: void setRoles(BasicArrayList* values);
 
-    private: void makeSessionValid(BasicUserRole storedRole, std::string userName);
+    private: void makeSessionValid(BasicUserRole* storedRole, std::string userName);
 
     private: void getFormData();
 
@@ -157,7 +163,7 @@ public: FileAuthenticationTag();
             
     private: bool isSessionOld();
 
-    private: Boolean isRarelyUsedSession();
+    private: bool isRarelyUsedSession();
 
                 //@Throws(LicensingException.constructor)
             

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -51,43 +57,43 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ValidationInterface.h"
+        #include "org/allbinary/logic/control/validate/ValidationInterface.h"
 
 class Validation
             : public Object
-        : public ValidationInterface {
+        , public ValidationInterface {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: Boolean isValid(){
+    public: bool isValid(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -98,7 +104,7 @@ class Validation
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

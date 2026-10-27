@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_TEST_TESTMODULEFACTORY_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_TEST_TESTMODULEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/swing.h>
@@ -56,24 +62,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
+        #include "org/allbinary/input/automation/module/game/test/JPanel.h"
 
 class TestModuleFactory: public AbstractInputAutomationFactory {
 
-    private: static std::string NAME = "Test New Game" +InputAutomationModuleData::MODULE_NAME_END;
+    private: static inline std::string NAME = "Test New Game" +InputAutomationModuleData::MODULE_NAME_END;
 
-    private: BlankModuleConfigurationJPanel blankModuleConfigurationJPanel;
+    private: BlankModuleConfigurationJPanel* blankModuleConfigurationJPanel;
 
 public: TestModuleFactory();
 
     public: std::string getName();
 
-    public: JPanel getConfigurationJPanel();
+    public: JPanel* getConfigurationJPanel();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: RunnableInterface getInstance();
+    public: RunnableInterface* getInstance();
 
 };
 

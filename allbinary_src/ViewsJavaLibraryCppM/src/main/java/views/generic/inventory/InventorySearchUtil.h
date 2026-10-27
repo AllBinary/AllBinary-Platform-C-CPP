@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -140,33 +146,33 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InventoryColumnUtil.h"
+        #include "views/generic/inventory/InventoryColumnUtil.h"
 
 class InventorySearchUtil
             : public Object
          {
 
-    private: static InventorySearchUtil instance() { return InventorySearchUtil(); }
+    private: static InventorySearchUtil* instance() { static std::unique_ptr<InventorySearchUtil> value(new InventorySearchUtil()); return value.get(); }
 
-    public: static InventorySearchUtil getInstance();
+    public: static InventorySearchUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const CommonPhoneStrings commonPhoneStrings = CommonPhoneStrings::getInstance();
+    private: CommonPhoneStrings* commonPhoneStrings = CommonPhoneStrings::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public: BasicArrayList getBasicItemIdColumn(SearchRequest searchRequest);
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    private: std::string getNoResults(TransformDocumentInterface viewDocumentInterface, Node inventoryNode);
+    public: BasicArrayList* getBasicItemIdColumn(SearchRequest* searchRequest);
 
-    public: std::vector<std::string> search(AbeClientInformationInterface abeClientInformation, SearchRequest searchRequest, BasicArrayList column);
+                //@Throws(Exception.constructor)
+            
+    private: std::string getNoResults(TransformDocumentInterface* viewDocumentInterface, Node* inventoryNode);
+
+    public: std::vector<std::string> search(AbeClientInformationInterface* abeClientInformation, SearchRequest* searchRequest, BasicArrayList* column);
 
 };
 

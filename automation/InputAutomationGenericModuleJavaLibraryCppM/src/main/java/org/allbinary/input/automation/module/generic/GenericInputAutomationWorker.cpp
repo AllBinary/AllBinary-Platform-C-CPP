@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -93,45 +101,45 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GenericProfileCaptureWorkerFactory.h"
-#include "CaptureWorkerUtil.h"
+        #include "org/allbinary/input/automation/module/generic/GenericProfileCaptureWorkerFactory.h"
+#include "org/allbinary/input/automation/module/generic/CaptureWorkerUtil.h"
 
 class GenericInputAutomationWorker: public AbstractInputAutomationWorker {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     protected: const std::string PROCESS_DATA_WORKER_RESULTS = "processDataWorkerResults";
 
-    private: Long lastFrame = Long( -1);
+    private: int64_t lastFrame = int64_t( -1);
 
-    private: Long frame;
+    private: int64_t frame;
 
-    private: GenericProfile genericProfile;
+    private: GenericProfile* genericProfile;
 
-public: GenericInputAutomationWorker(InputAutomationActionInterface inputAutomationActionInterface, GenericProfile genericProfile, MotionRectangleConstraintsInterface motionRectangleConstraintsInterface, ImageComparatorConstraintsInterface imageComparatorConstraintsInterface) : AbstractInputAutomationWorker(inputAutomationActionInterface){
+public: GenericInputAutomationWorker(InputAutomationActionInterface* inputAutomationActionInterface, GenericProfile* genericProfile, MotionRectangleConstraintsInterface* motionRectangleConstraintsInterface, ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface) : AbstractInputAutomationWorker(inputAutomationActionInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 this->setCaptureWorker(GenericProfileCaptureWorkerFactory::getInstance(genericProfile));
     
 this->setInputAutomationActionInterface(inputAutomationActionInterface);
     
-this->setImageComparisonWorker(ImageComparisonWorker(imageComparatorConstraintsInterface));
+this->setImageComparisonWorker(new ImageComparisonWorker(imageComparatorConstraintsInterface));
     
-this->setMotionRectanglesWorker(MotionRectanglesWorker(motionRectangleConstraintsInterface));
+this->setMotionRectanglesWorker(new MotionRectanglesWorker(motionRectangleConstraintsInterface));
     
 this->setGenericProfile(genericProfile);
     
 
-    BasicArrayList vector = this->getGenericProfile().getGenericProfileDataWorkerTypeVector();;
+    BasicArrayList* vector = this->getGenericProfile()->getGenericProfileDataWorkerTypeVector();;
     
 
-    int32_t size = vector.size();;
+    int32_t size = vector->size();;
     
 
 
@@ -141,15 +149,15 @@ this->setGenericProfile(genericProfile);
     int32_t index = 0;index < size; index++)
         {
 
-    GenericProfileDataWorkerType genericProfileDataWorkerType = vector.get(index);;
+    GenericProfileDataWorkerType* genericProfileDataWorkerType = dynamic_cast<GenericProfileDataWorkerType*>(vector->get(index));;
     
-this->logUtil.putF("Adding Listener: " +genericProfileDataWorkerType, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF("Adding Listener: " +genericProfileDataWorkerType, this, this->commonStrings.CONSTRUCTOR);
     
 
                         if(genericProfileDataWorkerType == GenericProfileDataWorkerType::COMPARISON)
                         
                                     {
-                                    this->getCaptureWorker().addListenerInterface(this->getImageComparisonWorker());
+                                    this->getCaptureWorker()->addListenerInterface(this->getImageComparisonWorker());
     
 
                                     }
@@ -158,7 +166,7 @@ this->logUtil.putF("Adding Listener: " +genericProfileDataWorkerType, this, this
                         if(genericProfileDataWorkerType == GenericProfileDataWorkerType::MOTION)
                         
                                     {
-                                    this->getImageComparisonWorker().addListenerInterface(this->getMotionRectanglesWorker());
+                                    this->getImageComparisonWorker()->addListenerInterface(this->getMotionRectanglesWorker());
     
 
                                     }
@@ -171,21 +179,21 @@ this->logUtil.putF("Adding Listener: " +genericProfileDataWorkerType, this, this
                 //@Throws(Exception.constructor)
             
     public: void processDataWorkerResults(){
-this->logUtil.putF(this->commonStrings.START, this, this->PROCESS_DATA_WORKER_RESULTS);
+this->logUtil->putF(this->commonStrings.START, this, this->PROCESS_DATA_WORKER_RESULTS);
     
 this->waitForDataWorkers();
     
 
-    J2SECacheInterface cacheInterface = CapturedBufferedImagesCacheSingleton::getInstance();;
+    J2SECacheInterface* cacheInterface = dynamic_cast<J2SECacheInterface*>(CapturedBufferedImagesCacheSingleton::getInstance());;
     
 
-    std::vector<Object*> keyArray = cacheInterface.keySet().();;
+    std::vector<Object*> keyArray = cacheInterface->keySet()->();;
     
 
                         if(keyArray.size() > 0)
                         
                                     {
-                                    this->logUtil.putF("Image Available", this, this->PROCESS_DATA_WORKER_RESULTS);
+                                    this->logUtil->putF("Image Available", this, this->PROCESS_DATA_WORKER_RESULTS);
     
 this->setFrame(keyArray[keyArray.size() -1]);
     
@@ -193,18 +201,18 @@ this->setFrame(keyArray[keyArray.size() -1]);
                         if(getFrame() > this->lastFrame)
                         
                                     {
-                                    this->logUtil.putF("Processing new frame: " +getFrame(), this, this->PROCESS_DATA_WORKER_RESULTS);
+                                    this->logUtil->putF("Processing new frame: " +getFrame(), this, this->PROCESS_DATA_WORKER_RESULTS);
     
 
-    HashMap<Object*, Object*> hashMap = this->getGenericProfile().getGenericProfileActions().getHashMap();;
+    HashMap<Object*, Object*>* hashMap = this->getGenericProfile()->getGenericProfileActions()->getHashMap();;
     
 
-    Set set = hashMap.keys();;
+    Set* set = hashMap->keys();;
     
-this->logUtil.putF("Processing " +set.size() +"Actions", this, this->PROCESS_DATA_WORKER_RESULTS);
+this->logUtil->putF("Processing " +set->size() +"Actions", this, this->PROCESS_DATA_WORKER_RESULTS);
     
 
-    std::vector<Object*> actionNameArray = set.toArray();;
+    std::vector<Object*> actionNameArray = set->toArray();;
     
 
     int32_t size = actionNameArray.size();;
@@ -219,16 +227,16 @@ this->logUtil.putF("Processing " +set.size() +"Actions", this, this->PROCESS_DAT
 
     std::string actionNameString = actionNameArray[index];;
     
-this->logUtil.putF("Processing Action: " +actionNameString, this, this->PROCESS_DATA_WORKER_RESULTS);
+this->logUtil->putF("Processing Action: " +actionNameString, this, this->PROCESS_DATA_WORKER_RESULTS);
     
 
-    GenericProfileAction genericProfileAction = hashMap.get(actionNameString);;
+    GenericProfileAction* genericProfileAction = dynamic_cast<GenericProfileAction*>(hashMap->get(actionNameString));;
     
 
-    GenericProfileActionScript genericProfileActionScript = genericProfileAction.getGenericProfileActionScript();;
+    GenericProfileActionScript* genericProfileActionScript = genericProfileAction->getGenericProfileActionScript();;
     
 
-    BasicArrayList vector = genericProfileActionScript.getProfileActionConditionInterfaceVector();;
+    BasicArrayList* vector = genericProfileActionScript->getProfileActionConditionInterfaceVector();;
     
 CaptureWorkerUtil::processProfileActionConditions(vector, getFrame());
     
@@ -243,7 +251,7 @@ this->lastFrame= this->getFrame();
                                     }
                                 
                         else {
-                            this->logUtil.putF("Image Not Available", this, this->PROCESS_DATA_WORKER_RESULTS);
+                            this->logUtil->putF("Image Not Available", this, this->PROCESS_DATA_WORKER_RESULTS);
     
 
                         }
@@ -254,7 +262,7 @@ this->lastFrame= this->getFrame();
                 //@Throws(Exception.constructor)
             
     public: void process(){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.PROCESS);
+this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.PROCESS);
     
 this->startDataWorkers();
     
@@ -263,7 +271,7 @@ this->processDataWorkerResults();
 }
 
 
-    public: GenericProfile getGenericProfile(){
+    public: GenericProfile* getGenericProfile(){
 
 
 
@@ -273,13 +281,13 @@ this->processDataWorkerResults();
 }
 
 
-    public: void setGenericProfile(GenericProfile genericProfile){
+    public: void setGenericProfile(GenericProfile* genericProfile){
 this->genericProfile= genericProfile;
     
 }
 
 
-    protected: Long getFrame(){
+    protected: int64_t getFrame(){
 
 
 
@@ -289,7 +297,7 @@ this->genericProfile= genericProfile;
 }
 
 
-    protected: void setFrame(Long frame){
+    protected: void setFrame(int64_t frame){
 this->frame= frame;
     
 }

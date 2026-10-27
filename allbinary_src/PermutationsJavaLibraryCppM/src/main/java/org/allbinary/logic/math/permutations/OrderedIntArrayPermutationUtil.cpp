@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/System.h"
@@ -45,15 +51,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "IntPermutationVisitor.h"
+        #include "org/allbinary/logic/math/permutations/IntPermutationVisitor.h"
 
 class OrderedIntArrayPermutationUtil
             : public Object
          {
 
-    private: static OrderedIntArrayPermutationUtil instance() { return OrderedIntArrayPermutationUtil(); }
+    private: static OrderedIntArrayPermutationUtil* instance() { static std::unique_ptr<OrderedIntArrayPermutationUtil> value(new OrderedIntArrayPermutationUtil()); return value.get(); }
 
-    public: static OrderedIntArrayPermutationUtil getInstance(){
+    public: static OrderedIntArrayPermutationUtil* getInstance(){
 
 
 
@@ -82,16 +88,16 @@ data[i]= i;
 }
 
 
-    IntPermutationVisitor permutationVisitor = IntPermutationVisitor(data);;
+    IntPermutationVisitor* permutationVisitor = new IntPermutationVisitor(data);;
     
 
     std::string ORIGINAL_DATA_LABEL = "Original Data: ";;
     
-console.log(ORIGINAL_DATA_LABEL);
+System.out.print(ORIGINAL_DATA_LABEL);
     
-permutationVisitor.print(data);
+permutationVisitor->print(data);
     
-OrderedIntArrayPermutationUtil::getInstance().generate(data, permutationVisitor);
+OrderedIntArrayPermutationUtil::getInstance()->generate(data, permutationVisitor);
     
 }
 
@@ -190,13 +196,13 @@ temp *= i;
 }
 
 
-    public: void generate(std::vector<int32_t> data, Visitor visitor){
+    public: void generate(std::vector<int32_t> data, Visitor* visitor){
 
     int64_t iterations = this->factorial(data.size());;
     
-console.log(this->TOTAL_ITERATIONS_TABLE);
+System.out.print(this->TOTAL_ITERATIONS_TABLE);
     
-console.log(iterations);
+System.out.println(iterations);
     
 
 
@@ -207,11 +213,11 @@ console.log(iterations);
         {
 this->getNext(data);
     
-visitor.visit(this);
+visitor->visit(this);
     
 }
 
-console.log(this->FINISHED);
+System.out.println(this->FINISHED);
     
 }
 

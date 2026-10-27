@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_STATICPAGES_STATICPAGESENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_STATICPAGES_STATICPAGESENTITY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -77,19 +83,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StaticPagesEntityInterface.h"
+        #include "org/allbinary/data/tables/staticpages/StaticPagesEntityInterface.h"
 
 class StaticPagesEntity: public AbSqlBean, public StaticPagesEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
     private: const std::string TABLENAME = "staticpages";
 
 public: StaticPagesEntity();
 
-    public: void insert(BasicArrayList values);
+    public: void insert(BasicArrayList* values);
 
     public: std::string getFile(std::string store, std::string keywords);
 
@@ -97,7 +103,7 @@ public: StaticPagesEntity();
 
     public: std::string dropTable();
 
-    public: void update(HashMap<Object*, Object*> updatedValues);
+    public: void update(HashMap<Object*, Object*>* updatedValues);
 
     public: std::string createTableStatement();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/input/motion/gesture/configuration/MotionGestureConfiguration.h>
@@ -44,27 +50,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ResolveCompleteMotionGestureListener.h"
-#include "NullCompleteMotionGestureReceiver.h"
-#include "CompleteMotionGestureListenerInterface.h"
+        #include "org/allbinary/input/motion/gesture/observer/ResolveCompleteMotionGestureListener.h"
+#include "org/allbinary/input/motion/gesture/observer/NullCompleteMotionGestureReceiver.h"
+#include "org/allbinary/input/motion/gesture/observer/CompleteMotionGestureListenerInterface.h"
 
 class MotionGestureReceiveInterfaceFactory
             : public Object
          {
 
-    public: static CompleteMotionGestureListenerInterface getInstance(){
+    public: static CompleteMotionGestureListenerInterface* getInstance(){
 
-    MotionGestureConfiguration configuration = MotionGestureConfigurationFactory::getInstance();;
+    MotionGestureConfiguration* configuration = MotionGestureConfigurationFactory::getInstance();;
     
 
-                        if(!configuration.isExecutingActionsAllowed())
+                        if(!configuration->isExecutingActionsAllowed())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullCompleteMotionGestureReceiver();
+                        return new NullCompleteMotionGestureReceiver();
     
 
                                     }
@@ -74,7 +80,7 @@ class MotionGestureReceiveInterfaceFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ResolveCompleteMotionGestureListener();
+                        return new ResolveCompleteMotionGestureListener();
     
 
                         }

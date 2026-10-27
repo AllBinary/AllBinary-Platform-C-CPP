@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -96,22 +104,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GenericProfileCaptureWorkerFactory.h"
-#include "CaptureWorkerUtil.h"
+        #include "org/allbinary/input/automation/module/generic/GenericProfileCaptureWorkerFactory.h"
+#include "org/allbinary/input/automation/module/generic/CaptureWorkerUtil.h"
 
 class GenericInputAutomationWorker: public AbstractInputAutomationWorker {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     protected: const std::string PROCESS_DATA_WORKER_RESULTS = "processDataWorkerResults";
 
-    private: Long lastFrame = Long( -1);
+    private: int64_t lastFrame = int64_t( -1);
 
-    private: Long frame;
+    private: int64_t frame;
 
-    private: GenericProfile genericProfile;
+    private: GenericProfile* genericProfile;
 
-public: GenericInputAutomationWorker(InputAutomationActionInterface inputAutomationActionInterface, GenericProfile genericProfile, MotionRectangleConstraintsInterface motionRectangleConstraintsInterface, ImageComparatorConstraintsInterface imageComparatorConstraintsInterface);
+public: GenericInputAutomationWorker(InputAutomationActionInterface* inputAutomationActionInterface, GenericProfile* genericProfile, MotionRectangleConstraintsInterface* motionRectangleConstraintsInterface, ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface);
 
                 //@Throws(Exception.constructor)
             
@@ -121,13 +129,13 @@ public: GenericInputAutomationWorker(InputAutomationActionInterface inputAutomat
             
     public: void process();
 
-    public: GenericProfile getGenericProfile();
+    public: GenericProfile* getGenericProfile();
 
-    public: void setGenericProfile(GenericProfile genericProfile);
+    public: void setGenericProfile(GenericProfile* genericProfile);
 
-    protected: Long getFrame();
+    protected: int64_t getFrame();
 
-    protected: void setFrame(Long frame);
+    protected: void setFrame(int64_t frame);
 
 };
 

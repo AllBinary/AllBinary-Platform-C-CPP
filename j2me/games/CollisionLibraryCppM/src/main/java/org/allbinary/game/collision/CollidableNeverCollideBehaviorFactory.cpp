@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,32 +42,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CollidableBaseBehaviorFactory.h"
-#include "CollidableNeverCollideBehavior.h"
-#include "CollidableBaseBehavior.h"
+        #include "org/allbinary/game/collision/CollidableBaseBehaviorFactory.h"
+#include "org/allbinary/game/collision/CollidableNeverCollideBehavior.h"
+#include "org/allbinary/game/collision/CollidableBaseBehavior.h"
 
 class CollidableNeverCollideBehaviorFactory: public CollidableBaseBehaviorFactory {
 
-    private: static const CollidableNeverCollideBehaviorFactory instanceC = CollidableNeverCollideBehaviorFactory();
+    private: static CollidableNeverCollideBehaviorFactory* instanceC() { static std::unique_ptr<CollidableNeverCollideBehaviorFactory> value(new CollidableNeverCollideBehaviorFactory()); return value.get(); }
 
-    public: static CollidableNeverCollideBehaviorFactory getInstance(){
+    public: static CollidableNeverCollideBehaviorFactory* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CollidableNeverCollideBehaviorFactory::instanceC;
+                        return CollidableNeverCollideBehaviorFactory::instanceC();
     
 }
 
 
-    private: const CollidableNeverCollideBehavior instance = CollidableNeverCollideBehavior(false);
+    private: CollidableNeverCollideBehavior* instance = new CollidableNeverCollideBehavior(false);
 
-    public: CollidableBaseBehavior createBehavior(){
+    public: CollidableBaseBehavior* createBehavior(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->instance();
+                        return this->instance;
     
 }
 

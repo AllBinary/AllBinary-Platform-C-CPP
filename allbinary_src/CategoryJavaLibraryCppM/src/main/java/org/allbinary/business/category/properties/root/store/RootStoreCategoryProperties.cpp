@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -112,30 +118,30 @@
         
 class RootStoreCategoryProperties
             : public Object
-        : public RootCategoryPropertiesInterface, public CategoryPropertiesInterface {
+        , public RootCategoryPropertiesInterface, public CategoryPropertiesInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const AbPathData pathData = AbPathData::getInstance();
+    private: AbPathData* pathData = AbPathData::getInstance();
 
-    private: AbPath fileAbPath;
+    private: AbPath* fileAbPath;
 
-    private: AbPath abPath;
+    private: AbPath* abPath;
 
     private: std::string category;
 
     private: bool isRealRoot;
 
-    protected: AbPath webAppAbPath;
+    protected: AbPath* webAppAbPath;
 
-    protected: TransformInfoInterface transformInfoInterface;
+    protected: TransformInfoInterface* transformInfoInterface;
 
-public: RootStoreCategoryProperties(TransformInfoInterface transformInfoInterface){
+public: RootStoreCategoryProperties(TransformInfoInterface* transformInfoInterface){
 this->transformInfoInterface= transformInfoInterface;
     
 this->abPath= AbPath::createAbPath();
     
-this->category= CategoryData::getInstance().ROOTCATEGORY;
+this->category= CategoryData::getInstance()->ROOTCATEGORY;
     
 this->isRealRoot= true;
     
@@ -146,20 +152,20 @@ this->log();
 }
 
 
-public: RootStoreCategoryProperties(TransformInfoInterface transformInfoInterface, AbPath categoryAbPath){
+public: RootStoreCategoryProperties(TransformInfoInterface* transformInfoInterface, AbPath* categoryAbPath){
 this->transformInfoInterface= transformInfoInterface;
     
 this->abPath= categoryAbPath;
     
-this->category= this->pathData.getNameFromPath(categoryAbPath.toString());
+this->category= this->pathData->getNameFromPath(categoryAbPath->toString());
     
 
-                        if(StringValidationUtil::getInstance().isEmpty(this->category))
+                        if(StringValidationUtil::getInstance()->isEmpty(this->category))
                         
                                     {
                                     this->isRealRoot= true;
     
-this->category= CategoryData::getInstance().ROOTCATEGORY;
+this->category= CategoryData::getInstance()->ROOTCATEGORY;
     
 
                                     }
@@ -171,23 +177,23 @@ this->log();
 }
 
 
-public: RootStoreCategoryProperties(TransformInfoInterface transformInfoInterface, Node node){
+public: RootStoreCategoryProperties(TransformInfoInterface* transformInfoInterface, Node* node){
 this->transformInfoInterface= transformInfoInterface;
     
 
     std::string categoryPath = CategoryUtil::getNameFromNode(node);;
     
-this->abPath= AbPath(categoryPath, StringUtil::getInstance().EMPTY_STRING);
+this->abPath= new AbPath(categoryPath, StringUtil::getInstance()->EMPTY_STRING);
     
-this->category= this->pathData.getNameFromPath(categoryPath);
+this->category= this->pathData->getNameFromPath(categoryPath);
     
 
-                        if(StringValidationUtil::getInstance().isEmpty(this->category))
+                        if(StringValidationUtil::getInstance()->isEmpty(this->category))
                         
                                     {
                                     this->isRealRoot= true;
     
-this->category= CategoryData::getInstance().ROOTCATEGORY;
+this->category= CategoryData::getInstance()->ROOTCATEGORY;
     
 
                                     }
@@ -199,23 +205,23 @@ this->log();
 }
 
 
-public: RootStoreCategoryProperties(TransformInfoInterface transformInfoInterface, HashMap<Object*, Object*> categoryPropertiesHashMap){
+public: RootStoreCategoryProperties(TransformInfoInterface* transformInfoInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap){
 this->transformInfoInterface= transformInfoInterface;
     
 
     std::string categoryPath = .toCharArray();;
     
-this->abPath= AbPath(categoryPath, StringUtil::getInstance().EMPTY_STRING);
+this->abPath= new AbPath(categoryPath, StringUtil::getInstance()->EMPTY_STRING);
     
-this->category= this->pathData.getNameFromPath(categoryPath);
+this->category= this->pathData->getNameFromPath(categoryPath);
     
 
-                        if(StringValidationUtil::getInstance().isEmpty(this->category))
+                        if(StringValidationUtil::getInstance()->isEmpty(this->category))
                         
                                     {
                                     this->isRealRoot= true;
     
-this->category= CategoryData::getInstance().ROOTCATEGORY;
+this->category= CategoryData::getInstance()->ROOTCATEGORY;
     
 
                                     }
@@ -231,20 +237,20 @@ this->log();
             
     protected: void initPath(){
 
-    TransformInfoHttpInterface transformInfoHttpStoreInterface = this->transformInfoInterface;;
+    TransformInfoHttpInterface* transformInfoHttpStoreInterface = dynamic_cast<TransformInfoHttpInterface*>(this->transformInfoInterface);;
     
 
-    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(transformInfoHttpStoreInterface.getStoreName());;
+    StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(transformInfoHttpStoreInterface->getStoreName());;
     
 
-    std::string postPath = storeFrontInterface.getCurrentHostNamePath() +storeFrontInterface.getCategoryPath();;
+    std::string postPath = storeFrontInterface->getCurrentHostNamePath() +storeFrontInterface->getCategoryPath();;
     
 
-    HttpServletRequest httpServletRequest = transformInfoHttpStoreInterface.getPageContext().getRequest();;
+    HttpServletRequest* httpServletRequest = dynamic_cast<HttpServletRequest*>(transformInfoHttpStoreInterface->getPageContext()->getRequest());;
     
-this->webAppAbPath= AbPath(httpServletRequest.getContextPath() +postPath, StringUtil::getInstance().EMPTY_STRING);
+this->webAppAbPath= new AbPath(httpServletRequest->getContextPath() +postPath, StringUtil::getInstance()->EMPTY_STRING);
     
-this->setRootFilePath(AbPath(URLGLOBALS::getMainPath() +postPath, StringUtil::getInstance().EMPTY_STRING));
+this->setRootFilePath(new AbPath(URLGLOBALS::getMainPath() +postPath, StringUtil::getInstance()->EMPTY_STRING));
     
 }
 
@@ -279,19 +285,19 @@ this->setRootFilePath(AbPath(URLGLOBALS::getMainPath() +postPath, StringUtil::ge
 }
 
 
-    public: void setPath(AbPath path){
+    public: void setPath(AbPath* path){
 this->abPath= path;
     
 }
 
 
-    public: void setRootFilePath(AbPath value){
+    public: void setRootFilePath(AbPath* value){
 this->fileAbPath= value;
     
 }
 
 
-    public: AbPath getRootFilePath(){
+    public: AbPath* getRootFilePath(){
 
 
 
@@ -313,7 +319,7 @@ this->fileAbPath= value;
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getWebAppPath(){
+    public: AbPath* getWebAppPath(){
 
 
 
@@ -323,7 +329,7 @@ this->fileAbPath= value;
 }
 
 
-    public: AbPath getPath(CategoryHierarchyInterface categoryHierarchyInterface){
+    public: AbPath* getPath(CategoryHierarchyInterface* categoryHierarchyInterface){
 
 
 
@@ -338,7 +344,7 @@ this->fileAbPath= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getValue() +AbPathData::getInstance().EXTENSION_SEP +CategoryData::getInstance().UNCRYPTED_EXTENSION;
+                        return this->getValue() +AbPathData::getInstance()->EXTENSION_SEP +CategoryData::getInstance()->UNCRYPTED_EXTENSION;
     
 }
 
@@ -349,7 +355,7 @@ this->category= value;
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
 
 
@@ -359,11 +365,11 @@ this->category= value;
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> categoryHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* categoryHashMap = StdUtil::getInstance()->createHashMap();;
     
-categoryHashMap.put(CategoryData::getInstance().NAME, this->getValue());
+categoryHashMap->put(CategoryData::getInstance()->NAME, this->getValue());
     
 
 
@@ -374,11 +380,11 @@ categoryHashMap.put(CategoryData::getInstance().NAME, this->getValue());
 }
 
 
-    public: BasicArrayList toVector(){
+    public: BasicArrayList* toVector(){
 
-    BasicArrayList categoryVector = BasicArrayListD();;
+    BasicArrayList* categoryVector = new BasicArrayListD();;
     
-categoryVector.add(this->getValue());
+categoryVector->add(this->getValue());
     
 
 
@@ -391,7 +397,7 @@ categoryVector.add(this->getValue());
 
                 //@Throws(Exception.constructor)
             
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -403,7 +409,7 @@ categoryVector.add(this->getValue());
 
                 //@Throws(Exception.constructor)
             
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -427,10 +433,10 @@ categoryVector.add(this->getValue());
 
     public: void log(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
                         
                                     {
-                                    this->logUtil.putF(StringMaker().append("filePath = ").append(this->fileAbPath.toString()).append("\npath = ").append(this->abPath.toString()).append("\ncategory = ").append(this->category).toString(), this, "log()");
+                                    this->logUtil->putF((new StringMaker())->append("filePath = ")->append(this->fileAbPath->toString())->append("\npath = ")->append(this->abPath->toString())->append("\ncategory = ")->append(this->category)->toString(), this, "log()");
     
 
                                     }

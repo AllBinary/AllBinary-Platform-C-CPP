@@ -9,6 +9,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,18 +58,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "FileItemStream.h"
-#include "FileItem.h"
+        #include "org/apache/commons/fileupload/FileItemStream.h"
+#include "org/apache/commons/fileupload/FileItem.h"
 
 class FileItemUtil
             : public Object
          {
 
-    private: static FileItemUtil instance() { return FileItemUtil(); }
+    private: static FileItemUtil* instance() { static std::unique_ptr<FileItemUtil> value(new FileItemUtil()); return value.get(); }
 
-    public: static FileItemUtil getInstance();
+    public: static FileItemUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     public: const std::string DEFAULT_CHARSET = "ISO-8859-1";
 
@@ -73,15 +79,15 @@ class FileItemUtil
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getString(FileItemStream fileItem);
+    public: std::string getString(FileItemStream* fileItem);
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<int8_t> getBytes(FileItemStream fileItem);
+    public: std::vector<int8_t> getBytes(FileItemStream* fileItem);
 
                 //@Throws(Exception.constructor)
             
-    public: void write(FileItem fileItem, AbFile file);
+    public: void write(FileItem* fileItem, AbFile* file);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/business/time/created/TimeCreated.h>
 
       
@@ -48,17 +54,17 @@
         
 class UserConfigurationInterface {
 
-    UserEmailConfigurationInterface getUserEmailConfigurationInterface()
+    public: virtual UserEmailConfigurationInterface* getUserEmailConfigurationInterface() = 0;
 
-    void setUserEmailConfigurationInterface(UserEmailConfigurationInterface userEmailConfigurationInterface)
+    public: virtual void setUserEmailConfigurationInterface(UserEmailConfigurationInterface* userEmailConfigurationInterface) = 0;
 
-    TimeCreated getTimeCreated()
+    public: virtual TimeCreated* getTimeCreated() = 0;
 
-    TimeLastModified getTimeLastModified()
+    public: virtual TimeLastModified* getTimeLastModified() = 0;
 
-    void setTimeCreated(TimeCreated timeCreated)
+    public: virtual void setTimeCreated(TimeCreated* timeCreated) = 0;
 
-    void setTimeLastModified(TimeLastModified timeLastModified)
+    public: virtual void setTimeLastModified(TimeLastModified* timeLastModified) = 0;
 
 };
 

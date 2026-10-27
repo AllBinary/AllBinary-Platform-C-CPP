@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -50,23 +56,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TimeDelayHelper.h"
+        #include "org/allbinary/time/TimeDelayHelper.h"
 
 class StupidTimer
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const NullUtil nullUtil = NullUtil::getInstance();
+    protected: NullUtil* nullUtil = NullUtil::getInstance();
 
-    private: const ThreadObjectUtil threadObjectUtil = ThreadObjectUtil::getInstance();
+    private: ThreadObjectUtil* threadObjectUtil = ThreadObjectUtil::getInstance();
 
-    private: bool visitBool(Visitor visitorInterface){
+    private: bool visitBool(Visitor* visitorInterface){
 
-    Boolean result = visitorInterface.visit(this->nullUtil.NULL_OBJECT);;
+    bool result = visitorInterface->visit(this->nullUtil->NULL_OBJECT);;
     
 
     bool result2 = result.valueOf();;
@@ -82,14 +88,14 @@ class StupidTimer
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(Visitor visitorInterface, TimeDelayHelper timeDelayHelper){
+    public: void visit(Visitor* visitorInterface, TimeDelayHelper* timeDelayHelper){
 
     bool tookTooLong = false;;
     
 
     std::string WAITING_FOR = "Waiting for: ";;
     
-PreLogUtil::put(StringMaker().append(WAITING_FOR).append(StringUtil::getInstance().toString(visitorInterface)).toString(), this, this->commonStrings.VISIT);
+PreLogUtil::put((new StringMaker())->append(WAITING_FOR)->append(StringUtil::getInstance()->toString(visitorInterface))->toString(), this, this->commonStrings->VISIT);
     
 
     int32_t index = 0;;
@@ -101,7 +107,7 @@ PreLogUtil::put(StringMaker().append(WAITING_FOR).append(StringUtil::getInstance
                         if(index % 10 == 0)
                         
                                     {
-                                    PreLogUtil::put(StringMaker().append(WAITING_FOR).appendint(index).toString(), this, this->commonStrings.VISIT);
+                                    PreLogUtil::put((new StringMaker())->append(WAITING_FOR)->appendint(index)->toString(), this, this->commonStrings->VISIT);
     
 
                                     }
@@ -115,12 +121,12 @@ index++;
 
         //mutex.withLock
         
-this->threadObjectUtil.waitObjectFor(this, 1800);
+this->threadObjectUtil->waitObjectFor(this, 1800);
     
 
 
 
-                        if(timeDelayHelper.isTimeTNT())
+                        if(timeDelayHelper->isTimeTNT())
                         
                                     {
                                     tookTooLong= true;
@@ -137,13 +143,13 @@ break;
                         if(tookTooLong)
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.VISIT, Exception(StringMaker().append("Took Too Long: ").append(StringUtil::getInstance().toString(visitorInterface)).toString()));
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->VISIT, new Exception((new StringMaker())->append("Took Too Long: ")->append(StringUtil::getInstance()->toString(visitorInterface))->toString()));
     
 
                                     }
                                 
                         else {
-                            PreLogUtil::put(timeDelayHelper.toString(), this, this->commonStrings.VISIT);
+                            PreLogUtil::put(timeDelayHelper->toString(), this, this->commonStrings->VISIT);
     
 
                         }
@@ -161,7 +167,7 @@ break;
 
         //mutex.withLock
         
-this->threadObjectUtil.notifyObject(this);
+this->threadObjectUtil->notifyObject(this);
     
 
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -69,19 +75,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OrderItemInterface.h"
-#include "ItemData.h"
-#include "BasicItemView.h"
+        #include "org/allbinary/business/user/commerce/inventory/item/OrderItemInterface.h"
+#include "org/allbinary/business/user/commerce/inventory/item/ItemData.h"
+#include "org/allbinary/business/user/commerce/inventory/item/BasicItemView.h"
 
 class ItemView
             : public Object
          {
 
-    private: OrderItemInterface itemInterface;
+    private: OrderItemInterface* itemInterface;
 
-    private: BasicArrayList vector;
+    private: BasicArrayList* vector;
 
-public: ItemView(OrderItemInterface itemInterface, BasicArrayList vector){
+public: ItemView(OrderItemInterface* itemInterface, BasicArrayList* vector){
 this->itemInterface= itemInterface;
     
 this->vector= vector;
@@ -91,26 +97,26 @@ this->vector= vector;
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    HashMap<Object*, Object*> hashMap = this->itemInterface.toHashMap();;
+    HashMap<Object*, Object*>* hashMap = this->itemInterface->toHashMap();;
     
 
-    Set keySet = hashMap.keys();;
+    Set* keySet = hashMap->keys();;
     
 
-    Node node = document.createElement(ItemData::ITEM);;
+    Node* node = document->createElement(ItemData::ITEM);;
     
 
-    BasicItemView basicItemView = BasicItemView(this->itemInterface, this->vector);;
+    BasicItemView* basicItemView = new BasicItemView(this->itemInterface, this->vector);;
     
-node.appendChild(basicItemView.toXmlNode(document));
-    
-
-    StringUtil stringUtil = StringUtil::getInstance();;
+node->appendChild(basicItemView->toXmlNode(document));
     
 
-    std::vector<Object*> nameArray = keySet.();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
+    
+
+    std::vector<Object*> nameArray = keySet->();;
     
 
     int32_t size = nameArray.size();;
@@ -126,18 +132,18 @@ node.appendChild(basicItemView.toXmlNode(document));
     std::string name = nameArray[index];;
     
 
-    std::string value = hashMap.get(name);;
+    std::string value = hashMap->get(name);;
     
-value= stringUtil.getNonNull(value);
+value= stringUtil->getNonNull(value);
     
-node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
+node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     
 }
 
 
-    Node shippingAddressNode = document.createElement(StreetAddressData::NAME);;
+    Node* shippingAddressNode = document->createElement(StreetAddressData::NAME);;
     
-shippingAddressNode.appendChild(this->itemInterface.getShippingAddress().toXmlNode(document));
+shippingAddressNode->appendChild(this->itemInterface->getShippingAddress()->toXmlNode(document));
     
 
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -74,9 +80,9 @@ class ScreenScavangerRobot
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
 public: ScreenScavangerRobot(){
 }
@@ -84,30 +90,30 @@ public: ScreenScavangerRobot(){
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<BufferedImage> getScreenAsBufferedImages(){
-this->logUtil.putF(this->commonStrings.START, this, "getScreenAsBufferedImages");
+    public: std::vector<BufferedImage*> getScreenAsBufferedImages(){
+this->logUtil->putF(this->commonStrings->START, this, "getScreenAsBufferedImages");
     
 
-    Dimension dimScreenSize = Toolkit::getDefaultToolkit().getScreenSize();;
+    Dimension* dimScreenSize = Toolkit::getDefaultToolkit()->getScreenSize();;
     
 
-    Rectangle rectScreenSize = Rectangle(dimScreenSize);;
+    Rectangle* rectScreenSize = new Rectangle(dimScreenSize);;
     
 
-    ABHashtable<Object*, Object*> robotHashtable = InputRobotFactory::getInstance().get();;
+    ABHashtable<Object*, Object*>* robotHashtable = InputRobotFactory::getInstance()->get();;
     
 
-    std::vector<BufferedImage> bufferedImageArray = std::vector<BufferedImage>(1);;
+    std::vector<BufferedImage*> bufferedImageArray = std::vector<BufferedImage*>(1);;
     
 
     int32_t index = 0;;
     
 
-    InputRobotInterface inputRobotInterface = robotHashtable.get("Java Robot");;
+    InputRobotInterface* inputRobotInterface = dynamic_cast<InputRobotInterface*>(robotHashtable->get("Java Robot"));;
     
-bufferedImageArray[index]= inputRobotInterface.createScreenCapture(rectScreenSize);
+bufferedImageArray[index]= inputRobotInterface->createScreenCapture(rectScreenSize);
     
-this->logUtil.putF("Finish", this, "getScreenAsBufferedImages");
+this->logUtil->putF("Finish", this, "getScreenAsBufferedImages");
     
 
 

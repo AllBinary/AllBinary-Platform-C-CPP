@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -45,11 +51,11 @@
         
 class MainGameDemoStatePaintable: public Paintable {
 
-    private: Paintable ownershipPaintableInterface;
+    private: Paintable* ownershipPaintableInterface;
 
-    private: Paintable menuPaintableInterface;
+    private: Paintable* menuPaintableInterface;
 
-public: MainGameDemoStatePaintable(Paintable ownershipPaintableInterface, Paintable menuPaintableInterface){
+public: MainGameDemoStatePaintable(Paintable* ownershipPaintableInterface, Paintable* menuPaintableInterface){
 this->ownershipPaintableInterface= ownershipPaintableInterface;
     
 this->menuPaintableInterface= menuPaintableInterface;
@@ -57,15 +63,15 @@ this->menuPaintableInterface= menuPaintableInterface;
 }
 
 
-    public: void paint(Graphics graphics){
-this->menuPaintableInterface.paint(graphics);
+    public: void paint(Graphics* graphics){
+this->menuPaintableInterface->paint(graphics);
     
-this->ownershipPaintableInterface.paint(graphics);
+this->ownershipPaintableInterface->paint(graphics);
     
 }
 
 
-    public: Paintable getOwnershipPaintableInterface(){
+    public: Paintable* getOwnershipPaintableInterface(){
 
 
 
@@ -75,7 +81,7 @@ this->ownershipPaintableInterface.paint(graphics);
 }
 
 
-    public: Paintable getMenuPaintableInterface(){
+    public: Paintable* getMenuPaintableInterface(){
 
 
 

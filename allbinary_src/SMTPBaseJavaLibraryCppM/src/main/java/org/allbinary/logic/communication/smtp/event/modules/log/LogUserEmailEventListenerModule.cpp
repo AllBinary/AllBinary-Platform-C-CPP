@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,9 +58,9 @@
         
 class LogUserEmailEventListenerModule
             : public Object
-        : public UserEmailEventListenerInterface {
+        , public UserEmailEventListenerInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: LogUserEmailEventListenerModule(){
 }
@@ -62,15 +68,15 @@ public: LogUserEmailEventListenerModule(){
 
                 //@Throws(Exception.constructor)
             
-    public: void onEmailSendRequest(EmailEvent userEmailInfoEvent){
+    public: void onEmailSendRequest(EmailEvent* userEmailInfoEvent){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
                         
                                     {
                                     
-    std::string message = "Logging EmailEvent - Temporary Listener for debugging.\n\n" +userEmailInfoEvent.toString();;
+    std::string message = "Logging EmailEvent - Temporary Listener for debugging.\n\n" +userEmailInfoEvent->toString();;
     
-this->logUtil.putF(message, this, "onEmailSendRequest");
+this->logUtil->putF(message, this, "onEmailSendRequest");
     
 
                                     }

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -39,15 +45,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicPathFinderBase.h"
+        #include "org/allbinary/media/graphics/geography/pathfinding/GeographicPathFinderBase.h"
 
 class PathFindingInfoInterface {
 
-    BasicArrayList getStartPathFindingNodeList()
+    public: virtual BasicArrayList* getStartPathFindingNodeList() = 0;
 
-    BasicArrayList getEndPathFindingNodeList()
+    public: virtual BasicArrayList* getEndPathFindingNodeList() = 0;
 
-    GeographicPathFinderBase getPathFinder()
+    public: virtual GeographicPathFinderBase* getPathFinder() = 0;
 
 };
 

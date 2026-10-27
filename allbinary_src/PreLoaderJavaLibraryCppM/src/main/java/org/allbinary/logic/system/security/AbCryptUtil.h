@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -65,17 +71,17 @@ class AbCryptUtil
             : public Object
          {
 
-    private: static AbCryptUtil instance() { return AbCryptUtil(); }
+    private: static AbCryptUtil* instance() { static std::unique_ptr<AbCryptUtil> value(new AbCryptUtil()); return value.get(); }
 
-    public: static AbCryptUtil getInstance();
+    public: static AbCryptUtil* getInstance();
 
-    private: const StreamUtil streamUtil = StreamUtil::getInstance();
+    private: StreamUtil* streamUtil = StreamUtil::getInstance();
 
 private: AbCryptUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<int8_t> decrypt(InputStream inputStream, std::string key);
+    public: std::vector<int8_t> decrypt(InputStream* inputStream, std::string key);
 
 };
 

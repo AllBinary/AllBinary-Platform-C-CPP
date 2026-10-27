@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/business/user/commerce/inventory/basket/BasketInterface.h>
@@ -50,13 +56,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShippingInterface.h"
+        #include "org/allbinary/business/user/commerce/shipping/modules/ShippingInterface.h"
 
 class BasicWeightShippingModule
             : public Object
-        : public ShippingInterface {
+        , public ShippingInterface {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: const std::string name = "Basic Shipping (5 to 7 working days)";
 
@@ -66,18 +72,18 @@ public: BasicWeightShippingModule(){
 }
 
 
-    public: Money getCost(OrderInterface order){
+    public: Money* getCost(OrderInterface* order){
 
-    BasketInterface basket = order.getBasket();;
+    BasketInterface* basket = order->getBasket();;
     
 
-    Money money = Money();;
+    Money* money = new Money();;
     
-money.add(basket.getTotalWeight());
+money->add(basket->getTotalWeight());
     
-money.multiply(1);
+money->multiply(1);
     
-money.add("3.50");
+money->add("3.50");
     
 
 

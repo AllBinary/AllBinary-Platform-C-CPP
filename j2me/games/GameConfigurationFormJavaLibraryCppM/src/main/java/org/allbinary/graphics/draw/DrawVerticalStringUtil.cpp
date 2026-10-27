@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -77,9 +83,9 @@ class DrawVerticalStringUtil
             : public Object
          {
 
-    private: static DrawVerticalStringUtil instance() { return DrawVerticalStringUtil(); }
+    private: static DrawVerticalStringUtil* instance() { static std::unique_ptr<DrawVerticalStringUtil> value(new DrawVerticalStringUtil()); return value.get(); }
 
-    public: static DrawVerticalStringUtil getInstance(){
+    public: static DrawVerticalStringUtil* getInstance(){
 
 
 
@@ -89,7 +95,7 @@ class DrawVerticalStringUtil
 }
 
 
-    private: const std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;
+    private: const std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
@@ -97,16 +103,16 @@ class DrawVerticalStringUtil
 
     private: int32_t offsetY= 0;
 
-    private: std::vector<int32_t> offsetXArray = NullUtil::getInstance().NULL_INT_ARRAY;
+    private: std::vector<int32_t> offsetXArray = NullUtil::getInstance()->NULL_INT_ARRAY;
 
-    public: void updateMeasurement(Graphics graphics, std::string string){
+    public: void updateMeasurement(Graphics* graphics, std::string string){
 
-    OpenGLFeatureUtil openGLFeatureUtil = OpenGLFeatureUtil::getInstance();;
+    OpenGLFeatureUtil* openGLFeatureUtil = OpenGLFeatureUtil::getInstance();;
     
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->charHeight= font.getHeight();
+this->charHeight= font->getHeight();
     
 this->offsetY= 0;
     
@@ -120,7 +126,7 @@ this->offsetY= 0;
                                     }
                                 
                              else 
-                        if(openGLFeatureUtil.isAnyThreed())
+                        if(openGLFeatureUtil->isAnyThreed())
                         
                                     {
                                     this->charHeight += 2;
@@ -160,10 +166,10 @@ this->offsetY= 0;
 aChar= string[index];
     
 
-                        if(openGLFeatureUtil.isAnyThreed())
+                        if(openGLFeatureUtil->isAnyThreed())
                         
                                     {
-                                    offsetXArray[index]= font.charWidth(aChar) /2;
+                                    offsetXArray[index]= font->charWidth(aChar) /2;
     
 
                                     }
@@ -175,7 +181,7 @@ this->offsetXArray= offsetXArray;
 }
 
 
-    public: void paintVerticle(Graphics graphics, std::string string, int32_t x, int32_t y, int32_t anchor){
+    public: void paintVerticle(Graphics* graphics, std::string string, int32_t x, int32_t y, int32_t anchor){
 
     int32_t size = string.size();;
     
@@ -191,33 +197,33 @@ this->offsetXArray= offsetXArray;
         {
 aChar= string[index];
     
-graphics.drawChar(aChar, x +this->offsetXArray[index], y +(this->charHeight *index) +this->offsetY, anchor);
+graphics->drawChar(aChar, x +this->offsetXArray[index], y +(this->charHeight *index) +this->offsetY, anchor);
     
 }
 
 }
 
 
-    public: void drawCenterString(Graphics graphics, std::string string, int32_t offset, int32_t length, int32_t x, int32_t y){
+    public: void drawCenterString(Graphics* graphics, std::string string, int32_t offset, int32_t length, int32_t x, int32_t y){
 
-    int32_t width = (graphics.getFont().substringWidth(string, offset, length)>>1);;
+    int32_t width = (graphics->getFont()->substringWidth(string, offset, length)>>1);;
     
 
         try {
-            graphics.drawSubstring(string, offset, length, x -width, y, this->anchor);
+            graphics->drawSubstring(string, offset, length, x -width, y, this->anchor);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-PreLogUtil::put(StringMaker().append("Exception: stringLength: ").appendint(string.size()).append(" offset: ").appendint(offset).append(" currentLength: ").appendint(length).toString(), this, "drawCenterString");
+PreLogUtil::put((new StringMaker())->append("Exception: stringLength: ")->appendint(string.size())->append(" offset: ")->appendint(offset)->append(" currentLength: ")->appendint(length)->toString(), this, "drawCenterString");
     
 }
 
 }
 
 
-    public: void drawCenterStrings(Graphics graphics, std::vector<std::string> stringArray, int32_t maxWidth, int32_t x, int32_t y){
+    public: void drawCenterStrings(Graphics* graphics, std::vector<std::string> stringArray, int32_t maxWidth, int32_t x, int32_t y){
 
     int32_t extraLines = 0;;
     
@@ -236,7 +242,7 @@ PreLogUtil::put(StringMaker().append("Exception: stringLength: ").appendint(stri
                         
                                     {
                                     
-    int32_t width = graphics.getFont().stringWidth(string);;
+    int32_t width = graphics->getFont()->stringWidth(string);;
     
 
     int32_t minTotalLines = 1;;

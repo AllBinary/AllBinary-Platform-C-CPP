@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,16 +61,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreFrontAdvertisementsStatisticsInterface.h"
-#include "StoreFrontAdvertisementsStatisticsData.h"
+        #include "org/allbinary/business/context/modules/storefront/statistics/advertisements/StoreFrontAdvertisementsStatisticsInterface.h"
+#include "org/allbinary/business/context/modules/storefront/statistics/advertisements/StoreFrontAdvertisementsStatisticsData.h"
 
 class StoreFrontAdvertisementsStatisticsView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: StoreFrontAdvertisementsStatisticsInterface storeFrontAdvertisementsStatisticsInterface;
+    private: StoreFrontAdvertisementsStatisticsInterface* storeFrontAdvertisementsStatisticsInterface;
 
-public: StoreFrontAdvertisementsStatisticsView(StoreFrontAdvertisementsStatisticsInterface storeFrontAdvertisementsStatisticsInterface){
+public: StoreFrontAdvertisementsStatisticsView(StoreFrontAdvertisementsStatisticsInterface* storeFrontAdvertisementsStatisticsInterface){
 this->storeFrontAdvertisementsStatisticsInterface= storeFrontAdvertisementsStatisticsInterface;
     
 }
@@ -72,12 +78,12 @@ this->storeFrontAdvertisementsStatisticsInterface= storeFrontAdvertisementsStati
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    HashMap<Object*, Object*> hashMap = this->storeFrontAdvertisementsStatisticsInterface.toHashMap();;
+    HashMap<Object*, Object*>* hashMap = this->storeFrontAdvertisementsStatisticsInterface->toHashMap();;
     
 
-    Node node = ModDomHelper::createNameValueNodes(document, StoreFrontAdvertisementsStatisticsData::getInstance().NAME, hashMap);;
+    Node* node = ModDomHelper::createNameValueNodes(document, StoreFrontAdvertisementsStatisticsData::getInstance()->NAME, hashMap);;
     
 
 

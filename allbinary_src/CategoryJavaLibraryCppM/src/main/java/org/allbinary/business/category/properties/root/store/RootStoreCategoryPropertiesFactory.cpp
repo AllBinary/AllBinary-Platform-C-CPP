@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,61 +70,61 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RootStoreCategoryProperties.h"
+        #include "org/allbinary/business/category/properties/root/store/RootStoreCategoryProperties.h"
 
 class RootStoreCategoryPropertiesFactory
             : public Object
-        : public CategoryPropertiesFactoryInterface {
+        , public CategoryPropertiesFactoryInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: CategoryPropertiesInterface categoryPropertiesInterface;
+    private: CategoryPropertiesInterface* categoryPropertiesInterface;
 
-public: RootStoreCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface){
-this->categoryPropertiesInterface= RootStoreCategoryProperties(transformInfoInterface);
+public: RootStoreCategoryPropertiesFactory(TransformInfoInterface* transformInfoInterface){
+this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(new RootStoreCategoryProperties(transformInfoInterface));
     
 }
 
 
-public: RootStoreCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface, AbPath abPath){
-this->categoryPropertiesInterface= RootStoreCategoryProperties(transformInfoInterface, abPath);
+public: RootStoreCategoryPropertiesFactory(TransformInfoInterface* transformInfoInterface, AbPath* abPath){
+this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(new RootStoreCategoryProperties(transformInfoInterface, abPath));
     
 }
 
 
-public: RootStoreCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface, Node node){
-this->categoryPropertiesInterface= RootStoreCategoryProperties(transformInfoInterface, node);
+public: RootStoreCategoryPropertiesFactory(TransformInfoInterface* transformInfoInterface, Node* node){
+this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(new RootStoreCategoryProperties(transformInfoInterface, node));
     
 }
 
 
-public: RootStoreCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface, HashMap<Object*, Object*> categoryPropertiesHashMap){
-this->categoryPropertiesInterface= RootStoreCategoryProperties(transformInfoInterface, categoryPropertiesHashMap);
+public: RootStoreCategoryPropertiesFactory(TransformInfoInterface* transformInfoInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap){
+this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(new RootStoreCategoryProperties(transformInfoInterface, categoryPropertiesHashMap));
     
 }
 
 
-    public: CategoryPropertiesInterface getInstance(){
+    public: CategoryPropertiesInterface* getInstance(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->categoryPropertiesInterface;
+                        return dynamic_cast<CategoryPropertiesInterface*>(this->categoryPropertiesInterface);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
+                                    this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
     
 
                                     }

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTANIMATIONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,20 +73,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CustomTextAnimation.h"
-#include "AdjustCustomTextAnimation.h"
+        #include "org/allbinary/animation/text/CustomTextAnimation.h"
+#include "org/allbinary/animation/text/AdjustCustomTextAnimation.h"
 
 class CustomTextAnimationFactory
             : public Object
-        : public AnimationInterfaceFactoryInterface {
+        , public AnimationInterfaceFactoryInterface {
 
-    public: static CustomTextAnimationFactory createDXY(std::string text, int32_t fontSize, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static CustomTextAnimationFactory* createDXY(std::string text, int32_t fontSize, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: AnimationBehaviorFactory animationBehaviorFactory;
+    private: AnimationBehaviorFactory* animationBehaviorFactory;
 
-    public: BasicColor basicColor = BasicColorFactory::getInstance().BLACK;
+    public: BasicColor* basicColor = BasicColorFactory::getInstance()->BLACK;
 
     private: std::string text;
 
@@ -90,17 +96,17 @@ class CustomTextAnimationFactory
 
     protected: int32_t dy = 0;
 
-    protected: Font font;
+    protected: Font* font;
 
-    public: ScaleProperties scaleProperties;
+    public: ScaleProperties* scaleProperties;
 
-public: CustomTextAnimationFactory(std::string text, int32_t fontSize, AnimationBehaviorFactory animationBehaviorFactory);
+public: CustomTextAnimationFactory(std::string text, int32_t fontSize, AnimationBehaviorFactory* animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId);
+    public: Animation* getInstance(int32_t instanceId);
 
-    public: void setInitialScale(ScaleProperties scaleProperties);
+    public: void setInitialScale(ScaleProperties* scaleProperties);
 
     public: int32_t getWidth();
 

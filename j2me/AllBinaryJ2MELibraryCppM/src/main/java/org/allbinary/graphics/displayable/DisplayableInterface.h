@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_DISPLAYABLEINTERFACE_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_DISPLAYABLEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Command.h>
 
       
@@ -48,15 +54,15 @@
         
 class DisplayableInterface {
 
-    void addCommand(Command cmd);
+    public: virtual void addCommand(Command* cmd) = 0;
 
-    int32_t getHeight();
+    public: virtual int32_t getHeight() = 0;
 
-    int32_t getWidth();
+    public: virtual int32_t getWidth() = 0;
 
-    void removeCommand(Command cmd);
+    public: virtual void removeCommand(Command* cmd) = 0;
 
-    void setCommandListener(CommandListener l);
+    public: virtual void setCommandListener(CommandListener* l) = 0;
 
 };
 

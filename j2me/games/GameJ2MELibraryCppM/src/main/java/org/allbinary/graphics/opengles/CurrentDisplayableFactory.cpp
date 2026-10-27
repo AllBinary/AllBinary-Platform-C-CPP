@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Displayable.h>
@@ -107,15 +113,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLFeatureFactory.h"
+        #include "org/allbinary/graphics/opengles/OpenGLFeatureFactory.h"
 
 class CurrentDisplayableFactory
             : public Object
          {
 
-    private: static CurrentDisplayableFactory instance() { return CurrentDisplayableFactory(); }
+    private: static CurrentDisplayableFactory* instance() { static std::unique_ptr<CurrentDisplayableFactory> value(new CurrentDisplayableFactory()); return value.get(); }
 
-    public: static CurrentDisplayableFactory getInstance(){
+    public: static CurrentDisplayableFactory* getInstance(){
 
 
 
@@ -125,11 +131,11 @@ class CurrentDisplayableFactory
 }
 
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const CanvasStrings canvasStrings = CanvasStrings::getInstance();
+    private: CanvasStrings* canvasStrings = CanvasStrings::getInstance();
 
-    private: const StringUtil stringUtil = StringUtil::getInstance();
+    private: StringUtil* stringUtil = StringUtil::getInstance();
 
     private: const std::string SET_DISPLAYABLE = "setDisplayable";
 
@@ -143,40 +149,42 @@ class CurrentDisplayableFactory
 
     private: const std::string RUNNABLE_WAS_ALREADY_IN_USE = "Runnable was already in use: ";
 
-    public: const BasicArrayList DEFAULT_CHILD_NAME_LIST = BasicArrayListD();
+    public: BasicArrayList* DEFAULT_CHILD_NAME_LIST = new BasicArrayListD();
 
-    private: Displayable displayable = NullDisplayable::getInstance();
+    private: Displayable* displayable = NullDisplayable::getInstance();
 
-    private: Displayable openGlReadydisplayable = NullDisplayable::getInstance();
+    private: Displayable* openGlReadydisplayable = NullDisplayable::getInstance();
 
-    private: GameRunnable runnable = NullWaitGameRunnable::getInstance();
+    private: GameRunnable* runnable = NullWaitGameRunnable::getInstance();
 
-    private: GameRunnable usedRunnable = NullWaitGameRunnable::getInstance();
+    private: GameRunnable* usedRunnable = NullWaitGameRunnable::getInstance();
 
 private: CurrentDisplayableFactory(){
-this->DEFAULT_CHILD_NAME_LIST.add(this->canvasStrings.ABOUT);
+this->DEFAULT_CHILD_NAME_LIST->add(this->canvasStrings->ABOUT);
     
-this->DEFAULT_CHILD_NAME_LIST.add(this->canvasStrings.OPTIONS);
+this->DEFAULT_CHILD_NAME_LIST->add(this->canvasStrings->OPTIONS);
     
-this->DEFAULT_CHILD_NAME_LIST.add(GameInputMappingCanvas::NAME);
+this->DEFAULT_CHILD_NAME_LIST->add(GameInputMappingCanvas::NAME);
     
-this->DEFAULT_CHILD_NAME_LIST.add(GameInputMappingInstructionsCanvas::NAME);
+this->DEFAULT_CHILD_NAME_LIST->add(GameInputMappingInstructionsCanvas::NAME);
     
-this->DEFAULT_CHILD_NAME_LIST.add(HighScoresCanvas::NAME);
+this->DEFAULT_CHILD_NAME_LIST->add(HighScoresCanvas::NAME);
     
 }
 
 
-    public: void setMyCanvas(MyCanvas displayable){
+    public: void setMyCanvas(MyCanvas* displayable){
 
-                        if(this->displayable instanceof MyCanvas)
+                        if(
+                                        (dynamic_cast<const MyCanvas*>(this->displayable) != nullptr)
+                                    )
                         
                                     {
                                     
-                        if(displayable.hasChild(this->displayable))
+                        if(displayable->hasChild(dynamic_cast<MyCanvas*>(this->displayable)))
                         
                                     {
-                                    PreLogUtil::put(StringMaker().append("Child Displayable is already set for: ").append(this->stringUtil.toString(displayable)).toString(), this, this->SET_DISPLAYABLE);
+                                    PreLogUtil::put((new StringMaker())->append("Child Displayable is already set for: ")->append(this->stringUtil->toString(displayable))->toString(), this, this->SET_DISPLAYABLE);
     
 
 
@@ -195,7 +203,7 @@ this->setDisplayable(displayable);
 }
 
 
-    public: void setDisplayable(Displayable displayable){
+    public: void setDisplayable(Displayable* displayable){
 this->displayable= displayable;
     
 this->setOpenGlReadydisplayable(displayable);
@@ -203,7 +211,7 @@ this->setOpenGlReadydisplayable(displayable);
 }
 
 
-    public: void setOpenGlReadydisplayable(Displayable openGlReadydisplayable){
+    public: void setOpenGlReadydisplayable(Displayable* openGlReadydisplayable){
 this->openGlReadydisplayable= openGlReadydisplayable;
     
 this->update();
@@ -211,7 +219,7 @@ this->update();
 }
 
 
-    public: Displayable getOpenGlReadydisplayable(){
+    public: Displayable* getOpenGlReadydisplayable(){
 
 
 
@@ -221,8 +229,8 @@ this->update();
 }
 
 
-    public: void setRunnable(GameRunnable runnable){
-PreLogUtil::put(StringMaker().append(this->RUNNABLE).append(this->stringUtil.toString(runnable)).toString(), this, this->SET_RUNNABLE);
+    public: void setRunnable(GameRunnable* runnable){
+PreLogUtil::put((new StringMaker())->append(this->RUNNABLE)->append(this->stringUtil->toString(runnable))->toString(), this, this->SET_RUNNABLE);
     
 this->runnable= runnable;
     
@@ -236,7 +244,7 @@ this->runnable= runnable;
                                     }
                                 
                         else {
-                            PreLogUtil::put(StringMaker().append(this->RUNNABLE_WAS_ALREADY_IN_USE).append(this->stringUtil.toString(runnable)).toString(), this, this->SET_RUNNABLE);
+                            PreLogUtil::put((new StringMaker())->append(this->RUNNABLE_WAS_ALREADY_IN_USE)->append(this->stringUtil->toString(runnable))->toString(), this, this->SET_RUNNABLE);
     
 
                         }
@@ -245,7 +253,7 @@ this->runnable= runnable;
 
 
     public: void clearRunnable(){
-PreLogUtil::put(StringMaker().append(this->RUNNABLE).append(this->stringUtil.toString(NullRunnable::getInstance())).toString(), this, this->CLEAR_RUNNABLE);
+PreLogUtil::put((new StringMaker())->append(this->RUNNABLE)->append(this->stringUtil->toString(NullRunnable::getInstance()))->toString(), this, this->CLEAR_RUNNABLE);
     
 this->setUsedRunnable(NullWaitGameRunnable::getInstance());
     
@@ -261,21 +269,21 @@ this->setUsedRunnable(NullWaitGameRunnable::getInstance());
         //mutex.withLock
         
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-    StringMaker stringMaker = StringMaker();;
+    StringMaker* stringMaker = new StringMaker();;
     
-stringMaker.append(this->stringUtil.toString(this->openGlReadydisplayable));
+stringMaker->append(this->stringUtil->toString(this->openGlReadydisplayable));
     
 
-                        if(SWTUtil::isSWT && !features.isDefault(OpenGLFeatureFactory::getInstance().OPENGL))
+                        if(SWTUtil::isSWT && !features->isDefault(OpenGLFeatureFactory::getInstance()->OPENGL))
                         
                                     {
-                                    PreLogUtil::put(stringMaker.append(commonSeps.SPACE).append(SWTUtil::SWT).append(commonSeps.SPACE).append(this->RUNNABLE).append(this->stringUtil.toString(NullRunnable::getInstance())).toString(), this, this->commonStrings.UPDATE);
+                                    PreLogUtil::put(stringMaker->append(commonSeps->SPACE)->append(SWTUtil::SWT)->append(commonSeps->SPACE)->append(this->RUNNABLE)->append(this->stringUtil->toString(NullRunnable::getInstance()))->toString(), this, this->commonStrings->UPDATE);
     
 this->setUsedRunnable(NullWaitGameRunnable::getInstance());
     
@@ -286,7 +294,7 @@ this->setUsedRunnable(NullWaitGameRunnable::getInstance());
                         if(J2MEUtil::isHTML())
                         
                                     {
-                                    PreLogUtil::put(stringMaker.append(commonSeps.SPACE).append(GraphicsStrings::getInstance().HTML).append(commonSeps.SPACE).append(this->RUNNABLE).append(this->stringUtil.toString(this->runnable)).toString(), this, this->commonStrings.UPDATE);
+                                    PreLogUtil::put(stringMaker->append(commonSeps->SPACE)->append(GraphicsStrings::getInstance()->HTML)->append(commonSeps->SPACE)->append(this->RUNNABLE)->append(this->stringUtil->toString(this->runnable))->toString(), this, this->commonStrings->UPDATE);
     
 this->setUsedRunnable(this->runnable);
     
@@ -294,10 +302,14 @@ this->setUsedRunnable(this->runnable);
                                     }
                                 
                              else 
-                        if(this->openGlReadydisplayable instanceof DemoCanvas || this->openGlReadydisplayable instanceof AllBinaryGameCanvas || features.isDefault(OpenGLFeatureFactory::getInstance().OPENGL))
+                        if(
+                                    (dynamic_cast<const DemoCanvas*>(this->openGlReadydisplayable) != nullptr)
+                                 || 
+                                    (dynamic_cast<const AllBinaryGameCanvas*>(this->openGlReadydisplayable) != nullptr)
+                                 || features->isDefault(OpenGLFeatureFactory::getInstance()->OPENGL))
                         
                                     {
-                                    PreLogUtil::put(stringMaker.append(commonSeps.SPACE).append(OpenGLFeatureFactory::getInstance().OPENGL.toString()).append(commonSeps.SPACE).append(this->RUNNABLE).append(this->stringUtil.toString(this->runnable)).toString(), this, this->commonStrings.UPDATE);
+                                    PreLogUtil::put(stringMaker->append(commonSeps->SPACE)->append(OpenGLFeatureFactory::getInstance()->OPENGL.toString())->append(commonSeps->SPACE)->append(this->RUNNABLE)->append(this->stringUtil->toString(this->runnable))->toString(), this, this->commonStrings->UPDATE);
     
 this->setUsedRunnable(this->runnable);
     
@@ -305,7 +317,7 @@ this->setUsedRunnable(this->runnable);
                                     }
                                 
                         else {
-                            PreLogUtil::put(stringMaker.append(this->RUNNABLE).append(this->stringUtil.toString(NullRunnable::getInstance())).toString(), this, this->commonStrings.UPDATE);
+                            PreLogUtil::put(stringMaker->append(this->RUNNABLE)->append(this->stringUtil->toString(NullRunnable::getInstance()))->toString(), this, this->commonStrings->UPDATE);
     
 this->setUsedRunnable(NullWaitGameRunnable::getInstance());
     
@@ -317,7 +329,7 @@ this->setUsedRunnable(NullWaitGameRunnable::getInstance());
 }
 
 
-    public: Displayable getDisplayable(){
+    public: Displayable* getDisplayable(){
 
 
 
@@ -327,7 +339,7 @@ this->setUsedRunnable(NullWaitGameRunnable::getInstance());
 }
 
 
-    public: GameRunnable getUsedRunnable(){
+    public: GameRunnable* getUsedRunnable(){
 
 
 
@@ -337,8 +349,8 @@ this->setUsedRunnable(NullWaitGameRunnable::getInstance());
 }
 
 
-    public: void setUsedRunnable(GameRunnable usedRunnable){
-PreLogUtil::put(StringMaker().append(this->RUNNABLE).append(this->stringUtil.toString(this->runnable)).append(CommonSeps::getInstance().COLON_SEP).append(this->stringUtil.toString(usedRunnable)).toString(), this, this->SET_USED_RUNNABLE);
+    public: void setUsedRunnable(GameRunnable* usedRunnable){
+PreLogUtil::put((new StringMaker())->append(this->RUNNABLE)->append(this->stringUtil->toString(this->runnable))->append(CommonSeps::getInstance()->COLON_SEP)->append(this->stringUtil->toString(usedRunnable))->toString(), this, this->SET_USED_RUNNABLE);
     
 this->usedRunnable= usedRunnable;
     

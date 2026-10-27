@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATION_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -50,14 +56,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserEmailEventConfigurationInterface.h"
-#include "UserEmailEventConfigurationData.h"
+        #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationInterface.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationData.h"
 
 class UserEmailEventConfiguration
             : public Object
-        : public UserEmailEventConfigurationInterface {
+        , public UserEmailEventConfigurationInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string name;
 
@@ -65,7 +71,7 @@ class UserEmailEventConfiguration
 
 public: UserEmailEventConfiguration();
 
-public: UserEmailEventConfiguration(HashMap<Object*, Object*> hashMap);
+public: UserEmailEventConfiguration(HashMap<Object*, Object*>* hashMap);
 
     public: std::string getName();
 

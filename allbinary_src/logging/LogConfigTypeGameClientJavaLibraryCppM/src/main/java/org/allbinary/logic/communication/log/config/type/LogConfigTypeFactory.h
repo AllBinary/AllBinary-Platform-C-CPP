@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPEFACTORY_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,22 +47,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogConfigType.h"
-#include "LogConfigTypes.h"
+        #include "org/allbinary/logic/communication/log/config/type/LogConfigType.h"
+#include "org/allbinary/logic/communication/log/config/type/LogConfigTypes.h"
 
 class LogConfigTypeFactory
             : public Object
          {
 
-    private: static LogConfigTypeFactory instance() { return LogConfigTypeFactory(); }
+    private: static LogConfigTypeFactory* instance() { static std::unique_ptr<LogConfigTypeFactory> value(new LogConfigTypeFactory()); return value.get(); }
 
-    public: static LogConfigTypeFactory getInstance();
+    public: static LogConfigTypeFactory* getInstance();
 
     private: const std::string NO_DESCRIPTION = "No Description";
 
-    public: const LogConfigType OS = LogConfigType("Operating System", this->NO_DESCRIPTION);
+    public: LogConfigType* OS = new LogConfigType("Operating System", this->NO_DESCRIPTION);
 
-    public: const LogConfigType FACTORYERROR = LogConfigType("Factory Error", this->NO_DESCRIPTION);
+    public: LogConfigType* FACTORYERROR = new LogConfigType("Factory Error", this->NO_DESCRIPTION);
 
 private: LogConfigTypeFactory();
 

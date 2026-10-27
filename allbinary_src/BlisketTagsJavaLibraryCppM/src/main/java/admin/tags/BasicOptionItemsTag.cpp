@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/util/HashMap.h>
 
       
@@ -45,16 +51,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TableTag.h"
+        #include "admin/tags/TableTag.h"
 
 class BasicOptionItemsTag: public TableTag {
 
-    private: HashMap<Object*, Object*> propertiesHashMap;
+    private: HashMap<Object*, Object*>* propertiesHashMap;
 
 public: BasicOptionItemsTag(){
-this->setTagHelperFactory(BasicOptionItemsHelperFactory());
+this->setTagHelperFactory(new BasicOptionItemsHelperFactory());
     
-this->setTagRequestHelperFactory(BasicOptionItemsRequestHelperFactory());
+this->setTagRequestHelperFactory(new BasicOptionItemsRequestHelperFactory());
     
 }
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -61,23 +67,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "IndexedAnimation.h"
-#include "VectorAnimationInterface.h"
-#include "AnimationBehavior.h"
+        #include "org/allbinary/animation/IndexedAnimation.h"
+#include "org/allbinary/animation/VectorAnimationInterface.h"
+#include "org/allbinary/animation/AnimationBehavior.h"
 
 class VectorAnimation: public IndexedAnimation, public VectorAnimationInterface {
 
-    public: static VectorAnimation createVectorAnimation(std::vector<std::vector<int32_t>> currentPoints2, BasicColor basicColor, AnimationBehavior animationBehavior);
+    public: static VectorAnimation* createVectorAnimation(std::vector<std::vector<int32_t>> currentPoints2, BasicColor* basicColor, AnimationBehavior* animationBehavior);
 
-    private: std::vector<std::vector<std::vector<int32_t>>> currentPoints = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY_ARRAY;
+    private: std::vector<std::vector<std::vector<int32_t>>> currentPoints = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY_ARRAY;
 
-    private: CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstance(0);
+    private: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::createInstance(0);
 
-public: VectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior);
+public: VectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior);
 
-    public: void setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor* basicColor);
 
-    public: void changeBasicColor(BasicColor basicColor);
+    public: void changeBasicColor(BasicColor* basicColor);
 
     public: void setAlpha(int32_t alpha);
 
@@ -101,9 +107,9 @@ public: VectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPo
 
     public: void previousFrame();
 
-    protected: void paintVectors(Graphics graphics, int32_t x, int32_t y);
+    protected: void paintVectors(Graphics* graphics, int32_t x, int32_t y);
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
     public: int32_t getFrame();
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/RTSPlayerLayerInterface.h>
@@ -79,39 +85,39 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RTSFormInput.h"
-#include "WaypointRTSFormInput.h"
-#include "UnitRTSFormInput.h"
+        #include "org/allbinary/game/input/form/RTSFormInput.h"
+#include "org/allbinary/game/input/form/WaypointRTSFormInput.h"
+#include "org/allbinary/game/input/form/UnitRTSFormInput.h"
 
 class CompositeRTSFormInput: public RTSFormInput {
 
-    private: std::vector<RTSFormInput> rtsFormInputArray;
+    private: std::vector<RTSFormInput*> rtsFormInputArray;
 
     private: std::vector<int32_t> itemIndex;
 
     private: bool isPrimaryWaypointCreator;
 
-public: CompositeRTSFormInput(std::vector<Group> groupInterface, bool isPrimaryWaypointCreator, std::vector<int32_t> itemIndex);
+public: CompositeRTSFormInput(std::vector<Group*> groupInterface, bool isPrimaryWaypointCreator, std::vector<int32_t> itemIndex);
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager);
 
                 //@Throws(Exception.constructor)
             
-    public: void processAtPoint(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, GPoint point);
+    public: void processAtPoint(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, GPoint* point);
 
                 //@Throws(Exception.constructor)
             
-    public: void processGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t index);
+    public: void processGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t index);
 
                 //@Throws(Exception.constructor)
             
-    public: bool processSticky(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, GPoint point);
+    public: bool processSticky(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, GPoint* point);
 
                 //@Throws(Exception.constructor)
             
-    public: void processStickyGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t index);
+    public: void processStickyGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t index);
 
     public: int32_t getSelectedStickyItemIndex();
 
@@ -119,9 +125,9 @@ public: CompositeRTSFormInput(std::vector<Group> groupInterface, bool isPrimaryW
 
     public: void setStickyItemSelected(bool stickyItemSelected);
 
-    public: ABCustomItem getSelectedStickyItem();
+    public: ABCustomItem* getSelectedStickyItem();
 
-    public: void setSelectedStickyItem(ABCustomItem selectedStickyItem);
+    public: void setSelectedStickyItem(ABCustomItem* selectedStickyItem);
 
 };
 

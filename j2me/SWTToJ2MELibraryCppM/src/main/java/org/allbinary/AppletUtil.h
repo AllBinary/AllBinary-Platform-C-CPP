@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_APPLETUTIL_H
         #define ORG_ALLBINARY_APPLETUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,7 +52,7 @@ class AppletUtil
             : public Object
          {
 
-    private: static bool applet = false;
+    private: static inline bool applet = false;
 
     public: static void setApplet();
 

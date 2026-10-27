@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Command.h>
@@ -70,43 +76,43 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CommandTextItem.h"
-#include "ABCustomItem.h"
+        #include "org/allbinary/graphics/form/item/CommandTextItem.h"
+#include "org/allbinary/graphics/form/item/ABCustomItem.h"
 
 class CommandTextItemArrayFactory
             : public Object
          {
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
-    private: Visitor visitorInterface;
+    private: Visitor* visitorInterface;
 
-public: CommandTextItemArrayFactory(Visitor visitorInterface){
+public: CommandTextItemArrayFactory(Visitor* visitorInterface){
 this->visitorInterface= visitorInterface;
     
 }
 
 
-    public: std::vector<ABCustomItem> getInstance(Object* vector, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
+    public: std::vector<ABCustomItem*> getInstance(Object* vector, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor){
 
-    VectorUtil vectorUtil = VectorUtil::getInstance();;
+    VectorUtil* vectorUtil = VectorUtil::getInstance();;
     
 
-    int32_t size = vectorUtil.getSize(vector);;
+    int32_t size = vectorUtil->getSize(vector);;
     
-this->list.clear();
+this->list->clear();
     
 
-    CommandTextItem textItem;;
+    CommandTextItem* textItem;;
     
 
     int32_t priorityLimit = 7;;
     
 
-    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
+    DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-    bool isLargeEnoughDisplayForBigMenu = (displayInfo.isPortrait() && displayInfo.getLastHeight() >= ScreenInfo::getInstance().MEDIUM_WIDTH) || (!displayInfo.isPortrait() && displayInfo.getLastWidth() >= ScreenInfo::getInstance().MEDIUM_WIDTH);;
+    bool isLargeEnoughDisplayForBigMenu = (displayInfo->isPortrait() && displayInfo->getLastHeight() >= ScreenInfo::getInstance().MEDIUM_WIDTH) || (!displayInfo->isPortrait() && displayInfo->getLastWidth() >= ScreenInfo::getInstance().MEDIUM_WIDTH);;
     
 
                         if(!isLargeEnoughDisplayForBigMenu && size > 3)
@@ -118,7 +124,7 @@ this->list.clear();
                                     }
                                 
 
-    Command command;;
+    Command* command;;
     
 
 
@@ -127,22 +133,22 @@ this->list.clear();
                         for (
     int32_t index = 0;index < size; index++)
         {
-command= vectorUtil.elementAt(vector, index);
+command= dynamic_cast<Command*>(vectorUtil->elementAt(vector, index));
     
 
-                        if(command.getPriority() < priorityLimit)
+                        if(command->getPriority() < priorityLimit)
                         
                                     {
                                     
-    Boolean aBoolean = this->visitorInterface.visit(command);;
+    bool aBoolean = this->visitorInterface->visit(command);;
     
 
                         if(aBoolean.valueOf())
                         
                                     {
-                                    textItem= CommandTextItem(command, ImageItem::LAYOUT_DEFAULT, StringUtil::getInstance().EMPTY_STRING, backgroundBasicColor, foregroundBasicColor);
+                                    textItem= new CommandTextItem(command, ImageItem::LAYOUT_DEFAULT, StringUtil::getInstance().EMPTY_STRING, backgroundBasicColor, foregroundBasicColor);
     
-this->list.add(textItem);
+this->list->add(textItem);
     
 
                                     }
@@ -153,7 +159,7 @@ this->list.add(textItem);
 }
 
 
-    std::vector<ABCustomItem> textItemArray = std::vector<ABCustomItem>(this->list.size());;
+    std::vector<ABCustomItem*> textItemArray = std::vector<ABCustomItem*>(this->list->size());;
     
 
     int32_t size2 = textItemArray.size();;
@@ -165,7 +171,7 @@ this->list.add(textItem);
                         for (
     int32_t index = 0;index < size2; index++)
         {
-textItemArray[index]= this->list.objectArray[index];
+textItemArray[index]= dynamic_cast<ABCustomItem*>(this->list->objectArray[index]);
     
 }
 

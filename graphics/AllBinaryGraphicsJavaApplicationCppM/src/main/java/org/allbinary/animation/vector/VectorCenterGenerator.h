@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -87,19 +93,19 @@ class VectorCenterGenerator
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList translate(BasicArrayList list, int32_t x, int32_t y);
+    public: static BasicArrayList* translate(BasicArrayList* list, int32_t x, int32_t y);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    int32_t minX = Integer::MAX_VALUE;
+    int32_t minX = Integer.MAX_VALUE;
 
-    int32_t minY = Integer::MAX_VALUE;
+    int32_t minY = Integer.MAX_VALUE;
 
-    int32_t maxX = Integer::MIN_VALUE;
+    int32_t maxX = Integer.MIN_VALUE;
 
-    int32_t maxY = Integer::MIN_VALUE;
+    int32_t maxY = Integer.MIN_VALUE;
 
     private: int32_t dx = 0;
 
@@ -113,15 +119,15 @@ public: VectorCenterGenerator();
 
                 //@Throws(Exception.constructor)
             
-    public: void calculate(HashMap<Object*, Object*> hashMap);
+    public: void calculate(HashMap<Object*, Object*>* hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: void transform(HashMap<Object*, Object*> hashMap);
+    public: void transform(HashMap<Object*, Object*>* hashMap);
 
                 //@Throws(Exception.constructor)
             
-    private: void getInstance(BasicArrayList pointVector);
+    private: void getInstance(BasicArrayList* pointVector);
 
     public: int32_t getWidth();
 

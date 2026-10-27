@@ -7,6 +7,14 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_ANDROIDAPI9KEYFACTORY_H
         #define ORG_ALLBINARY_GAME_INPUT_ANDROIDAPI9KEYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <android/view/KeyEvent.h>
 
       
@@ -31,14 +39,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AndroidKeyFactory.h"
-#include "AndroidGameKey.h"
+        #include "org/allbinary/game/input/AndroidKeyFactory.h"
+#include "org/allbinary/game/input/AndroidGameKey.h"
 
 class AndroidAPI9KeyFactory: public AndroidKeyFactory {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static AndroidAPI9KeyFactory getInstance();
+    public: static AndroidAPI9KeyFactory* getInstance();
 
 protected: AndroidAPI9KeyFactory();
 

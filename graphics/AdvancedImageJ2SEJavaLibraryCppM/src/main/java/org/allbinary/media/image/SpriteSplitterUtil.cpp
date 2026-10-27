@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -59,20 +65,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageUtil.h"
-#include "ImageUnifierProperties.h"
-#include "ImageUnifierCell.h"
-#include "ImageUnifierUtil.h"
-#include "ImageProcessorInput.h"
-#include "ImageProcessedVisitor.h"
+        #include "org/allbinary/media/image/ImageUtil.h"
+#include "org/allbinary/media/image/ImageUnifierProperties.h"
+#include "org/allbinary/media/image/ImageUnifierCell.h"
+#include "org/allbinary/media/image/ImageUnifierUtil.h"
+#include "org/allbinary/media/image/ImageProcessorInput.h"
+#include "org/allbinary/media/image/ImageProcessedVisitor.h"
 
 class SpriteSplitterUtil
             : public Object
          {
 
-    private: static SpriteSplitterUtil instance() { return SpriteSplitterUtil(); }
+    private: static SpriteSplitterUtil* instance() { static std::unique_ptr<SpriteSplitterUtil> value(new SpriteSplitterUtil()); return value.get(); }
 
-    public: static SpriteSplitterUtil getInstance(){
+    public: static SpriteSplitterUtil* getInstance(){
 
 
 
@@ -82,11 +88,11 @@ class SpriteSplitterUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonSeps commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps = CommonSeps::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     public: const std::vector<std::string> ANIMATIONS_LABELS = 
                                                         {
@@ -108,15 +114,15 @@ class SpriteSplitterUtil
 
                 //@Throws(Exception.constructor)
             
-    public: void process(ImageProcessorInput imageProcessorInput, int32_t totalFrames, int32_t totalAnimations, int32_t widthReduction, int32_t heightReduction, int32_t increaseWidth, int32_t increaseHeight, std::string spriteType, ImageProcessedVisitor visitor){
+    public: void process(ImageProcessorInput* imageProcessorInput, int32_t totalFrames, int32_t totalAnimations, int32_t widthReduction, int32_t heightReduction, int32_t increaseWidth, int32_t increaseHeight, std::string spriteType, ImageProcessedVisitor* visitor){
 
-    BufferedImage bufferedImage;;
+    BufferedImage* bufferedImage;;
     
 
-    std::vector<std::vector<BufferedImage>> generatedBufferedImageArray;;
+    std::vector<std::vector<BufferedImage*>> generatedBufferedImageArray;;
     
 
-    std::vector<BufferedImage> bufferedImageArray = imageProcessorInput.getBufferedImageArray();;
+    std::vector<BufferedImage*> bufferedImageArray = imageProcessorInput->getBufferedImageArray();;
     
 
 
@@ -127,17 +133,17 @@ class SpriteSplitterUtil
         {
 bufferedImage= bufferedImageArray[index];
     
-this->logUtil.putF(spriteType, this, this->commonStrings.RUN);
+this->logUtil->putF(spriteType, this, this->commonStrings->RUN);
     
 
                         if(spriteType == this->HORIZONTAL_SPRITE)
                         
                                     {
                                     
-    int32_t cellHeight = bufferedImage.getHeight() /totalAnimations;;
+    int32_t cellHeight = bufferedImage->getHeight() /totalAnimations;;
     
 
-    int32_t cellWidth = bufferedImage.getWidth() /totalFrames;;
+    int32_t cellWidth = bufferedImage->getWidth() /totalFrames;;
     
 
     int32_t columns = totalFrames;;
@@ -145,14 +151,14 @@ this->logUtil.putF(spriteType, this, this->commonStrings.RUN);
 
     int32_t rows = totalAnimations;;
     
-generatedBufferedImageArray= std::vector<std::vector<BufferedImage>>(rows, std::vector<BufferedImage>(columns));
+generatedBufferedImageArray= std::vector<std::vector<BufferedImage*>>(rows, std::vector<BufferedImage*>(columns));
     
-this->logUtil.putF("Processing Individual Cells columns: " +columns +" rows: " +rows, this, this->commonStrings.RUN);
+this->logUtil->putF("Processing Individual Cells columns: " +columns +" rows: " +rows, this, this->commonStrings->RUN);
     
-this->logUtil.putF("Processing Individual Cells cellHeight: " +cellHeight +" cellWidth: " +cellWidth, this, this->commonStrings.RUN);
+this->logUtil->putF("Processing Individual Cells cellHeight: " +cellHeight +" cellWidth: " +cellWidth, this, this->commonStrings->RUN);
     
 
-    ImageUtil imageUtil = ImageUtil::getInstance();;
+    ImageUtil* imageUtil = ImageUtil::getInstance();;
     
 
     std::string nameEnding = 
@@ -183,38 +189,38 @@ y= cellHeight *index2;
         {
 x= cellWidth *index3;
     
-generatedBufferedImageArray[index2][index3]= bufferedImage.getSubimage(x +widthReduction, y +heightReduction, cellWidth -(widthReduction *2), cellHeight -(heightReduction *2));
+generatedBufferedImageArray[index2][index3]= bufferedImage->getSubimage(x +widthReduction, y +heightReduction, cellWidth -(widthReduction *2), cellHeight -(heightReduction *2));
     
 
                         if(increaseWidth != 0 || increaseHeight != 0)
                         
                                     {
-                                    generatedBufferedImageArray[index2][index3]= imageUtil.createBufferedImageAllowTranslate(generatedBufferedImageArray[index2][index3], cellWidth +increaseWidth, cellHeight +increaseHeight, false, true);
+                                    generatedBufferedImageArray[index2][index3]= imageUtil->createBufferedImageAllowTranslate(generatedBufferedImageArray[index2][index3], cellWidth +increaseWidth, cellHeight +increaseHeight, false, true);
     
 
                                     }
                                 
-nameEnding= StringMaker().appendint(index2).append(this->commonSeps.UNDERSCORE).appendint(index3).toString();
+nameEnding= (new StringMaker())->appendint(index2)->append(this->commonSeps->UNDERSCORE)->appendint(index3)->toString();
     
-visitor.visit(generatedBufferedImageArray[index2][index3], nameEnding, index);
+visitor->visit(generatedBufferedImageArray[index2][index3], nameEnding, index);
     
 }
 
 }
 
-this->logUtil.putF("Processing Rows from Cells", this, this->commonStrings.RUN);
+this->logUtil->putF("Processing Rows from Cells", this, this->commonStrings->RUN);
     
 
-    ImageUnifierProperties imageUnifierProperties = ImageUnifierProperties();;
+    ImageUnifierProperties* imageUnifierProperties = new ImageUnifierProperties();;
     
-imageUnifierProperties.setRows(.valueOf());
+imageUnifierProperties->setRows(.valueOf());
     
-imageUnifierProperties.setColumns(columns.valueOf());
+imageUnifierProperties->setColumns(columns.valueOf());
     
 
-    ImageUnifierCell imageUnifierCell = ImageUnifierCell(Integer::valueOf(cellWidth -(2 *widthReduction))Integer::valueOf(cellHeight -(2 *heightReduction)));;
+    ImageUnifierCell* imageUnifierCell = new ImageUnifierCell(Integer.valueOf(cellWidth -(2 *widthReduction))Integer.valueOf(cellHeight -(2 *heightReduction)));;
     
-imageUnifierProperties.setImageUnifierCell(imageUnifierCell);
+imageUnifierProperties->setImageUnifierCell(imageUnifierCell);
     
 
 
@@ -226,7 +232,7 @@ imageUnifierProperties.setImageUnifierCell(imageUnifierCell);
 y= cellHeight *index2;
     
 
-    std::vector<BufferedImage> tempBufferedImageArray = std::vector<BufferedImage>(columns);;
+    std::vector<BufferedImage*> tempBufferedImageArray = std::vector<BufferedImage*>(columns);;
     
 
 
@@ -237,14 +243,14 @@ y= cellHeight *index2;
         {
 tempBufferedImageArray[index3]= generatedBufferedImageArray[index2][index3];
     
-nameEnding= StringMaker().appendint(index2).append(this->commonSeps.UNDERSCORE).appendint(1).append(this->_ROW).toString();
+nameEnding= (new StringMaker())->appendint(index2)->append(this->commonSeps->UNDERSCORE)->appendint(1)->append(this->_ROW)->toString();
     
 }
 
 
-    BufferedImage generatedBufferedImage = ImageUnifierUtil::getInstance().getImage(tempBufferedImageArray, imageUnifierProperties);;
+    BufferedImage* generatedBufferedImage = ImageUnifierUtil::getInstance()->getImage(tempBufferedImageArray, imageUnifierProperties);;
     
-visitor.visit(generatedBufferedImage, nameEnding, index);
+visitor->visit(generatedBufferedImage, nameEnding, index);
     
 }
 
@@ -266,10 +272,10 @@ visitor.visit(generatedBufferedImage, nameEnding, index);
     int32_t totalFrames2 = 4;;
     
 
-    int32_t cellHeight = bufferedImage.getHeight() /totalFrames2;;
+    int32_t cellHeight = bufferedImage->getHeight() /totalFrames2;;
     
 
-    int32_t cellWidth = bufferedImage.getWidth() /totalAnimations;;
+    int32_t cellWidth = bufferedImage->getWidth() /totalAnimations;;
     
 
     int32_t columns = totalAnimations;;
@@ -277,9 +283,9 @@ visitor.visit(generatedBufferedImage, nameEnding, index);
 
     int32_t rows = totalFrames2;;
     
-generatedBufferedImageArray= std::vector<std::vector<BufferedImage>>(rows, std::vector<BufferedImage>(columns));
+generatedBufferedImageArray= std::vector<std::vector<BufferedImage*>>(rows, std::vector<BufferedImage*>(columns));
     
-this->logUtil.putF("Processing Individual Cells for each Direction", this, this->commonStrings.RUN);
+this->logUtil->putF("Processing Individual Cells for each Direction", this, this->commonStrings->RUN);
     
 
     std::string nameEnding = 
@@ -310,38 +316,38 @@ y= cellHeight *index2;
         {
 x= cellWidth *index3;
     
-generatedBufferedImageArray[index2][index3]= bufferedImage.getSubimage(x +widthReduction, y +heightReduction, cellWidth -(widthReduction *2), cellHeight -(heightReduction *2));
+generatedBufferedImageArray[index2][index3]= bufferedImage->getSubimage(x +widthReduction, y +heightReduction, cellWidth -(widthReduction *2), cellHeight -(heightReduction *2));
     
 
                         if(increaseWidth != 0 || increaseHeight != 0)
                         
                                     {
-                                    generatedBufferedImageArray[index2][index3]= ImageUtil::getInstance().createBufferedImageAllowTranslate(generatedBufferedImageArray[index2][index3], cellWidth +increaseWidth, cellHeight +increaseHeight, false, true);
+                                    generatedBufferedImageArray[index2][index3]= ImageUtil::getInstance()->createBufferedImageAllowTranslate(generatedBufferedImageArray[index2][index3], cellWidth +increaseWidth, cellHeight +increaseHeight, false, true);
     
 
                                     }
                                 
-nameEnding= StringMaker().append(this->commonStrings.DIRECTION_NAME[index2]).append(this->commonSeps.UNDERSCORE).appendint(index3).toString();
+nameEnding= (new StringMaker())->append(this->commonStrings->DIRECTION_NAME[index2])->append(this->commonSeps->UNDERSCORE)->appendint(index3)->toString();
     
-visitor.visit(generatedBufferedImageArray[index2][index3], nameEnding, index);
+visitor->visit(generatedBufferedImageArray[index2][index3], nameEnding, index);
     
 }
 
 }
 
 
-    ImageUnifierProperties imageUnifierProperties = ImageUnifierProperties();;
+    ImageUnifierProperties* imageUnifierProperties = new ImageUnifierProperties();;
     
-imageUnifierProperties.setRows(.valueOf());
+imageUnifierProperties->setRows(.valueOf());
     
-imageUnifierProperties.setColumns(columns.valueOf());
+imageUnifierProperties->setColumns(columns.valueOf());
     
 
-    ImageUnifierCell imageUnifierCell = ImageUnifierCell(Integer::valueOf(cellWidth -(2 *widthReduction)) +increaseWidth, Integer::valueOf(cellHeight -(2 *heightReduction) +increaseHeight));;
+    ImageUnifierCell* imageUnifierCell = new ImageUnifierCell(Integer.valueOf(cellWidth -(2 *widthReduction)) +increaseWidth, Integer.valueOf(cellHeight -(2 *heightReduction) +increaseHeight));;
     
-imageUnifierProperties.setImageUnifierCell(imageUnifierCell);
+imageUnifierProperties->setImageUnifierCell(imageUnifierCell);
     
-this->logUtil.putF("Processing Rows from Cells for each Direction", this, this->commonStrings.RUN);
+this->logUtil->putF("Processing Rows from Cells for each Direction", this, this->commonStrings->RUN);
     
 
 
@@ -353,7 +359,7 @@ this->logUtil.putF("Processing Rows from Cells for each Direction", this, this->
 y= cellHeight *index2;
     
 
-    std::vector<BufferedImage> tempBufferedImageArray = std::vector<BufferedImage>(columns);;
+    std::vector<BufferedImage*> tempBufferedImageArray = std::vector<BufferedImage*>(columns);;
     
 
 
@@ -364,14 +370,14 @@ y= cellHeight *index2;
         {
 tempBufferedImageArray[index3]= generatedBufferedImageArray[index2][index3];
     
-nameEnding= StringMaker().append(this->commonStrings.DIRECTION_NAME[index2]).append(this->commonSeps.UNDERSCORE).appendint(1).append(this->_ROW).toString();
+nameEnding= (new StringMaker())->append(this->commonStrings->DIRECTION_NAME[index2])->append(this->commonSeps->UNDERSCORE)->appendint(1)->append(this->_ROW)->toString();
     
 }
 
 
-    BufferedImage generatedBufferedImage = ImageUnifierUtil::getInstance().getImage(tempBufferedImageArray, imageUnifierProperties);;
+    BufferedImage* generatedBufferedImage = ImageUnifierUtil::getInstance()->getImage(tempBufferedImageArray, imageUnifierProperties);;
     
-visitor.visit(generatedBufferedImage, nameEnding, index);
+visitor->visit(generatedBufferedImage, nameEnding, index);
     
 }
 

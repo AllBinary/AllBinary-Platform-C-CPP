@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_ALLBINARYVIBRATION_H
         #define ORG_ALLBINARY_MEDIA_ALLBINARYVIBRATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/configuration/GameConfigurationCentral.h>
 
       
@@ -42,14 +48,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryVibrationME.h"
-#include "AllBinaryNoVibration.h"
+        #include "org/allbinary/media/AllBinaryVibrationME.h"
+#include "org/allbinary/media/AllBinaryNoVibration.h"
 
 class AllBinaryVibration: public AllBinaryVibrationME {
 
-    private: static AllBinaryVibrationME VIBRATION = AllBinaryNoVibration::NO_VIBRATION;
+    private: static inline AllBinaryVibrationME* VIBRATION = AllBinaryNoVibration::NO_VIBRATION;
 
-    public: static AllBinaryVibrationME getInstance();
+    public: static AllBinaryVibrationME* getInstance();
 
     public: static void init();
 

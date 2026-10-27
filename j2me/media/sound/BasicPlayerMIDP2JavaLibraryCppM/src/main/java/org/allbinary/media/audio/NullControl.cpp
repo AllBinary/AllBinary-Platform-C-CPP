@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/media/Control.h>
@@ -44,7 +50,7 @@
         
 class NullControl
             : public Object
-        : public Control {
+        , public Control {
 
 };
 

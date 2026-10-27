@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/time/TimeDelayHelper.h>
 
       
@@ -42,9 +48,9 @@
         
 class TimeIntervalActionScriptConditionInterface {
 
-    TimeDelayHelper getTimeDelayHelper()
+    public: virtual TimeDelayHelper* getTimeDelayHelper() = 0;
 
-    void log()
+    public: virtual void log() = 0;
 
 };
 

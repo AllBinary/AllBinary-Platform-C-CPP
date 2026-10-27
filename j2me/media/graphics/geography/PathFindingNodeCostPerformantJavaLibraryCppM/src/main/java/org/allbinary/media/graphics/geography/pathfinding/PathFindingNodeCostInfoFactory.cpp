@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
@@ -50,7 +56,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PathFindingNodeCostInfoFactoryBase.h"
+        #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfoFactoryBase.h"
 
 class PathFindingNodeCostInfoFactory: public PathFindingNodeCostInfoFactoryBase {
 
@@ -60,30 +66,30 @@ public: PathFindingNodeCostInfoFactory(int32_t max){
 
                 //@Throws(Exception.constructor)
             
-    public: void create(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition goingToGeographicMapCellPosition, GeographicMapCellPosition geographicMapCellPosition, int64_t costFromStart, int64_t costToEnd){
+    public: void create(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* goingToGeographicMapCellPosition, GeographicMapCellPosition* geographicMapCellPosition, int64_t costFromStart, int64_t costToEnd){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: int64_t getTotalCost(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition comingFromGeographicMapCellPosition, GeographicMapCellPosition geographicMapCellPosition){
+    public: int64_t getTotalCost(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* comingFromGeographicMapCellPosition, GeographicMapCellPosition* geographicMapCellPosition){
 
-    GeographicMapCellType geographicMapCellType = geographicMapInterface.getCellTypeAt(comingFromGeographicMapCellPosition);;
+    GeographicMapCellType* geographicMapCellType = geographicMapInterface->getCellTypeAt(comingFromGeographicMapCellPosition);;
     
 
-    GeographicMapCellType geographicMapCellType2 = geographicMapInterface.getCellTypeAt(geographicMapCellPosition);;
+    GeographicMapCellType* geographicMapCellType2 = geographicMapInterface->getCellTypeAt(geographicMapCellPosition);;
     
 
-    RaceTrackGeographicMapCellType raceTrackGeographicMapCellType = geographicMapCellType;;
+    RaceTrackGeographicMapCellType* raceTrackGeographicMapCellType = dynamic_cast<RaceTrackGeographicMapCellType*>(geographicMapCellType);;
     
 
-    RaceTrackGeographicMapCellType raceTrackGeographicMapCellType2 = geographicMapCellType2;;
+    RaceTrackGeographicMapCellType* raceTrackGeographicMapCellType2 = dynamic_cast<RaceTrackGeographicMapCellType*>(geographicMapCellType2);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return raceTrackGeographicMapCellType.getTravelCost() +raceTrackGeographicMapCellType2.getTravelCost();
+                        return raceTrackGeographicMapCellType->getTravelCost() +raceTrackGeographicMapCellType2->getTravelCost();
     
 }
 

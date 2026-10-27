@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -80,7 +86,7 @@
         
 class MetaValidation: public Validation, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string label;
 
@@ -90,11 +96,11 @@ class MetaValidation: public Validation, public DomNodeInterface {
 
     private: std::string content;
 
-public: MetaValidation(HtmlMetaAttributeData htmlMetaAttributeData, std::string label, std::string attributeValue, std::string contentValue){
+public: MetaValidation(HtmlMetaAttributeData* htmlMetaAttributeData, std::string label, std::string attributeValue, std::string contentValue){
 this->label= label;
     
 
-                        if(htmlMetaAttributeData === HtmlMetaAttributeDataFactory::getInstance().HTTP_EQUIV)
+                        if(htmlMetaAttributeData === HtmlMetaAttributeDataFactory::getInstance()->HTTP_EQUIV)
                         
                                     {
                                     this->httpEquiv= attributeValue;
@@ -103,7 +109,7 @@ this->label= label;
                                     }
                                 
                              else 
-                        if(htmlMetaAttributeData === HtmlMetaAttributeDataFactory::getInstance().NAME)
+                        if(htmlMetaAttributeData === HtmlMetaAttributeDataFactory::getInstance()->NAME)
                         
                                     {
                                     this->name= attributeValue;
@@ -116,20 +122,20 @@ this->content= contentValue;
 }
 
 
-public: MetaValidation(Document document){
+public: MetaValidation(Document* document){
 
 
 
-                            throw Exception(CommonStrings::getInstance().NOT_IMPLEMENTED);
+                            throw new Exception(CommonStrings::getInstance()->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-    Boolean valid = Boolean::TRUE;;
+    bool valid = Boolean::TRUE;;
     
 
 
@@ -139,13 +145,13 @@ public: MetaValidation(Document document){
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -165,23 +171,23 @@ public: MetaValidation(Document document){
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -197,7 +203,7 @@ public: MetaValidation(Document document){
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -207,7 +213,7 @@ public: MetaValidation(Document document){
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -217,20 +223,20 @@ public: MetaValidation(Document document){
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
 
-    HtmlMetaAttributeDataFactory htmlMetaAttributeDataFactory = HtmlMetaAttributeDataFactory::getInstance();;
+    HtmlMetaAttributeDataFactory* htmlMetaAttributeDataFactory = HtmlMetaAttributeDataFactory::getInstance();;
     
-hashMap.put(HtmlMetaData::getInstance().LABEL.toString(), this->label);
+hashMap->put(HtmlMetaData::getInstance()->LABEL.toString(), this->label);
     
-hashMap.put(htmlMetaAttributeDataFactory.NAME.toString(), this->name);
+hashMap->put(htmlMetaAttributeDataFactory->NAME.toString(), this->name);
     
-hashMap.put(htmlMetaAttributeDataFactory.HTTP_EQUIV.toString(), this->httpEquiv);
+hashMap->put(htmlMetaAttributeDataFactory->HTTP_EQUIV.toString(), this->httpEquiv);
     
-hashMap.put(htmlMetaAttributeDataFactory.CONTENT.toString(), this->content);
+hashMap->put(htmlMetaAttributeDataFactory->CONTENT.toString(), this->content);
     
 
 
@@ -243,9 +249,9 @@ hashMap.put(htmlMetaAttributeDataFactory.CONTENT.toString(), this->content);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = ModDomHelper::createNameValueNodes(document, HtmlMetaData::getInstance().NAME.toString(), this->toHashMap());;
+    Node* node = ModDomHelper::createNameValueNodes(document, HtmlMetaData::getInstance()->NAME.toString(), this->toHashMap());;
     
 
 

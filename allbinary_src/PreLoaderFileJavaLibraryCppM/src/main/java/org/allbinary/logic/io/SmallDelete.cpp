@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,9 +66,9 @@ class SmallDelete
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: std::string fileName;
 
@@ -71,7 +77,7 @@ class SmallDelete
 public: SmallDelete(std::string fileName){
 this->fileName= fileName;
     
-this->string= AbFileSystem::getInstance().readAsString(fileName);
+this->string= AbFileSystem::getInstance()->readAsString(fileName);
     
 }
 
@@ -94,12 +100,12 @@ endIndex= this->string.indexOf(end);
     std::string text = this->string.substring(endIndex, string.size());;
     
 
-    FileOutputStream idFile = FileOutputStream(this->fileName);;
+    FileOutputStream* idFile = new FileOutputStream(this->fileName);;
     
 
-    DataOutputStream idOutData = DataOutputStream(idFile);;
+    DataOutputStream* idOutData = new DataOutputStream(idFile);;
     
-idOutData.writeBytes(text);
+idOutData->writeBytes(text);
     
 
 
@@ -118,13 +124,13 @@ idOutData.writeBytes(text);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().IDLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->IDLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "deleteAtStart", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "deleteAtStart", &e);
     
 
                                     }
@@ -161,12 +167,12 @@ endIndex= this->string.indexOf(end);
     std::string text = this->string.substring(endIndex +end.size(), string.size());;
     
 
-    FileOutputStream idFile = FileOutputStream(this->fileName);;
+    FileOutputStream* idFile = new FileOutputStream(this->fileName);;
     
 
-    DataOutputStream idOutData = DataOutputStream(idFile);;
+    DataOutputStream* idOutData = new DataOutputStream(idFile);;
     
-idOutData.writeBytes(newStart +newText +text);
+idOutData->writeBytes(newStart +newText +text);
     
 
 
@@ -185,13 +191,13 @@ idOutData.writeBytes(newStart +newText +text);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().IDLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->IDLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "deleteAtStart", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "deleteAtStart", &e);
     
 
                                     }

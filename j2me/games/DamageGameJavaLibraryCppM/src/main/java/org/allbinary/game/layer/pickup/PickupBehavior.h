@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -72,44 +78,44 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PickupBehaviorInterface.h"
-#include "PickupProcessorInterface.h"
-#include "PickedUpLayerInterfaceFactoryInterface.h"
-#include "PickedUpLayerType.h"
-#include "PickedUpLayerTypeFactory.h"
-#include "CountedPickedUpLayerInterfaceFactoryInterface.h"
-#include "PickedUpLayerInterface.h"
-#include "CountedPickedUpLayerInterfaceFactory.h"
+        #include "org/allbinary/game/layer/pickup/PickupBehaviorInterface.h"
+#include "org/allbinary/game/layer/pickup/PickupProcessorInterface.h"
+#include "org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h"
+#include "org/allbinary/game/layer/pickup/PickedUpLayerType.h"
+#include "org/allbinary/game/layer/pickup/PickedUpLayerTypeFactory.h"
+#include "org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactoryInterface.h"
+#include "org/allbinary/game/layer/pickup/PickedUpLayerInterface.h"
+#include "org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactory.h"
 
 class PickupBehavior
             : public Object
-        : public PickupBehaviorInterface {
+        , public PickupBehaviorInterface {
 
-    public: static Object* NULL_PICKUP_BEHAVIOR = NullUtil::getInstance().NULL_OBJECT;
+    public: static inline Object* NULL_PICKUP_BEHAVIOR = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static PickupBehavior getNullInstance();
+    public: static PickupBehavior* getNullInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: int32_t countedIndex;
 
-    private: CollidableCompositeLayer ownerLayerInterface;
+    private: CollidableCompositeLayer* ownerLayerInterface;
 
-public: PickupBehavior(CollidableCompositeLayer ownerLayerInterface, int32_t countedIndex);
+public: PickupBehavior(CollidableCompositeLayer* ownerLayerInterface, int32_t countedIndex);
 
-    public: void doPickup(PickupProcessorInterface pickupProcessorInterface);
+    public: void doPickup(PickupProcessorInterface* pickupProcessorInterface);
 
-    public: void doPickupLayer(PickedUpLayerInterface pickupLayerInterface);
+    public: void doPickupLayer(PickedUpLayerInterface* pickupLayerInterface);
 
-    protected: void add(CountedPickedUpLayerInterfaceFactoryInterface countedPickedUpLayerInterfaceFactoryInterface);
+    protected: void add(CountedPickedUpLayerInterfaceFactoryInterface* countedPickedUpLayerInterfaceFactoryInterface);
 
-    protected: void addAt(CountedPickedUpLayerInterfaceFactoryInterface countedPickedUpLayerInterfaceFactoryInterface, int32_t partIndex);
+    protected: void addAt(CountedPickedUpLayerInterfaceFactoryInterface* countedPickedUpLayerInterfaceFactoryInterface, int32_t partIndex);
 
-    public: CountedLayerInterfaceFactoryPart getFirstAvailableCountedLayerInterfaceFactory(std::vector<PickedUpLayerType> pickedUpLayerTypeArray);
+    public: CountedLayerInterfaceFactoryPart* getFirstAvailableCountedLayerInterfaceFactory(std::vector<PickedUpLayerType*> pickedUpLayerTypeArray);
 
                 //@Throws(Exception.constructor)
             
-    public: CountedLayerInterfaceFactoryPart getCountedLayerInterfaceFactoryForSlot(int32_t slotIndex);
+    public: CountedLayerInterfaceFactoryPart* getCountedLayerInterfaceFactoryForSlot(int32_t slotIndex);
 
     public: int32_t getCountedIndex();
 

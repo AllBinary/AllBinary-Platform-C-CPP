@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LAYER_NAMEDINTERFACE_H
         #define ORG_ALLBINARY_LAYER_NAMEDINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,7 +48,7 @@
         
 class NamedInterface {
 
-    std::string getName();
+    public: virtual std::string getName() = 0;
 
 };
 

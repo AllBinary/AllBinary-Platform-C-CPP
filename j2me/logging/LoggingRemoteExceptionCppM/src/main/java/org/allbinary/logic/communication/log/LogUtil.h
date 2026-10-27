@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Throwable.h"
@@ -74,31 +80,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Log.h"
-#include "LogFormatUtil.h"
-#include "XmlRpcRemoteLogClient.h"
+        #include "org/allbinary/logic/communication/log/Log.h"
+#include "org/allbinary/logic/communication/log/LogFormatUtil.h"
+#include "org/allbinary/logic/communication/log/XmlRpcRemoteLogClient.h"
 //ActualPlatform
 /*actual*/ class LogUtil
             : public Object
          {
 
-    private: static LogUtil instance() { return LogUtil(); }
+    private: static LogUtil* instance() { static std::unique_ptr<LogUtil> value(new LogUtil()); return value.get(); }
 
-    /*actual*/ public: static LogUtil getInstance();
+    /*actual*/ public: static LogUtil* getInstance();
 
     private: const std::string MESSAGE = "message";
 
     private: bool isFirstException = true;
 
-    private: TimeDelayHelper timeDelayHelper = TimeDelayHelper(200000);
+    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(200000);
 
-    public: AbeClientInformationInterface abeClientInformation;
+    public: AbeClientInformationInterface* abeClientInformation;
 
 private: LogUtil();
 
-    private: const StringMaker stringBuffer = StringMaker();
+    private: StringMaker* stringBuffer = new StringMaker();
 
-    /*actual*/ public: void putL(Log log);
+    /*actual*/ public: void putL(Log* log);
 
     /*actual*/ public: void putF(std::string specialMessage, Object* anyType, std::string functionName);
 

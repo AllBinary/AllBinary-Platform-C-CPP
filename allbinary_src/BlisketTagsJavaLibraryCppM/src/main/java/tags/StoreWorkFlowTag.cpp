@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Class.h"
         
             #include "java/lang/Exception.h"
@@ -63,17 +69,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HelperTag.h"
+        #include "tags/HelperTag.h"
 //and hidden field removal
 class StoreWorkFlowTag: public HelperTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string viewName;
 
     private: std::string viewFile;
 
-public: StoreWorkFlowTag() : HelperTag(StoreTagWorkFlowHelperFactory()){
+public: StoreWorkFlowTag() : HelperTag(new StoreTagWorkFlowHelperFactory()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -81,10 +87,10 @@ public: StoreWorkFlowTag() : HelperTag(StoreTagWorkFlowHelperFactory()){
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -95,7 +101,7 @@ public: StoreWorkFlowTag() : HelperTag(StoreTagWorkFlowHelperFactory()){
     public: void setName(std::string value){
 this->viewName= value;
     
-this->getPropertiesHashMap().put(TransformInfoData::getInstance().NAME, this->viewName);
+this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->NAME, this->viewName);
     
 }
 
@@ -106,23 +112,23 @@ this->getPropertiesHashMap().put(TransformInfoData::getInstance().NAME, this->vi
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.PROCESS);
+                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.PROCESS);
     
 
                                     }
                                 
 
-    Class* helperClass = this->getHelper().getClass();;
+    Class* helperClass = this->getHelper()->getClass();;
     
 
-    Method method = helperClass.getMethod(commonStrings.PROCESS, 
+    Method* method = helperClass->getMethod(commonStrings.PROCESS, 
                             nullptr);;
     
 
-    Integer result = method.invoke(this->getHelper(), 
+    int32_t result = method->invoke(this->getHelper(), 
                             nullptr);;
     
 
@@ -133,13 +139,13 @@ this->getPropertiesHashMap().put(TransformInfoData::getInstance().NAME, this->vi
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, &e);
     
 
                                     }
@@ -160,10 +166,10 @@ this->getPropertiesHashMap().put(TransformInfoData::getInstance().NAME, this->vi
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, tagStrings.DO_START_TAG);
+                                    this->logUtil->putF(this->commonStrings.START, this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -178,9 +184,9 @@ this->setHelper();
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
-AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
     
 
 
@@ -191,9 +197,9 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 
@@ -202,7 +208,7 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
                         return SKIP_BODY;
     
 }
-*/
+
 }
 
 

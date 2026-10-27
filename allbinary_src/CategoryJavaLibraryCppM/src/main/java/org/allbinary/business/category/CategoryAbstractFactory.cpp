@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,79 +69,79 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryFactoryInterface.h"
-#include "CategoryInterface.h"
-#include "Category.h"
+        #include "org/allbinary/business/category/CategoryFactoryInterface.h"
+#include "org/allbinary/business/category/CategoryInterface.h"
+#include "org/allbinary/business/category/Category.h"
 
 class CategoryAbstractFactory
             : public Object
-        : public CategoryFactoryInterface {
+        , public CategoryFactoryInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
 public: CategoryAbstractFactory(){
 }
 
 
-    public: CategoryInterface getRootInstance(){
+    public: CategoryInterface* getRootInstance(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: CategoryInterface getRootInstance(AbPath categoryAbPath){
+    public: CategoryInterface* getRootInstance(AbPath* categoryAbPath){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: CategoryInterface getRootInstanceFromNode(Node node){
+    public: CategoryInterface* getRootInstanceFromNode(Node* node){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: CategoryInterface getInstance(std::string categoryName){
+    public: CategoryInterface* getInstance(std::string categoryName){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, "getInstance(String)");
+                                    this->logUtil->putF(this->commonStrings->START, this, "getInstance(String)");
     
 
                                     }
                                 
 
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(categoryName);;
+    CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface = dynamic_cast<CategoryPropertiesFactoryInterface*>(new CategoryPropertiesFactory(categoryName));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Category(categoryPropertiesFactoryInterface);
+                        return dynamic_cast<CategoryInterface*>(new Category(categoryPropertiesFactoryInterface));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "getInstance(String, int)", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "getInstance(String, int)", &e);
     
 
                                     }
@@ -151,36 +157,36 @@ public: CategoryAbstractFactory(){
 }
 
 
-    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, std::string categoryName){
+    public: CategoryInterface* getInstance(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, std::string categoryName){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, "getInstance(CategoryInterface, CategoryInterface, String)");
+                                    this->logUtil->putF(this->commonStrings->START, this, "getInstance(CategoryInterface, CategoryInterface, String)");
     
 
                                     }
                                 
 
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(categoryName);;
+    CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface = dynamic_cast<CategoryPropertiesFactoryInterface*>(new CategoryPropertiesFactory(categoryName));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface);
+                        return dynamic_cast<CategoryInterface*>(new Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "getInstance(CategoryInterface, CategoryInterface , String, int)", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "getInstance(CategoryInterface, CategoryInterface , String, int)", &e);
     
 
                                     }
@@ -196,36 +202,36 @@ public: CategoryAbstractFactory(){
 }
 
 
-    public: CategoryInterface getInstance(Node node){
+    public: CategoryInterface* getInstance(Node* node){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, "getInstance(Node)");
+                                    this->logUtil->putF(this->commonStrings->START, this, "getInstance(Node)");
     
 
                                     }
                                 
 
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(node);;
+    CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface = dynamic_cast<CategoryPropertiesFactoryInterface*>(new CategoryPropertiesFactory(node));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Category(categoryPropertiesFactoryInterface);
+                        return dynamic_cast<CategoryInterface*>(new Category(categoryPropertiesFactoryInterface));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "getInstance(Node, int)", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "getInstance(Node, int)", &e);
     
 
                                     }
@@ -241,36 +247,36 @@ public: CategoryAbstractFactory(){
 }
 
 
-    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, Node node){
+    public: CategoryInterface* getInstance(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, Node* node){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, "getInstance(CategoryInterface, CategoryInterface, Node)");
+                                    this->logUtil->putF(this->commonStrings->START, this, "getInstance(CategoryInterface, CategoryInterface, Node)");
     
 
                                     }
                                 
 
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(node);;
+    CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface = dynamic_cast<CategoryPropertiesFactoryInterface*>(new CategoryPropertiesFactory(node));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface);
+                        return dynamic_cast<CategoryInterface*>(new Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put(commonStrings.EXCEPTION, this, "getInstance(CategoryInterface, CategoryInterface, Node, int)", e);
+                                    this->logUtil->put(commonStrings->EXCEPTION, this, "getInstance(CategoryInterface, CategoryInterface, Node, int)", &e);
     
 
                                     }
@@ -286,36 +292,36 @@ public: CategoryAbstractFactory(){
 }
 
 
-    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<Object*, Object*> categoryPropertiesHashMap){
+    public: CategoryInterface* getInstance(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, "getInstance(CategoryInterface, CategoryInterface, HashMap)");
+                                    this->logUtil->putF(this->commonStrings->START, this, "getInstance(CategoryInterface, CategoryInterface, HashMap)");
     
 
                                     }
                                 
 
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(categoryPropertiesHashMap);;
+    CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface = dynamic_cast<CategoryPropertiesFactoryInterface*>(new CategoryPropertiesFactory(categoryPropertiesHashMap));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface);
+                        return dynamic_cast<CategoryInterface*>(new Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORYERROR))
                         
                                     {
-                                    this->logUtil.put(commonStrings.EXCEPTION, this, "getInstance(CategoryInterface, CategoryInterface, HashMap)", e);
+                                    this->logUtil->put(commonStrings->EXCEPTION, this, "getInstance(CategoryInterface, CategoryInterface, HashMap)", &e);
     
 
                                     }

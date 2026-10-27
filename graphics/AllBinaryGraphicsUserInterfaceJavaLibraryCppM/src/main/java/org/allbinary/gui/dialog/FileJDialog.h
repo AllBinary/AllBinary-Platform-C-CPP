@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/thread/ARunnable.h>
 
       
@@ -50,40 +56,40 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JDialog.h"
-#include "FileJDialogListenerInterface.h"
-#include "Frame.h"
-#include "JFileChooser.h"
-#include "ActionListener.h"
-#include "ActionEvent.h"
-#include "GroupLayout.h"
-#include "Short.h"
-#include "EventQueue.h"
-#include "JFrame.h"
+        #include "org/allbinary/gui/dialog/JDialog.h"
+#include "org/allbinary/gui/dialog/FileJDialogListenerInterface.h"
+#include "org/allbinary/gui/dialog/Frame.h"
+#include "org/allbinary/gui/dialog/JFileChooser.h"
+#include "org/allbinary/gui/dialog/ActionListener.h"
+#include "org/allbinary/gui/dialog/ActionEvent.h"
+#include "org/allbinary/gui/dialog/GroupLayout.h"
+#include "org/allbinary/gui/dialog/Short.h"
+#include "org/allbinary/gui/dialog/EventQueue.h"
+#include "org/allbinary/gui/dialog/JFrame.h"
 
 class FileJDialog: public javax::swing::JDialog {
 
     public: static void main(std::vector<std::string> args);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: FileJDialogListenerInterface finishedListenerInterface;
+    private: FileJDialogListenerInterface* finishedListenerInterface;
 
 public: FileJDialog();
 
-public: FileJDialog(java::awt::Frame parent, bool modal);
+public: FileJDialog(java::awt::Frame* parent, bool modal);
 
-    public: void addFinishedListener(FileJDialogListenerInterface finishedListenerInterface);
+    public: void addFinishedListener(FileJDialogListenerInterface* finishedListenerInterface);
 
     private: void initComponents();
 
-    private: void jFileChooser1ActionPerformed(java::awt::event::ActionEvent evt);
+    private: void jFileChooser1ActionPerformed(java::awt::event::ActionEvent* evt);
 
-    public: javax::swing::JFileChooser getJFileChooser1();
+    public: javax::swing::JFileChooser* getJFileChooser1();
 
-    public: void setJFileChooser1(javax::swing::JFileChooser jFileChooser1);
+    public: void setJFileChooser1(javax::swing::JFileChooser* jFileChooser1);
 
-    private: javax::swing::JFileChooser jFileChooser1;
+    private: javax::swing::JFileChooser* jFileChooser1;
 
 };
 

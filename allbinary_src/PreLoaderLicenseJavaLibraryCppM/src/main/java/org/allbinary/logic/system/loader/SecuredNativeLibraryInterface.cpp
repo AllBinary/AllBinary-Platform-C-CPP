@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -43,17 +49,17 @@ class SecuredNativeLibraryInterface {
 
                 //@Throws(Exception.constructor)
             
-    void load()
+    public: virtual void load() = 0;
 
                 //@Throws(Exception.constructor)
             
-    void unload()
+    public: virtual void unload() = 0;
 
-    bool unlock(std::string key)
+    public: virtual bool unlock(std::string key) = 0;
 
-    std::string getLibraryName()
+    public: virtual std::string getLibraryName() = 0;
 
-    std::string getName()
+    public: virtual std::string getName() = 0;
 
 };
 

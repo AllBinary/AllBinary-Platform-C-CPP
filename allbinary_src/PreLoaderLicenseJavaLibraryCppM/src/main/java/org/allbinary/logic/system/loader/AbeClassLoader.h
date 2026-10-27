@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Class.h"
         
             #include "java/lang/ClassLoader.h"
@@ -82,25 +88,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NoClassDefFoundError.h"
+        #include "org/allbinary/logic/system/loader/NoClassDefFoundError.h"
 
 class AbeClassLoader: public ClassLoader {
 
-    private: static Map classes = StdUtil::getInstance().createHashMap();
+    private: static inline Map* classes = StdUtil::getInstance()->createHashMap();
 
-    private: static std::string PATH;
+    private: static inline std::string PATH;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const AbCryptUtil abCryptUtil = AbCryptUtil::getInstance();
+    private: AbCryptUtil* abCryptUtil = AbCryptUtil::getInstance();
 
     private: const std::string LOAD_CLASS = "loadClass";
 
-    private: const std::string ENCRYPTED_EXTENSION = AbPathData::getInstance().EXTENSION_SEP +"abc";
+    private: const std::string ENCRYPTED_EXTENSION = AbPathData::getInstance()->EXTENSION_SEP +"abc";
 
     private: std::string key;
 
-public: AbeClassLoader(ClassLoader parent, std::string key);
+public: AbeClassLoader(ClassLoader* parent, std::string key);
 
     protected: Class* findLoadedClass1(std::string name);
 

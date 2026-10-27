@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -56,15 +62,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SpriteFactoryInterface.h"
+        #include "org/allbinary/game/layer/SpriteFactoryInterface.h"
 
 class SpriteFactory
             : public Object
-        : public SpriteFactoryInterface {
+        , public SpriteFactoryInterface {
 
-    private: static SpriteFactory instance() { return SpriteFactory(); }
+    private: static SpriteFactory* instance() { static std::unique_ptr<SpriteFactory> value(new SpriteFactory()); return value.get(); }
 
-    public: static SpriteFactory getInstance(){
+    public: static SpriteFactory* getInstance(){
 
 
 
@@ -74,14 +80,14 @@ class SpriteFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: Sprite createSprite(Image image, int32_t frameWidth, int32_t frameHeight){
+    public: Sprite* createSprite(Image* image, int32_t frameWidth, int32_t frameHeight){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Sprite(image, frameWidth, frameHeight, image.getWidth() /frameWidth, image.getHeight() /frameHeight);
+                        return new Sprite(image, frameWidth, frameHeight, image->getWidth() /frameWidth, image->getHeight() /frameHeight);
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_NUMBERTEXTFIELDITEMVALIDATOR_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_NUMBERTEXTFIELDITEMVALIDATOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/NumberFormatException.h"
         
             #include "java/lang/Integer.h"
@@ -67,7 +73,7 @@
         
 class NumberTextFieldItemValidator: public ValidatorBase {
 
-    private: ABTextFieldItem textFieldItem;
+    private: ABTextFieldItem* textFieldItem;
 
     private: int32_t min;
 
@@ -75,15 +81,15 @@ class NumberTextFieldItemValidator: public ValidatorBase {
 
     private: int32_t maxChars;
 
-public: NumberTextFieldItemValidator(ABTextFieldItem textFieldItem, int32_t maxChars, int32_t min, int32_t max);
+public: NumberTextFieldItemValidator(ABTextFieldItem* textFieldItem, int32_t maxChars, int32_t min, int32_t max);
 
-    protected: Boolean isNumberValid(Integer value);
+    protected: bool isNumberValid(int32_t value);
 
-    protected: BasicArrayList toNumberVector(Integer value);
+    protected: BasicArrayList* toNumberVector(int32_t value);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
-    public: BasicArrayList toList();
+    public: BasicArrayList* toList();
 
 };
 

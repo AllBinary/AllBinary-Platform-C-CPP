@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -39,7 +45,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LocationPaintable.h"
+        #include "org/allbinary/graphics/paint/LocationPaintable.h"
 
 class StringLocationPaintable: public LocationPaintable {
 
@@ -51,8 +57,8 @@ this->value= value;
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
-graphics.drawString(this->value, x, y, 0);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+graphics->drawString(this->value, x, y, 0);
     
 }
 

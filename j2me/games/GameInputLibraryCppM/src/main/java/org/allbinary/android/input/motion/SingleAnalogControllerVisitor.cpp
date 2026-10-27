@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/input/analog/AnalogLocationInput.h>
 
       
@@ -45,8 +51,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnalogControllerVisitor.h"
-#include "AnalogLocationInputProcessor.h"
+        #include "org/allbinary/android/input/motion/AnalogControllerVisitor.h"
+#include "org/allbinary/android/input/motion/AnalogLocationInputProcessor.h"
 
 class SingleAnalogControllerVisitor: public AnalogControllerVisitor {
 
@@ -58,11 +64,11 @@ this->playerInputId= playerInputId;
 }
 
 
-    public: void process(AllBinaryLayerManager allbinaryLayerManager, AnalogLocationInputProcessor analogLocationInputProcessor){
+    public: void process(AllBinaryLayerManager* allbinaryLayerManager, AnalogLocationInputProcessor* analogLocationInputProcessor){
 
-    AnalogLocationInput analogLocationInput = AnalogLocationInputFactory::getInstance().getInstanceForPlayer(this->playerInputId);;
+    AnalogLocationInput* analogLocationInput = AnalogLocationInputFactory::getInstance()->getInstanceForPlayer(this->playerInputId);;
     
-analogLocationInputProcessor.process(allbinaryLayerManager, analogLocationInput);
+analogLocationInputProcessor->process(allbinaryLayerManager, analogLocationInput);
     
 }
 

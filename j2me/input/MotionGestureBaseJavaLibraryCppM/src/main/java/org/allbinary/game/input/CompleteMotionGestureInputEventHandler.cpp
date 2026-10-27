@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -56,36 +62,36 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CompleteMotionGestureInputEventListener.h"
-#include "CompleteMotionGestureInputEvent.h"
-#include "CompleteMotionGestureInputEventListenerInterface.h"
+        #include "org/allbinary/game/input/CompleteMotionGestureInputEventListener.h"
+#include "org/allbinary/game/input/CompleteMotionGestureInputEvent.h"
+#include "org/allbinary/game/input/CompleteMotionGestureInputEventListenerInterface.h"
 
 class CompleteMotionGestureInputEventHandler: public BasicEventHandler {
 
-    private: static const CompleteMotionGestureInputEventHandler SINGLETON = CompleteMotionGestureInputEventHandler();
+    private: static CompleteMotionGestureInputEventHandler* SINGLETON() { static std::unique_ptr<CompleteMotionGestureInputEventHandler> value(new CompleteMotionGestureInputEventHandler()); return value.get(); }
 
-    public: static CompleteMotionGestureInputEventHandler getInstance(){
+    public: static CompleteMotionGestureInputEventHandler* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CompleteMotionGestureInputEventHandler::SINGLETON;
+                        return CompleteMotionGestureInputEventHandler::SINGLETON();
     
 }
 
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: CompleteMotionGestureInputEventHandler(){
 }
 
 
-    public: void addListener(CompleteMotionGestureInputEventListener completeMotionGestureInputEventListener){
+    public: void addListener(CompleteMotionGestureInputEventListener* completeMotionGestureInputEventListener){
 
-                        if(!this->list.contains(completeMotionGestureInputEventListener))
+                        if(!this->list->contains(completeMotionGestureInputEventListener))
                         
                                     {
-                                    this->list.add(completeMotionGestureInputEventListener);
+                                    this->list->add(completeMotionGestureInputEventListener);
     
 
                                     }
@@ -94,15 +100,15 @@ private: CompleteMotionGestureInputEventHandler(){
 
 
     public: void removeAllListeners(){
-this->list.clear();
+this->list->clear();
     
 super.removeAllListeners();
     
 }
 
 
-    public: void removeListener(EventListenerInterface eventListenerInterface){
-this->list.remove(eventListenerInterface);
+    public: void removeListener(EventListenerInterface* eventListenerInterface){
+this->list->remove(eventListenerInterface);
     
 super.removeListener(eventListenerInterface);
     
@@ -111,26 +117,26 @@ super.removeListener(eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(AllBinaryEventObject eventObject){
+    public: void fireEvent(AllBinaryEventObject* eventObject){
 
 
 
 
                         for (
-    int32_t index = this->list.size();--index >= 0; )
+    int32_t index = this->list->size();--index >= 0; )
         {
 
         try {
             
-    CompleteMotionGestureInputEventListener completeMotionGestureInputEventListener = this->list.objectArray[index];;
+    CompleteMotionGestureInputEventListener* completeMotionGestureInputEventListener = dynamic_cast<CompleteMotionGestureInputEventListener*>(this->list->objectArray[index]);;
     
-completeMotionGestureInputEventListener.onCompleteMotionGestureInputEvent(eventObject);
+completeMotionGestureInputEventListener->onCompleteMotionGestureInputEvent(dynamic_cast<CompleteMotionGestureInputEvent*>(eventObject));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
@@ -143,11 +149,11 @@ super.fireEvent(eventObject);
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
 
-    CompleteMotionGestureInputEventListenerInterface completeMotionGestureInputEventListenerInterface = eventListenerInterface;;
+    CompleteMotionGestureInputEventListenerInterface* completeMotionGestureInputEventListenerInterface = dynamic_cast<CompleteMotionGestureInputEventListenerInterface*>(eventListenerInterface);;
     
-completeMotionGestureInputEventListenerInterface.onCompleteMotionGestureInputEvent(eventObject);
+completeMotionGestureInputEventListenerInterface->onCompleteMotionGestureInputEvent(dynamic_cast<CompleteMotionGestureInputEvent*>(eventObject));
     
 }
 

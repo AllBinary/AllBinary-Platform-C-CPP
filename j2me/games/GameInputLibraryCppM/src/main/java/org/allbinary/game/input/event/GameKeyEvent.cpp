@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/logic/NullUtil.h>
 
       
@@ -48,17 +56,17 @@
         
 class GameKeyEvent: public AllBinaryEventObject {
 
-    public: static GameKeyEvent createEvent(Object* anyType, int32_t sourceId, int32_t key){
+    public: static GameKeyEvent* createEvent(Object* anyType, int32_t sourceId, int32_t key){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameKeyEvent(anyType, sourceId, 0, 0, key, false);
+                        return new GameKeyEvent(anyType, sourceId, 0, 0, key, false);
     
 }
 
 
-    public: static const GameKeyEvent NONE = GameKeyEvent(NullUtil::getInstance().NULL_OBJECT,  -1,  -1,  -1,  -1, false);
+    public: static GameKeyEvent* NONE() { static std::unique_ptr<GameKeyEvent> value(new GameKeyEvent(NullUtil::getInstance()->NULL_OBJECT,  -1,  -1,  -1,  -1, false)); return value.get(); }
 
     private: int32_t sourceId;
 
@@ -124,17 +132,17 @@ this->repeated= repeated;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("\nKey: ");
+stringBuffer->append("\nKey: ");
     
-stringBuffer.appendint(this->getKey());
+stringBuffer->appendint(this->getKey());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

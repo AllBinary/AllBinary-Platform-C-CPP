@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_GRAPHICS_HUD_HUDGRAPHICSPOSITION_H
         #define ORG_ALLBINARY_GAME_GRAPHICS_HUD_HUDGRAPHICSPOSITION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/GPoint.h>
@@ -52,21 +58,21 @@ class HudGraphicsPosition
             : public Object
          {
 
-    public: static const HudGraphicsPosition NULL_HUD_GRAPHICS_POSITION = HudGraphicsPosition(PointFactory::getInstance().ZERO_ZERO, 9);
+    public: static HudGraphicsPosition* NULL_HUD_GRAPHICS_POSITION() { static std::unique_ptr<HudGraphicsPosition> value(new HudGraphicsPosition(PointFactory::getInstance()->ZERO_ZERO, 9)); return value.get(); }
 
     private: int32_t anchor= 0;
 
-    private: GPoint point = PointFactory::getInstance().ZERO_ZERO;
+    private: GPoint* point = PointFactory::getInstance()->ZERO_ZERO;
 
-public: HudGraphicsPosition(GPoint point, int32_t anchor);
+public: HudGraphicsPosition(GPoint* point, int32_t anchor);
 
     public: int32_t getAnchor();
 
     private: void setAnchor(int32_t anchor);
 
-    public: GPoint getPoint();
+    public: GPoint* getPoint();
 
-    public: void setPoint(GPoint point);
+    public: void setPoint(GPoint* point);
 
 };
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -68,20 +74,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SelectionHudPaintable.h"
-#include "RTSLayer.h"
+        #include "org/allbinary/game/layer/SelectionHudPaintable.h"
+#include "org/allbinary/game/layer/RTSLayer.h"
 
 class MultiSelectPaintable: public SelectionHudPaintable {
 
-    private: const BasicArrayList rootNameList = BasicArrayListD();
+    private: BasicArrayList* rootNameList = new BasicArrayListD();
 
-    private: std::vector<char> totalCharArray = NullUtil::getInstance().NULL_CHAR_ARRAY;
+    private: std::vector<char> totalCharArray = NullUtil::getInstance()->NULL_CHAR_ARRAY;
 
-    private: std::string rootNamesString = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string rootNamesString = StringUtil::getInstance()->EMPTY_STRING;
 
     private: const std::string TOTAL = "Total Selected: ";
 
-    private: const int32_t backgroundColor = BasicColorFactory::getInstance().GREY.intValue();
+    private: const int32_t backgroundColor = BasicColorFactory::getInstance()->GREY.intValue();
 
     private: int32_t totalWidth= 0;
 
@@ -89,13 +95,13 @@ class MultiSelectPaintable: public SelectionHudPaintable {
 
 public: MultiSelectPaintable();
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
-    public: void update(BasicArrayList list);
+    public: void update(BasicArrayList* list);
 
     private: void clear();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

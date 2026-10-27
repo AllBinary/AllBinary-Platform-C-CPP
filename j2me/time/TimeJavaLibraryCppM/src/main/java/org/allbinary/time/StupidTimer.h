@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_TIME_STUPIDTIMER_H
         #define ORG_ALLBINARY_TIME_STUPIDTIMER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -53,25 +59,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TimeDelayHelper.h"
+        #include "org/allbinary/time/TimeDelayHelper.h"
 
 class StupidTimer
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const NullUtil nullUtil = NullUtil::getInstance();
+    protected: NullUtil* nullUtil = NullUtil::getInstance();
 
-    private: const ThreadObjectUtil threadObjectUtil = ThreadObjectUtil::getInstance();
+    private: ThreadObjectUtil* threadObjectUtil = ThreadObjectUtil::getInstance();
 
-    private: bool visitBool(Visitor visitorInterface);
+    private: bool visitBool(Visitor* visitorInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(Visitor visitorInterface, TimeDelayHelper timeDelayHelper);
+    public: void visit(Visitor* visitorInterface, TimeDelayHelper* timeDelayHelper);
 
                 //@Throws(Exception.constructor)
             

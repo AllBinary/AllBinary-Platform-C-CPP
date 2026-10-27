@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,26 +52,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GraphicsInterface.h"
-#include "NullGL10.h"
+        #include "org/allbinary/device/GraphicsInterface.h"
+#include "org/allbinary/device/NullGL10.h"
 
 class OpenGLESGraphics
             : public Object
-        : public OpenGLSurfaceChangedInterface, public GraphicsInterface {
+        , public OpenGLSurfaceChangedInterface, public GraphicsInterface {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: GL10 gl = NullGL10::NULL_GL10;
+    protected: GL10* gl = NullGL10::NULL_GL10;
 
 : OpenGLESGraphics(){
 }
 
 
-    public: void updateGL(GL gl){
+    public: void updateGL(GL* gl){
 }
 
 
-    public: void set(GL gl){
+    public: void set(GL* gl){
 }
 
 
@@ -89,7 +95,7 @@ class OpenGLESGraphics
 }
 
 
-    public: GL10 getGlP(){
+    public: GL10* getGlP(){
 
 
 
@@ -99,11 +105,11 @@ class OpenGLESGraphics
 }
 
 
-    public: void setFontDebug(Font font, FontDebugBase fontDebug){
+    public: void setFontDebug(Font* font, FontDebugBase* fontDebug){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

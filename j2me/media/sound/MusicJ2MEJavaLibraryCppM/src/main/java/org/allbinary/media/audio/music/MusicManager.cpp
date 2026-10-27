@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -84,31 +90,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        //#include "MusicManagerPlayerListener.h"
+        //#include "org/allbinary/media/audio/music/MusicManagerPlayerListener.h"
 
 class MusicManager
             : public Object
          {
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const CommonSeps commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps = CommonSeps::getInstance();
 
-    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
+    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
+    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-    private: const PlayerStateUtil playerStateUtil = PlayerStateUtil::getInstance();
+    private: PlayerStateUtil* playerStateUtil = PlayerStateUtil::getInstance();
 
-    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(0);
+    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(0);
 //Handle Media ending for Avian
 //inner= member=true isStatic=
 class MusicManagerPlayerListener
             : public Object
-        : public PlayerListener {
+        , public PlayerListener {
 
-    public: void playerUpdate(Player player, std::string event, Object* eventData){
-PreLogUtil::put(event, this, commonStrings.PROCESS);
+    public: void playerUpdate(Player* player, std::string event, Object* eventData){
+PreLogUtil::put(event, this, commonStrings->PROCESS);
     
 
                         if(event == PlayerListener::END_OF_MEDIA || event == PlayerListener::STOPPED || event == PlayerListener::CLOSED)
@@ -125,13 +131,13 @@ PreLogUtil::put(event, this, commonStrings.PROCESS);
 };
 
             
-    private: const PlayerListener playerListener = MusicManagerPlayerListener();
+    private: PlayerListener* playerListener = new MusicManagerPlayerListener();
 
     private: const std::string PLAY = "Play ";
 
     private: const std::string SONG = " for: ";
 
-    private: const std::string NEXT_SONG = CommonLabels::getInstance().NEXT +" Song: ";
+    private: const std::string NEXT_SONG = CommonLabels::getInstance()->NEXT +" Song: ";
 
     private: const std::string STOPPING = "Stopping Current Song: ";
 
@@ -143,11 +149,11 @@ PreLogUtil::put(event, this, commonStrings.PROCESS);
 
     private: const std::string ALREADY_ENDED = "Last Song already ended: ";
 
-    private: BasicArrayList songList;
+    private: BasicArrayList* songList;
 
-    private: Sound currentSongSound = NoSound::getInstance();
+    private: Sound* currentSongSound = NoSound::getInstance();
 
-    private: Sound nextSongSound = NoSound::getInstance();
+    private: Sound* nextSongSound = NoSound::getInstance();
 
     private: bool reset= false;
 
@@ -155,7 +161,7 @@ PreLogUtil::put(event, this, commonStrings.PROCESS);
 
     private: bool stopped = true;
 
-public: MusicManager(Class* musicServiceClass, BasicArrayList songList){
+public: MusicManager(Class* musicServiceClass, BasicArrayList* songList){
 this->songList= songList;
     
 }
@@ -167,7 +173,7 @@ this->songList= songList;
                         
                                     {
                                     
-    Sound randomSongSound = this->basicArrayListUtil.getRandom(this->songList);;
+    Sound* randomSongSound = dynamic_cast<Sound*>(this->basicArrayListUtil->getRandom(this->songList));;
     
 this->nextSong(randomSongSound, 0, 0);
     
@@ -179,8 +185,8 @@ this->process();
 }
 
 
-    public: void nextSong(Sound nextSongSound, int32_t leftVolume, int32_t rightVolume){
-PreLogUtil::put(StringMaker().append(NEXT_SONG).append(nextSongSound.getResource()).toString(), this, this->commonStrings.PROCESS);
+    public: void nextSong(Sound* nextSongSound, int32_t leftVolume, int32_t rightVolume){
+PreLogUtil::put((new StringMaker())->append(NEXT_SONG)->append(nextSongSound->getResource())->toString(), this, this->commonStrings->PROCESS);
     
 this->nextSongSound= nextSongSound;
     
@@ -214,7 +220,7 @@ this->reset= true;
                                     }
                                 
 
-                        if(this->songList.size() == 0)
+                        if(this->songList->size() == 0)
                         
                                     {
                                     
@@ -227,7 +233,7 @@ this->reset= true;
                                     }
                                 
 
-                        if((this->timeDelayHelper.isTime(this->gameTickTimeDelayHelper.startTime) && !this->noDuration) || this->reset)
+                        if((this->timeDelayHelper->isTime(this->gameTickTimeDelayHelper->startTime) && !this->noDuration) || this->reset)
                         
                                     {
                                     this->reset= false;
@@ -235,10 +241,10 @@ this->reset= true;
 this->noDuration= false;
     
 
-    Sound endingCurrentSongSound = this->currentSongSound;;
+    Sound* endingCurrentSongSound = this->currentSongSound;;
     
 
-    Sound nextSongSound = this->nextSongSound;;
+    Sound* nextSongSound = this->nextSongSound;;
     
 this->nextSongSound= NoSound::getInstance();
     
@@ -246,7 +252,7 @@ this->nextSongSound= NoSound::getInstance();
                         if(nextSongSound == NoSound::getInstance())
                         
                                     {
-                                    this->currentSongSound= BasicArrayListUtil::getInstance().getRandom(this->songList);
+                                    this->currentSongSound= dynamic_cast<Sound*>(BasicArrayListUtil::getInstance()->getRandom(this->songList));
     
 
                                     }
@@ -258,12 +264,12 @@ this->nextSongSound= NoSound::getInstance();
                         }
                             
 
-    Sound startingCurrentSongSound = this->currentSongSound;;
+    Sound* startingCurrentSongSound = this->currentSongSound;;
     
 
-    int64_t duration = this->currentSongSound.getDuration();;
+    int64_t duration = this->currentSongSound->getDuration();;
     
-this->timeDelayHelper.delay= static_cast<int32_t>(duration);
+this->timeDelayHelper->delay= static_cast<int32_t>(duration);
     
 
                         if(duration <= 0)
@@ -272,9 +278,9 @@ this->timeDelayHelper.delay= static_cast<int32_t>(duration);
                                     
     std::string NO_DURATION_FOR = "No Duration for: ";;
     
-PreLogUtil::put(StringMaker().append(NO_DURATION_FOR).append(this->currentSongSound.getResource()).toString(), this, this->commonStrings.PROCESS);
+PreLogUtil::put((new StringMaker())->append(NO_DURATION_FOR)->append(this->currentSongSound->getResource())->toString(), this, this->commonStrings->PROCESS);
     
-this->currentSongSound.getPlayerP().addPlayerListener(playerListener);
+this->currentSongSound->getPlayerP()->addPlayerListener(playerListener);
     
 this->noDuration= true;
     
@@ -286,14 +292,14 @@ this->noDuration= true;
                         
                                     {
                                     
-                        if(endingCurrentSongSound == startingCurrentSongSound && endingCurrentSongSound.getPlayerP().getState() == Player::STARTED)
+                        if(endingCurrentSongSound == startingCurrentSongSound && endingCurrentSongSound->getPlayerP()->getState() == Player::STARTED)
                         
                                     {
-                                    PreLogUtil::put(StringMaker().append(this->ALREADY_PLAYING).append(endingCurrentSongSound.getResource()).toString(), this, this->commonStrings.PROCESS);
+                                    PreLogUtil::put((new StringMaker())->append(this->ALREADY_PLAYING)->append(endingCurrentSongSound->getResource())->toString(), this, this->commonStrings->PROCESS);
     
-PreLogUtil::put(StringMaker().append(this->STOPPING).append(endingCurrentSongSound.getResource()).append(this->SONG).appendlong(duration).toString(), this, this->commonStrings.PROCESS);
+PreLogUtil::put((new StringMaker())->append(this->STOPPING)->append(endingCurrentSongSound->getResource())->append(this->SONG)->appendlong(duration)->toString(), this, this->commonStrings->PROCESS);
     
-endingCurrentSongSound.getPlayerP().stop();
+endingCurrentSongSound->getPlayerP()->stop();
     
 this->waitForStateChange(endingCurrentSongSound, startingCurrentSongSound);
     
@@ -302,12 +308,12 @@ this->waitForStateChange(endingCurrentSongSound, startingCurrentSongSound);
                                 
                         else {
                             
-                        if(endingCurrentSongSound.getPlayerP().getState() == Player::STARTED)
+                        if(endingCurrentSongSound->getPlayerP()->getState() == Player::STARTED)
                         
                                     {
-                                    PreLogUtil::put(StringMaker().append(this->STOPPING).append(endingCurrentSongSound.getResource()).append(this->SONG).appendlong(duration).toString(), this, this->commonStrings.PROCESS);
+                                    PreLogUtil::put((new StringMaker())->append(this->STOPPING)->append(endingCurrentSongSound->getResource())->append(this->SONG)->appendlong(duration)->toString(), this, this->commonStrings->PROCESS);
     
-endingCurrentSongSound.getPlayerP().stop();
+endingCurrentSongSound->getPlayerP()->stop();
     
 this->waitForStateChange(endingCurrentSongSound, startingCurrentSongSound);
     
@@ -315,20 +321,20 @@ this->waitForStateChange(endingCurrentSongSound, startingCurrentSongSound);
                                     }
                                 
                         else {
-                            PreLogUtil::put(StringMaker().append(this->ALREADY_ENDED).append(this->PLAY).append(startingCurrentSongSound.getResource()).toString(), this, this->commonStrings.PROCESS);
+                            PreLogUtil::put((new StringMaker())->append(this->ALREADY_ENDED)->append(this->PLAY)->append(startingCurrentSongSound->getResource())->toString(), this, this->commonStrings->PROCESS);
     
 
                         if(AvianUtil::isAvian())
                         
                                     {
-                                    endingCurrentSongSound.getPlayerP().stop();
+                                    endingCurrentSongSound->getPlayerP()->stop();
     
-startingCurrentSongSound.getPlayerP().stop();
+startingCurrentSongSound->getPlayerP()->stop();
     
 
                                     }
                                 
-startingCurrentSongSound.getPlayerP().start();
+startingCurrentSongSound->getPlayerP()->start();
     
 
                         }
@@ -340,9 +346,9 @@ startingCurrentSongSound.getPlayerP().start();
                                     }
                                 
                         else {
-                            PreLogUtil::put(StringMaker().append(this->PLAY).append(this->currentSongSound.getResource()).append(this->SONG).appendlong(duration).toString(), this, this->commonStrings.PROCESS);
+                            PreLogUtil::put((new StringMaker())->append(this->PLAY)->append(this->currentSongSound->getResource())->append(this->SONG)->appendlong(duration)->toString(), this, this->commonStrings->PROCESS);
     
-this->currentSongSound.getPlayerP().start();
+this->currentSongSound->getPlayerP()->start();
     
 
                         }
@@ -352,21 +358,21 @@ this->currentSongSound.getPlayerP().start();
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    std::string resource = StringUtil::getInstance().EMPTY_STRING;;
+    std::string resource = StringUtil::getInstance()->EMPTY_STRING;;
     
 
                         if(this->currentSongSound != NoSound::getInstance())
                         
                                     {
-                                    resource= this->currentSongSound.getResource();
+                                    resource= this->currentSongSound->getResource();
     
 
                                     }
                                 
-PreLogUtil::putOE(this->commonStrings.EXCEPTION_LABEL +resource, this, this->commonStrings.PROCESS, e);
+PreLogUtil::putOE(this->commonStrings->EXCEPTION_LABEL +resource, this, this->commonStrings->PROCESS, &e);
     
 }
 
@@ -375,19 +381,19 @@ PreLogUtil::putOE(this->commonStrings.EXCEPTION_LABEL +resource, this, this->com
 
                 //@Throws(Exception.constructor)
             
-    private: void waitForStateChange(Sound endingCurrentSongSound, Sound startingCurrentSongSound){
+    private: void waitForStateChange(Sound* endingCurrentSongSound, Sound* startingCurrentSongSound){
 
-        while(endingCurrentSongSound.getPlayerP().getState() == Player::STARTED)
+        while(endingCurrentSongSound->getPlayerP()->getState() == Player::STARTED)
         {
-PreLogUtil::put(this->WAITING_FOR_MEDIA_TO_END, this, this->commonStrings.PROCESS);
+PreLogUtil::put(this->WAITING_FOR_MEDIA_TO_END, this, this->commonStrings->PROCESS);
     
 Thread::sleep(100);
     
 }
 
-PreLogUtil::put(StringMaker().append(this->playerStateUtil.convert(endingCurrentSongSound.getPlayerP().getState())).append(this->commonSeps.SPACE).append(this->PLAY).append(startingCurrentSongSound.getResource()).toString(), this, this->commonStrings.PROCESS);
+PreLogUtil::put((new StringMaker())->append(this->playerStateUtil->convert(endingCurrentSongSound->getPlayerP()->getState()))->append(this->commonSeps->SPACE)->append(this->PLAY)->append(startingCurrentSongSound->getResource())->toString(), this, this->commonStrings->PROCESS);
     
-startingCurrentSongSound.getPlayerP().start();
+startingCurrentSongSound->getPlayerP()->start();
     
 }
 
@@ -398,7 +404,7 @@ startingCurrentSongSound.getPlayerP().start();
 
         try {
             
-    Sound currentSongSound = this->currentSongSound;;
+    Sound* currentSongSound = this->currentSongSound;;
     
 
                         if(currentSongSound != NoSound::getInstance())
@@ -406,34 +412,34 @@ startingCurrentSongSound.getPlayerP().start();
                                     {
                                     this->stopped= true;
     
-PreLogUtil::put(StringMaker().append(this->ENDING).append(currentSongSound.getResource()).toString(), this, this->commonStrings.PROCESS);
+PreLogUtil::put((new StringMaker())->append(this->ENDING)->append(currentSongSound->getResource())->toString(), this, this->commonStrings->PROCESS);
     
-currentSongSound.getPlayerP().stop();
+currentSongSound->getPlayerP()->stop();
     
 
                                     }
                                 
-this->timeDelayHelper.setStartTime(0);
+this->timeDelayHelper->setStartTime(0);
     
-PreLogUtil::put(StringMaker().append(this->commonStrings.END).append(StringUtil::getInstance().toString(currentSongSound)).toString(), this, this->commonStrings.END);
+PreLogUtil::put((new StringMaker())->append(this->commonStrings->END)->append(StringUtil::getInstance()->toString(currentSongSound))->toString(), this, this->commonStrings->END);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    std::string resource = StringUtil::getInstance().EMPTY_STRING;;
+    std::string resource = StringUtil::getInstance()->EMPTY_STRING;;
     
 
                         if(currentSongSound != NoSound::getInstance())
                         
                                     {
-                                    resource= currentSongSound.getResource();
+                                    resource= currentSongSound->getResource();
     
 
                                     }
                                 
-PreLogUtil::putOE(this->commonStrings.EXCEPTION_LABEL +resource, this, this->commonStrings.END, e);
+PreLogUtil::putOE(this->commonStrings->EXCEPTION_LABEL +resource, this, this->commonStrings->END, &e);
     
 }
 

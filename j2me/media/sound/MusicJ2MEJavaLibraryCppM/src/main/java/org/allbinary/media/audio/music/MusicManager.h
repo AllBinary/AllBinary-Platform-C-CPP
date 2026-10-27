@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGER_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -87,41 +93,41 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        //#include "MusicManagerPlayerListener.h"
+        //#include "org/allbinary/media/audio/music/MusicManagerPlayerListener.h"
 
 class MusicManager
             : public Object
          {
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const CommonSeps commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps = CommonSeps::getInstance();
 
-    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
+    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
+    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-    private: const PlayerStateUtil playerStateUtil = PlayerStateUtil::getInstance();
+    private: PlayerStateUtil* playerStateUtil = PlayerStateUtil::getInstance();
 
-    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(0);
+    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(0);
 //Handle Media ending for Avian
 //inner= member=true isStatic=
 class MusicManagerPlayerListener
             : public Object
-        : public PlayerListener {
+        , public PlayerListener {
 
-    public: void playerUpdate(Player player, std::string event, Object* eventData);
+    public: void playerUpdate(Player* player, std::string event, Object* eventData);
 
 };
 
             
-    private: const PlayerListener playerListener = MusicManagerPlayerListener();
+    private: PlayerListener* playerListener = new MusicManagerPlayerListener();
 
     private: const std::string PLAY = "Play ";
 
     private: const std::string SONG = " for: ";
 
-    private: const std::string NEXT_SONG = CommonLabels::getInstance().NEXT +" Song: ";
+    private: const std::string NEXT_SONG = CommonLabels::getInstance()->NEXT +" Song: ";
 
     private: const std::string STOPPING = "Stopping Current Song: ";
 
@@ -133,11 +139,11 @@ class MusicManagerPlayerListener
 
     private: const std::string ALREADY_ENDED = "Last Song already ended: ";
 
-    private: BasicArrayList songList;
+    private: BasicArrayList* songList;
 
-    private: Sound currentSongSound = NoSound::getInstance();
+    private: Sound* currentSongSound = NoSound::getInstance();
 
-    private: Sound nextSongSound = NoSound::getInstance();
+    private: Sound* nextSongSound = NoSound::getInstance();
 
     private: bool reset= false;
 
@@ -145,11 +151,11 @@ class MusicManagerPlayerListener
 
     private: bool stopped = true;
 
-public: MusicManager(Class* musicServiceClass, BasicArrayList songList);
+public: MusicManager(Class* musicServiceClass, BasicArrayList* songList);
 
     public: void startNewSong();
 
-    public: void nextSong(Sound nextSongSound, int32_t leftVolume, int32_t rightVolume);
+    public: void nextSong(Sound* nextSongSound, int32_t leftVolume, int32_t rightVolume);
 
     public: void reset();
 
@@ -157,7 +163,7 @@ public: MusicManager(Class* musicServiceClass, BasicArrayList songList);
 
                 //@Throws(Exception.constructor)
             
-    private: void waitForStateChange(Sound endingCurrentSongSound, Sound startingCurrentSongSound);
+    private: void waitForStateChange(Sound* endingCurrentSongSound, Sound* startingCurrentSongSound);
 
                 //@Throws(Exception.constructor)
             

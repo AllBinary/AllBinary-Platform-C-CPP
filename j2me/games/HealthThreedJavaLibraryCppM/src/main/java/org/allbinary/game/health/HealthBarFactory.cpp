@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,10 +55,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HealthBar.h"
-#include "HealthBarTwodAnimation.h"
-#include "Health.h"
-#include "HealthBarAnimationInterfaceFactory.h"
+        #include "org/allbinary/game/health/HealthBar.h"
+#include "org/allbinary/game/health/HealthBarTwodAnimation.h"
+#include "org/allbinary/game/health/Health.h"
+#include "org/allbinary/game/health/HealthBarAnimationInterfaceFactory.h"
 
 class HealthBarFactory
             : public Object
@@ -60,22 +66,22 @@ class HealthBarFactory
 
                 //@Throws(Exception.constructor)
             
-    public: HealthBar getInstance(AllBinaryLayer layerInterface, Health healthInterface, int32_t location, int32_t direction){
+    public: HealthBar* getInstance(AllBinaryLayer* layerInterface, Health* healthInterface, int32_t location, int32_t direction){
 
-                        if(OpenGLFeatureUtil::getInstance().isAnyThreed())
+                        if(OpenGLFeatureUtil::getInstance()->isAnyThreed())
                         
                                     {
                                     
-    FeaturedAnimationInterfaceFactoryInterfaceFactory featuredAnimationInterfaceFactoryInterfaceFactory = FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance();;
+    FeaturedAnimationInterfaceFactoryInterfaceFactory* featuredAnimationInterfaceFactoryInterfaceFactory = FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance();;
     
 
-    HealthBarAnimationInterfaceFactory healthBarAnimationInterfaceFactory = featuredAnimationInterfaceFactoryInterfaceFactory.get(Health::NAME);;
+    HealthBarAnimationInterfaceFactory* healthBarAnimationInterfaceFactory = dynamic_cast<HealthBarAnimationInterfaceFactory*>(featuredAnimationInterfaceFactoryInterfaceFactory->get(Health::NAME));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HealthBar(layerInterface, healthInterface, healthBarAnimationInterfaceFactory.getInstanceByLocation(layerInterface, location), direction);
+                        return new HealthBar(layerInterface, healthInterface, healthBarAnimationInterfaceFactory->getInstanceByLocation(layerInterface, location), direction);
     
 
                                     }
@@ -85,7 +91,7 @@ class HealthBarFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HealthBar(layerInterface, healthInterface, HealthBarTwodAnimation(layerInterface, location), direction);
+                        return new HealthBar(layerInterface, healthInterface, new HealthBarTwodAnimation(layerInterface, location), direction);
     
 
                         }

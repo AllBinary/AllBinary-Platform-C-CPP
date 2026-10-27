@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/EventListener.h>
@@ -41,13 +47,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "EmailEvent.h"
+        #include "org/allbinary/logic/communication/smtp/event/EmailEvent.h"
 
 class UserEmailEventListenerInterface: public EventListener {
 
                 //@Throws(Exception.constructor)
             
-    void onEmailSendRequest(EmailEvent userEmailInfoEvent)
+    public: virtual void onEmailSendRequest(EmailEvent* userEmailInfoEvent) = 0;
 
 };
 

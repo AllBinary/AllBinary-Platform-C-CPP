@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTOR_CIRCLEFILLEDANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_VECTOR_CIRCLEFILLEDANIMATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -58,11 +64,11 @@ class CircleFilledAnimation: public Animation, public ColorCompositeInterface {
 
     private: int32_t height;
 
-public: CircleFilledAnimation(int32_t width, int32_t height, BasicColor basicColor);
+public: CircleFilledAnimation(int32_t width, int32_t height, BasicColor* basicColor);
 
     public: void nextFrame();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
 };
 

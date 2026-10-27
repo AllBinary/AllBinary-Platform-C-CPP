@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -59,42 +65,42 @@ class OpenGLImageUtilBase
             : public Object
          {
 
-    public: OpenGLBitmap paint(OpenGLBitmap alphaBitmap, OpenGLBitmap originalBitmap, int32_t index){
+    public: OpenGLBitmap* paint(OpenGLBitmap* alphaBitmap, OpenGLBitmap* originalBitmap, int32_t index){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: OpenGLBitmap paint(OpenGLBitmap colorBitmap, OpenGLBitmap originalBitmap, int32_t alpha, BasicColor basicColor){
+    public: OpenGLBitmap* paint(OpenGLBitmap* colorBitmap, OpenGLBitmap* originalBitmap, int32_t alpha, BasicColor* basicColor){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
                 //@Throws(IOException.constructor)
             
-    public: OpenGLBitmap createImage(std::string name){
+    public: OpenGLBitmap* createImage(std::string name){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: OpenGLBitmap createImageFromInputStream(InputStream inputStream){
+    public: OpenGLBitmap* createImageFromInputStream(InputStream* inputStream){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

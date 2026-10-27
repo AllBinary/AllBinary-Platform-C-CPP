@@ -6,6 +6,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/awt.h>
@@ -32,16 +38,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageUtil.h"
-#include "Graphics2D.h"
+        #include "org/allbinary/media/image/ImageUtil.h"
+#include "org/allbinary/media/image/Graphics2D.h"
 
 class BufferedImageUtil2
             : public Object
          {
 
-    private: static BufferedImageUtil2 instance() { return BufferedImageUtil2(); }
+    private: static BufferedImageUtil2* instance() { static std::unique_ptr<BufferedImageUtil2> value(new BufferedImageUtil2()); return value.get(); }
 
-    public: static BufferedImageUtil2 getInstance(){
+    public: static BufferedImageUtil2* getInstance(){
 
 
 
@@ -51,9 +57,9 @@ class BufferedImageUtil2
 }
 
 
-    private: const ImageUtil imageUtil = ImageUtil::getInstance();
+    private: ImageUtil* imageUtil = ImageUtil::getInstance();
 
-    public: BufferedImage createSpriteImage(std::vector<BufferedImage> bufferedImageArray){
+    public: BufferedImage* createSpriteImage(std::vector<BufferedImage*> bufferedImageArray){
 
     int32_t columns = bufferedImageArray.size();;
     
@@ -84,12 +90,12 @@ rows= (bufferedImageArray.size() /columns);
                                     }
                                 
 
-    BufferedImage bufferedImage = this->imageUtil.create(bufferedImageArray[0].getWidth(
+    BufferedImage* bufferedImage = this->imageUtil->create(bufferedImageArray[0].getWidth(
                             nullptr) *columns, bufferedImageArray[0].getHeight(
                             nullptr) *rows);;
     
 
-    Graphics2D g = bufferedImage.createGraphics();;
+    Graphics2D* g = bufferedImage->createGraphics();;
     
 
     int32_t columnIndex = 0;;
@@ -115,7 +121,7 @@ columnIndex= 0;
 
                                     }
                                 
-g.drawImage(bufferedImageArray[index], bufferedImageArray[index].getWidth(
+g->drawImage(bufferedImageArray[index], bufferedImageArray[index].getWidth(
                             nullptr) *columnIndex, bufferedImageArray[index].getHeight(
                             nullptr) *rowIndex, bufferedImageArray[index].getWidth(
                             nullptr), bufferedImageArray[index].getHeight(
@@ -126,7 +132,7 @@ columnIndex++;
     
 }
 
-g.dispose();
+g->dispose();
     
 
 

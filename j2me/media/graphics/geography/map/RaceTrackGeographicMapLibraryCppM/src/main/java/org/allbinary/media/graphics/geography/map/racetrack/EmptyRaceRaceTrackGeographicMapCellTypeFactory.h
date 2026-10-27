@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_EMPTYRACERACETRACKGEOGRAPHICMAPCELLTYPEFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_EMPTYRACERACETRACKGEOGRAPHICMAPCELLTYPEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/string/CommonStrings.h>
 
       
@@ -45,14 +51,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RaceTrackGeographicMapCellTypeFactory.h"
-#include "RaceTrackGeographicMapCellType.h"
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellTypeFactory.h"
+#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellType.h"
 
 class EmptyRaceRaceTrackGeographicMapCellTypeFactory: public RaceTrackGeographicMapCellTypeFactory {
 
-    private: static const EmptyRaceRaceTrackGeographicMapCellTypeFactory instanceC = EmptyRaceRaceTrackGeographicMapCellTypeFactory();
+    private: static EmptyRaceRaceTrackGeographicMapCellTypeFactory* instanceC() { static std::unique_ptr<EmptyRaceRaceTrackGeographicMapCellTypeFactory> value(new EmptyRaceRaceTrackGeographicMapCellTypeFactory()); return value.get(); }
 
-    public: static EmptyRaceRaceTrackGeographicMapCellTypeFactory getInstance();
+    public: static EmptyRaceRaceTrackGeographicMapCellTypeFactory* getInstance();
 
 private: EmptyRaceRaceTrackGeographicMapCellTypeFactory();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -46,9 +52,9 @@ class OpenGLESImageDraw
             : public Object
          {
 
-    private: static OpenGLESImageDraw instance() { return OpenGLESImageDraw(); }
+    private: static OpenGLESImageDraw* instance() { static std::unique_ptr<OpenGLESImageDraw> value(new OpenGLESImageDraw()); return value.get(); }
 
-    public: static OpenGLESImageDraw getInstance(){
+    public: static OpenGLESImageDraw* getInstance(){
 
 
 
@@ -58,11 +64,11 @@ class OpenGLESImageDraw
 }
 
 
-    public: void drawRegion(GL10 gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z){
+    public: void drawRegion(GL10* gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z){
 }
 
 
-    public: void draw(GL10 gl, int32_t x, int32_t y, int32_t z){
+    public: void draw(GL10* gl, int32_t x, int32_t y, int32_t z){
 }
 
 

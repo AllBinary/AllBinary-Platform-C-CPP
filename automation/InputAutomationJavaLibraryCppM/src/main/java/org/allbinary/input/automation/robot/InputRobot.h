@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_INPUTROBOT_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_INPUTROBOT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,67 +72,67 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputRobotInterface.h"
-#include "Robot.h"
-#include "GraphicsDevice.h"
-#include "MouseInfo.h"
-#include "Point.h"
-#include "Rectangle.h"
-#include "Color.h"
+        #include "org/allbinary/input/automation/robot/InputRobotInterface.h"
+#include "org/allbinary/input/automation/robot/Robot.h"
+#include "org/allbinary/input/automation/robot/GraphicsDevice.h"
+#include "org/allbinary/input/automation/robot/MouseInfo.h"
+#include "org/allbinary/input/automation/robot/Point.h"
+#include "org/allbinary/input/automation/robot/Rectangle.h"
+#include "org/allbinary/input/automation/robot/Color.h"
 
 class InputRobot
             : public Object
-        : public InputRobotInterface {
+        , public InputRobotInterface {
 
-    public: static const std::string NAME = "Java Robot";
+    public: static inline const std::string NAME = "Java Robot";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: Robot robot;
+    private: Robot* robot;
 
-public: InputRobot(GraphicsDevice graphicsDevice);
+public: InputRobot(GraphicsDevice* graphicsDevice);
 
     public: std::string getName();
 
-    public: HelpSet getHelpSet();
+    public: HelpSet* getHelpSet();
 
-    public: Point getMousePoint();
+    public: Point* getMousePoint();
 
                 //@Throws(Exception.constructor)
             
-    public: void mouseMoveToTarget(Rectangle rectangle, Integer x, Integer y);
+    public: void mouseMoveToTarget(Rectangle* rectangle, int32_t x, int32_t y);
 
-    public: void mouseMove(Point point);
+    public: void mouseMove(Point* point);
 
     public: void mouseMove(int32_t x, int32_t y);
 
                 //@Throws(Exception.constructor)
             
-    public: void mouseMoveToTarget(Rectangle rectangle);
+    public: void mouseMoveToTarget(Rectangle* rectangle);
 
-    public: BufferedImage createScreenCapture(Rectangle screenRect);
+    public: BufferedImage* createScreenCapture(Rectangle* screenRect);
 
-    public: void delay(Integer ms);
+    public: void delay(int32_t ms);
 
-    public: Integer getAutoDelay();
+    public: int32_t getAutoDelay();
 
-    public: Color getPixelColor(Integer x, Integer y);
+    public: Color* getPixelColor(int32_t x, int32_t y);
 
     public: bool isAutoWaitForIdle();
 
-    public: void keyPress(Integer keycode);
+    public: void keyPress(int32_t keycode);
 
-    public: void keyRelease(Integer keycode);
+    public: void keyRelease(int32_t keycode);
 
-    public: void mouseMove(Integer x, Integer y);
+    public: void mouseMove(int32_t x, int32_t y);
 
-    public: void mousePress(Integer buttons);
+    public: void mousePress(int32_t buttons);
 
-    public: void mouseRelease(Integer buttons);
+    public: void mouseRelease(int32_t buttons);
 
-    public: void mouseWheel(Integer wheelAmt);
+    public: void mouseWheel(int32_t wheelAmt);
 
-    public: void setAutoDelay(Integer ms);
+    public: void setAutoDelay(int32_t ms);
 
     public: void setAutoWaitForIdle(bool isOn);
 

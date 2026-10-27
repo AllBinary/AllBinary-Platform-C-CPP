@@ -21,6 +21,12 @@
         #ifndef VIEWS_GENERIC_INVENTORY_INVENTORYSEARCHPRODUCTUTIL_H
         #define VIEWS_GENERIC_INVENTORY_INVENTORYSEARCHPRODUCTUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -93,19 +99,19 @@ class InventorySearchProductUtil
             : public Object
          {
 
-    private: static InventorySearchProductUtil instance() { return InventorySearchProductUtil(); }
+    private: static InventorySearchProductUtil* instance() { static std::unique_ptr<InventorySearchProductUtil> value(new InventorySearchProductUtil()); return value.get(); }
 
-    public: static InventorySearchProductUtil getInstance();
+    public: static InventorySearchProductUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: const std::string ITEM_NOT_FOUND = "Item Not Found.";
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getProduct(AbeClientInformationInterface abeClientInformation, SearchRequest searchRequest, std::string product);
+    public: std::string getProduct(AbeClientInformationInterface* abeClientInformation, SearchRequest* searchRequest, std::string product);
 
 };
 

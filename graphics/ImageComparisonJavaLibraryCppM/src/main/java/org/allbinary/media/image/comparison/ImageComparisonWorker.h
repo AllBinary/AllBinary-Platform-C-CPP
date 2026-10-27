@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -81,30 +87,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageComparatorConstraintsInterface.h"
-#include "ImageComparator.h"
-#include "ImageComparisonResult.h"
-#include "ImageComparisonResultFrameCacheable.h"
-#include "ImageComparisonResultCacheSingleton.h"
-#include "ImageComparisonResultsEvent.h"
+        #include "org/allbinary/media/image/comparison/ImageComparatorConstraintsInterface.h"
+#include "org/allbinary/media/image/comparison/ImageComparator.h"
+#include "org/allbinary/media/image/comparison/ImageComparisonResult.h"
+#include "org/allbinary/media/image/comparison/ImageComparisonResultFrameCacheable.h"
+#include "org/allbinary/media/image/comparison/ImageComparisonResultCacheSingleton.h"
+#include "org/allbinary/media/image/comparison/ImageComparisonResultsEvent.h"
 
 class ImageComparisonWorker: public BasicEventHandler, public CapturedImageWorkerResultsListener {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const BasicArrayList bufferedImageVector = BasicArrayListD();
+    private: BasicArrayList* bufferedImageVector = new BasicArrayListD();
 
-    private: ImageComparatorConstraintsInterface imageComparatorConstraintsInterface;
+    private: ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface;
 
-    private: ImageComparator imageComparator;
+    private: ImageComparator* imageComparator;
 
     private: bool running= false;
 
     private: int32_t index2= 0;
 
-public: ImageComparisonWorker(ImageComparatorConstraintsInterface imageComparatorConstraintsInterface);
+public: ImageComparisonWorker(ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: bool isRunning();
@@ -113,10 +119,10 @@ public: ImageComparisonWorker(ImageComparatorConstraintsInterface imageComparato
     public: void setRunning(bool running);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onCaptureEvent(CapturedImageWorkerResultsEvent capturedImageWorkerResultsEvent);
+    public: void onCaptureEvent(CapturedImageWorkerResultsEvent* capturedImageWorkerResultsEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onEvent(AllBinaryEventObject allBinaryEventObject);
+    public: void onEvent(AllBinaryEventObject* allBinaryEventObject);
 
     public: void run();
 

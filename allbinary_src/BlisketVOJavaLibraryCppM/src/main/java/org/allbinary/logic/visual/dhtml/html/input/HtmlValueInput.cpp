@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/string/StringUtil.h>
 
       
@@ -39,7 +45,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HtmlInput.h"
+        #include "org/allbinary/logic/visual/dhtml/html/input/HtmlInput.h"
 
 class HtmlValueInput: public HtmlInput {
 
@@ -55,9 +61,9 @@ public: HtmlValueInput(std::string before, std::string type, std::string name, s
                             //For kotlin this is before the body of the constructor.
                     
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
-this->value= stringUtil.EMPTY_STRING;
+this->value= stringUtil->EMPTY_STRING;
     
 addAttribute(this->VALUE, value);
     

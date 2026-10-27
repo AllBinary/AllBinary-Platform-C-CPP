@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/ag/layer/hud/basic/notification/GameNotificationHudCompositeInterface.h>
 
       
@@ -60,20 +66,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PathFindingLayerInterface.h"
-#include "PlayerOwnedRTSLayers.h"
+        #include "org/allbinary/game/layer/PathFindingLayerInterface.h"
+#include "org/allbinary/game/layer/PlayerOwnedRTSLayers.h"
 
 class RTSPlayerLayerInterface: public GameNotificationHudCompositeInterface, public BuildMenuCompositeInterface, public PlayerGameInputCompositeInterface, public DestroyedEventListenerInterface, public TickableInterface, public PathFindingLayerInterface {
 
-    Capital getCapital()
+    public: virtual Capital* getCapital() = 0;
 
-    RTSFormInput getRTSFormInput()
+    public: virtual RTSFormInput* getRTSFormInput() = 0;
 
-    void add(Sound sound)
+    public: virtual void add(Sound* sound) = 0;
 
-    PlayerOwnedRTSLayers getPlayerOwnedRTSLayers()
+    public: virtual PlayerOwnedRTSLayers* getPlayerOwnedRTSLayers() = 0;
 
-    bool implmentsArtificialIntelligenceCompositeInterface()
+    public: virtual bool implmentsArtificialIntelligenceCompositeInterface() = 0;
 
 };
 

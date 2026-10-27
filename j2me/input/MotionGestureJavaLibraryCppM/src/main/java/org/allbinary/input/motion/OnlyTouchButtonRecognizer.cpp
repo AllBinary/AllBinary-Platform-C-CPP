@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/input/motion/button/TouchButtonRecognizer.h>
@@ -41,16 +47,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionRecognizer.h"
+        #include "org/allbinary/input/motion/MotionRecognizer.h"
 
 class OnlyTouchButtonRecognizer: public MotionRecognizer {
 
-    private: TouchButtonRecognizer touchButtonRecognizer;
+    private: TouchButtonRecognizer* touchButtonRecognizer;
 
     private: bool touchButtonProcessing = false;
 
 public: OnlyTouchButtonRecognizer(){
-this->touchButtonRecognizer= TouchButtonRecognizer();
+this->touchButtonRecognizer= new TouchButtonRecognizer();
     
 }
 
@@ -59,7 +65,7 @@ this->touchButtonRecognizer= TouchButtonRecognizer();
             
     public: void processStartMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
 
-                        if(this->touchButtonRecognizer.pressTouchButtonInput(x, y, deviceId))
+                        if(this->touchButtonRecognizer->pressTouchButtonInput(x, y, deviceId))
                         
                                     {
                                     this->touchButtonProcessing= true;
@@ -83,7 +89,7 @@ this->touchButtonRecognizer= TouchButtonRecognizer();
                                     }
                                 
 
-                        if(this->touchButtonRecognizer.releaseTouchButtonInput(x, y, deviceId))
+                        if(this->touchButtonRecognizer->releaseTouchButtonInput(x, y, deviceId))
                         
                                     {
                                     
@@ -105,7 +111,7 @@ this->touchButtonRecognizer= TouchButtonRecognizer();
                         if(this->touchButtonProcessing)
                         
                                     {
-                                    this->touchButtonRecognizer.pressTouchButtonInput(x, y, deviceId);
+                                    this->touchButtonRecognizer->pressTouchButtonInput(x, y, deviceId);
     
 
                                     }

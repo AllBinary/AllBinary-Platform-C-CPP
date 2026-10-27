@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/ClassLoader.h"
@@ -79,9 +85,9 @@ class TsUtil
             : public Object
          {
 
-    private: static TsUtil instance() { return TsUtil(); }
+    private: static TsUtil* instance() { static std::unique_ptr<TsUtil> value(new TsUtil()); return value.get(); }
 
-    public: static TsUtil getInstance();
+    public: static TsUtil* getInstance();
 
     public: double longBitsToDouble(int64_t bits);
 
@@ -103,7 +109,7 @@ class TsUtil
 
     public: bool equalsNotstring(Object* anyType, Object* object2);
 
-    public: ClassLoader getClassClassLoader(Object* anyType);
+    public: ClassLoader* getClassClassLoader(Object* anyType);
 
     public: int32_t toNumberFromChar(char value);
 
@@ -111,7 +117,7 @@ class TsUtil
 
     public: std::vector<int8_t> getByteArray(std::string string);
 
-    public: bool isItemListener(Displayable owner);
+    public: bool isItemListener(Displayable* owner);
 
     public: void gc();
 

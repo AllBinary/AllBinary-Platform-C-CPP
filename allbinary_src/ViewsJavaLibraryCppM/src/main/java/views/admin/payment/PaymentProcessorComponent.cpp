@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/commerce/money/payment/gateway/processor/PaymentProcessorInterface.h>
@@ -62,9 +68,9 @@
         
 class PaymentProcessorComponent: public HttpStoreComponentView {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: PaymentProcessorComponent(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+public: PaymentProcessorComponent(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -78,16 +84,16 @@ public: PaymentProcessorComponent(TransformInfoInterface transformInfoInterface)
             
     public: void addDomNodeInterfaces(){
 
-    PaymentProcessorInterface paymentProcessorInterface = PaymentProcessorInterfaceFactory::getInstance().getInstance(this->getTransformInfoInterface());;
+    PaymentProcessorInterface* paymentProcessorInterface = PaymentProcessorInterfaceFactory::getInstance()->getInstance(this->getTransformInfoInterface());;
     
-paymentProcessorInterface.process();
+paymentProcessorInterface->process();
     
 
-    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface();;
+    TransformInfoHttpInterface* httpTransformInfoInterface = dynamic_cast<TransformInfoHttpInterface*>(this->getTransformInfoInterface());;
     
-httpTransformInfoInterface.getWeblisketSession().removeBasket();
+httpTransformInfoInterface->getWeblisketSession()->removeBasket();
     
-this->addDomNodeInterface(paymentProcessorInterface);
+this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(paymentProcessorInterface));
     
 }
 
@@ -107,13 +113,13 @@ this->addDomNodeInterface(paymentProcessorInterface);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }

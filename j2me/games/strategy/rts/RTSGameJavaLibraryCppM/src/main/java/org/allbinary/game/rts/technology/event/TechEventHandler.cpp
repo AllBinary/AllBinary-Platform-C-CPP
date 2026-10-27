@@ -17,6 +17,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -46,18 +52,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TechEventListenerInterface.h"
+        #include "org/allbinary/game/rts/technology/event/TechEventListenerInterface.h"
 
 class TechEventHandler: public BasicEventHandler {
 
-    private: static const TechEventHandler eventHandler = TechEventHandler();
+    private: static TechEventHandler* eventHandler() { static std::unique_ptr<TechEventHandler> value(new TechEventHandler()); return value.get(); }
 
-    public: static TechEventHandler getInstance(){
+    public: static TechEventHandler* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TechEventHandler::eventHandler;
+                        return TechEventHandler::eventHandler();
     
 }
 
@@ -68,11 +74,11 @@ private: TechEventHandler(){
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
 
-    TechEventListenerInterface techEventListenerInterface = (eventListenerInterface);;
+    TechEventListenerInterface* techEventListenerInterface = (dynamic_cast<TechEventListenerInterface*>(eventListenerInterface));;
     
-techEventListenerInterface.onTechEvent(eventObject);
+techEventListenerInterface->onTechEvent(eventObject);
     
 }
 

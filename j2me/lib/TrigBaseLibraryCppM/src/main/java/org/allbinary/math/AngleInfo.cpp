@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -56,43 +62,43 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AngleIncrementInfo.h"
-#include "AngleIncrementInfoFactory.h"
-#include "FrameUtil.h"
+        #include "org/allbinary/math/AngleIncrementInfo.h"
+#include "org/allbinary/math/AngleIncrementInfoFactory.h"
+#include "org/allbinary/math/FrameUtil.h"
 
 class AngleInfo
             : public Object
          {
 
-    public: static AngleInfo getInstance(int16_t angleIncrement){
+    public: static AngleInfo* getInstance(int16_t angleIncrement){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AngleInfo(AngleIncrementInfoFactory::getInstance().getAt(angleIncrement));
+                        return new AngleInfo(AngleIncrementInfoFactory::getInstance()->getAt(angleIncrement));
     
 }
 
 
-    private: static const std::string ANGLE = "Angle: ";
+    private: static inline const std::string ANGLE = "Angle: ";
 
-    private: AngleIncrementInfo angleIncrementInfo;
+    private: AngleIncrementInfo* angleIncrementInfo;
 
     private: int16_t angle = 0;
 
-private: AngleInfo(AngleIncrementInfo angleIncrementInfo){
+private: AngleInfo(AngleIncrementInfo* angleIncrementInfo){
 this->angleIncrementInfo= angleIncrementInfo;
     
 }
 
 
-    private: const FrameUtil frameUtil = FrameUtil::getInstance();
+    private: FrameUtil* frameUtil = FrameUtil::getInstance();
 
     public: void adjustAngle(int32_t frame){
 
-    int32_t newAngle = this->angleIncrementInfo.getAngleIncrement() *frame -90;;
+    int32_t newAngle = this->angleIncrementInfo->getAngleIncrement() *frame -90;;
     
-this->setAngle(this->frameUtil.adjustAngleToFrameAngle(newAngle));
+this->setAngle(this->frameUtil->adjustAngleToFrameAngle(newAngle));
     
 }
 
@@ -113,7 +119,7 @@ this->angle= angle;
 }
 
 
-    public: AngleIncrementInfo getAngleIncrementInfo(){
+    public: AngleIncrementInfo* getAngleIncrementInfo(){
 
 
 
@@ -125,21 +131,21 @@ this->angle= angle;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(AngleInfo::ANGLE);
+stringBuffer->append(AngleInfo::ANGLE);
     
-stringBuffer.appendshort(this->angle);
+stringBuffer->appendshort(this->angle);
     
-stringBuffer.append(CommonSeps::getInstance().SPACE);
+stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-stringBuffer.append(StringUtil::getInstance().toString(this->getAngleIncrementInfo()));
+stringBuffer->append(StringUtil::getInstance()->toString(this->getAngleIncrementInfo()));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

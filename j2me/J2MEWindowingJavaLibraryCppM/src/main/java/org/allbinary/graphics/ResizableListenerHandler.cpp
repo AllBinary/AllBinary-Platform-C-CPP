@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -40,15 +46,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ResizableListenerInterface.h"
+        #include "org/allbinary/graphics/ResizableListenerInterface.h"
 
 class ResizableListenerHandler
             : public Object
          {
 
-    private: static ResizableListenerHandler instance() { return ResizableListenerHandler(); }
+    private: static ResizableListenerHandler* instance() { static std::unique_ptr<ResizableListenerHandler> value(new ResizableListenerHandler()); return value.get(); }
 
-    public: static ResizableListenerHandler getInstance(){
+    public: static ResizableListenerHandler* getInstance(){
 
 
 
@@ -58,7 +64,7 @@ class ResizableListenerHandler
 }
 
 
-    public: void setListener(ResizableListenerInterface resizableListenerInterface){
+    public: void setListener(ResizableListenerInterface* resizableListenerInterface){
 }
 
 

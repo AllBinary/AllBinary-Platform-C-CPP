@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
@@ -47,7 +53,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicConstantVelocityMovement.h"
+        #include "org/allbinary/physics/movement/BasicConstantVelocityMovement.h"
 
 class OscillateVelocityMovement: public BasicConstantVelocityMovement {
 
@@ -59,7 +65,7 @@ class OscillateVelocityMovement: public BasicConstantVelocityMovement {
 
     private: bool oscillatePositive= false;
 
-public: OscillateVelocityMovement(BasicDecimal speedBasicDecimal, int32_t oscillateMin, int32_t oscillateMax) : BasicConstantVelocityMovement(speedBasicDecimal, VelocityProperties(static_cast<int32_t>(speedBasicDecimal.getUnscaled()), static_cast<int32_t>(speedBasicDecimal.getUnscaled()))){
+public: OscillateVelocityMovement(BasicDecimal* speedBasicDecimal, int32_t oscillateMin, int32_t oscillateMax) : BasicConstantVelocityMovement(speedBasicDecimal, new VelocityProperties(static_cast<int32_t>(speedBasicDecimal->getUnscaled()), static_cast<int32_t>(speedBasicDecimal->getUnscaled()))){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,7 +81,7 @@ this->oscillateMax= oscillateMax;
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryGameLayer layer){
+    public: void process(AllBinaryGameLayer* layer){
 super.process(layer);
     
 
@@ -102,7 +108,7 @@ super.process(layer);
                                     {
                                     this->oscillate++;
     
-this->getVelocityProperties().getVelocityXBasicDecimalP().addint(2000);
+this->getVelocityProperties()->getVelocityXBasicDecimalP()->addint(2000);
     
 
                                     }
@@ -110,7 +116,7 @@ this->getVelocityProperties().getVelocityXBasicDecimalP().addint(2000);
                         else {
                             this->oscillate--;
     
-this->getVelocityProperties().getVelocityXBasicDecimalP().subtractint(2000);
+this->getVelocityProperties()->getVelocityXBasicDecimalP()->subtractint(2000);
     
 
                         }

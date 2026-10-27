@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_GAME_BASICGAMEINFOFACTORY_H
         #define ORG_ALLBINARY_GAME_BASICGAMEINFOFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -32,9 +38,9 @@ class BasicGameInfoFactory
             : public Object
          {
 
-    private: static const BasicGameInfoFactory SINGLETON = BasicGameInfoFactory();
+    private: static BasicGameInfoFactory* SINGLETON() { static std::unique_ptr<BasicGameInfoFactory> value(new BasicGameInfoFactory()); return value.get(); }
 
-    public: static BasicGameInfoFactory getInstance();
+    public: static BasicGameInfoFactory* getInstance();
 
     public: int32_t currentReleaseIndex= 0;
 

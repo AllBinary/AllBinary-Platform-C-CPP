@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/PreLogUtil.h>
@@ -41,7 +47,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DbConnectionInfo.h"
+        #include "org/allbinary/business/init/db/DbConnectionInfo.h"
 //import org.allbinary.logic.communication.log.config.type.LogConfigTypes;
 class DbInitInfo: public DbConnectionInfo {
 

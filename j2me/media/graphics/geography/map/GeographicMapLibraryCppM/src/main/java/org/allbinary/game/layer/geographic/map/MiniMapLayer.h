@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_MINIMAPLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_MINIMAPLAYER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -113,39 +119,39 @@
         
 class MiniMapLayer: public AllBinaryLayer, public GeographicMapCellPositionEventListenerInterface {
 
-    protected: AllBinaryTiledLayer allBinaryTiledLayer;
+    protected: AllBinaryTiledLayer* allBinaryTiledLayer;
 
-    private: BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory;
+    private: BasicGeographicMapCellPositionFactory* geographicMapCellPositionFactory;
 
-    private: BasicArrayList list;
+    private: BasicArrayList* list;
 
-    private: BasicArrayList basicColorList;
+    private: BasicArrayList* basicColorList;
 
-    private: BasicArrayList positionList;
+    private: BasicArrayList* positionList;
 
-    private: CircleFilledAnimation animationInterface;
+    private: CircleFilledAnimation* animationInterface;
 
-public: MiniMapLayer(BasicGeographicMap geographicMapInterface, ViewPositionBase viewPosition);
+public: MiniMapLayer(BasicGeographicMap* geographicMapInterface, ViewPositionBase* viewPosition);
 
                 //@Throws(Exception.constructor)
             
     protected: void init();
 
-    public: void onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject* eventObject);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onRemoveGeographicMapCellPositionEvent(GeographicMapCellPositionEvent geographicMapCellPositionEvent);
+    public: void onRemoveGeographicMapCellPositionEvent(GeographicMapCellPositionEvent* geographicMapCellPositionEvent);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onGeographicMapCellPositionEvent(GeographicMapCellPositionEvent geographicMapCellPositionEvent);
+    public: void onGeographicMapCellPositionEvent(GeographicMapCellPositionEvent* geographicMapCellPositionEvent);
 
-    public: void paintDots(Graphics graphics);
+    public: void paintDots(Graphics* graphics);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_COMPARABLEOBJECT_H
         #define ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_COMPARABLEOBJECT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/TsUtil.h>
@@ -44,11 +50,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Comparable.h"
+        #include "org/allbinary/logic/math/permutations/Comparable.h"
 
 class ComparableObject
             : public Object
-        : public Comparable<Object*> {
+        , public Comparable<Object*> {
 
     public: int32_t compareTo(Object* anyType);
 

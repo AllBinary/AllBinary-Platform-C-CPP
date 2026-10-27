@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/util/visitor/Visitor.h>
 
       
@@ -39,11 +45,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SelectedRTSLayersPlayerGameInput.h"
+        #include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h"
 
 class SelectRTSLayerVisitorFactoryInterface {
 
-    Visitor create(SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput)
+    public: virtual Visitor* create(SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput) = 0;
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLTAG_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLTAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -52,7 +58,7 @@ class HtmlTag
             : public Object
          {
 
-    protected: HashMap<Object*, Object*> otherAttributes;
+    protected: HashMap<Object*, Object*>* otherAttributes;
 
 public: HtmlTag();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,15 +44,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TenderType.h"
+        #include "org/allbinary/business/user/commerce/money/payment/types/TenderType.h"
 
 class TenderTypeFactory
             : public Object
          {
 
-    private: static TenderTypeFactory instance() { return TenderTypeFactory(); }
+    private: static TenderTypeFactory* instance() { static std::unique_ptr<TenderTypeFactory> value(new TenderTypeFactory()); return value.get(); }
 
-    public: static TenderTypeFactory getInstance(){
+    public: static TenderTypeFactory* getInstance(){
 
 
 
@@ -56,11 +62,11 @@ class TenderTypeFactory
 }
 
 
-    public: const TenderType CREDITCARD = TenderType("Credit Card");
+    public: TenderType* CREDITCARD = new TenderType("Credit Card");
 
-    public: const TenderType CHECK = TenderType("Check");
+    public: TenderType* CHECK = new TenderType("Check");
 
-    public: const TenderType ACH = TenderType("Ach");
+    public: TenderType* ACH = new TenderType("Ach");
 
 };
 

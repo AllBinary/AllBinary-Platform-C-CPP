@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -127,41 +133,41 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PCComponentFactory.h"
+        #include "org/allbinary/logic/system/hardware/linux/PCComponentFactory.h"
 
 class LinuxHardware
             : public Object
-        : public HardwareInterface {
+        , public HardwareInterface {
 
-    private: static const std::string PCIFILE = "/proc/pci";
+    private: static inline const std::string PCIFILE = "/proc/pci";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: BasicArrayList componentInterfaceVector;
+    private: BasicArrayList* componentInterfaceVector;
 
-    private: BasicArrayList videoInterfaceVector;
+    private: BasicArrayList* videoInterfaceVector;
 
-    private: BasicArrayList hardDriveControllerInterfaceVector;
+    private: BasicArrayList* hardDriveControllerInterfaceVector;
 
-    private: BasicArrayList cpuInterfaceVector;
+    private: BasicArrayList* cpuInterfaceVector;
 
-    private: BasicArrayList usbInterfaceVector;
+    private: BasicArrayList* usbInterfaceVector;
 
-    private: BasicArrayList ethernetInterfaceVector;
+    private: BasicArrayList* ethernetInterfaceVector;
 
-    private: BasicArrayList multimediaInterfaceVector;
+    private: BasicArrayList* multimediaInterfaceVector;
 
-    private: BasicArrayList fireWireInterfaceVector;
+    private: BasicArrayList* fireWireInterfaceVector;
 
-    private: BasicArrayList bridgeInterfaceVector;
+    private: BasicArrayList* bridgeInterfaceVector;
 
-    private: BasicArrayList hardDriveInterfaceVector;
+    private: BasicArrayList* hardDriveInterfaceVector;
 
-    private: BasicArrayList macInterfaceVector;
+    private: BasicArrayList* macInterfaceVector;
 
-    private: BasicArrayList monitorInterfaceVector;
+    private: BasicArrayList* monitorInterfaceVector;
 
     private: const std::string NAME = "Linux Hardware Profile";
 
@@ -177,19 +183,19 @@ public: LinuxHardware(){
 this->init(PCIFILE);
     
 
-                        if(this->componentInterfaceVector.size() < this->MINHARDWARE)
+                        if(this->componentInterfaceVector->size() < this->MINHARDWARE)
                         
                                     {
                                     
 
 
-                            throw Exception("Not Enough Data For A Valid License On Linux");
+                            throw new Exception("Not Enough Data For A Valid License On Linux");
                     
 
                                     }
                                 
 
-    Cpu cpu = Cpu();;
+    Cpu* cpu = new Cpu();;
     
 
                         if(cpu != 
@@ -197,18 +203,18 @@ this->init(PCIFILE);
                                 )
                         
                                     {
-                                    this->cpuInterfaceVector.add(cpu);
+                                    this->cpuInterfaceVector->add(cpu);
     
-this->componentInterfaceVector.add(cpu);
+this->componentInterfaceVector->add(cpu);
     
 
                                     }
                                 
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().OS))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->OS))
                         
                                     {
-                                    this->logUtil.putF("Hardware Data: " +this->toString(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("Hardware Data: " +this->toString(), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -220,7 +226,7 @@ this->componentInterfaceVector.add(cpu);
             
     private: void init(std::string filePath){
 
-    LineNumberReader lineNumberReader = 
+    LineNumberReader* lineNumberReader = 
                 null
             ;;
     
@@ -230,13 +236,13 @@ this->componentInterfaceVector.add(cpu);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().OS))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->OS))
                         
                                     {
-                                    this->logUtil.put("Hardware Data: " +this->toString(), this, this->commonStrings.CONSTRUCTOR, e);
+                                    this->logUtil->put("Hardware Data: " +this->toString(), this, this->commonStrings->CONSTRUCTOR, &e);
     
 
                                     }
@@ -253,37 +259,37 @@ this->componentInterfaceVector.add(cpu);
 
                 //@Throws(Exception.constructor)
             
-    private: void init(LineNumberReader lineNumberReader, std::string filePath){
+    private: void init(LineNumberReader* lineNumberReader, std::string filePath){
 
         try {
-            this->componentInterfaceVector= BasicArrayListD();
+            this->componentInterfaceVector= new BasicArrayListD();
     
-this->videoInterfaceVector= BasicArrayListD();
+this->videoInterfaceVector= new BasicArrayListD();
     
-this->hardDriveControllerInterfaceVector= BasicArrayListD();
+this->hardDriveControllerInterfaceVector= new BasicArrayListD();
     
-this->cpuInterfaceVector= BasicArrayListD();
+this->cpuInterfaceVector= new BasicArrayListD();
     
-this->usbInterfaceVector= BasicArrayListD();
+this->usbInterfaceVector= new BasicArrayListD();
     
-this->ethernetInterfaceVector= BasicArrayListD();
+this->ethernetInterfaceVector= new BasicArrayListD();
     
-this->multimediaInterfaceVector= BasicArrayListD();
+this->multimediaInterfaceVector= new BasicArrayListD();
     
-this->fireWireInterfaceVector= BasicArrayListD();
+this->fireWireInterfaceVector= new BasicArrayListD();
     
-this->bridgeInterfaceVector= BasicArrayListD();
+this->bridgeInterfaceVector= new BasicArrayListD();
     
-this->hardDriveInterfaceVector= BasicArrayListD();
+this->hardDriveInterfaceVector= new BasicArrayListD();
     
-this->macInterfaceVector= BasicArrayListD();
+this->macInterfaceVector= new BasicArrayListD();
     
-this->monitorInterfaceVector= BasicArrayListD();
+this->monitorInterfaceVector= new BasicArrayListD();
     
 
-    FileReader pciFile = FileReader(filePath);;
+    FileReader* pciFile = new FileReader(filePath);;
     
-lineNumberReader= LineNumberReader(pciFile);
+lineNumberReader= new LineNumberReader(pciFile);
     
 
                         if(lineNumberReader == 
@@ -292,16 +298,16 @@ lineNumberReader= LineNumberReader(pciFile);
                         
                                     {
                                     
-    BasicArrayList fileVector = SubDirectory::getInstance().search(filePath, AbFile::createAbFile(FilePathData::getInstance().PATH_START));;
+    BasicArrayList* fileVector = SubDirectory::getInstance()->search(filePath, AbFile::createAbFile(FilePathData::getInstance()->PATH_START));;
     
 
-                        if(!fileVector.isEmpty())
+                        if(!fileVector->isEmpty())
                         
                                     {
                                     
-    AbFile file = fileVector.get(0);;
+    AbFile* file = dynamic_cast<AbFile*>(fileVector->get(0));;
     
-lineNumberReader= LineNumberReader(FileReader(file.getPath()));
+lineNumberReader= new LineNumberReader(new FileReader(file->getPath()));
     
 
                                     }
@@ -315,7 +321,7 @@ lineNumberReader= LineNumberReader(FileReader(file.getPath()));
                                     
 
 
-                            throw Exception("No Linux File Data");
+                            throw new Exception("No Linux File Data");
                     
 
                                     }
@@ -330,16 +336,16 @@ lineNumberReader= LineNumberReader(FileReader(file.getPath()));
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().OS))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->OS))
                         
                                     {
-                                    this->logUtil.putF("PCI File Found", this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("PCI File Found", this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
                                 
 
-    std::string nextLine = lineNumberReader.readLine();;
+    std::string nextLine = lineNumberReader->readLine();;
     
 
         while(lineNumberReader != 
@@ -356,7 +362,7 @@ lineNumberReader= LineNumberReader(FileReader(file.getPath()));
 
                                     }
                                 
-nextLine= lineNumberReader.readLine();
+nextLine= lineNumberReader->readLine();
     
 }
 
@@ -364,36 +370,36 @@ nextLine= lineNumberReader.readLine();
         while(this->isNextHardware(nextLine))
         {
 
-    StringMaker componentData = StringMaker();;
+    StringMaker* componentData = new StringMaker();;
     
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().OS))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->OS))
                         
                                     {
-                                    this->logUtil.putF("Found Hardware Device: " +this->componentInterfaceVector.size(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("Found Hardware Device: " +this->componentInterfaceVector->size(), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
                                 
-componentData.append(nextLine);
+componentData->append(nextLine);
     
-componentData.append(CommonSeps::getInstance().NEW_LINE);
+componentData->append(CommonSeps::getInstance()->NEW_LINE);
     
-nextLine= lineNumberReader.readLine();
+nextLine= lineNumberReader->readLine();
     
 
-    std::string componentType = PCComponentFactory::getInstance().java.componentType;;
+    std::string componentType = PCComponentFactory::getInstance()->java.componentType;;
     
 
         while(lineNumberReader != 
                                     nullptr
                                 )
         {
-componentData.append(nextLine);
+componentData->append(nextLine);
     
-componentData.append(CommonSeps::getInstance().NEW_LINE);
+componentData->append(CommonSeps::getInstance()->NEW_LINE);
     
-nextLine= lineNumberReader.readLine();
+nextLine= lineNumberReader->readLine();
     
 
                         if(false || this->isNextHardware(nextLine))
@@ -408,7 +414,7 @@ nextLine= lineNumberReader.readLine();
 }
 
 
-    HardwareComponentInterface componentInterface = PCComponentFactory::getInstance().getInstance(componentType, componentData.toString());;
+    HardwareComponentInterface* componentInterface = PCComponentFactory::getInstance()->getInstance(componentType, componentData->toString());;
     
 
                         if(componentInterface != 
@@ -416,7 +422,7 @@ nextLine= lineNumberReader.readLine();
                                 )
                         
                                     {
-                                    this->componentInterfaceVector.add(componentInterface);
+                                    this->componentInterfaceVector->add(componentInterface);
     
 
                                     }
@@ -428,10 +434,10 @@ nextLine= lineNumberReader.readLine();
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().OS))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->OS))
                         
                                     {
-                                    this->logUtil.putF("Could not load PCI File", this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("Could not load PCI File", this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -439,7 +445,7 @@ nextLine= lineNumberReader.readLine();
 
                         }
                             
-lineNumberReader.close();
+lineNumberReader->close();
     
 
          finally {
@@ -447,7 +453,7 @@ lineNumberReader.close();
                         if(lineNumberReader != 
                                     nullptr
                                 )
-                        lineNumberReader.close();
+                        lineNumberReader->close();
                                 
 
          }
@@ -455,132 +461,132 @@ lineNumberReader.close();
 }
 
 
-    public: MediaInterface getMultimedia(int32_t index){
+    public: MediaInterface* getMultimedia(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->multimediaInterfaceVector.get(index);
+                        return dynamic_cast<MediaInterface*>(this->multimediaInterfaceVector->get(index));
     
 }
 
 
-    public: BridgeInterface getBridge(int32_t index){
+    public: BridgeInterface* getBridge(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->bridgeInterfaceVector.get(index);
+                        return dynamic_cast<BridgeInterface*>(this->bridgeInterfaceVector->get(index));
     
 }
 
 
-    public: CpuInterface getCpu(int32_t index){
+    public: CpuInterface* getCpu(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuInterfaceVector.get(index);
+                        return dynamic_cast<CpuInterface*>(this->cpuInterfaceVector->get(index));
     
 }
 
 
-    public: EthernetInterface getEthernet(int32_t index){
+    public: EthernetInterface* getEthernet(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->ethernetInterfaceVector.get(index);
+                        return dynamic_cast<EthernetInterface*>(this->ethernetInterfaceVector->get(index));
     
 }
 
 
-    public: FireWireInterface getFireWire(int32_t index){
+    public: FireWireInterface* getFireWire(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->fireWireInterfaceVector.get(index);
+                        return dynamic_cast<FireWireInterface*>(this->fireWireInterfaceVector->get(index));
     
 }
 
 
-    public: HardDriveControllerInterface getHardDriveController(int32_t index){
+    public: HardDriveControllerInterface* getHardDriveController(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->hardDriveControllerInterfaceVector.get(index);
+                        return dynamic_cast<HardDriveControllerInterface*>(this->hardDriveControllerInterfaceVector->get(index));
     
 }
 
 
-    public: HardDriveInterface getHardDrive(int32_t index){
+    public: HardDriveInterface* getHardDrive(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->hardDriveInterfaceVector.get(index);
+                        return dynamic_cast<HardDriveInterface*>(this->hardDriveInterfaceVector->get(index));
     
 }
 
 
-    public: MachineAccessControlAddressInterface getMachineAccessControlAddress(int32_t index){
+    public: MachineAccessControlAddressInterface* getMachineAccessControlAddress(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->macInterfaceVector.get(index);
+                        return dynamic_cast<MachineAccessControlAddressInterface*>(this->macInterfaceVector->get(index));
     
 }
 
 
-    public: MonitorInterface getMonitor(int32_t index){
+    public: MonitorInterface* getMonitor(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->monitorInterfaceVector.get(index);
+                        return dynamic_cast<MonitorInterface*>(this->monitorInterfaceVector->get(index));
     
 }
 
 
-    public: UsbInterface getUsb(int32_t index){
+    public: UsbInterface* getUsb(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->usbInterfaceVector.get(index);
+                        return dynamic_cast<UsbInterface*>(this->usbInterfaceVector->get(index));
     
 }
 
 
-    public: VideoInterface getVideo(int32_t index){
+    public: VideoInterface* getVideo(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->videoInterfaceVector.get(index);
+                        return dynamic_cast<VideoInterface*>(this->videoInterfaceVector->get(index));
     
 }
 
 
-    public: HardwareComponentInterface getComponent(int32_t index){
+    public: HardwareComponentInterface* getComponent(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->componentInterfaceVector.get(index);
+                        return dynamic_cast<HardwareComponentInterface*>(this->componentInterfaceVector->get(index));
     
 }
 
 
     public: std::string toString(){
 
-    StringMaker hardwareBuffer = StringMaker();;
+    StringMaker* hardwareBuffer = new StringMaker();;
     
 
-    int32_t size = this->componentInterfaceVector.size();;
+    int32_t size = this->componentInterfaceVector->size();;
     
 
 
@@ -590,17 +596,17 @@ lineNumberReader.close();
     int32_t index = 0;index < size; index++)
         {
 
-    HardwareComponentInterface componentInterface = this->componentInterfaceVector.get(index);;
+    HardwareComponentInterface* componentInterface = dynamic_cast<HardwareComponentInterface*>(this->componentInterfaceVector->get(index));;
     
-hardwareBuffer.append("Component ");
+hardwareBuffer->append("Component ");
     
-hardwareBuffer.appendint(index);
+hardwareBuffer->appendint(index);
     
-hardwareBuffer.append(": \n");
+hardwareBuffer->append(": \n");
     
-hardwareBuffer.append(componentInterface.toString());
+hardwareBuffer->append(componentInterface->toString());
     
-hardwareBuffer.append(CommonSeps::getInstance().NEW_LINE);
+hardwareBuffer->append(CommonSeps::getInstance()->NEW_LINE);
     
 }
 
@@ -608,12 +614,12 @@ hardwareBuffer.append(CommonSeps::getInstance().NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return hardwareBuffer.toString();;
+                        return hardwareBuffer->toString();;
     
 }
 
 
-    public: bool compareTo(HardwareInterface hardwareInterface){
+    public: bool compareTo(HardwareInterface* hardwareInterface){
 
 
 
@@ -623,12 +629,12 @@ hardwareBuffer.append(CommonSeps::getInstance().NEW_LINE);
 }
 
 
-    public: ABHashtable<Object*, Object*> difference(HardwareInterface hardwareInterface){
+    public: ABHashtable<Object*, Object*>* difference(HardwareInterface* hardwareInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StdUtil::getInstance().NULL_TABLE;
+                        return StdUtil::getInstance()->NULL_TABLE;
     
 }
 
@@ -639,7 +645,7 @@ hardwareBuffer.append(CommonSeps::getInstance().NEW_LINE);
                         
                                     {
                                     
-    int32_t index = nextLine.indexOf("Bus");;
+    int32_t index = JavaString::indexOf(nextLine, "Bus");;
     
 
                         if(index >= 0 && index < 4)

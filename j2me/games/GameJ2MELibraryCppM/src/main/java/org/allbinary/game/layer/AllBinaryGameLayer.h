@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_ALLBINARYGAMELAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_ALLBINARYGAMELAYER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -101,25 +107,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SWTUtil.h"
-#include "GameLayerUtil.h"
+        #include "org/allbinary/game/layer/SWTUtil.h"
+#include "org/allbinary/game/layer/GameLayerUtil.h"
 
 class AllBinaryGameLayer: public AllBinaryLayer, public ViewPositionEventListenerInterface, public OpenGLSurfaceChangedInterface {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
+    protected: BasicColorSetUtil* basicSetColorUtil = BasicColorSetUtil::getInstance();
 
-    protected: const BasicColor RED = BasicColorFactory::getInstance().RED;
+    protected: BasicColor* RED = BasicColorFactory::getInstance()->RED;
 
-    private: const Paintable paintable = SWTUtil::isSWT
+    private: Paintable* paintable = SWTUtil::isSWT
                         ?       
                                 class extends Paintable
                                 {
                                 
-    const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
-    const BasicColor BLACK = BasicColorFactory::getInstance().BLACK;
-    public: void paint(Graphics graphics);
+    BasicColorSetUtil* basicSetColorUtil = BasicColorSetUtil::getInstance();
+    BasicColor* BLACK = BasicColorFactory::getInstance()->BLACK;
+    public: void paint(Graphics* graphics);
                                 }
                             
                                 :
@@ -128,27 +134,27 @@ class AllBinaryGameLayer: public AllBinaryLayer, public ViewPositionEventListene
 
     ;
 
-    private: const BasicArrayList gameKeyEventList = BasicArrayListD();
+    private: BasicArrayList* gameKeyEventList = new BasicArrayListD();
 
-public: AllBinaryGameLayer(std::string name, Rectangle layerInfo, ViewPositionBase viewPosition);
+public: AllBinaryGameLayer(std::string name, Rectangle* layerInfo, ViewPositionBase* viewPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: void set(GL gl);
+    public: void set(GL* gl);
 
     public: void move();
 
-    public: BasicArrayList getGameKeyEventList();
+    public: BasicArrayList* getGameKeyEventList();
 
                 //@Throws(Exception.constructor)
             
-    public: void processInput(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processInput(AllBinaryLayerManager* allBinaryLayerManager);
 
                 //@Throws(Exception.constructor)
             
-    public: void processTick(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager);
 
-    public: void onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject* eventObject);
 
                 //@Throws(Exception.constructor)
             
@@ -156,11 +162,11 @@ public: AllBinaryGameLayer(std::string name, Rectangle layerInfo, ViewPositionBa
 
                 //@Throws(Exception.constructor)
             
-    public: void onChangeEvent(ViewPositionEvent layerManagerEvent);
+    public: void onChangeEvent(ViewPositionEvent* layerManagerEvent);
 
-    public: void paintFirst(Graphics graphics);
+    public: void paintFirst(Graphics* graphics);
 
-    public: void paintDebug(Graphics graphics);
+    public: void paintDebug(Graphics* graphics);
 
     public: void setWidth(int32_t width);
 

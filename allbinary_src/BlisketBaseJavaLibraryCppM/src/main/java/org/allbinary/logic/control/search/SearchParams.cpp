@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -68,13 +74,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SearchData.h"
+        #include "org/allbinary/logic/control/search/SearchData.h"
 
 class SearchParams
             : public Object
          {
 
-    private: HashMap<Object*, Object*> columnsAndSearchValues;
+    private: HashMap<Object*, Object*>* columnsAndSearchValues;
 
     private: std::string order;
 
@@ -86,30 +92,30 @@ class SearchParams
 
     private: std::string endPage;
 
-public: SearchParams(HttpServletRequest request){
-this->columnsAndSearchValues= StdUtil::getInstance().createHashMap();
+public: SearchParams(HttpServletRequest* request){
+this->columnsAndSearchValues= StdUtil::getInstance()->createHashMap();
     
-this->setLength(request.getParameter(SearchData::LENGTH));
+this->setLength(request->getParameter(SearchData::LENGTH));
     
-this->setOrder(request.getParameter(SearchData::ORDER));
+this->setOrder(request->getParameter(SearchData::ORDER));
     
 
-    std::string page = request.getParameter(SearchData::PAGE);;
+    std::string page = request->getParameter(SearchData::PAGE);;
     
 this->setStartPage(page);
     
 this->setEndPage(page);
     
-this->setSortBy(request.getParameter(SearchData::SORTBY));
+this->setSortBy(request->getParameter(SearchData::SORTBY));
     
 
     int32_t index = 0;;
     
 
-    std::string columnName = request.getParameter(SearchData::COLUMNNAME +"[0]");;
+    std::string columnName = request->getParameter(SearchData::COLUMNNAME +"[0]");;
     
 
-    std::string columnValue = request.getParameter(SearchData::COLUMNVALUE +"[0]");;
+    std::string columnValue = request->getParameter(SearchData::COLUMNVALUE +"[0]");;
     
 
         while(true)
@@ -118,9 +124,9 @@ this->add(columnName, columnValue);
     
 index++;
     
-columnName= request.getParameter(SearchData::COLUMNNAME +"[" +index +"]");
+columnName= request->getParameter(SearchData::COLUMNNAME +"[" +index +"]");
     
-columnValue= request.getParameter(SearchData::COLUMNVALUE +"[" +index +"]");
+columnValue= request->getParameter(SearchData::COLUMNVALUE +"[" +index +"]");
     
 }
 
@@ -128,7 +134,7 @@ columnValue= request.getParameter(SearchData::COLUMNVALUE +"[" +index +"]");
 
 
     public: void add(std::string column, std::string value){
-this->columnsAndSearchValues.put(column, value);
+this->columnsAndSearchValues->put(column, value);
     
 }
 
@@ -163,7 +169,7 @@ this->endPage= value;
 }
 
 
-    public: HashMap<Object*, Object*> get(){
+    public: HashMap<Object*, Object*>* get(){
 
 
 
@@ -203,7 +209,7 @@ this->endPage= value;
 }
 
 
-    public: Integer getLengthInt(){
+    public: int32_t getLengthInt(){
 
                         if(true)
                         
@@ -212,7 +218,7 @@ this->endPage= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Integer(this->listLength);
+                        return int32_t(this->listLength);
     
 
                                     }
@@ -243,7 +249,7 @@ this->endPage= value;
 }
 
 
-    public: Integer getStartPageInt(){
+    public: int32_t getStartPageInt(){
 
                         if(true)
                         
@@ -252,7 +258,7 @@ this->endPage= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Integer(this->startPage);
+                        return int32_t(this->startPage);
     
 
                                     }
@@ -263,7 +269,7 @@ this->endPage= value;
 }
 
 
-    public: Integer getEndPageInt(){
+    public: int32_t getEndPageInt(){
 
                         if(true)
                         
@@ -272,7 +278,7 @@ this->endPage= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Integer(this->endPage);
+                        return int32_t(this->endPage);
     
 
                                     }
@@ -285,17 +291,17 @@ this->endPage= value;
 
                 //@Throws(Exception.constructor)
             
-    public: Node getParamsNode(Document document){
+    public: Node* getParamsNode(Document* document){
 
-    Node paramsNode = ModDomHelper::createNameValueNodes(document, SearchData::PARAMS, SearchData::PARAMS);;
+    Node* paramsNode = ModDomHelper::createNameValueNodes(document, SearchData::PARAMS, SearchData::PARAMS);;
     
-paramsNode.appendChild(this->getFieldsNode(document));
+paramsNode->appendChild(this->getFieldsNode(document));
     
-paramsNode.appendChild(this->getOrderNode(document));
+paramsNode->appendChild(this->getOrderNode(document));
     
-paramsNode.appendChild(this->getSortByNode(document));
+paramsNode->appendChild(this->getSortByNode(document));
     
-paramsNode.appendChild(this->getLengthNode(document));
+paramsNode->appendChild(this->getLengthNode(document));
     
 
 
@@ -308,15 +314,15 @@ paramsNode.appendChild(this->getLengthNode(document));
 
                 //@Throws(Exception.constructor)
             
-    private: Node getFieldsNode(Document document){
+    private: Node* getFieldsNode(Document* document){
 
-    Node fieldsNode = ModDomHelper::createNameValueNodes(document, SearchData::FIELDS, Integer(this->columnsAndSearchValues.size()).toString());;
+    Node* fieldsNode = ModDomHelper::createNameValueNodes(document, SearchData::FIELDS, (int32_t(this->columnsAndSearchValues->size())).toString());;
     
 
-    Set set = this->columnsAndSearchValues.keySet();;
+    Set* set = this->columnsAndSearchValues->keySet();;
     
 
-    std::vector<Object*> searchValueArray = set.toArray();;
+    std::vector<Object*> searchValueArray = set->toArray();;
     
 
     int32_t size = searchValueArray.size();;
@@ -332,9 +338,9 @@ paramsNode.appendChild(this->getLengthNode(document));
     std::string key = searchValueArray[index];;
     
 
-    std::string searchValue = this->columnsAndSearchValues.get(key);;
+    std::string searchValue = this->columnsAndSearchValues->get(key);;
     
-fieldsNode.appendChild(ModDomHelper::createNameValueNodes(document, SearchData::FIELD, key, ToDomHelper::convertNull(searchValue)));
+fieldsNode->appendChild(ModDomHelper::createNameValueNodes(document, SearchData::FIELD, key, ToDomHelper::convertNull(searchValue)));
     
 }
 
@@ -349,7 +355,7 @@ fieldsNode.appendChild(ModDomHelper::createNameValueNodes(document, SearchData::
 
                 //@Throws(Exception.constructor)
             
-    private: Node getOrderNode(Document document){
+    private: Node* getOrderNode(Document* document){
 
 
 
@@ -361,7 +367,7 @@ fieldsNode.appendChild(ModDomHelper::createNameValueNodes(document, SearchData::
 
                 //@Throws(Exception.constructor)
             
-    private: Node getSortByNode(Document document){
+    private: Node* getSortByNode(Document* document){
 
 
 
@@ -373,7 +379,7 @@ fieldsNode.appendChild(ModDomHelper::createNameValueNodes(document, SearchData::
 
                 //@Throws(Exception.constructor)
             
-    private: Node getLengthNode(Document document){
+    private: Node* getLengthNode(Document* document){
 
 
 

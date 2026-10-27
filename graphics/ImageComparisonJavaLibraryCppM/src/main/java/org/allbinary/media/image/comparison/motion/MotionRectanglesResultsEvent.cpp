@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Long.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -41,15 +49,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionRectangles.h"
+        #include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
 
 class MotionRectanglesResultsEvent: public AllBinaryEventObject {
 
-    private: Long frame;
+    private: int64_t frame;
 
-    private: MotionRectangles motionRectangles;
+    private: MotionRectangles* motionRectangles;
 
-public: MotionRectanglesResultsEvent(Object* anyType, Long frame, MotionRectangles motionRectangles) : AllBinaryEventObject(anyType){
+public: MotionRectanglesResultsEvent(Object* anyType, int64_t frame, MotionRectangles* motionRectangles) : AllBinaryEventObject(anyType){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -63,7 +71,7 @@ this->setMotionRectangles(motionRectangles);
 }
 
 
-    public: MotionRectangles getMotionRectangles(){
+    public: MotionRectangles* getMotionRectangles(){
 
 
 
@@ -73,13 +81,13 @@ this->setMotionRectangles(motionRectangles);
 }
 
 
-    public: void setMotionRectangles(MotionRectangles motionRectangles){
+    public: void setMotionRectangles(MotionRectangles* motionRectangles){
 this->motionRectangles= motionRectangles;
     
 }
 
 
-    public: Long getFrame(){
+    public: int64_t getFrame(){
 
 
 

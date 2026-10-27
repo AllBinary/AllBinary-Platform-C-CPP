@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEHELPERFACTORY_H
         #define ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEHELPERFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/configuration/feature/Features.h>
@@ -50,14 +56,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SourceCollisionHelper.h"
-#include "CollisionHelper.h"
+        #include "org/allbinary/game/collision/SourceCollisionHelper.h"
+#include "org/allbinary/game/collision/CollisionHelper.h"
 
 class CollidableHelperFactory
             : public Object
          {
 
-    public: static CollisionHelper getInstance();
+    public: static CollisionHelper* getInstance();
 
 };
 

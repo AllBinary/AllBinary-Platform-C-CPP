@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_MONEYEXCEPTION_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_MONEYEXCEPTION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 

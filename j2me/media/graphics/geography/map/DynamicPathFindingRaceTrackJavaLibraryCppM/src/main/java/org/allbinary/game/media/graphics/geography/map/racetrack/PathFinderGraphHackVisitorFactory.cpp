@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
 
       
@@ -45,7 +51,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PathFinderGraphHackVisitor.h"
+        #include "org/allbinary/game/media/graphics/geography/map/racetrack/PathFinderGraphHackVisitor.h"
 
 class PathFinderGraphHackVisitorFactory: public PathFinderGraphVisitorFactoryBase {
 
@@ -65,12 +71,12 @@ this->maxPathWeight= maxPathWeight;
 }
 
 
-    public: PathFinderGraphVisitorBase getInstance(BasicGeographicMap geographicMapInterface){
+    public: PathFinderGraphVisitorBase* getInstance(BasicGeographicMap* geographicMapInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PathFinderGraphHackVisitor(geographicMapInterface, this->edgeMinimum, this->minPathWeight, this->maxPathWeight);
+                        return new PathFinderGraphHackVisitor(geographicMapInterface, this->edgeMinimum, this->minPathWeight, this->maxPathWeight);
     
 }
 

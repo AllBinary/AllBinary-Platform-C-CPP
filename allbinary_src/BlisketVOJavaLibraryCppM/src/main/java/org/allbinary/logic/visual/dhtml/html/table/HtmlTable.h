@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -59,7 +67,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HtmlRow.h"
+        #include "org/allbinary/logic/visual/dhtml/html/table/HtmlRow.h"
 
 class HtmlTable: public HtmlTag {
 
@@ -113,11 +121,11 @@ class HtmlTable: public HtmlTag {
 
     private: std::string after;
 
-    private: BasicArrayList htmlRowsVector;
+    private: BasicArrayList* htmlRowsVector;
 
 public: HtmlTable(std::string before, std::string cellpadding, std::string cellspacing, std::string after);
 
-    public: void addRow(HtmlRow htmlRow);
+    public: void addRow(HtmlRow* htmlRow);
 
     public: std::string toString();
 

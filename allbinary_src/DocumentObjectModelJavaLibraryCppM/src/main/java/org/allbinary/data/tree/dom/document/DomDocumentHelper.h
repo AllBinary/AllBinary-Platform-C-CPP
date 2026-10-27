@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOMDOCUMENTHELPER_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOMDOCUMENTHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,15 +73,15 @@ class DomDocumentHelper
 
     public: static void init();
 
-    public: static Document create();
+    public: static Document* create();
 
                 //@Throws(Exception.constructor)
             
-    public: static Document create(InputStream inputStream);
+    public: static Document* create(InputStream* inputStream);
 
                 //@Throws(Exception.constructor)
             
-    public: static Document create(std::string xmlString);
+    public: static Document* create(std::string xmlString);
 
 private: DomDocumentHelper();
 

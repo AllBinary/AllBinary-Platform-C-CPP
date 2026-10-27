@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/Calendar.h>
@@ -49,9 +55,9 @@
             : public Object
          {
 
-    private: static TimeStampUtil instance() { return TimeStampUtil(); }
+    private: static TimeStampUtil* instance() { static std::unique_ptr<TimeStampUtil> value(new TimeStampUtil()); return value.get(); }
 
-    /*actual*/ public: static TimeStampUtil getInstance(){
+    /*actual*/ public: static TimeStampUtil* getInstance(){
 
 
 
@@ -67,16 +73,16 @@ private: TimeStampUtil(){
 
     /*actual*/ public: std::string getAsString(){
 
-    Calendar calendar = Calendar::getInstance();;
+    Calendar* calendar = Calendar::getInstance();;
     
 
-    Date date = calendar.getTime();;
+    Date* date = calendar->getTime();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return date.toString();;
+                        return date->toString();;
     
 }
 

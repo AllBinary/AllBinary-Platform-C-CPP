@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_RESTGAMEOBJECTINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_RESTGAMEOBJECTINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,9 +48,9 @@
         
 class RestGameObjectInterface {
 
-    bool isRestNeeded();
+    public: virtual bool isRestNeeded() = 0;
 
-    bool isAGoodTimeToRest();
+    public: virtual bool isAGoodTimeToRest() = 0;
 
 };
 

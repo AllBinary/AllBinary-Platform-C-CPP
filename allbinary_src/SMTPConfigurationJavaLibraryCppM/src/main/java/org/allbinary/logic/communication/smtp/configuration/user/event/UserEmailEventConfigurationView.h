@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATIONVIEW_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATIONVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,28 +73,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserEmailEventConfigurationInterface.h"
-#include "UserEmailEventConfigurationData.h"
-#include "UserEmailEventConfiguration.h"
-#include "UserEmailEventConfigurationMapping.h"
+        #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationInterface.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationData.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfiguration.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationMapping.h"
 
 class UserEmailEventConfigurationView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: UserEmailEventConfigurationInterface userEmailEventConfigurationInterface;
+    private: UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface;
 
-public: UserEmailEventConfigurationView(Node node);
+public: UserEmailEventConfigurationView(Node* node);
 
-public: UserEmailEventConfigurationView(UserEmailEventConfigurationInterface userEmailEventConfigurationInterface);
+public: UserEmailEventConfigurationView(UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
-    public: UserEmailEventConfigurationInterface getUserEmailEventConfigurationInterface();
+    public: UserEmailEventConfigurationInterface* getUserEmailEventConfigurationInterface();
 
-    public: void setUserEmailEventConfigurationInterface(UserEmailEventConfigurationInterface userEmailEventConfigurationInterface);
+    public: void setUserEmailEventConfigurationInterface(UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface);
 
 };
 

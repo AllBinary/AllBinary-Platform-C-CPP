@@ -20,6 +20,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_BUILDING_EVENT_LOCALPLAYERBUILDINGEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_LAYER_BUILDING_EVENT_LOCALPLAYERBUILDINGEVENTHANDLER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/RTSLayerEvent.h>
@@ -52,19 +58,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BuildingEventListenerInterface.h"
+        #include "org/allbinary/game/layer/building/event/BuildingEventListenerInterface.h"
 
 class LocalPlayerBuildingEventHandler: public BasicEventHandler {
 
-    private: static LocalPlayerBuildingEventHandler eventHandler = LocalPlayerBuildingEventHandler();
+    private: static LocalPlayerBuildingEventHandler* eventHandler() { static std::unique_ptr<LocalPlayerBuildingEventHandler> value(new LocalPlayerBuildingEventHandler()); return value.get(); }
 
-    public: static LocalPlayerBuildingEventHandler getInstance();
+    public: static LocalPlayerBuildingEventHandler* getInstance();
 
 private: LocalPlayerBuildingEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
 };
 

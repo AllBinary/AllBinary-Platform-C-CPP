@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,20 +55,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "FallingPickupLayer.h"
+        #include "org/allbinary/game/ag/layer/pickup/FallingPickupLayer.h"
 
 class FallingPickupLayerFactory
             : public Object
-        : public AllBinaryLayerFactoryInterface {
+        , public AllBinaryLayerFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer getInstance(){
+    public: AllBinaryLayer* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FallingPickupLayer(RemoteInfo::REMOTE_INFO);
+                        return new FallingPickupLayer(RemoteInfo::REMOTE_INFO);
     
 }
 

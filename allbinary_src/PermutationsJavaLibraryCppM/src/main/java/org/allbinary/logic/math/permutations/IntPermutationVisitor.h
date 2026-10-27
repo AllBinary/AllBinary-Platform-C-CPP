@@ -9,6 +9,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/System.h"
         
 #include <org/allbinary/logic/NullUtil.h>
@@ -48,13 +56,13 @@ class IntPermutationVisitor: public Visitor {
 
 public: IntPermutationVisitor(std::vector<int32_t> data);
 
-    private: StringMaker stringBuilder = StringMaker();
+    private: StringMaker* stringBuilder = new StringMaker();
 
     public: Object* visit(Object* anyType);
 
     public: void print(std::vector<int32_t> data);
 
-    public: void print(std::vector<int32_t> data, StringMaker stringBuilder);
+    public: void print(std::vector<int32_t> data, StringMaker* stringBuilder);
 
 };
 

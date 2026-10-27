@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGS_PARENTINVENTORYTAGHELPER_H
         #define ADMIN_TAGS_PARENTINVENTORYTAGHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,19 +55,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HelperTag.h"
+        #include "admin/tags/HelperTag.h"
 
 class ParentInventoryTagHelper
             : public Object
          {
 
-    private: static ParentInventoryTagHelper instance() { return ParentInventoryTagHelper(); }
+    private: static ParentInventoryTagHelper* instance() { static std::unique_ptr<ParentInventoryTagHelper> value(new ParentInventoryTagHelper()); return value.get(); }
 
-    public: static ParentInventoryTagHelper getInstance();
+    public: static ParentInventoryTagHelper* getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void isValid(Object* tagClass, Tag parentTag);
+    public: void isValid(Object* tagClass, Tag* parentTag);
 
 };
 

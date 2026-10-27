@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_GPOINT_H
         #define ORG_ALLBINARY_GRAPHICS_GPOINT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -64,9 +70,9 @@ class GPoint
             : public Object
          {
 
-    public: static GPoint getInstance(GPoint point);
+    public: static GPoint* getInstance(GPoint* point);
 
-    private: static const std::string POINT_LABEL = "Point: ";
+    private: static inline const std::string POINT_LABEL = "Point: ";
 
     public: static std::string toStringStatic(int32_t x, int32_t y, int32_t z);
 

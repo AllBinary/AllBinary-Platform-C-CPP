@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_DOWNKEYEVENTHANDLERBASE_H
         #define ORG_ALLBINARY_GAME_INPUT_EVENT_DOWNKEYEVENTHANDLERBASE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -64,43 +70,43 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameKeyEvent.h"
-#include "DownKeyEventListenerInterface.h"
+        #include "org/allbinary/game/input/event/GameKeyEvent.h"
+#include "org/allbinary/game/input/event/DownKeyEventListenerInterface.h"
 
 class DownKeyEventHandlerBase: public BasicEventHandler {
 
-    private: static const std::string TOTAL_LISTENERS = " Total PlayerGameInput Listeners: ";
+    private: static inline const std::string TOTAL_LISTENERS = " Total PlayerGameInput Listeners: ";
 
-    private: static const std::string LISTENER_LABEL = " PlayerGameInput Listener: ";
+    private: static inline const std::string LISTENER_LABEL = " PlayerGameInput Listener: ";
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 : DownKeyEventHandlerBase();
 
-    public: void addListener(PlayerGameInput playerGameInput);
+    public: void addListener(PlayerGameInput* playerGameInput);
 
     public: void removeAllListeners();
 
-    public: void removeListenerSingleThreaded(EventListenerInterface eventListenerInterface);
+    public: void removeListenerSingleThreaded(EventListenerInterface* eventListenerInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void removeListener(EventListenerInterface eventListenerInterface);
+    public: void removeListener(EventListenerInterface* eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEventI(Integer eventObject);
+    public: void fireEventI(int32_t eventObject);
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEventForGameKeyEvent(GameKeyEvent eventObject);
+    public: void fireEventForGameKeyEvent(GameKeyEvent* eventObject);
 
                 //@Throws(Exception.constructor)
             
-    protected: void processI(Integer eventObject, EventListenerInterface eventListenerInterface);
+    protected: void processI(int32_t eventObject, EventListenerInterface* eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    protected: void processEvent(GameKeyEvent eventObject, EventListenerInterface eventListenerInterface);
+    protected: void processEvent(GameKeyEvent* eventObject, EventListenerInterface* eventListenerInterface);
 
     public: std::string toString();
 

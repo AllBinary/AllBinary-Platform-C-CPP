@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>
@@ -104,15 +112,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InventoryItemView.h"
+        #include "views/admin/inventory/InventoryItemView.h"
 
 class UpdateFileValidationView: public InventoryItemView, public ValidationComponentInterface {
 
-    private: static const std::string UPDATEPRODUCT = CommonStrings::getInstance().UPDATE;
+    private: static inline const std::string UPDATEPRODUCT = CommonStrings::getInstance()->UPDATE;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: UpdateFileValidationView(TransformInfoInterface transformInfoInterface) : InventoryItemView(transformInfoInterface){
+public: UpdateFileValidationView(TransformInfoInterface* transformInfoInterface) : InventoryItemView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -122,21 +130,21 @@ public: UpdateFileValidationView(TransformInfoInterface transformInfoInterface) 
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-    std::string command = this->getRequestHashMap().get(GLOBALS2::ADMINCOMMAND);;
+    std::string command = this->getRequestHashMap()->get(GLOBALS2::ADMINCOMMAND);;
     
 
                         if(false || command.compare(UpdateFileValidationView::UPDATEPRODUCT) != 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Invalid AdminCommand=" +command, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("Invalid AdminCommand=" +command, this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -151,14 +159,14 @@ public: UpdateFileValidationView(TransformInfoInterface transformInfoInterface) 
                                     }
                                 
 
-                        if(BasicItemValidation(this->itemInterface).isValid() == Boolean::FALSE)
+                        if((new BasicItemValidation(this->itemInterface))->isValid() == Boolean::FALSE)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("BasicItem is not valid", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("BasicItem is not valid", this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -173,32 +181,32 @@ public: UpdateFileValidationView(TransformInfoInterface transformInfoInterface) 
                                     }
                                 
 
-    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession().getStoreName());;
+    StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession()->getStoreName());;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(URLGLOBALS::getWebappPath());
+stringBuffer->append(URLGLOBALS::getWebappPath());
     
-stringBuffer.append(storeFrontInterface.getCurrentHostNamePath());
+stringBuffer->append(storeFrontInterface->getCurrentHostNamePath());
     
-stringBuffer.append(this->itemInterface.getCategory());
-    
-
-    std::string fullCategory = stringBuffer.toString();;
+stringBuffer->append(this->itemInterface.getCategory());
     
 
-    AbFile categoryFile = AbFile::createAbFile(fullCategory);;
+    std::string fullCategory = stringBuffer->toString();;
     
 
-                        if(!categoryFile.isDirectory())
+    AbFile* categoryFile = AbFile::createAbFile(fullCategory);;
+    
+
+                        if(!categoryFile->isDirectory())
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Category Does Not Exist: " +fullCategory, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("Category Does Not Exist: " +fullCategory, this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -213,10 +221,10 @@ stringBuffer.append(this->itemInterface.getCategory());
                                     }
                                 
 
-    InventoryEntity inventoryEntity = InventoryEntityFactory::getInstance().getInventoryEntityInstance();;
+    InventoryEntity* inventoryEntity = InventoryEntityFactory::getInstance()->getInventoryEntityInstance();;
     
 
-                        if(inventoryEntity.getItem(this->itemInterface.getId()) == 
+                        if(inventoryEntity->getItem(this->itemInterface.getId()) == 
                                     nullptr
                                 )
                         
@@ -231,20 +239,20 @@ stringBuffer.append(this->itemInterface.getCategory());
                                     }
                                 
 
-    Object* anyType = this->getRequestHashMap().get(basicItemData.IMAGE);;
+    Object* anyType = this->getRequestHashMap()->get(basicItemData.IMAGE);;
     
 
-                        if(HttpFileUploadUtil::getInstance().isValid(anyType))
+                        if(HttpFileUploadUtil::getInstance()->isValid(anyType))
                         
                                     {
                                     
-    FileItem fileItem = *dynamic_cast<FileItem*>(anyType);;
+    FileItem* fileItem = dynamic_cast<FileItem*>(anyType);;
     
 
-    int64_t size = fileItem.getSize();;
+    int64_t size = fileItem->getSize();;
     
 
-    std::string fileName = fileItem.getName();;
+    std::string fileName = fileItem->getName();;
     
 HttpFileUploadUtil::log(fileItem);
     
@@ -272,13 +280,13 @@ HttpFileUploadUtil::log(fileItem);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.put("Exception in validation", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Exception in validation", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -294,7 +302,7 @@ HttpFileUploadUtil::log(fileItem);
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -304,7 +312,7 @@ HttpFileUploadUtil::log(fileItem);
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -318,10 +326,10 @@ HttpFileUploadUtil::log(fileItem);
             
     public: std::string validationInfo(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    std::string command = this->getRequestHashMap().get(GLOBALS2::ADMINCOMMAND);;
+    std::string command = this->getRequestHashMap()->get(GLOBALS2::ADMINCOMMAND);;
     
 
                         if(false || command.compare(UpdateFileValidationView::UPDATEPRODUCT) != 0)
@@ -331,24 +339,24 @@ HttpFileUploadUtil::log(fileItem);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CommonSeps::getInstance().SPACE;
+                        return CommonSeps::getInstance()->SPACE;
     
 
                                     }
                                 
-stringBuffer.append(BasicItemValidation(this->itemInterface).validationInfo());
+stringBuffer->append((new BasicItemValidation(this->itemInterface))->validationInfo());
     
 
-    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession().getStoreName());;
+    StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession()->getStoreName());;
     
 
-    std::string fullCategory = URLGLOBALS::getWebappPath() +storeFrontInterface.getCurrentHostNamePath() +this->itemInterface.getCategory();;
+    std::string fullCategory = URLGLOBALS::getWebappPath() +storeFrontInterface->getCurrentHostNamePath() +this->itemInterface.getCategory();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Category: " +fullCategory, this, "validationInfo()");
+                                    this->logUtil->putF("Category: " +fullCategory, this, "validationInfo()");
     
 
                                     }
@@ -356,25 +364,25 @@ stringBuffer.append(BasicItemValidation(this->itemInterface).validationInfo());
 
         try {
             
-                        if(InventoryEntityFactory::getInstance().getInventoryEntityInstance().getItem(this->itemInterface.getId()) == 
+                        if(InventoryEntityFactory::getInstance()->getInventoryEntityInstance()->getItem(this->itemInterface.getId()) == 
                                     nullptr
                                 )
                         
                                     {
-                                    stringBuffer.append("Item does not exist.<br>");
+                                    stringBuffer->append("Item does not exist.<br>");
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(MoneyException& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Existing Item With MoneyException", this, "validationInfo()");
+                                    this->logUtil->putF("Existing Item With MoneyException", this, "validationInfo()");
     
 
                                     }
@@ -382,23 +390,23 @@ stringBuffer.append(BasicItemValidation(this->itemInterface).validationInfo());
 }
 
 
-    Object* anyType = this->getRequestHashMap().get(basicItemData.IMAGE);;
+    Object* anyType = this->getRequestHashMap()->get(basicItemData.IMAGE);;
     
 
-                        if(HttpFileUploadUtil::getInstance().isValid(anyType))
+                        if(HttpFileUploadUtil::getInstance()->isValid(anyType))
                         
                                     {
                                     
-    FileItem fileItem = *dynamic_cast<FileItem*>(anyType);;
+    FileItem* fileItem = dynamic_cast<FileItem*>(anyType);;
     
 
-    int64_t size = fileItem.getSize();;
+    int64_t size = fileItem->getSize();;
     
 
-    std::string fileName = fileItem.getName();;
+    std::string fileName = fileItem->getName();;
     
 
-    std::string fileItemFieldName = fileItem.getFieldName();;
+    std::string fileItemFieldName = fileItem->getFieldName();;
     
 this->validationInfo(stringBuffer, fileName, fileItemFieldName, size);
     
@@ -409,27 +417,27 @@ this->validationInfo(stringBuffer, fileName, fileItemFieldName, size);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: Boolean isValid(std::string fileName, int64_t size){
+    private: bool isValid(std::string fileName, int64_t size){
 
-    FileData fileData = FileData::getInstance();;
+    FileData* fileData = FileData::getInstance();;
     
 
-                        if(size > fileData.MINIMAGEFILESIZE)
+                        if(size > fileData->MINIMAGEFILESIZE)
                         
                                     {
                                     
-                        if(size < fileData.MAXIMAGEFILESIZE)
+                        if(size < fileData->MAXIMAGEFILESIZE)
                         
                                     {
                                     
-                        if(!StringValidationUtil::getInstance().isValidRequired(fileName, fileData.MINLEN, fileData.MAXLEN))
+                        if(!StringValidationUtil::getInstance()->isValidRequired(fileName, fileData->MINLEN, fileData->MAXLEN))
                         
                                     {
                                     
@@ -446,21 +454,21 @@ this->validationInfo(stringBuffer, fileName, fileItemFieldName, size);
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("File Size To Large: ");
+stringBuffer->append("File Size To Large: ");
     
-stringBuffer.appendlong(size);
+stringBuffer->appendlong(size);
     
-stringBuffer.append(">");
+stringBuffer->append(">");
     
-stringBuffer.appendint(fileData.MAXIMAGEFILESIZE);
+stringBuffer->appendint(fileData->MAXIMAGEFILESIZE);
     
-this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -488,12 +496,12 @@ this->processImageFiles();
 }
 
 
-    private: void validationInfo(StringMaker stringBuffer, std::string fileName, std::string fileItemFieldName, int64_t size){
+    private: void validationInfo(StringMaker* stringBuffer, std::string fileName, std::string fileItemFieldName, int64_t size){
 
-    FileData fileData = FileData::getInstance();;
+    FileData* fileData = FileData::getInstance();;
     
 
-                        if(size > fileData.MINIMAGEFILESIZE)
+                        if(size > fileData->MINIMAGEFILESIZE)
                         
                                     {
                                     
@@ -501,22 +509,22 @@ this->processImageFiles();
                         
                                     {
                                     
-                        if(size < fileData.MAXIMAGEFILESIZE)
+                        if(size < fileData->MAXIMAGEFILESIZE)
                         
                                     {
                                     
-                        if(!StringValidationUtil::getInstance().isValidRequired(fileName, fileData.MINLEN, fileData.MAXLEN))
+                        if(!StringValidationUtil::getInstance()->isValidRequired(fileName, fileData->MINLEN, fileData->MAXLEN))
                         
                                     {
-                                    stringBuffer.append("FileName must be >");
+                                    stringBuffer->append("FileName must be >");
     
-stringBuffer.appendint(fileData.MINLEN);
+stringBuffer->appendint(fileData->MINLEN);
     
-stringBuffer.append("and <");
+stringBuffer->append("and <");
     
-stringBuffer.appendint(fileData.MAXLEN);
+stringBuffer->appendint(fileData->MAXLEN);
     
-stringBuffer.append("<br />");
+stringBuffer->append("<br />");
     
 
                                     }
@@ -525,15 +533,15 @@ stringBuffer.append("<br />");
                                     }
                                 
                         else {
-                            stringBuffer.append("Image File Is Not The Right Size. ");
+                            stringBuffer->append("Image File Is Not The Right Size. ");
     
-stringBuffer.appendint(fileData.MINIMAGEFILESIZE);
+stringBuffer->appendint(fileData->MINIMAGEFILESIZE);
     
-stringBuffer.append("< > ");
+stringBuffer->append("< > ");
     
-stringBuffer.appendint(fileData.MAXIMAGEFILESIZE);
+stringBuffer->appendint(fileData->MAXIMAGEFILESIZE);
     
-stringBuffer.append("<br />");
+stringBuffer->append("<br />");
     
 
                         }

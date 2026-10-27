@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -86,9 +92,9 @@
         
 class OrderHistoryView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
     private: std::string shipped;
 
@@ -100,44 +106,44 @@ class OrderHistoryView: public HttpStoreComponentView, public DomNodeInterface {
 
     private: std::string cancelled;
 
-public: OrderHistoryView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+public: OrderHistoryView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->request= this->getPageContext().getRequest();
+this->request= dynamic_cast<HttpServletRequest*>(this->getPageContext()->getRequest());
     
-this->preprocessing= this->request.getParameter(OrderHistoryData::PREPROCESSINGNAME);
+this->preprocessing= this->request->getParameter(OrderHistoryData::PREPROCESSINGNAME);
     
-this->shipped= this->request.getParameter(OrderHistoryData::SHIPPEDNAME);
+this->shipped= this->request->getParameter(OrderHistoryData::SHIPPEDNAME);
     
-this->partiallyShipped= this->request.getParameter(OrderHistoryData::PARTIALLYSHIPPEDNAME);
+this->partiallyShipped= this->request->getParameter(OrderHistoryData::PARTIALLYSHIPPEDNAME);
     
-this->processing= this->request.getParameter(OrderHistoryData::PROCESSINGNAME);
+this->processing= this->request->getParameter(OrderHistoryData::PROCESSINGNAME);
     
-this->cancelled= this->request.getParameter(OrderHistoryData::CANCELLEDNAME);
+this->cancelled= this->request->getParameter(OrderHistoryData::CANCELLEDNAME);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
         try {
             
-    Node node = document.createElement(OrderData::ORDERS);;
+    Node* node = document->createElement(OrderData::ORDERS);;
     
 
-    OrderHistoryEntity orderHistoryEntity = OrderHistoryEntity();;
+    OrderHistoryEntity* orderHistoryEntity = new OrderHistoryEntity();;
     
 
-    BasicArrayList orderReviewVector = orderHistoryEntity.getOrders(this->getWeblisketSession().getUserName());;
+    BasicArrayList* orderReviewVector = orderHistoryEntity->getOrders(this->getWeblisketSession()->getUserName());;
     
 
-    int32_t size = orderReviewVector.size();;
+    int32_t size = orderReviewVector->size();;
     
 
 
@@ -147,38 +153,38 @@ this->cancelled= this->request.getParameter(OrderHistoryData::CANCELLEDNAME);
     int32_t index = 0;index < size; index++)
         {
 
-    OrderHistory orderHistory = orderReviewVector.get(index);;
+    OrderHistory* orderHistory = dynamic_cast<OrderHistory*>(orderReviewVector->get(index));;
     
 
-    Node orderHistoryNode = orderHistory.toXmlNode(document);;
+    Node* orderHistoryNode = orderHistory->toXmlNode(document);;
     
 
-    Node orderNode = document.createElement(orderHistory.getPaymentMethod());;
+    Node* orderNode = document->createElement(orderHistory->getPaymentMethod());;
     
-node.appendChild(orderHistory.toXmlNode(document));
+node->appendChild(orderHistory->toXmlNode(document));
     
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Attempt to View a users order history", this, "view");
+                                    this->logUtil->putF("Attempt to View a users order history", this, "view");
     
 
                                     }
                                 
-node.appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::PREPROCESSINGNAME, OrderHistoryData::PREPROCESSING));
+node->appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::PREPROCESSINGNAME, OrderHistoryData::PREPROCESSING));
     
-node.appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::PROCESSINGNAME, OrderHistoryData::PROCESSING));
+node->appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::PROCESSINGNAME, OrderHistoryData::PROCESSING));
     
-node.appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::CANCELLEDNAME, OrderHistoryData::CANCELLED));
+node->appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::CANCELLEDNAME, OrderHistoryData::CANCELLED));
     
-node.appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::PARTIALLYSHIPPEDNAME, OrderHistoryData::PARTIALLYSHIPPED));
+node->appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::PARTIALLYSHIPPEDNAME, OrderHistoryData::PARTIALLYSHIPPED));
     
-node.appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::SHIPPEDNAME, OrderHistoryData::SHIPPED));
+node->appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::SHIPPEDNAME, OrderHistoryData::SHIPPED));
     
-node.appendChild(ModDomHelper::createNameValueNodes(document, GLOBALS2::VIEWNAME, GLOBALS2::VIEW));
+node->appendChild(ModDomHelper::createNameValueNodes(document, GLOBALS2::VIEWNAME, GLOBALS2::VIEW));
     
 
 
@@ -188,13 +194,13 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, GLOBALS2::VIEWNAME
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XSLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XSLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, "toXmlNode", &e);
     
 
                                     }
@@ -210,7 +216,7 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, GLOBALS2::VIEWNAME
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this);
+this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     
 }
 
@@ -230,13 +236,13 @@ this->addDomNodeInterface(this);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }

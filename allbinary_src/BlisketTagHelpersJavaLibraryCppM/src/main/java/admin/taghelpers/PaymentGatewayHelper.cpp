@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -74,36 +80,36 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicTable.h"
+        #include "admin/taghelpers/BasicTable.h"
 
 class PaymentGatewayHelper: public BasicTable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: WeblisketSession weblisketSession;
+    private: WeblisketSession* weblisketSession;
 
-    private: const HttpServletRequest httpServletRequest;
+    private: HttpServletRequest* httpServletRequest;
 
-    private: const Portion portion;
+    private: Portion* portion;
 
-public: PaymentGatewayHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
+public: PaymentGatewayHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
 
         try {
-            this->weblisketSession= WeblisketSession(hashMap, pageContext);
+            this->weblisketSession= new WeblisketSession(hashMap, pageContext);
     
-this->httpServletRequest= pageContext.getRequest();
+this->httpServletRequest= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
     
-this->portion= Portion(hashMap);
+this->portion= new Portion(hashMap);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PAYMENTERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PAYMENTERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, &e);
     
 
                                     }
@@ -122,20 +128,20 @@ this->portion= Portion(hashMap);
 
         try {
             
-    PaymentGatewayInterface paymentGatewayInterface = PaymentGatewayInterfaceFactory().getInstance(this->httpServletRequest);;
+    PaymentGatewayInterface* paymentGatewayInterface = (new PaymentGatewayInterfaceFactory())->getInstance(this->httpServletRequest);;
     
-paymentGatewayInterface.setStoreName(this->weblisketSession.getStoreName());
+paymentGatewayInterface->setStoreName(this->weblisketSession->getStoreName());
     
-PaymentGatewayEntityFactory::getInstance().add(paymentGatewayInterface);
+PaymentGatewayEntityFactory::getInstance()->add(paymentGatewayInterface);
     
 
     std::string success = "Successfully Added New Payment Gateway";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "insert()");
+                                    this->logUtil->putF(success, this, "insert()");
     
 
                                     }
@@ -148,16 +154,16 @@ PaymentGatewayEntityFactory::getInstance().add(paymentGatewayInterface);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to add";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "add()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "add()", &e);
     
 
                                     }
@@ -177,40 +183,40 @@ PaymentGatewayEntityFactory::getInstance().add(paymentGatewayInterface);
 
         try {
             
-    PaymentGatewayInterface paymentGatewayInterface = PaymentGatewayInterfaceFactory().getInstance(this->httpServletRequest);;
+    PaymentGatewayInterface* paymentGatewayInterface = (new PaymentGatewayInterfaceFactory())->getInstance(this->httpServletRequest);;
     
-paymentGatewayInterface.setStoreName(this->weblisketSession.getStoreName());
+paymentGatewayInterface->setStoreName(this->weblisketSession->getStoreName());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Gateway Name: ");
+stringBuffer->append("Gateway Name: ");
     
-stringBuffer.append(paymentGatewayInterface.getName());
+stringBuffer->append(paymentGatewayInterface->getName());
     
-stringBuffer.append(" HashMap=");
+stringBuffer->append(" HashMap=");
     
-stringBuffer.append(paymentGatewayInterface.toHashMap(true).toString());
+stringBuffer->append(paymentGatewayInterface->toHashMap(true)->toString());
     
-this->logUtil.putF(stringBuffer.toString(), this, "update()");
+this->logUtil->putF(stringBuffer->toString(), this, "update()");
     
 
                                     }
                                 
-PaymentGatewayEntityFactory::getInstance().update(paymentGatewayInterface);
+PaymentGatewayEntityFactory::getInstance()->update(paymentGatewayInterface);
     
 
     std::string success = "Successfully Updated Payment Gateway information";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "update()");
+                                    this->logUtil->putF(success, this, "update()");
     
 
                                     }
@@ -223,16 +229,16 @@ PaymentGatewayEntityFactory::getInstance().update(paymentGatewayInterface);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to update payment gateway information";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "update()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "update()", &e);
     
 
                                     }
@@ -252,37 +258,37 @@ PaymentGatewayEntityFactory::getInstance().update(paymentGatewayInterface);
 
         try {
             
-    PaymentGatewayInterface paymentGatewayInterface = PaymentGatewayInterfaceFactory().getInstance(this->httpServletRequest);;
+    PaymentGatewayInterface* paymentGatewayInterface = (new PaymentGatewayInterfaceFactory())->getInstance(this->httpServletRequest);;
     
-paymentGatewayInterface.setStoreName(this->weblisketSession.getStoreName());
-    
-
-    std::string storeName = paymentGatewayInterface.getStoreName();;
+paymentGatewayInterface->setStoreName(this->weblisketSession->getStoreName());
     
 
-    std::string gatewayName = paymentGatewayInterface.getName();;
-    
-PaymentGatewayEntityFactory::getInstance().remove(storeName, BasicPaymentTypeUtil::getInstance().get(gatewayName));
+    std::string storeName = paymentGatewayInterface->getStoreName();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    std::string gatewayName = paymentGatewayInterface->getName();;
     
-stringBuffer.append("Successfully Removed payment gateway where store name=");
-    
-stringBuffer.append(storeName);
-    
-stringBuffer.append(" and gateway name=");
-    
-stringBuffer.append(gatewayName);
+PaymentGatewayEntityFactory::getInstance()->remove(storeName, BasicPaymentTypeUtil::getInstance()->get(gatewayName));
     
 
-    std::string success = stringBuffer.toString();;
+    StringMaker* stringBuffer = new StringMaker();;
+    
+stringBuffer->append("Successfully Removed payment gateway where store name=");
+    
+stringBuffer->append(storeName);
+    
+stringBuffer->append(" and gateway name=");
+    
+stringBuffer->append(gatewayName);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+    std::string success = stringBuffer->toString();;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "delete()");
+                                    this->logUtil->putF(success, this, "delete()");
     
 
                                     }
@@ -295,16 +301,16 @@ stringBuffer.append(gatewayName);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to remove payment gateway from table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "remove()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "remove()", &e);
     
 
                                     }
@@ -324,13 +330,13 @@ stringBuffer.append(gatewayName);
 
         try {
             
-    std::string success = PaymentGatewayEntityFactory::getInstance().dropTable();;
+    std::string success = PaymentGatewayEntityFactory::getInstance()->dropTable();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, this->commonStrings.DROP);
+                                    this->logUtil->putF(success, this, this->commonStrings.DROP);
     
 
                                     }
@@ -343,16 +349,16 @@ stringBuffer.append(gatewayName);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to drop payment transaction result table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.DROP, e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.DROP, &e);
     
 
                                     }
@@ -372,13 +378,13 @@ stringBuffer.append(gatewayName);
 
         try {
             
-    std::string success = PaymentGatewayEntityFactory::getInstance().createTable();;
+    std::string success = PaymentGatewayEntityFactory::getInstance()->createTable();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "create()");
+                                    this->logUtil->putF(success, this, "create()");
     
 
                                     }
@@ -391,16 +397,16 @@ stringBuffer.append(gatewayName);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to create payment transaction result table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "create()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "create()", &e);
     
 
                                     }
@@ -423,13 +429,13 @@ stringBuffer.append(gatewayName);
     std::string success = "Restore Successful";;
     
 
-    std::string result = AbSqlTableUtil::getInstance().restoreTable(PaymentGatewayEntityFactory::getInstance(), this->portion);;
+    std::string result = AbSqlTableUtil::getInstance()->restoreTable(PaymentGatewayEntityFactory::getInstance(), this->portion);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "restore()");
+                                    this->logUtil->putF(success, this, "restore()");
     
 
                                     }
@@ -442,16 +448,16 @@ stringBuffer.append(gatewayName);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to restore backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "restore()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "restore()", &e);
     
 
                                     }
@@ -474,13 +480,13 @@ stringBuffer.append(gatewayName);
     std::string success = "Restore Successful";;
     
 
-    std::string result = AbSqlTableUtil::getInstance().backupTable(PaymentGatewayEntityFactory::getInstance());;
+    std::string result = AbSqlTableUtil::getInstance()->backupTable(PaymentGatewayEntityFactory::getInstance());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "backup()");
+                                    this->logUtil->putF(success, this, "backup()");
     
 
                                     }
@@ -493,16 +499,16 @@ stringBuffer.append(gatewayName);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to make backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "backup()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "backup()", &e);
     
 
                                     }

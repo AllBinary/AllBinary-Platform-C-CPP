@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_IDENTIFICATION_GROUP_H
         #define ORG_ALLBINARY_GAME_IDENTIFICATION_GROUP_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -47,18 +53,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GroupInterface.h"
-#include "GroupCommonFactory.h"
+        #include "org/allbinary/game/identification/GroupInterface.h"
+#include "org/allbinary/game/identification/GroupCommonFactory.h"
 
 class Group
             : public Object
-        : public GroupInterface {
+        , public GroupInterface {
 
-    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
 
     private: int16_t teamId;
 
-    private: std::string string = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string string = StringUtil::getInstance()->EMPTY_STRING;
 
 public: Group(std::string teamName, int16_t teamId);
 

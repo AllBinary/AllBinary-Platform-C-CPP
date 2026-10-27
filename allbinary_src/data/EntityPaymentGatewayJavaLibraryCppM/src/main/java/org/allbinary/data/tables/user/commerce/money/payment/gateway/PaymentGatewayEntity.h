@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYENTITY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -106,25 +112,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentGatewayEntityInterface.h"
+        #include "org/allbinary/data/tables/user/commerce/money/payment/gateway/PaymentGatewayEntityInterface.h"
 
 class PaymentGatewayEntity: public AbSqlBean, public PaymentGatewayEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const std::string tableName = "paymentgateways";
 
 public: PaymentGatewayEntity();
 
-    public: void add(PaymentGatewayInterface paymentGatewayInterface);
+    public: void add(PaymentGatewayInterface* paymentGatewayInterface);
 
-    public: void update(PaymentGatewayInterface paymentGatewayInterface);
+    public: void update(PaymentGatewayInterface* paymentGatewayInterface);
 
-    public: PaymentGatewayInterface getPaymentGatewayInterface(std::string storeName, BasicPaymentType paymentType);
+    public: PaymentGatewayInterface* getPaymentGatewayInterface(std::string storeName, BasicPaymentType* paymentType);
 
-    public: BasicArrayList findPaymentTypeVectorByStore(std::string storeName);
+    public: BasicArrayList* findPaymentTypeVectorByStore(std::string storeName);
 
-    public: void remove(std::string storeName, BasicPaymentType paymentType);
+    public: void remove(std::string storeName, BasicPaymentType* paymentType);
 
     public: std::string createTableStatement();
 

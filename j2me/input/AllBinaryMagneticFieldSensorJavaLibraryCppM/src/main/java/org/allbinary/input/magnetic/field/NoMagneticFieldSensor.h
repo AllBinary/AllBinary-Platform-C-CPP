@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MAGNETIC_FIELD_NOMAGNETICFIELDSENSOR_H
         #define ORG_ALLBINARY_INPUT_MAGNETIC_FIELD_NOMAGNETICFIELDSENSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/input/AllBinarySensorListener.h>
@@ -47,13 +53,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryMagneticFieldSensor.h"
+        #include "org/allbinary/input/magnetic/field/AllBinaryMagneticFieldSensor.h"
 
 class NoMagneticFieldSensor: public AllBinaryMagneticFieldSensor, public AllBinarySensorListener {
 
                 //@Throws(Exception.constructor)
             
-    public: Orientation getOrientation();
+    public: Orientation* getOrientation();
 
     public: void onSensorChange();
 

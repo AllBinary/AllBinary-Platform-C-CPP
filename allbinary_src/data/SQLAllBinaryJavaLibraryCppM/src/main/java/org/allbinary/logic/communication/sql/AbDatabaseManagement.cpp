@@ -10,6 +10,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/net/InetAddress.h>
@@ -48,15 +54,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbSqlBean.h"
+        #include "org/allbinary/logic/communication/sql/AbSqlBean.h"
 
 class AbDatabaseManagement: public AbSqlBean {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const StringMaker sqlCommandLog = StringMaker();
+    protected: StringMaker* sqlCommandLog = new StringMaker();
 
     private: const std::string GRANT_ALL = "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER ON ";
 
@@ -92,7 +98,7 @@ class AbDatabaseManagement: public AbSqlBean {
 
     protected: const std::string ADD_TABLES_RESULTS_LABEL = "Add Table Results: ";
 
-public: AbDatabaseManagement(DatabaseConnectionInfoInterface databaseConnectionInfoInterface) : AbSqlBean(databaseConnectionInfoInterface){
+public: AbDatabaseManagement(DatabaseConnectionInfoInterface* databaseConnectionInfoInterface) : AbSqlBean(dynamic_cast<DbConnectionInfo*>(databaseConnectionInfoInterface)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -102,7 +108,7 @@ public: AbDatabaseManagement(DatabaseConnectionInfoInterface databaseConnectionI
 }
 
 
-public: AbDatabaseManagement(DbConnectionInfo connectionInfo) : AbSqlBean(connectionInfo){
+public: AbDatabaseManagement(DbConnectionInfo* connectionInfo) : AbSqlBean(connectionInfo){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -116,19 +122,19 @@ public: AbDatabaseManagement(DbConnectionInfo connectionInfo) : AbSqlBean(connec
 
         try {
             
-    InetAddress addr = InetAddress::getLocalHost();;
+    InetAddress* addr = InetAddress::getLocalHost();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return addr.getHostName();;
+                        return addr->getHostName();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->FAILED, this, GET_HOST_NAME, e);
+this->logUtil->put(this->FAILED, this, GET_HOST_NAME, &e);
     
 
 
@@ -145,32 +151,32 @@ this->logUtil.put(this->FAILED, this, GET_HOST_NAME, e);
             
     protected: bool addDbUser(std::string hostName, std::string db, std::string userName, std::string password){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->GRANT_ALL);
+stringBuffer->append(this->GRANT_ALL);
     
-stringBuffer.append(db);
+stringBuffer->append(db);
     
-stringBuffer.append(this->DOT_STAR);
+stringBuffer->append(this->DOT_STAR);
     
-stringBuffer.append(this->TO);
+stringBuffer->append(this->TO);
     
-stringBuffer.append(userName);
+stringBuffer->append(userName);
     
-stringBuffer.append(hostName);
+stringBuffer->append(hostName);
     
-stringBuffer.append(this->IDENTIFIED_BY);
+stringBuffer->append(this->IDENTIFIED_BY);
     
-stringBuffer.append(password);
+stringBuffer->append(password);
     
-stringBuffer.append(this->WITH_GRANT_OPTION);
+stringBuffer->append(this->WITH_GRANT_OPTION);
     
 
-    std::string sqlStatement = stringBuffer.toString();;
+    std::string sqlStatement = stringBuffer->toString();;
     
-this->sqlCommandLog.append(sqlStatement);
+this->sqlCommandLog->append(sqlStatement);
     
-this->sqlCommandLog.append(this->commonSeps.NEW_LINE);
+this->sqlCommandLog->append(this->commonSeps.NEW_LINE);
     
 super.executeSQLStatement(sqlStatement);
     
@@ -208,9 +214,9 @@ super.executeSQLStatement(sqlStatement);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->UNABLE_TO_CREATE_USER +userName, this, this->METHOD_ADD_USER, e);
+this->logUtil->put(this->UNABLE_TO_CREATE_USER +userName, this, this->METHOD_ADD_USER, &e);
     
 
 
@@ -223,15 +229,15 @@ this->logUtil.put(this->UNABLE_TO_CREATE_USER +userName, this, this->METHOD_ADD_
 }
 
 
-    protected: Boolean addDb(std::string db){
+    protected: bool addDb(std::string db){
 
         try {
             
     std::string sqlStatement = this->sqlStrings.CREATE_DATABASE +db;;
     
-this->sqlCommandLog.append(sqlStatement);
+this->sqlCommandLog->append(sqlStatement);
     
-this->sqlCommandLog.append(this->commonSeps.NEW_LINE);
+this->sqlCommandLog->append(this->commonSeps.NEW_LINE);
     
 super.executeSQLStatement(sqlStatement);
     
@@ -243,9 +249,9 @@ super.executeSQLStatement(sqlStatement);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->UNABLE_TO_CREATE_DATABASE +db, this, this->METHOD_ADD_DB, e);
+this->logUtil->put(this->UNABLE_TO_CREATE_DATABASE +db, this, this->METHOD_ADD_DB, &e);
     
 
 

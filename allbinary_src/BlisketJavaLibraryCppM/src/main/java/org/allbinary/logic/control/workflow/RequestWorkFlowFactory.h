@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_REQUESTWORKFLOWFACTORY_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_REQUESTWORKFLOWFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -76,8 +82,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WorkFlowInterface.h"
-#include "WorkFlowData.h"
+        #include "org/allbinary/logic/control/workflow/WorkFlowInterface.h"
+#include "org/allbinary/logic/control/workflow/WorkFlowData.h"
 
 class RequestWorkFlowFactory
             : public Object
@@ -85,11 +91,11 @@ class RequestWorkFlowFactory
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: static WorkFlowInterface getInstance(ServletRequest request, ServletResponse response, ServletConfig servletConfig, ServletContext servletContext);
+    public: static WorkFlowInterface* getInstance(ServletRequest* request, ServletResponse* response, ServletConfig* servletConfig, ServletContext* servletContext);
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: static WorkFlowInterface getInstance(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+    public: static WorkFlowInterface* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
 private: RequestWorkFlowFactory();
 

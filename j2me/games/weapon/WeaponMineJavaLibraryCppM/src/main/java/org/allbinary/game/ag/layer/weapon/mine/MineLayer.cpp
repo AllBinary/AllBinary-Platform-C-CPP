@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/ag/weapon/media/audio/DropWeaponSound.h>
@@ -71,13 +77,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MineWeaponResources.h"
+        #include "org/allbinary/game/ag/layer/weapon/mine/MineWeaponResources.h"
 
 class MineLayer: public SimpleWeaponLayer {
 
-    private: static const std::string NAME = "MineLayer";
+    private: static inline const std::string NAME = "MineLayer";
 
-public: MineLayer(ViewPositionBase viewPosition) : SimpleWeaponLayer(MineLayer::NAME, RemoteInfo::REMOTE_INFO,  -1, NoMovementFactory::getInstance().getMovmentInstance(), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(MineWeaponResources::getInstance().RESOURCE).getInstance(0), SimpleWeaponLayer::createDestroyed(), Rectangle(PointFactory::getInstance().ZERO_ZERO, 10, 10), viewPosition){
+public: MineLayer(ViewPositionBase* viewPosition) : SimpleWeaponLayer(MineLayer::NAME, RemoteInfo::REMOTE_INFO,  -1, NoMovementFactory::getInstance()->getMovmentInstance(), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(MineWeaponResources::getInstance()->RESOURCE)->getInstance(0), SimpleWeaponLayer::createDestroyed(), new Rectangle(PointFactory::getInstance()->ZERO_ZERO, 10, 10), viewPosition){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -87,14 +93,14 @@ public: MineLayer(ViewPositionBase viewPosition) : SimpleWeaponLayer(MineLayer::
 }
 
 
-    private: const ViewPositionEventHandler viewPositionEventHandler = ViewPositionEventHandler::getInstance();
+    private: ViewPositionEventHandler* viewPositionEventHandler = ViewPositionEventHandler::getInstance();
 
     public: void initXYZ(int32_t x, int32_t y, int32_t z){
 this->setPosition(x +5, y +5, z);
     
-this->viewPositionEventHandler.addListener(this);
+this->viewPositionEventHandler->addListener(dynamic_cast<AllBinaryLayer*>(this));
     
-SecondaryPlayerQueueFactory::getInstance().add(DropWeaponSound::getInstance());
+SecondaryPlayerQueueFactory::getInstance()->add(DropWeaponSound::getInstance());
     
 }
 
@@ -124,7 +130,7 @@ super.setDestroyed(destroyed);
                         if(this->isDestroyed())
                         
                                     {
-                                    this->viewPositionEventHandler.removeListener(this);
+                                    this->viewPositionEventHandler->removeListener(this);
     
 
                                     }

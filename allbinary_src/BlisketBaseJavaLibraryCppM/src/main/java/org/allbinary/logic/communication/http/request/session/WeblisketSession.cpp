@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -93,16 +99,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WeblisketSessionInterface.h"
-#include "WeblisketSessionData.h"
+        #include "org/allbinary/logic/communication/http/request/session/WeblisketSessionInterface.h"
+#include "org/allbinary/logic/communication/http/request/session/WeblisketSessionData.h"
 
 class WeblisketSession
             : public Object
-        : public WeblisketSessionInterface {
+        , public WeblisketSessionInterface {
 
-    private: HttpSession session;
+    private: HttpSession* session;
 
-public: WeblisketSession(HashMap<Object*, Object*> hashMap, PageContext pageContext) : WeblisketSession(hashMap, pageContext.getRequest()){
+public: WeblisketSession(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : WeblisketSession(hashMap, dynamic_cast<HttpServletRequest*>(pageContext->getRequest())){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -112,14 +118,14 @@ public: WeblisketSession(HashMap<Object*, Object*> hashMap, PageContext pageCont
 }
 
 
-public: WeblisketSession(HashMap<Object*, Object*> hashMap, HttpServletRequest httpServletRequest){
+public: WeblisketSession(HashMap<Object*, Object*>* hashMap, HttpServletRequest* httpServletRequest){
 
-    HashMap<Object*, Object*> propertiesHashMap = hashMap;;
+    HashMap<Object*, Object*>* propertiesHashMap = hashMap;;
     
 
-    HttpServletRequest request = httpServletRequest;;
+    HttpServletRequest* request = httpServletRequest;;
     
-this->session= request.getSession(true);
+this->session= request->getSession(true);
     
 
                         if(this->getStoreName() == 
@@ -127,7 +133,7 @@ this->session= request.getSession(true);
                                 )
                         
                                     {
-                                    this->setStoreName(propertiesHashMap.get(StoreFrontData::getInstance().NAME));
+                                    this->setStoreName(propertiesHashMap->get(StoreFrontData::getInstance()->NAME));
     
 
                                     }
@@ -140,55 +146,55 @@ this->session= request.getSession(true);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getId();;
+                        return this->session->getId();;
     
 }
 
 
     public: void setPassword(std::string password){
-this->session.setAttribute(UserData::PASSWORD, password);
+this->session->setAttribute(UserData::PASSWORD, password);
     
 }
 
 
     public: void setUserName(std::string userName){
-this->session.setAttribute(UserData::USERNAME, userName);
+this->session->setAttribute(UserData::USERNAME, userName);
     
 }
 
 
     public: void setPaymentMethod(std::string value){
-this->session.setAttribute(PaymentGatewayData::NAME.toString(), value);
+this->session->setAttribute(PaymentGatewayData::NAME.toString(), value);
     
 }
 
 
     public: void setAuthenticated(){
-this->session.setAttribute(WeblisketSessionData::AUTHENTICATED, BooleanFactory::getInstance().TRUE_STRING);
+this->session->setAttribute(WeblisketSessionData::AUTHENTICATED, BooleanFactory::getInstance()->TRUE_STRING);
     
 }
 
 
-    public: void setRole(UserRole aRole){
-this->session.setAttribute(UserRoleData::NAME.toString(), aRole);
+    public: void setRole(UserRole* aRole){
+this->session->setAttribute(UserRoleData::NAME.toString(), aRole);
     
 }
 
 
-    public: void setAttempts(Integer value){
-this->session.setAttribute(WeblisketSessionData::ATTEMPTS, value);
+    public: void setAttempts(int32_t value){
+this->session->setAttribute(WeblisketSessionData::ATTEMPTS, value);
     
 }
 
 
     public: void setTimeout(std::string value){
-this->session.setAttribute(WeblisketSessionData::TIMEOUT, value);
+this->session->setAttribute(WeblisketSessionData::TIMEOUT, value);
     
 }
 
 
     public: void setStoreName(std::string value){
-this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
+this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
     
 }
 
@@ -198,7 +204,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(org.allbinary.globals.GLOBALS2.WEBAPPPATH);
+                        return this->session->getAttribute(org.allbinary.globals.GLOBALS2.WEBAPPPATH);
     
 }
 
@@ -208,7 +214,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(UserData::USERNAME);
+                        return this->session->getAttribute(UserData::USERNAME);
     
 }
 
@@ -218,7 +224,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(UserData::PASSWORD);
+                        return this->session->getAttribute(UserData::PASSWORD);
     
 }
 
@@ -228,7 +234,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(PaymentGatewayData::NAME.toString());
+                        return this->session->getAttribute(PaymentGatewayData::NAME.toString());
     
 }
 
@@ -238,17 +244,17 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(WeblisketSessionData::AUTHENTICATED);
+                        return this->session->getAttribute(WeblisketSessionData::AUTHENTICATED);
     
 }
 
 
-    public: Integer getAttempts(){
+    public: int32_t getAttempts(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(WeblisketSessionData::ATTEMPTS);
+                        return this->session->getAttribute(WeblisketSessionData::ATTEMPTS);
     
 }
 
@@ -258,7 +264,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(WeblisketSessionData::TIMEOUT);
+                        return this->session->getAttribute(WeblisketSessionData::TIMEOUT);
     
 }
 
@@ -268,16 +274,16 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(StoreFrontData::getInstance().NAME);
+                        return this->session->getAttribute(StoreFrontData::getInstance()->NAME);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: UserRole getRole(){
+    public: UserRole* getRole(){
 
-    UserRole userRole = this->session.getAttribute(UserRoleData::NAME.toString());;
+    UserRole* userRole = dynamic_cast<UserRole*>(this->session->getAttribute(UserRoleData::NAME.toString()));;
     
 
                         if(userRole != 
@@ -289,7 +295,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UserRoleB::getRole(userRole.getBasicUserRole().getRole());;
+                        return UserRoleB::getRole(userRole->getBasicUserRole()->getRole());;
     
 
                                     }
@@ -309,19 +315,19 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
                 //@Throws(Exception.constructor)
             
-    public: OrderInterface getOrder(){
+    public: OrderInterface* getOrder(){
 
-    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(this->getStoreName());;
+    StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(this->getStoreName());;
     
 
-    std::string basketName = storeFrontInterface.getBasketName();;
+    std::string basketName = storeFrontInterface->getBasketName();;
     
 
-                        if(!StringValidationUtil::getInstance().isEmpty(basketName))
+                        if(!StringValidationUtil::getInstance()->isEmpty(basketName))
                         
                                     {
                                     
-    OrderInterface orderInterface = this->session.getAttribute(basketName);;
+    OrderInterface* orderInterface = dynamic_cast<OrderInterface*>(this->session->getAttribute(basketName));;
     
 
                         if(orderInterface == 
@@ -329,12 +335,12 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
                                 )
                         
                                     {
-                                    orderInterface= Order(Basket());
+                                    orderInterface= dynamic_cast<OrderInterface*>(new Order(new Basket()));
     
 
                                     }
                                 
-this->session.setAttribute(basketName, orderInterface);
+this->session->setAttribute(basketName, orderInterface);
     
 
 
@@ -349,7 +355,7 @@ this->session.setAttribute(basketName, orderInterface);
                             
 
 
-                            throw Exception("Basket Name Not Found");
+                            throw new Exception("Basket Name Not Found");
                     
 
                         }
@@ -358,19 +364,19 @@ this->session.setAttribute(basketName, orderInterface);
 
 
     public: void setAuthenticated(bool value){
-this->session.setAttribute(WeblisketSessionData::AUTHENTICATED, BooleanFactory::getInstance().FALSE_STRING);
+this->session->setAttribute(WeblisketSessionData::AUTHENTICATED, BooleanFactory::getInstance()->FALSE_STRING);
     
 }
 
 
     public: void clear(){
-this->session.removeAttribute(WeblisketSessionData::AUTHENTICATED);
+this->session->removeAttribute(WeblisketSessionData::AUTHENTICATED);
     
-this->session.removeAttribute(WeblisketSessionData::TIMEOUT);
+this->session->removeAttribute(WeblisketSessionData::TIMEOUT);
     
-this->session.removeAttribute(UserRoleData::NAME.toString());
+this->session->removeAttribute(UserRoleData::NAME.toString());
     
-this->session.removeAttribute(UserData::USERNAME);
+this->session->removeAttribute(UserData::USERNAME);
     
 }
 
@@ -380,7 +386,7 @@ this->session.removeAttribute(UserData::USERNAME);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getCreationTime();;
+                        return this->session->getCreationTime();;
     
 }
 
@@ -390,23 +396,23 @@ this->session.removeAttribute(UserData::USERNAME);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getLastAccessedTime();;
+                        return this->session->getLastAccessedTime();;
     
 }
 
 
     public: void removeBasket(){
 
-    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(this->getStoreName());;
+    StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(this->getStoreName());;
     
 
-    std::string basketName = storeFrontInterface.getBasketName();;
+    std::string basketName = storeFrontInterface->getBasketName();;
     
 
-                        if(!StringValidationUtil::getInstance().isEmpty(basketName))
+                        if(!StringValidationUtil::getInstance()->isEmpty(basketName))
                         
                                     {
-                                    this->session.removeAttribute(basketName);
+                                    this->session->removeAttribute(basketName);
     
 
                                     }

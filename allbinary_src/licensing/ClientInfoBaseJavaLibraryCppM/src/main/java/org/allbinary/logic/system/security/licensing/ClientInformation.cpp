@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/TsUtil.h>
@@ -74,16 +80,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbeClientInformationInterface.h"
-#include "AbeClientInformationData.h"
+        #include "org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h"
+#include "org/allbinary/logic/system/security/licensing/AbeClientInformationData.h"
 // This is the information sent to the license server
 class ClientInformation
             : public Object
-        : public AbeClientInformationInterface {
+        , public AbeClientInformationInterface {
 
-    private: GenericOperatingSystem operatingSystemInterface = NoOperatingSystem::NO_OPERATING_SYSTEM;
+    private: GenericOperatingSystem* operatingSystemInterface = NoOperatingSystem::NO_OPERATING_SYSTEM;
 
-    private: const TsUtil tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil = TsUtil::getInstance();
 
     private: std::string name;
 
@@ -95,9 +101,9 @@ class ClientInformation
 
     private: bool hardSale = true;
 
-    private: std::string licenseId = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string licenseId = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: BasicArrayList licenseServers = BasicArrayListUtil::getInstance().getImmutableInstance();
+    private: BasicArrayList* licenseServers = BasicArrayListUtil::getInstance()->getImmutableInstance();
 
 public: ClientInformation(std::string name, std::string version, std::string specialName, std::string shortName){
 this->name= name;
@@ -106,7 +112,7 @@ this->version= version;
     
 this->specialName= specialName;
     
-this->shortName= StringMaker().append(shortName).append(CommonSeps::getInstance().UNDERSCORE).append(version).toString();
+this->shortName= (new StringMaker())->append(shortName)->append(CommonSeps::getInstance()->UNDERSCORE)->append(version)->toString();
     
 this->init();
     
@@ -117,7 +123,7 @@ this->init();
 }
 
 
-    public: GenericOperatingSystem getOperatingSystemInterface(){
+    public: GenericOperatingSystem* getOperatingSystemInterface(){
 
 
 
@@ -167,7 +173,7 @@ this->init();
 }
 
 
-    public: BasicArrayList getLicenseServers(){
+    public: BasicArrayList* getLicenseServers(){
 
 
 
@@ -182,7 +188,7 @@ this->init();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->licenseServers.objectArray[index];
+                        return this->licenseServers->objectArray[index];
     
 }
 
@@ -192,44 +198,44 @@ this->init();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->licenseServers.size();;
+                        return this->licenseServers->size();;
     
 }
 
 
-    public: ABHashtable<Object*, Object*> toHashtable(){
+    public: ABHashtable<Object*, Object*>* toHashtable(){
 
-    AbeClientInformationData abeClientInformationData = AbeClientInformationData::getInstance();;
-    
-
-    GenericOperatingSystem genericOperatingSystem = this->getOperatingSystemInterface();;
+    AbeClientInformationData* abeClientInformationData = AbeClientInformationData::getInstance();;
     
 
-    ABHashtable<Object*, Object*> clientInfoHashtable = StdUtil::getInstance().createHashtable();;
-    
-clientInfoHashtable.put(abeClientInformationData.NAME, this->name);
-    
-clientInfoHashtable.put(abeClientInformationData.VERSION, this->version);
-    
-clientInfoHashtable.put(abeClientInformationData.SPECIALNAME, this->specialName);
-    
-clientInfoHashtable.put(abeClientInformationData.LICENSEID, this->getLicenseId());
-    
-clientInfoHashtable.put(abeClientInformationData.OSNAME, genericOperatingSystem.getName());
-    
-clientInfoHashtable.put(abeClientInformationData.OSARCH, genericOperatingSystem.getArch());
-    
-clientInfoHashtable.put(abeClientInformationData.OSVERSION, genericOperatingSystem.getVersion());
-    
-clientInfoHashtable.put(abeClientInformationData.OS, genericOperatingSystem.toString());
+    GenericOperatingSystem* genericOperatingSystem = this->getOperatingSystemInterface();;
     
 
-    HardwareInterface hardwareInterface = SystemHardwareFactory::getInstance().getInstance(genericOperatingSystem);;
+    ABHashtable<Object*, Object*>* clientInfoHashtable = StdUtil::getInstance()->createHashtable();;
+    
+clientInfoHashtable->put(abeClientInformationData->NAME, this->name);
+    
+clientInfoHashtable->put(abeClientInformationData->VERSION, this->version);
+    
+clientInfoHashtable->put(abeClientInformationData->SPECIALNAME, this->specialName);
+    
+clientInfoHashtable->put(abeClientInformationData->LICENSEID, this->getLicenseId());
+    
+clientInfoHashtable->put(abeClientInformationData->OSNAME, genericOperatingSystem->getName());
+    
+clientInfoHashtable->put(abeClientInformationData->OSARCH, genericOperatingSystem->getArch());
+    
+clientInfoHashtable->put(abeClientInformationData->OSVERSION, genericOperatingSystem->getVersion());
+    
+clientInfoHashtable->put(abeClientInformationData->OS, genericOperatingSystem->toString());
     
 
-    std::string hardwareString = hardwareInterface.toString();;
+    HardwareInterface* hardwareInterface = SystemHardwareFactory::getInstance()->getInstance(genericOperatingSystem);;
     
-clientInfoHashtable.put(abeClientInformationData.HARDWARE, hardwareString);
+
+    std::string hardwareString = hardwareInterface->toString();;
+    
+clientInfoHashtable->put(abeClientInformationData->HARDWARE, hardwareString);
     
 
 
@@ -242,7 +248,7 @@ clientInfoHashtable.put(abeClientInformationData.HARDWARE, hardwareString);
 
     public: bool isSameId(std::string alicenseId){
 
-                        if(this->tsUtil.compareTo(this->getLicenseId(), alicenseId) == 0)
+                        if(this->tsUtil->compareTo(this->getLicenseId(), alicenseId) == 0)
                         
                                     {
                                     
@@ -267,12 +273,12 @@ clientInfoHashtable.put(abeClientInformationData.HARDWARE, hardwareString);
 }
 
 
-    public: bool isLargerOrDifferentServerList(BasicArrayList list){
+    public: bool isLargerOrDifferentServerList(BasicArrayList* list){
 
-    int32_t size = list.size() -1;;
+    int32_t size = list->size() -1;;
     
 
-    int32_t currentSize = this->licenseServers.size() -1;;
+    int32_t currentSize = this->licenseServers->size() -1;;
     
 
                         if(size > currentSize)
@@ -295,7 +301,7 @@ clientInfoHashtable.put(abeClientInformationData.HARDWARE, hardwareString);
     int32_t index = size;index >= 0; index--)
         {
 
-    std::string newServerName = list.objectArray[index];;
+    std::string newServerName = list->objectArray[index];;
     
 
 
@@ -305,10 +311,10 @@ clientInfoHashtable.put(abeClientInformationData.HARDWARE, hardwareString);
     int32_t index2 = currentSize;index2 >= 0; index2--)
         {
 
-    std::string nextOldServerName = this->licenseServers.objectArray[index];;
+    std::string nextOldServerName = this->licenseServers->objectArray[index];;
     
 
-                        if(this->tsUtil.compareTo(newServerName, nextOldServerName) != 0)
+                        if(this->tsUtil->compareTo(newServerName, nextOldServerName) != 0)
                         
                                     {
                                     
@@ -349,7 +355,7 @@ this->hardSale= hardSale;
 }
 
 
-    protected: void setOperatingSystemInterface(GenericOperatingSystem operatingSystemInterface){
+    protected: void setOperatingSystemInterface(GenericOperatingSystem* operatingSystemInterface){
 this->operatingSystemInterface= operatingSystemInterface;
     
 }
@@ -361,7 +367,7 @@ this->licenseId= licenseId;
 }
 
 
-    protected: void setLicenseServers(BasicArrayList licenseServers){
+    protected: void setLicenseServers(BasicArrayList* licenseServers){
 this->licenseServers= licenseServers;
     
 }

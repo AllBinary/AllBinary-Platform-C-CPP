@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -52,24 +60,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageArrayBaseRotationAnimation.h"
-#include "ImageArrayRotationAnimationInfo.h"
+        #include "org/allbinary/animation/image/ImageArrayBaseRotationAnimation.h"
+#include "org/allbinary/animation/image/ImageArrayRotationAnimationInfo.h"
 
 class ImageArrayRotationAnimation: public ImageArrayBaseRotationAnimation {
 
                 //@Throws(Exception.constructor)
             
-    protected: static ImageArrayRotationAnimation createAnimation(Object* anyType, AnimationBehavior animationBehavior);
+    protected: static ImageArrayRotationAnimation* createAnimation(Object* anyType, AnimationBehavior* animationBehavior);
 
     private: int32_t expectedTotalFrames= 0;
 
-public: ImageArrayRotationAnimation(std::vector<Image> imageArray, AngleInfo angleInfo, int32_t totalAngle, AnimationBehavior animationBehavior);
+public: ImageArrayRotationAnimation(std::vector<Image*> imageArray, AngleInfo* angleInfo, int32_t totalAngle, AnimationBehavior* animationBehavior);
 
                 //@Throws(Exception.constructor)
             
-    private: void init(std::vector<Image> imageArray, AngleInfo angleInfo, int32_t totalAngle);
+    private: void init(std::vector<Image*> imageArray, AngleInfo* angleInfo, int32_t totalAngle);
 
-    public: void setImageArray(std::vector<Image> imageArray);
+    public: void setImageArray(std::vector<Image*> imageArray);
 
 };
 

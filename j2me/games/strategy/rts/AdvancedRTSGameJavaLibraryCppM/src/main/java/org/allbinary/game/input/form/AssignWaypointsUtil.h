@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_ASSIGNWAYPOINTSUTIL_H
         #define ORG_ALLBINARY_GAME_INPUT_FORM_ASSIGNWAYPOINTSUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,21 +79,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PrimaryWaypointHelper.h"
+        #include "org/allbinary/game/input/form/PrimaryWaypointHelper.h"
 
 class AssignWaypointsUtil
             : public Object
          {
 
-    private: static AssignWaypointsUtil instance() { return AssignWaypointsUtil(); }
+    private: static AssignWaypointsUtil* instance() { static std::unique_ptr<AssignWaypointsUtil> value(new AssignWaypointsUtil()); return value.get(); }
 
-    public: static AssignWaypointsUtil getInstance();
+    public: static AssignWaypointsUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const RTSLayerEvent WAYPOINT_EVENT = RTSLayerEvent(NullPathFindingLayer::NULL_PATH_FINDING_LAYER);
+    private: RTSLayerEvent* WAYPOINT_EVENT = new RTSLayerEvent(NullPathFindingLayer::NULL_PATH_FINDING_LAYER);
 
-    public: void set(UnitLayer unitLayer, AdvancedRTSGameLayer ownerAdvancedRTSGameLayer);
+    public: void set(UnitLayer* unitLayer, AdvancedRTSGameLayer* ownerAdvancedRTSGameLayer);
 
 };
 

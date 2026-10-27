@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/rand/MyRandomFactory.h>
@@ -50,22 +56,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdvertisementProcessorInterface.h"
+        #include "org/allbinary/business/advertisement/AdvertisementProcessorInterface.h"
 
 class Advertisements
             : public Object
          {
 
-    private: const BasicArrayList bannerList = BasicArrayListD();
+    private: BasicArrayList* bannerList = new BasicArrayListD();
 
-    private: const BasicArrayList pageList = BasicArrayListD();
+    private: BasicArrayList* pageList = new BasicArrayListD();
 
-    public: void addPage(AdvertisementProcessorInterface advertisementProcessorInterface){
+    public: void addPage(AdvertisementProcessorInterface* advertisementProcessorInterface){
 
-                        if(!this->pageList.contains(advertisementProcessorInterface))
+                        if(!this->pageList->contains(advertisementProcessorInterface))
                         
                                     {
-                                    this->pageList.add(advertisementProcessorInterface);
+                                    this->pageList->add(advertisementProcessorInterface);
     
 
                                     }
@@ -75,19 +81,19 @@ class Advertisements
 
     public: void startRandomPage(){
 
-    int32_t size = this->pageList.size();;
+    int32_t size = this->pageList->size();;
     
 
                         if(size > 0)
                         
                                     {
                                     
-    int32_t random = this->myRandomFactory.getAbsoluteNextInt(size);;
+    int32_t random = this->myRandomFactory->getAbsoluteNextInt(size);;
     
 
-    AdvertisementProcessorInterface advertisementProcessorInterface = this->pageList.objectArray[random];;
+    AdvertisementProcessorInterface* advertisementProcessorInterface = dynamic_cast<AdvertisementProcessorInterface*>(this->pageList->objectArray[random]);;
     
-advertisementProcessorInterface.start();
+advertisementProcessorInterface->start();
     
 
                                     }
@@ -95,27 +101,27 @@ advertisementProcessorInterface.start();
 }
 
 
-    private: const MyRandomFactory myRandomFactory = MyRandomFactory::getInstance();
+    private: MyRandomFactory* myRandomFactory = MyRandomFactory::getInstance();
 
     public: void processRandomPage(){
 
-                        if(LockedUtil::getInstance().isLocked())
+                        if(LockedUtil::getInstance()->isLocked())
                         
                                     {
                                     
-    int32_t size = this->pageList.size();;
+    int32_t size = this->pageList->size();;
     
 
                         if(size > 0)
                         
                                     {
                                     
-    int32_t random = this->myRandomFactory.getAbsoluteNextInt(size);;
+    int32_t random = this->myRandomFactory->getAbsoluteNextInt(size);;
     
 
-    AdvertisementProcessorInterface advertisementProcessorInterface = this->pageList.objectArray[random];;
+    AdvertisementProcessorInterface* advertisementProcessorInterface = dynamic_cast<AdvertisementProcessorInterface*>(this->pageList->objectArray[random]);;
     
-advertisementProcessorInterface.process();
+advertisementProcessorInterface->process();
     
 
                                     }
@@ -132,24 +138,24 @@ advertisementProcessorInterface.process();
 
 
                         for (
-    int32_t index = this->pageList.size();--index >= 0; )
+    int32_t index = this->pageList->size();--index >= 0; )
         {
 
-    AdvertisementProcessorInterface advertisementProcessorInterface = this->pageList.objectArray[index];;
+    AdvertisementProcessorInterface* advertisementProcessorInterface = dynamic_cast<AdvertisementProcessorInterface*>(this->pageList->objectArray[index]);;
     
-advertisementProcessorInterface.stop();
+advertisementProcessorInterface->stop();
     
 }
 
 }
 
 
-    public: void addBanner(AdvertisementProcessorInterface advertisementProcessorInterface){
+    public: void addBanner(AdvertisementProcessorInterface* advertisementProcessorInterface){
 
-                        if(!this->bannerList.contains(advertisementProcessorInterface))
+                        if(!this->bannerList->contains(advertisementProcessorInterface))
                         
                                     {
-                                    this->bannerList.add(advertisementProcessorInterface);
+                                    this->bannerList->add(advertisementProcessorInterface);
     
 
                                     }
@@ -163,12 +169,12 @@ advertisementProcessorInterface.stop();
 
 
                         for (
-    int32_t index = this->bannerList.size();--index >= 0; )
+    int32_t index = this->bannerList->size();--index >= 0; )
         {
 
-    AdvertisementProcessorInterface advertisementProcessorInterface = this->bannerList.objectArray[index];;
+    AdvertisementProcessorInterface* advertisementProcessorInterface = dynamic_cast<AdvertisementProcessorInterface*>(this->bannerList->objectArray[index]);;
     
-advertisementProcessorInterface.start();
+advertisementProcessorInterface->start();
     
 }
 
@@ -181,21 +187,21 @@ advertisementProcessorInterface.start();
 
 
                         for (
-    int32_t index = this->bannerList.size();--index >= 0; )
+    int32_t index = this->bannerList->size();--index >= 0; )
         {
 
-    AdvertisementProcessorInterface advertisementProcessorInterface = this->bannerList.objectArray[index];;
+    AdvertisementProcessorInterface* advertisementProcessorInterface = dynamic_cast<AdvertisementProcessorInterface*>(this->bannerList->objectArray[index]);;
     
-advertisementProcessorInterface.stop();
+advertisementProcessorInterface->stop();
     
 }
 
 }
 
 
-    public: AdvertisementProcessorInterface getBanner(int32_t index){
+    public: AdvertisementProcessorInterface* getBanner(int32_t index){
 
-    AdvertisementProcessorInterface advertisementProcessorInterface = this->bannerList.objectArray[index];;
+    AdvertisementProcessorInterface* advertisementProcessorInterface = dynamic_cast<AdvertisementProcessorInterface*>(this->bannerList->objectArray[index]);;
     
 
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PLAYEROWNEDRTSLAYERS_H
         #define ORG_ALLBINARY_GAME_LAYER_PLAYEROWNEDRTSLAYERS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -55,7 +61,7 @@ class PlayerOwnedRTSLayers
             : public Object
          {
 
-    public: const BasicArrayList rtsLayerList = BasicArrayListD();
+    public: BasicArrayList* rtsLayerList = new BasicArrayListD();
 
     public: std::string toString();
 

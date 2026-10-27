@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -55,9 +61,9 @@ class CommonSeps
             : public Object
          {
 
-    private: static CommonSeps instance() { return CommonSeps(); }
+    private: static CommonSeps* instance() { static std::unique_ptr<CommonSeps> value(new CommonSeps()); return value.get(); }
 
-    public: static CommonSeps getInstance(){
+    public: static CommonSeps* getInstance(){
 
 
 
@@ -83,9 +89,9 @@ class CommonSeps
 
     public: const std::string UNDERSCORE = "_";
 
-    public: const std::string COLON_SEP = StringMaker().append(this->COLON).append(this->SPACE).toString();
+    public: const std::string COLON_SEP = (new StringMaker())->append(this->COLON)->append(this->SPACE)->toString();
 
-    public: const std::string COMMA_SEP = StringMaker().append(this->COMMA).append(this->SPACE).toString();
+    public: const std::string COMMA_SEP = (new StringMaker())->append(this->COMMA)->append(this->SPACE)->toString();
 
     public: const std::string PARENTHESIS_OPEN = "(";
 

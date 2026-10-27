@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <android/graphics/Matrix.h>
@@ -70,15 +76,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageBaseRotationAnimation.h"
+        #include "org/allbinary/animation/image/ImageBaseRotationAnimation.h"
 
 class AllBinaryNoFlickerAndroidImageRotationAnimation: public ImageBaseRotationAnimation {
 
-    private: const ImageModifierUtil imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
+    private: ImageModifierUtil* imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
 
-    private: const AndroidImageUtil androidImageUtil = AndroidImageUtil::getInstance();
+    private: AndroidImageUtil* androidImageUtil = AndroidImageUtil::getInstance();
 
-    private: const Matrix matrix = Matrix();
+    private: Matrix* matrix = new Matrix();
 
     private: int32_t halfWidth;
 
@@ -86,19 +92,19 @@ class AllBinaryNoFlickerAndroidImageRotationAnimation: public ImageBaseRotationA
 
     private: int16_t increment;
 
-    private: Image originalImage;
+    private: Image* originalImage;
 
-    private: const std::vector<Image> twoImages = std::vector<Image>(2);
+    private: const std::vector<Image*> twoImages = std::vector<Image*>(2);
 
-    private: Image imageToShow;
+    private: Image* imageToShow;
 
     private: int32_t bufferedImageIndex= 0;
 
-protected: AllBinaryNoFlickerAndroidImageRotationAnimation(Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior);
+protected: AllBinaryNoFlickerAndroidImageRotationAnimation(Image* originalImage, Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior);
 
-    public: void setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor* basicColor);
 
-    public: void changeBasicColor(BasicColor basicColor);
+    public: void changeBasicColor(BasicColor* basicColor);
 
     public: void setAlpha(int32_t alpha);
 
@@ -112,7 +118,7 @@ protected: AllBinaryNoFlickerAndroidImageRotationAnimation(Image originalImage, 
 
     public: void swap();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
 };
 

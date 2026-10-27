@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_WINDOWS_WINDOWSOPERATINGSYSTEMFACTORY_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_WINDOWS_WINDOWSOPERATINGSYSTEMFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,21 +73,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WindowsOS.h"
+        #include "org/allbinary/logic/system/os/windows/WindowsOS.h"
 
 class WindowsOperatingSystemFactory
             : public Object
          {
 
-    private: static WindowsOperatingSystemFactory instance() { return WindowsOperatingSystemFactory(); }
+    private: static WindowsOperatingSystemFactory* instance() { static std::unique_ptr<WindowsOperatingSystemFactory> value(new WindowsOperatingSystemFactory()); return value.get(); }
 
-    public: static WindowsOperatingSystemFactory getInstance();
+    public: static WindowsOperatingSystemFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: WindowsOperatingSystemFactory();
 
-    public: GenericOperatingSystem getOperatingSystemInstance();
+    public: GenericOperatingSystem* getOperatingSystemInstance();
 
 };
 

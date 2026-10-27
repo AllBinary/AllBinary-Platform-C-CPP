@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TRANSACTIONTYPEFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TRANSACTIONTYPEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,27 +47,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransactionType.h"
+        #include "org/allbinary/business/user/commerce/money/payment/types/TransactionType.h"
 
 class TransactionTypeFactory
             : public Object
          {
 
-    private: static TransactionTypeFactory instance() { return TransactionTypeFactory(); }
+    private: static TransactionTypeFactory* instance() { static std::unique_ptr<TransactionTypeFactory> value(new TransactionTypeFactory()); return value.get(); }
 
-    public: static TransactionTypeFactory getInstance();
+    public: static TransactionTypeFactory* getInstance();
 
-    public: const TransactionType SALE = TransactionType("Sale");
+    public: TransactionType* SALE = new TransactionType("Sale");
 
-    public: const TransactionType CREDIT = TransactionType("Credit");
+    public: TransactionType* CREDIT = new TransactionType("Credit");
 
-    public: const TransactionType AUTHORIZATION = TransactionType("Authorization");
+    public: TransactionType* AUTHORIZATION = new TransactionType("Authorization");
 
-    public: const TransactionType DELAYEDCAPTURE = TransactionType("Delayed Capture");
+    public: TransactionType* DELAYEDCAPTURE = new TransactionType("Delayed Capture");
 
-    public: const TransactionType VOID = TransactionType("Void");
+    public: TransactionType* VOID = new TransactionType("Void");
 
-    public: const TransactionType INQUIRY = TransactionType("Inquiry");
+    public: TransactionType* INQUIRY = new TransactionType("Inquiry");
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class MusicStrings
             : public Object
          {
 
-    private: static MusicStrings instance() { return MusicStrings(); }
+    private: static MusicStrings* instance() { static std::unique_ptr<MusicStrings> value(new MusicStrings()); return value.get(); }
 
-    public: static MusicStrings getInstance(){
+    public: static MusicStrings* getInstance(){
 
 
 

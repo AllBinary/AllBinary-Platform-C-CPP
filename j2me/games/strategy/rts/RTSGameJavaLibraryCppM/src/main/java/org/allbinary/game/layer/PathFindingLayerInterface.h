@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PATHFINDINGLAYERINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_PATHFINDINGLAYERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/combat/destroy/DestroyableInterface.h>
@@ -56,33 +62,33 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapCellPositionAreaBase.h"
-#include "SelectionHudPaintable.h"
-#include "RTSLayer2LogHelper.h"
+        #include "org/allbinary/game/layer/GeographicMapCellPositionAreaBase.h"
+#include "org/allbinary/game/layer/SelectionHudPaintable.h"
+#include "org/allbinary/game/layer/RTSLayer2LogHelper.h"
 
 class PathFindingLayerInterface: public WaypointLayerInterface, public GameKeyEventSourceInterface, public GroupInterfaceCompositeInterface, public DestroyableInterface {
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList getEndGeographicMapCellPositionList();
+    public: virtual BasicArrayList* getEndGeographicMapCellPositionList() = 0;
 
-    bool shouldHandleStartSameAsEnd();
+    public: virtual bool shouldHandleStartSameAsEnd() = 0;
 
-    GeographicMapCellPositionAreaBase getGeographicMapCellPositionArea();
+    public: virtual GeographicMapCellPositionAreaBase* getGeographicMapCellPositionArea() = 0;
 
-    SelectionHudPaintable getHudPaintable();
-
-                //@Throws(Exception.constructor)
-            
-    void handleCost(PathFindingLayerInterface ownerLayer);
-
-    PathFindingLayerInterface getParentLayer();
-
-    RTSLayer2LogHelper getRTSLayer2LogHelper();
+    public: virtual SelectionHudPaintable* getHudPaintable() = 0;
 
                 //@Throws(Exception.constructor)
             
-    void setTarget(PathFindingLayerInterface targetGameLayer);
+    public: virtual void handleCost(PathFindingLayerInterface* ownerLayer) = 0;
+
+    public: virtual PathFindingLayerInterface* getParentLayer() = 0;
+
+    public: virtual RTSLayer2LogHelper* getRTSLayer2LogHelper() = 0;
+
+                //@Throws(Exception.constructor)
+            
+    public: virtual void setTarget(PathFindingLayerInterface* targetGameLayer) = 0;
 
 };
 

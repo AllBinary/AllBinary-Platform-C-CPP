@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <admin/taghelpers/UpdateOrderHelperFactory.h>
 
       
@@ -39,14 +45,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TableTag.h"
+        #include "admin/tags/TableTag.h"
 
 class UpdateOrderTag: public TableTag {
 
 public: UpdateOrderTag(){
-this->setTagHelperFactory(UpdateOrderHelperFactory());
+this->setTagHelperFactory(new UpdateOrderHelperFactory());
     
-this->setTagRequestHelperFactory(UpdateOrderHelperFactory());
+this->setTagRequestHelperFactory(new UpdateOrderHelperFactory());
     
 }
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/thread/ARunnable.h>
 
       
@@ -44,39 +50,39 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JDialog.h"
-#include "CloseJDialogListenerInterface.h"
-#include "Frame.h"
-#include "JButton.h"
-#include "JLabel.h"
-#include "ActionListener.h"
-#include "ActionEvent.h"
-#include "GroupLayout.h"
-#include "Short.h"
-#include "EventQueue.h"
-#include "JFrame.h"
+        #include "org/allbinary/gui/dialog/JDialog.h"
+#include "org/allbinary/gui/dialog/CloseJDialogListenerInterface.h"
+#include "org/allbinary/gui/dialog/Frame.h"
+#include "org/allbinary/gui/dialog/JButton.h"
+#include "org/allbinary/gui/dialog/JLabel.h"
+#include "org/allbinary/gui/dialog/ActionListener.h"
+#include "org/allbinary/gui/dialog/ActionEvent.h"
+#include "org/allbinary/gui/dialog/GroupLayout.h"
+#include "org/allbinary/gui/dialog/Short.h"
+#include "org/allbinary/gui/dialog/EventQueue.h"
+#include "org/allbinary/gui/dialog/JFrame.h"
 
 class BasicTextJDialog: public javax::swing::JDialog {
 
     public: static void main(std::vector<std::string> args);
 
-    private: CloseJDialogListenerInterface closeListenerInterface;
+    private: CloseJDialogListenerInterface* closeListenerInterface;
 
-public: BasicTextJDialog(java::awt::Frame parent, bool modal, std::string text);
+public: BasicTextJDialog(java::awt::Frame* parent, bool modal, std::string text);
 
     public: void setText(std::string text);
 
-    public: void addCloseListener(CloseJDialogListenerInterface closeListenerInterface);
+    public: void addCloseListener(CloseJDialogListenerInterface* closeListenerInterface);
 
 public: BasicTextJDialog(std::string text);
 
     private: void initComponents();
 
-    private: void jButton1ActionPerformed(java::awt::event::ActionEvent evt);
+    private: void jButton1ActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: javax::swing::JButton jButton1;
+    private: javax::swing::JButton* jButton1;
 
-    private: javax::swing::JLabel textJLabel;
+    private: javax::swing::JLabel* textJLabel;
 
 };
 

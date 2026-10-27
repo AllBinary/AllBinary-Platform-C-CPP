@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MIDLET_EXITRUNNABLE_H
         #define ORG_ALLBINARY_MIDLET_EXITRUNNABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -57,23 +63,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryMidlet.h"
+        #include "org/allbinary/midlet/AllBinaryMidlet.h"
 
 class ExitRunnable
             : public Object
-        : public Runnable {
+        , public Runnable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: AllBinaryMidlet midlet;
+    private: AllBinaryMidlet* midlet;
 
-    private: Processor processor;
+    private: Processor* processor;
 
     private: bool isProgress;
 
-public: ExitRunnable(AllBinaryMidlet midlet, Processor processor, bool isProgress);
+public: ExitRunnable(AllBinaryMidlet* midlet, Processor* processor, bool isProgress);
 
     public: void run();
 

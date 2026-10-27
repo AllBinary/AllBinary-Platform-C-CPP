@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -70,7 +76,7 @@
         
 class NumberStringHud: public BasicHud, public PaintableInterface {
 
-    private: PrimitiveLongUtil primitiveLongUtil;
+    private: PrimitiveLongUtil* primitiveLongUtil;
 
     private: std::string prependString;
 
@@ -86,7 +92,7 @@ class NumberStringHud: public BasicHud, public PaintableInterface {
 
     private: int32_t valueTotalDigits= 0;
 
-public: NumberStringHud(std::string prependString, int32_t max, int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor) : BasicHud(location, direction, bufferZone, basicColor){
+public: NumberStringHud(std::string prependString, int32_t max, int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor) : BasicHud(location, direction, bufferZone, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -95,9 +101,9 @@ public: NumberStringHud(std::string prependString, int32_t max, int32_t location
                     
 this->prependString= prependString;
     
-this->PREPEND_STRING= prependString.split('');
+this->PREPEND_STRING= JavaString::toCharArray(prependString);
     
-this->valueString= PrimitiveLongSingleton::getInstance().NUMBER_CHAR_ARRAYS[0];
+this->valueString= PrimitiveLongSingleton::getInstance()->NUMBER_CHAR_ARRAYS[0];
     
 this->primitiveLongUtil= PrimitiveLongUtil::createPowerOfTen(max +1);
     
@@ -112,7 +118,7 @@ this->value= 0;
                                     
 
 
-                            throw RuntimeException(BasicHudFactory::getInstance().DIRECTION_EXCEPTION);
+                            throw new RuntimeException(BasicHudFactory::getInstance()->DIRECTION_EXCEPTION);
                     
 
                                     }
@@ -120,11 +126,11 @@ this->value= 0;
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->offset= font.stringWidth(this->prependString) +MyFontProcessor::defaultCharWidth(font);
+this->offset= font->stringWidth(this->prependString) +MyFontProcessor::defaultCharWidth(font);
     
 super.updateMeasurement(graphics);
     
@@ -159,9 +165,9 @@ this->value= value;
 
                                     }
                                 
-this->valueString= this->primitiveLongUtil.getCharArray(this->value);
+this->valueString= this->primitiveLongUtil->getCharArray(this->value);
     
-this->valueTotalDigits= this->primitiveLongUtil.getCurrentTotalDigits();
+this->valueTotalDigits= this->primitiveLongUtil->getCurrentTotalDigits();
     
 }
 
@@ -172,13 +178,13 @@ this->set(this->value -value);
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 super.paintDX(graphics, this->PREPEND_STRING, 0, this->PREPEND_STRING.size(), this->valueString, 0, this->valueTotalDigits, this->offset);
     
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 this->myFontProcessor.process(graphics);
     
 
@@ -195,14 +201,14 @@ this->myFontProcessor.process(graphics);
     
 this->basicSetColorUtil.setBasicColorP(graphics, this->getBasicColorP());
     
-graphics.drawChars(charArray, 0, len, x, y, 0);
+graphics->drawChars(charArray, 0, len, x, y, 0);
     
-graphics.drawChars(charArray2, 0, len2, x -this->offset, y, 0);
+graphics->drawChars(charArray2, 0, len2, x -this->offset, y, 0);
     
 }
 
 
-    public: void paintThreed(Graphics graphics){
+    public: void paintThreed(Graphics* graphics){
 }
 
 

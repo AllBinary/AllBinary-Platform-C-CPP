@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INIT_INIT_H
         #define ORG_ALLBINARY_INIT_INIT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,13 +52,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InitInterface.h"
+        #include "org/allbinary/init/InitInterface.h"
 
 class Init
             : public Object
-        : public InitInterface {
+        , public InitInterface {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             

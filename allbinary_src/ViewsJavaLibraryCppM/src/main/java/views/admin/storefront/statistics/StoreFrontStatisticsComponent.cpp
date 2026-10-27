@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>
@@ -65,28 +71,28 @@
         
 class StoreFrontStatisticsComponent: public HttpStoreComponentView {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: StoreFrontInterface newStoreFrontInterface;
+    protected: StoreFrontInterface* newStoreFrontInterface;
 
-    private: DomNodeInterface domNodeInterface;
+    private: DomNodeInterface* domNodeInterface;
 
-public: StoreFrontStatisticsComponent(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+public: StoreFrontStatisticsComponent(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->newStoreFrontInterface= StoreFrontFactory::getInstance(transformInfoInterface.getStoreName());
+this->newStoreFrontInterface= dynamic_cast<StoreFrontInterface*>(StoreFrontFactory::getInstance(transformInfoInterface->getStoreName()));
     
-this->domNodeInterface= RealTimeStoreFrontStatisticsView(RealTimeStoreFrontStatistics(this->newStoreFrontInterface), this->getWeblisketSession().getRole());
+this->domNodeInterface= new RealTimeStoreFrontStatisticsView(new RealTimeStoreFrontStatistics(this->newStoreFrontInterface), this->getWeblisketSession()->getRole());
     
 }
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this->domNodeInterface);
+this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this->domNodeInterface));
     
 }
 
@@ -106,13 +112,13 @@ this->addDomNodeInterface(this->domNodeInterface);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }

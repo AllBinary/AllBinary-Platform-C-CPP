@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/LayerPositionFinderInterface.h>
@@ -53,11 +59,11 @@
         
 class NullRTSGameLayerPositionFinder
             : public Object
-        : public LayerPositionFinderInterface {
+        , public LayerPositionFinderInterface {
 
-    private: static NullRTSGameLayerPositionFinder instance() { return NullRTSGameLayerPositionFinder(); }
+    private: static NullRTSGameLayerPositionFinder* instance() { static std::unique_ptr<NullRTSGameLayerPositionFinder> value(new NullRTSGameLayerPositionFinder()); return value.get(); }
 
-    public: static NullRTSGameLayerPositionFinder getInstance(){
+    public: static NullRTSGameLayerPositionFinder* getInstance(){
 
 
 
@@ -71,9 +77,9 @@ protected: NullRTSGameLayerPositionFinder(){
 }
 
 
-    public: AllBinaryLayer getLayerInterface(GeographicMapCellPosition geographicMapCellPosition){
+    public: AllBinaryLayer* getLayerInterface(GeographicMapCellPosition* geographicMapCellPosition){
 
-    AllBinaryLayer layerInterface = DropCellPositionHistory::getInstance().getLayerInterface(geographicMapCellPosition);;
+    AllBinaryLayer* layerInterface = DropCellPositionHistory::getInstance()->getLayerInterface(geographicMapCellPosition);;
     
 
 

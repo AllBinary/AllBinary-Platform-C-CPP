@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/CollidableCompositeLayer.h>
@@ -53,12 +59,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OptimizedAllBinaryCollisionLayerManager.h"
-#include "CollidableBaseBehavior.h"
+        #include "org/allbinary/game/collision/OptimizedAllBinaryCollisionLayerManager.h"
+#include "org/allbinary/game/collision/CollidableBaseBehavior.h"
 
 class OptimizedAllBinaryCollisionLayerProcessorForCollidableLayer: public LayerProcessor {
 
-public: OptimizedAllBinaryCollisionLayerProcessorForCollidableLayer() : LayerProcessor(OptimizedAllBinaryCollisionLayerManager()){
+public: OptimizedAllBinaryCollisionLayerProcessorForCollidableLayer() : LayerProcessor(new OptimizedAllBinaryCollisionLayerManager()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -70,28 +76,28 @@ public: OptimizedAllBinaryCollisionLayerProcessorForCollidableLayer() : LayerPro
 
                 //@Throws(Exception.constructor)
             
-    public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t startIndex){
+    public: void processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t startIndex){
 
-    CollidableCompositeLayer collidableInterfaceCompositeInterface = layerInterface;;
+    CollidableCompositeLayer* collidableInterfaceCompositeInterface = dynamic_cast<CollidableCompositeLayer*>(layerInterface);;
     
 
-    CollidableBaseBehavior collidableBase = collidableInterfaceCompositeInterface.getCollidableInferface();;
+    CollidableBaseBehavior* collidableBase = collidableInterfaceCompositeInterface->getCollidableInferface();;
     
 
-                        if(collidableBase.isCollidable(collidableInterfaceCompositeInterface))
+                        if(collidableBase->isCollidable(collidableInterfaceCompositeInterface))
                         
                                     {
                                     
-    LayerManager layerManager = this->getLayerManager();;
+    LayerManager* layerManager = this->getLayerManager();;
     
 
-    int32_t size = layerManager.getSize();;
+    int32_t size = layerManager->getSize();;
     
 
-    CollidableCompositeLayer collidableInterfaceCompositeInterface2;;
+    CollidableCompositeLayer* collidableInterfaceCompositeInterface2;;
     
 
-    CollidableBaseBehavior collidableBase2;;
+    CollidableBaseBehavior* collidableBase2;;
     
 
 
@@ -100,17 +106,17 @@ public: OptimizedAllBinaryCollisionLayerProcessorForCollidableLayer() : LayerPro
                         for (
     int32_t index = startIndex +1;index < size; index++)
         {
-collidableInterfaceCompositeInterface2= layerManager.getLayerAt(index);
+collidableInterfaceCompositeInterface2= dynamic_cast<CollidableCompositeLayer*>(layerManager->getLayerAt(index));
     
-collidableBase2= collidableInterfaceCompositeInterface2.getCollidableInferface();
+collidableBase2= collidableInterfaceCompositeInterface2->getCollidableInferface();
     
 
-                        if(collidableBase2.isCollidable(collidableInterfaceCompositeInterface) && collidableBase.isCollision(collidableInterfaceCompositeInterface, collidableInterfaceCompositeInterface2))
+                        if(collidableBase2->isCollidable(collidableInterfaceCompositeInterface) && collidableBase->isCollision(collidableInterfaceCompositeInterface, collidableInterfaceCompositeInterface2))
                         
                                     {
-                                    collidableBase.collide(collidableInterfaceCompositeInterface, collidableInterfaceCompositeInterface2);
+                                    collidableBase->collide(collidableInterfaceCompositeInterface, collidableInterfaceCompositeInterface2);
     
-collidableBase2.collide(collidableInterfaceCompositeInterface2, collidableInterfaceCompositeInterface);
+collidableBase2->collide(collidableInterfaceCompositeInterface2, collidableInterfaceCompositeInterface);
     
 
                                     }
@@ -123,9 +129,9 @@ collidableBase2.collide(collidableInterfaceCompositeInterface2, collidableInterf
 }
 
 
-    public: bool isProcessorLayer(AllBinaryLayer layerInterface){
+    public: bool isProcessorLayer(AllBinaryLayer* layerInterface){
 
-                        if(layerInterface.implmentsCollidableInterface())
+                        if(layerInterface->implmentsCollidableInterface())
                         
                                     {
                                     

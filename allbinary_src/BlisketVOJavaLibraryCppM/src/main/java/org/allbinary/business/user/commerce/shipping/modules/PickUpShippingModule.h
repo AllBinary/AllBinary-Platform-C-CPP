@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_PICKUPSHIPPINGMODULE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_PICKUPSHIPPINGMODULE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/business/user/commerce/inventory/order/OrderInterface.h>
@@ -50,13 +56,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShippingInterface.h"
+        #include "org/allbinary/business/user/commerce/shipping/modules/ShippingInterface.h"
 
 class PickUpShippingModule
             : public Object
-        : public ShippingInterface {
+        , public ShippingInterface {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: const std::string name = "No Shipping (For Pickup Orders Only)";
 
@@ -64,7 +70,7 @@ class PickUpShippingModule
 
 public: PickUpShippingModule();
 
-    public: Money getCost(OrderInterface order);
+    public: Money* getCost(OrderInterface* order);
 
     public: std::string getDescription();
 

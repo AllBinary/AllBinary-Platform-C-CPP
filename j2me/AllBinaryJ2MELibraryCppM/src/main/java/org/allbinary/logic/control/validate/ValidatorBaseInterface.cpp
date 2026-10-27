@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/util/ABHashtable.h>
 
       
@@ -45,13 +53,13 @@
         
 class ValidatorBaseInterface {
 
-    Boolean isValid()
+    public: virtual bool isValid() = 0;
 
-    std::string validationInfo()
+    public: virtual std::string validationInfo() = 0;
 
-    ABHashtable<Object*, Object*> toHashtable()
+    public: virtual ABHashtable<Object*, Object*>* toHashtable() = 0;
 
-    BasicArrayList toList()
+    public: virtual BasicArrayList* toList() = 0;
 
 };
 

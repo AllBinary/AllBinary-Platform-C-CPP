@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERSTRINGS_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERSTRINGS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class ShaderStrings
             : public Object
          {
 
-    private: static ShaderStrings instance() { return ShaderStrings(); }
+    private: static ShaderStrings* instance() { static std::unique_ptr<ShaderStrings> value(new ShaderStrings()); return value.get(); }
 
-    public: static ShaderStrings getInstance();
+    public: static ShaderStrings* getInstance();
 
     public: const std::string NO_PROGRAM_HANDLE = "No program handle";
 

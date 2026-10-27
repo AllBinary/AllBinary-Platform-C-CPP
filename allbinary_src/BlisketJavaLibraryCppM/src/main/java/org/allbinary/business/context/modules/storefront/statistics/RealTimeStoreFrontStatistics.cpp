@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,33 +73,33 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreFrontStatisticsInterface.h"
+        #include "org/allbinary/business/context/modules/storefront/statistics/StoreFrontStatisticsInterface.h"
 
 class RealTimeStoreFrontStatistics
             : public Object
-        : public StoreFrontStatisticsInterface {
+        , public StoreFrontStatisticsInterface {
 
-    private: StoreFrontAdvertisementsStatisticsInterface storeFrontAdvertisementsStatisticsInterface;
+    private: StoreFrontAdvertisementsStatisticsInterface* storeFrontAdvertisementsStatisticsInterface;
 
-    private: StoreFrontUsersStatisticsInterface storeFrontUsersStatisticsInterface;
+    private: StoreFrontUsersStatisticsInterface* storeFrontUsersStatisticsInterface;
 
-    private: StoreFrontInventoryStatisticsInterface storeFrontInventoryStatisticsInterface;
+    private: StoreFrontInventoryStatisticsInterface* storeFrontInventoryStatisticsInterface;
 
-    private: StoreFrontOrdersHistoryStatisticsInterface storeFrontOrderHistoryStatisticsInterface;
+    private: StoreFrontOrdersHistoryStatisticsInterface* storeFrontOrderHistoryStatisticsInterface;
 
-public: RealTimeStoreFrontStatistics(StoreFrontInterface storeFrontInterface){
-this->storeFrontAdvertisementsStatisticsInterface= StoreFrontAdvertisementsStatistics(storeFrontInterface);
+public: RealTimeStoreFrontStatistics(StoreFrontInterface* storeFrontInterface){
+this->storeFrontAdvertisementsStatisticsInterface= dynamic_cast<StoreFrontAdvertisementsStatisticsInterface*>(new StoreFrontAdvertisementsStatistics(storeFrontInterface));
     
-this->storeFrontUsersStatisticsInterface= StoreFrontUsersStatistics(storeFrontInterface);
+this->storeFrontUsersStatisticsInterface= dynamic_cast<StoreFrontUsersStatisticsInterface*>(new StoreFrontUsersStatistics(storeFrontInterface));
     
-this->storeFrontInventoryStatisticsInterface= StoreFrontInventoryStatistics(storeFrontInterface);
+this->storeFrontInventoryStatisticsInterface= dynamic_cast<StoreFrontInventoryStatisticsInterface*>(new StoreFrontInventoryStatistics(storeFrontInterface));
     
-this->storeFrontOrderHistoryStatisticsInterface= StoreFrontOrdersHistoryStatistics(storeFrontInterface);
+this->storeFrontOrderHistoryStatisticsInterface= dynamic_cast<StoreFrontOrdersHistoryStatisticsInterface*>(new StoreFrontOrdersHistoryStatistics(storeFrontInterface));
     
 }
 
 
-    public: StoreFrontAdvertisementsStatisticsInterface getAdvertisements(){
+    public: StoreFrontAdvertisementsStatisticsInterface* getAdvertisements(){
 
 
 
@@ -103,7 +109,7 @@ this->storeFrontOrderHistoryStatisticsInterface= StoreFrontOrdersHistoryStatisti
 }
 
 
-    public: StoreFrontUsersStatisticsInterface getUsers(){
+    public: StoreFrontUsersStatisticsInterface* getUsers(){
 
 
 
@@ -113,7 +119,7 @@ this->storeFrontOrderHistoryStatisticsInterface= StoreFrontOrdersHistoryStatisti
 }
 
 
-    public: StoreFrontInventoryStatisticsInterface getInventory(){
+    public: StoreFrontInventoryStatisticsInterface* getInventory(){
 
 
 
@@ -123,7 +129,7 @@ this->storeFrontOrderHistoryStatisticsInterface= StoreFrontOrdersHistoryStatisti
 }
 
 
-    public: StoreFrontOrdersHistoryStatisticsInterface getOrders(){
+    public: StoreFrontOrdersHistoryStatisticsInterface* getOrders(){
 
 
 

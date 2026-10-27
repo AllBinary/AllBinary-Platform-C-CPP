@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_TIMEINTERVALACTIONSCRIPTCONDITIONINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_TIMEINTERVALACTIONSCRIPTCONDITIONINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/time/TimeDelayHelper.h>
 
       
@@ -45,9 +51,9 @@
         
 class TimeIntervalActionScriptConditionInterface {
 
-    TimeDelayHelper getTimeDelayHelper();
+    public: virtual TimeDelayHelper* getTimeDelayHelper() = 0;
 
-    void log();
+    public: virtual void log() = 0;
 
 };
 

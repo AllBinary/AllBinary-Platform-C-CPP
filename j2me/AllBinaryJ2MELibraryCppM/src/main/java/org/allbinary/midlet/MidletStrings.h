@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MIDLET_MIDLETSTRINGS_H
         #define ORG_ALLBINARY_MIDLET_MIDLETSTRINGS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class MidletStrings
             : public Object
          {
 
-    private: static MidletStrings instance() { return MidletStrings(); }
+    private: static MidletStrings* instance() { static std::unique_ptr<MidletStrings> value(new MidletStrings()); return value.get(); }
 
-    public: static MidletStrings getInstance();
+    public: static MidletStrings* getInstance();
 
     public: const std::string COMMAND_ACTION = "commandAction";
 

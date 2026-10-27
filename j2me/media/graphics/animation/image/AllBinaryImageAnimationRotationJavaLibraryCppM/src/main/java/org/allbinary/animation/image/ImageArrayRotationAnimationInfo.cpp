@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -51,7 +57,7 @@ class ImageArrayRotationAnimationInfo
             : public Object
          {
 
-    private: std::vector<Image> imageArray;
+    private: std::vector<Image*> imageArray;
 
     private: int32_t angleIncrement;
 
@@ -61,7 +67,7 @@ class ImageArrayRotationAnimationInfo
 
     private: int32_t dy;
 
-public: ImageArrayRotationAnimationInfo(std::vector<Image> imageArray, int32_t angleIncrement, int32_t totalAngle, int32_t dx, int32_t dy){
+public: ImageArrayRotationAnimationInfo(std::vector<Image*> imageArray, int32_t angleIncrement, int32_t totalAngle, int32_t dx, int32_t dy){
 this->imageArray= imageArray;
     
 this->angleIncrement= angleIncrement;
@@ -75,13 +81,13 @@ this->dy= dy;
 }
 
 
-    public: void setImageArray(std::vector<Image> imageArray){
+    public: void setImageArray(std::vector<Image*> imageArray){
 this->imageArray= imageArray;
     
 }
 
 
-    public: std::vector<Image> getImageArray(){
+    public: std::vector<Image*> getImageArray(){
 
 
 
@@ -91,7 +97,7 @@ this->imageArray= imageArray;
 }
 
 
-    public: AngleInfo getAngleInfoP(){
+    public: AngleInfo* getAngleInfoP(){
 
 
 

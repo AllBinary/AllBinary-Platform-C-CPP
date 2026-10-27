@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_TABLEINTERFACE_H
         #define ADMIN_TAGHELPERS_TABLEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,8 +45,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicTableInterface.h"
-#include "ModifyTableInterface.h"
+        #include "admin/taghelpers/BasicTableInterface.h"
+#include "admin/taghelpers/ModifyTableInterface.h"
 
 class TableInterface: public BasicTableInterface, public ModifyTableInterface {
 

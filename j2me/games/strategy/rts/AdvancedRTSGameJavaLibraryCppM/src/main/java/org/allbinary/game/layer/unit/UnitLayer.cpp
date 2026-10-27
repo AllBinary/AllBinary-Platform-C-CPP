@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Math.h"
@@ -377,17 +385,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CollidableUnitBehavior.h"
-#include "UnitWaypointBehavior2.h"
-#include "UnitWaypointBehavior.h"
+        #include "org/allbinary/game/layer/unit/CollidableUnitBehavior.h"
+#include "org/allbinary/game/layer/unit/UnitWaypointBehavior2.h"
+#include "org/allbinary/game/layer/unit/UnitWaypointBehavior.h"
 
 class UnitLayer: public AdvancedRTSGameLayer, public BuildingEventListenerInterface, public TrackingEventListenerInterface {
 
-    private: static const BasicArrayList partialPositionList = BasicArrayListS(4);
+    private: static inline BasicArrayList* partialPositionList = new BasicArrayListS(4);
 
-    private: static const int32_t SENSOR_RANGE_MULTIPLIER = 6;
+    private: static inline const int32_t SENSOR_RANGE_MULTIPLIER = 6;
 
-    private: static const std::string MOVE = "Moving";
+    private: static inline const std::string MOVE = "Moving";
 
     public: static int32_t getStaticType(){
 
@@ -399,7 +407,7 @@ class UnitLayer: public AdvancedRTSGameLayer, public BuildingEventListenerInterf
 }
 
 
-    public: static BasicArrayList getPartialpositionlist(){
+    public: static BasicArrayList* getPartialpositionlist(){
 
 
 
@@ -409,70 +417,70 @@ class UnitLayer: public AdvancedRTSGameLayer, public BuildingEventListenerInterf
 }
 
 
-    private: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
+    private: BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();
 
-    private: const GroupCommonFactory groupCommonFactory = GroupCommonFactory::getInstance();
+    private: GroupCommonFactory* groupCommonFactory = GroupCommonFactory::getInstance();
 
-    private: const LayerPartialCellPositionsUtil layerPartialCellPositionsUtil = LayerPartialCellPositionsUtil::getInstance();
+    private: LayerPartialCellPositionsUtil* layerPartialCellPositionsUtil = LayerPartialCellPositionsUtil::getInstance();
 
-    private: const LayerDistanceUtil layerDistanceUtil = LayerDistanceUtil::getInstance();
+    private: LayerDistanceUtil* layerDistanceUtil = LayerDistanceUtil::getInstance();
 
-    private: const AngleFactory angleFactory = AngleFactory::getInstance();
+    private: AngleFactory* angleFactory = AngleFactory::getInstance();
 
-    private: const CellPositionFactory cellPositionFactory = CellPositionFactory::getInstance();
+    private: CellPositionFactory* cellPositionFactory = CellPositionFactory::getInstance();
 
     private: int16_t maxResourceLoad;
 
-    private: VehicleProperties vehicleProperties;
+    private: VehicleProperties* vehicleProperties;
 
-    protected: BasicDecimal accelerationBasicDecimal = BasicDecimal(1600);
+    protected: BasicDecimal* accelerationBasicDecimal = new BasicDecimal(1600);
 
-    protected: BasicDecimal decelerationBasicDecimal = BasicDecimal( -1000);
+    protected: BasicDecimal* decelerationBasicDecimal = new BasicDecimal( -1000);
 
-    private: TrackingEvent trackingEvent;
+    private: TrackingEvent* trackingEvent;
 
-    private: const DamageFloaters damageFloaters;
+    private: DamageFloaters* damageFloaters;
 
-    private: const Paintable damageFloatersPaintableInterface;
+    private: Paintable* damageFloatersPaintableInterface;
 
-    private: const Paintable healthBar;
+    private: Paintable* healthBar;
 
-    private: Sound moveSoundInterface;
+    private: Sound* moveSoundInterface;
 
-    private: RotationAnimation initResourceAnimation;
+    private: RotationAnimation* initResourceAnimation;
 
-    private: IndexedAnimation resourceAnimation = NullIndexedAnimationFactory::getFactoryInstance().getInstance(0);
+    private: IndexedAnimation* resourceAnimation = dynamic_cast<IndexedAnimation*>(NullIndexedAnimationFactory::getFactoryInstance()->getInstance(0));
 
-    private: PathAnimation initPathAnimation;
+    private: PathAnimation* initPathAnimation;
 
-    private: Animation pathAnimation = NullAnimationFactory::getFactoryInstance().getInstance(0);
+    private: Animation* pathAnimation = NullAnimationFactory::getFactoryInstance()->getInstance(0);
 
-    private: const CaptionAnimationHelperBase captionAnimationHelper = CaptionAnimationHelper(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(CaptionResources::getInstance().RESOURCE).getInstance(0),  -23,  -25, 6, 0);
+    private: CaptionAnimationHelperBase* captionAnimationHelper = new CaptionAnimationHelper(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(CaptionResources::getInstance()->RESOURCE)->getInstance(0),  -23,  -25, 6, 0);
 
-    private: RotationAnimation decalAnimation;
+    private: RotationAnimation* decalAnimation;
 
-    private: LayerInterfaceFactoryInterface waypointLayerInterfaceFactoryInterface;
+    private: LayerInterfaceFactoryInterface* waypointLayerInterfaceFactoryInterface;
 
     private: int32_t resourceLoad = 0;
 
     private: int32_t weaponRange= 0;
 
-    protected: RTSLayerLogHelper rtsLogHelper = RTSLayerLogHelper::getInstance();
+    protected: RTSLayerLogHelper* rtsLogHelper = RTSLayerLogHelper::getInstance();
 
-    protected: RotationAnimation rotationAnimationInterfaceP;
+    protected: RotationAnimation* rotationAnimationInterfaceP;
 
-    private: NamedAngle movementAngle = this->angleFactory.NOT_ANGLE;
+    private: NamedAngle* movementAngle = this->angleFactory->NOT_ANGLE;
 
-    private: GeographicMapCellPosition steeringInsideGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition* steeringInsideGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-protected: UnitLayer(RemoteInfo remoteInfo, PathFindingLayerInterface parentLayer, AdvancedRTSProperties advancedRTSProperties, std::vector<Group> groupInterface, std::string rootName, std::string name, VehicleProperties vehicleProperties, Health healthInterface, Integer maxResourceLoad, Sound moveSoundInterface, LayerInterfaceFactoryInterface waypointLayerInterfaceFactoryInterface, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface verticleBuildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface decalAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface resourceAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, Direction direction, int32_t x, int32_t y, int32_t z, ViewPositionBase viewPosition) : AdvancedRTSGameLayer(remoteInfo, parentLayer, advancedRTSProperties, groupInterface, rootName, name, healthInterface, WaypointRTSFormInput(groupInterface, true), animationInterfaceFactoryInterface, emptyAnimationInterfaceFactoryInterface, baseAnimationInterfaceFactoryInterface, buildAnimationInterfaceFactoryInterface, verticleBuildAnimationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y, viewPosition){
+protected: UnitLayer(RemoteInfo* remoteInfo, PathFindingLayerInterface* parentLayer, AdvancedRTSProperties* advancedRTSProperties, std::vector<Group*> groupInterface, std::string rootName, std::string name, VehicleProperties* vehicleProperties, Health* healthInterface, int32_t maxResourceLoad, Sound* moveSoundInterface, LayerInterfaceFactoryInterface* waypointLayerInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* verticleBuildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* decalAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* resourceAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface* proceduralAnimationInterfaceFactoryInterface, Rectangle* rectangle, Direction* direction, int32_t x, int32_t y, int32_t z, ViewPositionBase* viewPosition) : AdvancedRTSGameLayer(remoteInfo, parentLayer, advancedRTSProperties, groupInterface, rootName, name, healthInterface, new WaypointRTSFormInput(groupInterface, true), animationInterfaceFactoryInterface, emptyAnimationInterfaceFactoryInterface, baseAnimationInterfaceFactoryInterface, buildAnimationInterfaceFactoryInterface, verticleBuildAnimationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y, viewPosition){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->setCollidableInferface(CollidableUnitBehavior(true));
+this->setCollidableInferface(new CollidableUnitBehavior(true));
     
 this->waypointLayerInterfaceFactoryInterface= waypointLayerInterfaceFactoryInterface;
     
@@ -481,10 +489,10 @@ this->maxResourceLoad= maxResourceLoad.toShort();
 this->moveSoundInterface= moveSoundInterface;
     
 
-                        if(Features::getInstance().isFeature(GameFeatureFactory::getInstance().DAMAGE_FLOATERS))
+                        if(Features::getInstance()->isFeature(GameFeatureFactory::getInstance()->DAMAGE_FLOATERS))
                         
                                     {
-                                    this->damageFloaters= PtsDamageFloaters(this);
+                                    this->damageFloaters= new PtsDamageFloaters(this);
     
 this->damageFloatersPaintableInterface= this->damageFloaters;
     
@@ -494,16 +502,16 @@ this->damageFloatersPaintableInterface= this->damageFloaters;
                         else {
                             this->damageFloatersPaintableInterface= NullPaintable::getInstance();
     
-this->damageFloaters= DamageFloaters();
+this->damageFloaters= new DamageFloaters();
     
 
                         }
                             
 
-                        if(Features::getInstance().isFeature(GameFeatureFactory::getInstance().HEALTH_BARS))
+                        if(Features::getInstance()->isFeature(GameFeatureFactory::getInstance()->HEALTH_BARS))
                         
                                     {
-                                    this->healthBar= HealthBar(this, this->getHealthInterface(), HealthBarTwodAnimation(this, BasicHudFactory::getInstance().BOTTOMLEFT),  -1);
+                                    this->healthBar= new HealthBar(this, this->getHealthInterface(), new HealthBarTwodAnimation(dynamic_cast<AllBinaryLayer*>(this), BasicHudFactory::getInstance()->BOTTOMLEFT),  -1);
     
 
                                     }
@@ -514,67 +522,67 @@ this->damageFloaters= DamageFloaters();
 
                         }
                             
-this->decalAnimation= decalAnimationInterfaceFactoryInterface.getInstance(0);
+this->decalAnimation= dynamic_cast<RotationAnimation*>(decalAnimationInterfaceFactoryInterface->getInstance(0));
     
-this->initResourceAnimation= resourceAnimationInterfaceFactoryInterface.getInstance(0);
+this->initResourceAnimation= dynamic_cast<RotationAnimation*>(resourceAnimationInterfaceFactoryInterface->getInstance(0));
     
-this->initResourceAnimation.setFrameByDirection(direction);
+this->initResourceAnimation->setFrameByDirection(direction);
     
-this->decalAnimation.setFrameByDirection(direction);
+this->decalAnimation->setFrameByDirection(direction);
     
-this->rotationAnimationInterfaceP= this->indexedButShouldBeRotationAnimationInterface;
+this->rotationAnimationInterfaceP= dynamic_cast<RotationAnimation*>(this->indexedButShouldBeRotationAnimationInterface);
     
-this->rotationAnimationInterfaceP.setFrameByDirection(direction);
+this->rotationAnimationInterfaceP->setFrameByDirection(direction);
     
 this->setMaxLevel(12);
     
 this->vehicleProperties= vehicleProperties;
     
-this->trackingEvent= TrackingEvent(this);
+this->trackingEvent= new TrackingEvent(this);
     
-this->initPathAnimation= PathAnimation(this, LinePathRelativeAnimation::getInstance());
+this->initPathAnimation= new PathAnimation(this, LinePathRelativeAnimation::getInstance());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager){
 super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
-this->initPathAnimation.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
+this->initPathAnimation->setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void updateWaypointBehavior(BasicGeographicMap geographicMapInterface){
+    public: void updateWaypointBehavior(BasicGeographicMap* geographicMapInterface){
 
-    ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();;
+    ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();;
     
-hashtable.put(this->groupCommonFactory.ID, this->getGroupInterface());
+hashtable->put(this->groupCommonFactory->ID, this->getGroupInterface());
     
-hashtable.put(Layer::ID, this);
+hashtable->put(Layer::ID, this);
     
-hashtable.put(AllBinaryGameLayerManager::ID, this->allBinaryGameLayerManagerP);
+hashtable->put(AllBinaryGameLayerManager::ID, this->allBinaryGameLayerManagerP);
     
-this->setWaypointBehavior(UnitWaypointBehavior2(this, this->waypointLayerInterfaceFactoryInterface.getNextInstance(hashtable, this->x, this->y, this->z)));
-    
-
-    Features features = Features::getInstance();;
+this->setWaypointBehavior(new UnitWaypointBehavior2(this, dynamic_cast<AdvancedRTSGameLayer*>(this->waypointLayerInterfaceFactoryInterface->getNextInstance(hashtable, this->x, this->y, this->z))));
     
 
-    WaypointBase waypoint = J2MEUtil::isHTML()
+    Features* features = Features::getInstance();;
+    
+
+    WaypointBase* waypoint = J2MEUtil::isHTML()
                         ?       
-                                MultipassNoCacheWaypoint(this, AttackSound::getInstance())
+                                new MultipassNoCacheWaypoint(this, AttackSound::getInstance())
                                 :
 
-                            NoCacheWaypoint(this, AttackSound::getInstance());
+                            new NoCacheWaypoint(this, AttackSound::getInstance());
 
     ;;
     
-this->getWaypointBehavior().setWaypoint(waypoint);
+this->getWaypointBehavior()->setWaypoint(waypoint);
     
 super.updateWaypointBehavior(geographicMapInterface);
     
@@ -585,63 +593,63 @@ this->initRangeHack();
 
                 //@Throws(Exception.constructor)
             
-    public: void construct(RTSPlayerLayerInterface rtsPlayerLayerInterface){
+    public: void construct(RTSPlayerLayerInterface* rtsPlayerLayerInterface){
 super.construct(rtsPlayerLayerInterface);
     
-TrackingEventHandler::getInstance().addListenerInterface(this);
+TrackingEventHandler::getInstance()->addListenerInterface(this);
     
-WaypointEventHandlerFactory::getInstance(this->getGroupInterface()[0]).addListenerInterface(this->getUnitWaypointBehavior());
+WaypointEventHandlerFactory::getInstance(this->getGroupInterface()[0])->addListenerInterface(this->getUnitWaypointBehavior());
     
-BuildingEventHandler::getInstance().addListenerInterface(this);
+BuildingEventHandler::getInstance()->addListenerInterface(this);
     
-this->getUnitWaypointBehavior().setCurrentPathGeographicMapCellPosition(this->getCurrentGeographicMapCellPosition());
+this->getUnitWaypointBehavior()->setCurrentPathGeographicMapCellPosition(this->getCurrentGeographicMapCellPosition());
     
 this->updateSensorGeographicMapCellPositionList();
     
-this->getUnitWaypointBehavior().setLastPathGeographicMapCellPosition(this->getUnitWaypointBehavior().getCurrentPathGeographicMapCellPosition());
+this->getUnitWaypointBehavior()->setLastPathGeographicMapCellPosition(this->getUnitWaypointBehavior()->getCurrentPathGeographicMapCellPosition());
     
 }
 
 
-    private: const BasicArrayList sensorGeographicMapCellPositionList = BasicArrayListD();
+    private: BasicArrayList* sensorGeographicMapCellPositionList = new BasicArrayListD();
 
                 //@Throws(Exception.constructor)
             
     public: void updateSensorGeographicMapCellPositionList(){
 
-                        if(VisibleCellPositionsSingleton::getInstance().shouldProcess())
+                        if(VisibleCellPositionsSingleton::getInstance()->shouldProcess())
                         
                                     {
                                     
-    GeographicMapCellPosition currentGeographicMapCellPosition = this->getCurrentGeographicMapCellPosition();;
+    GeographicMapCellPosition* currentGeographicMapCellPosition = this->getCurrentGeographicMapCellPosition();;
     
-this->sensorGeographicMapCellPositionList.clear();
+this->sensorGeographicMapCellPositionList->clear();
     
-this->sensorGeographicMapCellPositionList.add(currentGeographicMapCellPosition);
+this->sensorGeographicMapCellPositionList->add(currentGeographicMapCellPosition);
     
 
     int32_t sensorRange = this->weaponRange *UnitLayer::SENSOR_RANGE_MULTIPLIER;;
     
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = this->allBinaryGameLayerManagerP;;
+    GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(this->allBinaryGameLayerManagerP);;
     
 
-    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
+    BasicGeographicMap* geographicMapInterface = geographicMapCompositeInterface->getGeographicMapInterface()[0];;
     
 
-    AllBinaryTiledLayer tiledLayer = geographicMapInterface.getAllBinaryTiledLayer();;
+    AllBinaryTiledLayer* tiledLayer = geographicMapInterface->getAllBinaryTiledLayer();;
     
 
-    int32_t totalCells = (sensorRange /tiledLayer.getCellHeight()) /2;;
+    int32_t totalCells = (sensorRange /tiledLayer->getCellHeight()) /2;;
     
 
-    BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory = geographicMapInterface.getGeographicMapCellPositionFactory();;
+    BasicGeographicMapCellPositionFactory* geographicMapCellPositionFactory = geographicMapInterface->getGeographicMapCellPositionFactory();;
     
 
-    int32_t column = currentGeographicMapCellPosition.getColumn();;
+    int32_t column = currentGeographicMapCellPosition->getColumn();;
     
 
-    int32_t row = currentGeographicMapCellPosition.getRow();;
+    int32_t row = currentGeographicMapCellPosition->getRow();;
     
 
     int32_t lastColumn = column +totalCells;;
@@ -650,19 +658,19 @@ this->sensorGeographicMapCellPositionList.add(currentGeographicMapCellPosition);
     int32_t lastRow = row +totalCells;;
     
 
-                        if(lastColumn > tiledLayer.getColumns())
+                        if(lastColumn > tiledLayer->getColumns())
                         
                                     {
-                                    lastColumn= tiledLayer.getColumns();
+                                    lastColumn= tiledLayer->getColumns();
     
 
                                     }
                                 
 
-                        if(lastRow > tiledLayer.getRows())
+                        if(lastRow > tiledLayer->getRows())
                         
                                     {
-                                    lastRow= tiledLayer.getRows();
+                                    lastRow= tiledLayer->getRows();
     
 
                                     }
@@ -706,13 +714,13 @@ this->sensorGeographicMapCellPositionList.add(currentGeographicMapCellPosition);
     int32_t index2 = lastRow -1;index2 >= firstRow; index2--)
         {
 
-    GeographicMapCellPosition geographicMapCellPosition = geographicMapCellPositionFactory.getAt(index, index2);;
+    GeographicMapCellPosition* geographicMapCellPosition = geographicMapCellPositionFactory->getAt(index, index2);;
     
 
-                        if(!this->sensorGeographicMapCellPositionList.contains(geographicMapCellPosition))
+                        if(!this->sensorGeographicMapCellPositionList->contains(geographicMapCellPosition))
                         
                                     {
-                                    this->sensorGeographicMapCellPositionList.add(geographicMapCellPosition);
+                                    this->sensorGeographicMapCellPositionList->add(geographicMapCellPosition);
     
 
                                     }
@@ -727,7 +735,7 @@ this->sensorGeographicMapCellPositionList.add(currentGeographicMapCellPosition);
 }
 
 
-    public: BasicArrayList getSensorGeographicMapCellPositionList(){
+    public: BasicArrayList* getSensorGeographicMapCellPositionList(){
 
 
 
@@ -746,7 +754,7 @@ super.select();
 
 
     public: void deselect(){
-this->pathAnimation= NullAnimationFactory::getFactoryInstance().getInstance(0);
+this->pathAnimation= NullAnimationFactory::getFactoryInstance()->getInstance(0);
     
 super.deselect();
     
@@ -794,32 +802,32 @@ this->rtsLayer2LogHelper= RTSLayer2LogHelper::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void setClosestGeographicMapCellHistory(BasicArrayList pathsList){
-this->rtsLogHelper.setClosestGeographicMapCellHistory(this, pathsList);
+    public: void setClosestGeographicMapCellHistory(BasicArrayList* pathsList){
+this->rtsLogHelper->setClosestGeographicMapCellHistory(this, pathsList);
     
 
     int32_t closestIndex =  -1;;
     
 
-    int32_t shortestDistance = Integer::MAX_VALUE;;
+    int32_t shortestDistance = Integer.MAX_VALUE;;
     
 
-    int32_t currentDistance = Integer::MAX_VALUE;;
+    int32_t currentDistance = Integer.MAX_VALUE;;
     
 
 
 
 
                         for (
-    int32_t index = pathsList.size() -1;index >= 0; index--)
+    int32_t index = pathsList->size() -1;index >= 0; index--)
         {
 
-    BasicArrayList geographicMapCellPositionBasicArrayList = pathsList.get(index);;
+    BasicArrayList* geographicMapCellPositionBasicArrayList = dynamic_cast<BasicArrayList*>(pathsList->get(index));;
     
 
-    GeographicMapCellPosition geographicMapCellPosition = geographicMapCellPositionBasicArrayList.get(geographicMapCellPositionBasicArrayList.size() -1);;
+    GeographicMapCellPosition* geographicMapCellPosition = dynamic_cast<GeographicMapCellPosition*>(geographicMapCellPositionBasicArrayList->get(geographicMapCellPositionBasicArrayList->size() -1));;
     
-currentDistance= this->layerDistanceUtil.getDistanceAt(this, geographicMapCellPosition.getMidPoint());
+currentDistance= this->layerDistanceUtil->getDistanceAt(this, geographicMapCellPosition->getMidPoint());
     
 
                         if(currentDistance < shortestDistance)
@@ -839,10 +847,10 @@ closestIndex= index;
                         
                                     {
                                     
-    BasicArrayList geographicMapCellPositionBasicArrayList = pathsList.get(closestIndex);;
+    BasicArrayList* geographicMapCellPositionBasicArrayList = dynamic_cast<BasicArrayList*>(pathsList->get(closestIndex));;
     
 
-    GeographicMapCellPosition geographicMapCellPosition = geographicMapCellPositionBasicArrayList.get(0);;
+    GeographicMapCellPosition* geographicMapCellPosition = dynamic_cast<GeographicMapCellPosition*>(geographicMapCellPositionBasicArrayList->get(0));;
     
 this->teleportTo(geographicMapCellPosition);
     
@@ -854,34 +862,34 @@ this->teleportTo(geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: void init(GeographicMapCellHistory geographicMapCellHistory, BasicArrayList geographicMapCellPositionBasicArrayList){
-geographicMapCellHistory.trackAll(geographicMapCellPositionBasicArrayList);
+    public: void init(GeographicMapCellHistory* geographicMapCellHistory, BasicArrayList* geographicMapCellPositionBasicArrayList){
+geographicMapCellHistory->trackAll(geographicMapCellPositionBasicArrayList);
     
 }
 
 
-    public: void onMovement(TrackingEvent trackingEvent){
+    public: void onMovement(TrackingEvent* trackingEvent){
 
         try {
             
-    AdvancedRTSGameLayer layerInterface = trackingEvent.getLayerInterface();;
+    AdvancedRTSGameLayer* layerInterface = dynamic_cast<AdvancedRTSGameLayer*>(trackingEvent->getLayerInterface());;
     
 
-                        if(layerInterface.getGroupInterface()[0] != this->getGroupInterface()[0])
+                        if(layerInterface->getGroupInterface()[0] != this->getGroupInterface()[0])
                         
                                     {
-                                    this->getUnitWaypointBehavior().getPossibleTargetList().add(layerInterface);
+                                    this->getUnitWaypointBehavior()->getPossibleTargetList()->add(layerInterface);
     
-layerInterface.onMovementFound(this->getTrackingEvent());
+layerInterface->onMovementFound(this->getTrackingEvent());
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "onMovement", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "onMovement", &e);
     
 }
 
@@ -890,15 +898,15 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "onMovement", e);
 
                 //@Throws(Exception.constructor)
             
-    public: void onMovementFound(TrackingEvent trackingEvent){
+    public: void onMovementFound(TrackingEvent* trackingEvent){
 
-    AdvancedRTSGameLayer layerInterface = trackingEvent.getLayerInterface();;
+    AdvancedRTSGameLayer* layerInterface = dynamic_cast<AdvancedRTSGameLayer*>(trackingEvent->getLayerInterface());;
     
 
-                        if(layerInterface.getGroupInterface()[0] != this->getGroupInterface()[0])
+                        if(layerInterface->getGroupInterface()[0] != this->getGroupInterface()[0])
                         
                                     {
-                                    this->getUnitWaypointBehavior().getPossibleTargetList().add(layerInterface);
+                                    this->getUnitWaypointBehavior()->getPossibleTargetList()->add(layerInterface);
     
 
                                     }
@@ -908,32 +916,32 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "onMovement", e);
 
     public: void initRangeHack(){
 
-    BasicWeaponPart basicWeaponPart = this->getPartInterfaceArray()[0];;
+    BasicWeaponPart* basicWeaponPart = dynamic_cast<BasicWeaponPart*>(this->getPartInterfaceArray()[0]);;
     
 
-    WeaponProperties weaponProperties = basicWeaponPart.getWeaponProperties();;
+    WeaponProperties* weaponProperties = basicWeaponPart->getWeaponProperties();;
     
-this->weaponRange= weaponProperties.getRange();
+this->weaponRange= weaponProperties->getRange();
     
-this->initRangeAnimation= AdjustedCircleAnimation::createW(this->weaponRange, this->weaponRange, this->getWidth(), this->basicColorFactory.GREEN);
+this->initRangeAnimation= AdjustedCircleAnimation::createW(this->weaponRange, this->weaponRange, this->getWidth(), this->basicColorFactory->GREEN);
     
 
     int32_t sensorRange = this->weaponRange *UnitLayer::SENSOR_RANGE_MULTIPLIER;;
     
-this->initSensorRangeAnimation= AdjustedCircleAnimation::createW(sensorRange, sensorRange, this->getWidth(), this->basicColorFactory.RED);
+this->initSensorRangeAnimation= AdjustedCircleAnimation::createW(sensorRange, sensorRange, this->getWidth(), this->basicColorFactory->RED);
     
-this->getUnitWaypointBehavior().initRange(this->weaponRange);
+this->getUnitWaypointBehavior()->initRange(this->weaponRange);
     
-this->fireTimeHelper.delay= (static_cast<int32_t>(weaponProperties.getReloadTime()));
+this->fireTimeHelper.delay= (static_cast<int32_t>(weaponProperties->getReloadTime()));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processBuiltTick(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processBuiltTick(AllBinaryLayerManager* allBinaryLayerManager){
 
-                        if(!this->getHealthInterface().isAlive())
+                        if(!this->getHealthInterface()->isAlive())
                         
                                     {
                                     
@@ -951,7 +959,7 @@ this->fireTimeHelper.delay= (static_cast<int32_t>(weaponProperties.getReloadTime
                         
                                     {
                                     
-                        if(!this->getHealthInterface().isAlive())
+                        if(!this->getHealthInterface()->isAlive())
                         
                                     {
                                     this->setDestroyed(true);
@@ -974,7 +982,7 @@ this->fireTimeHelper.delay= (static_cast<int32_t>(weaponProperties.getReloadTime
                         else {
                             this->setAnimationInterface(this->destroyAnimationInterface);
     
-SecondaryPlayerQueueFactory::getInstance().add(ExplosionBasicSound::getInstance());
+SecondaryPlayerQueueFactory::getInstance()->add(ExplosionBasicSound::getInstance());
     
 this->shakeListener.onSmallShakeEvent();
     
@@ -994,45 +1002,45 @@ this->setReadyForExplosion(true);
 
                         }
                             
-this->captionAnimationHelper.tick();
+this->captionAnimationHelper->tick();
     
-this->getUnitWaypointBehavior().processTick(allBinaryLayerManager);
+this->getUnitWaypointBehavior()->processTick(allBinaryLayerManager);
     
 }
 
 
-    public: void teleportTo(GeographicMapCellPosition geographicMapCellPosition){
+    public: void teleportTo(GeographicMapCellPosition* geographicMapCellPosition){
 
-    GPoint point = geographicMapCellPosition.getMidPoint();;
+    GPoint* point = geographicMapCellPosition->getMidPoint();;
     
-this->setPosition(point.getX() -this->getHalfWidth(), point.getY() -this->getHalfHeight(), this->z);
+this->setPosition(point->getX() -this->getHalfWidth(), point->getY() -this->getHalfHeight(), this->z);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition getCurrentGeographicMapCellPosition(){
+    public: GeographicMapCellPosition* getCurrentGeographicMapCellPosition(){
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = this->allBinaryGameLayerManagerP;;
+    GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(this->allBinaryGameLayerManagerP);;
     
 
-    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
+    BasicGeographicMap* geographicMapInterface = geographicMapCompositeInterface->getGeographicMapInterface()[0];;
     
 
-    GeographicMapCellPosition geographicMapCellPosition = geographicMapInterface.getCellPositionAtXY(this->x +this->getHalfWidth(), this->y +this->getHalfHeight());;
+    GeographicMapCellPosition* geographicMapCellPosition = geographicMapInterface->getCellPositionAtXY(this->x +this->getHalfWidth(), this->y +this->getHalfHeight());;
     
 
-    RaceTrackGeographicMap raceTrackGeographicMap = geographicMapInterface;;
+    RaceTrackGeographicMap* raceTrackGeographicMap = dynamic_cast<RaceTrackGeographicMap*>(geographicMapInterface);;
     
 
-                        if(!raceTrackGeographicMap.isValid(geographicMapCellPosition))
+                        if(!raceTrackGeographicMap->isValid(geographicMapCellPosition))
                         
                                     {
                                     
 
 
-                            throw Exception("Position is not really on the map: " +geographicMapCellPosition);
+                            throw new Exception("Position is not really on the map: " +geographicMapCellPosition);
                     
 
                                     }
@@ -1048,7 +1056,7 @@ this->setPosition(point.getX() -this->getHalfWidth(), point.getY() -this->getHal
 
                 //@Throws(Exception.constructor)
             
-    public: void fire(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
+    public: void fire(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent){
 
                         if(this->fireTimeHelper.isTimeTNT())
                         
@@ -1070,11 +1078,11 @@ this->setPosition(point.getX() -this->getHalfWidth(), point.getY() -this->getHal
                 //@Throws(Exception.constructor)
             
     public: void left(){
-this->initResourceAnimation.previousRotation();
+this->initResourceAnimation->previousRotation();
     
-this->decalAnimation.previousRotation();
+this->decalAnimation->previousRotation();
     
-this->rotationAnimationInterfaceP.previousRotation();
+this->rotationAnimationInterfaceP->previousRotation();
     
 }
 
@@ -1082,21 +1090,21 @@ this->rotationAnimationInterfaceP.previousRotation();
                 //@Throws(Exception.constructor)
             
     public: void right(){
-this->initResourceAnimation.nextRotation();
+this->initResourceAnimation->nextRotation();
     
-this->decalAnimation.nextRotation();
+this->decalAnimation->nextRotation();
     
-this->rotationAnimationInterfaceP.nextRotation();
+this->rotationAnimationInterfaceP->nextRotation();
     
 }
 
 
     public: void down(){
 
-    VelocityProperties velocityProperties = this->getVehicleProperties().getVelocityProperties();;
+    VelocityProperties* velocityProperties = this->getVehicleProperties()->getVelocityProperties();;
     
 
-                        if(!velocityProperties.isOverXYMaxForwardVelocity())
+                        if(!velocityProperties->isOverXYMaxForwardVelocity())
                         
                                     {
                                     this->accelerate(this->decelerationBasicDecimal);
@@ -1109,10 +1117,10 @@ this->rotationAnimationInterfaceP.nextRotation();
 
     public: void up(){
 
-    VelocityProperties velocityProperties = this->getVehicleProperties().getVelocityProperties();;
+    VelocityProperties* velocityProperties = this->getVehicleProperties()->getVelocityProperties();;
     
 
-                        if(!velocityProperties.isOverXYMaxForwardVelocity())
+                        if(!velocityProperties->isOverXYMaxForwardVelocity())
                         
                                     {
                                     this->accelerate(this->accelerationBasicDecimal);
@@ -1124,17 +1132,17 @@ this->rotationAnimationInterfaceP.nextRotation();
 
 
     public: void initInputProcessors(){
-this->inputProcessorArray[Canvas::RIGHT]= SpecialRightGameInputProcessor(this);
+this->inputProcessorArray[Canvas::RIGHT]= new SpecialRightGameInputProcessor(this);
     
-this->inputProcessorArray[Canvas::LEFT]= SpecialLeftGameInputProcessor(this);
+this->inputProcessorArray[Canvas::LEFT]= new SpecialLeftGameInputProcessor(this);
     
-this->inputProcessorArray[Canvas::KEY_NUM0]= SpecialFireGameInputProcessor(this);
+this->inputProcessorArray[Canvas::KEY_NUM0]= new SpecialFireGameInputProcessor(this);
     
 this->inputProcessorArray[Canvas::KEY_POUND]= this->inputProcessorArray[Canvas::KEY_NUM0];
     
-this->inputProcessorArray[Canvas::DOWN]= SpecialDownGameInputProcessor(this);
+this->inputProcessorArray[Canvas::DOWN]= new SpecialDownGameInputProcessor(this);
     
-this->inputProcessorArray[Canvas::UP]= SpecialUpGameInputProcessor(this);
+this->inputProcessorArray[Canvas::UP]= new SpecialUpGameInputProcessor(this);
     
 super.initInputProcessors();
     
@@ -1143,12 +1151,12 @@ super.initInputProcessors();
 
                 //@Throws(Exception.constructor)
             
-    public: void processInput(AllBinaryLayerManager layerManager){
+    public: void processInput(AllBinaryLayerManager* layerManager){
 
-    BasicArrayList list = this->getGameKeyEventList();;
+    BasicArrayList* list = this->getGameKeyEventList();;
     
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
 
@@ -1158,7 +1166,7 @@ super.initInputProcessors();
     int32_t index = 0;index < size; index++)
         {
 
-    Object* anyType = list.get(index);;
+    Object* anyType = list->get(index);;
     
 
     int32_t key = GameKeyEventUtil::getKey(anyType);;
@@ -1167,7 +1175,7 @@ this->inputProcessorArray[key].processEvent(layerManager, GameKeyEvent::NONE);
     
 }
 
-list.clear();
+list->clear();
     
 this->groundFriction();
     
@@ -1176,27 +1184,27 @@ this->move();
 }
 
 
-    public: void accelerate(BasicDecimal accelerate){
-this->getVehicleProperties().getVelocityProperties().addVelocityi(accelerate.getUnscaled(), static_cast<int32_t>(this->rotationAnimationInterfaceP.getAngleInfoP().getAngle()), 90);
+    public: void accelerate(BasicDecimal* accelerate){
+this->getVehicleProperties()->getVelocityProperties()->addVelocityi(accelerate->getUnscaled(), static_cast<int32_t>(this->rotationAnimationInterfaceP->getAngleInfoP()->getAngle()), 90);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void fireAll(AllBinaryLayerManager layerManager){
+    protected: void fireAll(AllBinaryLayerManager* layerManager){
 
-    AngleInfo angleInfo = this->rotationAnimationInterfaceP.getAngleInfoP();;
-    
-
-    int32_t angle = static_cast<int32_t>((angleInfo.getAngle() +this->slightAngle));;
-    
-this->hashtable.put(SmallIntegerSingletonFactory::getInstance().getAt(1), SmallIntegerSingletonFactory::getInstance().getAt(static_cast<int32_t>(AngleFactory::getInstance().getAt(angle).getValue())));
+    AngleInfo* angleInfo = this->rotationAnimationInterfaceP->getAngleInfoP();;
     
 
-    SalvoInterface salvoInterface = this->getPartInterfaceArray()[0];;
+    int32_t angle = static_cast<int32_t>((angleInfo->getAngle() +this->slightAngle));;
     
-salvoInterface.process(layerManager, angle, 90);
+this->hashtable->put(SmallIntegerSingletonFactory::getInstance()->getAt(1), SmallIntegerSingletonFactory::getInstance()->getAt(static_cast<int32_t>(AngleFactory::getInstance()->getAt(angle)->getValue())));
+    
+
+    SalvoInterface* salvoInterface = dynamic_cast<SalvoInterface*>(this->getPartInterfaceArray()[0]);;
+    
+salvoInterface->process(layerManager, angle, 90);
     
 }
 
@@ -1224,9 +1232,9 @@ this->initRangeHack();
 
     protected: void groundFriction(){
 
-    VehicleFrictionProperties vehicleFrictionProperties = this->getVehicleProperties().getVehicleFrictionProperties();;
+    VehicleFrictionProperties* vehicleFrictionProperties = this->getVehicleProperties()->getVehicleFrictionProperties();;
     
-this->getVehicleProperties().getVehicleFrictionProperties().friction(this->getVehicleProperties().getVelocityProperties(), vehicleFrictionProperties.getTireFrictionNominator());
+this->getVehicleProperties()->getVehicleFrictionProperties()->friction(this->getVehicleProperties()->getVelocityProperties(), vehicleFrictionProperties->getTireFrictionNominator());
     
 }
 
@@ -1235,21 +1243,21 @@ this->getVehicleProperties().getVehicleFrictionProperties().friction(this->getVe
             
     public: void trackTo(std::string reason){
 
-    WaypointBehaviorBase waypointBehaviorBase = this->waypointBehaviorBase;;
+    WaypointBehaviorBase* waypointBehaviorBase = dynamic_cast<WaypointBehaviorBase*>(this->waypointBehaviorBase);;
     
 
-    GeographicMapCellPosition nextUnvisitedPathGeographicMapCellPosition = waypointBehaviorBase.getNextUnvisitedPathGeographicMapCellPosition();;
+    GeographicMapCellPosition* nextUnvisitedPathGeographicMapCellPosition = waypointBehaviorBase->getNextUnvisitedPathGeographicMapCellPosition();;
     
 
-    GPoint point = nextUnvisitedPathGeographicMapCellPosition.getMidPoint();;
+    GPoint* point = nextUnvisitedPathGeographicMapCellPosition->getMidPoint();;
     
 
-    int32_t dx = (this->getXP() +this->getHalfWidth()) -point.getX();;
+    int32_t dx = (this->getXP() +this->getHalfWidth()) -point->getX();;
     
 
-    int32_t dy = (this->getYP() +this->getHalfHeight()) -point.getY();;
+    int32_t dy = (this->getYP() +this->getHalfHeight()) -point->getY();;
     
-this->rtsLogHelper.trackTo(this, nextUnvisitedPathGeographicMapCellPosition, dx, dy, reason);
+this->rtsLogHelper->trackTo(this, nextUnvisitedPathGeographicMapCellPosition, dx, dy, reason);
     
 this->trackToDXY(dx, dy);
     
@@ -1271,19 +1279,19 @@ this->trackToDXYTargetAngle(dx, dy, angleOfTarget);
             
     private: bool turnTo(int32_t dx, int32_t dy, int32_t targetAngle){
 
-    WaypointBehaviorBase waypointBehaviorBase = this->waypointBehaviorBase;;
+    WaypointBehaviorBase* waypointBehaviorBase = dynamic_cast<WaypointBehaviorBase*>(this->waypointBehaviorBase);;
     
 
-    GeographicMapCellPosition nextUnvisitedPathGeographicMapCellPosition = waypointBehaviorBase.getNextUnvisitedPathGeographicMapCellPosition();;
+    GeographicMapCellPosition* nextUnvisitedPathGeographicMapCellPosition = waypointBehaviorBase->getNextUnvisitedPathGeographicMapCellPosition();;
     
 
     bool evading = false;;
     
 
-                        if(this->getUnitWaypointBehavior().getSensorAction() == SensorActionFactory::getInstance().EVADE)
+                        if(this->getUnitWaypointBehavior()->getSensorAction() == SensorActionFactory::getInstance()->EVADE)
                         
                                     {
-                                    this->rtsLogHelper.evade(this);
+                                    this->rtsLogHelper->evade(this);
     
 evading= true;
     
@@ -1293,21 +1301,21 @@ targetAngle += 180;
                                     }
                                 
 
-    AngleInfo angleInfo = this->rotationAnimationInterfaceP.getAngleInfoP();;
+    AngleInfo* angleInfo = this->rotationAnimationInterfaceP->getAngleInfoP();;
     
 
-    int32_t angle = FrameUtil::getInstance().adjustAngleToFrameAngle(angleInfo.getAngle() -270);;
+    int32_t angle = FrameUtil::getInstance()->adjustAngleToFrameAngle(angleInfo->getAngle() -270);;
     
-this->rtsLogHelper.turnTo(this, dx, dy, angleInfo, angle, this->movementAngle, evading, targetAngle);
+this->rtsLogHelper->turnTo(this, dx, dy, angleInfo, angle, this->movementAngle, evading, targetAngle);
     
 
-    GameKeyEventFactory gameKeyEventFactory = GameKeyEventFactory::getInstance();;
+    GameKeyEventFactory* gameKeyEventFactory = GameKeyEventFactory::getInstance();;
     
 
                         if(dx == 0 && dy == 0)
                         
                                     {
-                                    this->rtsLogHelper.doneMoving(this);
+                                    this->rtsLogHelper->doneMoving(this);
     
 
 
@@ -1319,14 +1327,14 @@ this->rtsLogHelper.turnTo(this, dx, dy, angleInfo, angle, this->movementAngle, e
                                     }
                                 
                              else 
-                        if((static_cast<int32_t>(this->movementAngle.getValue())) == angle)
+                        if((static_cast<int32_t>(this->movementAngle->getValue())) == angle)
                         
                                     {
                                     
-                        if(dx > 0 && this->movementAngle == this->angleFactory.LEFT)
+                        if(dx > 0 && this->movementAngle == this->angleFactory->LEFT)
                         
                                     {
-                                    this->rtsLogHelper.movingLeft(this);
+                                    this->rtsLogHelper->movingLeft(this);
     
 
 
@@ -1338,10 +1346,10 @@ this->rtsLogHelper.turnTo(this, dx, dy, angleInfo, angle, this->movementAngle, e
                                     }
                                 
 
-                        if(dx < 0 && this->movementAngle == this->angleFactory.RIGHT)
+                        if(dx < 0 && this->movementAngle == this->angleFactory->RIGHT)
                         
                                     {
-                                    this->rtsLogHelper.movingRight(this);
+                                    this->rtsLogHelper->movingRight(this);
     
 
 
@@ -1353,10 +1361,10 @@ this->rtsLogHelper.turnTo(this, dx, dy, angleInfo, angle, this->movementAngle, e
                                     }
                                 
 
-                        if(dy > 0 && this->movementAngle == this->angleFactory.UP)
+                        if(dy > 0 && this->movementAngle == this->angleFactory->UP)
                         
                                     {
-                                    this->rtsLogHelper.movingUp(this);
+                                    this->rtsLogHelper->movingUp(this);
     
 
 
@@ -1368,10 +1376,10 @@ this->rtsLogHelper.turnTo(this, dx, dy, angleInfo, angle, this->movementAngle, e
                                     }
                                 
 
-                        if(dy < 0 && this->movementAngle == this->angleFactory.DOWN)
+                        if(dy < 0 && this->movementAngle == this->angleFactory->DOWN)
                         
                                     {
-                                    this->rtsLogHelper.movingDown(this);
+                                    this->rtsLogHelper->movingDown(this);
     
 
 
@@ -1382,10 +1390,10 @@ this->rtsLogHelper.turnTo(this, dx, dy, angleInfo, angle, this->movementAngle, e
 
                                     }
                                 
-this->rtsLogHelper.currentMoveEnded(this);
+this->rtsLogHelper->currentMoveEnded(this);
     
 
-                        if(this->movementAngle == this->angleFactory.LEFT || this->movementAngle == this->angleFactory.RIGHT)
+                        if(this->movementAngle == this->angleFactory->LEFT || this->movementAngle == this->angleFactory->RIGHT)
                         
                                     {
                                     this->handleDeltalY(dx, dy);
@@ -1394,7 +1402,7 @@ this->rtsLogHelper.currentMoveEnded(this);
                                     }
                                 
                              else 
-                        if(this->movementAngle == this->angleFactory.UP || this->movementAngle == this->angleFactory.DOWN)
+                        if(this->movementAngle == this->angleFactory->UP || this->movementAngle == this->angleFactory->DOWN)
                         
                                     {
                                     this->handleDeltalX(dx, dy);
@@ -1448,23 +1456,23 @@ this->rtsLogHelper.currentMoveEnded(this);
                                     }
                                 
 
-    int32_t deltaAngle2 = this->movementAngle.getValue() -angle;;
+    int32_t deltaAngle2 = this->movementAngle->getValue() -angle;;
     
 
                         if(deltaAngle2 > 0)
                         
                                     {
-                                    this->rtsLogHelper.rotateRight(this);
+                                    this->rtsLogHelper->rotateRight(this);
     
-this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canvas::RIGHT));
+this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Canvas::RIGHT));
     
 
                                     }
                                 
                         else {
-                            this->rtsLogHelper.rotateLeft(this);
+                            this->rtsLogHelper->rotateLeft(this);
     
-this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canvas::LEFT));
+this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Canvas::LEFT));
     
 
                         }
@@ -1479,7 +1487,7 @@ this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canv
                                     }
                                 
                         else {
-                            this->rtsLogHelper.noRotation(this);
+                            this->rtsLogHelper->noRotation(this);
     
 
                         }
@@ -1498,16 +1506,16 @@ this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canv
 
     private: void handleDeltalX(int32_t dx, int32_t dy){
 
-    WaypointBehaviorBase waypointBehaviorBase = this->waypointBehaviorBase;;
+    WaypointBehaviorBase* waypointBehaviorBase = dynamic_cast<WaypointBehaviorBase*>(this->waypointBehaviorBase);;
     
 
-    GeographicMapCellPosition nextUnvisitedPathGeographicMapCellPosition = waypointBehaviorBase.getNextUnvisitedPathGeographicMapCellPosition();;
+    GeographicMapCellPosition* nextUnvisitedPathGeographicMapCellPosition = waypointBehaviorBase->getNextUnvisitedPathGeographicMapCellPosition();;
     
 
                         if(dx > 0)
                         
                                     {
-                                    this->movementAngle= this->angleFactory.LEFT;
+                                    this->movementAngle= this->angleFactory->LEFT;
     
 this->steeringInsideGeographicMapCellPosition= nextUnvisitedPathGeographicMapCellPosition;
     
@@ -1515,30 +1523,30 @@ this->steeringInsideGeographicMapCellPosition= nextUnvisitedPathGeographicMapCel
                                     }
                                 
                         else {
-                            this->movementAngle= this->angleFactory.RIGHT;
+                            this->movementAngle= this->angleFactory->RIGHT;
     
 this->steeringInsideGeographicMapCellPosition= nextUnvisitedPathGeographicMapCellPosition;
     
 
                         }
                             
-this->rtsLogHelper.handle(this, this->movementAngle);
+this->rtsLogHelper->handle(this, this->movementAngle);
     
 }
 
 
     private: void handleDeltalY(int32_t dx, int32_t dy){
 
-    WaypointBehaviorBase waypointBehaviorBase = this->waypointBehaviorBase;;
+    WaypointBehaviorBase* waypointBehaviorBase = dynamic_cast<WaypointBehaviorBase*>(this->waypointBehaviorBase);;
     
 
-    GeographicMapCellPosition nextUnvisitedPathGeographicMapCellPosition = waypointBehaviorBase.getNextUnvisitedPathGeographicMapCellPosition();;
+    GeographicMapCellPosition* nextUnvisitedPathGeographicMapCellPosition = waypointBehaviorBase->getNextUnvisitedPathGeographicMapCellPosition();;
     
 
                         if(dy > 0)
                         
                                     {
-                                    this->movementAngle= this->angleFactory.UP;
+                                    this->movementAngle= this->angleFactory->UP;
     
 this->steeringInsideGeographicMapCellPosition= nextUnvisitedPathGeographicMapCellPosition;
     
@@ -1546,14 +1554,14 @@ this->steeringInsideGeographicMapCellPosition= nextUnvisitedPathGeographicMapCel
                                     }
                                 
                         else {
-                            this->movementAngle= this->angleFactory.DOWN;
+                            this->movementAngle= this->angleFactory->DOWN;
     
 this->steeringInsideGeographicMapCellPosition= nextUnvisitedPathGeographicMapCellPosition;
     
 
                         }
                             
-this->rtsLogHelper.handle(this, this->movementAngle);
+this->rtsLogHelper->handle(this, this->movementAngle);
     
 }
 
@@ -1562,10 +1570,10 @@ this->rtsLogHelper.handle(this, this->movementAngle);
             
     private: void trackToDXYTargetAngle(int32_t dx, int32_t dy, int32_t targetAngle){
 
-    BasicArrayList list = this->getUnitWaypointBehavior().getSteeringVisitorList();;
+    BasicArrayList* list = this->getUnitWaypointBehavior()->getSteeringVisitorList();;
     
 
-                        if(list.size() > 0)
+                        if(list->size() > 0)
                         
                                     {
                                     
@@ -1573,13 +1581,13 @@ this->rtsLogHelper.handle(this, this->movementAngle);
 
 
                         for (
-    int32_t index = list.size() -1;index >= 0; index--)
+    int32_t index = list->size() -1;index >= 0; index--)
         {
 
-    SteeringVisitor steeringVisitor = list.get(index);;
+    SteeringVisitor* steeringVisitor = dynamic_cast<SteeringVisitor*>(list->get(index));;
     
 
-    Object* anyType = steeringVisitor.visit(this);;
+    Object* anyType = steeringVisitor->visit(this);;
     
 
                         if(anyType == 
@@ -1587,7 +1595,7 @@ this->rtsLogHelper.handle(this, this->movementAngle);
                                 )
                         
                                     {
-                                    list.removeAt(index);
+                                    list->removeAt(index);
     
 
                                     }
@@ -1615,38 +1623,38 @@ this->fireOrMove();
             
     protected: void fireOrMove(){
 
-    GameKeyEventFactory gameKeyEventFactory = GameKeyEventFactory::getInstance();;
+    GameKeyEventFactory* gameKeyEventFactory = GameKeyEventFactory::getInstance();;
     
 
-                        if(this->getUnitWaypointBehavior().needToMove())
+                        if(this->getUnitWaypointBehavior()->needToMove())
                         
                                     {
                                     this->rtsLayer2LogHelper.steeringUp(this);
     
 
-                        if(this->showMoreCaptionStates && !this->captionAnimationHelper.isShowing())
+                        if(this->showMoreCaptionStates && !this->captionAnimationHelper->isShowing())
                         
                                     {
-                                    this->captionAnimationHelper.update(UnitLayer::MOVE, this->basicColorFactory.GREEN);
+                                    this->captionAnimationHelper->update(UnitLayer::MOVE, this->basicColorFactory->GREEN);
     
 
                                     }
                                 
-this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canvas::UP));
+this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Canvas::UP));
     
 
                                     }
                                 
                         else {
-                            this->captionAnimationHelper.update(CommonPhoneStrings::getInstance().FIRE, this->basicColorFactory.RED);
+                            this->captionAnimationHelper->update(CommonPhoneStrings::getInstance()->FIRE, this->basicColorFactory->RED);
     
 this->rtsLayer2LogHelper.steeringFireOrStop(this);
     
 this->allStop();
     
-this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canvas::KEY_NUM0));
+this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Canvas::KEY_NUM0));
     
-TrackingEventHandler::getInstance().fireEvent(this->getTrackingEvent());
+TrackingEventHandler::getInstance()->fireEvent(this->getTrackingEvent());
     
 
                         }
@@ -1658,42 +1666,42 @@ TrackingEventHandler::getInstance().fireEvent(this->getTrackingEvent());
 
         try {
             
-    VelocityProperties velocityProperties = this->getVehicleProperties().getVelocityProperties();;
+    VelocityProperties* velocityProperties = this->getVehicleProperties()->getVelocityProperties();;
     
 
-    int64_t velocityXScaled = velocityProperties.getVelocityXBasicDecimalP().getScaled();;
+    int64_t velocityXScaled = velocityProperties->getVelocityXBasicDecimalP()->getScaled();;
     
 
-    int64_t velocityYScaled = velocityProperties.getVelocityYBasicDecimalP().getScaled();;
+    int64_t velocityYScaled = velocityProperties->getVelocityYBasicDecimalP()->getScaled();;
     
-this->getUnitWaypointBehavior().move();
+this->getUnitWaypointBehavior()->move();
     
 
                         if(velocityXScaled != 0 || velocityYScaled != 0)
                         
                                     {
-                                    this->getUnitWaypointBehavior().setMoving(true);
+                                    this->getUnitWaypointBehavior()->setMoving(true);
     
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = this->allBinaryGameLayerManagerP;;
+    GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(this->allBinaryGameLayerManagerP);;
     
 
-    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
+    BasicGeographicMap* geographicMapInterface = geographicMapCompositeInterface->getGeographicMapInterface()[0];;
     
-this->layerPartialCellPositionsUtil.getAllDXY(geographicMapInterface, this, static_cast<int32_t>(velocityXScaled), static_cast<int32_t>(velocityYScaled), UnitLayer::getPartialpositionlist());
-    
-
-    GeographicMapCellPosition cellPosition = DropCellPositionHistory::getInstance().getCellPositionWithDrop(UnitLayer::getPartialpositionlist());;
+this->layerPartialCellPositionsUtil->getAllDXY(geographicMapInterface, this, static_cast<int32_t>(velocityXScaled), static_cast<int32_t>(velocityYScaled), UnitLayer::getPartialpositionlist());
     
 
-                        if(cellPosition == this->cellPositionFactory.NONE)
+    GeographicMapCellPosition* cellPosition = dynamic_cast<GeographicMapCellPosition*>(DropCellPositionHistory::getInstance()->getCellPositionWithDrop(UnitLayer::getPartialpositionlist()));;
+    
+
+                        if(cellPosition == this->cellPositionFactory->NONE)
                         
                                     {
                                     
-    AllBinaryTiledLayer tiledLayer = geographicMapInterface.getAllBinaryTiledLayer();;
+    AllBinaryTiledLayer* tiledLayer = geographicMapInterface->getAllBinaryTiledLayer();;
     
 
-    TiledLayerUtil tiledLayerUtil = TiledLayerUtil::getInstance();;
+    TiledLayerUtil* tiledLayerUtil = TiledLayerUtil::getInstance();;
     
 
     int32_t x = this->x +static_cast<int32_t>(velocityXScaled);;
@@ -1701,9 +1709,9 @@ this->layerPartialCellPositionsUtil.getAllDXY(geographicMapInterface, this, stat
 
     int32_t y = this->y +static_cast<int32_t>(velocityYScaled);;
     
-x= tiledLayerUtil.keepOnMapX(tiledLayer, x, this->getWidth());
+x= tiledLayerUtil->keepOnMapX(tiledLayer, x, this->getWidth());
     
-y= tiledLayerUtil.keepOnMapY(tiledLayer, y, this->getHeight());
+y= tiledLayerUtil->keepOnMapY(tiledLayer, y, this->getHeight());
     
 this->setPosition(x, y, this->z);
     
@@ -1712,11 +1720,11 @@ this->setPosition(x, y, this->z);
                                 
                         else {
                             
-    AllBinaryLayer allbinaryLayer = DropCellPositionHistory::getInstance().getLayerInterface(cellPosition);;
+    AllBinaryLayer* allbinaryLayer = DropCellPositionHistory::getInstance()->getLayerInterface(cellPosition);;
     
-this->getUnitWaypointBehavior().setMovingFromStopped(false);
+this->getUnitWaypointBehavior()->setMovingFromStopped(false);
     
-this->getUnitWaypointBehavior().addBuildingChase(allbinaryLayer, cellPosition);
+this->getUnitWaypointBehavior()->addBuildingChase(allbinaryLayer, cellPosition);
     
 
                         }
@@ -1725,34 +1733,34 @@ this->getUnitWaypointBehavior().addBuildingChase(allbinaryLayer, cellPosition);
                                     }
                                 
 
-                        if(this->getUnitWaypointBehavior().isMoving())
+                        if(this->getUnitWaypointBehavior()->isMoving())
                         
                                     {
-                                    TrackingEventHandler::getInstance().fireEvent(this->getTrackingEvent());
+                                    TrackingEventHandler::getInstance()->fireEvent(this->getTrackingEvent());
     
 
                                     }
                                 
                         else {
-                            this->getUnitWaypointBehavior().setMovingFromStopped(false);
+                            this->getUnitWaypointBehavior()->setMovingFromStopped(false);
     
 
                         }
                             
 
-                        if(this->getUnitWaypointBehavior().isMovingFromStopped() && this->isVisible())
+                        if(this->getUnitWaypointBehavior()->isMovingFromStopped() && this->isVisible())
                         
                                     {
-                                    SecondaryPlayerQueueFactory::getInstance().add(this->moveSoundInterface);
+                                    SecondaryPlayerQueueFactory::getInstance()->add(this->moveSoundInterface);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "move", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "move", &e);
     
 }
 
@@ -1761,16 +1769,16 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "move", e);
 
     public: void allStop(){
 
-    VelocityProperties velocityProperties = this->getVehicleProperties().getVelocityProperties();;
+    VelocityProperties* velocityProperties = this->getVehicleProperties()->getVelocityProperties();;
     
-velocityProperties.getVelocityXBasicDecimalP().setint(0);
+velocityProperties->getVelocityXBasicDecimalP()->setint(0);
     
-velocityProperties.getVelocityYBasicDecimalP().setint(0);
+velocityProperties->getVelocityYBasicDecimalP()->setint(0);
     
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 
                         if(this->isVisible())
                         
@@ -1778,29 +1786,29 @@ velocityProperties.getVelocityYBasicDecimalP().setint(0);
                                     super.paint(graphics);
     
 
-    ViewPositionBase viewPosition = this->getViewPosition();;
+    ViewPositionBase* viewPosition = this->getViewPosition();;
     
 
-    int32_t viewX = viewPosition.getX();;
+    int32_t viewX = viewPosition->getX();;
     
 
-    int32_t viewY = viewPosition.getY();;
+    int32_t viewY = viewPosition->getY();;
     
-this->decalAnimation.paintXY(graphics, viewX, viewY);
+this->decalAnimation->paintXY(graphics, viewX, viewY);
     
 this->rangeAnimation.paintXY(graphics, viewX, viewY);
     
 this->sensorRangeAnimation.paintXY(graphics, viewX, viewY);
     
-this->damageFloatersPaintableInterface.paint(graphics);
+this->damageFloatersPaintableInterface->paint(graphics);
     
-this->healthBar.paint(graphics);
+this->healthBar->paint(graphics);
     
-this->captionAnimationHelper.paintXY(graphics, viewX, viewY);
+this->captionAnimationHelper->paintXY(graphics, viewX, viewY);
     
-this->pathAnimation.paintXY(graphics, viewX, viewY);
+this->pathAnimation->paintXY(graphics, viewX, viewY);
     
-this->resourceAnimation.paintXY(graphics, viewX, viewY);
+this->resourceAnimation->paintXY(graphics, viewX, viewY);
     
 
                                     }
@@ -1810,16 +1818,16 @@ this->resourceAnimation.paintXY(graphics, viewX, viewY);
 
                 //@Throws(Exception.constructor)
             
-    public: void onBuildingEvent(RTSLayerEvent event){
+    public: void onBuildingEvent(RTSLayerEvent* event){
 
-    BuildingLayer buildingLayer = event.getRtsLayer();;
+    BuildingLayer* buildingLayer = dynamic_cast<BuildingLayer*>(event->getRtsLayer());;
     
-this->getUnitWaypointBehavior().moveAwayFromBuilding(buildingLayer);
+this->getUnitWaypointBehavior()->moveAwayFromBuilding(buildingLayer);
     
 }
 
 
-    public: VehicleProperties getVehicleProperties(){
+    public: VehicleProperties* getVehicleProperties(){
 
 
 
@@ -1834,13 +1842,13 @@ this->getUnitWaypointBehavior().moveAwayFromBuilding(buildingLayer);
     public: void damage(int32_t damage, int32_t damageType){
 super.damage(damage, damageType);
     
-this->damageFloaters.add(damage);
+this->damageFloaters->add(damage);
     
 
                         if(damage > 0)
                         
                                     {
-                                    this->getHealthInterface().damage(damage);
+                                    this->getHealthInterface()->damage(damage);
     
 
                                     }
@@ -1871,24 +1879,24 @@ super.setDestroyed(destroyed);
                         if(this->isDestroyed())
                         
                                     {
-                                    WaypointEventHandlerFactory::getInstance(this->getGroupInterface()[0]).removeListener(this->getUnitWaypointBehavior());
+                                    WaypointEventHandlerFactory::getInstance(this->getGroupInterface()[0])->removeListener(this->getUnitWaypointBehavior());
     
-TrackingEventHandler::getInstance().removeListener(this);
+TrackingEventHandler::getInstance()->removeListener(this);
     
-BuildingEventHandler::getInstance().removeListener(this);
+BuildingEventHandler::getInstance()->removeListener(this);
     
 
-                        if(!this->getHealthInterface().isAlive())
+                        if(!this->getHealthInterface()->isAlive())
                         
                                     {
                                     
-    int32_t damage = this->getHealthInterface().getMaxHealth();;
+    int32_t damage = this->getHealthInterface()->getMaxHealth();;
     
 
                         if(damage > 10)
                         
                                     {
-                                    SecondaryPlayerQueueFactory::getInstance().add(ExplosionBasicSound::getInstance());
+                                    SecondaryPlayerQueueFactory::getInstance()->add(ExplosionBasicSound::getInstance());
     
 
                         if(damage < 100)
@@ -1948,7 +1956,7 @@ this->vibration.vibrate(this->duration *4, 0, 0);
                 //@Throws(Exception.constructor)
             
     public: void clearResourceAnimation(){
-this->resourceAnimation= NullIndexedAnimationFactory::getFactoryInstance().getInstance(0);
+this->resourceAnimation= dynamic_cast<IndexedAnimation*>(NullIndexedAnimationFactory::getFactoryInstance()->getInstance(0));
     
 }
 
@@ -1982,18 +1990,18 @@ this->resourceLoad += resource;
 }
 
 
-    private: const CapitalEvent CAPITAL_EVENT = CapitalEvent(this);
+    private: CapitalEvent* CAPITAL_EVENT = new CapitalEvent(this);
 
                 //@Throws(Exception.constructor)
             
-    public: void handleCost(PathFindingLayerInterface ownerLayer){
+    public: void handleCost(PathFindingLayerInterface* ownerLayer){
 
                         if(this->getLoad() > 0)
                         
                                     {
-                                    this->CAPITAL_EVENT.setValue(this->getLoad());
+                                    this->CAPITAL_EVENT->setValue(this->getLoad());
     
-CapitalEventHandlerFactory::getInstance(ownerLayer.getGroupInterface()[0]).fireEvent(this->CAPITAL_EVENT);
+CapitalEventHandlerFactory::getInstance(ownerLayer->getGroupInterface()[0])->fireEvent(this->CAPITAL_EVENT);
     
 this->setLoad(0);
     
@@ -2003,13 +2011,13 @@ this->setLoad(0);
 }
 
 
-    public: SelectionHudPaintable createHudPaintable(){
+    public: SelectionHudPaintable* createHudPaintable(){
 
-    RTSLayerHudPaintable rtsLayerHudPaintable = RTSLayerHudPaintable::getInstance();;
+    RTSLayerHudPaintable* rtsLayerHudPaintable = RTSLayerHudPaintable::getInstance();;
     
-rtsLayerHudPaintable.setBasicColorP(this->allBinaryGameLayerManagerP.getForegroundBasicColor());
+rtsLayerHudPaintable->setBasicColorP(this->allBinaryGameLayerManagerP.getForegroundBasicColor());
     
-rtsLayerHudPaintable.setRtsLayer(this);
+rtsLayerHudPaintable->setRtsLayer(this);
     
 
 
@@ -2020,9 +2028,9 @@ rtsLayerHudPaintable.setRtsLayer(this);
 }
 
 
-    public: SelectionHudPaintable getHudPaintable(){
+    public: SelectionHudPaintable* getHudPaintable(){
 
-    RTSLayerHudPaintable rtsLayerHudPaintable = RTSLayerHudPaintable::getInstance();;
+    RTSLayerHudPaintable* rtsLayerHudPaintable = RTSLayerHudPaintable::getInstance();;
     
 
 
@@ -2043,17 +2051,17 @@ rtsLayerHudPaintable.setRtsLayer(this);
 }
 
 
-    protected: UnitWaypointBehavior getUnitWaypointBehavior(){
+    protected: UnitWaypointBehavior* getUnitWaypointBehavior(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getWaypointBehavior();
+                        return dynamic_cast<UnitWaypointBehavior*>(this->getWaypointBehavior());
     
 }
 
 
-    public: TrackingEvent getTrackingEvent(){
+    public: TrackingEvent* getTrackingEvent(){
 
 
 
@@ -2063,7 +2071,7 @@ rtsLayerHudPaintable.setRtsLayer(this);
 }
 
 
-    public: CaptionAnimationHelperBase getCaptionAnimationHelper(){
+    public: CaptionAnimationHelperBase* getCaptionAnimationHelper(){
 
 
 

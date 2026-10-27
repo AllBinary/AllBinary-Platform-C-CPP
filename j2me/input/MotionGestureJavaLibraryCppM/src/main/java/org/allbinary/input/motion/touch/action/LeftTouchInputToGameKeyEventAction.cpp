@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/game/input/PlatformInputMappingFactory.h>
 
       
@@ -51,14 +59,14 @@
         
 class LeftTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static GameKeyCompleteMotionGestureInputEvent getInstance(){
+    public: static GameKeyCompleteMotionGestureInputEvent* getInstance(){
 
-                        if(LeftTouchInputToGameKeyEventAction::instance() == NullUtil::getInstance().NULL_OBJECT)
+                        if(LeftTouchInputToGameKeyEventAction::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    LeftTouchInputToGameKeyEventAction::instance= LeftTouchInputToGameKeyEventAction();
+                                    LeftTouchInputToGameKeyEventAction::instance= new LeftTouchInputToGameKeyEventAction();
     
 
                                     }
@@ -67,12 +75,12 @@ class LeftTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LeftTouchInputToGameKeyEventAction::instance();
+                        return dynamic_cast<GameKeyCompleteMotionGestureInputEvent*>(LeftTouchInputToGameKeyEventAction::instance);
     
 }
 
 
-private: LeftTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Left Action", TouchMotionGestureFactory::getInstance().LEFT, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping()){
+private: LeftTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Left Action", TouchMotionGestureFactory::getInstance()->LEFT, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
 
                         //super/this constructor call is in the constructor initializer list.
                     

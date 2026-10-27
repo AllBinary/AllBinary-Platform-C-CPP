@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/layer/CollidableCompositeLayer.h>
 
       
@@ -39,16 +45,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DestroyableBaseBehavior.h"
-#include "DestroyedLayerProcessor.h"
+        #include "org/allbinary/game/combat/destroy/DestroyableBaseBehavior.h"
+#include "org/allbinary/game/combat/destroy/DestroyedLayerProcessor.h"
 
 class DestroyableSimpleBehavior: public DestroyableBaseBehavior {
 
-    protected: CollidableCompositeLayer ownerLayer;
+    protected: CollidableCompositeLayer* ownerLayer;
 
     private: bool destroyed = false;
 
-public: DestroyableSimpleBehavior(CollidableCompositeLayer ownerLayer){
+public: DestroyableSimpleBehavior(CollidableCompositeLayer* ownerLayer){
 this->ownerLayer= ownerLayer;
     
 }
@@ -71,7 +77,7 @@ this->destroyed= destroyed;
                         if(this->isDestroyed())
                         
                                     {
-                                    DestroyedLayerProcessor::getInstance().add(this->ownerLayer);
+                                    DestroyedLayerProcessor::getInstance()->add(this->ownerLayer);
     
 
                                     }

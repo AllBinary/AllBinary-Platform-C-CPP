@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONGESTURERECEIVEINTERFACEFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONGESTURERECEIVEINTERFACEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/input/motion/gesture/configuration/MotionGestureConfiguration.h>
@@ -47,15 +53,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ResolveCompleteMotionGestureListener.h"
-#include "NullCompleteMotionGestureReceiver.h"
-#include "CompleteMotionGestureListenerInterface.h"
+        #include "org/allbinary/input/motion/gesture/observer/ResolveCompleteMotionGestureListener.h"
+#include "org/allbinary/input/motion/gesture/observer/NullCompleteMotionGestureReceiver.h"
+#include "org/allbinary/input/motion/gesture/observer/CompleteMotionGestureListenerInterface.h"
 
 class MotionGestureReceiveInterfaceFactory
             : public Object
          {
 
-    public: static CompleteMotionGestureListenerInterface getInstance();
+    public: static CompleteMotionGestureListenerInterface* getInstance();
 
 };
 

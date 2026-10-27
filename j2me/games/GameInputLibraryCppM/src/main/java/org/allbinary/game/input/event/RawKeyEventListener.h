@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_RAWKEYEVENTLISTENER_H
         #define ORG_ALLBINARY_GAME_INPUT_EVENT_RAWKEYEVENTLISTENER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,7 +48,7 @@
         
 class RawKeyEventListener {
 
-    void onEventRaw(int32_t keyCode, int32_t deviceId, bool repeated);
+    public: virtual void onEventRaw(int32_t keyCode, int32_t deviceId, bool repeated) = 0;
 
 };
 

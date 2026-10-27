@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSLISTBUILDER_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSLISTBUILDER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -45,15 +51,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseTouchInput.h"
+        #include "org/allbinary/input/motion/button/BaseTouchInput.h"
 
 class TouchButtonsListBuilder: public BaseTouchInput {
 
-    private: const BasicArrayList baseTouchInputList = BasicArrayListD();
+    private: BasicArrayList* baseTouchInputList = new BasicArrayListD();
 
-    protected: void addList(BasicArrayList list);
+    protected: void addList(BasicArrayList* list);
 
-    public: void add(BaseTouchInput baseTouchInput);
+    public: void add(BaseTouchInput* baseTouchInput);
 
 };
 

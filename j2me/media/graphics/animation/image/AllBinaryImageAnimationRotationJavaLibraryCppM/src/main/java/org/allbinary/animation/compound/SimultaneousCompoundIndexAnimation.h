@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -61,9 +67,9 @@
         
 class SimultaneousCompoundIndexAnimation: public IndexedAnimation {
 
-    private: std::vector<IndexedAnimation> animationInterfaceArray;
+    private: std::vector<IndexedAnimation*> animationInterfaceArray;
 
-public: SimultaneousCompoundIndexAnimation(std::vector<IndexedAnimation> animationInterfaceArray, AnimationBehavior animationBehavior);
+public: SimultaneousCompoundIndexAnimation(std::vector<IndexedAnimation*> animationInterfaceArray, AnimationBehavior* animationBehavior);
 
     public: void setFrame(int32_t frameIndex);
 
@@ -85,17 +91,17 @@ public: SimultaneousCompoundIndexAnimation(std::vector<IndexedAnimation> animati
 
     public: std::vector<int32_t> getSequence();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
-    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
+    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z);
 
                 //@Throws(Exception.constructor)
             
-    public: void set(GL gl);
+    public: void set(GL* gl);
 
-    public: std::vector<IndexedAnimation> getAnimationInterfaceArray();
+    public: std::vector<IndexedAnimation*> getAnimationInterfaceArray();
 
-    public: void setAnimationInterfaceArray(std::vector<IndexedAnimation> animationInterfaceArray);
+    public: void setAnimationInterfaceArray(std::vector<IndexedAnimation*> animationInterfaceArray);
 
 };
 

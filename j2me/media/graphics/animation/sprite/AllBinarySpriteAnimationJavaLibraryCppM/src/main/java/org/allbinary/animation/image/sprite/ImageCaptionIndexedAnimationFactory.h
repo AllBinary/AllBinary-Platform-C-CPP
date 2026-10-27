@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_IMAGECAPTIONINDEXEDANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_IMAGECAPTIONINDEXEDANIMATIONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -88,19 +94,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SpriteIndexedAnimation.h"
+        #include "org/allbinary/animation/image/sprite/SpriteIndexedAnimation.h"
 
 class ImageCaptionIndexedAnimationFactory
             : public Object
-        : public AnimationInterfaceFactoryInterface {
+        , public AnimationInterfaceFactoryInterface {
 
-    protected: const AnimationFactoryImageScaleUtil animationFactoryImageScaleUtil = AnimationFactoryImageScaleUtil::getInstance();
+    protected: AnimationFactoryImageScaleUtil* animationFactoryImageScaleUtil = AnimationFactoryImageScaleUtil::getInstance();
 
-    private: const AnimationFactorySpriteScaleUtil animationFactorySpriteScaleUtil = AnimationFactorySpriteScaleUtil::getInstance();
+    private: AnimationFactorySpriteScaleUtil* animationFactorySpriteScaleUtil = AnimationFactorySpriteScaleUtil::getInstance();
 
-    private: Image captionImage;
+    private: Image* captionImage;
 
-    private: Image spriteMovieImage;
+    private: Image* spriteMovieImage;
 
     private: int32_t frameWidth;
 
@@ -116,19 +122,19 @@ class ImageCaptionIndexedAnimationFactory
 
     private: int32_t time;
 
-    private: Sound soundInterface;
+    private: Sound* soundInterface;
 
-    public: ScaleProperties scaleProperties = ScaleProperties::instance;
+    public: ScaleProperties* scaleProperties = ScaleProperties::instance;
 
-    private: AnimationBehaviorFactory animationBehaviorFactory;
+    private: AnimationBehaviorFactory* animationBehaviorFactory;
 
-public: ImageCaptionIndexedAnimationFactory(Image captionImage, Image spriteMovieImage, Sound soundInterface, int32_t frameWidth, int32_t frameHeight, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy, int32_t time, AnimationBehaviorFactory animationBehaviorFactory);
+public: ImageCaptionIndexedAnimationFactory(Image* captionImage, Image* spriteMovieImage, Sound* soundInterface, int32_t frameWidth, int32_t frameHeight, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy, int32_t time, AnimationBehaviorFactory* animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId);
+    public: Animation* getInstance(int32_t instanceId);
 
-    public: void setInitialScale(ScaleProperties scaleProperties);
+    public: void setInitialScale(ScaleProperties* scaleProperties);
 
 };
 

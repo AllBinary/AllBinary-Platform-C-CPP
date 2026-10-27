@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -51,7 +57,7 @@ class Log
             : public Object
          {
 
-    private: const LogFormatUtil logFormatUtil = LogFormatUtil::getInstance();
+    private: LogFormatUtil* logFormatUtil = LogFormatUtil::getInstance();
 
     private: std::string specialMessage;
 
@@ -115,18 +121,16 @@ this->exception= exception;
 
     public: std::string toString(){
 
-    std::string className = CommonStrings::getInstance().EMPTY;;
+    std::string className = CommonStrings::getInstance()->EMPTY;;
     
 
     Class* clazz = this->anyType->getClass();;
     
 
-                        if(clazz.toString() != 
-                                    nullptr
-                                )
+                        if(true)
                         
                                     {
-                                    className= clazz.toString();
+                                    className= clazz->getName();
     
 
                                     }
@@ -135,7 +139,7 @@ this->exception= exception;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->logFormatUtil.get(className, this->functionName, this->specialMessage, this->exception);;
+                        return this->logFormatUtil->get(className, this->functionName, this->specialMessage, this->exception);;
     
 }
 

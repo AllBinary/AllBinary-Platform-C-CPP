@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/servlet/http/HttpServletRequest.h>
 
       
@@ -54,33 +60,33 @@
         
 class PaymentGatewayViewAbstract: public TransformInfoHttpComposite {
 
-    private: PaymentGatewayPrimaryKey paymentGatewayPrimaryKey;
+    private: PaymentGatewayPrimaryKey* paymentGatewayPrimaryKey;
 
-public: PaymentGatewayViewAbstract(TransformInfoInterface transformInfoInterface) : TransformInfoHttpComposite(transformInfoInterface){
+public: PaymentGatewayViewAbstract(TransformInfoInterface* transformInfoInterface) : TransformInfoHttpComposite(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->getFormData(this->getPageContext().getRequest());
+this->getFormData(dynamic_cast<HttpServletRequest*>(this->getPageContext()->getRequest()));
     
 }
 
 
-    public: void getFormData(HttpServletRequest request){
+    public: void getFormData(HttpServletRequest* request){
 
-    std::string storeName = this->getWeblisketSession().getStoreName();;
+    std::string storeName = this->getWeblisketSession()->getStoreName();;
     
 
-    std::string gatewayName = request.getParameter(PaymentGatewayData::NAME.toString());;
+    std::string gatewayName = request->getParameter(PaymentGatewayData::NAME.toString());;
     
-this->setPaymentGatewayPrimaryKey(PaymentGatewayPrimaryKey(storeName, gatewayName));
+this->setPaymentGatewayPrimaryKey(new PaymentGatewayPrimaryKey(storeName, gatewayName));
     
 }
 
 
-    public: PaymentGatewayPrimaryKey getPaymentGatewayPrimaryKey(){
+    public: PaymentGatewayPrimaryKey* getPaymentGatewayPrimaryKey(){
 
 
 
@@ -90,7 +96,7 @@ this->setPaymentGatewayPrimaryKey(PaymentGatewayPrimaryKey(storeName, gatewayNam
 }
 
 
-    public: void setPaymentGatewayPrimaryKey(PaymentGatewayPrimaryKey paymentGatewayPrimaryKey){
+    public: void setPaymentGatewayPrimaryKey(PaymentGatewayPrimaryKey* paymentGatewayPrimaryKey){
 this->paymentGatewayPrimaryKey= paymentGatewayPrimaryKey;
     
 }

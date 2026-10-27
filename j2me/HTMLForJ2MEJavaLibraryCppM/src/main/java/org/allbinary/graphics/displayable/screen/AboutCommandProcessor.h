@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_ABOUTCOMMANDPROCESSOR_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_ABOUTCOMMANDPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -55,11 +61,11 @@ class AboutCommandProcessor
             : public Object
          {
 
-    private: static AboutCommandProcessor instance() { return AboutCommandProcessor(); }
+    private: static AboutCommandProcessor* instance() { static std::unique_ptr<AboutCommandProcessor> value(new AboutCommandProcessor()); return value.get(); }
 
-    public: static AboutCommandProcessor getInstance();
+    public: static AboutCommandProcessor* getInstance();
 
-    public: void process(CommandListener midletCommandListener, Command command, Canvas canvas);
+    public: void process(CommandListener* midletCommandListener, Command* command, Canvas* canvas);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_DOWNLOADS_DOWNLOADITEMSENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_DOWNLOADS_DOWNLOADITEMSENTITYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,21 +55,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DownloadItemsEntity.h"
+        #include "org/allbinary/data/tables/user/commerce/inventory/item/downloads/DownloadItemsEntity.h"
 
 class DownloadItemsEntityFactory
             : public Object
          {
 
-    private: static DownloadItemsEntityFactory instance() { return DownloadItemsEntityFactory(); }
+    private: static DownloadItemsEntityFactory* instance() { static std::unique_ptr<DownloadItemsEntityFactory> value(new DownloadItemsEntityFactory()); return value.get(); }
 
-    public: static DownloadItemsEntityFactory getInstance();
+    public: static DownloadItemsEntityFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: DownloadItemsEntityFactory();
 
-    public: DownloadItemsEntity getDownloadItemsEntityInstance();
+    public: DownloadItemsEntity* getDownloadItemsEntityInstance();
 
 };
 

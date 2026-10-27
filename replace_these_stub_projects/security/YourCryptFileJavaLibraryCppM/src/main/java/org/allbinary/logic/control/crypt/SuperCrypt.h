@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_SUPERCRYPT_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_SUPERCRYPT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -32,7 +38,7 @@ class SuperCrypt
             : public Object
          {
 
-    public: static int32_t KEYMAX = 0;
+    public: static inline int32_t KEYMAX = 0;
 
 public: SuperCrypt(int32_t key);
 

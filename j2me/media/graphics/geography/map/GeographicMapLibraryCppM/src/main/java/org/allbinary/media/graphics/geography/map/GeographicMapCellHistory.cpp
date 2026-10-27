@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -93,28 +99,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapCellPosition.h"
-#include "BasicGeographicMap.h"
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
+#include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
 
 class GeographicMapCellHistory
             : public Object
-        : public UpdateMyFontInterface {
+        , public UpdateMyFontInterface {
 
-    public: static const std::vector<GeographicMapCellHistory> NULL_GEOGRPAHIC_MAP_HISTORY_ARRAY = {};
+    public: static inline const std::vector<GeographicMapCellHistory*> NULL_GEOGRPAHIC_MAP_HISTORY_ARRAY = {};
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const BooleanFactory booleanFactory = BooleanFactory::getInstance();
+    private: BooleanFactory* booleanFactory = BooleanFactory::getInstance();
 
-    private: BasicArrayList list;
+    private: BasicArrayList* list;
 
-    private: BasicArrayList visitedList;
+    private: BasicArrayList* visitedList;
 
     private: const std::string MISSED_INFO = "Missed";
 
-    private: const Animation animation = TextAnimation(this->MISSED_INFO, AnimationBehavior::getInstance());
+    private: Animation* animation = new TextAnimation(this->MISSED_INFO, AnimationBehavior::getInstance());
 
-    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
 
     private: int32_t totalVisited= 0;
 
@@ -123,20 +129,20 @@ class GeographicMapCellHistory
     private: int32_t fontHeight = 0;
 
 public: GeographicMapCellHistory(){
-this->list= BasicArrayListD();
+this->list= new BasicArrayListD();
     
-this->visitedList= BasicArrayListD();
+this->visitedList= new BasicArrayListD();
     
 this->init();
     
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->fontHeight= font.getHeight();
+this->fontHeight= font->getHeight();
     
 this->myFontProcessor= MyFontProcessor::getInstance();
     
@@ -168,21 +174,21 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->list.size();;
+                        return this->list->size();;
     
 }
 
 
-    public: void trackAll(BasicArrayList list){
+    public: void trackAll(BasicArrayList* list){
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
-this->list.ensureCapacity(size);
+this->list->ensureCapacity(size);
     
-this->visitedList.ensureCapacity(size);
+this->visitedList->ensureCapacity(size);
     
 
-    GeographicMapCellPosition geographicMapCellPosition;;
+    GeographicMapCellPosition* geographicMapCellPosition;;
     
 
 
@@ -191,7 +197,7 @@ this->visitedList.ensureCapacity(size);
                         for (
     int32_t index = 0;index < size; index++)
         {
-geographicMapCellPosition= list.get(index);
+geographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(list->get(index));
     
 this->track(geographicMapCellPosition);
     
@@ -200,14 +206,14 @@ this->track(geographicMapCellPosition);
 }
 
 
-    public: void track(GeographicMapCellPosition geographicMapCellPosition){
+    public: void track(GeographicMapCellPosition* geographicMapCellPosition){
 
-                        if(!this->list.contains(geographicMapCellPosition))
+                        if(!this->list->contains(geographicMapCellPosition))
                         
                                     {
-                                    this->list.add(geographicMapCellPosition);
+                                    this->list->add(geographicMapCellPosition);
     
-this->visitedList.add(this->booleanFactory.FALSE);
+this->visitedList->add(this->booleanFactory->FALSE);
     
 
                                     }
@@ -215,7 +221,7 @@ this->visitedList.add(this->booleanFactory.FALSE);
 }
 
 
-    public: BasicArrayList getTracked(){
+    public: BasicArrayList* getTracked(){
 
 
 
@@ -225,7 +231,7 @@ this->visitedList.add(this->booleanFactory.FALSE);
 }
 
 
-    public: BasicArrayList getVisited(){
+    public: BasicArrayList* getVisited(){
 
 
 
@@ -235,22 +241,22 @@ this->visitedList.add(this->booleanFactory.FALSE);
 }
 
 
-    public: GeographicMapCellPosition getAfterIfNotLast(GeographicMapCellPosition geographicMapCellPosition){
+    public: GeographicMapCellPosition* getAfterIfNotLast(GeographicMapCellPosition* geographicMapCellPosition){
 
-    BasicArrayList localList = this->list;;
+    BasicArrayList* localList = this->list;;
     
 
-    int32_t index = localList.indexOf(geographicMapCellPosition);;
+    int32_t index = localList->indexOf(geographicMapCellPosition);;
     
 
-                        if(localList.size() > index +1)
+                        if(localList->size() > index +1)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return localList.get(index +1);
+                        return dynamic_cast<GeographicMapCellPosition*>(localList->get(index +1));
     
 
                                     }
@@ -264,18 +270,18 @@ this->visitedList.add(this->booleanFactory.FALSE);
 }
 
 
-    public: GeographicMapCellPosition getFirstUnvisited(){
+    public: GeographicMapCellPosition* getFirstUnvisited(){
 
-    BasicArrayList localList = this->list;;
+    BasicArrayList* localList = this->list;;
     
 
-    BasicArrayList localVisitedList = this->visitedList;;
+    BasicArrayList* localVisitedList = this->visitedList;;
     
 
-    int32_t size = localVisitedList.size();;
+    int32_t size = localVisitedList->size();;
     
 
-    Boolean value;;
+    bool value;;
     
 
 
@@ -284,17 +290,17 @@ this->visitedList.add(this->booleanFactory.FALSE);
                         for (
     int32_t index = 0;index < size; index++)
         {
-value= this->visitedList.get(index);
+value= this->visitedList->get(index);
     
 
-                        if(value == this->booleanFactory.FALSE)
+                        if(value == this->booleanFactory->FALSE)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return localList.get(index);
+                        return dynamic_cast<GeographicMapCellPosition*>(localList->get(index));
     
 
                                     }
@@ -305,20 +311,20 @@ value= this->visitedList.get(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return localList.get(0);
+                        return dynamic_cast<GeographicMapCellPosition*>(localList->get(0));
     
 }
 
 
     public: int32_t getFirstUnvisitedIndex(){
 
-    BasicArrayList localVisitedList = this->visitedList;;
+    BasicArrayList* localVisitedList = this->visitedList;;
     
 
-    int32_t size = localVisitedList.size();;
+    int32_t size = localVisitedList->size();;
     
 
-    Boolean value;;
+    bool value;;
     
 
 
@@ -327,10 +333,10 @@ value= this->visitedList.get(index);
                         for (
     int32_t index = 0;index < size; index++)
         {
-value= this->visitedList.get(index);
+value= this->visitedList->get(index);
     
 
-                        if(value == this->booleanFactory.FALSE)
+                        if(value == this->booleanFactory->FALSE)
                         
                                     {
                                     
@@ -353,18 +359,18 @@ value= this->visitedList.get(index);
 }
 
 
-    public: BasicArrayList getInPathButNotTracked(BasicArrayList pathList){
+    public: BasicArrayList* getInPathButNotTracked(BasicArrayList* pathList){
 
-    BasicArrayList inPathButNotTrackedList = BasicArrayListD();;
+    BasicArrayList* inPathButNotTrackedList = new BasicArrayListD();;
     
 
-    BasicArrayList localList = this->list;;
+    BasicArrayList* localList = this->list;;
     
 
-    int32_t size = pathList.size();;
+    int32_t size = pathList->size();;
     
 
-    GeographicMapCellPosition geographicMapCellPosition;;
+    GeographicMapCellPosition* geographicMapCellPosition;;
     
 
 
@@ -373,13 +379,13 @@ value= this->visitedList.get(index);
                         for (
     int32_t index = 0;index < size; index++)
         {
-geographicMapCellPosition= pathList.get(index);
+geographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(pathList->get(index));
     
 
-                        if(!localList.contains(geographicMapCellPosition))
+                        if(!localList->contains(geographicMapCellPosition))
                         
                                     {
-                                    inPathButNotTrackedList.add(geographicMapCellPosition);
+                                    inPathButNotTrackedList->add(geographicMapCellPosition);
     
 
                                     }
@@ -395,19 +401,19 @@ geographicMapCellPosition= pathList.get(index);
 }
 
 
-    public: bool isVisited(GeographicMapCellPosition geographicMapCellPosition){
+    public: bool isVisited(GeographicMapCellPosition* geographicMapCellPosition){
 
-    int32_t index = this->list.indexOf(geographicMapCellPosition);;
+    int32_t index = this->list->indexOf(geographicMapCellPosition);;
     
 
                         if(index !=  -1)
                         
                                     {
                                     
-    Boolean value = this->visitedList.get(index);;
+    bool value = this->visitedList->get(index);;
     
 
-                        if(value == this->booleanFactory.TRUE)
+                        if(value == this->booleanFactory->TRUE)
                         
                                     {
                                     
@@ -435,27 +441,27 @@ geographicMapCellPosition= pathList.get(index);
 }
 
 
-    public: bool visit(GeographicMapCellPosition geographicMapCellPosition){
+    public: bool visit(GeographicMapCellPosition* geographicMapCellPosition){
 
-    int32_t index = this->list.indexOf(geographicMapCellPosition);;
+    int32_t index = this->list->indexOf(geographicMapCellPosition);;
     
 
-    Boolean value;;
+    bool value;;
     
 
                         if(index !=  -1)
                         
                                     {
-                                    value= this->visitedList.get(index);
+                                    value= this->visitedList->get(index);
     
 
-    Boolean TRUE = this->booleanFactory.TRUE;;
+    bool TRUE = this->booleanFactory->TRUE;;
     
 
                         if(value != TRUE)
                         
                                     {
-                                    this->visitedList.set(index, TRUE);
+                                    this->visitedList->set(index, TRUE);
     
 this->totalVisited++;
     
@@ -544,12 +550,12 @@ this->totalVisited++;
 
                 //@Throws(Exception.constructor)
             
-    public: bool isPortionVisited(BasicDecimal basicDecimal){
+    public: bool isPortionVisited(BasicDecimal* basicDecimal){
 
     int32_t size = this->getSize();;
     
 
-    int32_t numberRequired = (size<<basicDecimal.getScaledFactor()) /static_cast<int32_t>(basicDecimal.getUnscaled());;
+    int32_t numberRequired = (size<<basicDecimal->getScaledFactor()) /static_cast<int32_t>(basicDecimal->getUnscaled());;
     
 
     int32_t numberNotVisited = this->getSize() -1 -this->totalVisited;;
@@ -584,13 +590,13 @@ this->totalVisited++;
             
     public: void reset(){
 
-    BasicArrayList localVisitedList = this->visitedList;;
+    BasicArrayList* localVisitedList = this->visitedList;;
     
 
-    Boolean localFalseBoolean = this->booleanFactory.FALSE;;
+    bool localFalseBoolean = this->booleanFactory->FALSE;;
     
 
-    int32_t size = localVisitedList.size();;
+    int32_t size = localVisitedList->size();;
     
 
 
@@ -599,7 +605,7 @@ this->totalVisited++;
                         for (
     int32_t index = size -1;index >= 0; index--)
         {
-localVisitedList.set(index, localFalseBoolean);
+localVisitedList->set(index, localFalseBoolean);
     
 }
 
@@ -608,18 +614,18 @@ this->totalVisited= 0;
 }
 
 
-    private: void paintNotVisitedRelativeToPoint(Graphics graphics, AllBinaryTiledLayer tiledLayer, GPoint point){
+    private: void paintNotVisitedRelativeToPoint(Graphics* graphics, AllBinaryTiledLayer* tiledLayer, GPoint* point){
 
-    int32_t x = point.getX() -tiledLayer.getXP();;
+    int32_t x = point->getX() -tiledLayer->getXP();;
     
 
-    int32_t y = point.getY() -tiledLayer.getYP();;
+    int32_t y = point->getY() -tiledLayer->getYP();;
     
 
                         if(this->halfWidth == 0)
                         
                                     {
-                                    this->halfWidth= (graphics.getFont().stringWidth(this->MISSED_INFO)>>1);
+                                    this->halfWidth= (graphics->getFont()->stringWidth(this->MISSED_INFO)>>1);
     
 
                                     }
@@ -627,31 +633,31 @@ this->totalVisited= 0;
 
     int32_t height = 2 *this->fontHeight;;
     
-this->animation.paintXY(graphics, x +this->halfWidth, y +(height));
+this->animation->paintXY(graphics, x +this->halfWidth, y +(height));
     
 }
 
 
-    private: const int32_t RED = BasicColorFactory::getInstance().RED.intValue();
+    private: const int32_t RED = BasicColorFactory::getInstance()->RED.intValue();
 
-    public: void paintNotVisited(Graphics graphics, BasicGeographicMap geographicMapInterface){
+    public: void paintNotVisited(Graphics* graphics, BasicGeographicMap* geographicMapInterface){
 
         try {
-            this->myFontProcessor.process(graphics);
+            this->myFontProcessor->process(graphics);
     
-graphics.setColor(this->RED);
-    
-
-    BasicArrayList localVisitedList = this->visitedList;;
+graphics->setColor(this->RED);
     
 
-    int32_t size = localVisitedList.size();;
+    BasicArrayList* localVisitedList = this->visitedList;;
     
 
-    GeographicMapCellPosition geographicMapCellPosition;;
+    int32_t size = localVisitedList->size();;
     
 
-    Boolean isCellVisitedBoolean;;
+    GeographicMapCellPosition* geographicMapCellPosition;;
+    
+
+    bool isCellVisitedBoolean;;
     
 
 
@@ -660,15 +666,15 @@ graphics.setColor(this->RED);
                         for (
     int32_t index = size;--index >= 0; )
         {
-geographicMapCellPosition= this->list.get(index);
+geographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(this->list->get(index));
     
-isCellVisitedBoolean= localVisitedList.get(index);
+isCellVisitedBoolean= localVisitedList->get(index);
     
 
                         if(!isCellVisitedBoolean.valueOf())
                         
                                     {
-                                    this->paintNotVisitedRelativeToPoint(graphics, geographicMapInterface.getAllBinaryTiledLayer(), geographicMapCellPosition.getPoint());
+                                    this->paintNotVisitedRelativeToPoint(graphics, geographicMapInterface->getAllBinaryTiledLayer(), geographicMapCellPosition->getPoint());
     
 
                                     }
@@ -677,12 +683,12 @@ isCellVisitedBoolean= localVisitedList.get(index);
 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, "paintNotVisited", e);
+this->logUtil->put(commonStrings->EXCEPTION, this, "paintNotVisited", &e);
     
 }
 
@@ -690,9 +696,9 @@ this->logUtil.put(commonStrings.EXCEPTION, this, "paintNotVisited", e);
 
 
     public: void init(){
-this->list.clear();
+this->list->clear();
     
-this->visitedList.clear();
+this->visitedList->clear();
     
 this->totalVisited= 0;
     

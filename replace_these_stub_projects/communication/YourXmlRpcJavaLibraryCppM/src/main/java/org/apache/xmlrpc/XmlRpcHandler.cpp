@@ -4,6 +4,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -35,7 +43,7 @@ class XmlRpcHandler {
 
                 //@Throws(Exception.constructor)
             
-    Object* execute(std::string method, BasicArrayList params)
+    public: virtual Object* execute(std::string method, BasicArrayList* params) = 0;
 
 };
 

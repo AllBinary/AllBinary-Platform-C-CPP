@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -64,19 +70,19 @@ class InventoryEntityInterface: public BasicDataTableInterface {
 
                 //@Throws(MoneyException.constructor)
             
-    ItemInterface getItem(std::string id)
+    public: virtual ItemInterface* getItem(std::string id) = 0;
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList getItems(StoreFrontInterface storeFrontInterface)
+    public: virtual BasicArrayList* getItems(StoreFrontInterface* storeFrontInterface) = 0;
 
-    std::string getWeight(std::string id)
+    public: virtual std::string getWeight(std::string id) = 0;
 
-    void deleteWhere(std::string key, std::string value)
+    public: virtual void deleteWhere(std::string key, std::string value) = 0;
 
-    void insert(BasicArrayList values)
+    public: virtual void insert(BasicArrayList* values) = 0;
 
-    void update(HashMap<Object*, Object*> updatedValues)
+    public: virtual void update(HashMap<Object*, Object*>* updatedValues) = 0;
 
 };
 

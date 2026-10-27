@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_RTSLAYER2LOGHELPER_H
         #define ORG_ALLBINARY_GAME_LAYER_RTSLAYER2LOGHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,31 +47,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PathFindingLayerInterface.h"
+        #include "org/allbinary/game/layer/PathFindingLayerInterface.h"
 
 class RTSLayer2LogHelper
             : public Object
          {
 
-    private: static RTSLayer2LogHelper instance() { return RTSLayer2LogHelper(); }
+    private: static RTSLayer2LogHelper* instance() { static std::unique_ptr<RTSLayer2LogHelper> value(new RTSLayer2LogHelper()); return value.get(); }
 
-    public: static RTSLayer2LogHelper getInstance();
+    public: static RTSLayer2LogHelper* getInstance();
 
-    public: void steeringUp(PathFindingLayerInterface pathFindingLayerInterface);
+    public: void steeringUp(PathFindingLayerInterface* pathFindingLayerInterface);
 
-    public: void steeringFireOrStop(PathFindingLayerInterface pathFindingLayerInterface);
+    public: void steeringFireOrStop(PathFindingLayerInterface* pathFindingLayerInterface);
 
-    public: void buildingAbove(PathFindingLayerInterface pathFindingLayerInterface);
+    public: void buildingAbove(PathFindingLayerInterface* pathFindingLayerInterface);
 
-    public: void buildingChaseLeft(PathFindingLayerInterface pathFindingLayerInterface, int32_t angle);
+    public: void buildingChaseLeft(PathFindingLayerInterface* pathFindingLayerInterface, int32_t angle);
 
-    public: void buildingChaseRight(PathFindingLayerInterface pathFindingLayerInterface, int32_t angle);
+    public: void buildingChaseRight(PathFindingLayerInterface* pathFindingLayerInterface, int32_t angle);
 
-    public: void buildingDown(PathFindingLayerInterface pathFindingLayerInterface);
+    public: void buildingDown(PathFindingLayerInterface* pathFindingLayerInterface);
 
-    public: void buildingChaseDown(PathFindingLayerInterface pathFindingLayerInterface, int32_t angle);
+    public: void buildingChaseDown(PathFindingLayerInterface* pathFindingLayerInterface, int32_t angle);
 
-    public: void buildingChaseUp(PathFindingLayerInterface pathFindingLayerInterface, int32_t angle);
+    public: void buildingChaseUp(PathFindingLayerInterface* pathFindingLayerInterface, int32_t angle);
 
     public: void buildingLeft();
 

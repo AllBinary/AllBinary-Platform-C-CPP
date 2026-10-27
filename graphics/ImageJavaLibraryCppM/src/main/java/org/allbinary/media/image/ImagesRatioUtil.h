@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -57,35 +63,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageUtil.h"
-#include "Point.h"
-#include "Graphics2D.h"
+        #include "org/allbinary/media/image/ImageUtil.h"
+#include "org/allbinary/media/image/Point.h"
+#include "org/allbinary/media/image/Graphics2D.h"
 
 class ImagesRatioUtil
             : public Object
          {
 
-    private: static ImagesRatioUtil instance() { return ImagesRatioUtil(); }
+    private: static ImagesRatioUtil* instance() { static std::unique_ptr<ImagesRatioUtil> value(new ImagesRatioUtil()); return value.get(); }
 
-    public: static ImagesRatioUtil getInstance();
+    public: static ImagesRatioUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: ImagesRatioUtil();
 
-    private: const ImageUtil imageUtil = ImageUtil::getInstance();
+    private: ImageUtil* imageUtil = ImageUtil::getInstance();
 
-    public: bool isEqual(std::vector<BufferedImage> bufferedImageArray, int32_t totalImages);
+    public: bool isEqual(std::vector<BufferedImage*> bufferedImageArray, int32_t totalImages);
 
-    public: double getAverage(std::vector<BufferedImage> bufferedImageArray, int32_t totalImages);
-
-                //@Throws(Exception.constructor)
-            
-    public: BufferedImage fudge(BufferedImage bufferedImage, double ratio);
+    public: double getAverage(std::vector<BufferedImage*> bufferedImageArray, int32_t totalImages);
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<BufferedImage> fudge(std::vector<BufferedImage> bufferedImageArray, int32_t totalImages, double ratio);
+    public: BufferedImage* fudge(BufferedImage* bufferedImage, double ratio);
+
+                //@Throws(Exception.constructor)
+            
+    public: std::vector<BufferedImage*> fudge(std::vector<BufferedImage*> bufferedImageArray, int32_t totalImages, double ratio);
 
 };
 

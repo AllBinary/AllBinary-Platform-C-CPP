@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -76,54 +82,54 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserEmailConfigurationInterface.h"
-#include "UserEmailConfiguration.h"
-#include "UserEmailConfigurationMapping.h"
-#include "UserEmailConfigurationData.h"
+        #include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationInterface.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfiguration.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationMapping.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationData.h"
 
 class UserEmailConfigurationView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: UserEmailConfigurationInterface userEmailConfigurationInterface;
+    private: UserEmailConfigurationInterface* userEmailConfigurationInterface;
 
-public: UserEmailConfigurationView(Node node){
+public: UserEmailConfigurationView(Node* node){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.CONSTRUCTOR, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->commonStrings->CONSTRUCTOR, this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
                                 
-this->userEmailConfigurationInterface= UserEmailConfiguration();
+this->userEmailConfigurationInterface= dynamic_cast<UserEmailConfigurationInterface*>(new UserEmailConfiguration());
     
 
-    NodeList childNodeList = node.getChildNodes();;
+    NodeList* childNodeList = node->getChildNodes();;
     
 
-    Node userEmailEventsConfigurationNode = DomSearchHelper::getNodeNoThrow(UserEmailEventsConfigurationData::NAME, childNodeList);;
+    Node* userEmailEventsConfigurationNode = DomSearchHelper::getNodeNoThrow(UserEmailEventsConfigurationData::NAME, childNodeList);;
     
 
-    UserEmailEventsConfigurationView userEmailEventsConfigurationView = UserEmailEventsConfigurationView(userEmailEventsConfigurationNode);;
+    UserEmailEventsConfigurationView* userEmailEventsConfigurationView = new UserEmailEventsConfigurationView(userEmailEventsConfigurationNode);;
     
-this->userEmailConfigurationInterface.setUserEmailEventsConfigurationInterface(userEmailEventsConfigurationView.getUserEmailEventsConfigurationInterface());
+this->userEmailConfigurationInterface->setUserEmailEventsConfigurationInterface(userEmailEventsConfigurationView->getUserEmailEventsConfigurationInterface());
     
 }
 
 
-public: UserEmailConfigurationView(UserEmailConfigurationInterface userEmailConfigurationInterface){
+public: UserEmailConfigurationView(UserEmailConfigurationInterface* userEmailConfigurationInterface){
 this->userEmailConfigurationInterface= userEmailConfigurationInterface;
     
 }
 
 
-    public: UserEmailConfigurationInterface getEmailConfigurationInterface(){
+    public: UserEmailConfigurationInterface* getEmailConfigurationInterface(){
 
 
 
@@ -135,26 +141,26 @@ this->userEmailConfigurationInterface= userEmailConfigurationInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    UserEmailConfigurationMapping emailConfigurationMapping = UserEmailConfigurationMapping(this->userEmailConfigurationInterface);;
+    UserEmailConfigurationMapping* emailConfigurationMapping = new UserEmailConfigurationMapping(this->userEmailConfigurationInterface);;
     
 
-    HashMap<Object*, Object*> hashMap = emailConfigurationMapping.toHashMap();;
+    HashMap<Object*, Object*>* hashMap = emailConfigurationMapping->toHashMap();;
     
 
-    Node node = ModDomHelper::createNameValueNodes(document, UserEmailConfigurationData::NAME, hashMap);;
+    Node* node = ModDomHelper::createNameValueNodes(document, UserEmailConfigurationData::NAME, hashMap);;
     
 
-    UserEmailConfigurationInterface userEmailConfigurationInterface = this->getEmailConfigurationInterface();;
+    UserEmailConfigurationInterface* userEmailConfigurationInterface = this->getEmailConfigurationInterface();;
     
 
-    UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface = userEmailConfigurationInterface.getUserEmailEventsConfigurationInterface();;
+    UserEmailEventsConfigurationInterface* userEmailEventsConfigurationInterface = userEmailConfigurationInterface->getUserEmailEventsConfigurationInterface();;
     
 
-    UserEmailEventsConfigurationView userEmailEventsConfigurationView = UserEmailEventsConfigurationView(userEmailEventsConfigurationInterface);;
+    UserEmailEventsConfigurationView* userEmailEventsConfigurationView = new UserEmailEventsConfigurationView(userEmailEventsConfigurationInterface);;
     
-node.appendChild(userEmailEventsConfigurationView.toXmlNode(document));
+node->appendChild(userEmailEventsConfigurationView->toXmlNode(document));
     
 
 

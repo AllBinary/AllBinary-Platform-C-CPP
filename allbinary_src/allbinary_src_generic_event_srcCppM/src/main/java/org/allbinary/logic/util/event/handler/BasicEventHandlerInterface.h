@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_EVENT_HANDLER_BASICEVENTHANDLERINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_UTIL_EVENT_HANDLER_BASICEVENTHANDLERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -50,15 +56,15 @@
         
 class BasicEventHandlerInterface {
 
-    void addListenerInterface(EventListenerInterface eventListenerInterface);
+    public: virtual void addListenerInterface(EventListenerInterface* eventListenerInterface) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void fireEvent(AllBinaryEventObject eventObject);
+    public: virtual void fireEvent(AllBinaryEventObject* eventObject) = 0;
 
-    void removeAllListeners();
+    public: virtual void removeAllListeners() = 0;
 
-    void removeListener(EventListenerInterface eventListenerInterface);
+    public: virtual void removeListener(EventListenerInterface* eventListenerInterface) = 0;
 
 };
 

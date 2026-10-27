@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,21 +44,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputAutomationRobotInterfaceWrapper.h"
+        #include "org/allbinary/input/automation/robot/osgi/InputAutomationRobotInterfaceWrapper.h"
 
 class InputAutomationRobotChangeEvent
             : public Object
          {
 
-    private: InputAutomationRobotInterfaceWrapper inputAutomationRobotInterfaceWrapper;
+    private: InputAutomationRobotInterfaceWrapper* inputAutomationRobotInterfaceWrapper;
 
-public: InputAutomationRobotChangeEvent(InputAutomationRobotInterfaceWrapper inputAutomationRobotInterfaceWrapper){
+public: InputAutomationRobotChangeEvent(InputAutomationRobotInterfaceWrapper* inputAutomationRobotInterfaceWrapper){
 this->setInputAutomationRobotInterfaceWrapper(inputAutomationRobotInterfaceWrapper);
     
 }
 
 
-    public: InputAutomationRobotInterfaceWrapper getInputAutomationRobotInterfaceWrapper(){
+    public: InputAutomationRobotInterfaceWrapper* getInputAutomationRobotInterfaceWrapper(){
 
 
 
@@ -62,7 +68,7 @@ this->setInputAutomationRobotInterfaceWrapper(inputAutomationRobotInterfaceWrapp
 }
 
 
-    public: void setInputAutomationRobotInterfaceWrapper(InputAutomationRobotInterfaceWrapper inputAutomationRobotInterfaceWrapper){
+    public: void setInputAutomationRobotInterfaceWrapper(InputAutomationRobotInterfaceWrapper* inputAutomationRobotInterfaceWrapper){
 this->inputAutomationRobotInterfaceWrapper= inputAutomationRobotInterfaceWrapper;
     
 }

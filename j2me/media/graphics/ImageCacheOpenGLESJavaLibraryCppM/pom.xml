@@ -169,7 +169,58 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-pluginCpp</artifactId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.8.1</version>
+                <executions>
+                    <execution>
+                        <id>unpack-native-dependency-headers</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>sources</classifier>
+                            <includeGroupIds>org.allbinary</includeGroupIds>
+                            <includeScope>compile</includeScope>
+                            <includes>**/*.h</includes>
+                            <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+                            <outputDirectory>${project.build.directory}/native/dependency-include</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.5.0</version>
+                <executions>
+                    <execution>
+                        <id>compile-cygwin-native-sources</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>${cygwin.home}/bin/bash.exe</executable>
+                            <arguments>
+                                <argument>${project.basedir}/build-cygwin.sh</argument>
+                                <argument>${project.build.sourceDirectory}</argument>
+                                <argument>${project.build.directory}/native/objects</argument>
+                                <argument>${project.build.outputDirectory}/META-INF/native</argument>
+                                <argument>${project.artifactId}</argument>
+                                <argument>${native.c.standard}</argument>
+                                <argument>${native.cpp.standard}</argument>
+                                <argument>${native.compiler.flags}</argument>
+                                <argument>${native.include.path}</argument>
+                                <argument>${project.build.directory}/native/dependency-include</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <!--
                 <version>2.5.1</version>

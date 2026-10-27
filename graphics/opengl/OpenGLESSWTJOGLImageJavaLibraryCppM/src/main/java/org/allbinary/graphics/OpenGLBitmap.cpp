@@ -6,6 +6,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <javax/microedition/lcdui/Image.h>
 
       
@@ -42,15 +50,15 @@
         
 class OpenGLBitmap: public PlatformBitmapBase {
 
-    public: Image image;
+    public: Image* image;
 
 public: OpenGLBitmap(Object* bitmap){
-this->image= *dynamic_cast<Image*>(bitmap);
+this->image= dynamic_cast<Image*>(bitmap);
     
 }
 
 
-    public: Image getImage(){
+    public: Image* getImage(){
 
 
 
@@ -62,30 +70,30 @@ this->image= *dynamic_cast<Image*>(bitmap);
 
     public: int32_t getDepth(){
 
-                        if(this->image.isMutable())
+                        if(this->image->isMutable())
                         
                                     {
                                     
-    SwtMutableImage mutableImage = this->image;;
+    SwtMutableImage* mutableImage = dynamic_cast<SwtMutableImage*>(this->image);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return mutableImage.getDepth();;
+                        return mutableImage->getDepth();;
     
 
                                     }
                                 
                         else {
                             
-    SwtImmutableImage immutableImage = this->image;;
+    SwtImmutableImage* immutableImage = dynamic_cast<SwtImmutableImage*>(this->image);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return immutableImage.getDepth();;
+                        return immutableImage->getDepth();;
     
 
                         }
@@ -95,22 +103,22 @@ this->image= *dynamic_cast<Image*>(bitmap);
 
     public: void getPixels(std::vector<int32_t> pixels, int32_t offset, int32_t stride, int32_t x, int32_t y, int32_t width, int32_t height){
 
-                        if(this->image.isMutable())
+                        if(this->image->isMutable())
                         
                                     {
                                     
-    SwtMutableImage mutableImage = this->image;;
+    SwtMutableImage* mutableImage = dynamic_cast<SwtMutableImage*>(this->image);;
     
-mutableImage.getRGB(pixels, offset, stride, x, y, width, height);
+mutableImage->getRGB(pixels, offset, stride, x, y, width, height);
     
 
                                     }
                                 
                         else {
                             
-    SwtImmutableImage immutableImage = this->image;;
+    SwtImmutableImage* immutableImage = dynamic_cast<SwtImmutableImage*>(this->image);;
     
-immutableImage.getRGB(pixels, offset, stride, x, y, width, height);
+immutableImage->getRGB(pixels, offset, stride, x, y, width, height);
     
 
                         }
@@ -119,7 +127,7 @@ immutableImage.getRGB(pixels, offset, stride, x, y, width, height);
 
 
     public: void setPixels(std::vector<int32_t> pixels, int32_t offset, int32_t stride, int32_t x, int32_t y, int32_t width, int32_t height){
-this->image.setRGB2(pixels, offset, height, x, y, width, height);
+this->image->setRGB2(pixels, offset, height, x, y, width, height);
     
 }
 
@@ -129,7 +137,7 @@ this->image.setRGB2(pixels, offset, height, x, y, width, height);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->image.getWidth();;
+                        return this->image->getWidth();;
     
 }
 
@@ -139,13 +147,13 @@ this->image.setRGB2(pixels, offset, height, x, y, width, height);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->image.getHeight();;
+                        return this->image->getHeight();;
     
 }
 
 
     public: void recycle(){
-DisposalUtil::getInstance().disposeImage(this->image);
+DisposalUtil::getInstance()->disposeImage(this->image);
     
 }
 

@@ -135,13 +135,13 @@
 
         <dependency>
             <groupId>javax.help</groupId>
-            <artifactId>javahelpCpp</artifactId>
+            <artifactId>javahelp</artifactId>
             <version>2.0.05</version>
         </dependency>
 
         <dependency>
             <groupId>abbot</groupId>
-            <artifactId>abbotCpp</artifactId>
+            <artifactId>abbot</artifactId>
             <version>0.13.0</version>
         </dependency>
 
@@ -149,6 +149,28 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.8.1</version>
+                <executions>
+                    <execution>
+                        <id>unpack-native-dependency-headers</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>sources</classifier>
+                            <includeGroupIds>org.allbinary</includeGroupIds>
+                            <includeScope>compile</includeScope>
+                            <includes>**/*.h</includes>
+                            <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+                            <outputDirectory>${project.build.directory}/native/dependency-include</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -172,6 +194,7 @@
                                 <argument>${native.cpp.standard}</argument>
                                 <argument>${native.compiler.flags}</argument>
                                 <argument>${native.include.path}</argument>
+                                <argument>${project.build.directory}/native/dependency-include</argument>
                             </arguments>
                         </configuration>
                     </execution>
@@ -195,7 +218,7 @@
             
 
             <plugin>
-                <artifactId>maven-resources-pluginCpp</artifactId>
+                <artifactId>maven-resources-plugin</artifactId>
                 <version>2.4.3</version>
                 <executions>
                     <execution>

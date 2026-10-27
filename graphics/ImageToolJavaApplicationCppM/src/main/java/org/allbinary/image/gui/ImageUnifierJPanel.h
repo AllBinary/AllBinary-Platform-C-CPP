@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -104,47 +110,47 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "ImageIconUnique.h"
-#include "DefaultListModel.h"
-#include "ImageIcon.h"
-#include "Icon.h"
-#include "JLabel.h"
-#include "JScrollPane.h"
-#include "JList.h"
-#include "JButton.h"
-#include "JTextField.h"
-#include "Dimension.h"
-#include "ActionListener.h"
-#include "ActionEvent.h"
-#include "PropertyChangeListener.h"
-#include "PropertyChangeEvent.h"
-#include "KeyAdapter.h"
-#include "KeyEvent.h"
-#include "GroupLayout.h"
-#include "Short.h"
+        #include "org/allbinary/image/gui/JPanel.h"
+#include "org/allbinary/image/gui/ImageIconUnique.h"
+#include "org/allbinary/image/gui/DefaultListModel.h"
+#include "org/allbinary/image/gui/ImageIcon.h"
+#include "org/allbinary/image/gui/Icon.h"
+#include "org/allbinary/image/gui/JLabel.h"
+#include "org/allbinary/image/gui/JScrollPane.h"
+#include "org/allbinary/image/gui/JList.h"
+#include "org/allbinary/image/gui/JButton.h"
+#include "org/allbinary/image/gui/JTextField.h"
+#include "org/allbinary/image/gui/Dimension.h"
+#include "org/allbinary/image/gui/ActionListener.h"
+#include "org/allbinary/image/gui/ActionEvent.h"
+#include "org/allbinary/image/gui/PropertyChangeListener.h"
+#include "org/allbinary/image/gui/PropertyChangeEvent.h"
+#include "org/allbinary/image/gui/KeyAdapter.h"
+#include "org/allbinary/image/gui/KeyEvent.h"
+#include "org/allbinary/image/gui/GroupLayout.h"
+#include "org/allbinary/image/gui/Short.h"
 
 class ImageUnifierJPanel: public javax::swing::JPanel, public ImageProcessorInputCompositeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const ImageStrings imageStrings = ImageStrings::getInstance();
+    private: ImageStrings* imageStrings = ImageStrings::getInstance();
 
-    private: const ImagesRatioUtil imagesRatioUtil = ImagesRatioUtil::getInstance();
+    private: ImagesRatioUtil* imagesRatioUtil = ImagesRatioUtil::getInstance();
 
-    private: ImageProcessorInput imageProcessorInput;
+    private: ImageProcessorInput* imageProcessorInput;
 
-    private: std::vector<ImageIconUnique> icon;
+    private: std::vector<ImageIconUnique*> icon;
 
-    private: ImageUnifierProperties imageUnifierProperties;
+    private: ImageUnifierProperties* imageUnifierProperties;
 
-    private: BufferedImage result;
+    private: BufferedImage* result;
 
     private: bool isImageFillIn = true;
 
-public: ImageUnifierJPanel(ImageProcessorInput imageProcessorInput);
+public: ImageUnifierJPanel(ImageProcessorInput* imageProcessorInput);
 
     public: void init();
 
@@ -152,85 +158,85 @@ public: ImageUnifierJPanel(ImageProcessorInput imageProcessorInput);
 
     private: void updateImageWithFudgedImages();
 
-    private: void updateImage(std::vector<BufferedImage> tempBufferedImageArray);
+    private: void updateImage(std::vector<BufferedImage*> tempBufferedImageArray);
 
     private: void updateOnPropertiesChange();
 
     private: void initComponents();
 
-    private: void jButton2ActionPerformed(java::awt::event::ActionEvent evt);
+    private: void jButton2ActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void columnsJTextFieldKeyPressed(java::awt::event::KeyEvent evt);
+    private: void columnsJTextFieldKeyPressed(java::awt::event::KeyEvent* evt);
 
-    private: void columnsJTextFieldKeyTyped(java::awt::event::KeyEvent evt);
+    private: void columnsJTextFieldKeyTyped(java::awt::event::KeyEvent* evt);
 
-    private: void columnsJTextFieldPropertyChange(java::beans::PropertyChangeEvent evt);
+    private: void columnsJTextFieldPropertyChange(java::beans::PropertyChangeEvent* evt);
 
-    private: void fudgeItJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void fudgeItJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void cellHeightJTextFieldActionPerformed(java::awt::event::ActionEvent evt);
+    private: void cellHeightJTextFieldActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void cellWidthJTextFieldActionPerformed(java::awt::event::ActionEvent evt);
+    private: void cellWidthJTextFieldActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void columnsJTextFieldActionPerformed(java::awt::event::ActionEvent evt);
+    private: void columnsJTextFieldActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void rowsJTextFieldActionPerformed(java::awt::event::ActionEvent evt);
+    private: void rowsJTextFieldActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void jButton1ActionPerformed(java::awt::event::ActionEvent evt);
+    private: void jButton1ActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void downJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void downJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void upJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void upJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void jButtonOrderActionPerformed(java::awt::event::ActionEvent evt);
+    private: void jButtonOrderActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: javax::swing::JTextField avgRatioJTextField;
+    private: javax::swing::JTextField* avgRatioJTextField;
 
-    private: javax::swing::JTextField cellHeightJTextField;
+    private: javax::swing::JTextField* cellHeightJTextField;
 
-    private: javax::swing::JTextField cellRatioJTextField;
+    private: javax::swing::JTextField* cellRatioJTextField;
 
-    private: javax::swing::JTextField cellWidthJTextField;
+    private: javax::swing::JTextField* cellWidthJTextField;
 
-    private: javax::swing::JTextField columnsJTextField;
+    private: javax::swing::JTextField* columnsJTextField;
 
-    private: javax::swing::JButton downJButton;
+    private: javax::swing::JButton* downJButton;
 
-    private: javax::swing::JButton fudgeItJButton;
+    private: javax::swing::JButton* fudgeItJButton;
 
-    private: javax::swing::JList imageJList;
+    private: javax::swing::JList* imageJList;
 
-    private: javax::swing::JButton jButton1;
+    private: javax::swing::JButton* jButton1;
 
-    private: javax::swing::JButton jButton2;
+    private: javax::swing::JButton* jButton2;
 
-    private: javax::swing::JButton jButtonOrder;
+    private: javax::swing::JButton* jButtonOrder;
 
-    private: javax::swing::JLabel jLabel1;
+    private: javax::swing::JLabel* jLabel1;
 
-    private: javax::swing::JLabel jLabel2;
+    private: javax::swing::JLabel* jLabel2;
 
-    private: javax::swing::JLabel jLabel3;
+    private: javax::swing::JLabel* jLabel3;
 
-    private: javax::swing::JLabel jLabel4;
+    private: javax::swing::JLabel* jLabel4;
 
-    private: javax::swing::JLabel jLabel5;
+    private: javax::swing::JLabel* jLabel5;
 
-    private: javax::swing::JLabel jLabel6;
+    private: javax::swing::JLabel* jLabel6;
 
-    private: javax::swing::JPanel jPanel1;
+    private: javax::swing::JPanel* jPanel1;
 
-    private: javax::swing::JScrollPane jScrollPane1;
+    private: javax::swing::JScrollPane* jScrollPane1;
 
-    private: javax::swing::JScrollPane jScrollPane2;
+    private: javax::swing::JScrollPane* jScrollPane2;
 
-    private: javax::swing::JTextField rowsJTextField;
+    private: javax::swing::JTextField* rowsJTextField;
 
-    private: javax::swing::JButton upJButton;
+    private: javax::swing::JButton* upJButton;
 
-    public: ImageProcessorInput getImageProcessorInput();
+    public: ImageProcessorInput* getImageProcessorInput();
 
-    public: void setImageProcessorInput(ImageProcessorInput imageProcessorInput);
+    public: void setImageProcessorInput(ImageProcessorInput* imageProcessorInput);
 
 };
 

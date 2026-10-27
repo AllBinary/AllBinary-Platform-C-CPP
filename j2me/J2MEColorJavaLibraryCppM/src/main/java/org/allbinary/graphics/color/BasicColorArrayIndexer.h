@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -55,23 +61,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicColor.h"
+        #include "org/allbinary/graphics/color/BasicColor.h"
 
 class BasicColorArrayIndexer
             : public Object
          {
 
-    private: std::vector<BasicColor> basicColorArray;
+    private: std::vector<BasicColor*> basicColorArray;
 
-    private: CircularIndexUtil circularIndexUtil;
+    private: CircularIndexUtil* circularIndexUtil;
 
-public: BasicColorArrayIndexer(std::vector<BasicColor> basicColorArray);
+public: BasicColorArrayIndexer(std::vector<BasicColor*> basicColorArray);
 
     public: void next();
 
-    public: BasicColor get();
+    public: BasicColor* get();
 
-    public: std::vector<BasicColor> getBasicColorArray();
+    public: std::vector<BasicColor*> getBasicColorArray();
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_COLOR_COLORSVIEW_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_COLOR_COLORSVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,14 +69,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ColorData.h"
-#include "ColorsData.h"
+        #include "org/allbinary/logic/visual/dhtml/style/color/ColorData.h"
+#include "org/allbinary/logic/visual/dhtml/style/color/ColorsData.h"
 
 class ColorsView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: const CommonPhoneStrings commonPhoneStrings = CommonPhoneStrings::getInstance();
+    private: CommonPhoneStrings* commonPhoneStrings = CommonPhoneStrings::getInstance();
 
     private: const int32_t HEXRADIX = 16;
 
@@ -82,11 +88,11 @@ public: ColorsView();
 
                 //@Throws(Exception.constructor)
             
-    public: Node getColorNode(Document document, int32_t redIndex, int32_t greenIndex, int32_t blueIndex);
+    public: Node* getColorNode(Document* document, int32_t redIndex, int32_t greenIndex, int32_t blueIndex);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

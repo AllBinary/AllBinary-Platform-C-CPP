@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_ABFILEUPLOAD_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_ABFILEUPLOAD_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/io/IOException.h>
 
       
@@ -63,11 +69,11 @@
         
 class AbFileUpload: public FileUpload {
 
-public: AbFileUpload(FileItemFactory fileItemFactory);
+public: AbFileUpload(FileItemFactory* fileItemFactory);
 
                 //@Throws(FileUploadException.constructor, IOException.constructor)
             
-    public: FileItemIterator getItemIterator(HttpServletRequest request);
+    public: FileItemIterator* getItemIterator(HttpServletRequest* request);
 
 };
 

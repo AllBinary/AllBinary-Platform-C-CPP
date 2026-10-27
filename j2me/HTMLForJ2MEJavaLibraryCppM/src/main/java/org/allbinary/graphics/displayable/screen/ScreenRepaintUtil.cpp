@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -49,7 +55,7 @@ class ScreenRepaintUtil
             : public Object
          {
 
-    public: static void repaint(Displayable displayable){
+    public: static void repaint(Displayable* displayable){
 }
 
 

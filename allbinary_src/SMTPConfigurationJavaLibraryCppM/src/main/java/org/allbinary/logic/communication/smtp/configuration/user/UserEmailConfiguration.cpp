@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -53,49 +59,49 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserEmailConfigurationInterface.h"
+        #include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationInterface.h"
 
 class UserEmailConfiguration
             : public Object
-        : public UserEmailConfigurationInterface {
+        , public UserEmailConfigurationInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface;
+    private: UserEmailEventsConfigurationInterface* userEmailEventsConfigurationInterface;
 
 public: UserEmailConfiguration(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.CONSTRUCTOR, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->commonStrings->CONSTRUCTOR, this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
                                 
-this->setUserEmailEventsConfigurationInterface(UserEmailEventsConfiguration());
+this->setUserEmailEventsConfigurationInterface(new UserEmailEventsConfiguration());
     
 }
 
 
-public: UserEmailConfiguration(HashMap<Object*, Object*> hashMap){
+public: UserEmailConfiguration(HashMap<Object*, Object*>* hashMap){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.CONSTRUCTOR, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->commonStrings->CONSTRUCTOR, this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
                                 
-this->setUserEmailEventsConfigurationInterface(UserEmailEventsConfiguration(hashMap));
+this->setUserEmailEventsConfigurationInterface(new UserEmailEventsConfiguration(hashMap));
     
 }
 
 
-    public: UserEmailEventsConfigurationInterface getUserEmailEventsConfigurationInterface(){
+    public: UserEmailEventsConfigurationInterface* getUserEmailEventsConfigurationInterface(){
 
 
 
@@ -105,7 +111,7 @@ this->setUserEmailEventsConfigurationInterface(UserEmailEventsConfiguration(hash
 }
 
 
-    public: void setUserEmailEventsConfigurationInterface(UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface){
+    public: void setUserEmailEventsConfigurationInterface(UserEmailEventsConfigurationInterface* userEmailEventsConfigurationInterface){
 this->userEmailEventsConfigurationInterface= userEmailEventsConfigurationInterface;
     
 }

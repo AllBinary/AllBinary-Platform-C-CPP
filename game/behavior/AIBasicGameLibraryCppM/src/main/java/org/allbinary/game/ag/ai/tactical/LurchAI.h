@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_TACTICAL_LURCHAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_TACTICAL_LURCHAI_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -66,11 +72,11 @@ class LurchAI: public BasicAI {
 
     private: int32_t currentSpeed= 0;
 
-public: LurchAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: LurchAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager);
 
     protected: void reverse();
 

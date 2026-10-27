@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANDROID_API5_ACTIVITYFRACTUREUTILAPI5_H
         #define ORG_ALLBINARY_ANDROID_API5_ACTIVITYFRACTUREUTILAPI5_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <android/app/Activity.h>
 
       
@@ -60,9 +66,9 @@
         
 class ActivityFractureUtilAPI5: public ActivityFractureUtilAPI1 {
 
-    private: static const ActivityFractureUtilAPI5 instance5 = ActivityFractureUtilAPI5();
+    private: static ActivityFractureUtilAPI5* instance5() { static std::unique_ptr<ActivityFractureUtilAPI5> value(new ActivityFractureUtilAPI5()); return value.get(); }
 
-    public: static ActivityFractureUtilAPI5 getInstance();
+    public: static ActivityFractureUtilAPI5* getInstance();
 
     private: const std::string FEATURE_TOUCHSCREEN_MULTITOUCH = "android.hardware.touchscreen.multitouch";
 
@@ -70,15 +76,15 @@ class ActivityFractureUtilAPI5: public ActivityFractureUtilAPI1 {
 
     private: const std::string FEATURE_TOUCHSCREEN_MULTITOUCH_DISTINCT = "android.hardware.touchscreen.multitouch.distinct";
 
-    public: void process(Activity activity);
+    public: void process(Activity* activity);
 
-    private: bool isTouch(Activity activity);
+    private: bool isTouch(Activity* activity);
 
-    private: bool isMultiTouch(Activity activity);
+    private: bool isMultiTouch(Activity* activity);
 
-    private: bool isMultiTouchDistinct(Activity activity);
+    private: bool isMultiTouchDistinct(Activity* activity);
 
-    private: bool isFeature(Activity activity, std::string property);
+    private: bool isFeature(Activity* activity, std::string property);
 
 };
 

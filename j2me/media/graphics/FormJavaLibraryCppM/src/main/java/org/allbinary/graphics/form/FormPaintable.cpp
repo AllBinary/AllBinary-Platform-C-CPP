@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -42,25 +48,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaintableForm.h"
+        #include "org/allbinary/graphics/form/PaintableForm.h"
 
 class FormPaintable: public Paintable {
 
-    private: PaintableForm form;
+    private: PaintableForm* form;
 
-public: FormPaintable(PaintableForm form){
+public: FormPaintable(PaintableForm* form){
 this->form= form;
     
 }
 
 
-    public: void paint(Graphics graphics){
-this->form.paint(graphics);
+    public: void paint(Graphics* graphics){
+this->form->paint(graphics);
     
 }
 
 
-    public: PaintableForm getForm(){
+    public: PaintableForm* getForm(){
 
 
 

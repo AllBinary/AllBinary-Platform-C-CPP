@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,17 +70,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicRandomAI.h"
+        #include "org/allbinary/game/ag/ai/tactical/BasicRandomAI.h"
 
 class BasicRandomAIFactory
             : public Object
-        : public ArtificialIntelligenceInterfaceFactoryInterface {
+        , public ArtificialIntelligenceInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: ArtificialIntelligenceInterface getInstance(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+    public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput){
 
-    Visitor visitor = hashtable.get(BasicAI::AI_VISITOR);;
+    Visitor* visitor = dynamic_cast<Visitor*>(hashtable->get(BasicAI::AI_VISITOR));;
     
 
                         if(visitor == 
@@ -85,19 +91,19 @@ class BasicRandomAIFactory
                                     
 
 
-                            throw Exception("No Visitor Provided");
+                            throw new Exception("No Visitor Provided");
                     
 
                                     }
                                 
 
-    InputProbability inputProbability = hashtable.get(InputProbability::INPUT_PROBABILITY);;
+    InputProbability* inputProbability = dynamic_cast<InputProbability*>(hashtable->get(InputProbability::INPUT_PROBABILITY));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicRandomAI(ownerLayerInterface, gameInput, inputProbability, visitor);
+                        return new BasicRandomAI(ownerLayerInterface, gameInput, inputProbability, visitor);
     
 }
 

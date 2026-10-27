@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
@@ -53,7 +59,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TableTag.h"
+        #include "admin/tags/TableTag.h"
 
 class UserTag: public TableTag {
 
@@ -62,9 +68,9 @@ class UserTag: public TableTag {
     private: std::string enable;
 
 public: UserTag(){
-this->setTagHelperFactory(UserHelperFactory());
+this->setTagHelperFactory(new UserHelperFactory());
     
-this->setTagRequestHelperFactory(UserHelperFactory());
+this->setTagRequestHelperFactory(new UserHelperFactory());
     
 }
 
@@ -72,7 +78,7 @@ this->setTagRequestHelperFactory(UserHelperFactory());
     public: void setRole(std::string value){
 this->role= value;
     
-this->getPropertiesHashMap().put(UserRoleData::NAME, this->role);
+this->getPropertiesHashMap()->put(UserRoleData::NAME, this->role);
     
 }
 
@@ -80,7 +86,7 @@ this->getPropertiesHashMap().put(UserRoleData::NAME, this->role);
     public: void setEnable(std::string value){
 this->enable= value;
     
-this->getPropertiesHashMap().put(EntryData::getInstance().ENABLE, this->enable);
+this->getPropertiesHashMap()->put(EntryData::getInstance()->ENABLE, this->enable);
     
 }
 
@@ -111,9 +117,9 @@ this->getPropertiesHashMap().put(EntryData::getInstance().ENABLE, this->enable);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 

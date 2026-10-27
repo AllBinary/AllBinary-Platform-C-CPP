@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_PAINT_GAMESCROLLMENUPAINTABLE_H
         #define ORG_ALLBINARY_GAME_PAINT_GAMESCROLLMENUPAINTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graphics/color/BasicColor.h>
 
       
@@ -66,18 +72,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicGameDemoPaintable.h"
-#include "MainGameDemoStatePaintable.h"
+        #include "org/allbinary/game/paint/BasicGameDemoPaintable.h"
+#include "org/allbinary/game/paint/MainGameDemoStatePaintable.h"
 
 class GameScrollMenuPaintable: public BasicGameDemoPaintable, public ColorChangeListener {
 
-public: GameScrollMenuPaintable(Paintable mainDemoStatePaintable, Paintable ownershipPaintable, Paintable helpPaintableInterface, BasicColor basicColor);
+public: GameScrollMenuPaintable(Paintable* mainDemoStatePaintable, Paintable* ownershipPaintable, Paintable* helpPaintableInterface, BasicColor* basicColor);
 
     public: void setState(int32_t state);
 
-    public: void onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject* eventObject);
 
-    protected: void setColor(BasicColor basicColor);
+    protected: void setColor(BasicColor* basicColor);
 
 };
 

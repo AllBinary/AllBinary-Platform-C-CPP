@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_IMAGE_IMAGECACHEFACTORY_H
         #define ORG_ALLBINARY_IMAGE_IMAGECACHEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,15 +47,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageCache.h"
+        #include "org/allbinary/image/ImageCache.h"
 
 class ImageCacheFactory
             : public Object
          {
 
-    private: static const ImageCache IMAGE_CACHE = ImageCache();
+    private: static ImageCache* IMAGE_CACHE() { static std::unique_ptr<ImageCache> value(new ImageCache()); return value.get(); }
 
-    public: static ImageCache getInstance();
+    public: static ImageCache* getInstance();
 
     public: static void init();
 

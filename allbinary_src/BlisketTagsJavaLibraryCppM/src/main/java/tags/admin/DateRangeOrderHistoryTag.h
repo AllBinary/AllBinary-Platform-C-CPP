@@ -21,6 +21,12 @@
         #ifndef TAGS_ADMIN_DATERANGEORDERHISTORYTAG_H
         #define TAGS_ADMIN_DATERANGEORDERHISTORYTAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
@@ -56,7 +62,7 @@
         
 class DateRangeOrderHistoryTag: public StoreValidationTransformTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string status;
 

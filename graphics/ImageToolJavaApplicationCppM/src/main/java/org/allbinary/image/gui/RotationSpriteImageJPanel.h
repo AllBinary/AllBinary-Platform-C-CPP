@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -89,63 +95,63 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "Graphics.h"
-#include "JComboBox.h"
-#include "JLabel.h"
-#include "JButton.h"
-#include "JCheckBox.h"
-#include "GroupLayout.h"
-#include "Short.h"
-#include "DefaultComboBoxModel.h"
-#include "ActionListener.h"
-#include "ActionEvent.h"
+        #include "org/allbinary/image/gui/JPanel.h"
+#include "org/allbinary/image/gui/Graphics.h"
+#include "org/allbinary/image/gui/JComboBox.h"
+#include "org/allbinary/image/gui/JLabel.h"
+#include "org/allbinary/image/gui/JButton.h"
+#include "org/allbinary/image/gui/JCheckBox.h"
+#include "org/allbinary/image/gui/GroupLayout.h"
+#include "org/allbinary/image/gui/Short.h"
+#include "org/allbinary/image/gui/DefaultComboBoxModel.h"
+#include "org/allbinary/image/gui/ActionListener.h"
+#include "org/allbinary/image/gui/ActionEvent.h"
 
 class RotationSpriteImageJPanel: public javax::swing::JPanel, public ImageProcessorInputCompositeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const ImageStrings imageStrings = ImageStrings::getInstance();
+    private: ImageStrings* imageStrings = ImageStrings::getInstance();
 
-    private: ImageProcessorInput imageProcessorInput;
+    private: ImageProcessorInput* imageProcessorInput;
 
-    private: BufferedImage result;
+    private: BufferedImage* result;
 
-public: RotationSpriteImageJPanel(ImageProcessorInput imageProcessorInput);
+public: RotationSpriteImageJPanel(ImageProcessorInput* imageProcessorInput);
 
     public: void process();
 
     private: void initComponents();
 
-    private: void generateJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void generateJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void totalAngleJComboBoxActionPerformed(java::awt::event::ActionEvent evt);
+    private: void totalAngleJComboBoxActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: javax::swing::JButton generateJButton;
+    private: javax::swing::JButton* generateJButton;
 
-    private: javax::swing::JLabel jLabel1;
+    private: javax::swing::JLabel* jLabel1;
 
-    private: javax::swing::JLabel jLabel2;
+    private: javax::swing::JLabel* jLabel2;
 
-    private: javax::swing::JLabel jLabel3;
+    private: javax::swing::JLabel* jLabel3;
 
-    private: javax::swing::JPanel jPanel1;
+    private: javax::swing::JPanel* jPanel1;
 
-    private: javax::swing::JPanel jPanel2;
+    private: javax::swing::JPanel* jPanel2;
 
-    private: javax::swing::JPanel jPanel3;
+    private: javax::swing::JPanel* jPanel3;
 
-    private: javax::swing::JComboBox totalAngleJComboBox;
+    private: javax::swing::JComboBox* totalAngleJComboBox;
 
-    private: javax::swing::JComboBox totalFramesJComboBox;
+    private: javax::swing::JComboBox* totalFramesJComboBox;
 
-    private: javax::swing::JCheckBox writeOverOriginalJCheckBox;
+    private: javax::swing::JCheckBox* writeOverOriginalJCheckBox;
 
-    public: ImageProcessorInput getImageProcessorInput();
+    public: ImageProcessorInput* getImageProcessorInput();
 
-    public: void setImageProcessorInput(ImageProcessorInput imageProcessorInput);
+    public: void setImageProcessorInput(ImageProcessorInput* imageProcessorInput);
 
 };
 

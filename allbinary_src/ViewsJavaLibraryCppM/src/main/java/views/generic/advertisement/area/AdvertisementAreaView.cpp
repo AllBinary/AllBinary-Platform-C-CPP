@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/advertisement/area/AdvertisementAreaData.h>
@@ -71,32 +77,32 @@
         
 class AdvertisementAreaView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string advertisementAreaName;
 
-public: AdvertisementAreaView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+public: AdvertisementAreaView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->advertisementAreaName= this->getPropertiesHashMap().get(AdvertisementAreaData::getInstance().NAME);
+this->advertisementAreaName= this->getPropertiesHashMap()->get(AdvertisementAreaData::getInstance()->NAME);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
         try {
             
-    AdvertisementAreasEntityInterface advertisementAreasEntityInterface = AdvertisementAreasEntityFactory::getInstance();;
+    AdvertisementAreasEntityInterface* advertisementAreasEntityInterface = AdvertisementAreasEntityFactory::getInstance();;
     
 
-    AdvertisementAreaInterface advertisementAreaInterface = advertisementAreasEntityInterface.get(this->getTransformInfoInterface().getStoreName(), this->advertisementAreaName);;
+    AdvertisementAreaInterface* advertisementAreaInterface = advertisementAreasEntityInterface->get(this->getTransformInfoInterface()->getStoreName(), this->advertisementAreaName);;
     
 
 
@@ -106,13 +112,13 @@ this->advertisementAreaName= this->getPropertiesHashMap().get(AdvertisementAreaD
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XSLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XSLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, "toXmlNode", &e);
     
 
                                     }
@@ -128,7 +134,7 @@ this->advertisementAreaName= this->getPropertiesHashMap().get(AdvertisementAreaD
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this);
+this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     
 }
 
@@ -148,13 +154,13 @@ this->addDomNodeInterface(this);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }

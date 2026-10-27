@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/math/BasicDecimal.h>
@@ -41,19 +47,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MathVectorInterface.h"
+        #include "org/allbinary/logic/math/vector/MathVectorInterface.h"
 
 class MathVector
             : public Object
-        : public MathVectorInterface {
+        , public MathVectorInterface {
 
-    private: BasicDecimal magnitudeBasicDecimal;
+    private: BasicDecimal* magnitudeBasicDecimal;
 
     private: int32_t direction;
 
-    protected: BasicDecimal resultBasicDecimal;
+    protected: BasicDecimal* resultBasicDecimal;
 
-public: MathVector(BasicDecimal magnitudeBasicDecimal, int32_t direction){
+public: MathVector(BasicDecimal* magnitudeBasicDecimal, int32_t direction){
 this->magnitudeBasicDecimal= magnitudeBasicDecimal;
     
 this->direction= direction;
@@ -61,7 +67,7 @@ this->direction= direction;
 }
 
 
-    public: BasicDecimal getMagnitude(){
+    public: BasicDecimal* getMagnitude(){
 
 
 
@@ -81,7 +87,7 @@ this->direction= direction;
 }
 
 
-    public: BasicDecimal getResult(){
+    public: BasicDecimal* getResult(){
 
 
 

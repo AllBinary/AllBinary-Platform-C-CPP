@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,7 +45,7 @@
         
 class GameKeyEventSourceInterface {
 
-    int32_t getSourceId()
+    public: virtual int32_t getSourceId() = 0;
 
 };
 

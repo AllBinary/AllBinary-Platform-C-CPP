@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ABFILEITEMFACTORY_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ABFILEITEMFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/apache/commons/fileupload/DefaultFileItemFactory.h>
 
       

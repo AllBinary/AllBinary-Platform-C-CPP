@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -49,16 +55,16 @@ class HtmlTag
             : public Object
          {
 
-    protected: HashMap<Object*, Object*> otherAttributes;
+    protected: HashMap<Object*, Object*>* otherAttributes;
 
 public: HtmlTag(){
-this->otherAttributes= StdUtil::getInstance().createHashMap();
+this->otherAttributes= StdUtil::getInstance()->createHashMap();
     
 }
 
 
     public: void addAttribute(std::string key, std::string value){
-this->otherAttributes.put(key, value);
+this->otherAttributes->put(key, value);
     
 }
 

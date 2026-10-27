@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -62,31 +68,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Life.h"
+        #include "org/allbinary/game/ag/life/Life.h"
 
 class HealthIncludingLifeBar: public Paintable, public HealthListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: static HealthIncludingLifeBar createHealthIncludingLifeBar(AllBinaryLayer layerInterface, Life life, Health healthInterface, int32_t location, int32_t direction){
+    public: static HealthIncludingLifeBar* createHealthIncludingLifeBar(AllBinaryLayer* layerInterface, Life* life, Health* healthInterface, int32_t location, int32_t direction){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HealthIncludingLifeBar(layerInterface, life, healthInterface, HealthBarTwodAnimation(layerInterface, location), direction);
+                        return new HealthIncludingLifeBar(layerInterface, life, healthInterface, new HealthBarTwodAnimation(layerInterface, location), direction);
     
 }
 
 
-    private: HealthBarAnimation animationInterface;
+    private: HealthBarAnimation* animationInterface;
 
-    private: Life life;
+    private: Life* life;
 
-    private: HealthInterface healthInterface;
+    private: HealthInterface* healthInterface;
 
-    protected: AllBinaryLayer allbinaryLayer;
+    protected: AllBinaryLayer* allbinaryLayer;
 
-public: HealthIncludingLifeBar(AllBinaryLayer layerInterface, Life life, Health healthInterface, HealthBarAnimation animationInterface, int32_t direction){
+public: HealthIncludingLifeBar(AllBinaryLayer* layerInterface, Life* life, Health* healthInterface, HealthBarAnimation* animationInterface, int32_t direction){
 this->allbinaryLayer= layerInterface;
     
 this->animationInterface= animationInterface;
@@ -95,7 +101,7 @@ this->life= life;
     
 this->healthInterface= healthInterface;
     
-this->healthInterface.addListener(this);
+this->healthInterface->addListener(this);
     
 this->onHealthChange();
     
@@ -103,19 +109,19 @@ this->onHealthChange();
 
 
     public: void onHealthChange(){
-this->animationInterface.onHealthChange(((this->healthInterface.getHealth() +(this->healthInterface.getMaxHealth() *this->life.get())) *this->allbinaryLayer.getWidth()) /(this->healthInterface.getMaxHealth() +(this->healthInterface.getMaxHealth() *this->life.getStartLives())));
+this->animationInterface->onHealthChange(((this->healthInterface->getHealth() +(this->healthInterface->getMaxHealth() *this->life->get())) *this->allbinaryLayer->getWidth()) /(this->healthInterface->getMaxHealth() +(this->healthInterface->getMaxHealth() *this->life->getStartLives())));
     
 }
 
 
-    public: void paint(Graphics graphics){
-this->animationInterface.paintXY(graphics, 0, 0);
+    public: void paint(Graphics* graphics){
+this->animationInterface->paintXY(graphics, 0, 0);
     
 }
 
 
-    public: void paintThreed(Graphics graphics){
-this->animationInterface.paintThreedXYZ(graphics, 0, 0, 0);
+    public: void paintThreed(Graphics* graphics){
+this->animationInterface->paintThreedXYZ(graphics, 0, 0, 0);
     
 }
 

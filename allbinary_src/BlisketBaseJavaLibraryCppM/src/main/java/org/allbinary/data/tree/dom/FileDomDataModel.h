@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_FILEDOMDATAMODEL_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_FILEDOMDATAMODEL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,21 +64,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DomNodeInterface.h"
-#include "FileTableMapping.h"
-#include "ModDomHelper.h"
+        #include "org/allbinary/data/tree/dom/DomNodeInterface.h"
+#include "org/allbinary/data/tree/dom/FileTableMapping.h"
+#include "org/allbinary/data/tree/dom/ModDomHelper.h"
 
 class FileDomDataModel
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: AbFile file;
+    private: AbFile* file;
 
-public: FileDomDataModel(AbFile file);
+public: FileDomDataModel(AbFile* file);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

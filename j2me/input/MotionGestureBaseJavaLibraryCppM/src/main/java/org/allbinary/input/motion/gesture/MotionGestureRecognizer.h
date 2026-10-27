@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_MOTIONGESTURERECOGNIZER_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_MOTIONGESTURERECOGNIZER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -87,56 +93,56 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchMotionGestureFactory.h"
-#include "MotionGestureInput.h"
+        #include "org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h"
+#include "org/allbinary/input/motion/gesture/MotionGestureInput.h"
 
 class MotionGestureRecognizer
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const J2SEMath j2seMath = J2SEMath::getInstance();
+    private: J2SEMath* j2seMath = J2SEMath::getInstance();
 
-    private: const GPoint origin = PointFactory::getInstance().ZERO_ZERO;
+    private: GPoint* origin = PointFactory::getInstance()->ZERO_ZERO;
 
-    private: GPoint previous = this->origin;
+    private: GPoint* previous = this->origin;
 
-    private: GPoint intermediate = this->origin;
+    private: GPoint* intermediate = this->origin;
 
-    private: const Line line = Line(this->origin, this->origin);
+    private: Line* line = new Line(this->origin, this->origin);
 
-    private: BasicMotionGesturesHandler motionGesturesHandler;
+    private: BasicMotionGesturesHandler* motionGesturesHandler;
 
-    private: BasicEventHandler movedMotionGesturesHandler;
+    private: BasicEventHandler* movedMotionGesturesHandler;
 
-    private: BasicEventHandler scrolledMotionGesturesHandler;
+    private: BasicEventHandler* scrolledMotionGesturesHandler;
 
-    private: MotionEventCircularPool motionEventCircularPool;
+    private: MotionEventCircularPool* motionEventCircularPool;
 
 public: MotionGestureRecognizer(int32_t id);
 
                 //@Throws(Exception.constructor)
             
-    public: bool processPressedMotionEvent(GPoint current, int32_t deviceId, int32_t button);
+    public: bool processPressedMotionEvent(GPoint* current, int32_t deviceId, int32_t button);
 
                 //@Throws(Exception.constructor)
             
-    public: bool processReleasedMotionEvent(GPoint current, int32_t deviceId, int32_t button);
+    public: bool processReleasedMotionEvent(GPoint* current, int32_t deviceId, int32_t button);
 
                 //@Throws(Exception.constructor)
             
-    public: void processDraggedMotionEvent(GPoint current, int32_t deviceId, int32_t buttonMask);
+    public: void processDraggedMotionEvent(GPoint* current, int32_t deviceId, int32_t buttonMask);
 
                 //@Throws(Exception.constructor)
             
-    public: bool processMovedMotionEvent(GPoint current, int32_t deviceId, int32_t button);
+    public: bool processMovedMotionEvent(GPoint* current, int32_t deviceId, int32_t button);
 
                 //@Throws(Exception.constructor)
             
-    public: bool processScrolledMotionEvent(GPoint current, int32_t deviceId, int32_t button);
+    public: bool processScrolledMotionEvent(GPoint* current, int32_t deviceId, int32_t button);
 
-    public: BasicMotionGesturesHandler getMotionGesturesHandler();
+    public: BasicMotionGesturesHandler* getMotionGesturesHandler();
 
 };
 

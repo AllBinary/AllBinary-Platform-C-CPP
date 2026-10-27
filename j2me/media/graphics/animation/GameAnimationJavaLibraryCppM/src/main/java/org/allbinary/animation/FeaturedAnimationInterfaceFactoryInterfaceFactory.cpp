@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/resource/FeatureResourceAnimationInterfaceFactoryInterface.h>
@@ -71,21 +77,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProceduralAnimationInterfaceFactoryInterface.h"
-#include "AnimationInterfaceFactoryInterface.h"
-#include "BasicAnimationInterfaceFactoryInterface.h"
-#include "NullAnimationFactory.h"
+        #include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/BasicAnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/NullAnimationFactory.h"
 
 class FeaturedAnimationInterfaceFactoryInterfaceFactory: public FeaturedResourceFactory {
 
-    private: static FeaturedAnimationInterfaceFactoryInterfaceFactory INSTANCE = FeaturedAnimationInterfaceFactoryInterfaceFactory();
+    private: static FeaturedAnimationInterfaceFactoryInterfaceFactory* INSTANCE() { static std::unique_ptr<FeaturedAnimationInterfaceFactoryInterfaceFactory> value(new FeaturedAnimationInterfaceFactoryInterfaceFactory()); return value.get(); }
 
-    public: static FeaturedAnimationInterfaceFactoryInterfaceFactory getInstance(){
+    public: static FeaturedAnimationInterfaceFactoryInterfaceFactory* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FeaturedAnimationInterfaceFactoryInterfaceFactory::INSTANCE;
+                        return FeaturedAnimationInterfaceFactoryInterfaceFactory::INSTANCE();
     
 }
 
@@ -96,7 +102,7 @@ private: FeaturedAnimationInterfaceFactoryInterfaceFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: Rectangle getRectangle(std::string resource){
+    public: Rectangle* getRectangle(std::string resource){
 
 
 
@@ -108,18 +114,18 @@ private: FeaturedAnimationInterfaceFactoryInterfaceFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: Rectangle getRectangleXY(std::string resource, int32_t x, int32_t y){
+    public: Rectangle* getRectangleXY(std::string resource, int32_t x, int32_t y){
 
-    PointFactory pointFactory = PointFactory::getInstance();;
+    PointFactory* pointFactory = PointFactory::getInstance();;
     
 
-    BasicArrayList list = this->getList();;
+    BasicArrayList* list = this->getList();;
     
 
-    int32_t scale = GameConfigurationCentral::getInstance().SCALE.getValue().intValue();;
+    int32_t scale = GameConfigurationCentral::getInstance()->SCALE.getValue()->intValue();;
     
 
-    int32_t size = this->getList().size();;
+    int32_t size = this->getList()->size();;
     
 
 
@@ -129,14 +135,14 @@ private: FeaturedAnimationInterfaceFactoryInterfaceFactory(){
     int32_t index = 0;index < size; index++)
         {
 
-    FeatureResourceAnimationInterfaceFactoryInterface featureInterface = list.objectArray[index];;
+    FeatureResourceAnimationInterfaceFactoryInterface* featureInterface = dynamic_cast<FeatureResourceAnimationInterfaceFactoryInterface*>(list->objectArray[index]);;
     
 
-                        if(featureInterface.isFeature())
+                        if(featureInterface->isFeature())
                         
                                     {
                                     
-    Rectangle rectangle = featureInterface.getRectangle(resource);;
+    Rectangle* rectangle = featureInterface->getRectangle(resource);;
     
 
                         if(rectangle != RectangleFactory::SINGLETON)
@@ -146,7 +152,7 @@ private: FeaturedAnimationInterfaceFactoryInterfaceFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Rectangle(pointFactory.createXY(x, y), ((rectangle.getWidth() *scale)>>1), ((rectangle.getHeight() *scale)>>1));
+                        return new Rectangle(pointFactory->createXY(x, y), ((rectangle->getWidth() *scale)>>1), ((rectangle->getHeight() *scale)>>1));
     
 
                                     }
@@ -159,52 +165,52 @@ private: FeaturedAnimationInterfaceFactoryInterfaceFactory(){
 
 
 
-                            throw Exception(StringMaker().append("No rectangle available for current feature selection or Resource: ").append(resource).toString());
+                            throw new Exception((new StringMaker())->append("No rectangle available for current feature selection or Resource: ")->append(resource)->toString());
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: ProceduralAnimationInterfaceFactoryInterface getProcedural(std::string resource){
+    public: ProceduralAnimationInterfaceFactoryInterface* getProcedural(std::string resource){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getBasicAnimationInterfaceFactoryInstance(resource);
+                        return dynamic_cast<ProceduralAnimationInterfaceFactoryInterface*>(this->getBasicAnimationInterfaceFactoryInstance(resource));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: AnimationInterfaceFactoryInterface get(std::string resource){
+    public: AnimationInterfaceFactoryInterface* get(std::string resource){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getBasicAnimationInterfaceFactoryInstance(resource);
+                        return dynamic_cast<AnimationInterfaceFactoryInterface*>(this->getBasicAnimationInterfaceFactoryInstance(resource));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: BasicAnimationInterfaceFactoryInterface getBasicAnimationInterfaceFactoryInstance(std::string resource){
+    private: BasicAnimationInterfaceFactoryInterface* getBasicAnimationInterfaceFactoryInstance(std::string resource){
 
-    BasicArrayList list = this->getList();;
+    BasicArrayList* list = this->getList();;
     
 
-    BasicArrayList resourceTypeAvailableList = BasicArrayListD();;
+    BasicArrayList* resourceTypeAvailableList = new BasicArrayListD();;
     
 
-    int32_t size = this->getList().size();;
+    int32_t size = this->getList()->size();;
     
 
-    FeatureResourceAnimationInterfaceFactoryInterface featureInterface;;
+    FeatureResourceAnimationInterfaceFactoryInterface* featureInterface;;
     
 
-    BasicAnimationInterfaceFactoryInterface animationInterfaceFactoryInterface;;
+    BasicAnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface;;
     
 
 
@@ -213,15 +219,15 @@ private: FeaturedAnimationInterfaceFactoryInterfaceFactory(){
                         for (
     int32_t index = 0;index < size; index++)
         {
-featureInterface= list.objectArray[index];
+featureInterface= dynamic_cast<FeatureResourceAnimationInterfaceFactoryInterface*>(list->objectArray[index]);
     
 
-                        if(featureInterface.isFeature())
+                        if(featureInterface->isFeature())
                         
                                     {
-                                    resourceTypeAvailableList.add(featureInterface);
+                                    resourceTypeAvailableList->add(featureInterface);
     
-animationInterfaceFactoryInterface= featureInterface.getBasicAnimationInterfaceFactoryInstance(resource);
+animationInterfaceFactoryInterface= featureInterface->getBasicAnimationInterfaceFactoryInstance(resource);
     
 
                         if(animationInterfaceFactoryInterface != NullAnimationFactory::NULL_NOT_FOR_USE_ANIMATION_FACTORY)
@@ -242,7 +248,7 @@ animationInterfaceFactoryInterface= featureInterface.getBasicAnimationInterfaceF
 }
 
 
-                        if(resourceTypeAvailableList.size() > 0)
+                        if(resourceTypeAvailableList->size() > 0)
                         
                                     {
                                     
@@ -261,20 +267,20 @@ animationInterfaceFactoryInterface= featureInterface.getBasicAnimationInterfaceF
     std::string RESOURCES_LABEL = " resources ";;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(NO_ANIMATION_AVAILABLE_FROM);
+stringBuffer->append(NO_ANIMATION_AVAILABLE_FROM);
     
-stringBuffer.appendint(resourceTypeAvailableList.size());
+stringBuffer->appendint(resourceTypeAvailableList->size());
     
-stringBuffer.append(CommonSeps::getInstance().FORWARD_SLASH);
+stringBuffer->append(CommonSeps::getInstance()->FORWARD_SLASH);
     
-stringBuffer.appendint(size);
+stringBuffer->appendint(size);
     
-stringBuffer.append(FOR_FACTORIES);
+stringBuffer->append(FOR_FACTORIES);
     
 
-    int32_t size2 = resourceTypeAvailableList.size();;
+    int32_t size2 = resourceTypeAvailableList->size();;
     
 
 
@@ -283,15 +289,15 @@ stringBuffer.append(FOR_FACTORIES);
                         for (
     int32_t index = 0;index < size2; index++)
         {
-stringBuffer.append(resourceTypeAvailableList.get(index).toString());
+stringBuffer->append(resourceTypeAvailableList->get(index)->toString());
     
-stringBuffer.append(CommonSeps::getInstance().COMMA_SEP);
+stringBuffer->append(CommonSeps::getInstance()->COMMA_SEP);
     
 }
 
-stringBuffer.append(FOR_RESOURCE);
+stringBuffer->append(FOR_RESOURCE);
     
-stringBuffer.append(resource);
+stringBuffer->append(resource);
     
 
 
@@ -300,21 +306,21 @@ stringBuffer.append(resource);
                         for (
     int32_t index = 0;index < size; index++)
         {
-stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
+stringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
     
-featureInterface= list.objectArray[index];
+featureInterface= dynamic_cast<FeatureResourceAnimationInterfaceFactoryInterface*>(list->objectArray[index]);
     
 
-                        if(featureInterface.isFeature())
+                        if(featureInterface->isFeature())
                         
                                     {
-                                    stringBuffer.append(StringUtil::getInstance().toString(featureInterface));
+                                    stringBuffer->append(StringUtil::getInstance()->toString(featureInterface));
     
-stringBuffer.append(HAS_KEY);
+stringBuffer->append(HAS_KEY);
     
-stringBuffer.appendint(featureInterface.getHashtable().size());
+stringBuffer->appendint(featureInterface->getHashtable()->size());
     
-stringBuffer.append(RESOURCES_LABEL);
+stringBuffer->append(RESOURCES_LABEL);
     
 
                                     }
@@ -324,14 +330,14 @@ stringBuffer.append(RESOURCES_LABEL);
 
 
 
-                            throw Exception(stringBuffer.toString());
+                            throw new Exception(stringBuffer->toString());
                     
 
                                     }
                                 
                         else {
                             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
 
@@ -340,23 +346,23 @@ stringBuffer.append(RESOURCES_LABEL);
                         for (
     int32_t index = 0;index < size; index++)
         {
-featureInterface= list.objectArray[index];
+featureInterface= dynamic_cast<FeatureResourceAnimationInterfaceFactoryInterface*>(list->objectArray[index]);
     
-stringBuffer.append(featureInterface.toString());
+stringBuffer->append(featureInterface->toString());
     
-stringBuffer.append(CommonSeps::getInstance().SPACE);
+stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
 }
 
 
-    std::string result = stringBuffer.toString();;
+    std::string result = stringBuffer->toString();;
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
 
 
 
-                            throw Exception(stringBuffer.append("No feature resource type available for Resource: ").append(resource).append(" Resource Factories Available: ").append(result).toString());
+                            throw new Exception(stringBuffer->append("No feature resource type available for Resource: ")->append(resource)->append(" Resource Factories Available: ")->append(result)->toString());
                     
 
                         }

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDIMAGEBASEROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDIMAGEBASEROTATIONANIMATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -53,7 +59,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageBaseRotationAnimation.h"
+        #include "org/allbinary/animation/image/ImageBaseRotationAnimation.h"
 
 class AdjustedImageBaseRotationAnimation: public ImageBaseRotationAnimation {
 
@@ -61,13 +67,13 @@ class AdjustedImageBaseRotationAnimation: public ImageBaseRotationAnimation {
 
     private: int32_t dy= 0;
 
-public: AdjustedImageBaseRotationAnimation(Image image, AngleInfo angleInfo, int16_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior animationBehavior);
+public: AdjustedImageBaseRotationAnimation(Image* image, AngleInfo* angleInfo, int16_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior);
 
                 //@Throws(Exception.constructor)
             
     public: void init(int32_t dx, int32_t dy);
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class GameInfoData
             : public Object
          {
 
-    private: static GameInfoData instance() { return GameInfoData(); }
+    private: static GameInfoData* instance() { static std::unique_ptr<GameInfoData> value(new GameInfoData()); return value.get(); }
 
-    public: static GameInfoData getInstance(){
+    public: static GameInfoData* getInstance(){
 
 
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/android/input/motion/AnalogLocationInputProcessor.h>
@@ -76,80 +82,80 @@
         
 class DirectionalAnalogLocationInputProcessor: public AnalogLocationInputProcessor, public GameKeyEventSourceInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: std::vector<GameInputProcessor> inputProcessorArray;
+    private: std::vector<GameInputProcessor*> inputProcessorArray;
 
-    private: const GameKeyFactory gameKeyFactory = GameKeyFactory::getInstance();
+    private: GameKeyFactory* gameKeyFactory = GameKeyFactory::getInstance();
 
-    private: GameKeyEvent leftGameKeyEvent = GameKeyEvent::NONE;
+    private: GameKeyEvent* leftGameKeyEvent = GameKeyEvent::NONE;
 
-    private: GameKeyEvent rightGameKeyEvent = GameKeyEvent::NONE;
+    private: GameKeyEvent* rightGameKeyEvent = GameKeyEvent::NONE;
 
-    private: GameKeyEvent upGameKeyEvent = GameKeyEvent::NONE;
+    private: GameKeyEvent* upGameKeyEvent = GameKeyEvent::NONE;
 
-    private: GameKeyEvent downGameKeyEvent = GameKeyEvent::NONE;
+    private: GameKeyEvent* downGameKeyEvent = GameKeyEvent::NONE;
 
-    private: GameKeyEvent leftTriggerGameKeyEvent = GameKeyEvent::NONE;
+    private: GameKeyEvent* leftTriggerGameKeyEvent = GameKeyEvent::NONE;
 
-    private: GameKeyEvent rightTriggerGameKeyEvent = GameKeyEvent::NONE;
+    private: GameKeyEvent* rightTriggerGameKeyEvent = GameKeyEvent::NONE;
 
-public: DirectionalAnalogLocationInputProcessor(std::vector<GameInputProcessor> inputProcessorArray){
+public: DirectionalAnalogLocationInputProcessor(std::vector<GameInputProcessor*> inputProcessorArray){
 this->inputProcessorArray= inputProcessorArray;
     
 
         try {
-            this->leftGameKeyEvent= GameKeyEventFactory::getInstance().getInstanceForInput(this, this->gameKeyFactory.LEFT);
+            this->leftGameKeyEvent= GameKeyEventFactory::getInstance()->getInstanceForInput(this, this->gameKeyFactory->LEFT);
     
-this->rightGameKeyEvent= GameKeyEventFactory::getInstance().getInstanceForInput(this, this->gameKeyFactory.RIGHT);
+this->rightGameKeyEvent= GameKeyEventFactory::getInstance()->getInstanceForInput(this, this->gameKeyFactory->RIGHT);
     
-this->upGameKeyEvent= GameKeyEventFactory::getInstance().getInstanceForInput(this, this->gameKeyFactory.UP);
+this->upGameKeyEvent= GameKeyEventFactory::getInstance()->getInstanceForInput(this, this->gameKeyFactory->UP);
     
-this->downGameKeyEvent= GameKeyEventFactory::getInstance().getInstanceForInput(this, this->gameKeyFactory.DOWN);
+this->downGameKeyEvent= GameKeyEventFactory::getInstance()->getInstanceForInput(this, this->gameKeyFactory->DOWN);
     
-this->leftTriggerGameKeyEvent= GameKeyEventFactory::getInstance().getInstanceForInput(this, this->gameKeyFactory.KEY_NUM0);
+this->leftTriggerGameKeyEvent= GameKeyEventFactory::getInstance()->getInstanceForInput(this, this->gameKeyFactory->KEY_NUM0);
     
-this->rightTriggerGameKeyEvent= GameKeyEventFactory::getInstance().getInstanceForInput(this, this->gameKeyFactory.KEY_NUM5);
+this->rightTriggerGameKeyEvent= GameKeyEventFactory::getInstance()->getInstanceForInput(this, this->gameKeyFactory->KEY_NUM5);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &e);
     
 }
 
 }
 
 
-    public: void process(AllBinaryLayerManager allbinaryLayerManager, AnalogLocationInput analogLocationInput){
+    public: void process(AllBinaryLayerManager* allbinaryLayerManager, AnalogLocationInput* analogLocationInput){
 
         try {
             
-    CustomGPoint customGPoint;;
+    CustomGPoint* customGPoint;;
     
-customGPoint= analogLocationInput.getCustomGPoint();
-    
-
-    int32_t x = customGPoint.getX();;
+customGPoint= analogLocationInput->getCustomGPoint();
     
 
-    int32_t y = customGPoint.getY();;
+    int32_t x = customGPoint->getX();;
     
 
-    int32_t leftTrigger = analogLocationInput.getLeftTrigger();;
+    int32_t y = customGPoint->getY();;
     
 
-    int32_t rightTrigger = analogLocationInput.getRightTrigger();;
+    int32_t leftTrigger = analogLocationInput->getLeftTrigger();;
+    
+
+    int32_t rightTrigger = analogLocationInput->getRightTrigger();;
     
 
                         if(x < 0)
                         
                                     {
-                                    this->inputProcessorArray[this->leftGameKeyEvent.getKey()].processAnalog(allbinaryLayerManager, this->leftGameKeyEvent, x);
+                                    this->inputProcessorArray[this->leftGameKeyEvent->getKey()].processAnalog(allbinaryLayerManager, this->leftGameKeyEvent, x);
     
 
                                     }
@@ -158,7 +164,7 @@ customGPoint= analogLocationInput.getCustomGPoint();
                         if(x > 0)
                         
                                     {
-                                    this->inputProcessorArray[this->rightGameKeyEvent.getKey()].processAnalog(allbinaryLayerManager, this->rightGameKeyEvent, x);
+                                    this->inputProcessorArray[this->rightGameKeyEvent->getKey()].processAnalog(allbinaryLayerManager, this->rightGameKeyEvent, x);
     
 
                                     }
@@ -167,7 +173,7 @@ customGPoint= analogLocationInput.getCustomGPoint();
                         if(y < 0)
                         
                                     {
-                                    this->inputProcessorArray[this->downGameKeyEvent.getKey()].processAnalog(allbinaryLayerManager, this->downGameKeyEvent, y);
+                                    this->inputProcessorArray[this->downGameKeyEvent->getKey()].processAnalog(allbinaryLayerManager, this->downGameKeyEvent, y);
     
 
                                     }
@@ -176,7 +182,7 @@ customGPoint= analogLocationInput.getCustomGPoint();
                         if(y > 0)
                         
                                     {
-                                    this->inputProcessorArray[this->upGameKeyEvent.getKey()].processAnalog(allbinaryLayerManager, this->upGameKeyEvent, y);
+                                    this->inputProcessorArray[this->upGameKeyEvent->getKey()].processAnalog(allbinaryLayerManager, this->upGameKeyEvent, y);
     
 
                                     }
@@ -185,7 +191,7 @@ customGPoint= analogLocationInput.getCustomGPoint();
                         if(leftTrigger > 0)
                         
                                     {
-                                    this->inputProcessorArray[this->leftTriggerGameKeyEvent.getKey()].processAnalog(allbinaryLayerManager, this->leftTriggerGameKeyEvent, leftTrigger);
+                                    this->inputProcessorArray[this->leftTriggerGameKeyEvent->getKey()].processAnalog(allbinaryLayerManager, this->leftTriggerGameKeyEvent, leftTrigger);
     
 
                                     }
@@ -194,19 +200,19 @@ customGPoint= analogLocationInput.getCustomGPoint();
                         if(rightTrigger > 0)
                         
                                     {
-                                    this->inputProcessorArray[this->rightTriggerGameKeyEvent.getKey()].processAnalog(allbinaryLayerManager, this->rightTriggerGameKeyEvent, rightTrigger);
+                                    this->inputProcessorArray[this->rightTriggerGameKeyEvent->getKey()].processAnalog(allbinaryLayerManager, this->rightTriggerGameKeyEvent, rightTrigger);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put("Unable to process analog input", this, commonStrings.PROCESS, e);
+this->logUtil->put("Unable to process analog input", this, commonStrings->PROCESS, &e);
     
 }
 

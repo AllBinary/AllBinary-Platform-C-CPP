@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREADOM_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREADOM_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,21 +69,21 @@ class WorkAreaDom
             : public Object
          {
 
-    public: static const std::string WORKAREA = "workArea";
+    public: static inline const std::string WORKAREA = "workArea";
 
-    public: static const std::string NAME = "name";
+    public: static inline const std::string NAME = "name";
 
-    public: static const std::string FRAMES = "frames";
+    public: static inline const std::string FRAMES = "frames";
 
     private: std::string name;
 
-    private: BasicArrayList canvasNodeList;
+    private: BasicArrayList* canvasNodeList;
 
-public: WorkAreaDom(Document document);
+public: WorkAreaDom(Document* document);
 
     public: std::string getName();
 
-    public: BasicArrayList getCanvasNodes();
+    public: BasicArrayList* getCanvasNodes();
 
 };
 

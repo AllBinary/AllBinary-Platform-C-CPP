@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,15 +44,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RaceTrackGeographicMapCellType.h"
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellType.h"
 
 class RaceTrackGeographicMapCellTypes
             : public Object
          {
 
-    private: static RaceTrackGeographicMapCellTypes instance() { return RaceTrackGeographicMapCellTypes(); }
+    private: static RaceTrackGeographicMapCellTypes* instance() { static std::unique_ptr<RaceTrackGeographicMapCellTypes> value(new RaceTrackGeographicMapCellTypes()); return value.get(); }
 
-    public: static RaceTrackGeographicMapCellTypes getInstance(){
+    public: static RaceTrackGeographicMapCellTypes* getInstance(){
 
 
 
@@ -56,38 +62,38 @@ class RaceTrackGeographicMapCellTypes
 }
 
 
-    public: RaceTrackGeographicMapCellType BOTTOM_LEFT_TURN_ROAD_CELL_TYPE;
+    public: RaceTrackGeographicMapCellType* BOTTOM_LEFT_TURN_ROAD_CELL_TYPE;
 
-    public: RaceTrackGeographicMapCellType BOTTOM_RIGHT_TURN_ROAD_CELL_TYPE;
+    public: RaceTrackGeographicMapCellType* BOTTOM_RIGHT_TURN_ROAD_CELL_TYPE;
 
-    public: RaceTrackGeographicMapCellType TOP_LEFT_TURN_ROAD_CELL_TYPE;
+    public: RaceTrackGeographicMapCellType* TOP_LEFT_TURN_ROAD_CELL_TYPE;
 
-    public: RaceTrackGeographicMapCellType TOP_RIGHT_TURN_ROAD_CELL_TYPE;
+    public: RaceTrackGeographicMapCellType* TOP_RIGHT_TURN_ROAD_CELL_TYPE;
 
-    public: RaceTrackGeographicMapCellType HORIZONTAL_STRAIGHT_ROAD_CELL_TYPE;
+    public: RaceTrackGeographicMapCellType* HORIZONTAL_STRAIGHT_ROAD_CELL_TYPE;
 
-    public: RaceTrackGeographicMapCellType VERTICAL_STRAIGHT_ROAD_CELL_TYPE;
+    public: RaceTrackGeographicMapCellType* VERTICAL_STRAIGHT_ROAD_CELL_TYPE;
 
-    public: RaceTrackGeographicMapCellType START_LINE_ROAD_CELL_TYPE;
+    public: RaceTrackGeographicMapCellType* START_LINE_ROAD_CELL_TYPE;
 
-    public: RaceTrackGeographicMapCellType DEFAULT_FINISH_LINE_ROAD_CELL_TYPE;
+    public: RaceTrackGeographicMapCellType* DEFAULT_FINISH_LINE_ROAD_CELL_TYPE;
 
 public: RaceTrackGeographicMapCellTypes(){
-this->BOTTOM_LEFT_TURN_ROAD_CELL_TYPE= RaceTrackGeographicMapCellType("Bottom Left Turn", 1, 1, 0);
+this->BOTTOM_LEFT_TURN_ROAD_CELL_TYPE= new RaceTrackGeographicMapCellType("Bottom Left Turn", 1, 1, 0);
     
-this->BOTTOM_RIGHT_TURN_ROAD_CELL_TYPE= RaceTrackGeographicMapCellType("Bottom Right Turn", 2, 1, 0);
+this->BOTTOM_RIGHT_TURN_ROAD_CELL_TYPE= new RaceTrackGeographicMapCellType("Bottom Right Turn", 2, 1, 0);
     
-this->TOP_LEFT_TURN_ROAD_CELL_TYPE= RaceTrackGeographicMapCellType("Top Left Turn", 3, 1, 0);
+this->TOP_LEFT_TURN_ROAD_CELL_TYPE= new RaceTrackGeographicMapCellType("Top Left Turn", 3, 1, 0);
     
-this->TOP_RIGHT_TURN_ROAD_CELL_TYPE= RaceTrackGeographicMapCellType("Top Right Turne", 4, 1, 0);
+this->TOP_RIGHT_TURN_ROAD_CELL_TYPE= new RaceTrackGeographicMapCellType("Top Right Turne", 4, 1, 0);
     
-this->HORIZONTAL_STRAIGHT_ROAD_CELL_TYPE= RaceTrackGeographicMapCellType("Horizontal Straight", 5, 1, 0);
+this->HORIZONTAL_STRAIGHT_ROAD_CELL_TYPE= new RaceTrackGeographicMapCellType("Horizontal Straight", 5, 1, 0);
     
-this->VERTICAL_STRAIGHT_ROAD_CELL_TYPE= RaceTrackGeographicMapCellType("Vertical Straight", 6, 1, 0);
+this->VERTICAL_STRAIGHT_ROAD_CELL_TYPE= new RaceTrackGeographicMapCellType("Vertical Straight", 6, 1, 0);
     
-this->START_LINE_ROAD_CELL_TYPE= RaceTrackGeographicMapCellType("Start Line", 7, 1, 0);
+this->START_LINE_ROAD_CELL_TYPE= new RaceTrackGeographicMapCellType("Start Line", 7, 1, 0);
     
-this->DEFAULT_FINISH_LINE_ROAD_CELL_TYPE= RaceTrackGeographicMapCellType("Finish Line", 8, 1, 0);
+this->DEFAULT_FINISH_LINE_ROAD_CELL_TYPE= new RaceTrackGeographicMapCellType("Finish Line", 8, 1, 0);
     
 }
 

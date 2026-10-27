@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_TIME_TIME_H
         #define ORG_ALLBINARY_BUSINESS_TIME_TIME_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Long.h"
@@ -48,13 +54,13 @@ class Time
             : public Object
          {
 
-    private: Long timeLong;
+    private: int64_t timeLong;
 
 public: Time(std::string time);
 
 public: Time(int64_t time);
 
-    public: Long getLong();
+    public: int64_t getLong();
 
     public: int64_t getlong();
 

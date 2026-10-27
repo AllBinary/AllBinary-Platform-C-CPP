@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -82,21 +88,21 @@ class VelocityWidget: public BasicHud {
 
     private: int32_t maxVelocity;
 
-    private: std::vector<char> string = PrimitiveLongSingleton::getInstance().ZERO;
+    private: std::vector<char> string = PrimitiveLongSingleton::getInstance()->ZERO;
 
     private: int32_t totalDigits = 1;
 
     private: int32_t powerOfTenVelocity;
 
-    private: PrimitiveLongUtil primitiveLongUtil;
+    private: PrimitiveLongUtil* primitiveLongUtil;
 
     private: int32_t offset = 0;
 
     private: int32_t offset2 = 0;
 
-public: VelocityWidget(int32_t powerOfTenVelocity, int32_t location, int32_t direction, BasicColor basicColor);
+public: VelocityWidget(int32_t powerOfTenVelocity, int32_t location, int32_t direction, BasicColor* basicColor);
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
     public: int32_t get();
 
@@ -106,7 +112,7 @@ public: VelocityWidget(int32_t powerOfTenVelocity, int32_t location, int32_t dir
 
     public: void reduce(int32_t value);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

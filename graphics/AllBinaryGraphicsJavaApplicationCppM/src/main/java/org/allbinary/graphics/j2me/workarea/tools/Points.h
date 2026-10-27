@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTS_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -47,21 +53,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PointsInterface.h"
+        #include "org/allbinary/graphics/j2me/workarea/tools/PointsInterface.h"
 
 class Points
             : public Object
-        : public PointsInterface {
+        , public PointsInterface {
 
-    private: BasicArrayList pointVector;
+    private: BasicArrayList* pointVector;
 
 public: Points();
 
     public: void init();
 
-    public: BasicArrayList getPoints();
+    public: BasicArrayList* getPoints();
 
-    public: void addPoints(BasicArrayList vector);
+    public: void addPoints(BasicArrayList* vector);
 
     public: bool isValid();
 

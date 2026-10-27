@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,9 +73,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoHttpContext.h"
-#include "TransformInfoInterface.h"
-#include "TransformInfoHttpStore.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpContext.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfoHttpStore.h"
 
 class TransformInfoHttpFactory
             : public Object
@@ -77,7 +83,7 @@ class TransformInfoHttpFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static TransformInfoInterface getInstance(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
+    public: static TransformInfoInterface* getInstance(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext);
 
 private: TransformInfoHttpFactory();
 

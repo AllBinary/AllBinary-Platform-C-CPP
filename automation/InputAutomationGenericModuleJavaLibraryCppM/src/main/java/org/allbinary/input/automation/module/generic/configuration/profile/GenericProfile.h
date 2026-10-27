@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_GENERICPROFILE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_GENERICPROFILE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,43 +79,43 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GenericProfileDataWorkerData.h"
-#include "GenericProfileDataWorkerType.h"
-#include "GenericProfileData.h"
+        #include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfileDataWorkerData.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfileDataWorkerType.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfileData.h"
 
 class GenericProfile
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string name;
 
-    private: BasicArrayList vector;
+    private: BasicArrayList* vector;
 
-    private: GenericProfileActions genericProfileActions;
+    private: GenericProfileActions* genericProfileActions;
 
-public: GenericProfile(Node node);
+public: GenericProfile(Node* node);
 
 public: GenericProfile(std::string name);
 
-    public: BasicArrayList getGenericProfileDataWorkerTypeVector();
+    public: BasicArrayList* getGenericProfileDataWorkerTypeVector();
 
-    public: void add(GenericProfileDataWorkerType genericProfileDataWorkerType);
+    public: void add(GenericProfileDataWorkerType* genericProfileDataWorkerType);
 
-    public: void remove(GenericProfileDataWorkerType genericProfileDataWorkerType);
+    public: void remove(GenericProfileDataWorkerType* genericProfileDataWorkerType);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
     public: std::string getName();
 
     public: void setName(std::string name);
 
-    public: GenericProfileActions getGenericProfileActions();
+    public: GenericProfileActions* getGenericProfileActions();
 
-    public: void setGenericProfileActions(GenericProfileActions genericProfileActions);
+    public: void setGenericProfileActions(GenericProfileActions* genericProfileActions);
 
 };
 

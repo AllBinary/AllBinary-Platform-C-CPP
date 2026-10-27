@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AI_PATH_BASICDIRECTIONAIHELPER_H
         #define ORG_ALLBINARY_GAME_AI_PATH_BASICDIRECTIONAIHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Math.h"
@@ -67,17 +73,17 @@ class BasicDirectionAIHelper
 
     private: std::string name;
 
-    private: AngleInfo angleInfo;
+    private: AngleInfo* angleInfo;
 
-public: BasicDirectionAIHelper(std::string name, AngleInfo angleInfo);
+public: BasicDirectionAIHelper(std::string name, AngleInfo* angleInfo);
 
     private: int32_t turnAI(int32_t frame);
 
-    private: int32_t getAIKeyPressed(Integer frame);
+    private: int32_t getAIKeyPressed(int32_t frame);
 
-    public: int32_t getAIKeyPressedFromDirection(Direction geographicMapDirectionData);
+    public: int32_t getAIKeyPressedFromDirection(Direction* geographicMapDirectionData);
 
-    protected: AngleInfo getAngleInfoP();
+    protected: AngleInfo* getAngleInfoP();
 
     public: std::string getName();
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_LICENSEINITINFO_H
         #define ORG_ALLBINARY_BUSINESS_INIT_LICENSEINITINFO_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/debug/DebugFactory.h>
@@ -61,9 +67,9 @@ class LicenseInitInfo
             : public Object
          {
 
-    private: std::string id = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string id = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: BasicArrayList serverList = BasicArrayListD();
+    private: BasicArrayList* serverList = new BasicArrayListD();
 
 : LicenseInitInfo();
 
@@ -81,9 +87,9 @@ class LicenseInitInfo
 
     public: void addServer(std::string value);
 
-    public: BasicArrayList getServerList();
+    public: BasicArrayList* getServerList();
 
-    public: void setServerList(BasicArrayList servers);
+    public: void setServerList(BasicArrayList* servers);
 
 };
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -68,18 +74,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "VehicleLayerInterface.h"
-#include "VehicleProperties.h"
+        #include "org/allbinary/game/layer/VehicleLayerInterface.h"
+#include "org/allbinary/game/layer/VehicleProperties.h"
 
 class NullVehicleLayer
             : public Object
-        : public VehicleLayerInterface {
+        , public VehicleLayerInterface {
 
-    public: static const NullVehicleLayer NULL_VEHICLE_LAYER = NullVehicleLayer();
+    public: static NullVehicleLayer* NULL_VEHICLE_LAYER() { static std::unique_ptr<NullVehicleLayer> value(new NullVehicleLayer()); return value.get(); }
 
     public: std::string getName();
 
-    public: std::vector<Group> getGroupInterface();
+    public: std::vector<Group*> getGroupInterface();
 
     public: void setPosition(int32_t x, int32_t y, int32_t z);
 
@@ -119,17 +125,17 @@ class NullVehicleLayer
 
     public: int32_t getType();
 
-    public: VehicleProperties getVehicleProperties();
+    public: VehicleProperties* getVehicleProperties();
 
-    public: BasicArrayList getGameKeyEventList();
+    public: BasicArrayList* getGameKeyEventList();
 
-    public: BasicDecimal getSpeedBasicDecimal();
+    public: BasicDecimal* getSpeedBasicDecimal();
 
     public: bool isReadyForExplosion();
 
-    public: RotationAnimation getRotationAnimationInterface();
+    public: RotationAnimation* getRotationAnimationInterface();
 
-    public: void setRotationAnimationInterface(RotationAnimation animationInterface);
+    public: void setRotationAnimationInterface(RotationAnimation* animationInterface);
 
     public: bool isDestroyed();
 
@@ -141,15 +147,15 @@ class NullVehicleLayer
             
     public: void handleFinish();
 
-    public: GeographicMapCellPositionTracking getGeographicMapCellPositionTracking();
+    public: GeographicMapCellPositionTracking* getGeographicMapCellPositionTracking();
 
-    public: std::vector<GeographicMapCellHistory> getGeographicMapCellHistoryArray();
+    public: std::vector<GeographicMapCellHistory*> getGeographicMapCellHistoryArray();
 
-    public: void setGeographicMapCellHistoryArray(std::vector<GeographicMapCellHistory> geographicMapCellHistory);
+    public: void setGeographicMapCellHistoryArray(std::vector<GeographicMapCellHistory*> geographicMapCellHistory);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: void paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics* graphics);
 
 };
 

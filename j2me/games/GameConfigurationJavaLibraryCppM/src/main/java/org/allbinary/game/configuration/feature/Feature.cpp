@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/configuration/event/ChangedGameFeatureListener.h>
@@ -52,20 +58,20 @@ class Feature
             : public Object
          {
 
-    private: static ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
+    private: static inline ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
 
-    public: static Feature getInstance(std::string name){
+    public: static Feature* getInstance(std::string name){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Feature::hashtable.get(name);
+                        return dynamic_cast<Feature*>(Feature::hashtable->get(name));
     
 }
 
 
-    private: static void add(std::string name, Feature gameFeature){
-Feature::hashtable.put(name, gameFeature);
+    private: static void add(std::string name, Feature* gameFeature){
+Feature::hashtable->put(name, gameFeature);
     
 }
 
@@ -77,7 +83,7 @@ this->name= name;
     
 Feature::add(name, this);
     
-ChangedGameFeatureListener::getInstance().add(this);
+ChangedGameFeatureListener::getInstance()->add(this);
     
 }
 

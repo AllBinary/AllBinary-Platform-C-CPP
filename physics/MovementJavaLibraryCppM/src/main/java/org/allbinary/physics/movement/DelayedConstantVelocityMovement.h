@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_DELAYEDCONSTANTVELOCITYMOVEMENT_H
         #define ORG_ALLBINARY_PHYSICS_MOVEMENT_DELAYEDCONSTANTVELOCITYMOVEMENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
@@ -56,19 +62,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicConstantVelocityMovement.h"
+        #include "org/allbinary/physics/movement/BasicConstantVelocityMovement.h"
 
 class DelayedConstantVelocityMovement: public BasicConstantVelocityMovement {
 
-    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(60);
+    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(60);
 
-public: DelayedConstantVelocityMovement(BasicDecimal basicDecimal, BasicVelocityProperties velocityProperties);
+public: DelayedConstantVelocityMovement(BasicDecimal* basicDecimal, BasicVelocityProperties* velocityProperties);
 
-    public: void init(BasicDecimal speedBasicDecimal, int32_t angle, int32_t otherAngle);
+    public: void init(BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle);
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryGameLayer layer);
+    public: void process(AllBinaryGameLayer* layer);
 
 };
 

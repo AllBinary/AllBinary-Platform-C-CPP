@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DRAW_KEYVALUEDRAWSTRING_H
         #define ORG_ALLBINARY_GRAPHICS_DRAW_KEYVALUEDRAWSTRING_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -59,9 +65,9 @@
         
 class KeyValueDrawString
             : public Object
-        : public UpdateMyFontInterface {
+        , public UpdateMyFontInterface {
 
-    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
 
     private: std::string LABEL;
 
@@ -69,13 +75,13 @@ class KeyValueDrawString
 
     private: int32_t valueX= 0;
 
-    private: std::string value = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string value = StringUtil::getInstance()->EMPTY_STRING;
 
 public: KeyValueDrawString(std::string label, int32_t x);
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
-    public: void paint(Graphics graphics, int32_t y);
+    public: void paint(Graphics* graphics, int32_t y);
 
     public: void update(std::string value);
 

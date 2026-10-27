@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_PLATFORM_BASICPLATORMGEOGRAPHICMAPCELLTYPEFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_PLATFORM_BASICPLATORMGEOGRAPHICMAPCELLTYPEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <java/util/Enumeration.h>
 
       
@@ -60,21 +68,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicPlatormGeographicMapCellType.h"
+        #include "org/allbinary/media/graphics/geography/map/platform/BasicPlatormGeographicMapCellType.h"
 
 class BasicPlatormGeographicMapCellTypeFactory: public GeographicMapCellTypeFactory {
 
-    private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
+    private: EnumerationUtil* enumerationUtil = EnumerationUtil::getInstance();
 
-    public: BasicPlatormGeographicMapCellType BLOCK_CELL_TYPE;
+    public: BasicPlatormGeographicMapCellType* BLOCK_CELL_TYPE;
 
-    public: BasicPlatormGeographicMapCellType JUMP_THRU_CELL_TYPE;
+    public: BasicPlatormGeographicMapCellType* JUMP_THRU_CELL_TYPE;
 
-    public: BasicPlatormGeographicMapCellType LADDER_CELL_TYPE;
+    public: BasicPlatormGeographicMapCellType* LADDER_CELL_TYPE;
 
     private: int32_t maxTileId;
 
-public: BasicPlatormGeographicMapCellTypeFactory(ABHashtable<Object*, Object*> tileTypeToTileIdsMap, int32_t maxTileId);
+public: BasicPlatormGeographicMapCellTypeFactory(ABHashtable<Object*, Object*>* tileTypeToTileIdsMap, int32_t maxTileId);
 
     public: int32_t getStartType();
 
@@ -82,7 +90,7 @@ public: BasicPlatormGeographicMapCellTypeFactory(ABHashtable<Object*, Object*> t
 
     public: int32_t getEmptyType();
 
-    public: bool isPath(GeographicMapCellType cellType);
+    public: bool isPath(GeographicMapCellType* cellType);
 
 };
 

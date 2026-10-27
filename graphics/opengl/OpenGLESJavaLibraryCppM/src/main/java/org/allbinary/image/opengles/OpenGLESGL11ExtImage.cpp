@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -73,53 +79,53 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLESImage.h"
+        #include "org/allbinary/image/opengles/OpenGLESImage.h"
 //Many devices don't support this even though it is supposed to
 class OpenGLESGL11ExtImage: public OpenGLESImage {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: int32_t a= 0;
 
     private: std::vector<int32_t> rectangle;
 
-public: OpenGLESGL11ExtImage(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory) : OpenGLESImage(image, bitmapFactory, textureFactory){
+public: OpenGLESGL11ExtImage(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory) : OpenGLESImage(image, bitmapFactory, textureFactory){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->onDisplayChangeEvent(DisplayInfoSingleton::getInstance().displayChangeEvent);
+this->onDisplayChangeEvent(DisplayInfoSingleton::getInstance()->displayChangeEvent);
     
 this->rectangle= {0,this->getHeight(), this->getWidth(),  -this->getHeight();};
     
 }
 
 
-    public: void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent){
+    public: void onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, "onResize");
+            this->logUtil->putF(this->commonStrings.START, this, "onResize");
     
-this->a= DisplayInfoSingleton::getInstance().getLastHeight() -this->getHeight();
+this->a= DisplayInfoSingleton::getInstance()->getLastHeight() -this->getHeight();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "onResize", e);
+this->logUtil->put(this->commonStrings.EXCEPTION, this, "onResize", &e);
     
 }
 
 }
 
 
-    public: void set(GL gl){
-this->onDisplayChangeEvent(DisplayInfoSingleton::getInstance().displayChangeEvent);
+    public: void set(GL* gl){
+this->onDisplayChangeEvent(DisplayInfoSingleton::getInstance()->displayChangeEvent);
     
 
-    GL11 gl11 = gl;;
+    GL11* gl11 = dynamic_cast<GL11*>(gl);;
     
 
                         if(super.initTexture(gl11))
@@ -127,11 +133,11 @@ this->onDisplayChangeEvent(DisplayInfoSingleton::getInstance().displayChangeEven
                                     {
                                     this->textureFactory.load(gl11, GL10::GL_TEXTURE_2D, 0, this, 0, true);
     
-gl11.glTexParameteriv(GL10::GL_TEXTURE_2D, GL11Ext::GL_TEXTURE_CROP_RECT_OES, this->rectangle, 0);
+gl11->glTexParameteriv(GL10::GL_TEXTURE_2D, GL11Ext::GL_TEXTURE_CROP_RECT_OES, this->rectangle, 0);
     
-gl11.glDisable(GL10::GL_TEXTURE_2D);
+gl11->glDisable(GL10::GL_TEXTURE_2D);
     
-OpenGLLogUtil::getInstance().logError(gl11, this);
+OpenGLLogUtil::getInstance()->logError(gl11, this);
     
 
                                     }
@@ -139,17 +145,17 @@ OpenGLLogUtil::getInstance().logError(gl11, this);
 }
 
 
-    public: void draw(GL10 gl, int32_t x, int32_t y, int32_t z){
-gl.glEnable(GL10::GL_TEXTURE_2D);
+    public: void draw(GL10* gl, int32_t x, int32_t y, int32_t z){
+gl->glEnable(GL10::GL_TEXTURE_2D);
     
-gl.glBindTexture(GL10::GL_TEXTURE_2D, this->openGLESImageProperties.textureID);
+gl->glBindTexture(GL10::GL_TEXTURE_2D, this->openGLESImageProperties.textureID);
     
 
-    GL11Ext gl11Ext = gl;;
+    GL11Ext* gl11Ext = dynamic_cast<GL11Ext*>(gl);;
     
-gl11Ext.glDrawTexfOES(x, (this->a -y), z, this->getWidth(), this->getHeight());
+gl11Ext->glDrawTexfOES(x, (this->a -y), z, this->getWidth(), this->getHeight());
     
-gl.glDisable(GL10::GL_TEXTURE_2D);
+gl->glDisable(GL10::GL_TEXTURE_2D);
     
 }
 

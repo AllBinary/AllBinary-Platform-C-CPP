@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_INVENTORYREQUESTHELPER_H
         #define ADMIN_TAGHELPERS_INVENTORYREQUESTHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -80,18 +86,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ModifyTable.h"
-#include "InventoryItemViewParentTagHelper.h"
+        #include "admin/taghelpers/ModifyTable.h"
+#include "admin/taghelpers/InventoryItemViewParentTagHelper.h"
 
 class InventoryRequestHelper: public ModifyTable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
-    private: ItemInterface itemInterface;
+    private: ItemInterface* itemInterface;
 
-public: InventoryRequestHelper(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
+public: InventoryRequestHelper(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext);
 
                 //@Throws(Exception.constructor)
             
@@ -101,7 +107,7 @@ public: InventoryRequestHelper(HashMap<Object*, Object*> propertiesHashMap, Page
 
     public: std::string update();
 
-    public: ItemInterface getItemInterface();
+    public: ItemInterface* getItemInterface();
 
 };
 

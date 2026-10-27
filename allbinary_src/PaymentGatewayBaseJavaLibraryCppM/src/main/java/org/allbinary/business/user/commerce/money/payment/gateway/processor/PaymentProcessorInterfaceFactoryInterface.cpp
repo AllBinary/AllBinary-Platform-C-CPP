@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionInterface.h>
@@ -44,13 +50,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentProcessorInterface.h"
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/processor/PaymentProcessorInterface.h"
 
 class PaymentProcessorInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    PaymentProcessorInterface getInstance(TransformInfoInterface transformInfoInterface, PaymentTransactionInterface paymentTransactionInterface)
+    public: virtual PaymentProcessorInterface* getInstance(TransformInfoInterface* transformInfoInterface, PaymentTransactionInterface* paymentTransactionInterface) = 0;
 
 };
 

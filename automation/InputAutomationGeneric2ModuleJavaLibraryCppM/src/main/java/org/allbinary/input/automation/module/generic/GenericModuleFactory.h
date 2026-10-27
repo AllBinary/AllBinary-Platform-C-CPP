@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICMODULEFACTORY_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICMODULEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/input/automation/module/AbstractInputAutomationFactory.h>
@@ -65,19 +71,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GenericInputAutomationAction.h"
-#include "GenericInputAutomationWorker.h"
+        #include "org/allbinary/input/automation/module/generic/GenericInputAutomationAction.h"
+#include "org/allbinary/input/automation/module/generic/GenericInputAutomationWorker.h"
 
 class GenericModuleFactory: public AbstractInputAutomationFactory {
 
-    private: static std::string NAME = "Generic" +InputAutomationModuleData::MODULE_NAME_END;
+    private: static inline std::string NAME = "Generic" +InputAutomationModuleData::MODULE_NAME_END;
 
 public: GenericModuleFactory();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: RunnableInterface getInstance();
+    public: RunnableInterface* getInstance();
 
 };
 

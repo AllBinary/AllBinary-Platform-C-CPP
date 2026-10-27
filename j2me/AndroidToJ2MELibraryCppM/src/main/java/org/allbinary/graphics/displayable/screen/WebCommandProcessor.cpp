@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/ClassNotFoundException.h"
@@ -70,15 +76,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AboutCommandProcessor.h"
+        #include "org/allbinary/graphics/displayable/screen/AboutCommandProcessor.h"
 
 class WebCommandProcessor
             : public Object
          {
 
-    private: static WebCommandProcessor instance() { return WebCommandProcessor(); }
+    private: static WebCommandProcessor* instance() { static std::unique_ptr<WebCommandProcessor> value(new WebCommandProcessor()); return value.get(); }
 
-    public: static WebCommandProcessor getInstance(){
+    public: static WebCommandProcessor* getInstance(){
 
 
 
@@ -88,37 +94,37 @@ class WebCommandProcessor
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const AboutCommandProcessor aboutCommandProcessor = AboutCommandProcessor::getInstance();
+    private: AboutCommandProcessor* aboutCommandProcessor = AboutCommandProcessor::getInstance();
 
     private: const std::string WEB_VIEW_ACTIVITY = "org.allbinary.android.activity.WebViewActivity";
 
-    public: const BasicArrayList list = BasicArrayListD();
+    public: BasicArrayList* list = new BasicArrayListD();
 
-    public: void process(CommandListener midletCommandListener, Command command, Canvas canvas){
+    public: void process(CommandListener* midletCommandListener, Command* command, Canvas* canvas){
 
         try {
             
-    Context context = this->aboutCommandProcessor.getContext();;
+    Context* context = dynamic_cast<Context*>(this->aboutCommandProcessor->getContext());;
     
 
-    Intent intent = Intent(context, TsUtil::getInstance().getClassClassLoader(this).loadClass(this->WEB_VIEW_ACTIVITY));;
+    Intent* intent = new Intent(context, TsUtil::getInstance()->getClassClassLoader(this)->loadClass(this->WEB_VIEW_ACTIVITY));;
     
-intent.putExtra(this->aboutCommandProcessor.URL, this->list.removeAt(0));
+intent->putExtra(this->aboutCommandProcessor->URL, this->list->removeAt(0));
     
-intent.setFlags(Intent::FLAG_ACTIVITY_NEW_TASK);
+intent->setFlags(Intent::FLAG_ACTIVITY_NEW_TASK);
     
-context.startActivity(intent);
+context->startActivity(intent);
     
 
                 //: 
-} catch(e) 
+} catch(ClassNotFoundException& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, "process", e);
+this->logUtil->put(commonStrings->EXCEPTION, this, "process", &e);
     
 }
 

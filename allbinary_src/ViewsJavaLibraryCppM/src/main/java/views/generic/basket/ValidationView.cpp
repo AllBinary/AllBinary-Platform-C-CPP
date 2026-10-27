@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/globals/MESSAGES.h>
@@ -53,11 +59,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasketView.h"
+        #include "views/generic/basket/BasketView.h"
 
 class ValidationView: public BasketView, public ValidationComponentInterface {
 
-public: ValidationView(TransformInfoInterface transformInfoInterface) : BasketView(transformInfoInterface){
+public: ValidationView(TransformInfoInterface* transformInfoInterface) : BasketView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -67,7 +73,7 @@ public: ValidationView(TransformInfoInterface transformInfoInterface) : BasketVi
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
 
 
@@ -77,7 +83,7 @@ public: ValidationView(TransformInfoInterface transformInfoInterface) : BasketVi
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -87,7 +93,7 @@ public: ValidationView(TransformInfoInterface transformInfoInterface) : BasketVi
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

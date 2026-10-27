@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLCOLUMN_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLCOLUMN_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -61,11 +67,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbSqlTable.h"
+        #include "org/allbinary/logic/communication/sql/AbSqlTable.h"
 
 class AbSqlColumn: public AbSqlTable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const std::string LARGEST_INT_VALUE_IN_COLUMN = "\nLargest Int Value in column: ";
 
@@ -77,13 +83,13 @@ class AbSqlColumn: public AbSqlTable {
 
     private: const std::string INVALID_RESULT = "-1";
 
-public: AbSqlColumn(DbConnectionInfo databaseConnectionInfoInterface);
+public: AbSqlColumn(DbConnectionInfo* databaseConnectionInfoInterface);
 
     public: std::string getLargestIntegerInColumnWhere(std::string columnName, std::string key, std::string value);
 
-    public: BasicArrayList getColumn(std::string columnName);
+    public: BasicArrayList* getColumn(std::string columnName);
 
-    public: BasicArrayList getColumnWhere(std::string columnName, std::string key, std::string value);
+    public: BasicArrayList* getColumnWhere(std::string columnName, std::string key, std::string value);
 
 };
 

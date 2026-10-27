@@ -21,6 +21,12 @@
         #ifndef VIEWS_GENERIC_ADDRESS_BILLING_NEWVALIDATIONVIEW_H
         #define VIEWS_GENERIC_ADDRESS_BILLING_NEWVALIDATIONVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/address/StreetAddress.h>
@@ -56,19 +62,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BillingAddressView.h"
+        #include "views/generic/address/billing/BillingAddressView.h"
 
 class NewValidationView: public BillingAddressView, public ValidationComponentInterface {
 
-public: NewValidationView(TransformInfoInterface transformInfoInterface);
+public: NewValidationView(TransformInfoInterface* transformInfoInterface);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string validationInfo();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
 };
 

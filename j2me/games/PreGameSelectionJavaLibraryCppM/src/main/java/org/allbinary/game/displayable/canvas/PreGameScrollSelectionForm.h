@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/form/item/ABCustomItem.h>
@@ -64,11 +70,11 @@
         
 class PreGameScrollSelectionForm: public ScrollCurrentSelectionForm {
 
-public: PreGameScrollSelectionForm(std::string title, std::vector<ABCustomItem> items, ItemPaintableFactory formPaintableFactory, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: PreGameScrollSelectionForm(std::string title, std::vector<ABCustomItem*> items, ItemPaintableFactory* formPaintableFactory, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
                 //@Throws(Exception.constructor)
             
-    public: void init(Rectangle rectangle);
+    public: void init(Rectangle* rectangle);
 
 };
 

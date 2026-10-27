@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/init/InitInfo.h>
@@ -44,7 +50,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UrlGlobalsInterface.h"
+        #include "org/allbinary/globals/UrlGlobalsInterface.h"
 
 class WebAppUrlGlobals: public UrlGlobalsInterface {
 
@@ -57,7 +63,7 @@ class WebAppUrlGlobals: public UrlGlobalsInterface {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InitInfo::getInstance().isTesting();;
+                        return InitInfo::getInstance()->isTesting();;
     
 }
 
@@ -86,7 +92,7 @@ this->isWebappPathSet= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InitInfo::getInstance().getTestHtmlPath();;
+                        return InitInfo::getInstance()->getTestHtmlPath();;
     
 }
 
@@ -95,10 +101,10 @@ this->isWebappPathSet= true;
             
     public: std::string getMainPath(){
 
-    std::string mainPath = InitInfo::getInstance().getMainPath();;
+    std::string mainPath = InitInfo::getInstance()->getMainPath();;
     
 
-                        if(!StringValidationUtil::getInstance().isEmpty(mainPath))
+                        if(!StringValidationUtil::getInstance()->isEmpty(mainPath))
                         
                                     {
                                     
@@ -127,7 +133,7 @@ this->isWebappPathSet= true;
                             
 
 
-                            throw Exception("Webapp Path is not set");
+                            throw new Exception("Webapp Path is not set");
                     
 
                         }

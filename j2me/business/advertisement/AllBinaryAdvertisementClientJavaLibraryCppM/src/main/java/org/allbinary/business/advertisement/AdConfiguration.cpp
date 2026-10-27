@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/direction/Direction.h>
@@ -67,7 +73,7 @@ this->LEADBOLT= advertIdArray[2];
 }
 
 
-    public: std::vector<Direction> getValidAdSpots(){
+    public: std::vector<Direction*> getValidAdSpots(){
 
 
 
@@ -77,7 +83,7 @@ this->LEADBOLT= advertIdArray[2];
 }
 
 
-    public: void process(GameState gameState){
+    public: void process(GameState* gameState){
 }
 
 

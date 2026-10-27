@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class CommonStateStrings
             : public Object
          {
 
-    private: static CommonStateStrings instance() { return CommonStateStrings(); }
+    private: static CommonStateStrings* instance() { static std::unique_ptr<CommonStateStrings> value(new CommonStateStrings()); return value.get(); }
 
-    public: static CommonStateStrings getInstance(){
+    public: static CommonStateStrings* getInstance(){
 
 
 

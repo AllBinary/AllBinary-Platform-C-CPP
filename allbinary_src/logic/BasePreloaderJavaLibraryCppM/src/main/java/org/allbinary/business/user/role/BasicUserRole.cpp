@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/io/Serializable.h>
@@ -41,11 +47,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicUserRoles.h"
+        #include "org/allbinary/business/user/role/BasicUserRoles.h"
 
 class BasicUserRole
             : public Object
-        : public Serializable {
+        , public Serializable {
 
     private: int32_t m_int_RoleId;
 
@@ -78,7 +84,7 @@ this->sessionTimeout= aSessionTimeout;
     
 this->sessionInactivityTimeout= aSessionInactivityTimeout;
     
-BasicUserRoles::getInstance().roleVector.add(this);
+BasicUserRoles::getInstance()->roleVector.add(this);
     
 }
 
@@ -123,9 +129,9 @@ BasicUserRoles::getInstance().roleVector.add(this);
 }
 
 
-    public: bool equals(BasicUserRole basicUserRole){
+    public: bool equals(BasicUserRole* basicUserRole){
 
-                        if(this->getRoleId() == basicUserRole.getRoleId())
+                        if(this->getRoleId() == basicUserRole->getRoleId())
                         
                                     {
                                     

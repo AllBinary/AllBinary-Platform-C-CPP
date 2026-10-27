@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/transition/TransistionTypes.h>
@@ -52,14 +58,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProgressRunnable.h"
-#include "ProgressCanvas.h"
+        #include "org/allbinary/graphics/canvas/transition/progress/ProgressRunnable.h"
+#include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
 
 class ShowTitleProgressBarRunnable: public ProgressRunnable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: ShowTitleProgressBarRunnable(Activity midletActivity, ProgressCanvas progressCanvas) : ProgressRunnable(midletActivity, progressCanvas){
+public: ShowTitleProgressBarRunnable(Activity* midletActivity, ProgressCanvas* progressCanvas) : ProgressRunnable(midletActivity, progressCanvas){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -69,7 +75,7 @@ public: ShowTitleProgressBarRunnable(Activity midletActivity, ProgressCanvas pro
 }
 
 
-    private: const std::vector<int32_t> FADE_IN_HALF = {TransistionTypes::getInstance().FADE_IN_TO_HALF_ALPHA,TransistionTypes::getInstance().FADE_IN_FROM_HALF_ALPHA};
+    private: const std::vector<int32_t> FADE_IN_HALF = {TransistionTypes::getInstance()->FADE_IN_TO_HALF_ALPHA,TransistionTypes::getInstance()->FADE_IN_FROM_HALF_ALPHA};
 
     public: void run(){
 
@@ -78,12 +84,12 @@ public: ShowTitleProgressBarRunnable(Activity midletActivity, ProgressCanvas pro
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
     
 }
 

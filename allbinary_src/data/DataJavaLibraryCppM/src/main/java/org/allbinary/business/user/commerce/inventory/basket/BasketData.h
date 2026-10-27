@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKETDATA_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKETDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,27 +52,27 @@ class BasketData
             : public Object
          {
 
-    public: static const std::string BASKET = "BASKET";
+    public: static inline const std::string BASKET = "BASKET";
 
-    public: static const std::string NAME = "NAME";
+    public: static inline const std::string NAME = "NAME";
 
-    public: static const std::string BASKETREVIEW = "BASKET_REVIEW";
+    public: static inline const std::string BASKETREVIEW = "BASKET_REVIEW";
 
-    public: static const std::string TOTALWEIGHT = "BASKET_TOTALWEIGTH";
+    public: static inline const std::string TOTALWEIGHT = "BASKET_TOTALWEIGTH";
 
-    public: static const std::string ITEMTOTAL = "BASKET_ITEMTOTAL";
+    public: static inline const std::string ITEMTOTAL = "BASKET_ITEMTOTAL";
 
-    public: static const std::string ITEMTOTALINBASKET = "BASKET_ITEMTOTALINBASKET";
+    public: static inline const std::string ITEMTOTALINBASKET = "BASKET_ITEMTOTALINBASKET";
 
-    public: static const std::string SUBTOTAL = "BASKET_SUBTOTAL";
+    public: static inline const std::string SUBTOTAL = "BASKET_SUBTOTAL";
 
-    public: static const std::string ISEMPTY = "BASKET_ISEMPTY";
+    public: static inline const std::string ISEMPTY = "BASKET_ISEMPTY";
 
-    public: static const std::string INSERT = "BASKET_INSERT";
+    public: static inline const std::string INSERT = "BASKET_INSERT";
 
-    public: static const std::string DELETE = "BASKET_DELETE";
+    public: static inline const std::string DELETE = "BASKET_DELETE";
 
-    public: static const std::string ADJUST = "BASKET_ADJUST";
+    public: static inline const std::string ADJUST = "BASKET_ADJUST";
 
 private: BasketData();
 

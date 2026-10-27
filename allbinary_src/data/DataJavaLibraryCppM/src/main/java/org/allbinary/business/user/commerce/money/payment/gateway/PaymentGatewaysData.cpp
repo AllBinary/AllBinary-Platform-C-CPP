@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,7 +49,7 @@ class PaymentGatewaysData
             : public Object
          {
 
-    public: static std::string NAME = "PAYMENTGATEWAYS_NAME";
+    public: static inline std::string NAME = "PAYMENTGATEWAYS_NAME";
 
 private: PaymentGatewaysData(){
 }

@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_COMMANDFORM_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_COMMANDFORM_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Command.h>
@@ -86,25 +94,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ScreenRepaintProcessorFactory.h"
+        #include "org/allbinary/graphics/displayable/screen/ScreenRepaintProcessorFactory.h"
 
 class CommandForm: public Form, public MyCommandInterface, public MenuListener {
 
-    private: static Object* NULL_COMMAND_FORM = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* NULL_COMMAND_FORM = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static CommandForm getNullCommandForm();
+    public: static CommandForm* getNullCommandForm();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const Processor repaintProcessor = ScreenRepaintProcessorFactory::getInstance().create(this);
+    private: Processor* repaintProcessor = ScreenRepaintProcessorFactory::getInstance()->create(this);
 
-    private: ABStack<Object*> commandStack;
+    private: ABStack<Object*>* commandStack;
 
-public: CommandForm(CommandListener commandListener, std::string formTitle, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
+public: CommandForm(CommandListener* commandListener, std::string formTitle, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor);
 
-    public: void initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener* cmdListener);
 
     public: void open();
 
@@ -116,7 +124,7 @@ public: CommandForm(CommandListener commandListener, std::string formTitle, Basi
 
     public: int32_t getSourceId();
 
-    public: void addCommand(Command command);
+    public: void addCommand(Command* command);
 
     public: void removeAllCommands();
 

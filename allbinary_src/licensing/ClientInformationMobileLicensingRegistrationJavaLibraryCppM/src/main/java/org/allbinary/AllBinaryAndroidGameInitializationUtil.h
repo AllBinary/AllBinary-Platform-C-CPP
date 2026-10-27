@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ALLBINARYANDROIDGAMEINITIALIZATIONUTIL_H
         #define ORG_ALLBINARY_ALLBINARYANDROIDGAMEINITIALIZATIONUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -52,7 +58,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AndroidResources.h"
+        #include "org/allbinary/AndroidResources.h"
 
 class AllBinaryAndroidGameInitializationUtil
             : public Object

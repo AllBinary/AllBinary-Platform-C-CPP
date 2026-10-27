@@ -21,6 +21,12 @@
         #ifndef TAGS_WORKFLOW_PROCESSING_BASIC_BASICWORKFLOWTAG_H
         #define TAGS_WORKFLOW_PROCESSING_BASIC_BASICWORKFLOWTAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
@@ -59,7 +65,7 @@
         //and remove the hidden fields
 class BasicWorkFlowTag: public StoreWorkFlowTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: BasicWorkFlowTag();
 

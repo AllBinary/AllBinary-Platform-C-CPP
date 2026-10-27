@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -46,17 +52,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Log.h"
+        #include "org/allbinary/logic/communication/log/Log.h"
 //NoPlatform
 // class LogFactory
             : public Object
          {
 
-    public: static const Log LOG
+    public: static Log* LOG() { static std::unique_ptr<Log> value(new Log(StringUtil::getInstance()->EMPTY_STRING, NullUtil::getInstance()->NULL_OBJECT, StringUtil::getInstance()->EMPTY_STRING, NullUtil::getInstance()->NULL_OBJECT)); return value.get(); }
 
-    public: static Log getInstance(std::string specialMessage, Object* anyType, std::string functionName, Object* exception)
+    public: static Log* getInstance(std::string specialMessage, Object* anyType, std::string functionName, Object* exception)
 
-    public: static Log getInstanceF(std::string specialMessage, Object* anyType, std::string functionName)
+    public: static Log* getInstanceF(std::string specialMessage, Object* anyType, std::string functionName)
 
 };
 

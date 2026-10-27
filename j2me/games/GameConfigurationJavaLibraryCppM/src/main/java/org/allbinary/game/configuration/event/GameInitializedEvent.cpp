@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/game/resource/ResourceLoadingLevel.h>
 
       
@@ -48,7 +56,7 @@
         
 class GameInitializedEvent: public AllBinaryEventObject {
 
-    private: ResourceLoadingLevel resourceLoadingLevel = ResourceLoadingLevelFactory::getInstance().LEVEL;
+    private: ResourceLoadingLevel* resourceLoadingLevel = ResourceLoadingLevelFactory::getInstance()->LEVEL;
 
     private: int32_t level= 0;
 
@@ -65,7 +73,7 @@ public: GameInitializedEvent(Object* anyType) : AllBinaryEventObject(anyType){
     public: void setLevel(int32_t level){
 this->level= level;
     
-this->resourceLoadingLevel= ResourceLoadingLevelFactory::getInstance().LEVEL;
+this->resourceLoadingLevel= ResourceLoadingLevelFactory::getInstance()->LEVEL;
     
 }
 
@@ -80,15 +88,15 @@ this->resourceLoadingLevel= ResourceLoadingLevelFactory::getInstance().LEVEL;
 }
 
 
-    public: void setResourceLoadingLevel(ResourceLoadingLevel resourceLoadingLevel){
+    public: void setResourceLoadingLevel(ResourceLoadingLevel* resourceLoadingLevel){
 this->resourceLoadingLevel= resourceLoadingLevel;
     
-this->level= this->resourceLoadingLevel.getLevel();
+this->level= this->resourceLoadingLevel->getLevel();
     
 }
 
 
-    public: ResourceLoadingLevel getResourceLoadingLevel(){
+    public: ResourceLoadingLevel* getResourceLoadingLevel(){
 
 
 

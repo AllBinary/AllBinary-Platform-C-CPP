@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_RESOURCE_RESOURCEANIMATIONINTERFACEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_ANIMATION_RESOURCE_RESOURCEANIMATIONINTERFACEFACTORYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/BasicAnimationInterfaceFactoryInterface.h>
@@ -49,7 +55,7 @@ class ResourceAnimationInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    BasicAnimationInterfaceFactoryInterface getBasicAnimationInterfaceFactoryInstance(std::string resource);
+    public: virtual BasicAnimationInterfaceFactoryInterface* getBasicAnimationInterfaceFactoryInstance(std::string resource) = 0;
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graphics/GPoint.h>
 
       
@@ -48,28 +54,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CurrentlyPressedTouchButtonSingleton.h"
-#include "TouchButtonInput.h"
+        #include "org/allbinary/input/motion/button/CurrentlyPressedTouchButtonSingleton.h"
+#include "org/allbinary/input/motion/button/TouchButtonInput.h"
 
 class CurrentlyPressedTouchButtonSingletonDebug: public CurrentlyPressedTouchButtonSingleton {
 
-    private: static const CurrentlyPressedTouchButtonSingletonDebug instanceC = CurrentlyPressedTouchButtonSingletonDebug();
+    private: static CurrentlyPressedTouchButtonSingletonDebug* instanceC() { static std::unique_ptr<CurrentlyPressedTouchButtonSingletonDebug> value(new CurrentlyPressedTouchButtonSingletonDebug()); return value.get(); }
 
-    public: static CurrentlyPressedTouchButtonSingleton getInstance(){
+    public: static CurrentlyPressedTouchButtonSingleton* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CurrentlyPressedTouchButtonSingletonDebug::instanceC;
+                        return CurrentlyPressedTouchButtonSingletonDebug::instanceC();
     
 }
 
 
-    private: std::string string = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string string = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: std::string listString = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string listString = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: std::string append = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string append = StringUtil::getInstance()->EMPTY_STRING;
 
     private: const std::string PRESSED_AND_FIRED = "pressed & fired";
 
@@ -83,35 +89,35 @@ class CurrentlyPressedTouchButtonSingletonDebug: public CurrentlyPressedTouchBut
 
     private: const std::string RELEASED_AND_NOT_FIRED = "rel & not fired";
 
-    private: void appendTouchButtonInput(std::string append, TouchButtonInput touchButtonInput){
+    private: void appendTouchButtonInput(std::string append, TouchButtonInput* touchButtonInput){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(touchButtonInput.toString());
+stringBuffer->append(touchButtonInput->toString());
     
-stringBuffer.append(CommonSeps::getInstance().SPACE);
+stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-stringBuffer.append(append);
+stringBuffer->append(append);
     
-this->append= stringBuffer.toString();
+this->append= stringBuffer->toString();
     
-this->string= StringMaker().append(this->listString).append(this->append).toString();
+this->string= (new StringMaker())->append(this->listString).append(this->append).toString();
     
 }
 
 
     private: void append(std::string append){
-this->append= StringMaker().append(this->append).append(append).toString();
+this->append= (new StringMaker())->append(this->append).append(append).toString();
     
-this->string= StringMaker().append(this->listString).append(this->append).toString();
+this->string= (new StringMaker())->append(this->listString).append(this->append).toString();
     
 }
 
 
     public: void clearLog(int32_t x, int32_t y){
-this->append= StringMaker().append(GPoint::toStringStatic(x, y, 0)).append(CommonSeps::getInstance().SPACE).toString();
+this->append= (new StringMaker())->append(GPoint::toStringStatic(x, y, 0)).append(CommonSeps::getInstance()->SPACE).toString();
     
-this->string= StringMaker().append(this->listString).append(this->append).toString();
+this->string= (new StringMaker())->append(this->listString).append(this->append).toString();
     
 }
 
@@ -122,43 +128,43 @@ this->append(this->RELEASED_AND_NOT_FIRED);
 }
 
 
-    public: void releaseAndFired(TouchButtonInput touchButtonInput){
+    public: void releaseAndFired(TouchButtonInput* touchButtonInput){
 this->appendTouchButtonInput(this->RELEASED_AND_FIRED, touchButtonInput);
     
 }
 
 
-    public: void releaseAndFired2(TouchButtonInput touchButtonInput){
+    public: void releaseAndFired2(TouchButtonInput* touchButtonInput){
 this->appendTouchButtonInput(this->RELEASED_AND_FIRED_2, touchButtonInput);
     
 }
 
 
-    public: void releaseAndFiredAssociated(TouchButtonInput touchButtonInput){
+    public: void releaseAndFiredAssociated(TouchButtonInput* touchButtonInput){
 this->appendTouchButtonInput(this->ASSOCIATED_RELEASED_AND_FIRED, touchButtonInput);
     
 }
 
 
-    public: void pressedAndFired(TouchButtonInput touchButtonInput){
+    public: void pressedAndFired(TouchButtonInput* touchButtonInput){
 this->appendTouchButtonInput(this->PRESSED_AND_FIRED, touchButtonInput);
     
 }
 
 
-    public: void pressedAndNotFired(TouchButtonInput touchButtonInput){
+    public: void pressedAndNotFired(TouchButtonInput* touchButtonInput){
 this->appendTouchButtonInput(this->PRESSED_AND_NOT_FIRED, touchButtonInput);
     
 }
 
 
-    public: TouchButtonInput removeAt(int32_t index){
+    public: TouchButtonInput* removeAt(int32_t index){
 
-    TouchButtonInput touchButtonInput = super.removeAt(index);;
+    TouchButtonInput* touchButtonInput = super.removeAt(index);;
     
 this->listString= this->list.toString();
     
-this->string= StringMaker().append(this->listString).append(this->append).toString();
+this->string= (new StringMaker())->append(this->listString).append(this->append).toString();
     
 
 
@@ -169,13 +175,13 @@ this->string= StringMaker().append(this->listString).append(this->append).toStri
 }
 
 
-    public: bool remove(TouchButtonInput touchButtonInput){
+    public: bool remove(TouchButtonInput* touchButtonInput){
 
     bool isRemoved = super.remove(touchButtonInput);;
     
 this->listString= this->list.toString();
     
-this->string= StringMaker().append(this->listString).append(this->append).toString();
+this->string= (new StringMaker())->append(this->listString).append(this->append).toString();
     
 
 
@@ -186,12 +192,12 @@ this->string= StringMaker().append(this->listString).append(this->append).toStri
 }
 
 
-    public: void add(TouchButtonInput touchButtonInput){
+    public: void add(TouchButtonInput* touchButtonInput){
 super.add(touchButtonInput);
     
 this->listString= this->list.toString();
     
-this->string= StringMaker().append(this->listString).append(this->append).toString();
+this->string= (new StringMaker())->append(this->listString).append(this->append).toString();
     
 }
 

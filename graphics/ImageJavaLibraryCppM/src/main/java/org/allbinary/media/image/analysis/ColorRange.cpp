@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/awt.h>
@@ -47,12 +53,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ColorRangeInterface.h"
-#include "Color.h"
+        #include "org/allbinary/media/image/analysis/ColorRangeInterface.h"
+#include "org/allbinary/media/image/analysis/Color.h"
 
 class ColorRange
             : public Object
-        : public ColorRangeInterface {
+        , public ColorRangeInterface {
 
     private: int32_t minRed;
 
@@ -178,9 +184,9 @@ this->maxBlue= maxBlue;
 }
 
 
-    public: bool isInRange(Color color){
+    public: bool isInRange(Color* color){
 
-                        if(color.getRed() >= this->getMinRed() && color.getRed() <= this->getMaxRed() && color.getGreen() >= this->getMinGreen() && color.getGreen() <= this->getMaxGreen() && color.getBlue() >= this->getMinBlue() && color.getBlue() <= this->getMaxBlue())
+                        if(color->getRed() >= this->getMinRed() && color->getRed() <= this->getMaxRed() && color->getGreen() >= this->getMinGreen() && color->getGreen() <= this->getMaxGreen() && color->getBlue() >= this->getMinBlue() && color->getBlue() <= this->getMaxBlue())
                         
                                     {
                                     
@@ -207,47 +213,47 @@ this->maxBlue= maxBlue;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("getMinRed(): ");
+stringBuffer->append("getMinRed(): ");
     
-stringBuffer.appendint(this->getMinRed());
+stringBuffer->appendint(this->getMinRed());
     
-stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
+stringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
     
-stringBuffer.append("getMaxRed(): ");
+stringBuffer->append("getMaxRed(): ");
     
-stringBuffer.appendint(this->getMaxRed());
+stringBuffer->appendint(this->getMaxRed());
     
-stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
+stringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
     
-stringBuffer.append("getMinGreen(): ");
+stringBuffer->append("getMinGreen(): ");
     
-stringBuffer.appendint(this->getMinGreen());
+stringBuffer->appendint(this->getMinGreen());
     
-stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
+stringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
     
-stringBuffer.append("getMaxGreen(): ");
+stringBuffer->append("getMaxGreen(): ");
     
-stringBuffer.appendint(this->getMaxGreen());
+stringBuffer->appendint(this->getMaxGreen());
     
-stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
+stringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
     
-stringBuffer.append("getMinBlue(): ");
+stringBuffer->append("getMinBlue(): ");
     
-stringBuffer.appendint(this->getMinGreen());
+stringBuffer->appendint(this->getMinGreen());
     
-stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
+stringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
     
-stringBuffer.append("getMaxBlue(): ");
+stringBuffer->append("getMaxBlue(): ");
     
-stringBuffer.appendint(this->getMaxBlue());
+stringBuffer->appendint(this->getMaxBlue());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

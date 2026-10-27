@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREACONSTRAINTSINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREACONSTRAINTSINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/control/contraints/display/browser/DisplayInBrowserContraintsInterface.h>
 
       
@@ -48,9 +54,9 @@
         
 class AdvertisementAreaConstraintsInterface {
 
-    DisplayInBrowserContraintsInterface getDisplayInBrowserContraints();
+    public: virtual DisplayInBrowserContraintsInterface* getDisplayInBrowserContraints() = 0;
 
-    TwoDimensionalConstraintInterface getTwoDimensionContraints();
+    public: virtual TwoDimensionalConstraintInterface* getTwoDimensionContraints() = 0;
 
 };
 

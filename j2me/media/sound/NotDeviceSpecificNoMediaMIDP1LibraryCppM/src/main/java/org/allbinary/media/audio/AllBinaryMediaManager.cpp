@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,15 +69,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Sounds.h"
-#include "SoundsFactoryInterface.h"
-#include "NoPlayer.h"
+        #include "org/allbinary/media/audio/Sounds.h"
+#include "org/allbinary/media/audio/SoundsFactoryInterface.h"
+#include "org/allbinary/media/audio/NoPlayer.h"
 //NotDeviceSpecificNoMediaMIDP1Library
 class AllBinaryMediaManager
             : public Object
          {
 
-    private: static const std::string THIS = "AllBinaryMediaManagerNoMediaMIDP1";
+    private: static inline const std::string THIS = "AllBinaryMediaManagerNoMediaMIDP1";
 
     public: static bool isMuted(){
 
@@ -99,66 +105,66 @@ class AllBinaryMediaManager
 
                 //@Throws(Exception.constructor)
             
-    public: static void init(SoundsFactoryInterface soundsFactoryInterface){
+    public: static void init(SoundsFactoryInterface* soundsFactoryInterface){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonString = CommonStrings::getInstance();;
+    CommonStrings* commonString = CommonStrings::getInstance();;
     
-logUtil.putF(commonString.START, AllBinaryMediaManager::THIS, commonString.INIT);
+logUtil->putF(commonString->START, AllBinaryMediaManager::THIS, commonString->INIT);
     
-ProgressCanvasFactory::getInstance().addNormalPortion(50, "Media Manager");
+ProgressCanvasFactory::getInstance()->addNormalPortion(50, "Media Manager");
     
-Sounds(soundsFactoryInterface).init();
+(new Sounds(soundsFactoryInterface))->init();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: static void shutdown(SoundsFactoryInterface soundsFactoryInterface){
-Sounds(soundsFactoryInterface).stopAll();
+    public: static void shutdown(SoundsFactoryInterface* soundsFactoryInterface){
+(new Sounds(soundsFactoryInterface))->stopAll();
     
-Sounds(soundsFactoryInterface).closeAll();
+(new Sounds(soundsFactoryInterface))->closeAll();
     
-TsUtil::getInstance().gc();
+TsUtil::getInstance()->gc();
     
 }
 
 
-    public: static Player createPlayerFromInputStream(InputStream stream, std::string type){
+    public: static Player* createPlayerFromInputStream(InputStream* stream, std::string type){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonString = CommonStrings::getInstance();;
+    CommonStrings* commonString = CommonStrings::getInstance();;
     
-logUtil.putF(commonString.START, AllBinaryMediaManager::THIS, "creatPlayer(InputStream)");
+logUtil->putF(commonString->START, AllBinaryMediaManager::THIS, "creatPlayer(InputStream)");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoPlayer::NO_PLAYER;
+                        return dynamic_cast<Player*>(NoPlayer::NO_PLAYER);
     
 }
 
 
-    public: static Player createPlayer(std::string locator){
+    public: static Player* createPlayer(std::string locator){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonString = CommonStrings::getInstance();;
+    CommonStrings* commonString = CommonStrings::getInstance();;
     
-logUtil.putF(commonString.START, AllBinaryMediaManager::THIS, "creatPlayer(locator)");
+logUtil->putF(commonString->START, AllBinaryMediaManager::THIS, "creatPlayer(locator)");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoPlayer::NO_PLAYER;
+                        return dynamic_cast<Player*>(NoPlayer::NO_PLAYER);
     
 }
 
@@ -173,7 +179,7 @@ logUtil.putF(commonString.START, AllBinaryMediaManager::THIS, "creatPlayer(locat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().getArrayInstance();;
+                        return StringUtil::getInstance()->getArrayInstance();;
     
 }
 
@@ -183,7 +189,7 @@ logUtil.putF(commonString.START, AllBinaryMediaManager::THIS, "creatPlayer(locat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().getArrayInstance();;
+                        return StringUtil::getInstance()->getArrayInstance();;
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_BASICPERSITANCE_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_BASICPERSITANCE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -72,46 +78,46 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PersistanceStrings.h"
-#include "NullRecordStore.h"
+        #include "org/allbinary/game/configuration/persistance/PersistanceStrings.h"
+#include "org/allbinary/game/configuration/persistance/NullRecordStore.h"
 
 class BasicPersitance
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const PersistanceStrings persistanceStrings = PersistanceStrings::getInstance();
+    protected: PersistanceStrings* persistanceStrings = PersistanceStrings::getInstance();
 
-    private: const PlatformRecordIdUtil platformRecordIdUtil = PlatformRecordIdUtil::getInstance();
+    private: PlatformRecordIdUtil* platformRecordIdUtil = PlatformRecordIdUtil::getInstance();
 
     private: std::string recordId;
 
-    protected: const BasicArrayList valueList = BasicArrayListD();
+    protected: BasicArrayList* valueList = new BasicArrayListD();
 
-    protected: const BasicArrayList idList = BasicArrayListD();
+    protected: BasicArrayList* idList = new BasicArrayListD();
 
 protected: BasicPersitance(std::string recordId);
 
                 //@Throws(Exception.constructor)
             
-    public: void deleteRecoreStore(AbeClientInformationInterface abeClientInformation);
+    public: void deleteRecoreStore(AbeClientInformationInterface* abeClientInformation);
 
                 //@Throws(Exception.constructor)
             
-    public: void deleteAll(AbeClientInformationInterface abeClientInformation);
+    public: void deleteAll(AbeClientInformationInterface* abeClientInformation);
 
                 //@Throws(Exception.constructor)
             
-    public: void delete_(AbeClientInformationInterface abeClientInformation, int32_t deleteId);
+    public: void delete_(AbeClientInformationInterface* abeClientInformation, int32_t deleteId);
 
-    public: std::string getRecordId(AbeClientInformationInterface abeClientInformation);
+    public: std::string getRecordId(AbeClientInformationInterface* abeClientInformation);
 
-    public: BasicArrayList getList();
+    public: BasicArrayList* getList();
 
-    public: BasicArrayList getIds();
+    public: BasicArrayList* getIds();
 
     public: void clear();
 

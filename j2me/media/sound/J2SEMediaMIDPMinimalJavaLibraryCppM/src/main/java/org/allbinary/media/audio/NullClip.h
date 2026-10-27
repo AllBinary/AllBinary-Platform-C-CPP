@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/io/IOException.h>
@@ -73,22 +79,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NullJ2SEControl.h"
-#include "NullAudioFormat.h"
+        #include "org/allbinary/media/audio/NullJ2SEControl.h"
+#include "org/allbinary/media/audio/NullAudioFormat.h"
 
 class NullClip
             : public Object
-        : public Clip {
+        , public Clip {
 
-    public: static const NullJ2SEControl NULL_CONTROL = NullJ2SEControl(BooleanControl::Type.MUTE);
+    public: static NullJ2SEControl* NULL_CONTROL() { static std::unique_ptr<NullJ2SEControl> value(new NullJ2SEControl(BooleanControl::Type.MUTE)); return value.get(); }
 
                 //@Throws(LineUnavailableException.constructor)
             
-    public: void open(AudioFormat format, std::vector<int8_t> data, int32_t offset, int32_t bufferSize);
+    public: void open(AudioFormat* format, std::vector<int8_t> data, int32_t offset, int32_t bufferSize);
 
                 //@Throws(LineUnavailableException.constructor, IOException.constructor)
             
-    public: void open(AudioInputStream stream);
+    public: void open(AudioInputStream* stream);
 
     public: int32_t getFrameLength();
 
@@ -114,7 +120,7 @@ class NullClip
 
     public: bool isActive();
 
-    public: AudioFormat getFormat();
+    public: AudioFormat* getFormat();
 
     public: int32_t getBufferSize();
 
@@ -128,7 +134,7 @@ class NullClip
 
     public: float getLevel();
 
-    public: Info getLineInfo();
+    public: Info* getLineInfo();
 
                 //@Throws(LineUnavailableException.constructor)
             
@@ -138,15 +144,15 @@ class NullClip
 
     public: bool isOpen();
 
-    public: std::vector<Control> getControls();
+    public: std::vector<Control*> getControls();
 
-    public: bool isControlSupported(Type control);
+    public: bool isControlSupported(Type* control);
 
-    public: Control getControl(Type control);
+    public: Control* getControl(Type* control);
 
-    public: void addLineListener(LineListener listener);
+    public: void addLineListener(LineListener* listener);
 
-    public: void removeLineListener(LineListener listener);
+    public: void removeLineListener(LineListener* listener);
 
 };
 

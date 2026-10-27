@@ -6,6 +6,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/System.h"
         
 #include <org/allbinary/logic/NullUtil.h>
@@ -49,10 +57,10 @@ this->data= data;
 }
 
 
-    private: StringMaker stringBuilder = StringMaker();
+    private: StringMaker* stringBuilder = new StringMaker();
 
     public: Object* visit(Object* anyType){
-this->stringBuilder.delete(0, stringBuilder.length());
+this->stringBuilder->delete(0, stringBuilder->length());
     
 this->print(this->data, stringBuilder);
     
@@ -60,23 +68,23 @@ this->print(this->data, stringBuilder);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance().NULL_OBJECT;
+                        return NullUtil::getInstance()->NULL_OBJECT;
     
 }
 
 
     public: void print(std::vector<int32_t> data){
 
-    StringMaker stringBuilder = StringMaker();;
+    StringMaker* stringBuilder = new StringMaker();;
     
 this->print(data, stringBuilder);
     
 }
 
 
-    public: void print(std::vector<int32_t> data, StringMaker stringBuilder){
+    public: void print(std::vector<int32_t> data, StringMaker* stringBuilder){
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
     int32_t size = data.size();;
@@ -88,13 +96,13 @@ this->print(data, stringBuilder);
                         for (
     int32_t i = 0;i < size; i++)
         {
-stringBuilder.appendint(data[i]);
+stringBuilder->appendint(data[i]);
     
-stringBuilder.append(commonSeps.SPACE);
+stringBuilder->append(commonSeps->SPACE);
     
 }
 
-console.log(stringBuilder.toString());
+System.out.println(stringBuilder->toString());
     
 }
 

@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Class.h"
         
             #include "java/lang/Exception.h"
@@ -67,7 +75,7 @@
         
 class OrderHistoryTag: public StoreValidationTransformTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string status;
 
@@ -87,17 +95,17 @@ this->status= value;
 
         try {
             
-    Object* anyType = OrderHistoryHelperFactory().getInstance(this->getPropertiesHashMap(), pageContext);;
+    Object* anyType = (new OrderHistoryHelperFactory())->getInstance(this->getPropertiesHashMap(), pageContext);;
     
 
     Class* helperClass = anyType->getClass();;
     
 
-    Method method = helperClass.getMethod("setOrderStatus", 
+    Method* method = helperClass->getMethod("setOrderStatus", 
                             nullptr);;
     
 
-    std::string result = method.invoke(anyType, 
+    std::string result = method->invoke(anyType, 
                             nullptr);;
     
 
@@ -108,7 +116,7 @@ this->status= value;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -118,16 +126,16 @@ this->status= value;
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
     std::string error = "Failed to view order table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setOrderStatus()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "setOrderStatus()", &e);
     
 
                                     }
@@ -139,7 +147,7 @@ this->status= value;
                         return error;
     
 }
-*/
+
 }
 
 
@@ -159,18 +167,18 @@ this->setObjectFile("views.generic.order.history.ValidationView");
                         
                                     {
                                     
-                        if(this->getCommand().compareTo(OrderHistoryData::SETSTATUS) == 0)
+                        if(this->getCommand()->compareTo(OrderHistoryData::SETSTATUS) == 0)
                         
                                     {
-                                    this->getPropertiesHashMap().put(OrderHistoryData::STATUS, this->status);
+                                    this->getPropertiesHashMap()->put(OrderHistoryData::STATUS, this->status);
     
-pageContext.getOut().print(this->setOrderStatus());
+pageContext.getOut()->print(this->setOrderStatus());
     
 
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
                         
                                     {
                                     
@@ -180,7 +188,7 @@ pageContext.getOut().print(this->setOrderStatus());
                             
 
 
-                            throw Exception("No Such View Command: " +this->getCommand());
+                            throw new Exception("No Such View Command: " +this->getCommand());
                     
 
                         }
@@ -197,13 +205,13 @@ pageContext.getOut().print(this->setOrderStatus());
 
 
 
-                            throw Exception("Command Null");
+                            throw new Exception("Command Null");
                     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
-AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
     
 
 
@@ -214,9 +222,9 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 
@@ -225,7 +233,7 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
                         return SKIP_BODY;
     
 }
-*/
+
 }
 
 

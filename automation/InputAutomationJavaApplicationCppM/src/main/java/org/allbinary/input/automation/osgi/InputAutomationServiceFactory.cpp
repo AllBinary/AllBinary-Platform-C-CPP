@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/osgi/framework/Bundle.h>
@@ -59,30 +65,30 @@
         
 class InputAutomationServiceFactory
             : public Object
-        : public ServiceFactory {
+        , public ServiceFactory {
 
-    private: static const InputAutomationServiceFactory inputAutomationServiceFactory = InputAutomationServiceFactory();
+    private: static InputAutomationServiceFactory* inputAutomationServiceFactory() { static std::unique_ptr<InputAutomationServiceFactory> value(new InputAutomationServiceFactory()); return value.get(); }
 
-    public: static InputAutomationServiceFactory getInstance(){
+    public: static InputAutomationServiceFactory* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputAutomationServiceFactory::inputAutomationServiceFactory;
+                        return InputAutomationServiceFactory::inputAutomationServiceFactory();
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
 private: InputAutomationServiceFactory(){
 }
 
 
-    public: Object* getService(Bundle bundle, ServiceRegistration registration){
-this->logUtil.putF(this->commonStrings.START, this, "getService");
+    public: Object* getService(Bundle* bundle, ServiceRegistration* registration){
+this->logUtil->putF(this->commonStrings->START, this, "getService");
     
 
 
@@ -93,7 +99,7 @@ this->logUtil.putF(this->commonStrings.START, this, "getService");
 }
 
 
-    public: void ungetService(Bundle bundle, ServiceRegistration registration, Object* service){
+    public: void ungetService(Bundle* bundle, ServiceRegistration* registration, Object* service){
 }
 
 

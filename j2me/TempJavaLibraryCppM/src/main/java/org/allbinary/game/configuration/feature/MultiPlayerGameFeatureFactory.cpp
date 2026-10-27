@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -29,9 +35,9 @@ class MultiPlayerGameFeatureFactory
             : public Object
          {
 
-    private: static MultiPlayerGameFeatureFactory instance() { return MultiPlayerGameFeatureFactory(); }
+    private: static MultiPlayerGameFeatureFactory* instance() { static std::unique_ptr<MultiPlayerGameFeatureFactory> value(new MultiPlayerGameFeatureFactory()); return value.get(); }
 
-    public: static MultiPlayerGameFeatureFactory getInstance(){
+    public: static MultiPlayerGameFeatureFactory* getInstance(){
 
 
 

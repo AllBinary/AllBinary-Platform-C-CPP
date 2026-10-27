@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/role/UserRole.h>
@@ -68,13 +74,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UsersView.h"
+        #include "views/admin/user/UsersView.h"
 
 class UsersValidationView: public UsersView, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: UsersValidationView(TransformInfoInterface transformInfoInterface) : UsersView(transformInfoInterface){
+public: UsersValidationView(TransformInfoInterface* transformInfoInterface) : UsersView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -82,20 +88,20 @@ public: UsersValidationView(TransformInfoInterface transformInfoInterface) : Use
                             //For kotlin this is before the body of the constructor.
                     
 
-    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface();;
+    TransformInfoHttpInterface* httpTransformInfoInterface = dynamic_cast<TransformInfoHttpInterface*>(this->getTransformInfoInterface());;
     
 
-    std::string role = httpTransformInfoInterface.getPropertiesHashMap().get(UserRoleData::NAME.toString());;
+    std::string role = httpTransformInfoInterface->getPropertiesHashMap()->get(UserRoleData::NAME.toString());;
     
 
-    UserRole userRole = UserRoleB::getRole(role);;
+    UserRole* userRole = UserRoleB::getRole(role);;
     
-this->userVector= UserEntityFactory::getInstance().getUsersWithRole(userRole);
+this->userVector= UserEntityFactory::getInstance()->getUsersWithRole(userRole);
     
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
@@ -123,13 +129,13 @@ this->userVector= UserEntityFactory::getInstance().getUsersWithRole(userRole);
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -156,13 +162,13 @@ this->userVector= UserEntityFactory::getInstance().getUsersWithRole(userRole);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -178,7 +184,7 @@ this->userVector= UserEntityFactory::getInstance().getUsersWithRole(userRole);
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -188,7 +194,7 @@ this->userVector= UserEntityFactory::getInstance().getUsersWithRole(userRole);
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

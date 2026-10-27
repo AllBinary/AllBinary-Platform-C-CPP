@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/game/input/PlatformInputMappingFactory.h>
 
       
@@ -51,14 +59,14 @@
         
 class DownTrackballInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static GameKeyCompleteMotionGestureInputEvent getInstance(){
+    public: static GameKeyCompleteMotionGestureInputEvent* getInstance(){
 
-                        if(DownTrackballInputToGameKeyEventAction::instance() == NullUtil::getInstance().NULL_OBJECT)
+                        if(DownTrackballInputToGameKeyEventAction::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    DownTrackballInputToGameKeyEventAction::instance= DownTrackballInputToGameKeyEventAction();
+                                    DownTrackballInputToGameKeyEventAction::instance= new DownTrackballInputToGameKeyEventAction();
     
 
                                     }
@@ -67,12 +75,12 @@ class DownTrackballInputToGameKeyEventAction: public GameKeyCompleteMotionGestur
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DownTrackballInputToGameKeyEventAction::instance();
+                        return dynamic_cast<GameKeyCompleteMotionGestureInputEvent*>(DownTrackballInputToGameKeyEventAction::instance);
     
 }
 
 
-private: DownTrackballInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Down Action", TrackballMotionGestureFactory::getInstance().DOWN, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping()){
+private: DownTrackballInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Down Action", TrackballMotionGestureFactory::getInstance()->DOWN, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
 
                         //super/this constructor call is in the constructor initializer list.
                     

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/input/automation/actions/script/condition/processors/BasicProfileActionScriptProcessor.h>
@@ -47,12 +53,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProfileActionScriptOutputInterface.h"
-#include "GenericProfileActionScriptOutputData.h"
+        #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ProfileActionScriptOutputInterface.h"
+#include "org/allbinary/input/automation/module/actions/script/condition/processors/output/GenericProfileActionScriptOutputData.h"
 
 class BasicProfileActionScriptOutput: public BasicProfileActionScriptProcessor, public ProfileActionScriptOutputInterface {
 
-public: BasicProfileActionScriptOutput(std::string label, Node node) : BasicProfileActionScriptProcessor(label, node){
+public: BasicProfileActionScriptOutput(std::string label, Node* node) : BasicProfileActionScriptProcessor(label, node){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -74,9 +80,9 @@ public: BasicProfileActionScriptOutput(std::string label) : BasicProfileActionSc
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = document.createElement(GenericProfileActionScriptOutputData::NAME);;
+    Node* node = document->createElement(GenericProfileActionScriptOutputData::NAME);;
     
 
 

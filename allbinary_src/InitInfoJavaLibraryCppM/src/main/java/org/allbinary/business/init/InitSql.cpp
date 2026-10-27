@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -118,21 +124,21 @@ class InitSql
             : public Object
          {
 
-    protected: const StringUtil stringUtil = StringUtil::getInstance();
+    protected: StringUtil* stringUtil = StringUtil::getInstance();
 
-    protected: const CommonSeps commonSeps = CommonSeps::getInstance();
+    protected: CommonSeps* commonSeps = CommonSeps::getInstance();
 
-    protected: const SqlTypeStrings sqlTypeStrings = SqlTypeStrings::getInstance();
+    protected: SqlTypeStrings* sqlTypeStrings = SqlTypeStrings::getInstance();
 
-    protected: const SqlStrings sqlStrings = SqlStrings::getInstance();
+    protected: SqlStrings* sqlStrings = SqlStrings::getInstance();
 
-    protected: const StdUtil stdUtil = StdUtil::getInstance();
+    protected: StdUtil* stdUtil = StdUtil::getInstance();
 
     protected: const std::string INSERT = "insert";
 
     protected: const std::string UPDATE = "update";
 
-    private: DbConnectionInfo databaseConnectionInfoInterface;
+    private: DbConnectionInfo* databaseConnectionInfoInterface;
 
     private: std::string userid;
 
@@ -140,7 +146,7 @@ class InitSql
 
     private: std::string tableName;
 
-    private: Connection conn;
+    private: Connection* conn;
 
     private: bool useridAndPassword= false;
 
@@ -150,7 +156,7 @@ class InitSql
 
     private: const std::string INIT_SQL = "InitSql";
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: const std::string EQUAL_QUOTE = "=\"";
 
@@ -164,7 +170,7 @@ class InitSql
 
     private: const std::string INSERT_END = "')";
 
-public: InitSql(DbConnectionInfo databaseConnectionInfoInterface){
+public: InitSql(DbConnectionInfo* databaseConnectionInfoInterface){
 this->setDatabaseConnectionInfoInterface(databaseConnectionInfoInterface);
     
 }
@@ -176,7 +182,7 @@ this->tableName= tableName;
 }
 
 
-    public: void setDatabaseConnectionInfoInterface(DbConnectionInfo databaseConnectionInfoInterface){
+    public: void setDatabaseConnectionInfoInterface(DbConnectionInfo* databaseConnectionInfoInterface){
 this->databaseConnectionInfoInterface= databaseConnectionInfoInterface;
     
 }
@@ -186,13 +192,13 @@ this->databaseConnectionInfoInterface= databaseConnectionInfoInterface;
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Creating Table: ");
+stringBuffer->append("Creating Table: ");
     
-stringBuffer.append(tableData);
+stringBuffer->append(tableData);
     
-PreLogUtil::put(stringBuffer.toString(), INIT_SQL, "createTable()");
+PreLogUtil::put(stringBuffer->toString(), INIT_SQL, "createTable()");
     
 this->executeSQLStatement(tableData);
     
@@ -204,13 +210,13 @@ this->executeSQLStatement(tableData);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    PreLogUtil::putOE(this->commonStrings.EXCEPTION, INIT_SQL, "createTable()", e);
+                                    PreLogUtil::putOE(this->commonStrings->EXCEPTION, INIT_SQL, "createTable()", &e);
     
 
                                     }
@@ -228,7 +234,7 @@ this->executeSQLStatement(tableData);
 
     public: bool dropTable(){
 
-    std::string sqlStatement = this->sqlStrings.DROP_TABLE +this->tableName;;
+    std::string sqlStatement = this->sqlStrings->DROP_TABLE +this->tableName;;
     
 
         try {
@@ -242,13 +248,13 @@ this->executeSQLStatement(tableData);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    PreLogUtil::putOE(this->commonStrings.EXCEPTION, INIT_SQL, "dropTables()", e);
+                                    PreLogUtil::putOE(this->commonStrings->EXCEPTION, INIT_SQL, "dropTables()", &e);
     
 
                                     }
@@ -264,28 +270,28 @@ this->executeSQLStatement(tableData);
 }
 
 
-    public: HashMap<Object*, Object*> getRow(HashMap<Object*, Object*> keysAndValues){
+    public: HashMap<Object*, Object*>* getRow(HashMap<Object*, Object*>* keysAndValues){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->sqlStrings.SELECT_ALL_FROM);
+stringBuffer->append(this->sqlStrings->SELECT_ALL_FROM);
     
-stringBuffer.append(this->tableName);
+stringBuffer->append(this->tableName);
     
-stringBuffer.append(this->sqlStrings.WHERE);
+stringBuffer->append(this->sqlStrings->WHERE);
     
 
         try {
             
-    HashMap<Object*, Object*> result = 
+    HashMap<Object*, Object*>* result = 
                 null
             ;;
     
 
-    Set set = keysAndValues.keySet();;
+    Set* set = keysAndValues->keySet();;
     
 
-    std::vector<Object*> keyArray = set.toArray();;
+    std::vector<Object*> keyArray = set->toArray();;
     
 
     int32_t size = keyArray.size();;
@@ -303,19 +309,19 @@ stringBuffer.append(this->sqlStrings.WHERE);
 
     std::string value = .toCharArray();;
     
-stringBuffer.append(key);
+stringBuffer->append(key);
     
-stringBuffer.append(this->sqlStrings.EQUAL_QUOTE);
+stringBuffer->append(this->sqlStrings->EQUAL_QUOTE);
     
-stringBuffer.append(this->getValue(value));
+stringBuffer->append(this->getValue(value));
     
-stringBuffer.append(this->sqlStrings.CLOSE_QUOTE);
+stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
     
 
                         if(i < size -1)
                         
                                     {
-                                    stringBuffer.append(this->sqlStrings.AND);
+                                    stringBuffer->append(this->sqlStrings->AND);
     
 
                                     }
@@ -323,30 +329,30 @@ stringBuffer.append(this->sqlStrings.CLOSE_QUOTE);
 }
 
 
-    std::string sqlStatement = stringBuffer.toString();;
+    std::string sqlStatement = stringBuffer->toString();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    PreLogUtil::put(this->sqlStrings.SQL_STATEMENT_LABEL +sqlStatement, this->INIT_SQL, this->METHOD_GET_ROW);
+                                    PreLogUtil::put(this->sqlStrings->SQL_STATEMENT_LABEL +sqlStatement, this->INIT_SQL, this->METHOD_GET_ROW);
     
 
                                     }
                                 
 
-    ResultSet rset = this->executeSQLStatement(sqlStatement);;
+    ResultSet* rset = this->executeSQLStatement(sqlStatement);;
     
 
-    ResultSetMetaData resultSetMetaData = rset.getMetaData();;
+    ResultSetMetaData* resultSetMetaData = rset->getMetaData();;
     
 
-        while(rset.next())
+        while(rset->next())
         {
-result= stdUtil.createHashMap();
+result= stdUtil->createHashMap();
     
 
-    int32_t columnCount = resultSetMetaData.getColumnCount();;
+    int32_t columnCount = resultSetMetaData->getColumnCount();;
     
 
 
@@ -356,20 +362,20 @@ result= stdUtil.createHashMap();
     int32_t index = 1;index <= columnCount; index++)
         {
 
-    std::string columnName = resultSetMetaData.getColumnName(index);;
+    std::string columnName = resultSetMetaData->getColumnName(index);;
     
 
-    std::string field = rset.getString(columnName);;
+    std::string field = rset->getString(columnName);;
     
-result.put(columnName, field);
+result->put(columnName, field);
     
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    PreLogUtil::put(this->ROW_VALUE_LABEL +result.toString(), this->INIT_SQL, this->METHOD_GET_ROW);
+                                    PreLogUtil::put(this->ROW_VALUE_LABEL +result->toString(), this->INIT_SQL, this->METHOD_GET_ROW);
     
 
                                     }
@@ -383,7 +389,7 @@ result.put(columnName, field);
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     PreLogUtil::put(this->NO_RESULTS_IN_RESULT_SET, this->INIT_SQL, this->METHOD_GET_ROW);
@@ -399,13 +405,13 @@ result.put(columnName, field);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    PreLogUtil::putOE(this->FAILED_SQL_STATEMENT +stringBuffer, this->INIT_SQL, this->METHOD_GET_ROW, e);
+                                    PreLogUtil::putOE(this->FAILED_SQL_STATEMENT +stringBuffer, this->INIT_SQL, this->METHOD_GET_ROW, &e);
     
 
                                     }
@@ -422,20 +428,20 @@ result.put(columnName, field);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void updateWhere(std::string key, std::string value, HashMap<Object*, Object*> updatedKeyValuePairs){
+    public: void updateWhere(std::string key, std::string value, HashMap<Object*, Object*>* updatedKeyValuePairs){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->sqlStrings.UPDATE);
+stringBuffer->append(this->sqlStrings->UPDATE);
     
-stringBuffer.append(this->tableName);
+stringBuffer->append(this->tableName);
     
-stringBuffer.append(this->sqlStrings.SET);
+stringBuffer->append(this->sqlStrings->SET);
     
 
         try {
             
-    std::vector<Object*> columnArray = updatedKeyValuePairs.keySet().();;
+    std::vector<Object*> columnArray = updatedKeyValuePairs->keySet()->();;
     
 
     int32_t size = columnArray.size();;
@@ -450,20 +456,20 @@ stringBuffer.append(this->sqlStrings.SET);
 
     std::string columnName = columnArray[i].toString();;
     
-stringBuffer.append(this->commonSeps.SPACE);
+stringBuffer->append(this->commonSeps->SPACE);
     
-stringBuffer.append(columnName);
+stringBuffer->append(columnName);
     
-stringBuffer.append(this->EQUAL_QUOTE);
+stringBuffer->append(this->EQUAL_QUOTE);
     
 
-    std::string columnValue = updatedKeyValuePairs.get(columnName);;
+    std::string columnValue = updatedKeyValuePairs->get(columnName);;
     
 
                         if(false)
                         
                                     {
-                                    columnValue= this->stringUtil.EMPTY_STRING;
+                                    columnValue= this->stringUtil->EMPTY_STRING;
     
 
                                     }
@@ -472,38 +478,38 @@ stringBuffer.append(this->EQUAL_QUOTE);
                             
                         }
                             
-stringBuffer.append(this->getValue(columnValue));
+stringBuffer->append(this->getValue(columnValue));
     
-stringBuffer.append(this->sqlStrings.CLOSE_QUOTE);
+stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
     
 
                         if(i < size -1)
                         
                                     {
-                                    stringBuffer.append(this->commonSeps.COMMA);
+                                    stringBuffer->append(this->commonSeps->COMMA);
     
 
                                     }
                                 
 }
 
-stringBuffer.append(this->sqlStrings.WHERE);
+stringBuffer->append(this->sqlStrings->WHERE);
     
-stringBuffer.append(key);
+stringBuffer->append(key);
     
-stringBuffer.append(this->sqlStrings.EQUAL_QUOTE);
+stringBuffer->append(this->sqlStrings->EQUAL_QUOTE);
     
-stringBuffer.append(this->getValue(value));
+stringBuffer->append(this->getValue(value));
     
-stringBuffer.append(this->sqlStrings.CLOSE_QUOTE);
+stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
     
 
-    std::string sqlStatement = stringBuffer.toString();;
+    std::string sqlStatement = stringBuffer->toString();;
     
 this->executeSQLStatement(sqlStatement);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
                                     PreLogUtil::put(this->SUCCESS_SQL_STATEMENT +sqlStatement, this->INIT_SQL, METHOD_UPDATE_WHERE);
@@ -513,13 +519,13 @@ this->executeSQLStatement(sqlStatement);
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    PreLogUtil::putOE(this->FAILED_SQL_STATEMENT +stringBuffer, this->INIT_SQL, METHOD_UPDATE_WHERE, e);
+                                    PreLogUtil::putOE(this->FAILED_SQL_STATEMENT +stringBuffer, this->INIT_SQL, METHOD_UPDATE_WHERE, &e);
     
 
                                     }
@@ -529,20 +535,20 @@ this->executeSQLStatement(sqlStatement);
 }
 
 
-    public: void insert(BasicArrayList values){
+    public: void insert(BasicArrayList* values){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->sqlStrings.INSERT_INTO);
+stringBuffer->append(this->sqlStrings->INSERT_INTO);
     
-stringBuffer.append(this->tableName);
+stringBuffer->append(this->tableName);
     
-stringBuffer.append(this->sqlStrings.VALUES);
+stringBuffer->append(this->sqlStrings->VALUES);
     
 
         try {
             
-    int32_t size = values.size();;
+    int32_t size = values->size();;
     
 
 
@@ -552,28 +558,28 @@ stringBuffer.append(this->sqlStrings.VALUES);
     int32_t i = 0;i < size -1; i++)
         {
 
-    std::string value = this->getValue(values.get(i));;
+    std::string value = this->getValue(values->get(i));;
     
-stringBuffer.append(value);
+stringBuffer->append(value);
     
-stringBuffer.append(this->sqlStrings.SINGLE_QUOTE_COMMA_SEP);
+stringBuffer->append(this->sqlStrings->SINGLE_QUOTE_COMMA_SEP);
     
 }
 
 
-    std::string value = this->getValue(values.get(values.size() -1));;
+    std::string value = this->getValue(values->get(values->size() -1));;
     
-stringBuffer.append(value);
+stringBuffer->append(value);
     
-stringBuffer.append(this->INSERT_END);
+stringBuffer->append(this->INSERT_END);
     
 
-    std::string sqlStatement = stringBuffer.toString();;
+    std::string sqlStatement = stringBuffer->toString();;
     
 this->executeSQLStatement(sqlStatement);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
                                     PreLogUtil::put(this->SUCCESS_SQL_STATEMENT +sqlStatement, this->INIT_SQL, INSERT);
@@ -583,13 +589,13 @@ this->executeSQLStatement(sqlStatement);
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    PreLogUtil::putOE(this->FAILED_SQL_STATEMENT +stringBuffer.toString(), this->INIT_SQL, INSERT, e);
+                                    PreLogUtil::putOE(this->FAILED_SQL_STATEMENT +stringBuffer->toString(), this->INIT_SQL, INSERT, &e);
     
 
                                     }
@@ -602,14 +608,14 @@ this->executeSQLStatement(sqlStatement);
 
     private: std::string getValue(std::string value){
 
-                        if(StringValidationUtil::getInstance().isEmpty(value))
+                        if(StringValidationUtil::getInstance()->isEmpty(value))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->stringUtil.EMPTY_STRING;
+                        return this->stringUtil->EMPTY_STRING;
     
 
                                     }
@@ -629,7 +635,7 @@ this->executeSQLStatement(sqlStatement);
 
                 //@Throws(Exception.constructor, SQLException.constructor)
             
-    public: ResultSet executeSQLStatement(std::string statement){
+    public: ResultSet* executeSQLStatement(std::string statement){
 
         try {
             
@@ -644,14 +650,14 @@ this->executeSQLStatement(sqlStatement);
                                     }
                                 
 
-    Statement stmt = this->conn.createStatement();;
+    Statement* stmt = this->conn->createStatement();;
     
-stmt.execute(statement);
+stmt->execute(statement);
     
 
-    ResultSet rset = stmt.getResultSet();;
+    ResultSet* rset = stmt->getResultSet();;
     
-stmt.close();
+stmt->close();
     
 
 
@@ -661,13 +667,13 @@ stmt.close();
     
 
                 //: 
-} catch(e) 
+} catch(SQLException& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    PreLogUtil::putOE(this->commonStrings.EXCEPTION, INIT_SQL, "executeSQLStatement()", e);
+                                    PreLogUtil::putOE(this->commonStrings->EXCEPTION, INIT_SQL, "executeSQLStatement()", &e);
     
 
                                     }
@@ -680,13 +686,13 @@ stmt.close();
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    PreLogUtil::putOE(this->commonStrings.EXCEPTION, INIT_SQL, "executeSQLStatement()", e);
+                                    PreLogUtil::putOE(this->commonStrings->EXCEPTION, INIT_SQL, "executeSQLStatement()", &e);
     
 
                                     }
@@ -697,7 +703,7 @@ stmt.close();
                             throw e;
                     
 }
-*/
+
 }
 
 
@@ -710,22 +716,22 @@ stmt.close();
                         if(this->useridAndPassword == true)
                         
                                     {
-                                    this->conn= DriverManager::getConnection(this->databaseConnectionInfoInterface.getUrl(), this->userid, this->password);
+                                    this->conn= DriverManager::getConnection(this->databaseConnectionInfoInterface->getUrl(), this->userid, this->password);
     
 
                                     }
                                 
                         else {
-                            this->conn= DriverManager::getConnection(this->databaseConnectionInfoInterface.getUrl());
+                            this->conn= DriverManager::getConnection(this->databaseConnectionInfoInterface->getUrl());
     
 
                         }
                             
 
                 //: 
-} catch(se) 
+} catch(SQLException& se) 
             {
-PreLogUtil::putOE(this->commonStrings.EXCEPTION, INIT_SQL, "createConnection()", se);
+PreLogUtil::putOE(this->commonStrings->EXCEPTION, INIT_SQL, "createConnection()", &se);
     
 
 
@@ -745,21 +751,21 @@ PreLogUtil::putOE(this->commonStrings.EXCEPTION, INIT_SQL, "createConnection()",
             
         try {
             
-    std::string jdbcDriver = this->databaseConnectionInfoInterface.getJdbcDriver();;
+    std::string jdbcDriver = this->databaseConnectionInfoInterface->getJdbcDriver();;
     
-PreLogUtil::put(StringMaker().append("Loading DbConnnectionInfo: ").append(this->databaseConnectionInfoInterface.constructor.name.toString()).append(" Driver: ").append(jdbcDriver).toString(), this->INIT_SQL, "initialize()");
+PreLogUtil::put((new StringMaker())->append("Loading DbConnnectionInfo: ")->append(this->databaseConnectionInfoInterface->getClass()->getName())->append(" Driver: ")->append(jdbcDriver)->toString(), this->INIT_SQL, "initialize()");
     
-Class::forName(jdbcDriver).newInstance();
+Class::forName(jdbcDriver)->newInstance();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    PreLogUtil::putOE("LoadDriver Failed: " +this->databaseConnectionInfoInterface.getJdbcDriver(), this->INIT_SQL, "initialize()", e);
+                                    PreLogUtil::putOE("LoadDriver Failed: " +this->databaseConnectionInfoInterface->getJdbcDriver(), this->INIT_SQL, "initialize()", &e);
     
 
                                     }
@@ -784,13 +790,13 @@ this->createConnection();
     
 
                 //: 
-} catch(se) 
+} catch(Exception& se) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    PreLogUtil::putOE(this->commonStrings.EXCEPTION, INIT_SQL, "initialize()", se);
+                                    PreLogUtil::putOE(this->commonStrings->EXCEPTION, INIT_SQL, "initialize()", &se);
     
 
                                     }
@@ -805,7 +811,7 @@ this->createConnection();
 }
 
 
-    public: DatabaseConnectionInfoInterface getDatabaseConnectionInfoInterface(){
+    public: DatabaseConnectionInfoInterface* getDatabaseConnectionInfoInterface(){
 
 
 

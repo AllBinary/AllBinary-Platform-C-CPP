@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,15 +79,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AuthenticationHelper.h"
+        #include "admin/taghelpers/AuthenticationHelper.h"
 
 class AuthenticationHelperUtil
             : public Object
          {
 
-    private: static AuthenticationHelperUtil instance() { return AuthenticationHelperUtil(); }
+    private: static AuthenticationHelperUtil* instance() { static std::unique_ptr<AuthenticationHelperUtil> value(new AuthenticationHelperUtil()); return value.get(); }
 
-    public: static AuthenticationHelperUtil getInstance(){
+    public: static AuthenticationHelperUtil* getInstance(){
 
 
 
@@ -91,47 +97,47 @@ class AuthenticationHelperUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: bool isAuthorized(AuthenticationHelper authenticationHelper, std::string filePath){
+    public: bool isAuthorized(AuthenticationHelper* authenticationHelper, std::string filePath){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.putF(CommonLabels::getInstance().START +filePath, this, "isAuthorized()");
+                                    this->logUtil->putF(CommonLabels::getInstance()->START +filePath, this, "isAuthorized()");
     
 
                                     }
                                 
 
-    int32_t endIndex = HttpRequestUtil::getInstance().getLastSeparatorIndex(filePath);;
+    int32_t endIndex = HttpRequestUtil::getInstance()->getLastSeparatorIndex(filePath);;
     
 
-    AbPath fullPath = AbPath(URLGLOBALS::getWebappPath() +filePath.substring(0, endIndex), StringUtil::getInstance().EMPTY_STRING);;
+    AbPath* fullPath = new AbPath(URLGLOBALS::getWebappPath() +JavaString::substring(filePath, 0, endIndex), StringUtil::getInstance()->EMPTY_STRING);;
     
 
-    HttpFilePermissions downloadFilePermissions = HttpFilePermissions(fullPath);;
+    HttpFilePermissions* downloadFilePermissions = new HttpFilePermissions(fullPath);;
     
 
-    BasicArrayList userRoles = downloadFilePermissions.getUserRoles();;
+    BasicArrayList* userRoles = downloadFilePermissions->getUserRoles();;
     
 
-    UserRole userRole = authenticationHelper.getRole();;
+    UserRole* userRole = authenticationHelper->getRole();;
     
 
-    BasicUserRole basicUserRole = userRole.getBasicUserRole();;
+    BasicUserRole* basicUserRole = userRole->getBasicUserRole();;
     
 
-                        if(userRoles.contains(basicUserRole))
+                        if(userRoles->contains(basicUserRole))
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Authorized", this, "isAuthorized()");
+                                    this->logUtil->putF("Authorized", this, "isAuthorized()");
     
 
                                     }
@@ -147,10 +153,10 @@ class AuthenticationHelperUtil
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Not Authorized: " +basicUserRole.toString(), this, "isAuthorized()");
+                                    this->logUtil->putF("Not Authorized: " +basicUserRole->toString(), this, "isAuthorized()");
     
 
                                     }

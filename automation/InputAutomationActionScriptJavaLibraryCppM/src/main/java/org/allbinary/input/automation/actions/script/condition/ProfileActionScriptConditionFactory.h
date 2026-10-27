@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROFILEACTIONSCRIPTCONDITIONFACTORY_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROFILEACTIONSCRIPTCONDITIONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,13 +55,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProfileActionScriptConditionInterface.h"
-#include "ColorAtActionScriptConditionData.h"
-#include "TimeIntervalActionScriptConditionData.h"
-#include "AlwaysActionScriptConditionData.h"
-#include "AlwaysActionScriptCondition.h"
-#include "TimeIntervalActionScriptCondition.h"
-#include "ColorAtActionScriptCondition.h"
+        #include "org/allbinary/input/automation/actions/script/condition/ProfileActionScriptConditionInterface.h"
+#include "org/allbinary/input/automation/actions/script/condition/ColorAtActionScriptConditionData.h"
+#include "org/allbinary/input/automation/actions/script/condition/TimeIntervalActionScriptConditionData.h"
+#include "org/allbinary/input/automation/actions/script/condition/AlwaysActionScriptConditionData.h"
+#include "org/allbinary/input/automation/actions/script/condition/AlwaysActionScriptCondition.h"
+#include "org/allbinary/input/automation/actions/script/condition/TimeIntervalActionScriptCondition.h"
+#include "org/allbinary/input/automation/actions/script/condition/ColorAtActionScriptCondition.h"
 
 class ProfileActionScriptConditionFactory
             : public Object
@@ -63,7 +69,7 @@ class ProfileActionScriptConditionFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static ProfileActionScriptConditionInterface getInstance(Node node);
+    public: static ProfileActionScriptConditionInterface* getInstance(Node* node);
 
 private: ProfileActionScriptConditionFactory();
 

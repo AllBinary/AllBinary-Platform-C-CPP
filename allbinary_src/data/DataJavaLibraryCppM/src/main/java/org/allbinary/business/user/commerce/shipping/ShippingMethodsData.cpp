@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,23 +49,23 @@ class ShippingMethodsData
             : public Object
          {
 
-    public: static const std::string SHIPPINGMETHODSORDERSUMMARIES = "SHIPPINGMETHODS_ORDERSUMMARIES";
+    public: static inline const std::string SHIPPINGMETHODSORDERSUMMARIES = "SHIPPINGMETHODS_ORDERSUMMARIES";
 
-    public: static const std::string SHIPPINGMETHODORDERSUMMARY = "SHIPPINGMETHOD_ORDERSUMMARY";
+    public: static inline const std::string SHIPPINGMETHODORDERSUMMARY = "SHIPPINGMETHOD_ORDERSUMMARY";
 
-    public: static const std::string SHIPPINGMETHODS = "SHIPPINGMETHODS";
+    public: static inline const std::string SHIPPINGMETHODS = "SHIPPINGMETHODS";
 
-    public: static const std::string NAME = "SHIPPINGMETHODS_NAME";
+    public: static inline const std::string NAME = "SHIPPINGMETHODS_NAME";
 
-    public: static const std::string SHIPPINGCOST = "SHIPPINGMETHOD_SHIPPINGCOST";
+    public: static inline const std::string SHIPPINGCOST = "SHIPPINGMETHOD_SHIPPINGCOST";
 
-    public: static const std::string TAXRATE = "SHIPPINGMETHOD_TAXRATE";
+    public: static inline const std::string TAXRATE = "SHIPPINGMETHOD_TAXRATE";
 
-    public: static const std::string SUBTOTAL = "SHIPPINGMETHOD_SUBTOTAL";
+    public: static inline const std::string SUBTOTAL = "SHIPPINGMETHOD_SUBTOTAL";
 
-    public: static const std::string TAX = "SHIPPINGMETHOD_TAX";
+    public: static inline const std::string TAX = "SHIPPINGMETHOD_TAX";
 
-    public: static const std::string TOTAL = "SHIPPINGMETHOD_TOTAL";
+    public: static inline const std::string TOTAL = "SHIPPINGMETHOD_TOTAL";
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_THREAD_PATHFINDINGTHREADPOOL_H
         #define ORG_ALLBINARY_THREAD_PATHFINDINGTHREADPOOL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Runnable.h"
         
 
@@ -41,24 +47,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ThreadPool.h"
-#include "PriorityRunnable.h"
+        #include "org/allbinary/thread/ThreadPool.h"
+#include "org/allbinary/thread/PriorityRunnable.h"
 //This is mainly for network communications.
 class PathFindingThreadPool: public ThreadPool {
 
-    private: static const ThreadPool instance = PathFindingThreadPool("PathFinding", 1, 1);
+    private: static inline ThreadPool* instance = new PathFindingThreadPool("PathFinding", 1, 1);
 
-    public: static ThreadPool getInstance();
+    public: static ThreadPool* getInstance();
 
 public: PathFindingThreadPool(std::string poolName, int32_t numThreads, int32_t priority);
 
-    public: void runTaskWithPriority(PriorityRunnable task);
+    public: void runTaskWithPriority(PriorityRunnable* task);
 
-    public: void runTask(Runnable task);
+    public: void runTask(Runnable* task);
 
-    protected: void startTask(Runnable task);
+    protected: void startTask(Runnable* task);
 
-    protected: void completedTask(Runnable task);
+    protected: void completedTask(Runnable* task);
 
 };
 

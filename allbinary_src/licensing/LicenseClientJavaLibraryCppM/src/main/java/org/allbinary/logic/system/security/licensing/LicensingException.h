@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSINGEXCEPTION_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSINGEXCEPTION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -44,7 +50,7 @@
         
 class LicensingException: public Exception {
 
-    public: static const int64_t serialVersionUID = 1;
+    public: static inline const int64_t serialVersionUID = 1;
 
 public: LicensingException();
 

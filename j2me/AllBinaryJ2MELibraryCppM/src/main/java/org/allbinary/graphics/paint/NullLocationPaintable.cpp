@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,18 +42,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LocationPaintable.h"
+        #include "org/allbinary/graphics/paint/LocationPaintable.h"
 
 class NullLocationPaintable: public LocationPaintable {
 
-    private: static const NullLocationPaintable instanceC = NullLocationPaintable();
+    private: static NullLocationPaintable* instanceC() { static std::unique_ptr<NullLocationPaintable> value(new NullLocationPaintable()); return value.get(); }
 
-    public: static NullLocationPaintable getInstance(){
+    public: static NullLocationPaintable* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullLocationPaintable::instanceC;
+                        return NullLocationPaintable::instanceC();
     
 }
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AdvancedRTSGameLayer.h>
@@ -64,24 +70,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CustomMapGeneratorBase.h"
-#include "RaceTrackGeographicMap.h"
+        #include "org/allbinary/media/graphics/geography/map/racetrack/CustomMapGeneratorBase.h"
+#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMap.h"
 
 class CustomMapGenerator: public CustomMapGeneratorBase {
 
     private: std::vector<std::vector<int32_t>> customMapArray;
 
-    private: RaceTrackGeographicMap raceTrackGeographicMap;
+    private: RaceTrackGeographicMap* raceTrackGeographicMap;
 
-    private: GeographicMapCellTypeFactory geographicMapCellTypeFactory;
+    private: GeographicMapCellTypeFactory* geographicMapCellTypeFactory;
 
-public: CustomMapGenerator(RaceTrackGeographicMap raceTrackGeographicMap);
+public: CustomMapGenerator(RaceTrackGeographicMap* raceTrackGeographicMap);
 
                 //@Throws(Exception.constructor)
             
     public: void copyMapIntoCustomMap();
 
-    private: const DropCellPositionHistory dropCellPositionHistory = DropCellPositionHistory::getInstance();
+    private: DropCellPositionHistory* dropCellPositionHistory = DropCellPositionHistory::getInstance();
 
                 //@Throws(Exception.constructor)
             

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -72,9 +78,9 @@ class AnimationFactoryImageScaleUtil
             : public Object
          {
 
-    private: static AnimationFactoryImageScaleUtil instance() { return AnimationFactoryImageScaleUtil(); }
+    private: static AnimationFactoryImageScaleUtil* instance() { static std::unique_ptr<AnimationFactoryImageScaleUtil> value(new AnimationFactoryImageScaleUtil()); return value.get(); }
 
-    public: static AnimationFactoryImageScaleUtil getInstance(){
+    public: static AnimationFactoryImageScaleUtil* getInstance(){
 
 
 
@@ -84,13 +90,13 @@ class AnimationFactoryImageScaleUtil
 }
 
 
-    private: const ImageJ2MEScaleUtil imageScaleUtil = ImageJ2MEScaleUtil::getInstance();
+    private: ImageJ2MEScaleUtil* imageScaleUtil = ImageJ2MEScaleUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImage(Image image, int32_t width, int32_t height, int32_t scaleWidth, int32_t scaleHeight){
+    public: Image* createImage(Image* image, int32_t width, int32_t height, int32_t scaleWidth, int32_t scaleHeight){
 
-    Image scaledImage;;
+    Image* scaledImage;;
     
 
                         if(scaleWidth != 0 && scaleHeight != 0)
@@ -118,7 +124,7 @@ class AnimationFactoryImageScaleUtil
 
     int32_t scaledHeight = static_cast<int32_t>((scaleY *height));;
     
-scaledImage= this->imageScaleUtil.scale(image, scaledWidth, scaledHeight);
+scaledImage= this->imageScaleUtil->scale(image, scaledWidth, scaledHeight);
     
 
                         }
@@ -143,22 +149,22 @@ scaledImage= this->imageScaleUtil.scale(image, scaledWidth, scaledHeight);
 
                 //@Throws(Exception.constructor)
             
-    public: void processAdjust(BaseImageAnimationFactory baseImageAnimationFactory){
+    public: void processAdjust(BaseImageAnimationFactory* baseImageAnimationFactory){
 
-    ScaleProperties scaleProperties = baseImageAnimationFactory.getScalePropertiesP();;
+    ScaleProperties* scaleProperties = baseImageAnimationFactory->getScalePropertiesP();;
     
 
-                        if(scaleProperties.scaleWidth != 0 && scaleProperties.scaleHeight != 0)
+                        if(scaleProperties->scaleWidth != 0 && scaleProperties->scaleHeight != 0)
                         
                                     {
                                     
-    AnimationFactoryInitializationVisitor animationFactoryInitializationVisitor = baseImageAnimationFactory.getAnimationFactoryInitializationVisitorP();;
+    AnimationFactoryInitializationVisitor* animationFactoryInitializationVisitor = baseImageAnimationFactory->getAnimationFactoryInitializationVisitorP();;
     
 
-    float scaleX = (scaleProperties.scaleWidth) /(animationFactoryInitializationVisitor.width);;
+    float scaleX = (scaleProperties->scaleWidth) /(animationFactoryInitializationVisitor->width);;
     
 
-    float scaleY = (scaleProperties.scaleHeight) /(animationFactoryInitializationVisitor.height);;
+    float scaleY = (scaleProperties->scaleHeight) /(animationFactoryInitializationVisitor->height);;
     
 
                         if((scaleX == 1.0 && scaleY == 1.0) || (scaleX == 0.0 || scaleY == 0.0))
@@ -168,9 +174,9 @@ scaledImage= this->imageScaleUtil.scale(image, scaledWidth, scaledHeight);
                                     }
                                 
                         else {
-                            animationFactoryInitializationVisitor.dx= static_cast<int32_t>((animationFactoryInitializationVisitor.originalDx *scaleX));
+                            animationFactoryInitializationVisitor->dx= static_cast<int32_t>((animationFactoryInitializationVisitor->originalDx *scaleX));
     
-animationFactoryInitializationVisitor.dy= static_cast<int32_t>((animationFactoryInitializationVisitor.originalDy *scaleY));
+animationFactoryInitializationVisitor->dy= static_cast<int32_t>((animationFactoryInitializationVisitor->originalDy *scaleY));
     
 
                         }

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -76,21 +82,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasketData.h"
+        #include "org/allbinary/business/user/commerce/inventory/basket/BasketData.h"
 
 class BasketReview
             : public Object
          {
 
-    BasicArrayList items = BasicArrayListD();
+    BasicArrayList* items = new BasicArrayListD();
 
 public: BasketReview();
 
-    public: Boolean isValid();
+    public: bool isValid();
 
-    public: void addItem(Item item);
+    public: void addItem(Item* item);
 
-    public: BasicArrayList getItems();
+    public: BasicArrayList* getItems();
 
     public: void removeItem(std::string id);
 
@@ -98,15 +104,15 @@ public: BasketReview();
 
     public: std::string getTotalWeight();
 
-    public: Integer getNumberOfItems();
+    public: int32_t getNumberOfItems();
 
-    public: Set getIds();
+    public: Set* getIds();
 
-    public: Integer getNumberOf(std::string id);
+    public: int32_t getNumberOf(std::string id);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

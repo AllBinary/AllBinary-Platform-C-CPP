@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGN_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGN_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -53,16 +59,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdvertisementCampaignInterface.h"
-#include "AdvertisementCampaignData.h"
+        #include "org/allbinary/business/advertisement/campaign/AdvertisementCampaignInterface.h"
+#include "org/allbinary/business/advertisement/campaign/AdvertisementCampaignData.h"
 
 class AdvertisementCampaign
             : public Object
-        : public AdvertisementCampaignInterface {
+        , public AdvertisementCampaignInterface {
 
-    private: HashMap<Object*, Object*> hashMap;
+    private: HashMap<Object*, Object*>* hashMap;
 
-public: AdvertisementCampaign(HashMap<Object*, Object*> hashMap);
+public: AdvertisementCampaign(HashMap<Object*, Object*>* hashMap);
 
     public: Object* getComponent();
 
@@ -72,7 +78,7 @@ public: AdvertisementCampaign(HashMap<Object*, Object*> hashMap);
 
     public: void setName(std::string name);
 
-    public: AdvertisementsInterface search(AdvertisementSearchInterface advertisementSearchInterface);
+    public: AdvertisementsInterface* search(AdvertisementSearchInterface* advertisementSearchInterface);
 
 };
 

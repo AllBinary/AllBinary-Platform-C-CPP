@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_PAYMENT_GATEWAY_PAYMENTGATEWAYCOMPONENT_H
         #define VIEWS_ADMIN_PAYMENT_GATEWAY_PAYMENTGATEWAYCOMPONENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h>
@@ -68,11 +74,11 @@
         
 class PaymentGatewayComponent: public HttpStoreComponentView {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: PaymentGatewayInterface paymentGatewayInterface;
+    private: PaymentGatewayInterface* paymentGatewayInterface;
 
-public: PaymentGatewayComponent(TransformInfoInterface transformInfoInterface, PaymentGatewayInterface paymentGatewayInterface);
+public: PaymentGatewayComponent(TransformInfoInterface* transformInfoInterface, PaymentGatewayInterface* paymentGatewayInterface);
 
                 //@Throws(Exception.constructor)
             

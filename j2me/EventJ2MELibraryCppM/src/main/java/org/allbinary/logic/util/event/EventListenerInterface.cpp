@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -42,11 +48,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryEventObject.h"
+        #include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
 
 class EventListenerInterface {
 
-    void onEvent(AllBinaryEventObject eventObject)
+    public: virtual void onEvent(AllBinaryEventObject* eventObject) = 0;
 
 };
 

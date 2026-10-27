@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/Animation.h>
@@ -65,23 +71,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicWeaponPart.h"
+        #include "org/allbinary/game/part/weapon/BasicWeaponPart.h"
 
 class BasicProjectileWeaponPart: public BasicWeaponPart {
 
-    public: static BasicProjectileWeaponPart createBasicProjectileWeaponPart(Animation animationInterface, WeaponLayerCircularPool weaponLayerCircularStaticPool){
+    public: static BasicProjectileWeaponPart* createBasicProjectileWeaponPart(Animation* animationInterface, WeaponLayerCircularPool* weaponLayerCircularStaticPool){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicProjectileWeaponPart(animationInterface, AllBinaryLayer::NULL_ALLBINARY_LAYER, weaponLayerCircularStaticPool, WeaponProperties::NULL_WEAPON_PROPERTIES, NoScoreable::getInstance(), RelativeRelationship::NULL_RELATIVE_RELATIONSHIP);
+                        return new BasicProjectileWeaponPart(animationInterface, AllBinaryLayer::NULL_ALLBINARY_LAYER, weaponLayerCircularStaticPool, WeaponProperties::NULL_WEAPON_PROPERTIES, NoScoreable::getInstance(), RelativeRelationship::NULL_RELATIVE_RELATIONSHIP);
     
 }
 
 
-    private: WeaponLayerCircularPool weaponLayerCircularStaticPool;
+    private: WeaponLayerCircularPool* weaponLayerCircularStaticPool;
 
-public: BasicProjectileWeaponPart(Animation animationInterface, AllBinaryLayer sourceLayerInterface, WeaponLayerCircularPool weaponLayerCircularStaticPool, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface, RelativeRelationship relativeRelationship) : BasicWeaponPart(animationInterface, sourceLayerInterface, weaponProperties, scoreableInterface, relativeRelationship){
+public: BasicProjectileWeaponPart(Animation* animationInterface, AllBinaryLayer* sourceLayerInterface, WeaponLayerCircularPool* weaponLayerCircularStaticPool, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship) : BasicWeaponPart(animationInterface, sourceLayerInterface, weaponProperties, scoreableInterface, relativeRelationship){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -95,11 +101,11 @@ this->weaponLayerCircularStaticPool= weaponLayerCircularStaticPool;
 
                 //@Throws(Exception.constructor)
             
-    public: void processScore(AllBinaryLayerManager allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface){
+    public: void processScore(AllBinaryLayerManager* allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface){
 
-    WeaponLayer weaponLayer = this->weaponLayerCircularStaticPool.getInstanceWeaponLayer(this->getOwnerLayerInterface(), this->relativeRelationship.getX(), this->relativeRelationship.getY(), this->relativeRelationship.getZ(), static_cast<int32_t>(angle), static_cast<int32_t>(otherAngle), weaponProperties, scoreableInterface);;
+    WeaponLayer* weaponLayer = this->weaponLayerCircularStaticPool->getInstanceWeaponLayer(this->getOwnerLayerInterface(), this->relativeRelationship.getX(), this->relativeRelationship.getY(), this->relativeRelationship.getZ(), static_cast<int32_t>(angle), static_cast<int32_t>(otherAngle), weaponProperties, scoreableInterface);;
     
-allbinaryLayerManager.append(weaponLayer);
+allbinaryLayerManager->append(weaponLayer);
     
 }
 

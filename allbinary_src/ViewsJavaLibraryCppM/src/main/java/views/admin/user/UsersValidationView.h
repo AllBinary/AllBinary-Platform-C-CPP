@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_USER_USERSVALIDATIONVIEW_H
         #define VIEWS_ADMIN_USER_USERSVALIDATIONVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/role/UserRole.h>
@@ -71,21 +77,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UsersView.h"
+        #include "views/admin/user/UsersView.h"
 
 class UsersValidationView: public UsersView, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: UsersValidationView(TransformInfoInterface transformInfoInterface);
+public: UsersValidationView(TransformInfoInterface* transformInfoInterface);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string validationInfo();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
 };
 

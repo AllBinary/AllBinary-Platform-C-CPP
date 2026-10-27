@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -104,28 +110,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicMenuInputProcessor.h"
-#include "CommandRunnable.h"
+        #include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
+#include "org/allbinary/game/displayable/canvas/CommandRunnable.h"
 //In general allow scrolling of the menu and selection the center item
 class CommandFormInputProcessor: public BasicMenuInputProcessor {
 
-    private: const int32_t MOTION_GESTURE_SOURCE_ID = GameKeyEventFactory::getInstance().MOTION_GESTURE_SOURCE_ID;
+    private: const int32_t MOTION_GESTURE_SOURCE_ID = GameKeyEventFactory::getInstance()->MOTION_GESTURE_SOURCE_ID;
 
     private: const int32_t CLICK_DELAY = 150;
 
-    private: const TimeDelayHelper clickTimeHelper = TimeDelayHelper(this->CLICK_DELAY);
+    private: TimeDelayHelper* clickTimeHelper = new TimeDelayHelper(this->CLICK_DELAY);
 
     private: const int32_t DOUBLE_CLICK_DELAY = 1200;
 
-    private: const TimeDelayHelper doubleClickTimeHelper = TimeDelayHelper(this->DOUBLE_CLICK_DELAY);
+    private: TimeDelayHelper* doubleClickTimeHelper = new TimeDelayHelper(this->DOUBLE_CLICK_DELAY);
 
-    protected: const bool isSingleKeyProcessing = InputFeatureFactory::getInstance().isSingleKeyProcessing();
+    protected: const bool isSingleKeyProcessing = InputFeatureFactory::getInstance()->isSingleKeyProcessing();
 
-    private: ScrollSelectionForm form;
+    private: ScrollSelectionForm* form;
 
     private: bool hasPressed = false;
 
-public: CommandFormInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, MyCanvas gameCanvas, ScrollSelectionForm form) : BasicMenuInputProcessor(gameKeyEventList, playerInputId, gameCanvas){
+public: CommandFormInputProcessor(BasicArrayList* gameKeyEventList, int32_t playerInputId, MyCanvas* gameCanvas, ScrollSelectionForm* form) : BasicMenuInputProcessor(gameKeyEventList, playerInputId, gameCanvas){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -144,9 +150,9 @@ this->form= form;
                         if(key == Canvas::LEFT || key == Canvas::RIGHT || key == Canvas::UP || key == Canvas::DOWN)
                         
                                     {
-                                    PrimaryPlayerQueueFactory::getInstance().add(SelectSound::getInstance());
+                                    PrimaryPlayerQueueFactory::getInstance()->add(SelectSound::getInstance());
     
-this->form.processInputKey(key);
+this->form->processInputKey(key);
     
 
 
@@ -161,7 +167,7 @@ this->form.processInputKey(key);
                         if(key == Canvas::FIRE)
                         
                                     {
-                                    PrimaryPlayerQueueFactory::getInstance().add(SelectSound::getInstance());
+                                    PrimaryPlayerQueueFactory::getInstance()->add(SelectSound::getInstance());
     
 
 
@@ -185,36 +191,36 @@ this->form.processInputKey(key);
 
     private: int32_t processCommand(){
 
-    CommandCurrentSelectionForm commandCurrentSelectionForm = this->form;;
+    CommandCurrentSelectionForm* commandCurrentSelectionForm = dynamic_cast<CommandCurrentSelectionForm*>(this->form);;
     
 
-    Command command = commandCurrentSelectionForm.getSelectedCommand();;
+    Command* command = commandCurrentSelectionForm->getSelectedCommand();;
     
-this->logUtil.putF(command.toString(), this, this->PROCESS_COMMAND);
-    
-
-    Features features = Features::getInstance();;
+this->logUtil.putF(command->toString(), this, this->PROCESS_COMMAND);
     
 
-    OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-                        if(SWTUtil::isSWT && features.isFeature(openGLFeatureFactory.OPENGL) && command != GameCommandsFactory::getInstance().EXIT_COMMAND)
+    OpenGLFeatureFactory* openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
+    
+
+                        if(SWTUtil::isSWT && features->isFeature(openGLFeatureFactory->OPENGL) && command != GameCommandsFactory::getInstance()->EXIT_COMMAND)
                         
                                     {
-                                    CommandRunnable(this, command).run();
+                                    (new CommandRunnable(this, command))->run();
     
 
                                     }
                                 
                         else {
-                            PrimaryThreadPool::getInstance().runTask(CommandRunnable(this, command));
+                            PrimaryThreadPool::getInstance()->runTask(new CommandRunnable(this, command));
     
 
                         }
                             
 
-                        if(command == GameCommandsFactory::getInstance().QUIT_COMMAND)
+                        if(command == GameCommandsFactory::getInstance()->QUIT_COMMAND)
                         
                                     {
                                     
@@ -248,16 +254,16 @@ this->logUtil.putF(command.toString(), this, this->PROCESS_COMMAND);
     int32_t motionInputsIndex = this->processMotionInputs();;
     
 
-    BasicArrayList list = this->getGameKeyEventList();;
+    BasicArrayList* list = this->getGameKeyEventList();;
     
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
     int32_t key = 0;;
     
 
-    GameKeyEvent gameKeyEvent;;
+    GameKeyEvent* gameKeyEvent;;
     
 
 
@@ -266,12 +272,12 @@ this->logUtil.putF(command.toString(), this, this->PROCESS_COMMAND);
                         for (
     int32_t index = 0;index < size; index++)
         {
-gameKeyEvent= list.objectArray[index];
+gameKeyEvent= dynamic_cast<GameKeyEvent*>(list->objectArray[index]);
     
-key= gameKeyEvent.getKey();
+key= gameKeyEvent->getKey();
     
 
-                        if(gameKeyEvent.getSourceId() != this->MOTION_GESTURE_SOURCE_ID)
+                        if(gameKeyEvent->getSourceId() != this->MOTION_GESTURE_SOURCE_ID)
                         
                                     {
                                     
@@ -316,9 +322,9 @@ this->clear();
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PROCESS_INPUT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PROCESS_INPUT, &e);
     
 
 
@@ -342,7 +348,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PR
                         
                                     {
                                     
-    MotionGestureEvent motionGestureEvent = this->motionGestureEventList.objectArray[lastIndex];;
+    MotionGestureEvent* motionGestureEvent = dynamic_cast<MotionGestureEvent*>(this->motionGestureEventList.objectArray[lastIndex]);;
     
 this->processMotionInput(motionGestureEvent);
     
@@ -362,39 +368,39 @@ this->motionGestureEventList.clear();
 
                 //@Throws(Exception.constructor)
             
-    protected: void processMotionInput(MotionGestureEvent motionGestureEvent){
+    protected: void processMotionInput(MotionGestureEvent* motionGestureEvent){
 
-    TouchMotionGestureFactory touchMotionGestureFactory = TouchMotionGestureFactory::getInstance();;
+    TouchMotionGestureFactory* touchMotionGestureFactory = TouchMotionGestureFactory::getInstance();;
     
 
-    MotionGestureInput motionGestureInput = motionGestureEvent.getMotionGesture();;
+    MotionGestureInput* motionGestureInput = motionGestureEvent->getMotionGesture();;
     
 
-                        if(motionGestureInput == touchMotionGestureFactory.RELEASED)
+                        if(motionGestureInput == touchMotionGestureFactory->RELEASED)
                         
                                     {
                                     
-    GPoint point = motionGestureEvent.getCurrentPoint();;
+    GPoint* point = motionGestureEvent->getCurrentPoint();;
     
 
-                        if(this->form.isInForm(point))
+                        if(this->form->isInForm(point))
                         
                                     {
                                     
-    int32_t index = this->form.getSelectedIndexForPoint(point);;
+    int32_t index = this->form->getSelectedIndexForPoint(point);;
     
 
                         if(index !=  -1)
                         
                                     {
-                                    PrimaryPlayerQueueFactory::getInstance().add(SelectSound::getInstance());
+                                    PrimaryPlayerQueueFactory::getInstance()->add(SelectSound::getInstance());
     
 
-                        if(index == this->form.getSelectedIndex())
+                        if(index == this->form->getSelectedIndex())
                         
                                     {
                                     
-                        if(this->clickTimeHelper.isTimeTNT())
+                        if(this->clickTimeHelper->isTimeTNT())
                         
                                     {
                                     this->processCommand();
@@ -406,7 +412,7 @@ this->motionGestureEventList.clear();
                                     }
                                 
                         else {
-                            this->form.setSelectedIndex(index);
+                            this->form->setSelectedIndex(index);
     
 
                         }
@@ -426,7 +432,7 @@ this->motionGestureEventList.clear();
                         
                                     {
                                     
-                        if(!this->doubleClickTimeHelper.isTimeTNT())
+                        if(!this->doubleClickTimeHelper->isTimeTNT())
                         
                                     {
                                     this->logUtil.putF("Double Press", this, this->gameInputStrings.PROCESS_MOTION_INPUT);
@@ -436,9 +442,9 @@ this->processCommand();
 
                                     }
                                 
-this->doubleClickTimeHelper.delay= this->DOUBLE_CLICK_DELAY;
+this->doubleClickTimeHelper->delay= this->DOUBLE_CLICK_DELAY;
     
-this->doubleClickTimeHelper.setStartTimeTNT();
+this->doubleClickTimeHelper->setStartTimeTNT();
     
 
                                     }
@@ -449,10 +455,10 @@ this->hasPressed= false;
                                     }
                                 
                              else 
-                        if(motionGestureInput == touchMotionGestureFactory.PRESSED)
+                        if(motionGestureInput == touchMotionGestureFactory->PRESSED)
                         
                                     {
-                                    this->doubleClickTimeHelper.delay= 0;
+                                    this->doubleClickTimeHelper->delay= 0;
     
 this->hasPressed= true;
     
@@ -469,7 +475,7 @@ this->hasPressed= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().append(super.toString()).append(this->NAME_LABEL).append(this->form.toString()).toString();;
+                        return (new StringMaker())->append(super.toString())->append(this->NAME_LABEL)->append(this->form->toString())->toString();;
     
 }
 

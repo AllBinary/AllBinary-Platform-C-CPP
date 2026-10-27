@@ -9,6 +9,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/GPoint.h>
@@ -56,31 +64,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ABCustomForm.h"
-#include "FormTypeFactory.h"
-#include "FormType.h"
+        #include "org/allbinary/graphics/form/ABCustomForm.h"
+#include "org/allbinary/graphics/form/FormTypeFactory.h"
+#include "org/allbinary/graphics/form/FormType.h"
 
 class PaintableForm: public ABCustomForm {
 
-    private: static Object* NULL_PAINTABLE_FORM = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* NULL_PAINTABLE_FORM = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static PaintableForm getNullPaintableForm();
+    public: static PaintableForm* getNullPaintableForm();
 
-    protected: const CanvasStrings canvasStrings = CanvasStrings::getInstance();
+    protected: CanvasStrings* canvasStrings = CanvasStrings::getInstance();
 
-    protected: Rectangle rectangle = RectangleFactory::SINGLETON;
+    protected: Rectangle* rectangle = RectangleFactory::SINGLETON;
 
     protected: int32_t x= 0;
 
     protected: int32_t y= 0;
 
-    protected: FormType formType = FormTypeFactory::getInstance().NULL_FORM_TYPE;
+    protected: FormType* formType = FormTypeFactory::getInstance()->NULL_FORM_TYPE;
 
-public: PaintableForm(std::string title, std::vector<ABCustomItem> items, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: PaintableForm(std::string title, std::vector<ABCustomItem*> items, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
                 //@Throws(Exception.constructor)
             
-    public: void init(Rectangle rectangle, FormType formType);
+    public: void init(Rectangle* rectangle, FormType* formType);
 
     public: int32_t getWidth();
 

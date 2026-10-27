@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_GAMEMOTIONGESTURELISTENER_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_GAMEMOTIONGESTURELISTENER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,51 +79,51 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionGestureEventListener.h"
-#include "CompleteMotionGestureListenerInterface.h"
-#include "MotionGestureEvent.h"
+        #include "org/allbinary/input/motion/gesture/observer/MotionGestureEventListener.h"
+#include "org/allbinary/input/motion/gesture/observer/CompleteMotionGestureListenerInterface.h"
+#include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
 
 class GameMotionGestureListener
             : public Object
-        : public MotionGestureEventListener {
+        , public MotionGestureEventListener {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: BasicArrayList motionGestureCollection = BasicArrayListD();
+    private: BasicArrayList* motionGestureCollection = new BasicArrayListD();
 
-    private: BasicArrayList touchGestureCollection = BasicArrayListD();
+    private: BasicArrayList* touchGestureCollection = new BasicArrayListD();
 
-    private: CompleteMotionGestureListenerInterface signed;
+    private: CompleteMotionGestureListenerInterface* signed_;
 
-public: GameMotionGestureListener(CompleteMotionGestureListenerInterface signed);
+public: GameMotionGestureListener(CompleteMotionGestureListenerInterface* signed_);
 
-    public: void onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject* eventObject);
 
-    public: void onUpMotionGestureEvent(MotionGestureEvent ev);
+    public: void onUpMotionGestureEvent(MotionGestureEvent* ev);
 
-    public: void onDownMotionGestureEvent(MotionGestureEvent ev);
+    public: void onDownMotionGestureEvent(MotionGestureEvent* ev);
 
-    public: void onLeftMotionGestureEvent(MotionGestureEvent ev);
+    public: void onLeftMotionGestureEvent(MotionGestureEvent* ev);
 
-    public: void onRightMotionGestureEvent(MotionGestureEvent ev);
+    public: void onRightMotionGestureEvent(MotionGestureEvent* ev);
 
-    public: void onDiagonalDownRightMotionGestureEvent(MotionGestureEvent ev);
+    public: void onDiagonalDownRightMotionGestureEvent(MotionGestureEvent* ev);
 
-    public: void onDiagonalDownLeftMotionGestureEvent(MotionGestureEvent ev);
+    public: void onDiagonalDownLeftMotionGestureEvent(MotionGestureEvent* ev);
 
-    public: void onDiagonalUpRightMotionGestureEvent(MotionGestureEvent ev);
+    public: void onDiagonalUpRightMotionGestureEvent(MotionGestureEvent* ev);
 
-    public: void onDiagonalUpLeftMotionGestureEvent(MotionGestureEvent ev);
+    public: void onDiagonalUpLeftMotionGestureEvent(MotionGestureEvent* ev);
 
-    public: void onPressedMotionGestureEvent(MotionGestureEvent ev);
+    public: void onPressedMotionGestureEvent(MotionGestureEvent* ev);
 
-    public: void released(MotionGestureEvent ev);
+    public: void released(MotionGestureEvent* ev);
 
-    public: void onScrolledMotionGestureEvent(MotionGestureEvent motionGestureEvent);
+    public: void onScrolledMotionGestureEvent(MotionGestureEvent* motionGestureEvent);
 
-    public: void onMotionGestureEvent(MotionGestureEvent ev);
+    public: void onMotionGestureEvent(MotionGestureEvent* ev);
 
 };
 

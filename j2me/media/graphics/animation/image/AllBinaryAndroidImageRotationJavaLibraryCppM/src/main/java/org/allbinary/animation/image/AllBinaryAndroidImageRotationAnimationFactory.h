@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYANDROIDIMAGEROTATIONANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYANDROIDIMAGEROTATIONANIMATIONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -71,31 +77,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseImageAnimationFactory.h"
-#include "AllBinaryFlickerAndroidImageRotationAnimation.h"
-#include "AllBinaryAdjustedAndroidImageRotationAnimation.h"
+        #include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
+#include "org/allbinary/animation/image/AllBinaryFlickerAndroidImageRotationAnimation.h"
+#include "org/allbinary/animation/image/AllBinaryAdjustedAndroidImageRotationAnimation.h"
 
 class AllBinaryAndroidImageRotationAnimationFactory: public BaseImageAnimationFactory {
 
                 //@Throws(Exception.constructor)
             
-    public: static AllBinaryAndroidImageRotationAnimationFactory createFactory(Image image, int32_t width, int32_t height, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static AllBinaryAndroidImageRotationAnimationFactory* createFactory(Image* image, int32_t width, int32_t height, AnimationBehaviorFactory* animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public: static AllBinaryAndroidImageRotationAnimationFactory createFactoryA(Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static AllBinaryAndroidImageRotationAnimationFactory* createFactoryA(Image* image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public: static AllBinaryAndroidImageRotationAnimationFactory createFactoryU(Image image, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static AllBinaryAndroidImageRotationAnimationFactory* createFactoryU(Image* image, AnimationBehaviorFactory* animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public: static AllBinaryAndroidImageRotationAnimationFactory createFactoryDXYU(Image image, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static AllBinaryAndroidImageRotationAnimationFactory* createFactoryDXYU(Image* image, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public: static AllBinaryAndroidImageRotationAnimationFactory createFactoryADXY(Image image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory, bool resizeCanvasForRotation);
+    public: static AllBinaryAndroidImageRotationAnimationFactory* createFactoryADXY(Image* image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory, bool resizeCanvasForRotation);
 
     public: void init(int32_t dx, int32_t dy);
 
@@ -103,15 +109,15 @@ class AllBinaryAndroidImageRotationAnimationFactory: public BaseImageAnimationFa
 
     private: bool resizeCanvasForRotation;
 
-public: AllBinaryAndroidImageRotationAnimationFactory(Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory, bool resizeCanvasForRotation);
+public: AllBinaryAndroidImageRotationAnimationFactory(Image* image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory, bool resizeCanvasForRotation);
 
                 //@Throws(Exception.constructor)
             
-    private: Image getCanvasImage();
+    private: Image* getCanvasImage();
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId);
+    public: Animation* getInstance(int32_t instanceId);
 
 };
 

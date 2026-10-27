@@ -21,6 +21,12 @@
         #ifndef TAGHELPERS_STORETAGWORKFLOWHELPER_H
         #define TAGHELPERS_STORETAGWORKFLOWHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -70,17 +76,17 @@
         
 class StoreTagWorkFlowHelper: public TagHelper {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: StoreWorkFlowInterface storeWorkFlowInterface;
+    private: StoreWorkFlowInterface* storeWorkFlowInterface;
 
-public: StoreTagWorkFlowHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: StoreTagWorkFlowHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
                 //@Throws(Exception.constructor)
             
-    public: Integer process();
+    public: int32_t process();
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_SELECTIONHUDPAINTABLE_H
         #define ORG_ALLBINARY_GAME_LAYER_SELECTIONHUDPAINTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -87,13 +93,13 @@
         
 class SelectionHudPaintable: public InitUpdatePaintable, public UpdateMyFontInterface {
 
-    protected: const int32_t y = CommonButtons::getInstance().STANDARD_BUTTON_SIZE +17;
+    protected: const int32_t y = CommonButtons::getInstance()->STANDARD_BUTTON_SIZE +17;
 
-    private: PrimitiveLongUtil primitiveLongUtil;
+    private: PrimitiveLongUtil* primitiveLongUtil;
 
-    protected: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
+    protected: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
 
-    protected: MyFontProcessor myFontProcessor = updateMyFontProcessor;
+    protected: MyFontProcessor* myFontProcessor = updateMyFontProcessor;
 
     private: int32_t x= 0;
 
@@ -101,7 +107,7 @@ class SelectionHudPaintable: public InitUpdatePaintable, public UpdateMyFontInte
 
     protected: int32_t imageX= 0;
 
-    private: BasicColor basicColor = BasicColorFactory::getInstance().BLACK;
+    private: BasicColor* basicColor = BasicColorFactory::getInstance()->BLACK;
 
     private: int32_t color= 0;
 
@@ -109,15 +115,15 @@ class SelectionHudPaintable: public InitUpdatePaintable, public UpdateMyFontInte
 
     private: int32_t height= 0;
 
-    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: Animation animationInterface = NullAnimationFactory::getFactoryInstance().getInstance(0);
+    private: Animation* animationInterface = NullAnimationFactory::getFactoryInstance()->getInstance(0);
 
-    private: const int32_t backgroundColor = BasicColorFactory::getInstance().GREY.intValue();
+    private: const int32_t backgroundColor = BasicColorFactory::getInstance()->GREY.intValue();
 
 protected: SelectionHudPaintable();
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
     public: void update();
 
@@ -125,19 +131,19 @@ protected: SelectionHudPaintable();
 
     public: void updateInfo();
 
-    protected: PrimitiveLongUtil getPrimitiveLongUtil();
+    protected: PrimitiveLongUtil* getPrimitiveLongUtil();
 
-    protected: void setAnimationInterface(Animation animationInterface);
+    protected: void setAnimationInterface(Animation* animationInterface);
 
-    protected: Animation getAnimationInterface();
+    protected: Animation* getAnimationInterface();
 
     protected: void setName(std::string name);
 
     protected: std::string getName();
 
-    public: void setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor* basicColor);
 
-    protected: BasicColor getBasicColorP();
+    protected: BasicColor* getBasicColorP();
 
     public: void setColor(int32_t color);
 
@@ -151,7 +157,7 @@ protected: SelectionHudPaintable();
 
     protected: int32_t getX();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

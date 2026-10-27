@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/view/TileLayerPositionIntoViewPosition.h>
@@ -58,17 +64,17 @@ class TileLayerPositionIntoViewPositionUtil
             : public Object
          {
 
-    public: static void init(AllBinaryGameCanvas gameCanvasInterface, TileLayerPositionIntoViewPosition viewPosition){
+    public: static void init(AllBinaryGameCanvas* gameCanvasInterface, TileLayerPositionIntoViewPosition* viewPosition){
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = gameCanvasInterface.getLayerManager();;
+    GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(gameCanvasInterface->getLayerManager());;
     
 
-    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
+    BasicGeographicMap* geographicMapInterface = geographicMapCompositeInterface->getGeographicMapInterface()[0];;
     
 
-    AllBinaryTiledLayer tiledLayer = geographicMapInterface.getAllBinaryTiledLayer();;
+    AllBinaryTiledLayer* tiledLayer = geographicMapInterface->getAllBinaryTiledLayer();;
     
-viewPosition.setTiledLayer(tiledLayer);
+viewPosition->setTiledLayer(tiledLayer);
     
 }
 

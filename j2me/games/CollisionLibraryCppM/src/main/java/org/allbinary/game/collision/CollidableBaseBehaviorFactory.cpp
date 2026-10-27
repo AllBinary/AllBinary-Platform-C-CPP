@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -40,18 +46,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CollidableBaseBehaviorFactoryInterface.h"
-#include "CollidableBaseBehavior.h"
+        #include "org/allbinary/game/collision/CollidableBaseBehaviorFactoryInterface.h"
+#include "org/allbinary/game/collision/CollidableBaseBehavior.h"
 
 class CollidableBaseBehaviorFactory
             : public Object
-        : public CollidableBaseBehaviorFactoryInterface {
+        , public CollidableBaseBehaviorFactoryInterface {
 
-    public: CollidableBaseBehavior createBehavior(){
+    public: CollidableBaseBehavior* createBehavior(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

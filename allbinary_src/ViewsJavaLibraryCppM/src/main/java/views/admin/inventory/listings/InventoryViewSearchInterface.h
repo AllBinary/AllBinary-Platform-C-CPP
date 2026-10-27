@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -48,19 +54,19 @@ class InventoryViewSearchInterface {
 
                 //@Throws(Exception.constructor)
             
-    std::string searchSingleStaticPage();
+    public: virtual std::string searchSingleStaticPage() = 0;
 
                 //@Throws(Exception.constructor)
             
-    std::string searchSingleDynamicPage();
+    public: virtual std::string searchSingleDynamicPage() = 0;
 
                 //@Throws(Exception.constructor)
             
-    std::vector<std::string> search();
+    public: virtual std::vector<std::string> search() = 0;
 
                 //@Throws(Exception.constructor)
             
-    std::string getProduct(std::string product);
+    public: virtual std::string getProduct(std::string product) = 0;
 
 };
 

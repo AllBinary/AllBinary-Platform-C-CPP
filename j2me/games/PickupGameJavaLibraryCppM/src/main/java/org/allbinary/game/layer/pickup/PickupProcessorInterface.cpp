@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/AllBinaryLayer.h>
@@ -46,7 +52,7 @@ class PickupProcessorInterface {
 
                 //@Throws(Exception.constructor)
             
-    void process(AllBinaryLayer sourceLayerInterface)
+    public: virtual void process(AllBinaryLayer* sourceLayerInterface) = 0;
 
 };
 

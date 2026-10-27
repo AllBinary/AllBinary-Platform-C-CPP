@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -38,9 +44,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Sound.h"
-#include "PlayerComposite.h"
-#include "AllBinaryMediaManager.h"
+        #include "org/allbinary/media/audio/Sound.h"
+#include "org/allbinary/media/audio/PlayerComposite.h"
+#include "org/allbinary/media/audio/AllBinaryMediaManager.h"
 
 class CompositeSound: public Sound {
 
@@ -57,7 +63,7 @@ protected: CompositeSound(std::string resource) : Sound(resource){
                 //@Throws(Exception.constructor)
             
     public: void init(){
-this->setPlayerP(PlayerComposite(AllBinaryMediaManager::createPlayer(this->getResource()), 570));
+this->setPlayerP(new PlayerComposite(AllBinaryMediaManager::createPlayer(this->getResource()), 570));
     
 }
 

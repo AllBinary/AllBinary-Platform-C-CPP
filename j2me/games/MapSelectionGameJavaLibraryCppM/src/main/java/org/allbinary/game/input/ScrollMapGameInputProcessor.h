@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_SCROLLMAPGAMEINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_INPUT_SCROLLMAPGAMEINPUTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,14 +45,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameInputProcessor.h"
-#include "ScrollMapPlayerGameInput.h"
+        #include "org/allbinary/game/input/GameInputProcessor.h"
+#include "org/allbinary/game/input/ScrollMapPlayerGameInput.h"
 
 class ScrollMapGameInputProcessor: public GameInputProcessor {
 
-    protected: ScrollMapPlayerGameInput scrollMapPlayerGameInput;
+    protected: ScrollMapPlayerGameInput* scrollMapPlayerGameInput;
 
-public: ScrollMapGameInputProcessor(ScrollMapPlayerGameInput scrollMapPlayerGameInput);
+public: ScrollMapGameInputProcessor(ScrollMapPlayerGameInput* scrollMapPlayerGameInput);
 
 };
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -45,15 +51,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageCopyUtil.h"
+        #include "org/allbinary/media/image/ImageCopyUtil.h"
 
 class ImageJ2MEScaleUtil
             : public Object
          {
 
-    private: static ImageJ2MEScaleUtil instance() { return ImageJ2MEScaleUtil(); }
+    private: static ImageJ2MEScaleUtil* instance() { static std::unique_ptr<ImageJ2MEScaleUtil> value(new ImageJ2MEScaleUtil()); return value.get(); }
 
-    public: static ImageJ2MEScaleUtil getInstance(){
+    public: static ImageJ2MEScaleUtil* getInstance(){
 
 
 
@@ -69,9 +75,9 @@ private: ImageJ2MEScaleUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<Image> scaleArray(std::vector<Image> images, int32_t width, int32_t height){
+    public: std::vector<Image*> scaleArray(std::vector<Image*> images, int32_t width, int32_t height){
 
-    std::vector<Image> scaledImages = std::vector<Image>(images.length);;
+    std::vector<Image*> scaledImages = std::vector<Image*>(images.length);;
     
 
 
@@ -95,9 +101,9 @@ scaledImages[index]= this->scale(images[index], width, height);
 
                 //@Throws(Exception.constructor)
             
-    public: Image scale(Image image, int32_t width, int32_t height){
+    public: Image* scale(Image* image, int32_t width, int32_t height){
 
-    Image scaledImage = ImageCopyUtil::getInstance().createImageWH(image, width, height, true);;
+    Image* scaledImage = ImageCopyUtil::getInstance()->createImageWH(image, width, height, true);;
     
 
 

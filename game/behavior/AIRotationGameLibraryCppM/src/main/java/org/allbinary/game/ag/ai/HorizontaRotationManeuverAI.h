@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_HORIZONTAROTATIONMANEUVERAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_HORIZONTAROTATIONMANEUVERAI_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -94,23 +100,23 @@
         
 class HorizontaRotationManeuverAI: public BasicAI, public ArtificialIntelligenceTransitionInterface {
 
-    private: const CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstanceAt(10, Integer::MAX_VALUE);
+    private: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::createInstanceAt(10, Integer.MAX_VALUE);
 
     private: int32_t currentSpeedDivisor = 5;
 
-    private: IndexedAnimation rotationAnimationInterface;
+    private: IndexedAnimation* rotationAnimationInterface;
 
-    private: BasicVelocityProperties baseVelocityInterface;
+    private: BasicVelocityProperties* baseVelocityInterface;
 
-    private: VelocityInterface velocityInterface;
+    private: VelocityInterface* velocityInterface;
 
-public: HorizontaRotationManeuverAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: HorizontaRotationManeuverAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
     public: void transition();
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager);
 
     protected: void reverse();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -83,45 +89,45 @@
         
 class CssStyleValidation: public Validation, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: BasicArrayList cssStyleElementVector;
+    protected: BasicArrayList* cssStyleElementVector;
 
 public: CssStyleValidation(){
-this->cssStyleElementVector= BasicArrayListD();
+this->cssStyleElementVector= new BasicArrayListD();
     
 }
 
 
-public: CssStyleValidation(Document document){
-this->cssStyleElementVector= StylesValidationFactory::getInstance().getInstance(document);
+public: CssStyleValidation(Document* document){
+this->cssStyleElementVector= StylesValidationFactory::getInstance()->getInstance(document);
     
 }
 
 
-public: CssStyleValidation(HashMap<Object*, Object*> hashMap){
+public: CssStyleValidation(HashMap<Object*, Object*>* hashMap){
 this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
     
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-    Boolean isValid = Boolean::TRUE;;
+    bool isValid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.IS_VALID);
     
 
                                     }
                                 
 
-    int32_t size = this->cssStyleElementVector.size();;
+    int32_t size = this->cssStyleElementVector->size();;
     
 
 
@@ -131,10 +137,10 @@ this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
     int32_t i = 0;i < size; i++)
         {
 
-    ValidationInterface styleValidationInterface = this->cssStyleElementVector.get(i);;
+    ValidationInterface* styleValidationInterface = dynamic_cast<ValidationInterface*>(this->cssStyleElementVector->get(i));;
     
 
-                        if(!styleValidationInterface.isValid().valueOf())
+                        if(!styleValidationInterface->isValid().valueOf())
                         
                                     {
                                     isValid= Boolean::FALSE;
@@ -145,10 +151,10 @@ this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("End: " +isValid, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("End: " +isValid, this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -161,13 +167,13 @@ this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -187,23 +193,23 @@ this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -219,7 +225,7 @@ this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -229,7 +235,7 @@ this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -241,17 +247,17 @@ this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = document.createElement(StylesData::getInstance().NAME);;
+    Node* node = document->createElement(StylesData::getInstance()->NAME);;
     
 
-    Node styleNode = document.createElement(StyleData::getInstance().NAME);;
+    Node* styleNode = document->createElement(StyleData::getInstance()->NAME);;
     
-node.appendChild(styleNode);
+node->appendChild(styleNode);
     
 
-    int32_t size = this->cssStyleElementVector.size();;
+    int32_t size = this->cssStyleElementVector->size();;
     
 
 
@@ -261,9 +267,9 @@ node.appendChild(styleNode);
     int32_t i = 0;i < size; i++)
         {
 
-    DomNodeInterface styleDomNodeInterface = this->cssStyleElementVector.get(i);;
+    DomNodeInterface* styleDomNodeInterface = dynamic_cast<DomNodeInterface*>(this->cssStyleElementVector->get(i));;
     
-styleNode.appendChild(styleDomNodeInterface.toXmlNode(document));
+styleNode->appendChild(styleDomNodeInterface->toXmlNode(document));
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LAYER_LAYERINTERFACE_H
         #define ORG_ALLBINARY_LAYER_LAYERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/identification/GroupInterfaceCompositeInterface.h>
 
       
@@ -45,46 +51,46 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NamedInterface.h"
-#include "PositionInterface.h"
+        #include "org/allbinary/layer/NamedInterface.h"
+#include "org/allbinary/layer/PositionInterface.h"
 
 class LayerInterface: public NamedInterface, public PaintableInterface, public GroupInterfaceCompositeInterface, public PositionInterface {
 
-    int32_t getHeight();
+    public: virtual int32_t getHeight() = 0;
 
-    int32_t getWidth();
+    public: virtual int32_t getWidth() = 0;
 
-    int32_t getHalfHeight();
+    public: virtual int32_t getHalfHeight() = 0;
 
-    int32_t getHalfWidth();
+    public: virtual int32_t getHalfWidth() = 0;
 
-    int32_t getXP();
+    public: virtual int32_t getXP() = 0;
 
-    int32_t getYP();
+    public: virtual int32_t getYP() = 0;
 
-    int32_t getZP();
+    public: virtual int32_t getZP() = 0;
 
-    int32_t getX2();
+    public: virtual int32_t getX2() = 0;
 
-    int32_t getY2();
+    public: virtual int32_t getY2() = 0;
 
-    int32_t getZ2();
+    public: virtual int32_t getZ2() = 0;
 
-    bool isVisible();
+    public: virtual bool isVisible() = 0;
 
-    void moveDXYZ(int32_t dx, int32_t dy, int32_t dz);
+    public: virtual void moveDXYZ(int32_t dx, int32_t dy, int32_t dz) = 0;
 
-    void setVisible(bool visible);
+    public: virtual void setVisible(bool visible) = 0;
 
-    bool implmentsTickableInterface();
+    public: virtual bool implmentsTickableInterface() = 0;
 
-    bool implmentsCollidableInterface();
+    public: virtual bool implmentsCollidableInterface() = 0;
 
-    bool implmentsGameInputInterface();
+    public: virtual bool implmentsGameInputInterface() = 0;
 
-    bool implmentsArtificialIntelligenceCompositeInterface();
+    public: virtual bool implmentsArtificialIntelligenceCompositeInterface() = 0;
 
-    int32_t getType();
+    public: virtual int32_t getType() = 0;
 
 };
 

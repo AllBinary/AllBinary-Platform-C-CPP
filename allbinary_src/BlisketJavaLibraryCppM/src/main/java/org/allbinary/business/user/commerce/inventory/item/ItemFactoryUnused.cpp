@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,7 +61,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Item.h"
+        #include "org/allbinary/business/user/commerce/inventory/item/Item.h"
 
 class ItemFactoryUnused
             : public Object
@@ -63,24 +69,24 @@ class ItemFactoryUnused
 
                 //@Throws(MoneyException.constructor)
             
-    public: static TableMappingInterface getInstance(HashMap<Object*, Object*> hashMap){
+    public: static TableMappingInterface* getInstance(HashMap<Object*, Object*>* hashMap){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Item(hashMap);
+                        return dynamic_cast<TableMappingInterface*>(new Item(hashMap));
     
 }
 
 
                 //@Throws(Exception.constructor, MoneyException.constructor)
             
-    public: static TableMappingInterface getInstance(HttpServletRequest request){
+    public: static TableMappingInterface* getInstance(HttpServletRequest* request){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Item(RequestParams(request).toHashMap());
+                        return dynamic_cast<TableMappingInterface*>(new Item((new RequestParams(request))->toHashMap()));
     
 }
 

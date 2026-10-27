@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -136,19 +142,19 @@
         
 class DiveAndDirectionalTrackingAI: public BasicAI, public TrackingEventListenerInterface, public DestroyedEventListenerInterface {
 
-    private: const MathUtil mathUtil = MathUtil::getInstance();
+    private: MathUtil* mathUtil = MathUtil::getInstance();
 
-    private: const DirectionFactory directionFactory = DirectionFactory::getInstance();
+    private: DirectionFactory* directionFactory = DirectionFactory::getInstance();
 
-    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
+    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(500);
+    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(500);
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
-    private: DirectionalInterface directionalInterface;
+    private: DirectionalInterface* directionalInterface;
 
-    private: BasicVelocityProperties velocityInterface;
+    private: BasicVelocityProperties* velocityInterface;
 
     private: const std::vector<int32_t> directionToKeyMap = {Canvas::LEFT,Canvas::DOWN,Canvas::UP,Canvas::RIGHT};
 
@@ -156,29 +162,29 @@ class DiveAndDirectionalTrackingAI: public BasicAI, public TrackingEventListener
 
     private: bool diveP= false;
 
-    private: Direction directionOfTarget = Direction::getInstance(0);
+    private: Direction* directionOfTarget = Direction::getInstance(0);
 
     private: const int32_t MIN_DISTANCE = 40;
 
-    private: AllBinaryLayer lastTrackingLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer* lastTrackingLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-    private: ArtificialIntelligenceInterface artificialIntelligenceInterface;
+    private: ArtificialIntelligenceInterface* artificialIntelligenceInterface;
 
-    private: Visitor aiVistor;
+    private: Visitor* aiVistor;
 
-    private: Direction lastDirection = DirectionFactory::getInstance().NO_DIRECTION;
+    private: Direction* lastDirection = DirectionFactory::getInstance()->NO_DIRECTION;
 
-public: DiveAndDirectionalTrackingAI(AllBinaryLayer ownerLayerInterface, ArtificialIntelligenceInterface artificialIntelligenceInterface, GameInput gameInput, Visitor visitor);
+public: DiveAndDirectionalTrackingAI(AllBinaryLayer* ownerLayerInterface, ArtificialIntelligenceInterface* artificialIntelligenceInterface, GameInput* gameInput, Visitor* visitor);
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager);
 
     private: void init();
 
                 //@Throws(Exception.constructor)
             
-    private: void target(AllBinaryLayerManager allBinaryLayerManager);
+    private: void target(AllBinaryLayerManager* allBinaryLayerManager);
 
                 //@Throws(Exception.constructor)
             
@@ -220,17 +226,17 @@ public: DiveAndDirectionalTrackingAI(AllBinaryLayer ownerLayerInterface, Artific
 
     private: bool isBeyondTarget();
 
-    public: void onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject* eventObject);
 
-    public: void onMovement(TrackingEvent trackingEvent);
+    public: void onMovement(TrackingEvent* trackingEvent);
 
-    public: void onDestroyed(DestroyedEvent destroyedEvent);
+    public: void onDestroyed(DestroyedEvent* destroyedEvent);
 
-    public: void setLastDirection(Direction lastDirection);
+    public: void setLastDirection(Direction* lastDirection);
 
     public: void setLastKey(int32_t lastKey);
 
-    public: Direction getLastDirection();
+    public: Direction* getLastDirection();
 
     public: std::string toString();
 

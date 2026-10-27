@@ -21,6 +21,12 @@
         #ifndef VIEWS_BUSINESS_CONTEXT_ROOTCONTEXTVIEW_H
         #define VIEWS_BUSINESS_CONTEXT_ROOTCONTEXTVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -77,9 +83,9 @@
         
 class RootContextView: public HttpStoreComponentView, public TransformTemplateInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: RootContextView(TransformInfoInterface transformInfoInterface);
+public: RootContextView(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             

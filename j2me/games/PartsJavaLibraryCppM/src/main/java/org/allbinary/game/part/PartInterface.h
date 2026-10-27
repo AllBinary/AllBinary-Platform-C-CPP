@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_PART_PARTINTERFACE_H
         #define ORG_ALLBINARY_GAME_PART_PARTINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/animation/AnimationInterfaceCompositeInterface.h>
 
       

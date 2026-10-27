@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -68,23 +74,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoInterface.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
 
 class TransformInfoObjectFactory
             : public Object
          {
 
-    private: static TransformInfoObjectFactory instance() { return TransformInfoObjectFactory(); }
+    private: static TransformInfoObjectFactory* instance() { static std::unique_ptr<TransformInfoObjectFactory> value(new TransformInfoObjectFactory()); return value.get(); }
 
-    public: static TransformInfoObjectFactory getInstance();
+    public: static TransformInfoObjectFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: TransformInfoObjectFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInterface getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface);
+    public: TransformInterface* getInstance(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface);
 
 };
 

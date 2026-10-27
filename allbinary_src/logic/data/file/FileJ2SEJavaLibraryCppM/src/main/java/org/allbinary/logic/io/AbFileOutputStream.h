@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_ABFILEOUTPUTSTREAM_H
         #define ORG_ALLBINARY_LOGIC_IO_ABFILEOUTPUTSTREAM_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/io/FileNotFoundException.h>
 
       
@@ -56,19 +62,19 @@ class AbFileOutputStream: public FileOutputStream {
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public: static AbFileOutputStream createFromAbFile(AbFile file);
+    public: static AbFileOutputStream* createFromAbFile(AbFile* file);
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public: static AbFileOutputStream createFromAbFileAppend(AbFile file, bool append);
+    public: static AbFileOutputStream* createFromAbFileAppend(AbFile* file, bool append);
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public: static AbFileOutputStream createFromFilePath(std::string name);
+    public: static AbFileOutputStream* createFromFilePath(std::string name);
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public: static AbFileOutputStream createFromFilePathAppend(std::string name, bool append);
+    public: static AbFileOutputStream* createFromFilePathAppend(std::string name, bool append);
 
 public: AbFileOutputStream(std::string name, bool append);
 

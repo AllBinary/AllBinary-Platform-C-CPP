@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/xml/transform/URIResolver.h>
@@ -59,11 +65,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicTransformer.h"
+        #include "org/allbinary/logic/visual/transform/BasicTransformer.h"
 
 class TransformInfoCustomUriTransformer: public BasicTransformer {
 
-public: TransformInfoCustomUriTransformer(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface) : BasicTransformer(abeClientInformation, transformInfoInterface){
+public: TransformInfoCustomUriTransformer(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface) : BasicTransformer(abeClientInformation, transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -71,9 +77,9 @@ public: TransformInfoCustomUriTransformer(AbeClientInformationInterface abeClien
                             //For kotlin this is before the body of the constructor.
                     
 
-    TransformInfoObjectConfigInterface transformInfoObjectConfigInterface = TransformInfoObjectConfigAndManipulatorFactory::getInstance().getInstance(abeClientInformation, transformInfoInterface);;
+    TransformInfoObjectConfigInterface* transformInfoObjectConfigInterface = dynamic_cast<TransformInfoObjectConfigInterface*>(TransformInfoObjectConfigAndManipulatorFactory::getInstance()->getInstance(abeClientInformation, transformInfoInterface));;
     
-this->setURIResolver(CustomUriResolver(transformInfoObjectConfigInterface.getImportUriPath(), this->getURIResolver()));
+this->setURIResolver(dynamic_cast<URIResolver*>(new CustomUriResolver(transformInfoObjectConfigInterface->getImportUriPath(), dynamic_cast<BasicUriResolver*>(this->getURIResolver()))));
     
 }
 

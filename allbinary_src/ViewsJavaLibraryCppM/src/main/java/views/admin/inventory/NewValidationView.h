@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_INVENTORY_NEWVALIDATIONVIEW_H
         #define VIEWS_ADMIN_INVENTORY_NEWVALIDATIONVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/commerce/inventory/item/BasicItem.h>
@@ -62,17 +68,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InventoryItemView.h"
+        #include "views/admin/inventory/InventoryItemView.h"
 
 class NewValidationView: public InventoryItemView, public ValidationComponentInterface {
 
-public: NewValidationView(TransformInfoInterface transformInfoInterface);
+public: NewValidationView(TransformInfoInterface* transformInfoInterface);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
     public: std::string validationInfo();
 

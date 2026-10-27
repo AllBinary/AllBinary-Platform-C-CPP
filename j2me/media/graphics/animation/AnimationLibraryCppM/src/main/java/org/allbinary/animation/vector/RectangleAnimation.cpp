@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -55,7 +61,7 @@ class RectangleAnimation: public Animation, public ColorCompositeInterface {
 
     private: int32_t height;
 
-public: RectangleAnimation(int32_t width, int32_t height, BasicColor basicColor){
+public: RectangleAnimation(int32_t width, int32_t height, BasicColor* basicColor){
 this->width= width;
     
 this->height= height;
@@ -69,10 +75,10 @@ this->setBasicColorP(basicColor);
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
-graphics.drawRect(x, y, this->width, this->height);
+graphics->drawRect(x, y, this->width, this->height);
     
 }
 

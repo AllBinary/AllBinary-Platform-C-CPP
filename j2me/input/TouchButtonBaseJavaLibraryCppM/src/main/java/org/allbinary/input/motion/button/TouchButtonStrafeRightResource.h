@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSTRAFERIGHTRESOURCE_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSTRAFERIGHTRESOURCE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,13 +45,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchButtonResource.h"
+        #include "org/allbinary/input/motion/button/TouchButtonResource.h"
 
 class TouchButtonStrafeRightResource: public TouchButtonResource {
 
-    private: static const TouchButtonResource instance = TouchButtonStrafeRightResource();
+    private: static inline TouchButtonResource* instance = new TouchButtonStrafeRightResource();
 
-    public: static TouchButtonResource getInstance();
+    public: static TouchButtonResource* getInstance();
 
 private: TouchButtonStrafeRightResource();
 

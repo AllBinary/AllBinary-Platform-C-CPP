@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -70,19 +76,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryFlickerAndroidImageRotationAnimation.h"
+        #include "org/allbinary/animation/image/AllBinaryFlickerAndroidImageRotationAnimation.h"
 
 class AllBinaryFlickerAndroidImageRotationAnimationFactory
             : public Object
-        : public AnimationInterfaceFactoryInterface {
+        , public AnimationInterfaceFactoryInterface {
 
-    private: Image image = NullImage::NULL_IMAGE;
+    private: Image* image = NullImage::NULL_IMAGE;
 
     private: int16_t angleIncrement;
 
-    protected: AnimationBehaviorFactory animationBehaviorFactory;
+    protected: AnimationBehaviorFactory* animationBehaviorFactory;
 
-public: AllBinaryFlickerAndroidImageRotationAnimationFactory(Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory){
+public: AllBinaryFlickerAndroidImageRotationAnimationFactory(Image* image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory){
 this->setImage(image);
     
 this->angleIncrement= angleIncrement;
@@ -94,15 +100,15 @@ this->animationBehaviorFactory= animationBehaviorFactory;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId){
+    public: Animation* getInstance(int32_t instanceId){
 
-    Image image = ImageCopyUtil::getInstance().createImage(this->getImage());;
+    Image* image = ImageCopyUtil::getInstance()->createImage(this->getImage());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryFlickerAndroidImageRotationAnimation(this->getImage(), image, AngleInfo::getInstance(this->angleIncrement), AngleFactory::getInstance().TOTAL_ANGLE, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new AllBinaryFlickerAndroidImageRotationAnimation(this->getImage(), image, AngleInfo::getInstance(this->angleIncrement), AngleFactory::getInstance()->TOTAL_ANGLE, this->animationBehaviorFactory->getOrCreateInstance());
     
 }
 
@@ -117,13 +123,13 @@ this->animationBehaviorFactory= animationBehaviorFactory;
 }
 
 
-    protected: void setImage(Image image){
+    protected: void setImage(Image* image){
 this->image= image;
     
 }
 
 
-    protected: Image getImage(){
+    protected: Image* getImage(){
 
 
 
@@ -133,7 +139,7 @@ this->image= image;
 }
 
 
-    public: void setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties* scaleProperties){
 }
 
 

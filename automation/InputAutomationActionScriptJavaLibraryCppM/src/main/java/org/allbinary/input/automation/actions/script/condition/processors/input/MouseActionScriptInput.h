@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEACTIONSCRIPTINPUT_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEACTIONSCRIPTINPUT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -84,32 +90,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicProfileActionScriptInput.h"
-#include "MouseActionScriptInputInterface.h"
-#include "Point.h"
-#include "MouseActionScriptInputJPanel.h"
-#include "MouseActionScriptInputData.h"
-#include "MouseInputAutomationProcessor.h"
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/BasicProfileActionScriptInput.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/MouseActionScriptInputInterface.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/Point.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/MouseActionScriptInputJPanel.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/MouseActionScriptInputData.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/MouseInputAutomationProcessor.h"
 
 class MouseActionScriptInput: public BasicProfileActionScriptInput, public MouseActionScriptInputInterface {
 
-    private: static const std::string NAME = "Mouse";
+    private: static inline const std::string NAME = "Mouse";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: Point point;
+    private: Point* point;
 
     private: int32_t buttons= 0;
 
-    private: MouseActionScriptInputJPanel mouseActionScriptInputJPanel;
+    private: MouseActionScriptInputJPanel* mouseActionScriptInputJPanel;
 
-public: MouseActionScriptInput(Node node);
+public: MouseActionScriptInput(Node* node);
 
 public: MouseActionScriptInput();
 
-    public: void setPoint(Point point);
+    public: void setPoint(Point* point);
 
-    public: Point getPoint();
+    public: Point* getPoint();
 
     public: int32_t getButtonClicks();
 
@@ -117,15 +123,15 @@ public: MouseActionScriptInput();
 
     public: void showDialog();
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
                 //@Throws(Exception.constructor)
             
-    public: void process(Long frame);
+    public: void process(int64_t frame);
 
     public: void log();
 

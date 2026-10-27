@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -94,37 +100,37 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseImageAnimationFactory.h"
+        #include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
 
 class LazyImageRotationAnimation: public RotationAnimation {
 
-    private: static const std::string SET_REAL_ANIMATION = "setRealAnimation";
+    private: static inline const std::string SET_REAL_ANIMATION = "setRealAnimation";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     public: int32_t layoutIndex;
 
     public: int32_t instanceId;
 
-    public: BaseImageAnimationFactory animationInterfaceFactoryInterface;
+    public: BaseImageAnimationFactory* animationInterfaceFactoryInterface;
 
-    private: IndexedAnimation NULL_INDEX_ANIMATION;
+    private: IndexedAnimation* NULL_INDEX_ANIMATION;
 
-    private: IndexedAnimation animation;
+    private: IndexedAnimation* animation;
 
-    public: ScaleProperties scaleProperties = ScaleProperties::instance;
+    public: ScaleProperties* scaleProperties = ScaleProperties::instance;
 
-public: LazyImageRotationAnimation(int32_t layoutIndex, int32_t instanceId, ScaleProperties scaleProperties, BaseImageAnimationFactory animationInterfaceFactoryInterface, AnimationBehavior animationBehavior);
+public: LazyImageRotationAnimation(int32_t layoutIndex, int32_t instanceId, ScaleProperties* scaleProperties, BaseImageAnimationFactory* animationInterfaceFactoryInterface, AnimationBehavior* animationBehavior);
 
     public: void setRealAnimation();
 
     public: void setScale(float scaleX, float scaleY);
 
-    public: AnimationBehavior getAnimationBehavior();
+    public: AnimationBehavior* getAnimationBehavior();
 
                 //@Throws(Exception.constructor)
             
-    public: void set(GL gl);
+    public: void set(GL* gl);
 
     public: void setAlpha(int32_t alpha);
 
@@ -146,11 +152,11 @@ public: LazyImageRotationAnimation(int32_t layoutIndex, int32_t instanceId, Scal
 
     public: void previousRotationZ();
 
-    public: void changeBasicColor(BasicColor basicColor);
+    public: void changeBasicColor(BasicColor* basicColor);
 
-    public: BasicColor getBasicColorP();
+    public: BasicColor* getBasicColorP();
 
-    public: BasicColor getChangeBasicColor();
+    public: BasicColor* getChangeBasicColor();
 
     public: int32_t getChangeColor();
 
@@ -188,9 +194,9 @@ public: LazyImageRotationAnimation(int32_t layoutIndex, int32_t instanceId, Scal
 
     public: int32_t getWidth();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
-    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
+    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z);
 
     public: std::string toString();
 

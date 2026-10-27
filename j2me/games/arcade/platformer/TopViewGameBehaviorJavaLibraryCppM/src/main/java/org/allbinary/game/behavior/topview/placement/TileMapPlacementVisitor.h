@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/mapeditor/core/TiledMap.h>
@@ -51,7 +57,7 @@ class TileMapPlacementVisitor
             : public Object
          {
 
-    public: void visit(TiledMap lastMap, std::vector<std::vector<int32_t>> mapData);
+    public: void visit(TiledMap* lastMap, std::vector<std::vector<int32_t>> mapData);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,41 +45,41 @@
         
 class DatabaseConnectionInfoInterface {
 
-    std::string getUrl()
+    public: virtual std::string getUrl() = 0;
 
-    std::string getJdbcDriver()
+    public: virtual std::string getJdbcDriver() = 0;
 
-    std::string getName()
+    public: virtual std::string getName() = 0;
 
-    std::string getUserName()
+    public: virtual std::string getUserName() = 0;
 
-    std::string getPassword()
+    public: virtual std::string getPassword() = 0;
 
-    std::string getHost()
+    public: virtual std::string getHost() = 0;
 
-    std::string getSchema()
+    public: virtual std::string getSchema() = 0;
 
-    std::string getServer()
+    public: virtual std::string getServer() = 0;
 
-    std::string getPort()
+    public: virtual std::string getPort() = 0;
 
-    void setJdbcDriver(std::string value)
+    public: virtual void setJdbcDriver(std::string value) = 0;
 
-    void setName(std::string value)
+    public: virtual void setName(std::string value) = 0;
 
-    void setUserName(std::string value)
+    public: virtual void setUserName(std::string value) = 0;
 
-    void setPassword(std::string value)
+    public: virtual void setPassword(std::string value) = 0;
 
-    void setSchema(std::string value)
+    public: virtual void setSchema(std::string value) = 0;
 
-    void setServer(std::string value)
+    public: virtual void setServer(std::string value) = 0;
 
-    void setPort(std::string value)
+    public: virtual void setPort(std::string value) = 0;
 
-    std::string getUserNameKey()
+    public: virtual std::string getUserNameKey() = 0;
 
-    std::string getPasswordKey()
+    public: virtual std::string getPasswordKey() = 0;
 
 };
 

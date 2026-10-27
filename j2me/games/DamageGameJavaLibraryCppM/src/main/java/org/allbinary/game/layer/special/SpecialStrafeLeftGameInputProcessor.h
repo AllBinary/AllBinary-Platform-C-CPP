@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALSTRAFELEFTGAMEINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALSTRAFELEFTGAMEINPUTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/event/GameKeyEvent.h>
@@ -47,16 +53,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SpecialGameInputProcessor.h"
-#include "CollidableDestroyableDamageableLayer.h"
+        #include "org/allbinary/game/layer/special/SpecialGameInputProcessor.h"
+#include "org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h"
 
 class SpecialStrafeLeftGameInputProcessor: public SpecialGameInputProcessor {
 
-public: SpecialStrafeLeftGameInputProcessor(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer);
+public: SpecialStrafeLeftGameInputProcessor(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer);
 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent);
+    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent);
 
 };
 

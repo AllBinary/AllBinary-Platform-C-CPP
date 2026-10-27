@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -47,9 +53,9 @@
         
 class LayerPlacementInterfaceBasicArrayListFactoryInterface {
 
-    BasicArrayList getInstance();
+    public: virtual BasicArrayList* getInstance() = 0;
 
-    std::vector<int32_t> getOnDemandResources();
+    public: virtual std::vector<int32_t> getOnDemandResources() = 0;
 
 };
 

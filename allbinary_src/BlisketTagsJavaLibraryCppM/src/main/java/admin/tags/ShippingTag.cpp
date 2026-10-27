@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Class.h"
         
             #include "java/lang/Exception.h"
@@ -73,13 +81,13 @@
         
 class ShippingTag: public CustomTagSupport {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string command;
 
     private: std::string storeName;
 
-    private: HashMap<Object*, Object*> propertiesHashMap;
+    private: HashMap<Object*, Object*>* propertiesHashMap;
 
 public: ShippingTag(){
 }
@@ -103,17 +111,17 @@ this->storeName= value;
 
         try {
             
-    Object* anyType = ShippingHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = (new ShippingHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
     
 
     Class* addressHelperClass = anyType->getClass();;
     
 
-    Method method = addressHelperClass.getMethod("setShippingType", 
+    Method* method = addressHelperClass->getMethod("setShippingType", 
                             nullptr);;
     
 
-    std::string result = method.invoke(anyType, 
+    std::string result = method->invoke(anyType, 
                             nullptr);;
     
 
@@ -124,7 +132,7 @@ this->storeName= value;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -134,16 +142,16 @@ this->storeName= value;
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
     std::string error = "Failed to view Shipping Type";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setShippingType()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "setShippingType()", &e);
     
 
                                     }
@@ -155,7 +163,7 @@ this->storeName= value;
                         return error;
     
 }
-*/
+
 }
 
 
@@ -168,9 +176,9 @@ this->storeName= value;
                         if(true)
                         
                                     {
-                                    this->propertiesHashMap= StdUtil::getInstance().createHashMap();
+                                    this->propertiesHashMap= StdUtil::getInstance()->createHashMap();
     
-this->propertiesHashMap.put(StoreFrontData::getInstance().NAME, this->storeName);
+this->propertiesHashMap->put(StoreFrontData::getInstance()->NAME, this->storeName);
     
 
                         if(this->command.compare(org.allbinary.globals.GLOBALS2.SETSHIPPINGTYPE) == 0)
@@ -192,9 +200,9 @@ this->propertiesHashMap.put(StoreFrontData::getInstance().NAME, this->storeName)
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
-AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
     
 
 
@@ -205,9 +213,9 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 
@@ -216,7 +224,7 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
                         return SKIP_BODY;
     
 }
-*/
+
 }
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,29 +58,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryLayer.h"
-#include "AllBinaryLayerManager.h"
+        #include "org/allbinary/layer/AllBinaryLayer.h"
+#include "org/allbinary/layer/AllBinaryLayerManager.h"
 
 class BasicLayerProcessor
             : public Object
          {
 
-    public: static const BasicLayerProcessor NULL_LAYER_PROCESSOR = BasicLayerProcessor();
+    public: static BasicLayerProcessor* NULL_LAYER_PROCESSOR() { static std::unique_ptr<BasicLayerProcessor> value(new BasicLayerProcessor()); return value.get(); }
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 protected: BasicLayerProcessor(){
 }
 
 
-    public: void add(AllBinaryLayer layerInterface){
+    public: void add(AllBinaryLayer* layerInterface){
 
-                        if(!this->list.contains(layerInterface))
+                        if(!this->list->contains(layerInterface))
                         
                                     {
-                                    this->list.add(layerInterface);
+                                    this->list->add(layerInterface);
     
 
                                     }
@@ -84,16 +90,16 @@ protected: BasicLayerProcessor(){
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayerManager allBinaryLayerManager){
+    public: void process(AllBinaryLayerManager* allBinaryLayerManager){
 
 
 
-                            throw Exception(CommonStrings::getInstance().NOT_IMPLEMENTED);
+                            throw new Exception(CommonStrings::getInstance()->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: BasicArrayList getList(){
+    public: BasicArrayList* getList(){
 
 
 

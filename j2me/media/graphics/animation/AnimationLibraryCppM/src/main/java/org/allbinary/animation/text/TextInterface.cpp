@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,19 +42,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TextChangeListener.h"
+        #include "org/allbinary/animation/text/TextChangeListener.h"
 
 class TextInterface {
 
-    void setTextWithOnMeasure(std::string text, TextChangeListener textChangeListener)
+    public: virtual void setTextWithOnMeasure(std::string text, TextChangeListener* textChangeListener) = 0;
 
-    std::string getText()
+    public: virtual std::string getText() = 0;
 
-    void setText(std::string text)
+    public: virtual void setText(std::string text) = 0;
 
-    int32_t getFontHeight()
+    public: virtual int32_t getFontHeight() = 0;
 
-    int32_t getWidth()
+    public: virtual int32_t getWidth() = 0;
 
 };
 

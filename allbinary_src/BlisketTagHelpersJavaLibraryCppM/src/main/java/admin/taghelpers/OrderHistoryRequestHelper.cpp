@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -80,15 +86,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TagHelper.h"
+        #include "admin/taghelpers/TagHelper.h"
 
 class OrderHistoryRequestHelper: public TagHelper {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
     private: std::string id;
 
@@ -96,8 +102,8 @@ class OrderHistoryRequestHelper: public TagHelper {
 
     private: std::string status;
 
-public: OrderHistoryRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
-this->request= pageContext.getRequest();
+public: OrderHistoryRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
     
 this->getFormData();
     
@@ -105,11 +111,11 @@ this->getFormData();
 
 
     private: void getFormData(){
-this->id= this->request.getParameter(OrderData::ID);
+this->id= this->request->getParameter(OrderData::ID);
     
-this->groupId= this->request.getParameter(ShippingMethodData::GROUP);
+this->groupId= this->request->getParameter(ShippingMethodData::GROUP);
     
-this->status= this->request.getParameter(OrderHistoryData::STATUS);
+this->status= this->request->getParameter(OrderHistoryData::STATUS);
     
 }
 
@@ -118,11 +124,11 @@ this->status= this->request.getParameter(OrderHistoryData::STATUS);
 
         try {
             
-                        if(this->groupId.compare(CommonPhoneStrings::getInstance().ZERO) != 0)
+                        if(this->groupId.compare(CommonPhoneStrings::getInstance()->ZERO) != 0)
                         
                                     {
                                     
-                        if(OrderItemsEntityFactory::getInstance().isEverythingShipped(this->id))
+                        if(OrderItemsEntityFactory::getInstance()->isEverythingShipped(this->id))
                         
                                     {
                                     this->status= OrderHistoryData::SHIPPED;
@@ -142,13 +148,13 @@ this->status= this->request.getParameter(OrderHistoryData::STATUS);
 
     std::string success = "Status successfully set to: " +this->status;;
     
-OrderHistoryEntityFactory::getInstance().setStatus(this->id, this->status);
+OrderHistoryEntityFactory::getInstance()->setStatus(this->id, this->status);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF("Success", this, "setOrderStatus()");
+                                    this->logUtil->putF("Success", this, "setOrderStatus()");
     
 
                                     }
@@ -161,16 +167,16 @@ OrderHistoryEntityFactory::getInstance().setStatus(this->id, this->status);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to set order status";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setOrderStatus()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "setOrderStatus()", &e);
     
 
                                     }
@@ -196,18 +202,18 @@ OrderHistoryEntityFactory::getInstance().setStatus(this->id, this->status);
 
     std::string success = "Status successfully set to: " +newStatus;;
     
-OrderHistoryEntityFactory::getInstance().setStatus(this->id, newStatus);
+OrderHistoryEntityFactory::getInstance()->setStatus(this->id, newStatus);
     
 
-    OrderHistory orderHistory = OrderHistoryEntityFactory::getInstance().getOrder(this->id);;
+    OrderHistory* orderHistory = OrderHistoryEntityFactory::getInstance()->getOrder(this->id);;
     
-OrderStatusEmail(this->abeClientInformation, orderHistory).process();
+(new OrderStatusEmail(this->abeClientInformation, orderHistory))->process();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF("Success", this, "setOrderStatus()");
+                                    this->logUtil->putF("Success", this, "setOrderStatus()");
     
 
                                     }
@@ -220,16 +226,16 @@ OrderStatusEmail(this->abeClientInformation, orderHistory).process();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to view order table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setOrderStatus(newStatus)", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "setOrderStatus(newStatus)", &e);
     
 
                                     }

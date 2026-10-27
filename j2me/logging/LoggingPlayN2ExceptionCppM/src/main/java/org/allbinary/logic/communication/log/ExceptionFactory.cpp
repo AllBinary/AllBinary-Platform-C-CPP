@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Throwable.h"
@@ -48,12 +54,12 @@ class ExceptionFactory
             : public Object
          {
 
-    public: static Throwable createThrowable(std::string message){
+    public: static Throwable* createThrowable(std::string message){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Throwable(message);
+                        return new Throwable(message);
     
 }
 

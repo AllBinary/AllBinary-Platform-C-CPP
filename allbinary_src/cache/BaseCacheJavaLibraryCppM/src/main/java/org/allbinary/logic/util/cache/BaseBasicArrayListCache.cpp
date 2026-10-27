@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -61,21 +67,21 @@ class BaseBasicArrayListCache
             : public Object
          {
 
-    protected: const BasicArrayList list = BasicArrayListD();
+    protected: BasicArrayList* list = new BasicArrayListD();
 
     public: std::string log(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("S: ");
+stringBuffer->append("S: ");
     
-stringBuffer.appendint(this->list.size());
+stringBuffer->appendint(this->list->size());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

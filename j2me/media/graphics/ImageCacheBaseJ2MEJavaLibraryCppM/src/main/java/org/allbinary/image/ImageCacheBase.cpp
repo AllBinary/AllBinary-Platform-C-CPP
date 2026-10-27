@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -77,17 +83,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageFactory.h"
+        #include "org/allbinary/image/ImageFactory.h"
 
 class ImageCacheBase
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const ImageFactory imageFactory = ImageFactory::getInstance();
+    protected: ImageFactory* imageFactory = ImageFactory::getInstance();
 
-    protected: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
+    protected: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
 
     protected: const int32_t SIZE = 128;
 
@@ -95,9 +101,9 @@ class ImageCacheBase
 
     protected: const std::vector<int32_t> heights = std::vector<int32_t>(this->SIZE);
 
-    protected: const std::vector<BasicArrayList> listOfList = std::vector<BasicArrayList>(this->SIZE);
+    protected: const std::vector<BasicArrayList*> listOfList = std::vector<BasicArrayList*>(this->SIZE);
 
-    protected: const std::vector<BasicArrayList> availableListOfList = std::vector<BasicArrayList>(this->SIZE);
+    protected: const std::vector<BasicArrayList*> availableListOfList = std::vector<BasicArrayList*>(this->SIZE);
 
     protected: int32_t volume = 0;
 
@@ -111,7 +117,7 @@ public: ImageCacheBase(){
                         for (
     int32_t index = this->listOfList.size() -1;index >= 0; index--)
         {
-this->listOfList[index]= BasicArrayListD();
+this->listOfList[index]= new BasicArrayListD();
     
 }
 
@@ -122,16 +128,16 @@ this->listOfList[index]= BasicArrayListD();
                         for (
     int32_t index = this->availableListOfList.size() -1;index >= 0; index--)
         {
-this->availableListOfList[index]= BasicArrayListD();
+this->availableListOfList[index]= new BasicArrayListD();
     
 }
 
 }
 
 
-    protected: Image getImage(Object* resourceId){
+    protected: Image* getImage(Object* resourceId){
 
-    Object* imageCanBeNull = this->hashtable.get(resourceId);;
+    Object* imageCanBeNull = this->hashtable->get(resourceId);;
     
 
                         if(imageCanBeNull == 
@@ -152,7 +158,7 @@ this->availableListOfList[index]= BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *dynamic_cast<Image*>(imageCanBeNull);
+                        return dynamic_cast<Image*>(imageCanBeNull);
     
 }
 
@@ -171,7 +177,7 @@ this->availableListOfList[index].addAllList(this->listOfList[index]);
     
 }
 
-this->logUtil.putF(StringMaker().append("ImageCache: ").append(this->toString()).toString(), this, "releaseAll");
+this->logUtil->putF((new StringMaker())->append("ImageCache: ")->append(this->toString())->toString(), this, "releaseAll");
     
 }
 
@@ -216,7 +222,7 @@ this->logUtil.putF(StringMaker().append("ImageCache: ").append(this->toString())
 }
 
 
-    protected: Image getFromAvailable(int32_t foundIndex, int32_t width, int32_t height){
+    protected: Image* getFromAvailable(int32_t foundIndex, int32_t width, int32_t height){
 
                         if(foundIndex !=  -1)
                         
@@ -226,13 +232,13 @@ this->logUtil.putF(StringMaker().append("ImageCache: ").append(this->toString())
                         
                                     {
                                     
-    BasicArrayList list = this->availableListOfList[foundIndex];;
+    BasicArrayList* list = this->availableListOfList[foundIndex];;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return list.removeAt(list.size() -1);
+                        return dynamic_cast<Image*>(list->removeAt(list->size() -1));
     
 
                                     }
@@ -251,53 +257,53 @@ this->logUtil.putF(StringMaker().append("ImageCache: ").append(this->toString())
 
                 //@Throws(Exception.constructor)
             
-    public: Image get(std::string caller, int32_t width, int32_t height){
+    public: Image* get(std::string caller, int32_t width, int32_t height){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Image getWithKey(Object* key){
+    public: Image* getWithKey(Object* key){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: Image createImage(std::string caller, int32_t width, int32_t height){
+    protected: Image* createImage(std::string caller, int32_t width, int32_t height){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->imageFactory.createImage(caller, width, height);;
+                        return this->imageFactory->createImage(caller, width, height);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: Image createImageFromInputStream(Object* key, InputStream inputStream){
+    protected: Image* createImageFromInputStream(Object* key, InputStream* inputStream){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->imageFactory.createImageFromInputStream(key, inputStream);;
+                        return this->imageFactory->createImageFromInputStream(key, inputStream);;
     
 }
 
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
 
@@ -318,23 +324,23 @@ this->logUtil.putF(StringMaker().append("ImageCache: ").append(this->toString())
 
     int32_t totalAvailable = this->availableListOfList[index].size();;
     
-stringBuffer.append(" w: ");
+stringBuffer->append(" w: ");
     
-stringBuffer.appendint(width);
+stringBuffer->appendint(width);
     
-stringBuffer.append(" h: ");
+stringBuffer->append(" h: ");
     
-stringBuffer.appendint(height);
+stringBuffer->appendint(height);
     
-stringBuffer.append(CommonSeps::getInstance().SPACE);
+stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-stringBuffer.append(CommonLabels::getInstance().TOTAL_LABEL);
+stringBuffer->append(CommonLabels::getInstance()->TOTAL_LABEL);
     
-stringBuffer.appendint(total);
+stringBuffer->appendint(total);
     
-stringBuffer.append(" available: ");
+stringBuffer->append(" available: ");
     
-stringBuffer.appendint(totalAvailable);
+stringBuffer->appendint(totalAvailable);
     
 }
 
@@ -342,12 +348,12 @@ stringBuffer.appendint(totalAvailable);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
-    public: ABHashtable<Object*, Object*> getHashtableP(){
+    public: ABHashtable<Object*, Object*>* getHashtableP(){
 
 
 
@@ -357,7 +363,7 @@ stringBuffer.appendint(totalAvailable);
 }
 
 
-    public: void init(Image image){
+    public: void init(Image* image){
 }
 
 

@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLDISPLAYABLE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLDISPLAYABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -40,15 +46,15 @@
         //J2SEForJ2ME
 class NullDisplayable: public Canvas {
 
-    private: static const NullDisplayable SINGLETON = NullDisplayable();
+    private: static NullDisplayable* SINGLETON() { static std::unique_ptr<NullDisplayable> value(new NullDisplayable()); return value.get(); }
 
-    public: static NullDisplayable getInstance();
+    public: static NullDisplayable* getInstance();
 
 private: NullDisplayable();
 
-    private: const BaseGameStatistics baseGameStatistics = GameStatisticsFactory::getInstance();
+    private: BaseGameStatistics* baseGameStatistics = GameStatisticsFactory::getInstance();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

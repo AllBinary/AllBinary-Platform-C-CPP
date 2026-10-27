@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,16 +52,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TrackingEventFactory.h"
-#include "TrackingEvent.h"
+        #include "org/allbinary/game/tracking/TrackingEventFactory.h"
+#include "org/allbinary/game/tracking/TrackingEvent.h"
 
 class TrackingEventCircularStaticPool
             : public Object
          {
 
-    private: static TrackingEventCircularStaticPool instance = TrackingEventCircularStaticPool();
+    private: static TrackingEventCircularStaticPool* instance() { static std::unique_ptr<TrackingEventCircularStaticPool> value(new TrackingEventCircularStaticPool()); return value.get(); }
 
-    public: static TrackingEventCircularStaticPool getInstance(){
+    public: static TrackingEventCircularStaticPool* getInstance(){
 
 
 
@@ -65,10 +71,10 @@ class TrackingEventCircularStaticPool
 }
 
 
-    private: AllBinaryEventCircularPool EVENT_POOL = AllBinaryEventCircularPool(20);
+    private: AllBinaryEventCircularPool* EVENT_POOL = new AllBinaryEventCircularPool(20);
 
     public: void init(){
-this->EVENT_POOL.initAllBinaryEventCircularPool(TrackingEventFactory());
+this->EVENT_POOL->initAllBinaryEventCircularPool(new TrackingEventFactory());
     
 }
 
@@ -76,11 +82,11 @@ this->EVENT_POOL.initAllBinaryEventCircularPool(TrackingEventFactory());
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: TrackingEvent getNextInstance(AllBinaryLayer layerInterface){
+    public: TrackingEvent* getNextInstance(AllBinaryLayer* layerInterface){
 
-    TrackingEvent trackingEvent = this->EVENT_POOL.getNextInstance();;
+    TrackingEvent* trackingEvent = dynamic_cast<TrackingEvent*>(this->EVENT_POOL->getNextInstance());;
     
-trackingEvent.setLayerInterfaceForCircularStaticPool(layerInterface);
+trackingEvent->setLayerInterfaceForCircularStaticPool(layerInterface);
     
 
 

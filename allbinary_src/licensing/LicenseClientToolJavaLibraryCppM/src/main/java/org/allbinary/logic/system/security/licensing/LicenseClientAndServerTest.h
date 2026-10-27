@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -75,11 +81,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicArrayListD.h"
-#include "PrintLicenseInitInfo.h"
-#include "AbeClientInformationInterfaceFactory.h"
-#include "AbeClientInformationInterface.h"
-#include "AbeLicenseInterface.h"
+        #include "org/allbinary/logic/system/security/licensing/BasicArrayListD.h"
+#include "org/allbinary/logic/system/security/licensing/PrintLicenseInitInfo.h"
+#include "org/allbinary/logic/system/security/licensing/AbeClientInformationInterfaceFactory.h"
+#include "org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h"
+#include "org/allbinary/logic/system/security/licensing/AbeLicenseInterface.h"
 
 class LicenseClientAndServerTest
             : public Object
@@ -87,9 +93,9 @@ class LicenseClientAndServerTest
 
     public: static void main(std::vector<std::string> args);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: BasicArrayList vector = BasicArrayListD();
+    private: BasicArrayList* vector = new BasicArrayListD();
 
 public: LicenseClientAndServerTest(std::vector<std::string> options);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.

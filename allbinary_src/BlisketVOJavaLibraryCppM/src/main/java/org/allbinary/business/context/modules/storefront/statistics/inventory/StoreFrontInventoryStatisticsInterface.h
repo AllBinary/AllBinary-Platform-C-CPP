@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_INVENTORY_STOREFRONTINVENTORYSTATISTICSINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_INVENTORY_STOREFRONTINVENTORYSTATISTICSINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Long.h"
         
 #include <org/allbinary/business/user/commerce/money/Money.h>
@@ -50,9 +56,9 @@
         
 class StoreFrontInventoryStatisticsInterface: public TableMappingInterface {
 
-    Long getNumber();
+    public: virtual int64_t getNumber() = 0;
 
-    Money getTotal();
+    public: virtual Money* getTotal() = 0;
 
 };
 

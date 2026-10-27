@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,26 +44,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ColorRangeInterface.h"
-#include "ColorRange.h"
+        #include "org/allbinary/media/image/analysis/ColorRangeInterface.h"
+#include "org/allbinary/media/image/analysis/ColorRange.h"
 
 class ImageColorRangeResults
             : public Object
          {
 
-    private: ColorRangeInterface colorRangeInterface;
+    private: ColorRangeInterface* colorRangeInterface;
 
     private: int64_t matchingPixelsChecked= 0;
 
     private: int64_t totalPixelsChecked= 0;
 
 public: ImageColorRangeResults(){
-this->setColorRangeInterface(ColorRange());
+this->setColorRangeInterface(dynamic_cast<ColorRangeInterface*>(new ColorRange()));
     
 }
 
 
-    public: ColorRangeInterface getColorRangeInterface(){
+    public: ColorRangeInterface* getColorRangeInterface(){
 
 
 
@@ -67,7 +73,7 @@ this->setColorRangeInterface(ColorRange());
 }
 
 
-    public: void setColorRangeInterface(ColorRangeInterface colorRangeInterface){
+    public: void setColorRangeInterface(ColorRangeInterface* colorRangeInterface){
 this->colorRangeInterface= colorRangeInterface;
     
 }

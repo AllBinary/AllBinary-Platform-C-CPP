@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATION_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -56,25 +62,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserEmailConfigurationInterface.h"
+        #include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationInterface.h"
 
 class UserEmailConfiguration
             : public Object
-        : public UserEmailConfigurationInterface {
+        , public UserEmailConfigurationInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface;
+    private: UserEmailEventsConfigurationInterface* userEmailEventsConfigurationInterface;
 
 public: UserEmailConfiguration();
 
-public: UserEmailConfiguration(HashMap<Object*, Object*> hashMap);
+public: UserEmailConfiguration(HashMap<Object*, Object*>* hashMap);
 
-    public: UserEmailEventsConfigurationInterface getUserEmailEventsConfigurationInterface();
+    public: UserEmailEventsConfigurationInterface* getUserEmailEventsConfigurationInterface();
 
-    public: void setUserEmailEventsConfigurationInterface(UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface);
+    public: void setUserEmailEventsConfigurationInterface(UserEmailEventsConfigurationInterface* userEmailEventsConfigurationInterface);
 
 };
 

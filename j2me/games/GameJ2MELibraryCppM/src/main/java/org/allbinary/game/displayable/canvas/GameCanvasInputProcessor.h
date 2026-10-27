@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASINPUTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -88,35 +94,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryGameCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
 class GameCanvasInputProcessor: public InputProcessor {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: AllBinaryGameCanvas allBinaryGameCanvas;
+    private: AllBinaryGameCanvas* allBinaryGameCanvas;
 
-    private: const DownGameKeyEventHandler downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
+    private: DownGameKeyEventHandler* downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
 
-    private: const UpGameKeyEventHandler upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
+    private: UpGameKeyEventHandler* upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
 
-    private: const DownKeyEventHandler downKeyEventHandler = DownKeyEventHandler::getInstance();
+    private: DownKeyEventHandler* downKeyEventHandler = DownKeyEventHandler::getInstance();
 
-    private: const SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();
+    private: SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();
 
-    private: const InputToGameKeyMapping inputToGameKeyMapping = PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping();
+    private: InputToGameKeyMapping* inputToGameKeyMapping = PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping();
 
-public: GameCanvasInputProcessor(AllBinaryGameCanvas allBinaryGameCanvas);
+public: GameCanvasInputProcessor(AllBinaryGameCanvas* allBinaryGameCanvas);
 
-    private: const GameKey NONE = GameKeyFactory::getInstance().NONE;
+    private: GameKey* NONE = GameKeyFactory::getInstance()->NONE;
 
-    private: const GameKeyEventFactory gameKeyEventFactory = GameKeyEventFactory::getInstance();
+    private: GameKeyEventFactory* gameKeyEventFactory = GameKeyEventFactory::getInstance();
 
     public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId);
 
-    public: void keyReleasedByDevice(Canvas canvas, int32_t keyCode, int32_t deviceId);
+    public: void keyReleasedByDevice(Canvas* canvas, int32_t keyCode, int32_t deviceId);
 
-    private: void removeGameKeyEvent(Canvas canvas, int32_t keyCode, int32_t deviceId, bool repeated);
+    private: void removeGameKeyEvent(Canvas* canvas, int32_t keyCode, int32_t deviceId, bool repeated);
 
 };
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/thirdparty/store/LongArrayIdentifierInterface.h>
 
       
@@ -41,7 +47,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbeClientInformation.h"
+        #include "org/allbinary/logic/system/security/licensing/AbeClientInformation.h"
 
 class StoreAppClientInformation: public AbeClientInformation, public LongArrayIdentifierInterface {
 

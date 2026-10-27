@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPARTCIRCULARPOOL_H
         #define ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPARTCIRCULARPOOL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,25 +61,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicWeaponPart.h"
-#include "BasicWeaponPartFactoryInterface.h"
+        #include "org/allbinary/game/part/weapon/BasicWeaponPart.h"
+#include "org/allbinary/game/part/weapon/BasicWeaponPartFactoryInterface.h"
 
 class BasicWeaponPartCircularPool
             : public Object
          {
 
-    public: static const BasicWeaponPartCircularPool NULL_BASIC_WEAPON_PART_CIRCULAR_POOL = BasicWeaponPartCircularPool();
+    public: static BasicWeaponPartCircularPool* NULL_BASIC_WEAPON_PART_CIRCULAR_POOL() { static std::unique_ptr<BasicWeaponPartCircularPool> value(new BasicWeaponPartCircularPool()); return value.get(); }
 
-    private: BasicWeaponPart basicWeaponPart = BasicWeaponPart::NULL_BASIC_WEAPON_PART;
+    private: BasicWeaponPart* basicWeaponPart = BasicWeaponPart::NULL_BASIC_WEAPON_PART;
 
                 //@Throws(Exception.constructor)
             
-    public: void init(BasicWeaponPartFactoryInterface basicWeaponPartFactoryInterface);
+    public: void init(BasicWeaponPartFactoryInterface* basicWeaponPartFactoryInterface);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: BasicWeaponPart getInstance(AllBinaryLayer sourceLayerInterface, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface, RelativeRelationship relativeRelationship);
+    public: BasicWeaponPart* getInstance(AllBinaryLayer* sourceLayerInterface, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship);
 
 };
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -86,22 +92,22 @@ class InstallerInfo
             : public Object
          {
 
-    private: static InstallerInfo instance() { return InstallerInfo(); }
+    private: static InstallerInfo* instance() { static std::unique_ptr<InstallerInfo> value(new InstallerInfo()); return value.get(); }
 
-    private: static const std::string INITFILENAME = "installerdata.dat";
+    private: static inline const std::string INITFILENAME = "installerdata.dat";
 
-    private: static const std::string PACKAGE = PATH_GLOBALS::getInstance().INIT_PATH;
+    private: static inline const std::string PACKAGE = PATH_GLOBALS::getInstance()->INIT_PATH;
 
-    private: static std::string userName = StringUtil::getInstance().EMPTY_STRING;
+    private: static inline std::string userName = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: static std::string password = StringUtil::getInstance().EMPTY_STRING;
+    private: static inline std::string password = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: static bool hasRead = false;
+    private: static inline bool hasRead = false;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: static void setHasRead(bool value);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: InstallerInfo();
 

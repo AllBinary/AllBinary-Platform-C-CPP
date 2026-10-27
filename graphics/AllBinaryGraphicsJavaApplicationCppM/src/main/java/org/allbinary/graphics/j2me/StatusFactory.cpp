@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -41,15 +47,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MyFrame.h"
+        #include "org/allbinary/graphics/j2me/MyFrame.h"
 
 class StatusFactory
             : public Object
          {
 
-    private: static StatusFactory instance() { return StatusFactory(); }
+    private: static StatusFactory* instance() { static std::unique_ptr<StatusFactory> value(new StatusFactory()); return value.get(); }
 
-    public: static StatusFactory getInstance(){
+    public: static StatusFactory* getInstance(){
 
 
 
@@ -59,7 +65,7 @@ class StatusFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const std::string SETSTATUS = "setStatus";
 
@@ -74,7 +80,7 @@ MyFrame::statusJLabel.setText(status);
     public: void setStatus(std::string status){
 this->setStatusNoLog(status);
     
-this->logUtil.putF(this->STATUS_LABEL +status, this, this->SETSTATUS);
+this->logUtil->putF(this->STATUS_LABEL +status, this, this->SETSTATUS);
     
 }
 

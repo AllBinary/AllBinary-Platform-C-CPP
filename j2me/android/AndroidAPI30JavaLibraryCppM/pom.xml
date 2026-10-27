@@ -89,13 +89,13 @@
         <!-- API 30 Android 11 -->
         <dependency>
             <groupId>com.google.android</groupId>
-            <artifactId>androidCpp</artifactId>
+            <artifactId>android</artifactId>
             <version>11.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.google.android</groupId>
-            <artifactId>androidCpp</artifactId>
+            <artifactId>android</artifactId>
             <version>11.0</version>
             <scope>provided</scope>
             <classifier>sources</classifier>
@@ -103,7 +103,7 @@
 
         <dependency>
             <groupId>androidx.core</groupId>
-            <artifactId>coreCpp</artifactId>
+            <artifactId>core</artifactId>
             <version>1.17.0</version>
             <type>jar</type>
             <scope>provided</scope>
@@ -111,14 +111,14 @@
         <!-- Used by core -->
         <dependency>
             <groupId>androidx.tracing</groupId>
-            <artifactId>tracingCpp</artifactId>
+            <artifactId>tracing</artifactId>
             <version>1.2</version>
             <type>jar</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>androidx.lifecycle</groupId>
-            <artifactId>lifecycle-runtimeCpp</artifactId>
+            <artifactId>lifecycle-runtime</artifactId>
             <version>2.6.2</version>
             <type>jar</type>
             <scope>provided</scope>
@@ -129,6 +129,28 @@
     <build>
         
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.8.1</version>
+                <executions>
+                    <execution>
+                        <id>unpack-native-dependency-headers</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>sources</classifier>
+                            <includeGroupIds>org.allbinary</includeGroupIds>
+                            <includeScope>compile</includeScope>
+                            <includes>**/*.h</includes>
+                            <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+                            <outputDirectory>${project.build.directory}/native/dependency-include</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -152,6 +174,7 @@
                                 <argument>${native.cpp.standard}</argument>
                                 <argument>${native.compiler.flags}</argument>
                                 <argument>${native.include.path}</argument>
+                                <argument>${project.build.directory}/native/dependency-include</argument>
                             </arguments>
                         </configuration>
                     </execution>

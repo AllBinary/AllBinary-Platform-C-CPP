@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -56,20 +62,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NullPathFindingLayer.h"
-#include "PathFindingLayerInterface.h"
+        #include "org/allbinary/game/layer/NullPathFindingLayer.h"
+#include "org/allbinary/game/layer/PathFindingLayerInterface.h"
 
 class WaypointPathRunnableBase
             : public Object
-        : public RunnableInterface, public PriorityRunnable {
+        , public RunnableInterface, public PriorityRunnable {
 
-    private: const LayerDistanceUtil layerDistanceUtil = LayerDistanceUtil::getInstance();
+    private: LayerDistanceUtil* layerDistanceUtil = LayerDistanceUtil::getInstance();
 
-    protected: PathFindingLayerInterface pathFindingLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
+    protected: PathFindingLayerInterface* pathFindingLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
-    protected: PathFindingLayerInterface targetPathFindingLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
+    protected: PathFindingLayerInterface* targetPathFindingLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
-    protected: int32_t priorityP = Integer::MAX_VALUE;
+    protected: int32_t priorityP = Integer.MAX_VALUE;
 
     protected: bool runningP= false;
 
@@ -91,11 +97,11 @@ this->runningP= isRunning;
 
                 //@Throws(Exception.constructor)
             
-    public: void setThread(Thread thread){
+    public: void setThread(Thread* thread){
 }
 
 
-    public: void setTargetLayer(PathFindingLayerInterface waypointLayer){
+    public: void setTargetLayer(PathFindingLayerInterface* waypointLayer){
 this->targetPathFindingLayer= waypointLayer;
     
 this->setPriority();
@@ -105,10 +111,10 @@ this->setPriority();
 
     public: void setPriority(){
 
-    AllBinaryLayer pathFindingLayer = this->pathFindingLayer;;
+    AllBinaryLayer* pathFindingLayer = dynamic_cast<AllBinaryLayer*>(this->pathFindingLayer);;
     
 
-    AllBinaryLayer targetLayer = this->targetPathFindingLayer;;
+    AllBinaryLayer* targetLayer = dynamic_cast<AllBinaryLayer*>(this->targetPathFindingLayer);;
     
 
                         if(targetLayer != 
@@ -117,7 +123,7 @@ this->setPriority();
                         
                                     {
                                     
-    int32_t distance = this->layerDistanceUtil.getDistance(targetLayer, pathFindingLayer);;
+    int32_t distance = this->layerDistanceUtil->getDistance(targetLayer, pathFindingLayer);;
     
 
     int32_t distanceCategory = distance /70;;
@@ -130,7 +136,7 @@ this->priorityP= distanceCategory;
 }
 
 
-    public: PathFindingLayerInterface getTargetLayer(){
+    public: PathFindingLayerInterface* getTargetLayer(){
 
 
 
@@ -140,7 +146,7 @@ this->priorityP= distanceCategory;
 }
 
 
-    public: void setUnitLayer(PathFindingLayerInterface unitLayer){
+    public: void setUnitLayer(PathFindingLayerInterface* unitLayer){
 this->pathFindingLayer= unitLayer;
     
 }

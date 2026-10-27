@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -82,37 +88,37 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreThemeCategory.h"
+        #include "org/allbinary/business/category/store/theme/StoreThemeCategory.h"
 
 class StoreThemeCategoryFactory
             : public Object
-        : public CategoryFactoryInterface {
+        , public CategoryFactoryInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: TransformInfoInterface transformInfoInterface;
+    private: TransformInfoInterface* transformInfoInterface;
 
-public: StoreThemeCategoryFactory(TransformInfoInterface transformInfoInterface);
+public: StoreThemeCategoryFactory(TransformInfoInterface* transformInfoInterface);
 
-    public: CategoryInterface getRootInstance();
+    public: CategoryInterface* getRootInstance();
 
-    public: CategoryInterface getRootInstance(AbPath categoryAbPath);
+    public: CategoryInterface* getRootInstance(AbPath* categoryAbPath);
 
-    public: CategoryInterface getRootInstanceFromNode(Node node);
+    public: CategoryInterface* getRootInstanceFromNode(Node* node);
 
-    public: CategoryInterface getInstance(std::string categoryPath, int32_t level);
+    public: CategoryInterface* getInstance(std::string categoryPath, int32_t level);
 
-    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, std::string categoryPath);
+    public: CategoryInterface* getInstance(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, std::string categoryPath);
 
-    public: CategoryInterface getInstance(Node node, int32_t level);
+    public: CategoryInterface* getInstance(Node* node, int32_t level);
 
-    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, Node node);
+    public: CategoryInterface* getInstance(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, Node* node);
 
-    public: CategoryInterface getInstance(HashMap<Object*, Object*> categoryPropertiesHashMap, int32_t level);
+    public: CategoryInterface* getInstance(HashMap<Object*, Object*>* categoryPropertiesHashMap, int32_t level);
 
-    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<Object*, Object*> categoryPropertiesHashMap);
+    public: CategoryInterface* getInstance(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap);
 
 };
 

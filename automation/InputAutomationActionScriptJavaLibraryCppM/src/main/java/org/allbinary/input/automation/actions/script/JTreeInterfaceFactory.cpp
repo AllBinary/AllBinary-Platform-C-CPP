@@ -10,6 +10,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -30,15 +36,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JTreeInterface.h"
+        #include "org/allbinary/input/automation/actions/script/JTreeInterface.h"
 
 class JTreeInterfaceFactory
             : public Object
          {
 
-    private: static JTreeInterfaceFactory instance() { return JTreeInterfaceFactory(); }
+    private: static JTreeInterfaceFactory* instance() { static std::unique_ptr<JTreeInterfaceFactory> value(new JTreeInterfaceFactory()); return value.get(); }
 
-    public: static JTreeInterfaceFactory getInstance(){
+    public: static JTreeInterfaceFactory* getInstance(){
 
 
 
@@ -48,15 +54,15 @@ class JTreeInterfaceFactory
 }
 
 
-    private: JTreeInterface jTreeInterface;
+    private: JTreeInterface* jTreeInterface;
 
-    public: void set(JTreeInterface jTreeInterface){
+    public: void set(JTreeInterface* jTreeInterface){
 this->jTreeInterface= jTreeInterface;
     
 }
 
 
-    public: JTreeInterface getJTreeInterface(){
+    public: JTreeInterface* getJTreeInterface(){
 
 
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -43,19 +49,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Sound.h"
+        #include "org/allbinary/media/audio/Sound.h"
 
 class SoundsFactoryInterface {
 
-    void init();
+    public: virtual void init() = 0;
 
                 //@Throws(Exception.constructor)
             
-    std::vector<Sound> getSoundInterfaceArray();
+    public: virtual std::vector<Sound*> getSoundInterfaceArray() = 0;
 
-    void setInitialized(bool initialized);
+    public: virtual void setInitialized(bool initialized) = 0;
 
-    bool isInitialized();
+    public: virtual bool isInitialized() = 0;
 
 };
 

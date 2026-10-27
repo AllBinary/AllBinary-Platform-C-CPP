@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -84,44 +90,44 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchMotionGestureFactory.h"
-#include "MotionGestureInput.h"
+        #include "org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h"
+#include "org/allbinary/input/motion/gesture/MotionGestureInput.h"
 
 class MotionGestureRecognizer
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const J2SEMath j2seMath = J2SEMath::getInstance();
+    private: J2SEMath* j2seMath = J2SEMath::getInstance();
 
-    private: const GPoint origin = PointFactory::getInstance().ZERO_ZERO;
+    private: GPoint* origin = PointFactory::getInstance()->ZERO_ZERO;
 
-    private: GPoint previous = this->origin;
+    private: GPoint* previous = this->origin;
 
-    private: GPoint intermediate = this->origin;
+    private: GPoint* intermediate = this->origin;
 
-    private: const Line line = Line(this->origin, this->origin);
+    private: Line* line = new Line(this->origin, this->origin);
 
-    private: BasicMotionGesturesHandler motionGesturesHandler;
+    private: BasicMotionGesturesHandler* motionGesturesHandler;
 
-    private: BasicEventHandler movedMotionGesturesHandler;
+    private: BasicEventHandler* movedMotionGesturesHandler;
 
-    private: BasicEventHandler scrolledMotionGesturesHandler;
+    private: BasicEventHandler* scrolledMotionGesturesHandler;
 
-    private: MotionEventCircularPool motionEventCircularPool;
+    private: MotionEventCircularPool* motionEventCircularPool;
 
 public: MotionGestureRecognizer(int32_t id){
 this->motionEventCircularPool= MotionEventCircularPool::createPool(id);
     
 
-    BasicEventHandler motionGesturesHandler = BasicEventHandler();;
+    BasicEventHandler* motionGesturesHandler = new BasicEventHandler();;
     
 
-    BasicEventHandler movedMotionGesturesHandler = motionGesturesHandler;;
+    BasicEventHandler* movedMotionGesturesHandler = motionGesturesHandler;;
     
 
-    BasicEventHandler scrolledMotionGesturesHandler = motionGesturesHandler;;
+    BasicEventHandler* scrolledMotionGesturesHandler = motionGesturesHandler;;
     
 
         try {
@@ -133,16 +139,16 @@ scrolledMotionGesturesHandler= ScrolledMotionGesturesHandler::getInstance();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &e);
     
 }
 
-this->motionGesturesHandler= motionGesturesHandler;
+this->motionGesturesHandler= dynamic_cast<BasicMotionGesturesHandler*>(motionGesturesHandler);
     
 this->movedMotionGesturesHandler= movedMotionGesturesHandler;
     
@@ -153,40 +159,19 @@ this->scrolledMotionGesturesHandler= scrolledMotionGesturesHandler;
 
                 //@Throws(Exception.constructor)
             
-    public: bool processPressedMotionEvent(GPoint current, int32_t deviceId, int32_t button){
+    public: bool processPressedMotionEvent(GPoint* current, int32_t deviceId, int32_t button){
 this->intermediate= this->origin;
     
 this->previous= this->origin;
     
 
-    MotionGestureEvent event = this->motionEventCircularPool.getInstance(TouchMotionGestureFactory::getInstance().PRESSED);;
+    MotionGestureEvent* event = this->motionEventCircularPool->getInstance(TouchMotionGestureFactory::getInstance()->PRESSED);;
     
-event.setPreviousPoint(this->previous);
+event->setPreviousPoint(this->previous);
     
-event.setCurrentPoint(current);
+event->setCurrentPoint(current);
     
-this->motionGesturesHandler.fireEvent(event);
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true;
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: bool processReleasedMotionEvent(GPoint current, int32_t deviceId, int32_t button){
-
-    MotionGestureEvent event = this->motionEventCircularPool.getInstance(TouchMotionGestureFactory::getInstance().RELEASED);;
-    
-event.setPreviousPoint(this->previous);
-    
-event.setCurrentPoint(current);
-    
-this->motionGesturesHandler.fireEvent(event);
+this->motionGesturesHandler->fireEvent(event);
     
 
 
@@ -199,7 +184,28 @@ this->motionGesturesHandler.fireEvent(event);
 
                 //@Throws(Exception.constructor)
             
-    public: void processDraggedMotionEvent(GPoint current, int32_t deviceId, int32_t buttonMask){
+    public: bool processReleasedMotionEvent(GPoint* current, int32_t deviceId, int32_t button){
+
+    MotionGestureEvent* event = this->motionEventCircularPool->getInstance(TouchMotionGestureFactory::getInstance()->RELEASED);;
+    
+event->setPreviousPoint(this->previous);
+    
+event->setCurrentPoint(current);
+    
+this->motionGesturesHandler->fireEvent(event);
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: void processDraggedMotionEvent(GPoint* current, int32_t deviceId, int32_t buttonMask){
 
                         if(this->previous == this->origin || this->intermediate == this->origin)
                         
@@ -217,15 +223,15 @@ this->intermediate= current;
 
                                     }
                                 
-this->line.setP1(this->previous);
+this->line->setP1(this->previous);
     
-this->line.setP2(current);
-    
-
-    int32_t minimumMotionGesture = MotionGestureConfigurationFactory::getInstance().getMinimumMotionGesture();;
+this->line->setP2(current);
     
 
-                        if(this->j2seMath.abs(this->line.getDeltaX()) < minimumMotionGesture && this->j2seMath.abs(this->line.getDeltaY()) < minimumMotionGesture)
+    int32_t minimumMotionGesture = MotionGestureConfigurationFactory::getInstance()->getMinimumMotionGesture();;
+    
+
+                        if(this->j2seMath->abs(this->line->getDeltaX()) < minimumMotionGesture && this->j2seMath->abs(this->line->getDeltaY()) < minimumMotionGesture)
                         
                                     {
                                     this->intermediate= current;
@@ -240,19 +246,19 @@ this->line.setP2(current);
                                     }
                                 
 
-    double gradient = this->line.getGradient();;
+    double gradient = this->line->getGradient();;
     
 
-    double absGradient = this->j2seMath.abs(gradient);;
+    double absGradient = this->j2seMath->abs(gradient);;
     
 
-    MotionGestureConfiguration conf = MotionGestureConfigurationFactory::getInstance();;
+    MotionGestureConfiguration* conf = MotionGestureConfigurationFactory::getInstance();;
     
 
-    TouchMotionGestureFactory touchMotionGestureFactory = TouchMotionGestureFactory::getInstance();;
+    TouchMotionGestureFactory* touchMotionGestureFactory = TouchMotionGestureFactory::getInstance();;
     
 
-    MotionGestureInput newMotionGesture = touchMotionGestureFactory.NO_MOTION;;
+    MotionGestureInput* newMotionGesture = touchMotionGestureFactory->NO_MOTION;;
     
 
     double diagonalToleranceHigher = 12.0;;
@@ -261,12 +267,12 @@ this->line.setP2(current);
     double diagonalToleranceLower = 12.0;;
     
 
-                        if(conf.isDiagonalMotionGestureAllowed())
+                        if(conf->isDiagonalMotionGestureAllowed())
                         
                                     {
-                                    diagonalToleranceHigher= (90 -conf.getDiagonalTolerance());
+                                    diagonalToleranceHigher= (90 -conf->getDiagonalTolerance());
     
-diagonalToleranceLower= conf.getDiagonalTolerance();
+diagonalToleranceLower= conf->getDiagonalTolerance();
     
 
                                     }
@@ -276,16 +282,16 @@ diagonalToleranceLower= conf.getDiagonalTolerance();
                         
                                     {
                                     
-                        if(this->line.getDeltaY() > 0)
+                        if(this->line->getDeltaY() > 0)
                         
                                     {
-                                    newMotionGesture= touchMotionGestureFactory.UP;
+                                    newMotionGesture= touchMotionGestureFactory->UP;
     
 
                                     }
                                 
                         else {
-                            newMotionGesture= touchMotionGestureFactory.DOWN;
+                            newMotionGesture= touchMotionGestureFactory->DOWN;
     
 
                         }
@@ -299,16 +305,16 @@ diagonalToleranceLower= conf.getDiagonalTolerance();
                         
                                     {
                                     
-                        if(this->line.getDeltaX() > 0)
+                        if(this->line->getDeltaX() > 0)
                         
                                     {
-                                    newMotionGesture= touchMotionGestureFactory.LEFT;
+                                    newMotionGesture= touchMotionGestureFactory->LEFT;
     
 
                                     }
                                 
                         else {
-                            newMotionGesture= touchMotionGestureFactory.RIGHT;
+                            newMotionGesture= touchMotionGestureFactory->RIGHT;
     
 
                         }
@@ -322,16 +328,16 @@ diagonalToleranceLower= conf.getDiagonalTolerance();
                         
                                     {
                                     
-                        if(this->line.getDeltaX() > 0)
+                        if(this->line->getDeltaX() > 0)
                         
                                     {
-                                    newMotionGesture= touchMotionGestureFactory.DIAGONAL_UP_LEFT;
+                                    newMotionGesture= touchMotionGestureFactory->DIAGONAL_UP_LEFT;
     
 
                                     }
                                 
                         else {
-                            newMotionGesture= touchMotionGestureFactory.DIAGONAL_DOWN_RIGHT;
+                            newMotionGesture= touchMotionGestureFactory->DIAGONAL_DOWN_RIGHT;
     
 
                         }
@@ -341,16 +347,16 @@ diagonalToleranceLower= conf.getDiagonalTolerance();
                                 
                         else {
                             
-                        if(this->line.getDeltaX() > 0)
+                        if(this->line->getDeltaX() > 0)
                         
                                     {
-                                    newMotionGesture= touchMotionGestureFactory.DIAGONAL_DOWN_LEFT;
+                                    newMotionGesture= touchMotionGestureFactory->DIAGONAL_DOWN_LEFT;
     
 
                                     }
                                 
                         else {
-                            newMotionGesture= touchMotionGestureFactory.DIAGONAL_UP_RIGHT;
+                            newMotionGesture= touchMotionGestureFactory->DIAGONAL_UP_RIGHT;
     
 
                         }
@@ -369,13 +375,13 @@ this->previous= current;
 this->intermediate= current;
     
 
-    MotionGestureEvent event = this->motionEventCircularPool.getInstance(newMotionGesture);;
+    MotionGestureEvent* event = this->motionEventCircularPool->getInstance(newMotionGesture);;
     
-event.setPreviousPoint(this->previous);
+event->setPreviousPoint(this->previous);
     
-event.setCurrentPoint(current);
+event->setCurrentPoint(current);
     
-this->motionGesturesHandler.fireEvent(event);
+this->motionGesturesHandler->fireEvent(event);
     
 
 
@@ -388,15 +394,15 @@ this->motionGesturesHandler.fireEvent(event);
 
                 //@Throws(Exception.constructor)
             
-    public: bool processMovedMotionEvent(GPoint current, int32_t deviceId, int32_t button){
+    public: bool processMovedMotionEvent(GPoint* current, int32_t deviceId, int32_t button){
 
-    MotionGestureEvent event = this->motionEventCircularPool.getInstance(TouchMotionGestureFactory::getInstance().NO_MOTION);;
+    MotionGestureEvent* event = this->motionEventCircularPool->getInstance(TouchMotionGestureFactory::getInstance()->NO_MOTION);;
     
-event.setPreviousPoint(this->previous);
+event->setPreviousPoint(this->previous);
     
-event.setCurrentPoint(current);
+event->setCurrentPoint(current);
     
-this->movedMotionGesturesHandler.fireEvent(event);
+this->movedMotionGesturesHandler->fireEvent(event);
     
 
 
@@ -409,18 +415,18 @@ this->movedMotionGesturesHandler.fireEvent(event);
 
                 //@Throws(Exception.constructor)
             
-    public: bool processScrolledMotionEvent(GPoint current, int32_t deviceId, int32_t button){
+    public: bool processScrolledMotionEvent(GPoint* current, int32_t deviceId, int32_t button){
 
-    TouchMotionGestureFactory touchMotionGestureFactory = TouchMotionGestureFactory::getInstance();;
+    TouchMotionGestureFactory* touchMotionGestureFactory = TouchMotionGestureFactory::getInstance();;
     
 
-    MotionGestureInput newMotionGesture = touchMotionGestureFactory.NO_MOTION;;
+    MotionGestureInput* newMotionGesture = touchMotionGestureFactory->NO_MOTION;;
     
 
                         if(button > 0)
                         
                                     {
-                                    newMotionGesture= touchMotionGestureFactory.SCROLL_UP;
+                                    newMotionGesture= touchMotionGestureFactory->SCROLL_UP;
     
 
                                     }
@@ -429,19 +435,19 @@ this->movedMotionGesturesHandler.fireEvent(event);
                         if(button < 0)
                         
                                     {
-                                    newMotionGesture= touchMotionGestureFactory.SCROLL_DOWN;
+                                    newMotionGesture= touchMotionGestureFactory->SCROLL_DOWN;
     
 
                                     }
                                 
 
-    MotionGestureEvent event = this->motionEventCircularPool.getInstance(newMotionGesture);;
+    MotionGestureEvent* event = this->motionEventCircularPool->getInstance(newMotionGesture);;
     
-event.setPreviousPoint(this->previous);
+event->setPreviousPoint(this->previous);
     
-event.setCurrentPoint(current);
+event->setCurrentPoint(current);
     
-this->scrolledMotionGesturesHandler.fireEvent(event);
+this->scrolledMotionGesturesHandler->fireEvent(event);
     
 
 
@@ -452,7 +458,7 @@ this->scrolledMotionGesturesHandler.fireEvent(event);
 }
 
 
-    public: BasicMotionGesturesHandler getMotionGesturesHandler(){
+    public: BasicMotionGesturesHandler* getMotionGesturesHandler(){
 
 
 

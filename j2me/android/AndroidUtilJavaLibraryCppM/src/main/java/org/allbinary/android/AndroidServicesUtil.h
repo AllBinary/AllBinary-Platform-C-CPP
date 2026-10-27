@@ -23,6 +23,12 @@
 
             #include <hilog/log.h>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/List.h>
@@ -69,13 +75,13 @@ class AndroidServicesUtil
             : public Object
          {
 
-    public: static AndroidServicesUtil getInstance();
+    public: static AndroidServicesUtil* getInstance();
 
-    private: static AndroidServicesUtil instance() { return AndroidServicesUtil(); }
+    private: static AndroidServicesUtil* instance() { static std::unique_ptr<AndroidServicesUtil> value(new AndroidServicesUtil()); return value.get(); }
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const ResourceUtil resourceUtil = ResourceUtil::getInstance();
+    private: ResourceUtil* resourceUtil = ResourceUtil::getInstance();
 
     private: const int32_t SERVICE_LIMIT_MAX = 1000;
 

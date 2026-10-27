@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_HEDGES_HEADING_HEADINGVALIDATION_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_HEDGES_HEADING_HEADINGVALIDATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -80,37 +86,37 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HeadingData.h"
+        #include "org/allbinary/logic/visual/transform/template/customizer/hedges/heading/HeadingData.h"
 
 class HeadingValidation: public Validation, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: TitleValidation title;
+    private: TitleValidation* title;
 
-    private: LogoValidation logo;
+    private: LogoValidation* logo;
 
 public: HeadingValidation();
 
-public: HeadingValidation(Document document);
+public: HeadingValidation(Document* document);
 
-public: HeadingValidation(HashMap<Object*, Object*> hashMap);
+public: HeadingValidation(HashMap<Object*, Object*>* hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<Object*, Object*> hashMap);
+    public: void getFormData(HashMap<Object*, Object*>* hashMap);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string validationInfo();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

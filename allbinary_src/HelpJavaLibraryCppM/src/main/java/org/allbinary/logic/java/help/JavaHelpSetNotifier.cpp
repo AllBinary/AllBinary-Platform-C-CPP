@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/net/URL.h>
@@ -57,9 +63,9 @@ class JavaHelpSetNotifier
             : public Object
          {
 
-    private: static BasicArrayList vector = BasicArrayListD();
+    private: static inline BasicArrayList* vector = new BasicArrayListD();
 
-    private: static BasicArrayList get(){
+    private: static BasicArrayList* get(){
 
 
 
@@ -69,18 +75,18 @@ class JavaHelpSetNotifier
 }
 
 
-    public: static bool isNotified(HelpSet helpSet){
+    public: static bool isNotified(HelpSet* helpSet){
 
     bool isNotified = false;;
     
 
-    URL url = helpSet.getHelpSetURL();;
+    URL* url = helpSet->getHelpSetURL();;
     
 
-    int32_t size = JavaHelpSetNotifier::vector.size();;
+    int32_t size = JavaHelpSetNotifier::vector->size();;
     
 
-    std::vector<Object*> urlArray = JavaHelpSetNotifier::vector.toArray();;
+    std::vector<Object*> urlArray = JavaHelpSetNotifier::vector->toArray();;
     
 
 
@@ -90,10 +96,10 @@ class JavaHelpSetNotifier
     int32_t i = 0;i < size; i++)
         {
 
-    URL nextURL = urlArray[i];;
+    URL* nextURL = dynamic_cast<URL*>(urlArray[i]);;
     
 
-                        if(url.toString().compareTo(nextURL.toString()) == 0)
+                        if(url->toString().compareTo(nextURL->toString()) == 0)
                         
                                     {
                                     isNotified= true;
@@ -103,7 +109,7 @@ class JavaHelpSetNotifier
                                 
 }
 
-JavaHelpSetNotifier::vector.add(url);
+JavaHelpSetNotifier::vector->add(url);
     
 
 

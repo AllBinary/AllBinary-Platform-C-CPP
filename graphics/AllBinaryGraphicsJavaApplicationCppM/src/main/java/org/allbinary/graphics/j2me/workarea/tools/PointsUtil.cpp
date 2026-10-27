@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -59,9 +65,9 @@ class PointsUtil
             : public Object
          {
 
-    private: static PointsUtil instance() { return PointsUtil(); }
+    private: static PointsUtil* instance() { static std::unique_ptr<PointsUtil> value(new PointsUtil()); return value.get(); }
 
-    public: static PointsUtil getInstance(){
+    public: static PointsUtil* getInstance(){
 
 
 
@@ -73,12 +79,12 @@ class PointsUtil
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList doTransforms(BasicArrayList pointVector, number angle, GPoint fulcrumPoint){
+    public: BasicArrayList* doTransforms(BasicArrayList* pointVector, double angle, GPoint* fulcrumPoint){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return VectorRotationGenerator::getInstance().getListAtAngle(fulcrumPoint.getX(), fulcrumPoint.getY(), pointVector, AngleFactory::getInstance().getAt(angle.intValue()));;
+                        return VectorRotationGenerator::getInstance()->getListAtAngle(fulcrumPoint->getX(), fulcrumPoint->getY(), pointVector, AngleFactory::getInstance()->getAt(angle.intValue()));;
     
 }
 

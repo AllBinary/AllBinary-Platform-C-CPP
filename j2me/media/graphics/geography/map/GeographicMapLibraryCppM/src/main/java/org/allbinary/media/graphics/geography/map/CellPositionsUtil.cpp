@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -51,17 +57,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicGeographicMapCellPositionFactory.h"
-#include "GeographicMapCellPosition.h"
-#include "BasicGeographicMap.h"
+        #include "org/allbinary/media/graphics/geography/map/BasicGeographicMapCellPositionFactory.h"
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
+#include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
 
 class CellPositionsUtil
             : public Object
          {
 
-    private: static CellPositionsUtil instance() { return CellPositionsUtil(); }
+    private: static CellPositionsUtil* instance() { static std::unique_ptr<CellPositionsUtil> value(new CellPositionsUtil()); return value.get(); }
 
-    public: static CellPositionsUtil getInstance(){
+    public: static CellPositionsUtil* getInstance(){
 
 
 
@@ -73,20 +79,20 @@ class CellPositionsUtil
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getAll(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition topRightGeographicMapCellPosition, int32_t columns, int32_t rows, BasicArrayList reusableList){
-reusableList.clear();
+    public: BasicArrayList* getAll(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* topRightGeographicMapCellPosition, int32_t columns, int32_t rows, BasicArrayList* reusableList){
+reusableList->clear();
     
 
-    BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory = geographicMapInterface.getGeographicMapCellPositionFactory();;
+    BasicGeographicMapCellPositionFactory* geographicMapCellPositionFactory = geographicMapInterface->getGeographicMapCellPositionFactory();;
     
 
-    int32_t lastColumn = topRightGeographicMapCellPosition.getColumn() +columns;;
+    int32_t lastColumn = topRightGeographicMapCellPosition->getColumn() +columns;;
     
 
-    int32_t lastRow = topRightGeographicMapCellPosition.getRow() +rows;;
+    int32_t lastRow = topRightGeographicMapCellPosition->getRow() +rows;;
     
 
-                        if((columns > 1 && lastColumn > geographicMapInterface.getAllBinaryTiledLayer().getColumns()) || (rows > 1 && lastRow > geographicMapInterface.getAllBinaryTiledLayer().getRows()))
+                        if((columns > 1 && lastColumn > geographicMapInterface->getAllBinaryTiledLayer()->getColumns()) || (rows > 1 && lastRow > geographicMapInterface->getAllBinaryTiledLayer()->getRows()))
                         
                                     {
                                     
@@ -113,9 +119,9 @@ reusableList.clear();
     int32_t columnIndex = 0;columnIndex < columns; columnIndex++)
         {
 
-    GeographicMapCellPosition geographicMapCellPosition = geographicMapCellPositionFactory.getAt(topRightGeographicMapCellPosition.getColumn() +columnIndex, topRightGeographicMapCellPosition.getRow() +rowIndex);;
+    GeographicMapCellPosition* geographicMapCellPosition = geographicMapCellPositionFactory->getAt(topRightGeographicMapCellPosition->getColumn() +columnIndex, topRightGeographicMapCellPosition->getRow() +rowIndex);;
     
-reusableList.add(geographicMapCellPosition);
+reusableList->add(geographicMapCellPosition);
     
 }
 
@@ -130,41 +136,41 @@ reusableList.add(geographicMapCellPosition);
 }
 
 
-    private: const BasicArrayList reusableSingleThreadedSurroundingList = BasicArrayListS(8);
+    private: BasicArrayList* reusableSingleThreadedSurroundingList = new BasicArrayListS(8);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getAllSurrounding(BasicGeographicMap geographicMapInterface, BasicArrayList occupyList, BasicArrayList reusableList){
-reusableList.clear();
+    public: BasicArrayList* getAllSurrounding(BasicGeographicMap* geographicMapInterface, BasicArrayList* occupyList, BasicArrayList* reusableList){
+reusableList->clear();
     
 
 
 
 
                         for (
-    int32_t index = occupyList.size() -1;index >= 0; index--)
+    int32_t index = occupyList->size() -1;index >= 0; index--)
         {
 
-    GeographicMapCellPosition layerGeographicMapCellPosition = occupyList.get(index);;
+    GeographicMapCellPosition* layerGeographicMapCellPosition = dynamic_cast<GeographicMapCellPosition*>(occupyList->get(index));;
     
 
-    BasicArrayList surroundingGeographicMapCellPositionList = this->getAllSurroundingAt(geographicMapInterface, layerGeographicMapCellPosition, this->reusableSingleThreadedSurroundingList);;
+    BasicArrayList* surroundingGeographicMapCellPositionList = this->getAllSurroundingAt(geographicMapInterface, layerGeographicMapCellPosition, this->reusableSingleThreadedSurroundingList);;
     
 
 
 
 
                         for (
-    int32_t index2 = surroundingGeographicMapCellPositionList.size() -1;index2 >= 0; index2--)
+    int32_t index2 = surroundingGeographicMapCellPositionList->size() -1;index2 >= 0; index2--)
         {
 
-    GeographicMapCellPosition geographicMapCellPosition = surroundingGeographicMapCellPositionList.get(index2);;
+    GeographicMapCellPosition* geographicMapCellPosition = dynamic_cast<GeographicMapCellPosition*>(surroundingGeographicMapCellPositionList->get(index2));;
     
 
-                        if(!reusableList.contains(geographicMapCellPosition) && !occupyList.contains(geographicMapCellPosition))
+                        if(!reusableList->contains(geographicMapCellPosition) && !occupyList->contains(geographicMapCellPosition))
                         
                                     {
-                                    reusableList.add(geographicMapCellPosition);
+                                    reusableList->add(geographicMapCellPosition);
     
 
                                     }
@@ -197,14 +203,14 @@ reusableList.clear();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getAllSurroundingAt(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition layerGeographicMapCellPosition, BasicArrayList reusableSurroundingList){
-reusableSurroundingList.clear();
+    public: BasicArrayList* getAllSurroundingAt(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* layerGeographicMapCellPosition, BasicArrayList* reusableSurroundingList){
+reusableSurroundingList->clear();
     
 
-    BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory = geographicMapInterface.getGeographicMapCellPositionFactory();;
+    BasicGeographicMapCellPositionFactory* geographicMapCellPositionFactory = geographicMapInterface->getGeographicMapCellPositionFactory();;
     
 
-    AllBinaryTiledLayer tiledLayer = geographicMapInterface.getAllBinaryTiledLayer();;
+    AllBinaryTiledLayer* tiledLayer = geographicMapInterface->getAllBinaryTiledLayer();;
     
 
     int32_t row= 0;;
@@ -219,18 +225,18 @@ reusableSurroundingList.clear();
                         for (
     int32_t index = 0;index < 8; index++)
         {
-column= layerGeographicMapCellPosition.getColumn() +this->surroundArray[index][0];
+column= layerGeographicMapCellPosition->getColumn() +this->surroundArray[index][0];
     
-row= layerGeographicMapCellPosition.getRow() +this->surroundArray[index][1];
+row= layerGeographicMapCellPosition->getRow() +this->surroundArray[index][1];
     
 
-                        if(tiledLayer.isOnTileLayer(column, row))
+                        if(tiledLayer->isOnTileLayer(column, row))
                         
                                     {
                                     
-    GeographicMapCellPosition geographicMapCellPosition = geographicMapCellPositionFactory.getAt(column, row);;
+    GeographicMapCellPosition* geographicMapCellPosition = geographicMapCellPositionFactory->getAt(column, row);;
     
-reusableSurroundingList.add(geographicMapCellPosition);
+reusableSurroundingList->add(geographicMapCellPosition);
     
 
                                     }

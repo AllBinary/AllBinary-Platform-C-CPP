@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -29,14 +35,14 @@ class E
             : public Object
          {
 
-    private: static const E e = E();
+    private: static E* e() { static std::unique_ptr<E> value(new E()); return value.get(); }
 
-    public: E newInstance(){
+    public: E* newInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return E::e;
+                        return E::e();
     
 }
 

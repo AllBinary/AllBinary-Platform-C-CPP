@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Throwable.h"
@@ -52,15 +58,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Log.h"
+        #include "org/allbinary/logic/communication/log/Log.h"
 //ActualPlatform
 /*actual*/ class LogUtil
             : public Object
          {
 
-    private: static LogUtil instance() { return LogUtil(); }
+    private: static LogUtil* instance() { static std::unique_ptr<LogUtil> value(new LogUtil()); return value.get(); }
 
-    /*actual*/ public: static LogUtil getInstance(){
+    /*actual*/ public: static LogUtil* getInstance(){
 
 
 
@@ -74,18 +80,18 @@ private: LogUtil(){
 }
 
 
-    /*actual*/ public: void putL(Log log){
+    /*actual*/ public: void putL(Log* log){
 
-    std::string specialMessage = log.getSpecialMessage();;
+    std::string specialMessage = log->getSpecialMessage();;
     
 
-    Object* anyType = log.getObject();;
+    Object* anyType = log->getObject();;
     
 
-    std::string functionName = log.getFunctionName();;
+    std::string functionName = log->getFunctionName();;
     
 
-    Object* exception = log.getThrowable();;
+    Object* exception = log->getThrowable();;
     
 this->put(specialMessage, anyType, functionName, exception);
     
@@ -105,7 +111,7 @@ FileLog::put(specialMessage, className, functionName);
 
 
     /*actual*/ public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
-FileLog::put(specialMessage, anyType, functionName, *dynamic_cast<Throwable*>(exception));
+FileLog::put(specialMessage, anyType, functionName, dynamic_cast<Throwable*>(exception));
     
 }
 

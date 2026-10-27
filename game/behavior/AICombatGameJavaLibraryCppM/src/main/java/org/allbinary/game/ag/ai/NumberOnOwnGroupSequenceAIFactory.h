@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -74,18 +80,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NumberInSameGroupSequence.h"
-#include "NumberOnOwnGroupSequenceAI.h"
+        #include "org/allbinary/game/ag/ai/NumberInSameGroupSequence.h"
+#include "org/allbinary/game/ag/ai/NumberOnOwnGroupSequenceAI.h"
 
 class NumberOnOwnGroupSequenceAIFactory
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: ArtificialIntelligenceInterface getInstance(ABHashtable<Object*, Object*> hashtable, std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+    public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterface, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_STRING_TOKENS_TOKENIZER_H
         #define ORG_ALLBINARY_LOGIC_STRING_TOKENS_TOKENIZER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -68,7 +74,7 @@ class Tokenizer
 
     private: std::string sep;
 
-    private: std::string endSep = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string endSep = StringUtil::getInstance()->EMPTY_STRING;
 
 public: Tokenizer(std::string sep);
 
@@ -76,11 +82,11 @@ public: Tokenizer(std::string sep);
 
     public: void setEndSep(std::string endSep);
 
-    public: BasicArrayList getInsideSep(std::string string);
+    public: BasicArrayList* getInsideSep(std::string string);
 
-    public: BasicArrayList getTokensFromString(std::string string, BasicArrayList tokenVector);
+    public: BasicArrayList* getTokensFromString(std::string string, BasicArrayList* tokenVector);
 
-    public: ABHashtable<Object*, Object*> getTokens(BasicArrayList stringVector);
+    public: ABHashtable<Object*, Object*>* getTokens(BasicArrayList* stringVector);
 
 };
 

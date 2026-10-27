@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_TOUCHJ2ME_H
         #define ORG_ALLBINARY_INPUT_TOUCHJ2ME_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,11 +72,11 @@ class TouchJ2ME
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const int32_t DEVICE_ID = 0;
 
-    private: AllMotionRecognizer motionRecognizer = AllMotionRecognizer();
+    private: AllMotionRecognizer* motionRecognizer = new AllMotionRecognizer();
 
 public: TouchJ2ME();
 

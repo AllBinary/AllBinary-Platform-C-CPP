@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,11 +55,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreAdminUser.h"
+        #include "org/allbinary/business/user/modules/admin/store/StoreAdminUser.h"
 
 class StoreAdminUserFactory
             : public Object
-        : public UserFactoryInterface {
+        , public UserFactoryInterface {
 
 public: StoreAdminUserFactory(){
 }
@@ -61,24 +67,24 @@ public: StoreAdminUserFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface getInstance(){
+    public: UserInterface* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreAdminUser();
+                        return new StoreAdminUser();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface getInstance(HashMap<Object*, Object*> hashMap){
+    public: UserInterface* getInstance(HashMap<Object*, Object*>* hashMap){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreAdminUser(hashMap);
+                        return new StoreAdminUser(hashMap);
     
 }
 

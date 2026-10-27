@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/IllegalArgumentException.h"
@@ -128,49 +134,49 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProgressCanvas.h"
-#include "ShowTitleProgressBarRunnable.h"
-#include "DismissTitleProgressBarRunnable.h"
-#include "TitleProgressBarSetProgressRunnable.h"
-#include "TitleProgressBarPortionSetProgressRunnable.h"
+        #include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
+#include "org/allbinary/graphics/canvas/transition/progress/ShowTitleProgressBarRunnable.h"
+#include "org/allbinary/graphics/canvas/transition/progress/DismissTitleProgressBarRunnable.h"
+#include "org/allbinary/graphics/canvas/transition/progress/TitleProgressBarSetProgressRunnable.h"
+#include "org/allbinary/graphics/canvas/transition/progress/TitleProgressBarPortionSetProgressRunnable.h"
 
 class AndroidBasicTitleProgressBar: public ProgressCanvas, public DisplayChangeEventListener {
 
-    public: static const std::string RESOURCE = "ProgressImage";
+    public: static inline const std::string RESOURCE = "ProgressImage";
 
-    private: static int32_t background= 0;
+    private: static inline int32_t background= 0;
 
     public: static void setBackgroundResource(int32_t background);
 
-    private: ARunnable showTitleProgressBarRunnable = NullRunnable::getInstance();
+    private: ARunnable* showTitleProgressBarRunnable = NullRunnable::getInstance();
 
-    private: ARunnable dismissTitleProgressBarRunnable = NullRunnable::getInstance();
+    private: ARunnable* dismissTitleProgressBarRunnable = NullRunnable::getInstance();
 
-    private: ARunnable titleProgressDialogPortionSetProgressRunnable = NullRunnable::getInstance();
+    private: ARunnable* titleProgressDialogPortionSetProgressRunnable = NullRunnable::getInstance();
 
-    private: ARunnable titleProgressDialogSetProgressRunnable = NullRunnable::getInstance();
+    private: ARunnable* titleProgressDialogSetProgressRunnable = NullRunnable::getInstance();
 
-    private: Activity midletActivity = AndroidUtil::NULL_ACTIVITY;
+    private: Activity* midletActivity = AndroidUtil::NULL_ACTIVITY;
 
     private: int32_t portion = 0;
 
-    private: const std::vector<Image> IMAGE = std::vector<Image>(4);
+    private: const std::vector<Image*> IMAGE = std::vector<Image*>(4);
 
-    private: Image image = NullImage::NULL_IMAGE;
+    private: Image* image = NullImage::NULL_IMAGE;
 
-    private: Animation animation = NullAnimationFactory::getFactoryInstance().getInstance(0);
+    private: Animation* animation = NullAnimationFactory::getFactoryInstance()->getInstance(0);
 
-: AndroidBasicTitleProgressBar(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+: AndroidBasicTitleProgressBar(std::string title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
     private: void init();
 
-    public: void initActivity(Activity activity);
+    public: void initActivity(Activity* activity);
 
     private: void updateCurrent();
 
-    public: void onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject* eventObject);
 
-    public: void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent);
+    public: void onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent);
 
     private: void loadProgressImages();
 
@@ -196,17 +202,17 @@ class AndroidBasicTitleProgressBar: public ProgressCanvas, public DisplayChangeE
 
                 //@Throws(Exception.constructor)
             
-    public: void initOpenGL(Graphics graphics);
+    public: void initOpenGL(Graphics* graphics);
 
                 //@Throws(Exception.constructor)
             
-    public: void update(Graphics graphics);
+    public: void update(Graphics* graphics);
 
                 //@Throws(Exception.constructor)
             
-    private: Image getImage(int32_t index);
+    private: Image* getImage(int32_t index);
 
-    public: void paint2(Graphics graphics);
+    public: void paint2(Graphics* graphics);
 
     protected: void setBackground(bool background);
 

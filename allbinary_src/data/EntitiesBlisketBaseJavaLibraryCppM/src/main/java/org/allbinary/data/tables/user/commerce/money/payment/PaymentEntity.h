@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_PAYMENTENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_PAYMENTENTITY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -99,11 +105,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentEntityInterface.h"
+        #include "org/allbinary/data/tables/user/commerce/money/payment/PaymentEntityInterface.h"
 
 class PaymentEntity: public AbSqlBean, public PaymentEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const std::string tableName = "payment";
 
@@ -111,15 +117,15 @@ public: PaymentEntity();
 
     public: std::string getLastId(std::string userName);
 
-    public: void setDefault(std::string userName, Integer index);
+    public: void setDefault(std::string userName, int32_t index);
 
-    public: BasicArrayList get(std::string userName);
+    public: BasicArrayList* get(std::string userName);
 
-    public: PaymentInterface getDefault(std::string userName);
+    public: PaymentInterface* getDefault(std::string userName);
 
-    public: void remove(std::string userName, Integer index);
+    public: void remove(std::string userName, int32_t index);
 
-    public: void add(std::string userName, PaymentInterface paymentInterface);
+    public: void add(std::string userName, PaymentInterface* paymentInterface);
 
     public: std::string createTableStatement();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -59,13 +65,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformHttpRequestDocument.h"
+        #include "org/allbinary/logic/visual/transform/data/TransformHttpRequestDocument.h"
 
 class TransformStoreDocument: public TransformHttpRequestDocument {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: TransformStoreDocument(PageContext pageContext, WeblisketSession weblisketSession) : TransformHttpRequestDocument(pageContext, weblisketSession){
+public: TransformStoreDocument(PageContext* pageContext, WeblisketSession* weblisketSession) : TransformHttpRequestDocument(pageContext, weblisketSession){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,30 +81,30 @@ public: TransformStoreDocument(PageContext pageContext, WeblisketSession weblisk
 
         try {
             
-    std::string storeName = weblisketSession.getStoreName();;
+    std::string storeName = weblisketSession->getStoreName();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Using Session StoreName: " +storeName, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("Using Session StoreName: " +storeName, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
-this->getBaseNode().appendChild(StoreFrontViewFactory::getInstance(storeName).toXmlNode(this->getDoc()));
+this->getBaseNode()->appendChild(StoreFrontViewFactory::getInstance(storeName)->toXmlNode(this->getDoc()));
     
-this->getBaseNode().appendChild(RequestParams(pageContext.getRequest()).toXmlNode(this->getDoc()));
+this->getBaseNode()->appendChild((new RequestParams(dynamic_cast<HttpServletRequest*>(pageContext->getRequest())))->toXmlNode(this->getDoc()));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, &e);
     
 
                                     }
@@ -113,7 +119,7 @@ this->getBaseNode().appendChild(RequestParams(pageContext.getRequest()).toXmlNod
 }
 
 
-public: TransformStoreDocument(SearchRequest searchRequest) : TransformHttpRequestDocument(searchRequest){
+public: TransformStoreDocument(SearchRequest* searchRequest) : TransformHttpRequestDocument(searchRequest){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -122,19 +128,19 @@ public: TransformStoreDocument(SearchRequest searchRequest) : TransformHttpReque
                     
 
         try {
-            this->getBaseNode().appendChild(StoreFrontViewFactory::getInstance(searchRequest.getStoreFront().getName()).toXmlNode(this->getDoc()));
+            this->getBaseNode()->appendChild(StoreFrontViewFactory::getInstance(searchRequest->getStoreFront()->getName())->toXmlNode(this->getDoc()));
     
-this->getBaseNode().appendChild(searchRequest.getParams().getParamsNode(this->getDoc()));
+this->getBaseNode()->appendChild(searchRequest->getParams()->getParamsNode(this->getDoc()));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, &e);
     
 
                                     }

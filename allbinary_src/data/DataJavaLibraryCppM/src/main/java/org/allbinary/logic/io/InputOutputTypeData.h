@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_INPUTOUTPUTTYPEDATA_H
         #define ORG_ALLBINARY_LOGIC_IO_INPUTOUTPUTTYPEDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class InputOutputTypeData
             : public Object
          {
 
-    private: static InputOutputTypeData instance() { return InputOutputTypeData(); }
+    private: static InputOutputTypeData* instance() { static std::unique_ptr<InputOutputTypeData> value(new InputOutputTypeData()); return value.get(); }
 
-    public: static InputOutputTypeData getInstance();
+    public: static InputOutputTypeData* getInstance();
 
 private: InputOutputTypeData();
 

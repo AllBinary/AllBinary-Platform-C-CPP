@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -70,9 +76,9 @@ class KeySpecFactory
             : public Object
          {
 
-    private: static KeySpecFactory instance() { return KeySpecFactory(); }
+    private: static KeySpecFactory* instance() { static std::unique_ptr<KeySpecFactory> value(new KeySpecFactory()); return value.get(); }
 
-    public: static KeySpecFactory getInstance();
+    public: static KeySpecFactory* getInstance();
 
     public: const std::string DES = "DES";
 
@@ -82,7 +88,7 @@ class KeySpecFactory
 
 private: KeySpecFactory();
 
-    public: KeySpec getInstance(std::string algorithm, std::vector<int8_t> keyData);
+    public: KeySpec* getInstance(std::string algorithm, std::vector<int8_t> keyData);
 
 };
 

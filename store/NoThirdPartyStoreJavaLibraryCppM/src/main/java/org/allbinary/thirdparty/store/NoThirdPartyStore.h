@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_THIRDPARTY_STORE_NOTHIRDPARTYSTORE_H
         #define ORG_ALLBINARY_THIRDPARTY_STORE_NOTHIRDPARTYSTORE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/string/StringUtil.h>
 
       
@@ -45,13 +51,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ThirdPartyStore.h"
+        #include "org/allbinary/thirdparty/store/ThirdPartyStore.h"
 
 class NoThirdPartyStore: public ThirdPartyStore {
 
 : NoThirdPartyStore();
 
-    public: void authorize(AbeClientInformationInterface clientInformationInterface);
+    public: void authorize(AbeClientInformationInterface* clientInformationInterface);
 
 };
 

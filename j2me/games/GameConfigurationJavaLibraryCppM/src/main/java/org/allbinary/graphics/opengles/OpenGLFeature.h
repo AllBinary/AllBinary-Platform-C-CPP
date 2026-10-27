@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLFEATURE_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLFEATURE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/configuration/feature/Feature.h>
 
       

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_COLLISION_RECTANGLECOLLISIONUTIL_H
         #define ORG_ALLBINARY_COLLISION_RECTANGLECOLLISIONUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/awt.h>
@@ -47,15 +53,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Rectangle.h"
+        #include "org/allbinary/collision/Rectangle.h"
 
 class RectangleCollisionUtil
             : public Object
          {
 
-    public: static bool isCollision(Rectangle rectangle, GPoint point);
+    public: static bool isCollision(Rectangle* rectangle, GPoint* point);
 
-    public: static bool isCollision(Rectangle rectangle1, Rectangle rectangle2);
+    public: static bool isCollision(Rectangle* rectangle1, Rectangle* rectangle2);
 
     private: static bool isCollision(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, int32_t rect2X1, int32_t rect2Y1, int32_t rect2X2, int32_t rect2Y2);
 

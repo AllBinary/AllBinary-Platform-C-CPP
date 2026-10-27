@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -65,19 +71,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageAnalysisResults.h"
-#include "ColorRangeInterface.h"
-#include "Color.h"
-#include "ColorAverage.h"
-#include "ImageColorResults.h"
+        #include "org/allbinary/media/image/analysis/ImageAnalysisResults.h"
+#include "org/allbinary/media/image/analysis/ColorRangeInterface.h"
+#include "org/allbinary/media/image/analysis/Color.h"
+#include "org/allbinary/media/image/analysis/ColorAverage.h"
+#include "org/allbinary/media/image/analysis/ImageColorResults.h"
 
 class ImageAnalysis
             : public Object
          {
 
-    private: static ImageAnalysis instance() { return ImageAnalysis(); }
+    private: static ImageAnalysis* instance() { static std::unique_ptr<ImageAnalysis> value(new ImageAnalysis()); return value.get(); }
 
-    public: static ImageAnalysis getInstance(){
+    public: static ImageAnalysis* getInstance(){
 
 
 
@@ -89,9 +95,9 @@ class ImageAnalysis
 
                 //@Throws(Exception.constructor)
             
-    public: static ImageAnalysisResults process(BufferedImage bufferedImage, ColorRangeInterface colorRangeInterface){
+    public: static ImageAnalysisResults* process(BufferedImage* bufferedImage, ColorRangeInterface* colorRangeInterface){
 
-    ImageAnalysisResults imageAnalysisResults = ImageAnalysisResults();;
+    ImageAnalysisResults* imageAnalysisResults = new ImageAnalysisResults();;
     
 
     int64_t redTotal = 0;;
@@ -107,49 +113,49 @@ class ImageAnalysis
 
 
                         for (
-    int32_t indexY = 0;indexY < bufferedImage.getHeight(); indexY++)
+    int32_t indexY = 0;indexY < bufferedImage->getHeight(); indexY++)
         {
 
 
 
 
                         for (
-    int32_t indexX = 0;indexX < bufferedImage.getWidth(); indexX++)
+    int32_t indexX = 0;indexX < bufferedImage->getWidth(); indexX++)
         {
 
-    Integer keyInteger = Integer::valueOf(bufferedImage.getRGB(indexX, indexY));;
+    int32_t keyInteger = Integer.valueOf(bufferedImage->getRGB(indexX, indexY));;
     
 
-    ColorCacheable colorCacheable = ColorCacheFactory::getInstance().get(keyInteger);;
+    ColorCacheable* colorCacheable = dynamic_cast<ColorCacheable*>(ColorCacheFactory::getInstance()->get(keyInteger));;
     
 
-    Color color = colorCacheable.getColor();;
+    Color* color = colorCacheable->getColor();;
     
 ImageAnalysis::processColorRangeResults(imageAnalysisResults, colorRangeInterface, color);
     
-ImageAnalysis::processImageColorResults(imageAnalysisResults.getImageColorResults(), colorRangeInterface, color);
+ImageAnalysis::processImageColorResults(imageAnalysisResults->getImageColorResults(), colorRangeInterface, color);
     
-redTotal += color.getRed();
+redTotal += color->getRed();
     
-greenTotal += color.getGreen();
+greenTotal += color->getGreen();
     
-blueTotal += color.getBlue();
+blueTotal += color->getBlue();
     
 }
 
 }
 
 
-    int64_t totalPixels = imageAnalysisResults.getImageColorRangeResults().getTotalPixelsChecked();;
+    int64_t totalPixels = imageAnalysisResults->getImageColorRangeResults()->getTotalPixelsChecked();;
     
 
-    ColorAverage colorAverage = imageAnalysisResults.getImageColorResults().getColorAverage();;
+    ColorAverage* colorAverage = imageAnalysisResults->getImageColorResults()->getColorAverage();;
     
-colorAverage.setAvgRed(redTotal /totalPixels);
+colorAverage->setAvgRed(redTotal /totalPixels);
     
-colorAverage.setAvgGreen(greenTotal /totalPixels);
+colorAverage->setAvgGreen(greenTotal /totalPixels);
     
-colorAverage.setAvgBlue(blueTotal /totalPixels);
+colorAverage->setAvgBlue(blueTotal /totalPixels);
     
 
 
@@ -160,12 +166,12 @@ colorAverage.setAvgBlue(blueTotal /totalPixels);
 }
 
 
-    private: static void processColorRangeResults(ImageAnalysisResults imageAnalysisResults, ColorRangeInterface colorRangeInterface, Color color){
+    private: static void processColorRangeResults(ImageAnalysisResults* imageAnalysisResults, ColorRangeInterface* colorRangeInterface, Color* color){
 
-                        if(colorRangeInterface.isInRange(color))
+                        if(colorRangeInterface->isInRange(color))
                         
                                     {
-                                    imageAnalysisResults.getImageColorRangeResults().addMatchingPixelsChecked();
+                                    imageAnalysisResults->getImageColorRangeResults()->addMatchingPixelsChecked();
     
 
                                     }
@@ -174,62 +180,62 @@ colorAverage.setAvgBlue(blueTotal /totalPixels);
                             
                         }
                             
-imageAnalysisResults.getImageColorRangeResults().addTotalPixelsChecked();
+imageAnalysisResults->getImageColorRangeResults()->addTotalPixelsChecked();
     
 }
 
 
-    private: static void processImageColorResults(ImageColorResults imageColorResults, ColorRangeInterface colorRangeInterface, Color color){
+    private: static void processImageColorResults(ImageColorResults* imageColorResults, ColorRangeInterface* colorRangeInterface, Color* color){
 
-                        if(color.getRed() < imageColorResults.getColorRange().getMinRed())
+                        if(color->getRed() < imageColorResults->getColorRange()->getMinRed())
                         
                                     {
-                                    imageColorResults.getColorRange().setMinRed(color.getRed());
+                                    imageColorResults->getColorRange()->setMinRed(color->getRed());
     
 
                                     }
                                 
 
-                        if(color.getGreen() < imageColorResults.getColorRange().getMinGreen())
+                        if(color->getGreen() < imageColorResults->getColorRange()->getMinGreen())
                         
                                     {
-                                    imageColorResults.getColorRange().setMinGreen(color.getGreen());
+                                    imageColorResults->getColorRange()->setMinGreen(color->getGreen());
     
 
                                     }
                                 
 
-                        if(color.getBlue() < imageColorResults.getColorRange().getMinBlue())
+                        if(color->getBlue() < imageColorResults->getColorRange()->getMinBlue())
                         
                                     {
-                                    imageColorResults.getColorRange().setMinBlue(color.getBlue());
+                                    imageColorResults->getColorRange()->setMinBlue(color->getBlue());
     
 
                                     }
                                 
 
-                        if(color.getRed() > imageColorResults.getColorRange().getMaxRed())
+                        if(color->getRed() > imageColorResults->getColorRange()->getMaxRed())
                         
                                     {
-                                    imageColorResults.getColorRange().setMaxRed(color.getRed());
+                                    imageColorResults->getColorRange()->setMaxRed(color->getRed());
     
 
                                     }
                                 
 
-                        if(color.getGreen() > imageColorResults.getColorRange().getMaxGreen())
+                        if(color->getGreen() > imageColorResults->getColorRange()->getMaxGreen())
                         
                                     {
-                                    imageColorResults.getColorRange().setMaxGreen(color.getGreen());
+                                    imageColorResults->getColorRange()->setMaxGreen(color->getGreen());
     
 
                                     }
                                 
 
-                        if(color.getBlue() > imageColorResults.getColorRange().getMaxBlue())
+                        if(color->getBlue() > imageColorResults->getColorRange()->getMaxBlue())
                         
                                     {
-                                    imageColorResults.getColorRange().setMaxBlue(color.getBlue());
+                                    imageColorResults->getColorRange()->setMaxBlue(color->getBlue());
     
 
                                     }
@@ -237,7 +243,7 @@ imageAnalysisResults.getImageColorRangeResults().addTotalPixelsChecked();
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: ImageAnalysis(){
 }
@@ -245,14 +251,14 @@ private: ImageAnalysis(){
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<ImageAnalysisResults> process(std::vector<BufferedImage> bufferedImageArray, ColorRangeInterface colorRangeInterface){
+    public: std::vector<ImageAnalysisResults*> process(std::vector<BufferedImage*> bufferedImageArray, ColorRangeInterface* colorRangeInterface){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF(CommonLabels::getInstance().START +colorRangeInterface.toString(), this, commonStrings.PROCESS);
+this->logUtil->putF(CommonLabels::getInstance()->START +colorRangeInterface->toString(), this, commonStrings->PROCESS);
     
 
-    std::vector<ImageAnalysisResults> imageAnalysisResultsArray = std::vector<ImageAnalysisResults>(bufferedImageArray.length);;
+    std::vector<ImageAnalysisResults*> imageAnalysisResultsArray = std::vector<ImageAnalysisResults*>(bufferedImageArray.length);;
     
 
 

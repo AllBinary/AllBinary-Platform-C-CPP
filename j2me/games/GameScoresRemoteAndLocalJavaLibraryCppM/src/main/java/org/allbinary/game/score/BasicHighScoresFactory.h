@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/thread/ARunnable.h>
@@ -76,28 +82,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HighScoresBase.h"
-#include "HighScores.h"
-#include "HighScoresResultsListener.h"
-#include "RecordStoreHighScores.h"
-#include "ScoreComparator.h"
-#include "LastFetchHighScoresFactory.h"
-#include "HighScoresHelper2.h"
-#include "HighScoresHelperBaseInterface.h"
+        #include "org/allbinary/game/score/HighScoresBase.h"
+#include "org/allbinary/game/score/HighScores.h"
+#include "org/allbinary/game/score/HighScoresResultsListener.h"
+#include "org/allbinary/game/score/RecordStoreHighScores.h"
+#include "org/allbinary/game/score/ScoreComparator.h"
+#include "org/allbinary/game/score/LastFetchHighScoresFactory.h"
+#include "org/allbinary/game/score/HighScoresHelper2.h"
+#include "org/allbinary/game/score/HighScoresHelperBaseInterface.h"
 
 class BasicHighScoresFactory: public HighScoresBase {
 
     public: static bool loaded(int32_t index2);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: AbeClientInformationInterface abeClientInformation;
+    private: AbeClientInformationInterface* abeClientInformation;
 
-    private: SoftwareInformation softwareInformation;
+    private: SoftwareInformation* softwareInformation;
 
-public: BasicHighScoresFactory(AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation);
+public: BasicHighScoresFactory(AbeClientInformationInterface* abeClientInformation, SoftwareInformation* softwareInformation);
 
-    private: const std::vector<HighScores> highScoresArray = std::vector<HighScores>(2);
+    private: const std::vector<HighScores*> highScoresArray = std::vector<HighScores*>(2);
 
     private: const std::string TOP = "Top";
 
@@ -109,11 +115,11 @@ public: BasicHighScoresFactory(AbeClientInformationInterface abeClientInformatio
 
     private: const std::string FETCH = "fetchHighScores";
 
-    public: void fetchHighScores(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener);
+    public: void fetchHighScores(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener);
 
-    public: void fetchHighScoresPreload(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener, bool preload);
+    public: void fetchHighScoresPreload(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener, bool preload);
 
-    public: HighScoresHelperBaseInterface createHighScoresHelper();
+    public: HighScoresHelperBaseInterface* createHighScoresHelper();
 
 };
 

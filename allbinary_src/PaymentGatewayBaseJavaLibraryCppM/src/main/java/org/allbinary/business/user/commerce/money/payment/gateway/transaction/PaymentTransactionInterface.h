@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/business/user/commerce/inventory/order/OrderHistory.h>
 
       
@@ -51,7 +57,7 @@
         
 class PaymentTransactionInterface: public TableMappingInterface, public DomNodeInterface {
 
-    OrderHistory getOrderHistory();
+    public: virtual OrderHistory* getOrderHistory() = 0;
 
 };
 

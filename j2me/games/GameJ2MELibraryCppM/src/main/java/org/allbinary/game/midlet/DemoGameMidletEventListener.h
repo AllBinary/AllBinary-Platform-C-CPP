@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETEVENTLISTENER_H
         #define ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETEVENTLISTENER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
 
       
@@ -42,15 +48,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DemoGameMidletEvent.h"
+        #include "org/allbinary/game/midlet/DemoGameMidletEvent.h"
 
 class DemoGameMidletEventListener: public EventListenerInterface {
 
-    void onDemoStart();
+    public: virtual void onDemoStart() = 0;
 
-    void onGameStart();
+    public: virtual void onGameStart() = 0;
 
-    void onDemoGameMidletEvent(DemoGameMidletEvent demoGameMidletEvent);
+    public: virtual void onDemoGameMidletEvent(DemoGameMidletEvent* demoGameMidletEvent) = 0;
 
 };
 

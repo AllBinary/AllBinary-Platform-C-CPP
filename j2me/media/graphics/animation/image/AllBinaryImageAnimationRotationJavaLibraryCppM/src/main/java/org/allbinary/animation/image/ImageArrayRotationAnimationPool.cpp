@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/cache/BasicArrayListResetablePool.h>
@@ -50,15 +58,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageArrayRotationAnimationCacheableInterfaceFactory.h"
-#include "ImageArrayRotationAnimationInfo.h"
-#include "ImageArrayRotationAnimationCacheable.h"
+        #include "org/allbinary/animation/image/ImageArrayRotationAnimationCacheableInterfaceFactory.h"
+#include "org/allbinary/animation/image/ImageArrayRotationAnimationInfo.h"
+#include "org/allbinary/animation/image/ImageArrayRotationAnimationCacheable.h"
 
 class ImageArrayRotationAnimationPool: public BasicArrayListResetablePool {
 
-    private: static PoolInterface IMAGE_ROTATION_ANIMATION_POOL = ImageArrayRotationAnimationPool(ImageArrayRotationAnimationCacheableInterfaceFactory());
+    private: static inline PoolInterface* IMAGE_ROTATION_ANIMATION_POOL = new ImageArrayRotationAnimationPool(new ImageArrayRotationAnimationCacheableInterfaceFactory());
 
-    public: static PoolInterface getInstance(){
+    public: static PoolInterface* getInstance(){
 
 
 
@@ -68,7 +76,7 @@ class ImageArrayRotationAnimationPool: public BasicArrayListResetablePool {
 }
 
 
-public: ImageArrayRotationAnimationPool(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface) : BasicArrayListResetablePool(cacheableInterfaceFactoryInterface){
+public: ImageArrayRotationAnimationPool(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface) : BasicArrayListResetablePool(cacheableInterfaceFactoryInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -80,17 +88,17 @@ public: ImageArrayRotationAnimationPool(CacheableInterfaceFactoryInterface cache
 
                 //@Throws(Exception.constructor)
             
-    public: CacheableInterface remove(Object* key){
+    public: CacheableInterface* remove(Object* key){
 
-    CacheableInterface cacheableInterface = super.remove(key);;
+    CacheableInterface* cacheableInterface = super.remove(key);;
     
 
-    ImageArrayRotationAnimationInfo allBinaryImageRotationAnimationInfo = *dynamic_cast<ImageArrayRotationAnimationInfo*>(key);;
+    ImageArrayRotationAnimationInfo* allBinaryImageRotationAnimationInfo = dynamic_cast<ImageArrayRotationAnimationInfo*>(key);;
     
 
-    ImageArrayRotationAnimationCacheable imageArrayRotationAnimationCacheable = (cacheableInterface);;
+    ImageArrayRotationAnimationCacheable* imageArrayRotationAnimationCacheable = (dynamic_cast<ImageArrayRotationAnimationCacheable*>(cacheableInterface));;
     
-imageArrayRotationAnimationCacheable.setImageArray(allBinaryImageRotationAnimationInfo.getImageArray());
+imageArrayRotationAnimationCacheable->setImageArray(allBinaryImageRotationAnimationInfo->getImageArray());
     
 
 

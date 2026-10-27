@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/ag/layer/hud/basic/NumberStringHud.h>
 
       
@@ -39,13 +45,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Capital.h"
+        #include "org/allbinary/game/layer/capital/Capital.h"
 
 class HudCapital: public Capital {
 
-    private: NumberStringHud capitalGraphic;
+    private: NumberStringHud* capitalGraphic;
 
-public: HudCapital(NumberStringHud moneyGraphic){
+public: HudCapital(NumberStringHud* moneyGraphic){
 this->capitalGraphic= moneyGraphic;
     
 }
@@ -54,7 +60,7 @@ this->capitalGraphic= moneyGraphic;
     public: void removeMoney(int32_t points){
 super.removeMoney(points);
     
-this->capitalGraphic.reduce(points);
+this->capitalGraphic->reduce(points);
     
 }
 
@@ -64,7 +70,7 @@ this->capitalGraphic.reduce(points);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->capitalGraphic.get();;
+                        return this->capitalGraphic->get();;
     
 }
 
@@ -72,7 +78,7 @@ this->capitalGraphic.reduce(points);
     public: void addMoney(int32_t points){
 super.addMoney(points);
     
-this->capitalGraphic.add(points);
+this->capitalGraphic->add(points);
     
 }
 

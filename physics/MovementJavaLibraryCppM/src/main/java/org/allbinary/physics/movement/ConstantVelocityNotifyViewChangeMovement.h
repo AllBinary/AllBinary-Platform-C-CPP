@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_CONSTANTVELOCITYNOTIFYVIEWCHANGEMOVEMENT_H
         #define ORG_ALLBINARY_PHYSICS_MOVEMENT_CONSTANTVELOCITYNOTIFYVIEWCHANGEMOVEMENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
@@ -59,25 +65,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Movement.h"
+        #include "org/allbinary/physics/movement/Movement.h"
 
 class ConstantVelocityNotifyViewChangeMovement: public Movement {
 
-    protected: BasicVelocityProperties basicVelocityProperties;
+    protected: BasicVelocityProperties* basicVelocityProperties;
 
-    private: BasicDecimal speedBasicDecimal;
+    private: BasicDecimal* speedBasicDecimal;
 
-    private: const AxisMathVectorUtil axisMathVectorUtil = AxisMathVectorUtil::getInstance();
+    private: AxisMathVectorUtil* axisMathVectorUtil = AxisMathVectorUtil::getInstance();
 
 public: ConstantVelocityNotifyViewChangeMovement();
 
-    public: void init(BasicDecimal speedBasicDecimal, int32_t angle, int32_t otherAngle);
+    public: void init(BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle);
 
-    public: void moveOutsideRadius(AllBinaryLayer layer, int64_t radius, int32_t angle, int32_t otherAngle);
+    public: void moveOutsideRadius(AllBinaryLayer* layer, int64_t radius, int32_t angle, int32_t otherAngle);
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryGameLayer layer);
+    public: void process(AllBinaryGameLayer* layer);
 
     public: void stop();
 

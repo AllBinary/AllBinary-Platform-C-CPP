@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -149,55 +157,55 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "MouseListener.h"
-#include "MouseMotionListener.h"
-#include "KeyListener.h"
-#include "IntegerDimension.h"
-#include "CanvasTreeLabel.h"
-#include "Color.h"
-#include "Grid.h"
-#include "Dimension.h"
-#include "CanvasDom.h"
-#include "GridLayout.h"
-#include "Graphics.h"
-#include "MouseEvent.h"
-#include "KeyEvent.h"
+        #include "org/allbinary/graphics/j2me/workarea/canvas/JPanel.h"
+#include "org/allbinary/graphics/j2me/workarea/canvas/MouseListener.h"
+#include "org/allbinary/graphics/j2me/workarea/canvas/MouseMotionListener.h"
+#include "org/allbinary/graphics/j2me/workarea/canvas/KeyListener.h"
+#include "org/allbinary/graphics/j2me/workarea/canvas/IntegerDimension.h"
+#include "org/allbinary/graphics/j2me/workarea/canvas/CanvasTreeLabel.h"
+#include "org/allbinary/graphics/j2me/workarea/canvas/Color.h"
+#include "org/allbinary/graphics/j2me/workarea/canvas/Grid.h"
+#include "org/allbinary/graphics/j2me/workarea/canvas/Dimension.h"
+#include "org/allbinary/graphics/j2me/workarea/canvas/CanvasDom.h"
+#include "org/allbinary/graphics/j2me/workarea/canvas/GridLayout.h"
+#include "org/allbinary/graphics/j2me/workarea/canvas/Graphics.h"
+#include "org/allbinary/graphics/j2me/workarea/canvas/MouseEvent.h"
+#include "org/allbinary/graphics/j2me/workarea/canvas/KeyEvent.h"
 
 class CanvasJPanel: public javax::swing::JPanel, public java::awt::event::MouseListener, public java::awt::event::MouseMotionListener, public java::awt::event::KeyListener, public MyGraphicItemEventListener {
 
-    private: static int32_t frame = 0;
+    private: static inline int32_t frame = 0;
 
-    private: static const Color gridColor = Color(BasicColorFactory::getInstance().WHITE.intValue());
+    private: static Color* gridColor() { static std::unique_ptr<Color> value(new Color(BasicColorFactory::getInstance()->WHITE.intValue())); return value.get(); }
 
-    private: static const Color backgroundColor = Color(BasicColorFactory::getInstance().CLEAR_COLOR.intValue());
+    private: static Color* backgroundColor() { static std::unique_ptr<Color> value(new Color(BasicColorFactory::getInstance()->CLEAR_COLOR.intValue())); return value.get(); }
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const GuiLog guiLog = GuiLog::getInstance();
+    private: GuiLog* guiLog = GuiLog::getInstance();
 
-    private: const GameInputStrings gameInputStrings = GameInputStrings::getInstance();
+    private: GameInputStrings* gameInputStrings = GameInputStrings::getInstance();
 
-    private: GraphicItemInterface selectedTool = 
+    private: GraphicItemInterface* selectedTool = 
                 null
             ;
 
-    private: HashMap<Object*, Object*> graphicItemHashMap;
+    private: HashMap<Object*, Object*>* graphicItemHashMap;
 
-    private: IntegerDimension canvasDimension;
+    private: IntegerDimension* canvasDimension;
 
     private: double angle = 0;
 
-    private: DefaultMutableTreeNode canvasTreeNode;
+    private: DefaultMutableTreeNode* canvasTreeNode;
 
-    private: CanvasTreeLabel frameLabel;
+    private: CanvasTreeLabel* frameLabel;
 
-    private: WorkAreaJTreeJPanel workAreaJTreeJPanel;
+    private: WorkAreaJTreeJPanel* workAreaJTreeJPanel;
 
-    private: Grid grid;
+    private: Grid* grid;
 
-public: CanvasJPanel(WorkAreaJTreeJPanel workAreaJTreeJPanel, Dimension dimension, int32_t x, int32_t y){
-this->grid= Grid();
+public: CanvasJPanel(WorkAreaJTreeJPanel* workAreaJTreeJPanel, Dimension* dimension, int32_t x, int32_t y){
+this->grid= new Grid();
     
 
         try {
@@ -213,13 +221,13 @@ this->setCanvasSize(x, y);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
                         if(LOGGING::contains(LOGGING::GRAPHICSCREATION))
                         
                                     {
-                                    this->guiLog.put("Constructor Error", this, "contructor", e);
+                                    this->guiLog->put("Constructor Error", this, "contructor", &e);
     
 
                                     }
@@ -229,8 +237,8 @@ this->setCanvasSize(x, y);
 }
 
 
-public: CanvasJPanel(WorkAreaJTreeJPanel workAreaJTreeJPanel, Dimension dimension, CanvasDom canvasDom){
-this->grid= Grid(canvasDom.getGrid());
+public: CanvasJPanel(WorkAreaJTreeJPanel* workAreaJTreeJPanel, Dimension* dimension, CanvasDom* canvasDom){
+this->grid= new Grid(canvasDom->getGrid());
     
 
         try {
@@ -242,12 +250,12 @@ this->initMyComponents();
     
 this->setSize(dimension);
     
-this->setCanvasSize(canvasDom.getDimension().getWidth(), canvasDom.getDimension().getHeight());
+this->setCanvasSize(canvasDom->getDimension()->getWidth(), canvasDom->getDimension()->getHeight());
     
-this->graphicItemHashMap= canvasDom.getGraphicItemHashMap();
+this->graphicItemHashMap= canvasDom->getGraphicItemHashMap();
     
 
-    std::vector<Object*> graphicItemArray = this->graphicItemHashMap.keys().();;
+    std::vector<Object*> graphicItemArray = this->graphicItemHashMap->keys().();;
     
 
     int32_t size = graphicItemArray.size();;
@@ -260,31 +268,31 @@ this->graphicItemHashMap= canvasDom.getGraphicItemHashMap();
     int32_t index = 0;index < size; index++)
         {
 
-    MutableTreeNode graphicItemTreeNode = graphicItemArray[index];;
+    MutableTreeNode* graphicItemTreeNode = dynamic_cast<MutableTreeNode*>(graphicItemArray[index]);;
     
-this->canvasTreeNode.add(graphicItemTreeNode);
+this->canvasTreeNode->add(graphicItemTreeNode);
     
 }
 
 this->repaint();
     
-this->setAngle(canvasDom.getAngle());
+this->setAngle(canvasDom->getAngle());
     
-this->workAreaJTreeJPanel.updateTree();
+this->workAreaJTreeJPanel->updateTree();
     
-this->workAreaJTreeJPanel.expand();
+this->workAreaJTreeJPanel->expand();
     
-this->workAreaJTreeJPanel.repaint();
+this->workAreaJTreeJPanel->repaint();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
                         if(LOGGING::contains(LOGGING::GRAPHICSCREATION))
                         
                                     {
-                                    this->guiLog.put("Constructor Error", this, "contructor", e);
+                                    this->guiLog->put("Constructor Error", this, "contructor", &e);
     
 
                                     }
@@ -297,19 +305,19 @@ this->workAreaJTreeJPanel.repaint();
                 //@Throws(Exception.constructor)
             
     private: void initMyComponents(){
-this->frameLabel= CanvasTreeLabel("FrameLabel" +Integer(CanvasJPanel::frame).toString());
+this->frameLabel= new CanvasTreeLabel("FrameLabel" +(int32_t(CanvasJPanel::frame)).toString());
     
-this->canvasTreeNode= DefaultMutableTreeNode(this->frameLabel);
+this->canvasTreeNode= new DefaultMutableTreeNode(this->frameLabel);
     
 CanvasJPanel::frame++;
     
-this->workAreaJTreeJPanel.add(this->getTreeNode());
+this->workAreaJTreeJPanel->add(this->getTreeNode());
     
-this->graphicItemHashMap= StdUtil::getInstance().createHashMap();
+this->graphicItemHashMap= StdUtil::getInstance()->createHashMap();
     
-this->grid.grid= PointFactory::getInstance().createXY(0, 0);
+this->grid->grid= PointFactory::getInstance()->createXY(0, 0);
     
-this->setCanvasDimension(IntegerDimension(0, 0));
+this->setCanvasDimension(new IntegerDimension(0, 0));
     
 this->selectedTool= 
                                         nullptr
@@ -326,7 +334,7 @@ MyGraphicItemEventService::addListener(this);
 }
 
 
-    public: MutableTreeNode getTreeNode(){
+    public: MutableTreeNode* getTreeNode(){
 
 
 
@@ -337,7 +345,7 @@ MyGraphicItemEventService::addListener(this);
 
 
     private: void initComponents(){
-setLayout(java::awt::GridLayout(1, 1));
+setLayout(new java::awt::GridLayout(1, 1));
     
 }
 
@@ -345,18 +353,18 @@ setLayout(java::awt::GridLayout(1, 1));
                 //@Throws(Exception.constructor)
             
     public: void setCanvasSize(int32_t x, int32_t y){
-this->grid.isGridPossible= true;
+this->grid->isGridPossible= true;
     
 
                         if(x <= 0)
                         
                                     {
-                                    this->grid.isGridPossible= false;
+                                    this->grid->isGridPossible= false;
     
 
 
 
-                            throw GraphicsException("X Size Error: " +x, this, "setWorkAreaSize");
+                            throw new GraphicsException("X Size Error: " +x, this, "setWorkAreaSize");
                     
 
                                     }
@@ -365,12 +373,12 @@ this->grid.isGridPossible= true;
                         if(y <= 0)
                         
                                     {
-                                    this->grid.isGridPossible= false;
+                                    this->grid->isGridPossible= false;
     
 
 
 
-                            throw GraphicsException("Y Size Error: " +y, this, "setWorkAreaSize");
+                            throw new GraphicsException("Y Size Error: " +y, this, "setWorkAreaSize");
                     
 
                                     }
@@ -379,7 +387,7 @@ this->grid.isGridPossible= true;
                         if(x > this->getWidth())
                         
                                     {
-                                    this->grid.isGridPossible= false;
+                                    this->grid->isGridPossible= false;
     
 
                                     }
@@ -388,20 +396,20 @@ this->grid.isGridPossible= true;
                         if(y > this->getHeight())
                         
                                     {
-                                    this->grid.isGridPossible= false;
+                                    this->grid->isGridPossible= false;
     
 
                                     }
                                 
-this->setCanvasDimension(IntegerDimension(x, y));
+this->setCanvasDimension(new IntegerDimension(x, y));
     
-this->grid.isChanged= true;
+this->grid->isChanged= true;
     
 }
 
 
-    public: void setGrid(GPoint point){
-this->setGrid(point.getX(), point.getY());
+    public: void setGrid(GPoint* point){
+this->setGrid(point->getX(), point->getY());
     
 }
 
@@ -410,36 +418,36 @@ this->setGrid(point.getX(), point.getY());
 
         try {
             
-                        if(xSize >= getCanvasDimension().getWidth() /2 || xSize < 1)
+                        if(xSize >= getCanvasDimension()->getWidth() /2 || xSize < 1)
                         
                                     {
                                     
 
 
-                            throw GraphicsException("X Size Error: " +xSize +" WorkArea X: " +getCanvasDimension().getWidth(), this, "setGrid");
+                            throw new GraphicsException("X Size Error: " +xSize +" WorkArea X: " +getCanvasDimension()->getWidth(), this, "setGrid");
                     
 
                                     }
                                 
 
-                        if(ySize >= getCanvasDimension().getHeight() /2 || ySize < 1)
+                        if(ySize >= getCanvasDimension()->getHeight() /2 || ySize < 1)
                         
                                     {
                                     
 
 
-                            throw GraphicsException("Y Size Error" +ySize +" WorkArea Y: " +getCanvasDimension().getHeight(), this, "setGrid");
+                            throw new GraphicsException("Y Size Error" +ySize +" WorkArea Y: " +getCanvasDimension()->getHeight(), this, "setGrid");
                     
 
                                     }
                                 
-this->grid.grid= PointFactory::getInstance().createXY(xSize, ySize);
+this->grid->grid= PointFactory::getInstance()->createXY(xSize, ySize);
     
-this->grid.isChanged= true;
+this->grid->isChanged= true;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 }
 
@@ -450,14 +458,14 @@ this->grid.isChanged= true;
             
     public: void setDefaultGrid(){
 
-    int32_t xPixelsPerWorkAreaPixel = this->getWidth() /this->getCanvasDimension().getWidth();;
+    int32_t xPixelsPerWorkAreaPixel = this->getWidth() /this->getCanvasDimension()->getWidth();;
     
 
-    int32_t yPixelsPerWorkAreaPixel = this->getHeight() /this->getCanvasDimension().getHeight();;
+    int32_t yPixelsPerWorkAreaPixel = this->getHeight() /this->getCanvasDimension()->getHeight();;
     
 this->setGrid(1, 1);
     
-this->grid.isChanged= true;
+this->grid->isChanged= true;
     
 }
 
@@ -486,10 +494,10 @@ this->setAngle(this->angle +angle);
 
     public: void explodeAll(){
 
-    BasicArrayList newPoints = BasicArrayListD();;
+    BasicArrayList* newPoints = new BasicArrayListD();;
     
 
-    std::vector<Object*> graphicItemArray = this->getGraphicItemHashMap().keys().();;
+    std::vector<Object*> graphicItemArray = this->getGraphicItemHashMap()->keys().();;
     
 
     int32_t size = graphicItemArray.size();;
@@ -502,26 +510,26 @@ this->setAngle(this->angle +angle);
     int32_t index = 0;index < size; index++)
         {
 
-    MutableTreeNode graphicItemNode = graphicItemArray[index];;
+    MutableTreeNode* graphicItemNode = dynamic_cast<MutableTreeNode*>(graphicItemArray[index]);;
     
 
-    GraphicItemInterface graphicItem = this->getGraphicItemHashMap().get(graphicItemNode);;
+    GraphicItemInterface* graphicItem = dynamic_cast<GraphicItemInterface*>(this->getGraphicItemHashMap()->get(graphicItemNode));;
     
 
-                        if(graphicItem.getName() == LinesGraphicItem::getStaticName())
+                        if(graphicItem->getName() == LinesGraphicItem::getStaticName())
                         
                                     {
                                     
-        while(graphicItem.getPointsInterface().getSize() > 2)
+        while(graphicItem->getPointsInterface()->getSize() > 2)
         {
 
-    GraphicItemInterface newGraphicItem = GraphicItemFactory::getInstance().getInstance(graphicItem.getName()).getInstance(this);;
+    GraphicItemInterface* newGraphicItem = GraphicItemFactory::getInstance()->getInstance(graphicItem->getName())->getInstance(this);;
     
 
-    GPoint pointOne = GPoint::getInstance(graphicItem.removePoint());;
+    GPoint* pointOne = GPoint::getInstance(graphicItem->removePoint());;
     
 
-    GPoint pointTwo = GPoint::getInstance(graphicItem.removePoint());;
+    GPoint* pointTwo = GPoint::getInstance(graphicItem->removePoint());;
     
 
                         if(pointOne != 
@@ -531,14 +539,14 @@ this->setAngle(this->angle +angle);
                                 )
                         
                                     {
-                                    newGraphicItem.addPoint(pointOne);
+                                    newGraphicItem->addPoint(pointOne);
     
-newGraphicItem.addPoint(pointTwo);
+newGraphicItem->addPoint(pointTwo);
     
 
                                     }
                                 
-newPoints.add(newGraphicItem);
+newPoints->add(newGraphicItem);
     
 }
 
@@ -548,7 +556,7 @@ newPoints.add(newGraphicItem);
 }
 
 
-    int32_t size2 = newPoints.size();;
+    int32_t size2 = newPoints->size();;
     
 
 
@@ -558,19 +566,19 @@ newPoints.add(newGraphicItem);
     int32_t index = 0;index < size2; index++)
         {
 
-    GraphicItemInterface newGraphicItem = newPoints.get(index);;
+    GraphicItemInterface* newGraphicItem = dynamic_cast<GraphicItemInterface*>(newPoints->get(index));;
     
-this->canvasTreeNode.add(newGraphicItem.getTreeNode());
+this->canvasTreeNode->add(newGraphicItem->getTreeNode());
     
-this->getGraphicItemHashMap().put(newGraphicItem.getTreeNode(), newGraphicItem);
+this->getGraphicItemHashMap()->put(newGraphicItem->getTreeNode(), newGraphicItem);
     
 }
 
-this->workAreaJTreeJPanel.updateTree();
+this->workAreaJTreeJPanel->updateTree();
     
-this->workAreaJTreeJPanel.expand();
+this->workAreaJTreeJPanel->expand();
     
-this->workAreaJTreeJPanel.repaint();
+this->workAreaJTreeJPanel->repaint();
     
 }
 
@@ -579,7 +587,7 @@ this->workAreaJTreeJPanel.repaint();
             
     public: void explode(int32_t howMuch, int32_t explosionType){
 
-    std::vector<Object*> graphicItemArray = this->getGraphicItemHashMap().keys().();;
+    std::vector<Object*> graphicItemArray = this->getGraphicItemHashMap()->keys().();;
     
 
     int32_t size = graphicItemArray.size();;
@@ -592,22 +600,22 @@ this->workAreaJTreeJPanel.repaint();
     int32_t index = 0;index < size; index++)
         {
 
-    GraphicItemInterface item = this->getGraphicItemHashMap().get(graphicItemArray[index]);;
+    GraphicItemInterface* item = dynamic_cast<GraphicItemInterface*>(this->getGraphicItemHashMap()->get(graphicItemArray[index]));;
     
 
-    BasicArrayList basicArrayList = VectorExplosionGenerator::getInstance().createList(item.getPointsInterface().getPoints(), howMuch, VectorExplosionGenerator::getInstance().RANDOM);;
+    BasicArrayList* basicArrayList = VectorExplosionGenerator::getInstance()->createList(item->getPointsInterface()->getPoints(), howMuch, VectorExplosionGenerator::getInstance()->RANDOM);;
     
 
-    Points newPoints = Points();;
+    Points* newPoints = new Points();;
     
-newPoints.addPoints(basicArrayList);
+newPoints->addPoints(basicArrayList);
     
-item.setPointsInterface(newPoints);
+item->setPointsInterface(newPoints);
     
 
-    int32_t angleDelta = RandomRotationFactory::getInstance().getNextRandomAngle(howMuch);;
+    int32_t angleDelta = RandomRotationFactory::getInstance()->getNextRandomAngle(howMuch);;
     
-item.setAngle(angleDelta);
+item->setAngle(angleDelta);
     
 }
 
@@ -620,10 +628,10 @@ this->repaint();
             
     public: void mirror(){
 
-    int32_t width = this->getCanvasDimension().getWidth();;
+    int32_t width = this->getCanvasDimension()->getWidth();;
     
 
-    std::vector<Object*> graphicItemArray = this->getGraphicItemHashMap().keys().();;
+    std::vector<Object*> graphicItemArray = this->getGraphicItemHashMap()->keys().();;
     
 
     int32_t size = graphicItemArray.size();;
@@ -636,17 +644,17 @@ this->repaint();
     int32_t index = 0;index < size; index++)
         {
 
-    GraphicItemInterface item = this->getGraphicItemHashMap().get(graphicItemArray[index]);;
+    GraphicItemInterface* item = dynamic_cast<GraphicItemInterface*>(this->getGraphicItemHashMap()->get(graphicItemArray[index]));;
     
 
-    BasicArrayList basicArrayList = VectorMirrorGenerator::getInstance().getInstance(item.getPointsInterface().getPoints(), width);;
+    BasicArrayList* basicArrayList = VectorMirrorGenerator::getInstance()->getInstance(item->getPointsInterface()->getPoints(), width);;
     
 
-    Points newPoints = Points();;
+    Points* newPoints = new Points();;
     
-newPoints.addPoints(basicArrayList);
+newPoints->addPoints(basicArrayList);
     
-item.setPointsInterface(newPoints);
+item->setPointsInterface(newPoints);
     
 }
 
@@ -658,7 +666,7 @@ this->repaint();
                 //@Throws(Exception.constructor)
             
     public: void center(){
-VectorCenterGenerator().transform(this->getGraphicItemHashMap());
+(new VectorCenterGenerator())->transform(this->getGraphicItemHashMap());
     
 this->repaint();
     
@@ -668,16 +676,16 @@ this->repaint();
     public: void setNewTool(){
 
         try {
-            StatusFactory::getInstance().setStatus("Tool Selected");
+            StatusFactory::getInstance()->setStatus("Tool Selected");
     
-this->selectedTool= ToolFactory::getInstance().getSelectedToolFactory().getInstance(this);
+this->selectedTool= ToolFactory::getInstance()->getSelectedToolFactory()->getInstance(this);
     
 
-    MutableTreeNode newNode = this->selectedTool.getTreeNode();;
+    MutableTreeNode* newNode = this->selectedTool->getTreeNode();;
     
-this->getGraphicItemHashMap().put(newNode, this->selectedTool);
+this->getGraphicItemHashMap()->put(newNode, this->selectedTool);
     
-this->canvasTreeNode.add(newNode);
+this->canvasTreeNode->add(newNode);
     
 
                         if(this->getSelectedTool() == 
@@ -688,14 +696,14 @@ this->canvasTreeNode.add(newNode);
                                     
 
 
-                            throw GraphicsException("No Tool Selected", this, "setSelectedTool");
+                            throw new GraphicsException("No Tool Selected", this, "setSelectedTool");
                     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 }
 
@@ -704,22 +712,22 @@ this->canvasTreeNode.add(newNode);
 
                 //@Throws(Exception.constructor)
             
-    public: void duplicateGraphicItem(GraphicItemInterface graphicItem){
+    public: void duplicateGraphicItem(GraphicItemInterface* graphicItem){
 
-    GraphicItemInterface graphicItemClone = graphicItem.duplicate();;
+    GraphicItemInterface* graphicItemClone = graphicItem->duplicate();;
     
-this->getGraphicItemHashMap().put(graphicItemClone.getTreeNode(), graphicItemClone);
+this->getGraphicItemHashMap()->put(graphicItemClone->getTreeNode(), graphicItemClone);
     
-this->canvasTreeNode.add(graphicItemClone.getTreeNode());
+this->canvasTreeNode->add(graphicItemClone->getTreeNode());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void duplicateGraphicItemHashMap(HashMap<Object*, Object*> hashMap){
+    public: void duplicateGraphicItemHashMap(HashMap<Object*, Object*>* hashMap){
 
-    std::vector<Object*> mutableTreeNodeArray = hashMap.keys().();;
+    std::vector<Object*> mutableTreeNodeArray = hashMap->keys().();;
     
 
     int32_t size = mutableTreeNodeArray.size();;
@@ -732,10 +740,10 @@ this->canvasTreeNode.add(graphicItemClone.getTreeNode());
     int32_t index = 0;index < size; index++)
         {
 
-    MutableTreeNode treeNode = mutableTreeNodeArray[index];;
+    MutableTreeNode* treeNode = dynamic_cast<MutableTreeNode*>(mutableTreeNodeArray[index]);;
     
 
-    GraphicItemInterface graphicItem = hashMap.get(treeNode);;
+    GraphicItemInterface* graphicItem = dynamic_cast<GraphicItemInterface*>(hashMap->get(treeNode));;
     
 this->duplicateGraphicItem(graphicItem);
     
@@ -744,7 +752,7 @@ this->duplicateGraphicItem(graphicItem);
 }
 
 
-    public: HashMap<Object*, Object*> getGraphicItemHashMap(){
+    public: HashMap<Object*, Object*>* getGraphicItemHashMap(){
 
 
 
@@ -756,10 +764,10 @@ this->duplicateGraphicItem(graphicItem);
 
     public: int32_t getXPixelsPerWorkAreaPixel(){
 
-    int32_t x = this->getGrid().grid.getX() *(this->getWidth() -10) /this->getCanvasDimension().getWidth();;
+    int32_t x = this->getGrid()->grid->getX() *(this->getWidth() -10) /this->getCanvasDimension()->getWidth();;
     
 
-                        if(this->getGrid().getZoom() == 1)
+                        if(this->getGrid()->getZoom() == 1)
                         
                                     {
                                     
@@ -786,10 +794,10 @@ this->duplicateGraphicItem(graphicItem);
 
     public: int32_t getYPixelsPerWorkAreaPixel(){
 
-    int32_t y = this->getGrid().grid.getY() *(this->getHeight() -10) /this->getCanvasDimension().getHeight();;
+    int32_t y = this->getGrid()->grid->getY() *(this->getHeight() -10) /this->getCanvasDimension()->getHeight();;
     
 
-                        if(this->getGrid().getZoom() == 1)
+                        if(this->getGrid()->getZoom() == 1)
                         
                                     {
                                     
@@ -814,7 +822,7 @@ this->duplicateGraphicItem(graphicItem);
 }
 
 
-    public: GraphicItemInterface getSelectedTool(){
+    public: GraphicItemInterface* getSelectedTool(){
 
 
 
@@ -824,12 +832,12 @@ this->duplicateGraphicItem(graphicItem);
 }
 
 
-    public: void drawItems(Graphics graphics){
+    public: void drawItems(Graphics* graphics){
 
-    number angleDouble = number(this->angle);;
+    double angleDouble = double(this->angle);;
     
 
-    std::vector<Object*> graphicItemArray = this->getGraphicItemHashMap().keys().();;
+    std::vector<Object*> graphicItemArray = this->getGraphicItemHashMap()->keys().();;
     
 
     int32_t size = graphicItemArray.size();;
@@ -842,16 +850,16 @@ this->duplicateGraphicItem(graphicItem);
     int32_t index = 0;index < size; index++)
         {
 
-    GraphicItemInterface item = this->getGraphicItemHashMap().get(graphicItemArray[index]);;
+    GraphicItemInterface* item = dynamic_cast<GraphicItemInterface*>(this->getGraphicItemHashMap()->get(graphicItemArray[index]));;
     
-item.paint(graphics, angleDouble, this->getCanvasDimension(), this->getXPixelsPerWorkAreaPixel(), this->getYPixelsPerWorkAreaPixel());
+item->paint(graphics, angleDouble, this->getCanvasDimension(), this->getXPixelsPerWorkAreaPixel(), this->getYPixelsPerWorkAreaPixel());
     
 }
 
 }
 
 
-    public: void drawGrid(Graphics graphics){
+    public: void drawGrid(Graphics* graphics){
 
     int32_t xAdjust = (this->getWidth() % this->getXPixelsPerWorkAreaPixel()) /2;;
     
@@ -870,7 +878,7 @@ item.paint(graphics, angleDouble, this->getCanvasDimension(), this->getXPixelsPe
 
     int32_t yLower = this->getHeight() -yAdjust;;
     
-graphics.setColor(CanvasJPanel::gridColor);
+graphics->setColor(CanvasJPanel::gridColor());
     
 
 
@@ -879,7 +887,7 @@ graphics.setColor(CanvasJPanel::gridColor);
                         for (
     int32_t value = yAdjust;value <= this->getHeight() -yAdjust; )
         {
-graphics.drawLine(xLeft, value, xRight, value);
+graphics->drawLine(xLeft, value, xRight, value);
     
 }
 
@@ -890,26 +898,26 @@ graphics.drawLine(xLeft, value, xRight, value);
                         for (
     int32_t value = xAdjust;value <= this->getWidth() -xAdjust; )
         {
-graphics.drawLine(value, yUpper, value, yLower);
+graphics->drawLine(value, yUpper, value, yLower);
     
 }
 
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 
         try {
             
-                        if(this->getGrid().isChanged)
+                        if(this->getGrid()->isChanged)
                         
                                     {
-                                    graphics.setColor(CanvasJPanel::backgroundColor);
+                                    graphics->setColor(CanvasJPanel::backgroundColor());
     
-graphics.fillRect(0, 0, getWidth(), getHeight());
+graphics->fillRect(0, 0, getWidth(), getHeight());
     
 
-                        if(this->getGrid().getZoom() > 2 && this->getGrid().isGridOn && this->getGrid().isGridPossible)
+                        if(this->getGrid()->getZoom() > 2 && this->getGrid()->isGridOn && this->getGrid()->isGridPossible)
                         
                                     {
                                     this->setDefaultGrid();
@@ -921,16 +929,16 @@ this->drawGrid(graphics);
                                 
 this->drawItems(graphics);
     
-graphics.drawString(number(this->getAngle()).toString(), this->getWidth() -75, this->getHeight() -15);
+graphics->drawString((double(this->getAngle())).toString(), this->getWidth() -75, this->getHeight() -15);
     
-this->grid.isChanged= false;
+this->grid->isChanged= false;
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 }
 
@@ -944,7 +952,7 @@ this->grid.isChanged= false;
                                 )
                         
                                     {
-                                    this->grid.isChanged= true;
+                                    this->grid->isChanged= true;
     
 
                                     }
@@ -956,35 +964,35 @@ super.repaint();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toDom(){
+    public: Node* toDom(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CanvasDom(this).toDom();;
+                        return (new CanvasDom(this))->toDom();;
     
 }
 
 
     public: void changed(){
-this->grid.isChanged= true;
+this->grid->isChanged= true;
     
 }
 
 
-    public: void mouseClicked(java::awt::event::MouseEvent mouseEvent){
-StatusFactory::getInstance().setStatusNoLog(MouseStrings::getInstance().MOUSE_CLICKED_LABEL +this->logMouseEvent(mouseEvent));
+    public: void mouseClicked(java::awt::event::MouseEvent* mouseEvent){
+StatusFactory::getInstance()->setStatusNoLog(MouseStrings::getInstance()->MOUSE_CLICKED_LABEL +this->logMouseEvent(mouseEvent));
     
 
                         if(this->getSelectedTool() != 
                                     nullptr
-                                 && this->getSelectedTool().isActive())
+                                 && this->getSelectedTool()->isActive())
                         
                                     {
                                     
-    GraphicItemInterface graphicItem = this->getSelectedTool();;
+    GraphicItemInterface* graphicItem = this->getSelectedTool();;
     
-graphicItem.mouseClicked(mouseEvent, this->getXPixelsPerWorkAreaPixel(), this->getYPixelsPerWorkAreaPixel());
+graphicItem->mouseClicked(mouseEvent, this->getXPixelsPerWorkAreaPixel(), this->getYPixelsPerWorkAreaPixel());
     
 
                                     }
@@ -993,7 +1001,7 @@ graphicItem.mouseClicked(mouseEvent, this->getXPixelsPerWorkAreaPixel(), this->g
                             this->setNewTool();
     
 
-    GraphicItemInterface graphicItem = this->getSelectedTool();;
+    GraphicItemInterface* graphicItem = this->getSelectedTool();;
     
 
                         if(graphicItem != 
@@ -1001,7 +1009,7 @@ graphicItem.mouseClicked(mouseEvent, this->getXPixelsPerWorkAreaPixel(), this->g
                                 )
                         
                                     {
-                                    graphicItem.mouseClicked(mouseEvent, this->getXPixelsPerWorkAreaPixel(), this->getYPixelsPerWorkAreaPixel());
+                                    graphicItem->mouseClicked(mouseEvent, this->getXPixelsPerWorkAreaPixel(), this->getYPixelsPerWorkAreaPixel());
     
 
                                     }
@@ -1009,33 +1017,33 @@ graphicItem.mouseClicked(mouseEvent, this->getXPixelsPerWorkAreaPixel(), this->g
 
                         }
                             
-this->grid.isChanged= true;
+this->grid->isChanged= true;
     
 this->repaint();
     
-this->workAreaJTreeJPanel.updateTree();
+this->workAreaJTreeJPanel->updateTree();
     
-this->workAreaJTreeJPanel.expand();
+this->workAreaJTreeJPanel->expand();
     
-this->workAreaJTreeJPanel.repaint();
-    
-}
-
-
-    public: void mouseEntered(java::awt::event::MouseEvent mouseEvent){
-StatusFactory::getInstance().setStatusNoLog(this->logMouseEvent(mouseEvent));
+this->workAreaJTreeJPanel->repaint();
     
 }
 
 
-    public: void mouseExited(java::awt::event::MouseEvent mouseEvent){
-StatusFactory::getInstance().setStatusNoLog(this->logMouseEvent(mouseEvent));
+    public: void mouseEntered(java::awt::event::MouseEvent* mouseEvent){
+StatusFactory::getInstance()->setStatusNoLog(this->logMouseEvent(mouseEvent));
     
 }
 
 
-    public: void mousePressed(java::awt::event::MouseEvent mouseEvent){
-StatusFactory::getInstance().setStatusNoLog(MouseStrings::getInstance().MOUSE_PRESSED_LABEL +this->logMouseEvent(mouseEvent));
+    public: void mouseExited(java::awt::event::MouseEvent* mouseEvent){
+StatusFactory::getInstance()->setStatusNoLog(this->logMouseEvent(mouseEvent));
+    
+}
+
+
+    public: void mousePressed(java::awt::event::MouseEvent* mouseEvent){
+StatusFactory::getInstance()->setStatusNoLog(MouseStrings::getInstance()->MOUSE_PRESSED_LABEL +this->logMouseEvent(mouseEvent));
     
 
                         if(this->getSelectedTool() != 
@@ -1044,27 +1052,27 @@ StatusFactory::getInstance().setStatusNoLog(MouseStrings::getInstance().MOUSE_PR
                         
                                     {
                                     
-    GraphicItemInterface graphicItem = this->getSelectedTool();;
+    GraphicItemInterface* graphicItem = this->getSelectedTool();;
     
-graphicItem.mousePressed(mouseEvent, this->getXPixelsPerWorkAreaPixel(), this->getYPixelsPerWorkAreaPixel());
+graphicItem->mousePressed(mouseEvent, this->getXPixelsPerWorkAreaPixel(), this->getYPixelsPerWorkAreaPixel());
     
 
                                     }
                                 
 this->requestFocus();
     
-this->grid.isChanged= true;
+this->grid->isChanged= true;
     
 this->repaint();
     
 }
 
 
-    public: void mouseReleased(java::awt::event::MouseEvent mouseEvent){
-StatusFactory::getInstance().setStatusNoLog(MouseStrings::getInstance().MOUSE_RELEASED_LABEL +this->logMouseEvent(mouseEvent));
+    public: void mouseReleased(java::awt::event::MouseEvent* mouseEvent){
+StatusFactory::getInstance()->setStatusNoLog(MouseStrings::getInstance()->MOUSE_RELEASED_LABEL +this->logMouseEvent(mouseEvent));
     
 
-    GraphicItemInterface graphicItem = this->getSelectedTool();;
+    GraphicItemInterface* graphicItem = this->getSelectedTool();;
     
 
                         if(graphicItem != 
@@ -1072,25 +1080,25 @@ StatusFactory::getInstance().setStatusNoLog(MouseStrings::getInstance().MOUSE_RE
                                 )
                         
                                     {
-                                    graphicItem.mouseReleased(mouseEvent, this->getXPixelsPerWorkAreaPixel(), this->getYPixelsPerWorkAreaPixel());
+                                    graphicItem->mouseReleased(mouseEvent, this->getXPixelsPerWorkAreaPixel(), this->getYPixelsPerWorkAreaPixel());
     
 
                                     }
                                 
 this->requestFocus();
     
-this->grid.isChanged= true;
+this->grid->isChanged= true;
     
 this->repaint();
     
 }
 
 
-    public: void mouseDragged(java::awt::event::MouseEvent mouseEvent){
-StatusFactory::getInstance().setStatusNoLog(MouseStrings::getInstance().MOUSE_DRAGGED_LABEL +this->logMouseEvent(mouseEvent));
+    public: void mouseDragged(java::awt::event::MouseEvent* mouseEvent){
+StatusFactory::getInstance()->setStatusNoLog(MouseStrings::getInstance()->MOUSE_DRAGGED_LABEL +this->logMouseEvent(mouseEvent));
     
 
-    GraphicItemInterface graphicItem = this->getSelectedTool();;
+    GraphicItemInterface* graphicItem = this->getSelectedTool();;
     
 
                         if(graphicItem != 
@@ -1098,76 +1106,76 @@ StatusFactory::getInstance().setStatusNoLog(MouseStrings::getInstance().MOUSE_DR
                                 )
                         
                                     {
-                                    graphicItem.mouseDragged(mouseEvent, this->getXPixelsPerWorkAreaPixel(), this->getYPixelsPerWorkAreaPixel());
+                                    graphicItem->mouseDragged(mouseEvent, this->getXPixelsPerWorkAreaPixel(), this->getYPixelsPerWorkAreaPixel());
     
 
                                     }
                                 
 this->requestFocus();
     
-this->grid.isChanged= true;
+this->grid->isChanged= true;
     
 this->repaint();
     
 }
 
 
-    public: void mouseMoved(java::awt::event::MouseEvent mouseEvent){
-StatusFactory::getInstance().setStatusNoLog(MouseStrings::getInstance().MOUSE_MOVED_LABEL +this->logMouseEvent(mouseEvent));
+    public: void mouseMoved(java::awt::event::MouseEvent* mouseEvent){
+StatusFactory::getInstance()->setStatusNoLog(MouseStrings::getInstance()->MOUSE_MOVED_LABEL +this->logMouseEvent(mouseEvent));
     
 
                         if(this->getSelectedTool() != 
                                     nullptr
-                                 && this->getSelectedTool().isActive())
+                                 && this->getSelectedTool()->isActive())
                         
                                     {
                                     
-    GraphicItemInterface graphicItem = this->getSelectedTool();;
+    GraphicItemInterface* graphicItem = this->getSelectedTool();;
     
-graphicItem.mouseMoved(mouseEvent, this->getXPixelsPerWorkAreaPixel(), this->getYPixelsPerWorkAreaPixel());
+graphicItem->mouseMoved(mouseEvent, this->getXPixelsPerWorkAreaPixel(), this->getYPixelsPerWorkAreaPixel());
     
 
                                     }
                                 
 this->requestFocus();
     
-this->grid.isChanged= true;
+this->grid->isChanged= true;
     
 this->repaint();
     
 }
 
 
-    private: std::string logMouseEvent(java::awt::event::MouseEvent mouseEvent){
+    private: std::string logMouseEvent(java::awt::event::MouseEvent* mouseEvent){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(PositionStrings::getInstance().X_LABEL);
+stringBuffer->append(PositionStrings::getInstance()->X_LABEL);
     
-stringBuffer.appendint(mouseEvent.getX() /this->getXPixelsPerWorkAreaPixel());
+stringBuffer->appendint(mouseEvent->getX() /this->getXPixelsPerWorkAreaPixel());
     
-stringBuffer.append(CommonSeps::getInstance().SPACE);
+stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-stringBuffer.append(PositionStrings::getInstance().Y_LABEL);
+stringBuffer->append(PositionStrings::getInstance()->Y_LABEL);
     
-stringBuffer.appendint(mouseEvent.getY() /this->getYPixelsPerWorkAreaPixel());
+stringBuffer->appendint(mouseEvent->getY() /this->getYPixelsPerWorkAreaPixel());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
-    public: void keyPressed(java::awt::event::KeyEvent keyEvent){
-StatusFactory::getInstance().setStatus("Key Pressed");
+    public: void keyPressed(java::awt::event::KeyEvent* keyEvent){
+StatusFactory::getInstance()->setStatus("Key Pressed");
     
 
         try {
             
-    std::vector<Object*> graphicItemArray = this->graphicItemHashMap.keys().();;
+    std::vector<Object*> graphicItemArray = this->graphicItemHashMap->keys().();;
     
 
     int32_t size = graphicItemArray.size();;
@@ -1180,47 +1188,47 @@ StatusFactory::getInstance().setStatus("Key Pressed");
     int32_t index = 0;index < size; index++)
         {
 
-    GraphicItemInterface graphicItemInterface = this->graphicItemHashMap.get(graphicItemArray[index]);;
+    GraphicItemInterface* graphicItemInterface = dynamic_cast<GraphicItemInterface*>(this->graphicItemHashMap->get(graphicItemArray[index]));;
     
 
-    int32_t keyCode = keyEvent.getKeyCode();;
+    int32_t keyCode = keyEvent->getKeyCode();;
     
 
-                        if(graphicItemInterface.isActive())
+                        if(graphicItemInterface->isActive())
                         
                                     {
                                     
-                        if(keyCode == keyEvent.VK_UP)
+                        if(keyCode == keyEvent->VK_UP)
                         
                                     {
-                                    graphicItemInterface.translate(0,  -1);
+                                    graphicItemInterface->translate(0,  -1);
     
 
                                     }
                                 
                              else 
-                        if(keyCode == keyEvent.VK_DOWN)
+                        if(keyCode == keyEvent->VK_DOWN)
                         
                                     {
-                                    graphicItemInterface.translate(0, 1);
+                                    graphicItemInterface->translate(0, 1);
     
 
                                     }
                                 
                              else 
-                        if(keyCode == keyEvent.VK_LEFT)
+                        if(keyCode == keyEvent->VK_LEFT)
                         
                                     {
-                                    graphicItemInterface.translate( -1, 0);
+                                    graphicItemInterface->translate( -1, 0);
     
 
                                     }
                                 
                              else 
-                        if(keyCode == keyEvent.VK_RIGHT)
+                        if(keyCode == keyEvent->VK_RIGHT)
                         
                                     {
-                                    graphicItemInterface.translate(1, 0);
+                                    graphicItemInterface->translate(1, 0);
     
 
                                     }
@@ -1232,27 +1240,27 @@ StatusFactory::getInstance().setStatus("Key Pressed");
 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, this->gameInputStrings.KEY_PRESSED, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, this->gameInputStrings->KEY_PRESSED, &e);
     
 }
 
 
                         if(this->getSelectedTool() != 
                                     nullptr
-                                 && this->getSelectedTool().isActive())
+                                 && this->getSelectedTool()->isActive())
                         
                                     {
-                                    StatusFactory::getInstance().setStatus("Key Pressed for Tool");
+                                    StatusFactory::getInstance()->setStatus("Key Pressed for Tool");
     
 
-    GraphicItemInterface graphicItem = this->getSelectedTool();;
+    GraphicItemInterface* graphicItem = this->getSelectedTool();;
     
-graphicItem.keyPressed(keyEvent);
+graphicItem->keyPressed(keyEvent);
     
 
                                     }
@@ -1263,36 +1271,36 @@ graphicItem.keyPressed(keyEvent);
 
                         }
                             
-this->grid.isChanged= true;
+this->grid->isChanged= true;
     
 this->repaint();
     
 }
 
 
-    public: void keyReleased(java::awt::event::KeyEvent keyEvent){
+    public: void keyReleased(java::awt::event::KeyEvent* keyEvent){
 }
 
 
-    public: void keyTyped(java::awt::event::KeyEvent keyEvent){
+    public: void keyTyped(java::awt::event::KeyEvent* keyEvent){
 }
 
 
-    public: void delete_(MyGraphicItemEvent evt){
-this->getGraphicItemHashMap().remove(evt.getTreeNode());
+    public: void delete_(MyGraphicItemEvent* evt){
+this->getGraphicItemHashMap()->remove(evt->getTreeNode());
     
-this->workAreaJTreeJPanel.updateTree();
+this->workAreaJTreeJPanel->updateTree();
     
-this->workAreaJTreeJPanel.expand();
+this->workAreaJTreeJPanel->expand();
     
-this->workAreaJTreeJPanel.repaint();
+this->workAreaJTreeJPanel->repaint();
     
 }
 
 
-    public: void deselect(MyGraphicItemEvent evt){
+    public: void deselect(MyGraphicItemEvent* evt){
 
-    GraphicItemInterface graphicItemInterface = this->getGraphicItemHashMap().get(evt.getTreeNode());;
+    GraphicItemInterface* graphicItemInterface = dynamic_cast<GraphicItemInterface*>(this->getGraphicItemHashMap()->get(evt->getTreeNode()));;
     
 
                         if(graphicItemInterface != 
@@ -1300,11 +1308,11 @@ this->workAreaJTreeJPanel.repaint();
                                 )
                         
                                     {
-                                    graphicItemInterface.setColor(Color::WHITE);
+                                    graphicItemInterface->setColor(Color::WHITE);
     
-graphicItemInterface.deactivate();
+graphicItemInterface->deactivate();
     
-this->workAreaJTreeJPanel.repaint();
+this->workAreaJTreeJPanel->repaint();
     
 
                                     }
@@ -1312,9 +1320,9 @@ this->workAreaJTreeJPanel.repaint();
 }
 
 
-    public: void highlight(MyGraphicItemEvent evt){
+    public: void highlight(MyGraphicItemEvent* evt){
 
-    GraphicItemInterface graphicItemInterface = this->getGraphicItemHashMap().get(evt.getTreeNode());;
+    GraphicItemInterface* graphicItemInterface = dynamic_cast<GraphicItemInterface*>(this->getGraphicItemHashMap()->get(evt->getTreeNode()));;
     
 
                         if(graphicItemInterface != 
@@ -1322,11 +1330,11 @@ this->workAreaJTreeJPanel.repaint();
                                 )
                         
                                     {
-                                    graphicItemInterface.setColor(Color::YELLOW);
+                                    graphicItemInterface->setColor(Color::YELLOW);
     
-graphicItemInterface.activate();
+graphicItemInterface->activate();
     
-this->workAreaJTreeJPanel.repaint();
+this->workAreaJTreeJPanel->repaint();
     
 
                                     }
@@ -1336,21 +1344,21 @@ this->workAreaJTreeJPanel.repaint();
 
                 //@Throws(Exception.constructor)
             
-    public: CanvasJPanel duplicate(){
+    public: CanvasJPanel* duplicate(){
 
-    CanvasJPanel newCanvasJPanel = CanvasJPanel(this->workAreaJTreeJPanel, this->getSize(), this->getCanvasDimension().getWidth(), this->getCanvasDimension().getHeight());;
+    CanvasJPanel* newCanvasJPanel = new CanvasJPanel(this->workAreaJTreeJPanel, this->getSize(), this->getCanvasDimension()->getWidth(), this->getCanvasDimension()->getHeight());;
     
-newCanvasJPanel.setGrid(this->getGrid().getGrid());
+newCanvasJPanel->setGrid(this->getGrid()->getGrid());
     
-newCanvasJPanel.setAngle(this->getAngle());
+newCanvasJPanel->setAngle(this->getAngle());
     
-newCanvasJPanel.duplicateGraphicItemHashMap(this->getGraphicItemHashMap());
+newCanvasJPanel->duplicateGraphicItemHashMap(this->getGraphicItemHashMap());
     
-this->workAreaJTreeJPanel.updateTree();
+this->workAreaJTreeJPanel->updateTree();
     
-this->workAreaJTreeJPanel.expand();
+this->workAreaJTreeJPanel->expand();
     
-this->workAreaJTreeJPanel.repaint();
+this->workAreaJTreeJPanel->repaint();
     
 
 
@@ -1363,12 +1371,12 @@ this->workAreaJTreeJPanel.repaint();
 
                 //@Throws(Exception.constructor)
             
-    public: void duplicate(MyGraphicItemEvent event){
+    public: void duplicate(MyGraphicItemEvent* event){
 
-    MutableTreeNode treeNode = event.getTreeNode();;
+    MutableTreeNode* treeNode = event->getTreeNode();;
     
 
-    GraphicItemInterface graphicItem = this->getGraphicItemHashMap().get(treeNode);;
+    GraphicItemInterface* graphicItem = dynamic_cast<GraphicItemInterface*>(this->getGraphicItemHashMap()->get(treeNode));;
     
 
                         if(graphicItem != 
@@ -1378,11 +1386,11 @@ this->workAreaJTreeJPanel.repaint();
                                     {
                                     this->duplicateGraphicItem(graphicItem);
     
-this->workAreaJTreeJPanel.updateTree();
+this->workAreaJTreeJPanel->updateTree();
     
-this->workAreaJTreeJPanel.expand();
+this->workAreaJTreeJPanel->expand();
     
-this->workAreaJTreeJPanel.repaint();
+this->workAreaJTreeJPanel->repaint();
     
 
                                     }
@@ -1390,12 +1398,12 @@ this->workAreaJTreeJPanel.repaint();
 }
 
 
-    public: void rotate(MyGraphicItemEvent event){
+    public: void rotate(MyGraphicItemEvent* event){
 
-    MutableTreeNode treeNode = event.getTreeNode();;
+    MutableTreeNode* treeNode = event->getTreeNode();;
     
 
-    GraphicItemInterface graphicItem = this->getGraphicItemHashMap().get(treeNode);;
+    GraphicItemInterface* graphicItem = dynamic_cast<GraphicItemInterface*>(this->getGraphicItemHashMap()->get(treeNode));;
     
 
                         if(graphicItem != 
@@ -1403,7 +1411,7 @@ this->workAreaJTreeJPanel.repaint();
                                 )
                         
                                     {
-                                    graphicItem.addAngle(event.getAngle());
+                                    graphicItem->addAngle(event->getAngle());
     
 
                                     }
@@ -1411,7 +1419,7 @@ this->workAreaJTreeJPanel.repaint();
 }
 
 
-    public: IntegerDimension getCanvasDimension(){
+    public: IntegerDimension* getCanvasDimension(){
 
 
 
@@ -1421,13 +1429,13 @@ this->workAreaJTreeJPanel.repaint();
 }
 
 
-    public: void setCanvasDimension(IntegerDimension canvasDimension){
+    public: void setCanvasDimension(IntegerDimension* canvasDimension){
 this->canvasDimension= canvasDimension;
     
 }
 
 
-    public: Grid getGrid(){
+    public: Grid* getGrid(){
 
 
 

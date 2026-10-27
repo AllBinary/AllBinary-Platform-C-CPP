@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -68,17 +74,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TagHelper.h"
+        #include "admin/taghelpers/TagHelper.h"
 
 class BasicTextEmailHelper: public TagHelper {
 
-    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: HashMap<Object*, Object*> hashMap;
+    private: HashMap<Object*, Object*>* hashMap;
 
-    private: PageContext pageContext;
+    private: PageContext* pageContext;
 
-public: BasicTextEmailHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
+public: BasicTextEmailHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
 this->pageContext= pageContext;
     
 this->hashMap= hashMap;
@@ -90,21 +96,21 @@ this->hashMap= hashMap;
             
     public: void send(){
 
-    std::string adminEmailSubject = this->hashMap.get("Subject");;
+    std::string adminEmailSubject = this->hashMap->get("Subject");;
     
 
-    std::string adminEmailTextBody = this->hashMap.get("Body");;
+    std::string adminEmailTextBody = this->hashMap->get("Body");;
     
 
-    BasicEmailInfo adminBasicEmailInfo = AdminEmailInfo(adminEmailSubject, adminEmailTextBody);;
+    BasicEmailInfo* adminBasicEmailInfo = dynamic_cast<BasicEmailInfo*>(new AdminEmailInfo(adminEmailSubject, adminEmailTextBody));;
     
 
-    EmailInfo adminEmailInfo = EmailInfo(adminBasicEmailInfo);;
+    EmailInfo* adminEmailInfo = new EmailInfo(adminBasicEmailInfo);;
     
 
-    UserEmailEventHandler adminUserEmailEventHandler = AdminUserEmailEventHandlerSingletons::getInstance().getInstance(this->abeClientInformation, UserEmailEventNameData::INSTALLER);;
+    UserEmailEventHandler* adminUserEmailEventHandler = AdminUserEmailEventHandlerSingletons::getInstance()->getInstance(this->abeClientInformation, UserEmailEventNameData::INSTALLER);;
     
-adminUserEmailEventHandler.receiveEmailInfo(UserEmailEventNameData::INSTALLER, adminEmailInfo);
+adminUserEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::INSTALLER, adminEmailInfo);
     
 }
 

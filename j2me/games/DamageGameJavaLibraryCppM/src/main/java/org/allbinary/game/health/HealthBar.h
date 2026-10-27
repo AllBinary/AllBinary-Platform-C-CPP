@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHBAR_H
         #define ORG_ALLBINARY_GAME_HEALTH_HEALTHBAR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -50,26 +56,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HealthListenerInterface.h"
-#include "HealthBarAnimation.h"
-#include "HealthInterface.h"
-#include "Health.h"
+        #include "org/allbinary/game/health/HealthListenerInterface.h"
+#include "org/allbinary/game/health/HealthBarAnimation.h"
+#include "org/allbinary/game/health/HealthInterface.h"
+#include "org/allbinary/game/health/Health.h"
 
 class HealthBar: public Paintable, public HealthListenerInterface {
 
-    private: HealthBarAnimation animationInterface;
+    private: HealthBarAnimation* animationInterface;
 
-    private: HealthInterface healthInterface;
+    private: HealthInterface* healthInterface;
 
-    protected: AllBinaryLayer allbinaryLayer;
+    protected: AllBinaryLayer* allbinaryLayer;
 
-public: HealthBar(AllBinaryLayer layerInterface, Health healthInterface, HealthBarAnimation animationInterface, int32_t direction);
+public: HealthBar(AllBinaryLayer* layerInterface, Health* healthInterface, HealthBarAnimation* animationInterface, int32_t direction);
 
     public: void onHealthChange();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: void paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics* graphics);
 
 };
 

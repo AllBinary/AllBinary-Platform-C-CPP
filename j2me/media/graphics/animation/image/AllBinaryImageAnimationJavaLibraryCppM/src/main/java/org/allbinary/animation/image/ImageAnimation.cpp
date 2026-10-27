@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Throwable.h"
         
             #include "java/lang/Exception.h"
@@ -66,9 +72,9 @@
         
 class ImageAnimation: public IndexedAnimation {
 
-    private: Image image;
+    private: Image* image;
 
-public: ImageAnimation(Image image, AnimationBehavior animationBehavior) : IndexedAnimation(animationBehavior){
+public: ImageAnimation(Image* image, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -140,13 +146,13 @@ this->image= image;
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
-graphics.drawImage(this->image, x, y, this->anchor);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+graphics->drawImage(this->image, x, y, this->anchor);
     
 }
 
 
-    protected: Image getImage(){
+    protected: Image* getImage(){
 
 
 
@@ -157,7 +163,7 @@ graphics.drawImage(this->image, x, y, this->anchor);
 
 
     public: void close(){
-DisposalUtil::getInstance().disposeImage(this->image);
+DisposalUtil::getInstance()->disposeImage(this->image);
     
 }
 
@@ -165,7 +171,7 @@ DisposalUtil::getInstance().disposeImage(this->image);
                 //@Throws(Throwable.constructor)
             
     protected: void finalize(){
-DisposalUtil::getInstance().disposeImage(this->image);
+DisposalUtil::getInstance()->disposeImage(this->image);
     
 }
 

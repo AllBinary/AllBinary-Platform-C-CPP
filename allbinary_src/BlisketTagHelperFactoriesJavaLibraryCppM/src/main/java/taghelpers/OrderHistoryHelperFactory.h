@@ -21,6 +21,12 @@
         #ifndef TAGHELPERS_ORDERHISTORYHELPERFACTORY_H
         #define TAGHELPERS_ORDERHISTORYHELPERFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,19 +64,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OrderHistoryHelper.h"
+        #include "taghelpers/OrderHistoryHelper.h"
 
 class OrderHistoryHelperFactory
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: OrderHistoryHelperFactory();
 
                 //@Throws(LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+    public: Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
 };
 

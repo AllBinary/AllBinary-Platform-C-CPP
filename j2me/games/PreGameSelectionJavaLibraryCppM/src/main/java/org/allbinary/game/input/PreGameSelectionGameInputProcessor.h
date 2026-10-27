@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_PREGAMESELECTIONGAMEINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_INPUT_PREGAMESELECTIONGAMEINPUTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -95,35 +103,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameInputProcessorInterface.h"
-#include "PlayerGameInputCompositeInterface.h"
-#include "PlayerGameInput.h"
-#include "GameInputProcessorComposite.h"
+        #include "org/allbinary/game/input/GameInputProcessorInterface.h"
+#include "org/allbinary/game/input/PlayerGameInputCompositeInterface.h"
+#include "org/allbinary/game/input/PlayerGameInput.h"
+#include "org/allbinary/game/input/GameInputProcessorComposite.h"
 
 class PreGameSelectionGameInputProcessor: public Processor, public GameInputProcessorInterface, public PlayerGameInputCompositeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: AllBinaryGameCanvas gameCanvas;
+    private: AllBinaryGameCanvas* gameCanvas;
 
-    private: PreGameSelectorPaintable preGameSelectorPaintable;
+    private: PreGameSelectorPaintable* preGameSelectorPaintable;
 
-    private: const TimeDelayHelper inputTimeHelper = TimeDelayHelper(650);
+    private: TimeDelayHelper* inputTimeHelper = new TimeDelayHelper(650);
 
-    private: GameState nextGameState;
+    private: GameState* nextGameState;
 
-    private: PlayerGameInput playerGameInput;
+    private: PlayerGameInput* playerGameInput;
 
     private: int32_t lockedIndex;
 
-    private: const ABRunnable abRunnable = class extends ABRunnable
+    private: ABRunnable* abRunnable = class extends ABRunnable
                                 {
                                 
     public: void run();
                                 }
                             ;
 
-public: PreGameSelectionGameInputProcessor(AllBinaryGameCanvas gameCanvas, PreGameSelectorPaintable preGameSelectorPaintable, GameState nextGameState, int32_t lockedIndex);
+public: PreGameSelectionGameInputProcessor(AllBinaryGameCanvas* gameCanvas, PreGameSelectorPaintable* preGameSelectorPaintable, GameState* nextGameState, int32_t lockedIndex);
 
                 //@Throws(Exception.constructor)
             
@@ -131,19 +139,19 @@ public: PreGameSelectionGameInputProcessor(AllBinaryGameCanvas gameCanvas, PreGa
 
                 //@Throws(Exception.constructor)
             
-    public: void onInput(BasicArrayList list);
+    public: void onInput(BasicArrayList* list);
 
-    public: PreGameSelectorPaintable getPreGameSelectorPaintable();
+    public: PreGameSelectorPaintable* getPreGameSelectorPaintable();
 
                 //@Throws(Exception.constructor)
             
-    public: void processInput(AllBinaryLayerManager layerManager);
+    public: void processInput(AllBinaryLayerManager* layerManager);
 
     public: void initInputProcessors();
 
     public: std::string getName();
 
-    public: PlayerGameInput getPlayerGameInput();
+    public: PlayerGameInput* getPlayerGameInput();
 
 };
 

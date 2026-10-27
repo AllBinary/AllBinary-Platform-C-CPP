@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -53,15 +59,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WorkFlowInterface.h"
+        #include "org/allbinary/logic/control/workflow/WorkFlowInterface.h"
 
 class WorkFlowWrapper
             : public Object
-        : public WorkFlowInterface {
+        , public WorkFlowInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: Object* anyType;
 
@@ -90,11 +96,11 @@ this->anyType= anyType;
     Class* helperClass = this->anyType->getClass();;
     
 
-    Method method = helperClass.getMethod("getName", 
+    Method* method = helperClass->getMethod("getName", 
                             nullptr);;
     
 
-    std::string result = method.invoke(this->anyType, 
+    std::string result = method->invoke(this->anyType, 
                             nullptr);;
     
 
@@ -105,16 +111,16 @@ this->anyType= anyType;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Reflection Exception";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "getName()", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "getName()", &e);
     
 
                                     }
@@ -122,7 +128,7 @@ this->anyType= anyType;
 
 
 
-                            throw Exception(error);
+                            throw new Exception(error);
                     
 }
 
@@ -138,11 +144,11 @@ this->anyType= anyType;
     Class* helperClass = this->anyType->getClass();;
     
 
-    Method method = helperClass.getMethod("getStoreName", 
+    Method* method = helperClass->getMethod("getStoreName", 
                             nullptr);;
     
 
-    std::string result = method.invoke(this->anyType, 
+    std::string result = method->invoke(this->anyType, 
                             nullptr);;
     
 
@@ -153,16 +159,16 @@ this->anyType= anyType;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Reflection Exception";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "getStoreName()", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "getStoreName()", &e);
     
 
                                     }
@@ -170,7 +176,7 @@ this->anyType= anyType;
 
 
 
-                            throw Exception(error);
+                            throw new Exception(error);
                     
 }
 
@@ -179,18 +185,18 @@ this->anyType= anyType;
 
                 //@Throws(Exception.constructor)
             
-    public: Integer process(){
+    public: int32_t process(){
 
         try {
             
     Class* helperClass = this->anyType->getClass();;
     
 
-    Method method = helperClass.getMethod(this->commonStrings.PROCESS, 
+    Method* method = helperClass->getMethod(this->commonStrings->PROCESS, 
                             nullptr);;
     
 
-    Integer result = method.invoke(this->anyType, 
+    int32_t result = method->invoke(this->anyType, 
                             nullptr);;
     
 
@@ -201,16 +207,16 @@ this->anyType= anyType;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Reflection Exception";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->PROCESS, &e);
     
 
                                     }
@@ -218,7 +224,7 @@ this->anyType= anyType;
 
 
 
-                            throw Exception(error);
+                            throw new Exception(error);
                     
 }
 

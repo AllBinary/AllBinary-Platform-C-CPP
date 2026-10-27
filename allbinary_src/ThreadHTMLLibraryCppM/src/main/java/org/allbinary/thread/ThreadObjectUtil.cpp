@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -28,16 +34,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NullPriorityRunnable.h"
-#include "PriorityRunnable.h"
+        #include "org/allbinary/thread/NullPriorityRunnable.h"
+#include "org/allbinary/thread/PriorityRunnable.h"
 
 class ThreadObjectUtil
             : public Object
          {
 
-    private: static ThreadObjectUtil instance() { return ThreadObjectUtil(); }
+    private: static ThreadObjectUtil* instance() { static std::unique_ptr<ThreadObjectUtil> value(new ThreadObjectUtil()); return value.get(); }
 
-    public: static ThreadObjectUtil getInstance(){
+    public: static ThreadObjectUtil* getInstance(){
 
 
 
@@ -47,7 +53,7 @@ class ThreadObjectUtil
 }
 
 
-    public: const PriorityRunnable NULL_PRIORITY_RUNNABLE = NullPriorityRunnable();
+    public: PriorityRunnable* NULL_PRIORITY_RUNNABLE = new NullPriorityRunnable();
 
     public: void notifyObject(Object anyType){
 }
@@ -65,8 +71,8 @@ class ThreadObjectUtil
 }
 
 
-    public: void processThread(Runnable runnable){
-runnable.run();
+    public: void processThread(Runnable* runnable){
+runnable->run();
     
 }
 

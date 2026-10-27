@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_STATEPAINTABLE_H
         #define ORG_ALLBINARY_GRAPHICS_PAINT_STATEPAINTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graphics/displayable/StateControlledInterface.h>
 
       
@@ -42,7 +48,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Paintable.h"
+        #include "org/allbinary/graphics/paint/Paintable.h"
 
 class StatePaintable: public Paintable, public StateControlledInterface {
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/awt/Color.h>
@@ -46,9 +52,9 @@ class ImageJ2SEUtil
             : public Object
          {
 
-    private: static ImageJ2SEUtil instance() { return ImageJ2SEUtil(); }
+    private: static ImageJ2SEUtil* instance() { static std::unique_ptr<ImageJ2SEUtil> value(new ImageJ2SEUtil()); return value.get(); }
 
-    public: static ImageJ2SEUtil getInstance(){
+    public: static ImageJ2SEUtil* getInstance(){
 
 
 
@@ -58,7 +64,7 @@ class ImageJ2SEUtil
 }
 
 
-    public: const Color TRANSPARENT_COLOR = Color(0, 0, 0, 0);
+    public: Color* TRANSPARENT_COLOR = new Color(0, 0, 0, 0);
 
 };
 

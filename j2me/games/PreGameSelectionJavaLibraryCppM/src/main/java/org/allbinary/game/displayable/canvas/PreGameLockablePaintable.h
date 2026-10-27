@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_PREGAMELOCKABLEPAINTABLE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_PREGAMELOCKABLEPAINTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -64,13 +70,13 @@ class PreGameLockablePaintable: public LockablePaintable {
 
     private: int32_t halfWidth;
 
-    private: ScrollCurrentSelectionForm paintableForm;
+    private: ScrollCurrentSelectionForm* paintableForm;
 
-public: PreGameLockablePaintable(ScrollCurrentSelectionForm paintableForm, int32_t lockedIndex);
+public: PreGameLockablePaintable(ScrollCurrentSelectionForm* paintableForm, int32_t lockedIndex);
 
-    public: void paint(Graphics graphics, int32_t currentIndex, int32_t x, int32_t y);
+    public: void paint(Graphics* graphics, int32_t currentIndex, int32_t x, int32_t y);
 
-    protected: ScrollCurrentSelectionForm getPaintableForm();
+    protected: ScrollCurrentSelectionForm* getPaintableForm();
 
 };
 

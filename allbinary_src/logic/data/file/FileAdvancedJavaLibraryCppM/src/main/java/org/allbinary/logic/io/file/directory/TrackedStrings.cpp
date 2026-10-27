@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class TrackedStrings
             : public Object
          {
 
-    private: static TrackedStrings instance() { return TrackedStrings(); }
+    private: static TrackedStrings* instance() { static std::unique_ptr<TrackedStrings> value(new TrackedStrings()); return value.get(); }
 
-    public: static TrackedStrings getInstance(){
+    public: static TrackedStrings* getInstance(){
 
 
 

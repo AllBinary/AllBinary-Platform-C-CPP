@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,18 +52,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AffiliateSalesEntity.h"
-#include "AffiliateSalesEntityInterface.h"
+        #include "org/allbinary/data/tables/advertisement/sales/AffiliateSalesEntity.h"
+#include "org/allbinary/data/tables/advertisement/sales/AffiliateSalesEntityInterface.h"
 
 class AffiliateSalesEntityFactory
             : public Object
          {
 
-    private: static const std::string CLASSNAME = "org.allbinary.data.tables.AffiliatesSalesEntity";
+    private: static inline const std::string CLASSNAME = "org.allbinary.data.tables.AffiliatesSalesEntity";
 
-    public: static AffiliateSalesEntityInterface getInstance(){
+    public: static AffiliateSalesEntityInterface* getInstance(){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
         try {
@@ -65,20 +71,20 @@ class AffiliateSalesEntityFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AffiliateSalesEntity();
+                        return dynamic_cast<AffiliateSalesEntityInterface*>(new AffiliateSalesEntity());
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil.put(commonStrings.EXCEPTION, "AffiliateEntityFactory", commonStrings.GET_INSTANCE, e);
+logUtil->put(commonStrings->EXCEPTION, "AffiliateEntityFactory", commonStrings->GET_INSTANCE, &e);
     
 
                                     }

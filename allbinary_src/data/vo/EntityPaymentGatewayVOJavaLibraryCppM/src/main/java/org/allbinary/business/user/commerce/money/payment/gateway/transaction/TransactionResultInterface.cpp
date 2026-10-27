@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -45,51 +51,51 @@
         
 class TransactionResultInterface {
 
-    std::string toString()
+    public: virtual std::string toString() = 0;
 
-    BasicArrayList getValues()
+    public: virtual BasicArrayList* getValues() = 0;
 
-    std::string getResult()
+    public: virtual std::string getResult() = 0;
 
-    std::string getPnRef()
+    public: virtual std::string getPnRef() = 0;
 
-    std::string getRespMsg()
+    public: virtual std::string getRespMsg() = 0;
 
-    std::string getAvsAddr()
+    public: virtual std::string getAvsAddr() = 0;
 
-    std::string getAvsZip()
+    public: virtual std::string getAvsZip() = 0;
 
-    std::string getOrigResult()
+    public: virtual std::string getOrigResult() = 0;
 
-    std::string getStatus()
+    public: virtual std::string getStatus() = 0;
 
-    std::string getFraudCode()
+    public: virtual std::string getFraudCode() = 0;
 
-    std::string getFraudMsg()
+    public: virtual std::string getFraudMsg() = 0;
 
-    std::string getErrCode()
+    public: virtual std::string getErrCode() = 0;
 
-    std::string getScore()
+    public: virtual std::string getScore() = 0;
 
-    std::string getReason1()
+    public: virtual std::string getReason1() = 0;
 
-    std::string getReason2()
+    public: virtual std::string getReason2() = 0;
 
-    std::string getReason3()
+    public: virtual std::string getReason3() = 0;
 
-    std::string getException1()
+    public: virtual std::string getException1() = 0;
 
-    std::string getException2()
+    public: virtual std::string getException2() = 0;
 
-    std::string getException3()
+    public: virtual std::string getException3() = 0;
 
-    std::string getException4()
+    public: virtual std::string getException4() = 0;
 
-    std::string getException5()
+    public: virtual std::string getException5() = 0;
 
-    std::string getException6()
+    public: virtual std::string getException6() = 0;
 
-    std::string getException7()
+    public: virtual std::string getException7() = 0;
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -46,7 +52,7 @@ class MultiplayerBehavior
             : public Object
          {
 
-    public: static const MultiplayerBehavior NULL_MULTIPLAYER_BEHAVIOR = MultiplayerBehavior(StringUtil::getInstance().EMPTY_STRING);
+    public: static MultiplayerBehavior* NULL_MULTIPLAYER_BEHAVIOR() { static std::unique_ptr<MultiplayerBehavior> value(new MultiplayerBehavior(StringUtil::getInstance()->EMPTY_STRING)); return value.get(); }
 
 protected: MultiplayerBehavior(std::string username){
 }

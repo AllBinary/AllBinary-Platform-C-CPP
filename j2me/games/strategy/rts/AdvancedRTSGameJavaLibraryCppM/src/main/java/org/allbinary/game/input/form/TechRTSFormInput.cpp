@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/RTSGameStrings.h>
@@ -109,15 +115,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RTSFormInput.h"
+        #include "org/allbinary/game/input/form/RTSFormInput.h"
 
 class TechRTSFormInput: public RTSFormInput {
 
-    private: const AllBinaryEventObject EVENT = AllBinaryEventObject(this);
+    private: AllBinaryEventObject* EVENT = new AllBinaryEventObject(this);
 
-    protected: GameNotificationEvent noMoneyGameNotificationEvent;
+    protected: GameNotificationEvent* noMoneyGameNotificationEvent;
 
-public: TechRTSFormInput(std::vector<Group> groupInterface) : RTSFormInput(groupInterface){
+public: TechRTSFormInput(std::vector<Group*> groupInterface) : RTSFormInput(groupInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -125,87 +131,87 @@ public: TechRTSFormInput(std::vector<Group> groupInterface) : RTSFormInput(group
                             //For kotlin this is before the body of the constructor.
                     
 
-    BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();;
+    BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();;
     
-this->noMoneyGameNotificationEvent= GameNotificationEvent(this, RTSGameStrings::getInstance().NO_MONEY, SmallIntegerSingletonFactory::getInstance().getAt(2), basicColorFactory.WHITE, BooleanFactory::getInstance().FALSE);
+this->noMoneyGameNotificationEvent= new GameNotificationEvent(this, RTSGameStrings::getInstance()->NO_MONEY, SmallIntegerSingletonFactory::getInstance()->getAt(2), basicColorFactory->WHITE, BooleanFactory::getInstance()->FALSE);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager){
 super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = allBinaryGameLayerManager;;
+    GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(allBinaryGameLayerManager);;
     
 
-    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
+    BasicGeographicMap* geographicMapInterface = geographicMapCompositeInterface->getGeographicMapInterface()[0];;
     
-this->noMoneyGameNotificationEvent.setBasicColorP(geographicMapInterface.getForegroundBasicColor());
+this->noMoneyGameNotificationEvent->setBasicColorP(geographicMapInterface->getForegroundBasicColor());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t itemIndex){
+    public: void processGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t itemIndex){
 super.process(layerManager);
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-    StringMaker stringMaker = StringMaker();;
+    StringMaker* stringMaker = new StringMaker();;
     
 
-    TechnologyRTSInterfaceImageItem technologyRTSInterfaceImageItem = item;;
+    TechnologyRTSInterfaceImageItem* technologyRTSInterfaceImageItem = dynamic_cast<TechnologyRTSInterfaceImageItem*>(item);;
     
 
-    RTSInterface rtsInterface = technologyRTSInterfaceImageItem.getRtsInterface();;
+    RTSInterface* rtsInterface = technologyRTSInterfaceImageItem->getRtsInterface();;
     
-this->logUtil.putF(stringMaker.append("isUpgradeable: ").appendboolean(rtsInterface.isUpgradeable()).toString(), this, commonStrings.PROCESS);
+this->logUtil.putF(stringMaker->append("isUpgradeable: ")->appendboolean(rtsInterface->isUpgradeable())->toString(), this, commonStrings->PROCESS);
     
 
-                        if(rtsInterface.isUpgradeable())
+                        if(rtsInterface->isUpgradeable())
                         
                                     {
                                     
-    int32_t cost = rtsInterface.getUpgradeCost();;
+    int32_t cost = rtsInterface->getUpgradeCost();;
     
 
-    Capital capital = rtsPlayerLayerInterface.getCapital();;
+    Capital* capital = rtsPlayerLayerInterface->getCapital();;
     
-stringMaker.delete(0, stringMaker.length());
+stringMaker->delete(0, stringMaker->length());
     
-this->logUtil.putF(stringMaker.appendint(cost).append("<=").appendint(capital.getTotalMoney()).toString(), this, commonStrings.PROCESS);
+this->logUtil.putF(stringMaker->appendint(cost)->append("<=")->appendint(capital->getTotalMoney())->toString(), this, commonStrings->PROCESS);
     
 
-                        if(cost <= capital.getTotalMoney())
+                        if(cost <= capital->getTotalMoney())
                         
                                     {
-                                    rtsPlayerLayerInterface.add(BuildingSound::getInstance());
+                                    rtsPlayerLayerInterface->add(BuildingSound::getInstance());
     
-capital.removeMoney(cost);
+capital->removeMoney(cost);
     
-rtsInterface.upgrade();
+rtsInterface->upgrade();
     
-technologyRTSInterfaceImageItem.update();
+technologyRTSInterfaceImageItem->update();
     
-TechEventHandler::getInstance().fireEvent(this->EVENT);
+TechEventHandler::getInstance()->fireEvent(this->EVENT);
     
 
                                     }
                                 
                         else {
-                            rtsPlayerLayerInterface.add(ErrorSound::getInstance());
+                            rtsPlayerLayerInterface->add(ErrorSound::getInstance());
     
 
-                        if(!rtsPlayerLayerInterface.implmentsArtificialIntelligenceCompositeInterface())
+                        if(!rtsPlayerLayerInterface->implmentsArtificialIntelligenceCompositeInterface())
                         
                                     {
-                                    GameNotificationEventHandler::getInstance().fireEvent(this->noMoneyGameNotificationEvent);
+                                    GameNotificationEventHandler::getInstance()->fireEvent(this->noMoneyGameNotificationEvent);
     
 
                                     }

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -61,15 +67,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CompoundAnimationInterface.h"
+        #include "org/allbinary/animation/compound/CompoundAnimationInterface.h"
 
 class CompoundIndexedAnimation: public IndexedAnimation, public CompoundAnimationInterface {
 
-    private: CircularIndexUtil circularIndexUtil;
+    private: CircularIndexUtil* circularIndexUtil;
 
-    private: std::vector<Animation> animationInterfaceArray;
+    private: std::vector<Animation*> animationInterfaceArray;
 
-public: CompoundIndexedAnimation(std::vector<Animation> animationInterfaceArray, AnimationBehavior animationBehavior) : IndexedAnimation(animationBehavior){
+public: CompoundIndexedAnimation(std::vector<Animation*> animationInterfaceArray, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,44 +91,44 @@ this->circularIndexUtil= CircularIndexUtil::createInstance(this->animationInterf
 
     public: void setFrame(int32_t index){
 
-    IndexedAnimation indexedAnimation = this->animationInterfaceArray[this->circularIndexUtil.getIndex()];;
+    IndexedAnimation* indexedAnimation = dynamic_cast<IndexedAnimation*>(this->animationInterfaceArray[this->circularIndexUtil->getIndex()]);;
     
-indexedAnimation.setFrame(index);
+indexedAnimation->setFrame(index);
     
 }
 
 
     public: int32_t getFrame(){
 
-    IndexedAnimation indexedAnimation = this->animationInterfaceArray[this->circularIndexUtil.getIndex()];;
+    IndexedAnimation* indexedAnimation = dynamic_cast<IndexedAnimation*>(this->animationInterfaceArray[this->circularIndexUtil->getIndex()]);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return indexedAnimation.getFrame();;
+                        return indexedAnimation->getFrame();;
     
 }
 
 
     public: int32_t getSize(){
 
-    IndexedAnimation indexedAnimation = this->animationInterfaceArray[this->circularIndexUtil.getIndex()];;
+    IndexedAnimation* indexedAnimation = dynamic_cast<IndexedAnimation*>(this->animationInterfaceArray[this->circularIndexUtil->getIndex()]);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return indexedAnimation.getSize();;
+                        return indexedAnimation->getSize();;
     
 }
 
 
     public: void previousFrame(){
 
-    IndexedAnimation indexedAnimation = this->animationInterfaceArray[this->circularIndexUtil.getIndex()];;
+    IndexedAnimation* indexedAnimation = dynamic_cast<IndexedAnimation*>(this->animationInterfaceArray[this->circularIndexUtil->getIndex()]);;
     
-indexedAnimation.previousFrame();
+indexedAnimation->previousFrame();
     
 }
 
@@ -144,29 +150,29 @@ indexedAnimation.previousFrame();
                 //@Throws(Exception.constructor)
             
     public: void nextFrame(){
-this->animationInterfaceArray[this->circularIndexUtil.getIndex()].nextFrame();
+this->animationInterfaceArray[this->circularIndexUtil->getIndex()].nextFrame();
     
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
-this->animationInterfaceArray[this->circularIndexUtil.getIndex()].paintXY(graphics, x, y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+this->animationInterfaceArray[this->circularIndexUtil->getIndex()].paintXY(graphics, x, y);
     
 }
 
 
-    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
-this->animationInterfaceArray[this->circularIndexUtil.getIndex()].paintThreedXYZ(graphics, x, y, z);
+    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z){
+this->animationInterfaceArray[this->circularIndexUtil->getIndex()].paintThreedXYZ(graphics, x, y, z);
     
 }
 
 
-    public: IndexedAnimation getCurrentAnimation(){
+    public: IndexedAnimation* getCurrentAnimation(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animationInterfaceArray[this->circularIndexUtil.getIndex()];
+                        return dynamic_cast<IndexedAnimation*>(this->animationInterfaceArray[this->circularIndexUtil->getIndex()]);
     
 }
 
@@ -175,7 +181,7 @@ this->animationInterfaceArray[this->circularIndexUtil.getIndex()].paintThreedXYZ
 
     int32_t frame = this->getFrame();;
     
-this->circularIndexUtil.next();
+this->circularIndexUtil->next();
     
 this->setFrame(frame);
     
@@ -186,7 +192,7 @@ this->setFrame(frame);
 
     int32_t frame = this->getFrame();;
     
-this->circularIndexUtil.previous();
+this->circularIndexUtil->previous();
     
 this->setFrame(frame);
     
@@ -197,14 +203,14 @@ this->setFrame(frame);
 
     int32_t frame = this->getFrame();;
     
-this->circularIndexUtil.setIndex(index);
+this->circularIndexUtil->setIndex(index);
     
 this->setFrame(frame);
     
 }
 
 
-    public: std::vector<Animation> getAnimationInterfaceArray(){
+    public: std::vector<Animation*> getAnimationInterfaceArray(){
 
 
 
@@ -214,7 +220,7 @@ this->setFrame(frame);
 }
 
 
-    public: void setAnimationInterfaceArray(std::vector<Animation> animationInterfaceArray){
+    public: void setAnimationInterfaceArray(std::vector<Animation*> animationInterfaceArray){
 this->animationInterfaceArray= animationInterfaceArray;
     
 }
@@ -222,7 +228,7 @@ this->animationInterfaceArray= animationInterfaceArray;
 
                 //@Throws(Exception.constructor)
             
-    public: void set(GL gl){
+    public: void set(GL* gl){
 
 
 

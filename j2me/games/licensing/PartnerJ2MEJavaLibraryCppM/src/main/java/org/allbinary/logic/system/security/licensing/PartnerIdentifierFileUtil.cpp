@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -65,9 +71,9 @@ class PartnerIdentifierFileUtil
             : public Object
          {
 
-    private: static PartnerIdentifierFileUtil instance() { return PartnerIdentifierFileUtil(); }
+    private: static PartnerIdentifierFileUtil* instance() { static std::unique_ptr<PartnerIdentifierFileUtil> value(new PartnerIdentifierFileUtil()); return value.get(); }
 
-    public: static PartnerIdentifierFileUtil getInstance(){
+    public: static PartnerIdentifierFileUtil* getInstance(){
 
 
 
@@ -77,7 +83,7 @@ class PartnerIdentifierFileUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     public: const std::string FILE_NAME = "partner.txt";
 
@@ -85,22 +91,22 @@ class PartnerIdentifierFileUtil
 
         try {
             
-    ResourceUtil resourceUtil = ResourceUtil::getInstance();;
+    ResourceUtil* resourceUtil = ResourceUtil::getInstance();;
     
 
-    InputStream inputStream = resourceUtil.getResourceAsStream(this->FILE_NAME);;
+    InputStream* inputStream = resourceUtil->getResourceAsStream(this->FILE_NAME);;
     
 
-    InputStreamReader inputStreamReader = InputStreamReader(inputStream);;
+    InputStreamReader* inputStreamReader = new InputStreamReader(inputStream);;
     
 
     std::vector<char> chars = std::vector<char>(30);;
     
 
-    int32_t size = inputStreamReader.read(chars);;
+    int32_t size = inputStreamReader->read(chars);;
     
 
-    std::string partnerString = StringUtil::getInstance().EMPTY_STRING;;
+    std::string partnerString = StringUtil::getInstance()->EMPTY_STRING;;
     
 
                         if(size > 0)
@@ -111,7 +117,7 @@ class PartnerIdentifierFileUtil
 
                                     }
                                 
-inputStreamReader.close();
+inputStreamReader->close();
     
 
 
@@ -121,18 +127,18 @@ inputStreamReader.close();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET, &e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().NULL_STRING;
+                        return StringUtil::getInstance()->NULL_STRING;
     
 }
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,16 +60,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreThemeCategoryInterface.h"
-#include "StoreThemeCategoryView.h"
+        #include "org/allbinary/business/category/store/theme/StoreThemeCategoryInterface.h"
+#include "org/allbinary/business/category/store/theme/StoreThemeCategoryView.h"
 
 class StoreThemeCategoriesView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: StoreThemeCategoryInterface categoryInterface;
+    private: StoreThemeCategoryInterface* categoryInterface;
 
-public: StoreThemeCategoriesView(StoreThemeCategoryInterface categoryInterface){
+public: StoreThemeCategoriesView(StoreThemeCategoryInterface* categoryInterface){
 this->categoryInterface= categoryInterface;
     
 }
@@ -71,12 +77,12 @@ this->categoryInterface= categoryInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = StoreThemeCategoryView(this->categoryInterface).toXmlNode(document);;
+    Node* node = (new StoreThemeCategoryView(this->categoryInterface))->toXmlNode(document);;
     
 
-    std::vector<Object*> childArray = this->categoryInterface.getChildNodes().toArray();;
+    std::vector<Object*> childArray = this->categoryInterface->getChildNodes()->toArray();;
     
 
     int32_t size = childArray.size();;
@@ -89,12 +95,12 @@ this->categoryInterface= categoryInterface;
     int32_t i = 0;i < size; i++)
         {
 
-    CategoryInterface childCategoryInterface = childArray[i];;
+    CategoryInterface* childCategoryInterface = dynamic_cast<CategoryInterface*>(childArray[i]);;
     
 
-    Node childCategoryNode = StoreThemeCategoriesView(childCategoryInterface).toXmlNode(document);;
+    Node* childCategoryNode = (new StoreThemeCategoriesView(dynamic_cast<StoreThemeCategoryInterface*>(childCategoryInterface)))->toXmlNode(document);;
     
-node.appendChild(childCategoryNode);
+node->appendChild(childCategoryNode);
     
 }
 

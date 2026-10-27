@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,16 +55,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DestroyEventFactory.h"
-#include "DestroyedEvent.h"
+        #include "org/allbinary/game/combat/destroy/event/DestroyEventFactory.h"
+#include "org/allbinary/game/combat/destroy/event/DestroyedEvent.h"
 
 class DestroyEventCircularStaticPool
             : public Object
          {
 
-    private: static DestroyEventCircularStaticPool instance() { return DestroyEventCircularStaticPool(); }
+    private: static DestroyEventCircularStaticPool* instance() { static std::unique_ptr<DestroyEventCircularStaticPool> value(new DestroyEventCircularStaticPool()); return value.get(); }
 
-    public: static DestroyEventCircularStaticPool getInstance(){
+    public: static DestroyEventCircularStaticPool* getInstance(){
 
 
 
@@ -68,25 +74,25 @@ class DestroyEventCircularStaticPool
 }
 
 
-    private: AllBinaryEventCircularPool EVENT_POOL = AllBinaryEventCircularPool(20);
+    private: AllBinaryEventCircularPool* EVENT_POOL = new AllBinaryEventCircularPool(20);
 
 private: DestroyEventCircularStaticPool(){
 }
 
 
-    public: void init(AllBinaryGameCanvas combatGameCanvas){
-this->EVENT_POOL.initAllBinaryEventCircularPool(DestroyEventFactory(combatGameCanvas));
+    public: void init(AllBinaryGameCanvas* combatGameCanvas){
+this->EVENT_POOL->initAllBinaryEventCircularPool(new DestroyEventFactory(combatGameCanvas));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: DestroyedEvent getInstanceForLayer(AllBinaryLayer layerInterface){
+    public: DestroyedEvent* getInstanceForLayer(AllBinaryLayer* layerInterface){
 
-    DestroyedEvent destroyedEvent = this->EVENT_POOL.getNextInstance();;
+    DestroyedEvent* destroyedEvent = dynamic_cast<DestroyedEvent*>(this->EVENT_POOL->getNextInstance());;
     
-destroyedEvent.setLayerInterfaceForCircularStaticPool(layerInterface);
+destroyedEvent->setLayerInterfaceForCircularStaticPool(layerInterface);
     
 
 

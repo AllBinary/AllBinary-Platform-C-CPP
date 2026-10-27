@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Long.h"
         
             #include "java/lang/Float.h"
@@ -57,73 +63,73 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "JLabel.h"
-#include "JTextField.h"
-#include "JComboBox.h"
-#include "DefaultComboBoxModel.h"
-#include "GroupLayout.h"
-#include "Short.h"
+        #include "org/allbinary/image/gui/JPanel.h"
+#include "org/allbinary/image/gui/JLabel.h"
+#include "org/allbinary/image/gui/JTextField.h"
+#include "org/allbinary/image/gui/JComboBox.h"
+#include "org/allbinary/image/gui/DefaultComboBoxModel.h"
+#include "org/allbinary/image/gui/GroupLayout.h"
+#include "org/allbinary/image/gui/Short.h"
 
 class ImageAnalysisResultsJPanel: public javax::swing::JPanel {
 
-public: ImageAnalysisResultsJPanel(std::vector<ImageAnalysisResults> imageAnalysisResultsArray);
+public: ImageAnalysisResultsJPanel(std::vector<ImageAnalysisResults*> imageAnalysisResultsArray);
 
     private: void initComponents();
 
-    private: void updateImageColorRangeResults(ImageAnalysisResults imageAnalysisResults);
+    private: void updateImageColorRangeResults(ImageAnalysisResults* imageAnalysisResults);
 
-    private: javax::swing::JTextField avgBlueJTextField;
+    private: javax::swing::JTextField* avgBlueJTextField;
 
-    private: javax::swing::JTextField avgGreenJTextField;
+    private: javax::swing::JTextField* avgGreenJTextField;
 
-    private: javax::swing::JTextField avgRedJTextField;
+    private: javax::swing::JTextField* avgRedJTextField;
 
-    private: javax::swing::JComboBox jComboBox1;
+    private: javax::swing::JComboBox* jComboBox1;
 
-    private: javax::swing::JLabel jLabel1;
+    private: javax::swing::JLabel* jLabel1;
 
-    private: javax::swing::JLabel jLabel10;
+    private: javax::swing::JLabel* jLabel10;
 
-    private: javax::swing::JLabel jLabel11;
+    private: javax::swing::JLabel* jLabel11;
 
-    private: javax::swing::JLabel jLabel12;
+    private: javax::swing::JLabel* jLabel12;
 
-    private: javax::swing::JLabel jLabel13;
+    private: javax::swing::JLabel* jLabel13;
 
-    private: javax::swing::JLabel jLabel2;
+    private: javax::swing::JLabel* jLabel2;
 
-    private: javax::swing::JLabel jLabel3;
+    private: javax::swing::JLabel* jLabel3;
 
-    private: javax::swing::JLabel jLabel4;
+    private: javax::swing::JLabel* jLabel4;
 
-    private: javax::swing::JLabel jLabel5;
+    private: javax::swing::JLabel* jLabel5;
 
-    private: javax::swing::JLabel jLabel6;
+    private: javax::swing::JLabel* jLabel6;
 
-    private: javax::swing::JLabel jLabel7;
+    private: javax::swing::JLabel* jLabel7;
 
-    private: javax::swing::JLabel jLabel8;
+    private: javax::swing::JLabel* jLabel8;
 
-    private: javax::swing::JLabel jLabel9;
+    private: javax::swing::JLabel* jLabel9;
 
-    private: javax::swing::JTextField matchingPixelsJTextField;
+    private: javax::swing::JTextField* matchingPixelsJTextField;
 
-    private: javax::swing::JTextField maxBlueJTextField;
+    private: javax::swing::JTextField* maxBlueJTextField;
 
-    private: javax::swing::JTextField maxGreenJTextField;
+    private: javax::swing::JTextField* maxGreenJTextField;
 
-    private: javax::swing::JTextField maxRedJTextField;
+    private: javax::swing::JTextField* maxRedJTextField;
 
-    private: javax::swing::JTextField minBlueJTextField;
+    private: javax::swing::JTextField* minBlueJTextField;
 
-    private: javax::swing::JTextField minGreenJTextField;
+    private: javax::swing::JTextField* minGreenJTextField;
 
-    private: javax::swing::JTextField minRedJTextField;
+    private: javax::swing::JTextField* minRedJTextField;
 
-    private: javax::swing::JTextField percentMatchingJTextField;
+    private: javax::swing::JTextField* percentMatchingJTextField;
 
-    private: javax::swing::JTextField totalPixelsJTextField;
+    private: javax::swing::JTextField* totalPixelsJTextField;
 
 };
 

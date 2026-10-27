@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -51,28 +57,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PrimitiveLongSingleton.h"
-#include "MathUtil.h"
+        #include "org/allbinary/logic/math/PrimitiveLongSingleton.h"
+#include "org/allbinary/logic/math/MathUtil.h"
 
 class PrimitiveLongUtil
             : public Object
          {
 
-    public: static PrimitiveLongUtil createPowerOfTen(int32_t powerOfTen){
+    public: static PrimitiveLongUtil* createPowerOfTen(int32_t powerOfTen){
 
-    PrimitiveLongUtil primitiveLongUtil = PrimitiveLongUtil(powerOfTen, NullUtil::getInstance().NULL_OBJECT);;
+    PrimitiveLongUtil* primitiveLongUtil = new PrimitiveLongUtil(powerOfTen, NullUtil::getInstance()->NULL_OBJECT);;
     
 
                         if(powerOfTen % 10 != 0)
                         
                                     {
                                     
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil.put(commonStrings.EXCEPTION, primitiveLongUtil, commonStrings.CONSTRUCTOR, Exception("Max must be power of 10"));
+logUtil->put(commonStrings->EXCEPTION, primitiveLongUtil, commonStrings->CONSTRUCTOR, new Exception("Max must be power of 10"));
     
 
                                     }
@@ -86,7 +92,7 @@ logUtil.put(commonStrings.EXCEPTION, primitiveLongUtil, commonStrings.CONSTRUCTO
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: int32_t powerOfTen;
 
@@ -98,10 +104,10 @@ logUtil.put(commonStrings.EXCEPTION, primitiveLongUtil, commonStrings.CONSTRUCTO
 
     private: int32_t currentTotalDigits= 0;
 
-    private: const PrimitiveLongSingleton primitiveLongSingleton = PrimitiveLongSingleton::getInstance();
+    private: PrimitiveLongSingleton* primitiveLongSingleton = PrimitiveLongSingleton::getInstance();
 
 public: PrimitiveLongUtil(int32_t powerOfTen, Object* unused){
-this->maxDigits= MathUtil::getInstance().getTotalDigits(powerOfTen);
+this->maxDigits= MathUtil::getInstance()->getTotalDigits(powerOfTen);
     
 this->powerOfTen= powerOfTen;
     
@@ -123,7 +129,7 @@ this->charArray= std::vector<char>(this->maxDigits);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->primitiveLongSingleton.NUMBER_CHAR_ARRAYS[value];
+                        return this->primitiveLongSingleton->NUMBER_CHAR_ARRAYS[value];
     
 
                                     }
@@ -138,7 +144,7 @@ this->charArray= std::vector<char>(this->maxDigits);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->primitiveLongSingleton.UNK;
+                        return this->primitiveLongSingleton->UNK;
     
 
                                     }
@@ -170,7 +176,7 @@ this->charArray= std::vector<char>(this->maxDigits);
                                     }
                                 
                         else {
-                            this->charArray[index++]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[digit];
+                            this->charArray[index++]= this->primitiveLongSingleton->NUMBER_CHAR_ARRAY[digit];
     
 
                         }

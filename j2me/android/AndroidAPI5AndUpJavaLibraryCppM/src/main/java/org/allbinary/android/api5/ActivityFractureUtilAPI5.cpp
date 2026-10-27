@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <android/app/Activity.h>
 
       
@@ -57,14 +63,14 @@
         
 class ActivityFractureUtilAPI5: public ActivityFractureUtilAPI1 {
 
-    private: static const ActivityFractureUtilAPI5 instance5 = ActivityFractureUtilAPI5();
+    private: static ActivityFractureUtilAPI5* instance5() { static std::unique_ptr<ActivityFractureUtilAPI5> value(new ActivityFractureUtilAPI5()); return value.get(); }
 
-    public: static ActivityFractureUtilAPI5 getInstance(){
+    public: static ActivityFractureUtilAPI5* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ActivityFractureUtilAPI5::instance5;
+                        return ActivityFractureUtilAPI5::instance5();
     
 }
 
@@ -75,30 +81,30 @@ class ActivityFractureUtilAPI5: public ActivityFractureUtilAPI1 {
 
     private: const std::string FEATURE_TOUCHSCREEN_MULTITOUCH_DISTINCT = "android.hardware.touchscreen.multitouch.distinct";
 
-    public: void process(Activity activity){
+    public: void process(Activity* activity){
 
-    TouchScreenFactory touchScreenFactory = TouchScreenFactory::getInstance();;
-    
-
-    TouchScreenTypeFactory touchScreenTypeFactory = TouchScreenTypeFactory::getInstance();;
-    
-touchScreenFactory.setTouch(this->isTouch(activity));
-    
-touchScreenFactory.setMultiTouch(this->isMultiTouch(activity));
-    
-touchScreenFactory.setMultiTouchDistinct(this->isMultiTouchDistinct(activity));
-    
-touchScreenTypeFactory.update(activity);
+    TouchScreenFactory* touchScreenFactory = TouchScreenFactory::getInstance();;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    TouchScreenTypeFactory* touchScreenTypeFactory = TouchScreenTypeFactory::getInstance();;
     
-PreLogUtil::put(touchScreenFactory.toString(), this, commonStrings.PROCESS);
+touchScreenFactory->setTouch(this->isTouch(activity));
+    
+touchScreenFactory->setMultiTouch(this->isMultiTouch(activity));
+    
+touchScreenFactory->setMultiTouchDistinct(this->isMultiTouchDistinct(activity));
+    
+touchScreenTypeFactory->update(activity);
+    
+
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
+    
+PreLogUtil::put(touchScreenFactory->toString(), this, commonStrings->PROCESS);
     
 }
 
 
-    private: bool isTouch(Activity activity){
+    private: bool isTouch(Activity* activity){
 
 
 
@@ -108,7 +114,7 @@ PreLogUtil::put(touchScreenFactory.toString(), this, commonStrings.PROCESS);
 }
 
 
-    private: bool isMultiTouch(Activity activity){
+    private: bool isMultiTouch(Activity* activity){
 
 
 
@@ -118,7 +124,7 @@ PreLogUtil::put(touchScreenFactory.toString(), this, commonStrings.PROCESS);
 }
 
 
-    private: bool isMultiTouchDistinct(Activity activity){
+    private: bool isMultiTouchDistinct(Activity* activity){
 
 
 
@@ -128,12 +134,12 @@ PreLogUtil::put(touchScreenFactory.toString(), this, commonStrings.PROCESS);
 }
 
 
-    private: bool isFeature(Activity activity, std::string property){
+    private: bool isFeature(Activity* activity, std::string property){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return activity.getPackageManager().hasSystemFeature(property);;
+                        return activity->getPackageManager()->hasSystemFeature(property);;
     
 }
 

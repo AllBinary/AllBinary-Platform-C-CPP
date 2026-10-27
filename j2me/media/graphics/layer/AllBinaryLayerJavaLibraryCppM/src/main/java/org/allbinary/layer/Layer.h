@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LAYER_LAYER_H
         #define ORG_ALLBINARY_LAYER_LAYER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/IllegalArgumentException.h"
@@ -68,9 +74,9 @@ class Layer
             : public Object
          {
 
-    public: static const Integer ID = SmallIntegerSingletonFactory::getInstance().getAt(0);
+    public: static inline int32_t ID = SmallIntegerSingletonFactory::getInstance()->getAt(0);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     protected: int32_t x= 0;
 
@@ -108,13 +114,13 @@ public: Layer(int32_t width, int32_t height);
 
     public: bool isVisible();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
     protected: void setLayerWidth(int32_t width);
 
     protected: void setLayerHeight(int32_t height);
 
-    public: void toStringAppend(StringMaker stringBuffer);
+    public: void toStringAppend(StringMaker* stringBuffer);
 
 };
 

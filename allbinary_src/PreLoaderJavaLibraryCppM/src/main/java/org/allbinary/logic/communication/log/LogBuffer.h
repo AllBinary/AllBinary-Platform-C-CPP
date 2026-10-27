@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGBUFFER_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGBUFFER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -50,20 +56,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogUtil.h"
-#include "Log.h"
+        #include "org/allbinary/logic/communication/log/LogUtil.h"
+#include "org/allbinary/logic/communication/log/Log.h"
 
 class LogBuffer
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    BasicArrayList logEntryVector;
+    BasicArrayList* logEntryVector;
 
 public: LogBuffer();
 
-    public: void add(Log log);
+    public: void add(Log* log);
 
     public: void logAll();
 

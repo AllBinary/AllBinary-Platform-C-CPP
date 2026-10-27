@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,11 +52,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProfileActionScriptInputInterface.h"
-#include "KeyboardActionScriptInputData.h"
-#include "MouseActionScriptInputData.h"
-#include "MouseActionScriptInput.h"
-#include "KeyboardActionScriptInput.h"
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/ProfileActionScriptInputInterface.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyboardActionScriptInputData.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/MouseActionScriptInputData.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/MouseActionScriptInput.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyboardActionScriptInput.h"
 
 class ProfileActionScriptInputFactory
             : public Object
@@ -58,30 +64,30 @@ class ProfileActionScriptInputFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static ProfileActionScriptInputInterface getInstance(Node node){
+    public: static ProfileActionScriptInputInterface* getInstance(Node* node){
 
-    ProfileActionScriptInputInterface profileActionScriptInputInterface = 
+    ProfileActionScriptInputInterface* profileActionScriptInputInterface = 
                 null
             ;;
     
 
-                        if(DomSearchHelper::getNodeNoThrow(KeyboardActionScriptInputData::NAME, node.getChildNodes()) != 
+                        if(DomSearchHelper::getNodeNoThrow(KeyboardActionScriptInputData::NAME, node->getChildNodes()) != 
                                     nullptr
                                 )
                         
                                     {
-                                    profileActionScriptInputInterface= KeyboardActionScriptInput(node);
+                                    profileActionScriptInputInterface= new KeyboardActionScriptInput(node);
     
 
                                     }
                                 
                              else 
-                        if(DomSearchHelper::getNodeNoThrow(MouseActionScriptInputData::NAME, node.getChildNodes()) != 
+                        if(DomSearchHelper::getNodeNoThrow(MouseActionScriptInputData::NAME, node->getChildNodes()) != 
                                     nullptr
                                 )
                         
                                     {
-                                    profileActionScriptInputInterface= MouseActionScriptInput(node);
+                                    profileActionScriptInputInterface= new MouseActionScriptInput(node);
     
 
                                     }
@@ -90,7 +96,7 @@ class ProfileActionScriptInputFactory
                             
 
 
-                            throw Exception("No Such ActionScript Input");
+                            throw new Exception("No Such ActionScript Input");
                     
 
                         }

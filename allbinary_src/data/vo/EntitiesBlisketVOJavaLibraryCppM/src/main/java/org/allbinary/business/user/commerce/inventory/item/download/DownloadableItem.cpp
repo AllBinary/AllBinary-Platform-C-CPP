@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -75,7 +81,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DownloadItemData.h"
+        #include "org/allbinary/business/user/commerce/inventory/item/download/DownloadItemData.h"
 
 class DownloadableItem
             : public Object
@@ -101,21 +107,21 @@ class DownloadableItem
 
     private: std::string file;
 
-    private: Long size;
+    private: int64_t size;
 
-    private: Long validTime;
+    private: int64_t validTime;
 
     private: std::string retries;
 
 public: DownloadableItem(std::string id){
 
-    std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;;
+    std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;;
     
-this->id= ProductIdGenerator().getNext();
+this->id= (new ProductIdGenerator())->getNext();
     
 this->basicItemId= id;
     
-this->enabled= EntryData::getInstance().YES;
+this->enabled= EntryData::getInstance()->YES;
     
 this->system= "Java";
     
@@ -140,32 +146,32 @@ this->retries= EMPTY_STRING;
 }
 
 
-public: DownloadableItem(HashMap<Object*, Object*> hashMap){
-this->id= hashMap.get(DownloadItemData::ID);
+public: DownloadableItem(HashMap<Object*, Object*>* hashMap){
+this->id= hashMap->get(DownloadItemData::ID);
     
-this->basicItemId= hashMap.get(BasicItemData::getInstance().ID);
+this->basicItemId= hashMap->get(BasicItemData::getInstance()->ID);
     
-this->enabled= hashMap.get(EntryData::getInstance().ENABLE);
+this->enabled= hashMap->get(EntryData::getInstance()->ENABLE);
     
-this->system= hashMap.get(DownloadItemData::SYSTEM);
+this->system= hashMap->get(DownloadItemData::SYSTEM);
     
-this->platform= hashMap.get(DownloadItemData::PLATFORM);
+this->platform= hashMap->get(DownloadItemData::PLATFORM);
     
-this->specialName= hashMap.get(DownloadItemData::SPECIAL_NAME);
+this->specialName= hashMap->get(DownloadItemData::SPECIAL_NAME);
     
-this->version= hashMap.get(DownloadItemData::VERSION);
+this->version= hashMap->get(DownloadItemData::VERSION);
     
-this->changes= hashMap.get(DownloadItemData::CHANGES);
+this->changes= hashMap->get(DownloadItemData::CHANGES);
     
-this->licenseFile= hashMap.get(DownloadItemData::LICENSE_FILE);
+this->licenseFile= hashMap->get(DownloadItemData::LICENSE_FILE);
     
-this->file= hashMap.get(DownloadItemData::FILE);
-    
-
-    std::string value = hashMap.get(DownloadItemData::SIZE);;
+this->file= hashMap->get(DownloadItemData::FILE);
     
 
-                        if(!StringValidationUtil::getInstance().isEmpty(value))
+    std::string value = hashMap->get(DownloadItemData::SIZE);;
+    
+
+                        if(!StringValidationUtil::getInstance()->isEmpty(value))
                         
                                     {
                                     this->size= (value).toLong();
@@ -174,16 +180,16 @@ this->file= hashMap.get(DownloadItemData::FILE);
                                     }
                                 
                         else {
-                            this->size= Long(0);
+                            this->size= int64_t(0);
     
 
                         }
                             
 
-    std::string validTime = hashMap.get(DownloadItemData::VALID_TIME);;
+    std::string validTime = hashMap->get(DownloadItemData::VALID_TIME);;
     
 
-                        if(!StringValidationUtil::getInstance().isEmpty(validTime))
+                        if(!StringValidationUtil::getInstance()->isEmpty(validTime))
                         
                                     {
                                     this->validTime= (validTime).toLong();
@@ -193,75 +199,75 @@ this->file= hashMap.get(DownloadItemData::FILE);
                                 
                         else {
                             
-    std::string totalYears = hashMap.get(DownloadItemData::VALID_TIME_YEARS);;
+    std::string totalYears = hashMap->get(DownloadItemData::VALID_TIME_YEARS);;
     
 
-    std::string totalMonths = hashMap.get(DownloadItemData::VALID_TIME_MONTHS);;
+    std::string totalMonths = hashMap->get(DownloadItemData::VALID_TIME_MONTHS);;
     
 
-    std::string totalDays = hashMap.get(DownloadItemData::VALID_TIME_DAYS);;
+    std::string totalDays = hashMap->get(DownloadItemData::VALID_TIME_DAYS);;
     
 
-    std::string totalHours = hashMap.get(DownloadItemData::VALID_TIME_HOURS);;
+    std::string totalHours = hashMap->get(DownloadItemData::VALID_TIME_HOURS);;
     
 
-    std::string totalMinutes = hashMap.get(DownloadItemData::VALID_TIME_MINUTES);;
+    std::string totalMinutes = hashMap->get(DownloadItemData::VALID_TIME_MINUTES);;
     
 
-    std::string totalSeconds = hashMap.get(DownloadItemData::VALID_TIME_SECONDS);;
+    std::string totalSeconds = hashMap->get(DownloadItemData::VALID_TIME_SECONDS);;
     
 
-    int64_t totalTime = TimeUtil::getInstance().getTotalTime(totalYears, totalMonths, totalDays, totalHours, totalMinutes, totalSeconds);;
+    int64_t totalTime = TimeUtil::getInstance()->getTotalTime(totalYears, totalMonths, totalDays, totalHours, totalMinutes, totalSeconds);;
     
-this->validTime= Long(totalTime);
+this->validTime= int64_t(totalTime);
     
 
                         }
                             
-this->retries= hashMap.get(DownloadItemData::RETRIES);
+this->retries= hashMap->get(DownloadItemData::RETRIES);
     
 }
 
 
-    public: BasicArrayList toVector(){
+    public: BasicArrayList* toVector(){
 
-    Calendar calendar = Calendar::getInstance();;
-    
-
-    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    Calendar* calendar = Calendar::getInstance();;
     
 
-    BasicArrayList values = BasicArrayListD();;
+    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
     
-values.add(getId());
+
+    BasicArrayList* values = new BasicArrayListD();;
     
-values.add(this->basicItemId);
+values->add(getId());
     
-values.add(this->enabled);
+values->add(this->basicItemId);
     
-values.add(this->getSpecialName());
+values->add(this->enabled);
     
-values.add(this->getVersion());
+values->add(this->getSpecialName());
     
-values.add(this->getChanges());
+values->add(this->getVersion());
     
-values.add(this->getSystem());
+values->add(this->getChanges());
     
-values.add(this->getPlatform());
+values->add(this->getSystem());
     
-values.add(this->getLicenseFile());
+values->add(this->getPlatform());
     
-values.add(this->getFile());
+values->add(this->getLicenseFile());
     
-values.add(this->getSize().toString());
+values->add(this->getFile());
     
-values.add(this->getValidTime().toString());
+values->add(this->getSize().toString());
     
-values.add(this->getRetries());
+values->add(this->getValidTime().toString());
     
-values.add(time);
+values->add(this->getRetries());
     
-values.add(time);
+values->add(time);
+    
+values->add(time);
     
 
 
@@ -272,43 +278,43 @@ values.add(time);
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> values = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* values = StdUtil::getInstance()->createHashMap();;
     
-values.put(DownloadItemData::ID, this->getId());
+values->put(DownloadItemData::ID, this->getId());
     
-values.put(BasicItemData::getInstance().ID, this->basicItemId);
+values->put(BasicItemData::getInstance()->ID, this->basicItemId);
     
-values.put(EntryData::getInstance().ENABLE, this->enabled);
+values->put(EntryData::getInstance()->ENABLE, this->enabled);
     
-values.put(DownloadItemData::SYSTEM, this->getSystem());
+values->put(DownloadItemData::SYSTEM, this->getSystem());
     
-values.put(DownloadItemData::PLATFORM, this->getPlatform());
+values->put(DownloadItemData::PLATFORM, this->getPlatform());
     
-values.put(DownloadItemData::SPECIAL_NAME, this->getSpecialName());
+values->put(DownloadItemData::SPECIAL_NAME, this->getSpecialName());
     
-values.put(DownloadItemData::VERSION, this->getVersion());
+values->put(DownloadItemData::VERSION, this->getVersion());
     
-values.put(DownloadItemData::CHANGES, this->getChanges());
+values->put(DownloadItemData::CHANGES, this->getChanges());
     
-values.put(DownloadItemData::LICENSE_FILE, this->getLicenseFile());
+values->put(DownloadItemData::LICENSE_FILE, this->getLicenseFile());
     
-values.put(DownloadItemData::FILE, this->getFile());
+values->put(DownloadItemData::FILE, this->getFile());
     
-values.put(DownloadItemData::SIZE, this->getSize().toString());
+values->put(DownloadItemData::SIZE, this->getSize().toString());
     
-values.put(DownloadItemData::VALID_TIME, this->getValidTime().toString());
+values->put(DownloadItemData::VALID_TIME, this->getValidTime().toString());
     
-values.put(DownloadItemData::RETRIES, this->getRetries());
-    
-
-    Calendar calendar = Calendar::getInstance();;
+values->put(DownloadItemData::RETRIES, this->getRetries());
     
 
-    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    Calendar* calendar = Calendar::getInstance();;
     
-values.put(EntryData::getInstance().LASTMODIFIED, time);
+
+    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
+    
+values->put(EntryData::getInstance()->LASTMODIFIED, time);
     
 
 
@@ -399,7 +405,7 @@ values.put(EntryData::getInstance().LASTMODIFIED, time);
 }
 
 
-    public: Long getSize(){
+    public: int64_t getSize(){
 
 
 
@@ -409,7 +415,7 @@ values.put(EntryData::getInstance().LASTMODIFIED, time);
 }
 
 
-    public: Long getValidTime(){
+    public: int64_t getValidTime(){
 
 
 

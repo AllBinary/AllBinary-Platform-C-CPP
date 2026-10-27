@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -75,18 +81,18 @@ class UploadMediaSingleton
             : public Object
          {
 
-    private: static UploadMediaSingleton uploadMedia;
+    private: static inline UploadMediaSingleton* uploadMedia;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static UploadMediaSingleton getInstance();
+    public: static UploadMediaSingleton* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: HashMap<Object*, Object*> readerFileTypesHashMap;
+    private: HashMap<Object*, Object*>* readerFileTypesHashMap;
 
-    private: HashMap<Object*, Object*> writerFileTypesHashMap;
+    private: HashMap<Object*, Object*>* writerFileTypesHashMap;
 
 private: UploadMediaSingleton();
 
@@ -102,7 +108,7 @@ private: UploadMediaSingleton();
 
     public: bool isWriterMedia(std::string mediaFileType, std::string aMediaType);
 
-    private: bool isMedia(std::string mediaFileType, std::string aMediaType, HashMap<Object*, Object*> hashMap);
+    private: bool isMedia(std::string mediaFileType, std::string aMediaType, HashMap<Object*, Object*>* hashMap);
 
 };
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -48,7 +54,7 @@ class MineVectorData
             : public Object
          {
 
-    public: static std::vector<std::vector<std::vector<int32_t>>> points = 
+    public: static inline std::vector<std::vector<std::vector<int32_t>>> points = 
                                                         {
                                                             [[10,5]
 ,[2,6]

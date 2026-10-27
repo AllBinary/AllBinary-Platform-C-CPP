@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Float.h"
@@ -109,51 +115,51 @@
         
 class ShippingMethodsView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: ShippingMethods shippingMethods;
+    private: ShippingMethods* shippingMethods;
 
-    private: StoreFrontInterface storeFrontInterface;
+    private: StoreFrontInterface* storeFrontInterface;
 
-public: ShippingMethodsView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+public: ShippingMethodsView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->storeFrontInterface= StoreFrontFactory::getInstance(this->getTransformInfoInterface().getStoreName());
+this->storeFrontInterface= StoreFrontFactory::getInstance(this->getTransformInfoInterface()->getStoreName());
     
-this->shippingMethods= ShippingMethods(this->abeClientInformation, this->storeFrontInterface);
+this->shippingMethods= new ShippingMethods(this->abeClientInformation, this->storeFrontInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
         try {
             
-    Node shippingMethodsNode = document.createElement(ShippingMethodsData::SHIPPINGMETHODSORDERSUMMARIES);;
+    Node* shippingMethodsNode = document->createElement(ShippingMethodsData::SHIPPINGMETHODSORDERSUMMARIES);;
     
 
-    OrderInterface order = this->getWeblisketSession().getOrder();;
+    OrderInterface* order = this->getWeblisketSession()->getOrder();;
     
 
-    BasketInterface basket = this->getWeblisketSession().getOrder().getBasket();;
+    BasketInterface* basket = this->getWeblisketSession()->getOrder()->getBasket();;
     
 
-    StreetAddressesEntityInterface shippingAddressesEntityInterface = ShippingAddressesEntityFactory::getInstance().getInstance(this->getWeblisketSession().getUserName());;
+    StreetAddressesEntityInterface* shippingAddressesEntityInterface = ShippingAddressesEntityFactory::getInstance()->getInstance(this->getWeblisketSession()->getUserName());;
     
 
-    StreetAddress streetAddress = shippingAddressesEntityInterface.getDefault();;
+    StreetAddress* streetAddress = shippingAddressesEntityInterface->getDefault();;
     
 
-    BasicArrayList shippingVector = this->shippingMethods.get();;
+    BasicArrayList* shippingVector = this->shippingMethods->get();;
     
 
-    int32_t size = shippingVector.size();;
+    int32_t size = shippingVector->size();;
     
 
 
@@ -163,54 +169,54 @@ this->shippingMethods= ShippingMethods(this->abeClientInformation, this->storeFr
     int32_t index = 0;index < size; index++)
         {
 
-    Node shippingMethodNode = document.createElement(ShippingMethodsData::SHIPPINGMETHODORDERSUMMARY);;
+    Node* shippingMethodNode = document->createElement(ShippingMethodsData::SHIPPINGMETHODORDERSUMMARY);;
     
 
-    ShippingInterface shipping = shippingVector.get(index);;
+    ShippingInterface* shipping = dynamic_cast<ShippingInterface*>(shippingVector->get(index));;
     
 
-    DomNodeInterface shippingView = shipping;;
+    DomNodeInterface* shippingView = dynamic_cast<DomNodeInterface*>(shipping);;
     
-shippingMethodNode.appendChild(shippingView.toXmlNode(document));
-    
-
-    Money shippingCost = shipping.getCost(order);;
+shippingMethodNode->appendChild(shippingView->toXmlNode(document));
     
 
-    Money subTotal = basket.getSubTotal();;
+    Money* shippingCost = shipping->getCost(order);;
     
 
-    number taxRate = TaxFactory::getInstance().getInstance(this->abeClientInformation, storeFrontInterface).getTaxRate(streetAddress, storeFrontInterface);;
+    Money* subTotal = basket->getSubTotal();;
     
 
-    Money tax = Money();;
+    float taxRate = TaxFactory::getInstance()->getInstance(this->abeClientInformation, storeFrontInterface)->getTaxRate(streetAddress, storeFrontInterface);;
     
 
-    Money total = Money();;
+    Money* tax = new Money();;
     
-total.add(shippingCost.toString());
+
+    Money* total = new Money();;
     
-total.add(subTotal.toString());
+total->add(shippingCost->toString());
     
-tax.add(total.toString());
+total->add(subTotal->toString());
     
-tax.multiply(taxRate);
+tax->add(total->toString());
     
-total.add(tax.toString());
+tax->multiply(taxRate);
     
-shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::SHIPPINGCOST, shippingCost.toString()));
+total->add(tax->toString());
     
-shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::TAXRATE, taxRate.toString()));
+shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::SHIPPINGCOST, shippingCost->toString()));
     
-shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::SUBTOTAL, subTotal.toString()));
+shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::TAXRATE, taxRate.toString()));
     
-shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::TAX, tax.toString()));
+shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::SUBTOTAL, subTotal->toString()));
     
-shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::TOTAL, total.toString()));
+shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::TAX, tax->toString()));
     
-shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, EntryData::getInstance().DEFAULT, this->shippingMethods.getDefault().getName()));
+shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::TOTAL, total->toString()));
     
-shippingMethodsNode.appendChild(shippingMethodNode);
+shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, EntryData::getInstance()->DEFAULT, this->shippingMethods->getDefault()->getName()));
+    
+shippingMethodsNode->appendChild(shippingMethodNode);
     
 }
 
@@ -222,13 +228,13 @@ shippingMethodsNode.appendChild(shippingMethodNode);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XSLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XSLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, "toXmlNode", &e);
     
 
                                     }
@@ -244,7 +250,7 @@ shippingMethodsNode.appendChild(shippingMethodNode);
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this);
+this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     
 }
 
@@ -262,16 +268,16 @@ this->addDomNodeInterface(this);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to view ShippingMethods";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }

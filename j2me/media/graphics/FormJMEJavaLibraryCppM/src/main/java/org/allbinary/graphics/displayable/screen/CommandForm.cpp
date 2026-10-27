@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Command.h>
@@ -83,18 +91,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ScreenRepaintProcessorFactory.h"
+        #include "org/allbinary/graphics/displayable/screen/ScreenRepaintProcessorFactory.h"
 
 class CommandForm: public Form, public MyCommandInterface, public MenuListener {
 
-    private: static Object* NULL_COMMAND_FORM = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* NULL_COMMAND_FORM = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static CommandForm getNullCommandForm(){
+    public: static CommandForm* getNullCommandForm(){
 
-                        if(CommandForm::NULL_COMMAND_FORM == NullUtil::getInstance().NULL_OBJECT)
+                        if(CommandForm::NULL_COMMAND_FORM == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    CommandForm::NULL_COMMAND_FORM= CommandForm(NullCommandListener::NULL_COMMAND_LISTENER, StringUtil::getInstance().EMPTY_STRING, BasicColorFactory::getInstance().BLACK, BasicColorFactory::getInstance().WHITE);
+                                    CommandForm::NULL_COMMAND_FORM= new CommandForm(NullCommandListener::NULL_COMMAND_LISTENER, StringUtil::getInstance()->EMPTY_STRING, BasicColorFactory::getInstance()->BLACK, BasicColorFactory::getInstance()->WHITE);
     
 
                                     }
@@ -103,55 +111,55 @@ class CommandForm: public Form, public MyCommandInterface, public MenuListener {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CommandForm::NULL_COMMAND_FORM;
+                        return dynamic_cast<CommandForm*>(CommandForm::NULL_COMMAND_FORM);
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const Processor repaintProcessor = ScreenRepaintProcessorFactory::getInstance().create(this);
+    private: Processor* repaintProcessor = ScreenRepaintProcessorFactory::getInstance()->create(this);
 
-    private: ABStack<Object*> commandStack;
+    private: ABStack<Object*>* commandStack;
 
-public: CommandForm(CommandListener commandListener, std::string formTitle, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor) : Form(formTitle){
+public: CommandForm(CommandListener* commandListener, std::string formTitle, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) : Form(formTitle){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->commandStack= StdUtil::getInstance().createStack();
+this->commandStack= StdUtil::getInstance()->createStack();
     
 
         try {
-            this->repaintProcessor.process();
+            this->repaintProcessor->process();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CONSTRUCTOR, &e);
     
 }
 
 }
 
 
-    public: void initCommands(CommandListener cmdListener){
+    public: void initCommands(CommandListener* cmdListener){
 }
 
 
     public: void open(){
-this->logUtil.putF(this->commonStrings.START, this, "open");
+this->logUtil->putF(this->commonStrings->START, this, "open");
     
 }
 
 
     public: void close(){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CLOSE);
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CLOSE);
     
 }
 
@@ -159,7 +167,7 @@ this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CLOSE);
                 //@Throws(Exception.constructor)
             
     public: void update(){
-this->repaintProcessor.process();
+this->repaintProcessor->process();
     
 }
 
@@ -174,8 +182,8 @@ this->repaintProcessor.process();
 }
 
 
-    public: void addCommand(Command command){
-this->commandStack.push(command);
+    public: void addCommand(Command* command){
+this->commandStack->push(command);
     
 super.addCommand(command);
     
@@ -184,7 +192,7 @@ super.addCommand(command);
 
     public: void removeAllCommands(){
 
-    int32_t size = this->commandStack.size();;
+    int32_t size = this->commandStack->size();;
     
 
 
@@ -193,7 +201,7 @@ super.addCommand(command);
                         for (
     int32_t index = 0;index < size; index++)
         {
-super.removeCommand(this->commandStack.pop());
+super.removeCommand(dynamic_cast<Command*>(this->commandStack->pop()));
     
 }
 

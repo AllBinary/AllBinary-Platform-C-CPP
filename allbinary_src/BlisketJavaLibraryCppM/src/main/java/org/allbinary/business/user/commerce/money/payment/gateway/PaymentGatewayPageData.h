@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYPAGEDATA_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYPAGEDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -52,15 +58,15 @@ class PaymentGatewayPageData
             : public Object
          {
 
-    private: static const std::string EXTENSION = ".jsp";
+    private: static inline const std::string EXTENSION = ".jsp";
 
-    private: static const std::string NAME = StringUtil::getInstance().EMPTY_STRING;
+    private: static inline const std::string NAME = StringUtil::getInstance()->EMPTY_STRING;
 
-    public: static const std::string FORWARDMAKEPAYMENT = "MakePayment.jsp";
+    public: static inline const std::string FORWARDMAKEPAYMENT = "MakePayment.jsp";
 
-    public: static const std::string PAYMENTOPTIONS = "PaymentOptions" +PaymentGatewayPageData::EXTENSION;
+    public: static inline const std::string PAYMENTOPTIONS = "PaymentOptions" +PaymentGatewayPageData::EXTENSION;
 
-    public: static const std::string STARTCHECKOUT = "StartCheckout" +PaymentGatewayPageData::EXTENSION;
+    public: static inline const std::string STARTCHECKOUT = "StartCheckout" +PaymentGatewayPageData::EXTENSION;
 
     public: std::string MAKEPAYMENT;
 

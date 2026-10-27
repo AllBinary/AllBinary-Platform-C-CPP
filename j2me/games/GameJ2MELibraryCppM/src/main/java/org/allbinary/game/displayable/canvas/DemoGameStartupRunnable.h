@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOGAMESTARTUPRUNNABLE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOGAMESTARTUPRUNNABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -50,17 +56,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DemoCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/DemoCanvas.h"
 
 class DemoGameStartupRunnable: public ABRunnable {
 
-    public: static const int32_t TYPE = 4;
+    public: static inline const int32_t TYPE = 4;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: DemoCanvas demoCanvas;
+    private: DemoCanvas* demoCanvas;
 
-public: DemoGameStartupRunnable(DemoCanvas demoCanvas);
+public: DemoGameStartupRunnable(DemoCanvas* demoCanvas);
 
     public: void run();
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_ROLE_ADMINROLEFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_ROLE_ADMINROLEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -47,61 +53,61 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicUserRoleFactory.h"
+        #include "org/allbinary/business/user/role/BasicUserRoleFactory.h"
 
 class AdminRoleFactory
             : public Object
          {
 
-    private: static AdminRoleFactory instance() { return AdminRoleFactory(); }
+    private: static AdminRoleFactory* instance() { static std::unique_ptr<AdminRoleFactory> value(new AdminRoleFactory()); return value.get(); }
 
-    public: static AdminRoleFactory getInstance();
+    public: static AdminRoleFactory* getInstance();
 
-    private: const BasicArrayList adminRoles = BasicArrayListD();
+    private: BasicArrayList* adminRoles = new BasicArrayListD();
 
-    private: const BasicArrayList storeAdminRoles = BasicArrayListD();
+    private: BasicArrayList* storeAdminRoles = new BasicArrayListD();
 
-    private: const BasicArrayList storeManagementRoles = BasicArrayListD();
+    private: BasicArrayList* storeManagementRoles = new BasicArrayListD();
 
-    private: const BasicArrayList productManagementRoles = BasicArrayListD();
+    private: BasicArrayList* productManagementRoles = new BasicArrayListD();
 
-    private: const BasicArrayList reviewManagementRoles = BasicArrayListD();
+    private: BasicArrayList* reviewManagementRoles = new BasicArrayListD();
 
-    private: const BasicArrayList customerManagementRoles = BasicArrayListD();
+    private: BasicArrayList* customerManagementRoles = new BasicArrayListD();
 
-    private: const BasicArrayList workflowManagementRoles = BasicArrayListD();
+    private: BasicArrayList* workflowManagementRoles = new BasicArrayListD();
 
-    private: const BasicArrayList orderManagementRoles = BasicArrayListD();
+    private: BasicArrayList* orderManagementRoles = new BasicArrayListD();
 
-    private: const BasicArrayList adjusterManagementRoles = BasicArrayListD();
+    private: BasicArrayList* adjusterManagementRoles = new BasicArrayListD();
 
-    private: const BasicArrayList shippingManagementRoles = BasicArrayListD();
+    private: BasicArrayList* shippingManagementRoles = new BasicArrayListD();
 
-    private: const BasicArrayList webManagementRoles = BasicArrayListD();
+    private: BasicArrayList* webManagementRoles = new BasicArrayListD();
 
 private: AdminRoleFactory();
 
-    public: BasicArrayList getProductManagementRoles();
+    public: BasicArrayList* getProductManagementRoles();
 
-    public: BasicArrayList getAdminRoles();
+    public: BasicArrayList* getAdminRoles();
 
-    public: BasicArrayList getStoreAdminRoles();
+    public: BasicArrayList* getStoreAdminRoles();
 
-    public: BasicArrayList getStoreManagementRoles();
+    public: BasicArrayList* getStoreManagementRoles();
 
-    public: BasicArrayList getReviewManagementRoles();
+    public: BasicArrayList* getReviewManagementRoles();
 
-    public: BasicArrayList getCustomerManagementRoles();
+    public: BasicArrayList* getCustomerManagementRoles();
 
-    public: BasicArrayList getWorkflowManagementRoles();
+    public: BasicArrayList* getWorkflowManagementRoles();
 
-    public: BasicArrayList getWebManagementRoles();
+    public: BasicArrayList* getWebManagementRoles();
 
-    public: BasicArrayList getShippingManagementRoles();
+    public: BasicArrayList* getShippingManagementRoles();
 
-    public: BasicArrayList getAdjusterManagementRoles();
+    public: BasicArrayList* getAdjusterManagementRoles();
 
-    public: BasicArrayList getOrderManagementRoles();
+    public: BasicArrayList* getOrderManagementRoles();
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/configuration/GameConfiguration.h>
 
       
@@ -39,23 +45,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseChangedGameFeatureListener.h"
+        #include "org/allbinary/game/configuration/event/BaseChangedGameFeatureListener.h"
 
 class ChangedGameFeatureListener: public BaseChangedGameFeatureListener {
 
-    private: static const ChangedGameFeatureListener gameFeatureListener = ChangedGameFeatureListener();
+    private: static ChangedGameFeatureListener* gameFeatureListener() { static std::unique_ptr<ChangedGameFeatureListener> value(new ChangedGameFeatureListener()); return value.get(); }
 
-    public: static ChangedGameFeatureListener getInstance(){
+    public: static ChangedGameFeatureListener* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ChangedGameFeatureListener::gameFeatureListener;
+                        return ChangedGameFeatureListener::gameFeatureListener();
     
 }
 
 
-    public: bool isChangedGameConfiguration(GameConfiguration gameConfiguration){
+    public: bool isChangedGameConfiguration(GameConfiguration* gameConfiguration){
 
 
 

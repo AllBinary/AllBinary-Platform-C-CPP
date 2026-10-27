@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INSTALLER_DELETECLOUD_H
         #define ORG_ALLBINARY_BUSINESS_INSTALLER_DELETECLOUD_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -78,7 +84,7 @@ class DeleteCloud
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: DeleteCloud();
 

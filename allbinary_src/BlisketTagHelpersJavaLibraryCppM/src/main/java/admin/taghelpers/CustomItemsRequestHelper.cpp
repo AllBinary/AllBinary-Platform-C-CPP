@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -85,15 +91,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ModifyTable.h"
+        #include "admin/taghelpers/ModifyTable.h"
 
 class CustomItemsRequestHelper: public ModifyTable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
     private: std::string id;
 
@@ -105,8 +111,8 @@ class CustomItemsRequestHelper: public ModifyTable {
 
     private: std::string lastModified;
 
-public: CustomItemsRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
-this->request= pageContext.getRequest();
+public: CustomItemsRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
     
 this->getFormData();
     
@@ -114,36 +120,36 @@ this->getFormData();
 
 
     public: void getFormData(){
-this->id= this->request.getParameter(basicItemData.ID);
+this->id= this->request->getParameter(basicItemData->ID);
     
-this->className= this->request.getParameter(DynamicObjectData::NAME);
+this->className= this->request->getParameter(DynamicObjectData::NAME);
     
-this->packageName= this->request.getParameter(CustomItemData::PACKAGE);
+this->packageName= this->request->getParameter(CustomItemData::PACKAGE);
     
-this->timeEntered= this->request.getParameter(EntryData::getInstance().TIMECREATED);
+this->timeEntered= this->request->getParameter(EntryData::getInstance()->TIMECREATED);
     
-this->lastModified= this->request.getParameter(EntryData::getInstance().LASTMODIFIED);
+this->lastModified= this->request->getParameter(EntryData::getInstance()->LASTMODIFIED);
     
 }
 
 
-    private: HashMap<Object*, Object*> getHashMap(){
+    private: HashMap<Object*, Object*>* getHashMap(){
 
-    HashMap<Object*, Object*> values = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* values = StdUtil::getInstance()->createHashMap();;
     
-values.put(basicItemData.ID, this->id);
+values->put(basicItemData->ID, this->id);
     
-values.put(DynamicObjectData::NAME, this->className);
+values->put(DynamicObjectData::NAME, this->className);
     
-values.put(CustomItemData::PACKAGE, this->packageName);
-    
-
-    Calendar calendar = Calendar::getInstance();;
+values->put(CustomItemData::PACKAGE, this->packageName);
     
 
-    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    Calendar* calendar = Calendar::getInstance();;
     
-values.put(EntryData::getInstance().LASTMODIFIED, time);
+
+    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
+    
+values->put(EntryData::getInstance()->LASTMODIFIED, time);
     
 
 
@@ -158,34 +164,34 @@ values.put(EntryData::getInstance().LASTMODIFIED, time);
 
         try {
             
-    Calendar calendar = Calendar::getInstance();;
+    Calendar* calendar = Calendar::getInstance();;
     
 
-    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
     
 
-    BasicArrayList values = BasicArrayListD();;
+    BasicArrayList* values = new BasicArrayListD();;
     
-values.add(this->id);
+values->add(this->id);
     
-values.add(this->className);
+values->add(this->className);
     
-values.add(this->packageName);
+values->add(this->packageName);
     
-values.add(time);
+values->add(time);
     
-values.add(time);
+values->add(time);
     
-CustomItemsEntityFactory::getInstance().getCustomItemsEntityInstance().insert(values);
+CustomItemsEntityFactory::getInstance()->getCustomItemsEntityInstance()->insert(values);
     
 
     std::string success = "Successfully inserted " +this->id +" into items table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "insert()");
+                                    this->logUtil->putF(success, this, "insert()");
     
 
                                     }
@@ -198,16 +204,16 @@ CustomItemsEntityFactory::getInstance().getCustomItemsEntityInstance().insert(va
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to insert " +this->id +" into items table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "inserts()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "inserts()", &e);
     
 
                                     }
@@ -226,16 +232,16 @@ CustomItemsEntityFactory::getInstance().getCustomItemsEntityInstance().insert(va
     public: std::string delete_(){
 
         try {
-            CustomItemsEntityFactory::getInstance().getCustomItemsEntityInstance().delete(this->id);
+            CustomItemsEntityFactory::getInstance()->getCustomItemsEntityInstance()->delete(this->id);
     
 
     std::string success = "Successfully deleted";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "delete()");
+                                    this->logUtil->putF(success, this, "delete()");
     
 
                                     }
@@ -248,16 +254,16 @@ CustomItemsEntityFactory::getInstance().getCustomItemsEntityInstance().insert(va
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to delete";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "delete()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "delete()", &e);
     
 
                                     }
@@ -280,15 +286,15 @@ CustomItemsEntityFactory::getInstance().getCustomItemsEntityInstance().insert(va
     std::string success = "Update Pricing Successful";;
     
 
-    HashMap<Object*, Object*> values = this->getHashMap();;
+    HashMap<Object*, Object*>* values = this->getHashMap();;
     
-CustomItemsEntityFactory::getInstance().getCustomItemsEntityInstance().update(values);
+CustomItemsEntityFactory::getInstance()->getCustomItemsEntityInstance()->update(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(StringMaker().append(this->id).append(CommonSeps::getInstance().SPACE).append(success).toString(), this, "update()");
+                                    this->logUtil->putF((new StringMaker())->append(this->id)->append(CommonSeps::getInstance()->SPACE)->append(success)->toString(), this, "update()");
     
 
                                     }
@@ -301,16 +307,16 @@ CustomItemsEntityFactory::getInstance().getCustomItemsEntityInstance().update(va
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to update: " +this->id;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "update()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "update()", &e);
     
 
                                     }

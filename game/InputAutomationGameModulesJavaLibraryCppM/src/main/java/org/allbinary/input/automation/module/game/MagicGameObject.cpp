@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -51,14 +57,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MeteredGameObject.h"
-#include "MagicGameObjectInterface.h"
+        #include "org/allbinary/input/automation/module/game/MeteredGameObject.h"
+#include "org/allbinary/input/automation/module/game/MagicGameObjectInterface.h"
 
 class MagicGameObject: public MeteredGameObject, public MagicGameObjectInterface {
 
     private: const std::string MP_LABEL = "MP:";
 
-public: MagicGameObject(std::vector<BufferedImage> bufferedImage, Integer minX, Integer maxX, Integer y) : MeteredGameObject(bufferedImage, minX, maxX, y){
+public: MagicGameObject(std::vector<BufferedImage*> bufferedImage, int32_t minX, int32_t maxX, int32_t y) : MeteredGameObject(bufferedImage, minX, maxX, y){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -70,19 +76,19 @@ public: MagicGameObject(std::vector<BufferedImage> bufferedImage, Integer minX, 
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
+stringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
     
-stringBuffer.append(this->MP_LABEL);
+stringBuffer->append(this->MP_LABEL);
     
-stringBuffer.append(super.toString());
+stringBuffer->append(super.toString());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

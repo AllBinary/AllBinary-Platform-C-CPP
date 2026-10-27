@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,18 +64,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MultiKeyPressesAI.h"
-#include "KeyPressesAI.h"
+        #include "org/allbinary/game/ag/ai/MultiKeyPressesAI.h"
+#include "org/allbinary/game/ag/ai/KeyPressesAI.h"
 
 class KeyPressesAIFactory
             : public Object
-        : public ArtificialIntelligenceInterfaceFactoryInterface {
+        , public ArtificialIntelligenceInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: ArtificialIntelligenceInterface getInstance(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+    public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput){
 
-    bool isSingleKeyProcessing = InputFeatureFactory::getInstance().isSingleKeyProcessing();;
+    bool isSingleKeyProcessing = InputFeatureFactory::getInstance()->isSingleKeyProcessing();;
     
 
                         if(isSingleKeyProcessing)
@@ -79,7 +85,7 @@ class KeyPressesAIFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return KeyPressesAI(hashtable, ownerLayerInterface, gameInput);
+                        return new KeyPressesAI(hashtable, ownerLayerInterface, gameInput);
     
 
                                     }
@@ -89,7 +95,7 @@ class KeyPressesAIFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MultiKeyPressesAI(hashtable, ownerLayerInterface, gameInput);
+                        return new MultiKeyPressesAI(hashtable, ownerLayerInterface, gameInput);
     
 
                         }

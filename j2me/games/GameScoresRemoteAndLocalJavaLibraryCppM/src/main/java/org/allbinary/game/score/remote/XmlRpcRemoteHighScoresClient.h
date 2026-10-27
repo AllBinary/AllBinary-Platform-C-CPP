@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_REMOTE_XMLRPCREMOTEHIGHSCORESCLIENT_H
         #define ORG_ALLBINARY_GAME_SCORE_REMOTE_XMLRPCREMOTEHIGHSCORESCLIENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/io/IOException.h>
@@ -80,15 +88,15 @@
         
 class XmlRpcRemoteHighScoresClient: public XmlRpcAbeClient {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string page;
 
-public: XmlRpcRemoteHighScoresClient(AbeClientInformationInterface clientInfo, std::string page, std::string remoteMethod);
+public: XmlRpcRemoteHighScoresClient(AbeClientInformationInterface* clientInfo, std::string page, std::string remoteMethod);
 
                 //@Throws(Exception.constructor)
             
-    public: Object* get(Object* anyType, CryptInterface cryptInterface);
+    public: Object* get(Object* anyType, CryptInterface* cryptInterface);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class OutputTypeData
             : public Object
          {
 
-    private: static OutputTypeData instance() { return OutputTypeData(); }
+    private: static OutputTypeData* instance() { static std::unique_ptr<OutputTypeData> value(new OutputTypeData()); return value.get(); }
 
-    public: static OutputTypeData getInstance(){
+    public: static OutputTypeData* getInstance(){
 
 
 

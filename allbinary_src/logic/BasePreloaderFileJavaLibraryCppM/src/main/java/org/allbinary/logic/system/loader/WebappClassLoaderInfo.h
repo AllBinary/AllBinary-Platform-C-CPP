@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_WEBAPPCLASSLOADERINFO_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_WEBAPPCLASSLOADERINFO_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/ClassLoader.h"
@@ -51,13 +57,13 @@ class WebappClassLoaderInfo
             : public Object
          {
 
-    private: static Object* classLoader = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* classLoader = NullUtil::getInstance()->NULL_OBJECT;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void setLoader(ClassLoader classLoader);
+    public: static void setLoader(ClassLoader* classLoader);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static ClassLoader getLoader();
+    public: static ClassLoader* getLoader();
 
 private: WebappClassLoaderInfo();
 

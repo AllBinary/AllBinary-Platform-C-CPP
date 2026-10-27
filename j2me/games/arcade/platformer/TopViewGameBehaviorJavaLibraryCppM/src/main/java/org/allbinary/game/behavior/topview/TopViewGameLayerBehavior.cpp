@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/layer/behavior/GameLayerBehavior.h>
 
       
@@ -45,7 +51,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InitialJumpBehavior.h"
+        #include "org/allbinary/game/behavior/topview/InitialJumpBehavior.h"
 
 class TopViewGameLayerBehavior: public GameLayerBehavior {
 
@@ -80,8 +86,8 @@ this->isFallingWithoutJumpAttempt= true;
 }
 
 
-    public: void land(VelocityProperties velocityProperties){
-velocityProperties.getVelocityYBasicDecimalP().setint(0);
+    public: void land(VelocityProperties* velocityProperties){
+velocityProperties->getVelocityYBasicDecimalP()->setint(0);
     
 this->landReset();
     
@@ -100,7 +106,7 @@ this->isJumpOver= false;
 }
 
 
-    public: void up(VelocityProperties velocityProperties, BasicAccelerationProperties acceleration, InitialJumpBehavior jumpBehavior, int32_t accelerationMultiplier){
+    public: void up(VelocityProperties* velocityProperties, BasicAccelerationProperties* acceleration, InitialJumpBehavior* jumpBehavior, int32_t accelerationMultiplier){
 
                         if(!this->isJumpOver)
                         
@@ -110,11 +116,11 @@ this->isJumpOver= false;
                         
                                     {
                                     
-    int32_t acceleration2 =  -acceleration.getForward() *accelerationMultiplier;;
+    int32_t acceleration2 =  -acceleration->getForward() *accelerationMultiplier;;
     
-velocityProperties.getVelocityYBasicDecimalP().addint(acceleration2);
+velocityProperties->getVelocityYBasicDecimalP()->addint(acceleration2);
     
-velocityProperties.limitXYToForwardAndReverseMaxVelocity();
+velocityProperties->limitXYToForwardAndReverseMaxVelocity();
     
 this->gravityActionIndex++;
     
@@ -136,7 +142,7 @@ this->gravityActionIndex++;
                         if(this->isJumpAction)
                         
                                     {
-                                    jumpBehavior.process();
+                                    jumpBehavior->process();
     
 this->isJumpAction= false;
     
@@ -146,9 +152,9 @@ this->isJumpAction= false;
 }
 
 
-    public: void inputFrames(VelocityProperties velocityProperties){
+    public: void inputFrames(VelocityProperties* velocityProperties){
 
-                        if(this->gravityActionIndex > 0 && velocityProperties.getVelocityYBasicDecimalP().getUnscaled() > 0)
+                        if(this->gravityActionIndex > 0 && velocityProperties->getVelocityYBasicDecimalP()->getUnscaled() > 0)
                         
                                     {
                                     this->isJumpOver= true;

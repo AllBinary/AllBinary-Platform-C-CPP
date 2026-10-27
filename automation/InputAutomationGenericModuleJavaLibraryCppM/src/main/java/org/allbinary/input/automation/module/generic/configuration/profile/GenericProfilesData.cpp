@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,7 +49,7 @@ class GenericProfilesData
             : public Object
          {
 
-    public: static std::string NAME = "GENERIC_PROFILES_NAME";
+    public: static inline std::string NAME = "GENERIC_PROFILES_NAME";
 
 private: GenericProfilesData(){
 }

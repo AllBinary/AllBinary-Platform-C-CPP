@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREFACTORY_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,24 +52,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NoHardware.h"
-#include "HardwareInterface.h"
+        #include "org/allbinary/logic/system/hardware/NoHardware.h"
+#include "org/allbinary/logic/system/hardware/HardwareInterface.h"
 
 class HardwareFactory
             : public Object
          {
 
-    private: static HardwareFactory instance() { return HardwareFactory(); }
+    private: static HardwareFactory* instance() { static std::unique_ptr<HardwareFactory> value(new HardwareFactory()); return value.get(); }
 
-    public: static HardwareFactory getInstance();
+    public: static HardwareFactory* getInstance();
 
-    private: const HardwareInterface SINGLETON = NoHardware::getInstance();
+    private: HardwareInterface* SINGLETON = NoHardware::getInstance();
 
 private: HardwareFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: HardwareInterface getInstance(OperatingSystemInterface os);
+    public: HardwareInterface* getInstance(OperatingSystemInterface* os);
 
 };
 

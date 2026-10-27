@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTYVIEW_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTYVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,25 +61,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CssProperty.h"
+        #include "org/allbinary/logic/visual/dhtml/style/css/property/CssProperty.h"
 
 class CssPropertyView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: CssProperty cssProperty;
+    private: CssProperty* cssProperty;
 
 public: CssPropertyView(std::string name);
 
-public: CssPropertyView(Node node);
+public: CssPropertyView(Node* node);
 
-    public: CssProperty getProperty();
+    public: CssProperty* getProperty();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

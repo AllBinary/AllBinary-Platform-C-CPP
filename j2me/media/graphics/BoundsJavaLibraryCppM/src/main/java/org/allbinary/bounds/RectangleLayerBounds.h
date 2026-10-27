@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BOUNDS_RECTANGLELAYERBOUNDS_H
         #define ORG_ALLBINARY_BOUNDS_RECTANGLELAYERBOUNDS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graphics/Rectangle.h>
 
       
@@ -42,14 +48,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LayerBounds.h"
-#include "BoundsVisitorInterface.h"
+        #include "org/allbinary/bounds/LayerBounds.h"
+#include "org/allbinary/bounds/BoundsVisitorInterface.h"
 
 class RectangleLayerBounds: public LayerBounds {
 
-public: RectangleLayerBounds(Rectangle rectangle);
+public: RectangleLayerBounds(Rectangle* rectangle);
 
-    public: void visit(BoundsVisitorInterface boundsVisitorInterface);
+    public: void visit(BoundsVisitorInterface* boundsVisitorInterface);
 
 };
 

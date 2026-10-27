@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,36 +58,36 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DomSearchHelper.h"
+        #include "org/allbinary/data/tree/dom/DomSearchHelper.h"
 
 class DomNodeHelper
             : public Object
          {
 
-    public: static Node getFirstChildElement(Node parentNode){
+    public: static Node* getFirstChildElement(Node* parentNode){
 
-    Node node = parentNode.getFirstChild();;
+    Node* node = parentNode->getFirstChild();;
     
 
                         if(node != 
                                     nullptr
-                                 && node.getNodeType() != Node::ELEMENT_NODE)
+                                 && node->getNodeType() != Node::ELEMENT_NODE)
                         
                                     {
                                     
-    NodeList nodeList = parentNode.getChildNodes();;
+    NodeList* nodeList = parentNode->getChildNodes();;
     
 
 
 
 
                         for (
-    int32_t index = 0;index < nodeList.getLength(); index++)
+    int32_t index = 0;index < nodeList->getLength(); index++)
         {
-node= nodeList.item(index);
+node= nodeList->item(index);
     
 
-                        if(node.getNodeType() == 1)
+                        if(node->getNodeType() == 1)
                         
                                     {
                                     break;
@@ -104,9 +110,9 @@ node= nodeList.item(index);
 }
 
 
-    public: static std::string getTextNodeValue(Node node){
+    public: static std::string getTextNodeValue(Node* node){
 
-    Node nodeTextNode = node.getFirstChild();;
+    Node* nodeTextNode = node->getFirstChild();;
     
 
                         if(nodeTextNode != 
@@ -118,7 +124,7 @@ node= nodeList.item(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return nodeTextNode.getNodeValue();;
+                        return nodeTextNode->getNodeValue();;
     
 
                                     }
@@ -128,7 +134,7 @@ node= nodeList.item(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 
                         }
@@ -138,9 +144,9 @@ node= nodeList.item(index);
 
                 //@Throws(Exception.constructor)
             
-    public: static std::string getTextNodeValue(std::string nodeName, NodeList nodeList){
+    public: static std::string getTextNodeValue(std::string nodeName, NodeList* nodeList){
 
-    Node node = DomSearchHelper::getNode(nodeName, nodeList);;
+    Node* node = DomSearchHelper::getNode(nodeName, nodeList);;
     
 
 
@@ -151,25 +157,25 @@ node= nodeList.item(index);
 }
 
 
-    public: static std::string getTextNodesValue(Node node){
+    public: static std::string getTextNodesValue(Node* node){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    NodeList nodeList = node.getChildNodes();;
+    NodeList* nodeList = node->getChildNodes();;
     
 
 
 
 
                         for (
-    int32_t index = 0;index < nodeList.getLength(); index++)
+    int32_t index = 0;index < nodeList->getLength(); index++)
         {
 
-    Node nodeTextNode = nodeList.item(index);;
+    Node* nodeTextNode = nodeList->item(index);;
     
 
-                        if(nodeTextNode.getNodeType() == Node::TEXT_NODE)
+                        if(nodeTextNode->getNodeType() == Node::TEXT_NODE)
                         
                                     {
                                     
@@ -178,7 +184,7 @@ node= nodeList.item(index);
                                 )
                         
                                     {
-                                    stringBuffer.append(nodeTextNode.getNodeValue());
+                                    stringBuffer->append(nodeTextNode->getNodeValue());
     
 
                                     }
@@ -192,7 +198,7 @@ node= nodeList.item(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

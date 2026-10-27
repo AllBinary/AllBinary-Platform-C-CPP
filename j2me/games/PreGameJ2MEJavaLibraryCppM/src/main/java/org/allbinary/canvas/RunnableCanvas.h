@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_CANVAS_RUNNABLECANVAS_H
         #define ORG_ALLBINARY_CANVAS_RUNNABLECANVAS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Thread.h"
@@ -91,32 +97,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Processor.h"
-#include "RunnableCanvasRefreshHelper.h"
+        #include "org/allbinary/canvas/Processor.h"
+#include "org/allbinary/canvas/RunnableCanvasRefreshHelper.h"
 
 class RunnableCanvas: public MyCanvas, public RunnableInterface {
 
-    protected: const NullUtil nullUtil = NullUtil::getInstance();
+    protected: NullUtil* nullUtil = NullUtil::getInstance();
 
-    protected: const StdUtil stdUtil = StdUtil::getInstance();
+    protected: StdUtil* stdUtil = StdUtil::getInstance();
 
-    protected: const ABSystemWrapper systemWrapper = ABSystemWrapper::getInstance();
+    protected: ABSystemWrapper* systemWrapper = ABSystemWrapper::getInstance();
 
-    protected: const TsUtil tsUtil = TsUtil::getInstance();
+    protected: TsUtil* tsUtil = TsUtil::getInstance();
 
-    private: Thread thread = NullThread::NULL_THREAD;
+    private: Thread* thread = NullThread::NULL_THREAD;
 
-    private: Thread currentThread = NullThread::NULL_THREAD;
+    private: Thread* currentThread = NullThread::NULL_THREAD;
 
     private: bool running= false;
 
-    protected: const TimeDelayHelper loopTimeHelper = TimeDelayHelper(NullWaitGameRunnable::getInstance().WAIT);
+    protected: TimeDelayHelper* loopTimeHelper = new TimeDelayHelper(NullWaitGameRunnable::getInstance()->WAIT);
 
-    protected: Processor runnableCanvasRefreshHelper = Processor::getInstance();
+    protected: Processor* runnableCanvasRefreshHelper = Processor::getInstance();
 
-    protected: const CommonLabels commonLabels = CommonLabels::getInstance();
+    protected: CommonLabels* commonLabels = CommonLabels::getInstance();
 
-    protected: const ThreadObjectUtil threadObjectUtil = ThreadObjectUtil::getInstance();
+    protected: ThreadObjectUtil* threadObjectUtil = ThreadObjectUtil::getInstance();
 
     protected: const std::string SET_RUNNING = "setRunning";
 
@@ -134,20 +140,20 @@ class RunnableCanvas: public MyCanvas, public RunnableInterface {
 
     private: const std::string PROCESS_LOOP_SLEEP = "processLoopSleep";
 
-public: RunnableCanvas(CommandListener commandListener, BasicArrayList childNameList, bool hasParam);
+public: RunnableCanvas(CommandListener* commandListener, BasicArrayList* childNameList, bool hasParam);
 
-    public: void initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener* cmdListener);
 
     public: bool isMainCanvas();
 
-    public: void setThread(Thread thread);
+    public: void setThread(Thread* thread);
 
     public: void setRunning(bool running);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: bool isRunning();
 
-    public: TimeDelayHelper getLoopTimeHelperP();
+    public: TimeDelayHelper* getLoopTimeHelperP();
 
     private: int64_t pauseWait = 0;
 

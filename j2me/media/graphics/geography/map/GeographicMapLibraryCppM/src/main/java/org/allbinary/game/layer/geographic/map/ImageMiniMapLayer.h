@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_IMAGEMINIMAPLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_IMAGEMINIMAPLAYER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -62,13 +68,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MiniMapLayer.h"
+        #include "org/allbinary/game/layer/geographic/map/MiniMapLayer.h"
 
 class ImageMiniMapLayer: public MiniMapLayer {
 
-    private: Image image = NullImage::NULL_IMAGE;
+    private: Image* image = NullImage::NULL_IMAGE;
 
-public: ImageMiniMapLayer(BasicGeographicMap geographicMapInterface, ViewPositionBase viewPosition);
+public: ImageMiniMapLayer(BasicGeographicMap* geographicMapInterface, ViewPositionBase* viewPosition);
 
                 //@Throws(Exception.constructor)
             
@@ -76,7 +82,7 @@ public: ImageMiniMapLayer(BasicGeographicMap geographicMapInterface, ViewPositio
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

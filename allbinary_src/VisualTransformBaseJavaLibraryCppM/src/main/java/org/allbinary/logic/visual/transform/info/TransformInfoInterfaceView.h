@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOINTERFACEVIEW_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOINTERFACEVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,20 +61,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoInterface.h"
-#include "TransformInfoData.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfoData.h"
 
 class TransformInfoInterfaceView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: TransformInfoInterface transformInfoInterface;
+    private: TransformInfoInterface* transformInfoInterface;
 
-public: TransformInfoInterfaceView(TransformInfoInterface transformInfoInterface);
+public: TransformInfoInterfaceView(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

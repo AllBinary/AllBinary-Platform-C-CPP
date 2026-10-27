@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -63,20 +69,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TextInterface.h"
-#include "TextChangeListener.h"
+        #include "org/allbinary/animation/text/TextInterface.h"
+#include "org/allbinary/animation/text/TextChangeListener.h"
 
 class CustomTextBoxIndexedAnimation: public IndexedAnimation, public RawKeyEventListener, public UpdateMyFontInterface, public TextInterface {
 
-    private: CustomTextBox customTextBox;
+    private: CustomTextBox* customTextBox;
 
-    private: std::string lastText = StringUtil::getInstance().INIT_STRING;
+    private: std::string lastText = StringUtil::getInstance()->INIT_STRING;
 
     protected: bool hasChanged = true;
 
-    private: TextChangeListener textChangeListener = TextChangeListener::getInstance();
+    private: TextChangeListener* textChangeListener = TextChangeListener::getInstance();
 
-public: CustomTextBoxIndexedAnimation(CustomTextBox customTextBox) : IndexedAnimation(AnimationBehavior::getInstance()){
+public: CustomTextBoxIndexedAnimation(CustomTextBox* customTextBox) : IndexedAnimation(AnimationBehavior::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -88,19 +94,19 @@ this->customTextBox= customTextBox;
 }
 
 
-    public: void setBasicColorP(BasicColor basicColor){
-this->customTextBox.getTextFieldItem().setForegroundBasicColorP(basicColor);
+    public: void setBasicColorP(BasicColor* basicColor){
+this->customTextBox->getTextFieldItem()->setForegroundBasicColorP(basicColor);
     
 }
 
 
-    public: void setBackgroundBasicColorP(BasicColor basicColor){
-this->customTextBox.getTextFieldItem().setBackgroundBasicColorP(basicColor);
+    public: void setBackgroundBasicColorP(BasicColor* basicColor){
+this->customTextBox->getTextFieldItem()->setBackgroundBasicColorP(basicColor);
     
 }
 
 
-    public: void setTextWithOnMeasure(std::string text, TextChangeListener textChangeListener){
+    public: void setTextWithOnMeasure(std::string text, TextChangeListener* textChangeListener){
 this->setText(text);
     
 this->textChangeListener= textChangeListener;
@@ -108,11 +114,11 @@ this->textChangeListener= textChangeListener;
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->textChangeListener.onMeasure();
+this->textChangeListener->onMeasure();
     
 this->textChangeListener= TextChangeListener::getInstance();
     
@@ -128,7 +134,7 @@ this->textChangeListener= TextChangeListener::getInstance();
     
 this->lastText= text;
     
-this->customTextBox.getTextFieldItem().setString(text);
+this->customTextBox->getTextFieldItem()->setString(text);
     
 
                                     }
@@ -141,13 +147,13 @@ this->customTextBox.getTextFieldItem().setString(text);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->customTextBox.getTextFieldItem().getString();;
+                        return this->customTextBox->getTextFieldItem()->getString();;
     
 }
 
 
     public: void onEventRaw(int32_t keyCode, int32_t deviceId, bool repeated){
-this->customTextBox.onEventRaw(keyCode, deviceId, repeated);
+this->customTextBox->onEventRaw(keyCode, deviceId, repeated);
     
 }
 
@@ -157,18 +163,18 @@ this->customTextBox.onEventRaw(keyCode, deviceId, repeated);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->customTextBox.getTextFieldItem().getFontHeight();;
+                        return this->customTextBox->getTextFieldItem()->getFontHeight();;
     
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
-this->customTextBox.paintXY(graphics, x, y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+this->customTextBox->paintXY(graphics, x, y);
     
 }
 
 
-    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
+    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z){
 }
 
 

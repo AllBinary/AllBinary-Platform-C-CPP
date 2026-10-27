@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -72,21 +80,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HighScoresCanvasInputProcessor.h"
+        #include "org/allbinary/game/score/HighScoresCanvasInputProcessor.h"
 
 class HighScoresCanvasLevelChangeInputProcessor: public HighScoresCanvasInputProcessor, public UpdateMyFontInterface {
 
-    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
     private: const std::string INSTRUCTIONS = "(Right = Next Track, Left = Previous Track)";
 
-    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
     private: int32_t fontHeight = 0;
 
-public: HighScoresCanvasLevelChangeInputProcessor(HighScoresCanvas highScoresCanvas) : HighScoresCanvasInputProcessor(highScoresCanvas){
+public: HighScoresCanvasLevelChangeInputProcessor(HighScoresCanvas* highScoresCanvas) : HighScoresCanvasInputProcessor(highScoresCanvas){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -96,11 +104,11 @@ public: HighScoresCanvasLevelChangeInputProcessor(HighScoresCanvas highScoresCan
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->fontHeight= font.getHeight();
+this->fontHeight= font->getHeight();
     
 this->myFontProcessor= MyFontProcessor::getInstance();
     
@@ -108,13 +116,13 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 
 
     public: void open(){
-GameKeyEventHandler::getInstance().addListener(this);
+GameKeyEventHandler::getInstance()->addListener(this);
     
 }
 
 
     public: void close(){
-GameKeyEventHandler::getInstance().removeListener(this);
+GameKeyEventHandler::getInstance()->removeListener(this);
     
 }
 
@@ -122,10 +130,10 @@ GameKeyEventHandler::getInstance().removeListener(this);
 
     public: void update(){
 
-    BasicArrayList list = this->getGameKeyEventList();;
+    BasicArrayList* list = this->getGameKeyEventList();;
     
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
 
@@ -135,7 +143,7 @@ GameKeyEventHandler::getInstance().removeListener(this);
     int32_t index = 0;index < size; index++)
         {
 
-    Object* anyType = list.objectArray[index];;
+    Object* anyType = list->objectArray[index];;
     
 
     int32_t key = GameKeyEventUtil::getKey(anyType);;
@@ -144,7 +152,7 @@ GameKeyEventHandler::getInstance().removeListener(this);
                         if(key == Canvas::RIGHT)
                         
                                     {
-                                    this->getHighScoresCanvas().getGameInfo().nextGameLevel();
+                                    this->getHighScoresCanvas()->getGameInfo()->nextGameLevel();
     
 
                                     }
@@ -153,30 +161,30 @@ GameKeyEventHandler::getInstance().removeListener(this);
                         if(key == Canvas::LEFT)
                         
                                     {
-                                    this->getHighScoresCanvas().getGameInfo().previousGameLevel();
+                                    this->getHighScoresCanvas()->getGameInfo()->previousGameLevel();
     
 
                                     }
                                 
-this->getHighScoresCanvas().executeUpdate();
+this->getHighScoresCanvas()->executeUpdate();
     
 }
 
-list.clear();
+list->clear();
     
 }
 
 
-    public: void paint(Graphics graphics){
-this->myFontProcessor.process(graphics);
+    public: void paint(Graphics* graphics){
+this->myFontProcessor->process(graphics);
     
 
-    int32_t width = this->displayInfoSingleton.getLastWidth();;
+    int32_t width = this->displayInfoSingleton->getLastWidth();;
     
 
-    int32_t topScoresWidth = (graphics.getFont().stringWidth(this->INSTRUCTIONS)>>1);;
+    int32_t topScoresWidth = (graphics->getFont()->stringWidth(this->INSTRUCTIONS)>>1);;
     
-graphics.drawString(this->INSTRUCTIONS, (width>>1) -topScoresWidth, this->fontHeight *2, this->anchor);
+graphics->drawString(this->INSTRUCTIONS, (width>>1) -topScoresWidth, this->fontHeight *2, this->anchor);
     
 }
 

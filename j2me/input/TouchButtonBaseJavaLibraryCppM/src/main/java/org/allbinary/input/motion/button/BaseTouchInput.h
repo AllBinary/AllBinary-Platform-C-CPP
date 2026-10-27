@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASETOUCHINPUT_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASETOUCHINPUT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/string/CommonStrings.h>
@@ -55,13 +61,13 @@ class BaseTouchInput
             : public Object
          {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
+    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
 
 public: BaseTouchInput();
 
-    public: BasicArrayList getList();
+    public: BasicArrayList* getList();
 
     public: std::string toString();
 

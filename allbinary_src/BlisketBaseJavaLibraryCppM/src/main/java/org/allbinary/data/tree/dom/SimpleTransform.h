@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_SIMPLETRANSFORM_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_SIMPLETRANSFORM_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,17 +73,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "XslHelper.h"
+        #include "org/allbinary/data/tree/dom/XslHelper.h"
 
 class SimpleTransform
             : public Object
          {
 
-    private: AbPath xsltFilePath;
+    private: AbPath* xsltFilePath;
 
-    private: AbPath dataFilePath;
+    private: AbPath* dataFilePath;
 
-public: SimpleTransform(AbPath xsltFilePath, AbPath dataFilePath);
+public: SimpleTransform(AbPath* xsltFilePath, AbPath* dataFilePath);
 
                 //@Throws(Exception.constructor)
             

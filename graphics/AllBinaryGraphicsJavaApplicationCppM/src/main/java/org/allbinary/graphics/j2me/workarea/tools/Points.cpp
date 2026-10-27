@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -44,27 +50,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PointsInterface.h"
+        #include "org/allbinary/graphics/j2me/workarea/tools/PointsInterface.h"
 
 class Points
             : public Object
-        : public PointsInterface {
+        , public PointsInterface {
 
-    private: BasicArrayList pointVector;
+    private: BasicArrayList* pointVector;
 
 public: Points(){
-this->pointVector= BasicArrayListD();
+this->pointVector= new BasicArrayListD();
     
 }
 
 
     public: void init(){
-this->pointVector.clear();
+this->pointVector->clear();
     
 }
 
 
-    public: BasicArrayList getPoints(){
+    public: BasicArrayList* getPoints(){
 
 
 
@@ -74,15 +80,15 @@ this->pointVector.clear();
 }
 
 
-    public: void addPoints(BasicArrayList vector){
-this->pointVector.addAll2(vector);
+    public: void addPoints(BasicArrayList* vector){
+this->pointVector->addAll2(vector);
     
 }
 
 
     public: bool isValid(){
 
-                        if(this->pointVector.size() > 1)
+                        if(this->pointVector->size() > 1)
                         
                                     {
                                     
@@ -112,7 +118,7 @@ this->pointVector.addAll2(vector);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->pointVector.size();;
+                        return this->pointVector->size();;
     
 }
 

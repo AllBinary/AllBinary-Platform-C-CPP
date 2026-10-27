@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_ROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_ROTATIONANIMATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/direction/Direction.h>
 
       
@@ -60,21 +66,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "IndexedAnimation.h"
-#include "RotationAnimationInterface.h"
-#include "AnimationBehavior.h"
+        #include "org/allbinary/animation/IndexedAnimation.h"
+#include "org/allbinary/animation/RotationAnimationInterface.h"
+#include "org/allbinary/animation/AnimationBehavior.h"
 
 class RotationAnimation: public IndexedAnimation, public RotationAnimationInterface {
 
-    protected: const FrameUtil frameUtil = FrameUtil::getInstance();
+    protected: FrameUtil* frameUtil = FrameUtil::getInstance();
 
-    protected: const DirectionUtil directionUtil = DirectionUtil::getInstance();
+    protected: DirectionUtil* directionUtil = DirectionUtil::getInstance();
 
-    protected: AngleInfo angleInfo;
+    protected: AngleInfo* angleInfo;
 
-    protected: CircularIndexUtil circularIndexUtil;
+    protected: CircularIndexUtil* circularIndexUtil;
 
-protected: RotationAnimation(AngleInfo angleInfo, CircularIndexUtil circularIndexUtil, AnimationBehavior animationBehavior);
+protected: RotationAnimation(AngleInfo* angleInfo, CircularIndexUtil* circularIndexUtil, AnimationBehavior* animationBehavior);
 
     public: void nextRotationX();
 
@@ -90,11 +96,11 @@ protected: RotationAnimation(AngleInfo angleInfo, CircularIndexUtil circularInde
 
     public: void setFrame(int32_t index);
 
-    public: void setFrameByDirection(Direction direction);
+    public: void setFrameByDirection(Direction* direction);
 
-    public: void setFrameToAngle(Angle angle);
+    public: void setFrameToAngle(Angle* angle);
 
-    public: void adjustFrameToAngle(Angle angle);
+    public: void adjustFrameToAngle(Angle* angle);
 
     public: void adjustFrame(int16_t angle);
 
@@ -102,7 +108,7 @@ protected: RotationAnimation(AngleInfo angleInfo, CircularIndexUtil circularInde
 
     public: int32_t getSize();
 
-    public: AngleInfo getAngleInfoP();
+    public: AngleInfo* getAngleInfoP();
 
     public: std::string toString();
 

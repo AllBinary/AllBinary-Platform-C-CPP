@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Thread.h"
@@ -45,13 +51,13 @@
         
 class RunnableInterface: public Runnable {
 
-    bool isRunning()
+    public: virtual bool isRunning() = 0;
 
-    void setRunning(bool isRunning)
+    public: virtual void setRunning(bool isRunning) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void setThread(Thread thread)
+    public: virtual void setThread(Thread* thread) = 0;
 
 };
 

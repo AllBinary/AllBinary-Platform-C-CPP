@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORY_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -93,35 +99,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryInterface.h"
+        #include "org/allbinary/business/category/CategoryInterface.h"
 
 class Category
             : public Object
-        : public CategoryInterface {
+        , public CategoryInterface {
 
-    private: static const std::string NOT_ROOT = "This is not the root so it has no file path.";
+    private: static inline const std::string NOT_ROOT = "This is not the root so it has no file path.";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: CategoryHierarchyInterface categoryHierarchyInterface;
+    private: CategoryHierarchyInterface* categoryHierarchyInterface;
 
-    private: CategoryPropertiesInterface categoryPropertiesInterface;
+    private: CategoryPropertiesInterface* categoryPropertiesInterface;
 
-    private: const BasicArrayList childCategoryVector = BasicArrayListD();
+    private: BasicArrayList* childCategoryVector = new BasicArrayListD();
 
-    private: const BasicArrayList typeVector = BasicArrayListD();
+    private: BasicArrayList* typeVector = new BasicArrayListD();
 
-    private: const Integer PROPERTIES = Integer(1);
+    private: int32_t PROPERTIES = int32_t(1);
 
-    private: const Integer CATEGORY = Integer(0);
+    private: int32_t CATEGORY = int32_t(0);
 
-public: Category(CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface);
+public: Category(CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface);
 
-public: Category(CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface, int32_t level);
+public: Category(CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface, int32_t level);
 
-public: Category(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface);
+public: Category(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
@@ -129,60 +135,60 @@ public: Category(CategoryInterface rootCategoryInterface, CategoryInterface pare
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getRootFilePath();
+    public: AbPath* getRootFilePath();
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getFilePath();
+    public: AbPath* getFilePath();
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getWebAppPath();
+    public: AbPath* getWebAppPath();
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getPath();
+    public: AbPath* getPath();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool addChildProperty(CategoryPropertiesInterface categoryPropertiesInterface);
+    public: bool addChildProperty(CategoryPropertiesInterface* categoryPropertiesInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool addChild(CategoryInterface categoryInterface);
+    public: bool addChild(CategoryInterface* categoryInterface);
 
-    public: BasicArrayList getChildNodes();
+    public: BasicArrayList* getChildNodes();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool removeChild(CategoryInterface categoryInterface);
+    public: bool removeChild(CategoryInterface* categoryInterface);
 
-    private: void removal(BasicArrayList removalVector);
+    private: void removal(BasicArrayList* removalVector);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: bool removeDuplicateChild(CategoryInterface categoryInterface);
+    private: bool removeDuplicateChild(CategoryInterface* categoryInterface);
 
                 //@Throws(Exception.constructor)
             
     public: bool isLeaf();
 
-    public: CategoryPropertiesInterface getProperties();
+    public: CategoryPropertiesInterface* getProperties();
 
-    public: void setProperties(CategoryPropertiesInterface categoryPropertiesInterface);
+    public: void setProperties(CategoryPropertiesInterface* categoryPropertiesInterface);
 
-    public: CategoryHierarchyInterface getHierarchy();
+    public: CategoryHierarchyInterface* getHierarchy();
 
-    public: void setHierarchy(CategoryHierarchyInterface categoryHierarchyInterface);
+    public: void setHierarchy(CategoryHierarchyInterface* categoryHierarchyInterface);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: Boolean isValid();
+    public: bool isValid();
 
                 //@Throws(Exception.constructor)
             
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
                 //@Throws(Exception.constructor)
             
@@ -190,11 +196,11 @@ public: Category(CategoryInterface rootCategoryInterface, CategoryInterface pare
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList toVector();
+    public: BasicArrayList* toVector();
 
                 //@Throws(Exception.constructor)
             

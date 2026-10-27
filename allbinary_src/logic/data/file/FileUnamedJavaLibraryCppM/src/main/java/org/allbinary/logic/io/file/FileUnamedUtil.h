@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILEUNAMEDUTIL_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_FILEUNAMEDUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/string/CommonSeps.h>
@@ -49,11 +55,11 @@ class FileUnamedUtil
             : public Object
          {
 
-    private: static FileUnamedUtil instance() { return FileUnamedUtil(); }
+    private: static FileUnamedUtil* instance() { static std::unique_ptr<FileUnamedUtil> value(new FileUnamedUtil()); return value.get(); }
 
-    public: static FileUnamedUtil getInstance();
+    public: static FileUnamedUtil* getInstance();
 
-    private: const CommonSeps commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps = CommonSeps::getInstance();
 
     public: std::string process(std::string string);
 

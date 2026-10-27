@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -85,22 +91,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "URIResolverStrings.h"
-#include "BasicUriResolver.h"
+        #include "org/allbinary/data/tree/dom/URIResolverStrings.h"
+#include "org/allbinary/data/tree/dom/BasicUriResolver.h"
 
 class StoreUriResolver
             : public Object
-        : public URIResolver {
+        , public URIResolver {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const URIResolverStrings uriResolverStrings = URIResolverStrings::getInstance();
+    private: URIResolverStrings* uriResolverStrings = URIResolverStrings::getInstance();
 
-    private: BasicUriResolver basicURIResolver;
+    private: BasicUriResolver* basicURIResolver;
 
-    private: TransformInfoInterface parentTransformInfoInterface;
+    private: TransformInfoInterface* parentTransformInfoInterface;
 
-public: StoreUriResolver(TransformInfoInterface parentTransformInfoInterface, BasicUriResolver basicURIResolver){
+public: StoreUriResolver(TransformInfoInterface* parentTransformInfoInterface, BasicUriResolver* basicURIResolver){
 this->parentTransformInfoInterface= parentTransformInfoInterface;
     
 this->basicURIResolver= basicURIResolver;
@@ -110,49 +116,49 @@ this->basicURIResolver= basicURIResolver;
 
                 //@Throws(TransformerException.constructor)
             
-    public: Source resolve(std::string href, std::string base){
+    public: Source* resolve(std::string href, std::string base){
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    TransformInfoHttpStoreInterface transformInfoHttpStoreInterface = this->parentTransformInfoInterface;;
+    TransformInfoHttpStoreInterface* transformInfoHttpStoreInterface = dynamic_cast<TransformInfoHttpStoreInterface*>(this->parentTransformInfoInterface);;
     
-stringBuffer.append(URLGLOBALS::getMainPath()).append(FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH).append(transformInfoHttpStoreInterface.getStoreName()).append(AbPathData::getInstance().SEPARATOR).append(href);
-    
-
-    AbPath fileAbPath = AbFilePath(stringBuffer.toString());;
+stringBuffer->append(URLGLOBALS::getMainPath())->append(FREEBLISKET_PATH_GLOBALS::getInstance()->XSLPATH)->append(transformInfoHttpStoreInterface->getStoreName())->append(AbPathData::getInstance()->SEPARATOR)->append(href);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XMLLOGGING))
+    AbPath* fileAbPath = dynamic_cast<AbPath*>(new AbFilePath(stringBuffer->toString()));;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XMLLOGGING))
                         
                                     {
-                                    stringBuffer.delete(0, stringBuffer.length());
+                                    stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(this->uriResolverStrings.ATTEMPT);
+stringBuffer->append(this->uriResolverStrings->ATTEMPT);
     
-stringBuffer.append(href);
+stringBuffer->append(href);
     
-stringBuffer.append(this->uriResolverStrings.BASE);
+stringBuffer->append(this->uriResolverStrings->BASE);
     
-stringBuffer.append(base);
+stringBuffer->append(base);
     
-stringBuffer.append(this->uriResolverStrings.NEW_PATH);
+stringBuffer->append(this->uriResolverStrings->NEW_PATH);
     
-stringBuffer.append(fileAbPath.toString());
+stringBuffer->append(fileAbPath->toString());
     
-stringBuffer.append(this->uriResolverStrings.NOTE);
+stringBuffer->append(this->uriResolverStrings->NOTE);
     
-stringBuffer.append(FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH);
+stringBuffer->append(FREEBLISKET_PATH_GLOBALS::getInstance()->XSLPATH);
     
-stringBuffer.append(this->uriResolverStrings.URL_GLOBAL);
+stringBuffer->append(this->uriResolverStrings->URL_GLOBAL);
     
-stringBuffer.append(this->uriResolverStrings.REQUIRED_EXTENSION);
+stringBuffer->append(this->uriResolverStrings->REQUIRED_EXTENSION);
     
-stringBuffer.append(this->basicURIResolver.getExtension());
+stringBuffer->append(this->basicURIResolver->getExtension());
     
-this->logUtil.putF(stringBuffer.toString(), this, this->uriResolverStrings.RESOLVE);
+this->logUtil->putF(stringBuffer->toString(), this, this->uriResolverStrings->RESOLVE);
     
 
                                     }
@@ -161,11 +167,11 @@ this->logUtil.putF(stringBuffer.toString(), this, this->uriResolverStrings.RESOL
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StreamSource(CryptFileReader(TransformInfoTemplateData::getInstance().UNCRYPTED_EXTENSION, TransformInfoTemplateData::getInstance().ENCRYPTED_EXTENSION).getInputStream(fileAbPath));
+                        return new StreamSource((new CryptFileReader(TransformInfoTemplateData::getInstance()->UNCRYPTED_EXTENSION, TransformInfoTemplateData::getInstance()->ENCRYPTED_EXTENSION))->getInputStream(fileAbPath));
     
 
                 //: 
-} catch(e) 
+} catch(TransformerException& e) 
             {
 
 
@@ -175,15 +181,15 @@ this->logUtil.putF(stringBuffer.toString(), this, this->uriResolverStrings.RESOL
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
 
 
-                            throw TransformerException(e);
+                            throw new TransformerException(&e);
                     
 }
-*/
+
 }
 
 
@@ -194,11 +200,11 @@ this->logUtil.putF(stringBuffer.toString(), this, this->uriResolverStrings.RESOL
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH +"{Store Name if Any}/{import url}";
+                        return URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance()->XSLPATH +"{Store Name if Any}/{import url}";
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 

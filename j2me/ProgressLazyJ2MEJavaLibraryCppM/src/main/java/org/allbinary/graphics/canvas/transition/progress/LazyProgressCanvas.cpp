@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/canvas/Processor.h>
@@ -50,11 +56,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProgressCanvas.h"
+        #include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
 
 class LazyProgressCanvas: public ProgressCanvas {
 
-public: LazyProgressCanvas(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : ProgressCanvas(title, backgroundBasicColor, foregroundBasicColor){
+public: LazyProgressCanvas(std::string title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ProgressCanvas(title, backgroundBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -81,13 +87,13 @@ this->endActual();
     
 this->paintable= this->GAUGE_PAINTABLE;
     
-ImageCacheFactory::getInstance().runTask();
+ImageCacheFactory::getInstance()->runTask();
     
-ImageCacheFactory::getInstance().progressEnded();
+ImageCacheFactory::getInstance()->progressEnded();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 this->logUtil.putF(this->commonStrings.EXCEPTION, this, this->commonStrings.END_METHOD_NAME);
     

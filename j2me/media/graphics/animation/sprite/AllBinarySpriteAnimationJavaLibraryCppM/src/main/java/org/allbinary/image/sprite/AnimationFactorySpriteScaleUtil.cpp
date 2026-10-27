@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -84,9 +90,9 @@ class AnimationFactorySpriteScaleUtil
             : public Object
          {
 
-    private: static AnimationFactorySpriteScaleUtil instance() { return AnimationFactorySpriteScaleUtil(); }
+    private: static AnimationFactorySpriteScaleUtil* instance() { static std::unique_ptr<AnimationFactorySpriteScaleUtil> value(new AnimationFactorySpriteScaleUtil()); return value.get(); }
 
-    public: static AnimationFactorySpriteScaleUtil getInstance(){
+    public: static AnimationFactorySpriteScaleUtil* getInstance(){
 
 
 
@@ -96,27 +102,27 @@ class AnimationFactorySpriteScaleUtil
 }
 
 
-    private: const ImageCache imageCache = ImageCacheFactory::getInstance();
+    private: ImageCache* imageCache = ImageCacheFactory::getInstance();
 
-    private: const ImageScaleUtil imageScaleUtil = ImageScaleUtil::getInstance();
+    private: ImageScaleUtil* imageScaleUtil = ImageScaleUtil::getInstance();
 
-    private: const OpenGLUtil openGLUtil = OpenGLUtil::getInstance();
+    private: OpenGLUtil* openGLUtil = OpenGLUtil::getInstance();
 
-    private: const J2SEMath j2seMath = J2SEMath::getInstance();
+    private: J2SEMath* j2seMath = J2SEMath::getInstance();
 
-    private: const OpenGLESImageExclusionUtil openGLESImageExclusionUtil = OpenGLESImageExclusionUtil::getInstance();
+    private: OpenGLESImageExclusionUtil* openGLESImageExclusionUtil = OpenGLESImageExclusionUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: Sprite createImage(Image image, int32_t width, int32_t height, int32_t scaleWidth, int32_t scaleHeight){
+    public: Sprite* createImage(Image* image, int32_t width, int32_t height, int32_t scaleWidth, int32_t scaleHeight){
 
-    SpriteFactory spriteFactory = SpriteFactory::getInstance();;
+    SpriteFactory* spriteFactory = SpriteFactory::getInstance();;
     
 
-    Sprite sprite;;
+    Sprite* sprite;;
     
 
-    Image scaledImage;;
+    Image* scaledImage;;
     
 
                         if(scaleWidth != 0 && scaleHeight != 0)
@@ -132,23 +138,23 @@ class AnimationFactorySpriteScaleUtil
                         if((scaleX == 1.0 && scaleY == 1.0) || (scaleX == 0.0 || scaleY == 0.0))
                         
                                     {
-                                    scaledImage= this->openGLUtil.addImage(image);
+                                    scaledImage= this->openGLUtil->addImage(image);
     
-sprite= spriteFactory.createSprite(scaledImage, width, height);
+sprite= spriteFactory->createSprite(scaledImage, width, height);
     
 
                                     }
                                 
                         else {
                             
-                        if(this->openGLESImageExclusionUtil.isCustomScaling(image))
+                        if(this->openGLESImageExclusionUtil->isCustomScaling(image))
                         
                                     {
                                     
-    int32_t width2 = this->j2seMath.round((scaleWidth) -0.5);;
+    int32_t width2 = this->j2seMath->round((scaleWidth) -0.5);;
     
 
-    int32_t height2 = this->j2seMath.round((scaleHeight) -0.5);;
+    int32_t height2 = this->j2seMath->round((scaleHeight) -0.5);;
     
 
     int32_t multiplesOf16Width = width2 /16;;
@@ -187,9 +193,9 @@ scaleY= (by16Height) /height;
 
                                     }
                                 
-scaledImage= this->imageScaleUtil.createImage2(this->imageCache, image, scaleX, 1.0, scaleY, 1.0, true);
+scaledImage= this->imageScaleUtil->createImage2(this->imageCache, image, scaleX, 1.0, scaleY, 1.0, true);
     
-sprite= spriteFactory.createSprite(scaledImage, static_cast<int32_t>((width *scaleX)), static_cast<int32_t>((height *scaleY)));
+sprite= spriteFactory->createSprite(scaledImage, static_cast<int32_t>((width *scaleX)), static_cast<int32_t>((height *scaleY)));
     
 
                         }
@@ -198,9 +204,9 @@ sprite= spriteFactory.createSprite(scaledImage, static_cast<int32_t>((width *sca
                                     }
                                 
                         else {
-                            scaledImage= this->openGLUtil.addImage(image);
+                            scaledImage= this->openGLUtil->addImage(image);
     
-sprite= spriteFactory.createSprite(scaledImage, width, height);
+sprite= spriteFactory->createSprite(scaledImage, width, height);
     
 
                         }

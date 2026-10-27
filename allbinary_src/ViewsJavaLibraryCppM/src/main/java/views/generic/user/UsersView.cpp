@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -74,11 +80,11 @@
         
 class UsersView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: BasicArrayList userVector;
+    protected: BasicArrayList* userVector;
 
-public: UsersView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+public: UsersView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -88,14 +94,14 @@ public: UsersView(TransformInfoInterface transformInfoInterface) : HttpStoreComp
 }
 
 
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
         try {
             
-    Node usersNode = document.createElement(UsersData::NAME);;
+    Node* usersNode = document->createElement(UsersData::NAME);;
     
 
-    int32_t size = this->userVector.size();;
+    int32_t size = this->userVector->size();;
     
 
 
@@ -105,7 +111,7 @@ public: UsersView(TransformInfoInterface transformInfoInterface) : HttpStoreComp
     int32_t index = 0;index < size; index++)
         {
 
-    User userInterface = this->userVector.get(index);;
+    User* userInterface = dynamic_cast<User*>(this->userVector->get(index));;
     
 
                         if(userInterface != 
@@ -114,15 +120,15 @@ public: UsersView(TransformInfoInterface transformInfoInterface) : HttpStoreComp
                         
                                     {
                                     
-    Node node = UserDomNode(userInterface).toXmlNode(document);;
+    Node* node = (new UserDomNode(userInterface))->toXmlNode(document);;
     
-usersNode.appendChild(node);
+usersNode->appendChild(node);
     
 
                                     }
                                 
                         else {
-                            this->logUtil.putF("UserHelper", this, "toXmlNode");
+                            this->logUtil->putF("UserHelper", this, "toXmlNode");
     
 
                         }
@@ -137,13 +143,13 @@ usersNode.appendChild(node);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XSLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XSLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, "toXmlNode", &e);
     
 
                                     }
@@ -160,7 +166,7 @@ usersNode.appendChild(node);
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this);
+this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     
 }
 
@@ -180,13 +186,13 @@ this->addDomNodeInterface(this);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/jgrapht/GraphPath.h>
@@ -82,41 +88,41 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasePathFinderGraphVisitor.h"
-#include "CellPositionArray.h"
+        #include "org/allbinary/game/media/graphics/geography/map/racetrack/BasePathFinderGraphVisitor.h"
+#include "org/allbinary/game/media/graphics/geography/map/racetrack/CellPositionArray.h"
 
 template<typename V, typename E>
 class PathFinderGraphHackVisitor: public BasePathFinderGraphVisitor<V, E> {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: PathFinderGraphHackVisitor(BasicGeographicMap geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight);
-
-                //@Throws(Exception.constructor)
-            
-    public: void visit(SimpleWeightedGraph graph, BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList);
+public: PathFinderGraphHackVisitor(BasicGeographicMap* geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight);
 
                 //@Throws(Exception.constructor)
             
-    private: void fixStart(SimpleWeightedGraph<CellPosition, DefaultWeightedEdge> graph, BasicArrayList startPathFindingNodeList);
+    public: void visit(SimpleWeightedGraph* graph, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList);
 
                 //@Throws(Exception.constructor)
             
-    private: void fixEnd(SimpleWeightedGraph<CellPosition, DefaultWeightedEdge> graph, BasicArrayList endPathFindingNodeList);
+    private: void fixStart(SimpleWeightedGraph<CellPosition*, DefaultWeightedEdge*>* graph, BasicArrayList* startPathFindingNodeList);
 
                 //@Throws(Exception.constructor)
             
-    private: void fixOverPassEdges(SimpleWeightedGraph<CellPosition, DefaultWeightedEdge> graph);
+    private: void fixEnd(SimpleWeightedGraph<CellPosition*, DefaultWeightedEdge*>* graph, BasicArrayList* endPathFindingNodeList);
 
                 //@Throws(Exception.constructor)
             
-    public: void fixPath(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, BasicArrayList pathList);
+    private: void fixOverPassEdges(SimpleWeightedGraph<CellPosition*, DefaultWeightedEdge*>* graph);
 
                 //@Throws(Exception.constructor)
             
-    private: void removeOverPassEdges(BasicArrayList pathList);
+    public: void fixPath(BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList, BasicArrayList* pathList);
 
-    public: bool isValid(GraphPath graphPath);
+                //@Throws(Exception.constructor)
+            
+    private: void removeOverPassEdges(BasicArrayList* pathList);
+
+    public: bool isValid(GraphPath* graphPath);
 
 };
 

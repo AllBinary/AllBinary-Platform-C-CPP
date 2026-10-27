@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_SPECIALDEMOGAMEMIDLET_H
         #define ORG_ALLBINARY_GAME_MIDLET_SPECIALDEMOGAMEMIDLET_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/system/security/licensing/ClientInformationFactory.h>
 
       
@@ -45,14 +51,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DemoGameMidlet.h"
-#include "LicenseLoadingType.h"
-#include "LicensedDemoSetupFactory.h"
-#include "LicenseCheckRunnableFactory.h"
+        #include "org/allbinary/game/midlet/DemoGameMidlet.h"
+#include "org/allbinary/game/midlet/LicenseLoadingType.h"
+#include "org/allbinary/game/midlet/LicensedDemoSetupFactory.h"
+#include "org/allbinary/game/midlet/LicenseCheckRunnableFactory.h"
 
 class SpecialDemoGameMidlet: public DemoGameMidlet {
 
-public: SpecialDemoGameMidlet(ClientInformationFactory clientInformationFactory, LicenseLoadingType licenseLoadingType, LicensedDemoSetupFactory demoSetupFactory, LicenseCheckRunnableFactory licenseCheckRunnableFactory);
+public: SpecialDemoGameMidlet(ClientInformationFactory* clientInformationFactory, LicenseLoadingType* licenseLoadingType, LicensedDemoSetupFactory* demoSetupFactory, LicenseCheckRunnableFactory* licenseCheckRunnableFactory);
 
     public: void initView();
 

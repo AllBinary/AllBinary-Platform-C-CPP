@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,8 +67,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserInterface.h"
-#include "CreateUserFactory.h"
+        #include "org/allbinary/business/user/UserInterface.h"
+#include "org/allbinary/business/user/CreateUserFactory.h"
 
 class NewUserFactory
             : public Object
@@ -70,32 +76,32 @@ class NewUserFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static UserInterface getInstance(){
+    public: static UserInterface* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return User();
+                        return new User();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: static UserInterface getInstance(TransformInfoInterface transformInfoInterface){
+    public: static UserInterface* getInstance(TransformInfoInterface* transformInfoInterface){
 
-    TransformInfoHttpInterface httpTransformInfoInterface = transformInfoInterface;;
+    TransformInfoHttpInterface* httpTransformInfoInterface = dynamic_cast<TransformInfoHttpInterface*>(transformInfoInterface);;
     
 
-    HttpServletRequest httpServletRequest = httpTransformInfoInterface.getPageContext().getRequest();;
+    HttpServletRequest* httpServletRequest = dynamic_cast<HttpServletRequest*>(httpTransformInfoInterface->getPageContext()->getRequest());;
     
 
-    HashMap<Object*, Object*> hashMap = RequestParams(httpServletRequest).toHashMap();;
+    HashMap<Object*, Object*>* hashMap = (new RequestParams(httpServletRequest))->toHashMap();;
     
 
-    std::string role = httpTransformInfoInterface.getPropertiesHashMap().get(UserRoleData::NAME.toString());;
+    std::string role = httpTransformInfoInterface->getPropertiesHashMap()->get(UserRoleData::NAME.toString());;
     
-hashMap.put(UserRoleData::NAME.toString(), role);
+hashMap->put(UserRoleData::NAME.toString(), role);
     
 
 
@@ -108,7 +114,7 @@ hashMap.put(UserRoleData::NAME.toString(), role);
 
                 //@Throws(Exception.constructor)
             
-    public: static UserInterface getInstance(HttpServletRequest httpServletRequest, HashMap<Object*, Object*> propertiesHashMap){
+    public: static UserInterface* getInstance(HttpServletRequest* httpServletRequest, HashMap<Object*, Object*>* propertiesHashMap){
 
                         if(propertiesHashMap != 
                                     nullptr
@@ -116,12 +122,12 @@ hashMap.put(UserRoleData::NAME.toString(), role);
                         
                                     {
                                     
-    HashMap<Object*, Object*> requestHashMap = RequestParams(httpServletRequest).toHashMap();;
+    HashMap<Object*, Object*>* requestHashMap = (new RequestParams(httpServletRequest))->toHashMap();;
     
 
-    std::string roleString = propertiesHashMap.get(UserRoleData::NAME.toString());;
+    std::string roleString = propertiesHashMap->get(UserRoleData::NAME.toString());;
     
-requestHashMap.put(UserRoleData::NAME.toString(), roleString);
+requestHashMap->put(UserRoleData::NAME.toString(), roleString);
     
 
 
@@ -136,7 +142,7 @@ requestHashMap.put(UserRoleData::NAME.toString(), roleString);
                             
 
 
-                            throw Exception("Null HashMap");
+                            throw new Exception("Null HashMap");
                     
 
                         }

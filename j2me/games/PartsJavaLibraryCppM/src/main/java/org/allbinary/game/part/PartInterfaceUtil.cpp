@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -40,15 +46,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PartInterface.h"
+        #include "org/allbinary/game/part/PartInterface.h"
 
 class PartInterfaceUtil
             : public Object
          {
 
-    private: static const std::vector<PartInterface> SINGLETON = {};
+    private: static inline const std::vector<PartInterface*> SINGLETON = {};
 
-    public: static std::vector<PartInterface> getZeroArray(){
+    public: static std::vector<PartInterface*> getZeroArray(){
 
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class LogoData
             : public Object
          {
 
-    private: static LogoData instance() { return LogoData(); }
+    private: static LogoData* instance() { static std::unique_ptr<LogoData> value(new LogoData()); return value.get(); }
 
-    public: static LogoData getInstance(){
+    public: static LogoData* getInstance(){
 
 
 

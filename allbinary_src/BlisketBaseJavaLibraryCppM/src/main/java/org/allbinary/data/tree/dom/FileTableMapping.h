@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_FILETABLEMAPPING_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_FILETABLEMAPPING_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,11 +79,11 @@
         
 class FileTableMapping
             : public Object
-        : public TableMappingInterface {
+        , public TableMappingInterface {
 
-    private: AbFile file;
+    private: AbFile* file;
 
-public: FileTableMapping(AbFile file);
+public: FileTableMapping(AbFile* file);
 
                 //@Throws(Exception.constructor)
             
@@ -85,11 +91,11 @@ public: FileTableMapping(AbFile file);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList toVector();
+    public: BasicArrayList* toVector();
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
 };
 

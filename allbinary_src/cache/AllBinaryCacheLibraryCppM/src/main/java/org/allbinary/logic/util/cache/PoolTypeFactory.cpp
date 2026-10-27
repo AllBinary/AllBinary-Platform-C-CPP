@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -24,16 +30,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PoolType.h"
-#include "CacheTypeFactory.h"
+        #include "org/allbinary/logic/util/cache/PoolType.h"
+#include "org/allbinary/logic/util/cache/CacheTypeFactory.h"
 
 class PoolTypeFactory
             : public Object
          {
 
-    private: static PoolTypeFactory instance() { return PoolTypeFactory(); }
+    private: static PoolTypeFactory* instance() { static std::unique_ptr<PoolTypeFactory> value(new PoolTypeFactory()); return value.get(); }
 
-    public: static PoolTypeFactory getInstance(){
+    public: static PoolTypeFactory* getInstance(){
 
 
 
@@ -43,7 +49,7 @@ class PoolTypeFactory
 }
 
 
-    public: PoolType VECTOR_POOL = PoolType(CacheTypeFactory::getInstance().NO_CACHE);
+    public: PoolType* VECTOR_POOL = new PoolType(CacheTypeFactory::getInstance()->NO_CACHE);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSPROPERTIES_H
         #define ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSPROPERTIES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/animation/transition/shake/NoShakeAnimationListener.h>
@@ -65,25 +71,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WaypointBehaviorBase.h"
+        #include "org/allbinary/game/layer/WaypointBehaviorBase.h"
 
 class AdvancedRTSProperties
             : public Object
          {
 
-    public: static AdvancedRTSProperties createPropertiesSimulated();
+    public: static AdvancedRTSProperties* createPropertiesSimulated();
 
-    public: static AdvancedRTSProperties createProperties();
+    public: static AdvancedRTSProperties* createProperties();
 
-    public: ShakeAnimationListener shakeListener;
+    public: ShakeAnimationListener* shakeListener;
 
-    public: AllBinaryVibrationME vibration;
+    public: AllBinaryVibrationME* vibration;
 
     public: int32_t duration;
 
-    public: TickableInterface waypointBehaviorBase;
+    public: TickableInterface* waypointBehaviorBase;
 
-public: AdvancedRTSProperties(ShakeAnimationListener shakeListener, AllBinaryVibrationME vibration, int32_t duration, TickableInterface waypointBehaviorBase);
+public: AdvancedRTSProperties(ShakeAnimationListener* shakeListener, AllBinaryVibrationME* vibration, int32_t duration, TickableInterface* waypointBehaviorBase);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/business/user/commerce/money/Money.h>
 
       
@@ -45,123 +51,123 @@
         
 class ItemInterface: public TableMappingInterface {
 
-    void setId(std::string itemId)
+    public: virtual void setId(std::string itemId) = 0;
 
-    void setNumber(std::string number)
+    public: virtual void setNumber(std::string number) = 0;
 
-    void setInBaskets(std::string value)
+    public: virtual void setInBaskets(std::string value) = 0;
 
-    void setWeight(std::string value)
+    public: virtual void setWeight(std::string value) = 0;
 
-    void setEnabled(std::string value)
+    public: virtual void setEnabled(std::string value) = 0;
 
-    void setNewOrUsed(std::string value)
+    public: virtual void setNewOrUsed(std::string value) = 0;
 
-    void setSummary(std::string value)
+    public: virtual void setSummary(std::string value) = 0;
 
-    void setDistributor(std::string value)
+    public: virtual void setDistributor(std::string value) = 0;
 
-    void setIdUsedByDistributor(std::string value)
+    public: virtual void setIdUsedByDistributor(std::string value) = 0;
 
-    void setProducedBy(std::string value)
+    public: virtual void setProducedBy(std::string value) = 0;
 
-    void setProductionDate(std::string value)
+    public: virtual void setProductionDate(std::string value) = 0;
 
-    void setStartProductionDate(std::string value)
+    public: virtual void setStartProductionDate(std::string value) = 0;
 
-    void setDescription(std::string value)
+    public: virtual void setDescription(std::string value) = 0;
 
-    void setKeywords(std::string value)
+    public: virtual void setKeywords(std::string value) = 0;
 
-    void setCategory(std::string value)
+    public: virtual void setCategory(std::string value) = 0;
 
-    void setType(std::string value)
+    public: virtual void setType(std::string value) = 0;
 
-    void setSmallImage(std::string value)
+    public: virtual void setSmallImage(std::string value) = 0;
 
-    void setMediumImage(std::string value)
+    public: virtual void setMediumImage(std::string value) = 0;
 
-    void setLargeImage(std::string value)
+    public: virtual void setLargeImage(std::string value) = 0;
 
-    void setTimeEntered(std::string value)
+    public: virtual void setTimeEntered(std::string value) = 0;
 
-    void setLastModified(std::string value)
+    public: virtual void setLastModified(std::string value) = 0;
 
-    void setPrice(Money value)
+    public: virtual void setPrice(Money* value) = 0;
 
-    void setComment(std::string value)
+    public: virtual void setComment(std::string value) = 0;
 
-    void setCustoms(std::string value)
+    public: virtual void setCustoms(std::string value) = 0;
 
-    void setDownloads(std::string value)
+    public: virtual void setDownloads(std::string value) = 0;
 
-    void setGroups(std::string value)
+    public: virtual void setGroups(std::string value) = 0;
 
-    void setOptions(std::string value)
+    public: virtual void setOptions(std::string value) = 0;
 
-    void setPermissions(std::string value)
+    public: virtual void setPermissions(std::string value) = 0;
 
-    void setSpecials(std::string value)
+    public: virtual void setSpecials(std::string value) = 0;
 
-    std::string getId()
+    public: virtual std::string getId() = 0;
 
-    std::string getNumber()
+    public: virtual std::string getNumber() = 0;
 
-    std::string getInBaskets()
+    public: virtual std::string getInBaskets() = 0;
 
-    std::string getWeight()
+    public: virtual std::string getWeight() = 0;
 
-    std::string getEnabled()
+    public: virtual std::string getEnabled() = 0;
 
-    std::string getNewOrUsed()
+    public: virtual std::string getNewOrUsed() = 0;
 
-    std::string getSummary()
+    public: virtual std::string getSummary() = 0;
 
-    std::string getDistributor()
+    public: virtual std::string getDistributor() = 0;
 
-    std::string getIdUsedByDistributor()
+    public: virtual std::string getIdUsedByDistributor() = 0;
 
-    std::string getProducedBy()
+    public: virtual std::string getProducedBy() = 0;
 
-    std::string getProductionDate()
+    public: virtual std::string getProductionDate() = 0;
 
-    std::string getStartProductionDate()
+    public: virtual std::string getStartProductionDate() = 0;
 
-    std::string getDescription()
+    public: virtual std::string getDescription() = 0;
 
-    std::string getKeywords()
+    public: virtual std::string getKeywords() = 0;
 
-    std::string getCategory()
+    public: virtual std::string getCategory() = 0;
 
-    std::string getType()
+    public: virtual std::string getType() = 0;
 
-    std::string getSmallImage()
+    public: virtual std::string getSmallImage() = 0;
 
-    std::string getMediumImage()
+    public: virtual std::string getMediumImage() = 0;
 
-    std::string getLargeImage()
+    public: virtual std::string getLargeImage() = 0;
 
-    std::string getTimeEntered()
+    public: virtual std::string getTimeEntered() = 0;
 
-    std::string getLastModified()
+    public: virtual std::string getLastModified() = 0;
 
-    Money getPrice()
+    public: virtual Money* getPrice() = 0;
 
-    std::string getComment()
+    public: virtual std::string getComment() = 0;
 
-    std::string getCustoms()
+    public: virtual std::string getCustoms() = 0;
 
-    std::string getDownloads()
+    public: virtual std::string getDownloads() = 0;
 
-    std::string getGroups()
+    public: virtual std::string getGroups() = 0;
 
-    std::string getOptions()
+    public: virtual std::string getOptions() = 0;
 
-    std::string getPermissions()
+    public: virtual std::string getPermissions() = 0;
 
-    std::string getSpecials()
+    public: virtual std::string getSpecials() = 0;
 
-    Money getTotal()
+    public: virtual Money* getTotal() = 0;
 
 };
 

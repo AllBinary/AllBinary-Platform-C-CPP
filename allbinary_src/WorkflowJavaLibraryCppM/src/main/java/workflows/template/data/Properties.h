@@ -21,6 +21,12 @@
         #ifndef WORKFLOWS_TEMPLATE_DATA_PROPERTIES_H
         #define WORKFLOWS_TEMPLATE_DATA_PROPERTIES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -61,15 +67,15 @@ class Properties
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: HashMap<Object*, Object*> propertiesHashMap;
+    private: HashMap<Object*, Object*>* propertiesHashMap;
 
 public: Properties();
 
-    protected: HashMap<Object*, Object*> getPropertiesHashMap();
+    protected: HashMap<Object*, Object*>* getPropertiesHashMap();
 
     public: int32_t doEndTag();
 

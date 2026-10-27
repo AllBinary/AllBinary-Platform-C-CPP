@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_PROPERTYINITUTIL_H
         #define ORG_ALLBINARY_LOGIC_PROPERTYINITUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -55,9 +61,9 @@ class PropertyInitUtil
             : public Object
          {
 
-    private: static PropertyInitUtil instance() { return PropertyInitUtil(); }
+    private: static PropertyInitUtil* instance() { static std::unique_ptr<PropertyInitUtil> value(new PropertyInitUtil()); return value.get(); }
 
-    public: static PropertyInitUtil getInstance(int32_t value);
+    public: static PropertyInitUtil* getInstance(int32_t value);
 
 };
 

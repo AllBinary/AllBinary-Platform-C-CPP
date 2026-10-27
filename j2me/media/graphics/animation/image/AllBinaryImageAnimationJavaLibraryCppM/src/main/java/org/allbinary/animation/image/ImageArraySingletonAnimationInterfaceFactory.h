@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -61,11 +67,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageArrayAnimation.h"
+        #include "org/allbinary/animation/image/ImageArrayAnimation.h"
 
 class ImageArraySingletonAnimationInterfaceFactory: public SingletonAnimationInterfaceFactory {
 
-public: ImageArraySingletonAnimationInterfaceFactory(std::vector<Image> imageArray);
+public: ImageArraySingletonAnimationInterfaceFactory(std::vector<Image*> imageArray);
 
 };
 

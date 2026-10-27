@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Throwable.h"
         
             #include "java/lang/Exception.h"
@@ -72,27 +78,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageBaseRotationAnimation.h"
-#include "ModifierBaseProcessor.h"
-#include "ScaleProcessor.h"
-#include "ScaleBaseProcessor.h"
-#include "SetColorProcessor.h"
-#include "ChangeColorProcessor.h"
-#include "AlphaProcessor.h"
+        #include "org/allbinary/animation/image/ImageBaseRotationAnimation.h"
+#include "org/allbinary/animation/image/ModifierBaseProcessor.h"
+#include "org/allbinary/animation/image/ScaleProcessor.h"
+#include "org/allbinary/animation/image/ScaleBaseProcessor.h"
+#include "org/allbinary/animation/image/SetColorProcessor.h"
+#include "org/allbinary/animation/image/ChangeColorProcessor.h"
+#include "org/allbinary/animation/image/AlphaProcessor.h"
 
 class AllBinaryJ2SEImageRotationAnimation: public ImageBaseRotationAnimation {
 
-    private: const ImageRotationUtil imageRotationUtil = ImageRotationUtil::getInstance();
+    private: ImageRotationUtil* imageRotationUtil = ImageRotationUtil::getInstance();
 
-    private: const ImageModifierUtil imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
+    private: ImageModifierUtil* imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
 
-    private: Image realOriginalImage;
+    private: Image* realOriginalImage;
 
-    private: const std::vector<Image> originalImageArray = std::vector<Image>(1);
+    private: const std::vector<Image*> originalImageArray = std::vector<Image*>(1);
 
-    private: const std::vector<Image> twoImages = std::vector<Image>(2);
+    private: const std::vector<Image*> twoImages = std::vector<Image*>(2);
 
-    private: Image imageToShow;
+    private: Image* imageToShow;
 
     private: int32_t bufferedImageIndex= 0;
 
@@ -108,15 +114,15 @@ class AllBinaryJ2SEImageRotationAnimation: public ImageBaseRotationAnimation {
 
     private: float maxScaleY= 0.0;
 
-    private: ModifierBaseProcessor alphaProcessor = ModifierBaseProcessor::getInstance();
+    private: ModifierBaseProcessor* alphaProcessor = ModifierBaseProcessor::getInstance();
 
-    private: ModifierBaseProcessor setColorProcessor = ModifierBaseProcessor::getInstance();
+    private: ModifierBaseProcessor* setColorProcessor = ModifierBaseProcessor::getInstance();
 
-    private: ModifierBaseProcessor changeColorProcessor = ModifierBaseProcessor::getInstance();
+    private: ModifierBaseProcessor* changeColorProcessor = ModifierBaseProcessor::getInstance();
 
-    private: ScaleBaseProcessor scaleProcessor = ScaleProcessor::getInstance();
+    private: ScaleBaseProcessor* scaleProcessor = ScaleProcessor::getInstance();
 
-public: AllBinaryJ2SEImageRotationAnimation(Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior) : ImageBaseRotationAnimation(image, angleInfo, totalAngle, animationBehavior){
+public: AllBinaryJ2SEImageRotationAnimation(Image* originalImage, Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior) : ImageBaseRotationAnimation(image, angleInfo, totalAngle, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -131,19 +137,19 @@ this->imageToShow= image;
     
 this->twoImages[0]= image;
     
-this->twoImages[1]= ImageCopyUtil::getInstance().createImageForRotation(image);
+this->twoImages[1]= ImageCopyUtil::getInstance()->createImageForRotation(image);
     
 }
 
 
-    public: void setBasicColorP(BasicColor basicColor){
+    public: void setBasicColorP(BasicColor* basicColor){
 
     bool changed = false;;
     
 
                         if(this->getBasicColorP() == 
                                     nullptr
-                                 || this->getBasicColorP().intValue() != basicColor.intValue())
+                                 || this->getBasicColorP()->intValue() != basicColor->intValue())
                         
                                     {
                                     changed= true;
@@ -167,14 +173,14 @@ this->updateImage();
 }
 
 
-    public: void changeBasicColor(BasicColor basicColor){
+    public: void changeBasicColor(BasicColor* basicColor){
 
     bool changed = false;;
     
 
                         if(this->getChangeBasicColor() == 
                                     nullptr
-                                 || this->getChangeBasicColor().intValue() != basicColor.intValue())
+                                 || this->getChangeBasicColor()->intValue() != basicColor->intValue())
                         
                                     {
                                     changed= true;
@@ -236,7 +242,7 @@ this->scaleY= scaleY;
                         if(this->scaleX != this->lastScaleX || this->scaleY != this->lastScaleY)
                         
                                     {
-                                    this->scaleProcessor.update(this->realOriginalImage, this->originalImageArray, this->twoImages, this->bufferedImageIndex, this->scaleX, this->scaleY, this->maxScaleX, this->maxScaleY);
+                                    this->scaleProcessor->update(this->realOriginalImage, this->originalImageArray, this->twoImages, this->bufferedImageIndex, this->scaleX, this->scaleY, this->maxScaleX, this->maxScaleY);
     
 this->updateImage();
     
@@ -255,7 +261,7 @@ this->maxScaleX= maxScaleX;
     
 this->maxScaleY= maxScaleY;
     
-this->scaleProcessor.update(this->realOriginalImage, this->originalImageArray, this->twoImages, this->bufferedImageIndex, this->scaleX, this->scaleY, this->maxScaleX, this->maxScaleY);
+this->scaleProcessor->update(this->realOriginalImage, this->originalImageArray, this->twoImages, this->bufferedImageIndex, this->scaleX, this->scaleY, this->maxScaleX, this->maxScaleY);
     
 this->updateImage();
     
@@ -279,13 +285,13 @@ this->updateImage();
 
 
     private: void updateImage(){
-this->imageRotationUtil.rotateImage(this->originalImageArray[0], this->twoImages[this->bufferedImageIndex], this->angleInfo.getAngle() +90);
+this->imageRotationUtil->rotateImage(this->originalImageArray[0], this->twoImages[this->bufferedImageIndex], this->angleInfo.getAngle() +90);
     
-this->alphaProcessor.updateAlpha(this->imageModifierUtil, NullImage::NULL_IMAGE, this->twoImages[this->bufferedImageIndex], 0, this->alphaP);
+this->alphaProcessor->updateAlpha(this->imageModifierUtil, NullImage::NULL_IMAGE, this->twoImages[this->bufferedImageIndex], 0, this->alphaP);
     
-this->setColorProcessor.updateColor(this->imageModifierUtil, NullImage::NULL_IMAGE, this->twoImages[this->bufferedImageIndex], 0, this->basicColor);
+this->setColorProcessor->updateColor(this->imageModifierUtil, NullImage::NULL_IMAGE, this->twoImages[this->bufferedImageIndex], 0, this->basicColor);
     
-this->changeColorProcessor.updateColor(this->imageModifierUtil, NullImage::NULL_IMAGE, this->twoImages[this->bufferedImageIndex], 0, this->changeBasicColorP);
+this->changeColorProcessor->updateColor(this->imageModifierUtil, NullImage::NULL_IMAGE, this->twoImages[this->bufferedImageIndex], 0, this->changeBasicColorP);
     
 this->swap();
     
@@ -321,8 +327,8 @@ this->imageToShow= this->twoImages[this->bufferedImageIndex];
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
-graphics.drawImage(this->imageToShow, x, y, this->anchor);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+graphics->drawImage(this->imageToShow, x, y, this->anchor);
     
 }
 
@@ -331,7 +337,7 @@ graphics.drawImage(this->imageToShow, x, y, this->anchor);
 super.close();
     
 
-    DisposalUtil disposalUtil = DisposalUtil::getInstance();;
+    DisposalUtil* disposalUtil = DisposalUtil::getInstance();;
     
 
     int32_t size2 = this->twoImages.size();;
@@ -343,7 +349,7 @@ super.close();
                         for (
     int32_t index = 0;index < size2; index++)
         {
-disposalUtil.disposeImage(this->twoImages[index]);
+disposalUtil->disposeImage(this->twoImages[index]);
     
 }
 
@@ -357,13 +363,13 @@ disposalUtil.disposeImage(this->twoImages[index]);
                         for (
     int32_t index = 0;index < size; index++)
         {
-disposalUtil.disposeImage(this->originalImageArray[index]);
+disposalUtil->disposeImage(this->originalImageArray[index]);
     
 }
 
-disposalUtil.disposeImage(this->realOriginalImage);
+disposalUtil->disposeImage(this->realOriginalImage);
     
-disposalUtil.disposeImage(this->imageToShow);
+disposalUtil->disposeImage(this->imageToShow);
     
 }
 
@@ -374,7 +380,7 @@ disposalUtil.disposeImage(this->imageToShow);
 super.finalize();
     
 
-    DisposalUtil disposalUtil = DisposalUtil::getInstance();;
+    DisposalUtil* disposalUtil = DisposalUtil::getInstance();;
     
 
     int32_t size2 = this->twoImages.size();;
@@ -386,7 +392,7 @@ super.finalize();
                         for (
     int32_t index = 0;index < size2; index++)
         {
-disposalUtil.disposeImage(this->twoImages[index]);
+disposalUtil->disposeImage(this->twoImages[index]);
     
 }
 
@@ -400,13 +406,13 @@ disposalUtil.disposeImage(this->twoImages[index]);
                         for (
     int32_t index = 0;index < size; index++)
         {
-disposalUtil.disposeImage(this->originalImageArray[index]);
+disposalUtil->disposeImage(this->originalImageArray[index]);
     
 }
 
-disposalUtil.disposeImage(this->realOriginalImage);
+disposalUtil->disposeImage(this->realOriginalImage);
     
-disposalUtil.disposeImage(this->imageToShow);
+disposalUtil->disposeImage(this->imageToShow);
     
 }
 

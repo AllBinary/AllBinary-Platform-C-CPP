@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/commerce/money/payment/PaymentException.h>
@@ -49,7 +55,7 @@ class PaymentProcessorInterface: public DomNodeInterface {
 
                 //@Throws(PaymentException.constructor, Exception.constructor)
             
-    void process()
+    public: virtual void process() = 0;
 
 };
 

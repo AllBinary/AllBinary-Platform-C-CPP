@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -65,13 +73,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoHttpInterface.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpInterface.h"
 //Hack class should not exist
 class TransformInfoBasic: public AbContext, public TransformInfoHttpInterface {
 
-    private: StoreFrontInterface storeFrontInterface;
+    private: StoreFrontInterface* storeFrontInterface;
 
-public: TransformInfoBasic(StoreFrontInterface storeFrontInterface, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext) : AbContext(propertiesHashMap, pageContext){
+public: TransformInfoBasic(StoreFrontInterface* storeFrontInterface, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : AbContext(propertiesHashMap, pageContext){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -88,7 +96,7 @@ this->storeFrontInterface= storeFrontInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->storeFrontInterface.getName();;
+                        return this->storeFrontInterface->getName();;
     
 }
 
@@ -103,7 +111,7 @@ this->storeFrontInterface= storeFrontInterface;
 }
 
 
-    public: void override(HashMap<Object*, Object*> hashMap){
+    public: void override(HashMap<Object*, Object*>* hashMap){
 }
 
 
@@ -137,7 +145,7 @@ this->storeFrontInterface= storeFrontInterface;
 }
 
 
-    public: TransformInfoObjectConfigInterface getObjectConfigInterface(){
+    public: TransformInfoObjectConfigInterface* getObjectConfigInterface(){
 
 
 
@@ -147,11 +155,11 @@ this->storeFrontInterface= storeFrontInterface;
 }
 
 
-    public: void setObjectConfigInterface(Object transformInfoObjectConfigInterface){
+    public: void setObjectConfigInterface(Object* transformInfoObjectConfigInterface){
 }
 
 
-    public: AbPath getTemplateFilePath(){
+    public: AbPath* getTemplateFilePath(){
 
 
 
@@ -181,7 +189,7 @@ this->storeFrontInterface= storeFrontInterface;
 }
 
 
-    public: AbPath getDataFilePath(){
+    public: AbPath* getDataFilePath(){
 
 
 
@@ -203,11 +211,11 @@ this->storeFrontInterface= storeFrontInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Document getDataDocument(){
+    public: Document* getDataDocument(){
 
 
 
-                            throw Exception(commonStrings.NOT_IMPLEMENTED);
+                            throw new Exception(commonStrings.NOT_IMPLEMENTED);
                     
 }
 
@@ -290,7 +298,7 @@ this->storeFrontInterface= storeFrontInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList toVector(){
+    public: BasicArrayList* toVector(){
 
 
 
@@ -302,7 +310,7 @@ this->storeFrontInterface= storeFrontInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
 
 

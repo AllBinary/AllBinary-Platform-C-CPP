@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETEVENTHANDLER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -50,20 +56,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DemoGameMidletEventListener.h"
-#include "DemoGameMidletEvent.h"
+        #include "org/allbinary/game/midlet/DemoGameMidletEventListener.h"
+#include "org/allbinary/game/midlet/DemoGameMidletEvent.h"
 
 class DemoGameMidletEventHandler: public BasicEventHandler {
 
-    private: static const DemoGameMidletEventHandler gameKeyEventHandler = DemoGameMidletEventHandler();
+    private: static DemoGameMidletEventHandler* gameKeyEventHandler() { static std::unique_ptr<DemoGameMidletEventHandler> value(new DemoGameMidletEventHandler()); return value.get(); }
 
-    public: static DemoGameMidletEventHandler getInstance();
+    public: static DemoGameMidletEventHandler* getInstance();
 
 private: DemoGameMidletEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
 };
 

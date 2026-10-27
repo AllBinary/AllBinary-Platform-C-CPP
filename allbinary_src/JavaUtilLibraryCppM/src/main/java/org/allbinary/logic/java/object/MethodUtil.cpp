@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -48,7 +54,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ParamsUtil.h"
+        #include "org/allbinary/logic/java/anyType/ParamsUtil.h"
 
 class MethodUtil
             : public Object
@@ -56,14 +62,14 @@ class MethodUtil
 
     public: static std::string viewAll(Class* myClass, std::string lineBreak){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    std::vector<Method> method = myClass.getMethods();;
+    std::vector<Method*> method = myClass->getMethods();;
     
-stringBuffer.append("Methods: ");
+stringBuffer->append("Methods: ");
     
-stringBuffer.append(lineBreak);
+stringBuffer->append(lineBreak);
     
 
 
@@ -72,19 +78,19 @@ stringBuffer.append(lineBreak);
                         for (
     int32_t index = 0;index < method.size(); index++)
         {
-stringBuffer.append(method[index].getReturnType().getName());
+stringBuffer->append(method[index].getReturnType()->getName());
     
-stringBuffer.append(" ");
+stringBuffer->append(" ");
     
-stringBuffer.append(method[index].getName());
+stringBuffer->append(method[index].getName());
     
-stringBuffer.append("(");
+stringBuffer->append("(");
     
 ParamsUtil::viewParams(method[index].getParameterTypes());
     
-stringBuffer.append(")");
+stringBuffer->append(")");
     
-stringBuffer.append(lineBreak);
+stringBuffer->append(lineBreak);
     
 }
 
@@ -92,7 +98,7 @@ stringBuffer.append(lineBreak);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

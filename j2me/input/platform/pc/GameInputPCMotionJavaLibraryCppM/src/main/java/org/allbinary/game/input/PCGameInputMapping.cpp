@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/configuration/persistance/GamePersistanceStrings.h>
@@ -56,12 +62,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PCKeyFactory.h"
-#include "Input.h"
+        #include "org/allbinary/game/input/PCKeyFactory.h"
+#include "org/allbinary/game/input/Input.h"
 
 class PCGameInputMapping: public PersistentInputMapping {
 
-public: PCGameInputMapping() : PersistentInputMapping(GamePersistanceStrings::getInstance().SAVED_INPUT_CONFIGURATION_RECORD_ID){
+public: PCGameInputMapping() : PersistentInputMapping(GamePersistanceStrings::getInstance()->SAVED_INPUT_CONFIGURATION_RECORD_ID){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,7 +79,7 @@ public: PCGameInputMapping() : PersistentInputMapping(GamePersistanceStrings::ge
 
                 //@Throws(Exception.constructor)
             
-    public: void init(AbeClientInformationInterface abeClientInformation){
+    public: void init(AbeClientInformationInterface* abeClientInformation){
 this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.INIT);
     
 PCKeyFactory::getInstance();
@@ -90,7 +96,7 @@ super.init(abeClientInformation);
                         if(this->getTotalMapped() == 0 || this->isDefaultNew())
                         
                                     {
-                                    this->getInputMapping().addMapping(this->getDefault());
+                                    this->getInputMapping()->addMapping(this->getDefault());
     
 this->save(abeClientInformation);
     
@@ -100,9 +106,9 @@ this->save(abeClientInformation);
 }
 
 
-    public: bool isDelete(Input input){
+    public: bool isDelete(Input* input){
 
-                        if(input == PCKeyFactory::getInstance().DEL)
+                        if(input == PCKeyFactory::getInstance()->DEL)
                         
                                     {
                                     
@@ -127,7 +133,7 @@ this->save(abeClientInformation);
 }
 
 
-    public: bool isSystemInput(Input input){
+    public: bool isSystemInput(Input* input){
 
 
 

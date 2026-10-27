@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -38,13 +44,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryLayer.h"
+        #include "org/allbinary/layer/AllBinaryLayer.h"
 
 class LayerInterfaceVisitor {
 
                 //@Throws(Exception.constructor)
             
-    void visit(AllBinaryLayer layerInterface)
+    public: virtual void visit(AllBinaryLayer* layerInterface) = 0;
 
 };
 

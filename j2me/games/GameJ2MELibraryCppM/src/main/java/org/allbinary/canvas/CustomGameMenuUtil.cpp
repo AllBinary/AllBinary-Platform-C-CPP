@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/AppletUtil.h>
@@ -55,9 +61,9 @@ class CustomGameMenuUtil
             : public Object
          {
 
-    public: static void add(MyCanvas canvas){
+    public: static void add(MyCanvas* canvas){
 
-    GameCommandsFactory gameCommandsFactory = GameCommandsFactory::getInstance();;
+    GameCommandsFactory* gameCommandsFactory = GameCommandsFactory::getInstance();;
     
 
                         if(AppletUtil::isAppletLoader(canvas))
@@ -74,7 +80,7 @@ class CustomGameMenuUtil
                                     }
                                 
                         else {
-                            canvas.addCommand(gameCommandsFactory.EXIT_COMMAND);
+                            canvas->addCommand(gameCommandsFactory->EXIT_COMMAND);
     
 
                         }

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/osgi/framework/BundleContext.h>
 
       
@@ -45,11 +51,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputAutomationModuleOSGIServiceVisitor.h"
+        #include "org/allbinary/input/automation/module/osgi/InputAutomationModuleOSGIServiceVisitor.h"
 
 class InputAutomationModuleServiceConsumer: public InputAutomationServiceConsumer {
 
-public: InputAutomationModuleServiceConsumer(BundleContext bundleContext) : InputAutomationServiceConsumer(InputAutomationModuleServiceInterface.constructor.toString(), bundleContext, InputAutomationModuleOSGIServiceVisitor()){
+public: InputAutomationModuleServiceConsumer(BundleContext* bundleContext) : InputAutomationServiceConsumer(InputAutomationModuleServiceInterface.constructor.getName(), bundleContext, new InputAutomationModuleOSGIServiceVisitor()){
 
                         //super/this constructor call is in the constructor initializer list.
                     

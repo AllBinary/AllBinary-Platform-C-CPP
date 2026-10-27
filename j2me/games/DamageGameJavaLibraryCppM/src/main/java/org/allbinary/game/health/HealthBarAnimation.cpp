@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/Animation.h>
@@ -53,7 +59,7 @@
         
 class HealthBarAnimation: public Animation {
 
-    private: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
+    private: BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();
 
     protected: int32_t x2= 0;
 
@@ -61,30 +67,30 @@ class HealthBarAnimation: public Animation {
 
     private: int32_t location;
 
-    protected: AllBinaryLayer allbinaryLayer;
+    protected: AllBinaryLayer* allbinaryLayer;
 
-public: HealthBarAnimation(AllBinaryLayer layerInterface, int32_t location){
+public: HealthBarAnimation(AllBinaryLayer* layerInterface, int32_t location){
 this->allbinaryLayer= layerInterface;
     
 this->location= location;
     
 
-    BasicHudFactory basicHudFactory = BasicHudFactory::getInstance();;
+    BasicHudFactory* basicHudFactory = BasicHudFactory::getInstance();;
     
 
-                        if(this->location != basicHudFactory.TOPLEFT && this->location != basicHudFactory.BOTTOMLEFT)
+                        if(this->location != basicHudFactory->TOPLEFT && this->location != basicHudFactory->BOTTOMLEFT)
                         
                                     {
                                     
 
 
-                            throw Exception("Location Not Valid");
+                            throw new Exception("Location Not Valid");
                     
 
                                     }
                                 
 
-                        if(layerInterface.getWidth() > 40)
+                        if(layerInterface->getWidth() > 40)
                         
                                     {
                                     this->thickness= 3;
@@ -93,7 +99,7 @@ this->location= location;
                                     }
                                 
                              else 
-                        if(layerInterface.getWidth() > 20)
+                        if(layerInterface->getWidth() > 20)
                         
                                     {
                                     this->thickness= 2;
@@ -114,13 +120,13 @@ this->location= location;
 this->x2= newX2;
     
 
-    int32_t quarter = (this->allbinaryLayer.getWidth()>>2);;
+    int32_t quarter = (this->allbinaryLayer->getWidth()>>2);;
     
 
                         if(this->x2 > quarter *3)
                         
                                     {
-                                    this->basicColor= this->basicColorFactory.GREEN;
+                                    this->basicColor= this->basicColorFactory->GREEN;
     
 this->colorP= this->basicColor.intValue();
     
@@ -131,7 +137,7 @@ this->colorP= this->basicColor.intValue();
                         if(this->x2 > quarter *2)
                         
                                     {
-                                    this->basicColor= this->basicColorFactory.YELLOW;
+                                    this->basicColor= this->basicColorFactory->YELLOW;
     
 this->colorP= this->basicColor.intValue();
     
@@ -142,7 +148,7 @@ this->colorP= this->basicColor.intValue();
                         if(this->x2 > quarter)
                         
                                     {
-                                    this->basicColor= this->basicColorFactory.ORANGE;
+                                    this->basicColor= this->basicColorFactory->ORANGE;
     
 this->colorP= this->basicColor.intValue();
     
@@ -150,7 +156,7 @@ this->colorP= this->basicColor.intValue();
                                     }
                                 
                         else {
-                            this->basicColor= this->basicColorFactory.RED;
+                            this->basicColor= this->basicColorFactory->RED;
     
 this->colorP= this->basicColor.intValue();
     
@@ -162,30 +168,30 @@ this->colorP= this->basicColor.intValue();
 
     protected: int32_t getY(){
 
-    BasicHudFactory basicHudFactory = BasicHudFactory::getInstance();;
+    BasicHudFactory* basicHudFactory = BasicHudFactory::getInstance();;
     
 
-                        if(this->location == basicHudFactory.TOPLEFT)
+                        if(this->location == basicHudFactory->TOPLEFT)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->allbinaryLayer.getViewPosition().getY() -4;
+                        return this->allbinaryLayer->getViewPosition()->getY() -4;
     
 
                                     }
                                 
                              else 
-                        if(this->location == basicHudFactory.BOTTOMLEFT)
+                        if(this->location == basicHudFactory->BOTTOMLEFT)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->allbinaryLayer.getViewPosition().getY2() +4;
+                        return this->allbinaryLayer->getViewPosition()->getY2() +4;
     
 
                                     }

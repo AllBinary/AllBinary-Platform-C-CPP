@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
@@ -53,18 +59,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LurchRotationAI.h"
+        #include "org/allbinary/game/ag/ai/LurchRotationAI.h"
 
 class LurchRotationAIFactory
             : public Object
-        : public ArtificialIntelligenceInterfaceFactoryInterface {
+        , public ArtificialIntelligenceInterfaceFactoryInterface {
 
-    public: ArtificialIntelligenceInterface getInstance(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+    public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LurchRotationAI(ownerLayerInterface, gameInput);
+                        return new LurchRotationAI(ownerLayerInterface, gameInput);
     
 }
 

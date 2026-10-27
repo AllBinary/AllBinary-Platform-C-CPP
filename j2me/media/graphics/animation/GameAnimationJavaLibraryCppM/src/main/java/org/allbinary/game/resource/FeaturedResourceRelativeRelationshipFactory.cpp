@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/PointFactory.h>
@@ -62,19 +68,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "FeaturedResourceFactory.h"
-#include "ResourceRelativeRelationshipFactoryInterface.h"
+        #include "org/allbinary/game/resource/FeaturedResourceFactory.h"
+#include "org/allbinary/game/resource/ResourceRelativeRelationshipFactoryInterface.h"
 
 class FeaturedResourceRelativeRelationshipFactory: public FeaturedResourceFactory {
 
-    private: static FeaturedResourceRelativeRelationshipFactory INSTANCE = FeaturedResourceRelativeRelationshipFactory();
+    private: static FeaturedResourceRelativeRelationshipFactory* INSTANCE() { static std::unique_ptr<FeaturedResourceRelativeRelationshipFactory> value(new FeaturedResourceRelativeRelationshipFactory()); return value.get(); }
 
-    public: static FeaturedResourceRelativeRelationshipFactory getInstance(){
+    public: static FeaturedResourceRelativeRelationshipFactory* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FeaturedResourceRelativeRelationshipFactory::INSTANCE;
+                        return FeaturedResourceRelativeRelationshipFactory::INSTANCE();
     
 }
 
@@ -83,16 +89,16 @@ private: FeaturedResourceRelativeRelationshipFactory(){
 }
 
 
-    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
+    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getRelativeRelationshipList(std::string resource, AllBinaryLayer layer){
+    public: BasicArrayList* getRelativeRelationshipList(std::string resource, AllBinaryLayer* layer){
 
-    BasicArrayList featureReleaseList = this->getList();;
+    BasicArrayList* featureReleaseList = this->getList();;
     
 
-    int32_t size = this->getList().size();;
+    int32_t size = this->getList()->size();;
     
 
 
@@ -102,17 +108,17 @@ private: FeaturedResourceRelativeRelationshipFactory(){
     int32_t index = 0;index < size; index++)
         {
 
-    ResourceRelativeRelationshipFactoryInterface featureInterface = featureReleaseList.objectArray[index];;
+    ResourceRelativeRelationshipFactoryInterface* featureInterface = dynamic_cast<ResourceRelativeRelationshipFactoryInterface*>(featureReleaseList->objectArray[index]);;
     
 
-                        if(featureInterface.isFeature())
+                        if(featureInterface->isFeature())
                         
                                     {
                                     
-    BasicArrayList list = featureInterface.getResourceRelativeRelationshipList(resource);;
+    BasicArrayList* list = featureInterface->getResourceRelativeRelationshipList(resource);;
     
 
-                        if(list != this->basicArrayListUtil.getImmutableInstance())
+                        if(list != this->basicArrayListUtil->getImmutableInstance())
                         
                                     {
                                     
@@ -132,22 +138,22 @@ private: FeaturedResourceRelativeRelationshipFactory(){
 
 
 
-                            throw Exception(StringMaker().append("Not available for current feature selection or Resource: ").append(resource).toString());
+                            throw new Exception((new StringMaker())->append("Not available for current feature selection or Resource: ")->append(resource)->toString());
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: BasicArrayList duplicate(BasicArrayList list, AllBinaryLayer layer){
+    private: BasicArrayList* duplicate(BasicArrayList* list, AllBinaryLayer* layer){
 
-    PointFactory pointFactory = PointFactory::getInstance();;
+    PointFactory* pointFactory = PointFactory::getInstance();;
     
 
-    BasicArrayList newList = BasicArrayListD();;
+    BasicArrayList* newList = new BasicArrayListD();;
     
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
 
@@ -157,9 +163,9 @@ private: FeaturedResourceRelativeRelationshipFactory(){
     int32_t index = 0;index < size; index++)
         {
 
-    RelativeRelationship relativeRelationship = list.objectArray[index];;
+    RelativeRelationship* relativeRelationship = dynamic_cast<RelativeRelationship*>(list->objectArray[index]);;
     
-newList.add(RelativeLayerRelationship(layer, pointFactory.createXY(relativeRelationship.getX(), relativeRelationship.getY()), BasicArrayListUtil::getInstance().getImmutableInstance()));
+newList->add(new RelativeLayerRelationship(layer, pointFactory->createXY(relativeRelationship->getX(), relativeRelationship->getY()), BasicArrayListUtil::getInstance()->getImmutableInstance()));
     
 }
 

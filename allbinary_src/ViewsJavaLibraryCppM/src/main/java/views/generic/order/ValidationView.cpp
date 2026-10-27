@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/commerce/inventory/order/OrderHistoryFactory.h>
@@ -62,13 +68,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OrderView.h"
+        #include "views/generic/order/OrderView.h"
 
 class ValidationView: public OrderView, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: ValidationView(TransformInfoInterface transformInfoInterface) : OrderView(transformInfoInterface){
+public: ValidationView(TransformInfoInterface* transformInfoInterface) : OrderView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -78,11 +84,11 @@ public: ValidationView(TransformInfoInterface transformInfoInterface) : OrderVie
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-    Boolean valid = Boolean::TRUE;;
+    bool valid = Boolean::TRUE;;
     
 
                         if(this->order.isIdValid() == Boolean::FALSE)
@@ -116,9 +122,9 @@ public: ValidationView(TransformInfoInterface transformInfoInterface) : OrderVie
                                     }
                                 
 
-    OrderItemsEntity orderItems = OrderItemsEntity();;
+    OrderItemsEntity* orderItems = new OrderItemsEntity();;
     
-this->basketReview= orderItems.getBasketReview(this->order.getId());
+this->basketReview= orderItems->getBasketReview(this->order.getId());
     
 
                         if(this->basketReview == 
@@ -146,13 +152,13 @@ this->basketReview= orderItems.getBasketReview(this->order.getId());
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -172,13 +178,13 @@ this->basketReview= orderItems.getBasketReview(this->order.getId());
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
                         if(this->order.isIdValid() == Boolean::FALSE)
                         
                                     {
-                                    stringBuffer.append(this->order.getIdValidationInfo());
+                                    stringBuffer->append(this->order.getIdValidationInfo());
     
 
                                     }
@@ -192,19 +198,19 @@ this->basketReview= orderItems.getBasketReview(this->order.getId());
                                  || this->orderHistory.isValid() == Boolean::FALSE)
                         
                                     {
-                                    stringBuffer.append("Order History data error for: ");
+                                    stringBuffer->append("Order History data error for: ");
     
-stringBuffer.append(this->order.getId());
+stringBuffer->append(this->order.getId());
     
-stringBuffer.append("<br />");
+stringBuffer->append("<br />");
     
 
                                     }
                                 
 
-    OrderItemsEntity orderItems = OrderItemsEntity();;
+    OrderItemsEntity* orderItems = new OrderItemsEntity();;
     
-this->basketReview= orderItems.getBasketReview(this->order.getId());
+this->basketReview= orderItems->getBasketReview(this->order.getId());
     
 
                         if(this->basketReview == 
@@ -212,11 +218,11 @@ this->basketReview= orderItems.getBasketReview(this->order.getId());
                                 )
                         
                                     {
-                                    stringBuffer.append("Order Items data error - does not exist for: ");
+                                    stringBuffer->append("Order Items data error - does not exist for: ");
     
-stringBuffer.append(this->order.getId());
+stringBuffer->append(this->order.getId());
     
-stringBuffer.append("<br />");
+stringBuffer->append("<br />");
     
 
                                     }
@@ -225,11 +231,11 @@ stringBuffer.append("<br />");
                         if(this->basketReview.isValid() == Boolean::FALSE)
                         
                                     {
-                                    stringBuffer.append("Order Items data error - not valid for: ");
+                                    stringBuffer->append("Order Items data error - not valid for: ");
     
-stringBuffer.append(this->order.getId());
+stringBuffer->append(this->order.getId());
     
-stringBuffer.append("<br />");
+stringBuffer->append("<br />");
     
 
                                     }
@@ -241,17 +247,17 @@ stringBuffer.append("<br />");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -267,7 +273,7 @@ stringBuffer.append("<br />");
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -277,7 +283,7 @@ stringBuffer.append("<br />");
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

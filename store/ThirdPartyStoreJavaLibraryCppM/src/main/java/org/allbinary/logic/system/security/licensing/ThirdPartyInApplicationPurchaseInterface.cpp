@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 
 
 
@@ -36,33 +44,33 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LockableFeature.h"
+        #include "org/allbinary/logic/system/security/licensing/LockableFeature.h"
 
 class ThirdPartyInApplicationPurchaseInterface {
 
-    bool isPurchased(LockableFeature lockableFeature)
+    public: virtual bool isPurchased(LockableFeature* lockableFeature) = 0;
 
-    void onCreate(Object* anyType, Object* stateObject)
+    public: virtual void onCreate(Object* anyType, Object* stateObject) = 0;
 
-    void onDestroy()
+    public: virtual void onDestroy() = 0;
 
-    void onStart()
+    public: virtual void onStart() = 0;
 
-    void onActivityResult(int32_t requestCode, int32_t resultCode, Object* dataObject)
+    public: virtual void onActivityResult(int32_t requestCode, int32_t resultCode, Object* dataObject) = 0;
 
-    void onSaveInstanceState(Object* anyType)
+    public: virtual void onSaveInstanceState(Object* anyType) = 0;
 
-    void onStop()
+    public: virtual void onStop() = 0;
 
-    void requestPurchase(LockableFeature lockableFeature)
+    public: virtual void requestPurchase(LockableFeature* lockableFeature) = 0;
 
-    void requestReceipts()
+    public: virtual void requestReceipts() = 0;
 
-    void add(LockableFeature lockableFeature)
+    public: virtual void add(LockableFeature* lockableFeature) = 0;
 
-    std::string getUserName()
+    public: virtual std::string getUserName() = 0;
 
-    bool isEnabled()
+    public: virtual bool isEnabled() = 0;
 
 };
 

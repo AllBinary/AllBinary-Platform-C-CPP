@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHBARFACTORY_H
         #define ORG_ALLBINARY_GAME_HEALTH_HEALTHBARFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,10 +58,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HealthBar.h"
-#include "HealthBarTwodAnimation.h"
-#include "Health.h"
-#include "HealthBarAnimationInterfaceFactory.h"
+        #include "org/allbinary/game/health/HealthBar.h"
+#include "org/allbinary/game/health/HealthBarTwodAnimation.h"
+#include "org/allbinary/game/health/Health.h"
+#include "org/allbinary/game/health/HealthBarAnimationInterfaceFactory.h"
 
 class HealthBarFactory
             : public Object
@@ -63,7 +69,7 @@ class HealthBarFactory
 
                 //@Throws(Exception.constructor)
             
-    public: HealthBar getInstance(AllBinaryLayer layerInterface, Health healthInterface, int32_t location, int32_t direction);
+    public: HealthBar* getInstance(AllBinaryLayer* layerInterface, Health* healthInterface, int32_t location, int32_t direction);
 
 };
 

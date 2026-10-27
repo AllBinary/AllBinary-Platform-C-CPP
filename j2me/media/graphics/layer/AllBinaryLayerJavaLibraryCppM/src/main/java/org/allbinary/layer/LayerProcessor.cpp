@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -43,20 +49,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LayerProcessorInterface.h"
-#include "LayerManager.h"
-#include "AllBinaryLayerManager.h"
-#include "AllBinaryLayer.h"
+        #include "org/allbinary/layer/LayerProcessorInterface.h"
+#include "org/allbinary/layer/LayerManager.h"
+#include "org/allbinary/layer/AllBinaryLayerManager.h"
+#include "org/allbinary/layer/AllBinaryLayer.h"
 
 class LayerProcessor
             : public Object
-        : public LayerProcessorInterface {
+        , public LayerProcessorInterface {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: LayerManager layerManager;
+    private: LayerManager* layerManager;
 
-public: LayerProcessor(LayerManager layerManager){
+public: LayerProcessor(LayerManager* layerManager){
 this->layerManager= layerManager;
     
 }
@@ -64,27 +70,27 @@ this->layerManager= layerManager;
 
                 //@Throws(Exception.constructor)
             
-    public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
+    public: void processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index){
 
 
 
-                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: bool isProcessorLayer(AllBinaryLayer layerInterface){
+    public: bool isProcessorLayer(AllBinaryLayer* layerInterface){
 
 
 
-                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: LayerManager getLayerManager(){
+    public: LayerManager* getLayerManager(){
 
 
 
@@ -96,12 +102,12 @@ this->layerManager= layerManager;
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayerManager allBinaryLayerManager){
+    public: void process(AllBinaryLayerManager* allBinaryLayerManager){
 
-    LayerManager layerManager = this->getLayerManager();;
+    LayerManager* layerManager = this->getLayerManager();;
     
 
-    int32_t size = layerManager.getSize();;
+    int32_t size = layerManager->getSize();;
     
 
 
@@ -110,7 +116,7 @@ this->layerManager= layerManager;
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->processAt(allBinaryLayerManager, layerManager.getLayerAt(index), index);
+this->processAt(allBinaryLayerManager, dynamic_cast<AllBinaryLayer*>(layerManager->getLayerAt(index)), index);
     
 }
 

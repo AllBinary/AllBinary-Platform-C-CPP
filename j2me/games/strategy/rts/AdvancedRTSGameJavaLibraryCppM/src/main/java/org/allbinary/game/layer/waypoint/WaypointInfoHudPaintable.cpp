@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -60,49 +66,49 @@
         
 class WaypointInfoHudPaintable: public SelectionHudPaintable {
 
-    private: KeyValueDrawString keyvalueDrawString;
+    private: KeyValueDrawString* keyvalueDrawString;
 
-    protected: PathFindingLayerInterface rtsLayerP = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
+    protected: PathFindingLayerInterface* rtsLayerP = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
     private: int32_t textLine2Y= 0;
 
 public: WaypointInfoHudPaintable(){
-this->keyvalueDrawString= KeyValueDrawString("Owner: ", this->textX);
+this->keyvalueDrawString= new KeyValueDrawString("Owner: ", this->textX);
     
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 super.updateMeasurement(graphics);
     
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->textLine2Y= (this->y +font.getHeight());
+this->textLine2Y= (this->y +font->getHeight());
     
 }
 
 
     public: void updateSelectionInfo(){
 
-    RTSLayer rtsLayer = this->rtsLayerP;;
+    RTSLayer* rtsLayer = dynamic_cast<RTSLayer*>(this->rtsLayerP);;
     
-this->setName(rtsLayer.getName());
+this->setName(rtsLayer->getName());
     
-this->setAnimationInterface(rtsLayer.getVerticleBuildAnimationInterface());
+this->setAnimationInterface(rtsLayer->getVerticleBuildAnimationInterface());
     
-this->keyvalueDrawString.update(rtsLayer.getParentLayer().getName());
+this->keyvalueDrawString->update(rtsLayer->getParentLayer()->getName());
     
 }
 
 
-    public: void setRtsLayer(RTSLayer rtsLayer){
+    public: void setRtsLayer(RTSLayer* rtsLayer){
 this->rtsLayerP= rtsLayer;
     
 }
 
 
-    public: PathFindingLayerInterface getRtsLayer(){
+    public: PathFindingLayerInterface* getRtsLayer(){
 
 
 
@@ -112,12 +118,12 @@ this->rtsLayerP= rtsLayer;
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 super.paint(graphics);
     
-this->keyvalueDrawString.paint(graphics, this->textLine2Y);
+this->keyvalueDrawString->paint(graphics, this->textLine2Y);
     
-this->getAnimationInterface().paintXY(graphics, this->imageX, this->y);
+this->getAnimationInterface()->paintXY(graphics, this->imageX, this->y);
     
 }
 

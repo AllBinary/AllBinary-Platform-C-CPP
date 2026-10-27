@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/swing.h>
@@ -88,38 +96,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "JTree.h"
-#include "MouseAdapter.h"
-#include "MouseEvent.h"
-#include "JPopupMenu.h"
-#include "JMenuItem.h"
-#include "JScrollPane.h"
-#include "PopupMenuListener.h"
-#include "PopupMenuEvent.h"
-#include "GridLayout.h"
+        #include "org/allbinary/graphics/j2me/workarea/JPanel.h"
+#include "org/allbinary/graphics/j2me/workarea/JTree.h"
+#include "org/allbinary/graphics/j2me/workarea/MouseAdapter.h"
+#include "org/allbinary/graphics/j2me/workarea/MouseEvent.h"
+#include "org/allbinary/graphics/j2me/workarea/JPopupMenu.h"
+#include "org/allbinary/graphics/j2me/workarea/JMenuItem.h"
+#include "org/allbinary/graphics/j2me/workarea/JScrollPane.h"
+#include "org/allbinary/graphics/j2me/workarea/PopupMenuListener.h"
+#include "org/allbinary/graphics/j2me/workarea/PopupMenuEvent.h"
+#include "org/allbinary/graphics/j2me/workarea/GridLayout.h"
 
 class WorkAreaJTreeJPanel: public javax::swing::JPanel {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: DefaultMutableTreeNode rootTreeNode;
+    private: DefaultMutableTreeNode* rootTreeNode;
 
-    private: JTree workAreaJTree;
+    private: JTree* workAreaJTree;
 
-    private: BasicArrayList highlightedBasicArrayList;
+    private: BasicArrayList* highlightedBasicArrayList;
 
 public: WorkAreaJTreeJPanel(std::string workAreaName);
 
-    public: void add(MutableTreeNode treeNode);
+    public: void add(MutableTreeNode* treeNode);
 
     public: void updateTree();
 
-    public: BasicArrayList getNode(std::vector<TreePath> treePathArray);
+    public: BasicArrayList* getNode(std::vector<TreePath*> treePathArray);
 
-    public: DefaultMutableTreeNode getNode(TreePath treePath);
+    public: DefaultMutableTreeNode* getNode(TreePath* treePath);
 
                 //@Throws(Exception.constructor)
             
@@ -127,19 +135,19 @@ public: WorkAreaJTreeJPanel(std::string workAreaName);
 
                 //@Throws(Exception.constructor)
             
-    public: void selectGraphicItem(DefaultMutableTreeNode node);
+    public: void selectGraphicItem(DefaultMutableTreeNode* node);
 
                 //@Throws(Exception.constructor)
             
-    public: void removeGraphicItem(DefaultMutableTreeNode node);
+    public: void removeGraphicItem(DefaultMutableTreeNode* node);
 
                 //@Throws(Exception.constructor)
             
-    public: void removeCanvas(DefaultMutableTreeNode node);
+    public: void removeCanvas(DefaultMutableTreeNode* node);
 
                 //@Throws(Exception.constructor)
             
-    public: void remove(TreePath treePath);
+    public: void remove(TreePath* treePath);
 
                 //@Throws(Exception.constructor)
             
@@ -147,45 +155,45 @@ public: WorkAreaJTreeJPanel(std::string workAreaName);
 
                 //@Throws(Exception.constructor)
             
-    private: void copy(TreePath treePath);
+    private: void copy(TreePath* treePath);
 
                 //@Throws(Exception.constructor)
             
-    public: void rotate(TreePath treePath, double angle);
+    public: void rotate(TreePath* treePath, double angle);
 
-    public: MutableTreeNode getRootTreeNode();
+    public: MutableTreeNode* getRootTreeNode();
 
     public: void expand();
 
-    public: void expand(TreePath treePath);
+    public: void expand(TreePath* treePath);
 
     private: void initComponents();
 
-    private: void rotateJMenuItemMousePressed(java::awt::event::MouseEvent evt);
+    private: void rotateJMenuItemMousePressed(java::awt::event::MouseEvent* evt);
 
-    private: void workAreaJTreeMousePressed(java::awt::event::MouseEvent evt);
+    private: void workAreaJTreeMousePressed(java::awt::event::MouseEvent* evt);
 
-    private: void itemJPopupMenuPopupMenuWillBecomeInvisible(javax::swing::event::PopupMenuEvent evt);
+    private: void itemJPopupMenuPopupMenuWillBecomeInvisible(javax::swing::event::PopupMenuEvent* evt);
 
-    private: void itemJPopupMenuPopupMenuWillBecomeVisible(javax::swing::event::PopupMenuEvent evt);
+    private: void itemJPopupMenuPopupMenuWillBecomeVisible(javax::swing::event::PopupMenuEvent* evt);
 
-    private: void copyJMenuItemMousePressed(java::awt::event::MouseEvent evt);
+    private: void copyJMenuItemMousePressed(java::awt::event::MouseEvent* evt);
 
-    private: void deleteJMenuItemMousePressed(java::awt::event::MouseEvent evt);
+    private: void deleteJMenuItemMousePressed(java::awt::event::MouseEvent* evt);
 
-    private: void workAreaPropertiesJPanelMousePressed(java::awt::event::MouseEvent evt);
+    private: void workAreaPropertiesJPanelMousePressed(java::awt::event::MouseEvent* evt);
 
-    private: javax::swing::JMenuItem copyJMenuItem;
+    private: javax::swing::JMenuItem* copyJMenuItem;
 
-    private: javax::swing::JMenuItem deleteJMenuItem;
+    private: javax::swing::JMenuItem* deleteJMenuItem;
 
-    private: javax::swing::JPopupMenu itemJPopupMenu;
+    private: javax::swing::JPopupMenu* itemJPopupMenu;
 
-    private: javax::swing::JScrollPane itemJScrollPane1;
+    private: javax::swing::JScrollPane* itemJScrollPane1;
 
-    private: javax::swing::JMenuItem rotateJMenuItem;
+    private: javax::swing::JMenuItem* rotateJMenuItem;
 
-    private: javax::swing::JPanel workAreaPropertiesJPanel;
+    private: javax::swing::JPanel* workAreaPropertiesJPanel;
 
 };
 

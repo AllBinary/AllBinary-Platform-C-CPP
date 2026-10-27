@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -48,9 +54,9 @@ class TableDataFactory
             : public Object
          {
 
-    private: static TableDataFactory instance() { return TableDataFactory(); }
+    private: static TableDataFactory* instance() { static std::unique_ptr<TableDataFactory> value(new TableDataFactory()); return value.get(); }
 
-    public: static TableDataFactory getInstance(){
+    public: static TableDataFactory* getInstance(){
 
 
 
@@ -62,7 +68,7 @@ class TableDataFactory
 
     public: const std::string INTEGER_MAX_VALUE_STRING = std::to_string(MAX_VALUE);
 
-    public: const std::string ZERO_STRING = CommonPhoneStrings::getInstance().ZERO;
+    public: const std::string ZERO_STRING = CommonPhoneStrings::getInstance()->ZERO;
 
 };
 

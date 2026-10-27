@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_PAYMENT_GATEWAY_GATEWAYVIEW_H
         #define VIEWS_ADMIN_PAYMENT_GATEWAY_GATEWAYVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -62,16 +68,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentGatewayViewAbstract.h"
-#include "PaymentGatewayComponent.h"
+        #include "views/admin/payment/gateway/PaymentGatewayViewAbstract.h"
+#include "views/admin/payment/gateway/PaymentGatewayComponent.h"
 
 class GatewayView: public PaymentGatewayViewAbstract {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: GatewayView(TransformInfoInterface transformInfoInterface);
+public: GatewayView(TransformInfoInterface* transformInfoInterface);
 
-    public: void getFormData(HttpServletRequest request);
+    public: void getFormData(HttpServletRequest* request);
 
                 //@Throws(Exception.constructor)
             

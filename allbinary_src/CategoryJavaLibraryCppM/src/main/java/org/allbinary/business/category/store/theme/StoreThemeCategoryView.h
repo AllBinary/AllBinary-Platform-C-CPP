@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/Arrays.h>
@@ -61,16 +67,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreThemeCategoryInterface.h"
-#include "ThemeComparator.h"
+        #include "org/allbinary/business/category/store/theme/StoreThemeCategoryInterface.h"
+#include "org/allbinary/business/category/store/theme/ThemeComparator.h"
 
 class StoreThemeCategoryView: public CategoryView, public DomNodeInterface {
 
-public: StoreThemeCategoryView(StoreThemeCategoryInterface categoryInterface);
+public: StoreThemeCategoryView(StoreThemeCategoryInterface* categoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

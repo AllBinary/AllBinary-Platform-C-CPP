@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/awt.h>
@@ -55,30 +61,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageUtil.h"
-#include "GraphicsEnvironment.h"
-#include "GraphicsDevice.h"
-#include "GraphicsConfiguration.h"
-#include "Graphics2D.h"
-#include "ImageUnifierProperties.h"
+        #include "org/allbinary/media/image/ImageUtil.h"
+#include "org/allbinary/media/image/GraphicsEnvironment.h"
+#include "org/allbinary/media/image/GraphicsDevice.h"
+#include "org/allbinary/media/image/GraphicsConfiguration.h"
+#include "org/allbinary/media/image/Graphics2D.h"
+#include "org/allbinary/media/image/ImageUnifierProperties.h"
 
 class ImageUnifierUtil
             : public Object
          {
 
-    private: static ImageUnifierUtil instance() { return ImageUnifierUtil(); }
+    private: static ImageUnifierUtil* instance() { static std::unique_ptr<ImageUnifierUtil> value(new ImageUnifierUtil()); return value.get(); }
 
-    public: static ImageUnifierUtil getInstance();
+    public: static ImageUnifierUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const ImageUtil imageUtil = ImageUtil::getInstance();
+    private: ImageUtil* imageUtil = ImageUtil::getInstance();
 
 private: ImageUnifierUtil();
 
-    public: GraphicsConfiguration getDefaultConfiguration();
+    public: GraphicsConfiguration* getDefaultConfiguration();
 
-    public: BufferedImage getImage(std::vector<BufferedImage> bufferedImageArray, ImageUnifierProperties imageUnifierProperties);
+    public: BufferedImage* getImage(std::vector<BufferedImage*> bufferedImageArray, ImageUnifierProperties* imageUnifierProperties);
 
 };
 

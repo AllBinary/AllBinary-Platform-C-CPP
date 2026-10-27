@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/Collection.h>
@@ -58,24 +64,24 @@
         
 class ServiceReferenceMap
             : public Object
-        : public Map {
+        , public Map {
 
-    public: static std::string toString(Map map){
+    public: static std::string toString(Map* map){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
-    private: ServiceReference serviceReference;
+    private: ServiceReference* serviceReference;
 
-public: ServiceReferenceMap(ServiceReference serviceReference){
+public: ServiceReferenceMap(ServiceReference* serviceReference){
 this->serviceReference= serviceReference;
     
 }
@@ -126,7 +132,7 @@ this->serviceReference= serviceReference;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->serviceReference.getProperty(key);;
+                        return this->serviceReference->getProperty(key);;
     
 }
 
@@ -151,7 +157,7 @@ this->serviceReference= serviceReference;
 }
 
 
-    public: void putAll(Map m){
+    public: void putAll(Map* m){
 }
 
 
@@ -159,9 +165,9 @@ this->serviceReference= serviceReference;
 }
 
 
-    public: Set keySet(){
+    public: Set* keySet(){
 
-    std::vector<std::string> keyStringArray = this->serviceReference.getPropertyKeys();;
+    std::vector<std::string> keyStringArray = this->serviceReference->getPropertyKeys();;
     
 
 
@@ -172,7 +178,7 @@ this->serviceReference= serviceReference;
 }
 
 
-    public: Collection<Object*> values(){
+    public: Collection<Object*>* values(){
 
 
 
@@ -182,7 +188,7 @@ this->serviceReference= serviceReference;
 }
 
 
-    public: Set entrySet(){
+    public: Set* entrySet(){
 
 
 

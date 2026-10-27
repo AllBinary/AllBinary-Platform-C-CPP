@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/displayable/event/DisplayChangeEventHandler.h>
@@ -58,9 +64,9 @@ class GameLevelDisplayChangeEventListenersFactory
             : public Object
          {
 
-    private: static GameLevelDisplayChangeEventListenersFactory instance() { return GameLevelDisplayChangeEventListenersFactory(); }
+    private: static GameLevelDisplayChangeEventListenersFactory* instance() { static std::unique_ptr<GameLevelDisplayChangeEventListenersFactory> value(new GameLevelDisplayChangeEventListenersFactory()); return value.get(); }
 
-    public: static GameLevelDisplayChangeEventListenersFactory getInstance(){
+    public: static GameLevelDisplayChangeEventListenersFactory* getInstance(){
 
 
 
@@ -70,37 +76,37 @@ class GameLevelDisplayChangeEventListenersFactory
 }
 
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
-    public: void add(DisplayChangeEventListener displayChangeEventListener){
-this->list.add(displayChangeEventListener);
+    public: void add(DisplayChangeEventListener* displayChangeEventListener){
+this->list->add(displayChangeEventListener);
     
-DisplayChangeEventHandler::getInstance().addListenerInterface(displayChangeEventListener);
+DisplayChangeEventHandler::getInstance()->addListenerInterface(displayChangeEventListener);
     
 }
 
 
     public: void clear(){
 
-    BasicEventHandler displayChangeEventHandler = DisplayChangeEventHandler::getInstance();;
+    BasicEventHandler* displayChangeEventHandler = DisplayChangeEventHandler::getInstance();;
     
 
-    DisplayChangeEventListener displayChangeEventListener;;
+    DisplayChangeEventListener* displayChangeEventListener;;
     
 
 
 
 
                         for (
-    int32_t index = this->list.size();--index >= 0; )
+    int32_t index = this->list->size();--index >= 0; )
         {
-displayChangeEventListener= this->list.objectArray[index];
+displayChangeEventListener= dynamic_cast<DisplayChangeEventListener*>(this->list->objectArray[index]);
     
-displayChangeEventHandler.removeListener(displayChangeEventListener);
+displayChangeEventHandler->removeListener(displayChangeEventListener);
     
 }
 
-this->list.clear();
+this->list->clear();
     
 }
 

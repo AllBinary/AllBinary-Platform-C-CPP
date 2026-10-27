@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_USERENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_USERENTITY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -106,11 +112,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserEntityInterface.h"
+        #include "org/allbinary/data/tables/user/UserEntityInterface.h"
 
 class UserEntity: public AbSqlBean, public UserEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const std::string tableName = "user";
 
@@ -126,41 +132,41 @@ class UserEntity: public AbSqlBean, public UserEntityInterface {
 
     private: const std::string NOT_EQUAL = "\"!=\"";
 
-    private: const std::string END_QUOTES = CommonSeps::getInstance().QUOTE;
+    private: const std::string END_QUOTES = CommonSeps::getInstance()->QUOTE;
 
 public: UserEntity();
 
-    public: void insert(BasicArrayList values);
+    public: void insert(BasicArrayList* values);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getAdministrators();
+    public: BasicArrayList* getAdministrators();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getStoreManagers(StoreFrontInterface storeFrontInterface);
+    public: BasicArrayList* getStoreManagers(StoreFrontInterface* storeFrontInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getCustomers();
+    public: BasicArrayList* getCustomers();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getUsersWithRole(UserRole userRole);
+    public: BasicArrayList* getUsersWithRole(UserRole* userRole);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getUsers(StoreFrontInterface storeFrontInterface);
+    public: BasicArrayList* getUsers(StoreFrontInterface* storeFrontInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface getUser(std::string userName);
+    public: UserInterface* getUser(std::string userName);
 
     public: void deleteWhere(std::string key, std::string value);
 
     public: std::string login(std::string userName, std::string password);
 
-    public: void update(std::string userName, HashMap<Object*, Object*> updatedValues);
+    public: void update(std::string userName, HashMap<Object*, Object*>* updatedValues);
 
     public: std::string dropTables();
 

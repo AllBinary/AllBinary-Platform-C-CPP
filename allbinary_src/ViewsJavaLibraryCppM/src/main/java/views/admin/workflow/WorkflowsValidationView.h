@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_WORKFLOW_WORKFLOWSVALIDATIONVIEW_H
         #define VIEWS_ADMIN_WORKFLOW_WORKFLOWSVALIDATIONVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -59,21 +65,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WorkFlowsView.h"
+        #include "views/admin/workflow/WorkFlowsView.h"
 
 class WorkflowsValidationView: public WorkFlowsView, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: WorkflowsValidationView(TransformInfoInterface transformInfoInterface);
+public: WorkflowsValidationView(TransformInfoInterface* transformInfoInterface);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string validationInfo();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -56,9 +62,9 @@
         
 class KeyValueDrawString
             : public Object
-        : public UpdateMyFontInterface {
+        , public UpdateMyFontInterface {
 
-    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
 
     private: std::string LABEL;
 
@@ -66,7 +72,7 @@ class KeyValueDrawString
 
     private: int32_t valueX= 0;
 
-    private: std::string value = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string value = StringUtil::getInstance()->EMPTY_STRING;
 
 public: KeyValueDrawString(std::string label, int32_t x){
 this->LABEL= label;
@@ -76,9 +82,9 @@ this->labelX= x;
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    int32_t labelWidth = graphics.getFont().stringWidth(this->LABEL) -LABEL.size();;
+    int32_t labelWidth = graphics->getFont()->stringWidth(this->LABEL) -LABEL.size();;
     
 this->valueX= labelWidth +this->labelX;
     
@@ -87,12 +93,12 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void paint(Graphics graphics, int32_t y){
-this->myFontProcessor.process(graphics);
+    public: void paint(Graphics* graphics, int32_t y){
+this->myFontProcessor->process(graphics);
     
-graphics.drawString(this->LABEL, this->labelX, y, 0);
+graphics->drawString(this->LABEL, this->labelX, y, 0);
     
-graphics.drawString(this->value, this->valueX, y, 0);
+graphics->drawString(this->value, this->valueX, y, 0);
     
 }
 

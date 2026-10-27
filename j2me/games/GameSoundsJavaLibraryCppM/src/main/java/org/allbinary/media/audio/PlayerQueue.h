@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_PLAYERQUEUE_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_PLAYERQUEUE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,24 +67,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Sound.h"
-#include "NoSound.h"
+        #include "org/allbinary/media/audio/Sound.h"
+#include "org/allbinary/media/audio/NoSound.h"
 
 class PlayerQueue
             : public Object
          {
 
-    private: static const std::string TOTAL = "Sounds In Queue: ";
+    private: static inline const std::string TOTAL = "Sounds In Queue: ";
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
     private: int32_t max;
 
 : PlayerQueue(int32_t max);
 
-    public: void add(Sound sound);
+    public: void add(Sound* sound);
 
     public: bool process();
 

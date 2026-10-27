@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,13 +42,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PlatformImage.h"
+        #include "javax/microedition/lcdui/PlatformImage.h"
 //PlatformNullImageJavaLibrary
 class PostLoadPlatformImage: public PlatformImage {
 
-    private: static PostLoadPlatformImage instance() { return PostLoadPlatformImage(); }
+    private: static PostLoadPlatformImage* instance() { static std::unique_ptr<PostLoadPlatformImage> value(new PostLoadPlatformImage()); return value.get(); }
 
-    public: static PostLoadPlatformImage getInstance(){
+    public: static PostLoadPlatformImage* getInstance(){
 
 
 

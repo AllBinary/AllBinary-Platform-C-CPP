@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class ColorsData
             : public Object
          {
 
-    private: static ColorsData instance() { return ColorsData(); }
+    private: static ColorsData* instance() { static std::unique_ptr<ColorsData> value(new ColorsData()); return value.get(); }
 
-    public: static ColorsData getInstance(){
+    public: static ColorsData* getInstance(){
 
 
 

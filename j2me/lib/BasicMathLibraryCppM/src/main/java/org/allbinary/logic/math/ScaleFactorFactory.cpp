@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class ScaleFactorFactory
             : public Object
          {
 
-    private: static ScaleFactorFactory instance() { return ScaleFactorFactory(); }
+    private: static ScaleFactorFactory* instance() { static std::unique_ptr<ScaleFactorFactory> value(new ScaleFactorFactory()); return value.get(); }
 
-    public: static ScaleFactorFactory getInstance(){
+    public: static ScaleFactorFactory* getInstance(){
 
 
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSION_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -96,18 +102,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WeblisketSessionInterface.h"
-#include "WeblisketSessionData.h"
+        #include "org/allbinary/logic/communication/http/request/session/WeblisketSessionInterface.h"
+#include "org/allbinary/logic/communication/http/request/session/WeblisketSessionData.h"
 
 class WeblisketSession
             : public Object
-        : public WeblisketSessionInterface {
+        , public WeblisketSessionInterface {
 
-    private: HttpSession session;
+    private: HttpSession* session;
 
-public: WeblisketSession(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: WeblisketSession(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
-public: WeblisketSession(HashMap<Object*, Object*> hashMap, HttpServletRequest httpServletRequest);
+public: WeblisketSession(HashMap<Object*, Object*>* hashMap, HttpServletRequest* httpServletRequest);
 
     public: std::string getId();
 
@@ -119,9 +125,9 @@ public: WeblisketSession(HashMap<Object*, Object*> hashMap, HttpServletRequest h
 
     public: void setAuthenticated();
 
-    public: void setRole(UserRole aRole);
+    public: void setRole(UserRole* aRole);
 
-    public: void setAttempts(Integer value);
+    public: void setAttempts(int32_t value);
 
     public: void setTimeout(std::string value);
 
@@ -137,7 +143,7 @@ public: WeblisketSession(HashMap<Object*, Object*> hashMap, HttpServletRequest h
 
     public: std::string getAuthentication();
 
-    public: Integer getAttempts();
+    public: int32_t getAttempts();
 
     public: std::string getTimeout();
 
@@ -145,11 +151,11 @@ public: WeblisketSession(HashMap<Object*, Object*> hashMap, HttpServletRequest h
 
                 //@Throws(Exception.constructor)
             
-    public: UserRole getRole();
+    public: UserRole* getRole();
 
                 //@Throws(Exception.constructor)
             
-    public: OrderInterface getOrder();
+    public: OrderInterface* getOrder();
 
     public: void setAuthenticated(bool value);
 

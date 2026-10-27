@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/util/event/BasicEventListenerInterface.h>
 
       
@@ -39,11 +45,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionRectanglesResultsEvent.h"
+        #include "org/allbinary/media/image/comparison/motion/MotionRectanglesResultsEvent.h"
 
 class MotionRectanglesResultsListener: public BasicEventListenerInterface {
 
-    void onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent motionRectanglesImageComparisonResultsEvent)
+    public: virtual void onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent* motionRectanglesImageComparisonResultsEvent) = 0;
 
 };
 

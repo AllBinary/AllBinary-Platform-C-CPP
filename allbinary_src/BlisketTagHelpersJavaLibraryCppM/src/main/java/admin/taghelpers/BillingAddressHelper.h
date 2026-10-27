@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_BILLINGADDRESSHELPER_H
         #define ADMIN_TAGHELPERS_BILLINGADDRESSHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -85,25 +91,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Table.h"
+        #include "admin/taghelpers/Table.h"
 
 class BillingAddressHelper: public Table {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const StringUtil stringUtil = StringUtil::getInstance();
+    protected: StringUtil* stringUtil = StringUtil::getInstance();
 
-    private: WeblisketSession weblisketSession;
+    private: WeblisketSession* weblisketSession;
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
     private: std::string userName;
 
-    private: StreetAddress streetAddress;
+    private: StreetAddress* streetAddress;
 
-    private: Portion portion;
+    private: Portion* portion;
 
-public: BillingAddressHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: BillingAddressHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
     private: void getAddressForm();
 

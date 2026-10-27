@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTSCONFIGURATIONDATA_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTSCONFIGURATIONDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,7 +52,7 @@ class UserEmailEventsConfigurationData
             : public Object
          {
 
-    public: static const std::string NAME = "EMAIL_EVENTS_CONFIGURATION_NAME";
+    public: static inline const std::string NAME = "EMAIL_EVENTS_CONFIGURATION_NAME";
 
 private: UserEmailEventsConfigurationData();
 

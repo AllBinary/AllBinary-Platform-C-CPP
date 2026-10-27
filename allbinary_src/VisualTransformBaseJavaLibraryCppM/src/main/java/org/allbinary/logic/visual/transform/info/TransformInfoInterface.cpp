@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -56,65 +64,65 @@
         
 class TransformInfoInterface: public TableMappingInterface {
 
-    std::string log()
+    public: virtual std::string log() = 0;
 
                 //@Throws(Exception.constructor)
             
-    void override(HashMap<Object*, Object*> hashMap)
+    public: virtual void override(HashMap<Object*, Object*>* hashMap) = 0;
 
-    std::string getName()
+    public: virtual std::string getName() = 0;
 
-    void setStoreName(std::string value)
+    public: virtual void setStoreName(std::string value) = 0;
 
-    std::string getStoreName()
+    public: virtual std::string getStoreName() = 0;
 
-    std::string getObjectFile()
+    public: virtual std::string getObjectFile() = 0;
 
-    Object* getObject()
-
-                //@Throws(Exception.constructor)
-            
-    AbPath getTemplateFilePath()
-
-    std::string getTemplateFile()
-
-    std::string getTemplate()
+    public: virtual Object* getObject() = 0;
 
                 //@Throws(Exception.constructor)
             
-    AbPath getDataFilePath()
+    public: virtual AbPath* getTemplateFilePath() = 0;
 
-    std::string getDataFile()
+    public: virtual std::string getTemplateFile() = 0;
 
-                //@Throws(Exception.constructor)
-            
-    Document getDataDocument()
-
-    void setName(std::string value)
-
-    void setObjectFile(std::string value)
-
-    void setObject(Object anyType)
+    public: virtual std::string getTemplate() = 0;
 
                 //@Throws(Exception.constructor)
             
-    void setObjectConfigInterface(Object transformInfoObjectConfigInterface)
+    public: virtual AbPath* getDataFilePath() = 0;
+
+    public: virtual std::string getDataFile() = 0;
 
                 //@Throws(Exception.constructor)
             
-    TransformInfoObjectConfigInterface getObjectConfigInterface()
+    public: virtual Document* getDataDocument() = 0;
 
-    void setTemplateFile(std::string value)
+    public: virtual void setName(std::string value) = 0;
 
-    void setTemplate(std::string value)
+    public: virtual void setObjectFile(std::string value) = 0;
 
-    void setDataFile(std::string value)
+    public: virtual void setObject(Object anyType) = 0;
 
-    void setData(std::string value)
+                //@Throws(Exception.constructor)
+            
+    public: virtual void setObjectConfigInterface(Object* transformInfoObjectConfigInterface) = 0;
 
-    void setChild()
+                //@Throws(Exception.constructor)
+            
+    public: virtual TransformInfoObjectConfigInterface* getObjectConfigInterface() = 0;
 
-    bool isChild()
+    public: virtual void setTemplateFile(std::string value) = 0;
+
+    public: virtual void setTemplate(std::string value) = 0;
+
+    public: virtual void setDataFile(std::string value) = 0;
+
+    public: virtual void setData(std::string value) = 0;
+
+    public: virtual void setChild() = 0;
+
+    public: virtual bool isChild() = 0;
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/io/file/CommonDataFileStrings.h>
@@ -46,9 +52,9 @@ class CategoryData
             : public Object
          {
 
-    private: static CategoryData instance() { return CategoryData(); }
+    private: static CategoryData* instance() { static std::unique_ptr<CategoryData> value(new CategoryData()); return value.get(); }
 
-    public: static CategoryData getInstance(){
+    public: static CategoryData* getInstance(){
 
 
 
@@ -78,9 +84,9 @@ private: CategoryData(){
 
     public: const std::string ROOTCATEGORY = "Category";
 
-    public: const std::string UNCRYPTED_EXTENSION = CommonDataFileStrings::getInstance().UNCRYPTED_EXTENSION;
+    public: const std::string UNCRYPTED_EXTENSION = CommonDataFileStrings::getInstance()->UNCRYPTED_EXTENSION;
 
-    public: const std::string ENCRYPTED_EXTENSION = CommonDataFileStrings::getInstance().ENCRYPTED_EXTENSION;
+    public: const std::string ENCRYPTED_EXTENSION = CommonDataFileStrings::getInstance()->ENCRYPTED_EXTENSION;
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLEPRESENTATION_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLEPRESENTATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/business/init/db/DbConnectionInfo.h>
 
       
@@ -42,11 +48,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbSqlBasic.h"
+        #include "org/allbinary/logic/communication/sql/AbSqlBasic.h"
 
 class AbSqlTablePresentation: public AbSqlBasic {
 
-public: AbSqlTablePresentation(DbConnectionInfo databaseConnectionInfoInterface);
+public: AbSqlTablePresentation(DbConnectionInfo* databaseConnectionInfoInterface);
 
 };
 

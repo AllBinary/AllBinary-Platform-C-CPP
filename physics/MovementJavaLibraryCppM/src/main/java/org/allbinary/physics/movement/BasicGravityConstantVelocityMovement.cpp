@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
@@ -50,11 +56,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicConstantVelocityMovement.h"
+        #include "org/allbinary/physics/movement/BasicConstantVelocityMovement.h"
 
 class BasicGravityConstantVelocityMovement: public BasicConstantVelocityMovement {
 
-public: BasicGravityConstantVelocityMovement(BasicDecimal speedBasicDecimal) : BasicConstantVelocityMovement(speedBasicDecimal, VelocityProperties(static_cast<int32_t>(speedBasicDecimal.getUnscaled()), static_cast<int32_t>(speedBasicDecimal.getUnscaled()))){
+public: BasicGravityConstantVelocityMovement(BasicDecimal* speedBasicDecimal) : BasicConstantVelocityMovement(speedBasicDecimal, new VelocityProperties(static_cast<int32_t>(speedBasicDecimal->getUnscaled()), static_cast<int32_t>(speedBasicDecimal->getUnscaled()))){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -64,14 +70,14 @@ public: BasicGravityConstantVelocityMovement(BasicDecimal speedBasicDecimal) : B
 }
 
 
-    private: const GravityUtil gravityUtil = GravityUtil::getInstance();
+    private: GravityUtil* gravityUtil = GravityUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryGameLayer layer){
+    public: void process(AllBinaryGameLayer* layer){
 super.process(layer);
     
-this->gravityUtil.process(this->getVelocityProperties(), this->gravityUtil.GAME_GRAVITY_VELOCITY);
+this->gravityUtil->process(this->getVelocityProperties(), this->gravityUtil->GAME_GRAVITY_VELOCITY);
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSORCOMPOSITE_H
         #define ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSORCOMPOSITE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -53,16 +59,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PlayerGameInput.h"
-#include "GameInputProcessorInterface.h"
+        #include "org/allbinary/game/input/PlayerGameInput.h"
+#include "org/allbinary/game/input/GameInputProcessorInterface.h"
 
 class GameInputProcessorComposite: public PlayerGameInput {
 
     private: std::string name;
 
-    private: GameInputProcessorInterface gameInputProcessorInterface;
+    private: GameInputProcessorInterface* gameInputProcessorInterface;
 
-public: GameInputProcessorComposite(std::string name, GameInputProcessorInterface gameInputProcessorInterface);
+public: GameInputProcessorComposite(std::string name, GameInputProcessorInterface* gameInputProcessorInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void update();

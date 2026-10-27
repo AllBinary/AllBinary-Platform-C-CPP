@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -78,21 +84,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Sounds.h"
-#include "SoundsFactoryInterface.h"
-#include "Sound.h"
-#include "AndroidMediaPlayerWrapper.h"
-#include "PlayerComposite.h"
-#include "MediaPlayerUtil.h"
-#include "NoPlayer.h"
+        #include "org/allbinary/media/audio/Sounds.h"
+#include "org/allbinary/media/audio/SoundsFactoryInterface.h"
+#include "org/allbinary/media/audio/Sound.h"
+#include "org/allbinary/media/audio/AndroidMediaPlayerWrapper.h"
+#include "org/allbinary/media/audio/PlayerComposite.h"
+#include "org/allbinary/media/audio/MediaPlayerUtil.h"
+#include "org/allbinary/media/audio/NoPlayer.h"
 //AndroidMediaMIDPLibrary
 class AllBinaryMediaManager
             : public Object
          {
 
-    private: static const std::string THIS = "AllBinaryMediaManagerAndroid";
+    private: static inline const std::string THIS = "AllBinaryMediaManagerAndroid";
 
-    private: static int32_t mostUsedTotal = 0;
+    private: static inline int32_t mostUsedTotal = 0;
 
     public: static bool isMuted(){
 
@@ -120,56 +126,56 @@ class AllBinaryMediaManager
 
                 //@Throws(Exception.constructor)
             
-    public: static void init(SoundsFactoryInterface soundsFactoryInterface){
+    public: static void init(SoundsFactoryInterface* soundsFactoryInterface){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonString = CommonStrings::getInstance();;
+    CommonStrings* commonString = CommonStrings::getInstance();;
     
-logUtil.putF(commonString.START, AllBinaryMediaManager::THIS, commonString.INIT);
+logUtil->putF(commonString->START, AllBinaryMediaManager::THIS, commonString->INIT);
     
 AllBinaryMediaManager::shutdown(soundsFactoryInterface);
     
-ProgressCanvasFactory::getInstance().addNormalPortion(50, "Media Manager");
+ProgressCanvasFactory::getInstance()->addNormalPortion(50, "Media Manager");
     
-TsUtil::getInstance().gc();
+TsUtil::getInstance()->gc();
     
-Sounds(soundsFactoryInterface).init();
+(new Sounds(soundsFactoryInterface))->init();
     
-logUtil.putF(commonString.END, AllBinaryMediaManager::THIS, commonString.INIT);
+logUtil->putF(commonString->END, AllBinaryMediaManager::THIS, commonString->INIT);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    static void shutdown(SoundsFactoryInterface soundsFactoryInterface){
+    static void shutdown(SoundsFactoryInterface* soundsFactoryInterface){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonString = CommonStrings::getInstance();;
+    CommonStrings* commonString = CommonStrings::getInstance();;
     
-logUtil.putF(commonString.START, AllBinaryMediaManager::THIS, "shutdown");
+logUtil->putF(commonString->START, AllBinaryMediaManager::THIS, "shutdown");
     
 
-                        if(soundsFactoryInterface.isInitialized())
+                        if(soundsFactoryInterface->isInitialized())
                         
                                     {
-                                    Sounds(soundsFactoryInterface).stopAll();
+                                    (new Sounds(soundsFactoryInterface))->stopAll();
     
 
-    std::vector<Sound> soundInterfaceArray = soundsFactoryInterface.getSoundInterfaceArray();;
+    std::vector<Sound*> soundInterfaceArray = soundsFactoryInterface->getSoundInterfaceArray();;
     
 
-    Player player;;
+    Player* player;;
     
 
-    Player player2;;
+    Player* player2;;
     
 
-    AndroidMediaPlayerWrapper androidMediaPlayerWrapper;;
+    AndroidMediaPlayerWrapper* androidMediaPlayerWrapper;;
     
 
 
@@ -192,15 +198,17 @@ logUtil.putF(commonString.START, AllBinaryMediaManager::THIS, "shutdown");
                                 )
                         
                                     {
-                                    player2= (player).getPlayerP();
+                                    player2= (player)).getPlayerP();
     
 
-                        if(player2 instanceof AndroidMediaPlayerWrapper)
+                        if(
+                                        (dynamic_cast<const AndroidMediaPlayerWrapper*>(player2) != nullptr)
+                                    )
                         
                                     {
-                                    androidMediaPlayerWrapper= player2;
+                                    androidMediaPlayerWrapper= dynamic_cast<AndroidMediaPlayerWrapper*>(player2);
     
-MediaPlayerUtil::getInstance().waitForMediaPlayer(androidMediaPlayerWrapper.getMediaPlayer());
+MediaPlayerUtil::getInstance()->waitForMediaPlayer(androidMediaPlayerWrapper->getMediaPlayer());
     
 
                                     }
@@ -209,7 +217,7 @@ MediaPlayerUtil::getInstance().waitForMediaPlayer(androidMediaPlayerWrapper.getM
                             
 
 
-                            throw Exception("Unknown Property Player: " +player.constructor.name.toString());
+                            throw new Exception("Unknown Property Player: " +player->getClass()->getName());
                     
 
                         }
@@ -222,32 +230,32 @@ MediaPlayerUtil::getInstance().waitForMediaPlayer(androidMediaPlayerWrapper.getM
                                 
 }
 
-Sounds(soundsFactoryInterface).closeAll();
+(new Sounds(soundsFactoryInterface))->closeAll();
     
-TsUtil::getInstance().gc();
+TsUtil::getInstance()->gc();
     
-soundsFactoryInterface.setInitialized(false);
+soundsFactoryInterface->setInitialized(false);
     
 AllBinaryMediaManager::mostUsedTotal= 0;
     
 
                                     }
                                 
-logUtil.putF(commonString.START, AllBinaryMediaManager::THIS, "shutdown");
+logUtil->putF(commonString->START, AllBinaryMediaManager::THIS, "shutdown");
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: static Player createPlayer(std::string resource){
+    public: static Player* createPlayer(std::string resource){
 AllBinaryMediaManager::mostUsedTotal++;
     
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-                        if(Features::getInstance().isFeature(GameFeatureFactory::getInstance().SOUND))
+                        if(Features::getInstance()->isFeature(GameFeatureFactory::getInstance()->SOUND))
                         
                                     {
                                     
@@ -256,13 +264,13 @@ AllBinaryMediaManager::mostUsedTotal++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AndroidMediaPlayerWrapper(resource);
+                        return new AndroidMediaPlayerWrapper(resource);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-logUtil.put("Could not create AndroidMediaPlayerWrapper using NoPlayer at " +CommonLabels::getInstance().TOTAL_LABEL +AllBinaryMediaManager::mostUsedTotal, AllBinaryMediaManager::THIS, "createPlayer", e);
+logUtil->put("Could not create AndroidMediaPlayerWrapper using NoPlayer at " +CommonLabels::getInstance()->TOTAL_LABEL +AllBinaryMediaManager::mostUsedTotal, AllBinaryMediaManager::THIS, "createPlayer", &e);
     
 
 
@@ -290,11 +298,11 @@ logUtil.put("Could not create AndroidMediaPlayerWrapper using NoPlayer at " +Com
 
                 //@Throws(IOException.constructor, MediaException.constructor)
             
-    public: static Player createPlayerFromInputStream(InputStream stream, std::string type){
+    public: static Player* createPlayerFromInputStream(InputStream* stream, std::string type){
 
 
 
-                            throw MediaException("No Input Stream Player");
+                            throw new MediaException("No Input Stream Player");
                     
 }
 
@@ -306,7 +314,7 @@ logUtil.put("Could not create AndroidMediaPlayerWrapper using NoPlayer at " +Com
 
 
 
-                            throw MediaException("No Tone Player");
+                            throw new MediaException("No Tone Player");
                     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -47,11 +53,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoHttpStore.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpStore.h"
 
 class TransformInfoHttpStoreNoManipulation: public TransformInfoHttpStore {
 
-public: TransformInfoHttpStoreNoManipulation(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext) : TransformInfoHttpStore(propertiesHashMap, pageContext){
+public: TransformInfoHttpStoreNoManipulation(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : TransformInfoHttpStore(propertiesHashMap, pageContext){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -66,7 +72,7 @@ public: TransformInfoHttpStoreNoManipulation(HashMap<Object*, Object*> propertie
     protected: void setObjectConfigFile(std::string value){
 this->setObjectConfigFileName(value);
     
-this->setObjectConfigInterface(TransformInfoObjectConfigNoManipulationFactory::getInstance().getInstance(this, this->getObjectConfigFilePath()));
+this->setObjectConfigInterface(TransformInfoObjectConfigNoManipulationFactory::getInstance()->getInstance(this, this->getObjectConfigFilePath()));
     
 }
 
@@ -77,7 +83,7 @@ this->setObjectConfigInterface(TransformInfoObjectConfigNoManipulationFactory::g
 
 
 
-                            throw Exception("Should not set from config");
+                            throw new Exception("Should not set from config");
                     
 }
 

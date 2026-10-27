@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LAYER_ALLBINARYLAYERFACTORYINTERFACE_H
         #define ORG_ALLBINARY_LAYER_ALLBINARYLAYERFACTORYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -41,13 +47,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryLayer.h"
+        #include "org/allbinary/layer/AllBinaryLayer.h"
 
 class AllBinaryLayerFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    AllBinaryLayer getInstance();
+    public: virtual AllBinaryLayer* getInstance() = 0;
 
 };
 

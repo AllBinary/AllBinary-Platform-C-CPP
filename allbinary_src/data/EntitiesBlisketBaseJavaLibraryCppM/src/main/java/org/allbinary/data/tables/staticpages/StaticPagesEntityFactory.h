@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_STATICPAGES_STATICPAGESENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_STATICPAGES_STATICPAGESENTITYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,21 +55,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StaticPagesEntity.h"
+        #include "org/allbinary/data/tables/staticpages/StaticPagesEntity.h"
 
 class StaticPagesEntityFactory
             : public Object
          {
 
-    private: static StaticPagesEntityFactory instance() { return StaticPagesEntityFactory(); }
+    private: static StaticPagesEntityFactory* instance() { static std::unique_ptr<StaticPagesEntityFactory> value(new StaticPagesEntityFactory()); return value.get(); }
 
-    public: static StaticPagesEntityFactory getInstance();
+    public: static StaticPagesEntityFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: StaticPagesEntityFactory();
 
-    public: StaticPagesEntity getStaticPagesEntityInstance();
+    public: StaticPagesEntity* getStaticPagesEntityInstance();
 
 };
 

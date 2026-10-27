@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/StdUtil.h>
@@ -50,47 +56,47 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameConfiguration.h"
+        #include "org/allbinary/game/configuration/GameConfiguration.h"
 
 class GameConfigurationSingleton
             : public Object
          {
 
-    private: static GameConfigurationSingleton SINGLETON = GameConfigurationSingleton();
+    private: static GameConfigurationSingleton* SINGLETON() { static std::unique_ptr<GameConfigurationSingleton> value(new GameConfigurationSingleton()); return value.get(); }
 
-    public: static GameConfigurationSingleton getInstance(){
+    public: static GameConfigurationSingleton* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameConfigurationSingleton::SINGLETON;
+                        return GameConfigurationSingleton::SINGLETON();
     
 }
 
 
-    private: BasicArrayList list;
+    private: BasicArrayList* list;
 
-    private: ABHashtable<Object*, Object*> hashtable;
+    private: ABHashtable<Object*, Object*>* hashtable;
 
 private: GameConfigurationSingleton(){
-this->list= BasicArrayListD();
+this->list= new BasicArrayListD();
     
-this->hashtable= StdUtil::getInstance().createHashtable();
+this->hashtable= StdUtil::getInstance()->createHashtable();
     
 }
 
 
-    public: GameConfiguration getInstanceByName(std::string name){
+    public: GameConfiguration* getInstanceByName(std::string name){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->hashtable.get(name);
+                        return dynamic_cast<GameConfiguration*>(this->hashtable->get(name));
     
 }
 
 
-    public: BasicArrayList getOptionsBasicArrayList(){
+    public: BasicArrayList* getOptionsBasicArrayList(){
 
 
 
@@ -100,13 +106,13 @@ this->hashtable= StdUtil::getInstance().createHashtable();
 }
 
 
-    public: void add(GameConfiguration gameConfiguration){
-this->list.add(gameConfiguration);
+    public: void add(GameConfiguration* gameConfiguration){
+this->list->add(gameConfiguration);
     
 }
 
 
-    public: ABHashtable<Object*, Object*> getHashtable(){
+    public: ABHashtable<Object*, Object*>* getHashtable(){
 
 
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -67,23 +73,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DamageFloaters.h"
+        #include "org/allbinary/game/combat/damage/DamageFloaters.h"
 
 class AnimationDamageFloaters: public DamageFloaters {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: AllBinaryLayer layerInterface;
+    private: AllBinaryLayer* layerInterface;
 
-    private: std::vector<IndexedAnimation> animationInterfaceArray;
+    private: std::vector<IndexedAnimation*> animationInterfaceArray;
 
-    private: CircularIndexUtil circularIndexUtil;
+    private: CircularIndexUtil* circularIndexUtil;
 
     private: int32_t dx;
 
     private: int32_t dy;
 
-public: AnimationDamageFloaters(AllBinaryLayer layerInterface, std::vector<IndexedAnimation> animationInterfaceArray, int32_t dx, int32_t dy){
+public: AnimationDamageFloaters(AllBinaryLayer* layerInterface, std::vector<IndexedAnimation*> animationInterfaceArray, int32_t dx, int32_t dy){
 this->animationInterfaceArray= animationInterfaceArray;
     
 
@@ -110,26 +116,26 @@ this->dy= dy;
 
     public: void add(int32_t damage){
 
-    int32_t i = this->circularIndexUtil.getIndex();;
+    int32_t i = this->circularIndexUtil->getIndex();;
     
 this->animationInterfaceArray[i].setFrame(0);
     
-this->circularIndexUtil.next();
+this->circularIndexUtil->next();
     
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 
         try {
             
-    ViewPositionBase viewPosition = this->layerInterface.getViewPosition();;
+    ViewPositionBase* viewPosition = this->layerInterface->getViewPosition();;
     
 
-    int32_t x = viewPosition.getX();;
+    int32_t x = viewPosition->getX();;
     
 
-    int32_t y = viewPosition.getY();;
+    int32_t y = viewPosition->getY();;
     
 
 
@@ -139,18 +145,18 @@ this->circularIndexUtil.next();
     int32_t index = 0;index < this->animationInterfaceArray.size(); index++)
         {
 
-    IndexedAnimation animationInterface = this->animationInterfaceArray[index];;
+    IndexedAnimation* animationInterface = this->animationInterfaceArray[index];;
     
 
-                        if(animationInterface.getFrame() < animationInterface.getAnimationSize() -1)
+                        if(animationInterface->getFrame() < animationInterface->getAnimationSize() -1)
                         
                                     {
                                     
-    int32_t delta = animationInterface.getFrame() *20;;
+    int32_t delta = animationInterface->getFrame() *20;;
     
-animationInterface.paintXY(graphics, x +this->dx, y -delta +this->dy);
+animationInterface->paintXY(graphics, x +this->dx, y -delta +this->dy);
     
-animationInterface.nextFrame();
+animationInterface->nextFrame();
     
 
                                     }
@@ -159,15 +165,15 @@ animationInterface.nextFrame();
 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-    CanvasStrings canvasStrings = CanvasStrings::getInstance();;
+    CanvasStrings* canvasStrings = CanvasStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, canvasStrings.PAINT, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, canvasStrings->PAINT, &e);
     
 }
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -78,27 +84,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "FeatureResourceAnimationInterfaceFactoryInterface.h"
+        #include "org/allbinary/animation/resource/FeatureResourceAnimationInterfaceFactoryInterface.h"
 
 class BaseResourceAnimationInterfaceFactoryInterfaceFactory
             : public Object
-        : public FeatureResourceAnimationInterfaceFactoryInterface {
+        , public FeatureResourceAnimationInterfaceFactoryInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: ABHashtable<Object*, Object*> hashtable;
+    private: ABHashtable<Object*, Object*>* hashtable;
 
-    private: ABHashtable<Object*, Object*> rectangleHashtable;
+    private: ABHashtable<Object*, Object*>* rectangleHashtable;
 
-    private: ABHashtable<Object*, Object*> rectangleArrayOfArraysHashtable;
+    private: ABHashtable<Object*, Object*>* rectangleArrayOfArraysHashtable;
 
     private: std::string name;
 
     private: bool initialized= false;
 
-public: BaseResourceAnimationInterfaceFactoryInterfaceFactory(std::string name, ABHashtable<Object*, Object*> hashtable, ABHashtable<Object*, Object*> rectangleHashtable, ABHashtable<Object*, Object*> rectangleArrayHashtable);
+public: BaseResourceAnimationInterfaceFactoryInterfaceFactory(std::string name, ABHashtable<Object*, Object*>* hashtable, ABHashtable<Object*, Object*>* rectangleHashtable, ABHashtable<Object*, Object*>* rectangleArrayHashtable);
 
     public: std::string getName();
 
@@ -108,31 +114,31 @@ public: BaseResourceAnimationInterfaceFactoryInterfaceFactory(std::string name, 
 
                 //@Throws(Exception.constructor)
             
-    protected: void initImageCache(ImageCache imageCache, int32_t level);
+    protected: void initImageCache(ImageCache* imageCache, int32_t level);
 
                 //@Throws(Exception.constructor)
             
-    public: void add(std::string resource, BasicAnimationInterfaceFactoryInterface animationInterfaceFactoryInterface);
+    public: void add(std::string resource, BasicAnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicAnimationInterfaceFactoryInterface getBasicAnimationInterfaceFactoryInstance(std::string resource);
+    public: BasicAnimationInterfaceFactoryInterface* getBasicAnimationInterfaceFactoryInstance(std::string resource);
 
                 //@Throws(Exception.constructor)
             
-    public: Rectangle getRectangle(std::string resource);
+    public: Rectangle* getRectangle(std::string resource);
 
                 //@Throws(Exception.constructor)
             
-    public: void addRectangle(std::string resource, Rectangle rectangle);
+    public: void addRectangle(std::string resource, Rectangle* rectangle);
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<std::vector<Rectangle>> getRectangleArrayOfArrays(std::string resource);
+    public: std::vector<std::vector<Rectangle*>> getRectangleArrayOfArrays(std::string resource);
 
                 //@Throws(Exception.constructor)
             
-    public: void addRectangleArrayOfArrays(std::string resource, std::vector<std::vector<Rectangle>> rectangleArrayOfArrays);
+    public: void addRectangleArrayOfArrays(std::string resource, std::vector<std::vector<Rectangle*>> rectangleArrayOfArrays);
 
     public: bool isFeature();
 
@@ -140,11 +146,11 @@ public: BaseResourceAnimationInterfaceFactoryInterfaceFactory(std::string name, 
 
     public: std::string toString();
 
-    public: ABHashtable<Object*, Object*> getHashtable();
+    public: ABHashtable<Object*, Object*>* getHashtable();
 
-    public: ABHashtable<Object*, Object*> getRectangleHashtable();
+    public: ABHashtable<Object*, Object*>* getRectangleHashtable();
 
-    public: ABHashtable<Object*, Object*> getRectangleArrayOfArraysHashtable();
+    public: ABHashtable<Object*, Object*>* getRectangleArrayOfArraysHashtable();
 
     protected: void setInitialized(bool initialized);
 

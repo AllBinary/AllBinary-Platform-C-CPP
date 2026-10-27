@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -51,17 +57,17 @@ class DocumentToNode
             : public Object
          {
 
-    private: static const std::string XMLROOT = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+    private: static inline const std::string XMLROOT = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 
-    private: static const std::string XMLROOTSTART = "<?xml";
+    private: static inline const std::string XMLROOTSTART = "<?xml";
 
-    private: static const std::string XMLROOTEND = "?>";
+    private: static inline const std::string XMLROOTEND = "?>";
 
-    private: static const std::string XMLJSPROOTSTART = "<jsp:root";
+    private: static inline const std::string XMLJSPROOTSTART = "<jsp:root";
 
-    private: static const std::string XMLEND = ">";
+    private: static inline const std::string XMLEND = ">";
 
-    private: static const std::string XMLJSPROOTENDSTART = "</jsp:root";
+    private: static inline const std::string XMLJSPROOTENDSTART = "</jsp:root";
 
                 //@Throws(Exception.constructor)
             
@@ -71,13 +77,13 @@ documentString= DocumentToNode::remove(documentString, DocumentToNode::XMLJSPROO
 documentString= DocumentToNode::remove(documentString, DocumentToNode::XMLJSPROOTENDSTART, DocumentToNode::XMLEND);
     
 
-    Replace replaceXmlRoot = Replace(XMLROOT, StringUtil::getInstance().EMPTY_STRING);;
+    Replace* replaceXmlRoot = new Replace(XMLROOT, StringUtil::getInstance()->EMPTY_STRING);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return replaceXmlRoot.all(documentString);;
+                        return replaceXmlRoot->all(documentString);;
     
 }
 
@@ -97,24 +103,24 @@ documentString= DocumentToNode::remove(documentString, DocumentToNode::XMLJSPROO
     int32_t startIndex= 0;;
     
 
-        while((startIndex= documentString.indexOf(start)) !=  -1)
+        while((startIndex= JavaString::indexOf(documentString, start)) !=  -1)
         {
 
                         if(startIndex >= 0)
                         
                                     {
                                     
-    int32_t endIndex = documentString.indexOf(end, startIndex);;
+    int32_t endIndex = JavaString::indexOf(documentString, end, startIndex);;
     
 
                         if(endIndex >= 0)
                         
                                     {
                                     
-    std::string startString = documentString.substring(0, startIndex);;
+    std::string startString = JavaString::substring(documentString, 0, startIndex);;
     
 
-    std::string resultString = documentString.substring(endIndex +1);;
+    std::string resultString = JavaString::substring(documentString, endIndex +1);;
     
 
 

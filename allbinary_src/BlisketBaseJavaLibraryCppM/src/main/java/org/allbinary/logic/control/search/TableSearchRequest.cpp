@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,8 +61,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SearchParams.h"
-#include "SearchData.h"
+        #include "org/allbinary/logic/control/search/SearchParams.h"
+#include "org/allbinary/logic/control/search/SearchData.h"
 
 class TableSearchRequest
             : public Object
@@ -70,9 +76,9 @@ class TableSearchRequest
 
     private: std::string keywords;
 
-    private: SearchParams searchParams;
+    private: SearchParams* searchParams;
 
-public: TableSearchRequest(std::string keywords, SearchParams searchParams, std::string xslFile, std::string contentType){
+public: TableSearchRequest(std::string keywords, SearchParams* searchParams, std::string xslFile, std::string contentType){
 this->keywords= keywords;
     
 this->searchParams= searchParams;
@@ -92,7 +98,7 @@ this->keywords= value;
 }
 
 
-    public: void setParams(SearchParams searchParams){
+    public: void setParams(SearchParams* searchParams){
 this->searchParams= searchParams;
     
 }
@@ -126,7 +132,7 @@ this->contentType= value;
 }
 
 
-    public: SearchParams getParams(){
+    public: SearchParams* getParams(){
 
 
 
@@ -140,7 +146,7 @@ this->contentType= value;
             
     public: std::string getXslFile(){
 
-    std::string path = URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH +this->xslFile;;
+    std::string path = URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance()->XSLPATH +this->xslFile;;
     
 
 
@@ -173,7 +179,7 @@ this->contentType= value;
 
                 //@Throws(Exception.constructor)
             
-    public: Node getFileBaseNameNode(Document document){
+    public: Node* getFileBaseNameNode(Document* document){
 
 
 

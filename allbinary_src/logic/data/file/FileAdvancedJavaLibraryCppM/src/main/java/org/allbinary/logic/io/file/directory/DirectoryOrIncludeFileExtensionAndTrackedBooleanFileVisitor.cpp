@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/System.h"
         
 #include <org/allbinary/java/runtime/process/git/GitProcessHelper.h>
@@ -58,37 +64,37 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TrackedStrings.h"
+        #include "org/allbinary/logic/io/file/directory/TrackedStrings.h"
 
 class DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor: public IncludeFileExtensionsBooleanFileVisitor {
 
     public: static void main(std::vector<std::string> args){
 
-    CommonDataFileStrings commonFileStrings = CommonDataFileStrings::getInstance();;
+    CommonDataFileStrings* commonFileStrings = CommonDataFileStrings::getInstance();;
     
 
-    BasicArrayList list = BasicArrayListD();;
+    BasicArrayList* list = new BasicArrayListD();;
     
-list.add(commonFileStrings.JAVA);
+list->add(commonFileStrings->JAVA);
     
 
     std::string filePath = "G:\\mnt\\bc\\mydev\\games\\ZeptoRacer\\platform\\j2se\\ZeptoRacerStaticPathsJ2SEM\\target\\dependency\\org\\allbinary\\logic\\system\\security\\licensing\\ZeptoRacerPCClientInformation.java";;
     
 
-    bool result = DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(list).visit(AbFile::createAbFileFromRawPath(filePath));;
+    bool result = (new DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(list))->visit(AbFile::createAbFileFromRawPath(filePath));;
     
-console.log(filePath +" is Tracked: " +result);
+System.out.println(filePath +" is Tracked: " +result);
     
 }
 
 
-    private: const TrackedStrings trackedStrings = TrackedStrings::getInstance();
+    private: TrackedStrings* trackedStrings = TrackedStrings::getInstance();
 
-    private: const GitProcessHelper gitProcessHelper = GitProcessHelper::getInstance();
+    private: GitProcessHelper* gitProcessHelper = GitProcessHelper::getInstance();
 
     private: std::string includesString;
 
-public: DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(BasicArrayList filterStringBasicArrayList) : IncludeFileExtensionsBooleanFileVisitor(filterStringBasicArrayList){
+public: DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(BasicArrayList* filterStringBasicArrayList) : IncludeFileExtensionsBooleanFileVisitor(filterStringBasicArrayList){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -102,7 +108,7 @@ this->includesString=
 }
 
 
-public: DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(BasicArrayList filterStringBasicArrayList, std::string includesString) : IncludeFileExtensionsBooleanFileVisitor(filterStringBasicArrayList){
+public: DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(BasicArrayList* filterStringBasicArrayList, std::string includesString) : IncludeFileExtensionsBooleanFileVisitor(filterStringBasicArrayList){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -114,9 +120,9 @@ this->includesString= includesString;
 }
 
 
-    public: Boolean visit(AbFile file){
+    public: bool visit(AbFile* file){
 
-                        if(file.isDirectory())
+                        if(file->isDirectory())
                         
                                     {
                                     
@@ -129,7 +135,7 @@ this->includesString= includesString;
                                     }
                                 
 
-                        if(false || file.getAbsolutePath().indexOf(this->includesString) >= 0)
+                        if(false || file->getAbsolutePath()->indexOf(this->includesString) >= 0)
                         
                                     {
                                     
@@ -154,24 +160,24 @@ this->includesString= includesString;
 }
 
 
-    public: Boolean visit(AbFile file, std::string fileNameString){
+    public: bool visit(AbFile* file, std::string fileNameString){
 
-    std::string filePath = file.getPath();;
+    std::string filePath = file->getPath();;
     
 
                         if(super.visit(file, fileNameString))
                         
                                     {
                                     
-                        if(!(filePath.contains(this->trackedStrings.APPLICATION) || filePath.contains(this->trackedStrings.APP) || filePath.contains(this->trackedStrings.HTML_TEMP)))
+                        if(!(JavaString::contains(filePath, this->trackedStrings->APPLICATION) || JavaString::contains(filePath, this->trackedStrings->APP) || JavaString::contains(filePath, this->trackedStrings->HTML_TEMP)))
                         
                                     {
                                     
-                        if(!(filePath.contains(this->trackedStrings.TARGET_PATH_WINDOWS) || filePath.contains(this->trackedStrings.TARGET_PATH_UNIX)))
+                        if(!(JavaString::contains(filePath, this->trackedStrings->TARGET_PATH_WINDOWS) || JavaString::contains(filePath, this->trackedStrings->TARGET_PATH_UNIX)))
                         
                                     {
                                     
-                        if(this->gitProcessHelper.isTracked(file))
+                        if(this->gitProcessHelper->isTracked(file))
                         
                                     {
                                     

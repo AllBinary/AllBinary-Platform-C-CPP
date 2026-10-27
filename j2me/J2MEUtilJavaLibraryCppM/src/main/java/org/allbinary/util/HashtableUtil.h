@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/Enumeration.h>
@@ -49,26 +55,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "EnumerationUtil.h"
-#include "ABHashtable.h"
-#include "BasicArrayListS.h"
-#include "BasicArrayList.h"
+        #include "org/allbinary/util/EnumerationUtil.h"
+#include "org/allbinary/util/ABHashtable.h"
+#include "org/allbinary/util/BasicArrayListS.h"
+#include "org/allbinary/util/BasicArrayList.h"
 
 class HashtableUtil
             : public Object
          {
 
-    private: static HashtableUtil instance() { return HashtableUtil(); }
+    private: static HashtableUtil* instance() { static std::unique_ptr<HashtableUtil> value(new HashtableUtil()); return value.get(); }
 
-    public: static HashtableUtil getInstance();
+    public: static HashtableUtil* getInstance();
 
-    private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
+    private: EnumerationUtil* enumerationUtil = EnumerationUtil::getInstance();
 
-    public: void putAll(ABHashtable<Object*, Object*> fromHashtable, ABHashtable<Object*, Object*> hashtable);
+    public: void putAll(ABHashtable<Object*, Object*>* fromHashtable, ABHashtable<Object*, Object*>* hashtable);
 
-    public: std::vector<Object*> getKeysAsArray(ABHashtable<Object*, Object*> hashtable);
+    public: std::vector<Object*> getKeysAsArray(ABHashtable<Object*, Object*>* hashtable);
 
-    public: BasicArrayList getKeysAsList(ABHashtable<Object*, Object*> hashtable);
+    public: BasicArrayList* getKeysAsList(ABHashtable<Object*, Object*>* hashtable);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PATHANIMATION_H
         #define ORG_ALLBINARY_GAME_LAYER_PATHANIMATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -80,39 +86,39 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LinePathAnimation.h"
-#include "PathFindingLayerInterface.h"
-#include "AllBinaryGameLayerManager.h"
-#include "WaypointBehaviorBase.h"
-#include "AllBinaryTiledLayer.h"
+        #include "org/allbinary/game/layer/LinePathAnimation.h"
+#include "org/allbinary/game/layer/PathFindingLayerInterface.h"
+#include "org/allbinary/game/layer/AllBinaryGameLayerManager.h"
+#include "org/allbinary/game/layer/WaypointBehaviorBase.h"
+#include "org/allbinary/game/layer/AllBinaryTiledLayer.h"
 
 class PathAnimation: public Animation {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: LinePathAnimation linePathAnimation;
+    private: LinePathAnimation* linePathAnimation;
 
-    private: PathFindingLayerInterface pathFindingLayer;
+    private: PathFindingLayerInterface* pathFindingLayer;
 
-    protected: AllBinaryGameLayerManager allBinaryGameLayerManagerP = AllBinaryGameLayerManager::getNullInstance();
+    protected: AllBinaryGameLayerManager* allBinaryGameLayerManagerP = AllBinaryGameLayerManager::getNullInstance();
 
-public: PathAnimation(PathFindingLayerInterface pathFindingLayer, LinePathAnimation linePathAnimation);
+public: PathAnimation(PathFindingLayerInterface* pathFindingLayer, LinePathAnimation* linePathAnimation);
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager);
 
                 //@Throws(Exception.constructor)
             
     public: void nextFrame();
 
-    private: const BasicColor startColor = BasicColorFactory::getInstance().RED;
+    private: BasicColor* startColor = BasicColorFactory::getInstance()->RED;
 
-    private: const BasicColor middleColor = BasicColorFactory::getInstance().BLUE;
+    private: BasicColor* middleColor = BasicColorFactory::getInstance()->BLUE;
 
-    private: const BasicColor endColor = BasicColorFactory::getInstance().GREEN;
+    private: BasicColor* endColor = BasicColorFactory::getInstance()->GREEN;
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
 };
 

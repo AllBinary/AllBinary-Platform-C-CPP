@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tables/user/address/billing/BillingAddressesEntity.h>
@@ -53,11 +59,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BillingAddressesView.h"
+        #include "views/generic/address/billing/BillingAddressesView.h"
 
 class ValidationView: public BillingAddressesView, public ValidationComponentInterface {
 
-public: ValidationView(TransformInfoInterface transformInfoInterface) : BillingAddressesView(transformInfoInterface){
+public: ValidationView(TransformInfoInterface* transformInfoInterface) : BillingAddressesView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -67,11 +73,11 @@ public: ValidationView(TransformInfoInterface transformInfoInterface) : BillingA
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
-    BillingAddressesEntity billingAddressesEntity = BillingAddressesEntity(this->getWeblisketSession().getUserName());;
+    BillingAddressesEntity* billingAddressesEntity = new BillingAddressesEntity(this->getWeblisketSession()->getUserName());;
     
-this->streetAddresses= billingAddressesEntity.get();
+this->streetAddresses= billingAddressesEntity->get();
     
 
                         if(this->streetAddresses == 
@@ -120,7 +126,7 @@ this->streetAddresses= billingAddressesEntity.get();
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -130,7 +136,7 @@ this->streetAddresses= billingAddressesEntity.get();
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

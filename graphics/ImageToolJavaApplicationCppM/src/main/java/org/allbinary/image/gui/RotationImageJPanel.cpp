@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Thread.h"
@@ -82,31 +88,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "Graphics.h"
-#include "JLabel.h"
-#include "JButton.h"
-#include "JComboBox.h"
-#include "JCheckBox.h"
-#include "GroupLayout.h"
-#include "Short.h"
-#include "ActionListener.h"
-#include "ActionEvent.h"
-#include "DefaultComboBoxModel.h"
+        #include "org/allbinary/image/gui/JPanel.h"
+#include "org/allbinary/image/gui/Graphics.h"
+#include "org/allbinary/image/gui/JLabel.h"
+#include "org/allbinary/image/gui/JButton.h"
+#include "org/allbinary/image/gui/JComboBox.h"
+#include "org/allbinary/image/gui/JCheckBox.h"
+#include "org/allbinary/image/gui/GroupLayout.h"
+#include "org/allbinary/image/gui/Short.h"
+#include "org/allbinary/image/gui/ActionListener.h"
+#include "org/allbinary/image/gui/ActionEvent.h"
+#include "org/allbinary/image/gui/DefaultComboBoxModel.h"
 
 class RotationImageJPanel: public javax::swing::JPanel, public ImageProcessedVisitor {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const ImageStrings imageStrings = ImageStrings::getInstance();
+    private: ImageStrings* imageStrings = ImageStrings::getInstance();
 
-    private: ImageProcessorInput imageProcessorInput;
+    private: ImageProcessorInput* imageProcessorInput;
 
-    private: BufferedImage result;
+    private: BufferedImage* result;
 
-public: RotationImageJPanel(ImageProcessorInput imageProcessorInput) : javax::swing::JPanel(){
+public: RotationImageJPanel(ImageProcessorInput* imageProcessorInput) : javax::swing::JPanel(){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -121,32 +127,32 @@ this->imageProcessorInput= imageProcessorInput;
 
 
     public: void process(){
-class extends Thread
+(class extends Thread
                                 {
                                 
     public: void run(){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
         try {
             
-    std::string angleAsString = this->totalAngleJComboBox.getSelectedItem();;
+    std::string angleAsString = this->totalAngleJComboBox->getSelectedItem();;
     
-ImageArrayRotationUtil::getInstance().process(this->getImageProcessorInput(), angleAsString, this);
+ImageArrayRotationUtil::getInstance()->process(this->getImageProcessorInput(), angleAsString, this);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
+logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
     
 }
 
 }
 
                                 }
-                            .start();
+                            )->start();
     
 }
 
@@ -155,15 +161,15 @@ logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
 this->jPanel1= class extends javax::swing::JPanel
                                 {
                                 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 
                         if(this->result != 
                                     nullptr
                                 )
                         
                                     {
-                                    graphics.drawImage(this->result, 0, 0, this->result.getWidth(
-                            nullptr), this->result.getHeight(
+                                    graphics->drawImage(this->result, 0, 0, this->result->getWidth(
+                            nullptr), this->result->getHeight(
                             nullptr), 
                             nullptr);
     
@@ -175,37 +181,37 @@ this->jPanel1= class extends javax::swing::JPanel
                                 }
                             ;
     
-this->jPanel2= javax::swing::JPanel();
+this->jPanel2= new javax::swing::JPanel();
     
-this->jLabel1= javax::swing::JLabel();
+this->jLabel1= new javax::swing::JLabel();
     
-this->generateJButton= javax::swing::JButton();
+this->generateJButton= new javax::swing::JButton();
     
-this->totalAngleJComboBox= javax::swing::JComboBox();
+this->totalAngleJComboBox= new javax::swing::JComboBox();
     
-this->jLabel3= javax::swing::JLabel();
+this->jLabel3= new javax::swing::JLabel();
     
-this->writeOverOriginalJCheckBox= javax::swing::JCheckBox();
+this->writeOverOriginalJCheckBox= new javax::swing::JCheckBox();
     
-this->jPanel3= javax::swing::JPanel();
+this->jPanel3= new javax::swing::JPanel();
     
-this->jLabel2= javax::swing::JLabel();
+this->jLabel2= new javax::swing::JLabel();
     
 
-    org::jdesktop::layout::GroupLayout jPanel1Layout = org::jdesktop::layout::GroupLayout(this->jPanel1);;
+    org::jdesktop::layout::GroupLayout* jPanel1Layout = new org::jdesktop::layout::GroupLayout(this->jPanel1);;
     
-this->jPanel1.setLayout(jPanel1Layout);
+this->jPanel1->setLayout(jPanel1Layout);
     
-jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING).add(0, 436, Short::MAX_VALUE));
+jPanel1Layout->setHorizontalGroup(jPanel1Layout->createParallelGroup(org.jdesktop.layout->GroupLayout.LEADING)->add(0, 436, Short::MAX_VALUE));
     
-jPanel1Layout.setVerticalGroup(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING).add(0, 227, Short::MAX_VALUE));
+jPanel1Layout->setVerticalGroup(jPanel1Layout->createParallelGroup(org.jdesktop.layout->GroupLayout.LEADING)->add(0, 227, Short::MAX_VALUE));
     
-this->generateJButton.setText("Generate");
+this->generateJButton->setText("Generate");
     
-this->generateJButton.addActionListener(class extends java::awt::event::ActionListener
+this->generateJButton->addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public: void actionPerformed(java::awt::event::ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent* evt){
 generateJButtonActionPerformed(evt);
     
 }
@@ -213,15 +219,15 @@ generateJButtonActionPerformed(evt);
                                 }
                             );
     
-this->totalAngleJComboBox.setModel(javax::swing::DefaultComboBoxModel(
+this->totalAngleJComboBox->setModel(new javax::swing::DefaultComboBoxModel(
                                                 {
-                                                    this->commonStrings.UP,this->commonStrings.DOWN,"-90","90"
+                                                    this->commonStrings->UP,this->commonStrings->DOWN,"-90","90"
                                                 }));
     
-this->totalAngleJComboBox.addActionListener(class extends java::awt::event::ActionListener
+this->totalAngleJComboBox->addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public: void actionPerformed(java::awt::event::ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent* evt){
 totalAngleJComboBoxActionPerformed(evt);
     
 }
@@ -229,71 +235,71 @@ totalAngleJComboBoxActionPerformed(evt);
                                 }
                             );
     
-this->jLabel3.setText("Total Angle:");
+this->jLabel3->setText("Total Angle:");
     
-this->writeOverOriginalJCheckBox.setText("Write Over Original");
-    
-
-    org::jdesktop::layout::GroupLayout jPanel2Layout = org::jdesktop::layout::GroupLayout(this->jPanel2);;
-    
-this->jPanel2.setLayout(jPanel2Layout);
-    
-jPanel2Layout.setHorizontalGroup(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING).add(jPanel2Layout.createSequentialGroup().add(8, 8, 8).add(jLabel1).addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED).add(jLabel3).addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED).add(totalAngleJComboBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE).addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED).add(writeOverOriginalJCheckBox).addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED).add(generateJButton).addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)));
-    
-jPanel2Layout.setVerticalGroup(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING).add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE).add(jLabel1).add(generateJButton).add(totalAngleJComboBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE).add(jLabel3).add(writeOverOriginalJCheckBox)));
-    
-this->jLabel2.setText("Results:");
+this->writeOverOriginalJCheckBox->setText("Write Over Original");
     
 
-    org::jdesktop::layout::GroupLayout jPanel3Layout = org::jdesktop::layout::GroupLayout(this->jPanel3);;
+    org::jdesktop::layout::GroupLayout* jPanel2Layout = new org::jdesktop::layout::GroupLayout(this->jPanel2);;
     
-this->jPanel3.setLayout(jPanel3Layout);
+this->jPanel2->setLayout(jPanel2Layout);
     
-jPanel3Layout.setHorizontalGroup(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING).add(jPanel3Layout.createSequentialGroup().add(jLabel2).addContainerGap(377, Short::MAX_VALUE)));
+jPanel2Layout->setHorizontalGroup(jPanel2Layout->createParallelGroup(org.jdesktop.layout->GroupLayout.LEADING)->add(jPanel2Layout->createSequentialGroup()->add(8, 8, 8)->add(jLabel1)->addPreferredGap(org.jdesktop.layout->LayoutStyle.RELATED)->add(jLabel3)->addPreferredGap(org.jdesktop.layout->LayoutStyle.RELATED)->add(totalAngleJComboBox, org.jdesktop.layout->GroupLayout.PREFERRED_SIZE, org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, org.jdesktop.layout->GroupLayout.PREFERRED_SIZE)->addPreferredGap(org.jdesktop.layout->LayoutStyle.RELATED)->add(writeOverOriginalJCheckBox)->addPreferredGap(org.jdesktop.layout->LayoutStyle.RELATED)->add(generateJButton)->addContainerGap(org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)));
     
-jPanel3Layout.setVerticalGroup(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING).add(jLabel2));
+jPanel2Layout->setVerticalGroup(jPanel2Layout->createParallelGroup(org.jdesktop.layout->GroupLayout.LEADING)->add(jPanel2Layout->createParallelGroup(org.jdesktop.layout->GroupLayout.BASELINE)->add(jLabel1)->add(generateJButton)->add(totalAngleJComboBox, org.jdesktop.layout->GroupLayout.PREFERRED_SIZE, org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, org.jdesktop.layout->GroupLayout.PREFERRED_SIZE)->add(jLabel3)->add(writeOverOriginalJCheckBox)));
+    
+this->jLabel2->setText("Results:");
     
 
-    org::jdesktop::layout::GroupLayout layout = org::jdesktop::layout::GroupLayout(this);;
+    org::jdesktop::layout::GroupLayout* jPanel3Layout = new org::jdesktop::layout::GroupLayout(this->jPanel3);;
+    
+this->jPanel3->setLayout(jPanel3Layout);
+    
+jPanel3Layout->setHorizontalGroup(jPanel3Layout->createParallelGroup(org.jdesktop.layout->GroupLayout.LEADING)->add(jPanel3Layout->createSequentialGroup()->add(jLabel2)->addContainerGap(377, Short::MAX_VALUE)));
+    
+jPanel3Layout->setVerticalGroup(jPanel3Layout->createParallelGroup(org.jdesktop.layout->GroupLayout.LEADING)->add(jLabel2));
+    
+
+    org::jdesktop::layout::GroupLayout* layout = new org::jdesktop::layout::GroupLayout(this);;
     
 this->setLayout(layout);
     
-layout.setHorizontalGroup(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING).add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE).add(layout.createSequentialGroup().addContainerGap().add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE).addContainerGap()).add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE));
+layout->setHorizontalGroup(layout->createParallelGroup(org.jdesktop.layout->GroupLayout.LEADING)->add(org.jdesktop.layout->GroupLayout.TRAILING, jPanel2, org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)->add(layout->createSequentialGroup()->addContainerGap()->add(jPanel3, org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)->addContainerGap())->add(jPanel1, org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE));
     
-layout.setVerticalGroup(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING).add(layout.createSequentialGroup().add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE).addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED).add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE).addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED).add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)));
+layout->setVerticalGroup(layout->createParallelGroup(org.jdesktop.layout->GroupLayout.LEADING)->add(layout->createSequentialGroup()->add(jPanel2, org.jdesktop.layout->GroupLayout.PREFERRED_SIZE, org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, org.jdesktop.layout->GroupLayout.PREFERRED_SIZE)->addPreferredGap(org.jdesktop.layout->LayoutStyle.UNRELATED)->add(jPanel3, org.jdesktop.layout->GroupLayout.PREFERRED_SIZE, org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, org.jdesktop.layout->GroupLayout.PREFERRED_SIZE)->addPreferredGap(org.jdesktop.layout->LayoutStyle.RELATED)->add(jPanel1, org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)));
     
 }
 
 
-    private: void generateJButtonActionPerformed(java::awt::event::ActionEvent evt){
+    private: void generateJButtonActionPerformed(java::awt::event::ActionEvent* evt){
 this->process();
     
 }
 
 
-    private: void totalAngleJComboBoxActionPerformed(java::awt::event::ActionEvent evt){
+    private: void totalAngleJComboBoxActionPerformed(java::awt::event::ActionEvent* evt){
 }
 
 
-    private: javax::swing::JButton generateJButton;
+    private: javax::swing::JButton* generateJButton;
 
-    private: javax::swing::JLabel jLabel1;
+    private: javax::swing::JLabel* jLabel1;
 
-    private: javax::swing::JLabel jLabel2;
+    private: javax::swing::JLabel* jLabel2;
 
-    private: javax::swing::JLabel jLabel3;
+    private: javax::swing::JLabel* jLabel3;
 
-    private: javax::swing::JPanel jPanel1;
+    private: javax::swing::JPanel* jPanel1;
 
-    private: javax::swing::JPanel jPanel2;
+    private: javax::swing::JPanel* jPanel2;
 
-    private: javax::swing::JPanel jPanel3;
+    private: javax::swing::JPanel* jPanel3;
 
-    private: javax::swing::JComboBox totalAngleJComboBox;
+    private: javax::swing::JComboBox* totalAngleJComboBox;
 
-    private: javax::swing::JCheckBox writeOverOriginalJCheckBox;
+    private: javax::swing::JCheckBox* writeOverOriginalJCheckBox;
 
-    public: ImageProcessorInput getImageProcessorInput(){
+    public: ImageProcessorInput* getImageProcessorInput(){
 
 
 
@@ -303,7 +309,7 @@ this->process();
 }
 
 
-    public: void setImageProcessorInput(ImageProcessorInput imageProcessorInput){
+    public: void setImageProcessorInput(ImageProcessorInput* imageProcessorInput){
 this->imageProcessorInput= imageProcessorInput;
     
 }
@@ -311,35 +317,35 @@ this->imageProcessorInput= imageProcessorInput;
 
                 //@Throws(IOException.constructor)
             
-    public: void visit(BufferedImage generatedBufferedImage, std::string name, int32_t index){
+    public: void visit(BufferedImage* generatedBufferedImage, std::string name, int32_t index){
 this->result= generatedBufferedImage;
     
-this->getParent().repaint();
+this->getParent()->repaint();
     
 
-    File file = this->imageProcessorInput.getFiles()[index];;
+    File* file = this->imageProcessorInput->getFiles()[index];;
     
 
-                        if(!this->writeOverOriginalJCheckBox.isSelected())
+                        if(!this->writeOverOriginalJCheckBox->isSelected())
                         
                                     {
                                     
-    std::string filePath = file.getAbsolutePath();;
+    std::string filePath = file->getAbsolutePath();;
     
 
-    int32_t extensionIndex = filePath.indexOf(this->imageStrings.PNG_EXTENSION);;
+    int32_t extensionIndex = JavaString::indexOf(filePath, this->imageStrings->PNG_EXTENSION);;
     
-filePath= StringMaker().append(filePath.substring(0, extensionIndex)).append(CommonSeps::getInstance().UNDERSCORE).append(name).append(this->imageStrings.PNG_EXTENSION).toString();
+filePath= (new StringMaker())->append(JavaString::substring(filePath, 0, extensionIndex))->append(CommonSeps::getInstance()->UNDERSCORE)->append(name)->append(this->imageStrings->PNG_EXTENSION)->toString();
     
-file= File(filePath);
+file= new File(filePath);
     
 
                                     }
                                 
 
-    bool isWritten = ImageIO::write(this->result, imageStrings.PNG, file);;
+    bool isWritten = ImageIO::write(dynamic_cast<RenderedImage*>(this->result), imageStrings->PNG, file);;
     
-this->logUtil.putF("File: " +file +" Wrote: " +isWritten, this, this->commonStrings.RUN);
+this->logUtil->putF("File: " +file +" Wrote: " +isWritten, this, this->commonStrings->RUN);
     
 }
 

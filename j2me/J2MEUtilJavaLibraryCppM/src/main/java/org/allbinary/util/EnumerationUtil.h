@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -52,22 +58,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicArrayListD.h"
-#include "BasicArrayList.h"
+        #include "org/allbinary/util/BasicArrayListD.h"
+#include "org/allbinary/util/BasicArrayList.h"
 //ArkTs does not have this.  So this is for the ArkTs build.
 class EnumerationUtil
             : public Object
          {
 
-    private: static EnumerationUtil instance() { return EnumerationUtil(); }
+    private: static EnumerationUtil* instance() { static std::unique_ptr<EnumerationUtil> value(new EnumerationUtil()); return value.get(); }
 
-    public: static EnumerationUtil getInstance();
+    public: static EnumerationUtil* getInstance();
 
-    public: bool hasMoreElements(Enumeration<Object*> enumeration);
+    public: bool hasMoreElements(Enumeration<Object*>* enumeration);
 
-    public: Object* nextElement(Enumeration<Object*> enumeration);
+    public: Object* nextElement(Enumeration<Object*>* enumeration);
 
-    public: std::vector<Object*> getAsArray(Enumeration<Object*> enumeration);
+    public: std::vector<Object*> getAsArray(Enumeration<Object*>* enumeration);
 
 };
 

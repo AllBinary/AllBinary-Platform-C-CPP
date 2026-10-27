@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_RTSLAYERCOMPOSITEPAINTABLE_H
         #define ORG_ALLBINARY_GAME_LAYER_RTSLAYERCOMPOSITEPAINTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -51,26 +57,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UpgradableRTSLayerHudPaintable.h"
-#include "RTSLayer.h"
+        #include "org/allbinary/game/layer/UpgradableRTSLayerHudPaintable.h"
+#include "org/allbinary/game/layer/RTSLayer.h"
 
 class RTSLayerCompositePaintable: public Paintable {
 
-    private: std::string upgradeCost = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string upgradeCost = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: std::string downGradeCost = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string downGradeCost = StringUtil::getInstance()->EMPTY_STRING;
 
     private: const std::string UPGRADE = "Up: $";
 
     private: const std::string DOWNGRADE = "Down: $-";
 
-    protected: UpgradableRTSLayerHudPaintable upgradableRTSLayerHudPaintable;
+    protected: UpgradableRTSLayerHudPaintable* upgradableRTSLayerHudPaintable;
 
-public: RTSLayerCompositePaintable(UpgradableRTSLayerHudPaintable upgradableRTSLayerHudPaintable);
+public: RTSLayerCompositePaintable(UpgradableRTSLayerHudPaintable* upgradableRTSLayerHudPaintable);
 
-    public: void update(RTSLayer rtsLayer);
+    public: void update(RTSLayer* rtsLayer);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
     protected: void setUpgradeCost(std::string upgradeCost);
 

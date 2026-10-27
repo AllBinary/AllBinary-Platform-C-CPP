@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_ABKEYEVENTWRAPPER_H
         #define ORG_ALLBINARY_GAME_INPUT_ABKEYEVENTWRAPPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/awt/event/KeyEvent.h>
@@ -52,9 +58,9 @@ class ABKeyEventWrapper
             : public Object
          {
 
-    private: static ABKeyEventWrapper instance() { return ABKeyEventWrapper(); }
+    private: static ABKeyEventWrapper* instance() { static std::unique_ptr<ABKeyEventWrapper> value(new ABKeyEventWrapper()); return value.get(); }
 
-    public: static ABKeyEventWrapper getInstance();
+    public: static ABKeyEventWrapper* getInstance();
 
     public: const int32_t VK_ENTER = KeyEvent::VK_ENTER;
 

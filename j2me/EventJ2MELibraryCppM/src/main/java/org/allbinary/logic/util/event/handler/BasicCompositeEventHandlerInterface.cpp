@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,13 +42,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicEventHandlerInterface.h"
+        #include "org/allbinary/logic/util/event/handler/BasicEventHandlerInterface.h"
 
 class BasicCompositeEventHandlerInterface {
 
-    BasicEventHandlerInterface getEventHandler()
+    public: virtual BasicEventHandlerInterface* getEventHandler() = 0;
 
-    void setEventHandler(BasicEventHandlerInterface basicEventHandlerInterface)
+    public: virtual void setEventHandler(BasicEventHandlerInterface* basicEventHandlerInterface) = 0;
 
 };
 

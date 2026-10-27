@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <admin/taghelpers/AdminConfigurationHelperFactory.h>
 
       
@@ -42,14 +48,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TableTag.h"
+        #include "admin/tags/TableTag.h"
 
 class AdminConfigurationTag: public TableTag {
 
 public: AdminConfigurationTag(){
-this->setTagHelperFactory(AdminConfigurationHelperFactory());
+this->setTagHelperFactory(new AdminConfigurationHelperFactory());
     
-this->setTagRequestHelperFactory(AdminConfigurationRequestHelperFactory());
+this->setTagRequestHelperFactory(new AdminConfigurationRequestHelperFactory());
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSIONINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSIONINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -52,57 +58,57 @@
         
 class WeblisketSessionInterface {
 
-    void clear();
+    public: virtual void clear() = 0;
 
-    Integer getAttempts();
+    public: virtual int32_t getAttempts() = 0;
 
-    std::string getAuthentication();
+    public: virtual std::string getAuthentication() = 0;
 
-    int64_t getCreationTime();
+    public: virtual int64_t getCreationTime() = 0;
 
-    std::string getId();
+    public: virtual std::string getId() = 0;
 
-    int64_t getLastAccessedTime();
-
-                //@Throws(Exception.constructor)
-            
-    OrderInterface getOrder();
-
-    std::string getPassword();
-
-    std::string getPaymentMethod();
+    public: virtual int64_t getLastAccessedTime() = 0;
 
                 //@Throws(Exception.constructor)
             
-    UserRole getRole();
+    public: virtual OrderInterface* getOrder() = 0;
 
-    std::string getStoreName();
+    public: virtual std::string getPassword() = 0;
 
-    std::string getTimeout();
+    public: virtual std::string getPaymentMethod() = 0;
 
-    std::string getUserName();
+                //@Throws(Exception.constructor)
+            
+    public: virtual UserRole* getRole() = 0;
 
-    std::string getWebAppPath();
+    public: virtual std::string getStoreName() = 0;
 
-    void removeBasket();
+    public: virtual std::string getTimeout() = 0;
 
-    void setAttempts(Integer value);
+    public: virtual std::string getUserName() = 0;
 
-    void setAuthenticated();
+    public: virtual std::string getWebAppPath() = 0;
 
-    void setAuthenticated(bool value);
+    public: virtual void removeBasket() = 0;
 
-    void setPassword(std::string password);
+    public: virtual void setAttempts(int32_t value) = 0;
 
-    void setPaymentMethod(std::string value);
+    public: virtual void setAuthenticated() = 0;
 
-    void setRole(UserRole aRole);
+    public: virtual void setAuthenticated(bool value) = 0;
 
-    void setStoreName(std::string value);
+    public: virtual void setPassword(std::string password) = 0;
 
-    void setTimeout(std::string value);
+    public: virtual void setPaymentMethod(std::string value) = 0;
 
-    void setUserName(std::string userName);
+    public: virtual void setRole(UserRole* aRole) = 0;
+
+    public: virtual void setStoreName(std::string value) = 0;
+
+    public: virtual void setTimeout(std::string value) = 0;
+
+    public: virtual void setUserName(std::string userName) = 0;
 
 };
 

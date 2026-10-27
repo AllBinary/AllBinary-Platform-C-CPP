@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,19 +44,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LayerPlacementType.h"
+        #include "org/allbinary/game/layer/LayerPlacementType.h"
 
 class BasicLayerPlacement
             : public Object
          {
 
-    private: LayerPlacementType layerType;
+    private: LayerPlacementType* layerType;
 
     private: int32_t width;
 
     private: int32_t height;
 
-public: BasicLayerPlacement(LayerPlacementType layerType, int32_t width, int32_t height){
+public: BasicLayerPlacement(LayerPlacementType* layerType, int32_t width, int32_t height){
 this->layerType= layerType;
     
 this->width= width;
@@ -80,7 +86,7 @@ this->height= height;
 }
 
 
-    public: LayerPlacementType getLayerType(){
+    public: LayerPlacementType* getLayerType(){
 
 
 
@@ -90,7 +96,7 @@ this->height= height;
 }
 
 
-    protected: void setLayerType(LayerPlacementType layerType){
+    protected: void setLayerType(LayerPlacementType* layerType){
 this->layerType= layerType;
     
 }

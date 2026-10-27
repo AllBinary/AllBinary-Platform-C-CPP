@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATIONINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATIONINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,15 +48,15 @@
         
 class UserEmailEventConfigurationInterface {
 
-    std::string getName();
+    public: virtual std::string getName() = 0;
 
-    void setName(std::string name);
+    public: virtual void setName(std::string name) = 0;
 
-    std::string getEventListenerClassPath();
+    public: virtual std::string getEventListenerClassPath() = 0;
 
-    void setEventListenerClassPath(std::string eventListenerClassPath);
+    public: virtual void setEventListenerClassPath(std::string eventListenerClassPath) = 0;
 
-    std::string log();
+    public: virtual std::string log() = 0;
 
 };
 

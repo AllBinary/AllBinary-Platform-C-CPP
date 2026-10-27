@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -91,19 +97,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CpuInfo.h"
+        #include "org/allbinary/logic/system/hardware/components/linux/CpuInfo.h"
 
 class Cpu
             : public Object
-        : public CpuInterface, public HardwareComponentInterface {
+        , public CpuInterface, public HardwareComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: const std::string CPUFILE = "/proc/cpuinfo";
 
-    private: HashMap<Object*, Object*> cpuHashMap;
+    private: HashMap<Object*, Object*>* cpuHashMap;
 
 public: Cpu(std::string filePath){
 this->init(filePath);
@@ -121,7 +127,7 @@ this->init(this->CPUFILE);
             
     private: void init(std::string filePath){
 
-    LineNumberReader lineNumberReader = 
+    LineNumberReader* lineNumberReader = 
                 null
             ;;
     
@@ -131,13 +137,13 @@ this->init(this->CPUFILE);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().OS))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->OS))
                         
                                     {
-                                    this->logUtil.put(StringMaker().append("Cpu Data: ").append(this->toString()).toString(), this, this->commonStrings.CONSTRUCTOR, e);
+                                    this->logUtil->put((new StringMaker())->append("Cpu Data: ")->append(this->toString())->toString(), this, this->commonStrings->CONSTRUCTOR, &e);
     
 
                                     }
@@ -154,15 +160,15 @@ this->init(this->CPUFILE);
 
                 //@Throws(Exception.constructor)
             
-    private: void init(LineNumberReader lineNumberReader, std::string filePath){
+    private: void init(LineNumberReader* lineNumberReader, std::string filePath){
 
         try {
             
-    FileReader fileReader = FileReader(filePath);;
+    FileReader* fileReader = new FileReader(filePath);;
     
-lineNumberReader= LineNumberReader(fileReader);
+lineNumberReader= new LineNumberReader(fileReader);
     
-this->cpuHashMap= StdUtil::getInstance().createHashMap();
+this->cpuHashMap= StdUtil::getInstance()->createHashMap();
     
 
                         if(lineNumberReader == 
@@ -171,25 +177,25 @@ this->cpuHashMap= StdUtil::getInstance().createHashMap();
                         
                                     {
                                     
-    BasicArrayList fileVector = SubDirectory::getInstance().search(filePath, AbFile::createAbFile(FilePathData::getInstance().PATH_START));;
+    BasicArrayList* fileVector = SubDirectory::getInstance()->search(filePath, AbFile::createAbFile(FilePathData::getInstance()->PATH_START));;
     
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().OS))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->OS))
                         
                                     {
-                                    this->logUtil.putF(StringMaker().append("Cpu File BasicArrayList Size: ").appendint(fileVector.size()).toString(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF((new StringMaker())->append("Cpu File BasicArrayList Size: ")->appendint(fileVector->size())->toString(), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
                                 
 
-                        if(!fileVector.isEmpty())
+                        if(!fileVector->isEmpty())
                         
                                     {
                                     
-    AbFile file = fileVector.get(0);;
+    AbFile* file = dynamic_cast<AbFile*>(fileVector->get(0));;
     
-lineNumberReader= LineNumberReader(FileReader(file.getPath()));
+lineNumberReader= new LineNumberReader(new FileReader(file->getPath()));
     
 
                                     }
@@ -204,7 +210,7 @@ lineNumberReader= LineNumberReader(FileReader(file.getPath()));
                         
                                     {
                                     
-    std::string nextLine = lineNumberReader.readLine();;
+    std::string nextLine = lineNumberReader->readLine();;
     
 
         while(lineNumberReader != 
@@ -212,57 +218,57 @@ lineNumberReader= LineNumberReader(FileReader(file.getPath()));
                                  && true)
         {
 
-    int32_t index = nextLine.indexOf(':');;
+    int32_t index = JavaString::indexOf(nextLine, ':');;
     
 
                         if(index >= 0)
                         
                                     {
                                     
-    std::string key = nextLine.substring(0, index);;
+    std::string key = JavaString::substring(nextLine, 0, index);;
     
 
     int32_t valueIndex = index +1;;
     
 
-    std::string value = nextLine.substring(valueIndex, nextLine.size());;
+    std::string value = JavaString::substring(nextLine, valueIndex, nextLine.size());;
     
 
-                        if(key.indexOf(CpuInfo::PROCESSOR.toString()) >= 0)
-                        this->cpuHashMap.put(CpuInfo::PROCESSOR, value);
+                        if(JavaString::indexOf(key, CpuInfo::PROCESSOR.toString()) >= 0)
+                        this->cpuHashMap->put(CpuInfo::PROCESSOR, value);
                                 
 
-                        if(key.indexOf(CpuInfo::VENDORID.toString()) >= 0)
-                        this->cpuHashMap.put(CpuInfo::VENDORID, value);
+                        if(JavaString::indexOf(key, CpuInfo::VENDORID.toString()) >= 0)
+                        this->cpuHashMap->put(CpuInfo::VENDORID, value);
                                 
 
-                        if(key.indexOf(CpuInfo::CPUFAMILY.toString()) >= 0)
-                        this->cpuHashMap.put(CpuInfo::CPUFAMILY, value);
+                        if(JavaString::indexOf(key, CpuInfo::CPUFAMILY.toString()) >= 0)
+                        this->cpuHashMap->put(CpuInfo::CPUFAMILY, value);
                                 
 
-                        if(key.indexOf(CpuInfo::MODEL.toString()) >= 0)
-                        this->cpuHashMap.put(CpuInfo::MODEL, value);
+                        if(JavaString::indexOf(key, CpuInfo::MODEL.toString()) >= 0)
+                        this->cpuHashMap->put(CpuInfo::MODEL, value);
                                 
 
-                        if(key.indexOf(CpuInfo::MODELNAME.toString()) >= 0)
-                        this->cpuHashMap.put(CpuInfo::MODELNAME, value);
+                        if(JavaString::indexOf(key, CpuInfo::MODELNAME.toString()) >= 0)
+                        this->cpuHashMap->put(CpuInfo::MODELNAME, value);
                                 
 
-                        if(key.indexOf(CpuInfo::STEPPING.toString()) >= 0)
-                        this->cpuHashMap.put(CpuInfo::STEPPING, value);
+                        if(JavaString::indexOf(key, CpuInfo::STEPPING.toString()) >= 0)
+                        this->cpuHashMap->put(CpuInfo::STEPPING, value);
                                 
 
-                        if(key.indexOf(CpuInfo::CPUMHZ.toString()) >= 0)
-                        this->cpuHashMap.put(CpuInfo::CPUMHZ, value);
+                        if(JavaString::indexOf(key, CpuInfo::CPUMHZ.toString()) >= 0)
+                        this->cpuHashMap->put(CpuInfo::CPUMHZ, value);
                                 
 
-                        if(key.indexOf(CpuInfo::CACHESIZE.toString()) >= 0)
-                        this->cpuHashMap.put(CpuInfo::CACHESIZE, value);
+                        if(JavaString::indexOf(key, CpuInfo::CACHESIZE.toString()) >= 0)
+                        this->cpuHashMap->put(CpuInfo::CACHESIZE, value);
                                 
 
                                     }
                                 
-nextLine= lineNumberReader.readLine();
+nextLine= lineNumberReader->readLine();
     
 }
 
@@ -275,7 +281,7 @@ nextLine= lineNumberReader.readLine();
                         if(lineNumberReader != 
                                     nullptr
                                 )
-                        lineNumberReader.close();
+                        lineNumberReader->close();
                                 
 
          }
@@ -288,7 +294,7 @@ nextLine= lineNumberReader.readLine();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuHashMap.get(CpuInfo::PROCESSOR);
+                        return this->cpuHashMap->get(CpuInfo::PROCESSOR);
     
 }
 
@@ -298,7 +304,7 @@ nextLine= lineNumberReader.readLine();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuHashMap.get(CpuInfo::VENDORID);
+                        return this->cpuHashMap->get(CpuInfo::VENDORID);
     
 }
 
@@ -308,7 +314,7 @@ nextLine= lineNumberReader.readLine();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuHashMap.get(CpuInfo::CPUFAMILY);
+                        return this->cpuHashMap->get(CpuInfo::CPUFAMILY);
     
 }
 
@@ -318,7 +324,7 @@ nextLine= lineNumberReader.readLine();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuHashMap.get(CpuInfo::MODEL);
+                        return this->cpuHashMap->get(CpuInfo::MODEL);
     
 }
 
@@ -328,7 +334,7 @@ nextLine= lineNumberReader.readLine();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuHashMap.get(CpuInfo::MODELNAME);
+                        return this->cpuHashMap->get(CpuInfo::MODELNAME);
     
 }
 
@@ -338,7 +344,7 @@ nextLine= lineNumberReader.readLine();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuHashMap.get(CpuInfo::STEPPING);
+                        return this->cpuHashMap->get(CpuInfo::STEPPING);
     
 }
 
@@ -348,7 +354,7 @@ nextLine= lineNumberReader.readLine();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuHashMap.get(CpuInfo::CPUMHZ);
+                        return this->cpuHashMap->get(CpuInfo::CPUMHZ);
     
 }
 
@@ -358,12 +364,12 @@ nextLine= lineNumberReader.readLine();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuHashMap.get(CpuInfo::CACHESIZE);
+                        return this->cpuHashMap->get(CpuInfo::CACHESIZE);
     
 }
 
 
-    public: bool compareTo(CpuInterface cpuInterface){
+    public: bool compareTo(CpuInterface* cpuInterface){
 
 
 
@@ -373,7 +379,7 @@ nextLine= lineNumberReader.readLine();
 }
 
 
-    public: bool compareTo(HardwareComponentInterface componentInterface){
+    public: bool compareTo(HardwareComponentInterface* componentInterface){
 
 
 
@@ -385,49 +391,49 @@ nextLine= lineNumberReader.readLine();
 
     public: std::string toString(){
 
-    CommonLabels commonLabels = CommonLabels::getInstance();;
+    CommonLabels* commonLabels = CommonLabels::getInstance();;
     
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
-    StringMaker stringMaker = StringMaker();;
+    StringMaker* stringMaker = new StringMaker();;
     
-stringMaker.append(CpuInfo::PROCESSOR.toString()).append(commonLabels.COLON_SEP).append(this->getProcessor());
+stringMaker->append(CpuInfo::PROCESSOR.toString())->append(commonLabels->COLON_SEP)->append(this->getProcessor());
     
-stringMaker.append(commonSeps.NEW_LINE);
+stringMaker->append(commonSeps->NEW_LINE);
     
-stringMaker.append(CpuInfo::VENDORID.toString()).append(commonLabels.COLON_SEP).append(this->getVendorId());
+stringMaker->append(CpuInfo::VENDORID.toString())->append(commonLabels->COLON_SEP)->append(this->getVendorId());
     
-stringMaker.append(commonSeps.NEW_LINE);
+stringMaker->append(commonSeps->NEW_LINE);
     
-stringMaker.append(CpuInfo::CPUFAMILY.toString()).append(commonLabels.COLON_SEP).append(this->getCpuFamily());
+stringMaker->append(CpuInfo::CPUFAMILY.toString())->append(commonLabels->COLON_SEP)->append(this->getCpuFamily());
     
-stringMaker.append(commonSeps.NEW_LINE);
+stringMaker->append(commonSeps->NEW_LINE);
     
-stringMaker.append(CpuInfo::MODEL.toString()).append(commonLabels.COLON_SEP).append(this->getModel());
+stringMaker->append(CpuInfo::MODEL.toString())->append(commonLabels->COLON_SEP)->append(this->getModel());
     
-stringMaker.append(commonSeps.NEW_LINE);
+stringMaker->append(commonSeps->NEW_LINE);
     
-stringMaker.append(CpuInfo::MODELNAME.toString()).append(commonLabels.COLON_SEP).append(this->getModelName());
+stringMaker->append(CpuInfo::MODELNAME.toString())->append(commonLabels->COLON_SEP)->append(this->getModelName());
     
-stringMaker.append(commonSeps.NEW_LINE);
+stringMaker->append(commonSeps->NEW_LINE);
     
-stringMaker.append(CpuInfo::STEPPING.toString()).append(commonLabels.COLON_SEP).append(this->getStepping());
+stringMaker->append(CpuInfo::STEPPING.toString())->append(commonLabels->COLON_SEP)->append(this->getStepping());
     
-stringMaker.append(commonSeps.NEW_LINE);
+stringMaker->append(commonSeps->NEW_LINE);
     
-stringMaker.append(CpuInfo::CPUMHZ.toString()).append(commonLabels.COLON_SEP).append(this->getCpuSpeed());
+stringMaker->append(CpuInfo::CPUMHZ.toString())->append(commonLabels->COLON_SEP)->append(this->getCpuSpeed());
     
-stringMaker.append(commonSeps.NEW_LINE);
+stringMaker->append(commonSeps->NEW_LINE);
     
-stringMaker.append(CpuInfo::CACHESIZE.toString()).append(commonLabels.COLON_SEP).append(this->getCacheSize());
+stringMaker->append(CpuInfo::CACHESIZE.toString())->append(commonLabels->COLON_SEP)->append(this->getCacheSize());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringMaker.toString();;
+                        return stringMaker->toString();;
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/layer/AllBinaryLayer.h>
 
       
@@ -51,11 +57,11 @@
         
 class LayerManagerEvent: public AllBinaryEventObject {
 
-    private: AllBinaryLayer layerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer* layerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
     private: std::string crud;
 
-public: LayerManagerEvent(LayerManager layerManager, std::string crud) : AllBinaryEventObject(layerManager){
+public: LayerManagerEvent(LayerManager* layerManager, std::string crud) : AllBinaryEventObject(layerManager){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -67,7 +73,7 @@ this->crud= crud;
 }
 
 
-    public: AllBinaryLayer getLayerInterface(){
+    public: AllBinaryLayer* getLayerInterface(){
 
 
 
@@ -77,7 +83,7 @@ this->crud= crud;
 }
 
 
-    public: void setLayerInterface(AllBinaryLayer layerInterface){
+    public: void setLayerInterface(AllBinaryLayer* layerInterface){
 this->layerInterface= layerInterface;
     
 }
@@ -85,23 +91,23 @@ this->layerInterface= layerInterface;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("LayerManagerEvent: \n");
+stringBuffer->append("LayerManagerEvent: \n");
     
-stringBuffer.append("LayerInterface: ");
+stringBuffer->append("LayerInterface: ");
     
-stringBuffer.append(this->getLayerInterface().toString());
+stringBuffer->append(this->getLayerInterface()->toString());
     
-stringBuffer.append("\nCRUD: ");
+stringBuffer->append("\nCRUD: ");
     
-stringBuffer.append(this->crud.toString());
+stringBuffer->append(this->crud.toString());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

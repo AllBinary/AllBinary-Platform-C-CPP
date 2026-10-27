@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGS_MULTIPARTREQUESTPARAMFORWARDTAG_H
         #define ADMIN_TAGS_MULTIPARTREQUESTPARAMFORWARDTAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -74,8 +80,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ParentInventoryTagHelper.h"
-#include "AbTagData.h"
+        #include "admin/tags/ParentInventoryTagHelper.h"
+#include "admin/tags/AbTagData.h"
 
 class MultipartRequestParamForwardTag: public CustomTagSupport {
 
@@ -83,13 +89,13 @@ class MultipartRequestParamForwardTag: public CustomTagSupport {
 
     private: std::string command;
 
-    private: BasicArrayList paramVector;
+    private: BasicArrayList* paramVector;
 
     public: void setPage(std::string page);
 
     public: void setCommand(std::string command);
 
-    public: void setParamVector(BasicArrayList paramVector);
+    public: void setParamVector(BasicArrayList* paramVector);
 
                 //@Throws(JspTagException.constructor)
             

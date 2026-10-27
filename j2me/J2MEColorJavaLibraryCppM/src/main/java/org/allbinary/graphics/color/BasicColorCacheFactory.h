@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORCACHEFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORCACHEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -49,25 +55,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicColor.h"
-#include "BasicColorFactory.h"
+        #include "org/allbinary/graphics/color/BasicColor.h"
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
 
 class BasicColorCacheFactory
             : public Object
          {
 
-    private: static BasicColorCacheFactory instance() { return BasicColorCacheFactory(); }
+    private: static BasicColorCacheFactory* instance() { static std::unique_ptr<BasicColorCacheFactory> value(new BasicColorCacheFactory()); return value.get(); }
 
-    public: static BasicColorCacheFactory getInstance();
+    public: static BasicColorCacheFactory* getInstance();
 
-    private: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
+    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
 
 private: BasicColorCacheFactory();
 
-    public: void add(BasicColor basicDefaultColor);
+    public: void add(BasicColor* basicDefaultColor);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: BasicColor getAndOrCreate(Integer integer);
+    public: BasicColor* getAndOrCreate(int32_t integer);
 
 };
 

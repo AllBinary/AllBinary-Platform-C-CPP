@@ -4,6 +4,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -29,14 +37,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Canvas.h"
-#include "Command.h"
-#include "CommandListener.h"
-#include "Graphics.h"
+        #include "javax/microedition/lcdui/Canvas.h"
+#include "javax/microedition/lcdui/Command.h"
+#include "javax/microedition/lcdui/CommandListener.h"
+#include "javax/microedition/lcdui/Graphics.h"
 
 class NullCanvas: public Canvas {
 
-    public: static const NullCanvas NULL_CANVAS = NullCanvas();
+    public: static NullCanvas* NULL_CANVAS() { static std::unique_ptr<NullCanvas> value(new NullCanvas()); return value.get(); }
 
 public: NullCanvas(){
 }
@@ -50,29 +58,29 @@ public: NullCanvas(){
 }
 
 
-    public: Stack<Object*> getCommandStack(){
+    public: Stack<Object*>* getCommandStack(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: bool isCommand(Command command){
+    public: bool isCommand(Command* command){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: void addCommand(Command command){
+    public: void addCommand(Command* command){
 }
 
 
-    public: void removeCommand(Command command){
+    public: void removeCommand(Command* command){
 }
 
 
@@ -80,15 +88,15 @@ public: NullCanvas(){
 }
 
 
-    public: void setCommandListener(CommandListener l){
+    public: void setCommandListener(CommandListener* l){
 }
 
 
-    public: CommandListener getCustomCommandListener(){
+    public: CommandListener* getCustomCommandListener(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -97,7 +105,7 @@ public: NullCanvas(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -120,7 +128,7 @@ public: NullCanvas(){
 }
 
 
-    protected: void paint(Graphics graphics){
+    protected: void paint(Graphics* graphics){
 }
 
 
@@ -132,7 +140,7 @@ public: NullCanvas(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

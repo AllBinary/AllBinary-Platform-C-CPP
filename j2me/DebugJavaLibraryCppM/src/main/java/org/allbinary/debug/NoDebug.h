@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DEBUG_NODEBUG_H
         #define ORG_ALLBINARY_DEBUG_NODEBUG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,15 +47,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DebugInterface.h"
+        #include "org/allbinary/debug/DebugInterface.h"
 
 class NoDebug
             : public Object
-        : public DebugInterface {
+        , public DebugInterface {
 
-    private: static DebugInterface SINGLETON = NoDebug();
+    private: static inline DebugInterface* SINGLETON = new NoDebug();
 
-    public: static DebugInterface getInstance();
+    public: static DebugInterface* getInstance();
 
     public: void start();
 

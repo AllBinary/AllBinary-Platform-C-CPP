@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -59,53 +65,53 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapCellTypeFactory.h"
-#include "GeographicMapCellType.h"
-#include "GeographicMapCellPosition.h"
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellTypeFactory.h"
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellType.h"
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
 
 class SimpleGeographicMap
             : public Object
          {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: Integer id;
+    private: int32_t id;
 
     private: std::string name;
 
     protected: std::vector<int32_t> cellTypeIdToGeographicMapCellType;
 
-    private: AllBinaryTiledLayer tiledLayer;
+    private: AllBinaryTiledLayer* tiledLayer;
 
-    private: BasicColor foregroundBasicColor = BasicColorFactory::getInstance().NULL_COLOR;
+    private: BasicColor* foregroundBasicColor = BasicColorFactory::getInstance()->NULL_COLOR;
 
-    private: BasicColor backgroundBasicColor = BasicColorFactory::getInstance().NULL_COLOR;
+    private: BasicColor* backgroundBasicColor = BasicColorFactory::getInstance()->NULL_COLOR;
 
-public: SimpleGeographicMap(Integer id, std::string name, std::vector<int32_t> cellTypeIdToGeographicMapCellType, AllBinaryTiledLayer tiledLayer, BasicColor foregroundBasicColor, BasicColor backgroundBasicColor);
+public: SimpleGeographicMap(int32_t id, std::string name, std::vector<int32_t> cellTypeIdToGeographicMapCellType, AllBinaryTiledLayer* tiledLayer, BasicColor* foregroundBasicColor, BasicColor* backgroundBasicColor);
 
-    public: Integer getId();
+    public: int32_t getId();
 
     public: std::string getName();
 
     public: void reset();
 
-    public: AllBinaryTiledLayer getAllBinaryTiledLayer();
+    public: AllBinaryTiledLayer* getAllBinaryTiledLayer();
 
-    private: const GeographicMapCellTypeFactory geographicMapCellTypeFactory = GeographicMapCellTypeFactory::getInstance();
+    private: GeographicMapCellTypeFactory* geographicMapCellTypeFactory = GeographicMapCellTypeFactory::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellType getCellTypeAt(GeographicMapCellPosition cellPosition);
+    public: GeographicMapCellType* getCellTypeAt(GeographicMapCellPosition* cellPosition);
 
     public: int32_t getCellTypeFromMapCellTypeInt(int32_t cellTypeId);
 
-    public: BasicColor getForegroundBasicColor();
+    public: BasicColor* getForegroundBasicColor();
 
-    private: void setForegroundBasicColor(BasicColor foregroundBasicColor);
+    private: void setForegroundBasicColor(BasicColor* foregroundBasicColor);
 
-    public: BasicColor getBackgroundBasicColor();
+    public: BasicColor* getBackgroundBasicColor();
 
-    private: void setBackgroundBasicColor(BasicColor backgroundBasicColor);
+    private: void setBackgroundBasicColor(BasicColor* backgroundBasicColor);
 
 };
 

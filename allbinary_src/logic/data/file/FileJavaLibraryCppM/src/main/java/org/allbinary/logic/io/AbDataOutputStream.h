@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_ABDATAOUTPUTSTREAM_H
         #define ORG_ALLBINARY_LOGIC_IO_ABDATAOUTPUTSTREAM_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/io/DataOutputStream.h>
 
       
@@ -48,7 +54,7 @@
         
 class AbDataOutputStream: public DataOutputStream {
 
-public: AbDataOutputStream(OutputStream out);
+public: AbDataOutputStream(OutputStream* out);
 
 };
 

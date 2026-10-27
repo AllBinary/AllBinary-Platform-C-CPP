@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESDEVICEIMAGETRANSLATE_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESDEVICEIMAGETRANSLATE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/khronos/opengles/GL10.h>
 
       
@@ -42,8 +48,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLESImageTranslate.h"
-#include "OpenGLESImage.h"
+        #include "org/allbinary/image/opengles/OpenGLESImageTranslate.h"
+#include "org/allbinary/image/opengles/OpenGLESImage.h"
 
 class OpenGLESDeviceImageTranslate: public OpenGLESImageTranslate {
 
@@ -55,9 +61,9 @@ class OpenGLESDeviceImageTranslate: public OpenGLESImageTranslate {
 
     public: float translateY2 = 0.0;
 
-    public: void translate(GL10 gl, OpenGLESImage openGLESImage, float x, float y);
+    public: void translate(GL10* gl, OpenGLESImage* openGLESImage, float x, float y);
 
-    public: void translate2(GL10 gl, OpenGLESImage openGLESImage);
+    public: void translate2(GL10* gl, OpenGLESImage* openGLESImage);
 
 };
 

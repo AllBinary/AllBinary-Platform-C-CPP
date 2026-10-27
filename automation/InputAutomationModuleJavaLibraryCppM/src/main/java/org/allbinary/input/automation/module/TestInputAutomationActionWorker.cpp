@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Thread.h"
@@ -63,23 +71,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbstractInputAutomationWorker.h"
-#include "InputAutomationActionInterface.h"
+        #include "org/allbinary/input/automation/module/AbstractInputAutomationWorker.h"
+#include "org/allbinary/input/automation/module/InputAutomationActionInterface.h"
 
 class TestInputAutomationActionWorker: public AbstractInputAutomationWorker {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: int32_t sleep;
 
-public: TestInputAutomationActionWorker(int32_t sleep, InputAutomationActionInterface inputAutomationActionInterface, ImageComparatorConstraintsInterface imageComparatorConstraintsInterface, MotionRectangleConstraintsInterface motionRectangleConstraintsInterface) : AbstractInputAutomationWorker(inputAutomationActionInterface){
+public: TestInputAutomationActionWorker(int32_t sleep, InputAutomationActionInterface* inputAutomationActionInterface, ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface, MotionRectangleConstraintsInterface* motionRectangleConstraintsInterface) : AbstractInputAutomationWorker(inputAutomationActionInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil.putF("BasicTestAttackWorder", this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF("BasicTestAttackWorder", this, this->commonStrings.CONSTRUCTOR);
     
 this->sleep= sleep;
     
@@ -97,16 +105,16 @@ Thread::sleep(2000);
                 //@Throws(Exception.constructor)
             
     public: void process(){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.PROCESS);
+this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.PROCESS);
     
 
-    ABHashtable<Object*, Object*> hashtable = InputRobotFactory::getInstance().get();;
+    ABHashtable<Object*, Object*>* hashtable = InputRobotFactory::getInstance()->get();;
     
 
-    Set set = hashtable.keys();;
+    Set* set = hashtable->keys();;
     
 
-    std::vector<Object*> inputTypeNameArray = set.toArray();;
+    std::vector<Object*> inputTypeNameArray = set->toArray();;
     
 
     int32_t size = inputTypeNameArray.size();;
@@ -122,7 +130,7 @@ this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.PROCESS)
     std::string inputTypeNameString = inputTypeNameArray[index];;
     
 
-    InputRobotInterface robot = hashtable.get(inputTypeNameString);;
+    InputRobotInterface* robot = dynamic_cast<InputRobotInterface*>(hashtable->get(inputTypeNameString));;
     
 
                         if(this->sleep > 0)

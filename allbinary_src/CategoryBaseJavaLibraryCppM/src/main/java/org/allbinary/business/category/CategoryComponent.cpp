@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
@@ -53,12 +59,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryView.h"
-#include "CategoryInterface.h"
+        #include "org/allbinary/business/category/CategoryView.h"
+#include "org/allbinary/business/category/CategoryInterface.h"
 
 class CategoryComponent: public CategoryView, public TransformInterface {
 
-public: CategoryComponent(CategoryInterface categoryInterface) : CategoryView(categoryInterface){
+public: CategoryComponent(CategoryInterface* categoryInterface) : CategoryView(categoryInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -80,7 +86,7 @@ public: CategoryComponent(CategoryInterface categoryInterface) : CategoryView(ca
 }
 
 
-    public: TransformDocumentInterface getTransformDocumentInterface(){
+    public: TransformDocumentInterface* getTransformDocumentInterface(){
 
 
 
@@ -92,7 +98,7 @@ public: CategoryComponent(CategoryInterface categoryInterface) : CategoryView(ca
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface getTransformInfoInterface(){
+    public: TransformInfoInterface* getTransformInfoInterface(){
 
 
 
@@ -102,17 +108,17 @@ public: CategoryComponent(CategoryInterface categoryInterface) : CategoryView(ca
 }
 
 
-    public: void setTransformDocumentInterface(TransformDocumentInterface viewDocumentInterface){
+    public: void setTransformDocumentInterface(TransformDocumentInterface* viewDocumentInterface){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Document toXmlDoc(){
+    public: Document* toXmlDoc(){
 
-    Document document = DomDocumentHelper::create();;
+    Document* document = DomDocumentHelper::create();;
     
-document.appendChild(CategoryView(this->getCategoryInterface()).toXmlNode(document));
+document->appendChild((new CategoryView(this->getCategoryInterface()))->toXmlNode(document));
     
 
 

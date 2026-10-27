@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYVALIDATIONVIEW_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYVALIDATIONVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/control/validate/ValidationInterface.h>
@@ -50,24 +56,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreThemeCategoryView.h"
-#include "StoreThemeCategoryInterface.h"
+        #include "org/allbinary/business/category/store/theme/StoreThemeCategoryView.h"
+#include "org/allbinary/business/category/store/theme/StoreThemeCategoryInterface.h"
 
 class StoreThemeCategoryValidationView: public StoreThemeCategoryView, public ValidationInterface {
 
-public: StoreThemeCategoryValidationView(StoreThemeCategoryInterface categoryInterface);
+public: StoreThemeCategoryValidationView(StoreThemeCategoryInterface* categoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Boolean isValid();
+    public: bool isValid();
 
                 //@Throws(Exception.constructor)
             
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
                 //@Throws(Exception.constructor)
             

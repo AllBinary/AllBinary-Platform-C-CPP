@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -66,13 +72,13 @@
         
 class NumberOnOwnGroupSequenceAI: public SequenceAI {
 
-    private: std::vector<Integer> numberOnSameTeam;
+    private: std::vector<int32_t> numberOnSameTeam;
 
-public: NumberOnOwnGroupSequenceAI(std::vector<Integer> numberOnSameTeam, std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: NumberOnOwnGroupSequenceAI(std::vector<int32_t> numberOnSameTeam, std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterface, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager);
 
 };
 

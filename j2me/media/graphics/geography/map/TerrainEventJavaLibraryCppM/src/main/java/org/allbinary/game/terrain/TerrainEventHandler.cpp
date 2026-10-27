@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/StdUtil.h>
@@ -62,23 +70,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TerrainEventListener.h"
-#include "TerrainEvent.h"
-#include "TerrainEventListenerInterface.h"
+        #include "org/allbinary/game/terrain/TerrainEventListener.h"
+#include "org/allbinary/game/terrain/TerrainEvent.h"
+#include "org/allbinary/game/terrain/TerrainEventListenerInterface.h"
 
 class TerrainEventHandler: public BasicEventHandler {
 
-    private: static ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().NULL_TABLE;
+    private: static inline ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->NULL_TABLE;
 
     public: static void init(){
-TerrainEventHandler::hashtable= StdUtil::getInstance().createHashtable();
+TerrainEventHandler::hashtable= StdUtil::getInstance()->createHashtable();
     
 }
 
 
-    public: static TerrainEventHandler getInstance(Object* anyType){
+    public: static TerrainEventHandler* getInstance(Object* anyType){
 
-    Object* eventHandlerCanBeNull = TerrainEventHandler::hashtable.get(anyType);;
+    Object* eventHandlerCanBeNull = TerrainEventHandler::hashtable->get(anyType);;
     
 
                         if(eventHandlerCanBeNull == 
@@ -86,9 +94,9 @@ TerrainEventHandler::hashtable= StdUtil::getInstance().createHashtable();
                                 )
                         
                                     {
-                                    eventHandlerCanBeNull= TerrainEventHandler();
+                                    eventHandlerCanBeNull= new TerrainEventHandler();
     
-TerrainEventHandler::hashtable.put(anyType, eventHandlerCanBeNull);
+TerrainEventHandler::hashtable->put(anyType, eventHandlerCanBeNull);
     
 
                                     }
@@ -97,23 +105,23 @@ TerrainEventHandler::hashtable.put(anyType, eventHandlerCanBeNull);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *dynamic_cast<TerrainEventHandler*>(eventHandlerCanBeNull);
+                        return dynamic_cast<TerrainEventHandler*>(eventHandlerCanBeNull);
     
 }
 
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: TerrainEventHandler(){
 }
 
 
-    public: void addListener(TerrainEventListener terrainEventListener){
+    public: void addListener(TerrainEventListener* terrainEventListener){
 
-                        if(!this->list.contains(terrainEventListener))
+                        if(!this->list->contains(terrainEventListener))
                         
                                     {
-                                    this->list.add(terrainEventListener);
+                                    this->list->add(terrainEventListener);
     
 
                                     }
@@ -122,15 +130,15 @@ private: TerrainEventHandler(){
 
 
     public: void removeAllListeners(){
-this->list.clear();
+this->list->clear();
     
 super.removeAllListeners();
     
 }
 
 
-    public: void removeListener(EventListenerInterface eventListenerInterface){
-this->list.remove(eventListenerInterface);
+    public: void removeListener(EventListenerInterface* eventListenerInterface){
+this->list->remove(eventListenerInterface);
     
 super.removeListener(eventListenerInterface);
     
@@ -139,26 +147,26 @@ super.removeListener(eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(AllBinaryEventObject eventObject){
+    public: void fireEvent(AllBinaryEventObject* eventObject){
 
 
 
 
                         for (
-    int32_t index = this->list.size();--index >= 0; )
+    int32_t index = this->list->size();--index >= 0; )
         {
 
         try {
             
-    TerrainEventListener terrainEventListener = this->list.get(index);;
+    TerrainEventListener* terrainEventListener = dynamic_cast<TerrainEventListener*>(this->list->get(index));;
     
-terrainEventListener.onTerrainEvent(eventObject);
+terrainEventListener->onTerrainEvent(dynamic_cast<TerrainEvent*>(eventObject));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
@@ -171,11 +179,11 @@ super.fireEvent(eventObject);
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
 
-    TerrainEventListenerInterface terrainEventListenerInterface = eventListenerInterface;;
+    TerrainEventListenerInterface* terrainEventListenerInterface = dynamic_cast<TerrainEventListenerInterface*>(eventListenerInterface);;
     
-terrainEventListenerInterface.onTerrainEvent(eventObject);
+terrainEventListenerInterface->onTerrainEvent(dynamic_cast<TerrainEvent*>(eventObject));
     
 }
 

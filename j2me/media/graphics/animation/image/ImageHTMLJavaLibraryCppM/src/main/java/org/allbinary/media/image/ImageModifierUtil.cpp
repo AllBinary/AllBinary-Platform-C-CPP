@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -60,9 +66,9 @@ class ImageModifierUtil
             : public Object
          {
 
-    private: static ImageModifierUtil instance() { return ImageModifierUtil(); }
+    private: static ImageModifierUtil* instance() { static std::unique_ptr<ImageModifierUtil> value(new ImageModifierUtil()); return value.get(); }
 
-    public: static ImageModifierUtil getInstanceOrCreate(){
+    public: static ImageModifierUtil* getInstanceOrCreate(){
 
 
 
@@ -72,19 +78,19 @@ class ImageModifierUtil
 }
 
 
-    public: void setColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor){
+    public: void setColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor){
 }
 
 
-    public: void changeColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor){
+    public: void changeColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor){
 }
 
 
-    public: void setAlpha(Image originalImage, Image image, int32_t imageIndex, int32_t alphaInt){
+    public: void setAlpha(Image* originalImage, Image* image, int32_t imageIndex, int32_t alphaInt){
 }
 
 
-    public: std::vector<Image> getImageArray(std::vector<Image> originalImageArray){
+    public: std::vector<Image*> getImageArray(std::vector<Image*> originalImageArray){
 
 
 
@@ -94,7 +100,7 @@ class ImageModifierUtil
 }
 
 
-    public: void handleImage(std::vector<Image> imageArray, int32_t index, Image image){
+    public: void handleImage(std::vector<Image*> imageArray, int32_t index, Image* image){
 }
 
 

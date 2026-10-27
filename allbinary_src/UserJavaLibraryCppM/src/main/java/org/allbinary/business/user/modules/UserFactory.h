@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_USERFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_USERFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,17 +58,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "User.h"
+        #include "org/allbinary/business/user/modules/User.h"
 
 class UserFactory
             : public Object
-        : public UserFactoryInterface {
+        , public UserFactoryInterface {
 
 public: UserFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface getInstance(HashMap<Object*, Object*> hashMap);
+    public: UserInterface* getInstance(HashMap<Object*, Object*>* hashMap);
 
 };
 

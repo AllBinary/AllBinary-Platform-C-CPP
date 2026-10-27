@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEALWAYSPICKUPNEVERCOLLIDEBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEALWAYSPICKUPNEVERCOLLIDEBEHAVIOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/layer/AllBinaryLayer.h>
 
       
@@ -42,15 +48,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CollidableNeverCollideBehavior.h"
-#include "CollisionTypeFactory.h"
-#include "CollisionType.h"
+        #include "org/allbinary/game/collision/CollidableNeverCollideBehavior.h"
+#include "org/allbinary/game/collision/CollisionTypeFactory.h"
+#include "org/allbinary/game/collision/CollisionType.h"
 
 class CollidableAlwaysPickupNeverCollideBehavior: public CollidableNeverCollideBehavior {
 
 : CollidableAlwaysPickupNeverCollideBehavior();
 
-    public: CollisionType getCollisionTypeWith(AllBinaryLayer layerInterface);
+    public: CollisionType* getCollisionTypeWith(AllBinaryLayer* layerInterface);
 
 };
 

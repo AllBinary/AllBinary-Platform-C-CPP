@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -51,29 +57,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CellPosition.h"
+        #include "org/allbinary/graphics/CellPosition.h"
 
 class CellPositionFactory
             : public Object
          {
 
-    private: static CellPositionFactory SINGLETON = CellPositionFactory();
+    private: static CellPositionFactory* SINGLETON() { static std::unique_ptr<CellPositionFactory> value(new CellPositionFactory()); return value.get(); }
 
-    public: static CellPositionFactory getInstance(){
+    public: static CellPositionFactory* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CellPositionFactory::SINGLETON;
+                        return CellPositionFactory::SINGLETON();
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: const CellPosition NONE = CellPosition( -1,  -1,  -1,  -1);
+    public: CellPosition* NONE = new CellPosition( -1,  -1,  -1,  -1);
 
-    private: std::vector<std::vector<CellPosition>> cellPositionArray = std::vector<std::vector<CellPosition>>(0, std::vector<CellPosition>(0));
+    private: std::vector<std::vector<CellPosition*>> cellPositionArray = std::vector<std::vector<CellPosition*>>(0, std::vector<CellPosition*>(0));
 
     private: int32_t columns= 0;
 
@@ -85,22 +91,22 @@ private: CellPositionFactory(){
 
     public: void init(int32_t columns, int32_t rows){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Init: columns: ");
+stringBuffer->append("Init: columns: ");
     
-stringBuffer.appendint(columns);
+stringBuffer->appendint(columns);
     
-stringBuffer.append(" rows: ");
+stringBuffer->append(" rows: ");
     
-stringBuffer.appendint(rows);
+stringBuffer->appendint(rows);
     
-this->logUtil.putF(stringBuffer.toString(), this, commonStrings.INIT);
+this->logUtil->putF(stringBuffer->toString(), this, commonStrings->INIT);
     
-this->cellPositionArray= std::vector<std::vector<CellPosition>>(columns, std::vector<CellPosition>(rows));
+this->cellPositionArray= std::vector<std::vector<CellPosition*>>(columns, std::vector<CellPosition*>(rows));
     
 this->columns= columns;
     
@@ -129,7 +135,7 @@ this->createInstance(column, row);
 }
 
 
-    public: CellPosition getInstanceColRow(int32_t i_column, int32_t i_row){
+    public: CellPosition* getInstanceColRow(int32_t i_column, int32_t i_row){
 
         try {
             
@@ -140,12 +146,12 @@ this->createInstance(column, row);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(StringMaker().append("columns: ").appendint(this->getColumns()).append(" rows: ").appendint(this->getRows()).append(" col: ").appendint(i_column).append(" row: ").appendint(i_row).toString(), this, commonStrings.GET_INSTANCE, e);
+this->logUtil->put((new StringMaker())->append("columns: ")->appendint(this->getColumns())->append(" rows: ")->appendint(this->getRows())->append(" col: ")->appendint(i_column)->append(" row: ")->appendint(i_row)->toString(), this, commonStrings->GET_INSTANCE, &e);
     
 
 
@@ -158,9 +164,9 @@ this->logUtil.put(StringMaker().append("columns: ").appendint(this->getColumns()
 }
 
 
-    public: CellPosition createInstance(int32_t i_column, int32_t i_row){
+    public: CellPosition* createInstance(int32_t i_column, int32_t i_row){
 
-    CellPosition cellPositionCanBeNull = this->cellPositionArray[i_column][i_row];;
+    CellPosition* cellPositionCanBeNull = this->cellPositionArray[i_column][i_row];;
     
 
                         if(cellPositionCanBeNull == 
@@ -168,7 +174,7 @@ this->logUtil.put(StringMaker().append("columns: ").appendint(this->getColumns()
                                 )
                         
                                     {
-                                    cellPositionCanBeNull= CellPosition(i_column, i_row, this->columns, this->rows);
+                                    cellPositionCanBeNull= new CellPosition(i_column, i_row, this->columns, this->rows);
     
 this->cellPositionArray[i_column][i_row]= cellPositionCanBeNull;
     

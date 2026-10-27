@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTP_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTP_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -83,47 +89,47 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfo.h"
-#include "TransformInfoHttpInterface.h"
-#include "TransformInfoData.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfo.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfoHttpInterface.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfoData.h"
 
 class TransformInfoHttp: public TransformInfo, public TransformInfoHttpInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: AbContext abContext;
+    private: AbContext* abContext;
 
-public: TransformInfoHttp(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext, bool crud);
+public: TransformInfoHttp(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext, bool crud);
 
-public: TransformInfoHttp(HttpServletRequest request, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
+public: TransformInfoHttp(HttpServletRequest* request, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext);
 
-public: TransformInfoHttp(HashMap<Object*, Object*> databaseHashMap, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
+public: TransformInfoHttp(HashMap<Object*, Object*>* databaseHashMap, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext);
 
-public: TransformInfoHttp(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
+public: TransformInfoHttp(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext);
 
-public: TransformInfoHttp(TransformInfoHttp parentViewOfThisTransformInfoInterface);
-
-                //@Throws(Exception.constructor)
-            
-    private: void set(HashMap<Object*, Object*> hashMap);
-
-    public: WeblisketSessionInterface getWeblisketSession();
-
-    public: PageContext getPageContext();
-
-    public: HashMap<Object*, Object*> getPropertiesHashMap();
+public: TransformInfoHttp(TransformInfoHttp* parentViewOfThisTransformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getTemplateFilePath();
+    private: void set(HashMap<Object*, Object*>* hashMap);
+
+    public: WeblisketSessionInterface* getWeblisketSession();
+
+    public: PageContext* getPageContext();
+
+    public: HashMap<Object*, Object*>* getPropertiesHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getObjectConfigFilePath();
+    public: AbPath* getTemplateFilePath();
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getDataFilePath();
+    public: AbPath* getObjectConfigFilePath();
+
+                //@Throws(Exception.constructor)
+            
+    public: AbPath* getDataFilePath();
 
 };
 

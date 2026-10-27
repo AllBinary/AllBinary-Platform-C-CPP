@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,20 +60,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryInterface.h"
-#include "CategoryView.h"
+        #include "org/allbinary/business/category/CategoryInterface.h"
+#include "org/allbinary/business/category/CategoryView.h"
 
 class CategoriesView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: CategoryInterface categoryInterface;
+    private: CategoryInterface* categoryInterface;
 
-public: CategoriesView(CategoryInterface categoryInterface);
+public: CategoriesView(CategoryInterface* categoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

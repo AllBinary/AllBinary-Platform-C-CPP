@@ -20,6 +20,12 @@
 
             #include <hilog/log.h>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -51,20 +57,20 @@
         
 class NullParcelable
             : public Object
-        : public Parcelable {
+        , public Parcelable {
 
-    public: static const NullParcelable NULL_PARCELABLE = NullParcelable();
+    public: static NullParcelable* NULL_PARCELABLE() { static std::unique_ptr<NullParcelable> value(new NullParcelable()); return value.get(); }
 
     public: int32_t describeContents(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: void writeToParcel(Parcel dest, int32_t flags){
+    public: void writeToParcel(Parcel* dest, int32_t flags){
 }
 
 

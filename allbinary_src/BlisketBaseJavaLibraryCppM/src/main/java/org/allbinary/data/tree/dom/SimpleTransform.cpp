@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,17 +70,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "XslHelper.h"
+        #include "org/allbinary/data/tree/dom/XslHelper.h"
 
 class SimpleTransform
             : public Object
          {
 
-    private: AbPath xsltFilePath;
+    private: AbPath* xsltFilePath;
 
-    private: AbPath dataFilePath;
+    private: AbPath* dataFilePath;
 
-public: SimpleTransform(AbPath xsltFilePath, AbPath dataFilePath){
+public: SimpleTransform(AbPath* xsltFilePath, AbPath* dataFilePath){
 this->xsltFilePath= xsltFilePath;
     
 this->dataFilePath= dataFilePath;
@@ -86,13 +92,13 @@ this->dataFilePath= dataFilePath;
             
     public: std::string transform(){
 
-    AbFileLocalInputStream inputStream = AbFileLocalInputStream(AbFile::createAbFileFromAbPath(this->xsltFilePath));;
+    AbFileLocalInputStream* inputStream = new AbFileLocalInputStream(AbFile::createAbFileFromAbPath(this->xsltFilePath));;
     
 
-    Document document = DomDocumentHelper::create(AbFileLocalInputStream(AbFile::createAbFileFromAbPath(this->dataFilePath)));;
+    Document* document = DomDocumentHelper::create(new AbFileLocalInputStream(AbFile::createAbFileFromAbPath(this->dataFilePath)));;
     
 
-    std::string result = XslHelper::getInstance().translate(StreamSource(inputStream), StreamSource(StringBufferInputStream(XmlDocumentHelper::toString(document))));;
+    std::string result = XslHelper::getInstance()->translate(new StreamSource(inputStream), new StreamSource(new StringBufferInputStream(XmlDocumentHelper::toString(document))));;
     
 
 

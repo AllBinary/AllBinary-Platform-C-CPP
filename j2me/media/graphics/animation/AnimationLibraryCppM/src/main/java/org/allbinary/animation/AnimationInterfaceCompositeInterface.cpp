@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,11 +42,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Animation.h"
+        #include "org/allbinary/animation/Animation.h"
 
 class AnimationInterfaceCompositeInterface {
 
-    Animation getAnimationInterface()
+    public: virtual Animation* getAnimationInterface() = 0;
 
 };
 

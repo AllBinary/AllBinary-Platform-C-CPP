@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_UNIFORMCAMERAPOSITIONOPENGLPROCESSOR_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_UNIFORMCAMERAPOSITIONOPENGLPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <javax/microedition/khronos/opengles/GL10.h>
 
       
@@ -42,14 +50,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLObject3dProcessor.h"
-#include "ShaderComposite.h"
+        #include "org/allbinary/graphics/opengles/shader/OpenGLObject3dProcessor.h"
+#include "org/allbinary/graphics/opengles/shader/ShaderComposite.h"
 
 class UniformCameraPositionOpenGLProcessor: public OpenGLObject3dProcessor {
 
-public: UniformCameraPositionOpenGLProcessor(ShaderComposite shaderComposite, int32_t handleIndex);
+public: UniformCameraPositionOpenGLProcessor(ShaderComposite* shaderComposite, int32_t handleIndex);
 
-    public: void process(GL10 gl, Object* anyType);
+    public: void process(GL10* gl, Object* anyType);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -71,8 +77,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ParentInventoryTagHelper.h"
-#include "AbTagData.h"
+        #include "admin/tags/ParentInventoryTagHelper.h"
+#include "admin/tags/AbTagData.h"
 
 class MultipartRequestParamForwardTag: public CustomTagSupport {
 
@@ -80,7 +86,7 @@ class MultipartRequestParamForwardTag: public CustomTagSupport {
 
     private: std::string command;
 
-    private: BasicArrayList paramVector;
+    private: BasicArrayList* paramVector;
 
     public: void setPage(std::string page){
 this->page= page;
@@ -94,7 +100,7 @@ this->command= command;
 }
 
 
-    public: void setParamVector(BasicArrayList paramVector){
+    public: void setParamVector(BasicArrayList* paramVector){
 this->paramVector= paramVector;
     
 }
@@ -106,19 +112,19 @@ this->paramVector= paramVector;
 
         try {
             
-    HelperTag parentTag = this->getParent();;
+    HelperTag* parentTag = dynamic_cast<HelperTag*>(this->getParent());;
     
-ParentInventoryTagHelper::getInstance().isValid(this, parentTag);
-    
-
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
-    
-hashMap.put(AbTagData::PARENT, parentTag);
+ParentInventoryTagHelper::getInstance()->isValid(this, parentTag);
     
 
-    MultipartRequestParamForwardHelper multipartRequestParamForwardHelper = MultipartRequestParamForwardHelper(parentTag, this->page, this->command, this->paramVector, this->pageContext);;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-multipartRequestParamForwardHelper.forward();
+hashMap->put(AbTagData::PARENT, parentTag);
+    
+
+    MultipartRequestParamForwardHelper* multipartRequestParamForwardHelper = new MultipartRequestParamForwardHelper(parentTag, this->page, this->command, this->paramVector, this->pageContext);;
+    
+multipartRequestParamForwardHelper->forward();
     
 
 
@@ -128,9 +134,9 @@ multipartRequestParamForwardHelper.forward();
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
-AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
     
 
 
@@ -141,9 +147,9 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 
@@ -152,7 +158,7 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
                         return Tag::SKIP_BODY;
     
 }
-*/
+
 }
 
 

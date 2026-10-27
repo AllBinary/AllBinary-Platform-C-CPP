@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -59,14 +65,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapCellPositionEvent.h"
-#include "GeographicMapCellPositionEventListenerInterface.h"
+        #include "org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEvent.h"
+#include "org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEventListenerInterface.h"
 
 class GeographicMapCellPositionEventHandler: public BasicEventHandler {
 
-    private: static GeographicMapCellPositionEventHandler instance = GeographicMapCellPositionEventHandler();
+    private: static GeographicMapCellPositionEventHandler* instance() { static std::unique_ptr<GeographicMapCellPositionEventHandler> value(new GeographicMapCellPositionEventHandler()); return value.get(); }
 
-    public: static GeographicMapCellPositionEventHandler getInstance(){
+    public: static GeographicMapCellPositionEventHandler* getInstance(){
 
 
 
@@ -76,18 +82,18 @@ class GeographicMapCellPositionEventHandler: public BasicEventHandler {
 }
 
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: GeographicMapCellPositionEventHandler(){
 }
 
 
-    public: void addListener(MiniMapLayer miniMapLayer){
+    public: void addListener(MiniMapLayer* miniMapLayer){
 
-                        if(!this->list.contains(miniMapLayer))
+                        if(!this->list->contains(miniMapLayer))
                         
                                     {
-                                    this->list.add(miniMapLayer);
+                                    this->list->add(miniMapLayer);
     
 
                                     }
@@ -96,15 +102,15 @@ private: GeographicMapCellPositionEventHandler(){
 
 
     public: void removeAllListeners(){
-this->list.clear();
+this->list->clear();
     
 super.removeAllListeners();
     
 }
 
 
-    public: void removeListener(EventListenerInterface eventListenerInterface){
-this->list.remove(eventListenerInterface);
+    public: void removeListener(EventListenerInterface* eventListenerInterface){
+this->list->remove(eventListenerInterface);
     
 super.removeListener(eventListenerInterface);
     
@@ -113,26 +119,26 @@ super.removeListener(eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(AllBinaryEventObject eventObject){
+    public: void fireEvent(AllBinaryEventObject* eventObject){
 
 
 
 
                         for (
-    int32_t index = this->list.size();--index >= 0; )
+    int32_t index = this->list->size();--index >= 0; )
         {
 
         try {
             
-    MiniMapLayer miniMapLayer = this->list.get(index);;
+    MiniMapLayer* miniMapLayer = dynamic_cast<MiniMapLayer*>(this->list->get(index));;
     
-miniMapLayer.onGeographicMapCellPositionEvent(eventObject);
+miniMapLayer->onGeographicMapCellPositionEvent(dynamic_cast<GeographicMapCellPositionEvent*>(eventObject));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
@@ -146,42 +152,42 @@ super.fireEvent(eventObject);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void fireRemoveEvent(AllBinaryEventObject eventObject){
+    public: void fireRemoveEvent(AllBinaryEventObject* eventObject){
 
-    BasicArrayList list = this->eventListenerInterfaceList;;
+    BasicArrayList* list = this->eventListenerInterfaceList;;
     
 
 
 
 
                         for (
-    int32_t index = this->list.size();--index >= 0; )
+    int32_t index = this->list->size();--index >= 0; )
         {
 
         try {
             
-    MiniMapLayer miniMapLayer = this->list.get(index);;
+    MiniMapLayer* miniMapLayer = dynamic_cast<MiniMapLayer*>(this->list->get(index));;
     
-miniMapLayer.onRemoveGeographicMapCellPositionEvent(eventObject);
+miniMapLayer->onRemoveGeographicMapCellPositionEvent(dynamic_cast<GeographicMapCellPositionEvent*>(eventObject));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
 }
 
 
-    EventListenerInterface eventListenerInterface;;
+    EventListenerInterface* eventListenerInterface;;
     
 
-    GeographicMapCellPositionEventListenerInterface geographicMapCellPositionEventListenerInterface;;
+    GeographicMapCellPositionEventListenerInterface* geographicMapCellPositionEventListenerInterface;;
     
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
 
@@ -192,17 +198,17 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance
         {
 
         try {
-            eventListenerInterface= list.get(index);
+            eventListenerInterface= dynamic_cast<EventListenerInterface*>(list->get(index));
     
-geographicMapCellPositionEventListenerInterface= (eventListenerInterface);
+geographicMapCellPositionEventListenerInterface= (dynamic_cast<GeographicMapCellPositionEventListenerInterface*>(eventListenerInterface));
     
-geographicMapCellPositionEventListenerInterface.onRemoveGeographicMapCellPositionEvent(eventObject);
+geographicMapCellPositionEventListenerInterface->onRemoveGeographicMapCellPositionEvent(dynamic_cast<GeographicMapCellPositionEvent*>(eventObject));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
@@ -213,11 +219,11 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
 
-    GeographicMapCellPositionEventListenerInterface geographicMapCellPositionEventListenerInterface = (eventListenerInterface);;
+    GeographicMapCellPositionEventListenerInterface* geographicMapCellPositionEventListenerInterface = (dynamic_cast<GeographicMapCellPositionEventListenerInterface*>(eventListenerInterface));;
     
-geographicMapCellPositionEventListenerInterface.onGeographicMapCellPositionEvent(eventObject);
+geographicMapCellPositionEventListenerInterface->onGeographicMapCellPositionEvent(dynamic_cast<GeographicMapCellPositionEvent*>(eventObject));
     
 }
 

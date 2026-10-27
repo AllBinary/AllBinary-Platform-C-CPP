@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -62,25 +68,25 @@ class InventorySearchLoopInfo
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->CURRENT);
+stringBuffer->append(this->CURRENT);
     
-stringBuffer.appendint(this->currentPage);
+stringBuffer->appendint(this->currentPage);
     
-stringBuffer.append(this->NUM);
+stringBuffer->append(this->NUM);
     
-stringBuffer.appendint(this->numberOfResults);
+stringBuffer->appendint(this->numberOfResults);
     
-stringBuffer.append(this->LAST);
+stringBuffer->append(this->LAST);
     
-stringBuffer.appendint(this->lastPage);
+stringBuffer->appendint(this->lastPage);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

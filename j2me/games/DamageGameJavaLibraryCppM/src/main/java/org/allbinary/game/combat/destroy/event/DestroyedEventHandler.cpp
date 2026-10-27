@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h>
@@ -59,15 +65,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DestroyedEvent.h"
-#include "DestroyedEventListenerInterface.h"
+        #include "org/allbinary/game/combat/destroy/event/DestroyedEvent.h"
+#include "org/allbinary/game/combat/destroy/event/DestroyedEventListenerInterface.h"
 
 class DestroyedEventHandler: public BasicEventHandler {
 
-    private: static DestroyedEventHandler instance() { return DestroyedEventHandler(); }
+    private: static DestroyedEventHandler* instance() { static std::unique_ptr<DestroyedEventHandler> value(new DestroyedEventHandler()); return value.get(); }
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static DestroyedEventHandler getInstance(){
+    public: static DestroyedEventHandler* getInstance(){
 
 
 
@@ -77,18 +83,18 @@ class DestroyedEventHandler: public BasicEventHandler {
 }
 
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: DestroyedEventHandler(){
 }
 
 
-    public: void addListener(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer){
+    public: void addListener(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer){
 
-                        if(!this->list.contains(collidableDestroyableDamageableLayer))
+                        if(!this->list->contains(collidableDestroyableDamageableLayer))
                         
                                     {
-                                    this->list.add(collidableDestroyableDamageableLayer);
+                                    this->list->add(collidableDestroyableDamageableLayer);
     
 
                                     }
@@ -98,7 +104,7 @@ private: DestroyedEventHandler(){
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void removeAllListeners(){
-this->list.clear();
+this->list->clear();
     
 super.removeAllListeners();
     
@@ -106,8 +112,8 @@ super.removeAllListeners();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void removeListener(EventListenerInterface eventListenerInterface){
-this->list.remove(eventListenerInterface);
+    public: void removeListener(EventListenerInterface* eventListenerInterface){
+this->list->remove(eventListenerInterface);
     
 super.removeListener(eventListenerInterface);
     
@@ -116,26 +122,26 @@ super.removeListener(eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(AllBinaryEventObject eventObject){
+    public: void fireEvent(AllBinaryEventObject* eventObject){
 
 
 
 
                         for (
-    int32_t index = this->list.size();--index >= 0; )
+    int32_t index = this->list->size();--index >= 0; )
         {
 
         try {
             
-    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = this->list.objectArray[index];;
+    CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer = dynamic_cast<CollidableDestroyableDamageableLayer*>(this->list->objectArray[index]);;
     
-collidableDestroyableDamageableLayer.onDestroyed(eventObject);
+collidableDestroyableDamageableLayer->onDestroyed(dynamic_cast<DestroyedEvent*>(eventObject));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
@@ -148,11 +154,11 @@ super.fireEvent(eventObject);
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
 
-    DestroyedEventListenerInterface destroyedEventListenerInterface = eventListenerInterface;;
+    DestroyedEventListenerInterface* destroyedEventListenerInterface = dynamic_cast<DestroyedEventListenerInterface*>(eventListenerInterface);;
     
-destroyedEventListenerInterface.onDestroyed(eventObject);
+destroyedEventListenerInterface->onDestroyed(dynamic_cast<DestroyedEvent*>(eventObject));
     
 }
 

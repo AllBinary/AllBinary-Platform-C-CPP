@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEM_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEM_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -68,8 +74,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicItem.h"
-#include "OrderItemInterface.h"
+        #include "org/allbinary/business/user/commerce/inventory/item/BasicItem.h"
+#include "org/allbinary/business/user/commerce/inventory/item/OrderItemInterface.h"
 
 class Item: public BasicItem, public OrderItemInterface {
 
@@ -83,15 +89,15 @@ class Item: public BasicItem, public OrderItemInterface {
 
     private: std::string shippedDate;
 
-    private: StreetAddress shippingAddress;
+    private: StreetAddress* shippingAddress;
 
     private: std::string special;
 
-public: Item(HashMap<Object*, Object*> itemHashMap);
+public: Item(HashMap<Object*, Object*>* itemHashMap);
 
 public: Item();
 
-    private: void setData(HashMap<Object*, Object*> itemHashMap);
+    private: void setData(HashMap<Object*, Object*>* itemHashMap);
 
     public: void setGroup(std::string value);
 
@@ -101,7 +107,7 @@ public: Item();
 
     public: void setShippingCost(std::string value);
 
-    public: void setShippingAddress(StreetAddress value);
+    public: void setShippingAddress(StreetAddress* value);
 
     public: void setSpecial(std::string value);
 
@@ -113,11 +119,11 @@ public: Item();
 
     public: std::string getShippingCost();
 
-    public: StreetAddress getShippingAddress();
+    public: StreetAddress* getShippingAddress();
 
     public: std::string getSpecial();
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Image.h>
 
       
@@ -45,24 +51,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ModifierBaseProcessor.h"
+        #include "org/allbinary/animation/image/ModifierBaseProcessor.h"
 
 class ChangeColorProcessor: public ModifierBaseProcessor {
 
-    private: static const ChangeColorProcessor instanceC = ChangeColorProcessor();
+    private: static ChangeColorProcessor* instanceC() { static std::unique_ptr<ChangeColorProcessor> value(new ChangeColorProcessor()); return value.get(); }
 
-    public: static ChangeColorProcessor getInstance(){
+    public: static ChangeColorProcessor* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ChangeColorProcessor::instanceC;
+                        return ChangeColorProcessor::instanceC();
     
 }
 
 
-    public: void updateColor(ImageModifierUtil imageModifierUtil, Image originalImage, Image imageToShow, int32_t index, BasicColor basicColor){
-imageModifierUtil.changeColor(originalImage, imageToShow, index, basicColor);
+    public: void updateColor(ImageModifierUtil* imageModifierUtil, Image* originalImage, Image* imageToShow, int32_t index, BasicColor* basicColor){
+imageModifierUtil->changeColor(originalImage, imageToShow, index, basicColor);
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORYENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORYENTITY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -167,19 +173,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OrderHistoryEntityInterface.h"
+        #include "org/allbinary/data/tables/user/commerce/inventory/order/OrderHistoryEntityInterface.h"
 
 class OrderHistoryEntity: public AbSqlBean, public OrderHistoryEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     protected: const std::string tableName = "orderhistory";
 
 public: OrderHistoryEntity();
 
-    public: void insert(std::string userName, Order order);
+    public: void insert(std::string userName, Order* order);
 
-    public: void insert(BasicArrayList values);
+    public: void insert(BasicArrayList* values);
 
     public: void setStatus(std::string orderId, std::string status);
 
@@ -187,23 +193,23 @@ public: OrderHistoryEntity();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getStoreOrders(StoreFrontInterface storeFrontInterface);
+    public: BasicArrayList* getStoreOrders(StoreFrontInterface* storeFrontInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getOrders(std::string userName);
+    public: BasicArrayList* getOrders(std::string userName);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getOrders(std::string status, std::string fromDate, std::string toDate);
+    public: BasicArrayList* getOrders(std::string status, std::string fromDate, std::string toDate);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getOrders(std::string fromDate, std::string toDate);
+    public: BasicArrayList* getOrders(std::string fromDate, std::string toDate);
 
                 //@Throws(Exception.constructor)
             
-    public: OrderHistory getOrder(std::string id);
+    public: OrderHistory* getOrder(std::string id);
 
     public: std::string createTableStatement();
 
@@ -213,7 +219,7 @@ public: OrderHistoryEntity();
 
                 //@Throws(Exception.constructor)
             
-    public: void update(HashMap<Object*, Object*> whereHashMap, HashMap<Object*, Object*> orderHashMap);
+    public: void update(HashMap<Object*, Object*>* whereHashMap, HashMap<Object*, Object*>* orderHashMap);
 
 };
 

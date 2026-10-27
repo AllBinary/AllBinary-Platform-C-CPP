@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -72,11 +78,11 @@
         
 class ImageComparatorConstraints
             : public Object
-        : public ImageComparatorConstraintsInterface {
+        , public ImageComparatorConstraintsInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: BasicArrayList avoidVector;
+    private: BasicArrayList* avoidVector;
 
     private: int32_t maxNonMatchingPixelDeltas= 0;
 
@@ -85,12 +91,12 @@ class ImageComparatorConstraints
 public: ImageComparatorConstraints(int32_t doImageComparisonEveryNthFrame){
 this->doImageComparisonEveryNthFrame= doImageComparisonEveryNthFrame;
     
-this->setAvoidVector(BasicArrayListD());
+this->setAvoidVector(new BasicArrayListD());
     
 }
 
 
-    public: BasicArrayList getAvoidVector(){
+    public: BasicArrayList* getAvoidVector(){
 
 
 
@@ -100,24 +106,24 @@ this->setAvoidVector(BasicArrayListD());
 }
 
 
-    public: bool isColorAllowed(int32_t frame, GPoint point, Color color){
+    public: bool isColorAllowed(int32_t frame, GPoint* point, Color* color){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: bool isCollisionWithAvoidRectangles(Rectangle rectangle){
+    public: bool isCollisionWithAvoidRectangles(Rectangle* rectangle){
 
     bool isCollsionWithAvoidRectangles = false;;
     
 
-    BasicArrayList avoidVector = this->getAvoidVector();;
+    BasicArrayList* avoidVector = this->getAvoidVector();;
     
 
-    int32_t size = avoidVector.size();;
+    int32_t size = avoidVector->size();;
     
 
 
@@ -127,7 +133,7 @@ this->setAvoidVector(BasicArrayListD());
     int32_t index = 0;index < size; index++)
         {
 
-    Rectangle avoidRectangle = avoidVector.get(index);;
+    Rectangle* avoidRectangle = dynamic_cast<Rectangle*>(avoidVector->get(index));;
     
 
                         if(RectangleCollisionUtil::isCollision(avoidRectangle, rectangle))
@@ -149,15 +155,15 @@ this->setAvoidVector(BasicArrayListD());
 }
 
 
-    public: bool isCollisionWithAvoidRectangles(GPoint point){
+    public: bool isCollisionWithAvoidRectangles(GPoint* point){
 
     bool isCollsionWithAvoidRectangles = false;;
     
 
-    BasicArrayList avoidVector = this->getAvoidVector();;
+    BasicArrayList* avoidVector = this->getAvoidVector();;
     
 
-    int32_t size = avoidVector.size();;
+    int32_t size = avoidVector->size();;
     
 
 
@@ -167,7 +173,7 @@ this->setAvoidVector(BasicArrayListD());
     int32_t index = 0;index < size; index++)
         {
 
-    Rectangle avoidRectangle = avoidVector.get(index);;
+    Rectangle* avoidRectangle = dynamic_cast<Rectangle*>(avoidVector->get(index));;
     
 
                         if(RectangleCollisionUtil::isCollision(avoidRectangle, point))
@@ -192,7 +198,7 @@ break;
 }
 
 
-    public: void setAvoidVector(BasicArrayList avoidVector){
+    public: void setAvoidVector(BasicArrayList* avoidVector){
 this->avoidVector= avoidVector;
     
 }
@@ -218,7 +224,7 @@ this->maxNonMatchingPixelDeltas= maxNonMatchingPixelDeltas;
 
     int32_t remainder = ((frame +1) % this->doImageComparisonEveryNthFrame);;
     
-this->logUtil.putF(" Frame: " +frame +" remainder: " +remainder +" this.doImageComparisonEveryNthFrame: " +this->doImageComparisonEveryNthFrame, this, "isCollisionWithAvoidRectangles");
+this->logUtil->putF(" Frame: " +frame +" remainder: " +remainder +" this.doImageComparisonEveryNthFrame: " +this->doImageComparisonEveryNthFrame, this, "isCollisionWithAvoidRectangles");
     
 
                         if(remainder == 0)
@@ -248,21 +254,21 @@ this->logUtil.putF(" Frame: " +frame +" remainder: " +remainder +" this.doImageC
 
                 //@Throws(Exception.constructor)
             
-    public: bool isImageValid(BufferedImage bufferedImage){
+    public: bool isImageValid(BufferedImage* bufferedImage){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
     public: void log(){
 
-    BasicArrayList avoidVector = this->getAvoidVector();;
+    BasicArrayList* avoidVector = this->getAvoidVector();;
     
 
-    int32_t size = avoidVector.size();;
+    int32_t size = avoidVector->size();;
     
 
 
@@ -272,9 +278,9 @@ this->logUtil.putF(" Frame: " +frame +" remainder: " +remainder +" this.doImageC
     int32_t index = 0;index < size; index++)
         {
 
-    Rectangle avoidRectangle = avoidVector.get(index);;
+    Rectangle* avoidRectangle = dynamic_cast<Rectangle*>(avoidVector->get(index));;
     
-this->logUtil.putF("Avoid Rectangle: " +avoidRectangle, this, "log");
+this->logUtil->putF("Avoid Rectangle: " +avoidRectangle, this, "log");
     
 }
 

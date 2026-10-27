@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_VERTEXATTRIBUTEPOINTEROPENGLPROCESSOR_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_VERTEXATTRIBUTEPOINTEROPENGLPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -50,13 +58,13 @@
         
 class VertexAttributePointerOpenGLProcessor: public ObjectThreedOpenGLProcessor {
 
-    private: static VertexAttributePointerOpenGLProcessor instance() { return VertexAttributePointerOpenGLProcessor(); }
+    private: static VertexAttributePointerOpenGLProcessor* instance() { static std::unique_ptr<VertexAttributePointerOpenGLProcessor> value(new VertexAttributePointerOpenGLProcessor()); return value.get(); }
 
-    public: static VertexAttributePointerOpenGLProcessor getInstance();
+    public: static VertexAttributePointerOpenGLProcessor* getInstance();
 
 public: VertexAttributePointerOpenGLProcessor();
 
-    public: void process(GL10 gl, Object* anyType);
+    public: void process(GL10* gl, Object* anyType);
 
 };
 

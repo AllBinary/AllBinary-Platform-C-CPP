@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/eclipse/swt/graphics/Resource.h>
@@ -46,9 +52,9 @@ class DisposalUtil
             : public Object
          {
 
-    private: static DisposalUtil instance() { return DisposalUtil(); }
+    private: static DisposalUtil* instance() { static std::unique_ptr<DisposalUtil> value(new DisposalUtil()); return value.get(); }
 
-    public: static DisposalUtil getInstance(){
+    public: static DisposalUtil* getInstance(){
 
 
 
@@ -58,12 +64,12 @@ class DisposalUtil
 }
 
 
-    public: void dispose(Resource resource){
+    public: void dispose(Resource* resource){
 
-                        if(!resource.isDisposed())
+                        if(!resource->isDisposed())
                         
                                     {
-                                    resource.dispose();
+                                    resource->dispose();
     
 
                                     }

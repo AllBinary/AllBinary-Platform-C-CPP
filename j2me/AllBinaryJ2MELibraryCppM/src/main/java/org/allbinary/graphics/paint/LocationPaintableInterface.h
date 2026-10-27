@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_LOCATIONPAINTABLEINTERFACE_H
         #define ORG_ALLBINARY_GRAPHICS_PAINT_LOCATIONPAINTABLEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -45,7 +51,7 @@
         
 class LocationPaintableInterface {
 
-    void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: virtual void paintXY(Graphics* graphics, int32_t x, int32_t y) = 0;
 
 };
 

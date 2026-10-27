@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_FILEEMAILQUEUE_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_FILEEMAILQUEUE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/data/tree/dom/document/DomDocumentQueueInterface.h>
@@ -49,7 +55,7 @@ class FileEmailQueue
             : public Object
          {
 
-    private: DomDocumentQueueInterface domDocumentQueueInterface;
+    private: DomDocumentQueueInterface* domDocumentQueueInterface;
 
 public: FileEmailQueue();
 

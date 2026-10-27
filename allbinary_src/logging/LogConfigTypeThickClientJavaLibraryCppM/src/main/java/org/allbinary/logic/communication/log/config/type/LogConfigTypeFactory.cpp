@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,16 +44,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogConfigType.h"
-#include "LogConfigTypes.h"
+        #include "org/allbinary/logic/communication/log/config/type/LogConfigType.h"
+#include "org/allbinary/logic/communication/log/config/type/LogConfigTypes.h"
 
 class LogConfigTypeFactory
             : public Object
          {
 
-    private: static LogConfigTypeFactory instance() { return LogConfigTypeFactory(); }
+    private: static LogConfigTypeFactory* instance() { static std::unique_ptr<LogConfigTypeFactory> value(new LogConfigTypeFactory()); return value.get(); }
 
-    public: static LogConfigTypeFactory getInstance(){
+    public: static LogConfigTypeFactory* getInstance(){
 
 
 
@@ -59,21 +65,21 @@ class LogConfigTypeFactory
 
     private: const std::string NO_DESCRIPTION = "No Description";
 
-    public: const LogConfigType OS = LogConfigType("Operating System", this->NO_DESCRIPTION);
+    public: LogConfigType* OS = new LogConfigType("Operating System", this->NO_DESCRIPTION);
 
-    public: const LogConfigType FACTORYERROR = LogConfigType("Factory Error", this->NO_DESCRIPTION);
+    public: LogConfigType* FACTORYERROR = new LogConfigType("Factory Error", this->NO_DESCRIPTION);
 
-    public: const LogConfigType FILE = LogConfigType("File", this->NO_DESCRIPTION);
+    public: LogConfigType* FILE = new LogConfigType("File", this->NO_DESCRIPTION);
 
-    public: const LogConfigType FILEERROR = LogConfigType("File Error", this->NO_DESCRIPTION);
+    public: LogConfigType* FILEERROR = new LogConfigType("File Error", this->NO_DESCRIPTION);
 
-    public: const LogConfigType IDLOGGING = LogConfigType("ID Logging", this->NO_DESCRIPTION);
+    public: LogConfigType* IDLOGGING = new LogConfigType("ID Logging", this->NO_DESCRIPTION);
 
-    public: const LogConfigType REPLACE = LogConfigType("Replace", this->NO_DESCRIPTION);
+    public: LogConfigType* REPLACE = new LogConfigType("Replace", this->NO_DESCRIPTION);
 
-    public: const LogConfigType REPLACE_INFO = LogConfigType("Replace Info", this->NO_DESCRIPTION);
+    public: LogConfigType* REPLACE_INFO = new LogConfigType("Replace Info", this->NO_DESCRIPTION);
 
-    public: const LogConfigType REPLACEERROR = LogConfigType("Replace Error", this->NO_DESCRIPTION);
+    public: LogConfigType* REPLACEERROR = new LogConfigType("Replace Error", this->NO_DESCRIPTION);
 
 private: LogConfigTypeFactory(){
 LogConfigTypes::LOGGING.add(OS);

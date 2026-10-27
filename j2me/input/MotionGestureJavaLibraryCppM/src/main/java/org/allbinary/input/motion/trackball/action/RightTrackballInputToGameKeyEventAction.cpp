@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/game/input/PlatformInputMappingFactory.h>
 
       
@@ -51,14 +59,14 @@
         
 class RightTrackballInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static GameKeyCompleteMotionGestureInputEvent getInstance(){
+    public: static GameKeyCompleteMotionGestureInputEvent* getInstance(){
 
-                        if(RightTrackballInputToGameKeyEventAction::instance() == NullUtil::getInstance().NULL_OBJECT)
+                        if(RightTrackballInputToGameKeyEventAction::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    RightTrackballInputToGameKeyEventAction::instance= RightTrackballInputToGameKeyEventAction();
+                                    RightTrackballInputToGameKeyEventAction::instance= new RightTrackballInputToGameKeyEventAction();
     
 
                                     }
@@ -67,12 +75,12 @@ class RightTrackballInputToGameKeyEventAction: public GameKeyCompleteMotionGestu
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RightTrackballInputToGameKeyEventAction::instance();
+                        return dynamic_cast<GameKeyCompleteMotionGestureInputEvent*>(RightTrackballInputToGameKeyEventAction::instance);
     
 }
 
 
-private: RightTrackballInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Right Action", TrackballMotionGestureFactory::getInstance().RIGHT, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping()){
+private: RightTrackballInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Right Action", TrackballMotionGestureFactory::getInstance()->RIGHT, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
 
                         //super/this constructor call is in the constructor initializer list.
                     

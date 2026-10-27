@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATIONVIEW_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATIONVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,28 +70,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "FtpConfigurationInterface.h"
-#include "FtpConfiguration.h"
-#include "FtpConfigurationData.h"
-#include "FtpConfigurationMapping.h"
+        #include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationInterface.h"
+#include "org/allbinary/logic/communication/ftp/configuration/FtpConfiguration.h"
+#include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationData.h"
+#include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationMapping.h"
 
 class FtpConfigurationView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: FtpConfigurationInterface ftpConfigurationInterface;
+    private: FtpConfigurationInterface* ftpConfigurationInterface;
 
-public: FtpConfigurationView(Node node);
+public: FtpConfigurationView(Node* node);
 
-public: FtpConfigurationView(FtpConfigurationInterface ftpConfigurationInterface);
+public: FtpConfigurationView(FtpConfigurationInterface* ftpConfigurationInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
-    public: FtpConfigurationInterface getFtpConfigurationInterface();
+    public: FtpConfigurationInterface* getFtpConfigurationInterface();
 
-    public: void setFtpConfigurationInterface(FtpConfigurationInterface ftpConfigurationInterface);
+    public: void setFtpConfigurationInterface(FtpConfigurationInterface* ftpConfigurationInterface);
 
 };
 

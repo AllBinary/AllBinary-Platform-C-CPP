@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -107,23 +113,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "WorkAreaJPanelInterface.h"
-#include "WorkAreaJTreeJPanel.h"
-#include "Component.h"
-#include "Dimension.h"
-#include "WorkAreaDom.h"
-#include "GridLayout.h"
-#include "GridBagLayout.h"
-#include "GridBagConstraints.h"
-#include "KeyAdapter.h"
-#include "KeyEvent.h"
+        #include "org/allbinary/graphics/j2me/workarea/JPanel.h"
+#include "org/allbinary/graphics/j2me/workarea/WorkAreaJPanelInterface.h"
+#include "org/allbinary/graphics/j2me/workarea/WorkAreaJTreeJPanel.h"
+#include "org/allbinary/graphics/j2me/workarea/Component.h"
+#include "org/allbinary/graphics/j2me/workarea/Dimension.h"
+#include "org/allbinary/graphics/j2me/workarea/WorkAreaDom.h"
+#include "org/allbinary/graphics/j2me/workarea/GridLayout.h"
+#include "org/allbinary/graphics/j2me/workarea/GridBagLayout.h"
+#include "org/allbinary/graphics/j2me/workarea/GridBagConstraints.h"
+#include "org/allbinary/graphics/j2me/workarea/KeyAdapter.h"
+#include "org/allbinary/graphics/j2me/workarea/KeyEvent.h"
 
 class WorkAreaJPanel: public JPanel, public WorkAreaJPanelInterface, public MyCanvasEventListener, public EventListener, public Runnable {
 
-    private: static org::w3c::dom::Document document;
+    private: static inline org::w3c::dom::Document* document;
 
-    public: static Document getDocument(){
+    public: static Document* getDocument(){
 
 
 
@@ -133,23 +139,23 @@ class WorkAreaJPanel: public JPanel, public WorkAreaJPanelInterface, public MyCa
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: LinkedList canvasJPanelList;
+    private: LinkedList* canvasJPanelList;
 
-    private: JPanel canvasHolderJPanel;
+    private: JPanel* canvasHolderJPanel;
 
     private: std::string name;
 
     private: int32_t selectedFrame= 0;
 
-    private: PropertiesJPanel propertiesJPanel;
+    private: PropertiesJPanel* propertiesJPanel;
 
-    private: WorkAreaJTreeJPanel workAreaJTreeJPanel;
+    private: WorkAreaJTreeJPanel* workAreaJTreeJPanel;
 
     private: bool isPlaying = false;
 
-public: WorkAreaJPanel(std::string name, Dimension dimension, int32_t x, int32_t y){
+public: WorkAreaJPanel(std::string name, Dimension* dimension, int32_t x, int32_t y){
 
         try {
             this->initComponents();
@@ -158,22 +164,22 @@ this->name= name;
     
 this->initMyComponents(dimension);
     
-this->workAreaJTreeJPanel= WorkAreaJTreeJPanel(this->name);
+this->workAreaJTreeJPanel= new WorkAreaJTreeJPanel(this->name);
     
 
-    CanvasJPanel canvasJPanel = CanvasJPanel(this->workAreaJTreeJPanel, this->getSize(), x, y);;
+    CanvasJPanel* canvasJPanel = new CanvasJPanel(this->workAreaJTreeJPanel, this->getSize(), x, y);;
     
-this->canvasJPanelList.add(canvasJPanel);
+this->canvasJPanelList->add(canvasJPanel);
     
 this->selectedFrame= 0;
     
-this->propertiesJPanel.set(this->workAreaJTreeJPanel);
+this->propertiesJPanel->set(this->workAreaJTreeJPanel);
     
-this->canvasHolderJPanel.add(canvasJPanel);
+this->canvasHolderJPanel->add(dynamic_cast<Component*>(canvasJPanel));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -185,20 +191,20 @@ this->canvasHolderJPanel.add(canvasJPanel);
 }
 
 
-public: WorkAreaJPanel(WorkAreaDom workAreaDom, Dimension dimension){
+public: WorkAreaJPanel(WorkAreaDom* workAreaDom, Dimension* dimension){
 
         try {
             this->initComponents();
     
-this->name= workAreaDom.getName();
+this->name= workAreaDom->getName();
     
 this->initMyComponents(dimension);
     
 
-    BasicArrayList canvasNodeList = workAreaDom.getCanvasNodes();;
+    BasicArrayList* canvasNodeList = workAreaDom->getCanvasNodes();;
     
 
-    int32_t numberOfFrames = canvasNodeList.size();;
+    int32_t numberOfFrames = canvasNodeList->size();;
     
 
 
@@ -208,30 +214,30 @@ this->initMyComponents(dimension);
     int32_t index = 0;index < numberOfFrames; index++)
         {
 
-    Node node = canvasNodeList.get(index);;
+    Node* node = dynamic_cast<Node*>(canvasNodeList->get(index));;
     
 
-    CanvasJPanel canvasJPanel = CanvasJPanel(this->workAreaJTreeJPanel, this->getSize(), CanvasDom(node));;
+    CanvasJPanel* canvasJPanel = new CanvasJPanel(this->workAreaJTreeJPanel, this->getSize(), new CanvasDom(node));;
     
-this->canvasJPanelList.add(canvasJPanel);
+this->canvasJPanelList->add(canvasJPanel);
     
 }
 
 this->selectedFrame= 0;
     
-this->canvasHolderJPanel.add(this->getCurrentFrame());
+this->canvasHolderJPanel->add(dynamic_cast<Component*>(this->getCurrentFrame()));
     
-this->propertiesJPanel.set(this->workAreaJTreeJPanel);
+this->propertiesJPanel->set(this->workAreaJTreeJPanel);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
                         if(LOGGING::contains(LOGGING::LOADINGERROR))
                         
                                     {
-                                    this->logUtil.put("Constructor Error", this, "WorkAreaJPanel", e);
+                                    this->logUtil->put("Constructor Error", this, "WorkAreaJPanel", &e);
     
 
                                     }
@@ -246,95 +252,95 @@ this->propertiesJPanel.set(this->workAreaJTreeJPanel);
 }
 
 
-    private: void initMyComponents(Dimension dimension){
-this->workAreaJTreeJPanel= WorkAreaJTreeJPanel(this->name);
+    private: void initMyComponents(Dimension* dimension){
+this->workAreaJTreeJPanel= new WorkAreaJTreeJPanel(this->name);
     
-this->canvasHolderJPanel= JPanel();
+this->canvasHolderJPanel= new JPanel();
     
-this->canvasHolderJPanel.setSize(dimension);
+this->canvasHolderJPanel->setSize(dimension);
     
-this->canvasHolderJPanel.setLayout(GridLayout(1, 1));
+this->canvasHolderJPanel->setLayout(new GridLayout(1, 1));
     
 this->setSize(dimension);
     
-this->canvasJPanelList= LinkedList();
+this->canvasJPanelList= new LinkedList();
     
 
-    GridBagLayout gridBagLayout = GridBagLayout();;
+    GridBagLayout* gridBagLayout = new GridBagLayout();;
     
 
-    GridBagConstraints gridBagConstraints = GridBagConstraints();;
+    GridBagConstraints* gridBagConstraints = new GridBagConstraints();;
     
-this->innerJPanel.setLayout(gridBagLayout);
+this->innerJPanel->setLayout(gridBagLayout);
     
-gridBagConstraints.gridx= 0;
+gridBagConstraints->gridx= 0;
     
-gridBagConstraints.gridy= 0;
+gridBagConstraints->gridy= 0;
     
-gridBagConstraints.gridwidth= 1;
+gridBagConstraints->gridwidth= 1;
     
-gridBagConstraints.fill= java.awt.GridBagConstraints.BOTH;
+gridBagConstraints->fill= java.awt.GridBagConstraints.BOTH;
     
-gridBagConstraints.weightx= .05;
+gridBagConstraints->weightx= .05;
     
-gridBagConstraints.weighty= .05;
+gridBagConstraints->weighty= .05;
     
 
-    ToolJPanel toolJPanel = ToolJPanel();;
+    ToolJPanel* toolJPanel = new ToolJPanel();;
     
-gridBagLayout.setConstraints(toolJPanel, gridBagConstraints);
+gridBagLayout->setConstraints(toolJPanel, gridBagConstraints);
     
-this->innerJPanel.add(toolJPanel);
+this->innerJPanel->add(toolJPanel);
     
-gridBagConstraints= GridBagConstraints();
+gridBagConstraints= new GridBagConstraints();
     
-gridBagConstraints.gridx= 1;
+gridBagConstraints->gridx= 1;
     
-gridBagConstraints.gridy= 0;
+gridBagConstraints->gridy= 0;
     
-gridBagConstraints.gridwidth= 6;
+gridBagConstraints->gridwidth= 6;
     
-gridBagConstraints.fill= java.awt.GridBagConstraints.BOTH;
+gridBagConstraints->fill= java.awt.GridBagConstraints.BOTH;
     
-gridBagConstraints.weightx= 1;
+gridBagConstraints->weightx= 1;
     
-gridBagConstraints.weighty= 1;
+gridBagConstraints->weighty= 1;
     
-gridBagLayout.setConstraints(this->canvasHolderJPanel, gridBagConstraints);
+gridBagLayout->setConstraints(this->canvasHolderJPanel, gridBagConstraints);
     
-this->innerJPanel.add(this->canvasHolderJPanel);
+this->innerJPanel->add(this->canvasHolderJPanel);
     
-gridBagConstraints= GridBagConstraints();
+gridBagConstraints= new GridBagConstraints();
     
-gridBagConstraints.gridx= 8;
+gridBagConstraints->gridx= 8;
     
-gridBagConstraints.gridy= 0;
+gridBagConstraints->gridy= 0;
     
-gridBagConstraints.gridwidth= java.awt.GridBagConstraints.REMAINDER;
+gridBagConstraints->gridwidth= java.awt.GridBagConstraints.REMAINDER;
     
-gridBagConstraints.fill= java.awt.GridBagConstraints.BOTH;
+gridBagConstraints->fill= java.awt.GridBagConstraints.BOTH;
     
-gridBagConstraints.weightx= .1;
+gridBagConstraints->weightx= .1;
     
-gridBagConstraints.weighty= .1;
+gridBagConstraints->weighty= .1;
     
-this->propertiesJPanel= PropertiesJPanel();
+this->propertiesJPanel= new PropertiesJPanel();
     
-gridBagLayout.setConstraints(this->propertiesJPanel, gridBagConstraints);
+gridBagLayout->setConstraints(this->propertiesJPanel, gridBagConstraints);
     
-this->innerJPanel.add(this->propertiesJPanel);
+this->innerJPanel->add(this->propertiesJPanel);
     
-MyCanvasEventService::addListener(this);
+MyCanvasEventService::addListener(dynamic_cast<MyCanvasEventListener*>(this));
     
 }
 
 
-    private: HashMap<Object*, Object*> getCanvasHashMap(){
+    private: HashMap<Object*, Object*>* getCanvasHashMap(){
 
-    HashMap<Object*, Object*> canvasJPanelHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* canvasJPanelHashMap = StdUtil::getInstance()->createHashMap();;
     
 
-    int32_t size = this->canvasJPanelList.size();;
+    int32_t size = this->canvasJPanelList->size();;
     
 
 
@@ -344,9 +350,9 @@ MyCanvasEventService::addListener(this);
     int32_t index = 0;index < size; index++)
         {
 
-    CanvasJPanel canvasJPanel = this->canvasJPanelList.get(index);;
+    CanvasJPanel* canvasJPanel = dynamic_cast<CanvasJPanel*>(this->canvasJPanelList->get(index));;
     
-canvasJPanelHashMap.put(canvasJPanel.getTreeNode(), Integer(index));
+canvasJPanelHashMap->put(canvasJPanel->getTreeNode(), int32_t(index));
     
 }
 
@@ -401,13 +407,13 @@ this->name= value;
 
 
     public: void disableCanvas(){
-this->canvasHolderJPanel.removeAll();
+this->canvasHolderJPanel->removeAll();
     
 }
 
 
     public: void enableCanvas(){
-this->canvasHolderJPanel.add(this->getCurrentFrame());
+this->canvasHolderJPanel->add(dynamic_cast<Component*>(this->getCurrentFrame()));
     
 }
 
@@ -422,11 +428,11 @@ super.setVisible(false);
 super.setVisible(true);
     
 
-                        if(this->canvasHolderJPanel.getComponentCount() == 1)
+                        if(this->canvasHolderJPanel->getComponentCount() == 1)
                         
                                     {
                                     
-    Component component = this->canvasHolderJPanel.getComponent(0);;
+    Component* component = this->canvasHolderJPanel->getComponent(0);;
     
 
                         if(component != 
@@ -434,7 +440,7 @@ super.setVisible(true);
                                 )
                         
                                     {
-                                    component.repaint();
+                                    component->repaint();
     
 
                                     }
@@ -447,7 +453,7 @@ super.setVisible(true);
 
     public: void changeZoom(int32_t factor){
 
-    int32_t size = this->canvasJPanelList.size();;
+    int32_t size = this->canvasJPanelList->size();;
     
 
 
@@ -457,35 +463,35 @@ super.setVisible(true);
     int32_t index = 0;index < size; index++)
         {
 
-    CanvasJPanel canvasJPanel = this->canvasJPanelList.get(index);;
+    CanvasJPanel* canvasJPanel = dynamic_cast<CanvasJPanel*>(this->canvasJPanelList->get(index));;
     
-canvasJPanel.getGrid().setZoom(canvasJPanel.getGrid().getZoom() +factor);
+canvasJPanel->getGrid()->setZoom(canvasJPanel->getGrid()->getZoom() +factor);
     
 }
 
 }
 
 
-    public: CanvasJPanel getCurrentFrame(){
+    public: CanvasJPanel* getCurrentFrame(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->canvasJPanelList.get(this->selectedFrame);
+                        return dynamic_cast<CanvasJPanel*>(this->canvasJPanelList->get(this->selectedFrame));
     
 }
 
 
-    private: void initDuplicate(CanvasJPanel newCanvasJPanel){
+    private: void initDuplicate(CanvasJPanel* newCanvasJPanel){
 
                         if(newCanvasJPanel != 
                                     nullptr
                                 )
                         
                                     {
-                                    this->canvasJPanelList.add(newCanvasJPanel);
+                                    this->canvasJPanelList->add(newCanvasJPanel);
     
-this->select(this->canvasJPanelList.size() -1);
+this->select(this->canvasJPanelList->size() -1);
     
 
                                     }
@@ -495,21 +501,21 @@ this->select(this->canvasJPanelList.size() -1);
 
                 //@Throws(Exception.constructor)
             
-    private: void duplicate(MutableTreeNode treeNode){
+    private: void duplicate(MutableTreeNode* treeNode){
 
-    HashMap<Object*, Object*> canvasJPanelHashMap = this->getCanvasHashMap();;
+    HashMap<Object*, Object*>* canvasJPanelHashMap = this->getCanvasHashMap();;
     
 
-                        if(canvasJPanelHashMap.containsKey(treeNode))
+                        if(canvasJPanelHashMap->containsKey(treeNode))
                         
                                     {
                                     
-    Integer frameInteger = canvasJPanelHashMap.get(treeNode);;
+    int32_t frameInteger = canvasJPanelHashMap->get(treeNode);;
     
 
-    CanvasJPanel canvasJPanel = this->canvasJPanelList.get(frameInteger.intValue());;
+    CanvasJPanel* canvasJPanel = dynamic_cast<CanvasJPanel*>(this->canvasJPanelList->get(frameInteger.intValue()));;
     
-this->initDuplicate(canvasJPanel.duplicate());
+this->initDuplicate(canvasJPanel->duplicate());
     
 
                                     }
@@ -531,12 +537,12 @@ this->initDuplicate(canvasJPanel.duplicate());
     int32_t index = 1;index < increments; index++)
         {
 
-    CanvasJPanel canvasJPanel = this->getCurrentFrame();;
+    CanvasJPanel* canvasJPanel = dynamic_cast<CanvasJPanel*>(this->getCurrentFrame());;
     
 
-    CanvasJPanel newCanvasJPanel = canvasJPanel.duplicate();;
+    CanvasJPanel* newCanvasJPanel = canvasJPanel->duplicate();;
     
-newCanvasJPanel.setAngle(incrementAngle *index);
+newCanvasJPanel->setAngle(incrementAngle *index);
     
 this->initDuplicate(newCanvasJPanel);
     
@@ -547,9 +553,9 @@ this->initDuplicate(newCanvasJPanel);
 
     public: void explodeAll(){
 
-    CanvasJPanel canvasJPanel = this->getCurrentFrame();;
+    CanvasJPanel* canvasJPanel = dynamic_cast<CanvasJPanel*>(this->getCurrentFrame());;
     
-canvasJPanel.explodeAll();
+canvasJPanel->explodeAll();
     
 }
 
@@ -565,12 +571,12 @@ canvasJPanel.explodeAll();
     int32_t index = 1;index < numberOfFrames; index++)
         {
 
-    CanvasJPanel canvasJPanel = this->getCurrentFrame();;
+    CanvasJPanel* canvasJPanel = dynamic_cast<CanvasJPanel*>(this->getCurrentFrame());;
     
 
-    CanvasJPanel newCanvasJPanel = canvasJPanel.duplicate();;
+    CanvasJPanel* newCanvasJPanel = canvasJPanel->duplicate();;
     
-newCanvasJPanel.explode(index +1, explodeType);
+newCanvasJPanel->explode(index +1, explodeType);
     
 this->initDuplicate(newCanvasJPanel);
     
@@ -583,12 +589,12 @@ this->initDuplicate(newCanvasJPanel);
             
     public: void autoMirror(){
 
-    CanvasJPanel canvasJPanel = this->getCurrentFrame();;
+    CanvasJPanel* canvasJPanel = dynamic_cast<CanvasJPanel*>(this->getCurrentFrame());;
     
 
-    CanvasJPanel newCanvasJPanel = canvasJPanel.duplicate();;
+    CanvasJPanel* newCanvasJPanel = canvasJPanel->duplicate();;
     
-newCanvasJPanel.mirror();
+newCanvasJPanel->mirror();
     
 this->initDuplicate(newCanvasJPanel);
     
@@ -598,11 +604,11 @@ this->initDuplicate(newCanvasJPanel);
 
     private: void select(int32_t index){
 
-                        if(index < this->canvasJPanelList.size())
+                        if(index < this->canvasJPanelList->size())
                         
                                     {
                                     
-    CanvasJPanel canvasJPanel = this->canvasJPanelList.get(index);;
+    CanvasJPanel* canvasJPanel = dynamic_cast<CanvasJPanel*>(this->canvasJPanelList->get(index));;
     
 
                         if(canvasJPanel != 
@@ -610,17 +616,17 @@ this->initDuplicate(newCanvasJPanel);
                                 )
                         
                                     {
-                                    this->canvasHolderJPanel.removeAll();
+                                    this->canvasHolderJPanel->removeAll();
     
-this->canvasHolderJPanel.add(canvasJPanel);
+this->canvasHolderJPanel->add(canvasJPanel);
     
 this->selectedFrame= index;
     
-canvasJPanel.changed();
+canvasJPanel->changed();
     
-this->canvasHolderJPanel.repaint();
+this->canvasHolderJPanel->repaint();
     
-canvasJPanel.repaint();
+canvasJPanel->repaint();
     
 
                                     }
@@ -631,12 +637,12 @@ canvasJPanel.repaint();
 }
 
 
-    private: void select(MutableTreeNode treeNode){
+    private: void select(MutableTreeNode* treeNode){
 
-    HashMap<Object*, Object*> canvasJPanelHashMap = this->getCanvasHashMap();;
+    HashMap<Object*, Object*>* canvasJPanelHashMap = this->getCanvasHashMap();;
     
 
-    Integer frameInteger = canvasJPanelHashMap.get(treeNode);;
+    int32_t frameInteger = canvasJPanelHashMap->get(treeNode);;
     
 
                         if(frameInteger != 
@@ -654,25 +660,25 @@ canvasJPanel.repaint();
 
                 //@Throws(Exception.constructor)
             
-    public: Document toDocument(){
-WorkAreaJPanel::document= DomHelper::getInstance().createDocument();
+    public: Document* toDocument(){
+WorkAreaJPanel::document= DomHelper::getInstance()->createDocument();
     
 
-    Node workAreaNode = WorkAreaJPanel::document.createElement(WorkAreaDom::WORKAREA);;
+    Node* workAreaNode = WorkAreaJPanel::document->createElement(WorkAreaDom::WORKAREA);;
     
 
-    Node nameNode = WorkAreaJPanel::document.createElement(WorkAreaDom::NAME);;
+    Node* nameNode = WorkAreaJPanel::document->createElement(WorkAreaDom::NAME);;
     
 
-    Node nameTextNode = WorkAreaJPanel::document.createTextNode(this->name);;
+    Node* nameTextNode = WorkAreaJPanel::document->createTextNode(this->name);;
     
-nameNode.appendChild(nameTextNode);
-    
-
-    Node framesNode = WorkAreaJPanel::document.createElement(WorkAreaDom::FRAMES);;
+nameNode->appendChild(nameTextNode);
     
 
-    int32_t size = this->canvasJPanelList.size();;
+    Node* framesNode = WorkAreaJPanel::document->createElement(WorkAreaDom::FRAMES);;
+    
+
+    int32_t size = this->canvasJPanelList->size();;
     
 
 
@@ -682,17 +688,17 @@ nameNode.appendChild(nameTextNode);
     int32_t index = 0;index < size; index++)
         {
 
-    CanvasJPanel canvasJPanel = this->canvasJPanelList.get(index);;
+    CanvasJPanel* canvasJPanel = dynamic_cast<CanvasJPanel*>(this->canvasJPanelList->get(index));;
     
-framesNode.appendChild(canvasJPanel.toDom());
+framesNode->appendChild(canvasJPanel->toDom());
     
 }
 
-workAreaNode.appendChild(nameNode);
+workAreaNode->appendChild(nameNode);
     
-workAreaNode.appendChild(framesNode);
+workAreaNode->appendChild(framesNode);
     
-WorkAreaJPanel::document.appendChild(workAreaNode);
+WorkAreaJPanel::document->appendChild(workAreaNode);
     
 
 
@@ -704,24 +710,24 @@ WorkAreaJPanel::document.appendChild(workAreaNode);
 
 
     private: void initComponents(){
-this->innerJPanel= javax::swing::JPanel();
+this->innerJPanel= new javax::swing::JPanel();
     
-setLayout(java::awt::GridLayout(1, 1));
+setLayout(new java::awt::GridLayout(1, 1));
     
-this->innerJPanel.addKeyListener(class extends java::awt::event::KeyAdapter
+this->innerJPanel->addKeyListener(class extends java::awt::event::KeyAdapter
                                 {
                                 
-    public: void keyTyped(java::awt::event::KeyEvent evt){
+    public: void keyTyped(java::awt::event::KeyEvent* evt){
 innerJPanelKeyTyped(evt);
     
 }
 
-    public: void keyPressed(java::awt::event::KeyEvent evt){
+    public: void keyPressed(java::awt::event::KeyEvent* evt){
 innerJPanelKeyPressed(evt);
     
 }
 
-    public: void keyReleased(java::awt::event::KeyEvent evt){
+    public: void keyReleased(java::awt::event::KeyEvent* evt){
 innerJPanelKeyReleased(evt);
     
 }
@@ -734,52 +740,52 @@ add(this->innerJPanel);
 }
 
 
-    private: void innerJPanelKeyReleased(java::awt::event::KeyEvent evt){
-StatusFactory::getInstance().setStatus("Key Pressed1");
+    private: void innerJPanelKeyReleased(java::awt::event::KeyEvent* evt){
+StatusFactory::getInstance()->setStatus("Key Pressed1");
     
 }
 
 
-    private: void innerJPanelKeyPressed(java::awt::event::KeyEvent evt){
-StatusFactory::getInstance().setStatus("Key Pressed2");
+    private: void innerJPanelKeyPressed(java::awt::event::KeyEvent* evt){
+StatusFactory::getInstance()->setStatus("Key Pressed2");
     
 }
 
 
-    private: void innerJPanelKeyTyped(java::awt::event::KeyEvent evt){
-StatusFactory::getInstance().setStatus("Key Pressed3");
+    private: void innerJPanelKeyTyped(java::awt::event::KeyEvent* evt){
+StatusFactory::getInstance()->setStatus("Key Pressed3");
     
 }
 
 
-    public: void keyPressed(java::awt::event::KeyEvent keyEvent){
-this->getCurrentFrame().keyPressed(keyEvent);
+    public: void keyPressed(java::awt::event::KeyEvent* keyEvent){
+this->getCurrentFrame()->keyPressed(keyEvent);
     
 }
 
 
-    public: void keyReleased(java::awt::event::KeyEvent keyEvent){
+    public: void keyReleased(java::awt::event::KeyEvent* keyEvent){
 }
 
 
-    public: void keyTyped(java::awt::event::KeyEvent keyEvent){
+    public: void keyTyped(java::awt::event::KeyEvent* keyEvent){
 }
 
 
-    public: void delete_(MyCanvasEvent evt){
+    public: void delete_(MyCanvasEvent* evt){
 
-    HashMap<Object*, Object*> canvasJPanelHashMap = this->getCanvasHashMap();;
+    HashMap<Object*, Object*>* canvasJPanelHashMap = this->getCanvasHashMap();;
     
 
-                        if(canvasJPanelHashMap.containsKey(evt.getTreeNode()))
+                        if(canvasJPanelHashMap->containsKey(evt->getTreeNode()))
                         
                                     {
-                                    this->canvasHolderJPanel.removeAll();
+                                    this->canvasHolderJPanel->removeAll();
     
 
-    Integer frameInt = canvasJPanelHashMap.get(evt.getTreeNode());;
+    int32_t frameInt = canvasJPanelHashMap->get(evt->getTreeNode());;
     
-this->canvasJPanelList.remove(frameInt.intValue());
+this->canvasJPanelList->remove(frameInt.intValue());
     
 this->select(frameInt.intValue());
     
@@ -791,32 +797,32 @@ this->select(frameInt.intValue());
 
                 //@Throws(Exception.constructor)
             
-    public: void duplicate(MyCanvasEvent evt){
-this->duplicate(evt.getTreeNode());
+    public: void duplicate(MyCanvasEvent* evt){
+this->duplicate(evt->getTreeNode());
     
 }
 
 
-    public: void select(MyCanvasEvent evt){
-this->select(evt.getTreeNode());
+    public: void select(MyCanvasEvent* evt){
+this->select(evt->getTreeNode());
     
-StatusFactory::getInstance().setStatus("Frame Selected");
+StatusFactory::getInstance()->setStatus("Frame Selected");
     
 }
 
 
-    public: void rotate(MyCanvasEvent evt){
+    public: void rotate(MyCanvasEvent* evt){
 
-    HashMap<Object*, Object*> canvasJPanelHashMap = this->getCanvasHashMap();;
+    HashMap<Object*, Object*>* canvasJPanelHashMap = this->getCanvasHashMap();;
     
 
-    MutableTreeNode treeNode = evt.getTreeNode();;
+    MutableTreeNode* treeNode = evt->getTreeNode();;
     
 
-    Integer frameInt = canvasJPanelHashMap.get(evt.getTreeNode());;
+    int32_t frameInt = canvasJPanelHashMap->get(evt->getTreeNode());;
     
 
-    CanvasJPanel canvasJPanel = this->canvasJPanelList.get(frameInt.intValue());;
+    CanvasJPanel* canvasJPanel = dynamic_cast<CanvasJPanel*>(this->canvasJPanelList->get(frameInt.intValue()));;
     
 
                         if(canvasJPanel != 
@@ -824,19 +830,19 @@ StatusFactory::getInstance().setStatus("Frame Selected");
                                 )
                         
                                     {
-                                    canvasJPanel.addAngle(evt.getAngle());
+                                    canvasJPanel->addAngle(evt->getAngle());
     
 this->select(frameInt.intValue());
     
 
                                     }
                                 
-StatusFactory::getInstance().setStatus("Canvas Rotated");
+StatusFactory::getInstance()->setStatus("Canvas Rotated");
     
 }
 
 
-    public: void explode(MyCanvasEvent evt){
+    public: void explode(MyCanvasEvent* evt){
 this->explodeAll();
     
 }
@@ -844,7 +850,7 @@ this->explodeAll();
 
                 //@Throws(Exception.constructor)
             
-    public: void autoExplode(MyCanvasEvent evt){
+    public: void autoExplode(MyCanvasEvent* evt){
 this->autoExplode(10, 0);
     
 }
@@ -854,16 +860,16 @@ this->autoExplode(10, 0);
             
     public: void center(){
 
-    CanvasJPanel canvasJPanel = this->getCurrentFrame();;
+    CanvasJPanel* canvasJPanel = dynamic_cast<CanvasJPanel*>(this->getCurrentFrame());;
     
-canvasJPanel.center();
+canvasJPanel->center();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void center(MyCanvasEvent evt){
+    public: void center(MyCanvasEvent* evt){
 this->center();
     
 }
@@ -880,7 +886,7 @@ this->center();
                         
                                     {
                                     
-    int32_t size = this->canvasJPanelList.size();;
+    int32_t size = this->canvasJPanelList->size();;
     
 
 
@@ -920,14 +926,14 @@ Thread::sleep(250);
 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 }
 
 }
 
 
-    private: javax::swing::JPanel innerJPanel;
+    private: javax::swing::JPanel* innerJPanel;
 
 };
 

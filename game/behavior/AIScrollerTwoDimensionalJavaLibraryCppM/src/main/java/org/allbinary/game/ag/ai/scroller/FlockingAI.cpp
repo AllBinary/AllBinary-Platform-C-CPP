@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -73,13 +81,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasePatrolAI.h"
+        #include "org/allbinary/game/ag/ai/scroller/BasePatrolAI.h"
 
 class FlockingAI: public BasicAI {
 
     private: int32_t allowedDistance;
 
-public: FlockingAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput) : BasicAI(ownerLayerInterface, gameInput){
+public: FlockingAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -87,7 +95,7 @@ public: FlockingAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer owner
                             //For kotlin this is before the body of the constructor.
                     
 
-    Integer allowedDistance = hashtable.get(BasePatrolAI::MAX_DISTANCE);;
+    int32_t allowedDistance = hashtable->get(BasePatrolAI::MAX_DISTANCE);;
     
 this->allowedDistance= allowedDistance.intValue();
     
@@ -96,27 +104,27 @@ this->allowedDistance= allowedDistance.intValue();
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
 
     int32_t maxDistance = 0;;
     
 
-    AllBinaryLayer farAllbinaryLayer = AllBinaryLayer::NULL_ALLBINARY_LAYER;;
+    AllBinaryLayer* farAllbinaryLayer = AllBinaryLayer::NULL_ALLBINARY_LAYER;;
     
 
-    GroupLayerManagerListener groupLayerManagerListener = GroupLayerManagerListener::getInstance();;
+    GroupLayerManagerListener* groupLayerManagerListener = GroupLayerManagerListener::getInstance();;
     
 
-    BasicArrayList list = groupLayerManagerListener.getList(BasicGroupFactory::getInstance().ENEMY);;
+    BasicArrayList* list = groupLayerManagerListener->getList(BasicGroupFactory::getInstance()->ENEMY);;
     
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
-    AllBinaryLayer allBinaryLayer;;
+    AllBinaryLayer* allBinaryLayer;;
     
 
-    AllBinaryLayer ownerLayerInterface;;
+    AllBinaryLayer* ownerLayerInterface;;
     
 
 
@@ -125,10 +133,10 @@ this->allowedDistance= allowedDistance.intValue();
                         for (
     int32_t index = 0;index < size; index++)
         {
-allBinaryLayer= list.get(index);
+allBinaryLayer= dynamic_cast<AllBinaryLayer*>(list->get(index));
     
 
-                        if(allBinaryLayer.getType() != WeaponLayer::getStaticType())
+                        if(allBinaryLayer->getType() != WeaponLayer::getStaticType())
                         
                                     {
                                     
@@ -171,7 +179,7 @@ farAllbinaryLayer= allBinaryLayer;
                                     ownerLayerInterface= this->getOwnerLayerInterface();
     
 
-                        if(farAllbinaryLayer.getXP() < ownerLayerInterface.getXP())
+                        if(farAllbinaryLayer->getXP() < ownerLayerInterface->getXP())
                         
                                     {
                                     this->processKeyAI(Canvas::LEFT);
@@ -180,7 +188,7 @@ farAllbinaryLayer= allBinaryLayer;
                                     }
                                 
                              else 
-                        if(farAllbinaryLayer.getXP() > ownerLayerInterface.getXP())
+                        if(farAllbinaryLayer->getXP() > ownerLayerInterface->getXP())
                         
                                     {
                                     this->processKeyAI(Canvas::RIGHT);
@@ -189,7 +197,7 @@ farAllbinaryLayer= allBinaryLayer;
                                     }
                                 
                              else 
-                        if(farAllbinaryLayer.getYP() > ownerLayerInterface.getYP())
+                        if(farAllbinaryLayer->getYP() > ownerLayerInterface->getYP())
                         
                                     {
                                     this->processKeyAI(Canvas::UP);
@@ -198,7 +206,7 @@ farAllbinaryLayer= allBinaryLayer;
                                     }
                                 
                              else 
-                        if(farAllbinaryLayer.getYP() < ownerLayerInterface.getYP())
+                        if(farAllbinaryLayer->getYP() < ownerLayerInterface->getYP())
                         
                                     {
                                     this->processKeyAI(Canvas::DOWN);
@@ -215,21 +223,21 @@ farAllbinaryLayer= allBinaryLayer;
 }
 
 
-    private: int32_t getXYDistance(AllBinaryLayer allBinaryLayer){
+    private: int32_t getXYDistance(AllBinaryLayer* allBinaryLayer){
 
-    AllBinaryLayer ownerLayerInterface = this->getOwnerLayerInterface();;
+    AllBinaryLayer* ownerLayerInterface = this->getOwnerLayerInterface();;
     
 
-    int32_t xTotalDistance = (allBinaryLayer.getXP() +allBinaryLayer.getHalfWidth()) -(ownerLayerInterface.getXP() +ownerLayerInterface.getHalfWidth());;
+    int32_t xTotalDistance = (allBinaryLayer->getXP() +allBinaryLayer->getHalfWidth()) -(ownerLayerInterface->getXP() +ownerLayerInterface->getHalfWidth());;
     
 
-    int32_t yTotalDistance = (allBinaryLayer.getYP() +allBinaryLayer.getHalfHeight()) -(ownerLayerInterface.getYP() +ownerLayerInterface.getHalfHeight());;
+    int32_t yTotalDistance = (allBinaryLayer->getYP() +allBinaryLayer->getHalfHeight()) -(ownerLayerInterface->getYP() +ownerLayerInterface->getHalfHeight());;
     
 
-    MathUtil mathUtil = MathUtil::getInstance();;
+    MathUtil* mathUtil = MathUtil::getInstance();;
     
 
-    int32_t totalDistance = mathUtil.abs(xTotalDistance) +mathUtil.abs(yTotalDistance);;
+    int32_t totalDistance = mathUtil->abs(xTotalDistance) +mathUtil->abs(yTotalDistance);;
     
 
 

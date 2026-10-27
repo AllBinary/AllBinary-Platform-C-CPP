@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_EMULATOR_SWT_SWTPROCESSOR_H
         #define ORG_ALLBINARY_EMULATOR_SWT_SWTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Runnable.h"
@@ -54,15 +60,15 @@ class SWTProcessor
             : public Object
          {
 
-    private: static SWTProcessor instance() { return SWTProcessor(); }
+    private: static SWTProcessor* instance() { static std::unique_ptr<SWTProcessor> value(new SWTProcessor()); return value.get(); }
 
-    public: static SWTProcessor getInstance();
+    public: static SWTProcessor* getInstance();
 
 protected: SWTProcessor();
 
-    public: Runnable runnable = NullRunnable::getInstance();
+    public: Runnable* runnable = NullRunnable::getInstance();
 
-    public: void process(Display display);
+    public: void process(Display* display);
 
 };
 

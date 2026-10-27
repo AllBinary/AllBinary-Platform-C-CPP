@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -55,25 +63,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PathFindingNode.h"
-#include "Comparable.h"
-#include "PathFindingNodeCostInfo.h"
+        #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNode.h"
+#include "org/allbinary/media/graphics/geography/pathfinding/Comparable.h"
+#include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfo.h"
 
-class PathFindingNodeCost: public PathFindingNode, public Comparable<PathFindingNodeCost> {
+class PathFindingNodeCost: public PathFindingNode, public Comparable<PathFindingNodeCost*> {
 
-    public: static const std::vector<std::vector<PathFindingNodeCost>> NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY = std::vector<std::vector<PathFindingNodeCost>>(0, std::vector<PathFindingNodeCost>(0));
+    public: static inline const std::vector<std::vector<PathFindingNodeCost*>> NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY = std::vector<std::vector<PathFindingNodeCost*>>(0, std::vector<PathFindingNodeCost*>(0));
 
-    private: const CommonSeps commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps = CommonSeps::getInstance();
 
-    public: PathFindingNodeCostInfo pathFindingNodeCostInfoP;
+    public: PathFindingNodeCostInfo* pathFindingNodeCostInfoP;
 
-public: PathFindingNodeCost(Object* parent, GeographicMapCellPosition geographicMapCellPosition, PathFindingNodeCostInfo pathFindingNodeCostInfo);
+public: PathFindingNodeCost(Object* parent, GeographicMapCellPosition* geographicMapCellPosition, PathFindingNodeCostInfo* pathFindingNodeCostInfo);
 
-    public: PathFindingNodeCostInfo getPathFindingNodeCostInfo();
+    public: PathFindingNodeCostInfo* getPathFindingNodeCostInfo();
 
-    public: void setPathFindingNodeCostInfo(PathFindingNodeCostInfo pathFindingNodeCostInfo);
+    public: void setPathFindingNodeCostInfo(PathFindingNodeCostInfo* pathFindingNodeCostInfo);
 
-    public: int32_t compareTo(PathFindingNodeCost pathFindingNodeCost);
+    public: int32_t compareTo(PathFindingNodeCost* pathFindingNodeCost);
 
     public: std::string toString();
 

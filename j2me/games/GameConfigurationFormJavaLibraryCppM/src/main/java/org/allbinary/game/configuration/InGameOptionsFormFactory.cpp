@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,20 +67,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InGameOptionsForm.h"
+        #include "org/allbinary/game/configuration/InGameOptionsForm.h"
 
 class InGameOptionsFormFactory
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static InGameOptionsFormFactory getInstance(){
+    public: static InGameOptionsFormFactory* getInstance(){
 
-                        if(InGameOptionsFormFactory::instance() == NullUtil::getInstance().NULL_OBJECT)
+                        if(InGameOptionsFormFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    InGameOptionsFormFactory::instance= InGameOptionsFormFactory();
+                                    InGameOptionsFormFactory::instance= new InGameOptionsFormFactory();
     
 
                                     }
@@ -83,44 +89,44 @@ class InGameOptionsFormFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InGameOptionsFormFactory::instance();
+                        return dynamic_cast<InGameOptionsFormFactory*>(InGameOptionsFormFactory::instance);
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: CommandForm SINGLETON = CommandForm::getNullCommandForm();
+    private: CommandForm* SINGLETON = CommandForm::getNullCommandForm();
 
-    public: void init(CommandListener commandListener, Init initInterface, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
+    public: void init(CommandListener* commandListener, Init* initInterface, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor){
 
         try {
             
                         if(this->SINGLETON == CommandForm::getNullCommandForm())
                         
                                     {
-                                    initInterface.init();
+                                    initInterface->init();
     
-this->SINGLETON= InGameOptionsForm(commandListener, title, backgrounBasicColor, foregroundBasicColor);
+this->SINGLETON= new InGameOptionsForm(commandListener, title, backgrounBasicColor, foregroundBasicColor);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.INIT, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->INIT, &e);
     
 }
 
 }
 
 
-    public: CommandForm get(){
+    public: CommandForm* get(){
 
 
 

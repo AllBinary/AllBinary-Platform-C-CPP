@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -90,9 +96,9 @@ class InventorySearchProductUtil
             : public Object
          {
 
-    private: static InventorySearchProductUtil instance() { return InventorySearchProductUtil(); }
+    private: static InventorySearchProductUtil* instance() { static std::unique_ptr<InventorySearchProductUtil> value(new InventorySearchProductUtil()); return value.get(); }
 
-    public: static InventorySearchProductUtil getInstance(){
+    public: static InventorySearchProductUtil* getInstance(){
 
 
 
@@ -102,22 +108,22 @@ class InventorySearchProductUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: const std::string ITEM_NOT_FOUND = "Item Not Found.";
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getProduct(AbeClientInformationInterface abeClientInformation, SearchRequest searchRequest, std::string product){
+    public: std::string getProduct(AbeClientInformationInterface* abeClientInformation, SearchRequest* searchRequest, std::string product){
 
         try {
             
-    InventoryEntity inventoryEntityInterface = InventoryEntityFactory::getInstance().getInventoryEntityInstance();;
+    InventoryEntity* inventoryEntityInterface = InventoryEntityFactory::getInstance()->getInventoryEntityInstance();;
     
 
-    ItemInterface itemInterface = inventoryEntityInterface.getItem(product);;
+    ItemInterface* itemInterface = inventoryEntityInterface->getItem(product);;
     
 
                         if(itemInterface != 
@@ -126,15 +132,15 @@ class InventorySearchProductUtil
                         
                                     {
                                     
-    TransformDocumentInterface viewDocumentInterface = TransformStoreDocumentFactory::getInstance(searchRequest);;
+    TransformDocumentInterface* viewDocumentInterface = TransformStoreDocumentFactory::getInstance(searchRequest);;
     
-viewDocumentInterface.getBaseNode().appendChild(BasicItemView(itemInterface, BasicArrayListD()).toXmlNode(viewDocumentInterface.getDoc()));
-    
-
-    std::string success = XmlDocumentHelper::toString(viewDocumentInterface.getDoc());;
+viewDocumentInterface->getBaseNode()->appendChild((new BasicItemView(itemInterface, new BasicArrayListD()))->toXmlNode(viewDocumentInterface->getDoc()));
     
 
-    std::string outputStr = StoreTransformer(abeClientInformation, TransformInfoHttpSearch(searchRequest)).translate(success);;
+    std::string success = XmlDocumentHelper::toString(viewDocumentInterface->getDoc());;
+    
+
+    std::string outputStr = (new StoreTransformer(abeClientInformation, dynamic_cast<TransformInfoInterface*>(new TransformInfoHttpSearch(searchRequest))))->translate(success);;
     
 
 
@@ -157,13 +163,13 @@ viewDocumentInterface.getBaseNode().appendChild(BasicItemView(itemInterface, Bas
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRODUCTSEARCHLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, "getProduct", e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "getProduct", &e);
     
 
                                     }
@@ -171,7 +177,7 @@ viewDocumentInterface.getBaseNode().appendChild(BasicItemView(itemInterface, Bas
 
 
 
-                            throw Exception("Failed to getProduct");
+                            throw new Exception("Failed to getProduct");
                     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_SPECIAL_SPECIALITEMDATA_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_SPECIAL_SPECIALITEMDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class SpecialItemData
             : public Object
          {
 
-    public: static const std::string START_TIME = "SPECIALITEM_START_TIME";
+    public: static inline const std::string START_TIME = "SPECIALITEM_START_TIME";
 
-    public: static const std::string END_TIME = "SPECIALITEM_END_TIME";
+    public: static inline const std::string END_TIME = "SPECIALITEM_END_TIME";
 
 };
 

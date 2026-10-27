@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/NamedInterface.h>
@@ -46,7 +52,7 @@ class DestroyableInterface: public NamedInterface {
 
                 //@Throws(Exception.constructor)
             
-    bool isDestroyed()
+    public: virtual bool isDestroyed() = 0;
 
 };
 

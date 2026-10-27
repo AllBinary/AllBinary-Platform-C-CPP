@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_WORKFLOW_WORKFLOWSVIEW_H
         #define VIEWS_ADMIN_WORKFLOW_WORKFLOWSVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -80,11 +86,11 @@
         
 class WorkFlowsView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: BasicArrayList workFlowsVector;
+    private: BasicArrayList* workFlowsVector;
 
-public: WorkFlowsView(TransformInfoInterface transformInfoInterface);
+public: WorkFlowsView(TransformInfoInterface* transformInfoInterface);
 
     public: void addDomNodeInterfaces();
 
@@ -92,7 +98,7 @@ public: WorkFlowsView(TransformInfoInterface transformInfoInterface);
             
     public: std::string view();
 
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

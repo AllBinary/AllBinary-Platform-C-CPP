@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -80,17 +86,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageFactory.h"
+        #include "org/allbinary/image/ImageFactory.h"
 
 class ImageCacheBase
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const ImageFactory imageFactory = ImageFactory::getInstance();
+    protected: ImageFactory* imageFactory = ImageFactory::getInstance();
 
-    protected: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
+    protected: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
 
     protected: const int32_t SIZE = 128;
 
@@ -98,9 +104,9 @@ class ImageCacheBase
 
     protected: const std::vector<int32_t> heights = std::vector<int32_t>(this->SIZE);
 
-    protected: const std::vector<BasicArrayList> listOfList = std::vector<BasicArrayList>(this->SIZE);
+    protected: const std::vector<BasicArrayList*> listOfList = std::vector<BasicArrayList*>(this->SIZE);
 
-    protected: const std::vector<BasicArrayList> availableListOfList = std::vector<BasicArrayList>(this->SIZE);
+    protected: const std::vector<BasicArrayList*> availableListOfList = std::vector<BasicArrayList*>(this->SIZE);
 
     protected: int32_t volume = 0;
 
@@ -108,35 +114,35 @@ class ImageCacheBase
 
 public: ImageCacheBase();
 
-    protected: Image getImage(Object* resourceId);
+    protected: Image* getImage(Object* resourceId);
 
     public: void releaseAll();
 
     protected: int32_t getIndexWH(int32_t width, int32_t height);
 
-    protected: Image getFromAvailable(int32_t foundIndex, int32_t width, int32_t height);
+    protected: Image* getFromAvailable(int32_t foundIndex, int32_t width, int32_t height);
 
                 //@Throws(Exception.constructor)
             
-    public: Image get(std::string caller, int32_t width, int32_t height);
+    public: Image* get(std::string caller, int32_t width, int32_t height);
 
                 //@Throws(Exception.constructor)
             
-    public: Image getWithKey(Object* key);
+    public: Image* getWithKey(Object* key);
 
                 //@Throws(Exception.constructor)
             
-    protected: Image createImage(std::string caller, int32_t width, int32_t height);
+    protected: Image* createImage(std::string caller, int32_t width, int32_t height);
 
                 //@Throws(Exception.constructor)
             
-    protected: Image createImageFromInputStream(Object* key, InputStream inputStream);
+    protected: Image* createImageFromInputStream(Object* key, InputStream* inputStream);
 
     public: std::string toString();
 
-    public: ABHashtable<Object*, Object*> getHashtableP();
+    public: ABHashtable<Object*, Object*>* getHashtableP();
 
-    public: void init(Image image);
+    public: void init(Image* image);
 
     public: void initProgress();
 

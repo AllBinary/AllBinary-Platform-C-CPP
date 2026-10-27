@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/CompleteMotionGestureInputEventListenerInterface.h>
@@ -53,11 +59,11 @@
         
 class AllBinaryOrientationSensor: public AllBinarySensor {
 
-    public: static const AllBinaryOrientationSensor NULL_ALLBINARY_ORIENTATION_SENSOR = AllBinaryOrientationSensor();
+    public: static AllBinaryOrientationSensor* NULL_ALLBINARY_ORIENTATION_SENSOR() { static std::unique_ptr<AllBinaryOrientationSensor> value(new AllBinaryOrientationSensor()); return value.get(); }
 
-    private: CompleteMotionGestureInputEventListenerInterface listener = NoCompleteMotionGestureInputEventListener::getInstance();
+    private: CompleteMotionGestureInputEventListenerInterface* listener = NoCompleteMotionGestureInputEventListener::getInstance();
 
-    public: void setListener(CompleteMotionGestureInputEventListenerInterface completeMotionGestureInputEventListenerInterface){
+    public: void setListener(CompleteMotionGestureInputEventListenerInterface* completeMotionGestureInputEventListenerInterface){
 this->listener= completeMotionGestureInputEventListenerInterface;
     
 }
@@ -69,11 +75,11 @@ public: AllBinaryOrientationSensor(){
 
                 //@Throws(Exception.constructor)
             
-    public: Orientation getOrientation(){
+    public: Orientation* getOrientation(){
 
 
 
-                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw new Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 

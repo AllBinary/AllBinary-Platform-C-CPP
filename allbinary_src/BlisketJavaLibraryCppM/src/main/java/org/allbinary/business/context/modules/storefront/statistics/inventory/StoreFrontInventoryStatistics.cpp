@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -71,28 +77,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreFrontInventoryStatisticsInterface.h"
-#include "StoreFrontInventoryStatisticsData.h"
+        #include "org/allbinary/business/context/modules/storefront/statistics/inventory/StoreFrontInventoryStatisticsInterface.h"
+#include "org/allbinary/business/context/modules/storefront/statistics/inventory/StoreFrontInventoryStatisticsData.h"
 
 class StoreFrontInventoryStatistics
             : public Object
-        : public StoreFrontInventoryStatisticsInterface {
+        , public StoreFrontInventoryStatisticsInterface {
 
     private: int64_t totalNumberOfItems= 0;
 
-    private: Money totalInventorySaleValueMoney;
+    private: Money* totalInventorySaleValueMoney;
 
-public: StoreFrontInventoryStatistics(StoreFrontInterface storeFrontInterface){
-this->totalInventorySaleValueMoney= Money();
+public: StoreFrontInventoryStatistics(StoreFrontInterface* storeFrontInterface){
+this->totalInventorySaleValueMoney= new Money();
     
 
-    InventoryEntityInterface inventoryEntityInterface = InventoryEntityFactory::getInstance().getInventoryEntityInstance();;
+    InventoryEntityInterface* inventoryEntityInterface = InventoryEntityFactory::getInstance()->getInventoryEntityInstance();;
     
 
-    BasicArrayList itemVector = inventoryEntityInterface.getItems(storeFrontInterface);;
+    BasicArrayList* itemVector = inventoryEntityInterface->getItems(storeFrontInterface);;
     
 
-    int32_t size = itemVector.size();;
+    int32_t size = itemVector->size();;
     
 
 
@@ -102,36 +108,36 @@ this->totalInventorySaleValueMoney= Money();
     int32_t index = 0;index < size; index++)
         {
 
-    ItemInterface itemInterface = itemVector.get(index);;
+    ItemInterface* itemInterface = dynamic_cast<ItemInterface*>(itemVector->get(index));;
     
 
-    int32_t numberInStock = Integer::valueOf(itemInterface.getNumber()).intValue();;
+    int32_t numberInStock = Integer.valueOf(itemInterface->getNumber())->intValue();;
     
 this->totalNumberOfItems= this->totalNumberOfItems +numberInStock;
     
 
-    Money itemPriceMoney = itemInterface.getPrice();;
+    Money* itemPriceMoney = itemInterface->getPrice();;
     
-itemPriceMoney.multiply(numberInStock);
+itemPriceMoney->multiply(numberInStock);
     
-this->totalInventorySaleValueMoney.add(itemPriceMoney.toString());
+this->totalInventorySaleValueMoney->add(itemPriceMoney->toString());
     
 }
 
 }
 
 
-    public: Long getNumber(){
+    public: int64_t getNumber(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Long(this->totalNumberOfItems);
+                        return int64_t(this->totalNumberOfItems);
     
 }
 
 
-    public: Money getTotal(){
+    public: Money* getTotal(){
 
 
 
@@ -141,13 +147,13 @@ this->totalInventorySaleValueMoney.add(itemPriceMoney.toString());
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(StoreFrontInventoryStatisticsData::getInstance().NUMBEROFITEMS, this->getNumber().toString());
+hashMap->put(StoreFrontInventoryStatisticsData::getInstance()->NUMBEROFITEMS, this->getNumber().toString());
     
-hashMap.put(StoreFrontInventoryStatisticsData::getInstance().TOTALVALUE, this->getTotal().toString());
+hashMap->put(StoreFrontInventoryStatisticsData::getInstance()->TOTALVALUE, this->getTotal()->toString());
     
 
 
@@ -158,7 +164,7 @@ hashMap.put(StoreFrontInventoryStatisticsData::getInstance().TOTALVALUE, this->g
 }
 
 
-    public: BasicArrayList toVector(){
+    public: BasicArrayList* toVector(){
 
 
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -64,35 +70,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SpriteIndexedAnimation.h"
-#include "AdjustedSpriteIndexedAnimation.h"
+        #include "org/allbinary/animation/image/sprite/SpriteIndexedAnimation.h"
+#include "org/allbinary/animation/image/sprite/AdjustedSpriteIndexedAnimation.h"
 
 class OneRowSpriteIndexedAnimationFactory: public BaseImageAnimationFactory {
 
                 //@Throws(Exception.constructor)
             
-    public: static OneRowSpriteIndexedAnimationFactory createFactoryDX(Image image, int32_t dx, AnimationBehaviorFactory animationBehaviorFactory){
+    public: static OneRowSpriteIndexedAnimationFactory* createFactoryDX(Image* image, int32_t dx, AnimationBehaviorFactory* animationBehaviorFactory){
 
-    OneRowSpriteIndexedAnimationFactory oneRowSpriteIndexedAnimationFactory = OneRowSpriteIndexedAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), image.getHeight(), image.getHeight(), 0, 0, animationBehaviorFactory);;
+    OneRowSpriteIndexedAnimationFactory* oneRowSpriteIndexedAnimationFactory = new OneRowSpriteIndexedAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), image->getHeight(), image->getHeight(), 0, 0, animationBehaviorFactory);;
     
-oneRowSpriteIndexedAnimationFactory.initW(dx);
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return oneRowSpriteIndexedAnimationFactory;
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: static OneRowSpriteIndexedAnimationFactory createFactoryDXY(Image image, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory){
-
-    OneRowSpriteIndexedAnimationFactory oneRowSpriteIndexedAnimationFactory = OneRowSpriteIndexedAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), image.getHeight(), image.getHeight(), 0, 0, animationBehaviorFactory);;
-    
-oneRowSpriteIndexedAnimationFactory.init(dx, dy);
+oneRowSpriteIndexedAnimationFactory->initW(dx);
     
 
 
@@ -105,31 +94,48 @@ oneRowSpriteIndexedAnimationFactory.init(dx, dy);
 
                 //@Throws(Exception.constructor)
             
-    public: static OneRowSpriteIndexedAnimationFactory createFactoryWH(Image image, int32_t width, int32_t height, AnimationBehaviorFactory animationBehaviorFactory){
+    public: static OneRowSpriteIndexedAnimationFactory* createFactoryDXY(Image* image, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory){
+
+    OneRowSpriteIndexedAnimationFactory* oneRowSpriteIndexedAnimationFactory = new OneRowSpriteIndexedAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), image->getHeight(), image->getHeight(), 0, 0, animationBehaviorFactory);;
+    
+oneRowSpriteIndexedAnimationFactory->init(dx, dy);
+    
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OneRowSpriteIndexedAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), width, height, 0, 0, animationBehaviorFactory);
+                        return oneRowSpriteIndexedAnimationFactory;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: static OneRowSpriteIndexedAnimationFactory createFactory(Image image, AnimationBehaviorFactory animationBehaviorFactory){
+    public: static OneRowSpriteIndexedAnimationFactory* createFactoryWH(Image* image, int32_t width, int32_t height, AnimationBehaviorFactory* animationBehaviorFactory){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OneRowSpriteIndexedAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), image.getHeight(), image.getHeight(), 0, 0, animationBehaviorFactory);
+                        return new OneRowSpriteIndexedAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), width, height, 0, 0, animationBehaviorFactory);
     
 }
 
 
-    private: const AnimationFactorySpriteScaleUtil animationFactorySpriteScaleUtil = AnimationFactorySpriteScaleUtil::getInstance();
+                //@Throws(Exception.constructor)
+            
+    public: static OneRowSpriteIndexedAnimationFactory* createFactory(Image* image, AnimationBehaviorFactory* animationBehaviorFactory){
 
-public: OneRowSpriteIndexedAnimationFactory(Image image, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory) : BaseImageAnimationFactory(image, sequenceArray, width, height, dx, dy, animationBehaviorFactory){
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return new OneRowSpriteIndexedAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), image->getHeight(), image->getHeight(), 0, 0, animationBehaviorFactory);
+    
+}
+
+
+    private: AnimationFactorySpriteScaleUtil* animationFactorySpriteScaleUtil = AnimationFactorySpriteScaleUtil::getInstance();
+
+public: OneRowSpriteIndexedAnimationFactory(Image* image, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory) : BaseImageAnimationFactory(image, sequenceArray, width, height, dx, dy, animationBehaviorFactory){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -157,9 +163,9 @@ this->animationFactoryInitializationVisitor.dx +=  -(this->animationFactoryIniti
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId){
+    public: Animation* getInstance(int32_t instanceId){
 
-    Sprite sprite = this->animationFactorySpriteScaleUtil.createImage(this->getImage(), this->animationFactoryInitializationVisitor.width, this->animationFactoryInitializationVisitor.height, this->scaleProperties.scaleWidth, this->scaleProperties.scaleHeight);;
+    Sprite* sprite = this->animationFactorySpriteScaleUtil->createImage(this->getImage(), this->animationFactoryInitializationVisitor.width, this->animationFactoryInitializationVisitor.height, this->scaleProperties.scaleWidth, this->scaleProperties.scaleHeight);;
     
 
                         if(this->animationFactoryInitializationVisitor.dx != 0 || this->animationFactoryInitializationVisitor.dy != 0)
@@ -169,7 +175,7 @@ this->animationFactoryInitializationVisitor.dx +=  -(this->animationFactoryIniti
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdjustedSpriteIndexedAnimation(sprite, this->getImage(), BasicColorUtil::getInstance().ZERO_ARRAY, this->animationFactoryInitializationVisitor.dx, this->animationFactoryInitializationVisitor.dy, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new AdjustedSpriteIndexedAnimation(sprite, this->getImage(), BasicColorUtil::getInstance()->ZERO_ARRAY, this->animationFactoryInitializationVisitor.dx, this->animationFactoryInitializationVisitor.dy, this->animationBehaviorFactory.getOrCreateInstance());
     
 
                                     }
@@ -179,7 +185,7 @@ this->animationFactoryInitializationVisitor.dx +=  -(this->animationFactoryIniti
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SpriteIndexedAnimation(sprite, this->getImage(), BasicColorUtil::getInstance().ZERO_ARRAY, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new SpriteIndexedAnimation(sprite, this->getImage(), BasicColorUtil::getInstance()->ZERO_ARRAY, this->animationBehaviorFactory.getOrCreateInstance());
     
 
                         }

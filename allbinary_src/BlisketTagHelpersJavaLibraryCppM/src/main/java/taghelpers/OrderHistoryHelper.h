@@ -21,6 +21,12 @@
         #ifndef TAGHELPERS_ORDERHISTORYHELPER_H
         #define TAGHELPERS_ORDERHISTORYHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -95,19 +101,19 @@
         
 class OrderHistoryHelper: public TagHelper {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: WeblisketSession weblisketSession;
+    private: WeblisketSession* weblisketSession;
 
-    private: StoreFrontInterface storeFrontInterface;
+    private: StoreFrontInterface* storeFrontInterface;
 
-    private: HashMap<Object*, Object*> propertiesHashMap;
+    private: HashMap<Object*, Object*>* propertiesHashMap;
 
-    private: PageContext pageContext;
+    private: PageContext* pageContext;
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
-    private: StreetAddress streetAddress;
+    private: StreetAddress* streetAddress;
 
     private: std::string id;
 
@@ -117,7 +123,7 @@ class OrderHistoryHelper: public TagHelper {
 
     private: std::string newStatus;
 
-public: OrderHistoryHelper(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
+public: OrderHistoryHelper(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext);
 
     private: void getFormData();
 

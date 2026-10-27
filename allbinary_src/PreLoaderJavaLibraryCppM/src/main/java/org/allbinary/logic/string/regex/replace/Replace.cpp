@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -82,12 +88,12 @@ class Replace
 
         try {
             
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
 
-    AppUrlGlobals appUrlGlobals = AppUrlGlobals();;
+    AppUrlGlobals* appUrlGlobals = new AppUrlGlobals();;
     
-appUrlGlobals.setWebappPath("G:/mnt/bc/mydev/work/allbinary_src/ToolsJavaLibrary/tools");
+appUrlGlobals->setWebappPath("G:/mnt/bc/mydev/work/allbinary_src/ToolsJavaLibrary/tools");
     
 URLGLOBALS::init(appUrlGlobals);
     
@@ -95,33 +101,33 @@ URLGLOBALS::init(appUrlGlobals);
     std::string testString = "\"super gun\" big tank \"goodgunriflegun";;
     
 
-    Replace replace = Replace("gun", "abcdefghijklmnopqrstuxwxyzabcdefghijklmnopqrstuxwxyz");;
+    Replace* replace = new Replace("gun", "abcdefghijklmnopqrstuxwxyzabcdefghijklmnopqrstuxwxyz");;
     
-console.log("Old String: " +testString);
+System.out.println("Old String: " +testString);
     
-testString= replace.all(testString);
+testString= replace->all(testString);
     
-console.log("New String: " +testString);
+System.out.println("New String: " +testString);
     
 
-    Replace replaceCat = Replace("abcdefghijklmnopqrstuxwxyzabcdefghijklmnopqrstuxwxyz", stringUtil.EMPTY_STRING);;
+    Replace* replaceCat = new Replace("abcdefghijklmnopqrstuxwxyzabcdefghijklmnopqrstuxwxyz", stringUtil->EMPTY_STRING);;
     
-testString= replaceCat.all(testString);
+testString= replaceCat->all(testString);
     
-console.log("New String: " +testString);
+System.out.println("New String: " +testString);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 }
 
 }
 
 
-    private: const LogUtil logUtil = LogUtil::getInstance();
+    private: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const J2SEUtil j2seUtil = J2SEUtil::getInstance();
+    private: J2SEUtil* j2seUtil = J2SEUtil::getInstance();
 
     private: const std::string REPLACERS_ = "Replacers: ";
 
@@ -129,12 +135,12 @@ console.log("New String: " +testString);
 
     private: const std::string FOUND_KEY = "found key total: ";
 
-    private: HashMap<Object*, Object*> hashMap;
+    private: HashMap<Object*, Object*>* hashMap;
 
 public: Replace(std::string key, std::string value){
-this->hashMap= StdUtil::getInstance().createHashMap();
+this->hashMap= StdUtil::getInstance()->createHashMap();
     
-this->hashMap.put(
+this->hashMap->put(
                                                 {
                                                     key
                                                 }, 
@@ -146,14 +152,14 @@ this->hashMap.put(
 
 
 public: Replace(std::vector<std::string> keys, std::vector<std::string> values){
-this->hashMap= StdUtil::getInstance().createHashMap();
+this->hashMap= StdUtil::getInstance()->createHashMap();
     
-this->hashMap.put(keys, values);
+this->hashMap->put(keys, values);
     
 }
 
 
-public: Replace(HashMap<Object*, Object*> hashMap){
+public: Replace(HashMap<Object*, Object*>* hashMap){
 this->hashMap= hashMap;
     
 }
@@ -164,14 +170,14 @@ this->hashMap= hashMap;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->upTo(replace, Integer::MIN_VALUE);;
+                        return this->upTo(replace, Integer.MIN_VALUE);;
     
 }
 
 
     public: std::string upTo(std::string replace, int32_t total){
 
-    StringMaker newStringBuffer = StringMaker();;
+    StringMaker* newStringBuffer = new StringMaker();;
     
 
     int32_t totalNumberOfReplaces = 0;;
@@ -183,7 +189,7 @@ this->hashMap= hashMap;
     std::vector<std::string> values;;
     
 
-    std::vector<Object*> keyArray = this->j2seUtil.getHashMapAsArray(this->hashMap);;
+    std::vector<Object*> keyArray = this->j2seUtil->getHashMapAsArray(this->hashMap);;
     
 
     int32_t size = keyArray.size();;
@@ -197,7 +203,7 @@ this->hashMap= hashMap;
         {
 keys= keyArray[index2] as string[];
     
-values= this->hashMap.get(keys) as string[];
+values= this->hashMap->get(keys) as string[];
     
 
     int64_t foundTotal = 0;;
@@ -221,7 +227,7 @@ values= this->hashMap.get(keys) as string[];
         while(index < replace.size())
         {
 
-    int32_t begin = replace.indexOf(keys[0], index);;
+    int32_t begin = JavaString::indexOf(replace, keys[0], index);;
     
 
                         if(begin !=  -1)
@@ -233,7 +239,7 @@ values= this->hashMap.get(keys) as string[];
                         if(foundTotal % 100 == 0)
                         
                                     {
-                                    console.log(this->FOUND_KEY +foundTotal);
+                                    System.out.println(this->FOUND_KEY +foundTotal);
     
 
                                     }
@@ -242,17 +248,17 @@ nextKey= keys[0];
     
 end= begin +nextKey.size();
     
-newStringBuffer.delete(0, newStringBuffer.length());
+newStringBuffer->delete(0, newStringBuffer->length());
     
-newStringBuffer.append(replace.substring(0, begin));
+newStringBuffer->append(JavaString::substring(replace, 0, begin));
     
-newStringBuffer.append(values[0]);
+newStringBuffer->append(values[0]);
     
-index= newStringBuffer.length();
+index= newStringBuffer->length();
     
-newStringBuffer.append(replace.substring(end, replace.size()));
+newStringBuffer->append(JavaString::substring(replace, end, replace.size()));
     
-replace= newStringBuffer.toString();
+replace= newStringBuffer->toString();
     
 
                         if(keys.size() > 1)
@@ -260,7 +266,7 @@ replace= newStringBuffer.toString();
                                     {
                                     nextSecondKey= keys[1];
     
-begin2= replace.indexOf(nextSecondKey, index);
+begin2= JavaString::indexOf(replace, nextSecondKey, index);
     
 
                         if(begin2 !=  -1)
@@ -269,17 +275,17 @@ begin2= replace.indexOf(nextSecondKey, index);
                                     
     int32_t end2 = begin2 +nextSecondKey.size();;
     
-newStringBuffer.delete(0, newStringBuffer.length());
+newStringBuffer->delete(0, newStringBuffer->length());
     
-newStringBuffer.append(replace.substring(0, begin2));
+newStringBuffer->append(JavaString::substring(replace, 0, begin2));
     
-newStringBuffer.append(values[1]);
+newStringBuffer->append(values[1]);
     
-index= newStringBuffer.length();
+index= newStringBuffer->length();
     
-newStringBuffer.append(replace.substring(end2, replace.size()));
+newStringBuffer->append(JavaString::substring(replace, end2, replace.size()));
     
-replace= newStringBuffer.toString();
+replace= newStringBuffer->toString();
     
 
                                     }
@@ -290,7 +296,7 @@ replace= newStringBuffer.toString();
 totalNumberOfReplaces++;
     
 
-                        if(total != Integer::MIN_VALUE && totalNumberOfReplaces >= total)
+                        if(total != Integer.MIN_VALUE && totalNumberOfReplaces >= total)
                         
                                     {
                                     break;
@@ -318,10 +324,10 @@ totalNumberOfReplaces++;
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().REPLACE))
+                        if(LogConfigTypes::LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->REPLACE))
                         
                                     {
-                                    this->logUtil.putF("Total Number Of Replaces: " +totalNumberOfReplaces, this, this->ALL);
+                                    this->logUtil->putF("Total Number Of Replaces: " +totalNumberOfReplaces, this, this->ALL);
     
 
                                     }
@@ -340,7 +346,7 @@ totalNumberOfReplaces++;
 
     public: std::string line(std::string replace){
 
-    StringMaker newStringBuffer = StringMaker();;
+    StringMaker* newStringBuffer = new StringMaker();;
     
 
     int32_t totalNumberOfReplaces = 0;;
@@ -352,7 +358,7 @@ totalNumberOfReplaces++;
     std::string value;;
     
 
-    std::vector<Object*> keyArray = this->j2seUtil.getHashMapAsArray(this->hashMap);;
+    std::vector<Object*> keyArray = this->j2seUtil->getHashMapAsArray(this->hashMap);;
     
 
     int32_t size = keyArray.size();;
@@ -366,7 +372,7 @@ totalNumberOfReplaces++;
         {
 key= keyArray[index2];
     
-value= this->hashMap.get(key);
+value= this->hashMap->get(key);
     
 
     int32_t index = 0;;
@@ -374,31 +380,31 @@ value= this->hashMap.get(key);
 
         while(index < replace.size())
         {
-newStringBuffer.delete(0, newStringBuffer.length());
+newStringBuffer->delete(0, newStringBuffer->length());
     
 
-    int32_t begin = replace.indexOf(key, index);;
+    int32_t begin = JavaString::indexOf(replace, key, index);;
     
 
                         if(begin !=  -1)
                         
                                     {
-                                    console.log(this->FOUND_KEY);
+                                    System.out.println(this->FOUND_KEY);
     
 
-    int32_t end = replace.indexOf('\n', begin +key.size()) +1;;
+    int32_t end = JavaString::indexOf(replace, '\n', begin +key.size()) +1;;
     
 
                         if(end >= 0)
                         
                                     {
-                                    newStringBuffer.append(replace.substring(0, begin));
+                                    newStringBuffer->append(JavaString::substring(replace, 0, begin));
     
-index= newStringBuffer.length();
+index= newStringBuffer->length();
     
-newStringBuffer.append(replace.substring(end, replace.size()));
+newStringBuffer->append(JavaString::substring(replace, end, replace.size()));
     
-replace= newStringBuffer.toString();
+replace= newStringBuffer->toString();
     
 totalNumberOfReplaces++;
     
@@ -420,10 +426,10 @@ totalNumberOfReplaces++;
 }
 
 
-                        if(LogConfigTypes::LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().REPLACE))
+                        if(LogConfigTypes::LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->REPLACE))
                         
                                     {
-                                    this->logUtil.putF("Total Number Of Replaces: " +totalNumberOfReplaces, this, this->ALL);
+                                    this->logUtil->putF("Total Number Of Replaces: " +totalNumberOfReplaces, this, this->ALL);
     
 
                                     }

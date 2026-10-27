@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRECOGNIZER_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRECOGNIZER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,44 +73,44 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicTouchInputFactory.h"
-#include "TouchButtonInput.h"
-#include "CurrentlyPressedTouchButtonSingleton.h"
-//#include "ReleaseHelper.h"
-#include "CancelTouchButtonInputFactory.h"
-#include "TouchScreenFactory.h"
-//#include "MultitouchReleaseHelper.h"
-#include "TouchButtonFactory.h"
-#include "TouchButton.h"
+        #include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
+#include "org/allbinary/input/motion/button/TouchButtonInput.h"
+#include "org/allbinary/input/motion/button/CurrentlyPressedTouchButtonSingleton.h"
+//#include "org/allbinary/input/motion/button/ReleaseHelper.h"
+#include "org/allbinary/input/motion/button/CancelTouchButtonInputFactory.h"
+#include "org/allbinary/input/motion/button/TouchScreenFactory.h"
+//#include "org/allbinary/input/motion/button/MultitouchReleaseHelper.h"
+#include "org/allbinary/input/motion/button/TouchButtonFactory.h"
+#include "org/allbinary/input/motion/button/TouchButton.h"
 
 class TouchButtonRecognizer
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const RectangleCollisionUtil rectangleCollisionUtil = RectangleCollisionUtil::getInstance();
+    private: RectangleCollisionUtil* rectangleCollisionUtil = RectangleCollisionUtil::getInstance();
 
-    private: const UpGameKeyEventHandler upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
+    private: UpGameKeyEventHandler* upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
 
-    private: const DownGameKeyEventHandler downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
+    private: DownGameKeyEventHandler* downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
 
-    private: TouchButtonInput lastPressedTouchButtonInput = BasicTouchInputFactory::getInstance().NONE;
+    private: TouchButtonInput* lastPressedTouchButtonInput = BasicTouchInputFactory::getInstance()->NONE;
 
-    private: const CurrentlyPressedTouchButtonSingleton currentlyPressedTouchButtonSingleton = CurrentlyPressedTouchButtonSingleton::getInstance();
+    private: CurrentlyPressedTouchButtonSingleton* currentlyPressedTouchButtonSingleton = CurrentlyPressedTouchButtonSingleton::getInstance();
 //CurrentlyPressedTouchButtonSingletonDebug.getInstance();
 //inner= member=true isStatic=
 class ReleaseHelper
             : public Object
          {
 
-    protected: TouchButtonRecognizer touchButtonRecognizer;
+    protected: TouchButtonRecognizer* touchButtonRecognizer;
 
-public: ReleaseHelper(TouchButtonRecognizer touchButtonRecognizer);
+public: ReleaseHelper(TouchButtonRecognizer* touchButtonRecognizer);
 
                 //@Throws(Exception.constructor)
             
-    public: void release(TouchButtonInput touchButtonInput, int32_t deviceId);
+    public: void release(TouchButtonInput* touchButtonInput, int32_t deviceId);
 
 };
 
@@ -112,22 +118,22 @@ public: ReleaseHelper(TouchButtonRecognizer touchButtonRecognizer);
 //inner= member=true isStatic=
 class MultitouchReleaseHelper: public ReleaseHelper {
 
-public: MultitouchReleaseHelper(TouchButtonRecognizer touchButtonRecognizer);
+public: MultitouchReleaseHelper(TouchButtonRecognizer* touchButtonRecognizer);
 
                 //@Throws(Exception.constructor)
             
-    public: void release(TouchButtonInput touchButtonInput, int32_t deviceId);
+    public: void release(TouchButtonInput* touchButtonInput, int32_t deviceId);
 
 };
 
             
-    private: const releaseHelper;
+    private: releaseHelper;
 
 public: TouchButtonRecognizer();
 
                 //@Throws(Exception.constructor)
             
-    private: void processRelease(TouchButtonInput touchButtonInput, int32_t deviceId);
+    private: void processRelease(TouchButtonInput* touchButtonInput, int32_t deviceId);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.

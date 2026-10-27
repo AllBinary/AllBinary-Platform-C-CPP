@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITIONFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITIONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/string/CommonStrings.h>
@@ -59,21 +67,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapCellPositionBaseFactory.h"
-#include "BasicGeographicMapCellPositionFactory.h"
-#include "BasicGeographicMap.h"
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionBaseFactory.h"
+#include "org/allbinary/media/graphics/geography/map/BasicGeographicMapCellPositionFactory.h"
+#include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
 
 class GeographicMapCellPositionFactory: public GeographicMapCellPositionBaseFactory {
 
-    private: static const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
+    private: static inline ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
 
-    public: static ABHashtable<Object*, Object*> getHashtable();
+    public: static ABHashtable<Object*, Object*>* getHashtable();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicGeographicMapCellPositionFactory getInstance(BasicGeographicMap geographicMapInterface);
+    public: BasicGeographicMapCellPositionFactory* getInstance(BasicGeographicMap* geographicMapInterface);
 
 };
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -48,32 +54,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogUtil.h"
+        #include "org/allbinary/logic/communication/log/LogUtil.h"
 
 class TestRemoteLogUtil
             : public Object
          {
 
-    public: static const std::string PATH = "G:\\mnt\\bc\\mydev\\work\\allbinary_src\\licensing\\data\\";
+    public: static inline const std::string PATH = "G:\\mnt\\bc\\mydev\\work\\allbinary_src\\licensing\\data\\";
 
                 //@Throws(Exception.constructor)
             
     public: static void main(std::vector<std::string> args){
-TestRemoteLogUtil();
+new TestRemoteLogUtil();
     
 }
 
 
 public: TestRemoteLogUtil(){
-Globals::getInstance().init(this->constructor.namegetClassLoader(), TestRemoteLogUtil::PATH);
+Globals::getInstance()->init(this->getClass()getClassLoader(), TestRemoteLogUtil::PATH);
     
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil.put(commonStrings.EXCEPTION, "Test", "TestClass", Exception("Pretend Exception"));
+logUtil->put(commonStrings->EXCEPTION, "Test", "TestClass", new Exception("Pretend Exception"));
     
 }
 

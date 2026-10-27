@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/io/FilenameFilter.h>
 
       
@@ -50,59 +56,59 @@
         
 class AbFileInterface {
 
-    bool canRead()
+    public: virtual bool canRead() = 0;
 
-    bool canWrite()
-
-                //@Throws(IOException.constructor)
-            
-    bool createNewFile()
+    public: virtual bool canWrite() = 0;
 
                 //@Throws(IOException.constructor)
             
-    bool delete_()
-
-    void deleteOnExit()
-
-    bool exists()
-
-    std::string getAbsolutePath()
+    public: virtual bool createNewFile() = 0;
 
                 //@Throws(IOException.constructor)
             
-    std::string getCanonicalPath()
+    public: virtual bool delete_() = 0;
 
-    std::string getParent()
+    public: virtual void deleteOnExit() = 0;
 
-    std::string getPath()
+    public: virtual bool exists() = 0;
 
-    bool isAbsolute()
+    public: virtual std::string getAbsolutePath() = 0;
 
-    bool isDirectory()
+                //@Throws(IOException.constructor)
+            
+    public: virtual std::string getCanonicalPath() = 0;
 
-    bool isFile()
+    public: virtual std::string getParent() = 0;
 
-    bool isHidden()
+    public: virtual std::string getPath() = 0;
 
-    int64_t lastModified()
+    public: virtual bool isAbsolute() = 0;
 
-    int64_t length()
+    public: virtual bool isDirectory() = 0;
 
-    std::vector<std::string> list()
+    public: virtual bool isFile() = 0;
 
-    std::vector<std::string> listWithFilter(FilenameFilter filter)
+    public: virtual bool isHidden() = 0;
 
-    bool mkdir()
+    public: virtual int64_t lastModified() = 0;
 
-    bool mkdirs()
+    public: virtual int64_t length() = 0;
 
-    bool setLastModified(int64_t time)
+    public: virtual std::vector<std::string> list() = 0;
 
-    bool setReadOnly()
+    public: virtual std::vector<std::string> listWithFilter(FilenameFilter* filter) = 0;
 
-    std::string toString()
+    public: virtual bool mkdir() = 0;
 
-    URI toURI()
+    public: virtual bool mkdirs() = 0;
+
+    public: virtual bool setLastModified(int64_t time) = 0;
+
+    public: virtual bool setReadOnly() = 0;
+
+    public: virtual std::string toString() = 0;
+
+    public: virtual URI* toURI() = 0;
 
 };
 

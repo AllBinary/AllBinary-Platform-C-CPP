@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
@@ -52,11 +58,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SequenceAI.h"
+        #include "org/allbinary/game/ag/ai/sequence/SequenceAI.h"
 
 class ComboSequenceAI: public SequenceAI {
 
-public: ComboSequenceAI(std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput) : SequenceAI(artificialIntelligenceInterface, ownerLayerInterface, gameInput){
+public: ComboSequenceAI(std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterface, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : SequenceAI(artificialIntelligenceInterface, ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -68,9 +74,9 @@ public: ComboSequenceAI(std::vector<ArtificialIntelligenceInterface> artificialI
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
 
-    std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterfaceArray = this->getArtificialIntelligenceInterface();;
+    std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterfaceArray = this->getArtificialIntelligenceInterface();;
     
 
     int32_t size = artificialIntelligenceInterfaceArray.size();;

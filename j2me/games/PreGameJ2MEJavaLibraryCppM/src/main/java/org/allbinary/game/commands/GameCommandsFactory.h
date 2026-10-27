@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_COMMANDS_GAMECOMMANDSFACTORY_H
         #define ORG_ALLBINARY_GAME_COMMANDS_GAMECOMMANDSFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Command.h>
@@ -61,63 +67,63 @@ class GameCommandsFactory
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static GameCommandsFactory getInstance();
+    public: static GameCommandsFactory* getInstance();
 
-    public: const Command TOGGLE_FULLSCREEN = Command("Toggle FullScreen", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
+    public: Command* TOGGLE_FULLSCREEN = new Command("Toggle FullScreen", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
 
-    public: const Command TOGGLE_KEYBOARD = Command("Keyboard", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
+    public: Command* TOGGLE_KEYBOARD = new Command("Keyboard", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
 
-    public: const Command SET_MENU_DISPLAYABLE = Command("Set Menu Displayable", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
+    public: Command* SET_MENU_DISPLAYABLE = new Command("Set Menu Displayable", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
 
-    public: const Command APPLICATION_UPDATE = Command(CommonStrings::getInstance().UPDATE, StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
+    public: Command* APPLICATION_UPDATE = new Command(CommonStrings::getInstance()->UPDATE, StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
 
-    public: const Command DISPLAY_ABOUT = Command(CanvasStrings::getInstance().ABOUT, StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 2);
+    public: Command* DISPLAY_ABOUT = new Command(CanvasStrings::getInstance()->ABOUT, StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 2);
 
-    public: const Command OPEN_WEB_URL = Command("Open Web URL", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 2);
+    public: Command* OPEN_WEB_URL = new Command("Open Web URL", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 2);
 
-    public: const Command CLOSE_OPTIONS = Command("Back", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
+    public: Command* CLOSE_OPTIONS = new Command("Back", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
 
-    public: const Command DISPLAY_OPTIONS = Command(CanvasStrings::getInstance().OPTIONS, StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 2);
+    public: Command* DISPLAY_OPTIONS = new Command(CanvasStrings::getInstance()->OPTIONS, StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 2);
 
-    public: const Command START_TRACE = Command("Start Trace", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
+    public: Command* START_TRACE = new Command("Start Trace", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
 
-    public: const Command STOP_TRACE = Command("Stop Trace", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
+    public: Command* STOP_TRACE = new Command("Stop Trace", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
 
-    public: const Command DEFAULT_OPTIONS = Command("Default", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
+    public: Command* DEFAULT_OPTIONS = new Command("Default", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
 
-    public: const Command SHOW_GAME_CANVAS = Command("Back to Game", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
+    public: Command* SHOW_GAME_CANVAS = new Command("Back to Game", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
 
-    public: const Command CLOSE_AND_SHOW_GAME_CANVAS = Command("Back", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
+    public: Command* CLOSE_AND_SHOW_GAME_CANVAS = new Command("Back", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
 
-    public: const Command QUIT_COMMAND = Command("Quit", StringUtil::getInstance().EMPTY_STRING, Command::STOP, 1);
+    public: Command* QUIT_COMMAND = new Command("Quit", StringUtil::getInstance()->EMPTY_STRING, Command::STOP, 1);
 
-    public: const Command RESTART_COMMAND = Command("Restart", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 0);
+    public: Command* RESTART_COMMAND = new Command("Restart", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 0);
 
-    public: const Command DISPLAY_SAVE_FORM = Command("Save To", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 3);
+    public: Command* DISPLAY_SAVE_FORM = new Command("Save To", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 3);
 
-    public: const Command SAVE = Command("Save", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 3);
+    public: Command* SAVE = new Command("Save", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 3);
 
-    public: const Command DISPLAY_LOAD_FORM = Command("Load", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 3);
+    public: Command* DISPLAY_LOAD_FORM = new Command("Load", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 3);
 
-    public: const Command LOAD_FILE = Command("Load File", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 3);
+    public: Command* LOAD_FILE = new Command("Load File", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 3);
 
-    public: const Command DELETE_FILE = Command("Delete File", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
+    public: Command* DELETE_FILE = new Command("Delete File", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
 
-    public: const Command EXIT_COMMAND = Command("Exit", StringUtil::getInstance().EMPTY_STRING, Command::EXIT, 2);
+    public: Command* EXIT_COMMAND = new Command("Exit", StringUtil::getInstance()->EMPTY_STRING, Command::EXIT, 2);
 
-    public: const Command EXIT_WITHOUT_PROGRESS_COMMAND = Command("Exit Without Progress", StringUtil::getInstance().EMPTY_STRING, Command::EXIT, 2);
+    public: Command* EXIT_WITHOUT_PROGRESS_COMMAND = new Command("Exit Without Progress", StringUtil::getInstance()->EMPTY_STRING, Command::EXIT, 2);
 
-    public: const Command START_COMMAND = Command(CommonStrings::getInstance().START, StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
+    public: Command* START_COMMAND = new Command(CommonStrings::getInstance()->START, StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
 
-    public: const Command CONTINUE_COMMAND = Command("Continue", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
+    public: Command* CONTINUE_COMMAND = new Command("Continue", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
 
-    public: const Command SELECT_COMMAND = Command("Select", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
+    public: Command* SELECT_COMMAND = new Command("Select", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
 
-    public: const Command FEATURE_UPDATE = Command("Feature Update", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
+    public: Command* FEATURE_UPDATE = new Command("Feature Update", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
 
-    public: const Command BUY_COMMAND = Command("BUY", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
+    public: Command* BUY_COMMAND = new Command("BUY", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
 
 protected: GameCommandsFactory();
 

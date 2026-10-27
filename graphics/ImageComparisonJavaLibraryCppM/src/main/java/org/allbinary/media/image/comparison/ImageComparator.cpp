@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,17 +79,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageComparatorConstraintsInterface.h"
-#include "Color.h"
-#include "ImageComparisonResult.h"
+        #include "org/allbinary/media/image/comparison/ImageComparatorConstraintsInterface.h"
+#include "org/allbinary/media/image/comparison/Color.h"
+#include "org/allbinary/media/image/comparison/ImageComparisonResult.h"
 
 class ImageComparator
             : public Object
          {
 
-    private: ImageComparatorConstraintsInterface imageComparatorConstraintsInterface;
+    private: ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface;
 
-public: ImageComparator(ImageComparatorConstraintsInterface imageComparatorConstraintsInterface){
+public: ImageComparator(ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface){
 this->imageComparatorConstraintsInterface= imageComparatorConstraintsInterface;
     
 }
@@ -91,56 +97,56 @@ this->imageComparatorConstraintsInterface= imageComparatorConstraintsInterface;
 
                 //@Throws(Exception.constructor)
             
-    private: void process(ImageComparisonResult imageComparisonInfo, GPoint point){
+    private: void process(ImageComparisonResult* imageComparisonInfo, GPoint* point){
 
-    bool isCollsionWithAvoidRectangles = this->imageComparatorConstraintsInterface.isCollisionWithAvoidRectangles(point);;
+    bool isCollsionWithAvoidRectangles = this->imageComparatorConstraintsInterface->isCollisionWithAvoidRectangles(point);;
     
 
                         if(!isCollsionWithAvoidRectangles)
                         
                                     {
                                     
-    int32_t rgb1 = imageComparisonInfo.getBufferedImages()[0].getRGB(point.getX(), point.getY());;
+    int32_t rgb1 = imageComparisonInfo->getBufferedImages()[0].getRGB(point->getX(), point->getY());;
     
 
-    int32_t rgb2 = imageComparisonInfo.getBufferedImages()[1].getRGB(point.getX(), point.getY());;
+    int32_t rgb2 = imageComparisonInfo->getBufferedImages()[1].getRGB(point->getX(), point->getY());;
     
 
-    AutomaticCacheInterface automaticCacheInterface = ColorCacheFactory::getInstance();;
+    AutomaticCacheInterface* automaticCacheInterface = ColorCacheFactory::getInstance();;
     
 
-    Integer colorInteger = Integer::valueOf(rgb1);;
+    int32_t colorInteger = Integer.valueOf(rgb1);;
     
 
-    ColorCacheable colorCacheable = automaticCacheInterface.get(colorInteger);;
+    ColorCacheable* colorCacheable = dynamic_cast<ColorCacheable*>(automaticCacheInterface->get(colorInteger));;
     
 
-    Color color = colorCacheable.getColor();;
+    Color* color = colorCacheable->getColor();;
     
 
-    Integer colorInteger2 = Integer::valueOf(rgb2);;
+    int32_t colorInteger2 = Integer.valueOf(rgb2);;
     
 
-    ColorCacheable colorCacheable2 = automaticCacheInterface.get(colorInteger);;
+    ColorCacheable* colorCacheable2 = dynamic_cast<ColorCacheable*>(automaticCacheInterface->get(colorInteger));;
     
 
-    Color color2 = colorCacheable.getColor();;
+    Color* color2 = colorCacheable->getColor();;
     
 
-                        if(this->imageComparatorConstraintsInterface.isColorAllowed(0, point, color) || this->imageComparatorConstraintsInterface.isColorAllowed(1, point, color2))
+                        if(this->imageComparatorConstraintsInterface->isColorAllowed(0, point, color) || this->imageComparatorConstraintsInterface->isColorAllowed(1, point, color2))
                         
                                     {
                                     
-                        if(Math::abs(rgb1 -rgb2) <= imageComparisonInfo.getTolerance())
+                        if(Math::abs(rgb1 -rgb2) <= imageComparisonInfo->getTolerance())
                         
                                     {
-                                    imageComparisonInfo.pixelsThatMatch++;
+                                    imageComparisonInfo->pixelsThatMatch++;
     
 
                                     }
                                 
                         else {
-                            imageComparisonInfo.add(PixelDeltaFactory::getInstance(point.getX(), point.getY(), rgb1, rgb2));
+                            imageComparisonInfo->add(PixelDeltaFactory::getInstance(point->getX(), point->getY(), rgb1, rgb2));
     
 
                         }
@@ -152,7 +158,7 @@ this->imageComparatorConstraintsInterface= imageComparatorConstraintsInterface;
                                     }
                                 
                         else {
-                            imageComparisonInfo.pixelsIgnored++;
+                            imageComparisonInfo->pixelsIgnored++;
     
 
                         }
@@ -162,19 +168,19 @@ this->imageComparatorConstraintsInterface= imageComparatorConstraintsInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: ImageComparisonResult compare(BufferedImage bufferedImage1, BufferedImage bufferedImage2, Long frameOne, Long frameTwo, int32_t tolerance){
+    public: ImageComparisonResult* compare(BufferedImage* bufferedImage1, BufferedImage* bufferedImage2, int64_t frameOne, int64_t frameTwo, int32_t tolerance){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->compare(bufferedImage1, bufferedImage2, frameOne, frameTwo, tolerance, StringUtil::getInstance().EMPTY_STRING);;
+                        return this->compare(bufferedImage1, bufferedImage2, frameOne, frameTwo, tolerance, StringUtil::getInstance()->EMPTY_STRING);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: ImageComparisonResult compare(BufferedImage bufferedImage1, BufferedImage bufferedImage2, Long frameOne, Long frameTwo, int32_t tolerance, std::string name){
+    public: ImageComparisonResult* compare(BufferedImage* bufferedImage1, BufferedImage* bufferedImage2, int64_t frameOne, int64_t frameTwo, int32_t tolerance, std::string name){
 
                         if(bufferedImage1 == 
                                     nullptr
@@ -186,32 +192,32 @@ this->imageComparatorConstraintsInterface= imageComparatorConstraintsInterface;
                                     
 
 
-                            throw Exception("Input images must not be null.");
+                            throw new Exception("Input images must not be null.");
                     
 
                                     }
                                 
 
-    ImageComparisonResult imageComparisonInfo = ImageComparisonResult(name, bufferedImage1, bufferedImage2, frameOne, frameTwo, tolerance);;
+    ImageComparisonResult* imageComparisonInfo = new ImageComparisonResult(name, bufferedImage1, bufferedImage2, frameOne, frameTwo, tolerance);;
     
 
 
 
 
                         for (
-    int32_t indexY = 0;indexY < imageComparisonInfo.imageHeight; indexY++)
+    int32_t indexY = 0;indexY < imageComparisonInfo->imageHeight; indexY++)
         {
 
 
 
 
                         for (
-    int32_t indexX = 0;indexX < imageComparisonInfo.imageWidth; indexX++)
+    int32_t indexX = 0;indexX < imageComparisonInfo->imageWidth; indexX++)
         {
-this->process(imageComparisonInfo, PointFactory::getInstance().createXY(indexX, indexY));
+this->process(imageComparisonInfo, PointFactory::getInstance()->createXY(indexX, indexY));
     
 
-                        if(imageComparisonInfo.getNonMatchingPixelVector().size() > this->imageComparatorConstraintsInterface.getMaxNonMatchingPixelDeltas())
+                        if(imageComparisonInfo->getNonMatchingPixelVector()->size() > this->imageComparatorConstraintsInterface->getMaxNonMatchingPixelDeltas())
                         
                                     {
                                     break;

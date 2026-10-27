@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -98,40 +104,40 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HelpPaintable.h"
-//#include "UpdateMyFontProperties.h"
+        #include "org/allbinary/game/paint/help/HelpPaintable.h"
+//#include "org/allbinary/game/paint/help/UpdateMyFontProperties.h"
 
 class InputMappingHelpPaintable: public HelpPaintable {
 
-    private: static const std::string AND = " and ";
+    private: static inline const std::string AND = " and ";
 
-    private: static const std::string SEP = ", ";
+    private: static inline const std::string SEP = ", ";
 
-    private: static const std::string MORE_THAN_TWO_IN_LIST_AND = ", and ";
+    private: static inline const std::string MORE_THAN_TWO_IN_LIST_AND = ", and ";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const CommonSeps commonSeps = CommonSeps::getInstance();
+    protected: CommonSeps* commonSeps = CommonSeps::getInstance();
 
-    protected: const StringUtil stringUtil = StringUtil::getInstance();
+    protected: StringUtil* stringUtil = StringUtil::getInstance();
 
-    private: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
+    private: BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();
 
-    private: const GameKey NONE = GameKeyFactory::getInstance().NONE;
+    private: GameKey* NONE = GameKeyFactory::getInstance()->NONE;
 
-    private: const std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;
+    private: const std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: std::vector<GameInputMapping> gameInputMappingArray;
+    private: std::vector<GameInputMapping*> gameInputMappingArray;
 
-    private: std::vector<BasicArrayList> keyMappingArray = {};
+    private: std::vector<BasicArrayList*> keyMappingArray = {};
 
-    private: std::vector<BasicColor> actionBasicColor = BasicColorUtil::getInstance().ZERO_ARRAY;
+    private: std::vector<BasicColor*> actionBasicColor = BasicColorUtil::getInstance()->ZERO_ARRAY;
 
-    private: std::vector<std::vector<BasicColor>> inputBasicColorArray = std::vector<std::vector<BasicColor>>(0, std::vector<BasicColor>(0));
+    private: std::vector<std::vector<BasicColor*>> inputBasicColorArray = std::vector<std::vector<BasicColor*>>(0, std::vector<BasicColor*>(0));
 
-    private: BasicColor selectedBasicColor;
+    private: BasicColor* selectedBasicColor;
 
 //inner= member=true isStatic=
 class UpdateMyFontProperties
@@ -140,34 +146,34 @@ class UpdateMyFontProperties
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-    std::vector<std::string> actionStringArray = StringUtil::getInstance().getArrayInstance();
+    std::vector<std::string> actionStringArray = StringUtil::getInstance()->getArrayInstance();
 
-    std::vector<int32_t> keymappingBeginWidthArray = NullUtil::getInstance().NULL_INT_ARRAY;
+    std::vector<int32_t> keymappingBeginWidthArray = NullUtil::getInstance()->NULL_INT_ARRAY;
 
-    std::vector<int32_t> actionStringDeltaXArray = NullUtil::getInstance().NULL_INT_ARRAY;
+    std::vector<int32_t> actionStringDeltaXArray = NullUtil::getInstance()->NULL_INT_ARRAY;
 
-    std::vector<std::vector<int32_t>> inputDeltaXArray = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY;
+    std::vector<std::vector<int32_t>> inputDeltaXArray = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY;
 
     std::vector<std::vector<std::string>> sepArray = std::vector<std::vector<std::string>>(0, std::vector<std::string>(0));
 
-    std::vector<std::vector<int32_t>> sepWidthArray = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY;
+    std::vector<std::vector<int32_t>> sepWidthArray = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY;
 
     int32_t charHeight= 0;
 
 };
 
             
-    private: updateMyFontProperties = UpdateMyFontProperties();
+    private: updateMyFontProperties = new UpdateMyFontProperties();
 
-protected: InputMappingHelpPaintable(std::vector<GameInputMapping> gameInputMappingArray, BasicColor backgroundBasicColor, BasicColor basicColor);
+protected: InputMappingHelpPaintable(std::vector<GameInputMapping*> gameInputMappingArray, BasicColor* backgroundBasicColor, BasicColor* basicColor);
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
-    public: void update(GameKey selectedGameKey, Input selectedInput);
+    public: void update(GameKey* selectedGameKey, Input* selectedInput);
 
-    private: std::string get(BasicArrayList keyList);
+    private: std::string get(BasicArrayList* keyList);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

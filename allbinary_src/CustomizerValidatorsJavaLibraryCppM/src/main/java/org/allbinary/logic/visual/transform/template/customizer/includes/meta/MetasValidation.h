@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -88,31 +94,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MetaValidation.h"
+        #include "org/allbinary/logic/visual/transform/template/customizer/includes/meta/MetaValidation.h"
 
 class MetasValidation: public Validation, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: StoreFrontInterface storeFrontInterface;
+    private: StoreFrontInterface* storeFrontInterface;
 
-    private: BasicArrayList metaValidationVector;
+    private: BasicArrayList* metaValidationVector;
 
 public: MetasValidation(std::string storeName);
 
-public: MetasValidation(Document document);
+public: MetasValidation(Document* document);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string validationInfo();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Long.h"
         
 #include <org/allbinary/business/user/commerce/money/Money.h>
@@ -47,15 +53,15 @@
         
 class StoreFrontOrdersHistoryStatisticsInterface: public TableMappingInterface {
 
-    Long getNumberOfOrders()
+    public: virtual int64_t getNumberOfOrders() = 0;
 
-    Money getSubTotal()
+    public: virtual Money* getSubTotal() = 0;
 
-    Money getShippingCost()
+    public: virtual Money* getShippingCost() = 0;
 
-    Money getTaxes()
+    public: virtual Money* getTaxes() = 0;
 
-    Money getTotal()
+    public: virtual Money* getTotal() = 0;
 
 };
 

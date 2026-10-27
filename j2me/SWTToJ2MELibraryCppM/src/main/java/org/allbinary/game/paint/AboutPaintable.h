@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -71,22 +77,22 @@
         //SWTToJ2ME
 class AboutPaintable: public Paintable, public UpdateMyFontInterface {
 
-    public: static AboutPaintable getInstance(std::vector<std::string> info, std::vector<std::string> developers);
+    public: static AboutPaintable* getInstance(std::vector<std::string> info, std::vector<std::string> developers);
 
-    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-    private: const std::string ABOUT = CanvasStrings::getInstance().ABOUT;
+    private: const std::string ABOUT = CanvasStrings::getInstance()->ABOUT;
 
     private: std::vector<std::string> info;
 
     private: std::vector<std::string> developers;
 
-    private: const std::vector<Paintable> paintableArray = 
+    private: const std::vector<Paintable*> paintableArray = 
                                                         {
                                                             this
                                                         };
 
-    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
 
     private: int32_t charHeight= 0;
 
@@ -100,11 +106,11 @@ class AboutPaintable: public Paintable, public UpdateMyFontInterface {
 
 private: AboutPaintable(std::vector<std::string> info, std::vector<std::string> developers);
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
-    public: std::vector<Paintable> getPaintableArrayInstance();
+    public: std::vector<Paintable*> getPaintableArrayInstance();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

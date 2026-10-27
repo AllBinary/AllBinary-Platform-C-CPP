@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_ROOTCATEGORYPROPERTIESABSTRACT_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_ROOTCATEGORYPROPERTIESABSTRACT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -75,15 +81,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RootCategoryPropertiesInterface.h"
+        #include "org/allbinary/business/category/properties/root/RootCategoryPropertiesInterface.h"
 
 class RootCategoryPropertiesAbstract
             : public Object
-        : public RootCategoryPropertiesInterface {
+        , public RootCategoryPropertiesInterface {
 
-    private: const std::string category = CategoryData::getInstance().ROOTCATEGORY;
+    private: const std::string category = CategoryData::getInstance()->ROOTCATEGORY;
 
-    private: const std::string fileName = this->category +AbPathData::getInstance().EXTENSION_SEP +CategoryData::getInstance().UNCRYPTED_EXTENSION;
+    private: const std::string fileName = this->category +AbPathData::getInstance()->EXTENSION_SEP +CategoryData::getInstance()->UNCRYPTED_EXTENSION;
 
 public: RootCategoryPropertiesAbstract();
 
@@ -97,7 +103,7 @@ public: RootCategoryPropertiesAbstract();
 
                 //@Throws(Exception.constructor)
             
-    public: void setRootFilePath(AbPath value);
+    public: void setRootFilePath(AbPath* value);
 
                 //@Throws(Exception.constructor)
             
@@ -105,7 +111,7 @@ public: RootCategoryPropertiesAbstract();
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getRootFilePath();
+    public: AbPath* getRootFilePath();
 
                 //@Throws(Exception.constructor)
             
@@ -117,25 +123,25 @@ public: RootCategoryPropertiesAbstract();
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getWebAppPath(CategoryHierarchyInterface categoryHierarchyInterface);
+    public: std::string getWebAppPath(CategoryHierarchyInterface* categoryHierarchyInterface);
 
-    public: AbPath getPath(CategoryHierarchyInterface categoryHierarchyInterface);
+    public: AbPath* getPath(CategoryHierarchyInterface* categoryHierarchyInterface);
 
     public: std::string getFileName();
 
-    public: Boolean isValid();
+    public: bool isValid();
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
-    public: BasicArrayList toVector();
-
-                //@Throws(Exception.constructor)
-            
-    public: Document toValidationInfoDoc();
+    public: BasicArrayList* toVector();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toValidationInfoNode(Document document);
+    public: Document* toValidationInfoDoc();
+
+                //@Throws(Exception.constructor)
+            
+    public: Node* toValidationInfoNode(Document* document);
 
                 //@Throws(Exception.constructor)
             

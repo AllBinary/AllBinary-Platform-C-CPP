@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_MEUTIL_H
         #define ORG_ALLBINARY_LOGIC_MEUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Item.h>
@@ -52,11 +58,11 @@ class MEUtil
             : public Object
          {
 
-    public: static MEUtil getInstance();
+    public: static MEUtil* getInstance();
 
-    private: static MEUtil instance() { return MEUtil(); }
+    private: static MEUtil* instance() { static std::unique_ptr<MEUtil> value(new MEUtil()); return value.get(); }
 
-    public: void appendItem(CommandForm form, Item item);
+    public: void appendItem(CommandForm* form, Item* item);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -65,7 +71,7 @@
         
 class LifeLayer: public AllBinaryLayer, public LifeVisitorInterface {
 
-public: LifeLayer() : AllBinaryLayer(StringUtil::getInstance().EMPTY_STRING, Rectangle(PointFactory::getInstance().ZERO_ZERO, 0, 0), ViewPosition::getInstanceD()){
+public: LifeLayer() : AllBinaryLayer(StringUtil::getInstance()->EMPTY_STRING, new Rectangle(PointFactory::getInstance()->ZERO_ZERO, 0, 0), ViewPosition::getInstanceD()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,12 +81,12 @@ public: LifeLayer() : AllBinaryLayer(StringUtil::getInstance().EMPTY_STRING, Rec
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 }
 
 
-    public: void visit(Life lifeInterface){
-lifeInterface.add(1);
+    public: void visit(Life* lifeInterface){
+lifeInterface->add(1);
     
 }
 

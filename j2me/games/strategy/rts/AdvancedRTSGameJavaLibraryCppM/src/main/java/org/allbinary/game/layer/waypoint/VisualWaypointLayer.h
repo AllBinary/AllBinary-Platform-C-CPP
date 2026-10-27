@@ -22,6 +22,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/SelectionHudPaintable.h>
@@ -63,17 +69,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WaypointLayer.h"
-#include "WaypointInfoHudPaintableSingleton.h"
-#include "WaypointInfoHudPaintable.h"
+        #include "org/allbinary/game/layer/waypoint/WaypointLayer.h"
+#include "org/allbinary/game/layer/waypoint/WaypointInfoHudPaintableSingleton.h"
+#include "org/allbinary/game/layer/waypoint/WaypointInfoHudPaintable.h"
 
 class VisualWaypointLayer: public WaypointLayer {
 
-public: VisualWaypointLayer(RemoteInfo remoteInfo, PathFindingLayerInterface parentLayer, std::vector<Group> groupInterface, std::string rootName, std::string name, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y);
+public: VisualWaypointLayer(RemoteInfo* remoteInfo, PathFindingLayerInterface* parentLayer, std::vector<Group*> groupInterface, std::string rootName, std::string name, AnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface* proceduralAnimationInterfaceFactoryInterface, Rectangle* rectangle, int32_t x, int32_t y);
 
-    public: SelectionHudPaintable createHudPaintable();
+    public: SelectionHudPaintable* createHudPaintable();
 
-    public: SelectionHudPaintable getHudPaintable();
+    public: SelectionHudPaintable* getHudPaintable();
 
 };
 

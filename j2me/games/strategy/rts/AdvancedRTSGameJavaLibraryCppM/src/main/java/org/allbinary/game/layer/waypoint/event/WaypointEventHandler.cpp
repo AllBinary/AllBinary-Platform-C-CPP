@@ -17,6 +17,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/RTSLayerEvent.h>
@@ -49,7 +55,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WaypointEventListenerInterface.h"
+        #include "org/allbinary/game/layer/waypoint/event/WaypointEventListenerInterface.h"
 
 class WaypointEventHandler: public BasicEventHandler {
 
@@ -59,11 +65,11 @@ public: WaypointEventHandler(){
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
 
-    WaypointEventListenerInterface waypointEventListenerInterface = (eventListenerInterface);;
+    WaypointEventListenerInterface* waypointEventListenerInterface = (dynamic_cast<WaypointEventListenerInterface*>(eventListenerInterface));;
     
-waypointEventListenerInterface.onWaypointEvent(eventObject);
+waypointEventListenerInterface->onWaypointEvent(dynamic_cast<RTSLayerEvent*>(eventObject));
     
 }
 

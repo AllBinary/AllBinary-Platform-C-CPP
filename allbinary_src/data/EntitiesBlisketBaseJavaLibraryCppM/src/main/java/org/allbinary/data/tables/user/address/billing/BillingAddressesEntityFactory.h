@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_BILLING_BILLINGADDRESSESENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_BILLING_BILLINGADDRESSESENTITYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,21 +58,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BillingAddressesEntity.h"
+        #include "org/allbinary/data/tables/user/address/billing/BillingAddressesEntity.h"
 
 class BillingAddressesEntityFactory
             : public Object
          {
 
-    private: static BillingAddressesEntityFactory instance() { return BillingAddressesEntityFactory(); }
+    private: static BillingAddressesEntityFactory* instance() { static std::unique_ptr<BillingAddressesEntityFactory> value(new BillingAddressesEntityFactory()); return value.get(); }
 
-    public: static BillingAddressesEntityFactory getInstance();
+    public: static BillingAddressesEntityFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: BillingAddressesEntityFactory();
 
-    public: StreetAddressesEntity getInstance(std::string userName);
+    public: StreetAddressesEntity* getInstance(std::string userName);
 
 };
 

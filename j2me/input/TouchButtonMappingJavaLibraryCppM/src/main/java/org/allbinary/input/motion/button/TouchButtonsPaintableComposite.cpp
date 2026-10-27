@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/CompleteMotionGestureInputEvent.h>
@@ -92,34 +98,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchButtonsMappingPaintable.h"
+        #include "org/allbinary/input/motion/button/TouchButtonsMappingPaintable.h"
 
 class TouchButtonsPaintableComposite: public ProcessPaintable, public CompleteMotionGestureInputEventListenerInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: InputMappingInterface inputMappingInterface;
+    private: InputMappingInterface* inputMappingInterface;
 
-    protected: TouchButtonsMappingPaintable touchButtonsPaintable;
+    protected: TouchButtonsMappingPaintable* touchButtonsPaintable;
 
-    private: TimeDelayHelper timeHelper = TimeDelayHelper(250);
+    private: TimeDelayHelper* timeHelper = new TimeDelayHelper(250);
 
     private: bool released = true;
 
-public: TouchButtonsPaintableComposite(InputMappingInterface inputMappingInterface, BasicColor basicColor){
+public: TouchButtonsPaintableComposite(InputMappingInterface* inputMappingInterface, BasicColor* basicColor){
 this->inputMappingInterface= inputMappingInterface;
     
-CompleteMotionGestureInputEventHandler::getInstance().addListenerInterface(this);
+CompleteMotionGestureInputEventHandler::getInstance()->addListenerInterface(this);
     
-this->touchButtonsPaintable= TouchButtonsMappingPaintable(basicColor);
+this->touchButtonsPaintable= new TouchButtonsMappingPaintable(basicColor);
     
 }
 
 
-    public: void onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject* eventObject){
+ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
@@ -132,28 +138,28 @@ ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
 
     private: const std::string IGNORE = "Ignoring: Until Released";
 
-    public: void onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent completeMotionGestureInputEvent){
+    public: void onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent* completeMotionGestureInputEvent){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, "onCompleteMotionGestureInputEvent");
+            this->logUtil->putF(this->commonStrings->START, this, "onCompleteMotionGestureInputEvent");
     
 
-    TouchMotionGestureFactory touchMotionGestureFactory = TouchMotionGestureFactory::getInstance();;
+    TouchMotionGestureFactory* touchMotionGestureFactory = TouchMotionGestureFactory::getInstance();;
     
 
-    GameKeyCompleteMotionGestureInputEvent gameKeyCompleteMotionGestureInputEvent = completeMotionGestureInputEvent;;
+    GameKeyCompleteMotionGestureInputEvent* gameKeyCompleteMotionGestureInputEvent = dynamic_cast<GameKeyCompleteMotionGestureInputEvent*>(completeMotionGestureInputEvent);;
     
 
-    GameKey gameKey = gameKeyCompleteMotionGestureInputEvent.getGameKey();;
+    GameKey* gameKey = gameKeyCompleteMotionGestureInputEvent->getGameKey();;
     
 
-    MotionGestureInput motionGestureInput = completeMotionGestureInputEvent.getMotionGestureInput();;
+    MotionGestureInput* motionGestureInput = completeMotionGestureInputEvent->getMotionGestureInput();;
     
 
-                        if(motionGestureInput == touchMotionGestureFactory.RELEASED)
+                        if(motionGestureInput == touchMotionGestureFactory->RELEASED)
                         
                                     {
-                                    this->logUtil.putF(this->RELEASE, this, this->METHOD_NAME);
+                                    this->logUtil->putF(this->RELEASE, this, this->METHOD_NAME);
     
 this->released= true;
     
@@ -167,10 +173,10 @@ this->released= true;
                                     }
                                 
 
-                        if(motionGestureInput == TouchMotionGestureFactory::getInstance().NO_MOTION && !this->timeHelper.isTimeTNT())
+                        if(motionGestureInput == TouchMotionGestureFactory::getInstance()->NO_MOTION && !this->timeHelper->isTimeTNT())
                         
                                     {
-                                    this->logUtil.putF(this->FAST_REPEAT, this, this->METHOD_NAME);
+                                    this->logUtil->putF(this->FAST_REPEAT, this, this->METHOD_NAME);
     
 
 
@@ -185,7 +191,7 @@ this->released= true;
                         if(!this->released)
                         
                                     {
-                                    this->logUtil.putF(this->IGNORE, this, this->METHOD_NAME);
+                                    this->logUtil->putF(this->IGNORE, this, this->METHOD_NAME);
     
 
 
@@ -198,15 +204,15 @@ this->released= true;
                                 
 this->released= false;
     
-this->logUtil.putF(StringMaker().append("GameKey: ").append(StringUtil::getInstance().toString(gameKey)).append(" MotionGestureInput: ").append(StringUtil::getInstance().toString(motionGestureInput)).toString(), this, this->METHOD_NAME);
+this->logUtil->putF((new StringMaker())->append("GameKey: ")->append(StringUtil::getInstance()->toString(gameKey))->append(" MotionGestureInput: ")->append(StringUtil::getInstance()->toString(motionGestureInput))->toString(), this, this->METHOD_NAME);
     
-this->inputMappingInterface.processInputMapping(gameKey, motionGestureInput);
+this->inputMappingInterface->processInputMapping(gameKey, motionGestureInput);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->METHOD_NAME, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->METHOD_NAME, &e);
     
 }
 
@@ -214,7 +220,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->METHOD_NAME, e);
 
 
     public: void process(){
-CompleteMotionGestureInputEventHandler::getInstance().removeListener(this);
+CompleteMotionGestureInputEventHandler::getInstance()->removeListener(this);
     
 }
 

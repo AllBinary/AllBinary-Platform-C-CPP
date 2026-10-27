@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MAGNETIC_FIELD_ALLBINARYMAGNETICFIELDSENSOR_H
         #define ORG_ALLBINARY_INPUT_MAGNETIC_FIELD_ALLBINARYMAGNETICFIELDSENSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/input/AllBinarySensor.h>
 
       

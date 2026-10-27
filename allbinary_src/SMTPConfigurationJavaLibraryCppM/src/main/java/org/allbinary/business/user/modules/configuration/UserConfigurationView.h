@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONVIEW_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -76,25 +82,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserConfigurationInterface.h"
-#include "UserConfiguration.h"
-#include "UserConfigurationData.h"
+        #include "org/allbinary/business/user/modules/configuration/UserConfigurationInterface.h"
+#include "org/allbinary/business/user/modules/configuration/UserConfiguration.h"
+#include "org/allbinary/business/user/modules/configuration/UserConfigurationData.h"
 
 class UserConfigurationView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: UserConfigurationInterface userConfigurationInterface;
+    private: UserConfigurationInterface* userConfigurationInterface;
 
-public: UserConfigurationView(Node node);
+public: UserConfigurationView(Node* node);
 
-public: UserConfigurationView(UserConfigurationInterface userConfigurationInterface);
+public: UserConfigurationView(UserConfigurationInterface* userConfigurationInterface);
 
-    public: UserConfigurationInterface getUserConfigurationInterface();
+    public: UserConfigurationInterface* getUserConfigurationInterface();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

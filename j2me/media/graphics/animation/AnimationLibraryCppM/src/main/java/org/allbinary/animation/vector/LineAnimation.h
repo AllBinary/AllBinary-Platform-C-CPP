@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -64,17 +70,17 @@ class LineAnimation: public Animation, public ColorCompositeInterface, public Po
 
     private: std::vector<std::vector<int32_t>> newLine = std::vector<std::vector<int32_t>>(2, std::vector<int32_t>(2));
 
-    private: std::vector<std::vector<int32_t>> tempLine = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY;
+    private: std::vector<std::vector<int32_t>> tempLine = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY;
 
     private: std::vector<std::vector<int32_t>> line = std::vector<std::vector<int32_t>>(2, std::vector<int32_t>(2));
 
-public: LineAnimation(BasicColor basicColor);
+public: LineAnimation(BasicColor* basicColor);
 
     public: void init(int32_t x, int32_t y);
 
     public: void setPosition(int32_t x, int32_t y, int32_t z);
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
     public: void nextFrame();
 

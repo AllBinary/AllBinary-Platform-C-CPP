@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_CANVAS_FULLSCREENUTIL_H
         #define ORG_ALLBINARY_CANVAS_FULLSCREENUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,25 +61,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RunnableCanvas.h"
+        #include "org/allbinary/canvas/RunnableCanvas.h"
 
 class FullScreenUtil
             : public Object
          {
 
-    private: static FullScreenUtil instance() { return FullScreenUtil(); }
+    private: static FullScreenUtil* instance() { static std::unique_ptr<FullScreenUtil> value(new FullScreenUtil()); return value.get(); }
 
-    public: static FullScreenUtil getInstance();
+    public: static FullScreenUtil* getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void initOnRun(Canvas fullScreenInterface, CommandListener commandListener);
+    public: void initOnRun(Canvas* fullScreenInterface, CommandListener* commandListener);
 
-    public: void init(Canvas fullScreenInterface);
+    public: void init(Canvas* fullScreenInterface);
 
     public: bool isScreenChange(bool isFullScreen);
 
-    public: bool isScreenChangeCanvas(Canvas fullScreenInterface);
+    public: bool isScreenChangeCanvas(Canvas* fullScreenInterface);
 
 };
 

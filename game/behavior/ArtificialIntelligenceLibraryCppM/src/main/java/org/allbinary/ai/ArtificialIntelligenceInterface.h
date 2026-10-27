@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCEINTERFACE_H
         #define ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/IdentifierInterface.h>
@@ -52,7 +58,7 @@ class ArtificialIntelligenceInterface: public IdentifierInterface {
 
                 //@Throws(Exception.constructor)
             
-    void processAI(AllBinaryLayerManager layerManager);
+    public: virtual void processAI(AllBinaryLayerManager* layerManager) = 0;
 
 };
 

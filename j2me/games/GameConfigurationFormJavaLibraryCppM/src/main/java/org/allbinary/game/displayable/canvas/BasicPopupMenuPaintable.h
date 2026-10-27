@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICPOPUPMENUPAINTABLE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICPOPUPMENUPAINTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -110,19 +116,19 @@
         
 class BasicPopupMenuPaintable: public Paintable, public UpdateMyFontInterface {
 
-    private: static const std::string NAME = "MENU";
+    private: static inline const std::string NAME = "MENU";
 
-    protected: const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
+    protected: BasicColorSetUtil* basicSetColorUtil = BasicColorSetUtil::getInstance();
 
-    private: const DrawVerticalStringUtil drawStringUtil = DrawVerticalStringUtil::getInstance();
+    private: DrawVerticalStringUtil* drawStringUtil = DrawVerticalStringUtil::getInstance();
 
     private: std::string label;
 
-    private: BasicColor foregroundBasicColor;
+    private: BasicColor* foregroundBasicColor;
 
-    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
 
-    private: Rectangle rectangle;
+    private: Rectangle* rectangle;
 
     private: int32_t BORDER= 0;
 
@@ -130,17 +136,17 @@ class BasicPopupMenuPaintable: public Paintable, public UpdateMyFontInterface {
 
     private: int32_t offset= 0;
 
-    private: Animation animationInterface;
+    private: Animation* animationInterface;
 
-public: BasicPopupMenuPaintable(Rectangle rectangle, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: BasicPopupMenuPaintable(Rectangle* rectangle, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
                 //@Throws(Exception.constructor)
             
-    public: void init(Rectangle rectangle);
+    public: void init(Rectangle* rectangle);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

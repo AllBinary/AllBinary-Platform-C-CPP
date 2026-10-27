@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -118,15 +126,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DownloadableInventoryItemView.h"
+        #include "views/admin/inventory/download/DownloadableInventoryItemView.h"
 
 class UpdateFileValidationView: public DownloadableInventoryItemView, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-public: UpdateFileValidationView(TransformInfoInterface transformInfoInterface) : DownloadableInventoryItemView(transformInfoInterface){
+public: UpdateFileValidationView(TransformInfoInterface* transformInfoInterface) : DownloadableInventoryItemView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -136,21 +144,21 @@ public: UpdateFileValidationView(TransformInfoInterface transformInfoInterface) 
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-    std::string command = this->getRequestHashMap().get(GLOBALS2::ADMINCOMMAND);;
+    std::string command = this->getRequestHashMap()->get(GLOBALS2::ADMINCOMMAND);;
     
 
-                        if(StringValidationUtil::getInstance().isEmpty(command) || command.compare(this->commonStrings.UPDATE) != 0)
+                        if(StringValidationUtil::getInstance()->isEmpty(command) || command.compare(this->commonStrings->UPDATE) != 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Invalid AdminCommand=" +command, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("Invalid AdminCommand=" +command, this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -167,19 +175,19 @@ public: UpdateFileValidationView(TransformInfoInterface transformInfoInterface) 
 
         try {
             
-    InventoryEntity inventoryEntity = InventoryEntityFactory::getInstance().getInventoryEntityInstance();;
+    InventoryEntity* inventoryEntity = InventoryEntityFactory::getInstance()->getInventoryEntityInstance();;
     
-this->itemInterface= inventoryEntity.getItem(this->id);
+this->itemInterface= inventoryEntity->getItem(this->id);
     
 
                 //: 
-} catch(e) 
+} catch(MoneyException& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.put("Existing Item With MoneyException", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Existing Item With MoneyException", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -193,10 +201,10 @@ this->itemInterface= inventoryEntity.getItem(this->id);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Item Does Not Exist", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("Item Does Not Exist", this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -211,14 +219,14 @@ this->itemInterface= inventoryEntity.getItem(this->id);
                                     }
                                 
 
-                        if(BasicItemValidation(this->itemInterface).isValid() == Boolean::FALSE)
+                        if((new BasicItemValidation(this->itemInterface))->isValid() == Boolean::FALSE)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("BasicItem is not valid", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("BasicItem is not valid", this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -233,23 +241,23 @@ this->itemInterface= inventoryEntity.getItem(this->id);
                                     }
                                 
 
-    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession().getStoreName());;
+    StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession()->getStoreName());;
     
 
-    std::string fullCategory = StringMaker().append(URLGLOBALS::getWebappPath()).append(storeFrontInterface.getCurrentHostNamePath()).append(this->itemInterface.getCategory()).toString();;
+    std::string fullCategory = (new StringMaker())->append(URLGLOBALS::getWebappPath())->append(storeFrontInterface->getCurrentHostNamePath())->append(this->itemInterface.getCategory())->toString();;
     
 
-    AbFile categoryFile = AbFile::createAbFile(fullCategory);;
+    AbFile* categoryFile = AbFile::createAbFile(fullCategory);;
     
 
-                        if(!categoryFile.isDirectory())
+                        if(!categoryFile->isDirectory())
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Category Does Not Exist: " +fullCategory, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("Category Does Not Exist: " +fullCategory, this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -264,20 +272,20 @@ this->itemInterface= inventoryEntity.getItem(this->id);
                                     }
                                 
 
-    Object* downloadableFileObject = this->getRequestHashMap().get(DownloadItemData::FILE);;
+    Object* downloadableFileObject = this->getRequestHashMap()->get(DownloadItemData::FILE);;
     
 
-                        if(HttpFileUploadUtil::getInstance().isValid(downloadableFileObject))
+                        if(HttpFileUploadUtil::getInstance()->isValid(downloadableFileObject))
                         
                                     {
                                     
-    FileItem fileItem = *dynamic_cast<FileItem*>(downloadableFileObject);;
+    FileItem* fileItem = dynamic_cast<FileItem*>(downloadableFileObject);;
     
 
-    std::string fileName = fileItem.getName();;
+    std::string fileName = fileItem->getName();;
     
 
-    int64_t size = fileItem.getSize();;
+    int64_t size = fileItem->getSize();;
     
 HttpFileUploadUtil::log(fileItem);
     
@@ -297,7 +305,7 @@ HttpFileUploadUtil::log(fileItem);
                         else {
                             this->processFile(fileItem);
     
-this->getRequestHashMap().put(DownloadItemData::SIZE, std::to_string(size));
+this->getRequestHashMap()->put(DownloadItemData::SIZE, std::to_string(size));
     
 
                         }
@@ -306,26 +314,26 @@ this->getRequestHashMap().put(DownloadItemData::SIZE, std::to_string(size));
                                     }
                                 
                         else {
-                            this->getRequestHashMap().remove(DownloadItemData::FILE);
+                            this->getRequestHashMap()->remove(DownloadItemData::FILE);
     
 
                         }
                             
 
-    Object* licenseFileObject = this->getRequestHashMap().get(DownloadItemData::LICENSE_FILE);;
+    Object* licenseFileObject = this->getRequestHashMap()->get(DownloadItemData::LICENSE_FILE);;
     
 
-                        if(HttpFileUploadUtil::getInstance().isValid(licenseFileObject))
+                        if(HttpFileUploadUtil::getInstance()->isValid(licenseFileObject))
                         
                                     {
                                     
-    FileItem fileItem = *dynamic_cast<FileItem*>(licenseFileObject);;
+    FileItem* fileItem = dynamic_cast<FileItem*>(licenseFileObject);;
     
 
-    std::string fileName = fileItem.getName();;
+    std::string fileName = fileItem->getName();;
     
 
-    int64_t size = fileItem.getSize();;
+    int64_t size = fileItem->getSize();;
     
 HttpFileUploadUtil::log(fileItem);
     
@@ -346,26 +354,26 @@ HttpFileUploadUtil::log(fileItem);
                                     }
                                 
                         else {
-                            this->getRequestHashMap().remove(DownloadItemData::LICENSE_FILE);
+                            this->getRequestHashMap()->remove(DownloadItemData::LICENSE_FILE);
     
 
                         }
                             
 
-    Object* extraFilesObject = this->getRequestHashMap().get(DownloadItemData::EXTRA_FILES);;
+    Object* extraFilesObject = this->getRequestHashMap()->get(DownloadItemData::EXTRA_FILES);;
     
 
-                        if(HttpFileUploadUtil::getInstance().isValid(extraFilesObject))
+                        if(HttpFileUploadUtil::getInstance()->isValid(extraFilesObject))
                         
                                     {
                                     
-    FileItem fileItem = *dynamic_cast<FileItem*>(extraFilesObject);;
+    FileItem* fileItem = dynamic_cast<FileItem*>(extraFilesObject);;
     
 
-    std::string fileName = fileItem.getName();;
+    std::string fileName = fileItem->getName();;
     
 
-    int64_t size = fileItem.getSize();;
+    int64_t size = fileItem->getSize();;
     
 HttpFileUploadUtil::log(fileItem);
     
@@ -388,18 +396,18 @@ this->unzip(fileItem);
                                     }
                                 
                         else {
-                            this->getRequestHashMap().remove(DownloadItemData::EXTRA_FILES);
+                            this->getRequestHashMap()->remove(DownloadItemData::EXTRA_FILES);
     
 
                         }
                             
 
-    HashMap<Object*, Object*> hashMap = this->getRequestHashMap();;
+    HashMap<Object*, Object*>* hashMap = this->getRequestHashMap();;
     
-hashMap.put(basicItemData.ID, this->itemInterface.getId());
+hashMap->put(basicItemData.ID, this->itemInterface.getId());
     
 
-    Object* licenseObject = hashMap.get(DownloadItemData::LICENSE_FILE);;
+    Object* licenseObject = hashMap->get(DownloadItemData::LICENSE_FILE);;
     
 
                         if(licenseObject != 
@@ -407,19 +415,19 @@ hashMap.put(basicItemData.ID, this->itemInterface.getId());
                                 )
                         
                                     {
-                                    hashMap.put(DownloadItemData::LICENSE_FILE, (licenseObject)).getName());
+                                    hashMap->put(DownloadItemData::LICENSE_FILE, (licenseObject)).getName());
     
 
                                     }
                                 
                         else {
-                            hashMap.put(DownloadItemData::LICENSE_FILE, StringUtil::getInstance().EMPTY_STRING);
+                            hashMap->put(DownloadItemData::LICENSE_FILE, StringUtil::getInstance()->EMPTY_STRING);
     
 
                         }
                             
 
-    Object* fileObject = hashMap.get(DownloadItemData::FILE);;
+    Object* fileObject = hashMap->get(DownloadItemData::FILE);;
     
 
                         if(fileObject != 
@@ -427,31 +435,31 @@ hashMap.put(basicItemData.ID, this->itemInterface.getId());
                                 )
                         
                                     {
-                                    hashMap.put(DownloadItemData::FILE, (fileObject)).getName());
+                                    hashMap->put(DownloadItemData::FILE, (fileObject)).getName());
     
 
                                     }
                                 
                         else {
-                            hashMap.put(DownloadItemData::FILE, StringUtil::getInstance().EMPTY_STRING);
+                            hashMap->put(DownloadItemData::FILE, StringUtil::getInstance()->EMPTY_STRING);
     
 
                         }
                             
-this->downloadableItem= DownloadableItem(hashMap);
+this->downloadableItem= new DownloadableItem(hashMap);
     
 
-    DownloadableItemValidation downloadableItemValidation = DownloadableItemValidation(this->downloadableItem);;
+    DownloadableItemValidation* downloadableItemValidation = new DownloadableItemValidation(this->downloadableItem);;
     
 
-                        if(downloadableItemValidation.isValid() == Boolean::FALSE)
+                        if(downloadableItemValidation->isValid() == Boolean::FALSE)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("DownloadableItem is not valid", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("DownloadableItem is not valid", this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -473,13 +481,13 @@ this->downloadableItem= DownloadableItem(hashMap);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Exception in validation", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Exception in validation", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -495,7 +503,7 @@ this->downloadableItem= DownloadableItem(hashMap);
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -505,7 +513,7 @@ this->downloadableItem= DownloadableItem(hashMap);
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -519,20 +527,20 @@ this->downloadableItem= DownloadableItem(hashMap);
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    std::string command = this->getRequestHashMap().get(GLOBALS2::ADMINCOMMAND);;
+    std::string command = this->getRequestHashMap()->get(GLOBALS2::ADMINCOMMAND);;
     
 
-                        if(StringValidationUtil::getInstance().isEmpty(command) || command.compare(this->commonStrings.UPDATE) != 0)
+                        if(StringValidationUtil::getInstance()->isEmpty(command) || command.compare(this->commonStrings->UPDATE) != 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 
                                     }
@@ -547,10 +555,10 @@ this->downloadableItem= DownloadableItem(hashMap);
     std::string ITEM_NOT_FOUND = "Item Does Not Exist";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF(ITEM_NOT_FOUND, this, "validationInfo()");
+                                    this->logUtil->putF(ITEM_NOT_FOUND, this, "validationInfo()");
     
 
                                     }
@@ -565,67 +573,67 @@ this->downloadableItem= DownloadableItem(hashMap);
                                     }
                                 
 
-    BasicItemValidation basicItemValidation = BasicItemValidation(this->itemInterface);;
+    BasicItemValidation* basicItemValidation = new BasicItemValidation(this->itemInterface);;
     
 
-                        if(basicItemValidation.isValid() == Boolean::FALSE)
+                        if(basicItemValidation->isValid() == Boolean::FALSE)
                         
                                     {
-                                    stringBuffer.append(basicItemValidation.validationInfo());
+                                    stringBuffer->append(basicItemValidation->validationInfo());
     
-stringBuffer.append("<br/>");
+stringBuffer->append("<br/>");
     
 
                                     }
                                 
 
-    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession().getStoreName());;
+    StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession()->getStoreName());;
     
 
-    std::string fullCategory = StringMaker().append(URLGLOBALS::getWebappPath()).append(storeFrontInterface.getCurrentHostNamePath()).append(this->itemInterface.getCategory()).toString();;
+    std::string fullCategory = (new StringMaker())->append(URLGLOBALS::getWebappPath())->append(storeFrontInterface->getCurrentHostNamePath())->append(this->itemInterface.getCategory())->toString();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Category: " +fullCategory, this, "validationInfo()");
+                                    this->logUtil->putF("Category: " +fullCategory, this, "validationInfo()");
     
 
                                     }
                                 
 
-    AbFile categoryFile = AbFile::createAbFile(fullCategory);;
+    AbFile* categoryFile = AbFile::createAbFile(fullCategory);;
     
 
-                        if(!categoryFile.isDirectory())
+                        if(!categoryFile->isDirectory())
                         
                                     {
-                                    stringBuffer.append("Category ");
+                                    stringBuffer->append("Category ");
     
-stringBuffer.append(this->itemInterface.getCategory());
+stringBuffer->append(this->itemInterface.getCategory());
     
-stringBuffer.append(" does not exist.");
+stringBuffer->append(" does not exist.");
     
-stringBuffer.append("<br />");
+stringBuffer->append("<br />");
     
 
                                     }
                                 
 
-    Object* downloadableFileObject = this->getRequestHashMap().get(DownloadItemData::FILE);;
+    Object* downloadableFileObject = this->getRequestHashMap()->get(DownloadItemData::FILE);;
     
 
-                        if(HttpFileUploadUtil::getInstance().isValid(downloadableFileObject))
+                        if(HttpFileUploadUtil::getInstance()->isValid(downloadableFileObject))
                         
                                     {
                                     
-    FileItem fileItem = *dynamic_cast<FileItem*>(downloadableFileObject);;
+    FileItem* fileItem = dynamic_cast<FileItem*>(downloadableFileObject);;
     
 
-    std::string fileName = fileItem.getName();;
+    std::string fileName = fileItem->getName();;
     
 
-    int64_t size = fileItem.getSize();;
+    int64_t size = fileItem->getSize();;
     
 this->validationInfo(stringBuffer, fileName, size);
     
@@ -633,28 +641,28 @@ this->validationInfo(stringBuffer, fileName, size);
                                     }
                                 
                         else {
-                            stringBuffer.append("Download File Missing");
+                            stringBuffer->append("Download File Missing");
     
-stringBuffer.append("<br/>");
+stringBuffer->append("<br/>");
     
 
                         }
                             
 
-    Object* licenseFileObject = this->getRequestHashMap().get(DownloadItemData::LICENSE_FILE);;
+    Object* licenseFileObject = this->getRequestHashMap()->get(DownloadItemData::LICENSE_FILE);;
     
 
-                        if(HttpFileUploadUtil::getInstance().isValid(licenseFileObject))
+                        if(HttpFileUploadUtil::getInstance()->isValid(licenseFileObject))
                         
                                     {
                                     
-    FileItem fileItem = *dynamic_cast<FileItem*>(licenseFileObject);;
+    FileItem* fileItem = dynamic_cast<FileItem*>(licenseFileObject);;
     
 
-    std::string fileName = fileItem.getName();;
+    std::string fileName = fileItem->getName();;
     
 
-    int64_t size = fileItem.getSize();;
+    int64_t size = fileItem->getSize();;
     
 this->validationInfo(stringBuffer, fileName, size);
     
@@ -666,20 +674,20 @@ this->validationInfo(stringBuffer, fileName, size);
                         }
                             
 
-    Object* extraFilesObject = this->getRequestHashMap().get(DownloadItemData::EXTRA_FILES);;
+    Object* extraFilesObject = this->getRequestHashMap()->get(DownloadItemData::EXTRA_FILES);;
     
 
-                        if(HttpFileUploadUtil::getInstance().isValid(extraFilesObject))
+                        if(HttpFileUploadUtil::getInstance()->isValid(extraFilesObject))
                         
                                     {
                                     
-    FileItem fileItem = *dynamic_cast<FileItem*>(extraFilesObject);;
+    FileItem* fileItem = dynamic_cast<FileItem*>(extraFilesObject);;
     
 
-    std::string fileName = fileItem.getName();;
+    std::string fileName = fileItem->getName();;
     
 
-    int64_t size = fileItem.getSize();;
+    int64_t size = fileItem->getSize();;
     
 this->validationInfo(stringBuffer, fileName, size);
     
@@ -697,27 +705,27 @@ this->validationInfo(stringBuffer, fileName, size);
                         
                                     {
                                     
-    DownloadableItemValidation downloadableItemValidation = DownloadableItemValidation(this->downloadableItem);;
+    DownloadableItemValidation* downloadableItemValidation = new DownloadableItemValidation(this->downloadableItem);;
     
 
-                        if(downloadableItemValidation.isValid() == Boolean::FALSE)
+                        if(downloadableItemValidation->isValid() == Boolean::FALSE)
                         
                                     {
                                     
-    std::string log = downloadableItemValidation.validationInfo();;
+    std::string log = downloadableItemValidation->validationInfo();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF(log, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(log, this, this->commonStrings->IS_VALID);
     
 
                                     }
                                 
-stringBuffer.append(log);
+stringBuffer->append(log);
     
-stringBuffer.append("<br/>");
+stringBuffer->append("<br/>");
     
 
                                     }
@@ -729,17 +737,17 @@ stringBuffer.append("<br/>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -757,34 +765,34 @@ stringBuffer.append("<br/>");
 
                 //@Throws(Exception.constructor)
             
-    private: Boolean isValid(std::string fileName, int64_t size){
+    private: bool isValid(std::string fileName, int64_t size){
 
-    FileData fileData = FileData::getInstance();;
+    FileData* fileData = FileData::getInstance();;
     
 
-                        if(size > fileData.MINDOWNLOADABLEFILESIZE)
+                        if(size > fileData->MINDOWNLOADABLEFILESIZE)
                         
                                     {
                                     
-                        if(size < fileData.MAXDOWNLOADABLEFILESIZE)
+                        if(size < fileData->MAXDOWNLOADABLEFILESIZE)
                         
                                     {
                                     
-                        if(!StringValidationUtil::getInstance().isValidRequired(fileName, fileData.MINLEN, fileData.MAXLEN))
+                        if(!StringValidationUtil::getInstance()->isValidRequired(fileName, fileData->MINLEN, fileData->MAXLEN))
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("File name is not valid: ");
+stringBuffer->append("File name is not valid: ");
     
-stringBuffer.append(fileName);
+stringBuffer->append(fileName);
     
-this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -807,21 +815,21 @@ this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("File Size To Large: ");
+stringBuffer->append("File Size To Large: ");
     
-stringBuffer.appendlong(size);
+stringBuffer->appendlong(size);
     
-stringBuffer.append(">");
+stringBuffer->append(">");
     
-stringBuffer.appendint(fileData.MAXDOWNLOADABLEFILESIZE);
+stringBuffer->appendint(fileData->MAXDOWNLOADABLEFILESIZE);
     
-this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -840,21 +848,21 @@ this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("File Size To Small: ");
+stringBuffer->append("File Size To Small: ");
     
-stringBuffer.appendlong(size);
+stringBuffer->appendlong(size);
     
-stringBuffer.append(">");
+stringBuffer->append(">");
     
-stringBuffer.appendint(fileData.MINDOWNLOADABLEFILESIZE);
+stringBuffer->appendint(fileData->MINDOWNLOADABLEFILESIZE);
     
-this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -877,35 +885,35 @@ this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
 }
 
 
-    private: void validationInfo(StringMaker stringBuffer, std::string fileName, int64_t size){
+    private: void validationInfo(StringMaker* stringBuffer, std::string fileName, int64_t size){
 
-    FileData fileData = FileData::getInstance();;
+    FileData* fileData = FileData::getInstance();;
     
 
-                        if(size > fileData.MINDOWNLOADABLEFILESIZE)
+                        if(size > fileData->MINDOWNLOADABLEFILESIZE)
                         
                                     {
                                     
-                        if(size < fileData.MAXDOWNLOADABLEFILESIZE)
+                        if(size < fileData->MAXDOWNLOADABLEFILESIZE)
                         
                                     {
                                     
-                        if(!StringValidationUtil::getInstance().isValidRequired(fileName, fileData.MINLEN, fileData.MAXLEN))
+                        if(!StringValidationUtil::getInstance()->isValidRequired(fileName, fileData->MINLEN, fileData->MAXLEN))
                         
                                     {
-                                    stringBuffer.append("File Name must be more than ");
+                                    stringBuffer->append("File Name must be more than ");
     
-stringBuffer.appendint(fileData.MINLEN);
+stringBuffer->appendint(fileData->MINLEN);
     
-stringBuffer.append(" and less than ");
+stringBuffer->append(" and less than ");
     
-stringBuffer.appendint(fileData.MAXLEN);
+stringBuffer->appendint(fileData->MAXLEN);
     
-stringBuffer.append(" characters in length: ");
+stringBuffer->append(" characters in length: ");
     
-stringBuffer.append(fileName);
+stringBuffer->append(fileName);
     
-stringBuffer.append("<br/>");
+stringBuffer->append("<br/>");
     
 
                                     }
@@ -918,15 +926,15 @@ stringBuffer.append("<br/>");
                                     }
                                 
                         else {
-                            stringBuffer.append("File Is Not The Right Size. ");
+                            stringBuffer->append("File Is Not The Right Size. ");
     
-stringBuffer.appendint(fileData.MINDOWNLOADABLEFILESIZE);
+stringBuffer->appendint(fileData->MINDOWNLOADABLEFILESIZE);
     
-stringBuffer.append("< >");
+stringBuffer->append("< >");
     
-stringBuffer.appendint(fileData.MAXDOWNLOADABLEFILESIZE);
+stringBuffer->appendint(fileData->MAXDOWNLOADABLEFILESIZE);
     
-stringBuffer.append("<br/>");
+stringBuffer->append("<br/>");
     
 
                         }

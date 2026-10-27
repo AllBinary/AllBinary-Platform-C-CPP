@@ -7,6 +7,12 @@
         #ifndef ORG_PLATFORM_OPENGLRESOURCES_H
         #define ORG_PLATFORM_OPENGLRESOURCES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -39,9 +45,9 @@ class OpenGLResources
             : public Object
          {
 
-    private: static OpenGLResources instance() { return OpenGLResources(); }
+    private: static OpenGLResources* instance() { static std::unique_ptr<OpenGLResources> value(new OpenGLResources()); return value.get(); }
 
-    public: static OpenGLResources getInstance();
+    public: static OpenGLResources* getInstance();
 
     public: void init();
 
@@ -51,15 +57,15 @@ class OpenGLResources
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream openRawResource(int32_t id);
+    public: InputStream* openRawResource(int32_t id);
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream openRawResourceFromName(std::string resourceName);
+    public: InputStream* openRawResourceFromName(std::string resourceName);
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream getResourceAsStream(std::string resourceName);
+    public: InputStream* getResourceAsStream(std::string resourceName);
 
     public: std::string getPackageName();
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONGAUGE_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONGAUGE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Gauge.h>
 
       
@@ -42,11 +48,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameConfiguration.h"
+        #include "org/allbinary/game/configuration/GameConfiguration.h"
 
 class GameConfigurationGauge: public Gauge {
 
-public: GameConfigurationGauge(GameConfiguration gameConfiguration);
+public: GameConfigurationGauge(GameConfiguration* gameConfiguration);
 
 };
 

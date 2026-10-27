@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <admin/taghelpers/CustomItemsHelperFactory.h>
 
       
@@ -42,14 +48,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TableTag.h"
+        #include "admin/tags/TableTag.h"
 
 class CustomItemsTag: public TableTag {
 
 public: CustomItemsTag(){
-this->setTagHelperFactory(CustomItemsHelperFactory());
+this->setTagHelperFactory(new CustomItemsHelperFactory());
     
-this->setTagRequestHelperFactory(CustomItemsRequestHelperFactory());
+this->setTagRequestHelperFactory(new CustomItemsRequestHelperFactory());
     
 }
 

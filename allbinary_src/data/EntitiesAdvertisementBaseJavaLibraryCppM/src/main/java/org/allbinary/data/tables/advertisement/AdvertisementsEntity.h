@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_ADVERTISEMENTSENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_ADVERTISEMENTSENTITY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -80,11 +86,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdvertisementsEntityInterface.h"
+        #include "org/allbinary/data/tables/advertisement/AdvertisementsEntityInterface.h"
 
 class AdvertisementsEntity: public AbSqlBean, public AdvertisementsEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     protected: const std::string tableName = "advertisements";
 
@@ -94,15 +100,15 @@ public: AdvertisementsEntity();
 
     public: void delete_(std::string value);
 
-    public: BasicArrayList get(std::string storeName);
+    public: BasicArrayList* get(std::string storeName);
 
-    public: AdvertisementInterface get(std::string storeName, std::string advertismentName);
+    public: AdvertisementInterface* get(std::string storeName, std::string advertismentName);
 
     public: std::string createTableStatement();
 
     public: std::string createTable();
 
-    public: void update(HashMap<Object*, Object*> updatedValues);
+    public: void update(HashMap<Object*, Object*>* updatedValues);
 
     public: std::string dropTable();
 

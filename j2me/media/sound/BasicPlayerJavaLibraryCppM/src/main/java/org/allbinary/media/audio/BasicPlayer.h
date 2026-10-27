@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/media/Control.h>
@@ -67,18 +73,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Controllable2.h"
-#include "NullControl.h"
+        #include "org/allbinary/media/audio/Controllable2.h"
+#include "org/allbinary/media/audio/NullControl.h"
 //BasicPlayerJavaLibrary
 class BasicPlayer
             : public Object
-        : public Player, public Controllable2 {
+        , public Player, public Controllable2 {
 
-    public: static std::string CONTROL_TYPE = "ToneControl";
+    public: static inline std::string CONTROL_TYPE = "ToneControl";
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const BasicArrayList listenersList = BasicArrayListD();
+    protected: BasicArrayList* listenersList = new BasicArrayListD();
 
     protected: int32_t stateP= 0;
 
@@ -88,16 +94,16 @@ public: BasicPlayer();
 
     public: std::string getContentType();
 
-    public: Control getControl(std::string controlType);
+    public: Control* getControl(std::string controlType);
 
-    public: std::vector<Control> getControls();
+    public: std::vector<Control*> getControls();
 
     public: void close();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void addPlayerListener(PlayerListener playerListener);
+    public: void addPlayerListener(PlayerListener* playerListener);
 
-    public: void removePlayerListener(PlayerListener playerListener);
+    public: void removePlayerListener(PlayerListener* playerListener);
 
     public: int32_t getState();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.

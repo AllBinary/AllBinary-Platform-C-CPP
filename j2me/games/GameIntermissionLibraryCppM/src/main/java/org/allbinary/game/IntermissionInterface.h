@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INTERMISSIONINTERFACE_H
         #define ORG_ALLBINARY_GAME_INTERMISSIONINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/time/TimeDelayHelper.h>
 
       
@@ -42,17 +48,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "IntermissionEnableListenerInterface.h"
+        #include "org/allbinary/game/IntermissionEnableListenerInterface.h"
 
 class IntermissionInterface {
 
-    TimeDelayHelper getTimeDelayHelper();
+    public: virtual TimeDelayHelper* getTimeDelayHelper() = 0;
 
-    bool isEnabled();
+    public: virtual bool isEnabled() = 0;
 
-    void setEnabled(bool value);
+    public: virtual void setEnabled(bool value) = 0;
 
-    void setListener(IntermissionEnableListenerInterface enableListener);
+    public: virtual void setListener(IntermissionEnableListenerInterface* enableListener) = 0;
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTOR_CIRCLEANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_VECTOR_CIRCLEANIMATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -57,17 +63,17 @@
         
 class CircleAnimation: public Animation, public ColorCompositeInterface {
 
-    protected: const int32_t TOTAL_ANGLE = static_cast<int32_t>(AngleFactory::getInstance().TOTAL_ANGLE);
+    protected: const int32_t TOTAL_ANGLE = static_cast<int32_t>(AngleFactory::getInstance()->TOTAL_ANGLE);
 
     protected: int32_t width;
 
     protected: int32_t height;
 
-public: CircleAnimation(int32_t width, int32_t height, BasicColor basicColor);
+public: CircleAnimation(int32_t width, int32_t height, BasicColor* basicColor);
 
     public: void nextFrame();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_NULLLOCATIONPAINTABLE_H
         #define ORG_ALLBINARY_GRAPHICS_PAINT_NULLLOCATIONPAINTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,13 +45,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LocationPaintable.h"
+        #include "org/allbinary/graphics/paint/LocationPaintable.h"
 
 class NullLocationPaintable: public LocationPaintable {
 
-    private: static const NullLocationPaintable instanceC = NullLocationPaintable();
+    private: static NullLocationPaintable* instanceC() { static std::unique_ptr<NullLocationPaintable> value(new NullLocationPaintable()); return value.get(); }
 
-    public: static NullLocationPaintable getInstance();
+    public: static NullLocationPaintable* getInstance();
 
 };
 

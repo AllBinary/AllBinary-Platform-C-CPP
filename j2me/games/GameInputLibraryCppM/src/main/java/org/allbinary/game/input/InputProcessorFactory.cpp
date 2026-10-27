@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,15 +44,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputProcessor.h"
+        #include "org/allbinary/game/input/InputProcessor.h"
 
 class InputProcessorFactory
             : public Object
          {
 
-    private: static InputProcessorFactory instance() { return InputProcessorFactory(); }
+    private: static InputProcessorFactory* instance() { static std::unique_ptr<InputProcessorFactory> value(new InputProcessorFactory()); return value.get(); }
 
-    public: static InputProcessorFactory getInstance(){
+    public: static InputProcessorFactory* getInstance(){
 
 
 
@@ -56,9 +62,9 @@ class InputProcessorFactory
 }
 
 
-    private: const InputProcessor inputProcessor = InputProcessor();
+    private: InputProcessor* inputProcessor = new InputProcessor();
 
-    public: InputProcessor getInputProcessor(){
+    public: InputProcessor* getInputProcessor(){
 
 
 

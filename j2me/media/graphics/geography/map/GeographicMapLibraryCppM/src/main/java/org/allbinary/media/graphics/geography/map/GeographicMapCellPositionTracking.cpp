@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,23 +52,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SimpleGeographicMapCellPositionFactory.h"
-#include "GeographicMapCellPosition.h"
-#include "GeographicMapCellType.h"
-#include "BasicGeographicMap.h"
-#include "GeographicMapCompositeInterface.h"
+        #include "org/allbinary/media/graphics/geography/map/SimpleGeographicMapCellPositionFactory.h"
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellType.h"
+#include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCompositeInterface.h"
 
 class GeographicMapCellPositionTracking
             : public Object
          {
 
-    private: GeographicMapCellPosition currentGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition* currentGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: GeographicMapCellPosition previousGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition* previousGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: GeographicMapCellPosition newGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition* newGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: GeographicMapCellType currentCellType = GeographicMapCellType::NULL_GEOGRAPHIC_MAP_CELL_TYPE;
+    private: GeographicMapCellType* currentCellType = GeographicMapCellType::NULL_GEOGRAPHIC_MAP_CELL_TYPE;
 
 public: GeographicMapCellPositionTracking(){
 }
@@ -70,15 +76,15 @@ public: GeographicMapCellPositionTracking(){
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellType getCurrentOverCellType(BasicGeographicMap geographicMap){
+    public: GeographicMapCellType* getCurrentOverCellType(BasicGeographicMap* geographicMap){
 
-    GeographicMapCellPosition geographicMapCellPosition = this->currentGeographicMapCellPosition;;
+    GeographicMapCellPosition* geographicMapCellPosition = this->currentGeographicMapCellPosition;;
     
 
                         if(geographicMapCellPosition != this->previousGeographicMapCellPosition)
                         
                                     {
-                                    this->currentCellType= geographicMap.getCellTypeAt(geographicMapCellPosition);
+                                    this->currentCellType= geographicMap->getCellTypeAt(geographicMapCellPosition);
     
 
                                     }
@@ -94,18 +100,18 @@ public: GeographicMapCellPositionTracking(){
 
                 //@Throws(Exception.constructor)
             
-    public: bool updateStart(AllBinaryGameCanvasInterface gameCanvasInterface, AllBinaryLayer layer){
+    public: bool updateStart(AllBinaryGameCanvasInterface* gameCanvasInterface, AllBinaryLayer* layer){
 
                         if(gameCanvasInterface != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION)
                         
                                     {
                                     
-    GeographicMapCompositeInterface geographicMapCompositeInterface = gameCanvasInterface.getLayerManager();;
+    GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(gameCanvasInterface->getLayerManager());;
     
 
-    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
+    BasicGeographicMap* geographicMapInterface = geographicMapCompositeInterface->getGeographicMapInterface()[0];;
     
-this->newGeographicMapCellPosition= geographicMapInterface.getCellPositionAtXY(layer.getXP() +layer.getHalfWidth(), layer.getYP() +layer.getHalfHeight());
+this->newGeographicMapCellPosition= geographicMapInterface->getCellPositionAtXY(layer->getXP() +layer->getHalfWidth(), layer->getYP() +layer->getHalfHeight());
     
 
                         if(this->newGeographicMapCellPosition != this->currentGeographicMapCellPosition)
@@ -159,7 +165,7 @@ this->newGeographicMapCellPosition= geographicMapInterface.getCellPositionAtXY(l
 }
 
 
-    public: GeographicMapCellPosition getPreviousGeographicMapCellPosition(){
+    public: GeographicMapCellPosition* getPreviousGeographicMapCellPosition(){
 
 
 
@@ -169,7 +175,7 @@ this->newGeographicMapCellPosition= geographicMapInterface.getCellPositionAtXY(l
 }
 
 
-    public: GeographicMapCellPosition getCurrentGeographicMapCellPosition(){
+    public: GeographicMapCellPosition* getCurrentGeographicMapCellPosition(){
 
 
 

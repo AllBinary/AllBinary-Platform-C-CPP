@@ -21,6 +21,12 @@
         #ifndef VIEWS_GENERIC_INVENTORY_INVENTORYCOLUMNUTIL_H
         #define VIEWS_GENERIC_INVENTORY_INVENTORYCOLUMNUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -67,15 +73,15 @@ class InventoryColumnUtil
             : public Object
          {
 
-    private: static InventoryColumnUtil instance() { return InventoryColumnUtil(); }
+    private: static InventoryColumnUtil* instance() { static std::unique_ptr<InventoryColumnUtil> value(new InventoryColumnUtil()); return value.get(); }
 
-    public: static InventoryColumnUtil getInstance();
+    public: static InventoryColumnUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
-    public: BasicArrayList getColumnWhereLike(InventoryEntity inventoryEntity, std::string category, std::string column);
+    public: BasicArrayList* getColumnWhereLike(InventoryEntity* inventoryEntity, std::string category, std::string column);
 
 };
 

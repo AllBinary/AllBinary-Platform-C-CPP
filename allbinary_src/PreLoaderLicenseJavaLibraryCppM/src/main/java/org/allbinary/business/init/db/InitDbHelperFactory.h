@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -54,21 +60,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DatabaseConnectionInfoInterface.h"
+        #include "org/allbinary/business/init/db/DatabaseConnectionInfoInterface.h"
 
 class InitDbHelperFactory
             : public Object
          {
 
-    private: static const std::string CLASSNAME = "org.allbinary.business.installer.InitDbCrypted";
+    private: static inline const std::string CLASSNAME = "org.allbinary.business.installer.InitDbCrypted";
 
                 //@Throws(LicensingException.constructor)
             
-    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, DatabaseConnectionInfoInterface databaseConnectionInfoInterface);
+    public: static Object* getInstance(AbeClientInformationInterface* abeClientInformation, DatabaseConnectionInfoInterface* databaseConnectionInfoInterface);
 
                 //@Throws(LicensingException.constructor)
             
-    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation);
+    public: static Object* getInstance(AbeClientInformationInterface* abeClientInformation);
 
 private: InitDbHelperFactory();
 

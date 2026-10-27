@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -78,47 +84,47 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RequestData.h"
+        #include "org/allbinary/logic/communication/http/request/RequestData.h"
 //Note: if request is destroyed or messed up this will not work. Use fileRequestParams
 class RequestParams
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: Map map;
+    private: Map* map;
 
 public: RequestParams(){
-this->logUtil.putF("New RequestParams Size: 0", this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF("New RequestParams Size: 0", this, this->commonStrings->CONSTRUCTOR);
     
 }
 
 
-public: RequestParams(HttpServletRequest request){
-this->map= request.getParameterMap();
+public: RequestParams(HttpServletRequest* request){
+this->map= request->getParameterMap();
     
-this->logUtil.putF("RequestParams Size: " +this->getMap().keySet().size(), this, this->commonStrings.CONSTRUCTOR);
-    
-}
-
-
-public: RequestParams(PageContext pageContext){
-this->map= pageContext.getRequest().getParameterMap();
-    
-this->logUtil.putF("Request Params Size: " +this->getMap().keySet().size(), this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF("RequestParams Size: " +this->getMap()->keySet()->size(), this, this->commonStrings->CONSTRUCTOR);
     
 }
 
 
-    protected: void setMap(Map map){
+public: RequestParams(PageContext* pageContext){
+this->map= pageContext->getRequest()->getParameterMap();
+    
+this->logUtil->putF("Request Params Size: " +this->getMap()->keySet()->size(), this, this->commonStrings->CONSTRUCTOR);
+    
+}
+
+
+    protected: void setMap(Map* map){
 this->map= map;
     
 }
 
 
-    protected: Map getMap(){
+    protected: Map* getMap(){
 
 
 
@@ -132,20 +138,20 @@ this->map= map;
 
     private: const std::string VALUE = " Value: ";
 
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
         try {
             
-    Node node = document.createElement(RequestData::REQUEST);;
+    Node* node = document->createElement(RequestData::REQUEST);;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    Set keys = this->map.keySet();;
+    Set* keys = this->map->keySet();;
     
 
-    std::vector<Object*> keyArray = keys.toArray();;
+    std::vector<Object*> keyArray = keys->toArray();;
     
 
     int32_t size = keyArray.size();;
@@ -161,21 +167,21 @@ this->map= map;
     std::string key = keyArray[i];;
     
 
-    std::vector<std::string> values = this->map.get(key) as string[];;
+    std::vector<std::string> values = this->map->get(key) as string[];;
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(this->KEY);
+stringBuffer->append(this->KEY);
     
-stringBuffer.append(key);
+stringBuffer->append(key);
     
-stringBuffer.append(this->VALUE);
+stringBuffer->append(this->VALUE);
     
-stringBuffer.append(values[0]);
+stringBuffer->append(values[0]);
     
-this->logUtil.putF(stringBuffer.toString(), this, "toXmlNode(document)");
+this->logUtil->putF(stringBuffer->toString(), this, "toXmlNode(document)");
     
-node.appendChild(ModDomHelper::createNameValueNodes(document, RequestData::PARAMETER, std::string(key), .toCharArray()));
+node->appendChild(ModDomHelper::createNameValueNodes(document, RequestData::PARAMETER, std::string(key), .toCharArray()));
     
 }
 
@@ -187,9 +193,9 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, RequestData::PARAM
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "toXmlNode(document)", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "toXmlNode(document)", &e);
     
 
 
@@ -204,21 +210,21 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "toXmlNode(document)", e)
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
 
-    Set keys = this->map.keySet();;
+    Set* keys = this->map->keySet();;
     
 
-    std::vector<Object*> keyArray = keys.toArray();;
+    std::vector<Object*> keyArray = keys->toArray();;
     
 
     int32_t size = keyArray.size();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
 
@@ -231,23 +237,23 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "toXmlNode(document)", e)
     std::string key = keyArray[i];;
     
 
-    std::vector<std::string> values = this->map.get(key) as string[];;
+    std::vector<std::string> values = this->map->get(key) as string[];;
     
-hashMap.put(std::string(key), .toCharArray());
+hashMap->put(std::string(key), .toCharArray());
     
 }
 
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append("RequestParams: ");
+stringBuffer->append("RequestParams: ");
     
-stringBuffer.append(this->map.toString());
+stringBuffer->append(this->map->toString());
     
-stringBuffer.append("\ntoHashMap: ");
+stringBuffer->append("\ntoHashMap: ");
     
-stringBuffer.append(hashMap.toString());
+stringBuffer->append(hashMap->toString());
     
-this->logUtil.putF(stringBuffer.toString(), this, "toHashMap()");
+this->logUtil->putF(stringBuffer->toString(), this, "toHashMap()");
     
 
 

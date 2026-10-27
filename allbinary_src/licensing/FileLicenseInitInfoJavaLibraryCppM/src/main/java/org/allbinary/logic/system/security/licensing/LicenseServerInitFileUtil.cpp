@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -78,25 +84,25 @@ class LicenseServerInitFileUtil
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const OutputStream NULL_OUTPUT_STREAM = SimpleFileUtil::nullOutputStream();
+    private: OutputStream* NULL_OUTPUT_STREAM = SimpleFileUtil::nullOutputStream();
 
     public: void init(){
 
         try {
             
-    std::string filePath = LicenseInitInfoUtil::getInstance().INITFILENAME;;
+    std::string filePath = LicenseInitInfoUtil::getInstance()->INITFILENAME;;
     
-LicenseInitInfoUtil::getInstance().setFilePath(StringUtil::getInstance().EMPTY_STRING);
+LicenseInitInfoUtil::getInstance()->setFilePath(StringUtil::getInstance()->EMPTY_STRING);
     
 
-                        if(FileFactory::getInstance().isFile(filePath))
+                        if(FileFactory::getInstance()->isFile(filePath))
                         
                                     {
-                                    this->logUtil.putF("Using Existing License File", this, this->commonStrings.INIT);
+                                    this->logUtil->putF("Using Existing License File", this, this->commonStrings->INIT);
     
 
                                     }
@@ -109,9 +115,9 @@ LicenseInitInfoUtil::getInstance().setFilePath(StringUtil::getInstance().EMPTY_S
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->INIT, &e);
     
 }
 
@@ -120,25 +126,25 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT,
 
     private: void write(){
 
-    OutputStream fileOutputStream = this->NULL_OUTPUT_STREAM;;
+    OutputStream* fileOutputStream = this->NULL_OUTPUT_STREAM;;
     
 
         try {
             
-    ResourceUtil resourceUtil = ResourceUtil::getInstance();;
+    ResourceUtil* resourceUtil = ResourceUtil::getInstance();;
     
 
-    std::string filePath = LicenseInitInfoUtil::getInstance().INITFILENAME;;
+    std::string filePath = LicenseInitInfoUtil::getInstance()->INITFILENAME;;
     
 
-    InputStream inputStream = resourceUtil.getResourceAsStream(filePath);;
+    InputStream* inputStream = resourceUtil->getResourceAsStream(filePath);;
     
-this->logUtil.putF("Writing Default License File", this, this->commonStrings.INIT);
+this->logUtil->putF("Writing Default License File", this, this->commonStrings->INIT);
     
 
-    FileStreamFactory fileStreamFactory = FileStreamFactory::getInstance();;
+    FileStreamFactory* fileStreamFactory = FileStreamFactory::getInstance();;
     
-fileOutputStream= fileStreamFactory.getFileOutputStreamInstance(StringUtil::getInstance().EMPTY_STRING, filePath);
+fileOutputStream= fileStreamFactory->getFileOutputStreamInstance(StringUtil::getInstance()->EMPTY_STRING, filePath);
     
 
     int32_t b= 0;;
@@ -149,7 +155,7 @@ fileOutputStream= fileStreamFactory.getFileOutputStreamInstance(StringUtil::getI
 
         while(true)
         {
-b= inputStream.read();
+b= inputStream->read();
     
 
                         if(b ==  -1)
@@ -161,26 +167,26 @@ b= inputStream.read();
 
                                     }
                                 
-fileOutputStream.write(b);
+fileOutputStream->write(b);
     
 index++;
     
 }
 
-this->logUtil.putF("Wrote Bytes: " +index, this, this->commonStrings.INIT);
+this->logUtil->putF("Wrote Bytes: " +index, this, this->commonStrings->INIT);
     
-fileOutputStream.flush();
+fileOutputStream->flush();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->INIT, &e);
     
 }
 
          finally {
-            StreamUtil::getInstance().close(fileOutputStream);
+            StreamUtil::getInstance()->close(fileOutputStream);
     
 
          }

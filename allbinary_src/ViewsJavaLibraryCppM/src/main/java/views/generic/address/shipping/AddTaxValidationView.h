@@ -21,6 +21,12 @@
         #ifndef VIEWS_GENERIC_ADDRESS_SHIPPING_ADDTAXVALIDATIONVIEW_H
         #define VIEWS_GENERIC_ADDRESS_SHIPPING_ADDTAXVALIDATIONVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -86,25 +92,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShippingAddressView.h"
+        #include "views/generic/address/shipping/ShippingAddressView.h"
 
 class AddTaxValidationView: public ShippingAddressView, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: AddTaxValidationView(TransformInfoInterface transformInfoInterface);
+public: AddTaxValidationView(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Boolean isValid();
+    public: bool isValid();
 
                 //@Throws(Exception.constructor)
             
     public: std::string validationInfo();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
 };
 

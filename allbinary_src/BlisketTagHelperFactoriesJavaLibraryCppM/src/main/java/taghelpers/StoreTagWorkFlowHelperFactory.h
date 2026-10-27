@@ -21,6 +21,14 @@
         #ifndef TAGHELPERS_STORETAGWORKFLOWHELPERFACTORY_H
         #define TAGHELPERS_STORETAGWORKFLOWHELPERFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -56,17 +64,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreTagWorkFlowHelper.h"
+        #include "taghelpers/StoreTagWorkFlowHelper.h"
 
 class StoreTagWorkFlowHelperFactory: public TagHelperFactory {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: StoreTagWorkFlowHelperFactory();
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+    public: Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
 };
 

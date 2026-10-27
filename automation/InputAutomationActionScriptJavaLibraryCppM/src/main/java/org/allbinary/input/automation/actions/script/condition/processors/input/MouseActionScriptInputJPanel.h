@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEACTIONSCRIPTINPUTJPANEL_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEACTIONSCRIPTINPUTJPANEL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -73,32 +79,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "MouseActionScriptInputInterface.h"
-#include "DefaultComboBoxModel.h"
-#include "ComboBoxModel.h"
-#include "JDialog.h"
-#include "JLabel.h"
-#include "JButton.h"
-#include "JCheckBox.h"
-#include "JTextField.h"
-#include "JComboBox.h"
-#include "Dimension.h"
-#include "ActionListener.h"
-#include "ActionEvent.h"
-#include "Insets.h"
-#include "GroupLayout.h"
-#include "Short.h"
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/JPanel.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/MouseActionScriptInputInterface.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/DefaultComboBoxModel.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/ComboBoxModel.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/JDialog.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/JLabel.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/JButton.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/JCheckBox.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/JTextField.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/JComboBox.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/Dimension.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/ActionListener.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/ActionEvent.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/Insets.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/GroupLayout.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/Short.h"
 
 class MouseActionScriptInputJPanel: public javax::swing::JPanel {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: MouseActionScriptInputInterface mouseActionScriptInputInterface;
+    private: MouseActionScriptInputInterface* mouseActionScriptInputInterface;
 
-public: MouseActionScriptInputJPanel(MouseActionScriptInputInterface mouseActionScriptInputInterface);
+public: MouseActionScriptInputJPanel(MouseActionScriptInputInterface* mouseActionScriptInputInterface);
 
     private: void set();
 
@@ -110,51 +116,51 @@ public: MouseActionScriptInputJPanel(MouseActionScriptInputInterface mouseAction
             
     private: void update();
 
-    public: javax::swing::JDialog getMouseActionJDialog();
+    public: javax::swing::JDialog* getMouseActionJDialog();
 
-    public: void setMouseActionJDialog(javax::swing::JDialog mouseActionJDialog);
+    public: void setMouseActionJDialog(javax::swing::JDialog* mouseActionJDialog);
 
     private: void initComponents();
 
-    private: void button2JCheckBoxActionPerformed(java::awt::event::ActionEvent evt);
+    private: void button2JCheckBoxActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void okJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void okJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void mouseActionJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void mouseActionJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: javax::swing::JCheckBox button1JCheckBox;
+    private: javax::swing::JCheckBox* button1JCheckBox;
 
-    private: javax::swing::JCheckBox button2JCheckBox;
+    private: javax::swing::JCheckBox* button2JCheckBox;
 
-    private: javax::swing::JComboBox inputAutomationTypeJComboBox;
+    private: javax::swing::JComboBox* inputAutomationTypeJComboBox;
 
-    private: javax::swing::JLabel inputTypeJLabel;
+    private: javax::swing::JLabel* inputTypeJLabel;
 
-    private: javax::swing::JLabel jLabel1;
+    private: javax::swing::JLabel* jLabel1;
 
-    private: javax::swing::JLabel jLabel2;
+    private: javax::swing::JLabel* jLabel2;
 
-    private: javax::swing::JLabel jLabel3;
+    private: javax::swing::JLabel* jLabel3;
 
-    private: javax::swing::JLabel jLabel4;
+    private: javax::swing::JLabel* jLabel4;
 
-    private: javax::swing::JLabel jLabel5;
+    private: javax::swing::JLabel* jLabel5;
 
-    private: javax::swing::JLabel jLabel6;
+    private: javax::swing::JLabel* jLabel6;
 
-    private: javax::swing::JButton mouseActionJButton;
+    private: javax::swing::JButton* mouseActionJButton;
 
-    private: javax::swing::JDialog mouseActionJDialog;
+    private: javax::swing::JDialog* mouseActionJDialog;
 
-    private: javax::swing::JTextField mouseDelayJTextField;
+    private: javax::swing::JTextField* mouseDelayJTextField;
 
-    private: javax::swing::JTextField mouseXJTextField;
+    private: javax::swing::JTextField* mouseXJTextField;
 
-    private: javax::swing::JTextField mouseYJTextField;
+    private: javax::swing::JTextField* mouseYJTextField;
 
-    private: javax::swing::JButton okJButton;
+    private: javax::swing::JButton* okJButton;
 
-    private: javax::swing::JLabel titleJLabel;
+    private: javax::swing::JLabel* titleJLabel;
 
 };
 

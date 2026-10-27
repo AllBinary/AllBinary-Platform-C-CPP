@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/util/HashMap.h>
 
       
@@ -51,11 +57,11 @@
         
 class CategoryEntityInterface: public BasicDataTableInterface {
 
-    void delete_(std::string value)
+    public: virtual void delete_(std::string value) = 0;
 
-    void insert(BasicArrayList values)
+    public: virtual void insert(BasicArrayList* values) = 0;
 
-    void update(HashMap<Object*, Object*> updatedValues)
+    public: virtual void update(HashMap<Object*, Object*>* updatedValues) = 0;
 
 };
 

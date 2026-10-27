@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,16 +61,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageJ2SERotationUtil.h"
-#include "ImageCreationUtil.h"
+        #include "org/allbinary/media/image/ImageJ2SERotationUtil.h"
+#include "org/allbinary/media/image/ImageCreationUtil.h"
 
 class ImageRotationUtil
             : public Object
          {
 
-    private: static ImageRotationUtil instance() { return ImageRotationUtil(); }
+    private: static ImageRotationUtil* instance() { static std::unique_ptr<ImageRotationUtil> value(new ImageRotationUtil()); return value.get(); }
 
-    public: static ImageRotationUtil getInstance(){
+    public: static ImageRotationUtil* getInstance(){
 
 
 
@@ -74,56 +80,56 @@ class ImageRotationUtil
 }
 
 
-    private: const ImageJ2SERotationUtil imageJ2SERotationUtil = ImageJ2SERotationUtil::getInstance();
+    private: ImageJ2SERotationUtil* imageJ2SERotationUtil = ImageJ2SERotationUtil::getInstance();
 
 private: ImageRotationUtil(){
 }
 
 
-    public: void rotateImage(Image originalImage, Image image, int32_t totalAngle){
+    public: void rotateImage(Image* originalImage, Image* image, int32_t totalAngle){
 
-                        if(image.isMutable())
+                        if(image->isMutable())
                         
                                     {
                                     
-    J2SEMutableImage j2seImage = image;;
+    J2SEMutableImage* j2seImage = dynamic_cast<J2SEMutableImage*>(image);;
     
 
-    BufferedImage newBufferedImage = j2seImage.getImage();;
+    BufferedImage* newBufferedImage = dynamic_cast<BufferedImage*>(j2seImage->getImage());;
     
 
-    java::awt::Image originalAwtImage = 
+    java::awt::Image* originalAwtImage = 
                 null
             ;;
     
 
-                        if(originalImage.isMutable())
+                        if(originalImage->isMutable())
                         
                                     {
                                     
-    J2SEMutableImage originalJ2SEImage = originalImage;;
+    J2SEMutableImage* originalJ2SEImage = dynamic_cast<J2SEMutableImage*>(originalImage);;
     
-originalAwtImage= originalJ2SEImage.getImage();
+originalAwtImage= dynamic_cast<java::awt::Image*>(originalJ2SEImage->getImage());
     
 
                                     }
                                 
                         else {
                             
-    J2SEImmutableImage originalJ2SEImage = originalImage;;
+    J2SEImmutableImage* originalJ2SEImage = dynamic_cast<J2SEImmutableImage*>(originalImage);;
     
-originalAwtImage= originalJ2SEImage.getImage();
+originalAwtImage= dynamic_cast<java::awt::Image*>(originalJ2SEImage->getImage());
     
 
                         }
                             
-this->imageJ2SERotationUtil.rotateImage(originalAwtImage, newBufferedImage, totalAngle);
+this->imageJ2SERotationUtil->rotateImage(originalAwtImage, newBufferedImage, totalAngle);
     
 
                                     }
                                 
                         else {
-                            PreLogUtil::putOE("Not Mutable", this, "getRotatedImage", Exception());
+                            PreLogUtil::putOE("Not Mutable", this, "getRotatedImage", new Exception());
     
 
                         }
@@ -133,48 +139,48 @@ this->imageJ2SERotationUtil.rotateImage(originalAwtImage, newBufferedImage, tota
 
                 //@Throws(Exception.constructor)
             
-    public: Image createRotatedImage(Image originalImage, int32_t rotationInDegrees){
+    public: Image* createRotatedImage(Image* originalImage, int32_t rotationInDegrees){
 
-    Image image = ImageCreationUtil::getInstance().createImageWH(originalImage.getWidth(), originalImage.getHeight());;
+    Image* image = ImageCreationUtil::getInstance()->createImageWH(originalImage->getWidth(), originalImage->getHeight());;
     
 
-                        if(image.isMutable())
+                        if(image->isMutable())
                         
                                     {
                                     
-    java::awt::Image originalAwtImage = 
+    java::awt::Image* originalAwtImage = 
                 null
             ;;
     
 
-                        if(originalImage.isMutable())
+                        if(originalImage->isMutable())
                         
                                     {
                                     
-    J2SEMutableImage originalJ2SEImage = originalImage;;
+    J2SEMutableImage* originalJ2SEImage = dynamic_cast<J2SEMutableImage*>(originalImage);;
     
-originalAwtImage= originalJ2SEImage.getImage();
+originalAwtImage= dynamic_cast<java::awt::Image*>(originalJ2SEImage->getImage());
     
 
                                     }
                                 
                         else {
                             
-    J2SEImmutableImage originalJ2SEImage = originalImage;;
+    J2SEImmutableImage* originalJ2SEImage = dynamic_cast<J2SEImmutableImage*>(originalImage);;
     
-originalAwtImage= originalJ2SEImage.getImage();
+originalAwtImage= dynamic_cast<java::awt::Image*>(originalJ2SEImage->getImage());
     
 
                         }
                             
 
-    J2SEMutableImage j2seImage = image;;
+    J2SEMutableImage* j2seImage = dynamic_cast<J2SEMutableImage*>(image);;
     
 
-    BufferedImage newBufferedImage = j2seImage.getImage();;
+    BufferedImage* newBufferedImage = dynamic_cast<BufferedImage*>(j2seImage->getImage());;
     
 
-    BufferedImage bufferedImage = this->imageJ2SERotationUtil.createRotatedImage(originalAwtImage, newBufferedImage, rotationInDegrees);;
+    BufferedImage* bufferedImage = this->imageJ2SERotationUtil->createRotatedImage(originalAwtImage, newBufferedImage, rotationInDegrees);;
     
 
 
@@ -189,7 +195,7 @@ originalAwtImage= originalJ2SEImage.getImage();
                             
 
 
-                            throw Exception("Not Mutable");
+                            throw new Exception("Not Mutable");
                     
 
                         }

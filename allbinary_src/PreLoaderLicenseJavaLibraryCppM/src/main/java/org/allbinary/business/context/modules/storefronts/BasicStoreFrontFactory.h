@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONTS_BASICSTOREFRONTFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONTS_BASICSTOREFRONTFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,24 +55,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicStoreFrontsEntity.h"
-#include "BasicStoreFrontInterface.h"
+        #include "org/allbinary/business/context/modules/storefronts/BasicStoreFrontsEntity.h"
+#include "org/allbinary/business/context/modules/storefronts/BasicStoreFrontInterface.h"
 
 class BasicStoreFrontFactory
             : public Object
          {
 
-    private: static BasicStoreFrontFactory instance() { return BasicStoreFrontFactory(); }
+    private: static BasicStoreFrontFactory* instance() { static std::unique_ptr<BasicStoreFrontFactory> value(new BasicStoreFrontFactory()); return value.get(); }
 
-    public: static BasicStoreFrontFactory getInstance();
+    public: static BasicStoreFrontFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: BasicStoreFrontFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicStoreFrontInterface getInstance(std::string storeName);
+    public: BasicStoreFrontInterface* getInstance(std::string storeName);
 
 };
 

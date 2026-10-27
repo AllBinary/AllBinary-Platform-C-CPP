@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,18 +73,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransactionResultInterface.h"
-#include "PaymentTransactionKeysFactory.h"
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/TransactionResultInterface.h"
+#include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionKeysFactory.h"
 
 class TransactionResult
             : public Object
-        : public TransactionResultInterface {
+        , public TransactionResultInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: HashMap<Object*, Object*> keyValuePairs;
+    private: HashMap<Object*, Object*>* keyValuePairs;
 
     private: std::string result;
 
@@ -88,34 +94,34 @@ public: TransactionResult(std::string result){
             this->result= result;
     
 
-    Tokenizer tokenizer = Tokenizer(CommonSeps::getInstance().AMPERSAND);;
+    Tokenizer* tokenizer = new Tokenizer(CommonSeps::getInstance()->AMPERSAND);;
     
 
-    BasicArrayList tokens = tokenizer.getTokensFromString(result, BasicArrayListD());;
+    BasicArrayList* tokens = tokenizer->getTokensFromString(result, new BasicArrayListD());;
     
 
-    Tokenizer tokenizer2 = Tokenizer(CommonSeps::getInstance().EQUALS);;
+    Tokenizer* tokenizer2 = new Tokenizer(CommonSeps::getInstance()->EQUALS);;
     
 
-    ABHashtable<Object*, Object*> hashtable = tokenizer2.getTokens(tokens);;
+    ABHashtable<Object*, Object*>* hashtable = tokenizer2->getTokens(tokens);;
     
-this->keyValuePairs.putAll(hashtable);
+this->keyValuePairs->putAll(hashtable);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string exceptionMessage = "TransactionResult Constructor Failed";;
     
-this->logUtil.putF(exceptionMessage, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(exceptionMessage, this, this->commonStrings->CONSTRUCTOR);
     
 }
 
 }
 
 
-public: TransactionResult(HashMap<Object*, Object*> keyValuePairs){
+public: TransactionResult(HashMap<Object*, Object*>* keyValuePairs){
 keyValuePairs= keyValuePairs;
     
 this->result= "Needs to have the hashmap converted to string for other constructor";
@@ -133,7 +139,7 @@ this->result= "Needs to have the hashmap converted to string for other construct
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
 
 
@@ -143,56 +149,56 @@ this->result= "Needs to have the hashmap converted to string for other construct
 }
 
 
-    private: BasicArrayList getAllPossibleKeys(){
+    private: BasicArrayList* getAllPossibleKeys(){
 
-    PaymentTransactionKeysFactory paymentTransactionKeysFactory = PaymentTransactionKeysFactory::getInstance();;
+    PaymentTransactionKeysFactory* paymentTransactionKeysFactory = PaymentTransactionKeysFactory::getInstance();;
     
 
-    BasicArrayList verisignResponseKeys = BasicArrayListD();;
+    BasicArrayList* verisignResponseKeys = new BasicArrayListD();;
     
-verisignResponseKeys.add(paymentTransactionKeysFactory.RESULT.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->RESULT.toString());
     
-verisignResponseKeys.add(paymentTransactionKeysFactory.PNREF.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->PNREF.toString());
     
-verisignResponseKeys.add(paymentTransactionKeysFactory.RESPMSG.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->RESPMSG.toString());
     
-verisignResponseKeys.add(paymentTransactionKeysFactory.AUTHCODE.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->AUTHCODE.toString());
     
-verisignResponseKeys.add(paymentTransactionKeysFactory.AVSADDR.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->AVSADDR.toString());
     
-verisignResponseKeys.add(paymentTransactionKeysFactory.AVSZIP.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->AVSZIP.toString());
     
-verisignResponseKeys.add(paymentTransactionKeysFactory.ORIGRESULT.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->ORIGRESULT.toString());
     
-verisignResponseKeys.add(paymentTransactionKeysFactory.STATUS.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->STATUS.toString());
     
-verisignResponseKeys.add(paymentTransactionKeysFactory.FRAUDCODE.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->FRAUDCODE.toString());
     
-verisignResponseKeys.add(paymentTransactionKeysFactory.FRAUDMSG.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->FRAUDMSG.toString());
     
-verisignResponseKeys.add(paymentTransactionKeysFactory.ERRCODE.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->ERRCODE.toString());
     
-verisignResponseKeys.add(paymentTransactionKeysFactory.SCORE.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->SCORE.toString());
     
-verisignResponseKeys.add(paymentTransactionKeysFactory.REASON1.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->REASON1.toString());
     
-verisignResponseKeys.add(paymentTransactionKeysFactory.REASON2.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->REASON2.toString());
     
-verisignResponseKeys.add(paymentTransactionKeysFactory.REASON3.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->REASON3.toString());
     
-verisignResponseKeys.add(paymentTransactionKeysFactory.EXCEPTION1.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION1.toString());
     
-verisignResponseKeys.add(paymentTransactionKeysFactory.EXCEPTION2.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION2.toString());
     
-verisignResponseKeys.add(paymentTransactionKeysFactory.EXCEPTION3.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION3.toString());
     
-verisignResponseKeys.add(paymentTransactionKeysFactory.EXCEPTION4.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION4.toString());
     
-verisignResponseKeys.add(paymentTransactionKeysFactory.EXCEPTION5.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION5.toString());
     
-verisignResponseKeys.add(paymentTransactionKeysFactory.EXCEPTION6.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION6.toString());
     
-verisignResponseKeys.add(paymentTransactionKeysFactory.EXCEPTION7.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION7.toString());
     
 
 
@@ -203,15 +209,15 @@ verisignResponseKeys.add(paymentTransactionKeysFactory.EXCEPTION7.toString());
 }
 
 
-    public: BasicArrayList getValues(){
+    public: BasicArrayList* getValues(){
 
-    BasicArrayList keyVector = this->getAllPossibleKeys();;
+    BasicArrayList* keyVector = this->getAllPossibleKeys();;
     
 
-    BasicArrayList valueVector = BasicArrayListD();;
+    BasicArrayList* valueVector = new BasicArrayListD();;
     
 
-    int32_t size = keyVector.size();;
+    int32_t size = keyVector->size();;
     
 
 
@@ -221,22 +227,22 @@ verisignResponseKeys.add(paymentTransactionKeysFactory.EXCEPTION7.toString());
     int32_t i = 0;i < size; i++)
         {
 
-    std::string key = keyVector.get(i);;
+    std::string key = keyVector->get(i);;
     
 
-                        if(this->keyValuePairs.containsKey(key))
+                        if(this->keyValuePairs->containsKey(key))
                         
                                     {
-                                    valueVector.add(this->keyValuePairs.get(key));
+                                    valueVector->add(this->keyValuePairs->get(key));
     
 
                                     }
                                 
                         else {
                             
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
-valueVector.add(stringUtil.EMPTY_STRING);
+valueVector->add(stringUtil->EMPTY_STRING);
     
 
                         }
@@ -257,7 +263,7 @@ valueVector.add(stringUtil.EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs.get(PaymentTransactionKeysFactory::getInstance().PNREF.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->PNREF.toString());
     
 }
 
@@ -267,7 +273,7 @@ valueVector.add(stringUtil.EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs.get(PaymentTransactionKeysFactory::getInstance().RESPMSG.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->RESPMSG.toString());
     
 }
 
@@ -277,7 +283,7 @@ valueVector.add(stringUtil.EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs.get(PaymentTransactionKeysFactory::getInstance().RESULT.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->RESULT.toString());
     
 }
 
@@ -287,7 +293,7 @@ valueVector.add(stringUtil.EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs.get(PaymentTransactionKeysFactory::getInstance().SCORE.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->SCORE.toString());
     
 }
 
@@ -297,7 +303,7 @@ valueVector.add(stringUtil.EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs.get(PaymentTransactionKeysFactory::getInstance().STATUS.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->STATUS.toString());
     
 }
 
@@ -307,7 +313,7 @@ valueVector.add(stringUtil.EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs.get(PaymentTransactionKeysFactory::getInstance().FRAUDCODE.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->FRAUDCODE.toString());
     
 }
 
@@ -317,7 +323,7 @@ valueVector.add(stringUtil.EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs.get(PaymentTransactionKeysFactory::getInstance().FRAUDMSG.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->FRAUDMSG.toString());
     
 }
 
@@ -327,7 +333,7 @@ valueVector.add(stringUtil.EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs.get(PaymentTransactionKeysFactory::getInstance().ORIGRESULT.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->ORIGRESULT.toString());
     
 }
 
@@ -337,7 +343,7 @@ valueVector.add(stringUtil.EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs.get(PaymentTransactionKeysFactory::getInstance().AVSADDR.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->AVSADDR.toString());
     
 }
 
@@ -347,7 +353,7 @@ valueVector.add(stringUtil.EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs.get(PaymentTransactionKeysFactory::getInstance().AVSZIP.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->AVSZIP.toString());
     
 }
 
@@ -357,7 +363,7 @@ valueVector.add(stringUtil.EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs.get(PaymentTransactionKeysFactory::getInstance().ERRCODE.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->ERRCODE.toString());
     
 }
 
@@ -367,7 +373,7 @@ valueVector.add(stringUtil.EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs.get(PaymentTransactionKeysFactory::getInstance().EXCEPTION1.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION1.toString());
     
 }
 
@@ -377,7 +383,7 @@ valueVector.add(stringUtil.EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs.get(PaymentTransactionKeysFactory::getInstance().EXCEPTION2.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION2.toString());
     
 }
 
@@ -387,7 +393,7 @@ valueVector.add(stringUtil.EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs.get(PaymentTransactionKeysFactory::getInstance().EXCEPTION3.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION3.toString());
     
 }
 
@@ -397,7 +403,7 @@ valueVector.add(stringUtil.EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs.get(PaymentTransactionKeysFactory::getInstance().EXCEPTION4.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION4.toString());
     
 }
 
@@ -407,7 +413,7 @@ valueVector.add(stringUtil.EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs.get(PaymentTransactionKeysFactory::getInstance().EXCEPTION5.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION5.toString());
     
 }
 
@@ -417,7 +423,7 @@ valueVector.add(stringUtil.EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs.get(PaymentTransactionKeysFactory::getInstance().EXCEPTION6.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION6.toString());
     
 }
 
@@ -427,7 +433,7 @@ valueVector.add(stringUtil.EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs.get(PaymentTransactionKeysFactory::getInstance().EXCEPTION7.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION7.toString());
     
 }
 
@@ -437,7 +443,7 @@ valueVector.add(stringUtil.EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs.get(PaymentTransactionKeysFactory::getInstance().REASON1.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->REASON1.toString());
     
 }
 
@@ -447,7 +453,7 @@ valueVector.add(stringUtil.EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs.get(PaymentTransactionKeysFactory::getInstance().REASON2.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->REASON2.toString());
     
 }
 
@@ -457,7 +463,7 @@ valueVector.add(stringUtil.EMPTY_STRING);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs.get(PaymentTransactionKeysFactory::getInstance().REASON3.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->REASON3.toString());
     
 }
 

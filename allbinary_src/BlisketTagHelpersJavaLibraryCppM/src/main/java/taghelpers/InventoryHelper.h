@@ -21,6 +21,12 @@
         #ifndef TAGHELPERS_INVENTORYHELPER_H
         #define TAGHELPERS_INVENTORYHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -101,23 +107,23 @@
         
 class InventoryHelper: public TagHelper {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
-    private: WeblisketSession weblisketSession;
+    private: WeblisketSession* weblisketSession;
 
-    private: HttpServletResponse response;
+    private: HttpServletResponse* response;
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
-    private: StreetAddress streetAddress;
+    private: StreetAddress* streetAddress;
 
     private: std::string id;
 
-    private: SearchRequest searchRequest;
+    private: SearchRequest* searchRequest;
 
-public: InventoryHelper(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
+public: InventoryHelper(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext);
 
     private: void getFormData();
 

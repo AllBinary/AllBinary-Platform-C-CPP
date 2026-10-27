@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_TAGHELPERFACTORY_H
         #define ADMIN_TAGHELPERS_TAGHELPERFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -57,17 +63,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TagHelperFactoryInterface.h"
+        #include "admin/taghelpers/TagHelperFactoryInterface.h"
 
 class TagHelperFactory
             : public Object
-        : public TagHelperFactoryInterface {
+        , public TagHelperFactoryInterface {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+    public: Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
 };
 

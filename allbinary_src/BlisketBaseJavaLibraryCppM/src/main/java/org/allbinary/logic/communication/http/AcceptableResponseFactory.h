@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ACCEPTABLERESPONSEFACTORY_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ACCEPTABLERESPONSEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,21 +47,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AcceptableResponse.h"
+        #include "org/allbinary/logic/communication/http/AcceptableResponse.h"
 
 class AcceptableResponseFactory
             : public Object
          {
 
-    private: static AcceptableResponseFactory instance() { return AcceptableResponseFactory(); }
+    private: static AcceptableResponseFactory* instance() { static std::unique_ptr<AcceptableResponseFactory> value(new AcceptableResponseFactory()); return value.get(); }
 
-    public: static AcceptableResponseFactory getInstance();
+    public: static AcceptableResponseFactory* getInstance();
 
-    public: const AcceptableResponse HTML = AcceptableResponse("text/html", "html", 0);
+    public: AcceptableResponse* HTML = new AcceptableResponse("text/html", "html", 0);
 
-    public: const AcceptableResponse WML = AcceptableResponse("text/wml", "wml", 1);
+    public: AcceptableResponse* WML = new AcceptableResponse("text/wml", "wml", 1);
 
-    public: const AcceptableResponse VXML = AcceptableResponse("text/vxml", "vxml", 2);
+    public: AcceptableResponse* VXML = new AcceptableResponse("text/vxml", "vxml", 2);
 
 };
 

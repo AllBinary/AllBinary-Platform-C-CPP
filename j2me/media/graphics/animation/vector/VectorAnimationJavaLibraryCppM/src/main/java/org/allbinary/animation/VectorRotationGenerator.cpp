@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -72,15 +78,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "VectorAnimationUtil.h"
+        #include "org/allbinary/animation/VectorAnimationUtil.h"
 
 class VectorRotationGenerator
             : public Object
          {
 
-    private: static VectorRotationGenerator instance() { return VectorRotationGenerator(); }
+    private: static VectorRotationGenerator* instance() { static std::unique_ptr<VectorRotationGenerator> value(new VectorRotationGenerator()); return value.get(); }
 
-    public: static VectorRotationGenerator getInstance(){
+    public: static VectorRotationGenerator* getInstance(){
 
 
 
@@ -90,43 +96,43 @@ class VectorRotationGenerator
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const VectorAnimationUtil vectorAnimationUtil = VectorAnimationUtil::getInstance();
+    private: VectorAnimationUtil* vectorAnimationUtil = VectorAnimationUtil::getInstance();
 
 private: VectorRotationGenerator(){
 }
 
 
-    public: std::vector<std::vector<std::vector<int32_t>>> getInstance(VectorInfo vectorRotationInfo){
+    public: std::vector<std::vector<std::vector<int32_t>>> getInstance(VectorInfo* vectorRotationInfo){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getInstanceFrames(vectorRotationInfo.getWidth(), vectorRotationInfo.getHeight(), vectorRotationInfo.getPoints(), vectorRotationInfo.getTotalFrames());;
+                        return this->getInstanceFrames(vectorRotationInfo->getWidth(), vectorRotationInfo->getHeight(), vectorRotationInfo->getPoints(), vectorRotationInfo->getTotalFrames());;
     
 }
 
 
-    private: const AngleFactory angleFactory = AngleFactory::getInstance();
+    private: AngleFactory* angleFactory = AngleFactory::getInstance();
 
     public: std::vector<std::vector<std::vector<int32_t>>> getInstanceFrames(int32_t width, int32_t height, std::vector<std::vector<int32_t>> points, int32_t frames){
 
         try {
             
-    int16_t totalAngle = this->angleFactory.TOTAL_ANGLE;;
+    int16_t totalAngle = this->angleFactory->TOTAL_ANGLE;;
     
 
     int32_t angleIncrement = totalAngle /frames;;
     
 
-    BasicArrayList pointsBasicArrayList = BasicArrayListS(totalAngle /angleIncrement);;
+    BasicArrayList* pointsBasicArrayList = new BasicArrayListS(totalAngle /angleIncrement);;
     
 
-    BasicArrayList pointBasicArrayList = BasicArrayListS(points.size());;
+    BasicArrayList* pointBasicArrayList = new BasicArrayListS(points.size());;
     
 
-    PointFactory pointFactory = PointFactory::getInstance();;
+    PointFactory* pointFactory = PointFactory::getInstance();;
     
 
     int32_t size = points.size();;
@@ -138,7 +144,7 @@ private: VectorRotationGenerator(){
                         for (
     int32_t index = 0;index < size; index++)
         {
-pointBasicArrayList.add(pointFactory.createXY(points[index][0], points[index][1]));
+pointBasicArrayList->add(pointFactory->createXY(points[index][0], points[index][1]));
     
 }
 
@@ -148,14 +154,14 @@ pointBasicArrayList.add(pointFactory.createXY(points[index][0], points[index][1]
 
         while(index < totalAngle)
         {
-pointsBasicArrayList.add(this->getListAtAngle(width, height, pointBasicArrayList, this->angleFactory.getAt(index)));
+pointsBasicArrayList->add(this->getListAtAngle(width, height, pointBasicArrayList, this->angleFactory->getAt(index)));
     
 index += angleIncrement;
     
 }
 
 
-    std::vector<std::vector<std::vector<int32_t>>> newPoints = this->vectorAnimationUtil.toAnimationArrayFromListOfPointListWithPointsPerFrame(pointsBasicArrayList, pointBasicArrayList.size());;
+    std::vector<std::vector<std::vector<int32_t>>> newPoints = this->vectorAnimationUtil->toAnimationArrayFromListOfPointListWithPointsPerFrame(pointsBasicArrayList, pointBasicArrayList->size());;
     
 
 
@@ -165,18 +171,18 @@ index += angleIncrement;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance().NULL_INT_ARRAY_ARRAY_ARRAY;
+                        return NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY_ARRAY;
     
 }
 
@@ -185,23 +191,23 @@ this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getListAtAngle(int32_t width, int32_t height, BasicArrayList pointBasicArrayList, Angle angle){
+    public: BasicArrayList* getListAtAngle(int32_t width, int32_t height, BasicArrayList* pointBasicArrayList, Angle* angle){
 
-    BasicGraphicsPipeline graphicsPipe = BasicGraphicsPipeline(pointBasicArrayList);;
+    BasicGraphicsPipeline* graphicsPipe = new BasicGraphicsPipeline(pointBasicArrayList);;
     
-graphicsPipe.createMatrix();
+graphicsPipe->createMatrix();
     
-graphicsPipe.translate( -(width>>1),  -(height>>1));
+graphicsPipe->translate( -(width>>1),  -(height>>1));
     
-graphicsPipe.rotateToAngle(angle);
+graphicsPipe->rotateToAngle(angle);
     
-graphicsPipe.translate((width>>1), (height>>1));
+graphicsPipe->translate((width>>1), (height>>1));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return graphicsPipe.getMatrix();;
+                        return graphicsPipe->getMatrix();;
     
 }
 

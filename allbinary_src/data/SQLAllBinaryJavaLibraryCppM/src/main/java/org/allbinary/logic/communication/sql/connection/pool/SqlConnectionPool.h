@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_CONNECTION_POOL_SQLCONNECTIONPOOL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_CONNECTION_POOL_SQLCONNECTIONPOOL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/sql/Connection.h>
@@ -73,15 +79,15 @@ class SqlConnectionPool
             : public Object
          {
 
-    private: static SqlConnectionPool instance() { return SqlConnectionPool(); }
+    private: static SqlConnectionPool* instance() { static std::unique_ptr<SqlConnectionPool> value(new SqlConnectionPool()); return value.get(); }
 
-    public: static SqlConnectionPool getInstance();
+    public: static SqlConnectionPool* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const StdUtil stdUtil = StdUtil::getInstance();
+    protected: StdUtil* stdUtil = StdUtil::getInstance();
 
-    private: HashMap<Object*, Object*> connectionHashMap = 
+    private: HashMap<Object*, Object*>* connectionHashMap = 
                 nullptr
             ;
 
@@ -110,12 +116,12 @@ private: SqlConnectionPool();
                 //@Throws(SQLException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: Connection get(std::string url);
+    public: Connection* get(std::string url);
 
                 //@Throws(SQLException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void add(std::string url, Connection sqlConnection);
+    public: void add(std::string url, Connection* sqlConnection);
 
 };
 

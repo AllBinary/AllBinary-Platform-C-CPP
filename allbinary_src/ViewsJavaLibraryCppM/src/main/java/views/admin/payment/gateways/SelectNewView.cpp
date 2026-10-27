@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -62,13 +68,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentGatewaysView.h"
+        #include "views/admin/payment/gateways/PaymentGatewaysView.h"
 
 class SelectNewView: public PaymentGatewayViewAbstract {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: SelectNewView(TransformInfoInterface transformInfoInterface) : PaymentGatewayViewAbstract(transformInfoInterface){
+public: SelectNewView(TransformInfoInterface* transformInfoInterface) : PaymentGatewayViewAbstract(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -84,29 +90,29 @@ public: SelectNewView(TransformInfoInterface transformInfoInterface) : PaymentGa
 
         try {
             
-    PaymentGatewayEntityInterface paymentGatewayEntityInterface = PaymentGatewayEntityFactory::getInstance();;
+    PaymentGatewayEntityInterface* paymentGatewayEntityInterface = PaymentGatewayEntityFactory::getInstance();;
     
 
-    BasicArrayList existingGateways = paymentGatewayEntityInterface.findPaymentTypeVectorByStore(this->getPaymentGatewayPrimaryKey().getStoreName());;
+    BasicArrayList* existingGateways = paymentGatewayEntityInterface->findPaymentTypeVectorByStore(this->getPaymentGatewayPrimaryKey()->getStoreName());;
     
 
-    BasicArrayList allGatewaysLessExisting = BasicPaymentTypeUtil::getInstance().difference(existingGateways);;
+    BasicArrayList* allGatewaysLessExisting = BasicPaymentTypeUtil::getInstance()->difference(existingGateways);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PaymentGatewaysView(this->getTransformInfoInterface(), allGatewaysLessExisting).view();;
+                        return (new PaymentGatewaysView(this->getTransformInfoInterface(), allGatewaysLessExisting))->view();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view", &e);
     
 
                                     }

@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_NULLROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_NULLROTATIONANIMATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/math/AngleFactory.h>
@@ -36,16 +42,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RotationAnimation.h"
-#include "AnimationBehavior.h"
+        #include "org/allbinary/animation/RotationAnimation.h"
+#include "org/allbinary/animation/AnimationBehavior.h"
 
 class NullRotationAnimation: public RotationAnimation {
 
-    public: static NullRotationAnimation createTotalAngle(AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior);
+    public: static NullRotationAnimation* createTotalAngle(AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior);
 
-    public: static NullRotationAnimation createQuarter(AnimationBehavior animationBehavior);
+    public: static NullRotationAnimation* createQuarter(AnimationBehavior* animationBehavior);
 
-protected: NullRotationAnimation(AngleInfo angleInfo, CircularIndexUtil circularIndexUtil, AnimationBehavior animationBehavior);
+protected: NullRotationAnimation(AngleInfo* angleInfo, CircularIndexUtil* circularIndexUtil, AnimationBehavior* animationBehavior);
 
                 //@Throws(Exception.constructor)
             

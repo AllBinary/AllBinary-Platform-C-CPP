@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/io/DataOutputStream.h>
 
       
@@ -45,7 +51,7 @@
         
 class AbDataOutputStream: public DataOutputStream {
 
-public: AbDataOutputStream(OutputStream out) : DataOutputStream(out){
+public: AbDataOutputStream(OutputStream* out) : DataOutputStream(out){
 
                         //super/this constructor call is in the constructor initializer list.
                     

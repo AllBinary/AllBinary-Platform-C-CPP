@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/ABHashtable.h>
@@ -41,19 +49,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LayerPlacementType.h"
+        #include "org/allbinary/game/layer/LayerPlacementType.h"
 
 class LayerPlacementInterface {
 
-    int32_t getWidth()
+    public: virtual int32_t getWidth() = 0;
 
-    int32_t getHeight()
+    public: virtual int32_t getHeight() = 0;
 
-    LayerPlacementType getLayerType()
+    public: virtual LayerPlacementType* getLayerType() = 0;
 
                 //@Throws(Exception.constructor)
             
-    ABHashtable<Object*, Object*> getInstance()
+    public: virtual ABHashtable<Object*, Object*>* getInstance() = 0;
 
 };
 

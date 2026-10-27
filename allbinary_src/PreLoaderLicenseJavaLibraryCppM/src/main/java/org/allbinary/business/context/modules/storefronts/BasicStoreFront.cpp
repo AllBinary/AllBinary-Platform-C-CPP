@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,11 +70,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicStoreFrontInterface.h"
+        #include "org/allbinary/business/context/modules/storefronts/BasicStoreFrontInterface.h"
 
 class BasicStoreFront
             : public Object
-        : public BasicStoreFrontInterface {
+        , public BasicStoreFrontInterface {
 
     private: std::string name;
 
@@ -130,65 +136,65 @@ public: BasicStoreFront(){
 }
 
 
-public: BasicStoreFront(HashMap<Object*, Object*> storeHashMap){
+public: BasicStoreFront(HashMap<Object*, Object*>* storeHashMap){
 
-    StoreFrontData storeFrontData = StoreFrontData::getInstance();;
+    StoreFrontData* storeFrontData = StoreFrontData::getInstance();;
     
-this->name= storeHashMap.get(storeFrontData.NAME);
+this->name= storeHashMap->get(storeFrontData->NAME);
     
-this->userName= storeHashMap.get(UserData::USERNAME);
+this->userName= storeHashMap->get(UserData::USERNAME);
     
-this->basketName= storeHashMap.get(storeFrontData.NAME);
+this->basketName= storeHashMap->get(storeFrontData->NAME);
     
-this->homeHostName= storeHashMap.get(storeFrontData.HOMEHOSTNAME);
+this->homeHostName= storeHashMap->get(storeFrontData->HOMEHOSTNAME);
     
-this->homeHostNamePath= storeHashMap.get(storeFrontData.HOMEHOSTNAMEPATH);
+this->homeHostNamePath= storeHashMap->get(storeFrontData->HOMEHOSTNAMEPATH);
     
-this->hostName= storeHashMap.get(storeFrontData.HOSTNAME);
+this->hostName= storeHashMap->get(storeFrontData->HOSTNAME);
     
-this->hostNamePath= storeHashMap.get(storeFrontData.HOSTNAMEPATH);
+this->hostNamePath= storeHashMap->get(storeFrontData->HOSTNAMEPATH);
     
-this->testHomeHostName= storeHashMap.get(storeFrontData.TESTHOMEHOSTNAME);
+this->testHomeHostName= storeHashMap->get(storeFrontData->TESTHOMEHOSTNAME);
     
-this->testHomeHostNamePath= storeHashMap.get(storeFrontData.TESTHOMEHOSTNAMEPATH);
+this->testHomeHostNamePath= storeHashMap->get(storeFrontData->TESTHOMEHOSTNAMEPATH);
     
-this->testHostName= storeHashMap.get(storeFrontData.TESTHOSTNAME);
+this->testHostName= storeHashMap->get(storeFrontData->TESTHOSTNAME);
     
-this->testHostNamePath= storeHashMap.get(storeFrontData.TESTHOSTNAMEPATH);
+this->testHostNamePath= storeHashMap->get(storeFrontData->TESTHOSTNAMEPATH);
     
-this->imagePath= storeHashMap.get(storeFrontData.IMAGEPATH);
+this->imagePath= storeHashMap->get(storeFrontData->IMAGEPATH);
     
-this->staticPath= storeHashMap.get(storeFrontData.STATICPATH);
+this->staticPath= storeHashMap->get(storeFrontData->STATICPATH);
     
-this->categoryPath= storeHashMap.get(storeFrontData.CATEGORYPATH);
+this->categoryPath= storeHashMap->get(storeFrontData->CATEGORYPATH);
     
-this->inventoryControl= storeHashMap.get(storeFrontData.INVENTORYCONTROL);
+this->inventoryControl= storeHashMap->get(storeFrontData->INVENTORYCONTROL);
     
-this->subStores= storeHashMap.get(storeFrontData.SUBSTORES);
+this->subStores= storeHashMap->get(storeFrontData->SUBSTORES);
     
-this->tagLocation= storeHashMap.get(storeFrontData.TAGLOCATION);
+this->tagLocation= storeHashMap->get(storeFrontData->TAGLOCATION);
     
-this->packageLocation= storeHashMap.get(storeFrontData.PACKAGELOCATION);
+this->packageLocation= storeHashMap->get(storeFrontData->PACKAGELOCATION);
     
-this->ftp= storeHashMap.get(storeFrontData.FTP);
+this->ftp= storeHashMap->get(storeFrontData->FTP);
     
-this->ftpPath= storeHashMap.get(storeFrontData.FTPPATH);
+this->ftpPath= storeHashMap->get(storeFrontData->FTPPATH);
     
-this->ftpUserName= storeHashMap.get(storeFrontData.FTPUSERNAME);
+this->ftpUserName= storeHashMap->get(storeFrontData->FTPUSERNAME);
     
-this->ftpPassword= storeHashMap.get(storeFrontData.FTPPASSWORD);
+this->ftpPassword= storeHashMap->get(storeFrontData->FTPPASSWORD);
     
-this->testFtp= storeHashMap.get(storeFrontData.TESTFTP);
+this->testFtp= storeHashMap->get(storeFrontData->TESTFTP);
     
-this->testFtpPath= storeHashMap.get(storeFrontData.TESTFTPPATH);
+this->testFtpPath= storeHashMap->get(storeFrontData->TESTFTPPATH);
     
-this->testFtpUserName= storeHashMap.get(storeFrontData.TESTFTPUSERNAME);
+this->testFtpUserName= storeHashMap->get(storeFrontData->TESTFTPUSERNAME);
     
-this->testFtpPassword= storeHashMap.get(storeFrontData.TESTFTPPASSWORD);
+this->testFtpPassword= storeHashMap->get(storeFrontData->TESTFTPPASSWORD);
     
-this->timeCreated= storeHashMap.get(EntryData::getInstance().TIMECREATED);
+this->timeCreated= storeHashMap->get(EntryData::getInstance()->TIMECREATED);
     
-this->lastModified= storeHashMap.get(EntryData::getInstance().LASTMODIFIED);
+this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
     
 }
 
@@ -465,14 +471,14 @@ this->lastModified= storeHashMap.get(EntryData::getInstance().LASTMODIFIED);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getSubStores(){
+    public: BasicArrayList* getSubStores(){
 
         try {
             
-    Tokenizer tokenizer = Tokenizer(CommonSeps::getInstance().SEMICOLON);;
+    Tokenizer* tokenizer = new Tokenizer(CommonSeps::getInstance()->SEMICOLON);;
     
 
-    BasicArrayList subStoreVector = tokenizer.getTokensFromString(this->subStores, BasicArrayListD());;
+    BasicArrayList* subStoreVector = tokenizer->getTokensFromString(this->subStores, new BasicArrayListD());;
     
 
 
@@ -482,7 +488,7 @@ this->lastModified= storeHashMap.get(EntryData::getInstance().LASTMODIFIED);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 

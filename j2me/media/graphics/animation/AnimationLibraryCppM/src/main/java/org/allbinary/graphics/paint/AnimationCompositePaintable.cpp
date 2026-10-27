@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -42,26 +48,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InitUpdatePaintable.h"
+        #include "org/allbinary/graphics/paint/InitUpdatePaintable.h"
 
 class AnimationCompositePaintable: public InitUpdatePaintable {
 
-    private: Animation animationInterface;
+    private: Animation* animationInterface;
 
-public: AnimationCompositePaintable(Animation animationInterface){
+public: AnimationCompositePaintable(Animation* animationInterface){
 this->animationInterface= animationInterface;
     
 }
 
 
-    public: void paint(Graphics graphics){
-this->animationInterface.paintXY(graphics, 0, 0);
+    public: void paint(Graphics* graphics){
+this->animationInterface->paintXY(graphics, 0, 0);
     
 }
 
 
-    public: void paintThreed(Graphics graphics){
-this->animationInterface.paintThreedXYZ(graphics, 0, 0, 0);
+    public: void paintThreed(Graphics* graphics){
+this->animationInterface->paintThreedXYZ(graphics, 0, 0, 0);
     
 }
 

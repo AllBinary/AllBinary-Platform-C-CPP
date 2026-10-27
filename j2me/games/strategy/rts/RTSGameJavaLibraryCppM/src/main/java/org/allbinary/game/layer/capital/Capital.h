@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_CAPITAL_CAPITAL_H
         #define ORG_ALLBINARY_GAME_LAYER_CAPITAL_CAPITAL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 

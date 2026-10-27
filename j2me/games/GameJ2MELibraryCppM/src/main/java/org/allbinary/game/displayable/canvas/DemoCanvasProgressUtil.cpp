@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h>
@@ -52,34 +58,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DemoCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/DemoCanvas.h"
 
 class DemoCanvasProgressUtil
             : public Object
          {
 
-    public: static void showProgress(DemoCanvas demoCanvas){
+    public: static void showProgress(DemoCanvas* demoCanvas){
 DemoCanvasProgressUtil::showProgressOptionallyInTheBackground(demoCanvas, false);
     
 }
 
 
-    public: static void showProgressOptionallyInTheBackground(DemoCanvas demoCanvas, bool background){
+    public: static void showProgressOptionallyInTheBackground(DemoCanvas* demoCanvas, bool background){
 
-    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
+    ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
     
-progressCanvas.startBackground(background);
+progressCanvas->startBackground(background);
     
 
-    std::vector<PaintableInterface> paintableArray = std::vector<PaintableInterface>(2);;
+    std::vector<PaintableInterface*> paintableArray = std::vector<PaintableInterface*>(2);;
     
 paintableArray[0]= progressCanvas;
     
-paintableArray[1]= demoCanvas.getDefaultPaintableInterface();
+paintableArray[1]= demoCanvas->getDefaultPaintableInterface();
     
-demoCanvas.setDefaultPaintableInterface(PaintableComposite(paintableArray));
+demoCanvas->setDefaultPaintableInterface(new PaintableComposite(paintableArray));
     
-demoCanvas.setPaintableInterface(demoCanvas.getDefaultPaintableInterface());
+demoCanvas->setPaintableInterface(demoCanvas->getDefaultPaintableInterface());
     
 }
 

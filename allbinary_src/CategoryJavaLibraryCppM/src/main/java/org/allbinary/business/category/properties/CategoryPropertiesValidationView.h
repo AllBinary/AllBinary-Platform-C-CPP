@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIESVALIDATIONVIEW_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIESVALIDATIONVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -56,18 +62,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryPropertiesView.h"
-#include "CategoryPropertiesInterface.h"
+        #include "org/allbinary/business/category/properties/CategoryPropertiesView.h"
+#include "org/allbinary/business/category/properties/CategoryPropertiesInterface.h"
 
 class CategoryPropertiesValidationView: public CategoryPropertiesView, public ValidationInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: CategoryPropertiesValidationView(CategoryPropertiesInterface categoryPropertiesInterface);
+public: CategoryPropertiesValidationView(CategoryPropertiesInterface* categoryPropertiesInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Boolean isValid();
+    public: bool isValid();
 
                 //@Throws(Exception.constructor)
             
@@ -75,11 +81,11 @@ public: CategoryPropertiesValidationView(CategoryPropertiesInterface categoryPro
 
                 //@Throws(Exception.constructor)
             
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
 };
 

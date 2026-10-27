@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -88,50 +96,50 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaintableForm.h"
-#include "ItemPaintableFactory.h"
-#include "ItemIndexPaintable.h"
-#include "ItemIndexDx.h"
-#include "ItemPaintable.h"
-#include "FormTypeFactory.h"
-//#include "ScrollSelectionFormTempHorizontalPaintable.h"
-//#include "ScrollSelectionFormTempHorizontalDx.h"
-//#include "ScrollSelectionFormVerticalPaintable.h"
-//#include "ScrollSelectionFormVericalDx.h"
-//#include "ScrollSelectionFormHorizontalPaintable.h"
-//#include "ScrollSelectionFormHorizontalDx.h"
-#include "FormType.h"
+        #include "org/allbinary/graphics/form/PaintableForm.h"
+#include "org/allbinary/graphics/form/ItemPaintableFactory.h"
+#include "org/allbinary/graphics/form/ItemIndexPaintable.h"
+#include "org/allbinary/graphics/form/ItemIndexDx.h"
+#include "org/allbinary/graphics/form/ItemPaintable.h"
+#include "org/allbinary/graphics/form/FormTypeFactory.h"
+//#include "org/allbinary/graphics/form/ScrollSelectionFormTempHorizontalPaintable.h"
+//#include "org/allbinary/graphics/form/ScrollSelectionFormTempHorizontalDx.h"
+//#include "org/allbinary/graphics/form/ScrollSelectionFormVerticalPaintable.h"
+//#include "org/allbinary/graphics/form/ScrollSelectionFormVericalDx.h"
+//#include "org/allbinary/graphics/form/ScrollSelectionFormHorizontalPaintable.h"
+//#include "org/allbinary/graphics/form/ScrollSelectionFormHorizontalDx.h"
+#include "org/allbinary/graphics/form/FormType.h"
 
 class ScrollSelectionForm: public PaintableForm {
 
-    private: static PaintableForm createForm(std::string title, std::vector<ABCustomItem> items, ItemPaintableFactory formPaintableFactory, int32_t border, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+    private: static PaintableForm* createForm(std::string title, std::vector<ABCustomItem*> items, ItemPaintableFactory* formPaintableFactory, int32_t border, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
-    private: static Object* NULL_SCROLL_SELECTION_FORM = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* NULL_SCROLL_SELECTION_FORM = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static ScrollSelectionForm getNullScrollSelectionForm();
+    public: static ScrollSelectionForm* getNullScrollSelectionForm();
 
-    private: static Object* NULL_SCROLL_SELECTION_HORIZONTAL_FORM = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* NULL_SCROLL_SELECTION_HORIZONTAL_FORM = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static ScrollSelectionForm getNullScrollSelectionFormHorizontal();
+    public: static ScrollSelectionForm* getNullScrollSelectionFormHorizontal();
 
-    private: static const std::string INSIDE_FORM = " inside form";
+    private: static inline const std::string INSIDE_FORM = " inside form";
 
-    private: static const std::string IS_IN_FORM = "isInForm";
+    private: static inline const std::string IS_IN_FORM = "isInForm";
 
-    private: static const std::string GET_SELECTED_INDEX = "getSelectedIndexForPoint";
+    private: static inline const std::string GET_SELECTED_INDEX = "getSelectedIndexForPoint";
 
 //inner= member=true isStatic=
 class ScrollSelectionFormHorizontalPaintable: public ItemIndexPaintable {
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-    private: ScrollSelectionForm scrollSelectionForm;
+    private: ScrollSelectionForm* scrollSelectionForm;
 
-: ScrollSelectionFormHorizontalPaintable(ScrollSelectionForm scrollSelectionForm);
+: ScrollSelectionFormHorizontalPaintable(ScrollSelectionForm* scrollSelectionForm);
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t paint(Graphics graphics, int32_t index, ABCustomItem item, int32_t dx, int32_t dy);
+    public: int32_t paint(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy);
 
 };
 
@@ -141,13 +149,13 @@ class ScrollSelectionFormVerticalPaintable: public ItemIndexPaintable {
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-    private: ScrollSelectionForm scrollSelectionForm;
+    private: ScrollSelectionForm* scrollSelectionForm;
 
-: ScrollSelectionFormVerticalPaintable(ScrollSelectionForm scrollSelectionForm);
+: ScrollSelectionFormVerticalPaintable(ScrollSelectionForm* scrollSelectionForm);
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t paint(Graphics graphics, int32_t index, ABCustomItem item, int32_t dx, int32_t dy);
+    public: int32_t paint(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy);
 
 };
 
@@ -157,13 +165,13 @@ class ScrollSelectionFormTempHorizontalPaintable: public ItemIndexPaintable {
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-    private: ScrollSelectionForm scrollSelectionForm;
+    private: ScrollSelectionForm* scrollSelectionForm;
 
-: ScrollSelectionFormTempHorizontalPaintable(ScrollSelectionForm scrollSelectionForm);
+: ScrollSelectionFormTempHorizontalPaintable(ScrollSelectionForm* scrollSelectionForm);
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t paint(Graphics graphics, int32_t index, ABCustomItem item, int32_t dx, int32_t dy);
+    public: int32_t paint(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy);
 
 };
 
@@ -173,13 +181,13 @@ class ScrollSelectionFormHorizontalDx: public ItemIndexDx {
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-    private: ScrollSelectionForm scrollSelectionForm;
+    private: ScrollSelectionForm* scrollSelectionForm;
 
-: ScrollSelectionFormHorizontalDx(ScrollSelectionForm multipleScrollSelectionForm);
+: ScrollSelectionFormHorizontalDx(ScrollSelectionForm* multipleScrollSelectionForm);
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy);
+    public: int32_t getDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy);
 
 };
 
@@ -189,13 +197,13 @@ class ScrollSelectionFormVericalDx: public ItemIndexDx {
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-    private: ScrollSelectionForm scrollSelectionForm;
+    private: ScrollSelectionForm* scrollSelectionForm;
 
-: ScrollSelectionFormVericalDx(ScrollSelectionForm multipleScrollSelectionForm);
+: ScrollSelectionFormVericalDx(ScrollSelectionForm* multipleScrollSelectionForm);
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy);
+    public: int32_t getDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy);
 
 };
 
@@ -205,90 +213,90 @@ class ScrollSelectionFormTempHorizontalDx: public ItemIndexDx {
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-    private: ScrollSelectionForm scrollSelectionForm;
+    private: ScrollSelectionForm* scrollSelectionForm;
 
-: ScrollSelectionFormTempHorizontalDx(ScrollSelectionForm multipleScrollSelectionForm);
+: ScrollSelectionFormTempHorizontalDx(ScrollSelectionForm* multipleScrollSelectionForm);
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy);
+    public: int32_t getDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy);
 
 };
 
             
-    private: const RectangleCollisionUtil rectangleCollisionUtil = RectangleCollisionUtil::getInstance();
+    private: RectangleCollisionUtil* rectangleCollisionUtil = RectangleCollisionUtil::getInstance();
 
     protected: int32_t border;
 
     protected: int32_t halfBorder;
 
-    private: BasicColor buttonBasicColor;
+    private: BasicColor* buttonBasicColor;
 
-    protected: ItemIndexPaintable scrollSelectionFormFormTypeItemIndexPaintable = ItemIndexPaintable::getInstance();
+    protected: ItemIndexPaintable* scrollSelectionFormFormTypeItemIndexPaintable = ItemIndexPaintable::getInstance();
 
-    private: ItemIndexDx formTypeItemIndexDx = ItemIndexDx::getInstance();
+    private: ItemIndexDx* formTypeItemIndexDx = ItemIndexDx::getInstance();
 
-    protected: ItemPaintable paintable = ItemPaintableFactory::getInstance();
+    protected: ItemPaintable* paintable = ItemPaintableFactory::getInstance();
 
     private: int32_t adjustedExtraBorder;
 
-public: ScrollSelectionForm(std::string title, std::vector<ABCustomItem> items, ItemPaintableFactory formPaintableFactory, int32_t border, int32_t adjustedExtraBorder, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: ScrollSelectionForm(std::string title, std::vector<ABCustomItem*> items, ItemPaintableFactory* formPaintableFactory, int32_t border, int32_t adjustedExtraBorder, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
                 //@Throws(Exception.constructor)
             
-    public: void init(Rectangle rectangle, FormType formType);
+    public: void init(Rectangle* rectangle, FormType* formType);
 
-    public: int32_t paintItemHorizontal(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y);
+    public: int32_t paintItemHorizontal(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y);
 
-    public: int32_t paintItemVertical(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y);
+    public: int32_t paintItemVertical(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y);
 
-    public: int32_t paintItemTempHorizontal(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y);
+    public: int32_t paintItemTempHorizontal(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y);
 
-    public: int32_t getSelectedIndexForPointHorizontalDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy);
+    public: int32_t getSelectedIndexForPointHorizontalDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy);
 
-    public: int32_t getSelectedIndexForPointVerticalDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy);
+    public: int32_t getSelectedIndexForPointVerticalDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy);
 
-    public: int32_t getSelectedIndexForPointTempHorizontalDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy);
+    public: int32_t getSelectedIndexForPointTempHorizontalDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy);
 
-    public: int32_t append(ABCustomItem item);
-
-                //@Throws(Exception.constructor)
-            
-    public: ABCustomItem getSelectedItem(GPoint point);
+    public: int32_t append(ABCustomItem* item);
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getItemIndex(ABCustomItem item);
+    public: ABCustomItem* getSelectedItem(GPoint* point);
+
+                //@Throws(Exception.constructor)
+            
+    public: int32_t getItemIndex(ABCustomItem* item);
 
     public: int32_t getStartIndex();
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getSelectedIndexForPoint(GPoint point);
+    public: int32_t getSelectedIndexForPoint(GPoint* point);
 
                 //@Throws(Exception.constructor)
             
     public: int32_t processInputKey(int32_t gameKeyCode);
 
-    public: bool isInForm(GPoint point);
+    public: bool isInForm(GPoint* point);
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t paintItem(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y);
+    public: int32_t paintItem(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y);
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t paintUnselectedItem(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y);
+    public: int32_t paintUnselectedItem(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y);
 
-    protected: int32_t getDiffX(ABCustomItem item);
+    protected: int32_t getDiffX(ABCustomItem* item);
 
     public: int32_t getDx();
 
     public: int32_t getDy();
 
-    public: void setButtonBasicColor(BasicColor buttonBasicColor);
+    public: void setButtonBasicColor(BasicColor* buttonBasicColor);
 
-    private: BasicColor getButtonBasicColor();
+    private: BasicColor* getButtonBasicColor();
 
 };
 

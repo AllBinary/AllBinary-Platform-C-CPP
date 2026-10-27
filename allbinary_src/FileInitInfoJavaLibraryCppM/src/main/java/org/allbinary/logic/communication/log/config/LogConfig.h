@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_LOGCONFIG_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_LOGCONFIG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -100,7 +106,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogConfigData.h"
+        #include "org/allbinary/logic/communication/log/config/LogConfigData.h"
 
 class LogConfig
             : public Object
@@ -118,7 +124,7 @@ class LogConfig
 
 public: LogConfig(std::string aName, std::string aDescription, std::string aPath, std::string aFileName);
 
-public: LogConfig(Node node);
+public: LogConfig(Node* node);
 
     public: std::string getName();
 
@@ -142,11 +148,11 @@ public: LogConfig(Node node);
 
                 //@Throws(Exception.constructor)
             
-    private: Document getDoc();
+    private: Document* getDoc();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getTypeVector();
+    public: BasicArrayList* getTypeVector();
 
 };
 

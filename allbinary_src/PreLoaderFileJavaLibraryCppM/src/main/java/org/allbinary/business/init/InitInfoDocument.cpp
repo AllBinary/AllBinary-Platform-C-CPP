@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/w3c/dom/Document.h>
@@ -46,7 +52,7 @@ class InitInfoDocument
             : public Object
          {
 
-    private: Document initInfoDocument;
+    private: Document* initInfoDocument;
 
 public: InitInfoDocument(){
 }

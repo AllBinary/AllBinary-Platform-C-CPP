@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,20 +73,20 @@ class TopViewCharacterBehavior
 
                 //@Throws(Exception.constructor)
             
-    public: void terrainEvent(AllBinaryLayer layer, Direction direction, int32_t x, int32_t y, std::vector<BasicGeographicMap> geographicMapInterfaceArray, GeographicMapCellPosition geographicMapCellPosition){
+    public: void terrainEvent(AllBinaryLayer* layer, Direction* direction, int32_t x, int32_t y, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, GeographicMapCellPosition* geographicMapCellPosition){
 }
 
 
-    public: void terrainMove(AllBinaryLayer layer, std::vector<BasicGeographicMap> geographicMapInterfaceArray, int32_t x, int32_t y){
+    public: void terrainMove(AllBinaryLayer* layer, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, int32_t x, int32_t y){
 }
 
 
-    public: bool hasSolidBlock(std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray){
+    public: bool hasSolidBlock(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray){
 
     int32_t size = geographicMapInterfaceArray.size();;
     
 
-    BasicTopViewGeographicMapCellTypeFactory basicTopViewGeographicMapCellTypeFactory;;
+    BasicTopViewGeographicMapCellTypeFactory* basicTopViewGeographicMapCellTypeFactory;;
     
 
 
@@ -89,10 +95,10 @@ class TopViewCharacterBehavior
                         for (
     int32_t index = 0;index < size; index++)
         {
-basicTopViewGeographicMapCellTypeFactory= geographicMapInterfaceArray[index].getGeographicMapCellTypeFactory();
+basicTopViewGeographicMapCellTypeFactory= dynamic_cast<BasicTopViewGeographicMapCellTypeFactory*>(geographicMapInterfaceArray[index].getGeographicMapCellTypeFactory());
     
 
-                        if(basicTopViewGeographicMapCellTypeFactory.BLOCK_CELL_TYPE.isType(geographicMapCellTypeArray[index]))
+                        if(basicTopViewGeographicMapCellTypeFactory->BLOCK_CELL_TYPE.isType(geographicMapCellTypeArray[index]))
                         
                                     {
                                     

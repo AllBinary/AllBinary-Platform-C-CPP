@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -52,11 +58,11 @@ class PlatformTextureBaseFactory
             : public Object
          {
 
-    public: static const PlatformTextureBaseFactory NULL_PLATFORM_TEXTURE_BASE_FACTORY = PlatformTextureBaseFactory();
+    public: static PlatformTextureBaseFactory* NULL_PLATFORM_TEXTURE_BASE_FACTORY() { static std::unique_ptr<PlatformTextureBaseFactory> value(new PlatformTextureBaseFactory()); return value.get(); }
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    public: void load(GL10 gl, int32_t target, int32_t level, Image image, int32_t border, bool flip){
+    public: void load(GL10* gl, int32_t target, int32_t level, Image* image, int32_t border, bool flip){
 }
 
 

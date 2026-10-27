@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,17 +69,17 @@ class TouchJ2ME
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const int32_t DEVICE_ID = 0;
 
-    private: AllMotionRecognizer motionRecognizer = AllMotionRecognizer();
+    private: AllMotionRecognizer* motionRecognizer = new AllMotionRecognizer();
 
 public: TouchJ2ME(){
 
-    BasicMotionGesturesHandler motionGesturesHandler = this->motionRecognizer.getMotionGestureRecognizer().getMotionGesturesHandler();;
+    BasicMotionGesturesHandler* motionGesturesHandler = this->motionRecognizer->getMotionGestureRecognizer()->getMotionGesturesHandler();;
     
-motionGesturesHandler.addListenerInterface(GameMotionGestureListener(MotionGestureReceiveInterfaceFactory::getInstance()));
+motionGesturesHandler->addListenerInterface(new GameMotionGestureListener(MotionGestureReceiveInterfaceFactory::getInstance()));
     
 }
 
@@ -81,16 +87,16 @@ motionGesturesHandler.addListenerInterface(GameMotionGestureListener(MotionGestu
     public: void pointerDragged(int32_t x, int32_t y){
 
         try {
-            this->motionRecognizer.processDraggedMotionEvent(x, y, DEVICE_ID, 0);
+            this->motionRecognizer->processDraggedMotionEvent(x, y, DEVICE_ID, 0);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, "pointerDragged", e);
+this->logUtil->put(commonStrings->EXCEPTION, this, "pointerDragged", &e);
     
 }
 
@@ -100,16 +106,16 @@ this->logUtil.put(commonStrings.EXCEPTION, this, "pointerDragged", e);
     public: void pointerPressed(int32_t x, int32_t y){
 
         try {
-            this->motionRecognizer.processStartMotionEvent(x, y, DEVICE_ID, 0);
+            this->motionRecognizer->processStartMotionEvent(x, y, DEVICE_ID, 0);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, "pointerPressed", e);
+this->logUtil->put(commonStrings->EXCEPTION, this, "pointerPressed", &e);
     
 }
 
@@ -119,16 +125,16 @@ this->logUtil.put(commonStrings.EXCEPTION, this, "pointerPressed", e);
     public: void pointerReleased(int32_t x, int32_t y){
 
         try {
-            this->motionRecognizer.processEndMotionEvent(x, y, DEVICE_ID, 0);
+            this->motionRecognizer->processEndMotionEvent(x, y, DEVICE_ID, 0);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, "pointerReleased", e);
+this->logUtil->put(commonStrings->EXCEPTION, this, "pointerReleased", &e);
     
 }
 

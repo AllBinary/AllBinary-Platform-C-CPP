@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Command.h>
@@ -73,20 +79,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CommandTextItem.h"
-#include "ABCustomItem.h"
+        #include "org/allbinary/graphics/form/item/CommandTextItem.h"
+#include "org/allbinary/graphics/form/item/ABCustomItem.h"
 
 class CommandTextItemArrayFactory
             : public Object
          {
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
-    private: Visitor visitorInterface;
+    private: Visitor* visitorInterface;
 
-public: CommandTextItemArrayFactory(Visitor visitorInterface);
+public: CommandTextItemArrayFactory(Visitor* visitorInterface);
 
-    public: std::vector<ABCustomItem> getInstance(Object* vector, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+    public: std::vector<ABCustomItem*> getInstance(Object* vector, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
 };
 

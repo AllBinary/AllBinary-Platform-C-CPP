@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -71,9 +77,9 @@ class JarUtil
             
     public: static void main(std::vector<std::string> args);
 
-    private: URL jarURL;
+    private: URL* jarURL;
 
-public: JarUtil(URL jarURL);
+public: JarUtil(URL* jarURL);
 
     public: void show();
 

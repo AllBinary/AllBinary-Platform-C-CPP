@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,7 +55,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ModDomHelper.h"
+        #include "org/allbinary/data/tree/dom/ModDomHelper.h"
 
 class BasicErrorNodeUtil
             : public Object
@@ -57,13 +63,13 @@ class BasicErrorNodeUtil
 
                 //@Throws(Exception.constructor)
             
-    public: static Node get(Document document, std::string errorText){
+    public: static Node* get(Document* document, std::string errorText){
 
         try {
             
-    Node node = document.createElement(ErrorData::getInstance().NAME);;
+    Node* node = document->createElement(ErrorData::getInstance()->NAME);;
     
-node.appendChild(ModDomHelper::createNameValueNodes(document, ErrorData::getInstance().TEXT, errorText));
+node->appendChild(ModDomHelper::createNameValueNodes(document, ErrorData::getInstance()->TEXT, errorText));
     
 
 
@@ -73,12 +79,12 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, ErrorData::getInst
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
 
-                            throw Exception("Error Node Creation Failure");
+                            throw new Exception("Error Node Creation Failure");
                     
 }
 

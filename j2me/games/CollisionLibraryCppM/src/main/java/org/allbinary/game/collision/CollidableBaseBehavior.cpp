@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,21 +67,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CollidableInterface.h"
-#include "LayerCollisionUtil.h"
-#include "CollidableInterfaceCompositeInterface.h"
-#include "CollisionTypeFactory.h"
-#include "CollisionType.h"
+        #include "org/allbinary/game/collision/CollidableInterface.h"
+#include "org/allbinary/game/collision/LayerCollisionUtil.h"
+#include "org/allbinary/game/collision/CollidableInterfaceCompositeInterface.h"
+#include "org/allbinary/game/collision/CollisionTypeFactory.h"
+#include "org/allbinary/game/collision/CollisionType.h"
 
 class CollidableBaseBehavior
             : public Object
-        : public CollidableInterface {
+        , public CollidableInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const LayerCollisionUtil layerCollisionUtil = LayerCollisionUtil::getInstance();
+    protected: LayerCollisionUtil* layerCollisionUtil = LayerCollisionUtil::getInstance();
 
     private: bool collidable = true;
 
@@ -94,7 +100,7 @@ this->collidable= collidable;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->constructor.name.toString();;
+                        return this->getClass()->getName();;
     
 }
 
@@ -105,7 +111,7 @@ this->collidable= collidable;
 }
 
 
-    public: bool isCollidable(CollidableCompositeLayer ownerLayer){
+    public: bool isCollidable(CollidableCompositeLayer* ownerLayer){
 
 
 
@@ -117,56 +123,56 @@ this->collidable= collidable;
 
                 //@Throws(Exception.constructor)
             
-    public: void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer allbinaryCollidableLayer){
+    public: void collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* allbinaryCollidableLayer){
 
 
 
-                            throw Exception(StringMaker().append(this->commonStrings.NOT_IMPLEMENTED).append(CommonLabels::getInstance().COLON_SEP).append(this->constructor.name.toString()).toString());
+                            throw new Exception((new StringMaker())->append(this->commonStrings->NOT_IMPLEMENTED)->append(CommonLabels::getInstance()->COLON_SEP)->append(this->getClass()->getName())->toString());
                     
 }
 
 
-    public: bool isCollision(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer){
+    public: bool isCollision(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collisionLayer){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->layerCollisionUtil.isCollision(ownerLayer, collisionLayer);;
+                        return this->layerCollisionUtil->isCollision(ownerLayer, collisionLayer);;
     
 }
 
 
-    public: bool isCollisionInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface){
+    public: bool isCollisionInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->layerCollisionUtil.isCollision(ownerLayer, collidableInterfaceCompositeInterface as unknown);;
+                        return this->layerCollisionUtil->isCollision(ownerLayer, dynamic_cast<AllBinaryLayer*>(collidableInterfaceCompositeInterface as unknown));;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface){
+    public: void collideInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface){
 
 
 
-                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: void paint(CollidableCompositeLayer ownerLayer, Graphics graphics){
+    public: void paint(CollidableCompositeLayer* ownerLayer, Graphics* graphics){
 }
 
 
-    public: CollisionType getCollisionTypeWith(AllBinaryLayer layerInterface){
+    public: CollisionType* getCollisionTypeWith(AllBinaryLayer* layerInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CollisionTypeFactory::getInstance().NONE;
+                        return CollisionTypeFactory::getInstance()->NONE;
     
 }
 

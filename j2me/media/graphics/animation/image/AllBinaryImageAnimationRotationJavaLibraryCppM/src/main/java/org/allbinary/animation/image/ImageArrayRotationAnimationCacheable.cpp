@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/AnimationBehavior.h>
@@ -50,12 +58,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdjustedImageArrayRotationAnimation.h"
-#include "ImageArrayRotationAnimationInfo.h"
+        #include "org/allbinary/animation/image/AdjustedImageArrayRotationAnimation.h"
+#include "org/allbinary/animation/image/ImageArrayRotationAnimationInfo.h"
 
 class ImageArrayRotationAnimationCacheable: public AdjustedImageArrayRotationAnimation, public CacheableInterface {
 
-public: ImageArrayRotationAnimationCacheable(Object* anyType, AnimationBehavior animationBehavior) : AdjustedImageArrayRotationAnimation((anyType)).getImageArray(), (anyType)).getAngleInfoP(), (anyType)).getTotalAngle(), (anyType)).getDx(), (anyType)).getDy(), animationBehavior){
+public: ImageArrayRotationAnimationCacheable(Object* anyType, AnimationBehavior* animationBehavior) : AdjustedImageArrayRotationAnimation((anyType)).getImageArray(), (anyType)).getAngleInfoP(), (anyType)).getTotalAngle(), (anyType)).getDx(), (anyType)).getDy(), animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -70,7 +78,7 @@ public: ImageArrayRotationAnimationCacheable(Object* anyType, AnimationBehavior 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance().NULL_OBJECT;
+                        return NullUtil::getInstance()->NULL_OBJECT;
     
 }
 
@@ -80,7 +88,7 @@ public: ImageArrayRotationAnimationCacheable(Object* anyType, AnimationBehavior 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 }
 

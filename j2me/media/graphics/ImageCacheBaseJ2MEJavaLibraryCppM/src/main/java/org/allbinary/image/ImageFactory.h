@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_IMAGE_IMAGEFACTORY_H
         #define ORG_ALLBINARY_IMAGE_IMAGEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,25 +60,25 @@ class ImageFactory
             : public Object
          {
 
-    private: static ImageFactory instance() { return ImageFactory(); }
+    private: static ImageFactory* instance() { static std::unique_ptr<ImageFactory> value(new ImageFactory()); return value.get(); }
 
-    public: static ImageFactory getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public: Image createImageUrl(std::string url);
+    public: static ImageFactory* getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImage(std::string caller, int32_t width, int32_t height);
+    public: Image* createImageUrl(std::string url);
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImageFromInputStream(Object* key, InputStream inputStream);
+    public: Image* createImage(std::string caller, int32_t width, int32_t height);
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImageFromInputStream(InputStream inputStream);
+    public: Image* createImageFromInputStream(Object* key, InputStream* inputStream);
+
+                //@Throws(Exception.constructor)
+            
+    public: Image* createImageFromInputStream(InputStream* inputStream);
 
 };
 

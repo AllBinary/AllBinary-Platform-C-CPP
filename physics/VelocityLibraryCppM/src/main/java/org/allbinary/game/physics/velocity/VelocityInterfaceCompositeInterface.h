@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYINTERFACECOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYINTERFACECOMPOSITEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,11 +45,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicVelocityProperties.h"
+        #include "org/allbinary/game/physics/velocity/BasicVelocityProperties.h"
 
 class VelocityInterfaceCompositeInterface {
 
-    BasicVelocityProperties getVelocityProperties();
+    public: virtual BasicVelocityProperties* getVelocityProperties() = 0;
 
 };
 

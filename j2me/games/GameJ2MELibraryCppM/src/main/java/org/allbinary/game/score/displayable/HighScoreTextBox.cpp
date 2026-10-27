@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/CommandListener.h>
@@ -98,50 +104,50 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HighScoreUtil.h"
+        #include "org/allbinary/game/score/displayable/HighScoreUtil.h"
 
 class HighScoreTextBox: public CustomTextBox {
 
-    private: const VirtualKeyboardEventHandler virtualKeyboardEventHandler = VirtualKeyboardEventHandler::getInstance();
+    private: VirtualKeyboardEventHandler* virtualKeyboardEventHandler = VirtualKeyboardEventHandler::getInstance();
 
-    private: HighScoreUtil highScoreUtil;
+    private: HighScoreUtil* highScoreUtil;
 
-    private: const Paintable pleaseWait = SimpleTextPaintable(this->commonStrings.PLEASE_WAIT, BasicColorFactory::getInstance().WHITE);
+    private: Paintable* pleaseWait = new SimpleTextPaintable(this->commonStrings.PLEASE_WAIT, BasicColorFactory::getInstance()->WHITE);
 
-    private: Paintable paintable = NullPaintable::getInstance();
+    private: Paintable* paintable = NullPaintable::getInstance();
 
     public: bool submitted = false;
 
-public: HighScoreTextBox(HighScoresFactoryInterface highScoresFactoryInterface, HighScoresHelperBaseInterface highScoresHelper, AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, CommandListener cmdListener, std::string name, HighScore highScore, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor) : CustomTextBox(cmdListener, "New High Score Enter Name:", name, 12, TextField::ANY, Font::getDefaultFont(), backgrounBasicColor, foregroundBasicColor){
+public: HighScoreTextBox(HighScoresFactoryInterface* highScoresFactoryInterface, HighScoresHelperBaseInterface* highScoresHelper, AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo, CommandListener* cmdListener, std::string name, HighScore* highScore, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) : CustomTextBox(cmdListener, "New High Score Enter Name:", name, 12, TextField::ANY, Font::getDefaultFont(), backgrounBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->highScoreUtil= HighScoreUtil(highScoresFactoryInterface, highScoresHelper, abeClientInformation, gameInfo, cmdListener, name, highScore);
+this->highScoreUtil= new HighScoreUtil(highScoresFactoryInterface, highScoresHelper, abeClientInformation, gameInfo, cmdListener, name, highScore);
     
 
-    GenericOperatingSystem operatingSystemInterface = OperatingSystemFactory::getInstance().getOperatingSystemInstance();;
+    GenericOperatingSystem* operatingSystemInterface = OperatingSystemFactory::getInstance()->getOperatingSystemInstance();;
     
 
-                        if(operatingSystemInterface.isOverScan())
+                        if(operatingSystemInterface->isOverScan())
                         
                                     {
                                     
-    std::string username = InApplicationPurchaseFactory::getInstance().getUserName();;
+    std::string username = InApplicationPurchaseFactory::getInstance()->getUserName();;
     
 
                         if(true)
                         
                                     {
-                                    this->getTextFieldItem().setString(username);
+                                    this->getTextFieldItem()->setString(username);
     
 
                                     }
                                 
                         else {
-                            this->getTextFieldItem().setString("NoGamerInfo");
+                            this->getTextFieldItem()->setString("NoGamerInfo");
     
 
                         }
@@ -152,10 +158,10 @@ this->highScoreUtil= HighScoreUtil(highScoresFactoryInterface, highScoresHelper,
 }
 
 
-    public: void initCommands(CommandListener cmdListener){
+    public: void initCommands(CommandListener* cmdListener){
 this->removeAllCommands();
     
-PostGameCommandFactory::getInstance().addCommands(this);
+PostGameCommandFactory::getInstance()->addCommands(this);
     
 this->addCommand(HighScoreUtil::SUBMIT_TEXTBOX_COMMAND);
     
@@ -165,7 +171,7 @@ this->setCommandListener(cmdListener);
 
 
     public: void open(){
-this->virtualKeyboardEventHandler.open();
+this->virtualKeyboardEventHandler->open();
     
 this->paintable= NullPaintable::getInstance();
     
@@ -175,7 +181,7 @@ super.open();
 
 
     public: void close(){
-this->virtualKeyboardEventHandler.close();
+this->virtualKeyboardEventHandler->close();
     
 this->paintable= this->pleaseWait;
     
@@ -191,7 +197,7 @@ this->update();
                         if(this->submitted)
                         
                                     {
-                                    this->highScoreUtil.saveHighScore();
+                                    this->highScoreUtil->saveHighScore();
     
 
                                     }
@@ -211,31 +217,31 @@ this->repaintBehavior.onChangeRepaint(this);
             
     public: void update(){
 
-    std::string name = this->getTextFieldItem().getString();;
+    std::string name = this->getTextFieldItem()->getString();;
     
-this->highScoreUtil.update(name);
+this->highScoreUtil->update(name);
     
 super.update();
     
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 super.paint(graphics);
     
-this->paintable.paint(graphics);
+this->paintable->paint(graphics);
     
 }
 
 
     public: void saveHighScore(){
-this->highScoreUtil.saveHighScore();
+this->highScoreUtil->saveHighScore();
     
 }
 
 
     public: void submit(){
-this->highScoreUtil.submit(this);
+this->highScoreUtil->submit(this);
     
 }
 

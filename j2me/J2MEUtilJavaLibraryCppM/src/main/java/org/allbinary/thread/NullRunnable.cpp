@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -45,13 +51,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ARunnable.h"
+        #include "org/allbinary/thread/ARunnable.h"
 
 class NullRunnable: public ARunnable {
 
-    private: static NullRunnable instance() { return NullRunnable(); }
+    private: static NullRunnable* instance() { static std::unique_ptr<NullRunnable> value(new NullRunnable()); return value.get(); }
 
-    public: static NullRunnable getInstance(){
+    public: static NullRunnable* getInstance(){
 
 
 

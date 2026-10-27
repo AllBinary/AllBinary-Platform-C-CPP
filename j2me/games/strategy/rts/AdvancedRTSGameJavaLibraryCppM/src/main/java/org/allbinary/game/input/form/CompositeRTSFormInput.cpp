@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/RTSPlayerLayerInterface.h>
@@ -76,19 +82,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RTSFormInput.h"
-#include "WaypointRTSFormInput.h"
-#include "UnitRTSFormInput.h"
+        #include "org/allbinary/game/input/form/RTSFormInput.h"
+#include "org/allbinary/game/input/form/WaypointRTSFormInput.h"
+#include "org/allbinary/game/input/form/UnitRTSFormInput.h"
 
 class CompositeRTSFormInput: public RTSFormInput {
 
-    private: std::vector<RTSFormInput> rtsFormInputArray;
+    private: std::vector<RTSFormInput*> rtsFormInputArray;
 
     private: std::vector<int32_t> itemIndex;
 
     private: bool isPrimaryWaypointCreator;
 
-public: CompositeRTSFormInput(std::vector<Group> groupInterface, bool isPrimaryWaypointCreator, std::vector<int32_t> itemIndex) : RTSFormInput(groupInterface){
+public: CompositeRTSFormInput(std::vector<Group*> groupInterface, bool isPrimaryWaypointCreator, std::vector<int32_t> itemIndex) : RTSFormInput(groupInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -99,25 +105,25 @@ this->itemIndex= itemIndex;
     
 this->isPrimaryWaypointCreator= isPrimaryWaypointCreator;
     
-this->rtsFormInputArray= std::vector<RTSFormInput>(2);
+this->rtsFormInputArray= std::vector<RTSFormInput*>(2);
     
-this->rtsFormInputArray[0]= WaypointRTSFormInput(this->groupInterfaceArray, isPrimaryWaypointCreator);
+this->rtsFormInputArray[0]= new WaypointRTSFormInput(this->groupInterfaceArray, isPrimaryWaypointCreator);
     
-this->rtsFormInputArray[1]= UnitRTSFormInput(this->groupInterfaceArray);
+this->rtsFormInputArray[1]= new UnitRTSFormInput(this->groupInterfaceArray);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager){
 super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = allBinaryGameLayerManager;;
+    GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(allBinaryGameLayerManager);;
     
 
-    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
+    BasicGeographicMap* geographicMapInterface = geographicMapCompositeInterface->getGeographicMapInterface()[0];;
     
 
     int32_t size = this->rtsFormInputArray.size();;
@@ -138,12 +144,12 @@ this->rtsFormInputArray[index].setAllBinaryGameLayerManager(allBinaryGameLayerMa
 
                 //@Throws(Exception.constructor)
             
-    public: void processAtPoint(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, GPoint point){
+    public: void processAtPoint(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, GPoint* point){
 
-    ScrollSelectionForm scrollSelectionForm = rtsPlayerLayerInterface.getCurrentScrollSelectionForm();;
+    ScrollSelectionForm* scrollSelectionForm = rtsPlayerLayerInterface->getCurrentScrollSelectionForm();;
     
 
-    int32_t index = scrollSelectionForm.getSelectedIndexForPoint(point);;
+    int32_t index = scrollSelectionForm->getSelectedIndexForPoint(point);;
     
 
                         if(this->isStickyItemSelected() && associatedRtsLayer == CollidableDestroyableDamageableLayer::getNullInstance())
@@ -175,11 +181,11 @@ this->rtsFormInputArray[index].setAllBinaryGameLayerManager(allBinaryGameLayerMa
 
                 //@Throws(Exception.constructor)
             
-    public: void processGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t index){
+    public: void processGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t index){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF(CommonLabels::getInstance().INDEX_LABEL +index +" > " +this->itemIndex[0], this, commonStrings.PROCESS);
+this->logUtil.putF(CommonLabels::getInstance()->INDEX_LABEL +index +" > " +this->itemIndex[0], this, commonStrings->PROCESS);
     
 
                         if(this->isStickyItemSelected() && associatedRtsLayer == CollidableDestroyableDamageableLayer::getNullInstance())
@@ -211,7 +217,7 @@ this->logUtil.putF(CommonLabels::getInstance().INDEX_LABEL +index +" > " +this->
 
                 //@Throws(Exception.constructor)
             
-    public: bool processSticky(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, GPoint point){
+    public: bool processSticky(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, GPoint* point){
 
 
 
@@ -223,7 +229,7 @@ this->logUtil.putF(CommonLabels::getInstance().INDEX_LABEL +index +" > " +this->
 
                 //@Throws(Exception.constructor)
             
-    public: void processStickyGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t index){
+    public: void processStickyGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t index){
 this->rtsFormInputArray[0].processStickyGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, item, index);
     
 }
@@ -255,7 +261,7 @@ this->rtsFormInputArray[0].setStickyItemSelected(stickyItemSelected);
 }
 
 
-    public: ABCustomItem getSelectedStickyItem(){
+    public: ABCustomItem* getSelectedStickyItem(){
 
 
 
@@ -265,7 +271,7 @@ this->rtsFormInputArray[0].setStickyItemSelected(stickyItemSelected);
 }
 
 
-    public: void setSelectedStickyItem(ABCustomItem selectedStickyItem){
+    public: void setSelectedStickyItem(ABCustomItem* selectedStickyItem){
 this->rtsFormInputArray[0].setSelectedStickyItem(selectedStickyItem);
     
 }

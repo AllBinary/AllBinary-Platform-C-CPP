@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTINFOHUDPAINTABLE_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTINFOHUDPAINTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -63,23 +69,23 @@
         
 class WaypointInfoHudPaintable: public SelectionHudPaintable {
 
-    private: KeyValueDrawString keyvalueDrawString;
+    private: KeyValueDrawString* keyvalueDrawString;
 
-    protected: PathFindingLayerInterface rtsLayerP = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
+    protected: PathFindingLayerInterface* rtsLayerP = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
     private: int32_t textLine2Y= 0;
 
 public: WaypointInfoHudPaintable();
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
     public: void updateSelectionInfo();
 
-    public: void setRtsLayer(RTSLayer rtsLayer);
+    public: void setRtsLayer(RTSLayer* rtsLayer);
 
-    public: PathFindingLayerInterface getRtsLayer();
+    public: PathFindingLayerInterface* getRtsLayer();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

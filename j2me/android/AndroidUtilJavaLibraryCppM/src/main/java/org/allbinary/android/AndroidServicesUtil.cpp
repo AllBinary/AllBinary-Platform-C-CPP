@@ -20,6 +20,12 @@
 
             #include <hilog/log.h>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/List.h>
@@ -66,7 +72,7 @@ class AndroidServicesUtil
             : public Object
          {
 
-    public: static AndroidServicesUtil getInstance(){
+    public: static AndroidServicesUtil* getInstance(){
 
 
 
@@ -76,11 +82,11 @@ class AndroidServicesUtil
 }
 
 
-    private: static AndroidServicesUtil instance() { return AndroidServicesUtil(); }
+    private: static AndroidServicesUtil* instance() { static std::unique_ptr<AndroidServicesUtil> value(new AndroidServicesUtil()); return value.get(); }
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const ResourceUtil resourceUtil = ResourceUtil::getInstance();
+    private: ResourceUtil* resourceUtil = ResourceUtil::getInstance();
 
     private: const int32_t SERVICE_LIMIT_MAX = 1000;
 
@@ -90,22 +96,22 @@ class AndroidServicesUtil
 
     public: bool isServiceRunning(std::string name){
 
-    ActivityManager activityManager = this->resourceUtil.getContext().getSystemService(Context::ACTIVITY_SERVICE) as unknown;;
+    ActivityManager* activityManager = dynamic_cast<ActivityManager*>(this->resourceUtil->getContext()->getSystemService(Context::ACTIVITY_SERVICE) as unknown);;
     
 
-    List<RunningServiceInfo> runningServicesList = activityManager.getRunningServices(this->SERVICE_LIMIT_MAX);;
+    List<RunningServiceInfo*>* runningServicesList = activityManager->getRunningServices(this->SERVICE_LIMIT_MAX);;
     
 
-    RunningServiceInfo runningServiceInfo;;
+    RunningServiceInfo* runningServiceInfo;;
     
 
-    ComponentName serviceComponent;;
+    ComponentName* serviceComponent;;
     
 
     std::string serviceName;;
     
 
-    int32_t size = runningServicesList.size;;
+    int32_t size = runningServicesList->size;;
     
 
 
@@ -114,14 +120,14 @@ class AndroidServicesUtil
                         for (
     int32_t index = 0;index < size; index++)
         {
-runningServiceInfo= runningServicesList.get(index);
+runningServiceInfo= runningServicesList->get(index);
     
-serviceComponent= runningServiceInfo.service;
+serviceComponent= runningServiceInfo->service;
     
-serviceName= serviceComponent.toString();
+serviceName= serviceComponent->toString();
     
 
-                        if(serviceName.indexOf(name) >= 0)
+                        if(JavaString::indexOf(serviceName, name) >= 0)
                         
                                     {
                                     
@@ -135,7 +141,7 @@ serviceName= serviceComponent.toString();
                                 
 }
 
-this->logUtil.putF(this->SERVICE_NOT_FOUND_RUNNING +name, this, this->IS_SERVICE_RUNNING);
+this->logUtil->putF(this->SERVICE_NOT_FOUND_RUNNING +name, this, this->IS_SERVICE_RUNNING);
     
 
 

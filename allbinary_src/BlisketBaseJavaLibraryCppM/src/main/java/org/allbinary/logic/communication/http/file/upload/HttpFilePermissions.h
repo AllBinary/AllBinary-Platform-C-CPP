@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_HTTPFILEPERMISSIONS_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_HTTPFILEPERMISSIONS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,25 +73,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "FileUploadData.h"
+        #include "org/allbinary/logic/communication/http/file/upload/FileUploadData.h"
 
 class HttpFilePermissions
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: AbFile file;
+    private: AbFile* file;
 
-    private: const BasicArrayList userRoles = BasicArrayListD();
+    private: BasicArrayList* userRoles = new BasicArrayListD();
 
-public: HttpFilePermissions(AbPath fullPath);
+public: HttpFilePermissions(AbPath* fullPath);
 
     public: bool isFile();
 
-    public: BasicArrayList getUserRoles();
+    public: BasicArrayList* getUserRoles();
 
 };
 

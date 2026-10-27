@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALANALOGDOWNGAMEINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALANALOGDOWNGAMEINPUTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/event/GameKeyEvent.h>
@@ -47,16 +53,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SpecialGameInputProcessor.h"
-#include "CollidableDestroyableDamageableLayer.h"
+        #include "org/allbinary/game/layer/special/SpecialGameInputProcessor.h"
+#include "org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h"
 
 class SpecialAnalogDownGameInputProcessor: public SpecialGameInputProcessor {
 
-public: SpecialAnalogDownGameInputProcessor(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer);
+public: SpecialAnalogDownGameInputProcessor(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer);
 
                 //@Throws(Exception.constructor)
             
-    public: void processAnalog(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent, int32_t yAnalogValue);
+    public: void processAnalog(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent, int32_t yAnalogValue);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_VECTOR_VERTEX_H
         #define ORG_ALLBINARY_LOGIC_MATH_VECTOR_VERTEX_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/math/BasicDecimal.h>
@@ -58,11 +64,11 @@ class Vertex
             : public Object
          {
 
-    public: BasicDecimal x = BasicDecimal(0);
+    public: BasicDecimal* x = new BasicDecimal(0);
 
-    public: BasicDecimal y = BasicDecimal(0);
+    public: BasicDecimal* y = new BasicDecimal(0);
 
-    public: BasicDecimal z = BasicDecimal(0);
+    public: BasicDecimal* z = new BasicDecimal(0);
 
 public: Vertex();
 

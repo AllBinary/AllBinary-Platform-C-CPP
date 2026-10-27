@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -57,15 +63,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageCreationUtil.h"
+        #include "org/allbinary/media/image/ImageCreationUtil.h"
 
 class ImageRotationUtil
             : public Object
          {
 
-    private: static ImageRotationUtil instance() { return ImageRotationUtil(); }
+    private: static ImageRotationUtil* instance() { static std::unique_ptr<ImageRotationUtil> value(new ImageRotationUtil()); return value.get(); }
 
-    public: static ImageRotationUtil getInstance(){
+    public: static ImageRotationUtil* getInstance(){
 
 
 
@@ -81,54 +87,54 @@ private: ImageRotationUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image createRotatedImage(Image originalImage, int32_t rotationInDegrees){
+    public: Image* createRotatedImage(Image* originalImage, int32_t rotationInDegrees){
 
-    Image image = ImageCreationUtil::getInstance().getInstance(originalImage.getWidth(), originalImage.getHeight());;
+    Image* image = ImageCreationUtil::getInstance()->getInstance(originalImage->getWidth(), originalImage->getHeight());;
     
 
-                        if(image.isMutable())
+                        if(image->isMutable())
                         
                                     {
                                     
-    playn::core::Image originalPlayNImage = 
+    playn::core::Image* originalPlayNImage = 
                 null
             ;;
     
 
-                        if(originalImage.isMutable())
+                        if(originalImage->isMutable())
                         
                                     {
                                     
-    PlaynMutableImage originalHTMLImage = originalImage;;
+    PlaynMutableImage* originalHTMLImage = dynamic_cast<PlaynMutableImage*>(originalImage);;
     
-originalPlayNImage= originalHTMLImage.getImage();
+originalPlayNImage= dynamic_cast<playn::core::Image*>(originalHTMLImage->getImage());
     
 
                                     }
                                 
                         else {
                             
-    PlaynImmutableImage originalHTMLImage = originalImage;;
+    PlaynImmutableImage* originalHTMLImage = dynamic_cast<PlaynImmutableImage*>(originalImage);;
     
-originalPlayNImage= originalHTMLImage.getImage();
+originalPlayNImage= dynamic_cast<playn::core::Image*>(originalHTMLImage->getImage());
     
 
                         }
                             
 
-    PlaynMutableImage htmlImage = image;;
+    PlaynMutableImage* htmlImage = dynamic_cast<PlaynMutableImage*>(image);;
     
 
-    CanvasImage canvasImage = htmlImage.getImage();;
+    CanvasImage* canvasImage = dynamic_cast<CanvasImage*>(htmlImage->getImage());;
     
 
-    CanvasSurface canvasSurface = htmlImage.getCanvasSurface(canvasImage);;
+    CanvasSurface* canvasSurface = htmlImage->getCanvasSurface(canvasImage);;
     
-canvasSurface.translate(originalPlayNImage.width() /2, originalPlayNImage.height() /2);
+canvasSurface->translate(originalPlayNImage->width() /2, originalPlayNImage->height() /2);
     
-canvasSurface.rotate(Math::toRadians(rotationInDegrees));
+canvasSurface->rotate(Math::toRadians(rotationInDegrees));
     
-canvasSurface.drawImage(originalPlayNImage,  -originalPlayNImage.width() /2,  -originalPlayNImage.height() /2);
+canvasSurface->drawImage(originalPlayNImage,  -originalPlayNImage->width() /2,  -originalPlayNImage->height() /2);
     
 
 
@@ -143,7 +149,7 @@ canvasSurface.drawImage(originalPlayNImage,  -originalPlayNImage.width() /2,  -o
                             
 
 
-                            throw Exception("Not Mutable");
+                            throw new Exception("Not Mutable");
                     
 
                         }

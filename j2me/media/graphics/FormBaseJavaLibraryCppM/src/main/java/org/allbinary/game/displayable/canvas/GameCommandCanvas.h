@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -198,62 +204,62 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MenuListener.h"
-#include "NoMenuInputProcessor.h"
-#include "BasicMenuInputProcessor.h"
-#include "ImmediateCommandFormInputProcessor.h"
+        #include "org/allbinary/game/displayable/canvas/MenuListener.h"
+#include "org/allbinary/game/displayable/canvas/NoMenuInputProcessor.h"
+#include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
+#include "org/allbinary/game/displayable/canvas/ImmediateCommandFormInputProcessor.h"
 
 class GameCommandCanvas: public MyCanvas, public MenuListener, public DisplayChangeEventListener, public UpdateMyFontInterface {
 
-    private: static const int32_t id = 0;
+    private: static inline const int32_t id = 0;
 
-    private: const Processor repaintProcessor = ScreenRepaintProcessorFactory::getInstance().create(this);
+    private: Processor* repaintProcessor = ScreenRepaintProcessorFactory::getInstance()->create(this);
 
-    protected: const GameInputStrings gameInputStrings = GameInputStrings::getInstance();
+    protected: GameInputStrings* gameInputStrings = GameInputStrings::getInstance();
 
-    protected: BasicColor foregroundBasicColor;
+    protected: BasicColor* foregroundBasicColor;
 
-    protected: BasicColor backgroundBasicColor;
+    protected: BasicColor* backgroundBasicColor;
 
-    protected: const InputToGameKeyMapping inputToGameKeyMapping = PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping();
+    protected: InputToGameKeyMapping* inputToGameKeyMapping = PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping();
 
-    protected: const GameKeyFactory gameKeyFactory = GameKeyFactory::getInstance();
+    protected: GameKeyFactory* gameKeyFactory = GameKeyFactory::getInstance();
 
-    private: const GameKeyEventFactory gameKeyEventFactory = GameKeyEventFactory::getInstance();
+    private: GameKeyEventFactory* gameKeyEventFactory = GameKeyEventFactory::getInstance();
 
-    private: const DownGameKeyEventHandler downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
+    private: DownGameKeyEventHandler* downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
 
-    private: const UpGameKeyEventHandler upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
+    private: UpGameKeyEventHandler* upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
 
-    public: RepaintBehavior repaintBehavior;
+    public: RepaintBehavior* repaintBehavior;
 
-    protected: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
+    protected: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
 
-    protected: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
+    protected: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
 
     protected: int32_t foregroundColor;
 
     protected: int32_t backgroundColor;
 
-    private: BasicMenuInputProcessor menuInputProcessor = NoMenuInputProcessor::getInstance();
+    private: BasicMenuInputProcessor* menuInputProcessor = NoMenuInputProcessor::getInstance();
 
-    private: Paintable menuPaintable = NullPaintable::getInstance();
+    private: Paintable* menuPaintable = NullPaintable::getInstance();
 
-    private: PaintableForm menuForm = PaintableForm::getNullPaintableForm();
+    private: PaintableForm* menuForm = PaintableForm::getNullPaintableForm();
 
-    private: bool isSingleKeyRepeatableProcessing = Features::getInstance().isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_REPEAT_PRESS);
+    private: bool isSingleKeyRepeatableProcessing = Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_REPEAT_PRESS);
 
     protected: int32_t fontHeight = 0;
 
-public: GameCommandCanvas(CommandListener cmdListener, std::string name, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: GameCommandCanvas(CommandListener* cmdListener, std::string name, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
-    public: void onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject* eventObject);
 
-    public: void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent);
+    public: void onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent);
 
-    public: void initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener* cmdListener);
 
                 //@Throws(Exception.constructor)
             
@@ -261,9 +267,9 @@ public: GameCommandCanvas(CommandListener cmdListener, std::string name, BasicCo
 
                 //@Throws(Exception.constructor)
             
-    public: ScrollSelectionForm createForm();
+    public: ScrollSelectionForm* createForm();
 
-    public: Rectangle createRectangle(int32_t size);
+    public: Rectangle* createRectangle(int32_t size);
 
     public: void open();
 
@@ -291,11 +297,11 @@ public: GameCommandCanvas(CommandListener cmdListener, std::string name, BasicCo
 
     private: void removeGameKeyEvent(int32_t keyCode, int32_t deviceId, bool repeated);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    private: void setMenuInputProcessor(BasicMenuInputProcessor menuInputProcessor);
+    private: void setMenuInputProcessor(BasicMenuInputProcessor* menuInputProcessor);
 
-    protected: BasicMenuInputProcessor getMenuInputProcessor();
+    protected: BasicMenuInputProcessor* getMenuInputProcessor();
 
 };
 

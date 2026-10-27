@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/game/input/PlatformInputMappingFactory.h>
 
       
@@ -51,14 +59,14 @@
         
 class UpOrientationInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static GameKeyCompleteMotionGestureInputEvent getInstance(){
+    public: static GameKeyCompleteMotionGestureInputEvent* getInstance(){
 
-                        if(UpOrientationInputToGameKeyEventAction::instance() == NullUtil::getInstance().NULL_OBJECT)
+                        if(UpOrientationInputToGameKeyEventAction::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    UpOrientationInputToGameKeyEventAction::instance= UpOrientationInputToGameKeyEventAction();
+                                    UpOrientationInputToGameKeyEventAction::instance= new UpOrientationInputToGameKeyEventAction();
     
 
                                     }
@@ -67,12 +75,12 @@ class UpOrientationInputToGameKeyEventAction: public GameKeyCompleteMotionGestur
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UpOrientationInputToGameKeyEventAction::instance();
+                        return dynamic_cast<GameKeyCompleteMotionGestureInputEvent*>(UpOrientationInputToGameKeyEventAction::instance);
     
 }
 
 
-private: UpOrientationInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Up Action", OrientationMotionGestureFactory::getInstance().UP, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping()){
+private: UpOrientationInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Up Action", OrientationMotionGestureFactory::getInstance()->UP, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
 
                         //super/this constructor call is in the constructor initializer list.
                     

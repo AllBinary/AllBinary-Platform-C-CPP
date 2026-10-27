@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,20 +66,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdConfiguration.h"
-#include "Advertisements.h"
+        #include "org/allbinary/business/advertisement/AdConfiguration.h"
+#include "org/allbinary/business/advertisement/Advertisements.h"
 
 class GameAdStateBase
             : public Object
          {
 
-    protected: AdConfiguration adConfigurationP;
+    protected: AdConfiguration* adConfigurationP;
 
-    protected: const Advertisements advertisementsP = Advertisements();
+    protected: Advertisements* advertisementsP = new Advertisements();
 
     protected: bool okayToShowAdsP= false;
 
-public: GameAdStateBase(AdConfiguration adConfiguration);
+public: GameAdStateBase(AdConfiguration* adConfiguration);
 
     public: void initViewArray(std::vector<Object*> viewArray);
 
@@ -89,9 +95,9 @@ public: GameAdStateBase(AdConfiguration adConfiguration);
 
     public: void hide();
 
-    public: void onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject* eventObject);
 
-    public: void processAdState(GameState gameState, GameType gameType);
+    public: void processAdState(GameState* gameState, GameType* gameType);
 
     public: void processPageAdState();
 
@@ -111,9 +117,9 @@ public: GameAdStateBase(AdConfiguration adConfiguration);
 
     public: bool isGameIsReady();
 
-    public: Advertisements getAdvertisements();
+    public: Advertisements* getAdvertisements();
 
-    public: AdConfiguration getAdConfiguration();
+    public: AdConfiguration* getAdConfiguration();
 
     public: bool isOkayToShowPageAd();
 

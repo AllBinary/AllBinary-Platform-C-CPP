@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,38 +44,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ColorRange.h"
-#include "ColorAverage.h"
+        #include "org/allbinary/media/image/analysis/ColorRange.h"
+#include "org/allbinary/media/image/analysis/ColorAverage.h"
 
 class ImageColorResults
             : public Object
          {
 
-    private: ColorRange colorRange;
+    private: ColorRange* colorRange;
 
-    private: ColorAverage colorAverage;
+    private: ColorAverage* colorAverage;
 
 public: ImageColorResults(){
-this->setColorRange(ColorRange());
+this->setColorRange(new ColorRange());
     
-this->getColorRange().setMaxRed( -1);
+this->getColorRange()->setMaxRed( -1);
     
-this->getColorRange().setMaxGreen( -1);
+this->getColorRange()->setMaxGreen( -1);
     
-this->getColorRange().setMaxBlue( -1);
+this->getColorRange()->setMaxBlue( -1);
     
-this->getColorRange().setMinRed(256);
+this->getColorRange()->setMinRed(256);
     
-this->getColorRange().setMinGreen(256);
+this->getColorRange()->setMinGreen(256);
     
-this->getColorRange().setMinBlue(256);
+this->getColorRange()->setMinBlue(256);
     
-this->setColorAverage(ColorAverage());
+this->setColorAverage(new ColorAverage());
     
 }
 
 
-    public: ColorRange getColorRange(){
+    public: ColorRange* getColorRange(){
 
 
 
@@ -79,13 +85,13 @@ this->setColorAverage(ColorAverage());
 }
 
 
-    public: void setColorRange(ColorRange colorRange){
+    public: void setColorRange(ColorRange* colorRange){
 this->colorRange= colorRange;
     
 }
 
 
-    public: ColorAverage getColorAverage(){
+    public: ColorAverage* getColorAverage(){
 
 
 
@@ -95,7 +101,7 @@ this->colorRange= colorRange;
 }
 
 
-    public: void setColorAverage(ColorAverage colorAverage){
+    public: void setColorAverage(ColorAverage* colorAverage){
 this->colorAverage= colorAverage;
     
 }

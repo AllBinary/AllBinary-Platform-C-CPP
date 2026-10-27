@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,29 +72,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NullRunnable.h"
-#include "ThreadPoolStrings.h"
-#include "ThreadObjectUtil.h"
-#include "PooledThread.h"
-#include "PriorityRunnable.h"
+        #include "org/allbinary/thread/NullRunnable.h"
+#include "org/allbinary/thread/ThreadPoolStrings.h"
+#include "org/allbinary/thread/ThreadObjectUtil.h"
+#include "org/allbinary/thread/PooledThread.h"
+#include "org/allbinary/thread/PriorityRunnable.h"
 
 class ThreadPool
             : public Object
          {
 
-    private: static const std::string ROOT_NAME = "-PooledThread-";
+    private: static inline const std::string ROOT_NAME = "-PooledThread-";
 
-    public: static const int32_t NORMAL_PRIORITY = Thread::NORM_PRIORITY;
+    public: static inline const int32_t NORMAL_PRIORITY = Thread::NORM_PRIORITY;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const NullRunnable NULL_RUNNABLE = NullRunnable::getInstance();
+    protected: NullRunnable* NULL_RUNNABLE = NullRunnable::getInstance();
 
-    protected: const ThreadPoolStrings threadPoolStrings = ThreadPoolStrings::getInstance();
+    protected: ThreadPoolStrings* threadPoolStrings = ThreadPoolStrings::getInstance();
 
-    protected: const ThreadObjectUtil threadObjectUtil = ThreadObjectUtil::getInstance();
+    protected: ThreadObjectUtil* threadObjectUtil = ThreadObjectUtil::getInstance();
 
     private: std::string poolName;
 
@@ -96,7 +102,7 @@ class ThreadPool
 
     private: bool isAlive = false;
 
-    private: BasicArrayList taskQueue = BasicArrayListUtil::getInstance().getImmutableInstance();
+    private: BasicArrayList* taskQueue = BasicArrayListUtil::getInstance()->getImmutableInstance();
 
     private: int32_t threadID= 0;
 
@@ -121,10 +127,10 @@ this->numThreads= numThreads;
                                     {
                                     this->isAlive= true;
     
-this->taskQueue= BasicArrayListD();
+this->taskQueue= new BasicArrayListD();
     
 
-    PooledThread pooledThread;;
+    PooledThread* pooledThread;;
     
 
 
@@ -133,11 +139,11 @@ this->taskQueue= BasicArrayListD();
                         for (
     int32_t i = 0;i < this->numThreads; i++)
         {
-pooledThread= PooledThread(this);
+pooledThread= new PooledThread(this);
     
-pooledThread.setPriority(this->priority);
+pooledThread->setPriority(this->priority);
     
-pooledThread.start();
+pooledThread->start();
     
 }
 
@@ -153,12 +159,12 @@ pooledThread.start();
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: void runTaskWithPriority(PriorityRunnable task){
+    public: void runTaskWithPriority(PriorityRunnable* task){
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -182,13 +188,13 @@ pooledThread.start();
                         
                                     {
                                     
-    int32_t size = this->taskQueue.size();;
+    int32_t size = this->taskQueue->size();;
     
 
-    PriorityRunnable runnable;;
+    PriorityRunnable* runnable;;
     
 
-    PriorityRunnable lowerPriorityRunnable = this->threadObjectUtil.NULL_PRIORITY_RUNNABLE;;
+    PriorityRunnable* lowerPriorityRunnable = this->threadObjectUtil->NULL_PRIORITY_RUNNABLE;;
     
 
 
@@ -197,10 +203,10 @@ pooledThread.start();
                         for (
     int32_t index = 0;index < size; index++)
         {
-runnable= this->taskQueue.get(index);
+runnable= dynamic_cast<PriorityRunnable*>(this->taskQueue->get(index));
     
 
-                        if(runnable.getPriority() > task.getPriority())
+                        if(runnable->getPriority() > task->getPriority())
                         
                                     {
                                     lowerPriorityRunnable= runnable;
@@ -214,19 +220,19 @@ break;
 }
 
 
-                        if(lowerPriorityRunnable == this->threadObjectUtil.NULL_PRIORITY_RUNNABLE)
+                        if(lowerPriorityRunnable == this->threadObjectUtil->NULL_PRIORITY_RUNNABLE)
                         
                                     {
-                                    this->taskQueue.add(task);
+                                    this->taskQueue->add(task);
     
 
                                     }
                                 
                         else {
                             
-    int32_t index = this->taskQueue.indexOf(lowerPriorityRunnable);;
+    int32_t index = this->taskQueue->indexOf(lowerPriorityRunnable);;
     
-this->taskQueue.addAt(index, task);
+this->taskQueue->addAt(index, task);
     
 
                         }
@@ -241,7 +247,7 @@ this->notify();
 }
 
 
-    public: void runTask(Runnable task){
+    public: void runTask(Runnable* task){
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -264,7 +270,7 @@ this->notify();
                                 )
                         
                                     {
-                                    this->taskQueue.add(task);
+                                    this->taskQueue->add(task);
     
 this->notify();
     
@@ -278,7 +284,7 @@ this->notify();
 
                 //@Throws(InterruptedException.constructor)
             
-    protected: Runnable getTask(){
+    protected: Runnable* getTask(){
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -287,7 +293,7 @@ this->notify();
         //mutex.withLock
         
 
-        while(this->taskQueue.size() == 0)
+        while(this->taskQueue->size() == 0)
         {
 
                         if(!this->isAlive)
@@ -307,7 +313,7 @@ this->wait();
 }
 
 
-    Runnable runnable = this->taskQueue.removeAt(0);;
+    Runnable* runnable = dynamic_cast<Runnable*>(this->taskQueue->removeAt(0));;
     
 
 
@@ -332,7 +338,7 @@ this->wait();
                         if(this->isAlive)
                         
                                     {
-                                    this->taskQueue.clear();
+                                    this->taskQueue->clear();
     
 
                                     }
@@ -356,7 +362,7 @@ this->wait();
                                     {
                                     this->isAlive= false;
     
-this->taskQueue.clear();
+this->taskQueue->clear();
     
 
                                     }
@@ -376,7 +382,7 @@ this->taskQueue.clear();
         
 this->isAlive= false;
     
-this->taskQueue.clear();
+this->taskQueue->clear();
     
 this->notifyAll();
     
@@ -400,7 +406,7 @@ this->notifyAll();
                                     }
                                 
 
-                        if(this->taskQueue.size() > 0)
+                        if(this->taskQueue->size() > 0)
                         
                                     {
                                     
@@ -445,7 +451,7 @@ this->notifyAll();
                                     {
                                     this->isAlive= false;
     
-this->taskQueue.clear();
+this->taskQueue->clear();
     
 
                                     }
@@ -453,11 +459,11 @@ this->taskQueue.clear();
 }
 
 
-    protected: void startTask(Runnable task){
+    protected: void startTask(Runnable* task){
 }
 
 
-    protected: void completedTask(Runnable task){
+    protected: void completedTask(Runnable* task){
 }
 
 
@@ -466,7 +472,7 @@ this->taskQueue.clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().append(this->poolName).append(ThreadPool::ROOT_NAME).appendint(this->threadID++).toString();;
+                        return (new StringMaker())->append(this->poolName)->append(ThreadPool::ROOT_NAME)->appendint(this->threadID++)->toString();;
     
 }
 

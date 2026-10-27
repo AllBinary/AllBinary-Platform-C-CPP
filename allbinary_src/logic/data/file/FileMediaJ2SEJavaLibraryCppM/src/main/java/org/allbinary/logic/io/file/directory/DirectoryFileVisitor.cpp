@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/io/File.h>
@@ -50,13 +56,13 @@
         
 class DirectoryFileVisitor
             : public Object
-        : public VisitorInterface, public FileFilter {
+        , public VisitorInterface, public FileFilter {
 
 public: DirectoryFileVisitor(){
 }
 
 
-    public: bool accept(java::io::File arg0){
+    public: bool accept(java::io::File* arg0){
 
 
 
@@ -70,16 +76,16 @@ visit.
 
     public: Object* visit(Object* anyType){
 
-    File file = *dynamic_cast<File*>(anyType);;
+    File* file = dynamic_cast<File*>(anyType);;
     
 
     int32_t index = 1;;
     
 
-    File aFile = file.getParentFile();;
+    File* aFile = file->getParentFile();;
     
 
-        while((aFile= aFile.getParentFile()) != 
+        while((aFile= aFile->getParentFile()) != 
                                     nullptr
                                 )
         {
@@ -88,7 +94,7 @@ index++;
 }
 
 
-                        if(file.isDirectory() && index < 5)
+                        if(file->isDirectory() && index < 5)
                         
                                     {
                                     

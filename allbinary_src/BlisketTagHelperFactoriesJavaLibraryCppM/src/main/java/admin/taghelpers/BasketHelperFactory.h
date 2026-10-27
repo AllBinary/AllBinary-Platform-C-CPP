@@ -21,6 +21,14 @@
         #ifndef ADMIN_TAGHELPERS_BASKETHELPERFACTORY_H
         #define ADMIN_TAGHELPERS_BASKETHELPERFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -53,18 +61,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TagHelperFactory.h"
-#include "BasketHelper.h"
+        #include "admin/taghelpers/TagHelperFactory.h"
+#include "admin/taghelpers/BasketHelper.h"
 
 class BasketHelperFactory: public TagHelperFactory {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: BasketHelperFactory();
 
                 //@Throws(LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+    public: Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
 };
 

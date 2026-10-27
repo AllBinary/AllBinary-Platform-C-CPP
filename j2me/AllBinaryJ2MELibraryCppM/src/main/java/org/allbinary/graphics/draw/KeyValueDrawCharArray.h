@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -61,9 +67,9 @@
         
 class KeyValueDrawCharArray
             : public Object
-        : public UpdateMyFontInterface {
+        , public UpdateMyFontInterface {
 
-    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
 
     private: std::string LABEL;
 
@@ -71,15 +77,15 @@ class KeyValueDrawCharArray
 
     private: int32_t valueX= 0;
 
-    private: std::vector<char> value = CharArrayFactory::getInstance().getZeroCharArray();
+    private: std::vector<char> value = CharArrayFactory::getInstance()->getZeroCharArray();
 
     private: int32_t len= 0;
 
 public: KeyValueDrawCharArray(std::string label, int32_t x);
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
-    public: void paint(Graphics graphics, int32_t y);
+    public: void paint(Graphics* graphics, int32_t y);
 
     public: void update(std::vector<char> value, int32_t len);
 

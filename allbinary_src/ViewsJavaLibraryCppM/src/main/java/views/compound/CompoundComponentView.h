@@ -21,6 +21,12 @@
         #ifndef VIEWS_COMPOUND_COMPOUNDCOMPONENTVIEW_H
         #define VIEWS_COMPOUND_COMPOUNDCOMPONENTVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
@@ -53,13 +59,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CompoundTransform.h"
+        #include "views/compound/CompoundTransform.h"
 
 class CompoundComponentView: public HttpStoreComponentView {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: CompoundComponentView(TransformInfoInterface transformInfoInterface);
+public: CompoundComponentView(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             

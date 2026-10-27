@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
@@ -46,25 +52,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputFactory.h"
-#include "GameKey.h"
-#include "GameKeyFactory.h"
+        #include "org/allbinary/game/input/InputFactory.h"
+#include "org/allbinary/game/input/GameKey.h"
+#include "org/allbinary/game/input/GameKeyFactory.h"
 
 class GameKeyMappingFactory
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static GameKeyMappingFactory getInstance();
+    public: static GameKeyMappingFactory* getInstance();
 
-    private: std::vector<GameKey> intKeyToGameKey = std::vector<GameKey>(InputFactory::getInstance().MAX);
+    private: std::vector<GameKey*> intKeyToGameKey = std::vector<GameKey*>(InputFactory::getInstance()->MAX);
 
 private: GameKeyMappingFactory();
 
-    public: GameKey getGameKey(int32_t key);
+    public: GameKey* getGameKey(int32_t key);
 
-    private: void setGameKey(GameKey gameKey);
+    private: void setGameKey(GameKey* gameKey);
 
 };
 

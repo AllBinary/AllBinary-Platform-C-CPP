@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/Animation.h>
@@ -53,19 +59,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WeaponLayer.h"
-#include "CollidableDamageWeaponBehavior.h"
+        #include "org/allbinary/game/layer/weapon/WeaponLayer.h"
+#include "org/allbinary/game/layer/weapon/CollidableDamageWeaponBehavior.h"
 
 class DamageWeaponLayer: public WeaponLayer {
 
-public: DamageWeaponLayer(std::string name, RemoteInfo remoteInfo, Movement movement, Animation animationInterface, Animation destroyedAnimationInterface, Rectangle rectangle, ViewPositionBase viewPosition, std::string username, int32_t actorSessionId, int32_t id, int32_t multiPlayerType) : WeaponLayer(name, remoteInfo, multiPlayerType, movement, animationInterface, destroyedAnimationInterface, rectangle, viewPosition){
+public: DamageWeaponLayer(std::string name, RemoteInfo* remoteInfo, Movement* movement, Animation* animationInterface, Animation* destroyedAnimationInterface, Rectangle* rectangle, ViewPositionBase* viewPosition, std::string username, int32_t actorSessionId, int32_t id, int32_t multiPlayerType) : WeaponLayer(name, remoteInfo, multiPlayerType, movement, animationInterface, destroyedAnimationInterface, rectangle, viewPosition){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->setCollidableInferface(CollidableDamageWeaponBehavior(true));
+this->setCollidableInferface(new CollidableDamageWeaponBehavior(true));
     
 }
 

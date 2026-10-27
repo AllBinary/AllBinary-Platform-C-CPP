@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/math/PrimitiveLongSingleton.h>
@@ -65,15 +71,15 @@ class Timer
 
     private: int64_t modifier= 0;
 
-    private: std::vector<char> hundrethsString = PrimitiveLongSingleton::getInstance().ZERO;
+    private: std::vector<char> hundrethsString = PrimitiveLongSingleton::getInstance()->ZERO;
 
     private: int32_t totalDigits = 1;
 
-    private: PrimitiveLongUtil primitiveLongUtil;
+    private: PrimitiveLongUtil* primitiveLongUtil;
 
     private: const std::vector<char> MAX = ['L','O','L'];
 
-    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
+    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
 public: Timer(int32_t maxTime){
 this->primitiveLongUtil= PrimitiveLongUtil::createPowerOfTen(maxTime);
@@ -86,7 +92,7 @@ this->maxTime= maxTime;
     public: void start(){
 this->hundredthTime= 0;
     
-this->startTime= this->gameTickTimeDelayHelper.startTime;
+this->startTime= this->gameTickTimeDelayHelper->startTime;
     
 }
 
@@ -106,7 +112,7 @@ this->startTime= this->gameTickTimeDelayHelper.startTime;
     int64_t lastLowerTime = this->hundredthTime;;
     
 
-    int64_t currentTime = ((this->modifier +this->gameTickTimeDelayHelper.startTime) -this->startTime);;
+    int64_t currentTime = ((this->modifier +this->gameTickTimeDelayHelper->startTime) -this->startTime);;
     
 
                         if(currentTime < 0)
@@ -139,9 +145,9 @@ this->hundredthTime= currentTime /100;
                         if(lastLowerTime != this->hundredthTime)
                         
                                     {
-                                    this->hundrethsString= this->primitiveLongUtil.getCharArray(static_cast<int32_t>(this->hundredthTime));
+                                    this->hundrethsString= this->primitiveLongUtil->getCharArray(static_cast<int32_t>(this->hundredthTime));
     
-this->totalDigits= this->primitiveLongUtil.getCurrentTotalDigits();
+this->totalDigits= this->primitiveLongUtil->getCurrentTotalDigits();
     
 
                                     }

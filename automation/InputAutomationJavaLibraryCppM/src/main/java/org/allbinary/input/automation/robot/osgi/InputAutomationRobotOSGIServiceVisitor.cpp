@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,11 +72,11 @@
         
 class InputAutomationRobotOSGIServiceVisitor
             : public Object
-        : public OSGIServiceVisitorInterface {
+        , public OSGIServiceVisitorInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
 public: InputAutomationRobotOSGIServiceVisitor(){
 }
@@ -81,21 +87,21 @@ public: InputAutomationRobotOSGIServiceVisitor(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->visit(*dynamic_cast<OSGIServiceInterface*>(anyType));;
+                        return this->visit(dynamic_cast<OSGIServiceInterface*>(anyType));;
     
 }
 
 
-    public: Boolean visit(OSGIServiceInterface osgiServiceInterface){
+    public: bool visit(OSGIServiceInterface* osgiServiceInterface){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, "visit");
+            this->logUtil->putF(this->commonStrings->START, this, "visit");
     
 
-    InputAutomationRobotServiceInterface inputAutomationRobotServiceInterface = osgiServiceInterface;;
+    InputAutomationRobotServiceInterface* inputAutomationRobotServiceInterface = dynamic_cast<InputAutomationRobotServiceInterface*>(osgiServiceInterface);;
     
 
-    std::vector<InputRobotInterface> inputRobotInterfaceArray = inputAutomationRobotServiceInterface.getInputRobotInterfaceArray();;
+    std::vector<InputRobotInterface*> inputRobotInterfaceArray = inputAutomationRobotServiceInterface->getInputRobotInterfaceArray();;
     
 
 
@@ -104,9 +110,9 @@ public: InputAutomationRobotOSGIServiceVisitor(){
                         for (
     int32_t index = 0;index < inputRobotInterfaceArray.size(); index++)
         {
-this->logUtil.putF("Adding: " +inputRobotInterfaceArray[index].getName(), this, "visit");
+this->logUtil->putF("Adding: " +inputRobotInterfaceArray[index].getName(), this, "visit");
     
-InputRobotFactory::getInstance().add(inputRobotInterfaceArray[index]);
+InputRobotFactory::getInstance()->add(inputRobotInterfaceArray[index]);
     
 }
 
@@ -118,9 +124,9 @@ InputRobotFactory::getInstance().add(inputRobotInterfaceArray[index]);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "visit", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "visit", &e);
     
 
 

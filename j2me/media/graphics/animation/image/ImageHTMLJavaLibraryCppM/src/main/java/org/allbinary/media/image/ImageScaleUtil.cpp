@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,15 +70,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageCreationUtil.h"
+        #include "org/allbinary/media/image/ImageCreationUtil.h"
 
 class ImageScaleUtil
             : public Object
          {
 
-    private: static ImageScaleUtil instance() { return ImageScaleUtil(); }
+    private: static ImageScaleUtil* instance() { static std::unique_ptr<ImageScaleUtil> value(new ImageScaleUtil()); return value.get(); }
 
-    public: static ImageScaleUtil getInstance(){
+    public: static ImageScaleUtil* getInstance(){
 
 
 
@@ -88,7 +94,7 @@ private: ImageScaleUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImage2(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached){
+    public: Image* createImage2(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached){
 
 
 
@@ -100,7 +106,7 @@ private: ImageScaleUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImage3(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable){
+    public: Image* createImage3(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable_){
 
     float scaleX = scaleNominatorX /scaleDenominatorX;;
     
@@ -118,7 +124,7 @@ private: ImageScaleUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImage(ImageCache imageCache, Image originalImage, float scaleX, float scaleY, bool cached){
+    public: Image* createImage(ImageCache* imageCache, Image* originalImage, float scaleX, float scaleY, bool cached){
 
 
 
@@ -130,50 +136,50 @@ private: ImageScaleUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImageInternal(Image originalImage, float scaleX, float scaleY){
+    public: Image* createImageInternal(Image* originalImage, float scaleX, float scaleY){
 
-    Image image = ImageCreationUtil::getInstance().getInstance(static_cast<int32_t>((originalImage.getWidth() *scaleX)), static_cast<int32_t>((originalImage.getHeight() *scaleY)));;
+    Image* image = ImageCreationUtil::getInstance()->getInstance(static_cast<int32_t>((originalImage->getWidth() *scaleX)), static_cast<int32_t>((originalImage->getHeight() *scaleY)));;
     
 
-                        if(image.isMutable())
+                        if(image->isMutable())
                         
                                     {
                                     
-    playn::core::Image originalPlayNImage = 
+    playn::core::Image* originalPlayNImage = 
                 null
             ;;
     
 
-                        if(originalImage.isMutable())
+                        if(originalImage->isMutable())
                         
                                     {
                                     
-    PlaynMutableImage originalHTMLImage = originalImage;;
+    PlaynMutableImage* originalHTMLImage = dynamic_cast<PlaynMutableImage*>(originalImage);;
     
-originalPlayNImage= originalHTMLImage.getImage();
+originalPlayNImage= dynamic_cast<playn::core::Image*>(originalHTMLImage->getImage());
     
 
                                     }
                                 
                         else {
                             
-    PlaynImmutableImage originalHTMLImage = originalImage;;
+    PlaynImmutableImage* originalHTMLImage = dynamic_cast<PlaynImmutableImage*>(originalImage);;
     
-originalPlayNImage= originalHTMLImage.getImage();
+originalPlayNImage= dynamic_cast<playn::core::Image*>(originalHTMLImage->getImage());
     
 
                         }
                             
 
-    PlaynMutableImage htmlImage = image;;
+    PlaynMutableImage* htmlImage = dynamic_cast<PlaynMutableImage*>(image);;
     
 
-    CanvasImage canvasImage = htmlImage.getImage();;
+    CanvasImage* canvasImage = dynamic_cast<CanvasImage*>(htmlImage->getImage());;
     
 
-    CanvasSurface canvasSurface = htmlImage.getCanvasSurface(canvasImage);;
+    CanvasSurface* canvasSurface = htmlImage->getCanvasSurface(canvasImage);;
     
-canvasSurface.drawImage(originalPlayNImage, 0, 0, image.getWidth(), image.getHeight(), 0, 0, originalPlayNImage.width(), originalPlayNImage.height());
+canvasSurface->drawImage(originalPlayNImage, 0, 0, image->getWidth(), image->getHeight(), 0, 0, originalPlayNImage->width(), originalPlayNImage->height());
     
 
 
@@ -188,7 +194,7 @@ canvasSurface.drawImage(originalPlayNImage, 0, 0, image.getWidth(), image.getHei
                             
 
 
-                            throw Exception("Not Mutable");
+                            throw new Exception("Not Mutable");
                     
 
                         }

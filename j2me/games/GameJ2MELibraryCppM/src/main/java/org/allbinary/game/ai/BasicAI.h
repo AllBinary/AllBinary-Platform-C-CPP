@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AI_BASICAI_H
         #define ORG_ALLBINARY_GAME_AI_BASICAI_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -82,27 +88,27 @@
         
 class BasicAI: public ArtificialIntelligence, public GameKeyEventSourceInterface {
 
-    public: static const Integer AI_VISITOR = SmallIntegerSingletonFactory::getInstance().getAt(2);
+    public: static inline int32_t AI_VISITOR = SmallIntegerSingletonFactory::getInstance()->getAt(2);
 
-    public: static const Integer ID = SmallIntegerSingletonFactory::getInstance().getAt(1);
+    public: static inline int32_t ID = SmallIntegerSingletonFactory::getInstance()->getAt(1);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const GameKeyEventFactory gameKeyEventFactory = GameKeyEventFactory::getInstance();
+    protected: GameKeyEventFactory* gameKeyEventFactory = GameKeyEventFactory::getInstance();
 
-    private: AllBinaryLayer ownerLayerInterface;
+    private: AllBinaryLayer* ownerLayerInterface;
 
-    private: GameInput gameInput;
+    private: GameInput* gameInput;
 
     private: int32_t lastKey =  -1;
 
-public: BasicAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: BasicAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager);
 
                 //@Throws(Exception.constructor)
             
@@ -112,9 +118,9 @@ public: BasicAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
     public: int32_t getLastKey();
 
-    public: AllBinaryLayer getOwnerLayerInterface();
+    public: AllBinaryLayer* getOwnerLayerInterface();
 
-    public: GameInput getGameInput();
+    public: GameInput* getGameInput();
 
     public: std::string getName();
 

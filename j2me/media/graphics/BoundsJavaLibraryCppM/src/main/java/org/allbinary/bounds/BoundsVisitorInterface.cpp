@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,17 +45,17 @@
         
 class BoundsVisitorInterface {
 
-    int32_t getX()
+    public: virtual int32_t getX() = 0;
 
-    int32_t getY()
+    public: virtual int32_t getY() = 0;
 
-    void maxX()
+    public: virtual void maxX() = 0;
 
-    void maxY()
+    public: virtual void maxY() = 0;
 
-    void minX()
+    public: virtual void minX() = 0;
 
-    void minY()
+    public: virtual void minY() = 0;
 
 };
 

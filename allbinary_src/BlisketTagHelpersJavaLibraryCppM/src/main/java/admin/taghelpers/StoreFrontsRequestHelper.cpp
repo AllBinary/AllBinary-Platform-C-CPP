@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -104,34 +110,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ModifyTable.h"
+        #include "admin/taghelpers/ModifyTable.h"
 
 class StoreFrontsRequestHelper: public ModifyTable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: PageContext pageContext;
+    private: PageContext* pageContext;
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
-    private: WeblisketSession weblisketSession;
+    private: WeblisketSession* weblisketSession;
 
     private: std::string storeName;
 
-    private: StoreFrontInterface modifyingStoreFrontInterface;
+    private: StoreFrontInterface* modifyingStoreFrontInterface;
 
-    private: Portion portion;
+    private: Portion* portion;
 
-public: StoreFrontsRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
+public: StoreFrontsRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
 this->pageContext= pageContext;
     
-this->request= pageContext.getRequest();
+this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
     
-this->weblisketSession= WeblisketSession(hashMap, pageContext);
+this->weblisketSession= new WeblisketSession(hashMap, pageContext);
     
-this->portion= Portion(hashMap);
+this->portion= new Portion(hashMap);
     
 this->getFormData();
     
@@ -141,9 +147,9 @@ this->getFormData();
                 //@Throws(Exception.constructor)
             
     private: void getFormData(){
-this->storeName= this->weblisketSession.getStoreName();
+this->storeName= this->weblisketSession->getStoreName();
     
-this->modifyingStoreFrontInterface= StoreFront(this->request);
+this->modifyingStoreFrontInterface= dynamic_cast<StoreFrontInterface*>(new StoreFront(this->request));
     
 }
 
@@ -155,15 +161,15 @@ this->modifyingStoreFrontInterface= StoreFront(this->request);
     std::string success = "Updated Successfully";;
     
 
-    HashMap<Object*, Object*> hashMapData = this->modifyingStoreFrontInterface.toHashMap();;
+    HashMap<Object*, Object*>* hashMapData = this->modifyingStoreFrontInterface->toHashMap();;
     
-StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance().update(hashMapData);
+StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance()->update(hashMapData);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "update()");
+                                    this->logUtil->putF(success, this, "update()");
     
 
                                     }
@@ -176,16 +182,16 @@ StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance().update(ha
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to update storefronts table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "update()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "update()", &e);
     
 
                                     }
@@ -205,64 +211,64 @@ StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance().update(ha
             
     public: void sendStoreCreatedEmails(){
 
-    std::string storeManagerEmailSubject = "Store Manager Nofification For Store: " +this->modifyingStoreFrontInterface.getName();;
+    std::string storeManagerEmailSubject = "Store Manager Nofification For Store: " +this->modifyingStoreFrontInterface->getName();;
     
 
-    std::string adminEmailSubject = "Admin Notification For Store: " +this->modifyingStoreFrontInterface.getName();;
+    std::string adminEmailSubject = "Admin Notification For Store: " +this->modifyingStoreFrontInterface->getName();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Store Created: ");
+stringBuffer->append("Store Created: ");
     
-stringBuffer.append(this->modifyingStoreFrontInterface.getName());
+stringBuffer->append(this->modifyingStoreFrontInterface->getName());
     
-stringBuffer.append("\n\n");
+stringBuffer->append("\n\n");
     
-stringBuffer.append("Click here for the Admin Interface:\n");
+stringBuffer->append("Click here for the Admin Interface:\n");
     
-stringBuffer.append(this->modifyingStoreFrontInterface.getCurrentHomeHostName());
+stringBuffer->append(this->modifyingStoreFrontInterface->getCurrentHomeHostName());
     
-stringBuffer.append("/admin/login.jsp\n\n");
+stringBuffer->append("/admin/login.jsp\n\n");
     
-stringBuffer.append("Goto Your Store:\n");
+stringBuffer->append("Goto Your Store:\n");
     
-stringBuffer.append(this->modifyingStoreFrontInterface.getCurrentHomeHostName());
+stringBuffer->append(this->modifyingStoreFrontInterface->getCurrentHomeHostName());
     
-stringBuffer.append(this->modifyingStoreFrontInterface.getName());
+stringBuffer->append(this->modifyingStoreFrontInterface->getName());
     
-stringBuffer.append("/index.jsp");
+stringBuffer->append("/index.jsp");
     
-stringBuffer.append("\n\n");
+stringBuffer->append("\n\n");
     
-stringBuffer.append("UserName: ");
+stringBuffer->append("UserName: ");
     
-stringBuffer.append(this->weblisketSession.getUserName());
-    
-
-    std::string adminEmailTextBody = stringBuffer.toString();;
+stringBuffer->append(this->weblisketSession->getUserName());
     
 
-    BasicEmailInfo adminBasicEmailInfo = AdminEmailInfo(adminEmailSubject, adminEmailTextBody);;
+    std::string adminEmailTextBody = stringBuffer->toString();;
     
 
-    BasicEmailInfo storeAdminBasicEmailInfo = StoreEmailInfo(this->modifyingStoreFrontInterface, storeManagerEmailSubject, adminEmailTextBody);;
+    BasicEmailInfo* adminBasicEmailInfo = dynamic_cast<BasicEmailInfo*>(new AdminEmailInfo(adminEmailSubject, adminEmailTextBody));;
     
 
-    EmailInfo storeAdminEmailInfo = EmailInfo(storeAdminBasicEmailInfo);;
+    BasicEmailInfo* storeAdminBasicEmailInfo = dynamic_cast<BasicEmailInfo*>(new StoreEmailInfo(this->modifyingStoreFrontInterface, storeManagerEmailSubject, adminEmailTextBody));;
     
 
-    EmailInfo adminEmailInfo = EmailInfo(adminBasicEmailInfo);;
+    EmailInfo* storeAdminEmailInfo = new EmailInfo(storeAdminBasicEmailInfo);;
     
 
-    UserEmailEventHandler adminUserEmailEventHandler = AdminUserEmailEventHandlerSingletons::getInstance().getInstance(this->abeClientInformation, UserEmailEventNameData::STORECREATED);;
+    EmailInfo* adminEmailInfo = new EmailInfo(adminBasicEmailInfo);;
     
 
-    UserEmailEventHandler storeAdminUserEmailEventHandler = StoreAdminUserEmailEventHandlerSingletons::getInstance().getInstance(UserEmailEventNameData::STORECREATED, this->abeClientInformation, this->modifyingStoreFrontInterface);;
+    UserEmailEventHandler* adminUserEmailEventHandler = AdminUserEmailEventHandlerSingletons::getInstance()->getInstance(this->abeClientInformation, UserEmailEventNameData::STORECREATED);;
     
-storeAdminUserEmailEventHandler.receiveEmailInfo(UserEmailEventNameData::STORECREATED, storeAdminEmailInfo);
+
+    UserEmailEventHandler* storeAdminUserEmailEventHandler = StoreAdminUserEmailEventHandlerSingletons::getInstance()->getInstance(UserEmailEventNameData::STORECREATED, this->abeClientInformation, this->modifyingStoreFrontInterface);;
     
-adminUserEmailEventHandler.receiveEmailInfo(UserEmailEventNameData::STORECREATED, adminEmailInfo);
+storeAdminUserEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::STORECREATED, storeAdminEmailInfo);
+    
+adminUserEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::STORECREATED, adminEmailInfo);
     
 }
 
@@ -272,26 +278,26 @@ adminUserEmailEventHandler.receiveEmailInfo(UserEmailEventNameData::STORECREATED
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Intall StoreFront Successfully: ");
+stringBuffer->append("Intall StoreFront Successfully: ");
     
-stringBuffer.appendint(this->portion.getCurrent().intValue());
+stringBuffer->appendint(this->portion->getCurrent()->intValue());
     
-stringBuffer.append(" of ");
+stringBuffer->append(" of ");
     
-stringBuffer.appendint(this->portion.getTotal().intValue());
-    
-
-    std::string success = stringBuffer.toString();;
-    
-this->modifyingStoreFrontInterface.install(this->portion.getCurrent().intValue(), this->portion.getTotal().intValue());
+stringBuffer->appendint(this->portion->getTotal()->intValue());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+    std::string success = stringBuffer->toString();;
+    
+this->modifyingStoreFrontInterface->install(this->portion->getCurrent()->intValue(), this->portion->getTotal()->intValue());
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "install()");
+                                    this->logUtil->putF(success, this, "install()");
     
 
                                     }
@@ -304,16 +310,16 @@ this->modifyingStoreFrontInterface.install(this->portion.getCurrent().intValue()
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to Install storefront";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "install()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "install()", &e);
     
 
                                     }
@@ -337,15 +343,15 @@ this->modifyingStoreFrontInterface.install(this->portion.getCurrent().intValue()
     std::string success = "Added Successfully";;
     
 
-    BasicArrayList values = this->modifyingStoreFrontInterface.toVector();;
+    BasicArrayList* values = this->modifyingStoreFrontInterface->toVector();;
     
-StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance().insert(values);
+StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance()->insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "insert()");
+                                    this->logUtil->putF(success, this, "insert()");
     
 
                                     }
@@ -358,16 +364,16 @@ StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance().insert(va
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to add storefront";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "insert()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "insert()", &e);
     
 
                                     }
@@ -389,13 +395,13 @@ StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance().insert(va
             
     std::string success = "Delete Successfully";;
     
-StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance().delete(this->storeName);
+StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance()->delete(this->storeName);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "delete()");
+                                    this->logUtil->putF(success, this, "delete()");
     
 
                                     }
@@ -408,16 +414,16 @@ StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance().delete(th
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to delete storefronts table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "delete()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "delete()", &e);
     
 
                                     }

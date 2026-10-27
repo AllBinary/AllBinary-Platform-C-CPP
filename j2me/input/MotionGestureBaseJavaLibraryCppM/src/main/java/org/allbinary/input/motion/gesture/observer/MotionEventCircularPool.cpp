@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,29 +58,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionEventFactory.h"
-#include "MotionGestureEvent.h"
+        #include "org/allbinary/input/motion/gesture/observer/MotionEventFactory.h"
+#include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
 
 class MotionEventCircularPool
             : public Object
          {
 
-    public: static MotionEventCircularPool createPool(int32_t id){
+    public: static MotionEventCircularPool* createPool(int32_t id){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MotionEventCircularPool(id);
+                        return new MotionEventCircularPool(id);
     
 }
 
 
-    private: const int32_t MIN = TouchMotionGestureFactory::getInstance().LAST_MOTION.getId();
+    private: const int32_t MIN = TouchMotionGestureFactory::getInstance()->LAST_MOTION.getId();
 
-    private: AllBinaryEventCircularPool eventPool = AllBinaryEventCircularPool((InputFactory::getInstance().MAX -1) -this->MIN);
+    private: AllBinaryEventCircularPool* eventPool = new AllBinaryEventCircularPool((InputFactory::getInstance()->MAX -1) -this->MIN);
 
 private: MotionEventCircularPool(int32_t id){
-this->eventPool.initAllBinaryEventCircularPool(MotionEventFactory(this->eventPool, id));
+this->eventPool->initAllBinaryEventCircularPool(new MotionEventFactory(this->eventPool, id));
     
 }
 
@@ -82,12 +88,12 @@ this->eventPool.initAllBinaryEventCircularPool(MotionEventFactory(this->eventPoo
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: MotionGestureEvent getInstance(MotionGestureInput motionGestureInput){
+    public: MotionGestureEvent* getInstance(MotionGestureInput* motionGestureInput){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->eventPool.getInstance(motionGestureInput.getId() -this->MIN);
+                        return dynamic_cast<MotionGestureEvent*>(this->eventPool->getInstance(motionGestureInput->getId() -this->MIN));
     
 }
 

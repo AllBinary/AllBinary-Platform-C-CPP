@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -67,37 +73,37 @@
         
 class StoreTagWorkFlowHelper: public TagHelper {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: StoreWorkFlowInterface storeWorkFlowInterface;
+    private: StoreWorkFlowInterface* storeWorkFlowInterface;
 
-public: StoreTagWorkFlowHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
+public: StoreTagWorkFlowHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil.putF("Properties: " +hashMap.toString(), this, "StoreTagWorkFlowHelper()");
+                                    this->logUtil->putF("Properties: " +hashMap->toString(), this, "StoreTagWorkFlowHelper()");
     
 
                                     }
                                 
-this->storeWorkFlowInterface= StoreTagWorkFlowFactory::getInstance().getInstance(this->abeClientInformation, hashMap, pageContext);
+this->storeWorkFlowInterface= StoreTagWorkFlowFactory::getInstance()->getInstance(this->abeClientInformation, hashMap, pageContext);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Integer process(){
+    public: int32_t process(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil.putF("Process", this, this->commonStrings.PROCESS);
+                                    this->logUtil->putF("Process", this, this->commonStrings.PROCESS);
     
 
                                     }
@@ -106,20 +112,20 @@ this->storeWorkFlowInterface= StoreTagWorkFlowFactory::getInstance().getInstance
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->storeWorkFlowInterface.process();;
+                        return this->storeWorkFlowInterface->process();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to process workflow: ";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }

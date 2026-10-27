@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANDROID_VIEW_ALLBINARYRENDERER_H
         #define ORG_ALLBINARY_ANDROID_VIEW_ALLBINARYRENDERER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Runnable.h"
@@ -48,11 +54,11 @@ class AllBinaryRenderer
             : public Object
          {
 
-    private: static AllBinaryRenderer instance() { return AllBinaryRenderer(); }
+    private: static AllBinaryRenderer* instance() { static std::unique_ptr<AllBinaryRenderer> value(new AllBinaryRenderer()); return value.get(); }
 
-    public: static AllBinaryRenderer getInstance();
+    public: static AllBinaryRenderer* getInstance();
 
-    public: void setRunnable(Runnable runnable);
+    public: void setRunnable(Runnable* runnable);
 
     public: void clearRunnable();
 

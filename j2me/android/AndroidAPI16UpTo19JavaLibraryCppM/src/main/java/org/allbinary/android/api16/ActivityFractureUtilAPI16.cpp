@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <android/app/Activity.h>
 
       
@@ -48,26 +54,26 @@
         
 class ActivityFractureUtilAPI16: public ActivityFractureUtilAPI5 {
 
-    private: static const ActivityFractureUtilAPI16 instance16 = ActivityFractureUtilAPI16();
+    private: static ActivityFractureUtilAPI16* instance16() { static std::unique_ptr<ActivityFractureUtilAPI16> value(new ActivityFractureUtilAPI16()); return value.get(); }
 
-    public: static ActivityFractureUtilAPI16 getInstance(){
+    public: static ActivityFractureUtilAPI16* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ActivityFractureUtilAPI16::instance16;
+                        return ActivityFractureUtilAPI16::instance16();
     
 }
 
 
-    public: void setFullScreen(Activity activity){
+    public: void setFullScreen(Activity* activity){
 
-    View decorView = activity.getWindow().getDecorView();;
+    View* decorView = activity->getWindow()->getDecorView();;
     
 
     int32_t visibility = View::SYSTEM_UI_FLAG_HIDE_NAVIGATION | View::SYSTEM_UI_FLAG_FULLSCREEN;;
     
-decorView.setSystemUiVisibility(visibility);
+decorView->setSystemUiVisibility(visibility);
     
 }
 

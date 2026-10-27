@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,15 +61,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryPropertiesInterface.h"
+        #include "org/allbinary/business/category/properties/CategoryPropertiesInterface.h"
 
 class CategoryPropertiesView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    protected: CategoryPropertiesInterface categoryPropertiesInterface;
+    protected: CategoryPropertiesInterface* categoryPropertiesInterface;
 
-public: CategoryPropertiesView(CategoryPropertiesInterface categoryPropertiesInterface){
+public: CategoryPropertiesView(CategoryPropertiesInterface* categoryPropertiesInterface){
 this->categoryPropertiesInterface= categoryPropertiesInterface;
     
 }
@@ -71,14 +77,14 @@ this->categoryPropertiesInterface= categoryPropertiesInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node categoryNode = document.createElement(CategoryData::getInstance().NAME);;
+    Node* categoryNode = document->createElement(CategoryData::getInstance()->NAME);;
     
 
-    Element newCategoryNode = categoryNode;;
+    Element* newCategoryNode = dynamic_cast<Element*>(categoryNode);;
     
-newCategoryNode.setAttribute(CategoryData::getInstance().LABEL, this->categoryPropertiesInterface.getValue());
+newCategoryNode->setAttribute(CategoryData::getInstance()->LABEL, this->categoryPropertiesInterface->getValue());
     
 
 

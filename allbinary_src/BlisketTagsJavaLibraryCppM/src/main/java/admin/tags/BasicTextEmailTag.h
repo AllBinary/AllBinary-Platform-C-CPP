@@ -21,6 +21,14 @@
         #ifndef ADMIN_TAGS_BASICTEXTEMAILTAG_H
         #define ADMIN_TAGS_BASICTEXTEMAILTAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
@@ -68,7 +76,7 @@
         
 class BasicTextEmailTag: public CustomTagSupport {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string subject;
 

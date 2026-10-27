@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -70,30 +76,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NullPathFindingLayer.h"
-#include "RTSPlayerLayerInterface.h"
-#include "PlayerOwnedRTSLayers.h"
+        #include "org/allbinary/game/layer/NullPathFindingLayer.h"
+#include "org/allbinary/game/layer/RTSPlayerLayerInterface.h"
+#include "org/allbinary/game/layer/PlayerOwnedRTSLayers.h"
 
 class NullRTSLayer: public NullPathFindingLayer, public RTSPlayerLayerInterface {
 
-    public: static const NullRTSLayer NULL_RTS_LAYER = NullRTSLayer();
+    public: static NullRTSLayer* NULL_RTS_LAYER() { static std::unique_ptr<NullRTSLayer> value(new NullRTSLayer()); return value.get(); }
 
     public: std::string getName(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processInput(AllBinaryLayerManager layerManager){
+    public: void processInput(AllBinaryLayerManager* layerManager){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -102,97 +108,97 @@ class NullRTSLayer: public NullPathFindingLayer, public RTSPlayerLayerInterface 
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: GameNotificationHud getGameNotificationHud(){
+    public: GameNotificationHud* getGameNotificationHud(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: ScrollSelectionForm getCurrentScrollSelectionForm(){
+    public: ScrollSelectionForm* getCurrentScrollSelectionForm(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: void setCurrentScrollSelectionForm(ScrollSelectionForm currentScrollSelectionForm){
+    public: void setCurrentScrollSelectionForm(ScrollSelectionForm* currentScrollSelectionForm){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: ScrollSelectionForm getBuildingScrollSelectionForm(){
+    public: ScrollSelectionForm* getBuildingScrollSelectionForm(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: PlayerGameInput getPlayerGameInput(){
+    public: PlayerGameInput* getPlayerGameInput(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: void onEvent(AllBinaryEventObject eventObject){
+    public: void onEvent(AllBinaryEventObject* eventObject){
 
 
 
-                            throw RuntimeException();
-                    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: void onDestroyed(DestroyedEvent destroyedEvent){
-
-
-
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processTick(AllBinaryLayerManager allBinaryLayerManager){
+    public: void onDestroyed(DestroyedEvent* destroyedEvent){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: Capital getCapital(){
+                //@Throws(Exception.constructor)
+            
+    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: RTSFormInput getRTSFormInput(){
+    public: Capital* getCapital(){
+
+
+
+                            throw new RuntimeException();
+                    
+}
+
+
+    public: RTSFormInput* getRTSFormInput(){
 
 
 
@@ -202,20 +208,20 @@ class NullRTSLayer: public NullPathFindingLayer, public RTSPlayerLayerInterface 
 }
 
 
-    public: void add(Sound sound){
+    public: void add(Sound* sound){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: PlayerOwnedRTSLayers getPlayerOwnedRTSLayers(){
+    public: PlayerOwnedRTSLayers* getPlayerOwnedRTSLayers(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -224,7 +230,7 @@ class NullRTSLayer: public NullPathFindingLayer, public RTSPlayerLayerInterface 
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

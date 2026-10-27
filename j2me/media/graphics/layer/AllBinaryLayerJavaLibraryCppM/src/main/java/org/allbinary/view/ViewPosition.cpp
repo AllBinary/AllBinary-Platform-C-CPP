@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/layer/AllBinaryLayer.h>
 
       
@@ -39,21 +47,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ViewPositionBase.h"
+        #include "org/allbinary/view/ViewPositionBase.h"
 
 class ViewPosition: public ViewPositionBase {
 
-    public: static ViewPosition getInstanceD(){
+    public: static ViewPosition* getInstanceD(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ViewPosition(0, 0, 0);
+                        return new ViewPosition(0, 0, 0);
     
 }
 
 
-    private: AllBinaryLayer allbinaryLayer = AllBinaryLayer::NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer* allbinaryLayer = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
 protected: ViewPosition(int32_t x, int32_t y, int32_t z) : ViewPositionBase(x, y, z){
 
@@ -70,7 +78,7 @@ protected: ViewPosition(int32_t x, int32_t y, int32_t z) : ViewPositionBase(x, y
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->allbinaryLayer.getXP();;
+                        return this->allbinaryLayer->getXP();;
     
 }
 
@@ -80,7 +88,7 @@ protected: ViewPosition(int32_t x, int32_t y, int32_t z) : ViewPositionBase(x, y
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->allbinaryLayer.getYP();;
+                        return this->allbinaryLayer->getYP();;
     
 }
 
@@ -90,7 +98,7 @@ protected: ViewPosition(int32_t x, int32_t y, int32_t z) : ViewPositionBase(x, y
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->allbinaryLayer.getZP();;
+                        return this->allbinaryLayer->getZP();;
     
 }
 
@@ -100,7 +108,7 @@ protected: ViewPosition(int32_t x, int32_t y, int32_t z) : ViewPositionBase(x, y
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getX() +this->allbinaryLayer.getWidth();
+                        return this->getX() +this->allbinaryLayer->getWidth();
     
 }
 
@@ -110,7 +118,7 @@ protected: ViewPosition(int32_t x, int32_t y, int32_t z) : ViewPositionBase(x, y
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getY() +this->allbinaryLayer.getHeight();
+                        return this->getY() +this->allbinaryLayer->getHeight();
     
 }
 
@@ -120,13 +128,13 @@ protected: ViewPosition(int32_t x, int32_t y, int32_t z) : ViewPositionBase(x, y
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return static_cast<int32_t>((this->getZ() +this->allbinaryLayer.getDepth()));
+                        return static_cast<int32_t>((this->getZ() +this->allbinaryLayer->getDepth()));
     
 }
 
 
     public: void setAllbinaryLayer(Object* allbinaryLayer){
-this->allbinaryLayer= *dynamic_cast<AllBinaryLayer*>(allbinaryLayer as unknown);
+this->allbinaryLayer= dynamic_cast<AllBinaryLayer*>(allbinaryLayer as unknown);
     
 }
 

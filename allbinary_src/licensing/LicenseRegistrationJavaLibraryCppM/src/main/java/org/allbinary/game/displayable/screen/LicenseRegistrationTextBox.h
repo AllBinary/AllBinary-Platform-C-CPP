@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_SCREEN_LICENSEREGISTRATIONTEXTBOX_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_SCREEN_LICENSEREGISTRATIONTEXTBOX_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Command.h>
@@ -92,25 +98,25 @@
         
 class LicenseRegistrationTextBox: public CustomTextBox {
 
-    public: static const Command DISPLAY_COMMAND = Command("Register", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 3);
+    public: static Command* DISPLAY_COMMAND() { static std::unique_ptr<Command> value(new Command("Register", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 3)); return value.get(); }
 
-    public: static const Command SUBMIT_COMMAND = Command("Submit", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 3);
+    public: static Command* SUBMIT_COMMAND() { static std::unique_ptr<Command> value(new Command("Submit", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 3)); return value.get(); }
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const Paintable pleaseWaitPaintable = SimpleTextPaintable(commonStrings.PLEASE_WAIT, BasicColorFactory::getInstance().WHITE);
+    private: Paintable* pleaseWaitPaintable = new SimpleTextPaintable(commonStrings.PLEASE_WAIT, BasicColorFactory::getInstance()->WHITE);
 
-    private: Paintable paintable = NullPaintable::getInstance();
+    private: Paintable* paintable = NullPaintable::getInstance();
 
-public: LicenseRegistrationTextBox(CommandListener cmdListener, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
+public: LicenseRegistrationTextBox(CommandListener* cmdListener, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor);
 
-    public: void initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener* cmdListener);
 
     public: void open();
 
     public: void close();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
     public: void submit();
 

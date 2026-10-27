@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -46,7 +52,7 @@ class HashMapJDialogListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    void onHashMap(HashMap<Object*, Object*> hashMap)
+    public: virtual void onHashMap(HashMap<Object*, Object*>* hashMap) = 0;
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -65,8 +71,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicItem.h"
-#include "OrderItemInterface.h"
+        #include "org/allbinary/business/user/commerce/inventory/item/BasicItem.h"
+#include "org/allbinary/business/user/commerce/inventory/item/OrderItemInterface.h"
 
 class Item: public BasicItem, public OrderItemInterface {
 
@@ -80,11 +86,11 @@ class Item: public BasicItem, public OrderItemInterface {
 
     private: std::string shippedDate;
 
-    private: StreetAddress shippingAddress;
+    private: StreetAddress* shippingAddress;
 
     private: std::string special;
 
-public: Item(HashMap<Object*, Object*> itemHashMap) : BasicItem(itemHashMap){
+public: Item(HashMap<Object*, Object*>* itemHashMap) : BasicItem(itemHashMap){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -98,7 +104,7 @@ this->setData(itemHashMap);
 
 public: Item(){
 
-    std::string EMPTY = StringUtil::getInstance().EMPTY_STRING;;
+    std::string EMPTY = StringUtil::getInstance()->EMPTY_STRING;;
     
 this->group= EMPTY;
     
@@ -108,35 +114,35 @@ this->shippingType= EMPTY;
     
 this->shippingCost= EMPTY;
     
-this->shippingAddress= StreetAddress();
+this->shippingAddress= new StreetAddress();
     
 }
 
 
-    private: void setData(HashMap<Object*, Object*> itemHashMap){
-this->group= itemHashMap.get(ShippingMethodData::GROUP);
+    private: void setData(HashMap<Object*, Object*>* itemHashMap){
+this->group= itemHashMap->get(ShippingMethodData::GROUP);
     
-this->tax= itemHashMap.get(OrderHistoryData::TAX);
+this->tax= itemHashMap->get(OrderHistoryData::TAX);
     
-this->shippingType= itemHashMap.get(ShippingMethodData::NAME);
+this->shippingType= itemHashMap->get(ShippingMethodData::NAME);
     
-this->shippingCost= itemHashMap.get(ShippingMethodData::COST);
+this->shippingCost= itemHashMap->get(ShippingMethodData::COST);
     
-this->shippedDate= itemHashMap.get(OrderHistoryData::SHIPPEDDATE);
+this->shippedDate= itemHashMap->get(OrderHistoryData::SHIPPEDDATE);
     
-itemHashMap.put(StreetAddressData::NAME, itemHashMap.get(ShippingAddressData::NAME));
+itemHashMap->put(StreetAddressData::NAME, itemHashMap->get(ShippingAddressData::NAME));
     
-itemHashMap.put(StreetAddressData::STREET, itemHashMap.get(ShippingAddressData::STREET));
+itemHashMap->put(StreetAddressData::STREET, itemHashMap->get(ShippingAddressData::STREET));
     
-itemHashMap.put(StreetAddressData::CITY, itemHashMap.get(ShippingAddressData::CITY));
+itemHashMap->put(StreetAddressData::CITY, itemHashMap->get(ShippingAddressData::CITY));
     
-itemHashMap.put(StreetAddressData::STATE, itemHashMap.get(ShippingAddressData::STATE));
+itemHashMap->put(StreetAddressData::STATE, itemHashMap->get(ShippingAddressData::STATE));
     
-itemHashMap.put(StreetAddressData::CODE, itemHashMap.get(ShippingAddressData::CODE));
+itemHashMap->put(StreetAddressData::CODE, itemHashMap->get(ShippingAddressData::CODE));
     
-itemHashMap.put(StreetAddressData::COUNTRY, itemHashMap.get(ShippingAddressData::COUNTRY));
+itemHashMap->put(StreetAddressData::COUNTRY, itemHashMap->get(ShippingAddressData::COUNTRY));
     
-this->shippingAddress= StreetAddress(itemHashMap);
+this->shippingAddress= new StreetAddress(itemHashMap);
     
 }
 
@@ -165,7 +171,7 @@ this->shippingCost= value;
 }
 
 
-    public: void setShippingAddress(StreetAddress value){
+    public: void setShippingAddress(StreetAddress* value){
 this->shippingAddress= value;
     
 }
@@ -217,7 +223,7 @@ this->special= value;
 }
 
 
-    public: StreetAddress getShippingAddress(){
+    public: StreetAddress* getShippingAddress(){
 
 
 
@@ -237,21 +243,21 @@ this->special= value;
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = super.toHashMap();;
+    HashMap<Object*, Object*>* hashMap = super.toHashMap();;
     
-hashMap.put(ShippingMethodData::GROUP, this->group);
+hashMap->put(ShippingMethodData::GROUP, this->group);
     
-hashMap.put(OrderHistoryData::TAX, this->tax);
+hashMap->put(OrderHistoryData::TAX, this->tax);
     
-hashMap.put(ShippingMethodData::NAME, this->shippingType);
+hashMap->put(ShippingMethodData::NAME, this->shippingType);
     
-hashMap.put(ShippingMethodData::COST, this->shippingCost);
+hashMap->put(ShippingMethodData::COST, this->shippingCost);
     
-hashMap.put(OrderHistoryData::SHIPPEDDATE, this->shippedDate);
+hashMap->put(OrderHistoryData::SHIPPEDDATE, this->shippedDate);
     
-hashMap.put(EntryData::getInstance().SPECIAL, this->special);
+hashMap->put(EntryData::getInstance()->SPECIAL, this->special);
     
 
 

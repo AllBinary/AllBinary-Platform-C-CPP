@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -68,30 +74,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryGameLayer.h"
+        #include "org/allbinary/game/layer/AllBinaryGameLayer.h"
 
 class PlayerGameInputGameLayer: public AllBinaryGameLayer, public PlayerGameInputCompositeInterface {
 
-    private: PlayerGameInput playerGameInput;
+    private: PlayerGameInput* playerGameInput;
 
-public: PlayerGameInputGameLayer(int32_t playerInputId) : AllBinaryGameLayer(StringUtil::getInstance().EMPTY_STRING, Rectangle(PointFactory::getInstance().ZERO_ZERO, 0, 0), StaticViewPosition(0, 0, 0)){
+public: PlayerGameInputGameLayer(int32_t playerInputId) : AllBinaryGameLayer(StringUtil::getInstance()->EMPTY_STRING, new Rectangle(PointFactory::getInstance()->ZERO_ZERO, 0, 0), new StaticViewPosition(0, 0, 0)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->playerGameInput= PlayerGameInput(this->getGameKeyEventList(), BasicArrayListD(), playerInputId);
+this->playerGameInput= new PlayerGameInput(this->getGameKeyEventList(), new BasicArrayListD(), playerInputId);
     
 
-    CanvasStrings canvasStrings = CanvasStrings::getInstance();;
+    CanvasStrings* canvasStrings = CanvasStrings::getInstance();;
     
-this->logUtil.putF("Danger Danger Danger: Should Not Be Called Except For Testing Input", this, canvasStrings.PAINT);
+this->logUtil.putF("Danger Danger Danger: Should Not Be Called Except For Testing Input", this, canvasStrings->PAINT);
     
 }
 
 
-    public: PlayerGameInput getPlayerGameInput(){
+    public: PlayerGameInput* getPlayerGameInput(){
 
 
 
@@ -107,11 +113,11 @@ this->logUtil.putF("Danger Danger Danger: Should Not Be Called Except For Testin
 
                 //@Throws(Exception.constructor)
             
-    public: void processInput(AllBinaryLayerManager myManager){
+    public: void processInput(AllBinaryLayerManager* myManager){
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 }
 
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_VIEW_EVENT_VIEWPOSITIONEVENTHANDLER_H
         #define ORG_ALLBINARY_VIEW_EVENT_VIEWPOSITIONEVENTHANDLER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/AllBinaryLayer.h>
@@ -62,32 +68,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ViewPositionEvent.h"
-#include "ViewPositionEventListenerInterface.h"
+        #include "org/allbinary/view/event/ViewPositionEvent.h"
+#include "org/allbinary/view/event/ViewPositionEventListenerInterface.h"
 
 class ViewPositionEventHandler: public BasicEventHandler {
 
-    private: static ViewPositionEventHandler SINGLETON = ViewPositionEventHandler();
+    private: static ViewPositionEventHandler* SINGLETON() { static std::unique_ptr<ViewPositionEventHandler> value(new ViewPositionEventHandler()); return value.get(); }
 
-    public: static ViewPositionEventHandler getInstance();
+    public: static ViewPositionEventHandler* getInstance();
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: ViewPositionEventHandler();
 
-    public: void addListener(AllBinaryLayer layerInterface);
+    public: void addListener(AllBinaryLayer* layerInterface);
 
     public: void removeAllListeners();
 
-    public: void removeListener(EventListenerInterface eventListenerInterface);
+    public: void removeListener(EventListenerInterface* eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(AllBinaryEventObject eventObject);
+    public: void fireEvent(AllBinaryEventObject* eventObject);
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
 };
 

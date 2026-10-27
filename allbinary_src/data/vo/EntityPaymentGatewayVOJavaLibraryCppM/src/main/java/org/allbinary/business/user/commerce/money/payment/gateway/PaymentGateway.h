@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAY_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,13 +79,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentGatewayInterface.h"
-#include "PaymentGatewayData.h"
-#include "PaymentGatewayPrimaryKey.h"
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h"
+#include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayData.h"
+#include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayPrimaryKey.h"
 
 class PaymentGateway
             : public Object
-        : public PaymentGatewayInterface {
+        , public PaymentGatewayInterface {
 
     private: std::string storeName;
 
@@ -149,9 +155,9 @@ class PaymentGateway
 
     private: std::string timeEntered;
 
-public: PaymentGateway(HashMap<Object*, Object*> hashMap);
+public: PaymentGateway(HashMap<Object*, Object*>* hashMap);
 
-    public: void getFormData(HashMap<Object*, Object*> hashMap);
+    public: void getFormData(HashMap<Object*, Object*>* hashMap);
 
     public: std::string getStoreName();
 
@@ -291,15 +297,15 @@ public: PaymentGateway(HashMap<Object*, Object*> hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> toHashMap(bool isEncrypted);
+    public: HashMap<Object*, Object*>* toHashMap(bool isEncrypted);
 
-    public: BasicArrayList toVector();
+    public: BasicArrayList* toVector();
 
-    public: BasicArrayList toVector(bool isEncrypted);
+    public: BasicArrayList* toVector(bool isEncrypted);
 
                 //@Throws(Exception.constructor)
             

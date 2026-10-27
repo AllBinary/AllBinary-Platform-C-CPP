@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -62,20 +68,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SelectionHudPaintable.h"
-#include "RTSLayerCompositePaintable.h"
-#include "UpgradableWideRTSLayerPaintable.h"
-#include "RTSLayer.h"
+        #include "org/allbinary/game/layer/SelectionHudPaintable.h"
+#include "org/allbinary/game/layer/RTSLayerCompositePaintable.h"
+#include "org/allbinary/game/layer/UpgradableWideRTSLayerPaintable.h"
+#include "org/allbinary/game/layer/RTSLayer.h"
 
 class UpgradableRTSLayerHudPaintable: public SelectionHudPaintable {
 
-    private: static UpgradableRTSLayerHudPaintable instance() { return UpgradableRTSLayerHudPaintable(); }
+    private: static UpgradableRTSLayerHudPaintable* instance() { static std::unique_ptr<UpgradableRTSLayerHudPaintable> value(new UpgradableRTSLayerHudPaintable()); return value.get(); }
 
-    public: static UpgradableRTSLayerHudPaintable getInstance();
+    public: static UpgradableRTSLayerHudPaintable* getInstance();
 
     private: const std::string PERCENT = "%";
 
-    private: CollidableDestroyableDamageableLayer rtsLayer = CollidableDestroyableDamageableLayer::getNullInstance();
+    private: CollidableDestroyableDamageableLayer* rtsLayer = CollidableDestroyableDamageableLayer::getNullInstance();
 
     protected: int32_t costY= 0;
 
@@ -83,7 +89,7 @@ class UpgradableRTSLayerHudPaintable: public SelectionHudPaintable {
 
     private: int32_t percentCompleteX2= 0;
 
-    private: RTSLayerCompositePaintable rtsLayerCompositePaintableLateInit;
+    private: RTSLayerCompositePaintable* rtsLayerCompositePaintableLateInit;
 
     private: int32_t charHeight= 0;
 
@@ -91,7 +97,7 @@ class UpgradableRTSLayerHudPaintable: public SelectionHudPaintable {
 
 private: UpgradableRTSLayerHudPaintable();
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
     public: void update();
 
@@ -101,17 +107,17 @@ private: UpgradableRTSLayerHudPaintable();
 
     private: int32_t percentCompleteX= 0;
 
-    private: std::vector<char> percentCompleteArray = CharArrayFactory::getInstance().getZeroCharArray();
+    private: std::vector<char> percentCompleteArray = CharArrayFactory::getInstance()->getZeroCharArray();
 
     private: int32_t currentTotalDigits= 0;
 
     public: void updateInfo();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: void setRtsLayer(RTSLayer rtsLayer);
+    public: void setRtsLayer(RTSLayer* rtsLayer);
 
-    protected: CollidableDestroyableDamageableLayer getRtsLayer();
+    protected: CollidableDestroyableDamageableLayer* getRtsLayer();
 
 };
 

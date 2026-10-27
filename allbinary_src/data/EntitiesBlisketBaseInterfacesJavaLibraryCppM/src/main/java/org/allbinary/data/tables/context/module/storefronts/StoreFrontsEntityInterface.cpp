@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -58,15 +64,15 @@ class StoreFrontsEntityInterface: public BasicDataTableInterface {
 
                 //@Throws(Exception.constructor)
             
-    StoreFrontInterface getStoreFrontInterface(std::string name)
+    public: virtual StoreFrontInterface* getStoreFrontInterface(std::string name) = 0;
 
-    BasicArrayList getStoreFrontNames()
+    public: virtual BasicArrayList* getStoreFrontNames() = 0;
 
-    void delete_(std::string value)
+    public: virtual void delete_(std::string value) = 0;
 
-    void insert(BasicArrayList values)
+    public: virtual void insert(BasicArrayList* values) = 0;
 
-    void update(HashMap<Object*, Object*> updatedValues)
+    public: virtual void update(HashMap<Object*, Object*>* updatedValues) = 0;
 
 };
 

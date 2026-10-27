@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -24,12 +30,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "IndexedAnimation.h"
-#include "AnimationBehavior.h"
+        #include "org/allbinary/animation/IndexedAnimation.h"
+#include "org/allbinary/animation/AnimationBehavior.h"
 
 class NullIndexedAnimation: public IndexedAnimation {
 
-public: NullIndexedAnimation(AnimationBehavior animationBehavior) : IndexedAnimation(animationBehavior){
+public: NullIndexedAnimation(AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,12 +42,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HtmlValueInput.h"
-#include "HtmlInputData.h"
+        #include "org/allbinary/logic/visual/dhtml/html/input/HtmlValueInput.h"
+#include "org/allbinary/logic/visual/dhtml/html/input/HtmlInputData.h"
 
 class HtmlSubmitInput: public HtmlValueInput {
 
-public: HtmlSubmitInput(std::string before, std::string name, std::string value, std::string after) : HtmlValueInput(before, HtmlInputData::getInstance().SUBMIT, name, value, after){
+public: HtmlSubmitInput(std::string before, std::string name, std::string value, std::string after) : HtmlValueInput(before, HtmlInputData::getInstance()->SUBMIT, name, value, after){
 
                         //super/this constructor call is in the constructor initializer list.
                     

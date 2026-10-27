@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -125,40 +133,40 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageCacheBase.h"
-//#include "NotHTMLEndProcessor.h"
-//#include "FirstProcessor.h"
-//#include "NotHTMLProcessor.h"
-//#include "HTMLEndProcessor.h"
-#include "ImageFactory.h"
+        #include "org/allbinary/image/ImageCacheBase.h"
+//#include "org/allbinary/image/NotHTMLEndProcessor.h"
+//#include "org/allbinary/image/FirstProcessor.h"
+//#include "org/allbinary/image/NotHTMLProcessor.h"
+//#include "org/allbinary/image/HTMLEndProcessor.h"
+#include "org/allbinary/image/ImageFactory.h"
 
 class ImageCache: public ImageCacheBase {
 
-    public: static const ImageCache NULL_IMAGE_CACHE = ImageCache();
+    public: static ImageCache* NULL_IMAGE_CACHE() { static std::unique_ptr<ImageCache> value(new ImageCache()); return value.get(); }
 
-    private: const TsUtil tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil = TsUtil::getInstance();
 
-    private: const BaseImageLoadingProcessor concurrentImageLoadingProcessor = ConcurrentImageLoadingProcessor(this);
+    private: BaseImageLoadingProcessor* concurrentImageLoadingProcessor = new ConcurrentImageLoadingProcessor(this);
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const CommonSeps commonSeps = CommonSeps::getInstance();
+    protected: CommonSeps* commonSeps = CommonSeps::getInstance();
 
-    protected: const ResourceUtil resourceUtil = ResourceUtil::getInstance();
+    protected: ResourceUtil* resourceUtil = ResourceUtil::getInstance();
 
-    private: const GameGlobalsFactory gameGlobalsFactory = GameGlobalsFactory::getInstance();
+    private: GameGlobalsFactory* gameGlobalsFactory = GameGlobalsFactory::getInstance();
 
-    private: const GDResources gdResources = GDResources::getInstance();
+    private: GDResources* gdResources = GDResources::getInstance();
 
-    public: const BasicArrayList loadNowList = BasicArrayListD();
+    public: BasicArrayList* loadNowList = new BasicArrayListD();
 
-    public: const BasicArrayList loadSoonList = BasicArrayListD();
+    public: BasicArrayList* loadSoonList = new BasicArrayListD();
 
-    public: const BasicArrayList loadList = BasicArrayListD();
+    public: BasicArrayList* loadList = new BasicArrayListD();
 
-    public: const BasicArrayList loadAfterList = BasicArrayListD();
+    public: BasicArrayList* loadAfterList = new BasicArrayListD();
 
-    private: const SynchObject lock = SynchObject();
+    private: SynchObject* lock = new SynchObject();
 
     private: bool firstTime = true;
 
@@ -174,7 +182,7 @@ class NotHTMLProcessor: public Processor {
 
 
     public: void process(){
-concurrentImageLoadingProcessor.runTask();
+concurrentImageLoadingProcessor->runTask();
     
 }
 
@@ -189,9 +197,9 @@ class NotHTMLEndProcessor: public Processor {
 
     public: void process(){
 
-    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
+    ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
     
-progressCanvas.endIfPaintedSinceStart();
+progressCanvas->endIfPaintedSinceStart();
     
 }
 
@@ -206,7 +214,7 @@ class HTMLEndProcessor: public Processor {
 
     public: void process(){
 
-    int32_t size = gdResources.currentLayoutRequiredTotal;;
+    int32_t size = gdResources->currentLayoutRequiredTotal;;
     
 
                     //Otherwise - statement - EmptyStmt
@@ -216,9 +224,9 @@ class HTMLEndProcessor: public Processor {
                         
                                     {
                                     
-    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
+    ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
     
-progressCanvas.endIfPaintedSinceStart();
+progressCanvas->endIfPaintedSinceStart();
     
 
                                     }
@@ -228,11 +236,11 @@ progressCanvas.endIfPaintedSinceStart();
                         
                                     {
                                     
-    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
+    ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
     
-progressCanvas.endIfPaintedSinceStart();
+progressCanvas->endIfPaintedSinceStart();
     
-endProcessor= NotHTMLEndProcessor();
+endProcessor= new NotHTMLEndProcessor();
     
 
                                     }
@@ -257,9 +265,9 @@ this->firstProcess();
 };
 
             
-    private: Processor processor = FirstProcessor();
+    private: Processor* processor = new FirstProcessor();
 
-    private: Processor endProcessor = Processor::getInstance();
+    private: Processor* endProcessor = Processor::getInstance();
 
 public: ImageCache(){
 }
@@ -267,7 +275,7 @@ public: ImageCache(){
 
     public: void firstProcess(){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
     bool isHTML = J2MEUtil::isHTML();;
@@ -278,15 +286,15 @@ public: ImageCache(){
                                     {
                                     this->processor= Processor::getInstance();
     
-this->endProcessor= HTMLEndProcessor();
+this->endProcessor= new HTMLEndProcessor();
     
 
                                     }
                                 
                         else {
-                            this->processor= NotHTMLProcessor();
+                            this->processor= new NotHTMLProcessor();
     
-this->endProcessor= NotHTMLEndProcessor();
+this->endProcessor= new NotHTMLEndProcessor();
     
 
         try {
@@ -294,9 +302,9 @@ this->endProcessor= NotHTMLEndProcessor();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-logUtil.putF(this->commonStrings.EXCEPTION, this, this->commonStrings.END_METHOD_NAME);
+logUtil->putF(this->commonStrings->EXCEPTION, this, this->commonStrings->END_METHOD_NAME);
     
 }
 
@@ -318,13 +326,13 @@ logUtil.putF(this->commonStrings.EXCEPTION, this, this->commonStrings.END_METHOD
                         
                                     {
                                     
-    ABToGBUtil abToGBUtil = ABToGBUtil::getInstance();;
+    ABToGBUtil* abToGBUtil = ABToGBUtil::getInstance();;
     
 
-    AllBinaryGameCanvas abCanvas = abToGBUtil.abCanvas;;
+    AllBinaryGameCanvas* abCanvas = dynamic_cast<AllBinaryGameCanvas*>(abToGBUtil->abCanvas);;
     
 
-        while(this->loadNowList.isEmpty() && (!abCanvas.isInitialized() || (abCanvas.isInitialized() && this->hasAnyLazyAnimationFactories)) && !this->progressEnded)
+        while(this->loadNowList->isEmpty() && (!abCanvas->isInitialized() || (abCanvas->isInitialized() && this->hasAnyLazyAnimationFactories)) && !this->progressEnded)
         {
 Thread::sleep(120);
     
@@ -344,7 +352,7 @@ this->firstTime= false;
             
     public: void loadImageForAnimation(){
 
-    LazyImageRotationAnimation lazyImageRotationAnimation = 
+    LazyImageRotationAnimation* lazyImageRotationAnimation = 
                 null
             ;;
     
@@ -356,17 +364,17 @@ this->firstTime= false;
         //mutex.withLock
         
 
-                        if(this->loadNowList.isEmpty())
+                        if(this->loadNowList->isEmpty())
                         
                                     {
-                                    this->endProcessor.process();
+                                    this->endProcessor->process();
     
 
-                        if(this->loadSoonList.isEmpty())
+                        if(this->loadSoonList->isEmpty())
                         
                                     {
                                     
-                        if(this->loadAfterList.isEmpty())
+                        if(this->loadAfterList->isEmpty())
                         
                                     {
                                     
@@ -377,7 +385,7 @@ this->firstTime= false;
                                     }
                                 
                              else 
-                        if(this->gameGlobalsFactory.newCanvas)
+                        if(this->gameGlobalsFactory->newCanvas)
                         
                                     {
                                     
@@ -399,13 +407,13 @@ this->firstTime= false;
                                     }
                                 
                         else {
-                            lazyImageRotationAnimation= this->loadAfterList.get(0);
+                            lazyImageRotationAnimation= dynamic_cast<LazyImageRotationAnimation*>(this->loadAfterList->get(0));
     
 
                         if(this->loadImageForLazyAnimation(lazyImageRotationAnimation))
                         
                                     {
-                                    this->loadAfterList.remove(lazyImageRotationAnimation);
+                                    this->loadAfterList->remove(lazyImageRotationAnimation);
     
 
                                     }
@@ -417,13 +425,13 @@ this->firstTime= false;
                                     }
                                 
                         else {
-                            lazyImageRotationAnimation= this->loadSoonList.get(0);
+                            lazyImageRotationAnimation= dynamic_cast<LazyImageRotationAnimation*>(this->loadSoonList->get(0));
     
 
                         if(this->loadImageForLazyAnimation(lazyImageRotationAnimation))
                         
                                     {
-                                    this->loadSoonList.remove(lazyImageRotationAnimation);
+                                    this->loadSoonList->remove(lazyImageRotationAnimation);
     
 
                                     }
@@ -440,7 +448,7 @@ this->firstTime= false;
 
                                     }
                                 
-lazyImageRotationAnimation= this->loadNowList.get(0);
+lazyImageRotationAnimation= dynamic_cast<LazyImageRotationAnimation*>(this->loadNowList->get(0));
     
 
 
@@ -455,16 +463,16 @@ lazyImageRotationAnimation= this->loadNowList.get(0);
 
         //mutex.withLock
         
-this->loadNowList.remove(lazyImageRotationAnimation);
+this->loadNowList->remove(lazyImageRotationAnimation);
     
 
 
 
-                        if(lazyImageRotationAnimation.layoutIndex != 0)
+                        if(lazyImageRotationAnimation->layoutIndex != 0)
                         
                                     {
                                     
-    BasicArrayList list = this->getAssociated(lazyImageRotationAnimation);;
+    BasicArrayList* list = this->getAssociated(lazyImageRotationAnimation);;
     
 
         
@@ -474,13 +482,13 @@ this->loadNowList.remove(lazyImageRotationAnimation);
         //mutex.withLock
         
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
                         if(size > 0)
                         
                                     {
-                                    this->loadSoonList.addAllList(list);
+                                    this->loadSoonList->addAllList(list);
     
 
                                     }
@@ -491,16 +499,16 @@ this->loadNowList.remove(lazyImageRotationAnimation);
                                     }
                                 
 
-    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
+    ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
     
 
     bool isHTML = J2MEUtil::isHTML();;
     
 
-                        if(this->loadNowList.isEmpty() && (!isHTML || this->firstTime))
+                        if(this->loadNowList->isEmpty() && (!isHTML || this->firstTime))
                         
                                     {
-                                    progressCanvas.endFromInitialLazyLoadingComplete();
+                                    progressCanvas->endFromInitialLazyLoadingComplete();
     
 
                                     }
@@ -510,7 +518,7 @@ this->loadNowList.remove(lazyImageRotationAnimation);
                         if(this->totalLoaded % 10 == 0)
                         
                                     {
-                                    progressCanvas.addNormalPortion(1, this->LOAD_IMAGE_FOR_ANIMATION);
+                                    progressCanvas->addNormalPortion(1, this->LOAD_IMAGE_FOR_ANIMATION);
     
 
                                     }
@@ -528,7 +536,7 @@ this->loadNowList.remove(lazyImageRotationAnimation);
             
     public: void loadImages(){
 
-        while(!this->loadList.isEmpty() || !this->loadNowList.isEmpty())
+        while(!this->loadList->isEmpty() || !this->loadNowList->isEmpty())
         {
 this->loadImageForAnimations();
     
@@ -543,7 +551,7 @@ this->loadNextImage();
             
     public: void loadImageForAnimations(){
 
-        while(!this->loadNowList.isEmpty())
+        while(!this->loadNowList->isEmpty())
         {
 this->loadImageForAnimation();
     
@@ -556,17 +564,17 @@ this->loadImageForAnimation();
             
     public: void loadRemainingAnimations(){
 
-        while(!this->loadAfterList.isEmpty() || !this->loadNowList.isEmpty())
+        while(!this->loadAfterList->isEmpty() || !this->loadNowList->isEmpty())
         {
 
-        while(!this->loadNowList.isEmpty())
+        while(!this->loadNowList->isEmpty())
         {
 this->loadImageForAnimation();
     
 }
 
 
-    LazyImageRotationAnimation lazyImageRotationAnimation = 
+    LazyImageRotationAnimation* lazyImageRotationAnimation = 
                 null
             ;;
     
@@ -578,8 +586,8 @@ this->loadImageForAnimation();
         //mutex.withLock
         
 
-                        if(!this->loadAfterList.isEmpty())
-                        lazyImageRotationAnimation= this->loadAfterList.removeAt(0);
+                        if(!this->loadAfterList->isEmpty())
+                        lazyImageRotationAnimation= dynamic_cast<LazyImageRotationAnimation*>(this->loadAfterList->removeAt(0));
                                 
 
 
@@ -601,15 +609,15 @@ this->loadImageForAnimation();
 
                 //@Throws(Exception.constructor)
             
-    private: bool loadImageForLazyAnimation(LazyImageRotationAnimation lazyImageRotationAnimation){
+    private: bool loadImageForLazyAnimation(LazyImageRotationAnimation* lazyImageRotationAnimation){
 
-    Image image = lazyImageRotationAnimation.animationInterfaceFactoryInterface.getImage();;
+    Image* image = lazyImageRotationAnimation->animationInterfaceFactoryInterface.getImage();;
     
 
                         if(this->loadImage(image))
                         
                                     {
-                                    lazyImageRotationAnimation.setRealAnimation();
+                                    lazyImageRotationAnimation->setRealAnimation();
     
 
 
@@ -633,7 +641,7 @@ this->loadImageForAnimation();
             
     private: void loadNextImage(){
 
-    Image image = 
+    Image* image = 
                 null
             ;;
     
@@ -645,7 +653,7 @@ this->loadImageForAnimation();
         //mutex.withLock
         
 
-                        if(this->loadList.size() == 0)
+                        if(this->loadList->size() == 0)
                         
                                     {
                                     
@@ -657,7 +665,7 @@ this->loadImageForAnimation();
 
                                     }
                                 
-image= this->loadList.removeAt(0);
+image= dynamic_cast<Image*>(this->loadList->removeAt(0));
     
 
 
@@ -668,9 +676,9 @@ this->loadImage(image);
 
                 //@Throws(Exception.constructor)
             
-    private: bool loadImage(Image image){
+    private: bool loadImage(Image* image){
 
-                        if(image.isReady())
+                        if(image->isReady())
                         
                                     {
                                     
@@ -684,17 +692,17 @@ this->loadImage(image);
                                 
                         else {
                             
-                        if(image.getImage() != 
+                        if(image->getImage() != 
                                     nullptr
                                 )
                         
                                     {
                                     
-                        if(image.setReady())
+                        if(image->setReady())
                         
                                     {
                                     
-                        if(image.isReady())
+                        if(image->isReady())
                         
                                     {
                                     this->totalLoaded++;
@@ -716,13 +724,13 @@ this->loadImage(image);
                                 
                         else {
                             
-    std::string key = image.getName();;
+    std::string key = image->getName();;
     
 
-    Image image2 = this->creatImage(key);;
+    Image* image2 = this->creatImage(key);;
     
 
-                        if(image2.isReady())
+                        if(image2->isReady())
                         
                                     {
                                     this->init(image, image2);
@@ -737,7 +745,7 @@ this->loadImage(image);
                                     }
                                 
                         else {
-                            image.setImage(image2.getImage());
+                            image->setImage(image2->getImage());
     
 
                         }
@@ -759,22 +767,22 @@ this->loadImage(image);
 
                 //@Throws(Exception.constructor)
             
-    protected: void init(Image image, Image image2){
-image.init(image2.getImage());
+    protected: void init(Image* image, Image* image2){
+image->init(image2->getImage());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: Image creatImage(std::string key){
+    protected: Image* creatImage(std::string key){
 
-    InputStream inputStream = this->resourceUtil.getResourceAsStream(key);;
+    InputStream* inputStream = this->resourceUtil->getResourceAsStream(key);;
     
 
-    Image image = ImageFactory::getInstance().createImageFromInputStream(inputStream);;
+    Image* image = ImageFactory::getInstance()->createImageFromInputStream(inputStream);;
     
-image.setName(key);
+image->setName(key);
     
 
 
@@ -787,12 +795,12 @@ image.setName(key);
 
                 //@Throws(Exception.constructor)
             
-    public: Image get(std::string caller, int32_t width, int32_t height){
+    public: Image* get(std::string caller, int32_t width, int32_t height){
 
     int32_t foundIndex = this->getIndexWH(width, height);;
     
 
-    Image image = this->getFromAvailable(foundIndex, width, height);;
+    Image* image = this->getFromAvailable(foundIndex, width, height);;
     
 
                         if(image == NullImage::NULL_IMAGE)
@@ -804,7 +812,7 @@ image.setName(key);
                         if(this->volume > 32000)
                         
                                     {
-                                    this->tsUtil.gc();
+                                    this->tsUtil->gc();
     
 this->volume= 0;
     
@@ -851,16 +859,16 @@ this->listOfList[foundIndex].add(image);
 
                 //@Throws(Exception.constructor)
             
-    public: Image getWithKey(Object* key){
+    public: Image* getWithKey(Object* key){
 
-    Image image = this->getImage(key);;
+    Image* image = this->getImage(key);;
     
 
                         if(image == NullImage::NULL_IMAGE)
                         
                                     {
                                     
-    InputStream inputStream = 
+    InputStream* inputStream = 
                 null
             ;;
     
@@ -870,17 +878,17 @@ this->listOfList[foundIndex].add(image);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put("Exception: Trying Again After GC", this, this->commonStrings.GET, e);
+this->logUtil->put("Exception: Trying Again After GC", this, this->commonStrings->GET, &e);
     
-this->logUtil.putF(StringMaker().append("InputStream: ").append(StringUtil::getInstance().toString(inputStream)).toString(), this, this->commonStrings.GET);
+this->logUtil->putF((new StringMaker())->append("InputStream: ")->append(StringUtil::getInstance()->toString(inputStream))->toString(), this, this->commonStrings->GET);
     
-this->tsUtil.gc();
+this->tsUtil->gc();
     
-this->tsUtil.gc();
+this->tsUtil->gc();
     
-this->logUtil.putF(Memory::getInfo(), this, this->commonStrings.GET);
+this->logUtil->putF(Memory::getInfo(), this, this->commonStrings->GET);
     
 Thread::sleep(100);
     
@@ -904,10 +912,10 @@ this->hashtable.put(key, image);
 
     public: int32_t getIndex(Object* key){
 
-    GDResources gdResources = GDResources::getInstance();;
+    GDResources* gdResources = GDResources::getInstance();;
     
 
-    std::vector<std::string> resourceStringArray = gdResources.resourceStringArray;;
+    std::vector<std::string> resourceStringArray = gdResources->resourceStringArray;;
     
 
     int32_t size = resourceStringArray.size();;
@@ -934,24 +942,24 @@ this->hashtable.put(key, image);
                                 
 }
 
-this->logUtil.putF(StringMaker().append("unable to find key: ").append(StringUtil::getInstance().toString(key)).toString(), this, this->commonStrings.RUN);
+this->logUtil->putF((new StringMaker())->append("unable to find key: ")->append(StringUtil::getInstance()->toString(key))->toString(), this, this->commonStrings->RUN);
     
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: Image createImageFromInputStream(Object* key, InputStream inputStream){
+    protected: Image* createImageFromInputStream(Object* key, InputStream* inputStream){
 
-    GDLazyResources gdLazyResources = GDLazyResources::getInstance();;
+    GDLazyResources* gdLazyResources = GDLazyResources::getInstance();;
     
 
-    std::vector<std::string> resourceStringArray = gdLazyResources.requiredResourcesBeforeLoadingArray;;
+    std::vector<std::string> resourceStringArray = gdLazyResources->requiredResourcesBeforeLoadingArray;;
     
 
     int32_t size = resourceStringArray.size();;
@@ -984,13 +992,13 @@ this->runTask();
     int32_t index = this->getIndex(key);;
     
 
-    int32_t width = gdLazyResources.imageResourceWidthArray[index];;
+    int32_t width = gdLazyResources->imageResourceWidthArray[index];;
     
 
-    int32_t height = gdLazyResources.imageResourceHeightArray[index];;
+    int32_t height = gdLazyResources->imageResourceHeightArray[index];;
     
 
-    Image image = this->createImageLater(key, width, height);;
+    Image* image = this->createImageLater(key, width, height);;
     
 
         
@@ -999,7 +1007,7 @@ this->runTask();
 
         //mutex.withLock
         
-this->loadList.add(image);
+this->loadList->add(image);
     
 
 
@@ -1014,7 +1022,7 @@ this->loadList.add(image);
 
                 //@Throws(Exception.constructor)
             
-    protected: Image createImageLater(std::string key, int32_t width, int32_t height){
+    protected: Image* createImageLater(std::string key, int32_t width, int32_t height){
 
 
 
@@ -1024,9 +1032,9 @@ this->loadList.add(image);
 }
 
 
-    public: BasicArrayList getAssociated(LazyImageRotationAnimation lazyImageRotationAnimation){
+    public: BasicArrayList* getAssociated(LazyImageRotationAnimation* lazyImageRotationAnimation){
 
-    BasicArrayList list = BasicArrayListD();;
+    BasicArrayList* list = new BasicArrayListD();;
     
 
         
@@ -1036,12 +1044,12 @@ this->loadList.add(image);
         //mutex.withLock
         
 
-    LazyImageRotationAnimation lazyImageRotationAnimation2 = 
+    LazyImageRotationAnimation* lazyImageRotationAnimation2 = 
                 null
             ;;
     
 
-    int32_t size = this->loadAfterList.size();;
+    int32_t size = this->loadAfterList->size();;
     
 
 
@@ -1050,13 +1058,13 @@ this->loadList.add(image);
                         for (
     int32_t index = 0;index < size; index++)
         {
-lazyImageRotationAnimation2= this->loadAfterList.get(index);
+lazyImageRotationAnimation2= dynamic_cast<LazyImageRotationAnimation*>(this->loadAfterList->get(index));
     
 
-                        if(lazyImageRotationAnimation2.instanceId == lazyImageRotationAnimation.instanceId)
+                        if(lazyImageRotationAnimation2->instanceId == lazyImageRotationAnimation->instanceId)
                         
                                     {
-                                    list.add(lazyImageRotationAnimation2);
+                                    list->add(lazyImageRotationAnimation2);
     
 
                                     }
@@ -1064,7 +1072,7 @@ lazyImageRotationAnimation2= this->loadAfterList.get(index);
 }
 
 
-    int32_t size2 = list.size();;
+    int32_t size2 = list->size();;
     
 
 
@@ -1073,7 +1081,7 @@ lazyImageRotationAnimation2= this->loadAfterList.get(index);
                         for (
     int32_t index = 0;index < size2; index++)
         {
-this->loadAfterList.remove(list.get(index));
+this->loadAfterList->remove(list->get(index));
     
 }
 
@@ -1088,7 +1096,7 @@ this->loadAfterList.remove(list.get(index));
 }
 
 
-    public: void add(LazyImageRotationAnimation lazyImageRotationAnimation){
+    public: void add(LazyImageRotationAnimation* lazyImageRotationAnimation){
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -1096,7 +1104,7 @@ this->loadAfterList.remove(list.get(index));
 
         //mutex.withLock
         
-this->loadAfterList.add(lazyImageRotationAnimation);
+this->loadAfterList->add(lazyImageRotationAnimation);
     
 
 
@@ -1105,9 +1113,9 @@ this->loadAfterList.add(lazyImageRotationAnimation);
 
                 //@Throws(Exception.constructor)
             
-    public: void insertFirst(LazyImageRotationAnimation lazyImageRotationAnimation){
+    public: void insertFirst(LazyImageRotationAnimation* lazyImageRotationAnimation){
 
-                        if(this->loadNowList.contains(lazyImageRotationAnimation))
+                        if(this->loadNowList->contains(lazyImageRotationAnimation))
                         
                                     {
                                     
@@ -1121,9 +1129,9 @@ this->loadAfterList.add(lazyImageRotationAnimation);
 
         //mutex.withLock
         
-this->loadNowList.add(lazyImageRotationAnimation);
+this->loadNowList->add(lazyImageRotationAnimation);
     
-this->loadAfterList.remove(lazyImageRotationAnimation);
+this->loadAfterList->remove(lazyImageRotationAnimation);
     
 
 
@@ -1144,7 +1152,7 @@ this->progressEnded= true;
                 //@Throws(Exception.constructor)
             
     public: void runTask(){
-this->processor.process();
+this->processor->process();
     
 }
 

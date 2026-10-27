@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/input/LocalPlayerInputIdFactory.h>
 
       
@@ -47,33 +53,33 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DownKeyEventHandlerBase.h"
+        #include "org/allbinary/game/input/event/DownKeyEventHandlerBase.h"
 
 class DownKeyEventHandler: public DownKeyEventHandlerBase {
 
-    private: static DownKeyEventHandler instance() { return DownKeyEventHandler(); }
+    private: static DownKeyEventHandler* instance() { static std::unique_ptr<DownKeyEventHandler> value(new DownKeyEventHandler()); return value.get(); }
 
-    private: static const std::vector<DownKeyEventHandlerBase> instanceArray = 
+    private: static inline const std::vector<DownKeyEventHandlerBase*> instanceArray = 
                                                         {
-                                                            DownKeyEventHandlerBase(),DownKeyEventHandlerBase(),DownKeyEventHandlerBase(),DownKeyEventHandlerBase(),DownKeyEventHandlerBase(),DownKeyEventHandlerBase()
+                                                            new DownKeyEventHandlerBase(),new DownKeyEventHandlerBase(),new DownKeyEventHandlerBase(),new DownKeyEventHandlerBase(),new DownKeyEventHandlerBase(),new DownKeyEventHandlerBase()
                                                         };
 
-    public: static DownKeyEventHandler getInstance();
+    public: static DownKeyEventHandler* getInstance();
 
-    private: const LocalPlayerInputIdFactory playerInputIdFactory = LocalPlayerInputIdFactory::getInstance();
+    private: LocalPlayerInputIdFactory* playerInputIdFactory = LocalPlayerInputIdFactory::getInstance();
 
-    public: DownKeyEventHandlerBase getInstanceForDevice(int32_t deviceId);
+    public: DownKeyEventHandlerBase* getInstanceForDevice(int32_t deviceId);
 
-    public: DownKeyEventHandlerBase getInstanceForPlayer(int32_t playerInputId);
+    public: DownKeyEventHandlerBase* getInstanceForPlayer(int32_t playerInputId);
 
 private: DownKeyEventHandler();
 
     public: void removeAllListeners();
 
-    public: void removeListenerSingleThreaded(EventListenerInterface eventListenerInterface);
+    public: void removeListenerSingleThreaded(EventListenerInterface* eventListenerInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void removeListener(EventListenerInterface eventListenerInterface);
+    public: void removeListener(EventListenerInterface* eventListenerInterface);
 
 };
 

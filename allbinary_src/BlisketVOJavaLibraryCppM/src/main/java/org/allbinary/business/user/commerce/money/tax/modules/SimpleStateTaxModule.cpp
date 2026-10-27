@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -105,27 +111,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TaxModuleInterface.h"
+        #include "org/allbinary/business/user/commerce/money/tax/modules/TaxModuleInterface.h"
 
 class SimpleStateTaxModule
             : public Object
-        : public TaxModuleInterface {
+        , public TaxModuleInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: StreetAddress streetAddress;
+    private: StreetAddress* streetAddress;
 
-    private: StoreFrontInterface storeFrontInterface;
+    private: StoreFrontInterface* storeFrontInterface;
 
-    private: const std::string ALL = CommonPhoneStrings::getInstance().STAR;
+    private: const std::string ALL = CommonPhoneStrings::getInstance()->STAR;
 
     private: const std::string STATETAXPATH = "/generic/taxes/";
 
     private: const std::string STATETAXFILE = "stateTaxation.xml";
 
-    private: Document document;
+    private: Document* document;
 
 public: SimpleStateTaxModule(){
 }
@@ -133,79 +139,79 @@ public: SimpleStateTaxModule(){
 
                 //@Throws(Exception.constructor)
             
-    public: number getTaxRate(StreetAddress streetAddress, StoreFrontInterface storeFrontInterface){
+    public: float getTaxRate(StreetAddress* streetAddress, StoreFrontInterface* storeFrontInterface){
 this->streetAddress= streetAddress;
     
 this->storeFrontInterface= storeFrontInterface;
     
 
-    AbPath fileAbPath = AbPath(URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH +this->storeFrontInterface.getName() +this->STATETAXPATH, this->STATETAXFILE);;
+    AbPath* fileAbPath = new AbPath(URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance()->XSLPATH +this->storeFrontInterface->getName() +this->STATETAXPATH, this->STATETAXFILE);;
     
 
-    std::string data = CryptFileReader(TransformInfoObjectConfigData::getInstance().UNCRYPTED_EXTENSION, TransformInfoObjectConfigData::getInstance().ENCRYPTED_EXTENSION).get(fileAbPath);;
+    std::string data = (new CryptFileReader(TransformInfoObjectConfigData::getInstance()->UNCRYPTED_EXTENSION, TransformInfoObjectConfigData::getInstance()->ENCRYPTED_EXTENSION))->get(fileAbPath);;
     
 this->document= DomDocumentHelper::create(data);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAX))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAX))
                         
                                     {
-                                    this->logUtil.putF("Tax Doc: " +XmlDocumentHelper::toString(this->document), this, "getTaxRate");
+                                    this->logUtil->putF("Tax Doc: " +XmlDocumentHelper::toString(this->document), this, "getTaxRate");
     
 
                                     }
                                 
 
-    std::string state = this->streetAddress.getState();;
+    std::string state = this->streetAddress->getState();;
     
 
-    std::string country = this->streetAddress.getCountry();;
+    std::string country = this->streetAddress->getCountry();;
     
-state= state.toUpperCase();
+state= JavaString::toUpperCase(state);
     
 
-    NodeList nodeList = this->document.getElementsByTagName(TaxData::NAME);;
+    NodeList* nodeList = this->document->getElementsByTagName(TaxData::NAME);;
     
 
 
 
 
                         for (
-    int32_t index = 0;index < nodeList.getLength(); index++)
+    int32_t index = 0;index < nodeList->getLength(); index++)
         {
 
-    Node node = nodeList.item(index);;
+    Node* node = nodeList->item(index);;
     
 
-    NodeList taxNodeChildren = node.getChildNodes();;
+    NodeList* taxNodeChildren = node->getChildNodes();;
     
 
-    Node streetAddressNode = DomSearchHelper::getNode(StreetAddressData::NAME, taxNodeChildren);;
+    Node* streetAddressNode = DomSearchHelper::getNode(StreetAddressData::NAME, taxNodeChildren);;
     
 
-    StreetAddress taxableStreetAddress = StreetAddress(streetAddressNode);;
+    StreetAddress* taxableStreetAddress = new StreetAddress(streetAddressNode);;
     
 
-    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
+    StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-                        if(!stringValidationUtil.isEmpty(country) && !stringValidationUtil.isEmpty(taxableStreetAddress.getCountry()) && country.compare(taxableStreetAddress.getCountry()) == 0)
+                        if(!stringValidationUtil->isEmpty(country) && !stringValidationUtil->isEmpty(taxableStreetAddress->getCountry()) && country.compare(taxableStreetAddress->getCountry()) == 0)
                         
                                     {
                                     
-                        if(true && taxableStreetAddress.getState() != 
+                        if(true && taxableStreetAddress->getState() != 
                                     nullptr
-                                 && state.compare(taxableStreetAddress.getState()) == 0)
+                                 && state.compare(taxableStreetAddress->getState()) == 0)
                         
                                     {
                                     
-    Node rateNode = DomSearchHelper::getNode(TaxData::RATE, taxNodeChildren);;
+    Node* rateNode = DomSearchHelper::getNode(TaxData::RATE, taxNodeChildren);;
     
 
     std::string taxRate = DomNodeHelper::getTextNodeValue(rateNode);;
     
 
-    number taxRateFloat = number(number(taxRate) *.01);;
+    float taxRateFloat = float((float(taxRate)) *.01);;
     
 
 
@@ -225,12 +231,12 @@ state= state.toUpperCase();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return number(0);
+                        return float(0);
     
 }
 
 
-    public: Boolean isValid(StreetAddress streetAddress, StoreFrontInterface storeFrontInterface){
+    public: bool isValid(StreetAddress* streetAddress, StoreFrontInterface* storeFrontInterface){
 
         try {
             this->streetAddress= streetAddress;
@@ -238,79 +244,79 @@ state= state.toUpperCase();
 this->storeFrontInterface= storeFrontInterface;
     
 
-    AbPath fileAbPath = AbPath(URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH +this->storeFrontInterface.getName() +this->STATETAXPATH, this->STATETAXFILE);;
+    AbPath* fileAbPath = new AbPath(URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance()->XSLPATH +this->storeFrontInterface->getName() +this->STATETAXPATH, this->STATETAXFILE);;
     
 
-    std::string data = CryptFileReader(TransformInfoObjectConfigData::getInstance().UNCRYPTED_EXTENSION, TransformInfoObjectConfigData::getInstance().ENCRYPTED_EXTENSION).get(fileAbPath);;
+    std::string data = (new CryptFileReader(TransformInfoObjectConfigData::getInstance()->UNCRYPTED_EXTENSION, TransformInfoObjectConfigData::getInstance()->ENCRYPTED_EXTENSION))->get(fileAbPath);;
     
 this->document= DomDocumentHelper::create(data);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAX))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAX))
                         
                                     {
-                                    this->logUtil.putF("Tax Doc: " +XmlDocumentHelper::toString(this->document), this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("Tax Doc: " +XmlDocumentHelper::toString(this->document), this, this->commonStrings->IS_VALID);
     
 
                                     }
                                 
 
-    std::string country = this->streetAddress.getCountry();;
+    std::string country = this->streetAddress->getCountry();;
     
 
-    Node rootNode = this->document.getElementsByTagName(TransformInfoObjectConfigData::getInstance().NAME).item(0);;
+    Node* rootNode = this->document->getElementsByTagName(TransformInfoObjectConfigData::getInstance()->NAME)->item(0);;
     
 
-    NodeList nodeList = this->document.getElementsByTagName(TaxData::NAME);;
+    NodeList* nodeList = this->document->getElementsByTagName(TaxData::NAME);;
     
 
 
 
 
                         for (
-    int32_t index = 0;index < nodeList.getLength(); index++)
+    int32_t index = 0;index < nodeList->getLength(); index++)
         {
 
-    Node node = nodeList.item(index);;
+    Node* node = nodeList->item(index);;
     
 
-    NodeList taxNodeChildren = node.getChildNodes();;
+    NodeList* taxNodeChildren = node->getChildNodes();;
     
 
-    Node streetAddressNode = DomSearchHelper::getNode(StreetAddressData::NAME, taxNodeChildren);;
+    Node* streetAddressNode = DomSearchHelper::getNode(StreetAddressData::NAME, taxNodeChildren);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAX))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAX))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("StreetAddress Node: ");
+stringBuffer->append("StreetAddress Node: ");
     
-stringBuffer.append(streetAddressNode.getNodeName());
+stringBuffer->append(streetAddressNode->getNodeName());
     
-stringBuffer.append(" Value: ");
+stringBuffer->append(" Value: ");
     
-stringBuffer.append(streetAddressNode.getNodeValue());
+stringBuffer->append(streetAddressNode->getNodeValue());
     
-stringBuffer.append(" Number Of Children: ");
+stringBuffer->append(" Number Of Children: ");
     
-stringBuffer.appendint(streetAddressNode.getChildNodes().getLength());
+stringBuffer->appendint(streetAddressNode->getChildNodes()->getLength());
     
-this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
     
 
                                     }
                                 
 
-    StreetAddress taxableStreetAddress = StreetAddress(streetAddressNode);;
+    StreetAddress* taxableStreetAddress = new StreetAddress(streetAddressNode);;
     
 
-    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
+    StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-                        if(!stringValidationUtil.isEmpty(country) && !stringValidationUtil.isEmpty(taxableStreetAddress.getCountry()) && taxableStreetAddress.getCountry().compareTo(this->ALL) == 0)
+                        if(!stringValidationUtil->isEmpty(country) && !stringValidationUtil->isEmpty(taxableStreetAddress->getCountry()) && taxableStreetAddress->getCountry()->compareTo(this->ALL) == 0)
                         
                                     {
                                     
@@ -323,11 +329,11 @@ this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
                                     }
                                 
 
-                        if(!stringValidationUtil.isEmpty(country) && !stringValidationUtil.isEmpty(taxableStreetAddress.getCountry()) && country.compare(taxableStreetAddress.getCountry()) == 0)
+                        if(!stringValidationUtil->isEmpty(country) && !stringValidationUtil->isEmpty(taxableStreetAddress->getCountry()) && country.compare(taxableStreetAddress->getCountry()) == 0)
                         
                                     {
                                     
-    std::string state = this->streetAddress.getState();;
+    std::string state = this->streetAddress->getState();;
     
 
                         if(true)
@@ -355,13 +361,13 @@ this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }

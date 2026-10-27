@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,18 +58,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoObjectConfigGeneratorFactoryInterface.h"
-#include "StoreFileGenerator.h"
-#include "BasicGenerator.h"
-#include "TransformInfoObjectConfigGenerator.h"
+        #include "org/allbinary/logic/visual/transform/info/objectConfig/generator/TransformInfoObjectConfigGeneratorFactoryInterface.h"
+#include "org/allbinary/logic/visual/transform/info/objectConfig/generator/StoreFileGenerator.h"
+#include "org/allbinary/logic/visual/transform/info/objectConfig/generator/BasicGenerator.h"
+#include "org/allbinary/logic/visual/transform/info/objectConfig/generator/TransformInfoObjectConfigGenerator.h"
 
 class TransformInfoObjectConfigGeneratorFactory
             : public Object
-        : public TransformInfoObjectConfigGeneratorFactoryInterface {
+        , public TransformInfoObjectConfigGeneratorFactoryInterface {
 
-    private: static TransformInfoObjectConfigGeneratorFactory instance() { return TransformInfoObjectConfigGeneratorFactory(); }
+    private: static TransformInfoObjectConfigGeneratorFactory* instance() { static std::unique_ptr<TransformInfoObjectConfigGeneratorFactory> value(new TransformInfoObjectConfigGeneratorFactory()); return value.get(); }
 
-    public: static TransformInfoObjectConfigGeneratorFactory getInstance(){
+    public: static TransformInfoObjectConfigGeneratorFactory* getInstance(){
 
 
 
@@ -73,7 +79,7 @@ class TransformInfoObjectConfigGeneratorFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: TransformInfoObjectConfigGeneratorFactory(){
 }
@@ -81,44 +87,44 @@ private: TransformInfoObjectConfigGeneratorFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoObjectConfigGenerator getInstance(TransformInfoInterface transformInfoInterface){
+    public: TransformInfoObjectConfigGenerator* getInstance(TransformInfoInterface* transformInfoInterface){
 
-    std::string type = transformInfoInterface.getObjectConfigInterface().getOutputTypeName();;
+    std::string type = transformInfoInterface->getObjectConfigInterface()->getOutputTypeName();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF("Generating Instance for type: " +type, this, commonStrings.GET_INSTANCE);
+this->logUtil->putF("Generating Instance for type: " +type, this, commonStrings->GET_INSTANCE);
     
 
                                     }
                                 
 
-                        if(false || type.compare(InputOutputTypeData::getInstance().RESPONSE) == 0 || transformInfoInterface.isChild())
+                        if(false || type.compare(InputOutputTypeData::getInstance()->RESPONSE) == 0 || transformInfoInterface->isChild())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicGenerator();
+                        return new BasicGenerator();
     
 
                                     }
                                 
                              else 
-                        if(type.compare(InputOutputTypeData::getInstance().FILE) == 0)
+                        if(type.compare(InputOutputTypeData::getInstance()->FILE) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreFileGenerator(transformInfoInterface);
+                        return new StoreFileGenerator(transformInfoInterface);
     
 
                                     }
@@ -127,7 +133,7 @@ this->logUtil.putF("Generating Instance for type: " +type, this, commonStrings.G
                             
 
 
-                            throw Exception("No Such TransformInfoObjectConfigGenerator Type");
+                            throw new Exception("No Such TransformInfoObjectConfigGenerator Type");
                     
 
                         }

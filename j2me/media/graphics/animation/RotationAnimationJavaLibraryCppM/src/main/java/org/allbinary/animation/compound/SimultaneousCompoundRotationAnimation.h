@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -76,9 +82,9 @@
         
 class SimultaneousCompoundRotationAnimation: public RotationAnimation {
 
-    private: std::vector<RotationAnimation> animationInterfaceArray;
+    private: std::vector<RotationAnimation*> animationInterfaceArray;
 
-public: SimultaneousCompoundRotationAnimation(std::vector<RotationAnimation> animationInterfaceArray, AnimationBehavior animationBehavior);
+public: SimultaneousCompoundRotationAnimation(std::vector<RotationAnimation*> animationInterfaceArray, AnimationBehavior* animationBehavior);
 
     public: void setFrame(int32_t frameIndex);
 
@@ -104,27 +110,27 @@ public: SimultaneousCompoundRotationAnimation(std::vector<RotationAnimation> ani
 
     public: std::vector<int32_t> getSequence();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
-    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
+    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z);
 
-    public: void setFrameByDirection(Direction direction);
+    public: void setFrameByDirection(Direction* direction);
 
-    public: void setFrameToAngle(Angle angle);
+    public: void setFrameToAngle(Angle* angle);
 
-    public: void adjustFrameToAngle(Angle newAngle);
+    public: void adjustFrameToAngle(Angle* newAngle);
 
     public: void adjustFrame(int16_t angle);
 
-    public: AngleInfo getAngleInfoP();
+    public: AngleInfo* getAngleInfoP();
 
-    public: std::vector<RotationAnimation> getAnimationInterfaceArray();
+    public: std::vector<RotationAnimation*> getAnimationInterfaceArray();
 
-    public: void setAnimationInterfaceArray(std::vector<RotationAnimation> animationInterfaceArray);
+    public: void setAnimationInterfaceArray(std::vector<RotationAnimation*> animationInterfaceArray);
 
                 //@Throws(Exception.constructor)
             
-    public: void set(GL gl);
+    public: void set(GL* gl);
 
 };
 

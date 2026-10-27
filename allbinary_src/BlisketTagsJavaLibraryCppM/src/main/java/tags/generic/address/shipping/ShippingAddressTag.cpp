@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
@@ -74,7 +80,7 @@ public: ShippingAddressTag(){
                         
                                     {
                                     
-                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
                         
                                     {
                                     this->setName("Basic Shipping Address View");
@@ -85,7 +91,7 @@ this->setObjectFile("views.generic.address.shipping.ViewShippingAddressesView");
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.EDIT) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.EDIT) == 0)
                         
                                     {
                                     this->setName("Basic Shipping Address View");
@@ -96,7 +102,7 @@ this->setObjectFile("views.generic.address.shipping.EditShippingAddressesView");
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.NEW) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.NEW) == 0)
                         
                                     {
                                     this->setName("Basic Shipping Address View");
@@ -107,7 +113,7 @@ this->setObjectFile("views.generic.address.shipping.NewShippingAddressesView");
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(this->commonStrings.INSERT) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings.INSERT) == 0)
                         
                                     {
                                     this->setName("Basic Shipping Address View");
@@ -118,7 +124,7 @@ this->setObjectFile("views.generic.address.shipping.AddShippingAddressesView");
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(this->commonStrings.DELETE) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings.DELETE) == 0)
                         
                                     {
                                     this->setName("Basic Shipping Address View");
@@ -129,7 +135,7 @@ this->setObjectFile("views.generic.address.shipping.DeleteShippingAddressesView"
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(ShippingAddressData::SELECT) == 0)
+                        if(this->getCommand()->compareTo(ShippingAddressData::SELECT) == 0)
                         
                                     {
                                     this->setName("Basic Shipping Address View");
@@ -140,7 +146,7 @@ this->setObjectFile("views.generic.address.shipping.SelectShippingAddressesView"
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(ShippingAddressData::SETTOBILLINGADDRESS) == 0)
+                        if(this->getCommand()->compareTo(ShippingAddressData::SETTOBILLINGADDRESS) == 0)
                         
                                     {
                                     this->setName("Basic Shipping Address View");
@@ -154,7 +160,7 @@ this->setObjectFile("views.generic.address.shipping.SetShippingAddressesView");
                             
 
 
-                            throw Exception("No Such View Command: " +this->getCommand());
+                            throw new Exception("No Such View Command: " +this->getCommand());
                     
 
                         }
@@ -171,13 +177,13 @@ this->setObjectFile("views.generic.address.shipping.SetShippingAddressesView");
 
 
 
-                            throw Exception("Command Null");
+                            throw new Exception("Command Null");
                     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
-AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
     
 
 
@@ -188,9 +194,9 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 
@@ -199,7 +205,7 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
                         return SKIP_BODY;
     
 }
-*/
+
 }
 
 

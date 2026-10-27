@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class OpenGLFeatureUtil
             : public Object
          {
 
-    private: static OpenGLFeatureUtil instance() { return OpenGLFeatureUtil(); }
+    private: static OpenGLFeatureUtil* instance() { static std::unique_ptr<OpenGLFeatureUtil> value(new OpenGLFeatureUtil()); return value.get(); }
 
-    public: static OpenGLFeatureUtil getInstance(){
+    public: static OpenGLFeatureUtil* getInstance(){
 
 
 

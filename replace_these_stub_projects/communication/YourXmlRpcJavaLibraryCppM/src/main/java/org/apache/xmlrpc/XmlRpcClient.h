@@ -7,6 +7,12 @@
         #ifndef ORG_APACHE_XMLRPC_XMLRPCCLIENT_H
         #define ORG_APACHE_XMLRPC_XMLRPCCLIENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/io/IOException.h>
@@ -48,27 +54,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "XmlRpcHandler.h"
+        #include "org/apache/xmlrpc/XmlRpcHandler.h"
 
 class XmlRpcClient
             : public Object
-        : public XmlRpcHandler {
+        , public XmlRpcHandler {
 
-    private: URL url;
+    private: URL* url;
 
 public: XmlRpcClient(std::string url);
 
-    public: URL getURL();
+    public: URL* getURL();
 
     public: void setBasicAuthentication(std::string user, std::string password);
 
                 //@Throws(XmlRpcException.constructor, IOException.constructor)
             
-    public: Object* execute(std::string method, BasicArrayList params);
+    public: Object* execute(std::string method, BasicArrayList* params);
 
                 //@Throws(XmlRpcException.constructor, IOException.constructor)
             
-    public: Object* execute(std::string method, BasicArrayList params, CryptInterface cryptInterface);
+    public: Object* execute(std::string method, BasicArrayList* params, CryptInterface* cryptInterface);
 
 };
 

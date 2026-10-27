@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -111,34 +117,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "EmailInterface.h"
-#include "EmailData.h"
+        #include "org/allbinary/logic/communication/smtp/EmailInterface.h"
+#include "org/allbinary/logic/communication/smtp/EmailData.h"
 
 class Email
             : public Object
-        : public EmailInterface {
+        , public EmailInterface {
 
-    private: static const std::string DEBUG = "mail.debug";
+    private: static inline const std::string DEBUG = "mail.debug";
 
-    private: static const std::string SMTP_HOST = "mail.smtp.host";
+    private: static inline const std::string SMTP_HOST = "mail.smtp.host";
 
-    private: static const std::string SMTP_PORT = "mail.smtp.port";
+    private: static inline const std::string SMTP_PORT = "mail.smtp.port";
 
-    private: static const std::string SMTP_USER = "mail.smtp.user";
+    private: static inline const std::string SMTP_USER = "mail.smtp.user";
 
-    private: static const std::string SMTP_RETURN_ADDRESS = "mail.from";
+    private: static inline const std::string SMTP_RETURN_ADDRESS = "mail.from";
 
-    private: static const std::string SMTP_LOCAL_HOST = "mail.smtp.localhost";
+    private: static inline const std::string SMTP_LOCAL_HOST = "mail.smtp.localhost";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: MimeMessage msg;
+    private: MimeMessage* msg;
 
-    private: Properties properties;
+    private: Properties* properties;
 
-    private: ByteArrayOutputStream bs;
+    private: ByteArrayOutputStream* bs;
 
     private: bool isDebug;
 
@@ -152,9 +158,9 @@ public: Email(std::string from, std::string to, std::string subject, std::string
 
                 //@Throws(MessagingException.constructor)
             
-    public: void init(std::string server, Authenticator authenticator, std::vector<InternetAddress> addresses_from, std::vector<InternetAddress> addresses_to, std::vector<InternetAddress> addresses_cc, std::vector<InternetAddress> addresses_bcc, std::string subject, std::vector<MimeBodyPart> mimeBodyParts);
+    public: void init(std::string server, Authenticator* authenticator, std::vector<InternetAddress*> addresses_from, std::vector<InternetAddress*> addresses_to, std::vector<InternetAddress*> addresses_cc, std::vector<InternetAddress*> addresses_bcc, std::string subject, std::vector<MimeBodyPart*> mimeBodyParts);
 
-    public: MimeMessage getMimeMessage();
+    public: MimeMessage* getMimeMessage();
 
     public: std::string getDebugInfo();
 
@@ -164,15 +170,15 @@ public: Email(std::string from, std::string to, std::string subject, std::string
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
                 //@Throws(Exception.constructor)
             
-    public: Document toXmlDoc();
+    public: Document* toXmlDoc();
 
 };
 

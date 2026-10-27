@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -48,15 +54,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RTSLayerCompositePaintable.h"
-#include "UpgradableRTSLayerHudPaintable.h"
-#include "RTSLayer.h"
+        #include "org/allbinary/game/layer/RTSLayerCompositePaintable.h"
+#include "org/allbinary/game/layer/UpgradableRTSLayerHudPaintable.h"
+#include "org/allbinary/game/layer/RTSLayer.h"
 
 class UpgradableWideRTSLayerPaintable: public RTSLayerCompositePaintable {
 
-    private: std::string cost = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string cost = StringUtil::getInstance()->EMPTY_STRING;
 
-public: UpgradableWideRTSLayerPaintable(UpgradableRTSLayerHudPaintable upgradableRTSLayerHudPaintable) : RTSLayerCompositePaintable(upgradableRTSLayerHudPaintable){
+public: UpgradableWideRTSLayerPaintable(UpgradableRTSLayerHudPaintable* upgradableRTSLayerHudPaintable) : RTSLayerCompositePaintable(upgradableRTSLayerHudPaintable){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -66,16 +72,16 @@ public: UpgradableWideRTSLayerPaintable(UpgradableRTSLayerHudPaintable upgradabl
 }
 
 
-    public: void update(RTSLayer rtsLayer){
+    public: void update(RTSLayer* rtsLayer){
 super.update(rtsLayer);
     
-this->setCost(StringMaker().append(this->getUpgradeCost()).append(CommonSeps::getInstance().SPACE).append(this->getDownGradeCost()).toString());
+this->setCost((new StringMaker())->append(this->getUpgradeCost())->append(CommonSeps::getInstance()->SPACE)->append(this->getDownGradeCost())->toString());
     
 }
 
 
-    public: void paint(Graphics graphics){
-graphics.drawString(this->getCost(), this->upgradableRTSLayerHudPaintable.textX, this->upgradableRTSLayerHudPaintable.costY, 0);
+    public: void paint(Graphics* graphics){
+graphics->drawString(this->getCost(), this->upgradableRTSLayerHudPaintable.textX, this->upgradableRTSLayerHudPaintable.costY, 0);
     
 }
 

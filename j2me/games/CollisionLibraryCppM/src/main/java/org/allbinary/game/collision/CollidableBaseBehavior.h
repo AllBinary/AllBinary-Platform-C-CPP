@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEBASEBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEBASEBEHAVIOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,21 +70,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CollidableInterface.h"
-#include "LayerCollisionUtil.h"
-#include "CollidableInterfaceCompositeInterface.h"
-#include "CollisionTypeFactory.h"
-#include "CollisionType.h"
+        #include "org/allbinary/game/collision/CollidableInterface.h"
+#include "org/allbinary/game/collision/LayerCollisionUtil.h"
+#include "org/allbinary/game/collision/CollidableInterfaceCompositeInterface.h"
+#include "org/allbinary/game/collision/CollisionTypeFactory.h"
+#include "org/allbinary/game/collision/CollisionType.h"
 
 class CollidableBaseBehavior
             : public Object
-        : public CollidableInterface {
+        , public CollidableInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const LayerCollisionUtil layerCollisionUtil = LayerCollisionUtil::getInstance();
+    protected: LayerCollisionUtil* layerCollisionUtil = LayerCollisionUtil::getInstance();
 
     private: bool collidable = true;
 
@@ -90,23 +96,23 @@ public: CollidableBaseBehavior(bool collidable);
 
     public: void setCollidable(bool collidable);
 
-    public: bool isCollidable(CollidableCompositeLayer ownerLayer);
+    public: bool isCollidable(CollidableCompositeLayer* ownerLayer);
 
                 //@Throws(Exception.constructor)
             
-    public: void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer allbinaryCollidableLayer);
+    public: void collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* allbinaryCollidableLayer);
 
-    public: bool isCollision(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer);
+    public: bool isCollision(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collisionLayer);
 
-    public: bool isCollisionInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface);
+    public: bool isCollisionInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface);
+    public: void collideInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface);
 
-    public: void paint(CollidableCompositeLayer ownerLayer, Graphics graphics);
+    public: void paint(CollidableCompositeLayer* ownerLayer, Graphics* graphics);
 
-    public: CollisionType getCollisionTypeWith(AllBinaryLayer layerInterface);
+    public: CollisionType* getCollisionTypeWith(AllBinaryLayer* layerInterface);
 
 };
 

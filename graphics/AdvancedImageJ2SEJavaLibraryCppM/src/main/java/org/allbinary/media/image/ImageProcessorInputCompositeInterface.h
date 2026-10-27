@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEPROCESSORINPUTCOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEPROCESSORINPUTCOMPOSITEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,13 +45,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageProcessorInput.h"
+        #include "org/allbinary/media/image/ImageProcessorInput.h"
 
 class ImageProcessorInputCompositeInterface {
 
-    ImageProcessorInput getImageProcessorInput();
+    public: virtual ImageProcessorInput* getImageProcessorInput() = 0;
 
-    void setImageProcessorInput(ImageProcessorInput imageProcessorInput);
+    public: virtual void setImageProcessorInput(ImageProcessorInput* imageProcessorInput) = 0;
 
 };
 

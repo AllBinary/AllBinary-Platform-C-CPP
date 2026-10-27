@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -76,22 +82,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameFeatureFactory.h"
-#include "GameFeature.h"
-#include "GameFeatureUtil.h"
+        #include "org/allbinary/game/configuration/feature/GameFeatureFactory.h"
+#include "org/allbinary/game/configuration/feature/GameFeature.h"
+#include "org/allbinary/game/configuration/feature/GameFeatureUtil.h"
 
 class GameFeatureItemStateListener
             : public Object
-        : public ItemStateListener {
+        , public ItemStateListener {
 
-    private: static BasicArrayList toggleList = BasicArrayListD();
+    private: static inline BasicArrayList* toggleList = new BasicArrayListD();
 
-    public: static void add(GameFeature gameFeature){
+    public: static void add(GameFeature* gameFeature){
 
-                        if(!GameFeatureItemStateListener::toggleList.contains(gameFeature))
+                        if(!GameFeatureItemStateListener::toggleList->contains(gameFeature))
                         
                                     {
-                                    GameFeatureItemStateListener::toggleList.add(gameFeature);
+                                    GameFeatureItemStateListener::toggleList->add(gameFeature);
     
 
                                     }
@@ -99,70 +105,74 @@ class GameFeatureItemStateListener
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: GameOptionsForm gameOptionsForm;
+    private: GameOptionsForm* gameOptionsForm;
 
-public: GameFeatureItemStateListener(GameOptionsForm gameOptionsForm){
+public: GameFeatureItemStateListener(GameOptionsForm* gameOptionsForm){
 this->gameOptionsForm= gameOptionsForm;
     
 
-    GameFeatureFactory gameFeatureFactory = GameFeatureFactory::getInstance();;
+    GameFeatureFactory* gameFeatureFactory = GameFeatureFactory::getInstance();;
     
-GameFeatureItemStateListener::add(gameFeatureFactory.ARTIFICIAL_INTELLEGENCE_PROCESSOR);
+GameFeatureItemStateListener::add(gameFeatureFactory->ARTIFICIAL_INTELLEGENCE_PROCESSOR);
     
-GameFeatureItemStateListener::add(gameFeatureFactory.COLLIDABLE_INTERFACE_LAYER_PROCESSOR);
+GameFeatureItemStateListener::add(gameFeatureFactory->COLLIDABLE_INTERFACE_LAYER_PROCESSOR);
     
-GameFeatureItemStateListener::add(gameFeatureFactory.DAMAGE_FLOATERS);
+GameFeatureItemStateListener::add(gameFeatureFactory->DAMAGE_FLOATERS);
     
-GameFeatureItemStateListener::add(gameFeatureFactory.DROPPED_ITEMS);
+GameFeatureItemStateListener::add(gameFeatureFactory->DROPPED_ITEMS);
     
-GameFeatureItemStateListener::add(gameFeatureFactory.GAME_INPUT_LAYER_PROCESSOR);
+GameFeatureItemStateListener::add(gameFeatureFactory->GAME_INPUT_LAYER_PROCESSOR);
     
-GameFeatureItemStateListener::add(gameFeatureFactory.HEALTH_BARS);
+GameFeatureItemStateListener::add(gameFeatureFactory->HEALTH_BARS);
     
-GameFeatureItemStateListener::add(gameFeatureFactory.SOUND);
+GameFeatureItemStateListener::add(gameFeatureFactory->SOUND);
     
-GameFeatureItemStateListener::add(gameFeatureFactory.TICKABLE_LAYER_PROCESSOR);
+GameFeatureItemStateListener::add(gameFeatureFactory->TICKABLE_LAYER_PROCESSOR);
     
 }
 
 
-    public: void itemStateChanged(Item item){
+    public: void itemStateChanged(Item* item){
 
         try {
             
-    std::string itemLabel = item.getLabel();;
+    std::string itemLabel = item->getLabel();;
     
-this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().ITEM_LABEL).append(itemLabel).toString(), this, "itemStateChanged");
+this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->ITEM_LABEL)->append(itemLabel)->toString(), this, "itemStateChanged");
     
 
-                        if(item instanceof GameConfigurationGauge)
+                        if(
+                                        (dynamic_cast<const GameConfigurationGauge*>(item) != nullptr)
+                                    )
                         
                                     {
-                                    GameConfigurationUtil::getInstance().change(this->gameOptionsForm, item);
+                                    GameConfigurationUtil::getInstance()->change(this->gameOptionsForm, dynamic_cast<GameConfigurationGauge*>(item));
     
 
                                     }
                                 
                              else 
-                        if(item instanceof ChoiceGroup)
+                        if(
+                                        (dynamic_cast<const ChoiceGroup*>(item) != nullptr)
+                                    )
                         
                                     {
                                     
-    GameFeatureUtil gameFeatureUtil = GameFeatureUtil::getInstance();;
+    GameFeatureUtil* gameFeatureUtil = GameFeatureUtil::getInstance();;
     
 
-                        if(gameFeatureUtil.isExclusive(itemLabel))
+                        if(gameFeatureUtil->isExclusive(itemLabel))
                         
                                     {
-                                    gameFeatureUtil.updateExclusiveForChoiceGroup(item);
+                                    gameFeatureUtil->updateExclusiveForChoiceGroup(dynamic_cast<ChoiceGroup*>(item));
     
 
                                     }
                                 
                         else {
-                            gameFeatureUtil.updateMultiple(item);
+                            gameFeatureUtil->updateMultiple(dynamic_cast<ChoiceGroup*>(item));
     
 
                         }
@@ -172,12 +182,12 @@ this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().ITEM_LABEL).
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, "itemStateChanged", e);
+this->logUtil->put(commonStrings->EXCEPTION, this, "itemStateChanged", &e);
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_WORKFLOW_WORKFLOWVIEW_H
         #define VIEWS_ADMIN_WORKFLOW_WORKFLOWVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
@@ -65,13 +71,13 @@
         
 class WorkFlowView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: WorkFlowInterface workFlowInterface;
+    protected: WorkFlowInterface* workFlowInterface;
 
-public: WorkFlowView(TransformInfoInterface transformInfoInterface);
+public: WorkFlowView(TransformInfoInterface* transformInfoInterface);
 
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
     public: void addDomNodeInterfaces();
 

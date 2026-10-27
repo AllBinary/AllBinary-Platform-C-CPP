@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYERCIRCULARSTATICPOOL_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYERCIRCULARSTATICPOOL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/score/ScoreableInterface.h>
@@ -53,15 +59,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PointsLayer.h"
+        #include "org/allbinary/game/ag/layer/pickup/points/PointsLayer.h"
 
 class PointsLayerCircularStaticPool: public AllBinaryLayerCircularPool {
 
-public: PointsLayerCircularStaticPool(AllBinaryLayerFactoryInterface allbinaryLayerFactoryInterface, int32_t total);
+public: PointsLayerCircularStaticPool(AllBinaryLayerFactoryInterface* allbinaryLayerFactoryInterface, int32_t total);
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(AllBinaryLayer sourceLayerInterface);
+    public: void visit(AllBinaryLayer* sourceLayerInterface);
 
 };
 

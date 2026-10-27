@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -77,24 +83,24 @@
         
 class WorkFlowsView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: BasicArrayList workFlowsVector;
+    private: BasicArrayList* workFlowsVector;
 
-public: WorkFlowsView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+public: WorkFlowsView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->workFlowsVector= WorkFlowEntityFactory::getInstance().create2().get(this->getWeblisketSession().getStoreName());
+this->workFlowsVector= WorkFlowEntityFactory::getInstance()->create2()->get(this->getWeblisketSession()->getStoreName());
     
 }
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this);
+this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     
 }
 
@@ -114,13 +120,13 @@ this->addDomNodeInterface(this);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -135,14 +141,14 @@ this->addDomNodeInterface(this);
 }
 
 
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
         try {
             
-    Node node = document.createElement(WorkFlowData::getInstance().WORKFLOWS);;
+    Node* node = document->createElement(WorkFlowData::getInstance()->WORKFLOWS);;
     
 
-    int32_t size = this->workFlowsVector.size();;
+    int32_t size = this->workFlowsVector->size();;
     
 
 
@@ -152,7 +158,7 @@ this->addDomNodeInterface(this);
     int32_t index = 0;index < size; index++)
         {
 
-    WorkFlowInterface workFlowInterface = this->workFlowsVector.get(index);;
+    WorkFlowInterface* workFlowInterface = dynamic_cast<WorkFlowInterface*>(this->workFlowsVector->get(index));;
     
 }
 
@@ -164,13 +170,13 @@ this->addDomNodeInterface(this);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "toXmlNode()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "toXmlNode()", &e);
     
 
                                     }

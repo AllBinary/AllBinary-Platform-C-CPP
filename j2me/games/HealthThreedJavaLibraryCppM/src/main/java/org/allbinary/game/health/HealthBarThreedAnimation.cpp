@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -74,42 +80,42 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HealthBarAnimation.h"
+        #include "org/allbinary/game/health/HealthBarAnimation.h"
 
 class HealthBarThreedAnimation: public HealthBarAnimation {
 
-    private: Rectangle rectangle;
+    private: Rectangle* rectangle;
 
-    private: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
+    private: BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();
 
-public: HealthBarThreedAnimation(AllBinaryLayer layerInterface, int32_t location) : HealthBarAnimation(layerInterface, location){
+public: HealthBarThreedAnimation(AllBinaryLayer* layerInterface, int32_t location) : HealthBarAnimation(layerInterface, location){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->basicColor= this->basicColorFactory.GREEN;
+this->basicColor= this->basicColorFactory->GREEN;
     
 this->colorP= this->basicColor.intValue();
     
-this->rectangle= Rectangle(0, 0, 1, 1, this->basicColor);
+this->rectangle= new Rectangle(0, 0, 1, 1, this->basicColor);
     
-this->rectangle.setDoubleSidedEnabled(true);
+this->rectangle->setDoubleSidedEnabled(true);
     
-this->rectangle.setNormalsEnabled(false);
+this->rectangle->setNormalsEnabled(false);
     
-this->rectangle.setTexturesEnabled(false);
+this->rectangle->setTexturesEnabled(false);
     
 }
 
 
     private: void updateColor(){
 
-    ColorBufferList colorBufferList = this->rectangle.getVertices().getColor4BufferList();;
+    ColorBufferList* colorBufferList = this->rectangle->getVertices()->getColor4BufferList();;
     
 
-    int32_t size = colorBufferList.size();;
+    int32_t size = colorBufferList->size();;
     
 
 
@@ -118,7 +124,7 @@ this->rectangle.setTexturesEnabled(false);
                         for (
     int32_t index = size;--index >= 0; )
         {
-colorBufferList.set(index, this->basicColor);
+colorBufferList->set(index, this->basicColor);
     
 }
 
@@ -127,7 +133,7 @@ colorBufferList.set(index, this->basicColor);
 
     private: void updateSize(){
 
-    Number3dBufferList number3dBufferList = this->rectangle.getVertices().getPointsOnFacesNumber3dBufferList();;
+    Number3dBufferList* number3dBufferList = this->rectangle->getVertices()->getPointsOnFacesNumber3dBufferList();;
     
 
     int32_t width = this->x2;;
@@ -176,7 +182,7 @@ colorBufferList.set(index, this->basicColor);
                         for (
     col= 0; col <= segsW; col++)
         {
-number3dBufferList.set(index++, col *w -width5, row *h -height5, 0);
+number3dBufferList->set(index++, col *w -width5, row *h -height5, 0);
     
 }
 
@@ -195,28 +201,28 @@ this->updateSize();
 }
 
 
-    private: const Object3dProcessor object3dProcessor = Object3dProcessorUtil::getInstance().getInstanceObject3dProcessor();
+    private: Object3dProcessor* object3dProcessor = Object3dProcessorUtil::getInstance()->getInstanceObject3dProcessor();
 
-    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
+    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z){
 
-    OpenGLESGraphics openGLESGraphics = graphics;;
-    
-
-    GL10 gl = openGLESGraphics.getGl10();;
+    OpenGLESGraphics* openGLESGraphics = dynamic_cast<OpenGLESGraphics*>(graphics);;
     
 
-    ViewPositionBase viewPosition = this->allbinaryLayer.getViewPosition();;
+    GL10* gl = openGLESGraphics->getGl10();;
     
 
-    Number3d positionNumber3d = this->rectangle.getPosition();;
+    ViewPositionBase* viewPosition = this->allbinaryLayer.getViewPosition();;
     
-positionNumber3d.x=  -(viewPosition.getX());
+
+    Number3d* positionNumber3d = this->rectangle->getPosition();;
     
-positionNumber3d.z=  -(viewPosition.getY());
+positionNumber3d->x=  -(viewPosition->getX());
     
-positionNumber3d.y= viewPosition.getZ() +this->allbinaryLayer.getHeight();
+positionNumber3d->z=  -(viewPosition->getY());
     
-this->object3dProcessor.drawObject(gl, this->rectangle);
+positionNumber3d->y= viewPosition->getZ() +this->allbinaryLayer.getHeight();
+    
+this->object3dProcessor->drawObject(gl, this->rectangle);
     
 }
 

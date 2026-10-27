@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_STRING_TOKENS_UNIQUETOKENS_H
         #define ORG_ALLBINARY_LOGIC_STRING_TOKENS_UNIQUETOKENS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -68,19 +74,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Tokenizer.h"
+        #include "org/allbinary/logic/string/tokens/Tokenizer.h"
 
 class UniqueTokens
             : public Object
          {
 
-    private: const BasicArrayList specialCharacters = BasicArrayListD();
+    private: BasicArrayList* specialCharacters = new BasicArrayListD();
 
 public: UniqueTokens();
 
                 //@Throws(Exception.constructor)
             
-    public: HashSet getWhithoutDashesAndSkipNumberOnlyTokens(BasicArrayList stringVector);
+    public: HashSet* getWhithoutDashesAndSkipNumberOnlyTokens(BasicArrayList* stringVector);
 
     private: bool numberOnly(std::string subCleaningString);
 

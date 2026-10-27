@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -61,15 +67,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HealthGraphic.h"
+        #include "org/allbinary/game/layer/hud/basic/HealthGraphic.h"
 
 class ImageHealthGraphic: public HealthGraphic {
 
-    private: std::vector<Image> image;
+    private: std::vector<Image*> image;
 
-public: ImageHealthGraphic(AnimationInterface animationInterface, HealthInterface healthInterface, int32_t location, int32_t direction);
+public: ImageHealthGraphic(AnimationInterface* animationInterface, HealthInterface* healthInterface, int32_t location, int32_t direction);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

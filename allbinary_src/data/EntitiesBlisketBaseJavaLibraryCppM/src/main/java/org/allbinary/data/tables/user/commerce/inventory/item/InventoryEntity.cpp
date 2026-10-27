@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -83,17 +89,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InventoryEntityInterface.h"
+        #include "org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntityInterface.h"
 
 class InventoryEntity: public AbSqlBean, public InventoryEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
     private: const std::string tableName = "basicinventory";
 
-public: InventoryEntity() : AbSqlBean(InventoryDbInitInfo()){
+public: InventoryEntity() : AbSqlBean(new InventoryDbInitInfo()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -105,29 +111,29 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void insert(BasicArrayList values){
+    public: void insert(BasicArrayList* values){
 
         try {
             super.insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, INSERT);
+                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, INSERT);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, INSERT, e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, INSERT, &e);
     
 
                                     }
@@ -140,26 +146,26 @@ this->setTableName(this->tableName);
     public: void delete_(std::string value){
 
         try {
-            super.deleteWhere(basicItemData.ID, value);
+            super.deleteWhere(basicItemData->ID, value);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
+                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, &e);
     
 
                                     }
@@ -171,27 +177,27 @@ this->setTableName(this->tableName);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getItems(StoreFrontInterface storeFrontInterface){
+    public: BasicArrayList* getItems(StoreFrontInterface* storeFrontInterface){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF("Getting Items For: " +storeFrontInterface.getName(), this, "getItems");
+                                    this->logUtil->putF("Getting Items For: " +storeFrontInterface->getName(), this, "getItems");
     
 
                                     }
                                 
 
-    BasicArrayList itemVector = BasicArrayListD();;
+    BasicArrayList* itemVector = new BasicArrayListD();;
     
 
-    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* keysAndValues = StdUtil::getInstance()->createHashMap();;
     
 
-    BasicArrayList itemHashMapVector = super.getRows(keysAndValues);;
+    BasicArrayList* itemHashMapVector = super.getRows(keysAndValues);;
     
 
-    int32_t size = itemHashMapVector.size();;
+    int32_t size = itemHashMapVector->size();;
     
 
 
@@ -201,7 +207,7 @@ this->setTableName(this->tableName);
     int32_t i = 0;i < size; i++)
         {
 
-    HashMap<Object*, Object*> itemHashMap = itemHashMapVector.get(i);;
+    HashMap<Object*, Object*>* itemHashMap = dynamic_cast<HashMap*>(itemHashMapVector->get(i));;
     
 
                         if(itemHashMap != 
@@ -210,13 +216,13 @@ this->setTableName(this->tableName);
                         
                                     {
                                     
-    std::string category = itemHashMap.get(basicItemData.CATEGORY);;
+    std::string category = itemHashMap->get(basicItemData->CATEGORY);;
     
 
-                        if(!StringValidationUtil::getInstance().isEmpty(category) && category.startsWith(storeFrontInterface.getCategoryPath()))
+                        if(!StringValidationUtil::getInstance()->isEmpty(category) && JavaString::startsWith(category, storeFrontInterface->getCategoryPath()))
                         
                                     {
-                                    itemVector.add(BasicItem(itemHashMap));
+                                    itemVector->add(new BasicItem(itemHashMap));
     
 
                                     }
@@ -237,14 +243,14 @@ this->setTableName(this->tableName);
 
                 //@Throws(MoneyException.constructor)
             
-    public: ItemInterface getItem(std::string id){
+    public: ItemInterface* getItem(std::string id){
 
-    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* keysAndValues = StdUtil::getInstance()->createHashMap();;
     
-keysAndValues.put(basicItemData.ID, id);
+keysAndValues->put(basicItemData->ID, id);
     
 
-    HashMap<Object*, Object*> itemHashMap = super.getRow(keysAndValues);;
+    HashMap<Object*, Object*>* itemHashMap = super.getRow(keysAndValues);;
     
 
                         if(itemHashMap != 
@@ -256,7 +262,7 @@ keysAndValues.put(basicItemData.ID, id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicItem(itemHashMap);
+                        return new BasicItem(itemHashMap);
     
 
                                     }
@@ -279,148 +285,148 @@ keysAndValues.put(basicItemData.ID, id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getField(basicItemData.ID, id, basicItemData.WEIGHT);;
+                        return super.getField(basicItemData->ID, id, basicItemData->WEIGHT);;
     
 }
 
 
     public: std::string createTableStatement(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->sqlStrings.CREATE_TABLE);
+stringBuffer->append(this->sqlStrings.CREATE_TABLE);
     
-stringBuffer.append(this->tableName);
+stringBuffer->append(this->tableName);
     
-stringBuffer.append(this->sqlStrings.START);
+stringBuffer->append(this->sqlStrings.START);
     
-stringBuffer.append(basicItemData.ID);
+stringBuffer->append(basicItemData->ID);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(basicItemData.NUMBER);
+stringBuffer->append(basicItemData->NUMBER);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(basicItemData.INBASKETS);
+stringBuffer->append(basicItemData->INBASKETS);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(basicItemData.WEIGHT);
+stringBuffer->append(basicItemData->WEIGHT);
     
-stringBuffer.append(" VARCHAR(20) NOT NULL,");
+stringBuffer->append(" VARCHAR(20) NOT NULL,");
     
-stringBuffer.append(EntryData::getInstance().ENABLE);
+stringBuffer->append(EntryData::getInstance()->ENABLE);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(basicItemData.NEWORUSED);
+stringBuffer->append(basicItemData->NEWORUSED);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(basicItemData.SUMMARY);
+stringBuffer->append(basicItemData->SUMMARY);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(basicItemData.DISTRIBUTOR);
+stringBuffer->append(basicItemData->DISTRIBUTOR);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(basicItemData.IDUSEDBYDISTRIBUTOR);
+stringBuffer->append(basicItemData->IDUSEDBYDISTRIBUTOR);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(basicItemData.PRODUCEDBY);
+stringBuffer->append(basicItemData->PRODUCEDBY);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(basicItemData.PRODUCTIONDATE);
+stringBuffer->append(basicItemData->PRODUCTIONDATE);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(basicItemData.STARTPRODUCTIONDATE);
+stringBuffer->append(basicItemData->STARTPRODUCTIONDATE);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(basicItemData.DESCRIPTION);
+stringBuffer->append(basicItemData->DESCRIPTION);
     
-stringBuffer.append(this->sqlTypeStrings.BLOB_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.BLOB_NOT_NULL);
     
-stringBuffer.append(basicItemData.KEYWORDS);
+stringBuffer->append(basicItemData->KEYWORDS);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(basicItemData.CATEGORY);
+stringBuffer->append(basicItemData->CATEGORY);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(basicItemData.TYPE);
+stringBuffer->append(basicItemData->TYPE);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(basicItemData.SMALLIMAGE);
+stringBuffer->append(basicItemData->SMALLIMAGE);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(basicItemData.MEDIUMIMAGE);
+stringBuffer->append(basicItemData->MEDIUMIMAGE);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(basicItemData.LARGEIMAGE);
+stringBuffer->append(basicItemData->LARGEIMAGE);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(EntryData::getInstance().LASTMODIFIED);
+stringBuffer->append(EntryData::getInstance()->LASTMODIFIED);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(EntryData::getInstance().TIMECREATED);
+stringBuffer->append(EntryData::getInstance()->TIMECREATED);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(basicItemData.PRICE);
+stringBuffer->append(basicItemData->PRICE);
     
-stringBuffer.append(" VARCHAR(20) NOT NULL,");
+stringBuffer->append(" VARCHAR(20) NOT NULL,");
     
-stringBuffer.append(basicItemData.COMMENT);
+stringBuffer->append(basicItemData->COMMENT);
     
-stringBuffer.append(this->sqlTypeStrings.BLOB_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.BLOB_NOT_NULL);
     
-stringBuffer.append(basicItemData.CUSTOMS);
+stringBuffer->append(basicItemData->CUSTOMS);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(basicItemData.DOWNLOADS);
+stringBuffer->append(basicItemData->DOWNLOADS);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(basicItemData.GROUPS);
+stringBuffer->append(basicItemData->GROUPS);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(basicItemData.OPTIONS);
+stringBuffer->append(basicItemData->OPTIONS);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(basicItemData.PERMISSIONS);
+stringBuffer->append(basicItemData->PERMISSIONS);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(basicItemData.SPECIALS);
+stringBuffer->append(basicItemData->SPECIALS);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(this->sqlStrings.PRIMARY_KEY);
+stringBuffer->append(this->sqlStrings.PRIMARY_KEY);
     
-stringBuffer.append(basicItemData.ID);
+stringBuffer->append(basicItemData->ID);
     
-stringBuffer.append(this->sqlStrings.END);
+stringBuffer->append(this->sqlStrings.END);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
@@ -435,8 +441,8 @@ stringBuffer.append(this->sqlStrings.END);
 }
 
 
-    public: void update(HashMap<Object*, Object*> updatedValues){
-super.updateWhere(basicItemData.ID, updatedValues.get(basicItemData.ID), updatedValues);
+    public: void update(HashMap<Object*, Object*>* updatedValues){
+super.updateWhere(basicItemData->ID, updatedValues->get(basicItemData->ID), updatedValues);
     
 }
 

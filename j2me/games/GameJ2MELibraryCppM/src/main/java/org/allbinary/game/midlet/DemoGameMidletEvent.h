@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETEVENT_H
         #define ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETEVENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
       
@@ -42,19 +50,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DemoGameMidletState.h"
+        #include "org/allbinary/game/midlet/DemoGameMidletState.h"
 
 class DemoGameMidletEvent: public AllBinaryEventObject {
 
-    private: DemoGameMidletState demoGameMidletState;
+    private: DemoGameMidletState* demoGameMidletState;
 
-public: DemoGameMidletEvent(Object* anyType, DemoGameMidletState demoGameMidletState);
+public: DemoGameMidletEvent(Object* anyType, DemoGameMidletState* demoGameMidletState);
 
     public: void init(Object* anyType);
 
-    public: void setDemoGameMidletState(DemoGameMidletState demoGameMidletState);
+    public: void setDemoGameMidletState(DemoGameMidletState* demoGameMidletState);
 
-    public: DemoGameMidletState getDemoGameMidletState();
+    public: DemoGameMidletState* getDemoGameMidletState();
 
 };
 

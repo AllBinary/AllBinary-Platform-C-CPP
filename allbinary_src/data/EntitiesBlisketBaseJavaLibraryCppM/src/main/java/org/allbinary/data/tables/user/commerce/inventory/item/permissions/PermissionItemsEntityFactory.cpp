@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,15 +52,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PermissionItemsEntity.h"
+        #include "org/allbinary/data/tables/user/commerce/inventory/item/permissions/PermissionItemsEntity.h"
 
 class PermissionItemsEntityFactory
             : public Object
          {
 
-    private: static PermissionItemsEntityFactory instance() { return PermissionItemsEntityFactory(); }
+    private: static PermissionItemsEntityFactory* instance() { static std::unique_ptr<PermissionItemsEntityFactory> value(new PermissionItemsEntityFactory()); return value.get(); }
 
-    public: static PermissionItemsEntityFactory getInstance(){
+    public: static PermissionItemsEntityFactory* getInstance(){
 
 
 
@@ -64,9 +70,9 @@ class PermissionItemsEntityFactory
 }
 
 
-    public: static PermissionItemsEntity getPermissionItemsEntityInstance(){
+    public: static PermissionItemsEntity* getPermissionItemsEntityInstance(){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
         try {
@@ -74,20 +80,20 @@ class PermissionItemsEntityFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return org::allbinary::data::tables::user::commerce::inventory::item::permissions::PermissionItemsEntity();
+                        return new org::allbinary::data::tables::user::commerce::inventory::item::permissions::PermissionItemsEntity();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
                         
                                     {
-                                    logUtil.put(commonStrings.EXCEPTION, "PermissionItemsEntityFactory", commonStrings.GET_INSTANCE, e);
+                                    logUtil->put(commonStrings->EXCEPTION, "PermissionItemsEntityFactory", commonStrings->GET_INSTANCE, &e);
     
 
                                     }
@@ -103,7 +109,7 @@ class PermissionItemsEntityFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: PermissionItemsEntityFactory(){
 }

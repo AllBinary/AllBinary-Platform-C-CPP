@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -69,24 +75,24 @@ class GameNotification
             : public Object
          {
 
-    public: static const GameNotificationEvent NULL_GAME_NOTIFICATION_EVENT = GameNotificationEvent(NullUtil::getInstance().NULL_OBJECT, StringUtil::getInstance().EMPTY_STRING, Integer(0), BasicColorFactory::getInstance().RED, BooleanFactory::getInstance().FALSE);
+    public: static GameNotificationEvent* NULL_GAME_NOTIFICATION_EVENT() { static std::unique_ptr<GameNotificationEvent> value(new GameNotificationEvent(NullUtil::getInstance()->NULL_OBJECT, StringUtil::getInstance()->EMPTY_STRING, int32_t(0), BasicColorFactory::getInstance()->RED, BooleanFactory::getInstance()->FALSE)); return value.get(); }
 
-    public: const BasicArrayList stringList = BasicArrayListD();
+    public: BasicArrayList* stringList = new BasicArrayListD();
 
-    public: const BasicArrayList timeList = BasicArrayListD();
+    public: BasicArrayList* timeList = new BasicArrayListD();
 
-    public: const BasicArrayList colorList = BasicArrayListD();
+    public: BasicArrayList* colorList = new BasicArrayListD();
 
-    public: void add(std::string string, Integer seconds, BasicColor basicColor){
+    public: void add(std::string string, int32_t seconds, BasicColor* basicColor){
 
-                        if(!this->stringList.contains(string))
+                        if(!this->stringList->contains(string))
                         
                                     {
-                                    this->stringList.add(string);
+                                    this->stringList->add(string);
     
-this->timeList.add(seconds);
+this->timeList->add(seconds);
     
-this->colorList.add(basicColor);
+this->colorList->add(basicColor);
     
 
                                     }
@@ -95,11 +101,11 @@ this->colorList.add(basicColor);
 
 
     public: void clear(){
-this->stringList.clear();
+this->stringList->clear();
     
-this->timeList.clear();
+this->timeList->clear();
     
-this->colorList.clear();
+this->colorList->clear();
     
 }
 
@@ -109,7 +115,7 @@ this->colorList.clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->stringList.size();;
+                        return this->stringList->size();;
     
 }
 

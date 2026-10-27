@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/health/HealthInterface.h>
@@ -53,11 +59,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HealLayer.h"
+        #include "org/allbinary/game/ag/layer/pickup/health/HealLayer.h"
 
 class HealLayerCircularStaticPool: public AllBinaryLayerCircularPool {
 
-public: HealLayerCircularStaticPool(AllBinaryLayerFactoryInterface allbinaryLayerFactoryInterface, int32_t total){
+public: HealLayerCircularStaticPool(AllBinaryLayerFactoryInterface* allbinaryLayerFactoryInterface, int32_t total){
 super.initAllBinaryLayerCircularPool(allbinaryLayerFactoryInterface, total);
     
 }
@@ -65,17 +71,17 @@ super.initAllBinaryLayerCircularPool(allbinaryLayerFactoryInterface, total);
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(AllBinaryLayer sourceLayerInterface){
+    public: void visit(AllBinaryLayer* sourceLayerInterface){
 
-    HealLayer healLayer = this->getNextInstance();;
+    HealLayer* healLayer = dynamic_cast<HealLayer*>(this->getNextInstance());;
     
 
-    HealthInterfaceCompositeInterface healthInterfaceCompositeInterface = sourceLayerInterface as unknown;;
+    HealthInterfaceCompositeInterface* healthInterfaceCompositeInterface = dynamic_cast<HealthInterfaceCompositeInterface*>(sourceLayerInterface as unknown);;
     
 
-    HealthInterface healthInterface = healthInterfaceCompositeInterface.getHealthInterface();;
+    HealthInterface* healthInterface = healthInterfaceCompositeInterface->getHealthInterface();;
     
-healLayer.visit(healthInterface);
+healLayer->visit(healthInterface);
     
 }
 

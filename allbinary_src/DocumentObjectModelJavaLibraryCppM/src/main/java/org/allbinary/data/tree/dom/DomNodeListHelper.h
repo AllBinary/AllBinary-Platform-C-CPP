@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOMNODELISTHELPER_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_DOMNODELISTHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -53,13 +59,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DomNodeHelper.h"
+        #include "org/allbinary/data/tree/dom/DomNodeHelper.h"
 
 class DomNodeListHelper
             : public Object
          {
 
-    public: static BasicArrayList getVector(NodeList nodeList);
+    public: static BasicArrayList* getVector(NodeList* nodeList);
 
 };
 

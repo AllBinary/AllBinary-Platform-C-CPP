@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -56,13 +62,13 @@
         
 class PaintableLayerComposite: public Paintable {
 
-    private: std::vector<Layer> paintableArray;
+    private: std::vector<Layer*> paintableArray;
 
-public: PaintableLayerComposite(std::vector<Layer> paintableArray);
+public: PaintableLayerComposite(std::vector<Layer*> paintableArray);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: void paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics* graphics);
 
 };
 

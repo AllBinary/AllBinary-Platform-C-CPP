@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -72,17 +78,17 @@ class UploadMediaSingleton
             : public Object
          {
 
-    private: static UploadMediaSingleton uploadMedia;
+    private: static inline UploadMediaSingleton* uploadMedia;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static UploadMediaSingleton getInstance(){
+    public: static UploadMediaSingleton* getInstance(){
 
                         if(UploadMediaSingleton::uploadMedia == 
                                     nullptr
                                 )
                         
                                     {
-                                    UploadMediaSingleton::uploadMedia= UploadMediaSingleton();
+                                    UploadMediaSingleton::uploadMedia= new UploadMediaSingleton();
     
 
                                     }
@@ -96,27 +102,27 @@ class UploadMediaSingleton
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: HashMap<Object*, Object*> readerFileTypesHashMap;
+    private: HashMap<Object*, Object*>* readerFileTypesHashMap;
 
-    private: HashMap<Object*, Object*> writerFileTypesHashMap;
+    private: HashMap<Object*, Object*>* writerFileTypesHashMap;
 
 private: UploadMediaSingleton(){
-this->readerFileTypesHashMap= StdUtil::getInstance().createHashMap();
+this->readerFileTypesHashMap= StdUtil::getInstance()->createHashMap();
     
-this->writerFileTypesHashMap= StdUtil::getInstance().createHashMap();
-    
-
-    HashMap<Object*, Object*> hashMap = MediaData::toHashMap();;
+this->writerFileTypesHashMap= StdUtil::getInstance()->createHashMap();
     
 
-    Set set = hashMap.keys();;
+    HashMap<Object*, Object*>* hashMap = MediaData::toHashMap();;
     
 
-    std::vector<Object*> mediaDataNameArray = set.toArray();;
+    Set* set = hashMap->keys();;
+    
+
+    std::vector<Object*> mediaDataNameArray = set->toArray();;
     
 
     int32_t size = mediaDataNameArray.size();;
@@ -132,20 +138,20 @@ this->writerFileTypesHashMap= StdUtil::getInstance().createHashMap();
     std::string mediaDataName = mediaDataNameArray[index];;
     
 
-    MediaData mediaData = hashMap.get(mediaDataName);;
+    MediaData* mediaData = dynamic_cast<MediaData*>(hashMap->get(mediaDataName));;
     
-this->readerFileTypesHashMap.put(mediaData.getName(), mediaData.getType());
+this->readerFileTypesHashMap->put(mediaData->getName(), mediaData->getType());
     
 }
 
 
-    MediaIOUtil mediaIOUtil = MediaIOUtil::getInstance();;
+    MediaIOUtil* mediaIOUtil = MediaIOUtil::getInstance();;
     
 
-    std::string RESIZABLE_MEDIA = MediaTypeData::getInstance().RESIZABLE_MEDIA;;
+    std::string RESIZABLE_MEDIA = MediaTypeData::getInstance()->RESIZABLE_MEDIA;;
     
 
-    std::vector<std::string> readerFileTypes = mediaIOUtil.getReaderFormatNames();;
+    std::vector<std::string> readerFileTypes = mediaIOUtil->getReaderFormatNames();;
     
 
 
@@ -154,12 +160,12 @@ this->readerFileTypesHashMap.put(mediaData.getName(), mediaData.getType());
                         for (
     int32_t index = 0;index < readerFileTypes.size(); index++)
         {
-this->readerFileTypesHashMap.put(readerFileTypes[index], RESIZABLE_MEDIA);
+this->readerFileTypesHashMap->put(readerFileTypes[index], RESIZABLE_MEDIA);
     
 }
 
 
-    std::vector<std::string> writerFileTypes = mediaIOUtil.getWriterFormatNames();;
+    std::vector<std::string> writerFileTypes = mediaIOUtil->getWriterFormatNames();;
     
 
 
@@ -168,26 +174,26 @@ this->readerFileTypesHashMap.put(readerFileTypes[index], RESIZABLE_MEDIA);
                         for (
     int32_t index = 0;index < writerFileTypes.size(); index++)
         {
-this->writerFileTypesHashMap.put(writerFileTypes[index], RESIZABLE_MEDIA);
+this->writerFileTypesHashMap->put(writerFileTypes[index], RESIZABLE_MEDIA);
     
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Supported Media Readers: ");
+stringBuffer->append("Supported Media Readers: ");
     
-stringBuffer.append(this->readerFileTypesHashMap.toString());
+stringBuffer->append(this->readerFileTypesHashMap->toString());
     
-stringBuffer.append(" Writers: ");
+stringBuffer->append(" Writers: ");
     
-stringBuffer.append(this->writerFileTypesHashMap.toString());
+stringBuffer->append(this->writerFileTypesHashMap->toString());
     
-this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -200,7 +206,7 @@ this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.CONSTRUCTO
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->readerFileTypesHashMap.containsKey(mediaFileType);;
+                        return this->readerFileTypesHashMap->containsKey(mediaFileType);;
     
 }
 
@@ -210,7 +216,7 @@ this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.CONSTRUCTO
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->readerFileTypesHashMap.containsKey(mediaFileType);;
+                        return this->readerFileTypesHashMap->containsKey(mediaFileType);;
     
 }
 
@@ -255,13 +261,13 @@ this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.CONSTRUCTO
 }
 
 
-    private: bool isMedia(std::string mediaFileType, std::string aMediaType, HashMap<Object*, Object*> hashMap){
+    private: bool isMedia(std::string mediaFileType, std::string aMediaType, HashMap<Object*, Object*>* hashMap){
 
-                        if(hashMap.containsKey(mediaFileType))
+                        if(hashMap->containsKey(mediaFileType))
                         
                                     {
                                     
-    std::string mediaType = hashMap.get(mediaFileType);;
+    std::string mediaType = hashMap->get(mediaFileType);;
     
 
                         if(mediaType.compare(aMediaType) == 0)

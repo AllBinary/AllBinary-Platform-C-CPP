@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/system/security/licensing/ClientInformationFactory.h>
 
       
@@ -42,14 +48,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DemoGameMidlet.h"
-#include "LicenseLoadingType.h"
-#include "LicensedDemoSetupFactory.h"
-#include "LicenseCheckRunnableFactory.h"
+        #include "org/allbinary/game/midlet/DemoGameMidlet.h"
+#include "org/allbinary/game/midlet/LicenseLoadingType.h"
+#include "org/allbinary/game/midlet/LicensedDemoSetupFactory.h"
+#include "org/allbinary/game/midlet/LicenseCheckRunnableFactory.h"
 
 class SpecialDemoGameMidlet: public DemoGameMidlet {
 
-public: SpecialDemoGameMidlet(ClientInformationFactory clientInformationFactory, LicenseLoadingType licenseLoadingType, LicensedDemoSetupFactory demoSetupFactory, LicenseCheckRunnableFactory licenseCheckRunnableFactory) : DemoGameMidlet(clientInformationFactory){
+public: SpecialDemoGameMidlet(ClientInformationFactory* clientInformationFactory, LicenseLoadingType* licenseLoadingType, LicensedDemoSetupFactory* demoSetupFactory, LicenseCheckRunnableFactory* licenseCheckRunnableFactory) : DemoGameMidlet(clientInformationFactory){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -64,7 +70,7 @@ public: SpecialDemoGameMidlet(ClientInformationFactory clientInformationFactory,
 
 
     public: void preInit(){
-LicenseServerInitFileUtil().init();
+(new LicenseServerInitFileUtil())->init();
     
 }
 

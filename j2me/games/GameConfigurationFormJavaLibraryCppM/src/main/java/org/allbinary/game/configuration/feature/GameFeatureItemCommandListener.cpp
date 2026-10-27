@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -76,43 +82,45 @@
         
 class GameFeatureItemCommandListener
             : public Object
-        : public ItemCommandListener {
+        , public ItemCommandListener {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: GameOptionsForm gameOptionsForm;
+    private: GameOptionsForm* gameOptionsForm;
 
-public: GameFeatureItemCommandListener(GameOptionsForm gameOptionsForm){
+public: GameFeatureItemCommandListener(GameOptionsForm* gameOptionsForm){
 this->gameOptionsForm= gameOptionsForm;
     
 }
 
 
-    public: void commandAction(Command command, Item item){
+    public: void commandAction(Command* command, Item* item){
 
         try {
             
-    std::string itemLabel = item.getLabel();;
+    std::string itemLabel = item->getLabel();;
     
-this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().ITEM_LABEL).append(itemLabel).toString(), this, MidletStrings::getInstance().COMMAND_ACTION);
+this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->ITEM_LABEL)->append(itemLabel)->toString(), this, MidletStrings::getInstance()->COMMAND_ACTION);
     
 
-                        if(item instanceof GameConfigurationGauge)
+                        if(
+                                        (dynamic_cast<const GameConfigurationGauge*>(item) != nullptr)
+                                    )
                         
                                     {
-                                    GameConfigurationUtil::getInstance().change(this->gameOptionsForm, item);
+                                    GameConfigurationUtil::getInstance()->change(this->gameOptionsForm, dynamic_cast<GameConfigurationGauge*>(item));
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, MidletStrings::getInstance().COMMAND_ACTION, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, MidletStrings::getInstance()->COMMAND_ACTION, &e);
     
 }
 

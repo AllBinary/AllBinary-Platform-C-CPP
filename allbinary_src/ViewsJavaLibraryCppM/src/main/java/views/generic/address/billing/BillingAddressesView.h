@@ -21,6 +21,12 @@
         #ifndef VIEWS_GENERIC_ADDRESS_BILLING_BILLINGADDRESSESVIEW_H
         #define VIEWS_GENERIC_ADDRESS_BILLING_BILLINGADDRESSESVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -88,17 +94,17 @@
         
 class BillingAddressesView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
-    protected: BasicArrayList streetAddresses;
+    protected: BasicArrayList* streetAddresses;
 
-public: BillingAddressesView(TransformInfoInterface transformInfoInterface);
+public: BillingAddressesView(TransformInfoInterface* transformInfoInterface);
 
-    protected: HttpServletRequest getRequest();
+    protected: HttpServletRequest* getRequest();
 
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
     public: void addDomNodeInterfaces();
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOXINDEXEDANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOXINDEXEDANIMATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -66,28 +72,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TextInterface.h"
-#include "TextChangeListener.h"
+        #include "org/allbinary/animation/text/TextInterface.h"
+#include "org/allbinary/animation/text/TextChangeListener.h"
 
 class CustomTextBoxIndexedAnimation: public IndexedAnimation, public RawKeyEventListener, public UpdateMyFontInterface, public TextInterface {
 
-    private: CustomTextBox customTextBox;
+    private: CustomTextBox* customTextBox;
 
-    private: std::string lastText = StringUtil::getInstance().INIT_STRING;
+    private: std::string lastText = StringUtil::getInstance()->INIT_STRING;
 
     protected: bool hasChanged = true;
 
-    private: TextChangeListener textChangeListener = TextChangeListener::getInstance();
+    private: TextChangeListener* textChangeListener = TextChangeListener::getInstance();
 
-public: CustomTextBoxIndexedAnimation(CustomTextBox customTextBox);
+public: CustomTextBoxIndexedAnimation(CustomTextBox* customTextBox);
 
-    public: void setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor* basicColor);
 
-    public: void setBackgroundBasicColorP(BasicColor basicColor);
+    public: void setBackgroundBasicColorP(BasicColor* basicColor);
 
-    public: void setTextWithOnMeasure(std::string text, TextChangeListener textChangeListener);
+    public: void setTextWithOnMeasure(std::string text, TextChangeListener* textChangeListener);
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
     public: void setText(std::string text);
 
@@ -97,9 +103,9 @@ public: CustomTextBoxIndexedAnimation(CustomTextBox customTextBox);
 
     public: int32_t getFontHeight();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
-    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
+    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z);
 
 };
 

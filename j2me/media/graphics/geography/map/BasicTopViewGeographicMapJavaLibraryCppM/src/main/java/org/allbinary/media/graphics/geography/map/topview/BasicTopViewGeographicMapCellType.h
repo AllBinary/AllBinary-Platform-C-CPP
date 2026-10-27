@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -74,9 +80,9 @@ class BasicTopViewGeographicMapCellType
             : public Object
          {
 
-    public: static BasicTopViewGeographicMapCellType createType(std::string name, int32_t type, int32_t cost);
+    public: static BasicTopViewGeographicMapCellType* createType(std::string name, int32_t type, int32_t cost);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     public: std::string name;
 
@@ -84,9 +90,9 @@ class BasicTopViewGeographicMapCellType
 
     private: std::vector<int32_t> types;
 
-public: BasicTopViewGeographicMapCellType(std::string name, BasicArrayList types, int32_t cost);
+public: BasicTopViewGeographicMapCellType(std::string name, BasicArrayList* types, int32_t cost);
 
-    public: bool isType(GeographicMapCellType type);
+    public: bool isType(GeographicMapCellType* type);
 
     public: bool hasType(int32_t type);
 

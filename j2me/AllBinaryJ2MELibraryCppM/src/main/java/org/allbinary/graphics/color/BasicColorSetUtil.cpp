@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -41,15 +47,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicColor.h"
+        #include "org/allbinary/graphics/color/BasicColor.h"
 
 class BasicColorSetUtil
             : public Object
          {
 
-    private: static BasicColorSetUtil instance() { return BasicColorSetUtil(); }
+    private: static BasicColorSetUtil* instance() { static std::unique_ptr<BasicColorSetUtil> value(new BasicColorSetUtil()); return value.get(); }
 
-    public: static BasicColorSetUtil getInstance(){
+    public: static BasicColorSetUtil* getInstance(){
 
 
 
@@ -63,14 +69,14 @@ protected: BasicColorSetUtil(){
 }
 
 
-    public: void setBasicColorP(Graphics graphics, BasicColor basicColor){
-graphics.setColor(basicColor.intValue());
+    public: void setBasicColorP(Graphics* graphics, BasicColor* basicColor){
+graphics->setColor(basicColor->intValue());
     
 }
 
 
-    public: void setBasicColorP3(Graphics graphics, BasicColor basicColor, int32_t value){
-graphics.setColor(value);
+    public: void setBasicColorP3(Graphics* graphics, BasicColor* basicColor, int32_t value){
+graphics->setColor(value);
     
 }
 

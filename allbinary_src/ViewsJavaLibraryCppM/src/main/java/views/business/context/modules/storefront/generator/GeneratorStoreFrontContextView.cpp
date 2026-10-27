@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -59,9 +65,9 @@
         
 class GeneratorStoreFrontContextView: public HttpStoreComponentView {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: GeneratorStoreFrontContextView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+public: GeneratorStoreFrontContextView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -69,10 +75,10 @@ public: GeneratorStoreFrontContextView(TransformInfoInterface transformInfoInter
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("View Name: " +transformInfoInterface.getName(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("View Name: " +transformInfoInterface->getName(), this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -84,10 +90,10 @@ public: GeneratorStoreFrontContextView(TransformInfoInterface transformInfoInter
             
     protected: std::string view(std::string group){
 
-    std::string result = TransformsGeneratorUtil::getInstance().generateComponentsFromObjectConfig(this->abeClientInformation, this->getTransformInfoInterface(), group);;
+    std::string result = TransformsGeneratorUtil::getInstance()->generateComponentsFromObjectConfig(this->abeClientInformation, this->getTransformInfoInterface(), group);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPEXTRAOUTPUT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPEXTRAOUTPUT))
                         
                                     {
                                     
@@ -104,7 +110,7 @@ public: GeneratorStoreFrontContextView(TransformInfoInterface transformInfoInter
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 
                         }
@@ -121,17 +127,17 @@ public: GeneratorStoreFrontContextView(TransformInfoInterface transformInfoInter
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->view(TransformInfosData::getInstance().ALL);;
+                        return this->view(TransformInfosData::getInstance()->ALL);;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }

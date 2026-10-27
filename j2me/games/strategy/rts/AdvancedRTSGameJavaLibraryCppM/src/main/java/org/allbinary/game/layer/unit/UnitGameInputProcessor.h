@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_UNIT_UNITGAMEINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_LAYER_UNIT_UNITGAMEINPUTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/input/GameInputProcessor.h>
 
       
@@ -42,13 +48,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UnitLayer.h"
+        #include "org/allbinary/game/layer/unit/UnitLayer.h"
 
 class UnitGameInputProcessor: public GameInputProcessor {
 
-    protected: UnitLayer unitLayer;
+    protected: UnitLayer* unitLayer;
 
-public: UnitGameInputProcessor(UnitLayer unitLayer);
+public: UnitGameInputProcessor(UnitLayer* unitLayer);
 
 };
 

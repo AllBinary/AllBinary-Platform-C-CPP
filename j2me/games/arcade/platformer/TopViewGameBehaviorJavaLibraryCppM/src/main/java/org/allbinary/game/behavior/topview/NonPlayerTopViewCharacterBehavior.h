@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/media/graphics/geography/map/MultiGeographicMapBehavior.h>
@@ -85,19 +91,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TopViewCharacterBehavior.h"
+        #include "org/allbinary/game/behavior/topview/TopViewCharacterBehavior.h"
 
 class NonPlayerTopViewCharacterBehavior: public TopViewCharacterBehavior {
 
-    private: const MultiGeographicMapBehavior geographicMapBehavior = MultiGeographicMapBehavior();
+    private: MultiGeographicMapBehavior* geographicMapBehavior = new MultiGeographicMapBehavior();
 
-    private: const BasicTerrainInfo CLIFF = BasicTerrainInfo(AngleFactory::getInstance().DOWN);
+    private: BasicTerrainInfo* CLIFF = new BasicTerrainInfo(AngleFactory::getInstance()->DOWN);
 
                 //@Throws(Exception.constructor)
             
-    public: void terrainEvent(AllBinaryLayer layer, Direction direction, int32_t x, int32_t y, std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, GeographicMapCellPosition geographicMapCellPosition);
+    public: void terrainEvent(AllBinaryLayer* layer, Direction* direction, int32_t x, int32_t y, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, GeographicMapCellPosition* geographicMapCellPosition);
 
-    public: void terrainMove(AllBinaryLayer layer, std::vector<BasicGeographicMap> geographicMapInterfaceArray, int32_t x, int32_t y);
+    public: void terrainMove(AllBinaryLayer* layer, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, int32_t x, int32_t y);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -62,29 +68,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TagHelper.h"
+        #include "admin/taghelpers/TagHelper.h"
 
 class BasketHelper: public TagHelper {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: WeblisketSession weblisketSession;
+    private: WeblisketSession* weblisketSession;
 
-    private: StoreFrontInterface storeFrontInterface;
+    private: StoreFrontInterface* storeFrontInterface;
 
-    private: HashMap<Object*, Object*> propertiesHashMap;
+    private: HashMap<Object*, Object*>* propertiesHashMap;
 
-    private: PageContext pageContext;
+    private: PageContext* pageContext;
 
     private: const int32_t MAX = 200;
 
-public: BasketHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
+public: BasketHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
 this->propertiesHashMap= hashMap;
     
 this->pageContext= pageContext;
     
 
-    std::string storeName = this->propertiesHashMap.get(StoreFrontData::getInstance().NAME);;
+    std::string storeName = this->propertiesHashMap->get(StoreFrontData::getInstance()->NAME);;
     
 
                         if(true)
@@ -95,19 +101,19 @@ this->pageContext= pageContext;
 
                                     }
                                 
-this->weblisketSession= WeblisketSession(hashMap, pageContext);
+this->weblisketSession= new WeblisketSession(hashMap, pageContext);
     
 }
 
 
-    public: Boolean isBasketEmpty(){
+    public: bool isBasketEmpty(){
 
         try {
             
-    BasketInterface basket = this->weblisketSession.getOrder().getBasket();;
+    BasketInterface* basket = this->weblisketSession->getOrder()->getBasket();;
     
 
-                        if(basket.getNumberOfItems().intValue() <= 0)
+                        if(basket->getNumberOfItems()->intValue() <= 0)
                         
                                     {
                                     
@@ -131,13 +137,13 @@ this->weblisketSession= WeblisketSession(hashMap, pageContext);
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "isBasketEmpty()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "isBasketEmpty()", &e);
     
 
                                     }

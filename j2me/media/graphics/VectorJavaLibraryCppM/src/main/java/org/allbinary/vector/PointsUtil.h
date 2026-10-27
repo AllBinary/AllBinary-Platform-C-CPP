@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -48,9 +54,9 @@ class PointsUtil
             : public Object
          {
 
-    private: static PointsUtil instance() { return PointsUtil(); }
+    private: static PointsUtil* instance() { static std::unique_ptr<PointsUtil> value(new PointsUtil()); return value.get(); }
 
-    public: static PointsUtil getInstance();
+    public: static PointsUtil* getInstance();
 
     public: std::vector<std::vector<std::vector<int32_t>>> adjustXY(std::vector<std::vector<std::vector<int32_t>>> points, int32_t x, int32_t y);
 

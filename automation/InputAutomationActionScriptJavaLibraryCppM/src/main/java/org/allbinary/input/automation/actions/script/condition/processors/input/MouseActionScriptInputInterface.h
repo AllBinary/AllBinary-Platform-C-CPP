@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEACTIONSCRIPTINPUTINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEACTIONSCRIPTINPUTINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/awt.h>
 
       
@@ -42,20 +48,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProfileActionScriptInputInterface.h"
-#include "Point.h"
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/ProfileActionScriptInputInterface.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/Point.h"
 
 class MouseActionScriptInputInterface: public ProfileActionScriptInputInterface {
 
-    void setPoint(Point point);
+    public: virtual void setPoint(Point* point) = 0;
 
-    Point getPoint();
+    public: virtual Point* getPoint() = 0;
 
-    int32_t getButtonClicks();
+    public: virtual int32_t getButtonClicks() = 0;
 
-    void setButtonClicks(int32_t buttons);
+    public: virtual void setButtonClicks(int32_t buttons) = 0;
 
-    void log();
+    public: virtual void log() = 0;
 
 };
 

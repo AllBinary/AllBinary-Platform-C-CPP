@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILEFACTORY_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_FILEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,33 +58,33 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFile.h"
+        #include "org/allbinary/logic/io/file/AbFile.h"
 
 class FileFactory
             : public Object
          {
 
-    private: static const FileFactory SINGLETON = FileFactory(ResourceUtil::getInstance().getContext());
+    private: static FileFactory* SINGLETON() { static std::unique_ptr<FileFactory> value(new FileFactory(ResourceUtil::getInstance()->getContext())); return value.get(); }
 
-    public: static FileFactory getInstance();
+    public: static FileFactory* getInstance();
 
-    private: Context context;
+    private: Context* context;
 
-private: FileFactory(Context context);
+private: FileFactory(Context* context);
 
                 //@Throws(Exception.constructor)
             
     public: bool isFile(std::string path);
 
-    public: Context getContext();
+    public: Context* getContext();
 
                 //@Throws(Exception.constructor)
             
-    public: AbFile getFile(std::string filePath);
+    public: AbFile* getFile(std::string filePath);
 
                 //@Throws(Exception.constructor)
             
-    public: AbFile getInstance(AbFile file, std::string childFilePath);
+    public: AbFile* getInstance(AbFile* file, std::string childFilePath);
 
 };
 

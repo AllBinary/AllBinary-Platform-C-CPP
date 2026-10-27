@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -80,15 +88,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageCacheBase.h"
+        #include "org/allbinary/image/ImageCacheBase.h"
 
 class ImageCache: public ImageCacheBase {
 
-    public: static const ImageCache NULL_IMAGE_CACHE = ImageCache();
+    public: static ImageCache* NULL_IMAGE_CACHE() { static std::unique_ptr<ImageCache> value(new ImageCache()); return value.get(); }
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const TsUtil tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil = TsUtil::getInstance();
 
 public: ImageCache(){
 }
@@ -100,10 +108,10 @@ public: ImageCache(){
 
     public: int32_t getIndex(Object* key){
 
-    GDResources gdResources = GDResources::getInstance();;
+    GDResources* gdResources = GDResources::getInstance();;
     
 
-    std::vector<std::string> resourceStringArray = gdResources.resourceStringArray;;
+    std::vector<std::string> resourceStringArray = gdResources->resourceStringArray;;
     
 
     int32_t size = resourceStringArray.size();;
@@ -130,24 +138,24 @@ public: ImageCache(){
                                 
 }
 
-this->logUtil.putF(StringMaker().append("unable to find key: ").append(StringUtil::getInstance().toString(key)).toString(), this, this->commonStrings.RUN);
+this->logUtil.putF((new StringMaker())->append("unable to find key: ")->append(StringUtil::getInstance()->toString(key))->toString(), this, this->commonStrings->RUN);
     
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Image get(std::string caller, int32_t width, int32_t height){
+    public: Image* get(std::string caller, int32_t width, int32_t height){
 
     int32_t foundIndex = this->getIndexWH(width, height);;
     
 
-    Image image = this->getFromAvailable(foundIndex, width, height);;
+    Image* image = this->getFromAvailable(foundIndex, width, height);;
     
 
                         if(image == NullImage::NULL_IMAGE)
@@ -159,7 +167,7 @@ this->logUtil.putF(StringMaker().append("unable to find key: ").append(StringUti
                         if(this->volume > 32000)
                         
                                     {
-                                    this->tsUtil.gc();
+                                    this->tsUtil->gc();
     
 this->volume= 0;
     
@@ -209,19 +217,19 @@ this->listOfList[foundIndex].add(image);
 
                 //@Throws(Exception.constructor)
             
-    public: Image getWithKey(Object* key){
+    public: Image* getWithKey(Object* key){
 
-    Image image = this->getImage(key);;
+    Image* image = this->getImage(key);;
     
 
                         if(image == NullImage::NULL_IMAGE)
                         
                                     {
                                     
-    ResourceUtil resourceUtil = ResourceUtil::getInstance();;
+    ResourceUtil* resourceUtil = ResourceUtil::getInstance();;
     
 
-    InputStream resourceInputStream = resourceUtil.getResourceAsStream(key);;
+    InputStream* resourceInputStream = resourceUtil->getResourceAsStream(key);;
     
 
                         if(resourceInputStream == 
@@ -232,7 +240,7 @@ this->listOfList[foundIndex].add(image);
                                     
 
 
-                            throw RuntimeException(StringMaker().append("Image resource is not available for key: ").append(StringUtil::getInstance().toString(key)).toString());
+                            throw new RuntimeException((new StringMaker())->append("Image resource is not available for key: ")->append(StringUtil::getInstance()->toString(key))->toString());
                     
 
                                     }
@@ -243,17 +251,17 @@ this->listOfList[foundIndex].add(image);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put("Exception: Trying Again After GC", this, this->commonStrings.GET, e);
+this->logUtil.put("Exception: Trying Again After GC", this, this->commonStrings->GET, &e);
     
-this->logUtil.putF(StringMaker().append("InputStream: ").append(StringUtil::getInstance().toString(resourceInputStream)).toString(), this, this->commonStrings.GET);
+this->logUtil.putF((new StringMaker())->append("InputStream: ")->append(StringUtil::getInstance()->toString(resourceInputStream))->toString(), this, this->commonStrings->GET);
     
-this->tsUtil.gc();
+this->tsUtil->gc();
     
-this->tsUtil.gc();
+this->tsUtil->gc();
     
-this->logUtil.putF(Memory::getInfo(), this, this->commonStrings.GET);
+this->logUtil.putF(Memory::getInfo(), this, this->commonStrings->GET);
     
 Thread::sleep(100);
     
@@ -269,7 +277,7 @@ image= this->createImageFromInputStream(key, resourceInputStream);
                                     }
                                 
                         else {
-                            resourceInputStream.close();
+                            resourceInputStream->close();
     
 
                         }

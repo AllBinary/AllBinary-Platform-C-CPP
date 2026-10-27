@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/ClassLoader.h"
@@ -69,11 +75,11 @@ class ResourceUtil
             : public Object
          {
 
-    private: static Object* classLoader = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* classLoader = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static ResourceUtil instance() { return ResourceUtil(); }
+    private: static ResourceUtil* instance() { static std::unique_ptr<ResourceUtil> value(new ResourceUtil()); return value.get(); }
 
-    public: static ResourceUtil getInstance(){
+    public: static ResourceUtil* getInstance(){
 
 
 
@@ -83,20 +89,20 @@ class ResourceUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: ResourceUtil(){
 }
 
 
     public: void setLoadingPaths(std::string path, std::string ext){
-this->logUtil.putF(CommonStrings::getInstance().NOT_IMPLEMENTED, this, "setLoadingPaths");
+this->logUtil->putF(CommonStrings::getInstance()->NOT_IMPLEMENTED, this, "setLoadingPaths");
     
 }
 
 
-    public: void setClassLoader(ClassLoader classLoader){
-this->logUtil.putF(StringMaker().append("Resource Loader: ").append(classLoader->constructor.name.toString()).toString(), this, "setClassLoader");
+    public: void setClassLoader(ClassLoader* classLoader){
+this->logUtil->putF((new StringMaker())->append("Resource Loader: ")->append(classLoader->getClass()->getName())->toString(), this, "setClassLoader");
     
 ResourceUtil::classLoader= classLoader;
     
@@ -105,9 +111,9 @@ ResourceUtil::classLoader= classLoader;
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream getResourceAsStream(std::string resource){
+    public: InputStream* getResourceAsStream(std::string resource){
 
-    InputStream inputStream = this->getResourceAsStreamAtStart(resource, 2);;
+    InputStream* inputStream = this->getResourceAsStreamAtStart(resource, 2);;
     
 
                         if(inputStream == 
@@ -126,7 +132,7 @@ ResourceUtil::classLoader= classLoader;
                                     
 
 
-                            throw Exception(StringMaker().append("Unable to obtain: ").append(resource).toString());
+                            throw new Exception((new StringMaker())->append("Unable to obtain: ")->append(resource)->toString());
                     
 
                                     }
@@ -145,18 +151,18 @@ ResourceUtil::classLoader= classLoader;
 
                 //@Throws(Exception.constructor)
             
-    private: InputStream getResourceAsStreamAtStart(std::string resource, int32_t startIndex){
+    private: InputStream* getResourceAsStreamAtStart(std::string resource, int32_t startIndex){
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
-    int32_t index = resource.indexOf(commonSeps.COLON);;
+    int32_t index = JavaString::indexOf(resource, commonSeps->COLON);;
     
 
-    std::string resourcePath = resource.substring(index +startIndex);;
+    std::string resourcePath = JavaString::substring(resource, index +startIndex);;
     
 
-    InputStream inputStream = resource..javaClass.getResourceAsStream(resourcePath);;
+    InputStream* inputStream = resource.getClass()->getResourceAsStream(resourcePath);;
     
 
                         if(inputStream != 
@@ -174,7 +180,7 @@ ResourceUtil::classLoader= classLoader;
                                     }
                                 
 
-    ClassLoader classLoader = ResourceUtil::classLoader;;
+    ClassLoader* classLoader = dynamic_cast<ClassLoader*>(ResourceUtil::classLoader);;
     
 inputStream= classLoader->getResourceAsStream(resourcePath);
     
@@ -193,7 +199,7 @@ inputStream= classLoader->getResourceAsStream(resourcePath);
 
                                     }
                                 
-inputStream= Thread::currentThread().getContextClassLoader().getResourceAsStream(resourcePath);
+inputStream= Thread::currentThread()->getContextClassLoader()->getResourceAsStream(resourcePath);
     
 
                         if(inputStream != 
@@ -219,7 +225,7 @@ inputStream= Thread::currentThread().getContextClassLoader().getResourceAsStream
 }
 
 
-    public: void addResource(std::string resource, Integer value){
+    public: void addResource(std::string resource, int32_t value){
 }
 
 

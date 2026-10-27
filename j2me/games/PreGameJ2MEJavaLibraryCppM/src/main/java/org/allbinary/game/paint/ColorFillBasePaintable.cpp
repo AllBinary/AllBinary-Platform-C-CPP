@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -54,25 +60,25 @@
         
 class ColorFillBasePaintable: public Paintable, public ColorCompositeInterface {
 
-    protected: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
+    protected: BasicColor* basicColor = BasicColorFactory::getInstance()->WHITE;
 
     protected: int32_t colorP= 0;
 
-public: ColorFillBasePaintable(BasicColor basicColor){
+public: ColorFillBasePaintable(BasicColor* basicColor){
 this->setBasicColorP(basicColor);
     
 }
 
 
-    public: void setBasicColorP(BasicColor basicColor){
+    public: void setBasicColorP(BasicColor* basicColor){
 this->basicColor= basicColor;
     
-this->setColor(this->getBasicColorP().intValue());
+this->setColor(this->getBasicColorP()->intValue());
     
 }
 
 
-    public: BasicColor getBasicColorP(){
+    public: BasicColor* getBasicColorP(){
 
 
 
@@ -98,7 +104,7 @@ this->colorP= color;
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 }
 
 

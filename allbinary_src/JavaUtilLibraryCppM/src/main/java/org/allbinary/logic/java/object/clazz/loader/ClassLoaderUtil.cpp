@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/ClassLoader.h"
@@ -51,7 +57,7 @@ class ClassLoaderUtil
             
     public: static std::string getName(Object* anyType){
 
-    ClassLoader classLoader = anyType->constructor.namegetClassLoader();;
+    ClassLoader* classLoader = anyType->getClass()getClassLoader();;
     
 
                         if(classLoader != 
@@ -63,7 +69,7 @@ class ClassLoaderUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "ClassLoader: " +classLoader.constructor.name.toString();
+                        return "ClassLoader: " +classLoader->getClass()->getName();
     
 
                                     }
@@ -71,7 +77,7 @@ class ClassLoaderUtil
 
 
 
-                            throw Exception("Unable to get ClassLoader");
+                            throw new Exception("Unable to get ClassLoader");
                     
 }
 

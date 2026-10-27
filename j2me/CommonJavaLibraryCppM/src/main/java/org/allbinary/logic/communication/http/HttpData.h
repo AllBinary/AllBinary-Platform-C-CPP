@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_HTTPDATA_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_HTTPDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/string/CommonSeps.h>
@@ -49,9 +55,9 @@ class HttpData
             : public Object
          {
 
-    private: static HttpData instance() { return HttpData(); }
+    private: static HttpData* instance() { static std::unique_ptr<HttpData> value(new HttpData()); return value.get(); }
 
-    public: static HttpData getInstance();
+    public: static HttpData* getInstance();
 
     public: std::string EQUALS;
 

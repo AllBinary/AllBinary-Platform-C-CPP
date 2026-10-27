@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -69,35 +75,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFileInterface.h"
+        #include "org/allbinary/logic/io/file/AbFileInterface.h"
 
 class AbFile
             : public Object
-        : public AbFileInterface {
+        , public AbFileInterface {
 
-    public: static const AbFile NULL_FILE = AbFile::createAbFileFromRawPath(StringUtil::getInstance().EMPTY_STRING);
-
-                //@Throws(Exception.constructor)
-            
-    public: static AbFile createAbFileWithChild(AbFile file, std::string childPathName);
+    public: static inline AbFile* NULL_FILE = AbFile::createAbFileFromRawPath(StringUtil::getInstance()->EMPTY_STRING);
 
                 //@Throws(Exception.constructor)
             
-    public: static AbFile createAbFile(std::string filePath);
+    public: static AbFile* createAbFileWithChild(AbFile* file, std::string childPathName);
 
                 //@Throws(Exception.constructor)
             
-    public: static AbFile createAbFilePathAndName(std::string filePath, std::string fileName);
+    public: static AbFile* createAbFile(std::string filePath);
 
-    public: static AbFile createAbFileFromAbPath(AbPath abPath);
+                //@Throws(Exception.constructor)
+            
+    public: static AbFile* createAbFilePathAndName(std::string filePath, std::string fileName);
 
-    public: static AbFile createAbFileFromRawPath(std::string filePath);
+    public: static AbFile* createAbFileFromAbPath(AbPath* abPath);
 
-    private: File file;
+    public: static AbFile* createAbFileFromRawPath(std::string filePath);
 
-: AbFile(File file);
+    private: File* file;
 
-    protected: File getFile();
+: AbFile(File* file);
+
+    protected: File* getFile();
 
     public: std::string getName();
 
@@ -121,7 +127,7 @@ class AbFile
             
     public: Object* getCanonicalFile();
 
-    public: URI toURI();
+    public: URI* toURI();
 
     public: bool canRead();
 
@@ -151,19 +157,19 @@ class AbFile
 
     public: std::vector<std::string> list();
 
-    public: std::vector<std::string> listWithFilter(FilenameFilter filter);
+    public: std::vector<std::string> listWithFilter(FilenameFilter* filter);
 
     public: std::vector<Object*> listFiles();
 
-    public: std::vector<Object*> listFilesFileNameFilter(FilenameFilter filter);
+    public: std::vector<Object*> listFilesFileNameFilter(FilenameFilter* filter);
 
-    public: std::vector<Object*> listFilesFileFilter(FileFilter filter);
+    public: std::vector<Object*> listFilesFileFilter(FileFilter* filter);
 
     public: bool mkdir();
 
     public: bool mkdirs();
 
-    public: bool renameTo(AbFile dest);
+    public: bool renameTo(AbFile* dest);
 
     public: bool setLastModified(int64_t time);
 
@@ -189,7 +195,7 @@ class AbFile
 
     public: int64_t getUsableSpace();
 
-    public: int32_t compareTo(File pathname);
+    public: int32_t compareTo(File* pathname);
 
     public: bool equals(Object* obj);
 

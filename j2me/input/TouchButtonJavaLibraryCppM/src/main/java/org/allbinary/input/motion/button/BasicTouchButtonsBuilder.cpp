@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -50,57 +56,57 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseTouchInput.h"
-#include "CommonButtons.h"
-#include "TouchButtonLocationHelper.h"
-#include "BasicTouchButtonCellPositionFactory.h"
-#include "TouchButton.h"
-#include "BasicTouchInputFactory.h"
-#include "TouchButtonUpResource.h"
-#include "TouchButtonDownResource.h"
-#include "TouchButtonTurnLeftResource.h"
-#include "TouchButtonTurnRightResource.h"
+        #include "org/allbinary/input/motion/button/BaseTouchInput.h"
+#include "org/allbinary/input/motion/button/CommonButtons.h"
+#include "org/allbinary/input/motion/button/TouchButtonLocationHelper.h"
+#include "org/allbinary/input/motion/button/BasicTouchButtonCellPositionFactory.h"
+#include "org/allbinary/input/motion/button/TouchButton.h"
+#include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
+#include "org/allbinary/input/motion/button/TouchButtonUpResource.h"
+#include "org/allbinary/input/motion/button/TouchButtonDownResource.h"
+#include "org/allbinary/input/motion/button/TouchButtonTurnLeftResource.h"
+#include "org/allbinary/input/motion/button/TouchButtonTurnRightResource.h"
 
 class BasicTouchButtonsBuilder: public BaseTouchInput {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: BasicArrayList getList(){
+    public: BasicArrayList* getList(){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+            this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
-    BasicArrayList list = BasicArrayListD();;
+    BasicArrayList* list = new BasicArrayListD();;
     
 
-    CommonButtons commonButtons = CommonButtons::getInstance();;
+    CommonButtons* commonButtons = CommonButtons::getInstance();;
     
 
-    TouchButtonLocationHelper touchButtonLocationHelper = TouchButtonLocationHelper();;
+    TouchButtonLocationHelper* touchButtonLocationHelper = new TouchButtonLocationHelper();;
     
 
-    BasicTouchButtonCellPositionFactory basicTouchButtonCellPositionFactory = BasicTouchButtonCellPositionFactory();;
+    BasicTouchButtonCellPositionFactory* basicTouchButtonCellPositionFactory = new BasicTouchButtonCellPositionFactory();;
     
 
-    TouchButton UP = TouchButton::createButton(BasicTouchInputFactory::getInstance().UP, TouchButtonUpResource::getInstance(), commonButtons.NORMAL_BUTTON, basicTouchButtonCellPositionFactory.SECOND_FROM_BOTTOM_LEFT, touchButtonLocationHelper.getColumnsRemainderHalf(), touchButtonLocationHelper.getRowsRemainderHalf());;
+    TouchButton* UP = TouchButton::createButton(BasicTouchInputFactory::getInstance()->UP, TouchButtonUpResource::getInstance(), commonButtons->NORMAL_BUTTON, basicTouchButtonCellPositionFactory->SECOND_FROM_BOTTOM_LEFT, touchButtonLocationHelper->getColumnsRemainderHalf(), touchButtonLocationHelper->getRowsRemainderHalf());;
     
 
-    TouchButton DOWN = TouchButton::createButton(BasicTouchInputFactory::getInstance().DOWN, TouchButtonDownResource::getInstance(), commonButtons.NORMAL_BUTTON, basicTouchButtonCellPositionFactory.BOTTOM_LEFT, touchButtonLocationHelper.getColumnsRemainderHalf(), touchButtonLocationHelper.getRowsRemainderHalf());;
+    TouchButton* DOWN = TouchButton::createButton(BasicTouchInputFactory::getInstance()->DOWN, TouchButtonDownResource::getInstance(), commonButtons->NORMAL_BUTTON, basicTouchButtonCellPositionFactory->BOTTOM_LEFT, touchButtonLocationHelper->getColumnsRemainderHalf(), touchButtonLocationHelper->getRowsRemainderHalf());;
     
 
-    TouchButton LEFT = TouchButton::createButton(BasicTouchInputFactory::getInstance().SPECIAL_BUTTON_FOUR, TouchButtonTurnLeftResource::getInstance(), commonButtons.NORMAL_BUTTON, basicTouchButtonCellPositionFactory.BOTTOM_SECOND_FROM_RIGHT, touchButtonLocationHelper.getColumnsRemainderHalf(), touchButtonLocationHelper.getRowsRemainderHalf());;
+    TouchButton* LEFT = TouchButton::createButton(BasicTouchInputFactory::getInstance()->SPECIAL_BUTTON_FOUR, TouchButtonTurnLeftResource::getInstance(), commonButtons->NORMAL_BUTTON, basicTouchButtonCellPositionFactory->BOTTOM_SECOND_FROM_RIGHT, touchButtonLocationHelper->getColumnsRemainderHalf(), touchButtonLocationHelper->getRowsRemainderHalf());;
     
 
-    TouchButton RIGHT = TouchButton::createButton(BasicTouchInputFactory::getInstance().SPECIAL_BUTTON_THREE, TouchButtonTurnRightResource::getInstance(), commonButtons.NORMAL_BUTTON, basicTouchButtonCellPositionFactory.BOTTOM_RIGHT, touchButtonLocationHelper.getColumnsRemainderHalf(), touchButtonLocationHelper.getRowsRemainderHalf());;
+    TouchButton* RIGHT = TouchButton::createButton(BasicTouchInputFactory::getInstance()->SPECIAL_BUTTON_THREE, TouchButtonTurnRightResource::getInstance(), commonButtons->NORMAL_BUTTON, basicTouchButtonCellPositionFactory->BOTTOM_RIGHT, touchButtonLocationHelper->getColumnsRemainderHalf(), touchButtonLocationHelper->getRowsRemainderHalf());;
     
-list.add(UP);
+list->add(UP);
     
-list.add(LEFT);
+list->add(LEFT);
     
-list.add(RIGHT);
+list->add(RIGHT);
     
-list.add(DOWN);
+list->add(DOWN);
     
 
 
@@ -110,15 +116,15 @@ list.add(DOWN);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET_LIST, e);
+this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET_LIST, &e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicArrayListUtil::getInstance().getImmutableInstance();;
+                        return BasicArrayListUtil::getInstance()->getImmutableInstance();;
     
 }
 

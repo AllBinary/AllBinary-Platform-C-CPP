@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -112,51 +118,51 @@ class BasicWorkFlow
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: Document workFlowDoc;
+    private: Document* workFlowDoc;
 
     private: std::string workFlowName;
 
     private: std::string storeName;
 
 public: BasicWorkFlow(){
-this->workFlowName= StringUtil::getInstance().EMPTY_STRING;
+this->workFlowName= StringUtil::getInstance()->EMPTY_STRING;
     
 this->workFlowDoc= DomDocumentHelper::create();
     
 
-    Node workFlowNode = this->workFlowDoc.createElement(WorkFlowData::getInstance().WORKFLOW);;
+    Node* workFlowNode = this->workFlowDoc->createElement(WorkFlowData::getInstance()->WORKFLOW);;
     
-this->workFlowDoc.appendChild(workFlowNode);
-    
-}
-
-
-public: BasicWorkFlow(HashMap<Object*, Object*> hashMap, PageContext pageContext){
-
-    WeblisketSession weblisketSession = WeblisketSession(hashMap, pageContext);;
-    
-this->storeName= weblisketSession.getStoreName();
-    
-
-    HashMap<Object*, Object*> requestHashMap = RequestParams(pageContext).toHashMap();;
-    
-this->workFlowName= requestHashMap.get(WorkFlowData::getInstance().NAME);
-    
-this->workFlowDoc= DomDocumentHelper::create(requestHashMap.get(WorkFlowData::getInstance().DATA));
+this->workFlowDoc->appendChild(workFlowNode);
     
 }
 
 
-public: BasicWorkFlow(HashMap<Object*, Object*> hashMap){
-this->workFlowName= hashMap.get(WorkFlowData::getInstance().NAME);
+public: BasicWorkFlow(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+
+    WeblisketSession* weblisketSession = new WeblisketSession(hashMap, pageContext);;
     
-this->storeName= hashMap.get(StoreFrontData::getInstance().NAME);
+this->storeName= weblisketSession->getStoreName();
     
-this->workFlowDoc= DomDocumentHelper::create(hashMap.get(WorkFlowData::getInstance().DATA));
+
+    HashMap<Object*, Object*>* requestHashMap = (new RequestParams(pageContext))->toHashMap();;
+    
+this->workFlowName= requestHashMap->get(WorkFlowData::getInstance()->NAME);
+    
+this->workFlowDoc= DomDocumentHelper::create(requestHashMap->get(WorkFlowData::getInstance()->DATA));
+    
+}
+
+
+public: BasicWorkFlow(HashMap<Object*, Object*>* hashMap){
+this->workFlowName= hashMap->get(WorkFlowData::getInstance()->NAME);
+    
+this->storeName= hashMap->get(StoreFrontData::getInstance()->NAME);
+    
+this->workFlowDoc= DomDocumentHelper::create(hashMap->get(WorkFlowData::getInstance()->DATA));
     
 }
 
@@ -193,25 +199,25 @@ this->workFlowDoc= DomDocumentHelper::create(hashMap.get(WorkFlowData::getInstan
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList toVector(){
+    public: BasicArrayList* toVector(){
 
-    BasicArrayList values = BasicArrayListD();;
+    BasicArrayList* values = new BasicArrayListD();;
     
-values.add(this->workFlowName);
+values->add(this->workFlowName);
     
-values.add(this->storeName);
+values->add(this->storeName);
     
-values.add(XmlDocumentHelper::toString(this->workFlowDoc));
-    
-
-    Calendar calendar = Calendar::getInstance();;
+values->add(XmlDocumentHelper::toString(this->workFlowDoc));
     
 
-    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    Calendar* calendar = Calendar::getInstance();;
     
-values.add(time);
+
+    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
     
-values.add(time);
+values->add(time);
+    
+values->add(time);
     
 
 
@@ -224,23 +230,23 @@ values.add(time);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(WorkFlowData::getInstance().NAME, this->workFlowName);
+hashMap->put(WorkFlowData::getInstance()->NAME, this->workFlowName);
     
-hashMap.put(StoreFrontData::getInstance().NAME, this->storeName);
+hashMap->put(StoreFrontData::getInstance()->NAME, this->storeName);
     
-hashMap.put(WorkFlowData::getInstance().DATA, XmlDocumentHelper::toString(this->workFlowDoc));
-    
-
-    Calendar calendar = Calendar::getInstance();;
+hashMap->put(WorkFlowData::getInstance()->DATA, XmlDocumentHelper::toString(this->workFlowDoc));
     
 
-    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    Calendar* calendar = Calendar::getInstance();;
     
-hashMap.put(EntryData::getInstance().LASTMODIFIED, time);
+
+    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
+    
+hashMap->put(EntryData::getInstance()->LASTMODIFIED, time);
     
 
 
@@ -251,20 +257,20 @@ hashMap.put(EntryData::getInstance().LASTMODIFIED, time);
 }
 
 
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
         try {
             
-    HashMap<Object*, Object*> hashMap = this->toHashMap();;
+    HashMap<Object*, Object*>* hashMap = this->toHashMap();;
     
 
-    Set keySet = hashMap.keys();;
+    Set* keySet = hashMap->keys();;
     
 
-    Node node = document.createElement(WorkFlowData::getInstance().WORKFLOW);;
+    Node* node = document->createElement(WorkFlowData::getInstance()->WORKFLOW);;
     
 
-    std::vector<Object*> nameArray = keySet.();;
+    std::vector<Object*> nameArray = keySet->();;
     
 
     int32_t size = nameArray.size();;
@@ -280,9 +286,9 @@ hashMap.put(EntryData::getInstance().LASTMODIFIED, time);
     std::string name = nameArray[index];;
     
 
-    std::string value = hashMap.get(name);;
+    std::string value = hashMap->get(name);;
     
-node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
+node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     
 }
 
@@ -294,13 +300,13 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "toXmlNode()", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "toXmlNode()", &e);
     
 
                                     }
@@ -316,7 +322,7 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 }
 
 
-    public: Document toXmlDoc(){
+    public: Document* toXmlDoc(){
 
         try {
             
@@ -327,13 +333,13 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "toXmlDoc()", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "toXmlDoc()", &e);
     
 
                                     }
@@ -349,11 +355,11 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-    Boolean returnBoolean = Boolean::TRUE;;
+    bool returnBoolean = Boolean::TRUE;;
     
 
                         if(false)
@@ -372,13 +378,13 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -398,27 +404,27 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
                         if(false)
-                        stringBuffer.append("No WorkFlow name specified.");
+                        stringBuffer->append("No WorkFlow name specified.");
                                 
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -434,7 +440,7 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -444,7 +450,7 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

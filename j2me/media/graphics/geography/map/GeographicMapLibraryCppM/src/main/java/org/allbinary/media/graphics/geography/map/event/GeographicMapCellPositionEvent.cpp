@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/graphics/CellPosition.h>
 
       
@@ -57,9 +65,9 @@
         
 class GeographicMapCellPositionEvent: public AllBinaryEventObject {
 
-    private: CellPosition geographicMapCellPosition = CellPositionFactory::getInstance().NONE;
+    private: CellPosition* geographicMapCellPosition = CellPositionFactory::getInstance()->NONE;
 
-public: GeographicMapCellPositionEvent(Object* anyType, CellPosition geographicMapCellPosition) : AllBinaryEventObject(anyType){
+public: GeographicMapCellPositionEvent(Object* anyType, CellPosition* geographicMapCellPosition) : AllBinaryEventObject(anyType){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -77,37 +85,37 @@ this->setSource(anyType);
 }
 
 
-    public: void setGeographicMapCellPosition(GeographicMapCellPosition geographicMapCellPosition){
+    public: void setGeographicMapCellPosition(GeographicMapCellPosition* geographicMapCellPosition){
 this->geographicMapCellPosition= geographicMapCellPosition;
     
 }
 
 
-    public: GeographicMapCellPosition getGeographicMapCellPosition(){
+    public: GeographicMapCellPosition* getGeographicMapCellPosition(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->geographicMapCellPosition;
+                        return dynamic_cast<GeographicMapCellPosition*>(this->geographicMapCellPosition);
     
 }
 
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("CellPositionEvent: ");
+stringBuffer->append("CellPositionEvent: ");
     
-stringBuffer.append("\nGeographicMapCellPosition: ");
+stringBuffer->append("\nGeographicMapCellPosition: ");
     
-stringBuffer.append(StringUtil::getInstance().toString(this->getGeographicMapCellPosition()));
+stringBuffer->append(StringUtil::getInstance()->toString(this->getGeographicMapCellPosition()));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

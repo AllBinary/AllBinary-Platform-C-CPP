@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <admin/taghelpers/WorkFlowHelperFactory.h>
 
       
@@ -39,14 +45,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TableTag.h"
+        #include "admin/tags/TableTag.h"
 
 class WorkFlowTag: public TableTag {
 
 public: WorkFlowTag(){
-this->setTagHelperFactory(WorkFlowHelperFactory());
+this->setTagHelperFactory(new WorkFlowHelperFactory());
     
-this->setTagRequestHelperFactory(WorkFlowHelperFactory());
+this->setTagRequestHelperFactory(new WorkFlowHelperFactory());
     
 }
 

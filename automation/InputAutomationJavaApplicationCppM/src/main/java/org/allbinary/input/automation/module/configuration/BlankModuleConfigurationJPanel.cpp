@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,10 +42,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "JLabel.h"
-#include "GroupLayout.h"
-#include "Short.h"
+        #include "org/allbinary/input/automation/module/configuration/JPanel.h"
+#include "org/allbinary/input/automation/module/configuration/JLabel.h"
+#include "org/allbinary/input/automation/module/configuration/GroupLayout.h"
+#include "org/allbinary/input/automation/module/configuration/Short.h"
 
 class BlankModuleConfigurationJPanel: public javax::swing::JPanel {
 
@@ -50,23 +56,23 @@ this->initComponents();
 
 
     private: void initComponents(){
-this->jLabel1= javax::swing::JLabel();
+this->jLabel1= new javax::swing::JLabel();
     
-this->jLabel1.setText("No Configuration Available");
+this->jLabel1->setText("No Configuration Available");
     
 
-    javax::swing::GroupLayout layout = javax::swing::GroupLayout(this);;
+    javax::swing::GroupLayout* layout = new javax::swing::GroupLayout(this);;
     
 this->setLayout(layout);
     
-layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup().addContainerGap(231, Short::MAX_VALUE).addComponent(jLabel1).addGap(225, 225, 225)));
+layout->setHorizontalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout->createSequentialGroup()->addContainerGap(231, Short::MAX_VALUE)->addComponent(jLabel1)->addGap(225, 225, 225)));
     
-layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addContainerGap().addComponent(jLabel1).addContainerGap(362, Short::MAX_VALUE)));
+layout->setVerticalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addComponent(jLabel1)->addContainerGap(362, Short::MAX_VALUE)));
     
 }
 
 
-    private: javax::swing::JLabel jLabel1;
+    private: javax::swing::JLabel* jLabel1;
 
 };
 

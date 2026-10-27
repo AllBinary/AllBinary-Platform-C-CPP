@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINTPATHRUNNABLEBASE_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINTPATHRUNNABLEBASE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -59,20 +65,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NullPathFindingLayer.h"
-#include "PathFindingLayerInterface.h"
+        #include "org/allbinary/game/layer/NullPathFindingLayer.h"
+#include "org/allbinary/game/layer/PathFindingLayerInterface.h"
 
 class WaypointPathRunnableBase
             : public Object
-        : public RunnableInterface, public PriorityRunnable {
+        , public RunnableInterface, public PriorityRunnable {
 
-    private: const LayerDistanceUtil layerDistanceUtil = LayerDistanceUtil::getInstance();
+    private: LayerDistanceUtil* layerDistanceUtil = LayerDistanceUtil::getInstance();
 
-    protected: PathFindingLayerInterface pathFindingLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
+    protected: PathFindingLayerInterface* pathFindingLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
-    protected: PathFindingLayerInterface targetPathFindingLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
+    protected: PathFindingLayerInterface* targetPathFindingLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
-    protected: int32_t priorityP = Integer::MAX_VALUE;
+    protected: int32_t priorityP = Integer.MAX_VALUE;
 
     protected: bool runningP= false;
 
@@ -82,15 +88,15 @@ class WaypointPathRunnableBase
 
                 //@Throws(Exception.constructor)
             
-    public: void setThread(Thread thread);
+    public: void setThread(Thread* thread);
 
-    public: void setTargetLayer(PathFindingLayerInterface waypointLayer);
+    public: void setTargetLayer(PathFindingLayerInterface* waypointLayer);
 
     public: void setPriority();
 
-    public: PathFindingLayerInterface getTargetLayer();
+    public: PathFindingLayerInterface* getTargetLayer();
 
-    public: void setUnitLayer(PathFindingLayerInterface unitLayer);
+    public: void setUnitLayer(PathFindingLayerInterface* unitLayer);
 
     public: int32_t getPriority();
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_COLLISION_SOURCECOLLISIONHELPER_H
         #define ORG_ALLBINARY_GAME_COLLISION_SOURCECOLLISIONHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/layer/CollidableCompositeLayer.h>
 
       
@@ -45,13 +51,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CollisionHelper.h"
+        #include "org/allbinary/game/collision/CollisionHelper.h"
 
 class SourceCollisionHelper: public CollisionHelper {
 
-public: SourceCollisionHelper(AllBinaryLayer layerInterface);
+public: SourceCollisionHelper(AllBinaryLayer* layerInterface);
 
-    public: bool isCollidable(CollidableCompositeLayer layerInterface);
+    public: bool isCollidable(CollidableCompositeLayer* layerInterface);
 
 };
 

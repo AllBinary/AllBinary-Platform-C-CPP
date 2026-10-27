@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_PAYMENTTYPE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_PAYMENTTYPE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,36 +70,36 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicPaymentType.h"
-#include "PaymentTypeUtil.h"
+        #include "org/allbinary/business/user/commerce/money/payment/types/BasicPaymentType.h"
+#include "org/allbinary/business/user/commerce/money/payment/types/PaymentTypeUtil.h"
 
 class PaymentType
             : public Object
          {
 
-    private: BasicPaymentType basicPaymentType;
+    private: BasicPaymentType* basicPaymentType;
 
-    private: PaymentTransactionInterfaceFactoryInterface paymentTransactionInterfaceFactoryInterface;
+    private: PaymentTransactionInterfaceFactoryInterface* paymentTransactionInterfaceFactoryInterface;
 
-    private: PaymentProcessorInterfaceFactoryInterface paymentProcessorInterfaceFactoryInterface;
+    private: PaymentProcessorInterfaceFactoryInterface* paymentProcessorInterfaceFactoryInterface;
 
-protected: PaymentType(BasicPaymentType basicPaymentType);
+protected: PaymentType(BasicPaymentType* basicPaymentType);
 
-protected: PaymentType(BasicPaymentType basicPaymentType, PaymentTransactionInterfaceFactoryInterface paymentTransactionInterfaceFactoryInterface, PaymentProcessorInterfaceFactoryInterface paymentProcessorInterfaceFactoryInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public: PaymentTransactionInterfaceFactoryInterface getPaymentTransactionInterfaceFactoryInterface();
+protected: PaymentType(BasicPaymentType* basicPaymentType, PaymentTransactionInterfaceFactoryInterface* paymentTransactionInterfaceFactoryInterface, PaymentProcessorInterfaceFactoryInterface* paymentProcessorInterfaceFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentProcessorInterfaceFactoryInterface getPaymentProcessorInterfaceFactoryInterface();
+    public: PaymentTransactionInterfaceFactoryInterface* getPaymentTransactionInterfaceFactoryInterface();
 
-    public: BasicArrayList toVector();
+                //@Throws(Exception.constructor)
+            
+    public: PaymentProcessorInterfaceFactoryInterface* getPaymentProcessorInterfaceFactoryInterface();
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: BasicArrayList* toVector();
 
-    public: BasicPaymentType getBasicPaymentType();
+    public: HashMap<Object*, Object*>* toHashMap();
+
+    public: BasicPaymentType* getBasicPaymentType();
 
 };
 

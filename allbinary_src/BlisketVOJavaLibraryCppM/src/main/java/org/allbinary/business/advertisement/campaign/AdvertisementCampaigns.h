@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNS_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -56,25 +62,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdvertisementCampaignsInterface.h"
+        #include "org/allbinary/business/advertisement/campaign/AdvertisementCampaignsInterface.h"
 
 class AdvertisementCampaigns
             : public Object
-        : public AdvertisementCampaignsInterface {
+        , public AdvertisementCampaignsInterface {
 
-    private: BasicArrayList advertisementsVector;
+    private: BasicArrayList* advertisementsVector;
 
-public: AdvertisementCampaigns(BasicArrayList vector);
+public: AdvertisementCampaigns(BasicArrayList* vector);
 
-    public: void add(AdvertisementInterface advertisementInterface);
+    public: void add(AdvertisementInterface* advertisementInterface);
 
-    public: AdvertisementInterface get(int32_t index);
+    public: AdvertisementInterface* get(int32_t index);
 
     public: int32_t size();
 
     public: bool isEnabled();
 
-    public: AdvertisementsInterface search(AdvertisementSearchInterface advertisementSearchInterface);
+    public: AdvertisementsInterface* search(AdvertisementSearchInterface* advertisementSearchInterface);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,15 +49,15 @@ class KeyboardActionScriptInputData
             : public Object
          {
 
-    public: static std::string NAME = "KEY_ACTION_INPUT_NAME";
+    public: static inline std::string NAME = "KEY_ACTION_INPUT_NAME";
 
-    public: static std::string KEY = "KEY_ACTION_INPUT_KEY";
+    public: static inline std::string KEY = "KEY_ACTION_INPUT_KEY";
 
-    public: static std::string DELAY_BETWEEN_KEYS = "KEY_ACTION_INPUT_DELAY_BETWEEN_KEYS";
+    public: static inline std::string DELAY_BETWEEN_KEYS = "KEY_ACTION_INPUT_DELAY_BETWEEN_KEYS";
 
-    public: static std::string PRESS = "KEY_ACTION_INPUT_PRESS";
+    public: static inline std::string PRESS = "KEY_ACTION_INPUT_PRESS";
 
-    public: static std::string RELEASE = "KEY_ACTION_INPUT_RELEASE";
+    public: static inline std::string RELEASE = "KEY_ACTION_INPUT_RELEASE";
 
 private: KeyboardActionScriptInputData(){
 }

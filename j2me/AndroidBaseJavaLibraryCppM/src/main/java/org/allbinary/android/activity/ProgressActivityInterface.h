@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANDROID_ACTIVITY_PROGRESSACTIVITYINTERFACE_H
         #define ORG_ALLBINARY_ANDROID_ACTIVITY_PROGRESSACTIVITYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Runnable.h"
         
 
@@ -44,13 +50,13 @@
         
 class ProgressActivityInterface {
 
-    void runOnUiThread(Runnable action);
+    public: virtual void runOnUiThread(Runnable* action) = 0;
 
-    void onDismissTitleProgressBar();
+    public: virtual void onDismissTitleProgressBar() = 0;
 
-    void onShowTitleProgressBar(int32_t value, bool indeterminate);
+    public: virtual void onShowTitleProgressBar(int32_t value, bool indeterminate) = 0;
 
-    void onTitleProgressBarSetProgress(int32_t value);
+    public: virtual void onTitleProgressBarSetProgress(int32_t value) = 0;
 
 };
 

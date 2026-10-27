@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -107,11 +113,11 @@
         //Sets Template Type
 class InsertCustomizerValidationView: public HttpStoreComponentView, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string viewName;
 
-public: InsertCustomizerValidationView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+public: InsertCustomizerValidationView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -119,39 +125,39 @@ public: InsertCustomizerValidationView(TransformInfoInterface transformInfoInter
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("View Name: " +transformInfoInterface.getName(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("View Name: " +transformInfoInterface->getName(), this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
 
-    HashMap<Object*, Object*> requestHashMap = RequestParams(this->getPageContext()).toHashMap();;
+    HashMap<Object*, Object*>* requestHashMap = (new RequestParams(this->getPageContext()))->toHashMap();;
     
-this->viewName= requestHashMap.get(TransformInfoData::getInstance().NAME);
+this->viewName= requestHashMap->get(TransformInfoData::getInstance()->NAME);
     
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Started Validation", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("Started Validation", this, this->commonStrings.IS_VALID);
     
 
                                     }
                                 
 
-    Boolean isValid = Boolean::TRUE;;
+    bool isValid = Boolean::TRUE;;
     
 
-                        if(StringValidationUtil::getInstance().isEmpty(this->viewName))
+                        if(StringValidationUtil::getInstance()->isEmpty(this->viewName))
                         
                                     {
                                     isValid= Boolean::FALSE;
@@ -161,28 +167,28 @@ this->viewName= requestHashMap.get(TransformInfoData::getInstance().NAME);
                                 
                         else {
                             
-    NoTemplateTransformInfoObjectConfig objectConfig = NoTemplateTransformInfoObjectConfig(this->getTransformInfoInterface(), this->getTransformInfoInterface().getObjectConfigInterface().toXmlDoc());;
+    NoTemplateTransformInfoObjectConfig* objectConfig = new NoTemplateTransformInfoObjectConfig(this->getTransformInfoInterface(), this->getTransformInfoInterface()->getObjectConfigInterface()->toXmlDoc());;
     
 
-    BasicArrayList componentVector = objectConfig.getGroupTransforms();;
+    BasicArrayList* componentVector = objectConfig->getGroupTransforms();;
     
 
-    int32_t size = componentVector.size();;
+    int32_t size = componentVector->size();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Pointing ");
+stringBuffer->append("Pointing ");
     
-stringBuffer.appendint(componentVector.size());
+stringBuffer->appendint(componentVector->size());
     
-stringBuffer.append(" Components");
+stringBuffer->append(" Components");
     
-this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -195,28 +201,28 @@ this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
     int32_t index = 0;index < size; index++)
         {
 
-    TransformInfo transformInfo = componentVector.get(index);;
+    TransformInfo* transformInfo = dynamic_cast<TransformInfo*>(componentVector->get(index));;
     
 
-    std::string transformInfoName = transformInfo.getName();;
+    std::string transformInfoName = transformInfo->getName();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Setting Template Component with ViewName: " +transformInfoName, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("Setting Template Component with ViewName: " +transformInfoName, this, this->commonStrings.IS_VALID);
     
 
                                     }
                                 
 
-    TransformInterface componentInterface = TransformFactory::getInstance().getInstance(this->abeClientInformation, transformInfoName, this->getTransformInfoInterface());;
+    TransformInterface* componentInterface = TransformFactory::getInstance()->getInstance(this->abeClientInformation, transformInfoName, this->getTransformInfoInterface());;
     
 
-    InsertTemplateCustomizerTransformInfoObjectConfig templateViewObjectConfig = InsertTemplateCustomizerTransformInfoObjectConfig(componentInterface.getTransformInfoInterface(), componentInterface.getTransformInfoInterface().getObjectConfigInterface().toXmlDoc());;
+    InsertTemplateCustomizerTransformInfoObjectConfig* templateViewObjectConfig = new InsertTemplateCustomizerTransformInfoObjectConfig(componentInterface->getTransformInfoInterface(), componentInterface->getTransformInfoInterface()->getObjectConfigInterface()->toXmlDoc());;
     
 
-    std::string storeName = this->getTransformInfoInterface().getStoreName();;
+    std::string storeName = this->getTransformInfoInterface()->getStoreName();;
     
 
     int32_t endIndex = this->viewName.indexOf(storeName) +storeName.size();;
@@ -228,104 +234,104 @@ this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
     std::string viewNamePostfix = this->viewName.substring(endIndex, viewName.size());;
     
 
-    StringMaker newViewNameStringBuffer = StringMaker();;
+    StringMaker* newViewNameStringBuffer = new StringMaker();;
     
-newViewNameStringBuffer.append(storePrepend);
-    
-
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+newViewNameStringBuffer->append(storePrepend);
     
 
-    TransformInfosData transformInfosData = TransformInfosData::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
-                        if(transformInfoName.indexOf(transformInfosData.SMALL_PREVIEW) >= 0)
+    TransformInfosData* transformInfosData = TransformInfosData::getInstance();;
+    
+
+                        if(JavaString::indexOf(transformInfoName, transformInfosData->SMALL_PREVIEW) >= 0)
                         
                                     {
-                                    newViewNameStringBuffer.append(commonSeps.SPACE);
+                                    newViewNameStringBuffer->append(commonSeps->SPACE);
     
-newViewNameStringBuffer.append(transformInfosData.SMALL_PREVIEW);
+newViewNameStringBuffer->append(transformInfosData->SMALL_PREVIEW);
     
 
                                     }
                                 
                              else 
-                        if(transformInfoName.indexOf(transformInfosData.PREVIEW) >= 0)
+                        if(JavaString::indexOf(transformInfoName, transformInfosData->PREVIEW) >= 0)
                         
                                     {
-                                    newViewNameStringBuffer.append(commonSeps.SPACE);
+                                    newViewNameStringBuffer->append(commonSeps->SPACE);
     
-newViewNameStringBuffer.append(transformInfosData.PREVIEW);
+newViewNameStringBuffer->append(transformInfosData->PREVIEW);
     
 
                                     }
                                 
-newViewNameStringBuffer.append(commonSeps.SPACE);
+newViewNameStringBuffer->append(commonSeps->SPACE);
     
-newViewNameStringBuffer.append(viewNamePostfix);
+newViewNameStringBuffer->append(viewNamePostfix);
     
 
-                        if(transformInfoName.indexOf(GeneratorTransformInfoData::NAME) >= 0)
+                        if(JavaString::indexOf(transformInfoName, GeneratorTransformInfoData::NAME) >= 0)
                         
                                     {
-                                    newViewNameStringBuffer.append(commonSeps.SPACE);
+                                    newViewNameStringBuffer->append(commonSeps->SPACE);
     
-newViewNameStringBuffer.append(GeneratorTransformInfoData::NAME);
+newViewNameStringBuffer->append(GeneratorTransformInfoData::NAME);
     
 
                                     }
                                 
 
-    std::string newViewName = newViewNameStringBuffer.toString();;
+    std::string newViewName = newViewNameStringBuffer->toString();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
-                        
-                                    {
-                                    
-    StringMaker stringBuffer = StringMaker();;
-    
-stringBuffer.append("Template Component: ");
-    
-stringBuffer.append(transformInfoName);
-    
-stringBuffer.append("\n Now Pointing To View Name: ");
-    
-stringBuffer.append(newViewName);
-    
-this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
-    
-
-                                    }
-                                
-templateViewObjectConfig.set(newViewName);
-    
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Template Component: ");
+stringBuffer->append("Template Component: ");
     
-stringBuffer.append(transformInfoName);
+stringBuffer->append(transformInfoName);
     
-stringBuffer.append("\n with ObjectConfig: ");
+stringBuffer->append("\n Now Pointing To View Name: ");
     
-stringBuffer.append(templateViewObjectConfig.toString());
+stringBuffer->append(newViewName);
     
-this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID);
     
 
                                     }
                                 
-componentInterface.getTransformInfoInterface().setObjectConfigInterface(templateViewObjectConfig);
+templateViewObjectConfig->set(newViewName);
     
 
-    HashMap<Object*, Object*> updatedTransformInfoHashMap = componentInterface.getTransformInfoInterface().toHashMap();;
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        
+                                    {
+                                    
+    StringMaker* stringBuffer = new StringMaker();;
     
-TransformInfoEntityBuilder::getInstance().update(updatedTransformInfoHashMap);
+stringBuffer->append("Template Component: ");
+    
+stringBuffer->append(transformInfoName);
+    
+stringBuffer->append("\n with ObjectConfig: ");
+    
+stringBuffer->append(templateViewObjectConfig->toString());
+    
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID);
+    
+
+                                    }
+                                
+componentInterface->getTransformInfoInterface()->setObjectConfigInterface(templateViewObjectConfig);
+    
+
+    HashMap<Object*, Object*>* updatedTransformInfoHashMap = componentInterface->getTransformInfoInterface()->toHashMap();;
+    
+TransformInfoEntityBuilder::getInstance()->update(updatedTransformInfoHashMap);
     
 }
 
@@ -340,13 +346,13 @@ TransformInfoEntityBuilder::getInstance().update(updatedTransformInfoHashMap);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -366,25 +372,25 @@ TransformInfoEntityBuilder::getInstance().update(updatedTransformInfoHashMap);
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Error: Template Name Is Empty.");
+stringBuffer->append("Error: Template Name Is Empty.");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -400,7 +406,7 @@ stringBuffer.append("Error: Template Name Is Empty.");
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -410,7 +416,7 @@ stringBuffer.append("Error: Template Name Is Empty.");
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -427,7 +433,7 @@ stringBuffer.append("Error: Template Name Is Empty.");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return views.ValidationOnlyTempUtil.getInstance().view(this);;
+                        return views.ValidationOnlyTempUtil.getInstance()->view(this);;
     
 }
 

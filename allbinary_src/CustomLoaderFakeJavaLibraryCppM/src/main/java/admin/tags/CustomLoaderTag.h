@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGS_CUSTOMLOADERTAG_H
         #define ADMIN_TAGS_CUSTOMLOADERTAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
@@ -68,7 +74,7 @@
         
 class CustomLoaderTag: public CustomTagSupport {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string command;
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -53,17 +59,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapCellTypeFactory.h"
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellTypeFactory.h"
 
 class GeographicMapCellType
             : public Object
          {
 
-    public: static const std::vector<GeographicMapCellType> NULL_GEOGRAPHIC_MAP_CELL_TYPE_ARRAY = {};
+    public: static inline const std::vector<GeographicMapCellType*> NULL_GEOGRAPHIC_MAP_CELL_TYPE_ARRAY = {};
 
-    public: static const GeographicMapCellType NULL_GEOGRAPHIC_MAP_CELL_TYPE = GeographicMapCellType(Integer::MIN_VALUE, 0);
+    public: static GeographicMapCellType* NULL_GEOGRAPHIC_MAP_CELL_TYPE() { static std::unique_ptr<GeographicMapCellType> value(new GeographicMapCellType(Integer.MIN_VALUE, 0)); return value.get(); }
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: int32_t type;
 

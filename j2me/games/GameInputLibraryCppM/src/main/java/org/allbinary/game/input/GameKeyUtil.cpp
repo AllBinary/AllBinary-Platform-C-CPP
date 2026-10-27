@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -46,9 +52,9 @@ class GameKeyUtil
             : public Object
          {
 
-    private: static GameKeyUtil instance() { return GameKeyUtil(); }
+    private: static GameKeyUtil* instance() { static std::unique_ptr<GameKeyUtil> value(new GameKeyUtil()); return value.get(); }
 
-    public: static GameKeyUtil getInstance(){
+    public: static GameKeyUtil* getInstance(){
 
 
 

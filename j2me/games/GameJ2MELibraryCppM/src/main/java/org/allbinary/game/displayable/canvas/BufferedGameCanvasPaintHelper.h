@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -70,29 +76,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryGameCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
 class BufferedGameCanvasPaintHelper: public ProcessPaintable {
 
-    private: static const int32_t MAX_IMAGES = 4;
+    private: static inline const int32_t MAX_IMAGES = 4;
 
-    private: Canvas gameCanvas = NullCanvas::NULL_CANVAS;
+    private: Canvas* gameCanvas = NullCanvas::NULL_CANVAS;
 
-    private: const std::vector<Image> offScreenImage = std::vector<Image>(BufferedGameCanvasPaintHelper::MAX_IMAGES);
+    private: const std::vector<Image*> offScreenImage = std::vector<Image*>(BufferedGameCanvasPaintHelper::MAX_IMAGES);
 
-    private: Image previousImage = NullImage::NULL_IMAGE;
+    private: Image* previousImage = NullImage::NULL_IMAGE;
 
-    private: const CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstance(BufferedGameCanvasPaintHelper::MAX_IMAGES);
+    private: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::createInstance(BufferedGameCanvasPaintHelper::MAX_IMAGES);
 
-    private: const CircularIndexUtil drawCircularIndexUtil = CircularIndexUtil::createInstanceAt(BufferedGameCanvasPaintHelper::MAX_IMAGES -1, BufferedGameCanvasPaintHelper::MAX_IMAGES);
+    private: CircularIndexUtil* drawCircularIndexUtil = CircularIndexUtil::createInstanceAt(BufferedGameCanvasPaintHelper::MAX_IMAGES -1, BufferedGameCanvasPaintHelper::MAX_IMAGES);
 
-public: BufferedGameCanvasPaintHelper(AllBinaryGameCanvas gameCanvas);
+public: BufferedGameCanvasPaintHelper(AllBinaryGameCanvas* gameCanvas);
 
     public: void process();
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

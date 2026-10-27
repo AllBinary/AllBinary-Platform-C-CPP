@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,7 +45,7 @@
         
 class ResizableListenerInterface {
 
-    void onResizable(bool isResizable)
+    public: virtual void onResizable(bool isResizable) = 0;
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ALLBINARYADJUSTEDSPRITEROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ALLBINARYADJUSTEDSPRITEROTATIONANIMATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -51,7 +57,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinarySpriteRotationAnimation.h"
+        #include "org/allbinary/animation/image/sprite/AllBinarySpriteRotationAnimation.h"
 
 class AllBinaryAdjustedSpriteRotationAnimation: public AllBinarySpriteRotationAnimation {
 
@@ -59,9 +65,9 @@ class AllBinaryAdjustedSpriteRotationAnimation: public AllBinarySpriteRotationAn
 
     private: int32_t dy;
 
-public: AllBinaryAdjustedSpriteRotationAnimation(Sprite sprite, Image image, int32_t dx, int32_t dy, AnimationBehavior animationBehavior);
+public: AllBinaryAdjustedSpriteRotationAnimation(Sprite* sprite, Image* image, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior);
 
-    public: void paintXY(Graphics g, int32_t x, int32_t y);
+    public: void paintXY(Graphics* g, int32_t x, int32_t y);
 
 };
 

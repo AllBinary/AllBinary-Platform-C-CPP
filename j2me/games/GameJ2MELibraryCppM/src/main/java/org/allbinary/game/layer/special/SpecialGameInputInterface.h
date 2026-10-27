@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALGAMEINPUTINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALGAMEINPUTINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/event/GameKeyEvent.h>
@@ -55,51 +61,51 @@ class SpecialGameInputInterface: public PaintableInterface {
 
                 //@Throws(Exception.constructor)
             
-    void up();
+    public: virtual void up() = 0;
 
                 //@Throws(Exception.constructor)
             
-    void down();
+    public: virtual void down() = 0;
 
                 //@Throws(Exception.constructor)
             
-    void right();
+    public: virtual void right() = 0;
 
                 //@Throws(Exception.constructor)
             
-    void left();
+    public: virtual void left() = 0;
 
                 //@Throws(Exception.constructor)
             
-    void strafeLeft();
+    public: virtual void strafeLeft() = 0;
 
                 //@Throws(Exception.constructor)
             
-    void strafeRight();
+    public: virtual void strafeRight() = 0;
 
                 //@Throws(Exception.constructor)
             
-    void fire(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent);
+    public: virtual void fire(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void special1(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent);
+    public: virtual void special1(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void special2(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent);
+    public: virtual void special2(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void special3(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent);
+    public: virtual void special3(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void special4(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent);
+    public: virtual void special4(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void special5(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent);
+    public: virtual void special5(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent) = 0;
 
 };
 

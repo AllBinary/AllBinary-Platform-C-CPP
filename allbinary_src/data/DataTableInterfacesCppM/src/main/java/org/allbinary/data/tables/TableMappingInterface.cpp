@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -49,15 +57,15 @@ class TableMappingInterface {
 
                 //@Throws(Exception.constructor)
             
-    Object* getKey()
+    public: virtual Object* getKey() = 0;
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList toVector()
+    public: virtual BasicArrayList* toVector() = 0;
 
                 //@Throws(Exception.constructor)
             
-    HashMap<Object*, Object*> toHashMap()
+    public: virtual HashMap<Object*, Object*>* toHashMap() = 0;
 
 };
 

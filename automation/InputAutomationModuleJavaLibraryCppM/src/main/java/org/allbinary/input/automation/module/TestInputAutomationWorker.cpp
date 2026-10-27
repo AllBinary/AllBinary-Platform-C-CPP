@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,36 +69,36 @@ class TestInputAutomationWorker
             : public Object
          {
 
-    private: ScreenCaptureImagesWorker captureWorker;
+    private: ScreenCaptureImagesWorker* captureWorker;
 
-    private: ImageComparisonWorker imageComparisonWorker;
+    private: ImageComparisonWorker* imageComparisonWorker;
 
-    private: MotionRectanglesWorker motionRectanglesWorker;
+    private: MotionRectanglesWorker* motionRectanglesWorker;
 
-    private: SaveImageComparisonWorker changedPixelsImageComparisonResultsWorker;
+    private: SaveImageComparisonWorker* changedPixelsImageComparisonResultsWorker;
 
-    private: SaveMotionRectanglesResultsWorker saveMotionRectanglesAsImagesWorker;
+    private: SaveMotionRectanglesResultsWorker* saveMotionRectanglesAsImagesWorker;
 
-    private: TestInputForMotionRectanglesResultsWorker moveMouseToFirstMotionRectanglesResultsWorker;
+    private: TestInputForMotionRectanglesResultsWorker* moveMouseToFirstMotionRectanglesResultsWorker;
 
 public: TestInputAutomationWorker(){
-this->captureWorker= ScreenCaptureImagesWorker();
+this->captureWorker= new ScreenCaptureImagesWorker();
     
-this->changedPixelsImageComparisonResultsWorker= SaveImageComparisonWorker();
+this->changedPixelsImageComparisonResultsWorker= new SaveImageComparisonWorker();
     
-this->saveMotionRectanglesAsImagesWorker= SaveMotionRectanglesResultsWorker();
+this->saveMotionRectanglesAsImagesWorker= new SaveMotionRectanglesResultsWorker();
     
-this->moveMouseToFirstMotionRectanglesResultsWorker= TestInputForMotionRectanglesResultsWorker();
+this->moveMouseToFirstMotionRectanglesResultsWorker= new TestInputForMotionRectanglesResultsWorker();
     
-this->motionRectanglesWorker.addListenerInterface(this->saveMotionRectanglesAsImagesWorker);
+this->motionRectanglesWorker->addListenerInterface(this->saveMotionRectanglesAsImagesWorker);
     
-this->motionRectanglesWorker.addListenerInterface(this->moveMouseToFirstMotionRectanglesResultsWorker);
+this->motionRectanglesWorker->addListenerInterface(this->moveMouseToFirstMotionRectanglesResultsWorker);
     
-this->imageComparisonWorker.addListenerInterface(this->changedPixelsImageComparisonResultsWorker);
+this->imageComparisonWorker->addListenerInterface(this->changedPixelsImageComparisonResultsWorker);
     
-this->imageComparisonWorker.addListenerInterface(this->motionRectanglesWorker);
+this->imageComparisonWorker->addListenerInterface(this->motionRectanglesWorker);
     
-this->captureWorker.addListenerInterface(this->imageComparisonWorker);
+this->captureWorker->addListenerInterface(this->imageComparisonWorker);
     
 }
 

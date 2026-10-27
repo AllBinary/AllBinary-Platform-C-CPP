@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WEAPON_COLLIDABLEDAMAGEWEAPONBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_LAYER_WEAPON_COLLIDABLEDAMAGEWEAPONBEHAVIOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/collision/CollidableHelperFactory.h>
@@ -73,25 +79,25 @@ class CollidableDamageWeaponBehavior: public CollidableDestroyableDamageableBeha
 
     private: bool collided= false;
 
-    protected: CollisionHelper collisionHelper;
+    protected: CollisionHelper* collisionHelper;
 
 public: CollidableDamageWeaponBehavior(bool collidable);
 
-    public: void init(AllBinaryLayer sourceLayerInterface);
+    public: void init(AllBinaryLayer* sourceLayerInterface);
 
-    public: bool isCollision(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer);
-
-                //@Throws(Exception.constructor)
-            
-    public: void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer);
-
-    public: bool isCollisionInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface);
+    public: bool isCollision(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collisionLayer);
 
                 //@Throws(Exception.constructor)
             
-    public: void collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface);
+    public: void collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collisionLayer);
 
-    public: CollisionType getCollisionTypeWith(AllBinaryLayer layerInterface);
+    public: bool isCollisionInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface);
+
+                //@Throws(Exception.constructor)
+            
+    public: void collideInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface);
+
+    public: CollisionType* getCollisionTypeWith(AllBinaryLayer* layerInterface);
 
     public: bool isCollided();
 

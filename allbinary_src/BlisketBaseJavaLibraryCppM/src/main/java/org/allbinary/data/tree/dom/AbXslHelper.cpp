@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,15 +61,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "XslHelper.h"
+        #include "org/allbinary/data/tree/dom/XslHelper.h"
 
 class AbXslHelper
             : public Object
          {
 
-    private: static AbXslHelper instance() { return AbXslHelper(); }
+    private: static AbXslHelper* instance() { static std::unique_ptr<AbXslHelper> value(new AbXslHelper()); return value.get(); }
 
-    public: static AbXslHelper getInstance(){
+    public: static AbXslHelper* getInstance(){
 
 
 
@@ -75,24 +81,24 @@ class AbXslHelper
 
                 //@Throws(Exception.constructor)
             
-    public: std::string translate(AbFile xslFile, AbFile xmlFile){
+    public: std::string translate(AbFile* xslFile, AbFile* xmlFile){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->translate(xslFile.getAbsolutePath(), xmlFile.getAbsolutePath());;
+                        return this->translate(xslFile->getAbsolutePath(), xmlFile->getAbsolutePath());;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string translate(AbPath xslPath, AbPath xmlPath){
+    public: std::string translate(AbPath* xslPath, AbPath* xmlPath){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->translate(xslPath.getPath(), xmlPath.getPath());;
+                        return this->translate(xslPath->getPath(), xmlPath->getPath());;
     
 }
 
@@ -103,17 +109,17 @@ class AbXslHelper
 
         try {
             
-    ByteArrayOutputStream outputStream = ByteArrayOutputStream();;
+    ByteArrayOutputStream* outputStream = new ByteArrayOutputStream();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return XslHelper::getInstance().translate(StreamSource(xsltFilePath), StreamSource(xmlFilePath), StreamResult(outputStream)).toString();;
+                        return XslHelper::getInstance()->translate(new StreamSource(xsltFilePath), new StreamSource(xmlFilePath), new StreamResult(outputStream)).toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_POSITIONWIDGET_H
         #define ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_POSITIONWIDGET_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -65,15 +71,15 @@ class PositionWidget: public BasicHud {
 
     private: int32_t position= 0;
 
-    private: std::string positionString = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string positionString = StringUtil::getInstance()->EMPTY_STRING;
 
-public: PositionWidget(int32_t position, int32_t location, int32_t direction, BasicColor basicColor);
+public: PositionWidget(int32_t position, int32_t location, int32_t direction, BasicColor* basicColor);
 
     public: int32_t get();
 
     public: void set(int32_t position);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

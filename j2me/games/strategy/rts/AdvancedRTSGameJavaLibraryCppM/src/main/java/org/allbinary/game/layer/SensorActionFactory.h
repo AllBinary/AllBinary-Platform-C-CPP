@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_SENSORACTIONFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_SENSORACTIONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,21 +47,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SensorAction.h"
+        #include "org/allbinary/game/layer/SensorAction.h"
 
 class SensorActionFactory
             : public Object
          {
 
-    private: static SensorActionFactory instance() { return SensorActionFactory(); }
+    private: static SensorActionFactory* instance() { static std::unique_ptr<SensorActionFactory> value(new SensorActionFactory()); return value.get(); }
 
-    public: static SensorActionFactory getInstance();
+    public: static SensorActionFactory* getInstance();
 
 private: SensorActionFactory();
 
-    public: const SensorAction ATTACK = SensorAction("Attack");
+    public: SensorAction* ATTACK = new SensorAction("Attack");
 
-    public: const SensorAction EVADE = SensorAction("Evade");
+    public: SensorAction* EVADE = new SensorAction("Evade");
 
 };
 

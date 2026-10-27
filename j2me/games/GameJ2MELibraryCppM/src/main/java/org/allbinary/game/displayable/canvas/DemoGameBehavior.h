@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOGAMEBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOGAMEBEHAVIOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,55 +64,55 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryGameCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
 class DemoGameBehavior
             : public Object
          {
 
-    private: static DemoGameBehavior instance() { return DemoGameBehavior(); }
+    private: static DemoGameBehavior* instance() { static std::unique_ptr<DemoGameBehavior> value(new DemoGameBehavior()); return value.get(); }
 
-    public: static DemoGameBehavior getInstance();
+    public: static DemoGameBehavior* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
     public: void init();
 
-    public: void pause(AllBinaryGameCanvas allBinaryGameCanvas);
+    public: void pause(AllBinaryGameCanvas* allBinaryGameCanvas);
 
-    public: void unPause(AllBinaryGameCanvas allBinaryGameCanvas);
-
-                //@Throws(Exception.constructor)
-            
-    public: void updateTouch(AllBinaryGameCanvas allBinaryGameCanvas);
+    public: void unPause(AllBinaryGameCanvas* allBinaryGameCanvas);
 
                 //@Throws(Exception.constructor)
             
-    public: void updateScreenButtonPaintable(AllBinaryGameCanvas allBinaryGameCanvas);
+    public: void updateTouch(AllBinaryGameCanvas* allBinaryGameCanvas);
 
                 //@Throws(Exception.constructor)
             
-    public: void setGameState(AllBinaryGameCanvas allBinaryGameCanvas);
-
-    public: void removeAllGameKeyInputListeners(AllBinaryGameCanvas allBinaryGameCanvas);
+    public: void updateScreenButtonPaintable(AllBinaryGameCanvas* allBinaryGameCanvas);
 
                 //@Throws(Exception.constructor)
             
-    public: void updateEndGameProcessor(AllBinaryGameCanvas allBinaryGameCanvas);
+    public: void setGameState(AllBinaryGameCanvas* allBinaryGameCanvas);
+
+    public: void removeAllGameKeyInputListeners(AllBinaryGameCanvas* allBinaryGameCanvas);
 
                 //@Throws(Exception.constructor)
             
-    public: void buildGame(AllBinaryGameCanvas allBinaryGameCanvas);
+    public: void updateEndGameProcessor(AllBinaryGameCanvas* allBinaryGameCanvas);
 
                 //@Throws(Exception.constructor)
             
-    public: void run(AllBinaryGameCanvas allBinaryGameCanvas);
+    public: void buildGame(AllBinaryGameCanvas* allBinaryGameCanvas);
 
                 //@Throws(Exception.constructor)
             
-    public: void setHighScore(AbeClientInformationInterface abeClientInformation, AllBinaryGameCanvas allBinaryGameCanvas, std::string name, int64_t score, bool autoSubmit, bool isLast);
+    public: void run(AllBinaryGameCanvas* allBinaryGameCanvas);
+
+                //@Throws(Exception.constructor)
+            
+    public: void setHighScore(AbeClientInformationInterface* abeClientInformation, AllBinaryGameCanvas* allBinaryGameCanvas, std::string name, int64_t score, bool autoSubmit, bool isLast);
 
 };
 

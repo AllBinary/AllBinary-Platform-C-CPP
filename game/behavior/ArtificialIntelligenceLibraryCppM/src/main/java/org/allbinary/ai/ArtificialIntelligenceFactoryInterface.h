@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCEFACTORYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 
@@ -41,13 +49,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ArtificialIntelligence.h"
+        #include "org/allbinary/ai/ArtificialIntelligence.h"
 
 class ArtificialIntelligenceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    ArtificialIntelligence getInstance(Object* anyType);
+    public: virtual ArtificialIntelligence* getInstance(Object* anyType) = 0;
 
 };
 

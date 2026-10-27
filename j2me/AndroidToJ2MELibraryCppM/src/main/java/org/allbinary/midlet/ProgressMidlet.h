@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MIDLET_PROGRESSMIDLET_H
         #define ORG_ALLBINARY_MIDLET_PROGRESSMIDLET_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Runnable.h"
@@ -67,15 +73,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryMidlet.h"
-#include "MidletExitProcessorFactory.h"
-#include "ExitRunnable.h"
+        #include "org/allbinary/midlet/AllBinaryMidlet.h"
+#include "org/allbinary/midlet/MidletExitProcessorFactory.h"
+#include "org/allbinary/midlet/ExitRunnable.h"
 //AndroidToJ2ME
 class ProgressMidlet: public AllBinaryMidlet {
 
-    public: AbeClientInformationInterface abeClientInformation;
+    public: AbeClientInformationInterface* abeClientInformation;
 
-public: ProgressMidlet(ClientInformationFactory clientInformationFactory);
+public: ProgressMidlet(ClientInformationFactory* clientInformationFactory);
 
     public: void preInit();
 

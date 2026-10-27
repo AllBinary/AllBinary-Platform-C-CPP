@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/nio/ByteBuffer.h>
 
       
@@ -74,19 +80,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLESImage.h"
+        #include "org/allbinary/image/opengles/OpenGLESImage.h"
 //This is not actually VBO impl
 class OpenGLESGL11VBOImage: public OpenGLESImage {
 
-    private: const GLUtil glUtil = GLUtil::getInstance();
+    private: GLUtil* glUtil = GLUtil::getInstance();
 
-    private: FloatBuffer textureVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *2).order(ByteOrder::nativeOrder()).asFloatBuffer();
+    private: FloatBuffer* textureVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *2)->order(ByteOrder::nativeOrder())->asFloatBuffer();
 
-public: OpenGLESGL11VBOImage(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory);
+public: OpenGLESGL11VBOImage(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory);
 
     protected: void initVertices();
 
-    public: void set(GL gl);
+    public: void set(GL* gl);
 
     protected: const std::vector<float> regionRectangleFloatArray = {
                                 //Otherwise - values - DoubleLiteralExpr
@@ -114,15 +120,15 @@ public: OpenGLESGL11VBOImage(Image image, PlatformBitmapBaseFactory bitmapFactor
                                 //Otherwise - values - DoubleLiteralExpr
 };
 
-    protected: FloatBuffer regionRectangleVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *3).order(ByteOrder::nativeOrder()).asFloatBuffer();
+    protected: FloatBuffer* regionRectangleVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *3)->order(ByteOrder::nativeOrder())->asFloatBuffer();
 
     private: const std::vector<float> regionTextureRectangleFloatArray = std::vector<float>(8);
 
-    private: FloatBuffer regionTextureVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *2).order(ByteOrder::nativeOrder()).asFloatBuffer();
+    private: FloatBuffer* regionTextureVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *2)->order(ByteOrder::nativeOrder())->asFloatBuffer();
 
-    public: void drawRegion(GL10 gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z);
+    public: void drawRegion(GL10* gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z);
 
-    public: void draw(GL10 gl, int32_t x, int32_t y, int32_t z);
+    public: void draw(GL10* gl, int32_t x, int32_t y, int32_t z);
 
 };
 

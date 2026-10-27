@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -46,9 +52,9 @@ class OpenGLCapabilities
             : public Object
          {
 
-    private: static OpenGLCapabilities instance() { return OpenGLCapabilities(); }
+    private: static OpenGLCapabilities* instance() { static std::unique_ptr<OpenGLCapabilities> value(new OpenGLCapabilities()); return value.get(); }
 
-    public: static OpenGLCapabilities getInstance(){
+    public: static OpenGLCapabilities* getInstance(){
 
 
 
@@ -74,11 +80,11 @@ class OpenGLCapabilities
 
     public: const std::string VERSION_HIGHER_THAN_EXISTS = "999.999";
 
-    private: std::string glVersion = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string glVersion = StringUtil::getInstance()->EMPTY_STRING;
 
     public: int32_t shaderVersion = 0;
 
-    public: std::string glInstanceVersion = StringUtil::getInstance().EMPTY_STRING;
+    public: std::string glInstanceVersion = StringUtil::getInstance()->EMPTY_STRING;
 
     public: int32_t maxTextureSize = 64;
 

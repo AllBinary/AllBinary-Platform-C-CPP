@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -61,13 +67,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageArrayAnimation.h"
+        #include "org/allbinary/animation/image/ImageArrayAnimation.h"
 
 class ImageArraySpecialAnimation: public ImageArrayAnimation, public SpecialAnimationInterface {
 
-    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(270);
+    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(270);
 
-public: ImageArraySpecialAnimation(std::vector<Image> imageArray, AnimationBehavior animationBehavior) : ImageArrayAnimation(imageArray, animationBehavior){
+public: ImageArraySpecialAnimation(std::vector<Image*> imageArray, AnimationBehavior* animationBehavior) : ImageArrayAnimation(imageArray, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -111,7 +117,7 @@ this->loopCount= 0;
                         
                                     {
                                     
-                        if(this->timeDelayHelper.isTime(GameTickTimeDelayHelperFactory::getInstance().startTime))
+                        if(this->timeDelayHelper->isTime(GameTickTimeDelayHelperFactory::getInstance()->startTime))
                         
                                     {
                                     this->previousFrame();
@@ -163,8 +169,8 @@ this->loopCount= 0;
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
-x= DisplayInfoSingleton::getInstance().getLastHalfWidth() -(this->getImage(this->circularIndexUtil.getIndex()).getWidth()>>1);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+x= DisplayInfoSingleton::getInstance()->getLastHalfWidth() -(this->getImage(this->circularIndexUtil.getIndex())->getWidth()>>1);
     
 y= 5;
     

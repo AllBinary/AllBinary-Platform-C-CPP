@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_SHIPPINGMETHODSFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_SHIPPINGMETHODSFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -112,33 +118,33 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShippingMethodsData.h"
-#include "ShippingMethodData.h"
+        #include "org/allbinary/business/user/commerce/shipping/ShippingMethodsData.h"
+#include "org/allbinary/business/user/commerce/shipping/ShippingMethodData.h"
 
 class ShippingMethodsFactory
             : public Object
          {
 
-    private: static const std::string SHIPPINGMETHODSFILEPATHSTRING;
+    private: static inline const std::string SHIPPINGMETHODSFILEPATHSTRING;
 
                     static int32_t initResult;
                 static int32_t init();
             
-    private: static const std::string SHIPPINGMETHODSFILENAME = "shippingMethods.xml";
+    private: static inline const std::string SHIPPINGMETHODSFILENAME = "shippingMethods.xml";
 
-    private: ShippingInterface defaultShippingMethodInterface;
+    private: ShippingInterface* defaultShippingMethodInterface;
 
-    private: Document document;
+    private: Document* document;
 
-    private: BasicArrayList shippingVector;
+    private: BasicArrayList* shippingVector;
 
-public: ShippingMethodsFactory(AbeClientInformationInterface abeClientInformation, StoreFrontInterface storeFrontInterface);
+public: ShippingMethodsFactory(AbeClientInformationInterface* abeClientInformation, StoreFrontInterface* storeFrontInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getInstance();
+    public: BasicArrayList* getInstance();
 
-    public: ShippingInterface getDefaultInstance();
+    public: ShippingInterface* getDefaultInstance();
 
 };
 

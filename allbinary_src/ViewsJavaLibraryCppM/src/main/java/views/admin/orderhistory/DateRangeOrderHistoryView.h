@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_ORDERHISTORY_DATERANGEORDERHISTORYVIEW_H
         #define VIEWS_ADMIN_ORDERHISTORY_DATERANGEORDERHISTORYVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -109,7 +115,7 @@
         
 class DateRangeOrderHistoryView: public HttpStoreComponentView, public ValidationComponentInterface, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const std::string VIEWALLORDERS = "View All";
 
@@ -121,7 +127,7 @@ class DateRangeOrderHistoryView: public HttpStoreComponentView, public Validatio
 
     private: const std::string VIEWORDERSINLAST30DAYS = "30 Days";
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
     private: std::string shipped;
 
@@ -161,7 +167,7 @@ class DateRangeOrderHistoryView: public HttpStoreComponentView, public Validatio
 
     private: int32_t MAXLEN = 15;
 
-public: DateRangeOrderHistoryView(TransformInfoInterface transformInfoInterface);
+public: DateRangeOrderHistoryView(TransformInfoInterface* transformInfoInterface);
 
     private: void getFormData();
 
@@ -171,13 +177,13 @@ public: DateRangeOrderHistoryView(TransformInfoInterface transformInfoInterface)
             
     public: std::string view();
 
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
                 //@Throws(Exception.constructor)
             

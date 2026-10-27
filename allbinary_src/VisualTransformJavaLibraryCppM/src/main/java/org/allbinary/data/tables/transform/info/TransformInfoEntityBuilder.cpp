@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/visual/transform/info/TransformInfoHttpStoreFactory.h>
@@ -47,14 +53,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoEntityFactory.h"
-#include "TransformInfoEntity.h"
+        #include "org/allbinary/data/tables/transform/info/TransformInfoEntityFactory.h"
+#include "org/allbinary/data/tables/transform/info/TransformInfoEntity.h"
 
 class TransformInfoEntityBuilder
             : public Object
          {
 
-    public: static TransformInfoEntity getInstance(){
+    public: static TransformInfoEntity* getInstance(){
 
 
 

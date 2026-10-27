@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -43,17 +49,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PathFinderGraphVisitorBase.h"
+        #include "org/allbinary/media/graphics/geography/pathfinding/PathFinderGraphVisitorBase.h"
 
 class PathFinderGraphVisitorFactoryBase
             : public Object
          {
 
-    public: PathFinderGraphVisitorBase getInstance(BasicGeographicMap geographicMapInterface){
+    public: PathFinderGraphVisitorBase* getInstance(BasicGeographicMap* geographicMapInterface){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

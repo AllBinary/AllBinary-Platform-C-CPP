@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/control/contraints/size/TwoDimensionalConstraintInterface.h>
 
       
@@ -42,13 +48,13 @@
         
 class AdvertisementProductInterface {
 
-    std::string getType()
+    public: virtual std::string getType() = 0;
 
-    std::string getLink()
+    public: virtual std::string getLink() = 0;
 
-    int32_t getNumber()
+    public: virtual int32_t getNumber() = 0;
 
-    TwoDimensionalConstraintInterface getTwoDimensionalConstraint()
+    public: virtual TwoDimensionalConstraintInterface* getTwoDimensionalConstraint() = 0;
 
 };
 

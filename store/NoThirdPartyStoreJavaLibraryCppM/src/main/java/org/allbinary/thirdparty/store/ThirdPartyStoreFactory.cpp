@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,16 +44,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NoThirdPartyStore.h"
-#include "ThirdPartyStore.h"
+        #include "org/allbinary/thirdparty/store/NoThirdPartyStore.h"
+#include "org/allbinary/thirdparty/store/ThirdPartyStore.h"
 
 class ThirdPartyStoreFactory
             : public Object
          {
 
-    private: static NoThirdPartyStore instance() { return NoThirdPartyStore(); }
+    private: static NoThirdPartyStore* instance() { static std::unique_ptr<NoThirdPartyStore> value(new NoThirdPartyStore()); return value.get(); }
 
-    public: static ThirdPartyStore getInstance(){
+    public: static ThirdPartyStore* getInstance(){
 
 
 

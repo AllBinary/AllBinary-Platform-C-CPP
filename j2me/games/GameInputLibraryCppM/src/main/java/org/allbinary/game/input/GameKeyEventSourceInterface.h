@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEKEYEVENTSOURCEINTERFACE_H
         #define ORG_ALLBINARY_GAME_INPUT_GAMEKEYEVENTSOURCEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,7 +48,7 @@
         
 class GameKeyEventSourceInterface {
 
-    int32_t getSourceId();
+    public: virtual int32_t getSourceId() = 0;
 
 };
 

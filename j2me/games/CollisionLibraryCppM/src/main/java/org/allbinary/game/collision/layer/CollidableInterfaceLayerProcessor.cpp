@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/collision/CollidableInterfaceCompositeInterface.h>
@@ -53,12 +59,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CollidableInterfaceLayerManager.h"
-#include "AllBinaryCollisionManager.h"
+        #include "org/allbinary/game/collision/layer/CollidableInterfaceLayerManager.h"
+#include "org/allbinary/game/collision/layer/AllBinaryCollisionManager.h"
 
 class CollidableInterfaceLayerProcessor: public LayerProcessor {
 
-public: CollidableInterfaceLayerProcessor() : LayerProcessor(CollidableInterfaceLayerManager()){
+public: CollidableInterfaceLayerProcessor() : LayerProcessor(new CollidableInterfaceLayerManager()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -70,15 +76,15 @@ public: CollidableInterfaceLayerProcessor() : LayerProcessor(CollidableInterface
 
                 //@Throws(Exception.constructor)
             
-    public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
+    public: void processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index){
 
-    CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface = layerInterface;;
+    CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface = dynamic_cast<CollidableInterfaceCompositeInterface*>(layerInterface);;
     
 
-                        if(collidableInterfaceCompositeInterface.getCollidableInferface().isCollidable(collidableInterfaceCompositeInterface))
+                        if(collidableInterfaceCompositeInterface->getCollidableInferface()->isCollidable(dynamic_cast<CollidableCompositeLayer*>(collidableInterfaceCompositeInterface)))
                         
                                     {
-                                    AllBinaryCollisionManager::getInstance().process(this->getLayerManager(), collidableInterfaceCompositeInterface, index);
+                                    AllBinaryCollisionManager::getInstance()->process(this->getLayerManager(), collidableInterfaceCompositeInterface, index);
     
 
                                     }
@@ -86,9 +92,9 @@ public: CollidableInterfaceLayerProcessor() : LayerProcessor(CollidableInterface
 }
 
 
-    public: bool isProcessorLayer(AllBinaryLayer layerInterface){
+    public: bool isProcessorLayer(AllBinaryLayer* layerInterface){
 
-                        if(layerInterface.implmentsCollidableInterface())
+                        if(layerInterface->implmentsCollidableInterface())
                         
                                     {
                                     

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_HUD_EVENT_GAMENOTIFICATIONEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_LAYER_HUD_EVENT_GAMENOTIFICATIONEVENTHANDLER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -56,14 +62,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameNotificationListenerInterface.h"
-#include "GameNotificationEvent.h"
+        #include "org/allbinary/game/layer/hud/event/GameNotificationListenerInterface.h"
+#include "org/allbinary/game/layer/hud/event/GameNotificationEvent.h"
 
 class GameNotificationEventHandler: public BasicEventHandler {
 
-    private: static GameNotificationEventHandler instance() { return GameNotificationEventHandler(); }
+    private: static GameNotificationEventHandler* instance() { static std::unique_ptr<GameNotificationEventHandler> value(new GameNotificationEventHandler()); return value.get(); }
 
-    public: static GameNotificationEventHandler getInstance();
+    public: static GameNotificationEventHandler* getInstance();
 
 private: GameNotificationEventHandler();
 
@@ -74,7 +80,7 @@ private: GameNotificationEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
 };
 

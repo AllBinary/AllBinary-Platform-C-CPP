@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -84,23 +90,23 @@
         
 class WaypointBase
             : public Object
-        : public EventListenerInterface {
+        , public EventListenerInterface {
 
-    public: static WaypointBase NULL_WAYPOINT_BASE = WaypointBase(NoSound::getInstance());
+    public: static WaypointBase* NULL_WAYPOINT_BASE() { static std::unique_ptr<WaypointBase> value(new WaypointBase(NoSound::getInstance())); return value.get(); }
 
-    private: const BasicArrayList connectedWaypointList = BasicArrayListD();
+    private: BasicArrayList* connectedWaypointList = new BasicArrayListD();
 
-    private: Sound sound;
+    private: Sound* sound;
 
-    protected: AllBinaryGameLayerManager allBinaryGameLayerManagerP = AllBinaryGameLayerManager::getNullInstance();
+    protected: AllBinaryGameLayerManager* allBinaryGameLayerManagerP = AllBinaryGameLayerManager::getNullInstance();
 
-public: WaypointBase(Sound sound){
+public: WaypointBase(Sound* sound){
 this->sound= sound;
     
 }
 
 
-    public: Sound getSound(){
+    public: Sound* getSound(){
 
 
 
@@ -112,13 +118,13 @@ this->sound= sound;
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager){
 this->allBinaryGameLayerManagerP= allBinaryGameLayerManager;
     
 }
 
 
-    public: BasicArrayList getConnectedWaypointList(){
+    public: BasicArrayList* getConnectedWaypointList(){
 
 
 
@@ -128,59 +134,59 @@ this->allBinaryGameLayerManagerP= allBinaryGameLayerManager;
 }
 
 
-    public: void onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject* eventObject){
+ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: PathFindingInfo getPathFindingInfo(GeographicMapCellPosition geographicMapCellPosition){
+    public: PathFindingInfo* getPathFindingInfo(GeographicMapCellPosition* geographicMapCellPosition){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getPathsList(GeographicMapCellPosition geographicMapCellPosition, PathFindingInfo pathFindingInfo, MultipassState multipassState){
+    public: BasicArrayList* getPathsList(GeographicMapCellPosition* geographicMapCellPosition, PathFindingInfo* pathFindingInfo, MultipassState* multipassState){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getPathsListRunnable(GeographicMapCellPosition geographicMapCellPosition){
+    public: BasicArrayList* getPathsListRunnable(GeographicMapCellPosition* geographicMapCellPosition){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getPathsListFromCacheOnly(GeographicMapCellPosition geographicMapCellPosition){
+    public: BasicArrayList* getPathsListFromCacheOnly(GeographicMapCellPosition* geographicMapCellPosition){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(PathFindingLayerInterface unitLayer){
+    public: void visit(PathFindingLayerInterface* unitLayer){
 }
 
 

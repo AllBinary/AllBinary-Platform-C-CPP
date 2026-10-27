@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHBARTWODANIMATION_H
         #define ORG_ALLBINARY_GAME_HEALTH_HEALTHBARTWODANIMATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -47,13 +53,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HealthBarAnimation.h"
+        #include "org/allbinary/game/health/HealthBarAnimation.h"
 
 class HealthBarTwodAnimation: public HealthBarAnimation {
 
-public: HealthBarTwodAnimation(AllBinaryLayer layerInterface, int32_t location);
+public: HealthBarTwodAnimation(AllBinaryLayer* layerInterface, int32_t location);
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
 };
 

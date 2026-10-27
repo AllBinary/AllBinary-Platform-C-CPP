@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -102,22 +108,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InventorySearchUtil.h"
-#include "InventorySearchProductUtil.h"
+        #include "views/generic/inventory/InventorySearchUtil.h"
+#include "views/generic/inventory/InventorySearchProductUtil.h"
 
 class InventorySearch
             : public Object
-        : public InventoryViewSearchInterface {
+        , public InventoryViewSearchInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
-    private: SearchRequest searchRequest;
+    private: SearchRequest* searchRequest;
 
-public: InventorySearch(SearchRequest searchRequest);
+public: InventorySearch(SearchRequest* searchRequest);
 
                 //@Throws(Exception.constructor)
             

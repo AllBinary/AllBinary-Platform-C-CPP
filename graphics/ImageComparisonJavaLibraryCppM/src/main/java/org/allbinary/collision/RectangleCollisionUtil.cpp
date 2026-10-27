@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/awt.h>
@@ -44,15 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Rectangle.h"
+        #include "org/allbinary/collision/Rectangle.h"
 
 class RectangleCollisionUtil
             : public Object
          {
 
-    public: static bool isCollision(Rectangle rectangle, GPoint point){
+    public: static bool isCollision(Rectangle* rectangle, GPoint* point){
 
-                        if(point.getX() > (static_cast<int32_t>(rectangle.x) +rectangle.getWidth()) || point.getY() > (static_cast<int32_t>(rectangle.y) +rectangle.getHeight()) || point.getX() < rectangle.x || point.getY() < rectangle.y)
+                        if(point->getX() > (static_cast<int32_t>(rectangle->x) +rectangle->getWidth()) || point->getY() > (static_cast<int32_t>(rectangle->y) +rectangle->getHeight()) || point->getX() < rectangle->x || point->getY() < rectangle->y)
                         
                                     {
                                     
@@ -77,12 +83,12 @@ class RectangleCollisionUtil
 }
 
 
-    public: static bool isCollision(Rectangle rectangle1, Rectangle rectangle2){
+    public: static bool isCollision(Rectangle* rectangle1, Rectangle* rectangle2){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RectangleCollisionUtil::isCollision(rectangle1.x, rectangle1.y, rectangle1.x +rectangle1.width, rectangle1.y +rectangle1.height, rectangle2.x, rectangle2.y, rectangle2.x +rectangle2.width, rectangle2.y +rectangle2.height);;
+                        return RectangleCollisionUtil::isCollision(rectangle1->x, rectangle1->y, rectangle1->x +rectangle1->width, rectangle1->y +rectangle1->height, rectangle2->x, rectangle2->y, rectangle2->x +rectangle2->width, rectangle2->y +rectangle2->height);;
     
 }
 

@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABCUSTOMITEM_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABCUSTOMITEM_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -50,17 +56,17 @@ class ABCustomItem
             : public Object
          {
 
-    public: static Object* NULL_CUSTOM_ITEM = NullUtil::getInstance().NULL_OBJECT;
+    public: static inline Object* NULL_CUSTOM_ITEM = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static ABCustomItem getNullInstance();
+    public: static ABCustomItem* getNullInstance();
 
-protected: ABCustomItem(std::string label, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+protected: ABCustomItem(std::string label, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
-    public: void setOwner(Screen owner);
+    public: void setOwner(Screen* owner);
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
-    public: void paintUnselected(Graphics graphics, int32_t x, int32_t y);
+    public: void paintUnselected(Graphics* graphics, int32_t x, int32_t y);
 
     public: bool isFocusable();
 
@@ -80,7 +86,7 @@ protected: ABCustomItem(std::string label, BasicColor backgroundBasicColor, Basi
 
     public: int32_t getMinimumHeight();
 
-    public: void preMeasurement(Graphics graphics);
+    public: void preMeasurement(Graphics* graphics);
 
 };
 

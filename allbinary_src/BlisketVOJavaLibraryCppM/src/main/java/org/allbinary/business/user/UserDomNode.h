@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_USERDOMNODE_H
         #define ORG_ALLBINARY_BUSINESS_USER_USERDOMNODE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,23 +73,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserData.h"
+        #include "org/allbinary/business/user/UserData.h"
 
 class UserDomNode
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: TableMappingInterface dataMappingInterface;
+    private: TableMappingInterface* dataMappingInterface;
 
-public: UserDomNode(TableMappingInterface dataMappingInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public: Node toXmlNode(Document document);
+public: UserDomNode(TableMappingInterface* dataMappingInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Document toXmlDoc();
+    public: Node* toXmlNode(Document* document);
+
+                //@Throws(Exception.constructor)
+            
+    public: Document* toXmlDoc();
 
                 //@Throws(Exception.constructor)
             

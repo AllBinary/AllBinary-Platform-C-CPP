@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -98,23 +106,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoEntityInterface.h"
+        #include "org/allbinary/data/tables/transform/info/TransformInfoEntityInterface.h"
 
 class TransformInfoEntity: public AbSqlBean, public TransformInfoEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     protected: const std::string tableName = "transforminfo";
 
-    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: TransformInfoFactoryInterface transformInfoFactoryInterface;
+    private: TransformInfoFactoryInterface* transformInfoFactoryInterface;
 
-    private: TransformInfoObjectConfigAndManipulatorFactoryBase transformInfoObjectConfigAndManipulatorFactoryInterface;
+    private: TransformInfoObjectConfigAndManipulatorFactoryBase* transformInfoObjectConfigAndManipulatorFactoryInterface;
 
-    private: TransformInfoObjectConfigGeneratorFactoryInterface transformInfoObjectConfigGeneratorFactoryInterface;
+    private: TransformInfoObjectConfigGeneratorFactoryInterface* transformInfoObjectConfigGeneratorFactoryInterface;
 
-public: TransformInfoEntity(TransformInfoObjectConfigGeneratorFactoryInterface transformInfoObjectConfigGeneratorFactoryInterface, TransformInfoObjectConfigAndManipulatorFactoryBase transformInfoObjectConfigAndManipulatorFactoryInterface, TransformInfoFactoryInterface transformInfoFactoryInterface) : AbSqlBean(UserDbInitInfo()){
+public: TransformInfoEntity(TransformInfoObjectConfigGeneratorFactoryInterface* transformInfoObjectConfigGeneratorFactoryInterface, TransformInfoObjectConfigAndManipulatorFactoryBase* transformInfoObjectConfigAndManipulatorFactoryInterface, TransformInfoFactoryInterface* transformInfoFactoryInterface) : AbSqlBean(new UserDbInitInfo()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -132,29 +140,29 @@ this->transformInfoFactoryInterface= transformInfoFactoryInterface;
 }
 
 
-    public: void insert(BasicArrayList values){
+    public: void insert(BasicArrayList* values){
 
         try {
             super.insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, INSERT);
+                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, INSERT);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, INSERT, e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, INSERT, &e);
     
 
                                     }
@@ -167,26 +175,26 @@ this->transformInfoFactoryInterface= transformInfoFactoryInterface;
     public: void delete_(std::string value){
 
         try {
-            super.deleteWhere(TransformInfoData::getInstance().NAME, value);
+            super.deleteWhere(TransformInfoData::getInstance()->NAME, value);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
+                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, &e);
     
 
                                     }
@@ -198,17 +206,17 @@ this->transformInfoFactoryInterface= transformInfoFactoryInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface get(std::string name, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
+    public: TransformInfoInterface* get(std::string name, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
 
-    TransformInfoData transformInfoData = TransformInfoData::getInstance();;
+    TransformInfoData* transformInfoData = TransformInfoData::getInstance();;
     
 
-    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* keysAndValues = StdUtil::getInstance()->createHashMap();;
     
-keysAndValues.put(transformInfoData.NAME, name);
+keysAndValues->put(transformInfoData->NAME, name);
     
 
-    HashMap<Object*, Object*> hashMap = super.getRow(keysAndValues);;
+    HashMap<Object*, Object*>* hashMap = super.getRow(keysAndValues);;
     
 
                         if(hashMap != 
@@ -217,7 +225,7 @@ keysAndValues.put(transformInfoData.NAME, name);
                         
                                     {
                                     
-    Object* anyType = hashMap.get(transformInfoData.OBJECTCONFIG);;
+    Object* anyType = hashMap->get(transformInfoData->OBJECTCONFIG);;
     
 
                         if(anyType != 
@@ -228,13 +236,13 @@ keysAndValues.put(transformInfoData.NAME, name);
                                     
     std::string string = anyType;;
     
-hashMap.put(transformInfoData.OBJECTCONFIG, decode.toCharArray());
+hashMap->put(transformInfoData->OBJECTCONFIG, decode.toCharArray());
     
 
                                     }
                                 
 
-    Object* objectData = hashMap.get(transformInfoData.DATA);;
+    Object* objectData = hashMap->get(transformInfoData->DATA);;
     
 
                         if(objectData != 
@@ -245,7 +253,7 @@ hashMap.put(transformInfoData.OBJECTCONFIG, decode.toCharArray());
                                     
     std::string string = objectData;;
     
-hashMap.put(transformInfoData.DATA, decode.toCharArray());
+hashMap->put(transformInfoData->DATA, decode.toCharArray());
     
 
                                     }
@@ -254,7 +262,7 @@ hashMap.put(transformInfoData.DATA, decode.toCharArray());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->transformInfoFactoryInterface.getInstance(hashMap, propertiesHashMap, pageContext);;
+                        return this->transformInfoFactoryInterface->getInstance(hashMap, propertiesHashMap, pageContext);;
     
 
                                     }
@@ -274,15 +282,15 @@ hashMap.put(transformInfoData.DATA, decode.toCharArray());
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getObjectConfigs(std::string storeName){
+    public: BasicArrayList* getObjectConfigs(std::string storeName){
 
-    BasicArrayList objectConfigVector = BasicArrayListD();;
+    BasicArrayList* objectConfigVector = new BasicArrayListD();;
     
 
-    BasicArrayList objectConfigColumnVector = this->getColumnWhere(TransformInfoData::getInstance().OBJECTCONFIG, StoreFrontData::getInstance().NAME, storeName);;
+    BasicArrayList* objectConfigColumnVector = this->getColumnWhere(TransformInfoData::getInstance()->OBJECTCONFIG, StoreFrontData::getInstance()->NAME, storeName);;
     
 
-    int32_t size = objectConfigColumnVector.size();;
+    int32_t size = objectConfigColumnVector->size();;
     
 
 
@@ -292,11 +300,11 @@ hashMap.put(transformInfoData.DATA, decode.toCharArray());
     int32_t i = 0;i < size; i++)
         {
 
-    std::string objectConfigString = objectConfigColumnVector.get(i);;
+    std::string objectConfigString = objectConfigColumnVector->get(i);;
     
 objectConfigString= decode.toCharArray();
     
-objectConfigVector.add(this->transformInfoObjectConfigAndManipulatorFactoryInterface.getInstance(this->abeClientInformation, this, DomDocumentHelper::create(objectConfigString)));
+objectConfigVector->add(this->transformInfoObjectConfigAndManipulatorFactoryInterface->getInstance(this->abeClientInformation, dynamic_cast<TransformInfoInterface*>(this), DomDocumentHelper::create(objectConfigString)));
     
 }
 
@@ -311,15 +319,15 @@ objectConfigVector.add(this->transformInfoObjectConfigAndManipulatorFactoryInter
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getNames(std::string storeName){
+    public: BasicArrayList* getNames(std::string storeName){
 
-    BasicArrayList viewNameVector = BasicArrayListD();;
+    BasicArrayList* viewNameVector = new BasicArrayListD();;
     
 
-    BasicArrayList columnVector = this->getColumnWhere(TransformInfoData::getInstance().NAME, StoreFrontData::getInstance().NAME, storeName);;
+    BasicArrayList* columnVector = this->getColumnWhere(TransformInfoData::getInstance()->NAME, StoreFrontData::getInstance()->NAME, storeName);;
     
 
-    int32_t size = columnVector.size();;
+    int32_t size = columnVector->size();;
     
 
 
@@ -329,9 +337,9 @@ objectConfigVector.add(this->transformInfoObjectConfigAndManipulatorFactoryInter
     int32_t i = 0;i < size; i++)
         {
 
-    std::string viewNameString = columnVector.get(i);;
+    std::string viewNameString = columnVector->get(i);;
     
-viewNameVector.add(viewNameString);
+viewNameVector->add(viewNameString);
     
 }
 
@@ -346,74 +354,74 @@ viewNameVector.add(viewNameString);
 
     public: std::string createTableStatement(){
 
-    TransformInfoData transformInfoData = TransformInfoData::getInstance();;
+    TransformInfoData* transformInfoData = TransformInfoData::getInstance();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->sqlStrings.CREATE_TABLE);
+stringBuffer->append(this->sqlStrings.CREATE_TABLE);
     
-stringBuffer.append(this->tableName);
+stringBuffer->append(this->tableName);
     
-stringBuffer.append(this->sqlStrings.START);
+stringBuffer->append(this->sqlStrings.START);
     
-stringBuffer.append(transformInfoData.NAME);
+stringBuffer->append(transformInfoData->NAME);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(StoreFrontData::getInstance().NAME);
+stringBuffer->append(StoreFrontData::getInstance()->NAME);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(transformInfoData.OBJECTFILENAME);
+stringBuffer->append(transformInfoData->OBJECTFILENAME);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(transformInfoData.OBJECT);
+stringBuffer->append(transformInfoData->OBJECT);
     
-stringBuffer.append(this->sqlTypeStrings.BLOB_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.BLOB_NOT_NULL);
     
-stringBuffer.append(transformInfoData.OBJECTCONFIGFILENAME);
+stringBuffer->append(transformInfoData->OBJECTCONFIGFILENAME);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(transformInfoData.OBJECTCONFIG);
+stringBuffer->append(transformInfoData->OBJECTCONFIG);
     
-stringBuffer.append(this->sqlTypeStrings.BLOB_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.BLOB_NOT_NULL);
     
-stringBuffer.append(transformInfoData.TEMPLATEFILENAME);
+stringBuffer->append(transformInfoData->TEMPLATEFILENAME);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(transformInfoData.TEMPLATE);
+stringBuffer->append(transformInfoData->TEMPLATE);
     
-stringBuffer.append(this->sqlTypeStrings.BLOB_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.BLOB_NOT_NULL);
     
-stringBuffer.append(transformInfoData.DATAFILENAME);
+stringBuffer->append(transformInfoData->DATAFILENAME);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(transformInfoData.DATA);
+stringBuffer->append(transformInfoData->DATA);
     
-stringBuffer.append(this->sqlTypeStrings.BLOB_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.BLOB_NOT_NULL);
     
-stringBuffer.append(EntryData::getInstance().LASTMODIFIED);
+stringBuffer->append(EntryData::getInstance()->LASTMODIFIED);
     
-stringBuffer.append(EntryData::getInstance().TIMECREATED);
+stringBuffer->append(EntryData::getInstance()->TIMECREATED);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(this->sqlStrings.PRIMARY_KEY);
+stringBuffer->append(this->sqlStrings.PRIMARY_KEY);
     
-stringBuffer.append(transformInfoData.NAME);
+stringBuffer->append(transformInfoData->NAME);
     
-stringBuffer.append(this->sqlStrings.END);
+stringBuffer->append(this->sqlStrings.END);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
@@ -428,8 +436,8 @@ stringBuffer.append(this->sqlStrings.END);
 }
 
 
-    public: void update(HashMap<Object*, Object*> updatedValues){
-super.updateWhere(TransformInfoData::getInstance().NAME, updatedValues.get(TransformInfoData::getInstance().NAME), updatedValues);
+    public: void update(HashMap<Object*, Object*>* updatedValues){
+super.updateWhere(TransformInfoData::getInstance()->NAME, updatedValues->get(TransformInfoData::getInstance()->NAME), updatedValues);
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_TEMPLATE_OBJECTCONFIG_NOTEMPLATETRANSFORMINFOOBJECTCONFIG_H
         #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_TEMPLATE_OBJECTCONFIG_NOTEMPLATETRANSFORMINFOOBJECTCONFIG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -83,17 +89,17 @@
         
 class NoTemplateTransformInfoObjectConfig: public TransformInfoObjectConfig {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: NoTemplateTransformInfoObjectConfig(Object transformInfoInterface);
+public: NoTemplateTransformInfoObjectConfig(Object* transformInfoInterface);
 
-public: NoTemplateTransformInfoObjectConfig(Object transformInfoInterface, Object document);
+public: NoTemplateTransformInfoObjectConfig(Object* transformInfoInterface, Object* document);
 
-public: NoTemplateTransformInfoObjectConfig(Object transformInfoInterface, std::string name, std::string type);
+public: NoTemplateTransformInfoObjectConfig(Object* transformInfoInterface, std::string name, std::string type);
 
                 //@Throws(Exception.constructor)
             
-    protected: Document generate(Document objectConfigDocument);
+    protected: Document* generate(Document* objectConfigDocument);
 
 };
 

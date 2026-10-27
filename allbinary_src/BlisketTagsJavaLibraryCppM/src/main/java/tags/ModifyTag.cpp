@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Class.h"
         
             #include "java/lang/Exception.h"
@@ -67,13 +73,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HelperTag.h"
+        #include "tags/HelperTag.h"
 
 class ModifyTag: public HelperTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: ModifyTag(TagHelperFactoryInterface tagHelperFactoryInterface) : HelperTag(tagHelperFactoryInterface){
+public: ModifyTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : HelperTag(tagHelperFactoryInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -81,10 +87,10 @@ public: ModifyTag(TagHelperFactoryInterface tagHelperFactoryInterface) : HelperT
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -98,14 +104,14 @@ public: ModifyTag(TagHelperFactoryInterface tagHelperFactoryInterface) : HelperT
 
         try {
             
-    Class* helperClass = this->getHelper().getClass();;
+    Class* helperClass = this->getHelper()->getClass();;
     
 
-    Method method = helperClass.getMethod("insert", 
+    Method* method = helperClass->getMethod("insert", 
                             nullptr);;
     
 
-    std::string result = method.invoke(this->getHelper(), 
+    std::string result = method->invoke(this->getHelper(), 
                             nullptr);;
     
 
@@ -116,16 +122,16 @@ public: ModifyTag(TagHelperFactoryInterface tagHelperFactoryInterface) : HelperT
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to insert";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "insert()", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "insert()", &e);
     
 
                                     }
@@ -147,14 +153,14 @@ public: ModifyTag(TagHelperFactoryInterface tagHelperFactoryInterface) : HelperT
 
         try {
             
-    Class* helperClass = this->getHelper().getClass();;
+    Class* helperClass = this->getHelper()->getClass();;
     
 
-    Method method = helperClass.getMethod(commonStrings.delete_, 
+    Method* method = helperClass->getMethod(commonStrings->delete_, 
                             nullptr);;
     
 
-    std::string result = method.invoke(this->getHelper(), 
+    std::string result = method->invoke(this->getHelper(), 
                             nullptr);;
     
 
@@ -165,16 +171,16 @@ public: ModifyTag(TagHelperFactoryInterface tagHelperFactoryInterface) : HelperT
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to delete";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "delete()", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "delete()", &e);
     
 
                                     }
@@ -196,14 +202,14 @@ public: ModifyTag(TagHelperFactoryInterface tagHelperFactoryInterface) : HelperT
 
         try {
             
-    Class* helperClass = this->getHelper().getClass();;
+    Class* helperClass = this->getHelper()->getClass();;
     
 
-    Method method = helperClass.getMethod("update", 
+    Method* method = helperClass->getMethod("update", 
                             nullptr);;
     
 
-    std::string result = method.invoke(this->getHelper(), 
+    std::string result = method->invoke(this->getHelper(), 
                             nullptr);;
     
 
@@ -214,16 +220,16 @@ public: ModifyTag(TagHelperFactoryInterface tagHelperFactoryInterface) : HelperT
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to update";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "update()", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "update()", &e);
     
 
                                     }
@@ -245,30 +251,30 @@ public: ModifyTag(TagHelperFactoryInterface tagHelperFactoryInterface) : HelperT
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
                                     
-    HttpServletRequest request = this->pageContext.getRequest();;
+    HttpServletRequest* request = dynamic_cast<HttpServletRequest*>(this->pageContext.getRequest());;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Command: ");
+stringBuffer->append("Command: ");
     
-stringBuffer.append(this->getCommand());
+stringBuffer->append(this->getCommand());
     
-stringBuffer.append(" Request URI: ");
+stringBuffer->append(" Request URI: ");
     
-stringBuffer.append(request.getRequestURI());
+stringBuffer->append(request->getRequestURI());
     
-this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
+this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
                                     
@@ -283,20 +289,20 @@ this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
                                     this->setHelper();
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(this->getCommand().compareTo(commonStrings.INSERT) == 0)
+                        if(this->getCommand()->compareTo(commonStrings->INSERT) == 0)
                         
                                     {
                                     
     std::string output = this->insert();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this->pageContext.getOut().print(output +"<br />");
+                                    this->pageContext.getOut()->print(output +"<br />");
     
 
                                     }
@@ -305,17 +311,17 @@ this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(commonStrings.DELETE) == 0)
+                        if(this->getCommand()->compareTo(commonStrings->DELETE) == 0)
                         
                                     {
                                     
     std::string output = this->delete_();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this->pageContext.getOut().print(output +"<br />");
+                                    this->pageContext.getOut()->print(output +"<br />");
     
 
                                     }
@@ -324,17 +330,17 @@ this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(commonStrings.UPDATE) == 0)
+                        if(this->getCommand()->compareTo(commonStrings->UPDATE) == 0)
                         
                                     {
                                     
     std::string output = this->update();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this->pageContext.getOut().print(output +"<br />");
+                                    this->pageContext.getOut()->print(output +"<br />");
     
 
                                     }
@@ -353,9 +359,9 @@ this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
-AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
     
 
 
@@ -366,9 +372,9 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 
@@ -377,7 +383,7 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
                         return SKIP_BODY;
     
 }
-*/
+
 }
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -70,15 +76,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PrimaryWaypointHelper.h"
+        #include "org/allbinary/game/input/form/PrimaryWaypointHelper.h"
 
 class AssignWaypointsUtil
             : public Object
          {
 
-    private: static AssignWaypointsUtil instance() { return AssignWaypointsUtil(); }
+    private: static AssignWaypointsUtil* instance() { static std::unique_ptr<AssignWaypointsUtil> value(new AssignWaypointsUtil()); return value.get(); }
 
-    public: static AssignWaypointsUtil getInstance(){
+    public: static AssignWaypointsUtil* getInstance(){
 
 
 
@@ -88,57 +94,57 @@ class AssignWaypointsUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const RTSLayerEvent WAYPOINT_EVENT = RTSLayerEvent(NullPathFindingLayer::NULL_PATH_FINDING_LAYER);
+    private: RTSLayerEvent* WAYPOINT_EVENT = new RTSLayerEvent(NullPathFindingLayer::NULL_PATH_FINDING_LAYER);
 
-    public: void set(UnitLayer unitLayer, AdvancedRTSGameLayer ownerAdvancedRTSGameLayer){
+    public: void set(UnitLayer* unitLayer, AdvancedRTSGameLayer* ownerAdvancedRTSGameLayer){
 
         try {
             
-    BasicArrayList list = ownerAdvancedRTSGameLayer.getWaypointBehavior().getOwnedWaypointList();;
+    BasicArrayList* list = ownerAdvancedRTSGameLayer->getWaypointBehavior()->getOwnedWaypointList();;
     
 
-    UnitWaypointBehavior unitWaypointBehavior = unitLayer.getWaypointBehavior();;
+    UnitWaypointBehavior* unitWaypointBehavior = dynamic_cast<UnitWaypointBehavior*>(unitLayer->getWaypointBehavior());;
     
 
 
 
 
                         for (
-    int32_t index = list.size() -1;index >= 0; index--)
+    int32_t index = list->size() -1;index >= 0; index--)
         {
 
-    RTSLayer waypointLayer = list.get(index);;
+    RTSLayer* waypointLayer = dynamic_cast<RTSLayer*>(list->get(index));;
     
-this->WAYPOINT_EVENT.setRtsLayer(waypointLayer);
+this->WAYPOINT_EVENT->setRtsLayer(waypointLayer);
     
-unitWaypointBehavior.onWaypointEvent(this->WAYPOINT_EVENT);
+unitWaypointBehavior->onWaypointEvent(this->WAYPOINT_EVENT);
     
 }
 
 
-    PathFindingLayerInterface waypointLayer = PrimaryWaypointHelper::getInstance().getWaypointLayer();;
+    PathFindingLayerInterface* waypointLayer = PrimaryWaypointHelper::getInstance()->getWaypointLayer();;
     
 
                         if(waypointLayer != NullPathFindingLayer::NULL_PATH_FINDING_LAYER)
                         
                                     {
-                                    this->WAYPOINT_EVENT.setRtsLayer(waypointLayer);
+                                    this->WAYPOINT_EVENT->setRtsLayer(waypointLayer);
     
-unitWaypointBehavior.onWaypointEvent(this->WAYPOINT_EVENT);
+unitWaypointBehavior->onWaypointEvent(this->WAYPOINT_EVENT);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, "set", e);
+this->logUtil->put(commonStrings->EXCEPTION, this, "set", &e);
     
 }
 

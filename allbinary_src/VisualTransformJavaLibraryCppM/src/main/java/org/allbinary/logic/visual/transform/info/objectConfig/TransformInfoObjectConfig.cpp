@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -103,36 +109,36 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoObjectConfigInterface.h"
-#include "TransformInfoObjectConfigData.h"
+        #include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigInterface.h"
+#include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigData.h"
 
 class TransformInfoObjectConfig
             : public Object
-        : public TransformInfoObjectConfigInterface {
+        , public TransformInfoObjectConfigInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: TransformInfoInterface ownerTransformInfoInterface;
+    private: TransformInfoInterface* ownerTransformInfoInterface;
 
-    private: Document document;
+    private: Document* document;
 
     private: std::string outputTypeName;
 
-public: TransformInfoObjectConfig(Object transformInfoInterface){
+public: TransformInfoObjectConfig(Object* transformInfoInterface){
 this->ownerTransformInfoInterface= transformInfoInterface;
     
 this->createDocument();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("TransformInfo: ");
+stringBuffer->append("TransformInfo: ");
     
 
                         if(this->ownerTransformInfoInterface != 
@@ -140,22 +146,22 @@ stringBuffer.append("TransformInfo: ");
                                 )
                         
                                     {
-                                    stringBuffer.append(this->ownerTransformInfoInterface.getName());
+                                    stringBuffer->append(this->ownerTransformInfoInterface->getName());
     
 
                                     }
                                 
                         else {
-                            stringBuffer.append("No Owner!?#@");
+                            stringBuffer->append("No Owner!?#@");
     
 
                         }
                             
-stringBuffer.append("\nConstructed with document: ");
+stringBuffer->append("\nConstructed with document: ");
     
-stringBuffer.append(this->toString());
+stringBuffer->append(this->toString());
     
-this->logUtil.putF(stringBuffer.toString(), this, "Constructor(TransformInfoInterface)");
+this->logUtil->putF(stringBuffer->toString(), this, "Constructor(TransformInfoInterface)");
     
 
                                     }
@@ -163,13 +169,13 @@ this->logUtil.putF(stringBuffer.toString(), this, "Constructor(TransformInfoInte
 }
 
 
-public: TransformInfoObjectConfig(Object transformInfoInterface, Object document){
+public: TransformInfoObjectConfig(Object* transformInfoInterface, Object* document){
 this->ownerTransformInfoInterface= transformInfoInterface;
     
 this->document= document;
     
 
-    Node node = DomSearchHelper::getNodeNoThrow(OutputTypeData::getInstance().NAME, this->getRootNode().getChildNodes());;
+    Node* node = DomSearchHelper::getNodeNoThrow(OutputTypeData::getInstance()->NAME, this->getRootNode()->getChildNodes());;
     
 
                         if(node != 
@@ -183,13 +189,13 @@ this->document= document;
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("TransformInfo: ");
+stringBuffer->append("TransformInfo: ");
     
 
                         if(this->ownerTransformInfoInterface != 
@@ -197,22 +203,22 @@ stringBuffer.append("TransformInfo: ");
                                 )
                         
                                     {
-                                    stringBuffer.append(this->ownerTransformInfoInterface.getName());
+                                    stringBuffer->append(this->ownerTransformInfoInterface->getName());
     
 
                                     }
                                 
                         else {
-                            stringBuffer.append("No Owner!?#@");
+                            stringBuffer->append("No Owner!?#@");
     
 
                         }
                             
-stringBuffer.append("\nConstructed with document: ");
+stringBuffer->append("\nConstructed with document: ");
     
-stringBuffer.append(this->toString());
+stringBuffer->append(this->toString());
     
-this->logUtil.putF(stringBuffer.toString(), this, "Constructor(TransformInfoInterface, Document)");
+this->logUtil->putF(stringBuffer->toString(), this, "Constructor(TransformInfoInterface, Document)");
     
 
                                     }
@@ -220,29 +226,29 @@ this->logUtil.putF(stringBuffer.toString(), this, "Constructor(TransformInfoInte
 }
 
 
-public: TransformInfoObjectConfig(Object transformInfoInterface, std::string name, std::string type){
+public: TransformInfoObjectConfig(Object* transformInfoInterface, std::string name, std::string type){
 this->ownerTransformInfoInterface= transformInfoInterface;
     
 this->createDocument();
     
 
-    Attr configNameAttr = this->document.createAttribute(TransformInfoObjectConfigData::getInstance().NAME);;
+    Attr* configNameAttr = this->document->createAttribute(TransformInfoObjectConfigData::getInstance()->NAME);;
     
-configNameAttr.setValue(name);
-    
-
-    Node objectConfigNode = this->document.getElementsByTagName(TransformInfoObjectConfigData::getInstance().NAME).item(0);;
-    
-objectConfigNode.appendChild(configNameAttr);
+configNameAttr->setValue(name);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+    Node* objectConfigNode = this->document->getElementsByTagName(TransformInfoObjectConfigData::getInstance()->NAME)->item(0);;
+    
+objectConfigNode->appendChild(configNameAttr);
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("TransformInfo: ");
+stringBuffer->append("TransformInfo: ");
     
 
                         if(this->ownerTransformInfoInterface != 
@@ -250,22 +256,22 @@ stringBuffer.append("TransformInfo: ");
                                 )
                         
                                     {
-                                    stringBuffer.append(this->ownerTransformInfoInterface.getName());
+                                    stringBuffer->append(this->ownerTransformInfoInterface->getName());
     
 
                                     }
                                 
                         else {
-                            stringBuffer.append("No Owner!?#@");
+                            stringBuffer->append("No Owner!?#@");
     
 
                         }
                             
-stringBuffer.append("\nConstructed with document: ");
+stringBuffer->append("\nConstructed with document: ");
     
-stringBuffer.append(this->toString());
+stringBuffer->append(this->toString());
     
-this->logUtil.putF(stringBuffer.toString(), this, "Constructor(TransformInfoInterface, name, type)");
+this->logUtil->putF(stringBuffer->toString(), this, "Constructor(TransformInfoInterface, name, type)");
     
 
                                     }
@@ -277,14 +283,14 @@ this->logUtil.putF(stringBuffer.toString(), this, "Constructor(TransformInfoInte
 this->document= DomDocumentHelper::create();
     
 
-    Node objectConfigNode = this->document.createElement(TransformInfoObjectConfigData::getInstance().NAME);;
+    Node* objectConfigNode = this->document->createElement(TransformInfoObjectConfigData::getInstance()->NAME);;
     
-this->document.appendChild(objectConfigNode);
+this->document->appendChild(objectConfigNode);
     
 }
 
 
-    protected: TransformInfoInterface getTransformInfoInterface(){
+    protected: TransformInfoInterface* getTransformInfoInterface(){
 
 
 
@@ -296,7 +302,7 @@ this->document.appendChild(objectConfigNode);
 
                 //@Throws(Exception.constructor)
             
-    public: Document toXmlDoc(){
+    public: Document* toXmlDoc(){
 
 
 
@@ -306,21 +312,21 @@ this->document.appendChild(objectConfigNode);
 }
 
 
-    protected: void setDocument(Document document){
+    protected: void setDocument(Document* document){
 this->document= document;
     
 }
 
 
-    public: bool containsView(TransformInfoInterface transformInfoInterface){
+    public: bool containsView(TransformInfoInterface* transformInfoInterface){
 
-    Node objectConfigNode = this->document.getElementsByTagName(TransformInfoObjectConfigData::getInstance().NAME).item(0);;
+    Node* objectConfigNode = this->document->getElementsByTagName(TransformInfoObjectConfigData::getInstance()->NAME)->item(0);;
     
 
-    NodeList viewNodeList = objectConfigNode.getChildNodes();;
+    NodeList* viewNodeList = objectConfigNode->getChildNodes();;
     
 
-    int32_t numberOfViews = viewNodeList.getLength();;
+    int32_t numberOfViews = viewNodeList->getLength();;
     
 
 
@@ -330,16 +336,16 @@ this->document= document;
     int32_t index = 0;index < numberOfViews; index++)
         {
 
-    Node viewNode = viewNodeList.item(index);;
+    Node* viewNode = viewNodeList->item(index);;
     
 
-    NamedNodeMap viewAttributes = viewNode.getAttributes();;
+    NamedNodeMap* viewAttributes = viewNode->getAttributes();;
     
 
-    Attr attrNode = viewAttributes.getNamedItem(TransformInfoData::getInstance().NAME);;
+    Attr* attrNode = dynamic_cast<Attr*>(viewAttributes->getNamedItem(TransformInfoData::getInstance()->NAME));;
     
 
-                        if(transformInfoInterface.getName().compareTo(attrNode.getValue()) == 0)
+                        if(transformInfoInterface->getName().compareTo(attrNode->getValue()) == 0)
                         
                                     {
                                     
@@ -364,15 +370,15 @@ this->document= document;
 
                 //@Throws(Exception.constructor)
             
-    private: NamedNodeMap getTemplateAttributes(){
+    private: NamedNodeMap* getTemplateAttributes(){
 
-    Node componentNode = this->document.getElementsByTagName(TransformInfoObjectConfigData::getInstance().NAME).item(0);;
+    Node* componentNode = this->document->getElementsByTagName(TransformInfoObjectConfigData::getInstance()->NAME)->item(0);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return componentNode.getAttributes();;
+                        return componentNode->getAttributes();;
     
 }
 
@@ -381,13 +387,13 @@ this->document= document;
             
     public: std::string getName(){
 
-    Attr attrNode = this->getTemplateAttributes().getNamedItem(TransformInfoObjectConfigData::getInstance().NAME);;
+    Attr* attrNode = dynamic_cast<Attr*>(this->getTemplateAttributes()->getNamedItem(TransformInfoObjectConfigData::getInstance()->NAME));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return attrNode.getValue();;
+                        return attrNode->getValue();;
     
 }
 
@@ -396,47 +402,47 @@ this->document= document;
             
     public: void setName(std::string name){
 
-    Attr attrNode = this->getTemplateAttributes().getNamedItem(TransformInfoObjectConfigData::getInstance().NAME);;
+    Attr* attrNode = dynamic_cast<Attr*>(this->getTemplateAttributes()->getNamedItem(TransformInfoObjectConfigData::getInstance()->NAME));;
     
-attrNode.setValue(name);
+attrNode->setValue(name);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: BasicArrayList getNodeVector(std::string nodeName){
+    private: BasicArrayList* getNodeVector(std::string nodeName){
 
-    NodeList componentsNodeList = this->document.getElementsByTagName(nodeName);;
+    NodeList* componentsNodeList = this->document->getElementsByTagName(nodeName);;
     
 
                         if(componentsNodeList != 
                                     nullptr
-                                 && componentsNodeList.getLength() > 0)
+                                 && componentsNodeList->getLength() > 0)
                         
                                     {
                                     
-    BasicArrayList viewNodeVector = DomSearchHelper::getAllNodes(TransformInfoData::getInstance().NAME, componentsNodeList.item(0).getChildNodes());;
+    BasicArrayList* viewNodeVector = DomSearchHelper::getAllNodes(TransformInfoData::getInstance()->NAME, componentsNodeList->item(0)->getChildNodes());;
     
 
-    int32_t numberOfViews = viewNodeVector.size();;
+    int32_t numberOfViews = viewNodeVector->size();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Number Of ");
+stringBuffer->append("Number Of ");
     
-stringBuffer.append(nodeName);
+stringBuffer->append(nodeName);
     
-stringBuffer.append(" Nodes: ");
+stringBuffer->append(" Nodes: ");
     
-stringBuffer.appendint(numberOfViews);
+stringBuffer->appendint(numberOfViews);
     
-this->logUtil.putF(stringBuffer.toString(), this, "getNodeVector(nodename)");
+this->logUtil->putF(stringBuffer->toString(), this, "getNodeVector(nodename)");
     
 
                                     }
@@ -454,22 +460,22 @@ this->logUtil.putF(stringBuffer.toString(), this, "getNodeVector(nodename)");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicArrayListD();
+                        return new BasicArrayListD();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: BasicArrayList getTransformDomNodes(std::string nodeName){
+    private: BasicArrayList* getTransformDomNodes(std::string nodeName){
 
-    BasicArrayList viewVector = BasicArrayListD();;
+    BasicArrayList* viewVector = new BasicArrayListD();;
     
 
-    BasicArrayList viewNodeVector = this->getNodeVector(nodeName);;
+    BasicArrayList* viewNodeVector = this->getNodeVector(nodeName);;
     
 
-    int32_t size = viewNodeVector.size();;
+    int32_t size = viewNodeVector->size();;
     
 
 
@@ -479,9 +485,9 @@ this->logUtil.putF(stringBuffer.toString(), this, "getNodeVector(nodename)");
     int32_t index = 0;index < size; index++)
         {
 
-    Node viewNode = viewNodeVector.get(index);;
+    Node* viewNode = dynamic_cast<Node*>(viewNodeVector->get(index));;
     
-viewVector.add(TransformInfoDomNode(viewNode));
+viewVector->add(new TransformInfoDomNode(viewNode));
     
 }
 
@@ -496,15 +502,15 @@ viewVector.add(TransformInfoDomNode(viewNode));
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getTransforms(std::string nodeName){
+    public: BasicArrayList* getTransforms(std::string nodeName){
 
-    BasicArrayList viewVector = BasicArrayListD();;
+    BasicArrayList* viewVector = new BasicArrayListD();;
     
 
-    BasicArrayList viewNodeVector = this->getNodeVector(nodeName);;
+    BasicArrayList* viewNodeVector = this->getNodeVector(nodeName);;
     
 
-    int32_t size = viewNodeVector.size();;
+    int32_t size = viewNodeVector->size();;
     
 
 
@@ -514,9 +520,9 @@ viewVector.add(TransformInfoDomNode(viewNode));
     int32_t index = 0;index < size; index++)
         {
 
-    Node viewNode = viewNodeVector.get(index);;
+    Node* viewNode = dynamic_cast<Node*>(viewNodeVector->get(index));;
     
-viewVector.add(TransformInfoDomNode(viewNode).getTransformInfoInterface());
+viewVector->add((new TransformInfoDomNode(viewNode))->getTransformInfoInterface());
     
 }
 
@@ -531,36 +537,36 @@ viewVector.add(TransformInfoDomNode(viewNode).getTransformInfoInterface());
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getTransformsGroup(std::string group){
+    public: BasicArrayList* getTransformsGroup(std::string group){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Started: " +group, this, "getTransformsGroup()");
+                                    this->logUtil->putF("Started: " +group, this, "getTransformsGroup()");
     
 
                                     }
                                 
 
-    BasicArrayList viewVector = BasicArrayListD();;
+    BasicArrayList* viewVector = new BasicArrayListD();;
     
 
-    std::string GROUP = TransformInfosData::getInstance().GROUP;;
+    std::string GROUP = TransformInfosData::getInstance()->GROUP;;
     
 
-    NodeList componentsNodeList = this->document.getElementsByTagName(GROUP);;
+    NodeList* componentsNodeList = this->document->getElementsByTagName(GROUP);;
     
 
                         if(componentsNodeList != 
                                     nullptr
-                                 && componentsNodeList.getLength() > 0)
+                                 && componentsNodeList->getLength() > 0)
                         
                                     {
                                     
-    Node componentsNode = componentsNodeList.item(0);;
+    Node* componentsNode = componentsNodeList->item(0);;
     
 
-    int32_t length = componentsNodeList.getLength();;
+    int32_t length = componentsNodeList->getLength();;
     
 
 
@@ -570,16 +576,16 @@ viewVector.add(TransformInfoDomNode(viewNode).getTransformInfoInterface());
     int32_t index = 0;index < length; index++)
         {
 
-    Node node = componentsNodeList.item(index);;
+    Node* node = componentsNodeList->item(index);;
     
 
-    NamedNodeMap attributes = node.getAttributes();;
+    NamedNodeMap* attributes = node->getAttributes();;
     
 
-    Attr attrNode = attributes.getNamedItem(GROUP);;
+    Attr* attrNode = dynamic_cast<Attr*>(attributes->getNamedItem(GROUP));;
     
 
-    std::string value = attrNode.getValue();;
+    std::string value = attrNode->getValue();;
     
 
                         if(value.compare(group) == 0)
@@ -596,22 +602,22 @@ break;
 }
 
 
-    BasicArrayList viewNodeVector = DomSearchHelper::getAllNodes(TransformInfoData::getInstance().NAME, componentsNode.getChildNodes());;
+    BasicArrayList* viewNodeVector = DomSearchHelper::getAllNodes(TransformInfoData::getInstance()->NAME, componentsNode->getChildNodes());;
     
 
-    int32_t numberOfViews = viewNodeVector.size();;
+    int32_t numberOfViews = viewNodeVector->size();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Number Of Nodes: " +numberOfViews, this, "getTransformsGroup()");
+                                    this->logUtil->putF("Number Of Nodes: " +numberOfViews, this, "getTransformsGroup()");
     
 
                                     }
                                 
 
-    int32_t size = viewNodeVector.size();;
+    int32_t size = viewNodeVector->size();;
     
 
 
@@ -621,9 +627,9 @@ break;
     int32_t index = 0;index < size; index++)
         {
 
-    Node viewNode = viewNodeVector.get(index);;
+    Node* viewNode = dynamic_cast<Node*>(viewNodeVector->get(index));;
     
-viewVector.add(TransformInfoDomNode(viewNode));
+viewVector->add(new TransformInfoDomNode(viewNode));
     
 }
 
@@ -632,7 +638,7 @@ viewVector.add(TransformInfoDomNode(viewNode));
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
                                     
@@ -641,13 +647,13 @@ viewVector.add(TransformInfoDomNode(viewNode));
                                 )
                         
                                     {
-                                    this->logUtil.putF("Number Of Nodes: NULL", this, "getTransformsGroup()");
+                                    this->logUtil->putF("Number Of Nodes: NULL", this, "getTransformsGroup()");
     
 
                                     }
                                 
                         else {
-                            this->logUtil.putF("Number Of Nodes: 0", this, "getTransformsGroup()");
+                            this->logUtil->putF("Number Of Nodes: 0", this, "getTransformsGroup()");
     
 
                         }
@@ -669,58 +675,58 @@ viewVector.add(TransformInfoDomNode(viewNode));
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getTransformDomNodes(){
+    public: BasicArrayList* getTransformDomNodes(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getTransformDomNodes(TransformInfosData::getInstance().GROUP);;
+                        return this->getTransformDomNodes(TransformInfosData::getInstance()->GROUP);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getTransforms(){
+    public: BasicArrayList* getTransforms(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getTransforms(TransformInfosData::getInstance().NAME);;
+                        return this->getTransforms(TransformInfosData::getInstance()->NAME);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getGroupTransforms(){
+    public: BasicArrayList* getGroupTransforms(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getTransforms(TransformInfosData::getInstance().GROUP);;
+                        return this->getTransforms(TransformInfosData::getInstance()->GROUP);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getParentTransforms(){
+    public: BasicArrayList* getParentTransforms(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getTransforms(TransformInfoData::getInstance().PARENT);;
+                        return this->getTransforms(TransformInfoData::getInstance()->PARENT);;
     
 }
 
 
-    private: Node getRootNode(){
+    private: Node* getRootNode(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->document.getElementsByTagName(TransformInfoObjectConfigData::getInstance().NAME).item(0);;
+                        return this->document->getElementsByTagName(TransformInfoObjectConfigData::getInstance()->NAME)->item(0);;
     
 }
 
@@ -747,7 +753,7 @@ this->outputTypeName= outputTypeName;
             
     public: std::string getInputOutputTypeName(){
 
-    Node node = DomSearchHelper::getNode(InputOutputTypeData::getInstance().NAME, this->getRootNode().getChildNodes());;
+    Node* node = DomSearchHelper::getNode(InputOutputTypeData::getInstance()->NAME, this->getRootNode()->getChildNodes());;
     
 
 
@@ -762,7 +768,7 @@ this->outputTypeName= outputTypeName;
             
     public: std::string getInputOutputTypeFile(){
 
-    Node node = DomSearchHelper::getNode(InputOutputTypeData::getInstance().FILE, this->getRootNode().getChildNodes());;
+    Node* node = DomSearchHelper::getNode(InputOutputTypeData::getInstance()->FILE, this->getRootNode()->getChildNodes());;
     
 
 
@@ -777,7 +783,7 @@ this->outputTypeName= outputTypeName;
             
     public: std::string getImportUriPath(){
 
-    Node node = DomSearchHelper::getNode(XslData::getInstance().ROOT_IMPORT_URI, this->getRootNode().getChildNodes());;
+    Node* node = DomSearchHelper::getNode(XslData::getInstance()->ROOT_IMPORT_URI, this->getRootNode()->getChildNodes());;
     
 
 
@@ -818,13 +824,13 @@ this->outputTypeName= outputTypeName;
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.putF("DOM Document error", this, this->commonStrings.TOSTRING);
+                                    this->logUtil->putF("DOM Document error", this, this->commonStrings->TOSTRING);
     
 
                                     }

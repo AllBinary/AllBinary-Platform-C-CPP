@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/Animation.h>
@@ -56,20 +64,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PickedUpLayerInterfaceFactory.h"
-#include "CountedPickedUpLayerInterfaceFactoryInterface.h"
-#include "PickedUpLayerTypeFactory.h"
-#include "IconLayer.h"
-#include "CountedPickedUpLayerInterfaceFactoryPool.h"
-#include "PickedUpLayerType.h"
+        #include "org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactory.h"
+#include "org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactoryInterface.h"
+#include "org/allbinary/game/layer/pickup/PickedUpLayerTypeFactory.h"
+#include "org/allbinary/game/layer/pickup/IconLayer.h"
+#include "org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactoryPool.h"
+#include "org/allbinary/game/layer/pickup/PickedUpLayerType.h"
 
 class CountedPickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory, public CountedPickedUpLayerInterfaceFactoryInterface {
 
-    public: static const CountedPickedUpLayerInterfaceFactory NULL_COUNTED_PICKUP_LAYER_FACTORY = CountedPickedUpLayerInterfaceFactory(PickedUpLayerTypeFactory::getInstance().NONE, IconLayer::NULL_ICON_LAYER, NullAnimationFactory::getFactoryInstance().getInstance(0));
+    public: static CountedPickedUpLayerInterfaceFactory* NULL_COUNTED_PICKUP_LAYER_FACTORY() { static std::unique_ptr<CountedPickedUpLayerInterfaceFactory> value(new CountedPickedUpLayerInterfaceFactory(PickedUpLayerTypeFactory::getInstance()->NONE, IconLayer::NULL_ICON_LAYER, NullAnimationFactory::getFactoryInstance()->getInstance(0))); return value.get(); }
 
     private: int32_t id;
 
-public: CountedPickedUpLayerInterfaceFactory(PickedUpLayerType pickeUpLayerType, IconLayer iconLayer, Animation animationInterface) : PickedUpLayerInterfaceFactory(pickeUpLayerType, iconLayer, animationInterface){
+public: CountedPickedUpLayerInterfaceFactory(PickedUpLayerType* pickeUpLayerType, IconLayer* iconLayer, Animation* animationInterface) : PickedUpLayerInterfaceFactory(pickeUpLayerType, iconLayer, animationInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -77,22 +85,22 @@ public: CountedPickedUpLayerInterfaceFactory(PickedUpLayerType pickeUpLayerType,
                             //For kotlin this is before the body of the constructor.
                     
 
-    BasicArrayList list = CountedPickedUpLayerInterfaceFactoryPool::getInstance().getList();;
+    BasicArrayList* list = CountedPickedUpLayerInterfaceFactoryPool::getInstance()->getList();;
     
-this->id= list.size();
+this->id= list->size();
     
-list.add(this);
+list->add(this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer getNextInstance(ABHashtable<Object*, Object*> hashtable, int32_t x, int32_t y, int32_t z){
+    public: AllBinaryLayer* getNextInstance(ABHashtable<Object*, Object*>* hashtable, int32_t x, int32_t y, int32_t z){
 
 
 
-                            throw Exception(CommonStrings::getInstance().NOT_IMPLEMENTED);
+                            throw new Exception(CommonStrings::getInstance()->NOT_IMPLEMENTED);
                     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -40,19 +46,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Log.h"
+        #include "org/allbinary/logic/communication/log/Log.h"
 //NoPlatform
 // class LogUtil
             : public Object
          {
 
-    private: static LogUtil instance() { return LogUtil(); }
+    private: static LogUtil* instance() { static std::unique_ptr<LogUtil> value(new LogUtil()); return value.get(); }
 
-    public: static LogUtil getInstance()
+    public: static LogUtil* getInstance()
 
 
 
-    public: void putL(Log log)
+    public: void putL(Log* log)
 
     public: void putF(std::string specialMessage, Object* anyType, std::string functionName)
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -62,7 +68,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CssStyleValidation.h"
+        #include "org/allbinary/logic/visual/transform/template/customizer/includes/style/css/template/retail/CssStyleValidation.h"
 
 class EditCssStyleValidation: public CssStyleValidation, public ValidationInterface, public DomNodeInterface {
 
@@ -70,7 +76,7 @@ public: EditCssStyleValidation(){
 }
 
 
-public: EditCssStyleValidation(Document document) : CssStyleValidation(document){
+public: EditCssStyleValidation(Document* document) : CssStyleValidation(document){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -80,7 +86,7 @@ public: EditCssStyleValidation(Document document) : CssStyleValidation(document)
 }
 
 
-public: EditCssStyleValidation(HashMap<Object*, Object*> hashMap) : CssStyleValidation(hashMap){
+public: EditCssStyleValidation(HashMap<Object*, Object*>* hashMap) : CssStyleValidation(hashMap){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,7 +96,7 @@ public: EditCssStyleValidation(HashMap<Object*, Object*> hashMap) : CssStyleVali
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
 
 
@@ -110,7 +116,7 @@ public: EditCssStyleValidation(HashMap<Object*, Object*> hashMap) : CssStyleVali
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -120,7 +126,7 @@ public: EditCssStyleValidation(HashMap<Object*, Object*> hashMap) : CssStyleVali
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -132,16 +138,16 @@ public: EditCssStyleValidation(HashMap<Object*, Object*> hashMap) : CssStyleVali
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = document.createElement(StylesData::getInstance().NAME);;
+    Node* node = document->createElement(StylesData::getInstance()->NAME);;
     
 
-    Node styleNode = document.createElement(StyleData::getInstance().NAME);;
+    Node* styleNode = document->createElement(StyleData::getInstance()->NAME);;
     
-node.appendChild(styleNode);
+node->appendChild(styleNode);
     
-styleNode.appendChild(ColorsView().toXmlNode(document));
+styleNode->appendChild((new ColorsView())->toXmlNode(document));
     
 
     int32_t size = this->cssStyleElementVector.size();;
@@ -154,9 +160,9 @@ styleNode.appendChild(ColorsView().toXmlNode(document));
     int32_t i = 0;i < size; i++)
         {
 
-    DomNodeInterface styleDomNodeInterface = cssStyleElementVector.get(i);;
+    DomNodeInterface* styleDomNodeInterface = dynamic_cast<DomNodeInterface*>(cssStyleElementVector.get(i));;
     
-styleNode.appendChild(styleDomNodeInterface.toXmlNode(document));
+styleNode->appendChild(styleDomNodeInterface->toXmlNode(document));
     
 }
 

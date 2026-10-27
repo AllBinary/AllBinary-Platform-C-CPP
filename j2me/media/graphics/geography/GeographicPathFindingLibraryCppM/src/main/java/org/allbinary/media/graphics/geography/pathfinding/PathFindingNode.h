@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODE_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,15 +72,15 @@ class PathFindingNode
             : public Object
          {
 
-    public: Object* parent = NullUtil::getInstance().NULL_OBJECT;
+    public: Object* parent = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: GeographicMapCellPosition geographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    public: GeographicMapCellPosition* geographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-public: PathFindingNode(Object* parent, GeographicMapCellPosition geographicMapCellPosition);
+public: PathFindingNode(Object* parent, GeographicMapCellPosition* geographicMapCellPosition);
 
-    public: PathFindingNode getParentP();
+    public: PathFindingNode* getParentP();
 
-    public: void setGeographicMapCellPositionP(GeographicMapCellPosition geographicMapCellPosition);
+    public: void setGeographicMapCellPositionP(GeographicMapCellPosition* geographicMapCellPosition);
 
     public: std::string toString();
 

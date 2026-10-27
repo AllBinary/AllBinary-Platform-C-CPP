@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -52,16 +58,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseImageAnimationFactory.h"
-#include "TopToBottomImageAnimation.h"
+        #include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
+#include "org/allbinary/animation/image/TopToBottomImageAnimation.h"
 
 class TopToBottomImageAnimationFactory: public BaseImageAnimationFactory {
 
-public: TopToBottomImageAnimationFactory(Image image, std::vector<int32_t> sequenceArray, AnimationBehaviorFactory animationBehaviorFactory);
+public: TopToBottomImageAnimationFactory(Image* image, std::vector<int32_t> sequenceArray, AnimationBehaviorFactory* animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId);
+    public: Animation* getInstance(int32_t instanceId);
 
 };
 

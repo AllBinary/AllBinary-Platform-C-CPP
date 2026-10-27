@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -74,13 +80,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasketInterface.h"
+        #include "org/allbinary/business/user/commerce/inventory/basket/BasketInterface.h"
 
 class Basket
             : public Object
-        : public BasketInterface, public Serializable {
+        , public BasketInterface, public Serializable {
 
-    private: HashMap<Object*, Object*> items = StdUtil::getInstance().createHashMap();
+    private: HashMap<Object*, Object*>* items = StdUtil::getInstance()->createHashMap();
 
 public: Basket();
 
@@ -92,17 +98,17 @@ public: Basket();
 
     public: std::string getTotalWeight();
 
-    public: Integer getNumberOfItems();
+    public: int32_t getNumberOfItems();
 
-    public: Set getIds();
+    public: Set* getIds();
 
-    public: HashMap<Object*, Object*> getItems();
+    public: HashMap<Object*, Object*>* getItems();
 
-    public: Integer getNumberOf(std::string product);
+    public: int32_t getNumberOf(std::string product);
 
                 //@Throws(MoneyException.constructor)
             
-    public: Money getSubTotal();
+    public: Money* getSubTotal();
 
 };
 

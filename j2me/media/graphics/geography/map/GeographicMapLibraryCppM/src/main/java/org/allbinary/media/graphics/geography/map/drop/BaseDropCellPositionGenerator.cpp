@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,31 +58,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DropCellPositionGeneratorInterface.h"
+        #include "org/allbinary/media/graphics/geography/map/drop/DropCellPositionGeneratorInterface.h"
 
 class BaseDropCellPositionGenerator
             : public Object
-        : public DropCellPositionGeneratorInterface {
+        , public DropCellPositionGeneratorInterface {
 
     public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->constructor.name.toString();;
+                        return this->getClass()->getName();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface){
+    public: void update(AllBinaryGameLayerManager* allBinaryGameLayerManager, BasicGeographicMap* geographicMapInterface){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: bool isDropAllowedAt(GeographicMapCellPosition geographicMapCellPosition){
+    public: bool isDropAllowedAt(GeographicMapCellPosition* geographicMapCellPosition){
 
 
 
@@ -88,7 +94,7 @@ class BaseDropCellPositionGenerator
 
                 //@Throws(Exception.constructor)
             
-    public: void processTick(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager){
 }
 
 

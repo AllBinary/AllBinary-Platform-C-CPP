@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graphics/color/BasicColor.h>
 
       
@@ -63,12 +69,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicGameDemoPaintable.h"
-#include "MainGameDemoStatePaintable.h"
+        #include "org/allbinary/game/paint/BasicGameDemoPaintable.h"
+#include "org/allbinary/game/paint/MainGameDemoStatePaintable.h"
 
 class GameScrollMenuPaintable: public BasicGameDemoPaintable, public ColorChangeListener {
 
-public: GameScrollMenuPaintable(Paintable mainDemoStatePaintable, Paintable ownershipPaintable, Paintable helpPaintableInterface, BasicColor basicColor) : BasicGameDemoPaintable(mainDemoStatePaintable, ownershipPaintable, helpPaintableInterface){
+public: GameScrollMenuPaintable(Paintable* mainDemoStatePaintable, Paintable* ownershipPaintable, Paintable* helpPaintableInterface, BasicColor* basicColor) : BasicGameDemoPaintable(mainDemoStatePaintable, ownershipPaintable, helpPaintableInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -77,7 +83,7 @@ public: GameScrollMenuPaintable(Paintable mainDemoStatePaintable, Paintable owne
                     
 this->setColor(basicColor);
     
-ColorChangeEventHandler::getInstance().addListenerInterface(this);
+ColorChangeEventHandler::getInstance()->addListenerInterface(this);
     
 }
 
@@ -88,40 +94,40 @@ this->setCurrentStatePaintable(this->getMainDemoStatePaintable());
 }
 
 
-    public: void onEvent(AllBinaryEventObject eventObject){
+    public: void onEvent(AllBinaryEventObject* eventObject){
 }
 
 
-    protected: void setColor(BasicColor basicColor){
+    protected: void setColor(BasicColor* basicColor){
 
-    MainGameDemoStatePaintable mainGameDemoStatePaintable = this->getMainDemoStatePaintable();;
-    
-
-    FormPaintable formPaintable = mainGameDemoStatePaintable.getMenuPaintableInterface();;
+    MainGameDemoStatePaintable* mainGameDemoStatePaintable = dynamic_cast<MainGameDemoStatePaintable*>(this->getMainDemoStatePaintable());;
     
 
-    ScrollSelectionForm scrollSelectionForm = formPaintable.getForm();;
-    
-mainGameDemoStatePaintable.getOwnershipPaintableInterface().setBasicColorP(basicColor);
-    
-scrollSelectionForm.setButtonBasicColor(basicColor);
+    FormPaintable* formPaintable = dynamic_cast<FormPaintable*>(mainGameDemoStatePaintable->getMenuPaintableInterface());;
     
 
-    ABTextItem item;;
+    ScrollSelectionForm* scrollSelectionForm = dynamic_cast<ScrollSelectionForm*>(formPaintable->getForm());;
+    
+mainGameDemoStatePaintable->getOwnershipPaintableInterface()->setBasicColorP(basicColor);
+    
+scrollSelectionForm->setButtonBasicColor(basicColor);
     
 
-    ABStringComponent stringComponent;;
+    ABTextItem* item;;
+    
+
+    ABStringComponent* stringComponent;;
     
 
 
 
 
                         for (
-    int32_t index = scrollSelectionForm.size() -1;index >= 0; index--)
+    int32_t index = scrollSelectionForm->size() -1;index >= 0; index--)
         {
-item= scrollSelectionForm.get(index);
+item= dynamic_cast<ABTextItem*>(scrollSelectionForm->get(index));
     
-stringComponent= item.getLabelStringComponent();
+stringComponent= item->getLabelStringComponent();
     
 
                         if(stringComponent != 
@@ -129,7 +135,7 @@ stringComponent= item.getLabelStringComponent();
                                 )
                         
                                     {
-                                    stringComponent.setForegroundBasicColor(basicColor);
+                                    stringComponent->setForegroundBasicColor(basicColor);
     
 
                                     }

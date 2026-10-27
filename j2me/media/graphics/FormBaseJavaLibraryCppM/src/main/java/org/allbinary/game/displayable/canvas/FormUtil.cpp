@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/PointFactory.h>
@@ -55,9 +61,9 @@ class FormUtil
             : public Object
          {
 
-    private: static FormUtil instance() { return FormUtil(); }
+    private: static FormUtil* instance() { static std::unique_ptr<FormUtil> value(new FormUtil()); return value.get(); }
 
-    public: static FormUtil getInstance(){
+    public: static FormUtil* getInstance(){
 
 
 
@@ -67,15 +73,15 @@ class FormUtil
 }
 
 
-    public: Rectangle createFormRectangle(){
+    public: Rectangle* createFormRectangle(){
 
-    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
+    DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-    PointFactory pointFactory = PointFactory::getInstance();;
+    PointFactory* pointFactory = PointFactory::getInstance();;
     
 
-    Rectangle rectangle = Rectangle(pointFactory.createXY(30, 10), displayInfo.getLastWidth() -30, displayInfo.getLastHeight() -35);;
+    Rectangle* rectangle = new Rectangle(pointFactory->createXY(30, 10), displayInfo->getLastWidth() -30, displayInfo->getLastHeight() -35);;
     
 
 

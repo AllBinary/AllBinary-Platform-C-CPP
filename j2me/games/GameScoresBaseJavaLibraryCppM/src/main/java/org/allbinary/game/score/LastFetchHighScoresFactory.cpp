@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
@@ -43,21 +49,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NoHighScoresFactory.h"
-#include "HighScores.h"
+        #include "org/allbinary/game/score/NoHighScoresFactory.h"
+#include "org/allbinary/game/score/HighScores.h"
 
 class LastFetchHighScoresFactory
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static LastFetchHighScoresFactory getInstance(){
+    public: static LastFetchHighScoresFactory* getInstance(){
 
-                        if(LastFetchHighScoresFactory::instance() == NullUtil::getInstance().NULL_OBJECT)
+                        if(LastFetchHighScoresFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    LastFetchHighScoresFactory::instance= LastFetchHighScoresFactory();
+                                    LastFetchHighScoresFactory::instance= new LastFetchHighScoresFactory();
     
 
                                     }
@@ -66,12 +72,12 @@ class LastFetchHighScoresFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LastFetchHighScoresFactory::instance();
+                        return dynamic_cast<LastFetchHighScoresFactory*>(LastFetchHighScoresFactory::instance);
     
 }
 
 
-    public: std::vector<HighScores> highScoresArray = NoHighScoresFactory::getInstance().NO_HIGH_SCORES;
+    public: std::vector<HighScores*> highScoresArray = NoHighScoresFactory::getInstance()->NO_HIGH_SCORES;
 
 };
 

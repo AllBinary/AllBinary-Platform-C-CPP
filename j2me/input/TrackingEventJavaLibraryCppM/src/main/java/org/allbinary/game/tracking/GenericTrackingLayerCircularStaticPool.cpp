@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/layer/AllBinaryLayerCircularPool.h>
 
       
@@ -42,14 +48,14 @@
         
 class GenericTrackingLayerCircularStaticPool: public AllBinaryLayerCircularPool {
 
-    private: static GenericTrackingLayerCircularStaticPool SINGLETON = GenericTrackingLayerCircularStaticPool();
+    private: static GenericTrackingLayerCircularStaticPool* SINGLETON() { static std::unique_ptr<GenericTrackingLayerCircularStaticPool> value(new GenericTrackingLayerCircularStaticPool()); return value.get(); }
 
-    public: static GenericTrackingLayerCircularStaticPool getInstance(){
+    public: static GenericTrackingLayerCircularStaticPool* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GenericTrackingLayerCircularStaticPool::SINGLETON;
+                        return GenericTrackingLayerCircularStaticPool::SINGLETON();
     
 }
 

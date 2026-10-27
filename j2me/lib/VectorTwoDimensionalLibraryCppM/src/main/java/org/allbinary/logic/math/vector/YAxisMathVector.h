@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_VECTOR_YAXISMATHVECTOR_H
         #define ORG_ALLBINARY_LOGIC_MATH_VECTOR_YAXISMATHVECTOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/math/BasicDecimal.h>
 
       
@@ -42,14 +48,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MathVector.h"
-#include "YAxisMathVectorUtil.h"
+        #include "org/allbinary/logic/math/vector/MathVector.h"
+#include "org/allbinary/logic/math/vector/YAxisMathVectorUtil.h"
 
 class YAxisMathVector: public MathVector {
 
-public: YAxisMathVector(BasicDecimal magnitudeBasicDecimal, int32_t direction);
+public: YAxisMathVector(BasicDecimal* magnitudeBasicDecimal, int32_t direction);
 
-    public: BasicDecimal getResult();
+    public: BasicDecimal* getResult();
 
     private: void calculate();
 

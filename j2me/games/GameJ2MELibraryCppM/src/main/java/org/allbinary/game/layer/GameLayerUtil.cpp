@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
@@ -52,18 +58,18 @@ class GameLayerUtil
             : public Object
          {
 
-    public: static bool isOnScreen(AllBinaryLayer layer){
+    public: static bool isOnScreen(AllBinaryLayer* layer){
 
-    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
+    DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-    ViewPositionBase viewPosition = layer.getViewPosition();;
+    ViewPositionBase* viewPosition = layer->getViewPosition();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameLayerUtil::isInside(viewPosition.getX(), viewPosition.getY(), viewPosition.getX2(), viewPosition.getY2(), 0, 0, displayInfo.getLastWidth(), displayInfo.getLastHeight());;
+                        return GameLayerUtil::isInside(viewPosition->getX(), viewPosition->getY(), viewPosition->getX2(), viewPosition->getY2(), 0, 0, displayInfo->getLastWidth(), displayInfo->getLastHeight());;
     
 }
 

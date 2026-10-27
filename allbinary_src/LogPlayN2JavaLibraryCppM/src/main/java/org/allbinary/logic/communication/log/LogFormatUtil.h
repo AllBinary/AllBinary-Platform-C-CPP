@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFORMATUTIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFORMATUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Throwable.h"
@@ -69,13 +75,13 @@
             : public Object
          {
 
-    private: static LogFormatUtil instance() { return LogFormatUtil(); }
+    private: static LogFormatUtil* instance() { static std::unique_ptr<LogFormatUtil> value(new LogFormatUtil()); return value.get(); }
 
-    /*actual*/ public: static LogFormatUtil getInstance();
+    /*actual*/ public: static LogFormatUtil* getInstance();
 
-    private: const TimeStampUtil timeStampUtil = TimeStampUtil::getInstance();
+    private: TimeStampUtil* timeStampUtil = TimeStampUtil::getInstance();
 
-    private: const CommonSeps commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps = CommonSeps::getInstance();
 
     private: const std::string LOG_ERROR = "\nLog-Error: ";
 
@@ -85,9 +91,9 @@
 
     private: const std::string TIME = "Time: ";
 
-    private: const std::string CLASS_NAME = this->commonSeps.SPACE;
+    private: const std::string CLASS_NAME = this->commonSeps->SPACE;
 
-    private: const std::string FUNCTION_CALL = CommonLabels::getInstance().COLON_SEP;
+    private: const std::string FUNCTION_CALL = CommonLabels::getInstance()->COLON_SEP;
 
     private: const std::string SPECIAL_MESSAGE = "> ";
 
@@ -97,13 +103,13 @@ private: LogFormatUtil();
 
     /*actual*/ public: std::string getS(std::string className, std::string functionName, std::string specialMessage);
 
-    private: StringMaker getF(std::string className, std::string functionName);
+    private: StringMaker* getF(std::string className, std::string functionName);
 
-    private: const StringUtil stringUtil = StringUtil::getInstance();
+    private: StringUtil* stringUtil = StringUtil::getInstance();
 
-    private: const ExceptionUtil exceptionUtil = ExceptionUtil::getInstance();
+    private: ExceptionUtil* exceptionUtil = ExceptionUtil::getInstance();
 
-    private: const NullUtil nullUtil = NullUtil::getInstance();
+    private: NullUtil* nullUtil = NullUtil::getInstance();
 
     /*actual*/ public: std::string getO(Object* exception);
 

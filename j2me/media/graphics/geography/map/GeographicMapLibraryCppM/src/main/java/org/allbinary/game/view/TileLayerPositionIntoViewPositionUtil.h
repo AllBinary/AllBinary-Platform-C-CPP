@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_VIEW_TILELAYERPOSITIONINTOVIEWPOSITIONUTIL_H
         #define ORG_ALLBINARY_GAME_VIEW_TILELAYERPOSITIONINTOVIEWPOSITIONUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/view/TileLayerPositionIntoViewPosition.h>
@@ -61,7 +67,7 @@ class TileLayerPositionIntoViewPositionUtil
             : public Object
          {
 
-    public: static void init(AllBinaryGameCanvas gameCanvasInterface, TileLayerPositionIntoViewPosition viewPosition);
+    public: static void init(AllBinaryGameCanvas* gameCanvasInterface, TileLayerPositionIntoViewPosition* viewPosition);
 
 };
 

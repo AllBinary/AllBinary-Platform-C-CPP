@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TIMEFIREDINTERFACE_H
         #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TIMEFIREDINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,7 +48,7 @@
         
 class TimeFiredInterface {
 
-    int64_t getLastFireTime();
+    public: virtual int64_t getLastFireTime() = 0;
 
 };
 

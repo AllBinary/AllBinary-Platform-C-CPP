@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -52,19 +60,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PathFindingNode.h"
-#include "Comparable.h"
-#include "PathFindingNodeCostInfo.h"
+        #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNode.h"
+#include "org/allbinary/media/graphics/geography/pathfinding/Comparable.h"
+#include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfo.h"
 
-class PathFindingNodeCost: public PathFindingNode, public Comparable<PathFindingNodeCost> {
+class PathFindingNodeCost: public PathFindingNode, public Comparable<PathFindingNodeCost*> {
 
-    public: static const std::vector<std::vector<PathFindingNodeCost>> NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY = std::vector<std::vector<PathFindingNodeCost>>(0, std::vector<PathFindingNodeCost>(0));
+    public: static inline const std::vector<std::vector<PathFindingNodeCost*>> NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY = std::vector<std::vector<PathFindingNodeCost*>>(0, std::vector<PathFindingNodeCost*>(0));
 
-    private: const CommonSeps commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps = CommonSeps::getInstance();
 
-    public: PathFindingNodeCostInfo pathFindingNodeCostInfoP;
+    public: PathFindingNodeCostInfo* pathFindingNodeCostInfoP;
 
-public: PathFindingNodeCost(Object* parent, GeographicMapCellPosition geographicMapCellPosition, PathFindingNodeCostInfo pathFindingNodeCostInfo) : PathFindingNode(parent, geographicMapCellPosition){
+public: PathFindingNodeCost(Object* parent, GeographicMapCellPosition* geographicMapCellPosition, PathFindingNodeCostInfo* pathFindingNodeCostInfo) : PathFindingNode(parent, geographicMapCellPosition){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -82,7 +90,7 @@ this->pathFindingNodeCostInfoP= pathFindingNodeCostInfo;
                                     
 
 
-                            throw Exception("No GeographicMapCellPosition");
+                            throw new Exception("No GeographicMapCellPosition");
                     
 
                                     }
@@ -96,7 +104,7 @@ this->pathFindingNodeCostInfoP= pathFindingNodeCostInfo;
                                     
 
 
-                            throw Exception("No PathFindingNodeCostInfo");
+                            throw new Exception("No PathFindingNodeCostInfo");
                     
 
                                     }
@@ -104,7 +112,7 @@ this->pathFindingNodeCostInfoP= pathFindingNodeCostInfo;
 }
 
 
-    public: PathFindingNodeCostInfo getPathFindingNodeCostInfo(){
+    public: PathFindingNodeCostInfo* getPathFindingNodeCostInfo(){
 
 
 
@@ -114,49 +122,49 @@ this->pathFindingNodeCostInfoP= pathFindingNodeCostInfo;
 }
 
 
-    public: void setPathFindingNodeCostInfo(PathFindingNodeCostInfo pathFindingNodeCostInfo){
+    public: void setPathFindingNodeCostInfo(PathFindingNodeCostInfo* pathFindingNodeCostInfo){
 this->pathFindingNodeCostInfoP= pathFindingNodeCostInfo;
     
 }
 
 
-    public: int32_t compareTo(PathFindingNodeCost pathFindingNodeCost){
+    public: int32_t compareTo(PathFindingNodeCost* pathFindingNodeCost){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->pathFindingNodeCostInfoP.compareTo(pathFindingNodeCost.pathFindingNodeCostInfoP);;
+                        return this->pathFindingNodeCostInfoP->compareTo(pathFindingNodeCost->pathFindingNodeCostInfoP);;
     
 }
 
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->constructor.name.toString());
+stringBuffer->append(this->getClass()->getName());
     
-stringBuffer.append(CommonLabels::getInstance().COLON_SEP);
+stringBuffer->append(CommonLabels::getInstance()->COLON_SEP);
     
-stringBuffer.append(this->getPathFindingNodeCostInfo().toString());
+stringBuffer->append(this->getPathFindingNodeCostInfo()->toString());
     
-stringBuffer.append(" Path: ");
+stringBuffer->append(" Path: ");
     
-stringBuffer.append(this->geographicMapCellPosition.toString());
+stringBuffer->append(this->geographicMapCellPosition.toString());
     
 
-    PathFindingNode pathFindingNode = this->parent;;
+    PathFindingNode* pathFindingNode = dynamic_cast<PathFindingNode*>(this->parent);;
     
 
         while(pathFindingNode != 
                                     nullptr
                                 )
         {
-stringBuffer.append(pathFindingNode.geographicMapCellPosition.toString());
+stringBuffer->append(pathFindingNode->geographicMapCellPosition.toString());
     
-stringBuffer.append(this->commonSeps.SPACE);
+stringBuffer->append(this->commonSeps->SPACE);
     
-pathFindingNode= pathFindingNode.parent;
+pathFindingNode= dynamic_cast<PathFindingNode*>(pathFindingNode->parent);
     
 }
 
@@ -164,7 +172,7 @@ pathFindingNode= pathFindingNode.parent;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

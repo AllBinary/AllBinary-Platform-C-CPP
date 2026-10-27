@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONUTIL_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,27 +66,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameConfigurationSingleton.h"
-#include "GameConfiguration.h"
-#include "GameOptionsForm.h"
-#include "GameConfigurationGauge.h"
-#include "GameConfigurationCentral.h"
+        #include "org/allbinary/game/configuration/GameConfigurationSingleton.h"
+#include "org/allbinary/game/configuration/GameConfiguration.h"
+#include "org/allbinary/game/configuration/GameOptionsForm.h"
+#include "org/allbinary/game/configuration/GameConfigurationGauge.h"
+#include "org/allbinary/game/configuration/GameConfigurationCentral.h"
 
 class GameConfigurationUtil
             : public Object
          {
 
-    private: static GameConfigurationUtil instance() { return GameConfigurationUtil(); }
+    private: static GameConfigurationUtil* instance() { static std::unique_ptr<GameConfigurationUtil> value(new GameConfigurationUtil()); return value.get(); }
 
-    public: static GameConfigurationUtil getInstance();
+    public: static GameConfigurationUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void change(GameOptionsForm gameOptionsForm, GameConfigurationGauge gauge);
+    public: void change(GameOptionsForm* gameOptionsForm, GameConfigurationGauge* gauge);
 
     private: const std::string GAUGE_UPDATE = "Gauge Update: ";
 
@@ -90,15 +96,15 @@ class GameConfigurationUtil
 
                 //@Throws(Exception.constructor)
             
-    public: void update(GameConfigurationGauge gauge);
+    public: void update(GameConfigurationGauge* gauge);
 
                 //@Throws(Exception.constructor)
             
-    public: void setDefault(GameConfigurationGauge gauge);
+    public: void setDefault(GameConfigurationGauge* gauge);
 
                 //@Throws(Exception.constructor)
             
-    public: void updateChallange(GameOptionsForm gameOptionsForm, GameConfiguration gameConfiguration);
+    public: void updateChallange(GameOptionsForm* gameOptionsForm, GameConfiguration* gameConfiguration);
 
     private: int32_t COMPETITION_VALUE = 1;
 

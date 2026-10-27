@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/commerce/inventory/item/BasicItem.h>
@@ -62,25 +68,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DownloadableInventoryItemView.h"
+        #include "views/admin/inventory/download/DownloadableInventoryItemView.h"
 
 class NewValidationView: public DownloadableInventoryItemView, public ValidationComponentInterface {
 
-public: NewValidationView(TransformInfoInterface transformInfoInterface) : DownloadableInventoryItemView(transformInfoInterface, StringUtil::getInstance().EMPTY_STRING){
+public: NewValidationView(TransformInfoInterface* transformInfoInterface) : DownloadableInventoryItemView(transformInfoInterface, StringUtil::getInstance()->EMPTY_STRING){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->itemInterface= BasicItem();
+this->itemInterface= dynamic_cast<ItemInterface*>(new BasicItem());
     
-this->downloadableItem= DownloadableItem(this->itemInterface.getId());
+this->downloadableItem= new DownloadableItem(this->itemInterface.getId());
     
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
@@ -91,7 +97,7 @@ this->downloadableItem= DownloadableItem(this->itemInterface.getId());
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -104,7 +110,7 @@ this->downloadableItem= DownloadableItem(this->itemInterface.getId());
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -114,7 +120,7 @@ this->downloadableItem= DownloadableItem(this->itemInterface.getId());
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

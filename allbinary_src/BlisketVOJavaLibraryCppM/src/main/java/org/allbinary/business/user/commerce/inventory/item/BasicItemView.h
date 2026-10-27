@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -78,30 +84,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicItemData.h"
-#include "ItemInterface.h"
+        #include "org/allbinary/business/user/commerce/inventory/item/BasicItemData.h"
+#include "org/allbinary/business/user/commerce/inventory/item/ItemInterface.h"
 
 class BasicItemView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
-    private: ItemInterface itemInterface;
+    private: ItemInterface* itemInterface;
 
-    private: BasicArrayList vector;
+    private: BasicArrayList* vector;
 
-public: BasicItemView(ItemInterface itemInterface, BasicArrayList vector);
+public: BasicItemView(ItemInterface* itemInterface, BasicArrayList* vector);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
-    public: Document toXmlDoc();
+    public: Document* toXmlDoc();
 
     public: std::string view();
 

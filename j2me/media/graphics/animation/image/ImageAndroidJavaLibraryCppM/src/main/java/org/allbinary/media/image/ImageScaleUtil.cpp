@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -83,9 +89,9 @@ class ImageScaleUtil
             : public Object
          {
 
-    private: static ImageScaleUtil instance() { return ImageScaleUtil(); }
+    private: static ImageScaleUtil* instance() { static std::unique_ptr<ImageScaleUtil> value(new ImageScaleUtil()); return value.get(); }
 
-    public: static ImageScaleUtil getInstance(){
+    public: static ImageScaleUtil* getInstance(){
 
 
 
@@ -95,27 +101,27 @@ class ImageScaleUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: ImageScaleUtil(){
 }
 
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
-    private: const BasicArrayList imageBasicArrayList = BasicArrayListD();
+    private: BasicArrayList* imageBasicArrayList = new BasicArrayListD();
 
-    private: const BasicArrayList scaledImageBasicArrayList = BasicArrayListD();
+    private: BasicArrayList* scaledImageBasicArrayList = new BasicArrayListD();
 
-    private: const BasicArrayList scaleXBasicArrayList = BasicArrayListD();
+    private: BasicArrayList* scaleXBasicArrayList = new BasicArrayListD();
 
-    private: const BasicArrayList scaleYBasicArrayList = BasicArrayListD();
+    private: BasicArrayList* scaleYBasicArrayList = new BasicArrayListD();
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImage2(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached){
+    public: Image* createImage2(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached){
 
 
 
@@ -127,7 +133,7 @@ private: ImageScaleUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImage3(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable){
+    public: Image* createImage3(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable_){
 
     float scaleX = scaleNominatorX /scaleDenominatorX;;
     
@@ -145,21 +151,21 @@ private: ImageScaleUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImage(ImageCache imageCache, Image originalImage, float scaleX, float scaleY, bool cached){
+    public: Image* createImage(ImageCache* imageCache, Image* originalImage, float scaleX, float scaleY, bool cached){
 
-    AndroidImageInterface originalAndroidImage = originalImage;;
+    AndroidImageInterface* originalAndroidImage = dynamic_cast<AndroidImageInterface*>(originalImage);;
     
 
-    Bitmap originalBitmap = originalAndroidImage.getBitmap();;
+    Bitmap* originalBitmap = originalAndroidImage->getBitmap();;
     
 
-    int32_t width = static_cast<int32_t>((originalBitmap.getWidth() *scaleX));;
+    int32_t width = static_cast<int32_t>((originalBitmap->getWidth() *scaleX));;
     
 
-    int32_t height = static_cast<int32_t>((originalBitmap.getHeight() *scaleY));;
+    int32_t height = static_cast<int32_t>((originalBitmap->getHeight() *scaleY));;
     
 
-    int32_t index = this->imageBasicArrayList.indexOf(originalImage);;
+    int32_t index = this->imageBasicArrayList->indexOf(originalImage);;
     
 
     bool alreadyAvailable = false;;
@@ -169,13 +175,13 @@ private: ImageScaleUtil(){
                         
                                     {
                                     
-    number scaleX2Float = this->scaleXBasicArrayList.get(index);;
+    float scaleX2Float = this->scaleXBasicArrayList->get(index);;
     
 
     float scaleX2 = scaleX2Float;;
     
 
-    number scaleY2Float = this->scaleYBasicArrayList.get(index);;
+    float scaleY2Float = this->scaleYBasicArrayList->get(index);;
     
 
     float scaleY2 = scaleY2Float;;
@@ -200,22 +206,22 @@ private: ImageScaleUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->scaledImageBasicArrayList.get(index);
+                        return dynamic_cast<Image*>(this->scaledImageBasicArrayList->get(index));
     
 
                                     }
                                 
                         else {
                             
-    Image scaledImage = this->getScaledImage(imageCache, originalImage, scaleX, scaleY, width, height, cached);;
+    Image* scaledImage = this->getScaledImage(imageCache, originalImage, scaleX, scaleY, width, height, cached);;
     
-this->imageBasicArrayList.add(originalImage);
+this->imageBasicArrayList->add(originalImage);
     
-this->scaledImageBasicArrayList.add(scaledImage);
+this->scaledImageBasicArrayList->add(scaledImage);
     
-this->scaleXBasicArrayList.add(scaleX);
+this->scaleXBasicArrayList->add(scaleX);
     
-this->scaleYBasicArrayList.add(scaleY);
+this->scaleYBasicArrayList->add(scaleY);
     
 
 
@@ -231,35 +237,35 @@ this->scaleYBasicArrayList.add(scaleY);
 
                 //@Throws(Exception.constructor)
             
-    private: Image getScaledImage(ImageCache imageCache, Image originalImage, float scaleX, float scaleY, int32_t width, int32_t height, bool cached){
+    private: Image* getScaledImage(ImageCache* imageCache, Image* originalImage, float scaleX, float scaleY, int32_t width, int32_t height, bool cached){
 
-    Image image = NullImage::NULL_IMAGE;;
+    Image* image = NullImage::NULL_IMAGE;;
     
 
                         if(cached)
                         
                                     {
-                                    image= imageCache.get(this->constructor.name.toString(), width, height);
+                                    image= imageCache->get(this->getClass()->getName(), width, height);
     
 
                                     }
                                 
                         else {
-                            image= imageCache.get(this->commonStrings.CREATE_IMAGE, width, height);
+                            image= imageCache->get(this->commonStrings->CREATE_IMAGE, width, height);
     
 
                         }
                             
 
-                        if(image.isMutable())
+                        if(image->isMutable())
                         
                                     {
                                     
-    Matrix matrix = Matrix();;
+    Matrix* matrix = new Matrix();;
     
 this->scale(image, matrix, scaleX, scaleY);
     
-image.getGraphics().drawImage(originalImage, 0, 0, this->anchor);
+image->getGraphics()->drawImage(originalImage, 0, 0, this->anchor);
     
 
 
@@ -274,7 +280,7 @@ image.getGraphics().drawImage(originalImage, 0, 0, this->anchor);
                             
 
 
-                            throw Exception("Not Mutable");
+                            throw new Exception("Not Mutable");
                     
 
                         }
@@ -282,13 +288,13 @@ image.getGraphics().drawImage(originalImage, 0, 0, this->anchor);
 }
 
 
-    private: void scale(Image image, Matrix matrix, float scaleX, float scaleY){
-matrix.setScale(scaleX, scaleY);
+    private: void scale(Image* image, Matrix* matrix, float scaleX, float scaleY){
+matrix->setScale(scaleX, scaleY);
     
 
-    Canvas canvas = (image).getCanvas();;
+    Canvas* canvas = (image)).getCanvas();;
     
-canvas.concat(matrix);
+canvas->concat(matrix);
     
 }
 

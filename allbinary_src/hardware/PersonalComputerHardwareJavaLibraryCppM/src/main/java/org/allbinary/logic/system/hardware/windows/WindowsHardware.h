@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_WINDOWS_WINDOWSHARDWARE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_WINDOWS_WINDOWSHARDWARE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -106,71 +112,71 @@
         
 class WindowsHardware
             : public Object
-        : public HardwareInterface {
+        , public HardwareInterface {
 
-    private: BasicArrayList componentInterfaceVector;
+    private: BasicArrayList* componentInterfaceVector;
 
-    private: BasicArrayList videoInterfaceVector;
+    private: BasicArrayList* videoInterfaceVector;
 
-    private: BasicArrayList hardDriveControllerInterfaceVector;
+    private: BasicArrayList* hardDriveControllerInterfaceVector;
 
-    private: BasicArrayList cpuInterfaceVector;
+    private: BasicArrayList* cpuInterfaceVector;
 
-    private: BasicArrayList usbInterfaceVector;
+    private: BasicArrayList* usbInterfaceVector;
 
-    private: BasicArrayList ethernetInterfaceVector;
+    private: BasicArrayList* ethernetInterfaceVector;
 
-    private: BasicArrayList multimediaInterfaceVector;
+    private: BasicArrayList* multimediaInterfaceVector;
 
-    private: BasicArrayList fireWireInterfaceVector;
+    private: BasicArrayList* fireWireInterfaceVector;
 
-    private: BasicArrayList bridgeInterfaceVector;
+    private: BasicArrayList* bridgeInterfaceVector;
 
-    private: BasicArrayList hardDriveInterfaceVector;
+    private: BasicArrayList* hardDriveInterfaceVector;
 
-    private: BasicArrayList macInterfaceVector;
+    private: BasicArrayList* macInterfaceVector;
 
-    private: BasicArrayList monitorInterfaceVector;
+    private: BasicArrayList* monitorInterfaceVector;
 
     private: const std::string NAME = "Windows Hardware Profile";
 
     private: const int32_t MINHARDWARE = 0;
 
-    private: const ComponentFactory componentFactory = ComponentFactory::getInstance();
+    private: ComponentFactory* componentFactory = ComponentFactory::getInstance();
 
 public: WindowsHardware();
 
     private: std::string getComponentType(std::string component);
 
-    public: MediaInterface getMultimedia(int32_t index);
+    public: MediaInterface* getMultimedia(int32_t index);
 
-    public: BridgeInterface getBridge(int32_t index);
+    public: BridgeInterface* getBridge(int32_t index);
 
-    public: CpuInterface getCpu(int32_t index);
+    public: CpuInterface* getCpu(int32_t index);
 
-    public: EthernetInterface getEthernet(int32_t index);
+    public: EthernetInterface* getEthernet(int32_t index);
 
-    public: FireWireInterface getFireWire(int32_t index);
+    public: FireWireInterface* getFireWire(int32_t index);
 
-    public: HardDriveControllerInterface getHardDriveController(int32_t index);
+    public: HardDriveControllerInterface* getHardDriveController(int32_t index);
 
-    public: HardDriveInterface getHardDrive(int32_t index);
+    public: HardDriveInterface* getHardDrive(int32_t index);
 
-    public: MachineAccessControlAddressInterface getMachineAccessControlAddress(int32_t index);
+    public: MachineAccessControlAddressInterface* getMachineAccessControlAddress(int32_t index);
 
-    public: MonitorInterface getMonitor(int32_t index);
+    public: MonitorInterface* getMonitor(int32_t index);
 
-    public: UsbInterface getUsb(int32_t index);
+    public: UsbInterface* getUsb(int32_t index);
 
-    public: VideoInterface getVideo(int32_t index);
+    public: VideoInterface* getVideo(int32_t index);
 
-    public: HardwareComponentInterface getComponent(int32_t index);
+    public: HardwareComponentInterface* getComponent(int32_t index);
 
     public: std::string toString();
 
-    public: bool compareTo(HardwareInterface hardwareInterface);
+    public: bool compareTo(HardwareInterface* hardwareInterface);
 
-    public: ABHashtable<Object*, Object*> difference(HardwareInterface hardwareInterface);
+    public: ABHashtable<Object*, Object*>* difference(HardwareInterface* hardwareInterface);
 
 };
 

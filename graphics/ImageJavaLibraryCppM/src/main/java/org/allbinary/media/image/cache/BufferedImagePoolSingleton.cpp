@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,13 +64,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BufferedImageCacheableFactory.h"
+        #include "org/allbinary/media/image/cache/BufferedImageCacheableFactory.h"
 
 class BufferedImagePoolSingleton
             : public Object
          {
 
-    private: static PoolInterface poolInterface = 
+    private: static inline PoolInterface* poolInterface = 
                 null
             ;
 
@@ -72,10 +78,10 @@ class BufferedImagePoolSingleton
                 static int32_t init() { 
                     
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
     std::string STATIC_BLOCK = "Static Block";;
@@ -85,17 +91,17 @@ class BufferedImagePoolSingleton
     
 
         try {
-            logUtil.putF(commonStrings.START, instance, STATIC_BLOCK);
+            logUtil->putF(commonStrings->START, instance, STATIC_BLOCK);
     
-BufferedImagePoolSingleton::poolInterface= PoolInterfaceFactory::getInstance(BufferedImageCacheableFactory(), PoolTypeFactory::getInstance().VECTOR_POOL, CachePolicyFactory::getInstance().MAX_TIME_THOUSAND_MAX);
+BufferedImagePoolSingleton::poolInterface= PoolInterfaceFactory::getInstance(new BufferedImageCacheableFactory(), PoolTypeFactory::getInstance()->VECTOR_POOL, CachePolicyFactory::getInstance()->MAX_TIME_THOUSAND_MAX);
     
-logUtil.putF(commonStrings.END, instance, STATIC_BLOCK);
+logUtil->putF(commonStrings->END, instance, STATIC_BLOCK);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-logUtil.put(commonStrings.EXCEPTION, instance, STATIC_BLOCK, e);
+logUtil->put(commonStrings->EXCEPTION, instance, STATIC_BLOCK, &e);
     
 }
 
@@ -104,7 +110,7 @@ logUtil.put(commonStrings.EXCEPTION, instance, STATIC_BLOCK, e);
                     return 0;
                 }
             
-    public: static PoolInterface getInstance(){
+    public: static PoolInterface* getInstance(){
 
 
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONINTERFACEFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONINTERFACEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,28 +79,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserConfigurationData.h"
-#include "UserConfigurationView.h"
-#include "UserConfigurationInterface.h"
-#include "UserConfiguration.h"
+        #include "org/allbinary/business/user/modules/configuration/UserConfigurationData.h"
+#include "org/allbinary/business/user/modules/configuration/UserConfigurationView.h"
+#include "org/allbinary/business/user/modules/configuration/UserConfigurationInterface.h"
+#include "org/allbinary/business/user/modules/configuration/UserConfiguration.h"
 
 class UserConfigurationInterfaceFactory
             : public Object
          {
 
-    private: static const std::string configurationName = "DefaultUserConfiguration";
+    private: static inline const std::string configurationName = "DefaultUserConfiguration";
 
                 //@Throws(Exception.constructor)
             
-    public: static UserConfigurationInterface getInstance(Document document);
+    public: static UserConfigurationInterface* getInstance(Document* document);
 
                 //@Throws(Exception.constructor)
             
-    public: static UserConfigurationInterface getInstance(UserRole userRole);
+    public: static UserConfigurationInterface* getInstance(UserRole* userRole);
 
                 //@Throws(Exception.constructor)
             
-    public: static UserConfigurationInterface getInstance();
+    public: static UserConfigurationInterface* getInstance();
 
 private: UserConfigurationInterfaceFactory();
 

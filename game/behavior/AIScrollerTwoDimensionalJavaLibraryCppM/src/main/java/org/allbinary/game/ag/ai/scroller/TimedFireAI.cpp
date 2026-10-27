@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -64,17 +70,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TimeFiredInterface.h"
+        #include "org/allbinary/game/ag/ai/scroller/TimeFiredInterface.h"
 
 class TimedFireAI: public BasicAI {
 
-    public: static const Integer TIME = SmallIntegerSingletonFactory::getInstance().getAt(1);
+    public: static inline int32_t TIME = SmallIntegerSingletonFactory::getInstance()->getAt(1);
 
-    protected: const TimeDelayHelper maxFireDelayTimeHelper = TimeDelayHelper(0);
+    protected: TimeDelayHelper* maxFireDelayTimeHelper = new TimeDelayHelper(0);
 
     private: int32_t delay;
 
-public: TimedFireAI(int32_t delay, AllBinaryLayer ownerLayerInterface, GameInput gameInput) : BasicAI(ownerLayerInterface, gameInput){
+public: TimedFireAI(int32_t delay, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -88,17 +94,17 @@ this->delay= delay;
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
 
-    TimeFiredInterface timeFiredInterface = this->getOwnerLayerInterface();;
+    TimeFiredInterface* timeFiredInterface = dynamic_cast<TimeFiredInterface*>(this->getOwnerLayerInterface());;
     
 
-                        if(this->maxFireDelayTimeHelper.isTime(GameTickTimeDelayHelperFactory::getInstance().startTime) && timeFiredInterface.getLastFireTime() +this->maxFireDelayTimeHelper.delay < this->maxFireDelayTimeHelper.getStartTime())
+                        if(this->maxFireDelayTimeHelper->isTime(GameTickTimeDelayHelperFactory::getInstance()->startTime) && timeFiredInterface->getLastFireTime() +this->maxFireDelayTimeHelper->delay < this->maxFireDelayTimeHelper->getStartTime())
                         
                                     {
                                     super.processKeyAI(Canvas::KEY_NUM1);
     
-this->maxFireDelayTimeHelper.delay= this->delay;
+this->maxFireDelayTimeHelper->delay= this->delay;
     
 
                                     }

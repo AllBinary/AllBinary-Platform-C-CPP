@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -57,7 +63,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "EventQueue.h"
+        #include "org/allbinary/image/EventQueue.h"
 
 class ImageTool
             : public Object
@@ -65,7 +71,7 @@ class ImageTool
 
     public: static void main(std::vector<std::string> args);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: ImageTool();
 

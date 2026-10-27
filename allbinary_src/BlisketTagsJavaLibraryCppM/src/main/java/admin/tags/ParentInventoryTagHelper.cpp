@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,15 +52,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HelperTag.h"
+        #include "admin/tags/HelperTag.h"
 
 class ParentInventoryTagHelper
             : public Object
          {
 
-    private: static ParentInventoryTagHelper instance() { return ParentInventoryTagHelper(); }
+    private: static ParentInventoryTagHelper* instance() { static std::unique_ptr<ParentInventoryTagHelper> value(new ParentInventoryTagHelper()); return value.get(); }
 
-    public: static ParentInventoryTagHelper getInstance(){
+    public: static ParentInventoryTagHelper* getInstance(){
 
 
 
@@ -66,7 +72,7 @@ class ParentInventoryTagHelper
 
                 //@Throws(Exception.constructor)
             
-    public: void isValid(Object* tagClass, Tag parentTag){
+    public: void isValid(Object* tagClass, Tag* parentTag){
 
                         if(parentTag == 
                                     nullptr
@@ -76,32 +82,32 @@ class ParentInventoryTagHelper
                                     
 
 
-                            throw Exception("Must have parent tag.");
+                            throw new Exception("Must have parent tag.");
                     
 
                                     }
                                 
                              else 
-                        if(!(parentTag instanceof HelperTag))
+                        if(!((dynamic_cast<const HelperTag*>(parentTag) != nullptr)))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Must have at least a ");
+stringBuffer->append("Must have at least a ");
     
-stringBuffer.append("tags.HelperTag");
+stringBuffer->append("tags.HelperTag");
     
-stringBuffer.append(" as parent");
+stringBuffer->append(" as parent");
     
-stringBuffer.append("and not: ");
+stringBuffer->append("and not: ");
     
-stringBuffer.append(parentTag.constructor.name.toString());
+stringBuffer->append(parentTag->getClass()->getName());
     
 
 
 
-                            throw Exception(stringBuffer.toString());
+                            throw new Exception(stringBuffer->toString());
                     
 
                                     }

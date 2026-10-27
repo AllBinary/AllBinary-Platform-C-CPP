@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/GPoint.h>
@@ -51,9 +57,9 @@ class VectorAnimationUtil
             : public Object
          {
 
-    private: static VectorAnimationUtil instance() { return VectorAnimationUtil(); }
+    private: static VectorAnimationUtil* instance() { static std::unique_ptr<VectorAnimationUtil> value(new VectorAnimationUtil()); return value.get(); }
 
-    public: static VectorAnimationUtil getInstance(){
+    public: static VectorAnimationUtil* getInstance(){
 
 
 
@@ -67,15 +73,15 @@ private: VectorAnimationUtil(){
 }
 
 
-    public: std::vector<std::vector<std::vector<int32_t>>> toAnimationArrayFromListOfPointListWithPointsPerFrame(BasicArrayList vector, int32_t pointsPerFrame){
+    public: std::vector<std::vector<std::vector<int32_t>>> toAnimationArrayFromListOfPointListWithPointsPerFrame(BasicArrayList* vector, int32_t pointsPerFrame){
 
-    int32_t size = vector.size();;
+    int32_t size = vector->size();;
     
 
     std::vector<std::vector<std::vector<int32_t>>> points = std::vector<std::vector<std::vector<int32_t>>>(size, std::vector<std::vector<int32_t>>(pointsPerFrame, std::vector<int32_t>(2)));;
     
 
-    BasicArrayList nextBasicArrayList;;
+    BasicArrayList* nextBasicArrayList;;
     
 
     std::vector<std::vector<int32_t>> framePoints;;
@@ -87,7 +93,7 @@ private: VectorAnimationUtil(){
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextBasicArrayList= vector.objectArray[index];
+nextBasicArrayList= dynamic_cast<BasicArrayList*>(vector->objectArray[index]);
     
 framePoints= this->toFrameArrayFromPointBasicArrayList(nextBasicArrayList);
     
@@ -115,15 +121,15 @@ points[index][pointIndex][1]= framePoints[pointIndex][1];
 }
 
 
-    public: std::vector<std::vector<std::vector<int32_t>>> toAnimationArrayFromListOfPointList(BasicArrayList vector){
+    public: std::vector<std::vector<std::vector<int32_t>>> toAnimationArrayFromListOfPointList(BasicArrayList* vector){
 
-    int32_t size = vector.size();;
+    int32_t size = vector->size();;
     
 
     std::vector<std::vector<std::vector<int32_t>>> points = std::vector<std::vector<std::vector<int32_t>>>(size, std::vector<std::vector<int32_t>>(0, std::vector<int32_t>(0)));;
     
 
-    BasicArrayList nextBasicArrayList;;
+    BasicArrayList* nextBasicArrayList;;
     
 
     std::vector<std::vector<int32_t>> framePoints;;
@@ -135,7 +141,7 @@ points[index][pointIndex][1]= framePoints[pointIndex][1];
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextBasicArrayList= vector.objectArray[index];
+nextBasicArrayList= dynamic_cast<BasicArrayList*>(vector->objectArray[index]);
     
 framePoints= this->toFrameArrayFromPointBasicArrayList(nextBasicArrayList);
     
@@ -165,12 +171,12 @@ points[index][pointIndex][1]= framePoints[pointIndex][1];
 }
 
 
-    public: std::vector<std::vector<int32_t>> toFrameArrayFromPointBasicArrayList(BasicArrayList list){
+    public: std::vector<std::vector<int32_t>> toFrameArrayFromPointBasicArrayList(BasicArrayList* list){
 
-    std::vector<std::vector<int32_t>> points = std::vector<std::vector<int32_t>>(list.size(), std::vector<int32_t>(2));;
+    std::vector<std::vector<int32_t>> points = std::vector<std::vector<int32_t>>(list->size(), std::vector<int32_t>(2));;
     
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
 
@@ -180,11 +186,11 @@ points[index][pointIndex][1]= framePoints[pointIndex][1];
     int32_t index = 0;index < size; index++)
         {
 
-    GPoint nextPoint = list.objectArray[index];;
+    GPoint* nextPoint = dynamic_cast<GPoint*>(list->objectArray[index]);;
     
-points[index][0]= nextPoint.getX();
+points[index][0]= nextPoint->getX();
     
-points[index][1]= nextPoint.getY();
+points[index][1]= nextPoint->getY();
     
 }
 

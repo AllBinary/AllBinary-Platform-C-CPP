@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/AllBinaryLayer.h>
@@ -47,12 +53,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ArtificialIntelligenceLayerManager.h"
-#include "ArtificialIntelligenceCompositeInterface.h"
+        #include "org/allbinary/ai/ArtificialIntelligenceLayerManager.h"
+#include "org/allbinary/ai/ArtificialIntelligenceCompositeInterface.h"
 
 class ArtificialIntelligenceLayerProcessor: public LayerProcessor {
 
-public: ArtificialIntelligenceLayerProcessor() : LayerProcessor(ArtificialIntelligenceLayerManager()){
+public: ArtificialIntelligenceLayerProcessor() : LayerProcessor(new ArtificialIntelligenceLayerManager()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -64,20 +70,20 @@ public: ArtificialIntelligenceLayerProcessor() : LayerProcessor(ArtificialIntell
 
                 //@Throws(Exception.constructor)
             
-    public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
+    public: void processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index){
 
-    ArtificialIntelligenceCompositeInterface artificialIntelligenceCompositeInterface = layerInterface;;
+    ArtificialIntelligenceCompositeInterface* artificialIntelligenceCompositeInterface = dynamic_cast<ArtificialIntelligenceCompositeInterface*>(layerInterface);;
     
-artificialIntelligenceCompositeInterface.getArtificialIntelligenceInterface().processAI(allBinaryLayerManager);
+artificialIntelligenceCompositeInterface->getArtificialIntelligenceInterface()->processAI(allBinaryLayerManager);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: bool isProcessorLayer(AllBinaryLayer layerInterface){
+    public: bool isProcessorLayer(AllBinaryLayer* layerInterface){
 
-                        if(layerInterface.implmentsArtificialIntelligenceCompositeInterface())
+                        if(layerInterface->implmentsArtificialIntelligenceCompositeInterface())
                         
                                     {
                                     

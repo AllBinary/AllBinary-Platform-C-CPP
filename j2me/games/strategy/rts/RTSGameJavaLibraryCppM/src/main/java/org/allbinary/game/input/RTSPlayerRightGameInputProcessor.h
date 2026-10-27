@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_RTSPLAYERRIGHTGAMEINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_INPUT_RTSPLAYERRIGHTGAMEINPUTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/event/GameKeyEvent.h>
@@ -47,16 +53,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RTSPlayerGameInputProcessor.h"
-#include "RTSPlayerGameInput.h"
+        #include "org/allbinary/game/input/RTSPlayerGameInputProcessor.h"
+#include "org/allbinary/game/input/RTSPlayerGameInput.h"
 
 class RTSPlayerRightGameInputProcessor: public RTSPlayerGameInputProcessor {
 
-public: RTSPlayerRightGameInputProcessor(RTSPlayerGameInput rtsPlayerGameInput);
+public: RTSPlayerRightGameInputProcessor(RTSPlayerGameInput* rtsPlayerGameInput);
 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent);
+    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent);
 
 };
 

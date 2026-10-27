@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_ABDATAINPUTSTREAM_H
         #define ORG_ALLBINARY_LOGIC_IO_ABDATAINPUTSTREAM_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/io/DataInputStream.h>
 
       
@@ -48,7 +54,7 @@
         
 class AbDataInputStream: public DataInputStream {
 
-public: AbDataInputStream(InputStream out);
+public: AbDataInputStream(InputStream* out);
 
 };
 

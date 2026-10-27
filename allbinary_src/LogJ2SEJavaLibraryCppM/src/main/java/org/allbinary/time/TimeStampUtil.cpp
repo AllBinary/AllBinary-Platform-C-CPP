@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/text/SimpleDateFormat.h>
@@ -52,9 +58,9 @@
             : public Object
          {
 
-    private: static TimeStampUtil instance() { return TimeStampUtil(); }
+    private: static TimeStampUtil* instance() { static std::unique_ptr<TimeStampUtil> value(new TimeStampUtil()); return value.get(); }
 
-    /*actual*/ public: static TimeStampUtil getInstance(){
+    /*actual*/ public: static TimeStampUtil* getInstance(){
 
 
 
@@ -64,7 +70,7 @@
 }
 
 
-    private: const SimpleDateFormat simpleDataFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+    private: SimpleDateFormat* simpleDataFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 
 private: TimeStampUtil(){
 }
@@ -72,16 +78,16 @@ private: TimeStampUtil(){
 
     /*actual*/ public: std::string getAsString(){
 
-    Calendar calendar = Calendar::getInstance();;
+    Calendar* calendar = Calendar::getInstance();;
     
 
-    Date date = calendar.getTime();;
+    Date* date = calendar->getTime();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->simpleDataFormat.format(date);;
+                        return this->simpleDataFormat->format(date);;
     
 }
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -68,9 +74,9 @@ class AbFileSystem
             : public Object
          {
 
-    private: static AbFileSystem instance() { return AbFileSystem(); }
+    private: static AbFileSystem* instance() { static std::unique_ptr<AbFileSystem> value(new AbFileSystem()); return value.get(); }
 
-    public: static AbFileSystem getInstance(){
+    public: static AbFileSystem* getInstance(){
 
 
 
@@ -80,19 +86,19 @@ class AbFileSystem
 }
 
 
-    private: const LogUtil logUtil = LogUtil::getInstance();
+    private: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     public: bool isDirectoryOrFile(std::string path){
 
-    File file = File(path);;
+    File* file = new File(path);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return file.isDirectory() || file.isFile();
+                        return file->isDirectory() || file->isFile();
     
 }
 
@@ -102,24 +108,24 @@ class AbFileSystem
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return File(path).isDirectory();;
+                        return (new File(path))->isDirectory();;
     
 }
 
 
     public: std::vector<std::string> getFilesAsStringArrayForPath(std::string currentDirPath){
 
-    File file = File(currentDirPath);;
+    File* file = new File(currentDirPath);;
     
 
-                        if(file.exists())
+                        if(file->exists())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return file.list();;
+                        return file->list();;
     
 
                                     }
@@ -129,7 +135,7 @@ class AbFileSystem
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().getArrayInstance();;
+                        return StringUtil::getInstance()->getArrayInstance();;
     
 
                         }
@@ -152,17 +158,17 @@ class AbFileSystem
 
     public: std::string readAsString(std::string fileName, std::vector<int8_t> bytes){
 
-    Object* closeable = NullUtil::getInstance().NULL_OBJECT;;
+    Object* closeable = NullUtil::getInstance()->NULL_OBJECT;;
     
 
         try {
             
-    InputStream idFile = FileInputStream(fileName);;
+    InputStream* idFile = new FileInputStream(fileName);;
     
 closeable= idFile;
     
 
-    int32_t size = idFile.read(bytes);;
+    int32_t size = idFile->read(bytes);;
     
 
                         if(size > 0)
@@ -179,9 +185,9 @@ closeable= idFile;
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "readAsString", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "readAsString", &e);
     
 }
 
@@ -195,7 +201,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "readAsString", e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 }
 
@@ -210,9 +216,9 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "readAsString", e);
                         
                                     {
                                     
-    InputStream inputStream = (*dynamic_cast<InputStream*>(closeable));;
+    InputStream* inputStream = (dynamic_cast<InputStream*>(closeable));;
     
-inputStream.close();
+inputStream->close();
     
 
                                     }
@@ -225,9 +231,9 @@ inputStream.close();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CLOSE, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CLOSE, &e);
     
 
 

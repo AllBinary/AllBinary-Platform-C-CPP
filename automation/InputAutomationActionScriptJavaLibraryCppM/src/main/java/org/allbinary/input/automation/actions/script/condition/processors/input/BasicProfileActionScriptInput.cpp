@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -88,34 +96,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProfileActionScriptInputInterface.h"
-#include "GenericProfileActionScriptInputData.h"
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/ProfileActionScriptInputInterface.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/GenericProfileActionScriptInputData.h"
 
 class BasicProfileActionScriptInput: public BasicProfileActionScriptProcessor, public ProfileActionScriptInputInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: InputRobotInterface inputRobotInterface;
+    private: InputRobotInterface* inputRobotInterface;
 
     private: int32_t time= 0;
 
-public: BasicProfileActionScriptInput(std::string label, Node node) : BasicProfileActionScriptProcessor(label, node){
+public: BasicProfileActionScriptInput(std::string label, Node* node) : BasicProfileActionScriptProcessor(label, node){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil.putF(this->commonStrings.START +label, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(this->commonStrings.START +label, this, this->commonStrings.CONSTRUCTOR);
     
 
-    Node actionNode = DomSearchHelper::getNode(GenericProfileActionScriptInputData::TYPE, node.getChildNodes());;
+    Node* actionNode = DomSearchHelper::getNode(GenericProfileActionScriptInputData::TYPE, node->getChildNodes());;
     
 
     std::string inputTypeString = DomNodeHelper::getTextNodeValue(actionNode);;
     
 
-    Node timeNode = DomSearchHelper::getNodeNoThrow(GenericProfileActionScriptInputData::DELAY, node.getChildNodes());;
+    Node* timeNode = DomSearchHelper::getNodeNoThrow(GenericProfileActionScriptInputData::DELAY, node->getChildNodes());;
     
 
                         if(timeNode != 
@@ -126,7 +134,7 @@ this->logUtil.putF(this->commonStrings.START +label, this, this->commonStrings.C
                                     
     std::string delayString = DomNodeHelper::getTextNodeValue(timeNode);;
     
-this->setTime(Integer::valueOf(delayString).intValue());
+this->setTime(Integer.valueOf(delayString)->intValue());
     
 
                                     }
@@ -137,7 +145,7 @@ this->setTime(Integer::valueOf(delayString).intValue());
 
                         }
                             
-this->setInputRobotInterface(InputRobotFactory::getInstance().get(inputTypeString));
+this->setInputRobotInterface(InputRobotFactory::getInstance()->get(inputTypeString));
     
 }
 
@@ -149,21 +157,21 @@ public: BasicProfileActionScriptInput(std::string label) : BasicProfileActionScr
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil.putF(this->commonStrings.START +label, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(this->commonStrings.START +label, this, this->commonStrings.CONSTRUCTOR);
     
 
-    InputRobotFactory inputRobotFactory = InputRobotFactory::getInstance();;
+    InputRobotFactory* inputRobotFactory = InputRobotFactory::getInstance();;
     
 
-    ABHashtable<Object*, Object*> hashtable = inputRobotFactory.get();;
+    ABHashtable<Object*, Object*>* hashtable = dynamic_cast<ABHashtable<Object*, Object*>*>(inputRobotFactory->get());;
     
 
-    Set set = hashtable.keys();;
+    Set* set = hashtable->keys();;
     
 
-    Iterator iterator = set.iterator();;
+    Iterator* iterator = set->iterator();;
     
-this->setInputRobotInterface(inputRobotFactory.get(iterator.next()));
+this->setInputRobotInterface(inputRobotFactory->get(iterator->next()));
     
 this->setTime(0);
     
@@ -186,15 +194,15 @@ this->time= time;
 }
 
 
-    public: HashMap<Object*, Object*> BasicProfileActionScriptInput_toHashMap(){
+    public: HashMap<Object*, Object*>* BasicProfileActionScriptInput_toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(GenericProfileActionScriptInputData::TYPE, this->getInputRobotInterface().getName());
+hashMap->put(GenericProfileActionScriptInputData::TYPE, this->getInputRobotInterface()->getName());
     
-hashMap.put(GenericProfileActionScriptInputData::DELAY, std::to_string(getTime));
+hashMap->put(GenericProfileActionScriptInputData::DELAY, std::to_string(getTime));
     
-this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
+this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
     
 
 
@@ -207,9 +215,9 @@ this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = ModDomHelper::createNodeWithValueNodes(document, GenericProfileActionScriptInputData::NAME, this->BasicProfileActionScriptInput_toHashMap());;
+    Node* node = ModDomHelper::createNodeWithValueNodes(document, GenericProfileActionScriptInputData::NAME, this->BasicProfileActionScriptInput_toHashMap());;
     
 
 
@@ -220,13 +228,13 @@ this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
 }
 
 
-    public: void setInputRobotInterface(InputRobotInterface inputRobotInterface){
+    public: void setInputRobotInterface(InputRobotInterface* inputRobotInterface){
 this->inputRobotInterface= inputRobotInterface;
     
 }
 
 
-    public: InputRobotInterface getInputRobotInterface(){
+    public: InputRobotInterface* getInputRobotInterface(){
 
 
 
@@ -238,11 +246,11 @@ this->inputRobotInterface= inputRobotInterface;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(super.toString());
+stringBuffer->append(super.toString());
     
-stringBuffer.append(" Input Type: ");
+stringBuffer->append(" Input Type: ");
     
 
                         if(this->getInputRobotInterface() != 
@@ -250,26 +258,26 @@ stringBuffer.append(" Input Type: ");
                                 )
                         
                                     {
-                                    stringBuffer.append(this->getInputRobotInterface().getName());
+                                    stringBuffer->append(this->getInputRobotInterface()->getName());
     
 
                                     }
                                 
                         else {
-                            stringBuffer.append(StringUtil::getInstance().NULL_STRING);
+                            stringBuffer->append(StringUtil::getInstance()->NULL_STRING);
     
 
                         }
                             
-stringBuffer.append(" Time: ");
+stringBuffer->append(" Time: ");
     
-stringBuffer.appendlong(this->getTime());
+stringBuffer->appendlong(this->getTime());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

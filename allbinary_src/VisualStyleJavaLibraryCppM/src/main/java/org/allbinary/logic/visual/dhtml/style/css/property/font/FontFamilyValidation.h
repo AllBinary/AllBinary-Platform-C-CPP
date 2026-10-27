@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_FONT_FONTFAMILYVALIDATION_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_FONT_FONTFAMILYVALIDATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -56,19 +62,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "FontFamilyView.h"
+        #include "org/allbinary/logic/visual/dhtml/style/css/property/font/FontFamilyView.h"
 
 class FontFamilyValidation: public FontFamilyView, public ValidationInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: FontFamilyValidation();
 
-public: FontFamilyValidation(Node node);
+public: FontFamilyValidation(Node* node);
 
                 //@Throws(Exception.constructor)
             
-    public: Boolean isValid();
+    public: bool isValid();
 
                 //@Throws(Exception.constructor)
             
@@ -76,11 +82,11 @@ public: FontFamilyValidation(Node node);
 
                 //@Throws(Exception.constructor)
             
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_CANVAS_CUSTOMGAMEMENUUTIL_H
         #define ORG_ALLBINARY_CANVAS_CUSTOMGAMEMENUUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/AppletUtil.h>
@@ -58,7 +64,7 @@ class CustomGameMenuUtil
             : public Object
          {
 
-    public: static void add(MyCanvas canvas);
+    public: static void add(MyCanvas* canvas);
 
 };
 

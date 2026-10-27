@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ABSTRACTINPUTROBOT_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ABSTRACTINPUTROBOT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -56,35 +62,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Point.h"
-#include "PointHelper.h"
-#include "Rectangle.h"
+        #include "org/allbinary/input/automation/Point.h"
+#include "org/allbinary/input/automation/PointHelper.h"
+#include "org/allbinary/input/automation/Rectangle.h"
 
 class AbstractInputRobot
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: HelpSet helpSet;
+    private: HelpSet* helpSet;
 
-public: AbstractInputRobot(HelpSet helpSet);
+public: AbstractInputRobot(HelpSet* helpSet);
 
-    public: HelpSet getHelpSet();
+    public: HelpSet* getHelpSet();
 
-    public: void mouseMove(Point point);
-
-                //@Throws(Exception.constructor)
-            
-    public: void mouseMoveToTarget(Rectangle rectangle, Integer x, Integer y);
+    public: void mouseMove(Point* point);
 
                 //@Throws(Exception.constructor)
             
-    public: void mouseMoveToTarget(Rectangle rectangle);
+    public: void mouseMoveToTarget(Rectangle* rectangle, int32_t x, int32_t y);
 
-    public: void mouseMove(Integer x, Integer y);
+                //@Throws(Exception.constructor)
+            
+    public: void mouseMoveToTarget(Rectangle* rectangle);
 
-    private: void setHelpSet(HelpSet helpSet);
+    public: void mouseMove(int32_t x, int32_t y);
+
+    private: void setHelpSet(HelpSet* helpSet);
 
 };
 

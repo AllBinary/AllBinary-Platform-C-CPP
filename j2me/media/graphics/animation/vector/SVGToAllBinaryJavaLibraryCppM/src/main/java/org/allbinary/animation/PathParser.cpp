@@ -6,6 +6,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Double.h"
@@ -37,9 +43,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StringBuffer.h"
-#include "FixedPoint.h"
-#include "PGUtil.h"
+        #include "org/allbinary/animation/StringBuffer.h"
+#include "org/allbinary/animation/FixedPoint.h"
+#include "org/allbinary/animation/PGUtil.h"
 
 class PathParser
             : public Object
@@ -47,10 +53,10 @@ class PathParser
 
     private: static std::vector<std::string> tokenize(std::string d){
 
-    BasicArrayList tokens = BasicArrayListD();;
+    BasicArrayList* tokens = new BasicArrayListD();;
     
 
-    StringBuffer sb = StringBuffer();;
+    StringBuffer* sb = new StringBuffer();;
     
 
 
@@ -67,12 +73,12 @@ class PathParser
                         
                                     {
                                     
-                        if(sb.length() > 0)
+                        if(sb->length() > 0)
                         
                                     {
-                                    tokens.add(sb.toString());
+                                    tokens->add(sb->toString());
     
-sb.setLength(0);
+sb->setLength(0);
     
 
                                     }
@@ -85,23 +91,23 @@ sb.setLength(0);
                         
                                     {
                                     
-                        if(sb.length() > 0)
+                        if(sb->length() > 0)
                         
                                     {
-                                    tokens.add(sb.toString());
+                                    tokens->add(sb->toString());
     
-sb.setLength(0);
+sb->setLength(0);
     
 
                                     }
                                 
-tokens.add(c.slice(, ).join(''));
+tokens->add(c.slice(, ).join(''));
     
 
                                     }
                                 
                         else {
-                            sb.append(c);
+                            sb->append(c);
     
 
                         }
@@ -109,13 +115,13 @@ tokens.add(c.slice(, ).join(''));
 }
 
 
-                        if(sb.length() > 0)
-                        tokens.add(sb.toString());
+                        if(sb->length() > 0)
+                        tokens->add(sb->toString());
                                 
 
-    std::vector<std::string> res = std::vector<std::string>(tokens.size());;
+    std::vector<std::string> res = std::vector<std::string>(tokens->size());;
     
-tokens.toArrayType(res);
+tokens->toArrayType(res);
     
 
 
@@ -134,7 +140,7 @@ tokens.toArrayType(res);
     std::vector<int32_t> count = {0};;
     
 
-    FixedPoint fixedPoint = FixedPoint::getInstance();;
+    FixedPoint* fixedPoint = FixedPoint::getInstance();;
     
 
     int32_t curX = 0;int32_t curY = 0;;
@@ -146,7 +152,7 @@ tokens.toArrayType(res);
     int32_t idx = 0;;
     
 
-        while(idx < tokens.size())
+        while(idx < tokens->size())
         {
 
     std::string tok = tokens[idx++];;
@@ -159,10 +165,10 @@ tokens.toArrayType(res);
                         
                                     {
                                     
-    int32_t x = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
+    int32_t x = fixedPoint->toFixed(Double.parseDouble(tokens[idx++]));;
     
 
-    int32_t y = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
+    int32_t y = fixedPoint->toFixed(Double.parseDouble(tokens[idx++]));;
     
 
                         if(cmd == 'm')
@@ -197,10 +203,10 @@ count[0]++;
                         
                                     {
                                     
-    int32_t x = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
+    int32_t x = fixedPoint->toFixed(Double.parseDouble(tokens[idx++]));;
     
 
-    int32_t y = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
+    int32_t y = fixedPoint->toFixed(Double.parseDouble(tokens[idx++]));;
     
 
                         if(cmd == 'l')
@@ -231,7 +237,7 @@ count[0]++;
                         
                                     {
                                     
-    int32_t y = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
+    int32_t y = fixedPoint->toFixed(Double.parseDouble(tokens[idx++]));;
     
 
                         if(cmd == 'v')
@@ -258,22 +264,22 @@ count[0]++;
                         
                                     {
                                     
-    int32_t x1 = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
+    int32_t x1 = fixedPoint->toFixed(Double.parseDouble(tokens[idx++]));;
     
 
-    int32_t y1 = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
+    int32_t y1 = fixedPoint->toFixed(Double.parseDouble(tokens[idx++]));;
     
 
-    int32_t x2 = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
+    int32_t x2 = fixedPoint->toFixed(Double.parseDouble(tokens[idx++]));;
     
 
-    int32_t y2 = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
+    int32_t y2 = fixedPoint->toFixed(Double.parseDouble(tokens[idx++]));;
     
 
-    int32_t x3 = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
+    int32_t x3 = fixedPoint->toFixed(Double.parseDouble(tokens[idx++]));;
     
 
-    int32_t y3 = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
+    int32_t y3 = fixedPoint->toFixed(Double.parseDouble(tokens[idx++]));;
     
 
                         if(cmd == 'c')
@@ -294,7 +300,7 @@ y3 += curY;
 
                                     }
                                 
-PGUtil::getInstance().flattenCubicBezier(curX, curY, x1, y1, x2, y2, x3, y3, outX, outY, count, maxPoints);
+PGUtil::getInstance()->flattenCubicBezier(curX, curY, x1, y1, x2, y2, x3, y3, outX, outY, count, maxPoints);
     
 curX= x3;
     
@@ -321,17 +327,17 @@ count[0]++;
                                     }
                                 
 
-        while(idx < tokens.size() && !isCommand(tokens[idx]))
+        while(idx < tokens->size() && !isCommand(tokens[idx]))
         {
 
                         if(cmd == 'M' || cmd == 'm' || cmd == 'L' || cmd == 'l')
                         
                                     {
                                     
-    int32_t x = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
+    int32_t x = fixedPoint->toFixed(Double.parseDouble(tokens[idx++]));;
     
 
-    int32_t y = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
+    int32_t y = fixedPoint->toFixed(Double.parseDouble(tokens[idx++]));;
     
 
                         if(cmd == 'm' || cmd == 'l')
@@ -362,7 +368,7 @@ count[0]++;
                         
                                     {
                                     
-    int32_t y = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
+    int32_t y = fixedPoint->toFixed(Double.parseDouble(tokens[idx++]));;
     
 
                         if(cmd == 'v')

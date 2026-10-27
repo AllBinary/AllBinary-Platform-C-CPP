@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/System.h"
@@ -91,34 +97,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "JButton.h"
-#include "ActionListener.h"
-#include "ActionEvent.h"
-#include "GroupLayout.h"
-#include "Short.h"
+        #include "org/allbinary/image/gui/JPanel.h"
+#include "org/allbinary/image/gui/JButton.h"
+#include "org/allbinary/image/gui/ActionListener.h"
+#include "org/allbinary/image/gui/ActionEvent.h"
+#include "org/allbinary/image/gui/GroupLayout.h"
+#include "org/allbinary/image/gui/Short.h"
 
 class CreateIconImagesJPanel: public javax::swing::JPanel, public ImageProcessorInputCompositeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: ImageProcessorInput imageProcessorInput;
+    private: ImageProcessorInput* imageProcessorInput;
 
-public: CreateIconImagesJPanel(ImageProcessorInput imageProcessorInput);
+public: CreateIconImagesJPanel(ImageProcessorInput* imageProcessorInput);
 
     public: void process();
 
-    public: ImageProcessorInput getImageProcessorInput();
+    public: ImageProcessorInput* getImageProcessorInput();
 
-    public: void setImageProcessorInput(ImageProcessorInput imageProcessorInput);
+    public: void setImageProcessorInput(ImageProcessorInput* imageProcessorInput);
 
     private: void initComponents();
 
-    private: void aboveJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void aboveJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: javax::swing::JButton aboveJButton;
+    private: javax::swing::JButton* aboveJButton;
 
 };
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -49,7 +55,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageArrayAnimation.h"
+        #include "org/allbinary/animation/image/ImageArrayAnimation.h"
 
 class AdjustedImageArrayAnimation: public ImageArrayAnimation {
 
@@ -57,7 +63,7 @@ class AdjustedImageArrayAnimation: public ImageArrayAnimation {
 
     private: int32_t dy= 0;
 
-public: AdjustedImageArrayAnimation(std::vector<Image> imageArray, int32_t dx, int32_t dy, AnimationBehavior animationBehavior) : ImageArrayAnimation(imageArray, animationBehavior){
+public: AdjustedImageArrayAnimation(std::vector<Image*> imageArray, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) : ImageArrayAnimation(imageArray, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -79,7 +85,7 @@ this->setDy(dy);
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 super.paintXY(graphics, x +this->dx, y +this->dy);
     
 }

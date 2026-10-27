@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTION_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,22 +79,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GenericProfileActionJPanel.h"
-#include "GenericProfileActionData.h"
+        #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionJPanel.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionData.h"
 
 class GenericProfileAction
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string name;
 
-    private: GenericProfileActionScript genericProfileActionScript;
+    private: GenericProfileActionScript* genericProfileActionScript;
 
-    private: GenericProfileActionJPanel genericProfileActionJPanel;
+    private: GenericProfileActionJPanel* genericProfileActionJPanel;
 
-public: GenericProfileAction(GenericProfileActionJPanel genericProfileActionJPanel, Node node);
+public: GenericProfileAction(GenericProfileActionJPanel* genericProfileActionJPanel, Node* node);
 
 public: GenericProfileAction(std::string name);
 
@@ -96,15 +102,15 @@ public: GenericProfileAction(std::string name);
 
     public: void setName(std::string name);
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
-    public: GenericProfileActionScript getGenericProfileActionScript();
+    public: GenericProfileActionScript* getGenericProfileActionScript();
 
-    public: void setGenericProfileActionScript(GenericProfileActionScript genericProfileActionScript);
+    public: void setGenericProfileActionScript(GenericProfileActionScript* genericProfileActionScript);
 
 };
 

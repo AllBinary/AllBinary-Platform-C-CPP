@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTRESETABLEPOOL_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTRESETABLEPOOL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 
@@ -41,19 +49,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbstractArrayListPool.h"
-#include "CacheableInterfaceFactoryInterface.h"
-#include "CacheableInterface.h"
+        #include "org/allbinary/logic/util/cache/AbstractArrayListPool.h"
+#include "org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h"
+#include "org/allbinary/logic/util/cache/CacheableInterface.h"
 
 class BasicArrayListResetablePool: public AbstractArrayListPool {
 
-public: BasicArrayListResetablePool(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface);
+public: BasicArrayListResetablePool(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface);
 
     public: void clear();
 
                 //@Throws(Exception.constructor)
             
-    public: CacheableInterface remove(Object* key);
+    public: CacheableInterface* remove(Object* key);
 
 };
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -78,17 +84,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseSecretComposite.h"
-#include "KeySpecFactory.h"
-#include "SecretComposite.h"
+        #include "org/allbinary/logic/system/security/crypt/jcehelper/BaseSecretComposite.h"
+#include "org/allbinary/logic/system/security/crypt/jcehelper/KeySpecFactory.h"
+#include "org/allbinary/logic/system/security/crypt/jcehelper/SecretComposite.h"
 
 class AbCrypt
             : public Object
-        : public CryptInterface {
+        , public CryptInterface {
 
-    private: const TsUtil tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil = TsUtil::getInstance();
 
-    private: BaseSecretComposite secretComposite = BaseSecretComposite::NULL_SECRET_COMPOSITE;
+    private: BaseSecretComposite* secretComposite = BaseSecretComposite::NULL_SECRET_COMPOSITE;
 
     private: std::string algorithm;
 

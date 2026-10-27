@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/PlayerGameInput.h>
@@ -62,14 +68,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameKeyEvent.h"
-#include "PressGameKeyEventListenerInterface.h"
+        #include "org/allbinary/game/input/event/GameKeyEvent.h"
+#include "org/allbinary/game/input/event/PressGameKeyEventListenerInterface.h"
 
 class PressGameKeyEventHandler: public BasicEventHandler {
 
-    private: static PressGameKeyEventHandler instance() { return PressGameKeyEventHandler(); }
+    private: static PressGameKeyEventHandler* instance() { static std::unique_ptr<PressGameKeyEventHandler> value(new PressGameKeyEventHandler()); return value.get(); }
 
-    public: static PressGameKeyEventHandler getInstance(){
+    public: static PressGameKeyEventHandler* getInstance(){
 
 
 
@@ -79,18 +85,18 @@ class PressGameKeyEventHandler: public BasicEventHandler {
 }
 
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: PressGameKeyEventHandler(){
 }
 
 
-    public: void addListener(PlayerGameInput playerGameInput){
+    public: void addListener(PlayerGameInput* playerGameInput){
 
-                        if(!this->list.contains(playerGameInput))
+                        if(!this->list->contains(playerGameInput))
                         
                                     {
-                                    this->list.add(playerGameInput);
+                                    this->list->add(playerGameInput);
     
 
                                     }
@@ -99,15 +105,15 @@ private: PressGameKeyEventHandler(){
 
 
     public: void removeAllListeners(){
-this->list.clear();
+this->list->clear();
     
 super.removeAllListeners();
     
 }
 
 
-    public: void removeListener(EventListenerInterface eventListenerInterface){
-this->list.remove(eventListenerInterface);
+    public: void removeListener(EventListenerInterface* eventListenerInterface){
+this->list->remove(eventListenerInterface);
     
 super.removeListener(eventListenerInterface);
     
@@ -116,26 +122,26 @@ super.removeListener(eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(AllBinaryEventObject eventObject){
+    public: void fireEvent(AllBinaryEventObject* eventObject){
 
 
 
 
                         for (
-    int32_t index = this->list.size();--index >= 0; )
+    int32_t index = this->list->size();--index >= 0; )
         {
 
         try {
             
-    PlayerGameInput playerGameInput = this->list.objectArray[index];;
+    PlayerGameInput* playerGameInput = dynamic_cast<PlayerGameInput*>(this->list->objectArray[index]);;
     
-playerGameInput.onPressGameKeyEvent(eventObject);
+playerGameInput->onPressGameKeyEvent(dynamic_cast<GameKeyEvent*>(eventObject));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
@@ -148,11 +154,11 @@ super.fireEvent(eventObject);
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
 
-    PressGameKeyEventListenerInterface pressGameKeyEventListenerInterface = (eventListenerInterface);;
+    PressGameKeyEventListenerInterface* pressGameKeyEventListenerInterface = (dynamic_cast<PressGameKeyEventListenerInterface*>(eventListenerInterface));;
     
-pressGameKeyEventListenerInterface.onPressGameKeyEvent(eventObject);
+pressGameKeyEventListenerInterface->onPressGameKeyEvent(dynamic_cast<GameKeyEvent*>(eventObject));
     
 }
 

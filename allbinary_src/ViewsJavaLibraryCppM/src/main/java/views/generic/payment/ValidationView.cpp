@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/globals/MESSAGES.h>
@@ -53,11 +59,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentView.h"
+        #include "views/generic/payment/PaymentView.h"
 
 class ValidationView: public PaymentView, public ValidationComponentInterface {
 
-public: ValidationView(TransformInfoInterface transformInfoInterface) : PaymentView(transformInfoInterface){
+public: ValidationView(TransformInfoInterface* transformInfoInterface) : PaymentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -67,7 +73,7 @@ public: ValidationView(TransformInfoInterface transformInfoInterface) : PaymentV
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
 
 
@@ -77,7 +83,7 @@ public: ValidationView(TransformInfoInterface transformInfoInterface) : PaymentV
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -87,7 +93,7 @@ public: ValidationView(TransformInfoInterface transformInfoInterface) : PaymentV
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

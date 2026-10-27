@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,9 +42,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "JColorChooser.h"
-#include "BorderLayout.h"
+        #include "org/allbinary/graphics/j2me/workarea/color/JPanel.h"
+#include "org/allbinary/graphics/j2me/workarea/color/JColorChooser.h"
+#include "org/allbinary/graphics/j2me/workarea/color/BorderLayout.h"
 
 class ColorChooser: public javax::swing::JPanel {
 
@@ -49,16 +55,16 @@ this->initComponents();
 
 
     private: void initComponents(){
-this->jColorChooser1= javax::swing::JColorChooser();
+this->jColorChooser1= new javax::swing::JColorChooser();
     
-setLayout(java::awt::BorderLayout());
+setLayout(new java::awt::BorderLayout());
     
 add(this->jColorChooser1, java.awt.BorderLayout.CENTER);
     
 }
 
 
-    private: javax::swing::JColorChooser jColorChooser1;
+    private: javax::swing::JColorChooser* jColorChooser1;
 
 };
 

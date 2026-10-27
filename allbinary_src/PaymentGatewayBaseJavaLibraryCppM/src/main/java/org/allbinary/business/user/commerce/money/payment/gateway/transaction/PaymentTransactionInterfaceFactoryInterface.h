@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/commerce/inventory/order/OrderHistory.h>
@@ -47,37 +53,37 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentTransactionInterface.h"
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionInterface.h"
 
 class PaymentTransactionInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    PaymentTransactionInterface getInstance(OrderHistory orderHistory);
+    public: virtual PaymentTransactionInterface* getInstance(OrderHistory* orderHistory) = 0;
 
                 //@Throws(Exception.constructor)
             
-    PaymentTransactionInterface getSaleTransaction(TenderType tenderType);
+    public: virtual PaymentTransactionInterface* getSaleTransaction(TenderType* tenderType) = 0;
 
                 //@Throws(Exception.constructor)
             
-    PaymentTransactionInterface getCreditTransaction(TenderType tenderType);
+    public: virtual PaymentTransactionInterface* getCreditTransaction(TenderType* tenderType) = 0;
 
                 //@Throws(Exception.constructor)
             
-    PaymentTransactionInterface getAuthorizationTransaction(TenderType tenderType);
+    public: virtual PaymentTransactionInterface* getAuthorizationTransaction(TenderType* tenderType) = 0;
 
                 //@Throws(Exception.constructor)
             
-    PaymentTransactionInterface getCaptureDelayedTransaction(TenderType tenderType);
+    public: virtual PaymentTransactionInterface* getCaptureDelayedTransaction(TenderType* tenderType) = 0;
 
                 //@Throws(Exception.constructor)
             
-    PaymentTransactionInterface getVoidTransaction(TenderType tenderType);
+    public: virtual PaymentTransactionInterface* getVoidTransaction(TenderType* tenderType) = 0;
 
                 //@Throws(Exception.constructor)
             
-    PaymentTransactionInterface getInquiryTransaction(TenderType tenderType);
+    public: virtual PaymentTransactionInterface* getInquiryTransaction(TenderType* tenderType) = 0;
 
 };
 

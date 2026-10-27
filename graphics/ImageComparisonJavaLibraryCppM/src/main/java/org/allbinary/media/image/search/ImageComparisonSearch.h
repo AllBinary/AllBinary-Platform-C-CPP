@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/awt/image/BufferedImage.h>
@@ -72,9 +78,9 @@ class ImageComparisonSearch
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     public: bool isSameHeight= false;
 
@@ -90,25 +96,25 @@ class ImageComparisonSearch
 
     private: int32_t tolerance= 0;
 
-    private: BasicArrayList nonMatchingPixelVector;
+    private: BasicArrayList* nonMatchingPixelVector;
 
-    private: std::vector<BufferedImage> bufferedImages;
+    private: std::vector<BufferedImage*> bufferedImages;
 
     private: float matchingPercent =  -1;
 
-public: ImageComparisonSearch(BufferedImage bufferedImage, BufferedImage bufferedImage2, int32_t tolerance);
+public: ImageComparisonSearch(BufferedImage* bufferedImage, BufferedImage* bufferedImage2, int32_t tolerance);
 
     private: float getMatchingPercent();
 
-    public: void add(PixelDelta pixel);
+    public: void add(PixelDelta* pixel);
 
-    public: BasicArrayList getNonMatchingPixelVector();
+    public: BasicArrayList* getNonMatchingPixelVector();
 
     public: std::string toString();
 
-    public: std::vector<BufferedImage> getBufferedImages();
+    public: std::vector<BufferedImage*> getBufferedImages();
 
-    private: void setBufferedImages(std::vector<BufferedImage> bufferedImages);
+    private: void setBufferedImages(std::vector<BufferedImage*> bufferedImages);
 
     public: int32_t getTolerance();
 

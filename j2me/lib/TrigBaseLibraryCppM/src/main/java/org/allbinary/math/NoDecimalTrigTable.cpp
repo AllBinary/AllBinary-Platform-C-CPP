@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -71,17 +77,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AngleFactory.h"
-#include "PositionStrings.h"
-#include "Angle.h"
+        #include "org/allbinary/math/AngleFactory.h"
+#include "org/allbinary/math/PositionStrings.h"
+#include "org/allbinary/math/Angle.h"
 
 class NoDecimalTrigTable
             : public Object
          {
 
-    private: static NoDecimalTrigTable instance() { return NoDecimalTrigTable(); }
+    private: static NoDecimalTrigTable* instance() { static std::unique_ptr<NoDecimalTrigTable> value(new NoDecimalTrigTable()); return value.get(); }
 
-    public: static NoDecimalTrigTable getInstance(){
+    public: static NoDecimalTrigTable* getInstance(){
 
 
 
@@ -91,7 +97,7 @@ class NoDecimalTrigTable
 }
 
 
-    private: const MathUtil mathUtil = MathUtil::getInstance();
+    private: MathUtil* mathUtil = MathUtil::getInstance();
 
     private: std::vector<int64_t> noDecimalSin;
 
@@ -101,10 +107,10 @@ class NoDecimalTrigTable
 
 private: NoDecimalTrigTable(){
 
-    int32_t TOTAL_ANGLE = static_cast<int32_t>(AngleFactory::getInstance().TOTAL_ANGLE);;
+    int32_t TOTAL_ANGLE = static_cast<int32_t>(AngleFactory::getInstance()->TOTAL_ANGLE);;
     
 
-    int64_t MAX_VALUE = (Integer::MAX_VALUE);;
+    int64_t MAX_VALUE = (Integer.MAX_VALUE);;
     
 this->noDecimalSin= std::vector<int64_t>(TOTAL_ANGLE);
     
@@ -2313,10 +2319,10 @@ this->noDecimalTan[0]=  -174;
             
     public: int16_t antiTan(int32_t dx, int32_t dy){
 
-    int64_t MAX_VALUE = (Integer::MAX_VALUE);;
+    int64_t MAX_VALUE = (Integer.MAX_VALUE);;
     
 
-    int64_t MIN_VALUE = (Integer::MIN_VALUE);;
+    int64_t MIN_VALUE = (Integer.MIN_VALUE);;
     
 
     int64_t ratio = (MAX_VALUE -1);;
@@ -2334,7 +2340,7 @@ ratio= this->SCALE *dxl /dy;
                         if(dx <= 0 && dy < 0)
                         
                                     {
-                                    ratio= this->mathUtil.abslong(ratio);
+                                    ratio= this->mathUtil->abslong(ratio);
     
 
                                     }
@@ -2499,28 +2505,28 @@ ratio= this->SCALE *dxl /dy;
                                     }
                                 
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Invalid Ratio: ");
+stringBuffer->append("Invalid Ratio: ");
     
-stringBuffer.appendlong(ratio);
+stringBuffer->appendlong(ratio);
     
-stringBuffer.append(CommonSeps::getInstance().SPACE);
+stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-stringBuffer.append(PositionStrings::getInstance().DX_LABEL);
+stringBuffer->append(PositionStrings::getInstance()->DX_LABEL);
     
-stringBuffer.appendint(dx);
+stringBuffer->appendint(dx);
     
-stringBuffer.append(CommonSeps::getInstance().SPACE);
+stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-stringBuffer.append(PositionStrings::getInstance().DX_LABEL);
+stringBuffer->append(PositionStrings::getInstance()->DX_LABEL);
     
-stringBuffer.appendint(dy);
+stringBuffer->appendint(dy);
     
 
 
 
-                            throw Exception(stringBuffer.toString());
+                            throw new Exception(stringBuffer->toString());
                     
 }
 
@@ -2535,9 +2541,9 @@ stringBuffer.appendint(dy);
     std::string TARGET_ANGLE = " Targeting angle: ";;
     
 
-    StringMaker stringMaker = StringMaker();;
+    StringMaker* stringMaker = new StringMaker();;
     
-PreLogUtil::put(stringMaker.append("screenX: ").appendint(screenX).append(" screenY: ").appendint(screenY).append(" targetX: ").appendint(targetX).append(" targetY: ").appendint(targetY).toString(), this, METHOD_NAME);
+PreLogUtil::put(stringMaker->append("screenX: ")->appendint(screenX)->append(" screenY: ")->appendint(screenY)->append(" targetX: ")->appendint(targetX)->append(" targetY: ")->appendint(targetY)->toString(), this, METHOD_NAME);
     
 
     int32_t targetX2 = static_cast<int32_t>( -targetX);;
@@ -2577,10 +2583,10 @@ dy[3]= (screenY2 -targetY2);
     int16_t angleOfTarget= 0;;
     
 
-    AngleFactory angleFactory = AngleFactory::getInstance();;
+    AngleFactory* angleFactory = AngleFactory::getInstance();;
     
 
-    Angle angle;;
+    Angle* angle;;
     
 
 
@@ -2598,11 +2604,11 @@ dy[3]= (screenY2 -targetY2);
         {
 angleOfTarget= this->antiTan(dx[index], dy[index2]);
     
-angle= angleFactory.getAt(static_cast<int32_t>(angleOfTarget));
+angle= angleFactory->getAt(static_cast<int32_t>(angleOfTarget));
     
-stringMaker.delete(0, stringMaker.length());
+stringMaker->delete(0, stringMaker->length());
     
-PreLogUtil::put(stringMaker.append(CommonLabels::getInstance().INDEX_LABEL).appendint(index).append(" index2: ").appendint(index2).append(PositionStrings::getInstance().DX_LABEL).appendint(dx[index]).append(PositionStrings::getInstance().DY_LABEL).appendint(dy[index2]).append(TARGET_ANGLE).appendshort(angleOfTarget).append(CommonSeps::getInstance().EQUALS).appendshort(angle.getValue()).toString(), this, METHOD_NAME);
+PreLogUtil::put(stringMaker->append(CommonLabels::getInstance()->INDEX_LABEL)->appendint(index)->append(" index2: ")->appendint(index2)->append(PositionStrings::getInstance()->DX_LABEL)->appendint(dx[index])->append(PositionStrings::getInstance()->DY_LABEL)->appendint(dy[index2])->append(TARGET_ANGLE)->appendshort(angleOfTarget)->append(CommonSeps::getInstance()->EQUALS)->appendshort(angle->getValue())->toString(), this, METHOD_NAME);
     
 }
 

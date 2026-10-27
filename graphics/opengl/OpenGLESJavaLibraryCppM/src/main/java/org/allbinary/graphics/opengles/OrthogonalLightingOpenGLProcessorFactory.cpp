@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,16 +44,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NullOpenGLProcessorFactory.h"
-#include "OpenGLProcessor.h"
+        #include "org/allbinary/graphics/opengles/NullOpenGLProcessorFactory.h"
+#include "org/allbinary/graphics/opengles/OpenGLProcessor.h"
 
 class OrthogonalLightingOpenGLProcessorFactory
             : public Object
          {
 
-    private: static OrthogonalLightingOpenGLProcessorFactory instance() { return OrthogonalLightingOpenGLProcessorFactory(); }
+    private: static OrthogonalLightingOpenGLProcessorFactory* instance() { static std::unique_ptr<OrthogonalLightingOpenGLProcessorFactory> value(new OrthogonalLightingOpenGLProcessorFactory()); return value.get(); }
 
-    public: static OrthogonalLightingOpenGLProcessorFactory getInstance(){
+    public: static OrthogonalLightingOpenGLProcessorFactory* getInstance(){
 
 
 
@@ -57,9 +63,9 @@ class OrthogonalLightingOpenGLProcessorFactory
 }
 
 
-    public: OpenGLProcessor sceneLightingOrthogonalModeOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
+    public: OpenGLProcessor* sceneLightingOrthogonalModeOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
 
-    public: OpenGLProcessor sceneLightsOrthogonalModeOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
+    public: OpenGLProcessor* sceneLightsOrthogonalModeOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
 
 };
 

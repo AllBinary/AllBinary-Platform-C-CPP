@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,15 +52,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicUserRole.h"
+        #include "org/allbinary/business/user/role/BasicUserRole.h"
 
 class BasicUserRoles
             : public Object
          {
 
-    private: static BasicUserRoles instance() { return BasicUserRoles(); }
+    private: static BasicUserRoles* instance() { static std::unique_ptr<BasicUserRoles> value(new BasicUserRoles()); return value.get(); }
 
-    public: static BasicUserRoles getInstance(){
+    public: static BasicUserRoles* getInstance(){
 
 
 
@@ -64,16 +70,16 @@ class BasicUserRoles
 }
 
 
-    public: const BasicArrayList roleVector = BasicArrayListD();
+    public: BasicArrayList* roleVector = new BasicArrayListD();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicUserRole getRole(std::string role){
+    public: BasicUserRole* getRole(std::string role){
 
-    BasicArrayList roleVector = this->getAll();;
+    BasicArrayList* roleVector = this->getAll();;
     
 
-    int32_t size = roleVector.size();;
+    int32_t size = roleVector->size();;
     
 
 
@@ -83,10 +89,10 @@ class BasicUserRoles
     int32_t index = 0;index < size; index++)
         {
 
-    BasicUserRole userRole = roleVector.get(index);;
+    BasicUserRole* userRole = dynamic_cast<BasicUserRole*>(roleVector->get(index));;
     
 
-                        if(role.compare(userRole.toString()) == 0)
+                        if(role.compare(userRole->toString()) == 0)
                         
                                     {
                                     
@@ -103,12 +109,12 @@ class BasicUserRoles
 
 
 
-                            throw Exception("Unable to get role - Unknown Role");
+                            throw new Exception("Unable to get role - Unknown Role");
                     
 }
 
 
-    public: BasicArrayList getAll(){
+    public: BasicArrayList* getAll(){
 
 
 

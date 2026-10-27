@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_ADMINUSER_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_ADMINUSER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -55,11 +61,11 @@ class AdminUser: public User {
 
 public: AdminUser();
 
-public: AdminUser(HashMap<Object*, Object*> userHashMap);
+public: AdminUser(HashMap<Object*, Object*>* userHashMap);
 
-    public: void validateSession(WeblisketSessionInterface weblisketSession);
+    public: void validateSession(WeblisketSessionInterface* weblisketSession);
 
-    public: void updateSession(WeblisketSessionInterface weblisketSession);
+    public: void updateSession(WeblisketSessionInterface* weblisketSession);
 
 };
 

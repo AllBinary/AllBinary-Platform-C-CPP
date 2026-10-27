@@ -7,6 +7,12 @@
         #ifndef ORG_PLATFORM_OPENGL_OPENGLGLUUTILS_H
         #define ORG_PLATFORM_OPENGL_OPENGLGLUUTILS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -46,15 +52,15 @@ class OpenGLGLUUtils
             : public Object
          {
 
-    private: static OpenGLGLUUtils instance() { return OpenGLGLUUtils(); }
+    private: static OpenGLGLUUtils* instance() { static std::unique_ptr<OpenGLGLUUtils> value(new OpenGLGLUUtils()); return value.get(); }
 
-    public: static OpenGLGLUUtils getInstance();
+    public: static OpenGLGLUUtils* getInstance();
 
-    public: ByteBuffer makeByteBuffer(OpenGLBitmap bmp, bool flip);
+    public: ByteBuffer* makeByteBuffer(OpenGLBitmap* bmp, bool flip);
 
-    public: void texImage2D(GL10 gl, std::string glVersion, int32_t target, int32_t level, bool generateMipMap, OpenGLESImage openGLESImage, int32_t border, bool flip);
+    public: void texImage2D(GL10* gl, std::string glVersion, int32_t target, int32_t level, bool generateMipMap, OpenGLESImage* openGLESImage, int32_t border, bool flip);
 
-    public: void texImage2D(GL10 gl, std::string glVersion, int32_t target, int32_t level, bool generateMipMap, OpenGLBitmap bitmap, int32_t border, bool flip);
+    public: void texImage2D(GL10* gl, std::string glVersion, int32_t target, int32_t level, bool generateMipMap, OpenGLBitmap* bitmap, int32_t border, bool flip);
 
 };
 

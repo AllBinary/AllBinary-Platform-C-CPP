@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -82,30 +88,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Table.h"
+        #include "admin/taghelpers/Table.h"
 
 class BillingAddressHelper: public Table {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const StringUtil stringUtil = StringUtil::getInstance();
+    protected: StringUtil* stringUtil = StringUtil::getInstance();
 
-    private: WeblisketSession weblisketSession;
+    private: WeblisketSession* weblisketSession;
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
     private: std::string userName;
 
-    private: StreetAddress streetAddress;
+    private: StreetAddress* streetAddress;
 
-    private: Portion portion;
+    private: Portion* portion;
 
-public: BillingAddressHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
-this->request= pageContext.getRequest();
+public: BillingAddressHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
     
-this->weblisketSession= WeblisketSession(hashMap, pageContext);
+this->weblisketSession= new WeblisketSession(hashMap, pageContext);
     
-this->portion= Portion(hashMap);
+this->portion= new Portion(hashMap);
     
 this->getAddressForm();
     
@@ -113,18 +119,18 @@ this->getAddressForm();
 
 
     private: void getAddressForm(){
-this->userName= this->request.getParameter(UserData::USERNAME);
+this->userName= this->request->getParameter(UserData::USERNAME);
     
 
                         if(false)
                         
                                     {
-                                    this->userName= this->request.getParameter(WeblisketSessionData::REMOVABLEUSERNAME);
+                                    this->userName= this->request->getParameter(WeblisketSessionData::REMOVABLEUSERNAME);
     
 
                                     }
                                 
-this->streetAddress= StreetAddress(this->request);
+this->streetAddress= new StreetAddress(this->request);
     
 }
 
@@ -133,13 +139,13 @@ this->streetAddress= StreetAddress(this->request);
 
         try {
             
-    std::string success = BillingAddressesEntity(this->stringUtil.EMPTY_STRING).drop();;
+    std::string success = (new BillingAddressesEntity(this->stringUtil->EMPTY_STRING))->drop();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, this->commonStrings.DROP);
+                                    this->logUtil->putF(success, this, this->commonStrings.DROP);
     
 
                                     }
@@ -152,16 +158,16 @@ this->streetAddress= StreetAddress(this->request);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to drop Admin table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.DROP, e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.DROP, &e);
     
 
                                     }
@@ -181,13 +187,13 @@ this->streetAddress= StreetAddress(this->request);
 
         try {
             
-    std::string success = BillingAddressesEntity(this->stringUtil.EMPTY_STRING).createTable();;
+    std::string success = (new BillingAddressesEntity(this->stringUtil->EMPTY_STRING))->createTable();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "create()");
+                                    this->logUtil->putF(success, this, "create()");
     
 
                                     }
@@ -200,16 +206,16 @@ this->streetAddress= StreetAddress(this->request);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to create user table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "create()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "create()", &e);
     
 
                                     }
@@ -232,16 +238,16 @@ this->streetAddress= StreetAddress(this->request);
     std::string success = "Restore Successful";;
     
 
-    BillingAddressesEntity billingAddressesEntity = BillingAddressesEntity(StringUtil::getInstance().EMPTY_STRING);;
+    BillingAddressesEntity* billingAddressesEntity = new BillingAddressesEntity(StringUtil::getInstance()->EMPTY_STRING);;
     
 
-    std::string result = AbSqlTableUtil::getInstance().restoreTable(billingAddressesEntity, this->portion);;
+    std::string result = AbSqlTableUtil::getInstance()->restoreTable(billingAddressesEntity, this->portion);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "restore()");
+                                    this->logUtil->putF(success, this, "restore()");
     
 
                                     }
@@ -254,16 +260,16 @@ this->streetAddress= StreetAddress(this->request);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to restore backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "restore()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "restore()", &e);
     
 
                                     }
@@ -286,13 +292,13 @@ this->streetAddress= StreetAddress(this->request);
     std::string success = "Backup Successful";;
     
 
-    std::string result = AbSqlTableUtil::getInstance().backupTable(BillingAddressesEntity(StringUtil::getInstance().EMPTY_STRING));;
+    std::string result = AbSqlTableUtil::getInstance()->backupTable(new BillingAddressesEntity(StringUtil::getInstance()->EMPTY_STRING));;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "backup()");
+                                    this->logUtil->putF(success, this, "backup()");
     
 
                                     }
@@ -305,16 +311,16 @@ this->streetAddress= StreetAddress(this->request);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to make backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "backup()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "backup()", &e);
     
 
                                     }
@@ -336,13 +342,13 @@ this->streetAddress= StreetAddress(this->request);
             
     std::string success = "Successfully Added Billing Address";;
     
-BillingAddressesEntityFactory::getInstance().getInstance(this->weblisketSession.getUserName()).add(this->streetAddress);
+BillingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSession->getUserName())->add(this->streetAddress);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "add()");
+                                    this->logUtil->putF(success, this, "add()");
     
 
                                     }
@@ -355,16 +361,16 @@ BillingAddressesEntityFactory::getInstance().getInstance(this->weblisketSession.
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to add Billing Address";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "add()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "add()", &e);
     
 
                                     }
@@ -386,13 +392,13 @@ BillingAddressesEntityFactory::getInstance().getInstance(this->weblisketSession.
             
     std::string success = "Successfully Updated Billing Address";;
     
-BillingAddressesEntityFactory::getInstance().getInstance(this->weblisketSession.getUserName()).update(this->streetAddress);
+BillingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSession->getUserName())->update(this->streetAddress);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF("Successfull update of a user Billing Address table", this, "update()");
+                                    this->logUtil->putF("Successfull update of a user Billing Address table", this, "update()");
     
 
                                     }
@@ -405,16 +411,16 @@ BillingAddressesEntityFactory::getInstance().getInstance(this->weblisketSession.
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed update of a User Billing Address Table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "update()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "update()", &e);
     
 
                                     }
@@ -434,10 +440,10 @@ BillingAddressesEntityFactory::getInstance().getInstance(this->weblisketSession.
 
         try {
             
-    ShippingAddressesEntityFactory shippingAddressesEntityFactory = ShippingAddressesEntityFactory::getInstance();;
+    ShippingAddressesEntityFactory* shippingAddressesEntityFactory = ShippingAddressesEntityFactory::getInstance();;
     
 
-    StreetAddress streetAddress = shippingAddressesEntityFactory.getInstance(this->weblisketSession.getUserName()).getDefault();;
+    StreetAddress* streetAddress = shippingAddressesEntityFactory->getInstance(this->weblisketSession->getUserName())->getDefault();;
     
 
                         if(streetAddress != 
@@ -445,7 +451,7 @@ BillingAddressesEntityFactory::getInstance().getInstance(this->weblisketSession.
                                 )
                         
                                     {
-                                    shippingAddressesEntityFactory.getInstance(this->weblisketSession.getUserName()).add(streetAddress);
+                                    shippingAddressesEntityFactory->getInstance(this->weblisketSession->getUserName())->add(streetAddress);
     
 
                                     }
@@ -464,20 +470,20 @@ BillingAddressesEntityFactory::getInstance().getInstance(this->weblisketSession.
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to Set Billing address to Shipping Address";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setToShippingAddress()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "setToShippingAddress()", &e);
     
 
                                     }
@@ -499,13 +505,13 @@ BillingAddressesEntityFactory::getInstance().getInstance(this->weblisketSession.
             
     std::string success = "Successfully Removed Billing Address";;
     
-BillingAddressesEntityFactory::getInstance().getInstance(this->weblisketSession.getUserName()).remove(Integer(this->streetAddress.getId()));
+BillingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSession->getUserName())->remove(int32_t(this->streetAddress->getId()));
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "delete()");
+                                    this->logUtil->putF(success, this, "delete()");
     
 
                                     }
@@ -518,16 +524,16 @@ BillingAddressesEntityFactory::getInstance().getInstance(this->weblisketSession.
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to remove Billing Address";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "delete()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "delete()", &e);
     
 
                                     }
@@ -549,13 +555,13 @@ BillingAddressesEntityFactory::getInstance().getInstance(this->weblisketSession.
             
     std::string success = "Successfully Set Billing Address";;
     
-BillingAddressesEntityFactory::getInstance().getInstance(this->weblisketSession.getUserName()).setDefault(this->streetAddress.getId());
+BillingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSession->getUserName())->setDefault(this->streetAddress->getId());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "set()");
+                                    this->logUtil->putF(success, this, "set()");
     
 
                                     }
@@ -568,16 +574,16 @@ BillingAddressesEntityFactory::getInstance().getInstance(this->weblisketSession.
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to set billing Address";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "set()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "set()", &e);
     
 
                                     }

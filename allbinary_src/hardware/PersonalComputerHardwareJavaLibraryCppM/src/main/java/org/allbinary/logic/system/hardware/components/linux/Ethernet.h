@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_ETHERNET_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_ETHERNET_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/system/hardware/components/interfaces/EthernetInterface.h>
@@ -50,13 +56,13 @@
         
 class Ethernet
             : public Object
-        : public HardwareComponentInterface, public EthernetInterface {
+        , public HardwareComponentInterface, public EthernetInterface {
 
     private: std::string data;
 
 public: Ethernet(std::string data);
 
-    public: bool compareTo(HardwareComponentInterface componentInterface);
+    public: bool compareTo(HardwareComponentInterface* componentInterface);
 
     public: std::string toString();
 

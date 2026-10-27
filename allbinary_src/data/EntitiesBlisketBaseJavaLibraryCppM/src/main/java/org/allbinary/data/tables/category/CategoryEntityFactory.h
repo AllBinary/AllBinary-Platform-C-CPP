@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_CATEGORY_CATEGORYENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_CATEGORY_CATEGORYENTITYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,21 +55,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryEntity.h"
+        #include "org/allbinary/data/tables/category/CategoryEntity.h"
 
 class CategoryEntityFactory
             : public Object
          {
 
-    private: static CategoryEntityFactory instance() { return CategoryEntityFactory(); }
+    private: static CategoryEntityFactory* instance() { static std::unique_ptr<CategoryEntityFactory> value(new CategoryEntityFactory()); return value.get(); }
 
-    public: static CategoryEntityFactory getInstance();
+    public: static CategoryEntityFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: CategoryEntityFactory();
 
-    public: CategoryEntity getCategoryEntityInstance();
+    public: CategoryEntity* getCategoryEntityInstance();
 
 };
 

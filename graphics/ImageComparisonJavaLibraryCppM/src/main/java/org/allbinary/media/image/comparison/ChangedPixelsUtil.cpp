@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -71,38 +77,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageComparisonResult.h"
+        #include "org/allbinary/media/image/comparison/ImageComparisonResult.h"
 
 class ChangedPixelsUtil
             : public Object
          {
 
-    private: static const int32_t START_X = 0;
+    private: static inline const int32_t START_X = 0;
 
-    private: static const int32_t START_Y = 0;
+    private: static inline const int32_t START_Y = 0;
 
-    private: static const int32_t OFFSET = 0;
+    private: static inline const int32_t OFFSET = 0;
 
-    private: static const int32_t SCAN_SIZE = 0;
+    private: static inline const int32_t SCAN_SIZE = 0;
 
-    private: static const std::vector<int32_t> CLEAR_INT_ARRAY = std::vector<int32_t>(1800 *1600);
+    private: static inline const std::vector<int32_t> CLEAR_INT_ARRAY = std::vector<int32_t>(1800 *1600);
 
                 //@Throws(Exception.constructor)
             
-    public: static std::vector<BufferedImageCacheable> generateBufferedImageChacheables(ImageComparisonResult imageComparisonInfo){
+    public: static std::vector<BufferedImageCacheable*> generateBufferedImageChacheables(ImageComparisonResult* imageComparisonInfo){
 
-    std::vector<BufferedImageCacheable> bufferedImageCacheables;;
+    std::vector<BufferedImageCacheable*> bufferedImageCacheables;;
     
 
-    BufferedImage originalBufferedImage = imageComparisonInfo.getBufferedImages()[0];;
+    BufferedImage* originalBufferedImage = imageComparisonInfo->getBufferedImages()[0];;
     
-bufferedImageCacheables= std::vector<BufferedImageCacheable>(2);
-    
-
-    BufferedImageInfo bufferedImageInfo = BufferedImageInfoFactory::getInstance(imageComparisonInfo.imageWidth, imageComparisonInfo.imageHeight, originalBufferedImage.getType());;
+bufferedImageCacheables= std::vector<BufferedImageCacheable*>(2);
     
 
-    PoolInterface poolInterface = BufferedImagePoolSingleton::getInstance();;
+    BufferedImageInfo* bufferedImageInfo = BufferedImageInfoFactory::getInstance(imageComparisonInfo->imageWidth, imageComparisonInfo->imageHeight, originalBufferedImage->getType());;
+    
+
+    PoolInterface* poolInterface = BufferedImagePoolSingleton::getInstance();;
     
 
 
@@ -112,19 +118,19 @@ bufferedImageCacheables= std::vector<BufferedImageCacheable>(2);
     int32_t index = 0;index < bufferedImageCacheables.size(); index++)
         {
 
-    BufferedImageCacheable bufferedImageCacheable = poolInterface.remove(bufferedImageInfo);;
+    BufferedImageCacheable* bufferedImageCacheable = dynamic_cast<BufferedImageCacheable*>(poolInterface->remove(bufferedImageInfo));;
     
 bufferedImageCacheables[index]= bufferedImageCacheable;
     
-bufferedImageCacheables[index].getBufferedImage().setRGB(ChangedPixelsUtil::START_X, ChangedPixelsUtil::START_Y, bufferedImageInfo.getWidth(), bufferedImageInfo.getHeight(), ChangedPixelsUtil::CLEAR_INT_ARRAY, ChangedPixelsUtil::OFFSET, ChangedPixelsUtil::SCAN_SIZE);
+bufferedImageCacheables[index].getBufferedImage()->setRGB(ChangedPixelsUtil::START_X, ChangedPixelsUtil::START_Y, bufferedImageInfo->getWidth(), bufferedImageInfo->getHeight(), ChangedPixelsUtil::CLEAR_INT_ARRAY, ChangedPixelsUtil::OFFSET, ChangedPixelsUtil::SCAN_SIZE);
     
 }
 
 
-    BasicArrayList vector = imageComparisonInfo.getNonMatchingPixelVector();;
+    BasicArrayList* vector = imageComparisonInfo->getNonMatchingPixelVector();;
     
 
-    int32_t size = vector.size();;
+    int32_t size = vector->size();;
     
 
 
@@ -134,24 +140,24 @@ bufferedImageCacheables[index].getBufferedImage().setRGB(ChangedPixelsUtil::STAR
     int32_t index = 0;index < size; index++)
         {
 
-    PixelDelta pixelDelta = vector.get(index);;
+    PixelDelta* pixelDelta = dynamic_cast<PixelDelta*>(vector->get(index));;
     
 
-                        if(pixelDelta.getColorDelta() == 
+                        if(pixelDelta->getColorDelta() == 
                                     nullptr
                                 )
                         
                                     {
-                                    console.log("ColorDelta");
+                                    System.out.print("ColorDelta");
     
 System.exit(0);
     
 
                                     }
                                 
-bufferedImageCacheables[0].getBufferedImage().setRGB(pixelDelta.getPoint().getX(), pixelDelta.getPoint().getY(), pixelDelta.getColorDelta().getRgb1());
+bufferedImageCacheables[0].getBufferedImage()->setRGB(pixelDelta->getPoint()->getX(), pixelDelta->getPoint()->getY(), pixelDelta->getColorDelta()->getRgb1());
     
-bufferedImageCacheables[1].getBufferedImage().setRGB(pixelDelta.getPoint().getX(), pixelDelta.getPoint().getY(), pixelDelta.getColorDelta().getRgb2());
+bufferedImageCacheables[1].getBufferedImage()->setRGB(pixelDelta->getPoint()->getX(), pixelDelta->getPoint()->getY(), pixelDelta->getColorDelta()->getRgb2());
     
 }
 

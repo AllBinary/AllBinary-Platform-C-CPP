@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -73,25 +81,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RequestParams.h"
+        #include "org/allbinary/logic/communication/http/request/RequestParams.h"
 
 class MultipartRequestParams: public RequestParams {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: bool special = false;
 
-public: MultipartRequestParams(HttpServletRequest request);
+public: MultipartRequestParams(HttpServletRequest* request);
 
-public: MultipartRequestParams(PageContext pageContext);
+public: MultipartRequestParams(PageContext* pageContext);
 
     protected: void setSpecial();
 
-    private: void processMultipartRequest(HttpServletRequest request);
+    private: void processMultipartRequest(HttpServletRequest* request);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
 };
 

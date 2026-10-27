@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LAYER_EVENT_SCROLLMAPEVENTLISTENERINTERFACE_H
         #define ORG_ALLBINARY_LAYER_EVENT_SCROLLMAPEVENTLISTENERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
@@ -44,13 +50,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ScrollMapEvent.h"
+        #include "org/allbinary/layer/event/ScrollMapEvent.h"
 
 class ScrollMapEventListenerInterface: public EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    void onMoveEvent(ScrollMapEvent layerManagerEvent);
+    public: virtual void onMoveEvent(ScrollMapEvent* layerManagerEvent) = 0;
 
 };
 

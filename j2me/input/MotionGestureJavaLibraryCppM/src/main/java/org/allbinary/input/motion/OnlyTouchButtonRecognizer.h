@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_ONLYTOUCHBUTTONRECOGNIZER_H
         #define ORG_ALLBINARY_INPUT_MOTION_ONLYTOUCHBUTTONRECOGNIZER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/input/motion/button/TouchButtonRecognizer.h>
@@ -44,11 +50,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionRecognizer.h"
+        #include "org/allbinary/input/motion/MotionRecognizer.h"
 
 class OnlyTouchButtonRecognizer: public MotionRecognizer {
 
-    private: TouchButtonRecognizer touchButtonRecognizer;
+    private: TouchButtonRecognizer* touchButtonRecognizer;
 
     private: bool touchButtonProcessing = false;
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -76,37 +82,37 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdminConfigurationInterface.h"
-#include "AdminConfigurationData.h"
+        #include "org/allbinary/business/user/modules/admin/configuration/AdminConfigurationInterface.h"
+#include "org/allbinary/business/user/modules/admin/configuration/AdminConfigurationData.h"
 
 class AdminConfiguration
             : public Object
-        : public AdminConfigurationInterface {
+        , public AdminConfigurationInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: ContextConfigurationInterface contextConfigurationInterface;
+    private: ContextConfigurationInterface* contextConfigurationInterface;
 
 public: AdminConfiguration(){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
-this->contextConfigurationInterface= ContextConfigurationInterfaceFactory::getInstance().getInstance(AdminConfigurationData::CONTEXTNAME);
-    
-}
-
-
-public: AdminConfiguration(HttpServletRequest request){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
-    
-this->getFormData(RequestParams(request).toHashMap());
+this->contextConfigurationInterface= ContextConfigurationInterfaceFactory::getInstance()->getInstance(AdminConfigurationData::CONTEXTNAME);
     
 }
 
 
-public: AdminConfiguration(HashMap<Object*, Object*> storeHashMap){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+public: AdminConfiguration(HttpServletRequest* request){
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
+    
+this->getFormData((new RequestParams(request))->toHashMap());
+    
+}
+
+
+public: AdminConfiguration(HashMap<Object*, Object*>* storeHashMap){
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 this->getFormData(storeHashMap);
     
@@ -115,10 +121,10 @@ this->getFormData(storeHashMap);
 
                 //@Throws(Exception.constructor)
             
-    private: void getFormData(HashMap<Object*, Object*> storeHashMap){
-this->logUtil.putF(this->commonStrings.START, this, "getFormData");
+    private: void getFormData(HashMap<Object*, Object*>* storeHashMap){
+this->logUtil->putF(this->commonStrings->START, this, "getFormData");
     
-this->setContextConfigurationInterface(ContextConfiguration(storeHashMap));
+this->setContextConfigurationInterface(dynamic_cast<ContextConfigurationInterface*>(new ContextConfiguration(storeHashMap)));
     
 }
 
@@ -128,17 +134,17 @@ this->setContextConfigurationInterface(ContextConfiguration(storeHashMap));
 
     public: void write(){
 
-    ContextConfigurationDomDocumentMapping contextConfigurationDomDocumentMapping = ContextConfigurationDomDocumentMapping(this->getContextConfigurationInterface());;
+    ContextConfigurationDomDocumentMapping* contextConfigurationDomDocumentMapping = new ContextConfigurationDomDocumentMapping(this->getContextConfigurationInterface());;
     
 
-    CryptFileWriter cryptFileWriter = CryptFileWriter(ContextConfigurationData::getInstance().UNCRYPTED_EXTENSION, ContextConfigurationData::getInstance().ENCRYPTED_EXTENSION);;
+    CryptFileWriter* cryptFileWriter = new CryptFileWriter(ContextConfigurationData::getInstance()->UNCRYPTED_EXTENSION, ContextConfigurationData::getInstance()->ENCRYPTED_EXTENSION);;
     
-cryptFileWriter.write(ContextConfigurationPathUtil::getAbPath(AdminConfigurationData::CONTEXTNAME), contextConfigurationDomDocumentMapping.toXmlDoc());
+cryptFileWriter->write(ContextConfigurationPathUtil::getAbPath(AdminConfigurationData::CONTEXTNAME), contextConfigurationDomDocumentMapping->toXmlDoc());
     
 }
 
 
-    public: ContextConfigurationInterface getContextConfigurationInterface(){
+    public: ContextConfigurationInterface* getContextConfigurationInterface(){
 
 
 
@@ -148,7 +154,7 @@ cryptFileWriter.write(ContextConfigurationPathUtil::getAbPath(AdminConfiguration
 }
 
 
-    public: void setContextConfigurationInterface(ContextConfigurationInterface contextConfigurationInterface){
+    public: void setContextConfigurationInterface(ContextConfigurationInterface* contextConfigurationInterface){
 this->contextConfigurationInterface= contextConfigurationInterface;
     
 }

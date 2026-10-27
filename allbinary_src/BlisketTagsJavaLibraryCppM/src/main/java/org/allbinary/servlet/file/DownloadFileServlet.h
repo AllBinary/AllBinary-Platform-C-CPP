@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_SERVLET_FILE_DOWNLOADFILESERVLET_H
         #define ORG_ALLBINARY_SERVLET_FILE_DOWNLOADFILESERVLET_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/io/IOException.h>
@@ -107,9 +113,9 @@
         
 class DownloadFileServlet: public HttpServlet {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: const std::string DOWNLOAD = "download";
 
@@ -117,15 +123,15 @@ class DownloadFileServlet: public HttpServlet {
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void processRequest(HttpServletRequest request, HttpServletResponse response);
+    protected: void processRequest(HttpServletRequest* request, HttpServletResponse* response);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void doGet(HttpServletRequest request, HttpServletResponse response);
+    protected: void doGet(HttpServletRequest* request, HttpServletResponse* response);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void doPost(HttpServletRequest request, HttpServletResponse response);
+    protected: void doPost(HttpServletRequest* request, HttpServletResponse* response);
 
     public: std::string getServletInfo();
 

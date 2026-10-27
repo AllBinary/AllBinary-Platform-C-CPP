@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -72,17 +78,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "IdGeneratorInterface.h"
+        #include "org/allbinary/data/generator/IdGeneratorInterface.h"
 
 class UniqueIdGenerator
             : public Object
-        : public IdGeneratorInterface {
+        , public IdGeneratorInterface {
 
-    public: static const std::string EXT = ".unq";
+    public: static inline const std::string EXT = ".unq";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: AbFile newFile;
+    private: AbFile* newFile;
 
     private: int64_t id = 0;
 
@@ -93,25 +99,25 @@ public: UniqueIdGenerator(){
     public: void initialize(int32_t value){
 
         try {
-            this->newFile.createNewFile();
+            this->newFile->createNewFile();
     
 
-    AbDataOutputStream idData = DataOutputStreamFactory::getInstance().getInstanceForAbFile(this->newFile);;
+    AbDataOutputStream* idData = DataOutputStreamFactory::getInstance()->getInstanceForAbFile(this->newFile);;
     
-idData.writeLong(value);
+idData->writeLong(value);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().IDLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->IDLOGGING))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, "initialize", e);
+this->logUtil->put(commonStrings->EXCEPTION, this, "initialize", &e);
     
 
                                     }
@@ -135,33 +141,33 @@ this->newFile= AbFile::createAbFile(filePathName);
 
     public: std::string getNext(){
 
-    AbDataInputStream idData = 
+    AbDataInputStream* idData = 
                 null
             ;;
     
 
-    AbDataOutputStream idOutData = 
+    AbDataOutputStream* idOutData = 
                 null
             ;;
     
 
         try {
             
-    AbFileInputStream idFile = AbFileInputStream(this->newFile);;
+    AbFileInputStream* idFile = new AbFileInputStream(this->newFile);;
     
-idData= AbDataInputStream(idFile);
+idData= new AbDataInputStream(idFile);
     
-this->id= idData.readLong();
-    
-
-    AbFileOutputStream idOutFile = AbFileOutputStream::createFromAbFile(this->newFile);;
-    
-idOutData= AbDataOutputStream(idOutFile);
-    
-idOutData.writeLong(this->id +1);
+this->id= idData->readLong();
     
 
-    Long idLong = Long(this->id);;
+    AbFileOutputStream* idOutFile = AbFileOutputStream::createFromAbFile(this->newFile);;
+    
+idOutData= new AbDataOutputStream(idOutFile);
+    
+idOutData->writeLong(this->id +1);
+    
+
+    int64_t idLong = int64_t(this->id);;
     
 
 
@@ -171,16 +177,16 @@ idOutData.writeLong(this->id +1);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().IDLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->IDLOGGING))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, "getNext", e);
+this->logUtil->put(commonStrings->EXCEPTION, this, "getNext", &e);
     
 
                                     }
@@ -194,9 +200,9 @@ this->logUtil.put(commonStrings.EXCEPTION, this, "getNext", e);
 }
 
          finally {
-            StreamUtil::getInstance().close(idData);
+            StreamUtil::getInstance()->close(idData);
     
-StreamUtil::getInstance().close(idOutData);
+StreamUtil::getInstance()->close(idOutData);
     
 
          }

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INTERMISSIONFACTORY_H
         #define ORG_ALLBINARY_GAME_INTERMISSIONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/state/GameState.h>
@@ -52,17 +58,17 @@ class IntermissionFactory
             : public Object
          {
 
-    private: static IntermissionFactory instance() { return IntermissionFactory(); }
+    private: static IntermissionFactory* instance() { static std::unique_ptr<IntermissionFactory> value(new IntermissionFactory()); return value.get(); }
 
-    public: static IntermissionFactory getInstance();
+    public: static IntermissionFactory* getInstance();
 
-    public: const GameState START_LEVEL_INTERMISSION_GAME_STATE = GameStateFactory::getInstance().createGameState("START_LEVEL_INTERMISSION_GAME_STATE");
+    public: GameState* START_LEVEL_INTERMISSION_GAME_STATE = GameStateFactory::getInstance()->createGameState("START_LEVEL_INTERMISSION_GAME_STATE");
 
-    public: const GameState WAIT_LEVEL_INTERMISSION_GAME_STATE = GameStateFactory::getInstance().createGameState("WAIT_LEVEL_INTERMISSION_GAME_STATE");
+    public: GameState* WAIT_LEVEL_INTERMISSION_GAME_STATE = GameStateFactory::getInstance()->createGameState("WAIT_LEVEL_INTERMISSION_GAME_STATE");
 
-    public: const GameState SHOW_RESULTS_LEVEL_INTERMISSION_GAME_STATE = GameStateFactory::getInstance().createGameState("SHOW_RESULTS_LEVEL_INTERMISSION_GAME_STATE");
+    public: GameState* SHOW_RESULTS_LEVEL_INTERMISSION_GAME_STATE = GameStateFactory::getInstance()->createGameState("SHOW_RESULTS_LEVEL_INTERMISSION_GAME_STATE");
 
-    public: const GameState SHOW_HIGH_SCORE_LEVEL_INTERMISSION_GAME_STATE = GameStateFactory::getInstance().createGameState("SHOW_HIGH_SCORE_LEVEL_INTERMISSION_GAME_STATE");
+    public: GameState* SHOW_HIGH_SCORE_LEVEL_INTERMISSION_GAME_STATE = GameStateFactory::getInstance()->createGameState("SHOW_HIGH_SCORE_LEVEL_INTERMISSION_GAME_STATE");
 
 };
 

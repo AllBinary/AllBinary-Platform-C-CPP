@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_QUEUE_BASICQUEUE_H
         #define ORG_ALLBINARY_LOGIC_UTIL_QUEUE_BASICQUEUE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,7 +60,7 @@ class BasicQueue
             : public Object
          {
 
-    protected: const BasicArrayList queueVector = BasicArrayListD();
+    protected: BasicArrayList* queueVector = new BasicArrayListD();
 
 protected: BasicQueue();
 

@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/graphics/GPoint.h>
 
       
@@ -66,19 +74,19 @@
         
 class MotionGestureEvent: public AllBinaryEventObject {
 
-    private: static const std::string PREVIOUS = " Previous: ";
+    private: static inline const std::string PREVIOUS = " Previous: ";
 
-    private: static const std::string HASHCODE = " hashcode: ";
+    private: static inline const std::string HASHCODE = " hashcode: ";
 
-    private: MotionGestureInput motionGesture = TouchMotionGestureFactory::getInstance().NO_MOTION;
+    private: MotionGestureInput* motionGesture = TouchMotionGestureFactory::getInstance()->NO_MOTION;
 
     private: int32_t id;
 
-    private: GPoint previousPoint = PointFactory::getInstance().ZERO_ZERO;
+    private: GPoint* previousPoint = PointFactory::getInstance()->ZERO_ZERO;
 
-    private: GPoint currentPoint = PointFactory::getInstance().ZERO_ZERO;
+    private: GPoint* currentPoint = PointFactory::getInstance()->ZERO_ZERO;
 
-public: MotionGestureEvent(Object* source, int32_t id, MotionGestureInput motionGesture) : AllBinaryEventObject(source){
+public: MotionGestureEvent(Object* source, int32_t id, MotionGestureInput* motionGesture) : AllBinaryEventObject(source){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -92,7 +100,7 @@ this->setMotionGesture(motionGesture);
 }
 
 
-    public: MotionGestureInput getMotionGesture(){
+    public: MotionGestureInput* getMotionGesture(){
 
 
 
@@ -102,13 +110,13 @@ this->setMotionGesture(motionGesture);
 }
 
 
-    public: void setMotionGesture(MotionGestureInput motionGesture){
+    public: void setMotionGesture(MotionGestureInput* motionGesture){
 this->motionGesture= motionGesture;
     
 }
 
 
-    public: GPoint getPreviousPoint(){
+    public: GPoint* getPreviousPoint(){
 
 
 
@@ -118,13 +126,13 @@ this->motionGesture= motionGesture;
 }
 
 
-    public: void setPreviousPoint(GPoint previousPoint){
+    public: void setPreviousPoint(GPoint* previousPoint){
 this->previousPoint= previousPoint;
     
 }
 
 
-    public: GPoint getCurrentPoint(){
+    public: GPoint* getCurrentPoint(){
 
 
 
@@ -134,40 +142,40 @@ this->previousPoint= previousPoint;
 }
 
 
-    public: void setCurrentPoint(GPoint currentPoint){
+    public: void setCurrentPoint(GPoint* currentPoint){
 this->currentPoint= currentPoint;
     
 }
 
 
-    private: const CommonLabels commonLabels = CommonLabels::getInstance();
+    private: CommonLabels* commonLabels = CommonLabels::getInstance();
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
-stringBuffer.append(stringUtil.toString(this->motionGesture));
+stringBuffer->append(stringUtil->toString(this->motionGesture));
     
-stringBuffer.append(this->commonLabels.CURRENT);
+stringBuffer->append(this->commonLabels->CURRENT);
     
-stringBuffer.append(stringUtil.toString(this->currentPoint));
+stringBuffer->append(stringUtil->toString(this->currentPoint));
     
-stringBuffer.append(MotionGestureEvent::PREVIOUS);
+stringBuffer->append(MotionGestureEvent::PREVIOUS);
     
-stringBuffer.append(stringUtil.toString(this->previousPoint));
+stringBuffer->append(stringUtil->toString(this->previousPoint));
     
-stringBuffer.append(MotionGestureEvent::HASHCODE);
+stringBuffer->append(MotionGestureEvent::HASHCODE);
     
-stringBuffer.appendint(TsUtil::getInstance().hashCode(this));
+stringBuffer->appendint(TsUtil::getInstance()->hashCode(this));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

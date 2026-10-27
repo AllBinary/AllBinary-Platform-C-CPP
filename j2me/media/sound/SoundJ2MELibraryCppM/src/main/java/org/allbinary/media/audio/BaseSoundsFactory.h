@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -45,12 +51,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SoundsFactoryInterface.h"
-#include "Sound.h"
+        #include "org/allbinary/media/audio/SoundsFactoryInterface.h"
+#include "org/allbinary/media/audio/Sound.h"
 
 class BaseSoundsFactory
             : public Object
-        : public SoundsFactoryInterface {
+        , public SoundsFactoryInterface {
 
     private: bool initialized= false;
 
@@ -58,7 +64,7 @@ class BaseSoundsFactory
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<Sound> getSoundInterfaceArray();
+    public: std::vector<Sound*> getSoundInterfaceArray();
 
     public: void setInitialized(bool initialized);
 

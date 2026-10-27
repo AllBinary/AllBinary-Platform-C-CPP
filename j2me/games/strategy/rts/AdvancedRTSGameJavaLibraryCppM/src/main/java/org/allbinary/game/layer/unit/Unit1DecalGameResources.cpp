@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/resources/BasicGameResources.h>
@@ -55,9 +61,9 @@
         
 class Unit1DecalGameResources: public BasicGameResources {
 
-    private: static Unit1DecalGameResources instance() { return Unit1DecalGameResources(); }
+    private: static Unit1DecalGameResources* instance() { static std::unique_ptr<Unit1DecalGameResources> value(new Unit1DecalGameResources()); return value.get(); }
 
-    public: static BasicGameResources getInstance(){
+    public: static BasicGameResources* getInstance(){
 
 
 
@@ -116,7 +122,7 @@ super.append(ROOT, sizeString);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameGraphicsResourceUtil::getInstance().getStringForFeature(GraphicsFeatureFactory::getInstance().SPRITE_QUARTER_ROTATION_GRAPHICS);;
+                        return GameGraphicsResourceUtil::getInstance()->getStringForFeature(GraphicsFeatureFactory::getInstance()->SPRITE_QUARTER_ROTATION_GRAPHICS);;
     
 
                                     }

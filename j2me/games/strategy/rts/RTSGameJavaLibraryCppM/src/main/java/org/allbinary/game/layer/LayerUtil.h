@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_LAYERUTIL_H
         #define ORG_ALLBINARY_GAME_LAYER_LAYERUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/string/CommonSeps.h>
@@ -61,9 +67,9 @@ class LayerUtil
             : public Object
          {
 
-    private: static const std::string HASHTABLE = "Hashtable: ";
+    private: static inline const std::string HASHTABLE = "Hashtable: ";
 
-    public: static std::string toString(ABHashtable<Object*, Object*> hashtable, int32_t x, int32_t y, int32_t z);
+    public: static std::string toString(ABHashtable<Object*, Object*>* hashtable, int32_t x, int32_t y, int32_t z);
 
 };
 

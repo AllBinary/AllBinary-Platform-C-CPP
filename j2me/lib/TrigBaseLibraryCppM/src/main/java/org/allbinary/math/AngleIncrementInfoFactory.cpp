@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -40,16 +46,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AngleFactory.h"
-#include "AngleIncrementInfo.h"
+        #include "org/allbinary/math/AngleFactory.h"
+#include "org/allbinary/math/AngleIncrementInfo.h"
 
 class AngleIncrementInfoFactory
             : public Object
          {
 
-    private: static AngleIncrementInfoFactory instance() { return AngleIncrementInfoFactory(); }
+    private: static AngleIncrementInfoFactory* instance() { static std::unique_ptr<AngleIncrementInfoFactory> value(new AngleIncrementInfoFactory()); return value.get(); }
 
-    public: static AngleIncrementInfoFactory getInstance(){
+    public: static AngleIncrementInfoFactory* getInstance(){
 
 
 
@@ -59,17 +65,17 @@ class AngleIncrementInfoFactory
 }
 
 
-    private: const std::vector<AngleIncrementInfo> angleIncrementInfo = std::vector<AngleIncrementInfo>(static_cast<int32_t>(AngleFactory::getInstance().TOTAL_ANGLE));
+    private: const std::vector<AngleIncrementInfo*> angleIncrementInfo = std::vector<AngleIncrementInfo*>(static_cast<int32_t>(AngleFactory::getInstance()->TOTAL_ANGLE));
 
-    public: AngleIncrementInfo getAt(int16_t angleIncrement){
+    public: AngleIncrementInfo* getAt(int16_t angleIncrement){
 
     int32_t halfAngleIncrement = (static_cast<int32_t>(angleIncrement)>>1);;
     
 
-    AngleIncrementInfo angleIncrementInfo;;
+    AngleIncrementInfo* angleIncrementInfo;;
     
 
-    AngleIncrementInfo angleIncrementInfoCanBeNull = this->angleIncrementInfo[halfAngleIncrement];;
+    AngleIncrementInfo* angleIncrementInfoCanBeNull = this->angleIncrementInfo[halfAngleIncrement];;
     
 
                         if(angleIncrementInfoCanBeNull == 
@@ -77,7 +83,7 @@ class AngleIncrementInfoFactory
                                 )
                         
                                     {
-                                    angleIncrementInfo= AngleIncrementInfo(angleIncrement);
+                                    angleIncrementInfo= new AngleIncrementInfo(angleIncrement);
     
 this->angleIncrementInfo[halfAngleIncrement]= angleIncrementInfo;
     

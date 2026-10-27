@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_STATICPATHGENERATOR_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_STATICPATHGENERATOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -90,17 +96,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PathGeneratorInterface.h"
-#include "PathCacheFactory.h"
-#include "PathFindingInfo.h"
+        #include "org/allbinary/media/graphics/geography/pathfinding/PathGeneratorInterface.h"
+#include "org/allbinary/media/graphics/geography/pathfinding/PathCacheFactory.h"
+#include "org/allbinary/media/graphics/geography/pathfinding/PathFindingInfo.h"
 
 class StaticPathGenerator
             : public Object
-        : public PathGeneratorInterface {
+        , public PathGeneratorInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
+    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
 
 protected: StaticPathGenerator();
 
@@ -110,11 +116,11 @@ protected: StaticPathGenerator();
 
                 //@Throws(Exception.constructor)
             
-    private: BasicArrayList getGeographicMapCellPositionListFromBasicGeographicMapCellPositionList(BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory, BasicArrayList pathList);
+    private: BasicArrayList* getGeographicMapCellPositionListFromBasicGeographicMapCellPositionList(BasicGeographicMapCellPositionFactory* geographicMapCellPositionFactory, BasicArrayList* pathList);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList createList(BasicGeographicMap geographicMapInterface, GeographicMapCellHistory geographicMapCellHistory, PathFindingInfo pathFindingInfo, int32_t totalPaths);
+    public: BasicArrayList* createList(BasicGeographicMap* geographicMapInterface, GeographicMapCellHistory* geographicMapCellHistory, PathFindingInfo* pathFindingInfo, int32_t totalPaths);
 
 };
 

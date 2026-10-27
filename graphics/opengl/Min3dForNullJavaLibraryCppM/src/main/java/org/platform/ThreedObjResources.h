@@ -21,6 +21,12 @@
         #ifndef ORG_PLATFORM_THREEDOBJRESOURCES_H
         #define ORG_PLATFORM_THREEDOBJRESOURCES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/StdUtil.h>
@@ -52,11 +58,11 @@ class ThreedObjResources
             : public Object
          {
 
-    private: static ThreedObjResources instance() { return ThreedObjResources(); }
+    private: static ThreedObjResources* instance() { static std::unique_ptr<ThreedObjResources> value(new ThreedObjResources()); return value.get(); }
 
-    public: static ThreedObjResources getInstance();
+    public: static ThreedObjResources* getInstance();
 
-    public: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
+    public: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
 
     public: std::string get(std::string resourceName);
 

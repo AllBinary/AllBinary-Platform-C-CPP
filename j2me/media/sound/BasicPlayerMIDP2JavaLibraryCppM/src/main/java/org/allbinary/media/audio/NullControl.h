@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_NULLCONTROL_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_NULLCONTROL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/media/Control.h>
@@ -47,7 +53,7 @@
         
 class NullControl
             : public Object
-        : public Control {
+        , public Control {
 
 };
 

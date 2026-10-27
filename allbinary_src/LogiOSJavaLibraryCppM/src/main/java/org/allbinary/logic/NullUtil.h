@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -56,13 +62,13 @@
             : public Object
          {
 
-    private: static NullUtil instance() { return NullUtil(); }
+    private: static NullUtil* instance() { static std::unique_ptr<NullUtil> value(new NullUtil()); return value.get(); }
 
-    public: static NullUtil getInstance();
+    public: static NullUtil* getInstance();
 
-    /*actual*/ public: const Object* NULL_OBJECT = new Object();
+    /*actual*/ public: Object* NULL_OBJECT = new Object();
 
-    /*actual*/ public: const Class* NULL_CLASS = this->NULL_OBJECT->getClass();
+    /*actual*/ public: Class* NULL_CLASS = this->NULL_OBJECT->getClass();
 
     /*actual*/ public: const std::vector<Object*> NULL_OBJECT_ARRAY = {};
 
@@ -80,9 +86,9 @@
 
     /*actual*/ public: const std::vector<float> NULL_FLOAT_ARRAY = std::vector<float>(0);
 
-    /*actual*/ public: const Vector<Object*> EMPTY_VECTOR = Vector<Object*>();
+    /*actual*/ public: Vector<Object*>* EMPTY_VECTOR = new Vector<Object*>();
 
-    /*actual*/ public: const Hashtable<Object*, Object*> NULL_TABLE = Hashtable<Object*, Object*>();
+    /*actual*/ public: Hashtable<Object*, Object*>* NULL_TABLE = new Hashtable<Object*, Object*>();
 
 };
 

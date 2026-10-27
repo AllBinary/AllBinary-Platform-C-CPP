@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/net/URL.h>
 
       
@@ -48,18 +54,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputAutomationModuleFactoryInterface.h"
-#include "JPanel.h"
+        #include "org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h"
+#include "org/allbinary/input/automation/module/JPanel.h"
 
 class AbstractInputAutomationFactory: public InputAutomationModuleFactoryInterface {
 
     private: std::string name;
 
-    private: JPanel jPanel;
+    private: JPanel* jPanel;
 
-    private: HelpSet helpSet;
+    private: HelpSet* helpSet;
 
-public: AbstractInputAutomationFactory(std::string name, JPanel jPanel, HelpSet helpSet){
+public: AbstractInputAutomationFactory(std::string name, JPanel* jPanel, HelpSet* helpSet){
 this->name= name;
     
 this->jPanel= jPanel;
@@ -69,15 +75,15 @@ this->helpSet= helpSet;
 }
 
 
-public: AbstractInputAutomationFactory(std::string name, JPanel jPanel){
+public: AbstractInputAutomationFactory(std::string name, JPanel* jPanel){
 this->name= name;
     
 this->jPanel= jPanel;
     
 
-    URL url = this->constructor.name.getResource("/help/Help.hs");;
+    URL* url = this->getClass()->getResource("/help/Help.hs");;
     
-this->helpSet= JavaHelpUtil::getInstance().getHelpSet(url);
+this->helpSet= JavaHelpUtil::getInstance()->getHelpSet(url);
     
 }
 
@@ -92,7 +98,7 @@ this->helpSet= JavaHelpUtil::getInstance().getHelpSet(url);
 }
 
 
-    public: JPanel getConfigurationJPanel(){
+    public: JPanel* getConfigurationJPanel(){
 
 
 
@@ -102,7 +108,7 @@ this->helpSet= JavaHelpUtil::getInstance().getHelpSet(url);
 }
 
 
-    public: HelpSet getHelpSet(){
+    public: HelpSet* getHelpSet(){
 
 
 

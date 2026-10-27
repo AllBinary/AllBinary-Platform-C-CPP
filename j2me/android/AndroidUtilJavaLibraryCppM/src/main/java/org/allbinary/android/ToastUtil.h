@@ -9,6 +9,12 @@
 
             #include <hilog/log.h>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -53,13 +59,13 @@ class ToastUtil
             : public Object
          {
 
-    private: static ToastUtil instance() { return ToastUtil(); }
+    private: static ToastUtil* instance() { static std::unique_ptr<ToastUtil> value(new ToastUtil()); return value.get(); }
 
-    public: static ToastUtil getInstance();
+    public: static ToastUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: void makeToast(View view, Context context, std::string message, int32_t time);
+    public: void makeToast(View* view, Context* context, std::string message, int32_t time);
 
 };
 

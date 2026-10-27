@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -58,17 +64,17 @@ class ScoreHudWidget: public NumberStringHud {
 
                 //@Throws(Exception.constructor)
             
-    public: static ScoreHudWidget getInstance(int32_t maxscore, int32_t location, int32_t direction){
+    public: static ScoreHudWidget* getInstance(int32_t maxscore, int32_t location, int32_t direction){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScoreHudWidget(maxscore, location, direction, 2, BasicColorFactory::getInstance().GREY);
+                        return new ScoreHudWidget(maxscore, location, direction, 2, BasicColorFactory::getInstance()->GREY);
     
 }
 
 
-public: ScoreHudWidget(int32_t maxscore, int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor) : NumberStringHud("Pts ", maxscore, location, direction, bufferZone, basicColor){
+public: ScoreHudWidget(int32_t maxscore, int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor) : NumberStringHud("Pts ", maxscore, location, direction, bufferZone, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -80,11 +86,11 @@ this->updateMaxHeight= 14;
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->updateMaxWidth= font.getSize() *5;
+this->updateMaxWidth= font->getSize() *5;
     
 super.updateMeasurement(graphics);
     

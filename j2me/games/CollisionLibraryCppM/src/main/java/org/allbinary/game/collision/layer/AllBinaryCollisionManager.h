@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_COLLISION_LAYER_ALLBINARYCOLLISIONMANAGER_H
         #define ORG_ALLBINARY_GAME_COLLISION_LAYER_ALLBINARYCOLLISIONMANAGER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,19 +66,19 @@ class AllBinaryCollisionManager
             : public Object
          {
 
-    private: static AllBinaryCollisionManager allBinaryCollisionManager = AllBinaryCollisionManager();
+    private: static AllBinaryCollisionManager* allBinaryCollisionManager() { static std::unique_ptr<AllBinaryCollisionManager> value(new AllBinaryCollisionManager()); return value.get(); }
 
-    public: static AllBinaryCollisionManager getInstance();
+    public: static AllBinaryCollisionManager* getInstance();
 
 private: AllBinaryCollisionManager();
 
                 //@Throws(Exception.constructor)
             
-    public: void process(LayerManager layerManager, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface, int32_t startIndex);
+    public: void process(LayerManager* layerManager, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface, int32_t startIndex);
 
                 //@Throws(Exception.constructor)
             
-    private: void collide(LayerManager layerManager, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface2);
+    private: void collide(LayerManager* layerManager, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface2);
 
 };
 

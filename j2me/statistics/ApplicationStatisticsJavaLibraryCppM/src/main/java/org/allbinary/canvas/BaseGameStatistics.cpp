@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -73,22 +79,22 @@ class BaseGameStatistics
             : public Object
          {
 
-    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(Integer::MAX_VALUE);
+    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(Integer.MAX_VALUE);
 
-    private: const TimeDelayHelper updateDelayHelper = TimeDelayHelper(2000);
+    private: TimeDelayHelper* updateDelayHelper = new TimeDelayHelper(2000);
 
     private: int64_t totalRefreshes= 0;
 
     private: int64_t totalFrames= 0;
 
-    protected: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
+    protected: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
 public: BaseGameStatistics(){
 }
 
 
     public: void init(){
-this->timeDelayHelper.setStartTimeTNT();
+this->timeDelayHelper->setStartTimeTNT();
     
 this->totalRefreshes= 0;
     
@@ -117,11 +123,11 @@ this->totalRefreshes++;
 }
 
 
-    private: const int32_t DEFAULT_SCALE_FACTOR = ScaleFactorFactory::getInstance().DEFAULT_SCALE_FACTOR;
+    private: const int32_t DEFAULT_SCALE_FACTOR = ScaleFactorFactory::getInstance()->DEFAULT_SCALE_FACTOR;
 
     public: int16_t getRefreshRate(){
 
-    int64_t elapsed = this->timeDelayHelper.getElapsed(this->gameTickTimeDelayHelper.startTime);;
+    int64_t elapsed = this->timeDelayHelper->getElapsed(this->gameTickTimeDelayHelper->startTime);;
     
 
                         if(elapsed > 1)
@@ -152,7 +158,7 @@ this->totalRefreshes++;
 }
 
 
-    protected: TimeDelayHelper getTimeDelayHelper(){
+    protected: TimeDelayHelper* getTimeDelayHelper(){
 
 
 
@@ -164,7 +170,7 @@ this->totalRefreshes++;
 
     protected: const std::string NOT = "Not enough Time to Calculate";
 
-    private: const std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;
+    private: const std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;
 
     private: const std::vector<std::string> STRING_ARRAY = 
                                                         {
@@ -182,16 +188,16 @@ this->totalRefreshes++;
                                                             ['F','r','a','m','e','s','/','1','0',' ','S','e','c',':'],['X','X'],['P','a','i','n','t','s','/','1','0',' ','S','e','c',':'],['X','X']
                                                         };
 
-    private: const PrimitiveLongSingleton primitiveLongSingleton = PrimitiveLongSingleton::getInstance();
+    private: PrimitiveLongSingleton* primitiveLongSingleton = PrimitiveLongSingleton::getInstance();
 
     public: std::vector<std::vector<char>> to2DCharArray(){
 
-    int64_t totalTime = this->timeDelayHelper.getElapsed(this->gameTickTimeDelayHelper.startTime);;
+    int64_t totalTime = this->timeDelayHelper->getElapsed(this->gameTickTimeDelayHelper->startTime);;
     
 totalTime= (totalTime>>this->DEFAULT_SCALE_FACTOR);
     
 
-                        if(totalTime > 0 && this->updateDelayHelper.isTime(this->gameTickTimeDelayHelper.startTime))
+                        if(totalTime > 0 && this->updateDelayHelper->isTime(this->gameTickTimeDelayHelper->startTime))
                         
                                     {
                                     
@@ -203,7 +209,7 @@ totalTime= (totalTime>>this->DEFAULT_SCALE_FACTOR);
                                     {
                                     this->CHAR_ARRAY[1][0]= this->SPACE_CHAR;
     
-this->CHAR_ARRAY[1][1]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[framesPerSec];
+this->CHAR_ARRAY[1][1]= this->primitiveLongSingleton->NUMBER_CHAR_ARRAY[framesPerSec];
     
 
                                     }
@@ -218,9 +224,9 @@ this->CHAR_ARRAY[1][1]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[framesPer
 
     int32_t removeTens = tens *10;;
     
-this->CHAR_ARRAY[1][0]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[tens];
+this->CHAR_ARRAY[1][0]= this->primitiveLongSingleton->NUMBER_CHAR_ARRAY[tens];
     
-this->CHAR_ARRAY[1][1]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[framesPerSec -removeTens];
+this->CHAR_ARRAY[1][1]= this->primitiveLongSingleton->NUMBER_CHAR_ARRAY[framesPerSec -removeTens];
     
 
                                     }
@@ -242,7 +248,7 @@ this->CHAR_ARRAY[1][1]= this->PLUS_CHAR;
                                     {
                                     this->CHAR_ARRAY[3][0]= this->X_CHAR;
     
-this->CHAR_ARRAY[3][1]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[refreshesPerSec];
+this->CHAR_ARRAY[3][1]= this->primitiveLongSingleton->NUMBER_CHAR_ARRAY[refreshesPerSec];
     
 
                                     }
@@ -257,9 +263,9 @@ this->CHAR_ARRAY[3][1]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[refreshes
 
     int32_t removeTens = tens *10;;
     
-this->CHAR_ARRAY[3][0]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[refreshesPerSec /10];
+this->CHAR_ARRAY[3][0]= this->primitiveLongSingleton->NUMBER_CHAR_ARRAY[refreshesPerSec /10];
     
-this->CHAR_ARRAY[3][1]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[refreshesPerSec -removeTens];
+this->CHAR_ARRAY[3][1]= this->primitiveLongSingleton->NUMBER_CHAR_ARRAY[refreshesPerSec -removeTens];
     
 
                                     }
@@ -286,7 +292,7 @@ this->CHAR_ARRAY[3][1]= this->PLUS_CHAR;
 
     public: std::vector<std::string> toStringArray(){
 
-    int64_t totalTime = this->timeDelayHelper.getElapsed(this->gameTickTimeDelayHelper.startTime);;
+    int64_t totalTime = this->timeDelayHelper->getElapsed(this->gameTickTimeDelayHelper->startTime);;
     
 totalTime= (totalTime /10000);
     
@@ -335,33 +341,33 @@ this->STRING_ARRAY[9]= string;
 
     public: std::string toStringAt(int64_t totalTime){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->STRING_ARRAY[0]);
+stringBuffer->append(this->STRING_ARRAY[0]);
     
-stringBuffer.appendlong(totalTime);
+stringBuffer->appendlong(totalTime);
     
-stringBuffer.append(this->STRING_ARRAY[2]);
+stringBuffer->append(this->STRING_ARRAY[2]);
     
-stringBuffer.appendlong(this->totalFrames);
+stringBuffer->appendlong(this->totalFrames);
     
-stringBuffer.append(this->STRING_ARRAY[4]);
+stringBuffer->append(this->STRING_ARRAY[4]);
     
-stringBuffer.appendlong(this->totalFrames /totalTime);
+stringBuffer->appendlong(this->totalFrames /totalTime);
     
 
                         if(this->totalRefreshes > 0)
                         
                                     {
-                                    stringBuffer.append(this->STRING_ARRAY[6]);
+                                    stringBuffer->append(this->STRING_ARRAY[6]);
     
-stringBuffer.appendlong(this->totalRefreshes);
+stringBuffer->appendlong(this->totalRefreshes);
     
-stringBuffer.append(this->STRING_ARRAY[8]);
+stringBuffer->append(this->STRING_ARRAY[8]);
     
-stringBuffer.appendlong(this->totalRefreshes /totalTime);
+stringBuffer->appendlong(this->totalRefreshes /totalTime);
     
-stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
+stringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
     
 
                                     }
@@ -370,14 +376,14 @@ stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
     public: std::string toString(){
 
-    int64_t totalTime = this->timeDelayHelper.getElapsed(this->gameTickTimeDelayHelper.startTime);;
+    int64_t totalTime = this->timeDelayHelper->getElapsed(this->gameTickTimeDelayHelper->startTime);;
     
 totalTime= (totalTime /1000);
     

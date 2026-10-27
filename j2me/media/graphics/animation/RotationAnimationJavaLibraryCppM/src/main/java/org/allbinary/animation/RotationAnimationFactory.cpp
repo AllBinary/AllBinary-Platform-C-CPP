@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,25 +58,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnimationInterfaceFactoryInterface.h"
-#include "ProceduralAnimationInterfaceFactoryInterface.h"
-#include "NullRotationAnimation.h"
-#include "AnimationBehavior.h"
-#include "Animation.h"
+        #include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/NullRotationAnimation.h"
+#include "org/allbinary/animation/AnimationBehavior.h"
+#include "org/allbinary/animation/Animation.h"
 
 class RotationAnimationFactory
             : public Object
-        : public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
+        , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
 
-    public: static RotationAnimationFactory createFactory(){
+    public: static RotationAnimationFactory* createFactory(){
 
-    int16_t totalAngle = AngleFactory::getInstance().TOTAL_ANGLE;;
+    int16_t totalAngle = AngleFactory::getInstance()->TOTAL_ANGLE;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RotationAnimationFactory(totalAngle, (totalAngle /GameConfigurationCentral::getInstance().getGameControlFidelity()));
+                        return new RotationAnimationFactory(totalAngle, (totalAngle /GameConfigurationCentral::getInstance()->getGameControlFidelity()));
     
 }
 
@@ -89,7 +95,7 @@ this->angleIncrement= angleIncrement;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId){
+    public: Animation* getInstance(int32_t instanceId){
 
 
 
@@ -101,7 +107,7 @@ this->angleIncrement= angleIncrement;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstanceAnimation(Animation animationInterface){
+    public: Animation* getInstanceAnimation(Animation* animationInterface){
 
 
 
@@ -111,7 +117,7 @@ this->angleIncrement= angleIncrement;
 }
 
 
-    public: void setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties* scaleProperties){
 }
 
 

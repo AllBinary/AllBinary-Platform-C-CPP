@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_NUMBER_LONGDATA_H
         #define ORG_ALLBINARY_LOGIC_JAVA_NUMBER_LONGDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Long.h"
@@ -48,7 +54,7 @@ class LongData
             : public Object
          {
 
-    public: static int32_t MAX_LONG_LENGTH = Long(Long::MAX_VALUE).toString().length();
+    public: static inline int32_t MAX_LONG_LENGTH = (int64_t(Long.MAX_VALUE)).toString().length();
 
 private: LongData();
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENTHANDLER_H
         #define ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENTHANDLER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -59,29 +65,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LayerManagerEventListener.h"
-#include "LayerManagerEvent.h"
-#include "LayerManagerEventListenerInterface.h"
+        #include "org/allbinary/layer/event/LayerManagerEventListener.h"
+#include "org/allbinary/layer/event/LayerManagerEvent.h"
+#include "org/allbinary/layer/event/LayerManagerEventListenerInterface.h"
 
 class LayerManagerEventHandler: public BasicEventHandler {
 
-    private: static LayerManagerEventHandler instance = LayerManagerEventHandler();
+    private: static LayerManagerEventHandler* instance() { static std::unique_ptr<LayerManagerEventHandler> value(new LayerManagerEventHandler()); return value.get(); }
 
-    public: static LayerManagerEventHandler getInstance();
+    public: static LayerManagerEventHandler* getInstance();
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: LayerManagerEventHandler();
 
-    public: void addListener(LayerManagerEventListener layerManagerEventListener);
+    public: void addListener(LayerManagerEventListener* layerManagerEventListener);
 
     public: void removeAllListeners();
 
-    public: void removeListener(EventListenerInterface eventListenerInterface);
+    public: void removeListener(EventListenerInterface* eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(AllBinaryEventObject eventObject);
+    public: void fireEvent(AllBinaryEventObject* eventObject);
 
     public: const std::string CREATE = "Create";
 
@@ -90,11 +96,11 @@ private: LayerManagerEventHandler();
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void fireDeleteEvent(AllBinaryEventObject eventObject);
+    public: void fireDeleteEvent(AllBinaryEventObject* eventObject);
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
 };
 

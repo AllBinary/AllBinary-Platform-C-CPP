@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/animation/Animation.h>
 
       
@@ -50,12 +56,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CompoundAnimationInterfaceFactory.h"
-#include "CompoundIndexedAnimation.h"
+        #include "org/allbinary/animation/compound/CompoundAnimationInterfaceFactory.h"
+#include "org/allbinary/animation/compound/CompoundIndexedAnimation.h"
 
 class CompoundIndexedAnimationInterfaceFactory: public CompoundAnimationInterfaceFactory {
 
-public: CompoundIndexedAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory animationBehaviorFactory) : CompoundAnimationInterfaceFactory(basicAnimationInterfaceFactoryInterfaceArray, animationBehaviorFactory){
+public: CompoundIndexedAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory) : CompoundAnimationInterfaceFactory(basicAnimationInterfaceFactoryInterfaceArray, animationBehaviorFactory){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -65,22 +71,22 @@ public: CompoundIndexedAnimationInterfaceFactory(std::vector<AnimationInterfaceF
 }
 
 
-    protected: std::vector<Animation> createArray(int32_t size){
+    protected: std::vector<Animation*> createArray(int32_t size){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return std::vector<Animation>(size);
+                        return std::vector<Animation*>(size);
     
 }
 
 
-    protected: Animation createAnimation(std::vector<Animation> animationArray){
+    protected: Animation* createAnimation(std::vector<Animation*> animationArray){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CompoundIndexedAnimation(animationArray, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new CompoundIndexedAnimation(animationArray, this->animationBehaviorFactory.getOrCreateInstance());
     
 }
 

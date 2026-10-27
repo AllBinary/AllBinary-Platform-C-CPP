@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/Comparator.h>
@@ -44,7 +50,7 @@
         
 class StringComparator
             : public Object
-        : public Comparator {
+        , public Comparator {
 
 public: StringComparator(){
 }

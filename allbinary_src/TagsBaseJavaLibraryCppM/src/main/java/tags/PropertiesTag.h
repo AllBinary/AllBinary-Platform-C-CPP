@@ -21,6 +21,12 @@
         #ifndef TAGS_PROPERTIESTAG_H
         #define TAGS_PROPERTIESTAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/util/HashMap.h>
 
       
@@ -48,17 +54,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CommandTag.h"
+        #include "tags/CommandTag.h"
 
 class PropertiesTag: public CommandTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: HashMap<Object*, Object*> propertiesHashMap;
+    private: HashMap<Object*, Object*>* propertiesHashMap;
 
 public: PropertiesTag();
 
-    protected: HashMap<Object*, Object*> getPropertiesHashMap();
+    protected: HashMap<Object*, Object*>* getPropertiesHashMap();
 
     public: int32_t doEndTag();
 

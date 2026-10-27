@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_STOREFRONT_STOREFRONTCOMPONENT_H
         #define VIEWS_ADMIN_STOREFRONT_STOREFRONTCOMPONENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -62,11 +68,11 @@
         
 class StoreFrontComponent: public HttpStoreComponentView {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: StoreFrontInterface newStoreFrontInterface;
+    protected: StoreFrontInterface* newStoreFrontInterface;
 
-public: StoreFrontComponent(TransformInfoInterface transformInfoInterface);
+public: StoreFrontComponent(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             

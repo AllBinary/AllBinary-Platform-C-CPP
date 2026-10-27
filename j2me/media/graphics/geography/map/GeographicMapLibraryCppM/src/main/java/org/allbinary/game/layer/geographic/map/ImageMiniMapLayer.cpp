@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -59,13 +65,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MiniMapLayer.h"
+        #include "org/allbinary/game/layer/geographic/map/MiniMapLayer.h"
 
 class ImageMiniMapLayer: public MiniMapLayer {
 
-    private: Image image = NullImage::NULL_IMAGE;
+    private: Image* image = NullImage::NULL_IMAGE;
 
-public: ImageMiniMapLayer(BasicGeographicMap geographicMapInterface, ViewPositionBase viewPosition) : MiniMapLayer(geographicMapInterface, viewPosition){
+public: ImageMiniMapLayer(BasicGeographicMap* geographicMapInterface, ViewPositionBase* viewPosition) : MiniMapLayer(geographicMapInterface, viewPosition){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -91,8 +97,8 @@ this->image= PaintableToImageUtil::getImage(this->allBinaryTiledLayer, aWidth, a
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public: void paint(Graphics graphics){
-graphics.drawImage(this->image, this->x, this->y, this->anchor);
+    public: void paint(Graphics* graphics){
+graphics->drawImage(this->image, this->x, this->y, this->anchor);
     
 this->paintDots(graphics);
     

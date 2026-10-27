@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -80,28 +86,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageComparisonResultCacheSingleton.h"
-#include "ImageComparisonResultFrameCacheable.h"
-#include "ImageComparisonResult.h"
-#include "ChangedPixelsUtil.h"
+        #include "org/allbinary/media/image/comparison/ImageComparisonResultCacheSingleton.h"
+#include "org/allbinary/media/image/comparison/ImageComparisonResultFrameCacheable.h"
+#include "org/allbinary/media/image/comparison/ImageComparisonResult.h"
+#include "org/allbinary/media/image/comparison/ChangedPixelsUtil.h"
 
 class ComparisonImageInputOutput
             : public Object
-        : public ImageIOInterface {
+        , public ImageIOInterface {
 
-    private: static const std::string ROOT_NAME = "_Changed_";
+    private: static inline const std::string ROOT_NAME = "_Changed_";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: ComparisonImageInputOutput();
 
                 //@Throws(Exception.constructor)
             
-    public: void save(Long frame);
+    public: void save(int64_t frame);
 
                 //@Throws(Exception.constructor)
             
-    public: void save(ImageComparisonResult imageComparisonResult, Long frame);
+    public: void save(ImageComparisonResult* imageComparisonResult, int64_t frame);
 
 };
 

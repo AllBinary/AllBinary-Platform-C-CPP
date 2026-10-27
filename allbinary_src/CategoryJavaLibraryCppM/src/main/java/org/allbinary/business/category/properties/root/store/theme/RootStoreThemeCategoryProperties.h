@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_STORE_THEME_ROOTSTORETHEMECATEGORYPROPERTIES_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_STORE_THEME_ROOTSTORETHEMECATEGORYPROPERTIES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -86,13 +92,13 @@
         
 class RootStoreThemeCategoryProperties: public RootStoreCategoryProperties {
 
-public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface);
+public: RootStoreThemeCategoryProperties(TransformInfoInterface* transformInfoInterface);
 
-public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface, AbPath abPath);
+public: RootStoreThemeCategoryProperties(TransformInfoInterface* transformInfoInterface, AbPath* abPath);
 
-public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface, Node node);
+public: RootStoreThemeCategoryProperties(TransformInfoInterface* transformInfoInterface, Node* node);
 
-public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface, HashMap<Object*, Object*> categoryPropertiesHashMap);
+public: RootStoreThemeCategoryProperties(TransformInfoInterface* transformInfoInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap);
 
                 //@Throws(Exception.constructor)
             

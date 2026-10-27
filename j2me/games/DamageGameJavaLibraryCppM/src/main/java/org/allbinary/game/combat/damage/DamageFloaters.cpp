@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graphics/paint/Paintable.h>
 
       
@@ -42,14 +48,14 @@
         
 class DamageFloaters: public Paintable {
 
-    private: static const DamageFloaters SINGLETON = DamageFloaters();
+    private: static DamageFloaters* SINGLETON() { static std::unique_ptr<DamageFloaters> value(new DamageFloaters()); return value.get(); }
 
-    public: static DamageFloaters getInstance(){
+    public: static DamageFloaters* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DamageFloaters::SINGLETON;
+                        return DamageFloaters::SINGLETON();
     
 }
 

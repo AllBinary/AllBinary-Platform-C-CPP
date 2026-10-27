@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/LayerPositionFinderInterface.h>
@@ -56,11 +62,11 @@
         
 class AdvancedRTSGameLayerPositionFinder
             : public Object
-        : public LayerPositionFinderInterface {
+        , public LayerPositionFinderInterface {
 
-    private: static AdvancedRTSGameLayerPositionFinder instance() { return AdvancedRTSGameLayerPositionFinder(); }
+    private: static AdvancedRTSGameLayerPositionFinder* instance() { static std::unique_ptr<AdvancedRTSGameLayerPositionFinder> value(new AdvancedRTSGameLayerPositionFinder()); return value.get(); }
 
-    public: static AdvancedRTSGameLayerPositionFinder getInstance(){
+    public: static AdvancedRTSGameLayerPositionFinder* getInstance(){
 
 
 
@@ -74,15 +80,15 @@ private: AdvancedRTSGameLayerPositionFinder(){
 }
 
 
-    public: AllBinaryLayer getLayerInterface(GeographicMapCellPosition geographicMapCellPosition){
+    public: AllBinaryLayer* getLayerInterface(GeographicMapCellPosition* geographicMapCellPosition){
 
-    AllBinaryLayer layerInterface = DropCellPositionHistory::getInstance().getLayerInterface(geographicMapCellPosition);;
+    AllBinaryLayer* layerInterface = DropCellPositionHistory::getInstance()->getLayerInterface(geographicMapCellPosition);;
     
 
                         if(layerInterface == AllBinaryLayer::NULL_ALLBINARY_LAYER)
                         
                                     {
-                                    layerInterface= WaypointCellPositionHistory::getInstance().getLayerInterface(geographicMapCellPosition);
+                                    layerInterface= WaypointCellPositionHistory::getInstance()->getLayerInterface(geographicMapCellPosition);
     
 
                                     }

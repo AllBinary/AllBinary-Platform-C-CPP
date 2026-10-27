@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -73,22 +81,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MineLayerCircularStaticPool.h"
-#include "MineWeaponResources.h"
+        #include "org/allbinary/game/ag/layer/weapon/mine/MineLayerCircularStaticPool.h"
+#include "org/allbinary/game/ag/layer/weapon/mine/MineWeaponResources.h"
 
 class MineCountedPickedUpLayerInterfaceFactory: public CountedPickedUpLayerInterfaceFactory {
 
-    private: static PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
+    private: static inline PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
 
                 //@Throws(Exception.constructor)
             
     public: static void init(){
-MineCountedPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface= MineCountedPickedUpLayerInterfaceFactory();
+MineCountedPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface= new MineCountedPickedUpLayerInterfaceFactory();
     
 }
 
 
-    public: static PickedUpLayerInterfaceFactoryInterface getInstance(){
+    public: static PickedUpLayerInterfaceFactoryInterface* getInstance(){
 
 
 
@@ -98,9 +106,9 @@ MineCountedPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface
 }
 
 
-    private: const WeaponLayerCircularPool weaponLayerCircularStaticPool = MineLayerCircularStaticPool::getInstance();
+    private: WeaponLayerCircularPool* weaponLayerCircularStaticPool = MineLayerCircularStaticPool::getInstance();
 
-private: MineCountedPickedUpLayerInterfaceFactory() : CountedPickedUpLayerInterfaceFactory(PickedUpLayerTypeFactory::getInstance().MINE, IconLayerFactory::getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(MineWeaponResources::getInstance().DROP_ICON_RESOURCE).getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(MineWeaponResources::getInstance().DROP_RESOURCE).getInstance(0)){
+private: MineCountedPickedUpLayerInterfaceFactory() : CountedPickedUpLayerInterfaceFactory(PickedUpLayerTypeFactory::getInstance()->MINE, IconLayerFactory::getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(MineWeaponResources::getInstance()->DROP_ICON_RESOURCE)->getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(MineWeaponResources::getInstance()->DROP_RESOURCE)->getInstance(0)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -120,27 +128,27 @@ private: MineCountedPickedUpLayerInterfaceFactory() : CountedPickedUpLayerInterf
 }
 
 
-    private: const WeaponProperties weaponProperties = WeaponProperties( -1,  -1, 0, 8000, 10);
+    private: WeaponProperties* weaponProperties = new WeaponProperties( -1,  -1, 0, 8000, 10);
 
-    private: const SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();
+    private: SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer getNextInstance(ABHashtable<Object*, Object*> hashtable, int32_t x, int32_t y, int32_t z){
+    public: AllBinaryLayer* getNextInstance(ABHashtable<Object*, Object*>* hashtable, int32_t x, int32_t y, int32_t z){
 
-    AllBinaryLayer sourceLayerInterface = hashtable.get(this->smallIntegerSingletonFactory.getAt(0));;
+    AllBinaryLayer* sourceLayerInterface = dynamic_cast<AllBinaryLayer*>(hashtable->get(this->smallIntegerSingletonFactory->getAt(0)));;
     
 
-    Integer angle = hashtable.get(this->smallIntegerSingletonFactory.getAt(1));;
+    int32_t angle = hashtable->get(this->smallIntegerSingletonFactory->getAt(1));;
     
 
-    ScoreableInterface scoreableInterface = sourceLayerInterface as unknown;;
+    ScoreableInterface* scoreableInterface = dynamic_cast<ScoreableInterface*>(sourceLayerInterface as unknown);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->weaponLayerCircularStaticPool.getInstanceWeaponLayer(sourceLayerInterface, x, y, z, static_cast<int32_t>(angle.intValue()), 0, this->weaponProperties, scoreableInterface);;
+                        return this->weaponLayerCircularStaticPool->getInstanceWeaponLayer(sourceLayerInterface, x, y, z, static_cast<int32_t>(angle.intValue()), 0, this->weaponProperties, scoreableInterface);;
     
 }
 

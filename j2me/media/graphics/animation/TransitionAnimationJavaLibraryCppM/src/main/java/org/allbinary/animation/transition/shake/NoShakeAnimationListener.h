@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_NOSHAKEANIMATIONLISTENER_H
         #define ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_NOSHAKEANIMATIONLISTENER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,11 +45,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShakeAnimationListener.h"
+        #include "org/allbinary/animation/transition/shake/ShakeAnimationListener.h"
 
 class NoShakeAnimationListener: public ShakeAnimationListener {
 
-    public: static const ShakeAnimationListener NO_SHAKE_ANIMATION_LISTENER = NoShakeAnimationListener();
+    public: static inline ShakeAnimationListener* NO_SHAKE_ANIMATION_LISTENER = new NoShakeAnimationListener();
 
 };
 

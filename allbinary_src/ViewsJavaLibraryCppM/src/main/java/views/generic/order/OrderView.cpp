@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -77,24 +83,24 @@
         
 class OrderView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
-    protected: Order order;
+    protected: Order* order;
 
-    protected: OrderHistory orderHistory;
+    protected: OrderHistory* orderHistory;
 
-    protected: BasketReview basketReview;
+    protected: BasketReview* basketReview;
 
-public: OrderView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+public: OrderView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->request= this->getPageContext().getRequest();
+this->request= dynamic_cast<HttpServletRequest*>(this->getPageContext()->getRequest());
     
 this->getFormData();
     
@@ -105,36 +111,36 @@ this->getFormData();
             
     private: void getFormData(){
 
-    std::string id = this->request.getParameter(OrderData::ID);;
+    std::string id = this->request->getParameter(OrderData::ID);;
     
 
                         if(false)
                         
                                     {
-                                    id= this->getWeblisketSession().getOrder().getId();
+                                    id= this->getWeblisketSession()->getOrder()->getId();
     
 
                                     }
                                 
-this->order= Order(Basket());
+this->order= new Order(new Basket());
     
-this->order.setId(id);
+this->order->setId(id);
     
 }
 
 
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
         try {
             
-    Node orderHistoryNode = this->orderHistory.toXmlNode(document);;
+    Node* orderHistoryNode = this->orderHistory->toXmlNode(document);;
     
 
-    Node node = document.createElement(this->orderHistory.getPaymentMethod());;
+    Node* node = document->createElement(this->orderHistory->getPaymentMethod());;
     
-orderHistoryNode.appendChild(this->basketReview.toXmlNode(document));
+orderHistoryNode->appendChild(this->basketReview->toXmlNode(document));
     
-node.appendChild(orderHistoryNode);
+node->appendChild(orderHistoryNode);
     
 
 
@@ -144,13 +150,13 @@ node.appendChild(orderHistoryNode);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XSLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XSLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, "toXmlNode", &e);
     
 
                                     }
@@ -167,7 +173,7 @@ node.appendChild(orderHistoryNode);
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this);
+this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     
 }
 
@@ -187,13 +193,13 @@ this->addDomNodeInterface(this);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }

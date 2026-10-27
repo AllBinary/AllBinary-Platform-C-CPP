@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -70,21 +76,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DomNodeInterface.h"
-#include "FileDomDataModel.h"
+        #include "org/allbinary/data/tree/dom/DomNodeInterface.h"
+#include "org/allbinary/data/tree/dom/FileDomDataModel.h"
 
 class DirectoryDataModel
             : public Object
-        : public DomNodeInterface, public TransformInterface {
+        , public DomNodeInterface, public TransformInterface {
 
-    private: BasicArrayList fileBasicArrayList;
+    private: BasicArrayList* fileBasicArrayList;
 
-    private: TransformDocumentInterface transformDocumentInterface;
+    private: TransformDocumentInterface* transformDocumentInterface;
 
-public: DirectoryDataModel(AbFile file){
-this->fileBasicArrayList= Directory::getInstance().search(file);
+public: DirectoryDataModel(AbFile* file){
+this->fileBasicArrayList= Directory::getInstance()->search(file);
     
-this->transformDocumentInterface= TransformDocumentFactory::getInstance();
+this->transformDocumentInterface= dynamic_cast<TransformDocumentInterface*>(TransformDocumentFactory::getInstance());
     
 }
 
@@ -103,7 +109,7 @@ this->transformDocumentInterface= TransformDocumentFactory::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface getTransformInfoInterface(){
+    public: TransformInfoInterface* getTransformInfoInterface(){
 
 
 
@@ -113,13 +119,13 @@ this->transformDocumentInterface= TransformDocumentFactory::getInstance();
 }
 
 
-    public: void setTransformDocumentInterface(TransformDocumentInterface transformDocumentInterface){
+    public: void setTransformDocumentInterface(TransformDocumentInterface* transformDocumentInterface){
 this->transformDocumentInterface= transformDocumentInterface;
     
 }
 
 
-    public: TransformDocumentInterface getTransformDocumentInterface(){
+    public: TransformDocumentInterface* getTransformDocumentInterface(){
 
 
 
@@ -131,18 +137,18 @@ this->transformDocumentInterface= transformDocumentInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node dirNode = document.createElement("dir");;
+    Node* dirNode = document->createElement("dir");;
     
 
-    int32_t size = this->fileBasicArrayList.size();;
+    int32_t size = this->fileBasicArrayList->size();;
     
 
-    AbFile nextFile;;
+    AbFile* nextFile;;
     
 
-    Node fileNode;;
+    Node* fileNode;;
     
 
 
@@ -151,11 +157,11 @@ this->transformDocumentInterface= transformDocumentInterface;
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextFile= this->fileBasicArrayList.get(index);
+nextFile= dynamic_cast<AbFile*>(this->fileBasicArrayList->get(index));
     
-fileNode= FileDomDataModel(nextFile).toXmlNode(document);
+fileNode= (new FileDomDataModel(nextFile))->toXmlNode(document);
     
-dirNode.appendChild(fileNode);
+dirNode->appendChild(fileNode);
     
 }
 
@@ -170,12 +176,12 @@ dirNode.appendChild(fileNode);
 
                 //@Throws(Exception.constructor)
             
-    public: Document toXmlDoc(){
+    public: Document* toXmlDoc(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getTransformDocumentInterface().getDoc();;
+                        return this->getTransformDocumentInterface()->getDoc();;
     
 }
 
@@ -184,15 +190,15 @@ dirNode.appendChild(fileNode);
             
     public: std::string view(){
 
-    Node node = this->toXmlNode(this->getTransformDocumentInterface().getDoc());;
+    Node* node = this->toXmlNode(this->getTransformDocumentInterface()->getDoc());;
     
-this->getTransformDocumentInterface().getBaseNode().appendChild(node);
+this->getTransformDocumentInterface()->getBaseNode()->appendChild(node);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return XmlDocumentHelper::toString(this->getTransformDocumentInterface().getDoc());;
+                        return XmlDocumentHelper::toString(this->getTransformDocumentInterface()->getDoc());;
     
 }
 

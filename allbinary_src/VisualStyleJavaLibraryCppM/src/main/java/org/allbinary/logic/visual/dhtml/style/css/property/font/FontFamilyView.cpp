@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/visual/dhtml/style/css/property/CssPropertyView.h>
@@ -44,11 +50,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "FontFamilyData.h"
+        #include "org/allbinary/logic/visual/dhtml/style/css/property/font/FontFamilyData.h"
 
 class FontFamilyView: public CssPropertyView {
 
-public: FontFamilyView() : CssPropertyView(FontFamilyData::getInstance().VALUE){
+public: FontFamilyView() : CssPropertyView(FontFamilyData::getInstance()->VALUE){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -58,7 +64,7 @@ public: FontFamilyView() : CssPropertyView(FontFamilyData::getInstance().VALUE){
 }
 
 
-public: FontFamilyView(Node node) : CssPropertyView(node){
+public: FontFamilyView(Node* node) : CssPropertyView(node){
 
                         //super/this constructor call is in the constructor initializer list.
                     

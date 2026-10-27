@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_HITPOINTGAMEOBJECTINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_HITPOINTGAMEOBJECTINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,15 +45,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MeteredGameObjectInterface.h"
+        #include "org/allbinary/input/automation/module/game/MeteredGameObjectInterface.h"
 
 class HitPointGameObjectInterface: public MeteredGameObjectInterface {
 
-    bool isMoreThan(float aFloat);
+    public: virtual bool isMoreThan(float aFloat) = 0;
 
-    bool isCloseDeath();
+    public: virtual bool isCloseDeath() = 0;
 
-    bool isDamaged();
+    public: virtual bool isDamaged() = 0;
 
 };
 

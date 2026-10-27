@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFODOMNODE_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFODOMNODE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,29 +73,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoInterface.h"
-#include "TransformInfoData.h"
-#include "TransformInfo.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfoData.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfo.h"
 
 class TransformInfoDomNode
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: TransformInfoInterface transformInfoInterface;
+    private: TransformInfoInterface* transformInfoInterface;
 
     private: std::string mappedName;
 
-public: TransformInfoDomNode(Node node);
+public: TransformInfoDomNode(Node* node);
 
-public: TransformInfoDomNode(TransformInfoInterface transformInfoInterface);
+public: TransformInfoDomNode(TransformInfoInterface* transformInfoInterface);
 
-public: TransformInfoDomNode(TransformInfoInterface transformInfoInterface, std::string mappedName);
+public: TransformInfoDomNode(TransformInfoInterface* transformInfoInterface, std::string mappedName);
 
 public: TransformInfoDomNode(std::string name, std::string mappedName);
 
-    public: TransformInfoInterface getTransformInfoInterface();
+    public: TransformInfoInterface* getTransformInfoInterface();
 
     public: std::string getMappedName();
 

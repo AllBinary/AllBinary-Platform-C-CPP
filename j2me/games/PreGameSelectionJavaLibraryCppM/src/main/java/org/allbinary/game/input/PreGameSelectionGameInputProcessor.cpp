@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -92,28 +100,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameInputProcessorInterface.h"
-#include "PlayerGameInputCompositeInterface.h"
-#include "PlayerGameInput.h"
-#include "GameInputProcessorComposite.h"
+        #include "org/allbinary/game/input/GameInputProcessorInterface.h"
+#include "org/allbinary/game/input/PlayerGameInputCompositeInterface.h"
+#include "org/allbinary/game/input/PlayerGameInput.h"
+#include "org/allbinary/game/input/GameInputProcessorComposite.h"
 
 class PreGameSelectionGameInputProcessor: public Processor, public GameInputProcessorInterface, public PlayerGameInputCompositeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: AllBinaryGameCanvas gameCanvas;
+    private: AllBinaryGameCanvas* gameCanvas;
 
-    private: PreGameSelectorPaintable preGameSelectorPaintable;
+    private: PreGameSelectorPaintable* preGameSelectorPaintable;
 
-    private: const TimeDelayHelper inputTimeHelper = TimeDelayHelper(650);
+    private: TimeDelayHelper* inputTimeHelper = new TimeDelayHelper(650);
 
-    private: GameState nextGameState;
+    private: GameState* nextGameState;
 
-    private: PlayerGameInput playerGameInput;
+    private: PlayerGameInput* playerGameInput;
 
     private: int32_t lockedIndex;
 
-    private: const ABRunnable abRunnable = class extends ABRunnable
+    private: ABRunnable* abRunnable = class extends ABRunnable
                                 {
                                 
     public: void run(){
@@ -121,27 +129,27 @@ class PreGameSelectionGameInputProcessor: public Processor, public GameInputProc
         try {
             this->setRunning(true);
     
-SecondaryPlayerQueueFactory::getInstance().add(SelectSound::getInstance());
+SecondaryPlayerQueueFactory::getInstance()->add(SelectSound::getInstance());
     
-gameCanvas.setGameState(nextGameState);
+gameCanvas->setGameState(nextGameState);
     
-GameKeyEventHandler::getInstance().removeListener(getPlayerGameInput());
+GameKeyEventHandler::getInstance()->removeListener(getPlayerGameInput());
     
 this->setRunning(false);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 this->setRunning(false);
     
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
+logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
     
 }
 
@@ -150,14 +158,14 @@ logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
                                 }
                             ;
 
-public: PreGameSelectionGameInputProcessor(AllBinaryGameCanvas gameCanvas, PreGameSelectorPaintable preGameSelectorPaintable, GameState nextGameState, int32_t lockedIndex){
+public: PreGameSelectionGameInputProcessor(AllBinaryGameCanvas* gameCanvas, PreGameSelectorPaintable* preGameSelectorPaintable, GameState* nextGameState, int32_t lockedIndex){
 this->gameCanvas= gameCanvas;
     
 this->preGameSelectorPaintable= preGameSelectorPaintable;
     
 this->nextGameState= nextGameState;
     
-this->playerGameInput= GameInputProcessorComposite("Pre Game Selection", this);
+this->playerGameInput= new GameInputProcessorComposite("Pre Game Selection", this);
     
 this->lockedIndex= lockedIndex;
     
@@ -167,16 +175,16 @@ this->lockedIndex= lockedIndex;
                 //@Throws(Exception.constructor)
             
     public: void process(){
-this->getPlayerGameInput().update();
+this->getPlayerGameInput()->update();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void onInput(BasicArrayList list){
+    public: void onInput(BasicArrayList* list){
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
 
@@ -186,7 +194,7 @@ this->getPlayerGameInput().update();
     int32_t index = 0;index < size; index++)
         {
 
-    Object* anyType = list.get(index);;
+    Object* anyType = list->get(index);;
     
 
     int32_t key = GameKeyEventUtil::getKey(anyType);;
@@ -196,12 +204,12 @@ this->getPlayerGameInput().update();
                         
                                     {
                                     
-                        if(this->inputTimeHelper.isTimeTNT())
+                        if(this->inputTimeHelper->isTimeTNT())
                         
                                     {
-                                    SecondaryPlayerQueueFactory::getInstance().add(SelectSound::getInstance());
+                                    SecondaryPlayerQueueFactory::getInstance()->add(SelectSound::getInstance());
     
-this->getPreGameSelectorPaintable().getPreGameSelectionForm().processInputKey(key);
+this->getPreGameSelectorPaintable()->getPreGameSelectionForm()->processInputKey(key);
     
 break;
 
@@ -217,19 +225,19 @@ break;
                         
                                     {
                                     
-    int32_t selectedIndex = this->preGameSelectorPaintable.getPreGameSelectionForm().getSelectedIndex();;
+    int32_t selectedIndex = this->preGameSelectorPaintable->getPreGameSelectionForm()->getSelectedIndex();;
     
 
-                        if(selectedIndex < this->lockedIndex || !LockedUtil::getInstance().isLocked())
+                        if(selectedIndex < this->lockedIndex || !LockedUtil::getInstance()->isLocked())
                         
                                     {
                                     
-                        if(!abRunnable.isRunning())
+                        if(!abRunnable->isRunning())
                         
                                     {
-                                    abRunnable.setRunning(true);
+                                    abRunnable->setRunning(true);
     
-ThreadObjectUtil::getInstance().processThread(abRunnable);
+ThreadObjectUtil::getInstance()->processThread(abRunnable);
     
 
                                     }
@@ -241,7 +249,7 @@ break;
                                     }
                                 
                         else {
-                            LockedFeatureNotificationUtil::getInstance().fire();
+                            LockedFeatureNotificationUtil::getInstance()->fire();
     
 
                         }
@@ -251,12 +259,12 @@ break;
                                 
 }
 
-list.clear();
+list->clear();
     
 }
 
 
-    public: PreGameSelectorPaintable getPreGameSelectorPaintable(){
+    public: PreGameSelectorPaintable* getPreGameSelectorPaintable(){
 
 
 
@@ -268,7 +276,7 @@ list.clear();
 
                 //@Throws(Exception.constructor)
             
-    public: void processInput(AllBinaryLayerManager layerManager){
+    public: void processInput(AllBinaryLayerManager* layerManager){
 }
 
 
@@ -286,7 +294,7 @@ list.clear();
 }
 
 
-    public: PlayerGameInput getPlayerGameInput(){
+    public: PlayerGameInput* getPlayerGameInput(){
 
 
 

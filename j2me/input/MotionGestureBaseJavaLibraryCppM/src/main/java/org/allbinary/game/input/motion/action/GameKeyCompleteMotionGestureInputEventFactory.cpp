@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -53,48 +59,48 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameKeyCompleteMotionGestureInputEvent.h"
+        #include "org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h"
 
 class GameKeyCompleteMotionGestureInputEventFactory
             : public Object
          {
 
-    private: static const GameKeyCompleteMotionGestureInputEventFactory SINGLETON = GameKeyCompleteMotionGestureInputEventFactory();
+    private: static GameKeyCompleteMotionGestureInputEventFactory* SINGLETON() { static std::unique_ptr<GameKeyCompleteMotionGestureInputEventFactory> value(new GameKeyCompleteMotionGestureInputEventFactory()); return value.get(); }
 
-    public: static GameKeyCompleteMotionGestureInputEventFactory getInstance(){
+    public: static GameKeyCompleteMotionGestureInputEventFactory* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameKeyCompleteMotionGestureInputEventFactory::SINGLETON;
+                        return GameKeyCompleteMotionGestureInputEventFactory::SINGLETON();
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const BasicArrayList eventList = BasicArrayListD();
+    private: BasicArrayList* eventList = new BasicArrayListD();
 
-    public: void add(GameKeyCompleteMotionGestureInputEvent gameKeyCompleteMotionGestureInputEvent){
-this->eventList.add(gameKeyCompleteMotionGestureInputEvent);
+    public: void add(GameKeyCompleteMotionGestureInputEvent* gameKeyCompleteMotionGestureInputEvent){
+this->eventList->add(gameKeyCompleteMotionGestureInputEvent);
     
 }
 
 
     public: void updateAll(){
-this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().START_LABEL).appendint(this->eventList.size()).toString(), this, "updateAll");
+this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->appendint(this->eventList->size())->toString(), this, "updateAll");
     
 
 
 
 
                         for (
-    int32_t index = this->eventList.size() -1;index >= 0; index--)
+    int32_t index = this->eventList->size() -1;index >= 0; index--)
         {
 
-    GameKeyCompleteMotionGestureInputEvent gameKeyCompleteMotionGestureInputEvent = this->eventList.objectArray[index];;
+    GameKeyCompleteMotionGestureInputEvent* gameKeyCompleteMotionGestureInputEvent = dynamic_cast<GameKeyCompleteMotionGestureInputEvent*>(this->eventList->objectArray[index]);;
     
-gameKeyCompleteMotionGestureInputEvent.update();
+gameKeyCompleteMotionGestureInputEvent->update();
     
 }
 

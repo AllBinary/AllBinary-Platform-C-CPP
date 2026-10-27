@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOVEDMOTIONGESTURESHANDLER_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOVEDMOTIONGESTURESHANDLER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -50,20 +56,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseMotionGestureEventListener.h"
-#include "MotionGestureEvent.h"
+        #include "org/allbinary/input/motion/gesture/observer/BaseMotionGestureEventListener.h"
+#include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
 
 class MovedMotionGesturesHandler: public BasicEventHandler {
 
-    private: static const MovedMotionGesturesHandler SINGLETON = MovedMotionGesturesHandler();
+    private: static MovedMotionGesturesHandler* SINGLETON() { static std::unique_ptr<MovedMotionGesturesHandler> value(new MovedMotionGesturesHandler()); return value.get(); }
 
-    public: static MovedMotionGesturesHandler getInstance();
+    public: static MovedMotionGesturesHandler* getInstance();
 
 protected: MovedMotionGesturesHandler();
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
 };
 

@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_BASEMUSICSERVICE_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_BASEMUSICSERVICE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -65,21 +71,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MusicStrings.h"
+        #include "org/allbinary/media/audio/music/MusicStrings.h"
 
 class BaseMusicService: public Service {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const CommonStateStrings commonStateStrings = CommonStateStrings::getInstance();
+    private: CommonStateStrings* commonStateStrings = CommonStateStrings::getInstance();
 
     private: const std::string ALREADY_PLAYING = "This is one song per music service";
 
     private: const std::string WAITING_FOR_MUSIC_TO_END = "Waiting for music to end";
 
-    private: MediaPlayer player = NullAndroidCanvas::NULL_MEDIA_PLAYER;
+    private: MediaPlayer* player = NullAndroidCanvas::NULL_MEDIA_PLAYER;
 
     private: int32_t songId =  -1;
 
@@ -87,7 +93,7 @@ class BaseMusicService: public Service {
 
     private: int32_t rightVolume =  -1;
 
-    public: IBinder onBind(Intent intent);
+    public: IBinder* onBind(Intent* intent);
 
     public: void onCreate();
 
@@ -99,11 +105,11 @@ class BaseMusicService: public Service {
 
     public: void start();
 
-    public: void onStart(Intent intent, int32_t startid);
+    public: void onStart(Intent* intent, int32_t startid);
 
-    public: int32_t onStartCommand(Intent intent, int32_t flags, int32_t startId);
+    public: int32_t onStartCommand(Intent* intent, int32_t flags, int32_t startId);
 
-    public: void onStartCommandIntent(Intent intent);
+    public: void onStartCommandIntent(Intent* intent);
 
 };
 

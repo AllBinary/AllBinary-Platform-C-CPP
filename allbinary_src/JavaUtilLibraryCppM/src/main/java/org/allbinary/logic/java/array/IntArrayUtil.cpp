@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -50,7 +56,7 @@ class IntArrayUtil
 
     public: static std::string toString(std::vector<int32_t> array){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
 
@@ -59,13 +65,13 @@ class IntArrayUtil
                         for (
     int32_t index = 0;index < array.size(); index++)
         {
-stringBuffer.appendint(array[index]);
+stringBuffer->appendint(array[index]);
     
 
                         if(index < array.size())
                         
                                     {
-                                    stringBuffer.append(", ");
+                                    stringBuffer->append(", ");
     
 
                                     }
@@ -76,14 +82,14 @@ stringBuffer.appendint(array[index]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
     public: static std::string toString(std::vector<std::vector<int32_t>> array){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
 
@@ -92,7 +98,7 @@ stringBuffer.appendint(array[index]);
                         for (
     int32_t index = 0;index < array.size(); index++)
         {
-stringBuffer.append("{");
+stringBuffer->append("{");
     
 
 
@@ -101,26 +107,26 @@ stringBuffer.append("{");
                         for (
     int32_t index2 = 0;index2 < array[index].size(); index2++)
         {
-stringBuffer.appendint(array[index][index2]);
+stringBuffer->appendint(array[index][index2]);
     
 
                         if(index2 < array[index].size() -1)
                         
                                     {
-                                    stringBuffer.append(", ");
+                                    stringBuffer->append(", ");
     
 
                                     }
                                 
 }
 
-stringBuffer.append("}");
+stringBuffer->append("}");
     
 
                         if(index < array.size() -1)
                         
                                     {
-                                    stringBuffer.append(", \n");
+                                    stringBuffer->append(", \n");
     
 
                                     }
@@ -131,14 +137,14 @@ stringBuffer.append("}");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
     public: static std::string toString(std::vector<std::vector<std::vector<int32_t>>> array){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
 
@@ -147,7 +153,7 @@ stringBuffer.append("}");
                         for (
     int32_t index = 0;index < array.size(); index++)
         {
-stringBuffer.append("{");
+stringBuffer->append("{");
     
 
 
@@ -156,7 +162,7 @@ stringBuffer.append("{");
                         for (
     int32_t index2 = 0;index2 < array[index].size(); index2++)
         {
-stringBuffer.append("{");
+stringBuffer->append("{");
     
 
 
@@ -165,39 +171,39 @@ stringBuffer.append("{");
                         for (
     int32_t index3 = 0;index3 < array[index][index2].length; index3++)
         {
-stringBuffer.appendint(array[index][index2][index3]);
+stringBuffer->appendint(array[index][index2][index3]);
     
 
                         if(index3 < array[index][index2].length -1)
                         
                                     {
-                                    stringBuffer.append(", ");
+                                    stringBuffer->append(", ");
     
 
                                     }
                                 
 }
 
-stringBuffer.append("}");
+stringBuffer->append("}");
     
 
                         if(index2 < array[index].size() -1)
                         
                                     {
-                                    stringBuffer.append(", ");
+                                    stringBuffer->append(", ");
     
 
                                     }
                                 
 }
 
-stringBuffer.append("}");
+stringBuffer->append("}");
     
 
                         if(index < array.size() -1)
                         
                                     {
-                                    stringBuffer.append(", \n");
+                                    stringBuffer->append(", \n");
     
 
                                     }
@@ -208,7 +214,7 @@ stringBuffer.append("}");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

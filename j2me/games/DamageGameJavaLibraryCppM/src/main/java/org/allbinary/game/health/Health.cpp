@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
@@ -47,27 +53,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HealthInterface.h"
-#include "NullHealthListener.h"
-#include "HealthListenerInterface.h"
+        #include "org/allbinary/game/health/HealthInterface.h"
+#include "org/allbinary/game/health/NullHealthListener.h"
+#include "org/allbinary/game/health/HealthListenerInterface.h"
 
 class Health
             : public Object
-        : public HealthInterface {
+        , public HealthInterface {
 
-    public: static const Health NULL_HEALTH = Health(0);
+    public: static Health* NULL_HEALTH() { static std::unique_ptr<Health> value(new Health(0)); return value.get(); }
 
-    public: static const std::string NAME = "Health Resource";
+    public: static inline const std::string NAME = "Health Resource";
 
-    private: static const std::string HEALTH_LABEL = "Health: ";
+    private: static inline const std::string HEALTH_LABEL = "Health: ";
 
-    private: static const std::string MAX_HEALTH_LABEL = " Max: ";
+    private: static inline const std::string MAX_HEALTH_LABEL = " Max: ";
 
     private: int32_t health= 0;
 
     private: int32_t maxHealth= 0;
 
-    private: HealthListenerInterface healthListenerInterface = NullHealthListener::NULL_HEALTH_LISTENER;
+    private: HealthListenerInterface* healthListenerInterface = NullHealthListener::NULL_HEALTH_LISTENER;
 
 public: Health(int32_t maxHealth){
 this->setMaxHealth(maxHealth);
@@ -138,17 +144,17 @@ this->setHealth(this->getMaxHealth());
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("******* Trying to heal when damaging. Damage: ");
+stringBuffer->append("******* Trying to heal when damaging. Damage: ");
     
-stringBuffer.appendint(ahealth);
+stringBuffer->appendint(ahealth);
     
-stringBuffer.append(CommonSeps::getInstance().SPACE);
+stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-stringBuffer.append(this->toString());
+stringBuffer->append(this->toString());
     
-ForcedLogUtil::log(stringBuffer.toString(), this);
+ForcedLogUtil::log(stringBuffer->toString(), this);
     
 
 
@@ -241,7 +247,7 @@ this->maxHealth= maxHealth;
                                 )
                         
                                     {
-                                    this->healthListenerInterface.onHealthChange();
+                                    this->healthListenerInterface->onHealthChange();
     
 
                                     }
@@ -259,7 +265,7 @@ this->maxHealth= maxHealth;
 }
 
 
-    public: void addListener(HealthListenerInterface healthGraphic){
+    public: void addListener(HealthListenerInterface* healthGraphic){
 this->healthListenerInterface= healthGraphic;
     
 }
@@ -267,21 +273,21 @@ this->healthListenerInterface= healthGraphic;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(Health::HEALTH_LABEL);
+stringBuffer->append(Health::HEALTH_LABEL);
     
-stringBuffer.appendint(this->health);
+stringBuffer->appendint(this->health);
     
-stringBuffer.append(Health::MAX_HEALTH_LABEL);
+stringBuffer->append(Health::MAX_HEALTH_LABEL);
     
-stringBuffer.appendint(this->maxHealth);
+stringBuffer->appendint(this->maxHealth);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_RTSINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_RTSINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,29 +48,29 @@
         
 class RTSInterface {
 
-    bool isSelfUpgradeable();
+    public: virtual bool isSelfUpgradeable() = 0;
 
-    bool isCompleted();
+    public: virtual bool isCompleted() = 0;
 
-    int32_t getPercentComplete();
+    public: virtual int32_t getPercentComplete() = 0;
 
-    int32_t getLevel();
+    public: virtual int32_t getLevel() = 0;
 
-    int32_t getMaxLevel();
+    public: virtual int32_t getMaxLevel() = 0;
 
-    int32_t getCost();
+    public: virtual int32_t getCost() = 0;
 
-    void downgrade();
+    public: virtual void downgrade() = 0;
 
-    int32_t getDowngradeCost();
+    public: virtual int32_t getDowngradeCost() = 0;
 
-    bool isDowngradeable();
+    public: virtual bool isDowngradeable() = 0;
 
-    int32_t getUpgradeCost();
+    public: virtual int32_t getUpgradeCost() = 0;
 
-    bool isUpgradeable();
+    public: virtual bool isUpgradeable() = 0;
 
-    void upgrade();
+    public: virtual void upgrade() = 0;
 
 };
 

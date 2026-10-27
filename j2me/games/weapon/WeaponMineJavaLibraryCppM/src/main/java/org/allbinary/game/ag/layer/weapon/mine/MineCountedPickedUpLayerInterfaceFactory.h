@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINECOUNTEDPICKEDUPLAYERINTERFACEFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINECOUNTEDPICKEDUPLAYERINTERFACEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -76,32 +84,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MineLayerCircularStaticPool.h"
-#include "MineWeaponResources.h"
+        #include "org/allbinary/game/ag/layer/weapon/mine/MineLayerCircularStaticPool.h"
+#include "org/allbinary/game/ag/layer/weapon/mine/MineWeaponResources.h"
 
 class MineCountedPickedUpLayerInterfaceFactory: public CountedPickedUpLayerInterfaceFactory {
 
-    private: static PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
+    private: static inline PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
 
                 //@Throws(Exception.constructor)
             
     public: static void init();
 
-    public: static PickedUpLayerInterfaceFactoryInterface getInstance();
+    public: static PickedUpLayerInterfaceFactoryInterface* getInstance();
 
-    private: const WeaponLayerCircularPool weaponLayerCircularStaticPool = MineLayerCircularStaticPool::getInstance();
+    private: WeaponLayerCircularPool* weaponLayerCircularStaticPool = MineLayerCircularStaticPool::getInstance();
 
 private: MineCountedPickedUpLayerInterfaceFactory();
 
     public: int32_t getTotal();
 
-    private: const WeaponProperties weaponProperties = WeaponProperties( -1,  -1, 0, 8000, 10);
+    private: WeaponProperties* weaponProperties = new WeaponProperties( -1,  -1, 0, 8000, 10);
 
-    private: const SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();
+    private: SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer getNextInstance(ABHashtable<Object*, Object*> hashtable, int32_t x, int32_t y, int32_t z);
+    public: AllBinaryLayer* getNextInstance(ABHashtable<Object*, Object*>* hashtable, int32_t x, int32_t y, int32_t z);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class BodyData
             : public Object
          {
 
-    private: static BodyData instance() { return BodyData(); }
+    private: static BodyData* instance() { static std::unique_ptr<BodyData> value(new BodyData()); return value.get(); }
 
-    public: static BodyData getInstance(){
+    public: static BodyData* getInstance(){
 
 
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_EMAILINFO_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_EMAILINFO_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,27 +55,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicEmailInfo.h"
+        #include "org/allbinary/logic/communication/smtp/info/BasicEmailInfo.h"
 
 class EmailInfo
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: BasicEmailInfo basicEmailInfo;
+    private: BasicEmailInfo* basicEmailInfo;
 
     private: std::string htmlAttachment;
 
     private: std::string contentBase;
 
-public: EmailInfo(BasicEmailInfo basicEmailInfo);
+public: EmailInfo(BasicEmailInfo* basicEmailInfo);
 
-public: EmailInfo(BasicEmailInfo basicEmailInfo, std::string htmlAttachment, std::string contentBase);
+public: EmailInfo(BasicEmailInfo* basicEmailInfo, std::string htmlAttachment, std::string contentBase);
 
-    private: void init(BasicEmailInfo basicEmailInfo, std::string htmlAttachment, std::string contentBase);
+    private: void init(BasicEmailInfo* basicEmailInfo, std::string htmlAttachment, std::string contentBase);
 
-    public: BasicEmailInfo getBasicEmailInfo();
+    public: BasicEmailInfo* getBasicEmailInfo();
 
     public: std::string getHtmlAttachment();
 

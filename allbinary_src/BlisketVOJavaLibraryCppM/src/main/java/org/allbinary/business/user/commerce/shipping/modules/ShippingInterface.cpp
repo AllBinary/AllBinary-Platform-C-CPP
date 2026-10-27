@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/business/user/commerce/inventory/order/OrderInterface.h>
 
       
@@ -45,11 +51,11 @@
         
 class ShippingInterface {
 
-    Money getCost(OrderInterface order)
+    public: virtual Money* getCost(OrderInterface* order) = 0;
 
-    std::string getName()
+    public: virtual std::string getName() = 0;
 
-    std::string getDescription()
+    public: virtual std::string getDescription() = 0;
 
 };
 

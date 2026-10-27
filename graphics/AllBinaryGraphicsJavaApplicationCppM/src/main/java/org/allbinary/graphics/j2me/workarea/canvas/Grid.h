@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_GRID_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_GRID_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/GPoint.h>
@@ -49,7 +55,7 @@ class Grid
             : public Object
          {
 
-    public: GPoint grid;
+    public: GPoint* grid;
 
     public: bool isGridOn = true;
 
@@ -61,13 +67,13 @@ class Grid
 
 public: Grid();
 
-public: Grid(Grid grid);
+public: Grid(Grid* grid);
 
     public: bool isGridOn();
 
     public: bool isGridPossible();
 
-    public: GPoint getGrid();
+    public: GPoint* getGrid();
 
     public: int32_t getZoom();
 

@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -50,61 +56,61 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LayerManagerLoggingBase.h"
-#include "AllBinaryLayer.h"
-#include "Layer.h"
+        #include "org/allbinary/layer/LayerManagerLoggingBase.h"
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#include "org/allbinary/layer/Layer.h"
 
 class LayerManager
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const ABSystemWrapper systemWrapper = ABSystemWrapper::getInstance();
+    private: ABSystemWrapper* systemWrapper = ABSystemWrapper::getInstance();
 
-    private: const TsUtil tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil = TsUtil::getInstance();
 
-    private: LayerManagerLoggingBase layerManagerLogging;
+    private: LayerManagerLoggingBase* layerManagerLogging;
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
-    private: const SynchObject anyType = SynchObject();
+    private: SynchObject* anyType = new SynchObject();
 
-public: LayerManager(LayerManagerLoggingBase layerManagerLogging){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+public: LayerManager(LayerManagerLoggingBase* layerManagerLogging){
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 this->layerManagerLogging= layerManagerLogging;
     
 }
 
 
-    public: bool contains(AllBinaryLayer layerInterface){
+    public: bool contains(AllBinaryLayer* layerInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->list.contains(layerInterface);;
+                        return this->list->contains(layerInterface);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void update(AllBinaryLayer layerInterface){
+    public: void update(AllBinaryLayer* layerInterface){
 
-    bool had = this->list.remove(layerInterface);;
+    bool had = this->list->remove(layerInterface);;
     
 
                         if(had)
                         
                                     {
                                     
-    AllBinaryLayer nextLayerInterface;;
+    AllBinaryLayer* nextLayerInterface;;
     
 
-    int32_t size = this->list.size();;
+    int32_t size = this->list->size();;
     
 
 
@@ -113,13 +119,13 @@ this->layerManagerLogging= layerManagerLogging;
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextLayerInterface= this->list.get(index);
+nextLayerInterface= dynamic_cast<AllBinaryLayer*>(this->list->get(index));
     
 
-                        if(layerInterface.getZP() > nextLayerInterface.getZP())
+                        if(layerInterface->getZP() > nextLayerInterface->getZP())
                         
                                     {
-                                    this->list.addAt(index, layerInterface);
+                                    this->list->addAt(index, layerInterface);
     
 
 
@@ -132,7 +138,7 @@ nextLayerInterface= this->list.get(index);
                                 
 }
 
-this->list.add(layerInterface);
+this->list->add(layerInterface);
     
 
                                     }
@@ -142,12 +148,12 @@ this->list.add(layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void insert(AllBinaryLayer layerInterface){
+    public: void insert(AllBinaryLayer* layerInterface){
 
-    AllBinaryLayer nextLayerInterface;;
+    AllBinaryLayer* nextLayerInterface;;
     
 
-    int32_t size = this->list.size();;
+    int32_t size = this->list->size();;
     
 
 
@@ -156,10 +162,10 @@ this->list.add(layerInterface);
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextLayerInterface= this->list.get(index);
+nextLayerInterface= dynamic_cast<AllBinaryLayer*>(this->list->get(index));
     
 
-                        if(layerInterface.getZP() > nextLayerInterface.getZP())
+                        if(layerInterface->getZP() > nextLayerInterface->getZP())
                         
                                     {
                                     this->appendAt(layerInterface, index);
@@ -182,27 +188,27 @@ this->append(layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void append(AllBinaryLayer layerInterface){
-this->layerManagerLogging.append(layerInterface);
+    public: void append(AllBinaryLayer* layerInterface){
+this->layerManagerLogging->append(layerInterface);
     
-this->list.add(layerInterface);
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: void appendAt(AllBinaryLayer layerInterface, int32_t index){
-this->layerManagerLogging.appendAt(layerInterface, index);
-    
-this->list.addAt(index, layerInterface);
+this->list->add(layerInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void remove(AllBinaryLayer layerInterface){
+    public: void appendAt(AllBinaryLayer* layerInterface, int32_t index){
+this->layerManagerLogging->appendAt(layerInterface, index);
+    
+this->list->addAt(index, layerInterface);
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: void remove(AllBinaryLayer* layerInterface){
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -210,24 +216,24 @@ this->list.addAt(index, layerInterface);
 
         //mutex.withLock
         
-this->layerManagerLogging.remove(layerInterface);
+this->layerManagerLogging->remove(layerInterface);
     
 
-    bool result = this->list.remove(layerInterface);;
+    bool result = this->list->remove(layerInterface);;
     
-this->layerManagerLogging.removeResult(this, layerInterface, result);
+this->layerManagerLogging->removeResult(this, layerInterface, result);
     
 
 
 }
 
 
-    public: Layer getLayerAt(int32_t index){
+    public: Layer* getLayerAt(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->list.objectArray[index];
+                        return dynamic_cast<Layer*>(this->list->objectArray[index]);
     
 }
 
@@ -237,7 +243,7 @@ this->layerManagerLogging.removeResult(this, layerInterface, result);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->list.size();;
+                        return this->list->size();;
     
 }
 
@@ -252,20 +258,20 @@ this->layerManagerLogging.removeResult(this, layerInterface, result);
 
         //mutex.withLock
         
-this->list.clear();
+this->list->clear();
     
-this->layerManagerLogging.clear();
+this->layerManagerLogging->clear();
     
-this->tsUtil.gc();
+this->tsUtil->gc();
     
-this->tsUtil.gc();
+this->tsUtil->gc();
     
 
 
 }
 
 
-    public: void paint(Graphics g, int32_t x, int32_t y){
+    public: void paint(Graphics* g, int32_t x, int32_t y){
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -274,24 +280,24 @@ this->tsUtil.gc();
         //mutex.withLock
         
 
-    Layer comp;;
+    Layer* comp;;
     
 
 
 
 
                         for (
-    int32_t index = this->list.size();--index >= 0; )
+    int32_t index = this->list->size();--index >= 0; )
         {
-comp= this->list.objectArray[index];
+comp= dynamic_cast<Layer*>(this->list->objectArray[index]);
     
 
                         if(comp != 
                                     nullptr
-                                 && comp.isVisible())
+                                 && comp->isVisible())
                         
                                     {
-                                    comp.paint(g);
+                                    comp->paint(g);
     
 
                                     }

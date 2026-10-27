@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/input/GameKey.h>
 
       
@@ -74,19 +80,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HelpPaintable.h"
+        #include "org/allbinary/game/paint/help/HelpPaintable.h"
 
 class BasicInputMappingHelpPaintable: public HelpPaintable {
 
-    private: std::vector<GameInputMapping> gameInputMappingArray;
+    private: std::vector<GameInputMapping*> gameInputMappingArray;
 
-    private: const GameKey NONE = GameKeyFactory::getInstance().NONE;
+    private: GameKey* NONE = GameKeyFactory::getInstance()->NONE;
 
-protected: BasicInputMappingHelpPaintable(std::vector<GameInputMapping> gameInputMappingArray, BasicColor basicColor);
+protected: BasicInputMappingHelpPaintable(std::vector<GameInputMapping*> gameInputMappingArray, BasicColor* basicColor);
 
-    public: void update(GameKey selectedGameKey, Input selectedInput);
+    public: void update(GameKey* selectedGameKey, Input* selectedInput);
 
-    private: std::string get(BasicArrayList keyList);
+    private: std::string get(BasicArrayList* keyList);
 
 };
 

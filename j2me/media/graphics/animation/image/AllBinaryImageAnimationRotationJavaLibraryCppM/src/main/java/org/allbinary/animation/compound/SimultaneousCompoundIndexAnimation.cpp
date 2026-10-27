@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -58,9 +64,9 @@
         
 class SimultaneousCompoundIndexAnimation: public IndexedAnimation {
 
-    private: std::vector<IndexedAnimation> animationInterfaceArray;
+    private: std::vector<IndexedAnimation*> animationInterfaceArray;
 
-public: SimultaneousCompoundIndexAnimation(std::vector<IndexedAnimation> animationInterfaceArray, AnimationBehavior animationBehavior) : IndexedAnimation(animationBehavior){
+public: SimultaneousCompoundIndexAnimation(std::vector<IndexedAnimation*> animationInterfaceArray, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -165,7 +171,7 @@ this->animationInterfaceArray[index].nextFrame();
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 
 
 
@@ -180,7 +186,7 @@ this->animationInterfaceArray[index].paintXY(graphics, x, y);
 }
 
 
-    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
+    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z){
 
 
 
@@ -197,7 +203,7 @@ this->animationInterfaceArray[index].paintThreedXYZ(graphics, x, y, z);
 
                 //@Throws(Exception.constructor)
             
-    public: void set(GL gl){
+    public: void set(GL* gl){
 
 
 
@@ -212,7 +218,7 @@ this->animationInterfaceArray[index].set(gl);
 }
 
 
-    public: std::vector<IndexedAnimation> getAnimationInterfaceArray(){
+    public: std::vector<IndexedAnimation*> getAnimationInterfaceArray(){
 
 
 
@@ -222,7 +228,7 @@ this->animationInterfaceArray[index].set(gl);
 }
 
 
-    public: void setAnimationInterfaceArray(std::vector<IndexedAnimation> animationInterfaceArray){
+    public: void setAnimationInterfaceArray(std::vector<IndexedAnimation*> animationInterfaceArray){
 this->animationInterfaceArray= animationInterfaceArray;
     
 }

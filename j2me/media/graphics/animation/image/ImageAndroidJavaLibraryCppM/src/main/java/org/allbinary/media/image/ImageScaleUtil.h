@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -86,43 +92,43 @@ class ImageScaleUtil
             : public Object
          {
 
-    private: static ImageScaleUtil instance() { return ImageScaleUtil(); }
+    private: static ImageScaleUtil* instance() { static std::unique_ptr<ImageScaleUtil> value(new ImageScaleUtil()); return value.get(); }
 
-    public: static ImageScaleUtil getInstance();
+    public: static ImageScaleUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: ImageScaleUtil();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
-    private: const BasicArrayList imageBasicArrayList = BasicArrayListD();
+    private: BasicArrayList* imageBasicArrayList = new BasicArrayListD();
 
-    private: const BasicArrayList scaledImageBasicArrayList = BasicArrayListD();
+    private: BasicArrayList* scaledImageBasicArrayList = new BasicArrayListD();
 
-    private: const BasicArrayList scaleXBasicArrayList = BasicArrayListD();
+    private: BasicArrayList* scaleXBasicArrayList = new BasicArrayListD();
 
-    private: const BasicArrayList scaleYBasicArrayList = BasicArrayListD();
-
-                //@Throws(Exception.constructor)
-            
-    public: Image createImage2(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached);
+    private: BasicArrayList* scaleYBasicArrayList = new BasicArrayListD();
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImage3(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable);
+    public: Image* createImage2(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached);
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImage(ImageCache imageCache, Image originalImage, float scaleX, float scaleY, bool cached);
+    public: Image* createImage3(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable_);
 
                 //@Throws(Exception.constructor)
             
-    private: Image getScaledImage(ImageCache imageCache, Image originalImage, float scaleX, float scaleY, int32_t width, int32_t height, bool cached);
+    public: Image* createImage(ImageCache* imageCache, Image* originalImage, float scaleX, float scaleY, bool cached);
 
-    private: void scale(Image image, Matrix matrix, float scaleX, float scaleY);
+                //@Throws(Exception.constructor)
+            
+    private: Image* getScaledImage(ImageCache* imageCache, Image* originalImage, float scaleX, float scaleY, int32_t width, int32_t height, bool cached);
+
+    private: void scale(Image* image, Matrix* matrix, float scaleX, float scaleY);
 
 };
 

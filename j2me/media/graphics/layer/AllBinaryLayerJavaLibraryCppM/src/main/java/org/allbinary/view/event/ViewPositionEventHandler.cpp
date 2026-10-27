@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/AllBinaryLayer.h>
@@ -59,35 +65,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ViewPositionEvent.h"
-#include "ViewPositionEventListenerInterface.h"
+        #include "org/allbinary/view/event/ViewPositionEvent.h"
+#include "org/allbinary/view/event/ViewPositionEventListenerInterface.h"
 
 class ViewPositionEventHandler: public BasicEventHandler {
 
-    private: static ViewPositionEventHandler SINGLETON = ViewPositionEventHandler();
+    private: static ViewPositionEventHandler* SINGLETON() { static std::unique_ptr<ViewPositionEventHandler> value(new ViewPositionEventHandler()); return value.get(); }
 
-    public: static ViewPositionEventHandler getInstance(){
+    public: static ViewPositionEventHandler* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ViewPositionEventHandler::SINGLETON;
+                        return ViewPositionEventHandler::SINGLETON();
     
 }
 
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: ViewPositionEventHandler(){
 }
 
 
-    public: void addListener(AllBinaryLayer layerInterface){
+    public: void addListener(AllBinaryLayer* layerInterface){
 
-                        if(!this->list.contains(layerInterface))
+                        if(!this->list->contains(layerInterface))
                         
                                     {
-                                    this->list.add(layerInterface);
+                                    this->list->add(layerInterface);
     
 
                                     }
@@ -96,15 +102,15 @@ private: ViewPositionEventHandler(){
 
 
     public: void removeAllListeners(){
-this->list.clear();
+this->list->clear();
     
 super.removeAllListeners();
     
 }
 
 
-    public: void removeListener(EventListenerInterface eventListenerInterface){
-this->list.remove(eventListenerInterface);
+    public: void removeListener(EventListenerInterface* eventListenerInterface){
+this->list->remove(eventListenerInterface);
     
 super.removeListener(eventListenerInterface);
     
@@ -113,26 +119,26 @@ super.removeListener(eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(AllBinaryEventObject eventObject){
+    public: void fireEvent(AllBinaryEventObject* eventObject){
 
 
 
 
                         for (
-    int32_t index = this->list.size();--index >= 0; )
+    int32_t index = this->list->size();--index >= 0; )
         {
 
         try {
             
-    AllBinaryLayer layerInterface = this->list.objectArray[index];;
+    AllBinaryLayer* layerInterface = dynamic_cast<AllBinaryLayer*>(this->list->objectArray[index]);;
     
-layerInterface.onChangeEvent(eventObject);
+layerInterface->onChangeEvent(dynamic_cast<ViewPositionEvent*>(eventObject));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
@@ -145,11 +151,11 @@ super.fireEvent(eventObject);
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
 
-    ViewPositionEventListenerInterface viewPositionEventListenerInterface = (eventListenerInterface);;
+    ViewPositionEventListenerInterface* viewPositionEventListenerInterface = (dynamic_cast<ViewPositionEventListenerInterface*>(eventListenerInterface));;
     
-viewPositionEventListenerInterface.onChangeEvent(eventObject);
+viewPositionEventListenerInterface->onChangeEvent(dynamic_cast<ViewPositionEvent*>(eventObject));
     
 }
 

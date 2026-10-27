@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
@@ -62,11 +68,11 @@
         
 class HttpContextView: public HttpComponentView {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-public: HttpContextView(TransformInfoInterface transformInfoInterface) : HttpComponentView(transformInfoInterface){
+public: HttpContextView(TransformInfoInterface* transformInfoInterface) : HttpComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -74,10 +80,10 @@ public: HttpContextView(TransformInfoInterface transformInfoInterface) : HttpCom
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("View Name: " +transformInfoInterface.getName(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("View Name: " +transformInfoInterface->getName(), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -98,7 +104,7 @@ this->setTransformDocumentInterface(TransformHttpRequestDocumentFactory::getInst
     std::string success = XmlDocumentHelper::toString(this->getDoc());;
     
 
-    std::string result = ContextTransformer(this->abeClientInformation, this->getTransformInfoInterface()).translate(success);;
+    std::string result = (new ContextTransformer(this->abeClientInformation, this->getTransformInfoInterface()))->translate(success);;
     
 
 
@@ -108,13 +114,13 @@ this->setTransformDocumentInterface(TransformHttpRequestDocumentFactory::getInst
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view", &e);
     
 
                                     }

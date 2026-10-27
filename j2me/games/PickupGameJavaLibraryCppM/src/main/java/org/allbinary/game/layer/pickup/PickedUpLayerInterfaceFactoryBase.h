@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKEDUPLAYERINTERFACEFACTORYBASE_H
         #define ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKEDUPLAYERINTERFACEFACTORYBASE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -49,20 +55,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PickedUpLayerInterfaceFactoryInterface.h"
-#include "PickedUpLayerType.h"
+        #include "org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h"
+#include "org/allbinary/game/layer/pickup/PickedUpLayerType.h"
 
 class PickedUpLayerInterfaceFactoryBase
             : public Object
-        : public PickedUpLayerInterfaceFactoryInterface {
+        , public PickedUpLayerInterfaceFactoryInterface {
 
-    public: static const PickedUpLayerInterfaceFactoryBase NULL_PICKED_UP_LAYER_FACTORY_BASE = PickedUpLayerInterfaceFactoryBase();
+    public: static PickedUpLayerInterfaceFactoryBase* NULL_PICKED_UP_LAYER_FACTORY_BASE() { static std::unique_ptr<PickedUpLayerInterfaceFactoryBase> value(new PickedUpLayerInterfaceFactoryBase()); return value.get(); }
 
-    public: AllBinaryLayer getIconLayer();
+    public: AllBinaryLayer* getIconLayer();
 
-    public: Animation getAnimationInterface();
+    public: Animation* getAnimationInterface();
 
-    public: PickedUpLayerType getPickedUpLayerType();
+    public: PickedUpLayerType* getPickedUpLayerType();
 
 };
 

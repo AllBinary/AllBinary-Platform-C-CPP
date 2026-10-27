@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -74,30 +80,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreFrontUsersStatisticsInterface.h"
-#include "StoreFrontUsersStatisticsData.h"
+        #include "org/allbinary/business/context/modules/storefront/statistics/users/StoreFrontUsersStatisticsInterface.h"
+#include "org/allbinary/business/context/modules/storefront/statistics/users/StoreFrontUsersStatisticsData.h"
 
 class StoreFrontUsersStatistics
             : public Object
-        : public StoreFrontUsersStatisticsInterface {
+        , public StoreFrontUsersStatisticsInterface {
 
-    private: Long totalNumberOfUsers;
+    private: int64_t totalNumberOfUsers;
 
-    private: HashMap<Object*, Object*> totalUsersByRoleHashMap;
+    private: HashMap<Object*, Object*>* totalUsersByRoleHashMap;
 
-public: StoreFrontUsersStatistics(StoreFrontInterface storeFrontInterface){
-this->totalUsersByRoleHashMap= StdUtil::getInstance().createHashMap();
+public: StoreFrontUsersStatistics(StoreFrontInterface* storeFrontInterface){
+this->totalUsersByRoleHashMap= StdUtil::getInstance()->createHashMap();
     
 
-    UserEntityInterface userEntityInterface = UserEntityFactory::getInstance();;
+    UserEntityInterface* userEntityInterface = UserEntityFactory::getInstance();;
     
 
-    BasicArrayList userVector = userEntityInterface.getCustomers();;
+    BasicArrayList* userVector = userEntityInterface->getCustomers();;
     
-this->totalNumberOfUsers= Long(userVector.size());
+this->totalNumberOfUsers= int64_t(userVector->size());
     
 
-    int32_t size = userVector.size();;
+    int32_t size = userVector->size();;
     
 
 
@@ -107,24 +113,24 @@ this->totalNumberOfUsers= Long(userVector.size());
     int32_t index = 0;index < size; index++)
         {
 
-    UserInterface userInterface = userVector.get(index);;
+    UserInterface* userInterface = dynamic_cast<UserInterface*>(userVector->get(index));;
     
 
-    UserRole nextUserRole = userInterface.getRole();;
+    UserRole* nextUserRole = userInterface->getRole();;
     
 
-    Long currentNumberOfUsersForRole = this->getNewTotal(nextUserRole);;
+    int64_t currentNumberOfUsersForRole = this->getNewTotal(nextUserRole);;
     
-this->totalUsersByRoleHashMap.put(nextUserRole, currentNumberOfUsersForRole);
+this->totalUsersByRoleHashMap->put(nextUserRole, currentNumberOfUsersForRole);
     
 }
 
 }
 
 
-    private: Long getNewTotal(UserRole userRole){
+    private: int64_t getNewTotal(UserRole* userRole){
 
-    Long numberOfUsersForRoleLong = this->totalUsersByRoleHashMap.get(userRole);;
+    int64_t numberOfUsersForRoleLong = this->totalUsersByRoleHashMap->get(userRole);;
     
 
                         if(numberOfUsersForRoleLong == 
@@ -132,7 +138,7 @@ this->totalUsersByRoleHashMap.put(nextUserRole, currentNumberOfUsersForRole);
                                 )
                         
                                     {
-                                    numberOfUsersForRoleLong= Long(0);
+                                    numberOfUsersForRoleLong= int64_t(0);
     
 
                                     }
@@ -141,12 +147,12 @@ this->totalUsersByRoleHashMap.put(nextUserRole, currentNumberOfUsersForRole);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Long(numberOfUsersForRoleLong.longValue() +1);
+                        return int64_t(numberOfUsersForRoleLong.longValue() +1);
     
 }
 
 
-    public: Long getNumberOfUsers(){
+    public: int64_t getNumberOfUsers(){
 
 
 
@@ -156,9 +162,9 @@ this->totalUsersByRoleHashMap.put(nextUserRole, currentNumberOfUsersForRole);
 }
 
 
-    public: Long getNumberOfUsersByRole(std::string role){
+    public: int64_t getNumberOfUsersByRole(std::string role){
 
-    Long totalForRole = this->totalUsersByRoleHashMap.get(role);;
+    int64_t totalForRole = this->totalUsersByRoleHashMap->get(role);;
     
 
 
@@ -169,20 +175,20 @@ this->totalUsersByRoleHashMap.put(nextUserRole, currentNumberOfUsersForRole);
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(StoreFrontUsersStatisticsData::getInstance().NUMBEROFUSERS, this->getNumberOfUsers().toString());
-    
-
-    Set setOfUserRoles = this->totalUsersByRoleHashMap.keys();;
+hashMap->put(StoreFrontUsersStatisticsData::getInstance()->NUMBEROFUSERS, this->getNumberOfUsers().toString());
     
 
-    UserRole nextUserRole;;
+    Set* setOfUserRoles = this->totalUsersByRoleHashMap->keys();;
     
 
-    std::vector<Object*> userRoleArray = setOfUserRoles.toArray();;
+    UserRole* nextUserRole;;
+    
+
+    std::vector<Object*> userRoleArray = setOfUserRoles->toArray();;
     
 
     int32_t size = userRoleArray.size();;
@@ -194,12 +200,12 @@ hashMap.put(StoreFrontUsersStatisticsData::getInstance().NUMBEROFUSERS, this->ge
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextUserRole= userRoleArray[index];
+nextUserRole= dynamic_cast<UserRole*>(userRoleArray[index]);
     
 
-    Long totalForRole = this->totalUsersByRoleHashMap.get(nextUserRole);;
+    int64_t totalForRole = this->totalUsersByRoleHashMap->get(nextUserRole);;
     
-hashMap.put(nextUserRole.toString(), totalForRole.toString());
+hashMap->put(nextUserRole->toString(), totalForRole.toString());
     
 }
 
@@ -212,7 +218,7 @@ hashMap.put(nextUserRole.toString(), totalForRole.toString());
 }
 
 
-    public: BasicArrayList toVector(){
+    public: BasicArrayList* toVector(){
 
 
 

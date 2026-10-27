@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -112,58 +118,58 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UnitLayer.h"
+        #include "org/allbinary/game/layer/unit/UnitLayer.h"
 
 class UnitWaypointBehavior: public WaypointBehaviorBase, public WaypointEventListenerInterface {
 
-    private: static const std::string PATHING = "Pathing";
+    private: static inline const std::string PATHING = "Pathing";
 
-    protected: CommonSeps commonSeps = CommonSeps::getInstance();
+    protected: CommonSeps* commonSeps = CommonSeps::getInstance();
 
     private: int32_t longWeaponRange = 0;
 
-    private: SensorAction sensorAction = SensorActionFactory::getInstance().ATTACK;
+    private: SensorAction* sensorAction = SensorActionFactory::getInstance()->ATTACK;
 
-    private: TimeDelayHelper completeTimeDelayHelper;
+    private: TimeDelayHelper* completeTimeDelayHelper;
 
-    protected: GeographicMapCellHistory currentGeographicMapCellHistoryP;
+    protected: GeographicMapCellHistory* currentGeographicMapCellHistoryP;
 
-    private: GeographicMapCellPosition lastPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition* lastPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: GeographicMapCellPosition currentPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition* currentPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: CollidableDestroyableDamageableLayer FAKE_WAYPOINT_LAYER;
+    private: CollidableDestroyableDamageableLayer* FAKE_WAYPOINT_LAYER;
 
-    protected: BasicArrayList targetList;
+    protected: BasicArrayList* targetList;
 
-    private: BasicArrayList possibleTargetList;
+    private: BasicArrayList* possibleTargetList;
 
-    protected: UnitLayer associatedAdvancedRTSGameLayer;
+    protected: UnitLayer* associatedAdvancedRTSGameLayer;
 
     private: bool moving = false;
 
     private: bool movingFromStopped = false;
 
-    protected: BasicArrayList waypointPathsListP = BasicArrayListUtil::getInstance().getImmutableInstance();
+    protected: BasicArrayList* waypointPathsListP = BasicArrayListUtil::getInstance()->getImmutableInstance();
 
-    private: int32_t currentTargetDistance = Integer::MAX_VALUE;
+    private: int32_t currentTargetDistance = Integer.MAX_VALUE;
 
-    protected: CollidableDestroyableDamageableLayer currentTargetLayerInterfaceP = CollidableDestroyableDamageableLayer::getNullInstance();
+    protected: CollidableDestroyableDamageableLayer* currentTargetLayerInterfaceP = CollidableDestroyableDamageableLayer::getNullInstance();
 
     private: bool trackingWaypoint= false;
 
-protected: UnitWaypointBehavior(UnitLayer associatedAdvancedRTSGameLayer, CollidableDestroyableDamageableLayer fakeWaypoint){
+protected: UnitWaypointBehavior(UnitLayer* associatedAdvancedRTSGameLayer, CollidableDestroyableDamageableLayer* fakeWaypoint){
 this->associatedAdvancedRTSGameLayer= associatedAdvancedRTSGameLayer;
     
-this->completeTimeDelayHelper= TimeDelayHelper(30000);
+this->completeTimeDelayHelper= new TimeDelayHelper(30000);
     
-this->targetList= BasicArrayListD();
+this->targetList= new BasicArrayListD();
     
-this->possibleTargetList= BasicArrayListD();
+this->possibleTargetList= new BasicArrayListD();
     
-this->setWaypointPathsList(BasicArrayListUtil::getInstance().getImmutableInstance());
+this->setWaypointPathsList(BasicArrayListUtil::getInstance()->getImmutableInstance());
     
-this->currentGeographicMapCellHistoryP= GeographicMapCellHistory();
+this->currentGeographicMapCellHistoryP= new GeographicMapCellHistory();
     
 this->FAKE_WAYPOINT_LAYER= fakeWaypoint;
     
@@ -176,22 +182,22 @@ this->longWeaponRange= weaponRange /2;
 }
 
 
-    public: void onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject* eventObject){
+ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void onWaypointEvent(RTSLayerEvent event){
+    public: void onWaypointEvent(RTSLayerEvent* event){
 
-    AdvancedRTSGameLayer advancedRTSGameLayer = event.getRtsLayer();;
+    AdvancedRTSGameLayer* advancedRTSGameLayer = dynamic_cast<AdvancedRTSGameLayer*>(event->getRtsLayer());;
     
-this->associatedAdvancedRTSGameLayer.waypointLogHelperP.onWaypointEvent(this->associatedAdvancedRTSGameLayer, advancedRTSGameLayer);
+this->associatedAdvancedRTSGameLayer->waypointLogHelperP.onWaypointEvent(this->associatedAdvancedRTSGameLayer, advancedRTSGameLayer);
     
 
-                        if(this->associatedAdvancedRTSGameLayer.isSelected())
+                        if(this->associatedAdvancedRTSGameLayer->isSelected())
                         
                                     {
                                     this->addWaypointFromUser(advancedRTSGameLayer);
@@ -200,7 +206,7 @@ this->associatedAdvancedRTSGameLayer.waypointLogHelperP.onWaypointEvent(this->as
                                     }
                                 
                              else 
-                        if(advancedRTSGameLayer.shouldAddWaypointFromBuilding())
+                        if(advancedRTSGameLayer->shouldAddWaypointFromBuilding())
                         
                                     {
                                     this->addWaypointFromBuilding(advancedRTSGameLayer);
@@ -213,38 +219,38 @@ this->associatedAdvancedRTSGameLayer.waypointLogHelperP.onWaypointEvent(this->as
 
                 //@Throws(Exception.constructor)
             
-    protected: void addWaypointFromUser(AdvancedRTSGameLayer advancedRTSGameLayer){
+    protected: void addWaypointFromUser(AdvancedRTSGameLayer* advancedRTSGameLayer){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: void addWaypointFromBuilding(AdvancedRTSGameLayer advancedRTSGameLayer){
+    private: void addWaypointFromBuilding(AdvancedRTSGameLayer* advancedRTSGameLayer){
 
-                        if(advancedRTSGameLayer == PrimaryWaypointHelper::getInstance().getWaypointLayer() || advancedRTSGameLayer.getParentLayer() == this->associatedAdvancedRTSGameLayer.getParentLayer())
+                        if(advancedRTSGameLayer == PrimaryWaypointHelper::getInstance()->getWaypointLayer() || advancedRTSGameLayer->getParentLayer() == this->associatedAdvancedRTSGameLayer->getParentLayer())
                         
                                     {
                                     
-                        if(!this->targetList.contains(advancedRTSGameLayer))
+                        if(!this->targetList->contains(advancedRTSGameLayer))
                         
                                     {
-                                    this->associatedAdvancedRTSGameLayer.waypointLogHelperP.addWaypointFromBuilding(this->associatedAdvancedRTSGameLayer, advancedRTSGameLayer);
+                                    this->associatedAdvancedRTSGameLayer->waypointLogHelperP.addWaypointFromBuilding(this->associatedAdvancedRTSGameLayer, advancedRTSGameLayer);
     
 
-                        if(advancedRTSGameLayer.isDestroyed())
+                        if(advancedRTSGameLayer->isDestroyed())
                         
                                     {
                                     
 
 
-                            throw Exception("Trying to add a dead: " +advancedRTSGameLayer);
+                            throw new Exception("Trying to add a dead: " +advancedRTSGameLayer);
                     
 
                                     }
                                 
-this->targetList.add(advancedRTSGameLayer);
+this->targetList->add(advancedRTSGameLayer);
     
-this->associatedAdvancedRTSGameLayer.waypointLogHelperP.addWaypointFromBuildingList(this->associatedAdvancedRTSGameLayer, advancedRTSGameLayer, this->targetList);
+this->associatedAdvancedRTSGameLayer->waypointLogHelperP.addWaypointFromBuildingList(this->associatedAdvancedRTSGameLayer, advancedRTSGameLayer, this->targetList);
     
 
                                     }
@@ -267,28 +273,28 @@ this->associatedAdvancedRTSGameLayer.waypointLogHelperP.addWaypointFromBuildingL
 
                 //@Throws(Exception.constructor)
             
-    public: bool insertWaypoint(int32_t index, CollidableDestroyableDamageableLayer rtsLayer){
+    public: bool insertWaypoint(int32_t index, CollidableDestroyableDamageableLayer* rtsLayer){
 
                         if(this->canInsertWaypoint(index, rtsLayer))
                         
                                     {
-                                    this->associatedAdvancedRTSGameLayer.waypointLogHelperP.insertWaypoint(this->associatedAdvancedRTSGameLayer, index, rtsLayer, this->getName());
+                                    this->associatedAdvancedRTSGameLayer->waypointLogHelperP.insertWaypoint(this->associatedAdvancedRTSGameLayer, index, rtsLayer, this->getName());
     
 
-                        if(rtsLayer.isDestroyed())
+                        if(rtsLayer->isDestroyed())
                         
                                     {
                                     
 
 
-                            throw Exception("Trying to add a dead: " +rtsLayer);
+                            throw new Exception("Trying to add a dead: " +rtsLayer);
                     
 
                                     }
                                 
-this->targetList.addAt(index, rtsLayer);
+this->targetList->addAt(index, rtsLayer);
     
-this->associatedAdvancedRTSGameLayer.waypointLogHelperP.insertWaypointList(this->associatedAdvancedRTSGameLayer, index, rtsLayer, this->getName(), this->targetList);
+this->associatedAdvancedRTSGameLayer->waypointLogHelperP.insertWaypointList(this->associatedAdvancedRTSGameLayer, index, rtsLayer, this->getName(), this->targetList);
     
 
 
@@ -331,18 +337,18 @@ this->setMoving(false);
 
                 //@Throws(Exception.constructor)
             
-    protected: void setRandomGeographicMapCellHistory(BasicArrayList pathsList){
+    protected: void setRandomGeographicMapCellHistory(BasicArrayList* pathsList){
 
-    int32_t size = pathsList.size();;
+    int32_t size = pathsList->size();;
     
-this->associatedAdvancedRTSGameLayer.waypointLogHelperP.setRandomGeographicMapCellHistoryList(this->associatedAdvancedRTSGameLayer, pathsList);
+this->associatedAdvancedRTSGameLayer->waypointLogHelperP.setRandomGeographicMapCellHistoryList(this->associatedAdvancedRTSGameLayer, pathsList);
     
 
                         if(size > 0)
                         
                                     {
                                     
-    BasicArrayList geographicMapCellPositionBasicArrayList = BasicArrayListUtil::getInstance().getRandom(pathsList);;
+    BasicArrayList* geographicMapCellPositionBasicArrayList = dynamic_cast<BasicArrayList*>(BasicArrayListUtil::getInstance()->getRandom(pathsList));;
     
 this->setGeographicMapCellHistoryPath(geographicMapCellPositionBasicArrayList);
     
@@ -354,39 +360,39 @@ this->setGeographicMapCellHistoryPath(geographicMapCellPositionBasicArrayList);
 
                 //@Throws(Exception.constructor)
             
-    protected: void setGeographicMapCellHistoryPath(BasicArrayList geographicMapCellPositionBasicArrayList){
+    protected: void setGeographicMapCellHistoryPath(BasicArrayList* geographicMapCellPositionBasicArrayList){
 this->lastPathGeographicMapCellPosition= SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 
-                        if(this->associatedAdvancedRTSGameLayer.showMoreCaptionStates)
+                        if(this->associatedAdvancedRTSGameLayer->showMoreCaptionStates)
                         
                                     {
-                                    this->associatedAdvancedRTSGameLayer.getCaptionAnimationHelper().update(UnitWaypointBehavior::PATHING, BasicColorFactory::getInstance().GREEN);
+                                    this->associatedAdvancedRTSGameLayer->getCaptionAnimationHelper()->update(UnitWaypointBehavior::PATHING, BasicColorFactory::getInstance()->GREEN);
     
 
                                     }
                                 
-this->currentGeographicMapCellHistoryP.init();
+this->currentGeographicMapCellHistoryP->init();
     
-this->associatedAdvancedRTSGameLayer.init(this->currentGeographicMapCellHistoryP, geographicMapCellPositionBasicArrayList);
+this->associatedAdvancedRTSGameLayer->init(this->currentGeographicMapCellHistoryP, geographicMapCellPositionBasicArrayList);
     
 this->setTrackingWaypoint(true);
     
-this->getCompleteTimeDelayHelper().setStartTimeTNT();
+this->getCompleteTimeDelayHelper()->setStartTimeTNT();
     
 }
 
 
-    protected: bool canInsertWaypoint(int32_t index, CollidableDestroyableDamageableLayer rtsLayer){
+    protected: bool canInsertWaypoint(int32_t index, CollidableDestroyableDamageableLayer* rtsLayer){
 
-                        if(this->targetList.size() > 4)
+                        if(this->targetList->size() > 4)
                         
                                     {
                                     
                                     }
                                 
                              else 
-                        if(this->targetList.contains(rtsLayer))
+                        if(this->targetList->contains(rtsLayer))
                         
                                     {
                                     
@@ -413,35 +419,35 @@ this->getCompleteTimeDelayHelper().setStartTimeTNT();
 
                 //@Throws(Exception.constructor)
             
-    public: void addBuildingChase(AllBinaryLayer allbinaryLayer, GeographicMapCellPosition cellPosition){
+    public: void addBuildingChase(AllBinaryLayer* allbinaryLayer, GeographicMapCellPosition* cellPosition){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void moveAwayFromBuilding(BuildingLayer buildingLayer){
+    protected: void moveAwayFromBuilding(BuildingLayer* buildingLayer){
 
-    GeographicMapCellPosition geographicMapCellPosition = this->associatedAdvancedRTSGameLayer.getCurrentGeographicMapCellPosition();;
+    GeographicMapCellPosition* geographicMapCellPosition = this->associatedAdvancedRTSGameLayer->getCurrentGeographicMapCellPosition();;
     
 
-    BasicArrayList list = buildingLayer.geographicMapCellPositionAreaBase.getOccupyingGeographicMapCellPositionList();;
+    BasicArrayList* list = buildingLayer->geographicMapCellPositionAreaBase.getOccupyingGeographicMapCellPositionList();;
     
 
-                        if(list.contains(geographicMapCellPosition))
+                        if(list->contains(geographicMapCellPosition))
                         
                                     {
                                     
                         if(this->insertWaypoint(0, this->FAKE_WAYPOINT_LAYER))
                         
                                     {
-                                    this->associatedAdvancedRTSGameLayer.waypointLogHelperP.moveAwayFromBuilding(this->associatedAdvancedRTSGameLayer);
+                                    this->associatedAdvancedRTSGameLayer->waypointLogHelperP.moveAwayFromBuilding(this->associatedAdvancedRTSGameLayer);
     
-this->setCurrentTargetLayerInterface(this->FAKE_WAYPOINT_LAYER);
+this->setCurrentTargetLayerInterface(dynamic_cast<CollidableDestroyableDamageableLayer*>(this->FAKE_WAYPOINT_LAYER));
     
 
-    BasicArrayList pathsList = buildingLayer.getMoveOutOfBuildAreaPath(geographicMapCellPosition);;
+    BasicArrayList* pathsList = buildingLayer->getMoveOutOfBuildAreaPath(geographicMapCellPosition);;
     
-this->associatedAdvancedRTSGameLayer.setClosestGeographicMapCellHistory(pathsList);
+this->associatedAdvancedRTSGameLayer->setClosestGeographicMapCellHistory(pathsList);
     
 
                                     }
@@ -452,16 +458,16 @@ this->associatedAdvancedRTSGameLayer.setClosestGeographicMapCellHistory(pathsLis
 }
 
 
-    private: const TimeDelayHelper repeatedToLong = TimeDelayHelper(22000);
+    private: TimeDelayHelper* repeatedToLong = new TimeDelayHelper(22000);
 
     public: bool needToMove(){
-this->associatedAdvancedRTSGameLayer.waypointLogHelperP.needToMove(this->associatedAdvancedRTSGameLayer, this);
+this->associatedAdvancedRTSGameLayer->waypointLogHelperP.needToMove(this->associatedAdvancedRTSGameLayer, this);
     
 
-                        if(this->isTrackingWaypoint() || this->sensorAction == SensorActionFactory::getInstance().EVADE || (this->currentTargetLayerInterfaceP != CollidableDestroyableDamageableLayer::getNullInstance() && this->getCurrentTargetDistance() >= this->longWeaponRange +this->currentTargetLayerInterfaceP.getHalfHeight()))
+                        if(this->isTrackingWaypoint() || this->sensorAction == SensorActionFactory::getInstance()->EVADE || (this->currentTargetLayerInterfaceP != CollidableDestroyableDamageableLayer::getNullInstance() && this->getCurrentTargetDistance() >= this->longWeaponRange +this->currentTargetLayerInterfaceP->getHalfHeight()))
                         
                                     {
-                                    this->repeatedToLong.setStartTimeTNT();
+                                    this->repeatedToLong->setStartTimeTNT();
     
 
 
@@ -473,7 +479,7 @@ this->associatedAdvancedRTSGameLayer.waypointLogHelperP.needToMove(this->associa
                                     }
                                 
 
-                        if(this->repeatedToLong.isTimeTNT())
+                        if(this->repeatedToLong->isTimeTNT())
                         
                                     {
                                     
@@ -495,31 +501,31 @@ ForcedLogUtil::log(message, this->associatedAdvancedRTSGameLayer);
 
     public: std::string getMovementLogicAsString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("isTrackingWaypoint: ");
+stringBuffer->append("isTrackingWaypoint: ");
     
-stringBuffer.appendboolean(this->isTrackingWaypoint());
+stringBuffer->appendboolean(this->isTrackingWaypoint());
     
-stringBuffer.append(" sensorAction: ");
+stringBuffer->append(" sensorAction: ");
     
-stringBuffer.append(this->sensorAction.name);
+stringBuffer->append(this->sensorAction->name);
     
-stringBuffer.append(" getCurrentTargetLayerInterface: ");
+stringBuffer->append(" getCurrentTargetLayerInterface: ");
     
-stringBuffer.append(StringUtil::getInstance().toString(this->currentTargetLayerInterfaceP));
+stringBuffer->append(StringUtil::getInstance()->toString(this->currentTargetLayerInterfaceP));
     
 
                         if(this->currentTargetLayerInterfaceP != CollidableDestroyableDamageableLayer::getNullInstance())
                         
                                     {
-                                    stringBuffer.append(" Target Range: ");
+                                    stringBuffer->append(" Target Range: ");
     
-stringBuffer.appendint(this->getCurrentTargetDistance());
+stringBuffer->appendint(this->getCurrentTargetDistance());
     
-stringBuffer.append(" >= ");
+stringBuffer->append(" >= ");
     
-stringBuffer.appendint(this->longWeaponRange +this->currentTargetLayerInterfaceP.getHalfHeight());
+stringBuffer->appendint(this->longWeaponRange +this->currentTargetLayerInterfaceP->getHalfHeight());
     
 
                                     }
@@ -528,7 +534,7 @@ stringBuffer.appendint(this->longWeaponRange +this->currentTargetLayerInterfaceP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
@@ -549,13 +555,13 @@ this->movingFromStopped= movingFromStopped;
 }
 
 
-    public: void setWaypointPathsList(BasicArrayList waypointPathsList){
+    public: void setWaypointPathsList(BasicArrayList* waypointPathsList){
 this->waypointPathsListP= waypointPathsList;
     
 }
 
 
-    public: BasicArrayList getWaypointPathsList(){
+    public: BasicArrayList* getWaypointPathsList(){
 
 
 
@@ -591,7 +597,7 @@ this->moving= moving;
 }
 
 
-    protected: BasicArrayList getPossibleTargetList(){
+    protected: BasicArrayList* getPossibleTargetList(){
 
 
 
@@ -601,13 +607,13 @@ this->moving= moving;
 }
 
 
-    protected: void setLastPathGeographicMapCellPosition(GeographicMapCellPosition lastPathGeographicMapCellPosition){
+    protected: void setLastPathGeographicMapCellPosition(GeographicMapCellPosition* lastPathGeographicMapCellPosition){
 this->lastPathGeographicMapCellPosition= lastPathGeographicMapCellPosition;
     
 }
 
 
-    protected: GeographicMapCellPosition getLastPathGeographicMapCellPosition(){
+    protected: GeographicMapCellPosition* getLastPathGeographicMapCellPosition(){
 
 
 
@@ -617,13 +623,13 @@ this->lastPathGeographicMapCellPosition= lastPathGeographicMapCellPosition;
 }
 
 
-    protected: void setCurrentPathGeographicMapCellPosition(GeographicMapCellPosition currentPathGeographicMapCellPosition){
+    protected: void setCurrentPathGeographicMapCellPosition(GeographicMapCellPosition* currentPathGeographicMapCellPosition){
 this->currentPathGeographicMapCellPosition= currentPathGeographicMapCellPosition;
     
 }
 
 
-    public: GeographicMapCellPosition getCurrentPathGeographicMapCellPosition(){
+    public: GeographicMapCellPosition* getCurrentPathGeographicMapCellPosition(){
 
 
 
@@ -633,13 +639,13 @@ this->currentPathGeographicMapCellPosition= currentPathGeographicMapCellPosition
 }
 
 
-    protected: void setSensorAction(SensorAction sensorAction){
+    protected: void setSensorAction(SensorAction* sensorAction){
 this->sensorAction= sensorAction;
     
 }
 
 
-    protected: SensorAction getSensorAction(){
+    protected: SensorAction* getSensorAction(){
 
 
 
@@ -649,13 +655,13 @@ this->sensorAction= sensorAction;
 }
 
 
-    protected: void setCurrentTargetLayerInterface(CollidableDestroyableDamageableLayer currentTargetLayerInterface){
+    protected: void setCurrentTargetLayerInterface(CollidableDestroyableDamageableLayer* currentTargetLayerInterface){
 this->currentTargetLayerInterfaceP= currentTargetLayerInterface;
     
 }
 
 
-    public: CollidableDestroyableDamageableLayer getCurrentTargetLayerInterface(){
+    public: CollidableDestroyableDamageableLayer* getCurrentTargetLayerInterface(){
 
 
 
@@ -681,7 +687,7 @@ this->currentTargetDistance= currentTargetDistance;
 }
 
 
-    protected: TimeDelayHelper getCompleteTimeDelayHelper(){
+    protected: TimeDelayHelper* getCompleteTimeDelayHelper(){
 
 
 
@@ -691,7 +697,7 @@ this->currentTargetDistance= currentTargetDistance;
 }
 
 
-    public: GeographicMapCellHistory getCurrentGeographicMapCellHistory(){
+    public: GeographicMapCellHistory* getCurrentGeographicMapCellHistory(){
 
 
 

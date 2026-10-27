@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class SWTUtil
             : public Object
          {
 
-    public: static bool isSWT = true;
+    public: static inline bool isSWT = true;
 
-    public: static std::string SWT = "SWT";
+    public: static inline std::string SWT = "SWT";
 
 };
 

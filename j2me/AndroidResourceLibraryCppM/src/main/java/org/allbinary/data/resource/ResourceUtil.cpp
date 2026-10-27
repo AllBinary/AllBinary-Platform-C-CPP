@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -97,9 +103,9 @@ class ResourceUtil
             : public Object
          {
 
-    private: static ResourceUtil instance() { return ResourceUtil(); }
+    private: static ResourceUtil* instance() { static std::unique_ptr<ResourceUtil> value(new ResourceUtil()); return value.get(); }
 
-    public: static ResourceUtil getInstance(){
+    public: static ResourceUtil* getInstance(){
 
 
 
@@ -109,55 +115,55 @@ class ResourceUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: Object* context = NullUtil::getInstance().NULL_OBJECT;
+    private: Object* context = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: Object* resources = NullUtil::getInstance().NULL_OBJECT;
+    private: Object* resources = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: ABHashtable<Object*, Object*> hashMap = StdUtil::getInstance().createHashtable();
+    private: ABHashtable<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashtable();
 
 private: ResourceUtil(){
 }
 
 
     public: void setLoadingPaths(std::string path, std::string ext){
-this->logUtil.putF(CommonStrings::getInstance().NOT_IMPLEMENTED, this, "setLoadingPaths");
+this->logUtil->putF(CommonStrings::getInstance()->NOT_IMPLEMENTED, this, "setLoadingPaths");
     
 }
 
 
-    public: Context getContext(){
+    public: Context* getContext(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->context;
+                        return dynamic_cast<Context*>(this->context);
     
 }
 
 
-    public: void setContextFromActivity(Activity activity){
+    public: void setContextFromActivity(Activity* activity){
 this->context= activity;
     
 }
 
 
-    public: void setContext(Context aContext){
+    public: void setContext(Context* aContext){
 this->context= aContext;
     
 }
 
 
-    public: Integer getResourceId(std::string resource){
+    public: int32_t getResourceId(std::string resource){
 
-    Integer value = this->hashMap.get(resource);;
+    int32_t value = this->hashMap->get(resource);;
     
 
                         if(DebugFactory::getInstance() != NoDebug::getInstance())
                         
                                     {
-                                    PreLogUtil::put(StringMaker().append(resource).append(CommonSeps::getInstance().COLON).append(value.toString()).toString(), this, "getResourceId");
+                                    PreLogUtil::put((new StringMaker())->append(resource)->append(CommonSeps::getInstance()->COLON)->append(value.toString())->toString(), this, "getResourceId");
     
 
                                     }
@@ -171,18 +177,18 @@ this->context= aContext;
 }
 
 
-    public: void addResource(std::string resource, Integer value){
+    public: void addResource(std::string resource, int32_t value){
 
                         if(DebugFactory::getInstance() != NoDebug::getInstance())
                         
                                     {
-                                    PreLogUtil::put(StringMaker().append(resource).append(CommonSeps::getInstance().COLON).append(value.toString()).toString(), this, "addResource");
+                                    PreLogUtil::put((new StringMaker())->append(resource)->append(CommonSeps::getInstance()->COLON)->append(value.toString())->toString(), this, "addResource");
     
 
                         if(this->containsDuplicate(resource, value))
                         
                                     {
-                                    ForcedLogUtil::log(StringMaker().append("Found Duplicate Resource: ").append(resource).toString(), this);
+                                    ForcedLogUtil::log((new StringMaker())->append("Found Duplicate Resource: ")->append(resource)->toString(), this);
     
 
                                     }
@@ -190,14 +196,14 @@ this->context= aContext;
 
                                     }
                                 
-this->hashMap.put(resource, value);
+this->hashMap->put(resource, value);
     
 }
 
 
-    private: bool containsDuplicate(std::string resource, Integer value){
+    private: bool containsDuplicate(std::string resource, int32_t value){
 
-    std::vector<Object*> objectArray = HashtableUtil::getInstance().getKeysAsArray(this->hashMap);;
+    std::vector<Object*> objectArray = HashtableUtil::getInstance()->getKeysAsArray(this->hashMap);;
     
 
 
@@ -207,7 +213,7 @@ this->hashMap.put(resource, value);
     int32_t index = objectArray.size();--index >= 0; )
         {
 
-    Integer integer = this->hashMap.get(objectArray[index]);;
+    int32_t integer = this->hashMap->get(objectArray[index]);;
     
 
                         if(resource != objectArray[index])
@@ -247,8 +253,8 @@ this->hashMap.put(resource, value);
 }
 
 
-    public: void setResources(Resources resources){
-this->logUtil.putF(StringMaker().append("Resource Loader: ").append(resources->constructor.name.toString()).toString(), this, "setResources");
+    public: void setResources(Resources* resources){
+this->logUtil->putF((new StringMaker())->append("Resource Loader: ")->append(resources->getClass()->getName())->toString(), this, "setResources");
     
 this->resources= resources;
     
@@ -257,18 +263,18 @@ this->resources= resources;
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream getResourceAsStream(std::string resource){
+    public: InputStream* getResourceAsStream(std::string resource){
 
-    Integer integer = this->hashMap.get(resource);;
+    int32_t integer = this->hashMap->get(resource);;
     
 
     int32_t id = integer.intValue();;
     
 
-    Resources resources = (this->resources);;
+    Resources* resources = (dynamic_cast<Resources*>(this->resources));;
     
 
-    InputStream inputStream = resources->openRawResource(id);;
+    InputStream* inputStream = resources->openRawResource(id);;
     
 
                         if(inputStream != 

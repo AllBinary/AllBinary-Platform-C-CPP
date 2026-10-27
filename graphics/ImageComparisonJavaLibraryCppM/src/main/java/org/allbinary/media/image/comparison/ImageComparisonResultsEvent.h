@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONRESULTSEVENT_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONRESULTSEVENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
       
@@ -42,17 +50,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageComparisonResult.h"
+        #include "org/allbinary/media/image/comparison/ImageComparisonResult.h"
 
 class ImageComparisonResultsEvent: public AllBinaryEventObject {
 
-    private: ImageComparisonResult imageComparisonResult;
+    private: ImageComparisonResult* imageComparisonResult;
 
-public: ImageComparisonResultsEvent(Object* anyType, ImageComparisonResult imageComparisonInfo);
+public: ImageComparisonResultsEvent(Object* anyType, ImageComparisonResult* imageComparisonInfo);
 
-    public: ImageComparisonResult getImageComparisonResult();
+    public: ImageComparisonResult* getImageComparisonResult();
 
-    public: void setImageComparisonResult(ImageComparisonResult imageComparisonResult);
+    public: void setImageComparisonResult(ImageComparisonResult* imageComparisonResult);
 
 };
 

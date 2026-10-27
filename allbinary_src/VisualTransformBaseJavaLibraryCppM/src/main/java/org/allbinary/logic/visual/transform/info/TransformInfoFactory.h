@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,7 +47,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoInterface.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
 
 class TransformInfoFactory
             : public Object
@@ -49,7 +55,7 @@ class TransformInfoFactory
 
 private: TransformInfoFactory();
 
-    public: TransformInfoInterface getInstance();
+    public: TransformInfoInterface* getInstance();
 
 };
 

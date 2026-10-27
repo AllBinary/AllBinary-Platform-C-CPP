@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,24 +61,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ContextConfigurationInterface.h"
-#include "ContextConfigurationData.h"
+        #include "org/allbinary/business/context/configuration/ContextConfigurationInterface.h"
+#include "org/allbinary/business/context/configuration/ContextConfigurationData.h"
 
 class ContextConfigurationTableMapping
             : public Object
-        : public TableMappingInterface {
+        , public TableMappingInterface {
 
-    private: ContextConfigurationInterface contextConfigurationInterface;
+    private: ContextConfigurationInterface* contextConfigurationInterface;
 
-public: ContextConfigurationTableMapping(ContextConfigurationInterface contextConfigurationInterface){
+public: ContextConfigurationTableMapping(ContextConfigurationInterface* contextConfigurationInterface){
 this->contextConfigurationInterface= contextConfigurationInterface;
     
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
 
 
@@ -90,16 +96,16 @@ this->contextConfigurationInterface= contextConfigurationInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ContextConfigurationData::getInstance().NAME;
+                        return ContextConfigurationData::getInstance()->NAME;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList toVector(){
+    public: BasicArrayList* toVector(){
 
-    BasicArrayList vector = BasicArrayListD();;
+    BasicArrayList* vector = new BasicArrayListD();;
     
 
 

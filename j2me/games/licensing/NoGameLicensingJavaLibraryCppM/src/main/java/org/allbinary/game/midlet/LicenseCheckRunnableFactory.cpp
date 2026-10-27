@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/thread/ABRunnable.h>
@@ -44,13 +50,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SpecialDemoGameMidlet.h"
+        #include "org/allbinary/game/midlet/SpecialDemoGameMidlet.h"
 
 class LicenseCheckRunnableFactory
             : public Object
          {
 
-    public: ABRunnable getInstance(SpecialDemoGameMidlet specialDemoGameMidlet){
+    public: ABRunnable* getInstance(SpecialDemoGameMidlet* specialDemoGameMidlet){
 
 
 

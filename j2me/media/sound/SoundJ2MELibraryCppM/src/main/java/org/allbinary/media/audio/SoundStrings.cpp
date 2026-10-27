@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class SoundStrings
             : public Object
          {
 
-    private: static SoundStrings instance() { return SoundStrings(); }
+    private: static SoundStrings* instance() { static std::unique_ptr<SoundStrings> value(new SoundStrings()); return value.get(); }
 
-    public: static SoundStrings getInstance(){
+    public: static SoundStrings* getInstance(){
 
 
 

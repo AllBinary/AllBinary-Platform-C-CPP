@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -75,24 +81,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicItemData.h"
-#include "ItemInterface.h"
+        #include "org/allbinary/business/user/commerce/inventory/item/BasicItemData.h"
+#include "org/allbinary/business/user/commerce/inventory/item/ItemInterface.h"
 
 class BasicItemView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
-    private: ItemInterface itemInterface;
+    private: ItemInterface* itemInterface;
 
-    private: BasicArrayList vector;
+    private: BasicArrayList* vector;
 
-public: BasicItemView(ItemInterface itemInterface, BasicArrayList vector){
+public: BasicItemView(ItemInterface* itemInterface, BasicArrayList* vector){
 this->itemInterface= itemInterface;
     
 this->vector= vector;
@@ -102,35 +108,35 @@ this->vector= vector;
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, "toXmlNode");
+                                    this->logUtil->putF(this->commonStrings->START, this, "toXmlNode");
     
 
                                     }
                                 
 
-    HashMap<Object*, Object*> hashMap = this->itemInterface.toHashMap();;
+    HashMap<Object*, Object*>* hashMap = this->itemInterface->toHashMap();;
     
 
-    std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;;
+    std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;;
     
-hashMap.put(this->basicItemData.IMAGE, EMPTY_STRING);
-    
-
-    StringUtil stringUtil = StringUtil::getInstance();;
+hashMap->put(this->basicItemData->IMAGE, EMPTY_STRING);
     
 
-    Set keySet = hashMap.keys();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
 
-    Node node = document.createElement(this->basicItemData.ITEM);;
+    Set* keySet = hashMap->keys();;
     
 
-    std::vector<Object*> nameArray = keySet.();;
+    Node* node = document->createElement(this->basicItemData->ITEM);;
+    
+
+    std::vector<Object*> nameArray = keySet->();;
     
 
     int32_t size2 = nameArray.size();;
@@ -146,21 +152,21 @@ hashMap.put(this->basicItemData.IMAGE, EMPTY_STRING);
     std::string name = nameArray[index];;
     
 
-    std::string value = hashMap.get(name);;
+    std::string value = hashMap->get(name);;
     
-value= stringUtil.getNonNull(value);
+value= stringUtil->getNonNull(value);
     
-node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
+node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     
 }
 
 
-    Node totalNode = ModDomHelper::createNameValueNodes(document, this->basicItemData.TOTAL, this->itemInterface.getTotal().toString());;
+    Node* totalNode = ModDomHelper::createNameValueNodes(document, this->basicItemData->TOTAL, this->itemInterface->getTotal()->toString());;
     
-node.appendChild(totalNode);
+node->appendChild(totalNode);
     
 
-    int32_t size = this->vector.size();;
+    int32_t size = this->vector->size();;
     
 
 
@@ -170,12 +176,12 @@ node.appendChild(totalNode);
     int32_t index = 0;index < size; index++)
         {
 
-    DomNodeInterface domNodeInterface = this->vector.get(index);;
+    DomNodeInterface* domNodeInterface = dynamic_cast<DomNodeInterface*>(this->vector->get(index));;
     
 
-    Node customNode = domNodeInterface.toXmlNode(document);;
+    Node* customNode = domNodeInterface->toXmlNode(document);;
     
-node.appendChild(customNode);
+node->appendChild(customNode);
     
 }
 
@@ -188,7 +194,7 @@ node.appendChild(customNode);
 }
 
 
-    public: Document toXmlDoc(){
+    public: Document* toXmlDoc(){
 
 
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_PART_WEAPON_SALVOINTERFACE_H
         #define ORG_ALLBINARY_GAME_PART_WEAPON_SALVOINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/combat/weapon/WeaponProperties.h>
@@ -55,11 +61,11 @@ class SalvoInterface {
 
                 //@Throws(Exception.constructor)
             
-    void process(AllBinaryLayerManager allbinaryLayerManager, int16_t angle, int16_t otherAngle);
+    public: virtual void process(AllBinaryLayerManager* allbinaryLayerManager, int16_t angle, int16_t otherAngle) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void processScore(AllBinaryLayerManager allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface);
+    public: virtual void processScore(AllBinaryLayerManager* allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface) = 0;
 
 };
 

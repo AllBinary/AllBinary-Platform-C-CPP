@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/combat/damage/DamageFloaters.h>
@@ -59,24 +67,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BuildingPropertiesFactory.h"
-#include "BuildingLayer.h"
+        #include "org/allbinary/game/layer/building/BuildingPropertiesFactory.h"
+#include "org/allbinary/game/layer/building/BuildingLayer.h"
 
 class SimulatedBuildingPropertiesFactory: public BuildingPropertiesFactory {
 
-    private: static const SimulatedBuildingPropertiesFactory instanceC = SimulatedBuildingPropertiesFactory();
+    private: static SimulatedBuildingPropertiesFactory* instanceC() { static std::unique_ptr<SimulatedBuildingPropertiesFactory> value(new SimulatedBuildingPropertiesFactory()); return value.get(); }
 
-    public: static SimulatedBuildingPropertiesFactory getInstance(){
+    public: static SimulatedBuildingPropertiesFactory* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SimulatedBuildingPropertiesFactory::instanceC;
+                        return SimulatedBuildingPropertiesFactory::instanceC();
     
 }
 
 
-    public: int32_t getEfficiencyPerLevel(BuildingLayer buildingLayer){
+    public: int32_t getEfficiencyPerLevel(BuildingLayer* buildingLayer){
 
 
 
@@ -86,9 +94,9 @@ class SimulatedBuildingPropertiesFactory: public BuildingPropertiesFactory {
 }
 
 
-    public: DamageFloaters getDamageFloaters(BuildingLayer buildingLayer){
+    public: DamageFloaters* getDamageFloaters(BuildingLayer* buildingLayer){
 
-    DamageFloaters damageFloaters = DamageFloaters::getInstance();;
+    DamageFloaters* damageFloaters = DamageFloaters::getInstance();;
     
 this->damageFloatersPaintableInterface= damageFloaters;
     
@@ -103,7 +111,7 @@ this->damageFloatersPaintableInterface= damageFloaters;
 
                 //@Throws(Exception.constructor)
             
-    public: Paintable getHealthBar(BuildingLayer buildingLayer){
+    public: Paintable* getHealthBar(BuildingLayer* buildingLayer){
 
 
 
@@ -113,22 +121,22 @@ this->damageFloatersPaintableInterface= damageFloaters;
 }
 
 
-    public: ABHashtable<Object*, Object*> getHashtable(){
+    public: ABHashtable<Object*, Object*>* getHashtable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StdUtil::getInstance().NULL_TABLE;
+                        return StdUtil::getInstance()->NULL_TABLE;
     
 }
 
 
-    public: TrackingEvent getTrackingEvent(BuildingLayer buildingLayer){
+    public: TrackingEvent* getTrackingEvent(BuildingLayer* buildingLayer){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TrackingEvent(TrackingEventHandler::getInstance());
+                        return new TrackingEvent(TrackingEventHandler::getInstance());
     
 }
 

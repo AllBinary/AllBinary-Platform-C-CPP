@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_USER_EDITVALIDATIONUSERVIEW_H
         #define VIEWS_ADMIN_USER_EDITVALIDATIONUSERVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -74,23 +80,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserView.h"
+        #include "views/admin/user/UserView.h"
 
 class EditValidationUserView: public UserView, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string userName;
 
-public: EditValidationUserView(TransformInfoInterface transformInfoInterface);
+public: EditValidationUserView(TransformInfoInterface* transformInfoInterface);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string validationInfo();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -43,15 +49,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DestroyableInterface.h"
+        #include "org/allbinary/game/combat/destroy/DestroyableInterface.h"
 
 class DestroyableBaseBehavior
             : public Object
-        : public DestroyableInterface {
+        , public DestroyableInterface {
 
-    private: static DestroyableBaseBehavior instance() { return DestroyableBaseBehavior(); }
+    private: static DestroyableBaseBehavior* instance() { static std::unique_ptr<DestroyableBaseBehavior> value(new DestroyableBaseBehavior()); return value.get(); }
 
-    public: static DestroyableBaseBehavior getInstance(){
+    public: static DestroyableBaseBehavior* getInstance(){
 
 
 
@@ -66,7 +72,7 @@ class DestroyableBaseBehavior
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->constructor.name.toString();;
+                        return this->getClass()->getName();;
     
 }
 
@@ -77,7 +83,7 @@ class DestroyableBaseBehavior
 
 
 
-                            throw Exception(CommonStrings::getInstance().NOT_IMPLEMENTED);
+                            throw new Exception(CommonStrings::getInstance()->NOT_IMPLEMENTED);
                     
 }
 

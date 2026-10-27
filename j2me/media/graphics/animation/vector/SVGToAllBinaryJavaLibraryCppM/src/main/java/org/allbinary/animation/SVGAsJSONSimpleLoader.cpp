@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -83,17 +89,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShapeTypeFactory.h"
-#include "ShapeType.h"
-#include "Number.h"
+        #include "org/allbinary/animation/ShapeTypeFactory.h"
+#include "org/allbinary/animation/ShapeType.h"
+#include "org/allbinary/animation/Number.h"
 
 class SVGAsJSONSimpleLoader
             : public Object
          {
 
-    private: static SVGAsJSONSimpleLoader instance() { return SVGAsJSONSimpleLoader(); }
+    private: static SVGAsJSONSimpleLoader* instance() { static std::unique_ptr<SVGAsJSONSimpleLoader> value(new SVGAsJSONSimpleLoader()); return value.get(); }
 
-    public: static SVGAsJSONSimpleLoader getInstance(){
+    public: static SVGAsJSONSimpleLoader* getInstance(){
 
 
 
@@ -110,10 +116,10 @@ class SVGAsJSONSimpleLoader
     std::string svgAsJson = "{\"svg\": {\n" +"    \"rect\": {\n" +"        \"width\": 20,\n" +"        \"fill\": \"#008c00\",\n" +"        \"height\": 20\n" +"    },\n" +"    \"xmlns\": \"http://www.w3.org/2000/svg\",\n" +"    \"width\": 20,\n" +"    \"height\": 20\n" +"}}\n";;
     
 
-    std::vector<std::vector<int32_t>> points = SVGAsJSONSimpleLoader::getInstance().load(svgAsJson);;
+    std::vector<std::vector<int32_t>> points = SVGAsJSONSimpleLoader::getInstance()->load(svgAsJson);;
     
 
-    StringMaker stringBuilder = StringMaker();;
+    StringMaker* stringBuilder = new StringMaker();;
     
 
     int32_t size = points.size();;
@@ -135,22 +141,22 @@ class SVGAsJSONSimpleLoader
                         for (
     int32_t index2 = 0;index2 < size2; index2++)
         {
-stringBuilder.appendint(points[index][index2]);
+stringBuilder->appendint(points[index][index2]);
     
-stringBuilder.append(CommonSeps::getInstance().COMMA);
-    
-}
-
-}
-
-console.log(stringBuilder.toString());
+stringBuilder->append(CommonSeps::getInstance()->COMMA);
     
 }
 
+}
 
-    private: const GraphicsStrings graphicsStrings = GraphicsStrings::getInstance();
+System.out.println(stringBuilder->toString());
+    
+}
 
-    private: const ShapeTypeFactory shapeTypeFactory = ShapeTypeFactory::getInstance();
+
+    private: GraphicsStrings* graphicsStrings = GraphicsStrings::getInstance();
+
+    private: ShapeTypeFactory* shapeTypeFactory = ShapeTypeFactory::getInstance();
 
     private: const std::string KEY_SVG = "svg";
 
@@ -168,9 +174,9 @@ console.log(stringBuilder.toString());
 
     private: const std::string KEY_R = "r";
 
-    private: const std::string KEY_X = PositionStrings::getInstance().X;
+    private: const std::string KEY_X = PositionStrings::getInstance()->X;
 
-    private: const std::string KEY_Y = PositionStrings::getInstance().Y;
+    private: const std::string KEY_Y = PositionStrings::getInstance()->Y;
 
     private: const std::string ERROR_PARSE_SVG_JSON = "Unable to parse SVG JSON";
 
@@ -205,13 +211,13 @@ console.log(stringBuilder.toString());
 
         try {
             
-    JSONObject root = JSONObject(svgAsJson);;
+    JSONObject* root = new JSONObject(svgAsJson);;
     
 
-    Object* svgValue = root.opt(KEY_SVG);;
+    Object* svgValue = root->opt(KEY_SVG);;
     
 
-    JSONObject svg = svgValue == 
+    JSONObject* svg = svgValue == 
                                     nullptr
                                 
                         ?       
@@ -223,43 +229,43 @@ console.log(stringBuilder.toString());
     ;;
     
 
-    BasicArrayList pointVector = BasicArrayListD();;
+    BasicArrayList* pointVector = new BasicArrayListD();;
     
 
-    Enumeration<Object*> keys = svg.keys();;
+    Enumeration<Object*>* keys = svg->keys();;
     
 
-        while(keys.hasMoreElements())
+        while(keys->hasMoreElements())
         {
 
-    std::string key = keys.nextElement();;
+    std::string key = keys->nextElement();;
     
 
-    Object* value = svg.opt(key);;
+    Object* value = svg->opt(key);;
     
 
-                        if(this->shapeTypeFactory.KEY_LINE. === key)
+                        if(this->shapeTypeFactory->KEY_LINE. === key)
                         
                                     {
-                                    this->addShapes(pointVector, value, this->shapeTypeFactory.LINE);
+                                    this->addShapes(pointVector, value, this->shapeTypeFactory->LINE);
     
 
                                     }
                                 
                              else 
-                        if(this->shapeTypeFactory. === key)
+                        if(this->shapeTypeFactory-> === key)
                         
                                     {
-                                    this->addShapes(pointVector, value, this->shapeTypeFactory.CIRCLE);
+                                    this->addShapes(pointVector, value, this->shapeTypeFactory->CIRCLE);
     
 
                                     }
                                 
                              else 
-                        if(this->shapeTypeFactory.KEY_RECT. === key || this->shapeTypeFactory.KEY_RECTANGLE. === key)
+                        if(this->shapeTypeFactory->KEY_RECT. === key || this->shapeTypeFactory->KEY_RECTANGLE. === key)
                         
                                     {
-                                    this->addShapes(pointVector, value, this->shapeTypeFactory.RECTANGLE);
+                                    this->addShapes(pointVector, value, this->shapeTypeFactory->RECTANGLE);
     
 
                                     }
@@ -274,12 +280,12 @@ console.log(stringBuilder.toString());
     
 
                 //: 
-} catch(e) 
+} catch(JSONException& e) 
             {
 
 
 
-                            throw IllegalArgumentException(ERROR_PARSE_SVG_JSON, e);
+                            throw new IllegalArgumentException(ERROR_PARSE_SVG_JSON, &e);
                     
 }
 
@@ -288,16 +294,18 @@ console.log(stringBuilder.toString());
 
                 //@Throws(Exception.constructor)
             
-    private: void addShapes(BasicArrayList pointVector, Object* value, ShapeType shapeType){
+    private: void addShapes(BasicArrayList* pointVector, Object* value, ShapeType* shapeType){
 
-                        if(value instanceof JSONArray)
+                        if(
+                                        (dynamic_cast<const JSONArray*>(value) != nullptr)
+                                    )
                         
                                     {
                                     
-    JSONArray array = *dynamic_cast<JSONArray*>(value);;
+    JSONArray* array = dynamic_cast<JSONArray*>(value);;
     
 
-    int32_t size = array.length();;
+    int32_t size = array->length();;
     
 
 
@@ -306,7 +314,7 @@ console.log(stringBuilder.toString());
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->addShape(pointVector, array.opt(index), shapeType);
+this->addShape(pointVector, array->opt(index), shapeType);
     
 }
 
@@ -324,12 +332,12 @@ this->addShape(pointVector, array.opt(index), shapeType);
 
                 //@Throws(Exception.constructor)
             
-    private: void addShape(BasicArrayList pointVector, Object* value, ShapeType shapeType){
+    private: void addShape(BasicArrayList* pointVector, Object* value, ShapeType* shapeType){
 
-    JSONObject shape = this->asObject(value, shapeType.getName());;
+    JSONObject* shape = this->asObject(value, shapeType->getName());;
     
 
-                        if(shapeType == this->shapeTypeFactory.LINE)
+                        if(shapeType == this->shapeTypeFactory->LINE)
                         
                                     {
                                     this->addLine(pointVector, shape);
@@ -338,7 +346,7 @@ this->addShape(pointVector, array.opt(index), shapeType);
                                     }
                                 
                              else 
-                        if(shapeType == this->shapeTypeFactory.CIRCLE)
+                        if(shapeType == this->shapeTypeFactory->CIRCLE)
                         
                                     {
                                     this->addCircle(pointVector, shape);
@@ -357,7 +365,7 @@ this->addShape(pointVector, array.opt(index), shapeType);
 
                 //@Throws(Exception.constructor)
             
-    private: void addLine(BasicArrayList pointVector, JSONObject line){
+    private: void addLine(BasicArrayList* pointVector, JSONObject* line){
 this->addPoint(pointVector, this->readInt(line, KEY_X1), this->readInt(line, KEY_Y1));
     
 this->addPoint(pointVector, this->readInt(line, KEY_X2), this->readInt(line, KEY_Y2));
@@ -369,7 +377,7 @@ this->addSeparator(pointVector);
 
                 //@Throws(Exception.constructor)
             
-    private: void addCircle(BasicArrayList pointVector, JSONObject circle){
+    private: void addCircle(BasicArrayList* pointVector, JSONObject* circle){
 
     int32_t cx = this->readInt(circle, KEY_CX);;
     
@@ -406,7 +414,7 @@ this->addSeparator(pointVector);
 
                 //@Throws(Exception.constructor)
             
-    private: void addRectangle(BasicArrayList pointVector, JSONObject rectangle){
+    private: void addRectangle(BasicArrayList* pointVector, JSONObject* rectangle){
 
     int32_t x = this->readInt(rectangle, KEY_X, 0);;
     
@@ -414,10 +422,10 @@ this->addSeparator(pointVector);
     int32_t y = this->readInt(rectangle, KEY_Y, 0);;
     
 
-    int32_t width = this->readInt(rectangle, graphicsStrings.WIDTH);;
+    int32_t width = this->readInt(rectangle, graphicsStrings->WIDTH);;
     
 
-    int32_t height = this->readInt(rectangle, graphicsStrings.HEIGHT);;
+    int32_t height = this->readInt(rectangle, graphicsStrings->HEIGHT);;
     
 this->addPoint(pointVector, x, y);
     
@@ -434,23 +442,23 @@ this->addSeparator(pointVector);
 }
 
 
-    private: void addPoint(BasicArrayList pointVector, int32_t x, int32_t y){
-pointVector.add({x,y});
+    private: void addPoint(BasicArrayList* pointVector, int32_t x, int32_t y){
+pointVector->add({x,y});
     
 }
 
 
-    private: void addSeparator(BasicArrayList pointVector){
-pointVector.add({SHAPE_SEPARATOR[0],SHAPE_SEPARATOR[1]});
+    private: void addSeparator(BasicArrayList* pointVector){
+pointVector->add({SHAPE_SEPARATOR[0],SHAPE_SEPARATOR[1]});
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: int32_t readInt(JSONObject anyType, std::string key){
+    private: int32_t readInt(JSONObject* anyType, std::string key){
 
-    Object* value = anyType.get(key);;
+    Object* value = anyType->get(key);;
     
 
                         if(value == 
@@ -461,7 +469,7 @@ pointVector.add({SHAPE_SEPARATOR[0],SHAPE_SEPARATOR[1]});
                                     
 
 
-                            throw IllegalArgumentException(ERROR_MISSING_KEY_PREFIX +key);
+                            throw new IllegalArgumentException(ERROR_MISSING_KEY_PREFIX +key);
                     
 
                                     }
@@ -475,15 +483,15 @@ pointVector.add({SHAPE_SEPARATOR[0],SHAPE_SEPARATOR[1]});
 }
 
 
-    private: int32_t readInt(JSONObject anyType, std::string key, int32_t defaultValue){
+    private: int32_t readInt(JSONObject* anyType, std::string key, int32_t defaultValue){
 
         try {
             
-                        if(anyType.has(key))
+                        if(anyType->has(key))
                         
                                     {
                                     
-    Object* value = anyType.get(key);;
+    Object* value = anyType->get(key);;
     
 
 
@@ -496,7 +504,7 @@ pointVector.add({SHAPE_SEPARATOR[0],SHAPE_SEPARATOR[1]});
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 e.printStackTrace();
     
@@ -513,27 +521,31 @@ e.printStackTrace();
 
     private: int32_t toInt(Object* value, std::string key){
 
-                        if(value instanceof Number)
+                        if(
+                                        (dynamic_cast<const Number*>(value) != nullptr)
+                                    )
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return static_cast<int32_t>(Math::round((value)).doubleValue()));
+                        return static_cast<int32_t>(Math::round((value).doubleValue()));
     
 
                                     }
                                 
 
-                        if(value instanceof String)
+                        if(
+                                        (dynamic_cast<const String*>(value) != nullptr)
+                                    )
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return static_cast<int32_t>(Math::round(Double::parseDouble(value)));
+                        return static_cast<int32_t>(Math::round(Double.parseDouble(value)));
     
 
                                     }
@@ -541,21 +553,23 @@ e.printStackTrace();
 
 
 
-                            throw IllegalArgumentException(ERROR_INVALID_NUMBER_PREFIX +key);
+                            throw new IllegalArgumentException(ERROR_INVALID_NUMBER_PREFIX +key);
                     
 }
 
 
-    private: JSONObject asObject(Object value, std::string name){
+    private: JSONObject* asObject(Object value, std::string name){
 
-                        if(value instanceof JSONObject)
+                        if(
+                                        (dynamic_cast<const JSONObject*>(value) != nullptr)
+                                    )
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *dynamic_cast<JSONObject*>(value);
+                        return dynamic_cast<JSONObject*>(value);
     
 
                                     }
@@ -563,14 +577,14 @@ e.printStackTrace();
 
 
 
-                            throw IllegalArgumentException(ERROR_EXPECTED_OBJECT_PREFIX +name);
+                            throw new IllegalArgumentException(ERROR_EXPECTED_OBJECT_PREFIX +name);
                     
 }
 
 
-    private: std::vector<std::vector<int32_t>> toPoints(BasicArrayList pointVector){
+    private: std::vector<std::vector<int32_t>> toPoints(BasicArrayList* pointVector){
 
-                        if(pointVector.size() == 0)
+                        if(pointVector->size() == 0)
                         
                                     {
                                     
@@ -583,19 +597,19 @@ e.printStackTrace();
                                     }
                                 
 
-    std::vector<std::vector<int32_t>> points = std::vector<std::vector<int32_t>>(pointVector.size(), std::vector<int32_t>(2));;
+    std::vector<std::vector<int32_t>> points = std::vector<std::vector<int32_t>>(pointVector->size(), std::vector<int32_t>(2));;
     
 
 
 
 
                         for (
-    int32_t index = 0;index < pointVector.size(); index++)
+    int32_t index = 0;index < pointVector->size(); index++)
         {
 
     std::vector<int32_t> point = 
                         //Otherwise - castExpression - ArrayType - INT
-pointVector.get(index)
+pointVector->get(index)
                         //Otherwise - castExpression - ArrayType - INT
 ;;
     

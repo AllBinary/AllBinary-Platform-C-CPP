@@ -23,6 +23,12 @@
 
             #include <hilog/log.h>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <android/graphics/Bitmap.h>
@@ -69,15 +75,15 @@ class AndroidImageUtil
             : public Object
          {
 
-    private: static AndroidImageUtil instance() { return AndroidImageUtil(); }
+    private: static AndroidImageUtil* instance() { static std::unique_ptr<AndroidImageUtil> value(new AndroidImageUtil()); return value.get(); }
 
-    public: static AndroidImageUtil getInstance();
+    public: static AndroidImageUtil* getInstance();
 
-    public: void paintBitmap(Bitmap bitmap, Bitmap originalBitmap, Paint paint);
+    public: void paintBitmap(Bitmap* bitmap, Bitmap* originalBitmap, Paint* paint);
 
-    public: void paint(Image image, Image originalImage, Paint paint);
+    public: void paint(Image* image, Image* originalImage, Paint* paint);
 
-    public: void rotate(Image image, Image originalImage, Matrix matrix, Paint paint);
+    public: void rotate(Image* image, Image* originalImage, Matrix* matrix, Paint* paint);
 
 };
 

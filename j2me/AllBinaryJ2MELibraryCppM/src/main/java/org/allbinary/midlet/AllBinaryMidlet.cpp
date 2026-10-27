@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Command.h>
@@ -98,14 +106,14 @@
         
 class AllBinaryMidlet: public MIDlet, public CommandListener {
 
-    private: static Object* NULL_ALLBINARY_MIDLET = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* NULL_ALLBINARY_MIDLET = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static AllBinaryMidlet getNullInstance(){
+    public: static AllBinaryMidlet* getNullInstance(){
 
-                        if(AllBinaryMidlet::NULL_ALLBINARY_MIDLET == NullUtil::getInstance().NULL_OBJECT)
+                        if(AllBinaryMidlet::NULL_ALLBINARY_MIDLET == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    AllBinaryMidlet::NULL_ALLBINARY_MIDLET= AllBinaryMidlet();
+                                    AllBinaryMidlet::NULL_ALLBINARY_MIDLET= new AllBinaryMidlet();
     
 
                                     }
@@ -114,14 +122,14 @@ class AllBinaryMidlet: public MIDlet, public CommandListener {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryMidlet::NULL_ALLBINARY_MIDLET;
+                        return dynamic_cast<AllBinaryMidlet*>(AllBinaryMidlet::NULL_ALLBINARY_MIDLET);
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: const std::string SET_DISPLAY = "setDisplay";
 
@@ -131,37 +139,37 @@ class AllBinaryMidlet: public MIDlet, public CommandListener {
 
     private: const std::string SETTING_NO_TITLE = "Setting: No Title, Display: ";
 
-    private: ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
+    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
 
     private: bool midletDestroyed= false;
 
 public: AllBinaryMidlet(){
-this->logUtil.putF(this->commonStrings.CONSTRUCTOR, this, "AllBinaryMidlet::AllBinaryMidlet");
+this->logUtil->putF(this->commonStrings->CONSTRUCTOR, this, "AllBinaryMidlet::AllBinaryMidlet");
     
 }
 
 
-    protected: void setDisplay(Displayable newDisplay){
+    protected: void setDisplay(Displayable* newDisplay){
 
-    std::string title = StringUtil::getInstance().EMPTY_STRING;;
+    std::string title = StringUtil::getInstance()->EMPTY_STRING;;
     
 
                         if(newDisplay != NullCanvas::NULL_CANVAS)
                         
                                     {
-                                    title= newDisplay.getTitle();
+                                    title= newDisplay->getTitle();
     
 
                         if(true)
                         
                                     {
-                                    this->logUtil.putF(StringMaker().append(this->SETTING_).append(title).append(this->_DISPLAY_).append(StringUtil::getInstance().toString(newDisplay)).toString(), this, this->SET_DISPLAY);
+                                    this->logUtil->putF((new StringMaker())->append(this->SETTING_)->append(title)->append(this->_DISPLAY_)->append(StringUtil::getInstance()->toString(newDisplay))->toString(), this, this->SET_DISPLAY);
     
 
                                     }
                                 
                         else {
-                            this->logUtil.putF(StringMaker().append(this->SETTING_NO_TITLE).append(StringUtil::getInstance().toString(newDisplay)).toString(), this, this->SET_DISPLAY);
+                            this->logUtil->putF((new StringMaker())->append(this->SETTING_NO_TITLE)->append(StringUtil::getInstance()->toString(newDisplay))->toString(), this, this->SET_DISPLAY);
     
 
                         }
@@ -170,14 +178,14 @@ this->logUtil.putF(this->commonStrings.CONSTRUCTOR, this, "AllBinaryMidlet::AllB
                                     }
                                 
 
-    Display display = this->getDisplay();;
+    Display* display = this->getDisplay();;
     
-display.setCurrent(newDisplay);
+display->setCurrent(newDisplay);
     
 }
 
 
-    public: Display getDisplay(){
+    public: Display* getDisplay(){
 
 
 
@@ -187,12 +195,12 @@ display.setCurrent(newDisplay);
 }
 
 
-    protected: Displayable getCurrentDisplayable(){
+    protected: Displayable* getCurrentDisplayable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Display::getDisplay(this).getCurrent();;
+                        return Display::getDisplay(this)->getCurrent();;
     
 }
 
@@ -216,13 +224,13 @@ this->midletDestroyed= destroyed;
                 //@Throws(MIDletStateChangeException.constructor)
             
     protected: void startApp(){
-ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
+ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
     protected: void pauseApp(){
-ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
+ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
@@ -237,7 +245,7 @@ ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
     
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, METHOD_NAME);
+            this->logUtil->putF(this->commonStrings->START, this, METHOD_NAME);
     
 PreLogUtil::put(Memory::getInfo(), this, METHOD_NAME);
     
@@ -245,9 +253,9 @@ this->setDestroyed(true);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, METHOD_NAME, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, METHOD_NAME, &e);
     
 }
 
@@ -256,8 +264,8 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, METHOD_NAME, e);
 
                 //@Throws(Exception.constructor)
             
-    public: void setStartStateHashtable(ABHashtable<Object*, Object*> hashtable){
-this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().START_LABEL).append(StringUtil::getInstance().toString(hashtable)).toString(), this, "setStartStateHashtable");
+    public: void setStartStateHashtable(ABHashtable<Object*, Object*>* hashtable){
+this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append(StringUtil::getInstance()->toString(hashtable))->toString(), this, "setStartStateHashtable");
     
 this->hashtable= hashtable;
     
@@ -266,8 +274,8 @@ this->hashtable= hashtable;
 
                 //@Throws(Exception.constructor)
             
-    public: ABHashtable<Object*, Object*> getStartStateHashtable(){
-this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().START_LABEL).append(StringUtil::getInstance().toString(this->hashtable)).toString(), this, "getStartStateHashtable");
+    public: ABHashtable<Object*, Object*>* getStartStateHashtable(){
+this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append(StringUtil::getInstance()->toString(this->hashtable))->toString(), this, "getStartStateHashtable");
     
 
 
@@ -280,19 +288,19 @@ this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().START_LABEL)
 
                 //@Throws(Exception.constructor)
             
-    public: ABHashtable<Object*, Object*> getCurrentStateHashtable(){
-this->logUtil.putF(this->commonStrings.START, this, "getStateHashtable");
+    public: ABHashtable<Object*, Object*>* getCurrentStateHashtable(){
+this->logUtil->putF(this->commonStrings->START, this, "getStateHashtable");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StdUtil::getInstance().NULL_TABLE;
+                        return StdUtil::getInstance()->NULL_TABLE;
     
 }
 
 
-    public: void commandAction(Command command, Displayable displayable){
+    public: void commandAction(Command* command, Displayable* displayable){
 }
 
 

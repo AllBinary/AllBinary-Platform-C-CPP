@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_FIXEDPOINT_H
         #define ORG_ALLBINARY_ANIMATION_FIXEDPOINT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -32,9 +38,9 @@ class FixedPoint
             : public Object
          {
 
-    private: static FixedPoint instance() { return FixedPoint(); }
+    private: static FixedPoint* instance() { static std::unique_ptr<FixedPoint> value(new FixedPoint()); return value.get(); }
 
-    public: static FixedPoint getInstance();
+    public: static FixedPoint* getInstance();
 
     public: const int32_t ONE = 1<<16;
 

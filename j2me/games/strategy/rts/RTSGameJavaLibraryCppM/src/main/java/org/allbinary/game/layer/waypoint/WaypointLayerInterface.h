@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTLAYERINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTLAYERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/caption/CaptionAnimationHelperBase.h>
@@ -62,73 +68,73 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WaypointLogHelper.h"
-#include "Waypoint2LogHelper.h"
-#include "WaypointRunnableLogHelper.h"
+        #include "org/allbinary/game/layer/waypoint/WaypointLogHelper.h"
+#include "org/allbinary/game/layer/waypoint/Waypoint2LogHelper.h"
+#include "org/allbinary/game/layer/waypoint/WaypointRunnableLogHelper.h"
 
 class WaypointLayerInterface {
 
                 //@Throws(Exception.constructor)
             
-    void init(GeographicMapCellHistory geographicMapCellHistory, BasicArrayList geographicMapCellPositionBasicArrayList);
+    public: virtual void init(GeographicMapCellHistory* geographicMapCellHistory, BasicArrayList* geographicMapCellPositionBasicArrayList) = 0;
 
-    BasicArrayList getMoveOutOfBuildAreaPath(GeographicMapCellPosition geographicMapCellPosition);
-
-                //@Throws(Exception.constructor)
-            
-    void setClosestGeographicMapCellHistory(BasicArrayList pathsList);
-
-    void teleportTo(GeographicMapCellPosition geographicMapCellPosition);
+    public: virtual BasicArrayList* getMoveOutOfBuildAreaPath(GeographicMapCellPosition* geographicMapCellPosition) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void setLoad(int32_t resource);
+    public: virtual void setClosestGeographicMapCellHistory(BasicArrayList* pathsList) = 0;
+
+    public: virtual void teleportTo(GeographicMapCellPosition* geographicMapCellPosition) = 0;
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList getSurroundingGeographicMapCellPositionList();
-
-    bool isSelected();
-
-    bool shouldAddWaypointFromBuilding();
-
-    bool isShowMoreCaptionStates();
+    public: virtual void setLoad(int32_t resource) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void trackTo(std::string reason);
+    public: virtual BasicArrayList* getSurroundingGeographicMapCellPositionList() = 0;
+
+    public: virtual bool isSelected() = 0;
+
+    public: virtual bool shouldAddWaypointFromBuilding() = 0;
+
+    public: virtual bool isShowMoreCaptionStates() = 0;
 
                 //@Throws(Exception.constructor)
             
-    void trackToDXY(int32_t dx, int32_t dy);
+    public: virtual void trackTo(std::string reason) = 0;
 
                 //@Throws(Exception.constructor)
             
-    bool buildingChase(AllBinaryLayer allbinaryLayer, GeographicMapCellPosition cellPosition);
-
-    TrackingEvent getTrackingEvent();
-
-    void allStop();
-
-    bool isWaypointListEmptyOrOnlyTargets();
+    public: virtual void trackToDXY(int32_t dx, int32_t dy) = 0;
 
                 //@Throws(Exception.constructor)
             
-    GeographicMapCellPosition getCurrentGeographicMapCellPosition();
+    public: virtual bool buildingChase(AllBinaryLayer* allbinaryLayer, GeographicMapCellPosition* cellPosition) = 0;
+
+    public: virtual TrackingEvent* getTrackingEvent() = 0;
+
+    public: virtual void allStop() = 0;
+
+    public: virtual bool isWaypointListEmptyOrOnlyTargets() = 0;
 
                 //@Throws(Exception.constructor)
             
-    GeographicMapCellPosition getTopLeftGeographicMapCellPosition();
+    public: virtual GeographicMapCellPosition* getCurrentGeographicMapCellPosition() = 0;
 
-    CaptionAnimationHelperBase getCaptionAnimationHelper();
+                //@Throws(Exception.constructor)
+            
+    public: virtual GeographicMapCellPosition* getTopLeftGeographicMapCellPosition() = 0;
 
-    WaypointBehaviorBase getWaypointBehavior();
+    public: virtual CaptionAnimationHelperBase* getCaptionAnimationHelper() = 0;
 
-    WaypointLogHelper getWaypointLogHelper();
+    public: virtual WaypointBehaviorBase* getWaypointBehavior() = 0;
 
-    Waypoint2LogHelper getWaypoint2LogHelper();
+    public: virtual WaypointLogHelper* getWaypointLogHelper() = 0;
 
-    WaypointRunnableLogHelper getWaypointRunnableLogHelper();
+    public: virtual Waypoint2LogHelper* getWaypoint2LogHelper() = 0;
+
+    public: virtual WaypointRunnableLogHelper* getWaypointRunnableLogHelper() = 0;
 
 };
 

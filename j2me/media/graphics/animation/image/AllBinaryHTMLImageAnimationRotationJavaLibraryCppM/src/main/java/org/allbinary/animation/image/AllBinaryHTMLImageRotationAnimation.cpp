@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -73,29 +79,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageBaseRotationAnimation.h"
-#include "AlphaBaseProcessor.h"
-#include "AlphaProcessor.h"
+        #include "org/allbinary/animation/image/ImageBaseRotationAnimation.h"
+#include "org/allbinary/animation/image/AlphaBaseProcessor.h"
+#include "org/allbinary/animation/image/AlphaProcessor.h"
 
 class AllBinaryHTMLImageRotationAnimation: public ImageBaseRotationAnimation {
 
-    private: const ImageRotationUtil imageRotationUtil = ImageRotationUtil::getInstance();
+    private: ImageRotationUtil* imageRotationUtil = ImageRotationUtil::getInstance();
 
-    private: const ImageModifierUtil imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
+    private: ImageModifierUtil* imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
 
-    private: Image originalImage;
+    private: Image* originalImage;
 
-    private: const std::vector<Image> twoImages = std::vector<Image>(2);
+    private: const std::vector<Image*> twoImages = std::vector<Image*>(2);
 
-    private: const std::vector<CanvasSurface> canvasSurfaceArray = std::vector<CanvasSurface>(2);
+    private: const std::vector<CanvasSurface*> canvasSurfaceArray = std::vector<CanvasSurface*>(2);
 
-    private: Image imageToShow;
+    private: Image* imageToShow;
 
     private: int32_t bufferedImageIndex= 0;
 
-    private: AlphaBaseProcessor alphaProcessor = AlphaBaseProcessor::getInstance();
+    private: AlphaBaseProcessor* alphaProcessor = AlphaBaseProcessor::getInstance();
 
-protected: AllBinaryHTMLImageRotationAnimation(Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior) : ImageBaseRotationAnimation(image, angleInfo, totalAngle, animationBehavior){
+protected: AllBinaryHTMLImageRotationAnimation(Image* originalImage, Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior) : ImageBaseRotationAnimation(image, angleInfo, totalAngle, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -108,7 +114,7 @@ this->imageToShow= image;
     
 this->twoImages[0]= image;
     
-this->twoImages[1]= ImageCopyUtil::getInstance().createImage(image);
+this->twoImages[1]= ImageCopyUtil::getInstance()->createImage(image);
     
 this->canvasSurfaceArray[0]= this->getCanvasSurface(this->twoImages[0]);
     
@@ -117,17 +123,17 @@ this->canvasSurfaceArray[1]= this->getCanvasSurface(this->twoImages[1]);
 }
 
 
-    public: CanvasSurface getCanvasSurface(Image image){
+    public: CanvasSurface* getCanvasSurface(Image* image){
 
-    PlaynMutableImage htmlImage = image;;
+    PlaynMutableImage* htmlImage = dynamic_cast<PlaynMutableImage*>(image);;
     
 
-    CanvasImage canvasImage = htmlImage.getImage();;
+    CanvasImage* canvasImage = dynamic_cast<CanvasImage*>(htmlImage->getImage());;
     
 
-    CanvasSurface canvasSurface = htmlImage.getCanvasSurface(canvasImage);;
+    CanvasSurface* canvasSurface = htmlImage->getCanvasSurface(canvasImage);;
     
-canvasSurface.translate(this->originalImage.getWidth() /2, this->originalImage.getHeight() /2);
+canvasSurface->translate(this->originalImage->getWidth() /2, this->originalImage->getHeight() /2);
     
 
 
@@ -138,14 +144,14 @@ canvasSurface.translate(this->originalImage.getWidth() /2, this->originalImage.g
 }
 
 
-    public: void setBasicColorP(BasicColor basicColor){
+    public: void setBasicColorP(BasicColor* basicColor){
 
     bool changed = false;;
     
 
                         if(this->getBasicColorP() == 
                                     nullptr
-                                 || this->getBasicColorP().intValue() != basicColor.intValue())
+                                 || this->getBasicColorP()->intValue() != basicColor->intValue())
                         
                                     {
                                     changed= true;
@@ -214,17 +220,17 @@ this->updateImage();
 
     private: void updateImage(){
 
-    CanvasSurface canvasSurface = this->canvasSurfaceArray[this->bufferedImageIndex];;
+    CanvasSurface* canvasSurface = this->canvasSurfaceArray[this->bufferedImageIndex];;
     
-canvasSurface.save();
+canvasSurface->save();
     
-this->imageRotationUtil.rotateImageCanvasSurfaceClear(this->originalImage, this->twoImages[this->bufferedImageIndex], canvasSurface, this->angleInfo.getAngle() +90);
+this->imageRotationUtil->rotateImageCanvasSurfaceClear(this->originalImage, this->twoImages[this->bufferedImageIndex], canvasSurface, this->angleInfo.getAngle() +90);
     
-this->alphaProcessor.setAlpha(this->imageModifierUtil, this->originalImage, this->twoImages[this->bufferedImageIndex], this->alphaP);
+this->alphaProcessor->setAlpha(this->imageModifierUtil, this->originalImage, this->twoImages[this->bufferedImageIndex], this->alphaP);
     
-this->imageRotationUtil.drawImage(this->originalImage, imageToShow, canvasSurface);
+this->imageRotationUtil->drawImage(this->originalImage, imageToShow, canvasSurface);
     
-canvasSurface.restore();
+canvasSurface->restore();
     
 this->swap();
     
@@ -260,8 +266,8 @@ this->imageToShow= this->twoImages[this->bufferedImageIndex];
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
-graphics.drawImage(this->imageToShow, x, y, this->anchor);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+graphics->drawImage(this->imageToShow, x, y, this->anchor);
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_TICK_OPTIMIZEDTICKABLELAYERPROCESSOR_H
         #define ORG_ALLBINARY_GAME_TICK_OPTIMIZEDTICKABLELAYERPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
@@ -53,7 +59,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OptimizedTickableLayerManager.h"
+        #include "org/allbinary/game/tick/OptimizedTickableLayerManager.h"
 
 class OptimizedTickableLayerProcessor: public LayerProcessor {
 
@@ -61,9 +67,9 @@ public: OptimizedTickableLayerProcessor();
 
                 //@Throws(Exception.constructor)
             
-    public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index);
+    public: void processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index);
 
-    public: bool isProcessorLayer(AllBinaryLayer layerInterface);
+    public: bool isProcessorLayer(AllBinaryLayer* layerInterface);
 
 };
 

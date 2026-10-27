@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INIT_INITINTERFACE_H
         #define ORG_ALLBINARY_INIT_INITINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -46,7 +52,7 @@ class InitInterface {
 
                 //@Throws(Exception.constructor)
             
-    void init();
+    public: virtual void init() = 0;
 
 };
 

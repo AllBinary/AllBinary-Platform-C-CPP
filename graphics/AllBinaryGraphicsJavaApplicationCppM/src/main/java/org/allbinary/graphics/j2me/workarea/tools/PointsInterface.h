@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSINTERFACE_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -45,9 +51,9 @@
         
 class PointsInterface {
 
-    BasicArrayList getPoints();
+    public: virtual BasicArrayList* getPoints() = 0;
 
-    void addPoints(BasicArrayList vector);
+    public: virtual void addPoints(BasicArrayList* vector) = 0;
 
 };
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -87,42 +93,42 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputRobotInterface.h"
-#include "InputRobot.h"
+        #include "org/allbinary/input/automation/robot/InputRobotInterface.h"
+#include "org/allbinary/input/automation/robot/InputRobot.h"
 
 class InputRobotFactory
             : public Object
          {
 
-    private: static const InputRobotFactory inputRobotFactory = InputRobotFactory();
+    private: static InputRobotFactory* inputRobotFactory() { static std::unique_ptr<InputRobotFactory> value(new InputRobotFactory()); return value.get(); }
 
                 //@Throws(Exception.constructor)
             
-    public: static InputRobotFactory getInstance(){
+    public: static InputRobotFactory* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputRobotFactory::inputRobotFactory;
+                        return InputRobotFactory::inputRobotFactory();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: static void loadLibraries(Collection collection){
+    public: static void loadLibraries(Collection* collection){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
-logUtil.putF("Loading Libraries", "InputRobotFactory", "loadLibraries");
-    
-
-    Iterator iterator = collection.iterator();;
+logUtil->putF("Loading Libraries", "InputRobotFactory", "loadLibraries");
     
 
-        while(iterator.hasNext())
+    Iterator* iterator = collection->iterator();;
+    
+
+        while(iterator->hasNext())
         {
-InputRobotFactory::loadLibrary(iterator.next());
+InputRobotFactory::loadLibrary(dynamic_cast<InputRobotInterface*>(iterator->next()));
     
 }
 
@@ -131,20 +137,20 @@ InputRobotFactory::loadLibrary(iterator.next());
 
                 //@Throws(Exception.constructor)
             
-    public: static void loadLibrary(InputRobotInterface inputRobotInterface){
+    public: static void loadLibrary(InputRobotInterface* inputRobotInterface){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
                         if(InterfaceUtil::isImplemented(SecuredNativeLibraryInterface.constructor, inputRobotInterface))
                         
                                     {
-                                    logUtil.putF("Loading Library: " +inputRobotInterface.getName(), "InputRobotFactory", "loadLibraries");
+                                    logUtil->putF("Loading Library: " +inputRobotInterface->getName(), "InputRobotFactory", "loadLibraries");
     
 
-    SecuredNativeLibraryInterface securedNativeLibraryInterface = inputRobotInterface;;
+    SecuredNativeLibraryInterface* securedNativeLibraryInterface = dynamic_cast<SecuredNativeLibraryInterface*>(inputRobotInterface);;
     
-securedNativeLibraryInterface.load();
+securedNativeLibraryInterface->load();
     
 
                                     }
@@ -152,25 +158,25 @@ securedNativeLibraryInterface.load();
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
+    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
 
-    private: HelpSetListener helpSetListenerInterface;
+    private: HelpSetListener* helpSetListenerInterface;
 
 private: InputRobotFactory(){
 
         try {
             
-    GraphicsEnvironment graphenv = GraphicsEnvironment::getLocalGraphicsEnvironment();;
+    GraphicsEnvironment* graphenv = GraphicsEnvironment::getLocalGraphicsEnvironment();;
     
 
-    std::vector<GraphicsDevice> screens = graphenv.getScreenDevices();;
+    std::vector<GraphicsDevice*> screens = graphenv->getScreenDevices();;
     
 
-    InputRobotInterface inputRobotInterface;;
+    InputRobotInterface* inputRobotInterface;;
     
 
 
@@ -179,28 +185,28 @@ private: InputRobotFactory(){
                         for (
     int32_t i = 0;i < screens.size(); i++)
         {
-inputRobotInterface= InputRobot(screens[i]);
+inputRobotInterface= dynamic_cast<InputRobotInterface*>(new InputRobot(screens[i]));
     
-this->logUtil.putF("Adding Robot: " +inputRobotInterface.getName(), this, "getRobots");
+this->logUtil->putF("Adding Robot: " +inputRobotInterface->getName(), this, "getRobots");
     
-this->get().put(inputRobotInterface.getName(), inputRobotInterface);
+this->get()->put(inputRobotInterface->getName(), inputRobotInterface);
     
 }
 
-this->logUtil.putF("Number Of Robots: " +this->hashtable.size(), this, "getRobots");
+this->logUtil->putF("Number Of Robots: " +this->hashtable->size(), this, "getRobots");
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.putF(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(this->commonStrings->EXCEPTION, this, this->commonStrings->CONSTRUCTOR);
     
 }
 
 }
 
 
-    public: void addListener(HelpSetListener helpSetListenerInterface){
+    public: void addListener(HelpSetListener* helpSetListenerInterface){
 this->helpSetListenerInterface= helpSetListenerInterface;
     
 }
@@ -208,13 +214,13 @@ this->helpSetListenerInterface= helpSetListenerInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: void add(InputRobotInterface inputRobotInterface){
-this->logUtil.putF("Adding InputRobotInterface: " +inputRobotInterface.getName(), this, "add");
+    public: void add(InputRobotInterface* inputRobotInterface){
+this->logUtil->putF("Adding InputRobotInterface: " +inputRobotInterface->getName(), this, "add");
     
-this->get().put(inputRobotInterface.getName(), inputRobotInterface);
+this->get()->put(inputRobotInterface->getName(), inputRobotInterface);
     
 
-    HelpSet helpSet = inputRobotInterface.getHelpSet();;
+    HelpSet* helpSet = inputRobotInterface->getHelpSet();;
     
 
                         if(this->helpSetListenerInterface != 
@@ -233,9 +239,9 @@ this->get().put(inputRobotInterface.getName(), inputRobotInterface);
                         
                                     {
                                     
-    HelpSetEvent helpSetEvent = HelpSetEvent(this, helpSet, HelpSetEvent::HELPSET_ADDED);;
+    HelpSetEvent* helpSetEvent = new HelpSetEvent(this, helpSet, HelpSetEvent::HELPSET_ADDED);;
     
-this->helpSetListenerInterface.helpSetAdded(helpSetEvent);
+this->helpSetListenerInterface->helpSetAdded(helpSetEvent);
     
 
                                     }
@@ -244,7 +250,7 @@ this->helpSetListenerInterface.helpSetAdded(helpSetEvent);
                                     }
                                 
                         else {
-                            this->logUtil.putF("Null HelpSet For: " +inputRobotInterface.getName(), this, "add");
+                            this->logUtil->putF("Null HelpSet For: " +inputRobotInterface->getName(), this, "add");
     
 
                         }
@@ -253,7 +259,7 @@ this->helpSetListenerInterface.helpSetAdded(helpSetEvent);
                                     }
                                 
                         else {
-                            this->logUtil.putF("No HelpSet Listener", this, "add");
+                            this->logUtil->putF("No HelpSet Listener", this, "add");
     
 
                         }
@@ -265,12 +271,12 @@ this->helpSetListenerInterface.helpSetAdded(helpSetEvent);
             
     public: void loadLibraries(){
 
-    Set set = this->get().keySet();;
+    Set* set = this->get()->keySet();;
     
-this->logUtil.putF("Loading Libraries", this, "loadLibraries");
+this->logUtil->putF("Loading Libraries", this, "loadLibraries");
     
 
-    std::vector<Object*> nameArray = set.toArray();;
+    std::vector<Object*> nameArray = set->toArray();;
     
 
     int32_t size = nameArray.size();;
@@ -283,7 +289,7 @@ this->logUtil.putF("Loading Libraries", this, "loadLibraries");
     int32_t index = 0;index < size; index++)
         {
 
-    InputRobotInterface inputRobotInterface = InputRobotFactory::getInstance().get(nameArray[index]);;
+    InputRobotInterface* inputRobotInterface = InputRobotFactory::getInstance()->get(nameArray[index]);;
     
 InputRobotFactory::loadLibrary(inputRobotInterface);
     
@@ -295,16 +301,16 @@ InputRobotFactory::loadLibrary(inputRobotInterface);
                 //@Throws(Exception.constructor)
             
     public: void unloadLibraries(){
-this->logUtil.putF("Unloading Libraries", this, "unloadLibraries");
+this->logUtil->putF("Unloading Libraries", this, "unloadLibraries");
     
 
-    Set set = this->get().keySet();;
+    Set* set = this->get()->keySet();;
     
 
-    InputRobotInterface inputRobotInterface;;
+    InputRobotInterface* inputRobotInterface;;
     
 
-    std::vector<Object*> inputRobotArray = set.toArray();;
+    std::vector<Object*> inputRobotArray = set->toArray();;
     
 
     int32_t size = inputRobotArray.size();;
@@ -322,12 +328,12 @@ inputRobotInterface= this->get(inputRobotArray[index]);
                         if(InterfaceUtil::isImplemented(SecuredNativeLibraryInterface.constructor, inputRobotInterface))
                         
                                     {
-                                    this->logUtil.putF("Unloading Library: " +inputRobotInterface.getName(), this, "unloadLibraries");
+                                    this->logUtil->putF("Unloading Library: " +inputRobotInterface->getName(), this, "unloadLibraries");
     
 
-    SecuredNativeLibraryInterface securedNativeLibraryInterface = inputRobotInterface;;
+    SecuredNativeLibraryInterface* securedNativeLibraryInterface = dynamic_cast<SecuredNativeLibraryInterface*>(inputRobotInterface);;
     
-securedNativeLibraryInterface.unload();
+securedNativeLibraryInterface->unload();
     
 
                                     }
@@ -339,7 +345,7 @@ securedNativeLibraryInterface.unload();
 
                 //@Throws(Exception.constructor)
             
-    public: ABHashtable<Object*, Object*> get(){
+    public: ABHashtable<Object*, Object*>* get(){
 
 
 
@@ -349,14 +355,14 @@ securedNativeLibraryInterface.unload();
 }
 
 
-    public: InputRobotInterface get(std::string name){
-this->logUtil.putF("Getting Robot: " +name, this, "getRobots");
+    public: InputRobotInterface* get(std::string name){
+this->logUtil->putF("Getting Robot: " +name, this, "getRobots");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->hashtable.get(name);
+                        return dynamic_cast<InputRobotInterface*>(this->hashtable->get(name));
     
 }
 

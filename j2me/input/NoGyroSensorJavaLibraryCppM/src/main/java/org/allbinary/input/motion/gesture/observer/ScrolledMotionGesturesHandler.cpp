@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -47,19 +53,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseMotionGestureEventListener.h"
-#include "MotionGestureEvent.h"
+        #include "org/allbinary/input/motion/gesture/observer/BaseMotionGestureEventListener.h"
+#include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
 
 class ScrolledMotionGesturesHandler: public BasicEventHandler {
 
-    private: static const ScrolledMotionGesturesHandler SINGLETON = ScrolledMotionGesturesHandler();
+    private: static ScrolledMotionGesturesHandler* SINGLETON() { static std::unique_ptr<ScrolledMotionGesturesHandler> value(new ScrolledMotionGesturesHandler()); return value.get(); }
 
-    public: static ScrolledMotionGesturesHandler getInstance(){
+    public: static ScrolledMotionGesturesHandler* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScrolledMotionGesturesHandler::SINGLETON;
+                        return ScrolledMotionGesturesHandler::SINGLETON();
     
 }
 
@@ -70,11 +76,11 @@ protected: ScrolledMotionGesturesHandler(){
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
 
-    BaseMotionGestureEventListener baseMotionGestureEventListener = eventListenerInterface;;
+    BaseMotionGestureEventListener* baseMotionGestureEventListener = dynamic_cast<BaseMotionGestureEventListener*>(eventListenerInterface);;
     
-baseMotionGestureEventListener.onScrolledMotionGestureEvent(eventObject);
+baseMotionGestureEventListener->onScrolledMotionGestureEvent(dynamic_cast<MotionGestureEvent*>(eventObject));
     
 }
 

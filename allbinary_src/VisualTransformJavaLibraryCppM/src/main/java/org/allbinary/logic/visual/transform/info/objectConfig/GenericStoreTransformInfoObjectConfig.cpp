@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -95,16 +101,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoObjectConfig.h"
-#include "TransformInfoObjectConfigData.h"
+        #include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfig.h"
+#include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigData.h"
 
 class GenericStoreTransformInfoObjectConfig: public TransformInfoObjectConfig {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: AbeClientInformationInterface abeClientInformation;
+    protected: AbeClientInformationInterface* abeClientInformation;
 
-public: GenericStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface) : TransformInfoObjectConfig(transformInfoInterface){
+public: GenericStoreTransformInfoObjectConfig(Object* abeClientInformation, Object* transformInfoInterface) : TransformInfoObjectConfig(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -116,7 +122,7 @@ this->abeClientInformation= abeClientInformation;
 }
 
 
-public: GenericStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, Object document) : TransformInfoObjectConfig(transformInfoInterface, document){
+public: GenericStoreTransformInfoObjectConfig(Object* abeClientInformation, Object* transformInfoInterface, Object* document) : TransformInfoObjectConfig(transformInfoInterface, document){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -130,7 +136,7 @@ this->setDocument(this->generate(this->toXmlDoc()));
 }
 
 
-public: GenericStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, std::string name, std::string type) : TransformInfoObjectConfig(transformInfoInterface, name, type){
+public: GenericStoreTransformInfoObjectConfig(Object* abeClientInformation, Object* transformInfoInterface, std::string name, std::string type) : TransformInfoObjectConfig(transformInfoInterface, name, type){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -146,15 +152,15 @@ this->setDocument(this->generate(this->toXmlDoc()));
 
                 //@Throws(Exception.constructor)
             
-    protected: Document generate(Document objectConfigDocument){
+    protected: Document* generate(Document* objectConfigDocument){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("TransformInfo: ");
+stringBuffer->append("TransformInfo: ");
     
 
                         if(this->getTransformInfoInterface() != 
@@ -162,30 +168,30 @@ stringBuffer.append("TransformInfo: ");
                                 )
                         
                                     {
-                                    stringBuffer.append(this->getTransformInfoInterface().getName());
+                                    stringBuffer->append(this->getTransformInfoInterface()->getName());
     
 
                                     }
                                 
                         else {
-                            stringBuffer.append("No Owner!?#@");
+                            stringBuffer->append("No Owner!?#@");
     
 
                         }
                             
-this->logUtil.putF(stringBuffer.toString(), this, "generate()");
+this->logUtil->putF(stringBuffer->toString(), this, "generate()");
     
 
                                     }
                                 
 
-    TransformInfoHttp transformInfoHttpStoreInterface = this->getTransformInfoInterface();;
+    TransformInfoHttp* transformInfoHttpStoreInterface = dynamic_cast<TransformInfoHttp*>(this->getTransformInfoInterface());;
     
 
     std::string objectConfigDocumentString = XmlDocumentHelper::toString(objectConfigDocument);;
     
 
-    HashMap<Object*, Object*> replaceHashMap = this->createReplaceHashMap(transformInfoHttpStoreInterface, objectConfigDocumentString);;
+    HashMap<Object*, Object*>* replaceHashMap = this->createReplaceHashMap(transformInfoHttpStoreInterface, objectConfigDocumentString);;
     
 
 
@@ -198,22 +204,22 @@ this->logUtil.putF(stringBuffer.toString(), this, "generate()");
 
                 //@Throws(Exception.constructor)
             
-    private: HashMap<Object*, Object*> createReplaceHashMap(TransformInfoHttp transformInfoHttpStoreInterface, std::string objectConfigDocumentString){
+    private: HashMap<Object*, Object*>* createReplaceHashMap(TransformInfoHttp* transformInfoHttpStoreInterface, std::string objectConfigDocumentString){
 
-    std::string storeName = transformInfoHttpStoreInterface.getStoreName();;
-    
-
-    HashMap<Object*, Object*> hashMap = this->createHashMap(transformInfoHttpStoreInterface, objectConfigDocumentString);;
+    std::string storeName = transformInfoHttpStoreInterface->getStoreName();;
     
 
-    TransformInfoObjectConfigData transformInfoObjectConfigData = TransformInfoObjectConfigData::getInstance();;
-    
-hashMap.put(transformInfoObjectConfigData.VARKEY +StoreFrontData::getInstance().NAME, storeName);
+    HashMap<Object*, Object*>* hashMap = this->createHashMap(transformInfoHttpStoreInterface, objectConfigDocumentString);;
     
 
-    std::string pageName = TransformTemplateCustomizerUtil::getInstance().getPageNameHack(this->getTransformInfoInterface().getName(), storeName);;
+    TransformInfoObjectConfigData* transformInfoObjectConfigData = TransformInfoObjectConfigData::getInstance();;
     
-hashMap.put(transformInfoObjectConfigData.VARKEY +TransformInfoData::getInstance().PARTIAL, pageName);
+hashMap->put(transformInfoObjectConfigData->VARKEY +StoreFrontData::getInstance()->NAME, storeName);
+    
+
+    std::string pageName = TransformTemplateCustomizerUtil::getInstance()->getPageNameHack(this->getTransformInfoInterface()->getName(), storeName);;
+    
+hashMap->put(transformInfoObjectConfigData->VARKEY +TransformInfoData::getInstance()->PARTIAL, pageName);
     
 
 
@@ -226,53 +232,53 @@ hashMap.put(transformInfoObjectConfigData.VARKEY +TransformInfoData::getInstance
 
                 //@Throws(Exception.constructor)
             
-    private: HashMap<Object*, Object*> createHashMap(TransformInfoHttp transformInfoHttpStoreInterface, std::string objectConfigDocumentString){
+    private: HashMap<Object*, Object*>* createHashMap(TransformInfoHttp* transformInfoHttpStoreInterface, std::string objectConfigDocumentString){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
 
-    std::string storeName = transformInfoHttpStoreInterface.getStoreName();;
+    std::string storeName = transformInfoHttpStoreInterface->getStoreName();;
     
 
-    HashMap<Object*, Object*> propertiesHashMap = transformInfoHttpStoreInterface.getPropertiesHashMap();;
+    HashMap<Object*, Object*>* propertiesHashMap = transformInfoHttpStoreInterface->getPropertiesHashMap();;
     
 
-    std::string templateNameOverride = StringUtil::getInstance().getNonNull(propertiesHashMap.get(TransformInfoData::getInstance().PARTIAL));;
+    std::string templateNameOverride = StringUtil::getInstance()->getNonNull(propertiesHashMap->get(TransformInfoData::getInstance()->PARTIAL));;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("TemplateNameOverride: " +templateNameOverride, this, "generate()");
+                                    this->logUtil->putF("TemplateNameOverride: " +templateNameOverride, this, "generate()");
     
 
                                     }
                                 
 
-    StringMaker templateNameStringBuffer = StringMaker();;
+    StringMaker* templateNameStringBuffer = new StringMaker();;
     
-templateNameStringBuffer.append(storeName);
+templateNameStringBuffer->append(storeName);
     
-templateNameStringBuffer.append(templateNameOverride);
+templateNameStringBuffer->append(templateNameOverride);
     
-templateNameStringBuffer.append(CommonSeps::getInstance().SPACE);
+templateNameStringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-templateNameStringBuffer.append(RootTransformInfoData::NAME);
-    
-
-    std::string templateNameKey = TransformInfoObjectConfigData::getInstance().VARKEY +TransformInfoData::getInstance().OWNER;;
+templateNameStringBuffer->append(RootTransformInfoData::NAME);
     
 
-                        if(objectConfigDocumentString.indexOf(templateNameKey) !=  -1)
+    std::string templateNameKey = TransformInfoObjectConfigData::getInstance()->VARKEY +TransformInfoData::getInstance()->OWNER;;
+    
+
+                        if(JavaString::indexOf(objectConfigDocumentString, templateNameKey) !=  -1)
                         
                                     {
                                     
-    TransformTemplateInterface templateInterface = TransformTemplateFactory::getInstance().getInstance(this->abeClientInformation, templateNameStringBuffer.toString(), transformInfoHttpStoreInterface.getPropertiesHashMap(), transformInfoHttpStoreInterface.getPageContext());;
+    TransformTemplateInterface* templateInterface = TransformTemplateFactory::getInstance()->getInstance(this->abeClientInformation, templateNameStringBuffer->toString(), transformInfoHttpStoreInterface->getPropertiesHashMap(), transformInfoHttpStoreInterface->getPageContext());;
     
 
-    std::string selectedTemplate = templateInterface.getName();;
+    std::string selectedTemplate = templateInterface->getName();;
     
-hashMap.put(templateNameKey, selectedTemplate);
+hashMap->put(templateNameKey, selectedTemplate);
     
 
                                     }
@@ -288,18 +294,18 @@ hashMap.put(templateNameKey, selectedTemplate);
 
                 //@Throws(Exception.constructor)
             
-    private: Document generate(std::string objectConfigDocumentString, HashMap<Object*, Object*> hashMap){
+    private: Document* generate(std::string objectConfigDocumentString, HashMap<Object*, Object*>* hashMap){
 
-    Replace replace = Replace(hashMap);;
+    Replace* replace = new Replace(hashMap);;
     
 
-    Document newObjectConfigDocument = DomDocumentHelper::create(replace.all(objectConfigDocumentString));;
+    Document* newObjectConfigDocument = DomDocumentHelper::create(replace->all(objectConfigDocumentString));;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Final ObjectConfig: " +XmlDocumentHelper::toString(newObjectConfigDocument), this, "generate()");
+                                    this->logUtil->putF("Final ObjectConfig: " +XmlDocumentHelper::toString(newObjectConfigDocument), this, "generate()");
     
 
                                     }

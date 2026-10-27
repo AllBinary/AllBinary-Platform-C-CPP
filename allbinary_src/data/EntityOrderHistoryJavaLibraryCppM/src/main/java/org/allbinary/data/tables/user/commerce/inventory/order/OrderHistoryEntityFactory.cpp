@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,15 +52,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OrderHistoryEntity.h"
+        #include "org/allbinary/data/tables/user/commerce/inventory/order/OrderHistoryEntity.h"
 
 class OrderHistoryEntityFactory
             : public Object
          {
 
-    public: static OrderHistoryEntity getInstance(){
+    public: static OrderHistoryEntity* getInstance(){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
         try {
@@ -62,20 +68,20 @@ class OrderHistoryEntityFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntity();
+                        return new org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntity();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
                         
                                     {
-                                    logUtil.put(commonStrings.EXCEPTION, "OrderHistoryEntityFactory", commonStrings.GET_INSTANCE, e);
+                                    logUtil->put(commonStrings->EXCEPTION, "OrderHistoryEntityFactory", commonStrings->GET_INSTANCE, &e);
     
 
                                     }

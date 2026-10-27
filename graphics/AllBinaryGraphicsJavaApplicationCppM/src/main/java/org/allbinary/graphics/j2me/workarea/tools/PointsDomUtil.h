@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSDOMUTIL_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSDOMUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -68,16 +74,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PointsUtil.h"
-#include "Document.h"
+        #include "org/allbinary/graphics/j2me/workarea/tools/PointsUtil.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/Document.h"
 
 class PointsDomUtil
             : public Object
          {
 
-    private: static PointsDomUtil instance() { return PointsDomUtil(); }
+    private: static PointsDomUtil* instance() { static std::unique_ptr<PointsDomUtil> value(new PointsDomUtil()); return value.get(); }
 
-    public: static PointsDomUtil getInstance();
+    public: static PointsDomUtil* getInstance();
 
     public: const std::string LINES = "lines";
 
@@ -93,9 +99,9 @@ class PointsDomUtil
 
                 //@Throws(Exception.constructor)
             
-    public: Node toDom(CanvasDom canvasDom, BasicArrayList pointVector);
+    public: Node* toDom(CanvasDom* canvasDom, BasicArrayList* pointVector);
 
-    private: Node getPointNode(GPoint point, std::string pointName);
+    private: Node* getPointNode(GPoint* point, std::string pointName);
 
 };
 

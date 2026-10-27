@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/color/BasicColorFactory.h>
@@ -53,20 +59,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProgressCanvas.h"
+        #include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
 
 class ProgressCanvasFactory
             : public Object
          {
 
-    private: static Object* PROGRESS_FORM_SCREEN = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* PROGRESS_FORM_SCREEN = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static ProgressCanvas getInstance(){
+    public: static ProgressCanvas* getInstance(){
 
-                        if(ProgressCanvasFactory::PROGRESS_FORM_SCREEN == NullUtil::getInstance().NULL_OBJECT)
+                        if(ProgressCanvasFactory::PROGRESS_FORM_SCREEN == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    ProgressCanvasFactory::PROGRESS_FORM_SCREEN= ProgressCanvas(StringUtil::getInstance().EMPTY_STRING, BasicColorFactory::getInstance().BLACK, BasicColorFactory::getInstance().WHITE);
+                                    ProgressCanvasFactory::PROGRESS_FORM_SCREEN= new ProgressCanvas(StringUtil::getInstance()->EMPTY_STRING, BasicColorFactory::getInstance()->BLACK, BasicColorFactory::getInstance()->WHITE);
     
 
                                     }
@@ -75,12 +81,12 @@ class ProgressCanvasFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ProgressCanvasFactory::PROGRESS_FORM_SCREEN;
+                        return dynamic_cast<ProgressCanvas*>(ProgressCanvasFactory::PROGRESS_FORM_SCREEN);
     
 }
 
 
-    public: static PaintableInterface getLazyInstance(){
+    public: static PaintableInterface* getLazyInstance(){
 
 
 

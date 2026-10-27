@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHLISTENERINTERFACE_H
         #define ORG_ALLBINARY_GAME_HEALTH_HEALTHLISTENERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,7 +48,7 @@
         
 class HealthListenerInterface {
 
-    void onHealthChange();
+    public: virtual void onHealthChange() = 0;
 
 };
 

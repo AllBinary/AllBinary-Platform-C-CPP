@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_PLAYERSTATEUTIL_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_PLAYERSTATEUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/media/Player.h>
@@ -52,11 +58,11 @@ class PlayerStateUtil
             : public Object
          {
 
-    private: static PlayerStateUtil instance() { return PlayerStateUtil(); }
+    private: static PlayerStateUtil* instance() { static std::unique_ptr<PlayerStateUtil> value(new PlayerStateUtil()); return value.get(); }
 
-    public: static PlayerStateUtil getInstance();
+    public: static PlayerStateUtil* getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     public: const std::string UNREALIZED = "UNREALIZED";
 

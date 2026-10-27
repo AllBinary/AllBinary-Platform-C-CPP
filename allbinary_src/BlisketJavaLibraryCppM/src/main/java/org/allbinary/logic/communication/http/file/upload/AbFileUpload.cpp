@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/io/IOException.h>
 
       
@@ -60,7 +66,7 @@
         
 class AbFileUpload: public FileUpload {
 
-public: AbFileUpload(FileItemFactory fileItemFactory) : FileUpload(fileItemFactory){
+public: AbFileUpload(FileItemFactory* fileItemFactory) : FileUpload(fileItemFactory){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -72,12 +78,12 @@ public: AbFileUpload(FileItemFactory fileItemFactory) : FileUpload(fileItemFacto
 
                 //@Throws(FileUploadException.constructor, IOException.constructor)
             
-    public: FileItemIterator getItemIterator(HttpServletRequest request){
+    public: FileItemIterator* getItemIterator(HttpServletRequest* request){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getItemIterator(ServletRequestContext(request));;
+                        return super.getItemIterator(new ServletRequestContext(request));;
     
 }
 

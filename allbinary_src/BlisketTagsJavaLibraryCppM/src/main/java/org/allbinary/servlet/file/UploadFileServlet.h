@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/io/IOException.h>
@@ -118,17 +124,17 @@
         
 class UploadFileServlet: public HttpServlet {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: HashMap<Object*, Object*> requestHashMap;
+    protected: HashMap<Object*, Object*>* requestHashMap;
 
     private: std::string fileName;
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void processRequest(HttpServletRequest request, HttpServletResponse response);
+    protected: void processRequest(HttpServletRequest* request, HttpServletResponse* response);
 
                 //@Throws(Exception.constructor)
             
@@ -136,11 +142,11 @@ class UploadFileServlet: public HttpServlet {
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void doGet(HttpServletRequest request, HttpServletResponse response);
+    protected: void doGet(HttpServletRequest* request, HttpServletResponse* response);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void doPost(HttpServletRequest request, HttpServletResponse response);
+    protected: void doPost(HttpServletRequest* request, HttpServletResponse* response);
 
     public: std::string getServletInfo();
 

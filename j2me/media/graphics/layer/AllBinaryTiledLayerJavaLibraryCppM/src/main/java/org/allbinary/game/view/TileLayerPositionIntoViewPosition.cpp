@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
 
       
@@ -51,7 +57,7 @@
         
 class TileLayerPositionIntoViewPosition: public ViewPosition {
 
-    private: Layer tiledLayer = NullLayer::getInstance();
+    private: Layer* tiledLayer = NullLayer::getInstance();
 
 public: TileLayerPositionIntoViewPosition() : ViewPosition(0, 0, 0){
 
@@ -68,7 +74,7 @@ public: TileLayerPositionIntoViewPosition() : ViewPosition(0, 0, 0){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getX() -this->tiledLayer.getXP();
+                        return super.getX() -this->tiledLayer->getXP();
     
 }
 
@@ -78,7 +84,7 @@ public: TileLayerPositionIntoViewPosition() : ViewPosition(0, 0, 0){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getY() -this->tiledLayer.getYP();
+                        return super.getY() -this->tiledLayer->getYP();
     
 }
 
@@ -88,12 +94,12 @@ public: TileLayerPositionIntoViewPosition() : ViewPosition(0, 0, 0){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getZ() -this->tiledLayer.getZP();
+                        return super.getZ() -this->tiledLayer->getZP();
     
 }
 
 
-    public: void setTiledLayer(AllBinaryTiledLayer tiledLayer){
+    public: void setTiledLayer(AllBinaryTiledLayer* tiledLayer){
 this->tiledLayer= tiledLayer;
     
 }

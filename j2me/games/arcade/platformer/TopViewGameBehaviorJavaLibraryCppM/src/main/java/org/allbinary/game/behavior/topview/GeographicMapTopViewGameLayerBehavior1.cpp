@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/media/graphics/geography/map/MultiGeographicMapBehavior.h>
@@ -70,22 +76,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapTopViewLayerBehavior.h"
-#include "TopViewCharacterInterface.h"
+        #include "org/allbinary/game/behavior/topview/GeographicMapTopViewLayerBehavior.h"
+#include "org/allbinary/game/behavior/topview/TopViewCharacterInterface.h"
 
 class GeographicMapTopViewGameLayerBehavior1: public GeographicMapTopViewLayerBehavior {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const GravityUtil gravityUtil = GravityUtil::getInstance();
+    private: GravityUtil* gravityUtil = GravityUtil::getInstance();
 
-    private: const MultiGeographicMapBehavior geographicMapBehavior = MultiGeographicMapBehavior();
+    private: MultiGeographicMapBehavior* geographicMapBehavior = new MultiGeographicMapBehavior();
 
     private: bool autoStepBlocks;
 
     private: int32_t offsetY;
 
-    private: GeographicMapCellPosition previousGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition* previousGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
 public: GeographicMapTopViewGameLayerBehavior1(int32_t maxGravityActionIndex, bool autoStepBlocks, int32_t offsetY) : GeographicMapTopViewLayerBehavior(maxGravityActionIndex){
 
@@ -103,12 +109,12 @@ this->offsetY= offsetY;
 
                 //@Throws(Exception.constructor)
             
-    public: void gravity(VelocityProperties velocityProperties, std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, GeographicMapCellPosition geographicMapCellPosition){
+    public: void gravity(VelocityProperties* velocityProperties, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, GeographicMapCellPosition* geographicMapCellPosition){
 
                         if(geographicMapCellPosition != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION)
                         
                                     {
-                                    this->geographicMapBehavior.getCellTypeAt(geographicMapInterfaceArray, geographicMapCellTypeArray, geographicMapCellPosition);
+                                    this->geographicMapBehavior->getCellTypeAt(geographicMapInterfaceArray, geographicMapCellTypeArray, geographicMapCellPosition);
     
 
     bool hasSolidBlock = this->hasSolidBlock(geographicMapInterfaceArray, geographicMapCellTypeArray);;
@@ -117,9 +123,9 @@ this->offsetY= offsetY;
                         if(!hasSolidBlock)
                         
                                     {
-                                    this->gravityUtil.process(velocityProperties, this->gravityUtil.GAME_GRAVITY_VELOCITY);
+                                    this->gravityUtil->process(velocityProperties, this->gravityUtil->GAME_GRAVITY_VELOCITY);
     
-velocityProperties.limitXYToForwardAndReverseMaxVelocity();
+velocityProperties->limitXYToForwardAndReverseMaxVelocity();
     
 this->gravity();
     
@@ -138,30 +144,12 @@ this->gravity();
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition getPosition(std::vector<BasicGeographicMap> geographicMapInterfaceArray, AllBinaryLayer layer, int32_t x, int32_t y){
+    public: GeographicMapCellPosition* getPosition(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, AllBinaryLayer* layer, int32_t x, int32_t y){
 
-    int32_t xCellPosition = layer.getXP() + -x +layer.getWidth();;
+    int32_t xCellPosition = layer->getXP() + -x +layer->getWidth();;
     
 
-    int32_t yCellPosition = layer.getYP() + -y +layer.getHeight();;
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return geographicMapInterfaceArray[0].getCellPositionAtXYNoThrow(xCellPosition, yCellPosition);;
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    private: GeographicMapCellPosition getLeftPosition(std::vector<BasicGeographicMap> geographicMapInterfaceArray, AllBinaryLayer layer){
-
-    int32_t xCellPosition = layer.getXP();;
-    
-
-    int32_t yCellPosition = layer.getYP() +layer.getHeight();;
+    int32_t yCellPosition = layer->getYP() + -y +layer->getHeight();;
     
 
 
@@ -174,12 +162,12 @@ this->gravity();
 
                 //@Throws(Exception.constructor)
             
-    private: GeographicMapCellPosition getRightPosition(std::vector<BasicGeographicMap> geographicMapInterfaceArray, AllBinaryLayer layer){
+    private: GeographicMapCellPosition* getLeftPosition(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, AllBinaryLayer* layer){
 
-    int32_t xCellPosition = layer.getXP() +layer.getWidth();;
+    int32_t xCellPosition = layer->getXP();;
     
 
-    int32_t yCellPosition = layer.getYP() +layer.getHeight();;
+    int32_t yCellPosition = layer->getYP() +layer->getHeight();;
     
 
 
@@ -192,25 +180,43 @@ this->gravity();
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition getGeographicMapCellPositionIfNotSolidBlockOrOffMapLocation(std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, VelocityProperties velocityProperties, AllBinaryLayer layer, int32_t x, int32_t y){
+    private: GeographicMapCellPosition* getRightPosition(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, AllBinaryLayer* layer){
 
-    GeographicMapCellPosition geographicMapCellPosition = this->getPosition(geographicMapInterfaceArray, layer, x, y);;
+    int32_t xCellPosition = layer->getXP() +layer->getWidth();;
+    
+
+    int32_t yCellPosition = layer->getYP() +layer->getHeight();;
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return geographicMapInterfaceArray[0].getCellPositionAtXYNoThrow(xCellPosition, yCellPosition);;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: GeographicMapCellPosition* getGeographicMapCellPositionIfNotSolidBlockOrOffMapLocation(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, VelocityProperties* velocityProperties, AllBinaryLayer* layer, int32_t x, int32_t y){
+
+    GeographicMapCellPosition* geographicMapCellPosition = this->getPosition(geographicMapInterfaceArray, layer, x, y);;
     
 
                         if(this->previousGeographicMapCellPosition != geographicMapCellPosition && geographicMapCellPosition != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION)
                         
                                     {
                                     
-    GeographicMapCellPosition possibleStepGeographicMapCellPosition = geographicMapCellPosition;;
+    GeographicMapCellPosition* possibleStepGeographicMapCellPosition = geographicMapCellPosition;;
     
 
-    AllBinaryTiledLayer tiledLayer = geographicMapInterfaceArray[0].getAllBinaryTiledLayer();;
+    AllBinaryTiledLayer* tiledLayer = geographicMapInterfaceArray[0].getAllBinaryTiledLayer();;
     
 
-                        if(possibleStepGeographicMapCellPosition.getColumn() > 0 && possibleStepGeographicMapCellPosition.getRow() > 0 && possibleStepGeographicMapCellPosition.getColumn() < tiledLayer.getColumns() && possibleStepGeographicMapCellPosition.getRow() < tiledLayer.getRows())
+                        if(possibleStepGeographicMapCellPosition->getColumn() > 0 && possibleStepGeographicMapCellPosition->getRow() > 0 && possibleStepGeographicMapCellPosition->getColumn() < tiledLayer->getColumns() && possibleStepGeographicMapCellPosition->getRow() < tiledLayer->getRows())
                         
                                     {
-                                    this->geographicMapBehavior.getCellTypeAt(geographicMapInterfaceArray, geographicMapCellTypeArray, possibleStepGeographicMapCellPosition);
+                                    this->geographicMapBehavior->getCellTypeAt(geographicMapInterfaceArray, geographicMapCellTypeArray, possibleStepGeographicMapCellPosition);
     
 
     bool hasSolidBlock = this->hasSolidBlock(geographicMapInterfaceArray, geographicMapCellTypeArray);;
@@ -219,7 +225,7 @@ this->gravity();
                         if(hasSolidBlock)
                         
                                     {
-                                    velocityProperties.getVelocityXBasicDecimalP().setint(0);
+                                    velocityProperties->getVelocityXBasicDecimalP()->setint(0);
     
 this->previousGeographicMapCellPosition= SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
@@ -263,15 +269,15 @@ this->previousGeographicMapCellPosition= SimpleGeographicMapCellPositionFactory:
 
                 //@Throws(Exception.constructor)
             
-    public: void moveAndLand(std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, GeographicMapCellPosition geographicMapCellPosition, VelocityProperties velocityProperties, AllBinaryLayer layer, int32_t x, int32_t y){
+    public: void moveAndLand(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, GeographicMapCellPosition* geographicMapCellPosition, VelocityProperties* velocityProperties, AllBinaryLayer* layer, int32_t x, int32_t y){
 
                         if(geographicMapCellPosition != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION)
                         
                                     {
                                     
-    TopViewCharacterInterface topViewCharacterInterface = (layer);;
+    TopViewCharacterInterface* topViewCharacterInterface = (dynamic_cast<TopViewCharacterInterface*>(layer));;
     
-topViewCharacterInterface.terrainMove(geographicMapInterfaceArray, geographicMapCellTypeArray, x, y);
+topViewCharacterInterface->terrainMove(geographicMapInterfaceArray, geographicMapCellTypeArray, x, y);
     
 
                                     }
@@ -285,9 +291,9 @@ topViewCharacterInterface.terrainMove(geographicMapInterfaceArray, geographicMap
 
                 //@Throws(Exception.constructor)
             
-    public: bool move(std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, VelocityProperties velocityProperties, AllBinaryLayer layer, int32_t x, int32_t y){
+    public: bool move(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, VelocityProperties* velocityProperties, AllBinaryLayer* layer, int32_t x, int32_t y){
 
-    GeographicMapCellPosition geographicMapCellPosition = this->getGeographicMapCellPositionIfNotSolidBlockOrOffMapLocation(geographicMapInterfaceArray, geographicMapCellTypeArray, velocityProperties, layer, x, y);;
+    GeographicMapCellPosition* geographicMapCellPosition = this->getGeographicMapCellPositionIfNotSolidBlockOrOffMapLocation(geographicMapInterfaceArray, geographicMapCellTypeArray, velocityProperties, layer, x, y);;
     
 this->moveAndLand(geographicMapInterfaceArray, geographicMapCellTypeArray, geographicMapCellPosition, velocityProperties, layer, x, y);
     
@@ -319,18 +325,18 @@ this->moveAndLand(geographicMapInterfaceArray, geographicMapCellTypeArray, geogr
 
                 //@Throws(Exception.constructor)
             
-    public: void left(std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, VelocityProperties velocityProperties, AllBinaryLayer layer){
+    public: void left(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, VelocityProperties* velocityProperties, AllBinaryLayer* layer){
 
-    GeographicMapCellPosition geographicMapCellPosition = this->getLeftPosition(geographicMapInterfaceArray, layer);;
+    GeographicMapCellPosition* geographicMapCellPosition = this->getLeftPosition(geographicMapInterfaceArray, layer);;
     
 
                         if(geographicMapCellPosition != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION)
                         
                                     {
                                     
-    GeographicMapCellPosition possibleStepGeographicMapCellPosition = geographicMapInterfaceArray[0].getGeographicMapCellPositionFactory().getAt(geographicMapCellPosition.getColumn(), geographicMapCellPosition.getRow() -1);;
+    GeographicMapCellPosition* possibleStepGeographicMapCellPosition = geographicMapInterfaceArray[0].getGeographicMapCellPositionFactory()->getAt(geographicMapCellPosition->getColumn(), geographicMapCellPosition->getRow() -1);;
     
-this->geographicMapBehavior.getCellTypeAt(geographicMapInterfaceArray, geographicMapCellTypeArray, possibleStepGeographicMapCellPosition);
+this->geographicMapBehavior->getCellTypeAt(geographicMapInterfaceArray, geographicMapCellTypeArray, possibleStepGeographicMapCellPosition);
     
 
     bool hasSolidBlock = this->hasSolidBlock(geographicMapInterfaceArray, geographicMapCellTypeArray);;
@@ -344,15 +350,15 @@ this->geographicMapBehavior.getCellTypeAt(geographicMapInterfaceArray, geographi
                         
                                     {
                                     
-    TopViewCharacterInterface topViewCharacterInterface = (layer);;
+    TopViewCharacterInterface* topViewCharacterInterface = (dynamic_cast<TopViewCharacterInterface*>(layer));;
     
-topViewCharacterInterface.leftp();
+topViewCharacterInterface->leftp();
     
 
                                     }
                                 
                         else {
-                            velocityProperties.getVelocityXBasicDecimalP().setint(0);
+                            velocityProperties->getVelocityXBasicDecimalP()->setint(0);
     
 
                         }
@@ -362,9 +368,9 @@ topViewCharacterInterface.leftp();
                                 
                         else {
                             
-    TopViewCharacterInterface topViewCharacterInterface = (layer);;
+    TopViewCharacterInterface* topViewCharacterInterface = (dynamic_cast<TopViewCharacterInterface*>(layer));;
     
-topViewCharacterInterface.leftp();
+topViewCharacterInterface->leftp();
     
 
                         }
@@ -377,18 +383,18 @@ topViewCharacterInterface.leftp();
 
                 //@Throws(Exception.constructor)
             
-    public: void right(std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, VelocityProperties velocityProperties, AllBinaryLayer layer){
+    public: void right(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, VelocityProperties* velocityProperties, AllBinaryLayer* layer){
 
-    GeographicMapCellPosition geographicMapCellPosition = this->getRightPosition(geographicMapInterfaceArray, layer);;
+    GeographicMapCellPosition* geographicMapCellPosition = this->getRightPosition(geographicMapInterfaceArray, layer);;
     
 
                         if(geographicMapCellPosition != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION)
                         
                                     {
                                     
-    GeographicMapCellPosition possibleStepGeographicMapCellPosition = geographicMapInterfaceArray[0].getGeographicMapCellPositionFactory().getAt(geographicMapCellPosition.getColumn(), geographicMapCellPosition.getRow() -1);;
+    GeographicMapCellPosition* possibleStepGeographicMapCellPosition = geographicMapInterfaceArray[0].getGeographicMapCellPositionFactory()->getAt(geographicMapCellPosition->getColumn(), geographicMapCellPosition->getRow() -1);;
     
-this->geographicMapBehavior.getCellTypeAt(geographicMapInterfaceArray, geographicMapCellTypeArray, possibleStepGeographicMapCellPosition);
+this->geographicMapBehavior->getCellTypeAt(geographicMapInterfaceArray, geographicMapCellTypeArray, possibleStepGeographicMapCellPosition);
     
 
     bool hasSolidBlock = this->hasSolidBlock(geographicMapInterfaceArray, geographicMapCellTypeArray);;
@@ -402,15 +408,15 @@ this->geographicMapBehavior.getCellTypeAt(geographicMapInterfaceArray, geographi
                         
                                     {
                                     
-    TopViewCharacterInterface topViewCharacterInterface = (layer);;
+    TopViewCharacterInterface* topViewCharacterInterface = (dynamic_cast<TopViewCharacterInterface*>(layer));;
     
-topViewCharacterInterface.rightp();
+topViewCharacterInterface->rightp();
     
 
                                     }
                                 
                         else {
-                            velocityProperties.getVelocityXBasicDecimalP().setint(0);
+                            velocityProperties->getVelocityXBasicDecimalP()->setint(0);
     
 
                         }
@@ -420,9 +426,9 @@ topViewCharacterInterface.rightp();
                                 
                         else {
                             
-    TopViewCharacterInterface topViewCharacterInterface = (layer);;
+    TopViewCharacterInterface* topViewCharacterInterface = (dynamic_cast<TopViewCharacterInterface*>(layer));;
     
-topViewCharacterInterface.rightp();
+topViewCharacterInterface->rightp();
     
 
                         }

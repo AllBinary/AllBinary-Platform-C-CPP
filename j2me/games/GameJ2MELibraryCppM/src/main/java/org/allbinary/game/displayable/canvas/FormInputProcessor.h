@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_FORMINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_FORMINPUTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -92,31 +98,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryGameCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
 class FormInputProcessor: public InputProcessor {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const GameKeyEventFactory gameKeyEventFactory = GameKeyEventFactory::getInstance();
+    private: GameKeyEventFactory* gameKeyEventFactory = GameKeyEventFactory::getInstance();
 
-    private: const DownKeyEventHandler downKeyEventHandler = DownKeyEventHandler::getInstance();
+    private: DownKeyEventHandler* downKeyEventHandler = DownKeyEventHandler::getInstance();
 
-    private: const UpGameKeyEventHandler upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
+    private: UpGameKeyEventHandler* upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
 
-    private: const InputFactory inputFactory = InputFactory::getInstance();
+    private: InputFactory* inputFactory = InputFactory::getInstance();
 
-    private: const PlatformKeyFactory platformKeyFactory = PlatformKeyFactory::getInstance();
+    private: PlatformKeyFactory* platformKeyFactory = PlatformKeyFactory::getInstance();
 
-    private: AllBinaryGameCanvas allBinaryGameCanvas;
+    private: AllBinaryGameCanvas* allBinaryGameCanvas;
 
-public: FormInputProcessor(AllBinaryGameCanvas allBinaryGameCanvas);
+public: FormInputProcessor(AllBinaryGameCanvas* allBinaryGameCanvas);
 
     public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId);
 
-    public: void keyReleasedByDevice(Canvas canvas, int32_t keyCode, int32_t deviceId);
+    public: void keyReleasedByDevice(Canvas* canvas, int32_t keyCode, int32_t deviceId);
 
 };
 

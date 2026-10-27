@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,16 +44,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LockedUtilInterface.h"
-#include "LockableFeature.h"
+        #include "org/allbinary/logic/system/security/licensing/LockedUtilInterface.h"
+#include "org/allbinary/logic/system/security/licensing/LockableFeature.h"
 
 class LockedUtil
             : public Object
-        : public LockedUtilInterface {
+        , public LockedUtilInterface {
 
-    private: static LockedUtil instance() { return LockedUtil(); }
+    private: static LockedUtil* instance() { static std::unique_ptr<LockedUtil> value(new LockedUtil()); return value.get(); }
 
-    public: static LockedUtil getInstance(){
+    public: static LockedUtil* getInstance(){
 
 
 
@@ -67,7 +73,7 @@ class LockedUtil
 }
 
 
-    public: bool isLockedFeature(LockableFeature lockableFeatrue){
+    public: bool isLockedFeature(LockableFeature* lockableFeatrue){
 
 
 

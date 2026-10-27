@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -70,21 +76,21 @@
         
 class HackRotationSpriteIndexedAnimation: public RotationAnimation {
 
-    protected: Sprite sprite;
+    protected: Sprite* sprite;
 
-    private: Image image;
+    private: Image* image;
 
-public: HackRotationSpriteIndexedAnimation(Sprite sprite, Image image, AngleInfo angleInfo, AnimationBehavior animationBehavior);
+public: HackRotationSpriteIndexedAnimation(Sprite* sprite, Image* image, AngleInfo* angleInfo, AnimationBehavior* animationBehavior);
 
                 //@Throws(Exception.constructor)
             
     public: int32_t getAnimationSize();
 
-    public: void paintFrame(Graphics g, int32_t frame, int32_t x, int32_t y);
+    public: void paintFrame(Graphics* g, int32_t frame, int32_t x, int32_t y);
 
-    public: void paintXY(Graphics g, int32_t x, int32_t y);
+    public: void paintXY(Graphics* g, int32_t x, int32_t y);
 
-    protected: void paint(Graphics g);
+    protected: void paint(Graphics* g);
 
     public: void nextRotation();
 

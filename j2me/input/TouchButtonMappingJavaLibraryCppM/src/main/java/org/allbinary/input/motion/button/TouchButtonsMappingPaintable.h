@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -61,31 +67,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchButtonLocationHelper.h"
-#include "CommonButtons.h"
-#include "TouchButton.h"
-#include "BasicTouchInputFactory.h"
-#include "TouchButtonBlankResource.h"
+        #include "org/allbinary/input/motion/button/TouchButtonLocationHelper.h"
+#include "org/allbinary/input/motion/button/CommonButtons.h"
+#include "org/allbinary/input/motion/button/TouchButton.h"
+#include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
+#include "org/allbinary/input/motion/button/TouchButtonBlankResource.h"
 
 class TouchButtonsMappingPaintable: public Paintable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     protected: int32_t foregroundColor;
 
-    private: std::vector<std::vector<Paintable>> paintableTable = std::vector<std::vector<Paintable>>(0, std::vector<Paintable>(0));
+    private: std::vector<std::vector<Paintable*>> paintableTable = std::vector<std::vector<Paintable*>>(0, std::vector<Paintable*>(0));
 
-    private: TouchButtonLocationHelper touchButtonLocationHelper = TouchButtonLocationHelper();
+    private: TouchButtonLocationHelper* touchButtonLocationHelper = new TouchButtonLocationHelper();
 
-public: TouchButtonsMappingPaintable(BasicColor basicColor);
+public: TouchButtonsMappingPaintable(BasicColor* basicColor);
 
     private: void init();
 
                 //@Throws(Exception.constructor)
             
-    private: std::vector<std::vector<Paintable>> createPaintableTable();
+    private: std::vector<std::vector<Paintable*>> createPaintableTable();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

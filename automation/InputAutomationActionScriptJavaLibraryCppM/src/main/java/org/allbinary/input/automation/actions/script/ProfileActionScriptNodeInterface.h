@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_PROFILEACTIONSCRIPTNODEINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_PROFILEACTIONSCRIPTNODEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/swing/tree/MutableTreeNode.h>
 
       
@@ -48,9 +54,9 @@
         
 class ProfileActionScriptNodeInterface: public DomNodeInterface, public MutableTreeNode {
 
-    void addCondition(ProfileActionScriptNodeInterface profileActionConditionInterface);
+    public: virtual void addCondition(ProfileActionScriptNodeInterface* profileActionConditionInterface) = 0;
 
-    void removeCondition(ProfileActionScriptNodeInterface profileActionConditionInterface);
+    public: virtual void removeCondition(ProfileActionScriptNodeInterface* profileActionConditionInterface) = 0;
 
 };
 

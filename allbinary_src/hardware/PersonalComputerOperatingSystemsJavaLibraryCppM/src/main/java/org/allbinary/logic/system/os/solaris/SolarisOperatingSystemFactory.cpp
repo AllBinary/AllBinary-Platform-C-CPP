@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,15 +70,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SolarisOS.h"
+        #include "org/allbinary/logic/system/os/solaris/SolarisOS.h"
 
 class SolarisOperatingSystemFactory
             : public Object
          {
 
-    private: static SolarisOperatingSystemFactory instance() { return SolarisOperatingSystemFactory(); }
+    private: static SolarisOperatingSystemFactory* instance() { static std::unique_ptr<SolarisOperatingSystemFactory> value(new SolarisOperatingSystemFactory()); return value.get(); }
 
-    public: static SolarisOperatingSystemFactory getInstance(){
+    public: static SolarisOperatingSystemFactory* getInstance(){
 
 
 
@@ -82,39 +88,39 @@ class SolarisOperatingSystemFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: SolarisOperatingSystemFactory(){
 }
 
 
-    public: GenericOperatingSystem getOperatingSystemInstance(){
+    public: GenericOperatingSystem* getOperatingSystemInstance(){
 
         try {
             
-    OperatingSystems operatingSystems = OperatingSystems::getInstance();;
+    OperatingSystems* operatingSystems = OperatingSystems::getInstance();;
     
 
-    std::string osName = SystemProperties::getInstance().getName();;
+    std::string osName = SystemProperties::getInstance()->getName();;
     
 
-    GenericOperatingSystem operatingSystemInterface;;
+    GenericOperatingSystem* operatingSystemInterface;;
     
 
-                        if(osName.compare(operatingSystems.SOLARIS) == 0)
+                        if(osName.compare(operatingSystems->SOLARIS) == 0)
                         
                                     {
-                                    operatingSystemInterface= SolarisOS();
+                                    operatingSystemInterface= new SolarisOS();
     
 
                                     }
                                 
                         else {
                             
-                        if(operatingSystems.isUnknownSpecificOSAllowed())
+                        if(operatingSystems->isUnknownSpecificOSAllowed())
                         
                                     {
-                                    operatingSystemInterface= SolarisOS();
+                                    operatingSystemInterface= new SolarisOS();
     
 
                                     }
@@ -123,7 +129,7 @@ private: SolarisOperatingSystemFactory(){
                             
 
 
-                            throw Exception("Specific Solaris OS Not Supported: " +osName);
+                            throw new Exception("Specific Solaris OS Not Supported: " +osName);
                     
 
                         }
@@ -139,16 +145,16 @@ private: SolarisOperatingSystemFactory(){
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().FACTORYERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
     
 
                                     }

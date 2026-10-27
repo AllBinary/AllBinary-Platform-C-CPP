@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -30,15 +36,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnalogLocationInput.h"
+        #include "org/allbinary/game/input/analog/AnalogLocationInput.h"
 
 class AnalogLocationInputFactory
             : public Object
          {
 
-    private: static AnalogLocationInputFactory instance() { return AnalogLocationInputFactory(); }
+    private: static AnalogLocationInputFactory* instance() { static std::unique_ptr<AnalogLocationInputFactory> value(new AnalogLocationInputFactory()); return value.get(); }
 
-    public: static AnalogLocationInputFactory getInstance(){
+    public: static AnalogLocationInputFactory* getInstance(){
 
 
 
@@ -48,7 +54,7 @@ class AnalogLocationInputFactory
 }
 
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: AnalogLocationInputFactory(){
 }
@@ -56,13 +62,13 @@ private: AnalogLocationInputFactory(){
 
     public: void addPlayer(int32_t playerInputId){
 
-    AnalogLocationInput analogLocationInput = AnalogLocationInput::NULL_ANALOG_LOCATION_INPUT;;
+    AnalogLocationInput* analogLocationInput = AnalogLocationInput::NULL_ANALOG_LOCATION_INPUT;;
     
 
-                        if(playerInputId < this->list.size())
+                        if(playerInputId < this->list->size())
                         
                                     {
-                                    analogLocationInput= this->list.get(playerInputId);
+                                    analogLocationInput= dynamic_cast<AnalogLocationInput*>(this->list->get(playerInputId));
     
 
                                     }
@@ -71,9 +77,9 @@ private: AnalogLocationInputFactory(){
                         if(analogLocationInput == AnalogLocationInput::NULL_ANALOG_LOCATION_INPUT)
                         
                                     {
-                                    analogLocationInput= AnalogLocationInput(playerInputId);
+                                    analogLocationInput= new AnalogLocationInput(playerInputId);
     
-this->list.add(analogLocationInput);
+this->list->add(analogLocationInput);
     
 
                                     }
@@ -81,17 +87,17 @@ this->list.add(analogLocationInput);
 }
 
 
-    public: AnalogLocationInput getInstanceForPlayer(int32_t playerInputId){
+    public: AnalogLocationInput* getInstanceForPlayer(int32_t playerInputId){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->list.get(playerInputId);
+                        return dynamic_cast<AnalogLocationInput*>(this->list->get(playerInputId));
     
 }
 
 
-    public: BasicArrayList getList(){
+    public: BasicArrayList* getList(){
 
 
 

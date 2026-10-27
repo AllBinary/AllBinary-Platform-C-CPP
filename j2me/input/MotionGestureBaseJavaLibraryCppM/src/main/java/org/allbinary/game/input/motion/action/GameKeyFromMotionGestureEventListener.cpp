@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/CompleteMotionGestureInputEvent.h>
@@ -68,28 +74,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameKeyCompleteMotionGestureInputEvent.h"
+        #include "org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h"
 
 class GameKeyFromMotionGestureEventListener: public CompleteMotionGestureInputEventListener {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: GameKeyEvent previousGameKeyEvent = GameKeyEvent::NONE;
+    private: GameKeyEvent* previousGameKeyEvent = GameKeyEvent::NONE;
 
-    public: void onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject* eventObject){
+ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public: void onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent completeMotionGestureInputEvent){
+    public: void onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent* completeMotionGestureInputEvent){
 
         try {
             
-    GameKeyCompleteMotionGestureInputEvent gameKeyCompleteMotionGestureInputEvent = completeMotionGestureInputEvent;;
+    GameKeyCompleteMotionGestureInputEvent* gameKeyCompleteMotionGestureInputEvent = dynamic_cast<GameKeyCompleteMotionGestureInputEvent*>(completeMotionGestureInputEvent);;
     
 
-    GameKeyEvent gameKeyEvent = gameKeyCompleteMotionGestureInputEvent.getGameKeyEvent();;
+    GameKeyEvent* gameKeyEvent = gameKeyCompleteMotionGestureInputEvent->getGameKeyEvent();;
     
 
                         if(gameKeyEvent != this->previousGameKeyEvent)
@@ -99,7 +105,7 @@ ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
                         if(this->previousGameKeyEvent != GameKeyEvent::NONE)
                         
                                     {
-                                    UpGameKeyEventHandler::getInstance().fireEvent(this->previousGameKeyEvent);
+                                    UpGameKeyEventHandler::getInstance()->fireEvent(this->previousGameKeyEvent);
     
 
                                     }
@@ -112,7 +118,7 @@ this->previousGameKeyEvent= gameKeyEvent;
                                  && gameKeyEvent != GameKeyEvent::NONE)
                         
                                     {
-                                    DownGameKeyEventHandler::getInstance().fireEvent(gameKeyEvent);
+                                    DownGameKeyEventHandler::getInstance()->fireEvent(gameKeyEvent);
     
 
                                     }
@@ -122,12 +128,12 @@ this->previousGameKeyEvent= gameKeyEvent;
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, "onCompleteMotionGestureInputEvent", e);
+this->logUtil->put(commonStrings->EXCEPTION, this, "onCompleteMotionGestureInputEvent", &e);
     
 }
 

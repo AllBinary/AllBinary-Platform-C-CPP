@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -63,7 +69,7 @@ class LurchAI: public BasicAI {
 
     private: int32_t currentSpeed= 0;
 
-public: LurchAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput) : BasicAI(ownerLayerInterface, gameInput){
+public: LurchAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,7 +81,7 @@ public: LurchAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput) : Basic
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
 
                         if(this->currentSpeed ==  -1)
                         
@@ -92,13 +98,13 @@ public: LurchAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput) : Basic
                         }
                             
 
-    AllBinaryLayer ownerLayerInterface = this->getOwnerLayerInterface();;
+    AllBinaryLayer* ownerLayerInterface = this->getOwnerLayerInterface();;
     
 
-    int32_t x = ownerLayerInterface.getXP();;
+    int32_t x = ownerLayerInterface->getXP();;
     
 
-                        if(ownerLayerInterface.getXP() -this->currentSpeed <= 0)
+                        if(ownerLayerInterface->getXP() -this->currentSpeed <= 0)
                         
                                     {
                                     this->reverse();
@@ -109,7 +115,7 @@ this->drop();
                                     }
                                 
 
-                        if(ownerLayerInterface.getX2() +this->currentSpeed > DisplayInfoSingleton::getInstance().getLastWidth())
+                        if(ownerLayerInterface->getX2() +this->currentSpeed > DisplayInfoSingleton::getInstance()->getLastWidth())
                         
                                     {
                                     this->reverse();
@@ -139,7 +145,7 @@ this->drop();
 
                                     }
                                 
-ownerLayerInterface.setPosition(x, ownerLayerInterface.getYP(), ownerLayerInterface.getZP());
+ownerLayerInterface->setPosition(x, ownerLayerInterface->getYP(), ownerLayerInterface->getZP());
     
 
                         if(this->currentRelativeAngle == 0)
@@ -199,13 +205,13 @@ ownerLayerInterface.setPosition(x, ownerLayerInterface.getYP(), ownerLayerInterf
 
     private: void drop(){
 
-    AllBinaryLayer ownerLayerInterface = this->getOwnerLayerInterface();;
+    AllBinaryLayer* ownerLayerInterface = this->getOwnerLayerInterface();;
     
 
-    int32_t y = ownerLayerInterface.getYP();;
+    int32_t y = ownerLayerInterface->getYP();;
     
 
-                        if(ownerLayerInterface.getY2() +ownerLayerInterface.getHeight() > DisplayInfoSingleton::getInstance().getLastHeight())
+                        if(ownerLayerInterface->getY2() +ownerLayerInterface->getHeight() > DisplayInfoSingleton::getInstance()->getLastHeight())
                         
                                     {
                                     y= 0;
@@ -214,12 +220,12 @@ ownerLayerInterface.setPosition(x, ownerLayerInterface.getYP(), ownerLayerInterf
                                     }
                                 
                         else {
-                            y += ownerLayerInterface.getHeight() +1;
+                            y += ownerLayerInterface->getHeight() +1;
     
 
                         }
                             
-ownerLayerInterface.setPosition(ownerLayerInterface.getXP(), y, ownerLayerInterface.getZP());
+ownerLayerInterface->setPosition(ownerLayerInterface->getXP(), y, ownerLayerInterface->getZP());
     
 }
 

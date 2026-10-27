@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_INPUTAUTOMATIONDATA_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_INPUTAUTOMATIONDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class InputAutomationData
             : public Object
          {
 
-    public: static std::string NAME = "INPUT_AUTOMATION";
+    public: static inline std::string NAME = "INPUT_AUTOMATION";
 
-    public: static std::string INSTALLATION = "INPUT_AUTOMATION_INSTALLATION";
+    public: static inline std::string INSTALLATION = "INPUT_AUTOMATION_INSTALLATION";
 
 private: InputAutomationData();
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_ABFILELOCALINPUTSTREAM_H
         #define ORG_ALLBINARY_LOGIC_IO_ABFILELOCALINPUTSTREAM_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/io/FileNotFoundException.h>
 
       
@@ -48,11 +54,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFileInputStream.h"
+        #include "org/allbinary/logic/io/AbFileInputStream.h"
 
 class AbFileLocalInputStream: public AbFileInputStream {
 
-public: AbFileLocalInputStream(AbFile file);
+public: AbFileLocalInputStream(AbFile* file);
 
 };
 

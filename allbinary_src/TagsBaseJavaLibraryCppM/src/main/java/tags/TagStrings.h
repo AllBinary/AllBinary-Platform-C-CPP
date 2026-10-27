@@ -21,6 +21,12 @@
         #ifndef TAGS_TAGSTRINGS_H
         #define TAGS_TAGSTRINGS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class TagStrings
             : public Object
          {
 
-    private: static TagStrings instance() { return TagStrings(); }
+    private: static TagStrings* instance() { static std::unique_ptr<TagStrings> value(new TagStrings()); return value.get(); }
 
-    public: static TagStrings getInstance();
+    public: static TagStrings* getInstance();
 
     public: const std::string DO_START_TAG = "doStartTag";
 

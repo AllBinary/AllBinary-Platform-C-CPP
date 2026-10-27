@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/io/file/CommonDataFileStrings.h>
@@ -46,9 +52,9 @@ class TransformInfoDataData
             : public Object
          {
 
-    private: static TransformInfoDataData instance() { return TransformInfoDataData(); }
+    private: static TransformInfoDataData* instance() { static std::unique_ptr<TransformInfoDataData> value(new TransformInfoDataData()); return value.get(); }
 
-    public: static TransformInfoDataData getInstance(){
+    public: static TransformInfoDataData* getInstance(){
 
 
 
@@ -62,9 +68,9 @@ private: TransformInfoDataData(){
 }
 
 
-    public: const std::string UNCRYPTED_EXTENSION = CommonDataFileStrings::getInstance().UNCRYPTED_EXTENSION;
+    public: const std::string UNCRYPTED_EXTENSION = CommonDataFileStrings::getInstance()->UNCRYPTED_EXTENSION;
 
-    public: const std::string ENCRYPTED_EXTENSION = CommonDataFileStrings::getInstance().ENCRYPTED_EXTENSION;
+    public: const std::string ENCRYPTED_EXTENSION = CommonDataFileStrings::getInstance()->ENCRYPTED_EXTENSION;
 
 };
 

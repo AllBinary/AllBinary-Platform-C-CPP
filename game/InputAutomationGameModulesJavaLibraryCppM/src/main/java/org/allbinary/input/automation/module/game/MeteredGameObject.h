@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,26 +64,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MeteredGameObjectInterface.h"
-#include "GraphicsAnalysisUtil.h"
+        #include "org/allbinary/input/automation/module/game/MeteredGameObjectInterface.h"
+#include "org/allbinary/input/automation/module/game/GraphicsAnalysisUtil.h"
 
 class MeteredGameObject
             : public Object
-        : public MeteredGameObjectInterface {
+        , public MeteredGameObjectInterface {
 
-    private: std::vector<number> ratios;
+    private: std::vector<double> ratios;
 
     private: bool good = false;
 
     private: bool dropping = false;
 
-    private: Integer minX;
+    private: int32_t minX;
 
-    private: Integer maxX;
+    private: int32_t maxX;
 
-    private: Integer y;
+    private: int32_t y;
 
-    private: Integer size;
+    private: int32_t size;
 
     private: const std::string RATIOS_LABEL = "Ratios: ";
 
@@ -85,7 +91,7 @@ class MeteredGameObject
 
     private: const std::string IS_DROPPPING_LABEL = "isDropping: ";
 
-public: MeteredGameObject(std::vector<BufferedImage> bufferedImage, Integer minX, Integer maxX, Integer y);
+public: MeteredGameObject(std::vector<BufferedImage*> bufferedImage, int32_t minX, int32_t maxX, int32_t y);
 
     public: bool isGood();
 
@@ -95,27 +101,27 @@ public: MeteredGameObject(std::vector<BufferedImage> bufferedImage, Integer minX
 
     protected: void setDropping(bool dropping);
 
-    public: std::vector<number> getRatios();
+    public: std::vector<double> getRatios();
 
     public: std::string toString();
 
-    public: void setRatios(std::vector<number> ratios);
+    public: void setRatios(std::vector<double> ratios);
 
-    public: Integer getMinX();
+    public: int32_t getMinX();
 
-    public: void setMinX(Integer minX);
+    public: void setMinX(int32_t minX);
 
-    public: Integer getMaxX();
+    public: int32_t getMaxX();
 
-    public: void setMaxX(Integer maxX);
+    public: void setMaxX(int32_t maxX);
 
-    public: Integer getY();
+    public: int32_t getY();
 
-    public: void setY(Integer y);
+    public: void setY(int32_t y);
 
-    public: Integer getSize();
+    public: int32_t getSize();
 
-    public: void setSize(Integer size);
+    public: void setSize(int32_t size);
 
 };
 

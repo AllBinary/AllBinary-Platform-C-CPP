@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_GAMEYOULOSESOUND_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_GAMEYOULOSESOUND_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,14 +45,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CompositeSound.h"
-#include "Sound.h"
+        #include "org/allbinary/media/audio/CompositeSound.h"
+#include "org/allbinary/media/audio/Sound.h"
 //Use 8hz16bitmono for most J2ME
 class GameYouLoseSound: public CompositeSound {
 
-    private: static Sound soundInterface = GameYouLoseSound();
+    private: static inline Sound* soundInterface = new GameYouLoseSound();
 
-    public: static Sound getInstance();
+    public: static Sound* getInstance();
 
 private: GameYouLoseSound();
 

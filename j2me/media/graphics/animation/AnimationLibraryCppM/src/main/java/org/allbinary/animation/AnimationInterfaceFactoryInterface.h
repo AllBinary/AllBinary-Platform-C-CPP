@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_ANIMATIONINTERFACEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_ANIMATION_ANIMATIONINTERFACEFACTORYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/media/ScaleProperties.h>
@@ -44,16 +50,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicAnimationInterfaceFactoryInterface.h"
-#include "Animation.h"
+        #include "org/allbinary/animation/BasicAnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/Animation.h"
 
 class AnimationInterfaceFactoryInterface: public BasicAnimationInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    Animation getInstance(int32_t instanceId);
+    public: virtual Animation* getInstance(int32_t instanceId) = 0;
 
-    void setInitialScale(ScaleProperties scaleProperties);
+    public: virtual void setInitialScale(ScaleProperties* scaleProperties) = 0;
 
 };
 

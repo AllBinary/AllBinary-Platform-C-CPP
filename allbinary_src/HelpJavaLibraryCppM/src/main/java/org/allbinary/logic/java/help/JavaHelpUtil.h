@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -78,39 +84,39 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Point.h"
-#include "Dimension.h"
-#include "JLabel.h"
-#include "DisplayHelpFromSource.h"
+        #include "org/allbinary/logic/java/help/Point.h"
+#include "org/allbinary/logic/java/help/Dimension.h"
+#include "org/allbinary/logic/java/help/JLabel.h"
+#include "org/allbinary/logic/java/help/DisplayHelpFromSource.h"
 
 class JavaHelpUtil
             : public Object
          {
 
-    private: static JavaHelpUtil instance() { return JavaHelpUtil(); }
+    private: static JavaHelpUtil* instance() { static std::unique_ptr<JavaHelpUtil> value(new JavaHelpUtil()); return value.get(); }
 
-    public: static JavaHelpUtil getInstance();
+    public: static JavaHelpUtil* getInstance();
 
     public: static void main(std::vector<std::string> args);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const Point point = Point(0, 0);
+    private: Point* point = new Point(0, 0);
 
-    private: const Dimension dimension = Dimension(640, 480);
+    private: Dimension* dimension = new Dimension(640, 480);
 
-    private: ActionEvent contextSensitiveHelpActionEvent = ActionEvent(JLabel(), ActionEvent::ACTION_FIRST, 
+    private: ActionEvent* contextSensitiveHelpActionEvent = new ActionEvent(new JLabel(), ActionEvent::ACTION_FIRST, 
                             nullptr);
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
 private: JavaHelpUtil();
 
-    public: HelpSet getHelpSet(std::string filePath);
+    public: HelpSet* getHelpSet(std::string filePath);
 
-    public: HelpSet getHelpSet(URL url);
+    public: HelpSet* getHelpSet(URL* url);
 
-    public: void show(HelpSet helpSet);
+    public: void show(HelpSet* helpSet);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_LINESGRAPHICITEM_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_LINESGRAPHICITEM_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -112,62 +118,62 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GraphicItemInterface.h"
-#include "Color.h"
-#include "Points.h"
-#include "PointsDomUtil.h"
-#include "Graphics2D.h"
-#include "BasicStroke.h"
-#include "PointsUtil.h"
-#include "Graphics.h"
-#include "MouseEvent.h"
-#include "KeyEvent.h"
+        #include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/Color.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/Points.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/PointsDomUtil.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/Graphics2D.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/BasicStroke.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/PointsUtil.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/Graphics.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/MouseEvent.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/KeyEvent.h"
 
 class LinesGraphicItem
             : public Object
-        : public GraphicItemInterface {
+        , public GraphicItemInterface {
 
-    private: static const std::string RECT = "rect";
+    private: static inline const std::string RECT = "rect";
 
-    private: static const std::string ARC = "arc";
+    private: static inline const std::string ARC = "arc";
 
-    private: static const std::string STRING = "string";
+    private: static inline const std::string STRING = "string";
 
-    private: static const std::string CHAR = "char";
+    private: static inline const std::string CHAR = "char";
 
-    private: static const std::string IMAGE = "image";
+    private: static inline const std::string IMAGE = "image";
 
-    private: static int32_t item = 0;
+    private: static inline int32_t item = 0;
 
-    private: static const std::string NAME = "Line Tool";
+    private: static inline const std::string NAME = "Line Tool";
 
     public: static std::string getStaticName();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const GameInputStrings gameInputStrings = GameInputStrings::getInstance();
+    private: GameInputStrings* gameInputStrings = GameInputStrings::getInstance();
 
-    private: DefaultMutableTreeNode treeNode;
+    private: DefaultMutableTreeNode* treeNode;
 
-    private: BasicArrayList pointTreeNodeVector;
+    private: BasicArrayList* pointTreeNodeVector;
 
-    private: GPoint currentMousePoint;
+    private: GPoint* currentMousePoint;
 
-    private: GPoint fulcrumPoint;
+    private: GPoint* fulcrumPoint;
 
     private: bool active = false;
 
     private: double theta = 0;
 
-    private: Color color = Color(BasicColorFactory::getInstance().WHITE.intValue());
+    private: Color* color = new Color(BasicColorFactory::getInstance()->WHITE.intValue());
 
-    private: Points points;
+    private: Points* points;
 
 public: LinesGraphicItem();
 
-public: LinesGraphicItem(Node linesNode);
+public: LinesGraphicItem(Node* linesNode);
 
                 //@Throws(Exception.constructor)
             
@@ -185,20 +191,20 @@ public: LinesGraphicItem(Node linesNode);
 
     public: void addAngle(double angle);
 
-    public: MutableTreeNode getTreeNode();
+    public: MutableTreeNode* getTreeNode();
 
     public: std::string getName();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: void addPoint(NodeList pointNodes);
+    private: void addPoint(NodeList* pointNodes);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void addPoint(GPoint point);
+    public: void addPoint(GPoint* point);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: GPoint removePoint();
+    public: GPoint* removePoint();
 
     public: bool isActive();
 
@@ -208,51 +214,51 @@ public: LinesGraphicItem(Node linesNode);
 
                 //@Throws(Exception.constructor)
             
-    public: void duplicatePoints(BasicArrayList list);
+    public: void duplicatePoints(BasicArrayList* list);
 
                 //@Throws(Exception.constructor)
             
-    public: GraphicItemInterface duplicate();
+    public: GraphicItemInterface* duplicate();
 
     public: double getAngle();
 
-    public: void setFulcrumPoint(GPoint point);
+    public: void setFulcrumPoint(GPoint* point);
 
-    public: void paint(Graphics g, number canvasAngle, IntegerDimension dimension, int32_t x, int32_t y);
+    public: void paint(Graphics* g, double canvasAngle, IntegerDimension* dimension, int32_t x, int32_t y);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toDom(CanvasDom canvasDom);
+    public: Node* toDom(CanvasDom* canvasDom);
 
     public: bool isValid();
 
-    public: Points getPointsInterface();
+    public: Points* getPointsInterface();
 
-    public: void setPointsInterface(Points points);
+    public: void setPointsInterface(Points* points);
 
-    public: Color getColor();
+    public: Color* getColor();
 
-    public: void setColor(Color color);
+    public: void setColor(Color* color);
 
-    public: void mouseClicked(java::awt::event::MouseEvent mouseEvent, int32_t x, int32_t y);
+    public: void mouseClicked(java::awt::event::MouseEvent* mouseEvent, int32_t x, int32_t y);
 
-    public: void mouseEntered(java::awt::event::MouseEvent mouseEvent);
+    public: void mouseEntered(java::awt::event::MouseEvent* mouseEvent);
 
-    public: void mouseExited(java::awt::event::MouseEvent mouseEvent);
+    public: void mouseExited(java::awt::event::MouseEvent* mouseEvent);
 
-    public: void mousePressed(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+    public: void mousePressed(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
 
-    public: void mouseReleased(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+    public: void mouseReleased(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
 
-    public: void mouseDragged(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+    public: void mouseDragged(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
 
-    public: void mouseMoved(java::awt::event::MouseEvent mouseEvent, int32_t x, int32_t y);
+    public: void mouseMoved(java::awt::event::MouseEvent* mouseEvent, int32_t x, int32_t y);
 
-    public: void keyPressed(java::awt::event::KeyEvent keyEvent);
+    public: void keyPressed(java::awt::event::KeyEvent* keyEvent);
 
-    public: void keyReleased(java::awt::event::KeyEvent keyEvent);
+    public: void keyReleased(java::awt::event::KeyEvent* keyEvent);
 
-    public: void keyTyped(java::awt::event::KeyEvent keyEvent);
+    public: void keyTyped(java::awt::event::KeyEvent* keyEvent);
 
 };
 

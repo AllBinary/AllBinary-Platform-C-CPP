@@ -21,6 +21,12 @@
         #ifndef VIEWS_GENERIC_ADDRESS_SHIPPING_VALIDATIONVIEW_H
         #define VIEWS_GENERIC_ADDRESS_SHIPPING_VALIDATIONVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/address/StreetAddress.h>
@@ -59,19 +65,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShippingAddressesView.h"
+        #include "views/generic/address/shipping/ShippingAddressesView.h"
 
 class ValidationView: public ShippingAddressesView, public ValidationComponentInterface {
 
-public: ValidationView(TransformInfoInterface transformInfoInterface);
+public: ValidationView(TransformInfoInterface* transformInfoInterface);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string validationInfo();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
 };
 

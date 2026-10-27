@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLE_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/init/db/DbConnectionInfo.h>
@@ -47,11 +53,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbSqlBasic.h"
+        #include "org/allbinary/logic/communication/sql/AbSqlBasic.h"
 
 class AbSqlTable: public AbSqlBasic {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string tableName;
 
@@ -63,7 +69,7 @@ class AbSqlTable: public AbSqlBasic {
 
     private: const std::string DROPPED_SUCCESS = " Dropped Successfully";
 
-public: AbSqlTable(DbConnectionInfo databaseConnectionInfoInterface);
+public: AbSqlTable(DbConnectionInfo* databaseConnectionInfoInterface);
 
     public: void setTableName(std::string tableName);
 

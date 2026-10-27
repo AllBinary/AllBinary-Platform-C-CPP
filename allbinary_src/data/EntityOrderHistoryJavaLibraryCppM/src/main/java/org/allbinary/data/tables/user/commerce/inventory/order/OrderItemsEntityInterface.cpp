@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -54,15 +60,15 @@
         
 class OrderItemsEntityInterface: public BasicDataTableInterface {
 
-    void setStatus(std::string orderId, std::string groupId, std::string status)
+    public: virtual void setStatus(std::string orderId, std::string groupId, std::string status) = 0;
 
-    bool isEverythingShipped(std::string orderId)
+    public: virtual bool isEverythingShipped(std::string orderId) = 0;
 
-    BasketReview getBasketReview(std::string orderId)
+    public: virtual BasketReview* getBasketReview(std::string orderId) = 0;
 
-    void insert(std::string userName, OrderInterface order)
+    public: virtual void insert(std::string userName, OrderInterface* order) = 0;
 
-    void insert(BasicArrayList values)
+    public: virtual void insert(BasicArrayList* values) = 0;
 
 };
 

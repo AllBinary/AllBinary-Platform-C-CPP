@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_COSTLAYERINTERFACEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_COSTLAYERINTERFACEFACTORYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/LayerInterfaceFactoryInterface.h>
@@ -49,7 +55,7 @@ class CostLayerInterfaceFactoryInterface: public LayerInterfaceFactoryInterface 
 
                 //@Throws(Exception.constructor)
             
-    int32_t getCost();
+    public: virtual int32_t getCost() = 0;
 
 };
 

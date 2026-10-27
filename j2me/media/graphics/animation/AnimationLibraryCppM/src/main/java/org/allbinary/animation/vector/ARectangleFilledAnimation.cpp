@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -28,7 +34,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RectangleFilledAnimation.h"
+        #include "org/allbinary/animation/vector/RectangleFilledAnimation.h"
 
 class ARectangleFilledAnimation: public RectangleFilledAnimation {
 
@@ -36,7 +42,7 @@ class ARectangleFilledAnimation: public RectangleFilledAnimation {
 
     public: int32_t y= 0;
 
-public: ARectangleFilledAnimation() : RectangleFilledAnimation(0, 0, BasicColorFactory::getInstance().BLACK){
+public: ARectangleFilledAnimation() : RectangleFilledAnimation(0, 0, BasicColorFactory::getInstance()->BLACK){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -50,7 +56,7 @@ public: ARectangleFilledAnimation() : RectangleFilledAnimation(0, 0, BasicColorF
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t unusedX, int32_t unusedY){
+    public: void paintXY(Graphics* graphics, int32_t unusedX, int32_t unusedY){
 super.paintXY(graphics, this->x, this->y);
     
 }

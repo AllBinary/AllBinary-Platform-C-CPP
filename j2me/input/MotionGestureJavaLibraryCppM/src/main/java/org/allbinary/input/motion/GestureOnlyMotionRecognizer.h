@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTUREONLYMOTIONRECOGNIZER_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTUREONLYMOTIONRECOGNIZER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/CustomGPoint.h>
@@ -50,15 +56,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionRecognizer.h"
+        #include "org/allbinary/input/motion/MotionRecognizer.h"
 
 class GestureOnlyMotionRecognizer: public MotionRecognizer {
 
-    private: static int32_t index = 0;
+    private: static inline int32_t index = 0;
 
-    private: static const GPointCircularPool pointCircularPool = GPointCircularPool(40);
+    private: static GPointCircularPool* pointCircularPool() { static std::unique_ptr<GPointCircularPool> value(new GPointCircularPool(40)); return value.get(); }
 
-    private: MotionGestureRecognizer motionGestureRecognizer;
+    private: MotionGestureRecognizer* motionGestureRecognizer;
 
     private: int32_t id;
 

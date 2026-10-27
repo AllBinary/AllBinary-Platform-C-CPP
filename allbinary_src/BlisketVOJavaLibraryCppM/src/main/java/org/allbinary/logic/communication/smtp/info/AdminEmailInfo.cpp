@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/context/configuration/ContextConfigurationInterface.h>
@@ -56,11 +62,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicEmailInfo.h"
+        #include "org/allbinary/logic/communication/smtp/info/BasicEmailInfo.h"
 
 class AdminEmailInfo: public BasicEmailInfo {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: AdminEmailInfo(std::string subject, std::string textBody) : BasicEmailInfo(subject, textBody){
 
@@ -70,13 +76,13 @@ public: AdminEmailInfo(std::string subject, std::string textBody) : BasicEmailIn
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF(commonStrings.START, this, commonStrings.CONSTRUCTOR);
+this->logUtil->putF(commonStrings->START, this, commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -90,13 +96,13 @@ this->init();
             
     protected: void init(){
 
-    AdminConfigurationInterface adminConfigurationInterface = AdminConfiguration();;
+    AdminConfigurationInterface* adminConfigurationInterface = dynamic_cast<AdminConfigurationInterface*>(new AdminConfiguration());;
     
 
-    ContextConfigurationInterface contextConfigurationInterface = adminConfigurationInterface.getContextConfigurationInterface();;
+    ContextConfigurationInterface* contextConfigurationInterface = adminConfigurationInterface->getContextConfigurationInterface();;
     
 
-    EmailServerConfigurationInterface emailServerConfigurationInterface = contextConfigurationInterface.getEmailServerConfigurationInterface();;
+    EmailServerConfigurationInterface* emailServerConfigurationInterface = contextConfigurationInterface->getEmailServerConfigurationInterface();;
     
 this->setEmailServerConfigurationInterface(emailServerConfigurationInterface);
     

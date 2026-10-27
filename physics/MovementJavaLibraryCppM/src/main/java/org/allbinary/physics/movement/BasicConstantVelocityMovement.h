@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_BASICCONSTANTVELOCITYMOVEMENT_H
         #define ORG_ALLBINARY_PHYSICS_MOVEMENT_BASICCONSTANTVELOCITYMOVEMENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
@@ -62,37 +68,37 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Movement.h"
+        #include "org/allbinary/physics/movement/Movement.h"
 
 class BasicConstantVelocityMovement: public Movement, public VelocityInterfaceCompositeInterface {
 
-    private: BasicVelocityProperties velocityProperties;
+    private: BasicVelocityProperties* velocityProperties;
 
-    private: BasicDecimal speedBasicDecimal = BasicDecimal::ZERO_BIGDECIMAL;
+    private: BasicDecimal* speedBasicDecimal = BasicDecimal::ZERO_BIGDECIMAL;
 
-    private: const AxisMathVectorUtil axisMathVectorUtil = AxisMathVectorUtil::getInstance();
+    private: AxisMathVectorUtil* axisMathVectorUtil = AxisMathVectorUtil::getInstance();
 
-public: BasicConstantVelocityMovement(BasicDecimal basicDecimal, BasicVelocityProperties velocityProperties);
+public: BasicConstantVelocityMovement(BasicDecimal* basicDecimal, BasicVelocityProperties* velocityProperties);
 
-    public: void init(BasicDecimal speedBasicDecimal, int32_t angle, int32_t otherAngle);
+    public: void init(BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle);
 
-    public: void moveOutsideRadius(AllBinaryLayer layer, int64_t radius, int32_t angle, int32_t otherAngle);
+    public: void moveOutsideRadius(AllBinaryLayer* layer, int64_t radius, int32_t angle, int32_t otherAngle);
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryGameLayer layer);
+    public: void process(AllBinaryGameLayer* layer);
 
     public: std::string toString();
 
     public: void stop();
 
-    public: BasicVelocityProperties getVelocityProperties();
+    public: BasicVelocityProperties* getVelocityProperties();
 
-    public: void setVelocityProperties(BasicVelocityProperties velocityProperties);
+    public: void setVelocityProperties(BasicVelocityProperties* velocityProperties);
 
-    protected: void setSpeedBasicDecimal(BasicDecimal speedBasicDecimal);
+    protected: void setSpeedBasicDecimal(BasicDecimal* speedBasicDecimal);
 
-    protected: BasicDecimal getSpeedBasicDecimal();
+    protected: BasicDecimal* getSpeedBasicDecimal();
 
 };
 

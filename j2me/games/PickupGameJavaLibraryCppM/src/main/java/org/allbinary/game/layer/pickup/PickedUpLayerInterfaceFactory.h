@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKEDUPLAYERINTERFACEFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKEDUPLAYERINTERFACEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/animation/Animation.h>
 
       
@@ -45,25 +51,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PickedUpLayerInterfaceFactoryBase.h"
-#include "PickedUpLayerType.h"
-#include "IconLayer.h"
+        #include "org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryBase.h"
+#include "org/allbinary/game/layer/pickup/PickedUpLayerType.h"
+#include "org/allbinary/game/layer/pickup/IconLayer.h"
 
 class PickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactoryBase {
 
-    private: PickedUpLayerType pickedUpLayerType;
+    private: PickedUpLayerType* pickedUpLayerType;
 
-    private: IconLayer iconLayer;
+    private: IconLayer* iconLayer;
 
-    private: Animation animationInterface;
+    private: Animation* animationInterface;
 
-protected: PickedUpLayerInterfaceFactory(PickedUpLayerType pickeUpLayerType, IconLayer iconLayer, Animation animationInterface);
+protected: PickedUpLayerInterfaceFactory(PickedUpLayerType* pickeUpLayerType, IconLayer* iconLayer, Animation* animationInterface);
 
-    public: AllBinaryLayer getIconLayer();
+    public: AllBinaryLayer* getIconLayer();
 
-    public: Animation getAnimationInterface();
+    public: Animation* getAnimationInterface();
 
-    public: PickedUpLayerType getPickedUpLayerType();
+    public: PickedUpLayerType* getPickedUpLayerType();
 
 };
 

@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -24,14 +30,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLESNullGraphicsFactory.h"
-#include "OpenGLESGraphics.h"
+        #include "org/allbinary/device/OpenGLESNullGraphicsFactory.h"
+#include "org/allbinary/device/OpenGLESGraphics.h"
 
 class OpenGLESGraphicsFactory
             : public Object
          {
 
-    public: OpenGLESGraphics getOpenGLESGraphicsInstance(){
+    public: OpenGLESGraphics* getOpenGLESGraphicsInstance(){
 
 
 

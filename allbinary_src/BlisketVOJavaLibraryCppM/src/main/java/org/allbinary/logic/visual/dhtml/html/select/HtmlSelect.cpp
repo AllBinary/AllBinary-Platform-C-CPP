@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -87,7 +95,7 @@ class HtmlSelect: public HtmlTag {
 
     private: std::string selected;
 
-    private: BasicArrayList options;
+    private: BasicArrayList* options;
 
     private: std::string multiple = "multiple";
 
@@ -102,13 +110,13 @@ this->name= name;
     
 this->after= after;
     
-this->options= BasicArrayListD();
+this->options= new BasicArrayListD();
     
 }
 
 
     public: void addOption(std::string key){
-this->options.add(key);
+this->options->add(key);
     
 }
 
@@ -117,13 +125,13 @@ this->options.add(key);
 
         try {
             
-    LineReader lineReader = LineReader(fileName);;
+    LineReader* lineReader = new LineReader(fileName);;
     
 
-        while(lineReader.hasNext())
+        while(lineReader->hasNext())
         {
 
-    std::string option = lineReader.next();;
+    std::string option = lineReader->next();;
     
 this->addOption(option);
     
@@ -131,7 +139,7 @@ this->addOption(option);
 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 this->addOption("Error");
     
@@ -164,13 +172,13 @@ this->isMultipleSelect= value;
 
     private: std::string getOptions(){
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
 
-    std::string result = stringUtil.EMPTY_STRING;;
+    std::string result = stringUtil->EMPTY_STRING;;
     
 
-    std::vector<Object*> optionsArray = this->options.toArray();;
+    std::vector<Object*> optionsArray = this->options->toArray();;
     
 
     int32_t optionsSize = optionsArray.size();;
@@ -186,7 +194,7 @@ this->isMultipleSelect= value;
     std::string value = optionsArray[i];;
     
 
-                        if(true && value.compare(stringUtil.EMPTY_STRING) != 0)
+                        if(true && value.compare(stringUtil->EMPTY_STRING) != 0)
                         
                                     {
                                     result += this->STARTOPTION;
@@ -213,13 +221,13 @@ result += this->ENDOPTION;
 
     public: std::string toString(){
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
 
-    std::string result = stringUtil.EMPTY_STRING;;
+    std::string result = stringUtil->EMPTY_STRING;;
     
 
-    std::vector<Object*> attributeKeys = this->otherAttributes.keySet().();;
+    std::vector<Object*> attributeKeys = this->otherAttributes.keySet()->();;
     
 
     int32_t attributeSize = attributeKeys.size();;
@@ -254,7 +262,7 @@ result += "\" ";
     std::string value = otherAttributes.get(key);;
     
 
-                        if(true && value.compare(stringUtil.EMPTY_STRING) != 0)
+                        if(true && value.compare(stringUtil->EMPTY_STRING) != 0)
                         
                                     {
                                     result += key;

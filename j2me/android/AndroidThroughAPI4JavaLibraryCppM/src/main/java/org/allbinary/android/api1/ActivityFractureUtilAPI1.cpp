@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/android/ActivityFractureUtil.h>
@@ -50,9 +56,9 @@
         
 class ActivityFractureUtilAPI1: public ActivityFractureUtil {
 
-    private: static ActivityFractureUtilAPI1 instance() { return ActivityFractureUtilAPI1(); }
+    private: static ActivityFractureUtilAPI1* instance() { static std::unique_ptr<ActivityFractureUtilAPI1> value(new ActivityFractureUtilAPI1()); return value.get(); }
 
-    public: static ActivityFractureUtilAPI1 getInstance(){
+    public: static ActivityFractureUtilAPI1* getInstance(){
 
 
 
@@ -64,12 +70,12 @@ class ActivityFractureUtilAPI1: public ActivityFractureUtil {
 
                 //@Throws(Exception.constructor)
             
-    public: void process(Activity activity){
+    public: void process(Activity* activity){
 }
 
 
-    public: void setFullScreen(Activity activity){
-activity.getWindow().setFlags(WindowManager::LayoutParams.FLAG_FULLSCREEN, WindowManager::LayoutParams.FLAG_FULLSCREEN);
+    public: void setFullScreen(Activity* activity){
+activity->getWindow()->setFlags(WindowManager::LayoutParams.FLAG_FULLSCREEN, WindowManager::LayoutParams.FLAG_FULLSCREEN);
     
 }
 

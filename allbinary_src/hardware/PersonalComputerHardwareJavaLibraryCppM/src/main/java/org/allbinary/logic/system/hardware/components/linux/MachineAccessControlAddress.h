@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_MACHINEACCESSCONTROLADDRESS_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_MACHINEACCESSCONTROLADDRESS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -53,11 +59,11 @@
         
 class MachineAccessControlAddress
             : public Object
-        : public HardwareComponentInterface, public MachineAccessControlAddressInterface {
+        , public HardwareComponentInterface, public MachineAccessControlAddressInterface {
 
 public: MachineAccessControlAddress();
 
-    public: bool compareTo(HardwareComponentInterface componentInterface);
+    public: bool compareTo(HardwareComponentInterface* componentInterface);
 
     public: std::string toString();
 

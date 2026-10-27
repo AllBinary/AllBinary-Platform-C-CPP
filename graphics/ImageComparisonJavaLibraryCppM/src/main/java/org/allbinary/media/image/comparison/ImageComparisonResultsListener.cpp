@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/util/event/BasicEventListenerInterface.h>
 
       
@@ -39,11 +45,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageComparisonResultsEvent.h"
+        #include "org/allbinary/media/image/comparison/ImageComparisonResultsEvent.h"
 
 class ImageComparisonResultsListener: public BasicEventListenerInterface {
 
-    void onImageComparisonResultsEvent(ImageComparisonResultsEvent imageComparisonResultsEvent)
+    public: virtual void onImageComparisonResultsEvent(ImageComparisonResultsEvent* imageComparisonResultsEvent) = 0;
 
 };
 

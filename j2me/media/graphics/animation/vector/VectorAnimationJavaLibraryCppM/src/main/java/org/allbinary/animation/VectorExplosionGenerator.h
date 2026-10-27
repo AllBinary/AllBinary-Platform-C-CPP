@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,46 +72,46 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "VectorExplosionType.h"
-#include "VectorAnimationUtil.h"
+        #include "org/allbinary/animation/VectorExplosionType.h"
+#include "org/allbinary/animation/VectorAnimationUtil.h"
 
 class VectorExplosionGenerator
             : public Object
          {
 
-    private: static VectorExplosionGenerator instance() { return VectorExplosionGenerator(); }
+    private: static VectorExplosionGenerator* instance() { static std::unique_ptr<VectorExplosionGenerator> value(new VectorExplosionGenerator()); return value.get(); }
 
-    public: static VectorExplosionGenerator getInstance();
+    public: static VectorExplosionGenerator* getInstance();
 
-    public: const VectorExplosionType RANDOM = VectorExplosionType();
+    public: VectorExplosionType* RANDOM = new VectorExplosionType();
 
-    public: const VectorExplosionType ROTATION = VectorExplosionType();
+    public: VectorExplosionType* ROTATION = new VectorExplosionType();
 
-    private: const VectorAnimationUtil vectorAnimationUtil = VectorAnimationUtil::getInstance();
+    private: VectorAnimationUtil* vectorAnimationUtil = VectorAnimationUtil::getInstance();
 
 private: VectorExplosionGenerator();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList createList(BasicArrayList list, int32_t howMuch, VectorExplosionType type);
+    public: BasicArrayList* createList(BasicArrayList* list, int32_t howMuch, VectorExplosionType* type);
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<std::vector<std::vector<int32_t>>> getInstance(std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType type);
+    public: std::vector<std::vector<std::vector<int32_t>>> getInstance(std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType* type);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getInstanceStartFrame(std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType type, bool startFrame);
+    public: BasicArrayList* getInstanceStartFrame(std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType* type, bool startFrame);
 
-    private: const RandomRotationFactory randomRotationFactory = RandomRotationFactory::getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    private: BasicArrayList createListFromPoints(BasicArrayList tempBasicArrayList, std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType type);
+    private: RandomRotationFactory* randomRotationFactory = RandomRotationFactory::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    private: BasicArrayList createPointsBasicArrayList(std::vector<std::vector<int32_t>> points);
+    private: BasicArrayList* createListFromPoints(BasicArrayList* tempBasicArrayList, std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType* type);
+
+                //@Throws(Exception.constructor)
+            
+    private: BasicArrayList* createPointsBasicArrayList(std::vector<std::vector<int32_t>> points);
 
 };
 

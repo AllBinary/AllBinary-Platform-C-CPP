@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -59,14 +65,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SelectionHudPaintable.h"
-#include "RTSLayer.h"
+        #include "org/allbinary/game/layer/SelectionHudPaintable.h"
+#include "org/allbinary/game/layer/RTSLayer.h"
 
 class RTSLayerHudPaintable: public SelectionHudPaintable, public UpdateMyFontInterface {
 
-    private: static RTSLayerHudPaintable instance() { return RTSLayerHudPaintable(); }
+    private: static RTSLayerHudPaintable* instance() { static std::unique_ptr<RTSLayerHudPaintable> value(new RTSLayerHudPaintable()); return value.get(); }
 
-    public: static RTSLayerHudPaintable getInstance(){
+    public: static RTSLayerHudPaintable* getInstance(){
 
 
 
@@ -76,9 +82,9 @@ class RTSLayerHudPaintable: public SelectionHudPaintable, public UpdateMyFontInt
 }
 
 
-    private: std::vector<std::string> weaponProperties = StringUtil::getInstance().getArrayInstance();
+    private: std::vector<std::string> weaponProperties = StringUtil::getInstance()->getArrayInstance();
 
-    private: CollidableDestroyableDamageableLayer rtsLayer = CollidableDestroyableDamageableLayer::getNullInstance();
+    private: CollidableDestroyableDamageableLayer* rtsLayer = CollidableDestroyableDamageableLayer::getNullInstance();
 
     protected: int32_t costY= 0;
 
@@ -90,13 +96,13 @@ private: RTSLayerHudPaintable(){
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 super.updateMeasurement(graphics);
     
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->fontHeight= font.getHeight();
+this->fontHeight= font->getHeight();
     
 this->costY1= (this->y +((this->weaponProperties.size() +1) *this->fontHeight));
     
@@ -119,19 +125,19 @@ this->costY1= (this->y +((this->weaponProperties.size() +1) *this->fontHeight));
 
 
     public: void updateSelectionInfo(){
-this->setName(this->getRtsLayer().getName());
+this->setName(this->getRtsLayer()->getName());
     
 
-    BasicWeaponPart partInterface = this->getRtsLayer().getPartInterfaceArray()[0];;
+    BasicWeaponPart* partInterface = dynamic_cast<BasicWeaponPart*>(this->getRtsLayer()->getPartInterfaceArray()[0]);;
     
-this->weaponProperties= partInterface.getWeaponProperties().toStringArray();
+this->weaponProperties= partInterface->getWeaponProperties()->toStringArray();
     
 this->myFontProcessor= this->updateMyFontProcessor;
     
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 super.paint(graphics);
     
 
@@ -144,20 +150,20 @@ super.paint(graphics);
                         for (
     int32_t index = 0;index < size; index++)
         {
-graphics.drawString(this->weaponProperties[index], this->textX, this->y +((index +1) *this->fontHeight), 0);
+graphics->drawString(this->weaponProperties[index], this->textX, this->y +((index +1) *this->fontHeight), 0);
     
 }
 
 }
 
 
-    public: void setRtsLayer(RTSLayer rtsLayer){
+    public: void setRtsLayer(RTSLayer* rtsLayer){
 this->rtsLayer= rtsLayer;
     
 }
 
 
-    private: CollidableDestroyableDamageableLayer getRtsLayer(){
+    private: CollidableDestroyableDamageableLayer* getRtsLayer(){
 
 
 

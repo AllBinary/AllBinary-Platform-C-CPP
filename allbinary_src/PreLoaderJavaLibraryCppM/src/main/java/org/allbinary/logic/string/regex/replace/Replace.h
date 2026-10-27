@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -83,9 +89,9 @@ class Replace
 
     public: static void main(std::vector<std::string> args);
 
-    private: const LogUtil logUtil = LogUtil::getInstance();
+    private: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const J2SEUtil j2seUtil = J2SEUtil::getInstance();
+    private: J2SEUtil* j2seUtil = J2SEUtil::getInstance();
 
     private: const std::string REPLACERS_ = "Replacers: ";
 
@@ -93,13 +99,13 @@ class Replace
 
     private: const std::string FOUND_KEY = "found key total: ";
 
-    private: HashMap<Object*, Object*> hashMap;
+    private: HashMap<Object*, Object*>* hashMap;
 
 public: Replace(std::string key, std::string value);
 
 public: Replace(std::vector<std::string> keys, std::vector<std::string> values);
 
-public: Replace(HashMap<Object*, Object*> hashMap);
+public: Replace(HashMap<Object*, Object*>* hashMap);
 
     public: std::string all(std::string replace);
 

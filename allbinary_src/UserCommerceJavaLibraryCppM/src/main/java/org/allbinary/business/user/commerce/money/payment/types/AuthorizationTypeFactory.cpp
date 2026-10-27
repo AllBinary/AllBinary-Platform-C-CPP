@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,15 +44,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AuthorizationType.h"
+        #include "org/allbinary/business/user/commerce/money/payment/types/AuthorizationType.h"
 
 class AuthorizationTypeFactory
             : public Object
          {
 
-    private: static AuthorizationTypeFactory instance() { return AuthorizationTypeFactory(); }
+    private: static AuthorizationTypeFactory* instance() { static std::unique_ptr<AuthorizationTypeFactory> value(new AuthorizationTypeFactory()); return value.get(); }
 
-    public: static AuthorizationTypeFactory getInstance(){
+    public: static AuthorizationTypeFactory* getInstance(){
 
 
 
@@ -56,19 +62,19 @@ class AuthorizationTypeFactory
 }
 
 
-    public: const AuthorizationType NONE = AuthorizationType("None");
+    public: AuthorizationType* NONE = new AuthorizationType("None");
 
-    public: const AuthorizationType VOICE = AuthorizationType("Voice");
+    public: AuthorizationType* VOICE = new AuthorizationType("Voice");
 
-    public: const AuthorizationType RETINAL = AuthorizationType("Retinal");
+    public: AuthorizationType* RETINAL = new AuthorizationType("Retinal");
 
-    public: const AuthorizationType IMAGE = AuthorizationType("Image");
+    public: AuthorizationType* IMAGE = new AuthorizationType("Image");
 
-    public: const AuthorizationType DNA = AuthorizationType("DNA");
+    public: AuthorizationType* DNA = new AuthorizationType("DNA");
 
-    public: const AuthorizationType PRINT = AuthorizationType("Print");
+    public: AuthorizationType* PRINT = new AuthorizationType("Print");
 
-    public: const AuthorizationType CHIP = AuthorizationType("Chip");
+    public: AuthorizationType* CHIP = new AuthorizationType("Chip");
 
 };
 

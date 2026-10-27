@@ -21,6 +21,12 @@
         #ifndef BUNDLE_INPUT_AUTOMATION_ROBOT_INPUTAUTOMATIONROBOTCHANGELISTENER_H
         #define BUNDLE_INPUT_AUTOMATION_ROBOT_INPUTAUTOMATIONROBOTCHANGELISTENER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/input/automation/robot/osgi/InputAutomationRobotChangeEvent.h>
 
       
@@ -45,9 +51,9 @@
         
 class InputAutomationRobotChangeListener {
 
-    void onAdd(InputAutomationRobotChangeEvent inputAutomationRobotChangeEvent);
+    public: virtual void onAdd(InputAutomationRobotChangeEvent* inputAutomationRobotChangeEvent) = 0;
 
-    void onRemove(InputAutomationRobotChangeEvent inputAutomationRobotChangeEvent);
+    public: virtual void onRemove(InputAutomationRobotChangeEvent* inputAutomationRobotChangeEvent) = 0;
 
 };
 

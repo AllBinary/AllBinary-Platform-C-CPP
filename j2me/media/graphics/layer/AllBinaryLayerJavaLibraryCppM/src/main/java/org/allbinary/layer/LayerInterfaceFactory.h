@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LAYER_LAYERINTERFACEFACTORY_H
         #define ORG_ALLBINARY_LAYER_LAYERINTERFACEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -69,21 +75,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Layer.h"
-#include "LayerInterfaceFactoryInterface.h"
-#include "AllBinaryLayer.h"
+        #include "org/allbinary/layer/Layer.h"
+#include "org/allbinary/layer/LayerInterfaceFactoryInterface.h"
+#include "org/allbinary/layer/AllBinaryLayer.h"
 
 class LayerInterfaceFactory
             : public Object
          {
 
-    private: static const LayerInterfaceFactory SINGLETON = LayerInterfaceFactory();
+    private: static LayerInterfaceFactory* SINGLETON() { static std::unique_ptr<LayerInterfaceFactory> value(new LayerInterfaceFactory()); return value.get(); }
 
-    public: static LayerInterfaceFactory getInstance();
+    public: static LayerInterfaceFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: BasicArrayList list = BasicArrayListUtil::getInstance().getImmutableInstance();
+    private: BasicArrayList* list = BasicArrayListUtil::getInstance()->getImmutableInstance();
 
     public: void init();
 
@@ -91,9 +97,9 @@ class LayerInterfaceFactory
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer getNexInstance(ABHashtable<Object*, Object*> hashtable, int32_t x, int32_t y, int32_t z);
+    public: AllBinaryLayer* getNexInstance(ABHashtable<Object*, Object*>* hashtable, int32_t x, int32_t y, int32_t z);
 
-    public: void add(LayerInterfaceFactoryInterface layerInterfaceFactoryInterface);
+    public: void add(LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface);
 
 };
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Throwable.h"
         
             #include "java/lang/Exception.h"
@@ -81,17 +87,17 @@
         
 class ImageArrayBaseRotationAnimation: public RotationAnimation {
 
-    private: const ImageModifierUtil imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
+    private: ImageModifierUtil* imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
 
-    private: std::vector<Image> originalImageArray;
+    private: std::vector<Image*> originalImageArray;
 
-    private: std::vector<Image> imageArray = NullImage::NULL_IMAGE_ARRAY;
+    private: std::vector<Image*> imageArray = NullImage::NULL_IMAGE_ARRAY;
 
-    private: Image currentImage;
+    private: Image* currentImage;
 
     private: int32_t totalFrames= 0;
 
-public: ImageArrayBaseRotationAnimation(std::vector<Image> originalImageArray, AngleInfo angleInfo, AnimationBehavior animationBehavior);
+public: ImageArrayBaseRotationAnimation(std::vector<Image*> originalImageArray, AngleInfo* angleInfo, AnimationBehavior* animationBehavior);
 
                 //@Throws(Exception.constructor)
             
@@ -109,11 +115,11 @@ public: ImageArrayBaseRotationAnimation(std::vector<Image> originalImageArray, A
 
     public: std::vector<int32_t> getSequence();
 
-    protected: void setImageArray(std::vector<Image> imageArray);
+    protected: void setImageArray(std::vector<Image*> imageArray);
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
     public: void close();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/displayable/GameTickDisplayInfoSingleton.h>
@@ -53,54 +59,54 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameRunnable.h"
-#include "AllBinaryGameCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/GameRunnable.h"
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
 class GameFrameRunnable: public GameRunnable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const GameTickDisplayInfoSingleton gameTickDisplayInfoSingleton = GameTickDisplayInfoSingleton::getInstance();
+    private: GameTickDisplayInfoSingleton* gameTickDisplayInfoSingleton = GameTickDisplayInfoSingleton::getInstance();
 
-    private: AllBinaryGameCanvas allBinaryGameCanvas;
+    private: AllBinaryGameCanvas* allBinaryGameCanvas;
 
-public: GameFrameRunnable(AllBinaryGameCanvas allBinaryGameCanvas){
+public: GameFrameRunnable(AllBinaryGameCanvas* allBinaryGameCanvas){
 this->allBinaryGameCanvas= allBinaryGameCanvas;
     
 }
 
 
-    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
+    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
     public: void run(){
 
         try {
             
-    AllBinaryGameCanvas allBinaryGameCanvas = this->allBinaryGameCanvas;;
+    AllBinaryGameCanvas* allBinaryGameCanvas = this->allBinaryGameCanvas;;
     
-allBinaryGameCanvas.getLoopTimeHelperP().setStartTime(this->gameTickTimeDelayHelper.setStartTime());
+allBinaryGameCanvas->getLoopTimeHelperP()->setStartTime(this->gameTickTimeDelayHelper->setStartTime());
     
-this->gameTickDisplayInfoSingleton.update();
+this->gameTickDisplayInfoSingleton->update();
     
-allBinaryGameCanvas.processGame();
+allBinaryGameCanvas->processGame();
     
 
-                        if(!allBinaryGameCanvas.isRunning() || allBinaryGameCanvas.isPaused())
+                        if(!allBinaryGameCanvas->isRunning() || allBinaryGameCanvas->isPaused())
                         
                                     {
-                                    allBinaryGameCanvas.notifyDonePainting();
+                                    allBinaryGameCanvas->notifyDonePainting();
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
     
 }
 

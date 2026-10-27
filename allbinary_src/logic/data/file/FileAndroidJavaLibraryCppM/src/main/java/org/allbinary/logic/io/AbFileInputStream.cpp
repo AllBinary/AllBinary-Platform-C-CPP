@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/io/FileInputStream.h>
 
       
@@ -56,16 +62,16 @@
         
 class AbFileInputStream: public InputStream {
 
-    private: FileInputStream fileInputStream;
+    private: FileInputStream* fileInputStream;
 
-public: AbFileInputStream(FileInputStream fileInputStream){
+public: AbFileInputStream(FileInputStream* fileInputStream){
 this->fileInputStream= fileInputStream;
     
 }
 
 
     public: void mark(int32_t readlimit){
-this->fileInputStream.mark(readlimit);
+this->fileInputStream->mark(readlimit);
     
 }
 
@@ -75,7 +81,7 @@ this->fileInputStream.mark(readlimit);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->fileInputStream.markSupported();;
+                        return this->fileInputStream->markSupported();;
     
 }
 
@@ -84,7 +90,7 @@ this->fileInputStream.mark(readlimit);
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void reset(){
-this->fileInputStream.reset();
+this->fileInputStream->reset();
     
 }
 
@@ -96,23 +102,23 @@ this->fileInputStream.reset();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->fileInputStream.available();;
+                        return this->fileInputStream->available();;
     
 }
 
 
     public: void close(){
-this->fileInputStream.close();
+this->fileInputStream->close();
     
 }
 
 
-    public: FileChannel getChannel(){
+    public: FileChannel* getChannel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->fileInputStream.getChannel();;
+                        return this->fileInputStream->getChannel();;
     
 }
 
@@ -124,7 +130,7 @@ this->fileInputStream.close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->fileInputStream.read();;
+                        return this->fileInputStream->read();;
     
 }
 
@@ -136,7 +142,7 @@ this->fileInputStream.close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->fileInputStream.read(b);;
+                        return this->fileInputStream->read(b);;
     
 }
 
@@ -148,7 +154,7 @@ this->fileInputStream.close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->fileInputStream.read(buffer, offset, count);;
+                        return this->fileInputStream->read(buffer, offset, count);;
     
 }
 
@@ -160,7 +166,7 @@ this->fileInputStream.close();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->fileInputStream.skip(n);;
+                        return this->fileInputStream->skip(n);;
     
 }
 

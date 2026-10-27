@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIG_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -106,44 +112,44 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoObjectConfigInterface.h"
-#include "TransformInfoObjectConfigData.h"
+        #include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigInterface.h"
+#include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigData.h"
 
 class TransformInfoObjectConfig
             : public Object
-        : public TransformInfoObjectConfigInterface {
+        , public TransformInfoObjectConfigInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: TransformInfoInterface ownerTransformInfoInterface;
+    private: TransformInfoInterface* ownerTransformInfoInterface;
 
-    private: Document document;
+    private: Document* document;
 
     private: std::string outputTypeName;
 
-public: TransformInfoObjectConfig(Object transformInfoInterface);
+public: TransformInfoObjectConfig(Object* transformInfoInterface);
 
-public: TransformInfoObjectConfig(Object transformInfoInterface, Object document);
+public: TransformInfoObjectConfig(Object* transformInfoInterface, Object* document);
 
-public: TransformInfoObjectConfig(Object transformInfoInterface, std::string name, std::string type);
+public: TransformInfoObjectConfig(Object* transformInfoInterface, std::string name, std::string type);
 
     private: void createDocument();
 
-    protected: TransformInfoInterface getTransformInfoInterface();
+    protected: TransformInfoInterface* getTransformInfoInterface();
 
                 //@Throws(Exception.constructor)
             
-    public: Document toXmlDoc();
+    public: Document* toXmlDoc();
 
-    protected: void setDocument(Document document);
+    protected: void setDocument(Document* document);
 
-    public: bool containsView(TransformInfoInterface transformInfoInterface);
+    public: bool containsView(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    private: NamedNodeMap getTemplateAttributes();
+    private: NamedNodeMap* getTemplateAttributes();
 
                 //@Throws(Exception.constructor)
             
@@ -155,37 +161,37 @@ public: TransformInfoObjectConfig(Object transformInfoInterface, std::string nam
 
                 //@Throws(Exception.constructor)
             
-    private: BasicArrayList getNodeVector(std::string nodeName);
+    private: BasicArrayList* getNodeVector(std::string nodeName);
 
                 //@Throws(Exception.constructor)
             
-    private: BasicArrayList getTransformDomNodes(std::string nodeName);
+    private: BasicArrayList* getTransformDomNodes(std::string nodeName);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getTransforms(std::string nodeName);
+    public: BasicArrayList* getTransforms(std::string nodeName);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getTransformsGroup(std::string group);
+    public: BasicArrayList* getTransformsGroup(std::string group);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getTransformDomNodes();
+    public: BasicArrayList* getTransformDomNodes();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getTransforms();
+    public: BasicArrayList* getTransforms();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getGroupTransforms();
+    public: BasicArrayList* getGroupTransforms();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getParentTransforms();
+    public: BasicArrayList* getParentTransforms();
 
-    private: Node getRootNode();
+    private: Node* getRootNode();
 
     public: void setOutputTypeName(std::string outputTypeName);
 

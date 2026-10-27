@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -175,60 +181,60 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RTSLayer.h"
-#include "NullPathFindingLayer.h"
-#include "AdvancedRTSProperties.h"
-#include "PathFindingLayerInterface.h"
-#include "WaypointBehaviorBase.h"
-#include "AdvancedRTSPlayerLayerInterface.h"
-#include "RTSPlayerLayerInterface.h"
-#include "RTSLayerUtil.h"
+        #include "org/allbinary/game/layer/RTSLayer.h"
+#include "org/allbinary/game/layer/NullPathFindingLayer.h"
+#include "org/allbinary/game/layer/AdvancedRTSProperties.h"
+#include "org/allbinary/game/layer/PathFindingLayerInterface.h"
+#include "org/allbinary/game/layer/WaypointBehaviorBase.h"
+#include "org/allbinary/game/layer/AdvancedRTSPlayerLayerInterface.h"
+#include "org/allbinary/game/layer/RTSPlayerLayerInterface.h"
+#include "org/allbinary/game/layer/RTSLayerUtil.h"
 
 class AdvancedRTSGameLayer: public RTSLayer, public DestroyedEventListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: static AdvancedRTSGameLayer createSimulated();
+    public: static AdvancedRTSGameLayer* createSimulated();
 
-    protected: ShakeAnimationListener shakeListener;
+    protected: ShakeAnimationListener* shakeListener;
 
-    protected: AllBinaryVibrationME vibration;
+    protected: AllBinaryVibrationME* vibration;
 
     protected: int32_t duration;
 
-    private: PathFindingLayerInterface parentLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
+    private: PathFindingLayerInterface* parentLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
-    protected: TickableInterface waypointBehaviorBase = NullTickable::getInstance();
+    protected: TickableInterface* waypointBehaviorBase = NullTickable::getInstance();
 
-public: AdvancedRTSGameLayer(RemoteInfo remoteInfo, PathFindingLayerInterface parentLayer, AdvancedRTSProperties advancedRTSProperties, std::vector<Group> groupInterface, std::string rootName, std::string name, Health healthInterface, RTSFormInput rtsFormInput, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y, ViewPositionBase viewPosition);
-
-                //@Throws(Exception.constructor)
-            
-    public: void updateWaypointBehavior(BasicGeographicMap geographicMapInterface);
-
-    protected: void initVisibility(RTSPlayerLayerInterface rtsPlayerLayerInterface);
+public: AdvancedRTSGameLayer(RemoteInfo* remoteInfo, PathFindingLayerInterface* parentLayer, AdvancedRTSProperties* advancedRTSProperties, std::vector<Group*> groupInterface, std::string rootName, std::string name, Health* healthInterface, RTSFormInput* rtsFormInput, AnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface* proceduralAnimationInterfaceFactoryInterface, Rectangle* rectangle, int32_t x, int32_t y, ViewPositionBase* viewPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: void construct(RTSPlayerLayerInterface rtsPlayerLayerInterface);
+    public: void updateWaypointBehavior(BasicGeographicMap* geographicMapInterface);
+
+    protected: void initVisibility(RTSPlayerLayerInterface* rtsPlayerLayerInterface);
+
+                //@Throws(Exception.constructor)
+            
+    public: void construct(RTSPlayerLayerInterface* rtsPlayerLayerInterface);
 
                 //@Throws(Exception.constructor)
             
     public: void setDestroyed(bool destroyed);
 
-    public: PathFindingLayerInterface getParentLayer();
+    public: PathFindingLayerInterface* getParentLayer();
 
-    public: void setParentLayer(PathFindingLayerInterface parentLayer);
+    public: void setParentLayer(PathFindingLayerInterface* parentLayer);
 
-    public: WaypointBehaviorBase getWaypointBehavior();
+    public: WaypointBehaviorBase* getWaypointBehavior();
 
-    protected: void setWaypointBehavior(WaypointBehaviorBase unitWaypointHelper);
+    protected: void setWaypointBehavior(WaypointBehaviorBase* unitWaypointHelper);
 
-    public: WaypointLogHelper getWaypointLogHelper();
+    public: WaypointLogHelper* getWaypointLogHelper();
 
-    public: Waypoint2LogHelper getWaypoint2LogHelper();
+    public: Waypoint2LogHelper* getWaypoint2LogHelper();
 
-    public: WaypointRunnableLogHelper getWaypointRunnableLogHelper();
+    public: WaypointRunnableLogHelper* getWaypointRunnableLogHelper();
 
     public: bool shouldAddWaypointFromBuilding();
 
@@ -236,15 +242,15 @@ public: AdvancedRTSGameLayer(RemoteInfo remoteInfo, PathFindingLayerInterface pa
 
                 //@Throws(Exception.constructor)
             
-    public: bool buildingChase(AllBinaryLayer allbinaryLayer, GeographicMapCellPosition cellPosition);
+    public: bool buildingChase(AllBinaryLayer* allbinaryLayer, GeographicMapCellPosition* cellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getSurroundingGeographicMapCellPositionList();
+    public: BasicArrayList* getSurroundingGeographicMapCellPositionList();
 
     protected: void setSelected(bool selected);
 
-    public: void onDestroyed(DestroyedEvent destroyedEvent);
+    public: void onDestroyed(DestroyedEvent* destroyedEvent);
 
 };
 

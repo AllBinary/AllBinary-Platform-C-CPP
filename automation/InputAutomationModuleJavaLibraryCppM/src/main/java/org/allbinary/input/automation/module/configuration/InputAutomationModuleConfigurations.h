@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -81,31 +87,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputAutomationModuleConfiguration.h"
+        #include "org/allbinary/input/automation/module/configuration/InputAutomationModuleConfiguration.h"
 
 class InputAutomationModuleConfigurations
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: HashMap<Object*, Object*> hashMap;
+    private: HashMap<Object*, Object*>* hashMap;
 
-public: InputAutomationModuleConfigurations(AbeClientInformationInterface abeClientInformation, File file);
+public: InputAutomationModuleConfigurations(AbeClientInformationInterface* abeClientInformation, File* file);
 
-public: InputAutomationModuleConfigurations(AbeClientInformationInterface abeClientInformation, Document document);
+public: InputAutomationModuleConfigurations(AbeClientInformationInterface* abeClientInformation, Document* document);
 
-public: InputAutomationModuleConfigurations(List<InputAutomationModuleConfiguration> inputAutomationModuleConfigurationList);
+public: InputAutomationModuleConfigurations(List<InputAutomationModuleConfiguration*>* inputAutomationModuleConfigurationList);
 
 public: InputAutomationModuleConfigurations();
 
-    public: void add(InputAutomationModuleConfiguration inputAutomationModuleConfiguration);
+    public: void add(InputAutomationModuleConfiguration* inputAutomationModuleConfiguration);
 
-    public: void remove(InputAutomationModuleConfiguration inputAutomationModuleConfiguration);
+    public: void remove(InputAutomationModuleConfiguration* inputAutomationModuleConfiguration);
 
-    public: HashMap<Object*, Object*> getHashMap();
+    public: HashMap<Object*, Object*>* getHashMap();
 
-    public: void setHashMap(HashMap<Object*, Object*> hashMap);
+    public: void setHashMap(HashMap<Object*, Object*>* hashMap);
 
 };
 

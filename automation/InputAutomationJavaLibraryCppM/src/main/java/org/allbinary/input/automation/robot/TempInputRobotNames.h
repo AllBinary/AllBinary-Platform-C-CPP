@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_TEMPINPUTROBOTNAMES_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_TEMPINPUTROBOTNAMES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,11 +52,11 @@ class TempInputRobotNames
             : public Object
          {
 
-    public: static const std::string LOW_NAME = "Low Level";
+    public: static inline const std::string LOW_NAME = "Low Level";
 
-    public: static const std::string SYS_NAME = "System Drivers";
+    public: static inline const std::string SYS_NAME = "System Drivers";
 
-    public: static const std::string DX_NAME = "DirectX";
+    public: static inline const std::string DX_NAME = "DirectX";
 
 public: TempInputRobotNames();
 

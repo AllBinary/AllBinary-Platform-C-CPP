@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_STOREFRONTSHELPER_H
         #define ADMIN_TAGHELPERS_STOREFRONTSHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -80,19 +86,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicTable.h"
+        #include "admin/taghelpers/BasicTable.h"
 
 class StoreFrontsHelper: public BasicTable {
 
-    private: static const std::string CLASS = "class";
+    private: static inline const std::string CLASS = "class";
 
-    private: static const std::string TEXT = "text";
+    private: static inline const std::string TEXT = "text";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: Portion portion;
+    private: Portion* portion;
 
-public: StoreFrontsHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: StoreFrontsHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
     public: std::string drop();
 
@@ -102,7 +108,7 @@ public: StoreFrontsHelper(HashMap<Object*, Object*> hashMap, PageContext pageCon
 
     public: std::string backup();
 
-    private: const CommonPhoneStrings commonPhoneStrings = CommonPhoneStrings::getInstance();
+    private: CommonPhoneStrings* commonPhoneStrings = CommonPhoneStrings::getInstance();
 
     public: std::string generateSelect();
 

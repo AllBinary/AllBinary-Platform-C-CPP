@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_ADMINUSERFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_ADMINUSERFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,21 +58,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdminUser.h"
+        #include "org/allbinary/business/user/modules/admin/AdminUser.h"
 
 class AdminUserFactory
             : public Object
-        : public UserFactoryInterface {
+        , public UserFactoryInterface {
 
 public: AdminUserFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface getInstance();
+    public: UserInterface* getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface getInstance(HashMap<Object*, Object*> hashMap);
+    public: UserInterface* getInstance(HashMap<Object*, Object*>* hashMap);
 
 };
 

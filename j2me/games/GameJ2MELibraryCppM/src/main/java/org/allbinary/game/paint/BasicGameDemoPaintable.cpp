@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -51,15 +57,15 @@
         
 class BasicGameDemoPaintable: public StatePaintable {
 
-    private: Paintable mainDemoStatePaintable;
+    private: Paintable* mainDemoStatePaintable;
 
-    private: Paintable ownershipPaintable;
+    private: Paintable* ownershipPaintable;
 
-    private: Paintable helpPaintableInterface;
+    private: Paintable* helpPaintableInterface;
 
-    private: Paintable currentStatePaintable = NullPaintable::getInstance();
+    private: Paintable* currentStatePaintable = NullPaintable::getInstance();
 
-public: BasicGameDemoPaintable(Paintable mainDemoStatePaintable, Paintable ownershipPaintable, Paintable helpPaintableInterface){
+public: BasicGameDemoPaintable(Paintable* mainDemoStatePaintable, Paintable* ownershipPaintable, Paintable* helpPaintableInterface){
 this->mainDemoStatePaintable= mainDemoStatePaintable;
     
 this->setCurrentStatePaintable(NullPaintable::getInstance());
@@ -99,13 +105,13 @@ this->helpPaintableInterface= helpPaintableInterface;
 }
 
 
-    public: void paint(Graphics graphics){
-this->getCurrentStatePaintable().paint(graphics);
+    public: void paint(Graphics* graphics){
+this->getCurrentStatePaintable()->paint(graphics);
     
 }
 
 
-    public: Paintable getHelpPaintableInterface(){
+    public: Paintable* getHelpPaintableInterface(){
 
 
 
@@ -115,13 +121,13 @@ this->getCurrentStatePaintable().paint(graphics);
 }
 
 
-    protected: void setCurrentStatePaintable(Paintable currentStatePaintable){
+    protected: void setCurrentStatePaintable(Paintable* currentStatePaintable){
 this->currentStatePaintable= currentStatePaintable;
     
 }
 
 
-    protected: Paintable getCurrentStatePaintable(){
+    protected: Paintable* getCurrentStatePaintable(){
 
 
 
@@ -131,7 +137,7 @@ this->currentStatePaintable= currentStatePaintable;
 }
 
 
-    protected: Paintable getMainDemoStatePaintable(){
+    protected: Paintable* getMainDemoStatePaintable(){
 
 
 

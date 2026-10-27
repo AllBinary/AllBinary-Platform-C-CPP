@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERATOR_TRANSFORMINFOOBJECTCONFIGGENERATORFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERATOR_TRANSFORMINFOOBJECTCONFIGGENERATORFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,26 +61,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoObjectConfigGeneratorFactoryInterface.h"
-#include "StoreFileGenerator.h"
-#include "BasicGenerator.h"
-#include "TransformInfoObjectConfigGenerator.h"
+        #include "org/allbinary/logic/visual/transform/info/objectConfig/generator/TransformInfoObjectConfigGeneratorFactoryInterface.h"
+#include "org/allbinary/logic/visual/transform/info/objectConfig/generator/StoreFileGenerator.h"
+#include "org/allbinary/logic/visual/transform/info/objectConfig/generator/BasicGenerator.h"
+#include "org/allbinary/logic/visual/transform/info/objectConfig/generator/TransformInfoObjectConfigGenerator.h"
 
 class TransformInfoObjectConfigGeneratorFactory
             : public Object
-        : public TransformInfoObjectConfigGeneratorFactoryInterface {
+        , public TransformInfoObjectConfigGeneratorFactoryInterface {
 
-    private: static TransformInfoObjectConfigGeneratorFactory instance() { return TransformInfoObjectConfigGeneratorFactory(); }
+    private: static TransformInfoObjectConfigGeneratorFactory* instance() { static std::unique_ptr<TransformInfoObjectConfigGeneratorFactory> value(new TransformInfoObjectConfigGeneratorFactory()); return value.get(); }
 
-    public: static TransformInfoObjectConfigGeneratorFactory getInstance();
+    public: static TransformInfoObjectConfigGeneratorFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: TransformInfoObjectConfigGeneratorFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoObjectConfigGenerator getInstance(TransformInfoInterface transformInfoInterface);
+    public: TransformInfoObjectConfigGenerator* getInstance(TransformInfoInterface* transformInfoInterface);
 
 };
 

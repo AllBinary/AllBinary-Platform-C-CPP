@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -65,15 +71,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFile.h"
+        #include "org/allbinary/logic/io/file/AbFile.h"
 
 class FileListFetcher
             : public Object
          {
 
-    private: static FileListFetcher instance() { return FileListFetcher(); }
+    private: static FileListFetcher* instance() { static std::unique_ptr<FileListFetcher> value(new FileListFetcher()); return value.get(); }
 
-    public: static FileListFetcher getInstance(){
+    public: static FileListFetcher* getInstance(){
 
 
 
@@ -83,13 +89,13 @@ class FileListFetcher
 }
 
 
-    private: const SubDirectory subDirectory = SubDirectory::getInstance();
+    private: SubDirectory* subDirectory = SubDirectory::getInstance();
 
-    public: BasicArrayList getFiles(std::string path){
+    public: BasicArrayList* getFiles(std::string path){
 
         try {
             
-    BasicArrayList files = this->subDirectory.search(AbFile::createAbFile(path));;
+    BasicArrayList* files = this->subDirectory->search(AbFile::createAbFile(path));;
     
 
 
@@ -99,11 +105,11 @@ class FileListFetcher
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 e.printStackTrace();
     
-console.log("Error: " +e +"\nMsg: " +e.message);
+System.out.println("Error: " +e +"\nMsg: " +e.message);
     
 }
 
@@ -116,11 +122,11 @@ console.log("Error: " +e +"\nMsg: " +e.message);
 }
 
 
-    public: BasicArrayList getFiles(std::string path, std::vector<std::string> includeExtensions){
+    public: BasicArrayList* getFiles(std::string path, std::vector<std::string> includeExtensions){
 
         try {
             
-    BasicArrayList includeExtensionBasicArrayList = BasicArrayListD();;
+    BasicArrayList* includeExtensionBasicArrayList = new BasicArrayListD();;
     
 
     int32_t size = includeExtensions.size();;
@@ -132,15 +138,15 @@ console.log("Error: " +e +"\nMsg: " +e.message);
                         for (
     int32_t index = 0;index < size; index++)
         {
-includeExtensionBasicArrayList.add(includeExtensions[index]);
+includeExtensionBasicArrayList->add(includeExtensions[index]);
     
 }
 
 
-    VisitorFileFilter visitorFileFilter = VisitorFileFilter(DirectoryOrIncludeFileExtensionBooleanFileVisitor(includeExtensionBasicArrayList));;
+    VisitorFileFilter* visitorFileFilter = new VisitorFileFilter(new DirectoryOrIncludeFileExtensionBooleanFileVisitor(includeExtensionBasicArrayList));;
     
 
-    BasicArrayList files = this->subDirectory.search(visitorFileFilter, AbFile::createAbFile(path));;
+    BasicArrayList* files = this->subDirectory->search(visitorFileFilter, AbFile::createAbFile(path));;
     
 
 
@@ -150,11 +156,11 @@ includeExtensionBasicArrayList.add(includeExtensions[index]);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 e.printStackTrace();
     
-console.log("Error: " +e +"\nMsg: " +e.message);
+System.out.println("Error: " +e +"\nMsg: " +e.message);
     
 }
 
@@ -167,19 +173,19 @@ console.log("Error: " +e +"\nMsg: " +e.message);
 }
 
 
-    public: BasicArrayList getFiles(std::string path, std::string includeExtension){
+    public: BasicArrayList* getFiles(std::string path, std::string includeExtension){
 
         try {
             
-    BasicArrayList includeExtensionBasicArrayList = BasicArrayListD();;
+    BasicArrayList* includeExtensionBasicArrayList = new BasicArrayListD();;
     
-includeExtensionBasicArrayList.add(includeExtension);
-    
-
-    VisitorFileFilter visitorFileFilter = VisitorFileFilter(DirectoryOrIncludeFileExtensionBooleanFileVisitor(includeExtensionBasicArrayList));;
+includeExtensionBasicArrayList->add(includeExtension);
     
 
-    BasicArrayList files = this->subDirectory.search(visitorFileFilter, AbFile::createAbFile(path));;
+    VisitorFileFilter* visitorFileFilter = new VisitorFileFilter(new DirectoryOrIncludeFileExtensionBooleanFileVisitor(includeExtensionBasicArrayList));;
+    
+
+    BasicArrayList* files = this->subDirectory->search(visitorFileFilter, AbFile::createAbFile(path));;
     
 
 
@@ -189,11 +195,11 @@ includeExtensionBasicArrayList.add(includeExtension);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 e.printStackTrace();
     
-console.log("Error: " +e +"\nMsg: " +e.message);
+System.out.println("Error: " +e +"\nMsg: " +e.message);
     
 }
 
@@ -206,19 +212,19 @@ console.log("Error: " +e +"\nMsg: " +e.message);
 }
 
 
-    public: BasicArrayList getFiles(std::string path, std::string pathIncludes, std::string includeExtension){
+    public: BasicArrayList* getFiles(std::string path, std::string pathIncludes, std::string includeExtension){
 
         try {
             
-    BasicArrayList includeExtensionBasicArrayList = BasicArrayListD();;
+    BasicArrayList* includeExtensionBasicArrayList = new BasicArrayListD();;
     
-includeExtensionBasicArrayList.add(includeExtension);
-    
-
-    VisitorFileFilter visitorFileFilter = VisitorFileFilter(DirectoryOrIncludeFileExtensionBooleanFileVisitor(includeExtensionBasicArrayList, pathIncludes));;
+includeExtensionBasicArrayList->add(includeExtension);
     
 
-    BasicArrayList files = this->subDirectory.search(visitorFileFilter, AbFile::createAbFile(path));;
+    VisitorFileFilter* visitorFileFilter = new VisitorFileFilter(new DirectoryOrIncludeFileExtensionBooleanFileVisitor(includeExtensionBasicArrayList, pathIncludes));;
+    
+
+    BasicArrayList* files = this->subDirectory->search(visitorFileFilter, AbFile::createAbFile(path));;
     
 
 
@@ -228,11 +234,11 @@ includeExtensionBasicArrayList.add(includeExtension);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 e.printStackTrace();
     
-console.log("Error: " +e +"\nMsg: " +e.message);
+System.out.println("Error: " +e +"\nMsg: " +e.message);
     
 }
 
@@ -245,11 +251,11 @@ console.log("Error: " +e +"\nMsg: " +e.message);
 }
 
 
-    public: BasicArrayList getTrackedFiles(std::string path, std::vector<std::string> includeExtensions){
+    public: BasicArrayList* getTrackedFiles(std::string path, std::vector<std::string> includeExtensions){
 
         try {
             
-    BasicArrayList includeExtensionBasicArrayList = BasicArrayListD();;
+    BasicArrayList* includeExtensionBasicArrayList = new BasicArrayListD();;
     
 
     int32_t size = includeExtensions.size();;
@@ -261,15 +267,15 @@ console.log("Error: " +e +"\nMsg: " +e.message);
                         for (
     int32_t index = 0;index < size; index++)
         {
-includeExtensionBasicArrayList.add(includeExtensions[index]);
+includeExtensionBasicArrayList->add(includeExtensions[index]);
     
 }
 
 
-    VisitorFileFilter visitorFileFilter = VisitorFileFilter(DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(includeExtensionBasicArrayList));;
+    VisitorFileFilter* visitorFileFilter = new VisitorFileFilter(new DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(includeExtensionBasicArrayList));;
     
 
-    BasicArrayList files = this->subDirectory.search(visitorFileFilter, AbFile::createAbFile(path));;
+    BasicArrayList* files = this->subDirectory->search(visitorFileFilter, AbFile::createAbFile(path));;
     
 
 
@@ -279,11 +285,11 @@ includeExtensionBasicArrayList.add(includeExtensions[index]);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 e.printStackTrace();
     
-console.log("Error: " +e +"\nMsg: " +e.message);
+System.out.println("Error: " +e +"\nMsg: " +e.message);
     
 }
 
@@ -296,19 +302,19 @@ console.log("Error: " +e +"\nMsg: " +e.message);
 }
 
 
-    public: BasicArrayList getTrackedFiles(std::string path, std::string includeExtension){
+    public: BasicArrayList* getTrackedFiles(std::string path, std::string includeExtension){
 
         try {
             
-    BasicArrayList includeExtensionBasicArrayList = BasicArrayListD();;
+    BasicArrayList* includeExtensionBasicArrayList = new BasicArrayListD();;
     
-includeExtensionBasicArrayList.add(includeExtension);
-    
-
-    VisitorFileFilter visitorFileFilter = VisitorFileFilter(DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(includeExtensionBasicArrayList));;
+includeExtensionBasicArrayList->add(includeExtension);
     
 
-    BasicArrayList files = this->subDirectory.search(visitorFileFilter, AbFile::createAbFile(path));;
+    VisitorFileFilter* visitorFileFilter = new VisitorFileFilter(new DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(includeExtensionBasicArrayList));;
+    
+
+    BasicArrayList* files = this->subDirectory->search(visitorFileFilter, AbFile::createAbFile(path));;
     
 
 
@@ -318,11 +324,11 @@ includeExtensionBasicArrayList.add(includeExtension);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 e.printStackTrace();
     
-console.log("Error: " +e +"\nMsg: " +e.message);
+System.out.println("Error: " +e +"\nMsg: " +e.message);
     
 }
 
@@ -335,14 +341,14 @@ console.log("Error: " +e +"\nMsg: " +e.message);
 }
 
 
-    public: BasicArrayList getDirectories(std::string path){
+    public: BasicArrayList* getDirectories(std::string path){
 
         try {
             
-    VisitorFileFilter visitorFileFilter = VisitorFileFilter(DirectoryBooleanFileVisitor());;
+    VisitorFileFilter* visitorFileFilter = new VisitorFileFilter(new DirectoryBooleanFileVisitor());;
     
 
-    BasicArrayList files = this->subDirectory.search(visitorFileFilter, AbFile::createAbFile(path));;
+    BasicArrayList* files = this->subDirectory->search(visitorFileFilter, AbFile::createAbFile(path));;
     
 
 
@@ -352,11 +358,11 @@ console.log("Error: " +e +"\nMsg: " +e.message);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 e.printStackTrace();
     
-console.log("Error: " +e +"\nMsg: " +e.message);
+System.out.println("Error: " +e +"\nMsg: " +e.message);
     
 }
 

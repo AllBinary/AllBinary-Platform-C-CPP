@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFODOMNODEVIEW_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFODOMNODEVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
@@ -56,15 +62,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoDomNode.h"
-#include "TransformInfoInterface.h"
-#include "TransformInfoData.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoDomNode.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfoData.h"
 
 class TransformInfoDomNodeView: public TransformInfoDomNode, public DomNodeInterface {
 
-public: TransformInfoDomNodeView(TransformInfoInterface transformInfoInterface, std::string mapping);
+public: TransformInfoDomNodeView(TransformInfoInterface* transformInfoInterface, std::string mapping);
 
-public: TransformInfoDomNodeView(TransformInfoInterface transformInfoInterface);
+public: TransformInfoDomNodeView(TransformInfoInterface* transformInfoInterface);
 
 public: TransformInfoDomNodeView(std::string name, std::string mappedName);
 
@@ -72,7 +78,7 @@ public: TransformInfoDomNodeView(std::string name);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

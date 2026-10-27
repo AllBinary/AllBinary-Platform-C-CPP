@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_BASECHANGEDGAMEFEATURELISTENER_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_BASECHANGEDGAMEFEATURELISTENER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/configuration/feature/Feature.h>
@@ -74,32 +80,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameFeatureListenerInterface.h"
-#include "GameFeatureEvent.h"
+        #include "org/allbinary/game/configuration/event/GameFeatureListenerInterface.h"
+#include "org/allbinary/game/configuration/event/GameFeatureEvent.h"
 
 class BaseChangedGameFeatureListener
             : public Object
-        : public GameFeatureListenerInterface {
+        , public GameFeatureListenerInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const GameFeatureUtil gameFeatureUtil = GameFeatureUtil::getInstance();
+    protected: GameFeatureUtil* gameFeatureUtil = GameFeatureUtil::getInstance();
 
-    protected: const BasicArrayList list = BasicArrayListD();
+    protected: BasicArrayList* list = new BasicArrayListD();
 
     private: bool changed = true;
 
-    public: void onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject* eventObject);
 
-    public: void onGameFeatureChange(GameFeatureEvent gameFeatureEvent);
+    public: void onGameFeatureChange(GameFeatureEvent* gameFeatureEvent);
 
-    public: void add(Feature gameFeature);
+    public: void add(Feature* gameFeature);
 
-    public: void remove(Feature gameFeature);
+    public: void remove(Feature* gameFeature);
 
     public: void setChanged(bool initialized);
 
-    public: bool isChangedFeature(Feature gameFeature);
+    public: bool isChangedFeature(Feature* gameFeature);
 
     public: bool isChanged();
 

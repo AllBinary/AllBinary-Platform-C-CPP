@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -47,19 +53,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DemoGameMidletEventListener.h"
-#include "DemoGameMidletEvent.h"
+        #include "org/allbinary/game/midlet/DemoGameMidletEventListener.h"
+#include "org/allbinary/game/midlet/DemoGameMidletEvent.h"
 
 class DemoGameMidletEventHandler: public BasicEventHandler {
 
-    private: static const DemoGameMidletEventHandler gameKeyEventHandler = DemoGameMidletEventHandler();
+    private: static DemoGameMidletEventHandler* gameKeyEventHandler() { static std::unique_ptr<DemoGameMidletEventHandler> value(new DemoGameMidletEventHandler()); return value.get(); }
 
-    public: static DemoGameMidletEventHandler getInstance(){
+    public: static DemoGameMidletEventHandler* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DemoGameMidletEventHandler::gameKeyEventHandler;
+                        return DemoGameMidletEventHandler::gameKeyEventHandler();
     
 }
 
@@ -70,11 +76,11 @@ private: DemoGameMidletEventHandler(){
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
 
-    DemoGameMidletEventListener demoGameMidletEventListener = eventListenerInterface;;
+    DemoGameMidletEventListener* demoGameMidletEventListener = dynamic_cast<DemoGameMidletEventListener*>(eventListenerInterface);;
     
-demoGameMidletEventListener.onDemoGameMidletEvent(eventObject);
+demoGameMidletEventListener->onDemoGameMidletEvent(dynamic_cast<DemoGameMidletEvent*>(eventObject));
     
 }
 

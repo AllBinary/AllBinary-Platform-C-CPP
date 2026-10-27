@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLES_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -59,23 +65,23 @@ class MotionRectangles
 
     private: std::string name;
 
-    private: BasicArrayList rectangleVector;
+    private: BasicArrayList* rectangleVector;
 
-    private: ImageComparisonResult imageComparisonResult;
+    private: ImageComparisonResult* imageComparisonResult;
 
     protected: const int32_t MAX_PIXEL_DISTANCE_THRESHOLD = 2;
 
-public: MotionRectangles(std::string name, ImageComparisonResult imageComparisonResult);
+public: MotionRectangles(std::string name, ImageComparisonResult* imageComparisonResult);
 
-    public: BasicArrayList getVector();
+    public: BasicArrayList* getVector();
 
-    public: void setVector(BasicArrayList rectangleVector);
+    public: void setVector(BasicArrayList* rectangleVector);
 
     public: std::string getName();
 
-    public: ImageComparisonResult getImageComparisonResult();
+    public: ImageComparisonResult* getImageComparisonResult();
 
-    public: void setImageComparisonResult(ImageComparisonResult imageComparisonResult);
+    public: void setImageComparisonResult(ImageComparisonResult* imageComparisonResult);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEKEYUTIL_H
         #define ORG_ALLBINARY_GAME_INPUT_GAMEKEYUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -49,9 +55,9 @@ class GameKeyUtil
             : public Object
          {
 
-    private: static GameKeyUtil instance() { return GameKeyUtil(); }
+    private: static GameKeyUtil* instance() { static std::unique_ptr<GameKeyUtil> value(new GameKeyUtil()); return value.get(); }
 
-    public: static GameKeyUtil getInstance();
+    public: static GameKeyUtil* getInstance();
 
     public: bool isDirectionKey(int32_t key);
 

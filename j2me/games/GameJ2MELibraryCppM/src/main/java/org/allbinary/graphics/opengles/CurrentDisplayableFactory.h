@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_CURRENTDISPLAYABLEFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_CURRENTDISPLAYABLEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Displayable.h>
@@ -110,21 +116,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLFeatureFactory.h"
+        #include "org/allbinary/graphics/opengles/OpenGLFeatureFactory.h"
 
 class CurrentDisplayableFactory
             : public Object
          {
 
-    private: static CurrentDisplayableFactory instance() { return CurrentDisplayableFactory(); }
+    private: static CurrentDisplayableFactory* instance() { static std::unique_ptr<CurrentDisplayableFactory> value(new CurrentDisplayableFactory()); return value.get(); }
 
-    public: static CurrentDisplayableFactory getInstance();
+    public: static CurrentDisplayableFactory* getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const CanvasStrings canvasStrings = CanvasStrings::getInstance();
+    private: CanvasStrings* canvasStrings = CanvasStrings::getInstance();
 
-    private: const StringUtil stringUtil = StringUtil::getInstance();
+    private: StringUtil* stringUtil = StringUtil::getInstance();
 
     private: const std::string SET_DISPLAYABLE = "setDisplayable";
 
@@ -138,37 +144,37 @@ class CurrentDisplayableFactory
 
     private: const std::string RUNNABLE_WAS_ALREADY_IN_USE = "Runnable was already in use: ";
 
-    public: const BasicArrayList DEFAULT_CHILD_NAME_LIST = BasicArrayListD();
+    public: BasicArrayList* DEFAULT_CHILD_NAME_LIST = new BasicArrayListD();
 
-    private: Displayable displayable = NullDisplayable::getInstance();
+    private: Displayable* displayable = NullDisplayable::getInstance();
 
-    private: Displayable openGlReadydisplayable = NullDisplayable::getInstance();
+    private: Displayable* openGlReadydisplayable = NullDisplayable::getInstance();
 
-    private: GameRunnable runnable = NullWaitGameRunnable::getInstance();
+    private: GameRunnable* runnable = NullWaitGameRunnable::getInstance();
 
-    private: GameRunnable usedRunnable = NullWaitGameRunnable::getInstance();
+    private: GameRunnable* usedRunnable = NullWaitGameRunnable::getInstance();
 
 private: CurrentDisplayableFactory();
 
-    public: void setMyCanvas(MyCanvas displayable);
+    public: void setMyCanvas(MyCanvas* displayable);
 
-    public: void setDisplayable(Displayable displayable);
+    public: void setDisplayable(Displayable* displayable);
 
-    public: void setOpenGlReadydisplayable(Displayable openGlReadydisplayable);
+    public: void setOpenGlReadydisplayable(Displayable* openGlReadydisplayable);
 
-    public: Displayable getOpenGlReadydisplayable();
+    public: Displayable* getOpenGlReadydisplayable();
 
-    public: void setRunnable(GameRunnable runnable);
+    public: void setRunnable(GameRunnable* runnable);
 
     public: void clearRunnable();
 
     private: void update();
 
-    public: Displayable getDisplayable();
+    public: Displayable* getDisplayable();
 
-    public: GameRunnable getUsedRunnable();
+    public: GameRunnable* getUsedRunnable();
 
-    public: void setUsedRunnable(GameRunnable usedRunnable);
+    public: void setUsedRunnable(GameRunnable* usedRunnable);
 
 };
 

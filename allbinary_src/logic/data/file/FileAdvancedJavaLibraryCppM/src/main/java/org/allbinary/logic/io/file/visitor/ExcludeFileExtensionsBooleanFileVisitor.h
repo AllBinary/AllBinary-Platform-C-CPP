@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_VISITOR_EXCLUDEFILEEXTENSIONSBOOLEANFILEVISITOR_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_VISITOR_EXCLUDEFILEEXTENSIONSBOOLEANFILEVISITOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/io/file/AbFile.h>
 
       
@@ -45,15 +51,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BooleanFileVisitor.h"
+        #include "org/allbinary/logic/io/file/visitor/BooleanFileVisitor.h"
 
 class ExcludeFileExtensionsBooleanFileVisitor: public BooleanFileVisitor {
 
-public: ExcludeFileExtensionsBooleanFileVisitor(BasicArrayList filterStringBasicArrayList);
+public: ExcludeFileExtensionsBooleanFileVisitor(BasicArrayList* filterStringBasicArrayList);
 
-    public: Boolean visit(AbFile file);
+    public: bool visit(AbFile* file);
 
-    public: Boolean visit(AbFile file, std::string fileNameString);
+    public: bool visit(AbFile* file, std::string fileNameString);
 
 };
 

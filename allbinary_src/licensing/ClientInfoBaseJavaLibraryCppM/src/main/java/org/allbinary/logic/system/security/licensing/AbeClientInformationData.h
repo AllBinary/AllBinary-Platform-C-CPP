@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABECLIENTINFORMATIONDATA_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABECLIENTINFORMATIONDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class AbeClientInformationData
             : public Object
          {
 
-    private: static AbeClientInformationData instance() { return AbeClientInformationData(); }
+    private: static AbeClientInformationData* instance() { static std::unique_ptr<AbeClientInformationData> value(new AbeClientInformationData()); return value.get(); }
 
-    public: static AbeClientInformationData getInstance();
+    public: static AbeClientInformationData* getInstance();
 
 private: AbeClientInformationData();
 

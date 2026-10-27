@@ -21,6 +21,12 @@
         #ifndef TAGS_GENERIC_ORDER_ORDERTAG_H
         #define TAGS_GENERIC_ORDER_ORDERTAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>

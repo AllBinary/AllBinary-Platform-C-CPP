@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -49,7 +55,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AndroidResources.h"
+        #include "org/allbinary/AndroidResources.h"
 
 class AllBinaryAndroidGameInitializationUtil
             : public Object
@@ -57,17 +63,17 @@ class AllBinaryAndroidGameInitializationUtil
 
     public: static void init(){
 
-    ResourceUtil resourceUtil = ResourceUtil::getInstance();;
+    ResourceUtil* resourceUtil = ResourceUtil::getInstance();;
     
 
-    AndroidResources androidResources = AndroidResources::getInstance();;
+    AndroidResources* androidResources = AndroidResources::getInstance();;
     
 
-    LicenseInitInfoUtil licenseInitInfoUtil = LicenseInitInfoUtil::getInstance();;
+    LicenseInitInfoUtil* licenseInitInfoUtil = LicenseInitInfoUtil::getInstance();;
     
-resourceUtil.addResource(licenseInitInfoUtil.INITFILENAME, Integer::valueOf(androidResources.raw.licenseinitdata));
+resourceUtil->addResource(licenseInitInfoUtil->INITFILENAME, Integer.valueOf(androidResources->raw.licenseinitdata));
     
-resourceUtil.addResource(PartnerIdentifierFileUtil::getInstance().FILE_NAME, Integer::valueOf(androidResources.raw.partner));
+resourceUtil->addResource(PartnerIdentifierFileUtil::getInstance()->FILE_NAME, Integer.valueOf(androidResources->raw.partner));
     
 }
 

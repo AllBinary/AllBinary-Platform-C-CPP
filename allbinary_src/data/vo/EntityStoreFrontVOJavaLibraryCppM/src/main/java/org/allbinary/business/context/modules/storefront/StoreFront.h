@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -152,80 +158,80 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreFrontInterface.h"
-#include "StoreFrontData.h"
+        #include "org/allbinary/business/context/modules/storefront/StoreFrontInterface.h"
+#include "org/allbinary/business/context/modules/storefront/StoreFrontData.h"
 
 class StoreFront
             : public Object
-        : public StoreFrontInterface {
+        , public StoreFrontInterface {
 
-    private: static const std::string RESOURCES = " Resources" +AbPathData::getInstance().SEPARATOR;
+    private: static inline const std::string RESOURCES = " Resources" +AbPathData::getInstance()->SEPARATOR;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const Directory directory = Directory::getInstance();
+    private: Directory* directory = Directory::getInstance();
 
-    private: const StringUtil stringUtil = StringUtil::getInstance();
+    private: StringUtil* stringUtil = StringUtil::getInstance();
 
-    private: const AbPathUtil abPathUtil = AbPathUtil::getInstance();
+    private: AbPathUtil* abPathUtil = AbPathUtil::getInstance();
 
-    private: std::string name = this->stringUtil.EMPTY_STRING;
+    private: std::string name = this->stringUtil->EMPTY_STRING;
 
-    private: std::string basketName = this->stringUtil.EMPTY_STRING;
+    private: std::string basketName = this->stringUtil->EMPTY_STRING;
 
-    private: std::string homeHostName = this->stringUtil.EMPTY_STRING;
+    private: std::string homeHostName = this->stringUtil->EMPTY_STRING;
 
-    private: AbPath homeHostNamePath = this->abPathUtil.NO_ABPATH;
+    private: AbPath* homeHostNamePath = this->abPathUtil->NO_ABPATH;
 
-    private: std::string hostName = this->stringUtil.EMPTY_STRING;
+    private: std::string hostName = this->stringUtil->EMPTY_STRING;
 
-    private: AbPath hostNamePath = this->abPathUtil.NO_ABPATH;
+    private: AbPath* hostNamePath = this->abPathUtil->NO_ABPATH;
 
-    private: std::string testHomeHostName = this->stringUtil.EMPTY_STRING;
+    private: std::string testHomeHostName = this->stringUtil->EMPTY_STRING;
 
-    private: AbPath testHomeHostNamePath = this->abPathUtil.NO_ABPATH;
+    private: AbPath* testHomeHostNamePath = this->abPathUtil->NO_ABPATH;
 
-    private: std::string testHostName = this->stringUtil.EMPTY_STRING;
+    private: std::string testHostName = this->stringUtil->EMPTY_STRING;
 
-    private: AbPath testHostNamePath = this->abPathUtil.NO_ABPATH;
+    private: AbPath* testHostNamePath = this->abPathUtil->NO_ABPATH;
 
-    private: AbPath imagePath = this->abPathUtil.NO_ABPATH;
+    private: AbPath* imagePath = this->abPathUtil->NO_ABPATH;
 
-    private: AbPath staticPath = this->abPathUtil.NO_ABPATH;
+    private: AbPath* staticPath = this->abPathUtil->NO_ABPATH;
 
-    private: AbPath categoryPath = this->abPathUtil.NO_ABPATH;
+    private: AbPath* categoryPath = this->abPathUtil->NO_ABPATH;
 
-    private: std::string inventoryControl = this->stringUtil.EMPTY_STRING;
+    private: std::string inventoryControl = this->stringUtil->EMPTY_STRING;
 
-    private: ContextConfigurationInterface contextConfigurationInterface;
+    private: ContextConfigurationInterface* contextConfigurationInterface;
 
-    private: std::string subStores = this->stringUtil.EMPTY_STRING;
+    private: std::string subStores = this->stringUtil->EMPTY_STRING;
 
-    private: std::string tagLocation = this->stringUtil.EMPTY_STRING;
+    private: std::string tagLocation = this->stringUtil->EMPTY_STRING;
 
-    private: std::string packageLocation = this->stringUtil.EMPTY_STRING;
+    private: std::string packageLocation = this->stringUtil->EMPTY_STRING;
 
-    private: std::string ftp = this->stringUtil.EMPTY_STRING;
+    private: std::string ftp = this->stringUtil->EMPTY_STRING;
 
-    private: AbPath ftpPath = this->abPathUtil.NO_ABPATH;
+    private: AbPath* ftpPath = this->abPathUtil->NO_ABPATH;
 
-    private: std::string ftpUserName = this->stringUtil.EMPTY_STRING;
+    private: std::string ftpUserName = this->stringUtil->EMPTY_STRING;
 
-    private: std::string ftpPassword = this->stringUtil.EMPTY_STRING;
+    private: std::string ftpPassword = this->stringUtil->EMPTY_STRING;
 
-    private: std::string testFtp = this->stringUtil.EMPTY_STRING;
+    private: std::string testFtp = this->stringUtil->EMPTY_STRING;
 
-    private: AbPath testFtpPath = this->abPathUtil.NO_ABPATH;
+    private: AbPath* testFtpPath = this->abPathUtil->NO_ABPATH;
 
-    private: std::string testFtpUserName = this->stringUtil.EMPTY_STRING;
+    private: std::string testFtpUserName = this->stringUtil->EMPTY_STRING;
 
-    private: std::string testFtpPassword = this->stringUtil.EMPTY_STRING;
+    private: std::string testFtpPassword = this->stringUtil->EMPTY_STRING;
 
-    private: std::string timeCreated = this->stringUtil.EMPTY_STRING;
+    private: std::string timeCreated = this->stringUtil->EMPTY_STRING;
 
-    private: std::string lastModified = this->stringUtil.EMPTY_STRING;
+    private: std::string lastModified = this->stringUtil->EMPTY_STRING;
 
     private: const int32_t MINCHAR = 0;
 
@@ -233,37 +239,37 @@ class StoreFront
 
     private: const int32_t MAXCHAR = 255;
 
-    private: const std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;
+    private: const std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: const std::vector<std::string> ONE_EMPTY_STRING_ARRAY = StringUtil::getInstance().ONE_EMPTY_STRING_ARRAY;
+    private: const std::vector<std::string> ONE_EMPTY_STRING_ARRAY = StringUtil::getInstance()->ONE_EMPTY_STRING_ARRAY;
 
 public: StoreFront();
 
-public: StoreFront(HttpServletRequest request);
+public: StoreFront(HttpServletRequest* request);
 
-public: StoreFront(HashMap<Object*, Object*> hashMap);
+public: StoreFront(HashMap<Object*, Object*>* hashMap);
 
     private: bool isColumn(std::string columnName);
 
                 //@Throws(Exception.constructor)
             
-    private: AbPath createPath(std::string key, HashMap<Object*, Object*> hashMap);
+    private: AbPath* createPath(std::string key, HashMap<Object*, Object*>* hashMap);
 
                 //@Throws(Exception.constructor)
             
-    private: AbPath createPath(std::string append, std::string key, HashMap<Object*, Object*> hashMap);
+    private: AbPath* createPath(std::string append, std::string key, HashMap<Object*, Object*>* hashMap);
 
-    private: std::string get(std::string key, HashMap<Object*, Object*> hashMap);
+    private: std::string get(std::string key, HashMap<Object*, Object*>* hashMap);
 
-    private: std::string create(std::string append, std::string key, HashMap<Object*, Object*> hashMap);
+    private: std::string create(std::string append, std::string key, HashMap<Object*, Object*>* hashMap);
 
                 //@Throws(Exception.constructor)
             
-    private: void getFormData(HashMap<Object*, Object*> storeHashMap);
+    private: void getFormData(HashMap<Object*, Object*>* storeHashMap);
 
-    public: Boolean isNameValid();
+    public: bool isNameValid();
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string nameValidationInfo();
 
@@ -307,7 +313,7 @@ public: StoreFront(HashMap<Object*, Object*> hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getSubStores();
+    public: BasicArrayList* getSubStores();
 
     public: std::string getTagLocation();
 
@@ -417,29 +423,29 @@ public: StoreFront(HashMap<Object*, Object*> hashMap);
 
                 //@Throws(Exception.constructor)
             
-    private: void installViews(AbPath fromDirectoryAbPath, AbPath toDirectoryAbPath, int32_t current, int32_t total);
+    private: void installViews(AbPath* fromDirectoryAbPath, AbPath* toDirectoryAbPath, int32_t current, int32_t total);
 
                 //@Throws(Exception.constructor)
             
-    private: void installResources(AbPath fromDirectoryAbPath, int32_t current, int32_t total);
+    private: void installResources(AbPath* fromDirectoryAbPath, int32_t current, int32_t total);
 
                 //@Throws(Exception.constructor)
             
-    private: void installMedia(AbPath fromDirectoryAbPath, int32_t current, int32_t total);
+    private: void installMedia(AbPath* fromDirectoryAbPath, int32_t current, int32_t total);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList toVector();
+    public: BasicArrayList* toVector();
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
     public: Object* getKey();
 
-    public: ContextConfigurationInterface getContextConfigurationInterface();
+    public: ContextConfigurationInterface* getContextConfigurationInterface();
 
-    public: void setContextConfigurationInterface(ContextConfigurationInterface contextConfigurationInterface);
+    public: void setContextConfigurationInterface(ContextConfigurationInterface* contextConfigurationInterface);
 
 };
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,39 +66,39 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageUtil.h"
-#include "ImageJ2SEUtil.h"
-#include "ImageCreationUtil.h"
+        #include "org/allbinary/media/image/ImageUtil.h"
+#include "org/allbinary/media/image/ImageJ2SEUtil.h"
+#include "org/allbinary/media/image/ImageCreationUtil.h"
 
 class ImageScaleUtil
             : public Object
          {
 
-    private: static ImageScaleUtil instance() { return ImageScaleUtil(); }
+    private: static ImageScaleUtil* instance() { static std::unique_ptr<ImageScaleUtil> value(new ImageScaleUtil()); return value.get(); }
 
-    public: static ImageScaleUtil getInstance();
+    public: static ImageScaleUtil* getInstance();
 
-    private: const ImageUtil imageUtil = ImageUtil::getInstance();
+    private: ImageUtil* imageUtil = ImageUtil::getInstance();
 
-    private: const ImageJ2SEUtil imageJ2SEUtil = ImageJ2SEUtil::getInstance();
+    private: ImageJ2SEUtil* imageJ2SEUtil = ImageJ2SEUtil::getInstance();
 
-    private: const ImageCreationUtil imageCreationUtil = ImageCreationUtil::getInstance();
+    private: ImageCreationUtil* imageCreationUtil = ImageCreationUtil::getInstance();
 
 private: ImageScaleUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImage2(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached);
+    public: Image* createImage2(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached);
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImage3(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable);
+    public: Image* createImage3(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable_);
 
                 //@Throws(Exception.constructor)
             
-    public: void scale2(Image originalImage, std::vector<Image> originalImageArray, std::vector<Image> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY);
+    public: void scale2(Image* originalImage, std::vector<Image*> originalImageArray, std::vector<Image*> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY);
 
-    public: void scale(Image originalImage, Image newMaxSizeImage, float scaleX, float scaleY, bool clear);
+    public: void scale(Image* originalImage, Image* newMaxSizeImage, float scaleX, float scaleY, bool clear);
 
 };
 

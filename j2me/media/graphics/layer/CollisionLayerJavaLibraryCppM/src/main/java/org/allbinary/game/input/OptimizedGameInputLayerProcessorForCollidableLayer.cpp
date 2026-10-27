@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
@@ -50,11 +56,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OptimizedGameInputLayerManager.h"
+        #include "org/allbinary/game/input/OptimizedGameInputLayerManager.h"
 
 class OptimizedGameInputLayerProcessorForCollidableLayer: public LayerProcessor {
 
-public: OptimizedGameInputLayerProcessorForCollidableLayer() : LayerProcessor(OptimizedGameInputLayerManager()){
+public: OptimizedGameInputLayerProcessorForCollidableLayer() : LayerProcessor(new OptimizedGameInputLayerManager()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -66,18 +72,18 @@ public: OptimizedGameInputLayerProcessorForCollidableLayer() : LayerProcessor(Op
 
                 //@Throws(Exception.constructor)
             
-    public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
+    public: void processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index){
 
-    AllBinaryGameLayer gameInputInterface = layerInterface;;
+    AllBinaryGameLayer* gameInputInterface = dynamic_cast<AllBinaryGameLayer*>(layerInterface);;
     
-gameInputInterface.processInput(allBinaryLayerManager);
+gameInputInterface->processInput(allBinaryLayerManager);
     
 }
 
 
-    public: bool isProcessorLayer(AllBinaryLayer layerInterface){
+    public: bool isProcessorLayer(AllBinaryLayer* layerInterface){
 
-                        if(layerInterface.implmentsGameInputInterface())
+                        if(layerInterface->implmentsGameInputInterface())
                         
                                     {
                                     

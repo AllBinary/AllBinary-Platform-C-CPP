@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -91,15 +97,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryPropertiesInterface.h"
+        #include "org/allbinary/business/category/properties/CategoryPropertiesInterface.h"
 
 class CategoryProperties
             : public Object
-        : public CategoryPropertiesInterface {
+        , public CategoryPropertiesInterface {
 
-    private: static const int32_t MAXDEPTH = 100;
+    private: static inline const int32_t MAXDEPTH = 100;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string category;
 
@@ -109,13 +115,13 @@ this->category= name;
 }
 
 
-public: CategoryProperties(Node node){
+public: CategoryProperties(Node* node){
 this->category= CategoryUtil::getNameFromNode(node);
     
 }
 
 
-public: CategoryProperties(HashMap<Object*, Object*> categoryPropertiesHashMap){
+public: CategoryProperties(HashMap<Object*, Object*>* categoryPropertiesHashMap){
 this->category= .toCharArray();
     
 }
@@ -163,21 +169,21 @@ this->category= .toCharArray();
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getPath(CategoryHierarchyInterface categoryHierarchyInterface){
+    public: AbPath* getPath(CategoryHierarchyInterface* categoryHierarchyInterface){
 
-    AbPathData abPathData = AbPathData::getInstance();;
+    AbPathData* abPathData = AbPathData::getInstance();;
     
 
-    StringMaker pathStringBuffer = StringMaker();;
+    StringMaker* pathStringBuffer = new StringMaker();;
     
 
-    BasicArrayList list = BasicArrayListD();;
+    BasicArrayList* list = new BasicArrayListD();;
     
 
-    CategoryInterface nextParentCategoryInterface = categoryHierarchyInterface.getParent();;
+    CategoryInterface* nextParentCategoryInterface = categoryHierarchyInterface->getParent();;
     
 
-                        if(this != nextParentCategoryInterface.getProperties())
+                        if(this != nextParentCategoryInterface->getProperties())
                         
                                     {
                                     
@@ -189,7 +195,7 @@ this->category= .toCharArray();
                                 )
         {
 
-                        if(nextParentCategoryInterface.getProperties().isRealRoot())
+                        if(nextParentCategoryInterface->getProperties()->isRealRoot())
                         
                                     {
                                     break;
@@ -199,24 +205,24 @@ this->category= .toCharArray();
                                     }
                                 
 
-                        if(nextParentCategoryInterface.getProperties().isRoot())
+                        if(nextParentCategoryInterface->getProperties()->isRoot())
                         
                                     {
-                                    list.addAt(0, nextParentCategoryInterface.getPath().toString());
+                                    list->addAt(0, nextParentCategoryInterface->getPath()->toString());
     
 
                                     }
                                 
                         else {
-                            pathStringBuffer.delete(0, pathStringBuffer.length());
+                            pathStringBuffer->delete(0, pathStringBuffer->length());
     
-list.addAt(0, pathStringBuffer.append(abPathData.SEPARATOR).append(nextParentCategoryInterface.getProperties().getValue()).toString());
+list->addAt(0, pathStringBuffer->append(abPathData->SEPARATOR)->append(nextParentCategoryInterface->getProperties()->getValue())->toString());
     
 
                         }
                             
 
-                        if(nextParentCategoryInterface == nextParentCategoryInterface.getHierarchy().getParent())
+                        if(nextParentCategoryInterface == nextParentCategoryInterface->getHierarchy()->getParent())
                         
                                     {
                                     break;
@@ -225,7 +231,7 @@ list.addAt(0, pathStringBuffer.append(abPathData.SEPARATOR).append(nextParentCat
 
                                     }
                                 
-nextParentCategoryInterface= nextParentCategoryInterface.getHierarchy().getParent();
+nextParentCategoryInterface= nextParentCategoryInterface->getHierarchy()->getParent();
     
 depthIndex++;
     
@@ -236,7 +242,7 @@ depthIndex++;
                                     
 
 
-                            throw Exception("Probably Major Error");
+                            throw new Exception("Probably Major Error");
                     
 
                                     }
@@ -246,12 +252,12 @@ depthIndex++;
 
                                     }
                                 
-pathStringBuffer.delete(0, pathStringBuffer.length());
+pathStringBuffer->delete(0, pathStringBuffer->length());
     
-pathStringBuffer.append(abPathData.SEPARATOR).append(this->getValue());
+pathStringBuffer->append(abPathData->SEPARATOR)->append(this->getValue());
     
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
 
@@ -260,17 +266,17 @@ pathStringBuffer.append(abPathData.SEPARATOR).append(this->getValue());
                         for (
     int32_t index = 0;index < size; index++)
         {
-pathStringBuffer.append(list.get(index));
+pathStringBuffer->append(list->get(index));
     
 }
 
-pathStringBuffer.append(abPathData.SEPARATOR);
+pathStringBuffer->append(abPathData->SEPARATOR);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
                         
                                     {
-                                    this->logUtil.putF("path = " +pathStringBuffer.toString(), this, "getPath");
+                                    this->logUtil->putF("path = " +pathStringBuffer->toString(), this, "getPath");
     
 
                                     }
@@ -279,7 +285,7 @@ pathStringBuffer.append(abPathData.SEPARATOR);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbPath(pathStringBuffer.toString(), StringUtil::getInstance().EMPTY_STRING);
+                        return new AbPath(pathStringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);
     
 }
 
@@ -289,18 +295,18 @@ pathStringBuffer.append(abPathData.SEPARATOR);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getValue() +AbPathData::getInstance().EXTENSION_SEP +CategoryData::getInstance().UNCRYPTED_EXTENSION;
+                        return this->getValue() +AbPathData::getInstance()->EXTENSION_SEP +CategoryData::getInstance()->UNCRYPTED_EXTENSION;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getWebAppPath(){
+    public: AbPath* getWebAppPath(){
 
 
 
-                            throw Exception("Not Root");
+                            throw new Exception("Not Root");
                     
 }
 
@@ -311,12 +317,12 @@ this->category= value;
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
-    Boolean returnBoolean = Boolean::FALSE;;
+    bool returnBoolean = Boolean::FALSE;;
     
 
-                        if(StringValidationUtil::getInstance().isValidRequired(this->category, 1, AbSqlData::MAXSTRING))
+                        if(StringValidationUtil::getInstance()->isValidRequired(this->category, 1, AbSqlData::MAXSTRING))
                         
                                     {
                                     returnBoolean= Boolean::TRUE;
@@ -333,11 +339,11 @@ this->category= value;
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> categoryHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* categoryHashMap = StdUtil::getInstance()->createHashMap();;
     
-categoryHashMap.put(CategoryData::getInstance().NAME, this->category);
+categoryHashMap->put(CategoryData::getInstance()->NAME, this->category);
     
 
 
@@ -348,11 +354,11 @@ categoryHashMap.put(CategoryData::getInstance().NAME, this->category);
 }
 
 
-    public: BasicArrayList toVector(){
+    public: BasicArrayList* toVector(){
 
-    BasicArrayList categoryVector = BasicArrayListD();;
+    BasicArrayList* categoryVector = new BasicArrayListD();;
     
-categoryVector.add(this->category);
+categoryVector->add(this->category);
     
 
 
@@ -365,7 +371,7 @@ categoryVector.add(this->category);
 
                 //@Throws(Exception.constructor)
             
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -377,7 +383,7 @@ categoryVector.add(this->category);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

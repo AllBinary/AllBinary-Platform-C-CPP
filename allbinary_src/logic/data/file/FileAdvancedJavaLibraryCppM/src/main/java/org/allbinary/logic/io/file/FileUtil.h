@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -108,95 +114,95 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFile.h"
-#include "FilePathData.h"
-#include "FileWrapperUtil.h"
-#include "FileUtil2.h"
+        #include "org/allbinary/logic/io/file/AbFile.h"
+#include "org/allbinary/logic/io/file/FilePathData.h"
+#include "org/allbinary/logic/io/file/FileWrapperUtil.h"
+#include "org/allbinary/logic/io/file/FileUtil2.h"
 //data/init/views/TestStore/template/type/genericTemplateObjectConfig.xml
 class FileUtil
             : public Object
          {
 
-    private: static FileUtil instance() { return FileUtil(); }
+    private: static FileUtil* instance() { static std::unique_ptr<FileUtil> value(new FileUtil()); return value.get(); }
 
-    public: static FileUtil getInstance();
+    public: static FileUtil* getInstance();
 
-    private: static std::string getNewDirectory(AbFile fromFile);
+    private: static std::string getNewDirectory(AbFile* fromFile);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const Directory directory = Directory::getInstance();
+    private: Directory* directory = Directory::getInstance();
 
-    private: const LogConfigTypeFactory logConfigTypeFactory = LogConfigTypeFactory::getInstance();
+    private: LogConfigTypeFactory* logConfigTypeFactory = LogConfigTypeFactory::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const StreamUtil streamUtil = StreamUtil::getInstance();
+    private: StreamUtil* streamUtil = StreamUtil::getInstance();
 
 private: FileUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: void write(InputStream inputStream, AbFile file);
+    public: void write(InputStream* inputStream, AbFile* file);
 
                 //@Throws(Exception.constructor)
             
-    public: void write(InputStream inputStream, AbDataOutputStream dataOutputStream);
+    public: void write(InputStream* inputStream, AbDataOutputStream* dataOutputStream);
 
                 //@Throws(Exception.constructor)
             
-    public: void write(InputStream inputStream, AbDataOutputStream dataOutputStream, std::vector<int8_t> buffer);
+    public: void write(InputStream* inputStream, AbDataOutputStream* dataOutputStream, std::vector<int8_t> buffer);
 
                 //@Throws(Exception.constructor)
             
-    private: void copy(AbFileInputStream dataInputStream, AbDataOutputStream dataOutputStream);
+    private: void copy(AbFileInputStream* dataInputStream, AbDataOutputStream* dataOutputStream);
 
                 //@Throws(Exception.constructor)
             
-    private: AbPath fixPath(AbFile file, AbPath path, AbPath realPath, std::string cloud);
+    private: AbPath* fixPath(AbFile* file, AbPath* path, AbPath* realPath, std::string cloud);
 
                 //@Throws(Exception.constructor)
             
-    public: void copyToCloud(AbFile file, AbPath path, AbPath realPath, std::string cloud);
+    public: void copyToCloud(AbFile* file, AbPath* path, AbPath* realPath, std::string cloud);
 
                 //@Throws(Exception.constructor)
             
-    public: void copyToCloud(AbFile file, AbPath path, AbPath realPath, std::string cloud, bool overwriteNewer, bool overwriteAll);
+    public: void copyToCloud(AbFile* file, AbPath* path, AbPath* realPath, std::string cloud, bool overwriteNewer, bool overwriteAll);
 
                 //@Throws(Exception.constructor)
             
-    public: void copyToCloud(AbFile file, AbFile outFile);
+    public: void copyToCloud(AbFile* file, AbFile* outFile);
 
                 //@Throws(Exception.constructor)
             
-    public: void copyToCloud(AbFile file, AbFile outFile, bool overwriteNewer, bool overwriteAll);
+    public: void copyToCloud(AbFile* file, AbFile* outFile, bool overwriteNewer, bool overwriteAll);
 
                 //@Throws(Exception.constructor)
             
-    private: bool copyPrepare(AbFile fromFile, AbFile toFile, bool overwriteNewer, bool overwriteAll);
+    private: bool copyPrepare(AbFile* fromFile, AbFile* toFile, bool overwriteNewer, bool overwriteAll);
 
                 //@Throws(Exception.constructor)
             
-    private: void copyFile(AbFile fromFile, AbFile toFile);
+    private: void copyFile(AbFile* fromFile, AbFile* toFile);
 
                 //@Throws(Exception.constructor)
             
-    private: void copyFile(AbFile fromFile, AbFile toFile, bool overwriteNewer, bool overwriteAll);
+    private: void copyFile(AbFile* fromFile, AbFile* toFile, bool overwriteNewer, bool overwriteAll);
 
                 //@Throws(Exception.constructor)
             
-    public: void copyDirectoryPortion(AbPath fromDirectoryAbPath, AbPath toDirectoryAbPath, bool overwriteNewer, bool overwriteAll, int32_t current, int32_t total);
+    public: void copyDirectoryPortion(AbPath* fromDirectoryAbPath, AbPath* toDirectoryAbPath, bool overwriteNewer, bool overwriteAll, int32_t current, int32_t total);
 
                 //@Throws(Exception.constructor)
             
-    private: void copyDirectory(AbFile fromFile, AbFile to);
+    private: void copyDirectory(AbFile* fromFile, AbFile* to);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool copy(AbPath fromAbPath, AbPath to);
+    public: bool copy(AbPath* fromAbPath, AbPath* to);
 
-    public: bool shouldSkip(AbFile file, std::vector<std::string> skipFiles);
+    public: bool shouldSkip(AbFile* file, std::vector<std::string> skipFiles);
 
     private: const std::string WRITE_LABEL = "Write file: ";
 
@@ -208,7 +214,7 @@ private: FileUtil();
             
     public: void write(std::string filePath, std::string string);
 
-    public: BasicArrayList loadFileAsList(AbFile file, int32_t max, std::vector<int8_t> byteArray1);
+    public: BasicArrayList* loadFileAsList(AbFile* file, int32_t max, std::vector<int8_t> byteArray1);
 
 };
 

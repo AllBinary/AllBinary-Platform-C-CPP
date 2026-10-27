@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -122,32 +128,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TagHelperInterface.h"
+        #include "admin/taghelpers/TagHelperInterface.h"
 
 class StaticPagesRequestHelper: public AbContext, public TagHelperInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
     private: std::string storeName;
 
-    private: SearchParams searchParams;
+    private: SearchParams* searchParams;
 
     private: std::string xslFile;
 
-public: StaticPagesRequestHelper(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext) : AbContext(propertiesHashMap, pageContext){
+public: StaticPagesRequestHelper(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : AbContext(propertiesHashMap, pageContext){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->request= pageContext.getRequest();
+this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
     
-this->xslFile= propertiesHashMap.get(TransformInfoData::getInstance().TEMPLATEFILENAME);
+this->xslFile= propertiesHashMap->get(TransformInfoData::getInstance()->TEMPLATEFILENAME);
     
 this->getFormData();
     
@@ -155,9 +161,9 @@ this->getFormData();
 
 
     private: void getFormData(){
-this->storeName= this->request.getParameter(StoreFrontData::getInstance().NAME);
+this->storeName= this->request->getParameter(StoreFrontData::getInstance()->NAME);
     
-this->searchParams= SearchParams(this->request);
+this->searchParams= new SearchParams(this->request);
     
 }
 
@@ -168,16 +174,16 @@ this->searchParams= SearchParams(this->request);
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
                         
                                     {
-                                    this->logUtil.putF("Generated Static Pages Notification Email", this, "email");
+                                    this->logUtil->putF("Generated Static Pages Notification Email", this, "email");
     
 
                                     }
                                 
 
-    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(this->storeName);;
+    StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(this->storeName);;
     
 
     std::string adminEmailSubject = "Generated Static Pages Email Notification";;
@@ -186,36 +192,36 @@ this->searchParams= SearchParams(this->request);
     std::string adminEmailTextBody = "Generated static pages for store: " +this->storeName;;
     
 
-    BasicEmailInfo adminBasicEmailInfo = AdminEmailInfo(adminEmailSubject, adminEmailTextBody);;
+    BasicEmailInfo* adminBasicEmailInfo = dynamic_cast<BasicEmailInfo*>(new AdminEmailInfo(adminEmailSubject, adminEmailTextBody));;
     
 
-    BasicEmailInfo storeAdminBasicEmailInfo = StoreEmailInfo(storeFrontInterface, adminEmailSubject, adminEmailTextBody);;
+    BasicEmailInfo* storeAdminBasicEmailInfo = dynamic_cast<BasicEmailInfo*>(new StoreEmailInfo(storeFrontInterface, adminEmailSubject, adminEmailTextBody));;
     
 
-    EmailInfo storeAdminEmailInfo = EmailInfo(storeAdminBasicEmailInfo);;
+    EmailInfo* storeAdminEmailInfo = new EmailInfo(storeAdminBasicEmailInfo);;
     
 
-    EmailInfo adminEmailInfo = EmailInfo(adminBasicEmailInfo);;
+    EmailInfo* adminEmailInfo = new EmailInfo(adminBasicEmailInfo);;
     
 
-    UserEmailEventHandler adminUserEmailEventHandler = AdminUserEmailEventHandlerSingletons::getInstance().getInstance(this->abeClientInformation, UserEmailEventNameData::STOREGENERATINGSTATICPAGES);;
+    UserEmailEventHandler* adminUserEmailEventHandler = AdminUserEmailEventHandlerSingletons::getInstance()->getInstance(this->abeClientInformation, UserEmailEventNameData::STOREGENERATINGSTATICPAGES);;
     
 
-    UserEmailEventHandler storeAdminUserEmailEventHandler = StoreAdminUserEmailEventHandlerSingletons::getInstance().getInstance(UserEmailEventNameData::STOREGENERATINGSTATICPAGES, this->abeClientInformation, storeFrontInterface);;
+    UserEmailEventHandler* storeAdminUserEmailEventHandler = StoreAdminUserEmailEventHandlerSingletons::getInstance()->getInstance(UserEmailEventNameData::STOREGENERATINGSTATICPAGES, this->abeClientInformation, storeFrontInterface);;
     
-storeAdminUserEmailEventHandler.receiveEmailInfo(UserEmailEventNameData::STOREGENERATINGSTATICPAGES, storeAdminEmailInfo);
+storeAdminUserEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::STOREGENERATINGSTATICPAGES, storeAdminEmailInfo);
     
-adminUserEmailEventHandler.receiveEmailInfo(UserEmailEventNameData::STOREGENERATINGSTATICPAGES, adminEmailInfo);
+adminUserEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::STOREGENERATINGSTATICPAGES, adminEmailInfo);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, "email", e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, "email", &e);
     
 
                                     }
@@ -229,22 +235,22 @@ adminUserEmailEventHandler.receiveEmailInfo(UserEmailEventNameData::STOREGENERAT
 
         try {
             
-    std::string contentType = AcceptableResponseGenerator::getInstance().get(this->request);;
+    std::string contentType = AcceptableResponseGenerator::getInstance()->get(this->request);;
     
 
-    SearchRequest searchRequest = SearchRequest(
+    SearchRequest* searchRequest = new SearchRequest(
                             nullptr, this->searchParams, this->xslFile, contentType, this->getPropertiesHashMap(), this->getPageContext());;
     
 
-    std::string success = ProductListingFactory::getInstance(searchRequest).generateAll(this->storeName);;
+    std::string success = ProductListingFactory::getInstance(searchRequest)->generateAll(this->storeName);;
     
 this->email();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "generateStaticPages()");
+                                    this->logUtil->putF(success, this, "generateStaticPages()");
     
 
                                     }
@@ -257,16 +263,16 @@ this->email();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to generate staticpages table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "generateStaticPages()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "generateStaticPages()", &e);
     
 
                                     }
@@ -286,24 +292,24 @@ this->email();
 
         try {
             
-    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(this->storeName);;
+    StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(this->storeName);;
     
 
-    AbPath fromAbPath = AbPath(storeFrontInterface.getTestHtmlPath() +storeFrontInterface.getStaticPath(), StringUtil::getInstance().EMPTY_STRING);;
+    AbPath* fromAbPath = new AbPath(storeFrontInterface->getTestHtmlPath() +storeFrontInterface->getStaticPath(), StringUtil::getInstance()->EMPTY_STRING);;
     
 
-    AbPath toAbPath = AbPath(URLGLOBALS::getWebappPath() +storeFrontInterface.getName() +AbPathData::getInstance().SEPARATOR +storeFrontInterface.getStaticPath(), StringUtil::getInstance().EMPTY_STRING);;
+    AbPath* toAbPath = new AbPath(URLGLOBALS::getWebappPath() +storeFrontInterface->getName() +AbPathData::getInstance()->SEPARATOR +storeFrontInterface->getStaticPath(), StringUtil::getInstance()->EMPTY_STRING);;
     
-FileUtil::getInstance().copy(fromAbPath, toAbPath);
+FileUtil::getInstance()->copy(fromAbPath, toAbPath);
     
 
     std::string success = "Made Public";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "makePublic()");
+                                    this->logUtil->putF(success, this, "makePublic()");
     
 
                                     }
@@ -316,16 +322,16 @@ FileUtil::getInstance().copy(fromAbPath, toAbPath);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to makePublic";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "makePublic()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "makePublic()", &e);
     
 
                                     }

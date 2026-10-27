@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_VALIDATIONCOMPONENTINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_VALIDATIONCOMPONENTINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/visual/transform/TransformInterface.h>
 
       
@@ -42,7 +48,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ValidationInterface.h"
+        #include "org/allbinary/logic/control/validate/ValidationInterface.h"
 
 class ValidationComponentInterface: public TransformInterface, public ValidationInterface {
 

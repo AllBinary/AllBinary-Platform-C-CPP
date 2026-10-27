@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,21 +44,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ScreenCaptureNoneFactory.h"
-#include "ScreenCapture.h"
+        #include "org/allbinary/graphics/ScreenCaptureNoneFactory.h"
+#include "org/allbinary/graphics/ScreenCapture.h"
 
 class ScreenCaptureFactory
             : public Object
          {
 
-    private: static const ScreenCapture instance = ScreenCaptureNoneFactory::getInstance();
+    private: static inline ScreenCapture* instance = ScreenCaptureNoneFactory::getInstance();
 
-    public: static ScreenCapture getInstance(){
+    public: static ScreenCapture* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScreenCaptureFactory::instance();
+                        return ScreenCaptureFactory::instance;
     
 }
 

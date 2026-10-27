@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -72,27 +78,27 @@
         //J2SEForJ2ME
 class OwnershipPaintable: public Paintable, public UpdateMyFontInterface {
 
-    public: static OwnershipPaintable getInstance(){
+    public: static OwnershipPaintable* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OwnershipPaintable();
+                        return new OwnershipPaintable();
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();
 
-    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
 
     private: const std::string COPYRIGHT = "AllBinary Copyright (c) 2011";
 
-    private: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
+    private: BasicColor* basicColor = BasicColorFactory::getInstance()->WHITE;
 
-    private: int32_t color = this->basicColor.intValue();
+    private: int32_t color = this->basicColor->intValue();
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
@@ -104,28 +110,28 @@ private: OwnershipPaintable(){
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->COPYRIGHT_Y= 2 *font.getHeight();
+this->COPYRIGHT_Y= 2 *font->getHeight();
     
-this->beginWidth= (font.stringWidth(this->COPYRIGHT)>>1);
+this->beginWidth= (font->stringWidth(this->COPYRIGHT)>>1);
     
 this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    public: void setBasicColorP(BasicColor basicColor){
+    public: void setBasicColorP(BasicColor* basicColor){
 this->basicColor= basicColor;
     
-this->color= basicColor.intValue();
+this->color= basicColor->intValue();
     
 }
 
 
-    public: BasicColor getBasicColorP(){
+    public: BasicColor* getBasicColorP(){
 
 
 
@@ -135,18 +141,18 @@ this->color= basicColor.intValue();
 }
 
 
-    public: void paint(Graphics graphics){
-this->myFontProcessor.process(graphics);
+    public: void paint(Graphics* graphics){
+this->myFontProcessor->process(graphics);
     
-graphics.setColor(this->color);
-    
-
-    int32_t halfWidth = this->displayInfo.getLastHalfWidth();;
+graphics->setColor(this->color);
     
 
-    int32_t height = this->displayInfo.getLastHeight();;
+    int32_t halfWidth = this->displayInfo->getLastHalfWidth();;
     
-graphics.drawString(this->COPYRIGHT, halfWidth -this->beginWidth, height -this->COPYRIGHT_Y, this->anchor);
+
+    int32_t height = this->displayInfo->getLastHeight();;
+    
+graphics->drawString(this->COPYRIGHT, halfWidth -this->beginWidth, height -this->COPYRIGHT_Y, this->anchor);
     
 }
 

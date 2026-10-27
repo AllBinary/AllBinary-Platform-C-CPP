@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_CONTEXT_MODULE_STOREFRONTS_STOREFRONTSENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_CONTEXT_MODULE_STOREFRONTS_STOREFRONTSENTITY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -74,27 +80,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreFrontsEntityInterface.h"
+        #include "org/allbinary/data/tables/context/module/storefronts/StoreFrontsEntityInterface.h"
 
 class StoreFrontsEntity: public AbSqlBean, public StoreFrontsEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     protected: const std::string tableName = "storefronts";
 
 public: StoreFrontsEntity();
 
-    public: void insert(BasicArrayList values);
+    public: void insert(BasicArrayList* values);
 
     public: void delete_(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    public: StoreFront getStoreFrontInterface(std::string name);
+    public: StoreFront* getStoreFrontInterface(std::string name);
 
-    public: BasicArrayList getStoreFrontNames();
+    public: BasicArrayList* getStoreFrontNames();
 
-    public: void update(HashMap<Object*, Object*> updatedValues);
+    public: void update(HashMap<Object*, Object*>* updatedValues);
 
     public: std::string createTableStatement();
 

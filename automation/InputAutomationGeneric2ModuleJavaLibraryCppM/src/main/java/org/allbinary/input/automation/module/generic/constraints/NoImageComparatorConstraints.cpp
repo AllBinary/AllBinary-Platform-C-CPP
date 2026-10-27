@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Integer.h"
         
 #include <java/awt.h>
@@ -50,7 +56,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Color.h"
+        #include "org/allbinary/input/automation/module/generic/constraints/Color.h"
 
 class NoImageComparatorConstraints: public ImageComparatorConstraints {
 
@@ -66,7 +72,7 @@ this->setMaxNonMatchingPixelDeltas(.MAX_VALUE());
 }
 
 
-    public: bool isColorAllowed(int32_t frame, GPoint point, Color color){
+    public: bool isColorAllowed(int32_t frame, GPoint* point, Color* color){
 
 
 
@@ -76,7 +82,7 @@ this->setMaxNonMatchingPixelDeltas(.MAX_VALUE());
 }
 
 
-    public: bool isImageValid(BufferedImage bufferedImage){
+    public: bool isImageValid(BufferedImage* bufferedImage){
 
 
 

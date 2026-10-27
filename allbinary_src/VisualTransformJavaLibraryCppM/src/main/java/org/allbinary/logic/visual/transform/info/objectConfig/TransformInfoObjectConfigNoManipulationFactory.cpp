@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,17 +64,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoObjectConfigData.h"
-#include "TransformInfoObjectConfig.h"
-#include "TransformInfoObjectConfigInterface.h"
+        #include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigData.h"
+#include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfig.h"
+#include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigInterface.h"
 
 class TransformInfoObjectConfigNoManipulationFactory
             : public Object
          {
 
-    private: static TransformInfoObjectConfigNoManipulationFactory instance() { return TransformInfoObjectConfigNoManipulationFactory(); }
+    private: static TransformInfoObjectConfigNoManipulationFactory* instance() { static std::unique_ptr<TransformInfoObjectConfigNoManipulationFactory> value(new TransformInfoObjectConfigNoManipulationFactory()); return value.get(); }
 
-    public: static TransformInfoObjectConfigNoManipulationFactory getInstance(){
+    public: static TransformInfoObjectConfigNoManipulationFactory* getInstance(){
 
 
 
@@ -78,7 +84,7 @@ class TransformInfoObjectConfigNoManipulationFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: TransformInfoObjectConfigNoManipulationFactory(){
 }
@@ -86,33 +92,33 @@ private: TransformInfoObjectConfigNoManipulationFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoObjectConfigInterface getInstance(TransformInfoInterface transformInfoInterface, AbPath objectConfigFileAbPath){
+    public: TransformInfoObjectConfigInterface* getInstance(TransformInfoInterface* transformInfoInterface, AbPath* objectConfigFileAbPath){
 
         try {
             
-    TransformInfoObjectConfigData transformInfoObjectConfigData = TransformInfoObjectConfigData::getInstance();;
+    TransformInfoObjectConfigData* transformInfoObjectConfigData = TransformInfoObjectConfigData::getInstance();;
     
 
-    std::string data = CryptFileReader(transformInfoObjectConfigData.UNCRYPTED_EXTENSION, transformInfoObjectConfigData.getInstance().ENCRYPTED_EXTENSION).get(objectConfigFileAbPath);;
+    std::string data = (new CryptFileReader(transformInfoObjectConfigData->UNCRYPTED_EXTENSION, transformInfoObjectConfigData->getInstance()->ENCRYPTED_EXTENSION))->get(objectConfigFileAbPath);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoObjectConfig(transformInfoInterface, DomDocumentHelper::create(data));
+                        return new TransformInfoObjectConfig(transformInfoInterface, DomDocumentHelper::create(data));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Could Not Load Object Config", this, commonStrings.GET_INSTANCE, e);
+                                    this->logUtil->put("Could Not Load Object Config", this, commonStrings->GET_INSTANCE, &e);
     
 
                                     }

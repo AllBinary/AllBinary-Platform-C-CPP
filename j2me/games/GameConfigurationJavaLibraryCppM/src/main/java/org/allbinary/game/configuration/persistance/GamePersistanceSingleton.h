@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_GAMEPERSISTANCESINGLETON_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_GAMEPERSISTANCESINGLETON_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,14 +45,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "KeyValuePersistance.h"
-#include "GamePersistanceStrings.h"
+        #include "org/allbinary/game/configuration/persistance/KeyValuePersistance.h"
+#include "org/allbinary/game/configuration/persistance/GamePersistanceStrings.h"
 
 class GamePersistanceSingleton: public KeyValuePersistance {
 
-    private: static GamePersistanceSingleton GAME_PERSISTANCE = GamePersistanceSingleton();
+    private: static GamePersistanceSingleton* GAME_PERSISTANCE() { static std::unique_ptr<GamePersistanceSingleton> value(new GamePersistanceSingleton()); return value.get(); }
 
-    public: static GamePersistanceSingleton getInstance();
+    public: static GamePersistanceSingleton* getInstance();
 
 private: GamePersistanceSingleton();
 

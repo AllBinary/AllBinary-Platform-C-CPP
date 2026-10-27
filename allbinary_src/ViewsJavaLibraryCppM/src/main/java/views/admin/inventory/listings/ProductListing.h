@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -155,33 +161,33 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProductListingInterface.h"
+        #include "views/admin/inventory/listings/ProductListingInterface.h"
 
 class ProductListing
             : public Object
-        : public ProductListingInterface {
+        , public ProductListingInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const Directory directory = Directory::getInstance();
+    private: Directory* directory = Directory::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
-    private: StoreFrontsEntity storeFronts;
+    private: StoreFrontsEntity* storeFronts;
 
-    private: StaticPagesEntity staticPages;
+    private: StaticPagesEntity* staticPages;
 
-    private: InventoryEntity inventory;
+    private: InventoryEntity* inventory;
 
-    private: SearchRequest searchRequest;
+    private: SearchRequest* searchRequest;
 
     private: const std::string INVENTORY = ".InventoryView";
 
-public: ProductListing(SearchRequest searchRequest);
+public: ProductListing(SearchRequest* searchRequest);
 
                 //@Throws(Exception.constructor)
             
-    private: HashSet getHashSet(StoreFrontInterface storeFront);
+    private: HashSet* getHashSet(StoreFrontInterface* storeFront);
 
                 //@Throws(Exception.constructor)
             
@@ -189,9 +195,9 @@ public: ProductListing(SearchRequest searchRequest);
 
                 //@Throws(Exception.constructor)
             
-    private: void create(std::string keywordData, HashMap<Object*, Object*> keywordFilenameHashMap, BasicArrayList vector, AbPath staticPath);
+    private: void create(std::string keywordData, HashMap<Object*, Object*>* keywordFilenameHashMap, BasicArrayList* vector, AbPath* staticPath);
 
-    private: void addStaticPageInfoToDatabase(StoreFrontInterface storeFront, HashMap<Object*, Object*> keywordFilenameHashMap);
+    private: void addStaticPageInfoToDatabase(StoreFrontInterface* storeFront, HashMap<Object*, Object*>* keywordFilenameHashMap);
 
                 //@Throws(Exception.constructor)
             

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFOFACTORYBASE_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFOFACTORYBASE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -51,21 +57,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PathFindingNodeCostInfoFactoryBaseInterface.h"
+        #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfoFactoryBaseInterface.h"
 
 class PathFindingNodeCostInfoFactoryBase
             : public Object
-        : public PathFindingNodeCostInfoFactoryBaseInterface {
+        , public PathFindingNodeCostInfoFactoryBaseInterface {
 
-    public: static const PathFindingNodeCostInfoFactoryBase NULL_PATH_FINDING_NODE_COST_INFO_FACTORY_BASE = PathFindingNodeCostInfoFactoryBase();
-
-                //@Throws(Exception.constructor)
-            
-    public: void create(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition comingFromGeographicMapCellPosition, GeographicMapCellPosition geographicMapCellPosition, int64_t costFromStart, int64_t costToEnd);
+    public: static PathFindingNodeCostInfoFactoryBase* NULL_PATH_FINDING_NODE_COST_INFO_FACTORY_BASE() { static std::unique_ptr<PathFindingNodeCostInfoFactoryBase> value(new PathFindingNodeCostInfoFactoryBase()); return value.get(); }
 
                 //@Throws(Exception.constructor)
             
-    public: int64_t getTotalCost(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition comingFromGeographicMapCellPosition, GeographicMapCellPosition geographicMapCellPosition);
+    public: void create(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* comingFromGeographicMapCellPosition, GeographicMapCellPosition* geographicMapCellPosition, int64_t costFromStart, int64_t costToEnd);
+
+                //@Throws(Exception.constructor)
+            
+    public: int64_t getTotalCost(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* comingFromGeographicMapCellPosition, GeographicMapCellPosition* geographicMapCellPosition);
 
 };
 

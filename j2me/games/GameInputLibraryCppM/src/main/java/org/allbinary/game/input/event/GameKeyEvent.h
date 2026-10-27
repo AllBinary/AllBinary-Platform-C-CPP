@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENT_H
         #define ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/logic/NullUtil.h>
 
       
@@ -51,9 +59,9 @@
         
 class GameKeyEvent: public AllBinaryEventObject {
 
-    public: static GameKeyEvent createEvent(Object* anyType, int32_t sourceId, int32_t key);
+    public: static GameKeyEvent* createEvent(Object* anyType, int32_t sourceId, int32_t key);
 
-    public: static const GameKeyEvent NONE = GameKeyEvent(NullUtil::getInstance().NULL_OBJECT,  -1,  -1,  -1,  -1, false);
+    public: static GameKeyEvent* NONE() { static std::unique_ptr<GameKeyEvent> value(new GameKeyEvent(NullUtil::getInstance()->NULL_OBJECT,  -1,  -1,  -1,  -1, false)); return value.get(); }
 
     private: int32_t sourceId;
 

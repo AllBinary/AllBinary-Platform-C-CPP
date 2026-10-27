@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -76,38 +82,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicEventHandlerInterface.h"
+        #include "org/allbinary/logic/util/event/handler/BasicEventHandlerInterface.h"
 
 class BasicEventHandler
             : public Object
-        : public BasicEventHandlerInterface {
+        , public BasicEventHandlerInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const EventStrings eventStrings = EventStrings::getInstance();
+    private: EventStrings* eventStrings = EventStrings::getInstance();
 
-    protected: BasicArrayList eventListenerInterfaceList;
+    protected: BasicArrayList* eventListenerInterfaceList;
 
 public: BasicEventHandler(){
-this->eventListenerInterfaceList= BasicArrayListD();
+this->eventListenerInterfaceList= new BasicArrayListD();
     
 }
 
 
     public: void removeAllListeners(){
-this->eventListenerInterfaceList= BasicArrayListD();
+this->eventListenerInterfaceList= new BasicArrayListD();
     
 }
 
 
-    public: void addListeners(BasicArrayList vector){
+    public: void addListeners(BasicArrayList* vector){
 
-    EventListenerInterface eventListenerInterface;;
+    EventListenerInterface* eventListenerInterface;;
     
 
-    int32_t size = vector.size();;
+    int32_t size = vector->size();;
     
 
 
@@ -116,7 +122,7 @@ this->eventListenerInterfaceList= BasicArrayListD();
                         for (
     int32_t index = 0;index < size; index++)
         {
-eventListenerInterface= vector.get(index);
+eventListenerInterface= dynamic_cast<EventListenerInterface*>(vector->get(index));
     
 this->addListenerInterface(eventListenerInterface);
     
@@ -125,12 +131,12 @@ this->addListenerInterface(eventListenerInterface);
 }
 
 
-    public: void removeListeners(BasicArrayList vector){
+    public: void removeListeners(BasicArrayList* vector){
 
-    EventListenerInterface eventListenerInterface;;
+    EventListenerInterface* eventListenerInterface;;
     
 
-    int32_t size = vector.size();;
+    int32_t size = vector->size();;
     
 
 
@@ -139,7 +145,7 @@ this->addListenerInterface(eventListenerInterface);
                         for (
     int32_t index = 0;index < size; index++)
         {
-eventListenerInterface= vector.get(index);
+eventListenerInterface= dynamic_cast<EventListenerInterface*>(vector->get(index));
     
 this->removeListener(eventListenerInterface);
     
@@ -148,12 +154,12 @@ this->removeListener(eventListenerInterface);
 }
 
 
-    public: void addListenerSingleThreaded(EventListenerInterface eventListenerInterface){
+    public: void addListenerSingleThreaded(EventListenerInterface* eventListenerInterface){
 
-                        if(!this->eventListenerInterfaceList.contains(eventListenerInterface))
+                        if(!this->eventListenerInterfaceList->contains(eventListenerInterface))
                         
                                     {
-                                    this->eventListenerInterfaceList.add(eventListenerInterface);
+                                    this->eventListenerInterfaceList->add(eventListenerInterface);
     
 
                                     }
@@ -161,12 +167,12 @@ this->removeListener(eventListenerInterface);
 }
 
 
-    public: void addListenerInterface(EventListenerInterface eventListenerInterface){
+    public: void addListenerInterface(EventListenerInterface* eventListenerInterface){
 
-                        if(!this->eventListenerInterfaceList.contains(eventListenerInterface))
+                        if(!this->eventListenerInterfaceList->contains(eventListenerInterface))
                         
                                     {
-                                    this->eventListenerInterfaceList.add(eventListenerInterface);
+                                    this->eventListenerInterfaceList->add(eventListenerInterface);
     
 
                                     }
@@ -174,41 +180,41 @@ this->removeListener(eventListenerInterface);
 }
 
 
-    public: void removeListenerSingleThreaded(EventListenerInterface eventListenerInterface){
-this->eventListenerInterfaceList.remove(eventListenerInterface);
+    public: void removeListenerSingleThreaded(EventListenerInterface* eventListenerInterface){
+this->eventListenerInterfaceList->remove(eventListenerInterface);
     
 }
 
 
-    public: void removeListener(EventListenerInterface eventListenerInterface){
-this->eventListenerInterfaceList.remove(eventListenerInterface);
+    public: void removeListener(EventListenerInterface* eventListenerInterface){
+this->eventListenerInterfaceList->remove(eventListenerInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(AllBinaryEventObject eventObject){
+    public: void fireEvent(AllBinaryEventObject* eventObject){
 
-    EventListenerInterface eventListenerInterface;;
+    EventListenerInterface* eventListenerInterface;;
     
 
     int32_t index = 0;;
     
 
-        while(index < this->eventListenerInterfaceList.size())
+        while(index < this->eventListenerInterfaceList->size())
         {
 
         try {
-            eventListenerInterface= this->eventListenerInterfaceList.get(index);
+            eventListenerInterface= dynamic_cast<EventListenerInterface*>(this->eventListenerInterfaceList->get(index));
     
 this->process(eventObject, eventListenerInterface);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->eventStrings.FIRE_EVENT, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->eventStrings->FIRE_EVENT, &e);
     
 }
 
@@ -221,13 +227,13 @@ index++;
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
-eventListenerInterface.onEvent(eventObject);
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+eventListenerInterface->onEvent(eventObject);
     
 }
 
 
-    public: BasicArrayList getEventListenerInterfaceListP(){
+    public: BasicArrayList* getEventListenerInterfaceListP(){
 
 
 
@@ -239,34 +245,34 @@ eventListenerInterface.onEvent(eventObject);
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->eventStrings.TOTAL_LISTENERS);
+stringBuffer->append(this->eventStrings->TOTAL_LISTENERS);
     
-stringBuffer.appendint(this->eventListenerInterfaceList.size());
+stringBuffer->appendint(this->eventListenerInterfaceList->size());
     
 
-    EventListenerInterface eventListenerInterface;;
+    EventListenerInterface* eventListenerInterface;;
     
 
     int32_t index = 0;;
     
 
-        while(index < this->eventListenerInterfaceList.size())
+        while(index < this->eventListenerInterfaceList->size())
         {
 
         try {
-            eventListenerInterface= this->eventListenerInterfaceList.get(index);
+            eventListenerInterface= dynamic_cast<EventListenerInterface*>(this->eventListenerInterfaceList->get(index));
     
-stringBuffer.append(this->eventStrings.LISTENER_LABEL);
+stringBuffer->append(this->eventStrings->LISTENER_LABEL);
     
-stringBuffer.append(eventListenerInterface.toString());
+stringBuffer->append(eventListenerInterface->toString());
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.TOSTRING, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->TOSTRING, &e);
     
 }
 
@@ -278,7 +284,7 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Runnable.h"
         
 #include <org/allbinary/string/CommonLabels.h>
@@ -50,23 +56,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ThreadPool.h"
+        #include "org/allbinary/thread/ThreadPool.h"
 //This is mainly for network communications.
 class ImageThreadPool: public ThreadPool {
 
-    private: static const ThreadPool instance = ImageThreadPool("ImageLoader", 1, ThreadPool::NORMAL_PRIORITY);
+    private: static inline ThreadPool* instance = new ImageThreadPool("ImageLoader", 1, ThreadPool::NORMAL_PRIORITY);
 
-    public: static ThreadPool getInstance(){
+    public: static ThreadPool* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageThreadPool::instance();
+                        return ImageThreadPool::instance;
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: ImageThreadPool(std::string poolName, int32_t numThreads, int32_t priority) : ThreadPool(poolName, numThreads, priority){
 
@@ -79,17 +85,17 @@ public: ImageThreadPool(std::string poolName, int32_t numThreads, int32_t priori
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void runTask(Runnable task){
+    public: void runTask(Runnable* task){
 super.runTask(task);
     
 }
 
 
-    protected: void startTask(Runnable task){
+    protected: void startTask(Runnable* task){
 }
 
 
-    protected: void completedTask(Runnable task){
+    protected: void completedTask(Runnable* task){
 }
 
 

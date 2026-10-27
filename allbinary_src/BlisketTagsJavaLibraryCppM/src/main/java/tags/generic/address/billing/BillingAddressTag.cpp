@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
@@ -72,7 +78,7 @@ public: BillingAddressTag(){
                         
                                     {
                                     
-                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
                         
                                     {
                                     this->setName("Basic Billing Address View");
@@ -83,7 +89,7 @@ this->setObjectFile("views.generic.address.billing.ValidationView");
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.EDIT) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.EDIT) == 0)
                         
                                     {
                                     this->setName("Basic Billing Address View");
@@ -94,7 +100,7 @@ this->setObjectFile("views.generic.address.billing.EditValidationView");
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.NEW) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.NEW) == 0)
                         
                                     {
                                     this->setName("Basic Billing Address View");
@@ -105,7 +111,7 @@ this->setObjectFile("views.generic.address.billing.NewValidationView");
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(this->commonStrings.INSERT) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings.INSERT) == 0)
                         
                                     {
                                     this->setName("Basic Billing Address View");
@@ -116,7 +122,7 @@ this->setObjectFile("views.generic.address.billing.AddValidationView");
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(this->commonStrings.DELETE) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings.DELETE) == 0)
                         
                                     {
                                     this->setName("Basic Billing Address View");
@@ -127,7 +133,7 @@ this->setObjectFile("views.generic.address.billing.DeleteValidationView");
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(BillingAddressData::SELECT) == 0)
+                        if(this->getCommand()->compareTo(BillingAddressData::SELECT) == 0)
                         
                                     {
                                     this->setName("Basic Billing Address View");
@@ -138,7 +144,7 @@ this->setObjectFile("views.generic.address.billing.SelectValidationView");
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(BillingAddressData::SETTOSHIPPINGADDRESS) == 0)
+                        if(this->getCommand()->compareTo(BillingAddressData::SETTOSHIPPINGADDRESS) == 0)
                         
                                     {
                                     this->setName("Basic Billing Address View");
@@ -152,7 +158,7 @@ this->setObjectFile("views.generic.address.billing.SetValidationView");
                             
 
 
-                            throw Exception("No Such View Command: " +this->getCommand());
+                            throw new Exception("No Such View Command: " +this->getCommand());
                     
 
                         }
@@ -169,13 +175,13 @@ this->setObjectFile("views.generic.address.billing.SetValidationView");
 
 
 
-                            throw Exception("Command Null");
+                            throw new Exception("Command Null");
                     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
-AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
     
 
 
@@ -186,9 +192,9 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 
@@ -197,7 +203,7 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
                         return SKIP_BODY;
     
 }
-*/
+
 }
 
 

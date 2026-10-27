@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOMNODEHELPER_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_DOMNODEHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,21 +61,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DomSearchHelper.h"
+        #include "org/allbinary/data/tree/dom/DomSearchHelper.h"
 
 class DomNodeHelper
             : public Object
          {
 
-    public: static Node getFirstChildElement(Node parentNode);
+    public: static Node* getFirstChildElement(Node* parentNode);
 
-    public: static std::string getTextNodeValue(Node node);
+    public: static std::string getTextNodeValue(Node* node);
 
                 //@Throws(Exception.constructor)
             
-    public: static std::string getTextNodeValue(std::string nodeName, NodeList nodeList);
+    public: static std::string getTextNodeValue(std::string nodeName, NodeList* nodeList);
 
-    public: static std::string getTextNodesValue(Node node);
+    public: static std::string getTextNodesValue(Node* node);
 
 private: DomNodeHelper();
 

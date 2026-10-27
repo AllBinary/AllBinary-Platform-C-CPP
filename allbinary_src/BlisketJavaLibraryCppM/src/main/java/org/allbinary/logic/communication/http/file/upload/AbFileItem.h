@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -92,11 +98,11 @@
         
 class AbFileItem
             : public Object
-        : public FileItem {
+        , public FileItem {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: std::string name;
 
@@ -108,7 +114,7 @@ public: AbFileItem(std::string name, std::string fieldName, std::vector<int8_t> 
 
                 //@Throws(IOException.constructor)
             
-    public: InputStream getInputStream();
+    public: InputStream* getInputStream();
 
     public: std::string getContentType();
 
@@ -128,11 +134,11 @@ public: AbFileItem(std::string name, std::string fieldName, std::vector<int8_t> 
 
                 //@Throws(Exception.constructor)
             
-    public: void write(File file);
+    public: void write(File* file);
 
                 //@Throws(Exception.constructor)
             
-    public: void write(AbFile file);
+    public: void write(AbFile* file);
 
     public: void delete_();
 
@@ -146,11 +152,11 @@ public: AbFileItem(std::string name, std::string fieldName, std::vector<int8_t> 
 
                 //@Throws(IOException.constructor)
             
-    public: OutputStream getOutputStream();
+    public: OutputStream* getOutputStream();
 
-    public: FileItemHeaders getHeaders();
+    public: FileItemHeaders* getHeaders();
 
-    public: void setHeaders(FileItemHeaders fih);
+    public: void setHeaders(FileItemHeaders* fih);
 
 };
 

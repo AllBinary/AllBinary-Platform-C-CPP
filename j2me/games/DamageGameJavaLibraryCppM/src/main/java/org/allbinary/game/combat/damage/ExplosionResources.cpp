@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class ExplosionResources
             : public Object
          {
 
-    private: static ExplosionResources instance() { return ExplosionResources(); }
+    private: static ExplosionResources* instance() { static std::unique_ptr<ExplosionResources> value(new ExplosionResources()); return value.get(); }
 
-    public: static ExplosionResources getInstance(){
+    public: static ExplosionResources* getInstance(){
 
 
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -52,13 +58,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TrueTypeFontUtilBase.h"
+        #include "org/allbinary/emulator/device/TrueTypeFontUtilBase.h"
 
 class TrueTypeFontUtil: public TrueTypeFontUtilBase {
 
-    private: static TrueTypeFontUtil instance() { return TrueTypeFontUtil(); }
+    private: static TrueTypeFontUtil* instance() { static std::unique_ptr<TrueTypeFontUtil> value(new TrueTypeFontUtil()); return value.get(); }
 
-    public: static TrueTypeFontUtil getInstance(){
+    public: static TrueTypeFontUtil* getInstance(){
 
 
 
@@ -68,7 +74,7 @@ class TrueTypeFontUtil: public TrueTypeFontUtilBase {
 }
 
 
-    public: OpenGLESImage fontImage = OpenGLESImage::NULL_OPENGL_IMAGE;
+    public: OpenGLESImage* fontImage = OpenGLESImage::NULL_OPENGL_IMAGE;
 
 private: TrueTypeFontUtil() : TrueTypeFontUtilBase(1){
 
@@ -84,7 +90,7 @@ private: TrueTypeFontUtil() : TrueTypeFontUtilBase(1){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -93,16 +99,16 @@ private: TrueTypeFontUtil() : TrueTypeFontUtilBase(1){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: Image getFontBitmap(std::string filename, int32_t fontSize, int32_t cellSize, BasicColor basicColor){
+    public: Image* getFontBitmap(std::string filename, int32_t fontSize, int32_t cellSize, BasicColor* basicColor){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -111,11 +117,11 @@ private: TrueTypeFontUtil() : TrueTypeFontUtilBase(1){
 }
 
 
-    public: Image getFontBitmapGL(GL10 gl, std::string filename, int32_t cellSize, BasicColor basicColor){
+    public: Image* getFontBitmapGL(GL10* gl, std::string filename, int32_t cellSize, BasicColor* basicColor){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -124,7 +130,7 @@ private: TrueTypeFontUtil() : TrueTypeFontUtilBase(1){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

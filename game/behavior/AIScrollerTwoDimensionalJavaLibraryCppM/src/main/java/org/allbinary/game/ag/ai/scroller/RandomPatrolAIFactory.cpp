@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,20 +61,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RandomPatrolAI.h"
+        #include "org/allbinary/game/ag/ai/scroller/RandomPatrolAI.h"
 
 class RandomPatrolAIFactory
             : public Object
-        : public ArtificialIntelligenceInterfaceFactoryInterface {
+        , public ArtificialIntelligenceInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: ArtificialIntelligenceInterface getInstance(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+    public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RandomPatrolAI(hashtable, ownerLayerInterface, gameInput);
+                        return new RandomPatrolAI(hashtable, ownerLayerInterface, gameInput);
     
 }
 

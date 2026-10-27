@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/combat/damage/DamageableBaseBehavior.h>
@@ -49,15 +55,15 @@ class CombatBaseBehavior
             : public Object
          {
 
-    public: static const CombatBaseBehavior NULL_COMBAT_BEHAVIOR = CombatBaseBehavior(DamageableBaseBehavior::getInstance(), DestroyableBaseBehavior::getInstance());
+    public: static CombatBaseBehavior* NULL_COMBAT_BEHAVIOR() { static std::unique_ptr<CombatBaseBehavior> value(new CombatBaseBehavior(DamageableBaseBehavior::getInstance(), DestroyableBaseBehavior::getInstance())); return value.get(); }
 
-    private: DamageableBaseBehavior damageableBaseBehavior;
+    private: DamageableBaseBehavior* damageableBaseBehavior;
 
-    private: DestroyableBaseBehavior destroyableBaseBehavior;
+    private: DestroyableBaseBehavior* destroyableBaseBehavior;
 
     private: bool readyForExplosion= false;
 
-public: CombatBaseBehavior(DamageableBaseBehavior damageableBaseBehavior, DestroyableBaseBehavior destroyableBaseBehavior){
+public: CombatBaseBehavior(DamageableBaseBehavior* damageableBaseBehavior, DestroyableBaseBehavior* destroyableBaseBehavior){
 this->damageableBaseBehavior= damageableBaseBehavior;
     
 this->destroyableBaseBehavior= destroyableBaseBehavior;
@@ -65,7 +71,7 @@ this->destroyableBaseBehavior= destroyableBaseBehavior;
 }
 
 
-    public: DamageableBaseBehavior getDamageableBaseBehavior(){
+    public: DamageableBaseBehavior* getDamageableBaseBehavior(){
 
 
 
@@ -75,7 +81,7 @@ this->destroyableBaseBehavior= destroyableBaseBehavior;
 }
 
 
-    public: DestroyableBaseBehavior getDestroyableBaseBehavior(){
+    public: DestroyableBaseBehavior* getDestroyableBaseBehavior(){
 
 
 

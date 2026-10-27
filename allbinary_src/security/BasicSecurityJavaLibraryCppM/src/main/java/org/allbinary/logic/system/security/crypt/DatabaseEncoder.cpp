@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -81,7 +87,7 @@ class DatabaseEncoder
     std::vector<int8_t> array = value;;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
 
@@ -90,13 +96,13 @@ class DatabaseEncoder
                         for (
     int32_t index = 0;index < array.size(); index++)
         {
-stringBuffer.append(Number(array[index]).toString());
+stringBuffer->append((Number(array[index])).toString());
     
 
                         if(index < array.size() -1)
                         
                                     {
-                                    stringBuffer.append(CommonSeps::getInstance().SPACE);
+                                    stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
 
                                     }
@@ -107,22 +113,22 @@ stringBuffer.append(Number(array[index]).toString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil::putOE(commonStrings.EXCEPTION, "DatabaseEncoder", "decode", e);
+PreLogUtil::putOE(commonStrings->EXCEPTION, "DatabaseEncoder", "decode", &e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 }
 
@@ -133,16 +139,16 @@ PreLogUtil::putOE(commonStrings.EXCEPTION, "DatabaseEncoder", "decode", e);
 
         try {
             
-    Tokenizer tokenizer = Tokenizer(CommonSeps::getInstance().SPACE);;
+    Tokenizer* tokenizer = new Tokenizer(CommonSeps::getInstance()->SPACE);;
     
 
-    BasicArrayList vector = tokenizer.getTokensFromString(value, BasicArrayListD());;
+    BasicArrayList* vector = tokenizer->getTokensFromString(value, new BasicArrayListD());;
     
 
-    BasicArrayList byteVector = BasicArrayListD();;
+    BasicArrayList* byteVector = new BasicArrayListD();;
     
 
-    int32_t size = vector.size();;
+    int32_t size = vector->size();;
     
 
     std::string byteOfData;;
@@ -154,20 +160,20 @@ PreLogUtil::putOE(commonStrings.EXCEPTION, "DatabaseEncoder", "decode", e);
                         for (
     int32_t index = 0;index < size; index++)
         {
-byteOfData= vector.objectArray[index];
+byteOfData= vector->objectArray[index];
     
-byteVector.add(Number(byteOfData));
+byteVector->add(Number(byteOfData));
     
 }
 
 
-    std::vector<int8_t> decode = std::vector<int8_t>(byteVector.size());;
+    std::vector<int8_t> decode = std::vector<int8_t>(byteVector->size());;
     
 
     int32_t decodeIndex = 0;;
     
 
-    number aByte;;
+    int8_t aByte;;
     
 
 
@@ -176,7 +182,7 @@ byteVector.add(Number(byteOfData));
                         for (
     int32_t index = 0;index < size; index++)
         {
-aByte= byteVector.objectArray[index];
+aByte= byteVector->objectArray[index];
     
 decode[decodeIndex]= aByte;
     
@@ -192,18 +198,18 @@ decodeIndex++;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil::putSE(commonStrings.EXCEPTION, "DatabaseEncoder", "decode", e);
+PreLogUtil::putSE(commonStrings->EXCEPTION, "DatabaseEncoder", "decode", &e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance().NULL_BYTE_ARRAY;
+                        return NullUtil::getInstance()->NULL_BYTE_ARRAY;
     
 }
 

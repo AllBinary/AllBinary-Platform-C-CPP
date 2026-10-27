@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -48,21 +54,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageRotationUtil.h"
+        #include "org/allbinary/media/image/ImageRotationUtil.h"
 
 class ImageToRotationImageArrayUtil
             : public Object
          {
 
-    private: static ImageToRotationImageArrayUtil instance() { return ImageToRotationImageArrayUtil(); }
+    private: static ImageToRotationImageArrayUtil* instance() { static std::unique_ptr<ImageToRotationImageArrayUtil> value(new ImageToRotationImageArrayUtil()); return value.get(); }
 
-    public: static ImageToRotationImageArrayUtil getInstance();
+    public: static ImageToRotationImageArrayUtil* getInstance();
 
 private: ImageToRotationImageArrayUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<Image> generate(Image image, int32_t angleIncrement, int32_t totalAngle);
+    public: std::vector<Image*> generate(Image* image, int32_t angleIncrement, int32_t totalAngle);
 
 };
 

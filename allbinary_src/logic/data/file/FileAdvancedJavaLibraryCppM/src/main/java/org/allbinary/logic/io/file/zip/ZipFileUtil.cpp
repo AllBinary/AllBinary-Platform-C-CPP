@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -89,9 +95,9 @@ class ZipFileUtil
             : public Object
          {
 
-    private: static ZipFileUtil instance() { return ZipFileUtil(); }
+    private: static ZipFileUtil* instance() { static std::unique_ptr<ZipFileUtil> value(new ZipFileUtil()); return value.get(); }
 
-    public: static ZipFileUtil getInstance(){
+    public: static ZipFileUtil* getInstance(){
 
 
 
@@ -101,44 +107,44 @@ class ZipFileUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    public: void create(std::string outFilename, BasicArrayList fileBasicArrayList){
+    public: void create(std::string outFilename, BasicArrayList* fileBasicArrayList){
 
         try {
             
-    AbFile zipFile = AbFile::createAbFile(outFilename);;
+    AbFile* zipFile = AbFile::createAbFile(outFilename);;
     
 
-                        if(zipFile.exists())
+                        if(zipFile->exists())
                         
                                     {
-                                    zipFile.delete();
+                                    zipFile->delete();
     
 
                                     }
                                 
-zipFile.createNewFile();
+zipFile->createNewFile();
     
 
-    ZipOutputStream outputStream = ZipOutputStream(AbFileOutputStream::createFromAbFile(zipFile));;
+    ZipOutputStream* outputStream = new ZipOutputStream(AbFileOutputStream::createFromAbFile(zipFile));;
     
 
-    StreamUtil streamUtil = StreamUtil::getInstance();;
+    StreamUtil* streamUtil = StreamUtil::getInstance();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
     std::vector<int8_t> byteArray = std::vector<int8_t>(16384);;
     
 
-    AbFileInputStream fileInputStream;;
+    AbFileInputStream* fileInputStream;;
     
 
-    int32_t size = fileBasicArrayList.size();;
+    int32_t size = fileBasicArrayList->size();;
     
 
     int32_t current = 0;;
@@ -151,46 +157,46 @@ zipFile.createNewFile();
     int32_t i = 0;i < size; i++)
         {
 
-    AbFile file = fileBasicArrayList.get(i);;
+    AbFile* file = dynamic_cast<AbFile*>(fileBasicArrayList->get(i));;
     
 
-                        if(file.isDirectory())
+                        if(file->isDirectory())
                         
                                     {
                                     
                                     }
                                 
                              else 
-                        if(file.isFile())
+                        if(file->isFile())
                         
                                     {
-                                    stringBuffer.delete(0, stringBuffer.length());
+                                    stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.appendint(current);
+stringBuffer->appendint(current);
     
-stringBuffer.append(" Creating Zip File Entry: ");
+stringBuffer->append(" Creating Zip File Entry: ");
     
-stringBuffer.append(file.getPath());
+stringBuffer->append(file->getPath());
     
-this->logUtil.putF(stringBuffer.toString(), this, "create()");
+this->logUtil->putF(stringBuffer->toString(), this, "create()");
     
 
         try {
-            fileInputStream= AbFileInputStream(file);
+            fileInputStream= new AbFileInputStream(file);
     
-outputStream.putNextEntry(ZipEntry(file.getPath()));
+outputStream->putNextEntry(new ZipEntry(file->getPath()));
     
-streamUtil.get(fileInputStream, outputStream, byteArray);
+streamUtil->get(fileInputStream, outputStream, byteArray);
     
-outputStream.closeEntry();
+outputStream->closeEntry();
     
-streamUtil.close(fileInputStream);
+streamUtil->close(fileInputStream);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.putF("Skipping File (Probably Local): " +file.getPath(), this, "create()");
+this->logUtil->putF("Skipping File (Probably Local): " +file->getPath(), this, "create()");
     
 }
 
@@ -201,13 +207,13 @@ current++;
     
 }
 
-streamUtil.close(outputStream);
+streamUtil->close(outputStream);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "create", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "create", &e);
     
 }
 
@@ -216,38 +222,38 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "create", e);
 
                 //@Throws(Exception.constructor)
             
-    public: void unzip(std::string path, AbFile zipFile, std::string fileName){
+    public: void unzip(std::string path, AbFile* zipFile, std::string fileName){
 
     std::vector<int8_t> buffer = std::vector<int8_t>(16384);;
     
 
-    ZipInputStream inputStream = 
+    ZipInputStream* inputStream = 
                 null
             ;;
     
 
         try {
-            inputStream= ZipInputStream(AbFileInputStream(zipFile));
+            inputStream= new ZipInputStream(new AbFileInputStream(zipFile));
     
 
-    ZipEntry zipEntry;;
+    ZipEntry* zipEntry;;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    FileUtil fileUtil = FileUtil::getInstance();;
+    FileUtil* fileUtil = FileUtil::getInstance();;
     
 
-        while((zipEntry= inputStream.getNextEntry()) != 
+        while((zipEntry= inputStream->getNextEntry()) != 
                                     nullptr
                                 )
         {
 
-    std::string entryName = zipEntry.getName();;
+    std::string entryName = zipEntry->getName();;
     
 
-                        if(zipEntry.isDirectory())
+                        if(zipEntry->isDirectory())
                         
                                     {
                                     
@@ -255,43 +261,43 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "create", e);
                                 
                         else {
                             
-    AbFile entryFile = AbFile::createAbFile(path +entryName);;
+    AbFile* entryFile = AbFile::createAbFile(path +entryName);;
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append("ZipEntry Name: ");
+stringBuffer->append("ZipEntry Name: ");
     
-stringBuffer.append(entryName);
+stringBuffer->append(entryName);
     
-stringBuffer.append(" isFile: ");
+stringBuffer->append(" isFile: ");
     
-stringBuffer.appendboolean(entryFile.isFile());
+stringBuffer->appendboolean(entryFile->isFile());
     
-stringBuffer.append(" isDirectory: ");
+stringBuffer->append(" isDirectory: ");
     
-stringBuffer.appendboolean(entryFile.isDirectory());
+stringBuffer->appendboolean(entryFile->isDirectory());
     
-stringBuffer.append(" getParent: ");
+stringBuffer->append(" getParent: ");
     
-stringBuffer.append(entryFile.getParent());
+stringBuffer->append(entryFile->getParent());
     
-this->logUtil.putF(stringBuffer.toString(), this, "unzip");
+this->logUtil->putF(stringBuffer->toString(), this, "unzip");
     
 
-    AbDataOutputStream dataOutputStream = DataOutputStreamFactory::getInstance().getInstanceForAbFile(entryFile);;
+    AbDataOutputStream* dataOutputStream = DataOutputStreamFactory::getInstance()->getInstanceForAbFile(entryFile);;
     
-fileUtil.write(inputStream, dataOutputStream, buffer);
+fileUtil->write(inputStream, dataOutputStream, buffer);
     
 
                         }
                             
-inputStream.closeEntry();
+inputStream->closeEntry();
     
 }
 
 
          finally {
-            StreamUtil::getInstance().close(inputStream);
+            StreamUtil::getInstance()->close(inputStream);
     
 
          }

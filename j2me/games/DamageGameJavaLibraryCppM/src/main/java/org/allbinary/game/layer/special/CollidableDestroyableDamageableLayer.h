@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -117,17 +125,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SpecialGameInputInterface.h"
+        #include "org/allbinary/game/layer/special/SpecialGameInputInterface.h"
 
 class CollidableDestroyableDamageableLayer: public CollidableCompositeLayer, public DestroyableInterface, public DamageableInterface, public PickupCompositeInterface, public SpecialGameInputInterface {
 
-    private: static Object* NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static CollidableDestroyableDamageableLayer getNullInstance();
+    public: static CollidableDestroyableDamageableLayer* getNullInstance();
 
-    private: static const std::string READYFOREXPLOSION = "ReadyForExplosion: ";
+    private: static inline const std::string READYFOREXPLOSION = "ReadyForExplosion: ";
 
-    private: std::vector<Group> groupInterface;
+    private: std::vector<Group*> groupInterface;
 
     private: bool readyForExplosion= false;
 
@@ -141,11 +149,11 @@ class CollidableDestroyableDamageableLayer: public CollidableCompositeLayer, pub
 
     private: int32_t initZ= 0;
 
-    protected: std::vector<PartInterface> partInterfaceArrayP = PartInterfaceUtil::getZeroArray();
+    protected: std::vector<PartInterface*> partInterfaceArrayP = PartInterfaceUtil::getZeroArray();
 
-    private: PickupBehavior pickupBehavior;
+    private: PickupBehavior* pickupBehavior;
 
-    public: AllBinaryGameLayerManager allBinaryGameLayerManagerP = AllBinaryGameLayerManager::getNullInstance();
+    public: AllBinaryGameLayerManager* allBinaryGameLayerManagerP = AllBinaryGameLayerManager::getNullInstance();
 
     public: bool isDraggable = false;
 
@@ -153,7 +161,7 @@ class CollidableDestroyableDamageableLayer: public CollidableCompositeLayer, pub
 
     public: bool isDropped = false;
 
-public: CollidableDestroyableDamageableLayer(std::vector<Group> groupInterface, std::string name, Rectangle layerInfo, ViewPositionBase viewPosition);
+public: CollidableDestroyableDamageableLayer(std::vector<Group*> groupInterface, std::string name, Rectangle* layerInfo, ViewPositionBase* viewPosition);
 
                 //@Throws(Exception.constructor)
             
@@ -163,7 +171,7 @@ public: CollidableDestroyableDamageableLayer(std::vector<Group> groupInterface, 
             
     public: void initPositionXYZ(int32_t x, int32_t y, int32_t z);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
                 //@Throws(Exception.constructor)
             
@@ -177,13 +185,13 @@ public: CollidableDestroyableDamageableLayer(std::vector<Group> groupInterface, 
             
     public: bool isDestroyed();
 
-    public: std::vector<Group> getGroupInterface();
+    public: std::vector<Group*> getGroupInterface();
 
-    public: void setGroupInterface(std::vector<Group> teamInterface);
+    public: void setGroupInterface(std::vector<Group*> teamInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager);
 
     public: bool isReadyForExplosion();
 
@@ -223,27 +231,27 @@ public: CollidableDestroyableDamageableLayer(std::vector<Group> groupInterface, 
 
                 //@Throws(Exception.constructor)
             
-    public: void fire(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent);
+    public: void fire(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
 
                 //@Throws(Exception.constructor)
             
-    public: void special1(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent);
+    public: void special1(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
 
                 //@Throws(Exception.constructor)
             
-    public: void special2(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent);
+    public: void special2(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
 
                 //@Throws(Exception.constructor)
             
-    public: void special3(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent);
+    public: void special3(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
 
                 //@Throws(Exception.constructor)
             
-    public: void special4(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent);
+    public: void special4(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
 
                 //@Throws(Exception.constructor)
             
-    public: void special5(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent);
+    public: void special5(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
 
                 //@Throws(Exception.constructor)
             
@@ -263,27 +271,27 @@ public: CollidableDestroyableDamageableLayer(std::vector<Group> groupInterface, 
 
                 //@Throws(Exception.constructor)
             
-    public: void rightTrigger(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent, int32_t xAnalogValue);
+    public: void rightTrigger(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent, int32_t xAnalogValue);
 
                 //@Throws(Exception.constructor)
             
-    public: void leftTrigger(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent, int32_t xAnalogValue);
+    public: void leftTrigger(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent, int32_t xAnalogValue);
 
-    public: void onDestroyed(DestroyedEvent destroyedEvent);
+    public: void onDestroyed(DestroyedEvent* destroyedEvent);
 
-    public: PickupBehavior getPickupBehavior();
+    public: PickupBehavior* getPickupBehavior();
 
-    public: void setPickupBehavior(PickupBehavior pickupBehavior);
+    public: void setPickupBehavior(PickupBehavior* pickupBehavior);
 
                 //@Throws(Exception.constructor)
             
-    public: void addPart(PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface);
+    public: void addPart(PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface);
 
-    public: void setPartInterfaceArray(std::vector<PartInterface> partInterfaceArray);
+    public: void setPartInterfaceArray(std::vector<PartInterface*> partInterfaceArray);
 
-    public: std::vector<PartInterface> getPartInterfaceArray();
+    public: std::vector<PartInterface*> getPartInterfaceArray();
 
-    public: void toStringAppend(StringMaker stringBuffer);
+    public: void toStringAppend(StringMaker* stringBuffer);
 
     public: std::string toString();
 

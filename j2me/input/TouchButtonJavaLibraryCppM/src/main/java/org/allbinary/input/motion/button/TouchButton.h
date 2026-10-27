@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTON_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTON_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -80,34 +86,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchButtonInput.h"
-#include "TouchButtonResource.h"
+        #include "org/allbinary/input/motion/button/TouchButtonInput.h"
+#include "org/allbinary/input/motion/button/TouchButtonResource.h"
 
 class TouchButton: public Paintable {
 
                 //@Throws(Exception.constructor)
             
-    public: static TouchButton createButton(TouchButtonInput touchButtonInput, TouchButtonResource touchButtonResource, Rectangle rawRectangle, CellPosition cellPosition, int32_t xBorder, int32_t yBorder);
+    public: static TouchButton* createButton(TouchButtonInput* touchButtonInput, TouchButtonResource* touchButtonResource, Rectangle* rawRectangle, CellPosition* cellPosition, int32_t xBorder, int32_t yBorder);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: TouchButtonInput touchButtonInput;
+    private: TouchButtonInput* touchButtonInput;
 
-    private: Animation animationInterface;
+    private: Animation* animationInterface;
 
-    private: Animation hintAnimationInterface;
+    private: Animation* hintAnimationInterface;
 
-    protected: Rectangle rawRectangle;
+    protected: Rectangle* rawRectangle;
 
     protected: int32_t xBorder;
 
     protected: int32_t yBorder;
 
-    protected: Rectangle rectangleP = RectangleFactory::SINGLETON;
+    protected: Rectangle* rectangleP = RectangleFactory::SINGLETON;
 
-    protected: CellPosition cellPositionP;
+    protected: CellPosition* cellPositionP;
 
     protected: int32_t animationX= 0;
 
@@ -115,19 +121,19 @@ class TouchButton: public Paintable {
 
     protected: int32_t hintAnimationY= 0;
 
-public: TouchButton(TouchButtonInput touchButtonInput, Animation animationInterface, Animation hintAnimationInterface, Rectangle rawRectangle, CellPosition cellPosition, int32_t xBorder, int32_t yBorder);
+public: TouchButton(TouchButtonInput* touchButtonInput, Animation* animationInterface, Animation* hintAnimationInterface, Rectangle* rawRectangle, CellPosition* cellPosition, int32_t xBorder, int32_t yBorder);
 
-    public: void paintHint(Graphics graphics);
+    public: void paintHint(Graphics* graphics);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
     protected: void updateRectangle();
 
-    public: CellPosition getCellPosition();
+    public: CellPosition* getCellPosition();
 
-    public: Rectangle getRectangle();
+    public: Rectangle* getRectangle();
 
-    public: TouchButtonInput getTouchButtonInput();
+    public: TouchButtonInput* getTouchButtonInput();
 
     public: std::string toString();
 

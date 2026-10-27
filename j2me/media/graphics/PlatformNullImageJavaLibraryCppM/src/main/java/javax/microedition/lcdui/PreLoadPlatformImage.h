@@ -21,6 +21,12 @@
         #ifndef JAVAX_MICROEDITION_LCDUI_PRELOADPLATFORMIMAGE_H
         #define JAVAX_MICROEDITION_LCDUI_PRELOADPLATFORMIMAGE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,13 +45,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PlatformImage.h"
+        #include "javax/microedition/lcdui/PlatformImage.h"
 //PlatformNullImageJavaLibrary
 class PreLoadPlatformImage: public PlatformImage {
 
-    private: static PreLoadPlatformImage instance() { return PreLoadPlatformImage(); }
+    private: static PreLoadPlatformImage* instance() { static std::unique_ptr<PreLoadPlatformImage> value(new PreLoadPlatformImage()); return value.get(); }
 
-    public: static PreLoadPlatformImage getInstance();
+    public: static PreLoadPlatformImage* getInstance();
 
 };
 

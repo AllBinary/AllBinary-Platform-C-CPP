@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/java/bool/BooleanFactory.h>
 
       
@@ -39,14 +45,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HtmlValueInput.h"
-#include "HtmlInputData.h"
+        #include "org/allbinary/logic/visual/dhtml/html/input/HtmlValueInput.h"
+#include "org/allbinary/logic/visual/dhtml/html/input/HtmlInputData.h"
 
 class HtmlRadioInput: public HtmlValueInput {
 
     private: const std::string CHECKED = "checked";
 
-public: HtmlRadioInput(std::string before, std::string name, std::string value, std::string after) : HtmlValueInput(before, HtmlInputData::getInstance().RADIO, name, value, after){
+public: HtmlRadioInput(std::string before, std::string name, std::string value, std::string after) : HtmlValueInput(before, HtmlInputData::getInstance()->RADIO, name, value, after){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -57,7 +63,7 @@ public: HtmlRadioInput(std::string before, std::string name, std::string value, 
 
 
     public: void setSelected(){
-super.addAttribute(this->CHECKED, BooleanFactory::getInstance().TRUE_STRING);
+super.addAttribute(this->CHECKED, BooleanFactory::getInstance()->TRUE_STRING);
     
 }
 

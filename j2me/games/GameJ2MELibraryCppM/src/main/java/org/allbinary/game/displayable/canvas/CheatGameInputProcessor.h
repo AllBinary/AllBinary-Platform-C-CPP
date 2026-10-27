@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_CHEATGAMEINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_CHEATGAMEINPUTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/GameKeyFactory.h>
@@ -71,19 +79,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryGameCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
 class CheatGameInputProcessor: public PlayerGameInput {
 
-    public: static SpecialGameInputInterface inputProcessor = SpecialGameInputFactory::NO_SPECIAL_GAME_INPUT;
+    public: static inline SpecialGameInputInterface* inputProcessor = SpecialGameInputFactory::NO_SPECIAL_GAME_INPUT;
 
     private: const std::string PROCESS_GAME = "processGame";
 
-    private: AllBinaryGameCanvas gameCanvas;
+    private: AllBinaryGameCanvas* gameCanvas;
 
-public: CheatGameInputProcessor(AllBinaryGameCanvas gameCanvas);
+public: CheatGameInputProcessor(AllBinaryGameCanvas* gameCanvas);
 
-    private: const GameKeyFactory gameKeyFactory = GameKeyFactory::getInstance();
+    private: GameKeyFactory* gameKeyFactory = GameKeyFactory::getInstance();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void update();

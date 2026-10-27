@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/mapping/InputMappingInterface.h>
@@ -52,12 +58,12 @@ class TouchButtonsPaintableCompositeFactory
             : public Object
          {
 
-    public: static ProcessPaintable getInstance(InputMappingInterface inputMappingInterface, BasicColor basicColor){
+    public: static ProcessPaintable* getInstance(InputMappingInterface* inputMappingInterface, BasicColor* basicColor){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ProcessPaintable();
+                        return new ProcessPaintable();
     
 }
 

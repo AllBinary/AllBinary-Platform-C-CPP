@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -88,16 +94,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLCapabilities.h"
-#include "OpenGLLogUtil.h"
+        #include "org/allbinary/graphics/opengles/OpenGLCapabilities.h"
+#include "org/allbinary/graphics/opengles/OpenGLLogUtil.h"
 
 class OpenGLUtil
             : public Object
          {
 
-    private: static OpenGLUtil instance() { return OpenGLUtil(); }
+    private: static OpenGLUtil* instance() { static std::unique_ptr<OpenGLUtil> value(new OpenGLUtil()); return value.get(); }
 
-    public: static OpenGLUtil getInstance(){
+    public: static OpenGLUtil* getInstance(){
 
 
 
@@ -107,29 +113,29 @@ class OpenGLUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const RendererStrings renderStrings = RendererStrings::getInstance();
+    private: RendererStrings* renderStrings = RendererStrings::getInstance();
 
-    protected: const CanvasStrings canvasStrings = CanvasStrings::getInstance();
+    protected: CanvasStrings* canvasStrings = CanvasStrings::getInstance();
 
-    protected: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
+    protected: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-    private: const PreResourceImageUtil preResourceImageUtil = PreResourceImageUtil::getInstance();
+    private: PreResourceImageUtil* preResourceImageUtil = PreResourceImageUtil::getInstance();
 
-    private: const SynchObject lockObject = SynchObject();
+    private: SynchObject* lockObject = new SynchObject();
 
-    private: const SynchObject anyType = SynchObject();
+    private: SynchObject* anyType = new SynchObject();
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
-    public: const BasicArrayList runnableList = BasicArrayListD();
+    public: BasicArrayList* runnableList = new BasicArrayListD();
 
     private: bool created = false;
 
-    public: void onSurfaceCreated(GL10 gl){
+    public: void onSurfaceCreated(GL10* gl){
 
         try {
             
@@ -138,34 +144,34 @@ class OpenGLUtil
                                     {
                                     this->created= true;
     
-PreLogUtil::put(CommonLabels::getInstance().START_LABEL +OpenGLCapabilities::getInstance().toString(), this, this->renderStrings.ON_SURFACE_CREATED);
+PreLogUtil::put(CommonLabels::getInstance()->START_LABEL +OpenGLCapabilities::getInstance()->toString(), this, this->renderStrings->ON_SURFACE_CREATED);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->renderStrings.ON_SURFACE_CREATED, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->renderStrings->ON_SURFACE_CREATED, &e);
     
 }
 
 }
 
 
-    public: void onSurfaceCreated(GL10 gl, LoadTextures loadTextures){
+    public: void onSurfaceCreated(GL10* gl, LoadTextures* loadTextures){
 
         try {
-            loadTextures.load(gl);
+            loadTextures->load(gl);
     
-OpenGLLogUtil::getInstance().logError(gl);
+OpenGLLogUtil::getInstance()->logError(gl);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->renderStrings.ON_SURFACE_CREATED, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->renderStrings->ON_SURFACE_CREATED, &e);
     
 }
 
@@ -176,26 +182,26 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->renderStrings.ON_SU
 
                 //@Throws(Exception.constructor)
             
-    public: void onSurfaceChanged(GL10 gl, OpenGLESGraphics graphics){
+    public: void onSurfaceChanged(GL10* gl, OpenGLESGraphics* graphics){
 
                         if(!this->surfaceCreatedAndInitialized)
                         
                                     {
-                                    graphics.init();
+                                    graphics->init();
     
 this->surfaceCreatedAndInitialized= true;
     
 
                                     }
                                 
-graphics.update();
+graphics->update();
     
 
-    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
+    ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
     
-progressCanvas.update(graphics);
+progressCanvas->update(graphics);
     
-getInstance = OpenGLImageCacheFactory::getInstance()getInstance
+getInstance = dynamic_cast<OpenGLImageCache*>(OpenGLImageCacheFactory::getInstance()getInstance)
 getInstance.
                     update(gl);
     
@@ -206,9 +212,9 @@ this->set(gl);
 }
 
 
-    public: Image addImage(Image image){
+    public: Image* addImage(Image* image){
 
-    Image encapsulateImage = this->preResourceImageUtil.encapsulate(image);;
+    Image* encapsulateImage = this->preResourceImageUtil->encapsulate(image);;
     
 
                         if(encapsulateImage != image)
@@ -221,7 +227,7 @@ this->set(gl);
 
         //mutex.withLock
         
-this->list.add(encapsulateImage);
+this->list->add(encapsulateImage);
     
 
 
@@ -251,14 +257,14 @@ this->list.add(encapsulateImage);
 
         //mutex.withLock
         
-this->list.clear();
+this->list->clear();
     
 
 
 }
 
 
-    public: void addRunnable(Runnable runnable){
+    public: void addRunnable(Runnable* runnable){
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -267,12 +273,12 @@ this->list.clear();
         //mutex.withLock
         
 
-                        if(!this->runnableList.contains(runnable))
+                        if(!this->runnableList->contains(runnable))
                         
                                     {
-                                    this->runnableList.add(runnable);
+                                    this->runnableList->add(runnable);
     
-this->displayInfoSingleton.add(this->canvasStrings.SCALED_IMAGES);
+this->displayInfoSingleton->add(this->canvasStrings->SCALED_IMAGES);
     
 
                                     }
@@ -291,10 +297,10 @@ this->displayInfoSingleton.add(this->canvasStrings.SCALED_IMAGES);
         //mutex.withLock
         
 
-    Runnable runnable;;
+    Runnable* runnable;;
     
 
-    int32_t size = this->runnableList.size();;
+    int32_t size = this->runnableList->size();;
     
 
 
@@ -303,13 +309,13 @@ this->displayInfoSingleton.add(this->canvasStrings.SCALED_IMAGES);
                         for (
     int32_t index = 0;index < size; index++)
         {
-runnable= this->runnableList.get(index);
+runnable= dynamic_cast<Runnable*>(this->runnableList->get(index));
     
-runnable.run();
+runnable->run();
     
 }
 
-this->runnableList.clear();
+this->runnableList->clear();
     
 
 
@@ -318,12 +324,12 @@ this->runnableList.clear();
 
                 //@Throws(Exception.constructor)
             
-    private: void set(GL10 gl){
+    private: void set(GL10* gl){
 
-    int32_t size = this->list.size();;
+    int32_t size = this->list->size();;
     
 
-    OpenGLESImage image;;
+    OpenGLESImage* image;;
     
 
 
@@ -332,9 +338,9 @@ this->runnableList.clear();
                         for (
     int32_t index2 = 0;index2 < size; index2++)
         {
-image= this->list.get(index2);
+image= dynamic_cast<OpenGLESImage*>(this->list->get(index2));
     
-image.set(gl);
+image->set(gl);
     
 }
 

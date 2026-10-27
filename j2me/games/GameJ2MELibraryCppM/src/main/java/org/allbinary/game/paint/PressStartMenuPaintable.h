@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_PAINT_PRESSSTARTMENUPAINTABLE_H
         #define ORG_ALLBINARY_GAME_PAINT_PRESSSTARTMENUPAINTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -78,7 +84,7 @@
         
 class PressStartMenuPaintable: public Paintable, public UpdateMyFontInterface {
 
-    private: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();
 
     private: const std::string PRESS_START = "Press Screen To Start";
 
@@ -86,11 +92,11 @@ class PressStartMenuPaintable: public Paintable, public UpdateMyFontInterface {
 
     private: const std::string MENU_START = "Press Start From The Menu To Begin";
 
-    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
 
-    private: std::string startString = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string startString = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: TimeDelayHelper timeDelayHelper = TimeDelayHelper(1100);
+    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(1100);
 
     private: bool flash= false;
 
@@ -102,9 +108,9 @@ public: PressStartMenuPaintable();
 
     private: int32_t line= 0;
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
     private: void setFlash(bool flash);
 

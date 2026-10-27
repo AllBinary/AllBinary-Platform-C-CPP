@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_CANVAS_PROFILINGREFRESHHELPER_H
         #define ORG_ALLBINARY_CANVAS_PROFILINGREFRESHHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/System.h"
         
             #include "java/lang/Integer.h"
@@ -49,13 +55,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AndroidGameStatistics.h"
+        #include "org/allbinary/canvas/AndroidGameStatistics.h"
 
 class ProfilingRefreshHelper: public AndroidGameStatistics {
 
-    private: static ProfilingRefreshHelper instance() { return ProfilingRefreshHelper(); }
+    private: static ProfilingRefreshHelper* instance() { static std::unique_ptr<ProfilingRefreshHelper> value(new ProfilingRefreshHelper()); return value.get(); }
 
-    public: static AndroidGameStatistics getInstance();
+    public: static AndroidGameStatistics* getInstance();
 
     private: bool firstTime = true;
 
@@ -67,7 +73,7 @@ class ProfilingRefreshHelper: public AndroidGameStatistics {
 
 private: ProfilingRefreshHelper();
 
-    public: void initView(View view);
+    public: void initView(View* view);
 
     public: void nextFrame();
 

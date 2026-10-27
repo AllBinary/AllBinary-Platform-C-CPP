@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -118,35 +126,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ModifyTable.h"
+        #include "admin/taghelpers/ModifyTable.h"
 
 class CategoryRequestHelper: public ModifyTable {
 
-    private: static const std::string categoryRequest = StringMaker().append("<").append(CategoryData::getInstance().REQUEST).append(">").toString();
+    private: static inline const std::string categoryRequest = (new StringMaker())->append("<")->append(CategoryData::getInstance()->REQUEST)->append(">")->toString();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: PageContext pageContext;
+    private: PageContext* pageContext;
 
-    private: HashMap<Object*, Object*> hashMap;
+    private: HashMap<Object*, Object*>* hashMap;
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
-    private: CategoryLoaderInterface categoryLoaderInterface;
+    private: CategoryLoaderInterface* categoryLoaderInterface;
 
-    private: CategoryInterface categoryInterface;
+    private: CategoryInterface* categoryInterface;
 
-    private: CategoryInterface childCategoryInterface;
+    private: CategoryInterface* childCategoryInterface;
 
-    private: TransformInfoInterface transformInfoInterface;
+    private: TransformInfoInterface* transformInfoInterface;
 
-public: CategoryRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: CategoryRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
     public: void getXmlData();
 
                 //@Throws(Exception.constructor)
             
-    private: void setCategoryLoader(Node requestNode);
+    private: void setCategoryLoader(Node* requestNode);
 
     public: std::string insert();
 

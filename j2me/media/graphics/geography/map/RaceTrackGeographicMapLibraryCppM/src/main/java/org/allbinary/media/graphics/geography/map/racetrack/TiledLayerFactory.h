@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/game/TiledLayer.h>
@@ -46,15 +52,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RaceTrackData.h"
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackData.h"
 
 class TiledLayerFactory
             : public Object
          {
 
-    public: TiledLayer getInstance(RaceTrackData raceTrackData);
+    public: TiledLayer* getInstance(RaceTrackData* raceTrackData);
 
-    public: TiledLayer getMiniInstance(RaceTrackData raceTrackData);
+    public: TiledLayer* getMiniInstance(RaceTrackData* raceTrackData);
 
 };
 

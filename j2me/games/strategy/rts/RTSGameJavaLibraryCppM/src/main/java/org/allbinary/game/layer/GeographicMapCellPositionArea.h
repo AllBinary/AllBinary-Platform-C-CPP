@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_GEOGRAPHICMAPCELLPOSITIONAREA_H
         #define ORG_ALLBINARY_GAME_LAYER_GEOGRAPHICMAPCELLPOSITIONAREA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -68,39 +74,39 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapCellPositionAreaBase.h"
+        #include "org/allbinary/game/layer/GeographicMapCellPositionAreaBase.h"
 
 class GeographicMapCellPositionArea: public GeographicMapCellPositionAreaBase {
 
-    private: const CellPositionsUtil cellPositionsUtil = CellPositionsUtil::getInstance();
+    private: CellPositionsUtil* cellPositionsUtil = CellPositionsUtil::getInstance();
 
-    private: const LayerCoveringCellPositionsUtil layerCoveringCellPositionsUtil = LayerCoveringCellPositionsUtil::getInstance();
+    private: LayerCoveringCellPositionsUtil* layerCoveringCellPositionsUtil = LayerCoveringCellPositionsUtil::getInstance();
 
-    private: const BasicArrayList reusableOccupyingGeographicMapCellPositionList = BasicArrayListS(4);
+    private: BasicArrayList* reusableOccupyingGeographicMapCellPositionList = new BasicArrayListS(4);
 
-    private: const BasicArrayList reusableSurroundingGeographicMapCellPositionList = BasicArrayListS(12);
+    private: BasicArrayList* reusableSurroundingGeographicMapCellPositionList = new BasicArrayListS(12);
 
-    private: const CircularIndexUtil surroundingCircularIndexUtil = CircularIndexUtil::createInstance(0);
+    private: CircularIndexUtil* surroundingCircularIndexUtil = CircularIndexUtil::createInstance(0);
 
-    private: AllBinaryLayer layerInterface;
+    private: AllBinaryLayer* layerInterface;
 
-    private: BasicArrayList LIST = BasicArrayListUtil::getInstance().getImmutableInstance();
+    private: BasicArrayList* LIST = BasicArrayListUtil::getInstance()->getImmutableInstance();
 
-    private: BasicArrayList occupyingGeographicMapCellPositionList = this->LIST;
+    private: BasicArrayList* occupyingGeographicMapCellPositionList = this->LIST;
 
-    private: BasicArrayList surroundingGeographicMapCellPositionList = this->LIST;
+    private: BasicArrayList* surroundingGeographicMapCellPositionList = this->LIST;
 
-public: GeographicMapCellPositionArea(AllBinaryLayer layerInterface);
+public: GeographicMapCellPositionArea(AllBinaryLayer* layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void update(BasicGeographicMap geographicMapInterface);
+    public: void update(BasicGeographicMap* geographicMapInterface);
 
-    public: BasicArrayList getOccupyingGeographicMapCellPositionList();
+    public: BasicArrayList* getOccupyingGeographicMapCellPositionList();
 
-    public: BasicArrayList getSurroundingGeographicMapCellPositionList();
+    public: BasicArrayList* getSurroundingGeographicMapCellPositionList();
 
-    public: GeographicMapCellPosition getNextSurroundingGeographicMapCellPosition();
+    public: GeographicMapCellPosition* getNextSurroundingGeographicMapCellPosition();
 
 };
 

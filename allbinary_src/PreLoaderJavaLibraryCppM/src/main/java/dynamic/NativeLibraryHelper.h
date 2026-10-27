@@ -21,6 +21,12 @@
         #ifndef DYNAMIC_NATIVELIBRARYHELPER_H
         #define DYNAMIC_NATIVELIBRARYHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/System.h"

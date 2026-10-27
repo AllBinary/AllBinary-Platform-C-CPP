@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_GRAPH_V_H
         #define ORG_ALLBINARY_GRAPH_V_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 

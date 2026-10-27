@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_ALLMOTIONRECTANGLES_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_ALLMOTIONRECTANGLES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/awt.h>
@@ -56,35 +62,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionRectangles.h"
-#include "MotionRectangle.h"
-#include "Rectangle.h"
+        #include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
+#include "org/allbinary/media/image/comparison/motion/MotionRectangle.h"
+#include "org/allbinary/media/image/comparison/motion/Rectangle.h"
 
 class AllMotionRectangles: public MotionRectangles {
 
-    private: static const std::string NAME = "allMotionRectangles_";
+    private: static inline const std::string NAME = "allMotionRectangles_";
 
-public: AllMotionRectangles(ImageComparisonResult imageComparisonResult);
-
-                //@Throws(Exception.constructor)
-            
-    private: void createMotionRectangles(ImageComparisonResult imageComparisonInfo);
+public: AllMotionRectangles(ImageComparisonResult* imageComparisonResult);
 
                 //@Throws(Exception.constructor)
             
-    private: bool addPixelDeltaToExistingMotionRectangle(PixelDelta pixelDelta);
+    private: void createMotionRectangles(ImageComparisonResult* imageComparisonInfo);
 
                 //@Throws(Exception.constructor)
             
-    private: void addPixelDeltaToAMotionRectangle(PixelDelta pixelDelta);
+    private: bool addPixelDeltaToExistingMotionRectangle(PixelDelta* pixelDelta);
 
                 //@Throws(Exception.constructor)
             
-    private: bool shouldPixelDeltaPartOfMotionRectangle(MotionRectangle motionRectangle, PixelDelta pixelDelta);
+    private: void addPixelDeltaToAMotionRectangle(PixelDelta* pixelDelta);
 
                 //@Throws(Exception.constructor)
             
-    private: bool isPixelDeltaLikelyPartOfMotionRectangle(MotionRectangle motionRectangle, PixelDelta pixelDelta);
+    private: bool shouldPixelDeltaPartOfMotionRectangle(MotionRectangle* motionRectangle, PixelDelta* pixelDelta);
+
+                //@Throws(Exception.constructor)
+            
+    private: bool isPixelDeltaLikelyPartOfMotionRectangle(MotionRectangle* motionRectangle, PixelDelta* pixelDelta);
 
 };
 

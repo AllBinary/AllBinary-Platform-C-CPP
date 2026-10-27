@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -90,63 +98,63 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicPathFinderBase.h"
-#include "PathFindingNodeCost.h"
-#include "PathFindingNodeCostInfo.h"
-#include "PathFindingNode.h"
-#include "MultipassState.h"
+        #include "org/allbinary/media/graphics/geography/pathfinding/GeographicPathFinderBase.h"
+#include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCost.h"
+#include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfo.h"
+#include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNode.h"
+#include "org/allbinary/media/graphics/geography/pathfinding/MultipassState.h"
 
 class PathFinder: public GeographicPathFinderBase {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
+    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    private: const MathUtil mathUtil = MathUtil::getInstance();
+    private: MathUtil* mathUtil = MathUtil::getInstance();
 
-    private: const PriorityQueue<PathFindingNodeCost> openPriorityQueue = PriorityQueue<PathFindingNodeCost>();
+    private: PriorityQueue<PathFindingNodeCost*>* openPriorityQueue = new PriorityQueue<PathFindingNodeCost*>();
 
-    private: const HashSet<PathFindingNodeCost> closedSet = HashSet<PathFindingNodeCost>();
+    private: HashSet<PathFindingNodeCost*>* closedSet = new HashSet<PathFindingNodeCost*>();
 
-    private: Object* geographicMapInterface = NullUtil::getInstance().NULL_OBJECT;
+    private: Object* geographicMapInterface = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: std::vector<std::vector<PathFindingNodeCost>> costArray = PathFindingNodeCost::NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY;
-
-                //@Throws(Exception.constructor)
-            
-    public: void init(BasicGeographicMap geographicMapInterface);
-
-    public: BasicArrayList searchTotalPath(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, int32_t totalPaths);
+    private: std::vector<std::vector<PathFindingNodeCost*>> costArray = PathFindingNodeCost::NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY;
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList searchTotalPathN(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, int32_t totalPaths, MultipassState multipassState);
+    public: void init(BasicGeographicMap* geographicMapInterface);
+
+    public: BasicArrayList* searchTotalPath(BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList, int32_t totalPaths);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList search(PathFindingNode startPathFindingNode, PathFindingNode endPathFindingNode);
+    public: BasicArrayList* searchTotalPathN(BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList, int32_t totalPaths, MultipassState* multipassState);
 
                 //@Throws(Exception.constructor)
             
-    public: void searchStart(PathFindingNode startPathFindingNode, PathFindingNode endPathFindingNode, MultipassState multipassState);
+    public: BasicArrayList* search(PathFindingNode* startPathFindingNode, PathFindingNode* endPathFindingNode);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList searchN(PathFindingNode startPathFindingNode, PathFindingNode endPathFindingNode, MultipassState multipassState);
+    public: void searchStart(PathFindingNode* startPathFindingNode, PathFindingNode* endPathFindingNode, MultipassState* multipassState);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList findPath(GeographicMapCellPosition start, GeographicMapCellPosition target);
+    public: BasicArrayList* searchN(PathFindingNode* startPathFindingNode, PathFindingNode* endPathFindingNode, MultipassState* multipassState);
 
                 //@Throws(Exception.constructor)
             
-    public: void findPathStart(GeographicMapCellPosition start, GeographicMapCellPosition target, MultipassState multipassState);
+    public: BasicArrayList* findPath(GeographicMapCellPosition* start, GeographicMapCellPosition* target);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList findPathEnd(GeographicMapCellPosition start, GeographicMapCellPosition target, MultipassState multipassState);
+    public: void findPathStart(GeographicMapCellPosition* start, GeographicMapCellPosition* target, MultipassState* multipassState);
 
-    private: BasicArrayList extractPath(GeographicMapCellPosition start, PathFindingNodeCost current);
+                //@Throws(Exception.constructor)
+            
+    public: BasicArrayList* findPathEnd(GeographicMapCellPosition* start, GeographicMapCellPosition* target, MultipassState* multipassState);
+
+    private: BasicArrayList* extractPath(GeographicMapCellPosition* start, PathFindingNodeCost* current);
 
 };
 

@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 
 
 
@@ -41,23 +49,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShaderUpdater.h"
-#include "ShaderComposite.h"
-#include "ShaderOpenGLProcessor.h"
+        #include "org/allbinary/graphics/opengles/shader/ShaderUpdater.h"
+#include "org/allbinary/graphics/opengles/shader/ShaderComposite.h"
+#include "org/allbinary/graphics/opengles/shader/ShaderOpenGLProcessor.h"
 
 class AppRendererShaderUpdaterFactory: public ShaderUpdater {
 
-    private: static const AppRendererShaderUpdaterFactory instanceC = AppRendererShaderUpdaterFactory();
+    private: static AppRendererShaderUpdaterFactory* instanceC() { static std::unique_ptr<AppRendererShaderUpdaterFactory> value(new AppRendererShaderUpdaterFactory()); return value.get(); }
 
-    public: static AppRendererShaderUpdaterFactory getInstance();
+    public: static AppRendererShaderUpdaterFactory* getInstance();
 
-    private: const std::vector<ShaderComposite> NULL_SHADER_COMPOSITE_ARRAY = {};
+    private: const std::vector<ShaderComposite*> NULL_SHADER_COMPOSITE_ARRAY = {};
 
-    public: const std::vector<ShaderComposite> shaderCompositeArray = this->NULL_SHADER_COMPOSITE_ARRAY;
+    public: const std::vector<ShaderComposite*> shaderCompositeArray = this->NULL_SHADER_COMPOSITE_ARRAY;
 
-    private: const std::vector<ShaderOpenGLProcessor> shaderOpenGLProcessorArray = {};
+    private: const std::vector<ShaderOpenGLProcessor*> shaderOpenGLProcessorArray = {};
 
-    public: std::vector<ShaderOpenGLProcessor> getTestShaders();
+    public: std::vector<ShaderOpenGLProcessor*> getTestShaders();
 
     public: void setShaderComposite(Object* object3d);
 

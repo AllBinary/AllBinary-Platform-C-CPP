@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -105,34 +111,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicProfileActionScriptCondition.h"
-#include "ColorAtActionScriptConditionInterface.h"
-#include "ColorAtActionScriptConditionJPanel.h"
-#include "ColorAtActionScriptConditionData.h"
+        #include "org/allbinary/input/automation/actions/script/condition/BasicProfileActionScriptCondition.h"
+#include "org/allbinary/input/automation/actions/script/condition/ColorAtActionScriptConditionInterface.h"
+#include "org/allbinary/input/automation/actions/script/condition/ColorAtActionScriptConditionJPanel.h"
+#include "org/allbinary/input/automation/actions/script/condition/ColorAtActionScriptConditionData.h"
 
 class ColorAtActionScriptCondition: public BasicProfileActionScriptCondition, public ColorAtActionScriptConditionInterface {
 
-    private: static const std::string NAME = "If Color At";
+    private: static inline const std::string NAME = "If Color At";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: ColorAtActionScriptConditionJPanel colorAtActionScriptConditionJPanel;
+    private: ColorAtActionScriptConditionJPanel* colorAtActionScriptConditionJPanel;
 
-    private: Point point;
+    private: Point* point;
 
-    private: ColorRangeInterface colorRangeInterface = ColorRange();
+    private: ColorRangeInterface* colorRangeInterface = dynamic_cast<ColorRangeInterface*>(new ColorRange());
 
-public: ColorAtActionScriptCondition(Node node) : BasicProfileActionScriptCondition(ColorAtActionScriptCondition::NAME, node){
+public: ColorAtActionScriptCondition(Node* node) : BasicProfileActionScriptCondition(ColorAtActionScriptCondition::NAME, node){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->point= Point(0, 0);
+this->point= new Point(0, 0);
     
 
-    Node actionNode = DomSearchHelper::getNode(ColorAtActionScriptConditionData::NAME, node.getChildNodes());;
+    Node* actionNode = DomSearchHelper::getNode(ColorAtActionScriptConditionData::NAME, node->getChildNodes());;
     
 
                         if(actionNode != 
@@ -141,110 +147,110 @@ this->point= Point(0, 0);
                         
                                     {
                                     
-    NodeList nodeList = actionNode.getChildNodes();;
+    NodeList* nodeList = actionNode->getChildNodes();;
     
 
 
 
 
                         for (
-    int32_t index = 0;index < nodeList.getLength(); index++)
+    int32_t index = 0;index < nodeList->getLength(); index++)
         {
 
-    Node childNode = nodeList.item(index);;
+    Node* childNode = nodeList->item(index);;
     
 
-                        if(childNode.getNodeName().compareTo(ColorAtActionScriptConditionData::LOCATION_X) == 0)
+                        if(childNode->getNodeName()->compareTo(ColorAtActionScriptConditionData::LOCATION_X) == 0)
                         
                                     {
                                     
     std::string locationX = DomNodeHelper::getTextNodeValue(childNode);;
     
-this->point.x= Integer::valueOf(locationX);
+this->point->x= Integer.valueOf(locationX);
     
 
                                     }
                                 
                              else 
-                        if(childNode.getNodeName().compareTo(ColorAtActionScriptConditionData::LOCATION_Y) == 0)
+                        if(childNode->getNodeName()->compareTo(ColorAtActionScriptConditionData::LOCATION_Y) == 0)
                         
                                     {
                                     
     std::string locationY = DomNodeHelper::getTextNodeValue(childNode);;
     
-this->point.y= Integer::valueOf(locationY);
+this->point->y= Integer.valueOf(locationY);
     
 
                                     }
                                 
                              else 
-                        if(childNode.getNodeName().compareTo(ColorAtActionScriptConditionData::MIN_RED) == 0)
+                        if(childNode->getNodeName()->compareTo(ColorAtActionScriptConditionData::MIN_RED) == 0)
                         
                                     {
                                     
     std::string string = DomNodeHelper::getTextNodeValue(childNode);;
     
-this->getColorRangeInterface().setMinRed(string.valueOf());
+this->getColorRangeInterface()->setMinRed(string.valueOf());
     
 
                                     }
                                 
                              else 
-                        if(childNode.getNodeName().compareTo(ColorAtActionScriptConditionData::MAX_RED) == 0)
+                        if(childNode->getNodeName()->compareTo(ColorAtActionScriptConditionData::MAX_RED) == 0)
                         
                                     {
                                     
     std::string string = DomNodeHelper::getTextNodeValue(childNode);;
     
-this->getColorRangeInterface().setMaxRed(string.valueOf());
+this->getColorRangeInterface()->setMaxRed(string.valueOf());
     
 
                                     }
                                 
                              else 
-                        if(childNode.getNodeName().compareTo(ColorAtActionScriptConditionData::MIN_GREEN) == 0)
+                        if(childNode->getNodeName()->compareTo(ColorAtActionScriptConditionData::MIN_GREEN) == 0)
                         
                                     {
                                     
     std::string string = DomNodeHelper::getTextNodeValue(childNode);;
     
-this->getColorRangeInterface().setMinGreen(string.valueOf());
+this->getColorRangeInterface()->setMinGreen(string.valueOf());
     
 
                                     }
                                 
                              else 
-                        if(childNode.getNodeName().compareTo(ColorAtActionScriptConditionData::MAX_GREEN) == 0)
+                        if(childNode->getNodeName()->compareTo(ColorAtActionScriptConditionData::MAX_GREEN) == 0)
                         
                                     {
                                     
     std::string string = DomNodeHelper::getTextNodeValue(childNode);;
     
-this->getColorRangeInterface().setMaxGreen(string.valueOf());
+this->getColorRangeInterface()->setMaxGreen(string.valueOf());
     
 
                                     }
                                 
                              else 
-                        if(childNode.getNodeName().compareTo(ColorAtActionScriptConditionData::MIN_BLUE) == 0)
+                        if(childNode->getNodeName()->compareTo(ColorAtActionScriptConditionData::MIN_BLUE) == 0)
                         
                                     {
                                     
     std::string string = DomNodeHelper::getTextNodeValue(childNode);;
     
-this->getColorRangeInterface().setMinBlue(string.valueOf());
+this->getColorRangeInterface()->setMinBlue(string.valueOf());
     
 
                                     }
                                 
                              else 
-                        if(childNode.getNodeName().compareTo(ColorAtActionScriptConditionData::MAX_BLUE) == 0)
+                        if(childNode->getNodeName()->compareTo(ColorAtActionScriptConditionData::MAX_BLUE) == 0)
                         
                                     {
                                     
     std::string string = DomNodeHelper::getTextNodeValue(childNode);;
     
-this->getColorRangeInterface().setMaxBlue(string.valueOf());
+this->getColorRangeInterface()->setMaxBlue(string.valueOf());
     
 
                                     }
@@ -258,7 +264,7 @@ this->getColorRangeInterface().setMaxBlue(string.valueOf());
                             
 
 
-                            throw Exception("Color At Action Script Condition Node Null");
+                            throw new Exception("Color At Action Script Condition Node Null");
                     
 
                         }
@@ -275,7 +281,7 @@ public: ColorAtActionScriptCondition() : BasicProfileActionScriptCondition(Color
 
                             //For kotlin this is before the body of the constructor.
                     
-this->point= Point(0, 0);
+this->point= new Point(0, 0);
     
 this->init();
     
@@ -283,12 +289,12 @@ this->init();
 
 
     private: void init(){
-this->colorAtActionScriptConditionJPanel= ColorAtActionScriptConditionJPanel(this);
+this->colorAtActionScriptConditionJPanel= new ColorAtActionScriptConditionJPanel(this);
     
 }
 
 
-    public: Point getPoint(){
+    public: Point* getPoint(){
 
 
 
@@ -298,39 +304,39 @@ this->colorAtActionScriptConditionJPanel= ColorAtActionScriptConditionJPanel(thi
 }
 
 
-    public: void setPoint(Point point){
+    public: void setPoint(Point* point){
 this->point= point;
     
 }
 
 
     public: void showDialog(){
-this->colorAtActionScriptConditionJPanel.getColorAtActionJDialog().setVisible(true);
+this->colorAtActionScriptConditionJPanel->getColorAtActionJDialog()->setVisible(true);
     
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(ColorAtActionScriptConditionData::LOCATION_X, std::to_string(x));
+hashMap->put(ColorAtActionScriptConditionData::LOCATION_X, std::to_string(x));
     
-hashMap.put(ColorAtActionScriptConditionData::LOCATION_Y, std::to_string(y));
+hashMap->put(ColorAtActionScriptConditionData::LOCATION_Y, std::to_string(y));
     
-hashMap.put(ColorAtActionScriptConditionData::MIN_RED, std::to_string(getMinRed));
+hashMap->put(ColorAtActionScriptConditionData::MIN_RED, std::to_string(getMinRed));
     
-hashMap.put(ColorAtActionScriptConditionData::MAX_RED, std::to_string(getMaxRed));
+hashMap->put(ColorAtActionScriptConditionData::MAX_RED, std::to_string(getMaxRed));
     
-hashMap.put(ColorAtActionScriptConditionData::MIN_GREEN, std::to_string(getMinGreen));
+hashMap->put(ColorAtActionScriptConditionData::MIN_GREEN, std::to_string(getMinGreen));
     
-hashMap.put(ColorAtActionScriptConditionData::MAX_GREEN, std::to_string(getMaxGreen));
+hashMap->put(ColorAtActionScriptConditionData::MAX_GREEN, std::to_string(getMaxGreen));
     
-hashMap.put(ColorAtActionScriptConditionData::MIN_BLUE, std::to_string(getMinBlue));
+hashMap->put(ColorAtActionScriptConditionData::MIN_BLUE, std::to_string(getMinBlue));
     
-hashMap.put(ColorAtActionScriptConditionData::MAX_BLUE, std::to_string(getMaxBlue));
+hashMap->put(ColorAtActionScriptConditionData::MAX_BLUE, std::to_string(getMaxBlue));
     
-this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
+this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
     
 
 
@@ -343,11 +349,11 @@ this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = super.toXmlNode(document);;
+    Node* node = super.toXmlNode(document);;
     
-node.appendChild(ModDomHelper::createNodeWithValueNodes(document, ColorAtActionScriptConditionData::NAME, this->toHashMap()));
+node->appendChild(ModDomHelper::createNodeWithValueNodes(document, ColorAtActionScriptConditionData::NAME, this->toHashMap()));
     
 
 
@@ -362,25 +368,25 @@ node.appendChild(ModDomHelper::createNodeWithValueNodes(document, ColorAtActionS
             
     public: bool shouldProcess(int64_t frame){
 
-    BufferedImageFrameCacheable capturedBufferedImageCacheable = (getInstance).get((frame).toLong());;
+    BufferedImageFrameCacheable* capturedBufferedImageCacheable = dynamic_cast<BufferedImageFrameCacheable*>((getInstance)).get((frame).toLong()));;
     
 
-    BufferedImage bufferedImage = capturedBufferedImageCacheable.getBufferedImage();;
+    BufferedImage* bufferedImage = capturedBufferedImageCacheable->getBufferedImage();;
     
 
-    AutomaticCacheInterface automaticCacheInterface = ColorCacheFactory::getInstance();;
+    AutomaticCacheInterface* automaticCacheInterface = ColorCacheFactory::getInstance();;
     
 
-    Integer colorInteger = Integer::valueOf(bufferedImage.getRGB(this->getPoint().x, this->getPoint().y));;
+    int32_t colorInteger = Integer.valueOf(bufferedImage->getRGB(this->getPoint()->x, this->getPoint()->y));;
     
 
-    ColorCacheable colorCacheable = automaticCacheInterface.get(colorInteger);;
+    ColorCacheable* colorCacheable = dynamic_cast<ColorCacheable*>(automaticCacheInterface->get(colorInteger));;
     
 
-    Color color = colorCacheable.getColor();;
+    Color* color = colorCacheable->getColor();;
     
 
-                        if(this->colorRangeInterface.isInRange(color))
+                        if(this->colorRangeInterface->isInRange(color))
                         
                                     {
                                     
@@ -403,14 +409,14 @@ node.appendChild(ModDomHelper::createNodeWithValueNodes(document, ColorAtActionS
 
     public: void log(){
 
-    std::string message = StringMaker().append("getPoint(): ").append(this->getPoint().toString()).append(CommonSeps::getInstance().NEW_LINE).append(this->getColorRangeInterface().toString()).toString();;
+    std::string message = (new StringMaker())->append("getPoint(): ")->append(this->getPoint()->toString())->append(CommonSeps::getInstance()->NEW_LINE)->append(this->getColorRangeInterface()->toString())->toString();;
     
-this->logUtil.putF(message, this, "log");
+this->logUtil->putF(message, this, "log");
     
 }
 
 
-    public: ColorRangeInterface getColorRangeInterface(){
+    public: ColorRangeInterface* getColorRangeInterface(){
 
 
 
@@ -420,7 +426,7 @@ this->logUtil.putF(message, this, "log");
 }
 
 
-    public: void setColorRangeInterface(ColorRangeInterface colorRangeInterface){
+    public: void setColorRangeInterface(ColorRangeInterface* colorRangeInterface){
 this->colorRangeInterface= colorRangeInterface;
     
 }

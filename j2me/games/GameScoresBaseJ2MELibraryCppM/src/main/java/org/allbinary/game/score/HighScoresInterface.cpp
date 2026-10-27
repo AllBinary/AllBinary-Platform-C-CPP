@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -41,19 +47,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HighScore.h"
+        #include "org/allbinary/game/score/HighScore.h"
 
 class HighScoresInterface {
 
-    BasicArrayList getList()
+    public: virtual BasicArrayList* getList() = 0;
 
-    void addHighScore(HighScore newHighScore)
+    public: virtual void addHighScore(HighScore* newHighScore) = 0;
 
-    int32_t getTotal()
+    public: virtual int32_t getTotal() = 0;
 
                 //@Throws(Exception.constructor)
             
-    bool isBestScore(HighScore newHighScore)
+    public: virtual bool isBestScore(HighScore* newHighScore) = 0;
 
 };
 

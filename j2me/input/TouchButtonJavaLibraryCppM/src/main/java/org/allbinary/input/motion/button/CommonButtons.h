@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_COMMONBUTTONS_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_COMMONBUTTONS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/PointFactory.h>
@@ -55,15 +61,15 @@ class CommonButtons
             : public Object
          {
 
-    private: static CommonButtons instance() { return CommonButtons(); }
+    private: static CommonButtons* instance() { static std::unique_ptr<CommonButtons> value(new CommonButtons()); return value.get(); }
 
-    public: static CommonButtons getInstance();
+    public: static CommonButtons* getInstance();
 
     public: int32_t STANDARD_BUTTON_SIZE;
 
-    public: Rectangle NORMAL_BUTTON;
+    public: Rectangle* NORMAL_BUTTON;
 
-    public: Rectangle LARGE_BUTTON;
+    public: Rectangle* LARGE_BUTTON;
 
 private: CommonButtons();
 

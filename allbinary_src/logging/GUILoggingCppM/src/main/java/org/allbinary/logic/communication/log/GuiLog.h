@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_GUILOG_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_GUILOG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,25 +60,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogFormatUtil.h"
-#include "JDialog.h"
-#include "GridLayout.h"
-#include "JScrollPane.h"
-#include "JLabel.h"
-#include "JTextArea.h"
-#include "PreLogUtil.h"
+        #include "org/allbinary/logic/communication/log/LogFormatUtil.h"
+#include "org/allbinary/logic/communication/log/JDialog.h"
+#include "org/allbinary/logic/communication/log/GridLayout.h"
+#include "org/allbinary/logic/communication/log/JScrollPane.h"
+#include "org/allbinary/logic/communication/log/JLabel.h"
+#include "org/allbinary/logic/communication/log/JTextArea.h"
+#include "org/allbinary/logic/communication/log/PreLogUtil.h"
 
 class GuiLog
             : public Object
          {
 
-    private: static GuiLog instance() { return GuiLog(); }
+    private: static GuiLog* instance() { static std::unique_ptr<GuiLog> value(new GuiLog()); return value.get(); }
 
-    public: static GuiLog getInstance();
+    public: static GuiLog* getInstance();
 
-    private: const LogFormatUtil logFormatUtil = LogFormatUtil::getInstance();
+    private: LogFormatUtil* logFormatUtil = LogFormatUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
 private: GuiLog();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -83,13 +89,13 @@ private: GuiLog();
     public: std::string put(std::string specialMessage, Object* anyType, std::string functionName);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: std::string put(std::string specialMessage, Object* anyType, std::string functionName, Exception exception);
+    public: std::string put(std::string specialMessage, Object* anyType, std::string functionName, Exception* exception);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: std::string put(std::string specialMessage, std::string className, std::string functionName);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: std::string put(std::string specialMessage, std::string className, std::string functionName, Exception exception);
+    public: std::string put(std::string specialMessage, std::string className, std::string functionName, Exception* exception);
 
 };
 

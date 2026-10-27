@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIADATAFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIADATAFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,55 +47,55 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MediaData.h"
+        #include "org/allbinary/logic/visual/media/MediaData.h"
 
 class MediaDataFactory
             : public Object
          {
 
-    private: static MediaDataFactory instance() { return MediaDataFactory(); }
+    private: static MediaDataFactory* instance() { static std::unique_ptr<MediaDataFactory> value(new MediaDataFactory()); return value.get(); }
 
-    public: static MediaDataFactory getInstance();
+    public: static MediaDataFactory* getInstance();
 
-    public: const MediaData AVI = MediaData("avi");
+    public: MediaData* AVI = new MediaData("avi");
 
-    public: const MediaData BMP = MediaData("bmp");
+    public: MediaData* BMP = new MediaData("bmp");
 
-    public: const MediaData CEL = MediaData("cel");
+    public: MediaData* CEL = new MediaData("cel");
 
-    public: const MediaData FITS = MediaData("fits");
+    public: MediaData* FITS = new MediaData("fits");
 
-    public: const MediaData FLI = MediaData("fli");
+    public: MediaData* FLI = new MediaData("fli");
 
-    public: const MediaData GBR = MediaData("gbr");
+    public: MediaData* GBR = new MediaData("gbr");
 
-    public: const MediaData GIF = MediaData("gif");
+    public: MediaData* GIF = new MediaData("gif");
 
-    public: const MediaData GIH = MediaData("gih");
+    public: MediaData* GIH = new MediaData("gih");
 
-    public: const MediaData JPG = MediaData("jpg");
+    public: MediaData* JPG = new MediaData("jpg");
 
-    public: const MediaData PIX = MediaData("pix");
+    public: MediaData* PIX = new MediaData("pix");
 
-    public: const MediaData PNG = MediaData("png");
+    public: MediaData* PNG = new MediaData("png");
 
-    public: const MediaData PNM = MediaData("pnm");
+    public: MediaData* PNM = new MediaData("pnm");
 
-    public: const MediaData PSD = MediaData("psd");
+    public: MediaData* PSD = new MediaData("psd");
 
-    public: const MediaData PSP = MediaData("psp");
+    public: MediaData* PSP = new MediaData("psp");
 
-    public: const MediaData PS = MediaData("ps");
+    public: MediaData* PS = new MediaData("ps");
 
-    public: const MediaData SGI = MediaData("SGI");
+    public: MediaData* SGI = new MediaData("SGI");
 
-    public: const MediaData SWF = MediaData("swf");
+    public: MediaData* SWF = new MediaData("swf");
 
-    public: const MediaData TGA = MediaData("tga");
+    public: MediaData* TGA = new MediaData("tga");
 
-    public: const MediaData TIFF = MediaData("tiff");
+    public: MediaData* TIFF = new MediaData("tiff");
 
-    public: const MediaData WMF = MediaData("wmf");
+    public: MediaData* WMF = new MediaData("wmf");
 
 };
 

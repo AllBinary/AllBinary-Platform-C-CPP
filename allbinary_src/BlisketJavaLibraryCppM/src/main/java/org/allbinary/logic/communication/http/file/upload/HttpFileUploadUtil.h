@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_HTTPFILEUPLOADUTIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_HTTPFILEUPLOADUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,17 +72,17 @@ class HttpFileUploadUtil
             : public Object
          {
 
-    private: static HttpFileUploadUtil instance() { return HttpFileUploadUtil(); }
+    private: static HttpFileUploadUtil* instance() { static std::unique_ptr<HttpFileUploadUtil> value(new HttpFileUploadUtil()); return value.get(); }
 
-    public: static HttpFileUploadUtil getInstance();
+    public: static HttpFileUploadUtil* getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: static void log(FileItemStream fileItem);
+    public: static void log(FileItemStream* fileItem);
 
-    public: static void log(FileItem fileItem);
+    public: static void log(FileItem* fileItem);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: HttpFileUploadUtil();
 

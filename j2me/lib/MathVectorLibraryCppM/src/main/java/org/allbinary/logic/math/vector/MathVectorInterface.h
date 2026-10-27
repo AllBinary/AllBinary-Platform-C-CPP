@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_VECTOR_MATHVECTORINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_MATH_VECTOR_MATHVECTORINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/math/BasicDecimal.h>
 
       
@@ -45,11 +51,11 @@
         
 class MathVectorInterface {
 
-    int32_t getDirection();
+    public: virtual int32_t getDirection() = 0;
 
-    BasicDecimal getMagnitude();
+    public: virtual BasicDecimal* getMagnitude() = 0;
 
-    BasicDecimal getResult();
+    public: virtual BasicDecimal* getResult() = 0;
 
 };
 

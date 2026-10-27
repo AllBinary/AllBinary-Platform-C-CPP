@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -173,31 +179,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RTSPlayerGameInput.h"
-#include "LayerPositionFinderInterface.h"
-#include "SelectRTSLayerVisitorFactoryInterface.h"
+        #include "org/allbinary/game/input/RTSPlayerGameInput.h"
+#include "org/allbinary/game/input/LayerPositionFinderInterface.h"
+#include "org/allbinary/game/input/SelectRTSLayerVisitorFactoryInterface.h"
 
 class HumanRTSPlayerGameInput: public RTSPlayerGameInput, public BaseMotionGestureEventListener {
 
     private: bool isDragging = false;
 
-    protected: const GameStateFactory gameStateFactory = GameStateFactory::getInstance();
+    protected: GameStateFactory* gameStateFactory = GameStateFactory::getInstance();
 
-    private: const RectangleCollisionUtil rectangleCollisionUtil = RectangleCollisionUtil::getInstance();
+    private: RectangleCollisionUtil* rectangleCollisionUtil = RectangleCollisionUtil::getInstance();
 
-    private: const TouchMotionGestureFactory touchMotionGestureFactory = TouchMotionGestureFactory::getInstance();
+    private: TouchMotionGestureFactory* touchMotionGestureFactory = TouchMotionGestureFactory::getInstance();
 
-    private: const MotionGestureInput PRESSED = this->touchMotionGestureFactory.PRESSED;
+    private: MotionGestureInput* PRESSED = this->touchMotionGestureFactory->PRESSED;
 
-    private: const MotionGestureInput RELEASED = this->touchMotionGestureFactory.RELEASED;
+    private: MotionGestureInput* RELEASED = this->touchMotionGestureFactory->RELEASED;
 
-    private: TouchButtonsBuilderFactory touchButtonsBuilderFactory;
+    private: TouchButtonsBuilderFactory* touchButtonsBuilderFactory;
 
-    private: GameNotificationEvent notYoursGameNotificationEvent;
+    private: GameNotificationEvent* notYoursGameNotificationEvent;
 
-    private: CollidableDestroyableDamageableLayer selectedRtsLayer = CollidableDestroyableDamageableLayer::getNullInstance();
+    private: CollidableDestroyableDamageableLayer* selectedRtsLayer = CollidableDestroyableDamageableLayer::getNullInstance();
 
-public: HumanRTSPlayerGameInput(AllBinaryGameCanvas gameCanvas, BasicArrayList inputList, int32_t playerInputId, RTSLayerInfoPaintable towerInfoPaintable, RTSPlayerLayerInterface rtsPlayerLayerInterface, LayerPositionFinderInterface layerPositionFinderInterface, SelectRTSLayerVisitorFactoryInterface selectRTSLayerVisitorFactoryInterface, TouchButtonsBuilderFactory touchButtonsBuilderFactory) : RTSPlayerGameInput(gameCanvas, inputList, playerInputId, towerInfoPaintable, rtsPlayerLayerInterface, layerPositionFinderInterface, selectRTSLayerVisitorFactoryInterface){
+public: HumanRTSPlayerGameInput(AllBinaryGameCanvas* gameCanvas, BasicArrayList* inputList, int32_t playerInputId, RTSLayerInfoPaintable* towerInfoPaintable, RTSPlayerLayerInterface* rtsPlayerLayerInterface, LayerPositionFinderInterface* layerPositionFinderInterface, SelectRTSLayerVisitorFactoryInterface* selectRTSLayerVisitorFactoryInterface, TouchButtonsBuilderFactory* touchButtonsBuilderFactory) : RTSPlayerGameInput(gameCanvas, inputList, playerInputId, towerInfoPaintable, rtsPlayerLayerInterface, layerPositionFinderInterface, selectRTSLayerVisitorFactoryInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -207,53 +213,53 @@ public: HumanRTSPlayerGameInput(AllBinaryGameCanvas gameCanvas, BasicArrayList i
 this->touchButtonsBuilderFactory= touchButtonsBuilderFactory;
     
 
-    BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();;
+    BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();;
     
-this->notYoursGameNotificationEvent= GameNotificationEvent(this, RTSGameStrings::getInstance().NOT_YOURS, SmallIntegerSingletonFactory::getInstance().getAt(2), basicColorFactory.PINK, BooleanFactory::getInstance().FALSE);
+this->notYoursGameNotificationEvent= new GameNotificationEvent(this, RTSGameStrings::getInstance()->NOT_YOURS, SmallIntegerSingletonFactory::getInstance()->getAt(2), basicColorFactory->PINK, BooleanFactory::getInstance()->FALSE);
     
-BasicMotionGesturesHandler::getInstance().addListenerInterface(this);
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
-
-    GeographicMapCompositeInterface geographicMapCompositeInterface = allBinaryGameLayerManager;;
-    
-
-    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
-    
-this->notYoursGameNotificationEvent.setBasicColorP(geographicMapInterface.getForegroundBasicColor());
+BasicMotionGesturesHandler::getInstance()->addListenerInterface(this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: bool processDraggingMotionInput(AllBinaryLayerManager layerManager){
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager){
 
-    MotionGestureEvent motionGestureEvent = this->getMotionGestureInputList().get(this->getMotionGestureInputList().size() -1);;
+    GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(allBinaryGameLayerManager);;
     
 
-    MotionGestureInput motionGestureInput = motionGestureEvent.getMotionGesture();;
+    BasicGeographicMap* geographicMapInterface = geographicMapCompositeInterface->getGeographicMapInterface()[0];;
+    
+this->notYoursGameNotificationEvent->setBasicColorP(geographicMapInterface->getForegroundBasicColor());
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    private: bool processDraggingMotionInput(AllBinaryLayerManager* layerManager){
+
+    MotionGestureEvent* motionGestureEvent = dynamic_cast<MotionGestureEvent*>(this->getMotionGestureInputList()->get(this->getMotionGestureInputList()->size() -1));;
     
 
-    RTSFormInput rtsFormInput = this->getSelectedRtsFormInput();;
+    MotionGestureInput* motionGestureInput = motionGestureEvent->getMotionGesture();;
+    
+
+    RTSFormInput* rtsFormInput = this->getSelectedRtsFormInput();;
     
 
                         if(motionGestureInput == this->PRESSED)
                         
                                     {
                                     
-    GPoint point = motionGestureEvent.getCurrentPoint();;
+    GPoint* point = motionGestureEvent->getCurrentPoint();;
     
 
-                        if(this->getRtsPlayerLayerInterface().getCurrentScrollSelectionForm().isInForm(point))
+                        if(this->getRtsPlayerLayerInterface()->getCurrentScrollSelectionForm()->isInForm(point))
                         
                                     {
-                                    this->isDragging= rtsFormInput.processSticky(this->getSelectedRtsLayer(), this->getRtsPlayerLayerInterface(), layerManager, point);
+                                    this->isDragging= rtsFormInput->processSticky(this->getSelectedRtsLayer(), this->getRtsPlayerLayerInterface(), layerManager, point);
     
 
                                     }
@@ -266,31 +272,31 @@ this->notYoursGameNotificationEvent.setBasicColorP(geographicMapInterface.getFor
                         
                                     {
                                     
-    GPoint point = motionGestureEvent.getCurrentPoint();;
+    GPoint* point = motionGestureEvent->getCurrentPoint();;
     
 
-                        if(this->getRtsPlayerLayerInterface().getCurrentScrollSelectionForm().isInForm(point))
+                        if(this->getRtsPlayerLayerInterface()->getCurrentScrollSelectionForm()->isInForm(point))
                         
                                     {
-                                    rtsFormInput.processAtPoint(this->getSelectedRtsLayer(), this->getRtsPlayerLayerInterface(), layerManager, point);
+                                    rtsFormInput->processAtPoint(this->getSelectedRtsLayer(), this->getRtsPlayerLayerInterface(), layerManager, point);
     
 
                                     }
                                 
                              else 
-                        if(rtsFormInput.isStickyItemSelected())
+                        if(rtsFormInput->isStickyItemSelected())
                         
                                     {
                                     
-    RTSFormInput previousRtsFormInput = rtsFormInput;;
+    RTSFormInput* previousRtsFormInput = rtsFormInput;;
     
 this->select(motionGestureEvent);
     
-this->getSelectedBuildingPlayerGameInput().selectAllPreselected();
+this->getSelectedBuildingPlayerGameInput()->selectAllPreselected();
     
-previousRtsFormInput.processAtPoint(this->getSelectedRtsLayer(), this->getRtsPlayerLayerInterface(), layerManager, point);
+previousRtsFormInput->processAtPoint(this->getSelectedRtsLayer(), this->getRtsPlayerLayerInterface(), layerManager, point);
     
-this->getSelectedBuildingPlayerGameInput().deselectAllPreselected();
+this->getSelectedBuildingPlayerGameInput()->deselectAllPreselected();
     
 
                                     }
@@ -301,11 +307,11 @@ this->getSelectedBuildingPlayerGameInput().deselectAllPreselected();
 
                         }
                             
-rtsFormInput.setStickyItemSelected(false);
+rtsFormInput->setStickyItemSelected(false);
     
-rtsFormInput.setSelectedStickyItem(ABCustomItem::getNullInstance());
+rtsFormInput->setSelectedStickyItem(ABCustomItem::getNullInstance());
     
-rtsFormInput.setSelectedStickyItemIndex( -1);
+rtsFormInput->setSelectedStickyItemIndex( -1);
     
 
 
@@ -325,9 +331,9 @@ rtsFormInput.setSelectedStickyItemIndex( -1);
 }
 
 
-    private: GPoint startPoint = PointFactory::getInstance().ZERO_ZERO;
+    private: GPoint* startPoint = PointFactory::getInstance()->ZERO_ZERO;
 
-    private: GPoint endPoint = PointFactory::getInstance().ZERO_ZERO;
+    private: GPoint* endPoint = PointFactory::getInstance()->ZERO_ZERO;
 
     const std::string POSSIBLE = "Possible: ";
 
@@ -337,23 +343,23 @@ rtsFormInput.setSelectedStickyItemIndex( -1);
 
     const std::string ADDING = "Adding: ";
 
-    const std::string SPACE = CommonSeps::getInstance().SPACE;
+    const std::string SPACE = CommonSeps::getInstance()->SPACE;
 
     private: void makeSelection(){
 
-    BasicArrayList rtsLayerList = this->getRtsPlayerLayerInterface().getPlayerOwnedRTSLayers().rtsLayerList;;
+    BasicArrayList* rtsLayerList = this->getRtsPlayerLayerInterface()->getPlayerOwnedRTSLayers()->rtsLayerList;;
     
 
-    int32_t rectX1 = this->startPoint.getX();;
+    int32_t rectX1 = this->startPoint->getX();;
     
 
-    int32_t rectY1 = this->startPoint.getY();;
+    int32_t rectY1 = this->startPoint->getY();;
     
 
-    int32_t rectX2 = this->endPoint.getX();;
+    int32_t rectX2 = this->endPoint->getX();;
     
 
-    int32_t rectY2 = this->endPoint.getY();;
+    int32_t rectY2 = this->endPoint->getY();;
     
 
                         if(rectX1 > rectX2)
@@ -361,7 +367,7 @@ rtsFormInput.setSelectedStickyItemIndex( -1);
                                     {
                                     rectX2= rectX1;
     
-rectX1= this->endPoint.getX();
+rectX1= this->endPoint->getX();
     
 
                                     }
@@ -372,74 +378,74 @@ rectX1= this->endPoint.getX();
                                     {
                                     rectY2= rectY1;
     
-rectY1= this->endPoint.getY();
+rectY1= this->endPoint->getY();
     
 
                                     }
                                 
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->AT);
+stringBuffer->append(this->AT);
     
-stringBuffer.appendint(rectX1);
+stringBuffer->appendint(rectX1);
     
-stringBuffer.append(this->SPACE);
+stringBuffer->append(this->SPACE);
     
-stringBuffer.appendint(rectY1);
+stringBuffer->appendint(rectY1);
     
-stringBuffer.append(this->SPACE);
+stringBuffer->append(this->SPACE);
     
-stringBuffer.appendint(rectX2);
+stringBuffer->appendint(rectX2);
     
-stringBuffer.append(this->SPACE);
+stringBuffer->append(this->SPACE);
     
-stringBuffer.appendint(rectY2);
+stringBuffer->appendint(rectY2);
     
-this->logUtil.putF(stringBuffer.toString(), this, this->METHOD);
+this->logUtil->putF(stringBuffer->toString(), this, this->METHOD);
     
 
-    RTSLayer rtsLayer;;
+    RTSLayer* rtsLayer;;
     
 
 
 
 
                         for (
-    int32_t index = rtsLayerList.size() -1;index >= 0; index--)
+    int32_t index = rtsLayerList->size() -1;index >= 0; index--)
         {
-rtsLayer= rtsLayerList.get(index);
+rtsLayer= dynamic_cast<RTSLayer*>(rtsLayerList->get(index));
     
-stringBuffer.delete(0, stringBuffer.length());
-    
-
-    ViewPositionBase viewPosition = rtsLayer.getViewPosition();;
-    
-stringBuffer.append(this->POSSIBLE);
-    
-stringBuffer.append(rtsLayer.getName());
-    
-stringBuffer.append(this->SPACE);
-    
-stringBuffer.append(this->AT);
-    
-stringBuffer.appendint((viewPosition.getX() +rtsLayer.getHalfWidth()));
-    
-stringBuffer.append(this->SPACE);
-    
-stringBuffer.appendint((viewPosition.getY() +rtsLayer.getHalfHeight()));
-    
-this->logUtil.putF(stringBuffer.toString(), this, this->METHOD);
+stringBuffer->delete(0, stringBuffer->length());
     
 
-                        if(this->rectangleCollisionUtil.isInside(rectX1, rectY1, rectX2, rectY2, viewPosition.getX() +rtsLayer.getHalfWidth(), viewPosition.getY() +rtsLayer.getHalfHeight()))
+    ViewPositionBase* viewPosition = rtsLayer->getViewPosition();;
+    
+stringBuffer->append(this->POSSIBLE);
+    
+stringBuffer->append(rtsLayer->getName());
+    
+stringBuffer->append(this->SPACE);
+    
+stringBuffer->append(this->AT);
+    
+stringBuffer->appendint((viewPosition->getX() +rtsLayer->getHalfWidth()));
+    
+stringBuffer->append(this->SPACE);
+    
+stringBuffer->appendint((viewPosition->getY() +rtsLayer->getHalfHeight()));
+    
+this->logUtil->putF(stringBuffer->toString(), this, this->METHOD);
+    
+
+                        if(this->rectangleCollisionUtil->isInside(rectX1, rectY1, rectX2, rectY2, viewPosition->getX() +rtsLayer->getHalfWidth(), viewPosition->getY() +rtsLayer->getHalfHeight()))
                         
                                     {
-                                    this->logUtil.putF(StringMaker().append(this->ADDING).append(rtsLayer.getName()).toString(), this, this->METHOD);
+                                    this->logUtil->putF((new StringMaker())->append(this->ADDING)->append(rtsLayer->getName())->toString(), this, this->METHOD);
     
-rtsLayer.select();
+rtsLayer->select();
     
-this->getSelectedBuildingPlayerGameInput().addSelectedRTSLayer(rtsLayer);
+this->getSelectedBuildingPlayerGameInput()->addSelectedRTSLayer(rtsLayer);
     
 
                                     }
@@ -447,20 +453,20 @@ this->getSelectedBuildingPlayerGameInput().addSelectedRTSLayer(rtsLayer);
 }
 
 
-    CollidableDestroyableDamageableLayer gameLayer = this->getSelectedBuildingPlayerGameInput().getLastSelectedRtsLayer();;
+    CollidableDestroyableDamageableLayer* gameLayer = this->getSelectedBuildingPlayerGameInput()->getLastSelectedRtsLayer();;
     
 
                         if(gameLayer != CollidableDestroyableDamageableLayer::getNullInstance())
                         
                                     {
                                     
-    RTSLayer lastRTSLayer = gameLayer;;
+    RTSLayer* lastRTSLayer = dynamic_cast<RTSLayer*>(gameLayer);;
     
 
-                        if(lastRTSLayer.getScrollSelectionForm() != ScrollSelectionForm::getNullScrollSelectionForm())
+                        if(lastRTSLayer->getScrollSelectionForm() != ScrollSelectionForm::getNullScrollSelectionForm())
                         
                                     {
-                                    this->updateForm(lastRTSLayer.getScrollSelectionForm(), lastRTSLayer.getRTSFormInput());
+                                    this->updateForm(lastRTSLayer->getScrollSelectionForm(), lastRTSLayer->getRTSFormInput());
     
 this->setSelectedRtsLayer(lastRTSLayer);
     
@@ -477,25 +483,25 @@ this->updatePaintable();
 
                 //@Throws(Exception.constructor)
             
-    private: void processSelectionBoxMotionInput(AllBinaryLayerManager layerManager){
+    private: void processSelectionBoxMotionInput(AllBinaryLayerManager* layerManager){
 
 
 
 
                         for (
-    int32_t index = this->getMotionGestureInputList().size() -1;index >= 0; index--)
+    int32_t index = this->getMotionGestureInputList()->size() -1;index >= 0; index--)
         {
 
-    MotionGestureEvent motionGestureEvent = this->getMotionGestureInputList().get(index);;
+    MotionGestureEvent* motionGestureEvent = dynamic_cast<MotionGestureEvent*>(this->getMotionGestureInputList()->get(index));;
     
 
-    MotionGestureInput motionGestureInput = motionGestureEvent.getMotionGesture();;
+    MotionGestureInput* motionGestureInput = motionGestureEvent->getMotionGesture();;
     
 
-    GPoint point = motionGestureEvent.getCurrentPoint();;
+    GPoint* point = motionGestureEvent->getCurrentPoint();;
     
 
-                        if(motionGestureInput == this->touchMotionGestureFactory.PRESSED)
+                        if(motionGestureInput == this->touchMotionGestureFactory->PRESSED)
                         
                                     {
                                     this->startPoint= point;
@@ -506,16 +512,16 @@ this->endPoint= point;
                                     }
                                 
                              else 
-                        if(motionGestureInput == this->touchMotionGestureFactory.RELEASED)
+                        if(motionGestureInput == this->touchMotionGestureFactory->RELEASED)
                         
                                     {
                                     this->endPoint= point;
     
 this->makeSelection();
     
-this->startPoint= PointFactory::getInstance().ZERO_ZERO;
+this->startPoint= PointFactory::getInstance()->ZERO_ZERO;
     
-this->endPoint= PointFactory::getInstance().ZERO_ZERO;
+this->endPoint= PointFactory::getInstance()->ZERO_ZERO;
     
 
                                     }
@@ -533,9 +539,9 @@ this->endPoint= PointFactory::getInstance().ZERO_ZERO;
 
                 //@Throws(Exception.constructor)
             
-    public: void processMotionInput(AllBinaryLayerManager layerManager){
+    public: void processMotionInput(AllBinaryLayerManager* layerManager){
 
-                        if(this->getMotionGestureInputList().size() > 0)
+                        if(this->getMotionGestureInputList()->size() > 0)
                         
                                     {
                                     
@@ -562,16 +568,16 @@ this->endPoint= PointFactory::getInstance().ZERO_ZERO;
 
                                     }
                                 
-this->getMotionGestureInputList().clear();
+this->getMotionGestureInputList()->clear();
     
 }
 
 
-    public: void setSelectedRtsFormInput(RTSFormInput selectedRtsFormInput){
+    public: void setSelectedRtsFormInput(RTSFormInput* selectedRtsFormInput){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
-this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().START).append(StringUtil::getInstance().toString(selectedRtsFormInput)).toString(), this, "setSelectedRtsFormInput");
+this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START)->append(StringUtil::getInstance()->toString(selectedRtsFormInput))->toString(), this, "setSelectedRtsFormInput");
     
 super.setSelectedRtsFormInput(selectedRtsFormInput);
     
@@ -580,17 +586,17 @@ this->setSelectedRtsLayer(CollidableDestroyableDamageableLayer::getNullInstance(
 }
 
 
-    private: void updateFormForLayer(RTSLayer rtsLayer){
+    private: void updateFormForLayer(RTSLayer* rtsLayer){
 
-    ScrollSelectionForm scrollSelectionForm = rtsLayer.getScrollSelectionForm();;
+    ScrollSelectionForm* scrollSelectionForm = rtsLayer->getScrollSelectionForm();;
     
 
-                        if(scrollSelectionForm != ScrollSelectionForm::getNullScrollSelectionForm() && this->getRtsPlayerLayerInterface().getGroupInterface()[0] == rtsLayer.getGroupInterface()[0])
+                        if(scrollSelectionForm != ScrollSelectionForm::getNullScrollSelectionForm() && this->getRtsPlayerLayerInterface()->getGroupInterface()[0] == rtsLayer->getGroupInterface()[0])
                         
                                     {
-                                    this->updateForm(scrollSelectionForm, rtsLayer.getRTSFormInput());
+                                    this->updateForm(scrollSelectionForm, rtsLayer->getRTSFormInput());
     
-this->getSelectedBuildingPlayerGameInput().setSelectedRTSLayer(CollidableDestroyableDamageableLayer::getNullInstance());
+this->getSelectedBuildingPlayerGameInput()->setSelectedRTSLayer(CollidableDestroyableDamageableLayer::getNullInstance());
     
 this->setSelectedRtsLayer(rtsLayer);
     
@@ -598,11 +604,11 @@ this->setSelectedRtsLayer(rtsLayer);
                                     }
                                 
                         else {
-                            this->getRtsPlayerLayerInterface().setCurrentScrollSelectionForm(this->getRtsPlayerLayerInterface().getBuildingScrollSelectionForm());
+                            this->getRtsPlayerLayerInterface()->setCurrentScrollSelectionForm(this->getRtsPlayerLayerInterface()->getBuildingScrollSelectionForm());
     
-this->setSelectedRtsFormInput(this->getRtsPlayerLayerInterface().getRTSFormInput());
+this->setSelectedRtsFormInput(this->getRtsPlayerLayerInterface()->getRTSFormInput());
     
-this->getSelectedBuildingPlayerGameInput().setSelectedRTSLayer(CollidableDestroyableDamageableLayer::getNullInstance());
+this->getSelectedBuildingPlayerGameInput()->setSelectedRTSLayer(CollidableDestroyableDamageableLayer::getNullInstance());
     
 
                         }
@@ -610,8 +616,8 @@ this->getSelectedBuildingPlayerGameInput().setSelectedRTSLayer(CollidableDestroy
 }
 
 
-    private: void updateForm(ScrollSelectionForm scrollSelectionForm, RTSFormInput rtfFormInput){
-this->getRtsPlayerLayerInterface().setCurrentScrollSelectionForm(scrollSelectionForm);
+    private: void updateForm(ScrollSelectionForm* scrollSelectionForm, RTSFormInput* rtfFormInput){
+this->getRtsPlayerLayerInterface()->setCurrentScrollSelectionForm(scrollSelectionForm);
     
 this->setSelectedRtsFormInput(rtfFormInput);
     
@@ -620,14 +626,14 @@ this->setSelectedRtsFormInput(rtfFormInput);
 
                 //@Throws(Exception.constructor)
             
-    public: void setSelectedRTSLayer(CollidableDestroyableDamageableLayer rtSLayer, GeographicMapCellPosition geographicMapCellPosition){
+    public: void setSelectedRTSLayer(CollidableDestroyableDamageableLayer* rtSLayer, GeographicMapCellPosition* geographicMapCellPosition){
 
-                        if(rtSLayer != CollidableDestroyableDamageableLayer::getNullInstance() && this->getRtsPlayerLayerInterface().getGroupInterface()[0] != rtSLayer.getGroupInterface()[0])
+                        if(rtSLayer != CollidableDestroyableDamageableLayer::getNullInstance() && this->getRtsPlayerLayerInterface()->getGroupInterface()[0] != rtSLayer->getGroupInterface()[0])
                         
                                     {
-                                    this->getRtsPlayerLayerInterface().add(ErrorSound::getInstance());
+                                    this->getRtsPlayerLayerInterface()->add(ErrorSound::getInstance());
     
-GameNotificationEventHandler::getInstance().fireEvent(this->notYoursGameNotificationEvent);
+GameNotificationEventHandler::getInstance()->fireEvent(this->notYoursGameNotificationEvent);
     
 
 
@@ -639,36 +645,36 @@ GameNotificationEventHandler::getInstance().fireEvent(this->notYoursGameNotifica
                                     }
                                 
 
-    AllBinaryGameCanvas gameCanvas = this->getGameCanvas();;
+    AllBinaryGameCanvas* gameCanvas = this->getGameCanvas();;
     
 
                         if(rtSLayer != CollidableDestroyableDamageableLayer::getNullInstance())
                         
                                     {
-                                    this->getRtsPlayerLayerInterface().add(SelectBuildingSound::getInstance());
+                                    this->getRtsPlayerLayerInterface()->add(SelectBuildingSound::getInstance());
     
 
-    RTSLayer rtsLayer = rtSLayer;;
+    RTSLayer* rtsLayer = dynamic_cast<RTSLayer*>(rtSLayer);;
     
-rtsLayer.select();
+rtsLayer->select();
     
 this->updateFormForLayer(rtsLayer);
     
 
-                        if(gameCanvas.getGameState() == this->gameStateFactory.PLAYING_GAME_STATE)
+                        if(gameCanvas->getGameState() == this->gameStateFactory->PLAYING_GAME_STATE)
                         
                                     {
                                     
-                        if(rtsLayer.isSelfUpgradeable())
+                        if(rtsLayer->isSelfUpgradeable())
                         
                                     {
-                                    gameCanvas.updateCurrentTouchInputFactory(RTSTouchButtonsBuilder());
+                                    gameCanvas->updateCurrentTouchInputFactory(new RTSTouchButtonsBuilder());
     
 
                                     }
                                 
                         else {
-                            gameCanvas.updateCurrentTouchInputFactory(NoBuildingSelectedTouchButtonsBuilder());
+                            gameCanvas->updateCurrentTouchInputFactory(new NoBuildingSelectedTouchButtonsBuilder());
     
 
                         }
@@ -678,7 +684,7 @@ this->updateFormForLayer(rtsLayer);
                                 
                         else {
                             
-    EndLevelTouchButtonsBuilder endLevelTouchButtonsBuilder = EndLevelTouchButtonsBuilder();;
+    EndLevelTouchButtonsBuilder* endLevelTouchButtonsBuilder = new EndLevelTouchButtonsBuilder();;
     
 
                         if(this->touchButtonsBuilderFactory != 
@@ -686,12 +692,12 @@ this->updateFormForLayer(rtsLayer);
                                 )
                         
                                     {
-                                    endLevelTouchButtonsBuilder.add(this->touchButtonsBuilderFactory.getInstance());
+                                    endLevelTouchButtonsBuilder->add(this->touchButtonsBuilderFactory->getInstance());
     
 
                                     }
                                 
-gameCanvas.updateCurrentTouchInputFactory(endLevelTouchButtonsBuilder);
+gameCanvas->updateCurrentTouchInputFactory(endLevelTouchButtonsBuilder);
     
 
                         }
@@ -700,26 +706,26 @@ gameCanvas.updateCurrentTouchInputFactory(endLevelTouchButtonsBuilder);
                                     }
                                 
                         else {
-                            this->logUtil.putF("Set Player Default Form", this, "setSelectedRTSLayer");
+                            this->logUtil->putF("Set Player Default Form", this, "setSelectedRTSLayer");
     
-this->getRtsPlayerLayerInterface().setCurrentScrollSelectionForm(this->getRtsPlayerLayerInterface().getBuildingScrollSelectionForm());
+this->getRtsPlayerLayerInterface()->setCurrentScrollSelectionForm(this->getRtsPlayerLayerInterface()->getBuildingScrollSelectionForm());
     
-this->setSelectedRtsFormInput(this->getRtsPlayerLayerInterface().getRTSFormInput());
+this->setSelectedRtsFormInput(this->getRtsPlayerLayerInterface()->getRTSFormInput());
     
-this->getSelectedBuildingPlayerGameInput().setSelectedRTSLayer(CollidableDestroyableDamageableLayer::getNullInstance());
+this->getSelectedBuildingPlayerGameInput()->setSelectedRTSLayer(CollidableDestroyableDamageableLayer::getNullInstance());
     
 
-                        if(gameCanvas.getGameState() == this->gameStateFactory.PLAYING_GAME_STATE)
+                        if(gameCanvas->getGameState() == this->gameStateFactory->PLAYING_GAME_STATE)
                         
                                     {
-                                    gameCanvas.updateCurrentTouchInputFactory(NoBuildingSelectedTouchButtonsBuilder());
+                                    gameCanvas->updateCurrentTouchInputFactory(new NoBuildingSelectedTouchButtonsBuilder());
     
 
                                     }
                                 
                         else {
                             
-    EndLevelNoBuildingSelectedTouchButtonsBuilder endLevelNoBuildingSelectedTouchButtonsBuilder = EndLevelNoBuildingSelectedTouchButtonsBuilder();;
+    EndLevelNoBuildingSelectedTouchButtonsBuilder* endLevelNoBuildingSelectedTouchButtonsBuilder = new EndLevelNoBuildingSelectedTouchButtonsBuilder();;
     
 
                         if(this->touchButtonsBuilderFactory != 
@@ -727,12 +733,12 @@ this->getSelectedBuildingPlayerGameInput().setSelectedRTSLayer(CollidableDestroy
                                 )
                         
                                     {
-                                    endLevelNoBuildingSelectedTouchButtonsBuilder.add(this->touchButtonsBuilderFactory.getInstance());
+                                    endLevelNoBuildingSelectedTouchButtonsBuilder->add(this->touchButtonsBuilderFactory->getInstance());
     
 
                                     }
                                 
-gameCanvas.updateCurrentTouchInputFactory(endLevelNoBuildingSelectedTouchButtonsBuilder);
+gameCanvas->updateCurrentTouchInputFactory(endLevelNoBuildingSelectedTouchButtonsBuilder);
     
 
                         }
@@ -740,54 +746,54 @@ gameCanvas.updateCurrentTouchInputFactory(endLevelNoBuildingSelectedTouchButtons
 
                         }
                             
-this->getSelectedRtsFormInput().setSelectedGeographicCellPosition(geographicMapCellPosition);
+this->getSelectedRtsFormInput()->setSelectedGeographicCellPosition(geographicMapCellPosition);
     
-this->getSelectedBuildingPlayerGameInput().setSelectedRTSLayer(rtSLayer);
+this->getSelectedBuildingPlayerGameInput()->setSelectedRTSLayer(rtSLayer);
     
 this->updatePaintable();
     
 }
 
 
-    private: const MultiSelectPaintable multiSelectPaintable = MultiSelectPaintable();
+    private: MultiSelectPaintable* multiSelectPaintable = new MultiSelectPaintable();
 
     public: void updatePaintable(){
 
-    BasicArrayList list = this->getSelectedBuildingPlayerGameInput().getSelectedBasicArrayList();;
+    BasicArrayList* list = this->getSelectedBuildingPlayerGameInput()->getSelectedBasicArrayList();;
     
 
-                        if(list.size() > 1)
+                        if(list->size() > 1)
                         
                                     {
                                     
-    GeographicMapCompositeInterface geographicMapCompositeInterface = this->getGameCanvas();;
+    GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(this->getGameCanvas());;
     
 
-    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
+    BasicGeographicMap* geographicMapInterface = geographicMapCompositeInterface->getGeographicMapInterface()[0];;
     
-this->multiSelectPaintable.setBasicColorP(geographicMapInterface.getForegroundBasicColor());
+this->multiSelectPaintable->setBasicColorP(geographicMapInterface->getForegroundBasicColor());
     
-this->multiSelectPaintable.update(list);
+this->multiSelectPaintable->update(list);
     
-this->getRTSLayerInfoPaintable().updateRTSLayerInfoSelection(this->multiSelectPaintable);
+this->getRTSLayerInfoPaintable()->updateRTSLayerInfoSelection(this->multiSelectPaintable);
     
 
                                     }
                                 
                              else 
-                        if(list.size() == 1)
+                        if(list->size() == 1)
                         
                                     {
                                     
-    RTSLayer rtsLayer = list.get(0);;
+    RTSLayer* rtsLayer = dynamic_cast<RTSLayer*>(list->get(0));;
     
-this->getRTSLayerInfoPaintable().updateRTSLayerInfoSelection(rtsLayer.createHudPaintable());
+this->getRTSLayerInfoPaintable()->updateRTSLayerInfoSelection(rtsLayer->createHudPaintable());
     
 
                                     }
                                 
                         else {
-                            this->getRTSLayerInfoPaintable().updateRTSLayerInfoInit(NullInitUpdatePaintable::getInstance());
+                            this->getRTSLayerInfoPaintable()->updateRTSLayerInfoInit(NullInitUpdatePaintable::getInstance());
     
 
                         }
@@ -795,26 +801,26 @@ this->getRTSLayerInfoPaintable().updateRTSLayerInfoSelection(rtsLayer.createHudP
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 super.paint(graphics);
     
 
-                        if(this->startPoint != PointFactory::getInstance().ZERO_ZERO && this->endPoint != PointFactory::getInstance().ZERO_ZERO)
+                        if(this->startPoint != PointFactory::getInstance()->ZERO_ZERO && this->endPoint != PointFactory::getInstance()->ZERO_ZERO)
                         
                                     {
-                                    graphics.setColor(BasicColorFactory::getInstance().RED.intValue());
+                                    graphics->setColor(BasicColorFactory::getInstance()->RED.intValue());
     
 
-    int32_t rectX1 = this->startPoint.getX();;
+    int32_t rectX1 = this->startPoint->getX();;
     
 
-    int32_t rectY1 = this->startPoint.getY();;
+    int32_t rectY1 = this->startPoint->getY();;
     
 
-    int32_t rectX2 = this->endPoint.getX();;
+    int32_t rectX2 = this->endPoint->getX();;
     
 
-    int32_t rectY2 = this->endPoint.getY();;
+    int32_t rectY2 = this->endPoint->getY();;
     
 
                         if(rectX1 > rectX2)
@@ -822,7 +828,7 @@ super.paint(graphics);
                                     {
                                     rectX2= rectX1;
     
-rectX1= this->endPoint.getX();
+rectX1= this->endPoint->getX();
     
 
                                     }
@@ -833,12 +839,12 @@ rectX1= this->endPoint.getX();
                                     {
                                     rectY2= rectY1;
     
-rectY1= this->endPoint.getY();
+rectY1= this->endPoint->getY();
     
 
                                     }
                                 
-graphics.drawRect(rectX1, rectY1, rectX2 -rectX1, rectY2 -rectY1);
+graphics->drawRect(rectX1, rectY1, rectX2 -rectX1, rectY2 -rectY1);
     
 
                                     }
@@ -846,17 +852,17 @@ graphics.drawRect(rectX1, rectY1, rectX2 -rectX1, rectY2 -rectY1);
 }
 
 
-    public: void onMotionGestureEvent(MotionGestureEvent motionGestureEvent){
-this->getMotionGestureInputList().add(motionGestureEvent);
+    public: void onMotionGestureEvent(MotionGestureEvent* motionGestureEvent){
+this->getMotionGestureInputList()->add(motionGestureEvent);
     
 }
 
 
-    public: void onScrolledMotionGestureEvent(MotionGestureEvent motionGestureEvent){
+    public: void onScrolledMotionGestureEvent(MotionGestureEvent* motionGestureEvent){
 }
 
 
-    private: CollidableDestroyableDamageableLayer getSelectedRtsLayer(){
+    private: CollidableDestroyableDamageableLayer* getSelectedRtsLayer(){
 
 
 
@@ -866,7 +872,7 @@ this->getMotionGestureInputList().add(motionGestureEvent);
 }
 
 
-    private: void setSelectedRtsLayer(CollidableDestroyableDamageableLayer selectedRtsLayer){
+    private: void setSelectedRtsLayer(CollidableDestroyableDamageableLayer* selectedRtsLayer){
 this->selectedRtsLayer= selectedRtsLayer;
     
 }

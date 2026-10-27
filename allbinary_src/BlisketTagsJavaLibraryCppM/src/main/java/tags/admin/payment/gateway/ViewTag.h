@@ -21,6 +21,12 @@
         #ifndef TAGS_ADMIN_PAYMENT_GATEWAY_VIEWTAG_H
         #define TAGS_ADMIN_PAYMENT_GATEWAY_VIEWTAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>

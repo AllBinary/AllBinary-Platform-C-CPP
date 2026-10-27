@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_VBO_COLORATTRIBUTEPOINTERVBOOPENGLPROCESSOR_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_VBO_COLORATTRIBUTEPOINTERVBOOPENGLPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -50,13 +58,13 @@
         
 class ColorAttributePointerVBOOpenGLProcessor: public ObjectThreedOpenGLProcessor {
 
-    private: static ColorAttributePointerVBOOpenGLProcessor instance() { return ColorAttributePointerVBOOpenGLProcessor(); }
+    private: static ColorAttributePointerVBOOpenGLProcessor* instance() { static std::unique_ptr<ColorAttributePointerVBOOpenGLProcessor> value(new ColorAttributePointerVBOOpenGLProcessor()); return value.get(); }
 
-    public: static ColorAttributePointerVBOOpenGLProcessor getInstance();
+    public: static ColorAttributePointerVBOOpenGLProcessor* getInstance();
 
 public: ColorAttributePointerVBOOpenGLProcessor();
 
-    public: void process(GL10 gl, Object* anyType);
+    public: void process(GL10* gl, Object* anyType);
 
 };
 

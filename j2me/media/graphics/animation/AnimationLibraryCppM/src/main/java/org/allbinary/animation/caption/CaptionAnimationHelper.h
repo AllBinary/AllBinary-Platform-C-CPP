@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONANIMATIONHELPER_H
         #define ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONANIMATIONHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -66,28 +72,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CaptionAnimationHelperBase.h"
-#include "CaptionAnimation.h"
+        #include "org/allbinary/animation/caption/CaptionAnimationHelperBase.h"
+#include "org/allbinary/animation/caption/CaptionAnimation.h"
 
 class CaptionAnimationHelper: public CaptionAnimationHelperBase {
 
-    private: const TimeDelayHelper timeHelper = TimeDelayHelper(620);
+    private: TimeDelayHelper* timeHelper = new TimeDelayHelper(620);
 
-    private: const TextAnimation textAnimation = TextAnimation(StringUtil::getInstance().EMPTY_STRING, AnimationBehavior::getInstance());
+    private: TextAnimation* textAnimation = new TextAnimation(StringUtil::getInstance()->EMPTY_STRING, AnimationBehavior::getInstance());
 
-    private: Animation captionAnimation;
+    private: Animation* captionAnimation;
 
-    private: Animation animation = NullAnimationFactory::getFactoryInstance().getInstance(0);
+    private: Animation* animation = NullAnimationFactory::getFactoryInstance()->getInstance(0);
 
-public: CaptionAnimationHelper(Animation captionAnimation, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy);
+public: CaptionAnimationHelper(Animation* captionAnimation, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy);
 
     public: bool isShowing();
 
     public: void tick();
 
-    public: void update(std::string message, BasicColor basicColor);
+    public: void update(std::string message, BasicColor* basicColor);
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
 };
 

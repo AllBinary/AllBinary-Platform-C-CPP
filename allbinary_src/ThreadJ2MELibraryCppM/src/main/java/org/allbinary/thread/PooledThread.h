@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_THREAD_POOLEDTHREAD_H
         #define ORG_ALLBINARY_THREAD_POOLEDTHREAD_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/InterruptedException.h"
@@ -59,20 +65,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ThreadObjectUtil.h"
-#include "ThreadPool.h"
+        #include "org/allbinary/thread/ThreadObjectUtil.h"
+#include "org/allbinary/thread/ThreadPool.h"
 
 class PooledThread: public Thread {
 
-    private: const LogUtil logUtil = LogUtil::getInstance();
+    private: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const ThreadObjectUtil threadObjectUtil = ThreadObjectUtil::getInstance();
+    private: ThreadObjectUtil* threadObjectUtil = ThreadObjectUtil::getInstance();
 
-    private: ThreadPool threadPool;
+    private: ThreadPool* threadPool;
 
-public: PooledThread(ThreadPool threadPool);
+public: PooledThread(ThreadPool* threadPool);
 
     private: const std::string INTERRUPT_EXCEPTION = "Exit InterruptedException";
 

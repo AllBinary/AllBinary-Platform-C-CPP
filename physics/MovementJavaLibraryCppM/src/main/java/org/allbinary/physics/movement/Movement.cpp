@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,23 +52,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MovementInterface.h"
+        #include "org/allbinary/physics/movement/MovementInterface.h"
 
 class Movement
             : public Object
-        : public MovementInterface {
+        , public MovementInterface {
 
 public: Movement(){
 }
 
 
-    public: void init(BasicDecimal speedBasicDecimal, int32_t angle, int32_t otherAngle){
+    public: void init(BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryGameLayer layer){
+    public: void process(AllBinaryGameLayer* layer){
 }
 
 

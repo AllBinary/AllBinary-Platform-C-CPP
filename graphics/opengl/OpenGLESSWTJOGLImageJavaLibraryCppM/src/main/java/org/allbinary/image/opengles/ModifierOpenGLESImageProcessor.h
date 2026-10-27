@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_MODIFIEROPENGLESIMAGEPROCESSOR_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_MODIFIEROPENGLESIMAGEPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/khronos/opengles/GL10.h>
 
       
@@ -42,15 +48,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLESImageProcessor.h"
+        #include "org/allbinary/image/opengles/OpenGLESImageProcessor.h"
 
 class ModifierOpenGLESImageProcessor: public OpenGLESImageProcessor {
 
-    private: static const ModifierOpenGLESImageProcessor instanceC = ModifierOpenGLESImageProcessor();
+    private: static ModifierOpenGLESImageProcessor* instanceC() { static std::unique_ptr<ModifierOpenGLESImageProcessor> value(new ModifierOpenGLESImageProcessor()); return value.get(); }
 
-    public: static ModifierOpenGLESImageProcessor getInstance();
+    public: static ModifierOpenGLESImageProcessor* getInstance();
 
-    public: void colorMask(GL10 gl, float red, float green, float blue, float alpha);
+    public: void colorMask(GL10* gl, float red, float green, float blue, float alpha);
 
 };
 

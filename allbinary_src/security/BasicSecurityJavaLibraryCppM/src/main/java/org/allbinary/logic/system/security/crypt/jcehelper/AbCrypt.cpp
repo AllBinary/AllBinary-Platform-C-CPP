@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -75,17 +81,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseSecretComposite.h"
-#include "KeySpecFactory.h"
-#include "SecretComposite.h"
+        #include "org/allbinary/logic/system/security/crypt/jcehelper/BaseSecretComposite.h"
+#include "org/allbinary/logic/system/security/crypt/jcehelper/KeySpecFactory.h"
+#include "org/allbinary/logic/system/security/crypt/jcehelper/SecretComposite.h"
 
 class AbCrypt
             : public Object
-        : public CryptInterface {
+        , public CryptInterface {
 
-    private: const TsUtil tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil = TsUtil::getInstance();
 
-    private: BaseSecretComposite secretComposite = BaseSecretComposite::NULL_SECRET_COMPOSITE;
+    private: BaseSecretComposite* secretComposite = BaseSecretComposite::NULL_SECRET_COMPOSITE;
 
     private: std::string algorithm;
 
@@ -97,44 +103,44 @@ this->algorithm= algorithm;
 
     public: void init(std::string keyAsString){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
         try {
-            Security::addProvider(BouncyCastleProvider());
+            Security::addProvider(new BouncyCastleProvider());
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-PreLogUtil::putOE(commonStrings.EXCEPTION, this, commonStrings.INIT, e);
+PreLogUtil::putOE(commonStrings->EXCEPTION, this, commonStrings->INIT, &e);
     
 }
 
 
-    std::vector<int8_t> key = this->tsUtil.getByteArray(keyAsString);;
+    std::vector<int8_t> key = this->tsUtil->getByteArray(keyAsString);;
     
 
-    KeySpec keySpec = KeySpecFactory::getInstance().getInstance(this->algorithm, key);;
+    KeySpec* keySpec = KeySpecFactory::getInstance()->getInstance(this->algorithm, key);;
     
 
-    SecretKeyFactory keyFactory = SecretKeyFactory::getInstance(this->algorithm);;
+    SecretKeyFactory* keyFactory = SecretKeyFactory::getInstance(this->algorithm);;
     
 
-    SecretKey secretKey = keyFactory.generateSecret(keySpec);;
+    SecretKey* secretKey = keyFactory->generateSecret(keySpec);;
     
 
-    Cipher cipher = Cipher::getInstance(this->algorithm);;
+    Cipher* cipher = Cipher::getInstance(this->algorithm);;
     
-this->secretComposite= SecretComposite(secretKey, cipher, key);
+this->secretComposite= new SecretComposite(secretKey, cipher, key);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-PreLogUtil::putOE("init Failed", this, commonStrings.INIT, e);
+PreLogUtil::putOE("init Failed", this, commonStrings->INIT, &e);
     
 }
 
@@ -148,19 +154,19 @@ PreLogUtil::putOE("init Failed", this, commonStrings.INIT, e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->secretComposite.encrypt(array);;
+                        return this->secretComposite->encrypt(array);;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-PreLogUtil::putOE("Encrypt Failed", this, "encrypt", e);
+PreLogUtil::putOE("Encrypt Failed", this, "encrypt", &e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance().NULL_BYTE_ARRAY;
+                        return NullUtil::getInstance()->NULL_BYTE_ARRAY;
     
 }
 
@@ -174,19 +180,19 @@ PreLogUtil::putOE("Encrypt Failed", this, "encrypt", e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->secretComposite.decrypt(array);;
+                        return this->secretComposite->decrypt(array);;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-PreLogUtil::putOE("decrypt Failed", this, "decrypt", e);
+PreLogUtil::putOE("decrypt Failed", this, "decrypt", &e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance().NULL_BYTE_ARRAY;
+                        return NullUtil::getInstance()->NULL_BYTE_ARRAY;
     
 }
 

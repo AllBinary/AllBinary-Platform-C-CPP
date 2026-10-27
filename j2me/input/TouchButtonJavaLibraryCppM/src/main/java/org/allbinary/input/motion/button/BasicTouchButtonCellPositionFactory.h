@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICTOUCHBUTTONCELLPOSITIONFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICTOUCHBUTTONCELLPOSITIONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/CellPosition.h>
@@ -53,57 +59,57 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchButtonLocationHelper.h"
+        #include "org/allbinary/input/motion/button/TouchButtonLocationHelper.h"
 
 class BasicTouchButtonCellPositionFactory
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    public: CellPosition TOP_RIGHT;
+    public: CellPosition* TOP_RIGHT;
 
-    public: CellPosition TOP_LEFT;
+    public: CellPosition* TOP_LEFT;
 
-    public: const CellPosition SECOND_FROM_TOP_LEFT;
+    public: CellPosition* SECOND_FROM_TOP_LEFT;
 
-    public: const CellPosition SECOND_FROM_TOP_RIGHT;
+    public: CellPosition* SECOND_FROM_TOP_RIGHT;
 
-    public: const CellPosition TOP_SECOND_FROM_LEFT;
+    public: CellPosition* TOP_SECOND_FROM_LEFT;
 
-    public: const CellPosition TOP_SECOND_FROM_RIGHT;
+    public: CellPosition* TOP_SECOND_FROM_RIGHT;
 
-    public: CellPosition BOTTOM_RIGHT;
+    public: CellPosition* BOTTOM_RIGHT;
 
-    public: CellPosition BOTTOM_SECOND_FROM_RIGHT;
+    public: CellPosition* BOTTOM_SECOND_FROM_RIGHT;
 
-    public: CellPosition SECOND_FROM_BOTTOM_RIGHT;
+    public: CellPosition* SECOND_FROM_BOTTOM_RIGHT;
 
-    public: const CellPosition THIRD_FROM_BOTTOM_RIGHT;
+    public: CellPosition* THIRD_FROM_BOTTOM_RIGHT;
 
-    public: const CellPosition FOURTH_FROM_BOTTOM_RIGHT;
+    public: CellPosition* FOURTH_FROM_BOTTOM_RIGHT;
 
-    public: CellPosition SECOND_FROM_BOTTOM_SECOND_FROM_RIGHT;
+    public: CellPosition* SECOND_FROM_BOTTOM_SECOND_FROM_RIGHT;
 
-    public: const CellPosition SECOND_FROM_BOTTOM_THIRD_FROM_RIGHT;
+    public: CellPosition* SECOND_FROM_BOTTOM_THIRD_FROM_RIGHT;
 
-    public: const CellPosition SECOND_FROM_BOTTOM_FOURTH_FROM_RIGHT;
+    public: CellPosition* SECOND_FROM_BOTTOM_FOURTH_FROM_RIGHT;
 
-    public: const CellPosition BOTTOM_THIRD_FROM_RIGHT;
+    public: CellPosition* BOTTOM_THIRD_FROM_RIGHT;
 
-    public: const CellPosition BOTTOM_FOURTH_FROM_RIGHT;
+    public: CellPosition* BOTTOM_FOURTH_FROM_RIGHT;
 
-    public: CellPosition BOTTOM_SECOND_FROM_LEFT;
+    public: CellPosition* BOTTOM_SECOND_FROM_LEFT;
 
-    public: CellPosition SECOND_FROM_BOTTOM_LEFT;
+    public: CellPosition* SECOND_FROM_BOTTOM_LEFT;
 
-    public: const CellPosition THIRD_FROM_BOTTOM_LEFT;
+    public: CellPosition* THIRD_FROM_BOTTOM_LEFT;
 
-    public: CellPosition BOTTOM_LEFT;
+    public: CellPosition* BOTTOM_LEFT;
 
-    public: CellPosition SECOND_FROM_BOTTOM_SECOND_FROM_LEFT;
+    public: CellPosition* SECOND_FROM_BOTTOM_SECOND_FROM_LEFT;
 
 public: BasicTouchButtonCellPositionFactory();
 

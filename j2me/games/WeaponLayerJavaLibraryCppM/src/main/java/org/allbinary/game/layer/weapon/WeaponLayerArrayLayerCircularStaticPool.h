@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -48,19 +54,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WeaponLayer.h"
+        #include "org/allbinary/game/layer/weapon/WeaponLayer.h"
 
 class WeaponLayerArrayLayerCircularStaticPool
             : public Object
          {
 
-    private: static WeaponLayerArrayLayerCircularStaticPool instance() { return WeaponLayerArrayLayerCircularStaticPool(); }
+    private: static WeaponLayerArrayLayerCircularStaticPool* instance() { static std::unique_ptr<WeaponLayerArrayLayerCircularStaticPool> value(new WeaponLayerArrayLayerCircularStaticPool()); return value.get(); }
 
-    public: static WeaponLayerArrayLayerCircularStaticPool getInstance();
+    public: static WeaponLayerArrayLayerCircularStaticPool* getInstance();
 
     private: const int32_t MAX = 5;
 
-    private: CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstance(this->MAX);
+    private: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::createInstance(this->MAX);
 
     private: std::vector<std::vector<std::vector<Object*>>> ALL_WEAPONLAYER_ARRAY = std::vector<std::vector<std::vector<Object*>>>(4);
 
@@ -69,7 +75,7 @@ class WeaponLayerArrayLayerCircularStaticPool
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: std::vector<WeaponLayer> getInstanceArray(int32_t size);
+    public: std::vector<WeaponLayer*> getInstanceArray(int32_t size);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,16 +44,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputFeature.h"
-#include "Features.h"
+        #include "org/allbinary/game/configuration/feature/InputFeature.h"
+#include "org/allbinary/game/configuration/feature/Features.h"
 
 class InputFeatureFactory
             : public Object
          {
 
-    private: static InputFeatureFactory instance() { return InputFeatureFactory(); }
+    private: static InputFeatureFactory* instance() { static std::unique_ptr<InputFeatureFactory> value(new InputFeatureFactory()); return value.get(); }
 
-    public: static InputFeatureFactory getInstance(){
+    public: static InputFeatureFactory* getInstance(){
 
 
 
@@ -61,22 +67,22 @@ private: InputFeatureFactory(){
 }
 
 
-    public: const InputFeature REMOVE_DUPLICATE_KEY_PRESSES = InputFeature("Remove Duplicate Key Presses");
+    public: InputFeature* REMOVE_DUPLICATE_KEY_PRESSES = new InputFeature("Remove Duplicate Key Presses");
 
-    public: const InputFeature INPUT_MAPPING = InputFeature("Input Mapping");
+    public: InputFeature* INPUT_MAPPING = new InputFeature("Input Mapping");
 
-    public: const InputFeature MULTI_KEY_PRESS = InputFeature("Multi Key Press");
+    public: InputFeature* MULTI_KEY_PRESS = new InputFeature("Multi Key Press");
 
-    public: const InputFeature SINGLE_KEY_REPEAT_PRESS = InputFeature("Single Key Repeat Press");
+    public: InputFeature* SINGLE_KEY_REPEAT_PRESS = new InputFeature("Single Key Repeat Press");
 
-    public: const InputFeature SINGLE_KEY_PRESS = InputFeature("Single Key Press");
+    public: InputFeature* SINGLE_KEY_PRESS = new InputFeature("Single Key Press");
 
     public: bool isSingleKeyProcessing(){
 
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-                        if(features.isFeature(this->SINGLE_KEY_REPEAT_PRESS) || features.isFeature(this->SINGLE_KEY_PRESS))
+                        if(features->isFeature(this->SINGLE_KEY_REPEAT_PRESS) || features->isFeature(this->SINGLE_KEY_PRESS))
                         
                                     {
                                     

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_WEBSITE_ADVERTISEMENTWEBSITEINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_WEBSITE_ADVERTISEMENTWEBSITEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,7 +48,7 @@
         
 class AdvertisementWebsiteInterface {
 
-    std::string toString();
+    public: virtual std::string toString() = 0;
 
 };
 

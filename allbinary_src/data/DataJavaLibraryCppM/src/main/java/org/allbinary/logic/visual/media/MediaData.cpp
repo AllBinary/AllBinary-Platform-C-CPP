@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,20 +52,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MediaTypeData.h"
-#include "MediaDataFactory.h"
+        #include "org/allbinary/logic/visual/media/MediaTypeData.h"
+#include "org/allbinary/logic/visual/media/MediaDataFactory.h"
 
 class MediaData
             : public Object
          {
 
-    private: static HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();
+    private: static inline HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: static MediaData get(std::string a_Name){
+    public: static MediaData* get(std::string a_Name){
 
-    MediaData mediaData = MediaData::hashMap.get(a_Name);;
+    MediaData* mediaData = dynamic_cast<MediaData*>(MediaData::hashMap->get(a_Name));;
     
 
                         if(mediaData != 
@@ -80,7 +86,7 @@ class MediaData
                             
 
 
-                            throw Exception("No Such MediaData");
+                            throw new Exception("No Such MediaData");
                     
 
                         }
@@ -88,17 +94,17 @@ class MediaData
 }
 
 
-    public: static MediaData getDefault(){
+    public: static MediaData* getDefault(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MediaDataFactory::getInstance().JPG;
+                        return MediaDataFactory::getInstance()->JPG;
     
 }
 
 
-    public: static HashMap<Object*, Object*> toHashMap(){
+    public: static HashMap<Object*, Object*>* toHashMap(){
 
 
 
@@ -119,9 +125,9 @@ this->name= a_Name;
     
 this->extension= "." +this->name;
     
-this->type= MediaTypeData::getInstance().NOT_RESIZABLE_MEDIA;
+this->type= MediaTypeData::getInstance()->NOT_RESIZABLE_MEDIA;
     
-MediaData::hashMap.put(a_Name, this);
+MediaData::hashMap->put(a_Name, this);
     
 }
 
@@ -156,9 +162,9 @@ MediaData::hashMap.put(a_Name, this);
 }
 
 
-    public: bool isConvertableTo(MediaData mediaData){
+    public: bool isConvertableTo(MediaData* mediaData){
 
-                        if(this == MediaDataFactory::getInstance().GIF && mediaData == MediaDataFactory::getInstance().JPG)
+                        if(this == MediaDataFactory::getInstance()->GIF && mediaData == MediaDataFactory::getInstance()->JPG)
                         
                                     {
                                     

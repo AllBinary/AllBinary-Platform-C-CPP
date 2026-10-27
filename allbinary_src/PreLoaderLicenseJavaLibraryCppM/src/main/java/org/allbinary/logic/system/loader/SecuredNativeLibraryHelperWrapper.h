@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_SECUREDNATIVELIBRARYHELPERWRAPPER_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_SECUREDNATIVELIBRARYHELPERWRAPPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/system/security/AbKeys.h>
 
       
@@ -48,18 +54,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NativeLibraryHelperWrapper.h"
-#include "SecuredNativeLibraryInterface.h"
+        #include "org/allbinary/logic/system/loader/NativeLibraryHelperWrapper.h"
+#include "org/allbinary/logic/system/loader/SecuredNativeLibraryInterface.h"
 
 class SecuredNativeLibraryHelperWrapper: public NativeLibraryHelperWrapper {
 
-    private: SecuredNativeLibraryInterface securedNativeLibraryInterface;
+    private: SecuredNativeLibraryInterface* securedNativeLibraryInterface;
 
-public: SecuredNativeLibraryHelperWrapper(SecuredNativeLibraryInterface securedNativeLibraryInterface);
+public: SecuredNativeLibraryHelperWrapper(SecuredNativeLibraryInterface* securedNativeLibraryInterface);
 
                 //@Throws(LicensingException.constructor)
             
-    public: bool unlock(AbeClientInformationInterface abeClientInformation);
+    public: bool unlock(AbeClientInformationInterface* abeClientInformation);
 
 };
 

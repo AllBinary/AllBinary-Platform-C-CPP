@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -71,15 +77,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreWorkFlowInterface.h"
+        #include "org/allbinary/logic/control/workflow/StoreWorkFlowInterface.h"
 
 class StoreTagWorkFlowFactory
             : public Object
          {
 
-    private: static StoreTagWorkFlowFactory instance() { return StoreTagWorkFlowFactory(); }
+    private: static StoreTagWorkFlowFactory* instance() { static std::unique_ptr<StoreTagWorkFlowFactory> value(new StoreTagWorkFlowFactory()); return value.get(); }
 
-    public: static StoreTagWorkFlowFactory getInstance(){
+    public: static StoreTagWorkFlowFactory* getInstance(){
 
 
 
@@ -89,7 +95,7 @@ class StoreTagWorkFlowFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: StoreTagWorkFlowFactory(){
 }
@@ -97,31 +103,31 @@ private: StoreTagWorkFlowFactory(){
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: StoreWorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
+    public: StoreWorkFlowInterface* getInstance(AbeClientInformationInterface* abeClientInformation, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
 
         try {
             
-    std::string workFlowClassName = propertiesHashMap.get(DynamicObjectData::NAME);;
+    std::string workFlowClassName = propertiesHashMap->get(DynamicObjectData::NAME);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Creating WorkFlow: ");
+stringBuffer->append("Creating WorkFlow: ");
     
-stringBuffer.append(workFlowClassName);
+stringBuffer->append(workFlowClassName);
     
-stringBuffer.append("->");
+stringBuffer->append("->");
     
-stringBuffer.append(StoreTagWorkFlowFactory::instance.constructor.name.toString());
+stringBuffer->append(StoreTagWorkFlowFactory::instance()->getClass()->getName());
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF(stringBuffer.toString(), this, commonStrings.GET_INSTANCE);
+this->logUtil->putF(stringBuffer->toString(), this, commonStrings->GET_INSTANCE);
     
 
                                     }
@@ -130,11 +136,11 @@ this->logUtil.putF(stringBuffer.toString(), this, commonStrings.GET_INSTANCE);
     std::vector<Object*> params = std::vector<Object*>(2);;
     
 
-    std::vector<Class*> classes = std::vector<Class>(2);;
+    std::vector<Class*> classes = std::vector<Class*>(2);;
     
-classes[0]= propertiesHashMap.getClass();
+classes[0]= propertiesHashMap->getClass();
     
-classes[1]= AbeFactory::getInstance().getClass();
+classes[1]= AbeFactory::getInstance()->getClass();
     
 params[0]= propertiesHashMap;
     
@@ -144,34 +150,34 @@ params[1]= pageContext;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeFactory::getInstance().getInstance(abeClientInformation, workFlowClassName, classes, params);
+                        return dynamic_cast<StoreWorkFlowInterface*>(AbeFactory::getInstance()->getInstance(abeClientInformation, workFlowClassName, classes, params));
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    std::string workFlowClassName = propertiesHashMap.get(DynamicObjectData::NAME);;
+    std::string workFlowClassName = propertiesHashMap->get(DynamicObjectData::NAME);;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Error Creating WorkFlow: ");
+stringBuffer->append("Error Creating WorkFlow: ");
     
-stringBuffer.append(workFlowClassName);
+stringBuffer->append(workFlowClassName);
     
-stringBuffer.append("->");
+stringBuffer->append("->");
     
-stringBuffer.append(StoreTagWorkFlowFactory::instance.constructor.name.toString());
+stringBuffer->append(StoreTagWorkFlowFactory::instance()->getClass()->getName());
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(stringBuffer.toString(), this, commonStrings.GET_INSTANCE, e);
+this->logUtil->put(stringBuffer->toString(), this, commonStrings->GET_INSTANCE, &e);
     
 
                                     }
@@ -184,30 +190,30 @@ this->logUtil.put(stringBuffer.toString(), this, commonStrings.GET_INSTANCE, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    std::string workFlowClassName = propertiesHashMap.get(DynamicObjectData::NAME);;
+    std::string workFlowClassName = propertiesHashMap->get(DynamicObjectData::NAME);;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Error Creating WorkFlow: ");
+stringBuffer->append("Error Creating WorkFlow: ");
     
-stringBuffer.append(workFlowClassName);
+stringBuffer->append(workFlowClassName);
     
-stringBuffer.append("->");
+stringBuffer->append("->");
     
-stringBuffer.append(StoreTagWorkFlowFactory::instance.constructor.name.toString());
+stringBuffer->append(StoreTagWorkFlowFactory::instance()->getClass()->getName());
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(stringBuffer.toString(), this, commonStrings.GET_INSTANCE, e);
+this->logUtil->put(stringBuffer->toString(), this, commonStrings->GET_INSTANCE, &e);
     
 
                                     }
@@ -218,7 +224,7 @@ this->logUtil.put(stringBuffer.toString(), this, commonStrings.GET_INSTANCE, e);
                             throw e;
                     
 }
-*/
+
 }
 
 

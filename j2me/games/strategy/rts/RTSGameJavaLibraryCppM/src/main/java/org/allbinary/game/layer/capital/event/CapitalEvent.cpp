@@ -17,6 +17,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -58,17 +66,17 @@ public: CapitalEvent(Object* anyType) : AllBinaryEventObject(anyType){
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("CapitalEvent: Value: \n");
+stringBuffer->append("CapitalEvent: Value: \n");
     
-stringBuffer.appendint(this->getValue());
+stringBuffer->appendint(this->getValue());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

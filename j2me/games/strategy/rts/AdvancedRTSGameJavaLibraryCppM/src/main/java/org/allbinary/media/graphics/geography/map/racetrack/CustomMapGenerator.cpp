@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AdvancedRTSGameLayer.h>
@@ -61,24 +67,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CustomMapGeneratorBase.h"
-#include "RaceTrackGeographicMap.h"
+        #include "org/allbinary/media/graphics/geography/map/racetrack/CustomMapGeneratorBase.h"
+#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMap.h"
 
 class CustomMapGenerator: public CustomMapGeneratorBase {
 
     private: std::vector<std::vector<int32_t>> customMapArray;
 
-    private: RaceTrackGeographicMap raceTrackGeographicMap;
+    private: RaceTrackGeographicMap* raceTrackGeographicMap;
 
-    private: GeographicMapCellTypeFactory geographicMapCellTypeFactory;
+    private: GeographicMapCellTypeFactory* geographicMapCellTypeFactory;
 
-public: CustomMapGenerator(RaceTrackGeographicMap raceTrackGeographicMap){
+public: CustomMapGenerator(RaceTrackGeographicMap* raceTrackGeographicMap){
 this->raceTrackGeographicMap= raceTrackGeographicMap;
     
-this->geographicMapCellTypeFactory= this->raceTrackGeographicMap.getGeographicMapCellTypeFactory();
+this->geographicMapCellTypeFactory= this->raceTrackGeographicMap->getGeographicMapCellTypeFactory();
     
 
-    std::vector<std::vector<int32_t>> mapArray = raceTrackGeographicMap.getRaceTrackData().getMapArray();;
+    std::vector<std::vector<int32_t>> mapArray = raceTrackGeographicMap->getRaceTrackData()->getMapArray();;
     
 
     int32_t size2 = mapArray[0].size();;
@@ -92,7 +98,7 @@ this->customMapArray= std::vector<std::vector<int32_t>>(mapArray.length, std::ve
                                     
 
 
-                            throw Exception("Array Incorrect");
+                            throw new Exception("Array Incorrect");
                     
 
                                     }
@@ -104,7 +110,7 @@ this->customMapArray= std::vector<std::vector<int32_t>>(mapArray.length, std::ve
             
     public: void copyMapIntoCustomMap(){
 
-    std::vector<std::vector<int32_t>> mapArray = this->raceTrackGeographicMap.getRaceTrackData().getMapArray();;
+    std::vector<std::vector<int32_t>> mapArray = this->raceTrackGeographicMap->getRaceTrackData()->getMapArray();;
     
 
     int32_t startIndex2 = mapArray[0].size() -1;;
@@ -132,26 +138,26 @@ this->customMapArray[index][index2]= this->getCustomType(index2, index, mapArray
 }
 
 
-    private: const DropCellPositionHistory dropCellPositionHistory = DropCellPositionHistory::getInstance();
+    private: DropCellPositionHistory* dropCellPositionHistory = DropCellPositionHistory::getInstance();
 
                 //@Throws(Exception.constructor)
             
     public: int32_t getCustomType(int32_t column, int32_t row, int32_t currentType){
 
-    int32_t emptyType = this->geographicMapCellTypeFactory.getEmptyType();;
+    int32_t emptyType = this->geographicMapCellTypeFactory->getEmptyType();;
     
 
-    BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory = this->raceTrackGeographicMap.getGeographicMapCellPositionFactory();;
+    BasicGeographicMapCellPositionFactory* geographicMapCellPositionFactory = this->raceTrackGeographicMap->getGeographicMapCellPositionFactory();;
     
 
-    CellPosition cellPosition = geographicMapCellPositionFactory.getAt(column, row);;
+    CellPosition* cellPosition = geographicMapCellPositionFactory->getAt(column, row);;
     
 
-                        if(this->dropCellPositionHistory.isCellPositionWithDrop(cellPosition))
+                        if(this->dropCellPositionHistory->isCellPositionWithDrop(cellPosition))
                         
                                     {
                                     
-    AllBinaryLayer layer = this->dropCellPositionHistory.getLayerInterface(cellPosition);;
+    AllBinaryLayer* layer = this->dropCellPositionHistory->getLayerInterface(cellPosition);;
     
 
                         if(layer == AllBinaryLayer::NULL_ALLBINARY_LAYER)
@@ -167,10 +173,10 @@ this->customMapArray[index][index2]= this->getCustomType(index2, index, mapArray
                                     }
                                 
 
-    AdvancedRTSGameLayer rtsLayer = layer;;
+    AdvancedRTSGameLayer* rtsLayer = dynamic_cast<AdvancedRTSGameLayer*>(layer);;
     
 
-                        if(!(rtsLayer.getType() == WaypointLayer::getStaticType()))
+                        if(!(rtsLayer->getType() == WaypointLayer::getStaticType()))
                         
                                     {
                                     

@@ -21,6 +21,12 @@
         #ifndef WORKFLOWS_TEMPLATE_DATA_BASICWORKFLOW_H
         #define WORKFLOWS_TEMPLATE_DATA_BASICWORKFLOW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -81,33 +87,33 @@
         
 class BasicWorkFlow
             : public Object
-        : public WorkFlowInterface {
+        , public WorkFlowInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: ValidationComponentInterface validationDomNodeInterface;
+    private: ValidationComponentInterface* validationDomNodeInterface;
 
-    private: HashMap<Object*, Object*> propertiesHashMap;
+    private: HashMap<Object*, Object*>* propertiesHashMap;
 
-    private: PageContext pageContext;
+    private: PageContext* pageContext;
 
-public: BasicWorkFlow(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
+public: BasicWorkFlow(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext);
 
                 //@Throws(Exception.constructor)
             
     public: std::string getName();
 
-    protected: HashMap<Object*, Object*> getPropertiesHashMap();
+    protected: HashMap<Object*, Object*>* getPropertiesHashMap();
 
-    protected: PageContext getPageContext();
+    protected: PageContext* getPageContext();
 
                 //@Throws(Exception.constructor)
             
-    public: Integer process();
+    public: int32_t process();
 
 };
 

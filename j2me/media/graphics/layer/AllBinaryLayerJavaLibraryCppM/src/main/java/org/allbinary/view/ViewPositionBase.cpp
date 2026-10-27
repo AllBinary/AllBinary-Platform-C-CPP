@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/graphics/GPoint.h>
 
       
@@ -42,7 +50,7 @@
         
 class ViewPositionBase: public GPoint {
 
-    public: static const ViewPositionBase NULL_VIEW_POSITION = ViewPositionBase(0, 0, 0);
+    public: static ViewPositionBase* NULL_VIEW_POSITION() { static std::unique_ptr<ViewPositionBase> value(new ViewPositionBase(0, 0, 0)); return value.get(); }
 
 protected: ViewPositionBase(int32_t x, int32_t y, int32_t z) : GPoint(x, y, z){
 

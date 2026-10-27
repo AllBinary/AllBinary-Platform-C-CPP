@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -69,46 +75,46 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreFrontOrdersHistoryStatisticsInterface.h"
-#include "StoreFrontOrdersHistoryStatisticsData.h"
+        #include "org/allbinary/business/context/modules/storefront/statistics/orders/history/StoreFrontOrdersHistoryStatisticsInterface.h"
+#include "org/allbinary/business/context/modules/storefront/statistics/orders/history/StoreFrontOrdersHistoryStatisticsData.h"
 
 class StoreFrontOrdersHistoryStatistics
             : public Object
-        : public StoreFrontOrdersHistoryStatisticsInterface {
+        , public StoreFrontOrdersHistoryStatisticsInterface {
 
-    private: Long numberOfOrdersLong;
+    private: int64_t numberOfOrdersLong;
 
-    private: Money subTotalMoney;
+    private: Money* subTotalMoney;
 
-    private: Money shippingCostMoney;
+    private: Money* shippingCostMoney;
 
-    private: Money taxesMoney;
+    private: Money* taxesMoney;
 
-    private: Money totalMoney;
+    private: Money* totalMoney;
 
-public: StoreFrontOrdersHistoryStatistics(StoreFrontInterface storeFrontInterface){
-this->subTotalMoney= Money();
+public: StoreFrontOrdersHistoryStatistics(StoreFrontInterface* storeFrontInterface){
+this->subTotalMoney= new Money();
     
-this->shippingCostMoney= Money();
+this->shippingCostMoney= new Money();
     
-this->taxesMoney= Money();
+this->taxesMoney= new Money();
     
-this->totalMoney= Money();
-    
-
-    OrderHistoryEntityInterface orderHistoryEntityInterface = OrderHistoryEntityFactory::getInstance();;
+this->totalMoney= new Money();
     
 
-    BasicArrayList orderHistoryInterfaceVector = orderHistoryEntityInterface.getStoreOrders(storeFrontInterface);;
+    OrderHistoryEntityInterface* orderHistoryEntityInterface = OrderHistoryEntityFactory::getInstance();;
+    
+
+    BasicArrayList* orderHistoryInterfaceVector = orderHistoryEntityInterface->getStoreOrders(storeFrontInterface);;
     
 
     int64_t numberOfOrders = 0;;
     
 
-    OrderHistoryInterface orderHistoryInterface;;
+    OrderHistoryInterface* orderHistoryInterface;;
     
 
-    int32_t size = orderHistoryInterfaceVector.size();;
+    int32_t size = orderHistoryInterfaceVector->size();;
     
 
 
@@ -117,26 +123,26 @@ this->totalMoney= Money();
                         for (
     int32_t index = 0;index < size; index++)
         {
-orderHistoryInterface= orderHistoryInterfaceVector.get(index);
+orderHistoryInterface= dynamic_cast<OrderHistoryInterface*>(orderHistoryInterfaceVector->get(index));
     
 numberOfOrders= numberOfOrders +1;
     
-this->subTotalMoney.add(orderHistoryInterface.getSubTotal());
+this->subTotalMoney->add(orderHistoryInterface->getSubTotal());
     
-this->shippingCostMoney.add(orderHistoryInterface.getShippingCost());
+this->shippingCostMoney->add(orderHistoryInterface->getShippingCost());
     
-this->taxesMoney.add(orderHistoryInterface.getTaxes());
+this->taxesMoney->add(orderHistoryInterface->getTaxes());
     
-this->totalMoney.add(orderHistoryInterface.getTotal());
-    
-}
-
-this->numberOfOrdersLong= Long(numberOfOrders);
+this->totalMoney->add(orderHistoryInterface->getTotal());
     
 }
 
+this->numberOfOrdersLong= int64_t(numberOfOrders);
+    
+}
 
-    public: Long getNumberOfOrders(){
+
+    public: int64_t getNumberOfOrders(){
 
 
 
@@ -146,7 +152,7 @@ this->numberOfOrdersLong= Long(numberOfOrders);
 }
 
 
-    public: Money getSubTotal(){
+    public: Money* getSubTotal(){
 
 
 
@@ -156,7 +162,7 @@ this->numberOfOrdersLong= Long(numberOfOrders);
 }
 
 
-    public: Money getShippingCost(){
+    public: Money* getShippingCost(){
 
 
 
@@ -166,7 +172,7 @@ this->numberOfOrdersLong= Long(numberOfOrders);
 }
 
 
-    public: Money getTaxes(){
+    public: Money* getTaxes(){
 
 
 
@@ -176,7 +182,7 @@ this->numberOfOrdersLong= Long(numberOfOrders);
 }
 
 
-    public: Money getTotal(){
+    public: Money* getTotal(){
 
 
 
@@ -186,22 +192,22 @@ this->numberOfOrdersLong= Long(numberOfOrders);
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
 
-    StoreFrontOrdersHistoryStatisticsData storeFrontOrdersHistoryStatisticsData = StoreFrontOrdersHistoryStatisticsData::getInstance();;
+    StoreFrontOrdersHistoryStatisticsData* storeFrontOrdersHistoryStatisticsData = StoreFrontOrdersHistoryStatisticsData::getInstance();;
     
-hashMap.put(storeFrontOrdersHistoryStatisticsData.NUMBEROFORDERS, this->getNumberOfOrders().toString());
+hashMap->put(storeFrontOrdersHistoryStatisticsData->NUMBEROFORDERS, this->getNumberOfOrders().toString());
     
-hashMap.put(storeFrontOrdersHistoryStatisticsData.SUBTOTAL, this->getSubTotal().toString());
+hashMap->put(storeFrontOrdersHistoryStatisticsData->SUBTOTAL, this->getSubTotal()->toString());
     
-hashMap.put(storeFrontOrdersHistoryStatisticsData.SHIPPINGCOST, this->getShippingCost().toString());
+hashMap->put(storeFrontOrdersHistoryStatisticsData->SHIPPINGCOST, this->getShippingCost()->toString());
     
-hashMap.put(storeFrontOrdersHistoryStatisticsData.TAXES, this->getTaxes().toString());
+hashMap->put(storeFrontOrdersHistoryStatisticsData->TAXES, this->getTaxes()->toString());
     
-hashMap.put(storeFrontOrdersHistoryStatisticsData.TOTAL, this->getTotal().toString());
+hashMap->put(storeFrontOrdersHistoryStatisticsData->TOTAL, this->getTotal()->toString());
     
 
 
@@ -212,7 +218,7 @@ hashMap.put(storeFrontOrdersHistoryStatisticsData.TOTAL, this->getTotal().toStri
 }
 
 
-    public: BasicArrayList toVector(){
+    public: BasicArrayList* toVector(){
 
 
 

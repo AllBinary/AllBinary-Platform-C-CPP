@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -92,9 +98,9 @@ class QuoteRequest
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: std::string id;
 
@@ -110,29 +116,29 @@ class QuoteRequest
 
     private: std::string comments;
 
-public: QuoteRequest(std::string userName, HttpServletRequest request){
+public: QuoteRequest(std::string userName, HttpServletRequest* request){
 
-    QuoteRequestData quoteRequestData = QuoteRequestData::getInstance();;
+    QuoteRequestData* quoteRequestData = QuoteRequestData::getInstance();;
     
-this->id= QuoteRequestIdGenerator().getNext();
+this->id= (new QuoteRequestIdGenerator())->getNext();
     
 this->setUserName(userName);
     
-this->setProjectInfo(request.getParameter(quoteRequestData.PROJECT_INFO));
+this->setProjectInfo(request->getParameter(quoteRequestData->PROJECT_INFO));
     
-this->setUserComments(request.getParameter(quoteRequestData.CUSTOMER_COMMENTS));
+this->setUserComments(request->getParameter(quoteRequestData->CUSTOMER_COMMENTS));
     
-this->setBudget(request.getParameter(quoteRequestData.BUDGET));
+this->setBudget(request->getParameter(quoteRequestData->BUDGET));
     
-this->setTimeFrame(request.getParameter(quoteRequestData.TIMEFRAME));
+this->setTimeFrame(request->getParameter(quoteRequestData->TIMEFRAME));
     
-this->setComments(request.getParameter(quoteRequestData.COMMENTS));
+this->setComments(request->getParameter(quoteRequestData->COMMENTS));
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil.putF("Created with: " +this->toHashMap(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("Created with: " +this->toHashMap(), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -140,29 +146,29 @@ this->setComments(request.getParameter(quoteRequestData.COMMENTS));
 }
 
 
-public: QuoteRequest(HashMap<Object*, Object*> hashMap){
+public: QuoteRequest(HashMap<Object*, Object*>* hashMap){
 
-    QuoteRequestData quoteRequestData = QuoteRequestData::getInstance();;
+    QuoteRequestData* quoteRequestData = QuoteRequestData::getInstance();;
     
-this->id= hashMap.get(quoteRequestData.ID);
+this->id= hashMap->get(quoteRequestData->ID);
     
-this->setUserName(hashMap.get(UserData::USERNAME));
+this->setUserName(hashMap->get(UserData::USERNAME));
     
-this->setProjectInfo(hashMap.get(quoteRequestData.PROJECT_INFO));
+this->setProjectInfo(hashMap->get(quoteRequestData->PROJECT_INFO));
     
-this->setUserComments(hashMap.get(quoteRequestData.CUSTOMER_COMMENTS));
+this->setUserComments(hashMap->get(quoteRequestData->CUSTOMER_COMMENTS));
     
-this->setBudget(hashMap.get(quoteRequestData.BUDGET));
+this->setBudget(hashMap->get(quoteRequestData->BUDGET));
     
-this->setTimeFrame(hashMap.get(quoteRequestData.TIMEFRAME));
+this->setTimeFrame(hashMap->get(quoteRequestData->TIMEFRAME));
     
-this->setComments(hashMap.get(quoteRequestData.COMMENTS));
+this->setComments(hashMap->get(quoteRequestData->COMMENTS));
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil.putF("Created with: " +this->toHashMap(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("Created with: " +this->toHashMap(), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -170,11 +176,11 @@ this->setComments(hashMap.get(quoteRequestData.COMMENTS));
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-    Boolean valid = Boolean::TRUE;;
+    bool valid = Boolean::TRUE;;
     
 
                         if(false || userName.size() < 4 || userName.size() > 250)
@@ -238,13 +244,13 @@ this->setComments(hashMap.get(quoteRequestData.COMMENTS));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -264,13 +270,13 @@ this->setComments(hashMap.get(quoteRequestData.COMMENTS));
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
                         if(false || userName.size() < 4 || userName.size() > 250)
                         
                                     {
-                                    stringBuffer.append("Please enter a User Name with more than 4 characters.<br>");
+                                    stringBuffer->append("Please enter a User Name with more than 4 characters.<br>");
     
 
                                     }
@@ -279,7 +285,7 @@ this->setComments(hashMap.get(quoteRequestData.COMMENTS));
                         if(false || projectInfo.size() < 0 || projectInfo.size() > AbSqlData::MAXBLOB)
                         
                                     {
-                                    stringBuffer.append("Please enter Project Info with less than " +AbSqlData::MAXBLOB +" characters.<br>");
+                                    stringBuffer->append("Please enter Project Info with less than " +AbSqlData::MAXBLOB +" characters.<br>");
     
 
                                     }
@@ -288,7 +294,7 @@ this->setComments(hashMap.get(quoteRequestData.COMMENTS));
                         if(false || userComments.size() < 0 || userComments.size() > AbSqlData::MAXBLOB)
                         
                                     {
-                                    stringBuffer.append("Please enter User Comments with less than " +AbSqlData::MAXBLOB +" characters.<br>");
+                                    stringBuffer->append("Please enter User Comments with less than " +AbSqlData::MAXBLOB +" characters.<br>");
     
 
                                     }
@@ -297,7 +303,7 @@ this->setComments(hashMap.get(quoteRequestData.COMMENTS));
                         if(false || budget.size() < 0 || budget.size() > AbSqlData::MAXBLOB)
                         
                                     {
-                                    stringBuffer.append("Please enter Budget with less than " +AbSqlData::MAXBLOB +" characters.<br>");
+                                    stringBuffer->append("Please enter Budget with less than " +AbSqlData::MAXBLOB +" characters.<br>");
     
 
                                     }
@@ -306,7 +312,7 @@ this->setComments(hashMap.get(quoteRequestData.COMMENTS));
                         if(false || timeFrame.size() < 0 || timeFrame.size() > AbSqlData::MAXBLOB)
                         
                                     {
-                                    stringBuffer.append("Please enter time frame with less than " +AbSqlData::MAXBLOB +" characters.<br>");
+                                    stringBuffer->append("Please enter time frame with less than " +AbSqlData::MAXBLOB +" characters.<br>");
     
 
                                     }
@@ -315,7 +321,7 @@ this->setComments(hashMap.get(quoteRequestData.COMMENTS));
                         if(false || comments.size() < 0 || comments.size() > AbSqlData::MAXBLOB)
                         
                                     {
-                                    stringBuffer.append("Please enter comments with less than " +AbSqlData::MAXBLOB +" characters.<br>");
+                                    stringBuffer->append("Please enter comments with less than " +AbSqlData::MAXBLOB +" characters.<br>");
     
 
                                     }
@@ -324,17 +330,17 @@ this->setComments(hashMap.get(quoteRequestData.COMMENTS));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -350,33 +356,33 @@ this->setComments(hashMap.get(quoteRequestData.COMMENTS));
 }
 
 
-    public: BasicArrayList toVector(){
+    public: BasicArrayList* toVector(){
 
-    BasicArrayList values = BasicArrayListD();;
+    BasicArrayList* values = new BasicArrayListD();;
     
-values.add(this->id);
+values->add(this->id);
     
-values.add(this->userName);
+values->add(this->userName);
     
-values.add(this->projectInfo);
+values->add(this->projectInfo);
     
-values.add(this->userComments);
+values->add(this->userComments);
     
-values.add(this->budget);
+values->add(this->budget);
     
-values.add(this->timeFrame);
+values->add(this->timeFrame);
     
-values.add(this->comments);
-    
-
-    Calendar calendar = Calendar::getInstance();;
+values->add(this->comments);
     
 
-    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    Calendar* calendar = Calendar::getInstance();;
     
-values.add(time);
+
+    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
     
-values.add(time);
+values->add(time);
+    
+values->add(time);
     
 
 
@@ -387,32 +393,32 @@ values.add(time);
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    QuoteRequestData quoteRequestData = QuoteRequestData::getInstance();;
-    
-
-    HashMap<Object*, Object*> values = StdUtil::getInstance().createHashMap();;
-    
-values.put(UserData::USERNAME, userName);
-    
-values.put(quoteRequestData.PROJECT_INFO, this->projectInfo);
-    
-values.put(quoteRequestData.CUSTOMER_COMMENTS, this->userComments);
-    
-values.put(quoteRequestData.BUDGET, this->budget);
-    
-values.put(quoteRequestData.TIMEFRAME, this->timeFrame);
-    
-values.put(quoteRequestData.COMMENTS, this->comments);
+    QuoteRequestData* quoteRequestData = QuoteRequestData::getInstance();;
     
 
-    Calendar calendar = Calendar::getInstance();;
+    HashMap<Object*, Object*>* values = StdUtil::getInstance()->createHashMap();;
+    
+values->put(UserData::USERNAME, userName);
+    
+values->put(quoteRequestData->PROJECT_INFO, this->projectInfo);
+    
+values->put(quoteRequestData->CUSTOMER_COMMENTS, this->userComments);
+    
+values->put(quoteRequestData->BUDGET, this->budget);
+    
+values->put(quoteRequestData->TIMEFRAME, this->timeFrame);
+    
+values->put(quoteRequestData->COMMENTS, this->comments);
     
 
-    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    Calendar* calendar = Calendar::getInstance();;
     
-values.put(EntryData::getInstance().LASTMODIFIED, time);
+
+    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
+    
+values->put(EntryData::getInstance()->LASTMODIFIED, time);
     
 
 
@@ -457,11 +463,11 @@ this->timeFrame= value;
 this->comments= value;
     
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
 
                         if(false)
-                        this->comments= stringUtil.EMPTY_STRING;
+                        this->comments= stringUtil->EMPTY_STRING;
                                 
 }
 

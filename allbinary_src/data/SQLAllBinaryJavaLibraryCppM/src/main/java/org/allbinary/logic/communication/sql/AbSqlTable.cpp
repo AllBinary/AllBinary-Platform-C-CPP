@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/init/db/DbConnectionInfo.h>
@@ -44,11 +50,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbSqlBasic.h"
+        #include "org/allbinary/logic/communication/sql/AbSqlBasic.h"
 
 class AbSqlTable: public AbSqlBasic {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string tableName;
 
@@ -60,7 +66,7 @@ class AbSqlTable: public AbSqlBasic {
 
     private: const std::string DROPPED_SUCCESS = " Dropped Successfully";
 
-public: AbSqlTable(DbConnectionInfo databaseConnectionInfoInterface) : AbSqlBasic(databaseConnectionInfoInterface){
+public: AbSqlTable(DbConnectionInfo* databaseConnectionInfoInterface) : AbSqlBasic(databaseConnectionInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -93,10 +99,10 @@ this->tableName= tableName;
             this->executeSQLStatement(data);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->TABLE_CREATION_SUCCESS +this->tableName +" with statement: " +data, this, this->METHOD_CREATED_TABLE);
+                                    this->logUtil->putF(this->TABLE_CREATION_SUCCESS +this->tableName +" with statement: " +data, this, this->METHOD_CREATED_TABLE);
     
 
                                     }
@@ -109,13 +115,13 @@ this->tableName= tableName;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put("Table Creation Failed: " +this->tableName +" with statement: " +data, this, this->METHOD_CREATED_TABLE, e);
+                                    this->logUtil->put("Table Creation Failed: " +this->tableName +" with statement: " +data, this, this->METHOD_CREATED_TABLE, &e);
     
 
                                     }
@@ -141,10 +147,10 @@ this->tableName= tableName;
             this->executeSQLStatement(sqlStatement);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->SUCCESS_SQL_STATEMENT +sqlStatement, this, this->METHOD_DROP_TABLE);
+                                    this->logUtil->putF(this->SUCCESS_SQL_STATEMENT +sqlStatement, this, this->METHOD_DROP_TABLE);
     
 
                                     }
@@ -157,13 +163,13 @@ this->tableName= tableName;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put(this->FAILED_SQL_STATEMENT +sqlStatement, this, this->METHOD_DROP_TABLE, e);
+                                    this->logUtil->put(this->FAILED_SQL_STATEMENT +sqlStatement, this, this->METHOD_DROP_TABLE, &e);
     
 
                                     }

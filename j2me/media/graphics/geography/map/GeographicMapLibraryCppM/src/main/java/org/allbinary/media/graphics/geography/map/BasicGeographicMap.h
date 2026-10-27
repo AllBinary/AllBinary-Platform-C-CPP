@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -60,69 +66,69 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SimpleGeographicMap.h"
-#include "GeographicMapInterface.h"
-#include "BasicGeographicMapCellPositionFactory.h"
-#include "GeographicMapCellPositionFactoryInterface.h"
-#include "GeographicMapCellTypeFactory.h"
-#include "GeographicMapCellPositionBaseFactory.h"
-#include "GeographicMapCellPosition.h"
-#include "SimpleGeographicMapCellPositionFactory.h"
-#include "GeographicMapCellType.h"
+        #include "org/allbinary/media/graphics/geography/map/SimpleGeographicMap.h"
+#include "org/allbinary/media/graphics/geography/map/GeographicMapInterface.h"
+#include "org/allbinary/media/graphics/geography/map/BasicGeographicMapCellPositionFactory.h"
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInterface.h"
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellTypeFactory.h"
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionBaseFactory.h"
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
+#include "org/allbinary/media/graphics/geography/map/SimpleGeographicMapCellPositionFactory.h"
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellType.h"
 
 class BasicGeographicMap: public SimpleGeographicMap, public GeographicMapInterface {
 
-    public: static const std::vector<BasicGeographicMap> NULL_BASIC_GEOGRAPHIC_MAP_ARRAY = {};
+    public: static inline const std::vector<BasicGeographicMap*> NULL_BASIC_GEOGRAPHIC_MAP_ARRAY = {};
 
-    private: const MathUtil mathUtil = MathUtil::getInstance();
+    private: MathUtil* mathUtil = MathUtil::getInstance();
 
-    private: BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory;
+    private: BasicGeographicMapCellPositionFactory* geographicMapCellPositionFactory;
 
-    private: GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface;
+    private: GeographicMapCellPositionFactoryInterface* geographicMapCellPositionFactoryInterface;
 
-    private: GeographicMapCellTypeFactory geographicMapCellTypeFactory;
+    private: GeographicMapCellTypeFactory* geographicMapCellTypeFactory;
 
-public: BasicGeographicMap(Integer id, std::string name, std::vector<int32_t> cellTypeIdToGeographicMapCellType, AllBinaryTiledLayer tiledLayer, BasicColor foregroundBasicColor, BasicColor backgroundBasicColor, GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory geographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory geographicMapCellTypeFactory);
-
-                //@Throws(Exception.constructor)
-            
-    public: GeographicMapCellPosition getCellPosition(int32_t direction, GeographicMapCellPosition oldGeographicMapCellPosition);
+public: BasicGeographicMap(int32_t id, std::string name, std::vector<int32_t> cellTypeIdToGeographicMapCellType, AllBinaryTiledLayer* tiledLayer, BasicColor* foregroundBasicColor, BasicColor* backgroundBasicColor, GeographicMapCellPositionFactoryInterface* geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory* geographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory* geographicMapCellTypeFactory);
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition getCellPositionNoThrow(int32_t direction, GeographicMapCellPosition oldGeographicMapCellPosition);
+    public: GeographicMapCellPosition* getCellPosition(int32_t direction, GeographicMapCellPosition* oldGeographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: bool isOfFourDirections(GeographicMapCellPosition oldGeographicMapCellPosition, GeographicMapCellPosition newGeographicMapCellPosition);
+    public: GeographicMapCellPosition* getCellPositionNoThrow(int32_t direction, GeographicMapCellPosition* oldGeographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition getCellPositionAtXY(int32_t x, int32_t y);
-
-    public: GeographicMapCellPosition getCellPositionAtXYNoThrow(int32_t x, int32_t y);
+    public: bool isOfFourDirections(GeographicMapCellPosition* oldGeographicMapCellPosition, GeographicMapCellPosition* newGeographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: bool isOnMap(GeographicMapCellPosition geographicMapCellPosition);
+    public: GeographicMapCellPosition* getCellPositionAtXY(int32_t x, int32_t y);
+
+    public: GeographicMapCellPosition* getCellPositionAtXYNoThrow(int32_t x, int32_t y);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getCellPositionAtNoThrow(int32_t x, int32_t y, int32_t x2, int32_t y2, BasicArrayList geographicMapCellPositionList);
+    public: bool isOnMap(GeographicMapCellPosition* geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: bool getCellPositionsAt(Layer layer, std::vector<std::vector<GeographicMapCellPosition>> currentCellPositionArray, std::vector<std::vector<GeographicMapCellPosition>> cellPositionArray);
+    public: BasicArrayList* getCellPositionAtNoThrow(int32_t x, int32_t y, int32_t x2, int32_t y2, BasicArrayList* geographicMapCellPositionList);
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellType getCellTypeAtXY(int32_t x, int32_t y);
+    public: bool getCellPositionsAt(Layer* layer, std::vector<std::vector<GeographicMapCellPosition*>> currentCellPositionArray, std::vector<std::vector<GeographicMapCellPosition*>> cellPositionArray);
 
-    public: BasicGeographicMapCellPositionFactory getGeographicMapCellPositionFactory();
+                //@Throws(Exception.constructor)
+            
+    public: GeographicMapCellType* getCellTypeAtXY(int32_t x, int32_t y);
 
-    public: GeographicMapCellPositionFactoryInterface getGeographicMapCellPositionFactoryInterface();
+    public: BasicGeographicMapCellPositionFactory* getGeographicMapCellPositionFactory();
 
-    public: GeographicMapCellTypeFactory getGeographicMapCellTypeFactory();
+    public: GeographicMapCellPositionFactoryInterface* getGeographicMapCellPositionFactoryInterface();
+
+    public: GeographicMapCellTypeFactory* getGeographicMapCellTypeFactory();
 
 };
 

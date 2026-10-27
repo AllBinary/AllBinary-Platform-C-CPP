@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -71,9 +77,9 @@ class RepaintBehavior
             : public Object
          {
 
-    private: static RepaintBehavior instance() { return RepaintBehavior(); }
+    private: static RepaintBehavior* instance() { static std::unique_ptr<RepaintBehavior> value(new RepaintBehavior()); return value.get(); }
 
-    public: static RepaintBehavior getInstance(){
+    public: static RepaintBehavior* getInstance(){
 
 
 
@@ -83,53 +89,53 @@ class RepaintBehavior
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: void repaint(Canvas canvas){
+    public: void repaint(Canvas* canvas){
 }
 
 
     private: const std::string NAME = "RepaintBehavior";
 
-    public: void onChangeRepaint(Canvas canvas){
+    public: void onChangeRepaint(Canvas* canvas){
 
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-    OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
+    OpenGLFeatureFactory* openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
     
 
-                        if(features.isFeature(openGLFeatureFactory.OPENGL))
+                        if(features->isFeature(openGLFeatureFactory->OPENGL))
                         
                                     {
-                                    DisplayInfoSingleton::getInstance().process();
+                                    DisplayInfoSingleton::getInstance()->process();
     
 
                                     }
                                 
                         else {
                             
-    Thread thread = Thread(class extends ARunnable
+    Thread* thread = new Thread(class extends ARunnable
                                 {
                                 
     public: void run(){
 
         try {
-            canvas.repaint();
+            canvas->repaint();
     
-DisplayInfoSingleton::getInstance().process();
+DisplayInfoSingleton::getInstance()->process();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
-logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
+logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
     
 }
 
@@ -138,7 +144,7 @@ logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
                                 }
                             , this->NAME);;
     
-thread.start();
+thread->start();
     
 
                         }

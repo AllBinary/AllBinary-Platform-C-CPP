@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -62,27 +68,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ThemesData.h"
+        #include "org/allbinary/logic/visual/theme/ThemesData.h"
 
 class ThemesValidation: public Validation, public DomNodeInterface {
 
-    private: BasicArrayList themeVector;
+    private: BasicArrayList* themeVector;
 
 public: ThemesValidation(){
-this->themeVector= BasicArrayListD();
+this->themeVector= new BasicArrayListD();
     
 }
 
 
-public: ThemesValidation(Node node){
+public: ThemesValidation(Node* node){
 }
 
 
-public: ThemesValidation(HashMap<Object*, Object*> hashMap){
+public: ThemesValidation(HashMap<Object*, Object*>* hashMap){
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
 
 
@@ -102,7 +108,7 @@ public: ThemesValidation(HashMap<Object*, Object*> hashMap){
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -112,7 +118,7 @@ public: ThemesValidation(HashMap<Object*, Object*> hashMap){
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -124,12 +130,12 @@ public: ThemesValidation(HashMap<Object*, Object*> hashMap){
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = document.createElement(ThemesData::getInstance().NAME);;
+    Node* node = document->createElement(ThemesData::getInstance()->NAME);;
     
 
-    int32_t size = this->themeVector.size();;
+    int32_t size = this->themeVector->size();;
     
 
 
@@ -139,9 +145,9 @@ public: ThemesValidation(HashMap<Object*, Object*> hashMap){
     int32_t i = 0;i < size; i++)
         {
 
-    DomNodeInterface themeDomNodeInterface = this->themeVector.get(i);;
+    DomNodeInterface* themeDomNodeInterface = dynamic_cast<DomNodeInterface*>(this->themeVector->get(i));;
     
-node.appendChild(themeDomNodeInterface.toXmlNode(document));
+node->appendChild(themeDomNodeInterface->toXmlNode(document));
     
 }
 

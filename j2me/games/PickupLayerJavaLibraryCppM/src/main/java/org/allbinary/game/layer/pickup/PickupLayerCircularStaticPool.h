@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPLAYERCIRCULARSTATICPOOL_H
         #define ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPLAYERCIRCULARSTATICPOOL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/AllBinaryLayerCircularPool.h>
@@ -44,21 +50,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PickupLayer.h"
-#include "PickedUpLayerInterface.h"
-#include "PickedUpLayerInterfaceFactoryInterface.h"
+        #include "org/allbinary/game/layer/pickup/PickupLayer.h"
+#include "org/allbinary/game/layer/pickup/PickedUpLayerInterface.h"
+#include "org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h"
 
 class PickupLayerCircularStaticPool: public AllBinaryLayerCircularPool {
 
-    private: static PickupLayerCircularStaticPool SINGLETON = PickupLayerCircularStaticPool();
+    private: static PickupLayerCircularStaticPool* SINGLETON() { static std::unique_ptr<PickupLayerCircularStaticPool> value(new PickupLayerCircularStaticPool()); return value.get(); }
 
-    public: static PickupLayerCircularStaticPool getInstance();
+    public: static PickupLayerCircularStaticPool* getInstance();
 
 private: PickupLayerCircularStaticPool();
 
                 //@Throws(Exception.constructor)
             
-    public: PickedUpLayerInterface getInstanceXYZ(PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface, int32_t x, int32_t y, int32_t z);
+    public: PickedUpLayerInterface* getInstanceXYZ(PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface, int32_t x, int32_t y, int32_t z);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_PAINT_FULLSCREENPAINTABLE_H
         #define ORG_ALLBINARY_GAME_PAINT_FULLSCREENPAINTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -66,11 +72,11 @@
         //SwtToJ2ME
 class FullScreenPaintable: public Paintable, public UpdateMyFontInterface {
 
-    public: static FullScreenPaintable getInstance();
+    public: static FullScreenPaintable* getInstance();
 
-    private: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();
 
-    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
 
     private: const std::string FULLSCREEN_TEXT = "F11 - Toggle Fullscreen";
 
@@ -82,9 +88,9 @@ class FullScreenPaintable: public Paintable, public UpdateMyFontInterface {
 
 private: FullScreenPaintable();
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

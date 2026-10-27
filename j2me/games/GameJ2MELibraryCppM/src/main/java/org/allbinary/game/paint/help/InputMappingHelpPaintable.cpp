@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -95,40 +101,40 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HelpPaintable.h"
-//#include "UpdateMyFontProperties.h"
+        #include "org/allbinary/game/paint/help/HelpPaintable.h"
+//#include "org/allbinary/game/paint/help/UpdateMyFontProperties.h"
 
 class InputMappingHelpPaintable: public HelpPaintable {
 
-    private: static const std::string AND = " and ";
+    private: static inline const std::string AND = " and ";
 
-    private: static const std::string SEP = ", ";
+    private: static inline const std::string SEP = ", ";
 
-    private: static const std::string MORE_THAN_TWO_IN_LIST_AND = ", and ";
+    private: static inline const std::string MORE_THAN_TWO_IN_LIST_AND = ", and ";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const CommonSeps commonSeps = CommonSeps::getInstance();
+    protected: CommonSeps* commonSeps = CommonSeps::getInstance();
 
-    protected: const StringUtil stringUtil = StringUtil::getInstance();
+    protected: StringUtil* stringUtil = StringUtil::getInstance();
 
-    private: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
+    private: BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();
 
-    private: const GameKey NONE = GameKeyFactory::getInstance().NONE;
+    private: GameKey* NONE = GameKeyFactory::getInstance()->NONE;
 
-    private: const std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;
+    private: const std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: std::vector<GameInputMapping> gameInputMappingArray;
+    private: std::vector<GameInputMapping*> gameInputMappingArray;
 
-    private: std::vector<BasicArrayList> keyMappingArray = {};
+    private: std::vector<BasicArrayList*> keyMappingArray = {};
 
-    private: std::vector<BasicColor> actionBasicColor = BasicColorUtil::getInstance().ZERO_ARRAY;
+    private: std::vector<BasicColor*> actionBasicColor = BasicColorUtil::getInstance()->ZERO_ARRAY;
 
-    private: std::vector<std::vector<BasicColor>> inputBasicColorArray = std::vector<std::vector<BasicColor>>(0, std::vector<BasicColor>(0));
+    private: std::vector<std::vector<BasicColor*>> inputBasicColorArray = std::vector<std::vector<BasicColor*>>(0, std::vector<BasicColor*>(0));
 
-    private: BasicColor selectedBasicColor;
+    private: BasicColor* selectedBasicColor;
 
 //inner= member=true isStatic=
 class UpdateMyFontProperties
@@ -137,26 +143,26 @@ class UpdateMyFontProperties
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-    std::vector<std::string> actionStringArray = StringUtil::getInstance().getArrayInstance();
+    std::vector<std::string> actionStringArray = StringUtil::getInstance()->getArrayInstance();
 
-    std::vector<int32_t> keymappingBeginWidthArray = NullUtil::getInstance().NULL_INT_ARRAY;
+    std::vector<int32_t> keymappingBeginWidthArray = NullUtil::getInstance()->NULL_INT_ARRAY;
 
-    std::vector<int32_t> actionStringDeltaXArray = NullUtil::getInstance().NULL_INT_ARRAY;
+    std::vector<int32_t> actionStringDeltaXArray = NullUtil::getInstance()->NULL_INT_ARRAY;
 
-    std::vector<std::vector<int32_t>> inputDeltaXArray = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY;
+    std::vector<std::vector<int32_t>> inputDeltaXArray = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY;
 
     std::vector<std::vector<std::string>> sepArray = std::vector<std::vector<std::string>>(0, std::vector<std::string>(0));
 
-    std::vector<std::vector<int32_t>> sepWidthArray = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY;
+    std::vector<std::vector<int32_t>> sepWidthArray = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY;
 
     int32_t charHeight= 0;
 
 };
 
             
-    private: updateMyFontProperties = UpdateMyFontProperties();
+    private: updateMyFontProperties = new UpdateMyFontProperties();
 
-protected: InputMappingHelpPaintable(std::vector<GameInputMapping> gameInputMappingArray, BasicColor backgroundBasicColor, BasicColor basicColor) : HelpPaintable("Input Mapping", backgroundBasicColor, basicColor){
+protected: InputMappingHelpPaintable(std::vector<GameInputMapping*> gameInputMappingArray, BasicColor* backgroundBasicColor, BasicColor* basicColor) : HelpPaintable("Input Mapping", backgroundBasicColor, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -168,16 +174,16 @@ this->gameInputMappingArray= gameInputMappingArray;
 this->update(this->NONE, this->NONE);
     
 
-                        if(backgroundBasicColor == this->basicColorFactory.WHITE || basicColor == this->basicColorFactory.WHITE)
+                        if(backgroundBasicColor == this->basicColorFactory->WHITE || basicColor == this->basicColorFactory->WHITE)
                         
                                     {
-                                    this->selectedBasicColor= this->basicColorFactory.RED;
+                                    this->selectedBasicColor= this->basicColorFactory->RED;
     
 
                                     }
                                 
                         else {
-                            this->selectedBasicColor= this->basicColorFactory.WHITE;
+                            this->selectedBasicColor= this->basicColorFactory->WHITE;
     
 
                         }
@@ -185,17 +191,17 @@ this->update(this->NONE, this->NONE);
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
 
-    updateMyFontProperties = UpdateMyFontProperties();;
+    updateMyFontProperties = new UpdateMyFontProperties();;
     
-updateMyFontProperties.charHeight= font.getHeight();
+updateMyFontProperties->charHeight= font->getHeight();
     
 
-    StringMaker stringMaker = StringMaker();;
+    StringMaker* stringMaker = new StringMaker();;
     
 
     std::vector<std::string> inputInfo = this->inputInfo;;
@@ -203,20 +209,20 @@ updateMyFontProperties.charHeight= font.getHeight();
 
     int32_t size = inputInfo.size();;
     
-updateMyFontProperties.actionStringArray= std::vector<std::string>(size);
+updateMyFontProperties->actionStringArray= std::vector<std::string>(size);
     
-updateMyFontProperties.keymappingBeginWidthArray= std::vector<int32_t>(size);
+updateMyFontProperties->keymappingBeginWidthArray= std::vector<int32_t>(size);
     
-updateMyFontProperties.actionStringDeltaXArray= std::vector<int32_t>(size);
+updateMyFontProperties->actionStringDeltaXArray= std::vector<int32_t>(size);
     
-updateMyFontProperties.inputDeltaXArray= std::vector<std::vector<int32_t>>(size, std::vector<int32_t>(0));
+updateMyFontProperties->inputDeltaXArray= std::vector<std::vector<int32_t>>(size, std::vector<int32_t>(0));
     
-updateMyFontProperties.sepArray= std::vector<std::vector<std::string>>(size, std::vector<std::string>(0));
+updateMyFontProperties->sepArray= std::vector<std::vector<std::string>>(size, std::vector<std::string>(0));
     
-updateMyFontProperties.sepWidthArray= std::vector<std::vector<int32_t>>(size, std::vector<int32_t>(0));
+updateMyFontProperties->sepWidthArray= std::vector<std::vector<int32_t>>(size, std::vector<int32_t>(0));
     
 
-    BasicArrayList list;;
+    BasicArrayList* list;;
     
 
     std::string keyMappings;;
@@ -225,7 +231,7 @@ updateMyFontProperties.sepWidthArray= std::vector<std::vector<int32_t>>(size, st
     std::string actionString;;
     
 
-    Input input;;
+    Input* input;;
     
 
     int32_t size2 = 0;;
@@ -241,25 +247,25 @@ list= this->keyMappingArray[index];
     
 keyMappings= this->get(list);
     
-stringMaker.delete(0, stringMaker.length());
+stringMaker->delete(0, stringMaker->length());
     
-actionString= stringMaker.append(inputInfo[index]).append(commonSeps.COLON).append(commonSeps.SPACE).append(commonSeps.SPACE).toString();
+actionString= stringMaker->append(inputInfo[index])->append(commonSeps->COLON)->append(commonSeps->SPACE)->append(commonSeps->SPACE)->toString();
     
-updateMyFontProperties.actionStringArray[index]= actionString;
+updateMyFontProperties->actionStringArray[index]= actionString;
     
-stringMaker.delete(0, stringMaker.length());
+stringMaker->delete(0, stringMaker->length());
     
-updateMyFontProperties.keymappingBeginWidthArray[index]= (font.stringWidth(stringMaker.append(updateMyFontProperties.actionStringArray[index]).append(keyMappings).toString())>>1);
+updateMyFontProperties->keymappingBeginWidthArray[index]= (font->stringWidth(stringMaker->append(updateMyFontProperties->actionStringArray[index])->append(keyMappings)->toString())>>1);
     
-updateMyFontProperties.actionStringDeltaXArray[index]= font.stringWidth(actionString);
+updateMyFontProperties->actionStringDeltaXArray[index]= font->stringWidth(actionString);
     
-size2= list.size();
+size2= list->size();
     
-updateMyFontProperties.inputDeltaXArray[index]= std::vector<int32_t>(size2);
+updateMyFontProperties->inputDeltaXArray[index]= std::vector<int32_t>(size2);
     
-updateMyFontProperties.sepArray[index]= std::vector<std::string>(size2);
+updateMyFontProperties->sepArray[index]= std::vector<std::string>(size2);
     
-updateMyFontProperties.sepWidthArray[index]= std::vector<int32_t>(size2);
+updateMyFontProperties->sepWidthArray[index]= std::vector<int32_t>(size2);
     
 
 
@@ -268,37 +274,37 @@ updateMyFontProperties.sepWidthArray[index]= std::vector<int32_t>(size2);
                         for (
     int32_t index2 = 0;index2 < size2; index2++)
         {
-input= list.objectArray[index2];
+input= dynamic_cast<Input*>(list->objectArray[index2]);
     
-updateMyFontProperties.inputDeltaXArray[index][index2]= font.stringWidth(input.getName());
+updateMyFontProperties->inputDeltaXArray[index][index2]= font->stringWidth(input->getName());
     
-updateMyFontProperties.sepArray[index][index2]= EMPTY_STRING;
+updateMyFontProperties->sepArray[index][index2]= EMPTY_STRING;
     
 
-                        if(index2 +1 < list.size())
+                        if(index2 +1 < list->size())
                         
                                     {
                                     
-                        if(list.size() == 2)
+                        if(list->size() == 2)
                         
                                     {
-                                    updateMyFontProperties.sepArray[index][index2]= InputMappingHelpPaintable::AND;
+                                    updateMyFontProperties->sepArray[index][index2]= InputMappingHelpPaintable::AND;
     
 
                                     }
                                 
                         else {
                             
-                        if(index2 +2 == list.size())
+                        if(index2 +2 == list->size())
                         
                                     {
-                                    updateMyFontProperties.sepArray[index][index2]= InputMappingHelpPaintable::MORE_THAN_TWO_IN_LIST_AND;
+                                    updateMyFontProperties->sepArray[index][index2]= InputMappingHelpPaintable::MORE_THAN_TWO_IN_LIST_AND;
     
 
                                     }
                                 
                         else {
-                            updateMyFontProperties.sepArray[index][index2]= InputMappingHelpPaintable::SEP;
+                            updateMyFontProperties->sepArray[index][index2]= InputMappingHelpPaintable::SEP;
     
 
                         }
@@ -310,10 +316,10 @@ updateMyFontProperties.sepArray[index][index2]= EMPTY_STRING;
                                     }
                                 
 
-                        if(updateMyFontProperties.sepArray[index][index2] != EMPTY_STRING)
+                        if(updateMyFontProperties->sepArray[index][index2] != EMPTY_STRING)
                         
                                     {
-                                    updateMyFontProperties.sepWidthArray[index][index2]= font.stringWidth(updateMyFontProperties.sepArray[index][index2]);
+                                    updateMyFontProperties->sepWidthArray[index][index2]= font->stringWidth(updateMyFontProperties->sepArray[index][index2]);
     
 
                                     }
@@ -329,14 +335,14 @@ super.updateMeasurement(graphics);
 }
 
 
-    public: void update(GameKey selectedGameKey, Input selectedInput){
+    public: void update(GameKey* selectedGameKey, Input* selectedInput){
 
-    StringMaker stringMaker = StringMaker();;
+    StringMaker* stringMaker = new StringMaker();;
     
-this->logUtil.putF(stringMaker.append(CommonLabels::getInstance().START_LABEL).append("selected GameKey: ").append(this->stringUtil.toString(selectedGameKey)).append(" Input: ").append(this->stringUtil.toString(selectedInput)).toString(), this, this->commonStrings.UPDATE);
+this->logUtil->putF(stringMaker->append(CommonLabels::getInstance()->START_LABEL)->append("selected GameKey: ")->append(this->stringUtil->toString(selectedGameKey))->append(" Input: ")->append(this->stringUtil->toString(selectedInput))->toString(), this, this->commonStrings->UPDATE);
     
 
-    PersistentInputMapping gameKeyMapping = PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance();;
+    PersistentInputMapping* gameKeyMapping = PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance();;
     
 
     int32_t size = this->gameInputMappingArray.size();;
@@ -345,22 +351,22 @@ this->logUtil.putF(stringMaker.append(CommonLabels::getInstance().START_LABEL).a
     std::vector<std::string> keyInfo = std::vector<std::string>(size);;
     
 
-    std::vector<BasicArrayList> keyMappingArray = std::vector<BasicArrayList>(size);;
+    std::vector<BasicArrayList*> keyMappingArray = std::vector<BasicArrayList*>(size);;
     
 
-    std::vector<BasicColor> actionBasicColor = std::vector<BasicColor>(size);;
+    std::vector<BasicColor*> actionBasicColor = std::vector<BasicColor*>(size);;
     
 
-    std::vector<std::vector<BasicColor>> inputBasicColorArray = std::vector<std::vector<BasicColor>>(size);;
+    std::vector<std::vector<BasicColor*>> inputBasicColorArray = std::vector<std::vector<BasicColor*>>(size);;
     
 
-    GameInputMapping gameInputMapping;;
+    GameInputMapping* gameInputMapping;;
     
 
-    GameKey gameKey;;
+    GameKey* gameKey;;
     
 
-    BasicArrayList list;;
+    BasicArrayList* list;;
     
 
 
@@ -371,14 +377,14 @@ this->logUtil.putF(stringMaker.append(CommonLabels::getInstance().START_LABEL).a
         {
 gameInputMapping= this->gameInputMappingArray[index];
     
-gameKey= gameInputMapping.getGameKey();
+gameKey= gameInputMapping->getGameKey();
     
-list= gameKeyMapping.getInputMapping().getMappedInput(gameKey);
+list= gameKeyMapping->getInputMapping()->getMappedInput(gameKey);
     
 
-    int32_t size2 = list.size();;
+    int32_t size2 = list->size();;
     
-inputBasicColorArray[index]= std::vector<BasicColor>(size2);
+inputBasicColorArray[index]= std::vector<BasicColor*>(size2);
     
 
 
@@ -395,22 +401,22 @@ inputBasicColorArray[index][index2]= this->basicColor;
                         if(gameKey == selectedGameKey)
                         
                                     {
-                                    stringMaker.delete(0, stringMaker.length());
+                                    stringMaker->delete(0, stringMaker->length());
     
-this->logUtil.putF(stringMaker.append("Found: selected GameKey: ").append(this->stringUtil.toString(selectedGameKey)).toString(), this, this->commonStrings.UPDATE);
+this->logUtil->putF(stringMaker->append("Found: selected GameKey: ")->append(this->stringUtil->toString(selectedGameKey))->toString(), this, this->commonStrings->UPDATE);
     
 actionBasicColor[index]= this->selectedBasicColor;
     
 
-    int32_t indexOfSelectedInput = list.indexOf(selectedInput);;
+    int32_t indexOfSelectedInput = list->indexOf(selectedInput);;
     
 
                         if(indexOfSelectedInput >= 0)
                         
                                     {
-                                    stringMaker.delete(0, stringMaker.length());
+                                    stringMaker->delete(0, stringMaker->length());
     
-this->logUtil.putF(stringMaker.append("Found: selected Input: ").append(this->stringUtil.toString(selectedInput)).toString(), this, this->commonStrings.UPDATE);
+this->logUtil->putF(stringMaker->append("Found: selected Input: ")->append(this->stringUtil->toString(selectedInput))->toString(), this, this->commonStrings->UPDATE);
     
 inputBasicColorArray[index][indexOfSelectedInput]= this->selectedBasicColor;
     
@@ -426,7 +432,7 @@ inputBasicColorArray[index][indexOfSelectedInput]= this->selectedBasicColor;
 
                         }
                             
-keyInfo[index]= gameInputMapping.getName();
+keyInfo[index]= gameInputMapping->getName();
     
 keyMappingArray[index]= list;
     
@@ -445,15 +451,15 @@ this->myFontProcessor= this->updateMyFontProcessor;
 }
 
 
-    private: std::string get(BasicArrayList keyList){
+    private: std::string get(BasicArrayList* keyList){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    Input key;;
+    Input* key;;
     
 
-    int32_t size = keyList.size();;
+    int32_t size = keyList->size();;
     
 
 
@@ -462,35 +468,35 @@ this->myFontProcessor= this->updateMyFontProcessor;
                         for (
     int32_t index = 0;index < size; index++)
         {
-key= keyList.objectArray[index];
+key= dynamic_cast<Input*>(keyList->objectArray[index]);
     
-stringBuffer.append(key.getName());
+stringBuffer->append(key->getName());
     
 
-                        if(index +1 < keyList.size())
+                        if(index +1 < keyList->size())
                         
                                     {
                                     
-                        if(keyList.size() == 2)
+                        if(keyList->size() == 2)
                         
                                     {
-                                    stringBuffer.append(InputMappingHelpPaintable::AND);
+                                    stringBuffer->append(InputMappingHelpPaintable::AND);
     
 
                                     }
                                 
                         else {
                             
-                        if(index +2 == keyList.size())
+                        if(index +2 == keyList->size())
                         
                                     {
-                                    stringBuffer.append(InputMappingHelpPaintable::MORE_THAN_TWO_IN_LIST_AND);
+                                    stringBuffer->append(InputMappingHelpPaintable::MORE_THAN_TWO_IN_LIST_AND);
     
 
                                     }
                                 
                         else {
-                            stringBuffer.append(InputMappingHelpPaintable::SEP);
+                            stringBuffer->append(InputMappingHelpPaintable::SEP);
     
 
                         }
@@ -507,20 +513,20 @@ stringBuffer.append(key.getName());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 this->myFontProcessor.process(graphics);
     
 
     int32_t halfWidth = this->displayInfo.getLastHalfWidth();;
     
-graphics.setColor(this->basicColor.intValue());
+graphics->setColor(this->basicColor.intValue());
     
-graphics.drawString(this->title, halfWidth -this->titleBeginWidth, this->updateMyFontProperties.charHeight, this->anchor);
+graphics->drawString(this->title, halfWidth -this->titleBeginWidth, this->updateMyFontProperties->charHeight, this->anchor);
     
 
     std::vector<std::string> inputInfo = this->inputInfo;;
@@ -541,10 +547,10 @@ graphics.drawString(this->title, halfWidth -this->titleBeginWidth, this->updateM
     std::string actionString;;
     
 
-    Input input;;
+    Input* input;;
     
 
-    BasicArrayList list;;
+    BasicArrayList* list;;
     
 
     std::string sep;;
@@ -559,23 +565,23 @@ graphics.drawString(this->title, halfWidth -this->titleBeginWidth, this->updateM
                         for (
     int32_t index = 0;index < size; index++)
         {
-y= (index +3) *this->updateMyFontProperties.charHeight;
+y= (index +3) *this->updateMyFontProperties->charHeight;
     
 deltaX= 0;
     
 list= this->keyMappingArray[index];
     
-size2= list.size();
+size2= list->size();
     
-beginWidth= this->updateMyFontProperties.keymappingBeginWidthArray[index];
+beginWidth= this->updateMyFontProperties->keymappingBeginWidthArray[index];
     
-graphics.setColor(this->actionBasicColor[index].intValue());
+graphics->setColor(this->actionBasicColor[index].intValue());
     
-actionString= this->updateMyFontProperties.actionStringArray[index];
+actionString= this->updateMyFontProperties->actionStringArray[index];
     
-graphics.drawString(actionString, halfWidth -beginWidth +deltaX, y, this->anchor);
+graphics->drawString(actionString, halfWidth -beginWidth +deltaX, y, this->anchor);
     
-deltaX += this->updateMyFontProperties.actionStringDeltaXArray[index];
+deltaX += this->updateMyFontProperties->actionStringDeltaXArray[index];
     
 
 
@@ -584,21 +590,21 @@ deltaX += this->updateMyFontProperties.actionStringDeltaXArray[index];
                         for (
     int32_t index2 = 0;index2 < size2; index2++)
         {
-input= list.objectArray[index2];
+input= dynamic_cast<Input*>(list->objectArray[index2]);
     
-graphics.setColor(this->inputBasicColorArray[index][index2].intValue());
+graphics->setColor(this->inputBasicColorArray[index][index2].intValue());
     
-graphics.drawString(input.getName(), halfWidth -beginWidth +deltaX, y, this->anchor);
+graphics->drawString(input->getName(), halfWidth -beginWidth +deltaX, y, this->anchor);
     
-deltaX += this->updateMyFontProperties.inputDeltaXArray[index][index2];
+deltaX += this->updateMyFontProperties->inputDeltaXArray[index][index2];
     
-sep= this->updateMyFontProperties.sepArray[index][index2];
+sep= this->updateMyFontProperties->sepArray[index][index2];
     
-graphics.setColor(this->basicColor.intValue());
+graphics->setColor(this->basicColor.intValue());
     
-graphics.drawString(sep, halfWidth -beginWidth +deltaX, y, this->anchor);
+graphics->drawString(sep, halfWidth -beginWidth +deltaX, y, this->anchor);
     
-deltaX += this->updateMyFontProperties.sepWidthArray[index][index2];
+deltaX += this->updateMyFontProperties->sepWidthArray[index][index2];
     
 }
 

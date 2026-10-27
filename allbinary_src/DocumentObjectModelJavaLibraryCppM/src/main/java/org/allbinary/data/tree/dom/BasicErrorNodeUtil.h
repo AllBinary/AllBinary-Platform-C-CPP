@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_BASICERRORNODEUTIL_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_BASICERRORNODEUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,7 +58,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ModDomHelper.h"
+        #include "org/allbinary/data/tree/dom/ModDomHelper.h"
 
 class BasicErrorNodeUtil
             : public Object
@@ -60,7 +66,7 @@ class BasicErrorNodeUtil
 
                 //@Throws(Exception.constructor)
             
-    public: static Node get(Document document, std::string errorText);
+    public: static Node* get(Document* document, std::string errorText);
 
 private: BasicErrorNodeUtil();
 

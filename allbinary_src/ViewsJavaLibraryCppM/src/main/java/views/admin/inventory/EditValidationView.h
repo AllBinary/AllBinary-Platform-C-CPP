@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_INVENTORY_EDITVALIDATIONVIEW_H
         #define VIEWS_ADMIN_INVENTORY_EDITVALIDATIONVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -85,13 +91,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InventoryItemView.h"
+        #include "views/admin/inventory/InventoryItemView.h"
 
 class EditValidationView: public InventoryItemView, public ValidationComponentInterface {
 
     private: std::string id;
 
-public: EditValidationView(TransformInfoInterface transformInfoInterface);
+public: EditValidationView(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
@@ -99,11 +105,11 @@ public: EditValidationView(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Boolean isValid();
+    public: bool isValid();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
                 //@Throws(MoneyException.constructor)
             

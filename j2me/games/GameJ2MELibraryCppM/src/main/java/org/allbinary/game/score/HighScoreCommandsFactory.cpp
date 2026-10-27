@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Command.h>
 
       
@@ -39,14 +45,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HighScoreCommandsBaseFactory.h"
-#include "HighScoreCommands.h"
+        #include "org/allbinary/game/score/HighScoreCommandsBaseFactory.h"
+#include "org/allbinary/game/score/HighScoreCommands.h"
 
 class HighScoreCommandsFactory: public HighScoreCommandsBaseFactory {
 
-    private: static HighScoreCommandsFactory instance() { return HighScoreCommandsFactory(); }
+    private: static HighScoreCommandsFactory* instance() { static std::unique_ptr<HighScoreCommandsFactory> value(new HighScoreCommandsFactory()); return value.get(); }
 
-    public: static HighScoreCommandsFactory getInstance(){
+    public: static HighScoreCommandsFactory* getInstance(){
 
 
 
@@ -58,7 +64,7 @@ class HighScoreCommandsFactory: public HighScoreCommandsBaseFactory {
 
 private: HighScoreCommandsFactory() : HighScoreCommandsBaseFactory(
                                                 {
-                                                    HighScoreCommands::getInstance().PERSONAL,HighScoreCommands::getInstance().WORLD
+                                                    HighScoreCommands::getInstance()->PERSONAL,HighScoreCommands::getInstance()->WORLD
                                                 }){
 
                         //super/this constructor call is in the constructor initializer list.

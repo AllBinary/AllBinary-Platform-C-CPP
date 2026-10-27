@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,19 +67,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformDocumentInterface.h"
+        #include "org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h"
 
 class TransformDocument
             : public Object
-        : public TransformDocumentInterface {
+        , public TransformDocumentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: Node baseNode;
+    private: Node* baseNode;
 
-    private: Document document;
+    private: Document* document;
 
 public: TransformDocument(){
 
@@ -81,30 +87,30 @@ public: TransformDocument(){
             this->document= DomDocumentHelper::create();
     
 
-    Node allbinaryNode = this->document.createElement("allbinary");;
+    Node* allbinaryNode = this->document->createElement("allbinary");;
     
 this->baseNode= allbinaryNode;
     
-this->document.appendChild(this->baseNode);
+this->document->appendChild(this->baseNode);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.putF(this->log(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->log(), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CONSTRUCTOR, &e);
     
 
                                     }
@@ -119,7 +125,7 @@ this->document.appendChild(this->baseNode);
 }
 
 
-    public: Node getBaseNode(){
+    public: Node* getBaseNode(){
 
 
 
@@ -129,7 +135,7 @@ this->document.appendChild(this->baseNode);
 }
 
 
-    public: Document getDoc(){
+    public: Document* getDoc(){
 
 
 
@@ -143,7 +149,7 @@ this->document.appendChild(this->baseNode);
             
     public: std::string log(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
                         if(this->baseNode != 
@@ -151,28 +157,28 @@ this->document.appendChild(this->baseNode);
                                 )
                         
                                     {
-                                    stringBuffer.append("BaseNode: ");
+                                    stringBuffer->append("BaseNode: ");
     
-stringBuffer.append(this->baseNode.getNodeName());
+stringBuffer->append(this->baseNode->getNodeName());
     
 
                                     }
                                 
                         else {
-                            stringBuffer.append("Log-Error: BaseNode is Null");
+                            stringBuffer->append("Log-Error: BaseNode is Null");
     
 
                         }
                             
-stringBuffer.append("\nDocument: ");
+stringBuffer->append("\nDocument: ");
     
-stringBuffer.append(XmlDocumentHelper::toString(this->document));
+stringBuffer->append(XmlDocumentHelper::toString(this->document));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

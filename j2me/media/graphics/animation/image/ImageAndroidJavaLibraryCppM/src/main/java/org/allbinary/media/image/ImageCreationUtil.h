@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGECREATIONUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGECREATIONUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,19 +60,19 @@ class ImageCreationUtil
             : public Object
          {
 
-    private: static ImageCreationUtil instance() { return ImageCreationUtil(); }
+    private: static ImageCreationUtil* instance() { static std::unique_ptr<ImageCreationUtil> value(new ImageCreationUtil()); return value.get(); }
 
-    public: static ImageCreationUtil getInstance();
+    public: static ImageCreationUtil* getInstance();
 
 private: ImageCreationUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImageWH(int32_t width, int32_t height);
+    public: Image* createImageWH(int32_t width, int32_t height);
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImage(int32_t width, int32_t height, float maxScaleX, float maxScaleY);
+    public: Image* createImage(int32_t width, int32_t height, float maxScaleX, float maxScaleY);
 
 };
 

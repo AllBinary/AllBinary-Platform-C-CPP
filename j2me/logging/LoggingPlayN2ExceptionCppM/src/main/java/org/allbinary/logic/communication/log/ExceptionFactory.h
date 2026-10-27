@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_EXCEPTIONFACTORY_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_EXCEPTIONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Throwable.h"
@@ -51,7 +57,7 @@ class ExceptionFactory
             : public Object
          {
 
-    public: static Throwable createThrowable(std::string message);
+    public: static Throwable* createThrowable(std::string message);
 
 };
 

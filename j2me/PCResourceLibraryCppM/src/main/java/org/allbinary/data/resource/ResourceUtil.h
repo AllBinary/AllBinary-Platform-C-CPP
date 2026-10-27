@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/ClassLoader.h"
@@ -78,31 +84,31 @@ class ResourceUtil
             : public Object
          {
 
-    private: static ResourceUtil instance() { return ResourceUtil(); }
+    private: static ResourceUtil* instance() { static std::unique_ptr<ResourceUtil> value(new ResourceUtil()); return value.get(); }
 
-    public: static ResourceUtil getInstance();
+    public: static ResourceUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: std::string path = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string path = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: std::string ext = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string ext = StringUtil::getInstance()->EMPTY_STRING;
 
 private: ResourceUtil();
 
     public: void setLoadingPaths(std::string path, std::string ext);
 
-    public: void setClassLoader(ClassLoader classLoader);
+    public: void setClassLoader(ClassLoader* classLoader);
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream getResourceAsStream(std::string resource);
+    public: InputStream* getResourceAsStream(std::string resource);
 
                 //@Throws(Exception.constructor)
             
-    private: InputStream getResourceAsStreamAtStart(std::string resource, int32_t startIndex);
+    private: InputStream* getResourceAsStreamAtStart(std::string resource, int32_t startIndex);
 
-    public: void addResource(std::string resource, Integer value);
+    public: void addResource(std::string resource, int32_t value);
 
 };
 

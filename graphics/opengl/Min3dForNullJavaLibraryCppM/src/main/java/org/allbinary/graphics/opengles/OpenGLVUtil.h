@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVUTIL_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,13 +45,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLVUtilBase.h"
+        #include "org/allbinary/graphics/opengles/OpenGLVUtilBase.h"
 
 class OpenGLVUtil: public OpenGLVUtilBase {
 
-    private: static OpenGLVUtil instance() { return OpenGLVUtil(); }
+    private: static OpenGLVUtil* instance() { static std::unique_ptr<OpenGLVUtil> value(new OpenGLVUtil()); return value.get(); }
 
-    public: static OpenGLVUtil getInstance();
+    public: static OpenGLVUtil* getInstance();
 
 };
 

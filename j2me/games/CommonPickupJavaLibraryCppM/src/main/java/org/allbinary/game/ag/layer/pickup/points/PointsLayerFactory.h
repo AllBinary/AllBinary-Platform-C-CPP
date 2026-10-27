@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYERFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYERFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,11 +55,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PointsLayer.h"
+        #include "org/allbinary/game/ag/layer/pickup/points/PointsLayer.h"
 
 class PointsLayerFactory
             : public Object
-        : public AllBinaryLayerFactoryInterface {
+        , public AllBinaryLayerFactoryInterface {
 
     private: int32_t points;
 
@@ -61,7 +67,7 @@ public: PointsLayerFactory(int32_t points);
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer getInstance();
+    public: AllBinaryLayer* getInstance();
 
 };
 

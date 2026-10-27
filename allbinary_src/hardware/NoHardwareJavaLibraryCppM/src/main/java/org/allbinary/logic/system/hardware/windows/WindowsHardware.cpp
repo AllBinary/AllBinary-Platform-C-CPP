@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -93,116 +99,116 @@
         
 class WindowsHardware
             : public Object
-        : public HardwareInterface {
+        , public HardwareInterface {
 
 public: WindowsHardware(){
 }
 
 
-    public: MediaInterface getMultimedia(int32_t index){
+    public: MediaInterface* getMultimedia(int32_t index){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: BridgeInterface getBridge(int32_t index){
+    public: BridgeInterface* getBridge(int32_t index){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: CpuInterface getCpu(int32_t index){
+    public: CpuInterface* getCpu(int32_t index){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: EthernetInterface getEthernet(int32_t index){
+    public: EthernetInterface* getEthernet(int32_t index){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: FireWireInterface getFireWire(int32_t index){
+    public: FireWireInterface* getFireWire(int32_t index){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: HardDriveControllerInterface getHardDriveController(int32_t index){
+    public: HardDriveControllerInterface* getHardDriveController(int32_t index){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: HardDriveInterface getHardDrive(int32_t index){
+    public: HardDriveInterface* getHardDrive(int32_t index){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: MachineAccessControlAddressInterface getMachineAccessControlAddress(int32_t index){
+    public: MachineAccessControlAddressInterface* getMachineAccessControlAddress(int32_t index){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: MonitorInterface getMonitor(int32_t index){
+    public: MonitorInterface* getMonitor(int32_t index){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: UsbInterface getUsb(int32_t index){
+    public: UsbInterface* getUsb(int32_t index){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: VideoInterface getVideo(int32_t index){
+    public: VideoInterface* getVideo(int32_t index){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: HardwareComponentInterface getComponent(int32_t index){
+    public: HardwareComponentInterface* getComponent(int32_t index){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -212,12 +218,12 @@ public: WindowsHardware(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 }
 
 
-    public: bool compareTo(HardwareInterface hardwareInterface){
+    public: bool compareTo(HardwareInterface* hardwareInterface){
 
 
 
@@ -227,12 +233,12 @@ public: WindowsHardware(){
 }
 
 
-    public: ABHashtable<Object*, Object*> difference(HardwareInterface hardwareInterface){
+    public: ABHashtable<Object*, Object*>* difference(HardwareInterface* hardwareInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StdUtil::getInstance().NULL_TABLE;
+                        return StdUtil::getInstance()->NULL_TABLE;
     
 }
 

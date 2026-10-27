@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class EntryData
             : public Object
          {
 
-    private: static EntryData instance() { return EntryData(); }
+    private: static EntryData* instance() { static std::unique_ptr<EntryData> value(new EntryData()); return value.get(); }
 
-    public: static EntryData getInstance(){
+    public: static EntryData* getInstance(){
 
 
 

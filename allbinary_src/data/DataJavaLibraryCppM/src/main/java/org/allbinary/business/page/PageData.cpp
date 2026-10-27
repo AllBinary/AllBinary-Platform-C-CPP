@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class PageData
             : public Object
          {
 
-    private: static PageData instance() { return PageData(); }
+    private: static PageData* instance() { static std::unique_ptr<PageData> value(new PageData()); return value.get(); }
 
-    public: static PageData getInstance(){
+    public: static PageData* getInstance(){
 
 
 

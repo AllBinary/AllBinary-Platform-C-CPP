@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,16 +72,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CountedLayerInterfaceFactoryPart.h"
-#include "PartInterface.h"
+        #include "org/allbinary/game/part/CountedLayerInterfaceFactoryPart.h"
+#include "org/allbinary/game/part/PartInterface.h"
 
 class MakeCountedPartsSingletonArrayFactory
             : public Object
          {
 
-    private: static MakeCountedPartsSingletonArrayFactory instance() { return MakeCountedPartsSingletonArrayFactory(); }
+    private: static MakeCountedPartsSingletonArrayFactory* instance() { static std::unique_ptr<MakeCountedPartsSingletonArrayFactory> value(new MakeCountedPartsSingletonArrayFactory()); return value.get(); }
 
-    public: static MakeCountedPartsSingletonArrayFactory getInstance(){
+    public: static MakeCountedPartsSingletonArrayFactory* getInstance(){
 
 
 
@@ -85,14 +91,14 @@ class MakeCountedPartsSingletonArrayFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: BasicArrayList list = BasicArrayListUtil::getInstance().getImmutableInstance();
+    private: BasicArrayList* list = BasicArrayListUtil::getInstance()->getImmutableInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<PartInterface> getUpdated(std::vector<PartInterface> partInterfaceArray){
-this->list= BasicArrayListD();
+    public: std::vector<PartInterface*> getUpdated(std::vector<PartInterface*> partInterfaceArray){
+this->list= new BasicArrayListD();
     
 
 
@@ -101,18 +107,18 @@ this->list= BasicArrayListD();
                         for (
     int32_t index = 0;index < partInterfaceArray.size(); index++)
         {
-this->list.add(partInterfaceArray[index]);
+this->list->add(partInterfaceArray[index]);
     
 }
 
 
-    BasicArrayList countedBasicArrayList = CountedPickedUpLayerInterfaceFactoryPool::getInstance().getList();;
+    BasicArrayList* countedBasicArrayList = CountedPickedUpLayerInterfaceFactoryPool::getInstance()->getList();;
     
 
-    CountedPickedUpLayerInterfaceFactory layerInterfaceFactoryInterface;;
+    CountedPickedUpLayerInterfaceFactory* layerInterfaceFactoryInterface;;
     
 
-    int32_t size = countedBasicArrayList.size();;
+    int32_t size = countedBasicArrayList->size();;
     
 
 
@@ -121,30 +127,30 @@ this->list.add(partInterfaceArray[index]);
                         for (
     int32_t index = 0;index < size; index++)
         {
-layerInterfaceFactoryInterface= countedBasicArrayList.objectArray[index];
+layerInterfaceFactoryInterface= dynamic_cast<CountedPickedUpLayerInterfaceFactory*>(countedBasicArrayList->objectArray[index]);
     
-this->list.add(CountedLayerInterfaceFactoryPart(0, layerInterfaceFactoryInterface));
+this->list->add(new CountedLayerInterfaceFactoryPart(0, layerInterfaceFactoryInterface));
     
 }
 
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Total Parts: ");
+stringBuffer->append("Total Parts: ");
     
-stringBuffer.appendint(this->list.size());
+stringBuffer->appendint(this->list->size());
     
-stringBuffer.append(" Counted: ");
+stringBuffer->append(" Counted: ");
     
-stringBuffer.appendint(countedBasicArrayList.size());
-    
-
-    CommonStrings commonStrings = CommonStrings::getInstance();;
-    
-this->logUtil.putF(stringBuffer.toString(), this, commonStrings.GET_INSTANCE);
+stringBuffer->appendint(countedBasicArrayList->size());
     
 
-    std::vector<PartInterface> newPartInterfaceArray = std::vector<PartInterface>(this->list.size());;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
+    
+this->logUtil->putF(stringBuffer->toString(), this, commonStrings->GET_INSTANCE);
+    
+
+    std::vector<PartInterface*> newPartInterfaceArray = std::vector<PartInterface*>(this->list->size());;
     
 
     int32_t newSize = newPartInterfaceArray.size();;
@@ -156,7 +162,7 @@ this->logUtil.putF(stringBuffer.toString(), this, commonStrings.GET_INSTANCE);
                         for (
     int32_t index = 0;index < newSize; index++)
         {
-newPartInterfaceArray[index]= this->list.get(index);
+newPartInterfaceArray[index]= dynamic_cast<PartInterface*>(this->list->get(index));
     
 }
 

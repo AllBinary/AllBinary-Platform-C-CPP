@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -40,7 +46,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchButtonInput.h"
+        #include "org/allbinary/input/motion/button/TouchButtonInput.h"
 
 class TouchButtonVisitor
             : public Object
@@ -48,7 +54,7 @@ class TouchButtonVisitor
 
                 //@Throws(Exception.constructor)
             
-    public: void process(TouchButtonInput touchButtonInput, std::string string){
+    public: void process(TouchButtonInput* touchButtonInput, std::string string){
 }
 
 

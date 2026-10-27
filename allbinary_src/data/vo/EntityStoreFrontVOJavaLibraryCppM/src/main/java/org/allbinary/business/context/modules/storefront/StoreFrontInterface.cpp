@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/context/configuration/ContextConfigurationInterface.h>
@@ -50,153 +56,153 @@
         
 class StoreFrontInterface: public TableMappingInterface {
 
-    Boolean isNameValid()
+    public: virtual bool isNameValid() = 0;
 
-    Boolean isValid()
+    public: virtual bool isValid() = 0;
 
-    std::string nameValidationInfo()
+    public: virtual std::string nameValidationInfo() = 0;
 
-    std::string validationInfo()
+    public: virtual std::string validationInfo() = 0;
 
-    std::string getTestHtmlPath()
+    public: virtual std::string getTestHtmlPath() = 0;
 
-    std::string getCurrentHostName()
+    public: virtual std::string getCurrentHostName() = 0;
 
-    std::string getCurrentHostNamePath()
+    public: virtual std::string getCurrentHostNamePath() = 0;
 
-    std::string getCurrentHomeHostName()
+    public: virtual std::string getCurrentHomeHostName() = 0;
 
-    std::string getCurrentHomeHostNamePath()
+    public: virtual std::string getCurrentHomeHostNamePath() = 0;
 
-    std::string getName()
+    public: virtual std::string getName() = 0;
 
-    std::string getBasketName()
+    public: virtual std::string getBasketName() = 0;
 
-    std::string getHomeHostName()
+    public: virtual std::string getHomeHostName() = 0;
 
-    std::string getHomeHostNamePath()
+    public: virtual std::string getHomeHostNamePath() = 0;
 
-    std::string getHostName()
+    public: virtual std::string getHostName() = 0;
 
-    std::string getHostNamePath()
+    public: virtual std::string getHostNamePath() = 0;
 
-    std::string getTestHomeHostName()
+    public: virtual std::string getTestHomeHostName() = 0;
 
-    std::string getTestHomeHostNamePath()
+    public: virtual std::string getTestHomeHostNamePath() = 0;
 
-    std::string getTestHostName()
+    public: virtual std::string getTestHostName() = 0;
 
-    std::string getTestHostNamePath()
+    public: virtual std::string getTestHostNamePath() = 0;
 
-    std::string getStaticPath()
+    public: virtual std::string getStaticPath() = 0;
 
-    std::string getCategoryPath()
-
-                //@Throws(Exception.constructor)
-            
-    BasicArrayList getSubStores()
-
-    std::string getTagLocation()
-
-    std::string getPackageLocation()
-
-    std::string getInventoryControl()
-
-    ContextConfigurationInterface getContextConfigurationInterface()
-
-    void setContextConfigurationInterface(ContextConfigurationInterface contextConfigurationInterface)
-
-    std::string getFtp()
-
-    std::string getFtpPath()
-
-    std::string getFtpUserName()
-
-    std::string getFtpPassword()
-
-    std::string getTestFtp()
-
-    std::string getTestFtpPath()
-
-    std::string getTestFtpUserName()
-
-    std::string getTestFtpPassword()
-
-    std::string getTimeCreated()
-
-    std::string getLastModified()
-
-    void setName(std::string value)
-
-    void setBasketName(std::string value)
-
-    void setHomeHostName(std::string value)
+    public: virtual std::string getCategoryPath() = 0;
 
                 //@Throws(Exception.constructor)
             
-    void setHomeHostNamePath(std::string value)
+    public: virtual BasicArrayList* getSubStores() = 0;
 
-    void setHostName(std::string value)
+    public: virtual std::string getTagLocation() = 0;
 
-                //@Throws(Exception.constructor)
-            
-    void setHostNamePath(std::string value)
+    public: virtual std::string getPackageLocation() = 0;
 
-    void setTestHomeHostName(std::string value)
+    public: virtual std::string getInventoryControl() = 0;
 
-                //@Throws(Exception.constructor)
-            
-    void setTestHomeHostNamePath(std::string value)
+    public: virtual ContextConfigurationInterface* getContextConfigurationInterface() = 0;
 
-    void setTestHostName(std::string value)
+    public: virtual void setContextConfigurationInterface(ContextConfigurationInterface* contextConfigurationInterface) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    void setTestHostNamePath(std::string value)
+    public: virtual std::string getFtp() = 0;
 
-                //@Throws(Exception.constructor)
-            
-    void setImagePath(std::string value)
+    public: virtual std::string getFtpPath() = 0;
 
-                //@Throws(Exception.constructor)
-            
-    void setStaticPath(std::string value)
+    public: virtual std::string getFtpUserName() = 0;
 
-                //@Throws(Exception.constructor)
-            
-    void setCategoryPath(std::string value)
+    public: virtual std::string getFtpPassword() = 0;
 
-    void setPackageLocation(std::string value)
+    public: virtual std::string getTestFtp() = 0;
 
-    void setInventoryControl(std::string value)
+    public: virtual std::string getTestFtpPath() = 0;
 
-    void setFtp(std::string value)
+    public: virtual std::string getTestFtpUserName() = 0;
 
-                //@Throws(Exception.constructor)
-            
-    void setFtpPath(std::string value)
+    public: virtual std::string getTestFtpPassword() = 0;
 
-    void setFtpUserName(std::string value)
+    public: virtual std::string getTimeCreated() = 0;
 
-    void setFtpPassword(std::string value)
+    public: virtual std::string getLastModified() = 0;
 
-    void setTestFtp(std::string value)
+    public: virtual void setName(std::string value) = 0;
+
+    public: virtual void setBasketName(std::string value) = 0;
+
+    public: virtual void setHomeHostName(std::string value) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void setTestFtpPath(std::string value)
+    public: virtual void setHomeHostNamePath(std::string value) = 0;
 
-    void setTestFtpUserName(std::string value)
-
-    void setTestFtpPassword(std::string value)
-
-    void setTimeCreated(std::string value)
-
-    void setLastModified(std::string value)
+    public: virtual void setHostName(std::string value) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void install(int32_t current, int32_t total)
+    public: virtual void setHostNamePath(std::string value) = 0;
+
+    public: virtual void setTestHomeHostName(std::string value) = 0;
+
+                //@Throws(Exception.constructor)
+            
+    public: virtual void setTestHomeHostNamePath(std::string value) = 0;
+
+    public: virtual void setTestHostName(std::string value) = 0;
+
+                //@Throws(Exception.constructor)
+            
+    public: virtual void setTestHostNamePath(std::string value) = 0;
+
+                //@Throws(Exception.constructor)
+            
+    public: virtual void setImagePath(std::string value) = 0;
+
+                //@Throws(Exception.constructor)
+            
+    public: virtual void setStaticPath(std::string value) = 0;
+
+                //@Throws(Exception.constructor)
+            
+    public: virtual void setCategoryPath(std::string value) = 0;
+
+    public: virtual void setPackageLocation(std::string value) = 0;
+
+    public: virtual void setInventoryControl(std::string value) = 0;
+
+    public: virtual void setFtp(std::string value) = 0;
+
+                //@Throws(Exception.constructor)
+            
+    public: virtual void setFtpPath(std::string value) = 0;
+
+    public: virtual void setFtpUserName(std::string value) = 0;
+
+    public: virtual void setFtpPassword(std::string value) = 0;
+
+    public: virtual void setTestFtp(std::string value) = 0;
+
+                //@Throws(Exception.constructor)
+            
+    public: virtual void setTestFtpPath(std::string value) = 0;
+
+    public: virtual void setTestFtpUserName(std::string value) = 0;
+
+    public: virtual void setTestFtpPassword(std::string value) = 0;
+
+    public: virtual void setTimeCreated(std::string value) = 0;
+
+    public: virtual void setLastModified(std::string value) = 0;
+
+                //@Throws(Exception.constructor)
+            
+    public: virtual void install(int32_t current, int32_t total) = 0;
 
 };
 

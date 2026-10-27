@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/w3c/dom/Document.h>
@@ -49,7 +55,7 @@ class DomNodeInterface {
 
                 //@Throws(Exception.constructor)
             
-    Node toXmlNode(Document document)
+    public: virtual Node* toXmlNode(Document* document) = 0;
 
 };
 

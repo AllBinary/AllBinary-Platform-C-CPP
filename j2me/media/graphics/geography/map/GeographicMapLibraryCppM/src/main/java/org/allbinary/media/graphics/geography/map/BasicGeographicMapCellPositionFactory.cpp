@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,41 +60,41 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicGeographicMap.h"
-#include "GeographicMapCellPositionFactoryInterface.h"
-#include "GeographicMapCellPosition.h"
-#include "GeographicMapCellPositionFactoryInitVisitorInterface.h"
+        #include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInterface.h"
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInitVisitorInterface.h"
 
 class BasicGeographicMapCellPositionFactory
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: std::vector<std::vector<GeographicMapCellPosition>> geographicMapCellPositionArray;
+    protected: std::vector<std::vector<GeographicMapCellPosition*>> geographicMapCellPositionArray;
 
-    protected: BasicGeographicMap geographicMapInterface;
+    protected: BasicGeographicMap* geographicMapInterface;
 
-    protected: GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface;
+    protected: GeographicMapCellPositionFactoryInterface* geographicMapCellPositionFactoryInterface;
 
     private: int32_t columns;
 
     private: int32_t rows;
 
-    private: AllBinaryTiledLayer tiledLayer;
+    private: AllBinaryTiledLayer* tiledLayer;
 
-public: BasicGeographicMapCellPositionFactory(BasicGeographicMap geographicMapInterface){
+public: BasicGeographicMapCellPositionFactory(BasicGeographicMap* geographicMapInterface){
 this->geographicMapInterface= geographicMapInterface;
     
-this->geographicMapCellPositionFactoryInterface= this->geographicMapInterface.getGeographicMapCellPositionFactoryInterface();
+this->geographicMapCellPositionFactoryInterface= this->geographicMapInterface->getGeographicMapCellPositionFactoryInterface();
     
-this->tiledLayer= this->geographicMapInterface.getAllBinaryTiledLayer();
+this->tiledLayer= this->geographicMapInterface->getAllBinaryTiledLayer();
     
-this->columns= this->tiledLayer.getColumns();
+this->columns= this->tiledLayer->getColumns();
     
-this->rows= this->tiledLayer.getRows();
+this->rows= this->tiledLayer->getRows();
     
-this->geographicMapCellPositionArray= std::vector<std::vector<GeographicMapCellPosition>>(this->rows, std::vector<GeographicMapCellPosition>(this->columns));
+this->geographicMapCellPositionArray= std::vector<std::vector<GeographicMapCellPosition*>>(this->rows, std::vector<GeographicMapCellPosition*>(this->columns));
     
 this->init();
     
@@ -99,7 +105,7 @@ this->init();
             
     private: void init(){
 
-    AllBinaryTiledLayer tiledLayer = this->tiledLayer;;
+    AllBinaryTiledLayer* tiledLayer = this->tiledLayer;;
     
 
     int32_t columns = this->getColumns();;
@@ -108,10 +114,10 @@ this->init();
     int32_t rows = this->getRows();;
     
 
-    int32_t width = tiledLayer.getCellWidth();;
+    int32_t width = tiledLayer->getCellWidth();;
     
 
-    int32_t height = tiledLayer.getCellHeight();;
+    int32_t height = tiledLayer->getCellHeight();;
     
 
 
@@ -138,9 +144,9 @@ this->createInstance(column, row, width, height);
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(GeographicMapCellPositionFactoryInitVisitorInterface geographicMapCelPositionFactoryInitVisitorInterface){
+    public: void visit(GeographicMapCellPositionFactoryInitVisitorInterface* geographicMapCelPositionFactoryInitVisitorInterface){
 
-    AllBinaryTiledLayer tiledLayer = this->tiledLayer;;
+    AllBinaryTiledLayer* tiledLayer = this->tiledLayer;;
     
 
     int32_t columns = this->getColumns();;
@@ -151,7 +157,7 @@ this->createInstance(column, row, width, height);
 
         try {
             
-    GeographicMapCellPosition cellPosition;;
+    GeographicMapCellPosition* cellPosition;;
     
 
 
@@ -169,7 +175,7 @@ this->createInstance(column, row, width, height);
         {
 cellPosition= this->getAt(column, row);
     
-geographicMapCelPositionFactoryInitVisitorInterface.visit(tiledLayer, cellPosition);
+geographicMapCelPositionFactoryInitVisitorInterface->visit(tiledLayer, cellPosition);
     
 }
 
@@ -177,12 +183,12 @@ geographicMapCelPositionFactoryInitVisitorInterface.visit(tiledLayer, cellPositi
 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
-this->logUtil.put(StringMaker().append(commonSeps.BRACKET_OPEN).appendint(rows).append(commonSeps.BRACKET_CLOSE).append(commonSeps.BRACKET_OPEN).appendint(columns).append(commonSeps.BRACKET_CLOSE).toString(), this, "visit", e);
+this->logUtil->put((new StringMaker())->append(commonSeps->BRACKET_OPEN)->appendint(rows)->append(commonSeps->BRACKET_CLOSE)->append(commonSeps->BRACKET_OPEN)->appendint(columns)->append(commonSeps->BRACKET_CLOSE)->toString(), this, "visit", &e);
     
 
 
@@ -196,7 +202,7 @@ this->logUtil.put(StringMaker().append(commonSeps.BRACKET_OPEN).appendint(rows).
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition getAt(int32_t i_column, int32_t i_row){
+    public: GeographicMapCellPosition* getAt(int32_t i_column, int32_t i_row){
 
 
 
@@ -208,19 +214,19 @@ this->logUtil.put(StringMaker().append(commonSeps.BRACKET_OPEN).appendint(rows).
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition getInstance(GeographicMapCellPosition anotherMapGeographicMapCellPosition){
+    public: GeographicMapCellPosition* getInstance(GeographicMapCellPosition* anotherMapGeographicMapCellPosition){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getAt(anotherMapGeographicMapCellPosition.getColumn(), anotherMapGeographicMapCellPosition.getRow());;
+                        return this->getAt(anotherMapGeographicMapCellPosition->getColumn(), anotherMapGeographicMapCellPosition->getRow());;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition createInstance(int32_t i_column, int32_t i_row, int32_t width, int32_t height){
+    public: GeographicMapCellPosition* createInstance(int32_t i_column, int32_t i_row, int32_t width, int32_t height){
 
     Object* cellPositionCanBeNull = this->geographicMapCellPositionArray[i_row][i_column];;
     
@@ -230,9 +236,9 @@ this->logUtil.put(StringMaker().append(commonSeps.BRACKET_OPEN).appendint(rows).
                                 )
                         
                                     {
-                                    cellPositionCanBeNull= this->geographicMapCellPositionFactoryInterface.getInstance(this->geographicMapInterface, i_column, i_row, this->columns, this->rows, width, height);
+                                    cellPositionCanBeNull= this->geographicMapCellPositionFactoryInterface->getInstance(this->geographicMapInterface, i_column, i_row, this->columns, this->rows, width, height);
     
-this->geographicMapCellPositionArray[i_row][i_column]= *dynamic_cast<GeographicMapCellPosition*>(cellPositionCanBeNull);
+this->geographicMapCellPositionArray[i_row][i_column]= dynamic_cast<GeographicMapCellPosition*>(cellPositionCanBeNull);
     
 
                                     }
@@ -241,7 +247,7 @@ this->geographicMapCellPositionArray[i_row][i_column]= *dynamic_cast<GeographicM
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *dynamic_cast<GeographicMapCellPosition*>(cellPositionCanBeNull);
+                        return dynamic_cast<GeographicMapCellPosition*>(cellPositionCanBeNull);
     
 }
 

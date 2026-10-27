@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_TESTINPUTEXAMPLE_H
         #define ORG_ALLBINARY_GAME_INPUT_TESTINPUTEXAMPLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -44,11 +50,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TestInputInterface.h"
+        #include "org/allbinary/game/input/TestInputInterface.h"
 
 class TestInputExample
             : public Object
-        : public TestInputInterface {
+        , public TestInputInterface {
 
     private: int32_t testValue= 0;
 
@@ -64,9 +70,9 @@ class TestInputExample
 
     public: void strafeRight();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: void paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics* graphics);
 
 };
 

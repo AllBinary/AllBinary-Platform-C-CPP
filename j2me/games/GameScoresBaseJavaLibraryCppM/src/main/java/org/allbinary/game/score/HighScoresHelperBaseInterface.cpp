@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -38,16 +44,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HighScoresResultsListener.h"
-#include "HighScores.h"
+        #include "org/allbinary/game/score/HighScoresResultsListener.h"
+#include "org/allbinary/game/score/HighScores.h"
 
 class HighScoresHelperBaseInterface: public HighScoresResultsListener {
 
-    void setSelectedHighScores(HighScores selectedHighScores)
+    public: virtual void setSelectedHighScores(HighScores* selectedHighScores) = 0;
 
-    std::vector<HighScores> getHighScoresArray()
+    public: virtual std::vector<HighScores*> getHighScoresArray() = 0;
 
-    HighScores getSelectedHighScores()
+    public: virtual HighScores* getSelectedHighScores() = 0;
 
 };
 

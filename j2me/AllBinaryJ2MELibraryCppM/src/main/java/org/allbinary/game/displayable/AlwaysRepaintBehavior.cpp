@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Thread.h"
@@ -64,63 +70,63 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RepaintBehavior.h"
+        #include "org/allbinary/game/displayable/RepaintBehavior.h"
 
 class AlwaysRepaintBehavior: public RepaintBehavior {
 
-    private: static const AlwaysRepaintBehavior instanceC = AlwaysRepaintBehavior();
+    private: static AlwaysRepaintBehavior* instanceC() { static std::unique_ptr<AlwaysRepaintBehavior> value(new AlwaysRepaintBehavior()); return value.get(); }
 
-    public: static AlwaysRepaintBehavior getInstance(){
+    public: static AlwaysRepaintBehavior* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AlwaysRepaintBehavior::instanceC;
+                        return AlwaysRepaintBehavior::instanceC();
     
 }
 
 
     private: const std::string NAME = "AlwaysRepaintBehavior";
 
-    public: void repaint(Canvas canvas){
+    public: void repaint(Canvas* canvas){
 
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-    OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
+    OpenGLFeatureFactory* openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
     
 
-                        if(features.isFeature(openGLFeatureFactory.OPENGL))
+                        if(features->isFeature(openGLFeatureFactory->OPENGL))
                         
                                     {
-                                    DisplayInfoSingleton::getInstance().process();
+                                    DisplayInfoSingleton::getInstance()->process();
     
 
                                     }
                                 
                         else {
                             
-    Thread thread = Thread(class extends ARunnable
+    Thread* thread = new Thread(class extends ARunnable
                                 {
                                 
     public: void run(){
 
         try {
-            canvas.repaint();
+            canvas->repaint();
     
-DisplayInfoSingleton::getInstance().process();
+DisplayInfoSingleton::getInstance()->process();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
-logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
+logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
     
 }
 
@@ -129,7 +135,7 @@ logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
                                 }
                             , this->NAME);;
     
-thread.start();
+thread->start();
     
 
                         }
@@ -137,7 +143,7 @@ thread.start();
 }
 
 
-    public: void onChangeRepaint(Canvas canvas){
+    public: void onChangeRepaint(Canvas* canvas){
 }
 
 

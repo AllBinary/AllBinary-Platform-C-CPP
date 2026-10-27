@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -53,7 +59,7 @@
         
 class SubscriberUser: public User {
 
-    private: Subscription subscription;
+    private: Subscription* subscription;
 
 public: SubscriberUser() : User(){
 
@@ -62,24 +68,24 @@ public: SubscriberUser() : User(){
 
                             //For kotlin this is before the body of the constructor.
                     
-this->subscription= Subscription();
+this->subscription= new Subscription();
     
 }
 
 
-public: SubscriberUser(HashMap<Object*, Object*> userHashMap) : User(userHashMap){
+public: SubscriberUser(HashMap<Object*, Object*>* userHashMap) : User(userHashMap){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->subscription= Subscription();
+this->subscription= new Subscription();
     
 }
 
 
-    public: void validateSession(WeblisketSessionInterface weblisketSession){
+    public: void validateSession(WeblisketSessionInterface* weblisketSession){
 super.validateSession(weblisketSession);
     
 this->updateSession(weblisketSession);
@@ -87,18 +93,18 @@ this->updateSession(weblisketSession);
 }
 
 
-    public: void updateSession(WeblisketSessionInterface weblisketSession){
-weblisketSession.setStoreName(this->getPermissions());
+    public: void updateSession(WeblisketSessionInterface* weblisketSession){
+weblisketSession->setStoreName(this->getPermissions());
     
 }
 
 
-    public: Boolean isSessionValid(){
+    public: bool isSessionValid(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->subscription.isSubscribed();;
+                        return this->subscription->isSubscribed();;
     
 }
 

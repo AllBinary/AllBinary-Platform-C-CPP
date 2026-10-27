@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_PATH_ABFILEPATH_H
         #define ORG_ALLBINARY_LOGIC_IO_PATH_ABFILEPATH_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -44,9 +50,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbPath.h"
-#include "AbPathData.h"
-#include "PathUtil.h"
+        #include "org/allbinary/logic/io/path/AbPath.h"
+#include "org/allbinary/logic/io/path/AbPathData.h"
+#include "org/allbinary/logic/io/path/PathUtil.h"
 
 class AbFilePath: public AbPath {
 

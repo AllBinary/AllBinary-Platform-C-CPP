@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INSTALLER_PORTION_H
         #define ORG_ALLBINARY_BUSINESS_INSTALLER_PORTION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -51,15 +57,15 @@ class Portion
             : public Object
          {
 
-    private: Integer current;
+    private: int32_t current;
 
-    private: Integer total;
+    private: int32_t total;
 
-public: Portion(HashMap<Object*, Object*> hashMap);
+public: Portion(HashMap<Object*, Object*>* hashMap);
 
-    public: Integer getCurrent();
+    public: int32_t getCurrent();
 
-    public: Integer getTotal();
+    public: int32_t getTotal();
 
 };
 

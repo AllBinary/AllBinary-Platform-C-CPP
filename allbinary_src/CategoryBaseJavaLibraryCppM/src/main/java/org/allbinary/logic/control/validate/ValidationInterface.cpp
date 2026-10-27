@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/w3c/dom/Document.h>
@@ -49,19 +55,19 @@ class ValidationInterface {
 
                 //@Throws(Exception.constructor)
             
-    Boolean isValid()
+    public: virtual bool isValid() = 0;
 
                 //@Throws(Exception.constructor)
             
-    Node toValidationInfoNode(Document document)
+    public: virtual Node* toValidationInfoNode(Document* document) = 0;
 
                 //@Throws(Exception.constructor)
             
-    Document toValidationInfoDoc()
+    public: virtual Document* toValidationInfoDoc() = 0;
 
                 //@Throws(Exception.constructor)
             
-    std::string validationInfo()
+    public: virtual std::string validationInfo() = 0;
 
 };
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,17 +60,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BooleanFactory.h"
+        #include "org/allbinary/logic/java/bool/BooleanFactory.h"
 
 class BooleanUtil
             : public Object
          {
 
-    private: static BooleanUtil instance() { return BooleanUtil(); }
+    private: static BooleanUtil* instance() { static std::unique_ptr<BooleanUtil> value(new BooleanUtil()); return value.get(); }
 
-    public: static BooleanUtil getInstance();
+    public: static BooleanUtil* getInstance();
 
-    private: const TsUtil tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil = TsUtil::getInstance();
 
 private: BooleanUtil();
 

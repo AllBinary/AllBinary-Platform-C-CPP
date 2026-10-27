@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/InputFactory.h>
@@ -52,14 +58,14 @@ class OrientationMotionGestureFactory
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static OrientationMotionGestureFactory getInstance(){
+    public: static OrientationMotionGestureFactory* getInstance(){
 
-                        if(OrientationMotionGestureFactory::instance() == NullUtil::getInstance().NULL_OBJECT)
+                        if(OrientationMotionGestureFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    OrientationMotionGestureFactory::instance= OrientationMotionGestureFactory();
+                                    OrientationMotionGestureFactory::instance= new OrientationMotionGestureFactory();
     
 
                                     }
@@ -68,38 +74,38 @@ class OrientationMotionGestureFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OrientationMotionGestureFactory::instance();
+                        return dynamic_cast<OrientationMotionGestureFactory*>(OrientationMotionGestureFactory::instance);
     
 }
 
 
-    public: MotionGestureInput LEFT;
+    public: MotionGestureInput* LEFT;
 
-    public: MotionGestureInput RIGHT;
+    public: MotionGestureInput* RIGHT;
 
-    public: MotionGestureInput UP;
+    public: MotionGestureInput* UP;
 
-    public: MotionGestureInput DOWN;
+    public: MotionGestureInput* DOWN;
 
-    public: MotionGestureInput ROLL_LEFT;
+    public: MotionGestureInput* ROLL_LEFT;
 
-    public: MotionGestureInput ROLL_RIGHT;
+    public: MotionGestureInput* ROLL_RIGHT;
 
 private: OrientationMotionGestureFactory(){
 
-    int32_t MAX = InputFactory::getInstance().MAX;;
+    int32_t MAX = InputFactory::getInstance()->MAX;;
     
-this->LEFT= MotionGestureInput(MAX -20, "Left Orient");
+this->LEFT= new MotionGestureInput(MAX -20, "Left Orient");
     
-this->RIGHT= MotionGestureInput(MAX -21, "Right Orient");
+this->RIGHT= new MotionGestureInput(MAX -21, "Right Orient");
     
-this->UP= MotionGestureInput(MAX -22, "Up Orient");
+this->UP= new MotionGestureInput(MAX -22, "Up Orient");
     
-this->DOWN= MotionGestureInput(MAX -23, "Down Orient");
+this->DOWN= new MotionGestureInput(MAX -23, "Down Orient");
     
-this->ROLL_LEFT= MotionGestureInput(MAX -24, "Roll Left");
+this->ROLL_LEFT= new MotionGestureInput(MAX -24, "Roll Left");
     
-this->ROLL_RIGHT= MotionGestureInput(MAX -25, "Roll Right");
+this->ROLL_RIGHT= new MotionGestureInput(MAX -25, "Roll Right");
     
 }
 

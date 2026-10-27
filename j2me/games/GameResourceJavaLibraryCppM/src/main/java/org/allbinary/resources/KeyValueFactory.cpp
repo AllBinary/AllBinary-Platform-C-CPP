@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/StdUtil.h>
@@ -49,9 +55,9 @@ class KeyValueFactory
             : public Object
          {
 
-    private: static KeyValueFactory instance() { return KeyValueFactory(); }
+    private: static KeyValueFactory* instance() { static std::unique_ptr<KeyValueFactory> value(new KeyValueFactory()); return value.get(); }
 
-    public: static KeyValueFactory getInstance(){
+    public: static KeyValueFactory* getInstance(){
 
 
 
@@ -61,11 +67,11 @@ class KeyValueFactory
 }
 
 
-    public: const ABHashtable<Object*, Object*> MAP = StdUtil::getInstance().createHashtable();
+    public: ABHashtable<Object*, Object*>* MAP = StdUtil::getInstance()->createHashtable();
 
     public: std::string get(std::string key){
 
-    std::string value = this->MAP.get(key);;
+    std::string value = this->MAP->get(key);;
     
 
                         if(false)

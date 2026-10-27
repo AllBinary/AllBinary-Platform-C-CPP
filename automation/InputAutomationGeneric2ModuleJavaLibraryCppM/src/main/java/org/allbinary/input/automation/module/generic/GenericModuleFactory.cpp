@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/input/automation/module/AbstractInputAutomationFactory.h>
@@ -62,14 +68,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GenericInputAutomationAction.h"
-#include "GenericInputAutomationWorker.h"
+        #include "org/allbinary/input/automation/module/generic/GenericInputAutomationAction.h"
+#include "org/allbinary/input/automation/module/generic/GenericInputAutomationWorker.h"
 
 class GenericModuleFactory: public AbstractInputAutomationFactory {
 
-    private: static std::string NAME = "Generic" +InputAutomationModuleData::MODULE_NAME_END;
+    private: static inline std::string NAME = "Generic" +InputAutomationModuleData::MODULE_NAME_END;
 
-public: GenericModuleFactory() : AbstractInputAutomationFactory(NAME, GenericModuleConfigurationJPanel()){
+public: GenericModuleFactory() : AbstractInputAutomationFactory(NAME, new GenericModuleConfigurationJPanel()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -82,18 +88,18 @@ public: GenericModuleFactory() : AbstractInputAutomationFactory(NAME, GenericMod
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: RunnableInterface getInstance(){
+    public: RunnableInterface* getInstance(){
 
-    GenericProfile genericProfile = (getConfigurationJPanel).getSelectedGenericProfile();;
+    GenericProfile* genericProfile = (getConfigurationJPanel)).getSelectedGenericProfile();;
     
 
-    InputAutomationActionInterface inputAutomationActionInterface = GenericInputAutomationAction();;
+    InputAutomationActionInterface* inputAutomationActionInterface = dynamic_cast<InputAutomationActionInterface*>(new GenericInputAutomationAction());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GenericInputAutomationWorker(inputAutomationActionInterface, genericProfile, NoMotionRectangleConstraints(), NoImageComparatorConstraints());
+                        return dynamic_cast<RunnableInterface*>(new GenericInputAutomationWorker(inputAutomationActionInterface, genericProfile, new NoMotionRectangleConstraints(), new NoImageComparatorConstraints()));
     
 }
 

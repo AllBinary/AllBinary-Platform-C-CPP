@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,12 +42,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameInputInterface.h"
-#include "PlayerGameInput.h"
+        #include "org/allbinary/game/input/GameInputInterface.h"
+#include "org/allbinary/game/input/PlayerGameInput.h"
 
 class PlayerGameInputCompositeInterface: public GameInputInterface {
 
-    PlayerGameInput getPlayerGameInput()
+    public: virtual PlayerGameInput* getPlayerGameInput() = 0;
 
 };
 

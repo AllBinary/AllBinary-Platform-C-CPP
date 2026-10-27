@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILTER_BASICFILEFILTERUTIL_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_FILTER_BASICFILEFILTERUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/io/FileFilter.h>
@@ -53,13 +59,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "VisitorFileFilter.h"
+        #include "org/allbinary/logic/io/file/filter/VisitorFileFilter.h"
 
 class BasicFileFilterUtil
             : public Object
          {
 
-    public: static FileFilter getInstance(std::string extension);
+    public: static FileFilter* getInstance(std::string extension);
 
 private: BasicFileFilterUtil();
 

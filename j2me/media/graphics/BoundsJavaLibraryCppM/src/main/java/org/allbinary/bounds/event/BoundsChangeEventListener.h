@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BOUNDS_EVENT_BOUNDSCHANGEEVENTLISTENER_H
         #define ORG_ALLBINARY_BOUNDS_EVENT_BOUNDSCHANGEEVENTLISTENER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
 
       
@@ -42,11 +48,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BoundsChangeEvent.h"
+        #include "org/allbinary/bounds/event/BoundsChangeEvent.h"
 
 class BoundsChangeEventListener: public EventListenerInterface {
 
-    void onBoundsChangeEvent(BoundsChangeEvent boundsChangeEvent);
+    public: virtual void onBoundsChangeEvent(BoundsChangeEvent* boundsChangeEvent) = 0;
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_PCGAMEINPUTMAPPING_H
         #define ORG_ALLBINARY_GAME_INPUT_PCGAMEINPUTMAPPING_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/configuration/persistance/GamePersistanceStrings.h>
@@ -59,8 +65,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PCKeyFactory.h"
-#include "Input.h"
+        #include "org/allbinary/game/input/PCKeyFactory.h"
+#include "org/allbinary/game/input/Input.h"
 
 class PCGameInputMapping: public PersistentInputMapping {
 
@@ -68,11 +74,11 @@ public: PCGameInputMapping();
 
                 //@Throws(Exception.constructor)
             
-    public: void init(AbeClientInformationInterface abeClientInformation);
+    public: void init(AbeClientInformationInterface* abeClientInformation);
 
-    public: bool isDelete(Input input);
+    public: bool isDelete(Input* input);
 
-    public: bool isSystemInput(Input input);
+    public: bool isSystemInput(Input* input);
 
 };
 

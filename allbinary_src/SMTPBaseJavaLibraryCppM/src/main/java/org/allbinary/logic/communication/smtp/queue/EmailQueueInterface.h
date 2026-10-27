@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_EMAILQUEUEINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_EMAILQUEUEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/smtp/EmailInterface.h>
@@ -49,11 +55,11 @@ class EmailQueueInterface {
 
                 //@Throws(Exception.constructor)
             
-    bool offer(EmailInterface emailInterface);
+    public: virtual bool offer(EmailInterface* emailInterface) = 0;
 
                 //@Throws(Exception.constructor)
             
-    EmailInterface remove();
+    public: virtual EmailInterface* remove() = 0;
 
 };
 

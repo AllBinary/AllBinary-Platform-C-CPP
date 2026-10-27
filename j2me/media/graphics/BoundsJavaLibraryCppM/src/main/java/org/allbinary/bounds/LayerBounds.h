@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BOUNDS_LAYERBOUNDS_H
         #define ORG_ALLBINARY_BOUNDS_LAYERBOUNDS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/bounds/event/BoundsChangeEvent.h>
@@ -62,25 +68,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BoundsVisitorInterface.h"
+        #include "org/allbinary/bounds/BoundsVisitorInterface.h"
 
 class LayerBounds
             : public Object
-        : public BoundsChangeEventListener {
+        , public BoundsChangeEventListener {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: Rectangle rectangle;
+    protected: Rectangle* rectangle;
 
-protected: LayerBounds(Rectangle rectangle);
+protected: LayerBounds(Rectangle* rectangle);
 
-    public: Rectangle getRectangleP();
+    public: Rectangle* getRectangleP();
 
-    public: void visit(BoundsVisitorInterface boundsVisitorInterface);
+    public: void visit(BoundsVisitorInterface* boundsVisitorInterface);
 
-    public: void onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject* eventObject);
 
-    public: void onBoundsChangeEvent(BoundsChangeEvent boundsChangeEvent);
+    public: void onBoundsChangeEvent(BoundsChangeEvent* boundsChangeEvent);
 
 };
 

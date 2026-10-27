@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -64,7 +70,7 @@ class PointsLayer: public AllBinaryLayer {
 
     private: int32_t points;
 
-public: PointsLayer(int32_t points) : AllBinaryLayer(StringUtil::getInstance().EMPTY_STRING, Rectangle(PointFactory::getInstance().ZERO_ZERO, 0, 0), ViewPosition::getInstanceD()){
+public: PointsLayer(int32_t points) : AllBinaryLayer(StringUtil::getInstance()->EMPTY_STRING, new Rectangle(PointFactory::getInstance()->ZERO_ZERO, 0, 0), ViewPosition::getInstanceD()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -76,12 +82,12 @@ this->points= points;
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 }
 
 
-    public: void visit(ScoreableInterface scoreableInterface){
-scoreableInterface.addPoints(this->points);
+    public: void visit(ScoreableInterface* scoreableInterface){
+scoreableInterface->addPoints(this->points);
     
 }
 

@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Class.h"
         
             #include "java/lang/Exception.h"
@@ -72,13 +80,13 @@
         
 class CustomLoaderTag: public CustomTagSupport {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string command;
 
     private: std::string webappPath;
 
-    private: HashMap<Object*, Object*> propertiesHashMap;
+    private: HashMap<Object*, Object*>* propertiesHashMap;
 
 public: CustomLoaderTag(){
 }
@@ -102,7 +110,7 @@ this->webappPath= value;
 
         try {
             
-    Object* anyType = CustomLoaderHelperFactory().getInstance(this->propertiesHashMap, pageContext);;
+    Object* anyType = (new CustomLoaderHelperFactory())->getInstance(this->propertiesHashMap, pageContext);;
     
 
     Class* helperClass = anyType->getClass();;
@@ -120,13 +128,13 @@ this->webappPath= value;
                                                         };;
     
 
-    Method setMethod = helperClass.getMethod("setWebappPath", methodParams);;
+    Method* setMethod = helperClass->getMethod("setWebappPath", methodParams);;
     
-setMethod.invoke(anyType, methodArgs);
+setMethod->invoke(anyType, methodArgs);
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -136,19 +144,19 @@ setMethod.invoke(anyType, methodArgs);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setCustomLoaderWebappPath()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "setCustomLoaderWebappPath()", &e);
     
 
                                     }
                                 
 }
-*/
+
 }
 
 
@@ -158,10 +166,10 @@ setMethod.invoke(anyType, methodArgs);
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, tagStrings.DO_START_TAG);
+                                    this->logUtil->putF(this->commonStrings.START, this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -170,7 +178,7 @@ setMethod.invoke(anyType, methodArgs);
                         if(true)
                         
                                     {
-                                    this->propertiesHashMap= StdUtil::getInstance().createHashMap();
+                                    this->propertiesHashMap= StdUtil::getInstance()->createHashMap();
     
 
                         if(this->command.compare(org.allbinary.globals.GLOBALS2.SET) == 0)
@@ -192,9 +200,9 @@ setMethod.invoke(anyType, methodArgs);
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
-AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
     
 
 
@@ -205,9 +213,9 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 
@@ -216,7 +224,7 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
                         return SKIP_BODY;
     
 }
-*/
+
 }
 
 

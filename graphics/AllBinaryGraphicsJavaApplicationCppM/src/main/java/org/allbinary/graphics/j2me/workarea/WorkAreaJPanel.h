@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREAJPANEL_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREAJPANEL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -110,47 +116,47 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "WorkAreaJPanelInterface.h"
-#include "WorkAreaJTreeJPanel.h"
-#include "Component.h"
-#include "Dimension.h"
-#include "WorkAreaDom.h"
-#include "GridLayout.h"
-#include "GridBagLayout.h"
-#include "GridBagConstraints.h"
-#include "KeyAdapter.h"
-#include "KeyEvent.h"
+        #include "org/allbinary/graphics/j2me/workarea/JPanel.h"
+#include "org/allbinary/graphics/j2me/workarea/WorkAreaJPanelInterface.h"
+#include "org/allbinary/graphics/j2me/workarea/WorkAreaJTreeJPanel.h"
+#include "org/allbinary/graphics/j2me/workarea/Component.h"
+#include "org/allbinary/graphics/j2me/workarea/Dimension.h"
+#include "org/allbinary/graphics/j2me/workarea/WorkAreaDom.h"
+#include "org/allbinary/graphics/j2me/workarea/GridLayout.h"
+#include "org/allbinary/graphics/j2me/workarea/GridBagLayout.h"
+#include "org/allbinary/graphics/j2me/workarea/GridBagConstraints.h"
+#include "org/allbinary/graphics/j2me/workarea/KeyAdapter.h"
+#include "org/allbinary/graphics/j2me/workarea/KeyEvent.h"
 
 class WorkAreaJPanel: public JPanel, public WorkAreaJPanelInterface, public MyCanvasEventListener, public EventListener, public Runnable {
 
-    private: static org::w3c::dom::Document document;
+    private: static inline org::w3c::dom::Document* document;
 
-    public: static Document getDocument();
+    public: static Document* getDocument();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: LinkedList canvasJPanelList;
+    private: LinkedList* canvasJPanelList;
 
-    private: JPanel canvasHolderJPanel;
+    private: JPanel* canvasHolderJPanel;
 
     private: std::string name;
 
     private: int32_t selectedFrame= 0;
 
-    private: PropertiesJPanel propertiesJPanel;
+    private: PropertiesJPanel* propertiesJPanel;
 
-    private: WorkAreaJTreeJPanel workAreaJTreeJPanel;
+    private: WorkAreaJTreeJPanel* workAreaJTreeJPanel;
 
     private: bool isPlaying = false;
 
-public: WorkAreaJPanel(std::string name, Dimension dimension, int32_t x, int32_t y);
+public: WorkAreaJPanel(std::string name, Dimension* dimension, int32_t x, int32_t y);
 
-public: WorkAreaJPanel(WorkAreaDom workAreaDom, Dimension dimension);
+public: WorkAreaJPanel(WorkAreaDom* workAreaDom, Dimension* dimension);
 
-    private: void initMyComponents(Dimension dimension);
+    private: void initMyComponents(Dimension* dimension);
 
-    private: HashMap<Object*, Object*> getCanvasHashMap();
+    private: HashMap<Object*, Object*>* getCanvasHashMap();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void play();
@@ -175,13 +181,13 @@ public: WorkAreaJPanel(WorkAreaDom workAreaDom, Dimension dimension);
 
     public: void changeZoom(int32_t factor);
 
-    public: CanvasJPanel getCurrentFrame();
+    public: CanvasJPanel* getCurrentFrame();
 
-    private: void initDuplicate(CanvasJPanel newCanvasJPanel);
+    private: void initDuplicate(CanvasJPanel* newCanvasJPanel);
 
                 //@Throws(Exception.constructor)
             
-    private: void duplicate(MutableTreeNode treeNode);
+    private: void duplicate(MutableTreeNode* treeNode);
 
                 //@Throws(Exception.constructor)
             
@@ -200,41 +206,41 @@ public: WorkAreaJPanel(WorkAreaDom workAreaDom, Dimension dimension);
 
     private: void select(int32_t index);
 
-    private: void select(MutableTreeNode treeNode);
+    private: void select(MutableTreeNode* treeNode);
 
                 //@Throws(Exception.constructor)
             
-    public: Document toDocument();
+    public: Document* toDocument();
 
     private: void initComponents();
 
-    private: void innerJPanelKeyReleased(java::awt::event::KeyEvent evt);
+    private: void innerJPanelKeyReleased(java::awt::event::KeyEvent* evt);
 
-    private: void innerJPanelKeyPressed(java::awt::event::KeyEvent evt);
+    private: void innerJPanelKeyPressed(java::awt::event::KeyEvent* evt);
 
-    private: void innerJPanelKeyTyped(java::awt::event::KeyEvent evt);
+    private: void innerJPanelKeyTyped(java::awt::event::KeyEvent* evt);
 
-    public: void keyPressed(java::awt::event::KeyEvent keyEvent);
+    public: void keyPressed(java::awt::event::KeyEvent* keyEvent);
 
-    public: void keyReleased(java::awt::event::KeyEvent keyEvent);
+    public: void keyReleased(java::awt::event::KeyEvent* keyEvent);
 
-    public: void keyTyped(java::awt::event::KeyEvent keyEvent);
+    public: void keyTyped(java::awt::event::KeyEvent* keyEvent);
 
-    public: void delete_(MyCanvasEvent evt);
-
-                //@Throws(Exception.constructor)
-            
-    public: void duplicate(MyCanvasEvent evt);
-
-    public: void select(MyCanvasEvent evt);
-
-    public: void rotate(MyCanvasEvent evt);
-
-    public: void explode(MyCanvasEvent evt);
+    public: void delete_(MyCanvasEvent* evt);
 
                 //@Throws(Exception.constructor)
             
-    public: void autoExplode(MyCanvasEvent evt);
+    public: void duplicate(MyCanvasEvent* evt);
+
+    public: void select(MyCanvasEvent* evt);
+
+    public: void rotate(MyCanvasEvent* evt);
+
+    public: void explode(MyCanvasEvent* evt);
+
+                //@Throws(Exception.constructor)
+            
+    public: void autoExplode(MyCanvasEvent* evt);
 
                 //@Throws(Exception.constructor)
             
@@ -242,11 +248,11 @@ public: WorkAreaJPanel(WorkAreaDom workAreaDom, Dimension dimension);
 
                 //@Throws(Exception.constructor)
             
-    public: void center(MyCanvasEvent evt);
+    public: void center(MyCanvasEvent* evt);
 
     public: void run();
 
-    private: javax::swing::JPanel innerJPanel;
+    private: javax::swing::JPanel* innerJPanel;
 
 };
 

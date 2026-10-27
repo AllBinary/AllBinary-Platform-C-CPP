@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILTER_VISITORFILEFILTER_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_FILTER_VISITORFILEFILTER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/io/File.h>
@@ -59,15 +65,15 @@
         
 class VisitorFileFilter
             : public Object
-        : public FileFilter {
+        , public FileFilter {
 
-    private: VisitorInterface booleanVisitorInterface;
+    private: VisitorInterface* booleanVisitorInterface;
 
-public: VisitorFileFilter(VisitorInterface booleanVisitorInterface);
+public: VisitorFileFilter(VisitorInterface* booleanVisitorInterface);
 
-    public: bool accept(File file);
+    public: bool accept(File* file);
 
-    public: bool accept(AbFile file);
+    public: bool accept(AbFile* file);
 
 };
 

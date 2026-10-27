@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,32 +61,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "FtpConfigurationInterface.h"
-#include "FtpConfigurationData.h"
+        #include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationInterface.h"
+#include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationData.h"
 
 class FtpConfigurationMapping
             : public Object
-        : public TableMappingInterface {
+        , public TableMappingInterface {
 
-    private: FtpConfigurationInterface ftpConfigurationInterface;
+    private: FtpConfigurationInterface* ftpConfigurationInterface;
 
-public: FtpConfigurationMapping(FtpConfigurationInterface ftpConfigurationInterface){
+public: FtpConfigurationMapping(FtpConfigurationInterface* ftpConfigurationInterface){
 this->ftpConfigurationInterface= ftpConfigurationInterface;
     
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(FtpConfigurationData::SERVER, this->ftpConfigurationInterface.getServer());
+hashMap->put(FtpConfigurationData::SERVER, this->ftpConfigurationInterface->getServer());
     
-hashMap.put(FtpConfigurationData::USERNAME, this->ftpConfigurationInterface.getUserName());
+hashMap->put(FtpConfigurationData::USERNAME, this->ftpConfigurationInterface->getUserName());
     
-hashMap.put(FtpConfigurationData::PASSWORD, this->ftpConfigurationInterface.getPassword());
+hashMap->put(FtpConfigurationData::PASSWORD, this->ftpConfigurationInterface->getPassword());
     
-hashMap.put(FtpConfigurationData::PATH, this->ftpConfigurationInterface.getPath());
+hashMap->put(FtpConfigurationData::PATH, this->ftpConfigurationInterface->getPath());
     
 
 
@@ -105,17 +111,17 @@ hashMap.put(FtpConfigurationData::PATH, this->ftpConfigurationInterface.getPath(
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList toVector(){
+    public: BasicArrayList* toVector(){
 
-    BasicArrayList vector = BasicArrayListD();;
+    BasicArrayList* vector = new BasicArrayListD();;
     
-vector.add(this->ftpConfigurationInterface.getServer());
+vector->add(this->ftpConfigurationInterface->getServer());
     
-vector.add(this->ftpConfigurationInterface.getUserName());
+vector->add(this->ftpConfigurationInterface->getUserName());
     
-vector.add(this->ftpConfigurationInterface.getPassword());
+vector->add(this->ftpConfigurationInterface->getPassword());
     
-vector.add(this->ftpConfigurationInterface.getPath());
+vector->add(this->ftpConfigurationInterface->getPath());
     
 
 

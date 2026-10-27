@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_GRAPH_E_H
         #define ORG_ALLBINARY_GRAPH_E_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -32,9 +38,9 @@ class E
             : public Object
          {
 
-    private: static const E e = E();
+    private: static E* e() { static std::unique_ptr<E> value(new E()); return value.get(); }
 
-    public: E newInstance();
+    public: E* newInstance();
 
 };
 

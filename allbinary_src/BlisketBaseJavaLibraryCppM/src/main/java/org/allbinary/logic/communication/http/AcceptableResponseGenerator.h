@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ACCEPTABLERESPONSEGENERATOR_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ACCEPTABLERESPONSEGENERATOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,23 +58,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AcceptableResponseUtil.h"
+        #include "org/allbinary/logic/communication/http/AcceptableResponseUtil.h"
 
 class AcceptableResponseGenerator
             : public Object
          {
 
-    private: static AcceptableResponseGenerator instance() { return AcceptableResponseGenerator(); }
+    private: static AcceptableResponseGenerator* instance() { static std::unique_ptr<AcceptableResponseGenerator> value(new AcceptableResponseGenerator()); return value.get(); }
 
-    public: static AcceptableResponseGenerator getInstance();
+    public: static AcceptableResponseGenerator* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: AcceptableResponseGenerator();
 
                 //@Throws(Exception.constructor)
             
-    public: std::string get(HttpServletRequest httpServletRequest);
+    public: std::string get(HttpServletRequest* httpServletRequest);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_STDUTIL_H
         #define ORG_ALLBINARY_LOGIC_STDUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -67,23 +73,23 @@
             : public Object
          {
 
-    private: static StdUtil instance() { return StdUtil(); }
+    private: static StdUtil* instance() { static std::unique_ptr<StdUtil> value(new StdUtil()); return value.get(); }
 
-    /*actual*/ public: static StdUtil getInstance();
+    /*actual*/ public: static StdUtil* getInstance();
 
-    /*actual*/ public: const ABVector<Object*> EMPTY_VECTOR = this->createVector();
+    /*actual*/ public: ABVector<Object*>* EMPTY_VECTOR = this->createVector();
 
-    /*actual*/ public: const ABHashtable<Object*, Object*> NULL_TABLE = this->createHashtable();
+    /*actual*/ public: ABHashtable<Object*, Object*>* NULL_TABLE = this->createHashtable();
 
-    /*actual*/ public: const ABHashMap<Object*, Object*> NULL_MAP = this->createHashMap();
+    /*actual*/ public: ABHashMap<Object*, Object*>* NULL_MAP = this->createHashMap();
 
-    public: ABStack<Object*> createStack();
+    public: ABStack<Object*>* createStack();
 
-    public: ABVector<Object*> createVector();
+    public: ABVector<Object*>* createVector();
 
-    public: ABHashtable<Object*, Object*> createHashtable();
+    public: ABHashtable<Object*, Object*>* createHashtable();
 
-    public: ABHashMap<Object*, Object*> createHashMap();
+    public: ABHashMap<Object*, Object*>* createHashMap();
 
 };
 

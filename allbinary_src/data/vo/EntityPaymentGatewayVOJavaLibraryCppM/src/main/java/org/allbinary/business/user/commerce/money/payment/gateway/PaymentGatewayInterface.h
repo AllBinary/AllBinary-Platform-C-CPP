@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -56,147 +62,147 @@
         
 class PaymentGatewayInterface: public TableMappingInterface {
 
-    std::string getEnable();
+    public: virtual std::string getEnable() = 0;
 
-    std::string getStoreName();
+    public: virtual std::string getStoreName() = 0;
 
-    std::string getName();
+    public: virtual std::string getName() = 0;
 
-    std::string getPaymentMethod();
+    public: virtual std::string getPaymentMethod() = 0;
 
-    std::string getMode();
+    public: virtual std::string getMode() = 0;
 
-    std::string getTestProtocol();
+    public: virtual std::string getTestProtocol() = 0;
 
-    std::string getTestServer();
+    public: virtual std::string getTestServer() = 0;
 
-    std::string getTestPort();
+    public: virtual std::string getTestPort() = 0;
 
-    std::string getTestPath();
+    public: virtual std::string getTestPath() = 0;
 
-    std::string getServerProtocol();
+    public: virtual std::string getServerProtocol() = 0;
 
-    std::string getServer();
+    public: virtual std::string getServer() = 0;
 
-    std::string getServerPort();
+    public: virtual std::string getServerPort() = 0;
 
-    std::string getServerPath();
+    public: virtual std::string getServerPath() = 0;
 
-    std::string getUserName();
+    public: virtual std::string getUserName() = 0;
 
-    std::string getPassword();
+    public: virtual std::string getPassword() = 0;
 
-    std::string getProxyProtocol();
+    public: virtual std::string getProxyProtocol() = 0;
 
-    std::string getProxyServer();
+    public: virtual std::string getProxyServer() = 0;
 
-    std::string getProxyPath();
+    public: virtual std::string getProxyPath() = 0;
 
-    std::string getProxyPort();
+    public: virtual std::string getProxyPort() = 0;
 
-    std::string getProxyUserName();
+    public: virtual std::string getProxyUserName() = 0;
 
-    std::string getProxyPassword();
+    public: virtual std::string getProxyPassword() = 0;
 
-    std::string getTimeout();
+    public: virtual std::string getTimeout() = 0;
 
-    std::string getProxyTimeout();
+    public: virtual std::string getProxyTimeout() = 0;
 
-    std::string getSpecial1();
+    public: virtual std::string getSpecial1() = 0;
 
-    std::string getSpecial2();
+    public: virtual std::string getSpecial2() = 0;
 
-    std::string getSpecial3();
+    public: virtual std::string getSpecial3() = 0;
 
-    std::string getSpecial4();
+    public: virtual std::string getSpecial4() = 0;
 
-    std::string getSpecial5();
+    public: virtual std::string getSpecial5() = 0;
 
-    std::string getSpecial6();
+    public: virtual std::string getSpecial6() = 0;
 
-    std::string getSpecial7();
+    public: virtual std::string getSpecial7() = 0;
 
-    std::string getSpecial8();
+    public: virtual std::string getSpecial8() = 0;
 
-    std::string getSpecial9();
+    public: virtual std::string getSpecial9() = 0;
 
-    std::string getLastModified();
+    public: virtual std::string getLastModified() = 0;
 
-    std::string getTimeEntered();
+    public: virtual std::string getTimeEntered() = 0;
 
-    void setEnable(std::string value);
+    public: virtual void setEnable(std::string value) = 0;
 
-    void setStoreName(std::string value);
+    public: virtual void setStoreName(std::string value) = 0;
 
-    void setName(std::string value);
+    public: virtual void setName(std::string value) = 0;
 
-    void setPaymentMethod(std::string value);
+    public: virtual void setPaymentMethod(std::string value) = 0;
 
-    void setMode(std::string value);
+    public: virtual void setMode(std::string value) = 0;
 
-    void setTestProtocol(std::string value);
+    public: virtual void setTestProtocol(std::string value) = 0;
 
-    void setTestServer(std::string value);
+    public: virtual void setTestServer(std::string value) = 0;
 
-    void setTestPort(std::string value);
+    public: virtual void setTestPort(std::string value) = 0;
 
-    void setTestPath(std::string value);
+    public: virtual void setTestPath(std::string value) = 0;
 
-    void setServerProtocol(std::string value);
+    public: virtual void setServerProtocol(std::string value) = 0;
 
-    void setServer(std::string value);
+    public: virtual void setServer(std::string value) = 0;
 
-    void setServerPort(std::string value);
+    public: virtual void setServerPort(std::string value) = 0;
 
-    void setServerPath(std::string value);
+    public: virtual void setServerPath(std::string value) = 0;
 
-    void setUserName(std::string value);
+    public: virtual void setUserName(std::string value) = 0;
 
-    void setPassword(std::string value);
+    public: virtual void setPassword(std::string value) = 0;
 
-    void setProxyProtocol(std::string value);
+    public: virtual void setProxyProtocol(std::string value) = 0;
 
-    void setProxyServer(std::string value);
+    public: virtual void setProxyServer(std::string value) = 0;
 
-    void setProxyPath(std::string value);
+    public: virtual void setProxyPath(std::string value) = 0;
 
-    void setProxyPort(std::string value);
+    public: virtual void setProxyPort(std::string value) = 0;
 
-    void setProxyUserName(std::string value);
+    public: virtual void setProxyUserName(std::string value) = 0;
 
-    void setProxyPassword(std::string value);
+    public: virtual void setProxyPassword(std::string value) = 0;
 
-    void setTimeout(std::string value);
+    public: virtual void setTimeout(std::string value) = 0;
 
-    void setProxyTimeout(std::string value);
+    public: virtual void setProxyTimeout(std::string value) = 0;
 
-    void setSpecial1(std::string value);
+    public: virtual void setSpecial1(std::string value) = 0;
 
-    void setSpecial2(std::string value);
+    public: virtual void setSpecial2(std::string value) = 0;
 
-    void setSpecial3(std::string value);
+    public: virtual void setSpecial3(std::string value) = 0;
 
-    void setSpecial4(std::string value);
+    public: virtual void setSpecial4(std::string value) = 0;
 
-    void setSpecial5(std::string value);
+    public: virtual void setSpecial5(std::string value) = 0;
 
-    void setSpecial6(std::string value);
+    public: virtual void setSpecial6(std::string value) = 0;
 
-    void setSpecial7(std::string value);
+    public: virtual void setSpecial7(std::string value) = 0;
 
-    void setSpecial8(std::string value);
+    public: virtual void setSpecial8(std::string value) = 0;
 
-    void setSpecial9(std::string value);
+    public: virtual void setSpecial9(std::string value) = 0;
 
-    void setLastModified(std::string value);
+    public: virtual void setLastModified(std::string value) = 0;
 
-    void setTimeEntered(std::string value);
+    public: virtual void setTimeEntered(std::string value) = 0;
 
                 //@Throws(Exception.constructor)
             
-    HashMap<Object*, Object*> toHashMap(bool isEncrypted);
+    public: virtual HashMap<Object*, Object*>* toHashMap(bool isEncrypted) = 0;
 
-    BasicArrayList toVector(bool isEncrypted);
+    public: virtual BasicArrayList* toVector(bool isEncrypted) = 0;
 
 };
 

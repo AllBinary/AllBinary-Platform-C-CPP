@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -53,14 +59,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameNotificationListenerInterface.h"
-#include "GameNotificationEvent.h"
+        #include "org/allbinary/game/layer/hud/event/GameNotificationListenerInterface.h"
+#include "org/allbinary/game/layer/hud/event/GameNotificationEvent.h"
 
 class GameNotificationEventHandler: public BasicEventHandler {
 
-    private: static GameNotificationEventHandler instance() { return GameNotificationEventHandler(); }
+    private: static GameNotificationEventHandler* instance() { static std::unique_ptr<GameNotificationEventHandler> value(new GameNotificationEventHandler()); return value.get(); }
 
-    public: static GameNotificationEventHandler getInstance(){
+    public: static GameNotificationEventHandler* getInstance(){
 
 
 
@@ -79,16 +85,16 @@ private: GameNotificationEventHandler(){
 
     public: void removeAllListeners(){
 
-    EventListenerInterface eventListenerInterface = NullEventListener::NULL_EVENT_LISTENER;;
+    EventListenerInterface* eventListenerInterface = NullEventListener::NULL_EVENT_LISTENER;;
     
 
-    BasicArrayList list = this->eventListenerInterfaceList;;
+    BasicArrayList* list = this->eventListenerInterfaceList;;
     
 
-                        if(list.size() > 0)
+                        if(list->size() > 0)
                         
                                     {
-                                    eventListenerInterface= list.objectArray[0];
+                                    eventListenerInterface= dynamic_cast<EventListenerInterface*>(list->objectArray[0]);
     
 
                                     }
@@ -109,7 +115,7 @@ super.removeAllListeners();
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
 
                         if(!this->enabled)
                         
@@ -124,9 +130,9 @@ super.removeAllListeners();
                                     }
                                 
 
-    GameNotificationListenerInterface gameNotificationListenerInterface = eventListenerInterface;;
+    GameNotificationListenerInterface* gameNotificationListenerInterface = dynamic_cast<GameNotificationListenerInterface*>(eventListenerInterface);;
     
-gameNotificationListenerInterface.onGameNotificationEvent(eventObject);
+gameNotificationListenerInterface->onGameNotificationEvent(dynamic_cast<GameNotificationEvent*>(eventObject));
     
 }
 

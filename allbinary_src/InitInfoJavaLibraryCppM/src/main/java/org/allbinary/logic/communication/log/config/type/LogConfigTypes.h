@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPES_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,17 +70,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogConfigTypeFactory.h"
-#include "LogConfigTypeData.h"
-#include "LogConfigType.h"
+        #include "org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h"
+#include "org/allbinary/logic/communication/log/config/type/LogConfigTypeData.h"
+#include "org/allbinary/logic/communication/log/config/type/LogConfigType.h"
 
 class LogConfigTypes
             : public Object
          {
 
-    public: static const std::string JSP_ERROR_NO_FUNCTION = "in JSP Not In Function";
+    public: static inline const std::string JSP_ERROR_NO_FUNCTION = "in JSP Not In Function";
 
-    public: static BasicArrayList LOGGING = BasicArrayListD();
+    public: static inline BasicArrayList* LOGGING = new BasicArrayListD();
 
                     static int32_t initResult;
                 static int32_t init();
@@ -84,7 +90,7 @@ class LogConfigTypes
 
                 //@Throws(Exception.constructor)
             
-    public: static LogConfigType getInstance(Node node);
+    public: static LogConfigType* getInstance(Node* node);
 
 private: LogConfigTypes();
 

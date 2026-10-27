@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,19 +72,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "VectorAnimationUtil.h"
+        #include "org/allbinary/animation/VectorAnimationUtil.h"
 
 class VectorMirrorGenerator
             : public Object
          {
 
-    private: static VectorMirrorGenerator instance() { return VectorMirrorGenerator(); }
+    private: static VectorMirrorGenerator* instance() { static std::unique_ptr<VectorMirrorGenerator> value(new VectorMirrorGenerator()); return value.get(); }
 
-    public: static VectorMirrorGenerator getInstance();
+    public: static VectorMirrorGenerator* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const VectorAnimationUtil vectorAnimationUtil = VectorAnimationUtil::getInstance();
+    private: VectorAnimationUtil* vectorAnimationUtil = VectorAnimationUtil::getInstance();
 
 private: VectorMirrorGenerator();
 
@@ -86,7 +92,7 @@ private: VectorMirrorGenerator();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getInstance(BasicArrayList pointBasicArrayList, int32_t width);
+    public: BasicArrayList* getInstance(BasicArrayList* pointBasicArrayList, int32_t width);
 
 };
 

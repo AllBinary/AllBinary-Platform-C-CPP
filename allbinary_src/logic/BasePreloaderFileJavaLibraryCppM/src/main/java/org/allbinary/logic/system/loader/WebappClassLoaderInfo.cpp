@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/ClassLoader.h"
@@ -48,22 +54,22 @@ class WebappClassLoaderInfo
             : public Object
          {
 
-    private: static Object* classLoader = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* classLoader = NullUtil::getInstance()->NULL_OBJECT;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void setLoader(ClassLoader classLoader){
+    public: static void setLoader(ClassLoader* classLoader){
 WebappClassLoaderInfo::classLoader= classLoader;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static ClassLoader getLoader(){
+    public: static ClassLoader* getLoader(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WebappClassLoaderInfo::classLoader;
+                        return dynamic_cast<ClassLoader*>(WebappClassLoaderInfo::classLoader);
     
 }
 

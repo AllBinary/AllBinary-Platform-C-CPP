@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_STRING_COMMONPHONESTRINGS_H
         #define ORG_ALLBINARY_STRING_COMMONPHONESTRINGS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -49,9 +55,9 @@ class CommonPhoneStrings
             : public Object
          {
 
-    private: static CommonPhoneStrings instance() { return CommonPhoneStrings(); }
+    private: static CommonPhoneStrings* instance() { static std::unique_ptr<CommonPhoneStrings> value(new CommonPhoneStrings()); return value.get(); }
 
-    public: static CommonPhoneStrings getInstance();
+    public: static CommonPhoneStrings* getInstance();
 
     public: const std::string UP = "UP";
 

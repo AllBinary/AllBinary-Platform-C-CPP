@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLISIONHELPER_H
         #define ORG_ALLBINARY_GAME_COLLISION_COLLISIONHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/layer/CollidableCompositeLayer.h>
@@ -52,15 +58,15 @@ class CollisionHelper
             : public Object
          {
 
-    protected: AllBinaryLayer sourceLayerInterface;
+    protected: AllBinaryLayer* sourceLayerInterface;
 
-public: CollisionHelper(AllBinaryLayer sourceLayerInterface);
+public: CollisionHelper(AllBinaryLayer* sourceLayerInterface);
 
-    public: bool isCollidable(CollidableCompositeLayer layerInterface);
+    public: bool isCollidable(CollidableCompositeLayer* layerInterface);
 
-    public: AllBinaryLayer getOwnerLayerInterface();
+    public: AllBinaryLayer* getOwnerLayerInterface();
 
-    public: void setOwnerLayerInterface(AllBinaryLayer sourceLayerInterface);
+    public: void setOwnerLayerInterface(AllBinaryLayer* sourceLayerInterface);
 
 };
 

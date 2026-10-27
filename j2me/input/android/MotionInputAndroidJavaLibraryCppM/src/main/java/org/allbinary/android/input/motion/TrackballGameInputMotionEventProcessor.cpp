@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <android/view/MotionEvent.h>
@@ -62,46 +68,46 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionEventProcessor.h"
+        #include "org/allbinary/android/input/motion/MotionEventProcessor.h"
 
 class TrackballGameInputMotionEventProcessor: public MotionEventProcessor {
 
-    private: static TrackballGameInputMotionEventProcessor PROCESSOR = TrackballGameInputMotionEventProcessor();
+    private: static TrackballGameInputMotionEventProcessor* PROCESSOR() { static std::unique_ptr<TrackballGameInputMotionEventProcessor> value(new TrackballGameInputMotionEventProcessor()); return value.get(); }
 
-    public: static TrackballGameInputMotionEventProcessor getInstance(){
+    public: static TrackballGameInputMotionEventProcessor* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TrackballGameInputMotionEventProcessor::PROCESSOR;
+                        return TrackballGameInputMotionEventProcessor::PROCESSOR();
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const SingleKeyPressGameKeyFromMotionGestureEventListener listener = SingleKeyPressGameKeyFromMotionGestureEventListener();
+    private: SingleKeyPressGameKeyFromMotionGestureEventListener* listener = new SingleKeyPressGameKeyFromMotionGestureEventListener();
 
 private: TrackballGameInputMotionEventProcessor(){
 }
 
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    public: void process(MotionEvent motionEvent){
+    public: void process(MotionEvent* motionEvent){
 
         try {
             
-    float x = motionEvent.getX();;
+    float x = motionEvent->getX();;
     
 
-    float y = motionEvent.getY();;
+    float y = motionEvent->getY();;
     
 
                         if(x < 0)
                         
                                     {
-                                    this->listener.onCompleteMotionGestureInputEvent(LeftTrackballInputToGameKeyEventAction::getInstance());
+                                    this->listener->onCompleteMotionGestureInputEvent(LeftTrackballInputToGameKeyEventAction::getInstance());
     
 
                                     }
@@ -110,7 +116,7 @@ private: TrackballGameInputMotionEventProcessor(){
                         if(x > 0)
                         
                                     {
-                                    this->listener.onCompleteMotionGestureInputEvent(RightTrackballInputToGameKeyEventAction::getInstance());
+                                    this->listener->onCompleteMotionGestureInputEvent(RightTrackballInputToGameKeyEventAction::getInstance());
     
 
                                     }
@@ -119,7 +125,7 @@ private: TrackballGameInputMotionEventProcessor(){
                         if(y < 0)
                         
                                     {
-                                    this->listener.onCompleteMotionGestureInputEvent(UpTrackballInputToGameKeyEventAction::getInstance());
+                                    this->listener->onCompleteMotionGestureInputEvent(UpTrackballInputToGameKeyEventAction::getInstance());
     
 
                                     }
@@ -128,16 +134,16 @@ private: TrackballGameInputMotionEventProcessor(){
                         if(y > 0)
                         
                                     {
-                                    this->listener.onCompleteMotionGestureInputEvent(DownTrackballInputToGameKeyEventAction::getInstance());
+                                    this->listener->onCompleteMotionGestureInputEvent(DownTrackballInputToGameKeyEventAction::getInstance());
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->PROCESS, &e);
     
 }
 

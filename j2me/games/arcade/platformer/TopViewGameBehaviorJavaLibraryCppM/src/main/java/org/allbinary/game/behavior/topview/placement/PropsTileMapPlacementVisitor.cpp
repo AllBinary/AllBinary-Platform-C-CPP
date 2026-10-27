@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/rand/MyRandomFactory.h>
 
       
@@ -53,23 +59,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TileMapPlacementVisitor.h"
+        #include "org/allbinary/game/behavior/topview/placement/TileMapPlacementVisitor.h"
 
 class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const MyRandomFactory randomFactory = MyRandomFactory::getInstance();
+    private: MyRandomFactory* randomFactory = MyRandomFactory::getInstance();
 
-    public: void visit(TiledMap lastMap, std::vector<std::vector<int32_t>> mapData){
+    public: void visit(TiledMap* lastMap, std::vector<std::vector<int32_t>> mapData){
 
     int32_t layerIndex = 0;;
     
 
-    TileLayer tileLayer = (lastMap.getLayer(layerIndex));;
+    TileLayer* tileLayer = (dynamic_cast<TileLayer*>(lastMap->getLayer(layerIndex)));;
     
 
-    std::vector<std::vector<int32_t>> mapArray = tileLayer.getMapArray();;
+    std::vector<std::vector<int32_t>> mapArray = tileLayer->getMapArray();;
     
 
     int32_t size = mapData.size();;
@@ -113,7 +119,7 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
                         
                                     {
                                     
-    int32_t randomInt = this->randomFactory.getAbsoluteNextIntAllowZero(3);;
+    int32_t randomInt = this->randomFactory->getAbsoluteNextIntAllowZero(3);;
     
 
                         if(randomInt == 0)
@@ -150,7 +156,7 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
                         
                                     {
                                     
-    int32_t randomInt = this->randomFactory.getAbsoluteNextIntAllowZero(3);;
+    int32_t randomInt = this->randomFactory->getAbsoluteNextIntAllowZero(3);;
     
 
                         if(randomInt == 0)
@@ -194,7 +200,7 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
                         
                                     {
                                     
-    int32_t randomInt = this->randomFactory.getAbsoluteNextIntAllowZero(4);;
+    int32_t randomInt = this->randomFactory->getAbsoluteNextIntAllowZero(4);;
     
 
                         if(randomInt == 0)
@@ -247,7 +253,7 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
 
     public: void visit2(std::vector<std::vector<int32_t>> mapArray, std::vector<std::vector<int32_t>> mapData, int32_t index, int32_t index2){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
     int32_t countX = 0;;

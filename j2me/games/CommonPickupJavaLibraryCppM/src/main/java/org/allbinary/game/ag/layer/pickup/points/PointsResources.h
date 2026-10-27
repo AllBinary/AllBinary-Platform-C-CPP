@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSRESOURCES_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSRESOURCES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class PointsResources
             : public Object
          {
 
-    private: static const PointsResources SINGLETON = PointsResources();
+    private: static PointsResources* SINGLETON() { static std::unique_ptr<PointsResources> value(new PointsResources()); return value.get(); }
 
-    public: static PointsResources getInstance();
+    public: static PointsResources* getInstance();
 
     public: std::string RESOURCE = "points_drop_20_by_20.png";
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_UPDOWNVECTORAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_UPDOWNVECTORAI_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/ai/BasicAI.h>
@@ -65,15 +71,15 @@
         
 class UpDownVectorAI: public BasicAI {
 
-    private: BasicVelocityProperties velocityInterface;
+    private: BasicVelocityProperties* velocityInterface;
 
     private: int32_t index = 0;
 
-public: UpDownVectorAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: UpDownVectorAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager);
 
 };
 

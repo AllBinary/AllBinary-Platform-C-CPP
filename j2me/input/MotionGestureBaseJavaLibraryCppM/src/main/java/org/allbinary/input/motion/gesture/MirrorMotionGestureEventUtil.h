@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_MIRRORMOTIONGESTUREEVENTUTIL_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_MIRRORMOTIONGESTUREEVENTUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -62,17 +68,17 @@ class MirrorMotionGestureEventUtil
             : public Object
          {
 
-    private: static MirrorMotionGestureEventUtil instance() { return MirrorMotionGestureEventUtil(); }
+    private: static MirrorMotionGestureEventUtil* instance() { static std::unique_ptr<MirrorMotionGestureEventUtil> value(new MirrorMotionGestureEventUtil()); return value.get(); }
 
-    public: static MirrorMotionGestureEventUtil getInstance();
+    public: static MirrorMotionGestureEventUtil* getInstance();
 
-    private: MotionEventCircularPool motionEventCircularPool;
+    private: MotionEventCircularPool* motionEventCircularPool;
 
 private: MirrorMotionGestureEventUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: MotionGestureEvent mirrorVerticle(MotionGestureEvent motionGestureEvent, int32_t halfWidth);
+    public: MotionGestureEvent* mirrorVerticle(MotionGestureEvent* motionGestureEvent, int32_t halfWidth);
 
     public: int32_t getNewX(int32_t x, int32_t halfWidth);
 

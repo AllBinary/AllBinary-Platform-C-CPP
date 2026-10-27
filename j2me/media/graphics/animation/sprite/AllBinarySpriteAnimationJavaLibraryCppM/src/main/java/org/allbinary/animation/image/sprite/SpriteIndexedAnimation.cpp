@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Throwable.h"
         
             #include "java/lang/Exception.h"
@@ -78,13 +84,13 @@
         
 class SpriteIndexedAnimation: public IndexedAnimation, public ColorCompositeInterface {
 
-    protected: Sprite sprite;
+    protected: Sprite* sprite;
 
-    protected: Image image;
+    protected: Image* image;
 
-    private: std::vector<BasicColor> basicColorArray;
+    private: std::vector<BasicColor*> basicColorArray;
 
-public: SpriteIndexedAnimation(Sprite sprite, Image image, std::vector<BasicColor> basicColorArray, AnimationBehavior animationBehavior) : IndexedAnimation(animationBehavior){
+public: SpriteIndexedAnimation(Sprite* sprite, Image* image, std::vector<BasicColor*> basicColorArray, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -104,7 +110,7 @@ this->basicColorArray= basicColorArray;
                                     
 
 
-                            throw Exception(StringMaker().append(CommonLabels::getInstance().TOTAL_LABEL).appendint(this->getSize()).append("!=").appendint(this->basicColorArray.size()).toString());
+                            throw new Exception((new StringMaker())->append(CommonLabels::getInstance()->TOTAL_LABEL)->appendint(this->getSize())->append("!=")->appendint(this->basicColorArray.size())->toString());
                     
 
                                     }
@@ -124,7 +130,7 @@ this->basicColorArray= basicColorArray;
 }
 
 
-    public: void setBasicColorP(BasicColor basicColor){
+    public: void setBasicColorP(BasicColor* basicColor){
 
 
 
@@ -149,7 +155,7 @@ break;
 }
 
 
-    public: BasicColor getBasicColorP(){
+    public: BasicColor* getBasicColorP(){
 
                         if(this->basicColorArray.size() < this->getFrame())
                         
@@ -168,7 +174,7 @@ break;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicColorFactory::getInstance().WHITE;
+                        return BasicColorFactory::getInstance()->WHITE;
     
 
                         }
@@ -176,38 +182,38 @@ break;
 }
 
 
-    public: void paintFrame(Graphics graphics, int32_t frame, int32_t x, int32_t y){
+    public: void paintFrame(Graphics* graphics, int32_t frame, int32_t x, int32_t y){
 this->setFrame(frame);
     
-this->sprite.setPosition(x, y);
+this->sprite->setPosition(x, y);
     
-this->sprite.paint(graphics);
-    
-}
-
-
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
-this->sprite.setPosition(x, y);
-    
-this->sprite.paint(graphics);
+this->sprite->paint(graphics);
     
 }
 
 
-    protected: void paint(Graphics graphics){
-this->sprite.paint(graphics);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+this->sprite->setPosition(x, y);
+    
+this->sprite->paint(graphics);
+    
+}
+
+
+    protected: void paint(Graphics* graphics){
+this->sprite->paint(graphics);
     
 }
 
 
     public: void nextFrame(){
-this->sprite.nextFrame();
+this->sprite->nextFrame();
     
 }
 
 
     public: void previousFrame(){
-this->sprite.prevFrame();
+this->sprite->prevFrame();
     
 }
 
@@ -217,13 +223,13 @@ this->sprite.prevFrame();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->sprite.getRawFrameCount();;
+                        return this->sprite->getRawFrameCount();;
     
 }
 
 
     public: void setFrame(int32_t frame){
-this->sprite.setFrame(frame);
+this->sprite->setFrame(frame);
     
 }
 
@@ -233,14 +239,14 @@ this->sprite.setFrame(frame);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->sprite.getFrame();;
+                        return this->sprite->getFrame();;
     
 }
 
 
     public: bool isLastFrame(){
 
-                        if(this->sprite.getFrame() == this->getSize() -1)
+                        if(this->sprite->getFrame() == this->getSize() -1)
                         
                                     {
                                     

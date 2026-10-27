@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_CANVAS_FULLSCREENINTERFACE_H
         #define ORG_ALLBINARY_CANVAS_FULLSCREENINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -44,17 +50,17 @@
         
 class FullScreenInterface {
 
-    bool isFullScreenMode();
+    public: virtual bool isFullScreenMode() = 0;
 
-    void setFullScreenMode(bool mode);
-
-                //@Throws(Exception.constructor)
-            
-    void stopWaiting();
+    public: virtual void setFullScreenMode(bool mode) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void waitOnNotify(int32_t wait);
+    public: virtual void stopWaiting() = 0;
+
+                //@Throws(Exception.constructor)
+            
+    public: virtual void waitOnNotify(int32_t wait) = 0;
 
 };
 

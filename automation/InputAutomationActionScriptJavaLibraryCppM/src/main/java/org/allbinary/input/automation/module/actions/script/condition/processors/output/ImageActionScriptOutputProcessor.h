@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGEACTIONSCRIPTOUTPUTPROCESSOR_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGEACTIONSCRIPTOUTPUTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,8 +72,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageTypes.h"
-#include "ImageActionScriptOutputInterface.h"
+        #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageTypes.h"
+#include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutputInterface.h"
 
 class ImageActionScriptOutputProcessor
             : public Object
@@ -75,9 +81,9 @@ class ImageActionScriptOutputProcessor
 
                 //@Throws(Exception.constructor)
             
-    public: static void process(ImageActionScriptOutputInterface imageActionScriptOutputInterface, Long frame);
+    public: static void process(ImageActionScriptOutputInterface* imageActionScriptOutputInterface, int64_t frame);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: ImageActionScriptOutputProcessor();
 

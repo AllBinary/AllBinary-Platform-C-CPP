@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_PATH_ABPATH_H
         #define ORG_ALLBINARY_LOGIC_IO_PATH_ABPATH_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,24 +69,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbPathData.h"
-#include "PathUtil.h"
+        #include "org/allbinary/logic/io/path/AbPathData.h"
+#include "org/allbinary/logic/io/path/PathUtil.h"
 
 class AbPath
             : public Object
          {
 
-    public: static AbPath createAbPath();
+    public: static AbPath* createAbPath();
 
-    private: static const std::string NETWORK_SEP = ":/";
+    private: static inline const std::string NETWORK_SEP = ":/";
 
-    private: const CommonSeps commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps = CommonSeps::getInstance();
 
-    private: const AbPathData abPathData = AbPathData::getInstance();
+    private: AbPathData* abPathData = AbPathData::getInstance();
 
-    private: const PathUtil abPathUtil = PathUtil::getInstance();
+    private: PathUtil* abPathUtil = PathUtil::getInstance();
 
-    private: const std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;
+    private: const std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;
 
     protected: std::string schema = this->EMPTY_STRING;
 

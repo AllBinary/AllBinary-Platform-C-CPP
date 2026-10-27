@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -48,54 +54,54 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UpgradableRTSLayerHudPaintable.h"
-#include "RTSLayer.h"
+        #include "org/allbinary/game/layer/UpgradableRTSLayerHudPaintable.h"
+#include "org/allbinary/game/layer/RTSLayer.h"
 
 class RTSLayerCompositePaintable: public Paintable {
 
-    private: std::string upgradeCost = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string upgradeCost = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: std::string downGradeCost = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string downGradeCost = StringUtil::getInstance()->EMPTY_STRING;
 
     private: const std::string UPGRADE = "Up: $";
 
     private: const std::string DOWNGRADE = "Down: $-";
 
-    protected: UpgradableRTSLayerHudPaintable upgradableRTSLayerHudPaintable;
+    protected: UpgradableRTSLayerHudPaintable* upgradableRTSLayerHudPaintable;
 
-public: RTSLayerCompositePaintable(UpgradableRTSLayerHudPaintable upgradableRTSLayerHudPaintable){
+public: RTSLayerCompositePaintable(UpgradableRTSLayerHudPaintable* upgradableRTSLayerHudPaintable){
 this->upgradableRTSLayerHudPaintable= upgradableRTSLayerHudPaintable;
     
 }
 
 
-    public: void update(RTSLayer rtsLayer){
+    public: void update(RTSLayer* rtsLayer){
 
-                        if(rtsLayer.isUpgradeable())
+                        if(rtsLayer->isUpgradeable())
                         
                                     {
-                                    this->setUpgradeCost(StringMaker().append(this->UPGRADE).appendint(rtsLayer.getUpgradeCost()).toString());
+                                    this->setUpgradeCost((new StringMaker())->append(this->UPGRADE)->appendint(rtsLayer->getUpgradeCost())->toString());
     
 
                                     }
                                 
                         else {
-                            this->setUpgradeCost(StringUtil::getInstance().EMPTY_STRING);
+                            this->setUpgradeCost(StringUtil::getInstance()->EMPTY_STRING);
     
 
                         }
                             
 
-                        if(rtsLayer.isDowngradeable())
+                        if(rtsLayer->isDowngradeable())
                         
                                     {
-                                    this->setDownGradeCost(StringMaker().append(this->DOWNGRADE).appendint(rtsLayer.getDowngradeCost()).toString());
+                                    this->setDownGradeCost((new StringMaker())->append(this->DOWNGRADE)->appendint(rtsLayer->getDowngradeCost())->toString());
     
 
                                     }
                                 
                         else {
-                            this->setDownGradeCost(StringUtil::getInstance().EMPTY_STRING);
+                            this->setDownGradeCost(StringUtil::getInstance()->EMPTY_STRING);
     
 
                         }
@@ -103,10 +109,10 @@ this->upgradableRTSLayerHudPaintable= upgradableRTSLayerHudPaintable;
 }
 
 
-    public: void paint(Graphics graphics){
-graphics.drawString(this->getDownGradeCost(), this->upgradableRTSLayerHudPaintable.textX, this->upgradableRTSLayerHudPaintable.costY1, 0);
+    public: void paint(Graphics* graphics){
+graphics->drawString(this->getDownGradeCost(), this->upgradableRTSLayerHudPaintable->textX, this->upgradableRTSLayerHudPaintable->costY1, 0);
     
-graphics.drawString(this->getUpgradeCost(), this->upgradableRTSLayerHudPaintable.textX, this->upgradableRTSLayerHudPaintable.costY, 0);
+graphics->drawString(this->getUpgradeCost(), this->upgradableRTSLayerHudPaintable->textX, this->upgradableRTSLayerHudPaintable->costY, 0);
     
 }
 

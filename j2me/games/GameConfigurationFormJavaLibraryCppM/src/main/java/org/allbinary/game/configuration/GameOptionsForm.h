@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -117,22 +125,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameConfigurationTextInput.h"
-#include "GameConfigurationSingleton.h"
-#include "GameConfiguration.h"
-#include "GameConfigurationGauge.h"
-#include "GameConfigurationUtil.h"
-#include "GameConfigurationCentral.h"
+        #include "org/allbinary/game/configuration/GameConfigurationTextInput.h"
+#include "org/allbinary/game/configuration/GameConfigurationSingleton.h"
+#include "org/allbinary/game/configuration/GameConfiguration.h"
+#include "org/allbinary/game/configuration/GameConfigurationGauge.h"
+#include "org/allbinary/game/configuration/GameConfigurationUtil.h"
+#include "org/allbinary/game/configuration/GameConfigurationCentral.h"
 
 class GameOptionsForm: public CommandForm {
 
-    private: const MEUtil meUtil = MEUtil::getInstance();
+    private: MEUtil* meUtil = MEUtil::getInstance();
 
-public: GameOptionsForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
+public: GameOptionsForm(CommandListener* commandListener, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor);
 
                 //@Throws(Exception.constructor)
             
-    public: void closeClientInformation(AbeClientInformationInterface abeClientInformation);
+    public: void closeClientInformation(AbeClientInformationInterface* abeClientInformation);
 
     private: void addTextFieldsIfSimulated();
 
@@ -140,11 +148,11 @@ public: GameOptionsForm(CommandListener commandListener, std::string title, Basi
 
     private: void addConfiguration();
 
-    public: void initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener* cmdListener);
 
                 //@Throws(Exception.constructor)
             
-    public: void save(AbeClientInformationInterface abeClientInformation);
+    public: void save(AbeClientInformationInterface* abeClientInformation);
 
 };
 

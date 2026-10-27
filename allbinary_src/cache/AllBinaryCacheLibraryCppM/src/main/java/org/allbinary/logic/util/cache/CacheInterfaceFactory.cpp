@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -40,9 +46,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CacheInterface.h"
-#include "CacheType.h"
-#include "CachePolicy.h"
+        #include "org/allbinary/logic/util/cache/CacheInterface.h"
+#include "org/allbinary/logic/util/cache/CacheType.h"
+#include "org/allbinary/logic/util/cache/CachePolicy.h"
 
 class CacheInterfaceFactory
             : public Object
@@ -50,11 +56,11 @@ class CacheInterfaceFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static CacheInterface getInstance(CacheType cacheType, CachePolicy cachePolicy){
+    public: static CacheInterface* getInstance(CacheType* cacheType, CachePolicy* cachePolicy){
 
 
 
-                            throw Exception("No such " +cacheType.toString());
+                            throw new Exception("No such " +cacheType->toString());
                     
 }
 

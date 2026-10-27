@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/util/visitor/Visitor.h>
@@ -41,17 +47,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SelectRTSLayerVisitorFactoryInterface.h"
-#include "SelectRTSLayerVisitor.h"
-#include "SelectedRTSLayersPlayerGameInput.h"
+        #include "org/allbinary/game/input/SelectRTSLayerVisitorFactoryInterface.h"
+#include "org/allbinary/game/input/SelectRTSLayerVisitor.h"
+#include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h"
 
 class SelectRTSLayerVisitorFactory
             : public Object
-        : public SelectRTSLayerVisitorFactoryInterface {
+        , public SelectRTSLayerVisitorFactoryInterface {
 
-    private: static SelectRTSLayerVisitorFactory instance() { return SelectRTSLayerVisitorFactory(); }
+    private: static SelectRTSLayerVisitorFactory* instance() { static std::unique_ptr<SelectRTSLayerVisitorFactory> value(new SelectRTSLayerVisitorFactory()); return value.get(); }
 
-    public: static SelectRTSLayerVisitorFactory getInstance(){
+    public: static SelectRTSLayerVisitorFactory* getInstance(){
 
 
 
@@ -65,12 +71,12 @@ private: SelectRTSLayerVisitorFactory(){
 }
 
 
-    public: Visitor create(SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput){
+    public: Visitor* create(SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SelectRTSLayerVisitor();
+                        return new SelectRTSLayerVisitor();
     
 }
 

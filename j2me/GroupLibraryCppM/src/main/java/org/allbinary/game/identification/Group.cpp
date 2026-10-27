@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -44,18 +50,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GroupInterface.h"
-#include "GroupCommonFactory.h"
+        #include "org/allbinary/game/identification/GroupInterface.h"
+#include "org/allbinary/game/identification/GroupCommonFactory.h"
 
 class Group
             : public Object
-        : public GroupInterface {
+        , public GroupInterface {
 
-    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
 
     private: int16_t teamId;
 
-    private: std::string string = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string string = StringUtil::getInstance()->EMPTY_STRING;
 
 public: Group(std::string teamName, int16_t teamId){
 this->teamId= teamId;
@@ -79,20 +85,20 @@ this->setName(teamName);
 this->name= name;
     
 
-    GroupCommonFactory groupCommonFactory = GroupCommonFactory::getInstance();;
+    GroupCommonFactory* groupCommonFactory = GroupCommonFactory::getInstance();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(groupCommonFactory.GROUP_NAME_LABEL);
+stringBuffer->append(groupCommonFactory->GROUP_NAME_LABEL);
     
-stringBuffer.append(this->name);
+stringBuffer->append(this->name);
     
-stringBuffer.append(groupCommonFactory.ID_LABEL);
+stringBuffer->append(groupCommonFactory->ID_LABEL);
     
-stringBuffer.appendshort(this->teamId);
+stringBuffer->appendshort(this->teamId);
     
-this->string= stringBuffer.toString();
+this->string= stringBuffer->toString();
     
 }
 

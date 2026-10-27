@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -102,13 +108,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TrueTypeFontUtilBase.h"
+        #include "org/allbinary/emulator/device/TrueTypeFontUtilBase.h"
 //TTF
 class TrueTypeFontUtil: public TrueTypeFontUtilBase {
 
-    private: static TrueTypeFontUtil instance() { return TrueTypeFontUtil(); }
+    private: static TrueTypeFontUtil* instance() { static std::unique_ptr<TrueTypeFontUtil> value(new TrueTypeFontUtil()); return value.get(); }
 
-    public: static TrueTypeFontUtil getInstance(){
+    public: static TrueTypeFontUtil* getInstance(){
 
 
 
@@ -118,11 +124,11 @@ class TrueTypeFontUtil: public TrueTypeFontUtilBase {
 }
 
 
-    private: const PreResourceImageUtil preResourceImageUtil = PreResourceImageUtil::getInstance();
+    private: PreResourceImageUtil* preResourceImageUtil = PreResourceImageUtil::getInstance();
 
     private: const std::vector<float> widthFloatArray;
 
-    public: OpenGLESImage fontImage = OpenGLESImage::NULL_OPENGL_IMAGE;
+    public: OpenGLESImage* fontImage = OpenGLESImage::NULL_OPENGL_IMAGE;
 
     private: float widthScale;
 
@@ -584,7 +590,7 @@ this->widthScale= (this->scale == 2)
 }
 
 
-    public: Image getFontBitmapGL(GL10 gl, std::string filename, int32_t cellSize, BasicColor basicColor){
+    public: Image* getFontBitmapGL(GL10* gl, std::string filename, int32_t cellSize, BasicColor* basicColor){
 
         try {
             
@@ -592,41 +598,41 @@ this->widthScale= (this->scale == 2)
                         
                                     {
                                     
-    CanvasStrings canvasStrings = CanvasStrings::getInstance();;
+    CanvasStrings* canvasStrings = CanvasStrings::getInstance();;
     
 
-    OpenGLCapabilities openGLCapabilities = OpenGLCapabilities::getInstance();;
+    OpenGLCapabilities* openGLCapabilities = OpenGLCapabilities::getInstance();;
     
 
-                        if(openGLCapabilities.isTextureSizeValid(1024) && this->scale == 2)
+                        if(openGLCapabilities->isTextureSizeValid(1024) && this->scale == 2)
                         
                                     {
                                     
     std::string FONT_ATLAS_1024 = "/font_1024.png";;
     
 
-    Image image = Image::createImage(ResourceUtil::getInstance().getResourceAsStream(FONT_ATLAS_1024));;
+    Image* image = Image::createImage(ResourceUtil::getInstance()->getResourceAsStream(FONT_ATLAS_1024));;
     
-image.setName(canvasStrings.FONT_ATLAS);
+image->setName(canvasStrings->FONT_ATLAS);
     
-this->fontImage= this->preResourceImageUtil.encapsulate(image);
+this->fontImage= dynamic_cast<OpenGLESImage*>(this->preResourceImageUtil->encapsulate(image));
     
 
                                     }
                                 
                              else 
-                        if(openGLCapabilities.isTextureSizeValid(512))
+                        if(openGLCapabilities->isTextureSizeValid(512))
                         
                                     {
                                     
     std::string FONT_ATLAS_512 = "/font_512.png";;
     
 
-    Image image = Image::createImage(ResourceUtil::getInstance().getResourceAsStream(FONT_ATLAS_512));;
+    Image* image = Image::createImage(ResourceUtil::getInstance()->getResourceAsStream(FONT_ATLAS_512));;
     
-image.setName(canvasStrings.FONT_ATLAS);
+image->setName(canvasStrings->FONT_ATLAS);
     
-this->fontImage= this->preResourceImageUtil.encapsulate(image);
+this->fontImage= dynamic_cast<OpenGLESImage*>(this->preResourceImageUtil->encapsulate(image));
     
 
                                     }
@@ -636,11 +642,11 @@ this->fontImage= this->preResourceImageUtil.encapsulate(image);
     std::string FONT_ATLAS_512 = "/font_512.png";;
     
 
-    Image image = Image::createImage(ResourceUtil::getInstance().getResourceAsStream(FONT_ATLAS_512));;
+    Image* image = Image::createImage(ResourceUtil::getInstance()->getResourceAsStream(FONT_ATLAS_512));;
     
-image.setName(canvasStrings.FONT_ATLAS);
+image->setName(canvasStrings->FONT_ATLAS);
     
-this->fontImage= this->preResourceImageUtil.encapsulate(image);
+this->fontImage= dynamic_cast<OpenGLESImage*>(this->preResourceImageUtil->encapsulate(image));
     
 
                         }
@@ -666,17 +672,17 @@ this->fontImage= this->preResourceImageUtil.encapsulate(image);
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil::putOE(commonStrings.EXCEPTION, this, commonStrings.EXCEPTION, e);
+PreLogUtil::putOE(commonStrings->EXCEPTION, this, commonStrings->EXCEPTION, &e);
     
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -685,30 +691,30 @@ PreLogUtil::putOE(commonStrings.EXCEPTION, this, commonStrings.EXCEPTION, e);
 
     public: void saveFontAtlasAsFile(){
 
-    Image image = this->getFontBitmap(
-                            nullptr, cellSize, BasicColorFactory::getInstance().WHITE);;
+    Image* image = this->getFontBitmap(
+                            nullptr, cellSize, BasicColorFactory::getInstance()->WHITE);;
     
 
-    ImageLoader imageLoader = ImageLoader();;
+    ImageLoader* imageLoader = new ImageLoader();;
     
 
-    ImageData imageData = image = imageimage
+    ImageData* imageData = image = dynamic_cast<SwtMutableImage*>(imageimage)
 image.
-                    image.getImageData();;
+                    image->getImageData();;
     
-imageData.transparentPixel= imageData.getPixel(0, 0);
+imageData->transparentPixel= imageData->getPixel(0, 0);
     
-imageLoader.data= 
+imageLoader->data= 
                                                 {
                                                     imageData
                                                 };
     
-imageLoader.save(CommonSeps::getInstance().PERIOD +CanvasStrings::getInstance().FONT_ATLAS, SWT::IMAGE_PNG);
+imageLoader->save(CommonSeps::getInstance()->PERIOD +CanvasStrings::getInstance()->FONT_ATLAS, SWT::IMAGE_PNG);
     
 }
 
 
-    public: Image getFontBitmap(std::string filename, int32_t cellSize, BasicColor basicColor){
+    public: Image* getFontBitmap(std::string filename, int32_t cellSize, BasicColor* basicColor){
 
     int32_t cellsPerRow2 = this->CELLS_PER_ROW *2;;
     
@@ -728,18 +734,18 @@ imageLoader.save(CommonSeps::getInstance().PERIOD +CanvasStrings::getInstance().
     int32_t cellsPerRow7 = this->CELLS_PER_ROW *7;;
     
 
-    Image image = Image::createImage(textureSize, textureSize);;
+    Image* image = Image::createImage(textureSize, textureSize);;
     
 
-    Graphics graphics = image.getGraphics();;
+    Graphics* graphics = image->getGraphics();;
     
-graphics.setColor(basicColor.intValue());
+graphics->setColor(basicColor->intValue());
     
 
     int32_t biggestHeight = 0;;
     
 
-    Rectangle bounds = Rectangle(PointFactory::getInstance().createXY(0, 0), cellSize, cellSize);;
+    Rectangle* bounds = new Rectangle(PointFactory::getInstance()->createXY(0, 0), cellSize, cellSize);;
     
 
     int32_t x= 0;;
@@ -756,11 +762,11 @@ graphics.setColor(basicColor.intValue());
         {
 this->characterArray[0]= pattern[index];
     
-_characterWidth[index]= bounds.getMaxX();
+_characterWidth[index]= bounds->getMaxX();
     
 
-                        if(bounds.getMaxY() -bounds.getPoint().getX() > biggestHeight)
-                        biggestHeight= bounds.getMaxY() -bounds.getPoint().getX();
+                        if(bounds->getMaxY() -bounds->getPoint()->getX() > biggestHeight)
+                        biggestHeight= bounds->getMaxY() -bounds->getPoint()->getX();
                                 
 x= (index % this->CELLS_PER_ROW) *cellSize;
     
@@ -802,7 +808,7 @@ y += cellSize;
     
 y -= (cellSize>>2);
     
-graphics.drawChar(this->characterArray[0], x, y, 0);
+graphics->drawChar(this->characterArray[0], x, y, 0);
     
 }
 
@@ -817,7 +823,7 @@ graphics.drawChar(this->characterArray[0], x, y, 0);
 
     public: std::vector<int32_t> getFontWidths(std::string filename, int32_t fontSize){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -121,40 +127,40 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PlayerGameInput.h"
-#include "InputFactory.h"
-#include "GameInputProcessor.h"
-#include "SelectRTSLayerVisitorFactoryInterface.h"
-#include "RTSPlayerGameInput.h"
-#include "SelectedRTSLayersPlayerUpgradeGameInputProcessor.h"
-#include "SelectedRTSLayersPlayerDowngradeGameInputProcessor.h"
-#include "GameInputProcessorUtil.h"
+        #include "org/allbinary/game/input/PlayerGameInput.h"
+#include "org/allbinary/game/input/InputFactory.h"
+#include "org/allbinary/game/input/GameInputProcessor.h"
+#include "org/allbinary/game/input/SelectRTSLayerVisitorFactoryInterface.h"
+#include "org/allbinary/game/input/RTSPlayerGameInput.h"
+#include "org/allbinary/game/input/SelectedRTSLayersPlayerUpgradeGameInputProcessor.h"
+#include "org/allbinary/game/input/SelectedRTSLayersPlayerDowngradeGameInputProcessor.h"
+#include "org/allbinary/game/input/GameInputProcessorUtil.h"
 
 class SelectedRTSLayersPlayerGameInput: public PlayerGameInput {
 
-    protected: const std::vector<GameInputProcessor> inputProcessorArray = std::vector<GameInputProcessor>(InputFactory::getInstance().MAX);
+    protected: const std::vector<GameInputProcessor*> inputProcessorArray = std::vector<GameInputProcessor*>(InputFactory::getInstance()->MAX);
 
-    private: BasicArrayList list;
+    private: BasicArrayList* list;
 
-    protected: const bool isSingleKeyProcessing = Features::getInstance().isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_REPEAT_PRESS) || Features::getInstance().isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_PRESS);
+    protected: const bool isSingleKeyProcessing = Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_REPEAT_PRESS) || Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_PRESS);
 
-    private: BasicArrayList selectedRTSLayersList = BasicArrayListD();
+    private: BasicArrayList* selectedRTSLayersList = new BasicArrayListD();
 
-    private: BasicArrayList preSelectedRTSLayersList = BasicArrayListD();
+    private: BasicArrayList* preSelectedRTSLayersList = new BasicArrayListD();
 
-    private: BasicArrayList paintSelectedRTSLayersList = BasicArrayListUtil::getInstance().getImmutableInstance();
+    private: BasicArrayList* paintSelectedRTSLayersList = BasicArrayListUtil::getInstance()->getImmutableInstance();
 
-    private: RTSPlayerLayerInterface rtsPlayerLayerInterface;
+    private: RTSPlayerLayerInterface* rtsPlayerLayerInterface;
 
-    private: Visitor selectRTSLayerVisitorInterface;
+    private: Visitor* selectRTSLayerVisitorInterface;
 
-    private: GameNotificationEvent upgradeGameNotificationEvent;
+    private: GameNotificationEvent* upgradeGameNotificationEvent;
 
-    private: GameNotificationEvent noMoneyGameNotificationEvent;
+    private: GameNotificationEvent* noMoneyGameNotificationEvent;
 
-    private: GameNotificationEvent downgradeGameNotificationEvent;
+    private: GameNotificationEvent* downgradeGameNotificationEvent;
 
-public: SelectedRTSLayersPlayerGameInput(RTSLayerInfoPaintable towerInfoPaintable, RTSPlayerLayerInterface rtsPlayerLayerInterface, BasicArrayList list, int32_t playerInputId, SelectRTSLayerVisitorFactoryInterface selectRTSLayerVisitorFactoryInterface) : PlayerGameInput(list, BasicArrayListD(), playerInputId){
+public: SelectedRTSLayersPlayerGameInput(RTSLayerInfoPaintable* towerInfoPaintable, RTSPlayerLayerInterface* rtsPlayerLayerInterface, BasicArrayList* list, int32_t playerInputId, SelectRTSLayerVisitorFactoryInterface* selectRTSLayerVisitorFactoryInterface) : PlayerGameInput(list, new BasicArrayListD(), playerInputId){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -167,44 +173,44 @@ this->rtsPlayerLayerInterface= rtsPlayerLayerInterface;
     
 this->list= list;
     
-this->selectRTSLayerVisitorInterface= selectRTSLayerVisitorFactoryInterface.create(this);
+this->selectRTSLayerVisitorInterface= selectRTSLayerVisitorFactoryInterface->create(this);
     
 
-    SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
+    SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
 
-    BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();;
+    BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();;
     
-this->upgradeGameNotificationEvent= GameNotificationEvent(this, RTSGameStrings::getInstance().UPGRADE, smallIntegerSingletonFactory.getAt(2), basicColorFactory.PINK, BooleanFactory::getInstance().FALSE);
+this->upgradeGameNotificationEvent= new GameNotificationEvent(this, RTSGameStrings::getInstance()->UPGRADE, smallIntegerSingletonFactory->getAt(2), basicColorFactory->PINK, BooleanFactory::getInstance()->FALSE);
     
-this->noMoneyGameNotificationEvent= GameNotificationEvent(this, RTSGameStrings::getInstance().NO_MONEY, smallIntegerSingletonFactory.getAt(2), basicColorFactory.PINK, BooleanFactory::getInstance().FALSE);
+this->noMoneyGameNotificationEvent= new GameNotificationEvent(this, RTSGameStrings::getInstance()->NO_MONEY, smallIntegerSingletonFactory->getAt(2), basicColorFactory->PINK, BooleanFactory::getInstance()->FALSE);
     
-this->downgradeGameNotificationEvent= GameNotificationEvent(this, RTSGameStrings::getInstance().DOWNGRADE, smallIntegerSingletonFactory.getAt(2), basicColorFactory.PINK, BooleanFactory::getInstance().FALSE);
+this->downgradeGameNotificationEvent= new GameNotificationEvent(this, RTSGameStrings::getInstance()->DOWNGRADE, smallIntegerSingletonFactory->getAt(2), basicColorFactory->PINK, BooleanFactory::getInstance()->FALSE);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager){
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = allBinaryGameLayerManager;;
+    GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(allBinaryGameLayerManager);;
     
 
-    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
+    BasicGeographicMap* geographicMapInterface = geographicMapCompositeInterface->getGeographicMapInterface()[0];;
     
-this->upgradeGameNotificationEvent.setBasicColorP(geographicMapInterface.getForegroundBasicColor());
+this->upgradeGameNotificationEvent->setBasicColorP(geographicMapInterface->getForegroundBasicColor());
     
-this->noMoneyGameNotificationEvent.setBasicColorP(geographicMapInterface.getForegroundBasicColor());
+this->noMoneyGameNotificationEvent->setBasicColorP(geographicMapInterface->getForegroundBasicColor());
     
-this->downgradeGameNotificationEvent.setBasicColorP(geographicMapInterface.getForegroundBasicColor());
+this->downgradeGameNotificationEvent->setBasicColorP(geographicMapInterface->getForegroundBasicColor());
     
 }
 
 
-    public: bool isSelected(RTSLayer rtsLayer){
+    public: bool isSelected(RTSLayer* rtsLayer){
 
-                        if(this->selectedRTSLayersList.contains(rtsLayer))
+                        if(this->selectedRTSLayersList->contains(rtsLayer))
                         
                                     {
                                     
@@ -240,38 +246,38 @@ this->downgradeGameNotificationEvent.setBasicColorP(geographicMapInterface.getFo
 
 
                         for (
-    int32_t index = this->selectedRTSLayersList.size() -1;index >= 0; index--)
+    int32_t index = this->selectedRTSLayersList->size() -1;index >= 0; index--)
         {
 
-    RTSLayer rtsLayer = this->selectedRTSLayersList.get(index);;
+    RTSLayer* rtsLayer = dynamic_cast<RTSLayer*>(this->selectedRTSLayersList->get(index));;
     
 
-                        if(rtsLayer.isUpgradeable())
+                        if(rtsLayer->isUpgradeable())
                         
                                     {
                                     
-    Capital capital = this->rtsPlayerLayerInterface.getCapital();;
+    Capital* capital = this->rtsPlayerLayerInterface->getCapital();;
     
 
-    int32_t upgradeCost = rtsLayer.getUpgradeCost();;
+    int32_t upgradeCost = rtsLayer->getUpgradeCost();;
     
 
-                        if(upgradeCost <= capital.getTotalMoney())
+                        if(upgradeCost <= capital->getTotalMoney())
                         
                                     {
                                     anyChanged= true;
     
-this->rtsPlayerLayerInterface.add(UpgradeSound::getInstance());
+this->rtsPlayerLayerInterface->add(UpgradeSound::getInstance());
     
-rtsLayer.upgrade();
+rtsLayer->upgrade();
     
-capital.removeMoney(upgradeCost);
+capital->removeMoney(upgradeCost);
     
 
-                        if(!this->rtsPlayerLayerInterface.implmentsArtificialIntelligenceCompositeInterface())
+                        if(!this->rtsPlayerLayerInterface->implmentsArtificialIntelligenceCompositeInterface())
                         
                                     {
-                                    GameNotificationEventHandler::getInstance().fireEvent(this->upgradeGameNotificationEvent);
+                                    GameNotificationEventHandler::getInstance()->fireEvent(this->upgradeGameNotificationEvent);
     
 
                                     }
@@ -280,13 +286,13 @@ capital.removeMoney(upgradeCost);
                                     }
                                 
                         else {
-                            this->rtsPlayerLayerInterface.add(ErrorSound::getInstance());
+                            this->rtsPlayerLayerInterface->add(ErrorSound::getInstance());
     
 
-                        if(!this->rtsPlayerLayerInterface.implmentsArtificialIntelligenceCompositeInterface())
+                        if(!this->rtsPlayerLayerInterface->implmentsArtificialIntelligenceCompositeInterface())
                         
                                     {
-                                    GameNotificationEventHandler::getInstance().fireEvent(this->noMoneyGameNotificationEvent);
+                                    GameNotificationEventHandler::getInstance()->fireEvent(this->noMoneyGameNotificationEvent);
     
 
                                     }
@@ -304,9 +310,9 @@ capital.removeMoney(upgradeCost);
                         
                                     {
                                     
-    RTSPlayerGameInput rtsPlayerGameInput = (this->rtsPlayerLayerInterface.getPlayerGameInput());;
+    RTSPlayerGameInput* rtsPlayerGameInput = (dynamic_cast<RTSPlayerGameInput*>(this->rtsPlayerLayerInterface->getPlayerGameInput()));;
     
-rtsPlayerGameInput.updatePaintable();
+rtsPlayerGameInput->updatePaintable();
     
 
                                     }
@@ -325,34 +331,34 @@ rtsPlayerGameInput.updatePaintable();
 
 
                         for (
-    int32_t index = this->selectedRTSLayersList.size();--index >= 0; )
+    int32_t index = this->selectedRTSLayersList->size();--index >= 0; )
         {
 
-    RTSLayer rtsLayer = this->selectedRTSLayersList.get(index);;
+    RTSLayer* rtsLayer = dynamic_cast<RTSLayer*>(this->selectedRTSLayersList->get(index));;
     
 
-                        if(rtsLayer.isDowngradeable())
+                        if(rtsLayer->isDowngradeable())
                         
                                     {
                                     anyChanged= true;
     
-this->rtsPlayerLayerInterface.add(DowngradeSound::getInstance());
+this->rtsPlayerLayerInterface->add(DowngradeSound::getInstance());
     
 
-    int32_t downgradeCost = rtsLayer.getDowngradeCost();;
+    int32_t downgradeCost = rtsLayer->getDowngradeCost();;
     
-rtsLayer.downgrade();
-    
-
-    Capital capital = this->rtsPlayerLayerInterface.getCapital();;
-    
-capital.addMoney(downgradeCost);
+rtsLayer->downgrade();
     
 
-                        if(!this->rtsPlayerLayerInterface.implmentsArtificialIntelligenceCompositeInterface())
+    Capital* capital = this->rtsPlayerLayerInterface->getCapital();;
+    
+capital->addMoney(downgradeCost);
+    
+
+                        if(!this->rtsPlayerLayerInterface->implmentsArtificialIntelligenceCompositeInterface())
                         
                                     {
-                                    GameNotificationEventHandler::getInstance().fireEvent(this->downgradeGameNotificationEvent);
+                                    GameNotificationEventHandler::getInstance()->fireEvent(this->downgradeGameNotificationEvent);
     
 
                                     }
@@ -367,9 +373,9 @@ capital.addMoney(downgradeCost);
                         
                                     {
                                     
-    RTSPlayerGameInput rtsPlayerGameInput = (this->rtsPlayerLayerInterface.getPlayerGameInput());;
+    RTSPlayerGameInput* rtsPlayerGameInput = (dynamic_cast<RTSPlayerGameInput*>(this->rtsPlayerLayerInterface->getPlayerGameInput()));;
     
-rtsPlayerGameInput.updatePaintable();
+rtsPlayerGameInput->updatePaintable();
     
 
                                     }
@@ -378,9 +384,9 @@ rtsPlayerGameInput.updatePaintable();
 
 
     public: void initInputProcessors(){
-this->inputProcessorArray[Canvas::KEY_NUM1]= SelectedRTSLayersPlayerUpgradeGameInputProcessor(this);
+this->inputProcessorArray[Canvas::KEY_NUM1]= new SelectedRTSLayersPlayerUpgradeGameInputProcessor(this);
     
-this->inputProcessorArray[Canvas::KEY_NUM3]= SelectedRTSLayersPlayerDowngradeGameInputProcessor(this);
+this->inputProcessorArray[Canvas::KEY_NUM3]= new SelectedRTSLayersPlayerDowngradeGameInputProcessor(this);
     
 GameInputProcessorUtil::init(this->inputProcessorArray);
     
@@ -406,11 +412,11 @@ GameInputProcessorUtil::init(this->inputProcessorArray);
 
                 //@Throws(Exception.constructor)
             
-    public: void processInput(AllBinaryLayerManager layerManager){
+    public: void processInput(AllBinaryLayerManager* layerManager){
 
         try {
             
-    int32_t size = this->list.size();;
+    int32_t size = this->list->size();;
     
 
     int32_t key = 0;;
@@ -423,9 +429,9 @@ GameInputProcessorUtil::init(this->inputProcessorArray);
     int32_t index = 0;index < size; index++)
         {
 
-    GameKeyEvent gameKeyEvent = this->list.get(index);;
+    GameKeyEvent* gameKeyEvent = dynamic_cast<GameKeyEvent*>(this->list->get(index));;
     
-key= gameKeyEvent.getKey();
+key= gameKeyEvent->getKey();
     
 this->processInputKey(key);
     
@@ -448,16 +454,16 @@ this->processInputKey(key);
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PROCESS_INPUT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PROCESS_INPUT, &e);
     
 }
 
 }
 
 
-    public: BasicArrayList getSelectedBasicArrayList(){
+    public: BasicArrayList* getSelectedBasicArrayList(){
 
 
 
@@ -467,8 +473,8 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PR
 }
 
 
-    public: void addSelectedRTSLayer(RTSLayer selectedLayer){
-this->paintSelectedRTSLayersList= BasicArrayListUtil::getInstance().getImmutableInstance();
+    public: void addSelectedRTSLayer(RTSLayer* selectedLayer){
+this->paintSelectedRTSLayersList= BasicArrayListUtil::getInstance()->getImmutableInstance();
     
 
                         if(selectedLayer == CollidableDestroyableDamageableLayer::getNullInstance())
@@ -476,17 +482,17 @@ this->paintSelectedRTSLayersList= BasicArrayListUtil::getInstance().getImmutable
                                     {
                                     this->deselectAll();
     
-this->selectedRTSLayersList.clear();
+this->selectedRTSLayersList->clear();
     
 
                                     }
                                 
                         else {
                             
-                        if(!this->selectedRTSLayersList.contains(selectedLayer))
+                        if(!this->selectedRTSLayersList->contains(selectedLayer))
                         
                                     {
-                                    this->selectedRTSLayersList.add(selectedLayer);
+                                    this->selectedRTSLayersList->add(selectedLayer);
     
 
                                     }
@@ -499,11 +505,11 @@ this->paintSelectedRTSLayersList= this->selectedRTSLayersList;
 }
 
 
-    public: void setSelectedRTSLayer(CollidableDestroyableDamageableLayer selectedLayer){
+    public: void setSelectedRTSLayer(CollidableDestroyableDamageableLayer* selectedLayer){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Selected Layer: ");
+stringBuffer->append("Selected Layer: ");
     
 
                         if(selectedLayer != 
@@ -511,33 +517,33 @@ stringBuffer.append("Selected Layer: ");
                                 )
                         
                                     {
-                                    stringBuffer.append(selectedLayer.getName());
+                                    stringBuffer->append(selectedLayer->getName());
     
 
                                     }
                                 
-this->logUtil.putF(stringBuffer.toString(), this, "setSelectedRTSLayer");
+this->logUtil.putF(stringBuffer->toString(), this, "setSelectedRTSLayer");
     
-this->paintSelectedRTSLayersList= BasicArrayListUtil::getInstance().getImmutableInstance();
+this->paintSelectedRTSLayersList= BasicArrayListUtil::getInstance()->getImmutableInstance();
     
-this->selectRTSLayerVisitorInterface.visit(selectedLayer);
+this->selectRTSLayerVisitorInterface->visit(selectedLayer);
     
 this->deselectAll();
     
 
-                        if(this->selectedRTSLayersList.size() > 0)
+                        if(this->selectedRTSLayersList->size() > 0)
                         
                                     {
-                                    this->getPreSelectedRTSLayersList().clear();
+                                    this->getPreSelectedRTSLayersList()->clear();
     
 
-    BasicArrayList tempList = this->getPreSelectedRTSLayersList();;
+    BasicArrayList* tempList = this->getPreSelectedRTSLayersList();;
     
 this->preSelectedRTSLayersList= this->selectedRTSLayersList;
     
 this->selectedRTSLayersList= tempList;
     
-this->logUtil.putF(StringMaker().append("Preselected: ").append(this->preSelectedRTSLayersList.toString()).toString(), this, "setSelectedRTSLayer");
+this->logUtil.putF((new StringMaker())->append("Preselected: ")->append(this->preSelectedRTSLayersList->toString())->toString(), this, "setSelectedRTSLayer");
     
 
                                     }
@@ -546,7 +552,7 @@ this->logUtil.putF(StringMaker().append("Preselected: ").append(this->preSelecte
                         if(selectedLayer != CollidableDestroyableDamageableLayer::getNullInstance())
                         
                                     {
-                                    this->selectedRTSLayersList.add(selectedLayer);
+                                    this->selectedRTSLayersList->add(selectedLayer);
     
 
                                     }
@@ -556,7 +562,7 @@ this->paintSelectedRTSLayersList= this->selectedRTSLayersList;
 }
 
 
-    public: CollidableDestroyableDamageableLayer getLastSelectedRtsLayer(){
+    public: CollidableDestroyableDamageableLayer* getLastSelectedRtsLayer(){
 
                         if(this->isAnyRTSLayerSelected())
                         
@@ -565,7 +571,7 @@ this->paintSelectedRTSLayersList= this->selectedRTSLayersList;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->selectedRTSLayersList.get(this->selectedRTSLayersList.size() -1);
+                        return dynamic_cast<CollidableDestroyableDamageableLayer*>(this->selectedRTSLayersList->get(this->selectedRTSLayersList->size() -1));
     
 
                                     }
@@ -585,25 +591,25 @@ this->paintSelectedRTSLayersList= this->selectedRTSLayersList;
 
     public: void selectAllPreselected(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Select all Preselected: ");
+stringBuffer->append("Select all Preselected: ");
     
-stringBuffer.append(this->preSelectedRTSLayersList.toString());
+stringBuffer->append(this->preSelectedRTSLayersList->toString());
     
-this->logUtil.putF(stringBuffer.toString(), this, "selectAllPreselected");
+this->logUtil.putF(stringBuffer->toString(), this, "selectAllPreselected");
     
 
 
 
 
                         for (
-    int32_t index = this->preSelectedRTSLayersList.size() -1;index >= 0; index--)
+    int32_t index = this->preSelectedRTSLayersList->size() -1;index >= 0; index--)
         {
 
-    RTSLayer rtsLayer = this->preSelectedRTSLayersList.get(index);;
+    RTSLayer* rtsLayer = dynamic_cast<RTSLayer*>(this->preSelectedRTSLayersList->get(index));;
     
-rtsLayer.select();
+rtsLayer->select();
     
 }
 
@@ -612,29 +618,29 @@ rtsLayer.select();
 
     public: void deselectAllPreselected(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Deselect all Preselected: ");
+stringBuffer->append("Deselect all Preselected: ");
     
-stringBuffer.append(this->preSelectedRTSLayersList.toString());
+stringBuffer->append(this->preSelectedRTSLayersList->toString());
     
-this->logUtil.putF(stringBuffer.toString(), this, "deselectAllPreselected");
+this->logUtil.putF(stringBuffer->toString(), this, "deselectAllPreselected");
     
 
 
 
 
                         for (
-    int32_t index = this->preSelectedRTSLayersList.size() -1;index >= 0; index--)
+    int32_t index = this->preSelectedRTSLayersList->size() -1;index >= 0; index--)
         {
 
-    RTSLayer rtsLayer = this->preSelectedRTSLayersList.get(index);;
+    RTSLayer* rtsLayer = dynamic_cast<RTSLayer*>(this->preSelectedRTSLayersList->get(index));;
     
-rtsLayer.deselect();
+rtsLayer->deselect();
     
 }
 
-this->preSelectedRTSLayersList.clear();
+this->preSelectedRTSLayersList->clear();
     
 }
 
@@ -645,12 +651,12 @@ this->preSelectedRTSLayersList.clear();
 
 
                         for (
-    int32_t index = this->selectedRTSLayersList.size() -1;index >= 0; index--)
+    int32_t index = this->selectedRTSLayersList->size() -1;index >= 0; index--)
         {
 
-    RTSLayer rtsLayer = this->selectedRTSLayersList.get(index);;
+    RTSLayer* rtsLayer = dynamic_cast<RTSLayer*>(this->selectedRTSLayersList->get(index));;
     
-rtsLayer.deselect();
+rtsLayer->deselect();
     
 }
 
@@ -659,7 +665,7 @@ rtsLayer.deselect();
 
     public: bool isAnyRTSLayerSelected(){
 
-                        if(this->selectedRTSLayersList.size() == 0)
+                        if(this->selectedRTSLayersList->size() == 0)
                         
                                     {
                                     
@@ -680,7 +686,7 @@ rtsLayer.deselect();
 }
 
 
-    public: BasicArrayList getPaintSelectedRTSLayersList(){
+    public: BasicArrayList* getPaintSelectedRTSLayersList(){
 
 
 
@@ -690,7 +696,7 @@ rtsLayer.deselect();
 }
 
 
-    public: BasicArrayList getPreSelectedRTSLayersList(){
+    public: BasicArrayList* getPreSelectedRTSLayersList(){
 
 
 

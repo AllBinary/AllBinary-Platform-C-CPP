@@ -21,6 +21,12 @@
         #ifndef VIEWS_GENERIC_USER_ADDVALIDATIONUSERVIEW_H
         #define VIEWS_GENERIC_USER_ADDVALIDATIONUSERVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/NewUserFactory.h>
@@ -74,19 +80,19 @@
         
 class AddValidationUserView: public HttpStoreComponentView, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: UserInterface user;
+    protected: UserInterface* user;
 
-public: AddValidationUserView(TransformInfoInterface transformInfoInterface);
+public: AddValidationUserView(TransformInfoInterface* transformInfoInterface);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string validationInfo();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
                 //@Throws(Exception.constructor)
             

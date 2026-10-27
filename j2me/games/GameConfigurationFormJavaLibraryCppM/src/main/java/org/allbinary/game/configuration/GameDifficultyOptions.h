@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_GAMEDIFFICULTYOPTIONS_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMEDIFFICULTYOPTIONS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -82,11 +90,11 @@
         
 class GameDifficultyOptions: public CommandForm {
 
-    private: const MEUtil meUtil = MEUtil::getInstance();
+    private: MEUtil* meUtil = MEUtil::getInstance();
 
-    private: BasicArrayList list;
+    private: BasicArrayList* list;
 
-public: GameDifficultyOptions(CommandListener commandListener, std::string title, BasicArrayList list, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
+public: GameDifficultyOptions(CommandListener* commandListener, std::string title, BasicArrayList* list, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor);
 
     public: void open();
 
@@ -96,15 +104,15 @@ public: GameDifficultyOptions(CommandListener commandListener, std::string title
             
     public: void save();
 
-    public: void initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener* cmdListener);
 
                 //@Throws(Exception.constructor)
             
     public: void update();
 
-    private: void add(BasicArrayList list, std::string name, int32_t option);
+    private: void add(BasicArrayList* list, std::string name, int32_t option);
 
-    private: ChoiceGroup getChoiceGroup(BasicArrayList list, std::string name, int32_t option);
+    private: ChoiceGroup* getChoiceGroup(BasicArrayList* list, std::string name, int32_t option);
 
     public: void setSelectedId(int32_t id);
 

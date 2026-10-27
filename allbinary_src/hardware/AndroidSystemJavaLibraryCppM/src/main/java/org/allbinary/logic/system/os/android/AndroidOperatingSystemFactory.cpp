@@ -20,6 +20,12 @@
 
             #include <hilog/log.h>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,15 +69,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AndroidOS.h"
+        #include "org/allbinary/logic/system/os/android/AndroidOS.h"
 
 class AndroidOperatingSystemFactory
             : public Object
          {
 
-    private: static AndroidOperatingSystemFactory instance() { return AndroidOperatingSystemFactory(); }
+    private: static AndroidOperatingSystemFactory* instance() { static std::unique_ptr<AndroidOperatingSystemFactory> value(new AndroidOperatingSystemFactory()); return value.get(); }
 
-    public: static AndroidOperatingSystemFactory getInstance(){
+    public: static AndroidOperatingSystemFactory* getInstance(){
 
 
 
@@ -81,9 +87,9 @@ class AndroidOperatingSystemFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const TsUtil tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil = TsUtil::getInstance();
 
 private: AndroidOperatingSystemFactory(){
 }
@@ -91,33 +97,33 @@ private: AndroidOperatingSystemFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: GenericOperatingSystem getOperatingSystemInstance(){
+    public: GenericOperatingSystem* getOperatingSystemInstance(){
 
         try {
             
-    GenericOperatingSystem GenericOperatingSystem;;
+    GenericOperatingSystem* GenericOperatingSystem;;
     
 
-    SystemProperties systemProperties = SystemProperties::getInstance();;
+    SystemProperties* systemProperties = SystemProperties::getInstance();;
     
 
-    std::string osName = systemProperties.getName();;
+    std::string osName = systemProperties->getName();;
     
 
-                        if(this->tsUtil.compareTo(osName, OperatingSystems::getInstance().ANDROID) == 0)
+                        if(this->tsUtil->compareTo(osName, OperatingSystems::getInstance()->ANDROID) == 0)
                         
                                     {
-                                    GenericOperatingSystem= AndroidOS();
+                                    GenericOperatingSystem= new AndroidOS();
     
 
                                     }
                                 
                         else {
                             
-                        if(OperatingSystems::getInstance().isUnknownSpecificOSAllowed())
+                        if(OperatingSystems::getInstance()->isUnknownSpecificOSAllowed())
                         
                                     {
-                                    GenericOperatingSystem= AndroidOS();
+                                    GenericOperatingSystem= new AndroidOS();
     
 
                                     }
@@ -126,7 +132,7 @@ private: AndroidOperatingSystemFactory(){
                             
 
 
-                            throw Exception("Specific Android OS Not Supported: " +osName);
+                            throw new Exception("Specific Android OS Not Supported: " +osName);
                     
 
                         }
@@ -142,12 +148,12 @@ private: AndroidOperatingSystemFactory(){
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put("Failed to get OperatingSystem returning NoOperatingSystem", this, commonStrings.GET_INSTANCE, e);
+this->logUtil->put("Failed to get OperatingSystem returning NoOperatingSystem", this, commonStrings->GET_INSTANCE, &e);
     
 
 

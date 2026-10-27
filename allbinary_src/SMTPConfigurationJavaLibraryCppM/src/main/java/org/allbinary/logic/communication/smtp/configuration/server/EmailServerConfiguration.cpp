@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -50,14 +56,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "EmailServerConfigurationInterface.h"
-#include "EmailServerConfigurationData.h"
+        #include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationInterface.h"
+#include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationData.h"
 
 class EmailServerConfiguration
             : public Object
-        : public EmailServerConfigurationInterface {
+        , public EmailServerConfigurationInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string accountName;
 
@@ -67,40 +73,40 @@ class EmailServerConfiguration
 
 public: EmailServerConfiguration(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF(commonStrings.START, this, commonStrings.CONSTRUCTOR);
+this->logUtil->putF(commonStrings->START, this, commonStrings->CONSTRUCTOR);
     
 
                                     }
                                 
-this->setSmtpServer(StringUtil::getInstance().EMPTY_STRING);
+this->setSmtpServer(StringUtil::getInstance()->EMPTY_STRING);
     
 }
 
 
-public: EmailServerConfiguration(HashMap<Object*, Object*> hashMap){
+public: EmailServerConfiguration(HashMap<Object*, Object*>* hashMap){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF(commonStrings.START, this, "EmailServerConfiguration(HashMap)");
+this->logUtil->putF(commonStrings->START, this, "EmailServerConfiguration(HashMap)");
     
 
                                     }
                                 
-this->setAccountName(hashMap.get(EmailServerConfigurationData::ACCOUNT));
+this->setAccountName(hashMap->get(EmailServerConfigurationData::ACCOUNT));
     
-this->setPassword(hashMap.get(EmailServerConfigurationData::PASSWORD));
+this->setPassword(hashMap->get(EmailServerConfigurationData::PASSWORD));
     
-this->setSmtpServer(hashMap.get(EmailServerConfigurationData::SERVER));
+this->setSmtpServer(hashMap->get(EmailServerConfigurationData::SERVER));
     
 this->log();
     
@@ -109,13 +115,13 @@ this->log();
 
 public: EmailServerConfiguration(std::string account, std::string password, std::string server){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF(commonStrings.START, this, "EmailServerConfiguration(HashMap)");
+this->logUtil->putF(commonStrings->START, this, "EmailServerConfiguration(HashMap)");
     
 
                                     }
@@ -181,10 +187,10 @@ this->password= password;
 
     public: void log(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->toString(), this, "EmailServerConfiguration");
+                                    this->logUtil->putF(this->toString(), this, "EmailServerConfiguration");
     
 
                                     }

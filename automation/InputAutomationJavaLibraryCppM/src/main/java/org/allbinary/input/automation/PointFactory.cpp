@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/awt.h>
@@ -43,17 +49,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Point.h"
+        #include "org/allbinary/input/automation/Point.h"
 
 class PointFactory
             : public Object
          {
 
-    private: static std::vector<std::vector<Point>> pointArray = std::vector<std::vector<Point>>(3000, std::vector<Point>(3000));
+    private: static inline std::vector<std::vector<Point*>> pointArray = std::vector<std::vector<Point*>>(3000, std::vector<Point*>(3000));
 
-    public: static Point getInstance(int32_t x, int32_t y){
+    public: static Point* getInstance(int32_t x, int32_t y){
 
-    Point point = PointFactory::pointArray[x][y];;
+    Point* point = PointFactory::pointArray[x][y];;
     
 
                         if(point == 
@@ -61,7 +67,7 @@ class PointFactory
                                 )
                         
                                     {
-                                    point= PointFactory::pointArray[x][y]= Point(x, y);
+                                    point= PointFactory::pointArray[x][y]= new Point(x, y);
     
 
                                     }

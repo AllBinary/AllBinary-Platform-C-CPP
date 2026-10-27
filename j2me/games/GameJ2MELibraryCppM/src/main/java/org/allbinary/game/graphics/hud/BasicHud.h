@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -102,26 +108,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HudGraphicsPosition.h"
-#include "BasicHudFactory.h"
+        #include "org/allbinary/game/graphics/hud/HudGraphicsPosition.h"
+#include "org/allbinary/game/graphics/hud/BasicHudFactory.h"
 
 class BasicHud
             : public Object
-        : public UpdateMyFontInterface {
+        , public UpdateMyFontInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const CanvasStrings canvasStrings = CanvasStrings::getInstance();
+    protected: CanvasStrings* canvasStrings = CanvasStrings::getInstance();
 
-    protected: const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
+    protected: BasicColorSetUtil* basicSetColorUtil = BasicColorSetUtil::getInstance();
 
-    private: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();
 
-    protected: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
+    protected: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
 
-    protected: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
+    protected: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
 
     private: int32_t location= 0;
 
@@ -131,13 +137,13 @@ class BasicHud
 
     private: int32_t bufferZoneY= 0;
 
-    private: HudGraphicsPosition hudGraphicsPosition = HudGraphicsPosition::NULL_HUD_GRAPHICS_POSITION;
+    private: HudGraphicsPosition* hudGraphicsPosition = HudGraphicsPosition::NULL_HUD_GRAPHICS_POSITION;
 
     private: int32_t x= 0;
 
     private: int32_t y= 0;
 
-    private: BasicColor basicColor = BasicColorFactory::getInstance().BLACK;
+    private: BasicColor* basicColor = BasicColorFactory::getInstance()->BLACK;
 
     private: int32_t color;
 
@@ -147,9 +153,9 @@ class BasicHud
 
     protected: int32_t offsetY= 0;
 
-public: BasicHud(int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor);
+public: BasicHud(int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor);
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
     public: int32_t getLocation();
 
@@ -157,13 +163,13 @@ public: BasicHud(int32_t location, int32_t direction, int32_t bufferZone, BasicC
 
                 //@Throws(Exception.constructor)
             
-    protected: HudGraphicsPosition getHudGraphicsPositionWH(int32_t width, int32_t height, int32_t maxWidth, int32_t maxHeight);
+    protected: HudGraphicsPosition* getHudGraphicsPositionWH(int32_t width, int32_t height, int32_t maxWidth, int32_t maxHeight);
 
-    public: void onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject* eventObject);
 
-    public: void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent);
+    public: void onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent);
 
-    protected: GPoint getPoint(int32_t x, int32_t y);
+    protected: GPoint* getPoint(int32_t x, int32_t y);
 
     public: int32_t getBufferZone();
 
@@ -173,7 +179,7 @@ public: BasicHud(int32_t location, int32_t direction, int32_t bufferZone, BasicC
 
     public: void setDirection(int32_t direction);
 
-    protected: HudGraphicsPosition getHudGraphicsPosition();
+    protected: HudGraphicsPosition* getHudGraphicsPosition();
 
     public: int32_t getColor();
 
@@ -181,25 +187,25 @@ public: BasicHud(int32_t location, int32_t direction, int32_t bufferZone, BasicC
 
     public: void setX(int32_t x);
 
-    public: void setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor* basicColor);
 
-    public: BasicColor getBasicColorP();
+    public: BasicColor* getBasicColorP();
 
     protected: void setY(int32_t y);
 
     protected: int32_t getY();
 
-    public: void paintSSO(Graphics graphics, std::string string, std::string string2, int32_t offset);
+    public: void paintSSO(Graphics* graphics, std::string string, std::string string2, int32_t offset);
 
-    public: void paintSSOO(Graphics graphics, std::string string, std::string string2, int32_t offset, int32_t offset2);
+    public: void paintSSOO(Graphics* graphics, std::string string, std::string string2, int32_t offset, int32_t offset2);
 
-    public: void paintDXY(Graphics graphics, std::vector<char> charArray, int32_t offset, int32_t len, std::vector<char> charArray2, int32_t offset2, int32_t len2, int32_t xOffset, int32_t xOffset2);
+    public: void paintDXY(Graphics* graphics, std::vector<char> charArray, int32_t offset, int32_t len, std::vector<char> charArray2, int32_t offset2, int32_t len2, int32_t xOffset, int32_t xOffset2);
 
-    public: void paintDX(Graphics graphics, std::vector<char> charArray, int32_t offset, int32_t len, std::vector<char> charArray2, int32_t offset2, int32_t len2, int32_t xOffset);
+    public: void paintDX(Graphics* graphics, std::vector<char> charArray, int32_t offset, int32_t len, std::vector<char> charArray2, int32_t offset2, int32_t len2, int32_t xOffset);
 
-    public: void paintOffsetAndLength(Graphics graphics, std::vector<char> charArray, int32_t offset, int32_t len);
+    public: void paintOffsetAndLength(Graphics* graphics, std::vector<char> charArray, int32_t offset, int32_t len);
 
-    public: void paintString(Graphics graphics, std::string string);
+    public: void paintString(Graphics* graphics, std::string string);
 
 };
 

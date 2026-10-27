@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -45,15 +51,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapCellType.h"
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellType.h"
 
 class GeographicMapCellTypeFactory
             : public Object
          {
 
-    private: static GeographicMapCellTypeFactory instance() { return GeographicMapCellTypeFactory(); }
+    private: static GeographicMapCellTypeFactory* instance() { static std::unique_ptr<GeographicMapCellTypeFactory> value(new GeographicMapCellTypeFactory()); return value.get(); }
 
-    public: static GeographicMapCellTypeFactory getInstance(){
+    public: static GeographicMapCellTypeFactory* getInstance(){
 
 
 
@@ -63,11 +69,11 @@ class GeographicMapCellTypeFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const std::vector<GeographicMapCellType> geographicMapCellTypeArray = std::vector<GeographicMapCellType>(512);
+    private: const std::vector<GeographicMapCellType*> geographicMapCellTypeArray = std::vector<GeographicMapCellType*>(512);
 
-    public: GeographicMapCellType get(int32_t type){
+    public: GeographicMapCellType* get(int32_t type){
 
 
 
@@ -77,7 +83,7 @@ class GeographicMapCellTypeFactory
 }
 
 
-    public: std::vector<GeographicMapCellType> getGeographicMapCellTypeArray(){
+    public: std::vector<GeographicMapCellType*> getGeographicMapCellTypeArray(){
 
 
 
@@ -91,7 +97,7 @@ class GeographicMapCellTypeFactory
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -100,7 +106,7 @@ class GeographicMapCellTypeFactory
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -109,16 +115,16 @@ class GeographicMapCellTypeFactory
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: bool isPath(GeographicMapCellType cellType){
+    public: bool isPath(GeographicMapCellType* cellType){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

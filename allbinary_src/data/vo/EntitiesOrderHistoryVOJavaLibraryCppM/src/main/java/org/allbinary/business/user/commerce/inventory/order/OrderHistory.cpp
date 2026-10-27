@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -102,20 +110,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Order.h"
-#include "OrderHistoryInterface.h"
-#include "OrderData.h"
-#include "OrderHistoryData.h"
+        #include "org/allbinary/business/user/commerce/inventory/order/Order.h"
+#include "org/allbinary/business/user/commerce/inventory/order/OrderHistoryInterface.h"
+#include "org/allbinary/business/user/commerce/inventory/order/OrderData.h"
+#include "org/allbinary/business/user/commerce/inventory/order/OrderHistoryData.h"
 
 class OrderHistory: public Order, public OrderHistoryInterface {
 
     private: std::string userName;
 
-    private: StreetAddress shippingAddress;
+    private: StreetAddress* shippingAddress;
 
-    private: StreetAddress billingAddress;
+    private: StreetAddress* billingAddress;
 
-    private: Payment payment;
+    private: Payment* payment;
 
     private: std::string shipDate;
 
@@ -127,15 +135,15 @@ class OrderHistory: public Order, public OrderHistoryInterface {
 
     private: std::string status;
 
-    private: Money subTotal;
+    private: Money* subTotal;
 
-    private: Money shippingCost;
+    private: Money* shippingCost;
 
-    private: Money taxes;
+    private: Money* taxes;
 
-    private: Money total;
+    private: Money* total;
 
-public: OrderHistory(BasketInterface basketInterface) : Order(basketInterface){
+public: OrderHistory(BasketInterface* basketInterface) : Order(basketInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -145,90 +153,90 @@ public: OrderHistory(BasketInterface basketInterface) : Order(basketInterface){
 }
 
 
-public: OrderHistory(BasketInterface basketInterface, OrderHistory orderHistory) : Order(orderHistory.getStoreName(), basketInterface, orderHistory.getId(), orderHistory.getShippingMethod(), orderHistory.getSpecial(), orderHistory.getPaymentMethod()){
+public: OrderHistory(BasketInterface* basketInterface, OrderHistory* orderHistory) : Order(orderHistory->getStoreName(), basketInterface, orderHistory->getId(), orderHistory->getShippingMethod(), orderHistory->getSpecial(), orderHistory->getPaymentMethod()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->userName= orderHistory.getUserName();
+this->userName= orderHistory->getUserName();
     
-this->shippingAddress= orderHistory.getShippingAddress();
+this->shippingAddress= orderHistory->getShippingAddress();
     
-this->billingAddress= orderHistory.getBillingAddress();
+this->billingAddress= orderHistory->getBillingAddress();
     
-this->payment= orderHistory.getPaymentInfo();
+this->payment= orderHistory->getPaymentInfo();
     
-this->shipDate= orderHistory.getShipDate();
+this->shipDate= orderHistory->getShipDate();
     
-this->orderDate= orderHistory.getOrderDate();
+this->orderDate= orderHistory->getOrderDate();
     
-this->transDate= orderHistory.getTransDate();
+this->transDate= orderHistory->getTransDate();
     
-this->cancelDate= orderHistory.getCancelDate();
+this->cancelDate= orderHistory->getCancelDate();
     
-this->status= orderHistory.getStatus();
+this->status= orderHistory->getStatus();
     
-this->subTotal= orderHistory.getSubTotal();
+this->subTotal= orderHistory->getSubTotal();
     
-this->shippingCost= orderHistory.getShippingCost();
+this->shippingCost= orderHistory->getShippingCost();
     
-this->taxes= orderHistory.getTaxes();
+this->taxes= orderHistory->getTaxes();
     
-this->total= orderHistory.getTotal();
+this->total= orderHistory->getTotal();
     
-super.setUserComments(orderHistory.getUserComments());
+super.setUserComments(orderHistory->getUserComments());
     
-super.setUserCancelComments(orderHistory.getUserCancelComments());
+super.setUserCancelComments(orderHistory->getUserCancelComments());
     
-super.setStoreComments(orderHistory.getStoreComments());
+super.setStoreComments(orderHistory->getStoreComments());
     
-super.setStoreCancelComments(orderHistory.getStoreCancelComments());
+super.setStoreCancelComments(orderHistory->getStoreCancelComments());
     
 }
 
 
-public: OrderHistory(BasketInterface basketInterface, HashMap<Object*, Object*> orderHistoryHashMap) : Order(orderHistoryHashMap.get(StoreFrontData::getInstance().NAME), basketInterface, orderHistoryHashMap.get(OrderData::ID), orderHistoryHashMap.get(ShippingMethodData::NAME), orderHistoryHashMap.get(EntryData::getInstance().SPECIAL), orderHistoryHashMap.get(PaymentData::METHOD)){
+public: OrderHistory(BasketInterface* basketInterface, HashMap<Object*, Object*>* orderHistoryHashMap) : Order(orderHistoryHashMap->get(StoreFrontData::getInstance()->NAME), basketInterface, orderHistoryHashMap->get(OrderData::ID), orderHistoryHashMap->get(ShippingMethodData::NAME), orderHistoryHashMap->get(EntryData::getInstance()->SPECIAL), orderHistoryHashMap->get(PaymentData::METHOD)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->shippingAddress= StreetAddress(orderHistoryHashMap.get(ShippingAddressData::NAME), orderHistoryHashMap.get(ShippingAddressData::STREET), orderHistoryHashMap.get(ShippingAddressData::CITY), orderHistoryHashMap.get(ShippingAddressData::STATE), orderHistoryHashMap.get(ShippingAddressData::CODE), orderHistoryHashMap.get(ShippingAddressData::COUNTRY));
+this->shippingAddress= new StreetAddress(orderHistoryHashMap->get(ShippingAddressData::NAME), orderHistoryHashMap->get(ShippingAddressData::STREET), orderHistoryHashMap->get(ShippingAddressData::CITY), orderHistoryHashMap->get(ShippingAddressData::STATE), orderHistoryHashMap->get(ShippingAddressData::CODE), orderHistoryHashMap->get(ShippingAddressData::COUNTRY));
     
-this->billingAddress= StreetAddress(orderHistoryHashMap.get(BillingAddressData::NAME), orderHistoryHashMap.get(BillingAddressData::STREET), orderHistoryHashMap.get(BillingAddressData::CITY), orderHistoryHashMap.get(BillingAddressData::STATE), orderHistoryHashMap.get(BillingAddressData::CODE), orderHistoryHashMap.get(BillingAddressData::COUNTRY));
+this->billingAddress= new StreetAddress(orderHistoryHashMap->get(BillingAddressData::NAME), orderHistoryHashMap->get(BillingAddressData::STREET), orderHistoryHashMap->get(BillingAddressData::CITY), orderHistoryHashMap->get(BillingAddressData::STATE), orderHistoryHashMap->get(BillingAddressData::CODE), orderHistoryHashMap->get(BillingAddressData::COUNTRY));
     
-this->payment= Payment(orderHistoryHashMap);
+this->payment= new Payment(orderHistoryHashMap);
     
-this->userName= orderHistoryHashMap.get(UserData::USERNAME);
+this->userName= orderHistoryHashMap->get(UserData::USERNAME);
     
-this->orderDate= orderHistoryHashMap.get(OrderHistoryData::ORDERDATE);
+this->orderDate= orderHistoryHashMap->get(OrderHistoryData::ORDERDATE);
     
-this->shipDate= orderHistoryHashMap.get(OrderHistoryData::SHIPPEDDATE);
+this->shipDate= orderHistoryHashMap->get(OrderHistoryData::SHIPPEDDATE);
     
-this->transDate= orderHistoryHashMap.get(OrderHistoryData::TRANSDATE);
+this->transDate= orderHistoryHashMap->get(OrderHistoryData::TRANSDATE);
     
-this->cancelDate= orderHistoryHashMap.get(OrderHistoryData::CANCELDATE);
+this->cancelDate= orderHistoryHashMap->get(OrderHistoryData::CANCELDATE);
     
-this->status= orderHistoryHashMap.get(OrderHistoryData::STATUS);
+this->status= orderHistoryHashMap->get(OrderHistoryData::STATUS);
     
-this->subTotal= Money(orderHistoryHashMap.get(OrderHistoryData::SUBTOTAL));
+this->subTotal= new Money(orderHistoryHashMap->get(OrderHistoryData::SUBTOTAL));
     
-this->total= Money(orderHistoryHashMap.get(OrderHistoryData::TOTAL));
+this->total= new Money(orderHistoryHashMap->get(OrderHistoryData::TOTAL));
     
-this->shippingCost= Money(orderHistoryHashMap.get(OrderHistoryData::SHIPPINGCOST));
+this->shippingCost= new Money(orderHistoryHashMap->get(OrderHistoryData::SHIPPINGCOST));
     
-this->taxes= Money(orderHistoryHashMap.get(OrderHistoryData::TAX));
+this->taxes= new Money(orderHistoryHashMap->get(OrderHistoryData::TAX));
     
-super.setUserComments(orderHistoryHashMap.get(OrderData::CUSTOMERCOMMENT));
+super.setUserComments(orderHistoryHashMap->get(OrderData::CUSTOMERCOMMENT));
     
-super.setUserCancelComments(orderHistoryHashMap.get(OrderData::CUSTOMERCANCELCOMMENT));
+super.setUserCancelComments(orderHistoryHashMap->get(OrderData::CUSTOMERCANCELCOMMENT));
     
-super.setStoreComments(orderHistoryHashMap.get(OrderData::STORECOMMENT));
+super.setStoreComments(orderHistoryHashMap->get(OrderData::STORECOMMENT));
     
-super.setStoreCancelComments(orderHistoryHashMap.get(OrderData::STORECANCELCOMMENT));
+super.setStoreCancelComments(orderHistoryHashMap->get(OrderData::STORECANCELCOMMENT));
     
 }
 
@@ -239,19 +247,19 @@ this->userName= value;
 }
 
 
-    public: void setDefaultShippingAddress(StreetAddress shippingAddress){
+    public: void setDefaultShippingAddress(StreetAddress* shippingAddress){
 this->shippingAddress= shippingAddress;
     
 }
 
 
-    public: void setBillingAddress(StreetAddress billingAddress){
+    public: void setBillingAddress(StreetAddress* billingAddress){
 this->billingAddress= billingAddress;
     
 }
 
 
-    public: void setPaymentInfo(Payment payment){
+    public: void setPaymentInfo(Payment* payment){
 this->payment= payment;
     
 }
@@ -287,25 +295,25 @@ this->status= value;
 }
 
 
-    public: void setSubTotal(Money value){
+    public: void setSubTotal(Money* value){
 this->subTotal= value;
     
 }
 
 
-    public: void setShippingCost(Money value){
+    public: void setShippingCost(Money* value){
 this->shippingCost= value;
     
 }
 
 
-    public: void setTaxes(Money value){
+    public: void setTaxes(Money* value){
 this->taxes= value;
     
 }
 
 
-    public: void setTotal(Money value){
+    public: void setTotal(Money* value){
 this->total= value;
     
 }
@@ -321,7 +329,7 @@ this->total= value;
 }
 
 
-    public: StreetAddress getShippingAddress(){
+    public: StreetAddress* getShippingAddress(){
 
 
 
@@ -331,7 +339,7 @@ this->total= value;
 }
 
 
-    public: StreetAddress getBillingAddress(){
+    public: StreetAddress* getBillingAddress(){
 
 
 
@@ -341,7 +349,7 @@ this->total= value;
 }
 
 
-    public: Payment getPaymentInfo(){
+    public: Payment* getPaymentInfo(){
 
 
 
@@ -401,7 +409,7 @@ this->total= value;
 }
 
 
-    public: Money getSubTotal(){
+    public: Money* getSubTotal(){
 
 
 
@@ -411,7 +419,7 @@ this->total= value;
 }
 
 
-    public: Money getShippingCost(){
+    public: Money* getShippingCost(){
 
 
 
@@ -421,7 +429,7 @@ this->total= value;
 }
 
 
-    public: Money getTaxes(){
+    public: Money* getTaxes(){
 
 
 
@@ -431,7 +439,7 @@ this->total= value;
 }
 
 
-    public: Money getTotal(){
+    public: Money* getTotal(){
 
 
 
@@ -441,37 +449,37 @@ this->total= value;
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(UserData::USERNAME, this->userName);
+hashMap->put(UserData::USERNAME, this->userName);
     
-hashMap.put(OrderHistoryData::ORDERDATE, this->orderDate);
+hashMap->put(OrderHistoryData::ORDERDATE, this->orderDate);
     
-hashMap.put(OrderHistoryData::SHIPPEDDATE, this->shipDate);
+hashMap->put(OrderHistoryData::SHIPPEDDATE, this->shipDate);
     
-hashMap.put(OrderHistoryData::TRANSDATE, this->transDate);
+hashMap->put(OrderHistoryData::TRANSDATE, this->transDate);
     
-hashMap.put(OrderHistoryData::CANCELDATE, this->cancelDate);
+hashMap->put(OrderHistoryData::CANCELDATE, this->cancelDate);
     
-hashMap.put(OrderHistoryData::ORDERDATEFORMATTED, Date(Long(this->orderDate).longValue()).toString());
+hashMap->put(OrderHistoryData::ORDERDATEFORMATTED, (new Date((int64_t(this->orderDate)).longValue()))->toString());
     
-hashMap.put(OrderHistoryData::SHIPPEDDATEFORMATTED, Date(Long(this->shipDate).longValue()).toString());
+hashMap->put(OrderHistoryData::SHIPPEDDATEFORMATTED, (new Date((int64_t(this->shipDate)).longValue()))->toString());
     
-hashMap.put(OrderHistoryData::TRANSDATEFORMATTED, Date(Long(this->transDate).longValue()).toString());
+hashMap->put(OrderHistoryData::TRANSDATEFORMATTED, (new Date((int64_t(this->transDate)).longValue()))->toString());
     
-hashMap.put(OrderHistoryData::CANCELDATEFORMATTED, Date(Long(this->cancelDate).longValue()).toString());
+hashMap->put(OrderHistoryData::CANCELDATEFORMATTED, (new Date((int64_t(this->cancelDate)).longValue()))->toString());
     
-hashMap.put(OrderHistoryData::STATUS, this->status);
+hashMap->put(OrderHistoryData::STATUS, this->status);
     
-hashMap.put(OrderHistoryData::SUBTOTAL, this->subTotal.toString());
+hashMap->put(OrderHistoryData::SUBTOTAL, this->subTotal->toString());
     
-hashMap.put(OrderHistoryData::TOTAL, this->total.toString());
+hashMap->put(OrderHistoryData::TOTAL, this->total->toString());
     
-hashMap.put(OrderHistoryData::SHIPPINGCOST, this->shippingCost.toString());
+hashMap->put(OrderHistoryData::SHIPPINGCOST, this->shippingCost->toString());
     
-hashMap.put(OrderHistoryData::TAX, this->taxes.toString());
+hashMap->put(OrderHistoryData::TAX, this->taxes->toString());
     
 
 
@@ -484,39 +492,39 @@ hashMap.put(OrderHistoryData::TAX, this->taxes.toString());
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    HashMap<Object*, Object*> hashMap = this->toHashMap();;
+    HashMap<Object*, Object*>* hashMap = this->toHashMap();;
     
 
-    Set keySet = hashMap.keys();;
+    Set* keySet = hashMap->keys();;
     
 
-    std::vector<Object*> keyArray = keySet.();;
+    std::vector<Object*> keyArray = keySet->();;
     
 
     int32_t size = keyArray.size();;
     
 
-    Node node = document.createElement(OrderHistoryData::ORDERHISTORY);;
+    Node* node = document->createElement(OrderHistoryData::ORDERHISTORY);;
     
-node.appendChild(super.toXmlNode(document));
-    
-
-    Node billingAddressNode = document.createElement(BillingAddressData::BILLINGADDRESS);;
-    
-billingAddressNode.appendChild(this->billingAddress.toXmlNode(document));
+node->appendChild(super.toXmlNode(document));
     
 
-    Node shippingAddressNode = document.createElement(ShippingAddressData::SHIPPINGADDRESS);;
+    Node* billingAddressNode = document->createElement(BillingAddressData::BILLINGADDRESS);;
     
-shippingAddressNode.appendChild(this->shippingAddress.toXmlNode(document));
+billingAddressNode->appendChild(this->billingAddress->toXmlNode(document));
     
-node.appendChild(billingAddressNode);
+
+    Node* shippingAddressNode = document->createElement(ShippingAddressData::SHIPPINGADDRESS);;
     
-node.appendChild(shippingAddressNode);
+shippingAddressNode->appendChild(this->shippingAddress->toXmlNode(document));
     
-node.appendChild(this->payment.toXmlNode(document));
+node->appendChild(billingAddressNode);
+    
+node->appendChild(shippingAddressNode);
+    
+node->appendChild(this->payment->toXmlNode(document));
     
 
 
@@ -529,11 +537,11 @@ node.appendChild(this->payment.toXmlNode(document));
     std::string name = keyArray[i];;
     
 
-    std::string value = hashMap.get(name);;
+    std::string value = hashMap->get(name);;
     
-value= StringUtil::getInstance().getNonNull(value);
+value= StringUtil::getInstance()->getNonNull(value);
     
-node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
+node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -65,7 +71,7 @@ this->setTotal(this->initTotal);
 
     public: void add(int32_t value){
 
-    int32_t max = Integer::MAX_VALUE;;
+    int32_t max = Integer.MAX_VALUE;;
     
 
                         if(this->getTotal() +value > max)

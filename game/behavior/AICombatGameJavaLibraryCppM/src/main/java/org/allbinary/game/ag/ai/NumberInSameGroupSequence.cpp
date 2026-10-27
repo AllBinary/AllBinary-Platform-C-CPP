@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -50,61 +56,61 @@ class NumberInSameGroupSequence
             : public Object
          {
 
-    public: static NumberInSameGroupSequence getInstance(){
+    public: static NumberInSameGroupSequence* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NumberInSameGroupSequence();
+                        return new NumberInSameGroupSequence();
     
 }
 
 
-    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_ZERO;
+    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_ZERO;
 
-    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_ONE;
+    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_ONE;
 
-    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_TWO;
+    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_TWO;
 
-    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_THREE;
+    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_THREE;
 
-    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_FOUR;
+    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_FOUR;
 
-    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_FIVE;
+    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_FIVE;
 
-    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_SIX;
+    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_SIX;
 
-    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_SEVEN;
+    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_SEVEN;
 
-    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_EIGHT;
+    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_EIGHT;
 
-    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_NINE;
+    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_NINE;
 
-    public: std::vector<Integer> NUMBER_ON_SAME_TEAM_SEQUENCE;
+    public: std::vector<int32_t> NUMBER_ON_SAME_TEAM_SEQUENCE;
 
 private: NumberInSameGroupSequence(){
 
-    SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
+    SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
-this->NUMBER_ON_SAME_TEAM_SEQUENCE_ZERO= smallIntegerSingletonFactory.getAt(100);
+this->NUMBER_ON_SAME_TEAM_SEQUENCE_ZERO= smallIntegerSingletonFactory->getAt(100);
     
-this->NUMBER_ON_SAME_TEAM_SEQUENCE_ONE= smallIntegerSingletonFactory.getAt(101);
+this->NUMBER_ON_SAME_TEAM_SEQUENCE_ONE= smallIntegerSingletonFactory->getAt(101);
     
-this->NUMBER_ON_SAME_TEAM_SEQUENCE_TWO= smallIntegerSingletonFactory.getAt(102);
+this->NUMBER_ON_SAME_TEAM_SEQUENCE_TWO= smallIntegerSingletonFactory->getAt(102);
     
-this->NUMBER_ON_SAME_TEAM_SEQUENCE_THREE= smallIntegerSingletonFactory.getAt(103);
+this->NUMBER_ON_SAME_TEAM_SEQUENCE_THREE= smallIntegerSingletonFactory->getAt(103);
     
-this->NUMBER_ON_SAME_TEAM_SEQUENCE_FOUR= smallIntegerSingletonFactory.getAt(104);
+this->NUMBER_ON_SAME_TEAM_SEQUENCE_FOUR= smallIntegerSingletonFactory->getAt(104);
     
-this->NUMBER_ON_SAME_TEAM_SEQUENCE_FIVE= smallIntegerSingletonFactory.getAt(105);
+this->NUMBER_ON_SAME_TEAM_SEQUENCE_FIVE= smallIntegerSingletonFactory->getAt(105);
     
-this->NUMBER_ON_SAME_TEAM_SEQUENCE_SIX= smallIntegerSingletonFactory.getAt(106);
+this->NUMBER_ON_SAME_TEAM_SEQUENCE_SIX= smallIntegerSingletonFactory->getAt(106);
     
-this->NUMBER_ON_SAME_TEAM_SEQUENCE_SEVEN= smallIntegerSingletonFactory.getAt(107);
+this->NUMBER_ON_SAME_TEAM_SEQUENCE_SEVEN= smallIntegerSingletonFactory->getAt(107);
     
-this->NUMBER_ON_SAME_TEAM_SEQUENCE_EIGHT= smallIntegerSingletonFactory.getAt(108);
+this->NUMBER_ON_SAME_TEAM_SEQUENCE_EIGHT= smallIntegerSingletonFactory->getAt(108);
     
-this->NUMBER_ON_SAME_TEAM_SEQUENCE_NINE= smallIntegerSingletonFactory.getAt(109);
+this->NUMBER_ON_SAME_TEAM_SEQUENCE_NINE= smallIntegerSingletonFactory->getAt(109);
     
 this->NUMBER_ON_SAME_TEAM_SEQUENCE= 
                                                 {

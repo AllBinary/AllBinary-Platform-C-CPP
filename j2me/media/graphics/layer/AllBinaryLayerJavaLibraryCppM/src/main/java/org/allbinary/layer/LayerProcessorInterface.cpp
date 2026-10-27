@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -38,22 +44,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicLayerProcessorInterface.h"
-#include "LayerManager.h"
-#include "AllBinaryLayerManager.h"
-#include "AllBinaryLayer.h"
+        #include "org/allbinary/layer/BasicLayerProcessorInterface.h"
+#include "org/allbinary/layer/LayerManager.h"
+#include "org/allbinary/layer/AllBinaryLayerManager.h"
+#include "org/allbinary/layer/AllBinaryLayer.h"
 
 class LayerProcessorInterface: public BasicLayerProcessorInterface {
 
-    LayerManager getLayerManager()
+    public: virtual LayerManager* getLayerManager() = 0;
 
                 //@Throws(Exception.constructor)
             
-    void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index)
+    public: virtual void processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index) = 0;
 
                 //@Throws(Exception.constructor)
             
-    bool isProcessorLayer(AllBinaryLayer layerInterface)
+    public: virtual bool isProcessorLayer(AllBinaryLayer* layerInterface) = 0;
 
 };
 

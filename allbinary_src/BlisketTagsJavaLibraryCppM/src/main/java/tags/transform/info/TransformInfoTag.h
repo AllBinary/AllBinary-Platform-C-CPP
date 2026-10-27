@@ -21,6 +21,12 @@
         #ifndef TAGS_TRANSFORM_INFO_TRANSFORMINFOTAG_H
         #define TAGS_TRANSFORM_INFO_TRANSFORMINFOTAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
@@ -71,7 +77,7 @@
         
 class TransformInfoTag: public ModifyTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string name;
 
@@ -87,7 +93,7 @@ class TransformInfoTag: public ModifyTag {
 
     private: std::string templateFile;
 
-    private: std::string template;
+    private: std::string template_;
 
     private: std::string dataFile;
 
@@ -97,7 +103,7 @@ class TransformInfoTag: public ModifyTag {
 
 public: TransformInfoTag();
 
-public: TransformInfoTag(TagHelperFactoryInterface tagHelperFactoryInterface);
+public: TransformInfoTag(TagHelperFactoryInterface* tagHelperFactoryInterface);
 
     public: void setName(std::string value);
 

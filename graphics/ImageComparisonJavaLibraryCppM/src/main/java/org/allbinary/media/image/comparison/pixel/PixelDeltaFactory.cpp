@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -70,13 +76,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PixelDelta.h"
+        #include "org/allbinary/media/image/comparison/pixel/PixelDelta.h"
 
 class PixelDeltaFactory
             : public Object
          {
 
-    private: static AutomaticCacheInterface cacheInterface = 
+    private: static inline AutomaticCacheInterface* cacheInterface = 
                 null
             ;
 
@@ -84,10 +90,10 @@ class PixelDeltaFactory
                 static int32_t init() { 
                     
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
     std::string STATIC_BLOCK = "Static Block";;
@@ -97,17 +103,17 @@ class PixelDeltaFactory
     
 
         try {
-            logUtil.putF(commonStrings.START, instance, STATIC_BLOCK);
+            logUtil->putF(commonStrings->START, instance, STATIC_BLOCK);
     
-PixelDeltaFactory::cacheInterface= CacheInterfaceFactory::getInstance(CacheTypeFactory::getInstance().CACHE, CachePolicyFactory::getInstance().THIRTY_MINUTES_TEN_THOUSAND_MAX);
+PixelDeltaFactory::cacheInterface= dynamic_cast<AutomaticCacheInterface*>(CacheInterfaceFactory::getInstance(CacheTypeFactory::getInstance()->CACHE, CachePolicyFactory::getInstance()->THIRTY_MINUTES_TEN_THOUSAND_MAX));
     
-logUtil.putF(commonStrings.END, instance, STATIC_BLOCK);
+logUtil->putF(commonStrings->END, instance, STATIC_BLOCK);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-logUtil.put(commonStrings.EXCEPTION, instance, STATIC_BLOCK, e);
+logUtil->put(commonStrings->EXCEPTION, instance, STATIC_BLOCK, &e);
     
 }
 
@@ -118,15 +124,15 @@ logUtil.put(commonStrings.EXCEPTION, instance, STATIC_BLOCK, e);
             
                 //@Throws(Exception.constructor)
             
-    public: static PixelDelta getInstance(int32_t x, int32_t y, int32_t rgb1, int32_t rgb2){
+    public: static PixelDelta* getInstance(int32_t x, int32_t y, int32_t rgb1, int32_t rgb2){
 
-    GPoint point = PointFactory::getInstance().createXY(x, y);;
+    GPoint* point = PointFactory::getInstance()->createXY(x, y);;
     
 
-    ColorDelta colorDelta = ColorDeltaFactory::getInstance(rgb1, rgb2);;
+    ColorDelta* colorDelta = ColorDeltaFactory::getInstance(rgb1, rgb2);;
     
 
-    PixelDelta pixelDelta = PixelDeltaFactory::cacheInterface.get(PixelDelta::getKey(point, colorDelta));;
+    PixelDelta* pixelDelta = dynamic_cast<PixelDelta*>(PixelDeltaFactory::cacheInterface->get(PixelDelta::getKey(point, colorDelta)));;
     
 
                         if(pixelDelta == 
@@ -134,7 +140,7 @@ logUtil.put(commonStrings.EXCEPTION, instance, STATIC_BLOCK, e);
                                 )
                         
                                     {
-                                    pixelDelta= PixelDelta(point, colorDelta);
+                                    pixelDelta= new PixelDelta(point, colorDelta);
     
 
                                     }
@@ -148,7 +154,7 @@ logUtil.put(commonStrings.EXCEPTION, instance, STATIC_BLOCK, e);
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: PixelDeltaFactory(){
 }

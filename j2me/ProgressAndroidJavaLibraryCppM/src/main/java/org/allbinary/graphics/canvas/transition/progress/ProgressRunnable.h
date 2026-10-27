@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSRUNNABLE_H
         #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSRUNNABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <android/app/Activity.h>
 
       
@@ -51,15 +57,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProgressCanvas.h"
+        #include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
 
 class ProgressRunnable: public ARunnable {
 
-    protected: SimpleProgressActivityInterface midletActivity;
+    protected: SimpleProgressActivityInterface* midletActivity;
 
-    protected: ProgressCanvas progressCanvas;
+    protected: ProgressCanvas* progressCanvas;
 
-public: ProgressRunnable(Activity midletActivity, ProgressCanvas progressCanvas);
+public: ProgressRunnable(Activity* midletActivity, ProgressCanvas* progressCanvas);
 
     public: void run();
 

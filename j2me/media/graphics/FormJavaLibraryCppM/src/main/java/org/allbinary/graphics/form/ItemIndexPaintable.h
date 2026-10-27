@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEMINDEXPAINTABLE_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEMINDEXPAINTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,13 +60,13 @@ class ItemIndexPaintable
             : public Object
          {
 
-    private: static ItemIndexPaintable instance() { return ItemIndexPaintable(); }
+    private: static ItemIndexPaintable* instance() { static std::unique_ptr<ItemIndexPaintable> value(new ItemIndexPaintable()); return value.get(); }
 
-    public: static ItemIndexPaintable getInstance();
+    public: static ItemIndexPaintable* getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t paint(Graphics graphics, int32_t index, ABCustomItem item, int32_t dx, int32_t dy);
+    public: int32_t paint(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy);
 
 };
 

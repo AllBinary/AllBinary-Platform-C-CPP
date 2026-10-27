@@ -21,6 +21,12 @@
         #ifndef BUNDLE_INPUT_AUTOMATION_INPUTAUTOMATIONBUNDLEACTIVATOR_H
         #define BUNDLE_INPUT_AUTOMATION_INPUTAUTOMATIONBUNDLEACTIVATOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -81,25 +87,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputAutomationBundleActivatorListenerInterface.h"
+        #include "bundle/input/automation/InputAutomationBundleActivatorListenerInterface.h"
 
 class InputAutomationBundleActivator
             : public Object
-        : public BundleActivator, public InputAutomationBundleActivatorListenerInterface {
+        , public BundleActivator, public InputAutomationBundleActivatorListenerInterface {
 
-    private: static Thread moduleManagementThread;
+    private: static inline Thread* moduleManagementThread;
 
-    private: static BundleContext bundleContext;
+    private: static inline BundleContext* bundleContext;
 
-    public: static BundleContext getBundleContext();
+    public: static BundleContext* getBundleContext();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void start(BundleContext bundleContext);
+    public: void start(BundleContext* bundleContext);
 
                 //@Throws(Exception.constructor)
             
@@ -111,7 +117,7 @@ class InputAutomationBundleActivator
 
                 //@Throws(Exception.constructor)
             
-    public: void stop(BundleContext context);
+    public: void stop(BundleContext* context);
 
 };
 

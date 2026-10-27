@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/logic/string/StringUtil.h>
 
       
@@ -91,13 +99,13 @@ this->body= body;
 
     public: std::string toString(){
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
 
-    std::string result = stringUtil.EMPTY_STRING;;
+    std::string result = stringUtil->EMPTY_STRING;;
     
 
-    std::vector<Object*> attributeKeys = this->otherAttributes.keySet().();;
+    std::vector<Object*> attributeKeys = this->otherAttributes.keySet()->();;
     
 
     int32_t attributeSize = attributeKeys.size();;
@@ -122,7 +130,7 @@ result += " ";
     std::string value = otherAttributes.get(key);;
     
 
-                        if(true && value.compare(stringUtil.EMPTY_STRING) != 0)
+                        if(true && value.compare(stringUtil->EMPTY_STRING) != 0)
                         
                                     {
                                     result += key;

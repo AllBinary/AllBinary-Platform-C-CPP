@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/io/FileNotFoundException.h>
 
       
@@ -45,11 +51,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFileInputStream.h"
+        #include "org/allbinary/logic/io/AbFileInputStream.h"
 
 class AbFileLocalInputStream: public AbFileInputStream {
 
-public: AbFileLocalInputStream(AbFile file) : AbFileInputStream(AbFileNativeUtil::get(file)){
+public: AbFileLocalInputStream(AbFile* file) : AbFileInputStream(AbFileNativeUtil::get(file)){
 
                         //super/this constructor call is in the constructor initializer list.
                     

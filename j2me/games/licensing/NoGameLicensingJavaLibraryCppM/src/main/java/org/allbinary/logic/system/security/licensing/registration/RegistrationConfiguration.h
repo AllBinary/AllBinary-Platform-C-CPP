@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_REGISTRATION_REGISTRATIONCONFIGURATION_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_REGISTRATION_REGISTRATIONCONFIGURATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -51,9 +57,9 @@ class RegistrationConfiguration
             : public Object
          {
 
-    private: static const RegistrationConfiguration SINGLETON = RegistrationConfiguration();
+    private: static RegistrationConfiguration* SINGLETON() { static std::unique_ptr<RegistrationConfiguration> value(new RegistrationConfiguration()); return value.get(); }
 
-    public: static RegistrationConfiguration getInstance();
+    public: static RegistrationConfiguration* getInstance();
 
     private: std::string registrationCode = "No Registration Code";
 

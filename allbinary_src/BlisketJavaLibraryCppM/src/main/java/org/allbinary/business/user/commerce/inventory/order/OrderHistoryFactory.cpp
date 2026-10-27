@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,39 +55,39 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OrderHistory.h"
+        #include "org/allbinary/business/user/commerce/inventory/order/OrderHistory.h"
 //Retrieves a single order for a user
 class OrderHistoryFactory
             : public Object
          {
 
-    public: static OrderHistory getInstance(std::string id){
+    public: static OrderHistory* getInstance(std::string id){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
         try {
             
-    OrderHistoryEntity orderHistoryEntityInterface = org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntity();;
+    OrderHistoryEntity* orderHistoryEntityInterface = new org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntity();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return orderHistoryEntityInterface.getOrder(id);
+                        return dynamic_cast<OrderHistory*>(orderHistoryEntityInterface->getOrder(id));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().FACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->FACTORYERROR))
                         
                                     {
-                                    logUtil.put(commonStrings.EXCEPTION, "OrderHistoryFactory", commonStrings.GET_INSTANCE, e);
+                                    logUtil->put(commonStrings->EXCEPTION, "OrderHistoryFactory", commonStrings->GET_INSTANCE, &e);
     
 
                                     }
@@ -97,7 +103,7 @@ class OrderHistoryFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: OrderHistoryFactory(){
 }

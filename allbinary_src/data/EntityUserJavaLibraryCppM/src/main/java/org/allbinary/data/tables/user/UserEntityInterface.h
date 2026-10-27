@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_USERENTITYINTERFACE_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_USERENTITYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -67,35 +73,35 @@ class UserEntityInterface: public BasicDataTableInterface {
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList getAdministrators();
+    public: virtual BasicArrayList* getAdministrators() = 0;
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList getStoreManagers(StoreFrontInterface storeFrontInterface);
+    public: virtual BasicArrayList* getStoreManagers(StoreFrontInterface* storeFrontInterface) = 0;
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList getCustomers();
+    public: virtual BasicArrayList* getCustomers() = 0;
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList getUsersWithRole(UserRole userRole);
+    public: virtual BasicArrayList* getUsersWithRole(UserRole* userRole) = 0;
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList getUsers(StoreFrontInterface storeFrontInterface);
+    public: virtual BasicArrayList* getUsers(StoreFrontInterface* storeFrontInterface) = 0;
 
                 //@Throws(Exception.constructor)
             
-    UserInterface getUser(std::string userName);
+    public: virtual UserInterface* getUser(std::string userName) = 0;
 
-    std::string login(std::string userName, std::string password);
+    public: virtual std::string login(std::string userName, std::string password) = 0;
 
-    void deleteWhere(std::string key, std::string value);
+    public: virtual void deleteWhere(std::string key, std::string value) = 0;
 
-    void insert(BasicArrayList values);
+    public: virtual void insert(BasicArrayList* values) = 0;
 
-    void update(std::string userName, HashMap<Object*, Object*> updatedValues);
+    public: virtual void update(std::string userName, HashMap<Object*, Object*>* updatedValues) = 0;
 
 };
 

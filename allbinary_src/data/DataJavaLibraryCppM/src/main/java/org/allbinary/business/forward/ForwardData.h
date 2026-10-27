@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_FORWARD_FORWARDDATA_H
         #define ORG_ALLBINARY_BUSINESS_FORWARD_FORWARDDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class ForwardData
             : public Object
          {
 
-    private: static ForwardData instance() { return ForwardData(); }
+    private: static ForwardData* instance() { static std::unique_ptr<ForwardData> value(new ForwardData()); return value.get(); }
 
-    public: static ForwardData getInstance();
+    public: static ForwardData* getInstance();
 
 private: ForwardData();
 

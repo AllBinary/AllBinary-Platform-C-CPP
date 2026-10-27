@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -38,13 +44,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicWeaponPart.h"
+        #include "org/allbinary/game/part/weapon/BasicWeaponPart.h"
 
 class BasicWeaponPartFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    BasicWeaponPart getInstance()
+    public: virtual BasicWeaponPart* getInstance() = 0;
 
 };
 

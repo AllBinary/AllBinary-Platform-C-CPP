@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGDATA_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/io/path/AbPathData.h>
@@ -53,7 +59,7 @@ class LogData
 
     public: const std::string extension = "log";
 
-    public: const std::string backupFileExt = AbPathData::getInstance().EXTENSION_SEP +"bak" +AbPathData::getInstance().EXTENSION_SEP +"txt";
+    public: const std::string backupFileExt = AbPathData::getInstance()->EXTENSION_SEP +"bak" +AbPathData::getInstance()->EXTENSION_SEP +"txt";
 
     public: const std::string ALLBINARY = "allbinary";
 

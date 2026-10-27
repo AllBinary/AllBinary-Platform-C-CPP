@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -136,43 +142,43 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ThemeInterface.h"
-#include "ThemeData.h"
+        #include "org/allbinary/logic/visual/theme/ThemeInterface.h"
+#include "org/allbinary/logic/visual/theme/ThemeData.h"
 
 class ThemeValidation
             : public Object
-        : public ThemeInterface, public ValidationInterface, public DomNodeInterface, public CompositeTransformInfoInterface {
+        , public ThemeInterface, public ValidationInterface, public DomNodeInterface, public CompositeTransformInfoInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: TransformInfoInterface transformInfoInterface;
+    private: TransformInfoInterface* transformInfoInterface;
 
-    private: ValidationInterface styleValidationInterface;
+    private: ValidationInterface* styleValidationInterface;
 
     private: std::string themeName;
 
     private: std::string themePreviewImageName;
 
-    private: AbPath webAppAbPath;
+    private: AbPath* webAppAbPath;
 
-    private: AbPath categoryAbPath;
+    private: AbPath* categoryAbPath;
 
-    private: AbPath fileAbPath;
+    private: AbPath* fileAbPath;
 
-public: ThemeValidation(TransformInfoInterface transformInfoInterface, CssStyleValidation cssStyleValidation, std::string categoryThemePath){
+public: ThemeValidation(TransformInfoInterface* transformInfoInterface, CssStyleValidation* cssStyleValidation, std::string categoryThemePath){
 this->transformInfoInterface= transformInfoInterface;
     
 
-    AbPathData pathData = AbPathData::getInstance();;
+    AbPathData* pathData = AbPathData::getInstance();;
     
 
-    PathUtil pathUtil = PathUtil::getInstance();;
+    PathUtil* pathUtil = PathUtil::getInstance();;
     
-this->categoryAbPath= pathUtil.removeNameFromPath(categoryThemePath);
+this->categoryAbPath= pathUtil->removeNameFromPath(categoryThemePath);
     
-this->themeName= pathData.getNameFromPath(categoryThemePath);
+this->themeName= pathData->getNameFromPath(categoryThemePath);
     
 this->styleValidationInterface= cssStyleValidation;
     
@@ -181,42 +187,42 @@ this->init();
 }
 
 
-public: ThemeValidation(TransformInfoInterface transformInfoInterface, HashMap<Object*, Object*> hashMap){
+public: ThemeValidation(TransformInfoInterface* transformInfoInterface, HashMap<Object*, Object*>* hashMap){
 this->transformInfoInterface= transformInfoInterface;
     
 
-    AbPath categoryThemeAbPath = AbPath(hashMap.get(ThemeData::getInstance().PATH), StringUtil::getInstance().EMPTY_STRING);;
+    AbPath* categoryThemeAbPath = new AbPath(hashMap->get(ThemeData::getInstance()->PATH), StringUtil::getInstance()->EMPTY_STRING);;
     
 
-    AbPathData pathData = AbPathData::getInstance();;
+    AbPathData* pathData = AbPathData::getInstance();;
     
 
-    PathUtil pathUtil = PathUtil::getInstance();;
+    PathUtil* pathUtil = PathUtil::getInstance();;
     
-this->categoryAbPath= pathUtil.removeNameFromPath(categoryThemeAbPath.toString());
+this->categoryAbPath= pathUtil->removeNameFromPath(categoryThemeAbPath->toString());
     
-this->themeName= pathData.getNameFromPath(categoryThemeAbPath.toString());
+this->themeName= pathData->getNameFromPath(categoryThemeAbPath->toString());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("CategoryThemePath: ");
+stringBuffer->append("CategoryThemePath: ");
     
-stringBuffer.append(categoryThemeAbPath.toString());
+stringBuffer->append(categoryThemeAbPath->toString());
     
-stringBuffer.append(" & CategoryPath: ");
+stringBuffer->append(" & CategoryPath: ");
     
-stringBuffer.append(this->categoryAbPath.toString());
+stringBuffer->append(this->categoryAbPath->toString());
     
-stringBuffer.append(" & ThemeName: ");
+stringBuffer->append(" & ThemeName: ");
     
-stringBuffer.append(this->themeName);
+stringBuffer->append(this->themeName);
     
-this->logUtil.putF("Http Request Constructor", this, stringBuffer.toString());
+this->logUtil->putF("Http Request Constructor", this, stringBuffer->toString());
     
 
                                     }
@@ -226,28 +232,28 @@ this->init();
 }
 
 
-public: ThemeValidation(StoreThemeCategoryInterface storeThemeCategoryInterface, Node node){
-this->transformInfoInterface= storeThemeCategoryInterface.getTransformInfoInterface();
+public: ThemeValidation(StoreThemeCategoryInterface* storeThemeCategoryInterface, Node* node){
+this->transformInfoInterface= storeThemeCategoryInterface->getTransformInfoInterface();
     
-this->categoryAbPath= storeThemeCategoryInterface.getPath();
-    
-
-    Node themeNameNode = DomSearchHelper::getNode(ThemeData::getInstance().NAME, node.getChildNodes());;
+this->categoryAbPath= storeThemeCategoryInterface->getPath();
     
 
-    Node valueNode = DomSearchHelper::getNode(DomData::VALUE, themeNameNode.getChildNodes());;
+    Node* themeNameNode = DomSearchHelper::getNode(ThemeData::getInstance()->NAME, node->getChildNodes());;
+    
+
+    Node* valueNode = DomSearchHelper::getNode(DomData::VALUE, themeNameNode->getChildNodes());;
     
 this->themeName= DomNodeHelper::getTextNodeValue(valueNode);
     
 
-    Node previewImageNameNode = DomSearchHelper::getNode(ThemeData::getInstance().PREVIEW_IMAGE_NAME, node.getChildNodes());;
+    Node* previewImageNameNode = DomSearchHelper::getNode(ThemeData::getInstance()->PREVIEW_IMAGE_NAME, node->getChildNodes());;
     
 
-    Node previewImageNameValueNode = DomSearchHelper::getNode(DomData::VALUE, previewImageNameNode.getChildNodes());;
+    Node* previewImageNameValueNode = DomSearchHelper::getNode(DomData::VALUE, previewImageNameNode->getChildNodes());;
     
 this->themePreviewImageName= DomNodeHelper::getTextNodeValue(previewImageNameValueNode);
     
-this->webAppAbPath= storeThemeCategoryInterface.getWebAppPath();
+this->webAppAbPath= storeThemeCategoryInterface->getWebAppPath();
     
 this->init(storeThemeCategoryInterface);
     
@@ -258,13 +264,13 @@ this->init(storeThemeCategoryInterface);
             
     private: void init(){
 
-    CategoryFactoryInterface categoryFactoryInterface = StoreThemeCategoryFactory(this->getTransformInfoInterface());;
+    CategoryFactoryInterface* categoryFactoryInterface = new StoreThemeCategoryFactory(this->getTransformInfoInterface());;
     
 
-    CategoryLoaderInterface categoryLoaderInterface = CategoryLoaderFactory::getInstance(categoryFactoryInterface);;
+    CategoryLoaderInterface* categoryLoaderInterface = CategoryLoaderFactory::getInstance(categoryFactoryInterface);;
     
 
-    StoreThemeCategoryInterface rootStoreThemeCategoryInterface = categoryFactoryInterface.getRootInstance();;
+    StoreThemeCategoryInterface* rootStoreThemeCategoryInterface = dynamic_cast<StoreThemeCategoryInterface*>(categoryFactoryInterface->getRootInstance());;
     
 this->init(rootStoreThemeCategoryInterface);
     
@@ -273,17 +279,17 @@ this->init(rootStoreThemeCategoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    private: void init(StoreThemeCategoryInterface storeThemeCategoryInterface){
-this->fileAbPath= AbPath(storeThemeCategoryInterface.getRootFilePath().toString() +this->categoryAbPath.toString(), StringUtil::getInstance().EMPTY_STRING);
+    private: void init(StoreThemeCategoryInterface* storeThemeCategoryInterface){
+this->fileAbPath= new AbPath(storeThemeCategoryInterface->getRootFilePath()->toString() +this->categoryAbPath->toString(), StringUtil::getInstance()->EMPTY_STRING);
     
-this->webAppAbPath= storeThemeCategoryInterface.getWebAppPath();
+this->webAppAbPath= storeThemeCategoryInterface->getWebAppPath();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface getTransformInfoInterface(){
+    public: TransformInfoInterface* getTransformInfoInterface(){
 
 
 
@@ -318,7 +324,7 @@ this->webAppAbPath= storeThemeCategoryInterface.getWebAppPath();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->webAppAbPath.toString() +this->categoryAbPath.toString();
+                        return this->webAppAbPath->toString() +this->categoryAbPath->toString();
     
 }
 
@@ -328,14 +334,14 @@ this->webAppAbPath= storeThemeCategoryInterface.getWebAppPath();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->categoryAbPath.toString();;
+                        return this->categoryAbPath->toString();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: CssStyleValidation getCssStyleValidation(){
+    public: CssStyleValidation* getCssStyleValidation(){
 
                         if(this->styleValidationInterface == 
                                     nullptr
@@ -343,15 +349,15 @@ this->webAppAbPath= storeThemeCategoryInterface.getWebAppPath();
                         
                                     {
                                     
-    AbPath cssStyleFileAbPath = AbPath(this->fileAbPath.toString(), this->themeName +AbPathData::getInstance().EXTENSION_SEP +CategoryData::getInstance().UNCRYPTED_EXTENSION);;
+    AbPath* cssStyleFileAbPath = new AbPath(this->fileAbPath->toString(), this->themeName +AbPathData::getInstance()->EXTENSION_SEP +CategoryData::getInstance()->UNCRYPTED_EXTENSION);;
     
 
-    CryptFileReader cryptFileReader = CryptFileReader(CategoryData::getInstance().UNCRYPTED_EXTENSION, CategoryData::getInstance().ENCRYPTED_EXTENSION);;
+    CryptFileReader* cryptFileReader = new CryptFileReader(CategoryData::getInstance()->UNCRYPTED_EXTENSION, CategoryData::getInstance()->ENCRYPTED_EXTENSION);;
     
 
-    Document document = DomDocumentHelper::create(cryptFileReader.get(cssStyleFileAbPath));;
+    Document* document = DomDocumentHelper::create(cryptFileReader->get(cssStyleFileAbPath));;
     
-this->styleValidationInterface= CssStyleValidation(document);
+this->styleValidationInterface= new CssStyleValidation(document);
     
 
                                     }
@@ -360,28 +366,28 @@ this->styleValidationInterface= CssStyleValidation(document);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->styleValidationInterface;
+                        return dynamic_cast<CssStyleValidation*>(this->styleValidationInterface);
     
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-    Boolean isValid = Boolean::TRUE;;
+    bool isValid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->IS_VALID);
     
 
                                     }
                                 
 
-                        if(!StringValidationUtil::getInstance().isValidRequired(this->categoryAbPath.toString(), AbSqlData::MINSTRING, AbSqlData::MAXSTRING))
+                        if(!StringValidationUtil::getInstance()->isValidRequired(this->categoryAbPath->toString(), AbSqlData::MINSTRING, AbSqlData::MAXSTRING))
                         
                                     {
                                     isValid= Boolean::FALSE;
@@ -390,7 +396,7 @@ this->styleValidationInterface= CssStyleValidation(document);
                                     }
                                 
 
-                        if(!StringValidationUtil::getInstance().isValidRequired(this->themeName, AbSqlData::MINSTRING, AbSqlData::MAXSTRING))
+                        if(!StringValidationUtil::getInstance()->isValidRequired(this->themeName, AbSqlData::MINSTRING, AbSqlData::MAXSTRING))
                         
                                     {
                                     isValid= Boolean::FALSE;
@@ -399,7 +405,7 @@ this->styleValidationInterface= CssStyleValidation(document);
                                     }
                                 
 
-                        if(!this->getCssStyleValidation().isValid().valueOf())
+                        if(!this->getCssStyleValidation()->isValid().valueOf())
                         
                                     {
                                     isValid= Boolean::FALSE;
@@ -408,10 +414,10 @@ this->styleValidationInterface= CssStyleValidation(document);
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("End: " +isValid, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("End: " +isValid, this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -424,13 +430,13 @@ this->styleValidationInterface= CssStyleValidation(document);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -450,25 +456,25 @@ this->styleValidationInterface= CssStyleValidation(document);
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Theme Validation Error");
+stringBuffer->append("Theme Validation Error");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -484,7 +490,7 @@ stringBuffer.append("Theme Validation Error");
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -494,7 +500,7 @@ stringBuffer.append("Theme Validation Error");
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -514,17 +520,17 @@ stringBuffer.append("Theme Validation Error");
 }
 
 
-    public: BasicArrayList toVector(){
+    public: BasicArrayList* toVector(){
 
-    BasicArrayList vector = BasicArrayListD();;
+    BasicArrayList* vector = new BasicArrayListD();;
     
-vector.add(this->getName());
+vector->add(this->getName());
     
-vector.add(this->getPath());
+vector->add(this->getPath());
     
-vector.add(this->getPreviewImageName());
+vector->add(this->getPreviewImageName());
     
-vector.add(this->getPreviewImagePath());
+vector->add(this->getPreviewImagePath());
     
 
 
@@ -535,20 +541,20 @@ vector.add(this->getPreviewImagePath());
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    ThemeData themeData = ThemeData::getInstance();;
+    ThemeData* themeData = ThemeData::getInstance();;
     
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(themeData.NAME, this->getName());
+hashMap->put(themeData->NAME, this->getName());
     
-hashMap.put(themeData.PATH, this->getPath());
+hashMap->put(themeData->PATH, this->getPath());
     
-hashMap.put(themeData.PREVIEW_IMAGE_NAME, this->getPreviewImageName());
+hashMap->put(themeData->PREVIEW_IMAGE_NAME, this->getPreviewImageName());
     
-hashMap.put(themeData.PREVIEW_IMAGE_PATH, this->getPreviewImagePath());
+hashMap->put(themeData->PREVIEW_IMAGE_PATH, this->getPreviewImagePath());
     
 
 
@@ -561,14 +567,14 @@ hashMap.put(themeData.PREVIEW_IMAGE_PATH, this->getPreviewImagePath());
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = ModDomHelper::createNameValueNodes(document, ThemeData::getInstance().NAME, this->toHashMap());;
+    Node* node = ModDomHelper::createNameValueNodes(document, ThemeData::getInstance()->NAME, this->toHashMap());;
     
 
-    DomNodeInterface domNodeInterface = this->getCssStyleValidation();;
+    DomNodeInterface* domNodeInterface = dynamic_cast<DomNodeInterface*>(this->getCssStyleValidation());;
     
-node.appendChild(domNodeInterface.toXmlNode(document));
+node->appendChild(domNodeInterface->toXmlNode(document));
     
 
 

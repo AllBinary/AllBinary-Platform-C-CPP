@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/configuration/feature/Features.h>
@@ -50,7 +56,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLFeatureFactory.h"
+        #include "org/allbinary/graphics/opengles/OpenGLFeatureFactory.h"
 
 class OpenGLOptions
             : public Object
@@ -58,36 +64,36 @@ class OpenGLOptions
 
     public: void init(){
 
-    OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
+    OpenGLFeatureFactory* openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
     
 
-                        if(Features::getInstance().isFeature(openGLFeatureFactory.OPENGL_OPTIONS))
+                        if(Features::getInstance()->isFeature(openGLFeatureFactory->OPENGL_OPTIONS))
                         
                                     {
                                     
-    BasicArrayList openGLMultipleList = BasicArrayListD();;
+    BasicArrayList* openGLMultipleList = new BasicArrayListD();;
     
-openGLMultipleList.add(openGLFeatureFactory.OPENGL);
+openGLMultipleList->add(openGLFeatureFactory->OPENGL);
     
-GameFeatureChoiceGroups::getMultipleInstance().add("OpenGL (Complete Restart)", openGLMultipleList);
-    
-
-    BasicArrayList openGLVersionSelectorMultipleList = BasicArrayListD();;
-    
-openGLVersionSelectorMultipleList.add(openGLFeatureFactory.OPENGL_AUTO_SELECT);
-    
-openGLVersionSelectorMultipleList.add(openGLFeatureFactory.OPENGL_MINIMUM);
-    
-GameFeatureChoiceGroups::getExclusiveInstance().add("OpenGL Version Selector", openGLVersionSelectorMultipleList);
+GameFeatureChoiceGroups::getMultipleInstance()->add("OpenGL (Complete Restart)", openGLMultipleList);
     
 
-    BasicArrayList openGLImageColorMultipleList = BasicArrayListD();;
+    BasicArrayList* openGLVersionSelectorMultipleList = new BasicArrayListD();;
     
-openGLImageColorMultipleList.add(openGLFeatureFactory.IMAGE_COLOR_DEPTH_4444);
+openGLVersionSelectorMultipleList->add(openGLFeatureFactory->OPENGL_AUTO_SELECT);
     
-openGLImageColorMultipleList.add(openGLFeatureFactory.IMAGE_COLOR_DEPTH_8888);
+openGLVersionSelectorMultipleList->add(openGLFeatureFactory->OPENGL_MINIMUM);
     
-GameFeatureChoiceGroups::getExclusiveInstance().add("OpenGL Image Color RGBA", openGLImageColorMultipleList);
+GameFeatureChoiceGroups::getExclusiveInstance()->add("OpenGL Version Selector", openGLVersionSelectorMultipleList);
+    
+
+    BasicArrayList* openGLImageColorMultipleList = new BasicArrayListD();;
+    
+openGLImageColorMultipleList->add(openGLFeatureFactory->IMAGE_COLOR_DEPTH_4444);
+    
+openGLImageColorMultipleList->add(openGLFeatureFactory->IMAGE_COLOR_DEPTH_8888);
+    
+GameFeatureChoiceGroups::getExclusiveInstance()->add("OpenGL Image Color RGBA", openGLImageColorMultipleList);
     
 
                                     }

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -53,15 +59,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RatioProcessor.h"
+        #include "org/allbinary/graphics/threed/RatioProcessor.h"
 //OpenGLNone
 class SWTJOGLProcessor
             : public Object
-        : public Runnable {
+        , public Runnable {
 
-    private: static SWTJOGLProcessor instance() { return SWTJOGLProcessor(); }
+    private: static SWTJOGLProcessor* instance() { static std::unique_ptr<SWTJOGLProcessor> value(new SWTJOGLProcessor()); return value.get(); }
 
-    public: static SWTJOGLProcessor getInstance();
+    public: static SWTJOGLProcessor* getInstance();
 
     public: void init(Object* display, Object* comp);
 
@@ -83,7 +89,7 @@ class SWTJOGLProcessor
 
     public: void addListener();
 
-    public: void addListeners(MIDlet midlet);
+    public: void addListeners(MIDlet* midlet);
 
     public: void run();
 
@@ -91,17 +97,17 @@ class SWTJOGLProcessor
 
     public: void setCustom(int32_t width, int32_t height, float ratio);
 
-    public: void setRatioProcessor(RatioProcessor ratioProcessor);
+    public: void setRatioProcessor(RatioProcessor* ratioProcessor);
 
     public: bool isPortraitRatioProcessor();
 
-    public: int32_t charWidth(Font font, char ch);
+    public: int32_t charWidth(Font* font, char ch);
 
-    public: int32_t charsWidth(Font font, std::vector<char> ch, int32_t offset, int32_t length);
+    public: int32_t charsWidth(Font* font, std::vector<char> ch, int32_t offset, int32_t length);
 
-    public: int32_t stringWidth(Font font, std::string str);
+    public: int32_t stringWidth(Font* font, std::string str);
 
-    public: int32_t substringWidth(Font font, std::string str, int32_t offset, int32_t len);
+    public: int32_t substringWidth(Font* font, std::string str, int32_t offset, int32_t len);
 
 };
 

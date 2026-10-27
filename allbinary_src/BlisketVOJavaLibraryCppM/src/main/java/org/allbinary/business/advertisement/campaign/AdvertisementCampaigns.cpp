@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -53,32 +59,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdvertisementCampaignsInterface.h"
+        #include "org/allbinary/business/advertisement/campaign/AdvertisementCampaignsInterface.h"
 
 class AdvertisementCampaigns
             : public Object
-        : public AdvertisementCampaignsInterface {
+        , public AdvertisementCampaignsInterface {
 
-    private: BasicArrayList advertisementsVector;
+    private: BasicArrayList* advertisementsVector;
 
-public: AdvertisementCampaigns(BasicArrayList vector){
+public: AdvertisementCampaigns(BasicArrayList* vector){
 this->advertisementsVector= this->advertisementsVector;
     
 }
 
 
-    public: void add(AdvertisementInterface advertisementInterface){
-this->advertisementsVector.add(advertisementInterface);
+    public: void add(AdvertisementInterface* advertisementInterface){
+this->advertisementsVector->add(advertisementInterface);
     
 }
 
 
-    public: AdvertisementInterface get(int32_t index){
+    public: AdvertisementInterface* get(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->advertisementsVector.get(index);
+                        return dynamic_cast<AdvertisementInterface*>(this->advertisementsVector->get(index));
     
 }
 
@@ -88,7 +94,7 @@ this->advertisementsVector.add(advertisementInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->advertisementsVector.size();;
+                        return this->advertisementsVector->size();;
     
 }
 
@@ -103,7 +109,7 @@ this->advertisementsVector.add(advertisementInterface);
 }
 
 
-    public: AdvertisementsInterface search(AdvertisementSearchInterface advertisementSearchInterface){
+    public: AdvertisementsInterface* search(AdvertisementSearchInterface* advertisementSearchInterface){
 
 
 

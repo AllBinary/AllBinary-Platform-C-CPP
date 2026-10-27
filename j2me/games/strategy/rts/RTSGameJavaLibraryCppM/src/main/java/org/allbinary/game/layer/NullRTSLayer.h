@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_NULLRTSLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_NULLRTSLAYER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -73,49 +79,49 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NullPathFindingLayer.h"
-#include "RTSPlayerLayerInterface.h"
-#include "PlayerOwnedRTSLayers.h"
+        #include "org/allbinary/game/layer/NullPathFindingLayer.h"
+#include "org/allbinary/game/layer/RTSPlayerLayerInterface.h"
+#include "org/allbinary/game/layer/PlayerOwnedRTSLayers.h"
 
 class NullRTSLayer: public NullPathFindingLayer, public RTSPlayerLayerInterface {
 
-    public: static const NullRTSLayer NULL_RTS_LAYER = NullRTSLayer();
+    public: static NullRTSLayer* NULL_RTS_LAYER() { static std::unique_ptr<NullRTSLayer> value(new NullRTSLayer()); return value.get(); }
 
     public: std::string getName();
 
                 //@Throws(Exception.constructor)
             
-    public: void processInput(AllBinaryLayerManager layerManager);
+    public: void processInput(AllBinaryLayerManager* layerManager);
 
     public: void initInputProcessors();
 
-    public: GameNotificationHud getGameNotificationHud();
+    public: GameNotificationHud* getGameNotificationHud();
 
-    public: ScrollSelectionForm getCurrentScrollSelectionForm();
+    public: ScrollSelectionForm* getCurrentScrollSelectionForm();
 
-    public: void setCurrentScrollSelectionForm(ScrollSelectionForm currentScrollSelectionForm);
+    public: void setCurrentScrollSelectionForm(ScrollSelectionForm* currentScrollSelectionForm);
 
-    public: ScrollSelectionForm getBuildingScrollSelectionForm();
+    public: ScrollSelectionForm* getBuildingScrollSelectionForm();
 
-    public: PlayerGameInput getPlayerGameInput();
+    public: PlayerGameInput* getPlayerGameInput();
 
-    public: void onEvent(AllBinaryEventObject eventObject);
-
-                //@Throws(Exception.constructor)
-            
-    public: void onDestroyed(DestroyedEvent destroyedEvent);
+    public: void onEvent(AllBinaryEventObject* eventObject);
 
                 //@Throws(Exception.constructor)
             
-    public: void processTick(AllBinaryLayerManager allBinaryLayerManager);
+    public: void onDestroyed(DestroyedEvent* destroyedEvent);
 
-    public: Capital getCapital();
+                //@Throws(Exception.constructor)
+            
+    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager);
 
-    public: RTSFormInput getRTSFormInput();
+    public: Capital* getCapital();
 
-    public: void add(Sound sound);
+    public: RTSFormInput* getRTSFormInput();
 
-    public: PlayerOwnedRTSLayers getPlayerOwnedRTSLayers();
+    public: void add(Sound* sound);
+
+    public: PlayerOwnedRTSLayers* getPlayerOwnedRTSLayers();
 
     public: bool implmentsArtificialIntelligenceCompositeInterface();
 

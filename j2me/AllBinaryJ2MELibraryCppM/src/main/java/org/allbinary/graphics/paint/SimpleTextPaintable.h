@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_SIMPLETEXTPAINTABLE_H
         #define ORG_ALLBINARY_GRAPHICS_PAINT_SIMPLETEXTPAINTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -63,19 +69,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Paintable.h"
+        #include "org/allbinary/graphics/paint/Paintable.h"
 
 class SimpleTextPaintable: public Paintable, public UpdateMyFontInterface {
 
-    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-    private: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
 
-    private: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
+    private: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
 
     private: std::string text;
 
-    private: BasicColor basicColor;
+    private: BasicColor* basicColor;
 
     private: int32_t topScoresWidth = 0;
 
@@ -83,15 +89,15 @@ class SimpleTextPaintable: public Paintable, public UpdateMyFontInterface {
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
-public: SimpleTextPaintable(std::string text, BasicColor basicColor);
+public: SimpleTextPaintable(std::string text, BasicColor* basicColor);
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: void setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor* basicColor);
 
-    private: BasicColor getBasicColorP();
+    private: BasicColor* getBasicColorP();
 
     public: void setText(std::string text);
 

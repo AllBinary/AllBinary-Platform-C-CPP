@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,17 +52,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogConfig.h"
+        #include "org/allbinary/logic/communication/log/config/LogConfig.h"
 
 class LoggingInitInfo
             : public Object
          {
 
-    private: static BasicArrayList logConfigInfoList = 
+    private: static inline BasicArrayList* logConfigInfoList = 
                 null
             ;
 
-    private: static bool hasRead = false;
+    private: static inline bool hasRead = false;
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -68,7 +74,7 @@ class LoggingInitInfo
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -88,7 +94,7 @@ class LoggingInitInfo
         try {
             
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -128,7 +134,7 @@ LoggingInitInfo::hasRead= true;
                                     
 
 
-                            throw Exception("Read Failed");
+                            throw new Exception("Read Failed");
                     
 
                                     }
@@ -140,7 +146,7 @@ LoggingInitInfo::hasRead= true;
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void set(BasicArrayList logConfigInfoList){
+    public: static void set(BasicArrayList* logConfigInfoList){
 LoggingInitInfo::logConfigInfoList= logConfigInfoList;
     
 }
@@ -148,7 +154,7 @@ LoggingInitInfo::logConfigInfoList= logConfigInfoList;
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList get(){
+    public: static BasicArrayList* get(){
 LoggingInitInfo::updateIfNeeded();
     
 
@@ -162,14 +168,14 @@ LoggingInitInfo::updateIfNeeded();
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList getTypeList(){
+    public: static BasicArrayList* getTypeList(){
 LoggingInitInfo::updateIfNeeded();
     
 
-    BasicArrayList allLogTypeVector = BasicArrayListD();;
+    BasicArrayList* allLogTypeVector = new BasicArrayListD();;
     
 
-    int32_t size = LoggingInitInfo::logConfigInfoList.size();;
+    int32_t size = LoggingInitInfo::logConfigInfoList->size();;
     
 
 
@@ -179,16 +185,16 @@ LoggingInitInfo::updateIfNeeded();
     int32_t index = 0;index < size; index++)
         {
 
-    LogConfig logConfigInfo = LoggingInitInfo::logConfigInfoList.objectArray[index];;
+    LogConfig* logConfigInfo = dynamic_cast<LogConfig*>(LoggingInitInfo::logConfigInfoList->objectArray[index]);;
     
 
-    BasicArrayList logTypeVector = logConfigInfo.getTypeVector();;
+    BasicArrayList* logTypeVector = logConfigInfo->getTypeVector();;
     
 
-                        if(logConfigInfo.isEnabled())
+                        if(logConfigInfo->isEnabled())
                         
                                     {
-                                    allLogTypeVector.addAllList(logTypeVector);
+                                    allLogTypeVector->addAllList(logTypeVector);
     
 
                                     }
@@ -219,7 +225,7 @@ public: LoggingInitInfo(){
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -239,7 +245,7 @@ public: LoggingInitInfo(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LoggingInitInfo::logConfigInfoList.size();;
+                        return LoggingInitInfo::logConfigInfoList->size();;
     
 }
 
@@ -255,7 +261,7 @@ public: LoggingInitInfo(){
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 

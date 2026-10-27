@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Throwable.h"
         
             #include "java/lang/Exception.h"
@@ -72,9 +78,9 @@
         
 class ImageBaseRotationAnimation: public RotationAnimation {
 
-    private: Image image;
+    private: Image* image;
 
-public: ImageBaseRotationAnimation(Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior) : RotationAnimation(angleInfo, CircularIndexUtil::createInstance(totalAngle /angleInfo.getAngleIncrementInfo().getAngleIncrement()), animationBehavior){
+public: ImageBaseRotationAnimation(Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior) : RotationAnimation(angleInfo, CircularIndexUtil::createInstance(totalAngle /angleInfo->getAngleIncrementInfo()->getAngleIncrement()), animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -114,13 +120,13 @@ this->image= image;
 
     protected: int32_t anchor = Anchor::TOP_LEFT;
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
-graphics.drawImage(this->image, x, y, this->anchor);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+graphics->drawImage(this->image, x, y, this->anchor);
     
 }
 
 
-    protected: Image getImage(){
+    protected: Image* getImage(){
 
 
 
@@ -135,7 +141,7 @@ graphics.drawImage(this->image, x, y, this->anchor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->image.getWidth();;
+                        return this->image->getWidth();;
     
 }
 
@@ -145,13 +151,13 @@ graphics.drawImage(this->image, x, y, this->anchor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->image.getHeight();;
+                        return this->image->getHeight();;
     
 }
 
 
     public: void close(){
-DisposalUtil::getInstance().disposeImage(this->image);
+DisposalUtil::getInstance()->disposeImage(this->image);
     
 }
 
@@ -159,7 +165,7 @@ DisposalUtil::getInstance().disposeImage(this->image);
                 //@Throws(Throwable.constructor)
             
     protected: void finalize(){
-DisposalUtil::getInstance().disposeImage(this->image);
+DisposalUtil::getInstance()->disposeImage(this->image);
     
 }
 

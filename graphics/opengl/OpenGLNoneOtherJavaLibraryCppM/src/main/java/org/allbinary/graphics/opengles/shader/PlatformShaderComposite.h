@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graphics/opengles/NullOpenGLProcessorFactory.h>
 
       
@@ -47,15 +53,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShaderComposite.h"
-#include "Shader.h"
-#include "CompositeShaderUpdater.h"
-#include "ShaderInitializer.h"
-#include "ModelViewProjection.h"
+        #include "org/allbinary/graphics/opengles/shader/ShaderComposite.h"
+#include "org/allbinary/graphics/opengles/shader/Shader.h"
+#include "org/allbinary/graphics/opengles/shader/CompositeShaderUpdater.h"
+#include "org/allbinary/graphics/opengles/shader/ShaderInitializer.h"
+#include "org/allbinary/graphics/opengles/shader/ModelViewProjection.h"
 
 class PlatformShaderComposite: public ShaderComposite {
 
-public: PlatformShaderComposite(std::string requiresOpenGLVersion, std::vector<Shader> shaderArray, CompositeShaderUpdater compositeShaderUpdater, ShaderInitializer shaderInitializer, ModelViewProjection modelViewProjection, OpenGLProcessor colorOpenGLProcessor, OpenGLProcessor vertexOpenGLProcessor);
+public: PlatformShaderComposite(std::string requiresOpenGLVersion, std::vector<Shader*> shaderArray, CompositeShaderUpdater* compositeShaderUpdater, ShaderInitializer* shaderInitializer, ModelViewProjection* modelViewProjection, OpenGLProcessor* colorOpenGLProcessor, OpenGLProcessor* vertexOpenGLProcessor);
 
 };
 

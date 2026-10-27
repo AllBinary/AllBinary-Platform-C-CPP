@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,11 +42,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Direction.h"
+        #include "org/allbinary/direction/Direction.h"
 
 class DirectionCompositeInterface {
 
-    Direction getDirection()
+    public: virtual Direction* getDirection() = 0;
 
 };
 

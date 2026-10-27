@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,13 +45,13 @@
         
 class KeyInterface {
 
-    void keyPressed(int32_t keyCode)
+    public: virtual void keyPressed(int32_t keyCode) = 0;
 
-    void keyReleased(int32_t keyCode)
+    public: virtual void keyReleased(int32_t keyCode) = 0;
 
-    void keyPressedByDevice(int32_t keyCode, int32_t deviceId)
+    public: virtual void keyPressedByDevice(int32_t keyCode, int32_t deviceId) = 0;
 
-    void keyReleasedByDevice(int32_t keyCode, int32_t deviceId)
+    public: virtual void keyReleasedByDevice(int32_t keyCode, int32_t deviceId) = 0;
 
 };
 

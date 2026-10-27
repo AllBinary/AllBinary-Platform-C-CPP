@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,20 +44,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProcessPaintable.h"
+        #include "org/allbinary/graphics/paint/ProcessPaintable.h"
 
 class ProcessPaintableSingletonFactory
             : public Object
          {
 
-    private: static const ProcessPaintable SINGLETON = ProcessPaintable();
+    private: static ProcessPaintable* SINGLETON() { static std::unique_ptr<ProcessPaintable> value(new ProcessPaintable()); return value.get(); }
 
-    public: static ProcessPaintable getInstance(){
+    public: static ProcessPaintable* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ProcessPaintableSingletonFactory::SINGLETON;
+                        return ProcessPaintableSingletonFactory::SINGLETON();
     
 }
 

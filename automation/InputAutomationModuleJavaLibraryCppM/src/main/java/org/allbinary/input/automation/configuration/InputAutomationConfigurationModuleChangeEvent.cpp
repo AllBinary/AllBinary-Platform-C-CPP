@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/input/automation/module/configuration/InputAutomationModuleConfiguration.h>
@@ -46,15 +52,15 @@ class InputAutomationConfigurationModuleChangeEvent
             : public Object
          {
 
-    private: InputAutomationModuleConfiguration inputAutomationModuleConfiguration;
+    private: InputAutomationModuleConfiguration* inputAutomationModuleConfiguration;
 
-public: InputAutomationConfigurationModuleChangeEvent(InputAutomationModuleConfiguration inputAutomationModuleConfiguration){
+public: InputAutomationConfigurationModuleChangeEvent(InputAutomationModuleConfiguration* inputAutomationModuleConfiguration){
 this->setInputAutomationModuleConfiguration(inputAutomationModuleConfiguration);
     
 }
 
 
-    public: InputAutomationModuleConfiguration getInputAutomationModuleConfiguration(){
+    public: InputAutomationModuleConfiguration* getInputAutomationModuleConfiguration(){
 
 
 
@@ -64,7 +70,7 @@ this->setInputAutomationModuleConfiguration(inputAutomationModuleConfiguration);
 }
 
 
-    private: void setInputAutomationModuleConfiguration(InputAutomationModuleConfiguration inputAutomationModuleConfiguration){
+    private: void setInputAutomationModuleConfiguration(InputAutomationModuleConfiguration* inputAutomationModuleConfiguration){
 this->inputAutomationModuleConfiguration= inputAutomationModuleConfiguration;
     
 }

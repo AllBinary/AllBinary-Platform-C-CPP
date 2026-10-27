@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALPHAPROCESSOR_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_ALPHAPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Image.h>
 
       
@@ -45,15 +51,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ModifierBaseProcessor.h"
+        #include "org/allbinary/animation/image/ModifierBaseProcessor.h"
 
 class AlphaProcessor: public ModifierBaseProcessor {
 
-    private: static const AlphaProcessor instanceC = AlphaProcessor();
+    private: static AlphaProcessor* instanceC() { static std::unique_ptr<AlphaProcessor> value(new AlphaProcessor()); return value.get(); }
 
-    public: static AlphaProcessor getInstance();
+    public: static AlphaProcessor* getInstance();
 
-    public: void updateAlpha(ImageModifierUtil imageModifierUtil, Image originalImage, Image imageToShow, int32_t index, int32_t alpha);
+    public: void updateAlpha(ImageModifierUtil* imageModifierUtil, Image* originalImage, Image* imageToShow, int32_t index, int32_t alpha);
 
 };
 

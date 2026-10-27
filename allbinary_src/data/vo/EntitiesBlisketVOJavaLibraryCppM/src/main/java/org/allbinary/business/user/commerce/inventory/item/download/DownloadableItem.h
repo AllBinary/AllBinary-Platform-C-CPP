@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_DOWNLOAD_DOWNLOADABLEITEM_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_DOWNLOAD_DOWNLOADABLEITEM_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -78,7 +84,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DownloadItemData.h"
+        #include "org/allbinary/business/user/commerce/inventory/item/download/DownloadItemData.h"
 
 class DownloadableItem
             : public Object
@@ -104,19 +110,19 @@ class DownloadableItem
 
     private: std::string file;
 
-    private: Long size;
+    private: int64_t size;
 
-    private: Long validTime;
+    private: int64_t validTime;
 
     private: std::string retries;
 
 public: DownloadableItem(std::string id);
 
-public: DownloadableItem(HashMap<Object*, Object*> hashMap);
+public: DownloadableItem(HashMap<Object*, Object*>* hashMap);
 
-    public: BasicArrayList toVector();
+    public: BasicArrayList* toVector();
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
     public: std::string getId();
 
@@ -134,9 +140,9 @@ public: DownloadableItem(HashMap<Object*, Object*> hashMap);
 
     public: std::string getFile();
 
-    public: Long getSize();
+    public: int64_t getSize();
 
-    public: Long getValidTime();
+    public: int64_t getValidTime();
 
     public: std::string getRetries();
 

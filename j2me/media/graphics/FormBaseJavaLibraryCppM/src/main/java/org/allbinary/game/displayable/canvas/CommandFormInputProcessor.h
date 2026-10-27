@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_COMMANDFORMINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_COMMANDFORMINPUTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -107,28 +113,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicMenuInputProcessor.h"
-#include "CommandRunnable.h"
+        #include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
+#include "org/allbinary/game/displayable/canvas/CommandRunnable.h"
 //In general allow scrolling of the menu and selection the center item
 class CommandFormInputProcessor: public BasicMenuInputProcessor {
 
-    private: const int32_t MOTION_GESTURE_SOURCE_ID = GameKeyEventFactory::getInstance().MOTION_GESTURE_SOURCE_ID;
+    private: const int32_t MOTION_GESTURE_SOURCE_ID = GameKeyEventFactory::getInstance()->MOTION_GESTURE_SOURCE_ID;
 
     private: const int32_t CLICK_DELAY = 150;
 
-    private: const TimeDelayHelper clickTimeHelper = TimeDelayHelper(this->CLICK_DELAY);
+    private: TimeDelayHelper* clickTimeHelper = new TimeDelayHelper(this->CLICK_DELAY);
 
     private: const int32_t DOUBLE_CLICK_DELAY = 1200;
 
-    private: const TimeDelayHelper doubleClickTimeHelper = TimeDelayHelper(this->DOUBLE_CLICK_DELAY);
+    private: TimeDelayHelper* doubleClickTimeHelper = new TimeDelayHelper(this->DOUBLE_CLICK_DELAY);
 
-    protected: const bool isSingleKeyProcessing = InputFeatureFactory::getInstance().isSingleKeyProcessing();
+    protected: const bool isSingleKeyProcessing = InputFeatureFactory::getInstance()->isSingleKeyProcessing();
 
-    private: ScrollSelectionForm form;
+    private: ScrollSelectionForm* form;
 
     private: bool hasPressed = false;
 
-public: CommandFormInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, MyCanvas gameCanvas, ScrollSelectionForm form);
+public: CommandFormInputProcessor(BasicArrayList* gameKeyEventList, int32_t playerInputId, MyCanvas* gameCanvas, ScrollSelectionForm* form);
 
                 //@Throws(Exception.constructor)
             
@@ -148,7 +154,7 @@ public: CommandFormInputProcessor(BasicArrayList gameKeyEventList, int32_t playe
 
                 //@Throws(Exception.constructor)
             
-    protected: void processMotionInput(MotionGestureEvent motionGestureEvent);
+    protected: void processMotionInput(MotionGestureEvent* motionGestureEvent);
 
     private: const std::string NAME_LABEL = " ScrollSelectionForm: ";
 

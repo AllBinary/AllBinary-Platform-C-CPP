@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -51,16 +57,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryInterface.h"
-#include "CategoryView.h"
+        #include "org/allbinary/business/category/CategoryInterface.h"
+#include "org/allbinary/business/category/CategoryView.h"
 
 class CategoriesView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: CategoryInterface categoryInterface;
+    private: CategoryInterface* categoryInterface;
 
-public: CategoriesView(CategoryInterface categoryInterface){
+public: CategoriesView(CategoryInterface* categoryInterface){
 this->categoryInterface= categoryInterface;
     
 }
@@ -68,12 +74,12 @@ this->categoryInterface= categoryInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = CategoryView(this->categoryInterface).toXmlNode(document);;
+    Node* node = (new CategoryView(this->categoryInterface))->toXmlNode(document);;
     
 
-    std::vector<Object*> childArray = this->categoryInterface.getChildNodes().toArray();;
+    std::vector<Object*> childArray = this->categoryInterface->getChildNodes()->toArray();;
     
 
     int32_t size = childArray.size();;
@@ -86,12 +92,12 @@ this->categoryInterface= categoryInterface;
     int32_t i = 0;i < size; i++)
         {
 
-    CategoryInterface childCategoryInterface = childArray[i];;
+    CategoryInterface* childCategoryInterface = dynamic_cast<CategoryInterface*>(childArray[i]);;
     
 
-    Node childCategoryNode = CategoriesView(childCategoryInterface).toXmlNode(document);;
+    Node* childCategoryNode = (new CategoriesView(childCategoryInterface))->toXmlNode(document);;
     
-node.appendChild(childCategoryNode);
+node->appendChild(childCategoryNode);
     
 }
 

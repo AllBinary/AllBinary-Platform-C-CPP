@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_UTIL_ABVECTOR_H
         #define ORG_ALLBINARY_UTIL_ABVECTOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/util/Vector.h>
 
       

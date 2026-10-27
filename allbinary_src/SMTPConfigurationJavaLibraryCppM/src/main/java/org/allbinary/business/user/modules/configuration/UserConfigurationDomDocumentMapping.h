@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONDOMDOCUMENTMAPPING_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONDOMDOCUMENTMAPPING_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,20 +64,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserConfigurationInterface.h"
-#include "UserConfigurationView.h"
+        #include "org/allbinary/business/user/modules/configuration/UserConfigurationInterface.h"
+#include "org/allbinary/business/user/modules/configuration/UserConfigurationView.h"
 
 class UserConfigurationDomDocumentMapping
             : public Object
-        : public DomDocumentMappingInterface {
+        , public DomDocumentMappingInterface {
 
-    private: UserConfigurationInterface userConfigurationInterface;
+    private: UserConfigurationInterface* userConfigurationInterface;
 
-public: UserConfigurationDomDocumentMapping(UserConfigurationInterface userConfigurationInterface);
+public: UserConfigurationDomDocumentMapping(UserConfigurationInterface* userConfigurationInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Document toXmlDoc();
+    public: Document* toXmlDoc();
 
                 //@Throws(Exception.constructor)
             

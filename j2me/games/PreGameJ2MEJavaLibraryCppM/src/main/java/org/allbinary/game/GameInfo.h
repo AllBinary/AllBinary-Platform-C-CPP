@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_GAMEINFO_H
         #define ORG_ALLBINARY_GAME_GAMEINFO_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -64,42 +70,42 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameTypeFactory.h"
-#include "GameMode.h"
-#include "PlayerTypesFactory.h"
-#include "GameInfoData.h"
-#include "GameType.h"
-#include "PlayerType.h"
+        #include "org/allbinary/game/GameTypeFactory.h"
+#include "org/allbinary/game/GameMode.h"
+#include "org/allbinary/game/PlayerTypesFactory.h"
+#include "org/allbinary/game/GameInfoData.h"
+#include "org/allbinary/game/GameType.h"
+#include "org/allbinary/game/PlayerType.h"
 
 class GameInfo
             : public Object
          {
 
-    public: static const GameInfo NONE = GameInfo(GameTypeFactory::getInstance().NONE, GameMode::NONE, PlayerTypesFactory::getInstance().PLAYER_TYPE_ONE,  -1,  -1);
+    public: static GameInfo* NONE() { static std::unique_ptr<GameInfo> value(new GameInfo(GameTypeFactory::getInstance()->NONE(), GameMode::NONE(), PlayerTypesFactory::getInstance()->PLAYER_TYPE_ONE,  -1,  -1)); return value.get(); }
 
-    public: static const std::string LEVEL_NAME = "LEVEL";
+    public: static inline const std::string LEVEL_NAME = "LEVEL";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const GameInfoData gameInfoData = GameInfoData::getInstance();
+    private: GameInfoData* gameInfoData = GameInfoData::getInstance();
 
-    private: GameType gameType;
+    private: GameType* gameType;
 
-    private: GameMode gameMode;
+    private: GameMode* gameMode;
 
-    private: PlayerType playerType;
+    private: PlayerType* playerType;
 
     private: int32_t highestLevel= 0;
 
     private: int32_t currentLevel;
 
-public: GameInfo(GameType gameType, GameMode gameMode, PlayerType playerType, int32_t highestLevel, int32_t currentLevel);
+public: GameInfo(GameType* gameType, GameMode* gameMode, PlayerType* playerType, int32_t highestLevel, int32_t currentLevel);
 
-    public: GameType getGameType();
+    public: GameType* getGameType();
 
-    public: GameMode getGameMode();
+    public: GameMode* getGameMode();
 
-    public: PlayerType getPlayerType();
+    public: PlayerType* getPlayerType();
 
     public: int32_t getHighestLevel();
 
@@ -121,7 +127,7 @@ public: GameInfo(GameType gameType, GameMode gameMode, PlayerType playerType, in
 
     public: bool isLastLevel();
 
-    public: ABHashtable<Object*, Object*> toHashtable();
+    public: ABHashtable<Object*, Object*>* toHashtable();
 
     public: std::string toString();
 

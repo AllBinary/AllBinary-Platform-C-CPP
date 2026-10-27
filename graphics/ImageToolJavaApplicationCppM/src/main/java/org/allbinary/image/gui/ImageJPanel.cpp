@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/awt.h>
 
       
@@ -51,44 +57,44 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "Graphics.h"
-#include "GroupLayout.h"
-#include "Short.h"
+        #include "org/allbinary/image/gui/JPanel.h"
+#include "org/allbinary/image/gui/Graphics.h"
+#include "org/allbinary/image/gui/GroupLayout.h"
+#include "org/allbinary/image/gui/Short.h"
 
 class ImageJPanel: public javax::swing::JPanel {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const CanvasStrings canvasStrings = CanvasStrings::getInstance();
+    private: CanvasStrings* canvasStrings = CanvasStrings::getInstance();
 
     private: bool isDrawn = false;
 
-    private: BufferedImage bufferedImage;
+    private: BufferedImage* bufferedImage;
 
-public: ImageJPanel(BufferedImage bufferedImage){
+public: ImageJPanel(BufferedImage* bufferedImage){
 this->initComponents();
     
 this->bufferedImage= bufferedImage;
     
-this->setSize(this->bufferedImage.getWidth(
-                            nullptr), this->bufferedImage.getHeight(
+this->setSize(this->bufferedImage->getWidth(
+                            nullptr), this->bufferedImage->getHeight(
                             nullptr));
     
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 
                         if(!this->isDrawn)
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, this->canvasStrings.PAINT);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->canvasStrings->PAINT);
     
-graphics.drawImage(bufferedImage, 0, 0, this->bufferedImage.getWidth(
-                            nullptr), this->bufferedImage.getHeight(
+graphics->drawImage(bufferedImage, 0, 0, this->bufferedImage->getWidth(
+                            nullptr), this->bufferedImage->getHeight(
                             nullptr), 
                             nullptr);
     
@@ -102,13 +108,13 @@ this->isDrawn= true;
 
     private: void initComponents(){
 
-    javax::swing::GroupLayout layout = javax::swing::GroupLayout(this);;
+    javax::swing::GroupLayout* layout = new javax::swing::GroupLayout(this);;
     
 this->setLayout(layout);
     
-layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 400, Short::MAX_VALUE));
+layout->setHorizontalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGap(0, 400, Short::MAX_VALUE));
     
-layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 300, Short::MAX_VALUE));
+layout->setVerticalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGap(0, 300, Short::MAX_VALUE));
     
 }
 

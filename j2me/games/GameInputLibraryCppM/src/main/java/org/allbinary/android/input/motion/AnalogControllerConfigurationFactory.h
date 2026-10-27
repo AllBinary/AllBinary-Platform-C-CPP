@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_ANALOGCONTROLLERCONFIGURATIONFACTORY_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_ANALOGCONTROLLERCONFIGURATIONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -57,17 +63,17 @@ class AnalogControllerConfigurationFactory
             : public Object
          {
 
-    private: static AnalogControllerConfigurationFactory instance() { return AnalogControllerConfigurationFactory(); }
+    private: static AnalogControllerConfigurationFactory* instance() { static std::unique_ptr<AnalogControllerConfigurationFactory> value(new AnalogControllerConfigurationFactory()); return value.get(); }
 
-    public: static AnalogControllerConfigurationFactory getInstance();
+    public: static AnalogControllerConfigurationFactory* getInstance();
 
-    public: const int32_t SCALE_FACTOR = ScaleFactorFactory::getInstance().DEFAULT_SCALE_FACTOR;
+    public: const int32_t SCALE_FACTOR = ScaleFactorFactory::getInstance()->DEFAULT_SCALE_FACTOR;
 
-    public: const int32_t SCALE_VALUE = ScaleFactorFactory::getInstance().DEFAULT_SCALE_VALUE;
+    public: const int32_t SCALE_VALUE = ScaleFactorFactory::getInstance()->DEFAULT_SCALE_VALUE;
 
     private: bool available= false;
 
-    private: const AnalogControllerConfigurationEvent analogControllerConfigurationEvent = AnalogControllerConfigurationEvent(this);
+    private: AnalogControllerConfigurationEvent* analogControllerConfigurationEvent = new AnalogControllerConfigurationEvent(this);
 
 private: AnalogControllerConfigurationFactory();
 

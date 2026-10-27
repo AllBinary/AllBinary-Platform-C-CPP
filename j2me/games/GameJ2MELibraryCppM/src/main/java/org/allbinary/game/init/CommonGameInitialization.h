@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/CommandListener.h>
@@ -73,17 +79,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseGameInitialization.h"
+        #include "org/allbinary/game/init/BaseGameInitialization.h"
 
 class CommonGameInitialization: public BaseGameInitialization {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-protected: CommonGameInitialization(std::vector<ResourceInitialization> resourceInitializationArray, int32_t portion);
+protected: CommonGameInitialization(std::vector<ResourceInitialization*> resourceInitializationArray, int32_t portion);
 
                 //@Throws(Exception.constructor)
             
-    public: void init(AbeClientInformationInterface abeClientInformation, CommandListener commandListener, int32_t level);
+    public: void init(AbeClientInformationInterface* abeClientInformation, CommandListener* commandListener, int32_t level);
 
                 //@Throws(Exception.constructor)
             

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_WORKFLOW_WORKFLOWENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_WORKFLOW_WORKFLOWENTITY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -92,13 +98,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WorkFlowEntityInterface.h"
+        #include "org/allbinary/data/tables/workflow/WorkFlowEntityInterface.h"
 
 class WorkFlowEntity: public AbSqlBean, public WorkFlowEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
     protected: const std::string tableName = "workflows";
 
@@ -108,17 +114,17 @@ class WorkFlowEntity: public AbSqlBean, public WorkFlowEntityInterface {
 
 public: WorkFlowEntity();
 
-    public: void insert(BasicArrayList values);
+    public: void insert(BasicArrayList* values);
 
     public: void delete_(std::string name, std::string storeName);
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: WorkFlowInterface get(std::string name, std::string storeName);
+    public: WorkFlowInterface* get(std::string name, std::string storeName);
 
-    public: BasicArrayList get(std::string storeName);
+    public: BasicArrayList* get(std::string storeName);
 
-    public: void update(HashMap<Object*, Object*> updatedValues);
+    public: void update(HashMap<Object*, Object*>* updatedValues);
 
     public: std::string createTableStatement();
 

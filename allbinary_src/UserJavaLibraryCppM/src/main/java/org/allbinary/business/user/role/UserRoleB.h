@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLEB_H
         #define ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLEB_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -56,22 +62,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserRole.h"
-#include "BasicUserRole.h"
-#include "UserRoleFactory.h"
+        #include "org/allbinary/business/user/role/UserRole.h"
+#include "org/allbinary/business/user/role/BasicUserRole.h"
+#include "org/allbinary/business/user/role/UserRoleFactory.h"
 
 class UserRoleB: public UserRole {
 
-    public: static BasicArrayList roleVector = BasicArrayListD();
+    public: static inline BasicArrayList* roleVector = new BasicArrayListD();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static UserRole getRole(std::string role);
+    public: static UserRole* getRole(std::string role);
 
-    public: static BasicArrayList getAll();
+    public: static BasicArrayList* getAll();
 
-protected: UserRoleB(BasicUserRole aBasicUserRole, UserFactoryInterface aUserFactoryInterface);
+protected: UserRoleB(BasicUserRole* aBasicUserRole, UserFactoryInterface* aUserFactoryInterface);
 
 };
 

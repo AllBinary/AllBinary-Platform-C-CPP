@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -57,9 +63,9 @@
         
 class HighScoresCanvasInputProcessor: public PlayerGameInput {
 
-    private: HighScoresCanvas highScoresCanvas;
+    private: HighScoresCanvas* highScoresCanvas;
 
-public: HighScoresCanvasInputProcessor(HighScoresCanvas highScoresCanvas) : PlayerGameInput(BasicArrayListD(), BasicArrayListD(),  -1){
+public: HighScoresCanvasInputProcessor(HighScoresCanvas* highScoresCanvas) : PlayerGameInput(new BasicArrayListD(), new BasicArrayListD(),  -1){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -80,7 +86,7 @@ this->highScoresCanvas= highScoresCanvas;
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onPressGameKeyEvent(GameKeyEvent gameKeyEvent){
+    public: void onPressGameKeyEvent(GameKeyEvent* gameKeyEvent){
 super.onPressGameKeyEvent(gameKeyEvent);
     
 this->update();
@@ -89,7 +95,7 @@ this->update();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onDownGameKeyEvent(GameKeyEvent gameKeyEvent){
+    public: void onDownGameKeyEvent(GameKeyEvent* gameKeyEvent){
 super.onDownGameKeyEvent(gameKeyEvent);
     
 this->update();
@@ -98,7 +104,7 @@ this->update();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onUpGameKeyEvent(GameKeyEvent gameKeyEvent){
+    public: void onUpGameKeyEvent(GameKeyEvent* gameKeyEvent){
 super.onUpGameKeyEvent(gameKeyEvent);
     
 this->update();
@@ -106,11 +112,11 @@ this->update();
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 }
 
 
-    public: HighScoresCanvas getHighScoresCanvas(){
+    public: HighScoresCanvas* getHighScoresCanvas(){
 
 
 

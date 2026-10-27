@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -72,9 +78,9 @@ class BufferedWriterUtil
             : public Object
          {
 
-    private: static BufferedWriterUtil instance() { return BufferedWriterUtil(); }
+    private: static BufferedWriterUtil* instance() { static std::unique_ptr<BufferedWriterUtil> value(new BufferedWriterUtil()); return value.get(); }
 
-    public: static BufferedWriterUtil getInstance(){
+    public: static BufferedWriterUtil* getInstance(){
 
 
 
@@ -84,11 +90,11 @@ class BufferedWriterUtil
 }
 
 
-    private: const LogUtil logUtil = LogUtil::getInstance();
+    private: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const CommonLabels commonLabels = CommonLabels::getInstance();
+    private: CommonLabels* commonLabels = CommonLabels::getInstance();
 
     private: const std::string REMOVING_OLD = "Remove old for overwriting: ";
 
@@ -96,28 +102,28 @@ class BufferedWriterUtil
             
     public: void overwrite(std::string path, std::string data){
 
-    AbFile abFile = AbFile::createAbFile(path);;
+    AbFile* abFile = AbFile::createAbFile(path);;
     
 
-                        if(abFile.exists())
+                        if(abFile->exists())
                         
                                     {
-                                    this->logUtil.putF(this->REMOVING_OLD +path, this, this->commonStrings.CREATE);
+                                    this->logUtil->putF(this->REMOVING_OLD +path, this, this->commonStrings->CREATE);
     
-abFile.delete();
+abFile->delete();
     
 
                                     }
                                 
                         else {
                             
-    std::string name = AbPathData::getInstance().removeNameFromPath(path);;
+    std::string name = AbPathData::getInstance()->removeNameFromPath(path);;
     
 
-    AbFile abFileDirectory = AbFile::createAbFile(name);;
+    AbFile* abFileDirectory = AbFile::createAbFile(name);;
     
 
-                        if(abFileDirectory.exists())
+                        if(abFileDirectory->exists())
                         
                                     {
                                     
@@ -125,16 +131,16 @@ abFile.delete();
                                 
                         else {
                             
-    StringMaker stringBuilder = StringMaker();;
+    StringMaker* stringBuilder = new StringMaker();;
     
-this->logUtil.putF(stringBuilder.append(this->commonStrings.CREATE).append(this->commonLabels.COLON_SEP).append(name).toString(), this, this->commonStrings.CREATE);
+this->logUtil->putF(stringBuilder->append(this->commonStrings->CREATE)->append(this->commonLabels->COLON_SEP)->append(name)->toString(), this, this->commonStrings->CREATE);
     
 
-    bool result = abFileDirectory.mkdirs();;
+    bool result = abFileDirectory->mkdirs();;
     
-stringBuilder.delete(0, stringBuilder.length());
+stringBuilder->delete(0, stringBuilder->length());
     
-this->logUtil.putF(stringBuilder.append(this->commonLabels.RESULT_).appendboolean(result).toString(), this, this->commonStrings.CREATE);
+this->logUtil->putF(stringBuilder->append(this->commonLabels->RESULT_)->appendboolean(result)->toString(), this, this->commonStrings->CREATE);
     
 
                         }
@@ -149,27 +155,27 @@ this->write(abFile, data);
 
                 //@Throws(Exception.constructor)
             
-    public: void overwrite(AbFile abFile, std::string data){
+    public: void overwrite(AbFile* abFile, std::string data){
 
-                        if(abFile.exists())
+                        if(abFile->exists())
                         
                                     {
-                                    this->logUtil.putF(this->REMOVING_OLD +abFile.getPath(), this, this->commonStrings.CREATE);
+                                    this->logUtil->putF(this->REMOVING_OLD +abFile->getPath(), this, this->commonStrings->CREATE);
     
-abFile.delete();
+abFile->delete();
     
 
                                     }
                                 
                         else {
                             
-    std::string name = AbPathData::getInstance().removeNameFromPath(abFile.getAbsolutePath());;
+    std::string name = AbPathData::getInstance()->removeNameFromPath(abFile->getAbsolutePath());;
     
 
-    AbFile abFileDirectory = AbFile::createAbFile(name);;
+    AbFile* abFileDirectory = AbFile::createAbFile(name);;
     
 
-                        if(abFileDirectory.exists())
+                        if(abFileDirectory->exists())
                         
                                     {
                                     
@@ -177,16 +183,16 @@ abFile.delete();
                                 
                         else {
                             
-    StringMaker stringBuilder = StringMaker();;
+    StringMaker* stringBuilder = new StringMaker();;
     
-this->logUtil.putF(stringBuilder.append(this->commonStrings.CREATE).append(this->commonLabels.COLON_SEP).append(name).toString(), this, this->commonStrings.CREATE);
+this->logUtil->putF(stringBuilder->append(this->commonStrings->CREATE)->append(this->commonLabels->COLON_SEP)->append(name)->toString(), this, this->commonStrings->CREATE);
     
 
-    bool result = abFileDirectory.mkdirs();;
+    bool result = abFileDirectory->mkdirs();;
     
-stringBuilder.delete(0, stringBuilder.length());
+stringBuilder->delete(0, stringBuilder->length());
     
-this->logUtil.putF(stringBuilder.append(this->commonLabels.RESULT_).appendboolean(result).toString(), this, this->commonStrings.CREATE);
+this->logUtil->putF(stringBuilder->append(this->commonLabels->RESULT_)->appendboolean(result)->toString(), this, this->commonStrings->CREATE);
     
 
                         }
@@ -201,15 +207,15 @@ this->write(abFile, data);
 
                 //@Throws(Exception.constructor)
             
-    public: void write(AbFile abFile, std::string data){
+    public: void write(AbFile* abFile, std::string data){
 
-    BufferedWriter fileOut = BufferedWriter(FileWriter(AbFileNativeUtil::get(abFile)));;
+    BufferedWriter* fileOut = new BufferedWriter(new FileWriter(AbFileNativeUtil::get(abFile)));;
     
-fileOut.write(data, 0, data.size());
+fileOut->write(data, 0, data.size());
     
-fileOut.newLine();
+fileOut->newLine();
     
-fileOut.flush();
+fileOut->flush();
     
 }
 

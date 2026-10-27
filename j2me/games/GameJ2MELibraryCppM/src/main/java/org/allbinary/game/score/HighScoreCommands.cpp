@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Command.h>
@@ -49,9 +55,9 @@ class HighScoreCommands
             : public Object
          {
 
-    private: static HighScoreCommands instance() { return HighScoreCommands(); }
+    private: static HighScoreCommands* instance() { static std::unique_ptr<HighScoreCommands> value(new HighScoreCommands()); return value.get(); }
 
-    public: static HighScoreCommands getInstance(){
+    public: static HighScoreCommands* getInstance(){
 
 
 
@@ -61,11 +67,11 @@ class HighScoreCommands
 }
 
 
-    public: const Command DISPLAY = Command("Scores", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
+    public: Command* DISPLAY = new Command("Scores", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
 
-    public: const Command PERSONAL = Command("Personal", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
+    public: Command* PERSONAL = new Command("Personal", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
 
-    public: const Command WORLD = Command("World", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
+    public: Command* WORLD = new Command("World", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/jgrapht/GraphPath.h>
@@ -63,7 +69,7 @@
 template<typename V, typename E>
 class BasePathFinderGraphVisitor: public PathFinderGraphVisitorBase {
 
-    protected: BasicGeographicMap geographicMapInterface;
+    protected: BasicGeographicMap* geographicMapInterface;
 
     protected: int32_t edgeMinimum;
 
@@ -71,7 +77,7 @@ class BasePathFinderGraphVisitor: public PathFinderGraphVisitorBase {
 
     protected: int32_t maxPathWeight;
 
-public: BasePathFinderGraphVisitor(BasicGeographicMap geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight){
+public: BasePathFinderGraphVisitor(BasicGeographicMap* geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight){
 this->geographicMapInterface= geographicMapInterface;
     
 this->edgeMinimum= edgeMinimum;
@@ -85,35 +91,35 @@ this->maxPathWeight= maxPathWeight;
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(SimpleWeightedGraph graph, BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList){
+    public: void visit(SimpleWeightedGraph* graph, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void fixPath(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, BasicArrayList pathList){
+    public: void fixPath(BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList, BasicArrayList* pathList){
 
 
 
 
                         for (
-    int32_t index = startPathFindingNodeList.size() -1;index >= 0; index--)
+    int32_t index = startPathFindingNodeList->size() -1;index >= 0; index--)
         {
 
-    PathFindingNode startPathFindingNode = startPathFindingNodeList.get(index);;
+    PathFindingNode* startPathFindingNode = dynamic_cast<PathFindingNode*>(startPathFindingNodeList->get(index));;
     
-pathList.remove(startPathFindingNode.geographicMapCellPosition);
+pathList->remove(startPathFindingNode->geographicMapCellPosition);
     
-pathList.addAt(0, startPathFindingNode.geographicMapCellPosition);
+pathList->addAt(0, startPathFindingNode->geographicMapCellPosition);
     
 }
 
 }
 
 
-    public: bool isValid(GraphPath graphPath){
+    public: bool isValid(GraphPath* graphPath){
 
-                        if(graphPath.getEdgeList().size() > this->edgeMinimum && graphPath.getWeight() < this->maxPathWeight && graphPath.getWeight() > this->minPathWeight)
+                        if(graphPath->getEdgeList()->size() > this->edgeMinimum && graphPath->getWeight() < this->maxPathWeight && graphPath->getWeight() > this->minPathWeight)
                         
                                     {
                                     
@@ -138,33 +144,33 @@ pathList.addAt(0, startPathFindingNode.geographicMapCellPosition);
 }
 
 
-    public: std::string getInvalidReason(GraphPath graphPath){
+    public: std::string getInvalidReason(GraphPath* graphPath){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-                        if(graphPath.getEdgeList().size() < this->edgeMinimum)
+                        if(graphPath->getEdgeList()->size() < this->edgeMinimum)
                         
                                     {
-                                    stringBuffer.append("Ignoring Small: " +graphPath.getEdgeList().size());
-    
-
-                                    }
-                                
-
-                        if(graphPath.getWeight() <= this->minPathWeight)
-                        
-                                    {
-                                    stringBuffer.append(" Low Weighted Path: " +graphPath.getWeight());
+                                    stringBuffer->append("Ignoring Small: " +graphPath->getEdgeList()->size());
     
 
                                     }
                                 
 
-                        if(graphPath.getWeight() >= this->maxPathWeight)
+                        if(graphPath->getWeight() <= this->minPathWeight)
                         
                                     {
-                                    stringBuffer.append(" To High Weighted Path: " +graphPath.getWeight());
+                                    stringBuffer->append(" Low Weighted Path: " +graphPath->getWeight());
+    
+
+                                    }
+                                
+
+                        if(graphPath->getWeight() >= this->maxPathWeight)
+                        
+                                    {
+                                    stringBuffer->append(" To High Weighted Path: " +graphPath->getWeight());
     
 
                                     }
@@ -173,7 +179,7 @@ pathList.addAt(0, startPathFindingNode.geographicMapCellPosition);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

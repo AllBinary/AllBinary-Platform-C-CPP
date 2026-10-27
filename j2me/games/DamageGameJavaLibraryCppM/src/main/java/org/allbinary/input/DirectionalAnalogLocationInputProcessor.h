@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/android/input/motion/AnalogLocationInputProcessor.h>
@@ -79,27 +85,27 @@
         
 class DirectionalAnalogLocationInputProcessor: public AnalogLocationInputProcessor, public GameKeyEventSourceInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: std::vector<GameInputProcessor> inputProcessorArray;
+    private: std::vector<GameInputProcessor*> inputProcessorArray;
 
-    private: const GameKeyFactory gameKeyFactory = GameKeyFactory::getInstance();
+    private: GameKeyFactory* gameKeyFactory = GameKeyFactory::getInstance();
 
-    private: GameKeyEvent leftGameKeyEvent = GameKeyEvent::NONE;
+    private: GameKeyEvent* leftGameKeyEvent = GameKeyEvent::NONE;
 
-    private: GameKeyEvent rightGameKeyEvent = GameKeyEvent::NONE;
+    private: GameKeyEvent* rightGameKeyEvent = GameKeyEvent::NONE;
 
-    private: GameKeyEvent upGameKeyEvent = GameKeyEvent::NONE;
+    private: GameKeyEvent* upGameKeyEvent = GameKeyEvent::NONE;
 
-    private: GameKeyEvent downGameKeyEvent = GameKeyEvent::NONE;
+    private: GameKeyEvent* downGameKeyEvent = GameKeyEvent::NONE;
 
-    private: GameKeyEvent leftTriggerGameKeyEvent = GameKeyEvent::NONE;
+    private: GameKeyEvent* leftTriggerGameKeyEvent = GameKeyEvent::NONE;
 
-    private: GameKeyEvent rightTriggerGameKeyEvent = GameKeyEvent::NONE;
+    private: GameKeyEvent* rightTriggerGameKeyEvent = GameKeyEvent::NONE;
 
-public: DirectionalAnalogLocationInputProcessor(std::vector<GameInputProcessor> inputProcessorArray);
+public: DirectionalAnalogLocationInputProcessor(std::vector<GameInputProcessor*> inputProcessorArray);
 
-    public: void process(AllBinaryLayerManager allbinaryLayerManager, AnalogLocationInput analogLocationInput);
+    public: void process(AllBinaryLayerManager* allbinaryLayerManager, AnalogLocationInput* analogLocationInput);
 
     public: int32_t getSourceId();
 

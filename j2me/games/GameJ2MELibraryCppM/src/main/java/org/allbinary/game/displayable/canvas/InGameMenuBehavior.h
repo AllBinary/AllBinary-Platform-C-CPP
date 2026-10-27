@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_INGAMEMENUBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_INGAMEMENUBEHAVIOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/displayable/event/DisplayChangeEvent.h>
@@ -44,35 +50,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseMenuBehavior.h"
-#include "AllBinaryGameCanvas.h"
-#include "GameCanvasNonBotPaintable.h"
+        #include "org/allbinary/game/displayable/canvas/BaseMenuBehavior.h"
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
+#include "org/allbinary/game/displayable/canvas/GameCanvasNonBotPaintable.h"
 
 class InGameMenuBehavior: public BaseMenuBehavior {
 
-    private: static const InGameMenuBehavior instanceC = InGameMenuBehavior();
+    private: static InGameMenuBehavior* instanceC() { static std::unique_ptr<InGameMenuBehavior> value(new InGameMenuBehavior()); return value.get(); }
 
-    public: static InGameMenuBehavior getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public: void onDisplayChangeEvent(AllBinaryGameCanvas allBinaryGameCanvas, DisplayChangeEvent displayChangeEvent);
-
-    public: void initSpecialPaint(AllBinaryGameCanvas allBinaryGameCanvas);
+    public: static InGameMenuBehavior* getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void initMenu(AllBinaryGameCanvas allBinaryGameCanvas);
+    public: void onDisplayChangeEvent(AllBinaryGameCanvas* allBinaryGameCanvas, DisplayChangeEvent* displayChangeEvent);
+
+    public: void initSpecialPaint(AllBinaryGameCanvas* allBinaryGameCanvas);
 
                 //@Throws(Exception.constructor)
             
-    public: void updateMenu(AllBinaryGameCanvas allBinaryGameCanvas);
+    public: void initMenu(AllBinaryGameCanvas* allBinaryGameCanvas);
 
                 //@Throws(Exception.constructor)
             
-    public: void popupMenu(AllBinaryGameCanvas allBinaryGameCanvas);
+    public: void updateMenu(AllBinaryGameCanvas* allBinaryGameCanvas);
 
-    public: void closeMenu(AllBinaryGameCanvas allBinaryGameCanvas);
+                //@Throws(Exception.constructor)
+            
+    public: void popupMenu(AllBinaryGameCanvas* allBinaryGameCanvas);
+
+    public: void closeMenu(AllBinaryGameCanvas* allBinaryGameCanvas);
 
 };
 

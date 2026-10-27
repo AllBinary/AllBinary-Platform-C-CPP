@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_SEARCH_TABLESEARCHREQUEST_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_SEARCH_TABLESEARCHREQUEST_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,8 +64,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SearchParams.h"
-#include "SearchData.h"
+        #include "org/allbinary/logic/control/search/SearchParams.h"
+#include "org/allbinary/logic/control/search/SearchData.h"
 
 class TableSearchRequest
             : public Object
@@ -73,13 +79,13 @@ class TableSearchRequest
 
     private: std::string keywords;
 
-    private: SearchParams searchParams;
+    private: SearchParams* searchParams;
 
-public: TableSearchRequest(std::string keywords, SearchParams searchParams, std::string xslFile, std::string contentType);
+public: TableSearchRequest(std::string keywords, SearchParams* searchParams, std::string xslFile, std::string contentType);
 
     public: void setKeywords(std::string value);
 
-    public: void setParams(SearchParams searchParams);
+    public: void setParams(SearchParams* searchParams);
 
     public: void setXslFile(std::string value);
 
@@ -89,7 +95,7 @@ public: TableSearchRequest(std::string keywords, SearchParams searchParams, std:
 
     public: std::string getKeywords();
 
-    public: SearchParams getParams();
+    public: SearchParams* getParams();
 
                 //@Throws(Exception.constructor)
             
@@ -101,7 +107,7 @@ public: TableSearchRequest(std::string keywords, SearchParams searchParams, std:
 
                 //@Throws(Exception.constructor)
             
-    public: Node getFileBaseNameNode(Document document);
+    public: Node* getFileBaseNameNode(Document* document);
 
 };
 

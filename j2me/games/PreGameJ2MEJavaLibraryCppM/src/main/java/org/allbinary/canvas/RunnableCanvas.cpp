@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Thread.h"
@@ -88,32 +94,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Processor.h"
-#include "RunnableCanvasRefreshHelper.h"
+        #include "org/allbinary/canvas/Processor.h"
+#include "org/allbinary/canvas/RunnableCanvasRefreshHelper.h"
 
 class RunnableCanvas: public MyCanvas, public RunnableInterface {
 
-    protected: const NullUtil nullUtil = NullUtil::getInstance();
+    protected: NullUtil* nullUtil = NullUtil::getInstance();
 
-    protected: const StdUtil stdUtil = StdUtil::getInstance();
+    protected: StdUtil* stdUtil = StdUtil::getInstance();
 
-    protected: const ABSystemWrapper systemWrapper = ABSystemWrapper::getInstance();
+    protected: ABSystemWrapper* systemWrapper = ABSystemWrapper::getInstance();
 
-    protected: const TsUtil tsUtil = TsUtil::getInstance();
+    protected: TsUtil* tsUtil = TsUtil::getInstance();
 
-    private: Thread thread = NullThread::NULL_THREAD;
+    private: Thread* thread = NullThread::NULL_THREAD;
 
-    private: Thread currentThread = NullThread::NULL_THREAD;
+    private: Thread* currentThread = NullThread::NULL_THREAD;
 
     private: bool running= false;
 
-    protected: const TimeDelayHelper loopTimeHelper = TimeDelayHelper(NullWaitGameRunnable::getInstance().WAIT);
+    protected: TimeDelayHelper* loopTimeHelper = new TimeDelayHelper(NullWaitGameRunnable::getInstance()->WAIT);
 
-    protected: Processor runnableCanvasRefreshHelper = Processor::getInstance();
+    protected: Processor* runnableCanvasRefreshHelper = Processor::getInstance();
 
-    protected: const CommonLabels commonLabels = CommonLabels::getInstance();
+    protected: CommonLabels* commonLabels = CommonLabels::getInstance();
 
-    protected: const ThreadObjectUtil threadObjectUtil = ThreadObjectUtil::getInstance();
+    protected: ThreadObjectUtil* threadObjectUtil = ThreadObjectUtil::getInstance();
 
     protected: const std::string SET_RUNNING = "setRunning";
 
@@ -131,16 +137,16 @@ class RunnableCanvas: public MyCanvas, public RunnableInterface {
 
     private: const std::string PROCESS_LOOP_SLEEP = "processLoopSleep";
 
-public: RunnableCanvas(CommandListener commandListener, BasicArrayList childNameList, bool hasParam) : MyCanvas(CommonStrings::getInstance().UNKNOWN, childNameList){
+public: RunnableCanvas(CommandListener* commandListener, BasicArrayList* childNameList, bool hasParam) : MyCanvas(CommonStrings::getInstance()->UNKNOWN, childNameList){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil.putF(StringMaker().append("RunnableCanvas delay: ").appendint(this->loopTimeHelper.delay).toString(), this, this->commonStrings.CONSTRUCTOR);
+this->logUtil.putF((new StringMaker())->append("RunnableCanvas delay: ")->appendint(this->loopTimeHelper->delay)->toString(), this, this->commonStrings.CONSTRUCTOR);
     
-this->runnableCanvasRefreshHelper= RunnableCanvasRefreshHelper(this);
+this->runnableCanvasRefreshHelper= new RunnableCanvasRefreshHelper(this);
     
 
                         if(commandListener != 
@@ -165,7 +171,7 @@ this->runnableCanvasRefreshHelper= RunnableCanvasRefreshHelper(this);
 }
 
 
-    public: void initCommands(CommandListener cmdListener){
+    public: void initCommands(CommandListener* cmdListener){
 this->logUtil.putF(this->commonStrings.NOT_IMPLEMENTED, this, "initCommands");
     
 }
@@ -200,7 +206,7 @@ this->logUtil.putF(this->commonStrings.NOT_IMPLEMENTED, this, "initCommands");
 }
 
 
-    public: void setThread(Thread thread){
+    public: void setThread(Thread* thread){
 this->thread= thread;
     
 }
@@ -222,14 +228,14 @@ this->running= running;
 
         //mutex.withLock
         
-this->threadObjectUtil.notifyObject(this);
+this->threadObjectUtil->notifyObject(this);
     
 
 
 
                                     }
                                 
-this->logUtil.putF(StringMaker().append(this->IS_RUNNING).appendboolean(this->running).toString(), this, this->SET_RUNNING);
+this->logUtil.putF((new StringMaker())->append(this->IS_RUNNING)->appendboolean(this->running)->toString(), this, this->SET_RUNNING);
     
 }
 
@@ -251,9 +257,9 @@ this->logUtil.putF(StringMaker().append(this->IS_RUNNING).appendboolean(this->ru
                                 
                         else {
                             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->THREAD);
+stringBuffer->append(this->THREAD);
     
 
                         if(this->thread != 
@@ -261,12 +267,12 @@ stringBuffer.append(this->THREAD);
                                 )
                         
                                     {
-                                    stringBuffer.append(this->thread.toString());
+                                    stringBuffer->append(this->thread->toString());
     
 
                                     }
                                 
-stringBuffer.append(this->NOT_EQUAL);
+stringBuffer->append(this->NOT_EQUAL);
     
 
                         if(this->currentThread != 
@@ -274,12 +280,12 @@ stringBuffer.append(this->NOT_EQUAL);
                                 )
                         
                                     {
-                                    stringBuffer.append(StringUtil::getInstance().toString(this->currentThread));
+                                    stringBuffer->append(StringUtil::getInstance()->toString(this->currentThread));
     
 
                                     }
                                 
-this->logUtil.putF(stringBuffer.toString(), this, this->IS_RUNNING);
+this->logUtil.putF(stringBuffer->toString(), this, this->IS_RUNNING);
     
 
 
@@ -293,7 +299,7 @@ this->logUtil.putF(stringBuffer.toString(), this, this->IS_RUNNING);
 }
 
 
-    public: TimeDelayHelper getLoopTimeHelperP(){
+    public: TimeDelayHelper* getLoopTimeHelperP(){
 
 
 
@@ -306,11 +312,11 @@ this->logUtil.putF(stringBuffer.toString(), this, this->IS_RUNNING);
     private: int64_t pauseWait = 0;
 
     protected: void setWait(int32_t wait){
-this->loopTimeHelper.delay= wait;
+this->loopTimeHelper->delay= wait;
     
 this->pauseWait= wait *3;
     
-this->logUtil.putF(StringMaker().append("setWait - delay: ").appendint(this->loopTimeHelper.delay).toString(), this, this->commonStrings.CONSTRUCTOR);
+this->logUtil.putF((new StringMaker())->append("setWait - delay: ")->appendint(this->loopTimeHelper->delay)->toString(), this, this->commonStrings.CONSTRUCTOR);
     
 }
 
@@ -320,7 +326,7 @@ this->logUtil.putF(StringMaker().append("setWait - delay: ").appendint(this->loo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->loopTimeHelper.delay;
+                        return this->loopTimeHelper->delay;
     
 }
 
@@ -344,9 +350,9 @@ this->currentThread= this->thread;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "showNotify", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "showNotify", &e);
     
 }
 
@@ -367,7 +373,7 @@ this->notified= true;
 
         //mutex.withLock
         
-this->threadObjectUtil.notifyObject(this);
+this->threadObjectUtil->notifyObject(this);
     
 
 
@@ -388,13 +394,13 @@ this->repaint();
                         if(wait > 0)
                         
                                     {
-                                    this->threadObjectUtil.waitObjectFor(this, wait);
+                                    this->threadObjectUtil->waitObjectFor(this, wait);
     
 
                                     }
                                 
                         else {
-                            this->threadObjectUtil.waitObject(this);
+                            this->threadObjectUtil->waitObject(this);
     
 
                         }
@@ -434,25 +440,25 @@ Thread::sleep(sleep);
                 //@Throws(Exception.constructor)
             
     public: void processLoopSleep(){
-this->runnableCanvasRefreshHelper.process();
+this->runnableCanvasRefreshHelper->process();
     
 
                         if(this->isPaused())
                         
                                     {
                                     
-    StringMaker stringMaker = StringMaker();;
+    StringMaker* stringMaker = new StringMaker();;
     
 
                         if(this->isRunning() && !this->isSingleThread())
                         
                                     {
-                                    stringMaker.delete(0, stringMaker.length());
+                                    stringMaker->delete(0, stringMaker->length());
     
 
-    int64_t currentTimeMillis = this->systemWrapper.currentTimeMillis();;
+    int64_t currentTimeMillis = this->systemWrapper->currentTimeMillis();;
     
-this->logUtil.putF(stringMaker.append(this->START_PAUSE).appendlong(currentTimeMillis).append(this->PAUSE_SLEEP).appendlong(this->pauseWait).toString(), this, this->PROCESS_LOOP_SLEEP);
+this->logUtil.putF(stringMaker->append(this->START_PAUSE)->appendlong(currentTimeMillis)->append(this->PAUSE_SLEEP)->appendlong(this->pauseWait)->toString(), this, this->PROCESS_LOOP_SLEEP);
     
 
         while(this->isPaused() && this->isRunning() && !this->isSingleThread())
@@ -463,9 +469,9 @@ this->processSleep();
                         if(!this->isPausable())
                         
                                     {
-                                    stringMaker.delete(0, stringMaker.length());
+                                    stringMaker->delete(0, stringMaker->length());
     
-this->logUtil.putF(stringMaker.append(this->END_PAUSE).appendlong(currentTimeMillis).toString(), this, this->PROCESS_LOOP_SLEEP);
+this->logUtil.putF(stringMaker->append(this->END_PAUSE)->appendlong(currentTimeMillis)->toString(), this, this->PROCESS_LOOP_SLEEP);
     
 
 
@@ -485,10 +491,10 @@ this->logUtil.putF(stringMaker.append(this->END_PAUSE).appendlong(currentTimeMil
                                     }
                                 
 
-    int64_t elapsedTime = this->loopTimeHelper.getElapsedTNT();;
+    int64_t elapsedTime = this->loopTimeHelper->getElapsedTNT();;
     
 
-    int64_t wait = this->loopTimeHelper.delay;;
+    int64_t wait = this->loopTimeHelper->delay;;
     
 
                         if(elapsedTime > wait)

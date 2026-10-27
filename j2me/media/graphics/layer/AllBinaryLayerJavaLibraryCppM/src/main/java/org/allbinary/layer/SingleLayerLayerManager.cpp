@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,8 +42,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LayerManager.h"
-#include "LayerManagerNoDebug.h"
+        #include "org/allbinary/layer/LayerManager.h"
+#include "org/allbinary/layer/LayerManagerNoDebug.h"
 
 class SingleLayerLayerManager: public LayerManager {
 

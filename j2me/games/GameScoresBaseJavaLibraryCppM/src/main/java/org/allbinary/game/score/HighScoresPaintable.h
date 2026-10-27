@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESPAINTABLE_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESPAINTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -81,19 +87,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NullHighScoresSingletonFactory.h"
-#include "HighScores.h"
-#include "HighScore.h"
+        #include "org/allbinary/game/score/NullHighScoresSingletonFactory.h"
+#include "org/allbinary/game/score/HighScores.h"
+#include "org/allbinary/game/score/HighScore.h"
 
 class HighScoresPaintable: public Paintable, public ColorChangeListener, public UpdateMyFontInterface {
 
-    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
 
-    private: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
+    private: BasicColor* basicColor = BasicColorFactory::getInstance()->WHITE;
 
-    private: HighScores highScores = NullHighScoresSingletonFactory::getInstance();
+    private: HighScores* highScores = NullHighScoresSingletonFactory::getInstance();
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
@@ -101,17 +107,17 @@ class HighScoresPaintable: public Paintable, public ColorChangeListener, public 
 
 public: HighScoresPaintable();
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
-    public: void onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject* eventObject);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: void setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor* basicColor);
 
-    public: BasicColor getBasicColorP();
+    public: BasicColor* getBasicColorP();
 
-    public: void setHighScores(HighScores highScores);
+    public: void setHighScores(HighScores* highScores);
 
 };
 

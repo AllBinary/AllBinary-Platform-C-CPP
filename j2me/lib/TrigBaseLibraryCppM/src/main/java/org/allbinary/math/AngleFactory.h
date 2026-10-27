@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -72,49 +78,49 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Angle.h"
-#include "NamedAngle.h"
-#include "FrameUtil.h"
+        #include "org/allbinary/math/Angle.h"
+#include "org/allbinary/math/NamedAngle.h"
+#include "org/allbinary/math/FrameUtil.h"
 
 class AngleFactory
             : public Object
          {
 
-    private: static AngleFactory instance() { return AngleFactory(); }
+    private: static AngleFactory* instance() { static std::unique_ptr<AngleFactory> value(new AngleFactory()); return value.get(); }
 
-    public: static AngleFactory getInstance();
+    public: static AngleFactory* getInstance();
 
     public: static void main(std::vector<std::string> args);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     public: const int16_t TOTAL_ANGLE = 360;
 
     public: const int16_t QUARTER_TOTAL_ANGLE = 90;
 
-    private: const std::vector<Angle> angleArray = std::vector<Angle>(static_cast<int32_t>(this->TOTAL_ANGLE));
+    private: const std::vector<Angle*> angleArray = std::vector<Angle*>(static_cast<int32_t>(this->TOTAL_ANGLE));
 
     private: const int16_t NEGATIVE_ONE =  -1;
 
-    public: const NamedAngle NOT_ANGLE = NamedAngle(this->NEGATIVE_ONE, CommonStrings::getInstance().EMPTY);
+    public: NamedAngle* NOT_ANGLE = new NamedAngle(this->NEGATIVE_ONE, CommonStrings::getInstance()->EMPTY);
 
-    public: NamedAngle DOWN;
+    public: NamedAngle* DOWN;
 
-    public: NamedAngle UP;
+    public: NamedAngle* UP;
 
-    public: NamedAngle LEFT;
+    public: NamedAngle* LEFT;
 
-    public: NamedAngle RIGHT;
+    public: NamedAngle* RIGHT;
 
 public: AngleFactory();
 
-    private: const FrameUtil frameUtil = FrameUtil::getInstance();
+    private: FrameUtil* frameUtil = FrameUtil::getInstance();
 
-    public: Angle getAt(int32_t index);
+    public: Angle* getAt(int32_t index);
 
-    public: Angle getClosestDirection(int32_t angle);
+    public: Angle* getClosestDirection(int32_t angle);
 
-    public: Angle getGeneralDirection();
+    public: Angle* getGeneralDirection();
 
 };
 

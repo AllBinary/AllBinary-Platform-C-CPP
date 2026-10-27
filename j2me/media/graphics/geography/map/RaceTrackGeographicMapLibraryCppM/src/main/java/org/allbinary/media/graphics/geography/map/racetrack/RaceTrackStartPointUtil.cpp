@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -68,24 +74,24 @@ class RaceTrackStartPointUtil
 
                 //@Throws(Exception.constructor)
             
-    public: static GPoint get(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, int32_t index){
+    public: static GPoint* get(BasicGeographicMap* geographicMapInterface, PathFindingInfo* pathFindingInfo, int32_t index){
 
-    BasicArrayList list = pathFindingInfo.getStartPathFindingNodeList();;
+    BasicArrayList* list = pathFindingInfo->getStartPathFindingNodeList();;
     
 
-    PathFindingNode startPathFindingNode = list.get(index);;
+    PathFindingNode* startPathFindingNode = dynamic_cast<PathFindingNode*>(list->get(index));;
     
 
-    GeographicMapCellPosition geographicMapCellPosition = startPathFindingNode.geographicMapCellPosition;;
+    GeographicMapCellPosition* geographicMapCellPosition = startPathFindingNode->geographicMapCellPosition;;
     
 
-    GPoint point = geographicMapCellPosition.getPoint();;
+    GPoint* point = geographicMapCellPosition->getPoint();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PointFactory::getInstance().createXY(point.getX(), point.getY() +geographicMapInterface.getAllBinaryTiledLayer().getHalfCellHeight());;
+                        return PointFactory::getInstance()->createXY(point->getX(), point->getY() +geographicMapInterface->getAllBinaryTiledLayer()->getHalfCellHeight());;
     
 }
 

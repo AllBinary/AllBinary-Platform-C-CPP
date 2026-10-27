@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -35,13 +41,13 @@ class OpenGLObject3dProcessor
             : public Object
          {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    public: void process(GL10 gl, Object* object3d){
+    public: void process(GL10* gl, Object* object3d){
 }
 
 
-    public: void process(GL10 gl, Object* object3d, int32_t index){
+    public: void process(GL10* gl, Object* object3d, int32_t index){
 }
 
 

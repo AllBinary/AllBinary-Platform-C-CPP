@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/io/FileInputStream.h>
 
       
@@ -59,9 +65,9 @@
         
 class AbFileInputStream: public InputStream {
 
-    private: FileInputStream fileInputStream;
+    private: FileInputStream* fileInputStream;
 
-public: AbFileInputStream(FileInputStream fileInputStream);
+public: AbFileInputStream(FileInputStream* fileInputStream);
 
     public: void mark(int32_t readlimit);
 
@@ -78,7 +84,7 @@ public: AbFileInputStream(FileInputStream fileInputStream);
 
     public: void close();
 
-    public: FileChannel getChannel();
+    public: FileChannel* getChannel();
 
                 //@Throws(IOException.constructor)
             

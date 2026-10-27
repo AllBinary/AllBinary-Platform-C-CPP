@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -65,135 +71,135 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Tokenizer.h"
+        #include "org/allbinary/logic/string/tokens/Tokenizer.h"
 
 class UniqueTokens
             : public Object
          {
 
-    private: const BasicArrayList specialCharacters = BasicArrayListD();
+    private: BasicArrayList* specialCharacters = new BasicArrayListD();
 
 public: UniqueTokens(){
-this->specialCharacters.add("!");
+this->specialCharacters->add("!");
     
-this->specialCharacters.add("@");
+this->specialCharacters->add("@");
     
-this->specialCharacters.add(CommonPhoneStrings::getInstance().POUND);
+this->specialCharacters->add(CommonPhoneStrings::getInstance()->POUND);
     
-this->specialCharacters.add("$");
+this->specialCharacters->add("$");
     
-this->specialCharacters.add("%");
+this->specialCharacters->add("%");
     
-this->specialCharacters.add("^");
+this->specialCharacters->add("^");
     
-this->specialCharacters.add(CommonSeps::getInstance().AMPERSAND);
+this->specialCharacters->add(CommonSeps::getInstance()->AMPERSAND);
     
-this->specialCharacters.add(CommonPhoneStrings::getInstance().STAR);
+this->specialCharacters->add(CommonPhoneStrings::getInstance()->STAR);
     
-this->specialCharacters.add("(");
+this->specialCharacters->add("(");
     
-this->specialCharacters.add(")");
+this->specialCharacters->add(")");
     
-this->specialCharacters.add("-");
+this->specialCharacters->add("-");
     
-this->specialCharacters.add("_");
+this->specialCharacters->add("_");
     
-this->specialCharacters.add("+");
+this->specialCharacters->add("+");
     
-this->specialCharacters.add("=");
+this->specialCharacters->add("=");
     
-this->specialCharacters.add("\\");
+this->specialCharacters->add("\\");
     
-this->specialCharacters.add("|");
+this->specialCharacters->add("|");
     
-this->specialCharacters.add(AbPathData::getInstance().EXTENSION_SEP);
+this->specialCharacters->add(AbPathData::getInstance()->EXTENSION_SEP);
     
-this->specialCharacters.add(",");
+this->specialCharacters->add(",");
     
-this->specialCharacters.add("<");
+this->specialCharacters->add("<");
     
-this->specialCharacters.add(">");
+this->specialCharacters->add(">");
     
-this->specialCharacters.add("?");
+this->specialCharacters->add("?");
     
-this->specialCharacters.add("/");
+this->specialCharacters->add("/");
     
-this->specialCharacters.add("~");
+this->specialCharacters->add("~");
     
-this->specialCharacters.add("`");
+this->specialCharacters->add("`");
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: HashSet getWhithoutDashesAndSkipNumberOnlyTokens(BasicArrayList stringVector){
+    public: HashSet* getWhithoutDashesAndSkipNumberOnlyTokens(BasicArrayList* stringVector){
 
         try {
             
-    HashSet hashSet = HashSet();;
+    HashSet* hashSet = new HashSet();;
     
 
     int32_t index = 0;;
     
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
-        while(index < stringVector.size())
+        while(index < stringVector->size())
         {
 
-    std::string keywords = stringVector.get(index);;
+    std::string keywords = stringVector->get(index);;
     
 
-    Tokenizer tokenizer = Tokenizer(commonSeps.COMMA);;
+    Tokenizer* tokenizer = new Tokenizer(commonSeps->COMMA);;
     
 
-    BasicArrayList keywordVector = tokenizer.getTokensFromString(keywords, BasicArrayListD());;
+    BasicArrayList* keywordVector = tokenizer->getTokensFromString(keywords, new BasicArrayListD());;
     
 
 
 
 
                         for (
-    int32_t forIndex = 0;forIndex < keywordVector.size(); forIndex++)
+    int32_t forIndex = 0;forIndex < keywordVector->size(); forIndex++)
         {
 
-    std::string cleanString = keywordVector.get(forIndex);;
+    std::string cleanString = keywordVector->get(forIndex);;
     
-cleanString= cleanString.trim();
+cleanString= JavaString::trim(cleanString);
     
 
-                        if(cleanString.indexOf('-') !=  -1)
-                        cleanString= Replace("-", commonSeps.SPACE).all(cleanString);
+                        if(JavaString::indexOf(cleanString, '-') !=  -1)
+                        cleanString= (new Replace("-", commonSeps->SPACE))->all(cleanString);
                                 
-hashSet.add(cleanString);
+hashSet->add(cleanString);
     
 
-                        if(cleanString.indexOf(' ') !=  -1)
+                        if(JavaString::indexOf(cleanString, ' ') !=  -1)
                         
                                     {
                                     
-    Tokenizer spaceTokenizer = Tokenizer(commonSeps.SPACE);;
+    Tokenizer* spaceTokenizer = new Tokenizer(commonSeps->SPACE);;
     
 
-    BasicArrayList subKeywordVector = spaceTokenizer.getTokensFromString(cleanString, BasicArrayListD());;
+    BasicArrayList* subKeywordVector = spaceTokenizer->getTokensFromString(cleanString, new BasicArrayListD());;
     
 
 
 
 
                         for (
-    int32_t spaceIndex = 0;spaceIndex < subKeywordVector.size(); spaceIndex++)
+    int32_t spaceIndex = 0;spaceIndex < subKeywordVector->size(); spaceIndex++)
         {
 
-    std::string subCleanString = subKeywordVector.get(spaceIndex);;
+    std::string subCleanString = subKeywordVector->get(spaceIndex);;
     
 
                         if(!isSpecialCharacter(subCleanString) && !numberOnly(subCleanString))
                         
                                     {
-                                    hashSet.add(subCleanString);
+                                    hashSet->add(subCleanString);
     
 
                                     }
@@ -217,7 +223,7 @@ index++;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -232,7 +238,7 @@ index++;
     private: bool numberOnly(std::string subCleaningString){
 
         try {
-            Integer::parseInt(subCleaningString);
+            Integer.parseInt(subCleaningString);
     
 
 
@@ -242,7 +248,7 @@ index++;
     
 
                 //: 
-} catch(e) 
+} catch(NumberFormatException& e) 
             {
 
 
@@ -261,10 +267,10 @@ index++;
 
 
                         for (
-    int32_t index = 0;index < this->specialCharacters.size(); index++)
+    int32_t index = 0;index < this->specialCharacters->size(); index++)
         {
 
-                        if(subCleaningString.compare(this->specialCharacters.get(index)) == 0)
+                        if(subCleaningString.compare(this->specialCharacters->get(index)) == 0)
                         
 
 

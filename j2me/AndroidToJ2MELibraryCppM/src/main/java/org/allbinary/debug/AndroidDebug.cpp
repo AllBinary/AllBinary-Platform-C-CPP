@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/System.h"
@@ -45,13 +51,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DebugInterface.h"
+        #include "org/allbinary/debug/DebugInterface.h"
 
 class AndroidDebug
             : public Object
-        : public DebugInterface {
+        , public DebugInterface {
 
-    private: int64_t startTime = Long::MAX_VALUE;
+    private: int64_t startTime = Long.MAX_VALUE;
 
     private: bool running = false;
 
@@ -68,7 +74,7 @@ this->setRunning(true);
 
 
     public: void stop(){
-this->startTime= Long::MAX_VALUE;
+this->startTime= Long.MAX_VALUE;
     
 Debug::stopMethodTracing();
     

@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Class.h"
         
             #include "java/lang/Exception.h"
@@ -67,18 +75,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TableTag.h"
+        #include "admin/tags/TableTag.h"
 
 class CategoryTag: public TableTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string xsl;
 
 public: CategoryTag(){
-this->setTagHelperFactory(CategoryHelperFactory());
+this->setTagHelperFactory(new CategoryHelperFactory());
     
-this->setTagRequestHelperFactory(CategoryRequestHelperFactory());
+this->setTagRequestHelperFactory(new CategoryRequestHelperFactory());
     
 }
 
@@ -95,17 +103,17 @@ this->xsl= value;
 
         try {
             
-    Object* anyType = CategoryRequestHelperFactory().getInstance(this->getPropertiesHashMap(), this->pageContext);;
+    Object* anyType = (new CategoryRequestHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext);;
     
 
     Class* helperClass = anyType->getClass();;
     
 
-    Method method = helperClass.getMethod("viewCategory", 
+    Method* method = helperClass->getMethod("viewCategory", 
                             nullptr);;
     
 
-    std::string result = method.invoke(anyType, 
+    std::string result = method->invoke(anyType, 
                             nullptr);;
     
 
@@ -116,7 +124,7 @@ this->xsl= value;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -126,16 +134,16 @@ this->xsl= value;
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
     std::string error = "Failed to view a Category";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "viewCategory()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "viewCategory()", &e);
     
 
                                     }
@@ -147,7 +155,7 @@ this->xsl= value;
                         return error;
     
 }
-*/
+
 }
 
 
@@ -157,17 +165,17 @@ this->xsl= value;
 
         try {
             
-    Object* anyType = CategoryRequestHelperFactory().getInstance(this->getPropertiesHashMap(), this->pageContext);;
+    Object* anyType = (new CategoryRequestHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext);;
     
 
     Class* helperClass = anyType->getClass();;
     
 
-    Method method = helperClass.getMethod("viewCategories", 
+    Method* method = helperClass->getMethod("viewCategories", 
                             nullptr);;
     
 
-    std::string result = method.invoke(anyType, 
+    std::string result = method->invoke(anyType, 
                             nullptr);;
     
 
@@ -178,7 +186,7 @@ this->xsl= value;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -188,16 +196,16 @@ this->xsl= value;
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
     std::string error = "Failed to view a Categories";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "viewCategories()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "viewCategories()", &e);
     
 
                                     }
@@ -209,7 +217,7 @@ this->xsl= value;
                         return error;
     
 }
-*/
+
 }
 
 
@@ -228,20 +236,20 @@ this->xsl= value;
                                 )
                         
                                     {
-                                    this->getPropertiesHashMap().put(TransformInfoData::getInstance().TEMPLATEFILENAME, this->xsl);
+                                    this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->TEMPLATEFILENAME, this->xsl);
     
 
-                        if(this->getCommand().compareTo(CategoryData::getInstance().VIEW) == 0)
+                        if(this->getCommand()->compareTo(CategoryData::getInstance()->VIEW) == 0)
                         
                                     {
                                     
     std::string output = this->viewCategory();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    pageContext.getOut().print(output);
+                                    pageContext.getOut()->print(output);
     
 
                                     }
@@ -250,17 +258,17 @@ this->xsl= value;
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(CategoryData::getInstance().VIEW) == 0)
+                        if(this->getCommand()->compareTo(CategoryData::getInstance()->VIEW) == 0)
                         
                                     {
                                     
     std::string output = this->viewCategories();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    pageContext.getOut().print(output);
+                                    pageContext.getOut()->print(output);
     
 
                                     }
@@ -292,9 +300,9 @@ this->xsl= value;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
-AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
     
 
 
@@ -305,9 +313,9 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 
@@ -316,7 +324,7 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
                         return SKIP_BODY;
     
 }
-*/
+
 }
 
 

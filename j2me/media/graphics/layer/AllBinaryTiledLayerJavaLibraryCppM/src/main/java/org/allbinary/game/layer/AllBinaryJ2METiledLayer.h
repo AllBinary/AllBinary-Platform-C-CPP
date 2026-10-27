@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -58,27 +64,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryTiledLayer.h"
+        #include "org/allbinary/game/layer/AllBinaryTiledLayer.h"
 
 class AllBinaryJ2METiledLayer: public AllBinaryTiledLayer {
 
-    protected: TiledLayer tiledLayerP;
+    protected: TiledLayer* tiledLayerP;
 
     protected: int32_t debugColor;
 
-public: AllBinaryJ2METiledLayer(Integer dataId, TiledLayer tiledLayer, std::vector<std::vector<int32_t>> mapTwoDArray, int32_t debugColor);
+public: AllBinaryJ2METiledLayer(int32_t dataId, TiledLayer* tiledLayer, std::vector<std::vector<int32_t>> mapTwoDArray, int32_t debugColor);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    const Font font2 = Font::getFont(Font::FACE_SYSTEM, Font::STYLE_PLAIN, 4);
+    Font* font2 = Font::getFont(Font::FACE_SYSTEM, Font::STYLE_PLAIN, 4);
 
-    public: void paintDebug(Graphics graphics);
+    public: void paintDebug(Graphics* graphics);
 
     public: void moveDXY(int32_t dx, int32_t dy);
 
     public: void setPosition(int32_t x, int32_t y, int32_t z);
 
-    public: TiledLayer getTiledLayer();
+    public: TiledLayer* getTiledLayer();
 
     public: int32_t getCellWidth();
 

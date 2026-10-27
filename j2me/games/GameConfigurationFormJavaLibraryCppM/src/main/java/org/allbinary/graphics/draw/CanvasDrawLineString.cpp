@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -53,17 +59,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DrawStringUtil.h"
+        #include "org/allbinary/graphics/draw/DrawStringUtil.h"
 
 class CanvasDrawLineString
             : public Object
-        : public UpdateMyFontInterface {
+        , public UpdateMyFontInterface {
 
-    public: static const CanvasDrawLineString NULL_CANVAS_DRAW_LINE_STRING = CanvasDrawLineString(0, 0);
+    public: static CanvasDrawLineString* NULL_CANVAS_DRAW_LINE_STRING() { static std::unique_ptr<CanvasDrawLineString> value(new CanvasDrawLineString(0, 0)); return value.get(); }
 
-    private: const DrawStringUtil drawStringUtil = DrawStringUtil::getInstance();
+    private: DrawStringUtil* drawStringUtil = DrawStringUtil::getInstance();
 
-    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
 
     private: int32_t x;
 
@@ -79,21 +85,21 @@ this->y= y;
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->fontHeight= font.getHeight();
+this->fontHeight= font->getHeight();
     
 this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    public: void paint(Graphics graphics, std::string string, int32_t line){
-this->myFontProcessor.process(graphics);
+    public: void paint(Graphics* graphics, std::string string, int32_t line){
+this->myFontProcessor->process(graphics);
     
-this->drawStringUtil.drawCenterString(graphics, string, 0, string.size()this->x, this->y +(line *this->fontHeight));
+this->drawStringUtil->drawCenterString(graphics, string, 0, string.size()this->x, this->y +(line *this->fontHeight));
     
 }
 

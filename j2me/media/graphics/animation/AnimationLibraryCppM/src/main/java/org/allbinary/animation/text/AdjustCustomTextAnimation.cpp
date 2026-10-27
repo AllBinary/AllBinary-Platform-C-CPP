@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -42,7 +48,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CustomTextAnimation.h"
+        #include "org/allbinary/animation/text/CustomTextAnimation.h"
 
 class AdjustCustomTextAnimation: public CustomTextAnimation {
 
@@ -50,7 +56,7 @@ class AdjustCustomTextAnimation: public CustomTextAnimation {
 
     private: int32_t dy;
 
-public: AdjustCustomTextAnimation(std::string text, int32_t fontSize, int32_t dx, int32_t dy, AnimationBehavior animationBehavior) : CustomTextAnimation(text, fontSize, animationBehavior){
+public: AdjustCustomTextAnimation(std::string text, int32_t fontSize, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) : CustomTextAnimation(text, fontSize, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -96,7 +102,7 @@ this->dy= dy;
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 super.paintXY(graphics, x +this->dx, y +this->dy);
     
 }

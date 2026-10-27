@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,21 +55,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFileInputStream.h"
-#include "AbFileOutputStream.h"
+        #include "org/allbinary/logic/io/AbFileInputStream.h"
+#include "org/allbinary/logic/io/AbFileOutputStream.h"
 
 class FileStreamFactory
             : public Object
          {
 
-    private: static Object* SINGLETON = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* SINGLETON = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static FileStreamFactory getInstance(){
+    public: static FileStreamFactory* getInstance(){
 
-                        if(FileStreamFactory::SINGLETON == NullUtil::getInstance().NULL_OBJECT)
+                        if(FileStreamFactory::SINGLETON == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    FileStreamFactory::SINGLETON= FileStreamFactory();
+                                    FileStreamFactory::SINGLETON= new FileStreamFactory();
     
 
                                     }
@@ -72,7 +78,7 @@ class FileStreamFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileStreamFactory::SINGLETON;
+                        return dynamic_cast<FileStreamFactory*>(FileStreamFactory::SINGLETON);
     
 }
 
@@ -83,38 +89,38 @@ private: FileStreamFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: AbFileInputStream getFileInputStreamInstance(std::string path, std::string fileName){
+    public: AbFileInputStream* getFileInputStreamInstance(std::string path, std::string fileName){
 
-    AbPath FILEABPATH = AbPath(path, fileName);;
+    AbPath* FILEABPATH = new AbPath(path, fileName);;
     
 
-    AbFile file = AbFile::createAbFileFromAbPath(FILEABPATH);;
+    AbFile* file = AbFile::createAbFileFromAbPath(FILEABPATH);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFileInputStream(file);
+                        return new AbFileInputStream(file);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: AbFileOutputStream getFileOutputStreamInstance(std::string path, std::string fileName){
+    public: AbFileOutputStream* getFileOutputStreamInstance(std::string path, std::string fileName){
 
-    AbPath FILEABPATH = AbPath(path, fileName);;
+    AbPath* FILEABPATH = new AbPath(path, fileName);;
     
 
-    AbFile file = AbFile::createAbFileFromAbPath(FILEABPATH);;
+    AbFile* file = AbFile::createAbFileFromAbPath(FILEABPATH);;
     
 
-                        if(file.exists())
+                        if(file->exists())
                         
                                     {
-                                    file.delete();
+                                    file->delete();
     
-file.createNewFile();
+file->createNewFile();
     
 
                                     }
@@ -132,12 +138,12 @@ file.createNewFile();
             
     public: void delete_(std::string path, std::string fileName){
 
-    AbPath FILEABPATH = AbPath(path, fileName);;
+    AbPath* FILEABPATH = new AbPath(path, fileName);;
     
 
-    AbFile file = AbFile::createAbFileFromAbPath(FILEABPATH);;
+    AbFile* file = AbFile::createAbFileFromAbPath(FILEABPATH);;
     
-file.delete();
+file->delete();
     
 }
 

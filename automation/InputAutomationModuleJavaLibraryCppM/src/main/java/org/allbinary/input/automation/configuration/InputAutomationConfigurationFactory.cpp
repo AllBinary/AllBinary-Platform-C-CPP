@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,15 +79,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputAutomationConfiguration.h"
+        #include "org/allbinary/input/automation/configuration/InputAutomationConfiguration.h"
 
 class InputAutomationConfigurationFactory
             : public Object
          {
 
-    private: static InputAutomationConfigurationFactory instance() { return InputAutomationConfigurationFactory(); }
+    private: static InputAutomationConfigurationFactory* instance() { static std::unique_ptr<InputAutomationConfigurationFactory> value(new InputAutomationConfigurationFactory()); return value.get(); }
 
-    public: static InputAutomationConfigurationFactory getInstance(){
+    public: static InputAutomationConfigurationFactory* getInstance(){
 
 
 
@@ -91,9 +97,9 @@ class InputAutomationConfigurationFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: InputAutomationConfiguration inputAutomationConfiguration = 
+    public: InputAutomationConfiguration* inputAutomationConfiguration = 
                 null
             ;
 
@@ -103,40 +109,40 @@ private: InputAutomationConfigurationFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: void init(AbeClientInformationInterface abeClientInformation){
+    public: void init(AbeClientInformationInterface* abeClientInformation){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
     std::string INPUT_AUTOMATION_CONFIGURATION = "InputAutomationConfiguration";;
     
 
-    File file = InputAutomationConfiguration::getFile();;
+    File* file = InputAutomationConfiguration::getFile();;
     
 
-                        if(file.isFile())
+                        if(file->isFile())
                         
                                     {
-                                    logUtil.putF("LoadingConfiguration", INPUT_AUTOMATION_CONFIGURATION, commonStrings.INIT);
+                                    logUtil->putF("LoadingConfiguration", INPUT_AUTOMATION_CONFIGURATION, commonStrings->INIT);
     
 
-    JAXBContext jaxbContext = JAXBContext::newInstance(InputAutomationConfiguration.constructor);;
+    JAXBContext* jaxbContext = JAXBContext::newInstance(InputAutomationConfiguration.constructor);;
     
 
-    Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();;
+    Unmarshaller* unmarshaller = jaxbContext->createUnmarshaller();;
     
 
-    JAXBElement<InputAutomationConfiguration> root = unmarshaller.unmarshal(StreamSource(FileInputStream(file)), InputAutomationConfiguration.constructor);;
+    JAXBElement<InputAutomationConfiguration*>* root = unmarshaller->unmarshal(new StreamSource(new FileInputStream(file)), InputAutomationConfiguration.constructor);;
     
-this->inputAutomationConfiguration= root.getValue();
+this->inputAutomationConfiguration= dynamic_cast<InputAutomationConfiguration*>(root->getValue());
     
 
-    List<InputAutomationModuleConfiguration> inputAutomationModuleConfigurationList = this->inputAutomationConfiguration.getInputAutomationModuleConfigurationList();;
+    List<InputAutomationModuleConfiguration*>* inputAutomationModuleConfigurationList = this->inputAutomationConfiguration->getInputAutomationModuleConfigurationList();;
     
-logUtil.putF("isInstalled: " +this->inputAutomationConfiguration.isInstalled() +" inputAutomationModuleConfigurationList: " +inputAutomationModuleConfigurationList, INPUT_AUTOMATION_CONFIGURATION, commonStrings.INIT);
+logUtil->putF("isInstalled: " +this->inputAutomationConfiguration->isInstalled() +" inputAutomationModuleConfigurationList: " +inputAutomationModuleConfigurationList, INPUT_AUTOMATION_CONFIGURATION, commonStrings->INIT);
     
 
                         if(inputAutomationModuleConfigurationList != 
@@ -145,10 +151,10 @@ logUtil.putF("isInstalled: " +this->inputAutomationConfiguration.isInstalled() +
                         
                                     {
                                     
-    int32_t size = inputAutomationModuleConfigurationList.size;;
+    int32_t size = inputAutomationModuleConfigurationList->size;;
     
 
-    InputAutomationModuleConfiguration inputAutomationModuleConfiguration;;
+    InputAutomationModuleConfiguration* inputAutomationModuleConfiguration;;
     
 
 
@@ -157,24 +163,24 @@ logUtil.putF("isInstalled: " +this->inputAutomationConfiguration.isInstalled() +
                         for (
     int32_t index = 0;index < size; index++)
         {
-inputAutomationModuleConfiguration= inputAutomationModuleConfigurationList.get(index);
+inputAutomationModuleConfiguration= inputAutomationModuleConfigurationList->get(index);
     
-inputAutomationModuleConfiguration.init(abeClientInformation);
+inputAutomationModuleConfiguration->init(abeClientInformation);
     
 }
 
 
                                     }
                                 
-logUtil.putF("LoadedConfiguration", INPUT_AUTOMATION_CONFIGURATION, commonStrings.INIT);
+logUtil->putF("LoadedConfiguration", INPUT_AUTOMATION_CONFIGURATION, commonStrings->INIT);
     
 
                                     }
                                 
                         else {
-                            logUtil.putF("New Configuration", INPUT_AUTOMATION_CONFIGURATION, commonStrings.INIT);
+                            logUtil->putF("New Configuration", INPUT_AUTOMATION_CONFIGURATION, commonStrings->INIT);
     
-this->inputAutomationConfiguration= InputAutomationConfiguration();
+this->inputAutomationConfiguration= new InputAutomationConfiguration();
     
 
                         }

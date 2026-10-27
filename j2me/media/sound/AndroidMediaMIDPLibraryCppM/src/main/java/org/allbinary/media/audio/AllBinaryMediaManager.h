@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -81,21 +87,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Sounds.h"
-#include "SoundsFactoryInterface.h"
-#include "Sound.h"
-#include "AndroidMediaPlayerWrapper.h"
-#include "PlayerComposite.h"
-#include "MediaPlayerUtil.h"
-#include "NoPlayer.h"
+        #include "org/allbinary/media/audio/Sounds.h"
+#include "org/allbinary/media/audio/SoundsFactoryInterface.h"
+#include "org/allbinary/media/audio/Sound.h"
+#include "org/allbinary/media/audio/AndroidMediaPlayerWrapper.h"
+#include "org/allbinary/media/audio/PlayerComposite.h"
+#include "org/allbinary/media/audio/MediaPlayerUtil.h"
+#include "org/allbinary/media/audio/NoPlayer.h"
 //AndroidMediaMIDPLibrary
 class AllBinaryMediaManager
             : public Object
          {
 
-    private: static const std::string THIS = "AllBinaryMediaManagerAndroid";
+    private: static inline const std::string THIS = "AllBinaryMediaManagerAndroid";
 
-    private: static int32_t mostUsedTotal = 0;
+    private: static inline int32_t mostUsedTotal = 0;
 
     public: static bool isMuted();
 
@@ -105,19 +111,19 @@ class AllBinaryMediaManager
 
                 //@Throws(Exception.constructor)
             
-    public: static void init(SoundsFactoryInterface soundsFactoryInterface);
+    public: static void init(SoundsFactoryInterface* soundsFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    static void shutdown(SoundsFactoryInterface soundsFactoryInterface);
+    static void shutdown(SoundsFactoryInterface* soundsFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: static Player createPlayer(std::string resource);
+    public: static Player* createPlayer(std::string resource);
 
                 //@Throws(IOException.constructor, MediaException.constructor)
             
-    public: static Player createPlayerFromInputStream(InputStream stream, std::string type);
+    public: static Player* createPlayerFromInputStream(InputStream* stream, std::string type);
 
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.

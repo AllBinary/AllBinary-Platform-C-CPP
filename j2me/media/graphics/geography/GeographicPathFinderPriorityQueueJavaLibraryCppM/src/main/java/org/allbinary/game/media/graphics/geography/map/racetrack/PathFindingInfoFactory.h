@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
@@ -76,35 +82,35 @@
         //1.4.2
 class PathFindingInfoFactory: public BasePathFindingInfoFactory {
 
-    private: static PathFindingInfoFactory instance() { return PathFindingInfoFactory(); }
+    private: static PathFindingInfoFactory* instance() { static std::unique_ptr<PathFindingInfoFactory> value(new PathFindingInfoFactory()); return value.get(); }
 
-    public: static PathFindingInfoFactory getInstance();
+    public: static PathFindingInfoFactory* getInstance();
 
-    private: static int32_t MAX = 32768;
+    private: static inline int32_t MAX = 32768;
 
     public: static void initMax(int32_t max);
 
-    private: PathFindingInfo pathFindingInfo;
+    private: PathFindingInfo* pathFindingInfo;
 
-    private: PathFinder pathFinder;
+    private: PathFinder* pathFinder;
 
 private: PathFindingInfoFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: PathFindingInfo getInstancePathFindingInfo(BasicGeographicMap geographicMapInterface, std::vector<std::vector<int32_t>> mapArray);
+    public: PathFindingInfo* getInstancePathFindingInfo(BasicGeographicMap* geographicMapInterface, std::vector<std::vector<int32_t>> mapArray);
 
                 //@Throws(Exception.constructor)
             
-    public: void init(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, std::vector<std::vector<int32_t>> mapArray);
+    public: void init(BasicGeographicMap* geographicMapInterface, PathFindingInfo* pathFindingInfo, std::vector<std::vector<int32_t>> mapArray);
 
                 //@Throws(Exception.constructor)
             
-    private: void buildPathFindingNodesForCellPosition(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, std::vector<std::vector<int32_t>> mapArray, GeographicMapCellPosition cellPosition);
+    private: void buildPathFindingNodesForCellPosition(BasicGeographicMap* geographicMapInterface, PathFindingInfo* pathFindingInfo, std::vector<std::vector<int32_t>> mapArray, GeographicMapCellPosition* cellPosition);
 
                 //@Throws(Exception.constructor)
             
-    private: void buildPathFindingNodes(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, std::vector<std::vector<int32_t>> mapArray);
+    private: void buildPathFindingNodes(BasicGeographicMap* geographicMapInterface, PathFindingInfo* pathFindingInfo, std::vector<std::vector<int32_t>> mapArray);
 
 };
 

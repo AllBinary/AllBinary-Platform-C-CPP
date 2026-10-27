@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/init/InitInfoEntity.h>
@@ -131,21 +137,21 @@
         //Warning you must have sql root access
 class InitDbCrypted: public AbDatabaseManagement {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: UserDbInitInfo userDbInitInfo;
+    private: UserDbInitInfo* userDbInitInfo;
 
-    private: InventoryDbInitInfo inventoryDbInitInfo;
+    private: InventoryDbInitInfo* inventoryDbInitInfo;
 
-    private: HistoryDbInitInfo historyDbInitInfo;
+    private: HistoryDbInitInfo* historyDbInitInfo;
 
-    private: StaticPagesDbInitInfo staticpagesDbInitInfo;
+    private: StaticPagesDbInitInfo* staticpagesDbInitInfo;
 
-    private: LogDbInitInfo logDbInitInfo;
+    private: LogDbInitInfo* logDbInitInfo;
 
     private: const std::string SQL_FILE = "initWeblisket.sql";
 
-public: InitDbCrypted(DatabaseConnectionInfoInterface databaseConnectionInfoInterface) : AbDatabaseManagement(databaseConnectionInfoInterface){
+public: InitDbCrypted(DatabaseConnectionInfoInterface* databaseConnectionInfoInterface) : AbDatabaseManagement(dynamic_cast<DbConnectionInfo*>(databaseConnectionInfoInterface)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -155,35 +161,35 @@ public: InitDbCrypted(DatabaseConnectionInfoInterface databaseConnectionInfoInte
 }
 
 
-    public: Boolean addUsers(){
+    public: bool addUsers(){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, this->METHOD_ADD_USERS);
+            this->logUtil->putF(this->commonStrings.START, this, this->METHOD_ADD_USERS);
     
-this->userDbInitInfo= UserDbInitInfo();
+this->userDbInitInfo= new UserDbInitInfo();
     
-this->inventoryDbInitInfo= InventoryDbInitInfo();
+this->inventoryDbInitInfo= new InventoryDbInitInfo();
     
-this->historyDbInitInfo= HistoryDbInitInfo();
+this->historyDbInitInfo= new HistoryDbInitInfo();
     
-this->staticpagesDbInitInfo= StaticPagesDbInitInfo();
+this->staticpagesDbInitInfo= new StaticPagesDbInitInfo();
     
-this->logDbInitInfo= LogDbInitInfo();
-    
-
-    std::string CUSTOMERDB = this->userDbInitInfo.getName();;
+this->logDbInitInfo= new LogDbInitInfo();
     
 
-    std::string CUSTOMERDBUSER = this->userDbInitInfo.getUserName();;
+    std::string CUSTOMERDB = this->userDbInitInfo->getName();;
     
 
-    std::string CUSTOMERDBPASSWORD = this->userDbInitInfo.getPassword();;
+    std::string CUSTOMERDBUSER = this->userDbInitInfo->getUserName();;
+    
+
+    std::string CUSTOMERDBPASSWORD = this->userDbInitInfo->getPassword();;
     
 
                         if(!this->addDbUser(CUSTOMERDB, CUSTOMERDBUSER, CUSTOMERDBPASSWORD))
                         
                                     {
-                                    this->logUtil.putF(this->UNABLE_TO_CREATE_USER +CUSTOMERDBUSER, this, this->METHOD_ADD_USERS);
+                                    this->logUtil->putF(this->UNABLE_TO_CREATE_USER +CUSTOMERDBUSER, this, this->METHOD_ADD_USERS);
     
 
 
@@ -195,19 +201,19 @@ this->logDbInitInfo= LogDbInitInfo();
                                     }
                                 
 
-    std::string INVENTORYDB = this->inventoryDbInitInfo.getName();;
+    std::string INVENTORYDB = this->inventoryDbInitInfo->getName();;
     
 
-    std::string INVENTORYDBUSER = this->inventoryDbInitInfo.getUserName();;
+    std::string INVENTORYDBUSER = this->inventoryDbInitInfo->getUserName();;
     
 
-    std::string INVENTORYDBPASSWORD = this->inventoryDbInitInfo.getPassword();;
+    std::string INVENTORYDBPASSWORD = this->inventoryDbInitInfo->getPassword();;
     
 
                         if(!this->addDbUser(INVENTORYDB, INVENTORYDBUSER, INVENTORYDBPASSWORD))
                         
                                     {
-                                    this->logUtil.putF(this->UNABLE_TO_CREATE_USER +INVENTORYDBUSER, this, this->METHOD_ADD_USERS);
+                                    this->logUtil->putF(this->UNABLE_TO_CREATE_USER +INVENTORYDBUSER, this, this->METHOD_ADD_USERS);
     
 
 
@@ -219,19 +225,19 @@ this->logDbInitInfo= LogDbInitInfo();
                                     }
                                 
 
-    std::string HISTORYDB = this->historyDbInitInfo.getName();;
+    std::string HISTORYDB = this->historyDbInitInfo->getName();;
     
 
-    std::string HISTORYDBUSER = this->historyDbInitInfo.getUserName();;
+    std::string HISTORYDBUSER = this->historyDbInitInfo->getUserName();;
     
 
-    std::string HISTORYDBPASSWORD = this->historyDbInitInfo.getPassword();;
+    std::string HISTORYDBPASSWORD = this->historyDbInitInfo->getPassword();;
     
 
                         if(!this->addDbUser(HISTORYDB, HISTORYDBUSER, HISTORYDBPASSWORD))
                         
                                     {
-                                    this->logUtil.putF(this->UNABLE_TO_CREATE_USER +HISTORYDBUSER, this, this->METHOD_ADD_USERS);
+                                    this->logUtil->putF(this->UNABLE_TO_CREATE_USER +HISTORYDBUSER, this, this->METHOD_ADD_USERS);
     
 
 
@@ -243,19 +249,19 @@ this->logDbInitInfo= LogDbInitInfo();
                                     }
                                 
 
-    std::string STATICPAGESDB = this->staticpagesDbInitInfo.getName();;
+    std::string STATICPAGESDB = this->staticpagesDbInitInfo->getName();;
     
 
-    std::string STATICPAGESDBUSER = this->staticpagesDbInitInfo.getUserName();;
+    std::string STATICPAGESDBUSER = this->staticpagesDbInitInfo->getUserName();;
     
 
-    std::string STATICPAGESDBPASSWORD = this->staticpagesDbInitInfo.getPassword();;
+    std::string STATICPAGESDBPASSWORD = this->staticpagesDbInitInfo->getPassword();;
     
 
                         if(!this->addDbUser(STATICPAGESDB, STATICPAGESDBUSER, STATICPAGESDBPASSWORD))
                         
                                     {
-                                    this->logUtil.putF(this->UNABLE_TO_CREATE_USER +STATICPAGESDBUSER, this, this->METHOD_ADD_USERS);
+                                    this->logUtil->putF(this->UNABLE_TO_CREATE_USER +STATICPAGESDBUSER, this, this->METHOD_ADD_USERS);
     
 
 
@@ -267,19 +273,19 @@ this->logDbInitInfo= LogDbInitInfo();
                                     }
                                 
 
-    std::string LOGDB = this->logDbInitInfo.getName();;
+    std::string LOGDB = this->logDbInitInfo->getName();;
     
 
-    std::string LOGDBUSER = this->logDbInitInfo.getUserName();;
+    std::string LOGDBUSER = this->logDbInitInfo->getUserName();;
     
 
-    std::string LOGDBPASSWORD = this->logDbInitInfo.getPassword();;
+    std::string LOGDBPASSWORD = this->logDbInitInfo->getPassword();;
     
 
                         if(!this->addDbUser(LOGDB, LOGDBUSER, LOGDBPASSWORD))
                         
                                     {
-                                    this->logUtil.putF(this->UNABLE_TO_CREATE_USER +LOGDBUSER, this, this->METHOD_ADD_USERS);
+                                    this->logUtil->putF(this->UNABLE_TO_CREATE_USER +LOGDBUSER, this, this->METHOD_ADD_USERS);
     
 
 
@@ -290,7 +296,7 @@ this->logDbInitInfo= LogDbInitInfo();
 
                                     }
                                 
-this->logUtil.putF(this->commonStrings.END, this, this->METHOD_ADD_USERS);
+this->logUtil->putF(this->commonStrings.END, this, this->METHOD_ADD_USERS);
     
 
 
@@ -300,9 +306,9 @@ this->logUtil.putF(this->commonStrings.END, this, this->METHOD_ADD_USERS);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->METHOD_ADD_USERS, e);
+this->logUtil->put(this->commonStrings.EXCEPTION, this, this->METHOD_ADD_USERS, &e);
     
 
 
@@ -315,29 +321,29 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->METHOD_ADD_USERS, e
 }
 
 
-    public: Boolean addDatabases(){
+    public: bool addDatabases(){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, this->METHOD_ADD_DATABASES);
+            this->logUtil->putF(this->commonStrings.START, this, this->METHOD_ADD_DATABASES);
     
-this->userDbInitInfo= UserDbInitInfo();
+this->userDbInitInfo= new UserDbInitInfo();
     
-this->inventoryDbInitInfo= InventoryDbInitInfo();
+this->inventoryDbInitInfo= new InventoryDbInitInfo();
     
-this->historyDbInitInfo= HistoryDbInitInfo();
+this->historyDbInitInfo= new HistoryDbInitInfo();
     
-this->staticpagesDbInitInfo= StaticPagesDbInitInfo();
+this->staticpagesDbInitInfo= new StaticPagesDbInitInfo();
     
-this->logDbInitInfo= LogDbInitInfo();
+this->logDbInitInfo= new LogDbInitInfo();
     
 
-    std::string CUSTOMERDB = this->userDbInitInfo.getName();;
+    std::string CUSTOMERDB = this->userDbInitInfo->getName();;
     
 
                         if(!this->addDb(CUSTOMERDB))
                         
                                     {
-                                    this->logUtil.putF(this->UNABLE_TO_CREATE_DATABASE +CUSTOMERDB, this, this->METHOD_ADD_DATABASES);
+                                    this->logUtil->putF(this->UNABLE_TO_CREATE_DATABASE +CUSTOMERDB, this, this->METHOD_ADD_DATABASES);
     
 
 
@@ -349,13 +355,13 @@ this->logDbInitInfo= LogDbInitInfo();
                                     }
                                 
 
-    std::string INVENTORYDB = this->inventoryDbInitInfo.getName();;
+    std::string INVENTORYDB = this->inventoryDbInitInfo->getName();;
     
 
                         if(!this->addDb(INVENTORYDB))
                         
                                     {
-                                    this->logUtil.putF(this->UNABLE_TO_CREATE_DATABASE +INVENTORYDB, this, this->METHOD_ADD_DATABASES);
+                                    this->logUtil->putF(this->UNABLE_TO_CREATE_DATABASE +INVENTORYDB, this, this->METHOD_ADD_DATABASES);
     
 
 
@@ -367,13 +373,13 @@ this->logDbInitInfo= LogDbInitInfo();
                                     }
                                 
 
-    std::string HISTORYDB = this->historyDbInitInfo.getName();;
+    std::string HISTORYDB = this->historyDbInitInfo->getName();;
     
 
                         if(!this->addDb(HISTORYDB))
                         
                                     {
-                                    this->logUtil.putF(this->UNABLE_TO_CREATE_DATABASE +HISTORYDB, this, this->METHOD_ADD_DATABASES);
+                                    this->logUtil->putF(this->UNABLE_TO_CREATE_DATABASE +HISTORYDB, this, this->METHOD_ADD_DATABASES);
     
 
 
@@ -385,13 +391,13 @@ this->logDbInitInfo= LogDbInitInfo();
                                     }
                                 
 
-    std::string STATICPAGESDB = this->staticpagesDbInitInfo.getName();;
+    std::string STATICPAGESDB = this->staticpagesDbInitInfo->getName();;
     
 
                         if(!this->addDb(STATICPAGESDB))
                         
                                     {
-                                    this->logUtil.putF(this->UNABLE_TO_CREATE_DATABASE +STATICPAGESDB, this, this->METHOD_ADD_DATABASES);
+                                    this->logUtil->putF(this->UNABLE_TO_CREATE_DATABASE +STATICPAGESDB, this, this->METHOD_ADD_DATABASES);
     
 
 
@@ -403,13 +409,13 @@ this->logDbInitInfo= LogDbInitInfo();
                                     }
                                 
 
-    std::string LOGDB = this->logDbInitInfo.getName();;
+    std::string LOGDB = this->logDbInitInfo->getName();;
     
 
                         if(!this->addDb(LOGDB))
                         
                                     {
-                                    this->logUtil.putF(this->UNABLE_TO_CREATE_DATABASE +LOGDB, this, this->METHOD_ADD_DATABASES);
+                                    this->logUtil->putF(this->UNABLE_TO_CREATE_DATABASE +LOGDB, this, this->METHOD_ADD_DATABASES);
     
 
 
@@ -421,14 +427,14 @@ this->logDbInitInfo= LogDbInitInfo();
                                     }
                                 
 
-    AbFile file = FileFactory::getInstance().getInstance(this->SQL_FILE);;
+    AbFile* file = FileFactory::getInstance()->getInstance(this->SQL_FILE);;
     
-file.createNewFile();
+file->createNewFile();
     
 
-    AbDataOutputStream idOutData = DataOutputStreamFactory::getInstance().getInstanceForAbFile(file);;
+    AbDataOutputStream* idOutData = DataOutputStreamFactory::getInstance()->getInstanceForAbFile(file);;
     
-idOutData.writeBytes(this->sqlCommandLog.toString());
+idOutData->writeBytes(this->sqlCommandLog.toString());
     
 
 
@@ -438,9 +444,9 @@ idOutData.writeBytes(this->sqlCommandLog.toString());
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->METHOD_ADD_DATABASES, e);
+this->logUtil->put(this->commonStrings.EXCEPTION, this, this->METHOD_ADD_DATABASES, &e);
     
 
 
@@ -453,47 +459,47 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->METHOD_ADD_DATABASE
 }
 
 
-    public: Boolean addTables(){
+    public: bool addTables(){
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-this->logUtil.putF(this->commonStrings.START, this, this->METHOD_ADD_TABLES);
+this->logUtil->putF(this->commonStrings.START, this, this->METHOD_ADD_TABLES);
     
-stringBuffer.append(UserEntityFactory::getInstance().createTable());
+stringBuffer->append(UserEntityFactory::getInstance()->createTable());
     
-stringBuffer.append(StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance().createTable());
+stringBuffer->append(StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance()->createTable());
     
-stringBuffer.append(BillingAddressesEntityFactory::getInstance().getInstance(this->stringUtil.EMPTY_STRING).createTable());
+stringBuffer->append(BillingAddressesEntityFactory::getInstance()->getInstance(this->stringUtil.EMPTY_STRING)->createTable());
     
-stringBuffer.append(ShippingAddressesEntityFactory::getInstance().getInstance(this->stringUtil.EMPTY_STRING).createTable());
+stringBuffer->append(ShippingAddressesEntityFactory::getInstance()->getInstance(this->stringUtil.EMPTY_STRING)->createTable());
     
-stringBuffer.append(PaymentEntityFactory::getInstance().getPaymentEntityInstance().createTable());
+stringBuffer->append(PaymentEntityFactory::getInstance()->getPaymentEntityInstance()->createTable());
     
-stringBuffer.append(QuoteRequestEntityFactory::getInstance().getQuoteRequestEntityInstance().createTable());
+stringBuffer->append(QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance()->createTable());
     
-stringBuffer.append(OrderHistoryEntityFactory::getInstance().createTable());
+stringBuffer->append(OrderHistoryEntityFactory::getInstance()->createTable());
     
-stringBuffer.append(OrderItemsEntityFactory::getInstance().createTable());
+stringBuffer->append(OrderItemsEntityFactory::getInstance()->createTable());
     
-stringBuffer.append(TransactionEntityFactory::getInstance().getTransactionEntityInstance().createTable());
+stringBuffer->append(TransactionEntityFactory::getInstance()->getTransactionEntityInstance()->createTable());
     
-stringBuffer.append(TransactionResultEntityFactory::getInstance().getTransactionResultEntityInstance().createTable());
+stringBuffer->append(TransactionResultEntityFactory::getInstance()->getTransactionResultEntityInstance()->createTable());
     
-stringBuffer.append(PaymentGatewayEntityFactory::getInstance().createTable());
+stringBuffer->append(PaymentGatewayEntityFactory::getInstance()->createTable());
     
-stringBuffer.append(InventoryEntityFactory::getInstance().getInventoryEntityInstance().createTable());
+stringBuffer->append(InventoryEntityFactory::getInstance()->getInventoryEntityInstance()->createTable());
     
-stringBuffer.append(InitInfoEntity().createTable());
+stringBuffer->append((new InitInfoEntity())->createTable());
     
-stringBuffer.append(LogTableEntityFactory::getInstance().getLogTableEntityInstance().createTable());
+stringBuffer->append(LogTableEntityFactory::getInstance()->getLogTableEntityInstance()->createTable());
     
-stringBuffer.append(StaticPagesEntityFactory::getInstance().getStaticPagesEntityInstance().createTable());
+stringBuffer->append(StaticPagesEntityFactory::getInstance()->getStaticPagesEntityInstance()->createTable());
     
-stringBuffer.append(TransformInfoEntityBuilder::getInstance().createTable());
+stringBuffer->append(TransformInfoEntityBuilder::getInstance()->createTable());
     
-this->logUtil.putF(ADD_TABLES_RESULTS_LABEL +stringBuffer.toString(), this, this->METHOD_ADD_TABLES);
+this->logUtil->putF(ADD_TABLES_RESULTS_LABEL +stringBuffer->toString(), this, this->METHOD_ADD_TABLES);
     
 
 
@@ -503,9 +509,9 @@ this->logUtil.putF(ADD_TABLES_RESULTS_LABEL +stringBuffer.toString(), this, this
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->METHOD_ADD_TABLES, e);
+this->logUtil->put(this->commonStrings.EXCEPTION, this, this->METHOD_ADD_TABLES, &e);
     
 
 

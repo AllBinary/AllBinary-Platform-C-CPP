@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -40,15 +46,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFile.h"
+        #include "org/allbinary/logic/io/file/AbFile.h"
 
 class FileFactory
             : public Object
          {
 
-    private: static FileFactory instance() { return FileFactory(); }
+    private: static FileFactory* instance() { static std::unique_ptr<FileFactory> value(new FileFactory()); return value.get(); }
 
-    public: static FileFactory getInstance(){
+    public: static FileFactory* getInstance(){
 
 
 
@@ -60,7 +66,7 @@ class FileFactory
 
                 //@Throws(Exception.constructor)
             
-    public: AbFile getInstance(std::string filePath){
+    public: AbFile* getInstance(std::string filePath){
 
 
 
@@ -72,7 +78,7 @@ class FileFactory
 
                 //@Throws(Exception.constructor)
             
-    public: AbFile getInstance(AbFile file, std::string childFilePath){
+    public: AbFile* getInstance(AbFile* file, std::string childFilePath){
 
 
 
@@ -86,10 +92,10 @@ class FileFactory
             
     public: bool isFile(std::string path){
 
-    AbFile file = AbFile::createAbFile(path);;
+    AbFile* file = AbFile::createAbFile(path);;
     
 
-                        if(file.exists())
+                        if(file->exists())
                         
                                     {
                                     

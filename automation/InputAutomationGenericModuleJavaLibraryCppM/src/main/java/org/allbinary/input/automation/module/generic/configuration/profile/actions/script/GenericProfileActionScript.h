@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_SCRIPT_GENERICPROFILEACTIONSCRIPT_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_SCRIPT_GENERICPROFILEACTIONSCRIPT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -92,33 +98,33 @@
         
 class GenericProfileActionScript: public DefaultMutableTreeNode, public ProfileActionScriptNodeInterface {
 
-    private: static const std::string NAME = "Root";
+    private: static inline const std::string NAME = "Root";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: GenericProfileActionJPanel genericProfileActionJPanel;
+    private: GenericProfileActionJPanel* genericProfileActionJPanel;
 
-    private: BasicArrayList profileActionConditionInterfaceVector;
+    private: BasicArrayList* profileActionConditionInterfaceVector;
 
-public: GenericProfileActionScript(GenericProfileActionJPanel genericProfileActionJPanel, Node node);
+public: GenericProfileActionScript(GenericProfileActionJPanel* genericProfileActionJPanel, Node* node);
 
-public: GenericProfileActionScript(GenericProfileActionJPanel genericProfileActionJPanel);
+public: GenericProfileActionScript(GenericProfileActionJPanel* genericProfileActionJPanel);
 
-    public: void addCondition(ProfileActionScriptNodeInterface profileActionScriptNodeInterface);
+    public: void addCondition(ProfileActionScriptNodeInterface* profileActionScriptNodeInterface);
 
-    public: void removeCondition(ProfileActionScriptNodeInterface profileActionScriptNodeInterface);
+    public: void removeCondition(ProfileActionScriptNodeInterface* profileActionScriptNodeInterface);
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
-    public: BasicArrayList getProfileActionConditionInterfaceVector();
+    public: BasicArrayList* getProfileActionConditionInterfaceVector();
 
-    public: void setProfileActionConditionInterfaceVector(BasicArrayList profileActionConditionInterfaceVector);
+    public: void setProfileActionConditionInterfaceVector(BasicArrayList* profileActionConditionInterfaceVector);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

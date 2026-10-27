@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/configuration/feature/Features.h>
@@ -50,17 +56,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CollisionProcessor.h"
-#include "Collision2DProcessor.h"
-#include "CollisionThreedProcessor.h"
+        #include "org/allbinary/game/collision/CollisionProcessor.h"
+#include "org/allbinary/game/collision/Collision2DProcessor.h"
+#include "org/allbinary/game/collision/CollisionThreedProcessor.h"
 
 class LayerCollisionUtil
             : public Object
          {
 
-    private: static LayerCollisionUtil instance() { return LayerCollisionUtil(); }
+    private: static LayerCollisionUtil* instance() { static std::unique_ptr<LayerCollisionUtil> value(new LayerCollisionUtil()); return value.get(); }
 
-    public: static LayerCollisionUtil getInstance(){
+    public: static LayerCollisionUtil* getInstance(){
 
 
 
@@ -70,26 +76,26 @@ class LayerCollisionUtil
 }
 
 
-    private: const CollisionProcessor collisionProcessor;
+    private: CollisionProcessor* collisionProcessor;
 
 private: LayerCollisionUtil(){
 
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-    GameFeatureFactory gameFeatureFactory = GameFeatureFactory::getInstance();;
+    GameFeatureFactory* gameFeatureFactory = GameFeatureFactory::getInstance();;
     
 
-                        if(OpenGLFeatureUtil::getInstance().isAnyThreed() && !features.isFeature(gameFeatureFactory.COLLISIONS_FORCED_TWO_DIMENSIONAL))
+                        if(OpenGLFeatureUtil::getInstance()->isAnyThreed() && !features->isFeature(gameFeatureFactory->COLLISIONS_FORCED_TWO_DIMENSIONAL))
                         
                                     {
-                                    this->collisionProcessor= CollisionThreedProcessor();
+                                    this->collisionProcessor= new CollisionThreedProcessor();
     
 
                                     }
                                 
                         else {
-                            this->collisionProcessor= Collision2DProcessor();
+                            this->collisionProcessor= new Collision2DProcessor();
     
 
                         }
@@ -97,12 +103,12 @@ private: LayerCollisionUtil(){
 }
 
 
-    public: bool isCollision(AllBinaryLayer myLayer, AllBinaryLayer myLayer2){
+    public: bool isCollision(AllBinaryLayer* myLayer, AllBinaryLayer* myLayer2){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->collisionProcessor.isCollision(myLayer, myLayer2);;
+                        return this->collisionProcessor->isCollision(myLayer, myLayer2);;
     
 }
 

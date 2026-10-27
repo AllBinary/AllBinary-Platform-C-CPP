@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -50,9 +56,9 @@ class ThreadUtil
             : public Object
          {
 
-    private: static ThreadUtil instance() { return ThreadUtil(); }
+    private: static ThreadUtil* instance() { static std::unique_ptr<ThreadUtil> value(new ThreadUtil()); return value.get(); }
 
-    public: static ThreadUtil getInstance(){
+    public: static ThreadUtil* getInstance(){
 
 
 
@@ -62,15 +68,15 @@ class ThreadUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     public: const std::string JOIN = "join";
 
-    public: bool isRunning(Thread thread){
+    public: bool isRunning(Thread* thread){
 
                         if(thread != 
                                     nullptr
-                                 && thread.isAlive())
+                                 && thread->isAlive())
                         
                                     {
                                     
@@ -97,14 +103,14 @@ class ThreadUtil
 
                 //@Throws(Exception.constructor)
             
-    public: void join(Thread thread){
+    public: void join(Thread* thread){
 
-                        if(ThreadUtil::getInstance().isRunning(thread))
+                        if(ThreadUtil::getInstance()->isRunning(thread))
                         
                                     {
-                                    this->logUtil.putF("Waiting for Thread To Join/End", this, this->JOIN);
+                                    this->logUtil->putF("Waiting for Thread To Join/End", this, this->JOIN);
     
-thread.join();
+thread->join();
     
 
                                     }

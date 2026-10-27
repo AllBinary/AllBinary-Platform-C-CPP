@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_IMAGECOMPARISONSEARCHCONSTRAINTSINTERFACE_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_IMAGECOMPARISONSEARCHCONSTRAINTSINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -48,7 +54,7 @@
         
 class ImageComparisonSearchConstraintsInterface {
 
-    BasicArrayList getStatisticalMatchConstraintsVector();
+    public: virtual BasicArrayList* getStatisticalMatchConstraintsVector() = 0;
 
 };
 

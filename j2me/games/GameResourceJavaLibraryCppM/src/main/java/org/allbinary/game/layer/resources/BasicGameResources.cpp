@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -57,19 +63,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameGraphicsResourceUtil.h"
+        #include "org/allbinary/game/layer/resources/GameGraphicsResourceUtil.h"
 
 class BasicGameResources
             : public Object
          {
 
-    protected: static const StringMaker stringBuffer = StringMaker();
+    protected: static StringMaker* stringBuffer() { static std::unique_ptr<StringMaker> value(new StringMaker()); return value.get(); }
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: std::string RESOURCE = StringUtil::getInstance().EMPTY_STRING;
+    public: std::string RESOURCE = StringUtil::getInstance()->EMPTY_STRING;
 
-    public: std::string RESOURCE_DESTROY = StringUtil::getInstance().EMPTY_STRING;
+    public: std::string RESOURCE_DESTROY = StringUtil::getInstance()->EMPTY_STRING;
 
 protected: BasicGameResources(){
 }
@@ -79,7 +85,7 @@ protected: BasicGameResources(){
 
         try {
             
-    int32_t scale = GameConfigurationCentral::getInstance().SCALE.getValue().intValue();;
+    int32_t scale = GameConfigurationCentral::getInstance()->SCALE.getValue()->intValue();;
     
 
                         if(scale > 1 && scale -1 < SIZE::size())
@@ -94,19 +100,19 @@ protected: BasicGameResources(){
                             
 
 
-                            throw Exception(StringMaker().append("Invalid Value: ").appendint(scale).toString());
+                            throw new Exception((new StringMaker())->append("Invalid Value: ").appendint(scale)->toString());
                     
 
                         }
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.INIT, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->INIT, &e);
     
 }
 
@@ -122,27 +128,27 @@ this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.INIT, e);
 
     std::string string = this->getString();;
     
-BasicGameResources::stringBuffer.delete(0, BasicGameResources::stringBuffer.length());
+BasicGameResources::stringBuffer()->delete(0, BasicGameResources::stringBuffer()->length());
     
-BasicGameResources::stringBuffer.append(ROOT);
+BasicGameResources::stringBuffer()->append(ROOT);
     
-BasicGameResources::stringBuffer.append(string);
+BasicGameResources::stringBuffer()->append(string);
     
-BasicGameResources::stringBuffer.append(sizeString);
+BasicGameResources::stringBuffer()->append(sizeString);
     
-this->RESOURCE= BasicGameResources::stringBuffer.toString();
+this->RESOURCE= BasicGameResources::stringBuffer()->toString();
     
-BasicGameResources::stringBuffer.delete(0, BasicGameResources::stringBuffer.length());
+BasicGameResources::stringBuffer()->delete(0, BasicGameResources::stringBuffer()->length());
     
-BasicGameResources::stringBuffer.append(ROOT);
+BasicGameResources::stringBuffer()->append(ROOT);
     
-BasicGameResources::stringBuffer.append(DESTROY);
+BasicGameResources::stringBuffer()->append(DESTROY);
     
-BasicGameResources::stringBuffer.append(string);
+BasicGameResources::stringBuffer()->append(string);
     
-BasicGameResources::stringBuffer.append(sizeString);
+BasicGameResources::stringBuffer()->append(sizeString);
     
-this->RESOURCE_DESTROY= BasicGameResources::stringBuffer.toString();
+this->RESOURCE_DESTROY= BasicGameResources::stringBuffer()->toString();
     
 }
 
@@ -154,7 +160,7 @@ this->RESOURCE_DESTROY= BasicGameResources::stringBuffer.toString();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameGraphicsResourceUtil::getInstance().getName();;
+                        return GameGraphicsResourceUtil::getInstance()->getName();;
     
 }
 

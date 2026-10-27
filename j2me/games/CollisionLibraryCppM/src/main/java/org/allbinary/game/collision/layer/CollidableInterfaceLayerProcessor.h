@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_COLLISION_LAYER_COLLIDABLEINTERFACELAYERPROCESSOR_H
         #define ORG_ALLBINARY_GAME_COLLISION_LAYER_COLLIDABLEINTERFACELAYERPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/collision/CollidableInterfaceCompositeInterface.h>
@@ -56,8 +62,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CollidableInterfaceLayerManager.h"
-#include "AllBinaryCollisionManager.h"
+        #include "org/allbinary/game/collision/layer/CollidableInterfaceLayerManager.h"
+#include "org/allbinary/game/collision/layer/AllBinaryCollisionManager.h"
 
 class CollidableInterfaceLayerProcessor: public LayerProcessor {
 
@@ -65,9 +71,9 @@ public: CollidableInterfaceLayerProcessor();
 
                 //@Throws(Exception.constructor)
             
-    public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index);
+    public: void processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index);
 
-    public: bool isProcessorLayer(AllBinaryLayer layerInterface);
+    public: bool isProcessorLayer(AllBinaryLayer* layerInterface);
 
 };
 

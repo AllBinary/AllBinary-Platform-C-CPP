@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_PLAYERTYPESFACTORY_H
         #define ORG_ALLBINARY_GAME_PLAYERTYPESFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,21 +47,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PlayerType.h"
+        #include "org/allbinary/game/PlayerType.h"
 
 class PlayerTypesFactory
             : public Object
          {
 
-    private: static const PlayerTypesFactory SINGLETON = PlayerTypesFactory();
+    private: static PlayerTypesFactory* SINGLETON() { static std::unique_ptr<PlayerTypesFactory> value(new PlayerTypesFactory()); return value.get(); }
 
-    public: static PlayerTypesFactory getInstance();
+    public: static PlayerTypesFactory* getInstance();
 
-    public: const PlayerType PLAYER_TYPE_ONE = PlayerType("Player Type One", 0);
+    public: PlayerType* PLAYER_TYPE_ONE = new PlayerType("Player Type One", 0);
 
-    public: const PlayerType PLAYER_TYPE_TWO = PlayerType("Player Type Two", 1);
+    public: PlayerType* PLAYER_TYPE_TWO = new PlayerType("Player Type Two", 1);
 
-    public: const PlayerType PLAYER_TYPE_THREE = PlayerType("Player Type Three", 2);
+    public: PlayerType* PLAYER_TYPE_THREE = new PlayerType("Player Type Three", 2);
 
 };
 

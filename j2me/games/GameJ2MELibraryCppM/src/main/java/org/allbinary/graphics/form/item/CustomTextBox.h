@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_CUSTOMTEXTBOX_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_CUSTOMTEXTBOX_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/CommandListener.h>
@@ -83,17 +89,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ABTextFieldItem.h"
+        #include "org/allbinary/graphics/form/item/ABTextFieldItem.h"
 
 class CustomTextBox: public GameCommandCanvas, public RawKeyEventListener {
 
-    private: ABTextFieldItem textFieldItem;
+    private: ABTextFieldItem* textFieldItem;
 
-public: CustomTextBox(CommandListener cmdListener, std::string label, std::string text, int32_t maxSize, int32_t constraints, Font font, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: CustomTextBox(CommandListener* cmdListener, std::string label, std::string text, int32_t maxSize, int32_t constraints, Font* font, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
     public: void submit();
 
-    private: const InputFactory inputFactory = InputFactory::getInstance();
+    private: InputFactory* inputFactory = InputFactory::getInstance();
 
     public: void onEventRaw(int32_t keyCode, int32_t deviceId, bool repeated);
 
@@ -107,11 +113,11 @@ public: CustomTextBox(CommandListener cmdListener, std::string label, std::strin
 
     public: void keyReleasedByDevice(int32_t keyCode, int32_t deviceId);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
-    public: ABTextFieldItem getTextFieldItem();
+    public: ABTextFieldItem* getTextFieldItem();
 
 };
 

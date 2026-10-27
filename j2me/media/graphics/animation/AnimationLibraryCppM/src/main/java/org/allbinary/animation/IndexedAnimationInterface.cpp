@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,15 +42,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SequentialAnimationInterface.h"
+        #include "org/allbinary/animation/SequentialAnimationInterface.h"
 
 class IndexedAnimationInterface: public SequentialAnimationInterface {
 
-    void reset()
+    public: virtual void reset() = 0;
 
-    void setFrame(int32_t index)
+    public: virtual void setFrame(int32_t index) = 0;
 
-    int32_t getFrame()
+    public: virtual int32_t getFrame() = 0;
 
 };
 

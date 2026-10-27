@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
@@ -53,11 +59,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GatewayView.h"
+        #include "views/admin/payment/gateway/GatewayView.h"
 
 class GatewayValidationView: public HttpStoreComponentView, public ValidationComponentInterface {
 
-public: GatewayValidationView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+public: GatewayValidationView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -67,7 +73,7 @@ public: GatewayValidationView(TransformInfoInterface transformInfoInterface) : H
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
 
 
@@ -77,7 +83,7 @@ public: GatewayValidationView(TransformInfoInterface transformInfoInterface) : H
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -87,7 +93,7 @@ public: GatewayValidationView(TransformInfoInterface transformInfoInterface) : H
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -103,12 +109,12 @@ public: GatewayValidationView(TransformInfoInterface transformInfoInterface) : H
 
 
 
-                            throw Exception("validationInfo");
+                            throw new Exception("validationInfo");
                     
 }
 
 
-    public: Document toXmlDoc(){
+    public: Document* toXmlDoc(){
 
 
 
@@ -118,7 +124,7 @@ public: GatewayValidationView(TransformInfoInterface transformInfoInterface) : H
 }
 
 
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
 
 
@@ -135,7 +141,7 @@ public: GatewayValidationView(TransformInfoInterface transformInfoInterface) : H
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GatewayView(this->getTransformInfoInterface()).view();;
+                        return (new GatewayView(this->getTransformInfoInterface()))->view();;
     
 }
 

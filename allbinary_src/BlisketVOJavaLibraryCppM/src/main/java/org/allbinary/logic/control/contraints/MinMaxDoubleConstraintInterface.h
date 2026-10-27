@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_MINMAXDOUBLECONSTRAINTINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_MINMAXDOUBLECONSTRAINTINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,13 +48,13 @@
         
 class MinMaxDoubleConstraintInterface {
 
-    double getMax();
+    public: virtual double getMax() = 0;
 
-    double getMin();
+    public: virtual double getMin() = 0;
 
-    void setMax(double max);
+    public: virtual void setMax(double max) = 0;
 
-    void setMin(double min);
+    public: virtual void setMin(double min) = 0;
 
 };
 

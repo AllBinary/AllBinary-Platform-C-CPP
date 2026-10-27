@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINELAYER_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINELAYER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/ag/weapon/media/audio/DropWeaponSound.h>
@@ -74,15 +80,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MineWeaponResources.h"
+        #include "org/allbinary/game/ag/layer/weapon/mine/MineWeaponResources.h"
 
 class MineLayer: public SimpleWeaponLayer {
 
-    private: static const std::string NAME = "MineLayer";
+    private: static inline const std::string NAME = "MineLayer";
 
-public: MineLayer(ViewPositionBase viewPosition);
+public: MineLayer(ViewPositionBase* viewPosition);
 
-    private: const ViewPositionEventHandler viewPositionEventHandler = ViewPositionEventHandler::getInstance();
+    private: ViewPositionEventHandler* viewPositionEventHandler = ViewPositionEventHandler::getInstance();
 
     public: void initXYZ(int32_t x, int32_t y, int32_t z);
 

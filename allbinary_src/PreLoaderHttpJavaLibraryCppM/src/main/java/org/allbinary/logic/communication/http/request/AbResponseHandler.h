@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_ABRESPONSEHANDLER_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_ABRESPONSEHANDLER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -80,25 +86,25 @@ class AbResponseHandler
 
                 //@Throws(JspTagException.constructor)
             
-    public: static void sendJspTagRedirect(PageContext pageContext, Exception e);
+    public: static void sendJspTagRedirect(PageContext* pageContext, Exception* e);
 
                 //@Throws(ServletException.constructor)
             
-    public: static void sendServletRedirect(PageContext pageContext, Exception e);
+    public: static void sendServletRedirect(PageContext* pageContext, Exception* e);
 
                 //@Throws(JspTagException.constructor)
             
-    public: static void sendJspTagLicensingRedirect(PageContext pageContext, Exception e);
+    public: static void sendJspTagLicensingRedirect(PageContext* pageContext, Exception* e);
 
                 //@Throws(ServletException.constructor)
             
-    public: static void sendServletLicensingRedirect(PageContext pageContext, Exception e);
+    public: static void sendServletLicensingRedirect(PageContext* pageContext, Exception* e);
 
                 //@Throws(Exception.constructor)
             
-    public: static void sendRedirect(PageContext pageContext, std::string page);
+    public: static void sendRedirect(PageContext* pageContext, std::string page);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: AbResponseHandler();
 

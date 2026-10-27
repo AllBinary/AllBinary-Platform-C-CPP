@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graphics/color/ColorCompositeInterface.h>
 
       
@@ -41,11 +47,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "IndexedAnimationInterface.h"
+        #include "org/allbinary/animation/IndexedAnimationInterface.h"
 
 class VectorAnimationInterface: public IndexedAnimationInterface, public ColorCompositeInterface {
 
-    std::vector<std::vector<int32_t>> getPoints(int32_t frame)
+    public: virtual std::vector<std::vector<int32_t>> getPoints(int32_t frame) = 0;
 
 };
 

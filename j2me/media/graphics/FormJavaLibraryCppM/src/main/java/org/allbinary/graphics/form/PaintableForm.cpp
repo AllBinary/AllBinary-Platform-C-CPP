@@ -6,6 +6,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/GPoint.h>
@@ -53,20 +61,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ABCustomForm.h"
-#include "FormTypeFactory.h"
-#include "FormType.h"
+        #include "org/allbinary/graphics/form/ABCustomForm.h"
+#include "org/allbinary/graphics/form/FormTypeFactory.h"
+#include "org/allbinary/graphics/form/FormType.h"
 
 class PaintableForm: public ABCustomForm {
 
-    private: static Object* NULL_PAINTABLE_FORM = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* NULL_PAINTABLE_FORM = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static PaintableForm getNullPaintableForm(){
+    public: static PaintableForm* getNullPaintableForm(){
 
-                        if(PaintableForm::NULL_PAINTABLE_FORM == NullUtil::getInstance().NULL_OBJECT)
+                        if(PaintableForm::NULL_PAINTABLE_FORM == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    PaintableForm::NULL_PAINTABLE_FORM= PaintableForm(StringUtil::getInstance().EMPTY_STRING, {}, BasicColorFactory::getInstance().BLACK, BasicColorFactory::getInstance().WHITE);
+                                    PaintableForm::NULL_PAINTABLE_FORM= new PaintableForm(StringUtil::getInstance()->EMPTY_STRING, {}, BasicColorFactory::getInstance()->BLACK, BasicColorFactory::getInstance()->WHITE);
     
 
                                     }
@@ -75,22 +83,22 @@ class PaintableForm: public ABCustomForm {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PaintableForm::NULL_PAINTABLE_FORM;
+                        return dynamic_cast<PaintableForm*>(PaintableForm::NULL_PAINTABLE_FORM);
     
 }
 
 
-    protected: const CanvasStrings canvasStrings = CanvasStrings::getInstance();
+    protected: CanvasStrings* canvasStrings = CanvasStrings::getInstance();
 
-    protected: Rectangle rectangle = RectangleFactory::SINGLETON;
+    protected: Rectangle* rectangle = RectangleFactory::SINGLETON;
 
     protected: int32_t x= 0;
 
     protected: int32_t y= 0;
 
-    protected: FormType formType = FormTypeFactory::getInstance().NULL_FORM_TYPE;
+    protected: FormType* formType = FormTypeFactory::getInstance()->NULL_FORM_TYPE;
 
-public: PaintableForm(std::string title, std::vector<ABCustomItem> items, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : ABCustomForm(title, items, backgroundBasicColor, foregroundBasicColor){
+public: PaintableForm(std::string title, std::vector<ABCustomItem*> items, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ABCustomForm(title, items, backgroundBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -104,15 +112,15 @@ this->setSelectedIndex(0);
 
                 //@Throws(Exception.constructor)
             
-    public: void init(Rectangle rectangle, FormType formType){
+    public: void init(Rectangle* rectangle, FormType* formType){
 this->rectangle= rectangle;
     
 
-    GPoint point = this->rectangle.getPoint();;
+    GPoint* point = this->rectangle->getPoint();;
     
-this->x= point.getX();
+this->x= point->getX();
     
-this->y= point.getY();
+this->y= point->getY();
     
 this->formType= formType;
     
@@ -124,7 +132,7 @@ this->formType= formType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->rectangle.getWidth();;
+                        return this->rectangle->getWidth();;
     
 }
 

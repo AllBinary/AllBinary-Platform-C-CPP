@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/string/CommonSeps.h>
@@ -46,9 +52,9 @@ class MouseStrings
             : public Object
          {
 
-    private: static MouseStrings instance() { return MouseStrings(); }
+    private: static MouseStrings* instance() { static std::unique_ptr<MouseStrings> value(new MouseStrings()); return value.get(); }
 
-    public: static MouseStrings getInstance(){
+    public: static MouseStrings* getInstance(){
 
 
 
@@ -68,15 +74,15 @@ class MouseStrings
 
     public: const std::string MOUSE_MOVED = "mouseMoved";
 
-    public: const std::string MOUSE_PRESSED_LABEL = "MousePressed" +CommonSeps::getInstance().COLON_SEP;
+    public: const std::string MOUSE_PRESSED_LABEL = "MousePressed" +CommonSeps::getInstance()->COLON_SEP;
 
-    public: const std::string MOUSE_RELEASED_LABEL = "MouseReleased" +CommonSeps::getInstance().COLON_SEP;
+    public: const std::string MOUSE_RELEASED_LABEL = "MouseReleased" +CommonSeps::getInstance()->COLON_SEP;
 
-    public: const std::string MOUSE_CLICKED_LABEL = "MouseClicked" +CommonSeps::getInstance().COLON_SEP;
+    public: const std::string MOUSE_CLICKED_LABEL = "MouseClicked" +CommonSeps::getInstance()->COLON_SEP;
 
-    public: const std::string MOUSE_DRAGGED_LABEL = "MouseDragged" +CommonSeps::getInstance().COLON_SEP;
+    public: const std::string MOUSE_DRAGGED_LABEL = "MouseDragged" +CommonSeps::getInstance()->COLON_SEP;
 
-    public: const std::string MOUSE_MOVED_LABEL = "MouseMoved" +CommonSeps::getInstance().COLON_SEP;
+    public: const std::string MOUSE_MOVED_LABEL = "MouseMoved" +CommonSeps::getInstance()->COLON_SEP;
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -80,9 +86,9 @@
         
 class NoTemplateTransformInfoObjectConfig: public TransformInfoObjectConfig {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: NoTemplateTransformInfoObjectConfig(Object transformInfoInterface) : TransformInfoObjectConfig(transformInfoInterface){
+public: NoTemplateTransformInfoObjectConfig(Object* transformInfoInterface) : TransformInfoObjectConfig(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -92,7 +98,7 @@ public: NoTemplateTransformInfoObjectConfig(Object transformInfoInterface) : Tra
 }
 
 
-public: NoTemplateTransformInfoObjectConfig(Object transformInfoInterface, Object document) : TransformInfoObjectConfig(transformInfoInterface, document){
+public: NoTemplateTransformInfoObjectConfig(Object* transformInfoInterface, Object* document) : TransformInfoObjectConfig(transformInfoInterface, document){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -104,7 +110,7 @@ this->setDocument(this->generate(this->toXmlDoc()));
 }
 
 
-public: NoTemplateTransformInfoObjectConfig(Object transformInfoInterface, std::string name, std::string type) : TransformInfoObjectConfig(transformInfoInterface, name, type){
+public: NoTemplateTransformInfoObjectConfig(Object* transformInfoInterface, std::string name, std::string type) : TransformInfoObjectConfig(transformInfoInterface, name, type){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -118,51 +124,51 @@ this->setDocument(this->generate(this->toXmlDoc()));
 
                 //@Throws(Exception.constructor)
             
-    protected: Document generate(Document objectConfigDocument){
+    protected: Document* generate(Document* objectConfigDocument){
 
     std::string docString = XmlDocumentHelper::toString(objectConfigDocument);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Initial ObjectConfig: " +docString, this, "generate()");
+                                    this->logUtil->putF("Initial ObjectConfig: " +docString, this, "generate()");
     
 
                                     }
                                 
 
-    std::string storeName = this->getTransformInfoInterface().getStoreName();;
+    std::string storeName = this->getTransformInfoInterface()->getStoreName();;
     
 
-    std::string viewName = this->getTransformInfoInterface().getName();;
+    std::string viewName = this->getTransformInfoInterface()->getName();;
     
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
 
-    std::string VARKEY = TransformInfoObjectConfigData::getInstance().VARKEY;;
+    std::string VARKEY = TransformInfoObjectConfigData::getInstance()->VARKEY;;
     
-hashMap.put(VARKEY +StoreFrontData::getInstance().NAME, storeName);
+hashMap->put(VARKEY +StoreFrontData::getInstance()->NAME, storeName);
     
-hashMap.put(VARKEY +TransformInfoData::getInstance().OWNER, viewName);
-    
-
-    std::string pageName = TransformTemplateCustomizerUtil::getInstance().getPageNameHack(this->getTransformInfoInterface().getName(), this->getTransformInfoInterface().getStoreName());;
-    
-hashMap.put(VARKEY +TransformInfoData::getInstance().PARTIAL, pageName);
+hashMap->put(VARKEY +TransformInfoData::getInstance()->OWNER, viewName);
     
 
-    Replace replace = Replace(hashMap);;
+    std::string pageName = TransformTemplateCustomizerUtil::getInstance()->getPageNameHack(this->getTransformInfoInterface()->getName(), this->getTransformInfoInterface()->getStoreName());;
+    
+hashMap->put(VARKEY +TransformInfoData::getInstance()->PARTIAL, pageName);
     
 
-    Document newObjectConfigDocument = DomDocumentHelper::create(replace.all(docString));;
+    Replace* replace = new Replace(hashMap);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+    Document* newObjectConfigDocument = DomDocumentHelper::create(replace->all(docString));;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Final ObjectConfig: " +XmlDocumentHelper::toString(newObjectConfigDocument), this, "generate()");
+                                    this->logUtil->putF("Final ObjectConfig: " +XmlDocumentHelper::toString(newObjectConfigDocument), this, "generate()");
     
 
                                     }

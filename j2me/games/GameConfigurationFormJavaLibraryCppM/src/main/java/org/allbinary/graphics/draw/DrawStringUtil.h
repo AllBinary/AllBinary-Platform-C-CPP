@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -80,17 +86,17 @@ class DrawStringUtil
             : public Object
          {
 
-    private: static DrawStringUtil instance() { return DrawStringUtil(); }
+    private: static DrawStringUtil* instance() { static std::unique_ptr<DrawStringUtil> value(new DrawStringUtil()); return value.get(); }
 
-    public: static DrawStringUtil getInstance();
+    public: static DrawStringUtil* getInstance();
 
-    private: const std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;
+    private: const std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public: void drawCenterString(Graphics graphics, std::string string, int32_t offset, int32_t length, int32_t x, int32_t y);
+    public: void drawCenterString(Graphics* graphics, std::string string, int32_t offset, int32_t length, int32_t x, int32_t y);
 
-    public: void drawCenterStrings(Graphics graphics, std::vector<std::string> stringArray, int32_t maxWidth, int32_t charHeight, int32_t x, int32_t y);
+    public: void drawCenterStrings(Graphics* graphics, std::vector<std::string> stringArray, int32_t maxWidth, int32_t charHeight, int32_t x, int32_t y);
 
 };
 

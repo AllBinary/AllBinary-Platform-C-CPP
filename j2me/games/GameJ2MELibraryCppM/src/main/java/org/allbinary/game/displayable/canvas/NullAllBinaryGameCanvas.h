@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLALLBINARYGAMECANVAS_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLALLBINARYGAMECANVAS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -52,25 +58,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryGameCanvasInterface.h"
+        #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvasInterface.h"
 
 class NullAllBinaryGameCanvas
             : public Object
-        : public AllBinaryGameCanvasInterface {
+        , public AllBinaryGameCanvasInterface {
 
-    public: static const NullAllBinaryGameCanvas NULL_ALLBINARY_GAME_CANVAS = NullAllBinaryGameCanvas();
+    public: static NullAllBinaryGameCanvas* NULL_ALLBINARY_GAME_CANVAS() { static std::unique_ptr<NullAllBinaryGameCanvas> value(new NullAllBinaryGameCanvas()); return value.get(); }
 
-    public: AllBinaryGameLayerManager getLayerManager();
+    public: AllBinaryGameLayerManager* getLayerManager();
 
-    public: void addCommand(Command cmd);
+    public: void addCommand(Command* cmd);
 
     public: int32_t getHeight();
 
     public: int32_t getWidth();
 
-    public: void removeCommand(Command cmd);
+    public: void removeCommand(Command* cmd);
 
-    public: void setCommandListener(CommandListener l);
+    public: void setCommandListener(CommandListener* l);
 
 };
 

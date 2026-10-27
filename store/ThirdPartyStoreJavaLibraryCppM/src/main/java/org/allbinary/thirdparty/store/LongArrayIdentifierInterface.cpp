@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -41,7 +47,7 @@
         
 class LongArrayIdentifierInterface {
 
-    std::vector<int64_t> getLongArrayIdentifier()
+    public: virtual std::vector<int64_t> getLongArrayIdentifier() = 0;
 
 };
 

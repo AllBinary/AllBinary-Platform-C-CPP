@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
 
       
@@ -39,11 +45,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameInitializedEvent.h"
+        #include "org/allbinary/game/configuration/event/GameInitializedEvent.h"
 
 class GameInitializedListenerInterface: public EventListenerInterface {
 
-    void onGameInitialized(GameInitializedEvent gameInitializedEvent)
+    public: virtual void onGameInitialized(GameInitializedEvent* gameInitializedEvent) = 0;
 
 };
 

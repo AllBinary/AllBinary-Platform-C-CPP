@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCETRANSITIONINTERFACE_H
         #define ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCETRANSITIONINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,7 +48,7 @@
         
 class ArtificialIntelligenceTransitionInterface {
 
-    void transition();
+    public: virtual void transition() = 0;
 
 };
 

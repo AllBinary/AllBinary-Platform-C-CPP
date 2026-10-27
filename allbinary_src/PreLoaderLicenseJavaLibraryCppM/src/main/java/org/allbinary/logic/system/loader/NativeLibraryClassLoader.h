@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_NATIVELIBRARYCLASSLOADER_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_NATIVELIBRARYCLASSLOADER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/ClassLoader.h"
         
 
@@ -46,7 +52,7 @@ class NativeLibraryClassLoader: public ClassLoader {
 
     private: std::string message = "This Class Loader Does Not Load Classes - Only For Loading and Unloading of Native Libraries";
 
-public: NativeLibraryClassLoader(ClassLoader parent);
+public: NativeLibraryClassLoader(ClassLoader* parent);
 
 };
 

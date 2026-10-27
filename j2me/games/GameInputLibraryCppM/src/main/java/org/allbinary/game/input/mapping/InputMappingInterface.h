@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTMAPPINGINTERFACE_H
         #define ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTMAPPINGINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/GameKey.h>
@@ -52,7 +58,7 @@ class InputMappingInterface {
 
                 //@Throws(Exception.constructor)
             
-    void processInputMapping(GameKey gameKey, Input input);
+    public: virtual void processInputMapping(GameKey* gameKey, Input* input) = 0;
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_CHANGEDGAMEFEATURELISTENER_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_CHANGEDGAMEFEATURELISTENER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/configuration/GameConfiguration.h>
 
       
@@ -42,15 +48,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseChangedGameFeatureListener.h"
+        #include "org/allbinary/game/configuration/event/BaseChangedGameFeatureListener.h"
 
 class ChangedGameFeatureListener: public BaseChangedGameFeatureListener {
 
-    private: static const ChangedGameFeatureListener gameFeatureListener = ChangedGameFeatureListener();
+    private: static ChangedGameFeatureListener* gameFeatureListener() { static std::unique_ptr<ChangedGameFeatureListener> value(new ChangedGameFeatureListener()); return value.get(); }
 
-    public: static ChangedGameFeatureListener getInstance();
+    public: static ChangedGameFeatureListener* getInstance();
 
-    public: bool isChangedGameConfiguration(GameConfiguration gameConfiguration);
+    public: bool isChangedGameConfiguration(GameConfiguration* gameConfiguration);
 
 };
 

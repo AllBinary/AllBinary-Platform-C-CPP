@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -47,14 +53,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TrackingEventListenerInterface.h"
-#include "TrackingEvent.h"
+        #include "org/allbinary/game/tracking/TrackingEventListenerInterface.h"
+#include "org/allbinary/game/tracking/TrackingEvent.h"
 
 class TrackingEventHandler: public BasicEventHandler {
 
-    private: static TrackingEventHandler instance() { return TrackingEventHandler(); }
+    private: static TrackingEventHandler* instance() { static std::unique_ptr<TrackingEventHandler> value(new TrackingEventHandler()); return value.get(); }
 
-    public: static TrackingEventHandler getInstance(){
+    public: static TrackingEventHandler* getInstance(){
 
 
 
@@ -70,11 +76,11 @@ private: TrackingEventHandler(){
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
 
-    TrackingEventListenerInterface trackingEventListenerInterface = eventListenerInterface;;
+    TrackingEventListenerInterface* trackingEventListenerInterface = dynamic_cast<TrackingEventListenerInterface*>(eventListenerInterface);;
     
-trackingEventListenerInterface.onMovement(eventObject);
+trackingEventListenerInterface->onMovement(dynamic_cast<TrackingEvent*>(eventObject));
     
 }
 

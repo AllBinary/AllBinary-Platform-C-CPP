@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class WorkFlowData
             : public Object
          {
 
-    private: static WorkFlowData instance() { return WorkFlowData(); }
+    private: static WorkFlowData* instance() { static std::unique_ptr<WorkFlowData> value(new WorkFlowData()); return value.get(); }
 
-    public: static WorkFlowData getInstance(){
+    public: static WorkFlowData* getInstance(){
 
 
 

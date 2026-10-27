@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONINTERFACEREQUESTFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONINTERFACEREQUESTFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -118,30 +124,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentTransactionInterfaceFactory.h"
-#include "PaymentTransactionInterface.h"
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionInterfaceFactory.h"
+#include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionInterface.h"
 
 class PaymentTransactionInterfaceRequestFactory
             : public Object
          {
 
-    private: static PaymentTransactionInterfaceRequestFactory instance() { return PaymentTransactionInterfaceRequestFactory(); }
+    private: static PaymentTransactionInterfaceRequestFactory* instance() { static std::unique_ptr<PaymentTransactionInterfaceRequestFactory> value(new PaymentTransactionInterfaceRequestFactory()); return value.get(); }
 
-    public: static PaymentTransactionInterfaceRequestFactory getInstance();
+    public: static PaymentTransactionInterfaceRequestFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: PaymentTransactionInterfaceRequestFactory();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentTransactionInterface getInstance(TransformInfoInterface transformInfoInterface);
+    public: PaymentTransactionInterface* getInstance(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    private: PaymentTransactionInterface generateFromTestData(TransformInfoInterface transformInfoInterface);
+    private: PaymentTransactionInterface* generateFromTestData(TransformInfoInterface* transformInfoInterface);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/util/HashMap.h>
 
       
@@ -54,31 +60,31 @@
         
 class AdvertisementSearchInterface {
 
-    AdvertisementWebsiteInterface getWebSite()
+    public: virtual AdvertisementWebsiteInterface* getWebSite() = 0;
 
-    AdvertisementCategoryInterface getCategory()
+    public: virtual AdvertisementCategoryInterface* getCategory() = 0;
 
-    TwoDimensionalConstraintInterface getSizeConstraints()
+    public: virtual TwoDimensionalConstraintInterface* getSizeConstraints() = 0;
 
-    PriceConstraintInterface getPricingConstraints()
+    public: virtual PriceConstraintInterface* getPricingConstraints() = 0;
 
-    int32_t getPageNumber()
+    public: virtual int32_t getPageNumber() = 0;
 
-    int32_t getProductsPerPage()
+    public: virtual int32_t getProductsPerPage() = 0;
 
-    HashMap<Object*, Object*> getSearchParams()
+    public: virtual HashMap<Object*, Object*>* getSearchParams() = 0;
 
-    void setCategory(AdvertisementCategoryInterface advertisementCategoryInterface)
+    public: virtual void setCategory(AdvertisementCategoryInterface* advertisementCategoryInterface) = 0;
 
-    void setSizeConstraints(TwoDimensionalConstraintInterface twoDimensionConstraintsInterface)
+    public: virtual void setSizeConstraints(TwoDimensionalConstraintInterface* twoDimensionConstraintsInterface) = 0;
 
-    void setPricingConstraints(PriceConstraintInterface priceConstraintInterface)
+    public: virtual void setPricingConstraints(PriceConstraintInterface* priceConstraintInterface) = 0;
 
-    void setPageNumber(int32_t pageNumber)
+    public: virtual void setPageNumber(int32_t pageNumber) = 0;
 
-    void setProductsPerPage(int32_t productsPerPage)
+    public: virtual void setProductsPerPage(int32_t productsPerPage) = 0;
 
-    void setSearchParams(HashMap<Object*, Object*> columnAndKeywordHashMap)
+    public: virtual void setSearchParams(HashMap<Object*, Object*>* columnAndKeywordHashMap) = 0;
 
 };
 

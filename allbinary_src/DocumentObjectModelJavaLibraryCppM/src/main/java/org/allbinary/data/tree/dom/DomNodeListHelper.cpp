@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -50,18 +56,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DomNodeHelper.h"
+        #include "org/allbinary/data/tree/dom/DomNodeHelper.h"
 
 class DomNodeListHelper
             : public Object
          {
 
-    public: static BasicArrayList getVector(NodeList nodeList){
+    public: static BasicArrayList* getVector(NodeList* nodeList){
 
-    BasicArrayList vector = BasicArrayListD();;
+    BasicArrayList* vector = new BasicArrayListD();;
     
 
-    int32_t size = nodeList.getLength();;
+    int32_t size = nodeList->getLength();;
     
 
 
@@ -70,7 +76,7 @@ class DomNodeListHelper
                         for (
     int32_t index = 0;index < size; index++)
         {
-vector.add(DomNodeHelper::getTextNodeValue(nodeList.item(index)));
+vector->add(DomNodeHelper::getTextNodeValue(nodeList->item(index)));
     
 }
 

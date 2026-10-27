@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSEUTIL_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSEUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/CommandListener.h>
@@ -49,9 +55,9 @@ class LicenseUtil
             : public Object
          {
 
-    private: static LicenseUtil instance() { return LicenseUtil(); }
+    private: static LicenseUtil* instance() { static std::unique_ptr<LicenseUtil> value(new LicenseUtil()); return value.get(); }
 
-    public: static LicenseUtil getInstance();
+    public: static LicenseUtil* getInstance();
 
     public: void init();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -61,7 +67,7 @@ class LicenseUtil
 
     public: void setRunning(bool running);
 
-    public: bool shouldWait(CommandListener commandListener);
+    public: bool shouldWait(CommandListener* commandListener);
 
 };
 

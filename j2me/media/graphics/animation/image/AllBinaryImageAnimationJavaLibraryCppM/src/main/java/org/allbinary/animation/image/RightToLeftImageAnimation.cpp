@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -56,7 +62,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageSegmentAnimation.h"
+        #include "org/allbinary/animation/image/ImageSegmentAnimation.h"
 
 class RightToLeftImageAnimation: public ImageSegmentAnimation {
 
@@ -64,7 +70,7 @@ class RightToLeftImageAnimation: public ImageSegmentAnimation {
 
     private: int32_t currentWidth= 0;
 
-public: RightToLeftImageAnimation(Image image, AnimationBehavior animationBehavior) : ImageSegmentAnimation(image, PrimitiveIntUtil::getArrayInstance(), animationBehavior){
+public: RightToLeftImageAnimation(Image* image, AnimationBehavior* animationBehavior) : ImageSegmentAnimation(image, PrimitiveIntUtil::getArrayInstance(), animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -110,8 +116,8 @@ this->currentWidth= this->getDrawWidth() -this->startWidth;
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
-graphics.drawRegion(this->getImage(), this->startWidth, this->getStartY(), this->currentWidth, this->getDrawHeight(), Sprite::TRANS_NONE, x +this->startWidth, y, this->anchor);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+graphics->drawRegion(this->getImage(), this->startWidth, this->getStartY(), this->currentWidth, this->getDrawHeight(), Sprite::TRANS_NONE, x +this->startWidth, y, this->anchor);
     
 }
 

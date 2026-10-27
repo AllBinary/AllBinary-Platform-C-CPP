@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/string/CommonSeps.h>
@@ -46,9 +52,9 @@ class FileUnamedUtil
             : public Object
          {
 
-    private: static FileUnamedUtil instance() { return FileUnamedUtil(); }
+    private: static FileUnamedUtil* instance() { static std::unique_ptr<FileUnamedUtil> value(new FileUnamedUtil()); return value.get(); }
 
-    public: static FileUnamedUtil getInstance(){
+    public: static FileUnamedUtil* getInstance(){
 
 
 
@@ -58,15 +64,15 @@ class FileUnamedUtil
 }
 
 
-    private: const CommonSeps commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps = CommonSeps::getInstance();
 
     public: std::string process(std::string string){
 
-    std::string simplifiedString = string.toLowerCase();;
+    std::string simplifiedString = JavaString::toLowerCase(string);;
     
-simplifiedString= simplifiedString.replace(this->commonSeps.SPACE, this->commonSeps.UNDERSCORE);
+simplifiedString= JavaString::replace(simplifiedString, this->commonSeps->SPACE, this->commonSeps->UNDERSCORE);
     
-simplifiedString= simplifiedString.replace(this->commonSeps.DASH, this->commonSeps.UNDERSCORE);
+simplifiedString= JavaString::replace(simplifiedString, this->commonSeps->DASH, this->commonSeps->UNDERSCORE);
     
 
 

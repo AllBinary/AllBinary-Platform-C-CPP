@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -42,11 +48,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicColor.h"
+        #include "org/allbinary/graphics/color/BasicColor.h"
 
 class BasicColorCompositeSetterInterface {
 
-    void setBasicColorP(BasicColor basicColor)
+    public: virtual void setBasicColorP(BasicColor* basicColor) = 0;
 
 };
 

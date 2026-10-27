@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_REGISTRATION_LICENSEREGISTRATIONUTIL_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_REGISTRATION_LICENSEREGISTRATIONUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,15 +67,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RegistrationConfiguration.h"
-#include "XmlRpcRemoteLicenseRegistrationClient.h"
+        #include "org/allbinary/logic/system/security/licensing/registration/RegistrationConfiguration.h"
+#include "org/allbinary/logic/system/security/licensing/registration/XmlRpcRemoteLicenseRegistrationClient.h"
 
 class LicenseRegistrationUtil
             : public Object
          {
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void process(AbeClientInformationInterface abeClientInformation, std::string registrationId);
+    public: static void process(AbeClientInformationInterface* abeClientInformation, std::string registrationId);
 
 private: LicenseRegistrationUtil();
 

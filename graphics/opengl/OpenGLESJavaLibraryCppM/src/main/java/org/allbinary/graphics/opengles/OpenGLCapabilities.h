@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -95,40 +101,40 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLFeatureFactory.h"
-#include "OpenGLFeature.h"
+        #include "org/allbinary/graphics/opengles/OpenGLFeatureFactory.h"
+#include "org/allbinary/graphics/opengles/OpenGLFeature.h"
 
 class OpenGLCapabilities
             : public Object
          {
 
-    private: static OpenGLCapabilities instance() { return OpenGLCapabilities(); }
+    private: static OpenGLCapabilities* instance() { static std::unique_ptr<OpenGLCapabilities> value(new OpenGLCapabilities()); return value.get(); }
 
-    public: static OpenGLCapabilities getInstance();
+    public: static OpenGLCapabilities* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     public: const bool CUSTOM_GL_SURFACE_VIEW = true;
 
-    private: const StringUtil stringUtil = StringUtil::getInstance();
+    private: StringUtil* stringUtil = StringUtil::getInstance();
 
     private: bool initialized = false;
 
-    private: std::string glVersionString = this->stringUtil.EMPTY_STRING;
+    private: std::string glVersionString = this->stringUtil->EMPTY_STRING;
 
-    private: std::string glShaderVersionString = this->stringUtil.EMPTY_STRING;
+    private: std::string glShaderVersionString = this->stringUtil->EMPTY_STRING;
 
     public: int32_t shaderVersion = 0;
 
-    private: std::string glRenderer = this->stringUtil.EMPTY_STRING;
+    private: std::string glRenderer = this->stringUtil->EMPTY_STRING;
 
-    private: std::string glVendor = this->stringUtil.EMPTY_STRING;
+    private: std::string glVendor = this->stringUtil->EMPTY_STRING;
 
-    private: std::string glExtensions = this->stringUtil.EMPTY_STRING;
+    private: std::string glExtensions = this->stringUtil->EMPTY_STRING;
 
     private: bool possiblyAccelerated= false;
 
-    private: std::string acceleratedString = this->stringUtil.EMPTY_STRING;
+    private: std::string acceleratedString = this->stringUtil->EMPTY_STRING;
 
     public: int32_t maxTextureSize = 64;
 
@@ -172,9 +178,9 @@ private: OpenGLCapabilities();
 
     private: void requireInitialization();
 
-    public: void initCapabilities(GL10 gl);
+    public: void initCapabilities(GL10* gl);
 
-    private: bool isExtension(OpenGLFeature gameFeature);
+    private: bool isExtension(OpenGLFeature* gameFeature);
 
     public: bool isGlExtensionDrawTexture();
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -40,15 +46,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ABCustomItem.h"
+        #include "org/allbinary/graphics/form/item/ABCustomItem.h"
 
 class CustomItemUtil
             : public Object
          {
 
-    private: static CustomItemUtil instance() { return CustomItemUtil(); }
+    private: static CustomItemUtil* instance() { static std::unique_ptr<CustomItemUtil> value(new CustomItemUtil()); return value.get(); }
 
-    public: static CustomItemUtil getInstance(){
+    public: static CustomItemUtil* getInstance(){
 
 
 
@@ -58,7 +64,7 @@ class CustomItemUtil
 }
 
 
-    public: const std::vector<ABCustomItem> CUSTOM_ITEM_ARRAY = {};
+    public: const std::vector<ABCustomItem*> CUSTOM_ITEM_ARRAY = {};
 
 };
 

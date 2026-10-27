@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABECLIENTLICENSE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABECLIENTLICENSE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/StdUtil.h>
@@ -62,28 +68,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbeLicenseInterface.h"
-#include "LicenseType.h"
-#include "AbeClientInformationData.h"
-#include "LicenseTypeFactory.h"
+        #include "org/allbinary/logic/system/security/licensing/AbeLicenseInterface.h"
+#include "org/allbinary/logic/system/security/licensing/LicenseType.h"
+#include "org/allbinary/logic/system/security/licensing/AbeClientInformationData.h"
+#include "org/allbinary/logic/system/security/licensing/LicenseTypeFactory.h"
 
 class AbeClientLicense
             : public Object
-        : public AbeLicenseInterface {
+        , public AbeLicenseInterface {
 
-    public: static bool hasRequiredKeys(ABHashtable<Object*, Object*> resultHashtable);
+    public: static bool hasRequiredKeys(ABHashtable<Object*, Object*>* resultHashtable);
 
-    private: ABHashtable<Object*, Object*> hashtable;
+    private: ABHashtable<Object*, Object*>* hashtable;
 
     private: std::string id;
 
-    private: BasicArrayList servers;
+    private: BasicArrayList* servers;
 
     private: std::string special;
 
-    private: LicenseType licenseType;
+    private: LicenseType* licenseType;
 
-public: AbeClientLicense(ABHashtable<Object*, Object*> hashtable);
+public: AbeClientLicense(ABHashtable<Object*, Object*>* hashtable);
 
     public: bool hasKey();
 
@@ -91,7 +97,7 @@ public: AbeClientLicense(ABHashtable<Object*, Object*> hashtable);
 
     public: std::string getLicenseId();
 
-    public: BasicArrayList getServers();
+    public: BasicArrayList* getServers();
 
     public: bool isValid();
 
@@ -101,7 +107,7 @@ public: AbeClientLicense(ABHashtable<Object*, Object*> hashtable);
 
     public: std::string getSpecial();
 
-    public: LicenseType getLicenseType();
+    public: LicenseType* getLicenseType();
 
 };
 

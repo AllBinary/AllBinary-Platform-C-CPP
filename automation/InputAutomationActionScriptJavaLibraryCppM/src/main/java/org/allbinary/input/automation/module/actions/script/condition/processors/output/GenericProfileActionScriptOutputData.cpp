@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class GenericProfileActionScriptOutputData
             : public Object
          {
 
-    public: static std::string NAME = "GENERIC_CONFIGURATION_PROFILE_ACTION_OUTPUT_NAME";
+    public: static inline std::string NAME = "GENERIC_CONFIGURATION_PROFILE_ACTION_OUTPUT_NAME";
 
-    public: static std::string TYPE = "GENERIC_CONFIGURATION_PROFILE_ACTION_OUTPUT_TYPE";
+    public: static inline std::string TYPE = "GENERIC_CONFIGURATION_PROFILE_ACTION_OUTPUT_TYPE";
 
 private: GenericProfileActionScriptOutputData(){
 }

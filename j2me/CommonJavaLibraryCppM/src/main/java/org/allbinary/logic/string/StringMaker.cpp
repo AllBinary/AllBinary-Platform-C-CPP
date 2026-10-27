@@ -6,6 +6,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/System.h"
@@ -58,7 +64,7 @@ this->charArray= std::vector<char>(20);
 }
 
 
-    public: StringMaker append(std::string string){
+    public: StringMaker* append(std::string string){
 
     int32_t stringLength = string.size();;
     
@@ -79,12 +85,12 @@ this->currentLength += stringLength;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *this;
+                        return this;
     
 }
 
 
-    public: StringMaker appendchar(char c){
+    public: StringMaker* appendchar(char c){
 this->ensureCapacity(this->currentLength +1);
     
 this->charArray[this->currentLength++]= c;
@@ -93,12 +99,12 @@ this->charArray[this->currentLength++]= c;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *this;
+                        return this;
     
 }
 
 
-    public: StringMaker appendCharArray(std::vector<char> charArray, int32_t start, int32_t end){
+    public: StringMaker* appendCharArray(std::vector<char> charArray, int32_t start, int32_t end){
 this->ensureCapacity(this->currentLength +(end -start));
     
 
@@ -116,72 +122,72 @@ this->charArray[this->currentLength++]= charArray[index];
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *this;
+                        return this;
     
 }
 
 
-    public: StringMaker appendbyte(int8_t b){
+    public: StringMaker* appendbyte(int8_t b){
 this->append(std::to_string(b));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *this;
+                        return this;
     
 }
 
 
-    public: StringMaker appendshort(int16_t b){
+    public: StringMaker* appendshort(int16_t b){
 this->append(std::to_string(b));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *this;
+                        return this;
     
 }
 
 
-    public: StringMaker appendint(int32_t i){
+    public: StringMaker* appendint(int32_t i){
 this->append(std::to_string(i));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *this;
+                        return this;
     
 }
 
 
-    public: StringMaker appendlong(int64_t l){
+    public: StringMaker* appendlong(int64_t l){
 this->append(std::to_string(l));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *this;
+                        return this;
     
 }
 
 
-    public: StringMaker appendfloat(float f){
+    public: StringMaker* appendfloat(float f){
 this->append(std::to_string(f));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *this;
+                        return this;
     
 }
 
 
-    public: StringMaker appendboolean(bool bool_){
+    public: StringMaker* appendboolean(bool bool_){
 
                         if(bool_)
                         
@@ -219,7 +225,7 @@ this->charArray[this->currentLength++]= 'e';
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *this;
+                        return this;
     
 }
 
@@ -272,14 +278,14 @@ this->charArray= copy;
 }
 
 
-    public: StringMaker delete_(int32_t start, int32_t end){
+    public: StringMaker* delete_(int32_t start, int32_t end){
 this->currentLength -= (end -start);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *this;
+                        return this;
     
 }
 

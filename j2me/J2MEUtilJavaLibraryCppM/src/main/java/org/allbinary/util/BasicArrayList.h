@@ -9,6 +9,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/IndexOutOfBoundsException.h"
@@ -54,16 +60,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ArrayUtil.h"
-#include "BasicArrayListS.h"
+        #include "org/allbinary/util/ArrayUtil.h"
+#include "org/allbinary/util/BasicArrayListS.h"
 //This is a very fast and simple resizable list.
 class BasicArrayList
             : public Object
          {
 
-    private: static const std::string SIZE = ", Size: ";
+    private: static inline const std::string SIZE = ", Size: ";
 
-    private: const ArrayUtil arrayUtil = ArrayUtil::getInstance();
+    private: ArrayUtil* arrayUtil = ArrayUtil::getInstance();
 
     public: std::vector<Object*> objectArray;
 
@@ -79,11 +85,11 @@ public: BasicArrayList(std::vector<Object*> objectArray);
 
     public: bool remove(Object* anyType);
 
-    public: bool removeAll2(BasicArrayList list);
+    public: bool removeAll2(BasicArrayList* list);
 
-    public: bool addAll2(BasicArrayList list);
+    public: bool addAll2(BasicArrayList* list);
 
-    public: bool addAllList(BasicArrayList list);
+    public: bool addAllList(BasicArrayList* list);
 
     public: bool addAll(std::vector<Object*> newObjectArray);
 

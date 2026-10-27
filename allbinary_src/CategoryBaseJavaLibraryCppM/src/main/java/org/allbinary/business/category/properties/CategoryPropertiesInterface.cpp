@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/category/hierarchy/CategoryHierarchyInterface.h>
@@ -53,29 +59,29 @@
         
 class CategoryPropertiesInterface: public TableMappingInterface, public ValidationInterface {
 
-    void setValue(std::string value)
+    public: virtual void setValue(std::string value) = 0;
 
-    std::string getValue()
-
-                //@Throws(Exception.constructor)
-            
-    AbPath getWebAppPath()
+    public: virtual std::string getValue() = 0;
 
                 //@Throws(Exception.constructor)
             
-    AbPath getPath(CategoryHierarchyInterface categoryHierarchyInterface)
+    public: virtual AbPath* getWebAppPath() = 0;
 
                 //@Throws(Exception.constructor)
             
-    std::string getFileName()
+    public: virtual AbPath* getPath(CategoryHierarchyInterface* categoryHierarchyInterface) = 0;
 
                 //@Throws(Exception.constructor)
             
-    bool isRoot()
+    public: virtual std::string getFileName() = 0;
 
                 //@Throws(Exception.constructor)
             
-    bool isRealRoot()
+    public: virtual bool isRoot() = 0;
+
+                //@Throws(Exception.constructor)
+            
+    public: virtual bool isRealRoot() = 0;
 
 };
 

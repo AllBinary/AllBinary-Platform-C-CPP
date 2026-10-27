@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_ICONLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_PICKUP_ICONLAYER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -66,17 +72,17 @@
         
 class IconLayer: public AllBinaryLayer {
 
-    public: static const IconLayer NULL_ICON_LAYER = IconLayer(NullAnimationFactory::getFactoryInstance().getInstance(0), 0, 0);
+    public: static IconLayer* NULL_ICON_LAYER() { static std::unique_ptr<IconLayer> value(new IconLayer(NullAnimationFactory::getFactoryInstance()->getInstance(0), 0, 0)); return value.get(); }
 
-    private: Animation animationInterface;
+    private: Animation* animationInterface;
 
-public: IconLayer(Animation animationInterface, int32_t width, int32_t height);
+public: IconLayer(Animation* animationInterface, int32_t width, int32_t height);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: void paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics* graphics);
 
-    public: Animation getAnimationInterface();
+    public: Animation* getAnimationInterface();
 
 };
 

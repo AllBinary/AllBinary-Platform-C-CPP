@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -48,14 +54,14 @@ class RegistrationConfiguration
             : public Object
          {
 
-    private: static const RegistrationConfiguration SINGLETON = RegistrationConfiguration();
+    private: static RegistrationConfiguration* SINGLETON() { static std::unique_ptr<RegistrationConfiguration> value(new RegistrationConfiguration()); return value.get(); }
 
-    public: static RegistrationConfiguration getInstance(){
+    public: static RegistrationConfiguration* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RegistrationConfiguration::SINGLETON;
+                        return RegistrationConfiguration::SINGLETON();
     
 }
 
@@ -85,7 +91,7 @@ private: RegistrationConfiguration(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().append("Registration Code: ").append(this->getRegistrationCode()).toString();;
+                        return (new StringMaker())->append("Registration Code: ")->append(this->getRegistrationCode())->toString();;
     
 }
 

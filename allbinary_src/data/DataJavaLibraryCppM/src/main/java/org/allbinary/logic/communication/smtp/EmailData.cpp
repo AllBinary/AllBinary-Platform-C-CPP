@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,21 +49,21 @@ class EmailData
             : public Object
          {
 
-    public: static const std::string SERVER = "EMAIL_SERVER";
+    public: static inline const std::string SERVER = "EMAIL_SERVER";
 
-    public: static const std::string NAME = "EMAIL_NAME";
+    public: static inline const std::string NAME = "EMAIL_NAME";
 
-    public: static const std::string FROM = "EMAIL_FROM";
+    public: static inline const std::string FROM = "EMAIL_FROM";
 
-    public: static const std::string TO = "EMAIL_TO";
+    public: static inline const std::string TO = "EMAIL_TO";
 
-    public: static const std::string CC = "EMAIL_CC";
+    public: static inline const std::string CC = "EMAIL_CC";
 
-    public: static const std::string BCC = "EMAIL_BCC";
+    public: static inline const std::string BCC = "EMAIL_BCC";
 
-    public: static const std::string SUBJECT = "EMAIL_SUBJECT";
+    public: static inline const std::string SUBJECT = "EMAIL_SUBJECT";
 
-    public: static const std::string CONTENT = "EMAIL_CONTENT";
+    public: static inline const std::string CONTENT = "EMAIL_CONTENT";
 
 private: EmailData(){
 }

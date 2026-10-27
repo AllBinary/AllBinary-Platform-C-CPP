@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_BACKUP_BLISKETBACKUPFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_BACKUP_BLISKETBACKUPFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -96,21 +102,21 @@ class BlisketBackupFactory
             : public Object
          {
 
-    private: static BlisketBackupFactory instance() { return BlisketBackupFactory(); }
+    private: static BlisketBackupFactory* instance() { static std::unique_ptr<BlisketBackupFactory> value(new BlisketBackupFactory()); return value.get(); }
 
-    public: static BlisketBackupFactory getInstance();
+    public: static BlisketBackupFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const StringUtil stringUtil = StringUtil::getInstance();
+    private: StringUtil* stringUtil = StringUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const Directory directory = Directory::getInstance();
+    private: Directory* directory = Directory::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    private: BasicArrayList getFileBasicArrayList(std::string pathString);
+    private: BasicArrayList* getFileBasicArrayList(std::string pathString);
 
     public: void backup();
 
@@ -120,7 +126,7 @@ class BlisketBackupFactory
 
     public: void backupJsps();
 
-    public: void backup(BasicArrayList fileBasicArrayList, std::string zipFile);
+    public: void backup(BasicArrayList* fileBasicArrayList, std::string zipFile);
 
 };
 

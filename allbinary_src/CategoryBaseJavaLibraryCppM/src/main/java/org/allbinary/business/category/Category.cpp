@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -90,63 +96,63 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryInterface.h"
+        #include "org/allbinary/business/category/CategoryInterface.h"
 
 class Category
             : public Object
-        : public CategoryInterface {
+        , public CategoryInterface {
 
-    private: static const std::string NOT_ROOT = "This is not the root so it has no file path.";
+    private: static inline const std::string NOT_ROOT = "This is not the root so it has no file path.";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: CategoryHierarchyInterface categoryHierarchyInterface;
+    private: CategoryHierarchyInterface* categoryHierarchyInterface;
 
-    private: CategoryPropertiesInterface categoryPropertiesInterface;
+    private: CategoryPropertiesInterface* categoryPropertiesInterface;
 
-    private: const BasicArrayList childCategoryVector = BasicArrayListD();
+    private: BasicArrayList* childCategoryVector = new BasicArrayListD();
 
-    private: const BasicArrayList typeVector = BasicArrayListD();
+    private: BasicArrayList* typeVector = new BasicArrayListD();
 
-    private: const Integer PROPERTIES = Integer(1);
+    private: int32_t PROPERTIES = int32_t(1);
 
-    private: const Integer CATEGORY = Integer(0);
+    private: int32_t CATEGORY = int32_t(0);
 
-public: Category(CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface){
+public: Category(CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.CONSTRUCTOR, this, "Category(CategoryPropertiesFactoryInterface)");
+                                    this->logUtil->putF(this->commonStrings->CONSTRUCTOR, this, "Category(CategoryPropertiesFactoryInterface)");
     
 
                                     }
                                 
-this->categoryPropertiesInterface= categoryPropertiesFactoryInterface.getInstance();
+this->categoryPropertiesInterface= categoryPropertiesFactoryInterface->getInstance();
     
-this->categoryHierarchyInterface= CategoryHierarchy(this, this);
-    
-this->log();
-    
-}
-
-
-public: Category(CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface, int32_t level){
-this->categoryPropertiesInterface= categoryPropertiesFactoryInterface.getInstance();
-    
-this->categoryHierarchyInterface= CategoryHierarchy(this, this, level);
+this->categoryHierarchyInterface= dynamic_cast<CategoryHierarchyInterface*>(new CategoryHierarchy(this, this));
     
 this->log();
     
 }
 
 
-public: Category(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface){
-this->categoryPropertiesInterface= categoryPropertiesFactoryInterface.getInstance();
+public: Category(CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface, int32_t level){
+this->categoryPropertiesInterface= categoryPropertiesFactoryInterface->getInstance();
     
-this->categoryHierarchyInterface= CategoryHierarchy(rootCategoryInterface, parentCategoryInterface);
+this->categoryHierarchyInterface= dynamic_cast<CategoryHierarchyInterface*>(new CategoryHierarchy(this, this, level));
+    
+this->log();
+    
+}
+
+
+public: Category(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface){
+this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(categoryPropertiesFactoryInterface->getInstance());
+    
+this->categoryHierarchyInterface= dynamic_cast<CategoryHierarchyInterface*>(new CategoryHierarchy(rootCategoryInterface, parentCategoryInterface));
     
 this->log();
     
@@ -160,28 +166,28 @@ this->log();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->categoryPropertiesInterface.getKey();;
+                        return this->categoryPropertiesInterface->getKey();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getRootFilePath(){
+    public: AbPath* getRootFilePath(){
 
-    AbPath rootAbPath = AbPath(NOT_ROOT, StringUtil::getInstance().EMPTY_STRING);;
+    AbPath* rootAbPath = new AbPath(NOT_ROOT, StringUtil::getInstance()->EMPTY_STRING);;
     
 
-    CategoryInterface categoryInterface = this->categoryHierarchyInterface.getRoot();;
+    CategoryInterface* categoryInterface = this->categoryHierarchyInterface->getRoot();;
     
 
-                        if(categoryInterface.getProperties().isRoot())
+                        if(categoryInterface->getProperties()->isRoot())
                         
                                     {
                                     
-    RootCategoryPropertiesInterface rootCategoryPropertiesInterface = categoryInterface.getProperties();;
+    RootCategoryPropertiesInterface* rootCategoryPropertiesInterface = dynamic_cast<RootCategoryPropertiesInterface*>(categoryInterface->getProperties());;
     
-rootAbPath= rootCategoryPropertiesInterface.getRootFilePath();
+rootAbPath= rootCategoryPropertiesInterface->getRootFilePath();
     
 
                                     }
@@ -197,90 +203,90 @@ rootAbPath= rootCategoryPropertiesInterface.getRootFilePath();
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getFilePath(){
+    public: AbPath* getFilePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbPath(this->getRootFilePath().toString() +this->getProperties().getPath(this->getHierarchy()).toString(), this->getProperties().getFileName());
+                        return new AbPath(this->getRootFilePath()->toString() +this->getProperties()->getPath(this->getHierarchy())->toString(), this->getProperties()->getFileName());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getWebAppPath(){
+    public: AbPath* getWebAppPath(){
 
-    CategoryInterface categoryInterface = this->categoryHierarchyInterface.getRoot();;
+    CategoryInterface* categoryInterface = this->categoryHierarchyInterface->getRoot();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return categoryInterface.getProperties().getWebAppPath();;
+                        return categoryInterface->getProperties()->getWebAppPath();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getPath(){
+    public: AbPath* getPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->categoryPropertiesInterface.getPath(this->categoryHierarchyInterface);;
+                        return this->categoryPropertiesInterface->getPath(this->categoryHierarchyInterface);;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool addChildProperty(CategoryPropertiesInterface categoryPropertiesInterface){
-this->typeVector.add(this->PROPERTIES);
+    public: bool addChildProperty(CategoryPropertiesInterface* categoryPropertiesInterface){
+this->typeVector->add(this->PROPERTIES);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->childCategoryVector.add(categoryPropertiesInterface);;
+                        return this->childCategoryVector->add(categoryPropertiesInterface);;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool addChild(CategoryInterface categoryInterface){
+    public: bool addChild(CategoryInterface* categoryInterface){
 this->removeDuplicateChild(categoryInterface);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
                         
                                     {
-                                    this->logUtil.putF("adding", this, "addChild");
+                                    this->logUtil->putF("adding", this, "addChild");
     
 
                                     }
                                 
 
-    CategoryHierarchyInterface childCategoryHierarchyInterface = categoryInterface.getHierarchy();;
+    CategoryHierarchyInterface* childCategoryHierarchyInterface = categoryInterface->getHierarchy();;
     
-childCategoryHierarchyInterface.setParent(this);
+childCategoryHierarchyInterface->setParent(this);
     
-childCategoryHierarchyInterface.setRoot(this->getHierarchy().getRoot());
+childCategoryHierarchyInterface->setRoot(this->getHierarchy()->getRoot());
     
-categoryInterface.setHierarchy(childCategoryHierarchyInterface);
+categoryInterface->setHierarchy(childCategoryHierarchyInterface);
     
-this->typeVector.add(this->CATEGORY);
+this->typeVector->add(this->CATEGORY);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->childCategoryVector.add(categoryInterface);;
+                        return this->childCategoryVector->add(categoryInterface);;
     
 }
 
 
-    public: BasicArrayList getChildNodes(){
+    public: BasicArrayList* getChildNodes(){
 
 
 
@@ -291,15 +297,15 @@ this->typeVector.add(this->CATEGORY);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool removeChild(CategoryInterface categoryInterface){
+    public: bool removeChild(CategoryInterface* categoryInterface){
 
-    BasicArrayList removalVector = BasicArrayListD();;
+    BasicArrayList* removalVector = new BasicArrayListD();;
     
 
     bool bool_return = false;;
     
 
-    int32_t size = this->childCategoryVector.size();;
+    int32_t size = this->childCategoryVector->size();;
     
 
 
@@ -309,20 +315,20 @@ this->typeVector.add(this->CATEGORY);
     int32_t index = 0;index < size; index++)
         {
 
-                        if(this->CATEGORY == this->typeVector.get(index))
+                        if(this->CATEGORY == this->typeVector->get(index))
                         
                                     {
                                     
-    Object* anyType = this->childCategoryVector.get(index);;
+    Object* anyType = this->childCategoryVector->get(index);;
     
 
-    CategoryInterface currentCategoryInterface = *dynamic_cast<CategoryInterface*>(anyType);;
+    CategoryInterface* currentCategoryInterface = dynamic_cast<CategoryInterface*>(anyType);;
     
 
-                        if(currentCategoryInterface.getProperties().getValue().compareTo(categoryInterface.getProperties().getValue()) == 0)
+                        if(currentCategoryInterface->getProperties()->getValue()->compareTo(categoryInterface->getProperties()->getValue()) == 0)
                         
                                     {
-                                    removalVector.add(currentCategoryInterface);
+                                    removalVector->add(currentCategoryInterface);
     
 bool_return= true;
     
@@ -345,9 +351,9 @@ this->removal(removalVector);
 }
 
 
-    private: void removal(BasicArrayList removalVector){
+    private: void removal(BasicArrayList* removalVector){
 
-    int32_t removalSize = removalVector.size();;
+    int32_t removalSize = removalVector->size();;
     
 
 
@@ -357,14 +363,14 @@ this->removal(removalVector);
     int32_t index = 0;index < removalSize; index++)
         {
 
-    Object* anyType = removalVector.get(index);;
+    Object* anyType = removalVector->get(index);;
     
 
-    int32_t objectIndex = this->childCategoryVector.indexOf(anyType);;
+    int32_t objectIndex = this->childCategoryVector->indexOf(anyType);;
     
-this->typeVector.remove(objectIndex);
+this->typeVector->remove(objectIndex);
     
-this->childCategoryVector.remove(objectIndex);
+this->childCategoryVector->remove(objectIndex);
     
 }
 
@@ -372,15 +378,15 @@ this->childCategoryVector.remove(objectIndex);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: bool removeDuplicateChild(CategoryInterface categoryInterface){
+    private: bool removeDuplicateChild(CategoryInterface* categoryInterface){
 
-    BasicArrayList removalVector = BasicArrayListD();;
+    BasicArrayList* removalVector = new BasicArrayListD();;
     
 
     bool bool_return = false;;
     
 
-    int32_t size = this->childCategoryVector.size();;
+    int32_t size = this->childCategoryVector->size();;
     
 
 
@@ -390,20 +396,20 @@ this->childCategoryVector.remove(objectIndex);
     int32_t index = 0;index < size; index++)
         {
 
-    Object* anyType = this->childCategoryVector.get(index);;
+    Object* anyType = this->childCategoryVector->get(index);;
     
 
-                        if(this->PROPERTIES == this->typeVector.get(index))
+                        if(this->PROPERTIES == this->typeVector->get(index))
                         
                                     {
                                     
-    CategoryPropertiesInterface categoryPropertiesInterface = *dynamic_cast<CategoryPropertiesInterface*>(anyType);;
+    CategoryPropertiesInterface* categoryPropertiesInterface = dynamic_cast<CategoryPropertiesInterface*>(anyType);;
     
 
-                        if(categoryInterface.getProperties().getValue().compareTo(categoryPropertiesInterface.getValue()) == 0)
+                        if(categoryInterface->getProperties()->getValue()->compareTo(categoryPropertiesInterface->getValue()) == 0)
                         
                                     {
-                                    removalVector.add(categoryPropertiesInterface);
+                                    removalVector->add(categoryPropertiesInterface);
     
 bool_return= true;
     
@@ -417,20 +423,20 @@ break;
                                     }
                                 
                              else 
-                        if(this->CATEGORY == this->typeVector.get(index))
+                        if(this->CATEGORY == this->typeVector->get(index))
                         
                                     {
                                     
-    CategoryInterface existingCategoryInterface = *dynamic_cast<CategoryInterface*>(anyType);;
+    CategoryInterface* existingCategoryInterface = dynamic_cast<CategoryInterface*>(anyType);;
     
 
-    CategoryPropertiesInterface categoryPropertiesInterface = existingCategoryInterface.getProperties();;
+    CategoryPropertiesInterface* categoryPropertiesInterface = existingCategoryInterface->getProperties();;
     
 
-                        if(categoryInterface.getProperties().getValue().compareTo(categoryPropertiesInterface.getValue()) == 0)
+                        if(categoryInterface->getProperties()->getValue()->compareTo(categoryPropertiesInterface->getValue()) == 0)
                         
                                     {
-                                    removalVector.add(existingCategoryInterface);
+                                    removalVector->add(existingCategoryInterface);
     
 bool_return= true;
     
@@ -468,13 +474,13 @@ this->removal(removalVector);
                                     
 
 
-                            throw Exception("Category Error");
+                            throw new Exception("Category Error");
                     
 
                                     }
                                 
 
-                        if(this->childCategoryVector.size() == 0)
+                        if(this->childCategoryVector->size() == 0)
                         
                                     {
                                     
@@ -499,7 +505,7 @@ this->removal(removalVector);
 }
 
 
-    public: CategoryPropertiesInterface getProperties(){
+    public: CategoryPropertiesInterface* getProperties(){
 
 
 
@@ -509,13 +515,13 @@ this->removal(removalVector);
 }
 
 
-    public: void setProperties(CategoryPropertiesInterface categoryPropertiesInterface){
+    public: void setProperties(CategoryPropertiesInterface* categoryPropertiesInterface){
 this->categoryPropertiesInterface= categoryPropertiesInterface;
     
 }
 
 
-    public: CategoryHierarchyInterface getHierarchy(){
+    public: CategoryHierarchyInterface* getHierarchy(){
 
 
 
@@ -525,7 +531,7 @@ this->categoryPropertiesInterface= categoryPropertiesInterface;
 }
 
 
-    public: void setHierarchy(CategoryHierarchyInterface categoryHierarchyInterface){
+    public: void setHierarchy(CategoryHierarchyInterface* categoryHierarchyInterface){
 this->categoryHierarchyInterface= categoryHierarchyInterface;
     
 }
@@ -534,9 +540,9 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
-                        if(!this->categoryPropertiesInterface.isValid().valueOf())
+                        if(!this->categoryPropertiesInterface->isValid().valueOf())
                         
                                     {
                                     
@@ -549,7 +555,7 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
                                     }
                                 
 
-    int32_t size = this->childCategoryVector.size();;
+    int32_t size = this->childCategoryVector->size();;
     
 
 
@@ -559,17 +565,17 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
     int32_t index = 0;index < size; index++)
         {
 
-    Object* anyType = this->childCategoryVector.get(index);;
+    Object* anyType = this->childCategoryVector->get(index);;
     
 
-                        if(this->PROPERTIES == this->typeVector.get(index))
+                        if(this->PROPERTIES == this->typeVector->get(index))
                         
                                     {
                                     
-    CategoryPropertiesInterface categoryPropertiesInterface = *dynamic_cast<CategoryPropertiesInterface*>(anyType);;
+    CategoryPropertiesInterface* categoryPropertiesInterface = dynamic_cast<CategoryPropertiesInterface*>(anyType);;
     
 
-                        if(!categoryPropertiesInterface.isValid().valueOf())
+                        if(!categoryPropertiesInterface->isValid().valueOf())
                         
                                     {
                                     
@@ -585,14 +591,14 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
                                     }
                                 
                              else 
-                        if(this->CATEGORY == this->typeVector.get(index))
+                        if(this->CATEGORY == this->typeVector->get(index))
                         
                                     {
                                     
-    CategoryInterface categoryInterface = *dynamic_cast<CategoryInterface*>(anyType);;
+    CategoryInterface* categoryInterface = dynamic_cast<CategoryInterface*>(anyType);;
     
 
-                        if(!categoryInterface.isValid().valueOf())
+                        if(!categoryInterface->isValid().valueOf())
                         
                                     {
                                     
@@ -620,7 +626,7 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -632,7 +638,7 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -656,9 +662,9 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> categoryHashMap = this->categoryPropertiesInterface.toHashMap();;
+    HashMap<Object*, Object*>* categoryHashMap = this->categoryPropertiesInterface->toHashMap();;
     
 
 
@@ -671,11 +677,11 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList toVector(){
+    public: BasicArrayList* toVector(){
 
-    BasicArrayList categoryVector = this->categoryPropertiesInterface.toVector();;
+    BasicArrayList* categoryVector = this->categoryPropertiesInterface->toVector();;
     
-categoryVector.add(this->childCategoryVector);
+categoryVector->add(this->childCategoryVector);
     
 
 
@@ -690,25 +696,25 @@ categoryVector.add(this->childCategoryVector);
             
     public: void log(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Category Name: ");
+stringBuffer->append("Category Name: ");
     
-stringBuffer.append(this->categoryPropertiesInterface.getValue());
+stringBuffer->append(this->categoryPropertiesInterface->getValue());
     
-stringBuffer.append("\nPath = ");
+stringBuffer->append("\nPath = ");
     
-stringBuffer.append(this->getPath().toString());
+stringBuffer->append(this->getPath()->toString());
     
-stringBuffer.append("\nFile Path: ");
+stringBuffer->append("\nFile Path: ");
     
-stringBuffer.append(this->getFilePath().toString());
+stringBuffer->append(this->getFilePath()->toString());
     
-this->logUtil.putF(stringBuffer.toString(), this, "log()");
+this->logUtil->putF(stringBuffer->toString(), this, "log()");
     
 
                                     }

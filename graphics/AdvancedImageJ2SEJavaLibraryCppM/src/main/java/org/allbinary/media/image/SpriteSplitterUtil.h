@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -62,26 +68,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageUtil.h"
-#include "ImageUnifierProperties.h"
-#include "ImageUnifierCell.h"
-#include "ImageUnifierUtil.h"
-#include "ImageProcessorInput.h"
-#include "ImageProcessedVisitor.h"
+        #include "org/allbinary/media/image/ImageUtil.h"
+#include "org/allbinary/media/image/ImageUnifierProperties.h"
+#include "org/allbinary/media/image/ImageUnifierCell.h"
+#include "org/allbinary/media/image/ImageUnifierUtil.h"
+#include "org/allbinary/media/image/ImageProcessorInput.h"
+#include "org/allbinary/media/image/ImageProcessedVisitor.h"
 
 class SpriteSplitterUtil
             : public Object
          {
 
-    private: static SpriteSplitterUtil instance() { return SpriteSplitterUtil(); }
+    private: static SpriteSplitterUtil* instance() { static std::unique_ptr<SpriteSplitterUtil> value(new SpriteSplitterUtil()); return value.get(); }
 
-    public: static SpriteSplitterUtil getInstance();
+    public: static SpriteSplitterUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonSeps commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps = CommonSeps::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     public: const std::vector<std::string> ANIMATIONS_LABELS = 
                                                         {
@@ -103,7 +109,7 @@ class SpriteSplitterUtil
 
                 //@Throws(Exception.constructor)
             
-    public: void process(ImageProcessorInput imageProcessorInput, int32_t totalFrames, int32_t totalAnimations, int32_t widthReduction, int32_t heightReduction, int32_t increaseWidth, int32_t increaseHeight, std::string spriteType, ImageProcessedVisitor visitor);
+    public: void process(ImageProcessorInput* imageProcessorInput, int32_t totalFrames, int32_t totalAnimations, int32_t widthReduction, int32_t heightReduction, int32_t increaseWidth, int32_t increaseHeight, std::string spriteType, ImageProcessedVisitor* visitor);
 
 };
 

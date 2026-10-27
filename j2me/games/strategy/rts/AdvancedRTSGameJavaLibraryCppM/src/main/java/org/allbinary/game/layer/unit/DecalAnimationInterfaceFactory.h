@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_UNIT_DECALANIMATIONINTERFACEFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_UNIT_DECALANIMATIONINTERFACEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,13 +72,13 @@ class DecalAnimationInterfaceFactory
             : public Object
          {
 
-    private: static DecalAnimationInterfaceFactory instance() { return DecalAnimationInterfaceFactory(); }
+    private: static DecalAnimationInterfaceFactory* instance() { static std::unique_ptr<DecalAnimationInterfaceFactory> value(new DecalAnimationInterfaceFactory()); return value.get(); }
 
-    public: static DecalAnimationInterfaceFactory getInstance();
+    public: static DecalAnimationInterfaceFactory* getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: AnimationInterfaceFactoryInterface getAnimationFactory(BasicGameResources basicGameResources, BasicColor basicColor);
+    public: AnimationInterfaceFactoryInterface* getAnimationFactory(BasicGameResources* basicGameResources, BasicColor* basicColor);
 
 };
 

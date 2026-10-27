@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -56,16 +62,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicStoreFront.h"
-#include "BasicStoreFrontInterface.h"
+        #include "org/allbinary/business/context/modules/storefronts/BasicStoreFront.h"
+#include "org/allbinary/business/context/modules/storefronts/BasicStoreFrontInterface.h"
 
 class BasicStoreFrontsEntity: public InitSql {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     protected: const std::string tableName = "storefronts";
 
-public: BasicStoreFrontsEntity() : InitSql(UserDbInitInfo()){
+public: BasicStoreFrontsEntity() : InitSql(new UserDbInitInfo()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -79,27 +85,27 @@ this->setTable(this->tableName);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicStoreFrontInterface getStoreFrontInterface(std::string name){
+    public: BasicStoreFrontInterface* getStoreFrontInterface(std::string name){
 
-    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* keysAndValues = StdUtil::getInstance()->createHashMap();;
     
-keysAndValues.put(StoreFrontData::getInstance().NAME, name);
+keysAndValues->put(StoreFrontData::getInstance()->NAME, name);
     
 
-    HashMap<Object*, Object*> storeHashMap = super.getRow(keysAndValues);;
+    HashMap<Object*, Object*>* storeHashMap = super.getRow(keysAndValues);;
     
 
                         if(storeHashMap == 
                                     nullptr
                                 )
                         
-                                    throw Exception("No Such Store: " +name);
+                                    throw new Exception("No Such Store: " +name);
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().FACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->FACTORYERROR))
                         
                                     {
-                                    this->logUtil.putF("StoreFront: " +storeHashMap.toString(), this, "getStore()");
+                                    this->logUtil->putF("StoreFront: " +storeHashMap->toString(), this, "getStore()");
     
 
                                     }
@@ -108,7 +114,7 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, name);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicStoreFront(storeHashMap);
+                        return dynamic_cast<BasicStoreFrontInterface*>(new BasicStoreFront(storeHashMap));
     
 }
 

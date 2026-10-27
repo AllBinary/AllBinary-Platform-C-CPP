@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -48,14 +54,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Comparable.h"
-#include "PathFindingNodeCostInfoData.h"
+        #include "org/allbinary/media/graphics/geography/pathfinding/Comparable.h"
+#include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfoData.h"
 
 class PathFindingNodeCostInfo
             : public Object
-        : public Comparable<PathFindingNodeCostInfo> {
+        , public Comparable<PathFindingNodeCostInfo*> {
 
-    private: const PathFindingNodeCostInfoData pathFindingNodeCostInfoData = PathFindingNodeCostInfoData::getInstance();
+    private: PathFindingNodeCostInfoData* pathFindingNodeCostInfoData = PathFindingNodeCostInfoData::getInstance();
 
     public: int64_t costFromStartP;
 
@@ -91,13 +97,13 @@ this->totalCostP= totalCost;
 this->totalCostP= this->costFromStartP +this->costToEndP;
     
 
-                        if(this->totalCostP > this->pathFindingNodeCostInfoData.MAX_NODE_COST)
+                        if(this->totalCostP > this->pathFindingNodeCostInfoData->MAX_NODE_COST)
                         
                                     {
                                     
 
 
-                            throw Exception("Max Cost Exceeded");
+                            throw new Exception("Max Cost Exceeded");
                     
 
                                     }
@@ -117,41 +123,41 @@ this->costFromStartP += cost;
 }
 
 
-    public: int32_t compareTo(PathFindingNodeCostInfo pathFindingNodeCostInfo){
+    public: int32_t compareTo(PathFindingNodeCostInfo* pathFindingNodeCostInfo){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Long.compare(this->totalCostP, pathFindingNodeCostInfo.totalCostP);;
+                        return Long.compare(this->totalCostP, pathFindingNodeCostInfo->totalCostP);;
     
 }
 
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->constructor.name.toString());
+stringBuffer->append(this->getClass()->getName());
     
-stringBuffer.append(CommonLabels::getInstance().COLON_SEP);
+stringBuffer->append(CommonLabels::getInstance()->COLON_SEP);
     
-stringBuffer.append("CostFromStart: ");
+stringBuffer->append("CostFromStart: ");
     
-stringBuffer.appendlong(this->costFromStartP);
+stringBuffer->appendlong(this->costFromStartP);
     
-stringBuffer.append(" CostToEnd: ");
+stringBuffer->append(" CostToEnd: ");
     
-stringBuffer.appendlong(this->costToEndP);
+stringBuffer->appendlong(this->costToEndP);
     
-stringBuffer.append(" TotalCost: ");
+stringBuffer->append(" TotalCost: ");
     
-stringBuffer.appendlong(this->totalCostP);
+stringBuffer->appendlong(this->totalCostP);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -70,52 +76,52 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GenericProfileDataWorkerData.h"
-#include "GenericProfileDataWorkerType.h"
-#include "GenericProfileData.h"
+        #include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfileDataWorkerData.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfileDataWorkerType.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfileData.h"
 
 class GenericProfile
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string name;
 
-    private: BasicArrayList vector;
+    private: BasicArrayList* vector;
 
-    private: GenericProfileActions genericProfileActions;
+    private: GenericProfileActions* genericProfileActions;
 
-public: GenericProfile(Node node){
+public: GenericProfile(Node* node){
 this->setName(DomNodeHelper::getTextNodeValue(node));
     
-this->vector= BasicArrayListD();
+this->vector= new BasicArrayListD();
     
 
-    NodeList nodeList = node.getChildNodes();;
+    NodeList* nodeList = node->getChildNodes();;
     
-this->logUtil.putF("Name: " +this->getName() +" Child Nodes: " +nodeList.getLength(), this, "Contructor");
+this->logUtil->putF("Name: " +this->getName() +" Child Nodes: " +nodeList->getLength(), this, "Contructor");
     
 
 
 
 
                         for (
-    int32_t index = 0;index < nodeList.getLength(); index++)
+    int32_t index = 0;index < nodeList->getLength(); index++)
         {
 
-    Node profileNode = nodeList.item(index);;
+    Node* profileNode = nodeList->item(index);;
     
 
-                        if(profileNode.getNodeName().compareTo(GenericProfileDataWorkerData::NAME) == 0)
+                        if(profileNode->getNodeName()->compareTo(GenericProfileDataWorkerData::NAME) == 0)
                         
                                     {
                                     
-    GenericProfileDataWorkerType genericProfileDataWorkerType = GenericProfileDataWorkerType::getInstance(profileNode);;
+    GenericProfileDataWorkerType* genericProfileDataWorkerType = GenericProfileDataWorkerType::getInstance(profileNode);;
     
-this->logUtil.putF("Adding GenericProfileDataWorkerType: " +genericProfileDataWorkerType.toString(), this, "Contructor");
+this->logUtil->putF("Adding GenericProfileDataWorkerType: " +genericProfileDataWorkerType->toString(), this, "Contructor");
     
-this->vector.add(genericProfileDataWorkerType);
+this->vector->add(genericProfileDataWorkerType);
     
 
                                     }
@@ -128,12 +134,12 @@ this->vector.add(genericProfileDataWorkerType);
 public: GenericProfile(std::string name){
 this->setName(name);
     
-this->vector= BasicArrayListD();
+this->vector= new BasicArrayListD();
     
 }
 
 
-    public: BasicArrayList getGenericProfileDataWorkerTypeVector(){
+    public: BasicArrayList* getGenericProfileDataWorkerTypeVector(){
 
 
 
@@ -143,28 +149,28 @@ this->vector= BasicArrayListD();
 }
 
 
-    public: void add(GenericProfileDataWorkerType genericProfileDataWorkerType){
+    public: void add(GenericProfileDataWorkerType* genericProfileDataWorkerType){
 
-                        if(!this->vector.contains(genericProfileDataWorkerType))
-                        this->vector.add(genericProfileDataWorkerType);
+                        if(!this->vector->contains(genericProfileDataWorkerType))
+                        this->vector->add(genericProfileDataWorkerType);
                                 
 }
 
 
-    public: void remove(GenericProfileDataWorkerType genericProfileDataWorkerType){
-this->vector.remove(genericProfileDataWorkerType);
+    public: void remove(GenericProfileDataWorkerType* genericProfileDataWorkerType){
+this->vector->remove(genericProfileDataWorkerType);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = ModDomHelper::createTextNode(document, GenericProfileData::NAME, this->name);;
+    Node* node = ModDomHelper::createTextNode(document, GenericProfileData::NAME, this->name);;
     
 
-    int32_t size = this->vector.size();;
+    int32_t size = this->vector->size();;
     
 
 
@@ -174,9 +180,9 @@ this->vector.remove(genericProfileDataWorkerType);
     int32_t index = 0;index < size; index++)
         {
 
-    GenericProfileDataWorkerType genericProfileDataWorkerType = this->vector.get(index);;
+    GenericProfileDataWorkerType* genericProfileDataWorkerType = dynamic_cast<GenericProfileDataWorkerType*>(this->vector->get(index));;
     
-node.appendChild(genericProfileDataWorkerType.toXmlNode(document));
+node->appendChild(genericProfileDataWorkerType->toXmlNode(document));
     
 }
 
@@ -205,7 +211,7 @@ this->name= name;
 }
 
 
-    public: GenericProfileActions getGenericProfileActions(){
+    public: GenericProfileActions* getGenericProfileActions(){
 
 
 
@@ -215,7 +221,7 @@ this->name= name;
 }
 
 
-    public: void setGenericProfileActions(GenericProfileActions genericProfileActions){
+    public: void setGenericProfileActions(GenericProfileActions* genericProfileActions){
 this->genericProfileActions= genericProfileActions;
     
 }

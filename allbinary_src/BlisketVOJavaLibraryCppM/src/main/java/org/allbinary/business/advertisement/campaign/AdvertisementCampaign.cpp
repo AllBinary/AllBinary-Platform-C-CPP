@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -50,16 +56,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdvertisementCampaignInterface.h"
-#include "AdvertisementCampaignData.h"
+        #include "org/allbinary/business/advertisement/campaign/AdvertisementCampaignInterface.h"
+#include "org/allbinary/business/advertisement/campaign/AdvertisementCampaignData.h"
 
 class AdvertisementCampaign
             : public Object
-        : public AdvertisementCampaignInterface {
+        , public AdvertisementCampaignInterface {
 
-    private: HashMap<Object*, Object*> hashMap;
+    private: HashMap<Object*, Object*>* hashMap;
 
-public: AdvertisementCampaign(HashMap<Object*, Object*> hashMap){
+public: AdvertisementCampaign(HashMap<Object*, Object*>* hashMap){
 this->hashMap= hashMap;
     
 }
@@ -80,24 +86,24 @@ this->hashMap= hashMap;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->hashMap.get(AdvertisementCampaignData::getInstance().NAME);
+                        return this->hashMap->get(AdvertisementCampaignData::getInstance()->NAME);
     
 }
 
 
     public: void setComponentName(std::string name){
-this->hashMap.put(DynamicObjectData::NAME, name);
+this->hashMap->put(DynamicObjectData::NAME, name);
     
 }
 
 
     public: void setName(std::string name){
-this->hashMap.put(AdvertisementCampaignData::getInstance().NAME, name);
+this->hashMap->put(AdvertisementCampaignData::getInstance()->NAME, name);
     
 }
 
 
-    public: AdvertisementsInterface search(AdvertisementSearchInterface advertisementSearchInterface){
+    public: AdvertisementsInterface* search(AdvertisementSearchInterface* advertisementSearchInterface){
 
 
 

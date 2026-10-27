@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,7 +49,7 @@ class EchoResponseTypeTwoData
             : public Object
          {
 
-    public: static std::string NAME = "ECHOTYPE2";
+    public: static inline std::string NAME = "ECHOTYPE2";
 
 private: EchoResponseTypeTwoData(){
 }

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
@@ -43,22 +49,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputFactory.h"
-#include "GameKey.h"
-#include "GameKeyFactory.h"
+        #include "org/allbinary/game/input/InputFactory.h"
+#include "org/allbinary/game/input/GameKey.h"
+#include "org/allbinary/game/input/GameKeyFactory.h"
 
 class GameKeyMappingFactory
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static GameKeyMappingFactory getInstance(){
+    public: static GameKeyMappingFactory* getInstance(){
 
-                        if(GameKeyMappingFactory::instance() == NullUtil::getInstance().NULL_OBJECT)
+                        if(GameKeyMappingFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    GameKeyMappingFactory::instance= GameKeyMappingFactory();
+                                    GameKeyMappingFactory::instance= new GameKeyMappingFactory();
     
 
                                     }
@@ -67,69 +73,69 @@ class GameKeyMappingFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameKeyMappingFactory::instance();
+                        return dynamic_cast<GameKeyMappingFactory*>(GameKeyMappingFactory::instance);
     
 }
 
 
-    private: std::vector<GameKey> intKeyToGameKey = std::vector<GameKey>(InputFactory::getInstance().MAX);
+    private: std::vector<GameKey*> intKeyToGameKey = std::vector<GameKey*>(InputFactory::getInstance()->MAX);
 
 private: GameKeyMappingFactory(){
 
-    GameKeyFactory gameKeyFactory = GameKeyFactory::getInstance();;
+    GameKeyFactory* gameKeyFactory = GameKeyFactory::getInstance();;
     
-this->setGameKey(gameKeyFactory.NONE);
+this->setGameKey(gameKeyFactory->NONE);
     
-this->setGameKey(gameKeyFactory.UP);
+this->setGameKey(gameKeyFactory->UP);
     
-this->setGameKey(gameKeyFactory.DOWN);
+this->setGameKey(gameKeyFactory->DOWN);
     
-this->setGameKey(gameKeyFactory.LEFT);
+this->setGameKey(gameKeyFactory->LEFT);
     
-this->setGameKey(gameKeyFactory.RIGHT);
+this->setGameKey(gameKeyFactory->RIGHT);
     
-this->setGameKey(gameKeyFactory.KEY_POUND);
+this->setGameKey(gameKeyFactory->KEY_POUND);
     
-this->setGameKey(gameKeyFactory.KEY_STAR);
+this->setGameKey(gameKeyFactory->KEY_STAR);
     
-this->setGameKey(gameKeyFactory.KEY_NUM0);
+this->setGameKey(gameKeyFactory->KEY_NUM0);
     
-this->setGameKey(gameKeyFactory.KEY_NUM1);
+this->setGameKey(gameKeyFactory->KEY_NUM1);
     
-this->setGameKey(gameKeyFactory.KEY_NUM2);
+this->setGameKey(gameKeyFactory->KEY_NUM2);
     
-this->setGameKey(gameKeyFactory.KEY_NUM3);
+this->setGameKey(gameKeyFactory->KEY_NUM3);
     
-this->setGameKey(gameKeyFactory.KEY_NUM4);
+this->setGameKey(gameKeyFactory->KEY_NUM4);
     
-this->setGameKey(gameKeyFactory.KEY_NUM5);
+this->setGameKey(gameKeyFactory->KEY_NUM5);
     
-this->setGameKey(gameKeyFactory.KEY_NUM6);
+this->setGameKey(gameKeyFactory->KEY_NUM6);
     
-this->setGameKey(gameKeyFactory.KEY_NUM7);
+this->setGameKey(gameKeyFactory->KEY_NUM7);
     
-this->setGameKey(gameKeyFactory.KEY_NUM8);
+this->setGameKey(gameKeyFactory->KEY_NUM8);
     
-this->setGameKey(gameKeyFactory.KEY_NUM9);
+this->setGameKey(gameKeyFactory->KEY_NUM9);
     
-this->setGameKey(gameKeyFactory.GAME_A);
+this->setGameKey(gameKeyFactory->GAME_A);
     
-this->setGameKey(gameKeyFactory.GAME_B);
+this->setGameKey(gameKeyFactory->GAME_B);
     
-this->setGameKey(gameKeyFactory.GAME_C);
+this->setGameKey(gameKeyFactory->GAME_C);
     
-this->setGameKey(gameKeyFactory.GAME_D);
+this->setGameKey(gameKeyFactory->GAME_D);
     
-this->setGameKey(gameKeyFactory.FIRE);
+this->setGameKey(gameKeyFactory->FIRE);
     
-this->setGameKey(gameKeyFactory.LEVEL_DOWN);
+this->setGameKey(gameKeyFactory->LEVEL_DOWN);
     
-this->setGameKey(gameKeyFactory.LEVEL_UP);
+this->setGameKey(gameKeyFactory->LEVEL_UP);
     
 }
 
 
-    public: GameKey getGameKey(int32_t key){
+    public: GameKey* getGameKey(int32_t key){
 
 
 
@@ -139,8 +145,8 @@ this->setGameKey(gameKeyFactory.LEVEL_UP);
 }
 
 
-    private: void setGameKey(GameKey gameKey){
-this->intKeyToGameKey[gameKey.getId()]= gameKey;
+    private: void setGameKey(GameKey* gameKey){
+this->intKeyToGameKey[gameKey->getId()]= gameKey;
     
 }
 

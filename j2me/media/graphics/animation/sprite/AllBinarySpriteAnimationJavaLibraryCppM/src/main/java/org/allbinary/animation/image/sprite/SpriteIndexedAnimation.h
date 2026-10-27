@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Throwable.h"
         
             #include "java/lang/Exception.h"
@@ -81,27 +87,27 @@
         
 class SpriteIndexedAnimation: public IndexedAnimation, public ColorCompositeInterface {
 
-    protected: Sprite sprite;
+    protected: Sprite* sprite;
 
-    protected: Image image;
+    protected: Image* image;
 
-    private: std::vector<BasicColor> basicColorArray;
+    private: std::vector<BasicColor*> basicColorArray;
 
-public: SpriteIndexedAnimation(Sprite sprite, Image image, std::vector<BasicColor> basicColorArray, AnimationBehavior animationBehavior);
+public: SpriteIndexedAnimation(Sprite* sprite, Image* image, std::vector<BasicColor*> basicColorArray, AnimationBehavior* animationBehavior);
 
                 //@Throws(Exception.constructor)
             
     public: int32_t getAnimationSize();
 
-    public: void setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor* basicColor);
 
-    public: BasicColor getBasicColorP();
+    public: BasicColor* getBasicColorP();
 
-    public: void paintFrame(Graphics graphics, int32_t frame, int32_t x, int32_t y);
+    public: void paintFrame(Graphics* graphics, int32_t frame, int32_t x, int32_t y);
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
-    protected: void paint(Graphics graphics);
+    protected: void paint(Graphics* graphics);
 
     public: void nextFrame();
 

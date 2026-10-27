@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,15 +70,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WindowsOS.h"
+        #include "org/allbinary/logic/system/os/windows/WindowsOS.h"
 
 class WindowsOperatingSystemFactory
             : public Object
          {
 
-    private: static WindowsOperatingSystemFactory instance() { return WindowsOperatingSystemFactory(); }
+    private: static WindowsOperatingSystemFactory* instance() { static std::unique_ptr<WindowsOperatingSystemFactory> value(new WindowsOperatingSystemFactory()); return value.get(); }
 
-    public: static WindowsOperatingSystemFactory getInstance(){
+    public: static WindowsOperatingSystemFactory* getInstance(){
 
 
 
@@ -82,84 +88,84 @@ class WindowsOperatingSystemFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: WindowsOperatingSystemFactory(){
 }
 
 
-    public: GenericOperatingSystem getOperatingSystemInstance(){
+    public: GenericOperatingSystem* getOperatingSystemInstance(){
 
         try {
             
-    OperatingSystems operatingSystems = OperatingSystems::getInstance();;
+    OperatingSystems* operatingSystems = OperatingSystems::getInstance();;
     
 
-    std::string osName = SystemProperties::getInstance().getName();;
+    std::string osName = SystemProperties::getInstance()->getName();;
     
 
-    GenericOperatingSystem operatingSystemInterface;;
+    GenericOperatingSystem* operatingSystemInterface;;
     
 
-                        if(osName.compare(operatingSystems.WINDOWS_NT) == 0)
+                        if(osName.compare(operatingSystems->WINDOWS_NT) == 0)
                         
                                     {
-                                    operatingSystemInterface= WindowsOS();
+                                    operatingSystemInterface= new WindowsOS();
     
 
                                     }
                                 
                              else 
-                        if(osName.compare(operatingSystems.WINDOWS_10) == 0)
+                        if(osName.compare(operatingSystems->WINDOWS_10) == 0)
                         
                                     {
-                                    operatingSystemInterface= WindowsOS();
+                                    operatingSystemInterface= new WindowsOS();
     
 
                                     }
                                 
                              else 
-                        if(osName.compare(operatingSystems.WINDOWS_11) == 0)
+                        if(osName.compare(operatingSystems->WINDOWS_11) == 0)
                         
                                     {
-                                    operatingSystemInterface= WindowsOS();
+                                    operatingSystemInterface= new WindowsOS();
     
 
                                     }
                                 
                              else 
-                        if(osName.compare(operatingSystems.WINDOWS2000) == 0)
+                        if(osName.compare(operatingSystems->WINDOWS2000) == 0)
                         
                                     {
-                                    operatingSystemInterface= WindowsOS();
+                                    operatingSystemInterface= new WindowsOS();
     
 
                                     }
                                 
                              else 
-                        if(osName.compare(operatingSystems.WINDOWS_XP) == 0)
+                        if(osName.compare(operatingSystems->WINDOWS_XP) == 0)
                         
                                     {
-                                    operatingSystemInterface= WindowsOS();
+                                    operatingSystemInterface= new WindowsOS();
     
 
                                     }
                                 
                              else 
-                        if(osName.compare(operatingSystems.WINDOWS_VISTA) == 0)
+                        if(osName.compare(operatingSystems->WINDOWS_VISTA) == 0)
                         
                                     {
-                                    operatingSystemInterface= WindowsOS();
+                                    operatingSystemInterface= new WindowsOS();
     
 
                                     }
                                 
                         else {
                             
-                        if(operatingSystems.isUnknownSpecificOSAllowed())
+                        if(operatingSystems->isUnknownSpecificOSAllowed())
                         
                                     {
-                                    operatingSystemInterface= WindowsOS();
+                                    operatingSystemInterface= new WindowsOS();
     
 
                                     }
@@ -168,7 +174,7 @@ private: WindowsOperatingSystemFactory(){
                             
 
 
-                            throw Exception("Specific Windows OS Not Supported: " +osName);
+                            throw new Exception("Specific Windows OS Not Supported: " +osName);
                     
 
                         }
@@ -184,16 +190,16 @@ private: WindowsOperatingSystemFactory(){
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().FACTORYERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
     
 
                                     }

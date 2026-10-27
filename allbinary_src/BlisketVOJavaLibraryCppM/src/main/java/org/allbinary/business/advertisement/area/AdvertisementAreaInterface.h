@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREAINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREAINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,29 +45,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdvertisementAreaConstraintsInterface.h"
+        #include "org/allbinary/business/advertisement/area/AdvertisementAreaConstraintsInterface.h"
 
 class AdvertisementAreaInterface {
 
-    std::string getName();
+    public: virtual std::string getName() = 0;
 
-    std::string getStoreName();
+    public: virtual std::string getStoreName() = 0;
 
-    std::string getDescription();
+    public: virtual std::string getDescription() = 0;
 
-    AdvertisementAreaConstraintsInterface getConstraints();
+    public: virtual AdvertisementAreaConstraintsInterface* getConstraints() = 0;
 
-    std::string getCampaign();
+    public: virtual std::string getCampaign() = 0;
 
-    void setName(std::string name);
+    public: virtual void setName(std::string name) = 0;
 
-    void setStoreName(std::string storeName);
+    public: virtual void setStoreName(std::string storeName) = 0;
 
-    void setDescription(std::string description);
+    public: virtual void setDescription(std::string description) = 0;
 
-    void setConstraints(AdvertisementAreaConstraintsInterface advertisementConstraintsInterface);
+    public: virtual void setConstraints(AdvertisementAreaConstraintsInterface* advertisementConstraintsInterface) = 0;
 
-    void setCampaign(std::string campaign);
+    public: virtual void setCampaign(std::string campaign) = 0;
 
 };
 

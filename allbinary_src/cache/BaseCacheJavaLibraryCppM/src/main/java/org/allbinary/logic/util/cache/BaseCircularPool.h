@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,22 +66,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryObjectFactoryInterface.h"
+        #include "org/allbinary/logic/util/cache/AllBinaryObjectFactoryInterface.h"
 
 class BaseCircularPool
             : public Object
          {
 
-    protected: CircularIndexUtil circularIndexUtil = CircularIndexUtil::NULL_CIRCULAR_INDEX_UTIL;
+    protected: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::NULL_CIRCULAR_INDEX_UTIL;
 
-    protected: std::vector<Object*> OBJECT_ARRAY = NullUtil::getInstance().NULL_OBJECT_ARRAY;
+    protected: std::vector<Object*> OBJECT_ARRAY = NullUtil::getInstance()->NULL_OBJECT_ARRAY;
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: Object* getNextInstance();
 
-    public: void init(AllBinaryObjectFactoryInterface allBinaryObjectFactoryInterface);
+    public: void init(AllBinaryObjectFactoryInterface* allBinaryObjectFactoryInterface);
 
                 //@Throws(Exception.constructor)
             

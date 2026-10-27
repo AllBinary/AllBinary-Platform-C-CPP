@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -114,18 +122,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameConfigurationTextInput.h"
-#include "GameConfigurationSingleton.h"
-#include "GameConfiguration.h"
-#include "GameConfigurationGauge.h"
-#include "GameConfigurationUtil.h"
-#include "GameConfigurationCentral.h"
+        #include "org/allbinary/game/configuration/GameConfigurationTextInput.h"
+#include "org/allbinary/game/configuration/GameConfigurationSingleton.h"
+#include "org/allbinary/game/configuration/GameConfiguration.h"
+#include "org/allbinary/game/configuration/GameConfigurationGauge.h"
+#include "org/allbinary/game/configuration/GameConfigurationUtil.h"
+#include "org/allbinary/game/configuration/GameConfigurationCentral.h"
 
 class GameOptionsForm: public CommandForm {
 
-    private: const MEUtil meUtil = MEUtil::getInstance();
+    private: MEUtil* meUtil = MEUtil::getInstance();
 
-public: GameOptionsForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor) : CommandForm(commandListener, title, backgrounBasicColor, foregroundBasicColor){
+public: GameOptionsForm(CommandListener* commandListener, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) : CommandForm(commandListener, title, backgrounBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -137,15 +145,15 @@ this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUC
 this->addConfiguration();
     
 
-    GameFeatureFormUtil gameFeatureFormUtil = GameFeatureFormUtil::getInstance();;
+    GameFeatureFormUtil* gameFeatureFormUtil = GameFeatureFormUtil::getInstance();;
     
-gameFeatureFormUtil.addChoiceGroup(this, GameFeatureChoiceGroups::getExclusiveInstance().get(), Choice::EXCLUSIVE);
+gameFeatureFormUtil->addChoiceGroup(this, GameFeatureChoiceGroups::getExclusiveInstance()->get(), Choice::EXCLUSIVE);
     
-gameFeatureFormUtil.addChoiceGroup(this, GameFeatureChoiceGroups::getMultipleInstance().get(), Choice::MULTIPLE);
+gameFeatureFormUtil->addChoiceGroup(this, GameFeatureChoiceGroups::getMultipleInstance()->get(), Choice::MULTIPLE);
     
 this->initCommands(commandListener);
     
-this->setItemStateListener(GameFeatureItemStateListener(this));
+this->setItemStateListener(new GameFeatureItemStateListener(this));
     
 this->addTextFieldsIfSimulated();
     
@@ -154,7 +162,7 @@ this->addTextFieldsIfSimulated();
 
                 //@Throws(Exception.constructor)
             
-    public: void closeClientInformation(AbeClientInformationInterface abeClientInformation){
+    public: void closeClientInformation(AbeClientInformationInterface* abeClientInformation){
 super.close();
     
 this->save(abeClientInformation);
@@ -164,10 +172,10 @@ this->save(abeClientInformation);
 
     private: void addTextFieldsIfSimulated(){
 
-    std::string key = OrientationData::getInstance().ORIENTATION_SENSOR_INPUT;;
+    std::string key = OrientationData::getInstance()->ORIENTATION_SENSOR_INPUT;;
     
 
-    ABHashtable<Object*, Object*> hashtable = GameFeatureChoiceGroups::getExclusiveInstance().get();;
+    ABHashtable<Object*, Object*>* hashtable = GameFeatureChoiceGroups::getExclusiveInstance()->get();;
     
 
                         if(hashtable != 
@@ -176,7 +184,7 @@ this->save(abeClientInformation);
                         
                                     {
                                     
-    Object* listCanBeNull = hashtable.get(key);;
+    Object* listCanBeNull = hashtable->get(key);;
     
 
                         if(listCanBeNull != 
@@ -185,10 +193,10 @@ this->save(abeClientInformation);
                         
                                     {
                                     
-    BasicArrayList list = *dynamic_cast<BasicArrayList*>(listCanBeNull);;
+    BasicArrayList* list = dynamic_cast<BasicArrayList*>(listCanBeNull);;
     
 
-                        if(list.contains(SensorFeatureFactory::getInstance().SIMULATED_ORIENTATION_SENSORS))
+                        if(list->contains(SensorFeatureFactory::getInstance()->SIMULATED_ORIENTATION_SENSORS))
                         
                                     {
                                     this->addTextFields();
@@ -207,19 +215,19 @@ this->save(abeClientInformation);
 
     private: void addTextFields(){
 
-    ABHashtable<Object*, Object*> hashtable = GameConfigurationTextInput::getHashtable();;
+    ABHashtable<Object*, Object*>* hashtable = GameConfigurationTextInput::getHashtable();;
     
 
-    int32_t size = hashtable.size();;
+    int32_t size = hashtable->size();;
     
 
-    std::vector<Object*> objectArray = HashtableUtil::getInstance().getKeysAsArray(hashtable);;
+    std::vector<Object*> objectArray = HashtableUtil::getInstance()->getKeysAsArray(hashtable);;
     
 
-    GameConfigurationTextInput gameConfigurationTextInput;;
+    GameConfigurationTextInput* gameConfigurationTextInput;;
     
 
-    TextField textField;;
+    TextField* textField;;
     
 
 
@@ -228,11 +236,11 @@ this->save(abeClientInformation);
                         for (
     int32_t index = 0;index < size; index++)
         {
-gameConfigurationTextInput= hashtable.get(objectArray[index]);
+gameConfigurationTextInput= dynamic_cast<GameConfigurationTextInput*>(hashtable->get(objectArray[index]));
     
-textField= TextField(gameConfigurationTextInput.getLabel(), gameConfigurationTextInput.getText(), 30, TextField::ANY);
+textField= new TextField(gameConfigurationTextInput->getLabel(), gameConfigurationTextInput->getText(), 30, TextField::ANY);
     
-this->meUtil.appendItem(this, textField);
+this->meUtil->appendItem(this, textField);
     
 }
 
@@ -247,22 +255,22 @@ this->meUtil.appendItem(this, textField);
     std::string NAME = "Name: ";;
     
 
-    BasicArrayList list = GameConfigurationSingleton::getInstance().getOptionsBasicArrayList();;
+    BasicArrayList* list = GameConfigurationSingleton::getInstance()->getOptionsBasicArrayList();;
     
 
-    Command GAUGE_CHANGE = MyCommandsFactory::getInstance().GAUGE_CHANGE;;
+    Command* GAUGE_CHANGE = MyCommandsFactory::getInstance()->GAUGE_CHANGE;;
     
 
-    StringMaker stringMaker = StringMaker();;
+    StringMaker* stringMaker = new StringMaker();;
     
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
-    GameConfiguration gameConfiguration;;
+    GameConfiguration* gameConfiguration;;
     
 
-    GameConfigurationGauge gauge;;
+    GameConfigurationGauge* gauge;;
     
 
 
@@ -271,34 +279,34 @@ this->meUtil.appendItem(this, textField);
                         for (
     int32_t index = 0;index < size; index++)
         {
-gameConfiguration= list.objectArray[index];
+gameConfiguration= dynamic_cast<GameConfiguration*>(list->objectArray[index]);
     
-stringMaker.delete(0, stringMaker.length());
+stringMaker->delete(0, stringMaker->length());
     
-this->logUtil.putF(stringMaker.append(NAME).append(gameConfiguration.toString()).toString(), this, METHOD_NAME);
+this->logUtil.putF(stringMaker->append(NAME)->append(gameConfiguration->toString())->toString(), this, METHOD_NAME);
     
-gauge= GameConfigurationGauge(gameConfiguration);
+gauge= new GameConfigurationGauge(gameConfiguration);
     
-gauge.setDefaultCommand(GAUGE_CHANGE);
+gauge->setDefaultCommand(GAUGE_CHANGE);
     
-gauge.setItemCommandListener(GameFeatureItemCommandListener(this));
+gauge->setItemCommandListener(new GameFeatureItemCommandListener(this));
     
-this->meUtil.appendItem(this, gauge);
+this->meUtil->appendItem(this, gauge);
     
 }
 
 }
 
 
-    public: void initCommands(CommandListener cmdListener){
+    public: void initCommands(CommandListener* cmdListener){
 
-    GameCommandsFactory gameCommandsFactory = GameCommandsFactory::getInstance();;
+    GameCommandsFactory* gameCommandsFactory = GameCommandsFactory::getInstance();;
     
 this->removeAllCommands();
     
-this->addCommand(gameCommandsFactory.CLOSE_OPTIONS);
+this->addCommand(gameCommandsFactory->CLOSE_OPTIONS);
     
-this->addCommand(gameCommandsFactory.DEFAULT_OPTIONS);
+this->addCommand(gameCommandsFactory->DEFAULT_OPTIONS);
     
 this->setCommandListener(cmdListener);
     
@@ -307,12 +315,12 @@ this->setCommandListener(cmdListener);
 
                 //@Throws(Exception.constructor)
             
-    public: void save(AbeClientInformationInterface abeClientInformation){
+    public: void save(AbeClientInformationInterface* abeClientInformation){
 
     int32_t size = this->size();;
     
 
-    Item item;;
+    Item* item;;
     
 
 
@@ -324,52 +332,56 @@ this->setCommandListener(cmdListener);
 item= this->get(index);
     
 
-                        if(item instanceof GameConfigurationGauge)
+                        if(
+                                        (dynamic_cast<const GameConfigurationGauge*>(item) != nullptr)
+                                    )
                         
                                     {
-                                    GameConfigurationUtil::getInstance().update(item);
+                                    GameConfigurationUtil::getInstance()->update(dynamic_cast<GameConfigurationGauge*>(item));
     
 
                                     }
                                 
                              else 
-                        if(item instanceof TextField)
+                        if(
+                                        (dynamic_cast<const TextField*>(item) != nullptr)
+                                    )
                         
                                     {
-                                    GameConfigurationTextInput::update(item);
+                                    GameConfigurationTextInput::update(dynamic_cast<TextField*>(item));
     
 
                                     }
                                 
 }
 
-GameConfigurationUtil::getInstance().updateCompetitionValue();
+GameConfigurationUtil::getInstance()->updateCompetitionValue();
     
 
-    ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();;
+    ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();;
     
 
-    GameConfiguration SCALE = GameConfigurationCentral::getInstance().SCALE;;
+    GameConfiguration* SCALE = GameConfigurationCentral::getInstance()->SCALE;;
     
-hashtable.put(SCALE::getName(), SCALE::getValue().toString());
-    
-
-    KeyValuePersistance keyValuePersistance = GameConfigurationPersistanceSingleton::getInstance();;
-    
-keyValuePersistance.clear();
-    
-keyValuePersistance.loadAll(abeClientInformation);
+hashtable->put(SCALE->getName(), SCALE->getValue()->toString());
     
 
-    BasicArrayList list = keyValuePersistance.getIds();;
+    KeyValuePersistance* keyValuePersistance = GameConfigurationPersistanceSingleton::getInstance();;
     
-keyValuePersistance.save(abeClientInformation, hashtable);
+keyValuePersistance->clear();
+    
+keyValuePersistance->loadAll(abeClientInformation);
     
 
-    int32_t size2 = list.size();;
+    BasicArrayList* list = keyValuePersistance->getIds();;
+    
+keyValuePersistance->save(abeClientInformation, hashtable);
     
 
-    Integer integer;;
+    int32_t size2 = list->size();;
+    
+
+    int32_t integer;;
     
 
 
@@ -378,9 +390,9 @@ keyValuePersistance.save(abeClientInformation, hashtable);
                         for (
     int32_t index = 0;index < size2; index++)
         {
-integer= list.objectArray[index];
+integer= list->objectArray[index];
     
-keyValuePersistance.delete(abeClientInformation, integer.intValue());
+keyValuePersistance->delete(abeClientInformation, integer.intValue());
     
 }
 

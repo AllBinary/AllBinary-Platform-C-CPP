@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TRANSITION_ANIMATIONLISTENERINTERFACE_H
         #define ORG_ALLBINARY_ANIMATION_TRANSITION_ANIMATIONLISTENERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,11 +48,11 @@
         
 class AnimationListenerInterface {
 
-    void onPlatformAnimationStart();
+    public: virtual void onPlatformAnimationStart() = 0;
 
-    void onPlatformAnimationEnd();
+    public: virtual void onPlatformAnimationEnd() = 0;
 
-    void onPlatformAnimationRepeat();
+    public: virtual void onPlatformAnimationRepeat() = 0;
 
 };
 

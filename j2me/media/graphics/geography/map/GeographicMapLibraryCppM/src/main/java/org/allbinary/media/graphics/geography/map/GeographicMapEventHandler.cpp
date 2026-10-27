@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
@@ -59,9 +65,9 @@
         
 class GeographicMapEventHandler: public BasicEventHandler {
 
-    private: static GeographicMapEventHandler instance = GeographicMapEventHandler();
+    private: static GeographicMapEventHandler* instance() { static std::unique_ptr<GeographicMapEventHandler> value(new GeographicMapEventHandler()); return value.get(); }
 
-    public: static GeographicMapEventHandler getInstance(){
+    public: static GeographicMapEventHandler* getInstance(){
 
 
 
@@ -71,18 +77,18 @@ class GeographicMapEventHandler: public BasicEventHandler {
 }
 
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: GeographicMapEventHandler(){
 }
 
 
-    public: void addListener(AllBinaryGameLayer gameLayer){
+    public: void addListener(AllBinaryGameLayer* gameLayer){
 
-                        if(!this->list.contains(gameLayer))
+                        if(!this->list->contains(gameLayer))
                         
                                     {
-                                    this->list.add(gameLayer);
+                                    this->list->add(gameLayer);
     
 
                                     }
@@ -91,15 +97,15 @@ private: GeographicMapEventHandler(){
 
 
     public: void removeAllListeners(){
-this->list.clear();
+this->list->clear();
     
 super.removeAllListeners();
     
 }
 
 
-    public: void removeListener(EventListenerInterface eventListenerInterface){
-this->list.remove(eventListenerInterface);
+    public: void removeListener(EventListenerInterface* eventListenerInterface){
+this->list->remove(eventListenerInterface);
     
 super.removeListener(eventListenerInterface);
     
@@ -112,20 +118,20 @@ super.removeListener(eventListenerInterface);
 
 
                         for (
-    int32_t index = this->list.size();--index >= 0; )
+    int32_t index = this->list->size();--index >= 0; )
         {
 
         try {
             
-    AllBinaryGameLayer gameLayer = this->list.get(index);;
+    AllBinaryGameLayer* gameLayer = dynamic_cast<AllBinaryGameLayer*>(this->list->get(index));;
     
-gameLayer.move();
+gameLayer->move();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 

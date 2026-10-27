@@ -21,6 +21,14 @@
         #ifndef TAGS_GENERIC_INVENTORY_INVENTORYTAG_H
         #define TAGS_GENERIC_INVENTORY_INVENTORYTAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Class.h"
         
             #include "java/lang/Exception.h"
@@ -67,7 +75,7 @@
         
 class InventoryTag: public StoreValidationTransformTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: InventoryTag();
 

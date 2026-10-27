@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -58,35 +64,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "VehiclePropertiesCompositeInterface.h"
+        #include "org/allbinary/game/layer/VehiclePropertiesCompositeInterface.h"
 
 class VehicleLayerInterface: public LayerInterface, public VehiclePropertiesCompositeInterface {
 
-    BasicArrayList getGameKeyEventList()
+    public: virtual BasicArrayList* getGameKeyEventList() = 0;
 
-    BasicDecimal getSpeedBasicDecimal()
+    public: virtual BasicDecimal* getSpeedBasicDecimal() = 0;
 
-    bool isReadyForExplosion()
+    public: virtual bool isReadyForExplosion() = 0;
 
-    RotationAnimation getRotationAnimationInterface()
+    public: virtual RotationAnimation* getRotationAnimationInterface() = 0;
 
-    void setRotationAnimationInterface(RotationAnimation animationInterface)
+    public: virtual void setRotationAnimationInterface(RotationAnimation* animationInterface) = 0;
 
-    bool isDestroyed()
+    public: virtual bool isDestroyed() = 0;
 
-    bool isFinish()
+    public: virtual bool isFinish() = 0;
 
-    int32_t getFinalPosition()
+    public: virtual int32_t getFinalPosition() = 0;
 
                 //@Throws(Exception.constructor)
             
-    void handleFinish()
+    public: virtual void handleFinish() = 0;
 
-    GeographicMapCellPositionTracking getGeographicMapCellPositionTracking()
+    public: virtual GeographicMapCellPositionTracking* getGeographicMapCellPositionTracking() = 0;
 
-    std::vector<GeographicMapCellHistory> getGeographicMapCellHistoryArray()
+    public: virtual std::vector<GeographicMapCellHistory*> getGeographicMapCellHistoryArray() = 0;
 
-    void setGeographicMapCellHistoryArray(std::vector<GeographicMapCellHistory> geographicMapCellHistory)
+    public: virtual void setGeographicMapCellHistoryArray(std::vector<GeographicMapCellHistory*> geographicMapCellHistory) = 0;
 
 };
 

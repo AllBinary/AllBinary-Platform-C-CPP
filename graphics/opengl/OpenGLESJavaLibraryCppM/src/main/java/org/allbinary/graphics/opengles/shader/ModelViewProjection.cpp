@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -45,9 +51,9 @@ class ModelViewProjection
             : public Object
          {
 
-    private: static ModelViewProjection instance() { return ModelViewProjection(); }
+    private: static ModelViewProjection* instance() { static std::unique_ptr<ModelViewProjection> value(new ModelViewProjection()); return value.get(); }
 
-    public: static ModelViewProjection getInstance(){
+    public: static ModelViewProjection* getInstance(){
 
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/input/mapping/InputToGameKeyMapping.h>
 
       
@@ -39,17 +45,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "J2MEGameInputMapping.h"
-#include "MotionJ2MEDefaultGameInputMapping.h"
+        #include "org/allbinary/game/input/J2MEGameInputMapping.h"
+#include "org/allbinary/game/input/MotionJ2MEDefaultGameInputMapping.h"
 
 class MotionJ2MEGameInputMapping: public J2MEGameInputMapping {
 
-    protected: InputToGameKeyMapping getDefault(){
+    protected: InputToGameKeyMapping* getDefault(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MotionJ2MEDefaultGameInputMapping().getInputMapping();;
+                        return (new MotionJ2MEDefaultGameInputMapping())->getInputMapping();;
     
 }
 

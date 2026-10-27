@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INSTALLER_INITIALIZECLOUD_H
         #define ORG_ALLBINARY_BUSINESS_INSTALLER_INITIALIZECLOUD_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -81,11 +87,11 @@ class InitializeCloud
             : public Object
          {
 
-    public: static const std::string CLOUD = "cloud/";
+    public: static inline const std::string CLOUD = "cloud/";
 
-    public: static const std::string CLOUD_UPDATE = "cloudupdate/";
+    public: static inline const std::string CLOUD_UPDATE = "cloudupdate/";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: InitializeCloud();
 

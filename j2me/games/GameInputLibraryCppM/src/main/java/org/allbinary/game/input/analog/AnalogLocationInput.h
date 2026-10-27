@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_ANALOG_ANALOGLOCATIONINPUT_H
         #define ORG_ALLBINARY_GAME_INPUT_ANALOG_ANALOGLOCATIONINPUT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/CustomGPoint.h>
@@ -35,11 +41,11 @@ class AnalogLocationInput
             : public Object
          {
 
-    public: static const AnalogLocationInput NULL_ANALOG_LOCATION_INPUT = AnalogLocationInput( -1);
+    public: static AnalogLocationInput* NULL_ANALOG_LOCATION_INPUT() { static std::unique_ptr<AnalogLocationInput> value(new AnalogLocationInput( -1)); return value.get(); }
 
     private: int32_t playerId;
 
-    private: CustomGPoint customGPoint;
+    private: CustomGPoint* customGPoint;
 
     private: int32_t rz= 0;
 
@@ -51,7 +57,7 @@ class AnalogLocationInput
 
     public: int32_t getPlayerId();
 
-    public: CustomGPoint getCustomGPoint();
+    public: CustomGPoint* getCustomGPoint();
 
     public: int32_t getRz();
 

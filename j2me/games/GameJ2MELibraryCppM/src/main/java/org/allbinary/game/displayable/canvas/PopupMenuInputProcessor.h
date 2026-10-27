@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_POPUPMENUINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_POPUPMENUINPUTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -86,22 +92,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicMenuInputProcessor.h"
-#include "AllBinaryGameCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
 class PopupMenuInputProcessor: public BasicMenuInputProcessor {
 
-    private: const RectangleCollisionUtil rectangleCollisionUtil = RectangleCollisionUtil::getInstance();
+    private: RectangleCollisionUtil* rectangleCollisionUtil = RectangleCollisionUtil::getInstance();
 
     private: const int32_t CLICK_DELAY = 120;
 
-    private: const TimeDelayHelper clickTimeHelper = TimeDelayHelper(this->CLICK_DELAY);
+    private: TimeDelayHelper* clickTimeHelper = new TimeDelayHelper(this->CLICK_DELAY);
 
-    private: Rectangle rectangle;
+    private: Rectangle* rectangle;
 
-public: PopupMenuInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, MyCanvas gameCanvas, Rectangle rectangle);
+public: PopupMenuInputProcessor(BasicArrayList* gameKeyEventList, int32_t playerInputId, MyCanvas* gameCanvas, Rectangle* rectangle);
 
-    public: void init(Rectangle rectangle);
+    public: void init(Rectangle* rectangle);
 
                 //@Throws(Exception.constructor)
             
@@ -117,7 +123,7 @@ public: PopupMenuInputProcessor(BasicArrayList gameKeyEventList, int32_t playerI
 
                 //@Throws(Exception.constructor)
             
-    protected: void processMotionInput(MotionGestureEvent motionGestureEvent);
+    protected: void processMotionInput(MotionGestureEvent* motionGestureEvent);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -83,13 +89,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShippingAddressView.h"
+        #include "views/generic/address/shipping/ShippingAddressView.h"
 
 class AddTaxValidationView: public ShippingAddressView, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: AddTaxValidationView(TransformInfoInterface transformInfoInterface) : ShippingAddressView(transformInfoInterface){
+public: AddTaxValidationView(TransformInfoInterface* transformInfoInterface) : ShippingAddressView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -101,16 +107,16 @@ public: AddTaxValidationView(TransformInfoInterface transformInfoInterface) : Sh
 
                 //@Throws(Exception.constructor)
             
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
-            this->streetAddress= StreetAddress(this->getRequest());
+            this->streetAddress= new StreetAddress(this->getRequest());
     
 
-    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(this->getTransformInfoInterface().getStoreName());;
+    StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(this->getTransformInfoInterface()->getStoreName());;
     
 
-    TaxModuleInterface taxInterface = TaxFactory::getInstance().getInstance(this->abeClientInformation, storeFrontInterface);;
+    TaxModuleInterface* taxInterface = TaxFactory::getInstance()->getInstance(this->abeClientInformation, storeFrontInterface);;
     
 
                         if(taxInterface == 
@@ -128,7 +134,7 @@ public: AddTaxValidationView(TransformInfoInterface transformInfoInterface) : Sh
                                     }
                                 
 
-                        if(taxInterface.isValid(this->streetAddress, storeFrontInterface) == Boolean::FALSE)
+                        if(taxInterface->isValid(this->streetAddress, storeFrontInterface) == Boolean::FALSE)
                         
                                     {
                                     
@@ -141,10 +147,10 @@ public: AddTaxValidationView(TransformInfoInterface transformInfoInterface) : Sh
                                     }
                                 
 
-    ShippingAddressesEntity billingAddressesEntity = ShippingAddressesEntity(this->getWeblisketSession().getUserName());;
+    ShippingAddressesEntity* billingAddressesEntity = new ShippingAddressesEntity(this->getWeblisketSession()->getUserName());;
     
 
-    BasicArrayList streetAddressList = billingAddressesEntity.get();;
+    BasicArrayList* streetAddressList = billingAddressesEntity->get();;
     
 
                         if(streetAddressList == 
@@ -162,7 +168,7 @@ public: AddTaxValidationView(TransformInfoInterface transformInfoInterface) : Sh
                                     }
                                 
 
-    int32_t size = streetAddressList.size();;
+    int32_t size = streetAddressList->size();;
     
 
 
@@ -172,10 +178,10 @@ public: AddTaxValidationView(TransformInfoInterface transformInfoInterface) : Sh
     int32_t index = 0;index < size; index++)
         {
 
-    StreetAddress aStreetAddress = streetAddressList.get(index);;
+    StreetAddress* aStreetAddress = dynamic_cast<StreetAddress*>(streetAddressList->get(index));;
     
 
-                        if(aStreetAddress.getName().compareTo(ShippingAddressData::TAX) == 0)
+                        if(aStreetAddress->getName().compareTo(ShippingAddressData::TAX) == 0)
                         
                                     {
                                     
@@ -197,13 +203,13 @@ public: AddTaxValidationView(TransformInfoInterface transformInfoInterface) : Sh
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -225,13 +231,13 @@ public: AddTaxValidationView(TransformInfoInterface transformInfoInterface) : Sh
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(this->getTransformInfoInterface().getStoreName());;
+    StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(this->getTransformInfoInterface()->getStoreName());;
     
 
-    TaxModuleInterface taxInterface = TaxFactory::getInstance().getInstance(this->abeClientInformation, storeFrontInterface);;
+    TaxModuleInterface* taxInterface = TaxFactory::getInstance()->getInstance(this->abeClientInformation, storeFrontInterface);;
     
 
                         if(taxInterface == 
@@ -239,17 +245,17 @@ public: AddTaxValidationView(TransformInfoInterface transformInfoInterface) : Sh
                                 )
                         
                                     {
-                                    stringBuffer.append("Unable to Load Tax Component<br/>");
+                                    stringBuffer->append("Unable to Load Tax Component<br/>");
     
 
                                     }
                                 
                         else {
                             
-                        if(taxInterface.isValid(this->streetAddress, storeFrontInterface) == Boolean::FALSE)
+                        if(taxInterface->isValid(this->streetAddress, storeFrontInterface) == Boolean::FALSE)
                         
                                     {
-                                    stringBuffer.append("Unable to validate address with Tax Component<br/>");
+                                    stringBuffer->append("Unable to validate address with Tax Component<br/>");
     
 
                                     }
@@ -258,13 +264,13 @@ public: AddTaxValidationView(TransformInfoInterface transformInfoInterface) : Sh
                         }
                             
 
-    ShippingAddressesEntity billingAddressesEntity = ShippingAddressesEntity(this->getWeblisketSession().getUserName());;
+    ShippingAddressesEntity* billingAddressesEntity = new ShippingAddressesEntity(this->getWeblisketSession()->getUserName());;
     
 
-    BasicArrayList streetAddressList = billingAddressesEntity.get();;
+    BasicArrayList* streetAddressList = billingAddressesEntity->get();;
     
 
-    int32_t size = streetAddressList.size();;
+    int32_t size = streetAddressList->size();;
     
 
 
@@ -274,13 +280,13 @@ public: AddTaxValidationView(TransformInfoInterface transformInfoInterface) : Sh
     int32_t index = 0;index < size; index++)
         {
 
-    StreetAddress aStreetAddress = streetAddressList.get(index);;
+    StreetAddress* aStreetAddress = dynamic_cast<StreetAddress*>(streetAddressList->get(index));;
     
 
-                        if(aStreetAddress.getName().compareTo(ShippingAddressData::TAX) == 0)
+                        if(aStreetAddress->getName().compareTo(ShippingAddressData::TAX) == 0)
                         
                                     {
-                                    stringBuffer.append("Not a valid tax location<br/>");
+                                    stringBuffer->append("Not a valid tax location<br/>");
     
 
                                     }
@@ -291,17 +297,17 @@ public: AddTaxValidationView(TransformInfoInterface transformInfoInterface) : Sh
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to create validateInfo", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to create validateInfo", this, "validationInfo()", &e);
     
 
                                     }
@@ -317,7 +323,7 @@ public: AddTaxValidationView(TransformInfoInterface transformInfoInterface) : Sh
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -327,7 +333,7 @@ public: AddTaxValidationView(TransformInfoInterface transformInfoInterface) : Sh
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

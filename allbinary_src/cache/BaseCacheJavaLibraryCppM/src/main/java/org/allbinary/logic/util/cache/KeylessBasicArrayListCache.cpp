@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -50,23 +56,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "IndexedBasicArrayListCache.h"
+        #include "org/allbinary/logic/util/cache/IndexedBasicArrayListCache.h"
 
 class KeylessBasicArrayListCache: public IndexedBasicArrayListCache {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
+    protected: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
 
 public: KeylessBasicArrayListCache(){
 }
 
 
-    public: BasicArrayList get(){
+    public: BasicArrayList* get(){
 
         try {
             
-                        if(this->index >= this->list.size())
+                        if(this->index >= this->list->size())
                         
                                     {
                                     this->addDefault();
@@ -75,7 +81,7 @@ public: KeylessBasicArrayListCache(){
                                     }
                                 
 
-    BasicArrayList list = this->getAt(this->index++);;
+    BasicArrayList* list = dynamic_cast<BasicArrayList*>(this->getAt(this->index++));;
     
 
 
@@ -85,15 +91,15 @@ public: KeylessBasicArrayListCache(){
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET, e);
+this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET, &e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->basicArrayListUtil.getImmutableInstance();;
+                        return this->basicArrayListUtil->getImmutableInstance();;
     
 }
 
@@ -104,18 +110,18 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET, 
 super.clear();
     
 
-    BasicArrayList basicArrayList;;
+    BasicArrayList* basicArrayList;;
     
 
 
 
 
                         for (
-    int32_t index = this->list.size() -1;index >= 0; index--)
+    int32_t index = this->list->size() -1;index >= 0; index--)
         {
-basicArrayList= (this->list.objectArray[index]);
+basicArrayList= (dynamic_cast<BasicArrayList*>(this->list->objectArray[index]));
     
-basicArrayList.clear();
+basicArrayList->clear();
     
 }
 
@@ -124,30 +130,30 @@ basicArrayList.clear();
 
     public: std::string log(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("S: ");
+stringBuffer->append("S: ");
     
-stringBuffer.appendint(this->list.size());
+stringBuffer->appendint(this->list->size());
     
 
     std::string S_LABEL = " s: ";;
     
 
-    BasicArrayList basicArrayList;;
+    BasicArrayList* basicArrayList;;
     
 
 
 
 
                         for (
-    int32_t index = this->list.size() -1;index >= 0; index--)
+    int32_t index = this->list->size() -1;index >= 0; index--)
         {
-stringBuffer.append(S_LABEL);
+stringBuffer->append(S_LABEL);
     
-basicArrayList= (this->list.objectArray[index]);
+basicArrayList= (dynamic_cast<BasicArrayList*>(this->list->objectArray[index]));
     
-stringBuffer.appendint(basicArrayList.size());
+stringBuffer->appendint(basicArrayList->size());
     
 }
 
@@ -155,7 +161,7 @@ stringBuffer.appendint(basicArrayList.size());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_CATEGORY_CATEGORYENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_CATEGORY_CATEGORYENTITY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -74,19 +80,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryEntityInterface.h"
+        #include "org/allbinary/data/tables/category/CategoryEntityInterface.h"
 
 class CategoryEntity: public AbSqlBean, public CategoryEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     protected: const std::string tableName = "categories";
 
-public: CategoryEntity(CategoryFactoryInterface categoryFactoryInterface);
+public: CategoryEntity(CategoryFactoryInterface* categoryFactoryInterface);
 
 public: CategoryEntity();
 
-    public: void insert(Category category);
+    public: void insert(Category* category);
 
     public: void delete_(std::string value);
 
@@ -94,7 +100,7 @@ public: CategoryEntity();
 
     public: std::string createTable();
 
-    public: void update(HashMap<Object*, Object*> updatedValues);
+    public: void update(HashMap<Object*, Object*>* updatedValues);
 
     public: std::string dropTable();
 

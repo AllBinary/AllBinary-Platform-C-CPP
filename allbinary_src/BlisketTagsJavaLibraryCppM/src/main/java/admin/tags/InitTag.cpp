@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <admin/taghelpers/InitHelperFactory.h>
 
       
@@ -39,14 +45,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TableTag.h"
+        #include "admin/tags/TableTag.h"
 
 class InitTag: public TableTag {
 
 public: InitTag(){
-this->setTagHelperFactory(InitHelperFactory());
+this->setTagHelperFactory(new InitHelperFactory());
     
-this->setTagRequestHelperFactory(InitHelperFactory());
+this->setTagRequestHelperFactory(new InitHelperFactory());
     
 }
 

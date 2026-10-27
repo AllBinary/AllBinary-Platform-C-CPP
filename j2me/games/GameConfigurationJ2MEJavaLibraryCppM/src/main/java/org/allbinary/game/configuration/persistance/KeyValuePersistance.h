@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayInputStream.h>
@@ -88,30 +96,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicPersitance.h"
-#include "NullRecordStore.h"
-#include "NullRecordFilter.h"
-#include "NullRecordComparator.h"
+        #include "org/allbinary/game/configuration/persistance/BasicPersitance.h"
+#include "org/allbinary/game/configuration/persistance/NullRecordStore.h"
+#include "org/allbinary/game/configuration/persistance/NullRecordFilter.h"
+#include "org/allbinary/game/configuration/persistance/NullRecordComparator.h"
 
 class KeyValuePersistance: public BasicPersitance {
 
-    private: const TsUtil tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil = TsUtil::getInstance();
 
 protected: KeyValuePersistance(std::string recordId);
 
                 //@Throws(Exception.constructor)
             
-    public: void loadAll(AbeClientInformationInterface abeClientInformation);
+    public: void loadAll(AbeClientInformationInterface* abeClientInformation);
 
                 //@Throws(Exception.constructor)
             
-    public: void loadAllSize(AbeClientInformationInterface abeClientInformation, int32_t size);
+    public: void loadAllSize(AbeClientInformationInterface* abeClientInformation, int32_t size);
 
                 //@Throws(Exception.constructor)
             
-    public: void save(AbeClientInformationInterface abeClientInformation, ABHashtable<Object*, Object*> hashtable);
+    public: void save(AbeClientInformationInterface* abeClientInformation, ABHashtable<Object*, Object*>* hashtable);
 
-    public: ABHashtable<Object*, Object*> get(int32_t index);
+    public: ABHashtable<Object*, Object*>* get(int32_t index);
 
 };
 

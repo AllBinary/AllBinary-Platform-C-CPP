@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -44,15 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicUserRoleFactory.h"
+        #include "org/allbinary/business/user/role/BasicUserRoleFactory.h"
 
 class AdminRoleFactory
             : public Object
          {
 
-    private: static AdminRoleFactory instance() { return AdminRoleFactory(); }
+    private: static AdminRoleFactory* instance() { static std::unique_ptr<AdminRoleFactory> value(new AdminRoleFactory()); return value.get(); }
 
-    public: static AdminRoleFactory getInstance(){
+    public: static AdminRoleFactory* getInstance(){
 
 
 
@@ -62,106 +68,106 @@ class AdminRoleFactory
 }
 
 
-    private: const BasicArrayList adminRoles = BasicArrayListD();
+    private: BasicArrayList* adminRoles = new BasicArrayListD();
 
-    private: const BasicArrayList storeAdminRoles = BasicArrayListD();
+    private: BasicArrayList* storeAdminRoles = new BasicArrayListD();
 
-    private: const BasicArrayList storeManagementRoles = BasicArrayListD();
+    private: BasicArrayList* storeManagementRoles = new BasicArrayListD();
 
-    private: const BasicArrayList productManagementRoles = BasicArrayListD();
+    private: BasicArrayList* productManagementRoles = new BasicArrayListD();
 
-    private: const BasicArrayList reviewManagementRoles = BasicArrayListD();
+    private: BasicArrayList* reviewManagementRoles = new BasicArrayListD();
 
-    private: const BasicArrayList customerManagementRoles = BasicArrayListD();
+    private: BasicArrayList* customerManagementRoles = new BasicArrayListD();
 
-    private: const BasicArrayList workflowManagementRoles = BasicArrayListD();
+    private: BasicArrayList* workflowManagementRoles = new BasicArrayListD();
 
-    private: const BasicArrayList orderManagementRoles = BasicArrayListD();
+    private: BasicArrayList* orderManagementRoles = new BasicArrayListD();
 
-    private: const BasicArrayList adjusterManagementRoles = BasicArrayListD();
+    private: BasicArrayList* adjusterManagementRoles = new BasicArrayListD();
 
-    private: const BasicArrayList shippingManagementRoles = BasicArrayListD();
+    private: BasicArrayList* shippingManagementRoles = new BasicArrayListD();
 
-    private: const BasicArrayList webManagementRoles = BasicArrayListD();
+    private: BasicArrayList* webManagementRoles = new BasicArrayListD();
 
 private: AdminRoleFactory(){
 
-    BasicUserRoleFactory basicUserRoleFactory = BasicUserRoleFactory::getInstance();;
+    BasicUserRoleFactory* basicUserRoleFactory = BasicUserRoleFactory::getInstance();;
     
-this->adminRoles.add(basicUserRoleFactory.ADMINISTRATOR);
+this->adminRoles->add(basicUserRoleFactory->ADMINISTRATOR);
     
-this->storeAdminRoles.add(basicUserRoleFactory.ADMINISTRATOR);
+this->storeAdminRoles->add(basicUserRoleFactory->ADMINISTRATOR);
     
-this->storeAdminRoles.add(basicUserRoleFactory.STOREMANAGER);
+this->storeAdminRoles->add(basicUserRoleFactory->STOREMANAGER);
     
-this->storeManagementRoles.add(basicUserRoleFactory.ADMINISTRATOR);
+this->storeManagementRoles->add(basicUserRoleFactory->ADMINISTRATOR);
     
-this->storeManagementRoles.add(basicUserRoleFactory.STOREMANAGER);
+this->storeManagementRoles->add(basicUserRoleFactory->STOREMANAGER);
     
-this->storeManagementRoles.add(basicUserRoleFactory.CUSTOMERMANAGER);
+this->storeManagementRoles->add(basicUserRoleFactory->CUSTOMERMANAGER);
     
-this->storeManagementRoles.add(basicUserRoleFactory.ADJUSTER);
+this->storeManagementRoles->add(basicUserRoleFactory->ADJUSTER);
     
-this->storeManagementRoles.add(basicUserRoleFactory.PRODUCTMANAGER);
+this->storeManagementRoles->add(basicUserRoleFactory->PRODUCTMANAGER);
     
-this->storeManagementRoles.add(basicUserRoleFactory.REVIEWER);
+this->storeManagementRoles->add(basicUserRoleFactory->REVIEWER);
     
-this->storeManagementRoles.add(basicUserRoleFactory.SHIPPING);
+this->storeManagementRoles->add(basicUserRoleFactory->SHIPPING);
     
-this->productManagementRoles.add(basicUserRoleFactory.ADMINISTRATOR);
+this->productManagementRoles->add(basicUserRoleFactory->ADMINISTRATOR);
     
-this->productManagementRoles.add(basicUserRoleFactory.STOREMANAGER);
+this->productManagementRoles->add(basicUserRoleFactory->STOREMANAGER);
     
-this->productManagementRoles.add(basicUserRoleFactory.PRODUCTMANAGER);
+this->productManagementRoles->add(basicUserRoleFactory->PRODUCTMANAGER);
     
-this->reviewManagementRoles.add(basicUserRoleFactory.ADMINISTRATOR);
+this->reviewManagementRoles->add(basicUserRoleFactory->ADMINISTRATOR);
     
-this->reviewManagementRoles.add(basicUserRoleFactory.STOREMANAGER);
+this->reviewManagementRoles->add(basicUserRoleFactory->STOREMANAGER);
     
-this->reviewManagementRoles.add(basicUserRoleFactory.REVIEWER);
+this->reviewManagementRoles->add(basicUserRoleFactory->REVIEWER);
     
-this->customerManagementRoles.add(basicUserRoleFactory.ADMINISTRATOR);
+this->customerManagementRoles->add(basicUserRoleFactory->ADMINISTRATOR);
     
-this->customerManagementRoles.add(basicUserRoleFactory.STOREMANAGER);
+this->customerManagementRoles->add(basicUserRoleFactory->STOREMANAGER);
     
-this->customerManagementRoles.add(basicUserRoleFactory.CUSTOMERMANAGER);
+this->customerManagementRoles->add(basicUserRoleFactory->CUSTOMERMANAGER);
     
-this->workflowManagementRoles.add(basicUserRoleFactory.ADMINISTRATOR);
+this->workflowManagementRoles->add(basicUserRoleFactory->ADMINISTRATOR);
     
-this->workflowManagementRoles.add(basicUserRoleFactory.STOREMANAGER);
+this->workflowManagementRoles->add(basicUserRoleFactory->STOREMANAGER);
     
-this->workflowManagementRoles.add(basicUserRoleFactory.WORKFLOWEDITOR);
+this->workflowManagementRoles->add(basicUserRoleFactory->WORKFLOWEDITOR);
     
-this->orderManagementRoles.add(basicUserRoleFactory.ADMINISTRATOR);
+this->orderManagementRoles->add(basicUserRoleFactory->ADMINISTRATOR);
     
-this->orderManagementRoles.add(basicUserRoleFactory.STOREMANAGER);
+this->orderManagementRoles->add(basicUserRoleFactory->STOREMANAGER);
     
-this->adjusterManagementRoles.add(basicUserRoleFactory.ADMINISTRATOR);
+this->adjusterManagementRoles->add(basicUserRoleFactory->ADMINISTRATOR);
     
-this->adjusterManagementRoles.add(basicUserRoleFactory.STOREMANAGER);
+this->adjusterManagementRoles->add(basicUserRoleFactory->STOREMANAGER);
     
-this->adjusterManagementRoles.add(basicUserRoleFactory.ADJUSTER);
+this->adjusterManagementRoles->add(basicUserRoleFactory->ADJUSTER);
     
-this->shippingManagementRoles.add(basicUserRoleFactory.ADMINISTRATOR);
+this->shippingManagementRoles->add(basicUserRoleFactory->ADMINISTRATOR);
     
-this->shippingManagementRoles.add(basicUserRoleFactory.STOREMANAGER);
+this->shippingManagementRoles->add(basicUserRoleFactory->STOREMANAGER);
     
-this->shippingManagementRoles.add(basicUserRoleFactory.SHIPPING);
+this->shippingManagementRoles->add(basicUserRoleFactory->SHIPPING);
     
-this->webManagementRoles.add(basicUserRoleFactory.ADMINISTRATOR);
+this->webManagementRoles->add(basicUserRoleFactory->ADMINISTRATOR);
     
-this->webManagementRoles.add(basicUserRoleFactory.STOREMANAGER);
+this->webManagementRoles->add(basicUserRoleFactory->STOREMANAGER);
     
-this->webManagementRoles.add(basicUserRoleFactory.WEBMANAGER);
+this->webManagementRoles->add(basicUserRoleFactory->WEBMANAGER);
     
-this->webManagementRoles.add(basicUserRoleFactory.WORKFLOWEDITOR);
+this->webManagementRoles->add(basicUserRoleFactory->WORKFLOWEDITOR);
     
-this->webManagementRoles.add(basicUserRoleFactory.VIEWEDITOR);
+this->webManagementRoles->add(basicUserRoleFactory->VIEWEDITOR);
     
 }
 
 
-    public: BasicArrayList getProductManagementRoles(){
+    public: BasicArrayList* getProductManagementRoles(){
 
 
 
@@ -171,7 +177,7 @@ this->webManagementRoles.add(basicUserRoleFactory.VIEWEDITOR);
 }
 
 
-    public: BasicArrayList getAdminRoles(){
+    public: BasicArrayList* getAdminRoles(){
 
 
 
@@ -181,7 +187,7 @@ this->webManagementRoles.add(basicUserRoleFactory.VIEWEDITOR);
 }
 
 
-    public: BasicArrayList getStoreAdminRoles(){
+    public: BasicArrayList* getStoreAdminRoles(){
 
 
 
@@ -191,7 +197,7 @@ this->webManagementRoles.add(basicUserRoleFactory.VIEWEDITOR);
 }
 
 
-    public: BasicArrayList getStoreManagementRoles(){
+    public: BasicArrayList* getStoreManagementRoles(){
 
 
 
@@ -201,7 +207,7 @@ this->webManagementRoles.add(basicUserRoleFactory.VIEWEDITOR);
 }
 
 
-    public: BasicArrayList getReviewManagementRoles(){
+    public: BasicArrayList* getReviewManagementRoles(){
 
 
 
@@ -211,7 +217,7 @@ this->webManagementRoles.add(basicUserRoleFactory.VIEWEDITOR);
 }
 
 
-    public: BasicArrayList getCustomerManagementRoles(){
+    public: BasicArrayList* getCustomerManagementRoles(){
 
 
 
@@ -221,7 +227,7 @@ this->webManagementRoles.add(basicUserRoleFactory.VIEWEDITOR);
 }
 
 
-    public: BasicArrayList getWorkflowManagementRoles(){
+    public: BasicArrayList* getWorkflowManagementRoles(){
 
 
 
@@ -231,7 +237,7 @@ this->webManagementRoles.add(basicUserRoleFactory.VIEWEDITOR);
 }
 
 
-    public: BasicArrayList getWebManagementRoles(){
+    public: BasicArrayList* getWebManagementRoles(){
 
 
 
@@ -241,7 +247,7 @@ this->webManagementRoles.add(basicUserRoleFactory.VIEWEDITOR);
 }
 
 
-    public: BasicArrayList getShippingManagementRoles(){
+    public: BasicArrayList* getShippingManagementRoles(){
 
 
 
@@ -251,7 +257,7 @@ this->webManagementRoles.add(basicUserRoleFactory.VIEWEDITOR);
 }
 
 
-    public: BasicArrayList getAdjusterManagementRoles(){
+    public: BasicArrayList* getAdjusterManagementRoles(){
 
 
 
@@ -261,7 +267,7 @@ this->webManagementRoles.add(basicUserRoleFactory.VIEWEDITOR);
 }
 
 
-    public: BasicArrayList getOrderManagementRoles(){
+    public: BasicArrayList* getOrderManagementRoles(){
 
 
 

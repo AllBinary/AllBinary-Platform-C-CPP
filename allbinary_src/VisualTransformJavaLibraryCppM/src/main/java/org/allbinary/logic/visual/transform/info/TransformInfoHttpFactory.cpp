@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,9 +70,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoHttpContext.h"
-#include "TransformInfoInterface.h"
-#include "TransformInfoHttpStore.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpContext.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfoHttpStore.h"
 
 class TransformInfoHttpFactory
             : public Object
@@ -74,21 +80,21 @@ class TransformInfoHttpFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static TransformInfoInterface getInstance(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
+    public: static TransformInfoInterface* getInstance(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
         try {
             
-    WeblisketSession weblisketSession = WeblisketSession(propertiesHashMap, pageContext);;
+    WeblisketSession* weblisketSession = new WeblisketSession(propertiesHashMap, pageContext);;
     
 
-                        if(!StringValidationUtil::getInstance().isEmpty(weblisketSession.getStoreName()))
+                        if(!StringValidationUtil::getInstance()->isEmpty(weblisketSession->getStoreName()))
                         
                                     {
                                     
-    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(weblisketSession.getStoreName());;
+    StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(weblisketSession->getStoreName());;
     
 
                         if(storeFrontInterface != 
@@ -100,7 +106,7 @@ class TransformInfoHttpFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoHttpStore(storeFrontInterface, propertiesHashMap, pageContext);
+                        return dynamic_cast<TransformInfoInterface*>(new TransformInfoHttpStore(storeFrontInterface, propertiesHashMap, pageContext));
     
 
                                     }
@@ -109,7 +115,7 @@ class TransformInfoHttpFactory
                             
 
 
-                            throw Exception("No StoreFront with: " +weblisketSession.getStoreName());
+                            throw new Exception("No StoreFront with: " +weblisketSession->getStoreName());
                     
 
                         }
@@ -122,23 +128,23 @@ class TransformInfoHttpFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoHttpContext(propertiesHashMap, pageContext);
+                        return dynamic_cast<TransformInfoInterface*>(new TransformInfoHttpContext(propertiesHashMap, pageContext));
     
 
                         }
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil.put(commonStrings.EXCEPTION, "TransformInfoFactory", commonStrings.GET_INSTANCE, e);
+logUtil->put(commonStrings->EXCEPTION, "TransformInfoFactory", commonStrings->GET_INSTANCE, &e);
     
 
                                     }

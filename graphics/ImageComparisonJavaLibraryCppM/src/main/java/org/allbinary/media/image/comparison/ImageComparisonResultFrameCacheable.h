@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONRESULTFRAMECACHEABLE_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONRESULTFRAMECACHEABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Long.h"
@@ -49,27 +55,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageComparisonResult.h"
+        #include "org/allbinary/media/image/comparison/ImageComparisonResult.h"
 
 class ImageComparisonResultFrameCacheable
             : public Object
-        : public CacheableInterface {
+        , public CacheableInterface {
 
-    private: Long frame;
+    private: int64_t frame;
 
-    private: ImageComparisonResult imageComparisonResult;
+    private: ImageComparisonResult* imageComparisonResult;
 
-public: ImageComparisonResultFrameCacheable(ImageComparisonResult imageComparisonResult, Long frame);
+public: ImageComparisonResultFrameCacheable(ImageComparisonResult* imageComparisonResult, int64_t frame);
 
     public: Object* getKey();
 
-    public: Long getFrame();
+    public: int64_t getFrame();
 
-    public: void setFrame(Long frame);
+    public: void setFrame(int64_t frame);
 
-    public: ImageComparisonResult getImageComparisonResult();
+    public: ImageComparisonResult* getImageComparisonResult();
 
-    public: void setImageComparisonResult(ImageComparisonResult imageComparisonResult);
+    public: void setImageComparisonResult(ImageComparisonResult* imageComparisonResult);
 
     public: std::string toString();
 

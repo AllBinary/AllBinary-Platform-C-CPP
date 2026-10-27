@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/System.h"
@@ -65,46 +71,46 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JDialog.h"
-#include "Frame.h"
-#include "JTextField.h"
-#include "JLabel.h"
-#include "JPanel.h"
-#include "JButton.h"
-#include "ActionListener.h"
-#include "ActionEvent.h"
-#include "GroupLayout.h"
-#include "Short.h"
-#include "EventQueue.h"
-#include "JFrame.h"
-#include "WindowAdapter.h"
-#include "WindowEvent.h"
+        #include "org/allbinary/graphics/j2me/dialog/JDialog.h"
+#include "org/allbinary/graphics/j2me/dialog/Frame.h"
+#include "org/allbinary/graphics/j2me/dialog/JTextField.h"
+#include "org/allbinary/graphics/j2me/dialog/JLabel.h"
+#include "org/allbinary/graphics/j2me/dialog/JPanel.h"
+#include "org/allbinary/graphics/j2me/dialog/JButton.h"
+#include "org/allbinary/graphics/j2me/dialog/ActionListener.h"
+#include "org/allbinary/graphics/j2me/dialog/ActionEvent.h"
+#include "org/allbinary/graphics/j2me/dialog/GroupLayout.h"
+#include "org/allbinary/graphics/j2me/dialog/Short.h"
+#include "org/allbinary/graphics/j2me/dialog/EventQueue.h"
+#include "org/allbinary/graphics/j2me/dialog/JFrame.h"
+#include "org/allbinary/graphics/j2me/dialog/WindowAdapter.h"
+#include "org/allbinary/graphics/j2me/dialog/WindowEvent.h"
 
 class RotateJDialog: public javax::swing::JDialog {
 
     public: static void main(std::vector<std::string> args);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();
+    private: HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();
 
-public: RotateJDialog(java::awt::Frame parent, bool modal);
+public: RotateJDialog(java::awt::Frame* parent, bool modal);
 
     private: void initComponents();
 
-    private: void jButton1ActionPerformed(java::awt::event::ActionEvent evt);
+    private: void jButton1ActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: javax::swing::JTextField angleIncrementJTextField;
+    private: javax::swing::JTextField* angleIncrementJTextField;
 
-    private: javax::swing::JButton jButton1;
+    private: javax::swing::JButton* jButton1;
 
-    private: javax::swing::JLabel jLabel1;
+    private: javax::swing::JLabel* jLabel1;
 
-    private: javax::swing::JLabel jLabel2;
+    private: javax::swing::JLabel* jLabel2;
 
-    private: javax::swing::JPanel jPanel1;
+    private: javax::swing::JPanel* jPanel1;
 
-    private: javax::swing::JTextField totalRotationJTextField;
+    private: javax::swing::JTextField* totalRotationJTextField;
 
 };
 

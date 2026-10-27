@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_DOWNKEYEVENTLISTENERINTERFACE_H
         #define ORG_ALLBINARY_GAME_INPUT_EVENT_DOWNKEYEVENTLISTENERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -46,17 +52,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameKeyEvent.h"
+        #include "org/allbinary/game/input/event/GameKeyEvent.h"
 
 class DownKeyEventListenerInterface: public EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    void onDownKeyEvent(GameKeyEvent keyInteger);
+    public: virtual void onDownKeyEvent(GameKeyEvent* keyInteger) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void onDownKey(Integer keyInteger);
+    public: virtual void onDownKey(int32_t keyInteger) = 0;
 
 };
 

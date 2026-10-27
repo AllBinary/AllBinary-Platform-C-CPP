@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Image.h>
 
       
@@ -45,17 +51,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLImageFactory.h"
-#include "OpenGLESGL10Image.h"
+        #include "org/allbinary/image/opengles/OpenGLImageFactory.h"
+#include "org/allbinary/image/opengles/OpenGLESGL10Image.h"
 
 class OpenGLESGL11VBOImageFactory: public OpenGLImageFactory {
 
-    public: Image getInstance(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory){
+    public: Image* getInstance(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLESGL10Image(image, bitmapFactory, textureFactory);
+                        return new OpenGLESGL10Image(image, bitmapFactory, textureFactory);
     
 }
 

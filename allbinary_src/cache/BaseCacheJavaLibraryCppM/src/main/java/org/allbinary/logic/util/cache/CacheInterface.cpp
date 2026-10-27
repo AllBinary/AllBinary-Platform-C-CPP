@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -46,21 +52,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CacheableInterface.h"
+        #include "org/allbinary/logic/util/cache/CacheableInterface.h"
 
 class CacheInterface {
 
                 //@Throws(Exception.constructor)
             
-    void add(CacheableInterface cacheableInterface)
+    public: virtual void add(CacheableInterface* cacheableInterface) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void addArray(std::vector<CacheableInterface> cacheableInterfaces)
+    public: virtual void addArray(std::vector<CacheableInterface*> cacheableInterfaces) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void clear()
+    public: virtual void clear() = 0;
 
 };
 

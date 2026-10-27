@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_CURRENTLYPRESSEDTOUCHBUTTONSINGLETON_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_CURRENTLYPRESSEDTOUCHBUTTONSINGLETON_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -47,31 +53,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchButtonInput.h"
+        #include "org/allbinary/input/motion/button/TouchButtonInput.h"
 
 class CurrentlyPressedTouchButtonSingleton
             : public Object
          {
 
-    private: static CurrentlyPressedTouchButtonSingleton instance() { return CurrentlyPressedTouchButtonSingleton(); }
+    private: static CurrentlyPressedTouchButtonSingleton* instance() { static std::unique_ptr<CurrentlyPressedTouchButtonSingleton> value(new CurrentlyPressedTouchButtonSingleton()); return value.get(); }
 
-    public: static CurrentlyPressedTouchButtonSingleton getInstance();
+    public: static CurrentlyPressedTouchButtonSingleton* getInstance();
 
-    protected: const BasicArrayList list = BasicArrayListD();
+    protected: BasicArrayList* list = new BasicArrayListD();
 
 protected: CurrentlyPressedTouchButtonSingleton();
 
     public: int32_t size();
 
-    public: TouchButtonInput removeAt(int32_t index);
+    public: TouchButtonInput* removeAt(int32_t index);
 
-    public: bool remove(TouchButtonInput touchButtonInput);
+    public: bool remove(TouchButtonInput* touchButtonInput);
 
-    public: TouchButtonInput get(int32_t index);
+    public: TouchButtonInput* get(int32_t index);
 
-    public: bool contains(TouchButtonInput touchButtonInput);
+    public: bool contains(TouchButtonInput* touchButtonInput);
 
-    public: void add(TouchButtonInput touchButtonInput);
+    public: void add(TouchButtonInput* touchButtonInput);
 
 };
 

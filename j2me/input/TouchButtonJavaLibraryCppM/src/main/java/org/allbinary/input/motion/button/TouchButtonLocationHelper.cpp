@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Math.h"
@@ -46,7 +52,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CommonButtons.h"
+        #include "org/allbinary/input/motion/button/CommonButtons.h"
 
 class TouchButtonLocationHelper
             : public Object
@@ -66,20 +72,20 @@ class TouchButtonLocationHelper
 
 public: TouchButtonLocationHelper(){
 
-    int32_t buttonSize = CommonButtons::getInstance().STANDARD_BUTTON_SIZE;;
+    int32_t buttonSize = CommonButtons::getInstance()->STANDARD_BUTTON_SIZE;;
     
 
-    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
+    DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
-this->totalColumns= Math::round(displayInfo.getLastWidth() /buttonSize);
+this->totalColumns= Math::round(displayInfo->getLastWidth() /buttonSize);
     
-this->totalRows= Math::round(displayInfo.getLastHeight() /buttonSize);
+this->totalRows= Math::round(displayInfo->getLastHeight() /buttonSize);
     
-this->columnsRemainder= displayInfo.getLastWidth() % buttonSize;
+this->columnsRemainder= displayInfo->getLastWidth() % buttonSize;
     
 this->columnsRemainderHalf= (this->columnsRemainder>>1);
     
-this->rowsRemainder= displayInfo.getLastHeight() % buttonSize;
+this->rowsRemainder= displayInfo->getLastHeight() % buttonSize;
     
 this->rowsRemainderHalf= (this->rowsRemainder>>1);
     
@@ -148,37 +154,37 @@ this->rowsRemainderHalf= (this->rowsRemainder>>1);
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("totalColumns: ");
+stringBuffer->append("totalColumns: ");
     
-stringBuffer.appendint(this->totalColumns);
+stringBuffer->appendint(this->totalColumns);
     
-stringBuffer.append(" totalRows: ");
+stringBuffer->append(" totalRows: ");
     
-stringBuffer.appendint(this->totalRows);
+stringBuffer->appendint(this->totalRows);
     
-stringBuffer.append(" columnsRemainder: ");
+stringBuffer->append(" columnsRemainder: ");
     
-stringBuffer.appendint(this->columnsRemainder);
+stringBuffer->appendint(this->columnsRemainder);
     
-stringBuffer.append(" rowsRemainder: ");
+stringBuffer->append(" rowsRemainder: ");
     
-stringBuffer.appendint(this->rowsRemainder);
+stringBuffer->appendint(this->rowsRemainder);
     
-stringBuffer.append(" columnsRemainderHalf: ");
+stringBuffer->append(" columnsRemainderHalf: ");
     
-stringBuffer.appendint(this->columnsRemainderHalf);
+stringBuffer->appendint(this->columnsRemainderHalf);
     
-stringBuffer.append(" rowsRemainderHalf: ");
+stringBuffer->append(" rowsRemainderHalf: ");
     
-stringBuffer.appendint(this->rowsRemainderHalf);
+stringBuffer->appendint(this->rowsRemainderHalf);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

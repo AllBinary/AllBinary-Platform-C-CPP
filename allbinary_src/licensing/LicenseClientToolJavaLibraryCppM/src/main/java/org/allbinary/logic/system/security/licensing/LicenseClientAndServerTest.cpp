@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -72,11 +78,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicArrayListD.h"
-#include "PrintLicenseInitInfo.h"
-#include "AbeClientInformationInterfaceFactory.h"
-#include "AbeClientInformationInterface.h"
-#include "AbeLicenseInterface.h"
+        #include "org/allbinary/logic/system/security/licensing/BasicArrayListD.h"
+#include "org/allbinary/logic/system/security/licensing/PrintLicenseInitInfo.h"
+#include "org/allbinary/logic/system/security/licensing/AbeClientInformationInterfaceFactory.h"
+#include "org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h"
+#include "org/allbinary/logic/system/security/licensing/AbeLicenseInterface.h"
 
 class LicenseClientAndServerTest
             : public Object
@@ -86,30 +92,30 @@ class LicenseClientAndServerTest
 
         try {
             
-    LicenseClientAndServerTest licensingTest = LicenseClientAndServerTest(args);;
+    LicenseClientAndServerTest* licensingTest = new LicenseClientAndServerTest(args);;
     
-licensingTest.test();
+licensingTest->test();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
-this->logUtil.put(this->commonStrings.EXCEPTION, "main()", "main()", e);
+this->logUtil->put(this->commonStrings.EXCEPTION, "main()", "main()", &e);
     
 }
 
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: BasicArrayList vector = BasicArrayListD();
+    private: BasicArrayList* vector = new BasicArrayListD();
 
 public: LicenseClientAndServerTest(std::vector<std::string> options){
-LicenseInitInfoUtil::getInstance().setFilePath(PrintLicenseInitInfo::PATH +PATH_GLOBALS::getInstance().INIT_PATH);
+LicenseInitInfoUtil::getInstance()->setFilePath(PrintLicenseInitInfo::PATH +PATH_GLOBALS::getInstance()->INIT_PATH);
     
 
 
@@ -118,7 +124,7 @@ LicenseInitInfoUtil::getInstance().setFilePath(PrintLicenseInitInfo::PATH +PATH_
                         for (
     int32_t index = 1;index < options.size(); index++)
         {
-this->vector.add(options[index]);
+this->vector->add(options[index]);
     
 }
 
@@ -127,25 +133,25 @@ this->vector.add(options[index]);
                         
                                     {
                                     
-    File file = File(PrintLicenseInitInfo::PATH +"testlicenseservers.txt");;
+    File* file = new File(PrintLicenseInitInfo::PATH +"testlicenseservers.txt");;
     
 
-    FileReader reader = FileReader(file);;
+    FileReader* reader = new FileReader(file);;
     
 
-    LineNumberReader lineNumberReader = LineNumberReader(reader);;
+    LineNumberReader* lineNumberReader = new LineNumberReader(reader);;
     
 
         while(true)
         {
 
-    std::string line = lineNumberReader.readLine();;
+    std::string line = lineNumberReader->readLine();;
     
 
                         if(true)
                         
                                     {
-                                    this->vector.add(line);
+                                    this->vector->add(line);
     
 
                                     }
@@ -168,12 +174,12 @@ this->vector.add(options[index]);
 
     public: void test(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
         try {
             
-    BasicArrayList list = BasicArrayListD();;
+    BasicArrayList* list = new BasicArrayListD();;
     
 
     std::string TESTING = "Testing with new licence:<br/>";;
@@ -188,7 +194,7 @@ this->vector.add(options[index]);
     std::string RESULT = "Test Result: ";;
     
 
-    int32_t size = this->vector.size();;
+    int32_t size = this->vector->size();;
     
 
 
@@ -197,29 +203,29 @@ this->vector.add(options[index]);
                         for (
     int32_t index = 0;index < size; index++)
         {
-stringBuffer.append(TESTING);
+stringBuffer->append(TESTING);
     
 
-    std::string serverName = this->vector.get(index);;
+    std::string serverName = this->vector->get(index);;
     
 
         try {
             
-    LicenseInitInfo licenseInitInfo = LicenseInitInfo();;
+    LicenseInitInfo* licenseInitInfo = new LicenseInitInfo();;
     
-licenseInitInfo.addServer(serverName);
+licenseInitInfo->addServer(serverName);
     
-LicenseInitInfoUtil::getInstance().write(licenseInitInfo);
-    
-
-    AbeClientInformationInterface abeClientInformation = AbeClientInformationInterfaceFactory::getInstance();;
+LicenseInitInfoUtil::getInstance()->write(licenseInitInfo);
     
 
-    XmlRpcAbeLicenseRetrievalClient xmlRpcAbeLicenseClient = XmlRpcAbeLicenseRetrievalClient(abeClientInformation);;
+    AbeClientInformationInterface* abeClientInformation = AbeClientInformationInterfaceFactory::getInstance();;
     
 
-    AbeLicenseInterface abeLicenseInterface = xmlRpcAbeLicenseClient.get(
-                            nullptr);;
+    XmlRpcAbeLicenseRetrievalClient* xmlRpcAbeLicenseClient = new XmlRpcAbeLicenseRetrievalClient(abeClientInformation);;
+    
+
+    AbeLicenseInterface* abeLicenseInterface = dynamic_cast<AbeLicenseInterface*>(xmlRpcAbeLicenseClient->get(
+                            nullptr));;
     
 
                         if(abeLicenseInterface != 
@@ -227,38 +233,38 @@ LicenseInitInfoUtil::getInstance().write(licenseInitInfo);
                                 )
                         
                                     {
-                                    stringBuffer.append(PROCESSING);
+                                    stringBuffer->append(PROCESSING);
     
-stringBuffer.append(abeLicenseInterface.toString());
+stringBuffer->append(abeLicenseInterface->toString());
     
 
                                     }
                                 
-stringBuffer.append(END);
+stringBuffer->append(END);
     
-this->logUtil.putF(RESULT +stringBuffer.toString(), this, "test");
+this->logUtil->putF(RESULT +stringBuffer->toString(), this, "test");
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-list.add(serverName);
+list->add(serverName);
     
-this->logUtil.put("Test Error: " +stringBuffer.toString(), this, "test", e);
+this->logUtil->put("Test Error: " +stringBuffer->toString(), this, "test", &e);
     
 }
 
 }
 
-this->logUtil.putF("Total Servers Failed: " +list.size() +" Failed Servers: " +list.toString(), this, "test");
+this->logUtil->putF("Total Servers Failed: " +list->size() +" Failed Servers: " +list->toString(), this, "test");
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put("Test Error: " +stringBuffer.toString(), this, "test", e);
+this->logUtil->put("Test Error: " +stringBuffer->toString(), this, "test", &e);
     
 }
 

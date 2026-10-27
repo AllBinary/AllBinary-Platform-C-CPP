@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_BASKETREQUESTHELPER_H
         #define ADMIN_TAGHELPERS_BASKETREQUESTHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -80,23 +86,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TagHelper.h"
+        #include "admin/taghelpers/TagHelper.h"
 
 class BasketRequestHelper: public TagHelper {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
-    private: WeblisketSession weblisketSession;
+    private: WeblisketSession* weblisketSession;
 
-    private: const StoreFrontInterface storeFrontInterface;
+    private: StoreFrontInterface* storeFrontInterface;
 
-    private: HashMap<Object*, Object*> propertiesHashMap;
+    private: HashMap<Object*, Object*>* propertiesHashMap;
 
-    private: PageContext pageContext;
+    private: PageContext* pageContext;
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
     private: std::string id;
 
@@ -104,15 +110,15 @@ class BasketRequestHelper: public TagHelper {
 
     private: const int32_t MAX = 200;
 
-public: BasketRequestHelper(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
+public: BasketRequestHelper(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext);
 
     private: void getFormData();
 
-    public: Boolean addItemToBasket();
+    public: bool addItemToBasket();
 
-    public: Boolean removeItemFromBasket();
+    public: bool removeItemFromBasket();
 
-    public: Boolean adjustBasket();
+    public: bool adjustBasket();
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,14 +42,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameInputProcessor.h"
-#include "SelectedRTSLayersPlayerGameInput.h"
+        #include "org/allbinary/game/input/GameInputProcessor.h"
+#include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h"
 
 class SelectedRTSLayersPlayerGameInputProcessor: public GameInputProcessor {
 
-    protected: SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput;
+    protected: SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput;
 
-public: SelectedRTSLayersPlayerGameInputProcessor(SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput){
+public: SelectedRTSLayersPlayerGameInputProcessor(SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput){
 this->selectedRTSLayersPlayerGameInput= selectedRTSLayersPlayerGameInput;
     
 }

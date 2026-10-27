@@ -21,6 +21,12 @@
         #ifndef VIEWS_GENERIC_ORDER_ORDERVIEW_H
         #define VIEWS_GENERIC_ORDER_ORDERVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -80,23 +86,23 @@
         
 class OrderView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
-    protected: Order order;
+    protected: Order* order;
 
-    protected: OrderHistory orderHistory;
+    protected: OrderHistory* orderHistory;
 
-    protected: BasketReview basketReview;
+    protected: BasketReview* basketReview;
 
-public: OrderView(TransformInfoInterface transformInfoInterface);
+public: OrderView(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
     private: void getFormData();
 
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
     public: void addDomNodeInterfaces();
 

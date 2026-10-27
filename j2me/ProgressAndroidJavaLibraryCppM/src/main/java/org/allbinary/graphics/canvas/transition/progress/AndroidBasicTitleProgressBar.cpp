@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/IllegalArgumentException.h"
@@ -125,17 +131,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProgressCanvas.h"
-#include "ShowTitleProgressBarRunnable.h"
-#include "DismissTitleProgressBarRunnable.h"
-#include "TitleProgressBarSetProgressRunnable.h"
-#include "TitleProgressBarPortionSetProgressRunnable.h"
+        #include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
+#include "org/allbinary/graphics/canvas/transition/progress/ShowTitleProgressBarRunnable.h"
+#include "org/allbinary/graphics/canvas/transition/progress/DismissTitleProgressBarRunnable.h"
+#include "org/allbinary/graphics/canvas/transition/progress/TitleProgressBarSetProgressRunnable.h"
+#include "org/allbinary/graphics/canvas/transition/progress/TitleProgressBarPortionSetProgressRunnable.h"
 
 class AndroidBasicTitleProgressBar: public ProgressCanvas, public DisplayChangeEventListener {
 
-    public: static const std::string RESOURCE = "ProgressImage";
+    public: static inline const std::string RESOURCE = "ProgressImage";
 
-    private: static int32_t background= 0;
+    private: static inline int32_t background= 0;
 
     public: static void setBackgroundResource(int32_t background){
 AndroidBasicTitleProgressBar::background= background;
@@ -143,25 +149,25 @@ AndroidBasicTitleProgressBar::background= background;
 }
 
 
-    private: ARunnable showTitleProgressBarRunnable = NullRunnable::getInstance();
+    private: ARunnable* showTitleProgressBarRunnable = NullRunnable::getInstance();
 
-    private: ARunnable dismissTitleProgressBarRunnable = NullRunnable::getInstance();
+    private: ARunnable* dismissTitleProgressBarRunnable = NullRunnable::getInstance();
 
-    private: ARunnable titleProgressDialogPortionSetProgressRunnable = NullRunnable::getInstance();
+    private: ARunnable* titleProgressDialogPortionSetProgressRunnable = NullRunnable::getInstance();
 
-    private: ARunnable titleProgressDialogSetProgressRunnable = NullRunnable::getInstance();
+    private: ARunnable* titleProgressDialogSetProgressRunnable = NullRunnable::getInstance();
 
-    private: Activity midletActivity = AndroidUtil::NULL_ACTIVITY;
+    private: Activity* midletActivity = AndroidUtil::NULL_ACTIVITY;
 
     private: int32_t portion = 0;
 
-    private: const std::vector<Image> IMAGE = std::vector<Image>(4);
+    private: const std::vector<Image*> IMAGE = std::vector<Image*>(4);
 
-    private: Image image = NullImage::NULL_IMAGE;
+    private: Image* image = NullImage::NULL_IMAGE;
 
-    private: Animation animation = NullAnimationFactory::getFactoryInstance().getInstance(0);
+    private: Animation* animation = NullAnimationFactory::getFactoryInstance()->getInstance(0);
 
-: AndroidBasicTitleProgressBar(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : ProgressCanvas(title, backgroundBasicColor, foregroundBasicColor){
+: AndroidBasicTitleProgressBar(std::string title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ProgressCanvas(title, backgroundBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -170,7 +176,7 @@ AndroidBasicTitleProgressBar::background= background;
                     
 this->init();
     
-DisplayChangeEventHandler::getInstance().addListenerInterface(this);
+DisplayChangeEventHandler::getInstance()->addListenerInterface(this);
     
 
     int32_t size = this->IMAGE.size();;
@@ -196,27 +202,27 @@ this->IMAGE[index]= NullImage::NULL_IMAGE;
                         if(AndroidBasicTitleProgressBar::background != 0)
                         
                                     {
-                                    ResourceUtil::getInstance().addResource(AndroidBasicTitleProgressBar::RESOURCE, Integer(AndroidBasicTitleProgressBar::background));
+                                    ResourceUtil::getInstance()->addResource(AndroidBasicTitleProgressBar::RESOURCE, int32_t(AndroidBasicTitleProgressBar::background));
     
 GameFeatureImageCacheFactory::init();
     
-this->image= ImageCacheFactory::getInstance().getWithKey(AndroidBasicTitleProgressBar::RESOURCE);
+this->image= ImageCacheFactory::getInstance()->getWithKey(AndroidBasicTitleProgressBar::RESOURCE);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT, &e);
     
 }
 
 }
 
 
-    public: void initActivity(Activity activity){
+    public: void initActivity(Activity* activity){
 
         try {
             
@@ -225,13 +231,13 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT,
                                     {
                                     this->midletActivity= activity;
     
-this->showTitleProgressBarRunnable= ShowTitleProgressBarRunnable(this->midletActivity, this);
+this->showTitleProgressBarRunnable= new ShowTitleProgressBarRunnable(this->midletActivity, this);
     
-this->dismissTitleProgressBarRunnable= DismissTitleProgressBarRunnable(this->midletActivity, this);
+this->dismissTitleProgressBarRunnable= new DismissTitleProgressBarRunnable(this->midletActivity, this);
     
-this->titleProgressDialogSetProgressRunnable= TitleProgressBarSetProgressRunnable(this->midletActivity, this);
+this->titleProgressDialogSetProgressRunnable= new TitleProgressBarSetProgressRunnable(this->midletActivity, this);
     
-this->titleProgressDialogPortionSetProgressRunnable= TitleProgressBarPortionSetProgressRunnable(this->midletActivity, this);
+this->titleProgressDialogPortionSetProgressRunnable= new TitleProgressBarPortionSetProgressRunnable(this->midletActivity, this);
     
 this->loadProgressImages();
     
@@ -242,9 +248,9 @@ this->updateCurrent();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT, &e);
     
 }
 
@@ -258,7 +264,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT,
                         if(!this->isBackground())
                         
                                     {
-                                    this->animation= NullAnimationFactory::getFactoryInstance().getInstance(0);
+                                    this->animation= NullAnimationFactory::getFactoryInstance()->getInstance(0);
     
 
                                     }
@@ -268,13 +274,13 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT,
                         
                                     {
                                     
-    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
+    DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-    Image currentImage;;
+    Image* currentImage;;
     
 
-                        if(displayInfo.isPortrait())
+                        if(displayInfo->isPortrait())
                         
                                     {
                                     currentImage= this->getImage(0);
@@ -294,13 +300,13 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT,
                                 )
                         
                                     {
-                                    this->animation= NullAnimationFactory::getFactoryInstance().getInstance(0);
+                                    this->animation= NullAnimationFactory::getFactoryInstance()->getInstance(0);
     
 
                                     }
                                 
                         else {
-                            this->animation= ImageAnimation(currentImage, AnimationBehavior::getInstance());
+                            this->animation= new ImageAnimation(currentImage, AnimationBehavior::getInstance());
     
 
                         }
@@ -310,22 +316,22 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT,
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.UPDATE, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.UPDATE, &e);
     
 }
 
 }
 
 
-    public: void onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject* eventObject){
+ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public: void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent){
+    public: void onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent){
 
         try {
             this->loadProgressImages();
@@ -334,11 +340,11 @@ this->updateCurrent();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.putF(this->commonStrings.EXCEPTION_LABEL +ExceptionUtil::getInstance().getStackTrace(e), this, this->canvasStrings.ON_DISPLAY_CHANGE_EVENT);
+this->logUtil.putF(this->commonStrings.EXCEPTION_LABEL +ExceptionUtil::getInstance()->getStackTrace(&e), this, this->canvasStrings.ON_DISPLAY_CHANGE_EVENT);
     
-this->animation= NullAnimationFactory::getFactoryInstance().getInstance(0);
+this->animation= NullAnimationFactory::getFactoryInstance()->getInstance(0);
     
 }
 
@@ -349,16 +355,16 @@ this->animation= NullAnimationFactory::getFactoryInstance().getInstance(0);
 
         try {
             
-    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
+    DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-    int32_t lastWidth = displayInfo.getLastWidth();;
+    int32_t lastWidth = displayInfo->getLastWidth();;
     
 
-    int32_t lastHeight = displayInfo.getLastHeight();;
+    int32_t lastHeight = displayInfo->getLastHeight();;
     
 
-                        if(displayInfo.isPortraitWH(lastWidth, lastHeight))
+                        if(displayInfo->isPortraitWH(lastWidth, lastHeight))
                         
                                     {
                                     this->setImages(0, lastWidth, lastHeight);
@@ -374,23 +380,23 @@ this->animation= NullAnimationFactory::getFactoryInstance().getInstance(0);
                             
 
                 //: 
-} catch(e) 
+} catch(IllegalArgumentException& e) 
             {
-this->logUtil.putF("IllegalArgumentException " +ExceptionUtil::getInstance().getStackTrace(e), this, "loadProgressImages");
+this->logUtil.putF("IllegalArgumentException " +ExceptionUtil::getInstance()->getStackTrace(&e), this, "loadProgressImages");
     
-this->animation= NullAnimationFactory::getFactoryInstance().getInstance(0);
+this->animation= NullAnimationFactory::getFactoryInstance()->getInstance(0);
     
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-this->logUtil.putF(this->commonStrings.EXCEPTION_LABEL +ExceptionUtil::getInstance().getStackTrace(e), this, "loadProgressImages");
+this->logUtil.putF(this->commonStrings.EXCEPTION_LABEL +ExceptionUtil::getInstance()->getStackTrace(&e), this, "loadProgressImages");
     
-this->animation= NullAnimationFactory::getFactoryInstance().getInstance(0);
+this->animation= NullAnimationFactory::getFactoryInstance()->getInstance(0);
     
 }
-*/
+
 }
 
 
@@ -428,13 +434,13 @@ this->animation= NullAnimationFactory::getFactoryInstance().getInstance(0);
     
 super.start();
     
-this->midletActivity.runOnUiThread(this->showTitleProgressBarRunnable);
+this->midletActivity->runOnUiThread(this->showTitleProgressBarRunnable);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.START_METHOD_NAME, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.START_METHOD_NAME, &e);
     
 }
 
@@ -446,15 +452,15 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.START
         try {
             this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.END_METHOD_NAME);
     
-this->midletActivity.runOnUiThread(this->dismissTitleProgressBarRunnable);
+this->midletActivity->runOnUiThread(this->dismissTitleProgressBarRunnable);
     
 super.end();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.END_METHOD_NAME, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.END_METHOD_NAME, &e);
     
 }
 
@@ -472,16 +478,16 @@ super.addEarlyPortion(value, text, index);
                         if(this->midletActivity != AndroidUtil::NULL_ACTIVITY)
                         
                                     {
-                                    this->midletActivity.runOnUiThread(this->titleProgressDialogPortionSetProgressRunnable);
+                                    this->midletActivity->runOnUiThread(this->titleProgressDialogPortionSetProgressRunnable);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->ADD_PORTION, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->ADD_PORTION, &e);
     
 }
 
@@ -495,13 +501,13 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->ADD_PORTION, e);
     
 super.addPortion(value, text, index);
     
-this->midletActivity.runOnUiThread(this->titleProgressDialogPortionSetProgressRunnable);
+this->midletActivity->runOnUiThread(this->titleProgressDialogPortionSetProgressRunnable);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->ADD_PORTION, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->ADD_PORTION, &e);
     
 }
 
@@ -515,13 +521,13 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->ADD_PORTION, e);
     
 super.addNormalPortion(value, text);
     
-this->midletActivity.runOnUiThread(this->titleProgressDialogPortionSetProgressRunnable);
+this->midletActivity->runOnUiThread(this->titleProgressDialogPortionSetProgressRunnable);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->ADD_PORTION, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->ADD_PORTION, &e);
     
 }
 
@@ -533,13 +539,13 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->ADD_PORTION, e);
         try {
             super.setValue(value);
     
-this->midletActivity.runOnUiThread(this->titleProgressDialogSetProgressRunnable);
+this->midletActivity->runOnUiThread(this->titleProgressDialogSetProgressRunnable);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "setValue", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "setValue", &e);
     
 }
 
@@ -554,21 +560,21 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "setValue", e);
             
     private: void setImages(int32_t index, int32_t lastWidth, int32_t lastHeight){
 
-    Image image = this->image;;
+    Image* image = this->image;;
     
 
                         if(image != NullImage::NULL_IMAGE)
                         
                                     {
                                     
-                        if(Features::getInstance().isFeature(MainFeatureFactory::getInstance().FULL_SCREEN))
+                        if(Features::getInstance()->isFeature(MainFeatureFactory::getInstance()->FULL_SCREEN))
                         
                                     {
                                     
                         if(this->IMAGE[index] == NullImage::NULL_IMAGE)
                         
                                     {
-                                    this->IMAGE[index]= ImageScaleUtil::getInstance().createImage2(ImageCacheFactory::getInstance(), image, lastWidth, image.getWidth(), lastHeight -20, image.getHeight(), false);
+                                    this->IMAGE[index]= ImageScaleUtil::getInstance()->createImage2(ImageCacheFactory::getInstance(), image, lastWidth, image->getWidth(), lastHeight -20, image->getHeight(), false);
     
 
                                     }
@@ -584,7 +590,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "setValue", e);
                         if(this->IMAGE[nextIndex] == NullImage::NULL_IMAGE)
                         
                                     {
-                                    this->IMAGE[nextIndex]= ImageScaleUtil::getInstance().createImage2(ImageCacheFactory::getInstance(), image, lastWidth, image.getWidth(), lastHeight -28, image.getHeight(), false);
+                                    this->IMAGE[nextIndex]= ImageScaleUtil::getInstance()->createImage2(ImageCacheFactory::getInstance(), image, lastWidth, image->getWidth(), lastHeight -28, image->getHeight(), false);
     
 
                                     }
@@ -600,13 +606,13 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "setValue", e);
 
                 //@Throws(Exception.constructor)
             
-    public: void initOpenGL(Graphics graphics){
+    public: void initOpenGL(Graphics* graphics){
 this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.INIT);
     
-this->image= GameFeatureImageCacheFactory::getInstance().getWithKey(AndroidBasicTitleProgressBar::RESOURCE);
+this->image= GameFeatureImageCacheFactory::getInstance()->getWithKey(AndroidBasicTitleProgressBar::RESOURCE);
     
 
-    PreResourceImageUtil preResourceImageUtil = PreResourceImageUtil::getInstance();;
+    PreResourceImageUtil* preResourceImageUtil = PreResourceImageUtil::getInstance();;
     
 
     int32_t size = this->IMAGE.size();;
@@ -622,7 +628,7 @@ this->image= GameFeatureImageCacheFactory::getInstance().getWithKey(AndroidBasic
                         if(this->IMAGE[index] != NullImage::NULL_IMAGE)
                         
                                     {
-                                    this->IMAGE[index]= preResourceImageUtil.encapsulate(this->IMAGE[index]);
+                                    this->IMAGE[index]= preResourceImageUtil->encapsulate(this->IMAGE[index]);
     
 
                                     }
@@ -636,15 +642,15 @@ this->updateCurrent();
 
                 //@Throws(Exception.constructor)
             
-    public: void update(Graphics graphics){
+    public: void update(Graphics* graphics){
 this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.UPDATE);
     
 this->initOpenGL(graphics);
     
-this->image= GameFeatureImageCacheFactory::getInstance().getWithKey(AndroidBasicTitleProgressBar::RESOURCE);
+this->image= GameFeatureImageCacheFactory::getInstance()->getWithKey(AndroidBasicTitleProgressBar::RESOURCE);
     
 
-    PreResourceImageUtil preResourceImageUtil = PreResourceImageUtil::getInstance();;
+    PreResourceImageUtil* preResourceImageUtil = PreResourceImageUtil::getInstance();;
     
 
     int32_t size = this->IMAGE.size();;
@@ -660,7 +666,7 @@ this->image= GameFeatureImageCacheFactory::getInstance().getWithKey(AndroidBasic
                         if(this->IMAGE[index] != NullImage::NULL_IMAGE)
                         
                                     {
-                                    preResourceImageUtil.update(graphics, this->IMAGE[index]);
+                                    preResourceImageUtil->update(graphics, this->IMAGE[index]);
     
 
                                     }
@@ -672,12 +678,12 @@ this->image= GameFeatureImageCacheFactory::getInstance().getWithKey(AndroidBasic
 
                 //@Throws(Exception.constructor)
             
-    private: Image getImage(int32_t index){
+    private: Image* getImage(int32_t index){
 
-    Image image = NullImage::NULL_IMAGE;;
+    Image* image = NullImage::NULL_IMAGE;;
     
 
-                        if(Features::getInstance().isFeature(MainFeatureFactory::getInstance().FULL_SCREEN))
+                        if(Features::getInstance()->isFeature(MainFeatureFactory::getInstance()->FULL_SCREEN))
                         
                                     {
                                     image= this->IMAGE[index];
@@ -700,18 +706,18 @@ this->image= GameFeatureImageCacheFactory::getInstance().getWithKey(AndroidBasic
 }
 
 
-    public: void paint2(Graphics graphics){
+    public: void paint2(Graphics* graphics){
 
         try {
-            this->animation.paintXY(graphics, 0, 20);
+            this->animation->paintXY(graphics, 0, 20);
     
 super.paint2(graphics);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->canvasStrings.PAINT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->canvasStrings.PAINT, &e);
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,13 +42,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseDropCellPositionGenerator.h"
+        #include "org/allbinary/media/graphics/geography/map/drop/BaseDropCellPositionGenerator.h"
 
 class NullDropCellPositionGenerator: public BaseDropCellPositionGenerator {
 
-    private: static NullDropCellPositionGenerator instance() { return NullDropCellPositionGenerator(); }
+    private: static NullDropCellPositionGenerator* instance() { static std::unique_ptr<NullDropCellPositionGenerator> value(new NullDropCellPositionGenerator()); return value.get(); }
 
-    public: static NullDropCellPositionGenerator getInstance(){
+    public: static NullDropCellPositionGenerator* getInstance(){
 
 
 

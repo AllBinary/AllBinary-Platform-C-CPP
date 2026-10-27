@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_VISITOR_BOOLEANFILEVISITOR_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_VISITOR_BOOLEANFILEVISITOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/PreLogUtil.h>
@@ -59,23 +65,23 @@
         
 class BooleanFileVisitor
             : public Object
-        : public VisitorInterface {
+        , public VisitorInterface {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: BasicArrayList filterStringBasicArrayList;
+    private: BasicArrayList* filterStringBasicArrayList;
 
-public: BooleanFileVisitor(BasicArrayList filterStringBasicArrayList);
+public: BooleanFileVisitor(BasicArrayList* filterStringBasicArrayList);
 
     public: Object* visit(Object* anyType);
 
-    public: Boolean visit(AbFile file);
+    public: bool visit(AbFile* file);
 
-    public: BasicArrayList getFilterStringBasicArrayList();
+    public: BasicArrayList* getFilterStringBasicArrayList();
 
-    public: void setFilterStringBasicArrayList(BasicArrayList filterStringBasicArrayList);
+    public: void setFilterStringBasicArrayList(BasicArrayList* filterStringBasicArrayList);
 
-    public: Boolean visit(AbFile file, std::string fileNameString);
+    public: bool visit(AbFile* file, std::string fileNameString);
 
 };
 

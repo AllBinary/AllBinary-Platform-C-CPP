@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -55,15 +61,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryTiledLayer.h"
+        #include "org/allbinary/game/layer/AllBinaryTiledLayer.h"
 
 class AllBinaryJ2METiledLayer: public AllBinaryTiledLayer {
 
-    protected: TiledLayer tiledLayerP;
+    protected: TiledLayer* tiledLayerP;
 
     protected: int32_t debugColor;
 
-public: AllBinaryJ2METiledLayer(Integer dataId, TiledLayer tiledLayer, std::vector<std::vector<int32_t>> mapTwoDArray, int32_t debugColor) : AllBinaryTiledLayer(dataId, tiledLayer.getWidth(), tiledLayer.getHeight(), tiledLayer.getCellWidth(), tiledLayer.getCellHeight()){
+public: AllBinaryJ2METiledLayer(int32_t dataId, TiledLayer* tiledLayer, std::vector<std::vector<int32_t>> mapTwoDArray, int32_t debugColor) : AllBinaryTiledLayer(dataId, tiledLayer->getWidth(), tiledLayer->getHeight(), tiledLayer->getCellWidth(), tiledLayer->getCellHeight()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -79,27 +85,27 @@ this->setCells(mapTwoDArray);
 }
 
 
-    public: void paint(Graphics graphics){
-this->tiledLayerP.paint(graphics);
+    public: void paint(Graphics* graphics){
+this->tiledLayerP->paint(graphics);
     
 }
 
 
-    const Font font2 = Font::getFont(Font::FACE_SYSTEM, Font::STYLE_PLAIN, 4);
+    Font* font2 = Font::getFont(Font::FACE_SYSTEM, Font::STYLE_PLAIN, 4);
 
-    public: void paintDebug(Graphics graphics){
+    public: void paintDebug(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-graphics.setFont(this->font2);
+graphics->setFont(this->font2);
     
-graphics.setColor(this->debugColor);
-    
-
-    int32_t x = this->tiledLayerP.getX();;
+graphics->setColor(this->debugColor);
     
 
-    int32_t y = this->tiledLayerP.getY();;
+    int32_t x = this->tiledLayerP->getX();;
+    
+
+    int32_t y = this->tiledLayerP->getY();;
     
 
     int32_t firstColumn = 0;;
@@ -108,10 +114,10 @@ graphics.setColor(this->debugColor);
     int32_t firstRow = 0;;
     
 
-    int32_t totalColumns = this->tiledLayerP.getColumns();;
+    int32_t totalColumns = this->tiledLayerP->getColumns();;
     
 
-    int32_t totalRows = this->tiledLayerP.getRows();;
+    int32_t totalRows = this->tiledLayerP->getRows();;
     
 
     int32_t x0 = x;;
@@ -120,16 +126,16 @@ graphics.setColor(this->debugColor);
     int32_t tile = 0;;
     
 
-    int32_t tileHeight = this->tiledLayerP.getCellHeight();;
+    int32_t tileHeight = this->tiledLayerP->getCellHeight();;
     
 
-    int32_t tileWidth = this->tiledLayerP.getCellWidth();;
+    int32_t tileWidth = this->tiledLayerP->getCellWidth();;
     
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
-    StringMaker stringMaker = StringMaker();;
+    StringMaker* stringMaker = new StringMaker();;
     
 
 
@@ -147,13 +153,13 @@ x= x0;
                         for (
     int32_t columnIndex = firstColumn;columnIndex < totalColumns; columnIndex++)
         {
-tile= this->tiledLayerP.getCell(columnIndex, rowIndex);
+tile= this->tiledLayerP->getCell(columnIndex, rowIndex);
     
 
                         if(tile < 0)
                         
                                     {
-                                    tile= this->tiledLayerP.getAnimatedTile(tile);
+                                    tile= this->tiledLayerP->getAnimatedTile(tile);
     
 
                                     }
@@ -171,21 +177,21 @@ tile= this->tiledLayerP.getCell(columnIndex, rowIndex);
                                 
 tile--;
     
-stringMaker.delete(0, stringMaker.length());
+stringMaker->delete(0, stringMaker->length());
     
-graphics.drawString(stringMaker.appendint(columnIndex).append(commonSeps.COMMA).appendint(rowIndex).append(commonSeps.COLON).appendint(tile).toString(), x +5, y +10, 0);
+graphics->drawString(stringMaker->appendint(columnIndex)->append(commonSeps->COMMA)->appendint(rowIndex)->append(commonSeps->COLON)->appendint(tile)->toString(), x +5, y +10, 0);
     
 }
 
 }
 
-graphics.setFont(font);
+graphics->setFont(font);
     
 }
 
 
     public: void moveDXY(int32_t dx, int32_t dy){
-this->tiledLayerP.move(dx, dy);
+this->tiledLayerP->move(dx, dy);
     
 super.moveDXY( -dx,  -dy);
     
@@ -193,14 +199,14 @@ super.moveDXY( -dx,  -dy);
 
 
     public: void setPosition(int32_t x, int32_t y, int32_t z){
-this->tiledLayerP.setPosition(x, y);
+this->tiledLayerP->setPosition(x, y);
     
 super.setPosition( -x,  -y, z);
     
 }
 
 
-    public: TiledLayer getTiledLayer(){
+    public: TiledLayer* getTiledLayer(){
 
 
 
@@ -215,7 +221,7 @@ super.setPosition( -x,  -y, z);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->tiledLayerP.getCellWidth();;
+                        return this->tiledLayerP->getCellWidth();;
     
 }
 
@@ -225,7 +231,7 @@ super.setPosition( -x,  -y, z);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->tiledLayerP.getCellHeight();;
+                        return this->tiledLayerP->getCellHeight();;
     
 }
 
@@ -235,7 +241,7 @@ super.setPosition( -x,  -y, z);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->tiledLayerP.getCell(col, row);;
+                        return this->tiledLayerP->getCell(col, row);;
     
 }
 
@@ -245,7 +251,7 @@ super.setPosition( -x,  -y, z);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->tiledLayerP.getColumns();;
+                        return this->tiledLayerP->getColumns();;
     
 }
 
@@ -255,13 +261,13 @@ super.setPosition( -x,  -y, z);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->tiledLayerP.getRows();;
+                        return this->tiledLayerP->getRows();;
     
 }
 
 
     public: void setCell(int32_t col, int32_t row, int32_t index){
-this->tiledLayerP.setCell(col, row, index);
+this->tiledLayerP->setCell(col, row, index);
     
 }
 
@@ -271,7 +277,7 @@ this->tiledLayerP.setCell(col, row, index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->tiledLayerP.getAnimatedTile(animationTileIndex);;
+                        return this->tiledLayerP->getAnimatedTile(animationTileIndex);;
     
 }
 

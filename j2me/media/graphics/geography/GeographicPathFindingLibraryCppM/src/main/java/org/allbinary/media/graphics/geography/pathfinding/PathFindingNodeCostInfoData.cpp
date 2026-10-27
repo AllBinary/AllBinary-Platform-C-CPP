@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -45,9 +51,9 @@ class PathFindingNodeCostInfoData
             : public Object
          {
 
-    private: static PathFindingNodeCostInfoData instance() { return PathFindingNodeCostInfoData(); }
+    private: static PathFindingNodeCostInfoData* instance() { static std::unique_ptr<PathFindingNodeCostInfoData> value(new PathFindingNodeCostInfoData()); return value.get(); }
 
-    public: static PathFindingNodeCostInfoData getInstance(){
+    public: static PathFindingNodeCostInfoData* getInstance(){
 
 
 
@@ -61,9 +67,9 @@ private: PathFindingNodeCostInfoData(){
 }
 
 
-    public: int32_t MAX_TOTAL_COST = Integer::MAX_VALUE;
+    public: int32_t MAX_TOTAL_COST = Integer.MAX_VALUE;
 
-    public: int32_t MAX_NODE_COST = Integer::MAX_VALUE /10000;
+    public: int32_t MAX_NODE_COST = Integer.MAX_VALUE /10000;
 
 };
 

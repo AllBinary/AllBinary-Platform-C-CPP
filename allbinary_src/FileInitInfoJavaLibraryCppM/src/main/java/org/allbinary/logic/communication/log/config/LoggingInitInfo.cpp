@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -79,39 +85,39 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogConfigsData.h"
-#include "LogConfigData.h"
-#include "LogConfig.h"
+        #include "org/allbinary/logic/communication/log/config/LogConfigsData.h"
+#include "org/allbinary/logic/communication/log/config/LogConfigData.h"
+#include "org/allbinary/logic/communication/log/config/LogConfig.h"
 
 class LoggingInitInfo
             : public Object
          {
 
-    private: static const std::string INITFILENAME = "logConfig.xml";
+    private: static inline const std::string INITFILENAME = "logConfig.xml";
 
-    private: static const std::string PACKAGE = PATH_GLOBALS::getInstance().INIT_PATH;
+    private: static inline const std::string PACKAGE = PATH_GLOBALS::getInstance()->INIT_PATH;
 
-    private: static BasicArrayList logConfigInfoList = 
+    private: static inline BasicArrayList* logConfigInfoList = 
                 null
             ;
 
-    private: static bool hasRead = false;
+    private: static inline bool hasRead = false;
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static Document getDoc(){
+    public: static Document* getDoc(){
 
     std::string path = URLGLOBALS::getWebappPath() +LoggingInitInfo::PACKAGE;;
     
 
-    AbPath FILEABPATH = AbPath(path, INITFILENAME);;
+    AbPath* FILEABPATH = new AbPath(path, INITFILENAME);;
     
 
-    AbFile file = AbFile::createAbFileFromAbPath(FILEABPATH);;
+    AbFile* file = AbFile::createAbFileFromAbPath(FILEABPATH);;
     
 
-    Document document = DomDocumentHelper::create(AbFileLocalInputStream(file));;
+    Document* document = DomDocumentHelper::create(new AbFileLocalInputStream(file));;
     
 
 
@@ -132,7 +138,7 @@ class LoggingInitInfo
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -151,21 +157,21 @@ class LoggingInitInfo
 
         try {
             
-    Document document = LoggingInitInfo::getDoc();;
+    Document* document = LoggingInitInfo::getDoc();;
     
 
-    NodeList logConfigsNodeList = document.getElementsByTagName(LogConfigsData::getInstance().NAME);;
+    NodeList* logConfigsNodeList = document->getElementsByTagName(LogConfigsData::getInstance()->NAME);;
     
 
-    Node logConfigsNode = logConfigsNodeList.item(0);;
+    Node* logConfigsNode = logConfigsNodeList->item(0);;
     
 
-    BasicArrayList logConfigNodeVector = DomSearchHelper::getAllNodes(LogConfigData::getInstance().NAME, logConfigsNode.getChildNodes());;
+    BasicArrayList* logConfigNodeVector = DomSearchHelper::getAllNodes(LogConfigData::getInstance()->NAME, logConfigsNode->getChildNodes());;
     
-LoggingInitInfo::logConfigInfoList= BasicArrayListD();
+LoggingInitInfo::logConfigInfoList= new BasicArrayListD();
     
 
-    int32_t size = logConfigNodeVector.size();;
+    int32_t size = logConfigNodeVector->size();;
     
 
 
@@ -175,18 +181,18 @@ LoggingInitInfo::logConfigInfoList= BasicArrayListD();
     int32_t i = 0;i < size; i++)
         {
 
-    Node node = logConfigNodeVector.get(i);;
+    Node* node = dynamic_cast<Node*>(logConfigNodeVector->get(i));;
     
 
-    LogConfig logConfigInfo = LogConfig(node);;
+    LogConfig* logConfigInfo = new LogConfig(node);;
     
-LoggingInitInfo::logConfigInfoList.add(logConfigInfo);
+LoggingInitInfo::logConfigInfoList->add(logConfigInfo);
     
 }
 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -226,7 +232,7 @@ LoggingInitInfo::hasRead= true;
                                     
 
 
-                            throw Exception("Read Failed");
+                            throw new Exception("Read Failed");
                     
 
                                     }
@@ -238,7 +244,7 @@ LoggingInitInfo::hasRead= true;
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void set(BasicArrayList logConfigInfoVector){
+    public: static void set(BasicArrayList* logConfigInfoVector){
 LoggingInitInfo::logConfigInfoList= logConfigInfoVector;
     
 }
@@ -246,7 +252,7 @@ LoggingInitInfo::logConfigInfoList= logConfigInfoVector;
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList get(){
+    public: static BasicArrayList* get(){
 LoggingInitInfo::updateIfNeeded();
     
 
@@ -260,14 +266,14 @@ LoggingInitInfo::updateIfNeeded();
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList getTypeNameList(){
+    public: static BasicArrayList* getTypeNameList(){
 LoggingInitInfo::updateIfNeeded();
     
 
-    BasicArrayList allLogTypeVector = BasicArrayListD();;
+    BasicArrayList* allLogTypeVector = new BasicArrayListD();;
     
 
-    int32_t size = LoggingInitInfo::logConfigInfoList.size();;
+    int32_t size = LoggingInitInfo::logConfigInfoList->size();;
     
 
 
@@ -277,16 +283,16 @@ LoggingInitInfo::updateIfNeeded();
     int32_t index = 0;index < size; index++)
         {
 
-    LogConfig logConfigInfo = LoggingInitInfo::logConfigInfoList.objectArray[index];;
+    LogConfig* logConfigInfo = dynamic_cast<LogConfig*>(LoggingInitInfo::logConfigInfoList->objectArray[index]);;
     
 
-    BasicArrayList logTypeVector = logConfigInfo.getTypeVector();;
+    BasicArrayList* logTypeVector = logConfigInfo->getTypeVector();;
     
 
-                        if(logConfigInfo.isEnabled())
+                        if(logConfigInfo->isEnabled())
                         
                                     {
-                                    allLogTypeVector.addAllList(logTypeVector);
+                                    allLogTypeVector->addAllList(logTypeVector);
     
 
                                     }
@@ -304,14 +310,14 @@ LoggingInitInfo::updateIfNeeded();
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList getTypeList(){
+    public: static BasicArrayList* getTypeList(){
 LoggingInitInfo::updateIfNeeded();
     
 
-    BasicArrayList allLogTypeVector = BasicArrayListD();;
+    BasicArrayList* allLogTypeVector = new BasicArrayListD();;
     
 
-    int32_t size = LoggingInitInfo::logConfigInfoList.size();;
+    int32_t size = LoggingInitInfo::logConfigInfoList->size();;
     
 
 
@@ -321,16 +327,16 @@ LoggingInitInfo::updateIfNeeded();
     int32_t index = 0;index < size; index++)
         {
 
-    LogConfig logConfigInfo = LoggingInitInfo::logConfigInfoList.objectArray[index];;
+    LogConfig* logConfigInfo = dynamic_cast<LogConfig*>(LoggingInitInfo::logConfigInfoList->objectArray[index]);;
     
 
-    BasicArrayList logTypeVector = logConfigInfo.getTypeVector();;
+    BasicArrayList* logTypeVector = logConfigInfo->getTypeVector();;
     
 
-                        if(logConfigInfo.isEnabled())
+                        if(logConfigInfo->isEnabled())
                         
                                     {
-                                    allLogTypeVector.addAllList(logTypeVector);
+                                    allLogTypeVector->addAllList(logTypeVector);
     
 
                                     }
@@ -361,7 +367,7 @@ public: LoggingInitInfo(){
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -381,7 +387,7 @@ public: LoggingInitInfo(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LoggingInitInfo::logConfigInfoList.size();;
+                        return LoggingInitInfo::logConfigInfoList->size();;
     
 }
 
@@ -390,7 +396,7 @@ public: LoggingInitInfo(){
 
         try {
             
-    Document document = LoggingInitInfo::getDoc();;
+    Document* document = LoggingInitInfo::getDoc();;
     
 
 
@@ -400,7 +406,7 @@ public: LoggingInitInfo(){
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 

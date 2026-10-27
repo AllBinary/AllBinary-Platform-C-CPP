@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -49,31 +55,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SpecialUpGameInputProcessor.h"
-#include "SpecialDownGameInputProcessor.h"
-#include "SpecialRightGameInputProcessor.h"
-#include "SpecialLeftGameInputProcessor.h"
-#include "Special1GameInputProcessor.h"
-#include "Special3GameInputProcessor.h"
-#include "CollidableDestroyableDamageableLayer.h"
-#include "SpecialAnalogUpGameInputProcessor.h"
-#include "SpecialAnalogDownGameInputProcessor.h"
-#include "SpecialAnalogRightGameInputProcessor.h"
-#include "SpecialAnalogLeftGameInputProcessor.h"
-#include "SpecialAnalogLeftTriggerGameInputProcessor.h"
-#include "SpecialAnalogRightTriggerGameInputProcessor.h"
+        #include "org/allbinary/game/layer/special/SpecialUpGameInputProcessor.h"
+#include "org/allbinary/game/layer/special/SpecialDownGameInputProcessor.h"
+#include "org/allbinary/game/layer/special/SpecialRightGameInputProcessor.h"
+#include "org/allbinary/game/layer/special/SpecialLeftGameInputProcessor.h"
+#include "org/allbinary/game/layer/special/Special1GameInputProcessor.h"
+#include "org/allbinary/game/layer/special/Special3GameInputProcessor.h"
+#include "org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h"
+#include "org/allbinary/game/layer/special/SpecialAnalogUpGameInputProcessor.h"
+#include "org/allbinary/game/layer/special/SpecialAnalogDownGameInputProcessor.h"
+#include "org/allbinary/game/layer/special/SpecialAnalogRightGameInputProcessor.h"
+#include "org/allbinary/game/layer/special/SpecialAnalogLeftGameInputProcessor.h"
+#include "org/allbinary/game/layer/special/SpecialAnalogLeftTriggerGameInputProcessor.h"
+#include "org/allbinary/game/layer/special/SpecialAnalogRightTriggerGameInputProcessor.h"
 
 class AnalogInputBuilder
             : public Object
          {
 
-    private: static AnalogInputBuilder instance() { return AnalogInputBuilder(); }
+    private: static AnalogInputBuilder* instance() { static std::unique_ptr<AnalogInputBuilder> value(new AnalogInputBuilder()); return value.get(); }
 
-    public: static AnalogInputBuilder getInstance();
+    public: static AnalogInputBuilder* getInstance();
 
-    public: void disable(std::vector<GameInputProcessor> inputProcessorArray, CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer);
+    public: void disable(std::vector<GameInputProcessor*> inputProcessorArray, CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer);
 
-    public: void enable(std::vector<GameInputProcessor> inputProcessorArray, CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer);
+    public: void enable(std::vector<GameInputProcessor*> inputProcessorArray, CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer);
 
 };
 

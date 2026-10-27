@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -56,7 +62,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserEmailEventConfigurationInterface.h"
+        #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationInterface.h"
 
 class UserEmailEventListenerFactory
             : public Object
@@ -64,12 +70,12 @@ class UserEmailEventListenerFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static UserEmailEventListenerInterface getInstance(AbeClientInformationInterface abeClientInformation, UserEmailEventConfigurationInterface userEmailEventConfigurationInterface, UserInterface userInterface){
+    public: static UserEmailEventListenerInterface* getInstance(AbeClientInformationInterface* abeClientInformation, UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface, UserInterface* userInterface){
 
     std::vector<Object*> params = std::vector<Object*>(1);;
     
 
-    std::vector<Class*> classes = std::vector<Class>(1);;
+    std::vector<Class*> classes = std::vector<Class*>(1);;
     
 classes[0]= 
                                     //Otherwise - expression - AssignExpr - value - ClassExpr
@@ -81,7 +87,7 @@ params[0]= userInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeFactory::getInstance().getInstance(abeClientInformation, userEmailEventConfigurationInterface.getEventListenerClassPath(), classes, params);
+                        return dynamic_cast<UserEmailEventListenerInterface*>(AbeFactory::getInstance()->getInstance(abeClientInformation, userEmailEventConfigurationInterface->getEventListenerClassPath(), classes, params));
     
 }
 

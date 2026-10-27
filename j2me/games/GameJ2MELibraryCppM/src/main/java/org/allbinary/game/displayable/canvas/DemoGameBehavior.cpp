@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,15 +61,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryGameCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
 class DemoGameBehavior
             : public Object
          {
 
-    private: static DemoGameBehavior instance() { return DemoGameBehavior(); }
+    private: static DemoGameBehavior* instance() { static std::unique_ptr<DemoGameBehavior> value(new DemoGameBehavior()); return value.get(); }
 
-    public: static DemoGameBehavior getInstance(){
+    public: static DemoGameBehavior* getInstance(){
 
 
 
@@ -73,7 +79,7 @@ class DemoGameBehavior
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
@@ -81,64 +87,64 @@ class DemoGameBehavior
 }
 
 
-    public: void pause(AllBinaryGameCanvas allBinaryGameCanvas){
+    public: void pause(AllBinaryGameCanvas* allBinaryGameCanvas){
 }
 
 
-    public: void unPause(AllBinaryGameCanvas allBinaryGameCanvas){
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: void updateTouch(AllBinaryGameCanvas allBinaryGameCanvas){
+    public: void unPause(AllBinaryGameCanvas* allBinaryGameCanvas){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void updateScreenButtonPaintable(AllBinaryGameCanvas allBinaryGameCanvas){
-allBinaryGameCanvas.setTouchPaintableP(NullPaintable::getInstance());
+    public: void updateTouch(AllBinaryGameCanvas* allBinaryGameCanvas){
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: void updateScreenButtonPaintable(AllBinaryGameCanvas* allBinaryGameCanvas){
+allBinaryGameCanvas->setTouchPaintableP(NullPaintable::getInstance());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void setGameState(AllBinaryGameCanvas allBinaryGameCanvas){
+    public: void setGameState(AllBinaryGameCanvas* allBinaryGameCanvas){
 }
 
 
-    public: void removeAllGameKeyInputListeners(AllBinaryGameCanvas allBinaryGameCanvas){
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: void updateEndGameProcessor(AllBinaryGameCanvas allBinaryGameCanvas){
+    public: void removeAllGameKeyInputListeners(AllBinaryGameCanvas* allBinaryGameCanvas){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void buildGame(AllBinaryGameCanvas allBinaryGameCanvas){
+    public: void updateEndGameProcessor(AllBinaryGameCanvas* allBinaryGameCanvas){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void run(AllBinaryGameCanvas allBinaryGameCanvas){
+    public: void buildGame(AllBinaryGameCanvas* allBinaryGameCanvas){
+}
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+
+                //@Throws(Exception.constructor)
+            
+    public: void run(AllBinaryGameCanvas* allBinaryGameCanvas){
+
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF(GameTypeFactory::getInstance().BOT.toString(), this, commonStrings.RUN);
+this->logUtil->putF(GameTypeFactory::getInstance()->BOT.toString(), this, commonStrings->RUN);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void setHighScore(AbeClientInformationInterface abeClientInformation, AllBinaryGameCanvas allBinaryGameCanvas, std::string name, int64_t score, bool autoSubmit, bool isLast){
+    public: void setHighScore(AbeClientInformationInterface* abeClientInformation, AllBinaryGameCanvas* allBinaryGameCanvas, std::string name, int64_t score, bool autoSubmit, bool isLast){
 }
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/animation/AnimationInterface.h>
 
       
@@ -45,13 +51,13 @@
         
 class CompoundAnimationInterface: public AnimationInterface {
 
-    void nextAnimation()
+    public: virtual void nextAnimation() = 0;
 
-    void previousAnimation()
+    public: virtual void previousAnimation() = 0;
 
-    void setAnimation(int32_t index)
+    public: virtual void setAnimation(int32_t index) = 0;
 
-    IndexedAnimation getCurrentAnimation()
+    public: virtual IndexedAnimation* getCurrentAnimation() = 0;
 
 };
 

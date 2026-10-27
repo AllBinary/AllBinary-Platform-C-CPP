@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,17 +42,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SizeConstraintInterface.h"
+        #include "org/allbinary/logic/control/contraints/size/SizeConstraintInterface.h"
 
 class TwoDimensionalConstraintInterface {
 
-    SizeConstraintInterface getHeight()
+    public: virtual SizeConstraintInterface* getHeight() = 0;
 
-    SizeConstraintInterface getWidth()
+    public: virtual SizeConstraintInterface* getWidth() = 0;
 
-    void setHeight(SizeConstraintInterface heightSizeConstraintInterface)
+    public: virtual void setHeight(SizeConstraintInterface* heightSizeConstraintInterface) = 0;
 
-    void setWidth(SizeConstraintInterface widthSizeConstraintInterface)
+    public: virtual void setWidth(SizeConstraintInterface* widthSizeConstraintInterface) = 0;
 
 };
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -80,11 +86,11 @@ class DrawVerticalStringUtil
             : public Object
          {
 
-    private: static DrawVerticalStringUtil instance() { return DrawVerticalStringUtil(); }
+    private: static DrawVerticalStringUtil* instance() { static std::unique_ptr<DrawVerticalStringUtil> value(new DrawVerticalStringUtil()); return value.get(); }
 
-    public: static DrawVerticalStringUtil getInstance();
+    public: static DrawVerticalStringUtil* getInstance();
 
-    private: const std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;
+    private: const std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
@@ -92,15 +98,15 @@ class DrawVerticalStringUtil
 
     private: int32_t offsetY= 0;
 
-    private: std::vector<int32_t> offsetXArray = NullUtil::getInstance().NULL_INT_ARRAY;
+    private: std::vector<int32_t> offsetXArray = NullUtil::getInstance()->NULL_INT_ARRAY;
 
-    public: void updateMeasurement(Graphics graphics, std::string string);
+    public: void updateMeasurement(Graphics* graphics, std::string string);
 
-    public: void paintVerticle(Graphics graphics, std::string string, int32_t x, int32_t y, int32_t anchor);
+    public: void paintVerticle(Graphics* graphics, std::string string, int32_t x, int32_t y, int32_t anchor);
 
-    public: void drawCenterString(Graphics graphics, std::string string, int32_t offset, int32_t length, int32_t x, int32_t y);
+    public: void drawCenterString(Graphics* graphics, std::string string, int32_t offset, int32_t length, int32_t x, int32_t y);
 
-    public: void drawCenterStrings(Graphics graphics, std::vector<std::string> stringArray, int32_t maxWidth, int32_t x, int32_t y);
+    public: void drawCenterStrings(Graphics* graphics, std::vector<std::string> stringArray, int32_t maxWidth, int32_t x, int32_t y);
 
 };
 

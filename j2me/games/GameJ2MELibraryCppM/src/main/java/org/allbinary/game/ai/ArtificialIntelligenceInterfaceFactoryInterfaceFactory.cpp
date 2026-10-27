@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -52,42 +58,42 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicAI.h"
-#include "ArtificialIntelligenceInterfaceFactoryInterface.h"
+        #include "org/allbinary/game/ai/BasicAI.h"
+#include "org/allbinary/game/ai/ArtificialIntelligenceInterfaceFactoryInterface.h"
 
 class ArtificialIntelligenceInterfaceFactoryInterfaceFactory
             : public Object
          {
 
-    private: static ArtificialIntelligenceInterfaceFactoryInterfaceFactory SINGLETON = ArtificialIntelligenceInterfaceFactoryInterfaceFactory();
+    private: static ArtificialIntelligenceInterfaceFactoryInterfaceFactory* SINGLETON() { static std::unique_ptr<ArtificialIntelligenceInterfaceFactoryInterfaceFactory> value(new ArtificialIntelligenceInterfaceFactoryInterfaceFactory()); return value.get(); }
 
-    public: static ArtificialIntelligenceInterfaceFactoryInterfaceFactory getInstance(){
+    public: static ArtificialIntelligenceInterfaceFactoryInterfaceFactory* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ArtificialIntelligenceInterfaceFactoryInterfaceFactory::SINGLETON;
+                        return ArtificialIntelligenceInterfaceFactoryInterfaceFactory::SINGLETON();
     
 }
 
 
-    private: BasicArrayList list = BasicArrayListUtil::getInstance().getImmutableInstance();
+    private: BasicArrayList* list = BasicArrayListUtil::getInstance()->getImmutableInstance();
 
     public: void clear(){
-this->list= BasicArrayListD();
+this->list= new BasicArrayListD();
     
 }
 
 
-    public: ArtificialIntelligenceInterfaceFactoryInterface getInstanceFromCollection(ABHashtable<Object*, Object*> hashtable){
+    public: ArtificialIntelligenceInterfaceFactoryInterface* getInstanceFromCollection(ABHashtable<Object*, Object*>* hashtable){
 
-    Integer typeInteger = hashtable.get(BasicAI::ID);;
+    int32_t typeInteger = hashtable->get(BasicAI::ID);;
     
 
     int32_t type = typeInteger.intValue();;
     
 
-    ArtificialIntelligenceInterfaceFactoryInterface artificialIntelligenceInterfaceFactoryInterface = this->list.objectArray[type -1];;
+    ArtificialIntelligenceInterfaceFactoryInterface* artificialIntelligenceInterfaceFactoryInterface = dynamic_cast<ArtificialIntelligenceInterfaceFactoryInterface*>(this->list->objectArray[type -1]);;
     
 
 
@@ -98,8 +104,8 @@ this->list= BasicArrayListD();
 }
 
 
-    public: void add(ArtificialIntelligenceInterfaceFactoryInterface artificialIntelligenceInterfaceFactoryInterface){
-this->list.add(artificialIntelligenceInterfaceFactoryInterface);
+    public: void add(ArtificialIntelligenceInterfaceFactoryInterface* artificialIntelligenceInterfaceFactoryInterface){
+this->list->add(artificialIntelligenceInterfaceFactoryInterface);
     
 }
 

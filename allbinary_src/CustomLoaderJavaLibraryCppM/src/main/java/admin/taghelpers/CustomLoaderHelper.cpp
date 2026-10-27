@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,11 +69,11 @@ class CustomLoaderHelper
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-public: CustomLoaderHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
+public: CustomLoaderHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
 }
 
 
@@ -88,7 +94,7 @@ public: CustomLoaderHelper(){
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -107,21 +113,21 @@ public: CustomLoaderHelper(){
 
         try {
             
-    AppUrlGlobals urlGlobals = AppUrlGlobals();;
+    AppUrlGlobals* urlGlobals = new AppUrlGlobals();;
     
-urlGlobals.setWebappPath(path);
+urlGlobals->setWebappPath(path);
     
 URLGLOBALS::init(urlGlobals);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setWebappPath()", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "setWebappPath()", &e);
     
 
                                     }

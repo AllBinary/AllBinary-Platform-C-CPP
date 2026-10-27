@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -69,39 +77,39 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WaypointPathRunnableBase.h"
-//#include "FirstRunnable.h"
-//#include "SecondRunnable.h"
-//#include "EndRunnable.h"
-#include "WaypointBehaviorBase.h"
+        #include "org/allbinary/game/layer/WaypointPathRunnableBase.h"
+//#include "org/allbinary/game/layer/FirstRunnable.h"
+//#include "org/allbinary/game/layer/SecondRunnable.h"
+//#include "org/allbinary/game/layer/EndRunnable.h"
+#include "org/allbinary/game/layer/WaypointBehaviorBase.h"
 
 class MultipassWaypointPathRunnable: public WaypointPathRunnableBase {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
+    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    private: const MultipassState multipassState = MultipassState();
+    private: MultipassState* multipassState = new MultipassState();
 
     private: bool done = false;
 
-    private: BasicArrayList list = this->basicArrayListUtil.getImmutableInstance();
+    private: BasicArrayList* list = this->basicArrayListUtil->getImmutableInstance();
 
-    private: Object* pathFindingInfo = NullUtil::getInstance().NULL_OBJECT;
+    private: Object* pathFindingInfo = NullUtil::getInstance()->NULL_OBJECT;
 
 //inner= member=true isStatic=
 class FirstRunnable: public ARunnable {
 
-    private: MultipassWaypointPathRunnable multipassWaypointPathRunnable;
+    private: MultipassWaypointPathRunnable* multipassWaypointPathRunnable;
 
-: FirstRunnable(MultipassWaypointPathRunnable multipassWaypointPathRunnable){
+: FirstRunnable(MultipassWaypointPathRunnable* multipassWaypointPathRunnable){
 this->multipassWaypointPathRunnable= multipassWaypointPathRunnable;
     
 }
 
 
     public: void run(){
-this->multipassWaypointPathRunnable.processFirstRunnable();
+this->multipassWaypointPathRunnable->processFirstRunnable();
     
 }
 
@@ -109,21 +117,21 @@ this->multipassWaypointPathRunnable.processFirstRunnable();
 };
 
             
-    private: const Runnable FIRST_RUNNABLE = FirstRunnable(this);
+    private: Runnable* FIRST_RUNNABLE = new FirstRunnable(this);
 //    private boolean first = true;
 //inner= member=true isStatic=
 class SecondRunnable: public ARunnable {
 
-    private: MultipassWaypointPathRunnable multipassWaypointPathRunnable;
+    private: MultipassWaypointPathRunnable* multipassWaypointPathRunnable;
 
-: SecondRunnable(MultipassWaypointPathRunnable multipassWaypointPathRunnable){
+: SecondRunnable(MultipassWaypointPathRunnable* multipassWaypointPathRunnable){
 this->multipassWaypointPathRunnable= multipassWaypointPathRunnable;
     
 }
 
 
     public: void run(){
-this->multipassWaypointPathRunnable.processSecondRunnable();
+this->multipassWaypointPathRunnable->processSecondRunnable();
     
 }
 
@@ -131,21 +139,21 @@ this->multipassWaypointPathRunnable.processSecondRunnable();
 };
 
             
-    private: const Runnable SECOND_RUNNABLE = SecondRunnable(this);
+    private: Runnable* SECOND_RUNNABLE = new SecondRunnable(this);
 
 //inner= member=true isStatic=
 class EndRunnable: public ARunnable {
 
-    private: MultipassWaypointPathRunnable multipassWaypointPathRunnable;
+    private: MultipassWaypointPathRunnable* multipassWaypointPathRunnable;
 
-: EndRunnable(MultipassWaypointPathRunnable multipassWaypointPathRunnable){
+: EndRunnable(MultipassWaypointPathRunnable* multipassWaypointPathRunnable){
 this->multipassWaypointPathRunnable= multipassWaypointPathRunnable;
     
 }
 
 
     public: void run(){
-this->multipassWaypointPathRunnable.processEndRunnable();
+this->multipassWaypointPathRunnable->processEndRunnable();
     
 }
 
@@ -153,23 +161,23 @@ this->multipassWaypointPathRunnable.processEndRunnable();
 };
 
             
-    private: const Runnable END_RUNNABLE = EndRunnable(this);
+    private: Runnable* END_RUNNABLE = new EndRunnable(this);
 
-    private: const Runnable ALREADY_ENDED_RUNNABLE = class extends ARunnable
+    private: Runnable* ALREADY_ENDED_RUNNABLE = class extends ARunnable
                                 {
                                 
     public: void run(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
                                 }
                             ;
 
-    private: Runnable currentPassRunnable = this->FIRST_RUNNABLE;
+    private: Runnable* currentPassRunnable = this->FIRST_RUNNABLE;
 
 public: MultipassWaypointPathRunnable(){
 }
@@ -194,20 +202,20 @@ this->done= false;
 
     public: void run(){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
         try {
-            this->currentPassRunnable.run();
+            this->currentPassRunnable->run();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
+logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
     
 this->setRunning(false);
     
@@ -217,13 +225,13 @@ this->setRunning(false);
 
 
     private: void reset2(){
-this->multipassState.step= 0;
+this->multipassState->step= 0;
     
-this->multipassState.iteration= 0;
+this->multipassState->iteration= 0;
     
-this->multipassState.iteration2= 0;
+this->multipassState->iteration2= 0;
     
-this->pathFindingInfo= NullUtil::getInstance().NULL_OBJECT;
+this->pathFindingInfo= NullUtil::getInstance()->NULL_OBJECT;
     
 }
 
@@ -261,12 +269,12 @@ this->done= false;
     private: void processFirstRunnable(){
 
         try {
-            this->pathFindingLayer.getWaypointRunnableLogHelper().start(this->pathFindingLayer);
+            this->pathFindingLayer.getWaypointRunnableLogHelper()->start(this->pathFindingLayer);
     
 this->reset2();
     
 
-    GeographicMapCellPosition geographicMapCellPosition = this->pathFindingLayer.getCurrentGeographicMapCellPosition();;
+    GeographicMapCellPosition* geographicMapCellPosition = this->pathFindingLayer.getCurrentGeographicMapCellPosition();;
     
 
                         if(geographicMapCellPosition == 
@@ -277,23 +285,23 @@ this->reset2();
                                     
 
 
-                            throw Exception("Should never be running here");
+                            throw new Exception("Should never be running here");
                     
 
                                     }
                                 
-this->pathFindingInfo= this->targetPathFindingLayer.getWaypointBehavior().getWaypoint().getPathFindingInfo(geographicMapCellPosition);
+this->pathFindingInfo= this->targetPathFindingLayer.getWaypointBehavior()->getWaypoint()->getPathFindingInfo(geographicMapCellPosition);
     
 
-    PathFindingInfo localPathFindingInfo = this->pathFindingInfo;;
+    PathFindingInfo* localPathFindingInfo = dynamic_cast<PathFindingInfo*>(this->pathFindingInfo);;
     
-this->list= this->targetPathFindingLayer.getWaypointBehavior().getWaypoint().getPathsList(geographicMapCellPosition, localPathFindingInfo, this->multipassState);
+this->list= this->targetPathFindingLayer.getWaypointBehavior()->getWaypoint()->getPathsList(geographicMapCellPosition, localPathFindingInfo, this->multipassState);
     
 
-                        if(this->list != this->basicArrayListUtil.getImmutableInstance())
+                        if(this->list != this->basicArrayListUtil->getImmutableInstance())
                         
                                     {
-                                    this->END_RUNNABLE.run();
+                                    this->END_RUNNABLE->run();
     
 
                                     }
@@ -306,12 +314,12 @@ this->list= this->targetPathFindingLayer.getWaypointBehavior().getWaypoint().get
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
     
 this->setRunning(false);
     
@@ -326,30 +334,30 @@ this->finish();
 
         try {
             
-    GeographicMapCellPosition geographicMapCellPosition = this->pathFindingLayer.getCurrentGeographicMapCellPosition();;
+    GeographicMapCellPosition* geographicMapCellPosition = this->pathFindingLayer.getCurrentGeographicMapCellPosition();;
     
 
-    PathFindingInfo localPathFindingInfo = this->pathFindingInfo;;
+    PathFindingInfo* localPathFindingInfo = dynamic_cast<PathFindingInfo*>(this->pathFindingInfo);;
     
-this->list= this->targetPathFindingLayer.getWaypointBehavior().getWaypoint().getPathsList(geographicMapCellPosition, localPathFindingInfo, this->multipassState);
+this->list= this->targetPathFindingLayer.getWaypointBehavior()->getWaypoint()->getPathsList(geographicMapCellPosition, localPathFindingInfo, this->multipassState);
     
 
-                        if(this->list != this->basicArrayListUtil.getImmutableInstance())
+                        if(this->list != this->basicArrayListUtil->getImmutableInstance())
                         
                                     {
-                                    this->END_RUNNABLE.run();
+                                    this->END_RUNNABLE->run();
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
     
 this->setRunning(false);
     
@@ -364,20 +372,20 @@ this->finish();
 
         try {
             
-    WaypointBehaviorBase waypointBehavior = this->pathFindingLayer.getWaypointBehavior();;
+    WaypointBehaviorBase* waypointBehavior = this->pathFindingLayer.getWaypointBehavior();;
     
-waypointBehavior.setWaypointPathsList(this->list);
+waypointBehavior->setWaypointPathsList(this->list);
     
-this->pathFindingLayer.getWaypointRunnableLogHelper().end(this->pathFindingLayer);
+this->pathFindingLayer.getWaypointRunnableLogHelper()->end(this->pathFindingLayer);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
     
 this->setRunning(false);
     

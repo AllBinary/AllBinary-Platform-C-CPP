@@ -4,6 +4,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <javax/microedition/lcdui/Displayable.h>
 
       
@@ -31,11 +39,11 @@
         
 class EmulatorViewInterface {
 
-    void setMidlet(MIDlet midlet)
+    public: virtual void setMidlet(MIDlet* midlet) = 0;
 
-    void onEmulatorInitComplete(Object* midletActivity)
+    public: virtual void onEmulatorInitComplete(Object* midletActivity) = 0;
 
-    void onSetDisplayable(Displayable displayable)
+    public: virtual void onSetDisplayable(Displayable* displayable) = 0;
 
 };
 

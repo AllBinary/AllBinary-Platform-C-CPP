@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_BASICPAYMENTTYPE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_BASICPAYMENTTYPE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,7 +79,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicPaymentTypeUtil.h"
+        #include "org/allbinary/business/user/commerce/money/payment/types/BasicPaymentTypeUtil.h"
 
 class BasicPaymentType
             : public Object
@@ -83,13 +89,13 @@ class BasicPaymentType
 
     private: std::string value;
 
-    private: PaymentGatewayInterfaceFactoryInterface paymentGatewayInterfaceFactoryInterface;
+    private: PaymentGatewayInterfaceFactoryInterface* paymentGatewayInterfaceFactoryInterface;
 
-    private: PaymentGatewayDomNodeFactoryInterface paymentGatewayDomNodeFactoryInterface;
+    private: PaymentGatewayDomNodeFactoryInterface* paymentGatewayDomNodeFactoryInterface;
 
 protected: BasicPaymentType(std::string paymentMethod);
 
-protected: BasicPaymentType(std::string paymentMethod, PaymentGatewayInterfaceFactoryInterface paymentGatewayInterfaceFactoryInterface, PaymentGatewayDomNodeFactoryInterface paymentGatewayDomNodeFactoryInterface);
+protected: BasicPaymentType(std::string paymentMethod, PaymentGatewayInterfaceFactoryInterface* paymentGatewayInterfaceFactoryInterface, PaymentGatewayDomNodeFactoryInterface* paymentGatewayDomNodeFactoryInterface);
 
     private: void init(std::string paymentMethod);
 
@@ -99,17 +105,17 @@ protected: BasicPaymentType(std::string paymentMethod, PaymentGatewayInterfaceFa
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentGatewayInterfaceFactoryInterface getPaymentGatewayInterfaceFactoryInterface();
+    public: PaymentGatewayInterfaceFactoryInterface* getPaymentGatewayInterfaceFactoryInterface();
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentGatewayDomNodeFactoryInterface getPaymentGatewayDomNodeFactoryInterface();
+    public: PaymentGatewayDomNodeFactoryInterface* getPaymentGatewayDomNodeFactoryInterface();
 
     public: Object* getKey();
 
-    public: BasicArrayList toVector();
+    public: BasicArrayList* toVector();
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
     public: std::string toString();
 

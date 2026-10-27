@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,21 +79,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ResourceLoadingLevelFactory.h"
+        #include "org/allbinary/game/resource/ResourceLoadingLevelFactory.h"
 
 class FeaturedResourceFactory
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 public: FeaturedResourceFactory(){
 }
 
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: const std::string ANIMATION_FEATURES = "Animation Features: Vector: ";
 
@@ -111,7 +117,7 @@ public: FeaturedResourceFactory(){
             
     public: void init(int32_t level){
 
-    int32_t size = this->list.size();;
+    int32_t size = this->list->size();;
     
 
 
@@ -121,21 +127,21 @@ public: FeaturedResourceFactory(){
     int32_t index = 0;index < size; index++)
         {
 
-    GameFeatureControlledInterface featureInterface = this->list.objectArray[index];;
+    GameFeatureControlledInterface* featureInterface = dynamic_cast<GameFeatureControlledInterface*>(this->list->objectArray[index]);;
     
 
-    bool isLoadingLevel = featureInterface.isLoadingLevel(level);;
+    bool isLoadingLevel = featureInterface->isLoadingLevel(level);;
     
 
-    bool isFeature = featureInterface.isFeature();;
+    bool isFeature = featureInterface->isFeature();;
     
-this->logUtil.putF(StringMaker().append(this->GAME_FEATURE_CONTROLLED).append(featureInterface.toString()).append(this->IS_LOADING_LEVEL_LABEL).append(ResourceLoadingLevelFactory::getInstance().getLevelString(level)).append(CommonSeps::getInstance().COLON_SEP).appendboolean(isLoadingLevel).append(this->IS_FEATURE).appendboolean(isFeature).toString(), this, this->commonStrings.INIT);
+this->logUtil->putF((new StringMaker())->append(this->GAME_FEATURE_CONTROLLED)->append(featureInterface->toString())->append(this->IS_LOADING_LEVEL_LABEL)->append(ResourceLoadingLevelFactory::getInstance()->getLevelString(level))->append(CommonSeps::getInstance()->COLON_SEP)->appendboolean(isLoadingLevel)->append(this->IS_FEATURE)->appendboolean(isFeature)->toString(), this, this->commonStrings->INIT);
     
 
                         if(isLoadingLevel && isFeature)
                         
                                     {
-                                    featureInterface.init(level);
+                                    featureInterface->init(level);
     
 
                                     }
@@ -143,47 +149,47 @@ this->logUtil.putF(StringMaker().append(this->GAME_FEATURE_CONTROLLED).append(fe
 }
 
 
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-    GraphicsFeatureFactory graphicsFeatureFactory = GraphicsFeatureFactory::getInstance();;
+    GraphicsFeatureFactory* graphicsFeatureFactory = GraphicsFeatureFactory::getInstance();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->ANIMATION_FEATURES);
+stringBuffer->append(this->ANIMATION_FEATURES);
     
-stringBuffer.appendboolean(features.isFeature(graphicsFeatureFactory.VECTOR_GRAPHICS));
+stringBuffer->appendboolean(features->isFeature(graphicsFeatureFactory->VECTOR_GRAPHICS));
     
-stringBuffer.append(this->IMAGE_LABEL);
+stringBuffer->append(this->IMAGE_LABEL);
     
-stringBuffer.appendboolean(features.isFeature(graphicsFeatureFactory.IMAGE_GRAPHICS));
+stringBuffer->appendboolean(features->isFeature(graphicsFeatureFactory->IMAGE_GRAPHICS));
     
-this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.INIT);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->INIT);
     
 
-                        if(features.isFeature(graphicsFeatureFactory.IMAGE_GRAPHICS))
+                        if(features->isFeature(graphicsFeatureFactory->IMAGE_GRAPHICS))
                         
                                     {
-                                    stringBuffer.delete(0, stringBuffer.length());
+                                    stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(this->IMAGE_GRAPHICS_ARRAY);
+stringBuffer->append(this->IMAGE_GRAPHICS_ARRAY);
     
-stringBuffer.appendboolean(features.isFeature(graphicsFeatureFactory.IMAGE_TO_ARRAY_GRAPHICS));
+stringBuffer->appendboolean(features->isFeature(graphicsFeatureFactory->IMAGE_TO_ARRAY_GRAPHICS));
     
-stringBuffer.append(this->IMAGE_GRAPHICS_ROTATION);
+stringBuffer->append(this->IMAGE_GRAPHICS_ROTATION);
     
-stringBuffer.appendboolean(features.isFeature(graphicsFeatureFactory.IMAGE_TO_ARRAY_GRAPHICS));
+stringBuffer->appendboolean(features->isFeature(graphicsFeatureFactory->IMAGE_TO_ARRAY_GRAPHICS));
     
-stringBuffer.append(this->SPRITE_QUARTER);
+stringBuffer->append(this->SPRITE_QUARTER);
     
-stringBuffer.appendboolean(features.isFeature(graphicsFeatureFactory.SPRITE_QUARTER_ROTATION_GRAPHICS));
+stringBuffer->appendboolean(features->isFeature(graphicsFeatureFactory->SPRITE_QUARTER_ROTATION_GRAPHICS));
     
-stringBuffer.append(this->SPRITE_FULL);
+stringBuffer->append(this->SPRITE_FULL);
     
-stringBuffer.appendboolean(features.isFeature(graphicsFeatureFactory.SPRITE_FULL_GRAPHICS));
+stringBuffer->appendboolean(features->isFeature(graphicsFeatureFactory->SPRITE_FULL_GRAPHICS));
     
-this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.INIT);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->INIT);
     
 
                                     }
@@ -192,20 +198,20 @@ this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.INIT);
 
 
     public: void clear(){
-this->list.clear();
+this->list->clear();
     
 }
 
 
-    public: void add(GameFeatureControlledInterface featureInterface){
-this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().START_LABEL).append(StringUtil::getInstance().toString(featureInterface)).toString(), this, this->commonStrings.ADD);
+    public: void add(GameFeatureControlledInterface* featureInterface){
+this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append(StringUtil::getInstance()->toString(featureInterface))->toString(), this, this->commonStrings->ADD);
     
-this->list.add(featureInterface);
+this->list->add(featureInterface);
     
 }
 
 
-    public: BasicArrayList getList(){
+    public: BasicArrayList* getList(){
 
 
 

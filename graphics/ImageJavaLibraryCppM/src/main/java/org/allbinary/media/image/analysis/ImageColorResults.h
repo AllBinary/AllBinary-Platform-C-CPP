@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGECOLORRESULTS_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGECOLORRESULTS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,26 +47,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ColorRange.h"
-#include "ColorAverage.h"
+        #include "org/allbinary/media/image/analysis/ColorRange.h"
+#include "org/allbinary/media/image/analysis/ColorAverage.h"
 
 class ImageColorResults
             : public Object
          {
 
-    private: ColorRange colorRange;
+    private: ColorRange* colorRange;
 
-    private: ColorAverage colorAverage;
+    private: ColorAverage* colorAverage;
 
 public: ImageColorResults();
 
-    public: ColorRange getColorRange();
+    public: ColorRange* getColorRange();
 
-    public: void setColorRange(ColorRange colorRange);
+    public: void setColorRange(ColorRange* colorRange);
 
-    public: ColorAverage getColorAverage();
+    public: ColorAverage* getColorAverage();
 
-    public: void setColorAverage(ColorAverage colorAverage);
+    public: void setColorAverage(ColorAverage* colorAverage);
 
 };
 

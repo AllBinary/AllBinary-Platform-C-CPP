@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_NOSCOREABLE_H
         #define ORG_ALLBINARY_GAME_SCORE_NOSCOREABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,13 +45,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Scoreable.h"
+        #include "org/allbinary/game/score/Scoreable.h"
 
 class NoScoreable: public Scoreable {
 
-    private: static const NoScoreable SINGLETON = NoScoreable();
+    private: static NoScoreable* SINGLETON() { static std::unique_ptr<NoScoreable> value(new NoScoreable()); return value.get(); }
 
-    public: static NoScoreable getInstance();
+    public: static NoScoreable* getInstance();
 
 private: NoScoreable();
 

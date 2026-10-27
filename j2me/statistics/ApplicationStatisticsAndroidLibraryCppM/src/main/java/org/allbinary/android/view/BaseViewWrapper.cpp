@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,7 +49,7 @@ class BaseViewWrapper
             : public Object
          {
 
-    public: static const BaseViewWrapper NULL_VIEW_WRAPPER = BaseViewWrapper();
+    public: static BaseViewWrapper* NULL_VIEW_WRAPPER() { static std::unique_ptr<BaseViewWrapper> value(new BaseViewWrapper()); return value.get(); }
 
     public: void invalidate(){
 }

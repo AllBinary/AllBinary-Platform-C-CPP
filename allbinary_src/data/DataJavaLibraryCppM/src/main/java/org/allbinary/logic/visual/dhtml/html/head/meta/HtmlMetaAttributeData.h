@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETAATTRIBUTEDATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETAATTRIBUTEDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -52,7 +58,7 @@ class HtmlMetaAttributeData
 
 public: HtmlMetaAttributeData(int32_t id, std::string value);
 
-    public: bool equals(HtmlMetaAttributeData htmlMetaAttributeData);
+    public: bool equals(HtmlMetaAttributeData* htmlMetaAttributeData);
 
     public: std::string toString();
 

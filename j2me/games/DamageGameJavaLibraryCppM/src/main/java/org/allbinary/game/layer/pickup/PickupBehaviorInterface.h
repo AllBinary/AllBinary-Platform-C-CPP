@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPBEHAVIORINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPBEHAVIORINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -41,16 +47,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PickupProcessorInterface.h"
-#include "PickedUpLayerInterface.h"
+        #include "org/allbinary/game/layer/pickup/PickupProcessorInterface.h"
+#include "org/allbinary/game/layer/pickup/PickedUpLayerInterface.h"
 
 class PickupBehaviorInterface {
 
                 //@Throws(Exception.constructor)
             
-    void doPickup(PickupProcessorInterface pickupProcessorInterface);
+    public: virtual void doPickup(PickupProcessorInterface* pickupProcessorInterface) = 0;
 
-    void doPickupLayer(PickedUpLayerInterface pickupLayerInterface);
+    public: virtual void doPickupLayer(PickedUpLayerInterface* pickupLayerInterface) = 0;
 
 };
 

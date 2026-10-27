@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,21 +58,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GyroSensorFactory.h"
+        #include "org/allbinary/input/gyro/GyroSensorFactory.h"
 
 class SensorGameUpdateProcessor
             : public Object
          {
 
-    private: AllBinarySensor inputSensor;
+    private: AllBinarySensor* inputSensor;
 
-    protected: void setInputSensor(AllBinarySensor inputSensor){
+    protected: void setInputSensor(AllBinarySensor* inputSensor){
 this->inputSensor= inputSensor;
     
 }
 
 
-    public: AllBinarySensor getInputSensor(){
+    public: AllBinarySensor* getInputSensor(){
 
 
 
@@ -116,9 +122,9 @@ this->inputSensor= inputSensor;
 
 
     protected: void setNoSensors(){
-GyroSensorFactory::getInstance().setCompleteMotionGestureInputEventListener(NoCompleteMotionGestureInputEventListener::getInstance());
+GyroSensorFactory::getInstance()->setCompleteMotionGestureInputEventListener(NoCompleteMotionGestureInputEventListener::getInstance());
     
-AccelerometerSensorFactory::getInstance().setCompleteMotionGestureInputEventListener(NoCompleteMotionGestureInputEventListener::getInstance());
+AccelerometerSensorFactory::getInstance()->setCompleteMotionGestureInputEventListener(NoCompleteMotionGestureInputEventListener::getInstance());
     
 this->setInputSensor(NoAllBinarySensor::getInstance());
     

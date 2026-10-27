@@ -20,6 +20,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENTHANDLER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -49,8 +55,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CapitalEventListenerInterface.h"
-#include "CapitalEvent.h"
+        #include "org/allbinary/game/layer/capital/event/CapitalEventListenerInterface.h"
+#include "org/allbinary/game/layer/capital/event/CapitalEvent.h"
 
 class CapitalEventHandler: public BasicEventHandler {
 
@@ -58,7 +64,7 @@ public: CapitalEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
 };
 

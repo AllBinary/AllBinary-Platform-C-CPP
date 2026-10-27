@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_SINGLETONANIMATIONINTERFACEFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_SINGLETONANIMATIONINTERFACEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,27 +52,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnimationInterfaceFactoryInterface.h"
-#include "ProceduralAnimationInterfaceFactoryInterface.h"
-#include "Animation.h"
+        #include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/Animation.h"
 
 class SingletonAnimationInterfaceFactory
             : public Object
-        : public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
+        , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
 
-    private: Animation animationInterface;
+    private: Animation* animationInterface;
 
-public: SingletonAnimationInterfaceFactory(Animation animationInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public: Animation getInstance(int32_t instanceId);
+public: SingletonAnimationInterfaceFactory(Animation* animationInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstanceAnimation(Animation animationInterface);
+    public: Animation* getInstance(int32_t instanceId);
 
-    public: void setInitialScale(ScaleProperties scaleProperties);
+                //@Throws(Exception.constructor)
+            
+    public: Animation* getInstanceAnimation(Animation* animationInterface);
+
+    public: void setInitialScale(ScaleProperties* scaleProperties);
 
 };
 

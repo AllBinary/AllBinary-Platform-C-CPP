@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_UTIL_ABHASHMAP_H
         #define ORG_ALLBINARY_UTIL_ABHASHMAP_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <java/util/HashMap.h>
 
       
@@ -69,7 +77,7 @@ class ABHashMap: public HashMap<K, V> {
                 //Otherwise - typeArguments - type - WildcardType
 
                 //Otherwise - typeArguments - type - WildcardType
-> map);
+>* map);
 
     public: V remove(Object* key);
 
@@ -77,9 +85,9 @@ class ABHashMap: public HashMap<K, V> {
 
     public: bool containsValue(Object* value);
 
-    public: Set<K> keySet();
+    public: Set<K>* keySet();
 
-    public: Set<Entry> entrySet();
+    public: Set<Entry<K, V>*>* entrySet();
 
     public: V getOrDefault(Object* key, V defaultValue);
 

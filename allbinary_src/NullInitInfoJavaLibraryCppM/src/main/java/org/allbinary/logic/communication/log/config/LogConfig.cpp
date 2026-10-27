@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,7 +67,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogConfigData.h"
+        #include "org/allbinary/logic/communication/log/config/LogConfigData.h"
 
 class LogConfig
             : public Object
@@ -91,30 +97,30 @@ this->fileName= aFileName;
 }
 
 
-public: LogConfig(Node node){
+public: LogConfig(Node* node){
 
-    Node enabledValueNode = DomSearchHelper::getNode(EntryData::getInstance().ENABLE, node.getChildNodes());;
+    Node* enabledValueNode = DomSearchHelper::getNode(EntryData::getInstance()->ENABLE, node->getChildNodes());;
     
 
     std::string isEnabledString = DomNodeHelper::getTextNodeValue(enabledValueNode);;
     
-this->isEnabled= BooleanUtil::getInstance().getFromString(isEnabledString);
+this->isEnabled= BooleanUtil::getInstance()->getFromString(isEnabledString);
     
 
-    LogConfigData logConfigData = LogConfigData::getInstance();;
+    LogConfigData* logConfigData = LogConfigData::getInstance();;
     
 
-    Node nameValueNode = DomSearchHelper::getNode(logConfigData.NAME, node.getChildNodes());;
+    Node* nameValueNode = DomSearchHelper::getNode(logConfigData->NAME, node->getChildNodes());;
     
 this->name= DomNodeHelper::getTextNodeValue(nameValueNode);
     
 
-    Node descriptionValueNode = DomSearchHelper::getNode(logConfigData.DESCRIPTION, node.getChildNodes());;
+    Node* descriptionValueNode = DomSearchHelper::getNode(logConfigData->DESCRIPTION, node->getChildNodes());;
     
 this->description= DomNodeHelper::getTextNodeValue(descriptionValueNode);
     
 
-    Node fileValueNode = DomSearchHelper::getNode(logConfigData.FILE, node.getChildNodes());;
+    Node* fileValueNode = DomSearchHelper::getNode(logConfigData->FILE, node->getChildNodes());;
     
 this->fileName= DomNodeHelper::getTextNodeValue(fileValueNode);
     
@@ -199,9 +205,9 @@ this->fileName= value;
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getTypeVector(){
+    public: BasicArrayList* getTypeVector(){
 
-    BasicArrayList logKeyVector = BasicArrayListD();;
+    BasicArrayList* logKeyVector = new BasicArrayListD();;
     
 
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_LURCHROTATIONAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_LURCHROTATIONAI_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/animation/IndexedAnimation.h>
 
       
@@ -63,9 +69,9 @@
         
 class LurchRotationAI: public LurchAI {
 
-    private: IndexedAnimation rotationAnimationInterface;
+    private: IndexedAnimation* rotationAnimationInterface;
 
-public: LurchRotationAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: LurchRotationAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
     protected: void reverse();
 

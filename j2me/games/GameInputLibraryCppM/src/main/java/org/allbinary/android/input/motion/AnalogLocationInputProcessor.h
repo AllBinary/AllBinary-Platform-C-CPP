@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_ANALOGLOCATIONINPUTPROCESSOR_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_ANALOGLOCATIONINPUTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/analog/AnalogLocationInput.h>
@@ -52,7 +58,7 @@ class AnalogLocationInputProcessor
             : public Object
          {
 
-    public: void process(AllBinaryLayerManager allbinaryLayerManager, AnalogLocationInput analogLocationInput);
+    public: void process(AllBinaryLayerManager* allbinaryLayerManager, AnalogLocationInput* analogLocationInput);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,16 +70,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameInitializationInterface.h"
-#include "BasicBuildGameInitializerFactory.h"
+        #include "org/allbinary/game/init/GameInitializationInterface.h"
+#include "org/allbinary/game/init/BasicBuildGameInitializerFactory.h"
 
 class GameInitializationUtil
             : public Object
          {
 
-    private: static GameInitializationUtil instance() { return GameInitializationUtil(); }
+    private: static GameInitializationUtil* instance() { static std::unique_ptr<GameInitializationUtil> value(new GameInitializationUtil()); return value.get(); }
 
-    public: static GameInitializationUtil getInstance(){
+    public: static GameInitializationUtil* getInstance(){
 
 
 
@@ -83,26 +89,26 @@ class GameInitializationUtil
 }
 
 
-    public: const GameInitializedEvent EVENT = GameInitializedEvent(this);
+    public: GameInitializedEvent* EVENT = new GameInitializedEvent(this);
 
                 //@Throws(Exception.constructor)
             
-    public: void initDemo(AbeClientInformationInterface abeClientInformation, MyCanvas canvas, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface){
+    public: void initDemo(AbeClientInformationInterface* abeClientInformation, MyCanvas* canvas, BasicBuildGameInitializerFactory* gameInitializationInterfaceFactoryInterface){
 
-    MainFeatureFactory mainFeatureFactory = MainFeatureFactory::getInstance();;
+    MainFeatureFactory* mainFeatureFactory = MainFeatureFactory::getInstance();;
     
 
-                        if(ChangedGameFeatureListener::getInstance().isChangedFeature(mainFeatureFactory.STATIC))
+                        if(ChangedGameFeatureListener::getInstance()->isChangedFeature(mainFeatureFactory->STATIC))
                         
                                     {
                                     
-    GameInitializationInterface gameInitializationInterface = gameInitializationInterfaceFactoryInterface.getInstance();;
+    GameInitializationInterface* gameInitializationInterface = gameInitializationInterfaceFactoryInterface->getInstance();;
     
 
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-                        if(features.isFeature(mainFeatureFactory.LOAD_ALL))
+                        if(features->isFeature(mainFeatureFactory->LOAD_ALL))
                         
                                     {
                                     this->initGame(abeClientInformation, canvas, gameInitializationInterfaceFactoryInterface);
@@ -111,15 +117,15 @@ class GameInitializationUtil
                                     }
                                 
                              else 
-                        if(features.isFeature(mainFeatureFactory.LOAD_ONDEMAND))
+                        if(features->isFeature(mainFeatureFactory->LOAD_ONDEMAND))
                         
                                     {
                                     
-    ResourceLoadingLevelFactory resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
+    ResourceLoadingLevelFactory* resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
     
-gameInitializationInterface.init(abeClientInformation, canvas.getCustomCommandListener(), resourceLoadingLevelFactory.LOAD_EARLY.getLevel());
+gameInitializationInterface->init(abeClientInformation, canvas->getCustomCommandListener(), resourceLoadingLevelFactory->LOAD_EARLY.getLevel());
     
-this->EVENT.setResourceLoadingLevel(resourceLoadingLevelFactory.LOAD_EARLY);
+this->EVENT->setResourceLoadingLevel(resourceLoadingLevelFactory->LOAD_EARLY);
     
 
                                     }
@@ -128,12 +134,12 @@ this->EVENT.setResourceLoadingLevel(resourceLoadingLevelFactory.LOAD_EARLY);
                             
 
 
-                            throw Exception("No Loading Feature Available");
+                            throw new Exception("No Loading Feature Available");
                     
 
                         }
                             
-GameInitializedEventHandler::getInstance().fireEvent(this->EVENT);
+GameInitializedEventHandler::getInstance()->fireEvent(this->EVENT);
     
 
                                     }
@@ -143,24 +149,24 @@ GameInitializedEventHandler::getInstance().fireEvent(this->EVENT);
 
                 //@Throws(Exception.constructor)
             
-    public: void initGame(AbeClientInformationInterface abeClientInformation, MyCanvas canvas, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface){
+    public: void initGame(AbeClientInformationInterface* abeClientInformation, MyCanvas* canvas, BasicBuildGameInitializerFactory* gameInitializationInterfaceFactoryInterface){
 
-                        if(ChangedGameFeatureListener::getInstance().isChangedFeature(MainFeatureFactory::getInstance().STATIC))
+                        if(ChangedGameFeatureListener::getInstance()->isChangedFeature(MainFeatureFactory::getInstance()->STATIC))
                         
                                     {
                                     
-    GameInitializationInterface gameInitializationInterface = gameInitializationInterfaceFactoryInterface.getInstance();;
+    GameInitializationInterface* gameInitializationInterface = gameInitializationInterfaceFactoryInterface->getInstance();;
     
 
-    ResourceLoadingLevelFactory resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
+    ResourceLoadingLevelFactory* resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
     
-gameInitializationInterface.init(abeClientInformation, canvas.getCustomCommandListener(), resourceLoadingLevelFactory.LOAD_ALL.getLevel());
+gameInitializationInterface->init(abeClientInformation, canvas->getCustomCommandListener(), resourceLoadingLevelFactory->LOAD_ALL.getLevel());
     
-this->EVENT.setResourceLoadingLevel(resourceLoadingLevelFactory.LOAD_ALL);
+this->EVENT->setResourceLoadingLevel(resourceLoadingLevelFactory->LOAD_ALL);
     
-GameInitializedEventHandler::getInstance().fireEvent(this->EVENT);
+GameInitializedEventHandler::getInstance()->fireEvent(this->EVENT);
     
-ChangedGameFeatureListener::getInstance().remove(MainFeatureFactory::getInstance().STATIC);
+ChangedGameFeatureListener::getInstance()->remove(MainFeatureFactory::getInstance()->STATIC);
     
 
                                     }

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -74,26 +80,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Controllable2.h"
+        #include "org/allbinary/media/audio/Controllable2.h"
 //BasicPlayer
 class PlayerComposite
             : public Object
-        : public Controllable, public Player {
+        , public Controllable, public Player {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: Player player;
+    private: Player* player;
 
-    private: const TimeDelayHelper timeElapsedHelper = TimeDelayHelper(0);
+    private: TimeDelayHelper* timeElapsedHelper = new TimeDelayHelper(0);
 
-public: PlayerComposite(Player player, int32_t repeatTime);
+public: PlayerComposite(Player* player, int32_t repeatTime);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void addPlayerListener(PlayerListener playerListener);
+    public: void addPlayerListener(PlayerListener* playerListener);
 
-    public: void removePlayerListener(PlayerListener playerListener);
+    public: void removePlayerListener(PlayerListener* playerListener);
 
     public: void close();
 
@@ -115,19 +121,19 @@ public: PlayerComposite(Player player, int32_t repeatTime);
 
     public: int64_t setMediaTime(int64_t now);
 
-    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
+    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
     public: void start();
 
     public: void stop();
 
-    public: Control getControl(std::string controlType);
+    public: Control* getControl(std::string controlType);
 
-    public: std::vector<Control> getControls();
+    public: std::vector<Control*> getControls();
 
     public: void setVolume(int32_t leftVolume, int32_t rightVolume);
 
-    public: Player getPlayerP();
+    public: Player* getPlayerP();
 
 };
 

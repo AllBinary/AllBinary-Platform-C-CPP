@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <java/util/EventObject.h>
 
       
@@ -45,17 +53,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserEmailEventNameData.h"
+        #include "org/allbinary/logic/communication/smtp/event/UserEmailEventNameData.h"
 
 class EmailEvent: public EventObject {
 
-    private: EmailInfo emailInfo;
+    private: EmailInfo* emailInfo;
 
-    private: UserEmailEventNameData userEmailEventNameData;
+    private: UserEmailEventNameData* userEmailEventNameData;
 
     private: int32_t attempts= 0;
 
-public: EmailEvent(Object* emailEventHandler, UserEmailEventNameData userEmailEventNameData, EmailInfo emailInfo, int32_t attempts) : EventObject(emailEventHandler){
+public: EmailEvent(Object* emailEventHandler, UserEmailEventNameData* userEmailEventNameData, EmailInfo* emailInfo, int32_t attempts) : EventObject(emailEventHandler){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -69,7 +77,7 @@ this->emailInfo= emailInfo;
 }
 
 
-    public: EmailInfo getEmailInfo(){
+    public: EmailInfo* getEmailInfo(){
 
 
 
@@ -97,25 +105,25 @@ this->attempts= attempts;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("EmailEvent Log: \n");
+stringBuffer->append("EmailEvent Log: \n");
     
-stringBuffer.append("Event Name: ");
+stringBuffer->append("Event Name: ");
     
-stringBuffer.append(this->userEmailEventNameData.toString());
+stringBuffer->append(this->userEmailEventNameData->toString());
     
-stringBuffer.append(this->getEmailInfo().toString());
+stringBuffer->append(this->getEmailInfo()->toString());
     
-stringBuffer.append("\nNumber of Attempts: ");
+stringBuffer->append("\nNumber of Attempts: ");
     
-stringBuffer.appendint(this->getAttempts());
+stringBuffer->appendint(this->getAttempts());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

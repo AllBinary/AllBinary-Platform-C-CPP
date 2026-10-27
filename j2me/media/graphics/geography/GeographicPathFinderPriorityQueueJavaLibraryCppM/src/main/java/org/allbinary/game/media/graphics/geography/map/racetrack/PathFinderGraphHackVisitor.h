@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_PATHFINDERGRAPHHACKVISITOR_H
         #define ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_PATHFINDERGRAPHHACKVISITOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -47,23 +55,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasePathFinderGraphVisitor.h"
+        #include "org/allbinary/game/media/graphics/geography/map/racetrack/BasePathFinderGraphVisitor.h"
 //1.4.2
 class PathFinderGraphHackVisitor: public BasePathFinderGraphVisitor {
 
-public: PathFinderGraphHackVisitor(BasicGeographicMap geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight);
+public: PathFinderGraphHackVisitor(BasicGeographicMap* geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight);
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(Object* graph, BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList);
+    public: void visit(Object* graph, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList);
 
                 //@Throws(Exception.constructor)
             
-    private: void fixStart(Object* graph, BasicArrayList startPathFindingNodeList);
+    private: void fixStart(Object* graph, BasicArrayList* startPathFindingNodeList);
 
                 //@Throws(Exception.constructor)
             
-    private: void fixEnd(Object* graph, BasicArrayList endPathFindingNodeList);
+    private: void fixEnd(Object* graph, BasicArrayList* endPathFindingNodeList);
 
                 //@Throws(Exception.constructor)
             
@@ -71,11 +79,11 @@ public: PathFinderGraphHackVisitor(BasicGeographicMap geographicMapInterface, in
 
                 //@Throws(Exception.constructor)
             
-    public: void fixPath(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, BasicArrayList pathList);
+    public: void fixPath(BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList, BasicArrayList* pathList);
 
                 //@Throws(Exception.constructor)
             
-    private: void removeOverPassEdges(BasicArrayList pathList);
+    private: void removeOverPassEdges(BasicArrayList* pathList);
 
     public: bool isValid(Object* graphPath);
 

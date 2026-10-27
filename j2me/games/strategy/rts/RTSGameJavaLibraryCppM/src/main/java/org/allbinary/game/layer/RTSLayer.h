@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -180,89 +188,89 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RTSInterface.h"
-#include "PathFindingLayerInterface.h"
-#include "RTSLayer2LogHelper.h"
-#include "GeographicMapCellPositionAreaBase.h"
-#include "GeographicMapCellPositionArea.h"
-#include "AllBinaryTiledLayer.h"
-#include "AllBinaryGameLayerManager.h"
-#include "RTSPlayerLayerInterface.h"
-#include "RTSLayerUtil.h"
-#include "WaypointBehaviorBase.h"
-#include "SelectionHudPaintable.h"
+        #include "org/allbinary/game/layer/RTSInterface.h"
+#include "org/allbinary/game/layer/PathFindingLayerInterface.h"
+#include "org/allbinary/game/layer/RTSLayer2LogHelper.h"
+#include "org/allbinary/game/layer/GeographicMapCellPositionAreaBase.h"
+#include "org/allbinary/game/layer/GeographicMapCellPositionArea.h"
+#include "org/allbinary/game/layer/AllBinaryTiledLayer.h"
+#include "org/allbinary/game/layer/AllBinaryGameLayerManager.h"
+#include "org/allbinary/game/layer/RTSPlayerLayerInterface.h"
+#include "org/allbinary/game/layer/RTSLayerUtil.h"
+#include "org/allbinary/game/layer/WaypointBehaviorBase.h"
+#include "org/allbinary/game/layer/SelectionHudPaintable.h"
 
 class RTSLayer: public MultiPlayerGameLayer, public TickableInterface, public GameInputInterface, public GameKeyEventSourceInterface, public RTSInterface, public PathFindingLayerInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: static RTSLayer createSimulatedInstance(RemoteInfo remoteInfo);
+    public: static RTSLayer* createSimulatedInstance(RemoteInfo* remoteInfo);
 
-    private: static const int32_t id = 0;
+    private: static inline const int32_t id = 0;
 
-    protected: static const int32_t MAIN_INDEX = 0;
+    protected: static inline const int32_t MAIN_INDEX = 0;
 
-    protected: static const int32_t SECONDARY_INDEX = 1;
+    protected: static inline const int32_t SECONDARY_INDEX = 1;
 
     public: static int32_t getMinStaticType();
 
     public: static int32_t getMaxStaticType();
 
-    public: static bool isRTSLayer(AllBinaryLayer layerInterface);
+    public: static bool isRTSLayer(AllBinaryLayer* layerInterface);
 
     protected: const bool debug = true;
 
     public: const bool showMoreCaptionStates = this->debug;
 
-    protected: const std::vector<GameInputProcessor> inputProcessorArray = std::vector<GameInputProcessor>(InputFactory::getInstance().MAX);
+    protected: const std::vector<GameInputProcessor*> inputProcessorArray = std::vector<GameInputProcessor*>(InputFactory::getInstance()->MAX);
 
-    public: RTSLayer2LogHelper rtsLayer2LogHelper = RTSLayer2LogHelper::getInstance();
+    public: RTSLayer2LogHelper* rtsLayer2LogHelper = RTSLayer2LogHelper::getInstance();
 
-    public: WaypointLogHelper waypointLogHelperP = WaypointLogHelper::getInstance();
+    public: WaypointLogHelper* waypointLogHelperP = WaypointLogHelper::getInstance();
 
-    public: Waypoint2LogHelper waypoint2LogHelperP = Waypoint2LogHelper::getInstance();
+    public: Waypoint2LogHelper* waypoint2LogHelperP = Waypoint2LogHelper::getInstance();
 
-    public: WaypointRunnableLogHelper waypointRunnableLogHelperP = WaypointRunnableLogHelper::getInstance();
+    public: WaypointRunnableLogHelper* waypointRunnableLogHelperP = WaypointRunnableLogHelper::getInstance();
 
-    private: RTSFormInput rtsFormInput;
+    private: RTSFormInput* rtsFormInput;
 
-    private: IndexedAnimation verticleBuildAnimationInterface;
+    private: IndexedAnimation* verticleBuildAnimationInterface;
 
-    protected: Animation rangeAnimation;
+    protected: Animation* rangeAnimation;
 
-    protected: Animation initRangeAnimation;
+    protected: Animation* initRangeAnimation;
 
-    protected: Animation sensorRangeAnimation;
+    protected: Animation* sensorRangeAnimation;
 
-    protected: Animation initSensorRangeAnimation;
+    protected: Animation* initSensorRangeAnimation;
 
-    protected: Animation baseAnimationInterface;
+    protected: Animation* baseAnimationInterface;
 
-    private: const TimeDelayHelper buildFrameTimeHelper = TimeDelayHelper(50);
+    private: TimeDelayHelper* buildFrameTimeHelper = new TimeDelayHelper(50);
 
-    private: Animation buildAnimationInterface;
+    private: Animation* buildAnimationInterface;
 
-    private: Animation animationInterface;
+    private: Animation* animationInterface;
 
-    protected: IndexedAnimation initAnimationInterface;
+    protected: IndexedAnimation* initAnimationInterface;
 
-    protected: IndexedAnimation indexedButShouldBeRotationAnimationInterface;
+    protected: IndexedAnimation* indexedButShouldBeRotationAnimationInterface;
 
-    protected: IndexedAnimation emptyAnimationInterface;
+    protected: IndexedAnimation* emptyAnimationInterface;
 
-    protected: IndexedAnimation destroyAnimationInterface;
+    protected: IndexedAnimation* destroyAnimationInterface;
 
-    protected: const TimeDelayHelper fireTimeHelper = TimeDelayHelper(700);
+    protected: TimeDelayHelper* fireTimeHelper = new TimeDelayHelper(700);
 
     private: std::string rootName;
 
-    protected: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
+    protected: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
 
     private: const int32_t BUILD_VALUE = 63;
 
-    public: GeographicMapCellPositionAreaBase geographicMapCellPositionAreaBase;
+    public: GeographicMapCellPositionAreaBase* geographicMapCellPositionAreaBase;
 
-    private: Health healthInterface = Health::NULL_HEALTH;
+    private: Health* healthInterface = Health::NULL_HEALTH;
 
     private: int32_t level = 1;
 
@@ -278,19 +286,19 @@ class RTSLayer: public MultiPlayerGameLayer, public TickableInterface, public Ga
 
     private: bool selected = false;
 
-protected: RTSLayer(RemoteInfo remoteInfo, std::vector<Group> groupInterface, std::string rootName, std::string name, Health healthInterface, RTSFormInput rtsFormInput, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y, ViewPositionBase viewPosition);
+protected: RTSLayer(RemoteInfo* remoteInfo, std::vector<Group*> groupInterface, std::string rootName, std::string name, Health* healthInterface, RTSFormInput* rtsFormInput, AnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface* proceduralAnimationInterfaceFactoryInterface, Rectangle* rectangle, int32_t x, int32_t y, ViewPositionBase* viewPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager);
 
                 //@Throws(Exception.constructor)
             
-    public: void updateWaypointBehavior(BasicGeographicMap geographicMapInterface);
+    public: void updateWaypointBehavior(BasicGeographicMap* geographicMapInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void construct(RTSPlayerLayerInterface rtsPlayerLayerInterface);
+    public: void construct(RTSPlayerLayerInterface* rtsPlayerLayerInterface);
 
     public: void select();
 
@@ -302,29 +310,29 @@ protected: RTSLayer(RemoteInfo remoteInfo, std::vector<Group> groupInterface, st
 
     public: int32_t getPercentComplete();
 
-    public: ScrollSelectionForm getScrollSelectionForm();
+    public: ScrollSelectionForm* getScrollSelectionForm();
 
     public: void initInputProcessors();
 
                 //@Throws(Exception.constructor)
             
-    public: void processBuiltTick(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processBuiltTick(AllBinaryLayerManager* allBinaryLayerManager);
 
-    public: void processTick(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager);
 
                 //@Throws(Exception.constructor)
             
-    public: void processInput(AllBinaryLayerManager layerManager);
+    public: void processInput(AllBinaryLayerManager* layerManager);
 
     protected: void reload();
 
-    public: void onMovement(TrackingEvent trackingEvent);
+    public: void onMovement(TrackingEvent* trackingEvent);
 
                 //@Throws(Exception.constructor)
             
-    public: void onMovementFound(TrackingEvent trackingEvent);
+    public: void onMovementFound(TrackingEvent* trackingEvent);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
                 //@Throws(Exception.constructor)
             
@@ -332,7 +340,7 @@ protected: RTSLayer(RemoteInfo remoteInfo, std::vector<Group> groupInterface, st
 
     public: int32_t getSourceId();
 
-    private: const RTSLayerUtil rtsLayerUtil = RTSLayerUtil::getInstance();
+    private: RTSLayerUtil* rtsLayerUtil = RTSLayerUtil::getInstance();
 
     public: void downgrade();
 
@@ -360,31 +368,31 @@ protected: RTSLayer(RemoteInfo remoteInfo, std::vector<Group> groupInterface, st
 
     public: void setLevel(int32_t level);
 
-    public: Animation getVerticleBuildAnimationInterface();
+    public: Animation* getVerticleBuildAnimationInterface();
 
-    public: Animation getAnimationInterface();
+    public: Animation* getAnimationInterface();
 
-    public: void setAnimationInterface(Animation animationInterface);
+    public: void setAnimationInterface(Animation* animationInterface);
 
-    private: const LayerDistanceUtil layerDistanceUtil = LayerDistanceUtil::getInstance();
+    private: LayerDistanceUtil* layerDistanceUtil = LayerDistanceUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void setTarget(PathFindingLayerInterface targetGameLayer);
+    public: void setTarget(PathFindingLayerInterface* targetGameLayer);
 
-    public: SelectionHudPaintable createHudPaintable();
+    public: SelectionHudPaintable* createHudPaintable();
 
-    public: SelectionHudPaintable getHudPaintable();
+    public: SelectionHudPaintable* getHudPaintable();
 
     public: int32_t getMaxLevel();
 
     public: void setMaxLevel(int32_t maxLevel);
 
-    public: Health getHealthInterface();
+    public: Health* getHealthInterface();
 
-    public: void setHealthInterface(Health healthInterface);
+    public: void setHealthInterface(Health* healthInterface);
 
-    public: RTSFormInput getRTSFormInput();
+    public: RTSFormInput* getRTSFormInput();
 
                 //@Throws(Exception.constructor)
             
@@ -394,53 +402,53 @@ protected: RTSLayer(RemoteInfo remoteInfo, std::vector<Group> groupInterface, st
             
     public: void setDestroyed(bool destroyed);
 
-    public: BasicArrayList getEndGeographicMapCellPositionList();
+    public: BasicArrayList* getEndGeographicMapCellPositionList();
 
-    public: GeographicMapCellPositionAreaBase getGeographicMapCellPositionArea();
+    public: GeographicMapCellPositionAreaBase* getGeographicMapCellPositionArea();
 
     public: bool shouldHandleStartSameAsEnd();
 
                 //@Throws(Exception.constructor)
             
-    public: void handleCost(PathFindingLayerInterface ownerLayer);
+    public: void handleCost(PathFindingLayerInterface* ownerLayer);
 
-    public: WaypointBehaviorBase getWaypointBehavior();
+    public: WaypointBehaviorBase* getWaypointBehavior();
 
-    public: PathFindingLayerInterface getParentLayer();
+    public: PathFindingLayerInterface* getParentLayer();
 
-    public: RTSLayer2LogHelper getRTSLayer2LogHelper();
+    public: RTSLayer2LogHelper* getRTSLayer2LogHelper();
 
-    public: WaypointLogHelper getWaypointLogHelper();
+    public: WaypointLogHelper* getWaypointLogHelper();
 
-    public: Waypoint2LogHelper getWaypoint2LogHelper();
+    public: Waypoint2LogHelper* getWaypoint2LogHelper();
 
-    public: WaypointRunnableLogHelper getWaypointRunnableLogHelper();
+    public: WaypointRunnableLogHelper* getWaypointRunnableLogHelper();
 
     public: bool shouldAddWaypointFromBuilding();
 
-    public: CaptionAnimationHelperBase getCaptionAnimationHelper();
+    public: CaptionAnimationHelperBase* getCaptionAnimationHelper();
 
     public: bool isShowMoreCaptionStates();
 
                 //@Throws(Exception.constructor)
             
-    public: void init(GeographicMapCellHistory geographicMapCellHistory, BasicArrayList geographicMapCellPositionBasicArrayList);
+    public: void init(GeographicMapCellHistory* geographicMapCellHistory, BasicArrayList* geographicMapCellPositionBasicArrayList);
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition getCurrentGeographicMapCellPosition();
+    public: GeographicMapCellPosition* getCurrentGeographicMapCellPosition();
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition getTopLeftGeographicMapCellPosition();
+    public: GeographicMapCellPosition* getTopLeftGeographicMapCellPosition();
 
-    public: BasicArrayList getMoveOutOfBuildAreaPath(GeographicMapCellPosition geographicMapCellPosition);
+    public: BasicArrayList* getMoveOutOfBuildAreaPath(GeographicMapCellPosition* geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: void setClosestGeographicMapCellHistory(BasicArrayList pathsList);
+    public: void setClosestGeographicMapCellHistory(BasicArrayList* pathsList);
 
-    public: void teleportTo(GeographicMapCellPosition geographicMapCellPosition);
+    public: void teleportTo(GeographicMapCellPosition* geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
@@ -448,7 +456,7 @@ protected: RTSLayer(RemoteInfo remoteInfo, std::vector<Group> groupInterface, st
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getSurroundingGeographicMapCellPositionList();
+    public: BasicArrayList* getSurroundingGeographicMapCellPositionList();
 
                 //@Throws(Exception.constructor)
             
@@ -460,11 +468,11 @@ protected: RTSLayer(RemoteInfo remoteInfo, std::vector<Group> groupInterface, st
 
     public: bool isWaypointListEmptyOrOnlyTargets();
 
-    public: TrackingEvent getTrackingEvent();
+    public: TrackingEvent* getTrackingEvent();
 
                 //@Throws(Exception.constructor)
             
-    public: bool buildingChase(AllBinaryLayer allbinaryLayer, GeographicMapCellPosition cellPosition);
+    public: bool buildingChase(AllBinaryLayer* allbinaryLayer, GeographicMapCellPosition* cellPosition);
 
     public: void allStop();
 
@@ -474,11 +482,11 @@ protected: RTSLayer(RemoteInfo remoteInfo, std::vector<Group> groupInterface, st
 
     public: std::string getRootName();
 
-    public: RotationAnimation getRotationAnimationInterface();
+    public: RotationAnimation* getRotationAnimationInterface();
 
     public: void setFrame(int32_t index);
 
-    public: void setRotationAnimationInterface(RotationAnimation rotationAnimationInterface);
+    public: void setRotationAnimationInterface(RotationAnimation* rotationAnimationInterface);
 
 };
 

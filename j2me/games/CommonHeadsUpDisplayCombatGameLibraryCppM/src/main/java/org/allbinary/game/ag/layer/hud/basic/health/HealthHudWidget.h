@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -81,35 +87,35 @@ class HealthHudWidget: public BasicHud, public PaintableInterface, public Health
 
     private: int32_t healthScale;
 
-    protected: Animation animationInterface;
+    protected: Animation* animationInterface;
 
-    protected: Health healthInterface;
+    protected: Health* healthInterface;
 
     int32_t max= 0;
 
     private: std::vector<int32_t> xArray;
 
-    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
+    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-public: HealthHudWidget(Animation animationInterface, Health healthInterface, int32_t location, int32_t direction);
+public: HealthHudWidget(Animation* animationInterface, Health* healthInterface, int32_t location, int32_t direction);
 
     private: void update();
 
     public: void setX(int32_t x);
 
-    private: TimeDelayHelper timeDelayHelper = NoTimeDelayHelper::SINGLETON;
+    private: TimeDelayHelper* timeDelayHelper = NoTimeDelayHelper::SINGLETON;
 
-    private: const TimeDelayHelper slowBeatTimeDelayHelper = TimeDelayHelper(1280);
+    private: TimeDelayHelper* slowBeatTimeDelayHelper = new TimeDelayHelper(1280);
 
-    private: const TimeDelayHelper mediumBeatTimeDelayHelper = TimeDelayHelper(640);
+    private: TimeDelayHelper* mediumBeatTimeDelayHelper = new TimeDelayHelper(640);
 
-    private: const TimeDelayHelper fastBeatTimeDelayHelper = TimeDelayHelper(320);
+    private: TimeDelayHelper* fastBeatTimeDelayHelper = new TimeDelayHelper(320);
 
     public: void onHealthChange();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: void paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics* graphics);
 
 };
 

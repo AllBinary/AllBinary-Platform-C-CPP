@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_BUFFEREDLINEREADER_H
         #define ORG_ALLBINARY_LOGIC_IO_BUFFEREDLINEREADER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,9 +66,9 @@ class BufferedLineReader
             : public Object
          {
 
-    private: BufferedReader tmpIn;
+    private: BufferedReader* tmpIn;
 
-public: BufferedLineReader(AbFile file);
+public: BufferedLineReader(AbFile* file);
 
     public: void readUpToLines(int64_t readAheadIndex);
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/java/character/CharacterSet.h>
 
       
@@ -45,25 +51,25 @@
         
 class OperatingSystemInterface {
 
-    std::string getName();
+    public: virtual std::string getName() = 0;
 
-    std::string getVersion();
+    public: virtual std::string getVersion() = 0;
 
-    std::string getArch();
+    public: virtual std::string getArch() = 0;
 
-    CharacterSet getCharacterSet();
+    public: virtual CharacterSet* getCharacterSet() = 0;
 
-    bool isOverScan();
+    public: virtual bool isOverScan() = 0;
 
-    int32_t getOverScanXPercent();
+    public: virtual int32_t getOverScanXPercent() = 0;
 
-    int32_t getOverScanYPercent();
+    public: virtual int32_t getOverScanYPercent() = 0;
 
-    bool isScalable();
+    public: virtual bool isScalable() = 0;
 
-    bool isAutoHide();
+    public: virtual bool isAutoHide() = 0;
 
-    std::string toString();
+    public: virtual std::string toString() = 0;
 
 };
 

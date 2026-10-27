@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,21 +49,21 @@ class AuthorizeNetAimData
             : public Object
          {
 
-    public: static const std::string X_DELIM_DATA = "x_delim_data";
+    public: static inline const std::string X_DELIM_DATA = "x_delim_data";
 
-    public: static const std::string X_DELIM_CHAR = "x_delim_char";
+    public: static inline const std::string X_DELIM_CHAR = "x_delim_char";
 
-    public: static const std::string X_ENCAP_CHAR = "x_encap_char";
+    public: static inline const std::string X_ENCAP_CHAR = "x_encap_char";
 
-    public: static const std::string X_AUTHENTICATION_INDICATOR = "x_authentication_indicator";
+    public: static inline const std::string X_AUTHENTICATION_INDICATOR = "x_authentication_indicator";
 
-    public: static const std::string X_CARDHOLDER_AUTHENTICATION_VALUE = "x_cardholder_authentication_value";
+    public: static inline const std::string X_CARDHOLDER_AUTHENTICATION_VALUE = "x_cardholder_authentication_value";
 
-    public: static const std::string X_DRIVERS_LICENSE_NUM = "x_drivers_license_num";
+    public: static inline const std::string X_DRIVERS_LICENSE_NUM = "x_drivers_license_num";
 
-    public: static const std::string X_DRIVERS_LICENSE_STATE = "x_drivers_license_state";
+    public: static inline const std::string X_DRIVERS_LICENSE_STATE = "x_drivers_license_state";
 
-    public: static const std::string X_DRIVERS_LICENSE_DOB = "x_drivers_license_dob";
+    public: static inline const std::string X_DRIVERS_LICENSE_DOB = "x_drivers_license_dob";
 
 private: AuthorizeNetAimData(){
 }

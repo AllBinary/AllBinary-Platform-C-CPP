@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -77,28 +83,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreFrontUsersStatisticsInterface.h"
-#include "StoreFrontUsersStatisticsData.h"
+        #include "org/allbinary/business/context/modules/storefront/statistics/users/StoreFrontUsersStatisticsInterface.h"
+#include "org/allbinary/business/context/modules/storefront/statistics/users/StoreFrontUsersStatisticsData.h"
 
 class StoreFrontUsersStatistics
             : public Object
-        : public StoreFrontUsersStatisticsInterface {
+        , public StoreFrontUsersStatisticsInterface {
 
-    private: Long totalNumberOfUsers;
+    private: int64_t totalNumberOfUsers;
 
-    private: HashMap<Object*, Object*> totalUsersByRoleHashMap;
+    private: HashMap<Object*, Object*>* totalUsersByRoleHashMap;
 
-public: StoreFrontUsersStatistics(StoreFrontInterface storeFrontInterface);
+public: StoreFrontUsersStatistics(StoreFrontInterface* storeFrontInterface);
 
-    private: Long getNewTotal(UserRole userRole);
+    private: int64_t getNewTotal(UserRole* userRole);
 
-    public: Long getNumberOfUsers();
+    public: int64_t getNumberOfUsers();
 
-    public: Long getNumberOfUsersByRole(std::string role);
+    public: int64_t getNumberOfUsersByRole(std::string role);
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
-    public: BasicArrayList toVector();
+    public: BasicArrayList* toVector();
 
     public: Object* getKey();
 

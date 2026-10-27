@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
@@ -65,7 +73,7 @@
         
 class BasicTextEmailTag: public CustomTagSupport {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string subject;
 
@@ -91,20 +99,20 @@ this->body= value;
 
         try {
             
-    HashMap<Object*, Object*> propertiesHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* propertiesHashMap = StdUtil::getInstance()->createHashMap();;
     
-propertiesHashMap.put("Subject", this->subject);
+propertiesHashMap->put("Subject", this->subject);
     
-propertiesHashMap.put("Body", this->body);
-    
-
-    Object* anyType = BasicTextEmailHelperFactory().getInstance(propertiesHashMap, this->pageContext);;
+propertiesHashMap->put("Body", this->body);
     
 
-    Method method = anyType->constructor.name.getMethod("send", 
+    Object* anyType = (new BasicTextEmailHelperFactory())->getInstance(propertiesHashMap, this->pageContext);;
+    
+
+    Method* method = anyType->getClass()->getMethod("send", 
                             nullptr);;
     
-method.invoke(anyType, 
+method->invoke(anyType, 
                             nullptr);
     
 
@@ -115,16 +123,16 @@ method.invoke(anyType,
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to Send Email.";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "send()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "send()", &e);
     
 
                                     }
@@ -145,7 +153,7 @@ method.invoke(anyType,
     public: int32_t doStartTag(){
 
         try {
-            this->pageContext.getOut().print(this->send());
+            this->pageContext.getOut()->print(this->send());
     
 
 
@@ -155,9 +163,9 @@ method.invoke(anyType,
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 

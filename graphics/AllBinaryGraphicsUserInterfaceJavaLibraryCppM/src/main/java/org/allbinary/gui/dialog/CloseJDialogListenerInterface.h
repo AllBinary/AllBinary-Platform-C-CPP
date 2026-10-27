@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GUI_DIALOG_CLOSEJDIALOGLISTENERINTERFACE_H
         #define ORG_ALLBINARY_GUI_DIALOG_CLOSEJDIALOGLISTENERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,7 +48,7 @@
         
 class CloseJDialogListenerInterface {
 
-    void onClose();
+    public: virtual void onClose() = 0;
 
 };
 

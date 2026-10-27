@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_SELECTRTSLAYERVISITOR_H
         #define ORG_ALLBINARY_GAME_INPUT_SELECTRTSLAYERVISITOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/util/visitor/Visitor.h>
 
       

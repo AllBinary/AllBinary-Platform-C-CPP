@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINELAYERFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINELAYERFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,19 +58,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MineLayer.h"
+        #include "org/allbinary/game/ag/layer/weapon/mine/MineLayer.h"
 
 class MineLayerFactory
             : public Object
-        : public AllBinaryLayerFactoryInterface {
+        , public AllBinaryLayerFactoryInterface {
 
-    private: ViewPositionFactoryInterface viewPositionFactoryInterface;
+    private: ViewPositionFactoryInterface* viewPositionFactoryInterface;
 
-public: MineLayerFactory(ViewPositionFactoryInterface viewPositionFactoryInterface);
+public: MineLayerFactory(ViewPositionFactoryInterface* viewPositionFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer getInstance();
+    public: AllBinaryLayer* getInstance();
 
 };
 

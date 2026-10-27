@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/io/file/AbFile.h>
 
       
@@ -42,11 +48,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BooleanFileVisitor.h"
+        #include "org/allbinary/logic/io/file/visitor/BooleanFileVisitor.h"
 
 class ExcludeFileExtensionsBooleanFileVisitor: public BooleanFileVisitor {
 
-public: ExcludeFileExtensionsBooleanFileVisitor(BasicArrayList filterStringBasicArrayList) : BooleanFileVisitor(filterStringBasicArrayList){
+public: ExcludeFileExtensionsBooleanFileVisitor(BasicArrayList* filterStringBasicArrayList) : BooleanFileVisitor(filterStringBasicArrayList){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -56,9 +62,9 @@ public: ExcludeFileExtensionsBooleanFileVisitor(BasicArrayList filterStringBasic
 }
 
 
-    public: Boolean visit(AbFile file){
+    public: bool visit(AbFile* file){
 
-                        if(this->getFilterStringBasicArrayList().size() == 0)
+                        if(this->getFilterStringBasicArrayList()->size() == 0)
                         
                                     {
                                     
@@ -79,9 +85,9 @@ public: ExcludeFileExtensionsBooleanFileVisitor(BasicArrayList filterStringBasic
 }
 
 
-    public: Boolean visit(AbFile file, std::string fileNameString){
+    public: bool visit(AbFile* file, std::string fileNameString){
 
-    std::string fileNameAndExtension = file.getPath();;
+    std::string fileNameAndExtension = file->getPath();;
     
 
                         if(fileNameAndExtension.size() > fileNameString.size())
@@ -91,7 +97,7 @@ public: ExcludeFileExtensionsBooleanFileVisitor(BasicArrayList filterStringBasic
     int32_t startIndex = fileNameAndExtension.size() -fileNameString.size();;
     
 
-    std::string fileName = fileNameAndExtension.substring(startIndex);;
+    std::string fileName = JavaString::substring(fileNameAndExtension, startIndex);;
     
 
                         if(fileName.compare(fileNameString) == 0)

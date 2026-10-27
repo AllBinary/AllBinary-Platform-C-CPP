@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKEDFEATURENOTIFICATIONUTIL_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKEDFEATURENOTIFICATIONUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,17 +73,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LicenseStrings.h"
+        #include "org/allbinary/logic/system/security/licensing/LicenseStrings.h"
 
 class LockedFeatureNotificationUtil
             : public Object
          {
 
-    private: static LockedFeatureNotificationUtil instance() { return LockedFeatureNotificationUtil(); }
+    private: static LockedFeatureNotificationUtil* instance() { static std::unique_ptr<LockedFeatureNotificationUtil> value(new LockedFeatureNotificationUtil()); return value.get(); }
 
-    public: static LockedFeatureNotificationUtil getInstance();
+    public: static LockedFeatureNotificationUtil* getInstance();
 
-    private: const GameNotificationEvent gameNotificationEvent = GameNotificationEvent(this, LicenseStrings::getInstance().LOCKED, SmallIntegerSingletonFactory::getInstance().getAt(3), BasicColorFactory::getInstance().RED, BooleanFactory::getInstance().FALSE);
+    private: GameNotificationEvent* gameNotificationEvent = new GameNotificationEvent(this, LicenseStrings::getInstance()->LOCKED, SmallIntegerSingletonFactory::getInstance()->getAt(3), BasicColorFactory::getInstance()->RED, BooleanFactory::getInstance()->FALSE);
 
                 //@Throws(Exception.constructor)
             
@@ -85,7 +91,7 @@ class LockedFeatureNotificationUtil
 
                 //@Throws(Exception.constructor)
             
-    public: void fireWithColor(BasicColor basicColor);
+    public: void fireWithColor(BasicColor* basicColor);
 
 };
 

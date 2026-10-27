@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
@@ -41,13 +47,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "VirtualKeyboardEvent.h"
+        #include "org/allbinary/input/event/VirtualKeyboardEvent.h"
 
 class VirtualKeyboardEventListenerInterface: public EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    void onVirtualKeyboardEvent(VirtualKeyboardEvent virtualKeyboardEvent)
+    public: virtual void onVirtualKeyboardEvent(VirtualKeyboardEvent* virtualKeyboardEvent) = 0;
 
 };
 

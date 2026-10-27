@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,19 +55,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeologicalGeographicMapCellPosition.h"
+        #include "org/allbinary/game/layer/geological/resources/GeologicalGeographicMapCellPosition.h"
 
 class GeologicalGeographicMapCellPositionFactoryInitVisitor
             : public Object
-        : public GeographicMapCellPositionFactoryInitVisitorInterface {
+        , public GeographicMapCellPositionFactoryInitVisitorInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(AllBinaryTiledLayer tiledLayer, GeographicMapCellPosition cellPosition){
+    public: void visit(AllBinaryTiledLayer* tiledLayer, GeographicMapCellPosition* cellPosition){
 
-    GeologicalGeographicMapCellPosition geologicalGeographicMapCellPosition = (cellPosition);;
+    GeologicalGeographicMapCellPosition* geologicalGeographicMapCellPosition = (dynamic_cast<GeologicalGeographicMapCellPosition*>(cellPosition));;
     
-geologicalGeographicMapCellPosition.getGeologicalResource().init();
+geologicalGeographicMapCellPosition->getGeologicalResource()->init();
     
 }
 

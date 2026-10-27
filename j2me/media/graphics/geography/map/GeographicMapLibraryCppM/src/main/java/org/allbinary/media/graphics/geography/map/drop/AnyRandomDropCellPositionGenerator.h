@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_ANYRANDOMDROPCELLPOSITIONGENERATOR_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_ANYRANDOMDROPCELLPOSITIONGENERATOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -71,21 +79,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseDropCellPositionGenerator.h"
+        #include "org/allbinary/media/graphics/geography/map/drop/BaseDropCellPositionGenerator.h"
 
 class AnyRandomDropCellPositionGenerator: public BaseDropCellPositionGenerator {
 
-    protected: const BasicArrayList list = BasicArrayListD();
+    protected: BasicArrayList* list = new BasicArrayListD();
 
-    protected: Object* geographicMapInterface = NullUtil::getInstance().NULL_OBJECT;
-
-                //@Throws(Exception.constructor)
-            
-    public: void update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface);
+    protected: Object* geographicMapInterface = NullUtil::getInstance()->NULL_OBJECT;
 
                 //@Throws(Exception.constructor)
             
-    public: void processTick(AllBinaryLayerManager allBinaryLayerManager);
+    public: void update(AllBinaryGameLayerManager* allBinaryGameLayerManager, BasicGeographicMap* geographicMapInterface);
+
+                //@Throws(Exception.constructor)
+            
+    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager);
 
 };
 

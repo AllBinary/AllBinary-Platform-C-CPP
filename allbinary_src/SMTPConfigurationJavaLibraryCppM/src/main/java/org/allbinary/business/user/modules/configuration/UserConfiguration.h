@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATION_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -59,33 +65,33 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserConfigurationInterface.h"
+        #include "org/allbinary/business/user/modules/configuration/UserConfigurationInterface.h"
 
 class UserConfiguration
             : public Object
-        : public UserConfigurationInterface {
+        , public UserConfigurationInterface {
 
-    private: UserEmailConfigurationInterface userEmailConfigurationInterface;
+    private: UserEmailConfigurationInterface* userEmailConfigurationInterface;
 
-    private: TimeCreated timeCreated;
+    private: TimeCreated* timeCreated;
 
-    private: TimeLastModified timeLastModified;
+    private: TimeLastModified* timeLastModified;
 
 public: UserConfiguration();
 
-public: UserConfiguration(HashMap<Object*, Object*> hashMap);
+public: UserConfiguration(HashMap<Object*, Object*>* hashMap);
 
-    public: UserEmailConfigurationInterface getUserEmailConfigurationInterface();
+    public: UserEmailConfigurationInterface* getUserEmailConfigurationInterface();
 
-    public: void setUserEmailConfigurationInterface(UserEmailConfigurationInterface userEmailConfigurationInterface);
+    public: void setUserEmailConfigurationInterface(UserEmailConfigurationInterface* userEmailConfigurationInterface);
 
-    public: TimeCreated getTimeCreated();
+    public: TimeCreated* getTimeCreated();
 
-    public: TimeLastModified getTimeLastModified();
+    public: TimeLastModified* getTimeLastModified();
 
-    public: void setTimeCreated(TimeCreated timeCreated);
+    public: void setTimeCreated(TimeCreated* timeCreated);
 
-    public: void setTimeLastModified(TimeLastModified timeLastModified);
+    public: void setTimeLastModified(TimeLastModified* timeLastModified);
 
 };
 

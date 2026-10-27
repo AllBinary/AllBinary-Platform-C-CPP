@@ -21,6 +21,14 @@
         #ifndef ADMIN_TAGS_TABLETAG_H
         #define ADMIN_TAGS_TABLETAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Class.h"
         
             #include "java/lang/Exception.h"
@@ -84,19 +92,19 @@
         
 class TableTag: public PropertiesTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string enabled;
 
-    private: TagHelperFactoryInterface tagHelperFactoryInterface;
+    private: TagHelperFactoryInterface* tagHelperFactoryInterface;
 
-    private: TagHelperFactoryInterface tagRequestHelperFactoryInterface;
+    private: TagHelperFactoryInterface* tagRequestHelperFactoryInterface;
 
     private: Object* requestObject;
 
-    private: Integer current;
+    private: int32_t current;
 
-    private: Integer total;
+    private: int32_t total;
 
 public: TableTag();
 
@@ -106,21 +114,21 @@ public: TableTag();
             
     public: bool isEnabled();
 
-    protected: void setTagHelperFactory(TagHelperFactoryInterface tagHelperFactoryInterface);
+    protected: void setTagHelperFactory(TagHelperFactoryInterface* tagHelperFactoryInterface);
 
-    protected: TagHelperFactoryInterface getTagHelperFactoryInterface();
+    protected: TagHelperFactoryInterface* getTagHelperFactoryInterface();
 
-    protected: void setTagRequestHelperFactory(TagHelperFactoryInterface tagHelperFactoryInterface);
+    protected: void setTagRequestHelperFactory(TagHelperFactoryInterface* tagHelperFactoryInterface);
 
-    protected: TagHelperFactoryInterface getTagRequestHelperFactoryInterface();
+    protected: TagHelperFactoryInterface* getTagRequestHelperFactoryInterface();
 
-    public: void setCurrent(Integer current);
+    public: void setCurrent(int32_t current);
 
-    public: Integer getCurrent();
+    public: int32_t getCurrent();
 
-    public: void setTotal(Integer total);
+    public: void setTotal(int32_t total);
 
-    public: Integer getTotal();
+    public: int32_t getTotal();
 
                 //@Throws(LicensingException.constructor)
             

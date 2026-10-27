@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/ai/ArtificialIntelligence.h>
@@ -70,11 +76,11 @@
         
 class SequenceAI: public ArrayAI {
 
-    private: static const std::string SEQUENCE_AI = "Sequence AI";
+    private: static inline const std::string SEQUENCE_AI = "Sequence AI";
 
     private: int32_t index= 0;
 
-public: SequenceAI(std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterfaceArray, AllBinaryLayer ownerLayerInterface, GameInput gameInput) : ArrayAI(artificialIntelligenceInterfaceArray, ownerLayerInterface, gameInput){
+public: SequenceAI(std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterfaceArray, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : ArrayAI(artificialIntelligenceInterfaceArray, ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -86,7 +92,7 @@ public: SequenceAI(std::vector<ArtificialIntelligenceInterface> artificialIntell
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
 this->getArtificialIntelligenceInterface()[this->index].processAI(allBinaryLayerManager);
     
 }
@@ -96,16 +102,16 @@ this->getArtificialIntelligenceInterface()[this->index].processAI(allBinaryLayer
 this->index++;
     
 
-    ArtificialIntelligenceInterface artificialIntelligenceInterface = this->getSelectedArtificialIntelligenceInterface();;
+    ArtificialIntelligenceInterface* artificialIntelligenceInterface = this->getSelectedArtificialIntelligenceInterface();;
     
 
-                        if(artificialIntelligenceInterface.getId() == ArtificialIntelligence::AI_ID)
+                        if(artificialIntelligenceInterface->getId() == ArtificialIntelligence::AI_ID)
                         
                                     {
                                     
-    ArtificialIntelligenceTransitionInterface artificialIntelligenceTransitionInterface = artificialIntelligenceInterface as unknown;;
+    ArtificialIntelligenceTransitionInterface* artificialIntelligenceTransitionInterface = dynamic_cast<ArtificialIntelligenceTransitionInterface*>(artificialIntelligenceInterface as unknown);;
     
-artificialIntelligenceTransitionInterface.transition();
+artificialIntelligenceTransitionInterface->transition();
     
 
                                     }
@@ -129,7 +135,7 @@ this->index= index;
 }
 
 
-    public: ArtificialIntelligenceInterface getSelectedArtificialIntelligenceInterface(){
+    public: ArtificialIntelligenceInterface* getSelectedArtificialIntelligenceInterface(){
 
 
 
@@ -151,19 +157,19 @@ this->index= index;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(super.toString());
+stringBuffer->append(super.toString());
     
-stringBuffer.append(" Selected AI: ");
+stringBuffer->append(" Selected AI: ");
     
-stringBuffer.append(StringUtil::getInstance().toString(this->getSelectedArtificialIntelligenceInterface()));
+stringBuffer->append(StringUtil::getInstance()->toString(this->getSelectedArtificialIntelligenceInterface()));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Character.h"
@@ -53,19 +59,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DefaultComboBoxModel.h"
-#include "KeyStroke.h"
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/DefaultComboBoxModel.h"
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyStroke.h"
 
 class KeyCharDefaultComboBoxModelFactory
             : public Object
          {
 
-    public: static DefaultComboBoxModel getInstance(){
+    public: static DefaultComboBoxModel* getInstance(){
 
-    DefaultComboBoxModel defaultComboBoxModel = DefaultComboBoxModel();;
+    DefaultComboBoxModel* defaultComboBoxModel = new DefaultComboBoxModel();;
     
 
-    std::vector<Integer> keyArray = KeySingletonFactory::getArray();;
+    std::vector<int32_t> keyArray = KeySingletonFactory::getArray();;
     
 
 
@@ -75,15 +81,15 @@ class KeyCharDefaultComboBoxModelFactory
     int32_t index = 0;index < keyArray.size(); index++)
         {
 
-    Integer nextKey = keyArray[index];;
+    int32_t nextKey = keyArray[index];;
     
 
-    KeyStroke keyStroke = KeyStroke::getKeyStroke(nextKey.intValue(), 0);;
+    KeyStroke* keyStroke = KeyStroke::getKeyStroke(nextKey.intValue(), 0);;
     
 
     char keyChar = KeyStrokeMap::getChar(keyStroke);;
     
-defaultComboBoxModel.addElement(Character::toString(keyChar));
+defaultComboBoxModel->addElement(Character::toString(keyChar));
     
 }
 

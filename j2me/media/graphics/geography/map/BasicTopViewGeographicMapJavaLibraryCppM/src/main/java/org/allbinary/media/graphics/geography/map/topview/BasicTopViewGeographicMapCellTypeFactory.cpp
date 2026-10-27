@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/string/CommonStrings.h>
 
       
@@ -62,43 +70,43 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicTopViewGeographicMapCellType.h"
-#include "BasicTopViewGeographicMapStrings.h"
+        #include "org/allbinary/media/graphics/geography/map/topview/BasicTopViewGeographicMapCellType.h"
+#include "org/allbinary/media/graphics/geography/map/topview/BasicTopViewGeographicMapStrings.h"
 
 class BasicTopViewGeographicMapCellTypeFactory: public GeographicMapCellTypeFactory {
 
-    public: BasicTopViewGeographicMapCellType BLOCK_CELL_TYPE;
+    public: BasicTopViewGeographicMapCellType* BLOCK_CELL_TYPE;
 
-    public: BasicTopViewGeographicMapCellType OFF_MAP_CELL_TYPE;
+    public: BasicTopViewGeographicMapCellType* OFF_MAP_CELL_TYPE;
 
-    public: BasicTopViewGeographicMapCellType FLOOR_CELL_TYPE;
+    public: BasicTopViewGeographicMapCellType* FLOOR_CELL_TYPE;
 
-    public: BasicTopViewGeographicMapCellType DOOR_CELL_TYPE;
+    public: BasicTopViewGeographicMapCellType* DOOR_CELL_TYPE;
 
-    public: BasicTopViewGeographicMapCellType STAIRS_UP_CELL_TYPE;
+    public: BasicTopViewGeographicMapCellType* STAIRS_UP_CELL_TYPE;
 
-    public: BasicTopViewGeographicMapCellType STAIRS_DOWN_CELL_TYPE;
+    public: BasicTopViewGeographicMapCellType* STAIRS_DOWN_CELL_TYPE;
 
-    public: BasicTopViewGeographicMapCellType OTHER_CELL_TYPE;
+    public: BasicTopViewGeographicMapCellType* OTHER_CELL_TYPE;
 
     private: int32_t maxTileId;
 
-public: BasicTopViewGeographicMapCellTypeFactory(ABHashtable<Object*, Object*> tileTypeToTileIdsMap, int32_t maxTileId){
+public: BasicTopViewGeographicMapCellTypeFactory(ABHashtable<Object*, Object*>* tileTypeToTileIdsMap, int32_t maxTileId){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF(commonStrings.START, this, commonStrings.CONSTRUCTOR);
+this->logUtil.putF(commonStrings->START, this, commonStrings->CONSTRUCTOR);
     
 this->maxTileId= maxTileId;
     
 
-    BasicTopViewGeographicMapStrings basicTopViewGeographicMapStrings = BasicTopViewGeographicMapStrings::getInstance();;
+    BasicTopViewGeographicMapStrings* basicTopViewGeographicMapStrings = BasicTopViewGeographicMapStrings::getInstance();;
     
 
-    GeographicMapCellTypeFactory geographicMapCellTypeFactory = GeographicMapCellTypeFactory::getInstance();;
+    GeographicMapCellTypeFactory* geographicMapCellTypeFactory = GeographicMapCellTypeFactory::getInstance();;
     
 
-    std::vector<GeographicMapCellType> geographicMapCellTypeArray = geographicMapCellTypeFactory.getGeographicMapCellTypeArray();;
+    std::vector<GeographicMapCellType*> geographicMapCellTypeArray = geographicMapCellTypeFactory->getGeographicMapCellTypeArray();;
     
 
     int32_t type = 0;;
@@ -109,7 +117,7 @@ this->maxTileId= maxTileId;
                                 )
                         
                                     {
-                                    RaceTrackGeographicMapCellType(CommonStrings::getInstance().UNKNOWN, type, 999, 0);
+                                    new RaceTrackGeographicMapCellType(CommonStrings::getInstance()->UNKNOWN, type, 999, 0);
     
 
                                     }
@@ -119,40 +127,40 @@ this->maxTileId= maxTileId;
                         }
                             
 
-    BasicTopViewGeographicMapCellType BLOCK_CELL_TYPE = BasicTopViewGeographicMapCellType::createType(basicTopViewGeographicMapStrings.DEFAULT, 1, 1);;
+    BasicTopViewGeographicMapCellType* BLOCK_CELL_TYPE = BasicTopViewGeographicMapCellType::createType(basicTopViewGeographicMapStrings->DEFAULT, 1, 1);;
     
 
-    BasicTopViewGeographicMapCellType OFF_MAP_CELL_TYPE = BLOCK_CELL_TYPE;;
+    BasicTopViewGeographicMapCellType* OFF_MAP_CELL_TYPE = BLOCK_CELL_TYPE;;
     
 
-    BasicTopViewGeographicMapCellType FLOOR_CELL_TYPE = BLOCK_CELL_TYPE;;
+    BasicTopViewGeographicMapCellType* FLOOR_CELL_TYPE = BLOCK_CELL_TYPE;;
     
 
-    BasicTopViewGeographicMapCellType DOOR_CELL_TYPE = BLOCK_CELL_TYPE;;
+    BasicTopViewGeographicMapCellType* DOOR_CELL_TYPE = BLOCK_CELL_TYPE;;
     
 
-    BasicTopViewGeographicMapCellType STAIRS_UP_CELL_TYPE = BLOCK_CELL_TYPE;;
+    BasicTopViewGeographicMapCellType* STAIRS_UP_CELL_TYPE = BLOCK_CELL_TYPE;;
     
 
-    BasicTopViewGeographicMapCellType STAIRS_DOWN_CELL_TYPE = BLOCK_CELL_TYPE;;
+    BasicTopViewGeographicMapCellType* STAIRS_DOWN_CELL_TYPE = BLOCK_CELL_TYPE;;
     
 
-    BasicTopViewGeographicMapCellType OTHER_CELL_TYPE = BLOCK_CELL_TYPE;;
+    BasicTopViewGeographicMapCellType* OTHER_CELL_TYPE = BLOCK_CELL_TYPE;;
     
 
-    std::vector<Object*> keyArray = HashtableUtil::getInstance().getKeysAsArray(tileTypeToTileIdsMap);;
+    std::vector<Object*> keyArray = HashtableUtil::getInstance()->getKeysAsArray(tileTypeToTileIdsMap);;
     
 
     int32_t size = keyArray.size();;
     
 
-    BasicArrayList idsWithTypeList;;
+    BasicArrayList* idsWithTypeList;;
     
 
     std::string key;;
     
 
-    BasicTopViewGeographicMapCellType basicPlatormGeographicMapCellType;;
+    BasicTopViewGeographicMapCellType* basicPlatormGeographicMapCellType;;
     
 
 
@@ -163,13 +171,13 @@ this->maxTileId= maxTileId;
         {
 key= keyArray[index];
     
-idsWithTypeList= tileTypeToTileIdsMap.get(key);
+idsWithTypeList= dynamic_cast<BasicArrayList*>(tileTypeToTileIdsMap->get(key));
     
 
-                        if(key === basicTopViewGeographicMapStrings.WALL)
+                        if(key === basicTopViewGeographicMapStrings->WALL)
                         
                                     {
-                                    basicPlatormGeographicMapCellType= BasicTopViewGeographicMapCellType(basicTopViewGeographicMapStrings.WALL, idsWithTypeList, 1000);
+                                    basicPlatormGeographicMapCellType= new BasicTopViewGeographicMapCellType(basicTopViewGeographicMapStrings->WALL, idsWithTypeList, 1000);
     
 BLOCK_CELL_TYPE= basicPlatormGeographicMapCellType;
     
@@ -177,10 +185,10 @@ BLOCK_CELL_TYPE= basicPlatormGeographicMapCellType;
                                     }
                                 
                              else 
-                        if(key === basicTopViewGeographicMapStrings.OFF_MAP)
+                        if(key === basicTopViewGeographicMapStrings->OFF_MAP)
                         
                                     {
-                                    basicPlatormGeographicMapCellType= BasicTopViewGeographicMapCellType(basicTopViewGeographicMapStrings.OFF_MAP, idsWithTypeList, 1001);
+                                    basicPlatormGeographicMapCellType= new BasicTopViewGeographicMapCellType(basicTopViewGeographicMapStrings->OFF_MAP, idsWithTypeList, 1001);
     
 OFF_MAP_CELL_TYPE= basicPlatormGeographicMapCellType;
     
@@ -188,10 +196,10 @@ OFF_MAP_CELL_TYPE= basicPlatormGeographicMapCellType;
                                     }
                                 
                              else 
-                        if(key === basicTopViewGeographicMapStrings.FLOOR)
+                        if(key === basicTopViewGeographicMapStrings->FLOOR)
                         
                                     {
-                                    basicPlatormGeographicMapCellType= BasicTopViewGeographicMapCellType(basicTopViewGeographicMapStrings.FLOOR, idsWithTypeList, 1);
+                                    basicPlatormGeographicMapCellType= new BasicTopViewGeographicMapCellType(basicTopViewGeographicMapStrings->FLOOR, idsWithTypeList, 1);
     
 FLOOR_CELL_TYPE= basicPlatormGeographicMapCellType;
     
@@ -199,10 +207,10 @@ FLOOR_CELL_TYPE= basicPlatormGeographicMapCellType;
                                     }
                                 
                              else 
-                        if(key === basicTopViewGeographicMapStrings.DOOR)
+                        if(key === basicTopViewGeographicMapStrings->DOOR)
                         
                                     {
-                                    basicPlatormGeographicMapCellType= BasicTopViewGeographicMapCellType(basicTopViewGeographicMapStrings.DOOR, idsWithTypeList, 1);
+                                    basicPlatormGeographicMapCellType= new BasicTopViewGeographicMapCellType(basicTopViewGeographicMapStrings->DOOR, idsWithTypeList, 1);
     
 DOOR_CELL_TYPE= basicPlatormGeographicMapCellType;
     
@@ -210,10 +218,10 @@ DOOR_CELL_TYPE= basicPlatormGeographicMapCellType;
                                     }
                                 
                              else 
-                        if(key === basicTopViewGeographicMapStrings.STAIRS_UP)
+                        if(key === basicTopViewGeographicMapStrings->STAIRS_UP)
                         
                                     {
-                                    basicPlatormGeographicMapCellType= BasicTopViewGeographicMapCellType(basicTopViewGeographicMapStrings.STAIRS_UP, idsWithTypeList, 1);
+                                    basicPlatormGeographicMapCellType= new BasicTopViewGeographicMapCellType(basicTopViewGeographicMapStrings->STAIRS_UP, idsWithTypeList, 1);
     
 STAIRS_UP_CELL_TYPE= basicPlatormGeographicMapCellType;
     
@@ -221,10 +229,10 @@ STAIRS_UP_CELL_TYPE= basicPlatormGeographicMapCellType;
                                     }
                                 
                              else 
-                        if(key === basicTopViewGeographicMapStrings.STAIRS_DOWN)
+                        if(key === basicTopViewGeographicMapStrings->STAIRS_DOWN)
                         
                                     {
-                                    basicPlatormGeographicMapCellType= BasicTopViewGeographicMapCellType(basicTopViewGeographicMapStrings.STAIRS_DOWN, idsWithTypeList, 1);
+                                    basicPlatormGeographicMapCellType= new BasicTopViewGeographicMapCellType(basicTopViewGeographicMapStrings->STAIRS_DOWN, idsWithTypeList, 1);
     
 STAIRS_DOWN_CELL_TYPE= basicPlatormGeographicMapCellType;
     
@@ -232,10 +240,10 @@ STAIRS_DOWN_CELL_TYPE= basicPlatormGeographicMapCellType;
                                     }
                                 
                              else 
-                        if(key === basicTopViewGeographicMapStrings.OTHER)
+                        if(key === basicTopViewGeographicMapStrings->OTHER)
                         
                                     {
-                                    basicPlatormGeographicMapCellType= BasicTopViewGeographicMapCellType(basicTopViewGeographicMapStrings.OTHER, idsWithTypeList, 1);
+                                    basicPlatormGeographicMapCellType= new BasicTopViewGeographicMapCellType(basicTopViewGeographicMapStrings->OTHER, idsWithTypeList, 1);
     
 OTHER_CELL_TYPE= basicPlatormGeographicMapCellType;
     
@@ -266,7 +274,7 @@ type= this->maxTileId -1;
                                 )
                         
                                     {
-                                    RaceTrackGeographicMapCellType(commonStrings.START, type, 1, 0);
+                                    new RaceTrackGeographicMapCellType(commonStrings->START, type, 1, 0);
     
 
                                     }
@@ -283,7 +291,7 @@ type= this->maxTileId -2;
                                 )
                         
                                     {
-                                    RaceTrackGeographicMapCellType(commonStrings.START, type, 1, 0);
+                                    new RaceTrackGeographicMapCellType(commonStrings->START, type, 1, 0);
     
 
                                     }
@@ -320,14 +328,14 @@ type= this->maxTileId -2;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->FLOOR_CELL_TYPE.getTypes()[0];
+                        return this->FLOOR_CELL_TYPE->getTypes()[0];
     
 }
 
 
-    public: bool isPath(GeographicMapCellType cellType){
+    public: bool isPath(GeographicMapCellType* cellType){
 
-                        if(this->FLOOR_CELL_TYPE.isType(cellType))
+                        if(this->FLOOR_CELL_TYPE->isType(cellType))
                         
                                     {
                                     
@@ -353,7 +361,7 @@ type= this->maxTileId -2;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().append("key: WALL/BLOCK_CELL_TYPE: ").append(this->BLOCK_CELL_TYPE.toString()).append("key: FLOOR_CELL_TYPE: ").append(this->FLOOR_CELL_TYPE.toString()).append("key: OTHER_CELL_TYPE: ").append(this->OTHER_CELL_TYPE.toString()).append("key: OFF_MAP_CELL_TYPE: ").append(this->OFF_MAP_CELL_TYPE.toString()).append("key: DOOR_CELL_TYPE: ").append(this->DOOR_CELL_TYPE.toString()).append("key: STAIRS_DOWN_CELL_TYPE: ").append(this->STAIRS_DOWN_CELL_TYPE.toString()).append("key: STAIRS_UP_CELL_TYPE: ").append(this->STAIRS_UP_CELL_TYPE.toString()).toString();;
+                        return (new StringMaker())->append("key: WALL/BLOCK_CELL_TYPE: ")->append(this->BLOCK_CELL_TYPE->toString())->append("key: FLOOR_CELL_TYPE: ")->append(this->FLOOR_CELL_TYPE->toString())->append("key: OTHER_CELL_TYPE: ")->append(this->OTHER_CELL_TYPE->toString())->append("key: OFF_MAP_CELL_TYPE: ")->append(this->OFF_MAP_CELL_TYPE->toString())->append("key: DOOR_CELL_TYPE: ")->append(this->DOOR_CELL_TYPE->toString())->append("key: STAIRS_DOWN_CELL_TYPE: ")->append(this->STAIRS_DOWN_CELL_TYPE->toString())->append("key: STAIRS_UP_CELL_TYPE: ")->append(this->STAIRS_UP_CELL_TYPE->toString())->toString();;
     
 }
 

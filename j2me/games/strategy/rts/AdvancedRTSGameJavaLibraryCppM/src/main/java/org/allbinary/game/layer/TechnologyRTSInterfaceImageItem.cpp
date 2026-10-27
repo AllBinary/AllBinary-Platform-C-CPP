@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -73,13 +79,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RTSInterface.h"
+        #include "org/allbinary/game/layer/RTSInterface.h"
 
 class TechnologyRTSInterfaceImageItem: public ABCustomImageItem, public UpdateMyFontInterface {
 
-    private: RTSInterface rtsInterface;
+    private: RTSInterface* rtsInterface;
 
-    private: const PrimitiveLongUtil primitiveLongUtil = PrimitiveLongUtil::createPowerOfTen(10000);
+    private: PrimitiveLongUtil* primitiveLongUtil = PrimitiveLongUtil::createPowerOfTen(10000);
 
     private: const std::string LEVEL = "Level";
 
@@ -87,13 +93,13 @@ class TechnologyRTSInterfaceImageItem: public ABCustomImageItem, public UpdateMy
 
     private: const std::string DOLLAR = "$";
 
-    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
 
-    private: std::vector<char> costString = CharArrayFactory::getInstance().getZeroCharArray();
+    private: std::vector<char> costString = CharArrayFactory::getInstance()->getZeroCharArray();
 
     private: int32_t costLength= 0;
 
-    private: std::vector<char> levelString = CharArrayFactory::getInstance().getZeroCharArray();
+    private: std::vector<char> levelString = CharArrayFactory::getInstance()->getZeroCharArray();
 
     private: int32_t levelLength= 0;
 
@@ -107,7 +113,7 @@ class TechnologyRTSInterfaceImageItem: public ABCustomImageItem, public UpdateMy
 
     private: int32_t adjustedLevelY= 0;
 
-public: TechnologyRTSInterfaceImageItem(std::string label, Image img, int32_t layout, std::string altText, BasicColor basicColor, RTSInterface rtsInterface) : ABCustomImageItem(label, img, layout, altText, basicColor, 0){
+public: TechnologyRTSInterfaceImageItem(std::string label, Image* img, int32_t layout, std::string altText, BasicColor* basicColor, RTSInterface* rtsInterface) : ABCustomImageItem(label, img, layout, altText, basicColor, 0){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -121,24 +127,24 @@ this->update();
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
 
-    int32_t fontHeight = font.getHeight();;
+    int32_t fontHeight = font->getHeight();;
     
 
     int32_t imageHeight = 0;;
     
 
-    Image image = this->getImage();;
+    Image* image = this->getImage();;
     
 
                         if(image != NullImage::NULL_IMAGE)
                         
                                     {
-                                    imageHeight= image.getHeight();
+                                    imageHeight= image->getHeight();
     
 
                                     }
@@ -158,7 +164,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: RTSInterface getRtsInterface(){
+    public: RTSInterface* getRtsInterface(){
 
 
 
@@ -169,30 +175,30 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 
 
     public: void update(){
-this->costString= this->primitiveLongUtil.getCharArray(this->getRtsInterface().getUpgradeCost());
+this->costString= this->primitiveLongUtil->getCharArray(this->getRtsInterface()->getUpgradeCost());
     
-this->levelString= this->primitiveLongUtil.getCharArray(this->getRtsInterface().getLevel());
+this->levelString= this->primitiveLongUtil->getCharArray(this->getRtsInterface()->getLevel());
     
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
-this->myFontProcessor.process(graphics);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+this->myFontProcessor->process(graphics);
     
 super.paintXY(graphics, x, y);
     
 
     int32_t xa = x +2;;
     
-graphics.drawString(this->COST, xa, y +this->adjustedCostLabelY, 0);
+graphics->drawString(this->COST, xa, y +this->adjustedCostLabelY, 0);
     
-graphics.drawString(this->DOLLAR, xa, y +this->adjustedCostY, 0);
+graphics->drawString(this->DOLLAR, xa, y +this->adjustedCostY, 0);
     
-graphics.drawChars(this->costString, 0, this->costLength, x +this->adjustedCostX, y +this->adjustedCostY, 0);
+graphics->drawChars(this->costString, 0, this->costLength, x +this->adjustedCostX, y +this->adjustedCostY, 0);
     
-graphics.drawString(this->LEVEL, xa, y +this->adjustedLevelY, 0);
+graphics->drawString(this->LEVEL, xa, y +this->adjustedLevelY, 0);
     
-graphics.drawChars(this->levelString, 0, this->levelLength, x +this->adjustedLevelX, y +this->adjustedLevelY, 0);
+graphics->drawChars(this->levelString, 0, this->levelLength, x +this->adjustedLevelX, y +this->adjustedLevelY, 0);
     
 }
 

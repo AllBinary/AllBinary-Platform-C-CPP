@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -54,50 +60,50 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapCellPosition.h"
-#include "GeographicMapCellType.h"
-#include "BasicGeographicMapCellPositionFactory.h"
-#include "GeographicMapCellPositionFactoryInterface.h"
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellType.h"
+#include "org/allbinary/media/graphics/geography/map/BasicGeographicMapCellPositionFactory.h"
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInterface.h"
 
 class GeographicMapInterface {
 
-    Integer getId();
+    public: virtual int32_t getId() = 0;
 
-    std::string getName();
+    public: virtual std::string getName() = 0;
 
-    void reset();
+    public: virtual void reset() = 0;
 
-    AllBinaryTiledLayer getAllBinaryTiledLayer();
-
-                //@Throws(Exception.constructor)
-            
-    bool getCellPositionsAt(Layer layer, std::vector<std::vector<GeographicMapCellPosition>> currentCellPositionArray, std::vector<std::vector<GeographicMapCellPosition>> cellPositionArray);
+    public: virtual AllBinaryTiledLayer* getAllBinaryTiledLayer() = 0;
 
                 //@Throws(Exception.constructor)
             
-    GeographicMapCellPosition getCellPositionAtXY(int32_t x, int32_t y);
+    public: virtual bool getCellPositionsAt(Layer* layer, std::vector<std::vector<GeographicMapCellPosition*>> currentCellPositionArray, std::vector<std::vector<GeographicMapCellPosition*>> cellPositionArray) = 0;
 
                 //@Throws(Exception.constructor)
             
-    GeographicMapCellPosition getCellPositionAtXYNoThrow(int32_t x, int32_t y);
-
-    int32_t getCellTypeFromMapCellTypeInt(int32_t cellTypeId);
+    public: virtual GeographicMapCellPosition* getCellPositionAtXY(int32_t x, int32_t y) = 0;
 
                 //@Throws(Exception.constructor)
             
-    GeographicMapCellType getCellTypeAtXY(int32_t x, int32_t y);
+    public: virtual GeographicMapCellPosition* getCellPositionAtXYNoThrow(int32_t x, int32_t y) = 0;
+
+    public: virtual int32_t getCellTypeFromMapCellTypeInt(int32_t cellTypeId) = 0;
 
                 //@Throws(Exception.constructor)
             
-    GeographicMapCellType getCellTypeAt(GeographicMapCellPosition geographicMapCellPosition);
+    public: virtual GeographicMapCellType* getCellTypeAtXY(int32_t x, int32_t y) = 0;
 
-    BasicGeographicMapCellPositionFactory getGeographicMapCellPositionFactory();
+                //@Throws(Exception.constructor)
+            
+    public: virtual GeographicMapCellType* getCellTypeAt(GeographicMapCellPosition* geographicMapCellPosition) = 0;
 
-    GeographicMapCellPositionFactoryInterface getGeographicMapCellPositionFactoryInterface();
+    public: virtual BasicGeographicMapCellPositionFactory* getGeographicMapCellPositionFactory() = 0;
 
-    BasicColor getForegroundBasicColor();
+    public: virtual GeographicMapCellPositionFactoryInterface* getGeographicMapCellPositionFactoryInterface() = 0;
 
-    BasicColor getBackgroundBasicColor();
+    public: virtual BasicColor* getForegroundBasicColor() = 0;
+
+    public: virtual BasicColor* getBackgroundBasicColor() = 0;
 
 };
 

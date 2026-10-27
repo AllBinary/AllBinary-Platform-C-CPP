@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_PAYMENT_GATEWAYS_SELECTNEWVIEW_H
         #define VIEWS_ADMIN_PAYMENT_GATEWAYS_SELECTNEWVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -65,13 +71,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentGatewaysView.h"
+        #include "views/admin/payment/gateways/PaymentGatewaysView.h"
 
 class SelectNewView: public PaymentGatewayViewAbstract {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: SelectNewView(TransformInfoInterface transformInfoInterface);
+public: SelectNewView(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             

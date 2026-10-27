@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/ai/BasicAI.h>
@@ -62,11 +68,11 @@
         
 class UpDownVectorAI: public BasicAI {
 
-    private: BasicVelocityProperties velocityInterface;
+    private: BasicVelocityProperties* velocityInterface;
 
     private: int32_t index = 0;
 
-public: UpDownVectorAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput) : BasicAI(ownerLayerInterface, gameInput){
+public: UpDownVectorAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -74,31 +80,31 @@ public: UpDownVectorAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput) 
                             //For kotlin this is before the body of the constructor.
                     
 
-    VelocityInterfaceCompositeInterface velocityInterfaceCompositeInterface = this->getOwnerLayerInterface() as unknown;;
+    VelocityInterfaceCompositeInterface* velocityInterfaceCompositeInterface = dynamic_cast<VelocityInterfaceCompositeInterface*>(this->getOwnerLayerInterface() as unknown);;
     
-this->velocityInterface= velocityInterfaceCompositeInterface.getVelocityProperties();
+this->velocityInterface= velocityInterfaceCompositeInterface->getVelocityProperties();
     
-this->velocityInterface.getVelocityYBasicDecimalP().setint(0);
+this->velocityInterface->getVelocityYBasicDecimalP()->setint(0);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
 
-    int32_t y = this->getOwnerLayerInterface().getHeight() *270;;
+    int32_t y = this->getOwnerLayerInterface()->getHeight() *270;;
     
 
                         if(this->index < 5)
                         
                                     {
                                     
-    BasicDecimal basicDecimal = this->velocityInterface.getVelocityYBasicDecimalP();;
+    BasicDecimal* basicDecimal = this->velocityInterface->getVelocityYBasicDecimalP();;
     
-basicDecimal.setint(0);
+basicDecimal->setint(0);
     
-basicDecimal.addint(y);
+basicDecimal->addint(y);
     
 this->index++;
     
@@ -110,11 +116,11 @@ this->index++;
                         
                                     {
                                     
-    BasicDecimal basicDecimal = this->velocityInterface.getVelocityYBasicDecimalP();;
+    BasicDecimal* basicDecimal = this->velocityInterface->getVelocityYBasicDecimalP();;
     
-basicDecimal.setint(0);
+basicDecimal->setint(0);
     
-basicDecimal.subtractint(y);
+basicDecimal->subtractint(y);
     
 this->index++;
     

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h>
 
       
@@ -50,7 +56,7 @@
         
 class InputAutomationModuleServiceInterface: public OSGIServiceInterface {
 
-    std::vector<InputAutomationModuleFactoryInterface> getInputAutomationModuleInterfaceArray();
+    public: virtual std::vector<InputAutomationModuleFactoryInterface*> getInputAutomationModuleInterfaceArray() = 0;
 
 };
 

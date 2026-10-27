@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGEACTIONSCRIPTOUTPUT_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGEACTIONSCRIPTOUTPUT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -73,42 +79,42 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicProfileActionScriptOutput.h"
-#include "ImageActionScriptOutputInterface.h"
-#include "ImageTypes.h"
-#include "ImageActionScriptOutputJPanel.h"
-#include "ImageActionScriptOutputData.h"
-#include "ImageActionScriptOutputProcessor.h"
+        #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/BasicProfileActionScriptOutput.h"
+#include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutputInterface.h"
+#include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageTypes.h"
+#include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutputJPanel.h"
+#include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutputData.h"
+#include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutputProcessor.h"
 
 class ImageActionScriptOutput: public BasicProfileActionScriptOutput, public ImageActionScriptOutputInterface {
 
-    private: static const std::string NAME = "Captures";
+    private: static inline const std::string NAME = "Captures";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: bool saved = false;
 
     private: bool display = false;
 
-    private: ImageTypes imageTypes;
+    private: ImageTypes* imageTypes;
 
-    private: ImageActionScriptOutputJPanel actionScriptOutputJPanel;
+    private: ImageActionScriptOutputJPanel* actionScriptOutputJPanel;
 
-public: ImageActionScriptOutput(Node node);
+public: ImageActionScriptOutput(Node* node);
 
 public: ImageActionScriptOutput();
 
-    public: ImageActionScriptOutputJPanel getActionScriptOutputJPanel();
+    public: ImageActionScriptOutputJPanel* getActionScriptOutputJPanel();
 
-    public: HashMap<Object*, Object*> toHashMap();
-
-                //@Throws(Exception.constructor)
-            
-    public: Node toXmlNode(Document document);
+    public: HashMap<Object*, Object*>* toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: void process(Long frame);
+    public: Node* toXmlNode(Document* document);
+
+                //@Throws(Exception.constructor)
+            
+    public: void process(int64_t frame);
 
     public: void showDialog();
 
@@ -124,9 +130,9 @@ public: ImageActionScriptOutput();
 
     public: void log();
 
-    public: ImageTypes getImageTypes();
+    public: ImageTypes* getImageTypes();
 
-    public: void setImageTypes(ImageTypes imageTypes);
+    public: void setImageTypes(ImageTypes* imageTypes);
 
 };
 

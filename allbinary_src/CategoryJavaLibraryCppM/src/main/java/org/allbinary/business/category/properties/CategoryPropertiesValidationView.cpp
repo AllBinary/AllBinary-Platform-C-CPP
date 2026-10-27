@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -53,14 +59,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryPropertiesView.h"
-#include "CategoryPropertiesInterface.h"
+        #include "org/allbinary/business/category/properties/CategoryPropertiesView.h"
+#include "org/allbinary/business/category/properties/CategoryPropertiesInterface.h"
 
 class CategoryPropertiesValidationView: public CategoryPropertiesView, public ValidationInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: CategoryPropertiesValidationView(CategoryPropertiesInterface categoryPropertiesInterface) : CategoryPropertiesView(categoryPropertiesInterface){
+public: CategoryPropertiesValidationView(CategoryPropertiesInterface* categoryPropertiesInterface) : CategoryPropertiesView(categoryPropertiesInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -72,7 +78,7 @@ public: CategoryPropertiesValidationView(CategoryPropertiesInterface categoryPro
 
                 //@Throws(Exception.constructor)
             
-    public: Boolean isValid(){
+    public: bool isValid(){
 
 
 
@@ -88,25 +94,25 @@ public: CategoryPropertiesValidationView(CategoryPropertiesInterface categoryPro
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->categoryPropertiesInterface.validationInfo());
+stringBuffer->append(this->categoryPropertiesInterface.validationInfo());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation info error", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation info error", this, "validationInfo()", &e);
     
 
                                     }
@@ -124,7 +130,7 @@ stringBuffer.append(this->categoryPropertiesInterface.validationInfo());
 
                 //@Throws(Exception.constructor)
             
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -136,7 +142,7 @@ stringBuffer.append(this->categoryPropertiesInterface.validationInfo());
 
                 //@Throws(Exception.constructor)
             
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICTOUCHINPUTFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICTOUCHINPUTFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/InputFactory.h>
@@ -65,52 +71,52 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchButtonInput.h"
+        #include "org/allbinary/input/motion/button/TouchButtonInput.h"
 
 class BasicTouchInputFactory
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static BasicTouchInputFactory getInstance();
+    public: static BasicTouchInputFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: const TouchButtonInput SPECIAL_BUTTON_SIX = TouchButtonInput(InputFactory::getInstance().MAX -30, "Button 6");
+    public: TouchButtonInput* SPECIAL_BUTTON_SIX = new TouchButtonInput(InputFactory::getInstance()->MAX -30, "Button 6");
 
-    public: const TouchButtonInput SPECIAL_BUTTON_FIVE = TouchButtonInput(InputFactory::getInstance().MAX -31, "Button 5");
+    public: TouchButtonInput* SPECIAL_BUTTON_FIVE = new TouchButtonInput(InputFactory::getInstance()->MAX -31, "Button 5");
 
-    public: const TouchButtonInput SPECIAL_BUTTON_FOUR = TouchButtonInput(InputFactory::getInstance().MAX -32, "Button 4");
+    public: TouchButtonInput* SPECIAL_BUTTON_FOUR = new TouchButtonInput(InputFactory::getInstance()->MAX -32, "Button 4");
 
-    public: const TouchButtonInput SPECIAL_BUTTON_THREE = TouchButtonInput(InputFactory::getInstance().MAX -33, "Button 3");
+    public: TouchButtonInput* SPECIAL_BUTTON_THREE = new TouchButtonInput(InputFactory::getInstance()->MAX -33, "Button 3");
 
-    public: const TouchButtonInput SPECIAL_BUTTON_TWO = TouchButtonInput(InputFactory::getInstance().MAX -34, "Button 2");
+    public: TouchButtonInput* SPECIAL_BUTTON_TWO = new TouchButtonInput(InputFactory::getInstance()->MAX -34, "Button 2");
 
-    public: const TouchButtonInput SPECIAL_BUTTON_ONE = TouchButtonInput(InputFactory::getInstance().MAX -35, "Button 1");
+    public: TouchButtonInput* SPECIAL_BUTTON_ONE = new TouchButtonInput(InputFactory::getInstance()->MAX -35, "Button 1");
 
-    public: const TouchButtonInput UP = TouchButtonInput(InputFactory::getInstance().MAX -36, "Up Button");
+    public: TouchButtonInput* UP = new TouchButtonInput(InputFactory::getInstance()->MAX -36, "Up Button");
 
-    public: const TouchButtonInput LEFT = TouchButtonInput(InputFactory::getInstance().MAX -37, "Left Button");
+    public: TouchButtonInput* LEFT = new TouchButtonInput(InputFactory::getInstance()->MAX -37, "Left Button");
 
-    public: const TouchButtonInput RIGHT = TouchButtonInput(InputFactory::getInstance().MAX -38, "Right Button");
+    public: TouchButtonInput* RIGHT = new TouchButtonInput(InputFactory::getInstance()->MAX -38, "Right Button");
 
-    public: const TouchButtonInput DOWN = TouchButtonInput(InputFactory::getInstance().MAX -39, "Down Button");
+    public: TouchButtonInput* DOWN = new TouchButtonInput(InputFactory::getInstance()->MAX -39, "Down Button");
 
-    public: const TouchButtonInput NONE = TouchButtonInput(InputFactory::getInstance().MAX -40, "No Button");
+    public: TouchButtonInput* NONE = new TouchButtonInput(InputFactory::getInstance()->MAX -40, "No Button");
 
     private: bool initialized = false;
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void init(InputToGameKeyMapping inputToGameKeyMapping);
+    public: void init(InputToGameKeyMapping* inputToGameKeyMapping);
 
-    public: void updateAll(InputToGameKeyMapping inputToGameKeyMapping);
+    public: void updateAll(InputToGameKeyMapping* inputToGameKeyMapping);
 
-    public: void updateAllList(BasicArrayList list, InputToGameKeyMapping inputToGameKeyMapping);
+    public: void updateAllList(BasicArrayList* list, InputToGameKeyMapping* inputToGameKeyMapping);
 
-    public: BasicArrayList getList();
+    public: BasicArrayList* getList();
 
 };
 

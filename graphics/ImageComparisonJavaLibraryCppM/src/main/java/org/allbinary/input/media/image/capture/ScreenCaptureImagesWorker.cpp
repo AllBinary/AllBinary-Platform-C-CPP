@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -63,26 +69,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CaptureWorkerInterface.h"
-#include "ScreenScavangerRobot.h"
-#include "ProcessingFrameIndexFactory.h"
-#include "CapturedBufferedImagesCacheSingleton.h"
-#include "CapturedImageWorkerResultsEvent.h"
+        #include "org/allbinary/input/media/image/capture/CaptureWorkerInterface.h"
+#include "org/allbinary/input/media/image/capture/ScreenScavangerRobot.h"
+#include "org/allbinary/input/media/image/capture/ProcessingFrameIndexFactory.h"
+#include "org/allbinary/input/media/image/capture/CapturedBufferedImagesCacheSingleton.h"
+#include "org/allbinary/input/media/image/capture/CapturedImageWorkerResultsEvent.h"
 
 class ScreenCaptureImagesWorker: public BasicEventHandler, public CaptureWorkerInterface {
 
-    private: static int64_t index;
+    private: static inline int64_t index;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: bool running= false;
 
-    private: ScreenScavangerRobot screenScavangerRobot;
+    private: ScreenScavangerRobot* screenScavangerRobot;
 
 public: ScreenCaptureImagesWorker(){
-screenScavangerRobot= ScreenScavangerRobot();
+screenScavangerRobot= new ScreenScavangerRobot();
     
 ScreenCaptureImagesWorker::index= ProcessingFrameIndexFactory::next();
     
@@ -109,53 +115,53 @@ this->running= running;
 
                 //@Throws(Exception.constructor)
             
-    public: void setThread(Thread thread){
+    public: void setThread(Thread* thread){
 }
 
 
     public: void run(){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.RUN);
+            this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->RUN);
     
 this->setRunning(true);
     
 
-    TimeDelayHelper timeHelper = TimeDelayHelper(1000);;
+    TimeDelayHelper* timeHelper = new TimeDelayHelper(1000);;
     
 
         while(isRunning())
         {
-timeHelper.setStartTimeTNT();
+timeHelper->setStartTimeTNT();
     
 
-    BufferedImage bufferedImage = this->screenScavangerRobot.getScreenAsBufferedImages()[0];;
+    BufferedImage* bufferedImage = this->screenScavangerRobot->getScreenAsBufferedImages()[0];;
     
 
-    Long frame = Long(index);;
+    int64_t frame = int64_t(index);;
     
 ScreenCaptureImagesWorker::index++;
     
-CapturedBufferedImagesCacheSingleton::getInstance().add(BufferedImageFrameCacheable(bufferedImage, frame));
+CapturedBufferedImagesCacheSingleton::getInstance()->add(new BufferedImageFrameCacheable(bufferedImage, frame));
     
 
-    CapturedImageWorkerResultsEvent capturedImageEvent = CapturedImageWorkerResultsEvent(this, frame, bufferedImage);;
+    CapturedImageWorkerResultsEvent* capturedImageEvent = new CapturedImageWorkerResultsEvent(this, frame, bufferedImage);;
     
 fireEvent(capturedImageEvent);
     
-this->logUtil.putF(CommonLabels::getInstance().ELAPSED +timeHelper.getElapsedTNT(), this, this->commonStrings.RUN);
+this->logUtil->putF(CommonLabels::getInstance()->ELAPSED +timeHelper->getElapsedTNT(), this, this->commonStrings->RUN);
     
 this->setRunning(false);
     
 }
 
-this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.RUN);
+this->logUtil->putF(this->commonStrings->END, this, this->commonStrings->RUN);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RUN, &e);
     
 }
 

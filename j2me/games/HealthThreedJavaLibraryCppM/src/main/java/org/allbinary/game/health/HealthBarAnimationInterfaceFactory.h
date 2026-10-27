@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHBARANIMATIONINTERFACEFACTORY_H
         #define ORG_ALLBINARY_GAME_HEALTH_HEALTHBARANIMATIONINTERFACEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,28 +64,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HealthBarThreedAnimation.h"
-#include "HealthBarAnimation.h"
+        #include "org/allbinary/game/health/HealthBarThreedAnimation.h"
+#include "org/allbinary/game/health/HealthBarAnimation.h"
 
 class HealthBarAnimationInterfaceFactory
             : public Object
-        : public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
+        , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
 
 public: HealthBarAnimationInterfaceFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: HealthBarAnimation getInstanceByLocation(AllBinaryLayer layerInterface, int32_t location);
+    public: HealthBarAnimation* getInstanceByLocation(AllBinaryLayer* layerInterface, int32_t location);
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId);
+    public: Animation* getInstance(int32_t instanceId);
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstanceAnimation(Animation animationInterface);
+    public: Animation* getInstanceAnimation(Animation* animationInterface);
 
-    public: void setInitialScale(ScaleProperties scaleProperties);
+    public: void setInitialScale(ScaleProperties* scaleProperties);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_GAMETICKDISPLAYINFOSINGLETON_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_GAMETICKDISPLAYINFOSINGLETON_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,25 +47,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DisplayInfoSingleton.h"
+        #include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
 
 class GameTickDisplayInfoSingleton
             : public Object
          {
 
-    private: static GameTickDisplayInfoSingleton instance() { return GameTickDisplayInfoSingleton(); }
+    private: static GameTickDisplayInfoSingleton* instance() { static std::unique_ptr<GameTickDisplayInfoSingleton> value(new GameTickDisplayInfoSingleton()); return value.get(); }
 
-    public: static GameTickDisplayInfoSingleton getInstance();
+    public: static GameTickDisplayInfoSingleton* getInstance();
 
-    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-    private: int32_t lastWidth = this->displayInfoSingleton.getLastWidth();
+    private: int32_t lastWidth = this->displayInfoSingleton->getLastWidth();
 
-    private: int32_t lastHeight = this->displayInfoSingleton.getLastHeight();
+    private: int32_t lastHeight = this->displayInfoSingleton->getLastHeight();
 
-    private: int32_t lastHalfWidth = this->displayInfoSingleton.getLastHalfWidth();
+    private: int32_t lastHalfWidth = this->displayInfoSingleton->getLastHalfWidth();
 
-    private: int32_t lastHalfHeight = this->displayInfoSingleton.getLastHalfHeight();
+    private: int32_t lastHalfHeight = this->displayInfoSingleton->getLastHalfHeight();
 
     public: void update();
 

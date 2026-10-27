@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -46,15 +52,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicOptionItemsEntity.h"
+        #include "org/allbinary/data/tables/user/commerce/inventory/item/options/BasicOptionItemsEntity.h"
 
 class BasicOptionItemsEntityFactory
             : public Object
          {
 
-    private: static BasicOptionItemsEntityFactory instance() { return BasicOptionItemsEntityFactory(); }
+    private: static BasicOptionItemsEntityFactory* instance() { static std::unique_ptr<BasicOptionItemsEntityFactory> value(new BasicOptionItemsEntityFactory()); return value.get(); }
 
-    public: static BasicOptionItemsEntityFactory getInstance(){
+    public: static BasicOptionItemsEntityFactory* getInstance(){
 
 
 
@@ -64,33 +70,33 @@ class BasicOptionItemsEntityFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: BasicOptionItemsEntityFactory(){
 }
 
 
-    public: BasicOptionItemsEntity getBasicOptionItemsEntityInstance(){
+    public: BasicOptionItemsEntity* getBasicOptionItemsEntityInstance(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return org::allbinary::data::tables::user::commerce::inventory::item::options::BasicOptionItemsEntity();
+                        return new org::allbinary::data::tables::user::commerce::inventory::item::options::BasicOptionItemsEntity();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
+                                    this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
     
 
                                     }

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_MOVEMENTCOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_PHYSICS_MOVEMENT_MOVEMENTCOMPOSITEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,11 +45,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Movement.h"
+        #include "org/allbinary/physics/movement/Movement.h"
 
 class MovementCompositeInterface {
 
-    Movement getMovement();
+    public: virtual Movement* getMovement() = 0;
 
 };
 

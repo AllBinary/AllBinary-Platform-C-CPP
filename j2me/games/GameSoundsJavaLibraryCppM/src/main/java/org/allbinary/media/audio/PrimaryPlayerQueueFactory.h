@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_PRIMARYPLAYERQUEUEFACTORY_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_PRIMARYPLAYERQUEUEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,15 +47,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PlayerQueue.h"
+        #include "org/allbinary/media/audio/PlayerQueue.h"
 
 class PrimaryPlayerQueueFactory
             : public Object
          {
 
-    private: static const PlayerQueue SINGLETON = PlayerQueue(4);
+    private: static PlayerQueue* SINGLETON() { static std::unique_ptr<PlayerQueue> value(new PlayerQueue(4)); return value.get(); }
 
-    public: static PlayerQueue getInstance();
+    public: static PlayerQueue* getInstance();
 
 };
 

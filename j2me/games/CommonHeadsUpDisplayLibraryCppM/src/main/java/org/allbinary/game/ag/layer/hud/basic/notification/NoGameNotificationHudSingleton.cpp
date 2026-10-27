@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,15 +58,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameNotificationHud.h"
+        #include "org/allbinary/game/ag/layer/hud/basic/notification/GameNotificationHud.h"
 
 class NoGameNotificationHudSingleton
             : public Object
          {
 
-    private: static NoGameNotificationHudSingleton instance() { return NoGameNotificationHudSingleton(); }
+    private: static NoGameNotificationHudSingleton* instance() { static std::unique_ptr<NoGameNotificationHudSingleton> value(new NoGameNotificationHudSingleton()); return value.get(); }
 
-    public: static NoGameNotificationHudSingleton getInstance(){
+    public: static NoGameNotificationHudSingleton* getInstance(){
 
 
 
@@ -70,15 +76,15 @@ class NoGameNotificationHudSingleton
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: GameNotificationHud gameNotificationHud = GameNotificationHud::NULL_GAME_NOTIFICATION;
+    private: GameNotificationHud* gameNotificationHud = GameNotificationHud::NULL_GAME_NOTIFICATION;
 
 private: NoGameNotificationHudSingleton(){
 
         try {
             
-    BasicHudFactory basicHudFactory = BasicHudFactory::getInstance();;
+    BasicHudFactory* basicHudFactory = BasicHudFactory::getInstance();;
     
 
 //inner=true member= isStatic=
@@ -104,23 +110,23 @@ this->updateMaxHeight= 14;
 
                     //Otherwise - statement - EmptyStmt
 
-this->gameNotificationHud= NoGameGameNotificationHud();
+this->gameNotificationHud= new NoGameGameNotificationHud();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &e);
     
 }
 
 }
 
 
-    public: GameNotificationHud getGameNotificationHud(){
+    public: GameNotificationHud* getGameNotificationHud(){
 
 
 

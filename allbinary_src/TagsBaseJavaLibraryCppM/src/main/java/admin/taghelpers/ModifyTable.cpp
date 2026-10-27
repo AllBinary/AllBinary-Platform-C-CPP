@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -48,15 +54,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ModifyTableInterface.h"
+        #include "admin/taghelpers/ModifyTableInterface.h"
 
 class ModifyTable
             : public Object
-        : public ModifyTableInterface {
+        , public ModifyTableInterface {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const TagStrings tagStrings = TagStrings::getInstance();
+    protected: TagStrings* tagStrings = TagStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
@@ -64,7 +70,7 @@ class ModifyTable
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -75,7 +81,7 @@ class ModifyTable
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -86,7 +92,7 @@ class ModifyTable
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

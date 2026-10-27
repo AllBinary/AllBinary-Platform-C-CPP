@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/pickup/PickedUpLayerInterface.h>
@@ -59,10 +65,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "VehiclePropertiesCompositeInterface.h"
-#include "CollidableCompositeLayer.h"
-#include "VehicleProperties.h"
-#include "VehicleFrictionProperties.h"
+        #include "org/allbinary/game/layer/VehiclePropertiesCompositeInterface.h"
+#include "org/allbinary/game/layer/CollidableCompositeLayer.h"
+#include "org/allbinary/game/layer/VehicleProperties.h"
+#include "org/allbinary/game/layer/VehicleFrictionProperties.h"
 
 class CollidableVehicleBehavior: public CollidableDestroyableDamageableBehavior {
 
@@ -80,27 +86,27 @@ public: CollidableVehicleBehavior(bool collidable) : CollidableDestroyableDamage
 
                 //@Throws(Exception.constructor)
             
-    public: void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface){
+    public: void collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface){
 
-    CollisionTypeFactory collisionTypeFactory = CollisionTypeFactory::getInstance();;
+    CollisionTypeFactory* collisionTypeFactory = CollisionTypeFactory::getInstance();;
     
 
-    CollisionType collisionType = collidableInterfaceCompositeInterface.getCollidableInferface().getCollisionTypeWith(ownerLayer);;
+    CollisionType* collisionType = collidableInterfaceCompositeInterface->getCollidableInferface()->getCollisionTypeWith(ownerLayer);;
     
 
-                        if(collisionType == collisionTypeFactory.PICKUP)
+                        if(collisionType == collisionTypeFactory->PICKUP)
                         
                                     {
                                     
-    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = (ownerLayer);;
+    CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer = (dynamic_cast<CollidableDestroyableDamageableLayer*>(ownerLayer));;
     
-collidableDestroyableDamageableLayer.getPickupBehavior().doPickupLayer(collidableInterfaceCompositeInterface);
+collidableDestroyableDamageableLayer->getPickupBehavior()->doPickupLayer(dynamic_cast<PickedUpLayerInterface*>(collidableInterfaceCompositeInterface));
     
 
                                     }
                                 
                              else 
-                        if(collisionType == collisionTypeFactory.COLLISION)
+                        if(collisionType == collisionTypeFactory->COLLISION)
                         
                                     {
                                     super.collide(ownerLayer, collidableInterfaceCompositeInterface);
@@ -109,7 +115,7 @@ collidableDestroyableDamageableLayer.getPickupBehavior().doPickupLayer(collidabl
                                     }
                                 
                         else {
-                            this->collideVehicle(ownerLayer, collidableInterfaceCompositeInterface);
+                            this->collideVehicle(ownerLayer, dynamic_cast<VehiclePropertiesCompositeInterface*>(collidableInterfaceCompositeInterface));
     
 
                         }
@@ -117,7 +123,7 @@ collidableDestroyableDamageableLayer.getPickupBehavior().doPickupLayer(collidabl
 }
 
 
-    public: void collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface){
+    public: void collideInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface){
 ForcedLogUtil::log("Don't Use Interface Version It Is Slower", this);
     
 }
@@ -127,21 +133,21 @@ ForcedLogUtil::log("Don't Use Interface Version It Is Slower", this);
 
     private: int64_t halfImpactVelocityY= 0;
 
-    protected: void collideVehicle(CollidableCompositeLayer ownerLayer, VehiclePropertiesCompositeInterface vehiclePropertiesCompositeInterface){
+    protected: void collideVehicle(CollidableCompositeLayer* ownerLayer, VehiclePropertiesCompositeInterface* vehiclePropertiesCompositeInterface){
 
-    VehiclePropertiesCompositeInterface ownerVehicleLayerInterface = (ownerLayer);;
+    VehiclePropertiesCompositeInterface* ownerVehicleLayerInterface = (dynamic_cast<VehiclePropertiesCompositeInterface*>(ownerLayer));;
     
 
-    VehicleProperties ownerVehicleProperties = ownerVehicleLayerInterface.getVehicleProperties();;
+    VehicleProperties* ownerVehicleProperties = ownerVehicleLayerInterface->getVehicleProperties();;
     
 
-    VehicleProperties vehicleProperties = vehiclePropertiesCompositeInterface.getVehicleProperties();;
+    VehicleProperties* vehicleProperties = vehiclePropertiesCompositeInterface->getVehicleProperties();;
     
 
-    int64_t impactVelocityX = ownerVehicleProperties.getVelocityProperties().getVelocityXBasicDecimalP().getUnscaled() -vehicleProperties.getVelocityProperties().getVelocityXBasicDecimalP().getUnscaled();;
+    int64_t impactVelocityX = ownerVehicleProperties->getVelocityProperties()->getVelocityXBasicDecimalP()->getUnscaled() -vehicleProperties->getVelocityProperties()->getVelocityXBasicDecimalP()->getUnscaled();;
     
 
-    int64_t impactVelocityY = ownerVehicleProperties.getVelocityProperties().getVelocityYBasicDecimalP().getUnscaled() -vehicleProperties.getVelocityProperties().getVelocityYBasicDecimalP().getUnscaled();;
+    int64_t impactVelocityY = ownerVehicleProperties->getVelocityProperties()->getVelocityYBasicDecimalP()->getUnscaled() -vehicleProperties->getVelocityProperties()->getVelocityYBasicDecimalP()->getUnscaled();;
     
 
                         if(impactVelocityX != 0)
@@ -149,9 +155,9 @@ ForcedLogUtil::log("Don't Use Interface Version It Is Slower", this);
                                     {
                                     this->halfImpactVelocityX= (impactVelocityX>>1);
     
-ownerVehicleProperties.getVelocityProperties().getVelocityXBasicDecimalP().addlong(this->halfImpactVelocityX);
+ownerVehicleProperties->getVelocityProperties()->getVelocityXBasicDecimalP()->addlong(this->halfImpactVelocityX);
     
-vehicleProperties.getVelocityProperties().getVelocityXBasicDecimalP().addlong(this->halfImpactVelocityX);
+vehicleProperties->getVelocityProperties()->getVelocityXBasicDecimalP()->addlong(this->halfImpactVelocityX);
     
 
                                     }
@@ -166,9 +172,9 @@ vehicleProperties.getVelocityProperties().getVelocityXBasicDecimalP().addlong(th
                                     {
                                     this->halfImpactVelocityY= (impactVelocityY>>1);
     
-ownerVehicleProperties.getVelocityProperties().getVelocityYBasicDecimalP().addlong(this->halfImpactVelocityY);
+ownerVehicleProperties->getVelocityProperties()->getVelocityYBasicDecimalP()->addlong(this->halfImpactVelocityY);
     
-vehicleProperties.getVelocityProperties().getVelocityXBasicDecimalP().addlong(this->halfImpactVelocityY);
+vehicleProperties->getVelocityProperties()->getVelocityXBasicDecimalP()->addlong(this->halfImpactVelocityY);
     
 
                                     }
@@ -186,11 +192,11 @@ this->totalImpactVelocity= impactVelocityX +impactVelocityY;
 }
 
 
-    private: void collideFriction(VehiclePropertiesCompositeInterface vehiclePropertiesCompositeInterface){
+    private: void collideFriction(VehiclePropertiesCompositeInterface* vehiclePropertiesCompositeInterface){
 
-    VehicleFrictionProperties vehicleFrictionProperties = vehiclePropertiesCompositeInterface.getVehicleProperties().getVehicleFrictionProperties();;
+    VehicleFrictionProperties* vehicleFrictionProperties = vehiclePropertiesCompositeInterface->getVehicleProperties()->getVehicleFrictionProperties();;
     
-vehiclePropertiesCompositeInterface.getVehicleProperties().getVehicleFrictionProperties().friction(vehiclePropertiesCompositeInterface.getVehicleProperties().getVelocityProperties(), vehicleFrictionProperties.getCrashFrictionNominator());
+vehiclePropertiesCompositeInterface->getVehicleProperties()->getVehicleFrictionProperties()->friction(vehiclePropertiesCompositeInterface->getVehicleProperties()->getVelocityProperties(), vehicleFrictionProperties->getCrashFrictionNominator());
     
 }
 

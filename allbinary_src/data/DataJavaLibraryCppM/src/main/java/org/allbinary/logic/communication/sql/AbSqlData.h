@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLDATA_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,17 +52,17 @@ class AbSqlData
             : public Object
          {
 
-    public: static const std::string ANYSINGLECHARACTERMATCH = "_";
+    public: static inline const std::string ANYSINGLECHARACTERMATCH = "_";
 
-    public: static const std::string ANYMULTICHARACTERMATCH = "%";
+    public: static inline const std::string ANYMULTICHARACTERMATCH = "%";
 
-    public: static const int32_t MAXNUM = 19;
+    public: static inline const int32_t MAXNUM = 19;
 
-    public: static const int32_t MINSTRING = 1;
+    public: static inline const int32_t MINSTRING = 1;
 
-    public: static const int32_t MAXSTRING = 255;
+    public: static inline const int32_t MAXSTRING = 255;
 
-    public: static const int32_t MAXBLOB = 32000;
+    public: static inline const int32_t MAXBLOB = 32000;
 
 public: AbSqlData();
 

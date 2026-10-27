@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Class.h"
         
             #include "java/lang/Exception.h"
@@ -79,13 +87,13 @@
         
 class OrderTag: public CustomTagSupport {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string command;
 
     private: std::string storeName;
 
-    private: HashMap<Object*, Object*> propertiesHashMap;
+    private: HashMap<Object*, Object*>* propertiesHashMap;
 
 public: OrderTag(){
 }
@@ -109,17 +117,17 @@ this->storeName= value;
 
         try {
             
-    Object* anyType = OrderHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = (new OrderHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
     
 
     Class* helperClass = anyType->getClass();;
     
 
-    Method method = helperClass.getMethod(commonStrings.PROCESS, 
+    Method* method = helperClass->getMethod(commonStrings.PROCESS, 
                             nullptr);;
     
 
-    std::string result = method.invoke(anyType, 
+    std::string result = method->invoke(anyType, 
                             nullptr);;
     
 
@@ -130,7 +138,7 @@ this->storeName= value;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -140,16 +148,16 @@ this->storeName= value;
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
     std::string error = "Failed to Process Order: ";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, &e);
     
 
                                     }
@@ -161,27 +169,27 @@ this->storeName= value;
                         return error;
     
 }
-*/
+
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    private: Boolean setPaymentGateway(){
+    private: bool setPaymentGateway(){
 
         try {
             
-    Object* anyType = OrderHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
+    Object* anyType = (new OrderHelperFactory())->getInstance(this->propertiesHashMap, this->pageContext);;
     
 
     Class* addressHelperClass = anyType->getClass();;
     
 
-    Method method = addressHelperClass.getMethod("setPaymentGateway", 
+    Method* method = addressHelperClass->getMethod("setPaymentGateway", 
                             nullptr);;
     
 
-    Boolean result = method.invoke(anyType, 
+    bool result = method->invoke(anyType, 
                             nullptr);;
     
 
@@ -192,7 +200,7 @@ this->storeName= value;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -202,16 +210,16 @@ this->storeName= value;
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
     std::string error = "Failed to setPaymentGateway for Order";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setPaymentGateway()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "setPaymentGateway()", &e);
     
 
                                     }
@@ -223,7 +231,7 @@ this->storeName= value;
                         return Boolean::FALSE;
     
 }
-*/
+
 }
 
 
@@ -236,9 +244,9 @@ this->storeName= value;
                         if(true)
                         
                                     {
-                                    this->propertiesHashMap= StdUtil::getInstance().createHashMap();
+                                    this->propertiesHashMap= StdUtil::getInstance()->createHashMap();
     
-this->propertiesHashMap.put(StoreFrontData::getInstance().NAME, this->storeName);
+this->propertiesHashMap->put(StoreFrontData::getInstance()->NAME, this->storeName);
     
 
                         if(this->command.compare(org.allbinary.globals.GLOBALS2.PROCESS) == 0)
@@ -280,9 +288,9 @@ this->propertiesHashMap.put(StoreFrontData::getInstance().NAME, this->storeName)
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
-AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
     
 
 
@@ -293,9 +301,9 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 
@@ -304,7 +312,7 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
                         return SKIP_BODY;
     
 }
-*/
+
 }
 
 

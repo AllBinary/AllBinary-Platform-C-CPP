@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -90,34 +96,34 @@
         
 class HighScoreUtil
             : public Object
-        : public HighScoresResultsListener {
+        , public HighScoresResultsListener {
 
-    public: static const Command SUBMIT_TEXTBOX_COMMAND = Command("Submit", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
+    public: static Command* SUBMIT_TEXTBOX_COMMAND() { static std::unique_ptr<Command> value(new Command("Submit", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1)); return value.get(); }
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: HighScoresFactoryInterface highScoresFactoryInterface;
+    private: HighScoresFactoryInterface* highScoresFactoryInterface;
 
-    private: std::vector<HighScores> highScoresArray;
+    private: std::vector<HighScores*> highScoresArray;
 
-    private: HighScore highScore;
+    private: HighScore* highScore;
 
-    private: AbeClientInformationInterface abeClientInformation;
+    private: AbeClientInformationInterface* abeClientInformation;
 
-    private: GameInfo gameInfo;
+    private: GameInfo* gameInfo;
 
-    private: HighScoresHelperBaseInterface highScoresHelper;
+    private: HighScoresHelperBaseInterface* highScoresHelper;
 
     private: bool firstTime = true;
 
-public: HighScoreUtil(HighScoresFactoryInterface highScoresFactoryInterface, HighScoresHelperBaseInterface highScoresHelper, AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, CommandListener cmdListener, std::string name, HighScore highScore){
+public: HighScoreUtil(HighScoresFactoryInterface* highScoresFactoryInterface, HighScoresHelperBaseInterface* highScoresHelper, AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo, CommandListener* cmdListener, std::string name, HighScore* highScore){
 this->highScoresFactoryInterface= highScoresFactoryInterface;
     
 this->highScoresHelper= highScoresHelper;
     
-this->highScoresArray= this->highScoresHelper.getHighScoresArray();
+this->highScoresArray= this->highScoresHelper->getHighScoresArray();
     
 this->highScore= highScore;
     
@@ -128,7 +134,7 @@ this->gameInfo= gameInfo;
 }
 
 
-    public: void setHighScoresArray(std::vector<HighScores> highScoresArray){
+    public: void setHighScoresArray(std::vector<HighScores*> highScoresArray){
 this->highScoresArray= highScoresArray;
     
 this->firstTime= false;
@@ -139,15 +145,15 @@ this->saveHighScore();
 
 
     public: void update(std::string name){
-HighScoreNamePersistanceSingleton::getInstance().save(this->abeClientInformation, this->gameInfo, name);
+HighScoreNamePersistanceSingleton::getInstance()->save(this->abeClientInformation, this->gameInfo, name);
     
-this->highScore.setName(name);
+this->highScore->setName(name);
     
 }
 
 
     public: void saveHighScore(){
-this->logUtil.putF(StringMaker().append(this->commonStrings.START).append(StringUtil::getInstance().toString(this->highScore)).toString(), this, "saveHighScore");
+this->logUtil->putF((new StringMaker())->append(this->commonStrings->START)->append(StringUtil::getInstance()->toString(this->highScore))->toString(), this, "saveHighScore");
     
 
     int32_t size = this->highScoresArray.size();;
@@ -156,9 +162,9 @@ this->logUtil.putF(StringMaker().append(this->commonStrings.START).append(String
                         if(this->firstTime && size == 0)
                         
                                     {
-                                    this->logUtil.putF("Games canvas did not give us any HighScores", this, "saveHighScore");
+                                    this->logUtil->putF("Games canvas did not give us any HighScores", this, "saveHighScore");
     
-this->highScoresFactoryInterface.fetchHighScores(this->gameInfo, this);
+this->highScoresFactoryInterface->fetchHighScores(this->gameInfo, this);
     
 
 
@@ -170,7 +176,7 @@ this->highScoresFactoryInterface.fetchHighScores(this->gameInfo, this);
                                     }
                                 
 
-    HighScores highScores;;
+    HighScores* highScores;;
     
 
     std::string highScoresAsString;;
@@ -184,24 +190,24 @@ this->highScoresFactoryInterface.fetchHighScores(this->gameInfo, this);
         {
 highScores= this->highScoresArray[index];
     
-highScores.addHighScore(this->highScore);
+highScores->addHighScore(this->highScore);
     
-highScoresAsString= highScores.toString();
+highScoresAsString= highScores->toString();
     
-this->logUtil.putF(StringMaker().append("Added/Adding Score: ").append(highScoresAsString).toString(), this, "saveHighScore");
-    
-}
-
-this->highScoresHelper.setHighScoresArray(this->highScoresArray);
+this->logUtil->putF((new StringMaker())->append("Added/Adding Score: ")->append(highScoresAsString)->toString(), this, "saveHighScore");
     
 }
 
-
-    public: void submit(MyCanvas myCanvas){
-
-    CommandListener commandListener = myCanvas.getCustomCommandListener();;
+this->highScoresHelper->setHighScoresArray(this->highScoresArray);
     
-commandListener.commandAction(HighScoreUtil::SUBMIT_TEXTBOX_COMMAND, myCanvas);
+}
+
+
+    public: void submit(MyCanvas* myCanvas){
+
+    CommandListener* commandListener = myCanvas->getCustomCommandListener();;
+    
+commandListener->commandAction(HighScoreUtil::SUBMIT_TEXTBOX_COMMAND(), myCanvas);
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_HIERARCHY_CATEGORYHIERARCHYINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_HIERARCHY_CATEGORYHIERARCHYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/business/category/CategoryInterface.h>
 
       
@@ -45,19 +51,19 @@
         
 class CategoryHierarchyInterface {
 
-    int32_t getLevel();
+    public: virtual int32_t getLevel() = 0;
 
-    std::string getLevelString();
+    public: virtual std::string getLevelString() = 0;
 
-    CategoryInterface getRoot();
+    public: virtual CategoryInterface* getRoot() = 0;
 
-    CategoryInterface getParent();
+    public: virtual CategoryInterface* getParent() = 0;
 
-    void setLevel(int32_t level);
+    public: virtual void setLevel(int32_t level) = 0;
 
-    void setRoot(CategoryInterface categoryInterface);
+    public: virtual void setRoot(CategoryInterface* categoryInterface) = 0;
 
-    void setParent(CategoryInterface categoryInterface);
+    public: virtual void setParent(CategoryInterface* categoryInterface) = 0;
 
 };
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -57,31 +63,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnimationInterfaceFactoryInterface.h"
-#include "ProceduralAnimationInterfaceFactoryInterface.h"
-#include "RotationAnimation.h"
-#include "NullRotationAnimation.h"
-#include "IndexedAnimationBehavior.h"
-//#include "NullRotationAnimation2.h"
-#include "Animation.h"
+        #include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/RotationAnimation.h"
+#include "org/allbinary/animation/NullRotationAnimation.h"
+#include "org/allbinary/animation/IndexedAnimationBehavior.h"
+//#include "org/allbinary/animation/NullRotationAnimation2.h"
+#include "org/allbinary/animation/Animation.h"
 
 class NullRotationAnimationFactory
             : public Object
-        : public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
+        , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
 
-    private: static NullRotationAnimationFactory NULL_ROTATION_ANIMATION_FACTORY = NullRotationAnimationFactory();
+    private: static NullRotationAnimationFactory* NULL_ROTATION_ANIMATION_FACTORY() { static std::unique_ptr<NullRotationAnimationFactory> value(new NullRotationAnimationFactory()); return value.get(); }
 
-    public: static NullRotationAnimationFactory getFactoryInstance(){
+    public: static NullRotationAnimationFactory* getFactoryInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullRotationAnimationFactory::NULL_ROTATION_ANIMATION_FACTORY;
+                        return NullRotationAnimationFactory::NULL_ROTATION_ANIMATION_FACTORY();
     
 }
 
 
-    public: const std::vector<RotationAnimation> NULL_ROTATION_ANIMATION_ARRAY = {};
+    public: const std::vector<RotationAnimation*> NULL_ROTATION_ANIMATION_ARRAY = {};
 
 //inner= member=true isStatic=
 class NullRotationAnimation2: public NullRotationAnimation {
@@ -98,20 +104,20 @@ class NullRotationAnimation2: public NullRotationAnimation {
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 }
 
 
 };
 
             
-    private: const Animation NULL_ANIMATION = NullRotationAnimation2();
+    private: Animation* NULL_ANIMATION = new NullRotationAnimation2();
 
 private: NullRotationAnimationFactory(){
 }
 
 
-    public: Animation getInstance(int32_t instanceId){
+    public: Animation* getInstance(int32_t instanceId){
 
 
 
@@ -123,7 +129,7 @@ private: NullRotationAnimationFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstanceAnimation(Animation animationInterface){
+    public: Animation* getInstanceAnimation(Animation* animationInterface){
 
 
 
@@ -133,7 +139,7 @@ private: NullRotationAnimationFactory(){
 }
 
 
-    public: void setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties* scaleProperties){
 }
 
 

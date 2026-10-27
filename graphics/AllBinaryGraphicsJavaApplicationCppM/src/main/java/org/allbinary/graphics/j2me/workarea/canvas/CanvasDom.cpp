@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -85,149 +91,149 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "IntegerDimension.h"
-#include "Grid.h"
-#include "CanvasJPanel.h"
-#include "Document.h"
+        #include "org/allbinary/graphics/j2me/workarea/canvas/IntegerDimension.h"
+#include "org/allbinary/graphics/j2me/workarea/canvas/Grid.h"
+#include "org/allbinary/graphics/j2me/workarea/canvas/CanvasJPanel.h"
+#include "org/allbinary/graphics/j2me/workarea/canvas/Document.h"
 
 class CanvasDom
             : public Object
          {
 
-    public: static const std::string FRAME = "frame";
+    public: static inline const std::string FRAME = "frame";
 
-    public: static const std::string ROTATE = "rotate";
+    public: static inline const std::string ROTATE = "rotate";
 
-    public: static const std::string SIZE = "size";
+    public: static inline const std::string SIZE = "size";
 
-    public: static const std::string X = "X";
+    public: static inline const std::string X = "X";
 
-    public: static const std::string Y = "Y";
+    public: static inline const std::string Y = "Y";
 
-    public: static const std::string ZOOM = "zoom";
+    public: static inline const std::string ZOOM = "zoom";
 
-    public: static const std::string GRID = "grid";
+    public: static inline const std::string GRID = "grid";
 
-    public: static const std::string ENABLED = "enabled";
+    public: static inline const std::string ENABLED = "enabled";
 
-    public: static const std::string POSSIBLE = "possible";
+    public: static inline const std::string POSSIBLE = "possible";
 
-    public: static const std::string GRAPHICITEMS = "graphicItems";
+    public: static inline const std::string GRAPHICITEMS = "graphicItems";
 
-    public: static const std::string REAL_SIZE = "realSize";
+    public: static inline const std::string REAL_SIZE = "realSize";
 
-    private: const GraphicsStrings graphicsStrings = GraphicsStrings::getInstance();
+    private: GraphicsStrings* graphicsStrings = GraphicsStrings::getInstance();
 
-    private: HashMap<Object*, Object*> graphicItemHashMap;
+    private: HashMap<Object*, Object*>* graphicItemHashMap;
 
     private: double angle;
 
-    private: IntegerDimension dimension;
+    private: IntegerDimension* dimension;
 
-    private: Grid grid;
+    private: Grid* grid;
 
-public: CanvasDom(Node canvasNode){
-this->grid= Grid();
+public: CanvasDom(Node* canvasNode){
+this->grid= new Grid();
     
-this->grid.grid= PointFactory::getInstance().createXY(0, 0);
+this->grid->grid= PointFactory::getInstance()->createXY(0, 0);
     
-this->dimension= IntegerDimension(0, 0);
+this->dimension= new IntegerDimension(0, 0);
     
 
-    std::string name = canvasNode.getNodeName();;
+    std::string name = canvasNode->getNodeName();;
     
 
                         if(name.compare(CanvasDom::FRAME) == 0)
                         
                                     {
-                                    this->graphicItemHashMap= StdUtil::getInstance().createHashMap();
+                                    this->graphicItemHashMap= StdUtil::getInstance()->createHashMap();
     
 
-    Node angleNode = DomHelper::getInstance().searchNodeList(this->ROTATE, canvasNode.getChildNodes());;
+    Node* angleNode = DomHelper::getInstance()->searchNodeList(this->ROTATE, canvasNode->getChildNodes());;
     
 
-    Node angleTextNode = angleNode.getFirstChild();;
+    Node* angleTextNode = angleNode->getFirstChild();;
     
 
-    double angle = number(angleTextNode.getNodeValue()).doubleValue();;
+    double angle = (double(angleTextNode->getNodeValue())).doubleValue();;
     
 this->setAngle(angle);
     
 
-    Node sizeNode = DomHelper::getInstance().searchNodeList(this->SIZE, canvasNode.getChildNodes());;
+    Node* sizeNode = DomHelper::getInstance()->searchNodeList(this->SIZE, canvasNode->getChildNodes());;
     
 
-    Node xNode = DomHelper::getInstance().searchNodeList(this->X, sizeNode.getChildNodes());;
+    Node* xNode = DomHelper::getInstance()->searchNodeList(this->X, sizeNode->getChildNodes());;
     
 
-    Node xTextNode = xNode.getFirstChild();;
+    Node* xTextNode = xNode->getFirstChild();;
     
 
-    int32_t x = Integer(xTextNode.getNodeValue()).intValue();;
+    int32_t x = (int32_t(xTextNode->getNodeValue())).intValue();;
     
 
-    Node yNode = DomHelper::getInstance().searchNodeList(this->Y, sizeNode.getChildNodes());;
+    Node* yNode = DomHelper::getInstance()->searchNodeList(this->Y, sizeNode->getChildNodes());;
     
 
-    Node yTextNode = yNode.getFirstChild();;
+    Node* yTextNode = yNode->getFirstChild();;
     
 
-    int32_t y = Integer(yTextNode.getNodeValue()).intValue();;
+    int32_t y = (int32_t(yTextNode->getNodeValue())).intValue();;
     
 this->setWorkArea(x, y);
     
 
-    Node zoomNode = DomHelper::getInstance().searchNodeList(this->ZOOM, canvasNode.getChildNodes());;
+    Node* zoomNode = DomHelper::getInstance()->searchNodeList(this->ZOOM, canvasNode->getChildNodes());;
     
 
-    Node zoomTextNode = zoomNode.getFirstChild();;
+    Node* zoomTextNode = zoomNode->getFirstChild();;
     
-this->grid.setZoom(Integer(zoomTextNode.getNodeValue()).intValue());
-    
-
-    Node gridNode = DomHelper::getInstance().searchNodeList(this->GRID, canvasNode.getChildNodes());;
+this->grid->setZoom((int32_t(zoomTextNode->getNodeValue())).intValue());
     
 
-    Node gridSizeNode = DomHelper::getInstance().searchNodeList(this->SIZE, gridNode.getChildNodes());;
+    Node* gridNode = DomHelper::getInstance()->searchNodeList(this->GRID, canvasNode->getChildNodes());;
     
 
-    Node gridXNode = DomHelper::getInstance().searchNodeList(this->X, gridSizeNode.getChildNodes());;
+    Node* gridSizeNode = DomHelper::getInstance()->searchNodeList(this->SIZE, gridNode->getChildNodes());;
     
 
-    Node gridXTextNode = gridXNode.getFirstChild();;
+    Node* gridXNode = DomHelper::getInstance()->searchNodeList(this->X, gridSizeNode->getChildNodes());;
     
 
-    int32_t gridX = Integer(gridXTextNode.getNodeValue()).intValue();;
+    Node* gridXTextNode = gridXNode->getFirstChild();;
     
 
-    Node gridYNode = DomHelper::getInstance().searchNodeList(this->Y, gridSizeNode.getChildNodes());;
+    int32_t gridX = (int32_t(gridXTextNode->getNodeValue())).intValue();;
     
 
-    Node gridYTextNode = gridYNode.getFirstChild();;
+    Node* gridYNode = DomHelper::getInstance()->searchNodeList(this->Y, gridSizeNode->getChildNodes());;
     
 
-    int32_t gridY = Integer(gridYTextNode.getNodeValue()).intValue();;
+    Node* gridYTextNode = gridYNode->getFirstChild();;
+    
+
+    int32_t gridY = (int32_t(gridYTextNode->getNodeValue())).intValue();;
     
 this->setGrid(gridX, gridY);
     
 
-    Node enableNode = DomHelper::getInstance().searchNodeList(this->ENABLED, gridNode.getChildNodes());;
+    Node* enableNode = DomHelper::getInstance()->searchNodeList(this->ENABLED, gridNode->getChildNodes());;
     
 
-    Node enableTextNode = enableNode.getFirstChild();;
+    Node* enableTextNode = enableNode->getFirstChild();;
     
-this->grid.showGrid(.valueOf());
-    
-
-    Node possibleNode = DomHelper::getInstance().searchNodeList(this->POSSIBLE, gridNode.getChildNodes());;
+this->grid->showGrid(().valueOf());
     
 
-    Node possibleTextNode = possibleNode.getFirstChild();;
-    
-this->grid.isGridPossible= .valueOf();
+    Node* possibleNode = DomHelper::getInstance()->searchNodeList(this->POSSIBLE, gridNode->getChildNodes());;
     
 
-    BasicArrayList graphicItemNodeList = DomHelper::getInstance().getChildrenWithoutTextNodes(this->GRAPHICITEMS, canvasNode.getChildNodes());;
+    Node* possibleTextNode = possibleNode->getFirstChild();;
+    
+this->grid->isGridPossible= ().valueOf();
+    
+
+    BasicArrayList* graphicItemNodeList = DomHelper::getInstance()->getChildrenWithoutTextNodes(this->GRAPHICITEMS, canvasNode->getChildNodes());;
     
 
                         if(graphicItemNodeList != 
@@ -235,7 +241,7 @@ this->grid.isGridPossible= .valueOf();
                                 )
                         
                                     {
-                                    this->graphicItemHashMap= GraphicItemFactory::getInstance().getInstance(graphicItemNodeList);
+                                    this->graphicItemHashMap= GraphicItemFactory::getInstance()->getInstance(graphicItemNodeList);
     
 
                                     }
@@ -247,7 +253,7 @@ this->grid.isGridPossible= .valueOf();
                             
 
 
-                            throw Exception("Frame Element Not Found but Found: " +name);
+                            throw new Exception("Frame Element Not Found but Found: " +name);
                     
 
                         }
@@ -255,16 +261,16 @@ this->grid.isGridPossible= .valueOf();
 }
 
 
-public: CanvasDom(CanvasJPanel canvasJPanel){
-this->angle= canvasJPanel.getAngle();
+public: CanvasDom(CanvasJPanel* canvasJPanel){
+this->angle= canvasJPanel->getAngle();
     
-this->graphicItemHashMap= canvasJPanel.getGraphicItemHashMap();
+this->graphicItemHashMap= canvasJPanel->getGraphicItemHashMap();
     
-this->dimension= canvasJPanel.getCanvasDimension();
+this->dimension= canvasJPanel->getCanvasDimension();
     
-this->grid= Grid(canvasJPanel.getGrid());
+this->grid= new Grid(canvasJPanel->getGrid());
     
-this->angle= canvasJPanel.getAngle();
+this->angle= canvasJPanel->getAngle();
     
 }
 
@@ -279,7 +285,7 @@ this->angle= canvasJPanel.getAngle();
 }
 
 
-    public: HashMap<Object*, Object*> getGraphicItemHashMap(){
+    public: HashMap<Object*, Object*>* getGraphicItemHashMap(){
 
 
 
@@ -298,7 +304,7 @@ this->angle= angle;
                 //@Throws(Exception.constructor)
             
     public: void setWorkArea(int32_t x, int32_t y){
-this->setDimension(IntegerDimension(x, y));
+this->setDimension(new IntegerDimension(x, y));
     
 }
 
@@ -306,37 +312,37 @@ this->setDimension(IntegerDimension(x, y));
                 //@Throws(Exception.constructor)
             
     public: void setGrid(int32_t gridX, int32_t gridY){
-this->grid.grid= PointFactory::getInstance().createXY(gridX, gridY);
+this->grid->grid= PointFactory::getInstance()->createXY(gridX, gridY);
     
 }
 
 
-    private: Node getPointNode(GPoint point, std::string pointName){
+    private: Node* getPointNode(GPoint* point, std::string pointName){
 
-    org::w3c::dom::Document document = WorkAreaJPanel::getDocument();;
-    
-
-    Node pointNode = document.createElement(pointName);;
+    org::w3c::dom::Document* document = WorkAreaJPanel::getDocument();;
     
 
-    Node xNode = document.createElement(this->X);;
+    Node* pointNode = dynamic_cast<Node*>(document->createElement(pointName));;
     
 
-    Node xTextNode = document.createTextNode(std::to_string(getX));;
-    
-xNode.appendChild(xTextNode);
+    Node* xNode = dynamic_cast<Node*>(document->createElement(this->X));;
     
 
-    Node yNode = document.createElement(this->Y);;
+    Node* xTextNode = dynamic_cast<Node*>(document->createTextNode(std::to_string(getX)));;
+    
+xNode->appendChild(xTextNode);
     
 
-    Node yTextNode = document.createTextNode(std::to_string(getY));;
+    Node* yNode = dynamic_cast<Node*>(document->createElement(this->Y));;
     
-yNode.appendChild(yTextNode);
+
+    Node* yTextNode = dynamic_cast<Node*>(document->createTextNode(std::to_string(getY)));;
     
-pointNode.appendChild(xNode);
+yNode->appendChild(yTextNode);
     
-pointNode.appendChild(yNode);
+pointNode->appendChild(xNode);
+    
+pointNode->appendChild(yNode);
     
 
 
@@ -349,103 +355,103 @@ pointNode.appendChild(yNode);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toDom(){
+    public: Node* toDom(){
 
-    org::w3c::dom::Document document = WorkAreaJPanel::getDocument();;
-    
-
-    Node frameNode = document.createElement(this->FRAME);;
+    org::w3c::dom::Document* document = WorkAreaJPanel::getDocument();;
     
 
-    Node angleNode = document.createElement(this->ROTATE);;
+    Node* frameNode = dynamic_cast<Node*>(document->createElement(this->FRAME));;
     
 
-    Node angleTextNode = document.createTextNode(number(this->getAngle()).toString());;
-    
-angleNode.appendChild(angleTextNode);
+    Node* angleNode = dynamic_cast<Node*>(document->createElement(this->ROTATE));;
     
 
-    Node sizeNode = this->getPointNode(PointFactory::getInstance().createXY(this->getDimension().getWidth(), this->getDimension().getHeight()), this->SIZE);;
+    Node* angleTextNode = dynamic_cast<Node*>(document->createTextNode((double(this->getAngle())).toString()));;
+    
+angleNode->appendChild(angleTextNode);
     
 
-    Node zoomNode = document.createElement(this->ZOOM);;
+    Node* sizeNode = dynamic_cast<Node*>(this->getPointNode(PointFactory::getInstance()->createXY(this->getDimension()->getWidth(), this->getDimension()->getHeight()), this->SIZE));;
     
 
-    Node zoomTextNode = document.createTextNode(Integer(this->getGrid().getZoom()).toString());;
-    
-zoomNode.appendChild(zoomTextNode);
+    Node* zoomNode = dynamic_cast<Node*>(document->createElement(this->ZOOM));;
     
 
-    Node gridNode = document.createElement(this->GRID);;
+    Node* zoomTextNode = dynamic_cast<Node*>(document->createTextNode((int32_t(this->getGrid()->getZoom())).toString()));;
+    
+zoomNode->appendChild(zoomTextNode);
     
 
-    Node gridSizeNode = this->getPointNode(this->getGrid().grid, this->SIZE);;
-    
-gridNode.appendChild(gridSizeNode);
+    Node* gridNode = dynamic_cast<Node*>(document->createElement(this->GRID));;
     
 
-    Node enableNode = document.createElement(this->ENABLED);;
+    Node* gridSizeNode = dynamic_cast<Node*>(this->getPointNode(this->getGrid()->grid, this->SIZE));;
+    
+gridNode->appendChild(gridSizeNode);
     
 
-    Node enableTextNode = document.createTextNode(.toString());;
-    
-enableNode.appendChild(enableTextNode);
-    
-gridNode.appendChild(enableNode);
+    Node* enableNode = dynamic_cast<Node*>(document->createElement(this->ENABLED));;
     
 
-    Node possibleNode = document.createElement(this->POSSIBLE);;
+    Node* enableTextNode = dynamic_cast<Node*>(document->createTextNode(().toString()));;
+    
+enableNode->appendChild(enableTextNode);
+    
+gridNode->appendChild(enableNode);
     
 
-    Node possibleTextNode = document.createTextNode(.toString());;
-    
-possibleNode.appendChild(possibleTextNode);
-    
-gridNode.appendChild(possibleNode);
+    Node* possibleNode = dynamic_cast<Node*>(document->createElement(this->POSSIBLE));;
     
 
-    Node realSizeNode = document.createElement(REAL_SIZE);;
+    Node* possibleTextNode = dynamic_cast<Node*>(document->createTextNode(().toString()));;
+    
+possibleNode->appendChild(possibleTextNode);
+    
+gridNode->appendChild(possibleNode);
     
 
-    VectorCenterGenerator vectorCenterGenerator = VectorCenterGenerator();;
-    
-vectorCenterGenerator.calculate(this->getGraphicItemHashMap());
+    Node* realSizeNode = dynamic_cast<Node*>(document->createElement(REAL_SIZE));;
     
 
-    Node widthNode = document.createElement(this->graphicsStrings.WIDTH);;
+    VectorCenterGenerator* vectorCenterGenerator = new VectorCenterGenerator();;
+    
+vectorCenterGenerator->calculate(this->getGraphicItemHashMap());
     
 
-    Node widthTextNode = document.createTextNode(std::to_string(getWidth));;
-    
-widthNode.appendChild(widthTextNode);
-    
-realSizeNode.appendChild(widthNode);
+    Node* widthNode = dynamic_cast<Node*>(document->createElement(this->graphicsStrings->WIDTH));;
     
 
-    Node heightNode = document.createElement(this->graphicsStrings.HEIGHT);;
+    Node* widthTextNode = dynamic_cast<Node*>(document->createTextNode(std::to_string(getWidth)));;
+    
+widthNode->appendChild(widthTextNode);
+    
+realSizeNode->appendChild(widthNode);
     
 
-    Node heightTextNode = document.createTextNode(std::to_string(getHeight));;
-    
-heightNode.appendChild(heightTextNode);
-    
-realSizeNode.appendChild(heightNode);
-    
-frameNode.appendChild(angleNode);
-    
-frameNode.appendChild(sizeNode);
-    
-frameNode.appendChild(zoomNode);
-    
-frameNode.appendChild(gridNode);
-    
-frameNode.appendChild(realSizeNode);
+    Node* heightNode = dynamic_cast<Node*>(document->createElement(this->graphicsStrings->HEIGHT));;
     
 
-    Node graphicItemNode = document.createElement(this->GRAPHICITEMS);;
+    Node* heightTextNode = dynamic_cast<Node*>(document->createTextNode(std::to_string(getHeight)));;
+    
+heightNode->appendChild(heightTextNode);
+    
+realSizeNode->appendChild(heightNode);
+    
+frameNode->appendChild(angleNode);
+    
+frameNode->appendChild(sizeNode);
+    
+frameNode->appendChild(zoomNode);
+    
+frameNode->appendChild(gridNode);
+    
+frameNode->appendChild(realSizeNode);
     
 
-    std::vector<Object*> graphicItemArray = this->getGraphicItemHashMap().keys().();;
+    Node* graphicItemNode = dynamic_cast<Node*>(document->createElement(this->GRAPHICITEMS));;
+    
+
+    std::vector<Object*> graphicItemArray = this->getGraphicItemHashMap()->keys().();;
     
 
     int32_t size = graphicItemArray.size();;
@@ -458,17 +464,17 @@ frameNode.appendChild(realSizeNode);
     int32_t index = 0;index < size; index++)
         {
 
-    GraphicItemInterface item = this->graphicItemHashMap.get(graphicItemArray[index]);;
+    GraphicItemInterface* item = dynamic_cast<GraphicItemInterface*>(this->graphicItemHashMap->get(graphicItemArray[index]));;
     
 
-                        if(item.getName() == LinesGraphicItem::getStaticName())
+                        if(item->getName() == LinesGraphicItem::getStaticName())
                         
                                     {
                                     
-                        if(item.isValid())
+                        if(item->isValid())
                         
                                     {
-                                    graphicItemNode.appendChild(item.toDom(this));
+                                    graphicItemNode->appendChild(item->toDom(this));
     
 
                                     }
@@ -478,7 +484,7 @@ frameNode.appendChild(realSizeNode);
                                 
 }
 
-frameNode.appendChild(graphicItemNode);
+frameNode->appendChild(graphicItemNode);
     
 
 
@@ -489,7 +495,7 @@ frameNode.appendChild(graphicItemNode);
 }
 
 
-    public: IntegerDimension getDimension(){
+    public: IntegerDimension* getDimension(){
 
 
 
@@ -499,13 +505,13 @@ frameNode.appendChild(graphicItemNode);
 }
 
 
-    public: void setDimension(IntegerDimension dimension){
+    public: void setDimension(IntegerDimension* dimension){
 this->dimension= dimension;
     
 }
 
 
-    public: Grid getGrid(){
+    public: Grid* getGrid(){
 
 
 

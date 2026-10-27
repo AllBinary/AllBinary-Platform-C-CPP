@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/rms/RecordEnumeration.h>
@@ -82,11 +90,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Input.h"
+        #include "org/allbinary/game/input/Input.h"
 //GameInputNoPersistanceLibrary
 class InputPersistance: public BasicPersitance {
 
-    private: const HashtableUtil hashtableUtil = HashtableUtil::getInstance();
+    private: HashtableUtil* hashtableUtil = HashtableUtil::getInstance();
 
 public: InputPersistance(std::string name) : BasicPersitance(name){
 
@@ -100,66 +108,66 @@ public: InputPersistance(std::string name) : BasicPersitance(name){
 
                 //@Throws(Exception.constructor)
             
-    public: void loadAll(AbeClientInformationInterface abeClientInformation){
+    public: void loadAll(AbeClientInformationInterface* abeClientInformation){
 
-    RecordStore recordStore = RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);;
+    RecordStore* recordStore = RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);;
     
 
-    RecordEnumeration recordEnum = recordStore.enumerateRecords(NullRecordFilter::NULL_RECORD_FILTER, NullRecordComparator::NULL_RECORD_COMPARATOR, true);;
+    RecordEnumeration* recordEnum = recordStore->enumerateRecords(NullRecordFilter::NULL_RECORD_FILTER, NullRecordComparator::NULL_RECORD_COMPARATOR, true);;
     
 
-    ABHashtable<Object*, Object*> hashtable;;
+    ABHashtable<Object*, Object*>* hashtable;;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
+    SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
 
     int32_t id= 0;;
     
 
-        while(recordEnum.hasNextElement())
+        while(recordEnum->hasNextElement())
         {
-id= recordEnum.nextRecordId();
+id= recordEnum->nextRecordId();
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-this->logUtil.putF(stringBuffer.append(this->persistanceStrings.LOADING_ID).appendint(id).toString(), this, this->persistanceStrings.LOAD_ALL);
+this->logUtil.putF(stringBuffer->append(this->persistanceStrings.LOADING_ID)->appendint(id)->toString(), this, this->persistanceStrings.LOAD_ALL);
     
-hashtable= StdUtil::getInstance().createHashtable();
+hashtable= StdUtil::getInstance()->createHashtable();
     
 this->valueList.add(hashtable);
     
-this->idList.add(smallIntegerSingletonFactory.getAt(id));
+this->idList.add(smallIntegerSingletonFactory->getAt(id));
     
 }
 
-recordStore.closeRecordStore();
+recordStore->closeRecordStore();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void save(AbeClientInformationInterface abeClientInformation, ABHashtable<Object*, Object*> hashtable){
-PreLogUtil::put(StringMaker().append(this->persistanceStrings.NOT_SAVING).append(StringUtil::getInstance().toString(hashtable)).toString(), this, this->commonStrings.SAVE);
+    public: void save(AbeClientInformationInterface* abeClientInformation, ABHashtable<Object*, Object*>* hashtable){
+PreLogUtil::put((new StringMaker())->append(this->persistanceStrings.NOT_SAVING)->append(StringUtil::getInstance()->toString(hashtable))->toString(), this, this->commonStrings.SAVE);
     
 
-    RecordStore recordStore = RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);;
+    RecordStore* recordStore = RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);;
     
 
-    Input gameActionInput;;
+    Input* gameActionInput;;
     
 
-    BasicArrayList list;;
+    BasicArrayList* list;;
     
 
-    Input input;;
+    Input* input;;
     
 
-    std::vector<Object*> inputObjectArray = this->hashtableUtil.getKeysAsArray(hashtable);;
+    std::vector<Object*> inputObjectArray = this->hashtableUtil->getKeysAsArray(hashtable);;
     
 
     int32_t size = inputObjectArray.size();;
@@ -171,24 +179,24 @@ PreLogUtil::put(StringMaker().append(this->persistanceStrings.NOT_SAVING).append
                         for (
     int32_t index = 0;index < size; index++)
         {
-gameActionInput= inputObjectArray[index];
+gameActionInput= dynamic_cast<Input*>(inputObjectArray[index]);
     
-list= hashtable.get(inputObjectArray[index]);
+list= dynamic_cast<BasicArrayList*>(hashtable->get(inputObjectArray[index]));
     
 
 
 
 
                         for (
-    int32_t index2 = 0;index2 < list.size(); index2++)
+    int32_t index2 = 0;index2 < list->size(); index2++)
         {
-input= list.get(index2);
+input= dynamic_cast<Input*>(list->get(index2));
     
 }
 
 }
 
-recordStore.closeRecordStore();
+recordStore->closeRecordStore();
     
 }
 

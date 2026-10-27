@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -164,15 +170,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OrderHistoryEntityInterface.h"
+        #include "org/allbinary/data/tables/user/commerce/inventory/order/OrderHistoryEntityInterface.h"
 
 class OrderHistoryEntity: public AbSqlBean, public OrderHistoryEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     protected: const std::string tableName = "orderhistory";
 
-public: OrderHistoryEntity() : AbSqlBean(HistoryDbInitInfo()){
+public: OrderHistoryEntity() : AbSqlBean(new HistoryDbInitInfo()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -184,89 +190,89 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void insert(std::string userName, Order order){
+    public: void insert(std::string userName, Order* order){
 
-    BasicArrayList vector = BasicArrayListD();;
+    BasicArrayList* vector = new BasicArrayListD();;
     
 
         try {
             
-    PaymentInterface paymentInterface = PaymentEntity().getDefault(userName);;
+    PaymentInterface* paymentInterface = (new PaymentEntity())->getDefault(userName);;
     
 
-    StreetAddress billingAddress = BillingAddressesEntity(userName).getDefault();;
+    StreetAddress* billingAddress = (new BillingAddressesEntity(userName))->getDefault();;
     
 
-    StreetAddress shippingAddress = ShippingAddressesEntity(userName).getDefault();;
+    StreetAddress* shippingAddress = (new ShippingAddressesEntity(userName))->getDefault();;
     
 
-    AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();;
+    AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();;
     
 
-    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(order.getStoreName());;
+    StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(order->getStoreName());;
     
 
-    ShippingInterface shippingInterface = ShippingMethods(abeClientInformation, storeFrontInterface).getShippingInterface(order.getShippingMethod());;
+    ShippingInterface* shippingInterface = (new ShippingMethods(abeClientInformation, storeFrontInterface))->getShippingInterface(order->getShippingMethod());;
     
 
-    Money shippingCost = shippingInterface.getCost(order);;
+    Money* shippingCost = shippingInterface->getCost(order);;
     
 
-    BasketInterface basketInterface = order.getBasket();;
+    BasketInterface* basketInterface = order->getBasket();;
     
 
-    Money subTotal = basketInterface.getSubTotal();;
+    Money* subTotal = basketInterface->getSubTotal();;
     
 
-    number taxRate = TaxFactory::getInstance().getInstance(abeClientInformation, storeFrontInterface).getTaxRate(shippingAddress, storeFrontInterface);;
+    float taxRate = TaxFactory::getInstance()->getInstance(abeClientInformation, storeFrontInterface)->getTaxRate(shippingAddress, storeFrontInterface);;
     
 
-    Money tax = Money();;
+    Money* tax = new Money();;
     
 
-    Money total = Money();;
+    Money* total = new Money();;
     
-total.add(shippingCost.toString());
+total->add(shippingCost->toString());
     
-total.add(subTotal.toString());
+total->add(subTotal->toString());
     
-tax.add(total.toString());
+tax->add(total->toString());
     
-tax.multiply(taxRate);
+tax->multiply(taxRate);
     
-total.add(tax.toString());
-    
-
-    std::string empty = StringUtil::getInstance().EMPTY_STRING;;
-    
-vector.add(OrderHistoryIdGenerator().getNext());
+total->add(tax->toString());
     
 
-    std::string ZERO = TableDataFactory::getInstance().ZERO_STRING;;
+    std::string empty = StringUtil::getInstance()->EMPTY_STRING;;
     
-vector.add(order.getId());
-    
-vector.add(userName);
-    
-vector.add(order.getStoreName());
+vector->add((new OrderHistoryIdGenerator())->getNext());
     
 
-    Calendar calendar = Calendar::getInstance();;
+    std::string ZERO = TableDataFactory::getInstance()->ZERO_STRING;;
+    
+vector->add(order->getId());
+    
+vector->add(userName);
+    
+vector->add(order->getStoreName());
     
 
-    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    Calendar* calendar = Calendar::getInstance();;
     
-vector.add(ZERO);
+
+    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
     
-vector.add(time);
+vector->add(ZERO);
     
-vector.add(ZERO);
+vector->add(time);
     
-vector.add(ZERO);
+vector->add(ZERO);
     
-vector.add(OrderHistoryData::PREPROCESSING);
+vector->add(ZERO);
     
-vector.add(order.getPaymentMethod());
+vector->add(OrderHistoryData::PREPROCESSING);
+    
+vector->add(order->getPaymentMethod());
     
 
                         if(paymentInterface != 
@@ -274,32 +280,32 @@ vector.add(order.getPaymentMethod());
                                 )
                         
                                     {
-                                    vector.add(paymentInterface.getName());
+                                    vector->add(paymentInterface->getName());
     
-vector.add(paymentInterface.getType());
+vector->add(paymentInterface->getType());
     
-vector.add(paymentInterface.getExpiration());
+vector->add(paymentInterface->getExpiration());
     
 
-    int32_t random = Random().nextInt(SuperCrypt::KEYMAX);;
+    int32_t random = (new Random())->nextInt(SuperCrypt::KEYMAX);;
     
-vector.add(SuperCrypt(random).encrypt(paymentInterface.getNumber()));
+vector->add((new SuperCrypt(random))->encrypt(paymentInterface->getNumber()));
     
-vector.add(Integer(random).toString());
+vector->add((int32_t(random)).toString());
     
 
                                     }
                                 
                         else {
-                            vector.add(empty);
+                            vector->add(empty);
     
-vector.add(empty);
+vector->add(empty);
     
-vector.add(empty);
+vector->add(empty);
     
-vector.add(empty);
+vector->add(empty);
     
-vector.add(ZERO);
+vector->add(ZERO);
     
 
                         }
@@ -310,33 +316,33 @@ vector.add(ZERO);
                                 )
                         
                                     {
-                                    vector.add(billingAddress.getName());
+                                    vector->add(billingAddress->getName());
     
-vector.add(billingAddress.getStreet());
+vector->add(billingAddress->getStreet());
     
-vector.add(billingAddress.getCity());
+vector->add(billingAddress->getCity());
     
-vector.add(billingAddress.getState());
+vector->add(billingAddress->getState());
     
-vector.add(billingAddress.getCode());
+vector->add(billingAddress->getCode());
     
-vector.add(billingAddress.getCountry());
+vector->add(billingAddress->getCountry());
     
 
                                     }
                                 
                         else {
-                            vector.add(empty);
+                            vector->add(empty);
     
-vector.add(empty);
+vector->add(empty);
     
-vector.add(empty);
+vector->add(empty);
     
-vector.add(empty);
+vector->add(empty);
     
-vector.add(empty);
+vector->add(empty);
     
-vector.add(empty);
+vector->add(empty);
     
 
                         }
@@ -347,77 +353,77 @@ vector.add(empty);
                                 )
                         
                                     {
-                                    vector.add(shippingAddress.getName());
+                                    vector->add(shippingAddress->getName());
     
-vector.add(shippingAddress.getStreet());
+vector->add(shippingAddress->getStreet());
     
-vector.add(shippingAddress.getCity());
+vector->add(shippingAddress->getCity());
     
-vector.add(shippingAddress.getState());
+vector->add(shippingAddress->getState());
     
-vector.add(shippingAddress.getCode());
+vector->add(shippingAddress->getCode());
     
-vector.add(shippingAddress.getCountry());
+vector->add(shippingAddress->getCountry());
     
 
                                     }
                                 
                         else {
-                            vector.add(empty);
+                            vector->add(empty);
     
-vector.add(empty);
+vector->add(empty);
     
-vector.add(empty);
+vector->add(empty);
     
-vector.add(empty);
+vector->add(empty);
     
-vector.add(empty);
+vector->add(empty);
     
-vector.add(empty);
+vector->add(empty);
     
 
                         }
                             
-vector.add(order.getShippingMethod());
+vector->add(order->getShippingMethod());
     
-vector.add(subTotal.toString());
+vector->add(subTotal->toString());
     
-vector.add(shippingCost.toString());
+vector->add(shippingCost->toString());
     
-vector.add(tax.toString());
+vector->add(tax->toString());
     
-vector.add(total.toString());
+vector->add(total->toString());
     
-vector.add(order.getSpecial());
+vector->add(order->getSpecial());
     
-vector.add(order.getUserComments());
+vector->add(order->getUserComments());
     
-vector.add(order.getUserCancelComments());
+vector->add(order->getUserCancelComments());
     
-vector.add(order.getStoreComments());
+vector->add(order->getStoreComments());
     
-vector.add(order.getStoreCancelComments());
+vector->add(order->getStoreCancelComments());
     
 this->insert(vector);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, INSERT);
+                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, INSERT);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put("Command Failed: " +vector, this, INSERT, e);
+                                    this->logUtil->put("Command Failed: " +vector, this, INSERT, &e);
     
 
                                     }
@@ -427,29 +433,29 @@ this->insert(vector);
 }
 
 
-    public: void insert(BasicArrayList values){
+    public: void insert(BasicArrayList* values){
 
         try {
             super.insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, INSERT);
+                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, INSERT);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, INSERT, e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, INSERT, &e);
     
 
                                     }
@@ -463,21 +469,21 @@ this->insert(vector);
 
         try {
             
-    Calendar calendar = Calendar::getInstance();;
+    Calendar* calendar = Calendar::getInstance();;
     
 
-    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
     
 
-    HashMap<Object*, Object*> updateHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* updateHashMap = StdUtil::getInstance()->createHashMap();;
     
-updateHashMap.put(OrderHistoryData::STATUS, status);
+updateHashMap->put(OrderHistoryData::STATUS, status);
     
 
                         if(status.compare(OrderHistoryData::CANCELLED) == 0)
                         
                                     {
-                                    updateHashMap.put(OrderHistoryData::CANCELDATE, time);
+                                    updateHashMap->put(OrderHistoryData::CANCELDATE, time);
     
 
                                     }
@@ -486,7 +492,7 @@ updateHashMap.put(OrderHistoryData::STATUS, status);
                         if(status.compare(OrderHistoryData::SHIPPED) == 0)
                         
                                     {
-                                    updateHashMap.put(OrderHistoryData::SHIPPEDDATE, time);
+                                    updateHashMap->put(OrderHistoryData::SHIPPEDDATE, time);
     
 
                                     }
@@ -495,13 +501,13 @@ super.updateWhere(OrderData::ID, orderId, updateHashMap);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, "setStatus", e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, "setStatus", &e);
     
 
                                     }
@@ -515,29 +521,29 @@ super.updateWhere(OrderData::ID, orderId, updateHashMap);
 
         try {
             
-    Calendar calendar = Calendar::getInstance();;
+    Calendar* calendar = Calendar::getInstance();;
     
 
-    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
     
 
-    HashMap<Object*, Object*> updateHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* updateHashMap = StdUtil::getInstance()->createHashMap();;
     
-updateHashMap.put(PaymentData::METHOD, paymentMethod);
+updateHashMap->put(PaymentData::METHOD, paymentMethod);
     
-updateHashMap.put(OrderHistoryData::TRANSDATE, time);
+updateHashMap->put(OrderHistoryData::TRANSDATE, time);
     
 super.updateWhere(OrderData::ID, orderId, updateHashMap);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, "setPaymentMethod", e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, "setPaymentMethod", &e);
     
 
                                     }
@@ -549,20 +555,20 @@ super.updateWhere(OrderData::ID, orderId, updateHashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getStoreOrders(StoreFrontInterface storeFrontInterface){
+    public: BasicArrayList* getStoreOrders(StoreFrontInterface* storeFrontInterface){
 
-    BasicArrayList orderReviewVector = BasicArrayListD();;
+    BasicArrayList* orderReviewVector = new BasicArrayListD();;
     
 
-    HashMap<Object*, Object*> whereHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* whereHashMap = StdUtil::getInstance()->createHashMap();;
     
-whereHashMap.put(StoreFrontData::getInstance().NAME, storeFrontInterface.getName());
-    
-
-    BasicArrayList orderHashMapVector = super.getRows(whereHashMap);;
+whereHashMap->put(StoreFrontData::getInstance()->NAME, storeFrontInterface->getName());
     
 
-    int32_t size = orderHashMapVector.size();;
+    BasicArrayList* orderHashMapVector = super.getRows(whereHashMap);;
+    
+
+    int32_t size = orderHashMapVector->size();;
     
 
 
@@ -572,12 +578,12 @@ whereHashMap.put(StoreFrontData::getInstance().NAME, storeFrontInterface.getName
     int32_t i = 0;i < size; i++)
         {
 
-    HashMap<Object*, Object*> orderReviewHashMap = orderHashMapVector.get(i);;
+    HashMap<Object*, Object*>* orderReviewHashMap = dynamic_cast<HashMap*>(orderHashMapVector->get(i));;
     
 
-    OrderHistory orderReview = OrderHistory(Basket(), orderReviewHashMap);;
+    OrderHistory* orderReview = new OrderHistory(new Basket(), orderReviewHashMap);;
     
-orderReviewVector.add(orderReview);
+orderReviewVector->add(orderReview);
     
 }
 
@@ -592,20 +598,20 @@ orderReviewVector.add(orderReview);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getOrders(std::string userName){
+    public: BasicArrayList* getOrders(std::string userName){
 
-    BasicArrayList orderReviewVector = BasicArrayListD();;
+    BasicArrayList* orderReviewVector = new BasicArrayListD();;
     
 
-    HashMap<Object*, Object*> whereHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* whereHashMap = StdUtil::getInstance()->createHashMap();;
     
-whereHashMap.put(UserData::USERNAME, userName);
-    
-
-    BasicArrayList orderHashMapVector = super.getRows(whereHashMap);;
+whereHashMap->put(UserData::USERNAME, userName);
     
 
-    int32_t size = orderHashMapVector.size();;
+    BasicArrayList* orderHashMapVector = super.getRows(whereHashMap);;
+    
+
+    int32_t size = orderHashMapVector->size();;
     
 
 
@@ -615,12 +621,12 @@ whereHashMap.put(UserData::USERNAME, userName);
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<Object*, Object*> orderReviewHashMap = orderHashMapVector.get(index);;
+    HashMap<Object*, Object*>* orderReviewHashMap = dynamic_cast<HashMap*>(orderHashMapVector->get(index));;
     
 
-    OrderHistory orderReview = OrderHistory(Basket(), orderReviewHashMap);;
+    OrderHistory* orderReview = new OrderHistory(new Basket(), orderReviewHashMap);;
     
-orderReviewVector.add(orderReview);
+orderReviewVector->add(orderReview);
     
 }
 
@@ -635,20 +641,20 @@ orderReviewVector.add(orderReview);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getOrders(std::string status, std::string fromDate, std::string toDate){
+    public: BasicArrayList* getOrders(std::string status, std::string fromDate, std::string toDate){
 
-    BasicArrayList orderReviewVector = BasicArrayListD();;
+    BasicArrayList* orderReviewVector = new BasicArrayListD();;
     
 
-    HashMap<Object*, Object*> whereHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* whereHashMap = StdUtil::getInstance()->createHashMap();;
     
-whereHashMap.put(OrderHistoryData::STATUS, status);
-    
-
-    BasicArrayList orderHashMapVector = super.getRowsWhereBetween(whereHashMap, OrderHistoryData::ORDERDATE, fromDate, toDate);;
+whereHashMap->put(OrderHistoryData::STATUS, status);
     
 
-    int32_t size = orderHashMapVector.size();;
+    BasicArrayList* orderHashMapVector = super.getRowsWhereBetween(whereHashMap, OrderHistoryData::ORDERDATE, fromDate, toDate);;
+    
+
+    int32_t size = orderHashMapVector->size();;
     
 
 
@@ -658,12 +664,12 @@ whereHashMap.put(OrderHistoryData::STATUS, status);
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<Object*, Object*> orderReviewHashMap = orderHashMapVector.get(index);;
+    HashMap<Object*, Object*>* orderReviewHashMap = dynamic_cast<HashMap*>(orderHashMapVector->get(index));;
     
 
-    OrderHistory orderReview = OrderHistory(Basket(), orderReviewHashMap);;
+    OrderHistory* orderReview = new OrderHistory(new Basket(), orderReviewHashMap);;
     
-orderReviewVector.add(orderReview);
+orderReviewVector->add(orderReview);
     
 }
 
@@ -678,15 +684,15 @@ orderReviewVector.add(orderReview);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getOrders(std::string fromDate, std::string toDate){
+    public: BasicArrayList* getOrders(std::string fromDate, std::string toDate){
 
-    BasicArrayList orderReviewVector = BasicArrayListD();;
+    BasicArrayList* orderReviewVector = new BasicArrayListD();;
     
 
-    BasicArrayList orderHashMapVector = super.getRowsWhereBetween(OrderHistoryData::ORDERDATE, fromDate, toDate);;
+    BasicArrayList* orderHashMapVector = super.getRowsWhereBetween(OrderHistoryData::ORDERDATE, fromDate, toDate);;
     
 
-    int32_t size = orderHashMapVector.size();;
+    int32_t size = orderHashMapVector->size();;
     
 
 
@@ -696,12 +702,12 @@ orderReviewVector.add(orderReview);
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<Object*, Object*> orderReviewHashMap = orderHashMapVector.get(index);;
+    HashMap<Object*, Object*>* orderReviewHashMap = dynamic_cast<HashMap*>(orderHashMapVector->get(index));;
     
 
-    OrderHistory orderReview = OrderHistory(Basket(), orderReviewHashMap);;
+    OrderHistory* orderReview = new OrderHistory(new Basket(), orderReviewHashMap);;
     
-orderReviewVector.add(orderReview);
+orderReviewVector->add(orderReview);
     
 }
 
@@ -716,14 +722,14 @@ orderReviewVector.add(orderReview);
 
                 //@Throws(Exception.constructor)
             
-    public: OrderHistory getOrder(std::string id){
+    public: OrderHistory* getOrder(std::string id){
 
-    HashMap<Object*, Object*> whereHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* whereHashMap = StdUtil::getInstance()->createHashMap();;
     
-whereHashMap.put(OrderData::ID, id);
+whereHashMap->put(OrderData::ID, id);
     
 
-    HashMap<Object*, Object*> orderReviewHashMap = super.getRow(whereHashMap);;
+    HashMap<Object*, Object*>* orderReviewHashMap = super.getRow(whereHashMap);;
     
 
                         if(orderReviewHashMap != 
@@ -732,7 +738,7 @@ whereHashMap.put(OrderData::ID, id);
                         
                                     {
                                     
-    OrderHistory orderHistory = OrderHistory(Basket(), orderReviewHashMap);;
+    OrderHistory* orderHistory = new OrderHistory(new Basket(), orderReviewHashMap);;
     
 
 
@@ -758,176 +764,176 @@ whereHashMap.put(OrderData::ID, id);
 
     public: std::string createTableStatement(){
 
-    EntryData entryData = EntryData::getInstance();;
+    EntryData* entryData = EntryData::getInstance();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("CREATE TABLE ");
+stringBuffer->append("CREATE TABLE ");
     
-stringBuffer.append(this->tableName);
+stringBuffer->append(this->tableName);
     
-stringBuffer.append(" (");
+stringBuffer->append(" (");
     
-stringBuffer.append(entryData.ID);
+stringBuffer->append(entryData->ID);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(OrderData::ID);
+stringBuffer->append(OrderData::ID);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(UserData::USERNAME);
+stringBuffer->append(UserData::USERNAME);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(StoreFrontData::getInstance().NAME);
+stringBuffer->append(StoreFrontData::getInstance()->NAME);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(OrderHistoryData::SHIPPEDDATE);
+stringBuffer->append(OrderHistoryData::SHIPPEDDATE);
     
-stringBuffer.append(" BIGINT(19) UNSIGNED ,");
+stringBuffer->append(" BIGINT(19) UNSIGNED ,");
     
-stringBuffer.append(OrderHistoryData::ORDERDATE);
+stringBuffer->append(OrderHistoryData::ORDERDATE);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(OrderHistoryData::TRANSDATE);
+stringBuffer->append(OrderHistoryData::TRANSDATE);
     
-stringBuffer.append(" BIGINT(19) UNSIGNED ,");
+stringBuffer->append(" BIGINT(19) UNSIGNED ,");
     
-stringBuffer.append(OrderHistoryData::CANCELDATE);
+stringBuffer->append(OrderHistoryData::CANCELDATE);
     
-stringBuffer.append(" BIGINT(19) UNSIGNED ,");
+stringBuffer->append(" BIGINT(19) UNSIGNED ,");
     
-stringBuffer.append(OrderHistoryData::STATUS);
+stringBuffer->append(OrderHistoryData::STATUS);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(PaymentData::METHOD);
+stringBuffer->append(PaymentData::METHOD);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(PaymentData::NAME);
+stringBuffer->append(PaymentData::NAME);
     
-stringBuffer.append(" VARCHAR(255) ,");
+stringBuffer->append(" VARCHAR(255) ,");
     
-stringBuffer.append(PaymentData::TYPE);
+stringBuffer->append(PaymentData::TYPE);
     
-stringBuffer.append(" VARCHAR(255) ,");
+stringBuffer->append(" VARCHAR(255) ,");
     
-stringBuffer.append(PaymentData::EXPIRATION);
+stringBuffer->append(PaymentData::EXPIRATION);
     
-stringBuffer.append(" VARCHAR(255) ,");
+stringBuffer->append(" VARCHAR(255) ,");
     
-stringBuffer.append(PaymentData::NUMBER);
+stringBuffer->append(PaymentData::NUMBER);
     
-stringBuffer.append(" VARCHAR(255) ,");
+stringBuffer->append(" VARCHAR(255) ,");
     
-stringBuffer.append(entryData.ENCRYPTION);
+stringBuffer->append(entryData->ENCRYPTION);
     
-stringBuffer.append(" BIGINT(19) UNSIGNED ,");
+stringBuffer->append(" BIGINT(19) UNSIGNED ,");
     
-stringBuffer.append(BillingAddressData::NAME);
+stringBuffer->append(BillingAddressData::NAME);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(BillingAddressData::STREET);
+stringBuffer->append(BillingAddressData::STREET);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(BillingAddressData::CITY);
+stringBuffer->append(BillingAddressData::CITY);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(BillingAddressData::STATE);
+stringBuffer->append(BillingAddressData::STATE);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(BillingAddressData::CODE);
+stringBuffer->append(BillingAddressData::CODE);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(BillingAddressData::COUNTRY);
+stringBuffer->append(BillingAddressData::COUNTRY);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(ShippingAddressData::NAME);
+stringBuffer->append(ShippingAddressData::NAME);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(ShippingAddressData::STREET);
+stringBuffer->append(ShippingAddressData::STREET);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(ShippingAddressData::CITY);
+stringBuffer->append(ShippingAddressData::CITY);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(ShippingAddressData::STATE);
+stringBuffer->append(ShippingAddressData::STATE);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(ShippingAddressData::CODE);
+stringBuffer->append(ShippingAddressData::CODE);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(ShippingAddressData::COUNTRY);
+stringBuffer->append(ShippingAddressData::COUNTRY);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(ShippingMethodData::NAME);
+stringBuffer->append(ShippingMethodData::NAME);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(OrderHistoryData::SUBTOTAL);
+stringBuffer->append(OrderHistoryData::SUBTOTAL);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(OrderHistoryData::SHIPPINGCOST);
+stringBuffer->append(OrderHistoryData::SHIPPINGCOST);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(OrderHistoryData::TAX);
+stringBuffer->append(OrderHistoryData::TAX);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(OrderHistoryData::TOTAL);
+stringBuffer->append(OrderHistoryData::TOTAL);
     
-stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(entryData.SPECIAL);
+stringBuffer->append(entryData->SPECIAL);
     
-stringBuffer.append(" VARCHAR(255) ,");
+stringBuffer->append(" VARCHAR(255) ,");
     
-stringBuffer.append(OrderData::CUSTOMERCOMMENT);
+stringBuffer->append(OrderData::CUSTOMERCOMMENT);
     
-stringBuffer.append(this->sqlTypeStrings.BLOB_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.BLOB_NOT_NULL);
     
-stringBuffer.append(OrderData::CUSTOMERCANCELCOMMENT);
+stringBuffer->append(OrderData::CUSTOMERCANCELCOMMENT);
     
-stringBuffer.append(this->sqlTypeStrings.BLOB_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.BLOB_NOT_NULL);
     
-stringBuffer.append(OrderData::STORECOMMENT);
+stringBuffer->append(OrderData::STORECOMMENT);
     
-stringBuffer.append(this->sqlTypeStrings.BLOB_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.BLOB_NOT_NULL);
     
-stringBuffer.append(OrderData::STORECANCELCOMMENT);
+stringBuffer->append(OrderData::STORECANCELCOMMENT);
     
-stringBuffer.append(this->sqlTypeStrings.BLOB_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings.BLOB_NOT_NULL);
     
-stringBuffer.append("PRIMARY KEY(");
+stringBuffer->append("PRIMARY KEY(");
     
-stringBuffer.append(entryData.ID);
+stringBuffer->append(entryData->ID);
     
-stringBuffer.append(") )");
+stringBuffer->append(") )");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
@@ -954,14 +960,14 @@ stringBuffer.append(") )");
 
                 //@Throws(Exception.constructor)
             
-    public: void update(HashMap<Object*, Object*> whereHashMap, HashMap<Object*, Object*> orderHashMap){
+    public: void update(HashMap<Object*, Object*>* whereHashMap, HashMap<Object*, Object*>* orderHashMap){
 
         try {
             updateWhere(whereHashMap, orderHashMap);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 

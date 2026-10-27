@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LIFE_LIFE_H
         #define ORG_ALLBINARY_GAME_AG_LIFE_LIFE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -45,15 +51,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LifeInterface.h"
+        #include "org/allbinary/game/ag/life/LifeInterface.h"
 
 class Life
             : public Object
-        : public LifeInterface {
+        , public LifeInterface {
 
-    public: static Life createLife();
+    public: static Life* createLife();
 
-    public: static const Life NO_LIFE = Life::createLife();
+    public: static inline Life* NO_LIFE = Life::createLife();
 
     private: int16_t lives;
 

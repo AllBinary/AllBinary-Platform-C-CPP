@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,9 +42,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnimationBehaviorFactory.h"
-#include "IndexedAnimationBehavior.h"
-#include "AnimationBehavior.h"
+        #include "org/allbinary/animation/AnimationBehaviorFactory.h"
+#include "org/allbinary/animation/IndexedAnimationBehavior.h"
+#include "org/allbinary/animation/AnimationBehavior.h"
 
 class IndexedAnimationBehaviorFactory: public AnimationBehaviorFactory {
 
@@ -54,12 +60,12 @@ this->frameDelayTime= frameDelayTime;
 }
 
 
-    public: AnimationBehavior getOrCreateInstance(){
+    public: AnimationBehavior* getOrCreateInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return IndexedAnimationBehavior(this->loopTotal, this->frameDelayTime);
+                        return new IndexedAnimationBehavior(this->loopTotal, this->frameDelayTime);
     
 }
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -75,25 +81,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageActionScriptOutputData.h"
+        #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutputData.h"
 
 class ImageTypes
             : public Object
          {
 
-    public: static ImageTypes valueOf(std::vector<Object*> anyType);
+    public: static ImageTypes* valueOf(std::vector<Object*> anyType);
 
-    private: BasicArrayList vector = BasicArrayListD();
+    private: BasicArrayList* vector = new BasicArrayListD();
 
 public: ImageTypes();
 
-public: ImageTypes(Node node);
+public: ImageTypes(Node* node);
 
-    public: BasicArrayList getVector();
+    public: BasicArrayList* getVector();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
     public: std::string toString();
 

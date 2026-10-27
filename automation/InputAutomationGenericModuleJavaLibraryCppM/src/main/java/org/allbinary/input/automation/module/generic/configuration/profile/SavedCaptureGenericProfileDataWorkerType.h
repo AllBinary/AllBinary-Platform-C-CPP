@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_SAVEDCAPTUREGENERICPROFILEDATAWORKERTYPE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_SAVEDCAPTUREGENERICPROFILEDATAWORKERTYPE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/input/media/image/InputImageType.h>
 
       
@@ -42,11 +48,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GenericProfileDataWorkerType.h"
+        #include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfileDataWorkerType.h"
 
 class SavedCaptureGenericProfileDataWorkerType: public GenericProfileDataWorkerType {
 
-    public: static SavedCaptureGenericProfileDataWorkerType SAVED_CAPTURE = SavedCaptureGenericProfileDataWorkerType("Saved " +InputImageType::CAPTURE.getName(), "c:\\share\\captures\\2\\", 100);
+    public: static SavedCaptureGenericProfileDataWorkerType* SAVED_CAPTURE() { static std::unique_ptr<SavedCaptureGenericProfileDataWorkerType> value(new SavedCaptureGenericProfileDataWorkerType("Saved " +InputImageType::CAPTURE.getName(), "c:\\share\\captures\\2\\", 100)); return value.get(); }
 
     private: std::string path;
 

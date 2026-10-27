@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_BUILDING_BUILDINGPROPERTIESFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_BUILDING_BUILDINGPROPERTIESFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -82,29 +88,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BuildingLayer.h"
+        #include "org/allbinary/game/layer/building/BuildingLayer.h"
 
 class BuildingPropertiesFactory
             : public Object
          {
 
-    private: static BuildingPropertiesFactory instance() { return BuildingPropertiesFactory(); }
+    private: static BuildingPropertiesFactory* instance() { static std::unique_ptr<BuildingPropertiesFactory> value(new BuildingPropertiesFactory()); return value.get(); }
 
-    public: static BuildingPropertiesFactory getInstance();
+    public: static BuildingPropertiesFactory* getInstance();
 
-    public: int32_t getEfficiencyPerLevel(BuildingLayer buildingLayer);
+    public: int32_t getEfficiencyPerLevel(BuildingLayer* buildingLayer);
 
-    public: Paintable damageFloatersPaintableInterface = NullPaintable::getInstance();
+    public: Paintable* damageFloatersPaintableInterface = NullPaintable::getInstance();
 
-    public: DamageFloaters getDamageFloaters(BuildingLayer buildingLayer);
+    public: DamageFloaters* getDamageFloaters(BuildingLayer* buildingLayer);
 
                 //@Throws(Exception.constructor)
             
-    public: Paintable getHealthBar(BuildingLayer buildingLayer);
+    public: Paintable* getHealthBar(BuildingLayer* buildingLayer);
 
-    public: ABHashtable<Object*, Object*> getHashtable();
+    public: ABHashtable<Object*, Object*>* getHashtable();
 
-    public: TrackingEvent getTrackingEvent(BuildingLayer buildingLayer);
+    public: TrackingEvent* getTrackingEvent(BuildingLayer* buildingLayer);
 
 };
 

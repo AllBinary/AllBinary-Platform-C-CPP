@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSETYPEFACTORY_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSETYPEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/string/CommonStrings.h>
@@ -44,23 +50,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LicenseType.h"
+        #include "org/allbinary/logic/system/security/licensing/LicenseType.h"
 
 class LicenseTypeFactory
             : public Object
          {
 
-    private: static LicenseTypeFactory instance() { return LicenseTypeFactory(); }
+    private: static LicenseTypeFactory* instance() { static std::unique_ptr<LicenseTypeFactory> value(new LicenseTypeFactory()); return value.get(); }
 
-    public: static LicenseTypeFactory getInstance();
+    public: static LicenseTypeFactory* getInstance();
 
-    public: const LicenseType UNKNOWN = LicenseType(CommonStrings::getInstance().UNKNOWN);
+    public: LicenseType* UNKNOWN = new LicenseType(CommonStrings::getInstance()->UNKNOWN);
 
-    public: const LicenseType DEMO = LicenseType("Demo");
+    public: LicenseType* DEMO = new LicenseType("Demo");
 
-    public: const LicenseType NORMAL = LicenseType("Normal");
+    public: LicenseType* NORMAL = new LicenseType("Normal");
 
-    public: LicenseType getInstance(std::string name);
+    public: LicenseType* getInstance(std::string name);
 
 };
 

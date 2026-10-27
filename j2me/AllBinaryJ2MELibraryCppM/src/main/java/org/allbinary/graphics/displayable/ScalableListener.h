@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCALABLELISTENER_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCALABLELISTENER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,13 +48,13 @@
         
 class ScalableListener {
 
-    float getRatio(float ratio);
+    public: virtual float getRatio(float ratio) = 0;
 
-    int32_t getLeft(int32_t xOffset);
+    public: virtual int32_t getLeft(int32_t xOffset) = 0;
 
-    int32_t getTop(int32_t yOffset);
+    public: virtual int32_t getTop(int32_t yOffset) = 0;
 
-    void scale(float ratio);
+    public: virtual void scale(float ratio) = 0;
 
 };
 

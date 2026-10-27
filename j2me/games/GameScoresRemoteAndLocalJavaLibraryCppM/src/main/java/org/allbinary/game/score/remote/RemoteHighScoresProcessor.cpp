@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -76,20 +82,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RemoteHighScoresProcessorInterface.h"
-#include "RemoteHighScoresData.h"
-#include "XmlRpcRemoteHighScoresClient.h"
-#include "RemoteHighScores.h"
+        #include "org/allbinary/game/score/remote/RemoteHighScoresProcessorInterface.h"
+#include "org/allbinary/game/score/remote/RemoteHighScoresData.h"
+#include "org/allbinary/game/score/remote/XmlRpcRemoteHighScoresClient.h"
+#include "org/allbinary/game/score/remote/RemoteHighScores.h"
 
 class RemoteHighScoresProcessor
             : public Object
-        : public RemoteHighScoresProcessorInterface {
+        , public RemoteHighScoresProcessorInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const NoCrypt noCrypt = NoCrypt();
+    private: NoCrypt* noCrypt = new NoCrypt();
 
 public: RemoteHighScoresProcessor(){
 }
@@ -98,36 +104,36 @@ public: RemoteHighScoresProcessor(){
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void process(RemoteHighScores remoteHighScores, AbeClientInformationInterface abeClientInformation, GameInfo gameInfo){
-this->logUtil.putF("Begin Remote HighScores Retrieval", this, this->commonStrings.PROCESS);
+    public: void process(RemoteHighScores* remoteHighScores, AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo){
+this->logUtil->putF("Begin Remote HighScores Retrieval", this, this->commonStrings->PROCESS);
     
 
-    GameInfoData gameInfoData = GameInfoData::getInstance();;
+    GameInfoData* gameInfoData = GameInfoData::getInstance();;
     
 
-    ABHashtable<Object*, Object*> hashtable = abeClientInformation.toHashtable();;
+    ABHashtable<Object*, Object*>* hashtable = abeClientInformation->toHashtable();;
     
-HashtableUtil::getInstance().putAll(gameInfo.toHashtable(), hashtable);
+HashtableUtil::getInstance()->putAll(gameInfo->toHashtable(), hashtable);
     
-hashtable.put(gameInfoData.SOFTWARE_INFORMATION, remoteHighScores.getSoftwareInformation().toString());
+hashtable->put(gameInfoData->SOFTWARE_INFORMATION, remoteHighScores->getSoftwareInformation()->toString());
     
-hashtable.put(remoteHighScores.ASCENDING, remoteHighScores.getAscending().toString());
+hashtable->put(remoteHighScores->ASCENDING, remoteHighScores->getAscending()->toString());
     
 
-    DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();;
+    DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();;
     
-hashtable.put(displayInfoSingleton.ORIENTATION, BooleanFactory::getInstance().toStringb(displayInfoSingleton.isPortrait()));
+hashtable->put(displayInfoSingleton->ORIENTATION, BooleanFactory::getInstance()->toStringb(displayInfoSingleton->isPortrait()));
     
-hashtable.put(RemoteHighScoresData::getInstance().GAME_CONFIGURATION, GameConfigurationCentral::getInstance().toString());
+hashtable->put(RemoteHighScoresData::getInstance()->GAME_CONFIGURATION, GameConfigurationCentral::getInstance()->toString());
     
 
                         if(XmlRpcAbeClient::isOnline)
                         
                                     {
                                     
-    ABHashtable<Object*, Object*> resultHashtable = XmlRpcRemoteHighScoresClient(abeClientInformation, "highscoresservicessl.php", "HighScoresService.process").get(hashtable, this->noCrypt);;
+    ABHashtable<Object*, Object*>* resultHashtable = dynamic_cast<ABHashtable<Object*, Object*>*>((new XmlRpcRemoteHighScoresClient(abeClientInformation, "highscoresservicessl.php", "HighScoresService.process"))->get(hashtable, this->noCrypt));;
     
-remoteHighScores.update(resultHashtable);
+remoteHighScores->update(resultHashtable);
     
 
                                     }

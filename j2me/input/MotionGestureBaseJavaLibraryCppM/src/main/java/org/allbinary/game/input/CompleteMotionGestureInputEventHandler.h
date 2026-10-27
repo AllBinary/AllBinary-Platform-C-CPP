@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTEVENTHANDLER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -59,33 +65,33 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CompleteMotionGestureInputEventListener.h"
-#include "CompleteMotionGestureInputEvent.h"
-#include "CompleteMotionGestureInputEventListenerInterface.h"
+        #include "org/allbinary/game/input/CompleteMotionGestureInputEventListener.h"
+#include "org/allbinary/game/input/CompleteMotionGestureInputEvent.h"
+#include "org/allbinary/game/input/CompleteMotionGestureInputEventListenerInterface.h"
 
 class CompleteMotionGestureInputEventHandler: public BasicEventHandler {
 
-    private: static const CompleteMotionGestureInputEventHandler SINGLETON = CompleteMotionGestureInputEventHandler();
+    private: static CompleteMotionGestureInputEventHandler* SINGLETON() { static std::unique_ptr<CompleteMotionGestureInputEventHandler> value(new CompleteMotionGestureInputEventHandler()); return value.get(); }
 
-    public: static CompleteMotionGestureInputEventHandler getInstance();
+    public: static CompleteMotionGestureInputEventHandler* getInstance();
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: CompleteMotionGestureInputEventHandler();
 
-    public: void addListener(CompleteMotionGestureInputEventListener completeMotionGestureInputEventListener);
+    public: void addListener(CompleteMotionGestureInputEventListener* completeMotionGestureInputEventListener);
 
     public: void removeAllListeners();
 
-    public: void removeListener(EventListenerInterface eventListenerInterface);
+    public: void removeListener(EventListenerInterface* eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(AllBinaryEventObject eventObject);
+    public: void fireEvent(AllBinaryEventObject* eventObject);
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
 };
 

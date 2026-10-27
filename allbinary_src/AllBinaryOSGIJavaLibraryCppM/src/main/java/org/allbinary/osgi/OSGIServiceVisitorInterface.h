@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_OSGI_OSGISERVICEVISITORINTERFACE_H
         #define ORG_ALLBINARY_OSGI_OSGISERVICEVISITORINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/util/visitor/VisitorInterface.h>
 
       
@@ -42,11 +48,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OSGIServiceInterface.h"
+        #include "org/allbinary/osgi/OSGIServiceInterface.h"
 
 class OSGIServiceVisitorInterface: public VisitorInterface {
 
-    Boolean visit(OSGIServiceInterface osgiServiceInterface);
+    public: virtual bool visit(OSGIServiceInterface* osgiServiceInterface) = 0;
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_BUILDMENUCOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_GAME_INPUT_BUILDMENUCOMPOSITEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graphics/form/ScrollSelectionForm.h>
 
       
@@ -45,11 +51,11 @@
         
 class BuildMenuCompositeInterface {
 
-    ScrollSelectionForm getCurrentScrollSelectionForm();
+    public: virtual ScrollSelectionForm* getCurrentScrollSelectionForm() = 0;
 
-    void setCurrentScrollSelectionForm(ScrollSelectionForm currentScrollSelectionForm);
+    public: virtual void setCurrentScrollSelectionForm(ScrollSelectionForm* currentScrollSelectionForm) = 0;
 
-    ScrollSelectionForm getBuildingScrollSelectionForm();
+    public: virtual ScrollSelectionForm* getBuildingScrollSelectionForm() = 0;
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_SERVER_EMAILSERVERCONFIGURATIONMAPPING_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_SERVER_EMAILSERVERCONFIGURATIONMAPPING_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,18 +64,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "EmailServerConfigurationInterface.h"
-#include "EmailServerConfigurationData.h"
+        #include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationInterface.h"
+#include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationData.h"
 
 class EmailServerConfigurationMapping
             : public Object
-        : public TableMappingInterface {
+        , public TableMappingInterface {
 
-    private: EmailServerConfigurationInterface emailServerConfigurationInterface;
+    private: EmailServerConfigurationInterface* emailServerConfigurationInterface;
 
-public: EmailServerConfigurationMapping(EmailServerConfigurationInterface emailServerConfigurationInterface);
+public: EmailServerConfigurationMapping(EmailServerConfigurationInterface* emailServerConfigurationInterface);
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
                 //@Throws(Exception.constructor)
             
@@ -77,7 +83,7 @@ public: EmailServerConfigurationMapping(EmailServerConfigurationInterface emailS
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList toVector();
+    public: BasicArrayList* toVector();
 
 };
 

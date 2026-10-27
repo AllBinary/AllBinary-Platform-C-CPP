@@ -7,6 +7,12 @@
         #ifndef JAVA_LANG_ANNOTATION_ANNOTATION_H
         #define JAVA_LANG_ANNOTATION_ANNOTATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Class.h"
         
 
@@ -30,7 +36,7 @@
         
 class Annotation {
 
-    Class* annotationType();
+    public: virtual Class* annotationType() = 0;
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_COMPONENTS_TAXDATA_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_COMPONENTS_TAXDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class TaxData
             : public Object
          {
 
-    public: static const std::string NAME = "TAX_NAME";
+    public: static inline const std::string NAME = "TAX_NAME";
 
-    public: static const std::string RATE = "TAX_RATE";
+    public: static inline const std::string RATE = "TAX_RATE";
 
 private: TaxData();
 

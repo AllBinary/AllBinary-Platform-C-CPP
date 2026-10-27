@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_PASSWORD_PASSWORD_H
         #define ORG_ALLBINARY_BUSINESS_USER_PASSWORD_PASSWORD_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -86,7 +92,7 @@ class Password
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string password;
 
@@ -96,13 +102,13 @@ public: Password(std::string password);
 
     public: std::string get();
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string getValidationInfo();
 
-    public: BasicArrayList toVector(std::string secret);
+    public: BasicArrayList* toVector(std::string secret);
 
-    public: HashMap<Object*, Object*> toHashMap(std::string secret);
+    public: HashMap<Object*, Object*>* toHashMap(std::string secret);
 
 };
 

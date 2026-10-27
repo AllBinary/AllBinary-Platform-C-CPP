@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -35,9 +41,9 @@ class MultiPlayerGameFeatureFactory
             : public Object
          {
 
-    private: static MultiPlayerGameFeatureFactory instance() { return MultiPlayerGameFeatureFactory(); }
+    private: static MultiPlayerGameFeatureFactory* instance() { static std::unique_ptr<MultiPlayerGameFeatureFactory> value(new MultiPlayerGameFeatureFactory()); return value.get(); }
 
-    public: static MultiPlayerGameFeatureFactory getInstance(){
+    public: static MultiPlayerGameFeatureFactory* getInstance(){
 
 
 
@@ -53,12 +59,12 @@ private: MultiPlayerGameFeatureFactory(){
 
     public: void addCommands(Object* anyType){
 
-    GameCommandsFactory gameCommandsFactory = GameCommandsFactory::getInstance();;
+    GameCommandsFactory* gameCommandsFactory = GameCommandsFactory::getInstance();;
     
 
-    Canvas canvas = *dynamic_cast<Canvas*>(anyType);;
+    Canvas* canvas = dynamic_cast<Canvas*>(anyType);;
     
-canvas.addCommand(gameCommandsFactory.QUIT_COMMAND);
+canvas->addCommand(gameCommandsFactory->QUIT_COMMAND);
     
 }
 

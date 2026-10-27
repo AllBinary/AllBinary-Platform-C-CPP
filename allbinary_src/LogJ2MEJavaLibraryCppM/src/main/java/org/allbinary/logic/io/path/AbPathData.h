@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_PATH_ABPATHDATA_H
         #define ORG_ALLBINARY_LOGIC_IO_PATH_ABPATHDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/io/file/FilePathData.h>
@@ -55,15 +61,15 @@ class AbPathData
             : public Object
          {
 
-    private: static AbPathData instance() { return AbPathData(); }
+    private: static AbPathData* instance() { static std::unique_ptr<AbPathData> value(new AbPathData()); return value.get(); }
 
-    public: static AbPathData getInstance();
+    public: static AbPathData* getInstance();
 
-    public: const std::string EXTENSION_SEP = CommonSeps::getInstance().PERIOD;
+    public: const std::string EXTENSION_SEP = CommonSeps::getInstance()->PERIOD;
 
     public: const char SEPARATORCHAR = '/';
 
-    public: const std::string SEPARATOR = CommonSeps::getInstance().FORWARD_SLASH;
+    public: const std::string SEPARATOR = CommonSeps::getInstance()->FORWARD_SLASH;
 
 private: AbPathData();
 

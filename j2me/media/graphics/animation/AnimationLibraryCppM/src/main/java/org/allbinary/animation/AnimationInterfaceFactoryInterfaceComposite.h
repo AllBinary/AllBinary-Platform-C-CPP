@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -48,25 +54,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnimationInterfaceFactoryInterface.h"
-#include "NullAnimationFactory.h"
-#include "Animation.h"
+        #include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/NullAnimationFactory.h"
+#include "org/allbinary/animation/Animation.h"
 
 class AnimationInterfaceFactoryInterfaceComposite
             : public Object
-        : public AnimationInterfaceFactoryInterface {
+        , public AnimationInterfaceFactoryInterface {
 
-    private: std::vector<AnimationInterfaceFactoryInterface> animationInterfaceFactoryInterfaceArray;
+    private: std::vector<AnimationInterfaceFactoryInterface*> animationInterfaceFactoryInterfaceArray;
 
-public: AnimationInterfaceFactoryInterfaceComposite(std::vector<AnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray);
+public: AnimationInterfaceFactoryInterfaceComposite(std::vector<AnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray);
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId);
+    public: Animation* getInstance(int32_t instanceId);
 
-    public: std::vector<AnimationInterfaceFactoryInterface> getAnimationInterfaceFactoryInterfaceArray();
+    public: std::vector<AnimationInterfaceFactoryInterface*> getAnimationInterfaceFactoryInterfaceArray();
 
-    public: void setInitialScale(ScaleProperties scaleProperties);
+    public: void setInitialScale(ScaleProperties* scaleProperties);
 
 };
 

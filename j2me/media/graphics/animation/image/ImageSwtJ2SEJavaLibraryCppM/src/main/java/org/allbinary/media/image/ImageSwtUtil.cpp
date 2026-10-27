@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/eclipse/swt/graphics/Color.h>
@@ -52,9 +58,9 @@ class ImageSwtUtil
             : public Object
          {
 
-    private: static ImageSwtUtil instance() { return ImageSwtUtil(); }
+    private: static ImageSwtUtil* instance() { static std::unique_ptr<ImageSwtUtil> value(new ImageSwtUtil()); return value.get(); }
 
-    public: static ImageSwtUtil getInstance(){
+    public: static ImageSwtUtil* getInstance(){
 
 
 

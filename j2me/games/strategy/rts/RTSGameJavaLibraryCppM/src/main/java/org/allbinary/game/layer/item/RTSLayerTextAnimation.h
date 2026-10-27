@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_ITEM_RTSLAYERTEXTANIMATION_H
         #define ORG_ALLBINARY_GAME_LAYER_ITEM_RTSLAYERTEXTANIMATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -63,19 +69,19 @@
         
 class RTSLayerTextAnimation: public Animation, public UpdateMyFontInterface {
 
-    private: Image image;
+    private: Image* image;
 
     private: std::string text;
 
-    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
 
     private: int32_t fontHeight = 0;
 
-public: RTSLayerTextAnimation(std::string text, Image image);
+public: RTSLayerTextAnimation(std::string text, Image* image);
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
 };
 

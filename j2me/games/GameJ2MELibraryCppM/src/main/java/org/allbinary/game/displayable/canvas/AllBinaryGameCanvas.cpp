@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -430,198 +438,198 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryGameCanvasInterface.h"
-#include "GameCanvasRunnableInterface.h"
-#include "MenuListener.h"
-#include "PopupMenuInterface.h"
-#include "GameCanvasRunnable.h"
-#include "GameCanvasPauseRunnable.h"
-#include "FormUtil.h"
-#include "MyFormUtil.h"
-#include "EndGameInfo.h"
-#include "NoMenuInputProcessor.h"
-#include "BasicMenuInputProcessor.h"
-#include "DemoGameBehavior.h"
-#include "BaseMenuBehavior.h"
-#include "BaseGameBehavior.h"
-#include "BasicPopupMenuPaintable.h"
-#include "PopupMenuInputProcessor.h"
-#include "InGameMenuBehavior.h"
-#include "GameLimitedCommandTextItemArrayFactory.h"
-#include "PopupCommandFormInputProcessor.h"
-#include "NullWaitGameRunnable.h"
-#include "GameProcessor.h"
-#include "CheatGameInputProcessor.h"
-#include "EndGameProcessor.h"
-#include "StartIntermissionProcessor.h"
-#include "EndGamePaintable.h"
-#include "NullDemoPaintable.h"
-#include "DemoPaintableInterface.h"
-#include "GameCanvasInputProcessor.h"
-#include "FormInputProcessor.h"
+        #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvasInterface.h"
+#include "org/allbinary/game/displayable/canvas/GameCanvasRunnableInterface.h"
+#include "org/allbinary/game/displayable/canvas/MenuListener.h"
+#include "org/allbinary/game/displayable/canvas/PopupMenuInterface.h"
+#include "org/allbinary/game/displayable/canvas/GameCanvasRunnable.h"
+#include "org/allbinary/game/displayable/canvas/GameCanvasPauseRunnable.h"
+#include "org/allbinary/game/displayable/canvas/FormUtil.h"
+#include "org/allbinary/game/displayable/canvas/MyFormUtil.h"
+#include "org/allbinary/game/displayable/canvas/EndGameInfo.h"
+#include "org/allbinary/game/displayable/canvas/NoMenuInputProcessor.h"
+#include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
+#include "org/allbinary/game/displayable/canvas/DemoGameBehavior.h"
+#include "org/allbinary/game/displayable/canvas/BaseMenuBehavior.h"
+#include "org/allbinary/game/displayable/canvas/BaseGameBehavior.h"
+#include "org/allbinary/game/displayable/canvas/BasicPopupMenuPaintable.h"
+#include "org/allbinary/game/displayable/canvas/PopupMenuInputProcessor.h"
+#include "org/allbinary/game/displayable/canvas/InGameMenuBehavior.h"
+#include "org/allbinary/game/displayable/canvas/GameLimitedCommandTextItemArrayFactory.h"
+#include "org/allbinary/game/displayable/canvas/PopupCommandFormInputProcessor.h"
+#include "org/allbinary/game/displayable/canvas/NullWaitGameRunnable.h"
+#include "org/allbinary/game/displayable/canvas/GameProcessor.h"
+#include "org/allbinary/game/displayable/canvas/CheatGameInputProcessor.h"
+#include "org/allbinary/game/displayable/canvas/EndGameProcessor.h"
+#include "org/allbinary/game/displayable/canvas/StartIntermissionProcessor.h"
+#include "org/allbinary/game/displayable/canvas/EndGamePaintable.h"
+#include "org/allbinary/game/displayable/canvas/NullDemoPaintable.h"
+#include "org/allbinary/game/displayable/canvas/DemoPaintableInterface.h"
+#include "org/allbinary/game/displayable/canvas/GameCanvasInputProcessor.h"
+#include "org/allbinary/game/displayable/canvas/FormInputProcessor.h"
 
 class AllBinaryGameCanvas: public RunnableCanvas, public AllBinaryGameCanvasInterface, public GameCanvasRunnableInterface, public MenuListener, public IntermissionCompositeInterface, public IntermissionEnableListenerInterface, public PopupMenuInterface, public DisplayChangeEventListener, public UpdateMyFontInterface {
 
-    private: static const int32_t id = 0;
+    private: static inline const int32_t id = 0;
 
-    public: static const int32_t TYPE = 2;
+    public: static inline const int32_t TYPE = 2;
 
-    protected: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
+    protected: BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();
 
-    protected: const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
+    protected: BasicColorSetUtil* basicSetColorUtil = BasicColorSetUtil::getInstance();
 
-    protected: const TouchFeatureFactory touchFeatureFactory = TouchFeatureFactory::getInstance();
+    protected: TouchFeatureFactory* touchFeatureFactory = TouchFeatureFactory::getInstance();
 
-    protected: const OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();
+    protected: OpenGLFeatureFactory* openGLFeatureFactory = OpenGLFeatureFactory::getInstance();
 
-    protected: const TouchButtonFactory touchButtonFactory = TouchButtonFactory::getInstance();
+    protected: TouchButtonFactory* touchButtonFactory = TouchButtonFactory::getInstance();
 
-    protected: const GameAdStateFactory gameAdStateFactory = GameAdStateFactory::getInstance();
+    protected: GameAdStateFactory* gameAdStateFactory = GameAdStateFactory::getInstance();
 
-    protected: const GameStrings gameStrings = GameStrings::getInstance();
+    protected: GameStrings* gameStrings = GameStrings::getInstance();
 
-    protected: const GameInputStrings gameInputStrings = GameInputStrings::getInstance();
+    protected: GameInputStrings* gameInputStrings = GameInputStrings::getInstance();
 
-    protected: const GameStateFactory gameStateFactory = GameStateFactory::getInstance();
+    protected: GameStateFactory* gameStateFactory = GameStateFactory::getInstance();
 
-    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
+    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-    private: const GameTickDisplayInfoSingleton gameTickDisplayInfoSingleton = GameTickDisplayInfoSingleton::getInstance();
+    private: GameTickDisplayInfoSingleton* gameTickDisplayInfoSingleton = GameTickDisplayInfoSingleton::getInstance();
 
-    public: const GameCanvasRunnable gameRunnable = GameCanvasRunnable(this);
+    public: GameCanvasRunnable* gameRunnable = new GameCanvasRunnable(this);
 
-    public: const GameCanvasPauseRunnable gamePauseRunnable = GameCanvasPauseRunnable(this);
+    public: GameCanvasPauseRunnable* gamePauseRunnable = new GameCanvasPauseRunnable(this);
 
-    protected: const FormUtil formUtil = FormUtil::getInstance();
+    protected: FormUtil* formUtil = FormUtil::getInstance();
 
-    protected: const MyFormUtil myFormUtil = MyFormUtil::getInstance();
+    protected: MyFormUtil* myFormUtil = MyFormUtil::getInstance();
 
-    private: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
 
-    private: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
+    private: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
 
-    protected: Paintable gameSpecificPaintable = NullPaintable::getInstance();
+    protected: Paintable* gameSpecificPaintable = NullPaintable::getInstance();
 
-    private: const SensorGameUpdateProcessor sensorGameUpdateProcessor = SingleSensorGameUpdateProcessor();
+    private: SensorGameUpdateProcessor* sensorGameUpdateProcessor = new SingleSensorGameUpdateProcessor();
 
-    protected: EndGameInfo endGameInfo = EndGameInfo();
+    protected: EndGameInfo* endGameInfo = new EndGameInfo();
 
-    private: const IntermissionInterface startIntermissionInterface = Intermission();
+    private: IntermissionInterface* startIntermissionInterface = new Intermission();
 
-    private: const IntermissionInterface endLevelIntermissionInterface = Intermission();
+    private: IntermissionInterface* endLevelIntermissionInterface = new Intermission();
 
-    protected: AllBinaryGameLayerManager gameLayerManager = AllBinaryGameLayerManager::getNullInstance();
+    protected: AllBinaryGameLayerManager* gameLayerManager = AllBinaryGameLayerManager::getNullInstance();
 
-    private: GameState gameState = this->gameStateFactory.NO_GAME_STATE;
+    private: GameState* gameState = this->gameStateFactory->NO_GAME_STATE;
 
     private: bool gameOver= false;
 
     private: bool initialized= false;
 
-    private: const TimeDelayHelper gameStateTimeHelper = TimeDelayHelper(0);
+    private: TimeDelayHelper* gameStateTimeHelper = new TimeDelayHelper(0);
 
-    protected: HighScoresHelperBaseInterface highScoresHelper;
+    protected: HighScoresHelperBaseInterface* highScoresHelper;
 
     private: bool highScoreSubmitted= false;
 
-    private: const HighScoresPaintable realHighScoresPaintable = HighScoresPaintable();
+    private: HighScoresPaintable* realHighScoresPaintable = new HighScoresPaintable();
 
-    private: Paintable highScoresPaintable = NullPaintable::getInstance();
+    private: Paintable* highScoresPaintable = NullPaintable::getInstance();
 
-    private: BasicArrayList localPlayerGameInputList = BasicArrayListD();
+    private: BasicArrayList* localPlayerGameInputList = new BasicArrayListD();
 
     private: bool isCheating= false;
 
-    private: ABHashtable<Object*, Object*> hashtable = this->stdUtil.NULL_TABLE;
+    private: ABHashtable<Object*, Object*>* hashtable = this->stdUtil.NULL_TABLE;
 
     private: bool isSingleKeyRepeatableProcessing= false;
 
-    private: BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface = BasicBuildGameInitializerFactory::NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY;
+    private: BasicBuildGameInitializerFactory* gameInitializationInterfaceFactoryInterface = BasicBuildGameInitializerFactory::NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY;
 
-    private: Paintable touchButtonsPaintable = NullPaintable::getInstance();
+    private: Paintable* touchButtonsPaintable = NullPaintable::getInstance();
 
-    protected: Paintable touchPaintable = NullPaintable::getInstance();
+    protected: Paintable* touchPaintable = NullPaintable::getInstance();
 
-    private: PlayerGameInput cheatProcessor = NoPlayerGameInput::getInstance();
+    private: PlayerGameInput* cheatProcessor = NoPlayerGameInput::getInstance();
 
-    private: Processor gameInputProcessor = Processor::getInstance();
+    private: Processor* gameInputProcessor = Processor::getInstance();
 
-    private: Processor endGameProcessor = Processor::getInstance();
+    private: Processor* endGameProcessor = Processor::getInstance();
 
-    private: Processor realEndGameProcessor = Processor::getInstance();
+    private: Processor* realEndGameProcessor = Processor::getInstance();
 
-    private: Processor startIntermissionProcessor = Processor::getInstance();
+    private: Processor* startIntermissionProcessor = Processor::getInstance();
 
-    private: Processor realStartIntermissionProcessor = Processor::getInstance();
+    private: Processor* realStartIntermissionProcessor = Processor::getInstance();
 
-    private: Paintable endGamePaintable = NullPaintable::getInstance();
+    private: Paintable* endGamePaintable = NullPaintable::getInstance();
 
-    private: Paintable endGameStatePaintable = NullPaintable::getInstance();
+    private: Paintable* endGameStatePaintable = NullPaintable::getInstance();
 
-    protected: Paintable nonBotPaintable = NullPaintable::getInstance();
+    protected: Paintable* nonBotPaintable = NullPaintable::getInstance();
 
-    private: Paintable intermissionPaintable = NullPaintable::getInstance();
+    private: Paintable* intermissionPaintable = NullPaintable::getInstance();
 
-    private: InitUpdatePaintable startIntermissionPaintable = NullInitUpdatePaintable::getInstance();
+    private: InitUpdatePaintable* startIntermissionPaintable = NullInitUpdatePaintable::getInstance();
 
-    private: Processor mainStateProcessor = Processor::getInstance();
+    private: Processor* mainStateProcessor = Processor::getInstance();
 
-    private: Processor processGameProcessor = Processor::getInstance();
+    private: Processor* processGameProcessor = Processor::getInstance();
 
-    private: HighScoresFactoryInterface highScoresFactoryInterface;
+    private: HighScoresFactoryInterface* highScoresFactoryInterface;
 
     private: int32_t startLevel= 0;
 
-    private: BasicMenuInputProcessor mainMenuInputProcessor = NoMenuInputProcessor::getInstance();
+    private: BasicMenuInputProcessor* mainMenuInputProcessor = NoMenuInputProcessor::getInstance();
 
-    private: BasicMenuInputProcessor popupMenuInputProcessor = NoMenuInputProcessor::getInstance();
+    private: BasicMenuInputProcessor* popupMenuInputProcessor = NoMenuInputProcessor::getInstance();
 
-    private: BasicMenuInputProcessor menuInputProcessor = NoMenuInputProcessor::getInstance();
+    private: BasicMenuInputProcessor* menuInputProcessor = NoMenuInputProcessor::getInstance();
 
-    private: ScrollSelectionForm menuForm = ScrollSelectionForm::getNullScrollSelectionForm();
+    private: ScrollSelectionForm* menuForm = ScrollSelectionForm::getNullScrollSelectionForm();
 
-    private: Paintable formPaintable = NullPaintable::getInstance();
+    private: Paintable* formPaintable = NullPaintable::getInstance();
 
-    private: Paintable openMenuPaintable = NullPaintable::getInstance();
+    private: Paintable* openMenuPaintable = NullPaintable::getInstance();
 
-    private: Paintable menuPaintable = NullPaintable::getInstance();
+    private: Paintable* menuPaintable = NullPaintable::getInstance();
 
-    private: BaseTouchInput currentTouchInputFactory = NoButtonsTouchInputFactory::getInstance();
+    private: BaseTouchInput* currentTouchInputFactory = NoButtonsTouchInputFactory::getInstance();
 
-    protected: ColorFillBasePaintable colorFillPaintable = ColorFillPaintableFactory::getInstance().getInstance(this->basicColorFactory.BLACK, true);
+    protected: ColorFillBasePaintable* colorFillPaintable = ColorFillPaintableFactory::getInstance()->getInstance(this->basicColorFactory->BLACK, true);
 
-    private: const BaseGameStatistics baseGameStatistics = GameStatisticsFactory::getInstance();
+    private: BaseGameStatistics* baseGameStatistics = GameStatisticsFactory::getInstance();
 
-    private: const PlayerQueue primaryPlayerQueue = PrimaryPlayerQueueFactory::getInstance();
+    private: PlayerQueue* primaryPlayerQueue = PrimaryPlayerQueueFactory::getInstance();
 
-    private: const PlayerQueue secondaryPlayerQueue = SecondaryPlayerQueueFactory::getInstance();
+    private: PlayerQueue* secondaryPlayerQueue = SecondaryPlayerQueueFactory::getInstance();
 
     protected: const std::string BUILD_GAME = "buildGame";
 
-    protected: const GameTypeFactory gameTypeFactory = GameTypeFactory::getInstance();
+    protected: GameTypeFactory* gameTypeFactory = GameTypeFactory::getInstance();
 
-    protected: const ScreenCapture screenCapture = ScreenCaptureFactory::getInstance();
+    protected: ScreenCapture* screenCapture = ScreenCaptureFactory::getInstance();
 
-    private: const BasicMotionGesturesHandler basicMotionGesturesHandler = BasicMotionGesturesHandler::getInstance();
+    private: BasicMotionGesturesHandler* basicMotionGesturesHandler = BasicMotionGesturesHandler::getInstance();
 
-    private: const GameKeyEventHandler gameKeyEventHandler = GameKeyEventHandler::getInstance();
+    private: GameKeyEventHandler* gameKeyEventHandler = GameKeyEventHandler::getInstance();
 
-    private: const DemoGameBehavior gameBehavior;
+    private: DemoGameBehavior* gameBehavior;
 
-    private: const BaseMenuBehavior menuBehavior;
+    private: BaseMenuBehavior* menuBehavior;
 
-    private: PaintableInterface progressPaintable = ProgressCanvasFactory::getLazyInstance();
+    private: PaintableInterface* progressPaintable = ProgressCanvasFactory::getLazyInstance();
 
     protected: int32_t fontHeightP= 0;
 
-public: AllBinaryGameCanvas(CommandListener commandListener, AllBinaryGameLayerManager gameLayerManager, HighScoresFactoryInterface highScoresFactoryInterface, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface, bool buffered) : RunnableCanvas(commandListener, CanvasStrings::getInstance().EMPTY_CHILD_NAME_LIST, true){
+public: AllBinaryGameCanvas(CommandListener* commandListener, AllBinaryGameLayerManager* gameLayerManager, HighScoresFactoryInterface* highScoresFactoryInterface, BasicBuildGameInitializerFactory* gameInitializationInterfaceFactoryInterface, bool buffered) : RunnableCanvas(commandListener, CanvasStrings::getInstance()->EMPTY_CHILD_NAME_LIST, true){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->highScoresHelper= highScoresFactoryInterface.createHighScoresHelper();
+this->highScoresHelper= highScoresFactoryInterface->createHighScoresHelper();
     
 this->gameInitializationInterfaceFactoryInterface= gameInitializationInterfaceFactoryInterface;
     
@@ -630,7 +638,7 @@ this->init(gameLayerManager, buffered);
 this->highScoresFactoryInterface= highScoresFactoryInterface;
     
 
-                        if(this->gameLayerManager.getGameInfo().getGameType() == this->gameTypeFactory.BOT || this->gameLayerManager.getGameInfo().getGameType() == this->gameTypeFactory.NONE)
+                        if(this->gameLayerManager->getGameInfo()->getGameType() == this->gameTypeFactory->BOT || this->gameLayerManager->getGameInfo()->getGameType() == this->gameTypeFactory->NONE)
                         
                                     {
                                     this->gameBehavior= DemoGameBehavior::getInstance();
@@ -654,39 +662,39 @@ this->initMenu();
     
 this->initSpecialPaint();
     
-DisplayChangeEventHandler::getInstance().addListenerInterface(this);
+DisplayChangeEventHandler::getInstance()->addListenerInterface(this);
     
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
         try {
             
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->logUtil.putF(StringMaker().append(this->commonStrings.START).append(this->canvasStrings.FD_WIDTH).appendint(MyFontProcessor::defaultCharWidth(font)).append(this->canvasStrings.FD_HEIGHT).appendint(font.getHeight()).toString(), this, this->canvasStrings.UPDATE_MEASUREMENT);
+this->logUtil->putF((new StringMaker())->append(this->commonStrings->START)->append(this->canvasStrings.FD_WIDTH)->appendint(MyFontProcessor::defaultCharWidth(font))->append(this->canvasStrings.FD_HEIGHT)->appendint(font->getHeight())->toString(), this, this->canvasStrings.UPDATE_MEASUREMENT);
     
-this->fontHeightP= font.getHeight();
+this->fontHeightP= font->getHeight();
     
-this->myFormUtil.updateMeasurement(graphics);
-    
-
-    Rectangle popupMenuRectangle = this->myFormUtil.getPopupMenuRectangle();;
+this->myFormUtil->updateMeasurement(graphics);
     
 
-    BasicPopupMenuPaintable basicPopupMenuPaintable = (this->getOpenMenuPaintable());;
+    Rectangle* popupMenuRectangle = this->myFormUtil->getPopupMenuRectangle();;
     
-basicPopupMenuPaintable.init(popupMenuRectangle);
+
+    BasicPopupMenuPaintable* basicPopupMenuPaintable = (dynamic_cast<BasicPopupMenuPaintable*>(this->getOpenMenuPaintable()));;
+    
+basicPopupMenuPaintable->init(popupMenuRectangle);
     
 
                         if(this->getPopupMenuInputProcessor() != NoMenuInputProcessor::getInstance())
                         
                                     {
                                     
-    PopupMenuInputProcessor popupMenuInputProcessor = (this->getPopupMenuInputProcessor());;
+    PopupMenuInputProcessor* popupMenuInputProcessor = (dynamic_cast<PopupMenuInputProcessor*>(this->getPopupMenuInputProcessor()));;
     
-popupMenuInputProcessor.init(popupMenuRectangle);
+popupMenuInputProcessor->init(popupMenuRectangle);
     
 
                                     }
@@ -695,16 +703,16 @@ this->myFontProcessor= MyFontProcessor::getInstance();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->canvasStrings.ON_DISPLAY_CHANGE_EVENT, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->canvasStrings.ON_DISPLAY_CHANGE_EVENT, &e);
     
 }
 
 }
 
 
-    public: BaseMenuBehavior getInGameMenuBehavior(){
+    public: BaseMenuBehavior* getInGameMenuBehavior(){
 
 
 
@@ -733,26 +741,26 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->canvasStrings.ON_DI
 }
 
 
-    public: void onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject* eventObject){
+ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public: void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent){
+    public: void onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent){
 
         try {
-            this->logUtil.putF(StringMaker().append(this->commonStrings.START).append(DisplayInfoSingleton::getInstance().toString()).toString(), this, this->canvasStrings.UPDATE_MEASUREMENT);
+            this->logUtil->putF((new StringMaker())->append(this->commonStrings->START)->append(DisplayInfoSingleton::getInstance()->toString())->toString(), this, this->canvasStrings.UPDATE_MEASUREMENT);
     
 this->myFontProcessor= this->updateMyFontProcessor;
     
-this->menuBehavior.onDisplayChangeEvent(this, displayChangeEvent);
+this->menuBehavior->onDisplayChangeEvent(this, displayChangeEvent);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->canvasStrings.ON_DISPLAY_CHANGE_EVENT, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->canvasStrings.ON_DISPLAY_CHANGE_EVENT, &e);
     
 }
 
@@ -761,20 +769,20 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->canvasStrings.ON_DI
 
                 //@Throws(Exception.constructor)
             
-    public: void updateMenuFromEvent(DisplayChangeEvent displayChangeEvent){
+    public: void updateMenuFromEvent(DisplayChangeEvent* displayChangeEvent){
 
-    FormType formType = FormTypeFactory::getInstance().getFormType();;
+    FormType* formType = FormTypeFactory::getInstance()->getFormType();;
     
 
-    Rectangle rectangle = this->formUtil.createFormRectangle();;
+    Rectangle* rectangle = this->formUtil->createFormRectangle();;
     
-this->menuForm.init(rectangle, formType);
+this->menuForm->init(rectangle, formType);
     
 
                         if(this->currentTouchInputFactory != NoButtonsTouchInputFactory::getInstance())
                         
                                     {
-                                    this->touchButtonFactory.toggle(this->isPaused(), this->currentTouchInputFactory.getList());
+                                    this->touchButtonFactory->toggle(this->isPaused(), this->currentTouchInputFactory->getList());
     
 
                                     }
@@ -794,10 +802,10 @@ super.processSleep();
                         
                                     {
                                     
-                        if(!this->primaryPlayerQueue.process())
+                        if(!this->primaryPlayerQueue->process())
                         
                                     {
-                                    this->secondaryPlayerQueue.process();
+                                    this->secondaryPlayerQueue->process();
     
 
                                     }
@@ -806,7 +814,7 @@ super.processSleep();
                                     }
                                 
 
-                        if(this->menuInputProcessor.processInputList() !=  -1)
+                        if(this->menuInputProcessor->processInputList() !=  -1)
                         
                                     {
                                     this->runnableCanvasRefreshHelper.process();
@@ -825,18 +833,18 @@ super.processSleep();
                         
                                     {
                                     
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-    Rectangle popupMenuRectangle = this->myFormUtil.getPopupMenuRectangle();;
+    Rectangle* popupMenuRectangle = this->myFormUtil->getPopupMenuRectangle();;
     
 
-                        if(features.isFeature(this->touchFeatureFactory.TOUCH_ENABLED))
+                        if(features->isFeature(this->touchFeatureFactory->TOUCH_ENABLED))
                         
                                     {
-                                    this->setOpenMenuPaintable(BasicPopupMenuPaintable(popupMenuRectangle, this->gameLayerManager.getBackgroundBasicColor(), this->gameLayerManager.getForegroundBasicColor()));
+                                    this->setOpenMenuPaintable(new BasicPopupMenuPaintable(popupMenuRectangle, this->gameLayerManager->getBackgroundBasicColor(), this->gameLayerManager->getForegroundBasicColor()));
     
-this->setPopupMenuInputProcessor(PopupMenuInputProcessor(BasicArrayListD(),  -1, this, popupMenuRectangle));
+this->setPopupMenuInputProcessor(new PopupMenuInputProcessor(new BasicArrayListD(),  -1, this, popupMenuRectangle));
     
 
                                     }
@@ -854,13 +862,13 @@ this->setPopupMenuInputProcessor(PopupMenuInputProcessor(BasicArrayListD(),  -1,
     protected: void initMenu(){
 
         try {
-            this->menuBehavior.initMenu(this);
+            this->menuBehavior->initMenu(this);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "initMenu", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "initMenu", &e);
     
 }
 
@@ -873,33 +881,33 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "initMenu", e);
 this->closeMenu();
     
 
-    FormType formType = FormTypeFactory::getInstance().getFormType();;
+    FormType* formType = FormTypeFactory::getInstance()->getFormType();;
     
 
-    GameLimitedCommandTextItemArrayFactory gameLimitedCommandTextItemArrayFactory = GameLimitedCommandTextItemArrayFactory::getInstance();;
+    GameLimitedCommandTextItemArrayFactory* gameLimitedCommandTextItemArrayFactory = GameLimitedCommandTextItemArrayFactory::getInstance();;
     
 
-    CommandTextItemArrayFactory commandTextItemArrayFactory = gameLimitedCommandTextItemArrayFactory.getCommandTextItemArrayFactory();;
+    CommandTextItemArrayFactory* commandTextItemArrayFactory = gameLimitedCommandTextItemArrayFactory->getCommandTextItemArrayFactory();;
     
 
-    std::vector<ABCustomItem> items = commandTextItemArrayFactory.getInstance(this->getCommandStack(), this->gameLayerManager.getBackgroundBasicColor(), this->gameLayerManager.getForegroundBasicColor());;
+    std::vector<ABCustomItem*> items = commandTextItemArrayFactory->getInstance(this->getCommandStack(), this->gameLayerManager->getBackgroundBasicColor(), this->gameLayerManager->getForegroundBasicColor());;
     
 
-    Rectangle rectangle = this->formUtil.createFormRectangle();;
+    Rectangle* rectangle = this->formUtil->createFormRectangle();;
     
-this->setMenuForm(CommandCurrentSelectionFormFactory::getInstance(StringUtil::getInstance().EMPTY_STRING, items, rectangle, formType, 25, false, this->gameLayerManager.getBackgroundBasicColor(), this->gameLayerManager.getForegroundBasicColor()));
-    
-
-    ScrollSelectionForm scrollSelectionForm = this->getMenuForm();;
+this->setMenuForm(CommandCurrentSelectionFormFactory::getInstance(StringUtil::getInstance()->EMPTY_STRING, items, rectangle, formType, 25, false, this->gameLayerManager->getBackgroundBasicColor(), this->gameLayerManager->getForegroundBasicColor()));
     
 
-    Features features = Features::getInstance();;
+    ScrollSelectionForm* scrollSelectionForm = this->getMenuForm();;
     
 
-                        if(features.isFeature(this->touchFeatureFactory.TOUCH_ENABLED))
+    Features* features = Features::getInstance();;
+    
+
+                        if(features->isFeature(this->touchFeatureFactory->TOUCH_ENABLED))
                         
                                     {
-                                    this->mainMenuInputProcessor= PopupCommandFormInputProcessor(BasicArrayListD(),  -1, this, scrollSelectionForm, this->getPopupMenuInputProcessor());
+                                    this->mainMenuInputProcessor= new PopupCommandFormInputProcessor(new BasicArrayListD(),  -1, this, scrollSelectionForm, dynamic_cast<PopupMenuInputProcessor*>(this->getPopupMenuInputProcessor()));
     
 
                                     }
@@ -914,7 +922,7 @@ this->setMenuInputProcessor(this->getPopupMenuInputProcessor());
                         if(scrollSelectionForm != ScrollSelectionFormNoneFactory::getInstance())
                         
                                     {
-                                    this->setFormPaintable(FormPaintable(scrollSelectionForm));
+                                    this->setFormPaintable(new FormPaintable(scrollSelectionForm));
     
 
                                     }
@@ -931,13 +939,13 @@ this->closeMenu();
     public: void updateMenu(){
 
         try {
-            this->menuBehavior.updateMenu(this);
+            this->menuBehavior->updateMenu(this);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "initMenu", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "initMenu", &e);
     
 }
 
@@ -948,18 +956,18 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "initMenu", e);
             
     public: void updateMenu2(){
 
-    ScrollSelectionForm scrollSelectionForm = this->getMenuForm();;
+    ScrollSelectionForm* scrollSelectionForm = this->getMenuForm();;
     
-scrollSelectionForm.deleteAll();
-    
-
-    GameLimitedCommandTextItemArrayFactory gameLimitedCommandTextItemArrayFactory = GameLimitedCommandTextItemArrayFactory::getInstance();;
+scrollSelectionForm->deleteAll();
     
 
-    CommandTextItemArrayFactory commandTextItemArrayFactory = gameLimitedCommandTextItemArrayFactory.getCommandTextItemArrayFactory();;
+    GameLimitedCommandTextItemArrayFactory* gameLimitedCommandTextItemArrayFactory = GameLimitedCommandTextItemArrayFactory::getInstance();;
     
 
-    std::vector<ABCustomItem> items = commandTextItemArrayFactory.getInstance(this->getCommandStack(), this->gameLayerManager.getBackgroundBasicColor(), this->gameLayerManager.getForegroundBasicColor());;
+    CommandTextItemArrayFactory* commandTextItemArrayFactory = gameLimitedCommandTextItemArrayFactory->getCommandTextItemArrayFactory();;
+    
+
+    std::vector<ABCustomItem*> items = commandTextItemArrayFactory->getInstance(this->getCommandStack(), this->gameLayerManager->getBackgroundBasicColor(), this->gameLayerManager->getForegroundBasicColor());;
     
 
     int32_t size = items.size();;
@@ -971,30 +979,30 @@ scrollSelectionForm.deleteAll();
                         for (
     int32_t index = 0;index < size; index++)
         {
-scrollSelectionForm.append(items[index]);
+scrollSelectionForm->append(items[index]);
     
 }
 
 
-    FormType formType = FormTypeFactory::getInstance().getFormType();;
+    FormType* formType = FormTypeFactory::getInstance()->getFormType();;
     
 
-    Rectangle rectangle = this->formUtil.createFormRectangle();;
+    Rectangle* rectangle = this->formUtil->createFormRectangle();;
     
-scrollSelectionForm.init(rectangle, formType);
+scrollSelectionForm->init(rectangle, formType);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void pause(){
-this->gameBehavior.pause(this);
+this->gameBehavior->pause(this);
     
 this->closeMenu();
     
 super.pause();
     
-this->touchButtonFactory.toggle(this->isPaused(), BasicArrayListUtil::getInstance().getImmutableInstance());
+this->touchButtonFactory->toggle(this->isPaused(), BasicArrayListUtil::getInstance()->getImmutableInstance());
     
 this->tsUtil.gc();
     
@@ -1003,7 +1011,7 @@ this->tsUtil.gc();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void unPause(){
-this->logUtil.putF(this->commonStrings.START, this, this->gameStrings.UNPAUSE);
+this->logUtil->putF(this->commonStrings->START, this, this->gameStrings->UNPAUSE);
     
 this->closeMenu();
     
@@ -1011,16 +1019,16 @@ this->tsUtil.gc();
     
 super.unPause();
     
-this->touchButtonFactory.toggle(this->isPaused(), BasicArrayListUtil::getInstance().getImmutableInstance());
+this->touchButtonFactory->toggle(this->isPaused(), BasicArrayListUtil::getInstance()->getImmutableInstance());
     
-this->gameBehavior.unPause(this);
+this->gameBehavior->unPause(this);
     
 }
 
 
     public: bool isPausable(){
 
-                        if(CurrentDisplayableFactory::getInstance().getUsedRunnable() == NullWaitGameRunnable::getInstance())
+                        if(CurrentDisplayableFactory::getInstance()->getUsedRunnable() == NullWaitGameRunnable::getInstance())
                         
                                     {
                                     
@@ -1048,7 +1056,7 @@ this->gameBehavior.unPause(this);
                 //@Throws(Exception.constructor)
             
     public: void popupMenu(){
-this->menuBehavior.popupMenu(this);
+this->menuBehavior->popupMenu(this);
     
 }
 
@@ -1056,15 +1064,15 @@ this->menuBehavior.popupMenu(this);
                 //@Throws(Exception.constructor)
             
     public: void popupMenu2(){
-this->primaryPlayerQueue.add(SelectSound::getInstance());
+this->primaryPlayerQueue->add(SelectSound::getInstance());
     
 this->setMenuPaintable(this->getFormPaintable());
     
 this->setMenuInputProcessor(this->mainMenuInputProcessor);
     
-this->basicMotionGesturesHandler.addListenerInterface(this->mainMenuInputProcessor);
+this->basicMotionGesturesHandler->addListenerInterface(this->mainMenuInputProcessor);
     
-this->gameKeyEventHandler.addListener(this->mainMenuInputProcessor);
+this->gameKeyEventHandler->addListener(this->mainMenuInputProcessor);
     
 }
 
@@ -1072,7 +1080,7 @@ this->gameKeyEventHandler.addListener(this->mainMenuInputProcessor);
                 //@Throws(Exception.constructor)
             
     public: void toggleMenu(){
-this->logUtil.putF(this->commonStrings.START, this, this->gameStrings.TOGGLE_MENU);
+this->logUtil->putF(this->commonStrings->START, this, this->gameStrings->TOGGLE_MENU);
     
 
                         if(this->getMenuPaintable() == this->getOpenMenuPaintable())
@@ -1091,7 +1099,7 @@ this->popupMenu();
                         if(this->getMenuPaintable() == this->getFormPaintable())
                         
                                     {
-                                    this->primaryPlayerQueue.add(SelectSound::getInstance());
+                                    this->primaryPlayerQueue->add(SelectSound::getInstance());
     
 this->unPause();
     
@@ -1102,7 +1110,7 @@ this->unPause();
 
 
     public: void closeMenu(){
-this->menuBehavior.closeMenu(this);
+this->menuBehavior->closeMenu(this);
     
 }
 
@@ -1110,9 +1118,9 @@ this->menuBehavior.closeMenu(this);
     public: void closeMenu2(){
 this->setMenuPaintable(this->getOpenMenuPaintable());
     
-this->basicMotionGesturesHandler.removeListener(this->mainMenuInputProcessor);
+this->basicMotionGesturesHandler->removeListener(this->mainMenuInputProcessor);
     
-this->gameKeyEventHandler.removeListener(this->mainMenuInputProcessor);
+this->gameKeyEventHandler->removeListener(this->mainMenuInputProcessor);
     
 this->setMenuInputProcessor(this->getPopupMenuInputProcessor());
     
@@ -1120,21 +1128,21 @@ this->setMenuInputProcessor(this->getPopupMenuInputProcessor());
 
 
     public: void open(){
-this->basicMotionGesturesHandler.addListenerInterface(this->menuInputProcessor);
+this->basicMotionGesturesHandler->addListenerInterface(this->menuInputProcessor);
     
-this->gameKeyEventHandler.addListener(this->menuInputProcessor);
+this->gameKeyEventHandler->addListener(this->menuInputProcessor);
     
 }
 
 
     public: void close(){
-this->basicMotionGesturesHandler.removeListener(this->menuInputProcessor);
+this->basicMotionGesturesHandler->removeListener(this->menuInputProcessor);
     
-this->gameKeyEventHandler.removeListener(this->menuInputProcessor);
+this->gameKeyEventHandler->removeListener(this->menuInputProcessor);
     
-this->primaryPlayerQueue.clear();
+this->primaryPlayerQueue->clear();
     
-this->secondaryPlayerQueue.clear();
+this->secondaryPlayerQueue->clear();
     
 }
 
@@ -1150,21 +1158,21 @@ this->setProcessGameProcessorInit();
 
 
     protected: void setProcessGameProcessorInit(){
-this->setProcessGameProcessor(GameProcessor(this));
+this->setProcessGameProcessor(new GameProcessor(this));
     
 }
 
 
     protected: void initSpecialPaint(){
-this->menuBehavior.initSpecialPaint(this);
+this->menuBehavior->initSpecialPaint(this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: void init(AllBinaryGameLayerManager gameLayerManager, bool buffered){
-this->gameStateTimeHelper.setStartTimeTNT();
+    private: void init(AllBinaryGameLayerManager* gameLayerManager, bool buffered){
+this->gameStateTimeHelper->setStartTimeTNT();
     
 this->setHighScoreSubmitted(false);
     
@@ -1177,7 +1185,7 @@ this->setLayerManager(gameLayerManager);
                                     
     std::string BUFF_MESSAGE = "XXX Not Buffering Causes Concurrency Issues XXX";;
     
-this->logUtil.putF(BUFF_MESSAGE, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(BUFF_MESSAGE, this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -1186,7 +1194,7 @@ this->logUtil.putF(BUFF_MESSAGE, this, this->commonStrings.CONSTRUCTOR);
                             
 
 
-                            throw Exception("Buffering is disabled");
+                            throw new Exception("Buffering is disabled");
                     
 
                         }
@@ -1194,17 +1202,17 @@ this->logUtil.putF(BUFF_MESSAGE, this, this->commonStrings.CONSTRUCTOR);
 this->setGameInputProcessor(Processor::getInstance());
     
 
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-                        if(features.isFeature(GameFeatureFactory::getInstance().CHEATING))
+                        if(features->isFeature(GameFeatureFactory::getInstance()->CHEATING))
                         
                                     {
                                     this->isCheating= true;
     
-this->cheatProcessor= CheatGameInputProcessor(this);
+this->cheatProcessor= new CheatGameInputProcessor(this);
     
-this->gameKeyEventHandler.addListener(this->cheatProcessor);
+this->gameKeyEventHandler->addListener(this->cheatProcessor);
     
 
                                     }
@@ -1217,21 +1225,21 @@ this->cheatProcessor= NoPlayerGameInput::getInstance();
 
                         }
                             
-this->realEndGameProcessor= EndGameProcessor(this);
+this->realEndGameProcessor= new EndGameProcessor(this);
     
 this->setEndGameProcessor(Processor::getInstance());
     
-this->realStartIntermissionProcessor= StartIntermissionProcessor(this);
+this->realStartIntermissionProcessor= new StartIntermissionProcessor(this);
     
 this->startIntermissionProcessor= Processor::getInstance();
     
-this->setEndGameStatePaintable(EndGamePaintable(this));
+this->setEndGameStatePaintable(new EndGamePaintable(this));
     
 this->setEndGamePaintable(NullPaintable::getInstance());
     
 this->setIntermissionPaintable(NullPaintable::getInstance());
     
-this->getStartIntermissionInterface().setListener(this);
+this->getStartIntermissionInterface()->setListener(this);
     
 }
 
@@ -1273,7 +1281,7 @@ this->getStartIntermissionInterface().setListener(this);
                 //@Throws(Exception.constructor)
             
     public: void mediaInit(){
-ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
+ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, this);
     
 }
 
@@ -1281,70 +1289,70 @@ ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    protected: void initConfigurable(AbeClientInformationInterface abeClientInformation){
+    protected: void initConfigurable(AbeClientInformationInterface* abeClientInformation){
 
-    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
+    ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
     
-progressCanvas.addNormalPortion(50, "Setting Configurables");
+progressCanvas->addNormalPortion(50, "Setting Configurables");
     
-GameInitializationUtil::getInstance().initGame(abeClientInformation, this, this->gameInitializationInterfaceFactoryInterface);
-    
-
-    GameFeatureFactory gameFeatureFactory = GameFeatureFactory::getInstance();;
+GameInitializationUtil::getInstance()->initGame(abeClientInformation, this, this->gameInitializationInterfaceFactoryInterface);
     
 
-    ChangedGameFeatureListener changedGameFeatureListener = ChangedGameFeatureListener::getInstance();;
+    GameFeatureFactory* gameFeatureFactory = GameFeatureFactory::getInstance();;
     
 
-                        if(changedGameFeatureListener.isChangedFeature(gameFeatureFactory.SOUND))
+    ChangedGameFeatureListener* changedGameFeatureListener = ChangedGameFeatureListener::getInstance();;
+    
+
+                        if(changedGameFeatureListener->isChangedFeature(gameFeatureFactory->SOUND))
                         
                                     {
                                     
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
-this->logUtil.putF(StringMaker().append("Sound Changing To: ").appendboolean(features.isFeature(gameFeatureFactory.SOUND)).toString(), this, "initConfigurable");
+this->logUtil->putF((new StringMaker())->append("Sound Changing To: ")->appendboolean(features->isFeature(gameFeatureFactory->SOUND))->toString(), this, "initConfigurable");
     
 this->mediaInit();
     
-changedGameFeatureListener.remove(gameFeatureFactory.SOUND);
+changedGameFeatureListener->remove(gameFeatureFactory->SOUND);
     
 
                                     }
                                 
 
-    SensorFeatureFactory sensorFeatureFactory = SensorFeatureFactory::getInstance();;
+    SensorFeatureFactory* sensorFeatureFactory = SensorFeatureFactory::getInstance();;
     
 
-                        if(changedGameFeatureListener.isChangedFeature(sensorFeatureFactory.ORIENTATION_SENSORS) || changedGameFeatureListener.isChangedFeature(sensorFeatureFactory.NO_ORIENTATION) || changedGameFeatureListener.isChangedFeature(sensorFeatureFactory.SIMULATED_ORIENTATION_SENSORS))
+                        if(changedGameFeatureListener->isChangedFeature(sensorFeatureFactory->ORIENTATION_SENSORS) || changedGameFeatureListener->isChangedFeature(sensorFeatureFactory->NO_ORIENTATION) || changedGameFeatureListener->isChangedFeature(sensorFeatureFactory->SIMULATED_ORIENTATION_SENSORS))
                         
                                     {
-                                    changedGameFeatureListener.remove(sensorFeatureFactory.NO_ORIENTATION);
+                                    changedGameFeatureListener->remove(sensorFeatureFactory->NO_ORIENTATION);
     
-changedGameFeatureListener.remove(sensorFeatureFactory.ORIENTATION_SENSORS);
+changedGameFeatureListener->remove(sensorFeatureFactory->ORIENTATION_SENSORS);
     
-changedGameFeatureListener.remove(sensorFeatureFactory.SIMULATED_ORIENTATION_SENSORS);
+changedGameFeatureListener->remove(sensorFeatureFactory->SIMULATED_ORIENTATION_SENSORS);
     
 
                                     }
                                 
 
-    ResourceLoadingLevelFactory resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
+    ResourceLoadingLevelFactory* resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
     
-this->loadResourceLoadingLevel(resourceLoadingLevelFactory.LOAD_GAME);
+this->loadResourceLoadingLevel(resourceLoadingLevelFactory->LOAD_GAME);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void initApp(AbeClientInformationInterface abeClientInformation){
+    protected: void initApp(AbeClientInformationInterface* abeClientInformation){
 this->initConfigurable(abeClientInformation);
     
 this->processorInit();
     
-this->sensorGameUpdateProcessor.process(this->gameLayerManager);
+this->sensorGameUpdateProcessor->process(this->gameLayerManager);
     
-this->sensorGameUpdateProcessor.sendNotifications(this->gameLayerManager);
+this->sensorGameUpdateProcessor->sendNotifications(this->gameLayerManager);
     
 this->initTouch();
     
@@ -1355,16 +1363,16 @@ this->initTouch();
             
     protected: void initTouch(){
 
-    GameInitializedEvent gameInitializedEvent = GameInitializationUtil::getInstance().EVENT;;
+    GameInitializedEvent* gameInitializedEvent = GameInitializationUtil::getInstance()->EVENT;;
     
 
-    ResourceLoadingLevelFactory resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
+    ResourceLoadingLevelFactory* resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
     
-gameInitializedEvent.setResourceLoadingLevel(resourceLoadingLevelFactory.LOAD_TOUCH);
+gameInitializedEvent->setResourceLoadingLevel(resourceLoadingLevelFactory->LOAD_TOUCH);
     
-GameInitializedEventHandler::getInstance().fireEvent(gameInitializedEvent);
+GameInitializedEventHandler::getInstance()->fireEvent(gameInitializedEvent);
     
-this->touchButtonFactory.defaultList();
+this->touchButtonFactory->defaultList();
     
 this->updateTouch();
     
@@ -1375,16 +1383,16 @@ this->postInitTouch();
 
                 //@Throws(Exception.constructor)
             
-    public: void updateCurrentTouchInputFactory(BaseTouchInput nextTouchInput){
+    public: void updateCurrentTouchInputFactory(BaseTouchInput* nextTouchInput){
 
                         if(nextTouchInput != this->currentTouchInputFactory)
                         
                                     {
                                     this->currentTouchInputFactory= nextTouchInput;
     
-PreLogUtil::put(this->currentTouchInputFactory.toString(), this, this->gameInputStrings.UDPATE_CURRENT_TOUCH_INPUT_FACTORY);
+PreLogUtil::put(this->currentTouchInputFactory->toString(), this, this->gameInputStrings->UDPATE_CURRENT_TOUCH_INPUT_FACTORY);
     
-this->touchButtonFactory.toggle(this->isPaused(), this->currentTouchInputFactory.getList());
+this->touchButtonFactory->toggle(this->isPaused(), this->currentTouchInputFactory->getList());
     
 
                                     }
@@ -1395,7 +1403,7 @@ this->touchButtonFactory.toggle(this->isPaused(), this->currentTouchInputFactory
                 //@Throws(Exception.constructor)
             
     protected: void updateTouch(){
-this->gameBehavior.updateTouch(this);
+this->gameBehavior->updateTouch(this);
     
 }
 
@@ -1404,14 +1412,14 @@ this->gameBehavior.updateTouch(this);
             
     protected: void updateTouch2(){
 
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-                        if(features.isFeature(this->touchFeatureFactory.AUTO_HIDE_SHOW_SCREEN_BUTTONS))
+                        if(features->isFeature(this->touchFeatureFactory->AUTO_HIDE_SHOW_SCREEN_BUTTONS))
                         
                                     {
                                     
-                        if(this->gameLayerManager.getGameInfo().getCurrentLevel() -this->getStartLevel() == 1)
+                        if(this->gameLayerManager->getGameInfo()->getCurrentLevel() -this->getStartLevel() == 1)
                         
                                     {
                                     this->setTouchPaintableP(NullPaintable::getInstance());
@@ -1428,14 +1436,14 @@ this->gameBehavior.updateTouch(this);
                 //@Throws(Exception.constructor)
             
     protected: void postInitTouch(){
-this->setTouchButtonsPaintable(TouchButtonsPaintableFactory::getInstance(this->gameLayerManager.getForegroundBasicColor()));
+this->setTouchButtonsPaintable(TouchButtonsPaintableFactory::getInstance(this->gameLayerManager->getForegroundBasicColor()));
     
 this->updateScreenButtonPaintable();
     
 }
 
 
-    public: void initCommands(CommandListener cmdListener){
+    public: void initCommands(CommandListener* cmdListener){
 this->removeAllCommands();
     
 this->addCommands();
@@ -1447,28 +1455,28 @@ this->setCommandListener(cmdListener);
 
     public: void addCommands(){
 
-    GameCommandsFactory gameCommandsFactory = GameCommandsFactory::getInstance();;
+    GameCommandsFactory* gameCommandsFactory = GameCommandsFactory::getInstance();;
     
 
-    MyCommandsFactory myCommandsFactory = MyCommandsFactory::getInstance();;
+    MyCommandsFactory* myCommandsFactory = MyCommandsFactory::getInstance();;
     
 
                         if(DebugFactory::getInstance() != NoDebug::getInstance())
                         
                                     {
-                                    this->addCommand(gameCommandsFactory.START_TRACE);
+                                    this->addCommand(gameCommandsFactory->START_TRACE);
     
 
                                     }
                                 
-this->addCommand(gameCommandsFactory.RESTART_COMMAND);
+this->addCommand(gameCommandsFactory->RESTART_COMMAND);
     
-this->addCommand(myCommandsFactory.PAUSE_COMMAND);
+this->addCommand(myCommandsFactory->PAUSE_COMMAND);
     
-this->addCommand(gameCommandsFactory.QUIT_COMMAND);
+this->addCommand(gameCommandsFactory->QUIT_COMMAND);
     
 
-    bool isOverScan = OperatingSystemFactory::getInstance().getOperatingSystemInstance().isOverScan();;
+    bool isOverScan = OperatingSystemFactory::getInstance()->getOperatingSystemInstance()->isOverScan();;
     
 
                         if(J2MEUtil::isHTML())
@@ -1489,7 +1497,7 @@ this->addCommand(gameCommandsFactory.QUIT_COMMAND);
                         
                                     {
                                     
-                        if(TouchScreenFactory::getInstance().isTouch() && InGameFeatures().isAny())
+                        if(TouchScreenFactory::getInstance()->isTouch() && (new InGameFeatures())->isAny())
                         
                                     {
                                     this->addCommand(InGameOptionsForm::DISPLAY);
@@ -1497,9 +1505,9 @@ this->addCommand(gameCommandsFactory.QUIT_COMMAND);
 
                                     }
                                 
-this->addCommand(gameCommandsFactory.SAVE);
+this->addCommand(gameCommandsFactory->SAVE);
     
-this->addCommand(gameCommandsFactory.DISPLAY_LOAD_FORM);
+this->addCommand(gameCommandsFactory->DISPLAY_LOAD_FORM);
     
 
                                     }
@@ -1507,32 +1515,34 @@ this->addCommand(gameCommandsFactory.DISPLAY_LOAD_FORM);
 }
 
 
-    public: void itemStateChanged(Item item){
+    public: void itemStateChanged(Item* item){
 
         try {
             
-    std::string itemLabel = item.getLabel();;
+    std::string itemLabel = item->getLabel();;
     
-this->logUtil.putF(StringMaker().append(this->commonLabels.ITEM_LABEL).append(itemLabel).toString(), this, "itemStateChanged");
+this->logUtil->putF((new StringMaker())->append(this->commonLabels.ITEM_LABEL)->append(itemLabel)->toString(), this, "itemStateChanged");
     
 
-                        if(item instanceof ChoiceGroup)
+                        if(
+                                        (dynamic_cast<const ChoiceGroup*>(item) != nullptr)
+                                    )
                         
                                     {
                                     
-    GameFeatureUtil gameFeatureUtil = GameFeatureUtil::getInstance();;
+    GameFeatureUtil* gameFeatureUtil = GameFeatureUtil::getInstance();;
     
 
-                        if(gameFeatureUtil.isExclusive(itemLabel))
+                        if(gameFeatureUtil->isExclusive(itemLabel))
                         
                                     {
-                                    gameFeatureUtil.updateExclusiveForChoiceGroup(item);
+                                    gameFeatureUtil->updateExclusiveForChoiceGroup(dynamic_cast<ChoiceGroup*>(item));
     
 
                                     }
                                 
                         else {
-                            gameFeatureUtil.updateMultiple(item);
+                            gameFeatureUtil->updateMultiple(dynamic_cast<ChoiceGroup*>(item));
     
 
                         }
@@ -1540,19 +1550,19 @@ this->logUtil.putF(StringMaker().append(this->commonLabels.ITEM_LABEL).append(it
 
                                     }
                                 
-this->sensorGameUpdateProcessor.process(this->gameLayerManager);
+this->sensorGameUpdateProcessor->process(this->gameLayerManager);
     
 this->updateTouch();
     
 this->updateScreenButtonPaintable();
     
-this->sensorGameUpdateProcessor.sendNotifications(this->gameLayerManager);
+this->sensorGameUpdateProcessor->sendNotifications(this->gameLayerManager);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "itemStateChanged", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "itemStateChanged", &e);
     
 }
 
@@ -1562,28 +1572,28 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "itemStateChanged", e);
                 //@Throws(Exception.constructor)
             
     public: void updateScreenButtonPaintable(){
-this->gameBehavior.updateScreenButtonPaintable(this);
+this->gameBehavior->updateScreenButtonPaintable(this);
     
 }
 
 
     public: void updateScreenButtonPaintable2(){
 
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-                        if(features.isFeature(this->touchFeatureFactory.AUTO_HIDE_SHOW_SCREEN_BUTTONS))
+                        if(features->isFeature(this->touchFeatureFactory->AUTO_HIDE_SHOW_SCREEN_BUTTONS))
                         
                                     {
                                     this->setTouchPaintableP(this->getTouchButtonsPaintable());
     
-this->setStartLevel(this->gameLayerManager.getGameInfo().getCurrentLevel());
+this->setStartLevel(this->gameLayerManager->getGameInfo()->getCurrentLevel());
     
 
                                     }
                                 
                              else 
-                        if(features.isFeature(this->touchFeatureFactory.SHOW_SCREEN_BUTTONS))
+                        if(features->isFeature(this->touchFeatureFactory->SHOW_SCREEN_BUTTONS))
                         
                                     {
                                     this->setTouchPaintableP(this->getTouchButtonsPaintable());
@@ -1592,7 +1602,7 @@ this->setStartLevel(this->gameLayerManager.getGameInfo().getCurrentLevel());
                                     }
                                 
                              else 
-                        if(features.isFeature(this->touchFeatureFactory.HIDE_SCREEN_BUTTONS))
+                        if(features->isFeature(this->touchFeatureFactory->HIDE_SCREEN_BUTTONS))
                         
                                     {
                                     this->setTouchPaintableP(NullPaintable::getInstance());
@@ -1609,7 +1619,7 @@ this->setStartLevel(this->gameLayerManager.getGameInfo().getCurrentLevel());
 }
 
 
-    public: AllBinaryGameLayerManager getLayerManager(){
+    public: AllBinaryGameLayerManager* getLayerManager(){
 
 
 
@@ -1619,7 +1629,7 @@ this->setStartLevel(this->gameLayerManager.getGameInfo().getCurrentLevel());
 }
 
 
-    public: void setLayerManager(AllBinaryGameLayerManager layerManager){
+    public: void setLayerManager(AllBinaryGameLayerManager* layerManager){
 this->gameLayerManager= layerManager;
     
 }
@@ -1646,13 +1656,13 @@ this->gameOver= gameOver;
                 //@Throws(Exception.constructor)
             
     public: void processGameOver(){
-PreLogUtil::put(this->commonStrings.START, this, this->gameStrings.SET_GAME_OVER);
+PreLogUtil::put(this->commonStrings->START, this, this->gameStrings->SET_GAME_OVER);
     
 this->setGameOver(true);
     
 this->removePauseCommand();
     
-this->setGameState(this->gameStateFactory.SHOW_END_RESULT_GAME_STATE);
+this->setGameState(this->gameStateFactory->SHOW_END_RESULT_GAME_STATE);
     
 this->setEndGamePaintable(this->getEndGameStatePaintable());
     
@@ -1678,17 +1688,17 @@ this->highScoreSubmitted= highScoreSubmitted;
                         if(highScoreSubmitted)
                         
                                     {
-                                    this->highScoresHelper.setSelectedHighScores(NullHighScoresSingletonFactory::getInstance());
+                                    this->highScoresHelper->setSelectedHighScores(NullHighScoresSingletonFactory::getInstance());
     
 
                                     }
                                 
-this->logUtil.putF(StringMaker().append("isHighScoreSubmitted: ").appendboolean(highScoreSubmitted).toString(), this, "setHighScoreSubmitted");
+this->logUtil->putF((new StringMaker())->append("isHighScoreSubmitted: ")->appendboolean(highScoreSubmitted)->toString(), this, "setHighScoreSubmitted");
     
 }
 
 
-    public: GameState getGameState(){
+    public: GameState* getGameState(){
 
 
 
@@ -1700,18 +1710,18 @@ this->logUtil.putF(StringMaker().append("isHighScoreSubmitted: ").appendboolean(
 
                 //@Throws(Exception.constructor)
             
-    public: void setGameState(GameState gameState){
-this->logUtil.putF(StringMaker().append(this->gameStrings.GAME_STATE).append(this->stringUtil.toString(gameState)).toString(), this, this->gameStrings.SET_GAME_STATE);
+    public: void setGameState(GameState* gameState){
+this->logUtil->putF((new StringMaker())->append(this->gameStrings->GAME_STATE)->append(this->stringUtil.toString(gameState))->toString(), this, this->gameStrings->SET_GAME_STATE);
     
 this->gameState= gameState;
     
-this->gameStateTimeHelper.setStartTimeTNT();
+this->gameStateTimeHelper->setStartTimeTNT();
     
 this->updateEndGameProcessor();
     
 this->updateGameKeyEventProcessor();
     
-this->gameBehavior.setGameState(this);
+this->gameBehavior->setGameState(this);
     
 }
 
@@ -1720,15 +1730,15 @@ this->gameBehavior.setGameState(this);
             
     public: void updateGameState(){
 
-    GameAdState gameAdState = this->gameAdStateFactory.getCurrentInstance();;
+    GameAdState* gameAdState = this->gameAdStateFactory->getCurrentInstance();;
     
-gameAdState.processAdState(this->gameState, this->gameLayerManager.getGameInfo().getGameType());
+gameAdState->processAdState(this->gameState, this->gameLayerManager->getGameInfo()->getGameType());
     
 
-                        if(this->gameState != this->gameStateFactory.PLAYING_GAME_STATE)
+                        if(this->gameState != this->gameStateFactory->PLAYING_GAME_STATE)
                         
                                     {
-                                    gameAdState.processPageAdState();
+                                    gameAdState->processPageAdState();
     
 
                                     }
@@ -1738,7 +1748,7 @@ gameAdState.processAdState(this->gameState, this->gameLayerManager.getGameInfo()
 
     private: void updateGameKeyEventProcessor(){
 
-                        if(this->getGameState() != this->gameStateFactory.PLAYING_GAME_STATE || this->isCheating)
+                        if(this->getGameState() != this->gameStateFactory->PLAYING_GAME_STATE || this->isCheating)
                         
                                     {
                                     
@@ -1758,35 +1768,35 @@ this->removeAllGameKeyInputListeners();
 
 
     protected: void removeAllGameKeyInputListeners(){
-this->gameBehavior.removeAllGameKeyInputListeners(this);
+this->gameBehavior->removeAllGameKeyInputListeners(this);
     
 }
 
 
     protected: void removeAllGameKeyInputListeners2(){
-this->logUtil.putF("Remove PlayerInput Listeners", this, "removeAllGameKeyInputListeners");
+this->logUtil->putF("Remove PlayerInput Listeners", this, "removeAllGameKeyInputListeners");
     
 
 
 
 
                         for (
-    int32_t index = this->localPlayerGameInputList.size() -1;index >= 0; index--)
+    int32_t index = this->localPlayerGameInputList->size() -1;index >= 0; index--)
         {
 
-    PlayerGameInput playerGameInput = this->localPlayerGameInputList.get(index);;
+    PlayerGameInput* playerGameInput = dynamic_cast<PlayerGameInput*>(this->localPlayerGameInputList->get(index));;
     
 this->removeKeyInputListener(playerGameInput);
     
-playerGameInput.removeNonAIInputGameKeyEvents();
+playerGameInput->removeNonAIInputGameKeyEvents();
     
 }
 
 }
 
 
-    public: void removeKeyInputListener(PlayerGameInput playerGameInput){
-this->gameKeyEventHandler.removeListener(playerGameInput);
+    public: void removeKeyInputListener(PlayerGameInput* playerGameInput){
+this->gameKeyEventHandler->removeListener(playerGameInput);
     
 }
 
@@ -1794,7 +1804,7 @@ this->gameKeyEventHandler.removeListener(playerGameInput);
                 //@Throws(Exception.constructor)
             
     protected: void updateEndGameProcessor(){
-this->gameBehavior.updateEndGameProcessor(this);
+this->gameBehavior->updateEndGameProcessor(this);
     
 }
 
@@ -1803,7 +1813,7 @@ this->gameBehavior.updateEndGameProcessor(this);
             
     protected: void updateEndGameProcessor2(){
 
-                        if(this->getGameState() == this->gameStateFactory.SHOW_END_RESULT_GAME_STATE || this->getGameState() == this->gameStateFactory.SHOW_HIGH_SCORE_GAME_STATE)
+                        if(this->getGameState() == this->gameStateFactory->SHOW_END_RESULT_GAME_STATE || this->getGameState() == this->gameStateFactory->SHOW_HIGH_SCORE_GAME_STATE)
                         
                                     {
                                     this->setEndGameProcessor(this->realEndGameProcessor);
@@ -1829,31 +1839,31 @@ this->gameBehavior.updateEndGameProcessor(this);
                 //@Throws(Exception.constructor)
             
     protected: void cleanupGame(){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CLEANUP);
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CLEANUP);
     
 
-    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
+    ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
     
-progressCanvas.addNormalPortion(10, "Cleaning Up");
+progressCanvas->addNormalPortion(10, "Cleaning Up");
     
-this->primaryPlayerQueue.clear();
+this->primaryPlayerQueue->clear();
     
-this->secondaryPlayerQueue.clear();
+this->secondaryPlayerQueue->clear();
     
-GameLevelDisplayChangeEventListenersFactory::getInstance().clear();
+GameLevelDisplayChangeEventListenersFactory::getInstance()->clear();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void loadResourceLoadingLevel(ResourceLoadingLevel resourceLoadingLevel){
+    public: void loadResourceLoadingLevel(ResourceLoadingLevel* resourceLoadingLevel){
 
-    GameInitializedEvent gameInitializedEvent = GameInitializationUtil::getInstance().EVENT;;
+    GameInitializedEvent* gameInitializedEvent = GameInitializationUtil::getInstance()->EVENT;;
     
-gameInitializedEvent.setResourceLoadingLevel(resourceLoadingLevel);
+gameInitializedEvent->setResourceLoadingLevel(resourceLoadingLevel);
     
-GameInitializedEventHandler::getInstance().fireEvent(gameInitializedEvent);
+GameInitializedEventHandler::getInstance()->fireEvent(gameInitializedEvent);
     
 }
 
@@ -1862,11 +1872,11 @@ GameInitializedEventHandler::getInstance().fireEvent(gameInitializedEvent);
             
     public: void loadResources(int32_t level){
 
-    GameInitializedEvent gameInitializedEvent = GameInitializationUtil::getInstance().EVENT;;
+    GameInitializedEvent* gameInitializedEvent = GameInitializationUtil::getInstance()->EVENT;;
     
-gameInitializedEvent.setLevel(level);
+gameInitializedEvent->setLevel(level);
     
-GameInitializedEventHandler::getInstance().fireEvent(gameInitializedEvent);
+GameInitializedEventHandler::getInstance()->fireEvent(gameInitializedEvent);
     
 }
 
@@ -1880,41 +1890,41 @@ GameInitializedEventHandler::getInstance().fireEvent(gameInitializedEvent);
                 //@Throws(Exception.constructor)
             
     public: void buildGame(int32_t portion){
-this->screenCapture.endRecording();
+this->screenCapture->endRecording();
     
-this->screenCapture.startRecording();
-    
-
-    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
+this->screenCapture->startRecording();
     
 
-    Features features = Features::getInstance();;
+    ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
     
-progressCanvas.addNormalPortion(portion, "Generic Build");
+
+    Features* features = Features::getInstance();;
+    
+progressCanvas->addNormalPortion(portion, "Generic Build");
     
 this->removeAllGameKeyInputListenersOnBuild();
     
 this->updateTouch();
     
-progressCanvas.addNormalPortion(portion, "High Scores");
+progressCanvas->addNormalPortion(portion, "High Scores");
     
-this->highScoresFactoryInterface.fetchHighScores(this->gameLayerManager.getGameInfo(), this->highScoresHelper);
+this->highScoresFactoryInterface->fetchHighScores(this->gameLayerManager->getGameInfo(), this->highScoresHelper);
     
 this->setHighScoresPaintable(NullPaintable::getInstance());
     
-progressCanvas.addNormalPortion(portion, "Finishing.");
+progressCanvas->addNormalPortion(portion, "Finishing.");
     
-this->getEndGameInfoP().update(this->getLayerManager().getGameInfo(), this);
+this->getEndGameInfoP()->update(this->getLayerManager()->getGameInfo(), this);
     
-this->isSingleKeyRepeatableProcessing= features.isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_REPEAT_PRESS);
+this->isSingleKeyRepeatableProcessing= features->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_REPEAT_PRESS);
     
 this->setGameOver(false);
     
-progressCanvas.addNormalPortion(portion, "Finishing..");
+progressCanvas->addNormalPortion(portion, "Finishing..");
     
 this->updateColor();
     
-this->getStartIntermissionPaintable().update();
+this->getStartIntermissionPaintable()->update();
     
 
                         if(!this->isRunningInAnotherThread())
@@ -1929,14 +1939,14 @@ this->getStartIntermissionPaintable().update();
 
                                     }
                                 
-progressCanvas.addNormalPortion(portion, "Finishing...");
+progressCanvas->addNormalPortion(portion, "Finishing...");
     
 
                         if(this->isMainCanvas() || !this->isInitialized())
                         
                                     {
                                     
-                        if(features.isFeature(MainFeatureFactory::getInstance().LOAD_ONDEMAND))
+                        if(features->isFeature(MainFeatureFactory::getInstance()->LOAD_ONDEMAND))
                         
                                     {
                                     
@@ -1945,7 +1955,7 @@ progressCanvas.addNormalPortion(portion, "Finishing...");
                                 )
                         
                                     {
-                                    progressCanvas.end();
+                                    progressCanvas->end();
     
 
                                     }
@@ -1954,7 +1964,7 @@ progressCanvas.addNormalPortion(portion, "Finishing...");
                                     }
                                 
                         else {
-                            progressCanvas.end();
+                            progressCanvas->end();
     
 
                         }
@@ -1968,44 +1978,44 @@ this->setInitialized(true);
                         if(this->getCustomCommandListener() == NullCommandListener::NULL_COMMAND_LISTENER)
                         
                                     {
-                                    this->logUtil.putF("Show Game Paintable in DemoCanvas Thread", this, this->BUILD_GAME);
+                                    this->logUtil->putF("Show Game Paintable in DemoCanvas Thread", this, this->BUILD_GAME);
     
-this->gameCanvasStartListener.showGamePaintable();
+this->gameCanvasStartListener->showGamePaintable();
     
 
                                     }
                                 
                         else {
-                            this->logUtil.putF("No GameCanvasStartListener", this, this->BUILD_GAME);
+                            this->logUtil->putF("No GameCanvasStartListener", this, this->BUILD_GAME);
     
 
                         }
                             
-this->colorFillPaintable.setBasicColorP(this->gameLayerManager.getBackgroundBasicColor());
+this->colorFillPaintable->setBasicColorP(this->gameLayerManager->getBackgroundBasicColor());
     
-this->gameBehavior.buildGame(this);
+this->gameBehavior->buildGame(this);
     
 }
 
 
     public: void buildGame2(){
-PreLogUtil::put(StringMaker().append(this->gameInputStrings.ENABLE_PLAYER_GAME_INPUTS).appendint(this->localPlayerGameInputList.size()).toString(), this, this->BUILD_GAME);
+PreLogUtil::put((new StringMaker())->append(this->gameInputStrings->ENABLE_PLAYER_GAME_INPUTS)->appendint(this->localPlayerGameInputList->size())->toString(), this, this->BUILD_GAME);
     
 
-    PlayerGameInput playerGameInput;;
+    PlayerGameInput* playerGameInput;;
     
 
 
 
 
                         for (
-    int32_t index = this->localPlayerGameInputList.size() -1;index >= 0; index--)
+    int32_t index = this->localPlayerGameInputList->size() -1;index >= 0; index--)
         {
-playerGameInput= this->localPlayerGameInputList.get(index);
+playerGameInput= dynamic_cast<PlayerGameInput*>(this->localPlayerGameInputList->get(index));
     
-PreLogUtil::put(StringMaker().append(this->gameInputStrings.ENABLE_PLAYER_GAME_INPUT).append(playerGameInput.toString()).toString(), this, this->BUILD_GAME);
+PreLogUtil::put((new StringMaker())->append(this->gameInputStrings->ENABLE_PLAYER_GAME_INPUT)->append(playerGameInput->toString())->toString(), this, this->BUILD_GAME);
     
-playerGameInput.removeNonAIInputGameKeyEvents();
+playerGameInput->removeNonAIInputGameKeyEvents();
     
 this->addKeyInputListener(playerGameInput);
     
@@ -2014,15 +2024,15 @@ this->addKeyInputListener(playerGameInput);
 }
 
 
-    public: void addKeyInputListener(PlayerGameInput playerGameInput){
-GameKeyEventHandler::getInstance().addListenerForPlayer(playerGameInput, playerGameInput.getPlayerInputId());
+    public: void addKeyInputListener(PlayerGameInput* playerGameInput){
+GameKeyEventHandler::getInstance()->addListenerForPlayer(playerGameInput, playerGameInput->getPlayerInputId());
     
 }
 
 
-    private: DemoPaintableInterface gameCanvasStartListener = NullDemoPaintable::NULL_DEMO_PAINTABLE;
+    private: DemoPaintableInterface* gameCanvasStartListener = NullDemoPaintable::NULL_DEMO_PAINTABLE;
 
-    public: void setGameCanvasStartListener(DemoPaintableInterface gameCanvasStartListener){
+    public: void setGameCanvasStartListener(DemoPaintableInterface* gameCanvasStartListener){
 this->gameCanvasStartListener= gameCanvasStartListener;
     
 }
@@ -2031,27 +2041,27 @@ this->gameCanvasStartListener= gameCanvasStartListener;
                 //@Throws(Exception.constructor)
             
     public: void loadState(){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.LOAD);
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->LOAD);
     
 
-    ABHashtable<Object*, Object*> hashtable = this->getLoadStateHashtable();;
+    ABHashtable<Object*, Object*>* hashtable = this->getLoadStateHashtable();;
     
 
                         if(hashtable != 
                                     nullptr
-                                 && hashtable.size() > 0)
+                                 && hashtable->size() > 0)
                         
                                     {
                                     
-    std::string levelAsString = hashtable.get(GameInfo::LEVEL_NAME);;
+    std::string levelAsString = hashtable->get(GameInfo::LEVEL_NAME);;
     
 
-    int32_t level = Integer::valueOf(levelAsString).intValue();;
+    int32_t level = Integer.valueOf(levelAsString)->intValue();;
     
 
-    GameInfo gameInfo = this->gameLayerManager.getGameInfo();;
+    GameInfo* gameInfo = this->gameLayerManager->getGameInfo();;
     
-gameInfo.setCurrentLevel(level);
+gameInfo->setCurrentLevel(level);
     
 
                                     }
@@ -2061,8 +2071,8 @@ gameInfo.setCurrentLevel(level);
 
                 //@Throws(Exception.constructor)
             
-    public: ABHashtable<Object*, Object*> getLoadStateHashtable(){
-this->logUtil.putF(StringMaker().append(this->commonLabels.START_LABEL).append(this->stringUtil.toString(this->hashtable)).toString(), this, "getLoadStateHashtable");
+    public: ABHashtable<Object*, Object*>* getLoadStateHashtable(){
+this->logUtil->putF((new StringMaker())->append(this->commonLabels.START_LABEL)->append(this->stringUtil.toString(this->hashtable))->toString(), this, "getLoadStateHashtable");
     
 
 
@@ -2073,24 +2083,24 @@ this->logUtil.putF(StringMaker().append(this->commonLabels.START_LABEL).append(t
 }
 
 
-    public: void setLoadStateHashtable(ABHashtable<Object*, Object*> hashtable){
-this->logUtil.putF(StringMaker().append(this->commonLabels.START_LABEL).append(this->stringUtil.toString(hashtable)).toString(), this, "setLoadStateHashtable");
+    public: void setLoadStateHashtable(ABHashtable<Object*, Object*>* hashtable){
+this->logUtil->putF((new StringMaker())->append(this->commonLabels.START_LABEL)->append(this->stringUtil.toString(hashtable))->toString(), this, "setLoadStateHashtable");
     
 this->hashtable= hashtable;
     
 }
 
 
-    public: ABHashtable<Object*, Object*> getCurrentStateHashtable(){
+    public: ABHashtable<Object*, Object*>* getCurrentStateHashtable(){
 
-    ABHashtable<Object*, Object*> hashtable = this->stdUtil.createHashtable();;
+    ABHashtable<Object*, Object*>* hashtable = this->stdUtil.createHashtable();;
     
 
-    int32_t level = this->gameLayerManager.getGameInfo().getCurrentLevel();;
+    int32_t level = this->gameLayerManager->getGameInfo()->getCurrentLevel();;
     
-hashtable.put(GameInfo::LEVEL_NAME.toString(), std::to_string(level));
+hashtable->put(GameInfo::LEVEL_NAME.toString(), std::to_string(level));
     
-this->logUtil.putF(StringMaker().append("End: ").append(this->stringUtil.toString(hashtable)).toString(), this, "getCurrentStateHashtable");
+this->logUtil->putF((new StringMaker())->append("End: ")->append(this->stringUtil.toString(hashtable))->toString(), this, "getCurrentStateHashtable");
     
 
 
@@ -2101,43 +2111,43 @@ this->logUtil.putF(StringMaker().append("End: ").append(this->stringUtil.toStrin
 }
 
 
-    public: void paintGameOver(Graphics graphics){
-ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
+    public: void paintGameOver(Graphics* graphics){
+ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, this);
     
 }
 
 
-    public: void draw(Graphics graphics){
-this->colorFillPaintable.paint(graphics);
+    public: void draw(Graphics* graphics){
+this->colorFillPaintable->paint(graphics);
     
-this->basicSetColorUtil.setBasicColorP(graphics, this->gameLayerManager.getForegroundBasicColor());
+this->basicSetColorUtil->setBasicColorP(graphics, this->gameLayerManager->getForegroundBasicColor());
     
-this->gameSpecificPaintable.paint(graphics);
-    
-}
-
-
-    public: void clear(Graphics graphics){
-this->colorFillPaintable.paint(graphics);
+this->gameSpecificPaintable->paint(graphics);
     
 }
 
 
-    public: void paint(Graphics graphics){
-this->myFontProcessor.process(graphics);
+    public: void clear(Graphics* graphics){
+this->colorFillPaintable->paint(graphics);
     
-this->baseGameStatistics.nextRefresh();
+}
+
+
+    public: void paint(Graphics* graphics){
+this->myFontProcessor->process(graphics);
+    
+this->baseGameStatistics->nextRefresh();
     
 this->draw(graphics);
     
-this->menuPaintable.paint(graphics);
+this->menuPaintable->paint(graphics);
     
-this->progressPaintable.paint(graphics);
+this->progressPaintable->paint(graphics);
     
 }
 
 
-    public: void paintThreed(Graphics graphics){
+    public: void paintThreed(Graphics* graphics){
 }
 
 
@@ -2147,27 +2157,27 @@ this->progressPaintable.paint(graphics);
 }
 
 
-    public: void nonBotPaint(Graphics graphics){
-this->endGamePaintable.paint(graphics);
+    public: void nonBotPaint(Graphics* graphics){
+this->endGamePaintable->paint(graphics);
     
-this->intermissionPaintable.paint(graphics);
+this->intermissionPaintable->paint(graphics);
     
 this->paintIntermission(graphics);
     
-this->touchPaintable.paint(graphics);
+this->touchPaintable->paint(graphics);
     
 }
 
 
-    public: void paintIntermission(Graphics graphics){
+    public: void paintIntermission(Graphics* graphics){
 }
 
 
-    private: const InputProcessor rawGameInputProcessor = GameCanvasInputProcessor(this);
+    private: InputProcessor* rawGameInputProcessor = new GameCanvasInputProcessor(this);
 
-    private: const InputProcessor rawInputProcessor = FormInputProcessor(this);
+    private: InputProcessor* rawInputProcessor = new FormInputProcessor(this);
 
-    private: InputProcessor inputProcessor = this->getRawGameInputProcessor();
+    private: InputProcessor* inputProcessor = this->getRawGameInputProcessor();
 
     public: void keyPressed(int32_t keyCode){
 this->keyPressedByDevice(keyCode, 0);
@@ -2188,7 +2198,7 @@ this->keyRepeatedByDevice(keyCode, 0);
 
 
     public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId){
-this->inputProcessor.keyPressedByDevice(keyCode, deviceId);
+this->inputProcessor->keyPressedByDevice(keyCode, deviceId);
     
 }
 
@@ -2198,7 +2208,7 @@ this->inputProcessor.keyPressedByDevice(keyCode, deviceId);
                         if(this->isSingleKeyRepeatableProcessing)
                         
                                     {
-                                    this->inputProcessor.keyPressedByDevice(keyCode, deviceId);
+                                    this->inputProcessor->keyPressedByDevice(keyCode, deviceId);
     
 
                                     }
@@ -2207,7 +2217,7 @@ this->inputProcessor.keyPressedByDevice(keyCode, deviceId);
 
 
     public: void keyReleasedByDevice(int32_t keyCode, int32_t deviceId){
-this->inputProcessor.keyReleasedByDevice(this, keyCode, deviceId);
+this->inputProcessor->keyReleasedByDevice(this, keyCode, deviceId);
     
 }
 
@@ -2227,14 +2237,14 @@ this->inputProcessor.keyReleasedByDevice(this, keyCode, deviceId);
                         
                                     {
                                     
-    MyCommandsFactory myCommandsFactory = MyCommandsFactory::getInstance();;
+    MyCommandsFactory* myCommandsFactory = MyCommandsFactory::getInstance();;
     
 
-    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
+    ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
     
-progressCanvas.start();
+progressCanvas->start();
     
-this->getCustomCommandListener().commandAction(myCommandsFactory.SET_DISPLAYABLE, progressCanvas);
+this->getCustomCommandListener()->commandAction(myCommandsFactory->SET_DISPLAYABLE, progressCanvas);
     
 portion= 4;
     
@@ -2253,15 +2263,15 @@ portion= 4;
                 //@Throws(Exception.constructor)
             
     protected: void processPlayingGame(){
-this->cheatProcessor.update();
+this->cheatProcessor->update();
     
-this->sensorGameUpdateProcessor.getInputSensor().update();
+this->sensorGameUpdateProcessor->getInputSensor()->update();
     
-this->gameInputProcessor.process();
+this->gameInputProcessor->process();
     
-this->gameLayerManager.process();
+this->gameLayerManager->process();
     
-this->startIntermissionProcessor.process();
+this->startIntermissionProcessor->process();
     
 }
 
@@ -2282,10 +2292,10 @@ super.process();
                         
                                     {
                                     
-                        if(!this->primaryPlayerQueue.process())
+                        if(!this->primaryPlayerQueue->process())
                         
                                     {
-                                    this->secondaryPlayerQueue.process();
+                                    this->secondaryPlayerQueue->process();
     
 
                                     }
@@ -2293,13 +2303,13 @@ super.process();
 
                                     }
                                 
-this->mainStateProcessor.process();
+this->mainStateProcessor->process();
     
-this->menuInputProcessor.processInputList();
+this->menuInputProcessor->processInputList();
     
-this->endGameProcessor.process();
+this->endGameProcessor->process();
     
-this->baseGameStatistics.nextFrame();
+this->baseGameStatistics->nextFrame();
     
 }
 
@@ -2325,7 +2335,7 @@ this->threadObjectUtil.notifyObject(this);
             
     public: void shouldWait(){
 
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
                         if(AndroidUtil::isAndroid())
@@ -2335,7 +2345,7 @@ this->threadObjectUtil.notifyObject(this);
                                     }
                                 
                              else 
-                        if(features.isFeature(this->openGLFeatureFactory.OPENGL_2D))
+                        if(features->isFeature(this->openGLFeatureFactory->OPENGL_2D))
                         
                                     {
                                     
@@ -2343,14 +2353,14 @@ this->threadObjectUtil.notifyObject(this);
                                 
                         else {
                             
-                        if(features.isDefault(this->openGLFeatureFactory.OPENGL))
+                        if(features->isDefault(this->openGLFeatureFactory->OPENGL))
                         
                                     {
                                     
-    OpenGLImageSpecificFactory openGLImageSpecificFactory = OpenGLImageSpecificFactory::getInstance();;
+    OpenGLImageSpecificFactory* openGLImageSpecificFactory = OpenGLImageSpecificFactory::getInstance();;
     
 
-        while(openGLImageSpecificFactory.updating)
+        while(openGLImageSpecificFactory->updating)
         {
 Thread::sleep(this->YIELD_SLEEP);
     
@@ -2368,12 +2378,12 @@ Thread::sleep(this->YIELD_SLEEP);
     public: void run(){
 
         try {
-            this->logUtil.putF(this->commonStrings.START_RUNNABLE, this, this->commonStrings.RUN);
+            this->logUtil->putF(this->commonStrings->START_RUNNABLE, this, this->commonStrings->RUN);
     
 
-    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
+    ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
     
-progressCanvas.addNormalPortion(50, "Game Thread");
+progressCanvas->addNormalPortion(50, "Game Thread");
     
 this->setCurrentThread();
     
@@ -2404,21 +2414,21 @@ this->threadInit();
 this->open();
     
 
-    GameAdState gameAdState = this->gameAdStateFactory.getCurrentInstance();;
+    GameAdState* gameAdState = this->gameAdStateFactory->getCurrentInstance();;
     
-gameAdState.init();
+gameAdState->init();
     
-gameAdState.setGameIsReady(true);
+gameAdState->setGameIsReady(true);
     
-this->gameBehavior.run(this);
+this->gameBehavior->run(this);
     
-this->logUtil.putF(this->commonStrings.END_RUNNABLE, this, this->commonStrings.RUN);
+this->logUtil->putF(this->commonStrings->END_RUNNABLE, this, this->commonStrings->RUN);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RUN, &e);
     
 }
 
@@ -2429,17 +2439,17 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, 
             
     public: void run2(){
 
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-                        if(features.isDefault(this->openGLFeatureFactory.OPENGL_AS_GAME_THREAD) || J2MEUtil::isHTML())
+                        if(features->isDefault(this->openGLFeatureFactory->OPENGL_AS_GAME_THREAD) || J2MEUtil::isHTML())
                         
                                     {
                                     
-                        if(features.isDefault(this->openGLFeatureFactory.OPENGL_AS_GAME_THREAD))
+                        if(features->isDefault(this->openGLFeatureFactory->OPENGL_AS_GAME_THREAD))
                         
                                     {
-                                    this->logUtil.putF(this->openGLFeatureFactory.OPENGL_AS_GAME_THREAD.getName(), this, this->commonStrings.RUN);
+                                    this->logUtil->putF(this->openGLFeatureFactory->OPENGL_AS_GAME_THREAD.getName(), this, this->commonStrings->RUN);
     
 
                                     }
@@ -2448,30 +2458,30 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, 
                         if(J2MEUtil::isHTML())
                         
                                     {
-                                    this->logUtil.putF(GraphicsStrings::getInstance().HTML, this, this->commonStrings.RUN);
+                                    this->logUtil->putF(GraphicsStrings::getInstance()->HTML, this, this->commonStrings->RUN);
     
 
                                     }
                                 
 
-    CurrentDisplayableFactory currentDisplayableFactory = CurrentDisplayableFactory::getInstance();;
+    CurrentDisplayableFactory* currentDisplayableFactory = CurrentDisplayableFactory::getInstance();;
     
-currentDisplayableFactory.setRunnable(this->gameRunnable);
+currentDisplayableFactory->setRunnable(this->gameRunnable);
     
-currentDisplayableFactory.setDisplayable(this);
+currentDisplayableFactory->setDisplayable(this);
     
-OpenGLThreadUtil::getInstance().onResume();
+OpenGLThreadUtil::getInstance()->onResume();
     
 
                                     }
                                 
                              else 
-                        if(features.isDefault(this->openGLFeatureFactory.OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS))
+                        if(features->isDefault(this->openGLFeatureFactory->OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS))
                         
                                     {
-                                    this->logUtil.putF(this->openGLFeatureFactory.OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS.getName(), this, this->commonStrings.RUN);
+                                    this->logUtil->putF(this->openGLFeatureFactory->OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS.getName(), this, this->commonStrings->RUN);
     
-OpenGLThreadUtil::getInstance().onResume();
+OpenGLThreadUtil::getInstance()->onResume();
     
 
         while(this->isRunning())
@@ -2486,7 +2496,7 @@ this->end();
                                     }
                                 
                         else {
-                            this->logUtil.putF("this thread", this, this->commonStrings.RUN);
+                            this->logUtil->putF("this thread", this, this->commonStrings->RUN);
     
 
         while(this->isRunning())
@@ -2506,9 +2516,9 @@ this->end();
                 //@Throws(Exception.constructor)
             
     public: void run3(){
-this->loopTimeHelper.setStartTime(this->gameTickTimeDelayHelper.setStartTime());
+this->loopTimeHelper.setStartTime(this->gameTickTimeDelayHelper->setStartTime());
     
-this->gameTickDisplayInfoSingleton.update();
+this->gameTickDisplayInfoSingleton->update();
     
 this->processGame();
     
@@ -2523,7 +2533,7 @@ super.setRunning(running);
 
         try {
             
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
                         if(running)
@@ -2534,17 +2544,17 @@ super.setRunning(running);
                                 
                         else {
                             
-                        if(features.isDefault(this->openGLFeatureFactory.OPENGL) || SWTUtil::isSWT)
+                        if(features->isDefault(this->openGLFeatureFactory->OPENGL) || SWTUtil::isSWT)
                         
                                     {
                                     
-                        if(this->gameLayerManager.getGameInfo().getGameType() != this->gameTypeFactory.BOT)
+                        if(this->gameLayerManager->getGameInfo()->getGameType() != this->gameTypeFactory->BOT)
                         
                                     {
                                     
-    CurrentDisplayableFactory currentDisplayableFactory = CurrentDisplayableFactory::getInstance();;
+    CurrentDisplayableFactory* currentDisplayableFactory = CurrentDisplayableFactory::getInstance();;
     
-currentDisplayableFactory.clearRunnable();
+currentDisplayableFactory->clearRunnable();
     
 
                                     }
@@ -2559,9 +2569,9 @@ this->end();
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->SET_RUNNING, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->SET_RUNNING, &e);
     
 }
 
@@ -2571,13 +2581,13 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->SET_RUNNING, e);
                 //@Throws(Exception.constructor)
             
     public: void end(){
-this->screenCapture.endRecording();
+this->screenCapture->endRecording();
     
-this->baseGameStatistics.add(StringMaker().append(this->baseGameStatistics.toString()).append(CommonSeps::getInstance().NEW_LINE).toString());
+this->baseGameStatistics->add((new StringMaker())->append(this->baseGameStatistics->toString())->append(CommonSeps::getInstance()->NEW_LINE)->toString());
     
-this->baseGameStatistics.init();
+this->baseGameStatistics->init();
     
-this->gameKeyEventHandler.removeListener(this->cheatProcessor);
+this->gameKeyEventHandler->removeListener(this->cheatProcessor);
     
 this->close();
     
@@ -2591,53 +2601,53 @@ this->endGameThread();
                 //@Throws(Exception.constructor)
             
     public: void endGameThread(){
-DisplayChangeEventHandler::getInstance().removeListener(this);
+DisplayChangeEventHandler::getInstance()->removeListener(this);
     
-GameLevelDisplayChangeEventListenersFactory::getInstance().clear();
+GameLevelDisplayChangeEventListenersFactory::getInstance()->clear();
     
 
-    GameAdState gameAdState = this->gameAdStateFactory.getCurrentInstance();;
+    GameAdState* gameAdState = this->gameAdStateFactory->getCurrentInstance();;
     
-gameAdState.notPlayingAdState();
+gameAdState->notPlayingAdState();
     
 }
 
 
-    public: HighScore createHighScore(int64_t score){
+    public: HighScore* createHighScore(int64_t score){
 
-    GameInfo gameInfo = this->gameLayerManager.getGameInfo();;
+    GameInfo* gameInfo = this->gameLayerManager->getGameInfo();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HighScore(0, "NONE", GameInfo(gameInfo.getGameType(), gameInfo.getGameMode(), PlayerTypesFactory::getInstance().PLAYER_TYPE_ONE, 0, 0), score);
+                        return new HighScore(0, "NONE", new GameInfo(gameInfo->getGameType(), gameInfo->getGameMode(), PlayerTypesFactory::getInstance()->PLAYER_TYPE_ONE, 0, 0), score);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void setHighScore(AbeClientInformationInterface abeClientInformation, std::string name, int64_t score, bool autoSubmit, bool isLast){
-this->gameBehavior.setHighScore(abeClientInformation, this, name, score, autoSubmit, isLast);
+    public: void setHighScore(AbeClientInformationInterface* abeClientInformation, std::string name, int64_t score, bool autoSubmit, bool isLast){
+this->gameBehavior->setHighScore(abeClientInformation, this, name, score, autoSubmit, isLast);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void setHighScore2(AbeClientInformationInterface abeClientInformation, std::string name, int64_t score, bool autoSubmit, bool isLast){
+    public: void setHighScore2(AbeClientInformationInterface* abeClientInformation, std::string name, int64_t score, bool autoSubmit, bool isLast){
 
-    HighScore highScore = this->createHighScore(score);;
+    HighScore* highScore = this->createHighScore(score);;
     
 
-    HighScoreTextBox textBox = HighScoreTextBox(this->highScoresFactoryInterface, this->highScoresHelper, abeClientInformation, this->gameLayerManager.getGameInfo(), this->getCustomCommandListener(), name, highScore, this->gameLayerManager.getBackgroundBasicColor(), this->gameLayerManager.getForegroundBasicColor());;
+    HighScoreTextBox* textBox = new HighScoreTextBox(this->highScoresFactoryInterface, this->highScoresHelper, abeClientInformation, this->gameLayerManager->getGameInfo(), this->getCustomCommandListener(), name, highScore, this->gameLayerManager->getBackgroundBasicColor(), this->gameLayerManager->getForegroundBasicColor());;
     
 
                         if(isLast)
                         
                                     {
-                                    this->getCustomCommandListener().commandAction(GameCommandsFactory::getInstance().SET_MENU_DISPLAYABLE, textBox);
+                                    this->getCustomCommandListener()->commandAction(GameCommandsFactory::getInstance()->SET_MENU_DISPLAYABLE, textBox);
     
 
                                     }
@@ -2650,13 +2660,13 @@ this->gameBehavior.setHighScore(abeClientInformation, this, name, score, autoSub
 //inner=true member= isStatic=
 class SaveHighScoreRunnable
             : public Object
-        : public Runnable {
+        , public Runnable {
 
-    private: const ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();
+    private: ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();
 
     public: void run(){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
         try {
@@ -2664,27 +2674,27 @@ class SaveHighScoreRunnable
                         if(isLast)
                         
                                     {
-                                    textBox.submit();
+                                    textBox->submit();
     
 
                                     }
                                 
                         else {
-                            textBox.saveHighScore();
+                            textBox->saveHighScore();
     
 
                         }
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil.put(commonStrings.EXCEPTION, this, "run", e);
+logUtil->put(commonStrings->EXCEPTION, this, "run", &e);
     
-this->progressCanvas.end();
+this->progressCanvas->end();
     
 }
 
@@ -2694,7 +2704,7 @@ this->progressCanvas.end();
 };
 
             
-SecondaryThreadPool::getInstance().runTask(SaveHighScoreRunnable());
+SecondaryThreadPool::getInstance()->runTask(new SaveHighScoreRunnable());
     
 
                                     }
@@ -2702,7 +2712,7 @@ SecondaryThreadPool::getInstance().runTask(SaveHighScoreRunnable());
 }
 
 
-    protected: TimeDelayHelper getGameStateTimeHelper(){
+    protected: TimeDelayHelper* getGameStateTimeHelper(){
 
 
 
@@ -2738,13 +2748,13 @@ this->initialized= initialized;
 }
 
 
-    public: void setProgressPaintable(PaintableInterface paintable){
+    public: void setProgressPaintable(PaintableInterface* paintable){
 this->progressPaintable= paintable;
     
 }
 
 
-    public: IntermissionInterface getStartIntermissionInterface(){
+    public: IntermissionInterface* getStartIntermissionInterface(){
 
 
 
@@ -2754,7 +2764,7 @@ this->progressPaintable= paintable;
 }
 
 
-    public: IntermissionInterface getEndLevelIntermissionInterface(){
+    public: IntermissionInterface* getEndLevelIntermissionInterface(){
 
 
 
@@ -2764,13 +2774,13 @@ this->progressPaintable= paintable;
 }
 
 
-    protected: void setTouchPaintableP(Paintable paintable){
+    protected: void setTouchPaintableP(Paintable* paintable){
 this->touchPaintable= paintable;
     
 }
 
 
-    public: Paintable getTouchPaintableP(){
+    public: Paintable* getTouchPaintableP(){
 
 
 
@@ -2780,13 +2790,13 @@ this->touchPaintable= paintable;
 }
 
 
-    protected: void setEndGamePaintable(Paintable endGamePaintable){
+    protected: void setEndGamePaintable(Paintable* endGamePaintable){
 this->endGamePaintable= endGamePaintable;
     
 }
 
 
-    public: Paintable getEndGamePaintable(){
+    public: Paintable* getEndGamePaintable(){
 
 
 
@@ -2796,13 +2806,13 @@ this->endGamePaintable= endGamePaintable;
 }
 
 
-    protected: void setIntermissionPaintable(Paintable intermissionPaintable){
+    protected: void setIntermissionPaintable(Paintable* intermissionPaintable){
 this->intermissionPaintable= intermissionPaintable;
     
 }
 
 
-    public: Paintable getIntermissionPaintable(){
+    public: Paintable* getIntermissionPaintable(){
 
 
 
@@ -2812,7 +2822,7 @@ this->intermissionPaintable= intermissionPaintable;
 }
 
 
-    public: EndGameInfo getEndGameInfoP(){
+    public: EndGameInfo* getEndGameInfoP(){
 
 
 
@@ -2822,13 +2832,13 @@ this->intermissionPaintable= intermissionPaintable;
 }
 
 
-    public: void setHighScoresPaintable(Paintable highScoresPaintable){
+    public: void setHighScoresPaintable(Paintable* highScoresPaintable){
 this->highScoresPaintable= highScoresPaintable;
     
 }
 
 
-    public: Paintable getHighScoresPaintable(){
+    public: Paintable* getHighScoresPaintable(){
 
 
 
@@ -2838,7 +2848,7 @@ this->highScoresPaintable= highScoresPaintable;
 }
 
 
-    protected: HighScoresPaintable getRealHighScoresPaintable(){
+    protected: HighScoresPaintable* getRealHighScoresPaintable(){
 
 
 
@@ -2850,39 +2860,39 @@ this->highScoresPaintable= highScoresPaintable;
 
     protected: void clearPlayerGameInputList(){
 
-    PlayerGameInput playerGameInput;;
+    PlayerGameInput* playerGameInput;;
     
 
 
 
 
                         for (
-    int32_t index = this->localPlayerGameInputList.size() -1;index >= 0; index--)
+    int32_t index = this->localPlayerGameInputList->size() -1;index >= 0; index--)
         {
-playerGameInput= this->localPlayerGameInputList.get(index);
+playerGameInput= dynamic_cast<PlayerGameInput*>(this->localPlayerGameInputList->get(index));
     
-this->gameKeyEventHandler.removeListener(playerGameInput);
-    
-}
-
-this->localPlayerGameInputList.clear();
+this->gameKeyEventHandler->removeListener(playerGameInput);
     
 }
 
-
-    protected: void addPlayerGameInput(PlayerGameInput playerGameInput){
-this->localPlayerGameInputList.add(playerGameInput);
+this->localPlayerGameInputList->clear();
     
 }
 
 
-    protected: void setMenuInputProcessor(BasicMenuInputProcessor menuInputProcessor){
+    protected: void addPlayerGameInput(PlayerGameInput* playerGameInput){
+this->localPlayerGameInputList->add(playerGameInput);
+    
+}
+
+
+    protected: void setMenuInputProcessor(BasicMenuInputProcessor* menuInputProcessor){
 this->menuInputProcessor= menuInputProcessor;
     
 }
 
 
-    protected: BasicMenuInputProcessor getMenuInputProcessor(){
+    protected: BasicMenuInputProcessor* getMenuInputProcessor(){
 
 
 
@@ -2892,7 +2902,7 @@ this->menuInputProcessor= menuInputProcessor;
 }
 
 
-    public: ScrollSelectionForm getMenuForm(){
+    public: ScrollSelectionForm* getMenuForm(){
 
 
 
@@ -2902,7 +2912,7 @@ this->menuInputProcessor= menuInputProcessor;
 }
 
 
-    public: void setMenuForm(ScrollSelectionForm menuForm){
+    public: void setMenuForm(ScrollSelectionForm* menuForm){
 this->menuForm= menuForm;
     
 }
@@ -2924,13 +2934,13 @@ this->startLevel= startLevel;
 }
 
 
-    protected: void setTouchButtonsPaintable(Paintable touchButtonsPaintable){
+    protected: void setTouchButtonsPaintable(Paintable* touchButtonsPaintable){
 this->touchButtonsPaintable= touchButtonsPaintable;
     
 }
 
 
-    protected: Paintable getTouchButtonsPaintable(){
+    protected: Paintable* getTouchButtonsPaintable(){
 
 
 
@@ -2940,13 +2950,13 @@ this->touchButtonsPaintable= touchButtonsPaintable;
 }
 
 
-    public: void setGameInputProcessor(Processor gameInputProcessor){
+    public: void setGameInputProcessor(Processor* gameInputProcessor){
 this->gameInputProcessor= gameInputProcessor;
     
 }
 
 
-    protected: Processor getGameInputProcessor(){
+    protected: Processor* getGameInputProcessor(){
 
 
 
@@ -2956,13 +2966,13 @@ this->gameInputProcessor= gameInputProcessor;
 }
 
 
-    protected: void setEndGameProcessor(Processor endGameProcessor){
+    protected: void setEndGameProcessor(Processor* endGameProcessor){
 this->endGameProcessor= endGameProcessor;
     
 }
 
 
-    protected: Processor getEndGameProcessor(){
+    protected: Processor* getEndGameProcessor(){
 
 
 
@@ -2972,13 +2982,13 @@ this->endGameProcessor= endGameProcessor;
 }
 
 
-    protected: void setEndGameStatePaintable(Paintable endGameStatePaintable){
+    protected: void setEndGameStatePaintable(Paintable* endGameStatePaintable){
 this->endGameStatePaintable= endGameStatePaintable;
     
 }
 
 
-    protected: Paintable getEndGameStatePaintable(){
+    protected: Paintable* getEndGameStatePaintable(){
 
 
 
@@ -2988,13 +2998,13 @@ this->endGameStatePaintable= endGameStatePaintable;
 }
 
 
-    protected: void setNonBotPaintableP(Paintable nonBotPaintable){
+    protected: void setNonBotPaintableP(Paintable* nonBotPaintable){
 this->nonBotPaintable= nonBotPaintable;
     
 }
 
 
-    protected: Paintable getNonBotPaintableP(){
+    protected: Paintable* getNonBotPaintableP(){
 
 
 
@@ -3004,13 +3014,13 @@ this->nonBotPaintable= nonBotPaintable;
 }
 
 
-    protected: void setStartIntermissionPaintable(InitUpdatePaintable startIntermissionPaintable){
+    protected: void setStartIntermissionPaintable(InitUpdatePaintable* startIntermissionPaintable){
 this->startIntermissionPaintable= startIntermissionPaintable;
     
 }
 
 
-    protected: InitUpdatePaintable getStartIntermissionPaintable(){
+    protected: InitUpdatePaintable* getStartIntermissionPaintable(){
 
 
 
@@ -3020,13 +3030,13 @@ this->startIntermissionPaintable= startIntermissionPaintable;
 }
 
 
-    public: void setMainStateProcessor(Processor mainStateProcessor){
+    public: void setMainStateProcessor(Processor* mainStateProcessor){
 this->mainStateProcessor= mainStateProcessor;
     
 }
 
 
-    protected: Processor getMainStateProcessor(){
+    protected: Processor* getMainStateProcessor(){
 
 
 
@@ -3036,13 +3046,13 @@ this->mainStateProcessor= mainStateProcessor;
 }
 
 
-    protected: void setProcessGameProcessor(Processor processGameProcessor){
+    protected: void setProcessGameProcessor(Processor* processGameProcessor){
 this->processGameProcessor= processGameProcessor;
     
 }
 
 
-    public: Processor getProcessGameProcessor(){
+    public: Processor* getProcessGameProcessor(){
 
 
 
@@ -3052,13 +3062,13 @@ this->processGameProcessor= processGameProcessor;
 }
 
 
-    protected: void setOpenMenuPaintable(Paintable openMenuPaintable){
+    protected: void setOpenMenuPaintable(Paintable* openMenuPaintable){
 this->openMenuPaintable= openMenuPaintable;
     
 }
 
 
-    protected: Paintable getOpenMenuPaintable(){
+    protected: Paintable* getOpenMenuPaintable(){
 
 
 
@@ -3068,13 +3078,13 @@ this->openMenuPaintable= openMenuPaintable;
 }
 
 
-    protected: void setPopupMenuInputProcessor(BasicMenuInputProcessor popupMenuInputProcessor){
+    protected: void setPopupMenuInputProcessor(BasicMenuInputProcessor* popupMenuInputProcessor){
 this->popupMenuInputProcessor= popupMenuInputProcessor;
     
 }
 
 
-    protected: BasicMenuInputProcessor getPopupMenuInputProcessor(){
+    protected: BasicMenuInputProcessor* getPopupMenuInputProcessor(){
 
 
 
@@ -3084,7 +3094,7 @@ this->popupMenuInputProcessor= popupMenuInputProcessor;
 }
 
 
-    public: SensorGameUpdateProcessor getSensorGameUpdateProcessor(){
+    public: SensorGameUpdateProcessor* getSensorGameUpdateProcessor(){
 
 
 
@@ -3094,7 +3104,7 @@ this->popupMenuInputProcessor= popupMenuInputProcessor;
 }
 
 
-    public: InputProcessor getRawGameInputProcessor(){
+    public: InputProcessor* getRawGameInputProcessor(){
 
 
 
@@ -3104,7 +3114,7 @@ this->popupMenuInputProcessor= popupMenuInputProcessor;
 }
 
 
-    public: InputProcessor getRawInputProcessor(){
+    public: InputProcessor* getRawInputProcessor(){
 
 
 
@@ -3114,13 +3124,13 @@ this->popupMenuInputProcessor= popupMenuInputProcessor;
 }
 
 
-    public: void setInputProcessor(InputProcessor inputProcessor){
+    public: void setInputProcessor(InputProcessor* inputProcessor){
 this->inputProcessor= inputProcessor;
     
 }
 
 
-    protected: InputProcessor getInputProcessor(){
+    protected: InputProcessor* getInputProcessor(){
 
 
 
@@ -3130,13 +3140,13 @@ this->inputProcessor= inputProcessor;
 }
 
 
-    protected: void setMenuPaintable(Paintable menuPaintable){
+    protected: void setMenuPaintable(Paintable* menuPaintable){
 this->menuPaintable= menuPaintable;
     
 }
 
 
-    protected: Paintable getMenuPaintable(){
+    protected: Paintable* getMenuPaintable(){
 
 
 
@@ -3146,13 +3156,13 @@ this->menuPaintable= menuPaintable;
 }
 
 
-    private: void setFormPaintable(Paintable formPaintable){
+    private: void setFormPaintable(Paintable* formPaintable){
 this->formPaintable= formPaintable;
     
 }
 
 
-    protected: Paintable getFormPaintable(){
+    protected: Paintable* getFormPaintable(){
 
 
 
@@ -3162,13 +3172,13 @@ this->formPaintable= formPaintable;
 }
 
 
-    public: void setGameSpecificPaintableP(Paintable gameSpecificPaintable){
+    public: void setGameSpecificPaintableP(Paintable* gameSpecificPaintable){
 this->gameSpecificPaintable= gameSpecificPaintable;
     
 }
 
 
-    protected: Paintable getGameSpecificPaintableP(){
+    protected: Paintable* getGameSpecificPaintableP(){
 
 
 
@@ -3183,20 +3193,20 @@ this->gameSpecificPaintable= gameSpecificPaintable;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLFeatureUtil::getInstance().isAnyThreed() || SWTUtil::isSWT;
+                        return OpenGLFeatureUtil::getInstance()->isAnyThreed() || SWTUtil::isSWT;
     
 }
 
 
     public: bool isRunningInAnotherThread(){
 
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-    OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
+    OpenGLFeatureFactory* openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
     
 
-                        if(features.isDefault(openGLFeatureFactory.OPENGL_AS_GAME_THREAD))
+                        if(features->isDefault(openGLFeatureFactory->OPENGL_AS_GAME_THREAD))
                         
                                     {
                                     

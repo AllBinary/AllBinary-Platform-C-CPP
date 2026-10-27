@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_THREAD_THREADUTIL_H
         #define ORG_ALLBINARY_THREAD_THREADUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -53,19 +59,19 @@ class ThreadUtil
             : public Object
          {
 
-    private: static ThreadUtil instance() { return ThreadUtil(); }
+    private: static ThreadUtil* instance() { static std::unique_ptr<ThreadUtil> value(new ThreadUtil()); return value.get(); }
 
-    public: static ThreadUtil getInstance();
+    public: static ThreadUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     public: const std::string JOIN = "join";
 
-    public: bool isRunning(Thread thread);
+    public: bool isRunning(Thread* thread);
 
                 //@Throws(Exception.constructor)
             
-    public: void join(Thread thread);
+    public: void join(Thread* thread);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_PAINT_MAINGAMEDEMOSTATEPAINTABLE_H
         #define ORG_ALLBINARY_GAME_PAINT_MAINGAMEDEMOSTATEPAINTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -48,17 +54,17 @@
         
 class MainGameDemoStatePaintable: public Paintable {
 
-    private: Paintable ownershipPaintableInterface;
+    private: Paintable* ownershipPaintableInterface;
 
-    private: Paintable menuPaintableInterface;
+    private: Paintable* menuPaintableInterface;
 
-public: MainGameDemoStatePaintable(Paintable ownershipPaintableInterface, Paintable menuPaintableInterface);
+public: MainGameDemoStatePaintable(Paintable* ownershipPaintableInterface, Paintable* menuPaintableInterface);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: Paintable getOwnershipPaintableInterface();
+    public: Paintable* getOwnershipPaintableInterface();
 
-    public: Paintable getMenuPaintableInterface();
+    public: Paintable* getMenuPaintableInterface();
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -85,120 +91,120 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryGameCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
 class GameCanvasInputProcessor: public InputProcessor {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: AllBinaryGameCanvas allBinaryGameCanvas;
+    private: AllBinaryGameCanvas* allBinaryGameCanvas;
 
-    private: const DownGameKeyEventHandler downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
+    private: DownGameKeyEventHandler* downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
 
-    private: const UpGameKeyEventHandler upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
+    private: UpGameKeyEventHandler* upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
 
-    private: const DownKeyEventHandler downKeyEventHandler = DownKeyEventHandler::getInstance();
+    private: DownKeyEventHandler* downKeyEventHandler = DownKeyEventHandler::getInstance();
 
-    private: const SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();
+    private: SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();
 
-    private: const InputToGameKeyMapping inputToGameKeyMapping = PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping();
+    private: InputToGameKeyMapping* inputToGameKeyMapping = PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping();
 
-public: GameCanvasInputProcessor(AllBinaryGameCanvas allBinaryGameCanvas){
+public: GameCanvasInputProcessor(AllBinaryGameCanvas* allBinaryGameCanvas){
 this->allBinaryGameCanvas= allBinaryGameCanvas;
     
-this->inputToGameKeyMapping.init(this->allBinaryGameCanvas);
+this->inputToGameKeyMapping->init(this->allBinaryGameCanvas);
     
 }
 
 
-    private: const GameKey NONE = GameKeyFactory::getInstance().NONE;
+    private: GameKey* NONE = GameKeyFactory::getInstance()->NONE;
 
-    private: const GameKeyEventFactory gameKeyEventFactory = GameKeyEventFactory::getInstance();
+    private: GameKeyEventFactory* gameKeyEventFactory = GameKeyEventFactory::getInstance();
 
     public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId){
 
         try {
             
-    GameKey gameKey = this->inputToGameKeyMapping.getInstanceForCanvas(this->allBinaryGameCanvas, keyCode);;
+    GameKey* gameKey = this->inputToGameKeyMapping->getInstanceForCanvas(this->allBinaryGameCanvas, keyCode);;
     
 
                         if(gameKey != this->NONE)
                         
                                     {
                                     
-    GameKeyEvent gameKeyEvent = this->gameKeyEventFactory.getInstanceForInput(this->allBinaryGameCanvas, gameKey);;
+    GameKeyEvent* gameKeyEvent = this->gameKeyEventFactory->getInstanceForInput(this->allBinaryGameCanvas, gameKey);;
     
-this->downGameKeyEventHandler.fireEvent(gameKeyEvent);
+this->downGameKeyEventHandler->fireEvent(gameKeyEvent);
     
-this->downGameKeyEventHandler.getInstanceForDevice(deviceId).fireEvent(gameKeyEvent);
+this->downGameKeyEventHandler->getInstanceForDevice(deviceId)->fireEvent(gameKeyEvent);
     
 
                                     }
                                 
                         else {
-                            this->logUtil.putF(StringMaker().append(this->gameInputStrings.NO_KEY).appendint(keyCode).toString(), this, this->gameInputStrings.ADD_KEY_EVENT);
+                            this->logUtil->putF((new StringMaker())->append(this->gameInputStrings.NO_KEY)->appendint(keyCode)->toString(), this, this->gameInputStrings.ADD_KEY_EVENT);
     
 
                         }
                             
 
-    Integer keyCodeAsInteger = this->smallIntegerSingletonFactory.getAtNoThrow(keyCode);;
+    int32_t keyCodeAsInteger = this->smallIntegerSingletonFactory->getAtNoThrow(keyCode);;
     
-this->downKeyEventHandler.fireEventI(keyCodeAsInteger);
+this->downKeyEventHandler->fireEventI(keyCodeAsInteger);
     
-this->downKeyEventHandler.getInstanceForDevice(deviceId).fireEventI(keyCodeAsInteger);
+this->downKeyEventHandler->getInstanceForDevice(deviceId)->fireEventI(keyCodeAsInteger);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put("Key Event Error", this, this->gameInputStrings.ADD_KEY_EVENT, e);
+this->logUtil->put("Key Event Error", this, this->gameInputStrings.ADD_KEY_EVENT, &e);
     
 }
 
 }
 
 
-    public: void keyReleasedByDevice(Canvas canvas, int32_t keyCode, int32_t deviceId){
+    public: void keyReleasedByDevice(Canvas* canvas, int32_t keyCode, int32_t deviceId){
 this->removeGameKeyEvent(canvas, keyCode, deviceId, false);
     
 }
 
 
-    private: void removeGameKeyEvent(Canvas canvas, int32_t keyCode, int32_t deviceId, bool repeated){
+    private: void removeGameKeyEvent(Canvas* canvas, int32_t keyCode, int32_t deviceId, bool repeated){
 
         try {
             
-    GameKey gameKey = this->inputToGameKeyMapping.getInstanceForCanvas(canvas, keyCode);;
+    GameKey* gameKey = this->inputToGameKeyMapping->getInstanceForCanvas(canvas, keyCode);;
     
 
                         if(gameKey != this->NONE)
                         
                                     {
                                     
-    GameKeyEventSourceInterface gameKeyEventSourceInterface = canvas as unknown;;
+    GameKeyEventSourceInterface* gameKeyEventSourceInterface = dynamic_cast<GameKeyEventSourceInterface*>(canvas as unknown);;
     
 
-    GameKeyEvent gameKeyEvent = this->gameKeyEventFactory.getInstanceForInput(gameKeyEventSourceInterface, gameKey);;
+    GameKeyEvent* gameKeyEvent = this->gameKeyEventFactory->getInstanceForInput(gameKeyEventSourceInterface, gameKey);;
     
-this->upGameKeyEventHandler.fireEvent(gameKeyEvent);
+this->upGameKeyEventHandler->fireEvent(gameKeyEvent);
     
-this->upGameKeyEventHandler.getInstanceForDevice(deviceId).fireEvent(gameKeyEvent);
+this->upGameKeyEventHandler->getInstanceForDevice(deviceId)->fireEvent(gameKeyEvent);
     
 
                                     }
                                 
                         else {
-                            this->logUtil.putF(StringMaker().append(this->gameInputStrings.NO_KEY).appendint(keyCode).toString(), this, this->gameInputStrings.REMOVE_KEY_EVENT);
+                            this->logUtil->putF((new StringMaker())->append(this->gameInputStrings.NO_KEY)->appendint(keyCode)->toString(), this, this->gameInputStrings.REMOVE_KEY_EVENT);
     
 
                         }
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put("Key Event Error", this, this->gameInputStrings.REMOVE_KEY_EVENT, e);
+this->logUtil->put("Key Event Error", this, this->gameInputStrings.REMOVE_KEY_EVENT, &e);
     
 }
 

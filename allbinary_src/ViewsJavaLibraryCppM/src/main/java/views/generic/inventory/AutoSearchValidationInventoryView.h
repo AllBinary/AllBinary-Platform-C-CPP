@@ -21,6 +21,12 @@
         #ifndef VIEWS_GENERIC_INVENTORY_AUTOSEARCHVALIDATIONINVENTORYVIEW_H
         #define VIEWS_GENERIC_INVENTORY_AUTOSEARCHVALIDATIONINVENTORYVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/control/search/SearchRequest.h>
 
       
@@ -48,17 +54,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InventorySearch.h"
+        #include "views/generic/inventory/InventorySearch.h"
 
 class AutoSearchValidationInventoryView: public InventorySearch {
 
-public: AutoSearchValidationInventoryView(SearchRequest searchRequest);
+public: AutoSearchValidationInventoryView(SearchRequest* searchRequest);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
     public: std::string validationInfo();
 

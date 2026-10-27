@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -68,25 +74,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseImageAnimationFactory.h"
-#include "AllBinaryJ2SEImageRotationAnimation.h"
-#include "AllBinaryAdjustedJ2SEImageRotationAnimation.h"
+        #include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
+#include "org/allbinary/animation/image/AllBinaryJ2SEImageRotationAnimation.h"
+#include "org/allbinary/animation/image/AllBinaryAdjustedJ2SEImageRotationAnimation.h"
 
 class AllBinaryJ2SEImageRotationAnimationFactory: public BaseImageAnimationFactory {
 
                 //@Throws(Exception.constructor)
             
-    public: static AllBinaryJ2SEImageRotationAnimationFactory createDXY(Image image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory, bool resizeCanvasForRotation){
+    public: static AllBinaryJ2SEImageRotationAnimationFactory* createDXY(Image* image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory, bool resizeCanvasForRotation){
 
-    AllBinaryJ2SEImageRotationAnimationFactory imageRotationAnimationFactory = AllBinaryJ2SEImageRotationAnimationFactory(image, width, height, angleIncrement, animationBehaviorFactory, resizeCanvasForRotation);;
+    AllBinaryJ2SEImageRotationAnimationFactory* imageRotationAnimationFactory = new AllBinaryJ2SEImageRotationAnimationFactory(image, width, height, angleIncrement, animationBehaviorFactory, resizeCanvasForRotation);;
     
-imageRotationAnimationFactory.animationFactoryInitializationVisitor.dx= dx;
+imageRotationAnimationFactory->animationFactoryInitializationVisitor.dx= dx;
     
-imageRotationAnimationFactory.animationFactoryInitializationVisitor.dy= dy;
+imageRotationAnimationFactory->animationFactoryInitializationVisitor.dy= dy;
     
-imageRotationAnimationFactory.animationFactoryInitializationVisitor.originalDx= dx;
+imageRotationAnimationFactory->animationFactoryInitializationVisitor.originalDx= dx;
     
-imageRotationAnimationFactory.animationFactoryInitializationVisitor.originalDy= dy;
+imageRotationAnimationFactory->animationFactoryInitializationVisitor.originalDy= dy;
     
 
 
@@ -101,7 +107,7 @@ imageRotationAnimationFactory.animationFactoryInitializationVisitor.originalDy= 
 
     private: bool resizeCanvasForRotation;
 
-public: AllBinaryJ2SEImageRotationAnimationFactory(Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory, bool resizeCanvasForRotation) : BaseImageAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), width, height, 0, 0, animationBehaviorFactory){
+public: AllBinaryJ2SEImageRotationAnimationFactory(Image* image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory, bool resizeCanvasForRotation) : BaseImageAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), width, height, 0, 0, animationBehaviorFactory){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -117,19 +123,19 @@ this->resizeCanvasForRotation= resizeCanvasForRotation;
 
                 //@Throws(Exception.constructor)
             
-    private: Image getCanvasImage(){
+    private: Image* getCanvasImage(){
 
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-                        if(this->resizeCanvasForRotation && !features.isDefault(OpenGLFeatureFactory::getInstance().OPENGL))
+                        if(this->resizeCanvasForRotation && !features->isDefault(OpenGLFeatureFactory::getInstance()->OPENGL))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageCopyUtil::getInstance().createImageScale(this->getImage(), 1.44, false);;
+                        return ImageCopyUtil::getInstance()->createImageScale(this->getImage(), 1.44, false);;
     
 
                                     }
@@ -149,23 +155,23 @@ this->resizeCanvasForRotation= resizeCanvasForRotation;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId){
+    public: Animation* getInstance(int32_t instanceId){
 
-    ImageCopyUtil imageCopyUtil = ImageCopyUtil::getInstance();;
+    ImageCopyUtil* imageCopyUtil = ImageCopyUtil::getInstance();;
     
 
-    Image canvasImage = this->getCanvasImage();;
+    Image* canvasImage = this->getCanvasImage();;
     
 
-    Image scaledImage = this->animationFactoryImageScaleUtil.createImage(canvasImage, this->animationFactoryInitializationVisitor.width, this->animationFactoryInitializationVisitor.height, this->scaleProperties.scaleWidth, this->scaleProperties.scaleHeight);;
+    Image* scaledImage = this->animationFactoryImageScaleUtil.createImage(canvasImage, this->animationFactoryInitializationVisitor.width, this->animationFactoryInitializationVisitor.height, this->scaleProperties.scaleWidth, this->scaleProperties.scaleHeight);;
     
 
-    OpenGLUtil openGLUtil = OpenGLUtil::getInstance();;
+    OpenGLUtil* openGLUtil = OpenGLUtil::getInstance();;
     
-scaledImage= openGLUtil.addImage(scaledImage);
+scaledImage= openGLUtil->addImage(scaledImage);
     
 
-    Image copyOfScaledImage = imageCopyUtil.createImageForRotation(scaledImage);;
+    Image* copyOfScaledImage = imageCopyUtil->createImageForRotation(scaledImage);;
     
 
                         if(this->animationFactoryInitializationVisitor.dx != 0 || this->animationFactoryInitializationVisitor.dy != 0)
@@ -177,7 +183,7 @@ scaledImage= openGLUtil.addImage(scaledImage);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryAdjustedJ2SEImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo::getInstance(this->angleIncrementP), AngleFactory::getInstance().TOTAL_ANGLE, this->animationFactoryInitializationVisitor.dx, this->animationFactoryInitializationVisitor.dy, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new AllBinaryAdjustedJ2SEImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo::getInstance(this->angleIncrementP), AngleFactory::getInstance()->TOTAL_ANGLE, this->animationFactoryInitializationVisitor.dx, this->animationFactoryInitializationVisitor.dy, this->animationBehaviorFactory.getOrCreateInstance());
     
 
                                     }
@@ -187,7 +193,7 @@ scaledImage= openGLUtil.addImage(scaledImage);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryJ2SEImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo::getInstance(this->angleIncrementP), AngleFactory::getInstance().TOTAL_ANGLE, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new AllBinaryJ2SEImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo::getInstance(this->angleIncrementP), AngleFactory::getInstance()->TOTAL_ANGLE, this->animationBehaviorFactory.getOrCreateInstance());
     
 
                         }

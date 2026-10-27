@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -50,9 +56,9 @@ class PrimitiveLongSingleton
             : public Object
          {
 
-    private: static PrimitiveLongSingleton instance() { return PrimitiveLongSingleton(); }
+    private: static PrimitiveLongSingleton* instance() { static std::unique_ptr<PrimitiveLongSingleton> value(new PrimitiveLongSingleton()); return value.get(); }
 
-    public: static PrimitiveLongSingleton getInstance(){
+    public: static PrimitiveLongSingleton* getInstance(){
 
 
 
@@ -109,7 +115,7 @@ class PrimitiveLongSingleton
 
 
 
-                            throw Exception(StringMaker().append("numberAsChar was not in array: ").appendchar(numberAsChar).toString());
+                            throw new Exception((new StringMaker())->append("numberAsChar was not in array: ")->appendchar(numberAsChar)->toString());
                     
 }
 

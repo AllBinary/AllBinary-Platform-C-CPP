@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIATYPEDATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIATYPEDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class MediaTypeData
             : public Object
          {
 
-    private: static MediaTypeData instance() { return MediaTypeData(); }
+    private: static MediaTypeData* instance() { static std::unique_ptr<MediaTypeData> value(new MediaTypeData()); return value.get(); }
 
-    public: static MediaTypeData getInstance();
+    public: static MediaTypeData* getInstance();
 
 private: MediaTypeData();
 

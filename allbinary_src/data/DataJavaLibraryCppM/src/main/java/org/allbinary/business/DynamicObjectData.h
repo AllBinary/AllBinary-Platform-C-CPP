@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_DYNAMICOBJECTDATA_H
         #define ORG_ALLBINARY_BUSINESS_DYNAMICOBJECTDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,7 +52,7 @@ class DynamicObjectData
             : public Object
          {
 
-    public: static const std::string NAME = "DYNAMICCOMPONENT_NAME";
+    public: static inline const std::string NAME = "DYNAMICCOMPONENT_NAME";
 
 private: DynamicObjectData();
 

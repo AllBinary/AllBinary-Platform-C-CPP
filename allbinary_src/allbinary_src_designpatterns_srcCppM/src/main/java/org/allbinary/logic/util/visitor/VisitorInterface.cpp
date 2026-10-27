@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 
 
 
@@ -39,7 +47,7 @@
         
 class VisitorInterface {
 
-    Object* visit(Object* anyType)
+    public: virtual Object* visit(Object* anyType) = 0;
 
 };
 

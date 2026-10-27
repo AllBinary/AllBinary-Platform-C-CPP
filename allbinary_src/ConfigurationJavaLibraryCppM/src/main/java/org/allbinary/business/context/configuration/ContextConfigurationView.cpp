@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,40 +70,40 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ContextConfigurationInterface.h"
-#include "ContextConfiguration.h"
-#include "ContextConfigurationData.h"
+        #include "org/allbinary/business/context/configuration/ContextConfigurationInterface.h"
+#include "org/allbinary/business/context/configuration/ContextConfiguration.h"
+#include "org/allbinary/business/context/configuration/ContextConfigurationData.h"
 
 class ContextConfigurationView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: ContextConfigurationInterface contextConfigurationInterface;
+    private: ContextConfigurationInterface* contextConfigurationInterface;
 
-public: ContextConfigurationView(Node node){
+public: ContextConfigurationView(Node* node){
 
-    NodeList childNodeList = node.getChildNodes();;
+    NodeList* childNodeList = node->getChildNodes();;
     
-this->contextConfigurationInterface= ContextConfiguration();
-    
-
-    Node emailConfigurationNode = DomSearchHelper::getNode(EmailServerConfigurationData::NAME, childNodeList);;
+this->contextConfigurationInterface= new ContextConfiguration();
     
 
-    EmailServerConfigurationView emailServerConfigurationView = EmailServerConfigurationView(emailConfigurationNode);;
+    Node* emailConfigurationNode = DomSearchHelper::getNode(EmailServerConfigurationData::NAME, childNodeList);;
     
-this->contextConfigurationInterface.setEmailServerConfigurationInterface(emailServerConfigurationView.getEmailConfigurationInterface());
+
+    EmailServerConfigurationView* emailServerConfigurationView = new EmailServerConfigurationView(emailConfigurationNode);;
+    
+this->contextConfigurationInterface->setEmailServerConfigurationInterface(dynamic_cast<EmailServerConfigurationInterface*>(emailServerConfigurationView->getEmailConfigurationInterface()));
     
 }
 
 
-public: ContextConfigurationView(ContextConfigurationInterface contextConfigurationInterface){
+public: ContextConfigurationView(ContextConfigurationInterface* contextConfigurationInterface){
 this->contextConfigurationInterface= contextConfigurationInterface;
     
 }
 
 
-    public: ContextConfigurationInterface getContextConfigurationInterface(){
+    public: ContextConfigurationInterface* getContextConfigurationInterface(){
 
 
 
@@ -109,14 +115,14 @@ this->contextConfigurationInterface= contextConfigurationInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = document.createElement(ContextConfigurationData::getInstance().NAME);;
+    Node* node = document->createElement(ContextConfigurationData::getInstance()->NAME);;
     
 
-    EmailServerConfigurationView emailServerConfigurationView = EmailServerConfigurationView(this->getContextConfigurationInterface().getEmailServerConfigurationInterface());;
+    EmailServerConfigurationView* emailServerConfigurationView = new EmailServerConfigurationView(this->getContextConfigurationInterface()->getEmailServerConfigurationInterface());;
     
-node.appendChild(emailServerConfigurationView.toXmlNode(document));
+node->appendChild(emailServerConfigurationView->toXmlNode(document));
     
 
 

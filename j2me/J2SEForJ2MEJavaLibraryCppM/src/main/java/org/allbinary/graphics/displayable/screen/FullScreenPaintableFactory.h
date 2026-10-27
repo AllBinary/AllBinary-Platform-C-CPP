@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_FULLSCREENPAINTABLEFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_FULLSCREENPAINTABLEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/paint/NullPaintable.h>
@@ -52,11 +58,11 @@ class FullScreenPaintableFactory
             : public Object
          {
 
-    private: static FullScreenPaintableFactory instance() { return FullScreenPaintableFactory(); }
+    private: static FullScreenPaintableFactory* instance() { static std::unique_ptr<FullScreenPaintableFactory> value(new FullScreenPaintableFactory()); return value.get(); }
 
-    public: static FullScreenPaintableFactory getInstance();
+    public: static FullScreenPaintableFactory* getInstance();
 
-    public: Paintable paintable = NullPaintable::getInstance();
+    public: Paintable* paintable = NullPaintable::getInstance();
 
 };
 

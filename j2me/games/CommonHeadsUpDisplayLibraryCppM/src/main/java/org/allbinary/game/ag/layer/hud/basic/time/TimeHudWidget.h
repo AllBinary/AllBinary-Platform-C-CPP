@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -61,13 +67,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Timer.h"
+        #include "org/allbinary/game/ag/layer/hud/basic/time/Timer.h"
 
 class TimeHudWidget: public BasicHud {
 
                 //@Throws(Exception.constructor)
             
-    public: static TimeHudWidget getInstance(int32_t location, int32_t direction, BasicColor basicColor, Timer timer);
+    public: static TimeHudWidget* getInstance(int32_t location, int32_t direction, BasicColor* basicColor, Timer* timer);
 
     private: const std::string TIME_STRING = "Time ";
 
@@ -75,23 +81,23 @@ class TimeHudWidget: public BasicHud {
 
     private: int32_t offset= 0;
 
-    private: std::vector<char> string = PrimitiveLongSingleton::getInstance().ZERO;
+    private: std::vector<char> string = PrimitiveLongSingleton::getInstance()->ZERO;
 
     private: int32_t totalDigits = 1;
 
-    private: Timer timer;
+    private: Timer* timer;
 
-public: TimeHudWidget(int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor, Timer timer);
+public: TimeHudWidget(int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor, Timer* timer);
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
     public: void update();
 
     private: void set();
 
-    public: Timer getTimer();
+    public: Timer* getTimer();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

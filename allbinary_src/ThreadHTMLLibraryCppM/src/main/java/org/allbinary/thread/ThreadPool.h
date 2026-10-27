@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_THREAD_THREADPOOL_H
         #define ORG_ALLBINARY_THREAD_THREADPOOL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -59,30 +65,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NullRunnable.h"
-#include "ThreadPoolStrings.h"
-#include "ThreadObjectUtil.h"
-#include "PriorityRunnable.h"
+        #include "org/allbinary/thread/NullRunnable.h"
+#include "org/allbinary/thread/ThreadPoolStrings.h"
+#include "org/allbinary/thread/ThreadObjectUtil.h"
+#include "org/allbinary/thread/PriorityRunnable.h"
 
 class ThreadPool
             : public Object
          {
 
-    public: static const int32_t NORMAL_PRIORITY = 5;
+    public: static inline const int32_t NORMAL_PRIORITY = 5;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const NullRunnable NULL_RUNNABLE = NullRunnable::getInstance();
+    protected: NullRunnable* NULL_RUNNABLE = NullRunnable::getInstance();
 
-    protected: const ThreadPoolStrings threadPoolStrings = ThreadPoolStrings::getInstance();
+    protected: ThreadPoolStrings* threadPoolStrings = ThreadPoolStrings::getInstance();
 
-    protected: const ThreadObjectUtil threadObjectUtil = ThreadObjectUtil::getInstance();
+    protected: ThreadObjectUtil* threadObjectUtil = ThreadObjectUtil::getInstance();
 
     private: bool isAlive= false;
 
-    private: BasicArrayList taskQueue = BasicArrayListD();
+    private: BasicArrayList* taskQueue = new BasicArrayListD();
 
     private: int32_t numThreads= 0;
 
@@ -90,7 +96,7 @@ class ThreadPool
 
 public: ThreadPool(std::string poolName, int32_t numThreads, int32_t priority);
 
-    private: PriorityRunnable currentPriorityRunnable = this->threadObjectUtil.NULL_PRIORITY_RUNNABLE;
+    private: PriorityRunnable* currentPriorityRunnable = this->threadObjectUtil->NULL_PRIORITY_RUNNABLE;
 
                 //@Throws(Exception.constructor)
             
@@ -103,15 +109,15 @@ public: ThreadPool(std::string poolName, int32_t numThreads, int32_t priority);
     public: void init();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void runTaskWithPriority(PriorityRunnable task);
+    public: void runTaskWithPriority(PriorityRunnable* task);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void runTask(Runnable task);
+    public: void runTask(Runnable* task);
 
                 //@Throws(InterruptedException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    protected: Runnable getTask();
+    protected: Runnable* getTask();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void clear();
@@ -127,9 +133,9 @@ public: ThreadPool(std::string poolName, int32_t numThreads, int32_t priority);
 
     protected: void threadStopped();
 
-    protected: void startTask(Runnable task);
+    protected: void startTask(Runnable* task);
 
-    protected: void completedTask(Runnable task);
+    protected: void completedTask(Runnable* task);
 
 };
 

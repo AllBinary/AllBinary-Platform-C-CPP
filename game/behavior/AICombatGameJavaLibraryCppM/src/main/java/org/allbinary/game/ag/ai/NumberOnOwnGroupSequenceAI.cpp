@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -63,9 +69,9 @@
         
 class NumberOnOwnGroupSequenceAI: public SequenceAI {
 
-    private: std::vector<Integer> numberOnSameTeam;
+    private: std::vector<int32_t> numberOnSameTeam;
 
-public: NumberOnOwnGroupSequenceAI(std::vector<Integer> numberOnSameTeam, std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput) : SequenceAI(artificialIntelligenceInterface, ownerLayerInterface, gameInput){
+public: NumberOnOwnGroupSequenceAI(std::vector<int32_t> numberOnSameTeam, std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterface, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : SequenceAI(artificialIntelligenceInterface, ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -79,9 +85,9 @@ this->numberOnSameTeam= numberOnSameTeam;
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
 
-    AllBinaryLayer layerInterface = this->getOwnerLayerInterface();;
+    AllBinaryLayer* layerInterface = this->getOwnerLayerInterface();;
     
 
     int32_t index = this->getIndex();;
@@ -91,7 +97,7 @@ this->numberOnSameTeam= numberOnSameTeam;
                         
                                     {
                                     
-    int32_t size = GroupLayerManagerListener::getInstance().getGroupSizeFromInterface(layerInterface);;
+    int32_t size = GroupLayerManagerListener::getInstance()->getGroupSizeFromInterface(layerInterface);;
     
 
                         if(this->numberOnSameTeam[index].intValue() > size)

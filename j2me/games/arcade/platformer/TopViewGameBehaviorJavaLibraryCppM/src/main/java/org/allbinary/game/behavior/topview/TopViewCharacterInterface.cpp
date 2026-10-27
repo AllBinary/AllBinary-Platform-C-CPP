@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
@@ -52,23 +58,23 @@
         
 class TopViewCharacterInterface {
 
-    void terrainMove(std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, int32_t x, int32_t y)
+    public: virtual void terrainMove(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, int32_t x, int32_t y) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void terrainEvent(int32_t x, int32_t y, std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, GeographicMapCellPosition geographicMapCellPosition)
+    public: virtual void terrainEvent(int32_t x, int32_t y, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, GeographicMapCellPosition* geographicMapCellPosition) = 0;
 
-    void move()
+    public: virtual void move() = 0;
 
-    void upp()
+    public: virtual void upp() = 0;
 
-    void leftp()
+    public: virtual void leftp() = 0;
 
-    void rightp()
+    public: virtual void rightp() = 0;
 
                 //@Throws(Exception.constructor)
             
-    void reset()
+    public: virtual void reset() = 0;
 
 };
 

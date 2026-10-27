@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -61,13 +67,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShippingAddressView.h"
+        #include "views/generic/address/shipping/ShippingAddressView.h"
 
 class EditValidationView: public ShippingAddressView, public ValidationComponentInterface {
 
     private: std::string value;
 
-public: EditValidationView(TransformInfoInterface transformInfoInterface) : ShippingAddressView(transformInfoInterface){
+public: EditValidationView(TransformInfoInterface* transformInfoInterface) : ShippingAddressView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,16 +81,16 @@ public: EditValidationView(TransformInfoInterface transformInfoInterface) : Ship
                             //For kotlin this is before the body of the constructor.
                     
 
-    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface();;
+    TransformInfoHttpInterface* httpTransformInfoInterface = dynamic_cast<TransformInfoHttpInterface*>(this->getTransformInfoInterface());;
     
-this->value= httpTransformInfoInterface.getPageContext().getRequest().getParameter(StreetAddressData::ID);
+this->value= httpTransformInfoInterface->getPageContext()->getRequest()->getParameter(StreetAddressData::ID);
     
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
-                        if(this->getWeblisketSession().getUserName() != 
+                        if(this->getWeblisketSession()->getUserName() != 
                                     nullptr
                                 )
                         
@@ -99,9 +105,9 @@ this->value= httpTransformInfoInterface.getPageContext().getRequest().getParamet
                                     }
                                 
 
-    ShippingAddressesEntity billingAddressesEntity = ShippingAddressesEntity(this->getWeblisketSession().getUserName());;
+    ShippingAddressesEntity* billingAddressesEntity = new ShippingAddressesEntity(this->getWeblisketSession()->getUserName());;
     
-this->streetAddress= billingAddressesEntity.get(Integer(this->value));
+this->streetAddress= billingAddressesEntity->get(int32_t(this->value));
     
 
                         if(this->streetAddress == 
@@ -137,7 +143,7 @@ this->streetAddress= billingAddressesEntity.get(Integer(this->value));
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -147,7 +153,7 @@ this->streetAddress= billingAddressesEntity.get(Integer(this->value));
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

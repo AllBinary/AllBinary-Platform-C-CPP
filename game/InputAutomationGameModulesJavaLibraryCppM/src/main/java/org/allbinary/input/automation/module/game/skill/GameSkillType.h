@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILLTYPE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILLTYPE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,15 +52,15 @@ class GameSkillType
             : public Object
          {
 
-    public: static GameSkillType MANA = GameSkillType("Mana");
+    public: static GameSkillType* MANA() { static std::unique_ptr<GameSkillType> value(new GameSkillType("Mana")); return value.get(); }
 
-    public: static GameSkillType REPLENISH = GameSkillType("Replenish");
+    public: static GameSkillType* REPLENISH() { static std::unique_ptr<GameSkillType> value(new GameSkillType("Replenish")); return value.get(); }
 
-    public: static GameSkillType TIMED = GameSkillType("Timed");
+    public: static GameSkillType* TIMED() { static std::unique_ptr<GameSkillType> value(new GameSkillType("Timed")); return value.get(); }
 
-    public: static GameSkillType ATTACK = GameSkillType("Attack");
+    public: static GameSkillType* ATTACK() { static std::unique_ptr<GameSkillType> value(new GameSkillType("Attack")); return value.get(); }
 
-    public: static GameSkillType TRANSPORT = GameSkillType("Transport");
+    public: static GameSkillType* TRANSPORT() { static std::unique_ptr<GameSkillType> value(new GameSkillType("Transport")); return value.get(); }
 
     private: const std::string SPELL_GAME_SKILL_TYPE = "SpellGameSkillType: ";
 

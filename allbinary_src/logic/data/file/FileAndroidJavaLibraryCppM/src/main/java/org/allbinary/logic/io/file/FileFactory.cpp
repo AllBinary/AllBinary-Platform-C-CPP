@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,27 +55,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFile.h"
+        #include "org/allbinary/logic/io/file/AbFile.h"
 
 class FileFactory
             : public Object
          {
 
-    private: static const FileFactory SINGLETON = FileFactory(ResourceUtil::getInstance().getContext());
+    private: static FileFactory* SINGLETON() { static std::unique_ptr<FileFactory> value(new FileFactory(ResourceUtil::getInstance()->getContext())); return value.get(); }
 
-    public: static FileFactory getInstance(){
+    public: static FileFactory* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileFactory::SINGLETON;
+                        return FileFactory::SINGLETON();
     
 }
 
 
-    private: Context context;
+    private: Context* context;
 
-private: FileFactory(Context context){
+private: FileFactory(Context* context){
 this->context= context;
     
 }
@@ -80,7 +86,7 @@ this->context= context;
     public: bool isFile(std::string path){
 
         try {
-            this->context.openFileInput(path);
+            this->context->openFileInput(path);
     
 
 
@@ -90,7 +96,7 @@ this->context= context;
     
 
                 //: 
-} catch(e) 
+} catch(FileNotFoundException& e) 
             {
 
 
@@ -103,7 +109,7 @@ this->context= context;
 }
 
 
-    public: Context getContext(){
+    public: Context* getContext(){
 
 
 
@@ -115,7 +121,7 @@ this->context= context;
 
                 //@Throws(Exception.constructor)
             
-    public: AbFile getFile(std::string filePath){
+    public: AbFile* getFile(std::string filePath){
 
 
 
@@ -127,7 +133,7 @@ this->context= context;
 
                 //@Throws(Exception.constructor)
             
-    public: AbFile getInstance(AbFile file, std::string childFilePath){
+    public: AbFile* getInstance(AbFile* file, std::string childFilePath){
 
 
 

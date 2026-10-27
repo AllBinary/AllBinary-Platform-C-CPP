@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/math/Angle.h>
@@ -46,16 +52,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DirectionFactory.h"
-#include "Direction.h"
+        #include "org/allbinary/direction/DirectionFactory.h"
+#include "org/allbinary/direction/Direction.h"
 
 class DirectionUtil
             : public Object
          {
 
-    private: static DirectionUtil instance() { return DirectionUtil(); }
+    private: static DirectionUtil* instance() { static std::unique_ptr<DirectionUtil> value(new DirectionUtil()); return value.get(); }
 
-    public: static DirectionUtil getInstance(){
+    public: static DirectionUtil* getInstance(){
 
 
 
@@ -65,52 +71,52 @@ class DirectionUtil
 }
 
 
-    private: std::vector<Angle> directionArray = std::vector<Angle>(10);
+    private: std::vector<Angle*> directionArray = std::vector<Angle*>(10);
 
-    private: std::vector<Angle> directionArray2 = std::vector<Angle>(10);
+    private: std::vector<Angle*> directionArray2 = std::vector<Angle*>(10);
 
 private: DirectionUtil(){
 
-    AngleFactory angleFactory = AngleFactory::getInstance();;
+    AngleFactory* angleFactory = AngleFactory::getInstance();;
     
 
-    DirectionFactory directionFactory = DirectionFactory::getInstance();;
+    DirectionFactory* directionFactory = DirectionFactory::getInstance();;
     
-this->directionArray[directionFactory.LEFT.getValue()]= angleFactory.LEFT;
+this->directionArray[directionFactory->LEFT.getValue()]= angleFactory->LEFT;
     
-this->directionArray[directionFactory.RIGHT.getValue()]= angleFactory.RIGHT;
+this->directionArray[directionFactory->RIGHT.getValue()]= angleFactory->RIGHT;
     
-this->directionArray[directionFactory.UP.getValue()]= angleFactory.UP;
+this->directionArray[directionFactory->UP.getValue()]= angleFactory->UP;
     
-this->directionArray[directionFactory.DOWN.getValue()]= angleFactory.DOWN;
+this->directionArray[directionFactory->DOWN.getValue()]= angleFactory->DOWN;
     
-this->directionArray2[directionFactory.LEFT.getValue()]= angleFactory.LEFT;
+this->directionArray2[directionFactory->LEFT.getValue()]= angleFactory->LEFT;
     
-this->directionArray2[directionFactory.RIGHT.getValue()]= angleFactory.RIGHT;
+this->directionArray2[directionFactory->RIGHT.getValue()]= angleFactory->RIGHT;
     
-this->directionArray2[directionFactory.UP.getValue()]= angleFactory.UP;
+this->directionArray2[directionFactory->UP.getValue()]= angleFactory->UP;
     
-this->directionArray2[directionFactory.DOWN.getValue()]= angleFactory.DOWN;
-    
-}
-
-
-    public: Angle getAngle(Direction direction){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->directionArray2[direction.getValue()];
+this->directionArray2[directionFactory->DOWN.getValue()]= angleFactory->DOWN;
     
 }
 
 
-    public: Angle getFrameAngle(Direction direction){
+    public: Angle* getAngle(Direction* direction){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->directionArray[direction.getValue()];
+                        return this->directionArray2[direction->getValue()];
+    
+}
+
+
+    public: Angle* getFrameAngle(Direction* direction){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->directionArray[direction->getValue()];
     
 }
 

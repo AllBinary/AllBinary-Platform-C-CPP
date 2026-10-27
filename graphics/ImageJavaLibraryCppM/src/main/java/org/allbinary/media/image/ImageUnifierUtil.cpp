@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/awt.h>
@@ -52,20 +58,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageUtil.h"
-#include "GraphicsEnvironment.h"
-#include "GraphicsDevice.h"
-#include "GraphicsConfiguration.h"
-#include "Graphics2D.h"
-#include "ImageUnifierProperties.h"
+        #include "org/allbinary/media/image/ImageUtil.h"
+#include "org/allbinary/media/image/GraphicsEnvironment.h"
+#include "org/allbinary/media/image/GraphicsDevice.h"
+#include "org/allbinary/media/image/GraphicsConfiguration.h"
+#include "org/allbinary/media/image/Graphics2D.h"
+#include "org/allbinary/media/image/ImageUnifierProperties.h"
 
 class ImageUnifierUtil
             : public Object
          {
 
-    private: static ImageUnifierUtil instance() { return ImageUnifierUtil(); }
+    private: static ImageUnifierUtil* instance() { static std::unique_ptr<ImageUnifierUtil> value(new ImageUnifierUtil()); return value.get(); }
 
-    public: static ImageUnifierUtil getInstance(){
+    public: static ImageUnifierUtil* getInstance(){
 
 
 
@@ -75,41 +81,41 @@ class ImageUnifierUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const ImageUtil imageUtil = ImageUtil::getInstance();
+    private: ImageUtil* imageUtil = ImageUtil::getInstance();
 
 private: ImageUnifierUtil(){
 }
 
 
-    public: GraphicsConfiguration getDefaultConfiguration(){
+    public: GraphicsConfiguration* getDefaultConfiguration(){
 
-    GraphicsEnvironment ge = GraphicsEnvironment::getLocalGraphicsEnvironment();;
+    GraphicsEnvironment* ge = GraphicsEnvironment::getLocalGraphicsEnvironment();;
     
 
-    GraphicsDevice gd = ge.getDefaultScreenDevice();;
+    GraphicsDevice* gd = ge->getDefaultScreenDevice();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return gd.getDefaultConfiguration();;
+                        return gd->getDefaultConfiguration();;
     
 }
 
 
-    public: BufferedImage getImage(std::vector<BufferedImage> bufferedImageArray, ImageUnifierProperties imageUnifierProperties){
+    public: BufferedImage* getImage(std::vector<BufferedImage*> bufferedImageArray, ImageUnifierProperties* imageUnifierProperties){
 
-    BufferedImage newBufferedImage = this->imageUtil.create(imageUnifierProperties.getWidth(), imageUnifierProperties.getHeight());;
+    BufferedImage* newBufferedImage = this->imageUtil->create(imageUnifierProperties->getWidth(), imageUnifierProperties->getHeight());;
     
 
-    CommonLabels commonLabels = CommonLabels::getInstance();;
+    CommonLabels* commonLabels = CommonLabels::getInstance();;
     
-this->logUtil.putF("Setting Image - " +commonLabels.WIDTH_LABEL +newBufferedImage.getWidth() +commonLabels.HEIGHT_LABEL +newBufferedImage.getHeight(), this, "getImage");
+this->logUtil->putF("Setting Image - " +commonLabels->WIDTH_LABEL +newBufferedImage->getWidth() +commonLabels->HEIGHT_LABEL +newBufferedImage->getHeight(), this, "getImage");
     
 
-    Graphics2D g = newBufferedImage.createGraphics();;
+    Graphics2D* g = newBufferedImage->createGraphics();;
     
 
     int32_t columnIndex = 0;;
@@ -125,18 +131,18 @@ this->logUtil.putF("Setting Image - " +commonLabels.WIDTH_LABEL +newBufferedImag
     int32_t index = 0;index < bufferedImageArray.size(); index++)
         {
 
-    int32_t x = imageUnifierProperties.getImageUnifierCell().getWidth().intValue() *columnIndex++;;
+    int32_t x = imageUnifierProperties->getImageUnifierCell()->getWidth()->intValue() *columnIndex++;;
     
 
-    int32_t y = imageUnifierProperties.getImageUnifierCell().getHeight().intValue() *rowIndex;;
+    int32_t y = imageUnifierProperties->getImageUnifierCell()->getHeight()->intValue() *rowIndex;;
     
-this->logUtil.putF("Adding Image: " +index +" x: " +x +" y: " +y, this, "getImage");
+this->logUtil->putF("Adding Image: " +index +" x: " +x +" y: " +y, this, "getImage");
     
-g.drawImage(bufferedImageArray[index], x, y, imageUnifierProperties.getImageUnifierCell().getWidth().intValue(), imageUnifierProperties.getImageUnifierCell().getHeight().intValue(), 
+g->drawImage(bufferedImageArray[index], x, y, imageUnifierProperties->getImageUnifierCell()->getWidth()->intValue(), imageUnifierProperties->getImageUnifierCell()->getHeight()->intValue(), 
                             nullptr);
     
 
-    int32_t totalColumnsMinusOne = (imageUnifierProperties.getColumns().intValue() -1);;
+    int32_t totalColumnsMinusOne = (imageUnifierProperties->getColumns()->intValue() -1);;
     
 
                         if(columnIndex > totalColumnsMinusOne)
@@ -151,7 +157,7 @@ columnIndex= 0;
                                 
 }
 
-g.dispose();
+g->dispose();
     
 
 

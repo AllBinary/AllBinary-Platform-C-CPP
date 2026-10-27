@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,16 +55,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Payment.h"
-#include "PaymentInterface.h"
+        #include "org/allbinary/business/user/commerce/money/payment/Payment.h"
+#include "org/allbinary/business/user/commerce/money/payment/PaymentInterface.h"
 
 class PaymentFactory
             : public Object
          {
 
-    public: static PaymentInterface getInstance(ServletRequest request){
+    public: static PaymentInterface* getInstance(ServletRequest* request){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
         try {
@@ -66,20 +72,20 @@ class PaymentFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return org::allbinary::business::user::commerce::money::payment::Payment(request);
+                        return dynamic_cast<PaymentInterface*>(new org::allbinary::business::user::commerce::money::payment::Payment(request));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().FACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->FACTORYERROR))
                         
                                     {
-                                    logUtil.put(commonStrings.EXCEPTION, "PaymentFactory", commonStrings.GET_INSTANCE, e);
+                                    logUtil->put(commonStrings->EXCEPTION, "PaymentFactory", commonStrings->GET_INSTANCE, &e);
     
 
                                     }

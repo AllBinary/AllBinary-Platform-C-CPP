@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -35,7 +41,7 @@ public: EGLConfig(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

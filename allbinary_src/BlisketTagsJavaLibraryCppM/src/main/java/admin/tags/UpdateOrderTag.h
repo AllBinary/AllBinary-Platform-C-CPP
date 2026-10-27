@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGS_UPDATEORDERTAG_H
         #define ADMIN_TAGS_UPDATEORDERTAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <admin/taghelpers/UpdateOrderHelperFactory.h>
 
       
@@ -42,7 +48,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TableTag.h"
+        #include "admin/tags/TableTag.h"
 
 class UpdateOrderTag: public TableTag {
 

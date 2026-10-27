@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYVIEW_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,24 +79,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryInterface.h"
-#include "CategoryData.h"
+        #include "org/allbinary/business/category/CategoryInterface.h"
+#include "org/allbinary/business/category/CategoryData.h"
 
 class CategoryView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: CategoryInterface categoryInterface;
+    private: CategoryInterface* categoryInterface;
 
-public: CategoryView(CategoryInterface categoryInterface);
+public: CategoryView(CategoryInterface* categoryInterface);
 
-    public: CategoryInterface getCategoryInterface();
+    public: CategoryInterface* getCategoryInterface();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

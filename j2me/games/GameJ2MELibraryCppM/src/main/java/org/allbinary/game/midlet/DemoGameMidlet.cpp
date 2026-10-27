@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/displayable/canvas/GameCanvasRunnableInterface.h>
@@ -65,13 +73,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameMidlet.h"
-#include "DemoRunnable.h"
-#include "CreateGameRunnable.h"
+        #include "org/allbinary/game/midlet/GameMidlet.h"
+#include "org/allbinary/game/midlet/DemoRunnable.h"
+#include "org/allbinary/game/midlet/CreateGameRunnable.h"
 
 class DemoGameMidlet: public GameMidlet {
 
-public: DemoGameMidlet(ClientInformationFactory clientInformationFactory) : GameMidlet(clientInformationFactory){
+public: DemoGameMidlet(ClientInformationFactory* clientInformationFactory) : GameMidlet(clientInformationFactory){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,12 +93,12 @@ public: DemoGameMidlet(ClientInformationFactory clientInformationFactory) : Game
             
     protected: bool isContinue(){
 
-    ABHashtable<Object*, Object*> hashtable = this->getStartStateHashtable();;
+    ABHashtable<Object*, Object*>* hashtable = this->getStartStateHashtable();;
     
 
                         if(hashtable != 
                                     nullptr
-                                 && hashtable.size() > 0)
+                                 && hashtable->size() > 0)
                         
                                     {
                                     
@@ -127,7 +135,7 @@ public: DemoGameMidlet(ClientInformationFactory clientInformationFactory) : Game
 
                 //@Throws(Exception.constructor)
             
-    public: GameCanvasRunnableInterface createDemoGameCanvasRunnableInterface(){
+    public: GameCanvasRunnableInterface* createDemoGameCanvasRunnableInterface(){
 this->logUtil.putF(this->commonStrings.NOT_IMPLEMENTED, this, this->commonStrings.CREATE);
     
 
@@ -141,18 +149,18 @@ this->logUtil.putF(this->commonStrings.NOT_IMPLEMENTED, this, this->commonString
 
                 //@Throws(Exception.constructor)
             
-    protected: GameCanvasRunnableInterface createGameCanvasRunnable(AllBinaryGameLayerManager allBinaryGameLayerManager){
+    protected: GameCanvasRunnableInterface* createGameCanvasRunnable(AllBinaryGameLayerManager* allBinaryGameLayerManager){
 
 
 
-                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw new Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: GameCanvasRunnableInterface createGameCanvasRunnableInterface(){
+    protected: GameCanvasRunnableInterface* createGameCanvasRunnableInterface(){
 
 
 
@@ -177,11 +185,11 @@ this->logUtil.putF(this->commonStrings.NOT_IMPLEMENTED, this, this->commonString
 this->logUtil.putF(this->commonStrings.START, this, "setDemo");
     
 
-    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
+    ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
     
-progressCanvas.start();
+progressCanvas->start();
     
-PrimaryThreadPool::getInstance().runTask(DemoRunnable(this));
+PrimaryThreadPool::getInstance()->runTask(new DemoRunnable(this));
     
 }
 
@@ -196,16 +204,16 @@ PrimaryThreadPool::getInstance().runTask(DemoRunnable(this));
 this->logUtil.putF(this->commonStrings.START, this, CREATE_GAME);
     
 
-    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
+    ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
     
-progressCanvas.start();
+progressCanvas->start();
     
 
-    ABHashtable<Object*, Object*> hashtable = this->getStartStateHashtable();;
+    ABHashtable<Object*, Object*>* hashtable = this->getStartStateHashtable();;
     
-this->setStartStateHashtable(StdUtil::getInstance().NULL_TABLE);
+this->setStartStateHashtable(StdUtil::getInstance()->NULL_TABLE);
     
-PrimaryThreadPool::getInstance().runTask(CreateGameRunnable(this, hashtable));
+PrimaryThreadPool::getInstance()->runTask(new CreateGameRunnable(this, hashtable));
     
 this->logUtil.putF(this->commonStrings.END, this, CREATE_GAME);
     

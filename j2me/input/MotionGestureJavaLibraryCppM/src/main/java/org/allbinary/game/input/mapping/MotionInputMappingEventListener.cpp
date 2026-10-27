@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,20 +70,20 @@
         
 class MotionInputMappingEventListener
             : public Object
-        : public InputMappingEventListenerInterface {
+        , public InputMappingEventListenerInterface {
 
-    public: void onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject* eventObject){
+ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void onInputMappingEvent(InputMappingEvent inputMappingEvent){
-GameKeyCompleteMotionGestureInputEventFactory::getInstance().updateAll();
+    public: void onInputMappingEvent(InputMappingEvent* inputMappingEvent){
+GameKeyCompleteMotionGestureInputEventFactory::getInstance()->updateAll();
     
-BasicTouchInputFactory::getInstance().updateAll(inputMappingEvent.getInputToGameKeyMapping());
+BasicTouchInputFactory::getInstance()->updateAll(inputMappingEvent->getInputToGameKeyMapping());
     
 }
 

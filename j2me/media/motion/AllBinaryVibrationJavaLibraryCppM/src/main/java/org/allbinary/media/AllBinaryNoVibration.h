@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_ALLBINARYNOVIBRATION_H
         #define ORG_ALLBINARY_MEDIA_ALLBINARYNOVIBRATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,11 +45,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryVibrationME.h"
+        #include "org/allbinary/media/AllBinaryVibrationME.h"
 
 class AllBinaryNoVibration: public AllBinaryVibrationME {
 
-    public: static AllBinaryVibrationME NO_VIBRATION = AllBinaryNoVibration();
+    public: static inline AllBinaryVibrationME* NO_VIBRATION = new AllBinaryNoVibration();
 
     public: void vibrate(int32_t duration, int32_t type, int32_t volume);
 

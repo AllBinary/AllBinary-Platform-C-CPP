@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LAYER_ALLBINARYLAYERFACTORY_H
         #define ORG_ALLBINARY_LAYER_ALLBINARYLAYERFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/Rectangle.h>
@@ -50,18 +56,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryLayerFactoryInterface.h"
-#include "AllBinaryLayer.h"
+        #include "org/allbinary/layer/AllBinaryLayerFactoryInterface.h"
+#include "org/allbinary/layer/AllBinaryLayer.h"
 
 class AllBinaryLayerFactory
             : public Object
-        : public AllBinaryLayerFactoryInterface {
+        , public AllBinaryLayerFactoryInterface {
 
-    private: Rectangle rectangle;
+    private: Rectangle* rectangle;
 
-public: AllBinaryLayerFactory(Rectangle rectangle);
+public: AllBinaryLayerFactory(Rectangle* rectangle);
 
-    public: AllBinaryLayer getInstance();
+    public: AllBinaryLayer* getInstance();
 
 };
 

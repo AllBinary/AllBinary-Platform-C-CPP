@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,11 +69,11 @@ class PathFindingNode
             : public Object
          {
 
-    public: Object* parent = NullUtil::getInstance().NULL_OBJECT;
+    public: Object* parent = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: GeographicMapCellPosition geographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    public: GeographicMapCellPosition* geographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-public: PathFindingNode(Object* parent, GeographicMapCellPosition geographicMapCellPosition){
+public: PathFindingNode(Object* parent, GeographicMapCellPosition* geographicMapCellPosition){
 this->parent= parent;
     
 this->setGeographicMapCellPositionP(geographicMapCellPosition);
@@ -79,7 +85,7 @@ this->setGeographicMapCellPositionP(geographicMapCellPosition);
                                     
 
 
-                            throw Exception("No GeographicMapCellPosition");
+                            throw new Exception("No GeographicMapCellPosition");
                     
 
                                     }
@@ -87,17 +93,17 @@ this->setGeographicMapCellPositionP(geographicMapCellPosition);
 }
 
 
-    public: PathFindingNode getParentP(){
+    public: PathFindingNode* getParentP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->parent;
+                        return dynamic_cast<PathFindingNode*>(this->parent);
     
 }
 
 
-    public: void setGeographicMapCellPositionP(GeographicMapCellPosition geographicMapCellPosition){
+    public: void setGeographicMapCellPositionP(GeographicMapCellPosition* geographicMapCellPosition){
 this->geographicMapCellPosition= geographicMapCellPosition;
     
 }
@@ -105,29 +111,29 @@ this->geographicMapCellPosition= geographicMapCellPosition;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->constructor.name.toString());
+stringBuffer->append(this->getClass()->getName());
     
-stringBuffer.append(CommonLabels::getInstance().COLON_SEP);
+stringBuffer->append(CommonLabels::getInstance()->COLON_SEP);
     
-stringBuffer.append(" Path: ");
+stringBuffer->append(" Path: ");
     
-stringBuffer.append(this->geographicMapCellPosition.toString());
+stringBuffer->append(this->geographicMapCellPosition->toString());
     
 
-    PathFindingNode pathFindingNode = this->getParentP();;
+    PathFindingNode* pathFindingNode = this->getParentP();;
     
 
         while(pathFindingNode != 
                                     nullptr
                                 )
         {
-stringBuffer.append(pathFindingNode.geographicMapCellPosition.toString());
+stringBuffer->append(pathFindingNode->geographicMapCellPosition->toString());
     
-stringBuffer.append(CommonSeps::getInstance().SPACE);
+stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-pathFindingNode= pathFindingNode.getParentP();
+pathFindingNode= pathFindingNode->getParentP();
     
 }
 
@@ -135,7 +141,7 @@ pathFindingNode= pathFindingNode.getParentP();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_API1_GAMEINPUTMOTIONEVENTPROCESSORAPI1_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_API1_GAMEINPUTMOTIONEVENTPROCESSORAPI1_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <android/view/MotionEvent.h>
@@ -62,17 +70,17 @@
         
 class GameInputMotionEventProcessorAPI1: public BaseGameInputMotionEventProcessor {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static GameInputMotionEventProcessorAPI1 getInstance();
+    public: static GameInputMotionEventProcessorAPI1* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const MotionRecognizer motionRecognizer = AllMotionRecognizer();
+    private: MotionRecognizer* motionRecognizer = new AllMotionRecognizer();
 
 private: GameInputMotionEventProcessorAPI1();
 
-    public: void process(MotionEvent motionEvent);
+    public: void process(MotionEvent* motionEvent);
 
 };
 

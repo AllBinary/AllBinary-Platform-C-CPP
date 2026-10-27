@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -99,15 +105,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameInitializationInterface.h"
+        #include "org/allbinary/game/init/GameInitializationInterface.h"
 
 class BaseGameInitialization
             : public Object
-        : public GameInitializationInterface {
+        , public GameInitializationInterface {
 
-    public: static const BaseGameInitialization NULL_BASE_GAME_INITIALIZATION = BaseGameInitialization({}, 0);
+    public: static BaseGameInitialization* NULL_BASE_GAME_INITIALIZATION() { static std::unique_ptr<BaseGameInitialization> value(new BaseGameInitialization({}, 0)); return value.get(); }
 
-    protected: std::vector<ResourceInitialization> resourceInitializationArray;
+    protected: std::vector<ResourceInitialization*> resourceInitializationArray;
 
     private: int32_t portion;
 
@@ -121,7 +127,7 @@ class BaseGameInitialization
 
     protected: const int32_t GAME_CHANGABLE_RESOURCES = 3;
 
-public: BaseGameInitialization(std::vector<ResourceInitialization> resourceInitializationArray, int32_t portion);
+public: BaseGameInitialization(std::vector<ResourceInitialization*> resourceInitializationArray, int32_t portion);
 
                 //@Throws(Exception.constructor)
             
@@ -129,11 +135,11 @@ public: BaseGameInitialization(std::vector<ResourceInitialization> resourceIniti
 
                 //@Throws(Exception.constructor)
             
-    protected: void initKeyMapping(AbeClientInformationInterface abeClientInformation, int32_t portion);
+    protected: void initKeyMapping(AbeClientInformationInterface* abeClientInformation, int32_t portion);
 
                 //@Throws(Exception.constructor)
             
-    public: void init(AbeClientInformationInterface abeClientInformation, CommandListener commandListener, int32_t level);
+    public: void init(AbeClientInformationInterface* abeClientInformation, CommandListener* commandListener, int32_t level);
 
     private: bool gameInitialized= false;
 

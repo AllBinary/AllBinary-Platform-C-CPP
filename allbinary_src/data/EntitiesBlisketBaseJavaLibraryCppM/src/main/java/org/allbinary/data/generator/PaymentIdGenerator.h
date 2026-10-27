@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_GENERATOR_PAYMENTIDGENERATOR_H
         #define ORG_ALLBINARY_DATA_GENERATOR_PAYMENTIDGENERATOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/globals/PATH_GLOBALS.h>
@@ -50,7 +56,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UniqueIdGenerator.h"
+        #include "org/allbinary/data/generator/UniqueIdGenerator.h"
 
 class PaymentIdGenerator: public UniqueIdGenerator {
 

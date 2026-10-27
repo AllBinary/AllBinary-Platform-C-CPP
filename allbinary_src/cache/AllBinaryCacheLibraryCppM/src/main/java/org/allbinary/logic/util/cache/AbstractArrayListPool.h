@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,21 +60,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PoolInterface.h"
-#include "CacheableInterfaceFactoryInterface.h"
-#include "CacheableInterface.h"
+        #include "org/allbinary/logic/util/cache/PoolInterface.h"
+#include "org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h"
+#include "org/allbinary/logic/util/cache/CacheableInterface.h"
 
 class AbstractArrayListPool
             : public Object
-        : public PoolInterface {
+        , public PoolInterface {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: BasicArrayList buffers = BasicArrayListD();
+    protected: BasicArrayList* buffers = new BasicArrayListD();
 
-    protected: CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface;
+    protected: CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface;
 
-public: AbstractArrayListPool(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface);
+public: AbstractArrayListPool(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
@@ -76,15 +82,15 @@ public: AbstractArrayListPool(CacheableInterfaceFactoryInterface cacheableInterf
 
                 //@Throws(Exception.constructor)
             
-    public: CacheableInterface remove(Object* key);
+    public: CacheableInterface* remove(Object* key);
 
                 //@Throws(Exception.constructor)
             
-    public: void add(CacheableInterface cacheableInterface);
+    public: void add(CacheableInterface* cacheableInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void addArray(std::vector<CacheableInterface> cacheableInterfaces);
+    public: void addArray(std::vector<CacheableInterface*> cacheableInterfaces);
 
 };
 

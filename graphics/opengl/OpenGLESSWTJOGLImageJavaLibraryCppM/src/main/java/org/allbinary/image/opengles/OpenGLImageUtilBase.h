@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGEUTILBASE_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGEUTILBASE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -62,17 +68,17 @@ class OpenGLImageUtilBase
             : public Object
          {
 
-    public: OpenGLBitmap paint(OpenGLBitmap alphaBitmap, OpenGLBitmap originalBitmap, int32_t index);
+    public: OpenGLBitmap* paint(OpenGLBitmap* alphaBitmap, OpenGLBitmap* originalBitmap, int32_t index);
 
-    public: OpenGLBitmap paint(OpenGLBitmap colorBitmap, OpenGLBitmap originalBitmap, int32_t alpha, BasicColor basicColor);
+    public: OpenGLBitmap* paint(OpenGLBitmap* colorBitmap, OpenGLBitmap* originalBitmap, int32_t alpha, BasicColor* basicColor);
 
                 //@Throws(IOException.constructor)
             
-    public: OpenGLBitmap createImage(std::string name);
+    public: OpenGLBitmap* createImage(std::string name);
 
                 //@Throws(Exception.constructor)
             
-    public: OpenGLBitmap createImageFromInputStream(InputStream inputStream);
+    public: OpenGLBitmap* createImageFromInputStream(InputStream* inputStream);
 
 };
 

@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -100,55 +108,55 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RequestParams.h"
-#include "NameSpaceRequestParamData.h"
-#include "NameSpaceRequestParam.h"
+        #include "org/allbinary/logic/communication/http/request/RequestParams.h"
+#include "org/allbinary/logic/communication/http/request/NameSpaceRequestParamData.h"
+#include "org/allbinary/logic/communication/http/request/NameSpaceRequestParam.h"
 //containing string values and other hashmaps of the like
 class NameSpaceRequestParams: public RequestParams {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: NameSpaceRequestParams();
 
-public: NameSpaceRequestParams(HttpServletRequest httpServletRequest);
+public: NameSpaceRequestParams(HttpServletRequest* httpServletRequest);
 
-public: NameSpaceRequestParams(PageContext pageContext);
-
-                //@Throws(Exception.constructor)
-            
-    private: Node createPackageNode(Document document, std::string packageName, HashMap<Object*, Object*> packagePropertiesHashMap);
+public: NameSpaceRequestParams(PageContext* pageContext);
 
                 //@Throws(Exception.constructor)
             
-    private: Node createPackageMultiNode(Document document, NameSpaceRequestParam nameSpaceRequestParam, std::string packageName, HashMap<Object*, Object*> packagePropertiesHashMap);
+    private: Node* createPackageNode(Document* document, std::string packageName, HashMap<Object*, Object*>* packagePropertiesHashMap);
 
                 //@Throws(Exception.constructor)
             
-    private: Node getRootNode(std::string rootElementPackage, HashMap<Object*, Object*> packagePropertiesHashMap, Document document);
+    private: Node* createPackageMultiNode(Document* document, NameSpaceRequestParam* nameSpaceRequestParam, std::string packageName, HashMap<Object*, Object*>* packagePropertiesHashMap);
 
                 //@Throws(Exception.constructor)
             
-    private: Node addNewProperties(Document document, Node node, HashMap<Object*, Object*> nextPackagePropertiesHashMap);
+    private: Node* getRootNode(std::string rootElementPackage, HashMap<Object*, Object*>* packagePropertiesHashMap, Document* document);
 
                 //@Throws(Exception.constructor)
             
-    private: bool isElementValueTextNodeEqual(HashMap<Object*, Object*> nextPackagePropertiesHashMap, Node node);
+    private: Node* addNewProperties(Document* document, Node* node, HashMap<Object*, Object*>* nextPackagePropertiesHashMap);
 
                 //@Throws(Exception.constructor)
             
-    private: int32_t isElementValueTextNodeUnique(HashMap<Object*, Object*> nextPackagePropertiesHashMap, BasicArrayList elementNodeVector);
+    private: bool isElementValueTextNodeEqual(HashMap<Object*, Object*>* nextPackagePropertiesHashMap, Node* node);
 
                 //@Throws(Exception.constructor)
             
-    private: Document addChildren(Document document, Node rootNode, NameSpaceRequestParam nameSpaceRequestParam);
+    private: int32_t isElementValueTextNodeUnique(HashMap<Object*, Object*>* nextPackagePropertiesHashMap, BasicArrayList* elementNodeVector);
 
                 //@Throws(Exception.constructor)
             
-    private: Document addNameSpace(std::string key, std::string value, Document document);
+    private: Document* addChildren(Document* document, Node* rootNode, NameSpaceRequestParam* nameSpaceRequestParam);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> toHashMap();
+    private: Document* addNameSpace(std::string key, std::string value, Document* document);
+
+                //@Throws(Exception.constructor)
+            
+    public: HashMap<Object*, Object*>* toHashMap();
 
 };
 

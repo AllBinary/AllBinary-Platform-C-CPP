@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,15 +70,15 @@ class SmallIntegerSingletonFactory
             : public Object
          {
 
-    private: static SmallIntegerSingletonFactory instance() { return SmallIntegerSingletonFactory(); }
+    private: static SmallIntegerSingletonFactory* instance() { static std::unique_ptr<SmallIntegerSingletonFactory> value(new SmallIntegerSingletonFactory()); return value.get(); }
 
-    public: static SmallIntegerSingletonFactory getInstance();
+    public: static SmallIntegerSingletonFactory* getInstance();
 
     public: const int32_t NEGATIVE_MAX = 500;
 
     public: const int32_t POSITIVE_MAX = 0x2D1;
 
-    private: const std::vector<Integer> INTEGER_ARRAY = std::vector<Integer>(this->NEGATIVE_MAX +this->POSITIVE_MAX);
+    private: const std::vector<int32_t> INTEGER_ARRAY = std::vector<int32_t>(this->NEGATIVE_MAX +this->POSITIVE_MAX);
 
     private: const std::vector<std::string> STRING_ARRAY = std::vector<std::string>(this->NEGATIVE_MAX +this->POSITIVE_MAX);
 
@@ -92,11 +98,11 @@ class SmallIntegerSingletonFactory
 
 private: SmallIntegerSingletonFactory();
 
-    public: Integer getAt(int32_t index);
+    public: int32_t getAt(int32_t index);
 
-    public: Integer getAtNoThrow(int32_t index);
+    public: int32_t getAtNoThrow(int32_t index);
 
-    public: Integer createInstance(int32_t index);
+    public: int32_t createInstance(int32_t index);
 
     public: std::string getString(int32_t index);
 

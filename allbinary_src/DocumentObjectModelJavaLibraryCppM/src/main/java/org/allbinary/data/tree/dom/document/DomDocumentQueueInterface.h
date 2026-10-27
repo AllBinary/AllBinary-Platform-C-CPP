@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOMDOCUMENTQUEUEINTERFACE_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOMDOCUMENTQUEUEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/document/mapping/DomDocumentMappingInterface.h>
@@ -49,11 +55,11 @@ class DomDocumentQueueInterface {
 
                 //@Throws(Exception.constructor)
             
-    bool offer(DomDocumentMappingInterface domDocumentMappingInterface);
+    public: virtual bool offer(DomDocumentMappingInterface* domDocumentMappingInterface) = 0;
 
                 //@Throws(Exception.constructor)
             
-    DomDocumentMappingInterface remove();
+    public: virtual DomDocumentMappingInterface* remove() = 0;
 
 };
 

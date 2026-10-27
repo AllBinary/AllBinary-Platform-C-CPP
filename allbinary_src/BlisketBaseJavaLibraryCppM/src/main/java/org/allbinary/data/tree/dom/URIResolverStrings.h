@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_URIRESOLVERSTRINGS_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_URIRESOLVERSTRINGS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class URIResolverStrings
             : public Object
          {
 
-    private: static URIResolverStrings instance() { return URIResolverStrings(); }
+    private: static URIResolverStrings* instance() { static std::unique_ptr<URIResolverStrings> value(new URIResolverStrings()); return value.get(); }
 
-    public: static URIResolverStrings getInstance();
+    public: static URIResolverStrings* getInstance();
 
     public: const std::string IMPORT_URL = "/{import url}";
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/CommandListener.h>
@@ -91,15 +97,15 @@
         
 class CombatGameCanvas: public AllBinaryGameCanvas {
 
-    protected: static std::vector<BasicLayerProcessor> basicLayerProcessor = {};
+    protected: static inline std::vector<BasicLayerProcessor*> basicLayerProcessor = {};
 
-public: CombatGameCanvas(CommandListener cmdListener, AllBinaryGameLayerManager gameLayerManager, HighScoresFactoryInterface highScoresFactoryInterface, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface, bool buffered);
+public: CombatGameCanvas(CommandListener* cmdListener, AllBinaryGameLayerManager* gameLayerManager, HighScoresFactoryInterface* highScoresFactoryInterface, BasicBuildGameInitializerFactory* gameInitializationInterfaceFactoryInterface, bool buffered);
 
     private: void CombatGameCanvas_init();
 
                 //@Throws(Exception.constructor)
             
-    protected: void initApp(AbeClientInformationInterface abeClientInformation);
+    protected: void initApp(AbeClientInformationInterface* abeClientInformation);
 
     protected: void initConfigurablePortion(int32_t portion);
 

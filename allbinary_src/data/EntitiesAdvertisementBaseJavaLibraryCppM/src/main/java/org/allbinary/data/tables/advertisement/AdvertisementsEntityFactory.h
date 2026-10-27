@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_ADVERTISEMENTSENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_ADVERTISEMENTSENTITYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,16 +55,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdvertisementsEntity.h"
-#include "AdvertisementsEntityInterface.h"
+        #include "org/allbinary/data/tables/advertisement/AdvertisementsEntity.h"
+#include "org/allbinary/data/tables/advertisement/AdvertisementsEntityInterface.h"
 
 class AdvertisementsEntityFactory
             : public Object
          {
 
-    private: static const std::string CLASSNAME = "org.allbinary.data.tables.AdvertisementEntity";
+    private: static inline const std::string CLASSNAME = "org.allbinary.data.tables.AdvertisementEntity";
 
-    public: static AdvertisementsEntityInterface getInstance();
+    public: static AdvertisementsEntityInterface* getInstance();
 
 private: AdvertisementsEntityFactory();
 

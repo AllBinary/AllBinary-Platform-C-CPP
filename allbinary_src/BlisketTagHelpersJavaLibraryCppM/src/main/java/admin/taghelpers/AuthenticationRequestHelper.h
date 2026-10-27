@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -103,31 +111,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TagHelper.h"
+        #include "admin/taghelpers/TagHelper.h"
 
 class AuthenticationRequestHelper: public TagHelper {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: WeblisketSession weblisketSession;
+    private: WeblisketSession* weblisketSession;
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
-public: AuthenticationRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: AuthenticationRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
-public: AuthenticationRequestHelper(HashMap<Object*, Object*> hashMap, HttpServletRequest httpServletRequest);
+public: AuthenticationRequestHelper(HashMap<Object*, Object*>* hashMap, HttpServletRequest* httpServletRequest);
 
                 //@Throws(Exception.constructor)
             
     private: std::string generateNewPassword();
 
-    public: Boolean newPassword();
+    public: bool newPassword();
 
-    public: Boolean changePassword();
+    public: bool changePassword();
 
-    public: Boolean isRoleValid(std::string userName, std::string password, BasicArrayList roles);
+    public: bool isRoleValid(std::string userName, std::string password, BasicArrayList* roles);
 
 };
 

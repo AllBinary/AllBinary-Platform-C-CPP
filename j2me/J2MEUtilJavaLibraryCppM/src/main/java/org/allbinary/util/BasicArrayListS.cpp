@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/IllegalArgumentException.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -50,11 +58,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicArrayList.h"
+        #include "org/allbinary/util/BasicArrayList.h"
 
 class BasicArrayListS: public BasicArrayList {
 
-public: BasicArrayListS(int32_t size) : BasicArrayList(NullUtil::getInstance().NULL_OBJECT_ARRAY){
+public: BasicArrayListS(int32_t size) : BasicArrayList(NullUtil::getInstance()->NULL_OBJECT_ARRAY){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -68,7 +76,7 @@ public: BasicArrayListS(int32_t size) : BasicArrayList(NullUtil::getInstance().N
                                     
 
 
-                            throw IllegalArgumentException(StringMaker().append("Init Size Exception: ").appendint(size).toString());
+                            throw new IllegalArgumentException((new StringMaker())->append("Init Size Exception: ")->appendint(size)->toString());
                     
 
                                     }

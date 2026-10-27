@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_GENERATOR_TRANSFORMGENERATORUTIL_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_GENERATOR_TRANSFORMGENERATORUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -75,21 +81,21 @@ class TransformGeneratorUtil
             : public Object
          {
 
-    private: static TransformGeneratorUtil instance() { return TransformGeneratorUtil(); }
+    private: static TransformGeneratorUtil* instance() { static std::unique_ptr<TransformGeneratorUtil> value(new TransformGeneratorUtil()); return value.get(); }
 
-    public: static TransformGeneratorUtil getInstance();
+    public: static TransformGeneratorUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: TransformGeneratorUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: void generate(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, TransformInfoInterface ownerTransformInfoInterface);
+    public: void generate(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface, TransformInfoInterface* ownerTransformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void generate(AbeClientInformationInterface abeClientInformation, TransformInfoDomNode transformInfoDomNode, TransformInfoInterface ownerTransformInfoInterface);
+    public: void generate(AbeClientInformationInterface* abeClientInformation, TransformInfoDomNode* transformInfoDomNode, TransformInfoInterface* ownerTransformInfoInterface);
 
 };
 

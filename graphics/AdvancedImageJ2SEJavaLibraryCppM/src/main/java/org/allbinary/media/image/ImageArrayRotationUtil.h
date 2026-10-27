@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -57,27 +63,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageJ2SERotationUtil.h"
-#include "ImageProcessorInput.h"
-#include "ImageProcessedVisitor.h"
+        #include "org/allbinary/media/image/ImageJ2SERotationUtil.h"
+#include "org/allbinary/media/image/ImageProcessorInput.h"
+#include "org/allbinary/media/image/ImageProcessedVisitor.h"
 
 class ImageArrayRotationUtil
             : public Object
          {
 
-    private: static ImageArrayRotationUtil instance() { return ImageArrayRotationUtil(); }
+    private: static ImageArrayRotationUtil* instance() { static std::unique_ptr<ImageArrayRotationUtil> value(new ImageArrayRotationUtil()); return value.get(); }
 
-    public: static ImageArrayRotationUtil getInstance();
+    public: static ImageArrayRotationUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: const std::string TOTAL_ANGLE = "totalAngle: ";
 
                 //@Throws(IOException.constructor)
             
-    public: void process(ImageProcessorInput imageProcessorInput, std::string input, ImageProcessedVisitor visitor);
+    public: void process(ImageProcessorInput* imageProcessorInput, std::string input, ImageProcessedVisitor* visitor);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -47,15 +53,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Direction.h"
+        #include "org/allbinary/direction/Direction.h"
 
 class DirectionFactory
             : public Object
          {
 
-    private: static DirectionFactory instance() { return DirectionFactory(); }
+    private: static DirectionFactory* instance() { static std::unique_ptr<DirectionFactory> value(new DirectionFactory()); return value.get(); }
 
-    public: static DirectionFactory getInstance(){
+    public: static DirectionFactory* getInstance(){
 
 
 
@@ -67,52 +73,52 @@ class DirectionFactory
 
     public: const std::string NAME = "DIRECTION";
 
-    public: const Direction LEFT = Direction(CommonPhoneStrings::getInstance().LEFT, "WEST", 0, 1);
+    public: Direction* LEFT = new Direction(CommonPhoneStrings::getInstance()->LEFT, "WEST", 0, 1);
 
-    public: const Direction RIGHT = Direction(CommonPhoneStrings::getInstance().RIGHT, "EAST", 1, 0);
+    public: Direction* RIGHT = new Direction(CommonPhoneStrings::getInstance()->RIGHT, "EAST", 1, 0);
 
-    public: const Direction DOWN = Direction(CommonPhoneStrings::getInstance().DOWN, "SOUTH", 2, 0);
+    public: Direction* DOWN = new Direction(CommonPhoneStrings::getInstance()->DOWN, "SOUTH", 2, 0);
 
-    public: const Direction UP = Direction(CommonPhoneStrings::getInstance().UP, "NORTH", 3, 0);
+    public: Direction* UP = new Direction(CommonPhoneStrings::getInstance()->UP, "NORTH", 3, 0);
 
-    public: Direction UP_LEFT;
+    public: Direction* UP_LEFT;
 
-    public: Direction UP_RIGHT;
+    public: Direction* UP_RIGHT;
 
-    public: Direction DOWN_LEFT;
+    public: Direction* DOWN_LEFT;
 
-    public: Direction DOWN_RIGHT;
+    public: Direction* DOWN_RIGHT;
 
-    public: const Direction NOT_BORDERED_WITH = Direction("NOT_BORDERED_WITH", "NOT_BORDERED_WITH", 8, 0);
+    public: Direction* NOT_BORDERED_WITH = new Direction("NOT_BORDERED_WITH", "NOT_BORDERED_WITH", 8, 0);
 
-    public: const Direction NO_DIRECTION = Direction("NO_DIRECTION", "NO_DIRECTION", 9, 0);
+    public: Direction* NO_DIRECTION = new Direction("NO_DIRECTION", "NO_DIRECTION", 9, 0);
 
-    public: const Direction TOP = Direction("TOP", "TOP", 10, 0);
+    public: Direction* TOP = new Direction("TOP", "TOP", 10, 0);
 
-    public: const Direction BOTTOM = Direction("BOTTOM", "BOTTOM", 11, 0);
+    public: Direction* BOTTOM = new Direction("BOTTOM", "BOTTOM", 11, 0);
 
-    public: const Direction ALL_DIRECTION = Direction("ALL_DIRECTION", "ALL_DIRECTION", 12, 0);
+    public: Direction* ALL_DIRECTION = new Direction("ALL_DIRECTION", "ALL_DIRECTION", 12, 0);
 
 private: DirectionFactory(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
-this->UP_LEFT= Direction("UP LEFT", stringBuffer.append(this->UP.getOtherName()).append(commonSeps.SPACE).append(this->LEFT.getOtherName()).toString(), 4, 0);
+this->UP_LEFT= new Direction("UP LEFT", stringBuffer->append(this->UP->getOtherName())->append(commonSeps->SPACE)->append(this->LEFT->getOtherName())->toString(), 4, 0);
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-this->UP_RIGHT= Direction("UP RIGHT", stringBuffer.append(this->UP.getOtherName()).append(commonSeps.SPACE).append(this->RIGHT.getOtherName()).toString(), 5, 0);
+this->UP_RIGHT= new Direction("UP RIGHT", stringBuffer->append(this->UP->getOtherName())->append(commonSeps->SPACE)->append(this->RIGHT->getOtherName())->toString(), 5, 0);
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-this->DOWN_LEFT= Direction("DOWN LEFT", stringBuffer.append(this->DOWN.getOtherName()).append(commonSeps.SPACE).append(this->LEFT.getOtherName()).toString(), 6, 0);
+this->DOWN_LEFT= new Direction("DOWN LEFT", stringBuffer->append(this->DOWN->getOtherName())->append(commonSeps->SPACE)->append(this->LEFT->getOtherName())->toString(), 6, 0);
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-this->DOWN_RIGHT= Direction("DOWN RIGHT", stringBuffer.append(this->DOWN.getOtherName()).append(commonSeps.SPACE).append(this->RIGHT.getOtherName()).toString(), 7, 0);
+this->DOWN_RIGHT= new Direction("DOWN RIGHT", stringBuffer->append(this->DOWN->getOtherName())->append(commonSeps->SPACE)->append(this->RIGHT->getOtherName())->toString(), 7, 0);
     
 }
 

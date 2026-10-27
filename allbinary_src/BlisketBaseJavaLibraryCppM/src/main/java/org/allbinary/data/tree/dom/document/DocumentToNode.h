@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOCUMENTTONODE_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOCUMENTTONODE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,17 +60,17 @@ class DocumentToNode
             : public Object
          {
 
-    private: static const std::string XMLROOT = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+    private: static inline const std::string XMLROOT = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 
-    private: static const std::string XMLROOTSTART = "<?xml";
+    private: static inline const std::string XMLROOTSTART = "<?xml";
 
-    private: static const std::string XMLROOTEND = "?>";
+    private: static inline const std::string XMLROOTEND = "?>";
 
-    private: static const std::string XMLJSPROOTSTART = "<jsp:root";
+    private: static inline const std::string XMLJSPROOTSTART = "<jsp:root";
 
-    private: static const std::string XMLEND = ">";
+    private: static inline const std::string XMLEND = ">";
 
-    private: static const std::string XMLJSPROOTENDSTART = "</jsp:root";
+    private: static inline const std::string XMLJSPROOTENDSTART = "</jsp:root";
 
                 //@Throws(Exception.constructor)
             

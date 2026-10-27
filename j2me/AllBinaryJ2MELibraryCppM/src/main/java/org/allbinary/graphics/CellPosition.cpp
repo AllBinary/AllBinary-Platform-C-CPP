@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graph/V.h>
 
       
@@ -48,38 +54,38 @@
         
 class CellPosition: public V {
 
-    public: static std::string toStringCellPosition(CellPosition basicGeographicMapCellPosition){
+    public: static std::string toStringCellPosition(CellPosition* basicGeographicMapCellPosition){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CellPosition::toStringColRow(basicGeographicMapCellPosition.getColumn(), basicGeographicMapCellPosition.getRow());;
+                        return CellPosition::toStringColRow(basicGeographicMapCellPosition->getColumn(), basicGeographicMapCellPosition->getRow());;
     
 }
 
 
     public: static std::string toStringColRow(int32_t i_column, int32_t i_row){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
-stringBuffer.append(commonSeps.PARENTHESIS_OPEN);
+stringBuffer->append(commonSeps->PARENTHESIS_OPEN);
     
-stringBuffer.appendint(i_column);
+stringBuffer->appendint(i_column);
     
-stringBuffer.append(commonSeps.COMMA);
+stringBuffer->append(commonSeps->COMMA);
     
-stringBuffer.appendint(i_row);
+stringBuffer->appendint(i_row);
     
-stringBuffer.append(commonSeps.PARENTHESIS_CLOSE);
+stringBuffer->append(commonSeps->PARENTHESIS_CLOSE);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

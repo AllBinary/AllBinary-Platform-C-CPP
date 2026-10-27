@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_DISPLAY_BROWSER_DISPLAYINBROWSERCONTRAINTS_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_DISPLAY_BROWSER_DISPLAYINBROWSERCONTRAINTS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/w3c/dom/Node.h>
@@ -44,11 +50,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DisplayInBrowserContraintsInterface.h"
+        #include "org/allbinary/logic/control/contraints/display/browser/DisplayInBrowserContraintsInterface.h"
 
 class DisplayInBrowserContraints
             : public Object
-        : public DisplayInBrowserContraintsInterface {
+        , public DisplayInBrowserContraintsInterface {
 
     private: bool frameable= false;
 
@@ -58,7 +64,7 @@ class DisplayInBrowserContraints
 
     private: std::string mountedLink;
 
-public: DisplayInBrowserContraints(Node node);
+public: DisplayInBrowserContraints(Node* node);
 
     public: bool isMountable();
 

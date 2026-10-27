@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -83,17 +89,17 @@ class InstallerInfo
             : public Object
          {
 
-    private: static InstallerInfo instance() { return InstallerInfo(); }
+    private: static InstallerInfo* instance() { static std::unique_ptr<InstallerInfo> value(new InstallerInfo()); return value.get(); }
 
-    private: static const std::string INITFILENAME = "installerdata.dat";
+    private: static inline const std::string INITFILENAME = "installerdata.dat";
 
-    private: static const std::string PACKAGE = PATH_GLOBALS::getInstance().INIT_PATH;
+    private: static inline const std::string PACKAGE = PATH_GLOBALS::getInstance()->INIT_PATH;
 
-    private: static std::string userName = StringUtil::getInstance().EMPTY_STRING;
+    private: static inline std::string userName = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: static std::string password = StringUtil::getInstance().EMPTY_STRING;
+    private: static inline std::string password = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: static bool hasRead = false;
+    private: static inline bool hasRead = false;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: static void setHasRead(bool value){
@@ -102,7 +108,7 @@ InstallerInfo::hasRead= value;
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: InstallerInfo(){
 }
@@ -113,39 +119,39 @@ public: InstallerInfo(){
 
     public: void write(){
 
-    AbPath FILEABPATH = AbPath(URLGLOBALS::getMainPath() +InstallerInfo::PACKAGE, InstallerInfo::INITFILENAME);;
+    AbPath* FILEABPATH = new AbPath(URLGLOBALS::getMainPath() +InstallerInfo::PACKAGE, InstallerInfo::INITFILENAME);;
     
 
         try {
             
-    AbFile newFile = AbFile::createAbFileFromAbPath(FILEABPATH);;
+    AbFile* newFile = AbFile::createAbFileFromAbPath(FILEABPATH);;
     
-newFile.createNewFile();
-    
-
-    AbDataOutputStream dataOutputStream = DataOutputStreamFactory::getInstance().getInstanceForAbFile(newFile);;
+newFile->createNewFile();
     
 
-    std::vector<int8_t> cryptedUserName = WeakCrypt(1).encrypt(this->getUserName()).getBytes();;
+    AbDataOutputStream* dataOutputStream = DataOutputStreamFactory::getInstance()->getInstanceForAbFile(newFile);;
     
 
-    std::vector<int8_t> cryptedPassword = WeakCrypt(2).encrypt(this->getPassword()).getBytes();;
+    std::vector<int8_t> cryptedUserName = (new WeakCrypt(1))->encrypt(this->getUserName())->getBytes();;
     
-dataOutputStream.writeUTF(DatabaseEncoder::encode(cryptedUserName));
+
+    std::vector<int8_t> cryptedPassword = (new WeakCrypt(2))->encrypt(this->getPassword())->getBytes();;
     
-dataOutputStream.writeUTF(DatabaseEncoder::encode(cryptedPassword));
+dataOutputStream->writeUTF(DatabaseEncoder::encode(cryptedUserName));
+    
+dataOutputStream->writeUTF(DatabaseEncoder::encode(cryptedPassword));
     
 InstallerInfo::hasRead= false;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRELOADERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRELOADERERROR))
                         
                                     {
-                                    this->logUtil.putF("Failed", this, "write");
+                                    this->logUtil->putF("Failed", this, "write");
     
 
                                     }
@@ -165,22 +171,22 @@ InstallerInfo::hasRead= false;
 
     private: void read(){
 
-    AbPath FILEABPATH = AbPath(URLGLOBALS::getMainPath() +InstallerInfo::PACKAGE, InstallerInfo::INITFILENAME);;
+    AbPath* FILEABPATH = new AbPath(URLGLOBALS::getMainPath() +InstallerInfo::PACKAGE, InstallerInfo::INITFILENAME);;
     
 
         try {
             
-    AbFile file = AbFile::createAbFileFromAbPath(FILEABPATH);;
+    AbFile* file = AbFile::createAbFileFromAbPath(FILEABPATH);;
     
 
-                        if(file.isFile())
+                        if(file->isFile())
                         
                                     {
                                     
-    AbFileLocalInputStream iFile = AbFileLocalInputStream(file);;
+    AbFileLocalInputStream* iFile = new AbFileLocalInputStream(file);;
     
 
-    AbDataInputStream iData = AbDataInputStream(iFile);;
+    AbDataInputStream* iData = new AbDataInputStream(iFile);;
     
 
     std::string decryptedUserName = decode.toCharArray();;
@@ -188,19 +194,19 @@ InstallerInfo::hasRead= false;
 
     std::string decryptedPassword = decode.toCharArray();;
     
-this->setUserName(WeakCrypt(1).decrypt(decryptedUserName));
+this->setUserName((new WeakCrypt(1))->decrypt(decryptedUserName));
     
-this->setPassword(WeakCrypt(2).decrypt(decryptedPassword));
+this->setPassword((new WeakCrypt(2))->decrypt(decryptedPassword));
     
 
                                     }
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRELOADER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRELOADER))
                         
                                     {
-                                    this->logUtil.putF("Not a File - Failed Loading: " +FILEABPATH::toString(), this, "read");
+                                    this->logUtil->putF("Not a File - Failed Loading: " +FILEABPATH->toString(), this, "read");
     
 
                                     }
@@ -210,13 +216,13 @@ this->setPassword(WeakCrypt(2).decrypt(decryptedPassword));
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRELOADERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRELOADERERROR))
                         
                                     {
-                                    this->logUtil.putF("Failed", this, "read");
+                                    this->logUtil->putF("Failed", this, "read");
     
 
                                     }
@@ -255,10 +261,10 @@ this->read();
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRELOADER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRELOADER))
                         
                                     {
-                                    this->logUtil.putF("Failed", this, "updateIfNeeded");
+                                    this->logUtil->putF("Failed", this, "updateIfNeeded");
     
 
                                     }

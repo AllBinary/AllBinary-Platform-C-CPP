@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSTORENOMANIPULATION_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSTORENOMANIPULATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -50,11 +56,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoHttpStore.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpStore.h"
 
 class TransformInfoHttpStoreNoManipulation: public TransformInfoHttpStore {
 
-public: TransformInfoHttpStoreNoManipulation(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
+public: TransformInfoHttpStoreNoManipulation(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext);
 
                 //@Throws(Exception.constructor)
             

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class EventStrings
             : public Object
          {
 
-    private: static EventStrings instance() { return EventStrings(); }
+    private: static EventStrings* instance() { static std::unique_ptr<EventStrings> value(new EventStrings()); return value.get(); }
 
-    public: static EventStrings getInstance(){
+    public: static EventStrings* getInstance(){
 
 
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -85,33 +91,33 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageBaseRotationAnimation.h"
-#include "AlphaBaseProcessor.h"
-#include "AlphaProcessor.h"
+        #include "org/allbinary/animation/image/ImageBaseRotationAnimation.h"
+#include "org/allbinary/animation/image/AlphaBaseProcessor.h"
+#include "org/allbinary/animation/image/AlphaProcessor.h"
 
 class AllBinaryHTMLImageRotationAnimation: public ImageBaseRotationAnimation {
 
-    private: const ImageRotationUtil imageRotationUtil = ImageRotationUtil::getInstance();
+    private: ImageRotationUtil* imageRotationUtil = ImageRotationUtil::getInstance();
 
-    private: const ImageModifierUtil imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
+    private: ImageModifierUtil* imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
 
-    private: Image originalImage;
+    private: Image* originalImage;
 
-    private: const std::vector<Image> twoImages = std::vector<Image>(2);
+    private: const std::vector<Image*> twoImages = std::vector<Image*>(2);
 
-    private: const std::vector<Canvas> canvasSurfaceArray = std::vector<Canvas>(2);
+    private: const std::vector<Canvas*> canvasSurfaceArray = std::vector<Canvas*>(2);
 
-    private: Image imageToShow;
+    private: Image* imageToShow;
 
     private: int32_t bufferedImageIndex= 0;
 
-    private: AlphaBaseProcessor alphaProcessor = AlphaBaseProcessor::getInstance();
+    private: AlphaBaseProcessor* alphaProcessor = AlphaBaseProcessor::getInstance();
 
-protected: AllBinaryHTMLImageRotationAnimation(Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior);
+protected: AllBinaryHTMLImageRotationAnimation(Image* originalImage, Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior);
 
-    public: Canvas getCanvasSurface(Image image);
+    public: Canvas* getCanvasSurface(Image* image);
 
-    public: void setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor* basicColor);
 
     public: void setAlpha(int32_t alpha);
 
@@ -125,7 +131,7 @@ protected: AllBinaryHTMLImageRotationAnimation(Image originalImage, Image image,
 
     public: void swap();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
 };
 

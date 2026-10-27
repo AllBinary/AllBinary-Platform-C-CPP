@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_AUDIO_AUDIOCONTENTTYPEDATAFACTORY_H
         #define ORG_ALLBINARY_AUDIO_AUDIOCONTENTTYPEDATAFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,27 +47,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AudioContentTypeData.h"
+        #include "org/allbinary/audio/AudioContentTypeData.h"
 
 class AudioContentTypeDataFactory
             : public Object
          {
 
-    private: static AudioContentTypeDataFactory instance() { return AudioContentTypeDataFactory(); }
+    private: static AudioContentTypeDataFactory* instance() { static std::unique_ptr<AudioContentTypeDataFactory> value(new AudioContentTypeDataFactory()); return value.get(); }
 
-    public: static AudioContentTypeDataFactory getInstance();
+    public: static AudioContentTypeDataFactory* getInstance();
 
-    public: const AudioContentTypeData MIME_AUDIO_TONE = AudioContentTypeData("audio/x-tone-seq");
+    public: AudioContentTypeData* MIME_AUDIO_TONE = new AudioContentTypeData("audio/x-tone-seq");
 
-    public: const AudioContentTypeData MIME_AUDIO_AMR = AudioContentTypeData("audio/amr");
+    public: AudioContentTypeData* MIME_AUDIO_AMR = new AudioContentTypeData("audio/amr");
 
-    public: const AudioContentTypeData MIME_AUDIO_AMR_WB = AudioContentTypeData("audio/amr-wb");
+    public: AudioContentTypeData* MIME_AUDIO_AMR_WB = new AudioContentTypeData("audio/amr-wb");
 
-    public: const AudioContentTypeData MIME_AUDIO_WAV = AudioContentTypeData("audio/x-wav");
+    public: AudioContentTypeData* MIME_AUDIO_WAV = new AudioContentTypeData("audio/x-wav");
 
-    public: const AudioContentTypeData MIME_AUDIO_MIDI = AudioContentTypeData("audio/midi");
+    public: AudioContentTypeData* MIME_AUDIO_MIDI = new AudioContentTypeData("audio/midi");
 
-    public: const AudioContentTypeData MIME_AUDIO_SP_MIDI = AudioContentTypeData("audio/sp-midi");
+    public: AudioContentTypeData* MIME_AUDIO_SP_MIDI = new AudioContentTypeData("audio/sp-midi");
 
 private: AudioContentTypeDataFactory();
 

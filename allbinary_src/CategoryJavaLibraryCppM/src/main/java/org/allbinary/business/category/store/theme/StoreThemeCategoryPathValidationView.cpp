@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/control/validate/ValidationInterface.h>
@@ -47,12 +53,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreThemeCategoryPathView.h"
-#include "StoreThemeCategoryInterface.h"
+        #include "org/allbinary/business/category/store/theme/StoreThemeCategoryPathView.h"
+#include "org/allbinary/business/category/store/theme/StoreThemeCategoryInterface.h"
 
 class StoreThemeCategoryPathValidationView: public StoreThemeCategoryPathView, public ValidationInterface {
 
-public: StoreThemeCategoryPathValidationView(StoreThemeCategoryInterface categoryInterface) : StoreThemeCategoryPathView(categoryInterface){
+public: StoreThemeCategoryPathValidationView(StoreThemeCategoryInterface* categoryInterface) : StoreThemeCategoryPathView(dynamic_cast<StoreThemeCategoryInterface*>(categoryInterface)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -64,7 +70,7 @@ public: StoreThemeCategoryPathValidationView(StoreThemeCategoryInterface categor
 
                 //@Throws(Exception.constructor)
             
-    public: Boolean isValid(){
+    public: bool isValid(){
 
 
 
@@ -76,7 +82,7 @@ public: StoreThemeCategoryPathValidationView(StoreThemeCategoryInterface categor
 
                 //@Throws(Exception.constructor)
             
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -88,7 +94,7 @@ public: StoreThemeCategoryPathValidationView(StoreThemeCategoryInterface categor
 
                 //@Throws(Exception.constructor)
             
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

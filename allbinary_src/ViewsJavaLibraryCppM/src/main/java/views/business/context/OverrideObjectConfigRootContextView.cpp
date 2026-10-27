@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
@@ -86,9 +92,9 @@
         
 class OverrideObjectConfigRootContextView: public HttpStoreComponentView {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: OverrideObjectConfigRootContextView(Object transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+public: OverrideObjectConfigRootContextView(Object* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -96,10 +102,10 @@ public: OverrideObjectConfigRootContextView(Object transformInfoInterface) : Htt
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("View Name: " +transformInfoInterface.getName(), this, "OverrideObjectRootContextView()");
+                                    this->logUtil->putF("View Name: " +transformInfoInterface->getName(), this, "OverrideObjectRootContextView()");
     
 
                                     }
@@ -113,41 +119,41 @@ public: OverrideObjectConfigRootContextView(Object transformInfoInterface) : Htt
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("View Name: " +this->getTransformInfoInterface().getName(), this, "view()");
+                                    this->logUtil->putF("View Name: " +this->getTransformInfoInterface()->getName(), this, "view()");
     
 
                                     }
                                 
 
-    TransformInfoInterface rootTransformInfoInterface = TransformInfoHttp(this->getTransformInfoInterface());;
+    TransformInfoInterface* rootTransformInfoInterface = dynamic_cast<TransformInfoInterface*>(new TransformInfoHttp(dynamic_cast<TransformInfoHttp*>(this->getTransformInfoInterface())));;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->getTransformInfoInterface().getStoreName());
+stringBuffer->append(this->getTransformInfoInterface()->getStoreName());
     
-stringBuffer.append(CommonSeps::getInstance().SPACE);
-    
-
-    std::string nameStart = stringBuffer.toString();;
+stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
 
-                        if(this->getTransformInfoInterface().getName().indexOf(GeneratorTransformInfoData::NAME) > 0)
+    std::string nameStart = stringBuffer->toString();;
+    
+
+                        if(this->getTransformInfoInterface()->getName().indexOf(GeneratorTransformInfoData::NAME) > 0)
                         
                                     {
-                                    rootTransformInfoInterface.setName(nameStart +GeneratorTransformInfoData::NAME);
+                                    rootTransformInfoInterface->setName(nameStart +GeneratorTransformInfoData::NAME);
     
 
                                     }
                                 
                              else 
-                        if(this->getTransformInfoInterface().getName().indexOf(RootTransformInfoData::NAME) > 0)
+                        if(this->getTransformInfoInterface()->getName().indexOf(RootTransformInfoData::NAME) > 0)
                         
                                     {
-                                    rootTransformInfoInterface.setName(nameStart +RootTransformInfoData::NAME);
+                                    rootTransformInfoInterface->setName(nameStart +RootTransformInfoData::NAME);
     
 
                                     }
@@ -156,45 +162,45 @@ stringBuffer.append(CommonSeps::getInstance().SPACE);
                             
 
 
-                            throw Exception("Override Currently Not Supported");
+                            throw new Exception("Override Currently Not Supported");
                     
 
                         }
                             
 
-    Document overrideObjectConfigDocument = this->getTransformInfoInterface().getObjectConfigInterface().toXmlDoc();;
+    Document* overrideObjectConfigDocument = this->getTransformInfoInterface()->getObjectConfigInterface()->toXmlDoc();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Retrieved OverrideObjectConfig: " +XmlDocumentHelper::toString(overrideObjectConfigDocument), this, "view()");
+                                    this->logUtil->putF("Retrieved OverrideObjectConfig: " +XmlDocumentHelper::toString(overrideObjectConfigDocument), this, "view()");
     
 
                                     }
                                 
 
-    TransformFactory transformFactory = TransformFactory::getInstance();;
+    TransformFactory* transformFactory = TransformFactory::getInstance();;
     
 
-    TransformInterface rootComponentInterface = transformFactory.getInstance(this->abeClientInformation, rootTransformInfoInterface.getName(), rootTransformInfoInterface);;
+    TransformInterface* rootComponentInterface = transformFactory->getInstance(this->abeClientInformation, rootTransformInfoInterface->getName(), rootTransformInfoInterface);;
     
 
-    TransformTemplateInterface transformTemplateInterface = rootComponentInterface;;
+    TransformTemplateInterface* transformTemplateInterface = dynamic_cast<TransformTemplateInterface*>(rootComponentInterface);;
     
 
-    TransformInterface componentInterface = transformFactory.getInstance(this->abeClientInformation, transformTemplateInterface.getName(), rootComponentInterface.getTransformInfoInterface());;
+    TransformInterface* componentInterface = transformFactory->getInstance(this->abeClientInformation, transformTemplateInterface->getName(), rootComponentInterface->getTransformInfoInterface());;
     
 
-    TransformInfoObjectConfigInterface transformInfoObjectConfigInterface = TransformInfoObjectConfigAndManipulatorFactory::getInstance().getInstance(this->abeClientInformation, componentInterface.getTransformInfoInterface(), overrideObjectConfigDocument);;
+    TransformInfoObjectConfigInterface* transformInfoObjectConfigInterface = TransformInfoObjectConfigAndManipulatorFactory::getInstance()->getInstance(this->abeClientInformation, componentInterface->getTransformInfoInterface(), overrideObjectConfigDocument);;
     
-componentInterface.getTransformInfoInterface().setObjectConfigInterface(transformInfoObjectConfigInterface);
+componentInterface->getTransformInfoInterface()->setObjectConfigInterface(transformInfoObjectConfigInterface);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Set OverrideObjectConfig: " +componentInterface.getTransformInfoInterface().getObjectConfigInterface().toString(), this, "view()");
+                                    this->logUtil->putF("Set OverrideObjectConfig: " +componentInterface->getTransformInfoInterface()->getObjectConfigInterface()->toString(), this, "view()");
     
 
                                     }
@@ -203,17 +209,17 @@ componentInterface.getTransformInfoInterface().setObjectConfigInterface(transfor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return componentInterface.view();;
+                        return componentInterface->view();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }

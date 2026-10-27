@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_LOGO_LOGOIMAGEFILEUTIL_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_LOGO_LOGOIMAGEFILEUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,17 +72,17 @@ class LogoImageFileUtil
             : public Object
          {
 
-    private: const Directory directory = Directory::getInstance();
+    private: Directory* directory = Directory::getInstance();
 
     private: std::string fileName;
 
-    private: AbPath imageFileAbPath;
+    private: AbPath* imageFileAbPath;
 
-public: LogoImageFileUtil(AbPath imageAbPath, std::string imageFile);
+public: LogoImageFileUtil(AbPath* imageAbPath, std::string imageFile);
 
                 //@Throws(Exception.constructor)
             
-    public: void saveFiles(FileItem fileItem);
+    public: void saveFiles(FileItem* fileItem);
 
 };
 

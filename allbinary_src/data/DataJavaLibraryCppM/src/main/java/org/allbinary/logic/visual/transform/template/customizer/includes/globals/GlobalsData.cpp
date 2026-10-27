@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,7 +49,7 @@ class GlobalsData
             : public Object
          {
 
-    public: static const std::string NAME = "GLOBALS_NAME";
+    public: static inline const std::string NAME = "GLOBALS_NAME";
 
 private: GlobalsData(){
 }

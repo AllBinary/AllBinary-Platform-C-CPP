@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGER_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -82,43 +88,43 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MusicStrings.h"
+        #include "org/allbinary/media/audio/music/MusicStrings.h"
 
 class MusicManager
             : public Object
          {
 
-    public: static void pause(Activity activity, Class* musicServiceClass);
+    public: static void pause(Activity* activity, Class* musicServiceClass);
 
-    public: static void resume(Activity activity, Class* musicServiceClass);
+    public: static void resume(Activity* activity, Class* musicServiceClass);
 
     private: const std::string PLAY = "Play ";
 
     private: const std::string FOR = " for: ";
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const MusicStrings musicStrings = MusicStrings::getInstance();
+    private: MusicStrings* musicStrings = MusicStrings::getInstance();
 
-    private: const CommonStateStrings commonStateStrings = CommonStateStrings::getInstance();
+    private: CommonStateStrings* commonStateStrings = CommonStateStrings::getInstance();
 
-    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
+    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    private: const ResourceUtil resourceUtil = ResourceUtil::getInstance();
+    private: ResourceUtil* resourceUtil = ResourceUtil::getInstance();
 
-    private: const AndroidServicesUtil androidServicesUtil = AndroidServicesUtil::getInstance();
+    private: AndroidServicesUtil* androidServicesUtil = AndroidServicesUtil::getInstance();
 
-    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
+    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(0);
+    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(0);
 
-    private: const TimeDelayHelper timeDelayHelper2 = TimeDelayHelper(1200);
+    private: TimeDelayHelper* timeDelayHelper2 = new TimeDelayHelper(1200);
 
-    private: BasicArrayList songList;
+    private: BasicArrayList* songList;
 
-    private: Sound currentSongSound = NoSound::getInstance();
+    private: Sound* currentSongSound = NoSound::getInstance();
 
-    private: Sound nextSongSound = NoSound::getInstance();
+    private: Sound* nextSongSound = NoSound::getInstance();
 
     private: int32_t leftVolume = 100;
 
@@ -126,11 +132,11 @@ class MusicManager
 
     private: Class* musicServiceClass;
 
-    private: Intent currentIntent;
+    private: Intent* currentIntent;
 
-public: MusicManager(Class* musicServiceClass, BasicArrayList songList);
+public: MusicManager(Class* musicServiceClass, BasicArrayList* songList);
 
-    public: void nextSong(Sound nextSongSound, int32_t leftVolume, int32_t rightVolume);
+    public: void nextSong(Sound* nextSongSound, int32_t leftVolume, int32_t rightVolume);
 
     public: void reset();
 

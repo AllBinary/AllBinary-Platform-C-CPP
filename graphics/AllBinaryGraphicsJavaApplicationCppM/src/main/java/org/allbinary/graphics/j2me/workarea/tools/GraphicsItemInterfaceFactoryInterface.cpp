@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graphics/j2me/workarea/canvas/CanvasJPanel.h>
 
       
@@ -39,11 +45,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GraphicItemInterface.h"
+        #include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h"
 
 class GraphicsItemInterfaceFactoryInterface {
 
-    GraphicItemInterface getInstance(CanvasJPanel canvasJPanel)
+    public: virtual GraphicItemInterface* getInstance(CanvasJPanel* canvasJPanel) = 0;
 
 };
 

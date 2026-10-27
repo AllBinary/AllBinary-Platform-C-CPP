@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_GROUP_GROUPDATA_H
         #define ORG_ALLBINARY_BUSINESS_USER_GROUP_GROUPDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,7 +52,7 @@ class GroupData
             : public Object
          {
 
-    public: static const std::string NAME = "GROUP_NAME";
+    public: static inline const std::string NAME = "GROUP_NAME";
 
 public: GroupData();
 

@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGS_CUSTOMITEMSTAG_H
         #define ADMIN_TAGS_CUSTOMITEMSTAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <admin/taghelpers/CustomItemsHelperFactory.h>
 
       
@@ -45,7 +51,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TableTag.h"
+        #include "admin/tags/TableTag.h"
 
 class CustomItemsTag: public TableTag {
 

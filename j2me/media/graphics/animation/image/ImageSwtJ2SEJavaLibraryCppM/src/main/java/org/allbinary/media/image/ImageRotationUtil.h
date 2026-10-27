@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,27 +73,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageSwtRotationUtil.h"
+        #include "org/allbinary/media/image/ImageSwtRotationUtil.h"
 
 class ImageRotationUtil
             : public Object
          {
 
-    private: static ImageRotationUtil instance() { return ImageRotationUtil(); }
+    private: static ImageRotationUtil* instance() { static std::unique_ptr<ImageRotationUtil> value(new ImageRotationUtil()); return value.get(); }
 
-    public: static ImageRotationUtil getInstance();
+    public: static ImageRotationUtil* getInstance();
 
-    private: const ImageSwtRotationUtil imageSwtRotationUtil = ImageSwtRotationUtil::getInstance();
+    private: ImageSwtRotationUtil* imageSwtRotationUtil = ImageSwtRotationUtil::getInstance();
 
 private: ImageRotationUtil();
 
-    private: const Features features = Features::getInstance();
+    private: Features* features = Features::getInstance();
 
-    public: void rotateImage(Image originalImage, Image image, int32_t totalAngle);
+    public: void rotateImage(Image* originalImage, Image* image, int32_t totalAngle);
 
                 //@Throws(Exception.constructor)
             
-    public: Image createRotatedImage(Image originalImage, int32_t rotationInDegrees);
+    public: Image* createRotatedImage(Image* originalImage, int32_t rotationInDegrees);
 
 };
 

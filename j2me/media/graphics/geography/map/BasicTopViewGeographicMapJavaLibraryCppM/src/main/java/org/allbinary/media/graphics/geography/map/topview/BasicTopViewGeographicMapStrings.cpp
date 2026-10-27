@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class BasicTopViewGeographicMapStrings
             : public Object
          {
 
-    private: static BasicTopViewGeographicMapStrings instance() { return BasicTopViewGeographicMapStrings(); }
+    private: static BasicTopViewGeographicMapStrings* instance() { static std::unique_ptr<BasicTopViewGeographicMapStrings> value(new BasicTopViewGeographicMapStrings()); return value.get(); }
 
-    public: static BasicTopViewGeographicMapStrings getInstance(){
+    public: static BasicTopViewGeographicMapStrings* getInstance(){
 
 
 

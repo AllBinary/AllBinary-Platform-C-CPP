@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -83,7 +89,7 @@ class Password
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string password;
 
@@ -109,33 +115,33 @@ this->password= value;
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
-    Boolean valid = Boolean::TRUE;;
+    bool valid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VALIDATION))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VALIDATION))
                         
                                     {
-                                    this->logUtil.putF("Password: " +this->password, this, commonStrings.IS_VALID);
+                                    this->logUtil->putF("Password: " +this->password, this, commonStrings->IS_VALID);
     
 
                                     }
                                 
 
-                        if(!StringValidationUtil::getInstance().isValidRequired(this->password, 6, UserData::MAXLEN))
+                        if(!StringValidationUtil::getInstance()->isValidRequired(this->password, 6, UserData::MAXLEN))
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VALIDATION))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VALIDATION))
                         
                                     {
-                                    this->logUtil.putF("Password is invalid", this, commonStrings.IS_VALID);
+                                    this->logUtil->putF("Password is invalid", this, commonStrings->IS_VALID);
     
 
                                     }
@@ -153,13 +159,13 @@ valid= Boolean::FALSE;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VALIDATIONERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VALIDATIONERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate form", "Password", commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate form", "Password", commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -177,7 +183,7 @@ valid= Boolean::FALSE;
 
     public: std::string getValidationInfo(){
 
-                        if(!StringValidationUtil::getInstance().isValidRequired(this->password, 6, UserData::MAXLEN))
+                        if(!StringValidationUtil::getInstance()->isValidRequired(this->password, 6, UserData::MAXLEN))
                         
                                     {
                                     
@@ -190,31 +196,31 @@ valid= Boolean::FALSE;
                                     }
                                 
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringUtil.EMPTY_STRING;
+                        return stringUtil->EMPTY_STRING;
     
 }
 
 
-    public: BasicArrayList toVector(std::string secret){
-this->password= StringUtil::getInstance().getNonNull(this->password);
+    public: BasicArrayList* toVector(std::string secret){
+this->password= StringUtil::getInstance()->getNonNull(this->password);
     
 
-    int32_t random = Random().nextInt(SuperCrypt::KEYMAX);;
+    int32_t random = (new Random())->nextInt(SuperCrypt::KEYMAX);;
     
 
-    BasicArrayList vector = BasicArrayListD();;
+    BasicArrayList* vector = new BasicArrayListD();;
     
-vector.add(Integer(random).toString());
+vector->add((int32_t(random)).toString());
     
-vector.add(secret);
+vector->add(secret);
     
-vector.add(SuperCrypt(random).encrypt(this->password));
+vector->add((new SuperCrypt(random))->encrypt(this->password));
     
 
 
@@ -225,20 +231,20 @@ vector.add(SuperCrypt(random).encrypt(this->password));
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(std::string secret){
-this->password= StringUtil::getInstance().getNonNull(this->password);
+    public: HashMap<Object*, Object*>* toHashMap(std::string secret){
+this->password= StringUtil::getInstance()->getNonNull(this->password);
     
 
-    HashMap<Object*, Object*> values = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* values = StdUtil::getInstance()->createHashMap();;
     
 
-    int32_t random = Random().nextInt(SuperCrypt::KEYMAX);;
+    int32_t random = (new Random())->nextInt(SuperCrypt::KEYMAX);;
     
-values.put(EntryData::getInstance().ENCRYPTION, Integer(random).toString());
+values->put(EntryData::getInstance()->ENCRYPTION, (int32_t(random)).toString());
     
-values.put(UserData::SECRET, secret);
+values->put(UserData::SECRET, secret);
     
-values.put(UserData::PASSWORD, SuperCrypt(random).encrypt(this->password));
+values->put(UserData::PASSWORD, (new SuperCrypt(random))->encrypt(this->password));
     
 
 

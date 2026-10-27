@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -42,7 +48,7 @@
         
 class UpdateMyFontInterface {
 
-    public: void updateMeasurement(Graphics graphics)
+    public: virtual void updateMeasurement(Graphics* graphics) = 0;
 
 };
 

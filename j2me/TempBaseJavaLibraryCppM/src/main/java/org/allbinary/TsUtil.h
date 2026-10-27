@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_TSUTIL_H
         #define ORG_ALLBINARY_TSUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/InterruptedException.h"
@@ -52,9 +58,9 @@ class TsUtil
             : public Object
          {
 
-    private: static TsUtil instance() { return TsUtil(); }
+    private: static TsUtil* instance() { static std::unique_ptr<TsUtil> value(new TsUtil()); return value.get(); }
 
-    public: static TsUtil getInstance();
+    public: static TsUtil* getInstance();
 
     public: double longBitsToDouble(int64_t bits);
 

@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASLEVELCHANGEINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASLEVELCHANGEINPUTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -75,23 +83,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HighScoresCanvasInputProcessor.h"
+        #include "org/allbinary/game/score/HighScoresCanvasInputProcessor.h"
 
 class HighScoresCanvasLevelChangeInputProcessor: public HighScoresCanvasInputProcessor, public UpdateMyFontInterface {
 
-    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
     private: const std::string INSTRUCTIONS = "(Right = Next Track, Left = Previous Track)";
 
-    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
     private: int32_t fontHeight = 0;
 
-public: HighScoresCanvasLevelChangeInputProcessor(HighScoresCanvas highScoresCanvas);
+public: HighScoresCanvasLevelChangeInputProcessor(HighScoresCanvas* highScoresCanvas);
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
     public: void open();
 
@@ -100,7 +108,7 @@ public: HighScoresCanvasLevelChangeInputProcessor(HighScoresCanvas highScoresCan
 
     public: void update();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

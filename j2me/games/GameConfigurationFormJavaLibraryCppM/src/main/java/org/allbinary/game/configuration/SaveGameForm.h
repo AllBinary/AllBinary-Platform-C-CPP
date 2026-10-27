@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_SAVEGAMEFORM_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_SAVEGAMEFORM_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -67,19 +73,19 @@
         
 class SaveGameForm: public CommandForm {
 
-    private: static CommandForm FORM = CommandForm::getNullCommandForm();
+    private: static inline CommandForm* FORM = CommandForm::getNullCommandForm();
 
                 //@Throws(Exception.constructor)
             
-    public: static CommandForm createForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
+    public: static CommandForm* createForm(CommandListener* commandListener, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor);
 
-    public: static CommandForm getInstance();
+    public: static CommandForm* getInstance();
 
-    private: const MEUtil meUtil = MEUtil::getInstance();
+    private: MEUtil* meUtil = MEUtil::getInstance();
 
-private: SaveGameForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
+private: SaveGameForm(CommandListener* commandListener, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor);
 
-    public: void initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener* cmdListener);
 
 };
 

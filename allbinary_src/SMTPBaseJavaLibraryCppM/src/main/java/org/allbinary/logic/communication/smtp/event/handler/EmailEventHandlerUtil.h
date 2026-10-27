@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_EMAILEVENTHANDLERUTIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_EMAILEVENTHANDLERUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -82,27 +88,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserEmailEventHandler.h"
+        #include "org/allbinary/logic/communication/smtp/event/handler/UserEmailEventHandler.h"
 
 class EmailEventHandlerUtil
             : public Object
          {
 
-    private: static EmailEventHandlerUtil instance() { return EmailEventHandlerUtil(); }
+    private: static EmailEventHandlerUtil* instance() { static std::unique_ptr<EmailEventHandlerUtil> value(new EmailEventHandlerUtil()); return value.get(); }
 
-    public: static EmailEventHandlerUtil getInstance();
+    public: static EmailEventHandlerUtil* getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList getUserEmailEventListenerVector(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, UserInterface userInterface);
+    public: static BasicArrayList* getUserEmailEventListenerVector(AbeClientInformationInterface* abeClientInformation, UserEmailEventNameData* userEmailEventNameData, UserInterface* userInterface);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: EmailEventHandlerUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: UserEmailEventHandler getEventHandler(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, BasicArrayList userVector);
+    public: UserEmailEventHandler* getEventHandler(AbeClientInformationInterface* abeClientInformation, UserEmailEventNameData* userEmailEventNameData, BasicArrayList* userVector);
 
 };
 

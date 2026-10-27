@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Double.h"
         
 
@@ -46,11 +52,11 @@
         
 class MeteredGameObjectInterface {
 
-    std::vector<number> getRatios();
+    public: virtual std::vector<double> getRatios() = 0;
 
-    bool isGood();
+    public: virtual bool isGood() = 0;
 
-    bool isDropping();
+    public: virtual bool isDropping() = 0;
 
 };
 

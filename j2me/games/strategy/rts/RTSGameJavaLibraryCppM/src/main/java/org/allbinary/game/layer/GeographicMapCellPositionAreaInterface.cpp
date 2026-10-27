@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
@@ -50,15 +56,15 @@
         
 class GeographicMapCellPositionAreaInterface {
 
-    GeographicMapCellPosition getNextSurroundingGeographicMapCellPosition()
+    public: virtual GeographicMapCellPosition* getNextSurroundingGeographicMapCellPosition() = 0;
 
-    BasicArrayList getOccupyingGeographicMapCellPositionList()
+    public: virtual BasicArrayList* getOccupyingGeographicMapCellPositionList() = 0;
 
-    BasicArrayList getSurroundingGeographicMapCellPositionList()
+    public: virtual BasicArrayList* getSurroundingGeographicMapCellPositionList() = 0;
 
                 //@Throws(Exception.constructor)
             
-    void update(BasicGeographicMap geographicMapInterface)
+    public: virtual void update(BasicGeographicMap* geographicMapInterface) = 0;
 
 };
 

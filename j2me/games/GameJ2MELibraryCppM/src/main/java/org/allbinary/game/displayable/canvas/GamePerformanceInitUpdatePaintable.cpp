@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -68,19 +74,19 @@
         
 class GamePerformanceInitUpdatePaintable: public InitUpdatePaintable, public UpdateMyFontInterface {
 
-    private: const int32_t halfHeight = DisplayInfoSingleton::getInstance().getLastHalfHeight();
+    private: const int32_t halfHeight = DisplayInfoSingleton::getInstance()->getLastHalfHeight();
 
     private: const std::vector<int32_t> yArray = {this->halfHeight +30,this->halfHeight +30,this->halfHeight +30 +15,this->halfHeight +30 +15,this->halfHeight +30 +30,this->halfHeight +30 +30,this->halfHeight +30 +45,this->halfHeight +30 +45};
 
-    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
 
     private: std::vector<std::vector<char>> baseRefreshHelperCharArray = std::vector<std::vector<char>>(0, std::vector<char>(0));
 
     private: int32_t defaultStringWidth= 0;
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
 this->defaultStringWidth= MyFontProcessor::defaultStringWidth(font, 2);
     
@@ -94,17 +100,17 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 
 
     public: void update(){
-this->baseRefreshHelperCharArray= GameStatisticsFactory::getInstance().to2DCharArray();
+this->baseRefreshHelperCharArray= GameStatisticsFactory::getInstance()->to2DCharArray();
     
 }
 
 
-    private: const int32_t RED = BasicColorFactory::getInstance().RED.intValue();
+    private: const int32_t RED = BasicColorFactory::getInstance()->RED.intValue();
 
-    public: void paint(Graphics graphics){
-this->myFontProcessor.process(graphics);
+    public: void paint(Graphics* graphics){
+this->myFontProcessor->process(graphics);
     
-graphics.setColor(this->RED);
+graphics->setColor(this->RED);
     
 
     std::vector<char> charArray;;
@@ -136,9 +142,9 @@ size2= charArray.size();
     
 size3= charArray2.size();
     
-graphics.drawChars(charArray, 0, size2, 0, this->yArray[index], 0);
+graphics->drawChars(charArray, 0, size2, 0, this->yArray[index], 0);
     
-graphics.drawChars(charArray2, 0, size3, size2 *this->defaultStringWidth, this->yArray[index +1], 0);
+graphics->drawChars(charArray2, 0, size3, size2 *this->defaultStringWidth, this->yArray[index +1], 0);
     
 }
 

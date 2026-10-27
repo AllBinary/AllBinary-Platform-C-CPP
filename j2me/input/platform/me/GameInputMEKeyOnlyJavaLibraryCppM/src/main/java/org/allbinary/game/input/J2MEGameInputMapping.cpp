@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/configuration/persistance/GamePersistanceStrings.h>
@@ -47,13 +53,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "J2MEKeyFactory.h"
-#include "GameKeyFactory.h"
-#include "Input.h"
+        #include "org/allbinary/game/input/J2MEKeyFactory.h"
+#include "org/allbinary/game/input/GameKeyFactory.h"
+#include "org/allbinary/game/input/Input.h"
 
 class J2MEGameInputMapping: public PersistentInputMapping {
 
-public: J2MEGameInputMapping() : PersistentInputMapping(GamePersistanceStrings::getInstance().SAVED_INPUT_CONFIGURATION_RECORD_ID){
+public: J2MEGameInputMapping() : PersistentInputMapping(GamePersistanceStrings::getInstance()->SAVED_INPUT_CONFIGURATION_RECORD_ID){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -65,10 +71,10 @@ public: J2MEGameInputMapping() : PersistentInputMapping(GamePersistanceStrings::
 
                 //@Throws(Exception.constructor)
             
-    public: void init(AbeClientInformationInterface abeClientInformation){
+    public: void init(AbeClientInformationInterface* abeClientInformation){
 this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.INIT);
     
-J2MEKeyFactory::getInstance().init();
+J2MEKeyFactory::getInstance()->init();
     
 super.init(abeClientInformation);
     
@@ -76,7 +82,7 @@ super.init(abeClientInformation);
                         if(this->getTotalMapped() == 0 || this->isDefaultNew())
                         
                                     {
-                                    this->getInputMapping().addMapping(this->getDefault());
+                                    this->getInputMapping()->addMapping(this->getDefault());
     
 this->save(abeClientInformation);
     
@@ -86,9 +92,9 @@ this->save(abeClientInformation);
 }
 
 
-    public: bool isDelete(Input input){
+    public: bool isDelete(Input* input){
 
-                        if(input == GameKeyFactory::getInstance().GAME_D)
+                        if(input == GameKeyFactory::getInstance()->GAME_D)
                         
                                     {
                                     
@@ -113,7 +119,7 @@ this->save(abeClientInformation);
 }
 
 
-    public: bool isSystemInput(Input input){
+    public: bool isSystemInput(Input* input){
 
 
 

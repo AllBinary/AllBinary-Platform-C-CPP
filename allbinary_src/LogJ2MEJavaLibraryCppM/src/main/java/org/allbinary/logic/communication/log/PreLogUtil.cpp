@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/System.h"
@@ -49,54 +55,56 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogFormatUtil.h"
+        #include "org/allbinary/logic/communication/log/LogFormatUtil.h"
 //ActualPlatform
 /*actual*/ class PreLogUtil
             : public Object
          {
 
     /*actual*/ public: static void put(std::string specialMessage, Object* anyType, std::string functionName){
-PreLogUtil::putOE(specialMessage, anyType, functionName, NullUtil::getInstance().NULL_OBJECT);
+PreLogUtil::putOE(specialMessage, anyType, functionName, NullUtil::getInstance()->NULL_OBJECT);
     
 }
 
 
-    private: static const std::string LOG_SUCCESS = "org.allbinary: ";
+    private: static inline const std::string LOG_SUCCESS = "org.allbinary: ";
 
     /*actual*/ public: static void putOE(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
 
-    std::string className = CommonStrings::getInstance().EMPTY;;
+    std::string className = CommonStrings::getInstance()->EMPTY;;
     
 
-                        if(anyType->constructor.name.toString() != 
-                                    nullptr
-                                )
+                        if(true)
                         
                                     {
-                                    className= anyType->constructor.name.toString();
+                                    className= anyType->getClass()->getName();
     
 
                                     }
                                 
 
-    std::string message = LogFormatUtil::getInstance().get(className, functionName, specialMessage, exception);;
+    std::string message = LogFormatUtil::getInstance()->get(className, functionName, specialMessage, exception);;
     
-console.log(PreLogUtil::LOG_SUCCESS + message);
+System.out.print(PreLogUtil::LOG_SUCCESS);
+    
+System.out.println(message);
     
 }
 
 
     /*actual*/ public: static void putS(std::string specialMessage, std::string className, std::string functionName){
-PreLogUtil::putSE(specialMessage, className, functionName, NullUtil::getInstance().NULL_OBJECT);
+PreLogUtil::putSE(specialMessage, className, functionName, NullUtil::getInstance()->NULL_OBJECT);
     
 }
 
 
     /*actual*/ public: static void putSE(std::string specialMessage, std::string className, std::string functionName, Object* exception){
 
-    std::string message = LogFormatUtil::getInstance().get(className, functionName, specialMessage, exception);;
+    std::string message = LogFormatUtil::getInstance()->get(className, functionName, specialMessage, exception);;
     
-console.log(PreLogUtil::LOG_SUCCESS + message);
+System.out.print(PreLogUtil::LOG_SUCCESS);
+    
+System.out.println(message);
     
 }
 
@@ -106,7 +114,7 @@ console.log(PreLogUtil::LOG_SUCCESS + message);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return anyType->constructor.name.toString();;
+                        return anyType->getClass()->getName();;
     
 }
 

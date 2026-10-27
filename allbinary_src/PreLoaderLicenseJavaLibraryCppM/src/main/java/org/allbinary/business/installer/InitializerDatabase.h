@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -83,22 +89,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DynamicInitDb.h"
-#include "InitializerData.h"
+        #include "org/allbinary/business/installer/DynamicInitDb.h"
+#include "org/allbinary/business/installer/InitializerData.h"
 
 class InitializerDatabase
             : public Object
          {
 
-    private: static const int32_t MAXDB = 30;
+    private: static inline const int32_t MAXDB = 30;
 
-    private: static const int32_t MAX = 16;
+    private: static inline const int32_t MAX = 16;
 
-    private: static const int32_t MIN = 4;
+    private: static inline const int32_t MIN = 4;
 
-    private: static const int32_t MINPASSWORD = 0;
+    private: static inline const int32_t MINPASSWORD = 0;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string adminDbUserName;
 
@@ -112,13 +118,13 @@ class InitializerDatabase
 
     private: std::string adminPort;
 
-    private: DynamicInitDb initDb;
+    private: DynamicInitDb* initDb;
 
-public: InitializerDatabase(AbeClientInformationInterface abeClientInformation, Map map);
+public: InitializerDatabase(AbeClientInformationInterface* abeClientInformation, Map* map);
 
-public: InitializerDatabase(AbeClientInformationInterface abeClientInformation, HashMap<Object*, Object*> initHashMap);
+public: InitializerDatabase(AbeClientInformationInterface* abeClientInformation, HashMap<Object*, Object*>* initHashMap);
 
-    public: void getFormData(AbeClientInformationInterface abeClientInformation, HashMap<Object*, Object*> hashMap);
+    public: void getFormData(AbeClientInformationInterface* abeClientInformation, HashMap<Object*, Object*>* hashMap);
 
     private: bool isJdbcDriverValid(std::string jdbcDriverClassPathString);
 

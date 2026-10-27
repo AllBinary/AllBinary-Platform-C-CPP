@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANDROID_ACTIVITY_KEYINPUTVIEWCOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_ANDROID_ACTIVITY_KEYINPUTVIEWCOMPOSITEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <android/view/View.h>
 
       
@@ -42,11 +48,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ViewCompositeInterface.h"
+        #include "org/allbinary/android/activity/ViewCompositeInterface.h"
 
 class KeyInputViewCompositeInterface: public ViewCompositeInterface {
 
-    void setKeyInputView(View keyInputView);
+    public: virtual void setKeyInputView(View* keyInputView) = 0;
 
 };
 

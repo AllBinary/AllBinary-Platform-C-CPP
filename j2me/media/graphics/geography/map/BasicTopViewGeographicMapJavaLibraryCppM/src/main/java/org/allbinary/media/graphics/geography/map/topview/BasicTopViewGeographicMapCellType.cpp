@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -71,22 +77,22 @@ class BasicTopViewGeographicMapCellType
             : public Object
          {
 
-    public: static BasicTopViewGeographicMapCellType createType(std::string name, int32_t type, int32_t cost){
+    public: static BasicTopViewGeographicMapCellType* createType(std::string name, int32_t type, int32_t cost){
 
-    BasicArrayList types = BasicArrayListS(1);;
+    BasicArrayList* types = new BasicArrayListS(1);;
     
-types.add(type);
+types->add(type);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicTopViewGeographicMapCellType(name, types, cost);
+                        return new BasicTopViewGeographicMapCellType(name, types, cost);
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     public: std::string name;
 
@@ -94,15 +100,15 @@ types.add(type);
 
     private: std::vector<int32_t> types;
 
-public: BasicTopViewGeographicMapCellType(std::string name, BasicArrayList types, int32_t cost){
+public: BasicTopViewGeographicMapCellType(std::string name, BasicArrayList* types, int32_t cost){
 
-    int32_t size = types.size();;
+    int32_t size = types->size();;
     
 
     std::vector<int32_t> typeArray = std::vector<int32_t>(size);;
     
 
-    Integer typeAsInteger;;
+    int32_t typeAsInteger;;
     
 
     int32_t type= 0;;
@@ -114,17 +120,17 @@ public: BasicTopViewGeographicMapCellType(std::string name, BasicArrayList types
                         for (
     int32_t index = 0;index < size; index++)
         {
-typeAsInteger= (types.get(index));
+typeAsInteger= (types->get(index));
     
 type= typeAsInteger.intValue();
     
 
-                        if(GeographicMapCellTypeFactory::getInstance().getGeographicMapCellTypeArray()[type] == 
+                        if(GeographicMapCellTypeFactory::getInstance()->getGeographicMapCellTypeArray()[type] == 
                                     nullptr
                                 )
                         
                                     {
-                                    RaceTrackGeographicMapCellType(name, type, cost, 0);
+                                    new RaceTrackGeographicMapCellType(name, type, cost, 0);
     
 
                                     }
@@ -146,19 +152,19 @@ this->types= typeArray;
 }
 
 
-    public: bool isType(GeographicMapCellType type){
+    public: bool isType(GeographicMapCellType* type){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->hasType(type.getType());;
+                        return this->hasType(type->getType());;
     
 }
 
 
     public: bool hasType(int32_t type){
 
-    int32_t size = this->types.size();;
+    int32_t size = this->types->size();;
     
 
 
@@ -203,10 +209,10 @@ this->types= typeArray;
 
     public: std::string toString(){
 
-    StringMaker stringMaker = StringMaker();;
+    StringMaker* stringMaker = new StringMaker();;
     
 
-    int32_t size = this->types.size();;
+    int32_t size = this->types->size();;
     
 
 
@@ -215,7 +221,7 @@ this->types= typeArray;
                         for (
     int32_t index = 0;index < size; index++)
         {
-stringMaker.appendint(this->types[index]).append(CommonSeps::getInstance().COMMA);
+stringMaker->appendint(this->types[index])->append(CommonSeps::getInstance()->COMMA);
     
 }
 
@@ -223,7 +229,7 @@ stringMaker.appendint(this->types[index]).append(CommonSeps::getInstance().COMMA
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringMaker.toString();;
+                        return stringMaker->toString();;
     
 }
 

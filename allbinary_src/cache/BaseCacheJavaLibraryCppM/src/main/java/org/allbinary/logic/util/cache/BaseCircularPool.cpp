@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -57,24 +63,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryObjectFactoryInterface.h"
+        #include "org/allbinary/logic/util/cache/AllBinaryObjectFactoryInterface.h"
 
 class BaseCircularPool
             : public Object
          {
 
-    protected: CircularIndexUtil circularIndexUtil = CircularIndexUtil::NULL_CIRCULAR_INDEX_UTIL;
+    protected: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::NULL_CIRCULAR_INDEX_UTIL;
 
-    protected: std::vector<Object*> OBJECT_ARRAY = NullUtil::getInstance().NULL_OBJECT_ARRAY;
+    protected: std::vector<Object*> OBJECT_ARRAY = NullUtil::getInstance()->NULL_OBJECT_ARRAY;
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: Object* getNextInstance(){
 
-    Object* anyType = this->OBJECT_ARRAY[this->circularIndexUtil.getIndex()];;
+    Object* anyType = this->OBJECT_ARRAY[this->circularIndexUtil->getIndex()];;
     
-this->circularIndexUtil.next();
+this->circularIndexUtil->next();
     
 
 
@@ -85,11 +91,11 @@ this->circularIndexUtil.next();
 }
 
 
-    public: void init(AllBinaryObjectFactoryInterface allBinaryObjectFactoryInterface){
-this->circularIndexUtil.setIndex(0);
+    public: void init(AllBinaryObjectFactoryInterface* allBinaryObjectFactoryInterface){
+this->circularIndexUtil->setIndex(0);
     
 
-    int32_t size = this->circularIndexUtil.getSize();;
+    int32_t size = this->circularIndexUtil->getSize();;
     
 
 
@@ -98,7 +104,7 @@ this->circularIndexUtil.setIndex(0);
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->OBJECT_ARRAY[index]= allBinaryObjectFactoryInterface.getInstance();
+this->OBJECT_ARRAY[index]= allBinaryObjectFactoryInterface->getInstance();
     
 }
 

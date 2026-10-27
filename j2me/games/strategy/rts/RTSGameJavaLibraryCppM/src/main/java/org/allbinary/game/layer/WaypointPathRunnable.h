@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINTPATHRUNNABLE_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINTPATHRUNNABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Thread.h"
@@ -52,12 +58,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WaypointPathRunnableBase.h"
-#include "WaypointBehaviorBase.h"
+        #include "org/allbinary/game/layer/WaypointPathRunnableBase.h"
+#include "org/allbinary/game/layer/WaypointBehaviorBase.h"
 
 class WaypointPathRunnable: public WaypointPathRunnableBase {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: WaypointPathRunnable();
 

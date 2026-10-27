@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_VIEW_VIEWPOSITIONFACTORY_H
         #define ORG_ALLBINARY_VIEW_VIEWPOSITIONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,15 +47,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ViewPositionFactoryInterface.h"
-#include "ViewPosition.h"
-#include "ViewPositionBase.h"
+        #include "org/allbinary/view/ViewPositionFactoryInterface.h"
+#include "org/allbinary/view/ViewPosition.h"
+#include "org/allbinary/view/ViewPositionBase.h"
 
 class ViewPositionFactory
             : public Object
-        : public ViewPositionFactoryInterface {
+        , public ViewPositionFactoryInterface {
 
-    public: ViewPositionBase getInstance();
+    public: ViewPositionBase* getInstance();
 
 };
 

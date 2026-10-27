@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/configuration/feature/Features.h>
@@ -47,7 +53,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory.h"
+        #include "org/allbinary/input/motion/button/TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory.h"
 
 class TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory: public TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory {
 
@@ -71,7 +77,7 @@ super.initImageCache(OpenGLImageCacheFactory::getInstance(), level);
 
     public: bool isFeature(){
 
-                        if(Features::getInstance().isDefault(OpenGLFeatureFactory::getInstance().OPENGL))
+                        if(Features::getInstance()->isDefault(OpenGLFeatureFactory::getInstance()->OPENGL))
                         
                                     {
                                     

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/displayable/MyCanvas.h>
@@ -50,12 +56,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CommandFormInputProcessor.h"
-#include "PopupMenuInputProcessor.h"
+        #include "org/allbinary/game/displayable/canvas/CommandFormInputProcessor.h"
+#include "org/allbinary/game/displayable/canvas/PopupMenuInputProcessor.h"
 
 class PopupCommandFormInputProcessor: public CommandFormInputProcessor {
 
-public: PopupCommandFormInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, MyCanvas gameCanvas, ScrollSelectionForm form, PopupMenuInputProcessor popupMenuInputProcessor) : CommandFormInputProcessor(gameKeyEventList, playerInputId, gameCanvas, form){
+public: PopupCommandFormInputProcessor(BasicArrayList* gameKeyEventList, int32_t playerInputId, MyCanvas* gameCanvas, ScrollSelectionForm* form, PopupMenuInputProcessor* popupMenuInputProcessor) : CommandFormInputProcessor(gameKeyEventList, playerInputId, gameCanvas, form){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -79,7 +85,7 @@ public: PopupCommandFormInputProcessor(BasicArrayList gameKeyEventList, int32_t 
 
                 //@Throws(Exception.constructor)
             
-    protected: void processMotionInput(MotionGestureEvent motionGestureEvent){
+    protected: void processMotionInput(MotionGestureEvent* motionGestureEvent){
 super.processMotionInput(motionGestureEvent);
     
 }

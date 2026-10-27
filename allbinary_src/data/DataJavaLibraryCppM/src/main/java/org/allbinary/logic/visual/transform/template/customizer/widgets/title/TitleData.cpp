@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class TitleData
             : public Object
          {
 
-    private: static TitleData instance() { return TitleData(); }
+    private: static TitleData* instance() { static std::unique_ptr<TitleData> value(new TitleData()); return value.get(); }
 
-    public: static TitleData getInstance(){
+    public: static TitleData* getInstance(){
 
 
 

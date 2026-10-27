@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_SCRIPT_ACTIONSCRIPTITEMJPANEL_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_SCRIPT_ACTIONSCRIPTITEMJPANEL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,47 +45,47 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "GridLayout.h"
-#include "GroupLayout.h"
-#include "Short.h"
-#include "Dimension.h"
+        #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/JPanel.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/GridLayout.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/GroupLayout.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/Short.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/Dimension.h"
 
 class ActionScriptItemJPanel: public javax::swing::JPanel {
 
 public: ActionScriptItemJPanel();
 
-    public: javax::swing::JPanel getNewActionScriptInputJPanel();
+    public: javax::swing::JPanel* getNewActionScriptInputJPanel();
 
-    public: void setNewActionScriptInputJPanel(javax::swing::JPanel newActionScriptInputJPanel);
+    public: void setNewActionScriptInputJPanel(javax::swing::JPanel* newActionScriptInputJPanel);
 
-    public: javax::swing::JPanel getRemoveJPanel();
+    public: javax::swing::JPanel* getRemoveJPanel();
 
-    public: void setRemoveJPanel(javax::swing::JPanel removeJPanel);
+    public: void setRemoveJPanel(javax::swing::JPanel* removeJPanel);
 
-    public: javax::swing::JPanel getScriptItemJPanel();
+    public: javax::swing::JPanel* getScriptItemJPanel();
 
-    public: void setScriptItemJPanel(javax::swing::JPanel scriptItemJPanel);
+    public: void setScriptItemJPanel(javax::swing::JPanel* scriptItemJPanel);
 
-    public: javax::swing::JPanel getNewActionScriptConditionJPanel();
+    public: javax::swing::JPanel* getNewActionScriptConditionJPanel();
 
-    public: void setNewActionScriptConditionJPanel(javax::swing::JPanel newActionScriptConditionJPanel);
+    public: void setNewActionScriptConditionJPanel(javax::swing::JPanel* newActionScriptConditionJPanel);
 
-    public: javax::swing::JPanel getChildActionScriptConditionJPanel();
+    public: javax::swing::JPanel* getChildActionScriptConditionJPanel();
 
-    public: void setChildActionScriptConditionJPanel(javax::swing::JPanel childActionScriptConditionJPanel);
+    public: void setChildActionScriptConditionJPanel(javax::swing::JPanel* childActionScriptConditionJPanel);
 
     private: void initComponents();
 
-    private: javax::swing::JPanel childActionScriptConditionJPanel;
+    private: javax::swing::JPanel* childActionScriptConditionJPanel;
 
-    private: javax::swing::JPanel newActionScriptConditionJPanel;
+    private: javax::swing::JPanel* newActionScriptConditionJPanel;
 
-    private: javax::swing::JPanel newActionScriptInputJPanel;
+    private: javax::swing::JPanel* newActionScriptInputJPanel;
 
-    private: javax::swing::JPanel removeJPanel;
+    private: javax::swing::JPanel* removeJPanel;
 
-    private: javax::swing::JPanel scriptItemJPanel;
+    private: javax::swing::JPanel* scriptItemJPanel;
 
 };
 

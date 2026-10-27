@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -88,40 +94,40 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GraphicItemInterface.h"
-#include "Color.h"
-#include "Points.h"
-#include "LinesGraphicItem.h"
-#include "Graphics.h"
-#include "MouseEvent.h"
-#include "MouseStrings.h"
-#include "KeyEvent.h"
+        #include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/Color.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/Points.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/Graphics.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/MouseEvent.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/MouseStrings.h"
+#include "org/allbinary/graphics/j2me/workarea/tools/KeyEvent.h"
 
 class SelectionTool
             : public Object
-        : public GraphicItemInterface {
+        , public GraphicItemInterface {
 
-    private: static const std::string NAME = "Selection Tool";
+    private: static inline const std::string NAME = "Selection Tool";
 
     public: static std::string getStaticName();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: CanvasJPanel canvasJPanel;
+    private: CanvasJPanel* canvasJPanel;
 
     private: bool active = true;
 
-public: SelectionTool(CanvasJPanel canvasJPanel);
+public: SelectionTool(CanvasJPanel* canvasJPanel);
 
-    public: void setColor(Color color);
+    public: void setColor(Color* color);
 
-    public: MutableTreeNode getTreeNode();
+    public: MutableTreeNode* getTreeNode();
 
-    public: Points getPointsInterface();
+    public: Points* getPointsInterface();
 
-    public: void setPointsInterface(Points points);
+    public: void setPointsInterface(Points* points);
 
     public: bool isValid();
 
@@ -131,7 +137,7 @@ public: SelectionTool(CanvasJPanel canvasJPanel);
 
     public: void activate();
 
-    public: void setFulcrumPoint(GPoint point);
+    public: void setFulcrumPoint(GPoint* point);
 
                 //@Throws(Exception.constructor)
             
@@ -151,51 +157,51 @@ public: SelectionTool(CanvasJPanel canvasJPanel);
 
     private: void makeSelection();
 
-    private: const Color rectColor = Color(BasicColorFactory::getInstance().RED.intValue());
+    private: Color* rectColor = new Color(BasicColorFactory::getInstance()->RED.intValue());
 
     public: int32_t getXRect();
 
     public: int32_t getYRect();
 
-    public: void paint(Graphics g, number canvasAngle, IntegerDimension dimension, int32_t x, int32_t y);
+    public: void paint(Graphics* g, double canvasAngle, IntegerDimension* dimension, int32_t x, int32_t y);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toDom(CanvasDom canvasDom);
+    public: Node* toDom(CanvasDom* canvasDom);
 
-    public: GPoint removePoint();
+    public: GPoint* removePoint();
 
-    public: void addPoint(GPoint point);
+    public: void addPoint(GPoint* point);
 
     public: std::string getName();
 
-    private: GPoint startPoint = PointFactory::getInstance().ZERO_ZERO;
+    private: GPoint* startPoint = PointFactory::getInstance()->ZERO_ZERO;
 
-    private: GPoint endPoint = this->startPoint;
+    private: GPoint* endPoint = this->startPoint;
 
-    public: void mouseClicked(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+    public: void mouseClicked(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
 
-    public: void mouseMoved(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+    public: void mouseMoved(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
 
-    public: void mouseEntered(java::awt::event::MouseEvent mouseEvent);
+    public: void mouseEntered(java::awt::event::MouseEvent* mouseEvent);
 
-    public: void mouseExited(java::awt::event::MouseEvent mouseEvent);
+    public: void mouseExited(java::awt::event::MouseEvent* mouseEvent);
 
-    public: void mousePressed(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+    public: void mousePressed(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
 
-    public: void mouseReleased(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+    public: void mouseReleased(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
 
-    public: void mouseDragged(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+    public: void mouseDragged(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
 
-    public: void keyPressed(java::awt::event::KeyEvent keyEvent);
+    public: void keyPressed(java::awt::event::KeyEvent* keyEvent);
 
-    public: void keyReleased(java::awt::event::KeyEvent keyEvent);
+    public: void keyReleased(java::awt::event::KeyEvent* keyEvent);
 
-    public: void keyTyped(java::awt::event::KeyEvent keyEvent);
+    public: void keyTyped(java::awt::event::KeyEvent* keyEvent);
 
                 //@Throws(Exception.constructor)
             
-    public: GraphicItemInterface duplicate();
+    public: GraphicItemInterface* duplicate();
 
 };
 

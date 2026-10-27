@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,16 +58,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoInterface.h"
-#include "TransformInfoData.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfoData.h"
 
 class TransformInfoInterfaceView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: TransformInfoInterface transformInfoInterface;
+    private: TransformInfoInterface* transformInfoInterface;
 
-public: TransformInfoInterfaceView(TransformInfoInterface transformInfoInterface){
+public: TransformInfoInterfaceView(TransformInfoInterface* transformInfoInterface){
 this->transformInfoInterface= transformInfoInterface;
     
 }
@@ -69,12 +75,12 @@ this->transformInfoInterface= transformInfoInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModDomHelper::createNameValueNodes(document, TransformInfoData::getInstance().NAME, this->transformInfoInterface.toHashMap());;
+                        return ModDomHelper::createNameValueNodes(document, TransformInfoData::getInstance()->NAME, this->transformInfoInterface->toHashMap());;
     
 }
 

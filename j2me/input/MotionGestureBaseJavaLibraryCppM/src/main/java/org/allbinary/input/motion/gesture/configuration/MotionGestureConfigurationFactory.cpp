@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,20 +44,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionGestureConfiguration.h"
+        #include "org/allbinary/input/motion/gesture/configuration/MotionGestureConfiguration.h"
 
 class MotionGestureConfigurationFactory
             : public Object
          {
 
-    private: static MotionGestureConfiguration config = MotionGestureConfiguration();
+    private: static MotionGestureConfiguration* config() { static std::unique_ptr<MotionGestureConfiguration> value(new MotionGestureConfiguration()); return value.get(); }
 
-    public: static MotionGestureConfiguration getInstance(){
+    public: static MotionGestureConfiguration* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MotionGestureConfigurationFactory::config;
+                        return MotionGestureConfigurationFactory::config();
     
 }
 

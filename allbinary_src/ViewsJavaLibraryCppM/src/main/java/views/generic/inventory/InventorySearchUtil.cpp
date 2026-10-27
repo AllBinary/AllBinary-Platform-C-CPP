@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -137,15 +143,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InventoryColumnUtil.h"
+        #include "views/generic/inventory/InventoryColumnUtil.h"
 
 class InventorySearchUtil
             : public Object
          {
 
-    private: static InventorySearchUtil instance() { return InventorySearchUtil(); }
+    private: static InventorySearchUtil* instance() { static std::unique_ptr<InventorySearchUtil> value(new InventorySearchUtil()); return value.get(); }
 
-    public: static InventorySearchUtil getInstance(){
+    public: static InventorySearchUtil* getInstance(){
 
 
 
@@ -155,43 +161,43 @@ class InventorySearchUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const CommonPhoneStrings commonPhoneStrings = CommonPhoneStrings::getInstance();
+    private: CommonPhoneStrings* commonPhoneStrings = CommonPhoneStrings::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getBasicItemIdColumn(SearchRequest searchRequest){
+    public: BasicArrayList* getBasicItemIdColumn(SearchRequest* searchRequest){
 
-    InventoryEntity inventoryEntityInterface = InventoryEntityFactory::getInstance().getInventoryEntityInstance();;
+    InventoryEntity* inventoryEntityInterface = InventoryEntityFactory::getInstance()->getInventoryEntityInstance();;
     
 
-    StoreFrontInterface storeFrontInterface = searchRequest.getStoreFront();;
+    StoreFrontInterface* storeFrontInterface = searchRequest->getStoreFront();;
     
 
-    InventoryColumnUtil inventorySearchUtil = InventoryColumnUtil::getInstance();;
+    InventoryColumnUtil* inventorySearchUtil = InventoryColumnUtil::getInstance();;
     
 
-    BasicArrayList column = inventorySearchUtil.getColumnWhereLike(inventoryEntityInterface, storeFrontInterface.getCategoryPath(), basicItemData.ID);;
+    BasicArrayList* column = inventorySearchUtil->getColumnWhereLike(inventoryEntityInterface, storeFrontInterface->getCategoryPath(), basicItemData->ID);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
-                                    this->logUtil.putF("Number Of Items Found: " +column.size(), this, "search");
+                                    this->logUtil->putF("Number Of Items Found: " +column->size(), this, "search");
     
 
                                     }
                                 
 
-    BasicArrayList subStoreVector = storeFrontInterface.getSubStores();;
+    BasicArrayList* subStoreVector = storeFrontInterface->getSubStores();;
     
 
-    int32_t size = subStoreVector.size();;
+    int32_t size = subStoreVector->size();;
     
 
 
@@ -201,20 +207,20 @@ class InventorySearchUtil
     int32_t index = 0;index < size; index++)
         {
 
-    std::string subStore = subStoreVector.get(index);;
+    std::string subStore = subStoreVector->get(index);;
     
 
-    BasicArrayList substoreIdColumn = inventorySearchUtil.getColumnWhereLike(inventoryEntityInterface, subStore, basicItemData.ID);;
+    BasicArrayList* substoreIdColumn = inventorySearchUtil->getColumnWhereLike(inventoryEntityInterface, subStore, basicItemData->ID);;
     
-column.addAllList(substoreIdColumn);
+column->addAllList(substoreIdColumn);
     
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
-                                    this->logUtil.putF("Number Of Items Found Including SubStores: " +column.size(), this, "search");
+                                    this->logUtil->putF("Number Of Items Found Including SubStores: " +column->size(), this, "search");
     
 
                                     }
@@ -230,19 +236,19 @@ column.addAllList(substoreIdColumn);
 
                 //@Throws(Exception.constructor)
             
-    private: std::string getNoResults(TransformDocumentInterface viewDocumentInterface, Node inventoryNode){
-inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface.getDoc(), SearchData::TOTAL_NUMBER_PAGES, this->commonPhoneStrings.ZERO));
+    private: std::string getNoResults(TransformDocumentInterface* viewDocumentInterface, Node* inventoryNode){
+inventoryNode->appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface->getDoc(), SearchData::TOTAL_NUMBER_PAGES, this->commonPhoneStrings->ZERO));
     
-inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface.getDoc(), SearchData::TOTAL_NUMBER_ITEMS, this->commonPhoneStrings.ZERO));
-    
-
-    std::string success = XmlDocumentHelper::toString(viewDocumentInterface.getDoc());;
+inventoryNode->appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface->getDoc(), SearchData::TOTAL_NUMBER_ITEMS, this->commonPhoneStrings->ZERO));
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGING))
+    std::string success = XmlDocumentHelper::toString(viewDocumentInterface->getDoc());;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
-                                    this->logUtil.putF("No Results Xml: " +success, this, "search");
+                                    this->logUtil->putF("No Results Xml: " +success, this, "search");
     
 
                                     }
@@ -256,35 +262,35 @@ inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterfa
 }
 
 
-    public: std::vector<std::string> search(AbeClientInformationInterface abeClientInformation, SearchRequest searchRequest, BasicArrayList column){
+    public: std::vector<std::string> search(AbeClientInformationInterface* abeClientInformation, SearchRequest* searchRequest, BasicArrayList* column){
 
         try {
             
-    InventoryEntity inventoryEntityInterface = InventoryEntityFactory::getInstance().getInventoryEntityInstance();;
+    InventoryEntity* inventoryEntityInterface = InventoryEntityFactory::getInstance()->getInventoryEntityInstance();;
     
 
-    SearchParams searchParams = searchRequest.getParams();;
+    SearchParams* searchParams = searchRequest->getParams();;
     
 
-    int32_t startPage = searchParams.getStartPageInt().intValue();;
+    int32_t startPage = searchParams->getStartPageInt()->intValue();;
     
 
-    int32_t endPage = searchParams.getEndPageInt().intValue();;
+    int32_t endPage = searchParams->getEndPageInt()->intValue();;
     
 
-    int32_t pageLength = searchParams.getLengthInt().intValue();;
+    int32_t pageLength = searchParams->getLengthInt()->intValue();;
     
 
     int32_t savedPagesInRange = 0;;
     
 
-    HashMap<Object*, Object*> columnValueHashMap = searchParams.get();;
+    HashMap<Object*, Object*>* columnValueHashMap = searchParams->get();;
     
 
-    std::string keyword = Replace("-", CommonSeps::getInstance().SPACE).all(columnValueHashMap.get(basicItemData.KEYWORDS));;
+    std::string keyword = (new Replace("-", CommonSeps::getInstance()->SPACE))->all(columnValueHashMap->get(basicItemData->KEYWORDS));;
     
 
-                        if(StringValidationUtil::getInstance().isEmpty(keyword))
+                        if(StringValidationUtil::getInstance()->isEmpty(keyword))
                         
                                     {
                                     
@@ -297,7 +303,7 @@ inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterfa
                                     }
                                 
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
                         if(startPage >= 0)
@@ -319,12 +325,12 @@ inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterfa
     std::vector<std::string> productListingPages = std::vector<std::string>(MAXPAGES);;
     
 
-    std::vector<Document> documents = std::vector<Document>(MAXPAGES);;
+    std::vector<Document*> documents = std::vector<Document*>(MAXPAGES);;
     
 
-    std::vector<Node> inventoryNodes = std::vector<Node>(MAXPAGES);;
+    std::vector<Node*> inventoryNodes = std::vector<Node*>(MAXPAGES);;
     
-keyword= keyword.toUpperCase();
+keyword= JavaString::toUpperCase(keyword);
     
 
     int32_t lastPage =  -1;;
@@ -336,22 +342,22 @@ keyword= keyword.toUpperCase();
     int32_t numberOfResults = 0;;
     
 
-    TransformDocumentInterface viewDocumentInterface = TransformStoreDocumentFactory::getInstance(searchRequest);;
+    TransformDocumentInterface* viewDocumentInterface = TransformStoreDocumentFactory::getInstance(searchRequest);;
     
 
-    Node inventoryNode = viewDocumentInterface.getDoc().createElement(InventoryData::INVENTORY);;
+    Node* inventoryNode = viewDocumentInterface->getDoc()->createElement(InventoryData::INVENTORY);;
     
-viewDocumentInterface.getBaseNode().appendChild(inventoryNode);
+viewDocumentInterface->getBaseNode()->appendChild(inventoryNode);
     
-inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface.getDoc(), SearchData::PAGE, Integer(startPage).toString()));
+inventoryNode->appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface->getDoc(), SearchData::PAGE, (int32_t(startPage)).toString()));
     
 
-                        if(searchRequest.getFileBaseName() != 
+                        if(searchRequest->getFileBaseName() != 
                                     nullptr
                                 )
                         
                                     {
-                                    inventoryNode.appendChild(searchRequest.getFileBaseNameNode(viewDocumentInterface.getDoc()));
+                                    inventoryNode->appendChild(searchRequest->getFileBaseNameNode(viewDocumentInterface->getDoc()));
     
 
                                     }
@@ -360,7 +366,7 @@ inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterfa
     int32_t currentPage =  -1;;
     
 
-    int32_t size = column.size();;
+    int32_t size = column->size();;
     
 
 
@@ -373,15 +379,15 @@ inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterfa
     std::string product = .toCharArray();;
     
 
-    ItemInterface itemInterface = inventoryEntityInterface.getItem(product);;
+    ItemInterface* itemInterface = inventoryEntityInterface->getItem(product);;
     
 
-    std::string keywords = itemInterface.getKeywords();;
+    std::string keywords = itemInterface->getKeywords();;
     
-keywords= keywords.toUpperCase();
+keywords= JavaString::toUpperCase(keywords);
     
 
-                        if(keywords.indexOf(keyword) !=  -1)
+                        if(JavaString::indexOf(keywords, keyword) !=  -1)
                         
                                     {
                                     
@@ -389,11 +395,11 @@ keywords= keywords.toUpperCase();
                         
                                     {
                                     
-    Node itemNode = BasicItemView(itemInterface, BasicArrayListD()).toXmlNode(viewDocumentInterface.getDoc());;
+    Node* itemNode = (new BasicItemView(itemInterface, new BasicArrayListD()))->toXmlNode(viewDocumentInterface->getDoc());;
     
-itemNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface.getDoc(), BasketData::ITEMTOTALINBASKET, this->commonPhoneStrings.ONE));
+itemNode->appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface->getDoc(), BasketData::ITEMTOTALINBASKET, this->commonPhoneStrings->ONE));
     
-inventoryNode.appendChild(itemNode.cloneNode(true));
+inventoryNode->appendChild(itemNode->cloneNode(true));
     
 
                                     }
@@ -410,9 +416,9 @@ numberOfResultsOnCurrentPage++;
                         if(currentPage >= startPage && currentPage <= endPage)
                         
                                     {
-                                    inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface.getDoc(), SearchData::TOTAL_NUMBER_ITEMS_ON_THIS_PAGE, Integer(numberOfResultsOnCurrentPage).toString()));
+                                    inventoryNode->appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface->getDoc(), SearchData::TOTAL_NUMBER_ITEMS_ON_THIS_PAGE, (int32_t(numberOfResultsOnCurrentPage)).toString()));
     
-documents[currentPage]= viewDocumentInterface.getDoc();
+documents[currentPage]= viewDocumentInterface->getDoc();
     
 inventoryNodes[currentPage]= inventoryNode;
     
@@ -420,19 +426,19 @@ savedPagesInRange++;
     
 viewDocumentInterface= TransformStoreDocumentFactory::getInstance(searchRequest);
     
-inventoryNode= viewDocumentInterface.getDoc().createElement(InventoryData::INVENTORY);
+inventoryNode= viewDocumentInterface->getDoc()->createElement(InventoryData::INVENTORY);
     
-viewDocumentInterface.getBaseNode().appendChild(inventoryNode);
+viewDocumentInterface->getBaseNode()->appendChild(inventoryNode);
     
-inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface.getDoc(), SearchData::PAGE, Integer(currentPage +1).toString()));
+inventoryNode->appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface->getDoc(), SearchData::PAGE, (int32_t(currentPage +1)).toString()));
     
 
-                        if(searchRequest.getFileBaseName() != 
+                        if(searchRequest->getFileBaseName() != 
                                     nullptr
                                 )
                         
                                     {
-                                    inventoryNode.appendChild(searchRequest.getFileBaseNameNode(viewDocumentInterface.getDoc()));
+                                    inventoryNode->appendChild(searchRequest->getFileBaseNameNode(viewDocumentInterface->getDoc()));
     
 
                                     }
@@ -468,9 +474,9 @@ numberOfResults++;
                         if(numberOfResultsOnCurrentPage > 0 && (currentPage +1 >= startPage && currentPage +1 <= endPage))
                         
                                     {
-                                    inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface.getDoc(), SearchData::TOTAL_NUMBER_ITEMS_ON_THIS_PAGE, Integer(numberOfResultsOnCurrentPage -1).toString()));
+                                    inventoryNode->appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface->getDoc(), SearchData::TOTAL_NUMBER_ITEMS_ON_THIS_PAGE, (int32_t(numberOfResultsOnCurrentPage -1)).toString()));
     
-documents[lastPage +1]= viewDocumentInterface.getDoc();
+documents[lastPage +1]= viewDocumentInterface->getDoc();
     
 inventoryNodes[lastPage +1]= inventoryNode;
     
@@ -509,11 +515,11 @@ savedPagesInRange++;
                         
                                     {
                                     
-    Document tempDocument = documents[index];;
+    Document* tempDocument = documents[index];;
     
-inventoryNodes[index].appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::TOTAL_NUMBER_PAGES, Integer(lastPage +1).toString()));
+inventoryNodes[index].appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::TOTAL_NUMBER_PAGES, (int32_t(lastPage +1)).toString()));
     
-inventoryNodes[index].appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::TOTAL_NUMBER_ITEMS, Integer(numberOfResults).toString()));
+inventoryNodes[index].appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::TOTAL_NUMBER_ITEMS, (int32_t(numberOfResults)).toString()));
     
 
 
@@ -522,24 +528,24 @@ inventoryNodes[index].appendChild(ModDomHelper::createNameValueNodes(tempDocumen
                         for (
     int32_t pageIndex = 0;pageIndex <= lastPage; pageIndex++)
         {
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(searchRequest.getFileBaseName());
+stringBuffer->append(searchRequest->getFileBaseName());
     
 
-                        if(stringBuffer.length() > 0)
+                        if(stringBuffer->length() > 0)
                         
                                     {
                                     
                         if(pageIndex != 0)
                         
                                     {
-                                    stringBuffer.append(std::to_string(pageIndex));
+                                    stringBuffer->append(std::to_string(pageIndex));
     
 
                                     }
                                 
-inventoryNodes[index].appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::PAGE_INFO, std::to_string(pageIndex)stringBuffer.toString()));
+inventoryNodes[index].appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::PAGE_INFO, std::to_string(pageIndex)stringBuffer->toString()));
     
 
                                     }
@@ -555,7 +561,7 @@ inventoryNodes[index].appendChild(ModDomHelper::createNameValueNodes(tempDocumen
 
     std::string success = XmlDocumentHelper::toString(tempDocument);;
     
-productListingPages[index]= StoreTransformer(abeClientInformation, TransformInfoHttpSearch(searchRequest)).translate(success);
+productListingPages[index]= (new StoreTransformer(abeClientInformation, dynamic_cast<TransformInfoInterface*>(new TransformInfoHttpSearch(searchRequest))))->translate(success);
     
 
                                     }
@@ -569,7 +575,7 @@ productListingPages[index]= StoreTransformer(abeClientInformation, TransformInfo
                                     
     std::string result = this->getNoResults(viewDocumentInterface, inventoryNode);;
     
-productListingPages[0]= StoreTransformer(abeClientInformation, TransformInfoHttpSearch(searchRequest)).translate(result);
+productListingPages[0]= (new StoreTransformer(abeClientInformation, new TransformInfoHttpSearch(searchRequest)))->translate(result);
     
 
                                     }
@@ -595,13 +601,13 @@ productListingPages[0]= StoreTransformer(abeClientInformation, TransformInfoHttp
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRODUCTSEARCHLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, "search", e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "search", &e);
     
 
                                     }

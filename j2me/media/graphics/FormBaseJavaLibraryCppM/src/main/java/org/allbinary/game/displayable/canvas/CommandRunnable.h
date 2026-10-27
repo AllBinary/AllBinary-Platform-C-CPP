@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_COMMANDRUNNABLE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_COMMANDRUNNABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,21 +66,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CommandFormInputProcessor.h"
+        #include "org/allbinary/game/displayable/canvas/CommandFormInputProcessor.h"
 
 class CommandRunnable
             : public Object
-        : public Runnable {
+        , public Runnable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: CommandFormInputProcessor commandFormInputProcessor;
+    private: CommandFormInputProcessor* commandFormInputProcessor;
 
-    private: Command command;
+    private: Command* command;
 
-public: CommandRunnable(CommandFormInputProcessor commandFormInputProcessor, Command command);
+public: CommandRunnable(CommandFormInputProcessor* commandFormInputProcessor, Command* command);
 
     public: void run();
 

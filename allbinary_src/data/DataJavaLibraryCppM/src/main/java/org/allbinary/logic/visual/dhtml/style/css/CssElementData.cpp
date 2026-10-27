@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class CssElementData
             : public Object
          {
 
-    private: static CssElementData instance() { return CssElementData(); }
+    private: static CssElementData* instance() { static std::unique_ptr<CssElementData> value(new CssElementData()); return value.get(); }
 
-    public: static CssElementData getInstance(){
+    public: static CssElementData* getInstance(){
 
 
 

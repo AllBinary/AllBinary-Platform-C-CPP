@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_TRANSACTIONRESULT_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_TRANSACTIONRESULT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -70,32 +76,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransactionResultInterface.h"
-#include "PaymentTransactionKeysFactory.h"
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/TransactionResultInterface.h"
+#include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionKeysFactory.h"
 
 class TransactionResult
             : public Object
-        : public TransactionResultInterface {
+        , public TransactionResultInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: HashMap<Object*, Object*> keyValuePairs;
+    private: HashMap<Object*, Object*>* keyValuePairs;
 
     private: std::string result;
 
 public: TransactionResult(std::string result);
 
-public: TransactionResult(HashMap<Object*, Object*> keyValuePairs);
+public: TransactionResult(HashMap<Object*, Object*>* keyValuePairs);
 
     public: std::string toString();
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
-    private: BasicArrayList getAllPossibleKeys();
+    private: BasicArrayList* getAllPossibleKeys();
 
-    public: BasicArrayList getValues();
+    public: BasicArrayList* getValues();
 
     public: std::string getPnRef();
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_LAYERPLACER_H
         #define ORG_ALLBINARY_GAME_LAYER_LAYERPLACER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -70,33 +76,33 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LayerPlacementInterface.h"
-#include "LayerPlacementType.h"
-#include "LayerPlacementTypeFactory.h"
+        #include "org/allbinary/game/layer/LayerPlacementInterface.h"
+#include "org/allbinary/game/layer/LayerPlacementType.h"
+#include "org/allbinary/game/layer/LayerPlacementTypeFactory.h"
 
 class LayerPlacer
             : public Object
          {
 
-    private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
+    private: EnumerationUtil* enumerationUtil = EnumerationUtil::getInstance();
 
-    protected: LayerInterfaceVisitor layerInterfaceVisitor;
+    protected: LayerInterfaceVisitor* layerInterfaceVisitor;
 
-    private: GPoint dimension;
+    private: GPoint* dimension;
 
-public: LayerPlacer(LayerInterfaceVisitor layerInterfaceVisitor, GPoint dimension);
-
-                //@Throws(Exception.constructor)
-            
-    public: void processList(BasicArrayList list);
+public: LayerPlacer(LayerInterfaceVisitor* layerInterfaceVisitor, GPoint* dimension);
 
                 //@Throws(Exception.constructor)
             
-    public: void process(LayerPlacementInterface layerPlacementInterface);
+    public: void processList(BasicArrayList* list);
 
                 //@Throws(Exception.constructor)
             
-    public: GPoint getPoint(LayerPlacementInterface layerPlacementInterface);
+    public: void process(LayerPlacementInterface* layerPlacementInterface);
+
+                //@Throws(Exception.constructor)
+            
+    public: GPoint* getPoint(LayerPlacementInterface* layerPlacementInterface);
 
 };
 

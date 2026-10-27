@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMEPROPERTIESVIEW_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMEPROPERTIESVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,20 +61,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ThemeInterface.h"
-#include "ThemeData.h"
+        #include "org/allbinary/logic/visual/theme/ThemeInterface.h"
+#include "org/allbinary/logic/visual/theme/ThemeData.h"
 
 class ThemePropertiesView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: ThemeInterface themeInterface;
+    private: ThemeInterface* themeInterface;
 
-public: ThemePropertiesView(ThemeInterface themeInterface);
+public: ThemePropertiesView(ThemeInterface* themeInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

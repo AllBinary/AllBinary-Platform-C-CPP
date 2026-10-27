@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -75,7 +81,7 @@ class DeleteCloud
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: DeleteCloud(){
 }
@@ -85,37 +91,37 @@ public: DeleteCloud(){
 
         try {
             
-                        if(AbIOSystem::getInstance().isType("com.vobject.appengine.java.io"))
+                        if(AbIOSystem::getInstance()->isType("com.vobject.appengine.java.io"))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(URLGLOBALS::getWebappPath());
+stringBuffer->append(URLGLOBALS::getWebappPath());
     
-stringBuffer.append(prePath);
-    
-
-    AbPath path = AbPath(stringBuffer.toString(), StringUtil::getInstance().EMPTY_STRING);;
+stringBuffer->append(prePath);
     
 
-    AbFile file = AbFile::createAbFileFromAbPath(path);;
+    AbPath* path = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
     
 
-    BasicArrayList fileBasicArrayList = Directory::getInstance().search(file, true);;
+    AbFile* file = AbFile::createAbFileFromAbPath(path);;
     
 
-    int32_t size = fileBasicArrayList.size();;
+    BasicArrayList* fileBasicArrayList = Directory::getInstance()->search(file, true);;
     
-stringBuffer.delete(0, stringBuffer.length());
+
+    int32_t size = fileBasicArrayList->size();;
     
-stringBuffer.append("Searched: ");
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(path.toFileSystemString());
+stringBuffer->append("Searched: ");
     
-stringBuffer.append(" BasicArrayList: ");
+stringBuffer->append(path->toFileSystemString());
     
-stringBuffer.appendint(size);
+stringBuffer->append(" BasicArrayList: ");
+    
+stringBuffer->appendint(size);
     
 
     int32_t portion = size /total +1;;
@@ -135,18 +141,18 @@ stringBuffer.appendint(size);
 
                                     }
                                 
-stringBuffer.append(" Section: ");
+stringBuffer->append(" Section: ");
     
-stringBuffer.appendint(start);
+stringBuffer->appendint(start);
     
-stringBuffer.append(" - ");
+stringBuffer->append(" - ");
     
-stringBuffer.appendint(end);
+stringBuffer->appendint(end);
     
-this->logUtil.putF(stringBuffer.toString(), this, "initialize()");
+this->logUtil->putF(stringBuffer->toString(), this, "initialize()");
     
 
-    AbFile nextFile;;
+    AbFile* nextFile;;
     
 
 
@@ -155,28 +161,28 @@ this->logUtil.putF(stringBuffer.toString(), this, "initialize()");
                         for (
     int32_t index = start;index < end; index++)
         {
-nextFile= fileBasicArrayList.get(index);
+nextFile= dynamic_cast<AbFile*>(fileBasicArrayList->get(index));
     
 
         try {
             
-                        if(nextFile.getPath().indexOf(FileUploadData::getInstance().FILE) < 0)
+                        if(nextFile->getPath()->indexOf(FileUploadData::getInstance()->FILE) < 0)
                         
                                     {
-                                    nextFile.delete();
+                                    nextFile->delete();
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 }
 
 }
 
-this->logUtil.putF("Deleted Files From Cloud", this, "initialize()");
+this->logUtil->putF("Deleted Files From Cloud", this, "initialize()");
     
 
                                     }
@@ -189,9 +195,9 @@ this->logUtil.putF("Deleted Files From Cloud", this, "initialize()");
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put("Unable to copy installer files into cloud", this, "initialize()", e);
+this->logUtil->put("Unable to copy installer files into cloud", this, "initialize()", &e);
     
 
 

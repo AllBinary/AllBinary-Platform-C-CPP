@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_STOREFRONT_DELETEVALIDATIONSTOREFRONTVIEW_H
         #define VIEWS_ADMIN_STOREFRONT_DELETEVALIDATIONSTOREFRONTVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>
@@ -62,21 +68,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreFrontComponent.h"
+        #include "views/admin/storefront/StoreFrontComponent.h"
 
 class DeleteValidationStoreFrontView: public StoreFrontComponent, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: DeleteValidationStoreFrontView(TransformInfoInterface transformInfoInterface);
+public: DeleteValidationStoreFrontView(TransformInfoInterface* transformInfoInterface);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string validationInfo();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
 };
 

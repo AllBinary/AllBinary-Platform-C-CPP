@@ -21,6 +21,12 @@
         #ifndef VIEWS_GENERIC_ORDER_HISTORY_ORDERHISTORYVIEW_H
         #define VIEWS_GENERIC_ORDER_HISTORY_ORDERHISTORYVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -89,9 +95,9 @@
         
 class OrderHistoryView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
     private: std::string shipped;
 
@@ -103,11 +109,11 @@ class OrderHistoryView: public HttpStoreComponentView, public DomNodeInterface {
 
     private: std::string cancelled;
 
-public: OrderHistoryView(TransformInfoInterface transformInfoInterface);
+public: OrderHistoryView(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
     public: void addDomNodeInterfaces();
 

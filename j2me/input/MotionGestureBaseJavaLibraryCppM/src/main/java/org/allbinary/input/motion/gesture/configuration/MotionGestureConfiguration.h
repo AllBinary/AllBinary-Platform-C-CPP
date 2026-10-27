@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_CONFIGURATION_MOTIONGESTURECONFIGURATION_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_CONFIGURATION_MOTIONGESTURECONFIGURATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/CompleteMotionGestureInputEvent.h>
@@ -73,23 +79,23 @@ class MotionGestureConfiguration
 
     private: int32_t minimumMotionGesture = 9;
 
-    private: std::string button = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string button = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: BasicColor color = BasicColorFactory::getInstance().BLUE;
+    private: BasicColor* color = BasicColorFactory::getInstance()->BLUE;
 
     private: bool executingActions = true;
 
     private: int32_t mouseButtonMask = 0;
 
-    private: BasicArrayList activeCommands = BasicArrayListD();
+    private: BasicArrayList* activeCommands = new BasicArrayListD();
 
 public: MotionGestureConfiguration();
 
-    public: void addMotionGestureAction(BasicArrayList list, CompleteMotionGestureInputEvent commandAction);
+    public: void addMotionGestureAction(BasicArrayList* list, CompleteMotionGestureInputEvent* commandAction);
 
     public: void clearMotionGestureAction();
 
-    public: BasicArrayList getAssociateCommandActionsList();
+    public: BasicArrayList* getAssociateCommandActionsList();
 
     public: bool isDiagonalMotionGestureAllowed();
 
@@ -111,9 +117,9 @@ public: MotionGestureConfiguration();
 
     public: void setButton(std::string button);
 
-    public: BasicColor getColor();
+    public: BasicColor* getColor();
 
-    public: void setColor(BasicColor color);
+    public: void setColor(BasicColor* color);
 
     public: int32_t getMouseButtonMask();
 

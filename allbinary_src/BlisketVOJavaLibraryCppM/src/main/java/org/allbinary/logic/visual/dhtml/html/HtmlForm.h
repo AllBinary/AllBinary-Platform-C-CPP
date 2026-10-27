@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -89,7 +95,7 @@ class HtmlForm
 
     private: std::string action;
 
-    BasicArrayList inputs;
+    BasicArrayList* inputs;
 
 public: HtmlForm(std::string action);
 
@@ -97,9 +103,9 @@ public: HtmlForm(std::string action);
 
     public: void setGet();
 
-    public: void addInput(HtmlInput htmlInput);
+    public: void addInput(HtmlInput* htmlInput);
 
-    public: void addTable(HtmlTable htmlTable);
+    public: void addTable(HtmlTable* htmlTable);
 
     public: std::string toString();
 

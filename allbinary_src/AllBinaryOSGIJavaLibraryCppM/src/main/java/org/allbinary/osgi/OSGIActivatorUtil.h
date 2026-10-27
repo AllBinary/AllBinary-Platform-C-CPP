@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_OSGI_OSGIACTIVATORUTIL_H
         #define ORG_ALLBINARY_OSGI_OSGIACTIVATORUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -68,11 +74,11 @@ class OSGIActivatorUtil
 
                 //@Throws(Exception.constructor)
             
-    public: static void registerAsService(BundleContext bundleContext, Object* anyType, std::string serviceName);
+    public: static void registerAsService(BundleContext* bundleContext, Object* anyType, std::string serviceName);
 
                 //@Throws(Exception.constructor)
             
-    public: static void registerAsService(BundleContext bundleContext, Object* anyType, std::string serviceName, ABHashtable<Object*, Object*> properties);
+    public: static void registerAsService(BundleContext* bundleContext, Object* anyType, std::string serviceName, ABHashtable<Object*, Object*>* properties);
 
 private: OSGIActivatorUtil();
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_MODULES_GATEWAY_PAYMENTGATEWAYDOMNODEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_MODULES_GATEWAY_PAYMENTGATEWAYDOMNODEFACTORYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h>
 
       
@@ -48,7 +54,7 @@
         
 class PaymentGatewayDomNodeFactoryInterface {
 
-    DomNodeInterface getInstance(PaymentGatewayInterface paymentGatewayInterface);
+    public: virtual DomNodeInterface* getInstance(PaymentGatewayInterface* paymentGatewayInterface) = 0;
 
 };
 

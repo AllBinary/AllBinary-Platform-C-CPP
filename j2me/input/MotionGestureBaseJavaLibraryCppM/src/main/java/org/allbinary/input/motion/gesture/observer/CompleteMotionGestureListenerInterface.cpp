@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -46,7 +52,7 @@ class CompleteMotionGestureListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    void onMotionGestureCompleted(BasicArrayList list)
+    public: virtual void onMotionGestureCompleted(BasicArrayList* list) = 0;
 
 };
 

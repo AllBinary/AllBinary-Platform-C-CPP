@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/canvas/Processor.h>
@@ -50,13 +56,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryGameCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
 class InitGameProcessor: public Processor {
 
-    private: AllBinaryGameCanvas gameCanvas;
+    private: AllBinaryGameCanvas* gameCanvas;
 
-public: InitGameProcessor(AllBinaryGameCanvas gameCanvas){
+public: InitGameProcessor(AllBinaryGameCanvas* gameCanvas){
 this->gameCanvas= gameCanvas;
     
 }
@@ -66,10 +72,10 @@ this->gameCanvas= gameCanvas;
             
     public: void process(){
 
-                        if(ProgressCanvasFactory::getInstance().isInGame())
+                        if(ProgressCanvasFactory::getInstance()->isInGame())
                         
                                     {
-                                    this->gameCanvas.setProcessGameProcessorInit();
+                                    this->gameCanvas->setProcessGameProcessorInit();
     
 
                                     }

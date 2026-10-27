@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,24 +42,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "KeyValuePersistance.h"
-#include "GamePersistanceStrings.h"
+        #include "org/allbinary/game/configuration/persistance/KeyValuePersistance.h"
+#include "org/allbinary/game/configuration/persistance/GamePersistanceStrings.h"
 
 class GamePersistanceSingleton: public KeyValuePersistance {
 
-    private: static GamePersistanceSingleton GAME_PERSISTANCE = GamePersistanceSingleton();
+    private: static GamePersistanceSingleton* GAME_PERSISTANCE() { static std::unique_ptr<GamePersistanceSingleton> value(new GamePersistanceSingleton()); return value.get(); }
 
-    public: static GamePersistanceSingleton getInstance(){
+    public: static GamePersistanceSingleton* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GamePersistanceSingleton::GAME_PERSISTANCE;
+                        return GamePersistanceSingleton::GAME_PERSISTANCE();
     
 }
 
 
-private: GamePersistanceSingleton() : KeyValuePersistance(GamePersistanceStrings::getInstance().SAVED_GAME_RECORD_ID){
+private: GamePersistanceSingleton() : KeyValuePersistance(GamePersistanceStrings::getInstance()->SAVED_GAME_RECORD_ID){
 
                         //super/this constructor call is in the constructor initializer list.
                     

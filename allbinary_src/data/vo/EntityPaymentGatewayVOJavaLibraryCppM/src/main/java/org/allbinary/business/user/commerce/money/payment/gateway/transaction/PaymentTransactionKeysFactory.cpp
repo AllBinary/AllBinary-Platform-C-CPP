@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,15 +44,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentTransactionKeys.h"
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionKeys.h"
 
 class PaymentTransactionKeysFactory
             : public Object
          {
 
-    private: static PaymentTransactionKeysFactory instance() { return PaymentTransactionKeysFactory(); }
+    private: static PaymentTransactionKeysFactory* instance() { static std::unique_ptr<PaymentTransactionKeysFactory> value(new PaymentTransactionKeysFactory()); return value.get(); }
 
-    public: static PaymentTransactionKeysFactory getInstance(){
+    public: static PaymentTransactionKeysFactory* getInstance(){
 
 
 
@@ -56,167 +62,167 @@ class PaymentTransactionKeysFactory
 }
 
 
-    public: const PaymentTransactionKeys TRXTYPE = PaymentTransactionKeys("TRXTYPE");
+    public: PaymentTransactionKeys* TRXTYPE = new PaymentTransactionKeys("TRXTYPE");
 
-    public: const PaymentTransactionKeys TENDER = PaymentTransactionKeys("TENDER");
+    public: PaymentTransactionKeys* TENDER = new PaymentTransactionKeys("TENDER");
 
-    public: const PaymentTransactionKeys ACCT = PaymentTransactionKeys("ACCT");
+    public: PaymentTransactionKeys* ACCT = new PaymentTransactionKeys("ACCT");
 
-    public: const PaymentTransactionKeys EXPDATE = PaymentTransactionKeys("EXPDATE");
+    public: PaymentTransactionKeys* EXPDATE = new PaymentTransactionKeys("EXPDATE");
 
-    public: const PaymentTransactionKeys AMT = PaymentTransactionKeys("AMT");
+    public: PaymentTransactionKeys* AMT = new PaymentTransactionKeys("AMT");
 
-    public: const PaymentTransactionKeys AUTHCODE = PaymentTransactionKeys("AUTHCODE");
+    public: PaymentTransactionKeys* AUTHCODE = new PaymentTransactionKeys("AUTHCODE");
 
-    public: const PaymentTransactionKeys MICR = PaymentTransactionKeys("MICR");
+    public: PaymentTransactionKeys* MICR = new PaymentTransactionKeys("MICR");
 
-    public: const PaymentTransactionKeys CHECKNUM = PaymentTransactionKeys("CHECKNUM");
+    public: PaymentTransactionKeys* CHECKNUM = new PaymentTransactionKeys("CHECKNUM");
 
-    public: const PaymentTransactionKeys NAME = PaymentTransactionKeys("NAME");
+    public: PaymentTransactionKeys* NAME = new PaymentTransactionKeys("NAME");
 
-    public: const PaymentTransactionKeys STREET = PaymentTransactionKeys("STREET");
+    public: PaymentTransactionKeys* STREET = new PaymentTransactionKeys("STREET");
 
-    public: const PaymentTransactionKeys CITY = PaymentTransactionKeys("CITY");
+    public: PaymentTransactionKeys* CITY = new PaymentTransactionKeys("CITY");
 
-    public: const PaymentTransactionKeys STATE = PaymentTransactionKeys("STATE");
+    public: PaymentTransactionKeys* STATE = new PaymentTransactionKeys("STATE");
 
-    public: const PaymentTransactionKeys ZIP = PaymentTransactionKeys("ZIP");
+    public: PaymentTransactionKeys* ZIP = new PaymentTransactionKeys("ZIP");
 
-    public: const PaymentTransactionKeys DL = PaymentTransactionKeys("DL");
+    public: PaymentTransactionKeys* DL = new PaymentTransactionKeys("DL");
 
-    public: const PaymentTransactionKeys EMAIL = PaymentTransactionKeys("EMAIL");
+    public: PaymentTransactionKeys* EMAIL = new PaymentTransactionKeys("EMAIL");
 
-    public: const PaymentTransactionKeys COMMENT1 = PaymentTransactionKeys("COMMENT1");
+    public: PaymentTransactionKeys* COMMENT1 = new PaymentTransactionKeys("COMMENT1");
 
-    public: const PaymentTransactionKeys COMMENT2 = PaymentTransactionKeys("COMMENT2");
+    public: PaymentTransactionKeys* COMMENT2 = new PaymentTransactionKeys("COMMENT2");
 
-    public: const PaymentTransactionKeys ORIGID = PaymentTransactionKeys("ORIGID");
+    public: PaymentTransactionKeys* ORIGID = new PaymentTransactionKeys("ORIGID");
 
-    public: const PaymentTransactionKeys PONUM = PaymentTransactionKeys("PONUM");
+    public: PaymentTransactionKeys* PONUM = new PaymentTransactionKeys("PONUM");
 
-    public: const PaymentTransactionKeys DESC = PaymentTransactionKeys("PaymentTransactionDESC");
+    public: PaymentTransactionKeys* DESC = new PaymentTransactionKeys("PaymentTransactionDESC");
 
-    public: const PaymentTransactionKeys DESC1TO4 = PaymentTransactionKeys("DESC1TO4");
+    public: PaymentTransactionKeys* DESC1TO4 = new PaymentTransactionKeys("DESC1TO4");
 
-    public: const PaymentTransactionKeys INVNUM = PaymentTransactionKeys("INVNUM");
+    public: PaymentTransactionKeys* INVNUM = new PaymentTransactionKeys("INVNUM");
 
-    public: const PaymentTransactionKeys SHIPTOZIP = PaymentTransactionKeys("SHIPTOZIP");
+    public: PaymentTransactionKeys* SHIPTOZIP = new PaymentTransactionKeys("SHIPTOZIP");
 
-    public: const PaymentTransactionKeys SWIPE = PaymentTransactionKeys("SWIPE");
+    public: PaymentTransactionKeys* SWIPE = new PaymentTransactionKeys("SWIPE");
 
-    public: const PaymentTransactionKeys TAXAMT = PaymentTransactionKeys("TAXAMT");
+    public: PaymentTransactionKeys* TAXAMT = new PaymentTransactionKeys("TAXAMT");
 
-    public: const PaymentTransactionKeys COMMCARD = PaymentTransactionKeys("COMMCARD");
+    public: PaymentTransactionKeys* COMMCARD = new PaymentTransactionKeys("COMMCARD");
 
-    public: const PaymentTransactionKeys DUTYAMT = PaymentTransactionKeys("DUTYAMT");
+    public: PaymentTransactionKeys* DUTYAMT = new PaymentTransactionKeys("DUTYAMT");
 
-    public: const PaymentTransactionKeys FRIEGHTAMT = PaymentTransactionKeys("FRIEGHTAMT");
+    public: PaymentTransactionKeys* FRIEGHTAMT = new PaymentTransactionKeys("FRIEGHTAMT");
 
-    public: const PaymentTransactionKeys ORDERDATE = PaymentTransactionKeys("ORDERDATE");
+    public: PaymentTransactionKeys* ORDERDATE = new PaymentTransactionKeys("ORDERDATE");
 
-    public: const PaymentTransactionKeys TAXEXEMPT = PaymentTransactionKeys("TAXEXEMPT");
+    public: PaymentTransactionKeys* TAXEXEMPT = new PaymentTransactionKeys("TAXEXEMPT");
 
-    public: const PaymentTransactionKeys COUNTRYCODE = PaymentTransactionKeys("COUNTRYCODE");
+    public: PaymentTransactionKeys* COUNTRYCODE = new PaymentTransactionKeys("COUNTRYCODE");
 
-    public: const PaymentTransactionKeys CUSTCODE = PaymentTransactionKeys("CUSTCODE");
+    public: PaymentTransactionKeys* CUSTCODE = new PaymentTransactionKeys("CUSTCODE");
 
-    public: const PaymentTransactionKeys CVV2 = PaymentTransactionKeys("CVV2");
+    public: PaymentTransactionKeys* CVV2 = new PaymentTransactionKeys("CVV2");
 
-    public: const PaymentTransactionKeys ABA = PaymentTransactionKeys("ABA");
+    public: PaymentTransactionKeys* ABA = new PaymentTransactionKeys("ABA");
 
-    public: const PaymentTransactionKeys ACCTTYPE = PaymentTransactionKeys("ACCTTYPE");
+    public: PaymentTransactionKeys* ACCTTYPE = new PaymentTransactionKeys("ACCTTYPE");
 
-    public: const PaymentTransactionKeys DISCOUNT = PaymentTransactionKeys("DISCOUNT");
+    public: PaymentTransactionKeys* DISCOUNT = new PaymentTransactionKeys("DISCOUNT");
 
-    public: const PaymentTransactionKeys FIRSTNAME = PaymentTransactionKeys("FIRSTNAME");
+    public: PaymentTransactionKeys* FIRSTNAME = new PaymentTransactionKeys("FIRSTNAME");
 
-    public: const PaymentTransactionKeys LASTNAME = PaymentTransactionKeys("LASNAME");
+    public: PaymentTransactionKeys* LASTNAME = new PaymentTransactionKeys("LASNAME");
 
-    public: const PaymentTransactionKeys SHIPFROMZIP = PaymentTransactionKeys("SHIPFROMZIP");
+    public: PaymentTransactionKeys* SHIPFROMZIP = new PaymentTransactionKeys("SHIPFROMZIP");
 
-    public: const PaymentTransactionKeys PRENOTE = PaymentTransactionKeys("PRENOTE");
+    public: PaymentTransactionKeys* PRENOTE = new PaymentTransactionKeys("PRENOTE");
 
-    public: const PaymentTransactionKeys CHKTYPE = PaymentTransactionKeys("CHKTYPE");
+    public: PaymentTransactionKeys* CHKTYPE = new PaymentTransactionKeys("CHKTYPE");
 
-    public: const PaymentTransactionKeys DOB = PaymentTransactionKeys("DOB");
+    public: PaymentTransactionKeys* DOB = new PaymentTransactionKeys("DOB");
 
-    public: const PaymentTransactionKeys PHONENUM = PaymentTransactionKeys("PHONENUM");
+    public: PaymentTransactionKeys* PHONENUM = new PaymentTransactionKeys("PHONENUM");
 
-    public: const PaymentTransactionKeys SS = PaymentTransactionKeys("SS");
+    public: PaymentTransactionKeys* SS = new PaymentTransactionKeys("SS");
 
-    public: const PaymentTransactionKeys COMPANYNAME = PaymentTransactionKeys("COMPANYNAME");
+    public: PaymentTransactionKeys* COMPANYNAME = new PaymentTransactionKeys("COMPANYNAME");
 
-    public: const PaymentTransactionKeys COUNTRY = PaymentTransactionKeys("COUNTRY");
+    public: PaymentTransactionKeys* COUNTRY = new PaymentTransactionKeys("COUNTRY");
 
-    public: const PaymentTransactionKeys FREIGHTAMT = PaymentTransactionKeys("FREIGHTAMT");
+    public: PaymentTransactionKeys* FREIGHTAMT = new PaymentTransactionKeys("FREIGHTAMT");
 
-    public: const PaymentTransactionKeys SHIPTOCITY = PaymentTransactionKeys("SHIPTOCITY");
+    public: PaymentTransactionKeys* SHIPTOCITY = new PaymentTransactionKeys("SHIPTOCITY");
 
-    public: const PaymentTransactionKeys SHIPTOFIRSTNAME = PaymentTransactionKeys("SHIPTOFIRSTNAME");
+    public: PaymentTransactionKeys* SHIPTOFIRSTNAME = new PaymentTransactionKeys("SHIPTOFIRSTNAME");
 
-    public: const PaymentTransactionKeys SHIPTOLASTNAME = PaymentTransactionKeys("SHIPTOLASTNAME");
+    public: PaymentTransactionKeys* SHIPTOLASTNAME = new PaymentTransactionKeys("SHIPTOLASTNAME");
 
-    public: const PaymentTransactionKeys SHIPTOSTATE = PaymentTransactionKeys("SHIPTOSTATE");
+    public: PaymentTransactionKeys* SHIPTOSTATE = new PaymentTransactionKeys("SHIPTOSTATE");
 
-    public: const PaymentTransactionKeys SHIPTOSTREET = PaymentTransactionKeys("SHIPTOSTREET");
+    public: PaymentTransactionKeys* SHIPTOSTREET = new PaymentTransactionKeys("SHIPTOSTREET");
 
-    public: const PaymentTransactionKeys SPECIAL1 = PaymentTransactionKeys("SPECIAL1");
+    public: PaymentTransactionKeys* SPECIAL1 = new PaymentTransactionKeys("SPECIAL1");
 
-    public: const PaymentTransactionKeys SPECIAL2 = PaymentTransactionKeys("SPECIAL2");
+    public: PaymentTransactionKeys* SPECIAL2 = new PaymentTransactionKeys("SPECIAL2");
 
-    public: const PaymentTransactionKeys SPECIAL3 = PaymentTransactionKeys("SPECIAL3");
+    public: PaymentTransactionKeys* SPECIAL3 = new PaymentTransactionKeys("SPECIAL3");
 
-    public: const PaymentTransactionKeys PARTNER = PaymentTransactionKeys("PARTNER");
+    public: PaymentTransactionKeys* PARTNER = new PaymentTransactionKeys("PARTNER");
 
-    public: const PaymentTransactionKeys VENDOR = PaymentTransactionKeys("VENDOR");
+    public: PaymentTransactionKeys* VENDOR = new PaymentTransactionKeys("VENDOR");
 
-    public: const PaymentTransactionKeys USER = PaymentTransactionKeys("USER");
+    public: PaymentTransactionKeys* USER = new PaymentTransactionKeys("USER");
 
-    public: const PaymentTransactionKeys PWD = PaymentTransactionKeys("PWD");
+    public: PaymentTransactionKeys* PWD = new PaymentTransactionKeys("PWD");
 
-    public: const PaymentTransactionKeys CHKNUM = PaymentTransactionKeys("CHKNUM");
+    public: PaymentTransactionKeys* CHKNUM = new PaymentTransactionKeys("CHKNUM");
 
-    public: const PaymentTransactionKeys AVSADDR = PaymentTransactionKeys("AVSADDR");
+    public: PaymentTransactionKeys* AVSADDR = new PaymentTransactionKeys("AVSADDR");
 
-    public: const PaymentTransactionKeys AVSZIP = PaymentTransactionKeys("AVSZIP");
+    public: PaymentTransactionKeys* AVSZIP = new PaymentTransactionKeys("AVSZIP");
 
-    public: const PaymentTransactionKeys PNREF = PaymentTransactionKeys("PNREF");
+    public: PaymentTransactionKeys* PNREF = new PaymentTransactionKeys("PNREF");
 
-    public: const PaymentTransactionKeys RESPMSG = PaymentTransactionKeys("RESPMSG");
+    public: PaymentTransactionKeys* RESPMSG = new PaymentTransactionKeys("RESPMSG");
 
-    public: const PaymentTransactionKeys RESULT = PaymentTransactionKeys("RESULT");
+    public: PaymentTransactionKeys* RESULT = new PaymentTransactionKeys("RESULT");
 
-    public: const PaymentTransactionKeys ORIGRESULT = PaymentTransactionKeys("ORIGRESULT");
+    public: PaymentTransactionKeys* ORIGRESULT = new PaymentTransactionKeys("ORIGRESULT");
 
-    public: const PaymentTransactionKeys STATUS = PaymentTransactionKeys("STATUS");
+    public: PaymentTransactionKeys* STATUS = new PaymentTransactionKeys("STATUS");
 
-    public: const PaymentTransactionKeys FRAUDCODE = PaymentTransactionKeys("FRAUDCODE");
+    public: PaymentTransactionKeys* FRAUDCODE = new PaymentTransactionKeys("FRAUDCODE");
 
-    public: const PaymentTransactionKeys FRAUDMSG = PaymentTransactionKeys("FRAUDMSG");
+    public: PaymentTransactionKeys* FRAUDMSG = new PaymentTransactionKeys("FRAUDMSG");
 
-    public: const PaymentTransactionKeys ERRCODE = PaymentTransactionKeys("ERRCODE");
+    public: PaymentTransactionKeys* ERRCODE = new PaymentTransactionKeys("ERRCODE");
 
-    public: const PaymentTransactionKeys SCORE = PaymentTransactionKeys("SCORE");
+    public: PaymentTransactionKeys* SCORE = new PaymentTransactionKeys("SCORE");
 
-    public: const PaymentTransactionKeys REASON1 = PaymentTransactionKeys("REASON1");
+    public: PaymentTransactionKeys* REASON1 = new PaymentTransactionKeys("REASON1");
 
-    public: const PaymentTransactionKeys REASON2 = PaymentTransactionKeys("REASON2");
+    public: PaymentTransactionKeys* REASON2 = new PaymentTransactionKeys("REASON2");
 
-    public: const PaymentTransactionKeys REASON3 = PaymentTransactionKeys("REASON3");
+    public: PaymentTransactionKeys* REASON3 = new PaymentTransactionKeys("REASON3");
 
-    public: const PaymentTransactionKeys EXCEPTION1 = PaymentTransactionKeys("EXCEPTION1");
+    public: PaymentTransactionKeys* EXCEPTION1 = new PaymentTransactionKeys("EXCEPTION1");
 
-    public: const PaymentTransactionKeys EXCEPTION2 = PaymentTransactionKeys("EXCEPTION2");
+    public: PaymentTransactionKeys* EXCEPTION2 = new PaymentTransactionKeys("EXCEPTION2");
 
-    public: const PaymentTransactionKeys EXCEPTION3 = PaymentTransactionKeys("EXCEPTION3");
+    public: PaymentTransactionKeys* EXCEPTION3 = new PaymentTransactionKeys("EXCEPTION3");
 
-    public: const PaymentTransactionKeys EXCEPTION4 = PaymentTransactionKeys("EXCEPTION4");
+    public: PaymentTransactionKeys* EXCEPTION4 = new PaymentTransactionKeys("EXCEPTION4");
 
-    public: const PaymentTransactionKeys EXCEPTION5 = PaymentTransactionKeys("EXCEPTION5");
+    public: PaymentTransactionKeys* EXCEPTION5 = new PaymentTransactionKeys("EXCEPTION5");
 
-    public: const PaymentTransactionKeys EXCEPTION6 = PaymentTransactionKeys("EXCEPTION6");
+    public: PaymentTransactionKeys* EXCEPTION6 = new PaymentTransactionKeys("EXCEPTION6");
 
-    public: const PaymentTransactionKeys EXCEPTION7 = PaymentTransactionKeys("EXCEPTION7");
+    public: PaymentTransactionKeys* EXCEPTION7 = new PaymentTransactionKeys("EXCEPTION7");
 
 };
 

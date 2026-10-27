@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,16 +66,16 @@ class AllBinaryRendererBase3
             : public Object
          {
 
-    public: const BasicArrayList list = BasicArrayListD();
+    public: BasicArrayList* list = new BasicArrayListD();
 
                 //@Throws(Exception.constructor)
             
-    protected: void update(GL10 gl){
+    protected: void update(GL10* gl){
 
-        while(this->list.size() > 0)
+        while(this->list->size() > 0)
         {
 
-    OpenGLESImage openGLESImage = this->list.removeAt(0);;
+    OpenGLESImage* openGLESImage = dynamic_cast<OpenGLESImage*>(this->list->removeAt(0));;
     
 
                         if(openGLESImage != 
@@ -77,7 +83,7 @@ class AllBinaryRendererBase3
                                 )
                         
                                     {
-                                    openGLESImage.set(gl);
+                                    openGLESImage->set(gl);
     
 
                                     }
@@ -87,8 +93,8 @@ class AllBinaryRendererBase3
 }
 
 
-    public: void add(Image image){
-this->list.add(image);
+    public: void add(Image* image){
+this->list->add(image);
     
 }
 

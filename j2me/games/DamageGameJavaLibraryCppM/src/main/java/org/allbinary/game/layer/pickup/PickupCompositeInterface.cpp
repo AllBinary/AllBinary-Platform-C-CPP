@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,13 +42,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PickupBehavior.h"
+        #include "org/allbinary/game/layer/pickup/PickupBehavior.h"
 
 class PickupCompositeInterface {
 
-    PickupBehavior getPickupBehavior()
+    public: virtual PickupBehavior* getPickupBehavior() = 0;
 
-    void setPickupBehavior(PickupBehavior pickupBehavior)
+    public: virtual void setPickupBehavior(PickupBehavior* pickupBehavior) = 0;
 
 };
 

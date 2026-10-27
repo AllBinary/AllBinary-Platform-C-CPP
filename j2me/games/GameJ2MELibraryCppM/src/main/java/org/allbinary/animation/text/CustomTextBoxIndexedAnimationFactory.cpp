@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,23 +79,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CustomTextBox2.h"
-#include "CustomTextBoxIndexedAnimation.h"
+        #include "org/allbinary/animation/text/CustomTextBox2.h"
+#include "org/allbinary/animation/text/CustomTextBoxIndexedAnimation.h"
 
 class CustomTextBoxIndexedAnimationFactory
             : public Object
-        : public AnimationInterfaceFactoryInterface {
+        , public AnimationInterfaceFactoryInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: ScaleProperties scaleProperties;
+    public: ScaleProperties* scaleProperties;
 
     private: int32_t maxLength;
 
 public: CustomTextBoxIndexedAnimationFactory(int32_t fontSize, int32_t maxLength){
-this->scaleProperties= ScaleProperties();
+this->scaleProperties= new ScaleProperties();
     
-this->scaleProperties.scaleHeight= fontSize;
+this->scaleProperties->scaleHeight= fontSize;
     
 this->maxLength= maxLength;
     
@@ -98,39 +104,39 @@ this->maxLength= maxLength;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId){
+    public: Animation* getInstance(int32_t instanceId){
 
-    ABToGBUtil abToGBUtil = ABToGBUtil::getInstance();;
+    ABToGBUtil* abToGBUtil = ABToGBUtil::getInstance();;
     
 
-    AllBinaryGameCanvas abCanvas = abToGBUtil.abCanvas;;
+    AllBinaryGameCanvas* abCanvas = dynamic_cast<AllBinaryGameCanvas*>(abToGBUtil->abCanvas);;
     
 
-    Font font = Font::getFont(Font::FACE_SYSTEM, Font::STYLE_PLAIN, this->scaleProperties.scaleHeight);;
+    Font* font = Font::getFont(Font::FACE_SYSTEM, Font::STYLE_PLAIN, this->scaleProperties->scaleHeight);;
     
 
-    CustomTextBox customTextBox = CustomTextBox2(abCanvas.getCustomCommandListener(), StringUtil::getInstance().EMPTY_STRING, StringUtil::getInstance().EMPTY_STRING, this->maxLength, TextField::ANY, font, abCanvas.getLayerManager().getBackgroundBasicColor(), abCanvas.getLayerManager().getForegroundBasicColor());;
+    CustomTextBox* customTextBox = new CustomTextBox2(abCanvas->getCustomCommandListener(), StringUtil::getInstance()->EMPTY_STRING, StringUtil::getInstance()->EMPTY_STRING, this->maxLength, TextField::ANY, font, abCanvas->getLayerManager()->getBackgroundBasicColor(), abCanvas->getLayerManager()->getForegroundBasicColor());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CustomTextBoxIndexedAnimation(customTextBox);
+                        return new CustomTextBoxIndexedAnimation(customTextBox);
     
 }
 
 
-    public: void setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties* scaleProperties){
 
-    int32_t fontSize = this->scaleProperties.scaleHeight;;
+    int32_t fontSize = this->scaleProperties->scaleHeight;;
     
 this->scaleProperties= scaleProperties;
     
 
-                        if(this->scaleProperties.scaleHeight < 6)
+                        if(this->scaleProperties->scaleHeight < 6)
                         
                                     {
-                                    this->scaleProperties.scaleHeight= fontSize;
+                                    this->scaleProperties->scaleHeight= fontSize;
     
 
                                     }

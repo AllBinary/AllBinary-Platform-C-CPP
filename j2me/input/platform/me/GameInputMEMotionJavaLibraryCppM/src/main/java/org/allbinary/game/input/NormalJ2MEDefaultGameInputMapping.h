@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_NORMALJ2MEDEFAULTGAMEINPUTMAPPING_H
         #define ORG_ALLBINARY_GAME_INPUT_NORMALJ2MEDEFAULTGAMEINPUTMAPPING_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/configuration/persistance/GamePersistanceStrings.h>
 
       
@@ -48,7 +54,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameKeyFactory.h"
+        #include "org/allbinary/game/input/GameKeyFactory.h"
 
 class NormalJ2MEDefaultGameInputMapping: public PersistentInputMapping {
 

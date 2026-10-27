@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -88,54 +94,54 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "IntegerDimension.h"
-#include "Grid.h"
-#include "CanvasJPanel.h"
-#include "Document.h"
+        #include "org/allbinary/graphics/j2me/workarea/canvas/IntegerDimension.h"
+#include "org/allbinary/graphics/j2me/workarea/canvas/Grid.h"
+#include "org/allbinary/graphics/j2me/workarea/canvas/CanvasJPanel.h"
+#include "org/allbinary/graphics/j2me/workarea/canvas/Document.h"
 
 class CanvasDom
             : public Object
          {
 
-    public: static const std::string FRAME = "frame";
+    public: static inline const std::string FRAME = "frame";
 
-    public: static const std::string ROTATE = "rotate";
+    public: static inline const std::string ROTATE = "rotate";
 
-    public: static const std::string SIZE = "size";
+    public: static inline const std::string SIZE = "size";
 
-    public: static const std::string X = "X";
+    public: static inline const std::string X = "X";
 
-    public: static const std::string Y = "Y";
+    public: static inline const std::string Y = "Y";
 
-    public: static const std::string ZOOM = "zoom";
+    public: static inline const std::string ZOOM = "zoom";
 
-    public: static const std::string GRID = "grid";
+    public: static inline const std::string GRID = "grid";
 
-    public: static const std::string ENABLED = "enabled";
+    public: static inline const std::string ENABLED = "enabled";
 
-    public: static const std::string POSSIBLE = "possible";
+    public: static inline const std::string POSSIBLE = "possible";
 
-    public: static const std::string GRAPHICITEMS = "graphicItems";
+    public: static inline const std::string GRAPHICITEMS = "graphicItems";
 
-    public: static const std::string REAL_SIZE = "realSize";
+    public: static inline const std::string REAL_SIZE = "realSize";
 
-    private: const GraphicsStrings graphicsStrings = GraphicsStrings::getInstance();
+    private: GraphicsStrings* graphicsStrings = GraphicsStrings::getInstance();
 
-    private: HashMap<Object*, Object*> graphicItemHashMap;
+    private: HashMap<Object*, Object*>* graphicItemHashMap;
 
     private: double angle;
 
-    private: IntegerDimension dimension;
+    private: IntegerDimension* dimension;
 
-    private: Grid grid;
+    private: Grid* grid;
 
-public: CanvasDom(Node canvasNode);
+public: CanvasDom(Node* canvasNode);
 
-public: CanvasDom(CanvasJPanel canvasJPanel);
+public: CanvasDom(CanvasJPanel* canvasJPanel);
 
     public: double getAngle();
 
-    public: HashMap<Object*, Object*> getGraphicItemHashMap();
+    public: HashMap<Object*, Object*>* getGraphicItemHashMap();
 
     public: void setAngle(double angle);
 
@@ -147,17 +153,17 @@ public: CanvasDom(CanvasJPanel canvasJPanel);
             
     public: void setGrid(int32_t gridX, int32_t gridY);
 
-    private: Node getPointNode(GPoint point, std::string pointName);
+    private: Node* getPointNode(GPoint* point, std::string pointName);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toDom();
+    public: Node* toDom();
 
-    public: IntegerDimension getDimension();
+    public: IntegerDimension* getDimension();
 
-    public: void setDimension(IntegerDimension dimension);
+    public: void setDimension(IntegerDimension* dimension);
 
-    public: Grid getGrid();
+    public: Grid* getGrid();
 
 };
 

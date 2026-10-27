@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -82,15 +88,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TextChangeListener.h"
+        #include "org/allbinary/animation/text/TextChangeListener.h"
 
 class TextAnimation: public IndexedAnimation, public UpdateMyFontInterface {
 
-    private: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
 
-    protected: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
+    protected: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
 
-    protected: std::vector<std::string> textArrayP = StringUtil::getInstance().ONE_EMPTY_STRING_ARRAY;
+    protected: std::vector<std::string> textArrayP = StringUtil::getInstance()->ONE_EMPTY_STRING_ARRAY;
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
@@ -98,21 +104,21 @@ class TextAnimation: public IndexedAnimation, public UpdateMyFontInterface {
 
     private: int32_t offsetY = 0;
 
-    private: TextChangeListener textChangeListener = TextChangeListener::getInstance();
+    private: TextChangeListener* textChangeListener = TextChangeListener::getInstance();
 
-public: TextAnimation(std::string text, AnimationBehavior animationBehavior);
+public: TextAnimation(std::string text, AnimationBehavior* animationBehavior);
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
                 //@Throws(Exception.constructor)
             
     public: void nextFrame();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
-    public: void paintXYNoUpdate(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXYNoUpdate(Graphics* graphics, int32_t x, int32_t y);
 
-    public: void setTextWithOnMeasure(std::string text, TextChangeListener textChangeListener);
+    public: void setTextWithOnMeasure(std::string text, TextChangeListener* textChangeListener);
 
     public: void setText(std::string text);
 

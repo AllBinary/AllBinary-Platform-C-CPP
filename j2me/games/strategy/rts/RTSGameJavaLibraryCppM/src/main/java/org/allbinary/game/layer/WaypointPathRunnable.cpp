@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Thread.h"
@@ -49,12 +55,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WaypointPathRunnableBase.h"
-#include "WaypointBehaviorBase.h"
+        #include "org/allbinary/game/layer/WaypointPathRunnableBase.h"
+#include "org/allbinary/game/layer/WaypointBehaviorBase.h"
 
 class WaypointPathRunnable: public WaypointPathRunnableBase {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: WaypointPathRunnable(){
 }
@@ -63,13 +69,13 @@ public: WaypointPathRunnable(){
     public: void run(){
 
         try {
-            this->pathFindingLayer.getWaypointRunnableLogHelper().start(this->pathFindingLayer);
+            this->pathFindingLayer.getWaypointRunnableLogHelper()->start(this->pathFindingLayer);
     
 
-    WaypointBehaviorBase waypointBehavior = this->pathFindingLayer.getWaypointBehavior();;
+    WaypointBehaviorBase* waypointBehavior = this->pathFindingLayer.getWaypointBehavior();;
     
 
-    GeographicMapCellPosition geographicMapCellPosition = this->pathFindingLayer.getCurrentGeographicMapCellPosition();;
+    GeographicMapCellPosition* geographicMapCellPosition = this->pathFindingLayer.getCurrentGeographicMapCellPosition();;
     
 
                         if(geographicMapCellPosition == 
@@ -80,25 +86,25 @@ public: WaypointPathRunnable(){
                                     
 
 
-                            throw Exception("Should never be running here");
+                            throw new Exception("Should never be running here");
                     
 
                                     }
                                 
-waypointBehavior.setWaypointPathsList(this->targetPathFindingLayer.getWaypointBehavior().getWaypoint().getPathsListRunnable(geographicMapCellPosition));
+waypointBehavior->setWaypointPathsList(this->targetPathFindingLayer.getWaypointBehavior()->getWaypoint()->getPathsListRunnable(geographicMapCellPosition));
     
-this->pathFindingLayer.getWaypointRunnableLogHelper().end(this->pathFindingLayer);
+this->pathFindingLayer.getWaypointRunnableLogHelper()->end(this->pathFindingLayer);
     
 Thread::sleep(15 +(this->priorityP *2));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
     
 this->setRunning(false);
     

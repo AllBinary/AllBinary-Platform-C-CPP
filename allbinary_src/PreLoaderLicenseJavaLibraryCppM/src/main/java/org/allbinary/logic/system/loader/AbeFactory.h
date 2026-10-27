@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -73,18 +79,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WebappClassLoaderInfo.h"
-#include "AbeClassLoader.h"
+        #include "org/allbinary/logic/system/loader/WebappClassLoaderInfo.h"
+#include "org/allbinary/logic/system/loader/AbeClassLoader.h"
 
 class AbeFactory
             : public Object
          {
 
-    private: static AbeFactory instance() { return AbeFactory(); }
+    private: static AbeFactory* instance() { static std::unique_ptr<AbeFactory> value(new AbeFactory()); return value.get(); }
 
-    public: static AbeFactory getInstance();
+    public: static AbeFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: bool useCustomLoader = false;
 
@@ -93,17 +99,17 @@ private: AbeFactory();
                 //@Throws(LicensingException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string className);
+    public: Object* getInstance(AbeClientInformationInterface* abeClientInformation, std::string className);
 
                 //@Throws(LicensingException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string className, std::vector<Class*> classes, std::vector<Object*> params);
+    public: Object* getInstance(AbeClientInformationInterface* abeClientInformation, std::string className, std::vector<Class*> classes, std::vector<Object*> params);
 
                 //@Throws(LicensingException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: Class* getClass()(AbeClientInformationInterface abeClientInformation, std::string className);
+    public: Class* getClass()(AbeClientInformationInterface* abeClientInformation, std::string className);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,28 +44,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageColorRangeResults.h"
-#include "ImageColorResults.h"
+        #include "org/allbinary/media/image/analysis/ImageColorRangeResults.h"
+#include "org/allbinary/media/image/analysis/ImageColorResults.h"
 
 class ImageAnalysisResults
             : public Object
          {
 
-    private: ImageColorRangeResults imageColorRangeResults;
+    private: ImageColorRangeResults* imageColorRangeResults;
 
-    private: ImageColorResults imageColorResults;
+    private: ImageColorResults* imageColorResults;
 
     private: float averageAmbientLevel= 0.0;
 
 public: ImageAnalysisResults(){
-this->imageColorRangeResults= ImageColorRangeResults();
+this->imageColorRangeResults= new ImageColorRangeResults();
     
-this->imageColorResults= ImageColorResults();
+this->imageColorResults= new ImageColorResults();
     
 }
 
 
-    public: ImageColorRangeResults getImageColorRangeResults(){
+    public: ImageColorRangeResults* getImageColorRangeResults(){
 
 
 
@@ -69,7 +75,7 @@ this->imageColorResults= ImageColorResults();
 }
 
 
-    public: void setImageColorRangeResults(ImageColorRangeResults imageColorRangeResults){
+    public: void setImageColorRangeResults(ImageColorRangeResults* imageColorRangeResults){
 this->imageColorRangeResults= imageColorRangeResults;
     
 }
@@ -91,7 +97,7 @@ this->averageAmbientLevel= averageAmbientLevel;
 }
 
 
-    public: ImageColorResults getImageColorResults(){
+    public: ImageColorResults* getImageColorResults(){
 
 
 
@@ -101,7 +107,7 @@ this->averageAmbientLevel= averageAmbientLevel;
 }
 
 
-    public: void setImageColorResults(ImageColorResults imageColorResults){
+    public: void setImageColorResults(ImageColorResults* imageColorResults){
 this->imageColorResults= imageColorResults;
     
 }

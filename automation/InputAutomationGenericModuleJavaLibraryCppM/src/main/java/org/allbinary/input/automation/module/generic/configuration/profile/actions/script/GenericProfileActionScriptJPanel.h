@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_SCRIPT_GENERICPROFILEACTIONSCRIPTJPANEL_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_SCRIPT_GENERICPROFILEACTIONSCRIPTJPANEL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <java/awt/event/MouseEvent.h>
 
       
@@ -66,47 +74,47 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "GenericProfileActionScript.h"
-#include "JTree.h"
-#include "JScrollPane.h"
-#include "GridLayout.h"
-#include "Dimension.h"
-#include "MouseAdapter.h"
-#include "JPopupMenu.h"
-#include "JComponent.h"
+        #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/JPanel.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/GenericProfileActionScript.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/JTree.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/JScrollPane.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/GridLayout.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/Dimension.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/MouseAdapter.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/JPopupMenu.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/JComponent.h"
 
 class GenericProfileActionScriptJPanel: public javax::swing::JPanel, public JTreeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: DefaultMutableTreeNode defaultMutableTreeNode = DefaultMutableTreeNode("Root");
+    private: DefaultMutableTreeNode* defaultMutableTreeNode = new DefaultMutableTreeNode("Root");
 
-    private: GenericProfileActionScript genericProfileActionScript;
+    private: GenericProfileActionScript* genericProfileActionScript;
 
 public: GenericProfileActionScriptJPanel();
 
     public: void updateJTree();
 
-    public: GenericProfileActionScript getGenericProfileActionScript();
+    public: GenericProfileActionScript* getGenericProfileActionScript();
 
-    public: void setGenericProfileActionScript(GenericProfileActionScript genericProfileActionScript);
+    public: void setGenericProfileActionScript(GenericProfileActionScript* genericProfileActionScript);
 
-    public: javax::swing::JTree getActionScriptJTree();
+    public: javax::swing::JTree* getActionScriptJTree();
 
-    public: void setActionScriptJTree(javax::swing::JTree actionScriptJTree);
+    public: void setActionScriptJTree(javax::swing::JTree* actionScriptJTree);
 
     private: void initComponents();
 
-    private: void actionScriptJTreeMouseReleased(java::awt::event::MouseEvent evt);
+    private: void actionScriptJTreeMouseReleased(java::awt::event::MouseEvent* evt);
 
-    private: void actionScriptJTreeMouseClicked(java::awt::event::MouseEvent evt);
+    private: void actionScriptJTreeMouseClicked(java::awt::event::MouseEvent* evt);
 
-    private: javax::swing::JTree actionScriptJTree;
+    private: javax::swing::JTree* actionScriptJTree;
 
-    private: javax::swing::JScrollPane jScrollPane1;
+    private: javax::swing::JScrollPane* jScrollPane1;
 
 };
 

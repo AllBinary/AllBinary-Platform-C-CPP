@@ -6,6 +6,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,16 +67,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageIOUtil.h"
-#include "MediaData.h"
+        #include "org/allbinary/logic/visual/media/ImageIOUtil.h"
+#include "org/allbinary/logic/visual/media/MediaData.h"
 //import com.sun.imageio.plugins.common.ImageUtil;
 class MediaUtil
             : public Object
          {
 
-    private: static MediaUtil instance() { return MediaUtil(); }
+    private: static MediaUtil* instance() { static std::unique_ptr<MediaUtil> value(new MediaUtil()); return value.get(); }
 
-    public: static MediaUtil getInstance(){
+    public: static MediaUtil* getInstance(){
 
 
 
@@ -80,12 +86,12 @@ class MediaUtil
 }
 
 
-    private: static HashMap<Object*, Object*> getImageBufferPropertyHashMap(BufferedImage bufferedImage){
+    private: static HashMap<Object*, Object*>* getImageBufferPropertyHashMap(BufferedImage* bufferedImage){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
 
-    std::vector<std::string> propertyStringArray = bufferedImage.getPropertyNames();;
+    std::vector<std::string> propertyStringArray = bufferedImage->getPropertyNames();;
     
 
                         if(propertyStringArray != 
@@ -101,9 +107,9 @@ class MediaUtil
     int32_t index = 0;index < propertyStringArray.size(); index++)
         {
 
-    Object* propertyObject = bufferedImage.getProperty(propertyStringArray[index]);;
+    Object* propertyObject = bufferedImage->getProperty(propertyStringArray[index]);;
     
-hashMap.put(propertyStringArray[index], propertyObject->toString());
+hashMap->put(propertyStringArray[index], propertyObject->toString());
     
 }
 
@@ -119,7 +125,7 @@ hashMap.put(propertyStringArray[index], propertyObject->toString());
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: MediaUtil(){
 }
@@ -127,23 +133,23 @@ private: MediaUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: void saveImageFile(AbFile originalImageFile, std::string newImageFileName, std::string category, MediaData mediaData, int32_t newWidth, int32_t newHeight){
+    public: void saveImageFile(AbFile* originalImageFile, std::string newImageFileName, std::string category, MediaData* mediaData, int32_t newWidth, int32_t newHeight){
 
                         if(originalImageFile == 
                                     nullptr
-                                 || !originalImageFile.isFile())
+                                 || !originalImageFile->isFile())
                         
                                     {
                                     
 
 
-                            throw Exception("Original Image File Does Not Exist.");
+                            throw new Exception("Original Image File Does Not Exist.");
                     
 
                                     }
                                 
 
-    BufferedImage bufferedImage = ImageIOUtil::read(originalImageFile);;
+    BufferedImage* bufferedImage = ImageIOUtil::read(originalImageFile);;
     
 
                         if(bufferedImage == 
@@ -154,36 +160,36 @@ private: MediaUtil(){
                                     
 
 
-                            throw Exception("Unable to find ImageReader for this file.");
+                            throw new Exception("Unable to find ImageReader for this file.");
                     
 
                                     }
                                 
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().VIEW))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     
-    HashMap<Object*, Object*> hashMap = this->getImageBufferPropertyHashMap(bufferedImage);;
+    HashMap<Object*, Object*>* hashMap = this->getImageBufferPropertyHashMap(bufferedImage);;
     
-this->logUtil.putF("Image Properties: " +hashMap.toString(), this, "saveImageFile()");
+this->logUtil->putF("Image Properties: " +hashMap->toString(), this, "saveImageFile()");
     
 
                                     }
                                 
 
-    AbFile imageFile = AbFile::createAbFile(category +newImageFileName);;
+    AbFile* imageFile = AbFile::createAbFile(category +newImageFileName);;
     
-imageFile.createNewFile();
-    
-
-    ImageUtil imageUtil = ImageUtil::getInstance();;
+imageFile->createNewFile();
     
 
-    BufferedImage newBufferedImage = imageUtil.createBufferedImageForSave(bufferedImage, newWidth, newHeight);;
+    ImageUtil* imageUtil = ImageUtil::getInstance();;
     
 
-    bool isWritten = ImageIOUtil::write(newBufferedImage, mediaData.getName(), imageFile);;
+    BufferedImage* newBufferedImage = imageUtil->createBufferedImageForSave(bufferedImage, newWidth, newHeight);;
+    
+
+    bool isWritten = ImageIOUtil::write(dynamic_cast<RenderedImage*>(newBufferedImage), mediaData->getName(), imageFile);;
     
 
                         if(!isWritten)
@@ -192,54 +198,54 @@ imageFile.createNewFile();
                                     
 
 
-                            throw Exception("Unable to write.");
+                            throw new Exception("Unable to write.");
                     
 
                                     }
                                 
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().VIEW))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     
-    CommonLabels commonLabels = CommonLabels::getInstance();;
+    CommonLabels* commonLabels = CommonLabels::getInstance();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Get Path: ");
+stringBuffer->append("Get Path: ");
     
-stringBuffer.append(originalImageFile.getPath());
+stringBuffer->append(originalImageFile->getPath());
     
-stringBuffer.append("\nNewImageFileName: ");
+stringBuffer->append("\nNewImageFileName: ");
     
-stringBuffer.append(newImageFileName);
+stringBuffer->append(newImageFileName);
     
-stringBuffer.append("\nCategory: ");
+stringBuffer->append("\nCategory: ");
     
-stringBuffer.append(category);
+stringBuffer->append(category);
     
-stringBuffer.append("\nSave File Type: ");
+stringBuffer->append("\nSave File Type: ");
     
-stringBuffer.append(mediaData.getName());
+stringBuffer->append(mediaData->getName());
     
-stringBuffer.append("\nNew").append(commonLabels.WIDTH_LABEL);
+stringBuffer->append("\nNew")->append(commonLabels->WIDTH_LABEL);
     
-stringBuffer.appendint(newWidth);
+stringBuffer->appendint(newWidth);
     
-stringBuffer.append("\nNew").append(commonLabels.HEIGHT_LABEL);
+stringBuffer->append("\nNew")->append(commonLabels->HEIGHT_LABEL);
     
-stringBuffer.appendint(newHeight);
+stringBuffer->appendint(newHeight);
     
-stringBuffer.append("\nFile Length: ");
+stringBuffer->append("\nFile Length: ");
     
-stringBuffer.appendlong(originalImageFile.length());
+stringBuffer->appendlong(originalImageFile->length());
     
-stringBuffer.append("\nNew File Length: ");
+stringBuffer->append("\nNew File Length: ");
     
-stringBuffer.appendlong(imageFile.length());
+stringBuffer->appendlong(imageFile->length());
     
-this->logUtil.putF(stringBuffer.toString(), this, "saveImageFile()");
+this->logUtil->putF(stringBuffer->toString(), this, "saveImageFile()");
     
 
                                     }

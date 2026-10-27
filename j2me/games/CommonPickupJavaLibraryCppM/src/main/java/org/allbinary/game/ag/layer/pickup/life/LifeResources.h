@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFERESOURCES_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFERESOURCES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class LifeResources
             : public Object
          {
 
-    private: static const LifeResources SINGLETON = LifeResources();
+    private: static LifeResources* SINGLETON() { static std::unique_ptr<LifeResources> value(new LifeResources()); return value.get(); }
 
-    public: static LifeResources getInstance();
+    public: static LifeResources* getInstance();
 
     public: std::string RESOURCE = "life_drop_20_by_20.png";
 

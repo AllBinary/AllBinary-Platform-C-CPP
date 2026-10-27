@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/CompleteMotionGestureInputEvent.h>
@@ -70,33 +76,33 @@ class MotionGestureConfiguration
 
     private: int32_t minimumMotionGesture = 9;
 
-    private: std::string button = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string button = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: BasicColor color = BasicColorFactory::getInstance().BLUE;
+    private: BasicColor* color = BasicColorFactory::getInstance()->BLUE;
 
     private: bool executingActions = true;
 
     private: int32_t mouseButtonMask = 0;
 
-    private: BasicArrayList activeCommands = BasicArrayListD();
+    private: BasicArrayList* activeCommands = new BasicArrayListD();
 
 public: MotionGestureConfiguration(){
 }
 
 
-    public: void addMotionGestureAction(BasicArrayList list, CompleteMotionGestureInputEvent commandAction){
-this->activeCommands.add(MotionGestureToMotionGestureActionAssociation(list, commandAction));
+    public: void addMotionGestureAction(BasicArrayList* list, CompleteMotionGestureInputEvent* commandAction){
+this->activeCommands->add(new MotionGestureToMotionGestureActionAssociation(list, commandAction));
     
 }
 
 
     public: void clearMotionGestureAction(){
-this->activeCommands.clear();
+this->activeCommands->clear();
     
 }
 
 
-    public: BasicArrayList getAssociateCommandActionsList(){
+    public: BasicArrayList* getAssociateCommandActionsList(){
 
 
 
@@ -186,7 +192,7 @@ this->button= button;
 }
 
 
-    public: BasicColor getColor(){
+    public: BasicColor* getColor(){
 
 
 
@@ -196,7 +202,7 @@ this->button= button;
 }
 
 
-    public: void setColor(BasicColor color){
+    public: void setColor(BasicColor* color){
 this->color= color;
     
 }

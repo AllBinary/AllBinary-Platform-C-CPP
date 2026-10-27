@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -64,15 +70,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CompoundAnimationInterface.h"
+        #include "org/allbinary/animation/compound/CompoundAnimationInterface.h"
 
 class CompoundIndexedAnimation: public IndexedAnimation, public CompoundAnimationInterface {
 
-    private: CircularIndexUtil circularIndexUtil;
+    private: CircularIndexUtil* circularIndexUtil;
 
-    private: std::vector<Animation> animationInterfaceArray;
+    private: std::vector<Animation*> animationInterfaceArray;
 
-public: CompoundIndexedAnimation(std::vector<Animation> animationInterfaceArray, AnimationBehavior animationBehavior);
+public: CompoundIndexedAnimation(std::vector<Animation*> animationInterfaceArray, AnimationBehavior* animationBehavior);
 
     public: void setFrame(int32_t index);
 
@@ -90,11 +96,11 @@ public: CompoundIndexedAnimation(std::vector<Animation> animationInterfaceArray,
             
     public: void nextFrame();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
-    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
+    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z);
 
-    public: IndexedAnimation getCurrentAnimation();
+    public: IndexedAnimation* getCurrentAnimation();
 
     public: void nextAnimation();
 
@@ -102,13 +108,13 @@ public: CompoundIndexedAnimation(std::vector<Animation> animationInterfaceArray,
 
     public: void setAnimation(int32_t index);
 
-    public: std::vector<Animation> getAnimationInterfaceArray();
+    public: std::vector<Animation*> getAnimationInterfaceArray();
 
-    public: void setAnimationInterfaceArray(std::vector<Animation> animationInterfaceArray);
+    public: void setAnimationInterfaceArray(std::vector<Animation*> animationInterfaceArray);
 
                 //@Throws(Exception.constructor)
             
-    public: void set(GL gl);
+    public: void set(GL* gl);
 
 };
 

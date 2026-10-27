@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/swing/tree/MutableTreeNode.h>
@@ -48,11 +54,11 @@ class MyGraphicItemEventSource
 
     private: std::string command;
 
-    private: MutableTreeNode treeNode;
+    private: MutableTreeNode* treeNode;
 
     private: double angle = 0;
 
-public: MyGraphicItemEventSource(std::string command, MutableTreeNode treeNode){
+public: MyGraphicItemEventSource(std::string command, MutableTreeNode* treeNode){
 this->command= command;
     
 this->treeNode= treeNode;
@@ -60,7 +66,7 @@ this->treeNode= treeNode;
 }
 
 
-public: MyGraphicItemEventSource(std::string command, double angle, MutableTreeNode treeNode){
+public: MyGraphicItemEventSource(std::string command, double angle, MutableTreeNode* treeNode){
 this->command= command;
     
 this->treeNode= treeNode;
@@ -80,7 +86,7 @@ this->setAngle(angle);
 }
 
 
-    public: MutableTreeNode getTreeNode(){
+    public: MutableTreeNode* getTreeNode(){
 
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/System.h"
@@ -54,16 +60,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogFormatUtil.h"
-#include "Log.h"
+        #include "org/allbinary/logic/communication/log/LogFormatUtil.h"
+#include "org/allbinary/logic/communication/log/Log.h"
 //ActualPlatform
 /*actual*/ class LogUtil
             : public Object
          {
 
-    private: static LogUtil instance() { return LogUtil(); }
+    private: static LogUtil* instance() { static std::unique_ptr<LogUtil> value(new LogUtil()); return value.get(); }
 
-    /*actual*/ public: static LogUtil getInstance(){
+    /*actual*/ public: static LogUtil* getInstance(){
 
 
 
@@ -77,20 +83,20 @@ private: LogUtil(){
 }
 
 
-    private: const LogFormatUtil logFormatUtil = LogFormatUtil::getInstance();
+    private: LogFormatUtil* logFormatUtil = LogFormatUtil::getInstance();
 
-    /*actual*/ public: void putL(Log log){
+    /*actual*/ public: void putL(Log* log){
 
-    std::string specialMessage = log.getSpecialMessage();;
+    std::string specialMessage = log->getSpecialMessage();;
     
 
-    Object* anyType = log.getObject();;
+    Object* anyType = log->getObject();;
     
 
-    std::string functionName = log.getFunctionName();;
+    std::string functionName = log->getFunctionName();;
     
 
-    Object* exception = log.getThrowable();;
+    Object* exception = log->getThrowable();;
     
 this->put(specialMessage, anyType, functionName, exception);
     
@@ -99,32 +105,34 @@ this->put(specialMessage, anyType, functionName, exception);
 
     /*actual*/ public: void putF(std::string specialMessage, Object* anyType, std::string functionName){
 
-    std::string className = CommonStrings::getInstance().EMPTY;;
+    std::string className = CommonStrings::getInstance()->EMPTY;;
     
 
-                        if(anyType->constructor.name.toString() != 
-                                    nullptr
-                                )
+                        if(true)
                         
                                     {
-                                    className= StringMaker().append(anyType->constructor.name.toString()).append(CommonSeps::getInstance().COLON).append(Integer::toHexString(TsUtil::getInstance().hashCode(anyType))).toString();
+                                    className= (new StringMaker())->append(anyType->getClass()->getName())->append(CommonSeps::getInstance()->COLON)->append(Integer.toHexString(TsUtil::getInstance()->hashCode(anyType)))->toString();
     
 
                                     }
                                 
 
-    std::string message = this->logFormatUtil.getS(className, functionName, specialMessage);;
+    std::string message = this->logFormatUtil->getS(className, functionName, specialMessage);;
     
-console.log(this->LOG_SUCCESS + message);
+System.out.print(this->LOG_SUCCESS);
+    
+System.out.println(message);
     
 }
 
 
     /*actual*/ public: void putFS(std::string specialMessage, std::string className, std::string functionName){
 
-    std::string message = this->logFormatUtil.getS(className, functionName, specialMessage);;
+    std::string message = this->logFormatUtil->getS(className, functionName, specialMessage);;
     
-console.log(this->LOG_SUCCESS + message);
+System.out.print(this->LOG_SUCCESS);
+    
+System.out.println(message);
     
 }
 
@@ -133,29 +141,29 @@ console.log(this->LOG_SUCCESS + message);
 
     /*actual*/ public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
 
-    std::string className = CommonStrings::getInstance().EMPTY;;
+    std::string className = CommonStrings::getInstance()->EMPTY;;
     
 
-                        if(anyType->constructor.name.toString() != 
-                                    nullptr
-                                )
+                        if(true)
                         
                                     {
                                     
-    int32_t hashCodeValue = TsUtil::getInstance().hashCode(anyType);;
+    int32_t hashCodeValue = TsUtil::getInstance()->hashCode(anyType);;
     
 
-    std::string hexString = Integer::toHexString(hashCodeValue);;
+    std::string hexString = Integer.toHexString(hashCodeValue);;
     
-className= StringMaker().append(anyType->constructor.name.toString()).append(CommonSeps::getInstance().COLON).append(hexString).toString();
+className= (new StringMaker())->append(anyType->getClass()->getName())->append(CommonSeps::getInstance()->COLON)->append(hexString)->toString();
     
 
                                     }
                                 
 
-    std::string message = this->logFormatUtil.get(className, functionName, specialMessage, exception);;
+    std::string message = this->logFormatUtil->get(className, functionName, specialMessage, exception);;
     
-console.log(this->LOG_SUCCESS + message);
+System.out.print(this->LOG_SUCCESS);
+    
+System.out.println(message);
     
 }
 

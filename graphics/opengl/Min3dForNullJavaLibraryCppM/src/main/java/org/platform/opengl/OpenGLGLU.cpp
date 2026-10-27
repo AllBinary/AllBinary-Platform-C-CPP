@@ -6,6 +6,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -36,9 +42,9 @@ class OpenGLGLU
             : public Object
          {
 
-    private: static OpenGLGLU instance() { return OpenGLGLU(); }
+    private: static OpenGLGLU* instance() { static std::unique_ptr<OpenGLGLU> value(new OpenGLGLU()); return value.get(); }
 
-    public: static OpenGLGLU getInstance(){
+    public: static OpenGLGLU* getInstance(){
 
 
 
@@ -48,38 +54,38 @@ class OpenGLGLU
 }
 
 
-    public: void gluLookAt(GL10 gl, float eyeX, float eyeY, float eyeZ, float centerX, float centerY, float centerZ, float upX, float upY, float upZ){
+    public: void gluLookAt(GL10* gl, float eyeX, float eyeY, float eyeZ, float centerX, float centerY, float centerZ, float upX, float upY, float upZ){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: int32_t gluProject(GL10 gl, float objX, float objY, float objZ, std::vector<float> model, int32_t modelOffset, std::vector<float> project, int32_t projectOffset, std::vector<int32_t> view, int32_t viewOffset, std::vector<float> win, int32_t winOffset){
+    public: int32_t gluProject(GL10* gl, float objX, float objY, float objZ, std::vector<float> model, int32_t modelOffset, std::vector<float> project, int32_t projectOffset, std::vector<int32_t> view, int32_t viewOffset, std::vector<float> win, int32_t winOffset){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: int32_t gluUnProject(GL10 gl, float winX, float winY, float winZ, std::vector<float> model, int32_t modelOffset, std::vector<float> project, int32_t projectOffset, std::vector<int32_t> view, int32_t viewOffset, std::vector<float> obj, int32_t objOffset){
+    public: int32_t gluUnProject(GL10* gl, float winX, float winY, float winZ, std::vector<float> model, int32_t modelOffset, std::vector<float> project, int32_t projectOffset, std::vector<int32_t> view, int32_t viewOffset, std::vector<float> obj, int32_t objOffset){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: void glFrustumf(GL10 gl, float lt, float rt, float btm, float top, float zNear, float zFar){
+    public: void glFrustumf(GL10* gl, float lt, float rt, float btm, float top, float zNear, float zFar){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

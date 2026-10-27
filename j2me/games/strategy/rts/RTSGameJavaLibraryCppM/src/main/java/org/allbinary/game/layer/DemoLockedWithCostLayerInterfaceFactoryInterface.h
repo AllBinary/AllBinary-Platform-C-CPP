@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_DEMOLOCKEDWITHCOSTLAYERINTERFACEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_DEMOLOCKEDWITHCOSTLAYERINTERFACEFACTORYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,11 +45,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CostLayerInterfaceFactoryInterface.h"
+        #include "org/allbinary/game/layer/CostLayerInterfaceFactoryInterface.h"
 
 class DemoLockedWithCostLayerInterfaceFactoryInterface: public CostLayerInterfaceFactoryInterface {
 
-    bool isDemoLocked();
+    public: virtual bool isDemoLocked() = 0;
 
 };
 

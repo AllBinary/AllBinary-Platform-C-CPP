@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -66,9 +72,9 @@ class LevelLayersFinder
             : public Object
          {
 
-    private: static LevelLayersFinder instance() { return LevelLayersFinder(); }
+    private: static LevelLayersFinder* instance() { static std::unique_ptr<LevelLayersFinder> value(new LevelLayersFinder()); return value.get(); }
 
-    public: static LevelLayersFinder getInstance(){
+    public: static LevelLayersFinder* getInstance(){
 
 
 
@@ -78,41 +84,41 @@ class LevelLayersFinder
 }
 
 
-    private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
+    private: EnumerationUtil* enumerationUtil = EnumerationUtil::getInstance();
 
-    public: BasicArrayList get(ABHashtable<Object*, Object*> hashtable){
+    public: BasicArrayList* get(ABHashtable<Object*, Object*>* hashtable){
 
-    SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
+    SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
 
-    BasicArrayList list = BasicArrayListD();;
+    BasicArrayList* list = new BasicArrayListD();;
     
 
-    Enumeration<Object*> enumeration = hashtable.keys();;
+    Enumeration<Object*>* enumeration = hashtable->keys();;
     
 
-    ABHashtable<Object*, Object*> layerHashtableCanBeNull;;
+    ABHashtable<Object*, Object*>* layerHashtableCanBeNull;;
     
 
-    Integer integerCanBeNull;;
+    int32_t integerCanBeNull;;
     
 
-    Integer cachedIntegerCanBeNull;;
+    int32_t cachedIntegerCanBeNull;;
     
 
-        while(this->enumerationUtil.hasMoreElements(enumeration))
+        while(this->enumerationUtil->hasMoreElements(enumeration))
         {
-layerHashtableCanBeNull= hashtable.get(this->enumerationUtil.nextElement(enumeration));
+layerHashtableCanBeNull= dynamic_cast<ABHashtable<Object*, Object*>*>(hashtable->get(this->enumerationUtil->nextElement(enumeration)));
     
-integerCanBeNull= layerHashtableCanBeNull.get(Layer::ID);
+integerCanBeNull= layerHashtableCanBeNull->get(Layer::ID);
     
-cachedIntegerCanBeNull= smallIntegerSingletonFactory.getAt(integerCanBeNull.intValue());
+cachedIntegerCanBeNull= smallIntegerSingletonFactory->getAt(integerCanBeNull.intValue());
     
 
-                        if(!list.contains(cachedIntegerCanBeNull))
+                        if(!list->contains(cachedIntegerCanBeNull))
                         
                                     {
-                                    list.add(cachedIntegerCanBeNull);
+                                    list->add(cachedIntegerCanBeNull);
     
 
                                     }

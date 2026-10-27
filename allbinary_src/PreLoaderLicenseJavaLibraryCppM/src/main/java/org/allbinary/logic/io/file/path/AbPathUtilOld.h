@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_PATH_ABPATHUTILOLD_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_PATH_ABPATHUTILOLD_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -69,27 +75,27 @@ class AbPathUtilOld
             : public Object
          {
 
-    private: static AbPathUtilOld instance() { return AbPathUtilOld(); }
+    private: static AbPathUtilOld* instance() { static std::unique_ptr<AbPathUtilOld> value(new AbPathUtilOld()); return value.get(); }
 
-    public: static AbPathUtilOld getInstance();
+    public: static AbPathUtilOld* getInstance();
 
-    private: static const int32_t MIN = 4;
+    private: static inline const int32_t MIN = 4;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const AbPathData abPathData = AbPathData::getInstance();
+    private: AbPathData* abPathData = AbPathData::getInstance();
 
-    private: const FilePathData filePathData = FilePathData::getInstance();
+    private: FilePathData* filePathData = FilePathData::getInstance();
 
 private: AbPathUtilOld();
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getExtension(AbFilePath abFilePath);
+    public: std::string getExtension(AbFilePath* abFilePath);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getExtension(AbPath abPath);
+    public: std::string getExtension(AbPath* abPath);
 
                 //@Throws(Exception.constructor)
             
@@ -97,11 +103,11 @@ private: AbPathUtilOld();
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getWithoutExtension(AbFilePath abFilePath);
+    public: std::string getWithoutExtension(AbFilePath* abFilePath);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getWithoutExtension(AbPath abPath);
+    public: std::string getWithoutExtension(AbPath* abPath);
 
                 //@Throws(Exception.constructor)
             
@@ -125,7 +131,7 @@ private: AbPathUtilOld();
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: AbPath removeNameFromPath(std::string categoryPath);
+    public: AbPath* removeNameFromPath(std::string categoryPath);
 
 };
 

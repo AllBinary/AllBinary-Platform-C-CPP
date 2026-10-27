@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -95,74 +101,74 @@
         
 class TitleBodyValidation: public Validation, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string body;
 
-    private: TitleNotRequiredValidation titleValidation;
+    private: TitleNotRequiredValidation* titleValidation;
 
 public: TitleBodyValidation(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
-this->body= stringUtil.EMPTY_STRING;
+this->body= stringUtil->EMPTY_STRING;
     
-this->titleValidation= TitleNotRequiredValidation();
+this->titleValidation= new TitleNotRequiredValidation();
     
 }
 
 
-public: TitleBodyValidation(Document document){
+public: TitleBodyValidation(Document* document){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.CONSTRUCTOR, this, "Constructor(document)");
+                                    this->logUtil->putF(this->commonStrings.CONSTRUCTOR, this, "Constructor(document)");
     
 
                                     }
                                 
 
-    NodeList nodeList = document.getElementsByTagName(BodyData::getInstance().NAME);;
+    NodeList* nodeList = document->getElementsByTagName(BodyData::getInstance()->NAME);;
     
 
 
 
 
                         for (
-    int32_t index = 0;index < nodeList.getLength(); index++)
+    int32_t index = 0;index < nodeList->getLength(); index++)
         {
 
-    Node aBodyNode = nodeList.item(index);;
+    Node* aBodyNode = nodeList->item(index);;
     
 
-    Node aBodyValueNode = DomSearchHelper::getNode(DomData::VALUE, aBodyNode.getChildNodes());;
+    Node* aBodyValueNode = DomSearchHelper::getNode(DomData::VALUE, aBodyNode->getChildNodes());;
     
 this->body= DomNodeHelper::getTextNodeValue(aBodyValueNode);
     
 
-    Node titleNode = DomSearchHelper::getNode(TitleData::getInstance().NAME, aBodyNode.getChildNodes());;
+    Node* titleNode = DomSearchHelper::getNode(TitleData::getInstance()->NAME, aBodyNode->getChildNodes());;
     
-this->titleValidation= TitleNotRequiredValidation(titleNode);
+this->titleValidation= new TitleNotRequiredValidation(titleNode);
     
 
                         if(index > 1)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("To Many Body Nodes", this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("To Many Body Nodes", this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -175,12 +181,12 @@ this->titleValidation= TitleNotRequiredValidation(titleNode);
 }
 
 
-public: TitleBodyValidation(HashMap<Object*, Object*> hashMap){
+public: TitleBodyValidation(HashMap<Object*, Object*>* hashMap){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, "Constructor(hashmap)");
+                                    this->logUtil->putF(this->commonStrings.START, this, "Constructor(hashmap)");
     
 
                                     }
@@ -192,31 +198,31 @@ this->getFormData(hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<Object*, Object*> hashMap){
-this->body= hashMap.get(BodyData::getInstance().NAME);
+    public: void getFormData(HashMap<Object*, Object*>* hashMap){
+this->body= hashMap->get(BodyData::getInstance()->NAME);
     
-this->titleValidation= TitleNotRequiredValidation(hashMap);
+this->titleValidation= new TitleNotRequiredValidation(hashMap);
     
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-    Boolean isValid = Boolean::TRUE;;
+    bool isValid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("TitleBodyValidation", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("TitleBodyValidation", this, this->commonStrings.IS_VALID);
     
 
                                     }
                                 
 
-                        if(!StringValidationUtil::getInstance().isValidNotRequired(this->body, BodyData::getInstance().MIN, AbSqlData::MAXBLOB))
+                        if(!StringValidationUtil::getInstance()->isValidNotRequired(this->body, BodyData::getInstance()->MIN, AbSqlData::MAXBLOB))
                         
                                     {
                                     isValid= Boolean::FALSE;
@@ -225,7 +231,7 @@ this->titleValidation= TitleNotRequiredValidation(hashMap);
                                     }
                                 
 
-                        if(!this->titleValidation.isValid().valueOf())
+                        if(!this->titleValidation->isValid().valueOf())
                         
                                     {
                                     isValid= Boolean::FALSE;
@@ -234,10 +240,10 @@ this->titleValidation= TitleNotRequiredValidation(hashMap);
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("TitleBodyValidation: " +isValid, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("TitleBodyValidation: " +isValid, this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -250,13 +256,13 @@ this->titleValidation= TitleNotRequiredValidation(hashMap);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -276,18 +282,18 @@ this->titleValidation= TitleNotRequiredValidation(hashMap);
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
 
                             {
-                            stringBuffer.append("Error: Data submitted is < ");
+                            stringBuffer->append("Error: Data submitted is < ");
     
-stringBuffer.appendint(BodyData::getInstance().MIN);
+stringBuffer->appendint(BodyData::getInstance()->MIN);
     
-stringBuffer.append(" or > ");
+stringBuffer->append(" or > ");
     
-stringBuffer.appendint(AbSqlData::MAXBLOB);
+stringBuffer->appendint(AbSqlData::MAXBLOB);
     
 
                             }
@@ -296,17 +302,17 @@ stringBuffer.appendint(AbSqlData::MAXBLOB);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -322,7 +328,7 @@ stringBuffer.appendint(AbSqlData::MAXBLOB);
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -332,7 +338,7 @@ stringBuffer.appendint(AbSqlData::MAXBLOB);
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -344,20 +350,20 @@ stringBuffer.appendint(AbSqlData::MAXBLOB);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Title Body: " +this->body, this, "toXmlNode(document)");
+                                    this->logUtil->putF("Title Body: " +this->body, this, "toXmlNode(document)");
     
 
                                     }
                                 
 
-    Node node = ModDomHelper::createNameValueNodes(document, BodyData::getInstance().NAME, this->body);;
+    Node* node = ModDomHelper::createNameValueNodes(document, BodyData::getInstance()->NAME, this->body);;
     
-node.appendChild(this->titleValidation.toXmlNode(document));
+node->appendChild(this->titleValidation->toXmlNode(document));
     
 
 

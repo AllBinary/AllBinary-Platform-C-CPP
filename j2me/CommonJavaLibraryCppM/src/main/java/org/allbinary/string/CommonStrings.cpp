@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -54,9 +60,9 @@ class CommonStrings
             : public Object
          {
 
-    private: static CommonStrings instance() { return CommonStrings(); }
+    private: static CommonStrings* instance() { static std::unique_ptr<CommonStrings> value(new CommonStrings()); return value.get(); }
 
-    public: static CommonStrings getInstance(){
+    public: static CommonStrings* getInstance(){
 
 
 

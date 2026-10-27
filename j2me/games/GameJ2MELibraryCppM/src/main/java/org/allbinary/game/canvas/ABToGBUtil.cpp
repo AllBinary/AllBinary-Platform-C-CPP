@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -52,9 +58,9 @@ class ABToGBUtil
             : public Object
          {
 
-    private: static ABToGBUtil instance() { return ABToGBUtil(); }
+    private: static ABToGBUtil* instance() { static std::unique_ptr<ABToGBUtil> value(new ABToGBUtil()); return value.get(); }
 
-    public: static ABToGBUtil getInstance(){
+    public: static ABToGBUtil* getInstance(){
 
 
 
@@ -64,9 +70,9 @@ class ABToGBUtil
 }
 
 
-    public: Canvas abCanvas = NullCanvas::NULL_CANVAS;
+    public: Canvas* abCanvas = NullCanvas::NULL_CANVAS;
 
-    public: AllBinaryGameLayerManager allBinaryGameLayerManager = AllBinaryGameLayerManager::getNullInstance();
+    public: AllBinaryGameLayerManager* allBinaryGameLayerManager = AllBinaryGameLayerManager::getNullInstance();
 
 };
 

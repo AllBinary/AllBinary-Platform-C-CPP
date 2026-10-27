@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTBASE_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTBASE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -87,47 +93,47 @@
         
 class WaypointBase
             : public Object
-        : public EventListenerInterface {
+        , public EventListenerInterface {
 
-    public: static WaypointBase NULL_WAYPOINT_BASE = WaypointBase(NoSound::getInstance());
+    public: static WaypointBase* NULL_WAYPOINT_BASE() { static std::unique_ptr<WaypointBase> value(new WaypointBase(NoSound::getInstance())); return value.get(); }
 
-    private: const BasicArrayList connectedWaypointList = BasicArrayListD();
+    private: BasicArrayList* connectedWaypointList = new BasicArrayListD();
 
-    private: Sound sound;
+    private: Sound* sound;
 
-    protected: AllBinaryGameLayerManager allBinaryGameLayerManagerP = AllBinaryGameLayerManager::getNullInstance();
+    protected: AllBinaryGameLayerManager* allBinaryGameLayerManagerP = AllBinaryGameLayerManager::getNullInstance();
 
-public: WaypointBase(Sound sound);
+public: WaypointBase(Sound* sound);
 
-    public: Sound getSound();
-
-                //@Throws(Exception.constructor)
-            
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
-
-    public: BasicArrayList getConnectedWaypointList();
-
-    public: void onEvent(AllBinaryEventObject eventObject);
+    public: Sound* getSound();
 
                 //@Throws(Exception.constructor)
             
-    public: PathFindingInfo getPathFindingInfo(GeographicMapCellPosition geographicMapCellPosition);
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager);
+
+    public: BasicArrayList* getConnectedWaypointList();
+
+    public: void onEvent(AllBinaryEventObject* eventObject);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getPathsList(GeographicMapCellPosition geographicMapCellPosition, PathFindingInfo pathFindingInfo, MultipassState multipassState);
+    public: PathFindingInfo* getPathFindingInfo(GeographicMapCellPosition* geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getPathsListRunnable(GeographicMapCellPosition geographicMapCellPosition);
+    public: BasicArrayList* getPathsList(GeographicMapCellPosition* geographicMapCellPosition, PathFindingInfo* pathFindingInfo, MultipassState* multipassState);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getPathsListFromCacheOnly(GeographicMapCellPosition geographicMapCellPosition);
+    public: BasicArrayList* getPathsListRunnable(GeographicMapCellPosition* geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(PathFindingLayerInterface unitLayer);
+    public: BasicArrayList* getPathsListFromCacheOnly(GeographicMapCellPosition* geographicMapCellPosition);
+
+                //@Throws(Exception.constructor)
+            
+    public: void visit(PathFindingLayerInterface* unitLayer);
 
     public: void reset();
 

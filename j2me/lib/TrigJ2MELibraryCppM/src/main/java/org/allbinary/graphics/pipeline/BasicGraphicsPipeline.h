@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PIPELINE_BASICGRAPHICSPIPELINE_H
         #define ORG_ALLBINARY_GRAPHICS_PIPELINE_BASICGRAPHICSPIPELINE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,11 +72,11 @@ class BasicGraphicsPipeline
             : public Object
          {
 
-    protected: BasicArrayList pointBasicArrayList;
+    protected: BasicArrayList* pointBasicArrayList;
 
-public: BasicGraphicsPipeline(BasicArrayList points);
+public: BasicGraphicsPipeline(BasicArrayList* points);
 
-    public: void setInitMatrix(BasicArrayList points);
+    public: void setInitMatrix(BasicArrayList* points);
 
     public: void createMatrix();
 
@@ -80,9 +86,9 @@ public: BasicGraphicsPipeline(BasicArrayList points);
 
                 //@Throws(Exception.constructor)
             
-    public: void rotateToAngle(Angle angle);
+    public: void rotateToAngle(Angle* angle);
 
-    private: const NoDecimalTrigTable noDecimalTrigTable = NoDecimalTrigTable::getInstance();
+    private: NoDecimalTrigTable* noDecimalTrigTable = NoDecimalTrigTable::getInstance();
 
                 //@Throws(Exception.constructor)
             
@@ -92,7 +98,7 @@ public: BasicGraphicsPipeline(BasicArrayList points);
             
     public: void mirror(int32_t width);
 
-    public: BasicArrayList getMatrix();
+    public: BasicArrayList* getMatrix();
 
 };
 

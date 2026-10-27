@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEANIMATIONLISTENER_H
         #define ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEANIMATIONLISTENER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,7 +47,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShakeEvent.h"
+        #include "org/allbinary/animation/transition/shake/ShakeEvent.h"
 
 class ShakeAnimationListener
             : public Object
@@ -53,7 +59,7 @@ class ShakeAnimationListener
 
     public: void onLargeShakeEvent();
 
-    public: void onShakeEvent(ShakeEvent shakeEvent);
+    public: void onShakeEvent(ShakeEvent* shakeEvent);
 
     public: int32_t getType();
 

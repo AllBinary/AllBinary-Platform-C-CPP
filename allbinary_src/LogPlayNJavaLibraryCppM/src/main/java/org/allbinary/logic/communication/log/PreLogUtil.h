@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_PRELOGUTIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_PRELOGUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Throwable.h"
@@ -58,7 +64,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogFormatUtil.h"
+        #include "org/allbinary/logic/communication/log/LogFormatUtil.h"
 //ActualPlatform
 /*actual*/ class PreLogUtil
             : public Object
@@ -66,7 +72,7 @@
 
     /*actual*/ public: static void put(std::string specialMessage, Object* anyType, std::string functionName);
 
-    private: static const std::string LOG_SUCCESS = "org.allbinary: ";
+    private: static inline const std::string LOG_SUCCESS = "org.allbinary: ";
 
     /*actual*/ public: static void putOE(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
 

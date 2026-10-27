@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -85,19 +91,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SpriteIndexedAnimation.h"
+        #include "org/allbinary/animation/image/sprite/SpriteIndexedAnimation.h"
 
 class ImageCaptionIndexedAnimationFactory
             : public Object
-        : public AnimationInterfaceFactoryInterface {
+        , public AnimationInterfaceFactoryInterface {
 
-    protected: const AnimationFactoryImageScaleUtil animationFactoryImageScaleUtil = AnimationFactoryImageScaleUtil::getInstance();
+    protected: AnimationFactoryImageScaleUtil* animationFactoryImageScaleUtil = AnimationFactoryImageScaleUtil::getInstance();
 
-    private: const AnimationFactorySpriteScaleUtil animationFactorySpriteScaleUtil = AnimationFactorySpriteScaleUtil::getInstance();
+    private: AnimationFactorySpriteScaleUtil* animationFactorySpriteScaleUtil = AnimationFactorySpriteScaleUtil::getInstance();
 
-    private: Image captionImage;
+    private: Image* captionImage;
 
-    private: Image spriteMovieImage;
+    private: Image* spriteMovieImage;
 
     private: int32_t frameWidth;
 
@@ -113,13 +119,13 @@ class ImageCaptionIndexedAnimationFactory
 
     private: int32_t time;
 
-    private: Sound soundInterface;
+    private: Sound* soundInterface;
 
-    public: ScaleProperties scaleProperties = ScaleProperties::instance();
+    public: ScaleProperties* scaleProperties = ScaleProperties::instance;
 
-    private: AnimationBehaviorFactory animationBehaviorFactory;
+    private: AnimationBehaviorFactory* animationBehaviorFactory;
 
-public: ImageCaptionIndexedAnimationFactory(Image captionImage, Image spriteMovieImage, Sound soundInterface, int32_t frameWidth, int32_t frameHeight, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy, int32_t time, AnimationBehaviorFactory animationBehaviorFactory){
+public: ImageCaptionIndexedAnimationFactory(Image* captionImage, Image* spriteMovieImage, Sound* soundInterface, int32_t frameWidth, int32_t frameHeight, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy, int32_t time, AnimationBehaviorFactory* animationBehaviorFactory){
 
                         if(animationBehaviorFactory == AnimationBehaviorFactory::getInstance())
                         
@@ -156,21 +162,21 @@ this->animationBehaviorFactory= animationBehaviorFactory;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId){
+    public: Animation* getInstance(int32_t instanceId){
 
-    Image scaledImage = this->animationFactoryImageScaleUtil.createImage(this->captionImage, this->captionImage.getWidth(), this->captionImage.getHeight(), this->scaleProperties.scaleWidth, this->scaleProperties.scaleHeight);;
+    Image* scaledImage = this->animationFactoryImageScaleUtil->createImage(this->captionImage, this->captionImage->getWidth(), this->captionImage->getHeight(), this->scaleProperties->scaleWidth, this->scaleProperties->scaleHeight);;
     
 
-    Animation animationInterface = ImageAnimation(scaledImage, this->animationBehaviorFactory.getOrCreateInstance());;
+    Animation* animationInterface = new ImageAnimation(scaledImage, this->animationBehaviorFactory->getOrCreateInstance());;
     
 
-    Sprite sprite = this->animationFactorySpriteScaleUtil.createImage(this->spriteMovieImage, this->frameWidth, this->frameHeight, this->scaleProperties.scaleWidth, this->scaleProperties.scaleHeight);;
+    Sprite* sprite = this->animationFactorySpriteScaleUtil->createImage(this->spriteMovieImage, this->frameWidth, this->frameHeight, this->scaleProperties->scaleWidth, this->scaleProperties->scaleHeight);;
     
 
-    IndexedAnimation movieIndexedAnimationInterface = SpriteIndexedAnimation(sprite, this->spriteMovieImage, BasicColorUtil::getInstance().ZERO_ARRAY, this->animationBehaviorFactory.getOrCreateInstance());;
+    IndexedAnimation* movieIndexedAnimationInterface = new SpriteIndexedAnimation(sprite, this->spriteMovieImage, BasicColorUtil::getInstance()->ZERO_ARRAY, this->animationBehaviorFactory->getOrCreateInstance());;
     
 
-    Player player = this->soundInterface.getPlayerP();;
+    Player* player = this->soundInterface->getPlayerP();;
     
 
                         if(player == 
@@ -181,7 +187,7 @@ this->animationBehaviorFactory= animationBehaviorFactory;
                                     
 
 
-                            throw Exception("Sound Was not Initialized");
+                            throw new Exception("Sound Was not Initialized");
                     
 
                                     }
@@ -190,12 +196,12 @@ this->animationBehaviorFactory= animationBehaviorFactory;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CaptionIndexedAnimation(animationInterface, movieIndexedAnimationInterface, player, this->captionDx, this->captionDy, this->dx, this->dy, this->time, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new CaptionIndexedAnimation(animationInterface, movieIndexedAnimationInterface, player, this->captionDx, this->captionDy, this->dx, this->dy, this->time, this->animationBehaviorFactory->getOrCreateInstance());
     
 }
 
 
-    public: void setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties* scaleProperties){
 this->scaleProperties= scaleProperties;
     
 }

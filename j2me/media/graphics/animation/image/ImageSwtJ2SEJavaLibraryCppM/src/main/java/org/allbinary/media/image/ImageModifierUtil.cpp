@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -78,15 +84,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageCopyUtil.h"
+        #include "org/allbinary/media/image/ImageCopyUtil.h"
 
 class ImageModifierUtil
             : public Object
          {
 
-    private: static ImageModifierUtil instance() { return ImageModifierUtil(); }
+    private: static ImageModifierUtil* instance() { static std::unique_ptr<ImageModifierUtil> value(new ImageModifierUtil()); return value.get(); }
 
-    public: static ImageModifierUtil getInstanceOrCreate(){
+    public: static ImageModifierUtil* getInstanceOrCreate(){
 
 
 
@@ -96,61 +102,61 @@ class ImageModifierUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const ImageCopyUtil imageCopyUtil = ImageCopyUtil::getInstance();
+    private: ImageCopyUtil* imageCopyUtil = ImageCopyUtil::getInstance();
 
-    private: const Features features = Features::getInstance();
+    private: Features* features = Features::getInstance();
 
-    public: void setBasicColorP(BasicColor basicColor){
+    public: void setBasicColorP(BasicColor* basicColor){
 }
 
 
-    public: void setColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor){
+    public: void setColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor){
 
-    org::eclipse::swt::graphics::Image newBufferedImage;;
+    org::eclipse::swt::graphics::Image* newBufferedImage;;
     
 
-                        if(image.isMutable())
+                        if(image->isMutable())
                         
                                     {
                                     
-    SwtMutableImage swtImage = image;;
+    SwtMutableImage* swtImage = dynamic_cast<SwtMutableImage*>(image);;
     
-newBufferedImage= swtImage.getImage();
+newBufferedImage= dynamic_cast<org::eclipse::swt::graphics::Image*>(swtImage->getImage());
     
 
                                     }
                                 
                         else {
                             
-    SwtImmutableImage swtImage = image;;
+    SwtImmutableImage* swtImage = dynamic_cast<SwtImmutableImage*>(image);;
     
-newBufferedImage= swtImage.getImage();
+newBufferedImage= dynamic_cast<org::eclipse::swt::graphics::Image*>(swtImage->getImage());
     
 
                         }
                             
 
-    int16_t r = basicColor.red;;
+    int16_t r = basicColor->red;;
     
 
-    int16_t g = basicColor.green;;
+    int16_t g = basicColor->green;;
     
 
-    int16_t b = basicColor.blue;;
+    int16_t b = basicColor->blue;;
     
 
-    int32_t width = image.getWidth();;
+    int32_t width = image->getWidth();;
     
 
-    int32_t height = image.getHeight();;
+    int32_t height = image->getHeight();;
     
 
-    ImageData imageData = newBufferedImage.getImageData();;
+    ImageData* imageData = newBufferedImage->getImageData();;
     
 
-                        if(imageData.depth == 24)
+                        if(imageData->depth == 24)
                         
                                     {
                                     
@@ -179,23 +185,23 @@ newBufferedImage= swtImage.getImage();
                         for (
     int32_t index2 = 0;index2 < height; index2++)
         {
-index3= (index2 *imageData.bytesPerLine) +(index *4);
+index3= (index2 *imageData->bytesPerLine) +(index *4);
     
-rx= (imageData.data[index3]&0xFF)<<16;
+rx= (imageData->data[index3]&0xFF)<<16;
     
-gx= (imageData.data[index3 +1]&0xFF)<<8;
+gx= (imageData->data[index3 +1]&0xFF)<<8;
     
-bx= (imageData.data[index3 +2]&0xFF);
+bx= (imageData->data[index3 +2]&0xFF);
     
 
                         if(rx != 0 || gx != 0 || bx != 0)
                         
                                     {
-                                    imageData.data[index3]= r;
+                                    imageData->data[index3]= r;
     
-imageData.data[index3 +1]= g;
+imageData->data[index3 +1]= g;
     
-imageData.data[index3 +2]= b;
+imageData->data[index3 +2]= b;
     
 
                                     }
@@ -210,25 +216,25 @@ imageData.data[index3 +2]= b;
 }
 
 
-    public: void changeColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor){
+    public: void changeColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor){
 
-                        if(this->features.isFeature(OpenGLFeatureFactory::getInstance().OPENGL))
+                        if(this->features->isFeature(OpenGLFeatureFactory::getInstance()->OPENGL))
                         
                                     {
                                     
-                        if(image.getType() >= OpenGLESImage::TYPE)
+                        if(image->getType() >= OpenGLESImage::TYPE)
                         
                                     {
                                     
-    OpenGLESImage openGLESImage = (image);;
+    OpenGLESImage* openGLESImage = (dynamic_cast<OpenGLESImage*>(image));;
     
-openGLESImage.imageProcessor= ModifierOpenGLESImageProcessor::getInstance();
+openGLESImage->imageProcessor= ModifierOpenGLESImageProcessor::getInstance();
     
-openGLESImage.openGLESImageProperties.redf= basicColor.getRedComponent();
+openGLESImage->openGLESImageProperties.redf= basicColor->getRedComponent();
     
-openGLESImage.openGLESImageProperties.greenf= basicColor.getGreenComponent();
+openGLESImage->openGLESImageProperties.greenf= basicColor->getGreenComponent();
     
-openGLESImage.openGLESImageProperties.bluef= basicColor.getBlueComponent();
+openGLESImage->openGLESImageProperties.bluef= basicColor->getBlueComponent();
     
 
 
@@ -243,25 +249,25 @@ openGLESImage.openGLESImageProperties.bluef= basicColor.getBlueComponent();
                                     }
                                 
 
-    org::eclipse::swt::graphics::Image newBufferedImage;;
+    org::eclipse::swt::graphics::Image* newBufferedImage;;
     
 
-                        if(image.isMutable())
+                        if(image->isMutable())
                         
                                     {
                                     
-    SwtMutableImage swtImage = image;;
+    SwtMutableImage* swtImage = dynamic_cast<SwtMutableImage*>(image);;
     
-newBufferedImage= swtImage.getImage();
+newBufferedImage= dynamic_cast<org::eclipse::swt::graphics::Image*>(swtImage->getImage());
     
 
                                     }
                                 
                         else {
                             
-    SwtImmutableImage swtImage = image;;
+    SwtImmutableImage* swtImage = dynamic_cast<SwtImmutableImage*>(image);;
     
-newBufferedImage= swtImage.getImage();
+newBufferedImage= dynamic_cast<org::eclipse::swt::graphics::Image*>(swtImage->getImage());
     
 
                         }
@@ -270,13 +276,13 @@ newBufferedImage= swtImage.getImage();
     float MAX = 255;;
     
 
-    float r = (basicColor.red) /MAX;;
+    float r = (basicColor->red) /MAX;;
     
 
-    float g = (basicColor.green) /MAX;;
+    float g = (basicColor->green) /MAX;;
     
 
-    float b = (basicColor.blue) /MAX;;
+    float b = (basicColor->blue) /MAX;;
     
 
     int32_t rx= 0;;
@@ -288,14 +294,14 @@ newBufferedImage= swtImage.getImage();
     int32_t bx= 0;;
     
 
-    ImageData imageData = newBufferedImage.getImageData();;
+    ImageData* imageData = newBufferedImage->getImageData();;
     
 
-                        if(imageData.depth == 24)
+                        if(imageData->depth == 24)
                         
                                     {
                                     
-    int32_t size = imageData.data.length;;
+    int32_t size = imageData->data.length;;
     
 
 
@@ -304,11 +310,11 @@ newBufferedImage= swtImage.getImage();
                         for (
     int32_t index = 0;index < size; )
         {
-rx= (imageData.data[index]&0xFF)<<16;
+rx= (imageData->data[index]&0xFF)<<16;
     
-gx= (imageData.data[index +1]&0xFF)<<8;
+gx= (imageData->data[index +1]&0xFF)<<8;
     
-bx= (imageData.data[index +2]&0xFF);
+bx= (imageData->data[index +2]&0xFF);
     
 rx *= r;
     
@@ -316,11 +322,11 @@ gx *= g;
     
 bx *= b;
     
-imageData.data[index]= rx;
+imageData->data[index]= rx;
     
-imageData.data[index +1]= gx;
+imageData->data[index +1]= gx;
     
-imageData.data[index +2]= bx;
+imageData->data[index +2]= bx;
     
 }
 
@@ -330,21 +336,21 @@ imageData.data[index +2]= bx;
 }
 
 
-    public: void setAlpha(Image unusedOriginalImage, Image image, int32_t imageIndex, int32_t alphaInt){
+    public: void setAlpha(Image* unusedOriginalImage, Image* image, int32_t imageIndex, int32_t alphaInt){
 
-                        if(this->features.isFeature(OpenGLFeatureFactory::getInstance().OPENGL))
+                        if(this->features->isFeature(OpenGLFeatureFactory::getInstance()->OPENGL))
                         
                                     {
                                     
-                        if(image.getType() >= OpenGLESImage::TYPE)
+                        if(image->getType() >= OpenGLESImage::TYPE)
                         
                                     {
                                     
-    OpenGLESImage openGLESImage = (image);;
+    OpenGLESImage* openGLESImage = (dynamic_cast<OpenGLESImage*>(image));;
     
-openGLESImage.imageProcessor= ModifierOpenGLESImageProcessor::getInstance();
+openGLESImage->imageProcessor= ModifierOpenGLESImageProcessor::getInstance();
     
-openGLESImage.openGLESImageProperties.alphaf= (alphaInt) /255;
+openGLESImage->openGLESImageProperties.alphaf= (alphaInt) /255;
     
 
 
@@ -363,50 +369,50 @@ this->setAlphaSWT(image, alphaInt);
 }
 
 
-    public: void setAlphaSWT(Image image, int32_t alphaInt){
+    public: void setAlphaSWT(Image* image, int32_t alphaInt){
 
     int8_t alpha = alphaInt;;
     
 
-    org::eclipse::swt::graphics::Image newBufferedImage;;
+    org::eclipse::swt::graphics::Image* newBufferedImage;;
     
 
-                        if(image.isMutable())
+                        if(image->isMutable())
                         
                                     {
                                     
-    SwtMutableImage swtImage = image;;
+    SwtMutableImage* swtImage = dynamic_cast<SwtMutableImage*>(image);;
     
-newBufferedImage= swtImage.getImage();
+newBufferedImage= dynamic_cast<org::eclipse::swt::graphics::Image*>(swtImage->getImage());
     
 
                                     }
                                 
                         else {
                             
-    SwtImmutableImage swtImage = image;;
+    SwtImmutableImage* swtImage = dynamic_cast<SwtImmutableImage*>(image);;
     
-newBufferedImage= swtImage.getImage();
+newBufferedImage= dynamic_cast<org::eclipse::swt::graphics::Image*>(swtImage->getImage());
     
 
                         }
                             
-newBufferedImage.getImageData().alpha= alpha;
+newBufferedImage->getImageData()->alpha= alpha;
     
 }
 
 
-    public: std::vector<Image> getImageArray(std::vector<Image> originalImageArray){
+    public: std::vector<Image*> getImageArray(std::vector<Image*> originalImageArray){
 
         try {
             
-    std::vector<Image> newImageArray = std::vector<Image>(originalImageArray.length);;
+    std::vector<Image*> newImageArray = std::vector<Image*>(originalImageArray.length);;
     
 
     int32_t size = newImageArray.size();;
     
 
-    Image originalImage;;
+    Image* originalImage;;
     
 
 
@@ -418,7 +424,7 @@ newBufferedImage.getImageData().alpha= alpha;
 originalImage= originalImageArray[index];
     
 
-    Image image = this->imageCopyUtil.createImage(originalImage);;
+    Image* image = this->imageCopyUtil->createImage(originalImage);;
     
 newImageArray[index]= image;
     
@@ -432,12 +438,12 @@ newImageArray[index]= image;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil::putOE(commonStrings.EXCEPTION, this, "getImageArray", e);
+PreLogUtil::putOE(commonStrings->EXCEPTION, this, "getImageArray", &e);
     
 
 
@@ -450,7 +456,7 @@ PreLogUtil::putOE(commonStrings.EXCEPTION, this, "getImageArray", e);
 }
 
 
-    public: void handleImage(std::vector<Image> imageArray, int32_t index, Image image){
+    public: void handleImage(std::vector<Image*> imageArray, int32_t index, Image* image){
 }
 
 

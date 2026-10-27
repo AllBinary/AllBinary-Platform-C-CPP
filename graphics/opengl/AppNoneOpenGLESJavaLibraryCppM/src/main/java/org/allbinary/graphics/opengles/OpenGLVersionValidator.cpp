@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/opengles/shader/ShaderComposite.h>
@@ -46,9 +52,9 @@ class OpenGLVersionValidator
             : public Object
          {
 
-    private: static OpenGLVersionValidator instance() { return OpenGLVersionValidator(); }
+    private: static OpenGLVersionValidator* instance() { static std::unique_ptr<OpenGLVersionValidator> value(new OpenGLVersionValidator()); return value.get(); }
 
-    public: static OpenGLVersionValidator getInstance(){
+    public: static OpenGLVersionValidator* getInstance(){
 
 
 
@@ -78,7 +84,7 @@ class OpenGLVersionValidator
 }
 
 
-    public: void setShaderComposite(ShaderComposite shaderComposite, Object* anyType){
+    public: void setShaderComposite(ShaderComposite* shaderComposite, Object* anyType){
 }
 
 

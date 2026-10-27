@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/awt/Rectangle.h>
@@ -61,27 +67,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionRectangles.h"
-#include "MotionRectangleConstraintsInterface.h"
-#include "MotionRectangle.h"
+        #include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
+#include "org/allbinary/media/image/comparison/motion/MotionRectangleConstraintsInterface.h"
+#include "org/allbinary/media/image/comparison/motion/MotionRectangle.h"
 
 class ConstrainedMotionRectangles: public MotionRectangles {
 
-    private: static const std::string NAME = "constrainedMotionRectangles_";
+    private: static inline const std::string NAME = "constrainedMotionRectangles_";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: MotionRectangleConstraintsInterface motionRectangleConstraintsInterface;
+    private: MotionRectangleConstraintsInterface* motionRectangleConstraintsInterface;
 
-public: ConstrainedMotionRectangles(MotionRectangleConstraintsInterface motionRectangleConstraintsInterface, MotionRectangles motionRectangles);
+public: ConstrainedMotionRectangles(MotionRectangleConstraintsInterface* motionRectangleConstraintsInterface, MotionRectangles* motionRectangles);
 
                 //@Throws(Exception.constructor)
             
-    public: void applyMotionRectangleConstraints(MotionRectangles motionRectangles);
+    public: void applyMotionRectangleConstraints(MotionRectangles* motionRectangles);
 
-    public: MotionRectangleConstraintsInterface getMotionRectangleConstraintsInterface();
+    public: MotionRectangleConstraintsInterface* getMotionRectangleConstraintsInterface();
 
-    public: void setMotionRectangleConstraintsInterface(MotionRectangleConstraintsInterface motionRectangleConstraintsInterface);
+    public: void setMotionRectangleConstraintsInterface(MotionRectangleConstraintsInterface* motionRectangleConstraintsInterface);
 
 };
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -74,27 +80,27 @@
         
 class HelpPaintable: public Paintable, public UpdateMyFontInterface {
 
-    protected: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
+    protected: DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();
 
-    protected: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
+    protected: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
 
-    protected: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
+    protected: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
 
     protected: int32_t anchor = Anchor::TOP_LEFT;
 
     protected: std::string title;
 
-    protected: std::vector<std::string> inputInfo = StringUtil::getInstance().getArrayInstance();
+    protected: std::vector<std::string> inputInfo = StringUtil::getInstance()->getArrayInstance();
 
-    protected: BasicColor basicColor;
+    protected: BasicColor* basicColor;
 
     protected: int32_t titleBeginWidth= 0;
 
-    private: std::vector<int32_t> beginWidthArray = NullUtil::getInstance().NULL_INT_ARRAY;
+    private: std::vector<int32_t> beginWidthArray = NullUtil::getInstance()->NULL_INT_ARRAY;
 
     private: int32_t charHeight= 0;
 
-public: HelpPaintable(std::string title, BasicColor backgroundBasicColor, BasicColor basicColor){
+public: HelpPaintable(std::string title, BasicColor* backgroundBasicColor, BasicColor* basicColor){
 this->title= title;
     
 this->basicColor= basicColor;
@@ -102,13 +108,13 @@ this->basicColor= basicColor;
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->titleBeginWidth= (font.stringWidth(this->title)>>1);
+this->titleBeginWidth= (font->stringWidth(this->title)>>1);
     
-this->charHeight= font.getHeight();
+this->charHeight= font->getHeight();
     
 
     int32_t size = this->inputInfo.size();;
@@ -120,7 +126,7 @@ this->charHeight= font.getHeight();
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->beginWidthArray[index]= (font.stringWidth(this->inputInfo[index])>>1);
+this->beginWidthArray[index]= (font->stringWidth(this->inputInfo[index])>>1);
     
 }
 
@@ -139,15 +145,15 @@ this->myFontProcessor= this->updateMyFontProcessor;
 }
 
 
-    public: void paint(Graphics graphics){
-this->myFontProcessor.process(graphics);
+    public: void paint(Graphics* graphics){
+this->myFontProcessor->process(graphics);
     
 
-    int32_t halfWidth = this->displayInfo.getLastHalfWidth();;
+    int32_t halfWidth = this->displayInfo->getLastHalfWidth();;
     
-graphics.setColor(this->basicColor.intValue());
+graphics->setColor(this->basicColor->intValue());
     
-graphics.drawString(this->title, halfWidth -this->titleBeginWidth, this->charHeight, this->anchor);
+graphics->drawString(this->title, halfWidth -this->titleBeginWidth, this->charHeight, this->anchor);
     
 
     int32_t size = this->inputInfo.size();;
@@ -159,7 +165,7 @@ graphics.drawString(this->title, halfWidth -this->titleBeginWidth, this->charHei
                         for (
     int32_t index = 0;index < size; index++)
         {
-graphics.drawString(this->inputInfo[index], halfWidth -this->beginWidthArray[index], (index +3) *this->charHeight, this->anchor);
+graphics->drawString(this->inputInfo[index], halfWidth -this->beginWidthArray[index], (index +3) *this->charHeight, this->anchor);
     
 }
 

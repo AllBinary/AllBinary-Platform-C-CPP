@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,19 +66,19 @@ class WorkAreaDom
             : public Object
          {
 
-    public: static const std::string WORKAREA = "workArea";
+    public: static inline const std::string WORKAREA = "workArea";
 
-    public: static const std::string NAME = "name";
+    public: static inline const std::string NAME = "name";
 
-    public: static const std::string FRAMES = "frames";
+    public: static inline const std::string FRAMES = "frames";
 
     private: std::string name;
 
-    private: BasicArrayList canvasNodeList;
+    private: BasicArrayList* canvasNodeList;
 
-public: WorkAreaDom(Document document){
+public: WorkAreaDom(Document* document){
 
-    NodeList workAreaNodeList = document.getElementsByTagName(this->WORKAREA);;
+    NodeList* workAreaNodeList = document->getElementsByTagName(this->WORKAREA);;
     
 
                         if(workAreaNodeList != 
@@ -81,22 +87,22 @@ public: WorkAreaDom(Document document){
                         
                                     {
                                     
-    int32_t numberOfworkAreas = workAreaNodeList.getLength();;
+    int32_t numberOfworkAreas = workAreaNodeList->getLength();;
     
 
                         if(numberOfworkAreas == 1)
                         
                                     {
                                     
-    int32_t numberOfNodes = workAreaNodeList.getLength();;
+    int32_t numberOfNodes = workAreaNodeList->getLength();;
     
 
-    Node nameNode = DomHelper::getInstance().searchNodeList(this->NAME, workAreaNodeList.item(0).getChildNodes());;
+    Node* nameNode = DomHelper::getInstance()->searchNodeList(this->NAME, workAreaNodeList->item(0)->getChildNodes());;
     
 
-    Node nameTextNode = nameNode.getFirstChild();;
+    Node* nameTextNode = nameNode->getFirstChild();;
     
-this->name= nameTextNode.getNodeValue();
+this->name= nameTextNode->getNodeValue();
     
 
                                     }
@@ -105,12 +111,12 @@ this->name= nameTextNode.getNodeValue();
                             
 
 
-                            throw Exception("Wrong Number of WorkAreas: " +numberOfworkAreas);
+                            throw new Exception("Wrong Number of WorkAreas: " +numberOfworkAreas);
                     
 
                         }
                             
-this->canvasNodeList= DomHelper::getInstance().getChildrenWithoutTextNodes(WorkAreaDom::FRAMES, workAreaNodeList.item(0).getChildNodes());
+this->canvasNodeList= DomHelper::getInstance()->getChildrenWithoutTextNodes(WorkAreaDom::FRAMES, workAreaNodeList->item(0)->getChildNodes());
     
 
                                     }
@@ -119,7 +125,7 @@ this->canvasNodeList= DomHelper::getInstance().getChildrenWithoutTextNodes(WorkA
                             
 
 
-                            throw Exception("workArea Node Not Found");
+                            throw new Exception("workArea Node Not Found");
                     
 
                         }
@@ -137,7 +143,7 @@ this->canvasNodeList= DomHelper::getInstance().getChildrenWithoutTextNodes(WorkA
 }
 
 
-    public: BasicArrayList getCanvasNodes(){
+    public: BasicArrayList* getCanvasNodes(){
 
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/GameKeyEventSourceInterface.h>
@@ -44,9 +50,9 @@
         
 class MenuListener: public GameKeyEventSourceInterface {
 
-    void open()
+    public: virtual void open() = 0;
 
-    void close()
+    public: virtual void close() = 0;
 
 };
 

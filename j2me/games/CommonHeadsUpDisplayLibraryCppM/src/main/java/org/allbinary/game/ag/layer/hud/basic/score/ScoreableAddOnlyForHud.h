@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_SCORE_SCOREABLEADDONLYFORHUD_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_SCORE_SCOREABLEADDONLYFORHUD_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/score/Scoreable.h>
 
       
@@ -42,19 +48,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ScoreHudWidget.h"
+        #include "org/allbinary/game/ag/layer/hud/basic/score/ScoreHudWidget.h"
 
 class ScoreableAddOnlyForHud: public Scoreable {
 
-    private: ScoreHudWidget scoreHudWidget;
+    private: ScoreHudWidget* scoreHudWidget;
 
-public: ScoreableAddOnlyForHud(ScoreHudWidget scoreVectorGraphic);
+public: ScoreableAddOnlyForHud(ScoreHudWidget* scoreVectorGraphic);
 
     public: void removePoints(int32_t points);
 
     public: void addPoints(int32_t points);
 
-    public: ScoreHudWidget getScoreHudWidget();
+    public: ScoreHudWidget* getScoreHudWidget();
 
 };
 

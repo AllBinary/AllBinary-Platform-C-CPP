@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/System.h"
@@ -73,9 +79,9 @@
         
 class DynamicRaceTracksPathPrinter: public RaceTracksPathPrinter {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: void printAllPaths(RaceTrackGeographicMapInterfaceFactoryInterface raceTrackGeographicMapInterfaceFactoryInterface, PathFindingInfo pathFindingInfo, int32_t size){
+    public: void printAllPaths(RaceTrackGeographicMapInterfaceFactoryInterface* raceTrackGeographicMapInterfaceFactoryInterface, PathFindingInfo* pathFindingInfo, int32_t size){
 
         try {
             
@@ -86,12 +92,12 @@ class DynamicRaceTracksPathPrinter: public RaceTracksPathPrinter {
     int32_t index = 0;index < size; index++)
         {
 
-    BasicGeographicMap geographicMapInterface = raceTrackGeographicMapInterfaceFactoryInterface.getTrackInstance(SmallIntegerSingletonFactory::getInstance().getAt(index));;
+    BasicGeographicMap* geographicMapInterface = raceTrackGeographicMapInterfaceFactoryInterface->getTrackInstance(SmallIntegerSingletonFactory::getInstance()->getAt(index));;
     
 
-    BasicArrayList list = PathGenerator::getInstance().createList(geographicMapInterface, RaceTrackRoadsGeographicMapCellHistoryFactory::getInstance(), pathFindingInfo, 10);;
+    BasicArrayList* list = PathGenerator::getInstance()->createList(geographicMapInterface, RaceTrackRoadsGeographicMapCellHistoryFactory::getInstance(), pathFindingInfo, 10);;
     
-console.log("Track " +index);
+System.out.println("Track " +index);
     
 this->printPaths(list);
     
@@ -99,12 +105,12 @@ this->printPaths(list);
 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.PROCESS, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->PROCESS, &e);
     
 }
 

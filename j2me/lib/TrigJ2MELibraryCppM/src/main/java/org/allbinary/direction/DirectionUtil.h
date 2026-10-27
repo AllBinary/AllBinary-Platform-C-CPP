@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/math/Angle.h>
@@ -49,26 +55,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DirectionFactory.h"
-#include "Direction.h"
+        #include "org/allbinary/direction/DirectionFactory.h"
+#include "org/allbinary/direction/Direction.h"
 
 class DirectionUtil
             : public Object
          {
 
-    private: static DirectionUtil instance() { return DirectionUtil(); }
+    private: static DirectionUtil* instance() { static std::unique_ptr<DirectionUtil> value(new DirectionUtil()); return value.get(); }
 
-    public: static DirectionUtil getInstance();
+    public: static DirectionUtil* getInstance();
 
-    private: std::vector<Angle> directionArray = std::vector<Angle>(10);
+    private: std::vector<Angle*> directionArray = std::vector<Angle*>(10);
 
-    private: std::vector<Angle> directionArray2 = std::vector<Angle>(10);
+    private: std::vector<Angle*> directionArray2 = std::vector<Angle*>(10);
 
 private: DirectionUtil();
 
-    public: Angle getAngle(Direction direction);
+    public: Angle* getAngle(Direction* direction);
 
-    public: Angle getFrameAngle(Direction direction);
+    public: Angle* getFrameAngle(Direction* direction);
 
 };
 

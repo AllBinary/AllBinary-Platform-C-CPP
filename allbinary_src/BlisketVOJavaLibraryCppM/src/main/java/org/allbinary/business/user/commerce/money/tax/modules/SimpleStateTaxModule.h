@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_MODULES_SIMPLESTATETAXMODULE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_MODULES_SIMPLESTATETAXMODULE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -108,35 +114,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TaxModuleInterface.h"
+        #include "org/allbinary/business/user/commerce/money/tax/modules/TaxModuleInterface.h"
 
 class SimpleStateTaxModule
             : public Object
-        : public TaxModuleInterface {
+        , public TaxModuleInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: StreetAddress streetAddress;
+    private: StreetAddress* streetAddress;
 
-    private: StoreFrontInterface storeFrontInterface;
+    private: StoreFrontInterface* storeFrontInterface;
 
-    private: const std::string ALL = CommonPhoneStrings::getInstance().STAR;
+    private: const std::string ALL = CommonPhoneStrings::getInstance()->STAR;
 
     private: const std::string STATETAXPATH = "/generic/taxes/";
 
     private: const std::string STATETAXFILE = "stateTaxation.xml";
 
-    private: Document document;
+    private: Document* document;
 
 public: SimpleStateTaxModule();
 
                 //@Throws(Exception.constructor)
             
-    public: number getTaxRate(StreetAddress streetAddress, StoreFrontInterface storeFrontInterface);
+    public: float getTaxRate(StreetAddress* streetAddress, StoreFrontInterface* storeFrontInterface);
 
-    public: Boolean isValid(StreetAddress streetAddress, StoreFrontInterface storeFrontInterface);
+    public: bool isValid(StreetAddress* streetAddress, StoreFrontInterface* storeFrontInterface);
 
 };
 

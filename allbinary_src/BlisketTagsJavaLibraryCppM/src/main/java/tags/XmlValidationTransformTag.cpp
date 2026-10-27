@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Class.h"
         
             #include "java/lang/Exception.h"
@@ -55,11 +61,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformTag.h"
+        #include "tags/TransformTag.h"
 
 class XmlValidationTransformTag: public TransformTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: XmlValidationTransformTag(){
 }
@@ -71,14 +77,14 @@ public: XmlValidationTransformTag(){
 
         try {
             
-    Class* helperClass = this->getHelper().getClass();;
+    Class* helperClass = this->getHelper()->getClass();;
     
 
-    Method method = helperClass.getMethod(commonStrings.IS_VALID, 
+    Method* method = helperClass->getMethod(commonStrings.IS_VALID, 
                             nullptr);;
     
 
-    Boolean result = method.invoke(this->getHelper(), 
+    bool result = method->invoke(this->getHelper(), 
                             nullptr);;
     
 
@@ -89,13 +95,13 @@ public: XmlValidationTransformTag(){
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -146,9 +152,9 @@ public: XmlValidationTransformTag(){
                             
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
-AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
     
 
 
@@ -159,9 +165,9 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 
@@ -170,7 +176,7 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
                         return SKIP_BODY;
     
 }
-*/
+
 }
 
 

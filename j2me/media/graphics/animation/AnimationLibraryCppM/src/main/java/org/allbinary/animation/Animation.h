@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_ANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_ANIMATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,19 +67,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnimationInterface.h"
+        #include "org/allbinary/animation/AnimationInterface.h"
 
 class Animation
             : public Object
-        : public AnimationInterface, public OpenGLSurfaceChangedInterface {
+        , public AnimationInterface, public OpenGLSurfaceChangedInterface {
 
-    protected: const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
+    protected: BasicColorSetUtil* basicSetColorUtil = BasicColorSetUtil::getInstance();
 
-    protected: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
+    protected: BasicColor* basicColor = BasicColorFactory::getInstance()->WHITE;
 
     protected: int32_t colorP= 0;
 
-    protected: BasicColor changeBasicColorP = BasicColorFactory::getInstance().NULL_COLOR;
+    protected: BasicColor* changeBasicColorP = BasicColorFactory::getInstance()->NULL_COLOR;
 
     protected: int32_t changeColorP= 0;
 
@@ -87,21 +93,21 @@ public: Animation();
             
     public: void nextFrame();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
-    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
+    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z);
 
     public: bool isThreed();
 
-    public: BasicColor getBasicColorP();
+    public: BasicColor* getBasicColorP();
 
-    public: void setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor* basicColor);
 
-    public: void setBackgroundBasicColorP(BasicColor basicColor);
+    public: void setBackgroundBasicColorP(BasicColor* basicColor);
 
-    public: BasicColor getChangeBasicColor();
+    public: BasicColor* getChangeBasicColor();
 
-    public: void changeBasicColor(BasicColor basicColor);
+    public: void changeBasicColor(BasicColor* basicColor);
 
     public: int32_t getChangeColor();
 
@@ -113,7 +119,7 @@ public: Animation();
 
                 //@Throws(Exception.constructor)
             
-    public: void set(GL gl);
+    public: void set(GL* gl);
 
     public: void setDx(int32_t dx);
 

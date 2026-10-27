@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/io/file/FilePathData.h>
@@ -52,9 +58,9 @@ class AbPathData
             : public Object
          {
 
-    private: static AbPathData instance() { return AbPathData(); }
+    private: static AbPathData* instance() { static std::unique_ptr<AbPathData> value(new AbPathData()); return value.get(); }
 
-    public: static AbPathData getInstance(){
+    public: static AbPathData* getInstance(){
 
 
 
@@ -64,11 +70,11 @@ class AbPathData
 }
 
 
-    public: const std::string EXTENSION_SEP = CommonSeps::getInstance().PERIOD;
+    public: const std::string EXTENSION_SEP = CommonSeps::getInstance()->PERIOD;
 
     public: const char SEPARATORCHAR = '/';
 
-    public: const std::string SEPARATOR = CommonSeps::getInstance().FORWARD_SLASH;
+    public: const std::string SEPARATOR = CommonSeps::getInstance()->FORWARD_SLASH;
 
 private: AbPathData(){
 }
@@ -76,10 +82,10 @@ private: AbPathData(){
 
     public: int32_t getExtensionIndex(std::string filePath){
 
-    int32_t indexOfFileExtensionDelmiter = filePath.lastIndexOf(this->EXTENSION_SEP);;
+    int32_t indexOfFileExtensionDelmiter = JavaString::lastIndexOf(filePath, this->EXTENSION_SEP);;
     
 
-    int32_t indexOfLatDelimiter = filePath.lastIndexOf(this->SEPARATORCHAR);;
+    int32_t indexOfLatDelimiter = JavaString::lastIndexOf(filePath, this->SEPARATORCHAR);;
     
 
                         if(indexOfFileExtensionDelmiter < 0)
@@ -121,13 +127,13 @@ private: AbPathData(){
     int32_t indexOfFileExtensionDelmiter = this->getExtensionIndex(filePath);;
     
 
-    std::string extension = StringUtil::getInstance().EMPTY_STRING;;
+    std::string extension = StringUtil::getInstance()->EMPTY_STRING;;
     
 
                         if(indexOfFileExtensionDelmiter >= 0)
                         
                                     {
-                                    extension= filePath.substring(indexOfFileExtensionDelmiter);
+                                    extension= JavaString::substring(filePath, indexOfFileExtensionDelmiter);
     
 
                                     }
@@ -146,13 +152,13 @@ private: AbPathData(){
     int32_t indexOfFileExtensionDelmiter = this->getExtensionIndex(filePath);;
     
 
-    std::string extension = StringUtil::getInstance().EMPTY_STRING;;
+    std::string extension = StringUtil::getInstance()->EMPTY_STRING;;
     
 
                         if(indexOfFileExtensionDelmiter >= 0)
                         
                                     {
-                                    extension= filePath.substring(indexOfFileExtensionDelmiter +1);
+                                    extension= JavaString::substring(filePath, indexOfFileExtensionDelmiter +1);
     
 
                                     }
@@ -168,13 +174,13 @@ private: AbPathData(){
 
     public: std::string getNameFromPath(std::string path){
 
-    int32_t endIndex = path.lastIndexOf(this->SEPARATORCHAR);;
+    int32_t endIndex = JavaString::lastIndexOf(path, this->SEPARATORCHAR);;
     
 
                         if(endIndex < 0)
                         
                                     {
-                                    endIndex= path.lastIndexOf(FilePathData::getInstance().SEPARATORCHAR);
+                                    endIndex= JavaString::lastIndexOf(path, FilePathData::getInstance()->SEPARATORCHAR);
     
 
                                     }
@@ -197,7 +203,7 @@ private: AbPathData(){
                         
                                     {
                                     
-    std::string categoryName = path.substring(0, endIndex);;
+    std::string categoryName = JavaString::substring(path, 0, endIndex);;
     
 
 
@@ -210,7 +216,7 @@ private: AbPathData(){
                                 
                         else {
                             
-    std::string categoryName = path.substring(endIndex +1);;
+    std::string categoryName = JavaString::substring(path, endIndex +1);;
     
 
 
@@ -226,13 +232,13 @@ private: AbPathData(){
 
     public: std::string removeNameFromPath(std::string path){
 
-    int32_t endIndex = path.lastIndexOf(this->SEPARATORCHAR);;
+    int32_t endIndex = JavaString::lastIndexOf(path, this->SEPARATORCHAR);;
     
 
                         if(endIndex < 0)
                         
                                     {
-                                    endIndex= path.lastIndexOf(FilePathData::getInstance().SEPARATORCHAR);
+                                    endIndex= JavaString::lastIndexOf(path, FilePathData::getInstance()->SEPARATORCHAR);
     
 
                                     }
@@ -245,7 +251,7 @@ private: AbPathData(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 
                                     }
@@ -258,14 +264,14 @@ private: AbPathData(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->removeNameFromPath(path.substring(0, endIndex -1));;
+                        return this->removeNameFromPath(JavaString::substring(path, 0, endIndex -1));;
     
 
                                     }
                                 
                         else {
                             
-    std::string pathWithoutName = path.substring(0, endIndex);;
+    std::string pathWithoutName = JavaString::substring(path, 0, endIndex);;
     
 
 

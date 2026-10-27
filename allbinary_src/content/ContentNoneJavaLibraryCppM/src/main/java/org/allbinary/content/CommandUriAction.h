@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_CONTENT_COMMANDURIACTION_H
         #define ORG_ALLBINARY_CONTENT_COMMANDURIACTION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Command.h>
@@ -52,15 +58,15 @@ class CommandUriAction
             : public Object
          {
 
-    private: static CommandUriAction instance() { return CommandUriAction(); }
+    private: static CommandUriAction* instance() { static std::unique_ptr<CommandUriAction> value(new CommandUriAction()); return value.get(); }
 
-    public: static CommandUriAction getInstance();
+    public: static CommandUriAction* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: void add(Command command, std::string url);
+    public: void add(Command* command, std::string url);
 
-    public: void process(Command command);
+    public: void process(Command* command);
 
 };
 

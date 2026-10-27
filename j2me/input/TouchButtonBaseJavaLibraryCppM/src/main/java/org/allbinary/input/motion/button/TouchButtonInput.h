@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONINPUT_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONINPUT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/GameKey.h>
@@ -71,21 +77,21 @@
         
 class TouchButtonInput: public Input, public GameKeyEventSourceInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const GameKeyEventFactory gameKeyEventFactory = GameKeyEventFactory::getInstance();
+    private: GameKeyEventFactory* gameKeyEventFactory = GameKeyEventFactory::getInstance();
 
-    private: const int32_t TOUCH_BUTTON_SOURCE_ID = this->gameKeyEventFactory.TOUCH_BUTTON_SOURCE_ID;
+    private: const int32_t TOUCH_BUTTON_SOURCE_ID = this->gameKeyEventFactory->TOUCH_BUTTON_SOURCE_ID;
 
-    private: GameKeyEvent gameKeyEvent = GameKeyEvent::NONE;
+    private: GameKeyEvent* gameKeyEvent = GameKeyEvent::NONE;
 
 public: TouchButtonInput(int32_t id, std::string name);
 
-    public: void update(InputToGameKeyMapping inputToGameKeyMapping);
+    public: void update(InputToGameKeyMapping* inputToGameKeyMapping);
 
     public: int32_t getSourceId();
 
-    public: GameKeyEvent getGameKeyEvent();
+    public: GameKeyEvent* getGameKeyEvent();
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_STOREFRONTSREQUESTHELPER_H
         #define ADMIN_TAGHELPERS_STOREFRONTSREQUESTHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -107,27 +113,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ModifyTable.h"
+        #include "admin/taghelpers/ModifyTable.h"
 
 class StoreFrontsRequestHelper: public ModifyTable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: PageContext pageContext;
+    private: PageContext* pageContext;
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
-    private: WeblisketSession weblisketSession;
+    private: WeblisketSession* weblisketSession;
 
     private: std::string storeName;
 
-    private: StoreFrontInterface modifyingStoreFrontInterface;
+    private: StoreFrontInterface* modifyingStoreFrontInterface;
 
-    private: Portion portion;
+    private: Portion* portion;
 
-public: StoreFrontsRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: StoreFrontsRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
                 //@Throws(Exception.constructor)
             

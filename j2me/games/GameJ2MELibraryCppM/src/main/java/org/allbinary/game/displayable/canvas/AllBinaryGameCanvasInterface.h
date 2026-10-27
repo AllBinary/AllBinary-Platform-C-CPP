@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ALLBINARYGAMECANVASINTERFACE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ALLBINARYGAMECANVASINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
 
       
@@ -48,7 +54,7 @@
         
 class AllBinaryGameCanvasInterface: public DisplayableInterface {
 
-    AllBinaryGameLayerManager getLayerManager();
+    public: virtual AllBinaryGameLayerManager* getLayerManager() = 0;
 
 };
 

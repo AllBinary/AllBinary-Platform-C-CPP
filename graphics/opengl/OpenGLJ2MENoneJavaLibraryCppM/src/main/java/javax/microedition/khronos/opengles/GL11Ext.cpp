@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -22,7 +28,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GL.h"
+        #include "javax/microedition/khronos/opengles/GL.h"
 
 class GL11Ext: public GL {
 

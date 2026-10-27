@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/CommandListener.h>
@@ -46,9 +52,9 @@ class LicenseUtil
             : public Object
          {
 
-    private: static LicenseUtil instance() { return LicenseUtil(); }
+    private: static LicenseUtil* instance() { static std::unique_ptr<LicenseUtil> value(new LicenseUtil()); return value.get(); }
 
-    public: static LicenseUtil getInstance(){
+    public: static LicenseUtil* getInstance(){
 
 
 
@@ -78,7 +84,7 @@ class LicenseUtil
 }
 
 
-    public: bool shouldWait(CommandListener commandListener){
+    public: bool shouldWait(CommandListener* commandListener){
 
 
 

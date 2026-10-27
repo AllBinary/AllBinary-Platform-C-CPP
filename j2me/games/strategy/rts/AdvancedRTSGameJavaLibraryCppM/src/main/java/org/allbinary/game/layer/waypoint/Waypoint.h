@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -117,47 +123,47 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WaypointBase.h"
+        #include "org/allbinary/game/layer/waypoint/WaypointBase.h"
 
 class Waypoint: public WaypointBase, public BuildingEventListenerInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
+    protected: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    protected: PathFindingLayerInterface ownerLayer;
+    protected: PathFindingLayerInterface* ownerLayer;
 
-    private: BasicArrayList endList = this->basicArrayListUtil.getImmutableInstance();
+    private: BasicArrayList* endList = this->basicArrayListUtil->getImmutableInstance();
 
-    private: std::vector<std::vector<BasicArrayList>> paths = this->basicArrayListUtil.NULL_ARRAY_OF_ARRAY;
+    private: std::vector<std::vector<BasicArrayList*>> paths = this->basicArrayListUtil->NULL_ARRAY_OF_ARRAY;
 
-public: Waypoint(PathFindingLayerInterface ownerLayer, Sound sound);
+public: Waypoint(PathFindingLayerInterface* ownerLayer, Sound* sound);
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager);
 
     public: void releaseCachedPaths();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getPathsListFromCacheOnly(GeographicMapCellPosition geographicMapCellPosition);
+    public: BasicArrayList* getPathsListFromCacheOnly(GeographicMapCellPosition* geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getPathsListRunnable(GeographicMapCellPosition geographicMapCellPosition);
+    public: BasicArrayList* getPathsListRunnable(GeographicMapCellPosition* geographicMapCellPosition);
 
-    protected: GeographicMapCellPosition getEndGeographicMapCellPosition(GeographicMapCellPosition startGeographicMapCellPosition);
-
-                //@Throws(Exception.constructor)
-            
-    private: BasicArrayList createPaths(GeographicMapCellPosition startGeographicMapCellPosition);
-
-    public: void onEvent(AllBinaryEventObject eventObject);
+    protected: GeographicMapCellPosition* getEndGeographicMapCellPosition(GeographicMapCellPosition* startGeographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: void onBuildingEvent(RTSLayerEvent event);
+    private: BasicArrayList* createPaths(GeographicMapCellPosition* startGeographicMapCellPosition);
+
+    public: void onEvent(AllBinaryEventObject* eventObject);
+
+                //@Throws(Exception.constructor)
+            
+    public: void onBuildingEvent(RTSLayerEvent* event);
 
     private: void clearPaths();
 
@@ -165,7 +171,7 @@ public: Waypoint(PathFindingLayerInterface ownerLayer, Sound sound);
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(PathFindingLayerInterface unitLayer);
+    public: void visit(PathFindingLayerInterface* unitLayer);
 
 };
 

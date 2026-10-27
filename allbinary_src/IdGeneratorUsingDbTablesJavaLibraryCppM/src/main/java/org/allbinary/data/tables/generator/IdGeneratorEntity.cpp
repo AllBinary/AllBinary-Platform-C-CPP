@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -64,11 +70,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "IdGeneratorEntityInterface.h"
+        #include "org/allbinary/data/tables/generator/IdGeneratorEntityInterface.h"
 
 class IdGeneratorEntity: public AbSqlBean, public IdGeneratorEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const std::string tableName = "idgenerator";
 
@@ -78,14 +84,14 @@ class IdGeneratorEntity: public AbSqlBean, public IdGeneratorEntityInterface {
 
     const std::string VALUE = "VALUE";
 
-public: IdGeneratorEntity() : AbSqlBean(UserDbInitInfo()){
+public: IdGeneratorEntity() : AbSqlBean(new UserDbInitInfo()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->tableData= StringMaker().append(this->sqlStrings.CREATE_TABLE).append(tableName).append(this->sqlStrings.START).append(NAME).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(VALUE).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(this->sqlStrings.PRIMARY_KEY).append(NAME).append(this->sqlStrings.END).toString();
+this->tableData= (new StringMaker())->append(this->sqlStrings.CREATE_TABLE)->append(tableName)->append(this->sqlStrings.START)->append(NAME)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(VALUE)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(this->sqlStrings.PRIMARY_KEY)->append(NAME)->append(this->sqlStrings.END)->toString();
     
 super.setTableName(this->tableName);
     
@@ -94,14 +100,14 @@ super.setTableName(this->tableName);
 
                 //@Throws(Exception.constructor)
             
-    public: Long get(std::string name){
+    public: int64_t get(std::string name){
 
-    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* keysAndValues = StdUtil::getInstance()->createHashMap();;
     
-keysAndValues.put(this->NAME, name);
+keysAndValues->put(this->NAME, name);
     
 
-    HashMap<Object*, Object*> hashMap = super.getRow(keysAndValues);;
+    HashMap<Object*, Object*>* hashMap = super.getRow(keysAndValues);;
     
 
                         if((get).compareTo(name) != 0)
@@ -110,35 +116,35 @@ keysAndValues.put(this->NAME, name);
                                     
 
 
-                            throw Exception("results do not match");
+                            throw new Exception("results do not match");
                     
 
                                     }
                                 
 
-    std::string value = hashMap.get(this->VALUE);;
+    std::string value = hashMap->get(this->VALUE);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Long::parseLong(value);;
+                        return Long.parseLong(value);;
     
 }
 
 
-    public: void insert(BasicArrayList values){
+    public: void insert(BasicArrayList* values){
 
         try {
             super.insert(values);
     
-this->logUtil.putF(this->commonStrings.SUCCESS, this, INSERT);
+this->logUtil->putF(this->commonStrings.SUCCESS, this, INSERT);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.FAILURE, this, INSERT, e);
+this->logUtil->put(this->commonStrings.FAILURE, this, INSERT, &e);
     
 }
 
@@ -150,34 +156,34 @@ this->logUtil.put(this->commonStrings.FAILURE, this, INSERT, e);
         try {
             super.deleteWhere(this->NAME, value);
     
-this->logUtil.putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
+this->logUtil->putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, e);
+this->logUtil->put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, &e);
     
 }
 
 }
 
 
-    public: void update(std::string name, Long value){
+    public: void update(std::string name, int64_t value){
 
-    HashMap<Object*, Object*> map = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* map = StdUtil::getInstance()->createHashMap();;
     
-map.put(this->NAME, name);
+map->put(this->NAME, name);
     
-map.put(this->VALUE, value.toString());
+map->put(this->VALUE, value.toString());
     
 this->update(map);
     
 }
 
 
-    public: void update(HashMap<Object*, Object*> hashMap){
-super.updateWhere(this->NAME, hashMap.get(this->NAME), hashMap);
+    public: void update(HashMap<Object*, Object*>* hashMap){
+super.updateWhere(this->NAME, hashMap->get(this->NAME), hashMap);
     
 }
 

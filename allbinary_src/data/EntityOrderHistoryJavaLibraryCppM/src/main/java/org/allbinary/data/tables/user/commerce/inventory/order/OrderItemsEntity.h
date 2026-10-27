@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -127,25 +135,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OrderItemsEntityInterface.h"
+        #include "org/allbinary/data/tables/user/commerce/inventory/order/OrderItemsEntityInterface.h"
 
 class OrderItemsEntity: public AbSqlBean, public OrderItemsEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
 
     protected: const std::string tableName = "orderitems";
 
 public: OrderItemsEntity();
 
-    public: void insert(std::string userName, OrderInterface order);
+    public: void insert(std::string userName, OrderInterface* order);
 
     public: void setStatus(std::string orderId, std::string groupId, std::string status);
 
     public: bool isEverythingShipped(std::string orderId);
 
-    public: BasketReview getBasketReview(std::string orderId);
+    public: BasketReview* getBasketReview(std::string orderId);
 
     public: std::string createTableStatement();
 

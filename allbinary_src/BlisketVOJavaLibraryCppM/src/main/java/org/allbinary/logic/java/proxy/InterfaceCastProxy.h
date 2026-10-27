@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Throwable.h"
@@ -51,11 +57,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InvocationHandler.h"
+        #include "org/allbinary/logic/java/proxy/InvocationHandler.h"
 
 class InterfaceCastProxy
             : public Object
-        : public java::lang::reflect::InvocationHandler {
+        , public java::lang::reflect::InvocationHandler {
 
     public: static Object* newInstance(Object* anyType);
 
@@ -65,7 +71,7 @@ private: InterfaceCastProxy(Object* anyType);
 
                 //@Throws(Throwable.constructor)
             
-    public: Object* invoke(Object* proxyObject, Method proxyMethod, std::vector<Object*> proxyArgs);
+    public: Object* invoke(Object* proxyObject, Method* proxyMethod, std::vector<Object*> proxyArgs);
 
 };
 

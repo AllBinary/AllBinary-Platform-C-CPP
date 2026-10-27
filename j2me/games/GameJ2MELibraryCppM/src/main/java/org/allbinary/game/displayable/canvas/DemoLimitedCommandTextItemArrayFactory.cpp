@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/form/item/CommandTextItemArrayFactory.h>
@@ -49,9 +55,9 @@ class DemoLimitedCommandTextItemArrayFactory
             : public Object
          {
 
-    private: static DemoLimitedCommandTextItemArrayFactory instance() { return DemoLimitedCommandTextItemArrayFactory(); }
+    private: static DemoLimitedCommandTextItemArrayFactory* instance() { static std::unique_ptr<DemoLimitedCommandTextItemArrayFactory> value(new DemoLimitedCommandTextItemArrayFactory()); return value.get(); }
 
-    public: static DemoLimitedCommandTextItemArrayFactory getInstance(){
+    public: static DemoLimitedCommandTextItemArrayFactory* getInstance(){
 
 
 
@@ -61,9 +67,9 @@ class DemoLimitedCommandTextItemArrayFactory
 }
 
 
-    private: const CommandTextItemArrayFactory commandTextItemArrayFactory = CommandTextItemArrayFactory(LimitCommandsVisitor());
+    private: CommandTextItemArrayFactory* commandTextItemArrayFactory = new CommandTextItemArrayFactory(new LimitCommandsVisitor());
 
-    public: CommandTextItemArrayFactory getCommandTextItemArrayFactory(){
+    public: CommandTextItemArrayFactory* getCommandTextItemArrayFactory(){
 
 
 

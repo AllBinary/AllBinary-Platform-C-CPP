@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_INITINFOINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_INIT_INITINFOINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/io/path/AbPath.h>
@@ -47,27 +53,27 @@
         
 class InitInfoInterface {
 
-    bool isTesting();
+    public: virtual bool isTesting() = 0;
 
-    std::string getTesting();
+    public: virtual std::string getTesting() = 0;
 
-    std::string getTestHtmlPath();
+    public: virtual std::string getTestHtmlPath() = 0;
 
-    std::string getMainPath();
+    public: virtual std::string getMainPath() = 0;
 
-    void setTesting(std::string value);
+    public: virtual void setTesting(std::string value) = 0;
 
-    void setTestHtmlPath(AbPath value);
+    public: virtual void setTestHtmlPath(AbPath* value) = 0;
 
-    void setMainPath(AbPath value);
+    public: virtual void setMainPath(AbPath* value) = 0;
 
                 //@Throws(Exception.constructor)
             
-    bool isTestingValid(std::string testing);
+    public: virtual bool isTestingValid(std::string testing) = 0;
 
-    bool isTestHtmlPathValid(AbPath value);
+    public: virtual bool isTestHtmlPathValid(AbPath* value) = 0;
 
-    bool isMainPathValid(AbPath value);
+    public: virtual bool isMainPathValid(AbPath* value) = 0;
 
 };
 

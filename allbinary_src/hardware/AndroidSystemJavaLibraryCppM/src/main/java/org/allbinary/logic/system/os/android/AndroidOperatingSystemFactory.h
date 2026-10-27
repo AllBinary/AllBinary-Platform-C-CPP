@@ -23,6 +23,12 @@
 
             #include <hilog/log.h>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,25 +72,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AndroidOS.h"
+        #include "org/allbinary/logic/system/os/android/AndroidOS.h"
 
 class AndroidOperatingSystemFactory
             : public Object
          {
 
-    private: static AndroidOperatingSystemFactory instance() { return AndroidOperatingSystemFactory(); }
+    private: static AndroidOperatingSystemFactory* instance() { static std::unique_ptr<AndroidOperatingSystemFactory> value(new AndroidOperatingSystemFactory()); return value.get(); }
 
-    public: static AndroidOperatingSystemFactory getInstance();
+    public: static AndroidOperatingSystemFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const TsUtil tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil = TsUtil::getInstance();
 
 private: AndroidOperatingSystemFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: GenericOperatingSystem getOperatingSystemInstance();
+    public: GenericOperatingSystem* getOperatingSystemInstance();
 
 };
 

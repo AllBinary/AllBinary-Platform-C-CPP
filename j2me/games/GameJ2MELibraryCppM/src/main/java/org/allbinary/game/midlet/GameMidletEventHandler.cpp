@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -47,18 +53,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameMidletEventListener.h"
+        #include "org/allbinary/game/midlet/GameMidletEventListener.h"
 
 class GameMidletEventHandler: public BasicEventHandler {
 
-    private: static const GameMidletEventHandler gameKeyEventHandler = GameMidletEventHandler();
+    private: static GameMidletEventHandler* gameKeyEventHandler() { static std::unique_ptr<GameMidletEventHandler> value(new GameMidletEventHandler()); return value.get(); }
 
-    public: static GameMidletEventHandler getInstance(){
+    public: static GameMidletEventHandler* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameMidletEventHandler::gameKeyEventHandler;
+                        return GameMidletEventHandler::gameKeyEventHandler();
     
 }
 
@@ -69,11 +75,11 @@ private: GameMidletEventHandler(){
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
 
-    GameMidletEventListener gameMidletEventListener = eventListenerInterface;;
+    GameMidletEventListener* gameMidletEventListener = dynamic_cast<GameMidletEventListener*>(eventListenerInterface);;
     
-gameMidletEventListener.onGameEnd(eventObject);
+gameMidletEventListener->onGameEnd(eventObject);
     
 }
 

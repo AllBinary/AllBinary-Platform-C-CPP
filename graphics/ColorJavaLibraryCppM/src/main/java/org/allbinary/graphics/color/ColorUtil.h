@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORUTIL_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Math.h"
@@ -46,19 +52,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Color.h"
+        #include "org/allbinary/graphics/color/Color.h"
 
 class ColorUtil
             : public Object
          {
 
-    private: static ColorUtil instance() { return ColorUtil(); }
+    private: static ColorUtil* instance() { static std::unique_ptr<ColorUtil> value(new ColorUtil()); return value.get(); }
 
-    public: static ColorUtil getInstance();
+    public: static ColorUtil* getInstance();
 
-    public: bool isGreyishOrWhiteLike(Color color);
+    public: bool isGreyishOrWhiteLike(Color* color);
 
-    public: bool isDark(Color color);
+    public: bool isDark(Color* color);
 
 };
 

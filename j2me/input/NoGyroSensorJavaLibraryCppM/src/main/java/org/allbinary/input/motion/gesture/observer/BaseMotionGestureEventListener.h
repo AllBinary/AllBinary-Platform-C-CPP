@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_BASEMOTIONGESTUREEVENTLISTENER_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_BASEMOTIONGESTUREEVENTLISTENER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
 
       
@@ -42,13 +48,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionGestureEvent.h"
+        #include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
 
 class BaseMotionGestureEventListener: public EventListenerInterface {
 
-    void onMotionGestureEvent(MotionGestureEvent motionGestureEvent);
+    public: virtual void onMotionGestureEvent(MotionGestureEvent* motionGestureEvent) = 0;
 
-    void onScrolledMotionGestureEvent(MotionGestureEvent motionGestureEvent);
+    public: virtual void onScrolledMotionGestureEvent(MotionGestureEvent* motionGestureEvent) = 0;
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,15 +70,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LinuxOS.h"
+        #include "org/allbinary/logic/system/os/linux/LinuxOS.h"
 
 class LinuxOperatingSystemFactory
             : public Object
          {
 
-    private: static LinuxOperatingSystemFactory instance() { return LinuxOperatingSystemFactory(); }
+    private: static LinuxOperatingSystemFactory* instance() { static std::unique_ptr<LinuxOperatingSystemFactory> value(new LinuxOperatingSystemFactory()); return value.get(); }
 
-    public: static LinuxOperatingSystemFactory getInstance(){
+    public: static LinuxOperatingSystemFactory* getInstance(){
 
 
 
@@ -82,39 +88,39 @@ class LinuxOperatingSystemFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: LinuxOperatingSystemFactory(){
 }
 
 
-    public: GenericOperatingSystem getOperatingSystemInstance(){
+    public: GenericOperatingSystem* getOperatingSystemInstance(){
 
         try {
             
-    OperatingSystems operatingSystems = OperatingSystems::getInstance();;
+    OperatingSystems* operatingSystems = OperatingSystems::getInstance();;
     
 
-    std::string osName = SystemProperties::getInstance().getName();;
+    std::string osName = SystemProperties::getInstance()->getName();;
     
 
-    GenericOperatingSystem operatingSystemInterface;;
+    GenericOperatingSystem* operatingSystemInterface;;
     
 
-                        if(osName.compare(operatingSystems.LINUX) == 0)
+                        if(osName.compare(operatingSystems->LINUX) == 0)
                         
                                     {
-                                    operatingSystemInterface= LinuxOS();
+                                    operatingSystemInterface= new LinuxOS();
     
 
                                     }
                                 
                         else {
                             
-                        if(operatingSystems.isUnknownSpecificOSAllowed())
+                        if(operatingSystems->isUnknownSpecificOSAllowed())
                         
                                     {
-                                    operatingSystemInterface= LinuxOS();
+                                    operatingSystemInterface= new LinuxOS();
     
 
                                     }
@@ -123,7 +129,7 @@ private: LinuxOperatingSystemFactory(){
                             
 
 
-                            throw Exception("Specific Linux OS Not Supported: " +osName);
+                            throw new Exception("Specific Linux OS Not Supported: " +osName);
                     
 
                         }
@@ -139,16 +145,16 @@ private: LinuxOperatingSystemFactory(){
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().FACTORYERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
     
 
                                     }

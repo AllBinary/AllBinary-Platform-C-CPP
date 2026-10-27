@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -51,7 +57,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DefaultComboBoxModel.h"
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/DefaultComboBoxModel.h"
 
 class InputAutomationTypeDefaultComboBoxModelFactory
             : public Object
@@ -59,15 +65,15 @@ class InputAutomationTypeDefaultComboBoxModelFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static DefaultComboBoxModel getInstance(){
+    public: static DefaultComboBoxModel* getInstance(){
 
-    DefaultComboBoxModel defaultComboBoxModel = DefaultComboBoxModel();;
+    DefaultComboBoxModel* defaultComboBoxModel = new DefaultComboBoxModel();;
     
 
-    Set set = InputRobotFactory::getInstance().get().keySet();;
+    Set* set = InputRobotFactory::getInstance()->get()->keySet();;
     
 
-    std::vector<Object*> nameArray = set.toArray();;
+    std::vector<Object*> nameArray = set->toArray();;
     
 
     int32_t size = nameArray.size();;
@@ -79,7 +85,7 @@ class InputAutomationTypeDefaultComboBoxModelFactory
                         for (
     int32_t index = 0;index < size; index++)
         {
-defaultComboBoxModel.addElement(nameArray[index]);
+defaultComboBoxModel->addElement(nameArray[index]);
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_LAPWIDGET_H
         #define ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_LAPWIDGET_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -66,13 +72,13 @@ class LapWidget: public BasicHud {
 
     private: const std::string OF_STR = " of ";
 
-    private: std::string string = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string string = StringUtil::getInstance()->EMPTY_STRING;
 
-public: LapWidget(int32_t location, int32_t direction, BasicColor basicColor);
+public: LapWidget(int32_t location, int32_t direction, BasicColor* basicColor);
 
-    public: void update(LapInfo lapInfo);
+    public: void update(LapInfo* lapInfo);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

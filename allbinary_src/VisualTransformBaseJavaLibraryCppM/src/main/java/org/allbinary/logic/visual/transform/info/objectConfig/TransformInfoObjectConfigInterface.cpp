@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -53,47 +59,47 @@
         
 class TransformInfoObjectConfigInterface: public DomDocumentMappingInterface {
 
-    bool containsView(TransformInfoInterface transformInfoInterface)
+    public: virtual bool containsView(TransformInfoInterface* transformInfoInterface) = 0;
 
                 //@Throws(Exception.constructor)
             
-    std::string getName()
+    public: virtual std::string getName() = 0;
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList getTransformsGroup(std::string group)
+    public: virtual BasicArrayList* getTransformsGroup(std::string group) = 0;
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList getTransforms()
+    public: virtual BasicArrayList* getTransforms() = 0;
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList getParentTransforms()
+    public: virtual BasicArrayList* getParentTransforms() = 0;
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList getGroupTransforms()
+    public: virtual BasicArrayList* getGroupTransforms() = 0;
 
                 //@Throws(Exception.constructor)
             
-    std::string getOutputTypeName()
+    public: virtual std::string getOutputTypeName() = 0;
 
-    void setOutputTypeName(std::string value)
-
-                //@Throws(Exception.constructor)
-            
-    std::string getInputOutputTypeName()
+    public: virtual void setOutputTypeName(std::string value) = 0;
 
                 //@Throws(Exception.constructor)
             
-    std::string getInputOutputTypeFile()
+    public: virtual std::string getInputOutputTypeName() = 0;
 
                 //@Throws(Exception.constructor)
             
-    std::string getImportUriPath()
+    public: virtual std::string getInputOutputTypeFile() = 0;
 
-    std::string toString()
+                //@Throws(Exception.constructor)
+            
+    public: virtual std::string getImportUriPath() = 0;
+
+    public: virtual std::string toString() = 0;
 
 };
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -74,23 +80,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreWorkFlowInterface.h"
+        #include "org/allbinary/logic/control/workflow/StoreWorkFlowInterface.h"
 
 class StoreTagWorkFlowFactory
             : public Object
          {
 
-    private: static StoreTagWorkFlowFactory instance() { return StoreTagWorkFlowFactory(); }
+    private: static StoreTagWorkFlowFactory* instance() { static std::unique_ptr<StoreTagWorkFlowFactory> value(new StoreTagWorkFlowFactory()); return value.get(); }
 
-    public: static StoreTagWorkFlowFactory getInstance();
+    public: static StoreTagWorkFlowFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: StoreTagWorkFlowFactory();
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: StoreWorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
+    public: StoreWorkFlowInterface* getInstance(AbeClientInformationInterface* abeClientInformation, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext);
 
 };
 

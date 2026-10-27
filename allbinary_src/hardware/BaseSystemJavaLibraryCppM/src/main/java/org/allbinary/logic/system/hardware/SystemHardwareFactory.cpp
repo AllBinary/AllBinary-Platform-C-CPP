@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,17 +61,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NoHardware.h"
-#include "HardwareInterface.h"
-#include "HardwareFactory.h"
+        #include "org/allbinary/logic/system/hardware/NoHardware.h"
+#include "org/allbinary/logic/system/hardware/HardwareInterface.h"
+#include "org/allbinary/logic/system/hardware/HardwareFactory.h"
 
 class SystemHardwareFactory
             : public Object
          {
 
-    private: static SystemHardwareFactory instance() { return SystemHardwareFactory(); }
+    private: static SystemHardwareFactory* instance() { static std::unique_ptr<SystemHardwareFactory> value(new SystemHardwareFactory()); return value.get(); }
 
-    public: static SystemHardwareFactory getInstance(){
+    public: static SystemHardwareFactory* getInstance(){
 
 
 
@@ -77,26 +83,26 @@ class SystemHardwareFactory
 
     public: static std::string static_toString(){
 
-    SystemHardwareFactory systemHardwareFactory = SystemHardwareFactory::getInstance();;
+    SystemHardwareFactory* systemHardwareFactory = SystemHardwareFactory::getInstance();;
     
 
-    StringMaker osBuffer = StringMaker();;
+    StringMaker* osBuffer = new StringMaker();;
     
-osBuffer.append("Hardware Info: \n");
+osBuffer->append("Hardware Info: \n");
     
 
-                        if(systemHardwareFactory.hardwareInterface != 
+                        if(systemHardwareFactory->hardwareInterface != 
                                     nullptr
                                 )
                         
                                     {
-                                    osBuffer.append(systemHardwareFactory.hardwareInterface.toString());
+                                    osBuffer->append(systemHardwareFactory->hardwareInterface->toString());
     
 
                                     }
                                 
                         else {
-                            osBuffer.append(StringUtil::getInstance().NULL_STRING);
+                            osBuffer->append(StringUtil::getInstance()->NULL_STRING);
     
 
                         }
@@ -105,40 +111,40 @@ osBuffer.append("Hardware Info: \n");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return osBuffer.toString();;
+                        return osBuffer->toString();;
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: HardwareInterface hardwareInterface = NoHardware::getInstance();
+    private: HardwareInterface* hardwareInterface = NoHardware::getInstance();
 
 private: SystemHardwareFactory(){
 }
 
 
-    public: HardwareInterface getInstance(GenericOperatingSystem operatingSystemInterface){
+    public: HardwareInterface* getInstance(GenericOperatingSystem* operatingSystemInterface){
 
         try {
             
                         if(this->hardwareInterface == NoHardware::getInstance())
                         
                                     {
-                                    this->hardwareInterface= HardwareFactory::getInstance().getInstance(operatingSystemInterface);
+                                    this->hardwareInterface= HardwareFactory::getInstance()->getInstance(operatingSystemInterface);
     
 
                                     }
                                 
-this->logUtil.putF("Found Hardware", this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF("Found Hardware", this, this->commonStrings->CONSTRUCTOR);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CONSTRUCTOR, &e);
     
 }
 

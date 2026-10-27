@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_INITINFO2_H
         #define ORG_ALLBINARY_BUSINESS_INIT_INITINFO2_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/io/file/directory/Directory.h>
@@ -52,15 +58,15 @@ class InitInfo2
             : public Object
          {
 
-    private: static InitInfo2 instance() { return InitInfo2(); }
+    private: static InitInfo2* instance() { static std::unique_ptr<InitInfo2> value(new InitInfo2()); return value.get(); }
 
-    public: static InitInfo2 getInstance();
+    public: static InitInfo2* getInstance();
 
-    private: const Directory directory = Directory::getInstance();
+    private: Directory* directory = Directory::getInstance();
 
-    public: bool isTestHtmlPathValid(AbPath value);
+    public: bool isTestHtmlPathValid(AbPath* value);
 
-    public: bool isMainPathValid(AbPath value);
+    public: bool isMainPathValid(AbPath* value);
 
 };
 

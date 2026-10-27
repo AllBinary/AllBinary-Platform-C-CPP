@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -76,67 +82,67 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformDocumentInterface.h"
+        #include "org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h"
 
 class TransformHttpRequestDocument
             : public Object
-        : public TransformDocumentInterface {
+        , public TransformDocumentInterface {
 
-    private: static const std::string language = "en";
+    private: static inline const std::string language = "en";
 
-    private: static const std::string local = "US";
+    private: static inline const std::string local = "US";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: Node baseNode;
+    private: Node* baseNode;
 
-    private: Document document;
+    private: Document* document;
 
-public: TransformHttpRequestDocument(PageContext pageContext, WeblisketSession weblisketSession){
+public: TransformHttpRequestDocument(PageContext* pageContext, WeblisketSession* weblisketSession){
 
         try {
             
-    std::string contentType = AcceptableResponseGenerator::getInstance().get(pageContext.getRequest());;
+    std::string contentType = AcceptableResponseGenerator::getInstance()->get(dynamic_cast<HttpServletRequest*>(pageContext->getRequest()));;
     
 this->document= DomDocumentHelper::create();
     
 
-    Node contentTypeNode = this->document.createElement(contentType);;
+    Node* contentTypeNode = this->document->createElement(contentType);;
     
 
-    Node languageTypeNode = this->document.createElement(language);;
+    Node* languageTypeNode = this->document->createElement(language);;
     
 
-    Node localTypeNode = this->document.createElement(local);;
+    Node* localTypeNode = this->document->createElement(local);;
     
 this->baseNode= localTypeNode;
     
-languageTypeNode.appendChild(localTypeNode);
+languageTypeNode->appendChild(localTypeNode);
     
-contentTypeNode.appendChild(languageTypeNode);
+contentTypeNode->appendChild(languageTypeNode);
     
-this->document.appendChild(contentTypeNode);
+this->document->appendChild(contentTypeNode);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.putF(this->log(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->log(), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CONSTRUCTOR, &e);
     
 
                                     }
@@ -151,40 +157,40 @@ this->document.appendChild(contentTypeNode);
 }
 
 
-public: TransformHttpRequestDocument(SearchRequest searchRequest){
+public: TransformHttpRequestDocument(SearchRequest* searchRequest){
 
         try {
             
-    std::string contentType = searchRequest.getContentType();;
+    std::string contentType = searchRequest->getContentType();;
     
 this->document= DomDocumentHelper::create();
     
 
-    Node contentTypeNode = this->document.createElement(contentType);;
+    Node* contentTypeNode = this->document->createElement(contentType);;
     
 
-    Node languageTypeNode = this->document.createElement(language);;
+    Node* languageTypeNode = this->document->createElement(language);;
     
 
-    Node localTypeNode = this->document.createElement(local);;
+    Node* localTypeNode = this->document->createElement(local);;
     
 this->baseNode= localTypeNode;
     
-languageTypeNode.appendChild(localTypeNode);
+languageTypeNode->appendChild(localTypeNode);
     
-contentTypeNode.appendChild(languageTypeNode);
+contentTypeNode->appendChild(languageTypeNode);
     
-this->document.appendChild(contentTypeNode);
+this->document->appendChild(contentTypeNode);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CONSTRUCTOR, &e);
     
 
                                     }
@@ -199,7 +205,7 @@ this->document.appendChild(contentTypeNode);
 }
 
 
-    public: Node getBaseNode(){
+    public: Node* getBaseNode(){
 
 
 
@@ -209,7 +215,7 @@ this->document.appendChild(contentTypeNode);
 }
 
 
-    public: Document getDoc(){
+    public: Document* getDoc(){
 
 
 
@@ -223,7 +229,7 @@ this->document.appendChild(contentTypeNode);
             
     public: std::string log(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
                         if(this->baseNode != 
@@ -231,28 +237,28 @@ this->document.appendChild(contentTypeNode);
                                 )
                         
                                     {
-                                    stringBuffer.append("BaseNode: ");
+                                    stringBuffer->append("BaseNode: ");
     
-stringBuffer.append(this->baseNode.getNodeName());
+stringBuffer->append(this->baseNode->getNodeName());
     
 
                                     }
                                 
                         else {
-                            stringBuffer.append("Log-Error: BaseNode is Null");
+                            stringBuffer->append("Log-Error: BaseNode is Null");
     
 
                         }
                             
-stringBuffer.append("\nDocument: ");
+stringBuffer->append("\nDocument: ");
     
-stringBuffer.append(XmlDocumentHelper::toString(this->document));
+stringBuffer->append(XmlDocumentHelper::toString(this->document));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

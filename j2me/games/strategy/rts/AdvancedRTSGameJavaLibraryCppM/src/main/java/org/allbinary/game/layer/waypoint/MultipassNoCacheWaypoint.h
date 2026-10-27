@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
@@ -115,45 +121,45 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WaypointBase.h"
+        #include "org/allbinary/game/layer/waypoint/WaypointBase.h"
 
 class MultipassNoCacheWaypoint: public WaypointBase, public BuildingEventListenerInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: PathFindingLayerInterface ownerLayer;
+    protected: PathFindingLayerInterface* ownerLayer;
 
-public: MultipassNoCacheWaypoint(PathFindingLayerInterface ownerLayer, Sound sound);
+public: MultipassNoCacheWaypoint(PathFindingLayerInterface* ownerLayer, Sound* sound);
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager);
 
     public: void releaseCachedPaths();
 
                 //@Throws(Exception.constructor)
             
-    public: PathFindingInfo getPathFindingInfo(GeographicMapCellPosition geographicMapCellPosition);
+    public: PathFindingInfo* getPathFindingInfo(GeographicMapCellPosition* geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getPathsList(GeographicMapCellPosition geographicMapCellPosition, PathFindingInfo pathFindingInfo, MultipassState multipassState);
+    public: BasicArrayList* getPathsList(GeographicMapCellPosition* geographicMapCellPosition, PathFindingInfo* pathFindingInfo, MultipassState* multipassState);
 
                 //@Throws(Exception.constructor)
             
-    protected: GeographicMapCellPosition getEndGeographicMapCellPosition(GeographicMapCellPosition startGeographicMapCellPosition);
+    protected: GeographicMapCellPosition* getEndGeographicMapCellPosition(GeographicMapCellPosition* startGeographicMapCellPosition);
 
-    public: void onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject* eventObject);
 
                 //@Throws(Exception.constructor)
             
-    public: void onBuildingEvent(RTSLayerEvent event);
+    public: void onBuildingEvent(RTSLayerEvent* event);
 
     public: void reset();
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(PathFindingLayerInterface unitLayer);
+    public: void visit(PathFindingLayerInterface* unitLayer);
 
 };
 

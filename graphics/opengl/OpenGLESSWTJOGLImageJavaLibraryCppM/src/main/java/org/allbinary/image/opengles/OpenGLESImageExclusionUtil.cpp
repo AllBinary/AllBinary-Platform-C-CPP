@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -52,9 +58,9 @@ class OpenGLESImageExclusionUtil
             : public Object
          {
 
-    private: static OpenGLESImageExclusionUtil instance() { return OpenGLESImageExclusionUtil(); }
+    private: static OpenGLESImageExclusionUtil* instance() { static std::unique_ptr<OpenGLESImageExclusionUtil> value(new OpenGLESImageExclusionUtil()); return value.get(); }
 
-    public: static OpenGLESImageExclusionUtil getInstance(){
+    public: static OpenGLESImageExclusionUtil* getInstance(){
 
 
 
@@ -66,18 +72,18 @@ class OpenGLESImageExclusionUtil
 
     private: const std::string EXCLUSION = "font";
 
-    public: const BasicArrayList list = BasicArrayListD();
+    public: BasicArrayList* list = new BasicArrayListD();
 
 private: OpenGLESImageExclusionUtil(){
 }
 
 
-    public: bool isCustomScaling(Image image){
+    public: bool isCustomScaling(Image* image){
 
-    std::string imageName = image.getName();;
+    std::string imageName = image->getName();;
     
 
-    bool isNormalScaling = this->list.size() == 0 || imageName.startsWith(this->EXCLUSION);;
+    bool isNormalScaling = this->list->size() == 0 || JavaString::startsWith(imageName, this->EXCLUSION);;
     
 
                         if(isNormalScaling)
@@ -94,7 +100,7 @@ private: OpenGLESImageExclusionUtil(){
                                 
                         else {
                             
-    int32_t size = this->list.size();;
+    int32_t size = this->list->size();;
     
 
     std::string name;;
@@ -106,10 +112,10 @@ private: OpenGLESImageExclusionUtil(){
                         for (
     int32_t index = 0;index < size; index++)
         {
-name= this->list.get(index);
+name= this->list->get(index);
     
 
-                        if(imageName.startsWith(name))
+                        if(JavaString::startsWith(imageName, name))
                         
                                     {
                                     isNormalScaling= true;

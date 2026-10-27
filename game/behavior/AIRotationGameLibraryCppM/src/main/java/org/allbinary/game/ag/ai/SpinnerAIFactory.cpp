@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -58,13 +64,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SpinnerAI.h"
+        #include "org/allbinary/game/ag/ai/SpinnerAI.h"
 
 class SpinnerAIFactory
             : public Object
-        : public ArtificialIntelligenceInterfaceFactoryInterface {
+        , public ArtificialIntelligenceInterfaceFactoryInterface {
 
-    public: ArtificialIntelligenceInterface getInstance(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+    public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput){
 
     std::vector<int32_t> direction = {Canvas::LEFT};;
     
@@ -72,7 +78,7 @@ class SpinnerAIFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SpinnerAI(direction, ownerLayerInterface, gameInput);
+                        return new SpinnerAI(direction, ownerLayerInterface, gameInput);
     
 }
 

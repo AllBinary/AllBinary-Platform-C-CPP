@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/io/IOException.h>
@@ -86,9 +94,9 @@
         
 class XmlRpcAbeLicenseRetrievalClient: public XmlRpcAbeClient {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: XmlRpcAbeLicenseRetrievalClient(AbeClientInformationInterface clientInfo) : XmlRpcAbeClient(clientInfo, "LicServ.getLicense"){
+public: XmlRpcAbeLicenseRetrievalClient(AbeClientInformationInterface* clientInfo) : XmlRpcAbeClient(clientInfo, "LicServ.getLicense"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -100,57 +108,57 @@ public: XmlRpcAbeLicenseRetrievalClient(AbeClientInformationInterface clientInfo
 
                 //@Throws(Exception.constructor)
             
-    public: Object* get(Object* anyType, CryptInterface cryptInterface){
+    public: Object* get(Object* anyType, CryptInterface* cryptInterface){
 
         try {
             
-    std::string server = getClientInfo().getLicenseServer(this->getServer());;
+    std::string server = getClientInfo()->getLicenseServer(this->getServer());;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(TRYING);
+stringBuffer->append(TRYING);
     
-stringBuffer.appendint(this->getServer());
+stringBuffer->appendint(this->getServer());
     
-stringBuffer.append(SEP);
+stringBuffer->append(SEP);
     
-stringBuffer.append(server);
+stringBuffer->append(server);
     
-this->logUtil.putF(CommonLabels::getInstance().START_LABEL +stringBuffer.toString(), this, this->commonStrings.GET);
-    
-
-    BasicArrayList param = BasicArrayListD();;
+this->logUtil->putF(CommonLabels::getInstance()->START_LABEL +stringBuffer->toString(), this, this->commonStrings.GET);
     
 
-    XmlRpcClient xmlRpcClient = XmlRpcClient(server);;
+    BasicArrayList* param = new BasicArrayListD();;
+    
+
+    XmlRpcClient* xmlRpcClient = new XmlRpcClient(server);;
     
 this->setClient(xmlRpcClient);
     
-xmlRpcClient.setBasicAuthentication(
+xmlRpcClient->setBasicAuthentication(
                             nullptr, 
                             nullptr);
     
 
-    ABHashtable<Object*, Object*> hashtable = this->getClientInfo().toHashtable();;
+    ABHashtable<Object*, Object*>* hashtable = this->getClientInfo()->toHashtable();;
     
-this->logUtil.putF(CLIENT_INFO +hashtable.toString(), this, this->commonStrings.GET);
+this->logUtil->putF(CLIENT_INFO +hashtable->toString(), this, this->commonStrings.GET);
     
-param.add(hashtable);
-    
-
-    Object* result = xmlRpcClient.execute(this->getRemoteMethod(), param, cryptInterface);;
-    
-this->logUtil.putF(RESULT +result->toString(), this, this->commonStrings.GET);
+param->add(hashtable);
     
 
-    ABHashtable<Object*, Object*> resultHashtable = *dynamic_cast<ABHashtable<Object*, Object*>*>(result);;
+    Object* result = xmlRpcClient->execute(this->getRemoteMethod(), param, cryptInterface);;
+    
+this->logUtil->putF(RESULT +result->toString(), this, this->commonStrings.GET);
+    
+
+    ABHashtable<Object*, Object*>* resultHashtable = dynamic_cast<ABHashtable<Object*, Object*>*>(result);;
     
 
                         if(!AbeClientLicense::hasRequiredKeys(resultHashtable))
                         
                                     {
-                                    this->logUtil.putF(INVALID, this, this->commonStrings.GET);
+                                    this->logUtil->putF(INVALID, this, this->commonStrings.GET);
     
 
 
@@ -162,9 +170,9 @@ this->logUtil.putF(RESULT +result->toString(), this, this->commonStrings.GET);
                                     }
                                 
 
-    AbeLicenseInterface abeLicenseInterface = AbeClientLicense(resultHashtable);;
+    AbeLicenseInterface* abeLicenseInterface = new AbeClientLicense(resultHashtable);;
     
-this->logUtil.putF(this->commonStrings.END +stringBuffer.toString(), this, this->commonStrings.GET);
+this->logUtil->putF(this->commonStrings.END +stringBuffer->toString(), this, this->commonStrings.GET);
     
 isOnline= true;
     
@@ -176,11 +184,11 @@ isOnline= true;
     
 
                 //: 
-} catch(e) 
+} catch(IOException& e) 
             {
-this->logUtil.put(EXCEPTION_IN_CLIENT, this, this->commonStrings.GET, e);
+this->logUtil->put(EXCEPTION_IN_CLIENT, this, this->commonStrings.GET, &e);
     
-this->logUtil.putF(TRYING_OTHER_SERVERS +ExceptionUtil::getInstance().getStackTrace(e), this, this->commonStrings.GET);
+this->logUtil->putF(TRYING_OTHER_SERVERS +ExceptionUtil::getInstance()->getStackTrace(&e), this, this->commonStrings.GET);
     
 
                         if(!e.getMessage().startsWith(HOST_NOT_RESOLVED))
@@ -201,7 +209,7 @@ this->logUtil.putF(TRYING_OTHER_SERVERS +ExceptionUtil::getInstance().getStackTr
 
 
 
-                            throw Exception(HOST_NOT_RESOLVED_MSG);
+                            throw new Exception(HOST_NOT_RESOLVED_MSG);
                     
 
                         }
@@ -209,9 +217,9 @@ this->logUtil.putF(TRYING_OTHER_SERVERS +ExceptionUtil::getInstance().getStackTr
 }
 
                 //: 
-/* catch(e) 
+ catch(XmlRpcException& e) 
             {
-this->logUtil.put(SERVER_REPORTED_ERROR, this, this->commonStrings.GET, e);
+this->logUtil->put(SERVER_REPORTED_ERROR, this, this->commonStrings.GET, &e);
     
 
 
@@ -220,11 +228,11 @@ this->logUtil.put(SERVER_REPORTED_ERROR, this, this->commonStrings.GET, e);
                         return this->tryAnother(anyType);;
     
 }
-*/
+
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-this->logUtil.put(UNKNOWN_ERROR, this, this->commonStrings.GET, e);
+this->logUtil->put(UNKNOWN_ERROR, this, this->commonStrings.GET, &e);
     
 
 
@@ -233,7 +241,7 @@ this->logUtil.put(UNKNOWN_ERROR, this, this->commonStrings.GET, e);
                         return this->tryAnother(anyType);;
     
 }
-*/
+
 }
 
 

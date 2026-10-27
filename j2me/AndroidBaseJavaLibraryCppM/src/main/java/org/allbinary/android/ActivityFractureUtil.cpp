@@ -20,6 +20,12 @@
 
             #include <hilog/log.h>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,11 +58,11 @@ class ActivityFractureUtil
 
                 //@Throws(Exception.constructor)
             
-    public: void process(Activity activity){
+    public: void process(Activity* activity){
 }
 
 
-    public: void setFullScreen(Activity activity){
+    public: void setFullScreen(Activity* activity){
 }
 
 

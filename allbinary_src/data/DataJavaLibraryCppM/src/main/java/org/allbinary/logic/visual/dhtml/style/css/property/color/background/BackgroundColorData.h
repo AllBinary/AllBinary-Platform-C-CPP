@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_COLOR_BACKGROUND_BACKGROUNDCOLORDATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_COLOR_BACKGROUND_BACKGROUNDCOLORDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class BackgroundColorData
             : public Object
          {
 
-    private: static BackgroundColorData instance() { return BackgroundColorData(); }
+    private: static BackgroundColorData* instance() { static std::unique_ptr<BackgroundColorData> value(new BackgroundColorData()); return value.get(); }
 
-    public: static BackgroundColorData getInstance();
+    public: static BackgroundColorData* getInstance();
 
 private: BackgroundColorData();
 

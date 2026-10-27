@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_RECTANGLE_H
         #define ORG_ALLBINARY_GRAPHICS_RECTANGLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -50,23 +56,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GPoint.h"
+        #include "org/allbinary/graphics/GPoint.h"
 
 class Rectangle
             : public Object
          {
 
-    private: GPoint point;
+    private: GPoint* point;
 
     private: int32_t width;
 
     private: int32_t height;
 
-public: Rectangle(GPoint point, int32_t width, int32_t height);
+public: Rectangle(GPoint* point, int32_t width, int32_t height);
 
-    public: GPoint getPoint();
+    public: GPoint* getPoint();
 
-    public: void setPoint(GPoint point);
+    public: void setPoint(GPoint* point);
 
     public: int32_t getMaxX();
 

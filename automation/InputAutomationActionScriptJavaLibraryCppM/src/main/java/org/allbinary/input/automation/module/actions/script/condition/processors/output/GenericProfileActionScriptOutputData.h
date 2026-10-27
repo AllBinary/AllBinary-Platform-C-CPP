@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_GENERICPROFILEACTIONSCRIPTOUTPUTDATA_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_GENERICPROFILEACTIONSCRIPTOUTPUTDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class GenericProfileActionScriptOutputData
             : public Object
          {
 
-    public: static std::string NAME = "GENERIC_CONFIGURATION_PROFILE_ACTION_OUTPUT_NAME";
+    public: static inline std::string NAME = "GENERIC_CONFIGURATION_PROFILE_ACTION_OUTPUT_NAME";
 
-    public: static std::string TYPE = "GENERIC_CONFIGURATION_PROFILE_ACTION_OUTPUT_TYPE";
+    public: static inline std::string TYPE = "GENERIC_CONFIGURATION_PROFILE_ACTION_OUTPUT_TYPE";
 
 private: GenericProfileActionScriptOutputData();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,15 +64,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RawKeyEventListener.h"
+        #include "org/allbinary/game/input/event/RawKeyEventListener.h"
 
 class RawKeyEventHandler
             : public Object
          {
 
-    private: static RawKeyEventHandler instance() { return RawKeyEventHandler(); }
+    private: static RawKeyEventHandler* instance() { static std::unique_ptr<RawKeyEventHandler> value(new RawKeyEventHandler()); return value.get(); }
 
-    public: static RawKeyEventHandler getInstance(){
+    public: static RawKeyEventHandler* getInstance(){
 
 
 
@@ -76,32 +82,32 @@ class RawKeyEventHandler
 }
 
 
-    private: static const std::string TOTAL_LISTENERS = "Total Listeners: ";
+    private: static inline const std::string TOTAL_LISTENERS = "Total Listeners: ";
 
-    private: static const std::string LISTENER_LABEL = " Listener: ";
+    private: static inline const std::string LISTENER_LABEL = " Listener: ";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: BasicArrayList eventListenerInterfaceList;
+    protected: BasicArrayList* eventListenerInterfaceList;
 
 public: RawKeyEventHandler(){
-this->eventListenerInterfaceList= BasicArrayListD();
+this->eventListenerInterfaceList= new BasicArrayListD();
     
 }
 
 
     public: void removeAllListeners(){
-this->eventListenerInterfaceList= BasicArrayListD();
+this->eventListenerInterfaceList= new BasicArrayListD();
     
 }
 
 
-    public: void addListeners(BasicArrayList vector){
+    public: void addListeners(BasicArrayList* vector){
 
-    RawKeyEventListener eventListenerInterface;;
+    RawKeyEventListener* eventListenerInterface;;
     
 
-    int32_t size = vector.size();;
+    int32_t size = vector->size();;
     
 
 
@@ -110,7 +116,7 @@ this->eventListenerInterfaceList= BasicArrayListD();
                         for (
     int32_t index = 0;index < size; index++)
         {
-eventListenerInterface= vector.get(index);
+eventListenerInterface= dynamic_cast<RawKeyEventListener*>(vector->get(index));
     
 this->addListener(eventListenerInterface);
     
@@ -119,12 +125,12 @@ this->addListener(eventListenerInterface);
 }
 
 
-    public: void addListenerSingleThreaded(RawKeyEventListener eventListenerInterface){
+    public: void addListenerSingleThreaded(RawKeyEventListener* eventListenerInterface){
 
-                        if(!this->eventListenerInterfaceList.contains(eventListenerInterface))
+                        if(!this->eventListenerInterfaceList->contains(eventListenerInterface))
                         
                                     {
-                                    this->eventListenerInterfaceList.add(eventListenerInterface);
+                                    this->eventListenerInterfaceList->add(eventListenerInterface);
     
 
                                     }
@@ -132,12 +138,12 @@ this->addListener(eventListenerInterface);
 }
 
 
-    public: void addListener(RawKeyEventListener eventListenerInterface){
+    public: void addListener(RawKeyEventListener* eventListenerInterface){
 
-                        if(!this->eventListenerInterfaceList.contains(eventListenerInterface))
+                        if(!this->eventListenerInterfaceList->contains(eventListenerInterface))
                         
                                     {
-                                    this->eventListenerInterfaceList.add(eventListenerInterface);
+                                    this->eventListenerInterfaceList->add(eventListenerInterface);
     
 
                                     }
@@ -145,14 +151,14 @@ this->addListener(eventListenerInterface);
 }
 
 
-    public: void removeListenerSingleThreaded(RawKeyEventListener eventListenerInterface){
-this->eventListenerInterfaceList.remove(eventListenerInterface);
+    public: void removeListenerSingleThreaded(RawKeyEventListener* eventListenerInterface){
+this->eventListenerInterfaceList->remove(eventListenerInterface);
     
 }
 
 
-    public: void removeListener(RawKeyEventListener eventListenerInterface){
-this->eventListenerInterfaceList.remove(eventListenerInterface);
+    public: void removeListener(RawKeyEventListener* eventListenerInterface){
+this->eventListenerInterfaceList->remove(eventListenerInterface);
     
 }
 
@@ -161,28 +167,28 @@ this->eventListenerInterfaceList.remove(eventListenerInterface);
             
     public: void fireEvent(int32_t keyCode, int32_t deviceId, bool repeated){
 
-    RawKeyEventListener eventListenerInterface;;
+    RawKeyEventListener* eventListenerInterface;;
     
 
     int32_t index = 0;;
     
 
-        while(index < this->eventListenerInterfaceList.size())
+        while(index < this->eventListenerInterfaceList->size())
         {
 
         try {
-            eventListenerInterface= this->eventListenerInterfaceList.get(index);
+            eventListenerInterface= dynamic_cast<RawKeyEventListener*>(this->eventListenerInterfaceList->get(index));
     
 this->process(keyCode, deviceId, repeated, eventListenerInterface);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
@@ -195,13 +201,13 @@ index++;
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(int32_t keyCode, int32_t deviceId, bool repeated, RawKeyEventListener eventListenerInterface){
-eventListenerInterface.onEventRaw(keyCode, deviceId, repeated);
+    protected: void process(int32_t keyCode, int32_t deviceId, bool repeated, RawKeyEventListener* eventListenerInterface){
+eventListenerInterface->onEventRaw(keyCode, deviceId, repeated);
     
 }
 
 
-    public: BasicArrayList getEventListenerInterfaceListP(){
+    public: BasicArrayList* getEventListenerInterfaceListP(){
 
 
 
@@ -213,37 +219,37 @@ eventListenerInterface.onEventRaw(keyCode, deviceId, repeated);
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(RawKeyEventHandler::TOTAL_LISTENERS);
+stringBuffer->append(RawKeyEventHandler::TOTAL_LISTENERS);
     
-stringBuffer.appendint(this->eventListenerInterfaceList.size());
+stringBuffer->appendint(this->eventListenerInterfaceList->size());
     
 
-    RawKeyEventListener eventListenerInterface;;
+    RawKeyEventListener* eventListenerInterface;;
     
 
     int32_t index = 0;;
     
 
-        while(index < this->eventListenerInterfaceList.size())
+        while(index < this->eventListenerInterfaceList->size())
         {
 
         try {
-            eventListenerInterface= this->eventListenerInterfaceList.get(index);
+            eventListenerInterface= dynamic_cast<RawKeyEventListener*>(this->eventListenerInterfaceList->get(index));
     
-stringBuffer.append(RawKeyEventHandler::LISTENER_LABEL);
+stringBuffer->append(RawKeyEventHandler::LISTENER_LABEL);
     
-stringBuffer.append(eventListenerInterface.toString());
+stringBuffer->append(eventListenerInterface->toString());
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.TOSTRING, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->TOSTRING, &e);
     
 }
 
@@ -255,7 +261,7 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

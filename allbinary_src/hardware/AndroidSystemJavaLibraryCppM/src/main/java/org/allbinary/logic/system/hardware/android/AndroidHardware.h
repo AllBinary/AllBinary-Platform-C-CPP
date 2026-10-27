@@ -23,6 +23,12 @@
 
             #include <hilog/log.h>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -93,13 +99,13 @@
         
 class AndroidHardware
             : public Object
-        : public HardwareInterface {
+        , public HardwareInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: BasicArrayList componentInterfaceVector = BasicArrayListD();
+    private: BasicArrayList* componentInterfaceVector = new BasicArrayListD();
 
     private: const std::string PROC_BUS_INPUT_DIRECTORY = "/proc/bus/input/";
 
@@ -115,15 +121,15 @@ public: AndroidHardware();
 
                 //@Throws(Exception.constructor)
             
-    private: LineNumberReader get(std::string filePath);
+    private: LineNumberReader* get(std::string filePath);
 
-    public: HardwareComponentInterface getComponent(int32_t index);
+    public: HardwareComponentInterface* getComponent(int32_t index);
 
     public: std::string toString();
 
-    public: bool compareTo(HardwareInterface hardwareInterface);
+    public: bool compareTo(HardwareInterface* hardwareInterface);
 
-    public: ABHashtable<Object*, Object*> difference(HardwareInterface hardwareInterface);
+    public: ABHashtable<Object*, Object*>* difference(HardwareInterface* hardwareInterface);
 
 };
 

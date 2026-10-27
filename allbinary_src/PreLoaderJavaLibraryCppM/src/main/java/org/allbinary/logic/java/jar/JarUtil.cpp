@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,14 +73,14 @@ class JarUtil
                 //@Throws(Exception.constructor)
             
     public: static void main(std::vector<std::string> args){
-JarUtil(URL("file:///G:/mnt/bc/mydev/working/j2me/MiniSpaceWars/MiniSpaceWars/dist/MiniSpaceWars.jar")).show();
+(new JarUtil(new URL("file:///G:/mnt/bc/mydev/working/j2me/MiniSpaceWars/MiniSpaceWars/dist/MiniSpaceWars.jar")))->show();
     
 }
 
 
-    private: URL jarURL;
+    private: URL* jarURL;
 
-public: JarUtil(URL jarURL){
+public: JarUtil(URL* jarURL){
 this->jarURL= jarURL;
     
 }
@@ -87,16 +93,16 @@ this->jarURL= jarURL;
 
         try {
             
-    URLConnection conn = this->jarURL.openConnection();;
+    URLConnection* conn = this->jarURL->openConnection();;
     
 
-    JarInputStream jis = JarInputStream(conn.getInputStream());;
+    JarInputStream* jis = new JarInputStream(conn->getInputStream());;
     
 
         while(true)
         {
 
-    JarEntry entry = jis.getNextJarEntry();;
+    JarEntry* entry = jis->getNextJarEntry();;
     
 
                         if(entry != 
@@ -105,7 +111,7 @@ this->jarURL= jarURL;
                         
                                     {
                                     
-                        if(!entry.isDirectory())
+                        if(!entry->isDirectory())
                         
                                     {
                                     
@@ -115,7 +121,7 @@ this->jarURL= jarURL;
     int32_t i = 0;;
     
 
-        while((i= jis.read(cache, offset, cache.size() -offset)) !=  -1)
+        while((i= jis->read(cache, offset, cache.size() -offset)) !=  -1)
         {
 offset += i;
     
@@ -140,7 +146,7 @@ cache= newcache;
     
 System.arraycopy(cache, 0, tmp, 0, offset);
     
-console.log(entry.getName());
+System.out.println(entry->getName());
     
 
                                     }
@@ -159,9 +165,9 @@ console.log(entry.getName());
 
 
                 //: 
-} catch(ex) 
+} catch(IOException& ex) 
             {
-System.err.println(ex);
+System.err.println(&ex);
     
 ex.printStackTrace();
     

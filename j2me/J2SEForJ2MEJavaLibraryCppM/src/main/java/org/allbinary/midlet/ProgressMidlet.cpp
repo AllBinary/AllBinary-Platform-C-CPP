@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Runnable.h"
@@ -55,18 +61,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryMidlet.h"
-#include "MidletExitProcessorFactory.h"
-#include "ExitRunnable.h"
+        #include "org/allbinary/midlet/AllBinaryMidlet.h"
+#include "org/allbinary/midlet/MidletExitProcessorFactory.h"
+#include "org/allbinary/midlet/ExitRunnable.h"
 //J2SEForJ2ME
 class ProgressMidlet: public AllBinaryMidlet {
 
-    public: AbeClientInformationInterface abeClientInformation;
+    public: AbeClientInformationInterface* abeClientInformation;
 
-public: ProgressMidlet(ClientInformationFactory clientInformationFactory){
+public: ProgressMidlet(ClientInformationFactory* clientInformationFactory){
 this->preInit();
     
-this->abeClientInformation= clientInformationFactory.getInstance();
+this->abeClientInformation= clientInformationFactory->getInstance();
     
 }
 
@@ -77,31 +83,31 @@ this->abeClientInformation= clientInformationFactory.getInstance();
 
     protected: void exitProgress(bool isProgress){
 
-    Processor processor = MidletExitProcessorFactory::getInstance().getExitInstance(this);;
+    Processor* processor = MidletExitProcessorFactory::getInstance()->getExitInstance(this);;
     
 
         try {
             
-    ThreadPool primaryThreadPool = PrimaryThreadPool::getInstance();;
+    ThreadPool* primaryThreadPool = PrimaryThreadPool::getInstance();;
     
 
-    Runnable runnable = ExitRunnable(this, processor, isProgress);;
+    Runnable* runnable = new ExitRunnable(this, processor, isProgress);;
     
-primaryThreadPool.runTask(runnable);
+primaryThreadPool->runTask(runnable);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "exit", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "exit", &e);
     
 
         try {
-            processor.process();
+            processor->process();
     
 
                 //: 
-} catch(e2) 
+} catch(Exception& e2) 
             {
 this->logUtil.put(this->commonStrings.EXCEPTION, this, "exit", e);
     

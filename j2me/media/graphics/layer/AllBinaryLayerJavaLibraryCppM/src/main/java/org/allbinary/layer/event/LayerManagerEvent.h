@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENT_H
         #define ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/layer/AllBinaryLayer.h>
 
       
@@ -54,15 +60,15 @@
         
 class LayerManagerEvent: public AllBinaryEventObject {
 
-    private: AllBinaryLayer layerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer* layerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
     private: std::string crud;
 
-public: LayerManagerEvent(LayerManager layerManager, std::string crud);
+public: LayerManagerEvent(LayerManager* layerManager, std::string crud);
 
-    public: AllBinaryLayer getLayerInterface();
+    public: AllBinaryLayer* getLayerInterface();
 
-    public: void setLayerInterface(AllBinaryLayer layerInterface);
+    public: void setLayerInterface(AllBinaryLayer* layerInterface);
 
     public: std::string toString();
 

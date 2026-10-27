@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_TRACKBALLGAMEINPUTMOTIONEVENTPROCESSOR_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_TRACKBALLGAMEINPUTMOTIONEVENTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <android/view/MotionEvent.h>
@@ -65,23 +71,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionEventProcessor.h"
+        #include "org/allbinary/android/input/motion/MotionEventProcessor.h"
 
 class TrackballGameInputMotionEventProcessor: public MotionEventProcessor {
 
-    private: static TrackballGameInputMotionEventProcessor PROCESSOR = TrackballGameInputMotionEventProcessor();
+    private: static TrackballGameInputMotionEventProcessor* PROCESSOR() { static std::unique_ptr<TrackballGameInputMotionEventProcessor> value(new TrackballGameInputMotionEventProcessor()); return value.get(); }
 
-    public: static TrackballGameInputMotionEventProcessor getInstance();
+    public: static TrackballGameInputMotionEventProcessor* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const SingleKeyPressGameKeyFromMotionGestureEventListener listener = SingleKeyPressGameKeyFromMotionGestureEventListener();
+    private: SingleKeyPressGameKeyFromMotionGestureEventListener* listener = new SingleKeyPressGameKeyFromMotionGestureEventListener();
 
 private: TrackballGameInputMotionEventProcessor();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    public: void process(MotionEvent motionEvent);
+    public: void process(MotionEvent* motionEvent);
 
 };
 

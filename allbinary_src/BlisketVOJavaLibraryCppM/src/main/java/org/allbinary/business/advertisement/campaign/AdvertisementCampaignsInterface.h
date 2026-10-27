@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNSINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNSINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/business/advertisement/AdvertisementInterface.h>
 
       
@@ -45,13 +51,13 @@
         
 class AdvertisementCampaignsInterface {
 
-    void add(AdvertisementInterface advertisementInterface);
+    public: virtual void add(AdvertisementInterface* advertisementInterface) = 0;
 
-    AdvertisementInterface get(int32_t index);
+    public: virtual AdvertisementInterface* get(int32_t index) = 0;
 
-    int32_t size();
+    public: virtual int32_t size() = 0;
 
-    bool isEnabled();
+    public: virtual bool isEnabled() = 0;
 
 };
 

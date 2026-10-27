@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,13 +70,13 @@
         
 class UserEmailEventListenerModule
             : public Object
-        : public UserEmailEventListenerInterface {
+        , public UserEmailEventListenerInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: UserInterface userInterface;
+    private: UserInterface* userInterface;
 
-public: UserEmailEventListenerModule(UserInterface userInterface){
+public: UserEmailEventListenerModule(UserInterface* userInterface){
 this->userInterface= userInterface;
     
 }
@@ -78,37 +84,37 @@ this->userInterface= userInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: void onEmailSendFailure(EmailEvent emailEvent){
+    public: void onEmailSendFailure(EmailEvent* emailEvent){
 
-    std::string to = this->userInterface.getSecondaryEmail();;
+    std::string to = this->userInterface->getSecondaryEmail();;
     
 
-    BasicEmail email = BasicEmail(emailEvent.getEmailInfo(), to);;
+    BasicEmail* email = new BasicEmail(emailEvent->getEmailInfo(), to);;
     
-EmailQueueFactory::getInstance().offer(email.getEmail());
+EmailQueueFactory::getInstance()->offer(dynamic_cast<EmailInterface*>(email->getEmail()));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void onEmailSendRequest(EmailEvent emailEvent){
+    public: void onEmailSendRequest(EmailEvent* emailEvent){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
                         
                                     {
-                                    this->logUtil.putF("Add Email To Que For Sending: " +emailEvent.toString(), this, "onEmailSendRequest");
+                                    this->logUtil->putF("Add Email To Que For Sending: " +emailEvent->toString(), this, "onEmailSendRequest");
     
 
                                     }
                                 
 
-    std::string to = this->userInterface.getMainEmail();;
+    std::string to = this->userInterface->getMainEmail();;
     
 
-    BasicEmail email = BasicEmail(emailEvent.getEmailInfo(), to);;
+    BasicEmail* email = new BasicEmail(emailEvent->getEmailInfo(), to);;
     
-EmailQueueFactory::getInstance().offer(email.getEmail());
+EmailQueueFactory::getInstance()->offer(dynamic_cast<EmailInterface*>(email->getEmail()));
     
 }
 

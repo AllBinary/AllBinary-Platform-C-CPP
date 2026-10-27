@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/advertisement/GameAdStateFactory.h>
@@ -56,19 +62,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DemoGameBehavior.h"
-#include "AllBinaryGameCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/DemoGameBehavior.h"
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
 class BaseGameBehavior: public DemoGameBehavior {
 
-    private: static const BaseGameBehavior instanceC = BaseGameBehavior();
+    private: static BaseGameBehavior* instanceC() { static std::unique_ptr<BaseGameBehavior> value(new BaseGameBehavior()); return value.get(); }
 
-    public: static DemoGameBehavior getInstance(){
+    public: static DemoGameBehavior* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BaseGameBehavior::instanceC;
+                        return BaseGameBehavior::instanceC();
     
 }
 
@@ -77,25 +83,25 @@ class BaseGameBehavior: public DemoGameBehavior {
             
     public: void init(){
 
-    GameAdState gameAdState = GameAdStateFactory::getInstance().getCurrentInstance();;
+    GameAdState* gameAdState = GameAdStateFactory::getInstance()->getCurrentInstance();;
     
-gameAdState.playingAdState();
+gameAdState->playingAdState();
     
 }
 
 
-    public: void pause(AllBinaryGameCanvas allBinaryGameCanvas){
+    public: void pause(AllBinaryGameCanvas* allBinaryGameCanvas){
 
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-                        if(features.isDefault(OpenGLFeatureFactory::getInstance().OPENGL_AS_GAME_THREAD))
+                        if(features->isDefault(OpenGLFeatureFactory::getInstance()->OPENGL_AS_GAME_THREAD))
                         
                                     {
                                     
-    CurrentDisplayableFactory currentDisplayableFactory = CurrentDisplayableFactory::getInstance();;
+    CurrentDisplayableFactory* currentDisplayableFactory = CurrentDisplayableFactory::getInstance();;
     
-currentDisplayableFactory.setRunnable(allBinaryGameCanvas.gamePauseRunnable);
+currentDisplayableFactory->setRunnable(allBinaryGameCanvas->gamePauseRunnable);
     
 
                                     }
@@ -103,17 +109,17 @@ currentDisplayableFactory.setRunnable(allBinaryGameCanvas.gamePauseRunnable);
 }
 
 
-    public: void unPause(AllBinaryGameCanvas allBinaryGameCanvas){
+    public: void unPause(AllBinaryGameCanvas* allBinaryGameCanvas){
 
-                        if(Features::getInstance().isDefault(OpenGLFeatureFactory::getInstance().OPENGL_AS_GAME_THREAD))
+                        if(Features::getInstance()->isDefault(OpenGLFeatureFactory::getInstance()->OPENGL_AS_GAME_THREAD))
                         
                                     {
                                     
-    CurrentDisplayableFactory currentDisplayableFactory = CurrentDisplayableFactory::getInstance();;
+    CurrentDisplayableFactory* currentDisplayableFactory = CurrentDisplayableFactory::getInstance();;
     
-currentDisplayableFactory.setRunnable(allBinaryGameCanvas.gameRunnable);
+currentDisplayableFactory->setRunnable(allBinaryGameCanvas->gameRunnable);
     
-currentDisplayableFactory.setDisplayable(allBinaryGameCanvas);
+currentDisplayableFactory->setDisplayable(allBinaryGameCanvas);
     
 
                                     }
@@ -123,62 +129,62 @@ currentDisplayableFactory.setDisplayable(allBinaryGameCanvas);
 
                 //@Throws(Exception.constructor)
             
-    public: void updateTouch(AllBinaryGameCanvas allBinaryGameCanvas){
-allBinaryGameCanvas.updateTouch2();
+    public: void updateTouch(AllBinaryGameCanvas* allBinaryGameCanvas){
+allBinaryGameCanvas->updateTouch2();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void updateScreenButtonPaintable(AllBinaryGameCanvas allBinaryGameCanvas){
-allBinaryGameCanvas.updateScreenButtonPaintable2();
+    public: void updateScreenButtonPaintable(AllBinaryGameCanvas* allBinaryGameCanvas){
+allBinaryGameCanvas->updateScreenButtonPaintable2();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void setGameState(AllBinaryGameCanvas allBinaryGameCanvas){
-allBinaryGameCanvas.updateGameState();
+    public: void setGameState(AllBinaryGameCanvas* allBinaryGameCanvas){
+allBinaryGameCanvas->updateGameState();
     
 }
 
 
-    public: void removeAllGameKeyInputListeners(AllBinaryGameCanvas allBinaryGameCanvas){
-allBinaryGameCanvas.removeAllGameKeyInputListeners2();
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: void updateEndGameProcessor(AllBinaryGameCanvas allBinaryGameCanvas){
-allBinaryGameCanvas.updateEndGameProcessor2();
+    public: void removeAllGameKeyInputListeners(AllBinaryGameCanvas* allBinaryGameCanvas){
+allBinaryGameCanvas->removeAllGameKeyInputListeners2();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void buildGame(AllBinaryGameCanvas allBinaryGameCanvas){
-allBinaryGameCanvas.buildGame2();
+    public: void updateEndGameProcessor(AllBinaryGameCanvas* allBinaryGameCanvas){
+allBinaryGameCanvas->updateEndGameProcessor2();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void run(AllBinaryGameCanvas allBinaryGameCanvas){
-allBinaryGameCanvas.run2();
+    public: void buildGame(AllBinaryGameCanvas* allBinaryGameCanvas){
+allBinaryGameCanvas->buildGame2();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void setHighScore(AbeClientInformationInterface abeClientInformation, AllBinaryGameCanvas allBinaryGameCanvas, std::string name, int64_t score, bool autoSubmit, bool isLast){
-allBinaryGameCanvas.setHighScore2(abeClientInformation, name, score, autoSubmit, isLast);
+    public: void run(AllBinaryGameCanvas* allBinaryGameCanvas){
+allBinaryGameCanvas->run2();
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: void setHighScore(AbeClientInformationInterface* abeClientInformation, AllBinaryGameCanvas* allBinaryGameCanvas, std::string name, int64_t score, bool autoSubmit, bool isLast){
+allBinaryGameCanvas->setHighScore2(abeClientInformation, name, score, autoSubmit, isLast);
     
 }
 

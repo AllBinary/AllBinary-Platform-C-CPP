@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONJPANEL_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONJPANEL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/input/automation/actions/script/JTreeInterfaceFactory.h>
 
       
@@ -60,56 +66,56 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "GenericProfileAction.h"
-#include "GroupLayout.h"
-#include "Short.h"
-#include "JScrollPane.h"
-#include "JLabel.h"
-#include "JButton.h"
-#include "Dimension.h"
-#include "ActionListener.h"
-#include "ActionEvent.h"
+        #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/JPanel.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileAction.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GroupLayout.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/Short.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/JScrollPane.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/JLabel.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/JButton.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/Dimension.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/ActionListener.h"
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/ActionEvent.h"
 
 class GenericProfileActionJPanel: public javax::swing::JPanel {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: GenericProfileAction genericProfileAction;
+    private: GenericProfileAction* genericProfileAction;
 
-    private: GenericProfileActionScriptJPanel genericProfileActionScriptJPanel;
+    private: GenericProfileActionScriptJPanel* genericProfileActionScriptJPanel;
 
 public: GenericProfileActionJPanel();
 
     public: void updateProfileActionUI();
 
-    public: GenericProfileAction getGenericProfileAction();
+    public: GenericProfileAction* getGenericProfileAction();
 
-    public: void setGenericProfileAction(GenericProfileAction genericProfileAction);
+    public: void setGenericProfileAction(GenericProfileAction* genericProfileAction);
 
-    public: GenericProfileActionScriptJPanel getGenericProfileActionScriptJPanel();
+    public: GenericProfileActionScriptJPanel* getGenericProfileActionScriptJPanel();
 
-    public: void setGenericProfileActionScriptJPanel(GenericProfileActionScriptJPanel genericProfileActionScriptJPanel);
+    public: void setGenericProfileActionScriptJPanel(GenericProfileActionScriptJPanel* genericProfileActionScriptJPanel);
 
     private: void initComponents();
 
-    private: void newTimeIntervalJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void newTimeIntervalJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void newAlwaysJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void newAlwaysJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void newColorAtJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void newColorAtJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: javax::swing::JPanel blankProfileActionScriptJPanel;
+    private: javax::swing::JPanel* blankProfileActionScriptJPanel;
 
-    private: javax::swing::JScrollPane genericProfileActionScriptJScrollPane;
+    private: javax::swing::JScrollPane* genericProfileActionScriptJScrollPane;
 
-    private: javax::swing::JLabel ifJLabel;
+    private: javax::swing::JLabel* ifJLabel;
 
-    private: javax::swing::JButton newAlwaysJButton;
+    private: javax::swing::JButton* newAlwaysJButton;
 
-    private: javax::swing::JButton newColorAtJButton;
+    private: javax::swing::JButton* newColorAtJButton;
 
-    private: javax::swing::JButton newTimeIntervalJButton;
+    private: javax::swing::JButton* newTimeIntervalJButton;
 
 };
 

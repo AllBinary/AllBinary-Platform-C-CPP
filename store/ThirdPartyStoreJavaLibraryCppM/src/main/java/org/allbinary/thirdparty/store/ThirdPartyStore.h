@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYSTORE_H
         #define ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYSTORE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
@@ -55,7 +61,7 @@ class ThirdPartyStore
 
 public: ThirdPartyStore(std::string name);
 
-    public: void authorize(AbeClientInformationInterface clientInformationInterface);
+    public: void authorize(AbeClientInformationInterface* clientInformationInterface);
 
     public: bool isAuthorized();
 

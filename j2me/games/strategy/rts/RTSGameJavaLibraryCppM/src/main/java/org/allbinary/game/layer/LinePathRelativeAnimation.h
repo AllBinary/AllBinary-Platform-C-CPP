@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_LINEPATHRELATIVEANIMATION_H
         #define ORG_ALLBINARY_GAME_LAYER_LINEPATHRELATIVEANIMATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -48,15 +54,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LinePathAnimation.h"
+        #include "org/allbinary/game/layer/LinePathAnimation.h"
 
 class LinePathRelativeAnimation: public LinePathAnimation {
 
-    private: static const LinePathRelativeAnimation instanceC = LinePathRelativeAnimation();
+    private: static LinePathRelativeAnimation* instanceC() { static std::unique_ptr<LinePathRelativeAnimation> value(new LinePathRelativeAnimation()); return value.get(); }
 
-    public: static LinePathAnimation getInstance();
+    public: static LinePathAnimation* getInstance();
 
-    public: void paint(Graphics graphics, GPoint point, GPoint nextPoint, Layer tiledLayer);
+    public: void paint(Graphics* graphics, GPoint* point, GPoint* nextPoint, Layer* tiledLayer);
 
 };
 

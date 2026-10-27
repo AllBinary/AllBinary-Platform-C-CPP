@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_NEWUSERFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_NEWUSERFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,8 +70,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserInterface.h"
-#include "CreateUserFactory.h"
+        #include "org/allbinary/business/user/UserInterface.h"
+#include "org/allbinary/business/user/CreateUserFactory.h"
 
 class NewUserFactory
             : public Object
@@ -73,15 +79,15 @@ class NewUserFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static UserInterface getInstance();
+    public: static UserInterface* getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: static UserInterface getInstance(TransformInfoInterface transformInfoInterface);
+    public: static UserInterface* getInstance(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: static UserInterface getInstance(HttpServletRequest httpServletRequest, HashMap<Object*, Object*> propertiesHashMap);
+    public: static UserInterface* getInstance(HttpServletRequest* httpServletRequest, HashMap<Object*, Object*>* propertiesHashMap);
 
 private: NewUserFactory();
 

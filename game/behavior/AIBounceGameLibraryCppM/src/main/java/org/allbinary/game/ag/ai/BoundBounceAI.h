@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_BOUNDBOUNCEAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_BOUNDBOUNCEAI_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -70,17 +76,17 @@ class BoundBounceAI: public BasicAI {
 
     protected: int32_t currentRelativeAngle = 0;
 
-    private: LayerBounds layerBounds;
+    private: LayerBounds* layerBounds;
 
-    private: BoundsVisitorInterface boundsVisitorInterface;
+    private: BoundsVisitorInterface* boundsVisitorInterface;
 
-public: BoundBounceAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput, LayerBounds layerBounds, BoundsVisitorInterface boundsVisitorInterface);
+public: BoundBounceAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput, LayerBounds* layerBounds, BoundsVisitorInterface* boundsVisitorInterface);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager);
 
 };
 

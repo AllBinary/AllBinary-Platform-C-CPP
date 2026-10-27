@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEINPUTMAPPINGCANVAS_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEINPUTMAPPINGCANVAS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -106,38 +112,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameCommandCanvas.h"
-#include "GameInputMappingInstructionsCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/GameCommandCanvas.h"
+#include "org/allbinary/game/displayable/canvas/GameInputMappingInstructionsCanvas.h"
 
 class GameInputMappingCanvas: public GameCommandCanvas, public InputMappingInterface {
 
-    public: static const std::string NAME = "GameInputMappingCanvas";
+    public: static inline const std::string NAME = "GameInputMappingCanvas";
 
-    public: static const Command DISPLAY = Command("Controls", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 2);
+    public: static Command* DISPLAY() { static std::unique_ptr<Command> value(new Command("Controls", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 2)); return value.get(); }
 
-    public: static const Command DEFAULT = Command("Default", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 2);
+    public: static Command* DEFAULT() { static std::unique_ptr<Command> value(new Command("Default", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 2)); return value.get(); }
 
-    private: ProcessPaintable paintable;
+    private: ProcessPaintable* paintable;
 
-    private: InputMappingHelpPaintable helpPaintable;
+    private: InputMappingHelpPaintable* helpPaintable;
 
-    protected: ColorFillBasePaintable colorFillPaintable;
+    protected: ColorFillBasePaintable* colorFillPaintable;
 
-    private: PersistentInputMapping inputMapping;
+    private: PersistentInputMapping* inputMapping;
 
-    private: const GameKey NONE = GameKeyFactory::getInstance().NONE;
+    private: GameKey* NONE = GameKeyFactory::getInstance()->NONE;
 
-    private: AbeClientInformationInterface abeClientInformation;
+    private: AbeClientInformationInterface* abeClientInformation;
 
-    private: GameKey selectedGameKey = this->NONE;
+    private: GameKey* selectedGameKey = this->NONE;
 
-    private: Input selectedInput = this->NONE;
+    private: Input* selectedInput = this->NONE;
 
-public: GameInputMappingCanvas(AbeClientInformationInterface abeClientInformation, CommandListener commandListener, AllBinaryGameLayerManager allBinaryGameLayerManager, HelpPaintable helpPaintable);
+public: GameInputMappingCanvas(AbeClientInformationInterface* abeClientInformation, CommandListener* commandListener, AllBinaryGameLayerManager* allBinaryGameLayerManager, HelpPaintable* helpPaintable);
 
     public: void close();
 
-    public: void initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener* cmdListener);
 
     public: void keyPressed(int32_t keyCode);
 
@@ -147,23 +153,23 @@ public: GameInputMappingCanvas(AbeClientInformationInterface abeClientInformatio
 
     public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId);
 
-    private: const InputFactory inputFactory = InputFactory::getInstance();
+    private: InputFactory* inputFactory = InputFactory::getInstance();
 
     private: void addGameKey(int32_t keyCode, bool repeated);
 
                 //@Throws(Exception.constructor)
             
-    public: void processInputMapping(GameKey gameKey, Input input);
+    public: void processInputMapping(GameKey* gameKey, Input* input);
 
-    private: void setSelectedAction(GameKey gameKey);
-
-                //@Throws(Exception.constructor)
-            
-    private: void gameActionCrud(GameKey gameKey, Input input);
+    private: void setSelectedAction(GameKey* gameKey);
 
                 //@Throws(Exception.constructor)
             
-    private: void addNewMapping(GameKey gameKey, Input input);
+    private: void gameActionCrud(GameKey* gameKey, Input* input);
+
+                //@Throws(Exception.constructor)
+            
+    private: void addNewMapping(GameKey* gameKey, Input* input);
 
                 //@Throws(Exception.constructor)
             
@@ -177,7 +183,7 @@ public: GameInputMappingCanvas(AbeClientInformationInterface abeClientInformatio
             
     public: void update();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

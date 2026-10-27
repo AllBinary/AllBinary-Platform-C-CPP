@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -55,30 +63,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageArrayRotationAnimation.h"
-#include "ImageArrayRotationAnimationInfo.h"
+        #include "org/allbinary/animation/image/ImageArrayRotationAnimation.h"
+#include "org/allbinary/animation/image/ImageArrayRotationAnimationInfo.h"
 //TWB - Adjustments should be done in the resource creation and not at the animation level
 class AdjustedImageArrayRotationAnimation: public ImageArrayRotationAnimation {
 
                 //@Throws(Exception.constructor)
             
-    public: static AdjustedImageArrayRotationAnimation createAdjustedImageArrayRotationAnimationInfo(Object* anyType, AnimationBehavior animationBehavior);
+    public: static AdjustedImageArrayRotationAnimation* createAdjustedImageArrayRotationAnimationInfo(Object* anyType, AnimationBehavior* animationBehavior);
 
                 //@Throws(Exception.constructor)
             
-    public: static AdjustedImageArrayRotationAnimation createAnimation(std::vector<Image> imageArray, AngleInfo angleInfo, int32_t totalAngle, AnimationBehavior animationBehavior);
+    public: static AdjustedImageArrayRotationAnimation* createAnimation(std::vector<Image*> imageArray, AngleInfo* angleInfo, int32_t totalAngle, AnimationBehavior* animationBehavior);
 
     private: int32_t dx= 0;
 
     private: int32_t dy= 0;
 
-public: AdjustedImageArrayRotationAnimation(std::vector<Image> imageArray, AngleInfo angleInfo, int32_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior animationBehavior);
+public: AdjustedImageArrayRotationAnimation(std::vector<Image*> imageArray, AngleInfo* angleInfo, int32_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior);
 
                 //@Throws(Exception.constructor)
             
     public: void init(int32_t dx, int32_t dy);
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
     public: void setDx(int32_t dx);
 

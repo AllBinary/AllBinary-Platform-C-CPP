@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_QUOTEREQUEST_QUOTEREQUEST_H
         #define ORG_ALLBINARY_BUSINESS_USER_QUOTEREQUEST_QUOTEREQUEST_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -95,9 +101,9 @@ class QuoteRequest
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: std::string id;
 
@@ -113,17 +119,17 @@ class QuoteRequest
 
     private: std::string comments;
 
-public: QuoteRequest(std::string userName, HttpServletRequest request);
+public: QuoteRequest(std::string userName, HttpServletRequest* request);
 
-public: QuoteRequest(HashMap<Object*, Object*> hashMap);
+public: QuoteRequest(HashMap<Object*, Object*>* hashMap);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string validationInfo();
 
-    public: BasicArrayList toVector();
+    public: BasicArrayList* toVector();
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
     public: void setUserName(std::string value);
 

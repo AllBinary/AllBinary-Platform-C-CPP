@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -49,28 +55,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryGameCanvasInterface.h"
+        #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvasInterface.h"
 
 class NullAllBinaryGameCanvas
             : public Object
-        : public AllBinaryGameCanvasInterface {
+        , public AllBinaryGameCanvasInterface {
 
-    public: static const NullAllBinaryGameCanvas NULL_ALLBINARY_GAME_CANVAS = NullAllBinaryGameCanvas();
+    public: static NullAllBinaryGameCanvas* NULL_ALLBINARY_GAME_CANVAS() { static std::unique_ptr<NullAllBinaryGameCanvas> value(new NullAllBinaryGameCanvas()); return value.get(); }
 
-    public: AllBinaryGameLayerManager getLayerManager(){
+    public: AllBinaryGameLayerManager* getLayerManager(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: void addCommand(Command cmd){
+    public: void addCommand(Command* cmd){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -79,7 +85,7 @@ class NullAllBinaryGameCanvas
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -88,25 +94,25 @@ class NullAllBinaryGameCanvas
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: void removeCommand(Command cmd){
+    public: void removeCommand(Command* cmd){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: void setCommandListener(CommandListener l){
+    public: void setCommandListener(CommandListener* l){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

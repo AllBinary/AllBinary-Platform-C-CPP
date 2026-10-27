@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Throwable.h"
@@ -71,17 +77,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Log.h"
-#include "LogFormatUtil.h"
-#include "XmlRpcRemoteLogClient.h"
+        #include "org/allbinary/logic/communication/log/Log.h"
+#include "org/allbinary/logic/communication/log/LogFormatUtil.h"
+#include "org/allbinary/logic/communication/log/XmlRpcRemoteLogClient.h"
 //ActualPlatform
 /*actual*/ class LogUtil
             : public Object
          {
 
-    private: static LogUtil instance() { return LogUtil(); }
+    private: static LogUtil* instance() { static std::unique_ptr<LogUtil> value(new LogUtil()); return value.get(); }
 
-    /*actual*/ public: static LogUtil getInstance(){
+    /*actual*/ public: static LogUtil* getInstance(){
 
 
 
@@ -95,17 +101,17 @@
 
     private: bool isFirstException = true;
 
-    private: TimeDelayHelper timeDelayHelper = TimeDelayHelper(200000);
+    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(200000);
 
-    public: AbeClientInformationInterface abeClientInformation;
+    public: AbeClientInformationInterface* abeClientInformation;
 
 private: LogUtil(){
 }
 
 
-    private: const StringMaker stringBuffer = StringMaker();
+    private: StringMaker* stringBuffer = new StringMaker();
 
-    /*actual*/ public: void putL(Log log){
+    /*actual*/ public: void putL(Log* log){
 
                         if(log == 
                                     nullptr
@@ -122,16 +128,16 @@ private: LogUtil(){
                                     }
                                 
 
-    std::string specialMessage = log.getSpecialMessage();;
+    std::string specialMessage = log->getSpecialMessage();;
     
 
-    Object* anyType = log.getObject();;
+    Object* anyType = log->getObject();;
     
 
-    std::string functionName = log.getFunctionName();;
+    std::string functionName = log->getFunctionName();;
     
 
-    Object* exception = log.getThrowable();;
+    Object* exception = log->getThrowable();;
     
 this->put(specialMessage, anyType, functionName, exception);
     
@@ -154,7 +160,7 @@ this->put(specialMessage, anyType, functionName, exception);
                         
                                     {
                                     
-                        if(exception->constructor.name.toString().compareTo(XmlRpcException.constructor.toString()) == 0)
+                        if(exception->getClass()->getName().compareTo(XmlRpcException.constructor.getName()) == 0)
                         
                                     {
                                     
@@ -167,7 +173,7 @@ this->put(specialMessage, anyType, functionName, exception);
                                     }
                                 
 
-                        if(exception->constructor.name.toString().compareTo(IOException.constructor.toString()) == 0)
+                        if(exception->getClass()->getName().compareTo(IOException.constructor.getName()) == 0)
                         
                                     {
                                     
@@ -180,33 +186,31 @@ this->put(specialMessage, anyType, functionName, exception);
                                     }
                                 
 
-                        if(this->isFirstException || this->timeDelayHelper.isTimeTNT())
+                        if(this->isFirstException || this->timeDelayHelper->isTimeTNT())
                         
                                     {
                                     
-    std::string className = CommonStrings::getInstance().EMPTY;;
+    std::string className = CommonStrings::getInstance()->EMPTY;;
     
 this->isFirstException= false;
     
 
                         if(anyType != 
                                     nullptr
-                                 && anyType->constructor.name.toString() != 
-                                    nullptr
-                                )
+                                 && true)
                         
                                     {
-                                    className= anyType->constructor.name.toString();
+                                    className= anyType->getClass()->getName();
     
 
                                     }
                                 
 
-    std::string message = LogFormatUtil::getInstance().get(className, functionName, specialMessage, exception);;
+    std::string message = LogFormatUtil::getInstance()->get(className, functionName, specialMessage, exception);;
     
 
         try {
-            console.log("Eeeek");
+            System.out.println("Eeeek");
     
 
                         if(this->abeClientInformation == 
@@ -217,31 +221,31 @@ this->isFirstException= false;
                                     
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 
                                     }
                                 
 
-    ABHashtable<Object*, Object*> hashtable = this->abeClientInformation.toHashtable();;
+    ABHashtable<Object*, Object*>* hashtable = this->abeClientInformation->toHashtable();;
     
-this->stringBuffer.delete(0, this->stringBuffer.length());
+this->stringBuffer->delete(0, this->stringBuffer->length());
     
-this->stringBuffer.append(message);
+this->stringBuffer->append(message);
     
-this->stringBuffer.append(CommonSeps::getInstance().SPACE);
+this->stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-this->stringBuffer.append(SpecialMessageUtil::getInstance().get());
+this->stringBuffer->append(SpecialMessageUtil::getInstance()->get());
     
-hashtable.put(this->MESSAGE, this->stringBuffer.toString());
+hashtable->put(this->MESSAGE, this->stringBuffer->toString());
     
-XmlRpcRemoteLogClient(this->abeClientInformation).get(hashtable);
+(new XmlRpcRemoteLogClient(this->abeClientInformation))->get(hashtable);
     
 
                 //: 
-} catch(e) 
+} catch(Throwable& e) 
             {
-console.log("Exception");
+System.out.println("Exception");
     
 e.printStackTrace();
     

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -78,17 +84,17 @@ class HealthHudWidget: public BasicHud, public PaintableInterface, public Health
 
     private: int32_t healthScale;
 
-    protected: Animation animationInterface;
+    protected: Animation* animationInterface;
 
-    protected: Health healthInterface;
+    protected: Health* healthInterface;
 
     int32_t max= 0;
 
     private: std::vector<int32_t> xArray;
 
-    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
+    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-public: HealthHudWidget(Animation animationInterface, Health healthInterface, int32_t location, int32_t direction) : BasicHud(location, direction, 2, BasicColorFactory::getInstance().WHITE){
+public: HealthHudWidget(Animation* animationInterface, Health* healthInterface, int32_t location, int32_t direction) : BasicHud(location, direction, 2, BasicColorFactory::getInstance()->WHITE){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -99,13 +105,13 @@ this->animationInterface= animationInterface;
     
 this->healthInterface= healthInterface;
     
-this->healthInterface.addListener(this);
+this->healthInterface->addListener(this);
     
-this->healthScale= (this->healthInterface.getMaxHealth() /6) +1;
+this->healthScale= (this->healthInterface->getMaxHealth() /6) +1;
     
 this->onHealthChange();
     
-this->updateMaxWidth= healthInterface.getMaxHealth() *16;
+this->updateMaxWidth= healthInterface->getMaxHealth() *16;
     
 this->updateMaxHeight= 16;
     
@@ -148,27 +154,27 @@ this->update();
 }
 
 
-    private: TimeDelayHelper timeDelayHelper = NoTimeDelayHelper::SINGLETON;
+    private: TimeDelayHelper* timeDelayHelper = NoTimeDelayHelper::SINGLETON;
 
-    private: const TimeDelayHelper slowBeatTimeDelayHelper = TimeDelayHelper(1280);
+    private: TimeDelayHelper* slowBeatTimeDelayHelper = new TimeDelayHelper(1280);
 
-    private: const TimeDelayHelper mediumBeatTimeDelayHelper = TimeDelayHelper(640);
+    private: TimeDelayHelper* mediumBeatTimeDelayHelper = new TimeDelayHelper(640);
 
-    private: const TimeDelayHelper fastBeatTimeDelayHelper = TimeDelayHelper(320);
+    private: TimeDelayHelper* fastBeatTimeDelayHelper = new TimeDelayHelper(320);
 
     public: void onHealthChange(){
-this->max= (this->healthInterface.getHealth() /this->healthScale);
+this->max= (this->healthInterface->getHealth() /this->healthScale);
     
 this->timeDelayHelper= NoTimeDelayHelper::SINGLETON;
     
 
-                        if(this->max <= 1 && this->healthInterface.isAlive())
+                        if(this->max <= 1 && this->healthInterface->isAlive())
                         
                                     {
                                     this->max= 1;
     
 
-                        if(this->healthScale -this->healthInterface.getHealth() > (this->healthScale *2) /3)
+                        if(this->healthScale -this->healthInterface->getHealth() > (this->healthScale *2) /3)
                         
                                     {
                                     this->timeDelayHelper= this->slowBeatTimeDelayHelper;
@@ -177,7 +183,7 @@ this->timeDelayHelper= NoTimeDelayHelper::SINGLETON;
                                     }
                                 
                              else 
-                        if(this->healthScale -this->healthInterface.getHealth() > this->healthScale /3)
+                        if(this->healthScale -this->healthInterface->getHealth() > this->healthScale /3)
                         
                                     {
                                     this->timeDelayHelper= this->mediumBeatTimeDelayHelper;
@@ -197,7 +203,7 @@ this->timeDelayHelper= NoTimeDelayHelper::SINGLETON;
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 this->myFontProcessor.process(graphics);
     
 
@@ -208,10 +214,10 @@ this->myFontProcessor.process(graphics);
     int32_t index = 0;index < this->max; index++)
         {
 
-                        if(this->timeDelayHelper.isTime(this->gameTickTimeDelayHelper.startTime))
+                        if(this->timeDelayHelper->isTime(this->gameTickTimeDelayHelper->startTime))
                         
                                     {
-                                    this->animationInterface.paintXY(graphics, this->xArray[index], this->getY());
+                                    this->animationInterface->paintXY(graphics, this->xArray[index], this->getY());
     
 
                                     }
@@ -221,7 +227,7 @@ this->myFontProcessor.process(graphics);
 }
 
 
-    public: void paintThreed(Graphics graphics){
+    public: void paintThreed(Graphics* graphics){
 }
 
 

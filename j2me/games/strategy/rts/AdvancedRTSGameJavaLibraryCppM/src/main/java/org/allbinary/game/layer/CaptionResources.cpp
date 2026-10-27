@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class CaptionResources
             : public Object
          {
 
-    private: static CaptionResources instance() { return CaptionResources(); }
+    private: static CaptionResources* instance() { static std::unique_ptr<CaptionResources> value(new CaptionResources()); return value.get(); }
 
-    public: static CaptionResources getInstance(){
+    public: static CaptionResources* getInstance(){
 
 
 

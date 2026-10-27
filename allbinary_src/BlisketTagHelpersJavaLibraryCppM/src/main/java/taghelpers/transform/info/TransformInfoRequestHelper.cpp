@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -68,12 +74,12 @@
         
 class TransformInfoRequestHelper: public ModifyTable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: TransformInfoHttpInterface transformInfoInterface;
+    private: TransformInfoHttpInterface* transformInfoInterface;
 
-public: TransformInfoRequestHelper(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
-this->transformInfoInterface= TransformInfoHttpStoreNoManipulation(propertiesHashMap, pageContext);
+public: TransformInfoRequestHelper(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
+this->transformInfoInterface= new TransformInfoHttpStoreNoManipulation(propertiesHashMap, pageContext);
     
 }
 
@@ -85,15 +91,15 @@ this->transformInfoInterface= TransformInfoHttpStoreNoManipulation(propertiesHas
     std::string success = "Updated Successfully";;
     
 
-    HashMap<Object*, Object*> hashMapData = this->transformInfoInterface.toHashMap();;
+    HashMap<Object*, Object*>* hashMapData = this->transformInfoInterface->toHashMap();;
     
-TransformInfoEntityBuilder::getInstance().update(hashMapData);
+TransformInfoEntityBuilder::getInstance()->update(hashMapData);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "update()");
+                                    this->logUtil->putF(success, this, "update()");
     
 
                                     }
@@ -106,16 +112,16 @@ TransformInfoEntityBuilder::getInstance().update(hashMapData);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to update storefronts table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "update()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "update()", &e);
     
 
                                     }
@@ -138,15 +144,15 @@ TransformInfoEntityBuilder::getInstance().update(hashMapData);
     std::string success = "Added TransformInfo Successfully";;
     
 
-    BasicArrayList values = this->transformInfoInterface.toVector();;
+    BasicArrayList* values = this->transformInfoInterface->toVector();;
     
-TransformInfoEntityBuilder::getInstance().insert(values);
+TransformInfoEntityBuilder::getInstance()->insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "insert()");
+                                    this->logUtil->putF(success, this, "insert()");
     
 
                                     }
@@ -159,16 +165,16 @@ TransformInfoEntityBuilder::getInstance().insert(values);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to add storefronts table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "insert()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "insert()", &e);
     
 
                                     }
@@ -190,13 +196,13 @@ TransformInfoEntityBuilder::getInstance().insert(values);
             
     std::string success = "Delete Successfully";;
     
-TransformInfoEntityBuilder::getInstance().delete(this->transformInfoInterface.getKey());
+TransformInfoEntityBuilder::getInstance()->delete(this->transformInfoInterface->getKey());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "delete()");
+                                    this->logUtil->putF(success, this, "delete()");
     
 
                                     }
@@ -209,16 +215,16 @@ TransformInfoEntityBuilder::getInstance().delete(this->transformInfoInterface.ge
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to delete storefronts table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "delete()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "delete()", &e);
     
 
                                     }

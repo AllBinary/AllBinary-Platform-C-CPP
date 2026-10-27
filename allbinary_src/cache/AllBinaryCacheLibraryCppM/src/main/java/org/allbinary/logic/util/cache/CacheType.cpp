@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -80,21 +86,21 @@ this->type= type;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("CacheType: Vendor: ");
+stringBuffer->append("CacheType: Vendor: ");
     
-stringBuffer.append(this->getVendor());
+stringBuffer->append(this->getVendor());
     
-stringBuffer.append(" Type: ");
+stringBuffer->append(" Type: ");
     
-stringBuffer.append(this->getType());
+stringBuffer->append(this->getType());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

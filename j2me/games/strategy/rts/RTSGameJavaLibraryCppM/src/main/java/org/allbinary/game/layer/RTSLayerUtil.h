@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -89,45 +95,45 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RTSLayer.h"
-#include "FakeLayerManager.h"
-#include "AllBinaryGameLayerManager.h"
+        #include "org/allbinary/game/layer/RTSLayer.h"
+#include "org/allbinary/game/layer/FakeLayerManager.h"
+#include "org/allbinary/game/layer/AllBinaryGameLayerManager.h"
 
 class RTSLayerUtil
             : public Object
          {
 
-    private: static RTSLayerUtil instance() { return RTSLayerUtil(); }
+    private: static RTSLayerUtil* instance() { static std::unique_ptr<RTSLayerUtil> value(new RTSLayerUtil()); return value.get(); }
 
-    public: static RTSLayerUtil getInstance();
+    public: static RTSLayerUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const GroupCommonFactory groupCommonFactory = GroupCommonFactory::getInstance();
+    private: GroupCommonFactory* groupCommonFactory = GroupCommonFactory::getInstance();
 
-    private: WeaponProperties createWeaponProperties(WeaponProperties weaponProperties, int32_t currentLevel, int32_t lastLevel);
+    private: WeaponProperties* createWeaponProperties(WeaponProperties* weaponProperties, int32_t currentLevel, int32_t lastLevel);
 
-    public: void downgrade(RTSLayer rtsLayer);
+    public: void downgrade(RTSLayer* rtsLayer);
 
-    public: void upgrade(RTSLayer rtsLayer);
+    public: void upgrade(RTSLayer* rtsLayer);
 
-    private: const int64_t MAX_RELOAD_TIME = Integer::MAX_VALUE /100000;
+    private: const int64_t MAX_RELOAD_TIME = Integer.MAX_VALUE /100000;
 
     public: int64_t getCostExponential(int64_t cost);
 
-    private: int32_t getWeaponPropertiesCost(WeaponProperties weaponProperties);
+    private: int32_t getWeaponPropertiesCost(WeaponProperties* weaponProperties);
 
-    public: int32_t getCost(RTSLayer rtsLayer);
+    public: int32_t getCost(RTSLayer* rtsLayer);
 
-    public: int32_t getDowngradeCost(RTSLayer rtsLayer);
+    public: int32_t getDowngradeCost(RTSLayer* rtsLayer);
 
-    public: int32_t getUpgradeCost(RTSLayer rtsLayer);
+    public: int32_t getUpgradeCost(RTSLayer* rtsLayer);
 
                 //@Throws(Exception.constructor)
             
-    public: void destroyAndClear(BasicArrayList list);
+    public: void destroyAndClear(BasicArrayList* list);
 
-    public: ABHashtable<Object*, Object*> createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap baseRaceTrackGeographicMap);
+    public: ABHashtable<Object*, Object*>* createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap* baseRaceTrackGeographicMap);
 
 };
 

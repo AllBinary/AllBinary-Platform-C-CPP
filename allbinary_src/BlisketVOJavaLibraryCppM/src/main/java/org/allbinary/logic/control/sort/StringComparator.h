@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_SORT_STRINGCOMPARATOR_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_SORT_STRINGCOMPARATOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/Comparator.h>
@@ -47,7 +53,7 @@
         
 class StringComparator
             : public Object
-        : public Comparator {
+        , public Comparator {
 
 public: StringComparator();
 

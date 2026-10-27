@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -57,9 +63,9 @@ class AbKeys
             : public Object
          {
 
-    private: static AbKeys instance() { return AbKeys(); }
+    private: static AbKeys* instance() { static std::unique_ptr<AbKeys> value(new AbKeys()); return value.get(); }
 
-    public: static AbKeys getInstance(){
+    public: static AbKeys* getInstance(){
 
 
 
@@ -69,7 +75,7 @@ class AbKeys
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: AbKeys(){
 }
@@ -78,10 +84,10 @@ private: AbKeys(){
                 //@Throws(LicensingException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: std::string getKey(AbeClientInformationInterface abeClientInformation, std::string keyName){
+    public: std::string getKey(AbeClientInformationInterface* abeClientInformation, std::string keyName){
 
         try {
-            this->logUtil.putF("Getting Key: " +keyName, this, "getKey");
+            this->logUtil->putF("Getting Key: " +keyName, this, "getKey");
     
 
                         if(keyName.compare("DirectX 8") == 0 || keyName.compare("DirectX") == 0 || keyName.compare("Low Level") == 0 || keyName.compare("System Drivers") == 0)
@@ -100,11 +106,11 @@ private: AbKeys(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeLicenseInterfaceFactory::getInstance().getLicenseInstance(abeClientInformation).getKey(keyName);;
+                        return AbeLicenseInterfaceFactory::getInstance()->getLicenseInstance(abeClientInformation)->getKey(keyName);;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -114,17 +120,17 @@ private: AbKeys(){
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-this->logUtil.put("Licensing Failure", this, "getKey()", e);
+this->logUtil->put("Licensing Failure", this, "getKey()", &e);
     
 
 
 
-                            throw LicensingException("Unknown License Failure");
+                            throw new LicensingException("Unknown License Failure");
                     
 }
-*/
+
 }
 
 

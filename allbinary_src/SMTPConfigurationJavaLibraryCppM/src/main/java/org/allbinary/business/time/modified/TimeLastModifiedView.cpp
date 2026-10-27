@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,39 +64,39 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TimeLastModified.h"
+        #include "org/allbinary/business/time/modified/TimeLastModified.h"
 
 class TimeLastModifiedView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: TimeLastModified timeLastModified;
+    private: TimeLastModified* timeLastModified;
 
-public: TimeLastModifiedView(TimeLastModified timeLastModified){
+public: TimeLastModifiedView(TimeLastModified* timeLastModified){
 this->setTimeLastModified(timeLastModified);
     
 }
 
 
-public: TimeLastModifiedView(Node node){
-this->setTimeLastModified(TimeLastModified(DomNodeHelper::getTextNodeValue(node)));
+public: TimeLastModifiedView(Node* node){
+this->setTimeLastModified(new TimeLastModified(DomNodeHelper::getTextNodeValue(node)));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModDomHelper::createTextNode(document, EntryData::getInstance().TIMECREATED, this->getTimeLastModified().toString());;
+                        return ModDomHelper::createTextNode(document, EntryData::getInstance()->TIMECREATED, this->getTimeLastModified()->toString());;
     
 }
 
 
-    public: TimeLastModified getTimeLastModified(){
+    public: TimeLastModified* getTimeLastModified(){
 
 
 
@@ -100,7 +106,7 @@ this->setTimeLastModified(TimeLastModified(DomNodeHelper::getTextNodeValue(node)
 }
 
 
-    public: void setTimeLastModified(TimeLastModified timeLastModified){
+    public: void setTimeLastModified(TimeLastModified* timeLastModified){
 this->timeLastModified= timeLastModified;
     
 }

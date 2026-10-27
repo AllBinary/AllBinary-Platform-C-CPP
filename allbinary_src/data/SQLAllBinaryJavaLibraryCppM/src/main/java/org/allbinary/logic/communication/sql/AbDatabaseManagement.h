@@ -13,6 +13,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABDATABASEMANAGEMENT_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABDATABASEMANAGEMENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/net/InetAddress.h>
@@ -51,15 +57,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbSqlBean.h"
+        #include "org/allbinary/logic/communication/sql/AbSqlBean.h"
 
 class AbDatabaseManagement: public AbSqlBean {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const StringMaker sqlCommandLog = StringMaker();
+    protected: StringMaker* sqlCommandLog = new StringMaker();
 
     private: const std::string GRANT_ALL = "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER ON ";
 
@@ -95,9 +101,9 @@ class AbDatabaseManagement: public AbSqlBean {
 
     protected: const std::string ADD_TABLES_RESULTS_LABEL = "Add Table Results: ";
 
-public: AbDatabaseManagement(DatabaseConnectionInfoInterface databaseConnectionInfoInterface);
+public: AbDatabaseManagement(DatabaseConnectionInfoInterface* databaseConnectionInfoInterface);
 
-public: AbDatabaseManagement(DbConnectionInfo connectionInfo);
+public: AbDatabaseManagement(DbConnectionInfo* connectionInfo);
 
     private: std::string getHostName();
 
@@ -107,7 +113,7 @@ public: AbDatabaseManagement(DbConnectionInfo connectionInfo);
 
     protected: bool addDbUser(std::string db, std::string userName, std::string password);
 
-    protected: Boolean addDb(std::string db);
+    protected: bool addDb(std::string db);
 
 };
 

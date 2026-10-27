@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -80,15 +86,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreThemeCategoryInterface.h"
+        #include "org/allbinary/business/category/store/theme/StoreThemeCategoryInterface.h"
 
 class StoreThemeCategory: public Category, public StoreThemeCategoryInterface {
 
-    private: TransformInfoInterface transformInfoInterface;
+    private: TransformInfoInterface* transformInfoInterface;
 
-    private: BasicArrayList themeVector;
+    private: BasicArrayList* themeVector;
 
-public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface, int32_t level) : Category(categoryPropertiesFactoryInterface, level){
+public: StoreThemeCategory(TransformInfoInterface* transformInfoInterface, CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface, int32_t level) : Category(categoryPropertiesFactoryInterface, level){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -97,12 +103,12 @@ public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, Catego
                     
 this->transformInfoInterface= transformInfoInterface;
     
-this->themeVector= BasicArrayListD();
+this->themeVector= new BasicArrayListD();
     
 }
 
 
-public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface) : Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface){
+public: StoreThemeCategory(TransformInfoInterface* transformInfoInterface, CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface) : Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -111,12 +117,12 @@ public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, Catego
                     
 this->transformInfoInterface= transformInfoInterface;
     
-this->themeVector= BasicArrayListD();
+this->themeVector= new BasicArrayListD();
     
 }
 
 
-public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, Node node, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface, int32_t level) : Category(categoryPropertiesFactoryInterface, level){
+public: StoreThemeCategory(TransformInfoInterface* transformInfoInterface, Node* node, CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface, int32_t level) : Category(categoryPropertiesFactoryInterface, level){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -125,14 +131,14 @@ public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, Node n
                     
 this->transformInfoInterface= transformInfoInterface;
     
-this->themeVector= BasicArrayListD();
+this->themeVector= new BasicArrayListD();
     
 this->addThemes(node);
     
 }
 
 
-public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, Node node, CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface) : Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface){
+public: StoreThemeCategory(TransformInfoInterface* transformInfoInterface, Node* node, CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface) : Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -141,14 +147,14 @@ public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, Node n
                     
 this->transformInfoInterface= transformInfoInterface;
     
-this->themeVector= BasicArrayListD();
+this->themeVector= new BasicArrayListD();
     
 this->addThemes(node);
     
 }
 
 
-    public: TransformInfoInterface getTransformInfoInterface(){
+    public: TransformInfoInterface* getTransformInfoInterface(){
 
 
 
@@ -160,28 +166,28 @@ this->addThemes(node);
 
                 //@Throws(Exception.constructor)
             
-    public: void addThemes(Node node){
+    public: void addThemes(Node* node){
 
-    Node themesNode = DomSearchHelper::getNode(ThemesData::getInstance().NAME, node.getChildNodes());;
+    Node* themesNode = DomSearchHelper::getNode(ThemesData::getInstance()->NAME, node->getChildNodes());;
     
 
-    NodeList nodeList = themesNode.getChildNodes();;
+    NodeList* nodeList = themesNode->getChildNodes();;
     
 
 
 
 
                         for (
-    int32_t index = 0;index < nodeList.getLength(); index++)
+    int32_t index = 0;index < nodeList->getLength(); index++)
         {
 
-    Node themeNode = nodeList.item(index);;
+    Node* themeNode = nodeList->item(index);;
     
 
-                        if(themeNode.getNodeName().compareTo(ThemeData::getInstance().NAME) == 0)
+                        if(themeNode->getNodeName()->compareTo(ThemeData::getInstance()->NAME) == 0)
                         
                                     {
-                                    this->themeVector.add(ThemeValidation(this, themeNode));
+                                    this->themeVector->add(new ThemeValidation(this, themeNode));
     
 
                                     }
@@ -191,13 +197,13 @@ this->addThemes(node);
 }
 
 
-    public: void addTheme(ThemeValidation themeValidation){
-this->themeVector.add(themeValidation);
+    public: void addTheme(ThemeValidation* themeValidation){
+this->themeVector->add(themeValidation);
     
 }
 
 
-    public: BasicArrayList getThemes(){
+    public: BasicArrayList* getThemes(){
 
 
 
@@ -209,7 +215,7 @@ this->themeVector.add(themeValidation);
 
                 //@Throws(Exception.constructor)
             
-    public: Boolean isValid(){
+    public: bool isValid(){
 
                         if(!super.isValid().valueOf())
                         
@@ -234,11 +240,11 @@ this->themeVector.add(themeValidation);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> categoryHashMap = super.toHashMap();;
+    HashMap<Object*, Object*>* categoryHashMap = super.toHashMap();;
     
-categoryHashMap.put(ThemesData::getInstance().NAME, this->themeVector);
+categoryHashMap->put(ThemesData::getInstance()->NAME, this->themeVector);
     
 
 
@@ -251,9 +257,9 @@ categoryHashMap.put(ThemesData::getInstance().NAME, this->themeVector);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList toVector(){
+    public: BasicArrayList* toVector(){
 
-    BasicArrayList categoryVector = super.toVector();;
+    BasicArrayList* categoryVector = super.toVector();;
     
 
 

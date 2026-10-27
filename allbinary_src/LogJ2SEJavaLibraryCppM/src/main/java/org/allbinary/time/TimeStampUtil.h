@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_TIME_TIMESTAMPUTIL_H
         #define ORG_ALLBINARY_TIME_TIMESTAMPUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/text/SimpleDateFormat.h>
@@ -55,11 +61,11 @@
             : public Object
          {
 
-    private: static TimeStampUtil instance() { return TimeStampUtil(); }
+    private: static TimeStampUtil* instance() { static std::unique_ptr<TimeStampUtil> value(new TimeStampUtil()); return value.get(); }
 
-    /*actual*/ public: static TimeStampUtil getInstance();
+    /*actual*/ public: static TimeStampUtil* getInstance();
 
-    private: const SimpleDateFormat simpleDataFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+    private: SimpleDateFormat* simpleDataFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 
 private: TimeStampUtil();
 

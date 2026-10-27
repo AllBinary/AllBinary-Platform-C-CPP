@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCEANIMATIONINTERFACEFACTORYINTERFACEFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCEANIMATIONINTERFACEFACTORYINTERFACEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/resource/BaseResourceAnimationInterfaceFactoryInterfaceFactory.h>
@@ -65,7 +71,7 @@
         
 class TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory: public BaseResourceAnimationInterfaceFactoryInterfaceFactory {
 
-    public: static TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory createFactory();
+    public: static TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory* createFactory();
 
 public: TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory(std::string name);
 
@@ -75,7 +81,7 @@ public: TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory(std::string
 
                 //@Throws(Exception.constructor)
             
-    protected: void initImageCache(ImageCache imageCache, int32_t level);
+    protected: void initImageCache(ImageCache* imageCache, int32_t level);
 
     public: bool isLoadingLevel(int32_t level);
 

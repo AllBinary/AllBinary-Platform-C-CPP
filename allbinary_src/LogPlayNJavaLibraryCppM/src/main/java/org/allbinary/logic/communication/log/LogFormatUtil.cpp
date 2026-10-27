@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Throwable.h"
@@ -66,9 +72,9 @@
             : public Object
          {
 
-    private: static LogFormatUtil instance() { return LogFormatUtil(); }
+    private: static LogFormatUtil* instance() { static std::unique_ptr<LogFormatUtil> value(new LogFormatUtil()); return value.get(); }
 
-    /*actual*/ public: static LogFormatUtil getInstance(){
+    /*actual*/ public: static LogFormatUtil* getInstance(){
 
 
 
@@ -78,9 +84,9 @@
 }
 
 
-    private: const TimeStampUtil timeStampUtil = TimeStampUtil::getInstance();
+    private: TimeStampUtil* timeStampUtil = TimeStampUtil::getInstance();
 
-    private: const CommonSeps commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps = CommonSeps::getInstance();
 
     private: const std::string LOG_ERROR = "\nLog-Error: ";
 
@@ -90,9 +96,9 @@
 
     private: const std::string TIME = "Time: ";
 
-    private: const std::string CLASS_NAME = this->commonSeps.SPACE;
+    private: const std::string CLASS_NAME = this->commonSeps->SPACE;
 
-    private: const std::string FUNCTION_CALL = CommonLabels::getInstance().COLON_SEP;
+    private: const std::string FUNCTION_CALL = CommonLabels::getInstance()->COLON_SEP;
 
     private: const std::string SPECIAL_MESSAGE = "> ";
 
@@ -102,59 +108,59 @@ private: LogFormatUtil(){
 
     /*actual*/ public: std::string get(std::string className, std::string functionName, std::string specialMessage, Object* exception){
 
-    StringMaker stringBuffer = this->getF(className, functionName);;
+    StringMaker* stringBuffer = this->getF(className, functionName);;
     
-stringBuffer.append(this->getO(exception));
+stringBuffer->append(this->getO(exception));
     
-stringBuffer.append(this->SPECIAL_MESSAGE);
+stringBuffer->append(this->SPECIAL_MESSAGE);
     
-stringBuffer.append(specialMessage);
+stringBuffer->append(specialMessage);
     
-stringBuffer.append(this->commonSeps.NEW_LINE);
+stringBuffer->append(this->commonSeps->NEW_LINE);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
     /*actual*/ public: std::string getS(std::string className, std::string functionName, std::string specialMessage){
 
-    StringMaker stringBuffer = this->getF(className, functionName);;
+    StringMaker* stringBuffer = this->getF(className, functionName);;
     
-stringBuffer.append(this->SPECIAL_MESSAGE);
+stringBuffer->append(this->SPECIAL_MESSAGE);
     
-stringBuffer.append(specialMessage);
+stringBuffer->append(specialMessage);
     
-stringBuffer.append(this->commonSeps.NEW_LINE);
+stringBuffer->append(this->commonSeps->NEW_LINE);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
-    private: StringMaker getF(std::string className, std::string functionName){
+    private: StringMaker* getF(std::string className, std::string functionName){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->TIME);
+stringBuffer->append(this->TIME);
     
-stringBuffer.append(this->timeStampUtil.getAsString());
+stringBuffer->append(this->timeStampUtil->getAsString());
     
-stringBuffer.append(this->CLASS_NAME);
+stringBuffer->append(this->CLASS_NAME);
     
-stringBuffer.append(className);
+stringBuffer->append(className);
     
-stringBuffer.append(this->FUNCTION_CALL);
+stringBuffer->append(this->FUNCTION_CALL);
     
-stringBuffer.append(functionName);
+stringBuffer->append(functionName);
     
 
 
@@ -165,21 +171,21 @@ stringBuffer.append(functionName);
 }
 
 
-    private: const StringUtil stringUtil = StringUtil::getInstance();
+    private: StringUtil* stringUtil = StringUtil::getInstance();
 
-    private: const ExceptionUtil exceptionUtil = ExceptionUtil::getInstance();
+    private: ExceptionUtil* exceptionUtil = ExceptionUtil::getInstance();
 
-    private: const NullUtil nullUtil = NullUtil::getInstance();
+    private: NullUtil* nullUtil = NullUtil::getInstance();
 
     /*actual*/ public: std::string getO(Object* exception){
 
-                        if(exception != this->nullUtil.NULL_OBJECT)
+                        if(exception != this->nullUtil->NULL_OBJECT)
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->LOG_ERROR);
+stringBuffer->append(this->LOG_ERROR);
     
 
     std::string exceptionAsString = exception->toString();;
@@ -188,30 +194,30 @@ stringBuffer.append(this->LOG_ERROR);
                         if(true)
                         
                                     {
-                                    stringBuffer.append(exceptionAsString);
+                                    stringBuffer->append(exceptionAsString);
     
 
                                     }
                                 
                         else {
-                            stringBuffer.append(this->EMPTY);
+                            stringBuffer->append(this->EMPTY);
     
 
                         }
                             
-stringBuffer.append(this->STACK_TRACE);
+stringBuffer->append(this->STACK_TRACE);
     
 
-                        if(exception != this->nullUtil.NULL_OBJECT)
+                        if(exception != this->nullUtil->NULL_OBJECT)
                         
                                     {
-                                    stringBuffer.append(this->exceptionUtil.getStackTrace(*dynamic_cast<Throwable*>(exception)));
+                                    stringBuffer->append(this->exceptionUtil->getStackTrace(dynamic_cast<Throwable*>(exception)));
     
 
                                     }
                                 
                         else {
-                            stringBuffer.append(this->stringUtil.NULL_STRING);
+                            stringBuffer->append(this->stringUtil->NULL_STRING);
     
 
                         }
@@ -220,7 +226,7 @@ stringBuffer.append(this->STACK_TRACE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                                     }
@@ -230,7 +236,7 @@ stringBuffer.append(this->STACK_TRACE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 
                         }

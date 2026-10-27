@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -88,20 +94,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputToGameKeyMapping.h"
+        #include "org/allbinary/game/input/mapping/InputToGameKeyMapping.h"
 //GameInputPersistanceLibrary
 class PersistentInputMapping
             : public Object
          {
 
-    public: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    public: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static PersistentInputMapping getNullInstance(){
+    public: static PersistentInputMapping* getNullInstance(){
 
-                        if(PersistentInputMapping::instance() == NullUtil::getInstance().NULL_OBJECT)
+                        if(PersistentInputMapping::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    PersistentInputMapping::instance= PersistentInputMapping(GamePersistanceStrings::getInstance().SAVED_INPUT_CONFIGURATION_RECORD_ID);
+                                    PersistentInputMapping::instance= new PersistentInputMapping(GamePersistanceStrings::getInstance()->SAVED_INPUT_CONFIGURATION_RECORD_ID);
     
 
                                     }
@@ -110,25 +116,25 @@ class PersistentInputMapping
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PersistentInputMapping::instance();
+                        return dynamic_cast<PersistentInputMapping*>(PersistentInputMapping::instance);
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
+    private: EnumerationUtil* enumerationUtil = EnumerationUtil::getInstance();
 
-    private: const InputToGameKeyMapping inputMapping = InputToGameKeyMapping();
+    private: InputToGameKeyMapping* inputMapping = new InputToGameKeyMapping();
 
-    private: InputMappingEventListenerInterface inputMappingEventListenerInterface = NullInputMappingEventListener::NULL_INPUT_MAPPING_EVENT_LISTENER;
+    private: InputMappingEventListenerInterface* inputMappingEventListenerInterface = NullInputMappingEventListener::NULL_INPUT_MAPPING_EVENT_LISTENER;
 
-    private: InputPersistance inputPersistance;
+    private: InputPersistance* inputPersistance;
 
 protected: PersistentInputMapping(std::string name){
-this->inputPersistance= InputPersistance(name);
+this->inputPersistance= new InputPersistance(name);
     
 }
 
@@ -138,7 +144,7 @@ this->inputPersistance= InputPersistance(name);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getInputMapping().getHashtable().size();;
+                        return this->getInputMapping()->getHashtable()->size();;
     
 }
 
@@ -153,7 +159,7 @@ this->inputPersistance= InputPersistance(name);
 }
 
 
-    protected: InputToGameKeyMapping getDefault(){
+    protected: InputToGameKeyMapping* getDefault(){
 
 
 
@@ -165,10 +171,10 @@ this->inputPersistance= InputPersistance(name);
 
                 //@Throws(Exception.constructor)
             
-    public: void setDefault(AbeClientInformationInterface abeClientInformation){
-this->getInputMapping().removeAll();
+    public: void setDefault(AbeClientInformationInterface* abeClientInformation){
+this->getInputMapping()->removeAll();
     
-this->getInputMapping().addMapping(this->getDefault());
+this->getInputMapping()->addMapping(this->getDefault());
     
 this->save(abeClientInformation);
     
@@ -177,22 +183,22 @@ this->save(abeClientInformation);
 
                 //@Throws(Exception.constructor)
             
-    public: void update(AbeClientInformationInterface abeClientInformation){
-this->inputPersistance.deleteAll(abeClientInformation);
+    public: void update(AbeClientInformationInterface* abeClientInformation){
+this->inputPersistance->deleteAll(abeClientInformation);
     
 this->save(abeClientInformation);
     
 }
 
 
-    private: InputMappingEvent inputMappingEvent = InputMappingEvent(this);
+    private: InputMappingEvent* inputMappingEvent = new InputMappingEvent(this);
 
                 //@Throws(Exception.constructor)
             
-    public: void save(AbeClientInformationInterface abeClientInformation){
-this->inputPersistance.save(abeClientInformation, this->getInputMapping().getHashtable());
+    public: void save(AbeClientInformationInterface* abeClientInformation){
+this->inputPersistance->save(abeClientInformation, this->getInputMapping()->getHashtable());
     
-this->inputMappingEvent.setInputToGameKeyMapping(this->getInputMapping());
+this->inputMappingEvent->setInputToGameKeyMapping(this->getInputMapping());
     
 
                         if(this->getInputMappingEventListenerInterface() != 
@@ -200,7 +206,7 @@ this->inputMappingEvent.setInputToGameKeyMapping(this->getInputMapping());
                                 )
                         
                                     {
-                                    this->getInputMappingEventListenerInterface().onInputMappingEvent(this->inputMappingEvent);
+                                    this->getInputMappingEventListenerInterface()->onInputMappingEvent(this->inputMappingEvent);
     
 
                                     }
@@ -210,47 +216,47 @@ this->inputMappingEvent.setInputToGameKeyMapping(this->getInputMapping());
 
                 //@Throws(Exception.constructor)
             
-    public: void init(AbeClientInformationInterface abeClientInformation){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.INIT);
+    public: void init(AbeClientInformationInterface* abeClientInformation){
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->INIT);
     
 
         try {
-            this->inputPersistance.loadAll(abeClientInformation);
+            this->inputPersistance->loadAll(abeClientInformation);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-PreLogUtil::putOE(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT, e);
+PreLogUtil::putOE(this->commonStrings->EXCEPTION, this, this->commonStrings->INIT, &e);
     
-this->inputPersistance.deleteRecoreStore(abeClientInformation);
+this->inputPersistance->deleteRecoreStore(abeClientInformation);
     
 this->setDefault(abeClientInformation);
     
-this->inputPersistance.loadAll(abeClientInformation);
+this->inputPersistance->loadAll(abeClientInformation);
     
 }
 
 
-    BasicArrayList list = this->inputPersistance.getList();;
+    BasicArrayList* list = this->inputPersistance->getList();;
     
 
     int32_t totalMappedTo = 0;;
     
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
-    ABHashtable<Object*, Object*> hashtable;;
+    ABHashtable<Object*, Object*>* hashtable;;
     
 
-    Enumeration<Object*> enumeration;;
+    Enumeration<Object*>* enumeration;;
     
 
-    Input mappedToInput;;
+    Input* mappedToInput;;
     
 
-    Input gameActionInput;;
+    Input* gameActionInput;;
     
 
 
@@ -259,48 +265,48 @@ this->inputPersistance.loadAll(abeClientInformation);
                         for (
     int32_t index = 0;index < size; index++)
         {
-hashtable= list.objectArray[index];
+hashtable= dynamic_cast<ABHashtable<Object*, Object*>*>(list->objectArray[index]);
     
-enumeration= hashtable.keys();
+enumeration= hashtable->keys();
     
 
-        while(this->enumerationUtil.hasMoreElements(enumeration))
+        while(this->enumerationUtil->hasMoreElements(enumeration))
         {
-mappedToInput= this->enumerationUtil.nextElement(enumeration);
+mappedToInput= dynamic_cast<Input*>(this->enumerationUtil->nextElement(enumeration));
     
-gameActionInput= hashtable.get(mappedToInput);
+gameActionInput= dynamic_cast<Input*>(hashtable->get(mappedToInput));
     
 totalMappedTo++;
     
-this->getInputMapping().add(gameActionInput, mappedToInput);
+this->getInputMapping()->add(gameActionInput, mappedToInput);
     
 }
 
 }
 
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("End - Total Loaded Keys Mapped: ");
+stringBuffer->append("End - Total Loaded Keys Mapped: ");
     
-stringBuffer.appendint(this->getTotalMapped());
+stringBuffer->appendint(this->getTotalMapped());
     
-stringBuffer.append(" to: ");
+stringBuffer->append(" to: ");
     
-stringBuffer.appendint(totalMappedTo);
+stringBuffer->appendint(totalMappedTo);
     
-this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.INIT);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->INIT);
     
 }
 
 
-    public: void setInputMappingEventListenerInterface(InputMappingEventListenerInterface inputMappingEventListenerInterface){
+    public: void setInputMappingEventListenerInterface(InputMappingEventListenerInterface* inputMappingEventListenerInterface){
 this->inputMappingEventListenerInterface= inputMappingEventListenerInterface;
     
 }
 
 
-    private: InputMappingEventListenerInterface getInputMappingEventListenerInterface(){
+    private: InputMappingEventListenerInterface* getInputMappingEventListenerInterface(){
 
 
 
@@ -310,7 +316,7 @@ this->inputMappingEventListenerInterface= inputMappingEventListenerInterface;
 }
 
 
-    public: InputToGameKeyMapping getInputMapping(){
+    public: InputToGameKeyMapping* getInputMapping(){
 
 
 
@@ -322,22 +328,22 @@ this->inputMappingEventListenerInterface= inputMappingEventListenerInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: bool isDelete(Input input){
+    public: bool isDelete(Input* input){
 
 
 
-                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: bool isSystemInput(Input input){
+    public: bool isSystemInput(Input* input){
 
 
 
-                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 

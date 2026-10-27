@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayInputStream.h>
@@ -85,14 +93,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicPersitance.h"
-#include "NullRecordStore.h"
-#include "NullRecordFilter.h"
-#include "NullRecordComparator.h"
+        #include "org/allbinary/game/configuration/persistance/BasicPersitance.h"
+#include "org/allbinary/game/configuration/persistance/NullRecordStore.h"
+#include "org/allbinary/game/configuration/persistance/NullRecordFilter.h"
+#include "org/allbinary/game/configuration/persistance/NullRecordComparator.h"
 
 class KeyValuePersistance: public BasicPersitance {
 
-    private: const TsUtil tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil = TsUtil::getInstance();
 
 protected: KeyValuePersistance(std::string recordId) : BasicPersitance(recordId){
 
@@ -106,7 +114,7 @@ protected: KeyValuePersistance(std::string recordId) : BasicPersitance(recordId)
 
                 //@Throws(Exception.constructor)
             
-    public: void loadAll(AbeClientInformationInterface abeClientInformation){
+    public: void loadAll(AbeClientInformationInterface* abeClientInformation){
 this->loadAllSize(abeClientInformation, 1);
     
 }
@@ -114,19 +122,19 @@ this->loadAllSize(abeClientInformation, 1);
 
                 //@Throws(Exception.constructor)
             
-    public: void loadAllSize(AbeClientInformationInterface abeClientInformation, int32_t size){
+    public: void loadAllSize(AbeClientInformationInterface* abeClientInformation, int32_t size){
 
-    RecordStore recordStore = NullRecordStore::NULL_RECORD_STORE;;
+    RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
 
         try {
             recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);
     
 
-    RecordEnumeration recordEnum = recordStore.enumerateRecords(NullRecordFilter::NULL_RECORD_FILTER, NullRecordComparator::NULL_RECORD_COMPARATOR, true);;
+    RecordEnumeration* recordEnum = recordStore->enumerateRecords(NullRecordFilter::NULL_RECORD_FILTER, NullRecordComparator::NULL_RECORD_COMPARATOR, true);;
     
 
-    ABHashtable<std::string, std::string> hashtable;;
+    ABHashtable<std::string, std::string>* hashtable;;
     
 
     std::string name;;
@@ -135,31 +143,31 @@ this->loadAllSize(abeClientInformation, 1);
     std::string value;;
     
 
-    SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
+    SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
     std::vector<int8_t> recordAsBytes;;
     
 
-    ByteArrayInputStream byteArrayInputStream;;
+    ByteArrayInputStream* byteArrayInputStream;;
     
 
-    DataInputStream inputStream;;
+    DataInputStream* inputStream;;
     
 
-        while(recordEnum.hasNextElement())
+        while(recordEnum->hasNextElement())
         {
 
-    int32_t id = recordEnum.nextRecordId();;
+    int32_t id = recordEnum->nextRecordId();;
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-this->logUtil.putF(stringBuffer.append(this->persistanceStrings.LOADING_ID).appendint(id).toString(), this, this->persistanceStrings.LOAD_ALL);
+this->logUtil.putF(stringBuffer->append(this->persistanceStrings.LOADING_ID)->appendint(id)->toString(), this, this->persistanceStrings.LOAD_ALL);
     
-recordAsBytes= this->tsUtil.getRecord(recordStore, id);
+recordAsBytes= this->tsUtil->getRecord(recordStore, id);
     
 
                         if(recordAsBytes != 
@@ -167,11 +175,11 @@ recordAsBytes= this->tsUtil.getRecord(recordStore, id);
                                 )
                         
                                     {
-                                    byteArrayInputStream= ByteArrayInputStream(recordAsBytes);
+                                    byteArrayInputStream= new ByteArrayInputStream(recordAsBytes);
     
-inputStream= DataInputStream(byteArrayInputStream);
+inputStream= new DataInputStream(byteArrayInputStream);
     
-hashtable= ABHashtable<std::string, std::string>();
+hashtable= new ABHashtable<std::string, std::string>();
     
 
 
@@ -180,19 +188,19 @@ hashtable= ABHashtable<std::string, std::string>();
                         for (
     int32_t index = 0;index < size; index++)
         {
-name= inputStream.readUTF();
+name= inputStream->readUTF();
     
-inputStream.readUTF();
+inputStream->readUTF();
     
-value= inputStream.readUTF();
+value= inputStream->readUTF();
     
-hashtable.put(name, value);
+hashtable->put(name, value);
     
 }
 
 this->valueList.add(hashtable);
     
-this->idList.add(smallIntegerSingletonFactory.getAt(id));
+this->idList.add(smallIntegerSingletonFactory->getAt(id));
     
 
                                     }
@@ -201,7 +209,7 @@ this->idList.add(smallIntegerSingletonFactory.getAt(id));
 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -219,7 +227,7 @@ this->idList.add(smallIntegerSingletonFactory.getAt(id));
                                     {
                                     PreLogUtil::put(this->persistanceStrings.CLOSING_RECORDSTORE, this, this->persistanceStrings.LOAD_ALL);
     
-recordStore.closeRecordStore();
+recordStore->closeRecordStore();
     
 
                                     }
@@ -232,30 +240,30 @@ recordStore.closeRecordStore();
 
                 //@Throws(Exception.constructor)
             
-    public: void save(AbeClientInformationInterface abeClientInformation, ABHashtable<Object*, Object*> hashtable){
+    public: void save(AbeClientInformationInterface* abeClientInformation, ABHashtable<Object*, Object*>* hashtable){
 
-    RecordStore recordStore = NullRecordStore::NULL_RECORD_STORE;;
+    RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
 
         try {
-            this->logUtil.putF(StringMaker().append(this->persistanceStrings.SAVING).append(StringUtil::getInstance().toString(hashtable)).toString(), this, this->commonStrings.SAVE);
+            this->logUtil.putF((new StringMaker())->append(this->persistanceStrings.SAVING)->append(StringUtil::getInstance()->toString(hashtable))->toString(), this, this->commonStrings.SAVE);
     
 recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);
     
 
-    ByteArrayOutputStream byteArrayOutputStream = ByteArrayOutputStream();;
+    ByteArrayOutputStream* byteArrayOutputStream = new ByteArrayOutputStream();;
     
 
-    DataOutputStream outputStream = DataOutputStream(byteArrayOutputStream);;
+    DataOutputStream* outputStream = new DataOutputStream(byteArrayOutputStream);;
     
 
     std::string value;;
     
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
-    std::vector<Object*> objectArray = HashtableUtil::getInstance().getKeysAsArray(hashtable);;
+    std::vector<Object*> objectArray = HashtableUtil::getInstance()->getKeysAsArray(hashtable);;
     
 
     Object* anyType;;
@@ -270,29 +278,29 @@ recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation
                         for (
     int32_t index = 0;index < size; index++)
         {
-outputStream.writeUTF(objectArray[index]);
+outputStream->writeUTF(objectArray[index]);
     
-outputStream.writeUTF(commonSeps.EQUALS);
+outputStream->writeUTF(commonSeps->EQUALS);
     
 anyType= objectArray[index];
     
-value= hashtable.get(anyType);
+value= hashtable->get(anyType);
     
-outputStream.writeUTF(value);
+outputStream->writeUTF(value);
     
 }
 
 
-    TsUtil tsUtil = TsUtil::getInstance();;
+    TsUtil* tsUtil = TsUtil::getInstance();;
     
 
-    std::vector<int8_t> savedGameBytes = tsUtil.getByteArray(byteArrayOutputStream.toString());;
+    std::vector<int8_t> savedGameBytes = tsUtil->getByteArray(byteArrayOutputStream->toString());;
     
-recordStore.addRecord(savedGameBytes, 0, savedGameBytes.size());
+recordStore->addRecord(savedGameBytes, 0, savedGameBytes.size());
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -310,7 +318,7 @@ recordStore.addRecord(savedGameBytes, 0, savedGameBytes.size());
                                     {
                                     PreLogUtil::put(this->persistanceStrings.CLOSING_RECORDSTORE, this, this->commonStrings.SAVE);
     
-recordStore.closeRecordStore();
+recordStore->closeRecordStore();
     
 
                                     }
@@ -321,9 +329,9 @@ recordStore.closeRecordStore();
 }
 
 
-    public: ABHashtable<Object*, Object*> get(int32_t index){
+    public: ABHashtable<Object*, Object*>* get(int32_t index){
 
-    ABHashtable<Object*, Object*> hashtable = this->valueList.objectArray[index];;
+    ABHashtable<Object*, Object*>* hashtable = dynamic_cast<ABHashtable<Object*, Object*>*>(this->valueList.objectArray[index]);;
     
 
 

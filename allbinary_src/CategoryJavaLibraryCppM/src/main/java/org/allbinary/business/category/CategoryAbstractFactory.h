@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYABSTRACTFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYABSTRACTFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,35 +72,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryFactoryInterface.h"
-#include "CategoryInterface.h"
-#include "Category.h"
+        #include "org/allbinary/business/category/CategoryFactoryInterface.h"
+#include "org/allbinary/business/category/CategoryInterface.h"
+#include "org/allbinary/business/category/Category.h"
 
 class CategoryAbstractFactory
             : public Object
-        : public CategoryFactoryInterface {
+        , public CategoryFactoryInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
 public: CategoryAbstractFactory();
 
-    public: CategoryInterface getRootInstance();
+    public: CategoryInterface* getRootInstance();
 
-    public: CategoryInterface getRootInstance(AbPath categoryAbPath);
+    public: CategoryInterface* getRootInstance(AbPath* categoryAbPath);
 
-    public: CategoryInterface getRootInstanceFromNode(Node node);
+    public: CategoryInterface* getRootInstanceFromNode(Node* node);
 
-    public: CategoryInterface getInstance(std::string categoryName);
+    public: CategoryInterface* getInstance(std::string categoryName);
 
-    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, std::string categoryName);
+    public: CategoryInterface* getInstance(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, std::string categoryName);
 
-    public: CategoryInterface getInstance(Node node);
+    public: CategoryInterface* getInstance(Node* node);
 
-    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, Node node);
+    public: CategoryInterface* getInstance(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, Node* node);
 
-    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<Object*, Object*> categoryPropertiesHashMap);
+    public: CategoryInterface* getInstance(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap);
 
 };
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -107,25 +113,25 @@ class RTSFormInput
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const GroupCommonFactory groupCommonFactory = GroupCommonFactory::getInstance();
+    private: GroupCommonFactory* groupCommonFactory = GroupCommonFactory::getInstance();
 
-    private: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
+    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
 
-    protected: const std::vector<CollidableDestroyableDamageableLayer> newUnconstructedRTSLayerInterfaceArray = std::vector<CollidableDestroyableDamageableLayer>(7);
+    protected: const std::vector<CollidableDestroyableDamageableLayer*> newUnconstructedRTSLayerInterfaceArray = std::vector<CollidableDestroyableDamageableLayer*>(7);
 
-    protected: std::vector<Group> groupInterfaceArray;
+    protected: std::vector<Group*> groupInterfaceArray;
 
-    private: GeographicMapCellPosition selectedGeographicCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition* selectedGeographicCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
     private: bool stickyItemSelected= false;
 
     private: int32_t selectedStickyItemIndex= 0;
 
-    private: ABCustomItem selectedStickyItem = ABCustomItem::getNullInstance();
+    private: ABCustomItem* selectedStickyItem = ABCustomItem::getNullInstance();
 
-public: RTSFormInput(std::vector<Group> groupInterfaceArray){
+public: RTSFormInput(std::vector<Group*> groupInterfaceArray){
 
     int32_t size = this->newUnconstructedRTSLayerInterfaceArray.size();;
     
@@ -142,7 +148,7 @@ this->newUnconstructedRTSLayerInterfaceArray[index]= CollidableDestroyableDamage
 
 this->groupInterfaceArray= groupInterfaceArray;
     
-this->hashtable.put(DirectionFactory::getInstance().NAME, DirectionFactory::getInstance().DOWN);
+this->hashtable->put(DirectionFactory::getInstance()->NAME, DirectionFactory::getInstance()->DOWN);
     
 
                         if(groupInterfaceArray != 
@@ -150,7 +156,7 @@ this->hashtable.put(DirectionFactory::getInstance().NAME, DirectionFactory::getI
                                 )
                         
                                     {
-                                    this->hashtable.put(this->groupCommonFactory.ID, groupInterfaceArray);
+                                    this->hashtable->put(this->groupCommonFactory->ID, groupInterfaceArray);
     
 
                                     }
@@ -160,13 +166,13 @@ this->hashtable.put(DirectionFactory::getInstance().NAME, DirectionFactory::getI
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processAtPoint(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, GPoint point){
+    public: void processAtPoint(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, GPoint* point){
 
     int32_t index = this->getIndexAt(rtsPlayerLayerInterface, point);;
     
@@ -184,10 +190,10 @@ this->hashtable.put(DirectionFactory::getInstance().NAME, DirectionFactory::getI
                                     }
                                 
 
-    ScrollSelectionForm scrollSelectionForm = rtsPlayerLayerInterface.getCurrentScrollSelectionForm();;
+    ScrollSelectionForm* scrollSelectionForm = rtsPlayerLayerInterface->getCurrentScrollSelectionForm();;
     
 
-    ABCustomItem item = scrollSelectionForm.get(index);;
+    ABCustomItem* item = scrollSelectionForm->get(index);;
     
 
                         if(item == 
@@ -211,21 +217,21 @@ this->processGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, layerMana
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayerManager layerManager){
-this->setAllBinaryGameLayerManager(layerManager);
+    public: void process(AllBinaryLayerManager* layerManager){
+this->setAllBinaryGameLayerManager(dynamic_cast<AllBinaryGameLayerManager*>(layerManager));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t index){
+    public: void processGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t index){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: bool processSticky(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, GPoint point){
+    public: bool processSticky(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, GPoint* point){
 
     int32_t index = this->getIndexAt(rtsPlayerLayerInterface, point);;
     
@@ -243,10 +249,10 @@ this->setAllBinaryGameLayerManager(layerManager);
                                     }
                                 
 
-    ScrollSelectionForm scrollSelectionForm = rtsPlayerLayerInterface.getCurrentScrollSelectionForm();;
+    ScrollSelectionForm* scrollSelectionForm = rtsPlayerLayerInterface->getCurrentScrollSelectionForm();;
     
 
-    ABCustomItem item = scrollSelectionForm.get(index);;
+    ABCustomItem* item = scrollSelectionForm->get(index);;
     
 
                         if(item == 
@@ -276,55 +282,55 @@ this->processStickyGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, lay
 
                 //@Throws(Exception.constructor)
             
-    public: void processStickyGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t index){
+    public: void processStickyGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t index){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: ABCustomItem getItemAt(RTSPlayerLayerInterface rtsPlayerLayerInterface, GPoint point){
-this->logUtil.putF(StringMaker().append("Point: ").append(StringUtil::getInstance().toString(point)).toString(), this, "getItemAt");
+    protected: ABCustomItem* getItemAt(RTSPlayerLayerInterface* rtsPlayerLayerInterface, GPoint* point){
+this->logUtil->putF((new StringMaker())->append("Point: ")->append(StringUtil::getInstance()->toString(point))->toString(), this, "getItemAt");
     
 
-    ScrollSelectionForm scrollSelectionForm = rtsPlayerLayerInterface.getCurrentScrollSelectionForm();;
+    ScrollSelectionForm* scrollSelectionForm = rtsPlayerLayerInterface->getCurrentScrollSelectionForm();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return scrollSelectionForm.getSelectedItem(point);;
+                        return scrollSelectionForm->getSelectedItem(point);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: int32_t getIndexAt(RTSPlayerLayerInterface rtsPlayerLayerInterface, GPoint point){
-this->logUtil.putF(StringMaker().append("Point: ").append(StringUtil::getInstance().toString(point)).toString(), this, "getItemAt");
+    protected: int32_t getIndexAt(RTSPlayerLayerInterface* rtsPlayerLayerInterface, GPoint* point){
+this->logUtil->putF((new StringMaker())->append("Point: ")->append(StringUtil::getInstance()->toString(point))->toString(), this, "getItemAt");
     
 
-    ScrollSelectionForm scrollSelectionForm = rtsPlayerLayerInterface.getCurrentScrollSelectionForm();;
+    ScrollSelectionForm* scrollSelectionForm = rtsPlayerLayerInterface->getCurrentScrollSelectionForm();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return scrollSelectionForm.getSelectedIndexForPoint(point);;
+                        return scrollSelectionForm->getSelectedIndexForPoint(point);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: CollidableDestroyableDamageableLayer getInstance(AllBinaryLayerManager layerManager, ABCustomItem aItem, GeographicMapCellPosition geographicMapCellPosition){
+    protected: CollidableDestroyableDamageableLayer* getInstance(AllBinaryLayerManager* layerManager, ABCustomItem* aItem, GeographicMapCellPosition* geographicMapCellPosition){
 
-    LayerInterfaceFactoryImageItem item = aItem;;
+    LayerInterfaceFactoryImageItem* item = dynamic_cast<LayerInterfaceFactoryImageItem*>(aItem);;
     
 
-    LayerInterfaceFactoryInterface layerInterfaceFactoryInterface = item.getLayerInterfaceFactoryInterface();;
+    LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface = item->getLayerInterfaceFactoryInterface();;
     
 
-    GPoint cellPoint = geographicMapCellPosition.getPoint();;
+    GPoint* cellPoint = geographicMapCellPosition->getPoint();;
     
 
                         if(layerInterfaceFactoryInterface != 
@@ -332,13 +338,13 @@ this->logUtil.putF(StringMaker().append("Point: ").append(StringUtil::getInstanc
                                 )
                         
                                     {
-                                    this->hashtable.put(AllBinaryGameLayerManager::ID, layerManager);
+                                    this->hashtable->put(AllBinaryGameLayerManager::ID, layerManager);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return layerInterfaceFactoryInterface.getNextInstance(this->getHashtable(), cellPoint.getX(), cellPoint.getY(), cellPoint.getZ());
+                        return dynamic_cast<RTSLayer*>(layerInterfaceFactoryInterface->getNextInstance(this->getHashtable(), cellPoint->getX(), cellPoint->getY(), cellPoint->getZ()));
     
 
                                     }
@@ -352,7 +358,7 @@ this->logUtil.putF(StringMaker().append("Point: ").append(StringUtil::getInstanc
 }
 
 
-    public: GeographicMapCellPosition getSelectedGeographicCellPosition(){
+    public: GeographicMapCellPosition* getSelectedGeographicCellPosition(){
 
 
 
@@ -362,8 +368,8 @@ this->logUtil.putF(StringMaker().append("Point: ").append(StringUtil::getInstanc
 }
 
 
-    public: void setSelectedGeographicCellPosition(GeographicMapCellPosition selectedGeographicCellPosition){
-this->logUtil.putF(StringMaker().append("Selected GeographicMapCellPosition: ").append(selectedGeographicCellPosition.toString()).toString(), this, "setSelectedGeographicCellPosition");
+    public: void setSelectedGeographicCellPosition(GeographicMapCellPosition* selectedGeographicCellPosition){
+this->logUtil->putF((new StringMaker())->append("Selected GeographicMapCellPosition: ")->append(selectedGeographicCellPosition->toString())->toString(), this, "setSelectedGeographicCellPosition");
     
 this->selectedGeographicCellPosition= selectedGeographicCellPosition;
     
@@ -386,7 +392,7 @@ this->stickyItemSelected= stickyItemSelected;
 }
 
 
-    public: ABCustomItem getSelectedStickyItem(){
+    public: ABCustomItem* getSelectedStickyItem(){
 
 
 
@@ -396,7 +402,7 @@ this->stickyItemSelected= stickyItemSelected;
 }
 
 
-    public: void setSelectedStickyItem(ABCustomItem selectedStickyItem){
+    public: void setSelectedStickyItem(ABCustomItem* selectedStickyItem){
 this->selectedStickyItem= selectedStickyItem;
     
 }
@@ -418,7 +424,7 @@ this->selectedStickyItemIndex= selectedStickyItemIndex;
 }
 
 
-    public: ABHashtable<Object*, Object*> getHashtable(){
+    public: ABHashtable<Object*, Object*>* getHashtable(){
 
 
 

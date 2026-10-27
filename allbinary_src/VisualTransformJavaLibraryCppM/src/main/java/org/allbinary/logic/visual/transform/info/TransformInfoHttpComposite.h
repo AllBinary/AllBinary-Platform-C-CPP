@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPCOMPOSITE_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPCOMPOSITE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,30 +64,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformInfoHttpInterface.h"
-#include "TransformInfoInterface.h"
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpInterface.h"
+#include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
 
 class TransformInfoHttpComposite
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: TransformInfoHttpInterface transformInfoInterface;
+    private: TransformInfoHttpInterface* transformInfoInterface;
 
-public: TransformInfoHttpComposite(TransformInfoInterface transformInfoInterface);
+public: TransformInfoHttpComposite(TransformInfoInterface* transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface getTransformInfoInterface();
+    public: TransformInfoInterface* getTransformInfoInterface();
 
-    public: WeblisketSession getWeblisketSession();
+    public: WeblisketSession* getWeblisketSession();
 
-    public: PageContext getPageContext();
+    public: PageContext* getPageContext();
 
-    public: HashMap<Object*, Object*> getPropertiesHashMap();
+    public: HashMap<Object*, Object*>* getPropertiesHashMap();
 
 };
 

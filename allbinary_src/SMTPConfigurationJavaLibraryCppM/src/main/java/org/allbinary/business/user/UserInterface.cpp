@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/util/HashMap.h>
 
       
@@ -57,105 +63,105 @@
         
 class UserInterface: public TableMappingInterface, public ValidationInterface {
 
-    void setUserName(std::string value)
+    public: virtual void setUserName(std::string value) = 0;
 
-    void setPrefixName(std::string value)
+    public: virtual void setPrefixName(std::string value) = 0;
 
-    void setFirstName(std::string value)
+    public: virtual void setFirstName(std::string value) = 0;
 
-    void setLastName(std::string value)
+    public: virtual void setLastName(std::string value) = 0;
 
-    void setMiddleName(std::string value)
+    public: virtual void setMiddleName(std::string value) = 0;
 
-    void setSuffixName(std::string value)
+    public: virtual void setSuffixName(std::string value) = 0;
 
-    void setCompany(std::string value)
+    public: virtual void setCompany(std::string value) = 0;
 
-    void setPositionAtCompany(std::string value)
+    public: virtual void setPositionAtCompany(std::string value) = 0;
 
-    void setMainEmail(std::string value)
+    public: virtual void setMainEmail(std::string value) = 0;
 
-    void setSecondaryEmail(std::string value)
+    public: virtual void setSecondaryEmail(std::string value) = 0;
 
-    void setHomePhone(std::string value)
+    public: virtual void setHomePhone(std::string value) = 0;
 
-    void setCellPhone(std::string value)
+    public: virtual void setCellPhone(std::string value) = 0;
 
-    void setWorkPhone(std::string value)
+    public: virtual void setWorkPhone(std::string value) = 0;
 
-    void setOtherContact(std::string value)
+    public: virtual void setOtherContact(std::string value) = 0;
 
-    void setElectronicContact(std::string value)
+    public: virtual void setElectronicContact(std::string value) = 0;
 
-    void setFax(std::string value)
+    public: virtual void setFax(std::string value) = 0;
 
-    void setRole(UserRole aRole)
+    public: virtual void setRole(UserRole* aRole) = 0;
 
-    void setEncryption(std::string value)
+    public: virtual void setEncryption(std::string value) = 0;
 
-    void setSecret(std::string value)
+    public: virtual void setSecret(std::string value) = 0;
 
-    void setPassword(std::string value)
+    public: virtual void setPassword(std::string value) = 0;
 
-    void setPermissions(std::string value)
+    public: virtual void setPermissions(std::string value) = 0;
 
-    void enable()
+    public: virtual void enable() = 0;
 
-    void setEnable(std::string enable)
+    public: virtual void setEnable(std::string enable) = 0;
 
-    std::string getUserName()
+    public: virtual std::string getUserName() = 0;
 
-    std::string getPrefixName()
+    public: virtual std::string getPrefixName() = 0;
 
-    std::string getFirstName()
+    public: virtual std::string getFirstName() = 0;
 
-    std::string getLastName()
+    public: virtual std::string getLastName() = 0;
 
-    std::string getMiddleName()
+    public: virtual std::string getMiddleName() = 0;
 
-    std::string getSuffixName()
+    public: virtual std::string getSuffixName() = 0;
 
-    std::string getCompany()
+    public: virtual std::string getCompany() = 0;
 
-    std::string getPositionAtCompany()
+    public: virtual std::string getPositionAtCompany() = 0;
 
-    std::string getMainEmail()
+    public: virtual std::string getMainEmail() = 0;
 
-    std::string getSecondaryEmail()
+    public: virtual std::string getSecondaryEmail() = 0;
 
-    std::string getHomePhone()
+    public: virtual std::string getHomePhone() = 0;
 
-    std::string getCellPhone()
+    public: virtual std::string getCellPhone() = 0;
 
-    std::string getWorkPhone()
+    public: virtual std::string getWorkPhone() = 0;
 
-    std::string getOtherContact()
+    public: virtual std::string getOtherContact() = 0;
 
-    std::string getElectronicContact()
+    public: virtual std::string getElectronicContact() = 0;
 
-    std::string getFax()
+    public: virtual std::string getFax() = 0;
 
-    UserRole getRole()
+    public: virtual UserRole* getRole() = 0;
 
-    std::string getEncryption()
+    public: virtual std::string getEncryption() = 0;
 
-    std::string getSecret()
+    public: virtual std::string getSecret() = 0;
 
-    std::string getPassword()
+    public: virtual std::string getPassword() = 0;
 
-    std::string getPermissions()
+    public: virtual std::string getPermissions() = 0;
 
-    UserConfigurationInterface getUserConfigurationInterface()
+    public: virtual UserConfigurationInterface* getUserConfigurationInterface() = 0;
 
-    void setUserConfigurationInterface(UserConfigurationInterface userConfigurationInterface)
+    public: virtual void setUserConfigurationInterface(UserConfigurationInterface* userConfigurationInterface) = 0;
 
-    HashMap<Object*, Object*> toPasswordHashMap()
+    public: virtual HashMap<Object*, Object*>* toPasswordHashMap() = 0;
 
-    void validateSession(WeblisketSessionInterface weblisketSession)
+    public: virtual void validateSession(WeblisketSessionInterface* weblisketSession) = 0;
 
-    void updateSession(WeblisketSessionInterface weblisketSession)
+    public: virtual void updateSession(WeblisketSessionInterface* weblisketSession) = 0;
 
-    Boolean isSessionValid()
+    public: virtual bool isSessionValid() = 0;
 
 };
 

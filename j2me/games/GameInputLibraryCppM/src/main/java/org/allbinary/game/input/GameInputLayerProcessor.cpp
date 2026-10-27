@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/AllBinaryLayer.h>
@@ -47,12 +53,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameInputLayerManager.h"
-#include "GameInputInterface.h"
+        #include "org/allbinary/game/input/GameInputLayerManager.h"
+#include "org/allbinary/game/input/GameInputInterface.h"
 
 class GameInputLayerProcessor: public LayerProcessor {
 
-public: GameInputLayerProcessor() : LayerProcessor(GameInputLayerManager()){
+public: GameInputLayerProcessor() : LayerProcessor(new GameInputLayerManager()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -64,18 +70,18 @@ public: GameInputLayerProcessor() : LayerProcessor(GameInputLayerManager()){
 
                 //@Throws(Exception.constructor)
             
-    public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
+    public: void processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index){
 
-    GameInputInterface gameInputInterface = layerInterface;;
+    GameInputInterface* gameInputInterface = dynamic_cast<GameInputInterface*>(layerInterface);;
     
-gameInputInterface.processInput(allBinaryLayerManager);
+gameInputInterface->processInput(allBinaryLayerManager);
     
 }
 
 
-    public: bool isProcessorLayer(AllBinaryLayer layerInterface){
+    public: bool isProcessorLayer(AllBinaryLayer* layerInterface){
 
-                        if(layerInterface.implmentsGameInputInterface())
+                        if(layerInterface->implmentsGameInputInterface())
                         
                                     {
                                     

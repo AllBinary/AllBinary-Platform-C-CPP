@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_TIME_GAMETICKTIMEDELAYHELPERFACTORY_H
         #define ORG_ALLBINARY_TIME_GAMETICKTIMEDELAYHELPERFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,15 +47,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameTickTimeDelayHelper.h"
+        #include "org/allbinary/time/GameTickTimeDelayHelper.h"
 
 class GameTickTimeDelayHelperFactory
             : public Object
          {
 
-    private: static GameTickTimeDelayHelper instance() { return GameTickTimeDelayHelper(); }
+    private: static GameTickTimeDelayHelper* instance() { static std::unique_ptr<GameTickTimeDelayHelper> value(new GameTickTimeDelayHelper( -1)); return value.get(); }
 
-    public: static GameTickTimeDelayHelper getInstance();
+    public: static GameTickTimeDelayHelper* getInstance();
 
 private: GameTickTimeDelayHelperFactory();
 

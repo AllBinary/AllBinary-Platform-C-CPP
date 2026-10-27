@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,7 +45,7 @@
         
 class TimeFiredInterface {
 
-    int64_t getLastFireTime()
+    public: virtual int64_t getLastFireTime() = 0;
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/System.h"
         
             #include "java/lang/Integer.h"
@@ -46,13 +52,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AndroidGameStatistics.h"
+        #include "org/allbinary/canvas/AndroidGameStatistics.h"
 
 class ProfilingRefreshHelper: public AndroidGameStatistics {
 
-    private: static ProfilingRefreshHelper instance() { return ProfilingRefreshHelper(); }
+    private: static ProfilingRefreshHelper* instance() { static std::unique_ptr<ProfilingRefreshHelper> value(new ProfilingRefreshHelper()); return value.get(); }
 
-    public: static AndroidGameStatistics getInstance(){
+    public: static AndroidGameStatistics* getInstance(){
 
 
 
@@ -74,12 +80,12 @@ private: ProfilingRefreshHelper(){
 }
 
 
-    public: void initView(View view){
+    public: void initView(View* view){
 super.initView(view);
     
-this->frameProcessingTimeElapsed= this->getTimeDelayHelper().getStartTime();
+this->frameProcessingTimeElapsed= this->getTimeDelayHelper()->getStartTime();
     
-this->bestFrameProcessingTime= Integer::MAX_VALUE;
+this->bestFrameProcessingTime= Integer.MAX_VALUE;
     
 this->worstFrameProcessingTime= 0;
     
@@ -120,7 +126,7 @@ super.nextFrame();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().append(super.toString()).append(" Worst: ").appendint(this->worstFrameProcessingTime).append(" Best: ").appendint(this->bestFrameProcessingTime).toString();;
+                        return (new StringMaker())->append(super.toString())->append(" Worst: ")->appendint(this->worstFrameProcessingTime)->append(" Best: ")->appendint(this->bestFrameProcessingTime)->toString();;
     
 }
 

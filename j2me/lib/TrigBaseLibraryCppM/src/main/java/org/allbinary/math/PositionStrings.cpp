@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -52,9 +58,9 @@ class PositionStrings
             : public Object
          {
 
-    private: static PositionStrings instance() { return PositionStrings(); }
+    private: static PositionStrings* instance() { static std::unique_ptr<PositionStrings> value(new PositionStrings()); return value.get(); }
 
-    public: static PositionStrings getInstance(){
+    public: static PositionStrings* getInstance(){
 
 
 

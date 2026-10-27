@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/NullAnimationFactory.h>
@@ -68,14 +74,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PickupLayer.h"
-#include "CountedPickedUpLayerInterfaceFactory.h"
+        #include "org/allbinary/game/layer/pickup/PickupLayer.h"
+#include "org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactory.h"
 
 class RaceTrackPickupLayer: public PickupLayer {
 
-    private: static const std::string NAME = "RaceTrackPickupLayer";
+    private: static inline const std::string NAME = "RaceTrackPickupLayer";
 
-public: RaceTrackPickupLayer() : PickupLayer(NAME, RemoteInfo::REMOTE_INFO, 0, CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY, NullAnimationFactory::getFactoryInstance().getInstance(0), Rectangle(PointFactory::getInstance().ZERO_ZERO, 0, 0), TileLayerPositionIntoViewPosition()){
+public: RaceTrackPickupLayer() : PickupLayer(NAME, RemoteInfo::REMOTE_INFO, 0, CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY, NullAnimationFactory::getFactoryInstance()->getInstance(0), new Rectangle(PointFactory::getInstance()->ZERO_ZERO, 0, 0), new TileLayerPositionIntoViewPosition()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,15 +91,15 @@ public: RaceTrackPickupLayer() : PickupLayer(NAME, RemoteInfo::REMOTE_INFO, 0, C
 }
 
 
-    private: const ViewPositionEventHandler viewPositionEventHandler = ViewPositionEventHandler::getInstance();
+    private: ViewPositionEventHandler* viewPositionEventHandler = ViewPositionEventHandler::getInstance();
 
-    public: void setTiledLayer(AllBinaryTiledLayer tiledLayer){
+    public: void setTiledLayer(AllBinaryTiledLayer* tiledLayer){
 
-    TileLayerPositionIntoViewPosition viewPosition = this->getViewPosition();;
+    TileLayerPositionIntoViewPosition* viewPosition = dynamic_cast<TileLayerPositionIntoViewPosition*>(this->getViewPosition());;
     
-viewPosition.setTiledLayer(tiledLayer);
+viewPosition->setTiledLayer(tiledLayer);
     
-this->viewPositionEventHandler.addListener(this);
+this->viewPositionEventHandler->addListener(dynamic_cast<AllBinaryLayer*>(this));
     
 }
 
@@ -105,7 +111,7 @@ super.setDestroyed(destroyed);
                         if(this->isDestroyed())
                         
                                     {
-                                    this->viewPositionEventHandler.removeListener(this);
+                                    this->viewPositionEventHandler->removeListener(this);
     
 
                                     }

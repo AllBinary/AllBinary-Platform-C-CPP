@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSPAINTABLE_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSPAINTABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -54,22 +60,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchButtonFactory.h"
-#include "TouchButton.h"
+        #include "org/allbinary/input/motion/button/TouchButtonFactory.h"
+#include "org/allbinary/input/motion/button/TouchButton.h"
 
 class TouchButtonsPaintable: public Paintable {
 
-    protected: BasicColor foregroundBasicColor;
+    protected: BasicColor* foregroundBasicColor;
 
     protected: int32_t foregroundColor;
 
-    protected: const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
+    protected: BasicColorSetUtil* basicSetColorUtil = BasicColorSetUtil::getInstance();
 
-    private: const TouchButtonFactory touchButtonFactory = TouchButtonFactory::getInstance();
+    private: TouchButtonFactory* touchButtonFactory = TouchButtonFactory::getInstance();
 
-public: TouchButtonsPaintable(BasicColor basicColor);
+public: TouchButtonsPaintable(BasicColor* basicColor);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

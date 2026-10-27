@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYCOMPONENT_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYCOMPONENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
@@ -56,28 +62,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryView.h"
-#include "CategoryInterface.h"
+        #include "org/allbinary/business/category/CategoryView.h"
+#include "org/allbinary/business/category/CategoryInterface.h"
 
 class CategoryComponent: public CategoryView, public TransformInterface {
 
-public: CategoryComponent(CategoryInterface categoryInterface);
+public: CategoryComponent(CategoryInterface* categoryInterface);
 
     public: int32_t NO_TYPE = 0;
 
     public: int32_t getTypeId();
 
-    public: TransformDocumentInterface getTransformDocumentInterface();
+    public: TransformDocumentInterface* getTransformDocumentInterface();
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface getTransformInfoInterface();
+    public: TransformInfoInterface* getTransformInfoInterface();
 
-    public: void setTransformDocumentInterface(TransformDocumentInterface viewDocumentInterface);
+    public: void setTransformDocumentInterface(TransformDocumentInterface* viewDocumentInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Document toXmlDoc();
+    public: Document* toXmlDoc();
 
                 //@Throws(Exception.constructor)
             

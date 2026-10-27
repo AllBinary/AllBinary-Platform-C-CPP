@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -51,9 +57,9 @@ class ImageFactory
             : public Object
          {
 
-    private: static ImageFactory instance() { return ImageFactory(); }
+    private: static ImageFactory* instance() { static std::unique_ptr<ImageFactory> value(new ImageFactory()); return value.get(); }
 
-    public: static ImageFactory getInstance(){
+    public: static ImageFactory* getInstance(){
 
 
 
@@ -65,7 +71,7 @@ class ImageFactory
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImageUrl(std::string url){
+    public: Image* createImageUrl(std::string url){
 
 
 
@@ -77,7 +83,7 @@ class ImageFactory
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImage(std::string caller, int32_t width, int32_t height){
+    public: Image* createImage(std::string caller, int32_t width, int32_t height){
 
 
 
@@ -89,9 +95,9 @@ class ImageFactory
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImageFromInputStream(Object* key, InputStream inputStream){
+    public: Image* createImageFromInputStream(Object* key, InputStream* inputStream){
 
-    Image image = Image::createImageFromInputStream(inputStream);;
+    Image* image = Image::createImageFromInputStream(inputStream);;
     
 
 
@@ -104,7 +110,7 @@ class ImageFactory
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImageFromInputStream(InputStream inputStream){
+    public: Image* createImageFromInputStream(InputStream* inputStream){
 
 
 

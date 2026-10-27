@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_THREAD_THREADFACTORYUTIL_H
         #define ORG_ALLBINARY_THREAD_THREADFACTORYUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Thread.h"
@@ -78,27 +84,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ABRunnable.h"
-#include "PrimaryThreadPool.h"
-#include "ThreadPool.h"
+        #include "org/allbinary/thread/ABRunnable.h"
+#include "org/allbinary/thread/PrimaryThreadPool.h"
+#include "org/allbinary/thread/ThreadPool.h"
 
 class ThreadFactoryUtil
             : public Object
          {
 
-    private: static ThreadFactoryUtil instance() { return ThreadFactoryUtil(); }
+    private: static ThreadFactoryUtil* instance() { static std::unique_ptr<ThreadFactoryUtil> value(new ThreadFactoryUtil()); return value.get(); }
 
-    public: static ThreadFactoryUtil getInstance();
+    public: static ThreadFactoryUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: Thread getInstanceGameCanvasRunnable(GameCanvasRunnableInterface runnable);
+    public: Thread* getInstanceGameCanvasRunnable(GameCanvasRunnableInterface* runnable);
 
-    public: Thread getInstanceForRunnable(ABRunnable runnable);
+    public: Thread* getInstanceForRunnable(ABRunnable* runnable);
 
-    private: Thread getInstanceType(Runnable runnable, int32_t type);
+    private: Thread* getInstanceType(Runnable* runnable, int32_t type);
 
-    public: void start(Thread thread);
+    public: void start(Thread* thread);
 
 };
 

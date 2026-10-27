@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -59,9 +67,9 @@
         
 class ThrustAIVisitor: public Visitor {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const Boolean TRUE = BooleanFactory::getInstance().TRUE;
+    private: bool TRUE = BooleanFactory::getInstance()->TRUE;
 
 public: ThrustAIVisitor(){
 }
@@ -71,18 +79,18 @@ public: ThrustAIVisitor(){
 
         try {
             
-    BasicAI basicAI = *dynamic_cast<BasicAI*>(anyType);;
+    BasicAI* basicAI = dynamic_cast<BasicAI*>(anyType);;
     
-basicAI.processKeyAI(Canvas::UP);
+basicAI->processKeyAI(Canvas::UP);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.VISIT, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->VISIT, &e);
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -63,11 +69,11 @@
         
 class IconLayer: public AllBinaryLayer {
 
-    public: static const IconLayer NULL_ICON_LAYER = IconLayer(NullAnimationFactory::getFactoryInstance().getInstance(0), 0, 0);
+    public: static IconLayer* NULL_ICON_LAYER() { static std::unique_ptr<IconLayer> value(new IconLayer(NullAnimationFactory::getFactoryInstance()->getInstance(0), 0, 0)); return value.get(); }
 
-    private: Animation animationInterface;
+    private: Animation* animationInterface;
 
-public: IconLayer(Animation animationInterface, int32_t width, int32_t height) : AllBinaryLayer(StringUtil::getInstance().EMPTY_STRING, Rectangle(PointFactory::getInstance().ZERO_ZERO, width, height), ViewPosition::getInstanceD()){
+public: IconLayer(Animation* animationInterface, int32_t width, int32_t height) : AllBinaryLayer(StringUtil::getInstance()->EMPTY_STRING, new Rectangle(PointFactory::getInstance()->ZERO_ZERO, width, height), ViewPosition::getInstanceD()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -79,19 +85,19 @@ this->animationInterface= animationInterface;
 }
 
 
-    public: void paint(Graphics graphics){
-this->animationInterface.paintXY(graphics, this->x, this->y);
+    public: void paint(Graphics* graphics){
+this->animationInterface->paintXY(graphics, this->x, this->y);
     
 }
 
 
-    public: void paintThreed(Graphics graphics){
-this->animationInterface.paintThreedXYZ(graphics, this->x, this->y, this->z);
+    public: void paintThreed(Graphics* graphics){
+this->animationInterface->paintThreedXYZ(graphics, this->x, this->y, this->z);
     
 }
 
 
-    public: Animation getAnimationInterface(){
+    public: Animation* getAnimationInterface(){
 
 
 

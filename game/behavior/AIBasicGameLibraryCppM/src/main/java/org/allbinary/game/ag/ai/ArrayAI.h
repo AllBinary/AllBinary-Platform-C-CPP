@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
@@ -61,15 +67,15 @@
         
 class ArrayAI: public BasicAI {
 
-    private: std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterfaceArray;
+    private: std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterfaceArray;
 
-public: ArrayAI(std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: ArrayAI(std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterface, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager);
 
-    public: std::vector<ArtificialIntelligenceInterface> getArtificialIntelligenceInterface();
+    public: std::vector<ArtificialIntelligenceInterface*> getArtificialIntelligenceInterface();
 
 };
 

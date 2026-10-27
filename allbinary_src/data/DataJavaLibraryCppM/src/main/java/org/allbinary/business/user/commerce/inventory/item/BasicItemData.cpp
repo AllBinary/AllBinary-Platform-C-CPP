@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class BasicItemData
             : public Object
          {
 
-    private: static BasicItemData instance() { return BasicItemData(); }
+    private: static BasicItemData* instance() { static std::unique_ptr<BasicItemData> value(new BasicItemData()); return value.get(); }
 
-    public: static BasicItemData getInstance(){
+    public: static BasicItemData* getInstance(){
 
 
 

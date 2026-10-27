@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -55,7 +61,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageAnimation.h"
+        #include "org/allbinary/animation/image/ImageAnimation.h"
 
 class ImageSegmentAnimation: public ImageAnimation {
 
@@ -67,11 +73,11 @@ class ImageSegmentAnimation: public ImageAnimation {
 
     private: int32_t drawHeight;
 
-    private: CircularIndexUtil circularIndexUtil;
+    private: CircularIndexUtil* circularIndexUtil;
 
     private: std::vector<int32_t> sequenceArray;
 
-protected: ImageSegmentAnimation(Image image, std::vector<int32_t> sequenceArray, AnimationBehavior animationBehavior);
+protected: ImageSegmentAnimation(Image* image, std::vector<int32_t> sequenceArray, AnimationBehavior* animationBehavior);
 
     public: void nextFrame();
 
@@ -87,7 +93,7 @@ protected: ImageSegmentAnimation(Image image, std::vector<int32_t> sequenceArray
 
     public: std::vector<int32_t> getSequence();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
     public: int32_t getStartX();
 

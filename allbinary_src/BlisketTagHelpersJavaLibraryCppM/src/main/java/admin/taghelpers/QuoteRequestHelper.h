@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_QUOTEREQUESTHELPER_H
         #define ADMIN_TAGHELPERS_QUOTEREQUESTHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -77,21 +83,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ModifyTable.h"
+        #include "admin/taghelpers/ModifyTable.h"
 //TWB - Am I missing the correct Quote Request? Probably not
 class QuoteRequestHelper: public ModifyTable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: WeblisketSession weblisketSession;
+    private: WeblisketSession* weblisketSession;
 
-    private: StoreFrontInterface storeFrontInterface;
+    private: StoreFrontInterface* storeFrontInterface;
 
-    private: QuoteRequest quoteRequest;
+    private: QuoteRequest* quoteRequest;
 
-public: QuoteRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: QuoteRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string validationInfo();
 

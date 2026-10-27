@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Class.h"
         
             #include "java/lang/Exception.h"
@@ -49,11 +57,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WorkFlowWrapper.h"
+        #include "org/allbinary/logic/control/workflow/WorkFlowWrapper.h"
 
 class StoreWorkFlowWrapper: public WorkFlowWrapper {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: StoreWorkFlowWrapper(Object* anyType) : WorkFlowWrapper(anyType){
 
@@ -71,14 +79,14 @@ public: StoreWorkFlowWrapper(Object* anyType) : WorkFlowWrapper(anyType){
 
         try {
             
-    Class* helperClass = this->getWorkFlowObject().getClass();;
+    Class* helperClass = this->getWorkFlowObject()->getClass();;
     
 
-    Method method = helperClass.getMethod("getStoreName", 
+    Method* method = helperClass->getMethod("getStoreName", 
                             nullptr);;
     
 
-    std::string result = method.invoke(this->getWorkFlowObject(), 
+    std::string result = method->invoke(this->getWorkFlowObject(), 
                             nullptr);;
     
 
@@ -89,19 +97,19 @@ public: StoreWorkFlowWrapper(Object* anyType) : WorkFlowWrapper(anyType){
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Reflection Exception";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, "getStoreName()", e);
+this->logUtil->put(commonStrings->EXCEPTION, this, "getStoreName()", &e);
     
 
                                     }
@@ -109,7 +117,7 @@ this->logUtil.put(commonStrings.EXCEPTION, this, "getStoreName()", e);
 
 
 
-                            throw Exception(error);
+                            throw new Exception(error);
                     
 }
 

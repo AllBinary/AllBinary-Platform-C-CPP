@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -55,14 +61,14 @@
         
 class ColorDelta
             : public Object
-        : public CacheableInterface {
+        , public CacheableInterface {
 
     public: static Object* getKey(int32_t rgb1, int32_t rgb2){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().append(std::to_string(rgb1)).append(CommonSeps::getInstance().UNDERSCORE).append(std::to_string(rgb2)).toString();;
+                        return (new StringMaker())->append(std::to_string(rgb1))->append(CommonSeps::getInstance()->UNDERSCORE)->append(std::to_string(rgb2))->toString();;
     
 }
 
@@ -130,7 +136,7 @@ this->rgb2= rgb2;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().append("ColorDelta: ").append(StringUtil::getInstance().toString(this->getKey())).append(" RGB1: ").appendint(this->getRgb1()).append(" RGB2: ").appendint(this->getRgb2()).toString();;
+                        return (new StringMaker())->append("ColorDelta: ")->append(StringUtil::getInstance()->toString(this->getKey()))->append(" RGB1: ")->appendint(this->getRgb1())->append(" RGB2: ")->appendint(this->getRgb2())->toString();;
     
 }
 

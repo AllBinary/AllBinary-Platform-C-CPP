@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/direction/Direction.h>
 
       
@@ -48,29 +54,29 @@
         
 class BasicVelocityInterface {
 
-    BasicDecimal getVelocityXBasicDecimalP()
+    public: virtual BasicDecimal* getVelocityXBasicDecimalP() = 0;
 
-    BasicDecimal getVelocityYBasicDecimalP()
+    public: virtual BasicDecimal* getVelocityYBasicDecimalP() = 0;
 
-    void zero()
+    public: virtual void zero() = 0;
 
-    void setVelocityWithBigDecimalAndDirection(BasicDecimal magnitudeBasicDecimal, Direction direction, Direction otherDirection)
+    public: virtual void setVelocityWithBigDecimalAndDirection(BasicDecimal* magnitudeBasicDecimal, Direction* direction, Direction* otherDirection) = 0;
 
-    void addVelocityWithBigDecimalAndDirection(BasicDecimal magnitudeBasicDecimal, Direction direction, Direction otherDirection)
+    public: virtual void addVelocityWithBigDecimalAndDirection(BasicDecimal* magnitudeBasicDecimal, Direction* direction, Direction* otherDirection) = 0;
 
-    void setVelocityWithDirection(int64_t magnitude, Direction direction, Direction otherDirection)
+    public: virtual void setVelocityWithDirection(int64_t magnitude, Direction* direction, Direction* otherDirection) = 0;
 
-    void addVelocityWithDirection(int64_t magnitude, Direction direction, Direction otherDirection)
+    public: virtual void addVelocityWithDirection(int64_t magnitude, Direction* direction, Direction* otherDirection) = 0;
 
-    void setVelocityWithBigDecimal(BasicDecimal magnitudeBasicDecimal, Angle angle, Angle otherAngle)
+    public: virtual void setVelocityWithBigDecimal(BasicDecimal* magnitudeBasicDecimal, Angle* angle, Angle* otherAngle) = 0;
 
-    void addVelocityWithBigDecimal(BasicDecimal magnitudeBasicDecimal, Angle angle, Angle otherAngle)
+    public: virtual void addVelocityWithBigDecimal(BasicDecimal* magnitudeBasicDecimal, Angle* angle, Angle* otherAngle) = 0;
 
-    void setVelocity(int64_t magnitude, Angle angle, Angle otherAngle)
+    public: virtual void setVelocity(int64_t magnitude, Angle* angle, Angle* otherAngle) = 0;
 
-    void addVelocity(int64_t magnitude, Angle angle, Angle otherAngle)
+    public: virtual void addVelocity(int64_t magnitude, Angle* angle, Angle* otherAngle) = 0;
 
-    void addVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle)
+    public: virtual void addVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle) = 0;
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,57 +58,57 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryPropertiesFactoryInterface.h"
-#include "CategoryPropertiesInterface.h"
-#include "CategoryProperties.h"
+        #include "org/allbinary/business/category/properties/CategoryPropertiesFactoryInterface.h"
+#include "org/allbinary/business/category/properties/CategoryPropertiesInterface.h"
+#include "org/allbinary/business/category/properties/CategoryProperties.h"
 
 class CategoryPropertiesFactory
             : public Object
-        : public CategoryPropertiesFactoryInterface {
+        , public CategoryPropertiesFactoryInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: CategoryPropertiesInterface categoryPropertiesInterface;
+    private: CategoryPropertiesInterface* categoryPropertiesInterface;
 
 public: CategoryPropertiesFactory(std::string name){
-this->categoryPropertiesInterface= CategoryProperties(name);
+this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(new CategoryProperties(name));
     
 }
 
 
-public: CategoryPropertiesFactory(Node node){
-this->categoryPropertiesInterface= CategoryProperties(node);
+public: CategoryPropertiesFactory(Node* node){
+this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(new CategoryProperties(node));
     
 }
 
 
-public: CategoryPropertiesFactory(HashMap<Object*, Object*> categoryPropertiesHashMap){
-this->categoryPropertiesInterface= CategoryProperties(categoryPropertiesHashMap);
+public: CategoryPropertiesFactory(HashMap<Object*, Object*>* categoryPropertiesHashMap){
+this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(new CategoryProperties(categoryPropertiesHashMap));
     
 }
 
 
-    public: CategoryPropertiesInterface getInstance(){
+    public: CategoryPropertiesInterface* getInstance(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->categoryPropertiesInterface;
+                        return dynamic_cast<CategoryPropertiesInterface*>(this->categoryPropertiesInterface);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
+                                    this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
     
 
                                     }

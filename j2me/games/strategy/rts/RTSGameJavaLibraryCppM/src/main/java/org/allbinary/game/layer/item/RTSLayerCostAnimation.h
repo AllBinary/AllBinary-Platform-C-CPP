@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -94,19 +100,19 @@
         
 class RTSLayerCostAnimation: public Animation, public TechEventListenerInterface, public UpdateMyFontInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const PrimitiveLongUtil primitiveLongUtil = PrimitiveLongUtil::createPowerOfTen(10000);
+    private: PrimitiveLongUtil* primitiveLongUtil = PrimitiveLongUtil::createPowerOfTen(10000);
 
     private: const std::string DOLLAR = "$";
 
-    private: Image image;
+    private: Image* image;
 
-    private: CostLayerInterfaceFactoryInterface layerInterfaceFactoryInterface;
+    private: CostLayerInterfaceFactoryInterface* layerInterfaceFactoryInterface;
 
-    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
 
-    private: std::vector<char> costString = NullUtil::getInstance().NULL_CHAR_ARRAY;
+    private: std::vector<char> costString = NullUtil::getInstance()->NULL_CHAR_ARRAY;
 
     private: int32_t len= 0;
 
@@ -114,19 +120,19 @@ class RTSLayerCostAnimation: public Animation, public TechEventListenerInterface
 
     private: int32_t fontHeight = 0;
 
-public: RTSLayerCostAnimation(Image image, CostLayerInterfaceFactoryInterface layerInterfaceFactoryInterface);
+public: RTSLayerCostAnimation(Image* image, CostLayerInterfaceFactoryInterface* layerInterfaceFactoryInterface);
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
-    public: void onEvent(AllBinaryEventObject event);
+    public: void onEvent(AllBinaryEventObject* event);
 
-    public: void onTechEvent(AllBinaryEventObject event);
+    public: void onTechEvent(AllBinaryEventObject* event);
 
                 //@Throws(Exception.constructor)
             
     public: void update();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
 };
 

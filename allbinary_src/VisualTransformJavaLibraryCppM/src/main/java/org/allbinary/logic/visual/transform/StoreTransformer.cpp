@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/xml/transform/URIResolver.h>
@@ -53,18 +59,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicTransformer.h"
+        #include "org/allbinary/logic/visual/transform/BasicTransformer.h"
 
 class StoreTransformer: public BasicTransformer {
 
-public: StoreTransformer(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface) : BasicTransformer(abeClientInformation, transformInfoInterface){
+public: StoreTransformer(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface) : BasicTransformer(abeClientInformation, transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->setURIResolver(StoreUriResolver(this->getTransformInfoInterface(), this->getURIResolver()));
+this->setURIResolver(dynamic_cast<URIResolver*>(new StoreUriResolver(this->getTransformInfoInterface(), dynamic_cast<BasicUriResolver*>(this->getURIResolver()))));
     
 }
 

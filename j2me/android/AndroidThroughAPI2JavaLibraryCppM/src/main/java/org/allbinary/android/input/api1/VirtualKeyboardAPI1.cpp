@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/android/input/VirtualKeyboard.h>
 
       
@@ -48,11 +54,11 @@
         
 class VirtualKeyboardAPI1: public VirtualKeyboard, public VirtualKeyboardEventListenerInterface {
 
-    public: static int32_t MIN_API = 1;
+    public: static inline int32_t MIN_API = 1;
 
-    public: static int32_t MAX_API = 2;
+    public: static inline int32_t MAX_API = 2;
 
-public: VirtualKeyboardAPI1(Activity activity){
+public: VirtualKeyboardAPI1(Activity* activity){
 }
 
 

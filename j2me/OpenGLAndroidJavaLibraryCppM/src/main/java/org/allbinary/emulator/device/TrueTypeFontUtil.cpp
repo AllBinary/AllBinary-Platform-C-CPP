@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/io/File.h>
@@ -97,13 +103,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TrueTypeFontUtilBase.h"
+        #include "org/allbinary/emulator/device/TrueTypeFontUtilBase.h"
 //TTF
 class TrueTypeFontUtil: public TrueTypeFontUtilBase {
 
-    private: static TrueTypeFontUtil instance() { return TrueTypeFontUtil(); }
+    private: static TrueTypeFontUtil* instance() { static std::unique_ptr<TrueTypeFontUtil> value(new TrueTypeFontUtil()); return value.get(); }
 
-    public: static TrueTypeFontUtil getInstance(){
+    public: static TrueTypeFontUtil* getInstance(){
 
 
 
@@ -113,13 +119,13 @@ class TrueTypeFontUtil: public TrueTypeFontUtilBase {
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const PreResourceImageUtil preResourceImageUtil = PreResourceImageUtil::getInstance();
+    protected: PreResourceImageUtil* preResourceImageUtil = PreResourceImageUtil::getInstance();
 
     private: const int32_t realFontSize = 18;
 
-    public: OpenGLESImage fontImage = OpenGLESImage::NULL_OPENGL_IMAGE;
+    public: OpenGLESImage* fontImage = OpenGLESImage::NULL_OPENGL_IMAGE;
 
 private: TrueTypeFontUtil() : TrueTypeFontUtilBase(1){
 
@@ -135,39 +141,39 @@ private: TrueTypeFontUtil() : TrueTypeFontUtilBase(1){
 
         try {
             
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-    File file = ResourceUtil::getInstance().getContext().getFilesDir();;
+    File* file = ResourceUtil::getInstance()->getContext()->getFilesDir();;
     
 
-    std::string path = file.getAbsolutePath() +CanvasStrings::getInstance().FONT_ATLAS;;
+    std::string path = file->getAbsolutePath() +CanvasStrings::getInstance()->FONT_ATLAS;;
     
-this->logUtil.putF(path, this, commonStrings.CONSTRUCTOR);
-    
-
-    FileOutputStream fos = FileOutputStream(path);;
+this->logUtil->putF(path, this, commonStrings->CONSTRUCTOR);
     
 
-    Bitmap bitmap = (getImage).getBitmap();;
+    FileOutputStream* fos = new FileOutputStream(path);;
     
-bitmap.compress(Bitmap::CompressFormat.PNG, 100, fos);
+
+    Bitmap* bitmap = (getImage)).getBitmap();;
+    
+bitmap->compress(Bitmap::CompressFormat.PNG, 100, fos);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil::putOE(commonStrings.EXCEPTION, this, commonStrings.EXCEPTION, e);
+PreLogUtil::putOE(commonStrings->EXCEPTION, this, commonStrings->EXCEPTION, &e);
     
 }
 
 }
 
 
-    public: Image getFontBitmapGL(GL10 gl, std::string filename, int32_t cellSize, BasicColor basicColor){
+    public: Image* getFontBitmapGL(GL10* gl, std::string filename, int32_t cellSize, BasicColor* basicColor){
 
                         if(this->fontImage == OpenGLESImage::NULL_OPENGL_IMAGE)
                         
@@ -191,33 +197,33 @@ PreLogUtil::putOE(commonStrings.EXCEPTION, this, commonStrings.EXCEPTION, e);
     int32_t cellsPerRow7 = this->CELLS_PER_ROW *7;;
     
 
-    Typeface typeface = Typeface::DEFAULT;;
+    Typeface* typeface = Typeface::DEFAULT;;
     
 
     int32_t textureSize = this->getAsTextureSize(this->CELLS_PER_ROW *cellSize);;
     
 
-    Bitmap bitmap = Bitmap::createBitmap(textureSize, textureSize, Bitmap::Config.ARGB_8888);;
+    Bitmap* bitmap = Bitmap::createBitmap(textureSize, textureSize, Bitmap::Config.ARGB_8888);;
     
 
-    Canvas canvas = Canvas(bitmap);;
+    Canvas* canvas = new Canvas(bitmap);;
     
 
-    Paint paint = Paint();;
+    Paint* paint = new Paint();;
     
-paint.setTypeface(typeface);
+paint->setTypeface(typeface);
     
-paint.setTextSize(this->realFontSize);
+paint->setTextSize(this->realFontSize);
     
-paint.setAlpha(static_cast<int32_t>(basicColor.alpha));
+paint->setAlpha(static_cast<int32_t>(basicColor->alpha));
     
-paint.setColor(basicColor.intValue());
+paint->setColor(basicColor->intValue());
     
 
     int32_t biggestHeight = 0;;
     
 
-    Rect bounds = Rect();;
+    Rect* bounds = new Rect();;
     
 
     int32_t x= 0;;
@@ -234,15 +240,15 @@ paint.setColor(basicColor.intValue());
         {
 this->characterArray[0]= this->pattern[index];
     
-paint.getTextBounds(this->characterArray, 0, 1, bounds);
+paint->getTextBounds(this->characterArray, 0, 1, bounds);
     
-this->_characterWidth[index]= bounds.right;
+this->_characterWidth[index]= bounds->right;
     
 
-                        if(bounds.bottom -bounds.top > biggestHeight)
+                        if(bounds->bottom -bounds->top > biggestHeight)
                         
                                     {
-                                    biggestHeight= bounds.bottom -bounds.top;
+                                    biggestHeight= bounds->bottom -bounds->top;
     
 
                                     }
@@ -322,16 +328,16 @@ y += cellSize;
     
 y -= (cellSize>>2);
     
-canvas.drawText(this->characterArray, 0, 1, x -3, y -6, paint);
+canvas->drawText(this->characterArray, 0, 1, x -3, y -6, paint);
     
 }
 
-canvas.save();
+canvas->save();
     
 
-    Image image = AndroidImmutableImage::create(bitmap);;
+    Image* image = AndroidImmutableImage::create(bitmap);;
     
-this->fontImage= this->preResourceImageUtil.encapsulate(image);
+this->fontImage= dynamic_cast<OpenGLESImage*>(this->preResourceImageUtil->encapsulate(image));
     
 
 
@@ -357,19 +363,19 @@ this->fontImage= this->preResourceImageUtil.encapsulate(image);
 
     public: std::vector<int32_t> getFontWidths(std::string filename, int32_t fontSize){
 
-    Typeface typeface = Typeface::DEFAULT;;
+    Typeface* typeface = Typeface::DEFAULT;;
     
 
-    Paint paint = Paint();;
+    Paint* paint = new Paint();;
     
-paint.setTypeface(typeface);
+paint->setTypeface(typeface);
     
-paint.setTextSize(fontSize);
+paint->setTextSize(fontSize);
     
-paint.setARGB(255, 255, 255, 255);
+paint->setARGB(255, 255, 255, 255);
     
 
-    Rect bounds = Rect();;
+    Rect* bounds = new Rect();;
     
 
 
@@ -380,7 +386,7 @@ paint.setARGB(255, 255, 255, 255);
         {
 this->characterArray[0]= this->pattern[index];
     
-paint.getTextBounds(this->characterArray, 0, 1, bounds);
+paint->getTextBounds(this->characterArray, 0, 1, bounds);
     
 
                         if(index < this->lastCapIndex)
@@ -390,7 +396,7 @@ paint.getTextBounds(this->characterArray, 0, 1, bounds);
                         if(this->characterArray[0] == '1')
                         
                                     {
-                                    this->_characterWidth[index]= bounds.right +3;
+                                    this->_characterWidth[index]= bounds->right +3;
     
 
                                     }
@@ -399,7 +405,7 @@ paint.getTextBounds(this->characterArray, 0, 1, bounds);
                         if(this->characterArray[0] == 'J' || this->characterArray[0] == 'V' || this->characterArray[0] == '2' || this->characterArray[0] == '9' || this->characterArray[0] == 'I' || this->characterArray[0] == 'N' || this->characterArray[0] == 'U')
                         
                                     {
-                                    this->_characterWidth[index]= bounds.right +1;
+                                    this->_characterWidth[index]= bounds->right +1;
     
 
                                     }
@@ -408,7 +414,7 @@ paint.getTextBounds(this->characterArray, 0, 1, bounds);
                         if(this->characterArray[0] == '4' || this->characterArray[0] == 'C' || this->characterArray[0] == 'E' || this->characterArray[0] == 'O')
                         
                                     {
-                                    this->_characterWidth[index]= bounds.right -2;
+                                    this->_characterWidth[index]= bounds->right -2;
     
 
                                     }
@@ -417,7 +423,7 @@ paint.getTextBounds(this->characterArray, 0, 1, bounds);
                         if(this->characterArray[0] == 'B' || this->characterArray[0] == 'D' || this->characterArray[0] == 'G' || this->characterArray[0] == 'H' || this->characterArray[0] == 'T' || this->characterArray[0] == 'W')
                         
                                     {
-                                    this->_characterWidth[index]= bounds.right -3;
+                                    this->_characterWidth[index]= bounds->right -3;
     
 
                                     }
@@ -426,7 +432,7 @@ paint.getTextBounds(this->characterArray, 0, 1, bounds);
                         if(this->characterArray[0] == 'A' || this->characterArray[0] == 'Q' || this->characterArray[0] == 'R')
                         
                                     {
-                                    this->_characterWidth[index]= bounds.right -5;
+                                    this->_characterWidth[index]= bounds->right -5;
     
 
                                     }
@@ -435,7 +441,7 @@ paint.getTextBounds(this->characterArray, 0, 1, bounds);
                         if(this->characterArray[0] == 'M')
                         
                                     {
-                                    this->_characterWidth[index]= bounds.right -6;
+                                    this->_characterWidth[index]= bounds->right -6;
     
 
                                     }
@@ -444,13 +450,13 @@ paint.getTextBounds(this->characterArray, 0, 1, bounds);
                         if(this->characterArray[0] == 'm')
                         
                                     {
-                                    this->_characterWidth[index]= bounds.right -8;
+                                    this->_characterWidth[index]= bounds->right -8;
     
 
                                     }
                                 
                         else {
-                            this->_characterWidth[index]= bounds.right;
+                            this->_characterWidth[index]= bounds->right;
     
 
                         }
@@ -463,7 +469,7 @@ paint.getTextBounds(this->characterArray, 0, 1, bounds);
                         if(this->characterArray[0] == ' ')
                         
                                     {
-                                    this->_characterWidth[index]= bounds.right +10;
+                                    this->_characterWidth[index]= bounds->right +10;
     
 
                                     }
@@ -472,7 +478,7 @@ paint.getTextBounds(this->characterArray, 0, 1, bounds);
                         if(this->characterArray[0] == 'l' || this->characterArray[0] == 'i' || this->characterArray[0] == 'j' || this->characterArray[0] == '.' || this->characterArray[0] == '!' || this->characterArray[0] == '|')
                         
                                     {
-                                    this->_characterWidth[index]= bounds.right +6;
+                                    this->_characterWidth[index]= bounds->right +6;
     
 
                                     }
@@ -481,7 +487,7 @@ paint.getTextBounds(this->characterArray, 0, 1, bounds);
                         if(this->characterArray[0] == 'f' || this->characterArray[0] == 't' || this->characterArray[0] == 'u' || this->characterArray[0] == 'v')
                         
                                     {
-                                    this->_characterWidth[index]= bounds.right +1;
+                                    this->_characterWidth[index]= bounds->right +1;
     
 
                                     }
@@ -490,7 +496,7 @@ paint.getTextBounds(this->characterArray, 0, 1, bounds);
                         if(this->characterArray[0] == 'r')
                         
                                     {
-                                    this->_characterWidth[index]= bounds.right +2;
+                                    this->_characterWidth[index]= bounds->right +2;
     
 
                                     }
@@ -499,7 +505,7 @@ paint.getTextBounds(this->characterArray, 0, 1, bounds);
                         if(this->characterArray[0] == 'a' || this->characterArray[0] == 'b' || this->characterArray[0] == 'g' || this->characterArray[0] == 'u')
                         
                                     {
-                                    this->_characterWidth[index]= bounds.right -1;
+                                    this->_characterWidth[index]= bounds->right -1;
     
 
                                     }
@@ -508,7 +514,7 @@ paint.getTextBounds(this->characterArray, 0, 1, bounds);
                         if(this->characterArray[0] == 'o' || this->characterArray[0] == 'e')
                         
                                     {
-                                    this->_characterWidth[index]= bounds.right -2;
+                                    this->_characterWidth[index]= bounds->right -2;
     
 
                                     }
@@ -517,13 +523,13 @@ paint.getTextBounds(this->characterArray, 0, 1, bounds);
                         if(this->characterArray[0] == 'm')
                         
                                     {
-                                    this->_characterWidth[index]= bounds.right -7;
+                                    this->_characterWidth[index]= bounds->right -7;
     
 
                                     }
                                 
                         else {
-                            this->_characterWidth[index]= bounds.right;
+                            this->_characterWidth[index]= bounds->right;
     
 
                         }

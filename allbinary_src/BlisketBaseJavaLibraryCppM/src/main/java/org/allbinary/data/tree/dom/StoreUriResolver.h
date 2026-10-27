@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_STOREURIRESOLVER_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_STOREURIRESOLVER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -88,26 +94,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "URIResolverStrings.h"
-#include "BasicUriResolver.h"
+        #include "org/allbinary/data/tree/dom/URIResolverStrings.h"
+#include "org/allbinary/data/tree/dom/BasicUriResolver.h"
 
 class StoreUriResolver
             : public Object
-        : public URIResolver {
+        , public URIResolver {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const URIResolverStrings uriResolverStrings = URIResolverStrings::getInstance();
+    private: URIResolverStrings* uriResolverStrings = URIResolverStrings::getInstance();
 
-    private: BasicUriResolver basicURIResolver;
+    private: BasicUriResolver* basicURIResolver;
 
-    private: TransformInfoInterface parentTransformInfoInterface;
+    private: TransformInfoInterface* parentTransformInfoInterface;
 
-public: StoreUriResolver(TransformInfoInterface parentTransformInfoInterface, BasicUriResolver basicURIResolver);
+public: StoreUriResolver(TransformInfoInterface* parentTransformInfoInterface, BasicUriResolver* basicURIResolver);
 
                 //@Throws(TransformerException.constructor)
             
-    public: Source resolve(std::string href, std::string base);
+    public: Source* resolve(std::string href, std::string base);
 
     public: std::string toString();
 

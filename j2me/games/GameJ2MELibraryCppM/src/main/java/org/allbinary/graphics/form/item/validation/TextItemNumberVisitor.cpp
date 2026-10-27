@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/TextNotificationUtil.h>
@@ -59,7 +67,7 @@
         
 class TextItemNumberVisitor: public Visitor {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: TextItemNumberVisitor(){
 }
@@ -74,17 +82,17 @@ public: TextItemNumberVisitor(){
                         
                                     {
                                     
-    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
+    StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-                        if(stringValidationUtil.isNumber(value))
+                        if(stringValidationUtil->isNumber(value))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory::getInstance().TRUE;
+                        return BooleanFactory::getInstance()->TRUE;
     
 
                                     }
@@ -92,16 +100,16 @@ public: TextItemNumberVisitor(){
                         else {
                             
         try {
-            TextNotificationUtil::getInstance().fireError("Numbers Only");
+            TextNotificationUtil::getInstance()->fireError("Numbers Only");
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.VISIT, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->VISIT, &e);
     
 }
 
@@ -109,7 +117,7 @@ this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.VISIT, e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory::getInstance().FALSE;
+                        return BooleanFactory::getInstance()->FALSE;
     
 
                         }
@@ -122,7 +130,7 @@ this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.VISIT, e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory::getInstance().FALSE;
+                        return BooleanFactory::getInstance()->FALSE;
     
 
                         }

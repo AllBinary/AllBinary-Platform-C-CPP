@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -89,11 +95,11 @@
         
 class AbFileItem
             : public Object
-        : public FileItem {
+        , public FileItem {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: std::string name;
 
@@ -113,11 +119,11 @@ this->byteArray= byteArray;
 
                 //@Throws(IOException.constructor)
             
-    public: InputStream getInputStream(){
+    public: InputStream* getInputStream(){
 
 
 
-                            throw IOException(this->commonStrings.NOT_IMPLEMENTED);
+                            throw new IOException(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
@@ -191,17 +197,17 @@ this->byteArray= byteArray;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileItemUtil::getInstance().getString(this->byteArray);;
+                        return FileItemUtil::getInstance()->getString(this->byteArray);;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "getString", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "getString", &e);
     
 
                                     }
@@ -210,7 +216,7 @@ this->byteArray= byteArray;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 }
 
@@ -219,28 +225,28 @@ this->byteArray= byteArray;
 
                 //@Throws(Exception.constructor)
             
-    public: void write(File file){
+    public: void write(File* file){
 
 
 
-                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void write(AbFile file){
+    public: void write(AbFile* file){
 
 
 
-                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
     public: void delete_(){
-ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, "delete()");
+ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, "delete()");
     
 }
 
@@ -263,7 +269,7 @@ this->fieldName= name;
 
     public: bool isFormField(){
 
-                        if(StringValidationUtil::getInstance().isEmpty(this->fieldName))
+                        if(StringValidationUtil::getInstance()->isEmpty(this->fieldName))
                         
                                     {
                                     
@@ -294,29 +300,29 @@ this->fieldName= name;
 
                 //@Throws(IOException.constructor)
             
-    public: OutputStream getOutputStream(){
+    public: OutputStream* getOutputStream(){
 
 
 
-                            throw IOException(this->commonStrings.NOT_IMPLEMENTED);
+                            throw new IOException(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: FileItemHeaders getHeaders(){
+    public: FileItemHeaders* getHeaders(){
 
 
 
-                            throw RuntimeException(this->commonStrings.NOT_IMPLEMENTED);
+                            throw new RuntimeException(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: void setHeaders(FileItemHeaders fih){
+    public: void setHeaders(FileItemHeaders* fih){
 
 
 
-                            throw RuntimeException(this->commonStrings.NOT_IMPLEMENTED);
+                            throw new RuntimeException(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Long.h"
@@ -62,28 +68,28 @@ class Money
             : public Object
          {
 
-    private: Long units;
+    private: int64_t units;
 
     private: const std::string DEFAULT_CURRENCY = "USD";
 
-public: Money(Money money){
-this->units= Long(money.getUnits());
+public: Money(Money* money){
+this->units= int64_t(money->getUnits());
     
 }
 
 
 public: Money(){
-this->units= Long(0);
+this->units= int64_t(0);
     
 }
 
 
 public: Money(std::string usDollarStr){
 
-                        if(true && StringValidationUtil::getInstance().isNumber(usDollarStr))
+                        if(true && StringValidationUtil::getInstance()->isNumber(usDollarStr))
                         
                                     {
-                                    this->units= Long(convertUsdToUnits(usDollarStr));
+                                    this->units= int64_t(convertUsdToUnits(usDollarStr));
     
 
                                     }
@@ -92,7 +98,7 @@ public: Money(std::string usDollarStr){
 
 
 public: Money(int64_t units){
-this->units= Long(units);
+this->units= int64_t(units);
     
 }
 
@@ -101,7 +107,7 @@ this->units= Long(units);
 
                         if(this->units != 
                                     nullptr
-                                 && this->units.longValue() > 0 && this->units.longValue() < Long::MAX_VALUE)
+                                 && this->units.longValue() > 0 && this->units.longValue() < Long.MAX_VALUE)
                         
                                     {
                                     
@@ -126,39 +132,39 @@ this->units= Long(units);
 }
 
 
-    public: void add(Money moreMoney){
-this->add(moreMoney.toString());
+    public: void add(Money* moreMoney){
+this->add(moreMoney->toString());
     
 }
 
 
     public: void add(std::string usDollarStr){
-this->units= Long(this->units.longValue() +convertUsdToUnits(usDollarStr));
+this->units= int64_t(this->units.longValue() +convertUsdToUnits(usDollarStr));
     
 }
 
 
     public: void subtract(std::string usDollarStr){
-this->units= Long(this->units.longValue() -convertUsdToUnits(usDollarStr));
+this->units= int64_t(this->units.longValue() -convertUsdToUnits(usDollarStr));
     
 }
 
 
-    public: void multiply(number multiplier){
-this->units= Long(number(this->units.longValue() *multiplier).longValue());
+    public: void multiply(float multiplier){
+this->units= int64_t((float(this->units.longValue() *multiplier)).longValue());
     
 }
 
 
     public: void multiply(int32_t multiplier){
-this->units= Long(this->units.longValue() *multiplier);
+this->units= int64_t(this->units.longValue() *multiplier);
     
 }
 
 
     private: std::string convertUnitsTo(std::string currency){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
                         if(currency.compare(this->DEFAULT_CURRENCY) == 0)
@@ -170,20 +176,20 @@ this->units= Long(this->units.longValue() *multiplier);
 
     int64_t cents = this->units.longValue() -(dollar *100);;
     
-stringBuffer.append(Long(dollar).toString());
+stringBuffer->append((int64_t(dollar)).toString());
     
-stringBuffer.append(AbPathData::getInstance().EXTENSION_SEP);
+stringBuffer->append(AbPathData::getInstance()->EXTENSION_SEP);
     
 
                         if(cents < 10)
                         
                                     {
-                                    stringBuffer.append(CommonPhoneStrings::getInstance().ZERO);
+                                    stringBuffer->append(CommonPhoneStrings::getInstance()->ZERO);
     
 
                                     }
                                 
-stringBuffer.append(Long(cents).toString());
+stringBuffer->append((int64_t(cents)).toString());
     
 
                                     }
@@ -192,7 +198,7 @@ stringBuffer.append(Long(cents).toString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
@@ -202,16 +208,16 @@ stringBuffer.append(Long(cents).toString());
     int64_t localUnit = 0;;
     
 
-    int32_t index = usDollarStr.indexOf(AbPathData::getInstance().EXTENSION_SEP);;
+    int32_t index = JavaString::indexOf(usDollarStr, AbPathData::getInstance()->EXTENSION_SEP);;
     
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
 
-    std::string dollarStr = stringUtil.EMPTY_STRING;;
+    std::string dollarStr = stringUtil->EMPTY_STRING;;
     
 
-    std::string centsStr = stringUtil.EMPTY_STRING;;
+    std::string centsStr = stringUtil->EMPTY_STRING;;
     
 
                         if(index < 1)
@@ -232,9 +238,9 @@ centsStr= substring.toCharArray();
 
                         }
                             
-localUnit= Long(Long(dollarStr).longValue() *100).longValue();
+localUnit= (int64_t((int64_t(dollarStr)).longValue() *100)).longValue();
     
-localUnit += Long(centsStr).longValue();
+localUnit += (int64_t(centsStr)).longValue();
     
 
 
@@ -255,7 +261,7 @@ localUnit += Long(centsStr).longValue();
 }
 
 
-    public: Long getUnitsLong(){
+    public: int64_t getUnitsLong(){
 
 
 

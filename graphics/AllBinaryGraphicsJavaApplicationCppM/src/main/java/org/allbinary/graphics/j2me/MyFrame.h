@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/System.h"
@@ -126,51 +134,51 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JFrame.h"
-#include "KeyListener.h"
-#include "Dimension.h"
-#include "JToolBar.h"
-#include "JButton.h"
-#include "JPanel.h"
-#include "JTabbedPane.h"
-#include "JLabel.h"
-#include "JMenuBar.h"
-#include "JMenu.h"
-#include "JMenuItem.h"
-#include "WindowAdapter.h"
-#include "WindowEvent.h"
-#include "ActionListener.h"
-#include "ActionEvent.h"
-#include "MouseAdapter.h"
-#include "MouseEvent.h"
-#include "GridLayout.h"
-#include "ChangeListener.h"
-#include "ChangeEvent.h"
-#include "KeyEvent.h"
+        #include "org/allbinary/graphics/j2me/JFrame.h"
+#include "org/allbinary/graphics/j2me/KeyListener.h"
+#include "org/allbinary/graphics/j2me/Dimension.h"
+#include "org/allbinary/graphics/j2me/JToolBar.h"
+#include "org/allbinary/graphics/j2me/JButton.h"
+#include "org/allbinary/graphics/j2me/JPanel.h"
+#include "org/allbinary/graphics/j2me/JTabbedPane.h"
+#include "org/allbinary/graphics/j2me/JLabel.h"
+#include "org/allbinary/graphics/j2me/JMenuBar.h"
+#include "org/allbinary/graphics/j2me/JMenu.h"
+#include "org/allbinary/graphics/j2me/JMenuItem.h"
+#include "org/allbinary/graphics/j2me/WindowAdapter.h"
+#include "org/allbinary/graphics/j2me/WindowEvent.h"
+#include "org/allbinary/graphics/j2me/ActionListener.h"
+#include "org/allbinary/graphics/j2me/ActionEvent.h"
+#include "org/allbinary/graphics/j2me/MouseAdapter.h"
+#include "org/allbinary/graphics/j2me/MouseEvent.h"
+#include "org/allbinary/graphics/j2me/GridLayout.h"
+#include "org/allbinary/graphics/j2me/ChangeListener.h"
+#include "org/allbinary/graphics/j2me/ChangeEvent.h"
+#include "org/allbinary/graphics/j2me/KeyEvent.h"
 
 class MyFrame: public javax::swing::JFrame, public FileJDialogListenerInterface, public HashMapJDialogListenerInterface, public java::awt::event::KeyListener {
 
-    private: static const int32_t MAXWORKAREAS = 10;
+    private: static inline const int32_t MAXWORKAREAS = 10;
 
-    private: static int32_t numberOfWorkAreas = 0;
+    private: static inline int32_t numberOfWorkAreas = 0;
 
-    private: static const std::string PATH = "G:/mnt/bc/mydev/work/graphics/AllBinaryGraphicsJavaApplication";
+    private: static inline const std::string PATH = "G:/mnt/bc/mydev/work/graphics/AllBinaryGraphicsJavaApplication";
 
-    private: static const std::string SAVE_PATH = MyFrame::PATH +"/save";
+    private: static inline const std::string SAVE_PATH = MyFrame::PATH +"/save";
 
-    private: static const std::string TEMPLATE_EXPORT_PATH = MyFrame::PATH +"/templates/export";
+    private: static inline const std::string TEMPLATE_EXPORT_PATH = MyFrame::PATH +"/templates/export";
 
     public: static void main(std::vector<std::string> args);
 
-    protected: static javax::swing::JLabel statusJLabel;
+    protected: static inline javax::swing::JLabel* statusJLabel;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const GuiLog guiLog = GuiLog::getInstance();
+    private: GuiLog* guiLog = GuiLog::getInstance();
 
-    private: const XslHelper xslHelper = XslHelper::getInstance();
+    private: XslHelper* xslHelper = XslHelper::getInstance();
 
     private: const std::string JAVA_TEMPLATE = "svgExport.xsl";
 
@@ -178,177 +186,177 @@ class MyFrame: public javax::swing::JFrame, public FileJDialogListenerInterface,
 
     private: const std::string JAVAEXTENSION = ".javax";
 
-    private: FileJDialog fileJDialog;
+    private: FileJDialog* fileJDialog;
 
-    private: RotateJDialog rotateJDialog;
+    private: RotateJDialog* rotateJDialog;
 
 public: MyFrame();
 
     private: void initComponents();
 
-    private: void explodeAllJMenuItemMousePressed(java::awt::event::MouseEvent evt);
+    private: void explodeAllJMenuItemMousePressed(java::awt::event::MouseEvent* evt);
 
-    private: void autoExplodeJMenuItemMousePressed(java::awt::event::MouseEvent evt);
+    private: void autoExplodeJMenuItemMousePressed(java::awt::event::MouseEvent* evt);
 
-    private: void stopJjButtonMousePressed(java::awt::event::MouseEvent evt);
+    private: void stopJjButtonMousePressed(java::awt::event::MouseEvent* evt);
 
-    private: void playJButtonMousePressed(java::awt::event::MouseEvent evt);
+    private: void playJButtonMousePressed(java::awt::event::MouseEvent* evt);
 
-    private: void autoRotateGenerationJMenuItemMousePressed(java::awt::event::MouseEvent evt);
+    private: void autoRotateGenerationJMenuItemMousePressed(java::awt::event::MouseEvent* evt);
 
-    private: void zoomOutJMenuItemMousePressed(java::awt::event::MouseEvent evt);
+    private: void zoomOutJMenuItemMousePressed(java::awt::event::MouseEvent* evt);
 
-    private: void zoomInJMenuItemMousePressed(java::awt::event::MouseEvent evt);
+    private: void zoomInJMenuItemMousePressed(java::awt::event::MouseEvent* evt);
 
-    private: void openJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
+    private: void openJMenuItemActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void exportJMenuItem1ActionPerformed(java::awt::event::ActionEvent evt);
+    private: void exportJMenuItem1ActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void saveJMenuItemMousePressed(java::awt::event::MouseEvent evt);
+    private: void saveJMenuItemMousePressed(java::awt::event::MouseEvent* evt);
 
-    private: void jTabbedPaneStateChanged(javax::swing::event::ChangeEvent evt);
+    private: void jTabbedPaneStateChanged(javax::swing::event::ChangeEvent* evt);
 
-    private: void frameJMenuActionPerformed(java::awt::event::ActionEvent evt);
+    private: void frameJMenuActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void exitJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
+    private: void exitJMenuItemActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void newJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
+    private: void newJMenuItemActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void fileJMenuActionPerformed(java::awt::event::ActionEvent evt);
+    private: void fileJMenuActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void exitForm(java::awt::event::WindowEvent evt);
+    private: void exitForm(java::awt::event::WindowEvent* evt);
 
-    private: void openJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void openJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void jButton2ActionPerformed(java::awt::event::ActionEvent evt);
+    private: void jButton2ActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void centerJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
+    private: void centerJMenuItemActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void saveJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void saveJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void jButton1ActionPerformed(java::awt::event::ActionEvent evt);
+    private: void jButton1ActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void jMenuItem1ActionPerformed(java::awt::event::ActionEvent evt);
+    private: void jMenuItem1ActionPerformed(java::awt::event::ActionEvent* evt);
 
-    public: void onFiles(std::vector<File> files);
+    public: void onFiles(std::vector<File*> files);
 
     private: void newGraphics();
 
     private: void openGraphics();
 
-    private: void export();
+    private: void export_();
 
     private: void save();
 
                 //@Throws(Exception.constructor)
             
-    public: void onHashMap(HashMap<Object*, Object*> hashMap);
+    public: void onHashMap(HashMap<Object*, Object*>* hashMap);
 
-    private: WorkAreaJPanelInterface getSelectedWorkArea();
+    private: WorkAreaJPanelInterface* getSelectedWorkArea();
 
     public: void updateSelectedWorkArea();
 
                 //@Throws(Exception.constructor)
             
-    public: void add(WorkAreaJPanelInterface newCanvasInterface);
+    public: void add(WorkAreaJPanelInterface* newCanvasInterface);
 
-    public: void keyPressed(java::awt::event::KeyEvent keyEvent);
+    public: void keyPressed(java::awt::event::KeyEvent* keyEvent);
 
-    public: void keyReleased(java::awt::event::KeyEvent keyEvent);
+    public: void keyReleased(java::awt::event::KeyEvent* keyEvent);
 
-    public: void keyTyped(java::awt::event::KeyEvent keyEvent);
+    public: void keyTyped(java::awt::event::KeyEvent* keyEvent);
 
-    private: javax::swing::JButton animateJButton;
+    private: javax::swing::JButton* animateJButton;
 
-    private: javax::swing::JMenuItem autoDamageJMenuItem;
+    private: javax::swing::JMenuItem* autoDamageJMenuItem;
 
-    private: javax::swing::JMenuItem autoExplodeJMenuItem;
+    private: javax::swing::JMenuItem* autoExplodeJMenuItem;
 
-    private: javax::swing::JMenuItem autoGrowJMenuItem;
+    private: javax::swing::JMenuItem* autoGrowJMenuItem;
 
-    private: javax::swing::JMenuItem autoRotateGenerationJMenuItem;
+    private: javax::swing::JMenuItem* autoRotateGenerationJMenuItem;
 
-    private: javax::swing::JMenuItem autoSheildMenuItem;
+    private: javax::swing::JMenuItem* autoSheildMenuItem;
 
-    private: javax::swing::JMenuItem autoShrinkJMenuItem;
+    private: javax::swing::JMenuItem* autoShrinkJMenuItem;
 
-    private: javax::swing::JMenuItem centerJMenuItem;
+    private: javax::swing::JMenuItem* centerJMenuItem;
 
-    private: javax::swing::JMenuItem copyJMenuItem1;
+    private: javax::swing::JMenuItem* copyJMenuItem1;
 
-    private: javax::swing::JMenuItem exitJMenuItem;
+    private: javax::swing::JMenuItem* exitJMenuItem;
 
-    private: javax::swing::JMenuItem explodeAllJMenuItem;
+    private: javax::swing::JMenuItem* explodeAllJMenuItem;
 
-    private: javax::swing::JMenuItem exportJMenuItem1;
+    private: javax::swing::JMenuItem* exportJMenuItem1;
 
-    private: javax::swing::JMenu fileJMenu;
+    private: javax::swing::JMenu* fileJMenu;
 
-    private: javax::swing::JMenu frameJMenu;
+    private: javax::swing::JMenu* frameJMenu;
 
-    private: javax::swing::JMenu generateJMenu;
+    private: javax::swing::JMenu* generateJMenu;
 
-    private: javax::swing::JMenuItem insertAfterJMenuItem;
+    private: javax::swing::JMenuItem* insertAfterJMenuItem;
 
-    private: javax::swing::JMenuItem insertBeforeJMenuItem;
+    private: javax::swing::JMenuItem* insertBeforeJMenuItem;
 
-    private: javax::swing::JButton jButton1;
+    private: javax::swing::JButton* jButton1;
 
-    private: javax::swing::JButton jButton2;
+    private: javax::swing::JButton* jButton2;
 
-    private: javax::swing::JButton jButton3;
+    private: javax::swing::JButton* jButton3;
 
-    private: javax::swing::JButton jButton4;
+    private: javax::swing::JButton* jButton4;
 
-    private: javax::swing::JButton jButton41;
+    private: javax::swing::JButton* jButton41;
 
-    private: javax::swing::JButton jButton5;
+    private: javax::swing::JButton* jButton5;
 
-    private: javax::swing::JMenu jMenu1;
+    private: javax::swing::JMenu* jMenu1;
 
-    private: javax::swing::JMenuItem jMenuItem1;
+    private: javax::swing::JMenuItem* jMenuItem1;
 
-    private: javax::swing::JPanel jPanel1;
+    private: javax::swing::JPanel* jPanel1;
 
-    private: javax::swing::JTabbedPane jTabbedPane;
+    private: javax::swing::JTabbedPane* jTabbedPane;
 
-    private: javax::swing::JToolBar jToolBar1;
+    private: javax::swing::JToolBar* jToolBar1;
 
-    private: javax::swing::JPanel mainJPanel;
+    private: javax::swing::JPanel* mainJPanel;
 
-    private: javax::swing::JMenuBar menuJMenuBar;
+    private: javax::swing::JMenuBar* menuJMenuBar;
 
-    private: javax::swing::JMenuItem newJMenuItem;
+    private: javax::swing::JMenuItem* newJMenuItem;
 
-    private: javax::swing::JMenuItem nextFrameJMenuItem;
+    private: javax::swing::JMenuItem* nextFrameJMenuItem;
 
-    private: javax::swing::JMenu objectJMenu;
+    private: javax::swing::JMenu* objectJMenu;
 
-    private: javax::swing::JButton openJButton;
+    private: javax::swing::JButton* openJButton;
 
-    private: javax::swing::JMenuItem openJMenuItem;
+    private: javax::swing::JMenuItem* openJMenuItem;
 
-    private: javax::swing::JButton playJButton;
+    private: javax::swing::JButton* playJButton;
 
-    private: javax::swing::JMenuItem previousFrameJMenuItem;
+    private: javax::swing::JMenuItem* previousFrameJMenuItem;
 
-    private: javax::swing::JMenuItem removeJMenuItem;
+    private: javax::swing::JMenuItem* removeJMenuItem;
 
-    private: javax::swing::JMenuItem saveAsJMenuItem;
+    private: javax::swing::JMenuItem* saveAsJMenuItem;
 
-    private: javax::swing::JButton saveJButton;
+    private: javax::swing::JButton* saveJButton;
 
-    private: javax::swing::JMenuItem saveJMenuItem;
+    private: javax::swing::JMenuItem* saveJMenuItem;
 
-    private: javax::swing::JPanel statusJPanel;
+    private: javax::swing::JPanel* statusJPanel;
 
-    private: javax::swing::JButton stopJjButton;
+    private: javax::swing::JButton* stopJjButton;
 
-    private: javax::swing::JMenu viewJMenu;
+    private: javax::swing::JMenu* viewJMenu;
 
-    private: javax::swing::JMenuItem zoomInJMenuItem;
+    private: javax::swing::JMenuItem* zoomInJMenuItem;
 
-    private: javax::swing::JMenuItem zoomOutJMenuItem;
+    private: javax::swing::JMenuItem* zoomOutJMenuItem;
 
 };
 

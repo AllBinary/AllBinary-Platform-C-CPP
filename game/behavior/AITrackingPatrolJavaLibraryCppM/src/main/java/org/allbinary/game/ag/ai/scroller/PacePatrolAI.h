@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_PACEPATROLAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_PACEPATROLAI_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Math.h"
@@ -94,29 +102,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasePatrolAI.h"
+        #include "org/allbinary/game/ag/ai/scroller/BasePatrolAI.h"
 
 class PacePatrolAI: public BasePatrolAI, public TrackingEventListenerInterface {
 
-    private: BasicArrayList trackingList;
+    private: BasicArrayList* trackingList;
 
     private: int32_t firingDistance= 0;
 
     protected: bool isFollowLimitedByTerrain = false;
 
-public: PacePatrolAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: PacePatrolAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager);
 
-    private: Direction setFiringDirectionForTargetIfInRange();
+    private: Direction* setFiringDirectionForTargetIfInRange();
 
     public: void disable();
 
-    public: void onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject* eventObject);
 
-    public: void onMovement(TrackingEvent trackingEvent);
+    public: void onMovement(TrackingEvent* trackingEvent);
 
     public: int32_t getFiringDistance();
 

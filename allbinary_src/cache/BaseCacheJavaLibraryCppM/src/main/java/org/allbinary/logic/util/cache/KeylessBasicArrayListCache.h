@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_KEYLESSBASICARRAYLISTCACHE_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_KEYLESSBASICARRAYLISTCACHE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -53,17 +59,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "IndexedBasicArrayListCache.h"
+        #include "org/allbinary/logic/util/cache/IndexedBasicArrayListCache.h"
 
 class KeylessBasicArrayListCache: public IndexedBasicArrayListCache {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
+    protected: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
 
 public: KeylessBasicArrayListCache();
 
-    public: BasicArrayList get();
+    public: BasicArrayList* get();
 
     public: void clear();
 

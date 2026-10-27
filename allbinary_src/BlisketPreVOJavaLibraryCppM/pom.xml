@@ -119,7 +119,7 @@
         <!--
         <dependency>
             <groupId>javax.servlet</groupId>
-            <artifactId>servlet-apiCpp</artifactId>
+            <artifactId>servlet-api</artifactId>
             <version>2.5</version>
             <scope>provided</scope>
         </dependency>
@@ -128,7 +128,7 @@
         <!-- java 11 and jetty 9.4 -->
         <dependency>
             <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-apiCpp</artifactId>
+            <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
@@ -137,7 +137,7 @@
         <!--
         <dependency>
             <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-apiCpp</artifactId>
+            <artifactId>jakarta.servlet-api</artifactId>
             <version>6.0.0</version>
             <scope>provided</scope>
         </dependency>        
@@ -147,6 +147,28 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.8.1</version>
+                <executions>
+                    <execution>
+                        <id>unpack-native-dependency-headers</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>sources</classifier>
+                            <includeGroupIds>org.allbinary</includeGroupIds>
+                            <includeScope>compile</includeScope>
+                            <includes>**/*.h</includes>
+                            <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+                            <outputDirectory>${project.build.directory}/native/dependency-include</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -170,6 +192,7 @@
                                 <argument>${native.cpp.standard}</argument>
                                 <argument>${native.compiler.flags}</argument>
                                 <argument>${native.include.path}</argument>
+                                <argument>${project.build.directory}/native/dependency-include</argument>
                             </arguments>
                         </configuration>
                     </execution>

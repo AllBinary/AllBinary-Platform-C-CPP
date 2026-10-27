@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLBASIC_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLBASIC_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -85,34 +91,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SqlTypeStrings.h"
-#include "SqlStrings.h"
+        #include "org/allbinary/logic/communication/sql/SqlTypeStrings.h"
+#include "org/allbinary/logic/communication/sql/SqlStrings.h"
 
 class AbSqlBasic
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const SqlConnectionPool sqlConnectionPool = SqlConnectionPool::getInstance();
+    private: SqlConnectionPool* sqlConnectionPool = SqlConnectionPool::getInstance();
 
-    private: DbConnectionInfo databaseConnectionInfoInterface;
+    private: DbConnectionInfo* databaseConnectionInfoInterface;
 
     private: int32_t connectAttemptCounter;
 
-    protected: Connection conn;
+    protected: Connection* conn;
 
-    protected: const StringUtil stringUtil = StringUtil::getInstance();
+    protected: StringUtil* stringUtil = StringUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const CommonSeps commonSeps = CommonSeps::getInstance();
+    protected: CommonSeps* commonSeps = CommonSeps::getInstance();
 
-    protected: const StdUtil stdUtil = StdUtil::getInstance();
+    protected: StdUtil* stdUtil = StdUtil::getInstance();
 
-    protected: const SqlTypeStrings sqlTypeStrings = SqlTypeStrings::getInstance();
+    protected: SqlTypeStrings* sqlTypeStrings = SqlTypeStrings::getInstance();
 
-    protected: const SqlStrings sqlStrings = SqlStrings::getInstance();
+    protected: SqlStrings* sqlStrings = SqlStrings::getInstance();
 
     protected: const std::string INSERT = "insert";
 
@@ -142,11 +148,11 @@ class AbSqlBasic
 
     private: const std::string LOAD_JDBC_DRIVER_FAILED_LABEL = "Load JDBC Driver Failed: ";
 
-public: AbSqlBasic(DbConnectionInfo databaseConnectionInfoInterface);
+public: AbSqlBasic(DbConnectionInfo* databaseConnectionInfoInterface);
 
                 //@Throws(SQLException.constructor)
             
-    public: ResultSet executeSQLStatement(std::string statement);
+    public: ResultSet* executeSQLStatement(std::string statement);
 
     public: std::string create(std::string databaseName);
 
@@ -154,9 +160,9 @@ public: AbSqlBasic(DbConnectionInfo databaseConnectionInfoInterface);
 
     private: void initialize();
 
-    public: DatabaseConnectionInfoInterface getDatabaseConnectionInfoInterface();
+    public: DatabaseConnectionInfoInterface* getDatabaseConnectionInfoInterface();
 
-    public: void setDatabaseConnectionInfoInterface(DbConnectionInfo databaseConnectionInfoInterface);
+    public: void setDatabaseConnectionInfoInterface(DbConnectionInfo* databaseConnectionInfoInterface);
 
 };
 

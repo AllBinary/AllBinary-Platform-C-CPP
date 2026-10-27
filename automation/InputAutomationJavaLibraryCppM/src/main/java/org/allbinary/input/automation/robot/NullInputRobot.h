@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_NULLINPUTROBOT_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_NULLINPUTROBOT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -61,50 +67,50 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputRobotInterface.h"
-#include "Point.h"
-#include "Rectangle.h"
-#include "Color.h"
+        #include "org/allbinary/input/automation/robot/InputRobotInterface.h"
+#include "org/allbinary/input/automation/robot/Point.h"
+#include "org/allbinary/input/automation/robot/Rectangle.h"
+#include "org/allbinary/input/automation/robot/Color.h"
 
 class NullInputRobot: public AbstractInputRobot, public InputRobotInterface {
 
-    public: static const std::string LIBRARY_NAME = "null";
+    public: static inline const std::string LIBRARY_NAME = "null";
 
-    public: static const std::string NAME = "NULL";
+    public: static inline const std::string NAME = "NULL";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: NullInputRobot();
 
     public: std::string getName();
 
-    public: HelpSet getHelpSet();
+    public: HelpSet* getHelpSet();
 
-    public: Point getMousePoint();
+    public: Point* getMousePoint();
 
-    public: void keyPress(Integer keycode);
+    public: void keyPress(int32_t keycode);
 
-    public: void keyRelease(Integer keycode);
+    public: void keyRelease(int32_t keycode);
 
-    public: void mouseMove(Integer x, Integer y);
+    public: void mouseMove(int32_t x, int32_t y);
 
-    public: void mousePress(Integer buttons);
+    public: void mousePress(int32_t buttons);
 
-    public: void mouseRelease(Integer buttons);
+    public: void mouseRelease(int32_t buttons);
 
-    public: BufferedImage createScreenCapture(Rectangle screenRect);
+    public: BufferedImage* createScreenCapture(Rectangle* screenRect);
 
-    public: void delay(Integer ms);
+    public: void delay(int32_t ms);
 
-    public: Integer getAutoDelay();
+    public: int32_t getAutoDelay();
 
-    public: Color getPixelColor(Integer x, Integer y);
+    public: Color* getPixelColor(int32_t x, int32_t y);
 
     public: bool isAutoWaitForIdle();
 
-    public: void mouseWheel(Integer wheelAmt);
+    public: void mouseWheel(int32_t wheelAmt);
 
-    public: void setAutoDelay(Integer ms);
+    public: void setAutoDelay(int32_t ms);
 
     public: void setAutoWaitForIdle(bool isOn);
 

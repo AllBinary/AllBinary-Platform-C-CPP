@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -73,51 +81,51 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "GenericModuleConfigurationInterface.h"
-#include "JDialog.h"
-#include "JButton.h"
-#include "JLabel.h"
-#include "JTextField.h"
-#include "ButtonGroup.h"
-#include "JTabbedPane.h"
-#include "JScrollPane.h"
-#include "JList.h"
-#include "JRadioButton.h"
-#include "JCheckBox.h"
-#include "Dimension.h"
-#include "ActionListener.h"
-#include "ActionEvent.h"
-#include "GroupLayout.h"
-#include "Short.h"
-#include "GridLayout.h"
-#include "ListSelectionListener.h"
-#include "ListSelectionEvent.h"
-#include "Insets.h"
+        #include "org/allbinary/input/automation/module/generic/configuration/JPanel.h"
+#include "org/allbinary/input/automation/module/generic/configuration/GenericModuleConfigurationInterface.h"
+#include "org/allbinary/input/automation/module/generic/configuration/JDialog.h"
+#include "org/allbinary/input/automation/module/generic/configuration/JButton.h"
+#include "org/allbinary/input/automation/module/generic/configuration/JLabel.h"
+#include "org/allbinary/input/automation/module/generic/configuration/JTextField.h"
+#include "org/allbinary/input/automation/module/generic/configuration/ButtonGroup.h"
+#include "org/allbinary/input/automation/module/generic/configuration/JTabbedPane.h"
+#include "org/allbinary/input/automation/module/generic/configuration/JScrollPane.h"
+#include "org/allbinary/input/automation/module/generic/configuration/JList.h"
+#include "org/allbinary/input/automation/module/generic/configuration/JRadioButton.h"
+#include "org/allbinary/input/automation/module/generic/configuration/JCheckBox.h"
+#include "org/allbinary/input/automation/module/generic/configuration/Dimension.h"
+#include "org/allbinary/input/automation/module/generic/configuration/ActionListener.h"
+#include "org/allbinary/input/automation/module/generic/configuration/ActionEvent.h"
+#include "org/allbinary/input/automation/module/generic/configuration/GroupLayout.h"
+#include "org/allbinary/input/automation/module/generic/configuration/Short.h"
+#include "org/allbinary/input/automation/module/generic/configuration/GridLayout.h"
+#include "org/allbinary/input/automation/module/generic/configuration/ListSelectionListener.h"
+#include "org/allbinary/input/automation/module/generic/configuration/ListSelectionEvent.h"
+#include "org/allbinary/input/automation/module/generic/configuration/Insets.h"
 
 class GenericModuleConfigurationJPanel: public javax::swing::JPanel, public GenericModuleConfigurationInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const StringUtil stringUtil = StringUtil::getInstance();
+    private: StringUtil* stringUtil = StringUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: GenericProfiles genericProfiles;
+    private: GenericProfiles* genericProfiles;
 
-    private: GenericProfile selectedGenericProfile;
+    private: GenericProfile* selectedGenericProfile;
 
 public: GenericModuleConfigurationJPanel();
 
     private: void initComponents();
 
-    private: void savedCaptureJRadioButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void savedCaptureJRadioButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void screenCaptureJRadioButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void screenCaptureJRadioButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void captureMotionAnalysisJCheckBoxActionPerformed(java::awt::event::ActionEvent evt);
+    private: void captureMotionAnalysisJCheckBoxActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void captureComparisonJCheckBoxActionPerformed(java::awt::event::ActionEvent evt);
+    private: void captureComparisonJCheckBoxActionPerformed(java::awt::event::ActionEvent* evt);
 
                 //@Throws(Exception.constructor)
             
@@ -131,65 +139,65 @@ public: GenericModuleConfigurationJPanel();
             
     private: void updateProfileOptions();
 
-    public: javax::swing::JPanel getBlankGenericProfileActionsJPanel();
+    public: javax::swing::JPanel* getBlankGenericProfileActionsJPanel();
 
-    public: void setBlankGenericProfileActionsJPanel(javax::swing::JPanel blankGenericProfileActionsJPanel);
+    public: void setBlankGenericProfileActionsJPanel(javax::swing::JPanel* blankGenericProfileActionsJPanel);
 
-    private: GenericProfiles getGenericProfiles();
+    private: GenericProfiles* getGenericProfiles();
 
-    private: void setGenericProfiles(GenericProfiles genericProfiles);
+    private: void setGenericProfiles(GenericProfiles* genericProfiles);
 
-    public: GenericProfile getSelectedGenericProfile();
+    public: GenericProfile* getSelectedGenericProfile();
 
-    public: void setSelectedGenericProfile(GenericProfile selectedGenericProfile);
+    public: void setSelectedGenericProfile(GenericProfile* selectedGenericProfile);
 
-    private: void genericProfilesJListValueChanged(javax::swing::event::ListSelectionEvent evt);
+    private: void genericProfilesJListValueChanged(javax::swing::event::ListSelectionEvent* evt);
 
-    private: void deleteProfileJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void deleteProfileJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void okNewProfileJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void okNewProfileJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void newProfileJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void newProfileJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: javax::swing::JPanel blankGenericProfileActionsJPanel;
+    private: javax::swing::JPanel* blankGenericProfileActionsJPanel;
 
-    private: javax::swing::ButtonGroup buttonGroup2;
+    private: javax::swing::ButtonGroup* buttonGroup2;
 
-    private: javax::swing::JCheckBox captureComparisonJCheckBox;
+    private: javax::swing::JCheckBox* captureComparisonJCheckBox;
 
-    private: javax::swing::JCheckBox captureMotionAnalysisJCheckBox;
+    private: javax::swing::JCheckBox* captureMotionAnalysisJCheckBox;
 
-    private: javax::swing::JButton deleteProfileJButton;
+    private: javax::swing::JButton* deleteProfileJButton;
 
-    private: javax::swing::JTabbedPane genericJTabbedPane;
+    private: javax::swing::JTabbedPane* genericJTabbedPane;
 
-    private: javax::swing::JList genericProfilesJList;
+    private: javax::swing::JList* genericProfilesJList;
 
-    private: javax::swing::JPanel genericProfilesJPanel;
+    private: javax::swing::JPanel* genericProfilesJPanel;
 
-    private: javax::swing::JScrollPane genericProfilesJScrollPane;
+    private: javax::swing::JScrollPane* genericProfilesJScrollPane;
 
-    private: javax::swing::JLabel jLabel1;
+    private: javax::swing::JLabel* jLabel1;
 
-    private: javax::swing::JLabel jLabel2;
+    private: javax::swing::JLabel* jLabel2;
 
-    private: javax::swing::JLabel jLabel3;
+    private: javax::swing::JLabel* jLabel3;
 
-    private: javax::swing::JPanel jPanel1;
+    private: javax::swing::JPanel* jPanel1;
 
-    private: javax::swing::JButton newProfileJButton;
+    private: javax::swing::JButton* newProfileJButton;
 
-    private: javax::swing::JDialog newProfileJDialog;
+    private: javax::swing::JDialog* newProfileJDialog;
 
-    private: javax::swing::JLabel newProfileNameJLabel;
+    private: javax::swing::JLabel* newProfileNameJLabel;
 
-    private: javax::swing::JTextField newProfileNameJTextField;
+    private: javax::swing::JTextField* newProfileNameJTextField;
 
-    private: javax::swing::JButton okNewProfileJButton;
+    private: javax::swing::JButton* okNewProfileJButton;
 
-    private: javax::swing::JRadioButton savedCaptureJRadioButton;
+    private: javax::swing::JRadioButton* savedCaptureJRadioButton;
 
-    private: javax::swing::JRadioButton screenCaptureJRadioButton;
+    private: javax::swing::JRadioButton* screenCaptureJRadioButton;
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/debug/DebugFactory.h>
@@ -58,9 +64,9 @@ class LicenseInitInfo
             : public Object
          {
 
-    private: std::string id = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string id = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: BasicArrayList serverVector = BasicArrayListD();
+    private: BasicArrayList* serverVector = new BasicArrayListD();
 
 public: LicenseInitInfo(){
 }
@@ -81,7 +87,7 @@ public: LicenseInitInfo(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->serverVector.objectArray[index];
+                        return this->serverVector->objectArray[index];
     
 }
 
@@ -91,7 +97,7 @@ public: LicenseInitInfo(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->serverVector.size();;
+                        return this->serverVector->size();;
     
 }
 
@@ -103,24 +109,24 @@ this->id= value;
 
 
     public: void clearServers(){
-this->serverVector= BasicArrayListD();
+this->serverVector= new BasicArrayListD();
     
 }
 
 
     public: void setServer(std::string value, int32_t index){
-this->serverVector.addAt(index, value);
+this->serverVector->addAt(index, value);
     
 }
 
 
     public: void addServer(std::string value){
-this->serverVector.add(value);
+this->serverVector->add(value);
     
 }
 
 
-    public: BasicArrayList getServerList(){
+    public: BasicArrayList* getServerList(){
 
 
 
@@ -130,7 +136,7 @@ this->serverVector.add(value);
 }
 
 
-    public: void setServerList(BasicArrayList servers){
+    public: void setServerList(BasicArrayList* servers){
 
                         if(DebugFactory::getInstance() == NoDebug::getInstance())
                         

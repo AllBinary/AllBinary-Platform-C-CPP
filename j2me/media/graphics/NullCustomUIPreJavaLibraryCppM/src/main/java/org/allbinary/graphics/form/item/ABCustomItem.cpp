@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -47,14 +53,14 @@ class ABCustomItem
             : public Object
          {
 
-    public: static Object* NULL_CUSTOM_ITEM = NullUtil::getInstance().NULL_OBJECT;
+    public: static inline Object* NULL_CUSTOM_ITEM = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static ABCustomItem getNullInstance(){
+    public: static ABCustomItem* getNullInstance(){
 
-                        if(ABCustomItem::NULL_CUSTOM_ITEM == NullUtil::getInstance().NULL_OBJECT)
+                        if(ABCustomItem::NULL_CUSTOM_ITEM == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    ABCustomItem::NULL_CUSTOM_ITEM= ABCustomItem(StringUtil::getInstance().EMPTY_STRING, BasicColorFactory::getInstance().BLACK, BasicColorFactory::getInstance().WHITE);
+                                    ABCustomItem::NULL_CUSTOM_ITEM= new ABCustomItem(StringUtil::getInstance()->EMPTY_STRING, BasicColorFactory::getInstance()->BLACK, BasicColorFactory::getInstance()->WHITE);
     
 
                                     }
@@ -63,24 +69,24 @@ class ABCustomItem
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ABCustomItem::NULL_CUSTOM_ITEM;
+                        return dynamic_cast<ABCustomItem*>(ABCustomItem::NULL_CUSTOM_ITEM);
     
 }
 
 
-protected: ABCustomItem(std::string label, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
+protected: ABCustomItem(std::string label, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor){
 }
 
 
-    public: void setOwner(Screen owner){
+    public: void setOwner(Screen* owner){
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 }
 
 
-    public: void paintUnselected(Graphics graphics, int32_t x, int32_t y){
+    public: void paintUnselected(Graphics* graphics, int32_t x, int32_t y){
 }
 
 
@@ -99,7 +105,7 @@ protected: ABCustomItem(std::string label, BasicColor backgroundBasicColor, Basi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 }
 
@@ -156,7 +162,7 @@ protected: ABCustomItem(std::string label, BasicColor backgroundBasicColor, Basi
 }
 
 
-    public: void preMeasurement(Graphics graphics){
+    public: void preMeasurement(Graphics* graphics){
 }
 
 

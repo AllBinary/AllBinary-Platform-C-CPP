@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_STORE_THEME_ROOTSTORETHEMECATEGORYPROPERTIESFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_STORE_THEME_ROOTSTORETHEMECATEGORYPROPERTIESFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,25 +73,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RootStoreThemeCategoryProperties.h"
+        #include "org/allbinary/business/category/properties/root/store/theme/RootStoreThemeCategoryProperties.h"
 
 class RootStoreThemeCategoryPropertiesFactory
             : public Object
-        : public CategoryPropertiesFactoryInterface {
+        , public CategoryPropertiesFactoryInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: CategoryPropertiesInterface categoryPropertiesInterface;
+    private: CategoryPropertiesInterface* categoryPropertiesInterface;
 
-public: RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface);
+public: RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface* transformInfoInterface);
 
-public: RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface, AbPath abPath);
+public: RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface* transformInfoInterface, AbPath* abPath);
 
-public: RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface, Node node);
+public: RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface* transformInfoInterface, Node* node);
 
-public: RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface, HashMap<Object*, Object*> categoryPropertiesHashMap);
+public: RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface* transformInfoInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap);
 
-    public: CategoryPropertiesInterface getInstance();
+    public: CategoryPropertiesInterface* getInstance();
 
 };
 

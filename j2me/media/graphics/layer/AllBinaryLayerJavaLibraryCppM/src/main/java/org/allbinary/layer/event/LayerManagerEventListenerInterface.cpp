@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
@@ -41,17 +47,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LayerManagerEvent.h"
+        #include "org/allbinary/layer/event/LayerManagerEvent.h"
 
 class LayerManagerEventListenerInterface: public EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    void onCreateLayerManagerEvent(LayerManagerEvent layerManagerEvent)
+    public: virtual void onCreateLayerManagerEvent(LayerManagerEvent* layerManagerEvent) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void onDeleteLayerManagerEvent(LayerManagerEvent layerManagerEvent)
+    public: virtual void onDeleteLayerManagerEvent(LayerManagerEvent* layerManagerEvent) = 0;
 
 };
 

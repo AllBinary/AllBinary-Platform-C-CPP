@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_CONSOLIDATEDMOTIONRECTANGLESRESULTSCACHESINGLETON_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_CONSOLIDATEDMOTIONRECTANGLESRESULTSCACHESINGLETON_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,16 +72,16 @@ class ConsolidatedMotionRectanglesResultsCacheSingleton
             : public Object
          {
 
-    private: static CacheInterface cacheInterface = 
+    private: static inline CacheInterface* cacheInterface = 
                 nullptr
             ;
 
                     static int32_t initResult;
                 static int32_t init();
             
-    public: static CacheInterface getInstance();
+    public: static CacheInterface* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: ConsolidatedMotionRectanglesResultsCacheSingleton();
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_SEQUENTIALANIMATIONINTERFACE_H
         #define ORG_ALLBINARY_ANIMATION_SEQUENTIALANIMATIONINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,14 +45,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnimationInterface.h"
-#include "SequenceInterface.h"
+        #include "org/allbinary/animation/AnimationInterface.h"
+#include "org/allbinary/animation/SequenceInterface.h"
 
 class SequentialAnimationInterface: public AnimationInterface, public SequenceInterface {
 
-    int32_t getSize();
+    public: virtual int32_t getSize() = 0;
 
-    void previousFrame();
+    public: virtual void previousFrame() = 0;
 
 };
 

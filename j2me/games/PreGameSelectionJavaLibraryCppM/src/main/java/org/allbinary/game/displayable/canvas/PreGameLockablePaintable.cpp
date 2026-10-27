@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -61,9 +67,9 @@ class PreGameLockablePaintable: public LockablePaintable {
 
     private: int32_t halfWidth;
 
-    private: ScrollCurrentSelectionForm paintableForm;
+    private: ScrollCurrentSelectionForm* paintableForm;
 
-public: PreGameLockablePaintable(ScrollCurrentSelectionForm paintableForm, int32_t lockedIndex) : LockablePaintable(lockedIndex){
+public: PreGameLockablePaintable(ScrollCurrentSelectionForm* paintableForm, int32_t lockedIndex) : LockablePaintable(lockedIndex){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -72,17 +78,17 @@ public: PreGameLockablePaintable(ScrollCurrentSelectionForm paintableForm, int32
                     
 this->paintableForm= paintableForm;
     
-this->halfWidth= GameFeatureImageCacheFactory::getInstance().getWithKey(LockedResources::getInstance().LOCKED_DEMO_GAME_FEATURE_RESOURCE).getWidth() /2;
+this->halfWidth= GameFeatureImageCacheFactory::getInstance()->getWithKey(LockedResources::getInstance()->LOCKED_DEMO_GAME_FEATURE_RESOURCE)->getWidth() /2;
     
 }
 
 
-    public: void paint(Graphics graphics, int32_t currentIndex, int32_t x, int32_t y){
+    public: void paint(Graphics* graphics, int32_t currentIndex, int32_t x, int32_t y){
 
-                        if(LockedUtil::getInstance().isLocked() && this->getPaintableForm().getSelectedIndex() >= this->getLockedIndex())
+                        if(LockedUtil::getInstance()->isLocked() && this->getPaintableForm()->getSelectedIndex() >= this->getLockedIndex())
                         
                                     {
-                                    this->getAnimation().paintXY(graphics, this->getPaintableForm().getDx() -this->halfWidth, this->getPaintableForm().getDy() +34);
+                                    this->getAnimation()->paintXY(graphics, this->getPaintableForm()->getDx() -this->halfWidth, this->getPaintableForm()->getDy() +34);
     
 
                                     }
@@ -90,7 +96,7 @@ this->halfWidth= GameFeatureImageCacheFactory::getInstance().getWithKey(LockedRe
 }
 
 
-    protected: ScrollCurrentSelectionForm getPaintableForm(){
+    protected: ScrollCurrentSelectionForm* getPaintableForm(){
 
 
 

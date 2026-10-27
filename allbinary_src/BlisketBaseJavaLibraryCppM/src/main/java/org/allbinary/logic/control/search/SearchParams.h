@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -71,13 +77,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SearchData.h"
+        #include "org/allbinary/logic/control/search/SearchData.h"
 
 class SearchParams
             : public Object
          {
 
-    private: HashMap<Object*, Object*> columnsAndSearchValues;
+    private: HashMap<Object*, Object*>* columnsAndSearchValues;
 
     private: std::string order;
 
@@ -89,7 +95,7 @@ class SearchParams
 
     private: std::string endPage;
 
-public: SearchParams(HttpServletRequest request);
+public: SearchParams(HttpServletRequest* request);
 
     public: void add(std::string column, std::string value);
 
@@ -103,7 +109,7 @@ public: SearchParams(HttpServletRequest request);
 
     public: void setEndPage(std::string value);
 
-    public: HashMap<Object*, Object*> get();
+    public: HashMap<Object*, Object*>* get();
 
     public: std::string getOrder();
 
@@ -111,35 +117,35 @@ public: SearchParams(HttpServletRequest request);
 
     public: std::string getLength();
 
-    public: Integer getLengthInt();
+    public: int32_t getLengthInt();
 
     public: std::string getStartPage();
 
     public: std::string getEndPage();
 
-    public: Integer getStartPageInt();
+    public: int32_t getStartPageInt();
 
-    public: Integer getEndPageInt();
-
-                //@Throws(Exception.constructor)
-            
-    public: Node getParamsNode(Document document);
+    public: int32_t getEndPageInt();
 
                 //@Throws(Exception.constructor)
             
-    private: Node getFieldsNode(Document document);
+    public: Node* getParamsNode(Document* document);
 
                 //@Throws(Exception.constructor)
             
-    private: Node getOrderNode(Document document);
+    private: Node* getFieldsNode(Document* document);
 
                 //@Throws(Exception.constructor)
             
-    private: Node getSortByNode(Document document);
+    private: Node* getOrderNode(Document* document);
 
                 //@Throws(Exception.constructor)
             
-    private: Node getLengthNode(Document document);
+    private: Node* getSortByNode(Document* document);
+
+                //@Throws(Exception.constructor)
+            
+    private: Node* getLengthNode(Document* document);
 
 };
 

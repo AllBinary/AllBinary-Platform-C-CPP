@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -121,21 +127,21 @@ class InitSql
             : public Object
          {
 
-    protected: const StringUtil stringUtil = StringUtil::getInstance();
+    protected: StringUtil* stringUtil = StringUtil::getInstance();
 
-    protected: const CommonSeps commonSeps = CommonSeps::getInstance();
+    protected: CommonSeps* commonSeps = CommonSeps::getInstance();
 
-    protected: const SqlTypeStrings sqlTypeStrings = SqlTypeStrings::getInstance();
+    protected: SqlTypeStrings* sqlTypeStrings = SqlTypeStrings::getInstance();
 
-    protected: const SqlStrings sqlStrings = SqlStrings::getInstance();
+    protected: SqlStrings* sqlStrings = SqlStrings::getInstance();
 
-    protected: const StdUtil stdUtil = StdUtil::getInstance();
+    protected: StdUtil* stdUtil = StdUtil::getInstance();
 
     protected: const std::string INSERT = "insert";
 
     protected: const std::string UPDATE = "update";
 
-    private: DbConnectionInfo databaseConnectionInfoInterface;
+    private: DbConnectionInfo* databaseConnectionInfoInterface;
 
     private: std::string userid;
 
@@ -143,7 +149,7 @@ class InitSql
 
     private: std::string tableName;
 
-    private: Connection conn;
+    private: Connection* conn;
 
     private: bool useridAndPassword= false;
 
@@ -153,7 +159,7 @@ class InitSql
 
     private: const std::string INIT_SQL = "InitSql";
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: const std::string EQUAL_QUOTE = "=\"";
 
@@ -167,29 +173,29 @@ class InitSql
 
     private: const std::string INSERT_END = "')";
 
-public: InitSql(DbConnectionInfo databaseConnectionInfoInterface);
+public: InitSql(DbConnectionInfo* databaseConnectionInfoInterface);
 
     public: void setTable(std::string tableName);
 
-    public: void setDatabaseConnectionInfoInterface(DbConnectionInfo databaseConnectionInfoInterface);
+    public: void setDatabaseConnectionInfoInterface(DbConnectionInfo* databaseConnectionInfoInterface);
 
     public: bool createTable(std::string tableData);
 
     public: bool dropTable();
 
-    public: HashMap<Object*, Object*> getRow(HashMap<Object*, Object*> keysAndValues);
+    public: HashMap<Object*, Object*>* getRow(HashMap<Object*, Object*>* keysAndValues);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void updateWhere(std::string key, std::string value, HashMap<Object*, Object*> updatedKeyValuePairs);
+    public: void updateWhere(std::string key, std::string value, HashMap<Object*, Object*>* updatedKeyValuePairs);
 
-    public: void insert(BasicArrayList values);
+    public: void insert(BasicArrayList* values);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     private: std::string getValue(std::string value);
 
                 //@Throws(Exception.constructor, SQLException.constructor)
             
-    public: ResultSet executeSQLStatement(std::string statement);
+    public: ResultSet* executeSQLStatement(std::string statement);
 
                 //@Throws(SQLException.constructor)
             
@@ -199,7 +205,7 @@ public: InitSql(DbConnectionInfo databaseConnectionInfoInterface);
             
     private: void initialize();
 
-    public: DatabaseConnectionInfoInterface getDatabaseConnectionInfoInterface();
+    public: DatabaseConnectionInfoInterface* getDatabaseConnectionInfoInterface();
 
 };
 

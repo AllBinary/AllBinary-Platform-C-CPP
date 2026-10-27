@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
 
       
@@ -42,15 +48,15 @@
         
 class ColorChangeEventHandler: public BasicEventHandler {
 
-    private: static const ColorChangeEventHandler eventHandler = ColorChangeEventHandler();
+    private: static ColorChangeEventHandler* eventHandler() { static std::unique_ptr<ColorChangeEventHandler> value(new ColorChangeEventHandler()); return value.get(); }
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static ColorChangeEventHandler getInstance(){
+    public: static ColorChangeEventHandler* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ColorChangeEventHandler::eventHandler;
+                        return ColorChangeEventHandler::eventHandler();
     
 }
 

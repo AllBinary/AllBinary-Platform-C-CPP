@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -86,12 +92,12 @@ class HtmlForm
 
     private: std::string action;
 
-    BasicArrayList inputs;
+    BasicArrayList* inputs;
 
 public: HtmlForm(std::string action){
 this->action= action;
     
-this->inputs= BasicArrayListD();
+this->inputs= new BasicArrayListD();
     
 }
 
@@ -108,27 +114,27 @@ this->method= this->GET;
 }
 
 
-    public: void addInput(HtmlInput htmlInput){
-this->inputs.add(htmlInput);
+    public: void addInput(HtmlInput* htmlInput){
+this->inputs->add(htmlInput);
     
 }
 
 
-    public: void addTable(HtmlTable htmlTable){
-this->inputs.add(htmlTable);
+    public: void addTable(HtmlTable* htmlTable){
+this->inputs->add(htmlTable);
     
 }
 
 
     public: std::string toString(){
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
 
-    std::string result = stringUtil.EMPTY_STRING;;
+    std::string result = stringUtil->EMPTY_STRING;;
     
 
-    std::vector<Object*> inputArray = this->inputs.toArray();;
+    std::vector<Object*> inputArray = this->inputs->toArray();;
     
 
     int32_t inputSize = inputArray.size();;

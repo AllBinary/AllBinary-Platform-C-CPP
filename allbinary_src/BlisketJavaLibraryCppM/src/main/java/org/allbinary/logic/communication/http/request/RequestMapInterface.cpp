@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/util/HashMap.h>
 
       
@@ -42,7 +48,7 @@
         
 class RequestMapInterface {
 
-    HashMap<Object*, Object*> getRequestHashMap()
+    public: virtual HashMap<Object*, Object*>* getRequestHashMap() = 0;
 
 };
 

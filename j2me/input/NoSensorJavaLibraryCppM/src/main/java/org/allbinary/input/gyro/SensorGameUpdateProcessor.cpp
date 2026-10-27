@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -51,15 +57,15 @@ class SensorGameUpdateProcessor
             : public Object
          {
 
-    private: AllBinarySensor inputSensor = NoAllBinarySensor::getInstance();
+    private: AllBinarySensor* inputSensor = NoAllBinarySensor::getInstance();
 
-    protected: void setInputSensor(AllBinarySensor inputSensor){
+    protected: void setInputSensor(AllBinarySensor* inputSensor){
 this->inputSensor= inputSensor;
     
 }
 
 
-    public: AllBinarySensor getInputSensor(){
+    public: AllBinarySensor* getInputSensor(){
 
 
 

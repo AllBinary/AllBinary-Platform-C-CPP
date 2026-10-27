@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYADJUSTEDHTMLIMAGEROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYADJUSTEDHTMLIMAGEROTATIONANIMATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -53,7 +59,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryHTMLImageRotationAnimation.h"
+        #include "org/allbinary/animation/image/AllBinaryHTMLImageRotationAnimation.h"
 
 class AllBinaryAdjustedHTMLImageRotationAnimation: public AllBinaryHTMLImageRotationAnimation {
 
@@ -61,7 +67,7 @@ class AllBinaryAdjustedHTMLImageRotationAnimation: public AllBinaryHTMLImageRota
 
     private: int32_t dy= 0;
 
-public: AllBinaryAdjustedHTMLImageRotationAnimation(Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior animationBehavior);
+public: AllBinaryAdjustedHTMLImageRotationAnimation(Image* originalImage, Image* image, AngleInfo* angleInfo, int16_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior);
 
                 //@Throws(Exception.constructor)
             
@@ -75,7 +81,7 @@ public: AllBinaryAdjustedHTMLImageRotationAnimation(Image originalImage, Image i
 
     public: int32_t getDy();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
 };
 

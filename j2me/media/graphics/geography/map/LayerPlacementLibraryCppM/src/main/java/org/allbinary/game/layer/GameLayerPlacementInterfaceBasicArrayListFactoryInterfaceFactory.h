@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_GAMELAYERPLACEMENTINTERFACEBASICARRAYLISTFACTORYINTERFACEFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_GAMELAYERPLACEMENTINTERFACEBASICARRAYLISTFACTORYINTERFACEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,13 +45,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LayerPlacementInterfaceBasicArrayListFactoryInterface.h"
+        #include "org/allbinary/game/layer/LayerPlacementInterfaceBasicArrayListFactoryInterface.h"
 
 class GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory {
 
-    LayerPlacementInterfaceBasicArrayListFactoryInterface getInstance(int32_t level);
+    public: virtual LayerPlacementInterfaceBasicArrayListFactoryInterface* getInstance(int32_t level) = 0;
 
-    int32_t size();
+    public: virtual int32_t size() = 0;
 
 };
 

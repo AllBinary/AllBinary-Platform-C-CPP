@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -53,16 +59,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Dimension.h"
-#include "Rectangle.h"
+        #include "org/allbinary/input/automation/module/Dimension.h"
+#include "org/allbinary/input/automation/module/Rectangle.h"
 
 class MotionRectangleConstraints
             : public Object
-        : public MotionRectangleConstraintsInterface {
+        , public MotionRectangleConstraintsInterface {
 
-    private: Dimension minDimension;
+    private: Dimension* minDimension;
 
-    private: Dimension maxDimension;
+    private: Dimension* maxDimension;
 
     private: int32_t maxMotionRectangles= 0;
 
@@ -72,7 +78,7 @@ public: MotionRectangleConstraints(){
 }
 
 
-    public: Dimension getMinDimension(){
+    public: Dimension* getMinDimension(){
 
 
 
@@ -82,7 +88,7 @@ public: MotionRectangleConstraints(){
 }
 
 
-    public: Dimension getMaxDimension(){
+    public: Dimension* getMaxDimension(){
 
 
 
@@ -92,9 +98,9 @@ public: MotionRectangleConstraints(){
 }
 
 
-    public: bool isTooSmall(Rectangle rectangle){
+    public: bool isTooSmall(Rectangle* rectangle){
 
-                        if(rectangle.width < this->getMinDimension().width || rectangle.height < this->getMinDimension().height)
+                        if(rectangle->width < this->getMinDimension()->width || rectangle->height < this->getMinDimension()->height)
                         
                                     {
                                     
@@ -119,9 +125,9 @@ public: MotionRectangleConstraints(){
 }
 
 
-    public: bool isAreaTooSmall(Rectangle rectangle){
+    public: bool isAreaTooSmall(Rectangle* rectangle){
 
-                        if(rectangle.width *rectangle.height < this->getMinArea())
+                        if(rectangle->width *rectangle->height < this->getMinArea())
                         
                                     {
                                     
@@ -146,9 +152,9 @@ public: MotionRectangleConstraints(){
 }
 
 
-    public: bool isTooBig(Rectangle rectangle){
+    public: bool isTooBig(Rectangle* rectangle){
 
-                        if(rectangle.width > this->getMaxDimension().width || rectangle.height > this->getMaxDimension().height)
+                        if(rectangle->width > this->getMaxDimension()->width || rectangle->height > this->getMaxDimension()->height)
                         
                                     {
                                     
@@ -175,22 +181,22 @@ public: MotionRectangleConstraints(){
 
                 //@Throws(Exception.constructor)
             
-    public: bool isValid(Long frame, BufferedImage bufferedImage, Rectangle rectangle){
+    public: bool isValid(int64_t frame, BufferedImage* bufferedImage, Rectangle* rectangle){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: void setMinDimension(Dimension minDimension){
+    public: void setMinDimension(Dimension* minDimension){
 this->minDimension= minDimension;
     
 }
 
 
-    public: void setMaxDimension(Dimension maxDimension){
+    public: void setMaxDimension(Dimension* maxDimension){
 this->maxDimension= maxDimension;
     
 }

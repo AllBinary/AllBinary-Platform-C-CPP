@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -74,9 +80,9 @@
         
 class PaymentView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: PaymentView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+public: PaymentView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -88,19 +94,19 @@ public: PaymentView(TransformInfoInterface transformInfoInterface) : HttpStoreCo
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
         try {
             
-    Node paymentNode = document.createElement(PaymentData::PAYMENT);;
+    Node* paymentNode = document->createElement(PaymentData::PAYMENT);;
     
-document.appendChild(paymentNode);
-    
-
-    BasicArrayList paymentVector = PaymentEntityFactory::getInstance().getPaymentEntityInstance().get(this->getWeblisketSession().getUserName());;
+document->appendChild(paymentNode);
     
 
-    int32_t size = paymentVector.size();;
+    BasicArrayList* paymentVector = PaymentEntityFactory::getInstance()->getPaymentEntityInstance()->get(this->getWeblisketSession()->getUserName());;
+    
+
+    int32_t size = paymentVector->size();;
     
 
 
@@ -110,9 +116,9 @@ document.appendChild(paymentNode);
     int32_t index = 0;index < size; index++)
         {
 
-    Payment payment = paymentVector.get(index);;
+    Payment* payment = dynamic_cast<Payment*>(paymentVector->get(index));;
     
-paymentNode.appendChild(payment.toXmlNode(document));
+paymentNode->appendChild(payment->toXmlNode(document));
     
 }
 
@@ -124,13 +130,13 @@ paymentNode.appendChild(payment.toXmlNode(document));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, "toXmlNode", &e);
     
 
                                     }
@@ -146,7 +152,7 @@ paymentNode.appendChild(payment.toXmlNode(document));
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this);
+this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     
 }
 
@@ -164,16 +170,16 @@ this->addDomNodeInterface(this);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to view Payment";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }

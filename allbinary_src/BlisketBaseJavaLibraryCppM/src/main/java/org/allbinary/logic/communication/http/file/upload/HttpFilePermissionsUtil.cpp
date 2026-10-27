@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -51,9 +57,9 @@ class HttpFilePermissionsUtil
             : public Object
          {
 
-    private: static HttpFilePermissionsUtil instance() { return HttpFilePermissionsUtil(); }
+    private: static HttpFilePermissionsUtil* instance() { static std::unique_ptr<HttpFilePermissionsUtil> value(new HttpFilePermissionsUtil()); return value.get(); }
 
-    public: static HttpFilePermissionsUtil getInstance(){
+    public: static HttpFilePermissionsUtil* getInstance(){
 
 
 
@@ -65,15 +71,15 @@ class HttpFilePermissionsUtil
 
                 //@Throws(Exception.constructor)
             
-    public: void create(AbPath path){
+    public: void create(AbPath* path){
 
-    AbFile file = AbFile::createAbFileFromAbPath(path);;
+    AbFile* file = AbFile::createAbFileFromAbPath(path);;
     
 
-                        if(!file.isFile())
+                        if(!file->isFile())
                         
                                     {
-                                    file.createNewFile();
+                                    file->createNewFile();
     
 
                                     }

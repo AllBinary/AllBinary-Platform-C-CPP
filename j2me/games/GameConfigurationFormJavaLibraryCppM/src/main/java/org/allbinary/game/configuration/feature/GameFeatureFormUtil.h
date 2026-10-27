@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -84,29 +90,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Features.h"
-#include "Feature.h"
-#include "GameFeatureUtil.h"
+        #include "org/allbinary/game/configuration/feature/Features.h"
+#include "org/allbinary/game/configuration/feature/Feature.h"
+#include "org/allbinary/game/configuration/feature/GameFeatureUtil.h"
 
 class GameFeatureFormUtil
             : public Object
          {
 
-    private: static GameFeatureFormUtil instance() { return GameFeatureFormUtil(); }
+    private: static GameFeatureFormUtil* instance() { static std::unique_ptr<GameFeatureFormUtil> value(new GameFeatureFormUtil()); return value.get(); }
 
-    public: static GameFeatureFormUtil getInstance();
+    public: static GameFeatureFormUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const MEUtil meUtil = MEUtil::getInstance();
+    private: MEUtil* meUtil = MEUtil::getInstance();
 
-    public: ChoiceGroup getChoiceGroup(ABHashtable<Object*, Object*> hashtable, std::string name, int32_t option);
+    public: ChoiceGroup* getChoiceGroup(ABHashtable<Object*, Object*>* hashtable, std::string name, int32_t option);
 
-    public: void addChoiceGroup(CommandForm form, ABHashtable<Object*, Object*> hashtable, int32_t option);
+    public: void addChoiceGroup(CommandForm* form, ABHashtable<Object*, Object*>* hashtable, int32_t option);
 
                 //@Throws(Exception.constructor)
             
-    public: void setDefault(CommandForm form);
+    public: void setDefault(CommandForm* form);
 
 };
 

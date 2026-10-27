@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/animation/Animation.h>
 
       
@@ -42,15 +48,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PickedUpLayerType.h"
+        #include "org/allbinary/game/layer/pickup/PickedUpLayerType.h"
 
 class PickedUpLayerInterfaceFactoryInterface {
 
-    PickedUpLayerType getPickedUpLayerType()
+    public: virtual PickedUpLayerType* getPickedUpLayerType() = 0;
 
-    AllBinaryLayer getIconLayer()
+    public: virtual AllBinaryLayer* getIconLayer() = 0;
 
-    Animation getAnimationInterface()
+    public: virtual Animation* getAnimationInterface() = 0;
 
 };
 

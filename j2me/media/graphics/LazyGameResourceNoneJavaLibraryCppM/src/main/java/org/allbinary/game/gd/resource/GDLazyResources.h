@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -48,9 +54,9 @@ class GDLazyResources
             : public Object
          {
 
-    private: static GDLazyResources instance() { return GDLazyResources(); }
+    private: static GDLazyResources* instance() { static std::unique_ptr<GDLazyResources> value(new GDLazyResources()); return value.get(); }
 
-    public: static GDLazyResources getInstance();
+    public: static GDLazyResources* getInstance();
 
     public: const std::vector<int32_t> imageResourceWidthArray = {};
 

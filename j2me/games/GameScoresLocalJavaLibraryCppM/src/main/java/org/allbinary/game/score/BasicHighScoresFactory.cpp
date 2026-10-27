@@ -6,6 +6,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/GameInfo.h>
@@ -38,13 +44,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HighScoresBase.h"
-#include "HighScores.h"
-#include "HighScoresResultsListener.h"
-#include "RecordStoreHighScores.h"
-#include "ScoreComparator.h"
-#include "HighScoresHelper2.h"
-#include "HighScoresHelperBaseInterface.h"
+        #include "org/allbinary/game/score/HighScoresBase.h"
+#include "org/allbinary/game/score/HighScores.h"
+#include "org/allbinary/game/score/HighScoresResultsListener.h"
+#include "org/allbinary/game/score/RecordStoreHighScores.h"
+#include "org/allbinary/game/score/ScoreComparator.h"
+#include "org/allbinary/game/score/HighScoresHelper2.h"
+#include "org/allbinary/game/score/HighScoresHelperBaseInterface.h"
 
 class BasicHighScoresFactory: public HighScoresBase {
 
@@ -71,17 +77,17 @@ class BasicHighScoresFactory: public HighScoresBase {
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: AbeClientInformationInterface abeClientInformation;
+    private: AbeClientInformationInterface* abeClientInformation;
 
-public: BasicHighScoresFactory(AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation){
+public: BasicHighScoresFactory(AbeClientInformationInterface* abeClientInformation, SoftwareInformation* softwareInformation){
 this->abeClientInformation= abeClientInformation;
     
 }
 
 
-    private: const std::vector<HighScores> highScoresArray = std::vector<HighScores>(1);
+    private: const std::vector<HighScores*> highScoresArray = std::vector<HighScores*>(1);
 
     private: const std::string TOP = "Top";
 
@@ -91,38 +97,38 @@ this->abeClientInformation= abeClientInformation;
 
     private: const std::string FETCH = "fetchHighScores";
 
-    public: void fetchHighScores(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener){
-this->logUtil.putF("Getting Local HighScores", this, this->FETCH);
+    public: void fetchHighScores(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener){
+this->logUtil->putF("Getting Local HighScores", this, this->FETCH);
     
 this->fetchHighScoresPreload(gameInfo, highScoresResultsListener, true);
     
 }
 
 
-    public: void fetchHighScoresPreload(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener, bool preload){
+    public: void fetchHighScoresPreload(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener, bool preload){
 
         try {
-            this->highScoresArray[0]= RecordStoreHighScores::getInstance(this->abeClientInformation, gameInfo, this->TOP, this->PERSONAL_HIGH_SCORES, this->SCORES, ScoreComparator(true));
+            this->highScoresArray[0]= RecordStoreHighScores::getInstance(this->abeClientInformation, gameInfo, this->TOP, this->PERSONAL_HIGH_SCORES, this->SCORES, new ScoreComparator(true));
     
-highScoresResultsListener.setHighScoresArray(this->highScoresArray);
+highScoresResultsListener->setHighScoresArray(this->highScoresArray);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->FETCH, e);
+this->logUtil->put(this->commonStrings.EXCEPTION, this, this->FETCH, &e);
     
 }
 
 }
 
 
-    public: HighScoresHelperBaseInterface createHighScoresHelper(){
+    public: HighScoresHelperBaseInterface* createHighScoresHelper(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HighScoresHelper2();
+                        return new HighScoresHelper2();
     
 }
 

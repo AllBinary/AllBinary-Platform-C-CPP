@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_GENERATOR_IDGENERATORENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_GENERATOR_IDGENERATORENTITY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -67,11 +73,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "IdGeneratorEntityInterface.h"
+        #include "org/allbinary/data/tables/generator/IdGeneratorEntityInterface.h"
 
 class IdGeneratorEntity: public AbSqlBean, public IdGeneratorEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const std::string tableName = "idgenerator";
 
@@ -85,15 +91,15 @@ public: IdGeneratorEntity();
 
                 //@Throws(Exception.constructor)
             
-    public: Long get(std::string name);
+    public: int64_t get(std::string name);
 
-    public: void insert(BasicArrayList values);
+    public: void insert(BasicArrayList* values);
 
     public: void delete_(std::string value);
 
-    public: void update(std::string name, Long value);
+    public: void update(std::string name, int64_t value);
 
-    public: void update(HashMap<Object*, Object*> hashMap);
+    public: void update(HashMap<Object*, Object*>* hashMap);
 
     public: std::string createTable();
 

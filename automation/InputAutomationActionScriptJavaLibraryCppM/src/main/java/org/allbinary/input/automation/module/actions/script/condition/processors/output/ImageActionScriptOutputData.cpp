@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,15 +49,15 @@ class ImageActionScriptOutputData
             : public Object
          {
 
-    public: static std::string NAME = "IMAGE_ACTION_OUTPUT_NAME";
+    public: static inline std::string NAME = "IMAGE_ACTION_OUTPUT_NAME";
 
-    public: static std::string SAVE = "SAVE_IMAGE_ACTION_OUTPUT_NAME";
+    public: static inline std::string SAVE = "SAVE_IMAGE_ACTION_OUTPUT_NAME";
 
-    public: static std::string DISPLAY = "DISPLAY_IMAGE_ACTION_OUTPUT_NAME";
+    public: static inline std::string DISPLAY = "DISPLAY_IMAGE_ACTION_OUTPUT_NAME";
 
-    public: static std::string TYPE = "TYPE_IMAGE_ACTION_OUTPUT_NAME";
+    public: static inline std::string TYPE = "TYPE_IMAGE_ACTION_OUTPUT_NAME";
 
-    public: static std::string TYPES = "TYPES_IMAGE_ACTION_OUTPUT_NAME";
+    public: static inline std::string TYPES = "TYPES_IMAGE_ACTION_OUTPUT_NAME";
 
 private: ImageActionScriptOutputData(){
 }

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -49,16 +55,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicArrayListD.h"
-#include "BasicArrayList.h"
+        #include "org/allbinary/util/BasicArrayListD.h"
+#include "org/allbinary/util/BasicArrayList.h"
 //ArkTs does not have this.  So this is for the ArkTs build.
 class EnumerationUtil
             : public Object
          {
 
-    private: static EnumerationUtil instance() { return EnumerationUtil(); }
+    private: static EnumerationUtil* instance() { static std::unique_ptr<EnumerationUtil> value(new EnumerationUtil()); return value.get(); }
 
-    public: static EnumerationUtil getInstance(){
+    public: static EnumerationUtil* getInstance(){
 
 
 
@@ -68,34 +74,34 @@ class EnumerationUtil
 }
 
 
-    public: bool hasMoreElements(Enumeration<Object*> enumeration){
+    public: bool hasMoreElements(Enumeration<Object*>* enumeration){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return enumeration.hasMoreElements();;
+                        return enumeration->hasMoreElements();;
     
 }
 
 
-    public: Object* nextElement(Enumeration<Object*> enumeration){
+    public: Object* nextElement(Enumeration<Object*>* enumeration){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return enumeration.nextElement();;
+                        return enumeration->nextElement();;
     
 }
 
 
-    public: std::vector<Object*> getAsArray(Enumeration<Object*> enumeration){
+    public: std::vector<Object*> getAsArray(Enumeration<Object*>* enumeration){
 
-    BasicArrayList basicArrayList = BasicArrayListD();;
+    BasicArrayList* basicArrayList = new BasicArrayListD();;
     
 
         while(this->hasMoreElements(enumeration))
         {
-basicArrayList.add(this->nextElement(enumeration));
+basicArrayList->add(this->nextElement(enumeration));
     
 }
 
@@ -103,7 +109,7 @@ basicArrayList.add(this->nextElement(enumeration));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return basicArrayList.toArray();;
+                        return basicArrayList->toArray();;
     
 }
 

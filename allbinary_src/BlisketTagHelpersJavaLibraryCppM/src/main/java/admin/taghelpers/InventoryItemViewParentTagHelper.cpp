@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,9 +72,9 @@ class InventoryItemViewParentTagHelper
             : public Object
          {
 
-    private: static InventoryItemViewParentTagHelper instance() { return InventoryItemViewParentTagHelper(); }
+    private: static InventoryItemViewParentTagHelper* instance() { static std::unique_ptr<InventoryItemViewParentTagHelper> value(new InventoryItemViewParentTagHelper()); return value.get(); }
 
-    public: static InventoryItemViewParentTagHelper getInstance(){
+    public: static InventoryItemViewParentTagHelper* getInstance(){
 
 
 
@@ -80,38 +86,38 @@ class InventoryItemViewParentTagHelper
 
                 //@Throws(Exception.constructor)
             
-    public: InventoryItemView getInventoryItemView(HelperTag inventoryTag){
+    public: InventoryItemView* getInventoryItemView(HelperTag* inventoryTag){
 
                         if(inventoryTag != 
                                     nullptr
                                 )
                         
                                     {
-                                    this->checkForValidationViewHelper(inventoryTag.getHelper());
+                                    this->checkForValidationViewHelper(inventoryTag->getHelper());
     
 
-    ValidationViewHelper validationViewHelper = inventoryTag.getHelper();;
+    ValidationViewHelper* validationViewHelper = dynamic_cast<ValidationViewHelper*>(inventoryTag->getHelper());;
     
 
-    TransformInterface viewObject = validationViewHelper.getViewObject();;
+    TransformInterface* viewObject = validationViewHelper->getViewObject();;
     
 
-                        if(viewObject.getTypeId() != InventoryItemView::TYPE_ID)
+                        if(viewObject->getTypeId() != InventoryItemView::TYPE_ID)
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Must have ");
+stringBuffer->append("Must have ");
     
-stringBuffer.append("InventoryItemView and not: ");
+stringBuffer->append("InventoryItemView and not: ");
     
-stringBuffer.append(inventoryTag.getHelper().constructor.name.toString());
+stringBuffer->append(inventoryTag->getHelper()->getClass()->getName());
     
 
 
 
-                            throw Exception(stringBuffer.toString());
+                            throw new Exception(stringBuffer->toString());
                     
 
                                     }
@@ -120,7 +126,7 @@ stringBuffer.append(inventoryTag.getHelper().constructor.name.toString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return viewObject;
+                        return dynamic_cast<InventoryItemView*>(viewObject);
     
 
                                     }
@@ -129,7 +135,7 @@ stringBuffer.append(inventoryTag.getHelper().constructor.name.toString());
                             
 
 
-                            throw Exception("Must have parent tag.");
+                            throw new Exception("Must have parent tag.");
                     
 
                         }
@@ -139,38 +145,38 @@ stringBuffer.append(inventoryTag.getHelper().constructor.name.toString());
 
                 //@Throws(Exception.constructor)
             
-    public: DownloadableInventoryItemView getDownloadableInventoryItemView(HelperTag inventoryTag){
+    public: DownloadableInventoryItemView* getDownloadableInventoryItemView(HelperTag* inventoryTag){
 
                         if(inventoryTag != 
                                     nullptr
                                 )
                         
                                     {
-                                    this->checkForValidationViewHelper(inventoryTag.getHelper());
+                                    this->checkForValidationViewHelper(inventoryTag->getHelper());
     
 
-    ValidationViewHelper validationViewHelper = inventoryTag.getHelper();;
+    ValidationViewHelper* validationViewHelper = dynamic_cast<ValidationViewHelper*>(inventoryTag->getHelper());;
     
 
-    TransformInterface viewObject = validationViewHelper.getViewObject();;
+    TransformInterface* viewObject = validationViewHelper->getViewObject();;
     
 
-                        if(viewObject.getTypeId() != DownloadableInventoryItemView::TYPE_ID)
+                        if(viewObject->getTypeId() != DownloadableInventoryItemView::TYPE_ID)
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Must have ");
+stringBuffer->append("Must have ");
     
-stringBuffer.append("DownloadableInventoryItemView and not: ");
+stringBuffer->append("DownloadableInventoryItemView and not: ");
     
-stringBuffer.append(inventoryTag.getHelper().constructor.name.toString());
+stringBuffer->append(inventoryTag->getHelper()->getClass()->getName());
     
 
 
 
-                            throw Exception(stringBuffer.toString());
+                            throw new Exception(stringBuffer->toString());
                     
 
                                     }
@@ -179,7 +185,7 @@ stringBuffer.append(inventoryTag.getHelper().constructor.name.toString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return viewObject;
+                        return dynamic_cast<DownloadableInventoryItemView*>(viewObject);
     
 
                                     }
@@ -188,7 +194,7 @@ stringBuffer.append(inventoryTag.getHelper().constructor.name.toString());
                             
 
 
-                            throw Exception("Must have parent tag.");
+                            throw new Exception("Must have parent tag.");
                     
 
                         }
@@ -198,38 +204,38 @@ stringBuffer.append(inventoryTag.getHelper().constructor.name.toString());
 
                 //@Throws(Exception.constructor)
             
-    public: RequestMapInterface getRequestMapInterface(HelperTag inventoryTag){
+    public: RequestMapInterface* getRequestMapInterface(HelperTag* inventoryTag){
 
                         if(inventoryTag != 
                                     nullptr
                                 )
                         
                                     {
-                                    this->checkForValidationViewHelper(inventoryTag.getHelper());
+                                    this->checkForValidationViewHelper(inventoryTag->getHelper());
     
 
-    ValidationViewHelper validationViewHelper = inventoryTag.getHelper();;
+    ValidationViewHelper* validationViewHelper = dynamic_cast<ValidationViewHelper*>(inventoryTag->getHelper());;
     
 
-    TransformInterface viewObject = validationViewHelper.getViewObject();;
+    TransformInterface* viewObject = validationViewHelper->getViewObject();;
     
 
-                        if(viewObject.getTypeId() != InventoryItemView::TYPE_ID && viewObject.getTypeId() != DownloadableInventoryItemView::TYPE_ID)
+                        if(viewObject->getTypeId() != InventoryItemView::TYPE_ID && viewObject->getTypeId() != DownloadableInventoryItemView::TYPE_ID)
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Must have ");
+stringBuffer->append("Must have ");
     
-stringBuffer.append("specific TYPE_ID and not: ");
+stringBuffer->append("specific TYPE_ID and not: ");
     
-stringBuffer.append(inventoryTag.getHelper().constructor.name.toString());
+stringBuffer->append(inventoryTag->getHelper()->getClass()->getName());
     
 
 
 
-                            throw Exception(stringBuffer.toString());
+                            throw new Exception(stringBuffer->toString());
                     
 
                                     }
@@ -238,7 +244,7 @@ stringBuffer.append(inventoryTag.getHelper().constructor.name.toString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return viewObject;
+                        return dynamic_cast<RequestMapInterface*>(viewObject);
     
 
                                     }
@@ -247,7 +253,7 @@ stringBuffer.append(inventoryTag.getHelper().constructor.name.toString());
                             
 
 
-                            throw Exception("Must have parent tag.");
+                            throw new Exception("Must have parent tag.");
                     
 
                         }
@@ -259,24 +265,24 @@ stringBuffer.append(inventoryTag.getHelper().constructor.name.toString());
             
     public: void checkForValidationViewHelper(Object* helperObject){
 
-                        if(!(helperObject instanceof ValidationViewHelper))
+                        if(!((dynamic_cast<const ValidationViewHelper*>(helperObject) != nullptr)))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Must have ");
+stringBuffer->append("Must have ");
     
-stringBuffer.append("ValidationViewHelper");
+stringBuffer->append("ValidationViewHelper");
     
-stringBuffer.append("and not: ");
+stringBuffer->append("and not: ");
     
-stringBuffer.append(helperObject->constructor.name.toString());
+stringBuffer->append(helperObject->getClass()->getName());
     
 
 
 
-                            throw Exception(stringBuffer.toString());
+                            throw new Exception(stringBuffer->toString());
                     
 
                                     }

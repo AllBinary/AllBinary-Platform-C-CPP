@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,9 +60,9 @@ class OnDemandResources
             : public Object
          {
 
-    public: static const OnDemandResources NULL_ON_DEMAND_RESOURCES = OnDemandResources();
+    public: static OnDemandResources* NULL_ON_DEMAND_RESOURCES() { static std::unique_ptr<OnDemandResources> value(new OnDemandResources()); return value.get(); }
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 protected: OnDemandResources(){
 }
@@ -76,7 +82,7 @@ protected: OnDemandResources(){
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t initAt(ImageCache imageCache, BaseResourceAnimationInterfaceFactoryInterfaceFactory resourceAnimationInterfaceFactoryInterfaceFactory, int32_t portion, std::string loadingString, int32_t index){
+    public: int32_t initAt(ImageCache* imageCache, BaseResourceAnimationInterfaceFactoryInterfaceFactory* resourceAnimationInterfaceFactoryInterfaceFactory, int32_t portion, std::string loadingString, int32_t index){
 
 
 

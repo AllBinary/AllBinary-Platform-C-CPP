@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -74,9 +80,9 @@
         
 class RootContextView: public HttpStoreComponentView, public TransformTemplateInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: RootContextView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+public: RootContextView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -84,10 +90,10 @@ public: RootContextView(TransformInfoInterface transformInfoInterface) : HttpSto
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("View Name: " +transformInfoInterface.getName(), this, "RootContextView()");
+                                    this->logUtil->putF("View Name: " +transformInfoInterface->getName(), this, "RootContextView()");
     
 
                                     }
@@ -101,10 +107,10 @@ public: RootContextView(TransformInfoInterface transformInfoInterface) : HttpSto
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("View Name: " +this->getTransformInfoInterface().getName(), this, "view()");
+                                    this->logUtil->putF("View Name: " +this->getTransformInfoInterface()->getName(), this, "view()");
     
 
                                     }
@@ -113,23 +119,23 @@ public: RootContextView(TransformInfoInterface transformInfoInterface) : HttpSto
     std::string viewName = this->getName();;
     
 
-    TransformInterface componentInterface = TransformFactory::getInstance().getInstance(this->abeClientInformation, viewName, this->getTransformInfoInterface());;
+    TransformInterface* componentInterface = TransformFactory::getInstance()->getInstance(this->abeClientInformation, viewName, this->getTransformInfoInterface());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return componentInterface.view();;
+                        return componentInterface->view();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -150,58 +156,58 @@ public: RootContextView(TransformInfoInterface transformInfoInterface) : HttpSto
 
         try {
             
-    NoTemplateTransformInfoObjectConfig objectConfig = NoTemplateTransformInfoObjectConfig(this->getTransformInfoInterface(), this->getTransformInfoInterface().getObjectConfigInterface().toXmlDoc());;
+    NoTemplateTransformInfoObjectConfig* objectConfig = new NoTemplateTransformInfoObjectConfig(this->getTransformInfoInterface(), this->getTransformInfoInterface()->getObjectConfigInterface()->toXmlDoc());;
     
 
-    BasicArrayList componentsVector = objectConfig.getTransforms();;
+    BasicArrayList* componentsVector = objectConfig->getTransforms();;
     
 
-                        if(componentsVector.size() == 0)
+                        if(componentsVector->size() == 0)
                         
                                     {
                                     
 
 
-                            throw Exception("Template View Not Set - No Components");
+                            throw new Exception("Template View Not Set - No Components");
                     
 
                                     }
                                 
 
-                        if(componentsVector.size() > 1)
+                        if(componentsVector->size() > 1)
                         
                                     {
                                     
 
 
-                            throw Exception("To Many Root Template Views: " +componentsVector.size());
+                            throw new Exception("To Many Root Template Views: " +componentsVector->size());
                     
 
                                     }
                                 
 
-    TransformInfo transformInfoInterface = componentsVector.get(0);;
+    TransformInfo* transformInfoInterface = dynamic_cast<TransformInfo*>(componentsVector->get(0));;
     
 
-    std::string viewName = transformInfoInterface.getName();;
+    std::string viewName = transformInfoInterface->getName();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Root Template With View Name: " +viewName, this, "getName()");
+                                    this->logUtil->putF("Root Template With View Name: " +viewName, this, "getName()");
     
 
                                     }
                                 
 
-                        if(StringValidationUtil::getInstance().isEmpty(viewName))
+                        if(StringValidationUtil::getInstance()->isEmpty(viewName))
                         
                                     {
                                     
 
 
-                            throw Exception("Template View Not Set - No View Name");
+                            throw new Exception("Template View Not Set - No View Name");
                     
 
                                     }
@@ -214,13 +220,13 @@ public: RootContextView(TransformInfoInterface transformInfoInterface) : HttpSto
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "getName()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "getName()", &e);
     
 
                                     }

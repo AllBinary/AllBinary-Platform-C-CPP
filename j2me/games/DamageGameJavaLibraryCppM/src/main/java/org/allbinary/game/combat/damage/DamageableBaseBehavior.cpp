@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -40,15 +46,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DamageableInterface.h"
+        #include "org/allbinary/game/combat/damage/DamageableInterface.h"
 
 class DamageableBaseBehavior
             : public Object
-        : public DamageableInterface {
+        , public DamageableInterface {
 
-    private: static DamageableBaseBehavior instance() { return DamageableBaseBehavior(); }
+    private: static DamageableBaseBehavior* instance() { static std::unique_ptr<DamageableBaseBehavior> value(new DamageableBaseBehavior()); return value.get(); }
 
-    public: static DamageableBaseBehavior getInstance(){
+    public: static DamageableBaseBehavior* getInstance(){
 
 
 
@@ -63,7 +69,7 @@ class DamageableBaseBehavior
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->constructor.name.toString();;
+                        return this->getClass()->getName();;
     
 }
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -91,27 +97,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseImageAnimationFactory.h"
+        #include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
 
 class LazyImageRotationAnimation: public RotationAnimation {
 
-    private: static const std::string SET_REAL_ANIMATION = "setRealAnimation";
+    private: static inline const std::string SET_REAL_ANIMATION = "setRealAnimation";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     public: int32_t layoutIndex;
 
     public: int32_t instanceId;
 
-    public: BaseImageAnimationFactory animationInterfaceFactoryInterface;
+    public: BaseImageAnimationFactory* animationInterfaceFactoryInterface;
 
-    private: IndexedAnimation NULL_INDEX_ANIMATION;
+    private: IndexedAnimation* NULL_INDEX_ANIMATION;
 
-    private: IndexedAnimation animation;
+    private: IndexedAnimation* animation;
 
-    public: ScaleProperties scaleProperties = ScaleProperties::instance();
+    public: ScaleProperties* scaleProperties = ScaleProperties::instance;
 
-public: LazyImageRotationAnimation(int32_t layoutIndex, int32_t instanceId, ScaleProperties scaleProperties, BaseImageAnimationFactory animationInterfaceFactoryInterface, AnimationBehavior animationBehavior) : RotationAnimation(AngleInfo::getInstance(AngleFactory::getInstance().QUARTER_TOTAL_ANGLE), CircularIndexUtil::createInstance(4), animationBehavior){
+public: LazyImageRotationAnimation(int32_t layoutIndex, int32_t instanceId, ScaleProperties* scaleProperties, BaseImageAnimationFactory* animationInterfaceFactoryInterface, AnimationBehavior* animationBehavior) : RotationAnimation(AngleInfo::getInstance(AngleFactory::getInstance()->QUARTER_TOTAL_ANGLE), CircularIndexUtil::createInstance(4), animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -125,23 +131,23 @@ this->instanceId= instanceId;
 this->animationInterfaceFactoryInterface= animationInterfaceFactoryInterface;
     
 
-    ImageCache imageCache = ImageCacheFactory::getInstance();;
+    ImageCache* imageCache = ImageCacheFactory::getInstance();;
     
-imageCache.add(this);
+imageCache->add(this);
     
 this->scaleProperties= scaleProperties;
     
-this->NULL_INDEX_ANIMATION= NullRotationAnimationFactory::getFactoryInstance().getInstance(0);
+this->NULL_INDEX_ANIMATION= dynamic_cast<IndexedAnimation*>(NullRotationAnimationFactory::getFactoryInstance()->getInstance(0));
     
 
 //inner=true member= isStatic=
 class ActualRotationAnimation: public RotationAnimation {
 
-    private: LazyImageRotationAnimation lazyImageRotationAnimation;
+    private: LazyImageRotationAnimation* lazyImageRotationAnimation;
 
     private: int32_t index= 0;
 
-public: ActualRotationAnimation(LazyImageRotationAnimation lazyImageRotationAnimation) : RotationAnimation(AngleInfo::getInstance(AngleFactory::getInstance().QUARTER_TOTAL_ANGLE), CircularIndexUtil::createInstance(4), animationBehavior){
+public: ActualRotationAnimation(LazyImageRotationAnimation* lazyImageRotationAnimation) : RotationAnimation(AngleInfo::getInstance(AngleFactory::getInstance()->QUARTER_TOTAL_ANGLE), CircularIndexUtil::createInstance(4), animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -169,42 +175,42 @@ this->index= index;
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 
         try {
-            ImageCacheFactory::getInstance().insertFirst(this);
+            ImageCacheFactory::getInstance()->insertFirst(this);
     
-this->lazyImageRotationAnimation.animation= this->lazyImageRotationAnimation.NULL_INDEX_ANIMATION;
+this->lazyImageRotationAnimation->animation= this->lazyImageRotationAnimation->NULL_INDEX_ANIMATION;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
-logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e);
+logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, &e);
     
 }
 
 }
 
 
-    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
+    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z){
 
         try {
-            ImageCacheFactory::getInstance().insertFirst(this);
+            ImageCacheFactory::getInstance()->insertFirst(this);
     
-this->lazyImageRotationAnimation.animation= this->lazyImageRotationAnimation.NULL_INDEX_ANIMATION;
+this->lazyImageRotationAnimation->animation= this->lazyImageRotationAnimation->NULL_INDEX_ANIMATION;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
-logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e);
+logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, &e);
     
 }
 
@@ -217,7 +223,7 @@ logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e)
 
                     //Otherwise - statement - EmptyStmt
 
-this->animation= ActualRotationAnimation(this);
+this->animation= new ActualRotationAnimation(this);
     
 }
 
@@ -226,19 +232,19 @@ this->animation= ActualRotationAnimation(this);
 
         try {
             
-    IndexedAnimation animation = this->animation;;
+    IndexedAnimation* animation = this->animation;;
     
-this->animationInterfaceFactoryInterface.setInitialScale(this->scaleProperties);
+this->animationInterfaceFactoryInterface->setInitialScale(this->scaleProperties);
     
-this->animation= this->animationInterfaceFactoryInterface.getInstance(this->instanceId);
+this->animation= dynamic_cast<IndexedAnimation*>(this->animationInterfaceFactoryInterface->getInstance(this->instanceId));
     
-this->animation.setState(animation);
+this->animation->setState(animation);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, LazyImageRotationAnimation::SET_REAL_ANIMATION, e);
+this->logUtil->put(this->commonStrings.EXCEPTION, this, LazyImageRotationAnimation::SET_REAL_ANIMATION, &e);
     
 }
 
@@ -246,129 +252,129 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, LazyImageRotationAnimatio
 
 
     public: void setScale(float scaleX, float scaleY){
-this->animation.setScale(scaleX, scaleY);
+this->animation->setScale(scaleX, scaleY);
     
 }
 
 
-    public: AnimationBehavior getAnimationBehavior(){
+    public: AnimationBehavior* getAnimationBehavior(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animation.getAnimationBehavior();;
+                        return this->animation->getAnimationBehavior();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void set(GL gl){
-this->animation.set(gl);
+    public: void set(GL* gl){
+this->animation->set(gl);
     
 }
 
 
     public: void setAlpha(int32_t alpha){
-this->animation.setAlpha(alpha);
+this->animation->setAlpha(alpha);
     
 }
 
 
     public: void setDx(int32_t dx){
-this->animation.setDx(dx);
+this->animation->setDx(dx);
     
 }
 
 
     public: void setDy(int32_t dy){
-this->animation.setDy(dy);
+this->animation->setDy(dy);
     
 }
 
 
     public: void setMaxScale(float maxScaleX, float maxScaleY){
-this->animation.setMaxScale(maxScaleX, maxScaleY);
+this->animation->setMaxScale(maxScaleX, maxScaleY);
     
 }
 
 
     public: void nextRotation(){
 
-    RotationAnimation rotationAnimation = (this->animation);;
+    RotationAnimation* rotationAnimation = (dynamic_cast<RotationAnimation*>(this->animation));;
     
-rotationAnimation.nextRotation();
+rotationAnimation->nextRotation();
     
 }
 
 
     public: void previousRotation(){
 
-    RotationAnimation rotationAnimation = (this->animation);;
+    RotationAnimation* rotationAnimation = (dynamic_cast<RotationAnimation*>(this->animation));;
     
-rotationAnimation.previousRotation();
+rotationAnimation->previousRotation();
     
 }
 
 
     public: void nextRotationX(){
 
-    RotationAnimation rotationAnimation = (this->animation);;
+    RotationAnimation* rotationAnimation = (dynamic_cast<RotationAnimation*>(this->animation));;
     
-rotationAnimation.nextRotationX();
+rotationAnimation->nextRotationX();
     
 }
 
 
     public: void previousRotationX(){
 
-    RotationAnimation rotationAnimation = (this->animation);;
+    RotationAnimation* rotationAnimation = (dynamic_cast<RotationAnimation*>(this->animation));;
     
-rotationAnimation.previousRotationX();
+rotationAnimation->previousRotationX();
     
 }
 
 
     public: void nextRotationZ(){
 
-    RotationAnimation rotationAnimation = (this->animation);;
+    RotationAnimation* rotationAnimation = (dynamic_cast<RotationAnimation*>(this->animation));;
     
-rotationAnimation.nextRotationZ();
+rotationAnimation->nextRotationZ();
     
 }
 
 
     public: void previousRotationZ(){
 
-    RotationAnimation rotationAnimation = (this->animation);;
+    RotationAnimation* rotationAnimation = (dynamic_cast<RotationAnimation*>(this->animation));;
     
-rotationAnimation.previousRotationZ();
-    
-}
-
-
-    public: void changeBasicColor(BasicColor basicColor){
-this->animation.changeBasicColor(basicColor);
+rotationAnimation->previousRotationZ();
     
 }
 
 
-    public: BasicColor getBasicColorP(){
+    public: void changeBasicColor(BasicColor* basicColor){
+this->animation->changeBasicColor(basicColor);
+    
+}
+
+
+    public: BasicColor* getBasicColorP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animation.getBasicColorP();;
+                        return this->animation->getBasicColorP();;
     
 }
 
 
-    public: BasicColor getChangeBasicColor(){
+    public: BasicColor* getChangeBasicColor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animation.getChangeBasicColor();;
+                        return this->animation->getChangeBasicColor();;
     
 }
 
@@ -378,7 +384,7 @@ this->animation.changeBasicColor(basicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animation.getChangeColor();;
+                        return this->animation->getChangeColor();;
     
 }
 
@@ -388,7 +394,7 @@ this->animation.changeBasicColor(basicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animation.getColor();;
+                        return this->animation->getColor();;
     
 }
 
@@ -398,7 +404,7 @@ this->animation.changeBasicColor(basicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animation.getDx();;
+                        return this->animation->getDx();;
     
 }
 
@@ -408,7 +414,7 @@ this->animation.changeBasicColor(basicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animation.getDy();;
+                        return this->animation->getDy();;
     
 }
 
@@ -418,7 +424,7 @@ this->animation.changeBasicColor(basicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animation.isThreed();;
+                        return this->animation->isThreed();;
     
 }
 
@@ -426,19 +432,19 @@ this->animation.changeBasicColor(basicColor);
                 //@Throws(Exception.constructor)
             
     public: void nextFrame(){
-this->animation.nextFrame();
+this->animation->nextFrame();
     
 }
 
 
     public: void reset(){
-this->animation.reset();
+this->animation->reset();
     
 }
 
 
     public: void setFrame(int32_t index){
-this->animation.setFrame(index);
+this->animation->setFrame(index);
     
 }
 
@@ -448,7 +454,7 @@ this->animation.setFrame(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animation.getFrame();;
+                        return this->animation->getFrame();;
     
 }
 
@@ -460,7 +466,7 @@ this->animation.setFrame(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animation.getAnimationSize();;
+                        return this->animation->getAnimationSize();;
     
 }
 
@@ -470,13 +476,13 @@ this->animation.setFrame(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animation.getSize();;
+                        return this->animation->getSize();;
     
 }
 
 
     public: void previousFrame(){
-this->animation.previousFrame();
+this->animation->previousFrame();
     
 }
 
@@ -486,13 +492,13 @@ this->animation.previousFrame();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animation.isLastFrame();;
+                        return this->animation->isLastFrame();;
     
 }
 
 
     public: void setSequence(std::vector<int32_t> sequence){
-this->animation.setSequence(sequence);
+this->animation->setSequence(sequence);
     
 }
 
@@ -502,7 +508,7 @@ this->animation.setSequence(sequence);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animation.getSequence();;
+                        return this->animation->getSequence();;
     
 }
 
@@ -512,37 +518,37 @@ this->animation.setSequence(sequence);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animation.getWidth();;
+                        return this->animation->getWidth();;
     
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 
         try {
-            this->animation.paintXY(graphics, x, y);
+            this->animation->paintXY(graphics, x, y);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e);
+this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, &e);
     
 }
 
 }
 
 
-    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
+    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z){
 
         try {
-            this->animation.paintThreedXYZ(graphics, x, y, z);
+            this->animation->paintThreedXYZ(graphics, x, y, z);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e);
+this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, &e);
     
 }
 
@@ -551,16 +557,16 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCE
 
     public: std::string toString(){
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
-    Image image = this->animationInterfaceFactoryInterface.getImage();;
+    Image* image = this->animationInterfaceFactoryInterface->getImage();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().append(super.toString()).append(commonSeps.SPACE).append(image.getName()).append(commonSeps.SPACE).appendint(image.getWidth()).append(commonSeps.SPACE).appendint(image.getHeight()).toString();;
+                        return (new StringMaker())->append(super.toString())->append(commonSeps->SPACE)->append(image->getName())->append(commonSeps->SPACE)->appendint(image->getWidth())->append(commonSeps->SPACE)->appendint(image->getHeight())->toString();;
     
 }
 

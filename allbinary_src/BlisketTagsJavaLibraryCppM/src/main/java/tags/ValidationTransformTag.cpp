@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Class.h"
         
             #include "java/lang/Exception.h"
@@ -64,17 +70,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformTag.h"
+        #include "tags/TransformTag.h"
 
 class ValidationTransformTag: public TransformTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string xslFile;
 
     private: bool logic;
 
-public: ValidationTransformTag() : TransformTag(ValidatedViewHelperFactory()){
+public: ValidationTransformTag() : TransformTag(new ValidatedViewHelperFactory()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -106,14 +112,14 @@ this->logic= logic;
 
         try {
             
-    Class* helperClass = this->getHelper().getClass();;
+    Class* helperClass = this->getHelper()->getClass();;
     
 
-    Method method = helperClass.getMethod(commonStrings.IS_VALID, 
+    Method* method = helperClass->getMethod(commonStrings.IS_VALID, 
                             nullptr);;
     
 
-    Boolean result = method.invoke(this->getHelper(), 
+    bool result = method->invoke(this->getHelper(), 
                             nullptr);;
     
 
@@ -124,13 +130,13 @@ this->logic= logic;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -151,14 +157,14 @@ this->logic= logic;
 
         try {
             
-    Class* addressHelperClass = this->getHelper().getClass();;
+    Class* addressHelperClass = this->getHelper()->getClass();;
     
 
-    Method method = addressHelperClass.getMethod("validationInfo", 
+    Method* method = addressHelperClass->getMethod("validationInfo", 
                             nullptr);;
     
 
-    std::string result = method.invoke(this->getHelper(), 
+    std::string result = method->invoke(this->getHelper(), 
                             nullptr);;
     
 
@@ -169,13 +175,13 @@ this->logic= logic;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "validationInfo()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "validationInfo()", &e);
     
 
                                     }
@@ -196,28 +202,28 @@ this->logic= logic;
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    HttpServletRequest request = this->pageContext.getRequest();;
+    HttpServletRequest* request = dynamic_cast<HttpServletRequest*>(this->pageContext.getRequest());;
     
-stringBuffer.append("ValidationViewTag Start For: ");
+stringBuffer->append("ValidationViewTag Start For: ");
     
-stringBuffer.append(this->getName());
+stringBuffer->append(this->getName());
     
-stringBuffer.append("\nView FIle: ");
+stringBuffer->append("\nView FIle: ");
     
-stringBuffer.append(this->getObjectFile());
+stringBuffer->append(this->getObjectFile());
     
-stringBuffer.append("\nRequest URI: ");
+stringBuffer->append("\nRequest URI: ");
     
-stringBuffer.append(request.getRequestURI());
+stringBuffer->append(request->getRequestURI());
     
-this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
+this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -231,21 +237,21 @@ this->setHelper();
                                     super.doStartTag();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("View File: ");
+stringBuffer->append("View File: ");
     
-stringBuffer.append(this->getObjectFile());
+stringBuffer->append(this->getObjectFile());
     
-stringBuffer.append("\nLogic includes body if true=");
+stringBuffer->append("\nLogic includes body if true=");
     
-stringBuffer.appendboolean(this->logic);
+stringBuffer->appendboolean(this->logic);
     
-this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
+this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -277,26 +283,26 @@ this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
                                     }
                                 
                         else {
-                            pageContext.getOut().print(this->validationInfo());
+                            pageContext.getOut()->print(this->validationInfo());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("View File: ");
+stringBuffer->append("View File: ");
     
-stringBuffer.append(this->getObjectFile());
+stringBuffer->append(this->getObjectFile());
     
-stringBuffer.append("\nisValid()=false");
+stringBuffer->append("\nisValid()=false");
     
-stringBuffer.append("\nLogic skips body if true=");
+stringBuffer->append("\nLogic skips body if true=");
     
-stringBuffer.appendboolean(this->logic);
+stringBuffer->appendboolean(this->logic);
     
-this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
+this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -329,9 +335,9 @@ this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
                             
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
-AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
     
 
 
@@ -342,9 +348,9 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 
@@ -353,16 +359,16 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
                         return SKIP_BODY;
     
 }
-*/
+
 }
 
 
     public: int32_t doEndTag(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil.putF("Tag Ended", this, "doEndTag");
+                                    this->logUtil->putF("Tag Ended", this, "doEndTag");
     
 
                                     }

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONGESTUREEVENTLISTENER_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONGESTUREEVENTLISTENER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -41,32 +47,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseMotionGestureEventListener.h"
-#include "MotionGestureEvent.h"
+        #include "org/allbinary/input/motion/gesture/observer/BaseMotionGestureEventListener.h"
+#include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
 
 class MotionGestureEventListener: public BaseMotionGestureEventListener {
 
-    void onPressedMotionGestureEvent(MotionGestureEvent ev);
+    public: virtual void onPressedMotionGestureEvent(MotionGestureEvent* ev) = 0;
 
-    void onUpMotionGestureEvent(MotionGestureEvent ev);
+    public: virtual void onUpMotionGestureEvent(MotionGestureEvent* ev) = 0;
 
-    void onDownMotionGestureEvent(MotionGestureEvent ev);
+    public: virtual void onDownMotionGestureEvent(MotionGestureEvent* ev) = 0;
 
-    void onLeftMotionGestureEvent(MotionGestureEvent ev);
+    public: virtual void onLeftMotionGestureEvent(MotionGestureEvent* ev) = 0;
 
-    void onRightMotionGestureEvent(MotionGestureEvent ev);
+    public: virtual void onRightMotionGestureEvent(MotionGestureEvent* ev) = 0;
 
-    void onDiagonalDownRightMotionGestureEvent(MotionGestureEvent ev);
+    public: virtual void onDiagonalDownRightMotionGestureEvent(MotionGestureEvent* ev) = 0;
 
-    void onDiagonalDownLeftMotionGestureEvent(MotionGestureEvent ev);
+    public: virtual void onDiagonalDownLeftMotionGestureEvent(MotionGestureEvent* ev) = 0;
 
-    void onDiagonalUpRightMotionGestureEvent(MotionGestureEvent ev);
+    public: virtual void onDiagonalUpRightMotionGestureEvent(MotionGestureEvent* ev) = 0;
 
-    void onDiagonalUpLeftMotionGestureEvent(MotionGestureEvent ev);
+    public: virtual void onDiagonalUpLeftMotionGestureEvent(MotionGestureEvent* ev) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void released(MotionGestureEvent ev);
+    public: virtual void released(MotionGestureEvent* ev) = 0;
 
 };
 

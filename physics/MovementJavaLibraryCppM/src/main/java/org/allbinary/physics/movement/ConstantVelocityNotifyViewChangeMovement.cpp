@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
@@ -56,72 +62,72 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Movement.h"
+        #include "org/allbinary/physics/movement/Movement.h"
 
 class ConstantVelocityNotifyViewChangeMovement: public Movement {
 
-    protected: BasicVelocityProperties basicVelocityProperties;
+    protected: BasicVelocityProperties* basicVelocityProperties;
 
-    private: BasicDecimal speedBasicDecimal;
+    private: BasicDecimal* speedBasicDecimal;
 
-    private: const AxisMathVectorUtil axisMathVectorUtil = AxisMathVectorUtil::getInstance();
+    private: AxisMathVectorUtil* axisMathVectorUtil = AxisMathVectorUtil::getInstance();
 
 public: ConstantVelocityNotifyViewChangeMovement(){
 this->speedBasicDecimal= BasicDecimal::ZERO_BIGDECIMAL;
     
-this->basicVelocityProperties= BasicVelocityProperties();
+this->basicVelocityProperties= new BasicVelocityProperties();
     
 }
 
 
-    public: void init(BasicDecimal speedBasicDecimal, int32_t angle, int32_t otherAngle){
+    public: void init(BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle){
 this->speedBasicDecimal= speedBasicDecimal;
     
 
-    AngleFactory angleFactory = AngleFactory::getInstance();;
+    AngleFactory* angleFactory = AngleFactory::getInstance();;
     
-this->basicVelocityProperties.setVelocityWithBigDecimal(speedBasicDecimal, angleFactory.getAt(angle), angleFactory.getAt(otherAngle));
+this->basicVelocityProperties->setVelocityWithBigDecimal(speedBasicDecimal, angleFactory->getAt(angle), angleFactory->getAt(otherAngle));
     
 }
 
 
-    public: void moveOutsideRadius(AllBinaryLayer layer, int64_t radius, int32_t angle, int32_t otherAngle){
+    public: void moveOutsideRadius(AllBinaryLayer* layer, int64_t radius, int32_t angle, int32_t otherAngle){
 
-    int32_t scaleFactorValue = this->speedBasicDecimal.getScaledFactorValue();;
+    int32_t scaleFactorValue = this->speedBasicDecimal->getScaledFactorValue();;
     
 
-    int32_t xVector = static_cast<int32_t>((this->axisMathVectorUtil.calculateX(radius, angle) /scaleFactorValue));;
+    int32_t xVector = static_cast<int32_t>((this->axisMathVectorUtil->calculateX(radius, angle) /scaleFactorValue));;
     
 
-    int32_t yVector = static_cast<int32_t>((this->axisMathVectorUtil.calculateY(radius, angle) /scaleFactorValue));;
+    int32_t yVector = static_cast<int32_t>((this->axisMathVectorUtil->calculateY(radius, angle) /scaleFactorValue));;
     
 
-    int32_t zVector = static_cast<int32_t>((this->axisMathVectorUtil.calculateZ(radius, otherAngle) /scaleFactorValue));;
+    int32_t zVector = static_cast<int32_t>((this->axisMathVectorUtil->calculateZ(radius, otherAngle) /scaleFactorValue));;
     
-layer.moveDXYZ(xVector, yVector, zVector);
+layer->moveDXYZ(xVector, yVector, zVector);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryGameLayer layer){
+    public: void process(AllBinaryGameLayer* layer){
 
-    int32_t x = this->basicVelocityProperties.getVelocityXBasicDecimalP().getScaled();;
+    int32_t x = this->basicVelocityProperties->getVelocityXBasicDecimalP()->getScaled();;
     
 
-    int32_t y = this->basicVelocityProperties.getVelocityYBasicDecimalP().getScaled();;
+    int32_t y = this->basicVelocityProperties->getVelocityYBasicDecimalP()->getScaled();;
     
 
-    int32_t z = this->basicVelocityProperties.getVelocityZBasicDecimalP().getScaled();;
+    int32_t z = this->basicVelocityProperties->getVelocityZBasicDecimalP()->getScaled();;
     
-layer.moveDXYZ(x, y, z);
+layer->moveDXYZ(x, y, z);
     
 
                         if(x != 0 || y != 0 || z != 0)
                         
                                     {
-                                    layer.onViewPositionChangeEvent();
+                                    layer->onViewPositionChangeEvent();
     
 
                                     }
@@ -130,7 +136,7 @@ layer.moveDXYZ(x, y, z);
 
 
     public: void stop(){
-this->basicVelocityProperties.zero();
+this->basicVelocityProperties->zero();
     
 }
 

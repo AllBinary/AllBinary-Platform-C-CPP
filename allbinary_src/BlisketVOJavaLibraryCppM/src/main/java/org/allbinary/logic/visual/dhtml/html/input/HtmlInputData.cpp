@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -45,9 +51,9 @@ class HtmlInputData
             : public Object
          {
 
-    private: static HtmlInputData instance() { return HtmlInputData(); }
+    private: static HtmlInputData* instance() { static std::unique_ptr<HtmlInputData> value(new HtmlInputData()); return value.get(); }
 
-    public: static HtmlInputData getInstance(){
+    public: static HtmlInputData* getInstance(){
 
 
 

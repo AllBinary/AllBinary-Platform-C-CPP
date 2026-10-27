@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TRANSACTIONTYPE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TRANSACTIONTYPE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -50,7 +56,7 @@ class TransactionType
 
 public: TransactionType(std::string name);
 
-    public: bool isEqual(TransactionType transactionType);
+    public: bool isEqual(TransactionType* transactionType);
 
     public: std::string toString();
 

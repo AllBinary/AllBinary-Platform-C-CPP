@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,35 +49,35 @@ class ShippingAddressData
             : public Object
          {
 
-    public: static const std::string SETTOBILLINGADDRESS = "Set To Billing Address";
+    public: static inline const std::string SETTOBILLINGADDRESS = "Set To Billing Address";
 
-    public: static const std::string SELECT = "Select Shipping Address";
+    public: static inline const std::string SELECT = "Select Shipping Address";
 
-    public: static const std::string SELECTNAME = "SELECTSHIPPINGADDRESS";
+    public: static inline const std::string SELECTNAME = "SELECTSHIPPINGADDRESS";
 
-    public: static const std::string MULTIPLE = "SHIPPINGADDRESSES";
+    public: static inline const std::string MULTIPLE = "SHIPPINGADDRESSES";
 
-    public: static const std::string SHIPPINGADDRESSES = "SHIPPINGADDRESSES";
+    public: static inline const std::string SHIPPINGADDRESSES = "SHIPPINGADDRESSES";
 
-    public: static const std::string SHIPPINGADDRESS = "SHIPPINGADDRESS";
+    public: static inline const std::string SHIPPINGADDRESS = "SHIPPINGADDRESS";
 
-    public: static const std::string ID = "SHIPPINGADDRESS_ID";
+    public: static inline const std::string ID = "SHIPPINGADDRESS_ID";
 
-    public: static const std::string ADDRESS = "SHIPPINGADDRESS_ADDRESS";
+    public: static inline const std::string ADDRESS = "SHIPPINGADDRESS_ADDRESS";
 
-    public: static const std::string NAME = "SHIPPINGADDRESS_NAME";
+    public: static inline const std::string NAME = "SHIPPINGADDRESS_NAME";
 
-    public: static const std::string STREET = "SHIPPINGADDRESS_STREET";
+    public: static inline const std::string STREET = "SHIPPINGADDRESS_STREET";
 
-    public: static const std::string CITY = "SHIPPINGADDRESS_CITY";
+    public: static inline const std::string CITY = "SHIPPINGADDRESS_CITY";
 
-    public: static const std::string STATE = "SHIPPINGADDRESS_STATE";
+    public: static inline const std::string STATE = "SHIPPINGADDRESS_STATE";
 
-    public: static const std::string CODE = "SHIPPINGADDRESS_CODE";
+    public: static inline const std::string CODE = "SHIPPINGADDRESS_CODE";
 
-    public: static const std::string COUNTRY = "SHIPPINGADDRESS_COUNTRY";
+    public: static inline const std::string COUNTRY = "SHIPPINGADDRESS_COUNTRY";
 
-    public: static const std::string TAX = "SHIPPINGADDRESS_TAX";
+    public: static inline const std::string TAX = "SHIPPINGADDRESS_TAX";
 
 private: ShippingAddressData(){
 }

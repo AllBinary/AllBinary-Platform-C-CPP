@@ -6,6 +6,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -26,16 +32,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PathParser.h"
-#include "FixedPoint.h"
+        #include "org/allbinary/animation/PathParser.h"
+#include "org/allbinary/animation/FixedPoint.h"
 
 class PolygonRasterizer
             : public Object
          {
 
-    private: static PolygonRasterizer instance() { return PolygonRasterizer(); }
+    private: static PolygonRasterizer* instance() { static std::unique_ptr<PolygonRasterizer> value(new PolygonRasterizer()); return value.get(); }
 
-    public: static PolygonRasterizer getInstance(){
+    public: static PolygonRasterizer* getInstance(){
 
 
 
@@ -60,7 +66,7 @@ pixelBuffer[i]= 0xFFFFFFFF;
     
 }
 
-PolygonRasterizer::getInstance().fillPolygon(pathX, pathY, pointCount, pixelBuffer, width, height, 0xFFFF00FF);
+PolygonRasterizer::getInstance()->fillPolygon(pathX, pathY, pointCount, pixelBuffer, width, height, 0xFFFF00FF);
     
 
 
@@ -81,7 +87,7 @@ PolygonRasterizer::getInstance().fillPolygon(pathX, pathY, pointCount, pixelBuff
                         return ;
     
 
-    FixedPoint fixedPoint = FixedPoint::getInstance();;
+    FixedPoint* fixedPoint = FixedPoint::getInstance();;
     
 
     std::vector<int32_t> x = std::vector<int32_t>(numPoints);;
@@ -99,9 +105,9 @@ PolygonRasterizer::getInstance().fillPolygon(pathX, pathY, pointCount, pixelBuff
                         for (
     int32_t i = 0;i < numPoints; i++)
         {
-x[i]= fixedPoint.toInt(polyX[i]);
+x[i]= fixedPoint->toInt(polyX[i]);
     
-y[i]= fixedPoint.toInt(polyY[i]);
+y[i]= fixedPoint->toInt(polyY[i]);
     
 
                         if(y[i] < minY)
@@ -269,7 +275,7 @@ buffer[rowOffset +pixelX]= colorRGB;
 
     std::string svgPath = "M 32.139812,81.554575 14.450128,74.294372 V 50.000034 25.705697 l 17.73231,-7.268329 C 41.935209,14.439788 49.953112,11.168898 50,11.168723 c 0.04689,-1.74e-4 8.064791,3.270238 17.817562,7.267583 l 17.73231,7.267899 V 50 74.295795 l -17.73231,7.2679 c -9.752771,3.997344 -17.789855,7.264116 -17.860188,7.259492 -0.07033,-0.0046 -8.088235,-3.275499 -17.817562,-7.268612 z";;
     
-PolygonRasterizer::getInstance().getPixelBuffer(svgPath, pathX, pathY, pixelBuffer, width, height);
+PolygonRasterizer::getInstance()->getPixelBuffer(svgPath, pathX, pathY, pixelBuffer, width, height);
     
 }
 

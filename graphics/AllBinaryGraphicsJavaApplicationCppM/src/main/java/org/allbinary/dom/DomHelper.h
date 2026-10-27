@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DOM_DOMHELPER_H
         #define ORG_ALLBINARY_DOM_DOMHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -90,47 +96,47 @@ class DomHelper
             : public Object
          {
 
-    private: static DomHelper instance() { return DomHelper(); }
+    private: static DomHelper* instance() { static std::unique_ptr<DomHelper> value(new DomHelper()); return value.get(); }
 
-    public: static DomHelper getInstance();
+    public: static DomHelper* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: DomHelper();
 
-    public: Document createDocument();
+    public: Document* createDocument();
 
                 //@Throws(Exception.constructor)
             
-    public: Document createDocument(File xmlFile);
+    public: Document* createDocument(File* xmlFile);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string toString(Document document);
+    public: std::string toString(Document* document);
 
                 //@Throws(Exception.constructor)
             
-    public: void save(File file, Document document);
+    public: void save(File* file, Document* document);
 
                 //@Throws(Exception.constructor)
             
-    public: NodeList getChildNodeList(std::string nodeName, NodeList nodeList);
+    public: NodeList* getChildNodeList(std::string nodeName, NodeList* nodeList);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getChildrenWithoutTextNodes(std::string nodeName, NodeList nodeList);
+    public: BasicArrayList* getChildrenWithoutTextNodes(std::string nodeName, NodeList* nodeList);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getWithoutTextNodes(NodeList nodeList);
+    public: BasicArrayList* getWithoutTextNodes(NodeList* nodeList);
 
                 //@Throws(Exception.constructor)
             
-    public: Node searchNodeList(std::string nodeName, NodeList nodeList);
+    public: Node* searchNodeList(std::string nodeName, NodeList* nodeList);
 
                 //@Throws(Exception.constructor)
             
-    public: Node searchNodeList(std::string nodeName, BasicArrayList nodeList);
+    public: Node* searchNodeList(std::string nodeName, BasicArrayList* nodeList);
 
 };
 

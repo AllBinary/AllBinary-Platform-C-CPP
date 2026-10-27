@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ABSTRACTINPUTAUTOMATIONFACTORY_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ABSTRACTINPUTAUTOMATIONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/net/URL.h>
 
       
@@ -51,26 +57,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputAutomationModuleFactoryInterface.h"
-#include "JPanel.h"
+        #include "org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h"
+#include "org/allbinary/input/automation/module/JPanel.h"
 
 class AbstractInputAutomationFactory: public InputAutomationModuleFactoryInterface {
 
     private: std::string name;
 
-    private: JPanel jPanel;
+    private: JPanel* jPanel;
 
-    private: HelpSet helpSet;
+    private: HelpSet* helpSet;
 
-public: AbstractInputAutomationFactory(std::string name, JPanel jPanel, HelpSet helpSet);
+public: AbstractInputAutomationFactory(std::string name, JPanel* jPanel, HelpSet* helpSet);
 
-public: AbstractInputAutomationFactory(std::string name, JPanel jPanel);
+public: AbstractInputAutomationFactory(std::string name, JPanel* jPanel);
 
     public: std::string getName();
 
-    public: JPanel getConfigurationJPanel();
+    public: JPanel* getConfigurationJPanel();
 
-    public: HelpSet getHelpSet();
+    public: HelpSet* getHelpSet();
 
 };
 

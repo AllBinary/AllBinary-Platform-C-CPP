@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,25 +67,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryTiledLayer.h"
-#include "AllBinaryJ2METiledLayer.h"
+        #include "org/allbinary/game/layer/AllBinaryTiledLayer.h"
+#include "org/allbinary/game/layer/AllBinaryJ2METiledLayer.h"
 
 class AllBinaryTiledLayerFactory
             : public Object
-        : public AllBinaryTiledLayerFactoryInterface {
+        , public AllBinaryTiledLayerFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryTiledLayer getInstance(RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData){
+    public: AllBinaryTiledLayer* getInstance(RaceTrackInfo* raceTrackInfo, RaceTrackData* raceTrackData){
 
-    AllBinaryTiledLayer allbinaryTiledLayer;;
+    AllBinaryTiledLayer* allbinaryTiledLayer;;
     
 
-    TiledLayer tiledLayer = TiledLayerFactory().getInstance(raceTrackData);;
+    TiledLayer* tiledLayer = (new TiledLayerFactory())->getInstance(raceTrackData);;
     
-allbinaryTiledLayer= AllBinaryJ2METiledLayer(raceTrackData.getId(), tiledLayer, raceTrackData.getMapArray(), BasicColorFactory::getInstance().RED.intValue());
+allbinaryTiledLayer= new AllBinaryJ2METiledLayer(raceTrackData->getId(), tiledLayer, raceTrackData->getMapArray(), BasicColorFactory::getInstance()->RED.intValue());
     
-allbinaryTiledLayer.setCells(raceTrackData.getMapArray());
+allbinaryTiledLayer->setCells(raceTrackData->getMapArray());
     
 
 
@@ -92,17 +98,17 @@ allbinaryTiledLayer.setCells(raceTrackData.getMapArray());
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryTiledLayer getMiniInstance(RaceTrackData raceTrackData){
+    public: AllBinaryTiledLayer* getMiniInstance(RaceTrackData* raceTrackData){
 
-    SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
+    SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
 
-    TiledLayer tiledLayer = TiledLayerFactory().getMiniInstance(raceTrackData);;
+    TiledLayer* tiledLayer = (new TiledLayerFactory())->getMiniInstance(raceTrackData);;
     
 
-    AllBinaryTiledLayer allbinaryTiledLayer = AllBinaryJ2METiledLayer(smallIntegerSingletonFactory.getAt(raceTrackData.getId().intValue() +100 +1), tiledLayer, raceTrackData.getMapArray(), BasicColorFactory::getInstance().RED.intValue());;
+    AllBinaryTiledLayer* allbinaryTiledLayer = new AllBinaryJ2METiledLayer(smallIntegerSingletonFactory->getAt(raceTrackData->getId()->intValue() +100 +1), tiledLayer, raceTrackData->getMapArray(), BasicColorFactory::getInstance()->RED.intValue());;
     
-allbinaryTiledLayer.setCells(raceTrackData.getMapArray());
+allbinaryTiledLayer->setCells(raceTrackData->getMapArray());
     
 
 

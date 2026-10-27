@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_ANIMATIONBEHAVIOR_H
         #define ORG_ALLBINARY_ANIMATION_ANIMATIONBEHAVIOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class AnimationBehavior
             : public Object
          {
 
-    private: static AnimationBehavior instance() { return AnimationBehavior(); }
+    private: static AnimationBehavior* instance() { static std::unique_ptr<AnimationBehavior> value(new AnimationBehavior()); return value.get(); }
 
-    public: static AnimationBehavior getInstance();
+    public: static AnimationBehavior* getInstance();
 
     public: void reset();
 

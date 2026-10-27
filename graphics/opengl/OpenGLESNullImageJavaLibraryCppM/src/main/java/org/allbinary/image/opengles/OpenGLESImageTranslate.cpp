@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -41,15 +47,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLESImage.h"
+        #include "org/allbinary/image/opengles/OpenGLESImage.h"
 
 class OpenGLESImageTranslate
             : public Object
          {
 
-    private: static OpenGLESImageTranslate instance() { return OpenGLESImageTranslate(); }
+    private: static OpenGLESImageTranslate* instance() { static std::unique_ptr<OpenGLESImageTranslate> value(new OpenGLESImageTranslate()); return value.get(); }
 
-    public: static OpenGLESImageTranslate getInstance(){
+    public: static OpenGLESImageTranslate* getInstance(){
 
 
 
@@ -59,13 +65,13 @@ class OpenGLESImageTranslate
 }
 
 
-    public: void translate(GL10 gl, OpenGLESImage openGLESImage, float x, float y){
-openGLESImage.imageProcessor.translate(gl, x, y);
+    public: void translate(GL10* gl, OpenGLESImage* openGLESImage, float x, float y){
+openGLESImage->imageProcessor.translate(gl, x, y);
     
 }
 
 
-    public: void translate2(GL10 gl, OpenGLESImage openGLESImage){
+    public: void translate2(GL10* gl, OpenGLESImage* openGLESImage){
 }
 
 

@@ -21,6 +21,12 @@
         #ifndef VIEWS_GENERIC_INVENTORY_AUTOVALIDATIONINVENTORYVIEW_H
         #define VIEWS_GENERIC_INVENTORY_AUTOVALIDATIONINVENTORYVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
@@ -53,17 +59,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InventoryView.h"
+        #include "views/generic/inventory/InventoryView.h"
 
 class AutoValidationInventoryView: public InventoryView, public ValidationComponentInterface {
 
-public: AutoValidationInventoryView(TransformInfoInterface transformInfoInterface);
+public: AutoValidationInventoryView(TransformInfoInterface* transformInfoInterface);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
     public: std::string validationInfo();
 

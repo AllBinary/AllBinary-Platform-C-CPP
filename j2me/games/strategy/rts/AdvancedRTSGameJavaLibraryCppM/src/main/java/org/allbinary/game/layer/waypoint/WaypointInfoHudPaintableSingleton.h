@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTINFOHUDPAINTABLESINGLETON_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTINFOHUDPAINTABLESINGLETON_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,15 +47,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WaypointInfoHudPaintable.h"
+        #include "org/allbinary/game/layer/waypoint/WaypointInfoHudPaintable.h"
 
 class WaypointInfoHudPaintableSingleton
             : public Object
          {
 
-    private: static WaypointInfoHudPaintable instance() { return WaypointInfoHudPaintable(); }
+    private: static WaypointInfoHudPaintable* instance() { static std::unique_ptr<WaypointInfoHudPaintable> value(new WaypointInfoHudPaintable()); return value.get(); }
 
-    public: static WaypointInfoHudPaintable getInstance();
+    public: static WaypointInfoHudPaintable* getInstance();
 
 };
 

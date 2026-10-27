@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,59 +79,59 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserConfigurationInterface.h"
-#include "UserConfiguration.h"
-#include "UserConfigurationData.h"
+        #include "org/allbinary/business/user/modules/configuration/UserConfigurationInterface.h"
+#include "org/allbinary/business/user/modules/configuration/UserConfiguration.h"
+#include "org/allbinary/business/user/modules/configuration/UserConfigurationData.h"
 
 class UserConfigurationView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: UserConfigurationInterface userConfigurationInterface;
+    private: UserConfigurationInterface* userConfigurationInterface;
 
-public: UserConfigurationView(Node node){
-this->userConfigurationInterface= UserConfiguration();
-    
-
-    NodeList childNodeList = node.getChildNodes();;
+public: UserConfigurationView(Node* node){
+this->userConfigurationInterface= dynamic_cast<UserConfigurationInterface*>(new UserConfiguration());
     
 
-    Node emailConfigurationNode = DomSearchHelper::getNode(UserEmailConfigurationData::NAME, childNodeList);;
+    NodeList* childNodeList = node->getChildNodes();;
     
 
-    UserEmailConfigurationView userEmailConfigurationView = UserEmailConfigurationView(emailConfigurationNode);;
+    Node* emailConfigurationNode = DomSearchHelper::getNode(UserEmailConfigurationData::NAME, childNodeList);;
     
 
-    UserEmailConfigurationInterface userEmailConfigurationInterface = userEmailConfigurationView.getEmailConfigurationInterface();;
-    
-this->userConfigurationInterface.setUserEmailConfigurationInterface(userEmailConfigurationInterface);
+    UserEmailConfigurationView* userEmailConfigurationView = new UserEmailConfigurationView(emailConfigurationNode);;
     
 
-    Node timeCreatedNode = DomSearchHelper::getNode(EntryData::getInstance().TIMECREATED, childNodeList);;
+    UserEmailConfigurationInterface* userEmailConfigurationInterface = dynamic_cast<UserEmailConfigurationInterface*>(userEmailConfigurationView->getEmailConfigurationInterface());;
+    
+this->userConfigurationInterface->setUserEmailConfigurationInterface(userEmailConfigurationInterface);
     
 
-    TimeCreatedView timeCreatedView = TimeCreatedView(timeCreatedNode);;
-    
-this->userConfigurationInterface.setTimeCreated(timeCreatedView.getTimeCreated());
+    Node* timeCreatedNode = DomSearchHelper::getNode(EntryData::getInstance()->TIMECREATED, childNodeList);;
     
 
-    Node timeLastModifiedNode = DomSearchHelper::getNode(EntryData::getInstance().LASTMODIFIED, childNodeList);;
+    TimeCreatedView* timeCreatedView = new TimeCreatedView(timeCreatedNode);;
+    
+this->userConfigurationInterface->setTimeCreated(timeCreatedView->getTimeCreated());
     
 
-    TimeLastModifiedView timeLastModifiedView = TimeLastModifiedView(timeLastModifiedNode);;
+    Node* timeLastModifiedNode = DomSearchHelper::getNode(EntryData::getInstance()->LASTMODIFIED, childNodeList);;
     
-this->userConfigurationInterface.setTimeLastModified(timeLastModifiedView.getTimeLastModified());
+
+    TimeLastModifiedView* timeLastModifiedView = new TimeLastModifiedView(timeLastModifiedNode);;
+    
+this->userConfigurationInterface->setTimeLastModified(timeLastModifiedView->getTimeLastModified());
     
 }
 
 
-public: UserConfigurationView(UserConfigurationInterface userConfigurationInterface){
+public: UserConfigurationView(UserConfigurationInterface* userConfigurationInterface){
 this->userConfigurationInterface= userConfigurationInterface;
     
 }
 
 
-    public: UserConfigurationInterface getUserConfigurationInterface(){
+    public: UserConfigurationInterface* getUserConfigurationInterface(){
 
 
 
@@ -137,24 +143,24 @@ this->userConfigurationInterface= userConfigurationInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = document.createElement(UserConfigurationData::NAME);;
-    
-
-    UserEmailConfigurationView userEmailConfigurationView = UserEmailConfigurationView(this->userConfigurationInterface.getUserEmailConfigurationInterface());;
-    
-node.appendChild(userEmailConfigurationView.toXmlNode(document));
+    Node* node = document->createElement(UserConfigurationData::NAME);;
     
 
-    TimeCreatedView timeCreatedView = TimeCreatedView(this->userConfigurationInterface.getTimeCreated());;
+    UserEmailConfigurationView* userEmailConfigurationView = new UserEmailConfigurationView(this->userConfigurationInterface->getUserEmailConfigurationInterface());;
     
-node.appendChild(timeCreatedView.toXmlNode(document));
+node->appendChild(userEmailConfigurationView->toXmlNode(document));
     
 
-    TimeLastModifiedView timeLastModifiedView = TimeLastModifiedView(this->userConfigurationInterface.getTimeLastModified());;
+    TimeCreatedView* timeCreatedView = new TimeCreatedView(this->userConfigurationInterface->getTimeCreated());;
     
-node.appendChild(timeLastModifiedView.toXmlNode(document));
+node->appendChild(timeCreatedView->toXmlNode(document));
+    
+
+    TimeLastModifiedView* timeLastModifiedView = new TimeLastModifiedView(this->userConfigurationInterface->getTimeLastModified());;
+    
+node->appendChild(timeLastModifiedView->toXmlNode(document));
     
 
 

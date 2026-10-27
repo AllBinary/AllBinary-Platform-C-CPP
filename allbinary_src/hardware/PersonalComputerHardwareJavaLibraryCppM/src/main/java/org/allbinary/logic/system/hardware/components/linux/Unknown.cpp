@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>
@@ -44,7 +50,7 @@
         //import org.allbinary.logic.system.hardware.components.interfaces.MediaInterface;
 class Unknown
             : public Object
-        : public HardwareComponentInterface {
+        , public HardwareComponentInterface {
 
     private: std::string data;
 
@@ -54,7 +60,7 @@ this->data= data;
 }
 
 
-    public: bool compareTo(HardwareComponentInterface componentInterface){
+    public: bool compareTo(HardwareComponentInterface* componentInterface){
 
 
 

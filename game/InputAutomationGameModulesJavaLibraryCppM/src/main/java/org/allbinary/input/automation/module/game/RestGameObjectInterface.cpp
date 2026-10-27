@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,9 +45,9 @@
         
 class RestGameObjectInterface {
 
-    bool isRestNeeded()
+    public: virtual bool isRestNeeded() = 0;
 
-    bool isAGoodTimeToRest()
+    public: virtual bool isAGoodTimeToRest() = 0;
 
 };
 

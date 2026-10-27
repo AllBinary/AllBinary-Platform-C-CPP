@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -60,15 +66,15 @@
         
 class RTSLayerTextAnimation: public Animation, public UpdateMyFontInterface {
 
-    private: Image image;
+    private: Image* image;
 
     private: std::string text;
 
-    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
 
     private: int32_t fontHeight = 0;
 
-public: RTSLayerTextAnimation(std::string text, Image image){
+public: RTSLayerTextAnimation(std::string text, Image* image){
 this->text= text;
     
 this->image= image;
@@ -76,26 +82,26 @@ this->image= image;
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->fontHeight= font.getHeight();
+this->fontHeight= font->getHeight();
     
 this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
-this->myFontProcessor.process(graphics);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+this->myFontProcessor->process(graphics);
     
 super.paintXY(graphics, x, y);
     
 
-    int32_t adjustedCostY = this->image.getHeight() -this->fontHeight;;
+    int32_t adjustedCostY = this->image->getHeight() -this->fontHeight;;
     
-graphics.drawString(this->text, x, y +adjustedCostY, 0);
+graphics->drawString(this->text, x, y +adjustedCostY, 0);
     
 }
 

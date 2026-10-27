@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUNDLE_LOGIC_PRELOADER_ALLBINARYPRELOADERACTIVATOR_H
         #define ORG_ALLBINARY_BUNDLE_LOGIC_PRELOADER_ALLBINARYPRELOADERACTIVATOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,23 +79,23 @@
         
 class AllBinaryPreloaderActivator
             : public Object
-        : public BundleActivator {
+        , public BundleActivator {
 
-    private: static BundleContext context;
+    private: static inline BundleContext* context;
 
-    private: static const std::string CRYPT_REGISTRY_NAME = "bundle.abcs.logic.system.loader.CryptService";
+    private: static inline const std::string CRYPT_REGISTRY_NAME = "bundle.abcs.logic.system.loader.CryptService";
 
-    public: static BundleContext getBundleContext();
+    public: static BundleContext* getBundleContext();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: AllBinaryPreloaderActivator();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void start(BundleContext context);
+    public: void start(BundleContext* context);
 
                 //@Throws(Exception.constructor)
             
@@ -97,7 +103,7 @@ public: AllBinaryPreloaderActivator();
 
                 //@Throws(Exception.constructor)
             
-    public: void stop(BundleContext context);
+    public: void stop(BundleContext* context);
 
 };
 

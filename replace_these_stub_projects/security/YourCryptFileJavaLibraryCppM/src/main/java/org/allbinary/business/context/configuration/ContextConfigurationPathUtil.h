@@ -7,6 +7,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONPATHUTIL_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONPATHUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -42,11 +48,11 @@ class ContextConfigurationPathUtil
 
                 //@Throws(Exception.constructor)
             
-    public: static AbFile getAbFile(std::string contextName);
+    public: static AbFile* getAbFile(std::string contextName);
 
                 //@Throws(Exception.constructor)
             
-    public: static AbPath getAbPath(std::string contextName);
+    public: static AbPath* getAbPath(std::string contextName);
 
                 //@Throws(Exception.constructor)
             

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -39,25 +45,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LicenseType.h"
+        #include "org/allbinary/logic/system/security/licensing/LicenseType.h"
 
 class AbeLicenseInterface {
 
-    bool hasKey()
+    public: virtual bool hasKey() = 0;
 
-    std::string getKey(std::string keyName)
+    public: virtual std::string getKey(std::string keyName) = 0;
 
-    std::string getLicenseId()
+    public: virtual std::string getLicenseId() = 0;
 
-    BasicArrayList getServers()
+    public: virtual BasicArrayList* getServers() = 0;
 
-    std::string getSpecial()
+    public: virtual std::string getSpecial() = 0;
 
-    LicenseType getLicenseType()
+    public: virtual LicenseType* getLicenseType() = 0;
 
-    bool isValid()
+    public: virtual bool isValid() = 0;
 
-    std::string toString()
+    public: virtual std::string toString() = 0;
 
 };
 

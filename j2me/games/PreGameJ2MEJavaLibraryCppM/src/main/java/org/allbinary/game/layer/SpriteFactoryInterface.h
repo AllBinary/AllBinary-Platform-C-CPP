@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_SPRITEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_SPRITEFACTORYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Image.h>
 
       
@@ -48,7 +54,7 @@
         
 class SpriteFactoryInterface {
 
-    Sprite createSprite(Image image, int32_t frameWidth, int32_t frameHeight);
+    public: virtual Sprite* createSprite(Image* image, int32_t frameWidth, int32_t frameHeight) = 0;
 
 };
 

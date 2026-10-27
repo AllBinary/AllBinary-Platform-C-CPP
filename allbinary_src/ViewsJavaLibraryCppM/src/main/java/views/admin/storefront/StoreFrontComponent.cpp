@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -59,26 +65,24 @@
         
 class StoreFrontComponent: public HttpStoreComponentView {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: StoreFrontInterface newStoreFrontInterface;
+    protected: StoreFrontInterface* newStoreFrontInterface;
 
-public: StoreFrontComponent(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+public: StoreFrontComponent(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->newStoreFrontInterface= StoreFront(this->getPageContext().getRequest());
+this->newStoreFrontInterface= dynamic_cast<StoreFrontInterface*>(new StoreFront(dynamic_cast<HttpServletRequest*>(this->getPageContext()->getRequest())));
     
 
-                        if(this->newStoreFrontInterface.getName() == 
-                                    nullptr
-                                )
+                        if(false)
                         
                                     {
-                                    this->newStoreFrontInterface.setName(this->getWeblisketSession().getStoreName());
+                                    this->newStoreFrontInterface->setName(this->getWeblisketSession()->getStoreName());
     
 
                                     }
@@ -99,13 +103,13 @@ this->newStoreFrontInterface= StoreFront(this->getPageContext().getRequest());
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view", &e);
     
 
                                     }

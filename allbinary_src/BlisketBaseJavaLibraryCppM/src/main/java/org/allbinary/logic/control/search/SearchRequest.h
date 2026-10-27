@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_SEARCH_SEARCHREQUEST_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_SEARCH_SEARCHREQUEST_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -62,8 +68,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SearchParams.h"
-#include "SearchData.h"
+        #include "org/allbinary/logic/control/search/SearchParams.h"
+#include "org/allbinary/logic/control/search/SearchData.h"
 
 class SearchRequest: public AbContext {
 
@@ -73,15 +79,15 @@ class SearchRequest: public AbContext {
 
     private: std::string contentType;
 
-    private: SearchParams searchParams;
+    private: SearchParams* searchParams;
 
-    private: StoreFrontInterface storeFront;
+    private: StoreFrontInterface* storeFront;
 
-public: SearchRequest(StoreFrontInterface storeFront, SearchParams searchParams, std::string xslFile, std::string contentType, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
+public: SearchRequest(StoreFrontInterface* storeFront, SearchParams* searchParams, std::string xslFile, std::string contentType, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext);
 
-    public: void setStoreFront(StoreFrontInterface storeFront);
+    public: void setStoreFront(StoreFrontInterface* storeFront);
 
-    public: void setParams(SearchParams searchParams);
+    public: void setParams(SearchParams* searchParams);
 
     public: void setXslFile(std::string value);
 
@@ -89,9 +95,9 @@ public: SearchRequest(StoreFrontInterface storeFront, SearchParams searchParams,
 
     public: void setContentType(std::string value);
 
-    public: StoreFrontInterface getStoreFront();
+    public: StoreFrontInterface* getStoreFront();
 
-    public: SearchParams getParams();
+    public: SearchParams* getParams();
 
     public: std::string getXslFile();
 
@@ -101,7 +107,7 @@ public: SearchRequest(StoreFrontInterface storeFront, SearchParams searchParams,
 
                 //@Throws(Exception.constructor)
             
-    public: Node getFileBaseNameNode(Document document);
+    public: Node* getFileBaseNameNode(Document* document);
 
 };
 

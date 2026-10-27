@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_CPU_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_CPU_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -94,19 +100,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CpuInfo.h"
+        #include "org/allbinary/logic/system/hardware/components/linux/CpuInfo.h"
 
 class Cpu
             : public Object
-        : public CpuInterface, public HardwareComponentInterface {
+        , public CpuInterface, public HardwareComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: const std::string CPUFILE = "/proc/cpuinfo";
 
-    private: HashMap<Object*, Object*> cpuHashMap;
+    private: HashMap<Object*, Object*>* cpuHashMap;
 
 public: Cpu(std::string filePath);
 
@@ -118,7 +124,7 @@ public: Cpu();
 
                 //@Throws(Exception.constructor)
             
-    private: void init(LineNumberReader lineNumberReader, std::string filePath);
+    private: void init(LineNumberReader* lineNumberReader, std::string filePath);
 
     public: std::string getProcessor();
 
@@ -136,9 +142,9 @@ public: Cpu();
 
     public: std::string getCacheSize();
 
-    public: bool compareTo(CpuInterface cpuInterface);
+    public: bool compareTo(CpuInterface* cpuInterface);
 
-    public: bool compareTo(HardwareComponentInterface componentInterface);
+    public: bool compareTo(HardwareComponentInterface* componentInterface);
 
     public: std::string toString();
 

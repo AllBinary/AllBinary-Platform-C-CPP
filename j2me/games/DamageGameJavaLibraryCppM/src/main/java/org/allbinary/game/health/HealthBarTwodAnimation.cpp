@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -44,11 +50,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HealthBarAnimation.h"
+        #include "org/allbinary/game/health/HealthBarAnimation.h"
 
 class HealthBarTwodAnimation: public HealthBarAnimation {
 
-public: HealthBarTwodAnimation(AllBinaryLayer layerInterface, int32_t location) : HealthBarAnimation(layerInterface, location){
+public: HealthBarTwodAnimation(AllBinaryLayer* layerInterface, int32_t location) : HealthBarAnimation(layerInterface, location){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -58,13 +64,13 @@ public: HealthBarTwodAnimation(AllBinaryLayer layerInterface, int32_t location) 
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 
-    int32_t ax = this->allbinaryLayer.getViewPosition().getX();;
+    int32_t ax = this->allbinaryLayer.getViewPosition()->getX();;
     
 this->basicSetColorUtil.setBasicColorP3(graphics, this->basicColor, this->colorP);
     
-graphics.fillRect(ax, this->getY() -1, this->x2, this->thickness);
+graphics->fillRect(ax, this->getY() -1, this->x2, this->thickness);
     
 }
 

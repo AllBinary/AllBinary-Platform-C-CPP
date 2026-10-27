@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -75,23 +81,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Features.h"
-#include "Feature.h"
-#include "GameFeatureChoiceGroups.h"
+        #include "org/allbinary/game/configuration/feature/Features.h"
+#include "org/allbinary/game/configuration/feature/Feature.h"
+#include "org/allbinary/game/configuration/feature/GameFeatureChoiceGroups.h"
 
 class GameFeatureUtil
             : public Object
          {
 
-    private: static GameFeatureUtil instance() { return GameFeatureUtil(); }
+    private: static GameFeatureUtil* instance() { static std::unique_ptr<GameFeatureUtil> value(new GameFeatureUtil()); return value.get(); }
 
-    public: static GameFeatureUtil getInstance();
+    public: static GameFeatureUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const TsUtil tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil = TsUtil::getInstance();
 
-    private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
+    private: EnumerationUtil* enumerationUtil = EnumerationUtil::getInstance();
 
     public: const std::string ON_GAME_FEATURE_CHANGE = "onGameFeatureChange";
 
@@ -99,15 +105,15 @@ class GameFeatureUtil
 
                 //@Throws(Exception.constructor)
             
-    public: void setDefault(ChoiceGroup choiceGroup);
+    public: void setDefault(ChoiceGroup* choiceGroup);
 
                 //@Throws(Exception.constructor)
             
-    public: void updateMultiple(ChoiceGroup choiceGroup);
+    public: void updateMultiple(ChoiceGroup* choiceGroup);
 
                 //@Throws(Exception.constructor)
             
-    public: void updateExclusiveForChoiceGroup(ChoiceGroup choiceGroup);
+    public: void updateExclusiveForChoiceGroup(ChoiceGroup* choiceGroup);
 
     public: bool isExclusive(std::string itemLabel);
 
@@ -117,7 +123,7 @@ class GameFeatureUtil
 
                 //@Throws(Exception.constructor)
             
-    public: void updateExclusiveList(Feature gameFeature, BasicArrayList list);
+    public: void updateExclusiveList(Feature* gameFeature, BasicArrayList* list);
 
 };
 

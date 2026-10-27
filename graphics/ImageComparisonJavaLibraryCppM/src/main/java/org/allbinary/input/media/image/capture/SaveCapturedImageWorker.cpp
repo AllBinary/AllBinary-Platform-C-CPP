@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/awt/image/BufferedImage.h>
@@ -68,19 +74,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CapturedImageWorkerResultsListener.h"
-#include "CapturedImageWorkerResultsEvent.h"
-#include "CapturedImageInputOutput.h"
+        #include "org/allbinary/input/media/image/capture/CapturedImageWorkerResultsListener.h"
+#include "org/allbinary/input/media/image/capture/CapturedImageWorkerResultsEvent.h"
+#include "org/allbinary/input/media/image/capture/CapturedImageInputOutput.h"
 
 class SaveCapturedImageWorker: public BasicEventHandler, public CapturedImageWorkerResultsListener {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: bool running= false;
 
-    private: BasicArrayList capturedImageWorkerResultsEventVector = BasicArrayListD();
+    private: BasicArrayList* capturedImageWorkerResultsEventVector = new BasicArrayListD();
 
 public: SaveCapturedImageWorker(){
 }
@@ -104,16 +110,16 @@ this->running= running;
 }
 
 
-    public: void onCaptureEvent(CapturedImageWorkerResultsEvent capturedImageEvent){
-this->capturedImageWorkerResultsEventVector.add(capturedImageEvent);
+    public: void onCaptureEvent(CapturedImageWorkerResultsEvent* capturedImageEvent){
+this->capturedImageWorkerResultsEventVector->add(capturedImageEvent);
     
 this->run();
     
 }
 
 
-    public: void onEvent(AllBinaryEventObject allBinaryEventObject){
-this->onCaptureEvent(allBinaryEventObject);
+    public: void onEvent(AllBinaryEventObject* allBinaryEventObject){
+this->onCaptureEvent(dynamic_cast<CapturedImageWorkerResultsEvent*>(allBinaryEventObject));
     
 }
 
@@ -121,36 +127,36 @@ this->onCaptureEvent(allBinaryEventObject);
     public: void run(){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.RUN);
+            this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->RUN);
     
 this->setRunning(true);
     
 
-    TimeDelayHelper timeHelper = TimeDelayHelper(1000);;
+    TimeDelayHelper* timeHelper = new TimeDelayHelper(1000);;
     
-timeHelper.setStartTimeTNT();
-    
-
-    CapturedImageWorkerResultsEvent capturedImageWorkerResultsEvent = (this->capturedImageWorkerResultsEventVector.get(0));;
+timeHelper->setStartTimeTNT();
     
 
-    BufferedImage screenBufferedImage = capturedImageWorkerResultsEvent.getBufferedImage();;
+    CapturedImageWorkerResultsEvent* capturedImageWorkerResultsEvent = (dynamic_cast<CapturedImageWorkerResultsEvent*>(this->capturedImageWorkerResultsEventVector->get(0)));;
     
-CapturedImageInputOutput().save(screenBufferedImage, capturedImageWorkerResultsEvent.getFrame());
+
+    BufferedImage* screenBufferedImage = capturedImageWorkerResultsEvent->getBufferedImage();;
     
-this->capturedImageWorkerResultsEventVector.remove(capturedImageWorkerResultsEvent);
+(new CapturedImageInputOutput())->save(screenBufferedImage, capturedImageWorkerResultsEvent->getFrame());
     
-this->logUtil.putF(CommonLabels::getInstance().ELAPSED +timeHelper.getElapsedTNT(), this, this->commonStrings.RUN);
+this->capturedImageWorkerResultsEventVector->remove(capturedImageWorkerResultsEvent);
+    
+this->logUtil->putF(CommonLabels::getInstance()->ELAPSED +timeHelper->getElapsedTNT(), this, this->commonStrings->RUN);
     
 this->setRunning(false);
     
-this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.RUN);
+this->logUtil->putF(this->commonStrings->END, this, this->commonStrings->RUN);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RUN, &e);
     
 }
 

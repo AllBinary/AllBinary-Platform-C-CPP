@@ -21,6 +21,12 @@
         #ifndef WORKFLOWS_TEMPLATE_DATA_BASICSTOREWORKFLOW_H
         #define WORKFLOWS_TEMPLATE_DATA_BASICSTOREWORKFLOW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -53,11 +59,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicWorkFlow.h"
+        #include "workflows/template/data/BasicWorkFlow.h"
 
 class BasicStoreWorkFlow: public BasicWorkFlow, public StoreWorkFlowInterface {
 
-public: BasicStoreWorkFlow(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
+public: BasicStoreWorkFlow(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext);
 
                 //@Throws(Exception.constructor)
             

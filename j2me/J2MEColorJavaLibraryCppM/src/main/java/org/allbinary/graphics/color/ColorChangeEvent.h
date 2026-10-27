@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGEEVENT_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGEEVENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
       
@@ -42,18 +50,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicColorFactory.h"
-#include "BasicColor.h"
+        #include "org/allbinary/graphics/color/BasicColorFactory.h"
+#include "org/allbinary/graphics/color/BasicColor.h"
 
 class ColorChangeEvent: public AllBinaryEventObject {
 
-    private: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
+    private: BasicColor* basicColor = BasicColorFactory::getInstance()->WHITE;
 
 public: ColorChangeEvent(Object* anyType);
 
-    public: void setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor* basicColor);
 
-    public: BasicColor getBasicColorP();
+    public: BasicColor* getBasicColorP();
 
 };
 

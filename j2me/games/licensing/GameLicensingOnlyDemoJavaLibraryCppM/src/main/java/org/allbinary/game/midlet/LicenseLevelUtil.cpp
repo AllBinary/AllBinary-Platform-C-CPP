@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class LicenseLevelUtil
             : public Object
          {
 
-    private: static LicenseLevelUtil instance() { return LicenseLevelUtil(); }
+    private: static LicenseLevelUtil* instance() { static std::unique_ptr<LicenseLevelUtil> value(new LicenseLevelUtil()); return value.get(); }
 
-    public: static LicenseLevelUtil getInstance(){
+    public: static LicenseLevelUtil* getInstance(){
 
 
 

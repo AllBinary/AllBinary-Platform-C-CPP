@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/media/graphics/geography/map/GeographicMapInterface.h>
 
       
@@ -39,18 +45,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RaceTrackInfo.h"
-#include "RaceTrackData.h"
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackInfo.h"
+#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackData.h"
 
 class RaceTrackGeographicMapInterface: public GeographicMapInterface {
 
-    RaceTrackInfo getRaceTrackInfo()
+    public: virtual RaceTrackInfo* getRaceTrackInfo() = 0;
 
-    void setRaceTrackInfo(RaceTrackInfo aRaceTrackInfo)
+    public: virtual void setRaceTrackInfo(RaceTrackInfo* aRaceTrackInfo) = 0;
 
-    RaceTrackData getRaceTrackData()
+    public: virtual RaceTrackData* getRaceTrackData() = 0;
 
-    void setRaceTrackData(RaceTrackData raceTrackData)
+    public: virtual void setRaceTrackData(RaceTrackData* raceTrackData) = 0;
 
 };
 

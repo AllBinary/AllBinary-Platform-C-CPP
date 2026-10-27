@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 
@@ -43,20 +49,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseSoundsFactory.h"
-#include "Sound.h"
-#include "SelectSound.h"
-#include "ErrorSound.h"
+        #include "org/allbinary/media/audio/BaseSoundsFactory.h"
+#include "org/allbinary/media/audio/Sound.h"
+#include "org/allbinary/media/audio/SelectSound.h"
+#include "org/allbinary/media/audio/ErrorSound.h"
 
 class EarlySoundsFactory: public BaseSoundsFactory {
 
-    private: static EarlySoundsFactory instance() { return EarlySoundsFactory(); }
+    private: static EarlySoundsFactory* instance() { static std::unique_ptr<EarlySoundsFactory> value(new EarlySoundsFactory()); return value.get(); }
 
-    public: static EarlySoundsFactory getInstance();
+    public: static EarlySoundsFactory* getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<Sound> getSoundInterfaceArray();
+    public: std::vector<Sound*> getSoundInterfaceArray();
 
 };
 

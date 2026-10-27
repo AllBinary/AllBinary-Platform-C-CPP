@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,15 +67,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageCreationUtil.h"
+        #include "org/allbinary/media/image/ImageCreationUtil.h"
 
 class ImageCopyUtil
             : public Object
          {
 
-    private: static ImageCopyUtil instance() { return ImageCopyUtil(); }
+    private: static ImageCopyUtil* instance() { static std::unique_ptr<ImageCopyUtil> value(new ImageCopyUtil()); return value.get(); }
 
-    public: static ImageCopyUtil getInstance(){
+    public: static ImageCopyUtil* getInstance(){
 
 
 
@@ -79,11 +85,11 @@ class ImageCopyUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const ImageCreationUtil imageCreationUtil = ImageCreationUtil::getInstance();
+    private: ImageCreationUtil* imageCreationUtil = ImageCreationUtil::getInstance();
 
 private: ImageCopyUtil(){
 }
@@ -91,15 +97,15 @@ private: ImageCopyUtil(){
 
     private: int32_t anchor = Anchor::TOP_LEFT;
 
-    private: const GameFeatureFactory gameFeatureFactory = GameFeatureFactory::getInstance();
+    private: GameFeatureFactory* gameFeatureFactory = GameFeatureFactory::getInstance();
 
-    private: const Features features = Features::getInstance();
+    private: Features* features = Features::getInstance();
 
     private: const std::string NO_COPY = "J2ME does not need to copy images after initial loading";
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImageForRotation(Image originalImage){
+    public: Image* createImageForRotation(Image* originalImage){
 
 
 
@@ -111,12 +117,12 @@ private: ImageCopyUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImage(Image originalImage){
+    public: Image* createImage(Image* originalImage){
 
-                        if(!this->features.isFeature(this->gameFeatureFactory.POST_IMAGE_LOADING_MODIFICATION))
+                        if(!this->features->isFeature(this->gameFeatureFactory->POST_IMAGE_LOADING_MODIFICATION))
                         
                                     {
-                                    this->logUtil.put(this->NO_COPY, this, this->commonStrings.CONSTRUCTOR, Exception());
+                                    this->logUtil->put(this->NO_COPY, this, this->commonStrings->CONSTRUCTOR, new Exception());
     
 
 
@@ -128,13 +134,13 @@ private: ImageCopyUtil(){
                                     }
                                 
 
-    Image image = this->imageCreationUtil.createImageWH(originalImage.getWidth(), originalImage.getHeight());;
+    Image* image = this->imageCreationUtil->createImageWH(originalImage->getWidth(), originalImage->getHeight());;
     
 
-                        if(image.isMutable())
+                        if(image->isMutable())
                         
                                     {
-                                    image.getGraphics().drawImage(originalImage, 0, 0, this->anchor);
+                                    image->getGraphics()->drawImage(originalImage, 0, 0, this->anchor);
     
 
 
@@ -149,7 +155,7 @@ private: ImageCopyUtil(){
                             
 
 
-                            throw Exception("Not Mutable");
+                            throw new Exception("Not Mutable");
                     
 
                         }
@@ -159,12 +165,12 @@ private: ImageCopyUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImageScale(Image originalImage, float canvasScale, bool resize){
+    public: Image* createImageScale(Image* originalImage, float canvasScale, bool resize){
 
-                        if(!this->features.isFeature(this->gameFeatureFactory.POST_IMAGE_LOADING_MODIFICATION))
+                        if(!this->features->isFeature(this->gameFeatureFactory->POST_IMAGE_LOADING_MODIFICATION))
                         
                                     {
-                                    this->logUtil.put(this->NO_COPY, this, this->commonStrings.CONSTRUCTOR, Exception());
+                                    this->logUtil->put(this->NO_COPY, this, this->commonStrings->CONSTRUCTOR, new Exception());
     
 
 
@@ -176,10 +182,10 @@ private: ImageCopyUtil(){
                                     }
                                 
 
-    int32_t newWidth = static_cast<int32_t>((originalImage.getWidth() *canvasScale));;
+    int32_t newWidth = static_cast<int32_t>((originalImage->getWidth() *canvasScale));;
     
 
-    int32_t newHeight = static_cast<int32_t>((originalImage.getHeight() *canvasScale));;
+    int32_t newHeight = static_cast<int32_t>((originalImage->getHeight() *canvasScale));;
     
 
                         if(resize)
@@ -207,22 +213,22 @@ private: ImageCopyUtil(){
                                     }
                                 
 
-    Image image = this->imageCreationUtil.createImageWH(newWidth, newHeight);;
+    Image* image = this->imageCreationUtil->createImageWH(newWidth, newHeight);;
     
 
-                        if(image.isMutable())
+                        if(image->isMutable())
                         
                                     {
                                     
-    int32_t halfWidthDelta = (newWidth -originalImage.getWidth()) /2;;
+    int32_t halfWidthDelta = (newWidth -originalImage->getWidth()) /2;;
     
 
-    int32_t halfHeightDelta = (newHeight -originalImage.getHeight()) /2;;
+    int32_t halfHeightDelta = (newHeight -originalImage->getHeight()) /2;;
     
 
-    Graphics graphics = image.getGraphics();;
+    Graphics* graphics = image->getGraphics();;
     
-graphics.drawImage(originalImage, halfWidthDelta, halfHeightDelta, this->anchor);
+graphics->drawImage(originalImage, halfWidthDelta, halfHeightDelta, this->anchor);
     
 
 
@@ -237,7 +243,7 @@ graphics.drawImage(originalImage, halfWidthDelta, halfHeightDelta, this->anchor)
                             
 
 
-                            throw Exception("Not Mutable");
+                            throw new Exception("Not Mutable");
                     
 
                         }

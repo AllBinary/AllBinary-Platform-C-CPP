@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -59,31 +65,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ItemInterface.h"
+        #include "org/allbinary/business/user/commerce/inventory/item/ItemInterface.h"
 
 class BasicItemValidation: public Validation {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const int32_t MAXWEIGHT = 14;
 
     private: const int32_t MAXPRICE = 14;
 
-    private: ItemInterface itemInterface;
+    private: ItemInterface* itemInterface;
 
-public: BasicItemValidation(ItemInterface itemInterface){
+public: BasicItemValidation(ItemInterface* itemInterface){
 this->itemInterface= itemInterface;
     
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-                        if(this->itemInterface.getId() == 
+                        if(this->itemInterface->getId() == 
                                     nullptr
-                                 || this->itemInterface.getId().length() < 1 || this->itemInterface.getId().length() > AbSqlData::MAXNUM)
+                                 || this->itemInterface->getId()->length() < 1 || this->itemInterface->getId()->length() > AbSqlData::MAXNUM)
                         
                                     {
                                     
@@ -96,12 +102,12 @@ this->itemInterface= itemInterface;
                                     }
                                 
 
-    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
+    StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-                        if(this->itemInterface.getId() != 
+                        if(this->itemInterface->getId() != 
                                     nullptr
-                                 && !stringValidationUtil.isNumber(this->itemInterface.getId()))
+                                 && !stringValidationUtil->isNumber(this->itemInterface->getId()))
                         
                                     {
                                     
@@ -114,9 +120,9 @@ this->itemInterface= itemInterface;
                                     }
                                 
 
-                        if(this->itemInterface.getNumber() == 
+                        if(this->itemInterface->getNumber() == 
                                     nullptr
-                                 || this->itemInterface.getNumber().length() < 1 || this->itemInterface.getNumber().length() > AbSqlData::MAXNUM)
+                                 || this->itemInterface->getNumber()->length() < 1 || this->itemInterface->getNumber()->length() > AbSqlData::MAXNUM)
                         
                                     {
                                     
@@ -129,9 +135,9 @@ this->itemInterface= itemInterface;
                                     }
                                 
 
-                        if(this->itemInterface.getNumber() != 
+                        if(this->itemInterface->getNumber() != 
                                     nullptr
-                                 && !stringValidationUtil.isNumber(this->itemInterface.getNumber()))
+                                 && !stringValidationUtil->isNumber(this->itemInterface->getNumber()))
                         
                                     {
                                     
@@ -144,9 +150,9 @@ this->itemInterface= itemInterface;
                                     }
                                 
 
-                        if(this->itemInterface.getInBaskets() == 
+                        if(this->itemInterface->getInBaskets() == 
                                     nullptr
-                                 || this->itemInterface.getInBaskets().length() < 1 || this->itemInterface.getInBaskets().length() > AbSqlData::MAXNUM)
+                                 || this->itemInterface->getInBaskets()->length() < 1 || this->itemInterface->getInBaskets()->length() > AbSqlData::MAXNUM)
                         
                                     {
                                     
@@ -159,9 +165,9 @@ this->itemInterface= itemInterface;
                                     }
                                 
 
-                        if(this->itemInterface.getInBaskets() != 
+                        if(this->itemInterface->getInBaskets() != 
                                     nullptr
-                                 && !stringValidationUtil.isNumber(this->itemInterface.getInBaskets()))
+                                 && !stringValidationUtil->isNumber(this->itemInterface->getInBaskets()))
                         
                                     {
                                     
@@ -174,9 +180,9 @@ this->itemInterface= itemInterface;
                                     }
                                 
 
-                        if(this->itemInterface.getWeight() == 
+                        if(this->itemInterface->getWeight() == 
                                     nullptr
-                                 || this->itemInterface.getWeight().length() < 1 || this->itemInterface.getWeight().length() > this->MAXWEIGHT)
+                                 || this->itemInterface->getWeight()->length() < 1 || this->itemInterface->getWeight()->length() > this->MAXWEIGHT)
                         
                                     {
                                     
@@ -189,9 +195,9 @@ this->itemInterface= itemInterface;
                                     }
                                 
 
-                        if(this->itemInterface.getWeight() != 
+                        if(this->itemInterface->getWeight() != 
                                     nullptr
-                                 && !stringValidationUtil.isNumber(this->itemInterface.getWeight()))
+                                 && !stringValidationUtil->isNumber(this->itemInterface->getWeight()))
                         
                                     {
                                     
@@ -204,9 +210,9 @@ this->itemInterface= itemInterface;
                                     }
                                 
 
-                        if(this->itemInterface.getEnabled() == 
+                        if(this->itemInterface->getEnabled() == 
                                     nullptr
-                                 || this->itemInterface.getEnabled().length() < 1 || this->itemInterface.getEnabled().length() > AbSqlData::MAXSTRING)
+                                 || this->itemInterface->getEnabled()->length() < 1 || this->itemInterface->getEnabled()->length() > AbSqlData::MAXSTRING)
                         
                                     {
                                     
@@ -219,9 +225,9 @@ this->itemInterface= itemInterface;
                                     }
                                 
 
-                        if(this->itemInterface.getNewOrUsed() == 
+                        if(this->itemInterface->getNewOrUsed() == 
                                     nullptr
-                                 || this->itemInterface.getNewOrUsed().length() < 1 || this->itemInterface.getNewOrUsed().length() > AbSqlData::MAXSTRING)
+                                 || this->itemInterface->getNewOrUsed()->length() < 1 || this->itemInterface->getNewOrUsed()->length() > AbSqlData::MAXSTRING)
                         
                                     {
                                     
@@ -234,9 +240,9 @@ this->itemInterface= itemInterface;
                                     }
                                 
 
-                        if(this->itemInterface.getSummary() == 
+                        if(this->itemInterface->getSummary() == 
                                     nullptr
-                                 || this->itemInterface.getSummary().length() < 1 || this->itemInterface.getSummary().length() > AbSqlData::MAXSTRING)
+                                 || this->itemInterface->getSummary()->length() < 1 || this->itemInterface->getSummary()->length() > AbSqlData::MAXSTRING)
                         
                                     {
                                     
@@ -249,9 +255,9 @@ this->itemInterface= itemInterface;
                                     }
                                 
 
-                        if(this->itemInterface.getDescription() == 
+                        if(this->itemInterface->getDescription() == 
                                     nullptr
-                                 || this->itemInterface.getDescription().length() < 1 || this->itemInterface.getDescription().length() > AbSqlData::MAXBLOB)
+                                 || this->itemInterface->getDescription()->length() < 1 || this->itemInterface->getDescription()->length() > AbSqlData::MAXBLOB)
                         
                                     {
                                     
@@ -264,9 +270,9 @@ this->itemInterface= itemInterface;
                                     }
                                 
 
-                        if(this->itemInterface.getKeywords() == 
+                        if(this->itemInterface->getKeywords() == 
                                     nullptr
-                                 || this->itemInterface.getKeywords().length() < 1 || this->itemInterface.getKeywords().length() > AbSqlData::MAXSTRING)
+                                 || this->itemInterface->getKeywords()->length() < 1 || this->itemInterface->getKeywords()->length() > AbSqlData::MAXSTRING)
                         
                                     {
                                     
@@ -279,9 +285,9 @@ this->itemInterface= itemInterface;
                                     }
                                 
 
-                        if(this->itemInterface.getCategory() == 
+                        if(this->itemInterface->getCategory() == 
                                     nullptr
-                                 || this->itemInterface.getCategory().length() < 1 || this->itemInterface.getCategory().length() > AbSqlData::MAXSTRING)
+                                 || this->itemInterface->getCategory()->length() < 1 || this->itemInterface->getCategory()->length() > AbSqlData::MAXSTRING)
                         
                                     {
                                     
@@ -294,9 +300,9 @@ this->itemInterface= itemInterface;
                                     }
                                 
 
-                        if(this->itemInterface.getType() == 
+                        if(this->itemInterface->getType() == 
                                     nullptr
-                                 || this->itemInterface.getType().length() < 1 || this->itemInterface.getType().length() > AbSqlData::MAXSTRING)
+                                 || this->itemInterface->getType()->length() < 1 || this->itemInterface->getType()->length() > AbSqlData::MAXSTRING)
                         
                                     {
                                     
@@ -309,9 +315,9 @@ this->itemInterface= itemInterface;
                                     }
                                 
 
-                        if(this->itemInterface.getPrice() == 
+                        if(this->itemInterface->getPrice() == 
                                     nullptr
-                                 || !this->itemInterface.getPrice().isValid())
+                                 || !this->itemInterface->getPrice()->isValid())
                         
                                     {
                                     
@@ -324,9 +330,9 @@ this->itemInterface= itemInterface;
                                     }
                                 
 
-                        if(this->itemInterface.getCustoms() == 
+                        if(this->itemInterface->getCustoms() == 
                                     nullptr
-                                 || this->itemInterface.getCustoms().length() < 1 || this->itemInterface.getCustoms().length() > AbSqlData::MAXNUM)
+                                 || this->itemInterface->getCustoms()->length() < 1 || this->itemInterface->getCustoms()->length() > AbSqlData::MAXNUM)
                         
                                     {
                                     
@@ -339,9 +345,9 @@ this->itemInterface= itemInterface;
                                     }
                                 
 
-                        if(this->itemInterface.getDownloads() == 
+                        if(this->itemInterface->getDownloads() == 
                                     nullptr
-                                 || this->itemInterface.getDownloads().length() < 1 || this->itemInterface.getDownloads().length() > AbSqlData::MAXNUM)
+                                 || this->itemInterface->getDownloads()->length() < 1 || this->itemInterface->getDownloads()->length() > AbSqlData::MAXNUM)
                         
                                     {
                                     
@@ -354,9 +360,9 @@ this->itemInterface= itemInterface;
                                     }
                                 
 
-                        if(this->itemInterface.getGroups() == 
+                        if(this->itemInterface->getGroups() == 
                                     nullptr
-                                 || this->itemInterface.getGroups().length() < 1 || this->itemInterface.getGroups().length() > AbSqlData::MAXNUM)
+                                 || this->itemInterface->getGroups()->length() < 1 || this->itemInterface->getGroups()->length() > AbSqlData::MAXNUM)
                         
                                     {
                                     
@@ -369,9 +375,9 @@ this->itemInterface= itemInterface;
                                     }
                                 
 
-                        if(this->itemInterface.getOptions() == 
+                        if(this->itemInterface->getOptions() == 
                                     nullptr
-                                 || this->itemInterface.getOptions().length() < 1 || this->itemInterface.getOptions().length() > AbSqlData::MAXNUM)
+                                 || this->itemInterface->getOptions()->length() < 1 || this->itemInterface->getOptions()->length() > AbSqlData::MAXNUM)
                         
                                     {
                                     
@@ -384,9 +390,9 @@ this->itemInterface= itemInterface;
                                     }
                                 
 
-                        if(this->itemInterface.getPermissions() == 
+                        if(this->itemInterface->getPermissions() == 
                                     nullptr
-                                 || this->itemInterface.getPermissions().length() < 1 || this->itemInterface.getPermissions().length() > AbSqlData::MAXNUM)
+                                 || this->itemInterface->getPermissions()->length() < 1 || this->itemInterface->getPermissions()->length() > AbSqlData::MAXNUM)
                         
                                     {
                                     
@@ -399,9 +405,9 @@ this->itemInterface= itemInterface;
                                     }
                                 
 
-                        if(this->itemInterface.getSpecials() == 
+                        if(this->itemInterface->getSpecials() == 
                                     nullptr
-                                 || this->itemInterface.getSpecials().length() < 1 || this->itemInterface.getSpecials().length() > AbSqlData::MAXNUM)
+                                 || this->itemInterface->getSpecials()->length() < 1 || this->itemInterface->getSpecials()->length() > AbSqlData::MAXNUM)
                         
                                     {
                                     
@@ -421,13 +427,13 @@ this->itemInterface= itemInterface;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -447,249 +453,249 @@ this->itemInterface= itemInterface;
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-                        if(this->itemInterface.getId() == 
+                        if(this->itemInterface->getId() == 
                                     nullptr
-                                 || this->itemInterface.getId().length() < 1 || this->itemInterface.getId().length() > AbSqlData::MAXNUM)
+                                 || this->itemInterface->getId()->length() < 1 || this->itemInterface->getId()->length() > AbSqlData::MAXNUM)
                         
                                     {
-                                    stringBuffer.append("Id is invalid. Must be number < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
+                                    stringBuffer->append("Id is invalid. Must be number < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
     
 
                                     }
                                 
 
-    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
+    StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-                        if(this->itemInterface.getId() != 
+                        if(this->itemInterface->getId() != 
                                     nullptr
-                                 && !stringValidationUtil.isNumber(this->itemInterface.getId()))
+                                 && !stringValidationUtil->isNumber(this->itemInterface->getId()))
                         
                                     {
-                                    stringBuffer.append("Id is invalid. Must be > 0.<br />");
-    
-
-                                    }
-                                
-
-                        if(this->itemInterface.getNumber() == 
-                                    nullptr
-                                 || this->itemInterface.getNumber().length() < 1 || this->itemInterface.getNumber().length() > AbSqlData::MAXNUM)
-                        
-                                    {
-                                    stringBuffer.append("Number of items is invalid. Must be number < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
+                                    stringBuffer->append("Id is invalid. Must be > 0.<br />");
     
 
                                     }
                                 
 
-                        if(this->itemInterface.getNumber() != 
+                        if(this->itemInterface->getNumber() == 
                                     nullptr
-                                 && !stringValidationUtil.isNumber(this->itemInterface.getNumber()))
+                                 || this->itemInterface->getNumber()->length() < 1 || this->itemInterface->getNumber()->length() > AbSqlData::MAXNUM)
                         
                                     {
-                                    stringBuffer.append("Number of items value is not a valid number.<br />");
+                                    stringBuffer->append("Number of items is invalid. Must be number < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
     
 
                                     }
                                 
 
-                        if(this->itemInterface.getInBaskets() == 
+                        if(this->itemInterface->getNumber() != 
                                     nullptr
-                                 || this->itemInterface.getInBaskets().length() < 1 || this->itemInterface.getInBaskets().length() > AbSqlData::MAXNUM)
+                                 && !stringValidationUtil->isNumber(this->itemInterface->getNumber()))
                         
                                     {
-                                    stringBuffer.append("Number in baskets is invalid. Must be < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
+                                    stringBuffer->append("Number of items value is not a valid number.<br />");
     
 
                                     }
                                 
 
-                        if(this->itemInterface.getInBaskets() != 
+                        if(this->itemInterface->getInBaskets() == 
                                     nullptr
-                                 && !stringValidationUtil.isNumber(this->itemInterface.getInBaskets()))
+                                 || this->itemInterface->getInBaskets()->length() < 1 || this->itemInterface->getInBaskets()->length() > AbSqlData::MAXNUM)
                         
                                     {
-                                    stringBuffer.append("In Baskets value is not a valid number.<br />");
+                                    stringBuffer->append("Number in baskets is invalid. Must be < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
     
 
                                     }
                                 
 
-                        if(this->itemInterface.getWeight() == 
+                        if(this->itemInterface->getInBaskets() != 
                                     nullptr
-                                 || this->itemInterface.getWeight().length() < 1 || this->itemInterface.getWeight().length() > this->MAXWEIGHT)
+                                 && !stringValidationUtil->isNumber(this->itemInterface->getInBaskets()))
                         
                                     {
-                                    stringBuffer.append("Weight value is invalid. Must be < " +this->MAXWEIGHT +" and > 0 digits.<br />");
+                                    stringBuffer->append("In Baskets value is not a valid number.<br />");
     
 
                                     }
                                 
 
-                        if(this->itemInterface.getWeight() != 
+                        if(this->itemInterface->getWeight() == 
                                     nullptr
-                                 && !stringValidationUtil.isNumber(this->itemInterface.getWeight()))
+                                 || this->itemInterface->getWeight()->length() < 1 || this->itemInterface->getWeight()->length() > this->MAXWEIGHT)
                         
                                     {
-                                    stringBuffer.append("Weight value is not a valid number.<br />");
+                                    stringBuffer->append("Weight value is invalid. Must be < " +this->MAXWEIGHT +" and > 0 digits.<br />");
     
 
                                     }
                                 
 
-                        if(this->itemInterface.getEnabled() == 
+                        if(this->itemInterface->getWeight() != 
                                     nullptr
-                                 || this->itemInterface.getEnabled().length() < 1 || this->itemInterface.getEnabled().length() > AbSqlData::MAXSTRING)
+                                 && !stringValidationUtil->isNumber(this->itemInterface->getWeight()))
                         
                                     {
-                                    stringBuffer.append("For Sale value is invalid. Must be < " +AbSqlData::MAXSTRING +" and > 0 characters long.<br />");
+                                    stringBuffer->append("Weight value is not a valid number.<br />");
     
 
                                     }
                                 
 
-                        if(this->itemInterface.getNewOrUsed() == 
+                        if(this->itemInterface->getEnabled() == 
                                     nullptr
-                                 || this->itemInterface.getNewOrUsed().length() < 1 || this->itemInterface.getNewOrUsed().length() > AbSqlData::MAXSTRING)
+                                 || this->itemInterface->getEnabled()->length() < 1 || this->itemInterface->getEnabled()->length() > AbSqlData::MAXSTRING)
                         
                                     {
-                                    stringBuffer.append("New Or Used value is invalid. Must be < " +AbSqlData::MAXSTRING +" and > 0 characters long.<br />");
+                                    stringBuffer->append("For Sale value is invalid. Must be < " +AbSqlData::MAXSTRING +" and > 0 characters long.<br />");
     
 
                                     }
                                 
 
-                        if(this->itemInterface.getSummary() == 
+                        if(this->itemInterface->getNewOrUsed() == 
                                     nullptr
-                                 || this->itemInterface.getSummary().length() < 1 || this->itemInterface.getSummary().length() > AbSqlData::MAXSTRING)
+                                 || this->itemInterface->getNewOrUsed()->length() < 1 || this->itemInterface->getNewOrUsed()->length() > AbSqlData::MAXSTRING)
                         
                                     {
-                                    stringBuffer.append("Summary value is invalid. Must be < " +AbSqlData::MAXSTRING +" and > 0 characters long.<br />");
+                                    stringBuffer->append("New Or Used value is invalid. Must be < " +AbSqlData::MAXSTRING +" and > 0 characters long.<br />");
     
 
                                     }
                                 
 
-                        if(this->itemInterface.getDescription() == 
+                        if(this->itemInterface->getSummary() == 
                                     nullptr
-                                 || this->itemInterface.getDescription().length() < 1 || this->itemInterface.getDescription().length() > AbSqlData::MAXBLOB)
+                                 || this->itemInterface->getSummary()->length() < 1 || this->itemInterface->getSummary()->length() > AbSqlData::MAXSTRING)
                         
                                     {
-                                    stringBuffer.append("Description value is invalid. Must be < " +AbSqlData::MAXBLOB +" and > 0 characters long.<br />");
+                                    stringBuffer->append("Summary value is invalid. Must be < " +AbSqlData::MAXSTRING +" and > 0 characters long.<br />");
     
 
                                     }
                                 
 
-                        if(this->itemInterface.getKeywords() == 
+                        if(this->itemInterface->getDescription() == 
                                     nullptr
-                                 || this->itemInterface.getKeywords().length() < 1 || this->itemInterface.getKeywords().length() > AbSqlData::MAXSTRING)
+                                 || this->itemInterface->getDescription()->length() < 1 || this->itemInterface->getDescription()->length() > AbSqlData::MAXBLOB)
                         
                                     {
-                                    stringBuffer.append("Keywords value is invalid. Must be < " +AbSqlData::MAXSTRING +" and > 0 characters long.<br />");
+                                    stringBuffer->append("Description value is invalid. Must be < " +AbSqlData::MAXBLOB +" and > 0 characters long.<br />");
     
 
                                     }
                                 
 
-                        if(this->itemInterface.getCategory() == 
+                        if(this->itemInterface->getKeywords() == 
                                     nullptr
-                                 || this->itemInterface.getCategory().length() < 1 || this->itemInterface.getCategory().length() > AbSqlData::MAXSTRING)
+                                 || this->itemInterface->getKeywords()->length() < 1 || this->itemInterface->getKeywords()->length() > AbSqlData::MAXSTRING)
                         
                                     {
-                                    stringBuffer.append("Category value is invalid. Must be < " +AbSqlData::MAXSTRING +" and > 0 characters long.<br />");
+                                    stringBuffer->append("Keywords value is invalid. Must be < " +AbSqlData::MAXSTRING +" and > 0 characters long.<br />");
     
 
                                     }
                                 
 
-                        if(this->itemInterface.getType() == 
+                        if(this->itemInterface->getCategory() == 
                                     nullptr
-                                 || this->itemInterface.getType().length() < 1 || this->itemInterface.getType().length() > AbSqlData::MAXSTRING)
+                                 || this->itemInterface->getCategory()->length() < 1 || this->itemInterface->getCategory()->length() > AbSqlData::MAXSTRING)
                         
                                     {
-                                    stringBuffer.append("Type value is invalid. Must be < " +AbSqlData::MAXSTRING +" and > 0 characters long.<br />");
+                                    stringBuffer->append("Category value is invalid. Must be < " +AbSqlData::MAXSTRING +" and > 0 characters long.<br />");
     
 
                                     }
                                 
 
-                        if(this->itemInterface.getPrice() == 
+                        if(this->itemInterface->getType() == 
                                     nullptr
-                                 || !this->itemInterface.getPrice().isValid())
+                                 || this->itemInterface->getType()->length() < 1 || this->itemInterface->getType()->length() > AbSqlData::MAXSTRING)
                         
                                     {
-                                    stringBuffer.append("Price value is invalid. Must be < " +this->MAXPRICE +" and > 0 in length.<br />");
+                                    stringBuffer->append("Type value is invalid. Must be < " +AbSqlData::MAXSTRING +" and > 0 characters long.<br />");
     
 
                                     }
                                 
 
-                        if(this->itemInterface.getCustoms() == 
+                        if(this->itemInterface->getPrice() == 
                                     nullptr
-                                 || this->itemInterface.getCustoms().length() < 1 || this->itemInterface.getCustoms().length() > AbSqlData::MAXNUM)
+                                 || !this->itemInterface->getPrice()->isValid())
                         
                                     {
-                                    stringBuffer.append("Custom items value is invalid. Must be number < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
+                                    stringBuffer->append("Price value is invalid. Must be < " +this->MAXPRICE +" and > 0 in length.<br />");
     
 
                                     }
                                 
 
-                        if(this->itemInterface.getDownloads() == 
+                        if(this->itemInterface->getCustoms() == 
                                     nullptr
-                                 || this->itemInterface.getDownloads().length() < 1 || this->itemInterface.getDownloads().length() > AbSqlData::MAXNUM)
+                                 || this->itemInterface->getCustoms()->length() < 1 || this->itemInterface->getCustoms()->length() > AbSqlData::MAXNUM)
                         
                                     {
-                                    stringBuffer.append("Downloadable item value is invalid. Must be number < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
+                                    stringBuffer->append("Custom items value is invalid. Must be number < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
     
 
                                     }
                                 
 
-                        if(this->itemInterface.getGroups() == 
+                        if(this->itemInterface->getDownloads() == 
                                     nullptr
-                                 || this->itemInterface.getGroups().length() < 1 || this->itemInterface.getGroups().length() > AbSqlData::MAXNUM)
+                                 || this->itemInterface->getDownloads()->length() < 1 || this->itemInterface->getDownloads()->length() > AbSqlData::MAXNUM)
                         
                                     {
-                                    stringBuffer.append("Group item value is invalid. Must be number < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
+                                    stringBuffer->append("Downloadable item value is invalid. Must be number < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
     
 
                                     }
                                 
 
-                        if(this->itemInterface.getOptions() == 
+                        if(this->itemInterface->getGroups() == 
                                     nullptr
-                                 || this->itemInterface.getOptions().length() < 1 || this->itemInterface.getOptions().length() > AbSqlData::MAXNUM)
+                                 || this->itemInterface->getGroups()->length() < 1 || this->itemInterface->getGroups()->length() > AbSqlData::MAXNUM)
                         
                                     {
-                                    stringBuffer.append("Option item value is invalid. Must be number < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
+                                    stringBuffer->append("Group item value is invalid. Must be number < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
     
 
                                     }
                                 
 
-                        if(this->itemInterface.getPermissions() == 
+                        if(this->itemInterface->getOptions() == 
                                     nullptr
-                                 || this->itemInterface.getPermissions().length() < 1 || this->itemInterface.getPermissions().length() > AbSqlData::MAXNUM)
+                                 || this->itemInterface->getOptions()->length() < 1 || this->itemInterface->getOptions()->length() > AbSqlData::MAXNUM)
                         
                                     {
-                                    stringBuffer.append("Permission item value is invalid. Must be number < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
+                                    stringBuffer->append("Option item value is invalid. Must be number < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
     
 
                                     }
                                 
 
-                        if(this->itemInterface.getSpecials() == 
+                        if(this->itemInterface->getPermissions() == 
                                     nullptr
-                                 || this->itemInterface.getSpecials().length() < 1 || this->itemInterface.getSpecials().length() > AbSqlData::MAXNUM)
+                                 || this->itemInterface->getPermissions()->length() < 1 || this->itemInterface->getPermissions()->length() > AbSqlData::MAXNUM)
                         
                                     {
-                                    stringBuffer.append("Special item value is invalid. Must be number < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
+                                    stringBuffer->append("Permission item value is invalid. Must be number < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
+    
+
+                                    }
+                                
+
+                        if(this->itemInterface->getSpecials() == 
+                                    nullptr
+                                 || this->itemInterface->getSpecials()->length() < 1 || this->itemInterface->getSpecials()->length() > AbSqlData::MAXNUM)
+                        
+                                    {
+                                    stringBuffer->append("Special item value is invalid. Must be number < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
     
 
                                     }
@@ -698,17 +704,17 @@ this->itemInterface= itemInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -724,7 +730,7 @@ this->itemInterface= itemInterface;
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -734,7 +740,7 @@ this->itemInterface= itemInterface;
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

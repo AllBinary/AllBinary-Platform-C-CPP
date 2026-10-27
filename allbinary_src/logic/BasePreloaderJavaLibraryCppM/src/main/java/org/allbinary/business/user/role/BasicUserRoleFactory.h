@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLEFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,15 +47,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicUserRole.h"
+        #include "org/allbinary/business/user/role/BasicUserRole.h"
 
 class BasicUserRoleFactory
             : public Object
          {
 
-    private: static BasicUserRoleFactory instance() { return BasicUserRoleFactory(); }
+    private: static BasicUserRoleFactory* instance() { static std::unique_ptr<BasicUserRoleFactory> value(new BasicUserRoleFactory()); return value.get(); }
 
-    public: static BasicUserRoleFactory getInstance();
+    public: static BasicUserRoleFactory* getInstance();
 
     private: const int64_t INACTIVITYTIMEOUT = 360000000;
 
@@ -59,39 +65,39 @@ class BasicUserRoleFactory
 
     private: const int64_t MAXSESSIONTIME = 360000000;
 
-    public: const BasicUserRole INSTALLER = BasicUserRole("Installer", 16, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* INSTALLER = new BasicUserRole("Installer", 16, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
 
-    public: const BasicUserRole ADMINISTRATOR = BasicUserRole("Administrator", 0, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* ADMINISTRATOR = new BasicUserRole("Administrator", 0, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
 
-    public: const BasicUserRole CUSTOMER = BasicUserRole("CustomerUser", "Customer User", 1, this->CUSTOMERTIMEOUT, this->CUSTOMERMAXSESSIONTIME);
+    public: BasicUserRole* CUSTOMER = new BasicUserRole("CustomerUser", "Customer User", 1, this->CUSTOMERTIMEOUT, this->CUSTOMERMAXSESSIONTIME);
 
-    public: const BasicUserRole SUBSCRIBERCUSTOMER = BasicUserRole("SubscriberUser", "Subscriber User", 2, this->CUSTOMERTIMEOUT, this->CUSTOMERMAXSESSIONTIME);
+    public: BasicUserRole* SUBSCRIBERCUSTOMER = new BasicUserRole("SubscriberUser", "Subscriber User", 2, this->CUSTOMERTIMEOUT, this->CUSTOMERMAXSESSIONTIME);
 
-    public: const BasicUserRole WHOLESALECUSTOMER = BasicUserRole("WholesaleUser", "Wholesale User", 3, this->CUSTOMERTIMEOUT, this->CUSTOMERMAXSESSIONTIME);
+    public: BasicUserRole* WHOLESALECUSTOMER = new BasicUserRole("WholesaleUser", "Wholesale User", 3, this->CUSTOMERTIMEOUT, this->CUSTOMERMAXSESSIONTIME);
 
-    public: const BasicUserRole STOREMANAGER = BasicUserRole("StoreManager", "Store Manager", 4, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* STOREMANAGER = new BasicUserRole("StoreManager", "Store Manager", 4, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
 
-    public: const BasicUserRole PRODUCTMANAGER = BasicUserRole("ProductManager", "Product Manager", 5, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* PRODUCTMANAGER = new BasicUserRole("ProductManager", "Product Manager", 5, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
 
-    public: const BasicUserRole CUSTOMERMANAGER = BasicUserRole("UserManager", "User Manager", 6, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* CUSTOMERMANAGER = new BasicUserRole("UserManager", "User Manager", 6, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
 
-    public: const BasicUserRole PAYMENTMANAGER = BasicUserRole("PaymentManager", "Payment Manager", 7, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* PAYMENTMANAGER = new BasicUserRole("PaymentManager", "Payment Manager", 7, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
 
-    public: const BasicUserRole ORDERMANAGER = BasicUserRole("OrderManager", "Order Manager", 8, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* ORDERMANAGER = new BasicUserRole("OrderManager", "Order Manager", 8, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
 
-    public: const BasicUserRole WEBMANAGER = BasicUserRole("WebManager", "Web Manager", 9, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* WEBMANAGER = new BasicUserRole("WebManager", "Web Manager", 9, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
 
-    public: const BasicUserRole REVIEWER = BasicUserRole("Reviewer", 10, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* REVIEWER = new BasicUserRole("Reviewer", 10, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
 
-    public: const BasicUserRole SHIPPING = BasicUserRole("Shipping", 11, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* SHIPPING = new BasicUserRole("Shipping", 11, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
 
-    public: const BasicUserRole ADJUSTER = BasicUserRole("Adjuster", 12, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* ADJUSTER = new BasicUserRole("Adjuster", 12, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
 
-    public: const BasicUserRole WORKFLOWEDITOR = BasicUserRole("WorkFlowEditor", "WorkFlow Editor", 13, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* WORKFLOWEDITOR = new BasicUserRole("WorkFlowEditor", "WorkFlow Editor", 13, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
 
-    public: const BasicUserRole WIZARD = BasicUserRole("WizardUser", "Wizard User", 14, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* WIZARD = new BasicUserRole("WizardUser", "Wizard User", 14, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
 
-    public: const BasicUserRole VIEWEDITOR = BasicUserRole("ViewEditor", "View Editor", 15, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* VIEWEDITOR = new BasicUserRole("ViewEditor", "View Editor", 15, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
 
 };
 

@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -50,12 +58,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TagHelperFactory.h"
-#include "DownloadItemsHelper.h"
+        #include "admin/taghelpers/TagHelperFactory.h"
+#include "admin/taghelpers/DownloadItemsHelper.h"
 
 class DownloadItemsHelperFactory: public TagHelperFactory {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: DownloadItemsHelperFactory(){
 }
@@ -63,24 +71,24 @@ public: DownloadItemsHelperFactory(){
 
                 //@Throws(LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*> hashMap, PageContext pageContext){
+    public: Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DownloadItemsHelper(hashMap, pageContext);
+                        return new DownloadItemsHelper(hashMap, pageContext);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET_INSTANCE, e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET_INSTANCE, &e);
     
 
                                     }

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/AllBinaryLayer.h>
@@ -50,13 +56,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DropLayerInterface.h"
+        #include "org/allbinary/game/layer/drop/DropLayerInterface.h"
 
 class DropLayerProcessor: public BasicLayerProcessor {
 
-    private: static const BasicLayerProcessor LAYER_PROCESSOR = DropLayerProcessor();
+    private: static inline BasicLayerProcessor* LAYER_PROCESSOR = new DropLayerProcessor();
 
-    public: static BasicLayerProcessor getInstance(){
+    public: static BasicLayerProcessor* getInstance(){
 
 
 
@@ -72,18 +78,18 @@ private: DropLayerProcessor(){
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayerManager allBinaryLayerManager){
+    public: void process(AllBinaryLayerManager* allBinaryLayerManager){
 
-    BasicArrayList list = this->getList();;
+    BasicArrayList* list = this->getList();;
     
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
-    AllBinaryLayer layerInterface;;
+    AllBinaryLayer* layerInterface;;
     
 
-    DropLayerInterface dropLayerInterface;;
+    DropLayerInterface* dropLayerInterface;;
     
 
 
@@ -92,17 +98,17 @@ private: DropLayerProcessor(){
                         for (
     int32_t index = 0;index < size; index++)
         {
-layerInterface= list.objectArray[index];
+layerInterface= dynamic_cast<AllBinaryLayer*>(list->objectArray[index]);
     
-dropLayerInterface= layerInterface as unknown;
+dropLayerInterface= dynamic_cast<DropLayerInterface*>(layerInterface as unknown);
     
-layerInterface= dropLayerInterface.getDroppedLayer() as unknown;
+layerInterface= dynamic_cast<AllBinaryLayer*>(dropLayerInterface->getDroppedLayer() as unknown);
     
-allBinaryLayerManager.append(layerInterface);
+allBinaryLayerManager->append(layerInterface);
     
 }
 
-list.clear();
+list->clear();
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_STORE_ROOTSTORECATEGORYPROPERTIES_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_STORE_ROOTSTORECATEGORYPROPERTIES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -115,31 +121,31 @@
         
 class RootStoreCategoryProperties
             : public Object
-        : public RootCategoryPropertiesInterface, public CategoryPropertiesInterface {
+        , public RootCategoryPropertiesInterface, public CategoryPropertiesInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const AbPathData pathData = AbPathData::getInstance();
+    private: AbPathData* pathData = AbPathData::getInstance();
 
-    private: AbPath fileAbPath;
+    private: AbPath* fileAbPath;
 
-    private: AbPath abPath;
+    private: AbPath* abPath;
 
     private: std::string category;
 
     private: bool isRealRoot;
 
-    protected: AbPath webAppAbPath;
+    protected: AbPath* webAppAbPath;
 
-    protected: TransformInfoInterface transformInfoInterface;
+    protected: TransformInfoInterface* transformInfoInterface;
 
-public: RootStoreCategoryProperties(TransformInfoInterface transformInfoInterface);
+public: RootStoreCategoryProperties(TransformInfoInterface* transformInfoInterface);
 
-public: RootStoreCategoryProperties(TransformInfoInterface transformInfoInterface, AbPath categoryAbPath);
+public: RootStoreCategoryProperties(TransformInfoInterface* transformInfoInterface, AbPath* categoryAbPath);
 
-public: RootStoreCategoryProperties(TransformInfoInterface transformInfoInterface, Node node);
+public: RootStoreCategoryProperties(TransformInfoInterface* transformInfoInterface, Node* node);
 
-public: RootStoreCategoryProperties(TransformInfoInterface transformInfoInterface, HashMap<Object*, Object*> categoryPropertiesHashMap);
+public: RootStoreCategoryProperties(TransformInfoInterface* transformInfoInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap);
 
                 //@Throws(Exception.constructor)
             
@@ -151,37 +157,37 @@ public: RootStoreCategoryProperties(TransformInfoInterface transformInfoInterfac
 
     public: Object* getKey();
 
-    public: void setPath(AbPath path);
+    public: void setPath(AbPath* path);
 
-    public: void setRootFilePath(AbPath value);
+    public: void setRootFilePath(AbPath* value);
 
-    public: AbPath getRootFilePath();
+    public: AbPath* getRootFilePath();
 
     public: std::string getValue();
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getWebAppPath();
+    public: AbPath* getWebAppPath();
 
-    public: AbPath getPath(CategoryHierarchyInterface categoryHierarchyInterface);
+    public: AbPath* getPath(CategoryHierarchyInterface* categoryHierarchyInterface);
 
     public: std::string getFileName();
 
     public: void setValue(std::string value);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
-    public: BasicArrayList toVector();
-
-                //@Throws(Exception.constructor)
-            
-    public: Document toValidationInfoDoc();
+    public: BasicArrayList* toVector();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toValidationInfoNode(Document document);
+    public: Document* toValidationInfoDoc();
+
+                //@Throws(Exception.constructor)
+            
+    public: Node* toValidationInfoNode(Document* document);
 
                 //@Throws(Exception.constructor)
             

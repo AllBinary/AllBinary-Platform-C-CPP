@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALFIREGAMEINPUTINTERFACEPROCESSOR_H
         #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALFIREGAMEINPUTINTERFACEPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/event/GameKeyEvent.h>
@@ -47,16 +53,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SpecialGameInputInterfaceProcessor.h"
-#include "SpecialGameInputInterface.h"
+        #include "org/allbinary/game/layer/special/SpecialGameInputInterfaceProcessor.h"
+#include "org/allbinary/game/layer/special/SpecialGameInputInterface.h"
 
 class SpecialFireGameInputInterfaceProcessor: public SpecialGameInputInterfaceProcessor {
 
-public: SpecialFireGameInputInterfaceProcessor(SpecialGameInputInterface collidableDestroyableDamageableLayer);
+public: SpecialFireGameInputInterfaceProcessor(SpecialGameInputInterface* collidableDestroyableDamageableLayer);
 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent);
+    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent);
 
 };
 

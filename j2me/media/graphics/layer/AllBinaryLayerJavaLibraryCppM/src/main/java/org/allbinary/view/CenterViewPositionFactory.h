@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_VIEW_CENTERVIEWPOSITIONFACTORY_H
         #define ORG_ALLBINARY_VIEW_CENTERVIEWPOSITIONFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,7 +45,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CenterStaticViewPositionFactory.h"
+        #include "org/allbinary/view/CenterStaticViewPositionFactory.h"
 
 class CenterViewPositionFactory: public CenterStaticViewPositionFactory {
 

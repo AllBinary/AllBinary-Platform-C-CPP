@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATIONINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATIONINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventsConfigurationInterface.h>
 
       
@@ -45,9 +51,9 @@
         
 class UserEmailConfigurationInterface {
 
-    UserEmailEventsConfigurationInterface getUserEmailEventsConfigurationInterface();
+    public: virtual UserEmailEventsConfigurationInterface* getUserEmailEventsConfigurationInterface() = 0;
 
-    void setUserEmailEventsConfigurationInterface(UserEmailEventsConfigurationInterface emailEventsConfigurationInterface);
+    public: virtual void setUserEmailEventsConfigurationInterface(UserEmailEventsConfigurationInterface* emailEventsConfigurationInterface) = 0;
 
 };
 

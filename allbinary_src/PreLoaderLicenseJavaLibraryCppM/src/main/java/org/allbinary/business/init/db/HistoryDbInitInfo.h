@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_DB_HISTORYDBINITINFO_H
         #define ORG_ALLBINARY_BUSINESS_INIT_DB_HISTORYDBINITINFO_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,11 +45,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DbInitInfo.h"
+        #include "org/allbinary/business/init/db/DbInitInfo.h"
 
 class HistoryDbInitInfo: public DbInitInfo {
 
-    private: static const std::string INITFILE = "historydbinitdata.dat";
+    private: static inline const std::string INITFILE = "historydbinitdata.dat";
 
 public: HistoryDbInitInfo();
 

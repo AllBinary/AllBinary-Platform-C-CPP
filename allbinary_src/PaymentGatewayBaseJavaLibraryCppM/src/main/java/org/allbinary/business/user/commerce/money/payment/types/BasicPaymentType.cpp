@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -70,7 +76,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicPaymentTypeUtil.h"
+        #include "org/allbinary/business/user/commerce/money/payment/types/BasicPaymentTypeUtil.h"
 
 class BasicPaymentType
             : public Object
@@ -80,9 +86,9 @@ class BasicPaymentType
 
     private: std::string value;
 
-    private: PaymentGatewayInterfaceFactoryInterface paymentGatewayInterfaceFactoryInterface;
+    private: PaymentGatewayInterfaceFactoryInterface* paymentGatewayInterfaceFactoryInterface;
 
-    private: PaymentGatewayDomNodeFactoryInterface paymentGatewayDomNodeFactoryInterface;
+    private: PaymentGatewayDomNodeFactoryInterface* paymentGatewayDomNodeFactoryInterface;
 
 protected: BasicPaymentType(std::string paymentMethod){
 this->init(paymentMethod);
@@ -90,7 +96,7 @@ this->init(paymentMethod);
 }
 
 
-protected: BasicPaymentType(std::string paymentMethod, PaymentGatewayInterfaceFactoryInterface paymentGatewayInterfaceFactoryInterface, PaymentGatewayDomNodeFactoryInterface paymentGatewayDomNodeFactoryInterface){
+protected: BasicPaymentType(std::string paymentMethod, PaymentGatewayInterfaceFactoryInterface* paymentGatewayInterfaceFactoryInterface, PaymentGatewayDomNodeFactoryInterface* paymentGatewayDomNodeFactoryInterface){
 this->init(paymentMethod);
     
 this->paymentGatewayInterfaceFactoryInterface= paymentGatewayInterfaceFactoryInterface;
@@ -102,25 +108,25 @@ this->paymentGatewayDomNodeFactoryInterface= paymentGatewayDomNodeFactoryInterfa
 
     private: void init(std::string paymentMethod){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
 
     std::string UNDERSCORE = "_";;
     
-hashMap.put(CommonSeps::getInstance().SPACE, UNDERSCORE);
+hashMap->put(CommonSeps::getInstance()->SPACE, UNDERSCORE);
     
-hashMap.put(AbPathData::getInstance().EXTENSION_SEP, UNDERSCORE);
+hashMap->put(AbPathData::getInstance()->EXTENSION_SEP, UNDERSCORE);
     
-hashMap.put("-", UNDERSCORE);
+hashMap->put("-", UNDERSCORE);
     
 
-    Replace replace = Replace(hashMap);;
+    Replace* replace = new Replace(hashMap);;
     
-this->name= replace.all(paymentMethod);
+this->name= replace->all(paymentMethod);
     
 this->value= paymentMethod;
     
-BasicPaymentTypeUtil::getInstance().add(this);
+BasicPaymentTypeUtil::getInstance()->add(this);
     
 }
 
@@ -147,7 +153,7 @@ BasicPaymentTypeUtil::getInstance().add(this);
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentGatewayInterfaceFactoryInterface getPaymentGatewayInterfaceFactoryInterface(){
+    public: PaymentGatewayInterfaceFactoryInterface* getPaymentGatewayInterfaceFactoryInterface(){
 
                         if(this->paymentGatewayInterfaceFactoryInterface == 
                                     nullptr
@@ -157,7 +163,7 @@ BasicPaymentTypeUtil::getInstance().add(this);
                                     
 
 
-                            throw Exception("PaymentGatewayInterfaceFactoryInterface is Null");
+                            throw new Exception("PaymentGatewayInterfaceFactoryInterface is Null");
                     
 
                                     }
@@ -173,7 +179,7 @@ BasicPaymentTypeUtil::getInstance().add(this);
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentGatewayDomNodeFactoryInterface getPaymentGatewayDomNodeFactoryInterface(){
+    public: PaymentGatewayDomNodeFactoryInterface* getPaymentGatewayDomNodeFactoryInterface(){
 
                         if(this->paymentGatewayDomNodeFactoryInterface == 
                                     nullptr
@@ -183,7 +189,7 @@ BasicPaymentTypeUtil::getInstance().add(this);
                                     
 
 
-                            throw Exception("PaymentGatewayDomNodeFactoryInterface is Null");
+                            throw new Exception("PaymentGatewayDomNodeFactoryInterface is Null");
                     
 
                                     }
@@ -207,13 +213,13 @@ BasicPaymentTypeUtil::getInstance().add(this);
 }
 
 
-    public: BasicArrayList toVector(){
+    public: BasicArrayList* toVector(){
 
-    BasicArrayList vector = BasicArrayListD();;
+    BasicArrayList* vector = new BasicArrayListD();;
     
-vector.add(this->name);
+vector->add(this->name);
     
-vector.add(this->value);
+vector->add(this->value);
     
 
 
@@ -224,13 +230,13 @@ vector.add(this->value);
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(PaymentGatewayData::NAME.toString(), this->name);
+hashMap->put(PaymentGatewayData::NAME.toString(), this->name);
     
-hashMap.put(PaymentGatewayData::VALUE.toString(), this->value);
+hashMap->put(PaymentGatewayData::VALUE.toString(), this->value);
     
 
 

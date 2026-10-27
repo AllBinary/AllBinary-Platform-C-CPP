@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,21 +69,21 @@ class OpenGLESStrings
 
                 //@Throws(Exception.constructor)
             
-    public: void set(GL10 gl);
+    public: void set(GL10* gl);
 
-    public: void initFont(GL10 gl, int32_t width, int32_t height);
+    public: void initFont(GL10* gl, int32_t width, int32_t height);
 
                 //@Throws(Exception.constructor)
             
-    public: void update(GL10 gl, int32_t width, int32_t height);
+    public: void update(GL10* gl, int32_t width, int32_t height);
 
-    public: void drawChar(GL10 gl, Graphics graphics, char character, int32_t x, int32_t y, int32_t anchor);
+    public: void drawChar(GL10* gl, Graphics* graphics, char character, int32_t x, int32_t y, int32_t anchor);
 
-    public: void drawChars(GL10 gl, Graphics graphics, std::vector<char> data, int32_t offset, int32_t length, int32_t x, int32_t y, int32_t anchor);
+    public: void drawChars(GL10* gl, Graphics* graphics, std::vector<char> data, int32_t offset, int32_t length, int32_t x, int32_t y, int32_t anchor);
 
-    public: void drawString(GL10 gl, Graphics graphics, std::string string, int32_t x, int32_t y, int32_t anchor);
+    public: void drawString(GL10* gl, Graphics* graphics, std::string string, int32_t x, int32_t y, int32_t anchor);
 
-    public: void drawSubstring(GL10 gl, Graphics graphics, std::string string, int32_t offset, int32_t len, int32_t x, int32_t y, int32_t anchor);
+    public: void drawSubstring(GL10* gl, Graphics* graphics, std::string string, int32_t offset, int32_t len, int32_t x, int32_t y, int32_t anchor);
 
     public: int32_t charWidth(char ch);
 

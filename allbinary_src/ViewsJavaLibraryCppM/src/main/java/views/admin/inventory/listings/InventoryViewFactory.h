@@ -21,6 +21,12 @@
         #ifndef VIEWS_ADMIN_INVENTORY_LISTINGS_INVENTORYVIEWFACTORY_H
         #define VIEWS_ADMIN_INVENTORY_LISTINGS_INVENTORYVIEWFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,7 +64,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InventoryViewSearchInterface.h"
+        #include "views/admin/inventory/listings/InventoryViewSearchInterface.h"
 
 class InventoryViewFactory
             : public Object
@@ -66,7 +72,7 @@ class InventoryViewFactory
 
                 //@Throws(LicensingException.constructor)
             
-    public: static InventoryViewSearchInterface getInstance(SearchRequest searchRequest);
+    public: static InventoryViewSearchInterface* getInstance(SearchRequest* searchRequest);
 
 private: InventoryViewFactory();
 

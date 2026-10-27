@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,43 +42,43 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdvertisementInterface.h"
+        #include "org/allbinary/business/advertisement/AdvertisementInterface.h"
 
 class AdvertisementsInterface {
 
-    void add(AdvertisementInterface advertisementInterface)
+    public: virtual void add(AdvertisementInterface* advertisementInterface) = 0;
 
-    AdvertisementInterface get(int32_t index)
+    public: virtual AdvertisementInterface* get(int32_t index) = 0;
 
-    int32_t getCurrentPageNum()
+    public: virtual int32_t getCurrentPageNum() = 0;
 
-    std::string getErrorDescription()
+    public: virtual std::string getErrorDescription() = 0;
 
-    std::string getErrorNum()
+    public: virtual std::string getErrorNum() = 0;
 
-    int32_t getNumberOfPosters()
+    public: virtual int32_t getNumberOfPosters() = 0;
 
-    int32_t getNumberOfProductsInPage()
+    public: virtual int32_t getNumberOfProductsInPage() = 0;
 
-    int32_t getStatusCode()
+    public: virtual int32_t getStatusCode() = 0;
 
-    int32_t getTotalNumberOfProducts()
+    public: virtual int32_t getTotalNumberOfProducts() = 0;
 
-    bool isSearchValid()
+    public: virtual bool isSearchValid() = 0;
 
-    void setCurrentPageNum(int32_t currentPageNum)
+    public: virtual void setCurrentPageNum(int32_t currentPageNum) = 0;
 
-    void setErrorDescription(std::string errorDescription)
+    public: virtual void setErrorDescription(std::string errorDescription) = 0;
 
-    void setErrorNum(std::string errorNum)
+    public: virtual void setErrorNum(std::string errorNum) = 0;
 
-    void setNumberOfProductsInPage(int32_t numberOfProductsInPage)
+    public: virtual void setNumberOfProductsInPage(int32_t numberOfProductsInPage) = 0;
 
-    void setStatusCode(int32_t statusCode)
+    public: virtual void setStatusCode(int32_t statusCode) = 0;
 
-    void setTotalNumberOfProducts(int32_t totalNumberOfProducts)
+    public: virtual void setTotalNumberOfProducts(int32_t totalNumberOfProducts) = 0;
 
-    std::string toString()
+    public: virtual std::string toString() = 0;
 
 };
 

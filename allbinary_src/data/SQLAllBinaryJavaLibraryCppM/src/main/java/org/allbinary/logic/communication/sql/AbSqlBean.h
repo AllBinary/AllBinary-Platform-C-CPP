@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/sql/ResultSet.h>
@@ -61,23 +69,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbSqlRow.h"
+        #include "org/allbinary/logic/communication/sql/AbSqlRow.h"
 
 class AbSqlBean: public AbSqlRow {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const std::string METHOD_GET_FIELD = "getField";
 
     private: const std::string METHOD_IS_SUBSET_OF_ENTRY = "isSubsetOfEntry";
 
-public: AbSqlBean(DbConnectionInfo databaseConnectionInfoInterface);
+public: AbSqlBean(DbConnectionInfo* databaseConnectionInfoInterface);
 
     public: std::string getField(std::string key, std::string value, std::string requestedField);
 
-    public: std::string getField(HashMap<Object*, Object*> keysAndValues, std::string requestedField);
+    public: std::string getField(HashMap<Object*, Object*>* keysAndValues, std::string requestedField);
 
-    public: std::string isSubsetOfEntry(std::string key, std::string value, HashMap<Object*, Object*> columnsAndValues);
+    public: std::string isSubsetOfEntry(std::string key, std::string value, HashMap<Object*, Object*>* columnsAndValues);
 
 };
 

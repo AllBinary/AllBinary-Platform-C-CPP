@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_TIME_CREATED_TIMECREATED_H
         #define ORG_ALLBINARY_BUSINESS_TIME_CREATED_TIMECREATED_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/business/time/Time.h>
 
       

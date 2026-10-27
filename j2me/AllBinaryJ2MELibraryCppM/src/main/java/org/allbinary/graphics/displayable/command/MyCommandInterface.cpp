@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Command.h>
 
       
@@ -42,9 +48,9 @@
         
 class MyCommandInterface {
 
-    void addCommand(Command command)
+    public: virtual void addCommand(Command* command) = 0;
 
-    void removeAllCommands()
+    public: virtual void removeAllCommands() = 0;
 
 };
 

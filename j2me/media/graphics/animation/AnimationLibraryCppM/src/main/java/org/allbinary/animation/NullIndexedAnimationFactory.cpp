@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -48,28 +54,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnimationInterfaceFactoryInterface.h"
-#include "ProceduralAnimationInterfaceFactoryInterface.h"
-#include "IndexedAnimation.h"
-#include "NullIndexedAnimation.h"
-#include "IndexedAnimationBehavior.h"
-//#include "NullIndexedAnimationInner.h"
-#include "Animation.h"
+        #include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/IndexedAnimation.h"
+#include "org/allbinary/animation/NullIndexedAnimation.h"
+#include "org/allbinary/animation/IndexedAnimationBehavior.h"
+//#include "org/allbinary/animation/NullIndexedAnimationInner.h"
+#include "org/allbinary/animation/Animation.h"
 
 class NullIndexedAnimationFactory
             : public Object
-        : public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
+        , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
 
-    public: static const std::vector<IndexedAnimation> NULL_INDEXED_ANIMATION_ARRAY = {};
+    public: static inline const std::vector<IndexedAnimation*> NULL_INDEXED_ANIMATION_ARRAY = {};
 
-    private: static NullIndexedAnimationFactory NULL_INDEXED_ANIMATION_FACTORY = NullIndexedAnimationFactory();
+    private: static NullIndexedAnimationFactory* NULL_INDEXED_ANIMATION_FACTORY() { static std::unique_ptr<NullIndexedAnimationFactory> value(new NullIndexedAnimationFactory()); return value.get(); }
 
-    public: static NullIndexedAnimationFactory getFactoryInstance(){
+    public: static NullIndexedAnimationFactory* getFactoryInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullIndexedAnimationFactory::NULL_INDEXED_ANIMATION_FACTORY;
+                        return NullIndexedAnimationFactory::NULL_INDEXED_ANIMATION_FACTORY();
     
 }
 
@@ -89,14 +95,14 @@ class NullIndexedAnimationInner: public NullIndexedAnimation {
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 }
 
 
 };
 
             
-    private: const Animation NULL_ANIMATION = NullIndexedAnimationInner();
+    private: Animation* NULL_ANIMATION = new NullIndexedAnimationInner();
 
 private: NullIndexedAnimationFactory(){
 }
@@ -104,7 +110,7 @@ private: NullIndexedAnimationFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId){
+    public: Animation* getInstance(int32_t instanceId){
 
 
 
@@ -116,7 +122,7 @@ private: NullIndexedAnimationFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstanceAnimation(Animation animationInterface){
+    public: Animation* getInstanceAnimation(Animation* animationInterface){
 
 
 
@@ -126,7 +132,7 @@ private: NullIndexedAnimationFactory(){
 }
 
 
-    public: void setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties* scaleProperties){
 }
 
 

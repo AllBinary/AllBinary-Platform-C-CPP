@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_CANVAS_GAMESTATISTICSFACTORY_H
         #define ORG_ALLBINARY_CANVAS_GAMESTATISTICSFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -42,15 +48,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AndroidGameStatistics.h"
+        #include "org/allbinary/canvas/AndroidGameStatistics.h"
 //ActualPlatform
 /*actual*/ class GameStatisticsFactory: public AndroidGameStatistics {
 
-    private: static const AndroidGameStatistics SINGLETON = GameStatisticsFactory();
+    private: static inline AndroidGameStatistics* SINGLETON = new GameStatisticsFactory();
 
-    /*actual*/ public: static AndroidGameStatistics getInstance();
+    /*actual*/ public: static AndroidGameStatistics* getInstance();
 
-    private: StringMaker stringBuffer = StringMaker();
+    private: StringMaker* stringBuffer = new StringMaker();
 
     public: void add(std::string string);
 

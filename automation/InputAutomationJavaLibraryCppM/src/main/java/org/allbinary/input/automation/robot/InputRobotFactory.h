@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -90,42 +96,42 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputRobotInterface.h"
-#include "InputRobot.h"
+        #include "org/allbinary/input/automation/robot/InputRobotInterface.h"
+#include "org/allbinary/input/automation/robot/InputRobot.h"
 
 class InputRobotFactory
             : public Object
          {
 
-    private: static const InputRobotFactory inputRobotFactory = InputRobotFactory();
+    private: static InputRobotFactory* inputRobotFactory() { static std::unique_ptr<InputRobotFactory> value(new InputRobotFactory()); return value.get(); }
 
                 //@Throws(Exception.constructor)
             
-    public: static InputRobotFactory getInstance();
+    public: static InputRobotFactory* getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: static void loadLibraries(Collection collection);
+    public: static void loadLibraries(Collection* collection);
 
                 //@Throws(Exception.constructor)
             
-    public: static void loadLibrary(InputRobotInterface inputRobotInterface);
+    public: static void loadLibrary(InputRobotInterface* inputRobotInterface);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
+    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
 
-    private: HelpSetListener helpSetListenerInterface;
+    private: HelpSetListener* helpSetListenerInterface;
 
 private: InputRobotFactory();
 
-    public: void addListener(HelpSetListener helpSetListenerInterface);
+    public: void addListener(HelpSetListener* helpSetListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void add(InputRobotInterface inputRobotInterface);
+    public: void add(InputRobotInterface* inputRobotInterface);
 
                 //@Throws(Exception.constructor)
             
@@ -137,9 +143,9 @@ private: InputRobotFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: ABHashtable<Object*, Object*> get();
+    public: ABHashtable<Object*, Object*>* get();
 
-    public: InputRobotInterface get(std::string name);
+    public: InputRobotInterface* get(std::string name);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/advertisement/GameAdStateBase.h>
@@ -56,21 +62,21 @@
         
 class GameAdState: public GameAdStateBase, public VirtualKeyboardEventListenerInterface {
 
-public: GameAdState(AdConfiguration adConfiguration) : GameAdStateBase(adConfiguration){
+public: GameAdState(AdConfiguration* adConfiguration) : GameAdStateBase(adConfiguration){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-VirtualKeyboardEventHandler::getInstance().addListenerInterface(this);
+VirtualKeyboardEventHandler::getInstance()->addListenerInterface(this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void onVirtualKeyboardEvent(VirtualKeyboardEvent virtualKeyboardEvent){
+    public: void onVirtualKeyboardEvent(VirtualKeyboardEvent* virtualKeyboardEvent){
 }
 
 

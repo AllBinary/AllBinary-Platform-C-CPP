@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEINPUT_H
         #define ORG_ALLBINARY_GAME_INPUT_GAMEINPUT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/configuration/feature/Features.h>
@@ -64,26 +70,26 @@ class GameInput
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: BasicArrayList gameKeyEventList;
+    private: BasicArrayList* gameKeyEventList;
 
-    private: BasicArrayList removalGameKeyEventList;
+    private: BasicArrayList* removalGameKeyEventList;
 
     protected: bool isRemoveDuplicateKeyPresses;
 
-public: GameInput(BasicArrayList gameKeyEventList, BasicArrayList removalGameKeyEventList);
+public: GameInput(BasicArrayList* gameKeyEventList, BasicArrayList* removalGameKeyEventList);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void add(GameKeyEvent gameKeyEvent);
+    public: void add(GameKeyEvent* gameKeyEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void addForRemoval(GameKeyEvent gameKeyEvent);
+    public: void addForRemoval(GameKeyEvent* gameKeyEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isForRemoval(GameKeyEvent gameKeyEvent);
+    public: bool isForRemoval(GameKeyEvent* gameKeyEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void clear();
@@ -94,9 +100,9 @@ public: GameInput(BasicArrayList gameKeyEventList, BasicArrayList removalGameKey
 
     public: void update();
 
-    protected: BasicArrayList getRemovalGameKeyEventList();
+    protected: BasicArrayList* getRemovalGameKeyEventList();
 
-    protected: BasicArrayList getGameKeyEventList();
+    protected: BasicArrayList* getGameKeyEventList();
 
 };
 

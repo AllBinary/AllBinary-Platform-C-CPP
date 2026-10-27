@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENT_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/business/advertisement/image/AdvertisementImageInterface.h>
@@ -56,11 +62,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdvertisementInterface.h"
+        #include "org/allbinary/business/advertisement/AdvertisementInterface.h"
 
 class Advertisement
             : public Object
-        : public AdvertisementInterface {
+        , public AdvertisementInterface {
 
     private: std::string artist;
 
@@ -76,17 +82,17 @@ class Advertisement
 
     private: int32_t rank= 0;
 
-    private: Money listPrice;
+    private: Money* listPrice;
 
-    private: Money ourPrice;
+    private: Money* ourPrice;
 
-    private: AdvertisementImageInterface image;
+    private: AdvertisementImageInterface* image;
 
-    private: AdvertisementProductInterface product;
+    private: AdvertisementProductInterface* product;
 
-    private: AdvertisementThumbnailInterface thumbnail;
+    private: AdvertisementThumbnailInterface* thumbnail;
 
-    private: DisplayInBrowserContraintsInterface displayInBrowserContraintsInterface;
+    private: DisplayInBrowserContraintsInterface* displayInBrowserContraintsInterface;
 
 public: Advertisement();
 
@@ -114,31 +120,31 @@ public: Advertisement();
 
     public: void setFramedLink(std::string framedLink);
 
-    public: Money getListPrice();
+    public: Money* getListPrice();
 
-    public: void setListPrice(Money listPrice);
+    public: void setListPrice(Money* listPrice);
 
-    public: Money getOurPrice();
+    public: Money* getOurPrice();
 
-    public: void setOurPrice(Money ourPrice);
+    public: void setOurPrice(Money* ourPrice);
 
     public: int32_t getRank();
 
     public: void setRank(int32_t rank);
 
-    public: AdvertisementImageInterface getImage();
+    public: AdvertisementImageInterface* getImage();
 
-    public: void setImage(AdvertisementImageInterface image);
+    public: void setImage(AdvertisementImageInterface* image);
 
-    public: AdvertisementProductInterface getProduct();
+    public: AdvertisementProductInterface* getProduct();
 
-    public: void setProduct(AdvertisementProductInterface product);
+    public: void setProduct(AdvertisementProductInterface* product);
 
-    public: AdvertisementThumbnailInterface getThumbnail();
+    public: AdvertisementThumbnailInterface* getThumbnail();
 
-    public: void setThumbnail(AdvertisementThumbnailInterface thumbnail);
+    public: void setThumbnail(AdvertisementThumbnailInterface* thumbnail);
 
-    public: DisplayInBrowserContraintsInterface getDisplayInBrowserContraintsInterface();
+    public: DisplayInBrowserContraintsInterface* getDisplayInBrowserContraintsInterface();
 
 };
 

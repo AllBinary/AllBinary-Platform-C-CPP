@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Command.h>
 
       
@@ -42,13 +48,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ABTextItem.h"
+        #include "org/allbinary/graphics/form/item/ABTextItem.h"
 
 class CommandTextItem: public ABTextItem {
 
-    private: Command command;
+    private: Command* command;
 
-public: CommandTextItem(Command command, int32_t layout, std::string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : ABTextItem(command.getLabel(), layout, altText, backgroundBasicColor, foregroundBasicColor){
+public: CommandTextItem(Command* command, int32_t layout, std::string altText, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ABTextItem(command->getLabel(), layout, altText, backgroundBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -70,7 +76,7 @@ this->command= command;
 }
 
 
-    public: Command getCommand(){
+    public: Command* getCommand(){
 
 
 

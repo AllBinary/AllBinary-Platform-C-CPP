@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -55,15 +61,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Group.h"
+        #include "org/allbinary/game/identification/Group.h"
 
 class GroupFactory
             : public Object
          {
 
-    private: static GroupFactory instance = GroupFactory();
+    private: static GroupFactory* instance() { static std::unique_ptr<GroupFactory> value(new GroupFactory()); return value.get(); }
 
-    public: static GroupFactory getInstance(){
+    public: static GroupFactory* getInstance(){
 
 
 
@@ -73,17 +79,17 @@ class GroupFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: const std::vector<Group> NULL_GROUP_ARRAY = {};
+    public: const std::vector<Group*> NULL_GROUP_ARRAY = {};
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
     private: int32_t index = 0;
 
-    public: Group getNextGroup(){
+    public: Group* getNextGroup(){
 
-    Group group = this->list.objectArray[this->index];;
+    Group* group = dynamic_cast<Group*>(this->list->objectArray[this->index]);;
     
 this->index++;
     
@@ -96,11 +102,11 @@ this->index++;
 }
 
 
-    public: Group getNextGroupByName(std::string name){
+    public: Group* getNextGroupByName(std::string name){
 
-    Group group = this->getNextGroup();;
+    Group* group = this->getNextGroup();;
     
-group.setName(name);
+group->setName(name);
     
 
 
@@ -113,26 +119,26 @@ group.setName(name);
 
     public: void init(int16_t groups, std::vector<std::string> nameArray){
 
-    StringMaker stringMaker = StringMaker();;
+    StringMaker* stringMaker = new StringMaker();;
     
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
 
     std::string TEAM = "Team ";;
     
-this->list.clear();
+this->list->clear();
     
 this->index= 0;
     
 
-    int32_t size = this->list.size();;
+    int32_t size = this->list->size();;
     
 
         while(size < groups)
         {
 
-    std::string name = stringUtil.EMPTY_STRING;;
+    std::string name = stringUtil->EMPTY_STRING;;
     
 
                         if(size < nameArray.size())
@@ -144,14 +150,14 @@ this->index= 0;
                                     }
                                 
                         else {
-                            stringMaker.delete(0, stringMaker.length());
+                            stringMaker->delete(0, stringMaker->length());
     
-name= stringMaker.append(TEAM).appendint(size).toString();
+name= stringMaker->append(TEAM)->appendint(size)->toString();
     
 
                         }
                             
-this->list.add(Group(name, (size +3)));
+this->list->add(new Group(name, (size +3)));
     
 size++;
     

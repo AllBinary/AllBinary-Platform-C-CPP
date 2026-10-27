@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
@@ -41,13 +47,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapCellPosition.h"
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
 
 class GeographicMapCellPositionFactoryInitVisitorInterface {
 
                 //@Throws(Exception.constructor)
             
-    void visit(AllBinaryTiledLayer tiledLayer, GeographicMapCellPosition cellPosition)
+    public: virtual void visit(AllBinaryTiledLayer* tiledLayer, GeographicMapCellPosition* cellPosition) = 0;
 
 };
 

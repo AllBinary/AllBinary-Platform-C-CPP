@@ -9,6 +9,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -47,17 +53,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CustomScreen.h"
+        #include "org/allbinary/graphics/form/CustomScreen.h"
 
 class ABCustomForm: public CustomScreen {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-public: ABCustomForm(std::string title, std::vector<ABCustomItem> items, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: ABCustomForm(std::string title, std::vector<ABCustomItem*> items, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
-    public: std::vector<ABCustomItem> getAllitems();
+    public: std::vector<ABCustomItem*> getAllitems();
 
     public: int32_t size();
 
@@ -69,17 +75,17 @@ public: ABCustomForm(std::string title, std::vector<ABCustomItem> items, BasicCo
 
     public: void delete_(int32_t itemNum);
 
-    public: int32_t append(ABCustomItem item);
+    public: int32_t append(ABCustomItem* item);
 
-    public: void insert(int32_t itemNum, ABCustomItem item);
+    public: void insert(int32_t itemNum, ABCustomItem* item);
 
-    public: void set(int32_t itemNum, ABCustomItem item);
+    public: void set(int32_t itemNum, ABCustomItem* item);
 
-    public: ABCustomItem get(int32_t itemNum);
+    public: ABCustomItem* get(int32_t itemNum);
 
     public: int32_t getWidth();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
     public: std::string getTitle();
 

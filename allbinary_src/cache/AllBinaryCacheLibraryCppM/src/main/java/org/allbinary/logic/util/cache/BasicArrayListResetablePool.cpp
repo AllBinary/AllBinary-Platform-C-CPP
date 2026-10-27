@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 
@@ -38,13 +46,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbstractArrayListPool.h"
-#include "CacheableInterfaceFactoryInterface.h"
-#include "CacheableInterface.h"
+        #include "org/allbinary/logic/util/cache/AbstractArrayListPool.h"
+#include "org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h"
+#include "org/allbinary/logic/util/cache/CacheableInterface.h"
 
 class BasicArrayListResetablePool: public AbstractArrayListPool {
 
-public: BasicArrayListResetablePool(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface) : AbstractArrayListPool(cacheableInterfaceFactoryInterface){
+public: BasicArrayListResetablePool(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface) : AbstractArrayListPool(cacheableInterfaceFactoryInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -60,7 +68,7 @@ public: BasicArrayListResetablePool(CacheableInterfaceFactoryInterface cacheable
 
                 //@Throws(Exception.constructor)
             
-    public: CacheableInterface remove(Object* key){
+    public: CacheableInterface* remove(Object* key){
 
     int32_t size = this->buffers.size();;
     
@@ -72,7 +80,7 @@ public: BasicArrayListResetablePool(CacheableInterfaceFactoryInterface cacheable
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->buffers.removeAt(size -1);
+                        return dynamic_cast<CacheableInterface*>(this->buffers.removeAt(size -1));
     
 
                                     }

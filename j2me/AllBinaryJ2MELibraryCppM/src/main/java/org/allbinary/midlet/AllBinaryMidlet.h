@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_MIDLET_ALLBINARYMIDLET_H
         #define ORG_ALLBINARY_MIDLET_ALLBINARYMIDLET_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Command.h>
@@ -101,13 +109,13 @@
         
 class AllBinaryMidlet: public MIDlet, public CommandListener {
 
-    private: static Object* NULL_ALLBINARY_MIDLET = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* NULL_ALLBINARY_MIDLET = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static AllBinaryMidlet getNullInstance();
+    public: static AllBinaryMidlet* getNullInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: const std::string SET_DISPLAY = "setDisplay";
 
@@ -117,17 +125,17 @@ class AllBinaryMidlet: public MIDlet, public CommandListener {
 
     private: const std::string SETTING_NO_TITLE = "Setting: No Title, Display: ";
 
-    private: ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
+    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
 
     private: bool midletDestroyed= false;
 
 public: AllBinaryMidlet();
 
-    protected: void setDisplay(Displayable newDisplay);
+    protected: void setDisplay(Displayable* newDisplay);
 
-    public: Display getDisplay();
+    public: Display* getDisplay();
 
-    protected: Displayable getCurrentDisplayable();
+    protected: Displayable* getCurrentDisplayable();
 
     public: void setDestroyed(bool destroyed);
 
@@ -145,17 +153,17 @@ public: AllBinaryMidlet();
 
                 //@Throws(Exception.constructor)
             
-    public: void setStartStateHashtable(ABHashtable<Object*, Object*> hashtable);
+    public: void setStartStateHashtable(ABHashtable<Object*, Object*>* hashtable);
 
                 //@Throws(Exception.constructor)
             
-    public: ABHashtable<Object*, Object*> getStartStateHashtable();
+    public: ABHashtable<Object*, Object*>* getStartStateHashtable();
 
                 //@Throws(Exception.constructor)
             
-    public: ABHashtable<Object*, Object*> getCurrentStateHashtable();
+    public: ABHashtable<Object*, Object*>* getCurrentStateHashtable();
 
-    public: void commandAction(Command command, Displayable displayable);
+    public: void commandAction(Command* command, Displayable* displayable);
 
 };
 

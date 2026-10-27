@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_COLLIDABLEVEHICLEBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_LAYER_COLLIDABLEVEHICLEBEHAVIOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/pickup/PickedUpLayerInterface.h>
@@ -62,10 +68,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "VehiclePropertiesCompositeInterface.h"
-#include "CollidableCompositeLayer.h"
-#include "VehicleProperties.h"
-#include "VehicleFrictionProperties.h"
+        #include "org/allbinary/game/layer/VehiclePropertiesCompositeInterface.h"
+#include "org/allbinary/game/layer/CollidableCompositeLayer.h"
+#include "org/allbinary/game/layer/VehicleProperties.h"
+#include "org/allbinary/game/layer/VehicleFrictionProperties.h"
 
 class CollidableVehicleBehavior: public CollidableDestroyableDamageableBehavior {
 
@@ -75,17 +81,17 @@ public: CollidableVehicleBehavior(bool collidable);
 
                 //@Throws(Exception.constructor)
             
-    public: void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
+    public: void collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface);
 
-    public: void collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface);
+    public: void collideInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface);
 
     private: int64_t halfImpactVelocityX= 0;
 
     private: int64_t halfImpactVelocityY= 0;
 
-    protected: void collideVehicle(CollidableCompositeLayer ownerLayer, VehiclePropertiesCompositeInterface vehiclePropertiesCompositeInterface);
+    protected: void collideVehicle(CollidableCompositeLayer* ownerLayer, VehiclePropertiesCompositeInterface* vehiclePropertiesCompositeInterface);
 
-    private: void collideFriction(VehiclePropertiesCompositeInterface vehiclePropertiesCompositeInterface);
+    private: void collideFriction(VehiclePropertiesCompositeInterface* vehiclePropertiesCompositeInterface);
 
 };
 

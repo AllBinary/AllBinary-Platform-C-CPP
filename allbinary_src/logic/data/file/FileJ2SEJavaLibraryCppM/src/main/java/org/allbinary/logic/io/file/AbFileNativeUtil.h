@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_ABFILENATIVEUTIL_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_ABFILENATIVEUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/io/File.h>
@@ -44,13 +50,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbFile.h"
+        #include "org/allbinary/logic/io/file/AbFile.h"
 
 class AbFileNativeUtil
             : public Object
          {
 
-    public: static File get(AbFile file);
+    public: static File* get(AbFile* file);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -79,16 +85,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StylesData.h"
-#include "StyleData.h"
+        #include "org/allbinary/logic/visual/dhtml/style/StylesData.h"
+#include "org/allbinary/logic/visual/dhtml/style/StyleData.h"
 
 class StylesValidationFactory
             : public Object
          {
 
-    private: static StylesValidationFactory instance() { return StylesValidationFactory(); }
+    private: static StylesValidationFactory* instance() { static std::unique_ptr<StylesValidationFactory> value(new StylesValidationFactory()); return value.get(); }
 
-    public: static StylesValidationFactory getInstance(){
+    public: static StylesValidationFactory* getInstance(){
 
 
 
@@ -100,20 +106,20 @@ class StylesValidationFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList getInstance(HashMap<Object*, Object*> hashMap){
+    public: static BasicArrayList* getInstance(HashMap<Object*, Object*>* hashMap){
 
-    Document stylesDocument = hashMap.get(NameSpaceRequestParamData::DOCUMENT);;
+    Document* stylesDocument = dynamic_cast<Document*>(hashMap->get(NameSpaceRequestParamData::DOCUMENT));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StylesValidationFactory::getInstance().getInstance(stylesDocument);;
+                        return StylesValidationFactory::getInstance()->getInstance(stylesDocument);;
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: StylesValidationFactory(){
 }
@@ -121,49 +127,27 @@ private: StylesValidationFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getInstance(Document document){
+    public: BasicArrayList* getInstance(Document* document){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-    NodeList nodeList = document.getElementsByTagName(StylesData::getInstance().NAME);;
+    NodeList* nodeList = document->getElementsByTagName(StylesData::getInstance()->NAME);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Style Present: " +XmlDocumentHelper::toString(document), this, commonStrings.GET_INSTANCE);
+                                    this->logUtil->putF("Style Present: " +XmlDocumentHelper::toString(document), this, commonStrings->GET_INSTANCE);
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Styles Present: " +nodeList.getLength(), this, commonStrings.GET_INSTANCE);
-    
-
-                                    }
-                                
-
-
-
-
-                        for (
-    int32_t index = 0;index < nodeList.getLength(); index++)
-        {
-
-    Node stylesNode = nodeList.item(index);;
-    
-
-    BasicArrayList styleNodeList = DomSearchHelper::getAllNodes(StyleData::getInstance().NAME, stylesNode.getChildNodes());;
-    
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
-                        
-                                    {
-                                    this->logUtil.putF("Number Of Style Nodes Present: " +styleNodeList.size(), this, commonStrings.GET_INSTANCE);
+                                    this->logUtil->putF("Styles Present: " +nodeList->getLength(), this, commonStrings->GET_INSTANCE);
     
 
                                     }
@@ -173,19 +157,41 @@ private: StylesValidationFactory(){
 
 
                         for (
-    int32_t styleNodesIndex = 0;styleNodesIndex < styleNodeList.size(); styleNodesIndex++)
+    int32_t index = 0;index < nodeList->getLength(); index++)
         {
 
-    Node styleNode = styleNodeList.get(styleNodesIndex);;
+    Node* stylesNode = nodeList->item(index);;
     
 
-    BasicArrayList cssElementStyleNodeList = DomSearchHelper::getAllNodes(CssElementData::getInstance().NAME, styleNode.getChildNodes());;
+    BasicArrayList* styleNodeList = DomSearchHelper::getAllNodes(StyleData::getInstance()->NAME, stylesNode->getChildNodes());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Number Of Element Nodes Present: " +cssElementStyleNodeList.size(), this, commonStrings.GET_INSTANCE);
+                                    this->logUtil->putF("Number Of Style Nodes Present: " +styleNodeList->size(), this, commonStrings->GET_INSTANCE);
+    
+
+                                    }
+                                
+
+
+
+
+                        for (
+    int32_t styleNodesIndex = 0;styleNodesIndex < styleNodeList->size(); styleNodesIndex++)
+        {
+
+    Node* styleNode = dynamic_cast<Node*>(styleNodeList->get(styleNodesIndex));;
+    
+
+    BasicArrayList* cssElementStyleNodeList = DomSearchHelper::getAllNodes(CssElementData::getInstance()->NAME, styleNode->getChildNodes());;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        
+                                    {
+                                    this->logUtil->putF("Number Of Element Nodes Present: " +cssElementStyleNodeList->size(), this, commonStrings->GET_INSTANCE);
     
 
                                     }
@@ -201,10 +207,10 @@ private: StylesValidationFactory(){
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("No Style Present", this, commonStrings.GET_INSTANCE);
+                                    this->logUtil->putF("No Style Present", this, commonStrings->GET_INSTANCE);
     
 
                                     }
@@ -213,7 +219,7 @@ private: StylesValidationFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicArrayListD();
+                        return new BasicArrayListD();
     
 }
 

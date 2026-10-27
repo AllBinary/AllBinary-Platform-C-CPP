@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/time/TimeDelayHelper.h>
@@ -41,31 +47,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "IntermissionInterface.h"
-#include "NullIntermissionEnableListener.h"
-#include "IntermissionEnableListenerInterface.h"
+        #include "org/allbinary/game/IntermissionInterface.h"
+#include "org/allbinary/game/NullIntermissionEnableListener.h"
+#include "org/allbinary/game/IntermissionEnableListenerInterface.h"
 
 class Intermission
             : public Object
-        : public IntermissionInterface {
+        , public IntermissionInterface {
 
     private: bool enabled= false;
 
-    private: const TimeDelayHelper timeElapsedHelper = TimeDelayHelper(0);
+    private: TimeDelayHelper* timeElapsedHelper = new TimeDelayHelper(0);
 
-    private: IntermissionEnableListenerInterface intermissionEnableListener = NullIntermissionEnableListener::getInstance();
+    private: IntermissionEnableListenerInterface* intermissionEnableListener = NullIntermissionEnableListener::getInstance();
 
 public: Intermission(){
 }
 
 
-    public: void setListener(IntermissionEnableListenerInterface enableListener){
+    public: void setListener(IntermissionEnableListenerInterface* enableListener){
 this->intermissionEnableListener= enableListener;
     
 }
 
 
-    public: TimeDelayHelper getTimeDelayHelper(){
+    public: TimeDelayHelper* getTimeDelayHelper(){
 
 
 
@@ -82,12 +88,12 @@ this->enabled= enabled;
                         if(this->isEnabled())
                         
                                     {
-                                    this->getTimeDelayHelper().setStartTimeTNT();
+                                    this->getTimeDelayHelper()->setStartTimeTNT();
     
 
                                     }
                                 
-this->intermissionEnableListener.notifyIntermission(enabled);
+this->intermissionEnableListener->notifyIntermission(enabled);
     
 }
 

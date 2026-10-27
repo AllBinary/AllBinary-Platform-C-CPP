@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/init/LicenseInitInfo.h>
@@ -62,11 +68,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ClientInformation.h"
+        #include "org/allbinary/logic/system/security/licensing/ClientInformation.h"
 // This is the information sent to the license server
 class AbeClientInformation: public ClientInformation {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: AbeClientInformation(std::string name, std::string version, std::string specialName, std::string shortName) : ClientInformation(name, version, specialName, shortName){
 
@@ -81,20 +87,20 @@ public: AbeClientInformation(std::string name, std::string version, std::string 
     public: void init(){
 
         try {
-            this->setOperatingSystemInterface(OperatingSystemFactory::getInstance().getOperatingSystemInstance());
+            this->setOperatingSystemInterface(OperatingSystemFactory::getInstance()->getOperatingSystemInstance());
     
 
-    LicenseInitInfo licenseInitInfo = LicenseInitInfoUtil::getInstance().read();;
+    LicenseInitInfo* licenseInitInfo = LicenseInitInfoUtil::getInstance()->read();;
     
-this->setLicenseId(licenseInitInfo.getLicenseId());
+this->setLicenseId(licenseInitInfo->getLicenseId());
     
-this->setLicenseServers(licenseInitInfo.getServerList());
-    
-
-    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
+this->setLicenseServers(licenseInitInfo->getServerList());
     
 
-                        if(stringValidationUtil.isEmpty(this->getLicenseId()))
+    StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
+    
+
+                        if(stringValidationUtil->isEmpty(this->getLicenseId()))
                         
                                     {
                                     
@@ -106,21 +112,21 @@ this->setLicenseId(NONE);
                                     }
                                 
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil::put(StringMaker().append("Special Name: ").append(this->getSpecialName()).toString(), this, commonStrings.CONSTRUCTOR);
+PreLogUtil::put((new StringMaker())->append("Special Name: ")->append(this->getSpecialName())->toString(), this, commonStrings->CONSTRUCTOR);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
+logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &e);
     
 }
 

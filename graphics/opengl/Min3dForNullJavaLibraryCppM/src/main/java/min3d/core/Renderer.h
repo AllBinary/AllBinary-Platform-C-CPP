@@ -21,6 +21,12 @@
         #ifndef MIN3D_CORE_RENDERER_H
         #define MIN3D_CORE_RENDERER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/khronos/egl/EGLConfig.h>
 
       
@@ -48,11 +54,11 @@
         
 class Renderer {
 
-    void onSurfaceCreated(GL10 gl, EGLConfig config);
+    public: virtual void onSurfaceCreated(GL10* gl, EGLConfig* config) = 0;
 
-    void onSurfaceChanged(GL10 gl, int32_t width, int32_t height);
+    public: virtual void onSurfaceChanged(GL10* gl, int32_t width, int32_t height) = 0;
 
-    void onDrawFrame(GL10 gl);
+    public: virtual void onDrawFrame(GL10* gl) = 0;
 
 };
 

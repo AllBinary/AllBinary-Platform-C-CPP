@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -55,56 +61,56 @@ class WaypointCellPositionHistory
             : public Object
          {
 
-    private: static const WaypointCellPositionHistory SINGLETON = WaypointCellPositionHistory();
+    private: static WaypointCellPositionHistory* SINGLETON() { static std::unique_ptr<WaypointCellPositionHistory> value(new WaypointCellPositionHistory()); return value.get(); }
 
-    public: static WaypointCellPositionHistory getInstance(){
+    public: static WaypointCellPositionHistory* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WaypointCellPositionHistory::SINGLETON;
+                        return WaypointCellPositionHistory::SINGLETON();
     
 }
 
 
-    private: BasicArrayList positionList = BasicArrayListD();
+    private: BasicArrayList* positionList = new BasicArrayListD();
 
-    private: BasicArrayList layerList = BasicArrayListD();
+    private: BasicArrayList* layerList = new BasicArrayListD();
 
-    public: void add(CellPosition cellPosition, AllBinaryLayer layerInterface){
-this->positionList.add(cellPosition);
+    public: void add(CellPosition* cellPosition, AllBinaryLayer* layerInterface){
+this->positionList->add(cellPosition);
     
-this->layerList.add(layerInterface);
+this->layerList->add(layerInterface);
     
 }
 
 
-    public: void addList(BasicArrayList list, AllBinaryLayer layerInterface){
+    public: void addList(BasicArrayList* list, AllBinaryLayer* layerInterface){
 
 
 
 
                         for (
-    int32_t index = list.size() -1;index >= 0; index--)
+    int32_t index = list->size() -1;index >= 0; index--)
         {
-this->add(list.get(index), layerInterface);
+this->add(dynamic_cast<CellPosition*>(list->get(index)), layerInterface);
     
 }
 
 }
 
 
-    public: void remove(CellPosition cellPosition){
+    public: void remove(CellPosition* cellPosition){
 
-    int32_t index = this->positionList.indexOf(cellPosition);;
+    int32_t index = this->positionList->indexOf(cellPosition);;
     
 
                         if(index >= 0)
                         
                                     {
-                                    this->positionList.removeAt(index);
+                                    this->positionList->removeAt(index);
     
-this->layerList.removeAt(index);
+this->layerList->removeAt(index);
     
 
                                     }
@@ -112,22 +118,22 @@ this->layerList.removeAt(index);
 }
 
 
-    public: void removeLayer(AllBinaryLayer layerInterface){
+    public: void removeLayer(AllBinaryLayer* layerInterface){
 
     int32_t index = 0;;
     
 
         while(index !=  -1)
         {
-index= this->layerList.indexOf(layerInterface);
+index= this->layerList->indexOf(layerInterface);
     
 
                         if(index >= 0)
                         
                                     {
-                                    this->positionList.removeAt(index);
+                                    this->positionList->removeAt(index);
     
-this->layerList.removeAt(index);
+this->layerList->removeAt(index);
     
 
                                     }
@@ -138,33 +144,33 @@ this->layerList.removeAt(index);
 
 
     public: void clear(){
-this->positionList.clear();
+this->positionList->clear();
     
-this->layerList.clear();
+this->layerList->clear();
     
 }
 
 
-    public: bool isCellPositionWithDrop(CellPosition cellPosition){
+    public: bool isCellPositionWithDrop(CellPosition* cellPosition){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->positionList.contains(cellPosition);;
+                        return this->positionList->contains(cellPosition);;
     
 }
 
 
-    public: bool anyCellPositionWithDrop(BasicArrayList list){
+    public: bool anyCellPositionWithDrop(BasicArrayList* list){
 
 
 
 
                         for (
-    int32_t index = list.size() -1;index >= 0; index--)
+    int32_t index = list->size() -1;index >= 0; index--)
         {
 
-                        if(this->isCellPositionWithDrop(list.get(index)))
+                        if(this->isCellPositionWithDrop(dynamic_cast<CellPosition*>(list->get(index))))
                         
                                     {
                                     
@@ -187,9 +193,9 @@ this->layerList.clear();
 }
 
 
-    public: AllBinaryLayer getLayerInterface(CellPosition cellPosition){
+    public: AllBinaryLayer* getLayerInterface(CellPosition* cellPosition){
 
-    int32_t index = this->positionList.indexOf(cellPosition);;
+    int32_t index = this->positionList->indexOf(cellPosition);;
     
 
                         if(index >= 0)
@@ -199,7 +205,7 @@ this->layerList.clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->layerList.get(index);
+                        return dynamic_cast<AllBinaryLayer*>(this->layerList->get(index));
     
 
                                     }

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -45,24 +51,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LinePathAnimation.h"
+        #include "org/allbinary/game/layer/LinePathAnimation.h"
 
 class LinePathRelativeAnimation: public LinePathAnimation {
 
-    private: static const LinePathRelativeAnimation instanceC = LinePathRelativeAnimation();
+    private: static LinePathRelativeAnimation* instanceC() { static std::unique_ptr<LinePathRelativeAnimation> value(new LinePathRelativeAnimation()); return value.get(); }
 
-    public: static LinePathAnimation getInstance(){
+    public: static LinePathAnimation* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LinePathRelativeAnimation::instanceC;
+                        return LinePathRelativeAnimation::instanceC();
     
 }
 
 
-    public: void paint(Graphics graphics, GPoint point, GPoint nextPoint, Layer tiledLayer){
-graphics.drawLine(nextPoint.getX() -tiledLayer.getXP(), nextPoint.getY() -tiledLayer.getYP(), point.getX() -tiledLayer.getXP(), point.getY() -tiledLayer.getYP());
+    public: void paint(Graphics* graphics, GPoint* point, GPoint* nextPoint, Layer* tiledLayer){
+graphics->drawLine(nextPoint->getX() -tiledLayer->getXP(), nextPoint->getY() -tiledLayer->getYP(), point->getX() -tiledLayer->getXP(), point->getY() -tiledLayer->getYP());
     
 }
 

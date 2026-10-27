@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_BASICWEIGHTSHIPPINGMODULEVIEW_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_BASICWEIGHTSHIPPINGMODULEVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/commerce/shipping/ShippingMethodData.h>
@@ -62,25 +68,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicWeightShippingModule.h"
+        #include "org/allbinary/business/user/commerce/shipping/modules/BasicWeightShippingModule.h"
 
 class BasicWeightShippingModuleView: public BasicWeightShippingModule, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: BasicWeightShippingModuleView();
 
-    public: Boolean isValid();
+    public: bool isValid();
 
-    public: org::w3c::dom::Document toValidationInfoDoc();
+    public: org::w3c::dom::Document* toValidationInfoDoc();
 
-    public: org::w3c::dom::Node toValidationInfoNode(org::w3c::dom::Document document);
+    public: org::w3c::dom::Node* toValidationInfoNode(org::w3c::dom::Document* document);
 
     public: std::string validationInfo();
 
-    public: org::w3c::dom::Node toXmlNode(org::w3c::dom::Document document);
+    public: org::w3c::dom::Node* toXmlNode(org::w3c::dom::Document* document);
 
-    public: org::w3c::dom::Document toXmlDoc();
+    public: org::w3c::dom::Document* toXmlDoc();
 
     public: std::string view();
 

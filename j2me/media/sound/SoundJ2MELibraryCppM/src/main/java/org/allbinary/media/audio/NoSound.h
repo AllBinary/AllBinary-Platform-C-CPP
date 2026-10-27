@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_NOSOUND_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_NOSOUND_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/string/StringUtil.h>
 
       
@@ -42,14 +48,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Sound.h"
-#include "NoPlayer.h"
+        #include "org/allbinary/media/audio/Sound.h"
+#include "org/allbinary/media/audio/NoPlayer.h"
 
 class NoSound: public Sound {
 
-    public: static NoSound getInstance();
+    public: static NoSound* getInstance();
 
-    private: static NoSound instance() { return NoSound(); }
+    private: static NoSound* instance() { static std::unique_ptr<NoSound> value(new NoSound()); return value.get(); }
 
 private: NoSound();
 

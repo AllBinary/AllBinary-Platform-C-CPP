@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -57,10 +63,10 @@ class BufferedLineReader
             : public Object
          {
 
-    private: BufferedReader tmpIn;
+    private: BufferedReader* tmpIn;
 
-public: BufferedLineReader(AbFile file){
-this->tmpIn= BufferedReader(FileReader(AbFileNativeUtil::get(file)));
+public: BufferedLineReader(AbFile* file){
+this->tmpIn= new BufferedReader(new FileReader(AbFileNativeUtil::get(file)));
     
 }
 
@@ -76,7 +82,7 @@ this->tmpIn= BufferedReader(FileReader(AbFileNativeUtil::get(file)));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->tmpIn.readLine();;
+                        return this->tmpIn->readLine();;
     
 }
 

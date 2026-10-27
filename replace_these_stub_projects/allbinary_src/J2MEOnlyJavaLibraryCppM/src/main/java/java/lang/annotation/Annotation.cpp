@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Class.h"
         
 
@@ -27,7 +33,7 @@
         
 class Annotation {
 
-    Class* annotationType()
+    public: virtual Class* annotationType() = 0;
 
 };
 

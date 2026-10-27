@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -73,33 +79,33 @@ class AnimationFactoryInitializationVisitor
 
     public: std::string toString(){
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
-    CommonLabels commonLabels = CommonLabels::getInstance();;
+    CommonLabels* commonLabels = CommonLabels::getInstance();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(PositionStrings::getInstance().DX_LABEL).appendfloat(this->dx);
+stringBuffer->append(PositionStrings::getInstance()->DX_LABEL)->appendfloat(this->dx);
     
-stringBuffer.append(PositionStrings::getInstance().DY_LABEL).appendfloat(this->dy);
+stringBuffer->append(PositionStrings::getInstance()->DY_LABEL)->appendfloat(this->dy);
     
-stringBuffer.append(commonLabels.WIDTH_LABEL);
+stringBuffer->append(commonLabels->WIDTH_LABEL);
     
-stringBuffer.appendint(this->width);
+stringBuffer->appendint(this->width);
     
-stringBuffer.append(commonSeps.SPACE);
+stringBuffer->append(commonSeps->SPACE);
     
-stringBuffer.append(commonLabels.HEIGHT_LABEL);
+stringBuffer->append(commonLabels->HEIGHT_LABEL);
     
-stringBuffer.appendint(this->height);
+stringBuffer->appendint(this->height);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

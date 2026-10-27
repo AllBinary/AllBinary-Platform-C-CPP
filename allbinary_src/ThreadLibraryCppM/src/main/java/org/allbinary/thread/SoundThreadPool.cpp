@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,15 +44,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ThreadPool.h"
+        #include "org/allbinary/thread/ThreadPool.h"
 
 class SoundThreadPool
             : public Object
          {
 
-    private: static ThreadPool instance() { return ThreadPool(); }
+    private: static ThreadPool* instance() { static std::unique_ptr<ThreadPool> value(new ThreadPool("Sound", 1, ThreadPool::NORMAL_PRIORITY)); return value.get(); }
 
-    public: static ThreadPool getInstance(){
+    public: static ThreadPool* getInstance(){
 
 
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_BASICPAYMENTTYPEUTIL_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_BASICPAYMENTTYPEUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,32 +58,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicPaymentType.h"
+        #include "org/allbinary/business/user/commerce/money/payment/types/BasicPaymentType.h"
 
 class BasicPaymentTypeUtil
             : public Object
          {
 
-    private: static BasicPaymentTypeUtil instance() { return BasicPaymentTypeUtil(); }
+    private: static BasicPaymentTypeUtil* instance() { static std::unique_ptr<BasicPaymentTypeUtil> value(new BasicPaymentTypeUtil()); return value.get(); }
 
                     static int32_t initResult;
                 static int32_t init();
             
-    public: static BasicPaymentTypeUtil getInstance();
+    public: static BasicPaymentTypeUtil* getInstance();
 
 private: BasicPaymentTypeUtil();
 
-    private: BasicArrayList paymentTypeVector = BasicArrayListD();
+    private: BasicArrayList* paymentTypeVector = new BasicArrayListD();
 
-    public: void add(BasicPaymentType paymentType);
+    public: void add(BasicPaymentType* paymentType);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicPaymentType get(std::string paymentTypeString);
+    public: BasicPaymentType* get(std::string paymentTypeString);
 
-    public: bool isContain(BasicPaymentType paymentType);
+    public: bool isContain(BasicPaymentType* paymentType);
 
-    public: BasicArrayList difference(BasicArrayList a_PaymentTypeVector);
+    public: BasicArrayList* difference(BasicArrayList* a_PaymentTypeVector);
 
 };
 

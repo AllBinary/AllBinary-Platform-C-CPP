@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/direction/Direction.h>
@@ -73,21 +79,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TopViewCharacterBehavior.h"
+        #include "org/allbinary/game/behavior/topview/TopViewCharacterBehavior.h"
 
 class PlayerTopViewCharacterBehavior: public TopViewCharacterBehavior {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void terrainEvent(AllBinaryLayer layer, Direction direction, int32_t x, int32_t y, std::vector<BasicGeographicMap> geographicMapInterfaceArray, GeographicMapCellPosition geographicMapCellPosition);
+    public: void terrainEvent(AllBinaryLayer* layer, Direction* direction, int32_t x, int32_t y, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, GeographicMapCellPosition* geographicMapCellPosition);
 
-    public: void terrainMove(AllBinaryLayer layer, std::vector<BasicGeographicMap> geographicMapInterfaceArray, int32_t x, int32_t y);
+    public: void terrainMove(AllBinaryLayer* layer, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, int32_t x, int32_t y);
 
-    private: void moveIfOnScreen(AllBinaryLayer layer, int32_t ax, int32_t ay);
+    private: void moveIfOnScreen(AllBinaryLayer* layer, int32_t ax, int32_t ay);
 
-    private: bool isTiledLayerMoveable(AllBinaryTiledLayer terrainTiledLayer, int32_t x, int32_t y);
+    private: bool isTiledLayerMoveable(AllBinaryTiledLayer* terrainTiledLayer, int32_t x, int32_t y);
 
 };
 

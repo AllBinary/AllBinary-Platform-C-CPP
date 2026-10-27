@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/GameAdState.h>
@@ -44,15 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameAdStateFactory.h"
+        #include "org/allbinary/business/advertisement/GameAdStateFactory.h"
 
 class BottomLimiter
             : public Object
          {
 
-    private: static BottomLimiter instance() { return BottomLimiter(); }
+    private: static BottomLimiter* instance() { static std::unique_ptr<BottomLimiter> value(new BottomLimiter()); return value.get(); }
 
-    public: static BottomLimiter getInstance(){
+    public: static BottomLimiter* getInstance(){
 
 
 
@@ -84,13 +90,13 @@ this->higher= higher;
 
     public: void update(){
 
-    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
+    DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-    GameAdState gameAdState = GameAdStateFactory::getInstance().getCurrentInstance();;
+    GameAdState* gameAdState = GameAdStateFactory::getInstance()->getCurrentInstance();;
     
 
-                        if(gameAdState.isShowingAt())
+                        if(gameAdState->isShowingAt())
                         
                                     {
                                     this->deltaY= this->higher;
@@ -104,7 +110,7 @@ this->higher= higher;
 
                         }
                             
-this->bottom= displayInfo.getLastHeight() -this->deltaY;
+this->bottom= displayInfo->getLastHeight() -this->deltaY;
     
 }
 

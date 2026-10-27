@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Displayable.h>
@@ -44,13 +50,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ScreenRepaintUtil.h"
+        #include "org/allbinary/graphics/displayable/screen/ScreenRepaintUtil.h"
 
 class ScreenRepaintProcessor: public Processor {
 
-    private: Displayable displayable;
+    private: Displayable* displayable;
 
-public: ScreenRepaintProcessor(Displayable displayable){
+public: ScreenRepaintProcessor(Displayable* displayable){
 this->displayable= displayable;
     
 }

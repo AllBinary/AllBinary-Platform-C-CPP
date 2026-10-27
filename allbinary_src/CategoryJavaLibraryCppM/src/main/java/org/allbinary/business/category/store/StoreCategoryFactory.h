@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_STORECATEGORYFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_STORECATEGORYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/category/Category.h>
@@ -80,17 +86,17 @@
         
 class StoreCategoryFactory: public CategoryAbstractFactory, public CategoryFactoryInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: TransformInfoInterface transformInfoInterface;
+    private: TransformInfoInterface* transformInfoInterface;
 
-public: StoreCategoryFactory(TransformInfoInterface transformInfoInterface);
+public: StoreCategoryFactory(TransformInfoInterface* transformInfoInterface);
 
-    public: CategoryInterface getRootInstance();
+    public: CategoryInterface* getRootInstance();
 
-    public: CategoryInterface getRootInstance(AbPath categoryPath);
+    public: CategoryInterface* getRootInstance(AbPath* categoryPath);
 
-    public: CategoryInterface getRootInstanceFromNode(Node node);
+    public: CategoryInterface* getRootInstanceFromNode(Node* node);
 
 };
 

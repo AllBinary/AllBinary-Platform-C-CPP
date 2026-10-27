@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -49,7 +55,7 @@ class ScaleProperties
             : public Object
          {
 
-    private: static ScaleProperties instance() { return ScaleProperties(); }
+    public: static ScaleProperties* instance() { static std::unique_ptr<ScaleProperties> value(new ScaleProperties()); return value.get(); }
 
     public: float scaleX = 1.0;
 
@@ -66,7 +72,7 @@ class ScaleProperties
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().append(CommonLabels::getInstance().COLON_SEP).appendboolean(this->shouldScale).append("scaleX: ").appendfloat(this->scaleX).append("scaleY: ").appendfloat(this->scaleY).append("scaleWidth: ").appendint(this->scaleWidth).append("scaleHeight: ").appendint(this->scaleHeight).toString();;
+                        return (new StringMaker())->append(CommonLabels::getInstance()->COLON_SEP)->appendboolean(this->shouldScale)->append("scaleX: ")->appendfloat(this->scaleX)->append("scaleY: ")->appendfloat(this->scaleY)->append("scaleWidth: ")->appendint(this->scaleWidth)->append("scaleHeight: ")->appendint(this->scaleHeight)->toString();;
     
 }
 

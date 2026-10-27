@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -56,32 +62,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameSkillType.h"
-#include "GameSkillPropertyInterface.h"
+        #include "org/allbinary/input/automation/module/game/skill/GameSkillType.h"
+#include "org/allbinary/input/automation/module/game/skill/GameSkillPropertyInterface.h"
 
 class GameSkill
             : public Object
          {
 
-    private: static HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();
+    private: static inline HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();
 
-    public: static GameSkill getInstance(GameSkillType gameSkillType, std::string extra){
+    public: static GameSkill* getInstance(GameSkillType* gameSkillType, std::string extra){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameSkill::hashMap.get(StringMaker().append(gameSkillType.getName()).append(CommonSeps::getInstance().SPACE).append(extra).toString());
+                        return dynamic_cast<GameSkill*>(GameSkill::hashMap->get((new StringMaker())->append(gameSkillType->getName())->append(CommonSeps::getInstance()->SPACE)->append(extra)->toString()));
     
 }
 
 
-    private: GameSkillType gameSkillType;
+    private: GameSkillType* gameSkillType;
 
     private: std::string extra;
 
     private: int32_t time= 0;
 
-    private: BasicArrayList vector;
+    private: BasicArrayList* vector;
 
     private: const std::string GAME_SKILL_LABEL = "GameSkill: ";
 
@@ -89,21 +95,21 @@ class GameSkill
 
     private: const std::string TIME_LABEL = "Time: ";
 
-public: GameSkill(GameSkillType gameSkillType, std::string extra, int32_t time){
+public: GameSkill(GameSkillType* gameSkillType, std::string extra, int32_t time){
 this->setGameSkillType(gameSkillType);
     
 this->setExtra(extra);
     
 this->setTime(time);
     
-this->vector= BasicArrayListD();
+this->vector= new BasicArrayListD();
     
-GameSkill::hashMap.put(StringMaker().append(this->getGameSkillType().getName()).append(CommonSeps::getInstance().SPACE).append(extra).toString(), this);
+GameSkill::hashMap->put((new StringMaker())->append(this->getGameSkillType()->getName())->append(CommonSeps::getInstance()->SPACE)->append(extra)->toString(), this);
     
 }
 
 
-    public: GameSkillType getGameSkillType(){
+    public: GameSkillType* getGameSkillType(){
 
 
 
@@ -113,7 +119,7 @@ GameSkill::hashMap.put(StringMaker().append(this->getGameSkillType().getName()).
 }
 
 
-    public: void setGameSkillType(GameSkillType gameSkillType){
+    public: void setGameSkillType(GameSkillType* gameSkillType){
 this->gameSkillType= gameSkillType;
     
 }
@@ -151,13 +157,13 @@ this->time= time;
 }
 
 
-    public: void addProperty(GameSkillPropertyInterface gameSkillPropertyInterface){
-this->vector.add(gameSkillPropertyInterface);
+    public: void addProperty(GameSkillPropertyInterface* gameSkillPropertyInterface){
+this->vector->add(gameSkillPropertyInterface);
     
 }
 
 
-    public: BasicArrayList getProperties(){
+    public: BasicArrayList* getProperties(){
 
 
 
@@ -169,32 +175,32 @@ this->vector.add(gameSkillPropertyInterface);
 
     public: std::string toString(){
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->GAME_SKILL_LABEL);
+stringBuffer->append(this->GAME_SKILL_LABEL);
     
-stringBuffer.append(this->getGameSkillType().toString());
+stringBuffer->append(this->getGameSkillType()->toString());
     
-stringBuffer.append(commonSeps.SPACE);
+stringBuffer->append(commonSeps->SPACE);
     
-stringBuffer.append(this->EXTRA_LABEL);
+stringBuffer->append(this->EXTRA_LABEL);
     
-stringBuffer.append(this->getExtra());
+stringBuffer->append(this->getExtra());
     
-stringBuffer.append(commonSeps.SPACE);
+stringBuffer->append(commonSeps->SPACE);
     
-stringBuffer.append(this->TIME_LABEL);
+stringBuffer->append(this->TIME_LABEL);
     
-stringBuffer.appendlong(this->getTime());
+stringBuffer->appendlong(this->getTime());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

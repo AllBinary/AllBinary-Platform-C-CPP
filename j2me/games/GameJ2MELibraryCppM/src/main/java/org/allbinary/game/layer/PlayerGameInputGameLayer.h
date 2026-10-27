@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PLAYERGAMEINPUTGAMELAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_PLAYERGAMEINPUTGAMELAYER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -71,23 +77,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryGameLayer.h"
+        #include "org/allbinary/game/layer/AllBinaryGameLayer.h"
 
 class PlayerGameInputGameLayer: public AllBinaryGameLayer, public PlayerGameInputCompositeInterface {
 
-    private: PlayerGameInput playerGameInput;
+    private: PlayerGameInput* playerGameInput;
 
 public: PlayerGameInputGameLayer(int32_t playerInputId);
 
-    public: PlayerGameInput getPlayerGameInput();
+    public: PlayerGameInput* getPlayerGameInput();
 
     public: void initInputProcessors();
 
                 //@Throws(Exception.constructor)
             
-    public: void processInput(AllBinaryLayerManager myManager);
+    public: void processInput(AllBinaryLayerManager* myManager);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

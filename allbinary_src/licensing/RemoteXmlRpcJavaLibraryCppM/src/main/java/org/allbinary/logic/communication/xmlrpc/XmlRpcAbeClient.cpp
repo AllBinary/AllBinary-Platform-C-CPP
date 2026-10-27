@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -81,17 +87,17 @@ class XmlRpcAbeClient
             : public Object
          {
 
-    public: static bool isOnline = true;
+    public: static inline bool isOnline = true;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: std::string remoteMethod;
 
-    private: AbeClientInformationInterface clientInfo;
+    private: AbeClientInformationInterface* clientInfo;
 
-    private: XmlRpcHandler client = NullXmlRpcHandler::NULL_XML_RPC_HANDLER;
+    private: XmlRpcHandler* client = NullXmlRpcHandler::NULL_XML_RPC_HANDLER;
 
     private: int32_t server;
 
@@ -105,11 +111,11 @@ class XmlRpcAbeClient
 
     protected: const std::string TRYING = "Trying Server #";
 
-    protected: const std::string SEP = CommonLabels::getInstance().COLON_SEP;
+    protected: const std::string SEP = CommonLabels::getInstance()->COLON_SEP;
 
     protected: const std::string CLIENT_INFO = "Client Info: \n";
 
-    protected: const std::string RESULT = CommonLabels::getInstance().RESULT_ +CommonSeps::getInstance().NEW_LINE;
+    protected: const std::string RESULT = CommonLabels::getInstance()->RESULT_ +CommonSeps::getInstance()->NEW_LINE;
 
     protected: const std::string INVALID = "License data is Invalid Trying Other Servers";
 
@@ -125,26 +131,26 @@ class XmlRpcAbeClient
 
     protected: const std::string HOST_NOT_RESOLVED = "Host is unresolved";
 
-    private: const MyRandomFactory myRandomFactory = MyRandomFactory::getInstance();
+    private: MyRandomFactory* myRandomFactory = MyRandomFactory::getInstance();
 
-public: XmlRpcAbeClient(AbeClientInformationInterface clientInfo, std::string remoteMethod){
+public: XmlRpcAbeClient(AbeClientInformationInterface* clientInfo, std::string remoteMethod){
 this->remoteMethod= remoteMethod;
     
 this->clientInfo= clientInfo;
     
 
-                        if(clientInfo.getNumberOfLicenseServers() > 1)
+                        if(clientInfo->getNumberOfLicenseServers() > 1)
                         
                                     {
-                                    this->maxServers= clientInfo.getNumberOfLicenseServers() -2;
+                                    this->maxServers= clientInfo->getNumberOfLicenseServers() -2;
     
-this->start= this->myRandomFactory.getAbsoluteNextInt(this->maxServers) +1;
+this->start= this->myRandomFactory->getAbsoluteNextInt(this->maxServers) +1;
     
 
                                     }
                                 
                              else 
-                        if(clientInfo.getNumberOfLicenseServers() == 1)
+                        if(clientInfo->getNumberOfLicenseServers() == 1)
                         
                                     {
                                     this->maxServers= 0;
@@ -159,17 +165,17 @@ this->isDone= false;
 this->server= this->start;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->START_SERVER);
+stringBuffer->append(this->START_SERVER);
     
-stringBuffer.appendint(this->getServer());
+stringBuffer->appendint(this->getServer());
     
-stringBuffer.append(this->SEP);
+stringBuffer->append(this->SEP);
     
-stringBuffer.append(clientInfo.getLicenseServer(this->getServer()));
+stringBuffer->append(clientInfo->getLicenseServer(this->getServer()));
     
-this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRUCTOR);
     
 }
 
@@ -177,13 +183,13 @@ this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.CONSTRUCTO
                 //@Throws(Exception.constructor)
             
     public: Object* get(Object* anyType){
-ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
+ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, this);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance().NULL_OBJECT;
+                        return NullUtil::getInstance()->NULL_OBJECT;
     
 }
 
@@ -228,12 +234,12 @@ ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
 
 
 
-                            throw Exception("Tried All Servers But Still Failed");
+                            throw new Exception("Tried All Servers But Still Failed");
                     
 }
 
 
-    protected: AbeClientInformationInterface getClientInfo(){
+    protected: AbeClientInformationInterface* getClientInfo(){
 
 
 
@@ -243,7 +249,7 @@ ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
 }
 
 
-    protected: XmlRpcHandler getClient(){
+    protected: XmlRpcHandler* getClient(){
 
 
 
@@ -253,7 +259,7 @@ ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
 }
 
 
-    protected: void setClient(XmlRpcClient client){
+    protected: void setClient(XmlRpcClient* client){
 this->client= client;
     
 }

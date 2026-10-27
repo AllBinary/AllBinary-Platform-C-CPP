@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -115,11 +121,11 @@ class BasicWorkFlow
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: Document workFlowDoc;
+    private: Document* workFlowDoc;
 
     private: std::string workFlowName;
 
@@ -127,9 +133,9 @@ class BasicWorkFlow
 
 public: BasicWorkFlow();
 
-public: BasicWorkFlow(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: BasicWorkFlow(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
-public: BasicWorkFlow(HashMap<Object*, Object*> hashMap);
+public: BasicWorkFlow(HashMap<Object*, Object*>* hashMap);
 
     public: std::string getName();
 
@@ -139,23 +145,23 @@ public: BasicWorkFlow(HashMap<Object*, Object*> hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList toVector();
+    public: BasicArrayList* toVector();
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
-    public: Document toXmlDoc();
+    public: Document* toXmlDoc();
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string validationInfo();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/w3c/dom/Document.h>
 
       
@@ -42,7 +48,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ValidatorBase.h"
+        #include "org/allbinary/logic/control/validate/ValidatorBase.h"
 
 class GenericValidator: public ValidatorBase {
 
@@ -50,7 +56,7 @@ public: GenericValidator(){
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -60,7 +66,7 @@ public: GenericValidator(){
 }
 
 
-    public: Node toValidationInfoNode(org::w3c::dom::Document document){
+    public: Node* toValidationInfoNode(org::w3c::dom::Document* document){
 
 
 

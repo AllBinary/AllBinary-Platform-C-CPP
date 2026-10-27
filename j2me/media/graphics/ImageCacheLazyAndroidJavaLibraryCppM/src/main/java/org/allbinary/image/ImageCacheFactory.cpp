@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,20 +44,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageCache.h"
+        #include "org/allbinary/image/ImageCache.h"
 
 class ImageCacheFactory
             : public Object
          {
 
-    private: static const ImageCache IMAGE_CACHE = ImageCache();
+    private: static ImageCache* IMAGE_CACHE() { static std::unique_ptr<ImageCache> value(new ImageCache()); return value.get(); }
 
-    public: static ImageCache getInstance(){
+    public: static ImageCache* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageCacheFactory::IMAGE_CACHE;
+                        return ImageCacheFactory::IMAGE_CACHE();
     
 }
 

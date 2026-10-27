@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,9 +49,9 @@ class XmlOptionItemData
             : public Object
          {
 
-    public: static const std::string XML_FILE_STATUS = "XMLOPTIONITEM_XML_FILE_STATUS";
+    public: static inline const std::string XML_FILE_STATUS = "XMLOPTIONITEM_XML_FILE_STATUS";
 
-    public: static const std::string OPTION_XML_FILE = "XMLOPTIONITEM_OPTION_XML_FILE";
+    public: static inline const std::string OPTION_XML_FILE = "XMLOPTIONITEM_OPTION_XML_FILE";
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIES_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -94,23 +100,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CategoryPropertiesInterface.h"
+        #include "org/allbinary/business/category/properties/CategoryPropertiesInterface.h"
 
 class CategoryProperties
             : public Object
-        : public CategoryPropertiesInterface {
+        , public CategoryPropertiesInterface {
 
-    private: static const int32_t MAXDEPTH = 100;
+    private: static inline const int32_t MAXDEPTH = 100;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string category;
 
 public: CategoryProperties(std::string name);
 
-public: CategoryProperties(Node node);
+public: CategoryProperties(Node* node);
 
-public: CategoryProperties(HashMap<Object*, Object*> categoryPropertiesHashMap);
+public: CategoryProperties(HashMap<Object*, Object*>* categoryPropertiesHashMap);
 
     public: bool isRealRoot();
 
@@ -122,29 +128,29 @@ public: CategoryProperties(HashMap<Object*, Object*> categoryPropertiesHashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getPath(CategoryHierarchyInterface categoryHierarchyInterface);
+    public: AbPath* getPath(CategoryHierarchyInterface* categoryHierarchyInterface);
 
     public: std::string getFileName();
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath getWebAppPath();
+    public: AbPath* getWebAppPath();
 
     public: void setValue(std::string value);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
-    public: BasicArrayList toVector();
-
-                //@Throws(Exception.constructor)
-            
-    public: Document toValidationInfoDoc();
+    public: BasicArrayList* toVector();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toValidationInfoNode(Document document);
+    public: Document* toValidationInfoDoc();
+
+                //@Throws(Exception.constructor)
+            
+    public: Node* toValidationInfoNode(Document* document);
 
                 //@Throws(Exception.constructor)
             

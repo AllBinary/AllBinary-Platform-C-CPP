@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_RENDERER_EMULATORCUSTOMRENDERER_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_RENDERER_EMULATORCUSTOMRENDERER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,19 +69,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RendererStrings.h"
+        #include "org/allbinary/graphics/opengles/renderer/RendererStrings.h"
 
 class EmulatorCustomRenderer
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const RendererStrings renderStrings = RendererStrings::getInstance();
+    protected: RendererStrings* renderStrings = RendererStrings::getInstance();
 
-    public: void onSurfaceCreated(GL10 gl, EGLConfig eglConfig);
+    public: void onSurfaceCreated(GL10* gl, EGLConfig* eglConfig);
 
 };
 

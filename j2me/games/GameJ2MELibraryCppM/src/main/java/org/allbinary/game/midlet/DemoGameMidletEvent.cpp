@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
       
@@ -39,13 +47,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DemoGameMidletState.h"
+        #include "org/allbinary/game/midlet/DemoGameMidletState.h"
 
 class DemoGameMidletEvent: public AllBinaryEventObject {
 
-    private: DemoGameMidletState demoGameMidletState;
+    private: DemoGameMidletState* demoGameMidletState;
 
-public: DemoGameMidletEvent(Object* anyType, DemoGameMidletState demoGameMidletState) : AllBinaryEventObject(anyType){
+public: DemoGameMidletEvent(Object* anyType, DemoGameMidletState* demoGameMidletState) : AllBinaryEventObject(anyType){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -63,13 +71,13 @@ this->setSource(anyType);
 }
 
 
-    public: void setDemoGameMidletState(DemoGameMidletState demoGameMidletState){
+    public: void setDemoGameMidletState(DemoGameMidletState* demoGameMidletState){
 this->demoGameMidletState= demoGameMidletState;
     
 }
 
 
-    public: DemoGameMidletState getDemoGameMidletState(){
+    public: DemoGameMidletState* getDemoGameMidletState(){
 
 
 

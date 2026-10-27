@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/commerce/shipping/ShippingMethodData.h>
@@ -59,17 +65,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicWeightShippingModule.h"
+        #include "org/allbinary/business/user/commerce/shipping/modules/BasicWeightShippingModule.h"
 
 class BasicWeightShippingModuleView: public BasicWeightShippingModule, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: BasicWeightShippingModuleView(){
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
 
 
@@ -79,7 +85,7 @@ public: BasicWeightShippingModuleView(){
 }
 
 
-    public: org::w3c::dom::Document toValidationInfoDoc(){
+    public: org::w3c::dom::Document* toValidationInfoDoc(){
 
 
 
@@ -89,7 +95,7 @@ public: BasicWeightShippingModuleView(){
 }
 
 
-    public: org::w3c::dom::Node toValidationInfoNode(org::w3c::dom::Document document){
+    public: org::w3c::dom::Node* toValidationInfoNode(org::w3c::dom::Document* document){
 
 
 
@@ -109,15 +115,15 @@ public: BasicWeightShippingModuleView(){
 }
 
 
-    public: org::w3c::dom::Node toXmlNode(org::w3c::dom::Document document){
+    public: org::w3c::dom::Node* toXmlNode(org::w3c::dom::Document* document){
 
         try {
             
-    Node shippingMethodNode = document.createElement(ShippingMethodData::NAME);;
+    Node* shippingMethodNode = document->createElement(ShippingMethodData::NAME);;
     
-shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodData::NAME, this->getName()));
+shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodData::NAME, this->getName()));
     
-shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodData::DESCRIPTION, this->getDescription()));
+shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodData::DESCRIPTION, this->getDescription()));
     
 
 
@@ -127,13 +133,13 @@ shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, Ship
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "toXmlNode", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "toXmlNode", &e);
     
 
                                     }
@@ -149,11 +155,11 @@ shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, Ship
 }
 
 
-    public: org::w3c::dom::Document toXmlDoc(){
+    public: org::w3c::dom::Document* toXmlDoc(){
 
         try {
             
-    Document document = DomDocumentHelper::create();;
+    Document* document = DomDocumentHelper::create();;
     
 
 
@@ -163,13 +169,13 @@ shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, Ship
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "toXmlDoc", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "toXmlDoc", &e);
     
 
                                     }
@@ -196,13 +202,13 @@ shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, Ship
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view", &e);
     
 
                                     }

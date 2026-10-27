@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/InputFactory.h>
@@ -49,22 +55,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchButtonInput.h"
-#include "BasicTouchInputFactory.h"
+        #include "org/allbinary/input/motion/button/TouchButtonInput.h"
+#include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
 
 class CancelTouchButtonInputFactory
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static CancelTouchButtonInputFactory getInstance();
+    public: static CancelTouchButtonInputFactory* getInstance();
 
-    private: const std::vector<TouchButtonInput> cancelInputArray = std::vector<TouchButtonInput>(InputFactory::getInstance().MAX);
+    private: const std::vector<TouchButtonInput*> cancelInputArray = std::vector<TouchButtonInput*>(InputFactory::getInstance()->MAX);
 
 private: CancelTouchButtonInputFactory();
 
-    public: TouchButtonInput getCancel(TouchButtonInput touchButtonInput);
+    public: TouchButtonInput* getCancel(TouchButtonInput* touchButtonInput);
 
 };
 

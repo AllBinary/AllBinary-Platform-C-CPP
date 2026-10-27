@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_TESTINPUTINTERFACE_H
         #define ORG_ALLBINARY_GAME_INPUT_TESTINPUTINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graphics/paint/PaintableInterface.h>
 
       
@@ -45,17 +51,17 @@
         
 class TestInputInterface: public PaintableInterface {
 
-    void up();
+    public: virtual void up() = 0;
 
-    void down();
+    public: virtual void down() = 0;
 
-    void left();
+    public: virtual void left() = 0;
 
-    void right();
+    public: virtual void right() = 0;
 
-    void strafeLeft();
+    public: virtual void strafeLeft() = 0;
 
-    void strafeRight();
+    public: virtual void strafeRight() = 0;
 
 };
 

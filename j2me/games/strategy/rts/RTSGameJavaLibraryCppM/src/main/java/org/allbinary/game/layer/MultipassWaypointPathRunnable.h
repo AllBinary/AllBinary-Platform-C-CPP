@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_MULTIPASSWAYPOINTPATHRUNNABLE_H
         #define ORG_ALLBINARY_GAME_LAYER_MULTIPASSWAYPOINTPATHRUNNABLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/RuntimeException.h"
@@ -72,76 +80,76 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WaypointPathRunnableBase.h"
-//#include "FirstRunnable.h"
-//#include "SecondRunnable.h"
-//#include "EndRunnable.h"
-#include "WaypointBehaviorBase.h"
+        #include "org/allbinary/game/layer/WaypointPathRunnableBase.h"
+//#include "org/allbinary/game/layer/FirstRunnable.h"
+//#include "org/allbinary/game/layer/SecondRunnable.h"
+//#include "org/allbinary/game/layer/EndRunnable.h"
+#include "org/allbinary/game/layer/WaypointBehaviorBase.h"
 
 class MultipassWaypointPathRunnable: public WaypointPathRunnableBase {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
+    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    private: const MultipassState multipassState = MultipassState();
+    private: MultipassState* multipassState = new MultipassState();
 
     private: bool done = false;
 
-    private: BasicArrayList list = this->basicArrayListUtil.getImmutableInstance();
+    private: BasicArrayList* list = this->basicArrayListUtil->getImmutableInstance();
 
-    private: Object* pathFindingInfo = NullUtil::getInstance().NULL_OBJECT;
+    private: Object* pathFindingInfo = NullUtil::getInstance()->NULL_OBJECT;
 
 //inner= member=true isStatic=
 class FirstRunnable: public ARunnable {
 
-    private: MultipassWaypointPathRunnable multipassWaypointPathRunnable;
+    private: MultipassWaypointPathRunnable* multipassWaypointPathRunnable;
 
-: FirstRunnable(MultipassWaypointPathRunnable multipassWaypointPathRunnable);
+: FirstRunnable(MultipassWaypointPathRunnable* multipassWaypointPathRunnable);
 
     public: void run();
 
 };
 
             
-    private: const Runnable FIRST_RUNNABLE = FirstRunnable(this);
+    private: Runnable* FIRST_RUNNABLE = new FirstRunnable(this);
 //    private boolean first = true;
 //inner= member=true isStatic=
 class SecondRunnable: public ARunnable {
 
-    private: MultipassWaypointPathRunnable multipassWaypointPathRunnable;
+    private: MultipassWaypointPathRunnable* multipassWaypointPathRunnable;
 
-: SecondRunnable(MultipassWaypointPathRunnable multipassWaypointPathRunnable);
+: SecondRunnable(MultipassWaypointPathRunnable* multipassWaypointPathRunnable);
 
     public: void run();
 
 };
 
             
-    private: const Runnable SECOND_RUNNABLE = SecondRunnable(this);
+    private: Runnable* SECOND_RUNNABLE = new SecondRunnable(this);
 
 //inner= member=true isStatic=
 class EndRunnable: public ARunnable {
 
-    private: MultipassWaypointPathRunnable multipassWaypointPathRunnable;
+    private: MultipassWaypointPathRunnable* multipassWaypointPathRunnable;
 
-: EndRunnable(MultipassWaypointPathRunnable multipassWaypointPathRunnable);
+: EndRunnable(MultipassWaypointPathRunnable* multipassWaypointPathRunnable);
 
     public: void run();
 
 };
 
             
-    private: const Runnable END_RUNNABLE = EndRunnable(this);
+    private: Runnable* END_RUNNABLE = new EndRunnable(this);
 
-    private: const Runnable ALREADY_ENDED_RUNNABLE = class extends ARunnable
+    private: Runnable* ALREADY_ENDED_RUNNABLE = class extends ARunnable
                                 {
                                 
     public: void run();
                                 }
                             ;
 
-    private: Runnable currentPassRunnable = this->FIRST_RUNNABLE;
+    private: Runnable* currentPassRunnable = this->FIRST_RUNNABLE;
 
 public: MultipassWaypointPathRunnable();
 

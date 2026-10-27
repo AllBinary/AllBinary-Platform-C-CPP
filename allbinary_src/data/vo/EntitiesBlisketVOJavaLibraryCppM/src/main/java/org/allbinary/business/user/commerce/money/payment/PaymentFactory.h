@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENTFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENTFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,14 +58,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Payment.h"
-#include "PaymentInterface.h"
+        #include "org/allbinary/business/user/commerce/money/payment/Payment.h"
+#include "org/allbinary/business/user/commerce/money/payment/PaymentInterface.h"
 
 class PaymentFactory
             : public Object
          {
 
-    public: static PaymentInterface getInstance(ServletRequest request);
+    public: static PaymentInterface* getInstance(ServletRequest* request);
 
 private: PaymentFactory();
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANDROID_ACTIVITY_NULLKEYINPUTVIEWCOMPOSITE_H
         #define ORG_ALLBINARY_ANDROID_ACTIVITY_NULLKEYINPUTVIEWCOMPOSITE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -48,21 +54,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "KeyInputViewCompositeInterface.h"
+        #include "org/allbinary/android/activity/KeyInputViewCompositeInterface.h"
 
 class NullKeyInputViewComposite
             : public Object
-        : public KeyInputViewCompositeInterface {
+        , public KeyInputViewCompositeInterface {
 
-    public: static const NullKeyInputViewComposite NULL_KEY_INPUT_VIEW_COMPOSITE = NullKeyInputViewComposite();
+    public: static NullKeyInputViewComposite* NULL_KEY_INPUT_VIEW_COMPOSITE() { static std::unique_ptr<NullKeyInputViewComposite> value(new NullKeyInputViewComposite()); return value.get(); }
 
-    public: void setKeyInputView(View keyInputView);
+    public: void setKeyInputView(View* keyInputView);
 
-    public: View getRootView();
+    public: View* getRootView();
 
-    public: View getView();
+    public: View* getView();
 
-    public: void runOnUiThread(Runnable action);
+    public: void runOnUiThread(Runnable* action);
 
 };
 

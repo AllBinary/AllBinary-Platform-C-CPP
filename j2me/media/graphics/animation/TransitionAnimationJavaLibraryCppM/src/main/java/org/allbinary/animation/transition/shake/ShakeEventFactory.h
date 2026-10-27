@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEEVENTFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEEVENTFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,23 +47,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShakeEvent.h"
+        #include "org/allbinary/animation/transition/shake/ShakeEvent.h"
 
 class ShakeEventFactory
             : public Object
          {
 
-    private: static ShakeEventFactory instance() { return ShakeEventFactory(); }
+    private: static ShakeEventFactory* instance() { static std::unique_ptr<ShakeEventFactory> value(new ShakeEventFactory()); return value.get(); }
 
-    public: static ShakeEventFactory getInstance();
+    public: static ShakeEventFactory* getInstance();
 
-    public: ShakeEvent MICRO = ShakeEvent();
+    public: ShakeEvent* MICRO = new ShakeEvent();
 
-    public: ShakeEvent SMALL = ShakeEvent();
+    public: ShakeEvent* SMALL = new ShakeEvent();
 
-    public: ShakeEvent MEDIUM = ShakeEvent();
+    public: ShakeEvent* MEDIUM = new ShakeEvent();
 
-    public: ShakeEvent LARGE = ShakeEvent();
+    public: ShakeEvent* LARGE = new ShakeEvent();
 
     public: void init();
 

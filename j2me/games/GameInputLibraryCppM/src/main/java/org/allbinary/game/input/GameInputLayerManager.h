@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEINPUTLAYERMANAGER_H
         #define ORG_ALLBINARY_GAME_INPUT_GAMEINPUTLAYERMANAGER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/layer/LayerManager.h>
 
       

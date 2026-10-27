@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_ALWAYSACTIONSCRIPTCONDITIONJPANEL_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_ALWAYSACTIONSCRIPTCONDITIONJPANEL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -45,56 +51,56 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "AlwaysActionScriptConditionInterface.h"
-#include "JDialog.h"
-#include "JLabel.h"
-#include "JButton.h"
-#include "JComboBox.h"
-#include "Dimension.h"
-#include "ActionListener.h"
-#include "ActionEvent.h"
-#include "DefaultComboBoxModel.h"
-#include "GroupLayout.h"
-#include "Short.h"
+        #include "org/allbinary/input/automation/actions/script/condition/JPanel.h"
+#include "org/allbinary/input/automation/actions/script/condition/AlwaysActionScriptConditionInterface.h"
+#include "org/allbinary/input/automation/actions/script/condition/JDialog.h"
+#include "org/allbinary/input/automation/actions/script/condition/JLabel.h"
+#include "org/allbinary/input/automation/actions/script/condition/JButton.h"
+#include "org/allbinary/input/automation/actions/script/condition/JComboBox.h"
+#include "org/allbinary/input/automation/actions/script/condition/Dimension.h"
+#include "org/allbinary/input/automation/actions/script/condition/ActionListener.h"
+#include "org/allbinary/input/automation/actions/script/condition/ActionEvent.h"
+#include "org/allbinary/input/automation/actions/script/condition/DefaultComboBoxModel.h"
+#include "org/allbinary/input/automation/actions/script/condition/GroupLayout.h"
+#include "org/allbinary/input/automation/actions/script/condition/Short.h"
 
 class AlwaysActionScriptConditionJPanel: public javax::swing::JPanel {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: AlwaysActionScriptConditionInterface alwaysActionScriptConditionInterface;
+    private: AlwaysActionScriptConditionInterface* alwaysActionScriptConditionInterface;
 
-public: AlwaysActionScriptConditionJPanel(AlwaysActionScriptConditionInterface alwaysActionScriptConditionInterface);
+public: AlwaysActionScriptConditionJPanel(AlwaysActionScriptConditionInterface* alwaysActionScriptConditionInterface);
 
     private: void set();
 
     private: void update();
 
-    public: javax::swing::JDialog getAlwaysActionJDialog();
+    public: javax::swing::JDialog* getAlwaysActionJDialog();
 
-    public: void setAlwaysActionJDialog(javax::swing::JDialog alwaysActionJDialog);
+    public: void setAlwaysActionJDialog(javax::swing::JDialog* alwaysActionJDialog);
 
     private: void initComponents();
 
-    private: void okJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void okJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: void alwaysActionJButtonActionPerformed(java::awt::event::ActionEvent evt);
+    private: void alwaysActionJButtonActionPerformed(java::awt::event::ActionEvent* evt);
 
-    private: javax::swing::JButton alwaysActionJButton;
+    private: javax::swing::JButton* alwaysActionJButton;
 
-    private: javax::swing::JDialog alwaysActionJDialog;
+    private: javax::swing::JDialog* alwaysActionJDialog;
 
-    private: javax::swing::JComboBox alwaysJComboBox;
+    private: javax::swing::JComboBox* alwaysJComboBox;
 
-    private: javax::swing::JLabel jLabel1;
+    private: javax::swing::JLabel* jLabel1;
 
-    private: javax::swing::JLabel jLabel2;
+    private: javax::swing::JLabel* jLabel2;
 
-    private: javax::swing::JButton okJButton;
+    private: javax::swing::JButton* okJButton;
 
-    private: javax::swing::JLabel titleJLabel;
+    private: javax::swing::JLabel* titleJLabel;
 
 };
 

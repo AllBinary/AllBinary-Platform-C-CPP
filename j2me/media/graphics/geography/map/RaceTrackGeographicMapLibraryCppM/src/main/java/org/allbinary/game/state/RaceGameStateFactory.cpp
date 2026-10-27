@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
@@ -41,21 +47,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameStateFactory.h"
-#include "GameState.h"
+        #include "org/allbinary/game/state/GameStateFactory.h"
+#include "org/allbinary/game/state/GameState.h"
 
 class RaceGameStateFactory
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static RaceGameStateFactory getInstance(){
+    public: static RaceGameStateFactory* getInstance(){
 
-                        if(RaceGameStateFactory::instance() == NullUtil::getInstance().NULL_OBJECT)
+                        if(RaceGameStateFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    RaceGameStateFactory::instance= RaceGameStateFactory();
+                                    RaceGameStateFactory::instance= new RaceGameStateFactory();
     
 
                                     }
@@ -64,16 +70,16 @@ class RaceGameStateFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RaceGameStateFactory::instance();
+                        return dynamic_cast<RaceGameStateFactory*>(RaceGameStateFactory::instance);
     
 }
 
 
-    public: const GameState START_GAME_STATE = GameStateFactory::getInstance().createGameState("START_GAME_STATE");
+    public: GameState* START_GAME_STATE = GameStateFactory::getInstance()->createGameState("START_GAME_STATE");
 
-    public: const GameState YELLOW_LIGHT_GAME_STATE = GameStateFactory::getInstance().createGameState("YELLOW_LIGHT_GAME_STATE");
+    public: GameState* YELLOW_LIGHT_GAME_STATE = GameStateFactory::getInstance()->createGameState("YELLOW_LIGHT_GAME_STATE");
 
-    public: const GameState RED_LIGHT_GAME_STATE = GameStateFactory::getInstance().createGameState("RED_LIGHT_GAME_STATE");
+    public: GameState* RED_LIGHT_GAME_STATE = GameStateFactory::getInstance()->createGameState("RED_LIGHT_GAME_STATE");
 
 };
 

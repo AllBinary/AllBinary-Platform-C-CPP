@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <javax/swing/tree/MutableTreeNode.h>
 
       
@@ -39,8 +47,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "EventObject.h"
-#include "MyCanvasEventSource.h"
+        #include "org/allbinary/graphics/j2me/workarea/canvas/event/EventObject.h"
+#include "org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEventSource.h"
 
 class MyCanvasEvent: public java::util::EventObject {
 
@@ -76,39 +84,39 @@ public: MyCanvasEvent(Object* source) : java::util::EventObject(source){
 
     public: std::string getCommand(){
 
-    MyCanvasEventSource myEventSource = this->getSource();;
+    MyCanvasEventSource* myEventSource = dynamic_cast<MyCanvasEventSource*>(this->getSource());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return myEventSource.getCommand();;
+                        return myEventSource->getCommand();;
     
 }
 
 
-    public: MutableTreeNode getTreeNode(){
+    public: MutableTreeNode* getTreeNode(){
 
-    MyCanvasEventSource myEventSource = this->getSource();;
+    MyCanvasEventSource* myEventSource = dynamic_cast<MyCanvasEventSource*>(this->getSource());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return myEventSource.getTreeNode();;
+                        return myEventSource->getTreeNode();;
     
 }
 
 
     public: double getAngle(){
 
-    MyCanvasEventSource myEventSource = this->getSource();;
+    MyCanvasEventSource* myEventSource = dynamic_cast<MyCanvasEventSource*>(this->getSource());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return myEventSource.getAngle();;
+                        return myEventSource->getAngle();;
     
 }
 

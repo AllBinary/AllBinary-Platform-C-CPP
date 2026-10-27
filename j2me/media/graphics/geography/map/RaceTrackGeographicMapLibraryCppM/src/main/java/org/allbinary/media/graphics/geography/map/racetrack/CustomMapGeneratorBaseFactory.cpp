@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -40,16 +46,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CustomMapGeneratorBase.h"
-#include "RaceTrackGeographicMap.h"
+        #include "org/allbinary/media/graphics/geography/map/racetrack/CustomMapGeneratorBase.h"
+#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMap.h"
 
 class CustomMapGeneratorBaseFactory
             : public Object
          {
 
-    private: static CustomMapGeneratorBaseFactory instance() { return CustomMapGeneratorBaseFactory(); }
+    private: static CustomMapGeneratorBaseFactory* instance() { static std::unique_ptr<CustomMapGeneratorBaseFactory> value(new CustomMapGeneratorBaseFactory()); return value.get(); }
 
-    public: static CustomMapGeneratorBaseFactory getInstance(){
+    public: static CustomMapGeneratorBaseFactory* getInstance(){
 
 
 
@@ -65,12 +71,12 @@ public: CustomMapGeneratorBaseFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: CustomMapGeneratorBase create(RaceTrackGeographicMap raceTrackGeographicMap){
+    public: CustomMapGeneratorBase* create(RaceTrackGeographicMap* raceTrackGeographicMap){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CustomMapGeneratorBase();
+                        return new CustomMapGeneratorBase();
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -71,15 +77,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserView.h"
+        #include "views/generic/user/UserView.h"
 
 class DeleteValidationUserView: public UserView, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string userName;
 
-public: DeleteValidationUserView(TransformInfoInterface transformInfoInterface) : UserView(transformInfoInterface){
+public: DeleteValidationUserView(TransformInfoInterface* transformInfoInterface) : UserView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -87,18 +93,18 @@ public: DeleteValidationUserView(TransformInfoInterface transformInfoInterface) 
                             //For kotlin this is before the body of the constructor.
                     
 
-    HttpServletRequest httpServletRequest = this->getPageContext().getRequest();;
+    HttpServletRequest* httpServletRequest = dynamic_cast<HttpServletRequest*>(this->getPageContext()->getRequest());;
     
 
-    HashMap<Object*, Object*> hashMap = RequestParams(httpServletRequest).toHashMap();;
+    HashMap<Object*, Object*>* hashMap = (new RequestParams(httpServletRequest))->toHashMap();;
     
-this->userName= UserName(hashMap).get();
+this->userName= (new UserName(hashMap))->get();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("User Name: " +this->userName, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("User Name: " +this->userName, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -106,14 +112,14 @@ this->userName= UserName(hashMap).get();
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-                        if(UserName::getInstance().isValid(this->userName) == Boolean::TRUE)
+                        if(UserName::getInstance()->isValid(this->userName) == Boolean::TRUE)
                         
                                     {
-                                    this->user= UserEntityFactory::getInstance().getUser(this->userName);
+                                    this->user= UserEntityFactory::getInstance()->getUser(this->userName);
     
 
                         if(this->user == 
@@ -139,13 +145,13 @@ this->userName= UserName(hashMap).get();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -165,19 +171,19 @@ this->userName= UserName(hashMap).get();
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-                        if(UserName::getInstance().isValid(this->userName) == Boolean::TRUE)
+                        if(UserName::getInstance()->isValid(this->userName) == Boolean::TRUE)
                         
                                     {
-                                    this->user= UserEntityFactory::getInstance().getUser(this->userName);
+                                    this->user= UserEntityFactory::getInstance()->getUser(this->userName);
     
 
                         if(this->user == 
                                     nullptr
                                 )
-                        stringBuffer.append("User does not exist.<br />");
+                        stringBuffer->append("User does not exist.<br />");
                                 
 
                                     }
@@ -189,17 +195,17 @@ this->userName= UserName(hashMap).get();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -215,7 +221,7 @@ this->userName= UserName(hashMap).get();
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -225,7 +231,7 @@ this->userName= UserName(hashMap).get();
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,30 +67,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShippingMethodsInterface.h"
-#include "ShippingMethodsFactory.h"
+        #include "org/allbinary/business/user/commerce/shipping/ShippingMethodsInterface.h"
+#include "org/allbinary/business/user/commerce/shipping/ShippingMethodsFactory.h"
 
 class ShippingMethods
             : public Object
-        : public ShippingMethodsInterface {
+        , public ShippingMethodsInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: BasicArrayList shippingVector;
+    private: BasicArrayList* shippingVector;
 
-    private: ShippingInterface defaultShippingMethodInterface;
+    private: ShippingInterface* defaultShippingMethodInterface;
 
-public: ShippingMethods(AbeClientInformationInterface abeClientInformation, StoreFrontInterface storeFrontInterface){
-this->defaultShippingMethodInterface= ShippingMethodsFactory(abeClientInformation, storeFrontInterface).getDefaultInstance();
+public: ShippingMethods(AbeClientInformationInterface* abeClientInformation, StoreFrontInterface* storeFrontInterface){
+this->defaultShippingMethodInterface= (new ShippingMethodsFactory(abeClientInformation, storeFrontInterface))->getDefaultInstance();
     
-this->shippingVector= ShippingMethodsFactory(abeClientInformation, storeFrontInterface).getInstance();
+this->shippingVector= (new ShippingMethodsFactory(abeClientInformation, storeFrontInterface))->getInstance();
     
 }
 
 
-    public: BasicArrayList get(){
+    public: BasicArrayList* get(){
 
 
 
@@ -96,12 +102,12 @@ this->shippingVector= ShippingMethodsFactory(abeClientInformation, storeFrontInt
 
                 //@Throws(Exception.constructor)
             
-    public: ShippingInterface getShippingInterface(std::string name){
+    public: ShippingInterface* getShippingInterface(std::string name){
 
-    ShippingInterface shipping;;
+    ShippingInterface* shipping;;
     
 
-    int32_t size = this->shippingVector.size();;
+    int32_t size = this->shippingVector->size();;
     
 
 
@@ -110,10 +116,10 @@ this->shippingVector= ShippingMethodsFactory(abeClientInformation, storeFrontInt
                         for (
     int32_t index = 0;index < size; index++)
         {
-shipping= this->shippingVector.get(index);
+shipping= dynamic_cast<ShippingInterface*>(this->shippingVector->get(index));
     
 
-                        if(name.compare(shipping.getName()) == 0)
+                        if(name.compare(shipping->getName()) == 0)
                         
 
 
@@ -126,10 +132,10 @@ shipping= this->shippingVector.get(index);
     std::string error = "Error Finding Shipping: " +name;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SHIPPINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SHIPPINGERROR))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.EXCEPTION, this, "getShippingInterface(String name)");
+                                    this->logUtil->putF(this->commonStrings->EXCEPTION, this, "getShippingInterface(String name)");
     
 
                                     }
@@ -137,14 +143,14 @@ shipping= this->shippingVector.get(index);
 
 
 
-                            throw Exception(error);
+                            throw new Exception(error);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: ShippingInterface getDefault(){
+    public: ShippingInterface* getDefault(){
 
 
 

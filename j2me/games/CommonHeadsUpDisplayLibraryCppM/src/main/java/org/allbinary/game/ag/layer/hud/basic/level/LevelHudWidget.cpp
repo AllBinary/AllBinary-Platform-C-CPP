@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -66,12 +72,12 @@ class LevelHudWidget: public BasicHud, public PaintableInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: static LevelHudWidget createHud(int32_t maxlevel, int32_t location, int32_t direction){
+    public: static LevelHudWidget* createHud(int32_t maxlevel, int32_t location, int32_t direction){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LevelHudWidget(maxlevel, location, direction);
+                        return new LevelHudWidget(maxlevel, location, direction);
     
 }
 
@@ -82,15 +88,15 @@ class LevelHudWidget: public BasicHud, public PaintableInterface {
 
     private: std::vector<char> levelString;
 
-    private: std::vector<char> levelNumberCharArray = NullUtil::getInstance().NULL_CHAR_ARRAY;
+    private: std::vector<char> levelNumberCharArray = NullUtil::getInstance()->NULL_CHAR_ARRAY;
 
     private: int32_t levelNumberTotalDigits= 0;
 
     private: int32_t offset= 0;
 
-    private: PrimitiveLongUtil primitiveLongUtil;
+    private: PrimitiveLongUtil* primitiveLongUtil;
 
-public: LevelHudWidget(int32_t maxlevel, int32_t location, int32_t direction) : BasicHud(location, direction, 2, BasicColorFactory::getInstance().GREY){
+public: LevelHudWidget(int32_t maxlevel, int32_t location, int32_t direction) : BasicHud(location, direction, 2, BasicColorFactory::getInstance()->GREY){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -102,7 +108,7 @@ this->primitiveLongUtil= PrimitiveLongUtil::createPowerOfTen(1000);
 
     std::string LEVEL = "Lv ";;
     
-this->levelString= LEVEL::split('');
+this->levelString= JavaString::toCharArray(LEVEL);
     
 this->maxlevel= maxlevel;
     
@@ -115,13 +121,13 @@ this->updateMaxHeight= 14;
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 
-    Font font = graphics.getFont();;
+    Font* font = graphics->getFont();;
     
-this->updateMaxWidth= font.getSize() *4;
+this->updateMaxWidth= font->getSize() *4;
     
-this->offset= font.charsWidth(this->levelString, 0, this->levelString.size()) +font.getSize();
+this->offset= font->charsWidth(this->levelString, 0, this->levelString.size()) +font->getSize();
     
 super.updateMeasurement(graphics);
     
@@ -129,9 +135,9 @@ super.updateMeasurement(graphics);
 
 
     private: void update(){
-this->levelNumberCharArray= this->primitiveLongUtil.getCharArray(this->level);
+this->levelNumberCharArray= this->primitiveLongUtil->getCharArray(this->level);
     
-this->levelNumberTotalDigits= this->primitiveLongUtil.getCurrentTotalDigits();
+this->levelNumberTotalDigits= this->primitiveLongUtil->getCurrentTotalDigits();
     
 }
 
@@ -196,13 +202,13 @@ this->update();
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 super.paintDX(graphics, this->levelString, 0, this->levelString.size(), this->levelNumberCharArray, 0, this->levelNumberTotalDigits, this->offset);
     
 }
 
 
-    public: void paintThreed(Graphics graphics){
+    public: void paintThreed(Graphics* graphics){
 }
 
 

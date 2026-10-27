@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_BUFFEREDWRITERUTIL_H
         #define ORG_ALLBINARY_LOGIC_IO_BUFFEREDWRITERUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -75,15 +81,15 @@ class BufferedWriterUtil
             : public Object
          {
 
-    private: static BufferedWriterUtil instance() { return BufferedWriterUtil(); }
+    private: static BufferedWriterUtil* instance() { static std::unique_ptr<BufferedWriterUtil> value(new BufferedWriterUtil()); return value.get(); }
 
-    public: static BufferedWriterUtil getInstance();
+    public: static BufferedWriterUtil* getInstance();
 
-    private: const LogUtil logUtil = LogUtil::getInstance();
+    private: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const CommonLabels commonLabels = CommonLabels::getInstance();
+    private: CommonLabels* commonLabels = CommonLabels::getInstance();
 
     private: const std::string REMOVING_OLD = "Remove old for overwriting: ";
 
@@ -93,11 +99,11 @@ class BufferedWriterUtil
 
                 //@Throws(Exception.constructor)
             
-    public: void overwrite(AbFile abFile, std::string data);
+    public: void overwrite(AbFile* abFile, std::string data);
 
                 //@Throws(Exception.constructor)
             
-    public: void write(AbFile abFile, std::string data);
+    public: void write(AbFile* abFile, std::string data);
 
 };
 

@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -56,7 +64,7 @@
         //1.4.2
 class BasePathFinderGraphVisitor: public PathFinderGraphVisitorBase {
 
-    protected: BasicGeographicMap geographicMapInterface;
+    protected: BasicGeographicMap* geographicMapInterface;
 
     protected: int32_t edgeMinimum;
 
@@ -64,7 +72,7 @@ class BasePathFinderGraphVisitor: public PathFinderGraphVisitorBase {
 
     protected: int32_t maxPathWeight;
 
-public: BasePathFinderGraphVisitor(BasicGeographicMap geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight){
+public: BasePathFinderGraphVisitor(BasicGeographicMap* geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight){
 this->geographicMapInterface= geographicMapInterface;
     
 this->edgeMinimum= edgeMinimum;
@@ -78,28 +86,28 @@ this->maxPathWeight= maxPathWeight;
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(Object* graph, BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList){
+    public: void visit(Object* graph, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void fixPath(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, BasicArrayList pathList){
+    public: void fixPath(BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList, BasicArrayList* pathList){
 
-    PathFindingNode startPathFindingNode;;
+    PathFindingNode* startPathFindingNode;;
     
 
 
 
 
                         for (
-    int32_t index = startPathFindingNodeList.size() -1;index >= 0; index--)
+    int32_t index = startPathFindingNodeList->size() -1;index >= 0; index--)
         {
-startPathFindingNode= startPathFindingNodeList.get(index);
+startPathFindingNode= dynamic_cast<PathFindingNode*>(startPathFindingNodeList->get(index));
     
-pathList.remove(startPathFindingNode.geographicMapCellPosition);
+pathList->remove(startPathFindingNode->geographicMapCellPosition);
     
-pathList.addAt(0, startPathFindingNode.geographicMapCellPosition);
+pathList->addAt(0, startPathFindingNode->geographicMapCellPosition);
     
 }
 
@@ -121,7 +129,7 @@ pathList.addAt(0, startPathFindingNode.geographicMapCellPosition);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 }
 

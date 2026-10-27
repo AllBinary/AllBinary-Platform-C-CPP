@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -56,17 +62,17 @@ class HighScoreCommandsBaseFactory
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: std::vector<Command> HIGH_SCORE_COMMANDS;
+    public: std::vector<Command*> HIGH_SCORE_COMMANDS;
 
-protected: HighScoreCommandsBaseFactory(std::vector<Command> HIGH_SCORE_COMMANDS){
+protected: HighScoreCommandsBaseFactory(std::vector<Command*> HIGH_SCORE_COMMANDS){
 this->HIGH_SCORE_COMMANDS= HIGH_SCORE_COMMANDS;
     
 }
 
 
-    public: bool isHighScoreCommand(Command command){
+    public: bool isHighScoreCommand(Command* command){
 
 
 
@@ -100,7 +106,7 @@ this->HIGH_SCORE_COMMANDS= HIGH_SCORE_COMMANDS;
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getIndex(Command command){
+    public: int32_t getIndex(Command* command){
 
 
 
@@ -126,7 +132,7 @@ this->HIGH_SCORE_COMMANDS= HIGH_SCORE_COMMANDS;
 
 
 
-                            throw Exception("No Such Command");
+                            throw new Exception("No Such Command");
                     
 }
 

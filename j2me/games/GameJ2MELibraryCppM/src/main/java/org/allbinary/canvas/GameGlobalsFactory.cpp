@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -51,9 +57,9 @@ class GameGlobalsFactory
             : public Object
          {
 
-    private: static GameGlobalsFactory instance() { return GameGlobalsFactory(); }
+    private: static GameGlobalsFactory* instance() { static std::unique_ptr<GameGlobalsFactory> value(new GameGlobalsFactory()); return value.get(); }
 
-    public: static GameGlobalsFactory getInstance(){
+    public: static GameGlobalsFactory* getInstance(){
 
 
 
@@ -65,9 +71,9 @@ class GameGlobalsFactory
 
     public: bool newCanvas = true;
 
-    public: int64_t newDisplaybleTime = Integer::MIN_VALUE;
+    public: int64_t newDisplaybleTime = Integer.MIN_VALUE;
 
-    public: GPoint point = PointFactory::getInstance().ZERO_ZERO;
+    public: GPoint* point = PointFactory::getInstance()->ZERO_ZERO;
 
 };
 

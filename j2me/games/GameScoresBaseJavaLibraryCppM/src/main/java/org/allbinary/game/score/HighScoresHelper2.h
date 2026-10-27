@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/util/CircularIndexUtil.h>
 
       
@@ -44,21 +50,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HighScoresHelperBase.h"
-#include "NullHighScoresSingletonFactory.h"
-#include "HighScores.h"
+        #include "org/allbinary/game/score/HighScoresHelperBase.h"
+#include "org/allbinary/game/score/NullHighScoresSingletonFactory.h"
+#include "org/allbinary/game/score/HighScores.h"
 
 class HighScoresHelper2: public HighScoresHelperBase {
 
-    private: const CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstanceAt(0, 0);
+    private: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::createInstanceAt(0, 0);
 
-    private: HighScores selectedHighScores = NullHighScoresSingletonFactory::getInstance();
+    private: HighScores* selectedHighScores = NullHighScoresSingletonFactory::getInstance();
 
-    public: void setSelectedHighScores(HighScores selectedHighScores);
+    public: void setSelectedHighScores(HighScores* selectedHighScores);
 
-    public: HighScores getSelectedHighScores();
+    public: HighScores* getSelectedHighScores();
 
-    public: void setHighScoresArray(std::vector<HighScores> highScoresArrayP);
+    public: void setHighScoresArray(std::vector<HighScores*> highScoresArrayP);
 
     public: void selectHighScores();
 

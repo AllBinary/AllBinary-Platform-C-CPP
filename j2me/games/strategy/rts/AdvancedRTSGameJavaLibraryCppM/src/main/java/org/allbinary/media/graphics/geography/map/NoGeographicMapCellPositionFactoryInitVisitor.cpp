@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -43,16 +49,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapCellPositionFactoryInitVisitorInterface.h"
-#include "GeographicMapCellPosition.h"
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInitVisitorInterface.h"
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
 
 class NoGeographicMapCellPositionFactoryInitVisitor
             : public Object
-        : public GeographicMapCellPositionFactoryInitVisitorInterface {
+        , public GeographicMapCellPositionFactoryInitVisitorInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(AllBinaryTiledLayer tiledLayer, GeographicMapCellPosition cellPosition){
+    public: void visit(AllBinaryTiledLayer* tiledLayer, GeographicMapCellPosition* cellPosition){
 }
 
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,18 +42,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShaderInitializer.h"
+        #include "org/allbinary/graphics/opengles/shader/ShaderInitializer.h"
 
 class SimpleShaderInitializer: public ShaderInitializer {
 
-    private: static const SimpleShaderInitializer instanceC = SimpleShaderInitializer();
+    private: static SimpleShaderInitializer* instanceC() { static std::unique_ptr<SimpleShaderInitializer> value(new SimpleShaderInitializer()); return value.get(); }
 
-    public: static SimpleShaderInitializer getInstance(){
+    public: static SimpleShaderInitializer* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SimpleShaderInitializer::instanceC;
+                        return SimpleShaderInitializer::instanceC();
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TEXT_ADJUSTCUSTOMTEXTANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_TEXT_ADJUSTCUSTOMTEXTANIMATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -45,7 +51,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CustomTextAnimation.h"
+        #include "org/allbinary/animation/text/CustomTextAnimation.h"
 
 class AdjustCustomTextAnimation: public CustomTextAnimation {
 
@@ -53,7 +59,7 @@ class AdjustCustomTextAnimation: public CustomTextAnimation {
 
     private: int32_t dy;
 
-public: AdjustCustomTextAnimation(std::string text, int32_t fontSize, int32_t dx, int32_t dy, AnimationBehavior animationBehavior);
+public: AdjustCustomTextAnimation(std::string text, int32_t fontSize, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior);
 
     public: int32_t getDx();
 
@@ -63,7 +69,7 @@ public: AdjustCustomTextAnimation(std::string text, int32_t fontSize, int32_t dx
 
     public: void setDy(int32_t dy);
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
 };
 

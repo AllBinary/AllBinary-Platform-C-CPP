@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Math.h"
@@ -380,99 +388,99 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CollidableUnitBehavior.h"
-#include "UnitWaypointBehavior2.h"
-#include "UnitWaypointBehavior.h"
+        #include "org/allbinary/game/layer/unit/CollidableUnitBehavior.h"
+#include "org/allbinary/game/layer/unit/UnitWaypointBehavior2.h"
+#include "org/allbinary/game/layer/unit/UnitWaypointBehavior.h"
 
 class UnitLayer: public AdvancedRTSGameLayer, public BuildingEventListenerInterface, public TrackingEventListenerInterface {
 
-    private: static const BasicArrayList partialPositionList = BasicArrayListS(4);
+    private: static inline BasicArrayList* partialPositionList = new BasicArrayListS(4);
 
-    private: static const int32_t SENSOR_RANGE_MULTIPLIER = 6;
+    private: static inline const int32_t SENSOR_RANGE_MULTIPLIER = 6;
 
-    private: static const std::string MOVE = "Moving";
+    private: static inline const std::string MOVE = "Moving";
 
     public: static int32_t getStaticType();
 
-    public: static BasicArrayList getPartialpositionlist();
+    public: static BasicArrayList* getPartialpositionlist();
 
-    private: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
+    private: BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();
 
-    private: const GroupCommonFactory groupCommonFactory = GroupCommonFactory::getInstance();
+    private: GroupCommonFactory* groupCommonFactory = GroupCommonFactory::getInstance();
 
-    private: const LayerPartialCellPositionsUtil layerPartialCellPositionsUtil = LayerPartialCellPositionsUtil::getInstance();
+    private: LayerPartialCellPositionsUtil* layerPartialCellPositionsUtil = LayerPartialCellPositionsUtil::getInstance();
 
-    private: const LayerDistanceUtil layerDistanceUtil = LayerDistanceUtil::getInstance();
+    private: LayerDistanceUtil* layerDistanceUtil = LayerDistanceUtil::getInstance();
 
-    private: const AngleFactory angleFactory = AngleFactory::getInstance();
+    private: AngleFactory* angleFactory = AngleFactory::getInstance();
 
-    private: const CellPositionFactory cellPositionFactory = CellPositionFactory::getInstance();
+    private: CellPositionFactory* cellPositionFactory = CellPositionFactory::getInstance();
 
     private: int16_t maxResourceLoad;
 
-    private: VehicleProperties vehicleProperties;
+    private: VehicleProperties* vehicleProperties;
 
-    protected: BasicDecimal accelerationBasicDecimal = BasicDecimal(1600);
+    protected: BasicDecimal* accelerationBasicDecimal = new BasicDecimal(1600);
 
-    protected: BasicDecimal decelerationBasicDecimal = BasicDecimal( -1000);
+    protected: BasicDecimal* decelerationBasicDecimal = new BasicDecimal( -1000);
 
-    private: TrackingEvent trackingEvent;
+    private: TrackingEvent* trackingEvent;
 
-    private: const DamageFloaters damageFloaters;
+    private: DamageFloaters* damageFloaters;
 
-    private: const Paintable damageFloatersPaintableInterface;
+    private: Paintable* damageFloatersPaintableInterface;
 
-    private: const Paintable healthBar;
+    private: Paintable* healthBar;
 
-    private: Sound moveSoundInterface;
+    private: Sound* moveSoundInterface;
 
-    private: RotationAnimation initResourceAnimation;
+    private: RotationAnimation* initResourceAnimation;
 
-    private: IndexedAnimation resourceAnimation = NullIndexedAnimationFactory::getFactoryInstance().getInstance(0);
+    private: IndexedAnimation* resourceAnimation = dynamic_cast<IndexedAnimation*>(NullIndexedAnimationFactory::getFactoryInstance()->getInstance(0));
 
-    private: PathAnimation initPathAnimation;
+    private: PathAnimation* initPathAnimation;
 
-    private: Animation pathAnimation = NullAnimationFactory::getFactoryInstance().getInstance(0);
+    private: Animation* pathAnimation = NullAnimationFactory::getFactoryInstance()->getInstance(0);
 
-    private: const CaptionAnimationHelperBase captionAnimationHelper = CaptionAnimationHelper(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(CaptionResources::getInstance().RESOURCE).getInstance(0),  -23,  -25, 6, 0);
+    private: CaptionAnimationHelperBase* captionAnimationHelper = new CaptionAnimationHelper(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(CaptionResources::getInstance()->RESOURCE)->getInstance(0),  -23,  -25, 6, 0);
 
-    private: RotationAnimation decalAnimation;
+    private: RotationAnimation* decalAnimation;
 
-    private: LayerInterfaceFactoryInterface waypointLayerInterfaceFactoryInterface;
+    private: LayerInterfaceFactoryInterface* waypointLayerInterfaceFactoryInterface;
 
     private: int32_t resourceLoad = 0;
 
     private: int32_t weaponRange= 0;
 
-    protected: RTSLayerLogHelper rtsLogHelper = RTSLayerLogHelper::getInstance();
+    protected: RTSLayerLogHelper* rtsLogHelper = RTSLayerLogHelper::getInstance();
 
-    protected: RotationAnimation rotationAnimationInterfaceP;
+    protected: RotationAnimation* rotationAnimationInterfaceP;
 
-    private: NamedAngle movementAngle = this->angleFactory.NOT_ANGLE;
+    private: NamedAngle* movementAngle = this->angleFactory->NOT_ANGLE;
 
-    private: GeographicMapCellPosition steeringInsideGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition* steeringInsideGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-protected: UnitLayer(RemoteInfo remoteInfo, PathFindingLayerInterface parentLayer, AdvancedRTSProperties advancedRTSProperties, std::vector<Group> groupInterface, std::string rootName, std::string name, VehicleProperties vehicleProperties, Health healthInterface, Integer maxResourceLoad, Sound moveSoundInterface, LayerInterfaceFactoryInterface waypointLayerInterfaceFactoryInterface, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface verticleBuildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface decalAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface resourceAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, Direction direction, int32_t x, int32_t y, int32_t z, ViewPositionBase viewPosition);
-
-                //@Throws(Exception.constructor)
-            
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+protected: UnitLayer(RemoteInfo* remoteInfo, PathFindingLayerInterface* parentLayer, AdvancedRTSProperties* advancedRTSProperties, std::vector<Group*> groupInterface, std::string rootName, std::string name, VehicleProperties* vehicleProperties, Health* healthInterface, int32_t maxResourceLoad, Sound* moveSoundInterface, LayerInterfaceFactoryInterface* waypointLayerInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* verticleBuildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* decalAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* resourceAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface* proceduralAnimationInterfaceFactoryInterface, Rectangle* rectangle, Direction* direction, int32_t x, int32_t y, int32_t z, ViewPositionBase* viewPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: void updateWaypointBehavior(BasicGeographicMap geographicMapInterface);
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager);
 
                 //@Throws(Exception.constructor)
             
-    public: void construct(RTSPlayerLayerInterface rtsPlayerLayerInterface);
+    public: void updateWaypointBehavior(BasicGeographicMap* geographicMapInterface);
 
-    private: const BasicArrayList sensorGeographicMapCellPositionList = BasicArrayListD();
+                //@Throws(Exception.constructor)
+            
+    public: void construct(RTSPlayerLayerInterface* rtsPlayerLayerInterface);
+
+    private: BasicArrayList* sensorGeographicMapCellPositionList = new BasicArrayListD();
 
                 //@Throws(Exception.constructor)
             
     public: void updateSensorGeographicMapCellPositionList();
 
-    public: BasicArrayList getSensorGeographicMapCellPositionList();
+    public: BasicArrayList* getSensorGeographicMapCellPositionList();
 
     public: void select();
 
@@ -482,33 +490,33 @@ protected: UnitLayer(RemoteInfo remoteInfo, PathFindingLayerInterface parentLaye
 
                 //@Throws(Exception.constructor)
             
-    public: void setClosestGeographicMapCellHistory(BasicArrayList pathsList);
+    public: void setClosestGeographicMapCellHistory(BasicArrayList* pathsList);
 
                 //@Throws(Exception.constructor)
             
-    public: void init(GeographicMapCellHistory geographicMapCellHistory, BasicArrayList geographicMapCellPositionBasicArrayList);
+    public: void init(GeographicMapCellHistory* geographicMapCellHistory, BasicArrayList* geographicMapCellPositionBasicArrayList);
 
-    public: void onMovement(TrackingEvent trackingEvent);
+    public: void onMovement(TrackingEvent* trackingEvent);
 
                 //@Throws(Exception.constructor)
             
-    public: void onMovementFound(TrackingEvent trackingEvent);
+    public: void onMovementFound(TrackingEvent* trackingEvent);
 
     public: void initRangeHack();
 
                 //@Throws(Exception.constructor)
             
-    public: void processBuiltTick(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processBuiltTick(AllBinaryLayerManager* allBinaryLayerManager);
 
-    public: void teleportTo(GeographicMapCellPosition geographicMapCellPosition);
-
-                //@Throws(Exception.constructor)
-            
-    public: GeographicMapCellPosition getCurrentGeographicMapCellPosition();
+    public: void teleportTo(GeographicMapCellPosition* geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: void fire(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent);
+    public: GeographicMapCellPosition* getCurrentGeographicMapCellPosition();
+
+                //@Throws(Exception.constructor)
+            
+    public: void fire(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent);
 
                 //@Throws(Exception.constructor)
             
@@ -526,13 +534,13 @@ protected: UnitLayer(RemoteInfo remoteInfo, PathFindingLayerInterface parentLaye
 
                 //@Throws(Exception.constructor)
             
-    public: void processInput(AllBinaryLayerManager layerManager);
+    public: void processInput(AllBinaryLayerManager* layerManager);
 
-    public: void accelerate(BasicDecimal accelerate);
+    public: void accelerate(BasicDecimal* accelerate);
 
                 //@Throws(Exception.constructor)
             
-    protected: void fireAll(AllBinaryLayerManager layerManager);
+    protected: void fireAll(AllBinaryLayerManager* layerManager);
 
     public: void downgrade();
 
@@ -568,13 +576,13 @@ protected: UnitLayer(RemoteInfo remoteInfo, PathFindingLayerInterface parentLaye
 
     public: void allStop();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
                 //@Throws(Exception.constructor)
             
-    public: void onBuildingEvent(RTSLayerEvent event);
+    public: void onBuildingEvent(RTSLayerEvent* event);
 
-    public: VehicleProperties getVehicleProperties();
+    public: VehicleProperties* getVehicleProperties();
 
                 //@Throws(Exception.constructor)
             
@@ -600,23 +608,23 @@ protected: UnitLayer(RemoteInfo remoteInfo, PathFindingLayerInterface parentLaye
 
     public: void addLoad(int32_t resource);
 
-    private: const CapitalEvent CAPITAL_EVENT = CapitalEvent(this);
+    private: CapitalEvent* CAPITAL_EVENT = new CapitalEvent(this);
 
                 //@Throws(Exception.constructor)
             
-    public: void handleCost(PathFindingLayerInterface ownerLayer);
+    public: void handleCost(PathFindingLayerInterface* ownerLayer);
 
-    public: SelectionHudPaintable createHudPaintable();
+    public: SelectionHudPaintable* createHudPaintable();
 
-    public: SelectionHudPaintable getHudPaintable();
+    public: SelectionHudPaintable* getHudPaintable();
 
     public: int32_t getType();
 
-    protected: UnitWaypointBehavior getUnitWaypointBehavior();
+    protected: UnitWaypointBehavior* getUnitWaypointBehavior();
 
-    public: TrackingEvent getTrackingEvent();
+    public: TrackingEvent* getTrackingEvent();
 
-    public: CaptionAnimationHelperBase getCaptionAnimationHelper();
+    public: CaptionAnimationHelperBase* getCaptionAnimationHelper();
 
     public: bool isSelfUpgradeable();
 

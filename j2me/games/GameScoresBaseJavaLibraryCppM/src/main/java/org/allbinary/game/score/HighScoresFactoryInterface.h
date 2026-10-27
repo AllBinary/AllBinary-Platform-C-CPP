@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESFACTORYINTERFACE_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESFACTORYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/GameInfo.h>
 
       
@@ -42,16 +48,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HighScoresResultsListener.h"
-#include "HighScoresHelperBaseInterface.h"
+        #include "org/allbinary/game/score/HighScoresResultsListener.h"
+#include "org/allbinary/game/score/HighScoresHelperBaseInterface.h"
 
 class HighScoresFactoryInterface {
 
-    void fetchHighScores(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener);
+    public: virtual void fetchHighScores(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener) = 0;
 
-    void fetchHighScoresPreload(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener, bool preload);
+    public: virtual void fetchHighScoresPreload(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener, bool preload) = 0;
 
-    HighScoresHelperBaseInterface createHighScoresHelper();
+    public: virtual HighScoresHelperBaseInterface* createHighScoresHelper() = 0;
 
 };
 

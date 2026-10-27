@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_BASICDATATABLEINTERFACE_H
         #define ORG_ALLBINARY_DATA_TABLES_BASICDATATABLEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,9 +48,9 @@
         
 class BasicDataTableInterface {
 
-    std::string createTable();
+    public: virtual std::string createTable() = 0;
 
-    std::string dropTable();
+    public: virtual std::string dropTable() = 0;
 
 };
 

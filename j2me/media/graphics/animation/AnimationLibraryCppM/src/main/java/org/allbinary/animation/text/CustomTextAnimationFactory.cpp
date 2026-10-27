@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,20 +70,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CustomTextAnimation.h"
-#include "AdjustCustomTextAnimation.h"
+        #include "org/allbinary/animation/text/CustomTextAnimation.h"
+#include "org/allbinary/animation/text/AdjustCustomTextAnimation.h"
 
 class CustomTextAnimationFactory
             : public Object
-        : public AnimationInterfaceFactoryInterface {
+        , public AnimationInterfaceFactoryInterface {
 
-    public: static CustomTextAnimationFactory createDXY(std::string text, int32_t fontSize, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory){
+    public: static CustomTextAnimationFactory* createDXY(std::string text, int32_t fontSize, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory){
 
-    CustomTextAnimationFactory customTextAnimationFactory = CustomTextAnimationFactory(text, fontSize, animationBehaviorFactory);;
+    CustomTextAnimationFactory* customTextAnimationFactory = new CustomTextAnimationFactory(text, fontSize, animationBehaviorFactory);;
     
-customTextAnimationFactory.dx= dx;
+customTextAnimationFactory->dx= dx;
     
-customTextAnimationFactory.dy= dy;
+customTextAnimationFactory->dy= dy;
     
 
 
@@ -88,11 +94,11 @@ customTextAnimationFactory.dy= dy;
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: AnimationBehaviorFactory animationBehaviorFactory;
+    private: AnimationBehaviorFactory* animationBehaviorFactory;
 
-    public: BasicColor basicColor = BasicColorFactory::getInstance().BLACK;
+    public: BasicColor* basicColor = BasicColorFactory::getInstance()->BLACK;
 
     private: std::string text;
 
@@ -102,18 +108,18 @@ customTextAnimationFactory.dy= dy;
 
     protected: int32_t dy = 0;
 
-    protected: Font font;
+    protected: Font* font;
 
-    public: ScaleProperties scaleProperties;
+    public: ScaleProperties* scaleProperties;
 
-public: CustomTextAnimationFactory(std::string text, int32_t fontSize, AnimationBehaviorFactory animationBehaviorFactory){
-this->scaleProperties= ScaleProperties();
+public: CustomTextAnimationFactory(std::string text, int32_t fontSize, AnimationBehaviorFactory* animationBehaviorFactory){
+this->scaleProperties= new ScaleProperties();
     
 this->text= text;
     
-this->scaleProperties.scaleHeight= static_cast<int32_t>(fontSize) -(fontSize /4);
+this->scaleProperties->scaleHeight= static_cast<int32_t>(fontSize) -(fontSize /4);
     
-this->initScaleHeight= this->scaleProperties.scaleHeight;
+this->initScaleHeight= this->scaleProperties->scaleHeight;
     
 this->animationBehaviorFactory= animationBehaviorFactory;
     
@@ -124,26 +130,26 @@ this->font= Font::getFont(Font::FACE_SYSTEM, Font::STYLE_PLAIN, this->initScaleH
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId){
+    public: Animation* getInstance(int32_t instanceId){
 
-    CustomTextAnimation customTextAnimation;;
+    CustomTextAnimation* customTextAnimation;;
     
 
                         if(this->dx != 0 || this->dy != 0)
                         
                                     {
-                                    customTextAnimation= AdjustCustomTextAnimation(this->text, this->scaleProperties.scaleHeight, this->dx, this->dy, this->animationBehaviorFactory.getOrCreateInstance());
+                                    customTextAnimation= new AdjustCustomTextAnimation(this->text, this->scaleProperties->scaleHeight, this->dx, this->dy, this->animationBehaviorFactory->getOrCreateInstance());
     
 
                                     }
                                 
                         else {
-                            customTextAnimation= CustomTextAnimation(this->text, this->scaleProperties.scaleHeight, this->animationBehaviorFactory.getOrCreateInstance());
+                            customTextAnimation= new CustomTextAnimation(this->text, this->scaleProperties->scaleHeight, this->animationBehaviorFactory->getOrCreateInstance());
     
 
                         }
                             
-customTextAnimation.setBasicColorP(this->basicColor);
+customTextAnimation->setBasicColorP(this->basicColor);
     
 
 
@@ -154,7 +160,7 @@ customTextAnimation.setBasicColorP(this->basicColor);
 }
 
 
-    public: void setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties* scaleProperties){
 }
 
 
@@ -163,7 +169,7 @@ customTextAnimation.setBasicColorP(this->basicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->font.stringWidth(this->text);;
+                        return this->font->stringWidth(this->text);;
     
 }
 
@@ -173,7 +179,7 @@ customTextAnimation.setBasicColorP(this->basicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->font.getHeight();;
+                        return this->font->getHeight();;
     
 }
 

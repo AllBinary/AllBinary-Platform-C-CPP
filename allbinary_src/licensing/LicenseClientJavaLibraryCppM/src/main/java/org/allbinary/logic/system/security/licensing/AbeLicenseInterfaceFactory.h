@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABELICENSEINTERFACEFACTORY_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABELICENSEINTERFACEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,23 +64,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbeLicenseInterface.h"
-#include "AbeClientInformationInterface.h"
-#include "AbeNoLicense.h"
-#include "AbeClientInformationData.h"
-#include "LicensingException.h"
+        #include "org/allbinary/logic/system/security/licensing/AbeLicenseInterface.h"
+#include "org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h"
+#include "org/allbinary/logic/system/security/licensing/AbeNoLicense.h"
+#include "org/allbinary/logic/system/security/licensing/AbeClientInformationData.h"
+#include "org/allbinary/logic/system/security/licensing/LicensingException.h"
 
 class AbeLicenseInterfaceFactory
             : public Object
          {
 
-    private: static const AbeLicenseInterfaceFactory SINGLETON = AbeLicenseInterfaceFactory();
+    private: static AbeLicenseInterfaceFactory* SINGLETON() { static std::unique_ptr<AbeLicenseInterfaceFactory> value(new AbeLicenseInterfaceFactory()); return value.get(); }
 
-    public: static AbeLicenseInterfaceFactory getInstance();
+    public: static AbeLicenseInterfaceFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     private: int64_t time = 0;
 
@@ -82,7 +88,7 @@ class AbeLicenseInterfaceFactory
 
     private: int32_t checkPeriod = 36000000;
 
-    private: AbeLicenseInterface abeLicenseInterface = 
+    private: AbeLicenseInterface* abeLicenseInterface = 
                 nullptr
             ;
 
@@ -90,11 +96,11 @@ private: AbeLicenseInterfaceFactory();
 
                 //@Throws(LicensingException.constructor)
             
-    public: AbeLicenseInterface getLicenseInstance(AbeClientInformationInterface abeClientInformation);
+    public: AbeLicenseInterface* getLicenseInstance(AbeClientInformationInterface* abeClientInformation);
 
                 //@Throws(LicensingException.constructor)
             
-    private: AbeLicenseInterface get(AbeClientInformationInterface abeClientInformation);
+    private: AbeLicenseInterface* get(AbeClientInformationInterface* abeClientInformation);
 
     private: bool isTimeToGetKey();
 

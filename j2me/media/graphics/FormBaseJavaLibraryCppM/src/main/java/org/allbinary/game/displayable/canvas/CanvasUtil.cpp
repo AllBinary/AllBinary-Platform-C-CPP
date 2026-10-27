@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -51,7 +57,7 @@ class CanvasUtil
 
     public: static std::string getKeyName(int32_t key){
 
-    CommonPhoneStrings commonPhoneStrings = CommonPhoneStrings::getInstance();;
+    CommonPhoneStrings* commonPhoneStrings = CommonPhoneStrings::getInstance();;
     
 
                         if(key == Canvas::UP)
@@ -61,7 +67,7 @@ class CanvasUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return commonPhoneStrings.UP;
+                        return commonPhoneStrings->UP;
     
 
                                     }
@@ -74,7 +80,7 @@ class CanvasUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return commonPhoneStrings.DOWN;
+                        return commonPhoneStrings->DOWN;
     
 
                                     }
@@ -87,7 +93,7 @@ class CanvasUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return commonPhoneStrings.RIGHT;
+                        return commonPhoneStrings->RIGHT;
     
 
                                     }
@@ -100,7 +106,7 @@ class CanvasUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return commonPhoneStrings.LEFT;
+                        return commonPhoneStrings->LEFT;
     
 
                                     }
@@ -113,7 +119,7 @@ class CanvasUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return commonPhoneStrings.FIRE;
+                        return commonPhoneStrings->FIRE;
     
 
                                     }

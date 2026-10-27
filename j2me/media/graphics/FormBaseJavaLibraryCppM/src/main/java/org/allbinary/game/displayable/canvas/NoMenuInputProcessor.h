@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NOMENUINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NOMENUINPUTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/NullCanvas.h>
 
       
@@ -51,23 +57,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicMenuInputProcessor.h"
+        #include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
 
 class NoMenuInputProcessor: public BasicMenuInputProcessor {
 
-    private: static const NoMenuInputProcessor SINGLETON = NoMenuInputProcessor();
+    private: static NoMenuInputProcessor* SINGLETON() { static std::unique_ptr<NoMenuInputProcessor> value(new NoMenuInputProcessor()); return value.get(); }
 
-    public: static NoMenuInputProcessor getInstance();
+    public: static NoMenuInputProcessor* getInstance();
 
 private: NoMenuInputProcessor();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onDownGameKeyEvent(GameKeyEvent gameKeyEvent);
+    public: void onDownGameKeyEvent(GameKeyEvent* gameKeyEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onUpGameKeyEvent(GameKeyEvent gameKeyEvent);
+    public: void onUpGameKeyEvent(GameKeyEvent* gameKeyEvent);
 
-    public: void onMotionGestureEvent(MotionGestureEvent motionGestureEvent);
+    public: void onMotionGestureEvent(MotionGestureEvent* motionGestureEvent);
 
 };
 

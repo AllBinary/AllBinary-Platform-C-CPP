@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -44,9 +50,9 @@
         
 class SequenceInterface {
 
-    void setSequence(std::vector<int32_t> sequence);
+    public: virtual void setSequence(std::vector<int32_t> sequence) = 0;
 
-    std::vector<int32_t> getSequence();
+    public: virtual std::vector<int32_t> getSequence() = 0;
 
 };
 

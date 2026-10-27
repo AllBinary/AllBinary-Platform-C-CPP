@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/io/File.h>
 
       
@@ -64,7 +70,7 @@ public: AbFileInputStream(std::string name) : FileInputStream(name){
 }
 
 
-public: AbFileInputStream(AbFile file) : FileInputStream(AbFileNativeUtil::get(file)){
+public: AbFileInputStream(AbFile* file) : FileInputStream(AbFileNativeUtil::get(file)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -74,7 +80,7 @@ public: AbFileInputStream(AbFile file) : FileInputStream(AbFileNativeUtil::get(f
 }
 
 
-protected: AbFileInputStream(File file) : FileInputStream(file){
+protected: AbFileInputStream(File* file) : FileInputStream(file){
 
                         //super/this constructor call is in the constructor initializer list.
                     

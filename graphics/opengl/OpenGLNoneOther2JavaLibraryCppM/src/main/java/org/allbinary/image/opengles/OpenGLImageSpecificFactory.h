@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGESPECIFICFACTORY_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGESPECIFICFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/PreLogUtil.h>
@@ -55,9 +61,9 @@ class OpenGLImageSpecificFactory
             : public Object
          {
 
-    private: static OpenGLImageSpecificFactory instance() { return OpenGLImageSpecificFactory(); }
+    private: static OpenGLImageSpecificFactory* instance() { static std::unique_ptr<OpenGLImageSpecificFactory> value(new OpenGLImageSpecificFactory()); return value.get(); }
 
-    public: static OpenGLImageSpecificFactory getInstance();
+    public: static OpenGLImageSpecificFactory* getInstance();
 
     public: bool updating = false;
 

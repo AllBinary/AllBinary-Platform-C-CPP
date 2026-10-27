@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENTS_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENTS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/rand/MyRandomFactory.h>
@@ -53,33 +59,33 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AdvertisementProcessorInterface.h"
+        #include "org/allbinary/business/advertisement/AdvertisementProcessorInterface.h"
 
 class Advertisements
             : public Object
          {
 
-    private: const BasicArrayList bannerList = BasicArrayListD();
+    private: BasicArrayList* bannerList = new BasicArrayListD();
 
-    private: const BasicArrayList pageList = BasicArrayListD();
+    private: BasicArrayList* pageList = new BasicArrayListD();
 
-    public: void addPage(AdvertisementProcessorInterface advertisementProcessorInterface);
+    public: void addPage(AdvertisementProcessorInterface* advertisementProcessorInterface);
 
     public: void startRandomPage();
 
-    private: const MyRandomFactory myRandomFactory = MyRandomFactory::getInstance();
+    private: MyRandomFactory* myRandomFactory = MyRandomFactory::getInstance();
 
     public: void processRandomPage();
 
     public: void stopAllPage();
 
-    public: void addBanner(AdvertisementProcessorInterface advertisementProcessorInterface);
+    public: void addBanner(AdvertisementProcessorInterface* advertisementProcessorInterface);
 
     public: void startAll();
 
     public: void stopAllBanner();
 
-    public: AdvertisementProcessorInterface getBanner(int32_t index);
+    public: AdvertisementProcessorInterface* getBanner(int32_t index);
 
     public: void stopAll();
 

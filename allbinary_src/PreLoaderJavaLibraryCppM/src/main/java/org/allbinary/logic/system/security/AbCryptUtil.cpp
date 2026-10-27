@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -62,9 +68,9 @@ class AbCryptUtil
             : public Object
          {
 
-    private: static AbCryptUtil instance() { return AbCryptUtil(); }
+    private: static AbCryptUtil* instance() { static std::unique_ptr<AbCryptUtil> value(new AbCryptUtil()); return value.get(); }
 
-    public: static AbCryptUtil getInstance(){
+    public: static AbCryptUtil* getInstance(){
 
 
 
@@ -74,7 +80,7 @@ class AbCryptUtil
 }
 
 
-    private: const StreamUtil streamUtil = StreamUtil::getInstance();
+    private: StreamUtil* streamUtil = StreamUtil::getInstance();
 
 private: AbCryptUtil(){
 }
@@ -82,32 +88,32 @@ private: AbCryptUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<int8_t> decrypt(InputStream inputStream, std::string key){
+    public: std::vector<int8_t> decrypt(InputStream* inputStream, std::string key){
 
-    ByteArrayOutputStream outputStream = 
+    ByteArrayOutputStream* outputStream = 
                 null
             ;;
     
 
         try {
-            outputStream= this->streamUtil.get(inputStream, ByteArrayOutputStream(), std::vector<int8_t>(16384));
+            outputStream= dynamic_cast<ByteArrayOutputStream*>(this->streamUtil->get(inputStream, new ByteArrayOutputStream(), std::vector<int8_t>(16384)));
     
 
-    AbCrypt abCrypt = AbCrypt(KeySpecFactory::getInstance().DESEDE);;
+    AbCrypt* abCrypt = new AbCrypt(KeySpecFactory::getInstance()->DESEDE);;
     
-abCrypt.init(key);
+abCrypt->init(key);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return abCrypt.decrypt(outputStream.toByteArray());;
+                        return abCrypt->decrypt(outputStream->toByteArray());;
     
 
          finally {
-            this->streamUtil.close(outputStream);
+            this->streamUtil->close(outputStream);
     
-this->streamUtil.close(inputStream);
+this->streamUtil->close(inputStream);
     
 
          }

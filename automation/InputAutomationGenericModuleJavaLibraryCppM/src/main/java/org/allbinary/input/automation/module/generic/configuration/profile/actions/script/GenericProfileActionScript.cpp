@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -89,17 +95,17 @@
         
 class GenericProfileActionScript: public DefaultMutableTreeNode, public ProfileActionScriptNodeInterface {
 
-    private: static const std::string NAME = "Root";
+    private: static inline const std::string NAME = "Root";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: GenericProfileActionJPanel genericProfileActionJPanel;
+    private: GenericProfileActionJPanel* genericProfileActionJPanel;
 
-    private: BasicArrayList profileActionConditionInterfaceVector;
+    private: BasicArrayList* profileActionConditionInterfaceVector;
 
-public: GenericProfileActionScript(GenericProfileActionJPanel genericProfileActionJPanel, Node node) : DefaultMutableTreeNode(NAME){
+public: GenericProfileActionScript(GenericProfileActionJPanel* genericProfileActionJPanel, Node* node) : DefaultMutableTreeNode(NAME){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -108,10 +114,10 @@ public: GenericProfileActionScript(GenericProfileActionJPanel genericProfileActi
                     
 this->genericProfileActionJPanel= genericProfileActionJPanel;
     
-this->setProfileActionConditionInterfaceVector(BasicArrayListD());
+this->setProfileActionConditionInterfaceVector(new BasicArrayListD());
     
 
-    Node actionScriptNode = DomSearchHelper::getNode(GenericProfileActionData::SCRIPT, node.getChildNodes());;
+    Node* actionScriptNode = DomSearchHelper::getNode(GenericProfileActionData::SCRIPT, node->getChildNodes());;
     
 
                         if(actionScriptNode != 
@@ -120,20 +126,20 @@ this->setProfileActionConditionInterfaceVector(BasicArrayListD());
                         
                                     {
                                     
-    NodeList nodeList = actionScriptNode.getChildNodes();;
+    NodeList* nodeList = actionScriptNode->getChildNodes();;
     
 
 
 
 
                         for (
-    int32_t index = 0;index < nodeList.getLength(); index++)
+    int32_t index = 0;index < nodeList->getLength(); index++)
         {
 
-    Node actionConditionNode = nodeList.item(index);;
+    Node* actionConditionNode = nodeList->item(index);;
     
 
-                        if(actionConditionNode.getNodeType() == Node::ELEMENT_NODE)
+                        if(actionConditionNode->getNodeType() == Node::ELEMENT_NODE)
                         
                                     {
                                     this->addCondition(ProfileActionScriptConditionFactory::getInstance(actionConditionNode));
@@ -150,7 +156,7 @@ this->setProfileActionConditionInterfaceVector(BasicArrayListD());
                             
 
 
-                            throw Exception("Profile Action Script Node Null");
+                            throw new Exception("Profile Action Script Node Null");
                     
 
                         }
@@ -158,39 +164,39 @@ this->setProfileActionConditionInterfaceVector(BasicArrayListD());
 }
 
 
-public: GenericProfileActionScript(GenericProfileActionJPanel genericProfileActionJPanel){
+public: GenericProfileActionScript(GenericProfileActionJPanel* genericProfileActionJPanel){
 this->genericProfileActionJPanel= genericProfileActionJPanel;
     
-this->setProfileActionConditionInterfaceVector(BasicArrayListD());
+this->setProfileActionConditionInterfaceVector(new BasicArrayListD());
     
 }
 
 
-    public: void addCondition(ProfileActionScriptNodeInterface profileActionScriptNodeInterface){
-this->logUtil.putF(this->commonStrings.START, this, "addCondition");
+    public: void addCondition(ProfileActionScriptNodeInterface* profileActionScriptNodeInterface){
+this->logUtil->putF(this->commonStrings->START, this, "addCondition");
     
-this->getProfileActionConditionInterfaceVector().add(profileActionScriptNodeInterface);
+this->getProfileActionConditionInterfaceVector()->add(profileActionScriptNodeInterface);
     
 this->add(profileActionScriptNodeInterface);
     
 }
 
 
-    public: void removeCondition(ProfileActionScriptNodeInterface profileActionScriptNodeInterface){
-this->logUtil.putF(this->commonStrings.START, this, "removeCondition");
+    public: void removeCondition(ProfileActionScriptNodeInterface* profileActionScriptNodeInterface){
+this->logUtil->putF(this->commonStrings->START, this, "removeCondition");
     
-this->getProfileActionConditionInterfaceVector().remove(profileActionScriptNodeInterface);
+this->getProfileActionConditionInterfaceVector()->remove(profileActionScriptNodeInterface);
     
 this->remove(profileActionScriptNodeInterface);
     
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
+this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
     
 
 
@@ -201,7 +207,7 @@ this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
 }
 
 
-    public: BasicArrayList getProfileActionConditionInterfaceVector(){
+    public: BasicArrayList* getProfileActionConditionInterfaceVector(){
 
 
 
@@ -211,7 +217,7 @@ this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
 }
 
 
-    public: void setProfileActionConditionInterfaceVector(BasicArrayList profileActionConditionInterfaceVector){
+    public: void setProfileActionConditionInterfaceVector(BasicArrayList* profileActionConditionInterfaceVector){
 this->profileActionConditionInterfaceVector= profileActionConditionInterfaceVector;
     
 }
@@ -219,15 +225,15 @@ this->profileActionConditionInterfaceVector= profileActionConditionInterfaceVect
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = document.createElement(GenericProfileActionData::SCRIPT);;
+    Node* node = document->createElement(GenericProfileActionData::SCRIPT);;
     
 
-    BasicArrayList vector = this->getProfileActionConditionInterfaceVector();;
+    BasicArrayList* vector = this->getProfileActionConditionInterfaceVector();;
     
 
-    int32_t size = vector.size();;
+    int32_t size = vector->size();;
     
 
 
@@ -237,9 +243,9 @@ this->profileActionConditionInterfaceVector= profileActionConditionInterfaceVect
     int32_t index = 0;index < size; index++)
         {
 
-    ProfileActionScriptConditionInterface profileActionConditionInterface = vector.get(index);;
+    ProfileActionScriptConditionInterface* profileActionConditionInterface = dynamic_cast<ProfileActionScriptConditionInterface*>(vector->get(index));;
     
-node.appendChild(profileActionConditionInterface.toXmlNode(document));
+node->appendChild(profileActionConditionInterface->toXmlNode(document));
     
 }
 

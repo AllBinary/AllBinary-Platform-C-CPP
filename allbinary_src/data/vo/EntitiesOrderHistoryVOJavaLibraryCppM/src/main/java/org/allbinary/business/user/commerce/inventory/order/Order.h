@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -90,15 +96,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OrderInterface.h"
-#include "OrderHistoryData.h"
-#include "OrderData.h"
+        #include "org/allbinary/business/user/commerce/inventory/order/OrderInterface.h"
+#include "org/allbinary/business/user/commerce/inventory/order/OrderHistoryData.h"
+#include "org/allbinary/business/user/commerce/inventory/order/OrderData.h"
 
 class Order
             : public Object
-        : public OrderInterface, public Serializable {
+        , public OrderInterface, public Serializable {
 
-    private: BasketInterface basket;
+    private: BasketInterface* basket;
 
     private: std::string paymentMethod;
 
@@ -118,13 +124,13 @@ class Order
 
     private: std::string storeCancelComment;
 
-public: Order(BasketInterface basket);
+public: Order(BasketInterface* basket);
 
-public: Order(std::string storeName, BasketInterface basket, std::string id, std::string shippingType, std::string special, std::string paymentMethod);
+public: Order(std::string storeName, BasketInterface* basket, std::string id, std::string shippingType, std::string special, std::string paymentMethod);
 
-    public: Boolean isIdValid();
+    public: bool isIdValid();
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string getIdValidationInfo();
 
@@ -146,7 +152,7 @@ public: Order(std::string storeName, BasketInterface basket, std::string id, std
 
     public: void setStoreCancelComments(std::string value);
 
-    public: BasketInterface getBasket();
+    public: BasketInterface* getBasket();
 
     public: std::string getShippingMethod();
 
@@ -170,13 +176,13 @@ public: Order(std::string storeName, BasketInterface basket, std::string id, std
 
     public: std::string viewOrder(std::string paymentMethod);
 
-    public: std::string emailOrder(std::string userName, std::string paymentMethod, StoreFrontInterface storeFrontInterface);
+    public: std::string emailOrder(std::string userName, std::string paymentMethod, StoreFrontInterface* storeFrontInterface);
 
-    public: HashMap<Object*, Object*> toHashMapOrder();
+    public: HashMap<Object*, Object*>* toHashMapOrder();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

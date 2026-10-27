@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATIONVIEW_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATIONVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -79,30 +85,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserEmailConfigurationInterface.h"
-#include "UserEmailConfiguration.h"
-#include "UserEmailConfigurationMapping.h"
-#include "UserEmailConfigurationData.h"
+        #include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationInterface.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfiguration.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationMapping.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationData.h"
 
 class UserEmailConfigurationView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: UserEmailConfigurationInterface userEmailConfigurationInterface;
+    private: UserEmailConfigurationInterface* userEmailConfigurationInterface;
 
-public: UserEmailConfigurationView(Node node);
+public: UserEmailConfigurationView(Node* node);
 
-public: UserEmailConfigurationView(UserEmailConfigurationInterface userEmailConfigurationInterface);
+public: UserEmailConfigurationView(UserEmailConfigurationInterface* userEmailConfigurationInterface);
 
-    public: UserEmailConfigurationInterface getEmailConfigurationInterface();
+    public: UserEmailConfigurationInterface* getEmailConfigurationInterface();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

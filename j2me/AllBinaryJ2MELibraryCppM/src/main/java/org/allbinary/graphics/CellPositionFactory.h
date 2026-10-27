@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,21 +60,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CellPosition.h"
+        #include "org/allbinary/graphics/CellPosition.h"
 
 class CellPositionFactory
             : public Object
          {
 
-    private: static CellPositionFactory SINGLETON = CellPositionFactory();
+    private: static CellPositionFactory* SINGLETON() { static std::unique_ptr<CellPositionFactory> value(new CellPositionFactory()); return value.get(); }
 
-    public: static CellPositionFactory getInstance();
+    public: static CellPositionFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: const CellPosition NONE = CellPosition( -1,  -1,  -1,  -1);
+    public: CellPosition* NONE = new CellPosition( -1,  -1,  -1,  -1);
 
-    private: std::vector<std::vector<CellPosition>> cellPositionArray = std::vector<std::vector<CellPosition>>(0, std::vector<CellPosition>(0));
+    private: std::vector<std::vector<CellPosition*>> cellPositionArray = std::vector<std::vector<CellPosition*>>(0, std::vector<CellPosition*>(0));
 
     private: int32_t columns= 0;
 
@@ -78,9 +84,9 @@ private: CellPositionFactory();
 
     public: void init(int32_t columns, int32_t rows);
 
-    public: CellPosition getInstanceColRow(int32_t i_column, int32_t i_row);
+    public: CellPosition* getInstanceColRow(int32_t i_column, int32_t i_row);
 
-    public: CellPosition createInstance(int32_t i_column, int32_t i_row);
+    public: CellPosition* createInstance(int32_t i_column, int32_t i_row);
 
     public: int32_t getColumns();
 

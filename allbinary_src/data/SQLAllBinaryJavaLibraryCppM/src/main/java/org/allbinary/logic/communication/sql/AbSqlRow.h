@@ -23,6 +23,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/sql/ResultSet.h>
@@ -79,11 +87,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbSqlColumn.h"
+        #include "org/allbinary/logic/communication/sql/AbSqlColumn.h"
 
 class AbSqlRow: public AbSqlColumn {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const std::string EQUAL_QUOTE = "=\"";
 
@@ -113,38 +121,38 @@ class AbSqlRow: public AbSqlColumn {
 
     private: const std::string INSERT_END = "')";
 
-public: AbSqlRow(DbConnectionInfo databaseConnectionInfoInterface);
+public: AbSqlRow(DbConnectionInfo* databaseConnectionInfoInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     private: std::string getValue(std::string value);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void updateWhere(std::string key, std::string value, HashMap<Object*, Object*> updatedKeyValuePairs);
+    public: void updateWhere(std::string key, std::string value, HashMap<Object*, Object*>* updatedKeyValuePairs);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void updateWhere(HashMap<Object*, Object*> whereKeyValuePairs, HashMap<Object*, Object*> updatedKeyValuePairs);
+    public: void updateWhere(HashMap<Object*, Object*>* whereKeyValuePairs, HashMap<Object*, Object*>* updatedKeyValuePairs);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void deleteWhere(std::string key, std::string value);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void deleteWhere(HashMap<Object*, Object*> keysAndValues);
+    public: void deleteWhere(HashMap<Object*, Object*>* keysAndValues);
 
-    public: void insert(BasicArrayList values);
+    public: void insert(BasicArrayList* values);
 
-    public: HashMap<Object*, Object*> getRow(HashMap<Object*, Object*> keysAndValues);
+    public: HashMap<Object*, Object*>* getRow(HashMap<Object*, Object*>* keysAndValues);
 
-    public: BasicArrayList getRows(HashMap<Object*, Object*> keysAndValues);
+    public: BasicArrayList* getRows(HashMap<Object*, Object*>* keysAndValues);
 
-    public: BasicArrayList getRows(HashMap<Object*, Object*> keysAndValues, std::string more);
+    public: BasicArrayList* getRows(HashMap<Object*, Object*>* keysAndValues, std::string more);
 
-    public: BasicArrayList getAllRows();
+    public: BasicArrayList* getAllRows();
 
-    public: BasicArrayList getRowsWhereBetween(HashMap<Object*, Object*> whereKeyValuePairs, std::string betweenColumn, std::string smallest, std::string largest);
+    public: BasicArrayList* getRowsWhereBetween(HashMap<Object*, Object*>* whereKeyValuePairs, std::string betweenColumn, std::string smallest, std::string largest);
 
-    public: BasicArrayList getRowsWhereBetween(std::string betweenColumn, std::string smallest, std::string largest);
+    public: BasicArrayList* getRowsWhereBetween(std::string betweenColumn, std::string smallest, std::string largest);
 
 };
 

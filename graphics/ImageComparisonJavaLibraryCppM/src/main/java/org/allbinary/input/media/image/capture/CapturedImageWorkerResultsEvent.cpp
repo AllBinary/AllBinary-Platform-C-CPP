@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Long.h"
         
 #include <java/awt/image/BufferedImage.h>
@@ -47,11 +55,11 @@
         
 class CapturedImageWorkerResultsEvent: public AllBinaryEventObject {
 
-    private: Long frame;
+    private: int64_t frame;
 
-    private: BufferedImage bufferedImage;
+    private: BufferedImage* bufferedImage;
 
-public: CapturedImageWorkerResultsEvent(Object* anyType, Long frame, BufferedImage bufferedImage) : AllBinaryEventObject(anyType){
+public: CapturedImageWorkerResultsEvent(Object* anyType, int64_t frame, BufferedImage* bufferedImage) : AllBinaryEventObject(anyType){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -65,7 +73,7 @@ this->setBufferedImage(bufferedImage);
 }
 
 
-    public: BufferedImage getBufferedImage(){
+    public: BufferedImage* getBufferedImage(){
 
 
 
@@ -75,13 +83,13 @@ this->setBufferedImage(bufferedImage);
 }
 
 
-    private: void setBufferedImage(BufferedImage bufferedImage){
+    private: void setBufferedImage(BufferedImage* bufferedImage){
 this->bufferedImage= bufferedImage;
     
 }
 
 
-    public: Long getFrame(){
+    public: int64_t getFrame(){
 
 
 

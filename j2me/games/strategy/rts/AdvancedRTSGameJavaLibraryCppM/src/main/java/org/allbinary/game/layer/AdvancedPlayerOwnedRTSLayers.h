@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_ADVANCEDPLAYEROWNEDRTSLAYERS_H
         #define ORG_ALLBINARY_GAME_LAYER_ADVANCEDPLAYEROWNEDRTSLAYERS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -48,67 +54,67 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PlayerOwnedRTSLayers.h"
-#include "RTSLayer.h"
-#include "AllBinaryGameLayer.h"
+        #include "org/allbinary/game/layer/PlayerOwnedRTSLayers.h"
+#include "org/allbinary/game/layer/RTSLayer.h"
+#include "org/allbinary/game/layer/AllBinaryGameLayer.h"
 
 class AdvancedPlayerOwnedRTSLayers: public PlayerOwnedRTSLayers {
 
-    private: const BasicArrayList unitsList = BasicArrayListD();
+    private: BasicArrayList* unitsList = new BasicArrayListD();
 
-    private: const BasicArrayList waypointsList = BasicArrayListD();
+    private: BasicArrayList* waypointsList = new BasicArrayListD();
 
-    private: const BasicArrayList buildingList = BasicArrayListD();
+    private: BasicArrayList* buildingList = new BasicArrayListD();
 
-    private: const BasicArrayList baseList = BasicArrayListD();
+    private: BasicArrayList* baseList = new BasicArrayListD();
 
-    private: const BasicArrayList garrisonList = BasicArrayListD();
+    private: BasicArrayList* garrisonList = new BasicArrayListD();
 
-    private: const BasicArrayList houseList = BasicArrayListD();
+    private: BasicArrayList* houseList = new BasicArrayListD();
 
-    private: const BasicArrayList labList = BasicArrayListD();
+    private: BasicArrayList* labList = new BasicArrayListD();
 
-    private: const BasicArrayList factoryList = BasicArrayListD();
+    private: BasicArrayList* factoryList = new BasicArrayListD();
 
-    public: void addUnit(RTSLayer rtsLayer);
+    public: void addUnit(RTSLayer* rtsLayer);
 
-    public: void addWaypoint(RTSLayer rtsLayer);
+    public: void addWaypoint(RTSLayer* rtsLayer);
 
-    public: void addBase(RTSLayer rtsLayer);
+    public: void addBase(RTSLayer* rtsLayer);
 
-    public: void addGarrison(RTSLayer rtsLayer);
+    public: void addGarrison(RTSLayer* rtsLayer);
 
-    public: void addHouse(RTSLayer rtsLayer);
+    public: void addHouse(RTSLayer* rtsLayer);
 
-    public: void addLab(RTSLayer rtsLayer);
+    public: void addLab(RTSLayer* rtsLayer);
 
-    public: void addFactory(RTSLayer rtsLayer);
+    public: void addFactory(RTSLayer* rtsLayer);
 
-    public: void removeUnit(AllBinaryGameLayer gameLayer);
+    public: void removeUnit(AllBinaryGameLayer* gameLayer);
 
-    public: void removeWaypoint(AllBinaryGameLayer gameLayer);
+    public: void removeWaypoint(AllBinaryGameLayer* gameLayer);
 
-    public: BasicArrayList getUnitsList();
+    public: BasicArrayList* getUnitsList();
 
-    public: BasicArrayList getWaypointsList();
+    public: BasicArrayList* getWaypointsList();
 
-    public: BasicArrayList getBaseList();
+    public: BasicArrayList* getBaseList();
 
-    public: BasicArrayList getGarrisonList();
+    public: BasicArrayList* getGarrisonList();
 
-    public: BasicArrayList getHouseList();
+    public: BasicArrayList* getHouseList();
 
-    public: BasicArrayList getLabList();
+    public: BasicArrayList* getLabList();
 
-    public: BasicArrayList getFactoryList();
+    public: BasicArrayList* getFactoryList();
 
     public: int32_t getTotalBuildings();
 
-    public: void removeBuilding(AllBinaryGameLayer layerInterface);
+    public: void removeBuilding(AllBinaryGameLayer* layerInterface);
 
     public: std::string toString();
 
-    public: BasicArrayList getBuildingList();
+    public: BasicArrayList* getBuildingList();
 
 };
 

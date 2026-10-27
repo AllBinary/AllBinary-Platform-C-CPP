@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -67,11 +73,11 @@ class BoundBounceAI: public BasicAI {
 
     protected: int32_t currentRelativeAngle = 0;
 
-    private: LayerBounds layerBounds;
+    private: LayerBounds* layerBounds;
 
-    private: BoundsVisitorInterface boundsVisitorInterface;
+    private: BoundsVisitorInterface* boundsVisitorInterface;
 
-public: BoundBounceAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput, LayerBounds layerBounds, BoundsVisitorInterface boundsVisitorInterface) : BasicAI(ownerLayerInterface, gameInput){
+public: BoundBounceAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput, LayerBounds* layerBounds, BoundsVisitorInterface* boundsVisitorInterface) : BasicAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,19 +91,19 @@ this->boundsVisitorInterface= boundsVisitorInterface;
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 
-    Rectangle rectange = this->layerBounds.getRectangleP();;
+    Rectangle* rectange = this->layerBounds->getRectangleP();;
     
-graphics.drawRect(rectange.getPoint().getX(), rectange.getPoint().getY(), rectange.getWidth(), rectange.getHeight());
+graphics->drawRect(rectange->getPoint()->getX(), rectange->getPoint()->getY(), rectange->getWidth(), rectange->getHeight());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
-this->layerBounds.visit(this->boundsVisitorInterface);
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
+this->layerBounds->visit(this->boundsVisitorInterface);
     
 }
 

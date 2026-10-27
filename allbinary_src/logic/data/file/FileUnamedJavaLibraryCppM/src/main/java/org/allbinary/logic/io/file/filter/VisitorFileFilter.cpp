@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/io/File.h>
@@ -56,22 +62,22 @@
         
 class VisitorFileFilter
             : public Object
-        : public FileFilter {
+        , public FileFilter {
 
-    private: VisitorInterface booleanVisitorInterface;
+    private: VisitorInterface* booleanVisitorInterface;
 
-public: VisitorFileFilter(VisitorInterface booleanVisitorInterface){
+public: VisitorFileFilter(VisitorInterface* booleanVisitorInterface){
 this->booleanVisitorInterface= booleanVisitorInterface;
     
 }
 
 
-    public: bool accept(File file){
+    public: bool accept(File* file){
 
-    AbFile abFile = FileWrapperUtil::wrapFile(file);;
+    AbFile* abFile = FileWrapperUtil::wrapFile(file);;
     
 
-    bool isFileAcceptable = visit = this->booleanVisitorInterface.visit(abFile)visit
+    bool isFileAcceptable = visit = this->booleanVisitorInterface->visit(abFile)visit
 visit.
                     .valueOf();;
     
@@ -79,14 +85,14 @@ visit.
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return isFileAcceptable || file.isDirectory();
+                        return isFileAcceptable || file->isDirectory();
     
 }
 
 
-    public: bool accept(AbFile file){
+    public: bool accept(AbFile* file){
 
-    bool isFileAcceptable = visit = this->booleanVisitorInterface.visit(file)visit
+    bool isFileAcceptable = visit = this->booleanVisitorInterface->visit(file)visit
 visit.
                     .valueOf();;
     
@@ -94,7 +100,7 @@ visit.
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return isFileAcceptable || file.isDirectory();
+                        return isFileAcceptable || file->isDirectory();
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_GAMELAYERUTIL_H
         #define ORG_ALLBINARY_GAME_LAYER_GAMELAYERUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
@@ -55,7 +61,7 @@ class GameLayerUtil
             : public Object
          {
 
-    public: static bool isOnScreen(AllBinaryLayer layer);
+    public: static bool isOnScreen(AllBinaryLayer* layer);
 
     public: static bool isInside(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, int32_t rect2X1, int32_t rect2Y1, int32_t rect2X2, int32_t rect2Y2);
 

@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/layer/AllBinaryLayerFactoryInterface.h>
@@ -41,9 +47,9 @@ class PlacedLayerFactory
             : public Object
          {
 
-    private: static PlacedLayerFactory instance() { return PlacedLayerFactory(); }
+    private: static PlacedLayerFactory* instance() { static std::unique_ptr<PlacedLayerFactory> value(new PlacedLayerFactory()); return value.get(); }
 
-    public: static PlacedLayerFactory getInstance(){
+    public: static PlacedLayerFactory* getInstance(){
 
 
 
@@ -53,14 +59,14 @@ class PlacedLayerFactory
 }
 
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: PlacedLayerFactory(){
 }
 
 
     public: void clear(){
-this->list.clear();
+this->list->clear();
     
 }
 
@@ -70,25 +76,25 @@ this->list.clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->list.size();;
+                        return this->list->size();;
     
 }
 
 
-    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
+    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    public: AllBinaryLayerFactoryInterface getRandomInstance(){
+    public: AllBinaryLayerFactoryInterface* getRandomInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->basicArrayListUtil.getRandom(this->list);
+                        return dynamic_cast<AllBinaryLayerFactoryInterface*>(this->basicArrayListUtil->getRandom(this->list));
     
 }
 
 
-    public: void add(AllBinaryLayerFactoryInterface layerInterfaceFactoryInterface){
-this->list.add(layerInterfaceFactoryInterface);
+    public: void add(AllBinaryLayerFactoryInterface* layerInterfaceFactoryInterface){
+this->list->add(layerInterfaceFactoryInterface);
     
 }
 

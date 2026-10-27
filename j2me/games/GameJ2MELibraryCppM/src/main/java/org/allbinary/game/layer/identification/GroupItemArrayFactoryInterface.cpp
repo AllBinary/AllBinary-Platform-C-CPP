@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/identification/Group.h>
@@ -51,7 +57,7 @@ class GroupItemArrayFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    std::vector<ABCustomItem> getInstance(Group groupInterface)
+    public: virtual std::vector<ABCustomItem*> getInstance(Group* groupInterface) = 0;
 
 };
 

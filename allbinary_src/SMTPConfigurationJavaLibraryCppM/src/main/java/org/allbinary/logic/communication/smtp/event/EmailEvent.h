@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_EMAILEVENT_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_EMAILEVENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <java/util/EventObject.h>
 
       
@@ -48,19 +56,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserEmailEventNameData.h"
+        #include "org/allbinary/logic/communication/smtp/event/UserEmailEventNameData.h"
 
 class EmailEvent: public EventObject {
 
-    private: EmailInfo emailInfo;
+    private: EmailInfo* emailInfo;
 
-    private: UserEmailEventNameData userEmailEventNameData;
+    private: UserEmailEventNameData* userEmailEventNameData;
 
     private: int32_t attempts= 0;
 
-public: EmailEvent(Object* emailEventHandler, UserEmailEventNameData userEmailEventNameData, EmailInfo emailInfo, int32_t attempts);
+public: EmailEvent(Object* emailEventHandler, UserEmailEventNameData* userEmailEventNameData, EmailInfo* emailInfo, int32_t attempts);
 
-    public: EmailInfo getEmailInfo();
+    public: EmailInfo* getEmailInfo();
 
     public: int32_t getAttempts();
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_EVENT_VIRTUALKEYBOARDEVENTHANDLER_H
         #define ORG_ALLBINARY_INPUT_EVENT_VIRTUALKEYBOARDEVENTHANDLER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Thread.h"
@@ -55,24 +61,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "VirtualKeyboardEvent.h"
-#include "VirtualKeyboardEventListenerInterface.h"
+        #include "org/allbinary/input/event/VirtualKeyboardEvent.h"
+#include "org/allbinary/input/event/VirtualKeyboardEventListenerInterface.h"
 
 class VirtualKeyboardEventHandler: public BasicEventHandler {
 
-    private: static const VirtualKeyboardEventHandler gameKeyEventHandler = VirtualKeyboardEventHandler();
+    private: static VirtualKeyboardEventHandler* gameKeyEventHandler() { static std::unique_ptr<VirtualKeyboardEventHandler> value(new VirtualKeyboardEventHandler()); return value.get(); }
 
-    public: static VirtualKeyboardEventHandler getInstance();
+    public: static VirtualKeyboardEventHandler* getInstance();
 
 private: VirtualKeyboardEventHandler();
 
-    public: const VirtualKeyboardEvent SHOW_EVENT = VirtualKeyboardEvent(BooleanFactory::getInstance().TRUE);
+    public: VirtualKeyboardEvent* SHOW_EVENT = new VirtualKeyboardEvent(BooleanFactory::getInstance()->TRUE);
 
-    public: const VirtualKeyboardEvent HIDE_EVENT = VirtualKeyboardEvent(BooleanFactory::getInstance().FALSE);
+    public: VirtualKeyboardEvent* HIDE_EVENT = new VirtualKeyboardEvent(BooleanFactory::getInstance()->FALSE);
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
     public: void open();
 

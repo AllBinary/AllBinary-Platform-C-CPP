@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
@@ -41,8 +47,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StaticViewPosition.h"
-#include "ViewPositionBase.h"
+        #include "org/allbinary/view/StaticViewPosition.h"
+#include "org/allbinary/view/ViewPositionBase.h"
 
 class CenterStaticViewPositionFactory
             : public Object
@@ -52,15 +58,15 @@ public: CenterStaticViewPositionFactory(){
 }
 
 
-    public: ViewPositionBase getInstance(int32_t z){
+    public: ViewPositionBase* getInstance(int32_t z){
 
-    DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();;
+    DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StaticViewPosition((displayInfoSingleton.getLastWidth()>>1), (displayInfoSingleton.getLastHeight()>>1), z);
+                        return new StaticViewPosition((displayInfoSingleton->getLastWidth()>>1), (displayInfoSingleton->getLastHeight()>>1), z);
     
 }
 

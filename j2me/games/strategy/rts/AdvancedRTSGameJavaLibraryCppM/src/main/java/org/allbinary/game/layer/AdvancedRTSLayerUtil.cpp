@@ -17,6 +17,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/layer/waypoint/WorkWaypoint.h>
@@ -49,15 +55,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RTSLayerUtil.h"
+        #include "org/allbinary/game/layer/RTSLayerUtil.h"
 
 class AdvancedRTSLayerUtil
             : public Object
          {
 
-    private: static AdvancedRTSLayerUtil instance() { return AdvancedRTSLayerUtil(); }
+    private: static AdvancedRTSLayerUtil* instance() { static std::unique_ptr<AdvancedRTSLayerUtil> value(new AdvancedRTSLayerUtil()); return value.get(); }
 
-    public: static AdvancedRTSLayerUtil getInstance(){
+    public: static AdvancedRTSLayerUtil* getInstance(){
 
 
 
@@ -67,11 +73,11 @@ class AdvancedRTSLayerUtil
 }
 
 
-    public: ABHashtable<Object*, Object*> createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap baseRaceTrackGeographicMap){
+    public: ABHashtable<Object*, Object*>* createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap* baseRaceTrackGeographicMap){
 
-    ABHashtable<Object*, Object*> hashtable = RTSLayerUtil::getInstance().createFakeRTSLayerHashtable(baseRaceTrackGeographicMap);;
+    ABHashtable<Object*, Object*>* hashtable = RTSLayerUtil::getInstance()->createFakeRTSLayerHashtable(baseRaceTrackGeographicMap);;
     
-hashtable.put(WorkWaypoint::ID, SmallIntegerSingletonFactory::getInstance().getAt(50));
+hashtable->put(WorkWaypoint::ID, SmallIntegerSingletonFactory::getInstance()->getAt(50));
     
 
 

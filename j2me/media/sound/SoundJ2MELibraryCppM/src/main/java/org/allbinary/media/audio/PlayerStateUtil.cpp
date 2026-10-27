@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/media/Player.h>
@@ -49,9 +55,9 @@ class PlayerStateUtil
             : public Object
          {
 
-    private: static PlayerStateUtil instance() { return PlayerStateUtil(); }
+    private: static PlayerStateUtil* instance() { static std::unique_ptr<PlayerStateUtil> value(new PlayerStateUtil()); return value.get(); }
 
-    public: static PlayerStateUtil getInstance(){
+    public: static PlayerStateUtil* getInstance(){
 
 
 
@@ -61,7 +67,7 @@ class PlayerStateUtil
 }
 
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     public: const std::string UNREALIZED = "UNREALIZED";
 
@@ -143,7 +149,7 @@ class PlayerStateUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->commonStrings.UNKNOWN;
+                        return this->commonStrings->UNKNOWN;
     
 }
 

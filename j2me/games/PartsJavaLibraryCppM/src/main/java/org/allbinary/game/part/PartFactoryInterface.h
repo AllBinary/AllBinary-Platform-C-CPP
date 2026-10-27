@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_PART_PARTFACTORYINTERFACE_H
         #define ORG_ALLBINARY_GAME_PART_PARTFACTORYINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/RelativeRelationship.h>
@@ -47,13 +53,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PartInterface.h"
+        #include "org/allbinary/game/part/PartInterface.h"
 
 class PartFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    PartInterface getInstance(AllBinaryLayer sourceLayerInterface, RelativeRelationship relativeRelationship);
+    public: virtual PartInterface* getInstance(AllBinaryLayer* sourceLayerInterface, RelativeRelationship* relativeRelationship) = 0;
 
 };
 

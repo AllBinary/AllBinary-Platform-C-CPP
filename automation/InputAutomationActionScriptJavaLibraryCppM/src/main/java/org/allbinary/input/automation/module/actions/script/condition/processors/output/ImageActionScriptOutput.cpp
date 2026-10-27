@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -70,38 +76,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicProfileActionScriptOutput.h"
-#include "ImageActionScriptOutputInterface.h"
-#include "ImageTypes.h"
-#include "ImageActionScriptOutputJPanel.h"
-#include "ImageActionScriptOutputData.h"
-#include "ImageActionScriptOutputProcessor.h"
+        #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/BasicProfileActionScriptOutput.h"
+#include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutputInterface.h"
+#include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageTypes.h"
+#include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutputJPanel.h"
+#include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutputData.h"
+#include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutputProcessor.h"
 
 class ImageActionScriptOutput: public BasicProfileActionScriptOutput, public ImageActionScriptOutputInterface {
 
-    private: static const std::string NAME = "Captures";
+    private: static inline const std::string NAME = "Captures";
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: bool saved = false;
 
     private: bool display = false;
 
-    private: ImageTypes imageTypes;
+    private: ImageTypes* imageTypes;
 
-    private: ImageActionScriptOutputJPanel actionScriptOutputJPanel;
+    private: ImageActionScriptOutputJPanel* actionScriptOutputJPanel;
 
-public: ImageActionScriptOutput(Node node) : BasicProfileActionScriptOutput(NAME, node){
+public: ImageActionScriptOutput(Node* node) : BasicProfileActionScriptOutput(NAME, node){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
-    Node actionNode = DomSearchHelper::getNode(ImageActionScriptOutputData::NAME, node.getChildNodes());;
+    Node* actionNode = DomSearchHelper::getNode(ImageActionScriptOutputData::NAME, node->getChildNodes());;
     
 
                         if(actionNode != 
@@ -110,47 +116,47 @@ this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUC
                         
                                     {
                                     
-    NodeList nodeList = actionNode.getChildNodes();;
+    NodeList* nodeList = actionNode->getChildNodes();;
     
 
 
 
 
                         for (
-    int32_t index = 0;index < nodeList.getLength(); index++)
+    int32_t index = 0;index < nodeList->getLength(); index++)
         {
 
-    Node childNode = nodeList.item(index);;
+    Node* childNode = nodeList->item(index);;
     
 
-                        if(childNode.getNodeName().compareTo(ImageActionScriptOutputData::SAVE) == 0)
+                        if(childNode->getNodeName()->compareTo(ImageActionScriptOutputData::SAVE) == 0)
                         
                                     {
                                     
     std::string booleanString = DomNodeHelper::getTextNodeValue(childNode);;
     
-this->setSaved(.valueOf());
+this->setSaved(().valueOf());
     
 
                                     }
                                 
                              else 
-                        if(childNode.getNodeName().compareTo(ImageActionScriptOutputData::DISPLAY) == 0)
+                        if(childNode->getNodeName()->compareTo(ImageActionScriptOutputData::DISPLAY) == 0)
                         
                                     {
                                     
     std::string booleanString = DomNodeHelper::getTextNodeValue(childNode);;
     
-this->setSaved(.valueOf());
+this->setSaved(().valueOf());
     
 
                                     }
                                 
                              else 
-                        if(childNode.getNodeName().compareTo(ImageActionScriptOutputData::TYPES) == 0)
+                        if(childNode->getNodeName()->compareTo(ImageActionScriptOutputData::TYPES) == 0)
                         
                                     {
-                                    this->setImageTypes(ImageTypes(childNode));
+                                    this->setImageTypes(new ImageTypes(childNode));
     
 
                                     }
@@ -159,7 +165,7 @@ this->setSaved(.valueOf());
                             
 
 
-                            throw Exception("Action Script Output Unknown Node");
+                            throw new Exception("Action Script Output Unknown Node");
                     
 
                         }
@@ -173,14 +179,14 @@ this->setSaved(.valueOf());
                             
 
 
-                            throw Exception("Action Script Output Node Null");
+                            throw new Exception("Action Script Output Node Null");
                     
 
                         }
                             
 this->setAllowsChildren(false);
     
-this->actionScriptOutputJPanel= ImageActionScriptOutputJPanel(this);
+this->actionScriptOutputJPanel= new ImageActionScriptOutputJPanel(this);
     
 }
 
@@ -192,16 +198,16 @@ public: ImageActionScriptOutput() : BasicProfileActionScriptOutput(NAME){
 
                             //For kotlin this is before the body of the constructor.
                     
-this->setImageTypes(ImageTypes());
+this->setImageTypes(new ImageTypes());
     
 this->setAllowsChildren(false);
     
-this->actionScriptOutputJPanel= ImageActionScriptOutputJPanel(this);
+this->actionScriptOutputJPanel= new ImageActionScriptOutputJPanel(this);
     
 }
 
 
-    public: ImageActionScriptOutputJPanel getActionScriptOutputJPanel(){
+    public: ImageActionScriptOutputJPanel* getActionScriptOutputJPanel(){
 
 
 
@@ -211,15 +217,15 @@ this->actionScriptOutputJPanel= ImageActionScriptOutputJPanel(this);
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(ImageActionScriptOutputData::DISPLAY, Boolean::toString(this->isDisplay()));
+hashMap->put(ImageActionScriptOutputData::DISPLAY, Boolean::toString(this->isDisplay()));
     
-hashMap.put(ImageActionScriptOutputData::SAVE, Boolean::toString(this->isSaved()));
+hashMap->put(ImageActionScriptOutputData::SAVE, Boolean::toString(this->isSaved()));
     
-this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
+this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
     
 
 
@@ -232,16 +238,16 @@ this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = super.toXmlNode(document);;
+    Node* node = super.toXmlNode(document);;
     
 
-    Node newNode = ModDomHelper::createNodeWithValueNodes(document, ImageActionScriptOutputData::NAME, this->toHashMap());;
+    Node* newNode = ModDomHelper::createNodeWithValueNodes(document, ImageActionScriptOutputData::NAME, this->toHashMap());;
     
-newNode.appendChild(this->getImageTypes().toXmlNode(document));
+newNode->appendChild(this->getImageTypes()->toXmlNode(document));
     
-node.appendChild(newNode);
+node->appendChild(newNode);
     
 
 
@@ -254,14 +260,14 @@ node.appendChild(newNode);
 
                 //@Throws(Exception.constructor)
             
-    public: void process(Long frame){
+    public: void process(int64_t frame){
 ImageActionScriptOutputProcessor::process(this, frame);
     
 }
 
 
     public: void showDialog(){
-this->actionScriptOutputJPanel.getCapturedImageActionJDialog().setVisible(true);
+this->actionScriptOutputJPanel->getCapturedImageActionJDialog()->setVisible(true);
     
 }
 
@@ -300,36 +306,36 @@ this->display= display;
 
     public: std::string future_toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(" Is Save: ");
+stringBuffer->append(" Is Save: ");
     
-stringBuffer.appendboolean(this->isSaved());
+stringBuffer->appendboolean(this->isSaved());
     
-stringBuffer.append(" Is Display: ");
+stringBuffer->append(" Is Display: ");
     
-stringBuffer.appendboolean(this->isDisplay());
+stringBuffer->appendboolean(this->isDisplay());
     
-stringBuffer.append(" ");
+stringBuffer->append(" ");
     
-stringBuffer.append(this->getImageTypes().toString());
+stringBuffer->append(this->getImageTypes()->toString());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
     public: void log(){
-this->logUtil.putF(this->future_toString(), this, "log");
+this->logUtil->putF(this->future_toString(), this, "log");
     
 }
 
 
-    public: ImageTypes getImageTypes(){
+    public: ImageTypes* getImageTypes(){
 
 
 
@@ -339,7 +345,7 @@ this->logUtil.putF(this->future_toString(), this, "log");
 }
 
 
-    public: void setImageTypes(ImageTypes imageTypes){
+    public: void setImageTypes(ImageTypes* imageTypes){
 this->imageTypes= imageTypes;
     
 }

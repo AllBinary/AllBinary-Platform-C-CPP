@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_AI_OPTIMIZEDARTIFICIALINTELLIGENCELAYERMANAGER_H
         #define ORG_ALLBINARY_AI_OPTIMIZEDARTIFICIALINTELLIGENCELAYERMANAGER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/layer/LayerManager.h>
 
       

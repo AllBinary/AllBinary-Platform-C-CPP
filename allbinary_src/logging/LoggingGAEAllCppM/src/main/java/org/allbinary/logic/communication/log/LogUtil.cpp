@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -54,16 +60,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogFormatUtil.h"
-#include "Log.h"
+        #include "org/allbinary/logic/communication/log/LogFormatUtil.h"
+#include "org/allbinary/logic/communication/log/Log.h"
 //ActualPlatform
 /*actual*/ class LogUtil
             : public Object
          {
 
-    private: static LogUtil instance() { return LogUtil(); }
+    private: static LogUtil* instance() { static std::unique_ptr<LogUtil> value(new LogUtil()); return value.get(); }
 
-    /*actual*/ public: static LogUtil getInstance(){
+    /*actual*/ public: static LogUtil* getInstance(){
 
 
 
@@ -73,26 +79,26 @@
 }
 
 
-    private: const Logger logger = Logger::getLogger(LogUtil.constructor.toString());
+    private: Logger* logger = Logger::getLogger(LogUtil.constructor.getName());
 
-    private: const LogFormatUtil logFormatUtil = LogFormatUtil::getInstance();
+    private: LogFormatUtil* logFormatUtil = LogFormatUtil::getInstance();
 
 private: LogUtil(){
 }
 
 
-    /*actual*/ public: void putL(Log log){
+    /*actual*/ public: void putL(Log* log){
 
-    std::string specialMessage = log.getSpecialMessage();;
+    std::string specialMessage = log->getSpecialMessage();;
     
 
-    Object* anyType = log.getObject();;
+    Object* anyType = log->getObject();;
     
 
-    std::string functionName = log.getFunctionName();;
+    std::string functionName = log->getFunctionName();;
     
 
-    Object* exception = log.getThrowable();;
+    Object* exception = log->getThrowable();;
     
 this->put(specialMessage, anyType, functionName, exception);
     
@@ -100,13 +106,13 @@ this->put(specialMessage, anyType, functionName, exception);
 
 
     /*actual*/ public: void putF(std::string specialMessage, Object* anyType, std::string functionName){
-this->put(specialMessage, anyType, functionName, NullUtil::getInstance().NULL_OBJECT);
+this->put(specialMessage, anyType, functionName, NullUtil::getInstance()->NULL_OBJECT);
     
 }
 
 
     /*actual*/ public: void putFS(std::string specialMessage, std::string className, std::string functionName){
-this->putS(specialMessage, className, functionName, NullUtil::getInstance().NULL_OBJECT);
+this->putS(specialMessage, className, functionName, NullUtil::getInstance()->NULL_OBJECT);
     
 }
 
@@ -115,24 +121,22 @@ this->putS(specialMessage, className, functionName, NullUtil::getInstance().NULL
 
         try {
             
-    std::string className = CommonStrings::getInstance().EMPTY;;
+    std::string className = CommonStrings::getInstance()->EMPTY;;
     
 
     Class* clazz = anyType->getClass();;
     
 
-                        if(clazz.toString() != 
-                                    nullptr
-                                )
+                        if(true)
                         
                                     {
-                                    className= clazz.toString();
+                                    className= clazz->getName();
     
 
                                     }
                                 
 
-    std::string message = this->logFormatUtil.getS(className, functionName, specialMessage);;
+    std::string message = this->logFormatUtil->getS(className, functionName, specialMessage);;
     
 
                         if(exception != 
@@ -140,20 +144,20 @@ this->putS(specialMessage, className, functionName, NullUtil::getInstance().NULL
                                 )
                         
                                     {
-                                    this->logger.log(Level::SEVERE, message, exception);
+                                    this->logger->log(Level::SEVERE, message, exception);
     
 
                                     }
                                 
                         else {
-                            this->logger.log(Level::INFO, message);
+                            this->logger->log(Level::INFO, message);
     
 
                         }
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 }
 
@@ -164,7 +168,7 @@ this->putS(specialMessage, className, functionName, NullUtil::getInstance().NULL
 
         try {
             
-    std::string message = this->logFormatUtil.getS(className, functionName, specialMessage);;
+    std::string message = this->logFormatUtil->getS(className, functionName, specialMessage);;
     
 
                         if(exception != 
@@ -172,20 +176,20 @@ this->putS(specialMessage, className, functionName, NullUtil::getInstance().NULL
                                 )
                         
                                     {
-                                    this->logger.log(Level::SEVERE, message, exception);
+                                    this->logger->log(Level::SEVERE, message, exception);
     
 
                                     }
                                 
                         else {
-                            this->logger.log(Level::INFO, message);
+                            this->logger->log(Level::INFO, message);
     
 
                         }
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 }
 

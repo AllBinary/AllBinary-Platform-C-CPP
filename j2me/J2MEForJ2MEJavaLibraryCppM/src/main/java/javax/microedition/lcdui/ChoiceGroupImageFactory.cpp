@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -40,15 +46,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Image.h"
+        #include "javax/microedition/lcdui/Image.h"
 
 class ChoiceGroupImageFactory
             : public Object
          {
 
-    private: static ChoiceGroupImageFactory instance() { return ChoiceGroupImageFactory(); }
+    private: static ChoiceGroupImageFactory* instance() { static std::unique_ptr<ChoiceGroupImageFactory> value(new ChoiceGroupImageFactory()); return value.get(); }
 
-    public: static ChoiceGroupImageFactory getInstance(){
+    public: static ChoiceGroupImageFactory* getInstance(){
 
 
 
@@ -66,28 +72,28 @@ class ChoiceGroupImageFactory
 
     private: const std::vector<int8_t> radioOn = { -119,80,78,71,13,10,26,10,0,0,0,13,73,72,68,82,0,0,0,11,0,0,0,11,2,3,0,0,0, -44, -62, -97, -75,0,0,0,12,80,76,84,69, -1, -1, -1, -69, -69, -69,106,106,106,2,2,2,106, -103,14, -47,0,0,0,50,73,68,65,84,120, -38,5, -63,65,13,0,32,12,4, -63, -19, -11, -117,1,18,68, -100,10,52,19,94,72,64,17,101, -122,44, -44, -29,98, -52,89,77, -102,40,2,85, -95, -73, -63, -104, -63,37, -117,15, -40,119,10,41,78,26, -79,59,0,0,0,0,73,69,78,68, -82,66,96, -126};
 
-    private: const Image imgMultiOffO = Image::createImage(this->multiOff, 0, this->multiOff.size());
+    private: Image* imgMultiOffO = Image::createImage(this->multiOff, 0, this->multiOff.size());
 
-    private: const Image imgMultiOnO = Image::createImage(this->multiOn, 0, this->multiOn.size());
+    private: Image* imgMultiOnO = Image::createImage(this->multiOn, 0, this->multiOn.size());
 
-    private: const Image imgRadioOffO = Image::createImage(this->radioOff, 0, this->radioOff.size());
+    private: Image* imgRadioOffO = Image::createImage(this->radioOff, 0, this->radioOff.size());
 
-    private: const Image imgRadioOnO = Image::createImage(this->radioOn, 0, this->radioOn.size());
+    private: Image* imgRadioOnO = Image::createImage(this->radioOn, 0, this->radioOn.size());
 
-    public: Image imgMultiOff = this->imgMultiOffO;
+    public: Image* imgMultiOff = this->imgMultiOffO;
 
-    public: Image imgMultiOn = this->imgMultiOnO;
+    public: Image* imgMultiOn = this->imgMultiOnO;
 
-    public: Image imgRadioOff = this->imgRadioOffO;
+    public: Image* imgRadioOff = this->imgRadioOffO;
 
-    public: Image imgRadioOn = this->imgRadioOnO;
+    public: Image* imgRadioOn = this->imgRadioOnO;
 
-    private: const std::vector<Image> imageArray = 
+    private: const std::vector<Image*> imageArray = 
                                                         {
                                                             this->imgMultiOff,this->imgMultiOn,this->imgRadioOff,this->imgRadioOn
                                                         };
 
-    public: std::vector<Image> getImageArray(){
+    public: std::vector<Image*> getImageArray(){
 
 
 
@@ -97,7 +103,7 @@ class ChoiceGroupImageFactory
 }
 
 
-    public: void init(std::vector<Image> imageArray){
+    public: void init(std::vector<Image*> imageArray){
 this->imgMultiOff= imageArray[0];
     
 this->imageArray[0]= this->imgMultiOff;

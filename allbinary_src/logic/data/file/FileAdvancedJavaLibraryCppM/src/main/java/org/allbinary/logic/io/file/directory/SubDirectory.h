@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_SUBDIRECTORY_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_SUBDIRECTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/io/FileFilter.h>
@@ -56,29 +62,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Directory.h"
+        #include "org/allbinary/logic/io/file/directory/Directory.h"
 
 class SubDirectory
             : public Object
          {
 
-    private: static SubDirectory instance() { return SubDirectory(); }
+    private: static SubDirectory* instance() { static std::unique_ptr<SubDirectory> value(new SubDirectory()); return value.get(); }
 
-    public: static SubDirectory getInstance();
+    public: static SubDirectory* getInstance();
 
-    public: static std::string toString(BasicArrayList files);
+    public: static std::string toString(BasicArrayList* files);
 
-    private: const Directory directory = Directory::getInstance();
+    private: Directory* directory = Directory::getInstance();
 
 private: SubDirectory();
 
-    public: BasicArrayList search(FileFilter fileFilter, AbFile file);
+    public: BasicArrayList* search(FileFilter* fileFilter, AbFile* file);
 
-    public: BasicArrayList search(AbFile file);
+    public: BasicArrayList* search(AbFile* file);
 
-    public: BasicArrayList search(std::string searchValue, AbFile file);
+    public: BasicArrayList* search(std::string searchValue, AbFile* file);
 
-    public: BasicArrayList search(int32_t level, AbFile file);
+    public: BasicArrayList* search(int32_t level, AbFile* file);
 
 };
 

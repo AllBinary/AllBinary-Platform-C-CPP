@@ -9,6 +9,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/System.h"
@@ -57,29 +63,29 @@ class StringMaker
 
 public: StringMaker();
 
-    public: StringMaker append(std::string string);
+    public: StringMaker* append(std::string string);
 
-    public: StringMaker appendchar(char c);
+    public: StringMaker* appendchar(char c);
 
-    public: StringMaker appendCharArray(std::vector<char> charArray, int32_t start, int32_t end);
+    public: StringMaker* appendCharArray(std::vector<char> charArray, int32_t start, int32_t end);
 
-    public: StringMaker appendbyte(int8_t b);
+    public: StringMaker* appendbyte(int8_t b);
 
-    public: StringMaker appendshort(int16_t b);
+    public: StringMaker* appendshort(int16_t b);
 
-    public: StringMaker appendint(int32_t i);
+    public: StringMaker* appendint(int32_t i);
 
-    public: StringMaker appendlong(int64_t l);
+    public: StringMaker* appendlong(int64_t l);
 
-    public: StringMaker appendfloat(float f);
+    public: StringMaker* appendfloat(float f);
 
-    public: StringMaker appendboolean(bool bool_);
+    public: StringMaker* appendboolean(bool bool_);
 
     public: void ensureCapacity(int32_t minSize);
 
     public: int32_t min(int32_t value, int32_t value2);
 
-    public: StringMaker delete_(int32_t start, int32_t end);
+    public: StringMaker* delete_(int32_t start, int32_t end);
 
     public: int32_t length();
 

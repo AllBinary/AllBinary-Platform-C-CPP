@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,11 +42,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AllBinaryEventObject.h"
+        #include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
 
 class AllBinaryEventObjectFactoryInterface {
 
-    AllBinaryEventObject getInstance()
+    public: virtual AllBinaryEventObject* getInstance() = 0;
 
 };
 

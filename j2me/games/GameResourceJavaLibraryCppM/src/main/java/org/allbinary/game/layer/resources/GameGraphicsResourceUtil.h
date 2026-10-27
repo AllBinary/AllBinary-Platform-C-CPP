@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_RESOURCES_GAMEGRAPHICSRESOURCEUTIL_H
         #define ORG_ALLBINARY_GAME_LAYER_RESOURCES_GAMEGRAPHICSRESOURCEUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -78,17 +84,17 @@ class GameGraphicsResourceUtil
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static GameGraphicsResourceUtil getInstance();
+    public: static GameGraphicsResourceUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     public: const std::string SPRITE = "_sprite";
 
     public: const std::string QUARTER = "_quarter";
 
-    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
 
 public: GameGraphicsResourceUtil();
 
@@ -98,7 +104,7 @@ public: GameGraphicsResourceUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getStringForFeature(GraphicsFeature graphicsFeature);
+    public: std::string getStringForFeature(GraphicsFeature* graphicsFeature);
 
     public: std::string getName();
 

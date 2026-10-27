@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLE_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Cloneable.h"
@@ -58,21 +64,21 @@
         
 class MotionRectangle
             : public Object
-        : public Cloneable {
+        , public Cloneable {
 
-    private: Rectangle rectangle;
+    private: Rectangle* rectangle;
 
-    private: BasicArrayList pixelDeltaVector;
+    private: BasicArrayList* pixelDeltaVector;
 
-public: MotionRectangle(Rectangle rectangle);
+public: MotionRectangle(Rectangle* rectangle);
 
-    public: Rectangle getRectangle();
+    public: Rectangle* getRectangle();
 
-    public: void setRectangle(Rectangle rectangle);
+    public: void setRectangle(Rectangle* rectangle);
 
-    public: BasicArrayList getPixelDeltaVector();
+    public: BasicArrayList* getPixelDeltaVector();
 
-    public: void setPixelDeltaVector(BasicArrayList pixelDeltaVector);
+    public: void setPixelDeltaVector(BasicArrayList* pixelDeltaVector);
 
     public: Object* clone();
 

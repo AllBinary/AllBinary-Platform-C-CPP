@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_ORDERHISTORYREQUESTHELPER_H
         #define ADMIN_TAGHELPERS_ORDERHISTORYREQUESTHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -83,15 +89,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TagHelper.h"
+        #include "admin/taghelpers/TagHelper.h"
 
 class OrderHistoryRequestHelper: public TagHelper {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
     private: std::string id;
 
@@ -99,7 +105,7 @@ class OrderHistoryRequestHelper: public TagHelper {
 
     private: std::string status;
 
-public: OrderHistoryRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: OrderHistoryRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
     private: void getFormData();
 

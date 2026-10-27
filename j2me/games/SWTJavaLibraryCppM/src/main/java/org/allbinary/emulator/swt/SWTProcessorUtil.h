@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_EMULATOR_SWT_SWTPROCESSORUTIL_H
         #define ORG_ALLBINARY_EMULATOR_SWT_SWTPROCESSORUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,17 +47,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SWTProcessor.h"
+        #include "org/allbinary/emulator/swt/SWTProcessor.h"
 
 class SWTProcessorUtil
             : public Object
          {
 
-    private: static SWTProcessorUtil instance() { return SWTProcessorUtil(); }
+    private: static SWTProcessorUtil* instance() { static std::unique_ptr<SWTProcessorUtil> value(new SWTProcessorUtil()); return value.get(); }
 
-    public: static SWTProcessorUtil getInstance();
+    public: static SWTProcessorUtil* getInstance();
 
-    public: SWTProcessor swtProcessor = SWTProcessor::getInstance();
+    public: SWTProcessor* swtProcessor = SWTProcessor::getInstance();
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef TAGS_CUSTOMTAGSUPPORT_H
         #define TAGS_CUSTOMTAGSUPPORT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/servlet/jsp/tagext/TagSupport.h>
 
       
@@ -45,13 +51,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TagStrings.h"
+        #include "tags/TagStrings.h"
 
 class CustomTagSupport: public TagSupport {
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: const TagStrings tagStrings = TagStrings::getInstance();
+    protected: TagStrings* tagStrings = TagStrings::getInstance();
 
 };
 

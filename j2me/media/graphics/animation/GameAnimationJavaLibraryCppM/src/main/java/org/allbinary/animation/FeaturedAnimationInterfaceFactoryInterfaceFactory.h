@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_FEATUREDANIMATIONINTERFACEFACTORYINTERFACEFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_FEATUREDANIMATIONINTERFACEFACTORYINTERFACEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/resource/FeatureResourceAnimationInterfaceFactoryInterface.h>
@@ -74,38 +80,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProceduralAnimationInterfaceFactoryInterface.h"
-#include "AnimationInterfaceFactoryInterface.h"
-#include "BasicAnimationInterfaceFactoryInterface.h"
-#include "NullAnimationFactory.h"
+        #include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/BasicAnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/NullAnimationFactory.h"
 
 class FeaturedAnimationInterfaceFactoryInterfaceFactory: public FeaturedResourceFactory {
 
-    private: static FeaturedAnimationInterfaceFactoryInterfaceFactory INSTANCE = FeaturedAnimationInterfaceFactoryInterfaceFactory();
+    private: static FeaturedAnimationInterfaceFactoryInterfaceFactory* INSTANCE() { static std::unique_ptr<FeaturedAnimationInterfaceFactoryInterfaceFactory> value(new FeaturedAnimationInterfaceFactoryInterfaceFactory()); return value.get(); }
 
-    public: static FeaturedAnimationInterfaceFactoryInterfaceFactory getInstance();
+    public: static FeaturedAnimationInterfaceFactoryInterfaceFactory* getInstance();
 
 private: FeaturedAnimationInterfaceFactoryInterfaceFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: Rectangle getRectangle(std::string resource);
+    public: Rectangle* getRectangle(std::string resource);
 
                 //@Throws(Exception.constructor)
             
-    public: Rectangle getRectangleXY(std::string resource, int32_t x, int32_t y);
+    public: Rectangle* getRectangleXY(std::string resource, int32_t x, int32_t y);
 
                 //@Throws(Exception.constructor)
             
-    public: ProceduralAnimationInterfaceFactoryInterface getProcedural(std::string resource);
+    public: ProceduralAnimationInterfaceFactoryInterface* getProcedural(std::string resource);
 
                 //@Throws(Exception.constructor)
             
-    public: AnimationInterfaceFactoryInterface get(std::string resource);
+    public: AnimationInterfaceFactoryInterface* get(std::string resource);
 
                 //@Throws(Exception.constructor)
             
-    private: BasicAnimationInterfaceFactoryInterface getBasicAnimationInterfaceFactoryInstance(std::string resource);
+    private: BasicAnimationInterfaceFactoryInterface* getBasicAnimationInterfaceFactoryInstance(std::string resource);
 
 };
 

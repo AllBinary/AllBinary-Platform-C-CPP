@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,24 +61,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserEmailConfigurationInterface.h"
-#include "UserEmailConfigurationData.h"
+        #include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationInterface.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationData.h"
 
 class UserEmailConfigurationMapping
             : public Object
-        : public TableMappingInterface {
+        , public TableMappingInterface {
 
-    private: UserEmailConfigurationInterface userEmailConfigurationInterface;
+    private: UserEmailConfigurationInterface* userEmailConfigurationInterface;
 
-public: UserEmailConfigurationMapping(UserEmailConfigurationInterface userEmailConfigurationInterface){
+public: UserEmailConfigurationMapping(UserEmailConfigurationInterface* userEmailConfigurationInterface){
 this->userEmailConfigurationInterface= userEmailConfigurationInterface;
     
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
 
 
@@ -97,9 +103,9 @@ this->userEmailConfigurationInterface= userEmailConfigurationInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList toVector(){
+    public: BasicArrayList* toVector(){
 
-    BasicArrayList vector = BasicArrayListD();;
+    BasicArrayList* vector = new BasicArrayListD();;
     
 
 

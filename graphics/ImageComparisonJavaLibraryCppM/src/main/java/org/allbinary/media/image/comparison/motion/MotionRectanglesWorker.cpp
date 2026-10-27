@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -74,47 +80,47 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MotionRectangleConstraintsInterface.h"
-#include "AllMotionRectangles.h"
-#include "AllMotionRectanglesResultsCacheSingleton.h"
-#include "MotionRectanglesResultsFrameCacheable.h"
-#include "ConsolidateMotionRectangles.h"
-#include "ConsolidatedMotionRectanglesResultsCacheSingleton.h"
-#include "ConstrainedMotionRectangles.h"
-#include "ConstrainedMotionRectanglesResultsCacheSingleton.h"
-#include "MotionRectanglesResultsEvent.h"
-#include "MotionRectangles.h"
+        #include "org/allbinary/media/image/comparison/motion/MotionRectangleConstraintsInterface.h"
+#include "org/allbinary/media/image/comparison/motion/AllMotionRectangles.h"
+#include "org/allbinary/media/image/comparison/motion/AllMotionRectanglesResultsCacheSingleton.h"
+#include "org/allbinary/media/image/comparison/motion/MotionRectanglesResultsFrameCacheable.h"
+#include "org/allbinary/media/image/comparison/motion/ConsolidateMotionRectangles.h"
+#include "org/allbinary/media/image/comparison/motion/ConsolidatedMotionRectanglesResultsCacheSingleton.h"
+#include "org/allbinary/media/image/comparison/motion/ConstrainedMotionRectangles.h"
+#include "org/allbinary/media/image/comparison/motion/ConstrainedMotionRectanglesResultsCacheSingleton.h"
+#include "org/allbinary/media/image/comparison/motion/MotionRectanglesResultsEvent.h"
+#include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
 
 class MotionRectanglesWorker: public BasicEventHandler, public ImageComparisonResultsListener {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const BasicArrayList imageComparisonInfoVector = BasicArrayListD();
+    private: BasicArrayList* imageComparisonInfoVector = new BasicArrayListD();
 
-    private: MotionRectangleConstraintsInterface motionRectangleConstraintsInterface;
+    private: MotionRectangleConstraintsInterface* motionRectangleConstraintsInterface;
 
     private: int64_t index= 0;
 
     private: bool running= false;
 
-public: MotionRectanglesWorker(MotionRectangleConstraintsInterface motionRectangleConstraintsInterface){
+public: MotionRectanglesWorker(MotionRectangleConstraintsInterface* motionRectangleConstraintsInterface){
 this->motionRectangleConstraintsInterface= motionRectangleConstraintsInterface;
     
 }
 
 
-    public: void onImageComparisonResultsEvent(ImageComparisonResultsEvent imageComparisonResultsEvent){
-this->imageComparisonInfoVector.add(imageComparisonResultsEvent);
+    public: void onImageComparisonResultsEvent(ImageComparisonResultsEvent* imageComparisonResultsEvent){
+this->imageComparisonInfoVector->add(imageComparisonResultsEvent);
     
 this->run();
     
 }
 
 
-    public: void onEvent(AllBinaryEventObject allBinaryEventObject){
-this->onImageComparisonResultsEvent(allBinaryEventObject);
+    public: void onEvent(AllBinaryEventObject* allBinaryEventObject){
+this->onImageComparisonResultsEvent(dynamic_cast<ImageComparisonResultsEvent*>(allBinaryEventObject));
     
 }
 
@@ -140,57 +146,57 @@ this->running= running;
     public: void run(){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.RUN);
+            this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->RUN);
     
 this->setRunning(true);
     
 
-    TimeDelayHelper timeHelper = TimeDelayHelper(1000);;
+    TimeDelayHelper* timeHelper = new TimeDelayHelper(1000);;
     
-timeHelper.setStartTimeTNT();
-    
-
-    ImageComparisonResultsEvent imageComparisonResultsEvent = this->imageComparisonInfoVector.get(0);;
+timeHelper->setStartTimeTNT();
     
 
-    ImageComparisonResult imageComparisonInfo = imageComparisonResultsEvent.getImageComparisonResult();;
-    
-this->logUtil.putF(imageComparisonInfo.toString(), this, this->commonStrings.RUN);
+    ImageComparisonResultsEvent* imageComparisonResultsEvent = dynamic_cast<ImageComparisonResultsEvent*>(this->imageComparisonInfoVector->get(0));;
     
 
-    AllMotionRectangles allMotionRectangles = AllMotionRectangles(imageComparisonInfo);;
+    ImageComparisonResult* imageComparisonInfo = dynamic_cast<ImageComparisonResult*>(imageComparisonResultsEvent->getImageComparisonResult());;
     
-AllMotionRectanglesResultsCacheSingleton::getInstance().add(MotionRectanglesResultsFrameCacheable(allMotionRectangles, imageComparisonInfo.getFrameTwo()));
-    
-
-    ConsolidateMotionRectangles consolidatedMotionRectangles = ConsolidateMotionRectangles(allMotionRectangles);;
-    
-ConsolidatedMotionRectanglesResultsCacheSingleton::getInstance().add(MotionRectanglesResultsFrameCacheable(consolidatedMotionRectangles, imageComparisonInfo.getFrameTwo()));
+this->logUtil->putF(imageComparisonInfo->toString(), this, this->commonStrings->RUN);
     
 
-    ConstrainedMotionRectangles constrainedMotionRectangles = ConstrainedMotionRectangles(this->motionRectangleConstraintsInterface, consolidatedMotionRectangles);;
+    AllMotionRectangles* allMotionRectangles = new AllMotionRectangles(imageComparisonInfo);;
     
-constrainedMotionRectangles.applyMotionRectangleConstraints(consolidatedMotionRectangles);
+AllMotionRectanglesResultsCacheSingleton::getInstance()->add(new MotionRectanglesResultsFrameCacheable(allMotionRectangles, imageComparisonInfo->getFrameTwo()));
     
-ConstrainedMotionRectanglesResultsCacheSingleton::getInstance().add(MotionRectanglesResultsFrameCacheable(constrainedMotionRectangles, imageComparisonInfo.getFrameTwo()));
+
+    ConsolidateMotionRectangles* consolidatedMotionRectangles = new ConsolidateMotionRectangles(allMotionRectangles);;
     
-this->fireEvent(MotionRectanglesResultsEvent(this, imageComparisonInfo.getFrameTwo(), constrainedMotionRectangles));
+ConsolidatedMotionRectanglesResultsCacheSingleton::getInstance()->add(new MotionRectanglesResultsFrameCacheable(consolidatedMotionRectangles, imageComparisonInfo->getFrameTwo()));
     
-this->imageComparisonInfoVector.remove(imageComparisonResultsEvent);
+
+    ConstrainedMotionRectangles* constrainedMotionRectangles = new ConstrainedMotionRectangles(this->motionRectangleConstraintsInterface, consolidatedMotionRectangles);;
+    
+constrainedMotionRectangles->applyMotionRectangleConstraints(consolidatedMotionRectangles);
+    
+ConstrainedMotionRectanglesResultsCacheSingleton::getInstance()->add(new MotionRectanglesResultsFrameCacheable(constrainedMotionRectangles, imageComparisonInfo->getFrameTwo()));
+    
+this->fireEvent(new MotionRectanglesResultsEvent(this, imageComparisonInfo->getFrameTwo(), dynamic_cast<MotionRectangles*>(constrainedMotionRectangles)));
+    
+this->imageComparisonInfoVector->remove(imageComparisonResultsEvent);
     
 this->index++;
     
-this->logUtil.putF(CommonLabels::getInstance().ELAPSED +timeHelper.getElapsedTNT(), this, this->commonStrings.RUN);
+this->logUtil->putF(CommonLabels::getInstance()->ELAPSED +timeHelper->getElapsedTNT(), this, this->commonStrings->RUN);
     
 this->setRunning(false);
     
-this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.RUN);
+this->logUtil->putF(this->commonStrings->END, this, this->commonStrings->RUN);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RUN, &e);
     
 }
 

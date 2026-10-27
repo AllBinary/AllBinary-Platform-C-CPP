@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -57,19 +63,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JDialog.h"
+        #include "org/allbinary/input/automation/osgi/JDialog.h"
 
 class DesktopBundle
             : public Object
          {
 
-    private: static const std::string DESKTOP_SYMBOLIC_NAME = "org.knopflerfish.bundle.desktop";
+    private: static inline const std::string DESKTOP_SYMBOLIC_NAME = "org.knopflerfish.bundle.desktop";
 
-    private: Bundle bundle;
+    private: Bundle* bundle;
 
 public: DesktopBundle(){
 
-    BundleContext bundleContext = InputAutomationBundleActivator::getBundleContext();;
+    BundleContext* bundleContext = InputAutomationBundleActivator::getBundleContext();;
     
 
                         if(bundleContext != 
@@ -78,7 +84,7 @@ public: DesktopBundle(){
                         
                                     {
                                     
-    std::vector<Bundle> bundleArray = bundleContext.getBundles();;
+    std::vector<Bundle*> bundleArray = bundleContext->getBundles();;
     
 
 
@@ -88,10 +94,10 @@ public: DesktopBundle(){
     int32_t index = 0;index < bundleArray.size(); index++)
         {
 
-    Bundle bundle = bundleArray[index];;
+    Bundle* bundle = bundleArray[index];;
     
 
-    std::string symbolicName = bundle.getSymbolicName();;
+    std::string symbolicName = bundle->getSymbolicName();;
     
 
                         if(symbolicName.compare(DesktopBundle::DESKTOP_SYMBOLIC_NAME) == 0)
@@ -109,9 +115,9 @@ public: DesktopBundle(){
                                 
                         else {
                             
-    JDialog textJDialog = BasicTextJDialog("BundlContext is Null");;
+    JDialog* textJDialog = new BasicTextJDialog("BundlContext is Null");;
     
-textJDialog.setVisible(true);
+textJDialog->setVisible(true);
     
 
                         }
@@ -122,7 +128,7 @@ textJDialog.setVisible(true);
                 //@Throws(Exception.constructor)
             
     public: void start(){
-this->bundle.start();
+this->bundle->start();
     
 }
 

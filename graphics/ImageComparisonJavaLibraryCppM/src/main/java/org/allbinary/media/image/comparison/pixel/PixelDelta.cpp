@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/GPoint.h>
@@ -59,25 +65,25 @@
         
 class PixelDelta
             : public Object
-        : public CacheableInterface {
+        , public CacheableInterface {
 
-    public: static Object* getKey(GPoint point, ColorDelta colorDelta){
+    public: static Object* getKey(GPoint* point, ColorDelta* colorDelta){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().appendint(TsUtil::getInstance().hashCode(point)).append(CommonSeps::getInstance().UNDERSCORE).append(colorDelta.getKey().toString()).toString();;
+                        return (new StringMaker())->appendint(TsUtil::getInstance()->hashCode(point))->append(CommonSeps::getInstance()->UNDERSCORE)->append(colorDelta->getKey()->toString())->toString();;
     
 }
 
 
-    private: GPoint point;
+    private: GPoint* point;
 
-    private: ColorDelta colorDelta;
+    private: ColorDelta* colorDelta;
 
     private: Object* key;
 
-public: PixelDelta(GPoint point, ColorDelta colorDelta){
+public: PixelDelta(GPoint* point, ColorDelta* colorDelta){
 this->setPoint(point);
     
 this->setColorDelta(colorDelta);
@@ -97,7 +103,7 @@ this->key= PixelDelta::getKey(this->getPoint(), this->getColorDelta());
 }
 
 
-    public: GPoint getPoint(){
+    public: GPoint* getPoint(){
 
 
 
@@ -107,13 +113,13 @@ this->key= PixelDelta::getKey(this->getPoint(), this->getColorDelta());
 }
 
 
-    public: void setPoint(GPoint point){
+    public: void setPoint(GPoint* point){
 this->point= point;
     
 }
 
 
-    public: ColorDelta getColorDelta(){
+    public: ColorDelta* getColorDelta(){
 
 
 
@@ -123,7 +129,7 @@ this->point= point;
 }
 
 
-    public: void setColorDelta(ColorDelta colorDelta){
+    public: void setColorDelta(ColorDelta* colorDelta){
 this->colorDelta= colorDelta;
     
 }
@@ -134,7 +140,7 @@ this->colorDelta= colorDelta;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().append("PixelDelta: Point: ").append(this->point.toString()).append(CommonSeps::getInstance().SPACE).append(this->colorDelta.toString()).toString();;
+                        return (new StringMaker())->append("PixelDelta: Point: ")->append(this->point->toString())->append(CommonSeps::getInstance()->SPACE)->append(this->colorDelta->toString())->toString();;
     
 }
 

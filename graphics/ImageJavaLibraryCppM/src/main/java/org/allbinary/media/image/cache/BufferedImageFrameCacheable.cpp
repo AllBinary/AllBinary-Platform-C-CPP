@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Long.h"
@@ -52,13 +58,13 @@
         
 class BufferedImageFrameCacheable
             : public Object
-        : public CacheableInterface {
+        , public CacheableInterface {
 
-    private: Long frame;
+    private: int64_t frame;
 
-    private: BufferedImage bufferedImage;
+    private: BufferedImage* bufferedImage;
 
-public: BufferedImageFrameCacheable(BufferedImage bufferedImage, Long frame){
+public: BufferedImageFrameCacheable(BufferedImage* bufferedImage, int64_t frame){
 this->frame= frame;
     
 this->setBufferedImage(bufferedImage);
@@ -76,7 +82,7 @@ this->setBufferedImage(bufferedImage);
 }
 
 
-    public: BufferedImage getBufferedImage(){
+    public: BufferedImage* getBufferedImage(){
 
 
 
@@ -86,13 +92,13 @@ this->setBufferedImage(bufferedImage);
 }
 
 
-    private: void setBufferedImage(BufferedImage bufferedImage){
+    private: void setBufferedImage(BufferedImage* bufferedImage){
 this->bufferedImage= bufferedImage;
     
 }
 
 
-    public: Long getFrame(){
+    public: int64_t getFrame(){
 
 
 
@@ -102,7 +108,7 @@ this->bufferedImage= bufferedImage;
 }
 
 
-    public: void setFrame(Long frame){
+    public: void setFrame(int64_t frame){
 this->frame= frame;
     
 }
@@ -110,19 +116,19 @@ this->frame= frame;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->constructor.name.toString());
+stringBuffer->append(this->getClass()->getName());
     
-stringBuffer.append(" Frame: ");
+stringBuffer->append(" Frame: ");
     
-stringBuffer.appendlong(this->getFrame());
+stringBuffer->appendlong(this->getFrame());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

@@ -6,6 +6,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <android/graphics/Bitmap.h>
 
       
@@ -33,22 +41,22 @@
         
 class OpenGLBitmap: public PlatformBitmapBase {
 
-    public: Bitmap bitmap;
+    public: Bitmap* bitmap;
 
 public: OpenGLBitmap(Object* bitmap){
-this->bitmap= *dynamic_cast<Bitmap*>(bitmap);
+this->bitmap= dynamic_cast<Bitmap*>(bitmap);
     
 }
 
 
     public: void getPixels(std::vector<int32_t> pixels, int32_t offset, int32_t stride, int32_t x, int32_t y, int32_t width, int32_t height){
-this->bitmap.getPixels(pixels, offset, stride, x, y, width, height);
+this->bitmap->getPixels(pixels, offset, stride, x, y, width, height);
     
 }
 
 
     public: void setPixels(std::vector<int32_t> pixels, int32_t offset, int32_t stride, int32_t x, int32_t y, int32_t width, int32_t height){
-this->bitmap.setPixels(pixels, offset, stride, x, y, width, height);
+this->bitmap->setPixels(pixels, offset, stride, x, y, width, height);
     
 }
 
@@ -58,7 +66,7 @@ this->bitmap.setPixels(pixels, offset, stride, x, y, width, height);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->bitmap.getWidth();;
+                        return this->bitmap->getWidth();;
     
 }
 
@@ -68,13 +76,13 @@ this->bitmap.setPixels(pixels, offset, stride, x, y, width, height);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->bitmap.getHeight();;
+                        return this->bitmap->getHeight();;
     
 }
 
 
     public: void recycle(){
-this->bitmap.recycle();
+this->bitmap->recycle();
     
 }
 

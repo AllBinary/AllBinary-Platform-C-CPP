@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICMENUINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICMENUINPUTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -68,19 +74,19 @@
         
 class BasicMenuInputProcessor: public PlayerGameInput, public BaseMotionGestureEventListener {
 
-    public: const BasicArrayList motionGestureEventList = BasicArrayListD();
+    public: BasicArrayList* motionGestureEventList = new BasicArrayListD();
 
-    private: Canvas canvas = NullCanvas::NULL_CANVAS;
+    private: Canvas* canvas = NullCanvas::NULL_CANVAS;
 
-protected: BasicMenuInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, Canvas gameCanvas);
+protected: BasicMenuInputProcessor(BasicArrayList* gameKeyEventList, int32_t playerInputId, Canvas* gameCanvas);
 
-    public: void onMotionGestureEvent(MotionGestureEvent motionGestureEvent);
+    public: void onMotionGestureEvent(MotionGestureEvent* motionGestureEvent);
 
-    public: void onScrolledMotionGestureEvent(MotionGestureEvent motionGestureEvent);
+    public: void onScrolledMotionGestureEvent(MotionGestureEvent* motionGestureEvent);
 
-    private: void setCanvas(MyCanvas canvas);
+    private: void setCanvas(MyCanvas* canvas);
 
-    protected: MyCanvas getCanvas();
+    protected: MyCanvas* getCanvas();
 
                 //@Throws(Exception.constructor)
             

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -45,7 +51,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RectangleFilledAnimation.h"
+        #include "org/allbinary/animation/vector/RectangleFilledAnimation.h"
 
 class RectangleFilledAdjustedAnimation: public RectangleFilledAnimation, public ColorCompositeInterface {
 
@@ -53,7 +59,7 @@ class RectangleFilledAdjustedAnimation: public RectangleFilledAnimation, public 
 
     private: int32_t offsetY;
 
-public: RectangleFilledAdjustedAnimation(int32_t width, int32_t height, int32_t offsetX, int32_t offsetY, BasicColor basicColor) : RectangleFilledAnimation(width, height, basicColor){
+public: RectangleFilledAdjustedAnimation(int32_t width, int32_t height, int32_t offsetX, int32_t offsetY, BasicColor* basicColor) : RectangleFilledAnimation(width, height, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,7 +79,7 @@ this->setBasicColorP(basicColor);
 }
 
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
 super.paintXY(graphics, x +this->offsetX, y +this->offsetY);

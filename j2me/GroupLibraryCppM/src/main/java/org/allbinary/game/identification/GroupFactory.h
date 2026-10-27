@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -58,27 +64,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Group.h"
+        #include "org/allbinary/game/identification/Group.h"
 
 class GroupFactory
             : public Object
          {
 
-    private: static GroupFactory instance = GroupFactory();
+    private: static GroupFactory* instance() { static std::unique_ptr<GroupFactory> value(new GroupFactory()); return value.get(); }
 
-    public: static GroupFactory getInstance();
+    public: static GroupFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: const std::vector<Group> NULL_GROUP_ARRAY = {};
+    public: const std::vector<Group*> NULL_GROUP_ARRAY = {};
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
     private: int32_t index = 0;
 
-    public: Group getNextGroup();
+    public: Group* getNextGroup();
 
-    public: Group getNextGroupByName(std::string name);
+    public: Group* getNextGroupByName(std::string name);
 
     public: void init(int16_t groups, std::vector<std::string> nameArray);
 

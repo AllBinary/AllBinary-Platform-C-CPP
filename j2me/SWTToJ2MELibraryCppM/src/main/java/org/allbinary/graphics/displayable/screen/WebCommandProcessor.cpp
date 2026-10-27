@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,15 +73,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AboutCommandProcessor.h"
+        #include "org/allbinary/graphics/displayable/screen/AboutCommandProcessor.h"
 
 class WebCommandProcessor
             : public Object
          {
 
-    private: static WebCommandProcessor instance() { return WebCommandProcessor(); }
+    private: static WebCommandProcessor* instance() { static std::unique_ptr<WebCommandProcessor> value(new WebCommandProcessor()); return value.get(); }
 
-    public: static WebCommandProcessor getInstance(){
+    public: static WebCommandProcessor* getInstance(){
 
 
 
@@ -85,32 +91,32 @@ class WebCommandProcessor
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const AboutCommandProcessor aboutCommandProcessor = AboutCommandProcessor::getInstance();
+    private: AboutCommandProcessor* aboutCommandProcessor = AboutCommandProcessor::getInstance();
 
-    public: const BasicArrayList list = BasicArrayListD();
+    public: BasicArrayList* list = new BasicArrayListD();
 
-    public: void process(CommandListener midletCommandListener, Command command, Canvas canvas){
+    public: void process(CommandListener* midletCommandListener, Command* command, Canvas* canvas){
 
         try {
             
-                        if(Desktop::isDesktopSupported() && Desktop::getDesktop().isSupported(Desktop::Action.BROWSE))
+                        if(Desktop::isDesktopSupported() && Desktop::getDesktop()->isSupported(Desktop::Action.BROWSE))
                         
                                     {
-                                    Desktop::getDesktop().browse(URI(this->list.removeAt(0)));
+                                    Desktop::getDesktop()->browse(new URI(this->list->removeAt(0)));
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, "process", e);
+this->logUtil->put(commonStrings->EXCEPTION, this, "process", &e);
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,39 +58,39 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreFront.h"
+        #include "org/allbinary/business/context/modules/storefront/StoreFront.h"
 
 class StoreFrontFactory
             : public Object
          {
 
-    public: static StoreFront getInstance(std::string storeName){
+    public: static StoreFront* getInstance(std::string storeName){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
         try {
             
-    StoreFrontsEntity storeFronts = StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance();;
+    StoreFrontsEntity* storeFronts = StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return storeFronts.getStoreFrontInterface(storeName);;
+                        return storeFronts->getStoreFrontInterface(storeName);;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().FACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->FACTORYERROR))
                         
                                     {
-                                    logUtil.put(commonStrings.EXCEPTION, "StoreFrontFactory", commonStrings.GET_INSTANCE, e);
+                                    logUtil->put(commonStrings->EXCEPTION, "StoreFrontFactory", commonStrings->GET_INSTANCE, &e);
     
 
                                     }

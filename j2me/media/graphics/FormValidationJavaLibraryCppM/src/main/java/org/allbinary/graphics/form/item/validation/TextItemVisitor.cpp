@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/logic/java/bool/BooleanFactory.h>
 
       
@@ -61,7 +69,7 @@ public: TextItemVisitor(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory::getInstance().TRUE;
+                        return BooleanFactory::getInstance()->TRUE;
     
 
                                     }
@@ -71,7 +79,7 @@ public: TextItemVisitor(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory::getInstance().FALSE;
+                        return BooleanFactory::getInstance()->FALSE;
     
 
                         }

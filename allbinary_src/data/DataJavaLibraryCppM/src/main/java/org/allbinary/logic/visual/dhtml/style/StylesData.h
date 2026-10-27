@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_STYLESDATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_STYLESDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class StylesData
             : public Object
          {
 
-    private: static StylesData instance() { return StylesData(); }
+    private: static StylesData* instance() { static std::unique_ptr<StylesData> value(new StylesData()); return value.get(); }
 
-    public: static StylesData getInstance();
+    public: static StylesData* getInstance();
 
 private: StylesData();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/TsUtil.h>
@@ -41,15 +47,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StringUtil.h"
+        #include "org/allbinary/logic/string/StringUtil.h"
 
 class StringValidationUtil
             : public Object
          {
 
-    private: static StringValidationUtil instance() { return StringValidationUtil(); }
+    private: static StringValidationUtil* instance() { static std::unique_ptr<StringValidationUtil> value(new StringValidationUtil()); return value.get(); }
 
-    public: static StringValidationUtil getInstance(){
+    public: static StringValidationUtil* getInstance(){
 
 
 
@@ -59,9 +65,9 @@ class StringValidationUtil
 }
 
 
-    private: const StringUtil stringUtil = StringUtil::getInstance();
+    private: StringUtil* stringUtil = StringUtil::getInstance();
 
-    private: const TsUtil tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil = TsUtil::getInstance();
 
 private: StringValidationUtil(){
 }
@@ -69,7 +75,7 @@ private: StringValidationUtil(){
 
     public: bool containsSpaces(std::string value){
 
-                        if(value.indexOf(' ') >= 0)
+                        if(JavaString::indexOf(value, ' ') >= 0)
                         
                                     {
                                     
@@ -268,7 +274,7 @@ private: StringValidationUtil(){
                         
                                     {
                                     
-                        if(this->tsUtil.compareTo(value, this->stringUtil.NULL_STRING) == 0 || value.size() < min || value.size() > max)
+                        if(this->tsUtil->compareTo(value, this->stringUtil->NULL_STRING) == 0 || value.size() < min || value.size() > max)
                         
                                     {
                                     
@@ -307,7 +313,7 @@ private: StringValidationUtil(){
 
     public: bool isEmpty(std::string string){
 
-                        if(true && this->tsUtil.compareTo(string, this->stringUtil.NULL_STRING) != 0 && this->tsUtil.compareTo(string, this->stringUtil.EMPTY_STRING) != 0)
+                        if(true && this->tsUtil->compareTo(string, this->stringUtil->NULL_STRING) != 0 && this->tsUtil->compareTo(string, this->stringUtil->EMPTY_STRING) != 0)
                         
                                     {
                                     

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALGAMEINPUTFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALGAMEINPUTFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,13 +47,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "SpecialGameInput.h"
+        #include "org/allbinary/game/layer/special/SpecialGameInput.h"
 
 class SpecialGameInputFactory
             : public Object
          {
 
-    public: static const SpecialGameInput NO_SPECIAL_GAME_INPUT = SpecialGameInput();
+    public: static SpecialGameInput* NO_SPECIAL_GAME_INPUT() { static std::unique_ptr<SpecialGameInput> value(new SpecialGameInput()); return value.get(); }
 
 };
 

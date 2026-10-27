@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -121,31 +127,31 @@
         
 class InputAutomationNewBundleRunnable
             : public Object
-        : public RunnableInterface {
+        , public RunnableInterface {
 
-    private: static const std::string FILE = "file:";
+    private: static inline const std::string FILE = "file:";
 
-    private: static const std::string JAR_DIR_PROP = "org.knopflerfish.gosg.jars";
+    private: static inline const std::string JAR_DIR_PROP = "org.knopflerfish.gosg.jars";
 
-    private: static const std::string INPUT_AUTMATION_MODULE_BUNDLE_JAR_PATH = "ia/auto";
+    private: static inline const std::string INPUT_AUTMATION_MODULE_BUNDLE_JAR_PATH = "ia/auto";
 
-    private: static const int32_t MODULES_START_LEVEL = 8;
+    private: static inline const int32_t MODULES_START_LEVEL = 8;
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: InputAutomationBundleActivator inputAutomationBundleActivator;
+    private: InputAutomationBundleActivator* inputAutomationBundleActivator;
 
     private: bool running= false;
 
-    private: BasicArrayList fileBasicArrayList;
+    private: BasicArrayList* fileBasicArrayList;
 
-public: InputAutomationNewBundleRunnable(InputAutomationBundleActivator inputAutomationBundleActivator);
+public: InputAutomationNewBundleRunnable(InputAutomationBundleActivator* inputAutomationBundleActivator);
 
                 //@Throws(Exception.constructor)
             
-    public: void setThread(Thread thread);
+    public: void setThread(Thread* thread);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: bool isRunning();
@@ -159,13 +165,13 @@ public: InputAutomationNewBundleRunnable(InputAutomationBundleActivator inputAut
 
                 //@Throws(Exception.constructor)
             
-    private: HashMap<Object*, Object*> getAllJarSymbolicNameHashMap();
+    private: HashMap<Object*, Object*>* getAllJarSymbolicNameHashMap();
 
-    private: BasicArrayList getJarModuleFileBasicArrayList();
+    private: BasicArrayList* getJarModuleFileBasicArrayList();
 
                 //@Throws(Exception.constructor)
             
-    private: BasicArrayList getInstalledJarSymbolicNameBasicArrayList();
+    private: BasicArrayList* getInstalledJarSymbolicNameBasicArrayList();
 
                 //@Throws(Exception.constructor)
             
@@ -173,11 +179,11 @@ public: InputAutomationNewBundleRunnable(InputAutomationBundleActivator inputAut
 
                 //@Throws(Exception.constructor)
             
-    private: BasicArrayList findNewModules();
+    private: BasicArrayList* findNewModules();
 
                 //@Throws(Exception.constructor)
             
-    private: Bundle install(URL url);
+    private: Bundle* install(URL* url);
 
     public: void run();
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/System.h"
@@ -51,16 +57,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ComparableObject.h"
-#include "ObjectPermutationVisitor.h"
+        #include "org/allbinary/logic/math/permutations/ComparableObject.h"
+#include "org/allbinary/logic/math/permutations/ObjectPermutationVisitor.h"
 
 class OrderedObjectArrayPermutationUtil
             : public Object
          {
 
-    private: static OrderedObjectArrayPermutationUtil instance() { return OrderedObjectArrayPermutationUtil(); }
+    private: static OrderedObjectArrayPermutationUtil* instance() { static std::unique_ptr<OrderedObjectArrayPermutationUtil> value(new OrderedObjectArrayPermutationUtil()); return value.get(); }
 
-    public: static OrderedObjectArrayPermutationUtil getInstance(){
+    public: static OrderedObjectArrayPermutationUtil* getInstance(){
 
 
 
@@ -84,23 +90,23 @@ class OrderedObjectArrayPermutationUtil
                         for (
     int32_t i = 0;i < TOTAL; i++)
         {
-data[i]= ComparableObject();
+data[i]= new ComparableObject();
     
 }
 
 Arrays::sort(data);
     
 
-    ObjectPermutationVisitor permutationVisitor = ObjectPermutationVisitor(data);;
+    ObjectPermutationVisitor* permutationVisitor = new ObjectPermutationVisitor(data);;
     
 
     std::string ORIGINAL_DATA_LABEL = "Original Data: ";;
     
-console.log(ORIGINAL_DATA_LABEL);
+System.out.print(ORIGINAL_DATA_LABEL);
     
-permutationVisitor.visit(data);
+permutationVisitor->visit(data);
     
-OrderedObjectArrayPermutationUtil::getInstance().generate(data, permutationVisitor);
+OrderedObjectArrayPermutationUtil::getInstance()->generate(data, permutationVisitor);
     
 }
 
@@ -121,10 +127,10 @@ private: OrderedObjectArrayPermutationUtil(){
     int32_t i = length -1;;
     
 
-    TsUtil tsUtil = TsUtil::getInstance();;
+    TsUtil* tsUtil = TsUtil::getInstance();;
     
 
-        while(tsUtil.hashCode(data[i -1]) >= tsUtil.hashCode(data[i]))
+        while(tsUtil->hashCode(data[i -1]) >= tsUtil->hashCode(data[i]))
         {
 i= i -1;
     
@@ -134,7 +140,7 @@ i= i -1;
     int32_t j = length;;
     
 
-        while(tsUtil.hashCode(data[j -1]) <= tsUtil.hashCode(data[i -1]))
+        while(tsUtil->hashCode(data[j -1]) <= tsUtil->hashCode(data[i -1]))
         {
 j= j -1;
     
@@ -202,13 +208,13 @@ temp *= i;
 }
 
 
-    public: void generate(std::vector<Object*> data, Visitor visitor){
+    public: void generate(std::vector<Object*> data, Visitor* visitor){
 
     int64_t iterations = this->factorial(data.size());;
     
-console.log(this->TOTAL_ITERATIONS_TABLE);
+System.out.print(this->TOTAL_ITERATIONS_TABLE);
     
-console.log(iterations);
+System.out.println(iterations);
     
 
 
@@ -219,11 +225,11 @@ console.log(iterations);
         {
 this->getNext(data);
     
-visitor.visit(this);
+visitor->visit(this);
     
 }
 
-console.log(this->FINISHED);
+System.out.println(this->FINISHED);
     
 }
 

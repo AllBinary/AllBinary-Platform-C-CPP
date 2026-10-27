@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_RTSPLAYERGAMEINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_INPUT_RTSPLAYERGAMEINPUTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,14 +45,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameInputProcessor.h"
-#include "RTSPlayerGameInput.h"
+        #include "org/allbinary/game/input/GameInputProcessor.h"
+#include "org/allbinary/game/input/RTSPlayerGameInput.h"
 
 class RTSPlayerGameInputProcessor: public GameInputProcessor {
 
-    protected: RTSPlayerGameInput rtsPlayerGameInput;
+    protected: RTSPlayerGameInput* rtsPlayerGameInput;
 
-public: RTSPlayerGameInputProcessor(RTSPlayerGameInput rtsPlayerGameInput);
+public: RTSPlayerGameInputProcessor(RTSPlayerGameInput* rtsPlayerGameInput);
 
 };
 

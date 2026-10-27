@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICTOUCHBUTTONSBUILDER_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICTOUCHBUTTONSBUILDER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -53,22 +59,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseTouchInput.h"
-#include "CommonButtons.h"
-#include "TouchButtonLocationHelper.h"
-#include "BasicTouchButtonCellPositionFactory.h"
-#include "TouchButton.h"
-#include "BasicTouchInputFactory.h"
-#include "TouchButtonUpResource.h"
-#include "TouchButtonDownResource.h"
-#include "TouchButtonTurnLeftResource.h"
-#include "TouchButtonTurnRightResource.h"
+        #include "org/allbinary/input/motion/button/BaseTouchInput.h"
+#include "org/allbinary/input/motion/button/CommonButtons.h"
+#include "org/allbinary/input/motion/button/TouchButtonLocationHelper.h"
+#include "org/allbinary/input/motion/button/BasicTouchButtonCellPositionFactory.h"
+#include "org/allbinary/input/motion/button/TouchButton.h"
+#include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
+#include "org/allbinary/input/motion/button/TouchButtonUpResource.h"
+#include "org/allbinary/input/motion/button/TouchButtonDownResource.h"
+#include "org/allbinary/input/motion/button/TouchButtonTurnLeftResource.h"
+#include "org/allbinary/input/motion/button/TouchButtonTurnRightResource.h"
 
 class BasicTouchButtonsBuilder: public BaseTouchInput {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: BasicArrayList getList();
+    public: BasicArrayList* getList();
 
 };
 

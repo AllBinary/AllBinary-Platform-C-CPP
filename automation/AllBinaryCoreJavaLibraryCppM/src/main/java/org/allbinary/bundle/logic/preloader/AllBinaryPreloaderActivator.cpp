@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -70,13 +76,13 @@
         
 class AllBinaryPreloaderActivator
             : public Object
-        : public BundleActivator {
+        , public BundleActivator {
 
-    private: static BundleContext context;
+    private: static inline BundleContext* context;
 
-    private: static const std::string CRYPT_REGISTRY_NAME = "bundle.abcs.logic.system.loader.CryptService";
+    private: static inline const std::string CRYPT_REGISTRY_NAME = "bundle.abcs.logic.system.loader.CryptService";
 
-    public: static BundleContext getBundleContext(){
+    public: static BundleContext* getBundleContext(){
 
 
 
@@ -86,20 +92,20 @@ class AllBinaryPreloaderActivator
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: AllBinaryPreloaderActivator(){
 }
 
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void start(BundleContext context){
+    public: void start(BundleContext* context){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, "start");
+            this->logUtil->putF(this->commonStrings->START, this, "start");
     
 AllBinaryPreloaderActivator::context= context;
     
@@ -107,9 +113,9 @@ this->registerAsService();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "start", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "start", &e);
     
 
 
@@ -125,30 +131,30 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "start", e);
             
     public: void registerAsService(){
 
-    ABHashtable<Object*, Object*> properties = StdUtil::getInstance().createHashtable();;
+    ABHashtable<Object*, Object*>* properties = StdUtil::getInstance()->createHashtable();;
     
 
-    ServiceRegistration serviceRegistration = AllBinaryPreloaderActivator::context.registerService(CRYPT_REGISTRY_NAME, CryptServiceFactory(), properties);;
+    ServiceRegistration* serviceRegistration = AllBinaryPreloaderActivator::context->registerService(CRYPT_REGISTRY_NAME, new CryptServiceFactory(), properties);;
     
 
-    ServiceReference serviceReference = serviceRegistration.getReference();;
+    ServiceReference* serviceReference = serviceRegistration->getReference();;
     
-serviceReference= AllBinaryPreloaderActivator::context.getServiceReference(CRYPT_REGISTRY_NAME);
+serviceReference= AllBinaryPreloaderActivator::context->getServiceReference(CRYPT_REGISTRY_NAME);
     
 
                         if(serviceReference == 
                                     nullptr
                                 )
                         
-                                    throw Exception("No Such Service Reference");
+                                    throw new Exception("No Such Service Reference");
                                 
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void stop(BundleContext context){
-this->logUtil.putF(this->commonStrings.START, this, "stop");
+    public: void stop(BundleContext* context){
+this->logUtil->putF(this->commonStrings->START, this, "stop");
     
 }
 

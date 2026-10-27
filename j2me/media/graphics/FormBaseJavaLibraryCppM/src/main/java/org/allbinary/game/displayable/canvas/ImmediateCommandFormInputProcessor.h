@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_IMMEDIATECOMMANDFORMINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_IMMEDIATECOMMANDFORMINPUTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/event/GameKeyEvent.h>
@@ -56,27 +62,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CommandFormInputProcessor.h"
-#include "GameCommandCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/CommandFormInputProcessor.h"
+#include "org/allbinary/game/displayable/canvas/GameCommandCanvas.h"
 
 class ImmediateCommandFormInputProcessor: public CommandFormInputProcessor {
 
-    private: const TimeDelayHelper timeHelper = TimeDelayHelper(25);
+    private: TimeDelayHelper* timeHelper = new TimeDelayHelper(25);
 
-    protected: GameCommandCanvas gameCommandCanvas;
+    protected: GameCommandCanvas* gameCommandCanvas;
 
-public: ImmediateCommandFormInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, GameCommandCanvas gameCommandCanvas, ScrollSelectionForm form);
+public: ImmediateCommandFormInputProcessor(BasicArrayList* gameKeyEventList, int32_t playerInputId, GameCommandCanvas* gameCommandCanvas, ScrollSelectionForm* form);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onPressGameKeyEvent(GameKeyEvent gameKeyEvent);
+    public: void onPressGameKeyEvent(GameKeyEvent* gameKeyEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onDownGameKeyEvent(GameKeyEvent gameKeyEvent);
+    public: void onDownGameKeyEvent(GameKeyEvent* gameKeyEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onUpGameKeyEvent(GameKeyEvent gameKeyEvent);
+    public: void onUpGameKeyEvent(GameKeyEvent* gameKeyEvent);
 
-    public: void onMotionGestureEvent(MotionGestureEvent motionGestureEvent);
+    public: void onMotionGestureEvent(MotionGestureEvent* motionGestureEvent);
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Thread.h"
@@ -52,19 +58,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "VirtualKeyboardEvent.h"
-#include "VirtualKeyboardEventListenerInterface.h"
+        #include "org/allbinary/input/event/VirtualKeyboardEvent.h"
+#include "org/allbinary/input/event/VirtualKeyboardEventListenerInterface.h"
 
 class VirtualKeyboardEventHandler: public BasicEventHandler {
 
-    private: static const VirtualKeyboardEventHandler gameKeyEventHandler = VirtualKeyboardEventHandler();
+    private: static VirtualKeyboardEventHandler* gameKeyEventHandler() { static std::unique_ptr<VirtualKeyboardEventHandler> value(new VirtualKeyboardEventHandler()); return value.get(); }
 
-    public: static VirtualKeyboardEventHandler getInstance(){
+    public: static VirtualKeyboardEventHandler* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return VirtualKeyboardEventHandler::gameKeyEventHandler;
+                        return VirtualKeyboardEventHandler::gameKeyEventHandler();
     
 }
 
@@ -73,17 +79,17 @@ private: VirtualKeyboardEventHandler(){
 }
 
 
-    public: const VirtualKeyboardEvent SHOW_EVENT = VirtualKeyboardEvent(BooleanFactory::getInstance().TRUE);
+    public: VirtualKeyboardEvent* SHOW_EVENT = new VirtualKeyboardEvent(BooleanFactory::getInstance()->TRUE);
 
-    public: const VirtualKeyboardEvent HIDE_EVENT = VirtualKeyboardEvent(BooleanFactory::getInstance().FALSE);
+    public: VirtualKeyboardEvent* HIDE_EVENT = new VirtualKeyboardEvent(BooleanFactory::getInstance()->FALSE);
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
 
-    VirtualKeyboardEventListenerInterface virtualKeyboardEventListenerInterface = eventListenerInterface as unknown;;
+    VirtualKeyboardEventListenerInterface* virtualKeyboardEventListenerInterface = dynamic_cast<VirtualKeyboardEventListenerInterface*>(eventListenerInterface as unknown);;
     
-virtualKeyboardEventListenerInterface.onVirtualKeyboardEvent(eventObject);
+virtualKeyboardEventListenerInterface->onVirtualKeyboardEvent(dynamic_cast<VirtualKeyboardEvent*>(eventObject));
     
 }
 
@@ -97,9 +103,9 @@ this->fireEvent(this->SHOW_EVENT);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "open", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "open", &e);
     
 }
 
@@ -115,9 +121,9 @@ this->fireEvent(this->HIDE_EVENT);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CLOSE, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CLOSE, &e);
     
 }
 

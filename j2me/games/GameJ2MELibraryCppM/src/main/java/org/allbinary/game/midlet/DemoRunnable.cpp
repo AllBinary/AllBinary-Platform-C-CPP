@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,27 +66,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DemoGameMidlet.h"
-#include "DemoGameMidletEvent.h"
-#include "DemoGameMidletStateFactory.h"
-#include "DemoGameMidletEventHandler.h"
+        #include "org/allbinary/game/midlet/DemoGameMidlet.h"
+#include "org/allbinary/game/midlet/DemoGameMidletEvent.h"
+#include "org/allbinary/game/midlet/DemoGameMidletStateFactory.h"
+#include "org/allbinary/game/midlet/DemoGameMidletEventHandler.h"
 
 class DemoRunnable
             : public Object
-        : public Runnable {
+        , public Runnable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: DemoGameMidlet demoGameMidlet;
+    private: DemoGameMidlet* demoGameMidlet;
 
-    private: DemoGameMidletEvent startDemoGameMidletEvent;
+    private: DemoGameMidletEvent* startDemoGameMidletEvent;
 
-public: DemoRunnable(DemoGameMidlet demoGameMidlet){
+public: DemoRunnable(DemoGameMidlet* demoGameMidlet){
 this->demoGameMidlet= demoGameMidlet;
     
-this->startDemoGameMidletEvent= DemoGameMidletEvent(this->demoGameMidlet, DemoGameMidletStateFactory::getInstance().START_DEMO);
+this->startDemoGameMidletEvent= new DemoGameMidletEvent(this->demoGameMidlet, DemoGameMidletStateFactory::getInstance()->START_DEMO);
     
 }
 
@@ -88,27 +94,27 @@ this->startDemoGameMidletEvent= DemoGameMidletEvent(this->demoGameMidlet, DemoGa
     public: void run(){
 
         try {
-            this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().START_LABEL).append("GameCanvasRunnableInterface").toString(), this, this->commonStrings.RUN);
+            this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append("GameCanvasRunnableInterface")->toString(), this, this->commonStrings->RUN);
     
-this->demoGameMidlet.commandAction(MyCommandsFactory::getInstance().SET_DISPLAYABLE, ProgressCanvasFactory::getInstance());
+this->demoGameMidlet->commandAction(MyCommandsFactory::getInstance()->SET_DISPLAYABLE, ProgressCanvasFactory::getInstance());
     
-this->demoGameMidlet.setGameCanvasRunnableInterface(this->demoGameMidlet.createDemoGameCanvasRunnableInterface());
+this->demoGameMidlet->setGameCanvasRunnableInterface(this->demoGameMidlet->createDemoGameCanvasRunnableInterface());
     
-this->demoGameMidlet.demoSetup();
+this->demoGameMidlet->demoSetup();
     
-DemoGameMidletEventHandler::getInstance().fireEvent(this->startDemoGameMidletEvent);
+DemoGameMidletEventHandler::getInstance()->fireEvent(this->startDemoGameMidletEvent);
     
-this->demoGameMidlet.startGameCanvasRunnableInterface();
+this->demoGameMidlet->startGameCanvasRunnableInterface();
     
-this->demoGameMidlet.postDemoSetup();
+this->demoGameMidlet->postDemoSetup();
     
-this->logUtil.putF(this->commonStrings.END_RUNNABLE, this, this->commonStrings.RUN);
+this->logUtil->putF(this->commonStrings->END_RUNNABLE, this, this->commonStrings->RUN);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RUN, &e);
     
 }
 

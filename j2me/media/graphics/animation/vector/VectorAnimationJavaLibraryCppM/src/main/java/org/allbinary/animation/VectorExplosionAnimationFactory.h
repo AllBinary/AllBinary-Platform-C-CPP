@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -51,32 +57,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProceduralAnimationInterfaceFactoryInterface.h"
-#include "VectorExplosionGenerator.h"
-#include "AnimationBehaviorFactory.h"
-#include "VectorAnimationInterface.h"
-#include "VectorRotationAnimation.h"
-#include "Animation.h"
+        #include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/VectorExplosionGenerator.h"
+#include "org/allbinary/animation/AnimationBehaviorFactory.h"
+#include "org/allbinary/animation/VectorAnimationInterface.h"
+#include "org/allbinary/animation/VectorRotationAnimation.h"
+#include "org/allbinary/animation/Animation.h"
 
 class VectorExplosionAnimationFactory
             : public Object
-        : public ProceduralAnimationInterfaceFactoryInterface {
+        , public ProceduralAnimationInterfaceFactoryInterface {
 
-    private: const VectorExplosionGenerator vectorExplosionGenerator = VectorExplosionGenerator::getInstance();
+    private: VectorExplosionGenerator* vectorExplosionGenerator = VectorExplosionGenerator::getInstance();
 
-    private: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
+    private: BasicColor* basicColor = BasicColorFactory::getInstance()->WHITE;
 
-    protected: AnimationBehaviorFactory animationBehaviorFactory;
+    protected: AnimationBehaviorFactory* animationBehaviorFactory;
 
-public: VectorExplosionAnimationFactory(BasicColor basicColor, AnimationBehaviorFactory animationBehaviorFactory);
+public: VectorExplosionAnimationFactory(BasicColor* basicColor, AnimationBehaviorFactory* animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstanceAnimation(Animation animationInterface);
+    public: Animation* getInstanceAnimation(Animation* animationInterface);
 
-    private: void setBasicColorP(BasicColor basicColor);
+    private: void setBasicColorP(BasicColor* basicColor);
 
-    private: BasicColor getBasicColorP();
+    private: BasicColor* getBasicColorP();
 
 };
 

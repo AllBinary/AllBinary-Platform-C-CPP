@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -79,24 +85,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreThemeCategory.h"
+        #include "org/allbinary/business/category/store/theme/StoreThemeCategory.h"
 
 class StoreThemeCategoryFactory
             : public Object
-        : public CategoryFactoryInterface {
+        , public CategoryFactoryInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: TransformInfoInterface transformInfoInterface;
+    private: TransformInfoInterface* transformInfoInterface;
 
-public: StoreThemeCategoryFactory(TransformInfoInterface transformInfoInterface){
+public: StoreThemeCategoryFactory(TransformInfoInterface* transformInfoInterface){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.START, this, "StoreCategoryFactory(TransformInfoInterface transformInfoInterface)");
+                                    this->logUtil->putF(this->commonStrings->START, this, "StoreCategoryFactory(TransformInfoInterface transformInfoInterface)");
     
 
                                     }
@@ -106,27 +112,27 @@ this->transformInfoInterface= transformInfoInterface;
 }
 
 
-    public: CategoryInterface getRootInstance(){
+    public: CategoryInterface* getRootInstance(){
 
         try {
             
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = RootStoreThemeCategoryPropertiesFactory(this->transformInfoInterface);;
+    CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface = dynamic_cast<CategoryPropertiesFactoryInterface*>(new RootStoreThemeCategoryPropertiesFactory(this->transformInfoInterface));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreThemeCategory(this->transformInfoInterface, categoryPropertiesFactoryInterface, 0);
+                        return dynamic_cast<CategoryInterface*>(new StoreThemeCategory(this->transformInfoInterface, categoryPropertiesFactoryInterface, 0));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "getRootInstance()", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "getRootInstance()", &e);
     
 
                                     }
@@ -142,30 +148,30 @@ this->transformInfoInterface= transformInfoInterface;
 }
 
 
-    public: CategoryInterface getRootInstance(AbPath categoryAbPath){
+    public: CategoryInterface* getRootInstance(AbPath* categoryAbPath){
 
         try {
             
     int32_t level = CategoryUtil::getPathLevel(categoryAbPath);;
     
 
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = RootStoreThemeCategoryPropertiesFactory(this->transformInfoInterface, categoryAbPath);;
+    CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface = dynamic_cast<CategoryPropertiesFactoryInterface*>(new RootStoreThemeCategoryPropertiesFactory(this->transformInfoInterface, categoryAbPath));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreThemeCategory(this->transformInfoInterface, categoryPropertiesFactoryInterface, level);
+                        return dynamic_cast<CategoryInterface*>(new StoreThemeCategory(this->transformInfoInterface, categoryPropertiesFactoryInterface, level));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "getRootInstance(String)", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "getRootInstance(String)", &e);
     
 
                                     }
@@ -181,14 +187,14 @@ this->transformInfoInterface= transformInfoInterface;
 }
 
 
-    public: CategoryInterface getRootInstanceFromNode(Node node){
+    public: CategoryInterface* getRootInstanceFromNode(Node* node){
 
         try {
             
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = RootStoreThemeCategoryPropertiesFactory(this->transformInfoInterface, node);;
+    CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface = dynamic_cast<CategoryPropertiesFactoryInterface*>(new RootStoreThemeCategoryPropertiesFactory(this->transformInfoInterface, node));;
     
 
-    AbPath categoryPath = AbPath(CategoryUtil::getNameFromNode(node), StringUtil::getInstance().EMPTY_STRING);;
+    AbPath* categoryPath = new AbPath(CategoryUtil::getNameFromNode(node), StringUtil::getInstance()->EMPTY_STRING);;
     
 
     int32_t level = CategoryUtil::getPathLevel(categoryPath);;
@@ -197,17 +203,17 @@ this->transformInfoInterface= transformInfoInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreThemeCategory(this->transformInfoInterface, node, categoryPropertiesFactoryInterface, level);
+                        return dynamic_cast<CategoryInterface*>(new StoreThemeCategory(this->transformInfoInterface, node, categoryPropertiesFactoryInterface, level));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "getRootInstance(node)", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "getRootInstance(node)", &e);
     
 
                                     }
@@ -223,27 +229,27 @@ this->transformInfoInterface= transformInfoInterface;
 }
 
 
-    public: CategoryInterface getInstance(std::string categoryPath, int32_t level){
+    public: CategoryInterface* getInstance(std::string categoryPath, int32_t level){
 
         try {
             
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(categoryPath);;
+    CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface = dynamic_cast<CategoryPropertiesFactoryInterface*>(new CategoryPropertiesFactory(categoryPath));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreThemeCategory(this->transformInfoInterface, categoryPropertiesFactoryInterface, level);
+                        return dynamic_cast<CategoryInterface*>(new StoreThemeCategory(this->transformInfoInterface, categoryPropertiesFactoryInterface, level));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "getInstance(String, int)", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "getInstance(String, int)", &e);
     
 
                                     }
@@ -259,27 +265,27 @@ this->transformInfoInterface= transformInfoInterface;
 }
 
 
-    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, std::string categoryPath){
+    public: CategoryInterface* getInstance(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, std::string categoryPath){
 
         try {
             
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(categoryPath);;
+    CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface = dynamic_cast<CategoryPropertiesFactoryInterface*>(new CategoryPropertiesFactory(categoryPath));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreThemeCategory(this->transformInfoInterface, rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface);
+                        return dynamic_cast<CategoryInterface*>(new StoreThemeCategory(this->transformInfoInterface, rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put(commonStrings.EXCEPTION, this, "getInstance(CategoryInterface, CategoryInterface , String, int)", e);
+                                    this->logUtil->put(commonStrings->EXCEPTION, this, "getInstance(CategoryInterface, CategoryInterface , String, int)", &e);
     
 
                                     }
@@ -295,27 +301,27 @@ this->transformInfoInterface= transformInfoInterface;
 }
 
 
-    public: CategoryInterface getInstance(Node node, int32_t level){
+    public: CategoryInterface* getInstance(Node* node, int32_t level){
 
         try {
             
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(node);;
+    CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface = dynamic_cast<CategoryPropertiesFactoryInterface*>(new CategoryPropertiesFactory(node));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreThemeCategory(this->transformInfoInterface, categoryPropertiesFactoryInterface, level);
+                        return dynamic_cast<CategoryInterface*>(new StoreThemeCategory(this->transformInfoInterface, categoryPropertiesFactoryInterface, level));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "getInstance(Node, int)", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "getInstance(Node, int)", &e);
     
 
                                     }
@@ -331,27 +337,27 @@ this->transformInfoInterface= transformInfoInterface;
 }
 
 
-    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, Node node){
+    public: CategoryInterface* getInstance(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, Node* node){
 
         try {
             
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(node);;
+    CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface = dynamic_cast<CategoryPropertiesFactoryInterface*>(new CategoryPropertiesFactory(node));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreThemeCategory(this->transformInfoInterface, rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface);
+                        return dynamic_cast<CategoryInterface*>(new StoreThemeCategory(this->transformInfoInterface, rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put(commonStrings.EXCEPTION, this, "getInstance(CategoryInterface, CategoryInterface, Node, int)", e);
+                                    this->logUtil->put(commonStrings->EXCEPTION, this, "getInstance(CategoryInterface, CategoryInterface, Node, int)", &e);
     
 
                                     }
@@ -367,27 +373,27 @@ this->transformInfoInterface= transformInfoInterface;
 }
 
 
-    public: CategoryInterface getInstance(HashMap<Object*, Object*> categoryPropertiesHashMap, int32_t level){
+    public: CategoryInterface* getInstance(HashMap<Object*, Object*>* categoryPropertiesHashMap, int32_t level){
 
         try {
             
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(categoryPropertiesHashMap);;
+    CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface = dynamic_cast<CategoryPropertiesFactoryInterface*>(new CategoryPropertiesFactory(categoryPropertiesHashMap));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreThemeCategory(this->transformInfoInterface, categoryPropertiesFactoryInterface, level);
+                        return dynamic_cast<CategoryInterface*>(new StoreThemeCategory(this->transformInfoInterface, categoryPropertiesFactoryInterface, level));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "getInstance(HashMap)", e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "getInstance(HashMap)", &e);
     
 
                                     }
@@ -403,27 +409,27 @@ this->transformInfoInterface= transformInfoInterface;
 }
 
 
-    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<Object*, Object*> categoryPropertiesHashMap){
+    public: CategoryInterface* getInstance(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap){
 
         try {
             
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(categoryPropertiesHashMap);;
+    CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface = dynamic_cast<CategoryPropertiesFactoryInterface*>(new CategoryPropertiesFactory(categoryPropertiesHashMap));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreThemeCategory(this->transformInfoInterface, rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface);
+                        return dynamic_cast<CategoryInterface*>(new StoreThemeCategory(this->transformInfoInterface, rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
                         
                                     {
-                                    this->logUtil.put(commonStrings.EXCEPTION, this, "getInstance(CategoryInterface, CategoryInterface, HashMap)", e);
+                                    this->logUtil->put(commonStrings->EXCEPTION, this, "getInstance(CategoryInterface, CategoryInterface, HashMap)", &e);
     
 
                                     }

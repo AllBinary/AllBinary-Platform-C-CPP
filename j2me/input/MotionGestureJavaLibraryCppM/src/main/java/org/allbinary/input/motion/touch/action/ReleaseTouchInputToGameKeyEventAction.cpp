@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/GameKey.h>
@@ -65,14 +73,14 @@
         
 class ReleaseTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static GameKeyCompleteMotionGestureInputEvent getInstance(){
+    public: static GameKeyCompleteMotionGestureInputEvent* getInstance(){
 
-                        if(ReleaseTouchInputToGameKeyEventAction::instance() == NullUtil::getInstance().NULL_OBJECT)
+                        if(ReleaseTouchInputToGameKeyEventAction::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    ReleaseTouchInputToGameKeyEventAction::instance= ReleaseTouchInputToGameKeyEventAction();
+                                    ReleaseTouchInputToGameKeyEventAction::instance= new ReleaseTouchInputToGameKeyEventAction();
     
 
                                     }
@@ -81,14 +89,14 @@ class ReleaseTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGesture
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ReleaseTouchInputToGameKeyEventAction::instance();
+                        return dynamic_cast<GameKeyCompleteMotionGestureInputEvent*>(ReleaseTouchInputToGameKeyEventAction::instance);
     
 }
 
 
-    private: const GameKey NONE = GameKeyFactory::getInstance().NONE;
+    private: GameKey* NONE = GameKeyFactory::getInstance()->NONE;
 
-private: ReleaseTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Release Action", TouchMotionGestureFactory::getInstance().RELEASED, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping()){
+private: ReleaseTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Release Action", TouchMotionGestureFactory::getInstance()->RELEASED, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -99,16 +107,16 @@ private: ReleaseTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureI
         try {
             this->setGameKey(this->NONE);
     
-this->setGameKeyEvent(GameKeyEventFactory::getInstance().getInstanceForInput(this, this->NONE));
+this->setGameKeyEvent(GameKeyEventFactory::getInstance()->getInstanceForInput(this, this->NONE));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
+this->logUtil.put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &e);
     
 }
 

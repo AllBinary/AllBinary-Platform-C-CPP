@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayOutputStream.h>
@@ -82,25 +88,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BlisketServletUtil.h"
+        #include "org/allbinary/servlet/BlisketServletUtil.h"
 
 class CloudImageServlet: public HttpServlet {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
-
-                //@Throws(ServletException.constructor, IOException.constructor)
-            
-    protected: void processRequest(HttpServletRequest request, HttpServletResponse response);
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void doGet(HttpServletRequest request, HttpServletResponse response);
+    protected: void processRequest(HttpServletRequest* request, HttpServletResponse* response);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void doPost(HttpServletRequest request, HttpServletResponse response);
+    protected: void doGet(HttpServletRequest* request, HttpServletResponse* response);
+
+                //@Throws(ServletException.constructor, IOException.constructor)
+            
+    protected: void doPost(HttpServletRequest* request, HttpServletResponse* response);
 
     public: std::string getServletInfo();
 

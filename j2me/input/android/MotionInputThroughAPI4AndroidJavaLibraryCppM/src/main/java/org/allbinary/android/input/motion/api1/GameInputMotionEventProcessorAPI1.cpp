@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <android/view/MotionEvent.h>
@@ -59,14 +67,14 @@
         
 class GameInputMotionEventProcessorAPI1: public BaseGameInputMotionEventProcessor {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static GameInputMotionEventProcessorAPI1 getInstance(){
+    public: static GameInputMotionEventProcessorAPI1* getInstance(){
 
-                        if(GameInputMotionEventProcessorAPI1::instance() == NullUtil::getInstance().NULL_OBJECT)
+                        if(GameInputMotionEventProcessorAPI1::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    GameInputMotionEventProcessorAPI1::instance= GameInputMotionEventProcessorAPI1();
+                                    GameInputMotionEventProcessorAPI1::instance= new GameInputMotionEventProcessorAPI1();
     
 
                                     }
@@ -75,36 +83,36 @@ class GameInputMotionEventProcessorAPI1: public BaseGameInputMotionEventProcesso
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameInputMotionEventProcessorAPI1::instance();
+                        return dynamic_cast<GameInputMotionEventProcessorAPI1*>(GameInputMotionEventProcessorAPI1::instance);
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const MotionRecognizer motionRecognizer = AllMotionRecognizer();
+    private: MotionRecognizer* motionRecognizer = new AllMotionRecognizer();
 
 private: GameInputMotionEventProcessorAPI1(){
 }
 
 
-    public: void process(MotionEvent motionEvent){
+    public: void process(MotionEvent* motionEvent){
 
         try {
             
-    int32_t x = static_cast<int32_t>(motionEvent.getX());;
+    int32_t x = static_cast<int32_t>(motionEvent->getX());;
     
 
-    int32_t y = static_cast<int32_t>(motionEvent.getY());;
+    int32_t y = static_cast<int32_t>(motionEvent->getY());;
     
 
-    int32_t action = motionEvent.getAction();;
+    int32_t action = motionEvent->getAction();;
     
 
                         if(action == MotionEvent::ACTION_DOWN)
                         
                                     {
-                                    this->motionRecognizer.processStartMotionEvent(x, y, motionEvent.getDeviceId(), 0);
+                                    this->motionRecognizer->processStartMotionEvent(x, y, motionEvent->getDeviceId(), 0);
     
 
                                     }
@@ -113,7 +121,7 @@ private: GameInputMotionEventProcessorAPI1(){
                         if(action == MotionEvent::ACTION_UP || action == MotionEvent::ACTION_CANCEL)
                         
                                     {
-                                    this->motionRecognizer.processEndMotionEvent(x, y, motionEvent.getDeviceId(), 0);
+                                    this->motionRecognizer->processEndMotionEvent(x, y, motionEvent->getDeviceId(), 0);
     
 
                                     }
@@ -122,16 +130,16 @@ private: GameInputMotionEventProcessorAPI1(){
                         if(action == MotionEvent::ACTION_MOVE)
                         
                                     {
-                                    this->motionRecognizer.processDraggedMotionEvent(x, y, motionEvent.getDeviceId(), 0);
+                                    this->motionRecognizer->processDraggedMotionEvent(x, y, motionEvent->getDeviceId(), 0);
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e);
+this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, &e);
     
 }
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -51,20 +57,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HighScoresHelperBaseInterface.h"
-#include "LastFetchHighScoresFactory.h"
-#include "HighScores.h"
-#include "NullHighScoresSingletonFactory.h"
+        #include "org/allbinary/game/score/HighScoresHelperBaseInterface.h"
+#include "org/allbinary/game/score/LastFetchHighScoresFactory.h"
+#include "org/allbinary/game/score/HighScores.h"
+#include "org/allbinary/game/score/NullHighScoresSingletonFactory.h"
 
 class HighScoresHelperBase
             : public Object
-        : public HighScoresHelperBaseInterface {
+        , public HighScoresHelperBaseInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: std::vector<HighScores> highScoresArrayP = LastFetchHighScoresFactory::getInstance().highScoresArray;
+    protected: std::vector<HighScores*> highScoresArrayP = LastFetchHighScoresFactory::getInstance()->highScoresArray;
 
-    public: void setHighScoresArray(std::vector<HighScores> highScoresArrayP){
+    public: void setHighScoresArray(std::vector<HighScores*> highScoresArrayP){
 
                         if(highScoresArrayP != 
                                     nullptr
@@ -72,18 +78,18 @@ class HighScoresHelperBase
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF(StringMaker().append(commonStrings.START).appendint(highScoresArrayP.size()).toString(), this, "setHighScoresArray");
+this->logUtil->putF((new StringMaker())->append(commonStrings->START)->appendint(highScoresArrayP.size())->toString(), this, "setHighScoresArray");
     
 
                                     }
                                 
                         else {
                             
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF(commonStrings.START, this, "setHighScoresArray");
+this->logUtil->putF(commonStrings->START, this, "setHighScoresArray");
     
 
                         }
@@ -93,7 +99,7 @@ this->highScoresArrayP= highScoresArrayP;
 }
 
 
-    public: HighScores getNextHighScores(){
+    public: HighScores* getNextHighScores(){
 
 
 
@@ -107,16 +113,16 @@ this->highScoresArrayP= highScoresArrayP;
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: void setSelectedHighScores(HighScores selectedHighScores){
+    public: void setSelectedHighScores(HighScores* selectedHighScores){
 }
 
 
-    public: HighScores getSelectedHighScores(){
+    public: HighScores* getSelectedHighScores(){
 
 
 
@@ -126,7 +132,7 @@ this->highScoresArrayP= highScoresArrayP;
 }
 
 
-    public: std::vector<HighScores> getHighScoresArray(){
+    public: std::vector<HighScores*> getHighScoresArray(){
 
 
 

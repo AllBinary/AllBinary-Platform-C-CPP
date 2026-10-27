@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_QUOTEHELPER_H
         #define ADMIN_TAGHELPERS_QUOTEHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -127,29 +133,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicTable.h"
+        #include "admin/taghelpers/BasicTable.h"
 
 class QuoteHelper: public BasicTable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: WeblisketSession weblisketSession;
+    private: WeblisketSession* weblisketSession;
 
-    private: const StoreFrontInterface storeFrontInterface;
+    private: StoreFrontInterface* storeFrontInterface;
 
-    private: Portion portion;
+    private: Portion* portion;
 
-public: QuoteHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
-
-                //@Throws(Exception.constructor)
-            
-    private: void emailUser(QuoteRequest quoteRequest);
+public: QuoteHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
                 //@Throws(Exception.constructor)
             
-    private: void emailAdmins(QuoteRequest quoteRequest);
+    private: void emailUser(QuoteRequest* quoteRequest);
+
+                //@Throws(Exception.constructor)
+            
+    private: void emailAdmins(QuoteRequest* quoteRequest);
 
                 //@Throws(Exception.constructor)
             

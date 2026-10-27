@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -92,19 +98,19 @@ class ZipFileUtil
             : public Object
          {
 
-    private: static ZipFileUtil instance() { return ZipFileUtil(); }
+    private: static ZipFileUtil* instance() { static std::unique_ptr<ZipFileUtil> value(new ZipFileUtil()); return value.get(); }
 
-    public: static ZipFileUtil getInstance();
+    public: static ZipFileUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    public: void create(std::string outFilename, BasicArrayList fileBasicArrayList);
+    public: void create(std::string outFilename, BasicArrayList* fileBasicArrayList);
 
                 //@Throws(Exception.constructor)
             
-    public: void unzip(std::string path, AbFile zipFile, std::string fileName);
+    public: void unzip(std::string path, AbFile* zipFile, std::string fileName);
 
 };
 

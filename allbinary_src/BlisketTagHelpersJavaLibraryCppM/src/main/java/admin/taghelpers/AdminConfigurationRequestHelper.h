@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_ADMINCONFIGURATIONREQUESTHELPER_H
         #define ADMIN_TAGHELPERS_ADMINCONFIGURATIONREQUESTHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -59,15 +65,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ModifyTable.h"
+        #include "admin/taghelpers/ModifyTable.h"
 
 class AdminConfigurationRequestHelper: public ModifyTable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
-public: AdminConfigurationRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: AdminConfigurationRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
     public: std::string insert();
 

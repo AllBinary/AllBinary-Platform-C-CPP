@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_LINE_H
         #define ORG_ALLBINARY_GRAPHICS_LINE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,22 +47,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GPoint.h"
-#include "PointFactory.h"
+        #include "org/allbinary/graphics/GPoint.h"
+#include "org/allbinary/graphics/PointFactory.h"
 
 class Line
             : public Object
          {
 
-    private: GPoint p1;
+    private: GPoint* p1;
 
-    private: GPoint p2;
+    private: GPoint* p2;
 
     private: double deltaX= 0.0;
 
     private: double deltaY= 0.0;
 
-public: Line(GPoint p1, GPoint p2);
+public: Line(GPoint* p1, GPoint* p2);
 
     public: double getGradient();
 
@@ -66,13 +72,13 @@ public: Line(GPoint p1, GPoint p2);
 
     public: double getDeltaY();
 
-    public: GPoint getP1();
+    public: GPoint* getP1();
 
-    public: GPoint getP2();
+    public: GPoint* getP2();
 
-    public: void setP1(GPoint p1);
+    public: void setP1(GPoint* p1);
 
-    public: void setP2(GPoint p2);
+    public: void setP2(GPoint* p2);
 
 };
 

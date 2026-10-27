@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -39,13 +45,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseGameStatistics.h"
+        #include "org/allbinary/canvas/BaseGameStatistics.h"
 //ActualPlatform
 /*actual*/ class GameStatisticsFactory: public BaseGameStatistics {
 
-    private: static GameStatisticsFactory instance() { return GameStatisticsFactory(); }
+    private: static GameStatisticsFactory* instance() { static std::unique_ptr<GameStatisticsFactory> value(new GameStatisticsFactory()); return value.get(); }
 
-    /*actual*/ public: static GameStatisticsFactory getInstance(){
+    /*actual*/ public: static GameStatisticsFactory* getInstance(){
 
 
 
@@ -55,21 +61,21 @@
 }
 
 
-    private: StringMaker stringBuffer = StringMaker();
+    private: StringMaker* stringBuffer = new StringMaker();
 
     public: void add(std::string string){
 
-                        if(this->stringBuffer.length() > 12000)
+                        if(this->stringBuffer->length() > 12000)
                         
                                     {
-                                    this->stringBuffer.delete(0, this->stringBuffer.length());
+                                    this->stringBuffer->delete(0, this->stringBuffer->length());
     
-this->stringBuffer.append("Old Stats Cleared");
+this->stringBuffer->append("Old Stats Cleared");
     
 
                                     }
                                 
-this->stringBuffer.append(string);
+this->stringBuffer->append(string);
     
 }
 
@@ -79,7 +85,7 @@ this->stringBuffer.append(string);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().append(super.toString()).append(this->stringBuffer.toString()).toString();;
+                        return (new StringMaker())->append(super.toString())->append(this->stringBuffer->toString())->toString();;
     
 }
 

@@ -21,6 +21,12 @@
         #ifndef TAGS_STOREVALIDATIONTRANSFORMTAG_H
         #define TAGS_STOREVALIDATIONTRANSFORMTAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
@@ -53,11 +59,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ValidationTransformTag.h"
+        #include "tags/ValidationTransformTag.h"
 
 class StoreValidationTransformTag: public ValidationTransformTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string storeName;
 

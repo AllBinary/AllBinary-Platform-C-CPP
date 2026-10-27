@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_MOTIONEVENTPROCESSOR_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_MOTIONEVENTPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,7 +61,7 @@ class MotionEventProcessor
 
                 //@Throws(Exception.constructor)
             
-    public: void process(MotionEvent motionEvent);
+    public: void process(MotionEvent* motionEvent);
 
 };
 

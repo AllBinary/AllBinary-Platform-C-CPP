@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_FEATURE_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_FEATURE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/configuration/event/ChangedGameFeatureListener.h>
@@ -55,11 +61,11 @@ class Feature
             : public Object
          {
 
-    private: static ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
+    private: static inline ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
 
-    public: static Feature getInstance(std::string name);
+    public: static Feature* getInstance(std::string name);
 
-    private: static void add(std::string name, Feature gameFeature);
+    private: static void add(std::string name, Feature* gameFeature);
 
     private: std::string name;
 

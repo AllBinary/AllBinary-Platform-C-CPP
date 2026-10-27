@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_AI_OPTIMIZEDARTIFICIALINTELLIGENCELAYERPROCESSORFORCOLLIDABLELAYER_H
         #define ORG_ALLBINARY_AI_OPTIMIZEDARTIFICIALINTELLIGENCELAYERPROCESSORFORCOLLIDABLELAYER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/CollidableCompositeLayer.h>
@@ -53,7 +59,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OptimizedArtificialIntelligenceLayerManager.h"
+        #include "org/allbinary/ai/OptimizedArtificialIntelligenceLayerManager.h"
 
 class OptimizedArtificialIntelligenceLayerProcessorForCollidableLayer: public LayerProcessor {
 
@@ -61,11 +67,11 @@ public: OptimizedArtificialIntelligenceLayerProcessorForCollidableLayer();
 
                 //@Throws(Exception.constructor)
             
-    public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index);
+    public: void processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index);
 
                 //@Throws(Exception.constructor)
             
-    public: bool isProcessorLayer(AllBinaryLayer layerInterface);
+    public: bool isProcessorLayer(AllBinaryLayer* layerInterface);
 
 };
 

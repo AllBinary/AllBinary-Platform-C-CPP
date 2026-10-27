@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GLOBALS_PATH_GLOBALS_H
         #define ORG_ALLBINARY_GLOBALS_PATH_GLOBALS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/io/path/AbPathData.h>
@@ -55,9 +61,9 @@ class PATH_GLOBALS
             : public Object
          {
 
-    private: static PATH_GLOBALS instance() { return PATH_GLOBALS(); }
+    private: static PATH_GLOBALS* instance() { static std::unique_ptr<PATH_GLOBALS> value(new PATH_GLOBALS()); return value.get(); }
 
-    public: static PATH_GLOBALS getInstance();
+    public: static PATH_GLOBALS* getInstance();
 
 private: PATH_GLOBALS();
 

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -76,9 +82,9 @@ class AllBinaryTiledLayer: public Layer, public NamedInterface, public Paintable
 
     private: int32_t halfCellHeight;
 
-    private: Integer dataId;
+    private: int32_t dataId;
 
-public: AllBinaryTiledLayer(Integer dataId, int32_t width, int32_t height, int32_t cellWidth, int32_t cellHeight) : Layer(0, 0){
+public: AllBinaryTiledLayer(int32_t dataId, int32_t width, int32_t height, int32_t cellWidth, int32_t cellHeight) : Layer(0, 0){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -110,25 +116,25 @@ this->halfCellHeight= (cellHeight>>1);
 
     public: void setCells(std::vector<std::vector<int32_t>> mapTwoDArray){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Start: r: ");
+stringBuffer->append("Start: r: ");
     
-stringBuffer.appendint(mapTwoDArray.size());
+stringBuffer->appendint(mapTwoDArray.size());
     
-stringBuffer.append(" c: ");
+stringBuffer->append(" c: ");
     
-stringBuffer.appendint(mapTwoDArray[0].size());
+stringBuffer->appendint(mapTwoDArray[0].size());
     
-stringBuffer.append(" rows: ");
+stringBuffer->append(" rows: ");
     
-stringBuffer.appendint(this->getRows());
+stringBuffer->appendint(this->getRows());
     
-stringBuffer.append(" columns: ");
+stringBuffer->append(" columns: ");
     
-stringBuffer.appendint(this->getColumns());
+stringBuffer->appendint(this->getColumns());
     
-this->logUtil.putF(stringBuffer.toString(), this, "setCells");
+this->logUtil.putF(stringBuffer->toString(), this, "setCells");
     
 
     int32_t rows = this->getRows();;
@@ -203,16 +209,16 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->constructor.name.toString();;
+                        return this->getClass()->getName();;
     
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 }
 
 
-    public: void paintThreed(Graphics graphics){
+    public: void paintThreed(Graphics* graphics){
 }
 
 
@@ -320,7 +326,7 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 }
 
 
-    public: Integer getDataId(){
+    public: int32_t getDataId(){
 
 
 

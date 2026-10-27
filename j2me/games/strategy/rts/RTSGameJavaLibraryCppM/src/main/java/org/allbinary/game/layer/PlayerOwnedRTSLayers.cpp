@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -52,21 +58,21 @@ class PlayerOwnedRTSLayers
             : public Object
          {
 
-    public: const BasicArrayList rtsLayerList = BasicArrayListD();
+    public: BasicArrayList* rtsLayerList = new BasicArrayListD();
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("All: ");
+stringBuffer->append("All: ");
     
-stringBuffer.appendint(this->rtsLayerList.size());
+stringBuffer->appendint(this->rtsLayerList->size());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

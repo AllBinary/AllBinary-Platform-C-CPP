@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEINTERFACE_H
         #define ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/CollidableCompositeLayer.h>
@@ -50,23 +56,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CollisionType.h"
+        #include "org/allbinary/game/collision/CollisionType.h"
 
 class CollidableInterface: public NamedInterface {
 
                 //@Throws(Exception.constructor)
             
-    bool isCollidable(CollidableCompositeLayer ownerLayer);
+    public: virtual bool isCollidable(CollidableCompositeLayer* ownerLayer) = 0;
 
                 //@Throws(Exception.constructor)
             
-    bool isCollision(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
+    public: virtual bool isCollision(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface) = 0;
 
                 //@Throws(Exception.constructor)
             
-    void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
+    public: virtual void collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface) = 0;
 
-    CollisionType getCollisionTypeWith(AllBinaryLayer layerInterface);
+    public: virtual CollisionType* getCollisionTypeWith(AllBinaryLayer* layerInterface) = 0;
 
 };
 

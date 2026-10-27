@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -56,72 +62,72 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StringUtil.h"
+        #include "org/allbinary/logic/string/StringUtil.h"
 
 class SpecialCharacterUtil
             : public Object
          {
 
-    public: static HashMap<Object*, Object*> getHashMap(){
+    public: static HashMap<Object*, Object*>* getHashMap(){
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
-    
-
-    CommonPhoneStrings commonPhoneStrings = CommonPhoneStrings::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    CommonPhoneStrings* commonPhoneStrings = CommonPhoneStrings::getInstance();;
     
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
-hashMap.put("!", stringUtil.EMPTY_STRING);
+
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put("@", stringUtil.EMPTY_STRING);
+hashMap->put("!", stringUtil->EMPTY_STRING);
     
-hashMap.put(commonPhoneStrings.POUND, stringUtil.EMPTY_STRING);
+hashMap->put("@", stringUtil->EMPTY_STRING);
     
-hashMap.put("$", stringUtil.EMPTY_STRING);
+hashMap->put(commonPhoneStrings->POUND, stringUtil->EMPTY_STRING);
     
-hashMap.put("%", stringUtil.EMPTY_STRING);
+hashMap->put("$", stringUtil->EMPTY_STRING);
     
-hashMap.put("^", stringUtil.EMPTY_STRING);
+hashMap->put("%", stringUtil->EMPTY_STRING);
     
-hashMap.put(commonSeps.AMPERSAND, stringUtil.EMPTY_STRING);
+hashMap->put("^", stringUtil->EMPTY_STRING);
     
-hashMap.put(commonPhoneStrings.STAR, stringUtil.EMPTY_STRING);
+hashMap->put(commonSeps->AMPERSAND, stringUtil->EMPTY_STRING);
     
-hashMap.put(commonSeps.PARENTHESIS_OPEN, stringUtil.EMPTY_STRING);
+hashMap->put(commonPhoneStrings->STAR, stringUtil->EMPTY_STRING);
     
-hashMap.put(commonSeps.PARENTHESIS_CLOSE, stringUtil.EMPTY_STRING);
+hashMap->put(commonSeps->PARENTHESIS_OPEN, stringUtil->EMPTY_STRING);
     
-hashMap.put(commonSeps.DASH, stringUtil.EMPTY_STRING);
+hashMap->put(commonSeps->PARENTHESIS_CLOSE, stringUtil->EMPTY_STRING);
     
-hashMap.put(commonSeps.UNDERSCORE, stringUtil.EMPTY_STRING);
+hashMap->put(commonSeps->DASH, stringUtil->EMPTY_STRING);
     
-hashMap.put(MathData::getInstance().PLUS, stringUtil.EMPTY_STRING);
+hashMap->put(commonSeps->UNDERSCORE, stringUtil->EMPTY_STRING);
     
-hashMap.put(commonSeps.EQUALS, stringUtil.EMPTY_STRING);
+hashMap->put(MathData::getInstance()->PLUS, stringUtil->EMPTY_STRING);
     
-hashMap.put("\\", stringUtil.EMPTY_STRING);
+hashMap->put(commonSeps->EQUALS, stringUtil->EMPTY_STRING);
     
-hashMap.put("|", stringUtil.EMPTY_STRING);
+hashMap->put("\\", stringUtil->EMPTY_STRING);
     
-hashMap.put(AbPathData::getInstance().EXTENSION_SEP, stringUtil.EMPTY_STRING);
+hashMap->put("|", stringUtil->EMPTY_STRING);
     
-hashMap.put(",", stringUtil.EMPTY_STRING);
+hashMap->put(AbPathData::getInstance()->EXTENSION_SEP, stringUtil->EMPTY_STRING);
     
-hashMap.put("<", stringUtil.EMPTY_STRING);
+hashMap->put(",", stringUtil->EMPTY_STRING);
     
-hashMap.put(">", stringUtil.EMPTY_STRING);
+hashMap->put("<", stringUtil->EMPTY_STRING);
     
-hashMap.put("?", stringUtil.EMPTY_STRING);
+hashMap->put(">", stringUtil->EMPTY_STRING);
     
-hashMap.put(AbPathData::getInstance().SEPARATOR, stringUtil.EMPTY_STRING);
+hashMap->put("?", stringUtil->EMPTY_STRING);
     
-hashMap.put("~", stringUtil.EMPTY_STRING);
+hashMap->put(AbPathData::getInstance()->SEPARATOR, stringUtil->EMPTY_STRING);
     
-hashMap.put("`", stringUtil.EMPTY_STRING);
+hashMap->put("~", stringUtil->EMPTY_STRING);
+    
+hashMap->put("`", stringUtil->EMPTY_STRING);
     
 
 

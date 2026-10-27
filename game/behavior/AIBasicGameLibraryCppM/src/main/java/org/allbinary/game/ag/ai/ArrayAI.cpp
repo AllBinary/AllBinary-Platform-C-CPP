@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
@@ -58,9 +64,9 @@
         
 class ArrayAI: public BasicAI {
 
-    private: std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterfaceArray;
+    private: std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterfaceArray;
 
-public: ArrayAI(std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput) : BasicAI(ownerLayerInterface, gameInput){
+public: ArrayAI(std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterface, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -74,7 +80,7 @@ this->artificialIntelligenceInterfaceArray= artificialIntelligenceInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
 
     int32_t size = this->artificialIntelligenceInterfaceArray.size();;
     
@@ -92,7 +98,7 @@ this->artificialIntelligenceInterfaceArray[index].processAI(allBinaryLayerManage
 }
 
 
-    public: std::vector<ArtificialIntelligenceInterface> getArtificialIntelligenceInterface(){
+    public: std::vector<ArtificialIntelligenceInterface*> getArtificialIntelligenceInterface(){
 
 
 

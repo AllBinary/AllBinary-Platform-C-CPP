@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_COLOR_COLORCHOOSER_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_COLOR_COLORCHOOSER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,9 +45,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "JPanel.h"
-#include "JColorChooser.h"
-#include "BorderLayout.h"
+        #include "org/allbinary/graphics/j2me/workarea/color/JPanel.h"
+#include "org/allbinary/graphics/j2me/workarea/color/JColorChooser.h"
+#include "org/allbinary/graphics/j2me/workarea/color/BorderLayout.h"
 
 class ColorChooser: public javax::swing::JPanel {
 
@@ -49,7 +55,7 @@ public: ColorChooser();
 
     private: void initComponents();
 
-    private: javax::swing::JColorChooser jColorChooser1;
+    private: javax::swing::JColorChooser* jColorChooser1;
 
 };
 

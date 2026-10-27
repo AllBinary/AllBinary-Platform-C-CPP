@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -69,13 +75,13 @@
         
 class ShowVirtualKeyboardRunnable
             : public Object
-        : public Runnable {
+        , public Runnable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: Activity activity;
+    private: Activity* activity;
 
-public: ShowVirtualKeyboardRunnable(Activity activity){
+public: ShowVirtualKeyboardRunnable(Activity* activity){
 this->activity= activity;
     
 }
@@ -85,10 +91,10 @@ this->activity= activity;
 
         try {
             
-    InputMethodManager inputMethodManager = this->activity.getSystemService(Context::INPUT_METHOD_SERVICE) as unknown;;
+    InputMethodManager* inputMethodManager = dynamic_cast<InputMethodManager*>(this->activity->getSystemService(Context::INPUT_METHOD_SERVICE) as unknown);;
     
 
-    ViewCompositeInterface viewCompositeInterface = this->activity as unknown;;
+    ViewCompositeInterface* viewCompositeInterface = dynamic_cast<ViewCompositeInterface*>(this->activity as unknown);;
     
 
                         if(viewCompositeInterface == 
@@ -102,18 +108,18 @@ this->activity= activity;
                                     }
                                 
 
-    View view = viewCompositeInterface.getView();;
+    View* view = viewCompositeInterface->getView();;
     
-inputMethodManager.toggleSoftInputFromWindow(view.getWindowToken(), InputMethodManager::SHOW_FORCED, 0);
+inputMethodManager->toggleSoftInputFromWindow(view->getWindowToken(), InputMethodManager::SHOW_FORCED, 0);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
     
 }
 

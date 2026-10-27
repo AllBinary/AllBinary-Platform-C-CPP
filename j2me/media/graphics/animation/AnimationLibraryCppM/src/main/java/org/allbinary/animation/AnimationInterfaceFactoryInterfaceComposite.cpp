@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -45,17 +51,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnimationInterfaceFactoryInterface.h"
-#include "NullAnimationFactory.h"
-#include "Animation.h"
+        #include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#include "org/allbinary/animation/NullAnimationFactory.h"
+#include "org/allbinary/animation/Animation.h"
 
 class AnimationInterfaceFactoryInterfaceComposite
             : public Object
-        : public AnimationInterfaceFactoryInterface {
+        , public AnimationInterfaceFactoryInterface {
 
-    private: std::vector<AnimationInterfaceFactoryInterface> animationInterfaceFactoryInterfaceArray;
+    private: std::vector<AnimationInterfaceFactoryInterface*> animationInterfaceFactoryInterfaceArray;
 
-public: AnimationInterfaceFactoryInterfaceComposite(std::vector<AnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray){
+public: AnimationInterfaceFactoryInterfaceComposite(std::vector<AnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray){
 this->animationInterfaceFactoryInterfaceArray= basicAnimationInterfaceFactoryInterfaceArray;
     
 }
@@ -63,17 +69,17 @@ this->animationInterfaceFactoryInterfaceArray= basicAnimationInterfaceFactoryInt
 
                 //@Throws(Exception.constructor)
             
-    public: Animation getInstance(int32_t instanceId){
+    public: Animation* getInstance(int32_t instanceId){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullAnimationFactory::getFactoryInstance().getInstance(0);;
+                        return NullAnimationFactory::getFactoryInstance()->getInstance(0);;
     
 }
 
 
-    public: std::vector<AnimationInterfaceFactoryInterface> getAnimationInterfaceFactoryInterfaceArray(){
+    public: std::vector<AnimationInterfaceFactoryInterface*> getAnimationInterfaceFactoryInterfaceArray(){
 
 
 
@@ -83,7 +89,7 @@ this->animationInterfaceFactoryInterfaceArray= basicAnimationInterfaceFactoryInt
 }
 
 
-    public: void setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties* scaleProperties){
 }
 
 

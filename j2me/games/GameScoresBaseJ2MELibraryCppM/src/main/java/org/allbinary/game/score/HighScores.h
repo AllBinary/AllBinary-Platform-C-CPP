@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORES_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORES_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,14 +64,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HighScoresInterface.h"
-#include "HighScore.h"
+        #include "org/allbinary/game/score/HighScoresInterface.h"
+#include "org/allbinary/game/score/HighScore.h"
 
 class HighScores
             : public Object
-        : public HighScoresInterface {
+        , public HighScoresInterface {
 
-    private: BasicArrayList orderedHighScoresList = BasicArrayListD();
+    private: BasicArrayList* orderedHighScoresList = new BasicArrayListD();
 
     private: std::string name;
 
@@ -77,15 +83,15 @@ class HighScores
 
 public: HighScores(std::string name, std::string heading, std::string columnTwoHeading);
 
-    public: void setList(BasicArrayList orderedHighScoresList);
+    public: void setList(BasicArrayList* orderedHighScoresList);
 
-    public: BasicArrayList getList();
+    public: BasicArrayList* getList();
 
     public: std::string getName();
 
     public: int32_t getTotal();
 
-    public: void addHighScore(HighScore newHighScore);
+    public: void addHighScore(HighScore* newHighScore);
 
     public: std::string getHeading();
 
@@ -95,7 +101,7 @@ public: HighScores(std::string name, std::string heading, std::string columnTwoH
 
                 //@Throws(Exception.constructor)
             
-    public: bool isBestScore(HighScore newHighScore);
+    public: bool isBestScore(HighScore* newHighScore);
 
     public: std::string toString();
 

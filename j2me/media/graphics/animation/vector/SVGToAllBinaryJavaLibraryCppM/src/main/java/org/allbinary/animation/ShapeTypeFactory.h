@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_SHAPETYPEFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_SHAPETYPEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,15 +47,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShapeType.h"
+        #include "org/allbinary/animation/ShapeType.h"
 
 class ShapeTypeFactory
             : public Object
          {
 
-    private: static ShapeTypeFactory instance() { return ShapeTypeFactory(); }
+    private: static ShapeTypeFactory* instance() { static std::unique_ptr<ShapeTypeFactory> value(new ShapeTypeFactory()); return value.get(); }
 
-    public: static ShapeTypeFactory getInstance();
+    public: static ShapeTypeFactory* getInstance();
 
     public: const std::string KEY_LINE = "line";
 
@@ -59,11 +65,11 @@ class ShapeTypeFactory
 
     public: const std::string KEY_RECT = "rect";
 
-    public: const ShapeType LINE = ShapeType(KEY_LINE);
+    public: ShapeType* LINE = new ShapeType(KEY_LINE);
 
-    public: const ShapeType CIRCLE = ShapeType(KEY_CIRCLE);
+    public: ShapeType* CIRCLE = new ShapeType(KEY_CIRCLE);
 
-    public: const ShapeType RECTANGLE = ShapeType(KEY_RECTANGLE);
+    public: ShapeType* RECTANGLE = new ShapeType(KEY_RECTANGLE);
 
 };
 

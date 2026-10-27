@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,15 +58,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DamageableInterface.h"
+        #include "org/allbinary/game/combat/damage/DamageableInterface.h"
 
 class DamageUtil
             : public Object
          {
 
-    private: static DamageUtil instance() { return DamageUtil(); }
+    private: static DamageUtil* instance() { static std::unique_ptr<DamageUtil> value(new DamageUtil()); return value.get(); }
 
-    public: static DamageUtil getInstance(){
+    public: static DamageUtil* getInstance(){
 
 
 
@@ -70,7 +76,7 @@ class DamageUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     public: const std::string COLLIDE = "collide";
 
@@ -80,41 +86,41 @@ private: DamageUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: void process(DamageableInterface damageableInterface, DamageableInterface damageableInterface2){
-damageableInterface.damage(damageableInterface2.getDamage(0), 0);
+    public: void process(DamageableInterface* damageableInterface, DamageableInterface* damageableInterface2){
+damageableInterface->damage(damageableInterface2->getDamage(0), 0);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void debugDamage(CollidableCompositeLayer collidableInterfaceCompositeInterface1, CollidableCompositeLayer collidableInterfaceCompositeInterface){
+    public: void debugDamage(CollidableCompositeLayer* collidableInterfaceCompositeInterface1, CollidableCompositeLayer* collidableInterfaceCompositeInterface){
 
-    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = collidableInterfaceCompositeInterface;;
+    CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer = dynamic_cast<CollidableDestroyableDamageableLayer*>(collidableInterfaceCompositeInterface);;
     
 
-    int32_t damage = collidableDestroyableDamageableLayer.getDamage(0);;
+    int32_t damage = collidableDestroyableDamageableLayer->getDamage(0);;
     
 
                         if(damage > 20000)
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Collision ");
+stringBuffer->append("Collision ");
     
-stringBuffer.append(collidableInterfaceCompositeInterface1.toString());
+stringBuffer->append(collidableInterfaceCompositeInterface1->toString());
     
-stringBuffer.append(" with: ");
+stringBuffer->append(" with: ");
     
-stringBuffer.append(collidableInterfaceCompositeInterface.toString());
+stringBuffer->append(collidableInterfaceCompositeInterface->toString());
     
-stringBuffer.append(" damage: ");
+stringBuffer->append(" damage: ");
     
-stringBuffer.appendint(damage);
+stringBuffer->appendint(damage);
     
-this->logUtil.putF(stringBuffer.toString(), collidableInterfaceCompositeInterface1, this->COLLIDE);
+this->logUtil->putF(stringBuffer->toString(), collidableInterfaceCompositeInterface1, this->COLLIDE);
     
 
                                     }

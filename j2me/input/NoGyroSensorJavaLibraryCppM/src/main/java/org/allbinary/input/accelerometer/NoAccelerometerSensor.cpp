@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/input/gyro/AllBinaryOrientationSensor.h>
@@ -53,7 +59,7 @@ public: NoAccelerometerSensor(){
 
                 //@Throws(Exception.constructor)
             
-    public: Orientation getOrientation(){
+    public: Orientation* getOrientation(){
 
 
 

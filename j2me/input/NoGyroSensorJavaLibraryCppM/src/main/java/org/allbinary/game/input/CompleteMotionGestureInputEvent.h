@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTEVENT_H
         #define ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTEVENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/input/motion/gesture/MotionGestureInput.h>
@@ -59,25 +65,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CompleteMotionGestureInputInterface.h"
+        #include "org/allbinary/game/input/CompleteMotionGestureInputInterface.h"
 
 class CompleteMotionGestureInputEvent: public AllBinaryEventObject, public CompleteMotionGestureInputInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: MotionGestureInput motionGestureInput = TouchMotionGestureFactory::getInstance().NO_MOTION;
+    private: MotionGestureInput* motionGestureInput = TouchMotionGestureFactory::getInstance()->NO_MOTION;
 
-public: CompleteMotionGestureInputEvent(std::string name, MotionGestureInput motionGestureInput);
+public: CompleteMotionGestureInputEvent(std::string name, MotionGestureInput* motionGestureInput);
 
     protected: void setName(std::string name);
 
     public: std::string getName();
 
-    public: void setMotionGestureInput(MotionGestureInput motionGestureInput);
+    public: void setMotionGestureInput(MotionGestureInput* motionGestureInput);
 
-    public: MotionGestureInput getMotionGestureInput();
+    public: MotionGestureInput* getMotionGestureInput();
 
 };
 

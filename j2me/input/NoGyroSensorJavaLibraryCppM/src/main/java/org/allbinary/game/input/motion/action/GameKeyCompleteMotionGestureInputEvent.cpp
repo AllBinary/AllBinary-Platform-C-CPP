@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/input/CompleteMotionGestureInputEvent.h>
 
       
@@ -57,11 +63,11 @@
         
 class GameKeyCompleteMotionGestureInputEvent: public CompleteMotionGestureInputEvent, public GameKeyEventSourceInterface {
 
-    private: GameKey gameKey = GameKey::NULL_GAME_KEY;
+    private: GameKey* gameKey = GameKey::NULL_GAME_KEY;
 
-    private: GameKeyEvent gameKeyEvent = GameKeyEvent::NONE;
+    private: GameKeyEvent* gameKeyEvent = GameKeyEvent::NONE;
 
-public: GameKeyCompleteMotionGestureInputEvent(std::string name, MotionGestureInput motionGestureInput, InputToGameKeyMapping inputToGameKeyMapping) : CompleteMotionGestureInputEvent(name, motionGestureInput){
+public: GameKeyCompleteMotionGestureInputEvent(std::string name, MotionGestureInput* motionGestureInput, InputToGameKeyMapping* inputToGameKeyMapping) : CompleteMotionGestureInputEvent(name, motionGestureInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,13 +91,13 @@ public: GameKeyCompleteMotionGestureInputEvent(std::string name, MotionGestureIn
 }
 
 
-    protected: void setGameKeyEvent(GameKeyEvent gameKeyEvent){
+    protected: void setGameKeyEvent(GameKeyEvent* gameKeyEvent){
 this->gameKeyEvent= gameKeyEvent;
     
 }
 
 
-    public: GameKeyEvent getGameKeyEvent(){
+    public: GameKeyEvent* getGameKeyEvent(){
 
 
 
@@ -101,13 +107,13 @@ this->gameKeyEvent= gameKeyEvent;
 }
 
 
-    protected: void setGameKey(GameKey gameKey){
+    protected: void setGameKey(GameKey* gameKey){
 this->gameKey= gameKey;
     
 }
 
 
-    public: GameKey getGameKey(){
+    public: GameKey* getGameKey(){
 
 
 

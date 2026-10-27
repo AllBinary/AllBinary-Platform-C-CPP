@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LIFE_LIFEINTERFACE_H
         #define ORG_ALLBINARY_GAME_AG_LIFE_LIFEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,19 +48,19 @@
         
 class LifeInterface {
 
-    int16_t get();
+    public: virtual int16_t get() = 0;
 
-    void set(int16_t lives);
+    public: virtual void set(int16_t lives) = 0;
 
-    void reset();
+    public: virtual void reset() = 0;
 
-    void add(int16_t lives);
+    public: virtual void add(int16_t lives) = 0;
 
-    void deaths(int16_t lives);
+    public: virtual void deaths(int16_t lives) = 0;
 
-    int16_t getMaxlives();
+    public: virtual int16_t getMaxlives() = 0;
 
-    bool isAlive();
+    public: virtual bool isAlive() = 0;
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -47,19 +53,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GPoint.h"
+        #include "org/allbinary/graphics/GPoint.h"
 
 class Rectangle
             : public Object
          {
 
-    private: GPoint point;
+    private: GPoint* point;
 
     private: int32_t width;
 
     private: int32_t height;
 
-public: Rectangle(GPoint point, int32_t width, int32_t height){
+public: Rectangle(GPoint* point, int32_t width, int32_t height){
 this->point= point;
     
 this->width= width;
@@ -69,7 +75,7 @@ this->height= height;
 }
 
 
-    public: GPoint getPoint(){
+    public: GPoint* getPoint(){
 
 
 
@@ -79,7 +85,7 @@ this->height= height;
 }
 
 
-    public: void setPoint(GPoint point){
+    public: void setPoint(GPoint* point){
 this->point= point;
     
 }
@@ -90,7 +96,7 @@ this->point= point;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->point.getX() +this->width;
+                        return this->point->getX() +this->width;
     
 }
 
@@ -100,7 +106,7 @@ this->point= point;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->point.getY() +this->height;
+                        return this->point->getY() +this->height;
     
 }
 
@@ -139,35 +145,35 @@ this->height= height;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->getPoint().toString());
+stringBuffer->append(this->getPoint()->toString());
     
-stringBuffer.append(CommonSeps::getInstance().SPACE);
+stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-stringBuffer.append(CommonLabels::getInstance().WIDTH_LABEL);
+stringBuffer->append(CommonLabels::getInstance()->WIDTH_LABEL);
     
-stringBuffer.appendint(this->getWidth());
+stringBuffer->appendint(this->getWidth());
     
-stringBuffer.append(CommonSeps::getInstance().SPACE);
+stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-stringBuffer.append(CommonLabels::getInstance().HEIGHT_LABEL);
+stringBuffer->append(CommonLabels::getInstance()->HEIGHT_LABEL);
     
-stringBuffer.appendint(this->getHeight());
+stringBuffer->appendint(this->getHeight());
     
-stringBuffer.append(" MaxX: ");
+stringBuffer->append(" MaxX: ");
     
-stringBuffer.appendint(this->getMaxX());
+stringBuffer->appendint(this->getMaxX());
     
-stringBuffer.append(" MaxY: ");
+stringBuffer->append(" MaxY: ");
     
-stringBuffer.appendint(this->getMaxY());
+stringBuffer->appendint(this->getMaxY());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

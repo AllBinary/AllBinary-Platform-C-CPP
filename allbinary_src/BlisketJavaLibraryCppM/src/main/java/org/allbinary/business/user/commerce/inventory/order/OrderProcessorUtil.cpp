@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,15 +55,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Order.h"
+        #include "org/allbinary/business/user/commerce/inventory/order/Order.h"
 
 class OrderProcessorUtil
             : public Object
          {
 
-    private: static OrderProcessorUtil instance() { return OrderProcessorUtil(); }
+    private: static OrderProcessorUtil* instance() { static std::unique_ptr<OrderProcessorUtil> value(new OrderProcessorUtil()); return value.get(); }
 
-    public: static OrderProcessorUtil getInstance(){
+    public: static OrderProcessorUtil* getInstance(){
 
 
 
@@ -71,18 +77,18 @@ class OrderProcessorUtil
 
                 //@Throws(Exception.constructor)
             
-    public: std::string process(std::string userName, Order order){
+    public: std::string process(std::string userName, Order* order){
 
-    OrderItemsEntity orderItems = OrderItemsEntity();;
+    OrderItemsEntity* orderItems = new OrderItemsEntity();;
     
 
-    OrderHistoryEntity orderHistory = OrderHistoryEntity();;
+    OrderHistoryEntity* orderHistory = new OrderHistoryEntity();;
     
-order.setId(OrderIdGenerator().getNext());
+order->setId((new OrderIdGenerator())->getNext());
     
-orderItems.insert(userName, order);
+orderItems->insert(userName, order);
     
-orderHistory.insert(userName, order);
+orderHistory->insert(userName, order);
     
 
 

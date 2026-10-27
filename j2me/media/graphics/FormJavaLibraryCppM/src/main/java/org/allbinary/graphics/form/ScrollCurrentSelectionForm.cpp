@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -64,17 +70,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ScrollSelectionForm.h"
-#include "ItemIndexDx.h"
-#include "ItemPaintableFactory.h"
-#include "FormTypeFactory.h"
-//#include "VerticalFormProcessor.h"
-//#include "VerticalItemIndexDx.h"
-//#include "HorizontalFormProcessor.h"
-//#include "HorizontalItemIndexDx.h"
-//#include "TempHorizontalFormProcessor.h"
-//#include "TempHorizontalItemIndexDx.h"
-#include "FormType.h"
+        #include "org/allbinary/graphics/form/ScrollSelectionForm.h"
+#include "org/allbinary/graphics/form/ItemIndexDx.h"
+#include "org/allbinary/graphics/form/ItemPaintableFactory.h"
+#include "org/allbinary/graphics/form/FormTypeFactory.h"
+//#include "org/allbinary/graphics/form/VerticalFormProcessor.h"
+//#include "org/allbinary/graphics/form/VerticalItemIndexDx.h"
+//#include "org/allbinary/graphics/form/HorizontalFormProcessor.h"
+//#include "org/allbinary/graphics/form/HorizontalItemIndexDx.h"
+//#include "org/allbinary/graphics/form/TempHorizontalFormProcessor.h"
+//#include "org/allbinary/graphics/form/TempHorizontalItemIndexDx.h"
+#include "org/allbinary/graphics/form/FormType.h"
 
 class ScrollCurrentSelectionForm: public ScrollSelectionForm, public UpdateMyFontInterface {
 
@@ -83,9 +89,9 @@ class ScrollCurrentSelectionForm: public ScrollSelectionForm, public UpdateMyFon
 //inner= member=true isStatic=
 class TempHorizontalFormProcessor: public Processor {
 
-    private: ScrollCurrentSelectionForm scrollCurrentSelectionForm;
+    private: ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
 
-: TempHorizontalFormProcessor(ScrollCurrentSelectionForm scrollCurrentSelectionForm){
+: TempHorizontalFormProcessor(ScrollCurrentSelectionForm* scrollCurrentSelectionForm){
 this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
     
 }
@@ -94,9 +100,9 @@ this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
                 //@Throws(Exception.constructor)
             
     public: void process(){
-this->scrollCurrentSelectionForm.processTempHorizontalForm();
+this->scrollCurrentSelectionForm->processTempHorizontalForm();
     
-this->scrollCurrentSelectionForm.processor= Processor::getInstance();
+this->scrollCurrentSelectionForm->processor= Processor::getInstance();
     
 }
 
@@ -107,9 +113,9 @@ this->scrollCurrentSelectionForm.processor= Processor::getInstance();
 //inner= member=true isStatic=
 class HorizontalFormProcessor: public Processor {
 
-    private: ScrollCurrentSelectionForm scrollCurrentSelectionForm;
+    private: ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
 
-: HorizontalFormProcessor(ScrollCurrentSelectionForm scrollCurrentSelectionForm){
+: HorizontalFormProcessor(ScrollCurrentSelectionForm* scrollCurrentSelectionForm){
 this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
     
 }
@@ -118,9 +124,9 @@ this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
                 //@Throws(Exception.constructor)
             
     public: void process(){
-this->scrollCurrentSelectionForm.processHorizontalForm();
+this->scrollCurrentSelectionForm->processHorizontalForm();
     
-this->scrollCurrentSelectionForm.processor= Processor::getInstance();
+this->scrollCurrentSelectionForm->processor= Processor::getInstance();
     
 }
 
@@ -131,9 +137,9 @@ this->scrollCurrentSelectionForm.processor= Processor::getInstance();
 //inner= member=true isStatic=
 class VerticalFormProcessor: public Processor {
 
-    private: ScrollCurrentSelectionForm scrollCurrentSelectionForm;
+    private: ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
 
-: VerticalFormProcessor(ScrollCurrentSelectionForm scrollCurrentSelectionForm){
+: VerticalFormProcessor(ScrollCurrentSelectionForm* scrollCurrentSelectionForm){
 this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
     
 }
@@ -142,9 +148,9 @@ this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
                 //@Throws(Exception.constructor)
             
     public: void process(){
-this->scrollCurrentSelectionForm.processVerticalForm();
+this->scrollCurrentSelectionForm->processVerticalForm();
     
-this->scrollCurrentSelectionForm.processor= Processor::getInstance();
+this->scrollCurrentSelectionForm->processor= Processor::getInstance();
     
 }
 
@@ -155,9 +161,9 @@ this->scrollCurrentSelectionForm.processor= Processor::getInstance();
 //inner= member=true isStatic=
 class TempHorizontalItemIndexDx: public ItemIndexDx {
 
-    private: ScrollCurrentSelectionForm scrollCurrentSelectionForm;
+    private: ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
 
-: TempHorizontalItemIndexDx(ScrollCurrentSelectionForm scrollCurrentSelectionForm){
+: TempHorizontalItemIndexDx(ScrollCurrentSelectionForm* scrollCurrentSelectionForm){
 this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
     
 }
@@ -165,12 +171,12 @@ this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
+    public: int32_t getDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->scrollCurrentSelectionForm.getXTempHorizontalForm(index, item, dx, dy);;
+                        return this->scrollCurrentSelectionForm->getXTempHorizontalForm(index, item, dx, dy);;
     
 }
 
@@ -181,9 +187,9 @@ this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
 //inner= member=true isStatic=
 class HorizontalItemIndexDx: public ItemIndexDx {
 
-    private: ScrollCurrentSelectionForm scrollCurrentSelectionForm;
+    private: ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
 
-: HorizontalItemIndexDx(ScrollCurrentSelectionForm scrollCurrentSelectionForm){
+: HorizontalItemIndexDx(ScrollCurrentSelectionForm* scrollCurrentSelectionForm){
 this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
     
 }
@@ -191,12 +197,12 @@ this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
+    public: int32_t getDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->scrollCurrentSelectionForm.getXHorizontalForm(index, item, dx, dy);;
+                        return this->scrollCurrentSelectionForm->getXHorizontalForm(index, item, dx, dy);;
     
 }
 
@@ -207,9 +213,9 @@ this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
 //inner= member=true isStatic=
 class VerticalItemIndexDx: public ItemIndexDx {
 
-    private: ScrollCurrentSelectionForm scrollCurrentSelectionForm;
+    private: ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
 
-: VerticalItemIndexDx(ScrollCurrentSelectionForm scrollCurrentSelectionForm){
+: VerticalItemIndexDx(ScrollCurrentSelectionForm* scrollCurrentSelectionForm){
 this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
     
 }
@@ -217,12 +223,12 @@ this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
+    public: int32_t getDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->scrollCurrentSelectionForm.getXVerticalForm(index, item, dx, dy);;
+                        return this->scrollCurrentSelectionForm->getXVerticalForm(index, item, dx, dy);;
     
 }
 
@@ -230,13 +236,13 @@ this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
 };
 
             
-    protected: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
+    protected: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
 
-    protected: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
+    protected: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
 
-    private: Processor processor = Processor::getInstance();
+    private: Processor* processor = Processor::getInstance();
 
-    private: ItemIndexDx preItemIndexDx = ItemIndexDx::getInstance();
+    private: ItemIndexDx* preItemIndexDx = ItemIndexDx::getInstance();
 
     private: int32_t dx= 0;
 
@@ -244,7 +250,7 @@ this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
 
     private: int32_t maxWidth = 0;
 
-public: ScrollCurrentSelectionForm(std::string title, std::vector<ABCustomItem> items, ItemPaintableFactory formPaintableFactory, int32_t border, int32_t adjustedExtraBorder, bool moveForSmallScreen, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : ScrollSelectionForm(title, items, formPaintableFactory, border, adjustedExtraBorder, backgroundBasicColor, foregroundBasicColor){
+public: ScrollCurrentSelectionForm(std::string title, std::vector<ABCustomItem*> items, ItemPaintableFactory* formPaintableFactory, int32_t border, int32_t adjustedExtraBorder, bool moveForSmallScreen, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ScrollSelectionForm(title, items, formPaintableFactory, border, adjustedExtraBorder, backgroundBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -258,54 +264,54 @@ this->moveForSmallScreen= moveForSmallScreen;
 
                 //@Throws(Exception.constructor)
             
-    public: void init(Rectangle rectangle, FormType formType){
+    public: void init(Rectangle* rectangle, FormType* formType){
 super.init(rectangle, formType);
     
 
-    FormTypeFactory formTypeFactory = FormTypeFactory::getInstance();;
+    FormTypeFactory* formTypeFactory = FormTypeFactory::getInstance();;
     
 
-                        if(formType == formTypeFactory.TEMP_HORIZONTAL_FORM)
+                        if(formType == formTypeFactory->TEMP_HORIZONTAL_FORM)
                         
                                     {
-                                    this->processor= TempHorizontalFormProcessor(this);
+                                    this->processor= new TempHorizontalFormProcessor(this);
     
-this->preItemIndexDx= TempHorizontalItemIndexDx(this);
+this->preItemIndexDx= new TempHorizontalItemIndexDx(this);
     
 
                                     }
                                 
                              else 
-                        if(formType == formTypeFactory.HORIZONTAL_FORM)
+                        if(formType == formTypeFactory->HORIZONTAL_FORM)
                         
                                     {
-                                    this->processor= HorizontalFormProcessor(this);
+                                    this->processor= new HorizontalFormProcessor(this);
     
-this->preItemIndexDx= HorizontalItemIndexDx(this);
+this->preItemIndexDx= new HorizontalItemIndexDx(this);
     
 
                                     }
                                 
                              else 
-                        if(formType == formTypeFactory.VERTICAL_CENTER_FORM)
+                        if(formType == formTypeFactory->VERTICAL_CENTER_FORM)
                         
                                     {
-                                    this->processor= VerticalFormProcessor(this);
+                                    this->processor= new VerticalFormProcessor(this);
     
-this->preItemIndexDx= VerticalItemIndexDx(this);
+this->preItemIndexDx= new VerticalItemIndexDx(this);
     
 
                                     }
                                 
                              else 
-                        if(formType == formTypeFactory.NULL_FORM_TYPE)
+                        if(formType == formTypeFactory->NULL_FORM_TYPE)
                         
                                     {
                                     
                                     }
                                 
                         else {
-                            this->logUtil.putF(formTypeFactory.UNK, this, this->commonStrings.INIT);
+                            this->logUtil.putF(formTypeFactory->UNK, this, this->commonStrings.INIT);
     
 
                         }
@@ -315,7 +321,7 @@ this->myFontProcessor= this->updateMyFontProcessor;
 }
 
 
-    public: void updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics* graphics){
 this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
@@ -337,7 +343,7 @@ this->dy= this->y;
     int32_t totalWidth = 0;;
     
 
-    ABCustomItem item;;
+    ABCustomItem* item;;
     
 
 
@@ -348,7 +354,7 @@ this->dy= this->y;
         {
 item= this->get(index);
     
-totalWidth += item.getMinimumWidth() +this->border;
+totalWidth += item->getMinimumWidth() +this->border;
     
 }
 
@@ -386,7 +392,7 @@ this->dy= this->y +(this->rectangle.getHeight()>>1);
     int32_t size = this->size();;
     
 
-    ABCustomItem item2;;
+    ABCustomItem* item2;;
     
 
 
@@ -398,15 +404,15 @@ this->dy= this->y +(this->rectangle.getHeight()>>1);
 item2= this->get(index);
     
 
-                        if(this->maxWidth < item2.getMinimumWidth())
+                        if(this->maxWidth < item2->getMinimumWidth())
                         
                                     {
-                                    this->maxWidth= item2.getMinimumWidth();
+                                    this->maxWidth= item2->getMinimumWidth();
     
 
                                     }
                                 
-totalHeight += item2.getMinimumHeight() +this->border;
+totalHeight += item2->getMinimumHeight() +this->border;
     
 }
 
@@ -449,7 +455,7 @@ this->dx= ((this->rectangle.getWidth() -this->maxWidth) /2);
 }
 
 
-    private: int32_t getXTempHorizontalForm(int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
+    private: int32_t getXTempHorizontalForm(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
 
 
 
@@ -459,7 +465,7 @@ this->dx= ((this->rectangle.getWidth() -this->maxWidth) /2);
 }
 
 
-    private: int32_t getXHorizontalForm(int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
+    private: int32_t getXHorizontalForm(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
 
 
 
@@ -469,7 +475,7 @@ this->dx= ((this->rectangle.getWidth() -this->maxWidth) /2);
 }
 
 
-    private: int32_t getXVerticalForm(int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
+    private: int32_t getXVerticalForm(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
 
 
 
@@ -479,12 +485,12 @@ this->dx= ((this->rectangle.getWidth() -this->maxWidth) /2);
 }
 
 
-    protected: int32_t getDiffX(ABCustomItem item){
+    protected: int32_t getDiffX(ABCustomItem* item){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ((this->maxWidth -item.getMinimumWidth())>>1);
+                        return ((this->maxWidth -item->getMinimumWidth())>>1);
     
 }
 
@@ -509,10 +515,10 @@ this->dx= ((this->rectangle.getWidth() -this->maxWidth) /2);
 }
 
 
-    public: void paint(Graphics graphics){
+    public: void paint(Graphics* graphics){
 
         try {
-            this->processor.process();
+            this->processor->process();
     
 
     int32_t delta = 0;;
@@ -527,10 +533,10 @@ this->dx= ((this->rectangle.getWidth() -this->maxWidth) /2);
     int32_t size = this->size();;
     
 
-    FormTypeFactory formTypeFactory = FormTypeFactory::getInstance();;
+    FormTypeFactory* formTypeFactory = FormTypeFactory::getInstance();;
     
 
-    ABCustomItem item;;
+    ABCustomItem* item;;
     
 
 
@@ -542,7 +548,7 @@ this->dx= ((this->rectangle.getWidth() -this->maxWidth) /2);
 item= this->get(index);
     
 
-    int32_t diffX = this->preItemIndexDx.getDx(index, item, this->dx, this->dy);;
+    int32_t diffX = this->preItemIndexDx->getDx(index, item, this->dx, this->dy);;
     
 
                         if(index == this->getSelectedIndex())
@@ -564,14 +570,14 @@ this->paintable.paint(graphics, index, deltaX +diffX, deltaY);
                         }
                             
 
-                        if(this->formType == formTypeFactory.TEMP_HORIZONTAL_FORM)
+                        if(this->formType == formTypeFactory->TEMP_HORIZONTAL_FORM)
                         
                                     {
                                     
                                     }
                                 
                              else 
-                        if(this->formType == formTypeFactory.HORIZONTAL_FORM)
+                        if(this->formType == formTypeFactory->HORIZONTAL_FORM)
                         
                                     {
                                     deltaX= delta;
@@ -580,7 +586,7 @@ this->paintable.paint(graphics, index, deltaX +diffX, deltaY);
                                     }
                                 
                              else 
-                        if(this->formType == formTypeFactory.VERTICAL_CENTER_FORM)
+                        if(this->formType == formTypeFactory->VERTICAL_CENTER_FORM)
                         
                                     {
                                     deltaY= delta;
@@ -592,7 +598,7 @@ this->paintable.paint(graphics, index, deltaX +diffX, deltaY);
                             
 
 
-                            throw Exception(formTypeFactory.UNK);
+                            throw new Exception(formTypeFactory->UNK);
                     
 
                         }
@@ -601,9 +607,9 @@ this->paintable.paint(graphics, index, deltaX +diffX, deltaY);
 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->canvasStrings.PAINT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->canvasStrings.PAINT, &e);
     
 }
 

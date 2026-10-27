@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYENTITYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,7 +55,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentGatewayEntity.h"
+        #include "org/allbinary/data/tables/user/commerce/money/payment/gateway/PaymentGatewayEntity.h"
 
 class PaymentGatewayEntityFactory
             : public Object
@@ -57,7 +63,7 @@ class PaymentGatewayEntityFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static PaymentGatewayEntity getInstance();
+    public: static PaymentGatewayEntity* getInstance();
 
 private: PaymentGatewayEntityFactory();
 

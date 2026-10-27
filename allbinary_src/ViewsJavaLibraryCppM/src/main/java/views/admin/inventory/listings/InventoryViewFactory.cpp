@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,7 +61,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InventoryViewSearchInterface.h"
+        #include "views/admin/inventory/listings/InventoryViewSearchInterface.h"
 
 class InventoryViewFactory
             : public Object
@@ -63,9 +69,9 @@ class InventoryViewFactory
 
                 //@Throws(LicensingException.constructor)
             
-    public: static InventoryViewSearchInterface getInstance(SearchRequest searchRequest){
+    public: static InventoryViewSearchInterface* getInstance(SearchRequest* searchRequest){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
         try {
@@ -73,20 +79,20 @@ class InventoryViewFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InventorySearch(searchRequest);
+                        return new InventorySearch(searchRequest);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil.put(commonStrings.EXCEPTION, "InventoryViewFactory", "getInstance(SearchRequest)", e);
+logUtil->put(commonStrings->EXCEPTION, "InventoryViewFactory", "getInstance(SearchRequest)", &e);
     
 
                                     }

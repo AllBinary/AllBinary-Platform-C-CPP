@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -56,59 +62,59 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Group.h"
-#include "GroupCommonFactory.h"
+        #include "org/allbinary/game/identification/Group.h"
+#include "org/allbinary/game/identification/GroupCommonFactory.h"
 
 class CompositeGroup
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: Group groupInterface;
+    private: Group* groupInterface;
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
-public: CompositeGroup(Group groupInterface){
+public: CompositeGroup(Group* groupInterface){
 this->groupInterface= groupInterface;
     
 }
 
 
     public: void clear(){
-this->list.clear();
+this->list->clear();
     
 }
 
 
-    public: void add(Group groupInterface){
+    public: void add(Group* groupInterface){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
-    
-
-    GroupCommonFactory groupCommonFactory = GroupCommonFactory::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    GroupCommonFactory* groupCommonFactory = GroupCommonFactory::getInstance();;
     
-stringBuffer.append(groupCommonFactory.ADDING_LABEL);
+
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(groupInterface.toString());
+stringBuffer->append(groupCommonFactory->ADDING_LABEL);
     
-stringBuffer.append(groupCommonFactory.TO_LABEL);
+stringBuffer->append(groupInterface->toString());
     
-stringBuffer.append(StringUtil::getInstance().toString(this->groupInterface));
+stringBuffer->append(groupCommonFactory->TO_LABEL);
     
-this->logUtil.putF(stringBuffer.toString(), this, commonStrings.ADD);
+stringBuffer->append(StringUtil::getInstance()->toString(this->groupInterface));
     
-this->list.add(groupInterface);
+this->logUtil->putF(stringBuffer->toString(), this, commonStrings->ADD);
+    
+this->list->add(groupInterface);
     
 }
 
 
-    public: bool isInGroup(Group groupInterface){
+    public: bool isInGroup(Group* groupInterface){
 
-                        if(this->list.contains(groupInterface))
+                        if(this->list->contains(groupInterface))
                         
                                     {
                                     
@@ -133,7 +139,7 @@ this->list.add(groupInterface);
 }
 
 
-    public: Group getGroup(){
+    public: Group* getGroup(){
 
 
 

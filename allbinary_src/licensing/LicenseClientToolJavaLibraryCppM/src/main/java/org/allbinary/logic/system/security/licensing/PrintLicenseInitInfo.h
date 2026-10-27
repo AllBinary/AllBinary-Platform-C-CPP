@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,7 +73,7 @@ class PrintLicenseInitInfo
             : public Object
          {
 
-    public: static const std::string PATH = "G:\\mnt\\bc\\mydev\\work\\allbinary_src\\licensing\\data\\";
+    public: static inline const std::string PATH = "G:\\mnt\\bc\\mydev\\work\\allbinary_src\\licensing\\data\\";
 
                 //@Throws(Exception.constructor)
             
@@ -77,7 +83,7 @@ public: PrintLicenseInitInfo(std::vector<std::string> options);
 
                 //@Throws(Exception.constructor)
             
-    public: LicenseInitInfo getLicenseInitInfo();
+    public: LicenseInitInfo* getLicenseInitInfo();
 
     public: void printInitInfo();
 

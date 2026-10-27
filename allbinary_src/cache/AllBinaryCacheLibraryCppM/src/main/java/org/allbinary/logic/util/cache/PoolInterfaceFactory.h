@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLINTERFACEFACTORY_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLINTERFACEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -43,10 +49,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PoolInterface.h"
-#include "CacheableInterfaceFactoryInterface.h"
-#include "PoolType.h"
-#include "CachePolicy.h"
+        #include "org/allbinary/logic/util/cache/PoolInterface.h"
+#include "org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h"
+#include "org/allbinary/logic/util/cache/PoolType.h"
+#include "org/allbinary/logic/util/cache/CachePolicy.h"
 
 class PoolInterfaceFactory
             : public Object
@@ -54,7 +60,7 @@ class PoolInterfaceFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static PoolInterface getInstance(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface, PoolType poolType, CachePolicy cachePolicy);
+    public: static PoolInterface* getInstance(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface, PoolType* poolType, CachePolicy* cachePolicy);
 
 private: PoolInterfaceFactory();
 

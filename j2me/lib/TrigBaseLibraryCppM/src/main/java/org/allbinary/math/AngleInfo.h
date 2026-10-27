@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MATH_ANGLEINFO_H
         #define ORG_ALLBINARY_MATH_ANGLEINFO_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -59,25 +65,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AngleIncrementInfo.h"
-#include "AngleIncrementInfoFactory.h"
-#include "FrameUtil.h"
+        #include "org/allbinary/math/AngleIncrementInfo.h"
+#include "org/allbinary/math/AngleIncrementInfoFactory.h"
+#include "org/allbinary/math/FrameUtil.h"
 
 class AngleInfo
             : public Object
          {
 
-    public: static AngleInfo getInstance(int16_t angleIncrement);
+    public: static AngleInfo* getInstance(int16_t angleIncrement);
 
-    private: static const std::string ANGLE = "Angle: ";
+    private: static inline const std::string ANGLE = "Angle: ";
 
-    private: AngleIncrementInfo angleIncrementInfo;
+    private: AngleIncrementInfo* angleIncrementInfo;
 
     private: int16_t angle = 0;
 
-private: AngleInfo(AngleIncrementInfo angleIncrementInfo);
+private: AngleInfo(AngleIncrementInfo* angleIncrementInfo);
 
-    private: const FrameUtil frameUtil = FrameUtil::getInstance();
+    private: FrameUtil* frameUtil = FrameUtil::getInstance();
 
     public: void adjustAngle(int32_t frame);
 
@@ -85,7 +91,7 @@ private: AngleInfo(AngleIncrementInfo angleIncrementInfo);
 
     public: void setAngle(int16_t angle);
 
-    public: AngleIncrementInfo getAngleIncrementInfo();
+    public: AngleIncrementInfo* getAngleIncrementInfo();
 
     public: std::string toString();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/commerce/inventory/basket/BasketData.h>
@@ -68,9 +74,9 @@
         
 class MiniBasketView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: MiniBasketView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+public: MiniBasketView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -82,44 +88,44 @@ public: MiniBasketView(TransformInfoInterface transformInfoInterface) : HttpStor
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
         try {
             
-    BasketInterface basketInterface = this->getWeblisketSession().getOrder().getBasket();;
+    BasketInterface* basketInterface = this->getWeblisketSession()->getOrder()->getBasket();;
     
 
-    Node basketNode = document.createElement(BasketData::BASKET);;
+    Node* basketNode = document->createElement(BasketData::BASKET);;
     
 
-    Node totalNumberNode = document.createElement(SearchData::TOTAL_NUMBER_ITEMS);;
+    Node* totalNumberNode = document->createElement(SearchData::TOTAL_NUMBER_ITEMS);;
     
 
-    Node totalNumberTextNode = document.createTextNode(basketInterface.getNumberOfItems().toString());;
+    Node* totalNumberTextNode = document->createTextNode(basketInterface->getNumberOfItems()->toString());;
     
-totalNumberNode.appendChild(totalNumberTextNode);
-    
-
-    Node totalWeightNode = document.createElement(BasketData::TOTALWEIGHT);;
+totalNumberNode->appendChild(totalNumberTextNode);
     
 
-    Node totalWeightTextNode = document.createTextNode(basketInterface.getTotalWeight().toString());;
-    
-totalWeightNode.appendChild(totalWeightTextNode);
+    Node* totalWeightNode = document->createElement(BasketData::TOTALWEIGHT);;
     
 
-    Node subTotalNode = document.createElement(BasketData::SUBTOTAL);;
+    Node* totalWeightTextNode = document->createTextNode(basketInterface->getTotalWeight()->toString());;
+    
+totalWeightNode->appendChild(totalWeightTextNode);
     
 
-    Node subTotalTextNode = document.createTextNode(basketInterface.getSubTotal().toString());;
+    Node* subTotalNode = document->createElement(BasketData::SUBTOTAL);;
     
-subTotalNode.appendChild(subTotalTextNode);
+
+    Node* subTotalTextNode = document->createTextNode(basketInterface->getSubTotal()->toString());;
     
-basketNode.appendChild(totalNumberNode);
+subTotalNode->appendChild(subTotalTextNode);
     
-basketNode.appendChild(totalWeightNode);
+basketNode->appendChild(totalNumberNode);
     
-basketNode.appendChild(subTotalNode);
+basketNode->appendChild(totalWeightNode);
+    
+basketNode->appendChild(subTotalNode);
     
 
 
@@ -129,13 +135,13 @@ basketNode.appendChild(subTotalNode);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XSLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XSLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, "toXmlNode", &e);
     
 
                                     }
@@ -151,7 +157,7 @@ basketNode.appendChild(subTotalNode);
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this);
+this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     
 }
 
@@ -171,13 +177,13 @@ this->addDomNodeInterface(this);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }

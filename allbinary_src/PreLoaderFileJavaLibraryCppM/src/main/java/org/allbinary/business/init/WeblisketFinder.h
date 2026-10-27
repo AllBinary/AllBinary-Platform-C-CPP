@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -79,27 +85,27 @@ class WeblisketFinder
             : public Object
          {
 
-    private: static WeblisketFinder instance() { return WeblisketFinder(); }
+    private: static WeblisketFinder* instance() { static std::unique_ptr<WeblisketFinder> value(new WeblisketFinder()); return value.get(); }
 
-    public: static WeblisketFinder getInstance();
+    public: static WeblisketFinder* getInstance();
 
-    private: static const std::string KEY = "installerdata.dat";
+    private: static inline const std::string KEY = "installerdata.dat";
 
                 //@Throws(Exception.constructor)
             
     public: static void main(std::vector<std::string> args);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const SubDirectory subDirectory = SubDirectory::getInstance();
+    private: SubDirectory* subDirectory = SubDirectory::getInstance();
 
 private: WeblisketFinder();
 
-    public: BasicArrayList findAll(std::string path);
+    public: BasicArrayList* findAll(std::string path);
 
-    public: std::string getInstallationPath(AbFile file);
+    public: std::string getInstallationPath(AbFile* file);
 
 };
 

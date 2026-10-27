@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h>
@@ -52,15 +58,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GenericModuleFactory.h"
+        #include "org/allbinary/input/automation/module/generic/GenericModuleFactory.h"
 
 class InputAutomationGenericModuleServiceFactory: public InputAutomationModuleServiceFactory {
 
-    private: static InputAutomationGenericModuleServiceFactory inputAutomationGenericModuleServiceFactory = InputAutomationGenericModuleServiceFactory();
+    private: static InputAutomationGenericModuleServiceFactory* inputAutomationGenericModuleServiceFactory() { static std::unique_ptr<InputAutomationGenericModuleServiceFactory> value(new InputAutomationGenericModuleServiceFactory()); return value.get(); }
 
-    public: static InputAutomationGenericModuleServiceFactory getInstance();
+    public: static InputAutomationGenericModuleServiceFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 public: InputAutomationGenericModuleServiceFactory();
 

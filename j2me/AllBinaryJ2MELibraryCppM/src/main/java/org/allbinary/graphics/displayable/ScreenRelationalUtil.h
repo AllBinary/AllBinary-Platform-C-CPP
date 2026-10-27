@@ -9,6 +9,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -32,17 +38,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DisplayInfoSingleton.h"
+        #include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
 
 class ScreenRelationalUtil
             : public Object
          {
 
-    private: static ScreenRelationalUtil instance() { return ScreenRelationalUtil(); }
+    private: static ScreenRelationalUtil* instance() { static std::unique_ptr<ScreenRelationalUtil> value(new ScreenRelationalUtil()); return value.get(); }
 
-    public: static ScreenRelationalUtil getInstance();
+    public: static ScreenRelationalUtil* getInstance();
 
-    public: float getScaleImage(Image image);
+    public: float getScaleImage(Image* image);
 
     public: float getScaleWH(int32_t aWidth, int32_t aHeight);
 

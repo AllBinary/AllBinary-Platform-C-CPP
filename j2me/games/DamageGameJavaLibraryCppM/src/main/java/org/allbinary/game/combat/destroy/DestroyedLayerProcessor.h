@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYEDLAYERPROCESSOR_H
         #define ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYEDLAYERPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/combat/destroy/event/DestroyEventCircularStaticPool.h>
@@ -74,17 +82,17 @@
         
 class DestroyedLayerProcessor: public BasicLayerProcessor {
 
-    private: static BasicLayerProcessor DESTROYED_LAYER_PROCESSOR = BasicLayerProcessor::NULL_LAYER_PROCESSOR;
+    private: static inline BasicLayerProcessor* DESTROYED_LAYER_PROCESSOR = BasicLayerProcessor::NULL_LAYER_PROCESSOR;
 
     public: static void init();
 
-    public: static BasicLayerProcessor getInstance();
+    public: static BasicLayerProcessor* getInstance();
 
 private: DestroyedLayerProcessor();
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayerManager allBinaryLayerManager);
+    public: void process(AllBinaryLayerManager* allBinaryLayerManager);
 
 };
 

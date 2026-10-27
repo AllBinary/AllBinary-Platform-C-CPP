@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLFEATUREFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLFEATUREFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -41,61 +47,61 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLFeature.h"
+        #include "org/allbinary/graphics/opengles/OpenGLFeature.h"
 
 class OpenGLFeatureFactory
             : public Object
          {
 
-    private: static OpenGLFeatureFactory instance() { return OpenGLFeatureFactory(); }
+    private: static OpenGLFeatureFactory* instance() { static std::unique_ptr<OpenGLFeatureFactory> value(new OpenGLFeatureFactory()); return value.get(); }
 
-    public: static OpenGLFeatureFactory getInstance();
+    public: static OpenGLFeatureFactory* getInstance();
 
 private: OpenGLFeatureFactory();
 
-    public: const OpenGLFeature OPENGL_OPTIONS = OpenGLFeature("OpenGL Options");
+    public: OpenGLFeature* OPENGL_OPTIONS = new OpenGLFeature("OpenGL Options");
 
-    public: const OpenGLFeature OPENGL = OpenGLFeature("OpenGL");
+    public: OpenGLFeature* OPENGL = new OpenGLFeature("OpenGL");
 
-    public: const OpenGLFeature OPENGL_SURFACE_VIEW = OpenGLFeature("GLSurfaceView");
+    public: OpenGLFeature* OPENGL_SURFACE_VIEW = new OpenGLFeature("GLSurfaceView");
 
-    public: const OpenGLFeature OPENGL_2D = OpenGLFeature("OpenGL 2D");
+    public: OpenGLFeature* OPENGL_2D = new OpenGLFeature("OpenGL 2D");
 
-    public: const OpenGLFeature OPENGL_3D = OpenGLFeature("OpenGL 3D");
+    public: OpenGLFeature* OPENGL_3D = new OpenGLFeature("OpenGL 3D");
 
-    public: const OpenGLFeature OPENGL_2D_AND_3D = OpenGLFeature("OpenGL 2D/3D");
+    public: OpenGLFeature* OPENGL_2D_AND_3D = new OpenGLFeature("OpenGL 2D/3D");
 
-    public: const OpenGLFeature OPENGL_AUTO_SELECT = OpenGLFeature("Auto Select");
+    public: OpenGLFeature* OPENGL_AUTO_SELECT = new OpenGLFeature("Auto Select");
 
-    public: const OpenGLFeature OPENGL_MINIMUM = OpenGLFeature("Minimum");
+    public: OpenGLFeature* OPENGL_MINIMUM = new OpenGLFeature("Minimum");
 
-    public: const OpenGLFeature OPENGL_AS_GAME_THREAD = OpenGLFeature("As game thread");
+    public: OpenGLFeature* OPENGL_AS_GAME_THREAD = new OpenGLFeature("As game thread");
 
-    public: const OpenGLFeature OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS = OpenGLFeature("As different threads");
+    public: OpenGLFeature* OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS = new OpenGLFeature("As different threads");
 
-    public: const OpenGLFeature IMAGE_COLOR_DEPTH_4444 = OpenGLFeature("4444");
+    public: OpenGLFeature* IMAGE_COLOR_DEPTH_4444 = new OpenGLFeature("4444");
 
-    public: const OpenGLFeature IMAGE_COLOR_DEPTH_8888 = OpenGLFeature("8888");
+    public: OpenGLFeature* IMAGE_COLOR_DEPTH_8888 = new OpenGLFeature("8888");
 
-    public: const OpenGLFeature IMAGE_COLOR_DEPTH_565 = OpenGLFeature("565");
+    public: OpenGLFeature* IMAGE_COLOR_DEPTH_565 = new OpenGLFeature("565");
 
-    public: const OpenGLFeature OPENGL_COLOR_DEPTH_4444 = OpenGLFeature("4444");
+    public: OpenGLFeature* OPENGL_COLOR_DEPTH_4444 = new OpenGLFeature("4444");
 
-    public: const OpenGLFeature OPENGL_COLOR_DEPTH_8888 = OpenGLFeature("8888");
+    public: OpenGLFeature* OPENGL_COLOR_DEPTH_8888 = new OpenGLFeature("8888");
 
-    public: const OpenGLFeature OPENGL_COLOR_DEPTH_565 = OpenGLFeature("565");
+    public: OpenGLFeature* OPENGL_COLOR_DEPTH_565 = new OpenGLFeature("565");
 
-    public: const OpenGLFeature OPENGL_DRAW_TEXTURE = OpenGLFeature("GL_OES_draw_texture");
+    public: OpenGLFeature* OPENGL_DRAW_TEXTURE = new OpenGLFeature("GL_OES_draw_texture");
 
-    public: const OpenGLFeature OPENGL_VERTEX_BUFFER_OBJECT = OpenGLFeature("vertex_buffer_object");
+    public: OpenGLFeature* OPENGL_VERTEX_BUFFER_OBJECT = new OpenGLFeature("vertex_buffer_object");
 
-    public: const OpenGLFeature OPENGL_SIMPLE_OBJECT3D_PROCESSOR = OpenGLFeature("Simple Object3d Processor");
+    public: OpenGLFeature* OPENGL_SIMPLE_OBJECT3D_PROCESSOR = new OpenGLFeature("Simple Object3d Processor");
 
-    public: const OpenGLFeature OPENGL_COMPLEX_OBJECT3D_PROCESSOR = OpenGLFeature("Complex Object3d Processor");
+    public: OpenGLFeature* OPENGL_COMPLEX_OBJECT3D_PROCESSOR = new OpenGLFeature("Complex Object3d Processor");
 
-    public: const OpenGLFeature OPENGL_SIMPLE_TEXTURE_PROCESSOR = OpenGLFeature("Simple Texture Processor");
+    public: OpenGLFeature* OPENGL_SIMPLE_TEXTURE_PROCESSOR = new OpenGLFeature("Simple Texture Processor");
 
-    public: const OpenGLFeature OPENGL_COMPLEX_TEXTURE_PROCESSOR = OpenGLFeature("Complex Texture Processor");
+    public: OpenGLFeature* OPENGL_COMPLEX_TEXTURE_PROCESSOR = new OpenGLFeature("Complex Texture Processor");
 
 };
 

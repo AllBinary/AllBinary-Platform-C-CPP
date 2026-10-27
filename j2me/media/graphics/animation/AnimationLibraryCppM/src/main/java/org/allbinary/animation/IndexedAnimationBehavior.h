@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONBEHAVIOR_H
         #define ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONBEHAVIOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,7 +45,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnimationBehavior.h"
+        #include "org/allbinary/animation/AnimationBehavior.h"
 
 class IndexedAnimationBehavior: public AnimationBehavior {
 

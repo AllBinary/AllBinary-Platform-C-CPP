@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKROADSGEOGRAPHICMAPCELLHISTORYFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKROADSGEOGRAPHICMAPCELLHISTORYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>
@@ -49,9 +55,9 @@ class RaceTrackRoadsGeographicMapCellHistoryFactory
             : public Object
          {
 
-    private: static GeographicMapCellHistory geographicMapCellHistory = GeographicMapCellHistory();
+    private: static GeographicMapCellHistory* geographicMapCellHistory() { static std::unique_ptr<GeographicMapCellHistory> value(new GeographicMapCellHistory()); return value.get(); }
 
-    public: static GeographicMapCellHistory getInstance();
+    public: static GeographicMapCellHistory* getInstance();
 
 private: RaceTrackRoadsGeographicMapCellHistoryFactory();
 

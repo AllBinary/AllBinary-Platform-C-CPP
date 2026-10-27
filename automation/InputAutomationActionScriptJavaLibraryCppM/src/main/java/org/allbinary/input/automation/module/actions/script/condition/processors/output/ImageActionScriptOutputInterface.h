@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGEACTIONSCRIPTOUTPUTINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGEACTIONSCRIPTOUTPUTINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -39,24 +45,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProfileActionScriptOutputInterface.h"
-#include "ImageTypes.h"
+        #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ProfileActionScriptOutputInterface.h"
+#include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageTypes.h"
 
 class ImageActionScriptOutputInterface: public ProfileActionScriptOutputInterface {
 
-    ImageTypes getImageTypes();
+    public: virtual ImageTypes* getImageTypes() = 0;
 
-    void setImageTypes(ImageTypes imageTypes);
+    public: virtual void setImageTypes(ImageTypes* imageTypes) = 0;
 
-    bool isSaved();
+    public: virtual bool isSaved() = 0;
 
-    void setSaved(bool saved);
+    public: virtual void setSaved(bool saved) = 0;
 
-    bool isDisplay();
+    public: virtual bool isDisplay() = 0;
 
-    void setDisplay(bool display);
+    public: virtual void setDisplay(bool display) = 0;
 
-    void log();
+    public: virtual void log() = 0;
 
 };
 

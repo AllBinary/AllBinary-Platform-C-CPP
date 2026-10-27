@@ -21,6 +21,12 @@
         #ifndef VIEWS_HTTPCOMPONENTVIEW_H
         #define VIEWS_HTTPCOMPONENTVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -92,33 +98,33 @@
         
 class HttpComponentView: public TransformInfoHttpComposite, public TransformInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    protected: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: BasicArrayList domNodeInterfaceVector;
+    private: BasicArrayList* domNodeInterfaceVector;
 
-    private: TransformDocumentInterface transformDocumentInterface;
+    private: TransformDocumentInterface* transformDocumentInterface;
 
-public: HttpComponentView(TransformInfoInterface transformInfoInterface);
+public: HttpComponentView(TransformInfoInterface* transformInfoInterface);
 
     public: int32_t NO_TYPE = 0;
 
     public: int32_t getTypeId();
 
-    public: TransformDocumentInterface getTransformDocumentInterface();
+    public: TransformDocumentInterface* getTransformDocumentInterface();
 
-    public: void setTransformDocumentInterface(TransformDocumentInterface transformDocumentInterface);
+    public: void setTransformDocumentInterface(TransformDocumentInterface* transformDocumentInterface);
 
-    public: void addDomNodeInterface(DomNodeInterface domNodeInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public: Document toXmlDoc();
+    public: void addDomNodeInterface(DomNodeInterface* domNodeInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Document getDoc();
+    public: Document* toXmlDoc();
+
+                //@Throws(Exception.constructor)
+            
+    public: Document* getDoc();
 
                 //@Throws(Exception.constructor)
             

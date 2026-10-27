@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -87,13 +93,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StreetAddressData.h"
+        #include "org/allbinary/business/user/address/StreetAddressData.h"
 
 class StreetAddress
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string id;
 
@@ -113,15 +119,15 @@ class StreetAddress
 
 public: StreetAddress();
 
-public: StreetAddress(Node node);
+public: StreetAddress(Node* node);
 
-public: StreetAddress(StreetAddress streetAddress);
+public: StreetAddress(StreetAddress* streetAddress);
 
-public: StreetAddress(HttpServletRequest request);
+public: StreetAddress(HttpServletRequest* request);
 
 public: StreetAddress(std::string name, std::string street, std::string city, std::string state, std::string code, std::string country);
 
-public: StreetAddress(HashMap<Object*, Object*> address);
+public: StreetAddress(HashMap<Object*, Object*>* address);
 
     private: void log();
 
@@ -155,21 +161,21 @@ public: StreetAddress(HashMap<Object*, Object*> address);
 
     public: bool isDefault();
 
-    public: Boolean isEmpty();
+    public: bool isEmpty();
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string validationInfo();
 
-    private: Document toValidationInfoDoc();
+    private: Document* toValidationInfoDoc();
 
-    private: Node toValidationInfoNode(Document document);
+    private: Node* toValidationInfoNode(Document* document);
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
 };
 

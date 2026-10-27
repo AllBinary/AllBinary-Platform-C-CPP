@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -60,20 +66,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NumberStringHud.h"
+        #include "org/allbinary/game/ag/layer/hud/basic/NumberStringHud.h"
 
 class NumberStringHudFactory
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance();
+    private: static inline Object* instance = NullUtil::getInstance();
 
-    public: static NumberStringHudFactory getInstance(){
+    public: static NumberStringHudFactory* getInstance(){
 
-                        if(NumberStringHudFactory::instance() == NullUtil::getInstance())
+                        if(NumberStringHudFactory::instance == NullUtil::getInstance())
                         
                                     {
-                                    NumberStringHudFactory::instance= NumberStringHudFactory();
+                                    NumberStringHudFactory::instance= new NumberStringHudFactory();
     
 
                                     }
@@ -82,43 +88,43 @@ class NumberStringHudFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NumberStringHudFactory::instance();
+                        return dynamic_cast<NumberStringHudFactory*>(NumberStringHudFactory::instance);
     
 }
 
 
-    public: NumberStringHud createHud(){
+    public: NumberStringHud* createHud(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NumberStringHud(StringUtil::getInstance().EMPTY_STRING, 9, BasicHudFactory::getInstance().ABSOLUTE, 1, 0, BasicColorFactory::getInstance().NULL_COLOR);
+                        return new NumberStringHud(StringUtil::getInstance()->EMPTY_STRING, 9, BasicHudFactory::getInstance()->ABSOLUTE, 1, 0, BasicColorFactory::getInstance()->NULL_COLOR);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
+logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &e);
     
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 }
 
 
-    public: const NumberStringHud NULL_NUMBER_STRING_HUD = this->createHud();
+    public: NumberStringHud* NULL_NUMBER_STRING_HUD = this->createHud();
 
 };
 

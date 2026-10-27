@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -57,11 +63,11 @@ class ShaderManager
             : public Object
          {
 
-    private: static ShaderManager instance() { return ShaderManager(); }
+    private: static ShaderManager* instance() { static std::unique_ptr<ShaderManager> value(new ShaderManager( -1,  -1)); return value.get(); }
 
-    public: static ShaderManager getInstance();
+    public: static ShaderManager* getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
     protected: const std::string LOAD_SHADER = "loadShader";
 
@@ -73,9 +79,9 @@ class ShaderManager
 
 public: ShaderManager(int32_t GL_VERTEX_SHADER, int32_t GL_FRAGMENT_SHADER);
 
-    public: int32_t load(GL10 gl, std::string resource, std::vector<std::string> shaderAsStringArray, int32_t shaderType);
+    public: int32_t load(GL10* gl, std::string resource, std::vector<std::string> shaderAsStringArray, int32_t shaderType);
 
-    public: int32_t loadShader(GL10 gl, std::string resource, BasicArrayList stringList, int32_t shaderType);
+    public: int32_t loadShader(GL10* gl, std::string resource, BasicArrayList* stringList, int32_t shaderType);
 
 };
 

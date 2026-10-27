@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h>
@@ -55,15 +61,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DemoCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/DemoCanvas.h"
 
 class DemoCanvasProgressUtil
             : public Object
          {
 
-    public: static void showProgress(DemoCanvas demoCanvas);
+    public: static void showProgress(DemoCanvas* demoCanvas);
 
-    public: static void showProgressOptionallyInTheBackground(DemoCanvas demoCanvas, bool background);
+    public: static void showProgressOptionallyInTheBackground(DemoCanvas* demoCanvas, bool background);
 
 };
 

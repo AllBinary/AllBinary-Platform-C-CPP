@@ -21,6 +21,12 @@
         #ifndef ADMIN_TAGHELPERS_DOWNLOADITEMSREQUESTHELPER_H
         #define ADMIN_TAGHELPERS_DOWNLOADITEMSREQUESTHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -74,16 +80,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ModifyTable.h"
-#include "InventoryItemViewParentTagHelper.h"
+        #include "admin/taghelpers/ModifyTable.h"
+#include "admin/taghelpers/InventoryItemViewParentTagHelper.h"
 
 class DownloadItemsRequestHelper: public ModifyTable {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: DownloadableItem downloadableItem;
+    private: DownloadableItem* downloadableItem;
 
-public: DownloadItemsRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: DownloadItemsRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
     public: std::string insert();
 

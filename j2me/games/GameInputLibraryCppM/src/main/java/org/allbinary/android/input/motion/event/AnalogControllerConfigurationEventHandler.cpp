@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -56,14 +62,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AnalogControllerConfigurationEventListenerInterface.h"
-#include "AnalogControllerConfigurationEvent.h"
+        #include "org/allbinary/android/input/motion/event/AnalogControllerConfigurationEventListenerInterface.h"
+#include "org/allbinary/android/input/motion/event/AnalogControllerConfigurationEvent.h"
 
 class AnalogControllerConfigurationEventHandler: public BasicEventHandler {
 
-    private: static AnalogControllerConfigurationEventHandler instance() { return AnalogControllerConfigurationEventHandler(); }
+    private: static AnalogControllerConfigurationEventHandler* instance() { static std::unique_ptr<AnalogControllerConfigurationEventHandler> value(new AnalogControllerConfigurationEventHandler()); return value.get(); }
 
-    public: static AnalogControllerConfigurationEventHandler getInstance(){
+    public: static AnalogControllerConfigurationEventHandler* getInstance(){
 
 
 
@@ -73,18 +79,18 @@ class AnalogControllerConfigurationEventHandler: public BasicEventHandler {
 }
 
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: AnalogControllerConfigurationEventHandler(){
 }
 
 
-    public: void addListener(AnalogControllerConfigurationEventListenerInterface analogControllerConfigurationEventListenerInterface){
+    public: void addListener(AnalogControllerConfigurationEventListenerInterface* analogControllerConfigurationEventListenerInterface){
 
-                        if(!this->list.contains(analogControllerConfigurationEventListenerInterface))
+                        if(!this->list->contains(analogControllerConfigurationEventListenerInterface))
                         
                                     {
-                                    this->list.add(analogControllerConfigurationEventListenerInterface);
+                                    this->list->add(analogControllerConfigurationEventListenerInterface);
     
 
                                     }
@@ -93,15 +99,15 @@ private: AnalogControllerConfigurationEventHandler(){
 
 
     public: void removeAllListeners(){
-this->list.clear();
+this->list->clear();
     
 super.removeAllListeners();
     
 }
 
 
-    public: void removeListener(EventListenerInterface eventListenerInterface){
-this->list.remove(eventListenerInterface);
+    public: void removeListener(EventListenerInterface* eventListenerInterface){
+this->list->remove(eventListenerInterface);
     
 super.removeListener(eventListenerInterface);
     
@@ -110,26 +116,26 @@ super.removeListener(eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(AllBinaryEventObject eventObject){
+    public: void fireEvent(AllBinaryEventObject* eventObject){
 
 
 
 
                         for (
-    int32_t index = this->list.size();--index >= 0; )
+    int32_t index = this->list->size();--index >= 0; )
         {
 
         try {
             
-    AnalogControllerConfigurationEventListenerInterface playerGameInput = this->list.objectArray[index];;
+    AnalogControllerConfigurationEventListenerInterface* playerGameInput = dynamic_cast<AnalogControllerConfigurationEventListenerInterface*>(this->list->objectArray[index]);;
     
-playerGameInput.onAnalogControllerConfigurationEvent(eventObject);
+playerGameInput->onAnalogControllerConfigurationEvent(dynamic_cast<AnalogControllerConfigurationEvent*>(eventObject));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
@@ -142,11 +148,11 @@ super.fireEvent(eventObject);
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
 
-    AnalogControllerConfigurationEventListenerInterface analogControllerConfigurationEventListenerInterface = (eventListenerInterface);;
+    AnalogControllerConfigurationEventListenerInterface* analogControllerConfigurationEventListenerInterface = (dynamic_cast<AnalogControllerConfigurationEventListenerInterface*>(eventListenerInterface));;
     
-analogControllerConfigurationEventListenerInterface.onAnalogControllerConfigurationEvent(eventObject);
+analogControllerConfigurationEventListenerInterface->onAnalogControllerConfigurationEvent(dynamic_cast<AnalogControllerConfigurationEvent*>(eventObject));
     
 }
 

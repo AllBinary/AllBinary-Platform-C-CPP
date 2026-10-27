@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,16 +61,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentTransactionInterfaceFactoryInterface.h"
-#include "PaymentTransactionInterface.h"
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionInterfaceFactoryInterface.h"
+#include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionInterface.h"
 
 class PaymentTransactionInterfaceFactory
             : public Object
          {
 
-    private: static PaymentTransactionInterfaceFactory instance() { return PaymentTransactionInterfaceFactory(); }
+    private: static PaymentTransactionInterfaceFactory* instance() { static std::unique_ptr<PaymentTransactionInterfaceFactory> value(new PaymentTransactionInterfaceFactory()); return value.get(); }
 
-    public: static PaymentTransactionInterfaceFactory getInstance(){
+    public: static PaymentTransactionInterfaceFactory* getInstance(){
 
 
 
@@ -74,7 +80,7 @@ class PaymentTransactionInterfaceFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: PaymentTransactionInterfaceFactory(){
 }
@@ -82,24 +88,24 @@ private: PaymentTransactionInterfaceFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentTransactionInterface getInstance(OrderHistory orderReview){
+    public: PaymentTransactionInterface* getInstance(OrderHistory* orderReview){
 
         try {
             
-    std::string gatewayName = orderReview.getPaymentMethod();;
+    std::string gatewayName = orderReview->getPaymentMethod();;
     
 
                         if(true)
                         
                                     {
                                     
-    PaymentType paymentType = PaymentTypeUtil::getInstance().get(gatewayName);;
+    PaymentType* paymentType = PaymentTypeUtil::getInstance()->get(gatewayName);;
     
 
-    PaymentTransactionInterfaceFactoryInterface paymentTransactionInterfaceFactoryInterface = paymentType.getPaymentTransactionInterfaceFactoryInterface();;
+    PaymentTransactionInterfaceFactoryInterface* paymentTransactionInterfaceFactoryInterface = paymentType->getPaymentTransactionInterfaceFactoryInterface();;
     
 
-    PaymentTransactionInterface paymentTransactionInterface = paymentTransactionInterfaceFactoryInterface.getInstance(orderReview);;
+    PaymentTransactionInterface* paymentTransactionInterface = paymentTransactionInterfaceFactoryInterface->getInstance(orderReview);;
     
 
 
@@ -113,20 +119,20 @@ private: PaymentTransactionInterfaceFactory(){
 
 
 
-                            throw Exception("Failed to create PaymentTransactionInterface: " +"GatewayName is: " +gatewayName);
+                            throw new Exception("Failed to create PaymentTransactionInterface: " +"GatewayName is: " +gatewayName);
                     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PAYMENTERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PAYMENTERROR))
                         
                                     {
                                     
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put("Failed to generate test data", this, commonStrings.GET_INSTANCE, e);
+this->logUtil->put("Failed to generate test data", this, commonStrings->GET_INSTANCE, &e);
     
 
                                     }

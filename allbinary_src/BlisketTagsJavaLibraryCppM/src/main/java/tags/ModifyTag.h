@@ -21,6 +21,12 @@
         #ifndef TAGS_MODIFYTAG_H
         #define TAGS_MODIFYTAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Class.h"
         
             #include "java/lang/Exception.h"
@@ -70,13 +76,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HelperTag.h"
+        #include "tags/HelperTag.h"
 
 class ModifyTag: public HelperTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-public: ModifyTag(TagHelperFactoryInterface tagHelperFactoryInterface);
+public: ModifyTag(TagHelperFactoryInterface* tagHelperFactoryInterface);
 
                 //@Throws(LicensingException.constructor)
             

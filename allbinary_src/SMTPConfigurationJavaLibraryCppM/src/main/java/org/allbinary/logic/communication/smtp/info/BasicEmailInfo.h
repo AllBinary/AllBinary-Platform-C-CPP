@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_BASICEMAILINFO_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_BASICEMAILINFO_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -65,13 +71,13 @@ class BasicEmailInfo
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string subject;
 
     private: std::string textBody;
 
-    protected: EmailServerConfigurationInterface emailServerConfigurationInterface;
+    protected: EmailServerConfigurationInterface* emailServerConfigurationInterface;
 
 public: BasicEmailInfo(std::string subject, std::string textBody);
 
@@ -79,9 +85,9 @@ public: BasicEmailInfo(std::string subject, std::string textBody);
 
     public: std::string getTextBody();
 
-    public: EmailServerConfigurationInterface getEmailServerConfigurationInterface();
+    public: EmailServerConfigurationInterface* getEmailServerConfigurationInterface();
 
-    public: void setEmailServerConfigurationInterface(EmailServerConfigurationInterface emailServerConfigurationInterface);
+    public: void setEmailServerConfigurationInterface(EmailServerConfigurationInterface* emailServerConfigurationInterface);
 
     public: std::string toString();
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -66,9 +72,9 @@
         
 class BasicCrypt
             : public Object
-        : public CryptInterface {
+        , public CryptInterface {
 
-    private: const ByteUtil byteUtil = ByteUtil::getInstance();
+    private: ByteUtil* byteUtil = ByteUtil::getInstance();
 
     private: std::vector<int8_t> key;
 

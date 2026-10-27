@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_TOPUBOUNDBOUNCEAIFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_AI_TOPUBOUNDBOUNCEAIFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -79,16 +85,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BoundBounceAI.h"
-#include "ReverseVelocityBoundsVisitor.h"
+        #include "org/allbinary/game/ag/ai/BoundBounceAI.h"
+#include "org/allbinary/game/ag/ai/ReverseVelocityBoundsVisitor.h"
 
 class TopUBoundBounceAIFactory
             : public Object
-        : public ArtificialIntelligenceInterfaceFactoryInterface {
+        , public ArtificialIntelligenceInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: ArtificialIntelligenceInterface getInstance(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+    public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
 };
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -76,13 +82,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RTSInterface.h"
+        #include "org/allbinary/game/layer/RTSInterface.h"
 
 class TechnologyRTSInterfaceImageItem: public ABCustomImageItem, public UpdateMyFontInterface {
 
-    private: RTSInterface rtsInterface;
+    private: RTSInterface* rtsInterface;
 
-    private: const PrimitiveLongUtil primitiveLongUtil = PrimitiveLongUtil::createPowerOfTen(10000);
+    private: PrimitiveLongUtil* primitiveLongUtil = PrimitiveLongUtil::createPowerOfTen(10000);
 
     private: const std::string LEVEL = "Level";
 
@@ -90,13 +96,13 @@ class TechnologyRTSInterfaceImageItem: public ABCustomImageItem, public UpdateMy
 
     private: const std::string DOLLAR = "$";
 
-    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
 
-    private: std::vector<char> costString = CharArrayFactory::getInstance().getZeroCharArray();
+    private: std::vector<char> costString = CharArrayFactory::getInstance()->getZeroCharArray();
 
     private: int32_t costLength= 0;
 
-    private: std::vector<char> levelString = CharArrayFactory::getInstance().getZeroCharArray();
+    private: std::vector<char> levelString = CharArrayFactory::getInstance()->getZeroCharArray();
 
     private: int32_t levelLength= 0;
 
@@ -110,15 +116,15 @@ class TechnologyRTSInterfaceImageItem: public ABCustomImageItem, public UpdateMy
 
     private: int32_t adjustedLevelY= 0;
 
-public: TechnologyRTSInterfaceImageItem(std::string label, Image img, int32_t layout, std::string altText, BasicColor basicColor, RTSInterface rtsInterface);
+public: TechnologyRTSInterfaceImageItem(std::string label, Image* img, int32_t layout, std::string altText, BasicColor* basicColor, RTSInterface* rtsInterface);
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
-    public: RTSInterface getRtsInterface();
+    public: RTSInterface* getRtsInterface();
 
     public: void update();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
 };
 

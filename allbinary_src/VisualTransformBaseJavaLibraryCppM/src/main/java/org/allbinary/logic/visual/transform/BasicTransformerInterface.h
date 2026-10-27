@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_BASICTRANSFORMERINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_BASICTRANSFORMERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/io/InputStream.h>
@@ -56,19 +62,19 @@
         
 class BasicTransformerInterface: public CompositeTransformInfoInterface {
 
-    void setInputStream(InputStream inputStream);
+    public: virtual void setInputStream(InputStream* inputStream) = 0;
 
-    void setURIResolver(URIResolver uriResolver);
+    public: virtual void setURIResolver(URIResolver* uriResolver) = 0;
 
-    StreamSource getStreamSource();
+    public: virtual StreamSource* getStreamSource() = 0;
 
-    InputStream getInputStream();
+    public: virtual InputStream* getInputStream() = 0;
 
-    URIResolver getURIResolver();
+    public: virtual URIResolver* getURIResolver() = 0;
 
                 //@Throws(Exception.constructor)
             
-    std::string translate(std::string xmlDocumentStr);
+    public: virtual std::string translate(std::string xmlDocumentStr) = 0;
 
 };
 

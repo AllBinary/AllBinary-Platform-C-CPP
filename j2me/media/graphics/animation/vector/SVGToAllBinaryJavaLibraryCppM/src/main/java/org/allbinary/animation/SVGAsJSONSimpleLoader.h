@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -86,25 +92,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ShapeTypeFactory.h"
-#include "ShapeType.h"
-#include "Number.h"
+        #include "org/allbinary/animation/ShapeTypeFactory.h"
+#include "org/allbinary/animation/ShapeType.h"
+#include "org/allbinary/animation/Number.h"
 
 class SVGAsJSONSimpleLoader
             : public Object
          {
 
-    private: static SVGAsJSONSimpleLoader instance() { return SVGAsJSONSimpleLoader(); }
+    private: static SVGAsJSONSimpleLoader* instance() { static std::unique_ptr<SVGAsJSONSimpleLoader> value(new SVGAsJSONSimpleLoader()); return value.get(); }
 
-    public: static SVGAsJSONSimpleLoader getInstance();
+    public: static SVGAsJSONSimpleLoader* getInstance();
 
                 //@Throws(Exception.constructor)
             
     public: static void main(std::vector<std::string> args);
 
-    private: const GraphicsStrings graphicsStrings = GraphicsStrings::getInstance();
+    private: GraphicsStrings* graphicsStrings = GraphicsStrings::getInstance();
 
-    private: const ShapeTypeFactory shapeTypeFactory = ShapeTypeFactory::getInstance();
+    private: ShapeTypeFactory* shapeTypeFactory = ShapeTypeFactory::getInstance();
 
     private: const std::string KEY_SVG = "svg";
 
@@ -122,9 +128,9 @@ class SVGAsJSONSimpleLoader
 
     private: const std::string KEY_R = "r";
 
-    private: const std::string KEY_X = PositionStrings::getInstance().X;
+    private: const std::string KEY_X = PositionStrings::getInstance()->X;
 
-    private: const std::string KEY_Y = PositionStrings::getInstance().Y;
+    private: const std::string KEY_Y = PositionStrings::getInstance()->Y;
 
     private: const std::string ERROR_PARSE_SVG_JSON = "Unable to parse SVG JSON";
 
@@ -146,39 +152,39 @@ class SVGAsJSONSimpleLoader
 
                 //@Throws(Exception.constructor)
             
-    private: void addShapes(BasicArrayList pointVector, Object* value, ShapeType shapeType);
+    private: void addShapes(BasicArrayList* pointVector, Object* value, ShapeType* shapeType);
 
                 //@Throws(Exception.constructor)
             
-    private: void addShape(BasicArrayList pointVector, Object* value, ShapeType shapeType);
+    private: void addShape(BasicArrayList* pointVector, Object* value, ShapeType* shapeType);
 
                 //@Throws(Exception.constructor)
             
-    private: void addLine(BasicArrayList pointVector, JSONObject line);
+    private: void addLine(BasicArrayList* pointVector, JSONObject* line);
 
                 //@Throws(Exception.constructor)
             
-    private: void addCircle(BasicArrayList pointVector, JSONObject circle);
+    private: void addCircle(BasicArrayList* pointVector, JSONObject* circle);
 
                 //@Throws(Exception.constructor)
             
-    private: void addRectangle(BasicArrayList pointVector, JSONObject rectangle);
+    private: void addRectangle(BasicArrayList* pointVector, JSONObject* rectangle);
 
-    private: void addPoint(BasicArrayList pointVector, int32_t x, int32_t y);
+    private: void addPoint(BasicArrayList* pointVector, int32_t x, int32_t y);
 
-    private: void addSeparator(BasicArrayList pointVector);
+    private: void addSeparator(BasicArrayList* pointVector);
 
                 //@Throws(Exception.constructor)
             
-    private: int32_t readInt(JSONObject anyType, std::string key);
+    private: int32_t readInt(JSONObject* anyType, std::string key);
 
-    private: int32_t readInt(JSONObject anyType, std::string key, int32_t defaultValue);
+    private: int32_t readInt(JSONObject* anyType, std::string key, int32_t defaultValue);
 
     private: int32_t toInt(Object* value, std::string key);
 
-    private: JSONObject asObject(Object value, std::string name);
+    private: JSONObject* asObject(Object value, std::string name);
 
-    private: std::vector<std::vector<int32_t>> toPoints(BasicArrayList pointVector);
+    private: std::vector<std::vector<int32_t>> toPoints(BasicArrayList* pointVector);
 
 };
 

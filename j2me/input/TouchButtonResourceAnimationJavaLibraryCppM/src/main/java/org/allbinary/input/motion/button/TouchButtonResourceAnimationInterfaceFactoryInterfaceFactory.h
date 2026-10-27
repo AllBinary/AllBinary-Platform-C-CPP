@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCEANIMATIONINTERFACEFACTORYINTERFACEFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCEANIMATIONINTERFACEFACTORYINTERFACEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -89,20 +95,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchButtonBlankResource.h"
-#include "TouchButtonResource.h"
-#include "TouchButtonGenericActionResource.h"
-#include "TouchButtonStartResource.h"
-#include "TouchButtonUpResource.h"
-#include "TouchButtonDownResource.h"
-#include "TouchButtonTurnLeftResource.h"
-#include "TouchButtonTurnRightResource.h"
-#include "TouchButtonStrafeLeftResource.h"
-#include "TouchButtonStrafeRightResource.h"
+        #include "org/allbinary/input/motion/button/TouchButtonBlankResource.h"
+#include "org/allbinary/input/motion/button/TouchButtonResource.h"
+#include "org/allbinary/input/motion/button/TouchButtonGenericActionResource.h"
+#include "org/allbinary/input/motion/button/TouchButtonStartResource.h"
+#include "org/allbinary/input/motion/button/TouchButtonUpResource.h"
+#include "org/allbinary/input/motion/button/TouchButtonDownResource.h"
+#include "org/allbinary/input/motion/button/TouchButtonTurnLeftResource.h"
+#include "org/allbinary/input/motion/button/TouchButtonTurnRightResource.h"
+#include "org/allbinary/input/motion/button/TouchButtonStrafeLeftResource.h"
+#include "org/allbinary/input/motion/button/TouchButtonStrafeRightResource.h"
 
 class TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory: public BaseResourceAnimationInterfaceFactoryInterfaceFactory {
 
-    public: static TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory createFactory();
+    public: static TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory* createFactory();
 
 public: TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory(std::string name);
 
@@ -112,7 +118,7 @@ public: TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory(std::string
 
                 //@Throws(Exception.constructor)
             
-    protected: void initImageCache(ImageCache imageCache, int32_t level);
+    protected: void initImageCache(ImageCache* imageCache, int32_t level);
 
     public: bool isLoadingLevel(int32_t level);
 

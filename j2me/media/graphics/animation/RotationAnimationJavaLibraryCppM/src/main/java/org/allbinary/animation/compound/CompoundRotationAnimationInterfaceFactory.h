@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/animation/Animation.h>
 
       
@@ -56,16 +62,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CompoundAnimationInterfaceFactory.h"
-#include "CompoundRotationAnimation.h"
+        #include "org/allbinary/animation/compound/CompoundAnimationInterfaceFactory.h"
+#include "org/allbinary/animation/compound/CompoundRotationAnimation.h"
 
 class CompoundRotationAnimationInterfaceFactory: public CompoundAnimationInterfaceFactory {
 
-public: CompoundRotationAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory animationBehaviorFactory);
+public: CompoundRotationAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory);
 
-    protected: std::vector<Animation> createArray(int32_t size);
+    protected: std::vector<Animation*> createArray(int32_t size);
 
-    protected: Animation createAnimation(std::vector<Animation> animationInterfaceArray);
+    protected: Animation* createAnimation(std::vector<Animation*> animationInterfaceArray);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_CHANGECOLORPROCESSOR_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_CHANGECOLORPROCESSOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Image.h>
 
       
@@ -48,15 +54,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ModifierBaseProcessor.h"
+        #include "org/allbinary/animation/image/ModifierBaseProcessor.h"
 
 class ChangeColorProcessor: public ModifierBaseProcessor {
 
-    private: static const ChangeColorProcessor instanceC = ChangeColorProcessor();
+    private: static ChangeColorProcessor* instanceC() { static std::unique_ptr<ChangeColorProcessor> value(new ChangeColorProcessor()); return value.get(); }
 
-    public: static ChangeColorProcessor getInstance();
+    public: static ChangeColorProcessor* getInstance();
 
-    public: void updateColor(ImageModifierUtil imageModifierUtil, Image originalImage, Image imageToShow, int32_t index, BasicColor basicColor);
+    public: void updateColor(ImageModifierUtil* imageModifierUtil, Image* originalImage, Image* imageToShow, int32_t index, BasicColor* basicColor);
 
 };
 

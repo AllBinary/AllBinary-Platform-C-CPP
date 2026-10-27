@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -40,8 +46,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformDocument.h"
-#include "TransformDocumentInterface.h"
+        #include "org/allbinary/logic/visual/transform/data/TransformDocument.h"
+#include "org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h"
 
 class TransformDocumentFactory
             : public Object
@@ -49,12 +55,12 @@ class TransformDocumentFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static TransformDocumentInterface getInstance(){
+    public: static TransformDocumentInterface* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformDocument();
+                        return dynamic_cast<TransformDocumentInterface*>(new TransformDocument());
     
 }
 

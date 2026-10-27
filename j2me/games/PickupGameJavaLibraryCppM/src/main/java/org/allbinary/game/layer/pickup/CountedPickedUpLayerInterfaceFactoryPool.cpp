@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -49,33 +55,33 @@ class CountedPickedUpLayerInterfaceFactoryPool
             : public Object
          {
 
-    private: static CountedPickedUpLayerInterfaceFactoryPool SINGLETON = CountedPickedUpLayerInterfaceFactoryPool();
+    private: static CountedPickedUpLayerInterfaceFactoryPool* SINGLETON() { static std::unique_ptr<CountedPickedUpLayerInterfaceFactoryPool> value(new CountedPickedUpLayerInterfaceFactoryPool()); return value.get(); }
 
-    public: static CountedPickedUpLayerInterfaceFactoryPool getInstance(){
+    public: static CountedPickedUpLayerInterfaceFactoryPool* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CountedPickedUpLayerInterfaceFactoryPool::SINGLETON;
+                        return CountedPickedUpLayerInterfaceFactoryPool::SINGLETON();
     
 }
 
 
     public: static void init(){
-CountedPickedUpLayerInterfaceFactoryPool::SINGLETON= CountedPickedUpLayerInterfaceFactoryPool();
+CountedPickedUpLayerInterfaceFactoryPool::SINGLETON()= new CountedPickedUpLayerInterfaceFactoryPool();
     
 }
 
 
-    private: BasicArrayList list;
+    private: BasicArrayList* list;
 
 private: CountedPickedUpLayerInterfaceFactoryPool(){
-this->list= BasicArrayListD();
+this->list= new BasicArrayListD();
     
 }
 
 
-    public: BasicArrayList getList(){
+    public: BasicArrayList* getList(){
 
 
 

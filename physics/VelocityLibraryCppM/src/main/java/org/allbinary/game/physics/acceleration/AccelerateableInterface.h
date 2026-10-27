@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_PHYSICS_ACCELERATION_ACCELERATEABLEINTERFACE_H
         #define ORG_ALLBINARY_GAME_PHYSICS_ACCELERATION_ACCELERATEABLEINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/math/BasicDecimal.h>
 
       
@@ -45,7 +51,7 @@
         
 class AccelerateableInterface {
 
-    void accelerate(BasicDecimal accelerate);
+    public: virtual void accelerate(BasicDecimal* accelerate) = 0;
 
 };
 

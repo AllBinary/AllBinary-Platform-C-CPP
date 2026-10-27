@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/Animation.h>
@@ -62,31 +68,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WeaponLayer.h"
-#include "CollidableWeaponBehavior.h"
+        #include "org/allbinary/game/layer/weapon/WeaponLayer.h"
+#include "org/allbinary/game/layer/weapon/CollidableWeaponBehavior.h"
 
 class SimpleWeaponLayer: public WeaponLayer {
 
                 //@Throws(Exception.constructor)
             
-    public: static Animation createDestroyed(){
+    public: static Animation* createDestroyed(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().getProcedural(ExplosionResources::getInstance().THIRD_EXPLOSION_RESOURCE).getInstanceAnimation(NullIndexedAnimationFactory::getFactoryInstance().getInstance(0));;
+                        return FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->getProcedural(ExplosionResources::getInstance()->THIRD_EXPLOSION_RESOURCE)->getInstanceAnimation(NullIndexedAnimationFactory::getFactoryInstance()->getInstance(0));;
     
 }
 
 
-public: SimpleWeaponLayer(std::string name, RemoteInfo remoteInfo, int32_t multiPlayerType, Movement movement, Animation animationInterface, Animation destroyedAnimationInterface, Rectangle rectangle, ViewPositionBase viewPosition) : WeaponLayer(name, remoteInfo, multiPlayerType, movement, animationInterface, destroyedAnimationInterface, rectangle, viewPosition){
+public: SimpleWeaponLayer(std::string name, RemoteInfo* remoteInfo, int32_t multiPlayerType, Movement* movement, Animation* animationInterface, Animation* destroyedAnimationInterface, Rectangle* rectangle, ViewPositionBase* viewPosition) : WeaponLayer(name, remoteInfo, multiPlayerType, movement, animationInterface, destroyedAnimationInterface, rectangle, viewPosition){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->setCollidableInferface(CollidableWeaponBehavior(true));
+this->setCollidableInferface(new CollidableWeaponBehavior(true));
     
 }
 

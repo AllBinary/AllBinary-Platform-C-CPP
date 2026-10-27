@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -71,17 +77,17 @@ class OSGIServiceUtil
             : public Object
          {
 
-    private: static OSGIServiceUtil instance() { return OSGIServiceUtil(); }
+    private: static OSGIServiceUtil* instance() { static std::unique_ptr<OSGIServiceUtil> value(new OSGIServiceUtil()); return value.get(); }
 
-    public: static OSGIServiceUtil getInstance();
+    public: static OSGIServiceUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: OSGIServiceUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getServicesObjectVector(Object bundleContext, std::vector<ServiceReference> serviceReferences);
+    public: BasicArrayList* getServicesObjectVector(Object* bundleContext, std::vector<ServiceReference*> serviceReferences);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_USER_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_USER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -132,9 +138,9 @@
         
 class User
             : public Object
-        : public UserInterface {
+        , public UserInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string userName;
 
@@ -168,31 +174,31 @@ class User
 
     private: std::string fax;
 
-    private: UserRole role;
+    private: UserRole* role;
 
     private: std::string encryption;
 
     private: std::string secret;
 
-    private: Password password;
+    private: Password* password;
 
     private: std::string enable;
 
     private: std::string permissions;
 
-    private: UserConfigurationInterface userConfigurationInterface;
+    private: UserConfigurationInterface* userConfigurationInterface;
 
 public: User();
 
-public: User(HttpServletRequest request);
+public: User(HttpServletRequest* request);
 
-public: User(HashMap<Object*, Object*> userHashMap);
+public: User(HashMap<Object*, Object*>* userHashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<Object*, Object*> userHashMap);
+    public: void getFormData(HashMap<Object*, Object*>* userHashMap);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string validationInfo();
 
@@ -228,7 +234,7 @@ public: User(HashMap<Object*, Object*> userHashMap);
 
     public: void setFax(std::string value);
 
-    public: void setRole(UserRole role);
+    public: void setRole(UserRole* role);
 
     public: void setPermissions(std::string value);
 
@@ -276,7 +282,7 @@ public: User(HashMap<Object*, Object*> userHashMap);
 
     public: std::string getFax();
 
-    public: UserRole getRole();
+    public: UserRole* getRole();
 
     public: std::string getPermissions();
 
@@ -288,31 +294,31 @@ public: User(HashMap<Object*, Object*> userHashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList toVector();
+    public: BasicArrayList* toVector();
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
-    public: HashMap<Object*, Object*> toPasswordHashMap();
+    public: HashMap<Object*, Object*>* toPasswordHashMap();
 
-    public: void validateSession(WeblisketSessionInterface weblisketSession);
+    public: void validateSession(WeblisketSessionInterface* weblisketSession);
 
-    public: void updateSession(WeblisketSessionInterface weblisketSession);
+    public: void updateSession(WeblisketSessionInterface* weblisketSession);
 
-    public: Boolean isSessionValid();
+    public: bool isSessionValid();
 
                 //@Throws(Exception.constructor)
             
     public: Object* getKey();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
-    public: UserConfigurationInterface getUserConfigurationInterface();
+    public: UserConfigurationInterface* getUserConfigurationInterface();
 
-    public: void setUserConfigurationInterface(UserConfigurationInterface userConfigurationInterface);
+    public: void setUserConfigurationInterface(UserConfigurationInterface* userConfigurationInterface);
 
 };
 

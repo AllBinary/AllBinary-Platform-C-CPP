@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -70,19 +76,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputToGameKeyMapping.h"
+        #include "org/allbinary/game/input/mapping/InputToGameKeyMapping.h"
 
 class InputMapping
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
+    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
 
-    private: const BasicArrayList mappedList = BasicArrayListD();
+    private: BasicArrayList* mappedList = new BasicArrayListD();
 
 protected: InputMapping(){
 }
@@ -93,7 +99,7 @@ protected: InputMapping(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->hashtable.size();;
+                        return this->hashtable->size();;
     
 }
 
@@ -108,7 +114,7 @@ protected: InputMapping(){
 }
 
 
-    protected: InputToGameKeyMapping getDefault(){
+    protected: InputToGameKeyMapping* getDefault(){
 
 
 
@@ -119,68 +125,68 @@ protected: InputMapping(){
 
 
     protected: void removeAll(){
-this->hashtable.clear();
+this->hashtable->clear();
     
-this->mappedList.clear();
+this->mappedList->clear();
     
 }
 
 
-    public: void remove(Input input, Input mappedToInput){
+    public: void remove(Input* input, Input* mappedToInput){
 
-    StringMaker stringBuffer = StringMaker();;
-    
-
-    StringUtil stringUtil = StringUtil::getInstance();;
-    
-stringBuffer.append(CommonLabels::getInstance().START_LABEL);
-    
-stringBuffer.append(stringUtil.toString(input));
-    
-stringBuffer.append(" == ");
-    
-stringBuffer.append(stringUtil.toString(mappedToInput));
-    
-this->logUtil.putF(stringBuffer.toString(), this, "InputMapping::remove");
+    StringMaker* stringBuffer = new StringMaker();;
     
 
-    BasicArrayList list = this->getMappedInput(input);;
+    StringUtil* stringUtil = StringUtil::getInstance();;
+    
+stringBuffer->append(CommonLabels::getInstance()->START_LABEL);
+    
+stringBuffer->append(stringUtil->toString(input));
+    
+stringBuffer->append(" == ");
+    
+stringBuffer->append(stringUtil->toString(mappedToInput));
+    
+this->logUtil->putF(stringBuffer->toString(), this, "InputMapping::remove");
     
 
-                        if(list.contains(mappedToInput))
+    BasicArrayList* list = this->getMappedInput(input);;
+    
+
+                        if(list->contains(mappedToInput))
                         
                                     {
-                                    list.remove(mappedToInput);
+                                    list->remove(mappedToInput);
     
-this->mappedList.remove(mappedToInput);
+this->mappedList->remove(mappedToInput);
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append("Removed: ");
+stringBuffer->append("Removed: ");
     
-stringBuffer.append(stringUtil.toString(input));
+stringBuffer->append(stringUtil->toString(input));
     
-stringBuffer.append(" == ");
+stringBuffer->append(" == ");
     
-stringBuffer.append(stringUtil.toString(mappedToInput));
+stringBuffer->append(stringUtil->toString(mappedToInput));
     
-this->logUtil.putF(stringBuffer.toString(), this, "InputMapping::remove");
+this->logUtil->putF(stringBuffer->toString(), this, "InputMapping::remove");
     
 
                                     }
                                 
                         else {
-                            stringBuffer.delete(0, stringBuffer.length());
+                            stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append("Not Deleted: ");
+stringBuffer->append("Not Deleted: ");
     
-stringBuffer.append(stringUtil.toString(input));
+stringBuffer->append(stringUtil->toString(input));
     
-stringBuffer.append(" == ");
+stringBuffer->append(" == ");
     
-stringBuffer.append(stringUtil.toString(mappedToInput));
+stringBuffer->append(stringUtil->toString(mappedToInput));
     
-this->logUtil.putF(stringBuffer.toString(), this, "InputMapping::remove");
+this->logUtil->putF(stringBuffer->toString(), this, "InputMapping::remove");
     
 
                         }
@@ -190,26 +196,26 @@ this->logUtil.putF(stringBuffer.toString(), this, "InputMapping::remove");
 
                 //@Throws(Exception.constructor)
             
-    public: void addMapping(InputToGameKeyMapping inputToGameKeyMapping){
+    public: void addMapping(InputToGameKeyMapping* inputToGameKeyMapping){
 
 
 
-                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: void add(Input input, Input mappedToInput){
+    public: void add(Input* input, Input* mappedToInput){
 
-    BasicArrayList list = this->getMappedInput(input);;
+    BasicArrayList* list = this->getMappedInput(input);;
     
 
-                        if(!list.contains(mappedToInput))
+                        if(!list->contains(mappedToInput))
                         
                                     {
-                                    list.add(mappedToInput);
+                                    list->add(mappedToInput);
     
-this->mappedList.add(mappedToInput);
+this->mappedList->add(mappedToInput);
     
 
                                     }
@@ -217,19 +223,19 @@ this->mappedList.add(mappedToInput);
 }
 
 
-    public: bool isMapped(Input input){
+    public: bool isMapped(Input* input){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->mappedList.contains(input);;
+                        return this->mappedList->contains(input);;
     
 }
 
 
-    public: BasicArrayList getMappedInput(Input id){
+    public: BasicArrayList* getMappedInput(Input* id){
 
-    Object* mappingInputCanBeNullList = this->hashtable.get(id);;
+    Object* mappingInputCanBeNullList = this->hashtable->get(id);;
     
 
                         if(mappingInputCanBeNullList == 
@@ -238,9 +244,9 @@ this->mappedList.add(mappedToInput);
                         
                                     {
                                     
-    BasicArrayList list = BasicArrayListD();;
+    BasicArrayList* list = new BasicArrayListD();;
     
-this->hashtable.put(id, list);
+this->hashtable->put(id, list);
     
 
 
@@ -255,12 +261,12 @@ this->hashtable.put(id, list);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *dynamic_cast<BasicArrayList*>(mappingInputCanBeNullList);
+                        return dynamic_cast<BasicArrayList*>(mappingInputCanBeNullList);
     
 }
 
 
-    public: ABHashtable<Object*, Object*> getHashtable(){
+    public: ABHashtable<Object*, Object*>* getHashtable(){
 
 
 

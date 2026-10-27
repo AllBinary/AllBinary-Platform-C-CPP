@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_SERVLET_BLISKETSERVLETUTIL_H
         #define ORG_ALLBINARY_SERVLET_BLISKETSERVLETUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -61,11 +67,11 @@ class BlisketServletUtil
             : public Object
          {
 
-    private: static BlisketServletUtil instance() { return BlisketServletUtil(); }
+    private: static BlisketServletUtil* instance() { static std::unique_ptr<BlisketServletUtil> value(new BlisketServletUtil()); return value.get(); }
 
-    public: static BlisketServletUtil getInstance();
+    public: static BlisketServletUtil* getInstance();
 
-    public: void init(HttpServletRequest request);
+    public: void init(HttpServletRequest* request);
 
 };
 

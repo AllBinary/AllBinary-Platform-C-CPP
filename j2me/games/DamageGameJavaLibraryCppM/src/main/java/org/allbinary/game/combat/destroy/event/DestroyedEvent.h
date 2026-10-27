@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_DESTROY_EVENT_DESTROYEDEVENT_H
         #define ORG_ALLBINARY_GAME_COMBAT_DESTROY_EVENT_DESTROYEDEVENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h>
 
       
@@ -57,23 +63,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DestroyedEventHandler.h"
+        #include "org/allbinary/game/combat/destroy/event/DestroyedEventHandler.h"
 
 class DestroyedEvent: public AllBinaryEventObject {
 
-    private: AllBinaryGameCanvas allBinaryGameCanvas = NullGameCanvas::getInstance();
+    private: AllBinaryGameCanvas* allBinaryGameCanvas = NullGameCanvas::getInstance();
 
-    private: AllBinaryLayer allBinaryLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer* allBinaryLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-public: DestroyedEvent(AllBinaryGameCanvas combatGameCanvas);
+public: DestroyedEvent(AllBinaryGameCanvas* combatGameCanvas);
 
-    public: AllBinaryGameCanvas getAllBinaryGameCanvas();
+    public: AllBinaryGameCanvas* getAllBinaryGameCanvas();
 
-    public: AllBinaryLayer getLayerInterface();
+    public: AllBinaryLayer* getLayerInterface();
 
-    private: void setAllBinaryGameCanvas(AllBinaryGameCanvas allBinaryGameCanvas);
+    private: void setAllBinaryGameCanvas(AllBinaryGameCanvas* allBinaryGameCanvas);
 
-    public: void setLayerInterfaceForCircularStaticPool(AllBinaryLayer allBinaryLayerInterface);
+    public: void setLayerInterfaceForCircularStaticPool(AllBinaryLayer* allBinaryLayerInterface);
 
     public: std::string toString();
 

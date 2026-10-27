@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAILINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAILINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/mail/internet/MimeMessage.h>
@@ -53,13 +59,13 @@
         
 class EmailInterface: public DomNodeInterface, public DomDocumentMappingInterface {
 
-    std::string getDebugInfo();
+    public: virtual std::string getDebugInfo() = 0;
 
-    MimeMessage getMimeMessage();
+    public: virtual MimeMessage* getMimeMessage() = 0;
 
                 //@Throws(Exception.constructor)
             
-    std::string log();
+    public: virtual std::string log() = 0;
 
 };
 

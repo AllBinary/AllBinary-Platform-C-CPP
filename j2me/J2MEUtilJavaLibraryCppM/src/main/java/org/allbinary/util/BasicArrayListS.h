@@ -21,6 +21,14 @@
         #ifndef ORG_ALLBINARY_UTIL_BASICARRAYLISTS_H
         #define ORG_ALLBINARY_UTIL_BASICARRAYLISTS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/IllegalArgumentException.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -53,7 +61,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicArrayList.h"
+        #include "org/allbinary/util/BasicArrayList.h"
 
 class BasicArrayListS: public BasicArrayList {
 

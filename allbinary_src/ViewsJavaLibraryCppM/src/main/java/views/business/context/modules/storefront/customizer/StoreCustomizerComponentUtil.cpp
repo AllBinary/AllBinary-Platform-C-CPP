@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -64,15 +70,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CustomizerUtil.h"
+        #include "views/business/context/modules/storefront/customizer/CustomizerUtil.h"
 
 class StoreCustomizerComponentUtil
             : public Object
          {
 
-    private: static StoreCustomizerComponentUtil instance() { return StoreCustomizerComponentUtil(); }
+    private: static StoreCustomizerComponentUtil* instance() { static std::unique_ptr<StoreCustomizerComponentUtil> value(new StoreCustomizerComponentUtil()); return value.get(); }
 
-    public: static StoreCustomizerComponentUtil getInstance(){
+    public: static StoreCustomizerComponentUtil* getInstance(){
 
 
 
@@ -82,7 +88,7 @@ class StoreCustomizerComponentUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: StoreCustomizerComponentUtil(){
 }
@@ -90,24 +96,24 @@ private: StoreCustomizerComponentUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: std::string generate(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface){
+    public: std::string generate(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Generating Modified Views For: " +transformInfoInterface.getName(), this, "generateModifiedViews()");
+                                    this->logUtil->putF("Generating Modified Views For: " +transformInfoInterface->getName(), this, "generateModifiedViews()");
     
 
                                     }
                                 
 
-    CustomizerUtil customizerUtil = CustomizerUtil::getInstance();;
+    CustomizerUtil* customizerUtil = CustomizerUtil::getInstance();;
     
 
-    BasicArrayList allCustomizedViews = customizerUtil.getTransformInfoObjectConfigGroupComponentNodes(transformInfoInterface);;
+    BasicArrayList* allCustomizedViews = customizerUtil->getTransformInfoObjectConfigGroupComponentNodes(transformInfoInterface);;
     
 
-    int32_t size = allCustomizedViews.size();;
+    int32_t size = allCustomizedViews->size();;
     
 
 
@@ -117,16 +123,16 @@ private: StoreCustomizerComponentUtil(){
     int32_t index = 0;index < size; index++)
         {
 
-    TransformInfo nextTransformInfoInterface = allCustomizedViews.get(index);;
+    TransformInfo* nextTransformInfoInterface = dynamic_cast<TransformInfo*>(allCustomizedViews->get(index));;
     
 
-    BasicArrayList allViewsToBeModified = customizerUtil.getTransformInfoObjectConfigComponentNodesToCustomize(transformInfoInterface, nextTransformInfoInterface);;
+    BasicArrayList* allViewsToBeModified = customizerUtil->getTransformInfoObjectConfigComponentNodesToCustomize(transformInfoInterface, nextTransformInfoInterface);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("View or component that was modified by a Customizer: " +nextTransformInfoInterface.getName(), this, "generateModifiedViews()");
+                                    this->logUtil->putF("View or component that was modified by a Customizer: " +nextTransformInfoInterface->getName(), this, "generateModifiedViews()");
     
 
                                     }
@@ -139,19 +145,19 @@ this->generate(abeClientInformation, transformInfoInterface, allViewsToBeModifie
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance().EMPTY_STRING;
+                        return StringUtil::getInstance()->EMPTY_STRING;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: void generate(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, BasicArrayList allViewsToBeModifiedVector){
+    private: void generate(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface, BasicArrayList* allViewsToBeModifiedVector){
 
-    CustomizerUtil customizerUtil = CustomizerUtil::getInstance();;
+    CustomizerUtil* customizerUtil = CustomizerUtil::getInstance();;
     
 
-    int32_t size = allViewsToBeModifiedVector.size();;
+    int32_t size = allViewsToBeModifiedVector->size();;
     
 
 
@@ -161,21 +167,21 @@ this->generate(abeClientInformation, transformInfoInterface, allViewsToBeModifie
     int32_t index = 0;index < size; index++)
         {
 
-    TransformInfo nextTransformInfoInterface = allViewsToBeModifiedVector.get(index);;
+    TransformInfo* nextTransformInfoInterface = dynamic_cast<TransformInfo*>(allViewsToBeModifiedVector->get(index));;
     
 
-    TransformInfoInterface specifiedTransformInfoInterface = customizerUtil.getTransformInfoInterfaceToCustomize(transformInfoInterface, nextTransformInfoInterface);;
+    TransformInfoInterface* specifiedTransformInfoInterface = customizerUtil->getTransformInfoInterfaceToCustomize(transformInfoInterface, nextTransformInfoInterface);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Retrieved: " +specifiedTransformInfoInterface.getName(), this, "generateModifiedViews()");
+                                    this->logUtil->putF("Retrieved: " +specifiedTransformInfoInterface->getName(), this, "generateModifiedViews()");
     
 
                                     }
                                 
-TransformGeneratorUtil::getInstance().generate(abeClientInformation, nextTransformInfoInterface, specifiedTransformInfoInterface);
+TransformGeneratorUtil::getInstance()->generate(abeClientInformation, nextTransformInfoInterface, specifiedTransformInfoInterface);
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
@@ -41,13 +47,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ViewPositionEvent.h"
+        #include "org/allbinary/view/event/ViewPositionEvent.h"
 
 class ViewPositionEventListenerInterface: public EventListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    void onChangeEvent(ViewPositionEvent layerManagerEvent)
+    public: virtual void onChangeEvent(ViewPositionEvent* layerManagerEvent) = 0;
 
 };
 

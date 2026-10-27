@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -43,17 +49,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ArtificialIntelligenceInterface.h"
+        #include "org/allbinary/ai/ArtificialIntelligenceInterface.h"
 
 class ArtificialIntelligence
             : public Object
-        : public ArtificialIntelligenceInterface {
+        , public ArtificialIntelligenceInterface {
 
-    public: static const int32_t AI_ID = 2;
+    public: static inline const int32_t AI_ID = 2;
 
-    private: static ArtificialIntelligence instance() { return ArtificialIntelligence(); }
+    private: static ArtificialIntelligence* instance() { static std::unique_ptr<ArtificialIntelligence> value(new ArtificialIntelligence()); return value.get(); }
 
-    public: static ArtificialIntelligence getInstance(){
+    public: static ArtificialIntelligence* getInstance(){
 
 
 
@@ -69,7 +75,7 @@ public: ArtificialIntelligence(){
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager layerManager){
+    public: void processAI(AllBinaryLayerManager* layerManager){
 }
 
 

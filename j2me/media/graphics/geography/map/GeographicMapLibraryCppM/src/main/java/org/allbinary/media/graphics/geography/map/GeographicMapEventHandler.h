@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPEVENTHANDLER_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPEVENTHANDLER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
@@ -62,19 +68,19 @@
         
 class GeographicMapEventHandler: public BasicEventHandler {
 
-    private: static GeographicMapEventHandler instance = GeographicMapEventHandler();
+    private: static GeographicMapEventHandler* instance() { static std::unique_ptr<GeographicMapEventHandler> value(new GeographicMapEventHandler()); return value.get(); }
 
-    public: static GeographicMapEventHandler getInstance();
+    public: static GeographicMapEventHandler* getInstance();
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: GeographicMapEventHandler();
 
-    public: void addListener(AllBinaryGameLayer gameLayer);
+    public: void addListener(AllBinaryGameLayer* gameLayer);
 
     public: void removeAllListeners();
 
-    public: void removeListener(EventListenerInterface eventListenerInterface);
+    public: void removeListener(EventListenerInterface* eventListenerInterface);
 
     public: void fireEvent();
 

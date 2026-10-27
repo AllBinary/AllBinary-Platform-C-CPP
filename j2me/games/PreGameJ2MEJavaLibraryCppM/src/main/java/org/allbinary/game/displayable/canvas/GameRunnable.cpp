@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -50,7 +56,7 @@
         
 class GameRunnable
             : public Object
-        : public Runnable {
+        , public Runnable {
 
     public: const int32_t WAIT = 240;
 
@@ -63,7 +69,7 @@ public: GameRunnable(){
 
 
     public: void run(){
-DisplayInfoSingleton::getInstance().process();
+DisplayInfoSingleton::getInstance()->process();
     
 }
 

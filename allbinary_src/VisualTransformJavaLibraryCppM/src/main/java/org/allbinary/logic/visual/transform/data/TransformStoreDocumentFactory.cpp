@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,8 +55,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransformStoreDocument.h"
-#include "TransformDocumentInterface.h"
+        #include "org/allbinary/logic/visual/transform/data/TransformStoreDocument.h"
+#include "org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h"
 
 class TransformStoreDocumentFactory
             : public Object
@@ -58,24 +64,24 @@ class TransformStoreDocumentFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static TransformDocumentInterface getInstance(PageContext pageContext, WeblisketSession weblisketSession){
+    public: static TransformDocumentInterface* getInstance(PageContext* pageContext, WeblisketSession* weblisketSession){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformStoreDocument(pageContext, weblisketSession);
+                        return dynamic_cast<TransformDocumentInterface*>(new TransformStoreDocument(pageContext, weblisketSession));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: static TransformDocumentInterface getInstance(SearchRequest searchRequest){
+    public: static TransformDocumentInterface* getInstance(SearchRequest* searchRequest){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformStoreDocument(searchRequest);
+                        return dynamic_cast<TransformDocumentInterface*>(new TransformStoreDocument(searchRequest));
     
 }
 

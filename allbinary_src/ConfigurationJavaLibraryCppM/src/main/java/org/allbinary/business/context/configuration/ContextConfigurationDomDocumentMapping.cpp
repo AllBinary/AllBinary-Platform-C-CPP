@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,16 +61,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ContextConfigurationInterface.h"
-#include "ContextConfigurationView.h"
+        #include "org/allbinary/business/context/configuration/ContextConfigurationInterface.h"
+#include "org/allbinary/business/context/configuration/ContextConfigurationView.h"
 
 class ContextConfigurationDomDocumentMapping
             : public Object
-        : public DomDocumentMappingInterface {
+        , public DomDocumentMappingInterface {
 
-    private: ContextConfigurationInterface contextConfigurationInterface;
+    private: ContextConfigurationInterface* contextConfigurationInterface;
 
-public: ContextConfigurationDomDocumentMapping(ContextConfigurationInterface contextConfigurationInterface){
+public: ContextConfigurationDomDocumentMapping(ContextConfigurationInterface* contextConfigurationInterface){
 this->contextConfigurationInterface= contextConfigurationInterface;
     
 }
@@ -72,14 +78,14 @@ this->contextConfigurationInterface= contextConfigurationInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Document toXmlDoc(){
+    public: Document* toXmlDoc(){
 
-    Document document = DomDocumentHelper::create();;
+    Document* document = DomDocumentHelper::create();;
     
 
-    Node node = ContextConfigurationView(this->contextConfigurationInterface).toXmlNode(document);;
+    Node* node = (new ContextConfigurationView(this->contextConfigurationInterface))->toXmlNode(document);;
     
-document.appendChild(node);
+document->appendChild(node);
     
 
 

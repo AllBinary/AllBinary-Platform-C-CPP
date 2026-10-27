@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -68,23 +74,23 @@ class StreamUtil
             : public Object
          {
 
-    private: static StreamUtil instance() { return StreamUtil(); }
+    private: static StreamUtil* instance() { static std::unique_ptr<StreamUtil> value(new StreamUtil()); return value.get(); }
 
-    public: static StreamUtil getInstance();
+    public: static StreamUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: StreamUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: OutputStream get(InputStream inputStream, OutputStream outputStream, std::vector<int8_t> buffer);
+    public: OutputStream* get(InputStream* inputStream, OutputStream* outputStream, std::vector<int8_t> buffer);
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<int8_t> getByteArray(InputStream inputStream, ByteArrayOutputStream outputStream2, std::vector<int8_t> byteArray);
+    public: std::vector<int8_t> getByteArray(InputStream* inputStream, ByteArrayOutputStream* outputStream2, std::vector<int8_t> byteArray);
 
-    public: bool close(Closeable closeable);
+    public: bool close(Closeable* closeable);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGEPOOLSINGLETON_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGEPOOLSINGLETON_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,20 +67,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BufferedImageCacheableFactory.h"
+        #include "org/allbinary/media/image/cache/BufferedImageCacheableFactory.h"
 
 class BufferedImagePoolSingleton
             : public Object
          {
 
-    private: static PoolInterface poolInterface = 
+    private: static inline PoolInterface* poolInterface = 
                 nullptr
             ;
 
                     static int32_t initResult;
                 static int32_t init();
             
-    public: static PoolInterface getInstance();
+    public: static PoolInterface* getInstance();
 
 private: BufferedImagePoolSingleton();
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Throwable.h"
@@ -58,7 +64,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogFormatUtil.h"
+        #include "org/allbinary/logic/communication/log/LogFormatUtil.h"
 //ActualPlatform
 /*actual*/ class PreLogUtil
             : public Object
@@ -72,22 +78,22 @@
                         if(false)
                         
                                     {
-                                    className= CommonStrings::getInstance().EMPTY;
+                                    className= CommonStrings::getInstance()->EMPTY;
     
 
                                     }
                                 
-className= StringMaker().append(className).append(CommonSeps::getInstance().FORWARD_SLASH).append(StringUtil::getInstance().toString(anyType)).toString();
+className= (new StringMaker())->append(className)->append(CommonSeps::getInstance()->FORWARD_SLASH)->append(StringUtil::getInstance()->toString(anyType))->toString();
     
 
-    std::string message = LogFormatUtil::getInstance().getS(className, functionName, specialMessage);;
+    std::string message = LogFormatUtil::getInstance()->getS(className, functionName, specialMessage);;
     
-PlayN::getInstance().log().debug(PreLogUtil::LOG_SUCCESS +message);
+PlayN::getInstance()->log()->debug(PreLogUtil::LOG_SUCCESS +message);
     
 }
 
 
-    private: static const std::string LOG_SUCCESS = "org.allbinary: ";
+    private: static inline const std::string LOG_SUCCESS = "org.allbinary: ";
 
     /*actual*/ public: static void putOE(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
 
@@ -97,35 +103,35 @@ PlayN::getInstance().log().debug(PreLogUtil::LOG_SUCCESS +message);
                         if(false)
                         
                                     {
-                                    className= CommonStrings::getInstance().EMPTY;
+                                    className= CommonStrings::getInstance()->EMPTY;
     
 
                                     }
                                 
-className= StringMaker().append(className).append(CommonSeps::getInstance().FORWARD_SLASH).append(StringUtil::getInstance().toString(anyType)).toString();
+className= (new StringMaker())->append(className)->append(CommonSeps::getInstance()->FORWARD_SLASH)->append(StringUtil::getInstance()->toString(anyType))->toString();
     
 
-    std::string message = LogFormatUtil::getInstance().get(className, functionName, specialMessage, exception);;
+    std::string message = LogFormatUtil::getInstance()->get(className, functionName, specialMessage, exception);;
     
-PlayN::getInstance().log().error(PreLogUtil::LOG_SUCCESS +message, *dynamic_cast<Throwable*>(exception));
+PlayN::getInstance()->log()->error(PreLogUtil::LOG_SUCCESS +message, dynamic_cast<Throwable*>(exception));
     
 }
 
 
     /*actual*/ public: static void putS(std::string specialMessage, std::string className, std::string functionName){
 
-    std::string message = LogFormatUtil::getInstance().getS(className, functionName, specialMessage);;
+    std::string message = LogFormatUtil::getInstance()->getS(className, functionName, specialMessage);;
     
-PlayN::getInstance().log().debug(PreLogUtil::LOG_SUCCESS +message);
+PlayN::getInstance()->log()->debug(PreLogUtil::LOG_SUCCESS +message);
     
 }
 
 
     /*actual*/ public: static void putSE(std::string specialMessage, std::string className, std::string functionName, Object* exception){
 
-    std::string message = LogFormatUtil::getInstance().get(className, functionName, specialMessage, exception);;
+    std::string message = LogFormatUtil::getInstance()->get(className, functionName, specialMessage, exception);;
     
-PlayN::getInstance().log().error(PreLogUtil::LOG_SUCCESS +message, *dynamic_cast<Throwable*>(exception));
+PlayN::getInstance()->log()->error(PreLogUtil::LOG_SUCCESS +message, dynamic_cast<Throwable*>(exception));
     
 }
 

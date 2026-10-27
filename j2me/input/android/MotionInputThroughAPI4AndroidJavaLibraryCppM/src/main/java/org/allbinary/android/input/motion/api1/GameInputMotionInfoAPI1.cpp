@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/android/input/motion/GameInputMotionInfo.h>
 
       
@@ -42,9 +48,9 @@
         
 class GameInputMotionInfoAPI1: public GameInputMotionInfo {
 
-    private: static GameInputMotionInfoAPI1 instance() { return GameInputMotionInfoAPI1(); }
+    private: static GameInputMotionInfoAPI1* instance() { static std::unique_ptr<GameInputMotionInfoAPI1> value(new GameInputMotionInfoAPI1()); return value.get(); }
 
-    public: static GameInputMotionInfoAPI1 getInstance(){
+    public: static GameInputMotionInfoAPI1* getInstance(){
 
 
 

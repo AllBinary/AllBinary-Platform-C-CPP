@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,15 +44,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StupidTimer.h"
+        #include "org/allbinary/time/StupidTimer.h"
 
 class RendererInitializedStupidTimerFactory
             : public Object
          {
 
-    private: static StupidTimer instance() { return StupidTimer(); }
+    private: static StupidTimer* instance() { static std::unique_ptr<StupidTimer> value(new StupidTimer()); return value.get(); }
 
-    public: static StupidTimer getInstance(){
+    public: static StupidTimer* getInstance(){
 
 
 

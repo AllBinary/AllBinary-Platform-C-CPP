@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_GENERATOR_IDGENERATORENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_GENERATOR_IDGENERATORENTITYFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -49,14 +55,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "IdGeneratorEntity.h"
-#include "IdGeneratorEntityInterface.h"
+        #include "org/allbinary/data/tables/generator/IdGeneratorEntity.h"
+#include "org/allbinary/data/tables/generator/IdGeneratorEntityInterface.h"
 
 class IdGeneratorEntityFactory
             : public Object
          {
 
-    public: static IdGeneratorEntityInterface getInstance();
+    public: static IdGeneratorEntityInterface* getInstance();
 
 private: IdGeneratorEntityFactory();
 

@@ -21,6 +21,12 @@
         #ifndef TAGHELPERS_VALIDATIONVIEWHELPER_H
         #define TAGHELPERS_VALIDATIONVIEWHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -59,23 +65,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ViewHelper.h"
+        #include "taghelpers/ViewHelper.h"
 
 class ValidationViewHelper: public ViewHelper, public ValidationComponentInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: ValidationComponentInterface viewInterface;
+    private: ValidationComponentInterface* viewInterface;
 
-public: ValidationViewHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
+public: ValidationViewHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
-    public: Boolean isValid();
+    public: bool isValid();
 
     public: std::string validationInfo();
 
-    public: Document toValidationInfoDoc();
+    public: Document* toValidationInfoDoc();
 
-    public: Node toValidationInfoNode(Document document);
+    public: Node* toValidationInfoNode(Document* document);
 
 };
 

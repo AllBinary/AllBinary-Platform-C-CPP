@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ORDERS_HISTORY_STOREFRONTORDERSHISTORYSTATISTICS_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ORDERS_HISTORY_STOREFRONTORDERSHISTORYSTATISTICS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -72,38 +78,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreFrontOrdersHistoryStatisticsInterface.h"
-#include "StoreFrontOrdersHistoryStatisticsData.h"
+        #include "org/allbinary/business/context/modules/storefront/statistics/orders/history/StoreFrontOrdersHistoryStatisticsInterface.h"
+#include "org/allbinary/business/context/modules/storefront/statistics/orders/history/StoreFrontOrdersHistoryStatisticsData.h"
 
 class StoreFrontOrdersHistoryStatistics
             : public Object
-        : public StoreFrontOrdersHistoryStatisticsInterface {
+        , public StoreFrontOrdersHistoryStatisticsInterface {
 
-    private: Long numberOfOrdersLong;
+    private: int64_t numberOfOrdersLong;
 
-    private: Money subTotalMoney;
+    private: Money* subTotalMoney;
 
-    private: Money shippingCostMoney;
+    private: Money* shippingCostMoney;
 
-    private: Money taxesMoney;
+    private: Money* taxesMoney;
 
-    private: Money totalMoney;
+    private: Money* totalMoney;
 
-public: StoreFrontOrdersHistoryStatistics(StoreFrontInterface storeFrontInterface);
+public: StoreFrontOrdersHistoryStatistics(StoreFrontInterface* storeFrontInterface);
 
-    public: Long getNumberOfOrders();
+    public: int64_t getNumberOfOrders();
 
-    public: Money getSubTotal();
+    public: Money* getSubTotal();
 
-    public: Money getShippingCost();
+    public: Money* getShippingCost();
 
-    public: Money getTaxes();
+    public: Money* getTaxes();
 
-    public: Money getTotal();
+    public: Money* getTotal();
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
-    public: BasicArrayList toVector();
+    public: BasicArrayList* toVector();
 
     public: Object* getKey();
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_PASSWORDVALIDATOR_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_PASSWORDVALIDATOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/graphics/form/item/ABTextFieldItem.h>
 
       
@@ -42,11 +48,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TextFieldItemValidator.h"
+        #include "org/allbinary/graphics/form/item/validation/TextFieldItemValidator.h"
 
 class PasswordValidator: public TextFieldItemValidator {
 
-public: PasswordValidator(ABTextFieldItem textFieldItem, int32_t min, int32_t max, bool allowOnEmpty);
+public: PasswordValidator(ABTextFieldItem* textFieldItem, int32_t min, int32_t max, bool allowOnEmpty);
 
 };
 

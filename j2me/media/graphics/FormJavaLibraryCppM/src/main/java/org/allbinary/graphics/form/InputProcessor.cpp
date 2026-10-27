@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/canvas/Processor.h>
@@ -47,9 +53,9 @@
         
 class InputProcessor: public Processor {
 
-    private: PlayerGameInputCompositeInterface playerGameInputCompositeInterface;
+    private: PlayerGameInputCompositeInterface* playerGameInputCompositeInterface;
 
-public: InputProcessor(PlayerGameInputCompositeInterface playerGameInputCompositeInterface){
+public: InputProcessor(PlayerGameInputCompositeInterface* playerGameInputCompositeInterface){
 this->playerGameInputCompositeInterface= playerGameInputCompositeInterface;
     
 }
@@ -58,7 +64,7 @@ this->playerGameInputCompositeInterface= playerGameInputCompositeInterface;
                 //@Throws(Exception.constructor)
             
     public: void process(){
-this->playerGameInputCompositeInterface.getPlayerGameInput().update();
+this->playerGameInputCompositeInterface->getPlayerGameInput()->update();
     
 }
 

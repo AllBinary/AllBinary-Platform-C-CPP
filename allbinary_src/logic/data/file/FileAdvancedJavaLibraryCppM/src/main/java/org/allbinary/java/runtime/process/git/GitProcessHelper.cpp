@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -79,16 +85,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProcessBuilder.h"
-#include "Process.h"
+        #include "org/allbinary/java/runtime/process/git/ProcessBuilder.h"
+#include "org/allbinary/java/runtime/process/git/Process.h"
 //Do not use this instead just skip target, build, Application paths.
 class GitProcessHelper
             : public Object
          {
 
-    private: static GitProcessHelper instance() { return GitProcessHelper(); }
+    private: static GitProcessHelper* instance() { static std::unique_ptr<GitProcessHelper> value(new GitProcessHelper()); return value.get(); }
 
-    public: static GitProcessHelper getInstance(){
+    public: static GitProcessHelper* getInstance(){
 
 
 
@@ -98,26 +104,26 @@ class GitProcessHelper
 }
 
 
-    private: const TrackedStrings trackedStrings = TrackedStrings::getInstance();
+    private: TrackedStrings* trackedStrings = TrackedStrings::getInstance();
 
 private: GitProcessHelper(){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
     std::string THIS_IS_SLOW = "This is slow consider path exclusion instead";;
     
-logUtil.putF(THIS_IS_SLOW, this, commonStrings.CONSTRUCTOR);
+logUtil->putF(THIS_IS_SLOW, this, commonStrings->CONSTRUCTOR);
     
 }
 
 
                 //@Throws(IOException.constructor, InterruptedException.constructor)
             
-    public: List<std::string> trackedFiles(std::string rootAsString, std::string pathspec){
+    public: List<std::string>* trackedFiles(std::string rootAsString, std::string pathspec){
 
 
 
@@ -129,15 +135,15 @@ logUtil.putF(THIS_IS_SLOW, this, commonStrings.CONSTRUCTOR);
 
                 //@Throws(IOException.constructor, InterruptedException.constructor)
             
-    public: List<std::string> trackedFiles(std::string rootAsString, std::string pathspec, std::string suffix){
+    public: List<std::string>* trackedFiles(std::string rootAsString, std::string pathspec, std::string suffix){
 
-    Process process = ProcessBuilder(this->trackedStrings.GIT_COMMAND, this->trackedStrings.CHANGE_DIRECTORY_OPTION, rootAsString, this->trackedStrings.LIST_FILES_COMMAND, this->trackedStrings.SEP_BY_NULL_CHAR_INSTEAD_OF_NEW_LINE, this->trackedStrings.PATHSPEC_SEPARATOR, pathspec).redirectError(ProcessBuilder::Redirect.INHERIT).start();;
+    Process* process = (new ProcessBuilder(this->trackedStrings->GIT_COMMAND, this->trackedStrings->CHANGE_DIRECTORY_OPTION, rootAsString, this->trackedStrings->LIST_FILES_COMMAND, this->trackedStrings->SEP_BY_NULL_CHAR_INSTEAD_OF_NEW_LINE, this->trackedStrings->PATHSPEC_SEPARATOR, pathspec))->redirectError(ProcessBuilder::Redirect.INHERIT)->start();;
     
 
-    std::vector<int8_t> output = process.getInputStream().readAllBytes();;
+    std::vector<int8_t> output = process->getInputStream()->readAllBytes();;
     
 
-    int32_t exitCode = process.waitFor();;
+    int32_t exitCode = process->waitFor();;
     
 
                         if(exitCode != 0)
@@ -146,13 +152,13 @@ logUtil.putF(THIS_IS_SLOW, this, commonStrings.CONSTRUCTOR);
                                     
 
 
-                            throw IllegalStateException(StringMaker().append("git ls-files failed for ").append(rootAsString).append(" with exit code ").appendint(exitCode).toString());
+                            throw new IllegalStateException((new StringMaker())->append("git ls-files failed for ")->append(rootAsString)->append(" with exit code ")->appendint(exitCode)->toString());
                     
 
                                     }
                                 
 
-    List<std::string> files = ArrayList<>();;
+    List<std::string>* files = new ArrayList<>();;
     
 
     int32_t start = 0;;
@@ -174,10 +180,10 @@ logUtil.putF(THIS_IS_SLOW, this, commonStrings.CONSTRUCTOR);
                                     relativePath= String.fromCharCode(...output);
     
 
-                        if(relativePath.endsWith(suffix))
+                        if(JavaString::endsWith(relativePath, suffix))
                         
                                     {
-                                    files.add(relativePath);
+                                    files->add(relativePath);
     
 
                                     }
@@ -198,29 +204,29 @@ start= index +1;
 }
 
 
-    public: bool isTracked(AbFile file){
+    public: bool isTracked(AbFile* file){
 
         try {
             
-    File nativeFile = AbFileNativeUtil::get(file);;
+    File* nativeFile = AbFileNativeUtil::get(file);;
     
 
-    File parentFile = nativeFile.getParentFile();;
+    File* parentFile = nativeFile->getParentFile();;
     
 
-    Process process = ProcessBuilder(this->trackedStrings.GIT_COMMAND, this->trackedStrings.CHANGE_DIRECTORY_OPTION, parentFile.getPath(), this->trackedStrings.LIST_FILES_COMMAND, this->trackedStrings.ERROR_UNMATCH_OPTION, this->trackedStrings.PATHSPEC_SEPARATOR, nativeFile.getName()).redirectErrorStream(true).start();;
+    Process* process = (new ProcessBuilder(this->trackedStrings->GIT_COMMAND, this->trackedStrings->CHANGE_DIRECTORY_OPTION, parentFile->getPath(), this->trackedStrings->LIST_FILES_COMMAND, this->trackedStrings->ERROR_UNMATCH_OPTION, this->trackedStrings->PATHSPEC_SEPARATOR, nativeFile->getName()))->redirectErrorStream(true)->start();;
     
-process.getInputStream().readAllBytes();
+process->getInputStream()->readAllBytes();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return process.waitFor() == 0;
+                        return process->waitFor() == 0;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 

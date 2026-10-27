@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSCANVASFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSCANVASFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/color/BasicColorFactory.h>
@@ -56,17 +62,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ProgressCanvas.h"
+        #include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
 
 class ProgressCanvasFactory
             : public Object
          {
 
-    private: static Object* PROGRESS_FORM_SCREEN = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* PROGRESS_FORM_SCREEN = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static ProgressCanvas getInstance();
+    public: static ProgressCanvas* getInstance();
 
-    public: static PaintableInterface getLazyInstance();
+    public: static PaintableInterface* getLazyInstance();
 
 };
 

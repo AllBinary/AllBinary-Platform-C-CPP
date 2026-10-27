@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -81,19 +87,19 @@ class RegistrationConfiguration
             : public Object
          {
 
-    private: static const RegistrationConfiguration SINGLETON = RegistrationConfiguration();
+    private: static RegistrationConfiguration* SINGLETON() { static std::unique_ptr<RegistrationConfiguration> value(new RegistrationConfiguration()); return value.get(); }
 
-    public: static RegistrationConfiguration getInstance(){
+    public: static RegistrationConfiguration* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RegistrationConfiguration::SINGLETON;
+                        return RegistrationConfiguration::SINGLETON();
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string registrationCode = "No Registration Code";
 
@@ -105,7 +111,7 @@ private: RegistrationConfiguration(){
 
         try {
             
-                        if(FileFactory::getInstance().isFile(this->FILE))
+                        if(FileFactory::getInstance()->isFile(this->FILE))
                         
                                     {
                                     this->read();
@@ -121,12 +127,12 @@ private: RegistrationConfiguration(){
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &e);
     
 }
 
@@ -137,17 +143,17 @@ this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
             
     private: void read(){
 
-    FileStreamFactory fileInputStreamFactory = FileStreamFactory::getInstance();;
+    FileStreamFactory* fileInputStreamFactory = FileStreamFactory::getInstance();;
     
 
-    InputStream fileInputStream = fileInputStreamFactory.getFileInputStreamInstance(StringUtil::getInstance().EMPTY_STRING, this->FILE);;
+    InputStream* fileInputStream = fileInputStreamFactory->getFileInputStreamInstance(StringUtil::getInstance()->EMPTY_STRING, this->FILE);;
     
 
-    DataInputStream dataInputStream = DataInputStream(fileInputStream);;
+    DataInputStream* dataInputStream = new DataInputStream(fileInputStream);;
     
-this->setRegistrationCode(dataInputStream.readUTF());
+this->setRegistrationCode(dataInputStream->readUTF());
     
-PreLogUtil::put(StringMaker().append("Read Configuration: ").append(this->toString()).toString(), this, "read");
+PreLogUtil::put((new StringMaker())->append("Read Configuration: ")->append(this->toString())->toString(), this, "read");
     
 }
 
@@ -156,29 +162,29 @@ PreLogUtil::put(StringMaker().append("Read Configuration: ").append(this->toStri
             
     public: void write(){
 
-    AbDataOutputStream dataOutputStream = 
+    AbDataOutputStream* dataOutputStream = 
                 null
             ;;
     
 
         try {
-            this->logUtil.putF(StringMaker().append("Write Configuration: ").append(this->toString()).toString(), this, "write");
+            this->logUtil->putF((new StringMaker())->append("Write Configuration: ")->append(this->toString())->toString(), this, "write");
     
 
-    FileStreamFactory fileInputStreamFactory = FileStreamFactory::getInstance();;
+    FileStreamFactory* fileInputStreamFactory = FileStreamFactory::getInstance();;
     
 
-    OutputStream fileOutputStream = fileInputStreamFactory.getFileOutputStreamInstance(StringUtil::getInstance().EMPTY_STRING, this->FILE);;
+    OutputStream* fileOutputStream = fileInputStreamFactory->getFileOutputStreamInstance(StringUtil::getInstance()->EMPTY_STRING, this->FILE);;
     
-dataOutputStream= AbDataOutputStream(fileOutputStream);
+dataOutputStream= new AbDataOutputStream(fileOutputStream);
     
-dataOutputStream.writeUTF(this->getRegistrationCode());
+dataOutputStream->writeUTF(this->getRegistrationCode());
     
-dataOutputStream.flush();
+dataOutputStream->flush();
     
 
          finally {
-            StreamUtil::getInstance().close(dataOutputStream);
+            StreamUtil::getInstance()->close(dataOutputStream);
     
 
          }
@@ -191,7 +197,7 @@ dataOutputStream.flush();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().append("Registration Code: ").append(this->getRegistrationCode()).toString();;
+                        return (new StringMaker())->append("Registration Code: ")->append(this->getRegistrationCode())->toString();;
     
 }
 

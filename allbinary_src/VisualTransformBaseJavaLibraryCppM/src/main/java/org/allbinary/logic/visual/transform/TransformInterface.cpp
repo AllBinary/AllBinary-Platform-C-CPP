@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/document/mapping/DomDocumentMappingInterface.h>
@@ -50,15 +56,15 @@
         
 class TransformInterface: public DomDocumentMappingInterface, public CompositeTransformInfoInterface {
 
-    int32_t getTypeId()
+    public: virtual int32_t getTypeId() = 0;
 
-    void setTransformDocumentInterface(TransformDocumentInterface viewDocumentInterface)
+    public: virtual void setTransformDocumentInterface(TransformDocumentInterface* viewDocumentInterface) = 0;
 
-    TransformDocumentInterface getTransformDocumentInterface()
+    public: virtual TransformDocumentInterface* getTransformDocumentInterface() = 0;
 
                 //@Throws(Exception.constructor)
             
-    std::string view()
+    public: virtual std::string view() = 0;
 
 };
 

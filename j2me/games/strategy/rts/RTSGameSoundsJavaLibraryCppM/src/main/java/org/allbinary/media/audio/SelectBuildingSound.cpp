@@ -17,6 +17,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/media/audio/CompositeSound.h>
 
       
@@ -44,9 +50,9 @@
         
 class SelectBuildingSound: public CompositeSound {
 
-    private: static Sound soundInterface = SelectBuildingSound();
+    private: static inline Sound* soundInterface = new SelectBuildingSound();
 
-    public: static Sound getInstance(){
+    public: static Sound* getInstance(){
 
 
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPSTRINGS_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPSTRINGS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class BasicTopViewGeographicMapStrings
             : public Object
          {
 
-    private: static BasicTopViewGeographicMapStrings instance() { return BasicTopViewGeographicMapStrings(); }
+    private: static BasicTopViewGeographicMapStrings* instance() { static std::unique_ptr<BasicTopViewGeographicMapStrings> value(new BasicTopViewGeographicMapStrings()); return value.get(); }
 
-    public: static BasicTopViewGeographicMapStrings getInstance();
+    public: static BasicTopViewGeographicMapStrings* getInstance();
 
     public: const std::string DEFAULT = "Default";
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -69,24 +75,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CountedLayerInterfaceFactoryPart.h"
-#include "PartInterface.h"
+        #include "org/allbinary/game/part/CountedLayerInterfaceFactoryPart.h"
+#include "org/allbinary/game/part/PartInterface.h"
 
 class MakeCountedPartsSingletonArrayFactory
             : public Object
          {
 
-    private: static MakeCountedPartsSingletonArrayFactory instance() { return MakeCountedPartsSingletonArrayFactory(); }
+    private: static MakeCountedPartsSingletonArrayFactory* instance() { static std::unique_ptr<MakeCountedPartsSingletonArrayFactory> value(new MakeCountedPartsSingletonArrayFactory()); return value.get(); }
 
-    public: static MakeCountedPartsSingletonArrayFactory getInstance();
+    public: static MakeCountedPartsSingletonArrayFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: BasicArrayList list = BasicArrayListUtil::getInstance().getImmutableInstance();
+    private: BasicArrayList* list = BasicArrayListUtil::getInstance()->getImmutableInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<PartInterface> getUpdated(std::vector<PartInterface> partInterfaceArray);
+    public: std::vector<PartInterface*> getUpdated(std::vector<PartInterface*> partInterfaceArray);
 
 };
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMFACTORYUNUSED_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMFACTORYUNUSED_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,7 +64,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Item.h"
+        #include "org/allbinary/business/user/commerce/inventory/item/Item.h"
 
 class ItemFactoryUnused
             : public Object
@@ -66,11 +72,11 @@ class ItemFactoryUnused
 
                 //@Throws(MoneyException.constructor)
             
-    public: static TableMappingInterface getInstance(HashMap<Object*, Object*> hashMap);
+    public: static TableMappingInterface* getInstance(HashMap<Object*, Object*>* hashMap);
 
                 //@Throws(Exception.constructor, MoneyException.constructor)
             
-    public: static TableMappingInterface getInstance(HttpServletRequest request);
+    public: static TableMappingInterface* getInstance(HttpServletRequest* request);
 
 private: ItemFactoryUnused();
 

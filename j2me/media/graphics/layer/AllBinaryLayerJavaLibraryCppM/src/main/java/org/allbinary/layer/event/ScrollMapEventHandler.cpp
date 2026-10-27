@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -47,19 +53,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ScrollMapEventListenerInterface.h"
-#include "ScrollMapEvent.h"
+        #include "org/allbinary/layer/event/ScrollMapEventListenerInterface.h"
+#include "org/allbinary/layer/event/ScrollMapEvent.h"
 
 class ScrollMapEventHandler: public BasicEventHandler {
 
-    private: static ScrollMapEventHandler SINGLETON = ScrollMapEventHandler();
+    private: static ScrollMapEventHandler* SINGLETON() { static std::unique_ptr<ScrollMapEventHandler> value(new ScrollMapEventHandler()); return value.get(); }
 
-    public: static ScrollMapEventHandler getInstance(){
+    public: static ScrollMapEventHandler* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScrollMapEventHandler::SINGLETON;
+                        return ScrollMapEventHandler::SINGLETON();
     
 }
 
@@ -70,11 +76,11 @@ private: ScrollMapEventHandler(){
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
 
-    ScrollMapEventListenerInterface scrollMapEventListenerInterface = (eventListenerInterface);;
+    ScrollMapEventListenerInterface* scrollMapEventListenerInterface = (dynamic_cast<ScrollMapEventListenerInterface*>(eventListenerInterface));;
     
-scrollMapEventListenerInterface.onMoveEvent(eventObject);
+scrollMapEventListenerInterface->onMoveEvent(dynamic_cast<ScrollMapEvent*>(eventObject));
     
 }
 

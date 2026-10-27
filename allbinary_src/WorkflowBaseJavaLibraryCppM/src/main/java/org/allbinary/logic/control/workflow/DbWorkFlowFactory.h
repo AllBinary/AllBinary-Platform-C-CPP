@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Class.h"
@@ -68,24 +74,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WorkFlowWrapper.h"
-#include "WorkFlowInterface.h"
+        #include "org/allbinary/logic/control/workflow/WorkFlowWrapper.h"
+#include "org/allbinary/logic/control/workflow/WorkFlowInterface.h"
 
 class DbWorkFlowFactory
             : public Object
          {
 
-    private: static DbWorkFlowFactory instance() { return DbWorkFlowFactory(); }
+    private: static DbWorkFlowFactory* instance() { static std::unique_ptr<DbWorkFlowFactory> value(new DbWorkFlowFactory()); return value.get(); }
 
-    public: static DbWorkFlowFactory getInstance();
+    public: static DbWorkFlowFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: DbWorkFlowFactory();
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: WorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<Object*, Object*> hashMap);
+    public: WorkFlowInterface* getInstance(AbeClientInformationInterface* abeClientInformation, HashMap<Object*, Object*>* hashMap);
 
 };
 

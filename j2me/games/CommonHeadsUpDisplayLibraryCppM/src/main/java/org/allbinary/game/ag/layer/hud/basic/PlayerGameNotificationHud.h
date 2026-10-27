@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_PLAYERGAMENOTIFICATIONHUD_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_PLAYERGAMENOTIFICATIONHUD_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -106,31 +112,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        //#include "SetAndRemoveProcessor.h"
-//#include "NextUnremoveableProcessor.h"
+        //#include "org/allbinary/game/ag/layer/hud/basic/SetAndRemoveProcessor.h"
+//#include "org/allbinary/game/ag/layer/hud/basic/NextUnremoveableProcessor.h"
 
 class PlayerGameNotificationHud: public GameNotificationHud, public UpdateMyFontInterface {
 
-    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
+    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-    private: const std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;
+    private: const std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();
 
-    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(0);
+    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(0);
 
-    private: CircularIndexUtil circularIndexUtil;
+    private: CircularIndexUtil* circularIndexUtil;
 
-    private: const GameNotification gameNotification = GameNotification();
+    private: GameNotification* gameNotification = new GameNotification();
 
-    private: const GameNotification permanentGameNotification = GameNotification();
+    private: GameNotification* permanentGameNotification = new GameNotification();
 
 //inner= member=true isStatic=
 class SetAndRemoveProcessor: public Processor {
 
-    private: PlayerGameNotificationHud updateMeasurementProcessor;
+    private: PlayerGameNotificationHud* updateMeasurementProcessor;
 
-public: SetAndRemoveProcessor(PlayerGameNotificationHud updateMeasurementProcessor);
+public: SetAndRemoveProcessor(PlayerGameNotificationHud* updateMeasurementProcessor);
 
                 //@Throws(Exception.constructor)
             
@@ -142,9 +148,9 @@ public: SetAndRemoveProcessor(PlayerGameNotificationHud updateMeasurementProcess
 //inner= member=true isStatic=
 class NextUnremoveableProcessor: public Processor {
 
-    private: PlayerGameNotificationHud updateMeasurementProcessor;
+    private: PlayerGameNotificationHud* updateMeasurementProcessor;
 
-public: NextUnremoveableProcessor(PlayerGameNotificationHud updateMeasurementProcessor);
+public: NextUnremoveableProcessor(PlayerGameNotificationHud* updateMeasurementProcessor);
 
                 //@Throws(Exception.constructor)
             
@@ -153,29 +159,29 @@ public: NextUnremoveableProcessor(PlayerGameNotificationHud updateMeasurementPro
 };
 
             
-    private: const Processor setAndRemoveProcessor = SetAndRemoveProcessor(this);
+    private: Processor* setAndRemoveProcessor = new SetAndRemoveProcessor(this);
 
-    private: const Processor nextUnremoveableProcessor = NextUnremoveableProcessor(this);
+    private: Processor* nextUnremoveableProcessor = new NextUnremoveableProcessor(this);
 
-    private: Processor processor = Processor::getInstance();
+    private: Processor* processor = Processor::getInstance();
 
     private: const std::string PERMANENT_GAME_NOTIFICATION = "Permanent Game Notification: ";
 
-    private: std::string lastString = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string lastString = StringUtil::getInstance()->EMPTY_STRING;
 
     private: std::string string = this->EMPTY_STRING;
 
-    private: CustomGPoint point = CustomGPoint::NULL_CUSTOM_POINT;
+    private: CustomGPoint* point = CustomGPoint::NULL_CUSTOM_POINT;
 
     private: int32_t width= 0;
 
-public: PlayerGameNotificationHud(int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor);
+public: PlayerGameNotificationHud(int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor);
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
-    protected: GPoint getPoint(int32_t x, int32_t y);
+    protected: GPoint* getPoint(int32_t x, int32_t y);
 
-    protected: void add(std::string string, Integer seconds, BasicColor basicColor, Boolean permanent);
+    protected: void add(std::string string, int32_t seconds, BasicColor* basicColor, bool permanent);
 
                 //@Throws(Exception.constructor)
             
@@ -199,7 +205,7 @@ public: PlayerGameNotificationHud(int32_t location, int32_t direction, int32_t b
 
     public: void clear();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

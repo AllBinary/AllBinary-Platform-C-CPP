@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ENDGAMEINFO_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ENDGAMEINFO_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/GameInfo.h>
@@ -59,13 +65,13 @@ class EndGameInfo
 
     protected: const std::string NORMAL_GAME_OVER_WIN = "You Won";
 
-    private: std::string gameOverStr = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string gameOverStr = StringUtil::getInstance()->EMPTY_STRING;
 
     private: std::string winStr = this->gameOverStr;
 
 public: EndGameInfo();
 
-    public: void update(GameInfo gameInfo, MyCanvas myCanvas);
+    public: void update(GameInfo* gameInfo, MyCanvas* myCanvas);
 
     public: std::string getGameOverStr();
 

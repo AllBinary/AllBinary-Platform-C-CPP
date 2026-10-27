@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_MAPPING_PERSISTENTINPUTMAPPING_H
         #define ORG_ALLBINARY_GAME_INPUT_MAPPING_PERSISTENTINPUTMAPPING_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -91,27 +97,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "InputToGameKeyMapping.h"
+        #include "org/allbinary/game/input/mapping/InputToGameKeyMapping.h"
 //GameInputNoPersistanceLibrary
 class PersistentInputMapping
             : public Object
          {
 
-    public: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    public: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static PersistentInputMapping getNullInstance();
+    public: static PersistentInputMapping* getNullInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
+    private: EnumerationUtil* enumerationUtil = EnumerationUtil::getInstance();
 
-    private: const InputToGameKeyMapping inputMapping = InputToGameKeyMapping();
+    private: InputToGameKeyMapping* inputMapping = new InputToGameKeyMapping();
 
-    private: InputMappingEventListenerInterface inputMappingEventListenerInterface = NullInputMappingEventListener::NULL_INPUT_MAPPING_EVENT_LISTENER;
+    private: InputMappingEventListenerInterface* inputMappingEventListenerInterface = NullInputMappingEventListener::NULL_INPUT_MAPPING_EVENT_LISTENER;
 
-    private: InputPersistance inputPersistance;
+    private: InputPersistance* inputPersistance;
 
 protected: PersistentInputMapping(std::string name);
 
@@ -119,39 +125,39 @@ protected: PersistentInputMapping(std::string name);
 
     protected: bool isDefaultNew();
 
-    protected: InputToGameKeyMapping getDefault();
+    protected: InputToGameKeyMapping* getDefault();
 
                 //@Throws(Exception.constructor)
             
-    public: void setDefault(AbeClientInformationInterface abeClientInformation);
+    public: void setDefault(AbeClientInformationInterface* abeClientInformation);
 
                 //@Throws(Exception.constructor)
             
-    public: void update(AbeClientInformationInterface abeClientInformation);
+    public: void update(AbeClientInformationInterface* abeClientInformation);
 
-    private: InputMappingEvent inputMappingEvent = InputMappingEvent(this);
-
-                //@Throws(Exception.constructor)
-            
-    public: void save(AbeClientInformationInterface abeClientInformation);
+    private: InputMappingEvent* inputMappingEvent = new InputMappingEvent(this);
 
                 //@Throws(Exception.constructor)
             
-    public: void init(AbeClientInformationInterface abeClientInformation);
-
-    public: void setInputMappingEventListenerInterface(InputMappingEventListenerInterface inputMappingEventListenerInterface);
-
-    private: InputMappingEventListenerInterface getInputMappingEventListenerInterface();
-
-    public: InputToGameKeyMapping getInputMapping();
+    public: void save(AbeClientInformationInterface* abeClientInformation);
 
                 //@Throws(Exception.constructor)
             
-    public: bool isDelete(Input input);
+    public: void init(AbeClientInformationInterface* abeClientInformation);
+
+    public: void setInputMappingEventListenerInterface(InputMappingEventListenerInterface* inputMappingEventListenerInterface);
+
+    private: InputMappingEventListenerInterface* getInputMappingEventListenerInterface();
+
+    public: InputToGameKeyMapping* getInputMapping();
 
                 //@Throws(Exception.constructor)
             
-    public: bool isSystemInput(Input input);
+    public: bool isDelete(Input* input);
+
+                //@Throws(Exception.constructor)
+            
+    public: bool isSystemInput(Input* input);
 
 };
 

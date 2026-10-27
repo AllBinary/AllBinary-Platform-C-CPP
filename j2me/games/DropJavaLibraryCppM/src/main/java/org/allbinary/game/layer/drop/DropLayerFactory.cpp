@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h>
@@ -55,26 +61,26 @@ class DropLayerFactory
             : public Object
          {
 
-    private: static const DropLayerFactory DROP_LAYER_FACTORY = DropLayerFactory();
+    private: static DropLayerFactory* DROP_LAYER_FACTORY() { static std::unique_ptr<DropLayerFactory> value(new DropLayerFactory()); return value.get(); }
 
-    public: static DropLayerFactory getInstance(){
+    public: static DropLayerFactory* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DropLayerFactory::DROP_LAYER_FACTORY;
+                        return DropLayerFactory::DROP_LAYER_FACTORY();
     
 }
 
 
-    private: const BasicArrayList list = BasicArrayListD();
+    private: BasicArrayList* list = new BasicArrayListD();
 
 private: DropLayerFactory(){
 }
 
 
     public: void clear(){
-this->list.clear();
+this->list->clear();
     
 }
 
@@ -84,30 +90,30 @@ this->list.clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->list.size();;
+                        return this->list->size();;
     
 }
 
 
-    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
+    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    public: PickedUpLayerInterfaceFactoryInterface getRandomInstance(){
+    public: PickedUpLayerInterfaceFactoryInterface* getRandomInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->basicArrayListUtil.getRandom(this->list);
+                        return dynamic_cast<PickedUpLayerInterfaceFactoryInterface*>(this->basicArrayListUtil->getRandom(this->list));
     
 }
 
 
-    public: void add(PickedUpLayerInterfaceFactoryInterface layerInterfaceFactoryInterface){
-this->list.add(layerInterfaceFactoryInterface);
+    public: void add(PickedUpLayerInterfaceFactoryInterface* layerInterfaceFactoryInterface){
+this->list->add(layerInterfaceFactoryInterface);
     
 }
 
 
-    public: BasicArrayList getList(){
+    public: BasicArrayList* getList(){
 
 
 

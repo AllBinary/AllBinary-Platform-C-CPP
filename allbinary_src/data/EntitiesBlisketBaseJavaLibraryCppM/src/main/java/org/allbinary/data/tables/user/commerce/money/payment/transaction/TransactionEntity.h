@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONENTITY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Long.h"
@@ -85,11 +91,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TransactionEntityInterface.h"
+        #include "org/allbinary/data/tables/user/commerce/money/payment/transaction/TransactionEntityInterface.h"
 
 class TransactionEntity: public AbSqlBean, public TransactionEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const std::string tableName = "vtrans";
 
@@ -97,7 +103,7 @@ public: TransactionEntity();
 
     public: void remove(std::string userName, std::string orderNumber);
 
-    public: void add(std::string userName, std::string orderNumber, PaymentTransactionInterface paymentTransactionInterface);
+    public: void add(std::string userName, std::string orderNumber, PaymentTransactionInterface* paymentTransactionInterface);
 
     public: std::string createTableStatement();
 

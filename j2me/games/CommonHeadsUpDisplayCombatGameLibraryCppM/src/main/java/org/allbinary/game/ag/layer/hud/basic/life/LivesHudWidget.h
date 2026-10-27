@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -67,25 +73,25 @@
         
 class LivesHudWidget: public BasicHud, public PaintableInterface {
 
-    private: Life lifeInterface;
+    private: Life* lifeInterface;
 
     private: std::vector<int32_t> xArray;
 
-    private: Animation animationInterface;
+    private: Animation* animationInterface;
 
-public: LivesHudWidget(Animation animationInterface, Life lifeInterface, int32_t location, int32_t direction);
+public: LivesHudWidget(Animation* animationInterface, Life* lifeInterface, int32_t location, int32_t direction);
 
-    public: void updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics* graphics);
 
-    public: void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent);
+    public: void onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent);
 
     public: void setX(int32_t x);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
-    public: void paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics* graphics);
 
-    public: Life getLifeInterface();
+    public: Life* getLifeInterface();
 
 };
 

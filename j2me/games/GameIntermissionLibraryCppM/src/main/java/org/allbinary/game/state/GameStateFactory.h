@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_STATE_GAMESTATEFACTORY_H
         #define ORG_ALLBINARY_GAME_STATE_GAMESTATEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
@@ -44,29 +50,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameState.h"
+        #include "org/allbinary/game/state/GameState.h"
 
 class GameStateFactory
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static GameStateFactory getInstance();
+    public: static GameStateFactory* getInstance();
 
     private: int32_t index = 0;
 
-    public: const GameState NO_GAME_STATE = this->createGameState("NO_GAME_STATE");
+    public: GameState* NO_GAME_STATE = this->createGameState("NO_GAME_STATE");
 
-    public: const GameState PLAYING_GAME_STATE = this->createGameState("PLAYING_GAME_STATE");
+    public: GameState* PLAYING_GAME_STATE = this->createGameState("PLAYING_GAME_STATE");
 
-    public: const GameState SHOW_END_RESULT_GAME_STATE = this->createGameState("SHOW_END_RESULT_GAME_STATE");
+    public: GameState* SHOW_END_RESULT_GAME_STATE = this->createGameState("SHOW_END_RESULT_GAME_STATE");
 
-    public: const GameState SHOW_HIGH_SCORE_GAME_STATE = this->createGameState("SHOW_HIGH_SCORE_GAME_STATE");
+    public: GameState* SHOW_HIGH_SCORE_GAME_STATE = this->createGameState("SHOW_HIGH_SCORE_GAME_STATE");
 
 private: GameStateFactory();
 
-    public: GameState createGameState(std::string name);
+    public: GameState* createGameState(std::string name);
 
 };
 

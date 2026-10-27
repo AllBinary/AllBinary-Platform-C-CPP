@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -79,72 +85,72 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DefaultListModelHelper.h"
-#include "InputAutomationModuleFactoryInterface.h"
+        #include "org/allbinary/input/automation/module/DefaultListModelHelper.h"
+#include "org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h"
 
 class InputAutomationModuleFactoryFactory
             : public Object
          {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: HashMap<Object*, Object*> hashMap;
+    private: HashMap<Object*, Object*>* hashMap;
 
-    private: DefaultListModelHelper defaultListModelHelper;
+    private: DefaultListModelHelper* defaultListModelHelper;
 
-    private: HelpSetListener helpSetListenerInterface;
+    private: HelpSetListener* helpSetListenerInterface;
 
-public: InputAutomationModuleFactoryFactory(InputAutomationModuleConfigurations inputAutomationModuleConfigurations, HelpSetListener helpSetListenerInterface){
+public: InputAutomationModuleFactoryFactory(InputAutomationModuleConfigurations* inputAutomationModuleConfigurations, HelpSetListener* helpSetListenerInterface){
 this->helpSetListenerInterface= helpSetListenerInterface;
     
-this->defaultListModelHelper= DefaultListModelHelper();
+this->defaultListModelHelper= new DefaultListModelHelper();
     
-this->hashMap= StdUtil::getInstance().createHashMap();
-    
-
-    Collection collection = inputAutomationModuleConfigurations.getHashMap().values();;
+this->hashMap= StdUtil::getInstance()->createHashMap();
     
 
-    Iterator iterator = collection.iterator();;
+    Collection* collection = inputAutomationModuleConfigurations->getHashMap()->values();;
     
 
-    InputAutomationModuleConfiguration inputAutomationModuleConfiguration;;
+    Iterator* iterator = collection->iterator();;
     
 
-        while(iterator.hasNext())
+    InputAutomationModuleConfiguration* inputAutomationModuleConfiguration;;
+    
+
+        while(iterator->hasNext())
         {
-inputAutomationModuleConfiguration= iterator.next();
+inputAutomationModuleConfiguration= dynamic_cast<InputAutomationModuleConfiguration*>(iterator->next());
     
 this->add(inputAutomationModuleConfiguration);
     
 }
 
-this->defaultListModelHelper.initDefaultModelList();
+this->defaultListModelHelper->initDefaultModelList();
     
-this->logUtil.putF("Loaded " +this->hashMap.size() +"/" +this->defaultListModelHelper.getListModel().getSize() +" Input Automation Modules", this, "Contructor");
+this->logUtil->putF("Loaded " +this->hashMap->size() +"/" +this->defaultListModelHelper->getListModel()->getSize() +" Input Automation Modules", this, "Contructor");
     
 }
 
 
-    private: void add(InputAutomationModuleConfiguration inputAutomationModuleConfiguration){
+    private: void add(InputAutomationModuleConfiguration* inputAutomationModuleConfiguration){
 
-    InputAutomationModuleFactoryInterface inputAutomationModuleInterface = inputAutomationModuleConfiguration.getInputAutomationModuleInterface();;
+    InputAutomationModuleFactoryInterface* inputAutomationModuleInterface = inputAutomationModuleConfiguration->getInputAutomationModuleInterface();;
     
-this->hashMap.put(inputAutomationModuleConfiguration.getName(), inputAutomationModuleInterface);
+this->hashMap->put(inputAutomationModuleConfiguration->getName(), inputAutomationModuleInterface);
     
-this->defaultListModelHelper.add(inputAutomationModuleConfiguration.getName());
+this->defaultListModelHelper->add(inputAutomationModuleConfiguration->getName());
     
 
-    HelpSet helpSet = inputAutomationModuleInterface.getHelpSet();;
+    HelpSet* helpSet = inputAutomationModuleInterface->getHelpSet();;
     
 
                         if(!JavaHelpSetNotifier::isNotified(helpSet))
                         
                                     {
                                     
-    HelpSetEvent helpSetEvent = HelpSetEvent(this, helpSet, HelpSetEvent::HELPSET_ADDED);;
+    HelpSetEvent* helpSetEvent = new HelpSetEvent(this, helpSet, HelpSetEvent::HELPSET_ADDED);;
     
-this->helpSetListenerInterface.helpSetAdded(helpSetEvent);
+this->helpSetListenerInterface->helpSetAdded(helpSetEvent);
     
 
                                     }
@@ -152,24 +158,24 @@ this->helpSetListenerInterface.helpSetAdded(helpSetEvent);
 }
 
 
-    public: ListModel getListModel(){
+    public: ListModel* getListModel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->defaultListModelHelper.getListModel();
+                        return dynamic_cast<ListModel*>(this->defaultListModelHelper->getListModel());
     
 }
 
 
-    public: InputAutomationModuleFactoryInterface getInstance(std::string moduleName){
+    public: InputAutomationModuleFactoryInterface* getInstance(std::string moduleName){
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF("Getting Module: " +moduleName, this, commonStrings.GET_INSTANCE);
+this->logUtil->putF("Getting Module: " +moduleName, this, commonStrings->GET_INSTANCE);
     
 
-    InputAutomationModuleFactoryInterface inputAutomationModuleFactoryInterface = this->hashMap.get(moduleName);;
+    InputAutomationModuleFactoryInterface* inputAutomationModuleFactoryInterface = dynamic_cast<InputAutomationModuleFactoryInterface*>(this->hashMap->get(moduleName));;
     
 
                         if(inputAutomationModuleFactoryInterface == 
@@ -177,7 +183,7 @@ this->logUtil.putF("Getting Module: " +moduleName, this, commonStrings.GET_INSTA
                                 )
                         
                                     {
-                                    this->logUtil.putF("Module: " +moduleName +" was null", this, commonStrings.GET_INSTANCE);
+                                    this->logUtil->putF("Module: " +moduleName +" was null", this, commonStrings->GET_INSTANCE);
     
 
                                     }

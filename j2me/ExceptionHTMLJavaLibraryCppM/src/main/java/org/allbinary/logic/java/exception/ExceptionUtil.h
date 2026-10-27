@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_EXCEPTION_EXCEPTIONUTIL_H
         #define ORG_ALLBINARY_LOGIC_JAVA_EXCEPTION_EXCEPTIONUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Throwable.h"
@@ -53,17 +59,17 @@
             : public Object
          {
 
-    private: static ExceptionUtil instance() { return ExceptionUtil(); }
+    private: static ExceptionUtil* instance() { static std::unique_ptr<ExceptionUtil> value(new ExceptionUtil()); return value.get(); }
 
-    /*actual*/ public: static ExceptionUtil getInstance();
+    /*actual*/ public: static ExceptionUtil* getInstance();
 
-    /*actual*/ public: static const Exception PRETEND_EXCEPTION = Exception("Not Really An Exception");
+    /*actual*/ public: static Exception* PRETEND_EXCEPTION() { static std::unique_ptr<Exception> value(new Exception("Not Really An Exception")); return value.get(); }
 
 private: ExceptionUtil();
 
     private: const std::string NONE = "No Stack Trace";
 
-    /*actual*/ public: std::string getStackTrace(Throwable e);
+    /*actual*/ public: std::string getStackTrace(Throwable* e);
 
 };
 

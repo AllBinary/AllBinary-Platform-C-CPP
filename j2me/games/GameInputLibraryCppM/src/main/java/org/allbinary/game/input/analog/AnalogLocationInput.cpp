@@ -4,6 +4,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/CustomGPoint.h>
@@ -32,11 +38,11 @@ class AnalogLocationInput
             : public Object
          {
 
-    public: static const AnalogLocationInput NULL_ANALOG_LOCATION_INPUT = AnalogLocationInput( -1);
+    public: static AnalogLocationInput* NULL_ANALOG_LOCATION_INPUT() { static std::unique_ptr<AnalogLocationInput> value(new AnalogLocationInput( -1)); return value.get(); }
 
     private: int32_t playerId;
 
-    private: CustomGPoint customGPoint;
+    private: CustomGPoint* customGPoint;
 
     private: int32_t rz= 0;
 
@@ -47,7 +53,7 @@ class AnalogLocationInput
 : AnalogLocationInput(int32_t playerId){
 this->playerId= playerId;
     
-this->customGPoint= CustomGPoint(0, 0, 0);
+this->customGPoint= new CustomGPoint(0, 0, 0);
     
 }
 
@@ -62,7 +68,7 @@ this->customGPoint= CustomGPoint(0, 0, 0);
 }
 
 
-    public: CustomGPoint getCustomGPoint(){
+    public: CustomGPoint* getCustomGPoint(){
 
 
 

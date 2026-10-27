@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_COMMANDTEXTITEM_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_COMMANDTEXTITEM_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Command.h>
 
       
@@ -45,17 +51,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ABTextItem.h"
+        #include "org/allbinary/graphics/form/item/ABTextItem.h"
 
 class CommandTextItem: public ABTextItem {
 
-    private: Command command;
+    private: Command* command;
 
-public: CommandTextItem(Command command, int32_t layout, std::string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: CommandTextItem(Command* command, int32_t layout, std::string altText, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
     public: bool isFocusable();
 
-    public: Command getCommand();
+    public: Command* getCommand();
 
 };
 

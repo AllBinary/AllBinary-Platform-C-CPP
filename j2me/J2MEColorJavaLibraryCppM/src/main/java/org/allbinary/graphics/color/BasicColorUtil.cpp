@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -40,15 +46,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicColor.h"
+        #include "org/allbinary/graphics/color/BasicColor.h"
 
 class BasicColorUtil
             : public Object
          {
 
-    private: static BasicColorUtil instance() { return BasicColorUtil(); }
+    private: static BasicColorUtil* instance() { static std::unique_ptr<BasicColorUtil> value(new BasicColorUtil()); return value.get(); }
 
-    public: static BasicColorUtil getInstance(){
+    public: static BasicColorUtil* getInstance(){
 
 
 
@@ -58,7 +64,7 @@ class BasicColorUtil
 }
 
 
-    public: const std::vector<BasicColor> ZERO_ARRAY = {};
+    public: const std::vector<BasicColor*> ZERO_ARRAY = {};
 
     public: const int32_t ALPHA = static_cast<int32_t>(0xFF000000);
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GLOBALS_URLGLOBALSDATA_H
         #define ORG_ALLBINARY_GLOBALS_URLGLOBALSDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,15 +52,15 @@ class UrlGlobalsData
             : public Object
          {
 
-    public: static const std::string NAME = "URLGLOBALS_NAME";
+    public: static inline const std::string NAME = "URLGLOBALS_NAME";
 
-    public: static const std::string WEBAPPPATH = "URLGLOBALS_WEBAPPPATH";
+    public: static inline const std::string WEBAPPPATH = "URLGLOBALS_WEBAPPPATH";
 
-    public: static const std::string TESTINGMODE = "URLGLOBALS_TESTINGMODE";
+    public: static inline const std::string TESTINGMODE = "URLGLOBALS_TESTINGMODE";
 
-    public: static const std::string TESTINGHTMLPATH = "URLGLOBALS_TESTINGHTMLPATH";
+    public: static inline const std::string TESTINGHTMLPATH = "URLGLOBALS_TESTINGHTMLPATH";
 
-    public: static const std::string MAINPATH = "URLGLOBALS_MAINPATH";
+    public: static inline const std::string MAINPATH = "URLGLOBALS_MAINPATH";
 
 private: UrlGlobalsData();
 

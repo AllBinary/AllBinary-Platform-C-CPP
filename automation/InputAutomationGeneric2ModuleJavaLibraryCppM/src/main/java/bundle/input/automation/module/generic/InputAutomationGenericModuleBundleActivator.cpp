@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/input/automation/module/generic/InputAutomationGenericModuleServiceFactory.h>
@@ -55,9 +61,9 @@ public: InputAutomationGenericModuleBundleActivator(){
             
     public: void init(){
 
-    InputAutomationGenericModuleServiceFactory inputAutomationGenericModuleServiceFactory = InputAutomationGenericModuleServiceFactory::getInstance();;
+    InputAutomationGenericModuleServiceFactory* inputAutomationGenericModuleServiceFactory = InputAutomationGenericModuleServiceFactory::getInstance();;
     
-this->setInputAutomationModuleInterface(inputAutomationGenericModuleServiceFactory.getInputAutomationModuleInterfaceArray());
+this->setInputAutomationModuleInterface(inputAutomationGenericModuleServiceFactory->getInputAutomationModuleInterfaceArray());
     
 this->setServiceFactory(inputAutomationGenericModuleServiceFactory);
     

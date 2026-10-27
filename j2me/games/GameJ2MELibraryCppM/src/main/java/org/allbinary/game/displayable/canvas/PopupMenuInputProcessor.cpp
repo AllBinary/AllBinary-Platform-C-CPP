@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -83,20 +89,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicMenuInputProcessor.h"
-#include "AllBinaryGameCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
 class PopupMenuInputProcessor: public BasicMenuInputProcessor {
 
-    private: const RectangleCollisionUtil rectangleCollisionUtil = RectangleCollisionUtil::getInstance();
+    private: RectangleCollisionUtil* rectangleCollisionUtil = RectangleCollisionUtil::getInstance();
 
     private: const int32_t CLICK_DELAY = 120;
 
-    private: const TimeDelayHelper clickTimeHelper = TimeDelayHelper(this->CLICK_DELAY);
+    private: TimeDelayHelper* clickTimeHelper = new TimeDelayHelper(this->CLICK_DELAY);
 
-    private: Rectangle rectangle;
+    private: Rectangle* rectangle;
 
-public: PopupMenuInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, MyCanvas gameCanvas, Rectangle rectangle) : BasicMenuInputProcessor(gameKeyEventList, playerInputId, gameCanvas){
+public: PopupMenuInputProcessor(BasicArrayList* gameKeyEventList, int32_t playerInputId, MyCanvas* gameCanvas, Rectangle* rectangle) : BasicMenuInputProcessor(gameKeyEventList, playerInputId, gameCanvas){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -108,7 +114,7 @@ this->rectangle= rectangle;
 }
 
 
-    public: void init(Rectangle rectangle){
+    public: void init(Rectangle* rectangle){
 this->rectangle= rectangle;
     
 }
@@ -122,9 +128,9 @@ this->rectangle= rectangle;
                         
                                     {
                                     
-    AllBinaryGameCanvas gameCanvas = this->getCanvas();;
+    AllBinaryGameCanvas* gameCanvas = dynamic_cast<AllBinaryGameCanvas*>(this->getCanvas());;
     
-gameCanvas.toggleMenu();
+gameCanvas->toggleMenu();
     
 
 
@@ -153,16 +159,16 @@ gameCanvas.toggleMenu();
     int32_t motionInputsIndex = this->processMotionInputs();;
     
 
-    BasicArrayList list = this->getGameKeyEventList();;
+    BasicArrayList* list = this->getGameKeyEventList();;
     
 
-    int32_t size = list.size();;
+    int32_t size = list->size();;
     
 
     int32_t key = 0;;
     
 
-    GameKeyEvent gameKeyEvent;;
+    GameKeyEvent* gameKeyEvent;;
     
 
 
@@ -171,7 +177,7 @@ gameCanvas.toggleMenu();
                         for (
     int32_t index = 0;index < size; index++)
         {
-gameKeyEvent= list.objectArray[index];
+gameKeyEvent= dynamic_cast<GameKeyEvent*>(list->objectArray[index]);
     
 
                         if(gameKeyEvent != 
@@ -179,7 +185,7 @@ gameKeyEvent= list.objectArray[index];
                                 )
                         
                                     {
-                                    key= gameKeyEvent.getKey();
+                                    key= gameKeyEvent->getKey();
     
 
                         if(this->processInput(key) == 1)
@@ -223,9 +229,9 @@ this->clear();
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, GameInputStrings::getInstance().PROCESS_INPUT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, GameInputStrings::getInstance()->PROCESS_INPUT, &e);
     
 
 
@@ -249,7 +255,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, GameInputStrings::getInst
                         
                                     {
                                     
-    MotionGestureEvent motionGestureEvent = this->motionGestureEventList.objectArray[lastIndex];;
+    MotionGestureEvent* motionGestureEvent = dynamic_cast<MotionGestureEvent*>(this->motionGestureEventList.objectArray[lastIndex]);;
     
 this->processMotionInput(motionGestureEvent);
     
@@ -269,7 +275,7 @@ this->motionGestureEventList.clear();
 
                 //@Throws(Exception.constructor)
             
-    protected: void processMotionInput(MotionGestureEvent motionGestureEvent){
+    protected: void processMotionInput(MotionGestureEvent* motionGestureEvent){
 
                         if(motionGestureEvent == 
                                     nullptr
@@ -288,33 +294,33 @@ this->motionGestureEventList.clear();
                                     }
                                 
 
-    TouchMotionGestureFactory touchMotionGestureFactory = TouchMotionGestureFactory::getInstance();;
+    TouchMotionGestureFactory* touchMotionGestureFactory = TouchMotionGestureFactory::getInstance();;
     
 
-    MotionGestureInput motionGestureInput = motionGestureEvent.getMotionGesture();;
+    MotionGestureInput* motionGestureInput = motionGestureEvent->getMotionGesture();;
     
 
-                        if(motionGestureInput == touchMotionGestureFactory.RELEASED)
+                        if(motionGestureInput == touchMotionGestureFactory->RELEASED)
                         
                                     {
                                     
-    GPoint point = motionGestureEvent.getCurrentPoint();;
+    GPoint* point = motionGestureEvent->getCurrentPoint();;
     
 
-    GPoint rectPoint = this->rectangle.getPoint();;
+    GPoint* rectPoint = this->rectangle->getPoint();;
     
 
-                        if(this->rectangleCollisionUtil.isInside(rectPoint.getX(), rectPoint.getY(), this->rectangle.getMaxX() +20, this->rectangle.getMaxY(), point.getX(), point.getY()))
+                        if(this->rectangleCollisionUtil->isInside(rectPoint->getX(), rectPoint->getY(), this->rectangle->getMaxX() +20, this->rectangle->getMaxY(), point->getX(), point->getY()))
                         
                                     {
                                     
-                        if(this->clickTimeHelper.isTimeTNT())
+                        if(this->clickTimeHelper->isTimeTNT())
                         
                                     {
                                     
-    AllBinaryGameCanvas gameCanvas = this->getCanvas();;
+    AllBinaryGameCanvas* gameCanvas = dynamic_cast<AllBinaryGameCanvas*>(this->getCanvas());;
     
-gameCanvas.toggleMenu();
+gameCanvas->toggleMenu();
     
 
                                     }

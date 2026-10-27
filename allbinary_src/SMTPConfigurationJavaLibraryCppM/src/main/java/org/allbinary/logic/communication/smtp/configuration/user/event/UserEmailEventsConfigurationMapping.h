@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTSCONFIGURATIONMAPPING_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTSCONFIGURATIONMAPPING_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,18 +64,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserEmailEventsConfigurationInterface.h"
-#include "UserEmailEventsConfigurationData.h"
+        #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventsConfigurationInterface.h"
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventsConfigurationData.h"
 
 class UserEmailEventsConfigurationMapping
             : public Object
-        : public TableMappingInterface {
+        , public TableMappingInterface {
 
-    private: UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface;
+    private: UserEmailEventsConfigurationInterface* userEmailEventsConfigurationInterface;
 
-public: UserEmailEventsConfigurationMapping(UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface);
+public: UserEmailEventsConfigurationMapping(UserEmailEventsConfigurationInterface* userEmailEventsConfigurationInterface);
 
-    public: HashMap<Object*, Object*> toHashMap();
+    public: HashMap<Object*, Object*>* toHashMap();
 
                 //@Throws(Exception.constructor)
             
@@ -77,7 +83,7 @@ public: UserEmailEventsConfigurationMapping(UserEmailEventsConfigurationInterfac
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList toVector();
+    public: BasicArrayList* toVector();
 
 };
 

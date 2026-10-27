@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -96,15 +102,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PaymentEntityInterface.h"
+        #include "org/allbinary/data/tables/user/commerce/money/payment/PaymentEntityInterface.h"
 
 class PaymentEntity: public AbSqlBean, public PaymentEntityInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: const std::string tableName = "payment";
 
-public: PaymentEntity() : AbSqlBean(UserDbInitInfo()){
+public: PaymentEntity() : AbSqlBean(new UserDbInitInfo()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -126,19 +132,19 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void setDefault(std::string userName, Integer index){
+    public: void setDefault(std::string userName, int32_t index){
 
         try {
             
-    HashMap<Object*, Object*> updateKeyAndValue = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* updateKeyAndValue = StdUtil::getInstance()->createHashMap();;
     
 
-    HashMap<Object*, Object*> whereKeyAndValue = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* whereKeyAndValue = StdUtil::getInstance()->createHashMap();;
     
-whereKeyAndValue.put(UserData::USERNAME, userName);
+whereKeyAndValue->put(UserData::USERNAME, userName);
     
 
-    PaymentInterface paymentInterface = this->getDefault(userName);;
+    PaymentInterface* paymentInterface = this->getDefault(userName);;
     
 
                         if(paymentInterface != 
@@ -146,39 +152,39 @@ whereKeyAndValue.put(UserData::USERNAME, userName);
                                 )
                         
                                     {
-                                    updateKeyAndValue.put(EntryData::getInstance().DEFAULT, StringUtil::getInstance().EMPTY_STRING);
+                                    updateKeyAndValue->put(EntryData::getInstance()->DEFAULT, StringUtil::getInstance()->EMPTY_STRING);
     
-whereKeyAndValue.put(PaymentData::ID, paymentInterface.getId());
+whereKeyAndValue->put(PaymentData::ID, paymentInterface->getId());
     
 super.updateWhere(whereKeyAndValue, updateKeyAndValue);
     
 
                                     }
                                 
-updateKeyAndValue.put(EntryData::getInstance().DEFAULT, EntryData::getInstance().DEFAULT);
+updateKeyAndValue->put(EntryData::getInstance()->DEFAULT, EntryData::getInstance()->DEFAULT);
     
-whereKeyAndValue.put(PaymentData::ID, std::to_string(index));
+whereKeyAndValue->put(PaymentData::ID, std::to_string(index));
     
 super.updateWhere(whereKeyAndValue, updateKeyAndValue);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, "setDefault");
+                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, "setDefault");
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, "setDefault", e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, "setDefault", &e);
     
 
                                     }
@@ -188,22 +194,22 @@ super.updateWhere(whereKeyAndValue, updateKeyAndValue);
 }
 
 
-    public: BasicArrayList get(std::string userName){
+    public: BasicArrayList* get(std::string userName){
 
         try {
             
-    BasicArrayList paymentVector = BasicArrayListD();;
+    BasicArrayList* paymentVector = new BasicArrayListD();;
     
 
-    HashMap<Object*, Object*> keyAndValue = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* keyAndValue = StdUtil::getInstance()->createHashMap();;
     
-keyAndValue.put(UserData::USERNAME, userName);
-    
-
-    BasicArrayList paymentList = super.getRows(keyAndValue);;
+keyAndValue->put(UserData::USERNAME, userName);
     
 
-    int32_t size = paymentList.size();;
+    BasicArrayList* paymentList = super.getRows(keyAndValue);;
+    
+
+    int32_t size = paymentList->size();;
     
 
 
@@ -213,10 +219,10 @@ keyAndValue.put(UserData::USERNAME, userName);
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<Object*, Object*> paymentHashMap = paymentList.get(index);;
+    HashMap<Object*, Object*>* paymentHashMap = dynamic_cast<HashMap*>(paymentList->get(index));;
     
 
-    Payment payment = Payment(paymentHashMap);;
+    Payment* payment = new Payment(paymentHashMap);;
     
 
                         if(payment != 
@@ -224,7 +230,7 @@ keyAndValue.put(UserData::USERNAME, userName);
                                 )
                         
                                     {
-                                    paymentVector.add(payment);
+                                    paymentVector->add(payment);
     
 
                                     }
@@ -239,13 +245,13 @@ keyAndValue.put(UserData::USERNAME, userName);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, this->commonStrings.GET, e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, this->commonStrings.GET, &e);
     
 
                                     }
@@ -261,18 +267,18 @@ keyAndValue.put(UserData::USERNAME, userName);
 }
 
 
-    public: PaymentInterface getDefault(std::string userName){
+    public: PaymentInterface* getDefault(std::string userName){
 
         try {
             
-    HashMap<Object*, Object*> paymentHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* paymentHashMap = StdUtil::getInstance()->createHashMap();;
     
 
-    HashMap<Object*, Object*> updateKeyAndValue = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* updateKeyAndValue = StdUtil::getInstance()->createHashMap();;
     
-updateKeyAndValue.put(EntryData::getInstance().DEFAULT, EntryData::getInstance().DEFAULT);
+updateKeyAndValue->put(EntryData::getInstance()->DEFAULT, EntryData::getInstance()->DEFAULT);
     
-updateKeyAndValue.put(UserData::USERNAME, userName);
+updateKeyAndValue->put(UserData::USERNAME, userName);
     
 paymentHashMap= super.getRow(updateKeyAndValue);
     
@@ -283,13 +289,13 @@ paymentHashMap= super.getRow(updateKeyAndValue);
                         
                                     {
                                     
-    Payment payment = Payment(paymentHashMap);;
+    Payment* payment = new Payment(paymentHashMap);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, "getDefault");
+                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, "getDefault");
     
 
                                     }
@@ -298,7 +304,7 @@ paymentHashMap= super.getRow(updateKeyAndValue);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return payment;
+                        return dynamic_cast<PaymentInterface*>(payment);
     
 
                                     }
@@ -315,13 +321,13 @@ paymentHashMap= super.getRow(updateKeyAndValue);
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, "getDefault", e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, "getDefault", &e);
     
 
                                     }
@@ -337,36 +343,36 @@ paymentHashMap= super.getRow(updateKeyAndValue);
 }
 
 
-    public: void remove(std::string userName, Integer index){
+    public: void remove(std::string userName, int32_t index){
 
         try {
             
-    HashMap<Object*, Object*> whereHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* whereHashMap = StdUtil::getInstance()->createHashMap();;
     
-whereHashMap.put(UserData::USERNAME, userName);
+whereHashMap->put(UserData::USERNAME, userName);
     
-whereHashMap.put(PaymentData::ID, std::to_string(index));
+whereHashMap->put(PaymentData::ID, std::to_string(index));
     
 super.deleteWhere(whereHashMap);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, "remove");
+                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, "remove");
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, "remove", e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, "remove", &e);
     
 
                                     }
@@ -376,59 +382,59 @@ super.deleteWhere(whereHashMap);
 }
 
 
-    public: void add(std::string userName, PaymentInterface paymentInterface){
+    public: void add(std::string userName, PaymentInterface* paymentInterface){
 
         try {
             
-    BasicArrayList vector = BasicArrayListD();;
+    BasicArrayList* vector = new BasicArrayListD();;
     
-vector.add(PaymentIdGenerator().getNext());
+vector->add((new PaymentIdGenerator())->getNext());
     
-vector.add(userName);
+vector->add(userName);
     
-vector.add(StringUtil::getInstance().EMPTY_STRING);
+vector->add(StringUtil::getInstance()->EMPTY_STRING);
     
-vector.add(paymentInterface.getName());
+vector->add(paymentInterface->getName());
     
-vector.add(paymentInterface.getType());
+vector->add(paymentInterface->getType());
     
-vector.add(paymentInterface.getExpiration());
-    
-
-    int32_t random = Random().nextInt(SuperCrypt::KEYMAX);;
-    
-vector.add(SuperCrypt(random).encrypt(paymentInterface.getNumber()));
-    
-vector.add(Integer(random).toString());
+vector->add(paymentInterface->getExpiration());
     
 
-    Calendar calendar = Calendar::getInstance();;
+    int32_t random = (new Random())->nextInt(SuperCrypt::KEYMAX);;
+    
+vector->add((new SuperCrypt(random))->encrypt(paymentInterface->getNumber()));
+    
+vector->add((int32_t(random)).toString());
     
 
-    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    Calendar* calendar = Calendar::getInstance();;
     
-vector.add(time);
+
+    std::string time = (int64_t(calendar->getTimeInMillis())).toString();;
+    
+vector->add(time);
     
 super.insert(vector);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, "add");
+                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, "add");
     
 
                                     }
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, "add", e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, "add", &e);
     
 
                                     }
@@ -440,18 +446,18 @@ super.insert(vector);
 
     public: std::string createTableStatement(){
 
-    EntryData entryData = EntryData::getInstance();;
+    EntryData* entryData = EntryData::getInstance();;
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(this->sqlStrings.CREATE_TABLE).append(tableName).append(this->sqlStrings.START).append(PaymentData::ID).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_AUTO_INCREMENT_NOT_NULL).append(UserData::USERNAME).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(entryData.DEFAULT).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(PaymentData::NAME).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(PaymentData::TYPE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(PaymentData::EXPIRATION).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(PaymentData::NUMBER).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(entryData.ENCRYPTION).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(entryData.TIMECREATED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(this->sqlStrings.PRIMARY_KEY).append(PaymentData::ID).append(this->sqlStrings.END);
+stringBuffer->append(this->sqlStrings.CREATE_TABLE)->append(tableName)->append(this->sqlStrings.START)->append(PaymentData::ID)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_AUTO_INCREMENT_NOT_NULL)->append(UserData::USERNAME)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(entryData->DEFAULT)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(PaymentData::NAME)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(PaymentData::TYPE)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(PaymentData::EXPIRATION)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(PaymentData::NUMBER)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(entryData->ENCRYPTION)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(entryData->TIMECREATED)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(this->sqlStrings.PRIMARY_KEY)->append(PaymentData::ID)->append(this->sqlStrings.END);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

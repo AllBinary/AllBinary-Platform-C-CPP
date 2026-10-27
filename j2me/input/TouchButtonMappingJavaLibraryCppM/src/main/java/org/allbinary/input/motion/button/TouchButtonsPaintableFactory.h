@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSPAINTABLEFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSPAINTABLEFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/color/BasicColor.h>
@@ -47,13 +53,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TouchButtonsPaintable.h"
+        #include "org/allbinary/input/motion/button/TouchButtonsPaintable.h"
 
 class TouchButtonsPaintableFactory
             : public Object
          {
 
-    public: static Paintable getInstance(BasicColor basicColor);
+    public: static Paintable* getInstance(BasicColor* basicColor);
 
 };
 

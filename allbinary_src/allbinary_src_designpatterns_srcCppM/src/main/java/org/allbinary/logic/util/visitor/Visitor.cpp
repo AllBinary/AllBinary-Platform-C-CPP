@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
@@ -41,15 +47,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "VisitorInterface.h"
+        #include "org/allbinary/logic/util/visitor/VisitorInterface.h"
 
 class Visitor
             : public Object
-        : public VisitorInterface {
+        , public VisitorInterface {
 
-    private: static Visitor instance() { return Visitor(); }
+    private: static Visitor* instance() { static std::unique_ptr<Visitor> value(new Visitor()); return value.get(); }
 
-    public: static Visitor getInstance(){
+    public: static Visitor* getInstance(){
 
 
 
@@ -59,14 +65,14 @@ class Visitor
 }
 
 
-    protected: const NullUtil nullUtil = NullUtil::getInstance();
+    protected: NullUtil* nullUtil = NullUtil::getInstance();
 
     public: Object* visit(Object* anyType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->nullUtil.NULL_OBJECT;
+                        return this->nullUtil->NULL_OBJECT;
     
 }
 

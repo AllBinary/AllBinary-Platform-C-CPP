@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -101,9 +107,9 @@ class ImageCopyUtil
             : public Object
          {
 
-    private: static ImageCopyUtil instance() { return ImageCopyUtil(); }
+    private: static ImageCopyUtil* instance() { static std::unique_ptr<ImageCopyUtil> value(new ImageCopyUtil()); return value.get(); }
 
-    public: static ImageCopyUtil getInstance(){
+    public: static ImageCopyUtil* getInstance(){
 
 
 
@@ -113,23 +119,23 @@ class ImageCopyUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: ImageCopyUtil(){
 }
 
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const GameFeatureFactory gameFeatureFactory = GameFeatureFactory::getInstance();
+    private: GameFeatureFactory* gameFeatureFactory = GameFeatureFactory::getInstance();
 
-    private: const Features features = Features::getInstance();
+    private: Features* features = Features::getInstance();
 
-    private: const OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();
+    private: OpenGLFeatureFactory* openGLFeatureFactory = OpenGLFeatureFactory::getInstance();
 
-    private: const OpenGLUtil openGLUtil = OpenGLUtil::getInstance();
+    private: OpenGLUtil* openGLUtil = OpenGLUtil::getInstance();
 
-    private: const OpenGLESImageExclusionUtil openGLESImageExclusionUtil = OpenGLESImageExclusionUtil::getInstance();
+    private: OpenGLESImageExclusionUtil* openGLESImageExclusionUtil = OpenGLESImageExclusionUtil::getInstance();
 
     private: const std::string NO_COPY = "SWT should not copy images after initial loading as the alpha is not honored";
 
@@ -137,15 +143,15 @@ private: ImageCopyUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImageForRotation(Image originalImage){
+    public: Image* createImageForRotation(Image* originalImage){
 
-                        if(this->features.isFeature(this->openGLFeatureFactory.OPENGL))
+                        if(this->features->isFeature(this->openGLFeatureFactory->OPENGL))
                         
                                     {
                                     
-    Image image = originalImage;;
+    Image* image = originalImage;;
     
-image= this->openGLUtil.addImage(image);
+image= this->openGLUtil->addImage(image);
     
 
 
@@ -171,12 +177,12 @@ image= this->openGLUtil.addImage(image);
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImage(Image originalImage){
+    public: Image* createImage(Image* originalImage){
 
-                        if(!this->features.isFeature(this->gameFeatureFactory.POST_IMAGE_LOADING_MODIFICATION))
+                        if(!this->features->isFeature(this->gameFeatureFactory->POST_IMAGE_LOADING_MODIFICATION))
                         
                                     {
-                                    this->logUtil.putF(this->NO_COPY, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->NO_COPY, this, this->commonStrings->CONSTRUCTOR);
     
 
 
@@ -188,20 +194,20 @@ image= this->openGLUtil.addImage(image);
                                     }
                                 
 
-    Image originalImage2 = originalImage;;
+    Image* originalImage2 = originalImage;;
     
 
-                        if(this->features.isFeature(this->openGLFeatureFactory.OPENGL))
+                        if(this->features->isFeature(this->openGLFeatureFactory->OPENGL))
                         
                                     {
                                     
-                        if(originalImage.getType() >= OpenGLESImage::TYPE)
+                        if(originalImage->getType() >= OpenGLESImage::TYPE)
                         
                                     {
                                     
-    OpenGLESImage openGLESImage = (originalImage);;
+    OpenGLESImage* openGLESImage = (dynamic_cast<OpenGLESImage*>(originalImage));;
     
-originalImage2= openGLESImage.openGLBitmap.getImage();
+originalImage2= openGLESImage->openGLBitmap.getImage();
     
 
                                     }
@@ -210,32 +216,32 @@ originalImage2= openGLESImage.openGLBitmap.getImage();
                                     }
                                 
 
-    Image image = 
+    Image* image = 
                 null
             ;;
     
 
-                        if(originalImage2.isMutable())
+                        if(originalImage2->isMutable())
                         
                                     {
                                     
-    SwtMutableImage originalMutableImage = originalImage2;;
+    SwtMutableImage* originalMutableImage = dynamic_cast<SwtMutableImage*>(originalImage2);;
     
-image= SwtMutableImage(SwtDeviceComponent::createImage(originalMutableImage.image.getImageData()));
+image= new SwtMutableImage(SwtDeviceComponent::createImage(originalMutableImage->image->getImageData()));
     
 
                                     }
                                 
                         else {
                             
-    SwtImmutableImage originalImmutableImage = originalImage2;;
+    SwtImmutableImage* originalImmutableImage = dynamic_cast<SwtImmutableImage*>(originalImage2);;
     
-image= SwtMutableImage(SwtDeviceComponent::createImage(originalImmutableImage.image.getImageData()));
+image= new SwtMutableImage(SwtDeviceComponent::createImage(originalImmutableImage->image->getImageData()));
     
 
                         }
                             
-image= this->openGLUtil.addImage(image);
+image= this->openGLUtil->addImage(image);
     
 
 
@@ -248,15 +254,15 @@ image= this->openGLUtil.addImage(image);
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImageWH(Image originalImage, int32_t width, int32_t height, bool mutable){
+    public: Image* createImageWH(Image* originalImage, int32_t width, int32_t height, bool mutable_){
 
-    Image originalImage2 = originalImage;;
+    Image* originalImage2 = originalImage;;
     
 
-                        if(!this->features.isFeature(this->gameFeatureFactory.POST_IMAGE_LOADING_MODIFICATION))
+                        if(!this->features->isFeature(this->gameFeatureFactory->POST_IMAGE_LOADING_MODIFICATION))
                         
                                     {
-                                    this->logUtil.putF(this->NO_COPY, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->NO_COPY, this, this->commonStrings->CONSTRUCTOR);
     
 
 
@@ -268,30 +274,30 @@ image= this->openGLUtil.addImage(image);
                                     }
                                 
 
-                        if(this->features.isFeature(this->openGLFeatureFactory.OPENGL))
+                        if(this->features->isFeature(this->openGLFeatureFactory->OPENGL))
                         
                                     {
                                     
-                        if(this->openGLESImageExclusionUtil.isCustomScaling(originalImage))
+                        if(this->openGLESImageExclusionUtil->isCustomScaling(originalImage))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->createImage2(originalImage, width, height, mutable);;
+                        return this->createImage2(originalImage, width, height, mutable_);;
     
 
                                     }
                                 
 
-                        if(originalImage.getType() >= OpenGLESImage::TYPE)
+                        if(originalImage->getType() >= OpenGLESImage::TYPE)
                         
                                     {
                                     
-    OpenGLESImage openGLESImage = (originalImage);;
+    OpenGLESImage* openGLESImage = (dynamic_cast<OpenGLESImage*>(originalImage));;
     
-originalImage2= openGLESImage.openGLBitmap.getImage();
+originalImage2= openGLESImage->openGLBitmap.getImage();
     
 
                                     }
@@ -300,36 +306,36 @@ originalImage2= openGLESImage.openGLBitmap.getImage();
                                     }
                                 
 
-    Image image = 
+    Image* image = 
                 null
             ;;
     
 
-                        if(originalImage2.isMutable() && mutable)
+                        if(originalImage2->isMutable() && mutable_)
                         
                                     {
                                     
-    SwtMutableImage originalMutableImage = originalImage2;;
+    SwtMutableImage* originalMutableImage = dynamic_cast<SwtMutableImage*>(originalImage2);;
     
 
-                        if(originalMutableImage.getImage() != 
+                        if(originalMutableImage->getImage() != 
                                     nullptr
                                 )
                         
                                     {
                                     
-    ImageData imageData2 = originalMutableImage.image.getImageData();;
+    ImageData* imageData2 = originalMutableImage->image->getImageData();;
     
 
-    ImageData imageData = imageData2.scaledTo(width, height);;
+    ImageData* imageData = imageData2->scaledTo(width, height);;
     
-image= SwtMutableImage(SwtDeviceComponent::createImage(imageData));
+image= new SwtMutableImage(SwtDeviceComponent::createImage(imageData));
     
 
                                     }
                                 
                         else {
-                            image= SwtMutableImage(originalMutableImage.getName(), PostLoadSwtMutableImageProcessor(originalMutableImage));
+                            image= new SwtMutableImage(originalMutableImage->getName(), new PostLoadSwtMutableImageProcessor(originalMutableImage));
     
 
                         }
@@ -339,33 +345,33 @@ image= SwtMutableImage(SwtDeviceComponent::createImage(imageData));
                                 
                         else {
                             
-    SwtImmutableImage originalImmutableImage = originalImage2;;
+    SwtImmutableImage* originalImmutableImage = dynamic_cast<SwtImmutableImage*>(originalImage2);;
     
 
-                        if(originalImmutableImage.getImage() != 
+                        if(originalImmutableImage->getImage() != 
                                     nullptr
                                 )
                         
                                     {
                                     
-    ImageData imageData2 = originalImmutableImage.image.getImageData();;
+    ImageData* imageData2 = originalImmutableImage->image->getImageData();;
     
 
                         if(width > 0 && height > 0)
                         
                                     {
                                     
-    ImageData imageData = imageData2.scaledTo(width, height);;
+    ImageData* imageData = imageData2->scaledTo(width, height);;
     
-image= SwtImmutableImage(originalImage.getName(), SwtDeviceComponent::createImage(imageData));
+image= new SwtImmutableImage(originalImage->getName(), SwtDeviceComponent::createImage(imageData));
     
 
                                     }
                                 
                         else {
-                            this->logUtil.putF(UNABLE, this, this->commonStrings.CONSTRUCTOR);
+                            this->logUtil->putF(UNABLE, this, this->commonStrings->CONSTRUCTOR);
     
-image= SwtImmutableImage(originalImmutableImage.getName(), PostLoadSwtImmutableImageProcessor(originalImmutableImage));
+image= new SwtImmutableImage(originalImmutableImage->getName(), new PostLoadSwtImmutableImageProcessor(originalImmutableImage));
     
 
                         }
@@ -374,7 +380,7 @@ image= SwtImmutableImage(originalImmutableImage.getName(), PostLoadSwtImmutableI
                                     }
                                 
                         else {
-                            image= SwtImmutableImage(originalImmutableImage.getName(), PostLoadSwtImmutableImageProcessor(originalImmutableImage));
+                            image= new SwtImmutableImage(originalImmutableImage->getName(), new PostLoadSwtImmutableImageProcessor(originalImmutableImage));
     
 
                         }
@@ -382,7 +388,7 @@ image= SwtImmutableImage(originalImmutableImage.getName(), PostLoadSwtImmutableI
 
                         }
                             
-image= this->openGLUtil.addImage(image);
+image= this->openGLUtil->addImage(image);
     
 
 
@@ -399,15 +405,15 @@ image= this->openGLUtil.addImage(image);
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImage2(Image originalImage, int32_t width, int32_t height, bool mutable){
+    public: Image* createImage2(Image* originalImage, int32_t width, int32_t height, bool mutable_){
 
-    Image originalImage2 = originalImage;;
+    Image* originalImage2 = originalImage;;
     
 
-                        if(!this->features.isFeature(this->gameFeatureFactory.POST_IMAGE_LOADING_MODIFICATION))
+                        if(!this->features->isFeature(this->gameFeatureFactory->POST_IMAGE_LOADING_MODIFICATION))
                         
                                     {
-                                    this->logUtil.putF(this->NO_COPY, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->NO_COPY, this, this->commonStrings->CONSTRUCTOR);
     
 
 
@@ -419,48 +425,48 @@ image= this->openGLUtil.addImage(image);
                                     }
                                 
 
-    Image image = 
+    Image* image = 
                 null
             ;;
     
 
-                        if(this->features.isFeature(this->openGLFeatureFactory.OPENGL))
+                        if(this->features->isFeature(this->openGLFeatureFactory->OPENGL))
                         
                                     {
                                     
-    DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();;
+    DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();;
     
 
-                        if(originalImage.getType() >= OpenGLESImage::TYPE)
+                        if(originalImage->getType() >= OpenGLESImage::TYPE)
                         
                                     {
                                     
-    OpenGLESImage openGLESImage = (originalImage);;
+    OpenGLESImage* openGLESImage = (dynamic_cast<OpenGLESImage*>(originalImage));;
     
 
-    OpenGLESImageProperties openGLESImageProperties = openGLESImage.openGLESImageProperties;;
+    OpenGLESImageProperties* openGLESImageProperties = openGLESImage->openGLESImageProperties;;
     
 
-    int32_t openGLWidth = openGLESImage.openGLBitmap.getWidth();;
+    int32_t openGLWidth = openGLESImage->openGLBitmap.getWidth();;
     
 
-    int32_t openGLHeight = openGLESImage.openGLBitmap.getHeight();;
+    int32_t openGLHeight = openGLESImage->openGLBitmap.getHeight();;
     
-openGLESImageProperties.scaleX= openGLESImageProperties.scaleX2= ((width) /openGLWidth);
+openGLESImageProperties->scaleX= openGLESImageProperties->scaleX2= ((width) /openGLWidth);
     
-openGLESImageProperties.scaleY= openGLESImageProperties.scaleY2= ((height) /openGLHeight);
+openGLESImageProperties->scaleY= openGLESImageProperties->scaleY2= ((height) /openGLHeight);
     
-openGLESImageProperties.scaleX= openGLESImageProperties.scaleX *0.75;
+openGLESImageProperties->scaleX= openGLESImageProperties->scaleX *0.75;
     
-openGLESImageProperties.scaleY= openGLESImageProperties.scaleY *0.75;
+openGLESImageProperties->scaleY= openGLESImageProperties->scaleY *0.75;
     
 
-                        if(originalImage.getHeight() % 2 != 0)
+                        if(originalImage->getHeight() % 2 != 0)
                         
                                     {
-                                    openGLESImageProperties.scaleX2 += 1.0 /openGLWidth;
+                                    openGLESImageProperties->scaleX2 += 1.0 /openGLWidth;
     
-openGLESImageProperties.scaleY2 += 1.0 /openGLHeight;
+openGLESImageProperties->scaleY2 += 1.0 /openGLHeight;
     
 
                                     }
@@ -474,65 +480,65 @@ image= openGLESImage;
                             image= originalImage;
     
 
-    OpenGLESImage openGLESImage = this->openGLUtil.addImage(image);;
+    OpenGLESImage* openGLESImage = dynamic_cast<OpenGLESImage*>(this->openGLUtil->addImage(image));;
     
 
-    OpenGLESImageProperties openGLESImageProperties = openGLESImage.openGLESImageProperties;;
+    OpenGLESImageProperties* openGLESImageProperties = openGLESImage->openGLESImageProperties;;
     
-openGLESImageProperties.scaleX= openGLESImageProperties.scaleX2= ((width) /openGLESImage.getWidth());
+openGLESImageProperties->scaleX= openGLESImageProperties->scaleX2= ((width) /openGLESImage->getWidth());
     
-openGLESImageProperties.scaleY= openGLESImageProperties.scaleY2= ((height) /openGLESImage.getHeight());
+openGLESImageProperties->scaleY= openGLESImageProperties->scaleY2= ((height) /openGLESImage->getHeight());
     
 
-                        if(image.getName().startsWith(this->INFORMATION))
+                        if(image->getName().startsWith(this->INFORMATION))
                         
                                     {
-                                    openGLESImage.openGLESImageTranslate= OpenGLESDeviceImageTranslate();
+                                    openGLESImage->openGLESImageTranslate= new OpenGLESDeviceImageTranslate();
     
 
-    OpenGLESDeviceImageTranslate openGLESDeviceImageTranslate = openGLESImage.openGLESImageTranslate;;
+    OpenGLESDeviceImageTranslate* openGLESDeviceImageTranslate = dynamic_cast<OpenGLESDeviceImageTranslate*>(openGLESImage->openGLESImageTranslate);;
     
-openGLESDeviceImageTranslate.translateX= displayInfoSingleton.getLastWidth() /1.4 /openGLESImageProperties.scaleX;
+openGLESDeviceImageTranslate->translateX= displayInfoSingleton->getLastWidth() /1.4 /openGLESImageProperties->scaleX;
     
-openGLESDeviceImageTranslate.translateY= displayInfoSingleton.getLastHeight() /4 /openGLESImageProperties.scaleY;
+openGLESDeviceImageTranslate->translateY= displayInfoSingleton->getLastHeight() /4 /openGLESImageProperties->scaleY;
     
-openGLESImageProperties.scaleX= openGLESImageProperties.scaleX *0.25;
+openGLESImageProperties->scaleX= openGLESImageProperties->scaleX *0.25;
     
-openGLESImageProperties.scaleY= openGLESImageProperties.scaleY *0.25;
+openGLESImageProperties->scaleY= openGLESImageProperties->scaleY *0.25;
     
 
                                     }
                                 
                         else {
-                            openGLESImageProperties.scaleX= openGLESImageProperties.scaleX *0.75;
+                            openGLESImageProperties->scaleX= openGLESImageProperties->scaleX *0.75;
     
-openGLESImageProperties.scaleY= openGLESImageProperties.scaleY *0.75;
+openGLESImageProperties->scaleY= openGLESImageProperties->scaleY *0.75;
     
 
-                        if(image.getName().startsWith(this->LEADERBOARD))
+                        if(image->getName().startsWith(this->LEADERBOARD))
                         
                                     {
-                                    openGLESImage.openGLESImageTranslate= OpenGLESDeviceImageTranslate();
+                                    openGLESImage->openGLESImageTranslate= new OpenGLESDeviceImageTranslate();
     
 
-    OpenGLESDeviceImageTranslate openGLESDeviceImageTranslate = openGLESImage.openGLESImageTranslate;;
+    OpenGLESDeviceImageTranslate* openGLESDeviceImageTranslate = dynamic_cast<OpenGLESDeviceImageTranslate*>(openGLESImage->openGLESImageTranslate);;
     
-openGLESDeviceImageTranslate.translateX=  -displayInfoSingleton.getLastWidth() /40 /openGLESImageProperties.scaleX;
+openGLESDeviceImageTranslate->translateX=  -displayInfoSingleton->getLastWidth() /40 /openGLESImageProperties->scaleX;
     
 
                                     }
                                 
 
-                        if(image.getName().startsWith(this->LEADERBOARD))
+                        if(image->getName().startsWith(this->LEADERBOARD))
                         
                                     {
                                     
                                     }
                                 
                         else {
-                            openGLESImageProperties.scaleX= 1.0;
+                            openGLESImageProperties->scaleX= 1.0;
     
-openGLESImageProperties.scaleY= 1.0;
+openGLESImageProperties->scaleY= 1.0;
     
 
                         }
@@ -550,31 +556,31 @@ image= openGLESImage;
                                 
                         else {
                             
-                        if(originalImage2.isMutable() && mutable)
+                        if(originalImage2->isMutable() && mutable_)
                         
                                     {
                                     
-    SwtMutableImage originalMutableImage = originalImage2;;
+    SwtMutableImage* originalMutableImage = dynamic_cast<SwtMutableImage*>(originalImage2);;
     
 
-                        if(originalMutableImage.getImage() != 
+                        if(originalMutableImage->getImage() != 
                                     nullptr
                                 )
                         
                                     {
                                     
-    ImageData imageData2 = originalMutableImage.image.getImageData();;
+    ImageData* imageData2 = originalMutableImage->image->getImageData();;
     
 
-    ImageData imageData = imageData2.scaledTo(width, height);;
+    ImageData* imageData = imageData2->scaledTo(width, height);;
     
-image= SwtMutableImage(SwtDeviceComponent::createImage(imageData));
+image= new SwtMutableImage(SwtDeviceComponent::createImage(imageData));
     
 
                                     }
                                 
                         else {
-                            image= SwtMutableImage(originalMutableImage.getName(), PostLoadSwtMutableImageProcessor(originalMutableImage));
+                            image= new SwtMutableImage(originalMutableImage->getName(), new PostLoadSwtMutableImageProcessor(originalMutableImage));
     
 
                         }
@@ -584,27 +590,27 @@ image= SwtMutableImage(SwtDeviceComponent::createImage(imageData));
                                 
                         else {
                             
-    SwtImmutableImage originalImmutableImage = originalImage2;;
+    SwtImmutableImage* originalImmutableImage = dynamic_cast<SwtImmutableImage*>(originalImage2);;
     
 
-                        if(originalImmutableImage.getImage() != 
+                        if(originalImmutableImage->getImage() != 
                                     nullptr
                                 )
                         
                                     {
                                     
-    ImageData imageData2 = originalImmutableImage.image.getImageData();;
+    ImageData* imageData2 = originalImmutableImage->image->getImageData();;
     
 
-    ImageData imageData = imageData2.scaledTo(width, height);;
+    ImageData* imageData = imageData2->scaledTo(width, height);;
     
-image= SwtImmutableImage(originalImage.getName(), SwtDeviceComponent::createImage(imageData));
+image= new SwtImmutableImage(originalImage->getName(), SwtDeviceComponent::createImage(imageData));
     
 
                                     }
                                 
                         else {
-                            image= SwtImmutableImage(originalImmutableImage.getName(), PostLoadSwtImmutableImageProcessor(originalImmutableImage));
+                            image= new SwtImmutableImage(originalImmutableImage->getName(), new PostLoadSwtImmutableImageProcessor(originalImmutableImage));
     
 
                         }
@@ -612,7 +618,7 @@ image= SwtImmutableImage(originalImage.getName(), SwtDeviceComponent::createImag
 
                         }
                             
-image= this->openGLUtil.addImage(image);
+image= this->openGLUtil->addImage(image);
     
 
                         }
@@ -628,12 +634,12 @@ image= this->openGLUtil.addImage(image);
 
                 //@Throws(Exception.constructor)
             
-    public: Image createImageScale(Image originalImage, float canvasScale, bool resize){
+    public: Image* createImageScale(Image* originalImage, float canvasScale, bool resize){
 
-                        if(!this->features.isFeature(this->gameFeatureFactory.POST_IMAGE_LOADING_MODIFICATION))
+                        if(!this->features->isFeature(this->gameFeatureFactory->POST_IMAGE_LOADING_MODIFICATION))
                         
                                     {
-                                    this->logUtil.putF(this->NO_COPY, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->NO_COPY, this, this->commonStrings->CONSTRUCTOR);
     
 
 
@@ -645,10 +651,10 @@ image= this->openGLUtil.addImage(image);
                                     }
                                 
 
-    int32_t newWidth = static_cast<int32_t>((originalImage.getWidth() *canvasScale));;
+    int32_t newWidth = static_cast<int32_t>((originalImage->getWidth() *canvasScale));;
     
 
-    int32_t newHeight = static_cast<int32_t>((originalImage.getHeight() *canvasScale));;
+    int32_t newHeight = static_cast<int32_t>((originalImage->getHeight() *canvasScale));;
     
 
                         if(resize)
@@ -676,35 +682,35 @@ image= this->openGLUtil.addImage(image);
                                     }
                                 
 
-    Image image = this->createImageWH(originalImage, newWidth, newHeight, true);;
+    Image* image = this->createImageWH(originalImage, newWidth, newHeight, true);;
     
 
-                        if(image.isMutable())
+                        if(image->isMutable())
                         
                                     {
                                     
-    ImageData originalImageData = (getImage).getImageData();;
+    ImageData* originalImageData = (getImage)).getImageData();;
     
 
-    SwtMutableImage mutableImage2 = image;;
+    SwtMutableImage* mutableImage2 = dynamic_cast<SwtMutableImage*>(image);;
     
 
-    int32_t halfWidthDelta = (newWidth -originalImage.getWidth()) /2;;
+    int32_t halfWidthDelta = (newWidth -originalImage->getWidth()) /2;;
     
 
-    int32_t halfHeightDelta = (newHeight -originalImage.getHeight()) /2;;
+    int32_t halfHeightDelta = (newHeight -originalImage->getHeight()) /2;;
     
 
-    std::vector<int32_t> originalPixelArray = std::vector<int32_t>(originalImage.getWidth() *originalImage.getHeight());;
+    std::vector<int32_t> originalPixelArray = std::vector<int32_t>(originalImage->getWidth() *originalImage->getHeight());;
     
 
-    std::vector<int32_t> newPixelArray = std::vector<int32_t>(image.getWidth() *image.getHeight());;
+    std::vector<int32_t> newPixelArray = std::vector<int32_t>(image->getWidth() *image->getHeight());;
     
 
-    int32_t width = originalImage.getWidth();;
+    int32_t width = originalImage->getWidth();;
     
 
-    int32_t height = originalImage.getHeight();;
+    int32_t height = originalImage->getHeight();;
     
 
 
@@ -713,7 +719,7 @@ image= this->openGLUtil.addImage(image);
                         for (
     int32_t i = 0;i < height; i++)
         {
-originalImageData.getPixels(0, i, width, originalPixelArray, (i *width));
+originalImageData->getPixels(0, i, width, originalPixelArray, (i *width));
     
 }
 
@@ -737,9 +743,9 @@ newPixelArray[index +(index2 *width)]= originalPixelArray[(index -halfWidthDelta
 
 }
 
-getImage = mutableImage2.getImage()getImage
+getImage = dynamic_cast<org::eclipse::swt::graphics::Image*>(mutableImage2->getImage()getImage)
 getImage.
-                    getImageData().setPixels(0, 0, image.getWidth(), newPixelArray, 0);
+                    getImageData()->setPixels(0, 0, image->getWidth(), newPixelArray, 0);
     
 
 
@@ -752,28 +758,28 @@ getImage.
                                 
                         else {
                             
-    SwtImmutableImage originalImmutableImage = image;;
+    SwtImmutableImage* originalImmutableImage = dynamic_cast<SwtImmutableImage*>(image);;
     
 
-    ImageData originalImageData = (getImage).getImageData();;
+    ImageData* originalImageData = (getImage)).getImageData();;
     
 
-    int32_t halfWidthDelta = (newWidth -originalImage.getWidth()) /2;;
+    int32_t halfWidthDelta = (newWidth -originalImage->getWidth()) /2;;
     
 
-    int32_t halfHeightDelta = (newHeight -originalImage.getHeight()) /2;;
+    int32_t halfHeightDelta = (newHeight -originalImage->getHeight()) /2;;
     
 
-    std::vector<int32_t> originalPixelArray = std::vector<int32_t>(originalImage.getWidth() *originalImage.getHeight());;
+    std::vector<int32_t> originalPixelArray = std::vector<int32_t>(originalImage->getWidth() *originalImage->getHeight());;
     
 
-    std::vector<int32_t> newPixelArray = std::vector<int32_t>(image.getWidth() *image.getHeight());;
+    std::vector<int32_t> newPixelArray = std::vector<int32_t>(image->getWidth() *image->getHeight());;
     
 
-    int32_t width = originalImage.getWidth();;
+    int32_t width = originalImage->getWidth();;
     
 
-    int32_t height = originalImage.getHeight();;
+    int32_t height = originalImage->getHeight();;
     
 
 
@@ -782,7 +788,7 @@ getImage.
                         for (
     int32_t i = 0;i < height; i++)
         {
-originalImageData.getPixels(0, i, width, originalPixelArray, (i *width));
+originalImageData->getPixels(0, i, width, originalPixelArray, (i *width));
     
 }
 
@@ -806,9 +812,9 @@ newPixelArray[index +(index2 *width)]= originalPixelArray[(index -halfWidthDelta
 
 }
 
-getImage = originalImmutableImage.getImage()getImage
+getImage = dynamic_cast<org::eclipse::swt::graphics::Image*>(originalImmutableImage->getImage()getImage)
 getImage.
-                    getImageData().setPixels(0, 0, image.getWidth(), newPixelArray, 0);
+                    getImageData()->setPixels(0, 0, image->getWidth(), newPixelArray, 0);
     
 
 

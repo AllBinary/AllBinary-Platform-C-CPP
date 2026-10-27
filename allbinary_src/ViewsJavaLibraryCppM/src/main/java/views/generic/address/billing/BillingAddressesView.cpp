@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
             #include "java/lang/Integer.h"
@@ -85,13 +91,13 @@
         
 class BillingAddressesView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
-    protected: BasicArrayList streetAddresses;
+    protected: BasicArrayList* streetAddresses;
 
-public: BillingAddressesView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+public: BillingAddressesView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -99,14 +105,14 @@ public: BillingAddressesView(TransformInfoInterface transformInfoInterface) : Ht
                             //For kotlin this is before the body of the constructor.
                     
 
-    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface();;
+    TransformInfoHttpInterface* httpTransformInfoInterface = dynamic_cast<TransformInfoHttpInterface*>(this->getTransformInfoInterface());;
     
-this->request= httpTransformInfoInterface.getPageContext().getRequest();
+this->request= dynamic_cast<HttpServletRequest*>(httpTransformInfoInterface->getPageContext()->getRequest());
     
 }
 
 
-    protected: HttpServletRequest getRequest(){
+    protected: HttpServletRequest* getRequest(){
 
 
 
@@ -116,14 +122,14 @@ this->request= httpTransformInfoInterface.getPageContext().getRequest();
 }
 
 
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
         try {
             
-    Node billingAddressesNode = document.createElement(BillingAddressData::MULTIPLE);;
+    Node* billingAddressesNode = document->createElement(BillingAddressData::MULTIPLE);;
     
 
-    int32_t size = this->streetAddresses.size();;
+    int32_t size = this->streetAddresses->size();;
     
 
 
@@ -133,13 +139,13 @@ this->request= httpTransformInfoInterface.getPageContext().getRequest();
     int32_t index = 0;index < size; index++)
         {
 
-    StreetAddress streetAddress = this->streetAddresses.get(index);;
+    StreetAddress* streetAddress = dynamic_cast<StreetAddress*>(this->streetAddresses->get(index));;
     
-billingAddressesNode.appendChild(streetAddress.toXmlNode(document));
+billingAddressesNode->appendChild(streetAddress->toXmlNode(document));
     
 }
 
-billingAddressesNode.appendChild(ModDomHelper::createNameValueNodes(document, StreetAddressData::NUMBEROFADDRESSES, Integer(streetAddresses.size()).toString()));
+billingAddressesNode->appendChild(ModDomHelper::createNameValueNodes(document, StreetAddressData::NUMBEROFADDRESSES, (int32_t(streetAddresses->size())).toString()));
     
 
 
@@ -149,13 +155,13 @@ billingAddressesNode.appendChild(ModDomHelper::createNameValueNodes(document, St
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XSLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XSLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil->put(this->commonStrings.FAILURE, this, "toXmlNode", &e);
     
 
                                     }
@@ -172,7 +178,7 @@ billingAddressesNode.appendChild(ModDomHelper::createNameValueNodes(document, St
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this);
+this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     
 }
 
@@ -192,13 +198,13 @@ this->addDomNodeInterface(this);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
     
 
                                     }

@@ -21,6 +21,12 @@
         #ifndef TAGS_STOREWORKFLOWTAG_H
         #define TAGS_STOREWORKFLOWTAG_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Class.h"
         
             #include "java/lang/Exception.h"
@@ -66,11 +72,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "HelperTag.h"
+        #include "tags/HelperTag.h"
 //and hidden field removal
 class StoreWorkFlowTag: public HelperTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string viewName;
 

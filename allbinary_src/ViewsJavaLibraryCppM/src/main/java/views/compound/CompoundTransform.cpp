@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/io/InputStream.h>
@@ -71,33 +77,33 @@
         
 class CompoundTransform: public AbTransformer {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-public: CompoundTransform(TransformInfoInterface transformInfoInterface) : AbTransformer(transformInfoInterface){
+public: CompoundTransform(TransformInfoInterface* transformInfoInterface) : AbTransformer(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->setURIResolver(StoreUriResolver(this->getTransformInfoInterface(), this->getURIResolver()));
+this->setURIResolver(dynamic_cast<URIResolver*>(new StoreUriResolver(this->getTransformInfoInterface(), dynamic_cast<BasicUriResolver*>(this->getURIResolver()))));
     
 
-    CompoundContextTransformInfoObjectConfig objectConfig = CompoundContextTransformInfoObjectConfig(this->abeClientInformation, this->getTransformInfoInterface(), this->getTransformInfoInterface().getObjectConfigInterface().toXmlDoc());;
+    CompoundContextTransformInfoObjectConfig* objectConfig = new CompoundContextTransformInfoObjectConfig(this->abeClientInformation, this->getTransformInfoInterface(), this->getTransformInfoInterface()->getObjectConfigInterface()->toXmlDoc());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("\nObjectConfig: \n" +objectConfig.toString(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("\nObjectConfig: \n" +objectConfig->toString(), this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
 
-    InputStream templateInputStream = objectConfig.createInputStream();;
+    InputStream* templateInputStream = objectConfig->createInputStream();;
     
 this->setInputStream(templateInputStream);
     

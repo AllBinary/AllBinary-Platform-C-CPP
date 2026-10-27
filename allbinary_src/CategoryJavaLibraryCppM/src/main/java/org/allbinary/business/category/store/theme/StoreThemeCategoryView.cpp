@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/Arrays.h>
@@ -58,12 +64,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "StoreThemeCategoryInterface.h"
-#include "ThemeComparator.h"
+        #include "org/allbinary/business/category/store/theme/StoreThemeCategoryInterface.h"
+#include "org/allbinary/business/category/store/theme/ThemeComparator.h"
 
 class StoreThemeCategoryView: public CategoryView, public DomNodeInterface {
 
-public: StoreThemeCategoryView(StoreThemeCategoryInterface categoryInterface) : CategoryView(categoryInterface){
+public: StoreThemeCategoryView(StoreThemeCategoryInterface* categoryInterface) : CategoryView(dynamic_cast<StoreThemeCategoryInterface*>(categoryInterface)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,17 +81,17 @@ public: StoreThemeCategoryView(StoreThemeCategoryInterface categoryInterface) : 
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    Node node = super.toXmlNode(document);;
+    Node* node = super.toXmlNode(document);;
     
 
-    StoreThemeCategoryInterface storeThemeCategoryInterface = this->getCategoryInterface();;
+    StoreThemeCategoryInterface* storeThemeCategoryInterface = dynamic_cast<StoreThemeCategoryInterface*>(this->getCategoryInterface());;
     
 
-    std::vector<ThemeValidation> themeValidationArray = storeThemeCategoryInterface.getThemes().toArray() as ThemeValidation[];;
+    std::vector<ThemeValidation*> themeValidationArray = storeThemeCategoryInterface->getThemes()->toArray() as ThemeValidation[];;
     
-Arrays::sort(themeValidationArray, ThemeComparator());
+Arrays::sort(themeValidationArray, new ThemeComparator());
     
 
     int32_t size = themeValidationArray.size();;
@@ -98,9 +104,9 @@ Arrays::sort(themeValidationArray, ThemeComparator());
     int32_t index = 0;index < size; index++)
         {
 
-    ThemeValidation themeValidation = themeValidationArray[index];;
+    ThemeValidation* themeValidation = dynamic_cast<ThemeValidation*>(themeValidationArray[index]);;
     
-node.appendChild(themeValidation.toXmlNode(document));
+node->appendChild(themeValidation->toXmlNode(document));
     
 }
 

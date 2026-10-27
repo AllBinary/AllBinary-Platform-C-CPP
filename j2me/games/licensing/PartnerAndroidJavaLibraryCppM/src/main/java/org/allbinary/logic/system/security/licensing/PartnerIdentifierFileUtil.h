@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -68,11 +74,11 @@ class PartnerIdentifierFileUtil
             : public Object
          {
 
-    private: static PartnerIdentifierFileUtil instance() { return PartnerIdentifierFileUtil(); }
+    private: static PartnerIdentifierFileUtil* instance() { static std::unique_ptr<PartnerIdentifierFileUtil> value(new PartnerIdentifierFileUtil()); return value.get(); }
 
-    public: static PartnerIdentifierFileUtil getInstance();
+    public: static PartnerIdentifierFileUtil* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     public: const std::string FILE_NAME = "partner.txt";
 

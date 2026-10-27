@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/CommandListener.h>
@@ -61,17 +67,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameCommandCanvas.h"
+        #include "org/allbinary/game/displayable/canvas/GameCommandCanvas.h"
 
 class BasicPaintablesCanvas: public GameCommandCanvas {
 
-    private: std::vector<Paintable> paintableArray;
+    private: std::vector<Paintable*> paintableArray;
 
-    private: ColorFillBasePaintable colorFillPaintable;
+    private: ColorFillBasePaintable* colorFillPaintable;
 
-public: BasicPaintablesCanvas(CommandListener cmdListener, std::string name, AllBinaryGameLayerManager allBinaryGameLayerManager, std::vector<Paintable> paintableArray);
+public: BasicPaintablesCanvas(CommandListener* cmdListener, std::string name, AllBinaryGameLayerManager* allBinaryGameLayerManager, std::vector<Paintable*> paintableArray);
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

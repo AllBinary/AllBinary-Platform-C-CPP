@@ -20,6 +20,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_RTSLAYEREVENT_H
         #define ORG_ALLBINARY_GAME_LAYER_RTSLAYEREVENT_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -44,20 +50,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NullPathFindingLayer.h"
-#include "PathFindingLayerInterface.h"
+        #include "org/allbinary/game/layer/NullPathFindingLayer.h"
+#include "org/allbinary/game/layer/PathFindingLayerInterface.h"
 
 class RTSLayerEvent: public AllBinaryEventObject {
 
-    private: PathFindingLayerInterface rtsLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
+    private: PathFindingLayerInterface* rtsLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
-public: RTSLayerEvent(PathFindingLayerInterface rtsLayer);
+public: RTSLayerEvent(PathFindingLayerInterface* rtsLayer);
 
     public: std::string toString();
 
-    public: PathFindingLayerInterface getRtsLayer();
+    public: PathFindingLayerInterface* getRtsLayer();
 
-    public: void setRtsLayer(PathFindingLayerInterface rtsLayer);
+    public: void setRtsLayer(PathFindingLayerInterface* rtsLayer);
 
 };
 

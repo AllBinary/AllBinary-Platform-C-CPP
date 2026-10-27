@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Class.h"
         
             #include "java/lang/Exception.h"
@@ -61,18 +69,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TableTag.h"
+        #include "admin/tags/TableTag.h"
 
 class ShippingAddressTag: public TableTag {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: std::string value;
 
 public: ShippingAddressTag(){
-this->setTagHelperFactory(ShippingAddressHelperFactory());
+this->setTagHelperFactory(new ShippingAddressHelperFactory());
     
-this->setTagRequestHelperFactory(ShippingAddressHelperFactory());
+this->setTagRequestHelperFactory(new ShippingAddressHelperFactory());
     
 }
 
@@ -89,17 +97,17 @@ this->value= value;
 
         try {
             
-    Object* anyType = ShippingAddressHelperFactory().getInstance(this->getPropertiesHashMap(), this->pageContext);;
+    Object* anyType = (new ShippingAddressHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext);;
     
 
     Class* addressHelperClass = anyType->getClass();;
     
 
-    Method method = addressHelperClass.getMethod("set", 
+    Method* method = addressHelperClass->getMethod("set", 
                             nullptr);;
     
 
-    std::string result = method.invoke(anyType, 
+    std::string result = method->invoke(anyType, 
                             nullptr);;
     
 
@@ -110,7 +118,7 @@ this->value= value;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -120,16 +128,16 @@ this->value= value;
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
     std::string error = "Failed to set Shipping Address";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "set()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "set()", &e);
     
 
                                     }
@@ -141,7 +149,7 @@ this->value= value;
                         return error;
     
 }
-*/
+
 }
 
 
@@ -151,17 +159,17 @@ this->value= value;
 
         try {
             
-    Object* anyType = ShippingAddressHelperFactory().getInstance(this->getPropertiesHashMap(), this->pageContext);;
+    Object* anyType = (new ShippingAddressHelperFactory())->getInstance(this->getPropertiesHashMap(), this->pageContext);;
     
 
     Class* addressHelperClass = anyType->getClass();;
     
 
-    Method method = addressHelperClass.getMethod("setToBillingAddress", 
+    Method* method = addressHelperClass->getMethod("setToBillingAddress", 
                             nullptr);;
     
 
-    std::string result = method.invoke(anyType, 
+    std::string result = method->invoke(anyType, 
                             nullptr);;
     
 
@@ -172,7 +180,7 @@ this->value= value;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
 
 
@@ -182,16 +190,16 @@ this->value= value;
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
 
     std::string error = "Failed Setting Shipping address to Billing Address";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setShippingAddressToBillingAddress()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "setShippingAddressToBillingAddress()", &e);
     
 
                                     }
@@ -203,7 +211,7 @@ this->value= value;
                         return error;
     
 }
-*/
+
 }
 
 
@@ -223,7 +231,7 @@ this->value= value;
                         
                                     {
                                     
-                        if(this->getCommand().compareTo(ShippingAddressData::SELECT) == 0)
+                        if(this->getCommand()->compareTo(ShippingAddressData::SELECT) == 0)
                         
                                     {
                                     this->set();
@@ -238,7 +246,7 @@ this->value= value;
                                     }
                                 
                              else 
-                        if(this->getCommand().compareTo(ShippingAddressData::SETTOBILLINGADDRESS) == 0)
+                        if(this->getCommand()->compareTo(ShippingAddressData::SETTOBILLINGADDRESS) == 0)
                         
                                     {
                                     this->setToBillingAddress();
@@ -270,9 +278,9 @@ this->value= value;
     
 
                 //: 
-} catch(e) 
+} catch(LicensingException& e) 
             {
-AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, &e);
     
 
 
@@ -283,9 +291,9 @@ AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
 }
 
                 //: 
-/* catch(e) 
+ catch(Exception& e) 
             {
-AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
     
 
 
@@ -294,7 +302,7 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
                         return SKIP_BODY;
     
 }
-*/
+
 }
 
 

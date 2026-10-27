@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,21 +58,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PCKeyFactory.h"
-#include "GameKeyFactory.h"
+        #include "org/allbinary/game/input/PCKeyFactory.h"
+#include "org/allbinary/game/input/GameKeyFactory.h"
 
 class PlatformFormInputMappingFactory
             : public Object
          {
 
-    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static PlatformFormInputMappingFactory getInstance(){
+    public: static PlatformFormInputMappingFactory* getInstance(){
 
-                        if(PlatformFormInputMappingFactory::instance() == NullUtil::getInstance().NULL_OBJECT)
+                        if(PlatformFormInputMappingFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    PlatformFormInputMappingFactory::instance= PlatformFormInputMappingFactory();
+                                    PlatformFormInputMappingFactory::instance= new PlatformFormInputMappingFactory();
     
 
                                     }
@@ -75,16 +81,16 @@ class PlatformFormInputMappingFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PlatformFormInputMappingFactory::instance();
+                        return dynamic_cast<PlatformFormInputMappingFactory*>(PlatformFormInputMappingFactory::instance);
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: InputToGameKeyMapping inputToGameKeyMapping = InputToGameKeyMapping::getNullInstance();
+    private: InputToGameKeyMapping* inputToGameKeyMapping = InputToGameKeyMapping::getNullInstance();
 
-    public: InputToGameKeyMapping getOrCreate(){
+    public: InputToGameKeyMapping* getOrCreate(){
 
         try {
             
@@ -92,23 +98,23 @@ class PlatformFormInputMappingFactory
                         
                                     {
                                     
-    PCKeyFactory pcKeyFactory = PCKeyFactory::getInstance();;
+    PCKeyFactory* pcKeyFactory = PCKeyFactory::getInstance();;
     
 
-    InputToGameKeyMapping inputToGameKeyMapping = InputToGameKeyMapping();;
+    InputToGameKeyMapping* inputToGameKeyMapping = new InputToGameKeyMapping();;
     
 
-    GameKeyFactory gameKeyFactory = GameKeyFactory::getInstance();;
+    GameKeyFactory* gameKeyFactory = GameKeyFactory::getInstance();;
     
-inputToGameKeyMapping.add(gameKeyFactory.UP, pcKeyFactory.DPAD_UP);
+inputToGameKeyMapping->add(gameKeyFactory->UP, pcKeyFactory->DPAD_UP);
     
-inputToGameKeyMapping.add(gameKeyFactory.DOWN, pcKeyFactory.DPAD_DOWN);
+inputToGameKeyMapping->add(gameKeyFactory->DOWN, pcKeyFactory->DPAD_DOWN);
     
-inputToGameKeyMapping.add(gameKeyFactory.LEFT, pcKeyFactory.DPAD_LEFT);
+inputToGameKeyMapping->add(gameKeyFactory->LEFT, pcKeyFactory->DPAD_LEFT);
     
-inputToGameKeyMapping.add(gameKeyFactory.RIGHT, pcKeyFactory.DPAD_RIGHT);
+inputToGameKeyMapping->add(gameKeyFactory->RIGHT, pcKeyFactory->DPAD_RIGHT);
     
-inputToGameKeyMapping.add(gameKeyFactory.KEY_NUM1, pcKeyFactory.ENTER);
+inputToGameKeyMapping->add(gameKeyFactory->KEY_NUM1, pcKeyFactory->ENTER);
     
 this->inputToGameKeyMapping= inputToGameKeyMapping;
     
@@ -117,12 +123,12 @@ this->inputToGameKeyMapping= inputToGameKeyMapping;
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
     
 }
 

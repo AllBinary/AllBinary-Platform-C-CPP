@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,18 +42,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GameRunnable.h"
+        #include "org/allbinary/game/displayable/canvas/GameRunnable.h"
 
 class NullWaitGameRunnable: public GameRunnable {
 
-    private: static const GameRunnable instance = NullWaitGameRunnable();
+    private: static inline GameRunnable* instance = new NullWaitGameRunnable();
 
-    public: static GameRunnable getInstance(){
+    public: static GameRunnable* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullWaitGameRunnable::instance();
+                        return NullWaitGameRunnable::instance;
     
 }
 

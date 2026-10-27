@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -42,18 +48,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseTouchInput.h"
+        #include "org/allbinary/input/motion/button/BaseTouchInput.h"
 
 class TouchButtonsListBuilder: public BaseTouchInput {
 
-    private: const BasicArrayList baseTouchInputList = BasicArrayListD();
+    private: BasicArrayList* baseTouchInputList = new BasicArrayListD();
 
-    protected: void addList(BasicArrayList list){
+    protected: void addList(BasicArrayList* list){
 
-    int32_t size = this->baseTouchInputList.size();;
+    int32_t size = this->baseTouchInputList->size();;
     
 
-    BaseTouchInput baseTouchInput;;
+    BaseTouchInput* baseTouchInput;;
     
 
 
@@ -62,17 +68,17 @@ class TouchButtonsListBuilder: public BaseTouchInput {
                         for (
     int32_t index = 0;index < size; index++)
         {
-baseTouchInput= this->baseTouchInputList.get(index);
+baseTouchInput= dynamic_cast<BaseTouchInput*>(this->baseTouchInputList->get(index));
     
-list.addAllList(baseTouchInput.getList());
+list->addAllList(baseTouchInput->getList());
     
 }
 
 }
 
 
-    public: void add(BaseTouchInput baseTouchInput){
-this->baseTouchInputList.add(baseTouchInput);
+    public: void add(BaseTouchInput* baseTouchInput){
+this->baseTouchInputList->add(baseTouchInput);
     
 }
 

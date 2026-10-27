@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -59,21 +65,21 @@ class PathCacheFactory
             : public Object
          {
 
-    private: static PathCacheFactory pathFactory = PathCacheFactory();
+    private: static PathCacheFactory* pathFactory() { static std::unique_ptr<PathCacheFactory> value(new PathCacheFactory()); return value.get(); }
 
-    public: static PathCacheFactory getInstance(){
+    public: static PathCacheFactory* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PathCacheFactory::pathFactory;
+                        return PathCacheFactory::pathFactory();
     
 }
 
 
-    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
+    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    private: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
+    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
 
 private: PathCacheFactory(){
 }
@@ -84,19 +90,19 @@ private: PathCacheFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->hashtable.size();;
+                        return this->hashtable->size();;
     
 }
 
 
-    public: void add(Integer pathId, BasicArrayList list){
-this->hashtable.put(pathId, list);
+    public: void add(int32_t pathId, BasicArrayList* list){
+this->hashtable->put(pathId, list);
     
 }
 
 
-    public: void remove(Integer pathId){
-this->hashtable.remove(pathId);
+    public: void remove(int32_t pathId){
+this->hashtable->remove(pathId);
     
 }
 
@@ -104,16 +110,16 @@ this->hashtable.remove(pathId);
                 //@Throws(Exception.constructor)
             
     public: void removeAll(){
-this->hashtable.clear();
+this->hashtable->clear();
     
 
-                        if(this->hashtable.size() > 0)
+                        if(this->hashtable->size() > 0)
                         
                                     {
                                     
 
 
-                            throw Exception("Did not clear");
+                            throw new Exception("Did not clear");
                     
 
                                     }
@@ -123,9 +129,9 @@ this->hashtable.clear();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getOrCreate(Integer pathIdInteger){
+    public: BasicArrayList* getOrCreate(int32_t pathIdInteger){
 
-    Object* listCanBeNull = this->hashtable.get(pathIdInteger);;
+    Object* listCanBeNull = this->hashtable->get(pathIdInteger);;
     
 
                         if(listCanBeNull == 
@@ -133,7 +139,7 @@ this->hashtable.clear();
                                 )
                         
                                     {
-                                    listCanBeNull= this->basicArrayListUtil.getImmutableInstance();
+                                    listCanBeNull= this->basicArrayListUtil->getImmutableInstance();
     
 
                                     }
@@ -142,7 +148,7 @@ this->hashtable.clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *dynamic_cast<BasicArrayList*>(listCanBeNull);
+                        return dynamic_cast<BasicArrayList*>(listCanBeNull);
     
 }
 

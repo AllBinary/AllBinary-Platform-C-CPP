@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/context/configuration/ContextConfigurationInterface.h>
@@ -46,11 +52,11 @@ class AdminConfigurationInterface {
 
                 //@Throws(Exception.constructor)
             
-    void write()
+    public: virtual void write() = 0;
 
-    ContextConfigurationInterface getContextConfigurationInterface()
+    public: virtual ContextConfigurationInterface* getContextConfigurationInterface() = 0;
 
-    void setContextConfigurationInterface(ContextConfigurationInterface contextConfigurationInterface)
+    public: virtual void setContextConfigurationInterface(ContextConfigurationInterface* contextConfigurationInterface) = 0;
 
 };
 

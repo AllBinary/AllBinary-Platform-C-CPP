@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -115,32 +123,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ModifyTable.h"
+        #include "admin/taghelpers/ModifyTable.h"
 
 class CategoryRequestHelper: public ModifyTable {
 
-    private: static const std::string categoryRequest = StringMaker().append("<").append(CategoryData::getInstance().REQUEST).append(">").toString();
+    private: static inline const std::string categoryRequest = (new StringMaker())->append("<")->append(CategoryData::getInstance()->REQUEST)->append(">")->toString();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: PageContext pageContext;
+    private: PageContext* pageContext;
 
-    private: HashMap<Object*, Object*> hashMap;
+    private: HashMap<Object*, Object*>* hashMap;
 
-    private: HttpServletRequest request;
+    private: HttpServletRequest* request;
 
-    private: CategoryLoaderInterface categoryLoaderInterface;
+    private: CategoryLoaderInterface* categoryLoaderInterface;
 
-    private: CategoryInterface categoryInterface;
+    private: CategoryInterface* categoryInterface;
 
-    private: CategoryInterface childCategoryInterface;
+    private: CategoryInterface* childCategoryInterface;
 
-    private: TransformInfoInterface transformInfoInterface;
+    private: TransformInfoInterface* transformInfoInterface;
 
-public: CategoryRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
+public: CategoryRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
 
         try {
-            this->request= pageContext.getRequest();
+            this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
     
 this->pageContext= pageContext;
     
@@ -150,13 +158,13 @@ this->getXmlData();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "CategoryRequestHelper()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "CategoryRequestHelper()", &e);
     
 
                                     }
@@ -170,16 +178,16 @@ this->getXmlData();
 
         try {
             
-    Map map = this->request.getParameterMap();;
+    Map* map = this->request->getParameterMap();;
     
 
-    CategoryData categoryData = CategoryData::getInstance();;
+    CategoryData* categoryData = CategoryData::getInstance();;
     
 
-    Set keys = map.keySet();;
+    Set* keys = map->keySet();;
     
 
-    std::vector<Object*> keyArray = keys.toArray();;
+    std::vector<Object*> keyArray = keys->toArray();;
     
 
     int32_t size = keyArray.size();;
@@ -195,37 +203,37 @@ this->getXmlData();
     int32_t index = 1;;
     
 
-        while(index < size && !xmlRequest.startsWith(CategoryRequestHelper::categoryRequest))
+        while(index < size && !JavaString::startsWith(xmlRequest, CategoryRequestHelper::categoryRequest))
         {
 xmlRequest= keyArray[index];
     
 
-                        if(xmlRequest.startsWith(CategoryRequestHelper::categoryRequest))
+                        if(JavaString::startsWith(xmlRequest, CategoryRequestHelper::categoryRequest))
                         
                                     //Otherwise - thenStmt - BreakStmt
 
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil.putF(xmlRequest, this, "getXmlData()");
+                                    this->logUtil->putF(xmlRequest, this, "getXmlData()");
     
 
                                     }
                                 
 
-    Document document = DomDocumentHelper::create(xmlRequest);;
+    Document* document = DomDocumentHelper::create(xmlRequest);;
     
 
-    Node requestNode = DomSearchHelper::getNode(categoryData.REQUEST, document.getChildNodes());;
+    Node* requestNode = DomSearchHelper::getNode(categoryData->REQUEST, document->getChildNodes());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil.putF(XmlDocumentHelper::toString(document), this, "getXmlData()");
+                                    this->logUtil->putF(XmlDocumentHelper::toString(document), this, "getXmlData()");
     
 
                                     }
@@ -233,28 +241,28 @@ xmlRequest= keyArray[index];
 this->setCategoryLoader(requestNode);
     
 
-    Node parentCategoryNode = DomSearchHelper::getNode(categoryData.PARENT, requestNode.getChildNodes());;
+    Node* parentCategoryNode = DomSearchHelper::getNode(categoryData->PARENT, requestNode->getChildNodes());;
     
 
-    Node categoryNode = DomSearchHelper::getNode(categoryData.NAME, parentCategoryNode.getChildNodes());;
+    Node* categoryNode = DomSearchHelper::getNode(categoryData->NAME, parentCategoryNode->getChildNodes());;
     
-this->categoryInterface= StoreCategoryFactory(this->transformInfoInterface).getRootInstanceFromNode(categoryNode);
+this->categoryInterface= dynamic_cast<CategoryInterface*>((new StoreCategoryFactory(this->transformInfoInterface))->getRootInstanceFromNode(categoryNode));
     
-this->categoryInterface= this->categoryLoaderInterface.get(this->categoryInterface);
+this->categoryInterface= this->categoryLoaderInterface->get(this->categoryInterface);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
                         
                                     {
-                                    this->categoryInterface.log();
+                                    this->categoryInterface->log();
     
-this->logUtil.putF("Loaded Parent Category", this, "getXmlData()");
+this->logUtil->putF("Loaded Parent Category", this, "getXmlData()");
     
 
                                     }
                                 
 
-    Node childCategoryNode = DomSearchHelper::getNodeNoThrow(categoryData.NAME, requestNode.getChildNodes());;
+    Node* childCategoryNode = DomSearchHelper::getNodeNoThrow(categoryData->NAME, requestNode->getChildNodes());;
     
 
                         if(childCategoryNode != 
@@ -263,23 +271,23 @@ this->logUtil.putF("Loaded Parent Category", this, "getXmlData()");
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil.putF("Loading Child Category", this, "getXmlData()");
+                                    this->logUtil->putF("Loading Child Category", this, "getXmlData()");
     
 
                                     }
                                 
-this->childCategoryInterface= StoreCategoryFactory(this->transformInfoInterface).getInstance(childCategoryNode);
+this->childCategoryInterface= dynamic_cast<CategoryInterface*>((new StoreCategoryFactory(this->transformInfoInterface))->getInstance(childCategoryNode));
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
                         
                                     {
-                                    this->childCategoryInterface.log();
+                                    this->childCategoryInterface->log();
     
-this->logUtil.putF("Loaded Child Category", this, "getXmlData()");
+this->logUtil->putF("Loaded Child Category", this, "getXmlData()");
     
 
                                     }
@@ -298,13 +306,13 @@ this->logUtil.putF("Loaded Child Category", this, "getXmlData()");
                                 
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil.put(commonStrings.EXCEPTION, this, "getXmlData()", e);
+                                    this->logUtil->put(commonStrings.EXCEPTION, this, "getXmlData()", &e);
     
 
                                     }
@@ -316,9 +324,9 @@ this->logUtil.putF("Loaded Child Category", this, "getXmlData()");
 
                 //@Throws(Exception.constructor)
             
-    private: void setCategoryLoader(Node requestNode){
+    private: void setCategoryLoader(Node* requestNode){
 
-    Node storeNameNode = DomSearchHelper::getNode(StoreFrontData::getInstance().NAME, requestNode.getChildNodes());;
+    Node* storeNameNode = DomSearchHelper::getNode(StoreFrontData::getInstance()->NAME, requestNode->getChildNodes());;
     
 
                         if(storeNameNode != 
@@ -334,9 +342,9 @@ this->logUtil.putF("Loaded Child Category", this, "getXmlData()");
                         
                                     {
                                     
-    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(storeName);;
+    StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(storeName);;
     
-this->transformInfoInterface= TransformInfoBasic(storeFrontInterface, this->hashMap, this->pageContext);
+this->transformInfoInterface= dynamic_cast<TransformInfoInterface*>(new TransformInfoBasic(storeFrontInterface, this->hashMap, this->pageContext));
     
 
                         if(this->transformInfoInterface == 
@@ -347,13 +355,13 @@ this->transformInfoInterface= TransformInfoBasic(storeFrontInterface, this->hash
                                     
 
 
-                            throw Exception("TransformInfo null");
+                            throw new Exception("TransformInfo null");
                     
 
                                     }
                                 
 
-    StoreCategoryFactory storeCategoryFactory = StoreCategoryFactory(this->transformInfoInterface);;
+    StoreCategoryFactory* storeCategoryFactory = new StoreCategoryFactory(this->transformInfoInterface);;
     
 this->categoryLoaderInterface= CategoryLoaderFactory::getInstance(storeCategoryFactory);
     
@@ -364,7 +372,7 @@ this->categoryLoaderInterface= CategoryLoaderFactory::getInstance(storeCategoryF
                             
 
 
-                            throw Exception("Store Name Error: " +storeName);
+                            throw new Exception("Store Name Error: " +storeName);
                     
 
                         }
@@ -382,21 +390,21 @@ this->categoryLoaderInterface= CategoryLoaderFactory::getInstance(storeCategoryF
     std::string success = "Successfully Added the following to the Category table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF("inserting", this, "insert()");
+                                    this->logUtil->putF("inserting", this, "insert()");
     
 
                                     }
                                 
-this->categoryLoaderInterface.insert(this->categoryInterface, this->childCategoryInterface);
+this->categoryLoaderInterface->insert(this->categoryInterface, this->childCategoryInterface);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "insert()");
+                                    this->logUtil->putF(success, this, "insert()");
     
 
                                     }
@@ -409,16 +417,16 @@ this->categoryLoaderInterface.insert(this->categoryInterface, this->childCategor
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to add item to Category";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "insert()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "insert()", &e);
     
 
                                     }
@@ -438,24 +446,24 @@ this->categoryLoaderInterface.insert(this->categoryInterface, this->childCategor
 
         try {
             
-    std::string success = "Successfully Removed " +CategoryData::getInstance().NAME +"=" +this->childCategoryInterface.getPath();;
+    std::string success = "Successfully Removed " +CategoryData::getInstance()->NAME +"=" +this->childCategoryInterface->getPath();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF("Deleting", this, "delete()");
+                                    this->logUtil->putF("Deleting", this, "delete()");
     
 
                                     }
                                 
-this->categoryLoaderInterface.delete(this->categoryInterface, this->childCategoryInterface);
+this->categoryLoaderInterface->delete(this->categoryInterface, this->childCategoryInterface);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "delete()");
+                                    this->logUtil->putF(success, this, "delete()");
     
 
                                     }
@@ -468,18 +476,18 @@ this->categoryLoaderInterface.delete(this->categoryInterface, this->childCategor
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
         try {
             
-    std::string error = "Failed to remove category: " +this->childCategoryInterface.getPath();;
+    std::string error = "Failed to remove category: " +this->childCategoryInterface->getPath();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "delete()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "delete()", &e);
     
 
                                     }
@@ -492,16 +500,16 @@ this->categoryLoaderInterface.delete(this->categoryInterface, this->childCategor
     
 
                 //: 
-} catch(e2) 
+} catch(Exception& e2) 
             {
 
     std::string error = "Failed to remove category and show the path of the failed category";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "delete()", e2);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "delete()", &e2);
     
 
                                     }
@@ -523,16 +531,16 @@ this->categoryLoaderInterface.delete(this->categoryInterface, this->childCategor
 
         try {
             
-    Document document = CategoryComponent(this->childCategoryInterface).toXmlDoc();;
+    Document* document = (new CategoryComponent(this->childCategoryInterface))->toXmlDoc();;
     
 
     std::string xmlString = XmlDocumentHelper::toString(document);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(xmlString, this, "viewCategory()");
+                                    this->logUtil->putF(xmlString, this, "viewCategory()");
     
 
                                     }
@@ -545,16 +553,16 @@ this->categoryLoaderInterface.delete(this->categoryInterface, this->childCategor
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to get Category";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "viewCategory()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "viewCategory()", &e);
     
 
                                     }
@@ -574,13 +582,13 @@ this->categoryLoaderInterface.delete(this->categoryInterface, this->childCategor
 
         try {
             
-    std::string success = StringUtil::getInstance().EMPTY_STRING;;
+    std::string success = StringUtil::getInstance()->EMPTY_STRING;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "viewCategories()");
+                                    this->logUtil->putF(success, this, "viewCategories()");
     
 
                                     }
@@ -593,16 +601,16 @@ this->categoryLoaderInterface.delete(this->categoryInterface, this->childCategor
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to view Categories table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "viewCategories()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "viewCategories()", &e);
     
 
                                     }
@@ -625,10 +633,10 @@ this->categoryLoaderInterface.delete(this->categoryInterface, this->childCategor
     std::string success = "New Item Successfully added";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil.putF(success, this, "update()");
+                                    this->logUtil->putF(success, this, "update()");
     
 
                                     }
@@ -641,16 +649,16 @@ this->categoryLoaderInterface.delete(this->categoryInterface, this->childCategor
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
     std::string error = "Failed to add Item";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "update()", e);
+                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "update()", &e);
     
 
                                     }

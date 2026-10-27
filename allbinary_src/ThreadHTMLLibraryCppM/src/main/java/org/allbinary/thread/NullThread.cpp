@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Thread.h"
@@ -43,13 +49,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NullRunnable.h"
+        #include "org/allbinary/thread/NullRunnable.h"
 
 class NullThread
             : public Object
          {
 
-    public: static const Thread NULL_THREAD = Thread(NullRunnable::getInstance(), StringUtil::getInstance().EMPTY_STRING);
+    public: static Thread* NULL_THREAD() { static std::unique_ptr<Thread> value(new Thread(NullRunnable::getInstance(), StringUtil::getInstance()->EMPTY_STRING)); return value.get(); }
 
 };
 

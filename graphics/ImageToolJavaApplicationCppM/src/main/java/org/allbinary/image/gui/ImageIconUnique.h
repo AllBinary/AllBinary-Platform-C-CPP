@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_IMAGE_GUI_IMAGEICONUNIQUE_H
         #define ORG_ALLBINARY_IMAGE_GUI_IMAGEICONUNIQUE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/awt/image/BufferedImage.h>
 
       
@@ -45,13 +51,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageIcon.h"
+        #include "org/allbinary/image/gui/ImageIcon.h"
 
 class ImageIconUnique: public ImageIcon {
 
     private: int32_t id= 0;
 
-public: ImageIconUnique(BufferedImage bufferedImage, int32_t index);
+public: ImageIconUnique(BufferedImage* bufferedImage, int32_t index);
 
     public: int32_t getId();
 

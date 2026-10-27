@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_PATH_PATHUTIL_H
         #define ORG_ALLBINARY_LOGIC_IO_PATH_PATHUTIL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -52,35 +58,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "AbPathData.h"
-#include "AbFilePath.h"
-#include "AbPath.h"
+        #include "org/allbinary/logic/io/path/AbPathData.h"
+#include "org/allbinary/logic/io/path/AbFilePath.h"
+#include "org/allbinary/logic/io/path/AbPath.h"
 //Used to correct user input for paths
 class PathUtil
             : public Object
          {
 
-    private: static PathUtil instance() { return PathUtil(); }
+    private: static PathUtil* instance() { static std::unique_ptr<PathUtil> value(new PathUtil()); return value.get(); }
 
-    public: static PathUtil getInstance();
+    public: static PathUtil* getInstance();
 
-    private: const AbPathData abPathData = AbPathData::getInstance();
+    private: AbPathData* abPathData = AbPathData::getInstance();
 
-    private: const FilePathData filePathData = FilePathData::getInstance();
+    private: FilePathData* filePathData = FilePathData::getInstance();
 
 private: PathUtil();
 
-    public: std::string getExtensionWithAbFilePath(AbFilePath abFilePath);
+    public: std::string getExtensionWithAbFilePath(AbFilePath* abFilePath);
 
-    public: std::string getExtensionWithAbPath(AbPath abPath);
-
-                //@Throws(Exception.constructor)
-            
-    public: std::string getWithoutExtensionWithAbFilePath(AbFilePath abFilePath);
+    public: std::string getExtensionWithAbPath(AbPath* abPath);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getWithoutExtensionWithAbPath(AbPath abPath);
+    public: std::string getWithoutExtensionWithAbFilePath(AbFilePath* abFilePath);
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string getWithoutExtensionWithAbPath(AbPath* abPath);
 
                 //@Throws(Exception.constructor)
             
@@ -100,7 +106,7 @@ private: PathUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath removeNameFromPath(std::string path);
+    public: AbPath* removeNameFromPath(std::string path);
 
 };
 

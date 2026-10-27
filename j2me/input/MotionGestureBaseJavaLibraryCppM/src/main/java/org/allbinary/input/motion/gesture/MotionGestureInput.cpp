@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/input/Input.h>
 
       
@@ -53,9 +59,9 @@ public: MotionGestureInput(int32_t id, std::string name) : Input(id, name){
                             //For kotlin this is before the body of the constructor.
                     
 
-    InputFactory inputFactory = InputFactory::getInstance();;
+    InputFactory* inputFactory = InputFactory::getInstance();;
     
-inputFactory.add(this->getId(), this);
+inputFactory->add(this->getId(), this);
     
 }
 

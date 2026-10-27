@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_FILEUPLOADDATA_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_FILEUPLOADDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -46,9 +52,9 @@ class FileUploadData
             : public Object
          {
 
-    private: static FileUploadData instance() { return FileUploadData(); }
+    private: static FileUploadData* instance() { static std::unique_ptr<FileUploadData> value(new FileUploadData()); return value.get(); }
 
-    public: static FileUploadData getInstance();
+    public: static FileUploadData* getInstance();
 
     public: const std::string FILE = "download_file_permissions.xml";
 

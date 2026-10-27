@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/RuntimeException.h"
@@ -51,9 +57,9 @@
             : public Object
          {
 
-    private: static TimeStampUtil instance() { return TimeStampUtil(); }
+    private: static TimeStampUtil* instance() { static std::unique_ptr<TimeStampUtil> value(new TimeStampUtil()); return value.get(); }
 
-    public: static TimeStampUtil getInstance()
+    public: static TimeStampUtil* getInstance()
 
 
 

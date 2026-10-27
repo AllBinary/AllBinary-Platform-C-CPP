@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLOVERXIMMEDIATEYSTOPAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_SCROLLOVERXIMMEDIATEYSTOPAI_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/ai/BasicAI.h>
@@ -59,11 +65,11 @@
         
 class ScrollOverXImmediateYStopAI: public BasicAI {
 
-public: ScrollOverXImmediateYStopAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: ScrollOverXImmediateYStopAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager);
 
 };
 

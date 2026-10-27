@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -86,16 +92,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogoData.h"
-#include "LogoImageFileUtil.h"
+        #include "org/allbinary/logic/visual/transform/template/customizer/widgets/logo/LogoData.h"
+#include "org/allbinary/logic/visual/transform/template/customizer/widgets/logo/LogoImageFileUtil.h"
 
 class LogoValidation: public Validation, public DomNodeInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: FileItem logoFileItem;
+    private: FileItem* logoFileItem;
 
-    private: AbPath logoAbPath;
+    private: AbPath* logoAbPath;
 
     private: std::string logoFile;
 
@@ -115,17 +121,17 @@ this->logoFile=
 }
 
 
-public: LogoValidation(Node node){
+public: LogoValidation(Node* node){
 this->isFile= false;
     
-this->logoAbPath= AbPath(DomSearchHelper::getNode(LogoData::getInstance().IMAGEPATH, node.getChildNodes()).getNodeValue(), StringUtil::getInstance().EMPTY_STRING);
+this->logoAbPath= new AbPath(DomSearchHelper::getNode(LogoData::getInstance()->IMAGEPATH, node->getChildNodes())->getNodeValue(), StringUtil::getInstance()->EMPTY_STRING);
     
-this->logoFile= DomSearchHelper::getNode(LogoData::getInstance().IMAGEFILENAME, node.getChildNodes()).getNodeValue();
+this->logoFile= DomSearchHelper::getNode(LogoData::getInstance()->IMAGEFILENAME, node->getChildNodes())->getNodeValue();
     
 }
 
 
-public: LogoValidation(HashMap<Object*, Object*> hashMap){
+public: LogoValidation(HashMap<Object*, Object*>* hashMap){
 this->isFile= true;
     
 this->getFormData(hashMap);
@@ -135,10 +141,10 @@ this->getFormData(hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<Object*, Object*> hashMap){
-this->logoFileItem= hashMap.get(LogoData::getInstance().IMAGE);
+    public: void getFormData(HashMap<Object*, Object*>* hashMap){
+this->logoFileItem= dynamic_cast<FileItem*>(hashMap->get(LogoData::getInstance()->IMAGE));
     
-this->logoAbPath= AbPath(hashMap.get(LogoData::getInstance().IMAGEPATH), StringUtil::getInstance().EMPTY_STRING);
+this->logoAbPath= new AbPath(hashMap->get(LogoData::getInstance()->IMAGEPATH), StringUtil::getInstance()->EMPTY_STRING);
     
 
                         if(this->logoFileItem != 
@@ -146,27 +152,27 @@ this->logoAbPath= AbPath(hashMap.get(LogoData::getInstance().IMAGEPATH), StringU
                                 )
                         
                                     {
-                                    this->logoFile= HttpRequestUtil::getInstance().generateFileName(this->logoFileItem.getName());
+                                    this->logoFile= HttpRequestUtil::getInstance()->generateFileName(this->logoFileItem->getName());
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("HashMap: ");
+stringBuffer->append("HashMap: ");
     
-stringBuffer.append(hashMap.toString());
+stringBuffer->append(hashMap->toString());
     
-stringBuffer.append("\nLogoFileName: ");
+stringBuffer->append("\nLogoFileName: ");
     
-stringBuffer.append(this->logoFile);
+stringBuffer->append(this->logoFile);
     
-this->logUtil.putF(stringBuffer.toString(), this, "getFormData()");
+this->logUtil->putF(stringBuffer->toString(), this, "getFormData()");
     
 
                                     }
@@ -174,33 +180,33 @@ this->logUtil.putF(stringBuffer.toString(), this, "getFormData()");
 }
 
 
-    public: Boolean isValid(){
+    public: bool isValid(){
 
         try {
             
-    Boolean valid = Boolean::TRUE;;
+    bool valid = Boolean::TRUE;;
     
 
-    FileData fileData = FileData::getInstance();;
+    FileData* fileData = FileData::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("LogoValidation", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("LogoValidation", this, this->commonStrings.IS_VALID);
     
 
                                     }
                                 
 
-                        if(!StringValidationUtil::getInstance().isValidRequired(this->logoAbPath.toString(), 0, 512))
+                        if(!StringValidationUtil::getInstance()->isValidRequired(this->logoAbPath->toString(), 0, 512))
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("logoPath is invalid: " +this->logoAbPath.toString(), this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("logoPath is invalid: " +this->logoAbPath->toString(), this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -215,14 +221,14 @@ this->logUtil.putF(stringBuffer.toString(), this, "getFormData()");
                                     }
                                 
 
-                        if(!StringValidationUtil::getInstance().isValidRequired(this->logoFile, fileData.MINLEN, fileData.MAXLEN))
+                        if(!StringValidationUtil::getInstance()->isValidRequired(this->logoFile, fileData->MINLEN, fileData->MAXLEN))
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("logoFile is invalid: " +this->logoFile, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("logoFile is invalid: " +this->logoFile, this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -256,14 +262,14 @@ this->logUtil.putF(stringBuffer.toString(), this, "getFormData()");
                                     }
                                 
 
-                        if(this->logoFileItem.getSize() > fileData.MAXIMAGEFILESIZE || this->logoFileItem.getSize() < fileData.MINIMAGEFILESIZE)
+                        if(this->logoFileItem->getSize() > fileData->MAXIMAGEFILESIZE || this->logoFileItem->getSize() < fileData->MINIMAGEFILESIZE)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Image File Is Not The Right Size. " +fileData.MINIMAGEFILESIZE +"< > " +fileData.MAXIMAGEFILESIZE, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("Image File Is Not The Right Size. " +fileData->MINIMAGEFILESIZE +"< > " +fileData->MAXIMAGEFILESIZE, this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -281,10 +287,10 @@ this->logUtil.putF(stringBuffer.toString(), this, "getFormData()");
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil.putF("Logo Validation: " +valid, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("Logo Validation: " +valid, this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -297,13 +303,13 @@ this->logUtil.putF(stringBuffer.toString(), this, "getFormData()");
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
     
 
                                     }
@@ -323,25 +329,25 @@ this->logUtil.putF(stringBuffer.toString(), this, "getFormData()");
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Logo is not valid.");
+stringBuffer->append("Logo is not valid.");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
     
 
                                     }
@@ -357,7 +363,7 @@ stringBuffer.append("Logo is not valid.");
 }
 
 
-    public: Document toValidationInfoDoc(){
+    public: Document* toValidationInfoDoc(){
 
 
 
@@ -367,7 +373,7 @@ stringBuffer.append("Logo is not valid.");
 }
 
 
-    public: Node toValidationInfoNode(Document document){
+    public: Node* toValidationInfoNode(Document* document){
 
 
 
@@ -377,31 +383,31 @@ stringBuffer.append("Logo is not valid.");
 }
 
 
-    public: HashMap<Object*, Object*> toHashMap(){
+    public: HashMap<Object*, Object*>* toHashMap(){
 
-    StringUtil stringUtil = StringUtil::getInstance();;
+    StringUtil* stringUtil = StringUtil::getInstance();;
     
 
-    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap.put(LogoData::getInstance().IMAGE, stringUtil.EMPTY_STRING);
+hashMap->put(LogoData::getInstance()->IMAGE, stringUtil->EMPTY_STRING);
     
 
                         if(true)
                         
                                     {
-                                    hashMap.put(LogoData::getInstance().IMAGEPATH, this->logoAbPath.toString());
+                                    hashMap->put(LogoData::getInstance()->IMAGEPATH, this->logoAbPath->toString());
     
-hashMap.put(LogoData::getInstance().IMAGEFILENAME, this->logoFile);
+hashMap->put(LogoData::getInstance()->IMAGEFILENAME, this->logoFile);
     
 
                                     }
                                 
                         else {
-                            hashMap.put(LogoData::getInstance().IMAGEPATH, 
+                            hashMap->put(LogoData::getInstance()->IMAGEPATH, 
                             nullptr);
     
-hashMap.put(LogoData::getInstance().IMAGEFILENAME, this->logoFile);
+hashMap->put(LogoData::getInstance()->IMAGEFILENAME, this->logoFile);
     
 
                         }
@@ -417,15 +423,15 @@ hashMap.put(LogoData::getInstance().IMAGEFILENAME, this->logoFile);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document){
+    public: Node* toXmlNode(Document* document){
 
-    HashMap<Object*, Object*> hashMap = this->toHashMap();;
+    HashMap<Object*, Object*>* hashMap = this->toHashMap();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModDomHelper::createNameValueNodes(document, LogoData::getInstance().NAME, hashMap);;
+                        return ModDomHelper::createNameValueNodes(document, LogoData::getInstance()->NAME, hashMap);;
     
 }
 
@@ -434,24 +440,24 @@ hashMap.put(LogoData::getInstance().IMAGEFILENAME, this->logoFile);
             
     public: void processLogoFile(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
                         
                                     {
                                     
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Processing logoFile: ");
+stringBuffer->append("Processing logoFile: ");
     
-stringBuffer.append(this->logoAbPath.toString());
+stringBuffer->append(this->logoAbPath->toString());
     
-stringBuffer.append(this->logoFile);
+stringBuffer->append(this->logoFile);
     
-this->logUtil.putF(stringBuffer.toString(), this, "processLogoFile()");
+this->logUtil->putF(stringBuffer->toString(), this, "processLogoFile()");
     
 
                                     }
                                 
-LogoImageFileUtil(this->logoAbPath, this->logoFile).saveFiles(this->logoFileItem);
+(new LogoImageFileUtil(this->logoAbPath, this->logoFile))->saveFiles(this->logoFileItem);
     
 }
 

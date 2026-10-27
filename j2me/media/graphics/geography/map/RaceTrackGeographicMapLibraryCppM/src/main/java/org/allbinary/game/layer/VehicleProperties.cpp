@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/physics/velocity/VelocityProperties.h>
@@ -41,17 +47,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "VehicleFrictionProperties.h"
+        #include "org/allbinary/game/layer/VehicleFrictionProperties.h"
 
 class VehicleProperties
             : public Object
          {
 
-    private: VelocityProperties velocityProperties;
+    private: VelocityProperties* velocityProperties;
 
-    private: VehicleFrictionProperties vehicleFrictionProperties;
+    private: VehicleFrictionProperties* vehicleFrictionProperties;
 
-public: VehicleProperties(VelocityProperties velocityProperties, VehicleFrictionProperties vehicleFrictionProperties){
+public: VehicleProperties(VelocityProperties* velocityProperties, VehicleFrictionProperties* vehicleFrictionProperties){
 this->velocityProperties= velocityProperties;
     
 this->vehicleFrictionProperties= vehicleFrictionProperties;
@@ -59,7 +65,7 @@ this->vehicleFrictionProperties= vehicleFrictionProperties;
 }
 
 
-    public: VehicleFrictionProperties getVehicleFrictionProperties(){
+    public: VehicleFrictionProperties* getVehicleFrictionProperties(){
 
 
 
@@ -69,13 +75,13 @@ this->vehicleFrictionProperties= vehicleFrictionProperties;
 }
 
 
-    public: void setVehicleFrictionProperties(VehicleFrictionProperties vehicleFrictionProperties){
+    public: void setVehicleFrictionProperties(VehicleFrictionProperties* vehicleFrictionProperties){
 this->vehicleFrictionProperties= vehicleFrictionProperties;
     
 }
 
 
-    public: VelocityProperties getVelocityProperties(){
+    public: VelocityProperties* getVelocityProperties(){
 
 
 

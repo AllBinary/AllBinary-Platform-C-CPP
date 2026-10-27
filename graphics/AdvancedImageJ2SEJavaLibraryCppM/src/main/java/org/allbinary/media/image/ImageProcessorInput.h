@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -56,15 +62,15 @@ class ImageProcessorInput
             : public Object
          {
 
-    private: std::vector<BufferedImage> bufferedImageArray;
+    private: std::vector<BufferedImage*> bufferedImageArray;
 
-    private: std::vector<File> files;
+    private: std::vector<File*> files;
 
-public: ImageProcessorInput(std::vector<File> files, std::vector<BufferedImage> bufferedImageArray);
+public: ImageProcessorInput(std::vector<File*> files, std::vector<BufferedImage*> bufferedImageArray);
 
-    public: std::vector<BufferedImage> getBufferedImageArray();
+    public: std::vector<BufferedImage*> getBufferedImageArray();
 
-    public: std::vector<File> getFiles();
+    public: std::vector<File*> getFiles();
 
 };
 

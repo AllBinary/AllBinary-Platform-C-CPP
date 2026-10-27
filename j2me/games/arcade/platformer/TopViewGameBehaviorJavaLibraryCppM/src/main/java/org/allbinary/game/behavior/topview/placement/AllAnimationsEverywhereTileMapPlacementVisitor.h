@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/mapeditor/core/TiledMap.h>
 
       
@@ -44,11 +50,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TileMapPlacementVisitor.h"
+        #include "org/allbinary/game/behavior/topview/placement/TileMapPlacementVisitor.h"
 
 class AllAnimationsEverywhereTileMapPlacementVisitor: public TileMapPlacementVisitor {
 
-    public: void visit(TiledMap lastMap, std::vector<std::vector<int32_t>> mapData);
+    public: void visit(TiledMap* lastMap, std::vector<std::vector<int32_t>> mapData);
 
 };
 

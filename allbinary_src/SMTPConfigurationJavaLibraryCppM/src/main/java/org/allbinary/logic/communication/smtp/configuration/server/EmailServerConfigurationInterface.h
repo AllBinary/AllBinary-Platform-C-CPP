@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_SERVER_EMAILSERVERCONFIGURATIONINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_SERVER_EMAILSERVERCONFIGURATIONINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -42,21 +48,21 @@
         
 class EmailServerConfigurationInterface {
 
-    void setSmtpServer(std::string value);
+    public: virtual void setSmtpServer(std::string value) = 0;
 
-    std::string getSmtpServer();
+    public: virtual std::string getSmtpServer() = 0;
 
-    std::string getAccountName();
+    public: virtual std::string getAccountName() = 0;
 
-    void setAccountName(std::string accountName);
+    public: virtual void setAccountName(std::string accountName) = 0;
 
-    std::string getPassword();
+    public: virtual std::string getPassword() = 0;
 
-    void setPassword(std::string password);
+    public: virtual void setPassword(std::string password) = 0;
 
-    void log();
+    public: virtual void log() = 0;
 
-    std::string toString();
+    public: virtual std::string toString() = 0;
 
 };
 

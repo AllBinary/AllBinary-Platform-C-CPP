@@ -18,6 +18,14 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
 #include <org/allbinary/logic/NullUtil.h>
 
       
@@ -45,11 +53,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BasicTerrainInfo.h"
+        #include "org/allbinary/game/terrain/BasicTerrainInfo.h"
 
 class TerrainEvent: public AllBinaryEventObject {
 
-    private: BasicTerrainInfo basicTerrainInfo = BasicTerrainInfo::NULL_BASIC_TERRAIN_INFO;
+    private: BasicTerrainInfo* basicTerrainInfo = BasicTerrainInfo::NULL_BASIC_TERRAIN_INFO;
 
 public: TerrainEvent(Object* basicTerrainInfo) : AllBinaryEventObject(basicTerrainInfo){
 
@@ -65,24 +73,24 @@ this->setBasicTerrainInfo(this->basicTerrainInfo);
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("TerrainEvent: \n");
+stringBuffer->append("TerrainEvent: \n");
     
-stringBuffer.append("LayerInterface: ");
+stringBuffer->append("LayerInterface: ");
     
-stringBuffer.append(this->basicTerrainInfo.toString());
+stringBuffer->append(this->basicTerrainInfo->toString());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 
 
-    public: BasicTerrainInfo getBasicTerrainInfo(){
+    public: BasicTerrainInfo* getBasicTerrainInfo(){
 
 
 
@@ -92,13 +100,13 @@ stringBuffer.append(this->basicTerrainInfo.toString());
 }
 
 
-    public: void setBasicTerrainInfo(BasicTerrainInfo basicTerrainInfo){
+    public: void setBasicTerrainInfo(BasicTerrainInfo* basicTerrainInfo){
 this->basicTerrainInfo= basicTerrainInfo;
     
 }
 
 
-    public: void setBasicTerrainInfoForCircularStaticPool(BasicTerrainInfo basicTerrainInfo){
+    public: void setBasicTerrainInfoForCircularStaticPool(BasicTerrainInfo* basicTerrainInfo){
 this->basicTerrainInfo= basicTerrainInfo;
     
 }

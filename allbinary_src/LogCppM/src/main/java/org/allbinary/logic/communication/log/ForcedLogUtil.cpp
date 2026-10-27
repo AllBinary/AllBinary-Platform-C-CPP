@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -57,13 +63,13 @@ class ForcedLogUtil
             
 
 
-                            throw Exception(message);
+                            throw new Exception(message);
                     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-PreLogUtil::putOE(CommonStrings::getInstance().EXCEPTION, anyType, "log", e);
+PreLogUtil::putOE(CommonStrings::getInstance()->EXCEPTION, anyType, "log", &e);
     
 }
 

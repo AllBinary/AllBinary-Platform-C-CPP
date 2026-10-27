@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
@@ -53,25 +59,25 @@
         
 class BasketInterface {
 
-    void addItem(std::string id, std::string num)
+    public: virtual void addItem(std::string id, std::string num) = 0;
 
-    void removeItem(std::string id)
+    public: virtual void removeItem(std::string id) = 0;
 
-    void adjustItem(std::string id, std::string num)
+    public: virtual void adjustItem(std::string id, std::string num) = 0;
 
-    std::string getTotalWeight()
+    public: virtual std::string getTotalWeight() = 0;
 
-    Integer getNumberOfItems()
+    public: virtual int32_t getNumberOfItems() = 0;
 
-    Set getIds()
+    public: virtual Set* getIds() = 0;
 
-    HashMap<Object*, Object*> getItems()
+    public: virtual HashMap<Object*, Object*>* getItems() = 0;
 
-    Integer getNumberOf(std::string product)
+    public: virtual int32_t getNumberOf(std::string product) = 0;
 
                 //@Throws(MoneyException.constructor)
             
-    Money getSubTotal()
+    public: virtual Money* getSubTotal() = 0;
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -63,8 +69,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ImageTypes.h"
-#include "ImageActionScriptOutputInterface.h"
+        #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageTypes.h"
+#include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutputInterface.h"
 
 class ImageActionScriptOutputProcessor
             : public Object
@@ -72,23 +78,23 @@ class ImageActionScriptOutputProcessor
 
                 //@Throws(Exception.constructor)
             
-    public: static void process(ImageActionScriptOutputInterface imageActionScriptOutputInterface, Long frame){
+    public: static void process(ImageActionScriptOutputInterface* imageActionScriptOutputInterface, int64_t frame){
 
-    LogUtil logUtil = LogUtil::getInstance();;
+    LogUtil* logUtil = LogUtil::getInstance();;
     
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil.putF("Start - Processing at: " +imageActionScriptOutputInterface.toString(), "ImageActionScriptOutputProcessor", commonStrings.PROCESS);
-    
-
-    ImageTypes imageTypes = imageActionScriptOutputInterface.getImageTypes();;
+logUtil->putF("Start - Processing at: " +imageActionScriptOutputInterface->toString(), "ImageActionScriptOutputProcessor", commonStrings->PROCESS);
     
 
-    BasicArrayList vector = imageTypes.getVector();;
+    ImageTypes* imageTypes = imageActionScriptOutputInterface->getImageTypes();;
     
 
-    int32_t size = vector.size();;
+    BasicArrayList* vector = imageTypes->getVector();;
+    
+
+    int32_t size = vector->size();;
     
 
 
@@ -98,19 +104,19 @@ logUtil.putF("Start - Processing at: " +imageActionScriptOutputInterface.toStrin
     int32_t index = 0;index < size; index++)
         {
 
-    InputImageType imageType = vector.get(index);;
+    InputImageType* imageType = dynamic_cast<InputImageType*>(vector->get(index));;
     
 
-    ImageIOInterface imageIOInterface = InputImageIOInterfaceFactory::getInstance(imageType);;
+    ImageIOInterface* imageIOInterface = InputImageIOInterfaceFactory::getInstance(imageType);;
     
-imageIOInterface.save(frame);
+imageIOInterface->save(frame);
     
 }
 
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: ImageActionScriptOutputProcessor(){
 }

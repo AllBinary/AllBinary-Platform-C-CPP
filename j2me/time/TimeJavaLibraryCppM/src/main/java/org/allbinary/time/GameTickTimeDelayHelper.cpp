@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/System.h"
@@ -75,7 +81,7 @@ this->startTime= System.currentTimeMillis();
 
     public: void loop(){
 
-                        if(this->lastStartTime == Long::MIN_VALUE)
+                        if(this->lastStartTime == Long.MIN_VALUE)
                         
                                     {
                                     this->timeDelta= 0;

@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -67,9 +73,9 @@ class KeySpecFactory
             : public Object
          {
 
-    private: static KeySpecFactory instance() { return KeySpecFactory(); }
+    private: static KeySpecFactory* instance() { static std::unique_ptr<KeySpecFactory> value(new KeySpecFactory()); return value.get(); }
 
-    public: static KeySpecFactory getInstance(){
+    public: static KeySpecFactory* getInstance(){
 
 
 
@@ -89,34 +95,34 @@ private: KeySpecFactory(){
 }
 
 
-    public: KeySpec getInstance(std::string algorithm, std::vector<int8_t> keyData){
+    public: KeySpec* getInstance(std::string algorithm, std::vector<int8_t> keyData){
 
         try {
             
-    TsUtil tsUtil = TsUtil::getInstance();;
+    TsUtil* tsUtil = TsUtil::getInstance();;
     
 
-                        if(tsUtil.compareTo(algorithm, this->DES) == 0)
+                        if(tsUtil->compareTo(algorithm, this->DES) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DESKeySpec(keyData);
+                        return new DESKeySpec(keyData);
     
 
                                     }
                                 
                              else 
-                        if(tsUtil.compareTo(algorithm, this->DESEDE) == 0)
+                        if(tsUtil->compareTo(algorithm, this->DESEDE) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DESedeKeySpec(keyData);
+                        return new DESedeKeySpec(keyData);
     
 
                                     }
@@ -125,24 +131,24 @@ private: KeySpecFactory(){
                             
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 
                         }
                             
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil::putOE(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
+PreLogUtil::putOE(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
     
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 

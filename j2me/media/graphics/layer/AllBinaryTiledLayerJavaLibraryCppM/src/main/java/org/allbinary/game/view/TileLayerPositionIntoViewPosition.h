@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_VIEW_TILELAYERPOSITIONINTOVIEWPOSITION_H
         #define ORG_ALLBINARY_GAME_VIEW_TILELAYERPOSITIONINTOVIEWPOSITION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
 
       
@@ -54,7 +60,7 @@
         
 class TileLayerPositionIntoViewPosition: public ViewPosition {
 
-    private: Layer tiledLayer = NullLayer::getInstance();
+    private: Layer* tiledLayer = NullLayer::getInstance();
 
 public: TileLayerPositionIntoViewPosition();
 
@@ -64,7 +70,7 @@ public: TileLayerPositionIntoViewPosition();
 
     public: int32_t getZ();
 
-    public: void setTiledLayer(AllBinaryTiledLayer tiledLayer);
+    public: void setTiledLayer(AllBinaryTiledLayer* tiledLayer);
 
 };
 

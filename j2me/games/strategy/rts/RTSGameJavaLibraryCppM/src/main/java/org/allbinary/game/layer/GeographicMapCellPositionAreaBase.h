@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_GEOGRAPHICMAPCELLPOSITIONAREABASE_H
         #define ORG_ALLBINARY_GAME_LAYER_GEOGRAPHICMAPCELLPOSITIONAREABASE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -54,23 +60,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GeographicMapCellPositionAreaInterface.h"
+        #include "org/allbinary/game/layer/GeographicMapCellPositionAreaInterface.h"
 
 class GeographicMapCellPositionAreaBase
             : public Object
-        : public GeographicMapCellPositionAreaInterface {
+        , public GeographicMapCellPositionAreaInterface {
 
-    public: static const GeographicMapCellPositionAreaBase NULL_GEOGRPAHIC_MAP_POSITION_AREA_BASE = GeographicMapCellPositionAreaBase();
+    public: static GeographicMapCellPositionAreaBase* NULL_GEOGRPAHIC_MAP_POSITION_AREA_BASE() { static std::unique_ptr<GeographicMapCellPositionAreaBase> value(new GeographicMapCellPositionAreaBase()); return value.get(); }
 
-    public: GeographicMapCellPosition getNextSurroundingGeographicMapCellPosition();
+    public: GeographicMapCellPosition* getNextSurroundingGeographicMapCellPosition();
 
-    public: BasicArrayList getOccupyingGeographicMapCellPositionList();
+    public: BasicArrayList* getOccupyingGeographicMapCellPositionList();
 
-    public: BasicArrayList getSurroundingGeographicMapCellPositionList();
+    public: BasicArrayList* getSurroundingGeographicMapCellPositionList();
 
                 //@Throws(Exception.constructor)
             
-    public: void update(BasicGeographicMap geographicMapInterface);
+    public: void update(BasicGeographicMap* geographicMapInterface);
 
 };
 

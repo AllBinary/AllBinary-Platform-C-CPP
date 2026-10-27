@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_BUSINESS_TIME_CREATED_TIMECREATEDVIEW_H
         #define ORG_ALLBINARY_BUSINESS_TIME_CREATED_TIMECREATEDVIEW_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -61,25 +67,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TimeCreated.h"
+        #include "org/allbinary/business/time/created/TimeCreated.h"
 
 class TimeCreatedView
             : public Object
-        : public DomNodeInterface {
+        , public DomNodeInterface {
 
-    private: TimeCreated timeCreated;
+    private: TimeCreated* timeCreated;
 
-public: TimeCreatedView(TimeCreated timeCreated);
+public: TimeCreatedView(TimeCreated* timeCreated);
 
-public: TimeCreatedView(Node node);
+public: TimeCreatedView(Node* node);
 
                 //@Throws(Exception.constructor)
             
-    public: Node toXmlNode(Document document);
+    public: Node* toXmlNode(Document* document);
 
-    public: TimeCreated getTimeCreated();
+    public: TimeCreated* getTimeCreated();
 
-    public: void setTimeCreated(TimeCreated timeCreated);
+    public: void setTimeCreated(TimeCreated* timeCreated);
 
 };
 

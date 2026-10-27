@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,29 +49,29 @@ class JvmStatisticsData
             : public Object
          {
 
-    public: static const std::string JVM_STATISTICS = "JVM_STATISTICS_";
+    public: static inline const std::string JVM_STATISTICS = "JVM_STATISTICS_";
 
-    public: static const std::string NAME = JvmStatisticsData::JVM_STATISTICS +"NAME";
+    public: static inline const std::string NAME = JvmStatisticsData::JVM_STATISTICS +"NAME";
 
-    public: static const std::string TOTAL_MEMORY_BYTES = JvmStatisticsData::JVM_STATISTICS +"TOTAL_MEMORY_BYTES";
+    public: static inline const std::string TOTAL_MEMORY_BYTES = JvmStatisticsData::JVM_STATISTICS +"TOTAL_MEMORY_BYTES";
 
-    public: static const std::string TOTAL_MEMORY_KILOBYTES = JvmStatisticsData::JVM_STATISTICS +"TOTAL_MEMORY_KILOBYTES";
+    public: static inline const std::string TOTAL_MEMORY_KILOBYTES = JvmStatisticsData::JVM_STATISTICS +"TOTAL_MEMORY_KILOBYTES";
 
-    public: static const std::string TOTAL_MEMORY_MEGABYTES = JvmStatisticsData::JVM_STATISTICS +"TOTAL_MEMORY_MEGABYTES";
+    public: static inline const std::string TOTAL_MEMORY_MEGABYTES = JvmStatisticsData::JVM_STATISTICS +"TOTAL_MEMORY_MEGABYTES";
 
-    public: static const std::string FREE_MEMORY_BYTES = JvmStatisticsData::JVM_STATISTICS +"FREE_MEMORY_BYTES";
+    public: static inline const std::string FREE_MEMORY_BYTES = JvmStatisticsData::JVM_STATISTICS +"FREE_MEMORY_BYTES";
 
-    public: static const std::string FREE_MEMORY_KILOBYTES = JvmStatisticsData::JVM_STATISTICS +"FREE_MEMORY_KILOBYTES";
+    public: static inline const std::string FREE_MEMORY_KILOBYTES = JvmStatisticsData::JVM_STATISTICS +"FREE_MEMORY_KILOBYTES";
 
-    public: static const std::string FREE_MEMORY_MEGABYTES = JvmStatisticsData::JVM_STATISTICS +"FREE_MEMORY_MEGABYTES";
+    public: static inline const std::string FREE_MEMORY_MEGABYTES = JvmStatisticsData::JVM_STATISTICS +"FREE_MEMORY_MEGABYTES";
 
-    public: static const std::string MAX_MEMORY_BYTES = JvmStatisticsData::JVM_STATISTICS +"MAX_MEMORY_BYTES";
+    public: static inline const std::string MAX_MEMORY_BYTES = JvmStatisticsData::JVM_STATISTICS +"MAX_MEMORY_BYTES";
 
-    public: static const std::string MAX_MEMORY_KILOBYTES = JvmStatisticsData::JVM_STATISTICS +"MAX_MEMORY_KILOBYTES";
+    public: static inline const std::string MAX_MEMORY_KILOBYTES = JvmStatisticsData::JVM_STATISTICS +"MAX_MEMORY_KILOBYTES";
 
-    public: static const std::string MAX_MEMORY_MEGABYTES = JvmStatisticsData::JVM_STATISTICS +"MAX_MEMORY_MEGABYTES";
+    public: static inline const std::string MAX_MEMORY_MEGABYTES = JvmStatisticsData::JVM_STATISTICS +"MAX_MEMORY_MEGABYTES";
 
-    public: static const std::string NUMBER_OF_THREADS = JvmStatisticsData::JVM_STATISTICS +"NUMBER_OF_THREADS";
+    public: static inline const std::string NUMBER_OF_THREADS = JvmStatisticsData::JVM_STATISTICS +"NUMBER_OF_THREADS";
 
 private: JvmStatisticsData(){
 

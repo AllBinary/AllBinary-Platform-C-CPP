@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -87,9 +93,9 @@ class DomHelper
             : public Object
          {
 
-    private: static DomHelper instance() { return DomHelper(); }
+    private: static DomHelper* instance() { static std::unique_ptr<DomHelper> value(new DomHelper()); return value.get(); }
 
-    public: static DomHelper getInstance(){
+    public: static DomHelper* getInstance(){
 
 
 
@@ -99,23 +105,23 @@ class DomHelper
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
 private: DomHelper(){
 }
 
 
-    public: Document createDocument(){
+    public: Document* createDocument(){
 
         try {
             
-    DocumentBuilderFactory factory = DocumentBuilderFactory::newInstance();;
+    DocumentBuilderFactory* factory = DocumentBuilderFactory::newInstance();;
     
 
-    DocumentBuilder builder = factory.newDocumentBuilder();;
+    DocumentBuilder* builder = factory->newDocumentBuilder();;
     
 
-    Document document = builder.newDocument();;
+    Document* document = builder->newDocument();;
     
 
 
@@ -125,7 +131,7 @@ private: DomHelper(){
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -140,17 +146,17 @@ private: DomHelper(){
 
                 //@Throws(Exception.constructor)
             
-    public: Document createDocument(File xmlFile){
+    public: Document* createDocument(File* xmlFile){
 
         try {
             
-    DocumentBuilderFactory factory = DocumentBuilderFactory::newInstance();;
+    DocumentBuilderFactory* factory = DocumentBuilderFactory::newInstance();;
     
 
-    DocumentBuilder builder = factory.newDocumentBuilder();;
+    DocumentBuilder* builder = factory->newDocumentBuilder();;
     
 
-    Document document = builder.parse(xmlFile);;
+    Document* document = builder->parse(xmlFile);;
     
 
 
@@ -160,7 +166,7 @@ private: DomHelper(){
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -174,35 +180,35 @@ private: DomHelper(){
 
                 //@Throws(Exception.constructor)
             
-    public: std::string toString(Document document){
+    public: std::string toString(Document* document){
 
         try {
             
-    DOMSource domSource = DOMSource(document);;
+    DOMSource* domSource = new DOMSource(document);;
     
 
-    ByteArrayOutputStream byteArrayOutputStream = ByteArrayOutputStream();;
+    ByteArrayOutputStream* byteArrayOutputStream = new ByteArrayOutputStream();;
     
 
-    StreamResult streamResult = StreamResult(byteArrayOutputStream);;
+    StreamResult* streamResult = new StreamResult(byteArrayOutputStream);;
     
 
-    TransformerFactory copyTransformerFactory = TransformerFactory::newInstance();;
+    TransformerFactory* copyTransformerFactory = TransformerFactory::newInstance();;
     
 
-    Transformer copyTransformer = copyTransformerFactory.newTransformer();;
+    Transformer* copyTransformer = copyTransformerFactory->newTransformer();;
     
-copyTransformer.transform(domSource, streamResult);
+copyTransformer->transform(domSource, streamResult);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return byteArrayOutputStream.toString();;
+                        return byteArrayOutputStream->toString();;
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -216,28 +222,28 @@ copyTransformer.transform(domSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public: void save(File file, Document document){
+    public: void save(File* file, Document* document){
 
         try {
             
-    TransformerFactory copyTransformerFactory = TransformerFactory::newInstance();;
+    TransformerFactory* copyTransformerFactory = TransformerFactory::newInstance();;
     
 
-    Transformer copyTransformer = copyTransformerFactory.newTransformer();;
+    Transformer* copyTransformer = copyTransformerFactory->newTransformer();;
     
 
-    DOMSource domSource = DOMSource(document);;
+    DOMSource* domSource = new DOMSource(document);;
     
-file.createNewFile();
+file->createNewFile();
     
 
-    StreamResult streamResult = StreamResult(file);;
+    StreamResult* streamResult = new StreamResult(file);;
     
-copyTransformer.transform(domSource, streamResult);
+copyTransformer->transform(domSource, streamResult);
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -251,9 +257,9 @@ copyTransformer.transform(domSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public: NodeList getChildNodeList(std::string nodeName, NodeList nodeList){
+    public: NodeList* getChildNodeList(std::string nodeName, NodeList* nodeList){
 
-    int32_t numberOfNodes = nodeList.getLength();;
+    int32_t numberOfNodes = nodeList->getLength();;
     
 
 
@@ -263,17 +269,17 @@ copyTransformer.transform(domSource, streamResult);
     int32_t index = 0;index < numberOfNodes; index++)
         {
 
-    Node node = nodeList.item(index);;
+    Node* node = nodeList->item(index);;
     
 
-                        if(node.getNodeName().compareTo(nodeName) == 0)
+                        if(node->getNodeName()->compareTo(nodeName) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return node.getChildNodes();;
+                        return node->getChildNodes();;
     
 
                                     }
@@ -283,22 +289,22 @@ copyTransformer.transform(domSource, streamResult);
 
 
 
-                            throw Exception(nodeName +" Node Not Found");
+                            throw new Exception(nodeName +" Node Not Found");
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getChildrenWithoutTextNodes(std::string nodeName, NodeList nodeList){
+    public: BasicArrayList* getChildrenWithoutTextNodes(std::string nodeName, NodeList* nodeList){
 
-    BasicArrayList list = BasicArrayListD();;
+    BasicArrayList* list = new BasicArrayListD();;
     
 
-    NodeList childNodeList = this->getChildNodeList(nodeName, nodeList);;
+    NodeList* childNodeList = this->getChildNodeList(nodeName, nodeList);;
     
 
-    int32_t numberOfChildren = childNodeList.getLength();;
+    int32_t numberOfChildren = childNodeList->getLength();;
     
 
 
@@ -308,13 +314,13 @@ copyTransformer.transform(domSource, streamResult);
     int32_t index = 0;index < numberOfChildren; index++)
         {
 
-    Node node = childNodeList.item(index);;
+    Node* node = childNodeList->item(index);;
     
 
-                        if(node.getNodeType() != Node::TEXT_NODE)
+                        if(node->getNodeType() != Node::TEXT_NODE)
                         
                                     {
-                                    list.add(node);
+                                    list->add(node);
     
 
                                     }
@@ -332,12 +338,12 @@ copyTransformer.transform(domSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList getWithoutTextNodes(NodeList nodeList){
+    public: BasicArrayList* getWithoutTextNodes(NodeList* nodeList){
 
-    BasicArrayList list = BasicArrayListD();;
+    BasicArrayList* list = new BasicArrayListD();;
     
 
-    int32_t numberOfChildren = nodeList.getLength();;
+    int32_t numberOfChildren = nodeList->getLength();;
     
 
 
@@ -347,13 +353,13 @@ copyTransformer.transform(domSource, streamResult);
     int32_t index = 0;index < numberOfChildren; index++)
         {
 
-    Node node = nodeList.item(index);;
+    Node* node = nodeList->item(index);;
     
 
-                        if(node.getNodeType() != Node::TEXT_NODE)
+                        if(node->getNodeType() != Node::TEXT_NODE)
                         
                                     {
-                                    list.add(node);
+                                    list->add(node);
     
 
                                     }
@@ -371,9 +377,9 @@ copyTransformer.transform(domSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public: Node searchNodeList(std::string nodeName, NodeList nodeList){
+    public: Node* searchNodeList(std::string nodeName, NodeList* nodeList){
 
-    int32_t numberOfNodes = nodeList.getLength();;
+    int32_t numberOfNodes = nodeList->getLength();;
     
 
 
@@ -383,12 +389,12 @@ copyTransformer.transform(domSource, streamResult);
     int32_t index = 0;index < numberOfNodes; index++)
         {
 
-    Node node = nodeList.item(index);;
+    Node* node = nodeList->item(index);;
     
-this->logUtil.putF("NodeName: " +node.getNodeName(), this, "searchNodeList");
+this->logUtil->putF("NodeName: " +node->getNodeName(), this, "searchNodeList");
     
 
-                        if(node.getNodeName().compareTo(nodeName) == 0)
+                        if(node->getNodeName()->compareTo(nodeName) == 0)
                         
                                     {
                                     
@@ -405,16 +411,16 @@ this->logUtil.putF("NodeName: " +node.getNodeName(), this, "searchNodeList");
 
 
 
-                            throw Exception(nodeName +" Node Not Found in search");
+                            throw new Exception(nodeName +" Node Not Found in search");
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Node searchNodeList(std::string nodeName, BasicArrayList nodeList){
+    public: Node* searchNodeList(std::string nodeName, BasicArrayList* nodeList){
 
-    int32_t numberOfNodes = nodeList.size();;
+    int32_t numberOfNodes = nodeList->size();;
     
 
 
@@ -424,12 +430,12 @@ this->logUtil.putF("NodeName: " +node.getNodeName(), this, "searchNodeList");
     int32_t index = 0;index < numberOfNodes; index++)
         {
 
-    Node node = nodeList.get(index);;
+    Node* node = dynamic_cast<Node*>(nodeList->get(index));;
     
-this->logUtil.putF("NodeName: " +node.getNodeName(), this, "searchNodeList");
+this->logUtil->putF("NodeName: " +node->getNodeName(), this, "searchNodeList");
     
 
-                        if(node.getNodeName().compareTo(nodeName) == 0)
+                        if(node->getNodeName()->compareTo(nodeName) == 0)
                         
                                     {
                                     
@@ -446,7 +452,7 @@ this->logUtil.putF("NodeName: " +node.getNodeName(), this, "searchNodeList");
 
 
 
-                            throw Exception(nodeName +" Node Not Found in search");
+                            throw new Exception(nodeName +" Node Not Found in search");
                     
 }
 

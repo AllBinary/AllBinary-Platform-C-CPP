@@ -20,6 +20,14 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
+            #include "java/lang/Object.h"
+        
             #include "java/lang/Integer.h"
         
 #include <org/allbinary/game/GameInfo.h>
@@ -76,14 +84,14 @@
         
 class AllBinaryGameLayerManager: public AllBinaryLayerManager {
 
-    private: static Object* NULL_ALLBINARY_LAYER_MANAGER = NullUtil::getInstance().NULL_OBJECT;
+    private: static inline Object* NULL_ALLBINARY_LAYER_MANAGER = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static AllBinaryGameLayerManager getNullInstance(){
+    public: static AllBinaryGameLayerManager* getNullInstance(){
 
-                        if(AllBinaryGameLayerManager::NULL_ALLBINARY_LAYER_MANAGER == NullUtil::getInstance().NULL_OBJECT)
+                        if(AllBinaryGameLayerManager::NULL_ALLBINARY_LAYER_MANAGER == NullUtil::getInstance()->NULL_OBJECT)
                         
                                     {
-                                    AllBinaryGameLayerManager::NULL_ALLBINARY_LAYER_MANAGER= AllBinaryGameLayerManager(BasicColorFactory::getInstance().BLACK, BasicColorFactory::getInstance().WHITE, GameInfo::NONE);
+                                    AllBinaryGameLayerManager::NULL_ALLBINARY_LAYER_MANAGER= new AllBinaryGameLayerManager(BasicColorFactory::getInstance()->BLACK, BasicColorFactory::getInstance()->WHITE, GameInfo::NONE);
     
 
                                     }
@@ -92,44 +100,44 @@ class AllBinaryGameLayerManager: public AllBinaryLayerManager {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryGameLayerManager::NULL_ALLBINARY_LAYER_MANAGER;
+                        return dynamic_cast<AllBinaryGameLayerManager*>(AllBinaryGameLayerManager::NULL_ALLBINARY_LAYER_MANAGER);
     
 }
 
 
-    public: static const Integer ID = SmallIntegerSingletonFactory::getInstance().getAt(22);
+    public: static inline int32_t ID = SmallIntegerSingletonFactory::getInstance()->getAt(22);
 
-    private: BasicColor backgroundBasicColor;
+    private: BasicColor* backgroundBasicColor;
 
-    private: BasicColor foregroundBasicColor;
+    private: BasicColor* foregroundBasicColor;
 
-    private: GameInfo gameInfo;
+    private: GameInfo* gameInfo;
 
-    private: PlayerGameInputCompositeInterface playerGameInputCompositeInterface = NullPlayerGameInputComposite::NULL_PLAYER_GAME_INPUT_COMPOSITE;
+    private: PlayerGameInputCompositeInterface* playerGameInputCompositeInterface = NullPlayerGameInputComposite::NULL_PLAYER_GAME_INPUT_COMPOSITE;
 
-public: AllBinaryGameLayerManager(BasicColor backgroundBasicColor, BasicColor foregroundBasicColor, GameInfo gameInfo){
+public: AllBinaryGameLayerManager(BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor, GameInfo* gameInfo){
 this->backgroundBasicColor= backgroundBasicColor;
     
 this->foregroundBasicColor= foregroundBasicColor;
     
 
-    ItemColorFactory itemColorFactory = ItemColorFactory::getInstance();;
+    ItemColorFactory* itemColorFactory = ItemColorFactory::getInstance();;
     
-itemColorFactory.INVERT_PAINT= this->backgroundBasicColor.intValue();
+itemColorFactory->INVERT_PAINT= this->backgroundBasicColor->intValue();
     
-itemColorFactory.PAINT= this->foregroundBasicColor.intValue();
+itemColorFactory->PAINT= this->foregroundBasicColor->intValue();
     
 this->gameInfo= gameInfo;
     
 }
 
 
-    public: AllBinaryLayerManager getLayerManager(){
+    public: AllBinaryLayerManager* getLayerManager(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return *this;
+                        return this;
     
 }
 
@@ -138,7 +146,7 @@ this->gameInfo= gameInfo;
 }
 
 
-    public: BasicColor getBackgroundBasicColor(){
+    public: BasicColor* getBackgroundBasicColor(){
 
 
 
@@ -148,15 +156,15 @@ this->gameInfo= gameInfo;
 }
 
 
-    public: void setBackgroundBasicColor(BasicColor backgroundBasicColor){
+    public: void setBackgroundBasicColor(BasicColor* backgroundBasicColor){
 this->backgroundBasicColor= backgroundBasicColor;
     
-ItemColorFactory::getInstance().INVERT_PAINT= this->backgroundBasicColor.intValue();
+ItemColorFactory::getInstance()->INVERT_PAINT= this->backgroundBasicColor->intValue();
     
 }
 
 
-    public: BasicColor getForegroundBasicColor(){
+    public: BasicColor* getForegroundBasicColor(){
 
 
 
@@ -166,15 +174,15 @@ ItemColorFactory::getInstance().INVERT_PAINT= this->backgroundBasicColor.intValu
 }
 
 
-    public: void setForegroundBasicColor(BasicColor foregroundBasicColor){
+    public: void setForegroundBasicColor(BasicColor* foregroundBasicColor){
 this->foregroundBasicColor= foregroundBasicColor;
     
-ItemColorFactory::getInstance().PAINT= this->foregroundBasicColor.intValue();
+ItemColorFactory::getInstance()->PAINT= this->foregroundBasicColor->intValue();
     
 }
 
 
-    public: GameInfo getGameInfo(){
+    public: GameInfo* getGameInfo(){
 
 
 
@@ -184,15 +192,15 @@ ItemColorFactory::getInstance().PAINT= this->foregroundBasicColor.intValue();
 }
 
 
-    public: void setGameInfo(GameInfo gameInfo){
+    public: void setGameInfo(GameInfo* gameInfo){
 this->gameInfo= gameInfo;
     
 }
 
 
-    public: void setLayerProcessorList(BasicArrayList list){
+    public: void setLayerProcessorList(BasicArrayList* list){
 
-    std::vector<LayerProcessor> layerProcessorInterfaceArray = std::vector<LayerProcessor>(list.size());;
+    std::vector<LayerProcessor*> layerProcessorInterfaceArray = std::vector<LayerProcessor*>(list->size());;
     
 
     int32_t size = layerProcessorInterfaceArray.size();;
@@ -204,7 +212,7 @@ this->gameInfo= gameInfo;
                         for (
     int32_t index = 0;index < size; index++)
         {
-layerProcessorInterfaceArray[index]= list.objectArray[index];
+layerProcessorInterfaceArray[index]= dynamic_cast<LayerProcessor*>(list->objectArray[index]);
     
 }
 
@@ -213,13 +221,13 @@ this->setLayerProcessorArray(layerProcessorInterfaceArray);
 }
 
 
-    public: void setPlayerGameInputCompositeInterface(PlayerGameInputCompositeInterface playerGameInputCompositeInterface){
+    public: void setPlayerGameInputCompositeInterface(PlayerGameInputCompositeInterface* playerGameInputCompositeInterface){
 this->playerGameInputCompositeInterface= playerGameInputCompositeInterface;
     
 }
 
 
-    public: PlayerGameInputCompositeInterface getPlayerGameInputCompositeInterface(){
+    public: PlayerGameInputCompositeInterface* getPlayerGameInputCompositeInterface(){
 
 
 

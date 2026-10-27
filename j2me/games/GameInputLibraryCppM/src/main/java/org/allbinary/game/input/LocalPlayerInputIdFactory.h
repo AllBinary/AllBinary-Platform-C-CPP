@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/analog/AnalogLocationInputFactory.h>
@@ -57,11 +63,11 @@ class LocalPlayerInputIdFactory
             : public Object
          {
 
-    private: static LocalPlayerInputIdFactory instance() { return LocalPlayerInputIdFactory(); }
+    private: static LocalPlayerInputIdFactory* instance() { static std::unique_ptr<LocalPlayerInputIdFactory> value(new LocalPlayerInputIdFactory()); return value.get(); }
 
-    public: static LocalPlayerInputIdFactory getInstance();
+    public: static LocalPlayerInputIdFactory* getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     public: const int32_t MAX_NUMBER_OF_PLAYERS = 6;
 

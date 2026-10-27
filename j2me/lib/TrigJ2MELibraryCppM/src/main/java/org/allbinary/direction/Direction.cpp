@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -48,9 +54,9 @@ class Direction
             : public Object
          {
 
-    private: static std::vector<Direction> directionArray = std::vector<Direction>(13);
+    private: static inline std::vector<Direction*> directionArray = std::vector<Direction*>(13);
 
-    public: static Direction getInstance(int32_t direction){
+    public: static Direction* getInstance(int32_t direction){
 
 
 
@@ -124,25 +130,25 @@ Direction::directionArray[value]= this;
 
     public: std::string toString(){
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append("Direction: ");
+stringBuffer->append("Direction: ");
     
-stringBuffer.append(this->getName());
+stringBuffer->append(this->getName());
     
-stringBuffer.append(" Or: ");
+stringBuffer->append(" Or: ");
     
-stringBuffer.append(this->getOtherName());
+stringBuffer->append(this->getOtherName());
     
-stringBuffer.append(" Value: ");
+stringBuffer->append(" Value: ");
     
-stringBuffer.appendint(this->value);
+stringBuffer->appendint(this->value);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer.toString();;
+                        return stringBuffer->toString();;
     
 }
 

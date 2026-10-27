@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -79,15 +85,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BuildingLayer.h"
+        #include "org/allbinary/game/layer/building/BuildingLayer.h"
 
 class BuildingPropertiesFactory
             : public Object
          {
 
-    private: static BuildingPropertiesFactory instance() { return BuildingPropertiesFactory(); }
+    private: static BuildingPropertiesFactory* instance() { static std::unique_ptr<BuildingPropertiesFactory> value(new BuildingPropertiesFactory()); return value.get(); }
 
-    public: static BuildingPropertiesFactory getInstance(){
+    public: static BuildingPropertiesFactory* getInstance(){
 
 
 
@@ -97,27 +103,27 @@ class BuildingPropertiesFactory
 }
 
 
-    public: int32_t getEfficiencyPerLevel(BuildingLayer buildingLayer){
+    public: int32_t getEfficiencyPerLevel(BuildingLayer* buildingLayer){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return 10000 /buildingLayer.getMaxLevel() +10000 % buildingLayer.getMaxLevel();
+                        return 10000 /buildingLayer->getMaxLevel() +10000 % buildingLayer->getMaxLevel();
     
 }
 
 
-    public: Paintable damageFloatersPaintableInterface = NullPaintable::getInstance();
+    public: Paintable* damageFloatersPaintableInterface = NullPaintable::getInstance();
 
-    public: DamageFloaters getDamageFloaters(BuildingLayer buildingLayer){
+    public: DamageFloaters* getDamageFloaters(BuildingLayer* buildingLayer){
 
-    DamageFloaters damageFloaters = DamageFloaters::getInstance();;
+    DamageFloaters* damageFloaters = DamageFloaters::getInstance();;
     
 
-                        if(Features::getInstance().isFeature(GameFeatureFactory::getInstance().DAMAGE_FLOATERS))
+                        if(Features::getInstance()->isFeature(GameFeatureFactory::getInstance()->DAMAGE_FLOATERS))
                         
                                     {
-                                    damageFloaters= PtsDamageFloaters(buildingLayer);
+                                    damageFloaters= new PtsDamageFloaters(buildingLayer);
     
 this->damageFloatersPaintableInterface= damageFloaters;
     
@@ -125,7 +131,7 @@ this->damageFloatersPaintableInterface= damageFloaters;
                                     }
                                 
                         else {
-                            damageFloaters= DamageFloaters();
+                            damageFloaters= new DamageFloaters();
     
 
                         }
@@ -141,15 +147,15 @@ this->damageFloatersPaintableInterface= damageFloaters;
 
                 //@Throws(Exception.constructor)
             
-    public: Paintable getHealthBar(BuildingLayer buildingLayer){
+    public: Paintable* getHealthBar(BuildingLayer* buildingLayer){
 
-    Paintable healthBar = NullPaintable::getInstance();;
+    Paintable* healthBar = NullPaintable::getInstance();;
     
 
-                        if(Features::getInstance().isFeature(GameFeatureFactory::getInstance().HEALTH_BARS))
+                        if(Features::getInstance()->isFeature(GameFeatureFactory::getInstance()->HEALTH_BARS))
                         
                                     {
-                                    healthBar= HealthBar(buildingLayer, buildingLayer.getHealthInterface(), HealthBarTwodAnimation(buildingLayer, BasicHudFactory::getInstance().BOTTOMLEFT),  -1);
+                                    healthBar= new HealthBar(buildingLayer, buildingLayer->getHealthInterface(), new HealthBarTwodAnimation(dynamic_cast<AllBinaryLayer*>(buildingLayer), BasicHudFactory::getInstance()->BOTTOMLEFT),  -1);
     
 
                                     }
@@ -163,22 +169,22 @@ this->damageFloatersPaintableInterface= damageFloaters;
 }
 
 
-    public: ABHashtable<Object*, Object*> getHashtable(){
+    public: ABHashtable<Object*, Object*>* getHashtable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StdUtil::getInstance().createHashtable();;
+                        return StdUtil::getInstance()->createHashtable();;
     
 }
 
 
-    public: TrackingEvent getTrackingEvent(BuildingLayer buildingLayer){
+    public: TrackingEvent* getTrackingEvent(BuildingLayer* buildingLayer){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TrackingEvent(buildingLayer);
+                        return new TrackingEvent(buildingLayer);
     
 }
 

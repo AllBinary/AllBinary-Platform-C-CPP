@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_PRIMARYWAYPOINTHELPER_H
         #define ORG_ALLBINARY_GAME_INPUT_FORM_PRIMARYWAYPOINTHELPER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/layer/NullPathFindingLayer.h>
@@ -55,17 +61,17 @@ class PrimaryWaypointHelper
             : public Object
          {
 
-    private: static PrimaryWaypointHelper instance() { return PrimaryWaypointHelper(); }
+    private: static PrimaryWaypointHelper* instance() { static std::unique_ptr<PrimaryWaypointHelper> value(new PrimaryWaypointHelper()); return value.get(); }
 
-    public: static PrimaryWaypointHelper getInstance();
+    public: static PrimaryWaypointHelper* getInstance();
 
-    private: PathFindingLayerInterface waypointLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
+    private: PathFindingLayerInterface* waypointLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
 private: PrimaryWaypointHelper();
 
-    public: PathFindingLayerInterface getWaypointLayer();
+    public: PathFindingLayerInterface* getWaypointLayer();
 
-    public: void setWaypointLayer(WaypointLayer waypointLayer);
+    public: void setWaypointLayer(WaypointLayer* waypointLayer);
 
 };
 

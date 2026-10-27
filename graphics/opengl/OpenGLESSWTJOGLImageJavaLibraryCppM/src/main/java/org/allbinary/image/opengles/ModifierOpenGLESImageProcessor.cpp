@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/khronos/opengles/GL10.h>
 
       
@@ -39,24 +45,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "OpenGLESImageProcessor.h"
+        #include "org/allbinary/image/opengles/OpenGLESImageProcessor.h"
 
 class ModifierOpenGLESImageProcessor: public OpenGLESImageProcessor {
 
-    private: static const ModifierOpenGLESImageProcessor instanceC = ModifierOpenGLESImageProcessor();
+    private: static ModifierOpenGLESImageProcessor* instanceC() { static std::unique_ptr<ModifierOpenGLESImageProcessor> value(new ModifierOpenGLESImageProcessor()); return value.get(); }
 
-    public: static ModifierOpenGLESImageProcessor getInstance(){
+    public: static ModifierOpenGLESImageProcessor* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModifierOpenGLESImageProcessor::instanceC;
+                        return ModifierOpenGLESImageProcessor::instanceC();
     
 }
 
 
-    public: void colorMask(GL10 gl, float red, float green, float blue, float alpha){
-gl.glColor4f(red, green, blue, alpha);
+    public: void colorMask(GL10* gl, float red, float green, float blue, float alpha){
+gl->glColor4f(red, green, blue, alpha);
     
 }
 

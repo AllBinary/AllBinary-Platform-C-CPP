@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Throwable.h"
@@ -79,41 +85,41 @@ class FileLog
             : public Object
          {
 
-    private: static const StringUtil stringUtil = StringUtil::getInstance();
+    private: static inline StringUtil* stringUtil = StringUtil::getInstance();
 
-    private: static const int64_t logLength = 33000000;
+    private: static inline const int64_t logLength = 33000000;
 
-    private: static const std::string logPath = "g:\\log\\";
+    private: static inline const std::string logPath = "g:\\log\\";
 
-    private: static const std::string extension = "dat";
+    private: static inline const std::string extension = "dat";
 
-    private: static const std::string fileName = .toCharArray();
+    private: static inline const std::string fileName = .toCharArray();
 
-    private: static const std::string backupFileName = FileLog::fileName.concat(".bak");
+    private: static inline const std::string backupFileName = FileLog::fileName().concat(".bak");
 
-    private: static const std::string ORG_ALLBINARY = "org.allbinary: ";
+    private: static inline const std::string ORG_ALLBINARY = "org.allbinary: ";
 
-    private: static bool firstTime = true;
+    private: static inline bool firstTime = true;
 
-    private: static File logFile = File(FileLog::logPath, FileLog::fileName);
+    private: static File* logFile() { static std::unique_ptr<File> value(new File(FileLog::logPath, FileLog::fileName())); return value.get(); }
 
-    private: static File logFileBak;
+    private: static inline File* logFileBak;
 
-    private: static BufferedWriter fileOut;
+    private: static inline BufferedWriter* fileOut;
 
-    private: static int32_t backupIndex= 0;
+    private: static inline int32_t backupIndex= 0;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: static bool createLogFile(){
 
         try {
-            FileLog::logFile= File(logPath, fileName);
+            FileLog::logFile()= new File(logPath, fileName());
     
 
                         if(!FileLog::firstTime)
                         
                                     {
-                                    FileLog::fileOut= BufferedWriter(FileWriter(logFile));
+                                    FileLog::fileOut= new BufferedWriter(new FileWriter(logFile()));
     
 
                                     }
@@ -122,17 +128,17 @@ class FileLog
                             FileLog::firstTime= false;
     
 
-    RandomAccessFile raFile = RandomAccessFile(logFile, "rw");;
+    RandomAccessFile* raFile = new RandomAccessFile(logFile(), "rw");;
     
-raFile.seek(raFile.length());
+raFile->seek(raFile->length());
     
-FileLog::fileOut= BufferedWriter(FileWriter(raFile.getFD()));
+FileLog::fileOut= new BufferedWriter(new FileWriter(raFile->getFD()));
     
 
                         }
                             
 
-    bool canWrite = FileLog::logFile.canWrite();;
+    bool canWrite = FileLog::logFile()->canWrite();;
     
 
 
@@ -142,9 +148,9 @@ FileLog::fileOut= BufferedWriter(FileWriter(raFile.getFD()));
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-console.log("Error Creating Log: " +e);
+System.out.println("Error Creating Log: " +e);
     
 
 
@@ -162,18 +168,18 @@ console.log("Error Creating Log: " +e);
 
         try {
             
-    StringMaker stringMaker = StringMaker();;
+    StringMaker* stringMaker = new StringMaker();;
     
-FileLog::logFileBak= File(logPath, stringMaker.append(backupFileName).append(CommonSeps::getInstance().PERIOD).appendint(backupIndex).toString());
+FileLog::logFileBak= new File(logPath, stringMaker->append(backupFileName)->append(CommonSeps::getInstance()->PERIOD)->appendint(backupIndex)->toString());
     
 
-        while(FileLog::logFileBak.isFile())
+        while(FileLog::logFileBak->isFile())
         {
 FileLog::backupIndex++;
     
-stringMaker.delete(0, stringMaker.length());
+stringMaker->delete(0, stringMaker->length());
     
-FileLog::logFileBak= File(logPath, stringMaker.append(backupFileName).append(CommonSeps::getInstance().PERIOD).appendint(backupIndex).toString());
+FileLog::logFileBak= new File(logPath, stringMaker->append(backupFileName)->append(CommonSeps::getInstance()->PERIOD)->appendint(backupIndex)->toString());
     
 }
 
@@ -181,29 +187,29 @@ FileLog::logFileBak= File(logPath, stringMaker.append(backupFileName).append(Com
     std::string line = .toCharArray();;
     
 
-    BufferedWriter tmpOut = BufferedWriter(FileWriter(logFileBak));;
+    BufferedWriter* tmpOut = new BufferedWriter(new FileWriter(logFileBak));;
     
 
-    BufferedReader tmpIn = BufferedReader(FileReader(logFile));;
+    BufferedReader* tmpIn = new BufferedReader(new FileReader(logFile()));;
     
 
-        while((line= tmpIn.readLine()) != 
+        while((line= tmpIn->readLine()) != 
                                     nullptr
                                 )
         {
-tmpOut.write(line, 0, line.size());
+tmpOut->write(line, 0, line.size());
     
-tmpOut.newLine();
+tmpOut->newLine();
     
 }
 
-tmpOut.flush();
+tmpOut->flush();
     
-tmpOut.close();
+tmpOut->close();
     
-tmpIn.close();
+tmpIn->close();
     
-FileLog::logFile.delete();
+FileLog::logFile()->delete();
     
 
 
@@ -213,9 +219,9 @@ FileLog::logFile.delete();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-console.log("Error Creating Backup: " +e);
+System.out.println("Error Creating Backup: " +e);
     
 
 
@@ -241,7 +247,7 @@ console.log("Error Creating Backup: " +e);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static std::string put(std::string specialMessage, Object* anyType, std::string functionName, Throwable exception){
+    public: static std::string put(std::string specialMessage, Object* anyType, std::string functionName, Throwable* exception){
 
         try {
             
@@ -267,7 +273,7 @@ console.log("Error Creating Backup: " +e);
                                     }
                                 
 
-    int64_t length = FileLog::logFile.length();;
+    int64_t length = FileLog::logFile()->length();;
     
 
                         if(length > FileLog::logLength)
@@ -301,19 +307,17 @@ console.log("Error Creating Backup: " +e);
                         specialMessage= NULL_STRING.toCharArray();
                                 
 
-                        if(anyType->constructor.name.toString() != 
-                                    nullptr
-                                )
-                        className= anyType->constructor.name.toString();
+                        if(true)
+                        className= anyType->getClass()->getName();
                                 
 
-    std::string message = LogFormatUtil::getInstance().get(className, functionName, specialMessage, exception);;
+    std::string message = LogFormatUtil::getInstance()->get(className, functionName, specialMessage, exception);;
     
-FileLog::fileOut.write(message, 0, message.size());
+FileLog::fileOut->write(message, 0, message.size());
     
-FileLog::fileOut.newLine();
+FileLog::fileOut->newLine();
     
-FileLog::fileOut.flush();
+FileLog::fileOut->flush();
     
 
 
@@ -323,7 +327,7 @@ FileLog::fileOut.flush();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -349,7 +353,7 @@ FileLog::fileOut.flush();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static std::string put(std::string specialMessage, std::string className, std::string functionName, Exception exception){
+    public: static std::string put(std::string specialMessage, std::string className, std::string functionName, Exception* exception){
 
         try {
             
@@ -375,7 +379,7 @@ FileLog::fileOut.flush();
                                     }
                                 
 
-    int64_t length = FileLog::logFile.length();;
+    int64_t length = FileLog::logFile()->length();;
     
 
                         if(length > FileLog::logLength)
@@ -406,13 +410,13 @@ FileLog::fileOut.flush();
                         specialMessage= NULL_STRING.toCharArray();
                                 
 
-    std::string message = LogFormatUtil::getInstance().get(className, functionName, specialMessage, exception);;
+    std::string message = LogFormatUtil::getInstance()->get(className, functionName, specialMessage, exception);;
     
-FileLog::fileOut.write(message, 0, message.size());
+FileLog::fileOut->write(message, 0, message.size());
     
-FileLog::fileOut.newLine();
+FileLog::fileOut->newLine();
     
-FileLog::fileOut.flush();
+FileLog::fileOut->flush();
     
 
 
@@ -422,7 +426,7 @@ FileLog::fileOut.flush();
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
 
@@ -440,7 +444,7 @@ FileLog::fileOut.flush();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileLog::logPath +FileLog::fileName;
+                        return FileLog::logPath +FileLog::fileName();
     
 }
 

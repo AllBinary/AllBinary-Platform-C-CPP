@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -73,8 +79,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "WorkFlowInterface.h"
-#include "WorkFlowData.h"
+        #include "org/allbinary/logic/control/workflow/WorkFlowInterface.h"
+#include "org/allbinary/logic/control/workflow/WorkFlowData.h"
 
 class RequestWorkFlowFactory
             : public Object
@@ -82,48 +88,48 @@ class RequestWorkFlowFactory
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: static WorkFlowInterface getInstance(ServletRequest request, ServletResponse response, ServletConfig servletConfig, ServletContext servletContext){
+    public: static WorkFlowInterface* getInstance(ServletRequest* request, ServletResponse* response, ServletConfig* servletConfig, ServletContext* servletContext){
 
-    HttpServletRequest httpRequest = request;;
+    HttpServletRequest* httpRequest = dynamic_cast<HttpServletRequest*>(request);;
     
 
-    std::string requestCommand = httpRequest.getPathInfo();;
+    std::string requestCommand = httpRequest->getPathInfo();;
     
 
-    int32_t index = requestCommand.indexOf(AbPathData::getInstance().SEPARATOR);;
+    int32_t index = JavaString::indexOf(requestCommand, AbPathData::getInstance()->SEPARATOR);;
     
 
-    std::string storeName = requestCommand.substring(0, index);;
+    std::string storeName = JavaString::substring(requestCommand, 0, index);;
     
 
-    std::string requestName = requestCommand.substring(index, requestCommand.size());;
+    std::string requestName = JavaString::substring(requestCommand, index, requestCommand.size());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WorkFlowEntityFactory::getInstance().create2().get(requestName, storeName);;
+                        return WorkFlowEntityFactory::getInstance()->create2()->get(requestName, storeName);;
     
 }
 
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: static WorkFlowInterface getInstance(HashMap<Object*, Object*> hashMap, PageContext pageContext){
+    public: static WorkFlowInterface* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
 
-    std::string workFlowName = pageContext.getRequest().getParameter(WorkFlowData::getInstance().NAME);;
+    std::string workFlowName = pageContext->getRequest()->getParameter(WorkFlowData::getInstance()->NAME);;
     
 
-    WeblisketSession weblisketSession = WeblisketSession(hashMap, pageContext);;
+    WeblisketSession* weblisketSession = new WeblisketSession(hashMap, pageContext);;
     
 
-    std::string storeName = weblisketSession.getStoreName();;
+    std::string storeName = weblisketSession->getStoreName();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WorkFlowEntityFactory::getInstance().create2().get(workFlowName, storeName);;
+                        return WorkFlowEntityFactory::getInstance()->create2()->get(workFlowName, storeName);;
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <java/io/FileFilter.h>
@@ -50,26 +56,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "VisitorFileFilter.h"
+        #include "org/allbinary/logic/io/file/filter/VisitorFileFilter.h"
 
 class BasicFileFilterUtil
             : public Object
          {
 
-    public: static FileFilter getInstance(std::string extension){
+    public: static FileFilter* getInstance(std::string extension){
 
-    BasicArrayList vector = BasicArrayListD();;
+    BasicArrayList* vector = new BasicArrayListD();;
     
-vector.add(extension);
+vector->add(extension);
     
 
-    IncludeFileExtensionsBooleanFileVisitor includeFileExtensionsBooleanFileVisitor = IncludeFileExtensionsBooleanFileVisitor(vector);;
+    IncludeFileExtensionsBooleanFileVisitor* includeFileExtensionsBooleanFileVisitor = new IncludeFileExtensionsBooleanFileVisitor(vector);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return VisitorFileFilter(includeFileExtensionsBooleanFileVisitor);
+                        return dynamic_cast<FileFilter*>(new VisitorFileFilter(includeFileExtensionsBooleanFileVisitor));
     
 }
 

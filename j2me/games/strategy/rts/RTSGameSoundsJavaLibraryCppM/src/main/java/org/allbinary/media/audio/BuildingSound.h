@@ -20,6 +20,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_BUILDINGSOUND_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_BUILDINGSOUND_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/media/audio/CompositeSound.h>
 
       
@@ -47,9 +53,9 @@
         
 class BuildingSound: public CompositeSound {
 
-    private: static Sound soundInterface = BuildingSound();
+    private: static inline Sound* soundInterface = new BuildingSound();
 
-    public: static Sound getInstance();
+    public: static Sound* getInstance();
 
 private: BuildingSound();
 

@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_DESTROY_EVENT_DESTROYEVENTFACTORY_H
         #define ORG_ALLBINARY_GAME_COMBAT_DESTROY_EVENT_DESTROYEVENTFACTORY_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h>
@@ -50,17 +56,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DestroyedEvent.h"
+        #include "org/allbinary/game/combat/destroy/event/DestroyedEvent.h"
 
 class DestroyEventFactory
             : public Object
-        : public AllBinaryEventObjectFactoryInterface {
+        , public AllBinaryEventObjectFactoryInterface {
 
-    private: AllBinaryGameCanvas combatGameCanvas;
+    private: AllBinaryGameCanvas* combatGameCanvas;
 
-public: DestroyEventFactory(AllBinaryGameCanvas combatGameCanvas);
+public: DestroyEventFactory(AllBinaryGameCanvas* combatGameCanvas);
 
-    public: AllBinaryEventObject getInstance();
+    public: AllBinaryEventObject* getInstance();
 
 };
 

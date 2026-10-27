@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -57,9 +63,9 @@ class FullScreenUtil
             : public Object
          {
 
-    private: static FullScreenUtil instance() { return FullScreenUtil(); }
+    private: static FullScreenUtil* instance() { static std::unique_ptr<FullScreenUtil> value(new FullScreenUtil()); return value.get(); }
 
-    public: static FullScreenUtil getInstance(){
+    public: static FullScreenUtil* getInstance(){
 
 
 
@@ -71,7 +77,7 @@ class FullScreenUtil
 
                 //@Throws(Exception.constructor)
             
-    public: void initOnRun(Canvas fullScreenInterface, CommandListener commandListener){
+    public: void initOnRun(Canvas* fullScreenInterface, CommandListener* commandListener){
 
                         if(commandListener != 
                                     nullptr
@@ -86,19 +92,19 @@ class FullScreenUtil
 }
 
 
-    public: void init(Canvas fullScreenInterface){
+    public: void init(Canvas* fullScreenInterface){
 }
 
 
     public: bool isScreenChange(bool isFullScreen){
 
-    MainFeatureFactory mainFeatureFactory = MainFeatureFactory::getInstance();;
+    MainFeatureFactory* mainFeatureFactory = MainFeatureFactory::getInstance();;
     
 
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-                        if(features.isFeature(mainFeatureFactory.FULL_SCREEN) != isFullScreen)
+                        if(features->isFeature(mainFeatureFactory->FULL_SCREEN) != isFullScreen)
                         
                                     {
                                     
@@ -119,7 +125,7 @@ class FullScreenUtil
 }
 
 
-    public: bool isScreenChangeCanvas(Canvas fullScreenInterface){
+    public: bool isScreenChangeCanvas(Canvas* fullScreenInterface){
 
 
 

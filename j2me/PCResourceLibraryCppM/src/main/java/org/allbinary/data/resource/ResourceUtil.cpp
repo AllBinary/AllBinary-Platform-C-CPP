@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/ClassLoader.h"
@@ -75,9 +81,9 @@ class ResourceUtil
             : public Object
          {
 
-    private: static ResourceUtil instance() { return ResourceUtil(); }
+    private: static ResourceUtil* instance() { static std::unique_ptr<ResourceUtil> value(new ResourceUtil()); return value.get(); }
 
-    public: static ResourceUtil getInstance(){
+    public: static ResourceUtil* getInstance(){
 
 
 
@@ -87,11 +93,11 @@ class ResourceUtil
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: std::string path = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string path = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: std::string ext = StringUtil::getInstance().EMPTY_STRING;
+    private: std::string ext = StringUtil::getInstance()->EMPTY_STRING;
 
 private: ResourceUtil(){
 }
@@ -105,15 +111,15 @@ this->ext= ext;
 }
 
 
-    public: void setClassLoader(ClassLoader classLoader){
+    public: void setClassLoader(ClassLoader* classLoader){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream getResourceAsStream(std::string resource){
+    public: InputStream* getResourceAsStream(std::string resource){
 
-    InputStream inputStream = this->getResourceAsStreamAtStart(resource, 2);;
+    InputStream* inputStream = this->getResourceAsStreamAtStart(resource, 2);;
     
 
                         if(inputStream == 
@@ -132,7 +138,7 @@ this->ext= ext;
                                     
 
 
-                            throw Exception(StringMaker().append("Unable to obtain: ").append(resource).toString());
+                            throw new Exception((new StringMaker())->append("Unable to obtain: ")->append(resource)->toString());
                     
 
                                     }
@@ -151,9 +157,9 @@ this->ext= ext;
 
                 //@Throws(Exception.constructor)
             
-    private: InputStream getResourceAsStreamAtStart(std::string resource, int32_t startIndex){
+    private: InputStream* getResourceAsStreamAtStart(std::string resource, int32_t startIndex){
 
-    InputStream inputStream = FileInputStream(StringMaker().append(this->path).append(resource).append(this->ext).toString());;
+    InputStream* inputStream = new FileInputStream((new StringMaker())->append(this->path)->append(resource)->append(this->ext)->toString());;
     
 
                         if(inputStream != 
@@ -162,15 +168,15 @@ this->ext= ext;
                         
                                     {
                                     
-    std::vector<int8_t> byteArray = std::vector<int8_t>(inputStream.available());;
+    std::vector<int8_t> byteArray = std::vector<int8_t>(inputStream->available());;
     
-StreamUtil::getInstance().getByteArray(inputStream, ByteArrayOutputStream(), byteArray);
+StreamUtil::getInstance()->getByteArray(inputStream, new ByteArrayOutputStream(), byteArray);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ByteArrayInputStream(byteArray);
+                        return new ByteArrayInputStream(byteArray);
     
 
                                     }
@@ -184,7 +190,7 @@ StreamUtil::getInstance().getByteArray(inputStream, ByteArrayOutputStream(), byt
 }
 
 
-    public: void addResource(std::string resource, Integer value){
+    public: void addResource(std::string resource, int32_t value){
 }
 
 

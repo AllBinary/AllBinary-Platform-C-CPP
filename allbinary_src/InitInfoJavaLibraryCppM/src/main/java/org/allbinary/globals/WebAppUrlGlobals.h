@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GLOBALS_WEBAPPURLGLOBALS_H
         #define ORG_ALLBINARY_GLOBALS_WEBAPPURLGLOBALS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/init/InitInfo.h>
@@ -47,7 +53,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UrlGlobalsInterface.h"
+        #include "org/allbinary/globals/UrlGlobalsInterface.h"
 
 class WebAppUrlGlobals: public UrlGlobalsInterface {
 

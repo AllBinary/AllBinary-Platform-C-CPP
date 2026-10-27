@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -45,9 +51,9 @@ class ByteUtil
             : public Object
          {
 
-    private: static ByteUtil instance() { return ByteUtil(); }
+    private: static ByteUtil* instance() { static std::unique_ptr<ByteUtil> value(new ByteUtil()); return value.get(); }
 
-    public: static ByteUtil getInstance(){
+    public: static ByteUtil* getInstance(){
 
 
 
@@ -61,7 +67,7 @@ private: ByteUtil(){
 }
 
 
-    public: std::vector<int8_t> xor(std::vector<int8_t> array, int8_t mask){
+    public: std::vector<int8_t> xor_(std::vector<int8_t> array, int8_t mask){
 
     std::vector<int8_t> bytes = std::vector<int8_t>(array.length);;
     
@@ -94,7 +100,7 @@ index++;
 }
 
 
-    public: std::vector<int8_t> not(std::vector<int8_t> array){
+    public: std::vector<int8_t> not_(std::vector<int8_t> array){
 
     std::vector<int8_t> bytes = std::vector<int8_t>(array.length);;
     
@@ -162,7 +168,7 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->xor(array, mask);;
+                        return this->xor_(array, mask);;
     
 }
 

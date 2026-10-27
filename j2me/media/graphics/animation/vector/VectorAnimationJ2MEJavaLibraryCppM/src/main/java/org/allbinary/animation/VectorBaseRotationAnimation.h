@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -61,15 +67,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "RotationAnimation.h"
-#include "VectorAnimationInterface.h"
-#include "AnimationBehavior.h"
+        #include "org/allbinary/animation/RotationAnimation.h"
+#include "org/allbinary/animation/VectorAnimationInterface.h"
+#include "org/allbinary/animation/AnimationBehavior.h"
 
 class VectorBaseRotationAnimation: public RotationAnimation, public VectorAnimationInterface {
 
-    private: std::vector<std::vector<std::vector<int32_t>>> currentPoints = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY_ARRAY;
+    private: std::vector<std::vector<std::vector<int32_t>>> currentPoints = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY_ARRAY;
 
-public: VectorBaseRotationAnimation(AngleInfo angleInfo, std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior);
+public: VectorBaseRotationAnimation(AngleInfo* angleInfo, std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior);
 
                 //@Throws(Exception.constructor)
             
@@ -89,7 +95,7 @@ public: VectorBaseRotationAnimation(AngleInfo angleInfo, std::vector<std::vector
 
     public: std::vector<int32_t> getSequence();
 
-    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
     public: std::vector<std::vector<int32_t>> getPoints(int32_t frame);
 

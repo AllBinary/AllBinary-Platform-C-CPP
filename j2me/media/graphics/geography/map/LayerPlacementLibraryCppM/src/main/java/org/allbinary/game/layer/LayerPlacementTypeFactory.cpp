@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -43,15 +49,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LayerPlacementType.h"
+        #include "org/allbinary/game/layer/LayerPlacementType.h"
 
 class LayerPlacementTypeFactory
             : public Object
          {
 
-    private: static LayerPlacementTypeFactory instance() { return LayerPlacementTypeFactory(); }
+    private: static LayerPlacementTypeFactory* instance() { static std::unique_ptr<LayerPlacementTypeFactory> value(new LayerPlacementTypeFactory()); return value.get(); }
 
-    public: static LayerPlacementTypeFactory getInstance(){
+    public: static LayerPlacementTypeFactory* getInstance(){
 
 
 
@@ -61,15 +67,15 @@ class LayerPlacementTypeFactory
 }
 
 
-    public: const LayerPlacementType MAP = LayerPlacementType(Integer::MAX_VALUE);
+    public: LayerPlacementType* MAP = new LayerPlacementType(Integer.MAX_VALUE);
 
-    public: const LayerPlacementType LEFT = LayerPlacementType(DirectionFactory::getInstance().LEFT.getValue());
+    public: LayerPlacementType* LEFT = new LayerPlacementType(DirectionFactory::getInstance()->LEFT->getValue());
 
-    public: const LayerPlacementType DOWN = LayerPlacementType(DirectionFactory::getInstance().DOWN.getValue());
+    public: LayerPlacementType* DOWN = new LayerPlacementType(DirectionFactory::getInstance()->DOWN->getValue());
 
-    public: const LayerPlacementType UP = LayerPlacementType(DirectionFactory::getInstance().UP.getValue());
+    public: LayerPlacementType* UP = new LayerPlacementType(DirectionFactory::getInstance()->UP->getValue());
 
-    public: const LayerPlacementType RIGHT = LayerPlacementType(DirectionFactory::getInstance().RIGHT.getValue());
+    public: LayerPlacementType* RIGHT = new LayerPlacementType(DirectionFactory::getInstance()->RIGHT->getValue());
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -43,27 +49,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "TickableInterface.h"
+        #include "org/allbinary/game/tick/TickableInterface.h"
 
 class NullTickable
             : public Object
-        : public TickableInterface {
+        , public TickableInterface {
 
-    private: static const NullTickable SINGLETON = NullTickable();
+    private: static NullTickable* SINGLETON() { static std::unique_ptr<NullTickable> value(new NullTickable()); return value.get(); }
 
-    public: static NullTickable getInstance(){
+    public: static NullTickable* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullTickable::SINGLETON;
+                        return NullTickable::SINGLETON();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processTick(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager){
 }
 
 

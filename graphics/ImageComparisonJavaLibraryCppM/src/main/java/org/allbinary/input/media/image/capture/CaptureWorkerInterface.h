@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREWORKERINTERFACE_H
         #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREWORKERINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/logic/util/event/handler/BasicEventHandlerInterface.h>
 
       

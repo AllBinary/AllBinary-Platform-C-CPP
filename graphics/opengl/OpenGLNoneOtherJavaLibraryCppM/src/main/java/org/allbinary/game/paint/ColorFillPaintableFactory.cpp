@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/color/BasicColor.h>
@@ -47,17 +53,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ColorFillPaintable.h"
-#include "OverScanColorFillPaintable.h"
-#include "ColorFillBasePaintable.h"
+        #include "org/allbinary/game/paint/ColorFillPaintable.h"
+#include "org/allbinary/game/paint/OverScanColorFillPaintable.h"
+#include "org/allbinary/game/paint/ColorFillBasePaintable.h"
 
 class ColorFillPaintableFactory
             : public Object
          {
 
-    private: static ColorFillPaintableFactory instance() { return ColorFillPaintableFactory(); }
+    private: static ColorFillPaintableFactory* instance() { static std::unique_ptr<ColorFillPaintableFactory> value(new ColorFillPaintableFactory()); return value.get(); }
 
-    public: static ColorFillPaintableFactory getInstance(){
+    public: static ColorFillPaintableFactory* getInstance(){
 
 
 
@@ -67,19 +73,19 @@ class ColorFillPaintableFactory
 }
 
 
-    public: ColorFillBasePaintable getInstance(BasicColor basicColor, bool forThreedCanvas){
+    public: ColorFillBasePaintable* getInstance(BasicColor* basicColor, bool forThreedCanvas){
 
-    GenericOperatingSystem operatingSystem = OperatingSystemFactory::getInstance().getOperatingSystemInstance();;
+    GenericOperatingSystem* operatingSystem = OperatingSystemFactory::getInstance()->getOperatingSystemInstance();;
     
 
-                        if(operatingSystem.isOverScan())
+                        if(operatingSystem->isOverScan())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OverScanColorFillPaintable(basicColor);
+                        return new OverScanColorFillPaintable(basicColor);
     
 
                                     }
@@ -89,7 +95,7 @@ class ColorFillPaintableFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ColorFillPaintable(basicColor);
+                        return new ColorFillPaintable(basicColor);
     
 
                         }

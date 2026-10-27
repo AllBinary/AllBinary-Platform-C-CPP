@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -69,20 +75,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "PathFindingLayerInterface.h"
+        #include "org/allbinary/game/layer/PathFindingLayerInterface.h"
 
 class WaypointBehaviorBase
             : public Object
-        : public TickableInterface {
+        , public TickableInterface {
 
-    private: BasicArrayList ownedWaypointList;
+    private: BasicArrayList* ownedWaypointList;
 
     protected: bool waypointOverridesAttacking = true;
 
-    private: WaypointBase waypoint = WaypointBase::NULL_WAYPOINT_BASE;
+    private: WaypointBase* waypoint = WaypointBase::NULL_WAYPOINT_BASE;
 
 public: WaypointBehaviorBase(){
-this->ownedWaypointList= BasicArrayListS(1);
+this->ownedWaypointList= new BasicArrayListS(1);
     
 }
 
@@ -92,7 +98,7 @@ this->ownedWaypointList= BasicArrayListS(1);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->constructor.name.toString();;
+                        return this->getClass()->getName();;
     
 }
 
@@ -109,11 +115,11 @@ this->ownedWaypointList= BasicArrayListS(1);
 
                 //@Throws(Exception.constructor)
             
-    public: void processTick(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager){
 }
 
 
-    public: BasicArrayList getOwnedWaypointList(){
+    public: BasicArrayList* getOwnedWaypointList(){
 
 
 
@@ -123,7 +129,7 @@ this->ownedWaypointList= BasicArrayListS(1);
 }
 
 
-    public: WaypointBase getWaypoint(){
+    public: WaypointBase* getWaypoint(){
 
 
 
@@ -133,13 +139,13 @@ this->ownedWaypointList= BasicArrayListS(1);
 }
 
 
-    public: void setWaypoint(WaypointBase waypoint){
+    public: void setWaypoint(WaypointBase* waypoint){
 this->waypoint= waypoint;
     
 }
 
 
-    public: BasicArrayList getSteeringVisitorList(){
+    public: BasicArrayList* getSteeringVisitorList(){
 
 
 
@@ -153,7 +159,7 @@ this->waypoint= waypoint;
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -162,25 +168,25 @@ this->waypoint= waypoint;
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: bool isInSensorRange(CollidableDestroyableDamageableLayer layerInterface, int32_t targetDistance){
+    public: bool isInSensorRange(CollidableDestroyableDamageableLayer* layerInterface, int32_t targetDistance){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: CollidableDestroyableDamageableLayer getCurrentTargetLayerInterface(){
+    public: CollidableDestroyableDamageableLayer* getCurrentTargetLayerInterface(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -189,7 +195,7 @@ this->waypoint= waypoint;
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -198,25 +204,25 @@ this->waypoint= waypoint;
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: GeographicMapCellPosition getCurrentPathGeographicMapCellPosition(){
+    public: GeographicMapCellPosition* getCurrentPathGeographicMapCellPosition(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: GeographicMapCellHistory getCurrentGeographicMapCellHistory(){
+    public: GeographicMapCellHistory* getCurrentGeographicMapCellHistory(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -231,11 +237,11 @@ this->waypoint= waypoint;
 }
 
 
-    public: GeographicMapCellPosition getNextUnvisitedPathGeographicMapCellPosition(){
+    public: GeographicMapCellPosition* getNextUnvisitedPathGeographicMapCellPosition(){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -244,47 +250,47 @@ this->waypoint= waypoint;
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: void setWaypointPathsList(BasicArrayList waypointPathsList){
+    public: void setWaypointPathsList(BasicArrayList* waypointPathsList){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
-    public: BasicArrayList getWaypointPathsList(){
+    public: BasicArrayList* getWaypointPathsList(){
 
 
 
-                            throw RuntimeException();
-                    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: void setTarget(PathFindingLayerInterface layerInterface){
-
-
-
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void setTargetWithDistance(PathFindingLayerInterface layerInterface, int32_t anotherTargetDistance){
+    public: void setTarget(PathFindingLayerInterface* layerInterface){
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
+                    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: void setTargetWithDistance(PathFindingLayerInterface* layerInterface, int32_t anotherTargetDistance){
+
+
+
+                            throw new RuntimeException();
                     
 }
 
@@ -295,7 +301,7 @@ this->waypoint= waypoint;
 
 
 
-                            throw RuntimeException();
+                            throw new RuntimeException();
                     
 }
 
@@ -306,7 +312,7 @@ this->waypoint= waypoint;
 }
 
 
-    private: const BasicArrayList steeringVisitorList = BasicArrayListD();
+    private: BasicArrayList* steeringVisitorList = new BasicArrayListD();
 
 };
 

@@ -23,6 +23,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/math/PrimitiveLongSingleton.h>
@@ -68,15 +74,15 @@ class Timer
 
     private: int64_t modifier= 0;
 
-    private: std::vector<char> hundrethsString = PrimitiveLongSingleton::getInstance().ZERO;
+    private: std::vector<char> hundrethsString = PrimitiveLongSingleton::getInstance()->ZERO;
 
     private: int32_t totalDigits = 1;
 
-    private: PrimitiveLongUtil primitiveLongUtil;
+    private: PrimitiveLongUtil* primitiveLongUtil;
 
     private: const std::vector<char> MAX = ['L','O','L'];
 
-    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
+    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
 public: Timer(int32_t maxTime);
 

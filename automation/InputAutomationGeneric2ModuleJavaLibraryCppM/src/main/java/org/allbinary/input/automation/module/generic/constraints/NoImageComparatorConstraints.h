@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONSTRAINTS_NOIMAGECOMPARATORCONSTRAINTS_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONSTRAINTS_NOIMAGECOMPARATORCONSTRAINTS_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Integer.h"
         
 #include <java/awt.h>
@@ -53,15 +59,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Color.h"
+        #include "org/allbinary/input/automation/module/generic/constraints/Color.h"
 
 class NoImageComparatorConstraints: public ImageComparatorConstraints {
 
 public: NoImageComparatorConstraints();
 
-    public: bool isColorAllowed(int32_t frame, GPoint point, Color color);
+    public: bool isColorAllowed(int32_t frame, GPoint* point, Color* color);
 
-    public: bool isImageValid(BufferedImage bufferedImage);
+    public: bool isImageValid(BufferedImage* bufferedImage);
 
 };
 

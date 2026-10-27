@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -93,9 +99,9 @@ class BlisketBackupFactory
             : public Object
          {
 
-    private: static BlisketBackupFactory instance() { return BlisketBackupFactory(); }
+    private: static BlisketBackupFactory* instance() { static std::unique_ptr<BlisketBackupFactory> value(new BlisketBackupFactory()); return value.get(); }
 
-    public: static BlisketBackupFactory getInstance(){
+    public: static BlisketBackupFactory* getInstance(){
 
 
 
@@ -105,28 +111,28 @@ class BlisketBackupFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const StringUtil stringUtil = StringUtil::getInstance();
+    private: StringUtil* stringUtil = StringUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    private: const Directory directory = Directory::getInstance();
+    private: Directory* directory = Directory::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    private: BasicArrayList getFileBasicArrayList(std::string pathString){
+    private: BasicArrayList* getFileBasicArrayList(std::string pathString){
 
-    AbPath path = AbPath(pathString, this->stringUtil.EMPTY_STRING);;
+    AbPath* path = new AbPath(pathString, this->stringUtil->EMPTY_STRING);;
     
 
-    AbFile file = AbFile::createAbFileFromAbPath(path);;
+    AbFile* file = AbFile::createAbFileFromAbPath(path);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->directory.search(file, true);;
+                        return this->directory->search(file, true);;
     
 }
 
@@ -134,31 +140,31 @@ class BlisketBackupFactory
     public: void backup(){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, "backup()");
+            this->logUtil->putF(this->commonStrings->START, this, "backup()");
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(URLGLOBALS::getWebappPath());
+stringBuffer->append(URLGLOBALS::getWebappPath());
     
-stringBuffer.append(PATH_GLOBALS::getInstance().BACKUP_PATH);
-    
-
-    std::string backupPath = stringBuffer.toString();;
+stringBuffer->append(PATH_GLOBALS::getInstance()->BACKUP_PATH);
     
 
-    AbPath path = AbPath(backupPath, this->stringUtil.EMPTY_STRING);;
+    std::string backupPath = stringBuffer->toString();;
     
 
-    BasicArrayList fileBasicArrayList = this->getFileBasicArrayList(backupPath);;
+    AbPath* path = new AbPath(backupPath, this->stringUtil->EMPTY_STRING);;
     
-this->backup(fileBasicArrayList, path.toFileSystemString() +"backup.zip");
+
+    BasicArrayList* fileBasicArrayList = this->getFileBasicArrayList(backupPath);;
+    
+this->backup(fileBasicArrayList, path->toFileSystemString() +"backup.zip");
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "backup()", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "backup()", &e);
     
 }
 
@@ -168,32 +174,32 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "backup()", e);
     public: void backupViews(){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, "backupViews()");
+            this->logUtil->putF(this->commonStrings->START, this, "backupViews()");
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(URLGLOBALS::getWebappPath());
+stringBuffer->append(URLGLOBALS::getWebappPath());
     
-stringBuffer.append(PATH_GLOBALS::getInstance().BACKUP_PATH);
-    
-
-    std::string backupPath = stringBuffer.toString();;
+stringBuffer->append(PATH_GLOBALS::getInstance()->BACKUP_PATH);
     
 
-    AbPath path = AbPath(backupPath, this->stringUtil.EMPTY_STRING);;
+    std::string backupPath = stringBuffer->toString();;
     
 
-    BasicArrayList fileBasicArrayList = BasicArrayListD();;
+    AbPath* path = new AbPath(backupPath, this->stringUtil->EMPTY_STRING);;
     
 
-    StoreFrontsEntity storeFrontsEntity = StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance();;
+    BasicArrayList* fileBasicArrayList = new BasicArrayListD();;
     
 
-    BasicArrayList storeFrontNamesBasicArrayList = storeFrontsEntity.getStoreFrontNames();;
+    StoreFrontsEntity* storeFrontsEntity = StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance();;
     
 
-    int32_t size = storeFrontNamesBasicArrayList.size();;
+    BasicArrayList* storeFrontNamesBasicArrayList = storeFrontsEntity->getStoreFrontNames();;
+    
+
+    int32_t size = storeFrontNamesBasicArrayList->size();;
     
 
     std::string nextStore;;
@@ -208,41 +214,41 @@ stringBuffer.append(PATH_GLOBALS::getInstance().BACKUP_PATH);
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextStore= storeFrontNamesBasicArrayList.get(index);
+nextStore= storeFrontNamesBasicArrayList->get(index);
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(URLGLOBALS::getWebappPath());
+stringBuffer->append(URLGLOBALS::getWebappPath());
     
-stringBuffer.append(PATH_GLOBALS::getInstance().VIEWS_PATH);
+stringBuffer->append(PATH_GLOBALS::getInstance()->VIEWS_PATH);
     
-stringBuffer.append(nextStore);
+stringBuffer->append(nextStore);
     
-viewsPath= stringBuffer.toString();
+viewsPath= stringBuffer->toString();
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append("Backup Store Views: ");
+stringBuffer->append("Backup Store Views: ");
     
-stringBuffer.append(nextStore);
+stringBuffer->append(nextStore);
     
-stringBuffer.append(" from: ");
+stringBuffer->append(" from: ");
     
-stringBuffer.append(viewsPath);
+stringBuffer->append(viewsPath);
     
-PreLogUtil::put(stringBuffer.toString(), this, "backupViews()");
+PreLogUtil::put(stringBuffer->toString(), this, "backupViews()");
     
-fileBasicArrayList.addAllList(this->getFileBasicArrayList(viewsPath));
+fileBasicArrayList->addAllList(this->getFileBasicArrayList(viewsPath));
     
 }
 
-this->backup(fileBasicArrayList, path.toFileSystemString() +"backupViews.zip");
+this->backup(fileBasicArrayList, path->toFileSystemString() +"backupViews.zip");
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "backupViews()", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "backupViews()", &e);
     
 }
 
@@ -252,38 +258,38 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "backupViews()", e);
     public: void backupResources(){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, "backupResources()");
+            this->logUtil->putF(this->commonStrings->START, this, "backupResources()");
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(URLGLOBALS::getWebappPath());
+stringBuffer->append(URLGLOBALS::getWebappPath());
     
-stringBuffer.append(PATH_GLOBALS::getInstance().BACKUP_PATH);
-    
-
-    std::string backupPath = stringBuffer.toString();;
+stringBuffer->append(PATH_GLOBALS::getInstance()->BACKUP_PATH);
     
 
-    AbPath path = AbPath(backupPath, this->stringUtil.EMPTY_STRING);;
+    std::string backupPath = stringBuffer->toString();;
     
 
-    BasicArrayList fileBasicArrayList = BasicArrayListD();;
+    AbPath* path = new AbPath(backupPath, this->stringUtil->EMPTY_STRING);;
     
 
-    StoreFrontsEntity storeFrontsEntity = StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance();;
+    BasicArrayList* fileBasicArrayList = new BasicArrayListD();;
     
 
-    BasicArrayList storeFrontNamesBasicArrayList = storeFrontsEntity.getStoreFrontNames();;
+    StoreFrontsEntity* storeFrontsEntity = StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance();;
     
 
-    int32_t size = storeFrontNamesBasicArrayList.size();;
+    BasicArrayList* storeFrontNamesBasicArrayList = storeFrontsEntity->getStoreFrontNames();;
+    
+
+    int32_t size = storeFrontNamesBasicArrayList->size();;
     
 
     std::string nextStore;;
     
 
-    StoreFrontInterface storeFrontInterface;;
+    StoreFrontInterface* storeFrontInterface;;
     
 
     std::string resourcesPath;;
@@ -295,43 +301,43 @@ stringBuffer.append(PATH_GLOBALS::getInstance().BACKUP_PATH);
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextStore= storeFrontNamesBasicArrayList.get(index);
+nextStore= storeFrontNamesBasicArrayList->get(index);
     
-storeFrontInterface= storeFrontsEntity.getStoreFrontInterface(nextStore);
+storeFrontInterface= storeFrontsEntity->getStoreFrontInterface(nextStore);
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(URLGLOBALS::getWebappPath());
+stringBuffer->append(URLGLOBALS::getWebappPath());
     
-stringBuffer.append(storeFrontInterface.getCurrentHostNamePath());
+stringBuffer->append(storeFrontInterface->getCurrentHostNamePath());
     
-stringBuffer.append(storeFrontInterface.getCategoryPath());
+stringBuffer->append(storeFrontInterface->getCategoryPath());
     
-resourcesPath= stringBuffer.toString();
+resourcesPath= stringBuffer->toString();
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append("Backup Store Resrouces: ");
+stringBuffer->append("Backup Store Resrouces: ");
     
-stringBuffer.append(nextStore);
+stringBuffer->append(nextStore);
     
-stringBuffer.append(" from: ");
+stringBuffer->append(" from: ");
     
-stringBuffer.append(resourcesPath);
+stringBuffer->append(resourcesPath);
     
-PreLogUtil::put(stringBuffer.toString(), this, "backupResources()");
+PreLogUtil::put(stringBuffer->toString(), this, "backupResources()");
     
-fileBasicArrayList.addAllList(this->getFileBasicArrayList(resourcesPath));
+fileBasicArrayList->addAllList(this->getFileBasicArrayList(resourcesPath));
     
 }
 
-this->backup(fileBasicArrayList, path.toFileSystemString() +"backupResources.zip");
+this->backup(fileBasicArrayList, path->toFileSystemString() +"backupResources.zip");
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "backupResources()", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "backupResources()", &e);
     
 }
 
@@ -341,32 +347,32 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "backupResources()", e);
     public: void backupJsps(){
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, "backupJsps()");
+            this->logUtil->putF(this->commonStrings->START, this, "backupJsps()");
     
 
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.append(URLGLOBALS::getWebappPath());
+stringBuffer->append(URLGLOBALS::getWebappPath());
     
-stringBuffer.append(PATH_GLOBALS::getInstance().BACKUP_PATH);
-    
-
-    std::string backupPath = stringBuffer.toString();;
+stringBuffer->append(PATH_GLOBALS::getInstance()->BACKUP_PATH);
     
 
-    AbPath path = AbPath(backupPath, this->stringUtil.EMPTY_STRING);;
+    std::string backupPath = stringBuffer->toString();;
     
 
-    BasicArrayList fileBasicArrayList = BasicArrayListD();;
+    AbPath* path = new AbPath(backupPath, this->stringUtil->EMPTY_STRING);;
     
 
-    StoreFrontsEntity storeFrontsEntity = StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance();;
+    BasicArrayList* fileBasicArrayList = new BasicArrayListD();;
     
 
-    BasicArrayList storeFrontNamesBasicArrayList = storeFrontsEntity.getStoreFrontNames();;
+    StoreFrontsEntity* storeFrontsEntity = StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance();;
     
 
-    int32_t size = storeFrontNamesBasicArrayList.size();;
+    BasicArrayList* storeFrontNamesBasicArrayList = storeFrontsEntity->getStoreFrontNames();;
+    
+
+    int32_t size = storeFrontNamesBasicArrayList->size();;
     
 
     std::string nextStore;;
@@ -378,60 +384,60 @@ stringBuffer.append(PATH_GLOBALS::getInstance().BACKUP_PATH);
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextStore= storeFrontNamesBasicArrayList.get(index);
+nextStore= storeFrontNamesBasicArrayList->get(index);
     
 PreLogUtil::put("Backup Store Jsps: " +nextStore, this, "backupJsps()");
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append(URLGLOBALS::getWebappPath());
+stringBuffer->append(URLGLOBALS::getWebappPath());
     
-stringBuffer.append(nextStore);
+stringBuffer->append(nextStore);
     
-fileBasicArrayList.addAllList(this->getFileBasicArrayList(stringBuffer.toString()));
+fileBasicArrayList->addAllList(this->getFileBasicArrayList(stringBuffer->toString()));
     
 }
 
-this->backup(fileBasicArrayList, path.toFileSystemString() +"backupJsps.zip");
+this->backup(fileBasicArrayList, path->toFileSystemString() +"backupJsps.zip");
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "backupJsps()", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "backupJsps()", &e);
     
 }
 
 }
 
 
-    public: void backup(BasicArrayList fileBasicArrayList, std::string zipFile){
+    public: void backup(BasicArrayList* fileBasicArrayList, std::string zipFile){
 
         try {
             
-    StringMaker stringBuffer = StringMaker();;
+    StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer.delete(0, stringBuffer.length());
+stringBuffer->delete(0, stringBuffer->length());
     
-stringBuffer.append("ZipFile: ");
+stringBuffer->append("ZipFile: ");
     
-stringBuffer.append(zipFile);
+stringBuffer->append(zipFile);
     
-stringBuffer.append(" BasicArrayList: ");
+stringBuffer->append(" BasicArrayList: ");
     
-stringBuffer.appendint(fileBasicArrayList.size());
+stringBuffer->appendint(fileBasicArrayList->size());
     
-PreLogUtil::put("Creating Backup Zip File: " +stringBuffer.toString(), this, "backup()");
+PreLogUtil::put("Creating Backup Zip File: " +stringBuffer->toString(), this, "backup()");
     
-ZipFileUtil::getInstance().create(zipFile, fileBasicArrayList);
+ZipFileUtil::getInstance()->create(zipFile, fileBasicArrayList);
     
-this->logUtil.putF("Created Backup Zip File", this, "backup()");
+this->logUtil->putF("Created Backup Zip File", this, "backup()");
     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "backup()", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "backup()", &e);
     
 }
 

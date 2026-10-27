@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_COLORATACTIONSCRIPTCONDITIONINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_COLORATACTIONSCRIPTCONDITIONINTERFACE_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <java/awt.h>
 
       
@@ -45,19 +51,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Point.h"
+        #include "org/allbinary/input/automation/actions/script/condition/Point.h"
 
 class ColorAtActionScriptConditionInterface {
 
-    Point getPoint();
+    public: virtual Point* getPoint() = 0;
 
-    void setPoint(Point point);
+    public: virtual void setPoint(Point* point) = 0;
 
-    ColorRangeInterface getColorRangeInterface();
+    public: virtual ColorRangeInterface* getColorRangeInterface() = 0;
 
-    void setColorRangeInterface(ColorRangeInterface colorRangeInterface);
+    public: virtual void setColorRangeInterface(ColorRangeInterface* colorRangeInterface) = 0;
 
-    void log();
+    public: virtual void log() = 0;
 
 };
 

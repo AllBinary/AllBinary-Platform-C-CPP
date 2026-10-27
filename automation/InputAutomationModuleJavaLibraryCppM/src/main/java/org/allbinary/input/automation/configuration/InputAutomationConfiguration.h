@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_CONFIGURATION_INPUTAUTOMATIONCONFIGURATION_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_CONFIGURATION_INPUTAUTOMATIONCONFIGURATION_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -102,15 +108,15 @@ class InputAutomationConfiguration
             : public Object
          {
 
-    private: static const std::string FILENAME = "InputAutomationConfig.xml";
+    private: static inline const std::string FILENAME = "InputAutomationConfig.xml";
 
-    public: static File getFile();
+    public: static File* getFile();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: bool installed= false;
 
-    private: List<InputAutomationModuleConfiguration> inputAutomationModuleConfigurationList;
+    private: List<InputAutomationModuleConfiguration*>* inputAutomationModuleConfigurationList;
 
 public: InputAutomationConfiguration();
 
@@ -118,7 +124,7 @@ public: InputAutomationConfiguration();
 
     public: void setInstalled(bool installed);
 
-    public: List<InputAutomationModuleConfiguration> getInputAutomationModuleConfigurationList();
+    public: List<InputAutomationModuleConfiguration*>* getInputAutomationModuleConfigurationList();
 
                 //@Throws(Exception.constructor)
             

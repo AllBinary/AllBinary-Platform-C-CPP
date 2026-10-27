@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/displayable/event/DisplayChangeEvent.h>
@@ -41,64 +47,64 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "BaseMenuBehavior.h"
-#include "AllBinaryGameCanvas.h"
-#include "GameCanvasNonBotPaintable.h"
+        #include "org/allbinary/game/displayable/canvas/BaseMenuBehavior.h"
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
+#include "org/allbinary/game/displayable/canvas/GameCanvasNonBotPaintable.h"
 
 class InGameMenuBehavior: public BaseMenuBehavior {
 
-    private: static const InGameMenuBehavior instanceC = InGameMenuBehavior();
+    private: static InGameMenuBehavior* instanceC() { static std::unique_ptr<InGameMenuBehavior> value(new InGameMenuBehavior()); return value.get(); }
 
-    public: static InGameMenuBehavior getInstance(){
+    public: static InGameMenuBehavior* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InGameMenuBehavior::instanceC;
+                        return InGameMenuBehavior::instanceC();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void onDisplayChangeEvent(AllBinaryGameCanvas allBinaryGameCanvas, DisplayChangeEvent displayChangeEvent){
-allBinaryGameCanvas.updateMenuFromEvent(displayChangeEvent);
+    public: void onDisplayChangeEvent(AllBinaryGameCanvas* allBinaryGameCanvas, DisplayChangeEvent* displayChangeEvent){
+allBinaryGameCanvas->updateMenuFromEvent(displayChangeEvent);
     
 }
 
 
-    public: void initSpecialPaint(AllBinaryGameCanvas allBinaryGameCanvas){
-allBinaryGameCanvas.setNonBotPaintableP(GameCanvasNonBotPaintable(allBinaryGameCanvas));
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: void initMenu(AllBinaryGameCanvas allBinaryGameCanvas){
-allBinaryGameCanvas.initMenu2();
+    public: void initSpecialPaint(AllBinaryGameCanvas* allBinaryGameCanvas){
+allBinaryGameCanvas->setNonBotPaintableP(new GameCanvasNonBotPaintable(allBinaryGameCanvas));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void updateMenu(AllBinaryGameCanvas allBinaryGameCanvas){
-allBinaryGameCanvas.initMenu2();
+    public: void initMenu(AllBinaryGameCanvas* allBinaryGameCanvas){
+allBinaryGameCanvas->initMenu2();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void popupMenu(AllBinaryGameCanvas allBinaryGameCanvas){
-allBinaryGameCanvas.popupMenu2();
+    public: void updateMenu(AllBinaryGameCanvas* allBinaryGameCanvas){
+allBinaryGameCanvas->initMenu2();
     
 }
 
 
-    public: void closeMenu(AllBinaryGameCanvas allBinaryGameCanvas){
-allBinaryGameCanvas.closeMenu2();
+                //@Throws(Exception.constructor)
+            
+    public: void popupMenu(AllBinaryGameCanvas* allBinaryGameCanvas){
+allBinaryGameCanvas->popupMenu2();
+    
+}
+
+
+    public: void closeMenu(AllBinaryGameCanvas* allBinaryGameCanvas){
+allBinaryGameCanvas->closeMenu2();
     
 }
 

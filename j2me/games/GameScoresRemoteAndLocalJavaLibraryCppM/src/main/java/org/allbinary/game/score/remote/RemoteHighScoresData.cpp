@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -43,14 +49,14 @@ class RemoteHighScoresData
             : public Object
          {
 
-    private: static const RemoteHighScoresData SINGLETON = RemoteHighScoresData();
+    private: static RemoteHighScoresData* SINGLETON() { static std::unique_ptr<RemoteHighScoresData> value(new RemoteHighScoresData()); return value.get(); }
 
-    public: static RemoteHighScoresData getInstance(){
+    public: static RemoteHighScoresData* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RemoteHighScoresData::SINGLETON;
+                        return RemoteHighScoresData::SINGLETON();
     
 }
 

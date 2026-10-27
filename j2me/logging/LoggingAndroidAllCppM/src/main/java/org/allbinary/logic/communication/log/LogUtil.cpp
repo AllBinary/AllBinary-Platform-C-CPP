@@ -20,6 +20,12 @@
 
             #include <hilog/log.h>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Integer.h"
@@ -54,8 +60,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "LogFormatUtil.h"
-#include "Log.h"
+        #include "org/allbinary/logic/communication/log/LogFormatUtil.h"
+#include "org/allbinary/logic/communication/log/Log.h"
 //ActualPlatform
 /*actual*/ class LogUtil
             : public Object
@@ -64,9 +70,9 @@
             static const char* PUBLIC = "%{public}s";
             
 
-    private: static LogUtil instance() { return LogUtil(); }
+    private: static LogUtil* instance() { static std::unique_ptr<LogUtil> value(new LogUtil()); return value.get(); }
 
-    /*actual*/ public: static LogUtil getInstance(){
+    /*actual*/ public: static LogUtil* getInstance(){
 
 
 
@@ -76,9 +82,9 @@
 }
 
 
-    private: const CommonSeps commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps = CommonSeps::getInstance();
 
-    private: const LogFormatUtil logFormatUtil = LogFormatUtil::getInstance();
+    private: LogFormatUtil* logFormatUtil = LogFormatUtil::getInstance();
 
     private: const std::string LABEL = "org.allbinary";
 
@@ -86,18 +92,18 @@ private: LogUtil(){
 }
 
 
-    /*actual*/ public: void putL(Log log){
+    /*actual*/ public: void putL(Log* log){
 
-    std::string specialMessage = log.getSpecialMessage();;
+    std::string specialMessage = log->getSpecialMessage();;
     
 
-    Object* anyType = log.getObject();;
+    Object* anyType = log->getObject();;
     
 
-    std::string functionName = log.getFunctionName();;
+    std::string functionName = log->getFunctionName();;
     
 
-    Object* exception = log.getThrowable();;
+    Object* exception = log->getThrowable();;
     
 this->put(specialMessage, anyType, functionName, exception);
     
@@ -105,13 +111,13 @@ this->put(specialMessage, anyType, functionName, exception);
 
 
     /*actual*/ public: void putF(std::string specialMessage, Object* anyType, std::string functionName){
-this->put(specialMessage, anyType, functionName, NullUtil::getInstance().NULL_OBJECT);
+this->put(specialMessage, anyType, functionName, NullUtil::getInstance()->NULL_OBJECT);
     
 }
 
 
     public: void putFS(std::string specialMessage, std::string string, std::string functionName){
-this->putS(specialMessage, string, functionName, NullUtil::getInstance().NULL_OBJECT);
+this->putS(specialMessage, string, functionName, NullUtil::getInstance()->NULL_OBJECT);
     
 }
 
@@ -120,10 +126,10 @@ this->putS(specialMessage, string, functionName, NullUtil::getInstance().NULL_OB
 
     std::string className = this->LABEL;;
     
-className= StringMaker().append(anyType->constructor.name.toString()).append(this->commonSeps.COLON).append(Integer::toHexString(TsUtil::getInstance().hashCode(anyType))).toString();
+className= (new StringMaker())->append(anyType->getClass()->getName())->append(this->commonSeps->COLON)->append(Integer.toHexString(TsUtil::getInstance()->hashCode(anyType)))->toString();
     
 
-    std::string message = this->logFormatUtil.get(className, functionName, specialMessage, exception);;
+    std::string message = this->logFormatUtil->get(className, functionName, specialMessage, exception);;
     
 android.util.Log.i(this->LABEL, message);
     
@@ -134,10 +140,10 @@ android.util.Log.i(this->LABEL, message);
 
     std::string className = this->LABEL;;
     
-className= StringMaker().append(string).append(this->commonSeps.COLON).append(Integer::toHexString(TsUtil::getInstance().hashCode(string))).toString();
+className= (new StringMaker())->append(string)->append(this->commonSeps->COLON)->append(Integer.toHexString(TsUtil::getInstance()->hashCode(string)))->toString();
     
 
-    std::string message = this->logFormatUtil.get(className, functionName, specialMessage, exception);;
+    std::string message = this->logFormatUtil->get(className, functionName, specialMessage, exception);;
     
 android.util.Log.i(this->LABEL, message);
     

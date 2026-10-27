@@ -20,6 +20,12 @@
 
             #include <vector>
         
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/CommandListener.h>
@@ -88,9 +94,9 @@
         
 class CombatGameCanvas: public AllBinaryGameCanvas {
 
-    protected: static std::vector<BasicLayerProcessor> basicLayerProcessor = {};
+    protected: static inline std::vector<BasicLayerProcessor*> basicLayerProcessor = {};
 
-public: CombatGameCanvas(CommandListener cmdListener, AllBinaryGameLayerManager gameLayerManager, HighScoresFactoryInterface highScoresFactoryInterface, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface, bool buffered) : AllBinaryGameCanvas(cmdListener, gameLayerManager, highScoresFactoryInterface, gameInitializationInterfaceFactoryInterface, buffered){
+public: CombatGameCanvas(CommandListener* cmdListener, AllBinaryGameLayerManager* gameLayerManager, HighScoresFactoryInterface* highScoresFactoryInterface, BasicBuildGameInitializerFactory* gameInitializationInterfaceFactoryInterface, bool buffered) : AllBinaryGameCanvas(cmdListener, gameLayerManager, highScoresFactoryInterface, gameInitializationInterfaceFactoryInterface, buffered){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -101,16 +107,16 @@ public: CombatGameCanvas(CommandListener cmdListener, AllBinaryGameLayerManager 
 
 
     private: void CombatGameCanvas_init(){
-DestroyEventCircularStaticPool::getInstance().init(this);
+DestroyEventCircularStaticPool::getInstance()->init(this);
     
-ProgressCanvasFactory::getInstance().addNormalPortion(50, "Destroy Events");
+ProgressCanvasFactory::getInstance()->addNormalPortion(50, "Destroy Events");
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void initApp(AbeClientInformationInterface abeClientInformation){
+    protected: void initApp(AbeClientInformationInterface* abeClientInformation){
 this->CombatGameCanvas_init();
     
 super.initApp(abeClientInformation);
@@ -121,19 +127,19 @@ super.initApp(abeClientInformation);
     protected: void initConfigurablePortion(int32_t portion){
 DestroyedLayerProcessor::init();
     
-ProgressCanvasFactory::getInstance().addNormalPortion(portion, "Basic Processors");
+ProgressCanvasFactory::getInstance()->addNormalPortion(portion, "Basic Processors");
     
 
-    Features features = Features::getInstance();;
+    Features* features = Features::getInstance();;
     
 
-    GameFeatureFactory gameFeatureFactory = GameFeatureFactory::getInstance();;
+    GameFeatureFactory* gameFeatureFactory = GameFeatureFactory::getInstance();;
     
 
-                        if(features.isFeature(gameFeatureFactory.DROPPED_ITEMS) && features.isFeature(gameFeatureFactory.DROPPED_ITEMS_FROM_DEATH))
+                        if(features->isFeature(gameFeatureFactory->DROPPED_ITEMS) && features->isFeature(gameFeatureFactory->DROPPED_ITEMS_FROM_DEATH))
                         
                                     {
-                                    CombatGameCanvas::basicLayerProcessor= std::vector<BasicLayerProcessor>(2);
+                                    CombatGameCanvas::basicLayerProcessor= std::vector<BasicLayerProcessor*>(2);
     
 CombatGameCanvas::basicLayerProcessor[0]= DestroyedLayerProcessor::getInstance();
     
@@ -143,7 +149,7 @@ CombatGameCanvas::basicLayerProcessor[1]= DropLayerProcessor::getInstance();
                                     }
                                 
                         else {
-                            CombatGameCanvas::basicLayerProcessor= std::vector<BasicLayerProcessor>(1);
+                            CombatGameCanvas::basicLayerProcessor= std::vector<BasicLayerProcessor*>(1);
     
 CombatGameCanvas::basicLayerProcessor[0]= DestroyedLayerProcessor::getInstance();
     
@@ -184,15 +190,15 @@ super.cleanupGame();
                         for (
     int32_t index = CombatGameCanvas::basicLayerProcessor.size();--index >= 0; )
         {
-CombatGameCanvas::basicLayerProcessor[index].getList().clear();
+CombatGameCanvas::basicLayerProcessor[index].getList()->clear();
     
 }
 
-GroupLayerManagerListener::getInstance().clear();
+GroupLayerManagerListener::getInstance()->clear();
     
-GroupLayerManagerListener::getInstance().log();
+GroupLayerManagerListener::getInstance()->log();
     
-DestroyedEventHandler::getInstance().removeAllListeners();
+DestroyedEventHandler::getInstance()->removeAllListeners();
     
 this->cleanupManager();
     

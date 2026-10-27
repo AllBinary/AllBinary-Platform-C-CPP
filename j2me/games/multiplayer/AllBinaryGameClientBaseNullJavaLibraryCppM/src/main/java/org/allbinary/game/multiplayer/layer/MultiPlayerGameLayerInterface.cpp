@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 
 
 
@@ -36,11 +42,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "MultiplayerBehavior.h"
+        #include "org/allbinary/game/multiplayer/layer/MultiplayerBehavior.h"
 
 class MultiPlayerGameLayerInterface {
 
-    MultiplayerBehavior getMultiplayerBehavior()
+    public: virtual MultiplayerBehavior* getMultiplayerBehavior() = 0;
 
 };
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 
@@ -38,31 +44,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "DemoGameMidletState.h"
+        #include "org/allbinary/game/midlet/DemoGameMidletState.h"
 
 class DemoGameMidletStateFactory
             : public Object
          {
 
-    private: static DemoGameMidletStateFactory STATE = DemoGameMidletStateFactory();
+    private: static DemoGameMidletStateFactory* STATE() { static std::unique_ptr<DemoGameMidletStateFactory> value(new DemoGameMidletStateFactory()); return value.get(); }
 
-    public: static DemoGameMidletStateFactory getInstance(){
+    public: static DemoGameMidletStateFactory* getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DemoGameMidletStateFactory::STATE;
+                        return DemoGameMidletStateFactory::STATE();
     
 }
 
 
-    public: const DemoGameMidletState NONE = DemoGameMidletState();
+    public: DemoGameMidletState* NONE = new DemoGameMidletState();
 
-    public: const DemoGameMidletState START_DEMO = DemoGameMidletState();
+    public: DemoGameMidletState* START_DEMO = new DemoGameMidletState();
 
-    public: const DemoGameMidletState START_GAME = DemoGameMidletState();
+    public: DemoGameMidletState* START_GAME = new DemoGameMidletState();
 
-    public: const DemoGameMidletState START_INPUT_MAPPING = DemoGameMidletState();
+    public: DemoGameMidletState* START_INPUT_MAPPING = new DemoGameMidletState();
 
 private: DemoGameMidletStateFactory(){
 }

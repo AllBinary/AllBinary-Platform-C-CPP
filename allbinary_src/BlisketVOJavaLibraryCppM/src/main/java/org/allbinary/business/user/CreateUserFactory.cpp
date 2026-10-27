@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -55,7 +61,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "UserInterface.h"
+        #include "org/allbinary/business/user/UserInterface.h"
 
 class CreateUserFactory
             : public Object
@@ -63,7 +69,7 @@ class CreateUserFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static UserInterface getInstance(HashMap<Object*, Object*> hashMap){
+    public: static UserInterface* getInstance(HashMap<Object*, Object*>* hashMap){
 
                         if(hashMap != 
                                     nullptr
@@ -71,20 +77,20 @@ class CreateUserFactory
                         
                                     {
                                     
-    std::string roleString = hashMap.get(UserRoleData::NAME.toString());;
+    std::string roleString = hashMap->get(UserRoleData::NAME.toString());;
     
 
-                        if(!StringValidationUtil::getInstance().isEmpty(roleString))
+                        if(!StringValidationUtil::getInstance()->isEmpty(roleString))
                         
                                     {
                                     
-    UserRole role = UserRoleB::getRole(roleString);;
+    UserRole* role = UserRoleB::getRole(roleString);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return role.getUserFactory().getInstance(hashMap);;
+                        return role->getUserFactory()->getInstance(hashMap);;
     
 
                                     }
@@ -93,7 +99,7 @@ class CreateUserFactory
                             
 
 
-                            throw Exception("No Role Specified");
+                            throw new Exception("No Role Specified");
                     
 
                         }
@@ -105,7 +111,7 @@ class CreateUserFactory
                             
 
 
-                            throw Exception("Null HashMap");
+                            throw new Exception("Null HashMap");
                     
 
                         }

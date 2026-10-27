@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIGDATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIGDATA_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/io/file/CommonDataFileStrings.h>
@@ -49,9 +55,9 @@ class TransformInfoObjectConfigData
             : public Object
          {
 
-    private: static TransformInfoObjectConfigData instance() { return TransformInfoObjectConfigData(); }
+    private: static TransformInfoObjectConfigData* instance() { static std::unique_ptr<TransformInfoObjectConfigData> value(new TransformInfoObjectConfigData()); return value.get(); }
 
-    public: static TransformInfoObjectConfigData getInstance();
+    public: static TransformInfoObjectConfigData* getInstance();
 
 private: TransformInfoObjectConfigData();
 
@@ -59,9 +65,9 @@ private: TransformInfoObjectConfigData();
 
     public: const std::string VARKEY = "$";
 
-    public: const std::string UNCRYPTED_EXTENSION = CommonDataFileStrings::getInstance().UNCRYPTED_EXTENSION;
+    public: const std::string UNCRYPTED_EXTENSION = CommonDataFileStrings::getInstance()->UNCRYPTED_EXTENSION;
 
-    public: const std::string ENCRYPTED_EXTENSION = CommonDataFileStrings::getInstance().ENCRYPTED_EXTENSION;
+    public: const std::string ENCRYPTED_EXTENSION = CommonDataFileStrings::getInstance()->ENCRYPTED_EXTENSION;
 
 };
 

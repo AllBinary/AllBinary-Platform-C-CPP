@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -58,16 +64,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "NoHardware.h"
-#include "HardwareInterface.h"
+        #include "org/allbinary/logic/system/hardware/NoHardware.h"
+#include "org/allbinary/logic/system/hardware/HardwareInterface.h"
 
 class HardwareFactory
             : public Object
          {
 
-    private: static HardwareFactory instance() { return HardwareFactory(); }
+    private: static HardwareFactory* instance() { static std::unique_ptr<HardwareFactory> value(new HardwareFactory()); return value.get(); }
 
-    public: static HardwareFactory getInstance(){
+    public: static HardwareFactory* getInstance(){
 
 
 
@@ -77,9 +83,9 @@ class HardwareFactory
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const TsUtil tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil = TsUtil::getInstance();
 
 private: HardwareFactory(){
 }
@@ -87,34 +93,34 @@ private: HardwareFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: HardwareInterface getInstance(GenericOperatingSystem os){
+    public: HardwareInterface* getInstance(GenericOperatingSystem* os){
 
         try {
             
-    OperatingSystems operatingSystems = OperatingSystems::getInstance();;
+    OperatingSystems* operatingSystems = OperatingSystems::getInstance();;
     
 
-                        if(this->tsUtil.compareTo(os.getName(), operatingSystems.ANDROID) == 0)
+                        if(this->tsUtil->compareTo(os->getName(), operatingSystems->ANDROID) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AndroidHardware();
+                        return new AndroidHardware();
     
 
                                     }
                                 
                              else 
-                        if(this->tsUtil.compareTo(os.getName(), operatingSystems.HARMONY) == 0)
+                        if(this->tsUtil->compareTo(os->getName(), operatingSystems->HARMONY) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AndroidHardware();
+                        return new AndroidHardware();
     
 
                                     }
@@ -122,22 +128,22 @@ private: HardwareFactory(){
 
 
 
-                            throw Exception("No Hardware Imp for: " +os.getName());
+                            throw new Exception("No Hardware Imp for: " +os->getName());
                     
 
                 //: 
-} catch(e) 
+} catch(Exception& e) 
             {
 
-    CommonStrings commonStrings = CommonStrings::getInstance();;
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put("Ignoring Exception Returning NoHardware", this, commonStrings.GET_INSTANCE, e);
+this->logUtil->put("Ignoring Exception Returning NoHardware", this, commonStrings->GET_INSTANCE, &e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoHardware();
+                        return new NoHardware();
     
 }
 

@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
 #include <org/allbinary/string/CommonSeps.h>
@@ -46,9 +52,9 @@ class HttpData
             : public Object
          {
 
-    private: static HttpData instance() { return HttpData(); }
+    private: static HttpData* instance() { static std::unique_ptr<HttpData> value(new HttpData()); return value.get(); }
 
-    public: static HttpData getInstance(){
+    public: static HttpData* getInstance(){
 
 
 
@@ -68,13 +74,13 @@ class HttpData
 
 private: HttpData(){
 
-    CommonSeps commonSeps = CommonSeps::getInstance();;
+    CommonSeps* commonSeps = CommonSeps::getInstance();;
     
-this->EQUALS= commonSeps.EQUALS;
+this->EQUALS= commonSeps->EQUALS;
     
-this->PARAM_SEP= commonSeps.AMPERSAND;
+this->PARAM_SEP= commonSeps->AMPERSAND;
     
-this->URL_PARAM_SEP= commonSeps.QUESTION;
+this->URL_PARAM_SEP= commonSeps->QUESTION;
     
 }
 

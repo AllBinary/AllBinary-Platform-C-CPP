@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_CAPITAL_HUDCAPITAL_H
         #define ORG_ALLBINARY_GAME_LAYER_CAPITAL_HUDCAPITAL_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <org/allbinary/game/ag/layer/hud/basic/NumberStringHud.h>
 
       
@@ -42,13 +48,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Capital.h"
+        #include "org/allbinary/game/layer/capital/Capital.h"
 
 class HudCapital: public Capital {
 
-    private: NumberStringHud capitalGraphic;
+    private: NumberStringHud* capitalGraphic;
 
-public: HudCapital(NumberStringHud moneyGraphic);
+public: HudCapital(NumberStringHud* moneyGraphic);
 
     public: void removeMoney(int32_t points);
 

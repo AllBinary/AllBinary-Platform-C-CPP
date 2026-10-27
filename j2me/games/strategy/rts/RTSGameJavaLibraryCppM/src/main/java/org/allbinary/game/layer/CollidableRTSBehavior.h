@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_COLLIDABLERTSBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_LAYER_COLLIDABLERTSBEHAVIOR_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/collision/CollisionType.h>
@@ -50,21 +56,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "CollidableCompositeLayer.h"
+        #include "org/allbinary/game/layer/CollidableCompositeLayer.h"
 
 class CollidableRTSBehavior: public CollidableDestroyableDamageableBehavior {
 
 public: CollidableRTSBehavior(bool collidable);
 
-    public: bool isCollision(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
+    public: bool isCollision(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
+    public: void collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface);
 
                 //@Throws(Exception.constructor)
             
-    protected: void collideNone(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterface);
+    protected: void collideNone(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterface);
 
 };
 

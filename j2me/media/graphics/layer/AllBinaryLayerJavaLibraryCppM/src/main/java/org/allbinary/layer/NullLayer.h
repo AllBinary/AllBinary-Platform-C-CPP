@@ -21,6 +21,12 @@
         #ifndef ORG_ALLBINARY_LAYER_NULLLAYER_H
         #define ORG_ALLBINARY_LAYER_NULLLAYER_H
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -42,17 +48,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Layer.h"
+        #include "org/allbinary/layer/Layer.h"
 
 class NullLayer: public Layer {
 
-    private: static NullLayer instance() { return NullLayer(); }
+    private: static NullLayer* instance() { static std::unique_ptr<NullLayer> value(new NullLayer()); return value.get(); }
 
-    public: static NullLayer getInstance();
+    public: static NullLayer* getInstance();
 
 private: NullLayer();
 
-    public: void paint(Graphics graphics);
+    public: void paint(Graphics* graphics);
 
 };
 

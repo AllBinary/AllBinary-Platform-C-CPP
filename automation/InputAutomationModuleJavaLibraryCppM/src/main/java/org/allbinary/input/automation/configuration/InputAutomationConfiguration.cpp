@@ -18,6 +18,12 @@
 
 
 
+            #include <cstdint>
+            #include <memory>
+            #include <string>
+            #include "java/lang/String.h"
+
+        
             #include "java/lang/Object.h"
         
             #include "java/lang/Exception.h"
@@ -99,23 +105,23 @@ class InputAutomationConfiguration
             : public Object
          {
 
-    private: static const std::string FILENAME = "InputAutomationConfig.xml";
+    private: static inline const std::string FILENAME = "InputAutomationConfig.xml";
 
-    public: static File getFile(){
+    public: static File* getFile(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return File(FILENAME);
+                        return new File(FILENAME);
     
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: LogUtil* logUtil = LogUtil::getInstance();
 
     private: bool installed= false;
 
-    private: List<InputAutomationModuleConfiguration> inputAutomationModuleConfigurationList;
+    private: List<InputAutomationModuleConfiguration*>* inputAutomationModuleConfigurationList;
 
 public: InputAutomationConfiguration(){
 }
@@ -134,12 +140,12 @@ public: InputAutomationConfiguration(){
     public: void setInstalled(bool installed){
 this->installed= installed;
     
-this->logUtil.putF("Installed: " +installed, this, "setIntalled");
+this->logUtil->putF("Installed: " +installed, this, "setIntalled");
     
 }
 
 
-    public: List<InputAutomationModuleConfiguration> getInputAutomationModuleConfigurationList(){
+    public: List<InputAutomationModuleConfiguration*>* getInputAutomationModuleConfigurationList(){
 
 
 
@@ -153,25 +159,25 @@ this->logUtil.putF("Installed: " +installed, this, "setIntalled");
             
     public: void save(){
 
-    Document document = DomDocumentHelper::create();;
+    Document* document = DomDocumentHelper::create();;
     
 
                     //Otherwise - statement - EmptyStmt
 
 
-    File file = File(FILENAME);;
+    File* file = new File(FILENAME);;
     
-FileUtil::getInstance().copy(AbPath(file.getAbsolutePath(), StringUtil::getInstance().EMPTY_STRING), AbPath(file.getAbsolutePath() +".bak.xml", StringUtil::getInstance().EMPTY_STRING));
-    
-
-    JAXBContext jaxbContext = JAXBContext::newInstance(InputAutomationConfiguration.constructor);;
+FileUtil::getInstance()->copy(new AbPath(file->getAbsolutePath(), StringUtil::getInstance()->EMPTY_STRING), new AbPath(file->getAbsolutePath() +".bak.xml", StringUtil::getInstance()->EMPTY_STRING));
     
 
-    Marshaller marshaller = jaxbContext.createMarshaller();;
+    JAXBContext* jaxbContext = JAXBContext::newInstance(InputAutomationConfiguration.constructor);;
     
-marshaller.setProperty(Marshaller::JAXB_FORMATTED_OUTPUT, true);
+
+    Marshaller* marshaller = jaxbContext->createMarshaller();;
     
-marshaller.marshal(this, document);
+marshaller->setProperty(Marshaller::JAXB_FORMATTED_OUTPUT, true);
+    
+marshaller->marshal(this, document);
     
 DomDocumentFileHelper::save(FileWrapperUtil::wrapFile(file), document);
     
